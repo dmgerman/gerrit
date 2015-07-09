@@ -216,6 +216,17 @@ name|d
 parameter_list|)
 comment|/*-{       return this.p.hasOwnProperty(k) ? this.p[k] : d     }-*/
 function_decl|;
+DECL|method|getObject (String k)
+specifier|final
+specifier|native
+name|JavaScriptObject
+name|getObject
+parameter_list|(
+name|String
+name|k
+parameter_list|)
+comment|/*-{ return this.p[k]; }-*/
+function_decl|;
 DECL|method|detach (Panel p)
 specifier|final
 specifier|native
@@ -347,6 +358,29 @@ name|name
 argument_list|()
 argument_list|,
 name|defaultValue
+argument_list|)
+return|;
+block|}
+DECL|method|getObject (GerritUiExtensionPoint.Key key)
+specifier|public
+name|JavaScriptObject
+name|getObject
+parameter_list|(
+name|GerritUiExtensionPoint
+operator|.
+name|Key
+name|key
+parameter_list|)
+block|{
+return|return
+name|ctx
+operator|.
+name|getObject
+argument_list|(
+name|key
+operator|.
+name|name
+argument_list|()
 argument_list|)
 return|;
 block|}

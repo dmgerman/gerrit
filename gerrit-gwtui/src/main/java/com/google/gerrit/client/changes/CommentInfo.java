@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|diff
 operator|.
-name|AccountInfo
+name|CommentRange
 import|;
 end_import
 
@@ -92,9 +92,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|diff
+name|info
 operator|.
-name|CommentRange
+name|AccountInfo
 import|;
 end_import
 

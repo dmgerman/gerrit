@@ -103,8 +103,11 @@ specifier|public
 enum|enum
 name|Key
 block|{
+DECL|enumConstant|ACCOUNT_INFO
 DECL|enumConstant|CHANGE_ID
 DECL|enumConstant|PROJECT_NAME
+name|ACCOUNT_INFO
+block|,
 name|CHANGE_ID
 block|,
 name|PROJECT_NAME

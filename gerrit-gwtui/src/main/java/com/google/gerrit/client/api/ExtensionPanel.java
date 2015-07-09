@@ -468,6 +468,42 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|putObject (GerritUiExtensionPoint.Key key, JavaScriptObject value)
+specifier|public
+name|void
+name|putObject
+parameter_list|(
+name|GerritUiExtensionPoint
+operator|.
+name|Key
+name|key
+parameter_list|,
+name|JavaScriptObject
+name|value
+parameter_list|)
+block|{
+for|for
+control|(
+name|Context
+name|ctx
+range|:
+name|contexts
+control|)
+block|{
+name|ctx
+operator|.
+name|putObject
+argument_list|(
+name|key
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Override
 DECL|method|onLoad ()
@@ -727,6 +763,20 @@ name|String
 name|k
 parameter_list|,
 name|boolean
+name|v
+parameter_list|)
+comment|/*-{ this.p[k] = v; }-*/
+function_decl|;
+DECL|method|putObject (String k, JavaScriptObject v)
+specifier|final
+specifier|native
+name|void
+name|putObject
+parameter_list|(
+name|String
+name|k
+parameter_list|,
+name|JavaScriptObject
 name|v
 parameter_list|)
 comment|/*-{ this.p[k] = v; }-*/

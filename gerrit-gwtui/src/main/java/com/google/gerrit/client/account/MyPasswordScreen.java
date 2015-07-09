@@ -753,8 +753,7 @@ expr_stmt|;
 name|ExtensionPanel
 name|extensionPanel
 init|=
-operator|new
-name|ExtensionPanel
+name|createExtensionPoint
 argument_list|(
 name|GerritUiExtensionPoint
 operator|.

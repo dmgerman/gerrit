@@ -104,7 +104,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|info
 operator|.
 name|AccountInfo
 import|;
