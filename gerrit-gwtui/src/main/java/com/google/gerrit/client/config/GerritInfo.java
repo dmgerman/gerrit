@@ -208,6 +208,15 @@ name|allUsers
 parameter_list|()
 comment|/*-{ return this.all_users; }-*/
 function_decl|;
+DECL|method|docUrl ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|docUrl
+parameter_list|()
+comment|/*-{ return this.doc_url; }-*/
+function_decl|;
 DECL|method|reportBugUrl ()
 specifier|public
 specifier|final
