@@ -6952,7 +6952,7 @@ name|PatchSet
 name|patchSet
 decl_stmt|;
 try|try
-block|{
+init|(
 name|ReviewDb
 name|reviewDb
 init|=
@@ -6960,8 +6960,7 @@ name|schemaFactory
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|patchSet
 operator|=
@@ -6978,15 +6977,6 @@ name|currentPatchSetId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|reviewDb
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
