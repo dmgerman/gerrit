@@ -332,7 +332,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|SignedPushModule
+name|TransferConfig
 import|;
 end_import
 
@@ -348,7 +348,9 @@ name|server
 operator|.
 name|git
 operator|.
-name|TransferConfig
+name|gpg
+operator|.
+name|SignedPushModule
 import|;
 end_import
 
