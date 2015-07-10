@@ -211,15 +211,6 @@ name|statusLongNew
 argument_list|()
 return|;
 case|case
-name|SUBMITTED
-case|:
-return|return
-name|C
-operator|.
-name|statusLongSubmitted
-argument_list|()
-return|;
-case|case
 name|MERGED
 case|:
 return|return

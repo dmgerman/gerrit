@@ -768,7 +768,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"admin"
+literal|"Administrator"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -796,7 +796,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"admin"
+literal|"Administrator"
 argument_list|)
 expr_stmt|;
 name|assertThat

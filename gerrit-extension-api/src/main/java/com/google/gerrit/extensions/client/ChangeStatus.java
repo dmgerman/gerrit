@@ -76,13 +76,9 @@ specifier|public
 enum|enum
 name|ChangeStatus
 block|{
-comment|/**    * Change is open and pending review, or review is in progress.    *    *<p>    * This is the default state assigned to a change when it is first created    * in the database. A change stays in the NEW state throughout its review    * cycle, until the change is submitted or abandoned.    *    *<p>    * Changes in the NEW state can be moved to:    *<ul>    *<li>{@link #SUBMITTED} - when the Submit Patch Set action is used;    *<li>{@link #ABANDONED} - when the Abandon action is used.    *</ul>    */
+comment|/**    * Change is open and pending review, or review is in progress.    *    *<p>    * This is the default state assigned to a change when it is first created    * in the database. A change stays in the NEW state throughout its review    * cycle, until the change is submitted or abandoned.    *    *<p>    * Changes in the NEW state can be moved to:    *<ul>    *<li>{@link #MERGED} - when the Submit Patch Set action is used;    *<li>{@link #ABANDONED} - when the Abandon action is used.    *</ul>    */
 DECL|enumConstant|NEW
 name|NEW
-block|,
-comment|/**    * Change is open, but has been submitted to the merge queue.    *    *<p>    * A change enters the SUBMITTED state when an authorized user presses the    * "submit" action through the web UI, requesting that Gerrit merge the    * change's current patch set into the destination branch.    *    *<p>    * Typically a change resides in the SUBMITTED for only a brief sub-second    * period while the merge queue fires and the destination branch is updated.    * However, if a dependency commit (directly or transitively) is not yet    * merged into the branch, the change will hang in the SUBMITTED state    * indefinitely.    *    *<p>    * Changes in the SUBMITTED state can be moved to:    *<ul>    *<li>{@link #NEW} - when a replacement patch set is supplied, OR when a    * merge conflict is detected;    *<li>{@link #MERGED} - when the change has been successfully merged into    * the destination branch;    *<li>{@link #ABANDONED} - when the Abandon action is used.    *</ul>    */
-DECL|enumConstant|SUBMITTED
-name|SUBMITTED
 block|,
 comment|/**    * Change is a draft change that only consists of draft patchsets.    *    *<p>    * This is a change that is not meant to be submitted or reviewed yet. If    * the uploader publishes the change, it becomes a NEW change.    * Publishing is a one-way action, a change cannot return to DRAFT status.    * Draft changes are only visible to the uploader and those explicitly    * added as reviewers.    *    *<p>    * Changes in the DRAFT state can be moved to:    *<ul>    *<li>{@link #NEW} - when the change is published, it becomes a new change;    *</ul>    */
 DECL|enumConstant|DRAFT

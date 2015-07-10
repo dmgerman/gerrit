@@ -997,16 +997,6 @@ name|STATUS_NEW
 init|=
 literal|'n'
 decl_stmt|;
-comment|/** Database constant for {@link Status#SUBMITTED}. */
-DECL|field|STATUS_SUBMITTED
-specifier|public
-specifier|static
-specifier|final
-name|char
-name|STATUS_SUBMITTED
-init|=
-literal|'s'
-decl_stmt|;
 comment|/** Database constant for {@link Status#DRAFT}. */
 DECL|field|STATUS_DRAFT
 specifier|public
@@ -1054,7 +1044,7 @@ specifier|static
 enum|enum
 name|Status
 block|{
-comment|/**      * Change is open and pending review, or review is in progress.      *      *<p>      * This is the default state assigned to a change when it is first created      * in the database. A change stays in the NEW state throughout its review      * cycle, until the change is submitted or abandoned.      *      *<p>      * Changes in the NEW state can be moved to:      *<ul>      *<li>{@link #SUBMITTED} - when the Submit Patch Set action is used;      *<li>{@link #ABANDONED} - when the Abandon action is used.      *</ul>      */
+comment|/**      * Change is open and pending review, or review is in progress.      *      *<p>      * This is the default state assigned to a change when it is first created      * in the database. A change stays in the NEW state throughout its review      * cycle, until the change is submitted or abandoned.      *      *<p>      * Changes in the NEW state can be moved to:      *<ul>      *<li>{@link #MERGED} - when the Submit Patch Set action is used;      *<li>{@link #ABANDONED} - when the Abandon action is used.      *</ul>      */
 DECL|enumConstant|NEW
 name|NEW
 parameter_list|(
@@ -1065,42 +1055,31 @@ operator|.
 name|NEW
 parameter_list|)
 operator|,
-comment|/**      * Change is open, but has been submitted to the merge queue.      *      *<p>      * A change enters the SUBMITTED state when an authorized user presses the      * "submit" action through the web UI, requesting that Gerrit merge the      * change's current patch set into the destination branch.      *      *<p>      * Typically a change resides in the SUBMITTED for only a brief sub-second      * period while the merge queue fires and the destination branch is updated.      * However, if a dependency commit (a {@link PatchSetAncestor}, directly or      * transitively) is not yet merged into the branch, the change will hang in      * the SUBMITTED state indefinitely.      *      *<p>      * Changes in the SUBMITTED state can be moved to:      *<ul>      *<li>{@link #NEW} - when a replacement patch set is supplied, OR when a      * merge conflict is detected;      *<li>{@link #MERGED} - when the change has been successfully merged into      * the destination branch;      *<li>{@link #ABANDONED} - when the Abandon action is used.      *</ul>      */
-DECL|enumConstant|SUBMITTED
-constructor|SUBMITTED(STATUS_SUBMITTED
-operator|,
-constructor|ChangeStatus.SUBMITTED
-block|)
-enum|,
 comment|/**      * Change is a draft change that only consists of draft patchsets.      *      *<p>      * This is a change that is not meant to be submitted or reviewed yet. If      * the uploader publishes the change, it becomes a NEW change.      * Publishing is a one-way action, a change cannot return to DRAFT status.      * Draft changes are only visible to the uploader and those explicitly      * added as reviewers.      *      *<p>      * Changes in the DRAFT state can be moved to:      *<ul>      *<li>{@link #NEW} - when the change is published, it becomes a new change;      *</ul>      */
 DECL|enumConstant|DRAFT
-name|DRAFT
+constructor|DRAFT(STATUS_DRAFT
+operator|,
+constructor|ChangeStatus.DRAFT
+block|)
+enum|,
+comment|/**      * Change is closed, and submitted to its destination branch.      *      *<p>      * Once a change has been merged, it cannot be further modified by adding a      * replacement patch set. Draft comments however may be published,      * supporting a post-submit review.      */
+DECL|enumConstant|MERGED
+name|MERGED
 parameter_list|(
-name|STATUS_DRAFT
+name|STATUS_MERGED
 parameter_list|,
 name|ChangeStatus
 operator|.
-name|DRAFT
+name|MERGED
 parameter_list|)
-operator|,
-comment|/**      * Change is closed, and submitted to its destination branch.      *      *<p>      * Once a change has been merged, it cannot be further modified by adding a      * replacement patch set. Draft comments however may be published,      * supporting a post-submit review.      */
-DECL|enumConstant|MERGED
-constructor|MERGED(STATUS_MERGED
-operator|,
-constructor|ChangeStatus.MERGED
-block|)
 operator|,
 comment|/**      * Change is closed, but was not submitted to its destination branch.      *      *<p>      * Once a change has been abandoned, it cannot be further modified by adding      * a replacement patch set, and it cannot be merged. Draft comments however      * may be published, permitting reviewers to send constructive feedback.      */
 DECL|enumConstant|ABANDONED
-name|ABANDONED
-argument_list|(
-literal|'A'
-argument_list|,
-name|ChangeStatus
-operator|.
-name|ABANDONED
-argument_list|)
-expr_stmt|;
+constructor|ABANDONED('A'
+operator|,
+constructor|ChangeStatus.ABANDONED
+block|)
+class|;
 end_class
 
 begin_static

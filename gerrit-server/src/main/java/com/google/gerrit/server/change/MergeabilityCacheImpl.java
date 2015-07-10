@@ -1737,6 +1737,8 @@ operator|.
 name|load
 operator|.
 name|dest
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|dryRun

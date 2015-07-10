@@ -166,26 +166,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-operator|.
-name|Status
-operator|.
-name|SUBMITTED
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
@@ -1448,8 +1428,6 @@ name|EnumSet
 operator|.
 name|of
 argument_list|(
-name|SUBMITTED
-argument_list|,
 name|DRAFT
 argument_list|,
 name|MERGED
@@ -1515,7 +1493,7 @@ name|none
 argument_list|,
 name|status
 argument_list|(
-literal|"(is:new is:draft) (is:merged is:submitted)"
+literal|"(is:new is:draft) (is:merged)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1525,7 +1503,7 @@ name|none
 argument_list|,
 name|status
 argument_list|(
-literal|"(is:new is:draft) (is:merged is:submitted)"
+literal|"(is:new is:draft) (is:merged)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1536,13 +1514,11 @@ operator|.
 name|of
 argument_list|(
 name|MERGED
-argument_list|,
-name|SUBMITTED
 argument_list|)
 argument_list|,
 name|status
 argument_list|(
-literal|"(is:new is:draft) OR (is:merged OR is:submitted)"
+literal|"(is:new is:draft) OR (is:merged)"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -905,9 +905,6 @@ return|;
 case|case
 name|NEW
 case|:
-case|case
-name|SUBMITTED
-case|:
 default|default:
 return|return
 literal|"status:open"
