@@ -833,7 +833,7 @@ literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
 operator|+
-literal|"Status: submitted\n"
+literal|"Status: merged\n"
 operator|+
 literal|"Submitted-with: NOT_READY\n"
 operator|+
@@ -1191,7 +1191,7 @@ literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
 operator|+
-literal|"Status: submitted\n"
+literal|"Status: merged\n"
 operator|+
 literal|"Submitted-with: RULE_ERROR Problem with patch set: 1\n"
 argument_list|,

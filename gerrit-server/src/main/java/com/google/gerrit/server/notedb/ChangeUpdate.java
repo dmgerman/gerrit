@@ -1208,7 +1208,7 @@ name|Change
 operator|.
 name|Status
 operator|.
-name|SUBMITTED
+name|MERGED
 argument_list|,
 literal|"use submit(Iterable<PatchSetApproval>)"
 argument_list|)
@@ -1284,13 +1284,15 @@ argument_list|>
 name|submitRecords
 parameter_list|)
 block|{
+name|this
+operator|.
 name|status
 operator|=
 name|Change
 operator|.
 name|Status
 operator|.
-name|SUBMITTED
+name|MERGED
 expr_stmt|;
 name|this
 operator|.

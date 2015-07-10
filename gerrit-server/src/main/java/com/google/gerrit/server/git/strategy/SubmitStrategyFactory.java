@@ -684,7 +684,7 @@ operator|=
 name|indexer
 expr_stmt|;
 block|}
-DECL|method|create (final SubmitType submitType, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch)
+DECL|method|create (final SubmitType submitType, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final IdentifiedUser caller)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -725,6 +725,10 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+specifier|final
+name|IdentifiedUser
+name|caller
 parameter_list|)
 throws|throws
 name|MergeException
@@ -780,6 +784,8 @@ name|project
 argument_list|)
 argument_list|,
 name|indexer
+argument_list|,
+name|caller
 argument_list|)
 decl_stmt|;
 switch|switch

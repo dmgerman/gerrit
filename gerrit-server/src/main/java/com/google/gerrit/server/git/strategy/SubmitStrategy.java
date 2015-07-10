@@ -69,6 +69,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -113,22 +129,6 @@ operator|.
 name|client
 operator|.
 name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|PatchSetApproval
 import|;
 end_import
 
@@ -552,7 +552,13 @@ specifier|final
 name|MergeSorter
 name|mergeSorter
 decl_stmt|;
-DECL|method|Arguments (IdentifiedUser.GenericFactory identifiedUserFactory, Provider<PersonIdent> serverIdent, ReviewDb db, ChangeControl.GenericFactory changeControlFactory, Repository repo, RevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, ApprovalsUtil approvalsUtil, MergeUtil mergeUtil, ChangeIndexer indexer)
+DECL|field|caller
+specifier|protected
+specifier|final
+name|IdentifiedUser
+name|caller
+decl_stmt|;
+DECL|method|Arguments (IdentifiedUser.GenericFactory identifiedUserFactory, Provider<PersonIdent> serverIdent, ReviewDb db, ChangeControl.GenericFactory changeControlFactory, Repository repo, RevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, ApprovalsUtil approvalsUtil, MergeUtil mergeUtil, ChangeIndexer indexer, IdentifiedUser caller)
 name|Arguments
 parameter_list|(
 name|IdentifiedUser
@@ -605,6 +611,9 @@ name|mergeUtil
 parameter_list|,
 name|ChangeIndexer
 name|indexer
+parameter_list|,
+name|IdentifiedUser
+name|caller
 parameter_list|)
 block|{
 name|this
@@ -699,6 +708,12 @@ argument_list|,
 name|canMergeFlag
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|caller
+operator|=
+name|caller
+expr_stmt|;
 block|}
 block|}
 DECL|field|args
@@ -750,6 +765,15 @@ block|{
 name|refLogIdent
 operator|=
 literal|null
+expr_stmt|;
+name|checkState
+argument_list|(
+name|args
+operator|.
+name|caller
+operator|!=
+literal|null
+argument_list|)
 expr_stmt|;
 return|return
 name|_run
@@ -839,25 +863,18 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * Set the ref log identity if it wasn't set yet.    *    * @param submitApproval the approval that submitted the patch set    */
-DECL|method|setRefLogIdent (PatchSetApproval submitApproval)
+comment|/**    * Set the ref log identity if it wasn't set yet.    */
+DECL|method|setRefLogIdent ()
 specifier|protected
 specifier|final
 name|void
 name|setRefLogIdent
-parameter_list|(
-name|PatchSetApproval
-name|submitApproval
-parameter_list|)
+parameter_list|()
 block|{
 if|if
 condition|(
 name|refLogIdent
 operator|==
-literal|null
-operator|&&
-name|submitApproval
-operator|!=
 literal|null
 condition|)
 block|{
@@ -869,7 +886,9 @@ name|identifiedUserFactory
 operator|.
 name|create
 argument_list|(
-name|submitApproval
+name|args
+operator|.
+name|caller
 operator|.
 name|getAccountId
 argument_list|()

@@ -785,7 +785,7 @@ name|getCommitId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertSubmitter
+name|assertNoSubmitter
 argument_list|(
 name|change2
 operator|.

@@ -467,7 +467,7 @@ return|return
 operator|new
 name|PersonIdent
 argument_list|(
-name|username
+name|fullName
 argument_list|,
 name|email
 argument_list|)
