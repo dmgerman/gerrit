@@ -477,15 +477,6 @@ name|Factory
 name|changeNotesFactory
 decl_stmt|;
 annotation|@
-name|Inject
-annotation|@
-name|GerritPersonIdent
-DECL|field|serverIdent
-specifier|private
-name|PersonIdent
-name|serverIdent
-decl_stmt|;
-annotation|@
 name|Test
 DECL|method|submitOnPush ()
 specifier|public
@@ -2035,6 +2026,9 @@ operator|.
 name|isEqualTo
 argument_list|(
 name|serverIdent
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getEmailAddress
 argument_list|()

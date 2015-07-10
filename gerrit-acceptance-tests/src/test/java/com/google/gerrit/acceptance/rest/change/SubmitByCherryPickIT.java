@@ -466,6 +466,21 @@ argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
+name|assertPersonEquals
+argument_list|(
+name|admin
+operator|.
+name|getIdent
+argument_list|()
+argument_list|,
+name|newHead
+operator|.
+name|getAuthorIdent
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// TODO:  Check the committer, too.
+comment|// assertPersonEquals(admin.getIdent(), newHead.getCommitterIdent());
 block|}
 annotation|@
 name|Test
