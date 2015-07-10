@@ -704,31 +704,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|allSubmitted ()
-specifier|public
-name|List
-argument_list|<
-name|ChangeData
-argument_list|>
-name|allSubmitted
-parameter_list|()
-throws|throws
-name|OrmException
-block|{
-return|return
-name|query
-argument_list|(
-name|status
-argument_list|(
-name|Change
-operator|.
-name|Status
-operator|.
-name|SUBMITTED
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|byBranchOpen (Branch.NameKey branch)
 specifier|public
 name|List

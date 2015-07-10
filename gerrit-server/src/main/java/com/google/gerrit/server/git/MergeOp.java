@@ -2913,20 +2913,6 @@ operator|.
 name|Status
 operator|.
 name|NEW
-operator|&&
-name|cd
-operator|.
-name|change
-argument_list|()
-operator|.
-name|getStatus
-argument_list|()
-operator|!=
-name|Change
-operator|.
-name|Status
-operator|.
-name|SUBMITTED
 condition|)
 block|{
 throw|throw
@@ -4542,23 +4528,12 @@ name|Change
 operator|.
 name|Status
 operator|.
-name|SUBMITTED
-operator|&&
-name|chg
-operator|.
-name|getStatus
-argument_list|()
-operator|!=
-name|Change
-operator|.
-name|Status
-operator|.
 name|NEW
 condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Change {} is not new or submitted: {}"
+literal|"Change {} is not new: {}"
 argument_list|,
 name|changeId
 argument_list|,
@@ -7032,7 +7007,7 @@ condition|)
 block|{
 name|update
 operator|.
-name|submit
+name|merge
 argument_list|(
 name|record
 argument_list|)

@@ -1272,10 +1272,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|submit (Iterable<SubmitRecord> submitRecords)
+DECL|method|merge (Iterable<SubmitRecord> submitRecords)
 specifier|public
 name|void
-name|submit
+name|merge
 parameter_list|(
 name|Iterable
 argument_list|<

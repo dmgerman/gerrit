@@ -385,7 +385,7 @@ name|newChangeInfo
 argument_list|(
 name|ChangeStatus
 operator|.
-name|SUBMITTED
+name|MERGED
 argument_list|)
 decl_stmt|;
 name|assertCreateFails

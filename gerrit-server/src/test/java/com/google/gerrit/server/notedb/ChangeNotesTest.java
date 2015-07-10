@@ -2627,7 +2627,7 @@ argument_list|)
 expr_stmt|;
 name|update
 operator|.
-name|submit
+name|merge
 argument_list|(
 name|ImmutableList
 operator|.
@@ -2843,7 +2843,7 @@ argument_list|)
 expr_stmt|;
 name|update
 operator|.
-name|submit
+name|merge
 argument_list|(
 name|ImmutableList
 operator|.
@@ -2898,7 +2898,7 @@ argument_list|)
 expr_stmt|;
 name|update
 operator|.
-name|submit
+name|merge
 argument_list|(
 name|ImmutableList
 operator|.

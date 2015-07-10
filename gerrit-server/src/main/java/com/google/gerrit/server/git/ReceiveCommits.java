@@ -11786,22 +11786,6 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|SUBMITTED
-case|:
-name|addMessage
-argument_list|(
-literal|"Change "
-operator|+
-name|c
-operator|.
-name|getChangeId
-argument_list|()
-operator|+
-literal|" submitted."
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
 name|MERGED
 case|:
 name|addMessage
