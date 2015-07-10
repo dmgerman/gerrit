@@ -104,6 +104,8 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|info
+operator|.
 name|WebLinkInfo
 import|;
 end_import
@@ -118,7 +120,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|info
 operator|.
 name|ChangeInfo
 operator|.

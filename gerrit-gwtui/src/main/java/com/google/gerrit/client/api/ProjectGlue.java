@@ -92,7 +92,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|actions
+name|info
 operator|.
 name|ActionInfo
 import|;

@@ -90,7 +90,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|WebLinkInfo
+name|changes
+operator|.
+name|Util
 import|;
 end_import
 
@@ -104,9 +106,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|info
 operator|.
-name|Util
+name|WebLinkInfo
 import|;
 end_import
 

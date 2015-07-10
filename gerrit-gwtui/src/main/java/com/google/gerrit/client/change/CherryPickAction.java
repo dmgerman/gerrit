@@ -108,7 +108,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|ChangeInfo
+name|Util
 import|;
 end_import
 
@@ -122,9 +122,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|info
 operator|.
-name|Util
+name|ChangeInfo
 import|;
 end_import
 

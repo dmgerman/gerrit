@@ -120,7 +120,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|WebLinkInfo
+name|config
+operator|.
+name|GitwebInfo
 import|;
 end_import
 
@@ -134,9 +136,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|config
+name|info
 operator|.
-name|GitwebInfo
+name|WebLinkInfo
 import|;
 end_import
 

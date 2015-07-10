@@ -76,6 +76,8 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|info
+operator|.
 name|WebLinkInfo
 import|;
 end_import

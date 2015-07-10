@@ -64,6 +64,22 @@ name|client
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|info
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
 begin_class
 DECL|class|DiffWebLinkInfo
 specifier|public
