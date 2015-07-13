@@ -1623,7 +1623,7 @@ comment|// DELETED: id = 16 (mergeable)
 end_comment
 
 begin_comment
-comment|/**    * First line of first patch set's commit message.    *    * Unlike {@link #subject}, this string does not change if future patch sets    * change the first line.    */
+comment|/**    * First line of first patch set's commit message.    *<p>    * Unlike {@link #subject}, this string does not change if future patch sets    * change the first line.    */
 end_comment
 
 begin_decl_stmt
