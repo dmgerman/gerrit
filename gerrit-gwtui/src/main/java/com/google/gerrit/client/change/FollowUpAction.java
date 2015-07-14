@@ -179,13 +179,19 @@ specifier|final
 name|String
 name|branch
 decl_stmt|;
+DECL|field|topic
+specifier|private
+specifier|final
+name|String
+name|topic
+decl_stmt|;
 DECL|field|base
 specifier|private
 specifier|final
 name|String
 name|base
 decl_stmt|;
-DECL|method|FollowUpAction (Button b, String project, String branch, String key)
+DECL|method|FollowUpAction (Button b, String project, String branch, String topic, String key)
 name|FollowUpAction
 parameter_list|(
 name|Button
@@ -196,6 +202,9 @@ name|project
 parameter_list|,
 name|String
 name|branch
+parameter_list|,
+name|String
+name|topic
 parameter_list|,
 name|String
 name|key
@@ -217,6 +226,12 @@ operator|.
 name|branch
 operator|=
 name|branch
+expr_stmt|;
+name|this
+operator|.
+name|topic
+operator|=
+name|topic
 expr_stmt|;
 name|this
 operator|.
@@ -251,7 +266,7 @@ name|project
 argument_list|,
 name|branch
 argument_list|,
-literal|null
+name|topic
 argument_list|,
 name|message
 argument_list|,

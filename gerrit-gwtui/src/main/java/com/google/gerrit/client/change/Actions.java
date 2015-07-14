@@ -503,6 +503,11 @@ specifier|private
 name|String
 name|project
 decl_stmt|;
+DECL|field|topic
+specifier|private
+name|String
+name|topic
+decl_stmt|;
 DECL|field|subject
 specifier|private
 name|String
@@ -608,6 +613,13 @@ operator|=
 name|info
 operator|.
 name|project
+argument_list|()
+expr_stmt|;
+name|topic
+operator|=
+name|info
+operator|.
+name|topic
 argument_list|()
 expr_stmt|;
 name|subject
@@ -1102,6 +1114,8 @@ argument_list|,
 name|project
 argument_list|,
 name|branch
+argument_list|,
+name|topic
 argument_list|,
 name|key
 argument_list|)
