@@ -314,7 +314,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Create a new change.    *    * The new change is created as DRAFT unless the draft workflow is disabled    * by `change.allowDrafts = false` in the configuration, in which case the    * new change is created as NEW.    *    */
-DECL|method|createChange (String project, String branch, String subject, String base, AsyncCallback<ChangeInfo> cb)
+DECL|method|createChange (String project, String branch, String topic, String subject, String base, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -325,6 +325,9 @@ name|project
 parameter_list|,
 name|String
 name|branch
+parameter_list|,
+name|String
+name|topic
 parameter_list|,
 name|String
 name|subject
@@ -364,6 +367,16 @@ argument_list|(
 name|emptyToNull
 argument_list|(
 name|branch
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|input
+operator|.
+name|topic
+argument_list|(
+name|emptyToNull
+argument_list|(
+name|topic
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1690,6 +1703,18 @@ name|String
 name|b
 parameter_list|)
 comment|/*-{ if(b)this.branch=b; }-*/
+function_decl|;
+DECL|method|topic (String t)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|topic
+parameter_list|(
+name|String
+name|t
+parameter_list|)
+comment|/*-{ if(t)this.topic=t; }-*/
 function_decl|;
 DECL|method|project (String p)
 specifier|public

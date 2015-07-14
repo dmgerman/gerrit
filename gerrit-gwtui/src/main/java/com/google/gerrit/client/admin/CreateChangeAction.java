@@ -309,6 +309,9 @@ argument_list|,
 name|getDestinationBranch
 argument_list|()
 argument_list|,
+name|getDestinationTopic
+argument_list|()
+argument_list|,
 name|message
 operator|.
 name|getText

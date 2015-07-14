@@ -251,6 +251,8 @@ name|project
 argument_list|,
 name|branch
 argument_list|,
+literal|null
+argument_list|,
 name|message
 argument_list|,
 name|base

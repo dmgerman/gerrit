@@ -229,6 +229,8 @@ name|RefNames
 operator|.
 name|REFS_CONFIG
 argument_list|,
+literal|null
+argument_list|,
 name|Util
 operator|.
 name|C

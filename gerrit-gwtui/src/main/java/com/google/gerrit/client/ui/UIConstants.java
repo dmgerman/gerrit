@@ -140,6 +140,11 @@ name|String
 name|newChangeBranchSuggestion
 parameter_list|()
 function_decl|;
+DECL|method|newChangeTopicSuggestion ()
+name|String
+name|newChangeTopicSuggestion
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
