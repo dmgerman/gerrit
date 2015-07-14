@@ -224,6 +224,20 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
 begin_class
 DECL|class|OnlineReindexer
 specifier|public
@@ -284,6 +298,21 @@ specifier|final
 name|int
 name|version
 decl_stmt|;
+DECL|field|index
+specifier|private
+name|ChangeIndex
+name|index
+decl_stmt|;
+DECL|field|running
+specifier|private
+specifier|final
+name|AtomicBoolean
+name|running
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|OnlineReindexer ( IndexCollection indexes, SiteIndexer batchIndexer, ProjectCache projectCache, @Assisted int version)
@@ -335,6 +364,18 @@ name|void
 name|start
 parameter_list|()
 block|{
+if|if
+condition|(
+name|running
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 name|Thread
 name|t
 init|=
@@ -349,9 +390,22 @@ name|void
 name|run
 parameter_list|()
 block|{
+try|try
+block|{
 name|reindex
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|running
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 decl_stmt|;
@@ -383,6 +437,30 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|isRunning ()
+specifier|public
+name|boolean
+name|isRunning
+parameter_list|()
+block|{
+return|return
+name|running
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+DECL|method|getVersion ()
+specifier|public
+name|int
+name|getVersion
+parameter_list|()
+block|{
+return|return
+name|version
+return|;
+block|}
 DECL|method|version (ChangeIndex i)
 specifier|private
 specifier|static
@@ -409,9 +487,8 @@ name|void
 name|reindex
 parameter_list|()
 block|{
-name|ChangeIndex
 name|index
-init|=
+operator|=
 name|checkNotNull
 argument_list|(
 name|indexes
@@ -425,7 +502,7 @@ literal|"not an active write schema version: %s"
 argument_list|,
 name|version
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|log
 operator|.
 name|info
@@ -498,6 +575,27 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Reindex to version {} complete"
+argument_list|,
+name|version
+argument_list|(
+name|index
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|activateIndex
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|activateIndex ()
+name|void
+name|activateIndex
+parameter_list|()
+block|{
 name|indexes
 operator|.
 name|setSearchIndex
@@ -509,7 +607,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Reindex complete, using schema version {}"
+literal|"Using schema version {}"
 argument_list|,
 name|version
 argument_list|(
