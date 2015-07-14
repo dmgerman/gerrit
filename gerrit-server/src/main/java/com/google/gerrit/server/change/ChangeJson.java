@@ -4866,6 +4866,34 @@ name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|value
+operator|==
+literal|0
+condition|)
+block|{
+comment|// This may be a dummy approval that was inserted when the reviewer
+comment|// was added. Explicitly check whether the user can vote on this
+comment|// label.
+name|value
+operator|=
+name|labelNormalizer
+operator|.
+name|canVote
+argument_list|(
+name|ctl
+argument_list|,
+name|lt
+argument_list|,
+name|accountId
+argument_list|)
+condition|?
+literal|0
+else|:
+literal|null
+expr_stmt|;
+block|}
 name|date
 operator|=
 name|psa
