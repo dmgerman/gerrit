@@ -506,6 +506,40 @@ operator|.
 name|addedOn
 expr_stmt|;
 block|}
+DECL|method|getAddedBy ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getAddedBy
+parameter_list|()
+block|{
+return|return
+name|addedBy
+return|;
+block|}
+DECL|method|getRemovedBy ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getRemovedBy
+parameter_list|()
+block|{
+return|return
+name|removedBy
+return|;
+block|}
+DECL|method|getRemovedOn ()
+specifier|public
+name|Timestamp
+name|getRemovedOn
+parameter_list|()
+block|{
+return|return
+name|removedOn
+return|;
+block|}
 block|}
 end_class
 
