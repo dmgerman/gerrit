@@ -87,6 +87,10 @@ comment|/* MyPasswordScreen */
 DECL|enumConstant|PASSWORD_SCREEN_BOTTOM
 name|PASSWORD_SCREEN_BOTTOM
 block|,
+comment|/* MyPreferencesScreen */
+DECL|enumConstant|PREFERENCES_SCREEN_BOTTOM
+name|PREFERENCES_SCREEN_BOTTOM
+block|,
 comment|/* MyProfileScreen */
 DECL|enumConstant|PROFILE_SCREEN_BOTTOM
 name|PROFILE_SCREEN_BOTTOM
