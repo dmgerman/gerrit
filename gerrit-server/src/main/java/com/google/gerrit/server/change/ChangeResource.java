@@ -330,21 +330,12 @@ specifier|final
 name|ChangeControl
 name|control
 decl_stmt|;
-DECL|field|rebaseChange
-specifier|private
-specifier|final
-name|RebaseChange
-name|rebaseChange
-decl_stmt|;
-DECL|method|ChangeResource (ChangeControl control, RebaseChange rebaseChange)
+DECL|method|ChangeResource (ChangeControl control)
 specifier|public
 name|ChangeResource
 parameter_list|(
 name|ChangeControl
 name|control
-parameter_list|,
-name|RebaseChange
-name|rebaseChange
 parameter_list|)
 block|{
 name|this
@@ -352,12 +343,6 @@ operator|.
 name|control
 operator|=
 name|control
-expr_stmt|;
-name|this
-operator|.
-name|rebaseChange
-operator|=
-name|rebaseChange
 expr_stmt|;
 block|}
 DECL|method|ChangeResource (ChangeResource copy)
@@ -375,14 +360,6 @@ operator|=
 name|copy
 operator|.
 name|control
-expr_stmt|;
-name|this
-operator|.
-name|rebaseChange
-operator|=
-name|copy
-operator|.
-name|rebaseChange
 expr_stmt|;
 block|}
 DECL|method|getControl ()
@@ -481,20 +458,6 @@ name|get
 argument_list|()
 else|:
 literal|0
-argument_list|)
-operator|.
-name|putBoolean
-argument_list|(
-name|rebaseChange
-operator|!=
-literal|null
-operator|&&
-name|rebaseChange
-operator|.
-name|canRebase
-argument_list|(
-name|this
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|byte

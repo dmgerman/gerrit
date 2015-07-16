@@ -344,15 +344,9 @@ specifier|final
 name|Config
 name|config
 decl_stmt|;
-DECL|field|rebaseChange
-specifier|private
-specifier|final
-name|RebaseChange
-name|rebaseChange
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetRevisionActions ( ActionJson delegate, Provider<InternalChangeQuery> queryProvider, @GerritServerConfig Config config, RebaseChange rebaseChange)
+DECL|method|GetRevisionActions ( ActionJson delegate, Provider<InternalChangeQuery> queryProvider, @GerritServerConfig Config config)
 name|GetRevisionActions
 parameter_list|(
 name|ActionJson
@@ -368,9 +362,6 @@ annotation|@
 name|GerritServerConfig
 name|Config
 name|config
-parameter_list|,
-name|RebaseChange
-name|rebaseChange
 parameter_list|)
 block|{
 name|this
@@ -390,12 +381,6 @@ operator|.
 name|config
 operator|=
 name|config
-expr_stmt|;
-name|this
-operator|.
-name|rebaseChange
-operator|=
-name|rebaseChange
 expr_stmt|;
 block|}
 annotation|@
@@ -525,8 +510,6 @@ name|c
 operator|.
 name|changeControl
 argument_list|()
-argument_list|,
-name|rebaseChange
 argument_list|)
 operator|.
 name|prepareETag

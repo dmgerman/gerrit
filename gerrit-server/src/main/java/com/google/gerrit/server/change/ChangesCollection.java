@@ -464,15 +464,9 @@ specifier|final
 name|ChangeIndexer
 name|changeIndexer
 decl_stmt|;
-DECL|field|rebaseChange
-specifier|private
-specifier|final
-name|RebaseChange
-name|rebaseChange
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangesCollection ( Provider<CurrentUser> user, ChangeControl.GenericFactory changeControlFactory, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeUtil changeUtil, CreateChange createChange, ChangeIndexer changeIndexer, RebaseChange rebaseChange)
+DECL|method|ChangesCollection ( Provider<CurrentUser> user, ChangeControl.GenericFactory changeControlFactory, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeUtil changeUtil, CreateChange createChange, ChangeIndexer changeIndexer)
 name|ChangesCollection
 parameter_list|(
 name|Provider
@@ -509,9 +503,6 @@ name|createChange
 parameter_list|,
 name|ChangeIndexer
 name|changeIndexer
-parameter_list|,
-name|RebaseChange
-name|rebaseChange
 parameter_list|)
 block|{
 name|this
@@ -555,12 +546,6 @@ operator|.
 name|changeIndexer
 operator|=
 name|changeIndexer
-expr_stmt|;
-name|this
-operator|.
-name|rebaseChange
-operator|=
-name|rebaseChange
 expr_stmt|;
 block|}
 annotation|@
@@ -757,8 +742,6 @@ operator|new
 name|ChangeResource
 argument_list|(
 name|control
-argument_list|,
-name|rebaseChange
 argument_list|)
 return|;
 block|}
@@ -815,8 +798,6 @@ operator|new
 name|ChangeResource
 argument_list|(
 name|control
-argument_list|,
-name|rebaseChange
 argument_list|)
 return|;
 block|}
