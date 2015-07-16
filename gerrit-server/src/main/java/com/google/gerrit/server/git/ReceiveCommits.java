@@ -4521,6 +4521,16 @@ argument_list|()
 expr_stmt|;
 name|batch
 operator|.
+name|setPushCertificate
+argument_list|(
+name|rp
+operator|.
+name|getPushCertificate
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|batch
+operator|.
 name|setRefLogIdent
 argument_list|(
 name|rp
