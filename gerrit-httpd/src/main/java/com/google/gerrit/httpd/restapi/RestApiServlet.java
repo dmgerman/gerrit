@@ -3948,7 +3948,9 @@ name|req
 operator|.
 name|getHeader
 argument_list|(
-literal|"If-None-Match"
+name|HttpHeaders
+operator|.
+name|IF_NONE_MATCH
 argument_list|)
 argument_list|)
 condition|)
