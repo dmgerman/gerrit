@@ -523,7 +523,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO(sbeller): why do we need to treat followup specially here?
+comment|// The followup action is a client-side only operation that does not
+comment|// have a server side handler. It must be manually registered into the
+comment|// resulting action map.
 if|if
 condition|(
 name|ctl
