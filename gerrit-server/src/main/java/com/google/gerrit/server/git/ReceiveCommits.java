@@ -11747,6 +11747,8 @@ argument_list|()
 operator|.
 name|merge
 argument_list|(
+name|db
+argument_list|,
 name|ChangeSet
 operator|.
 name|create

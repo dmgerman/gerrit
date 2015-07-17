@@ -2385,30 +2385,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|openSchema ()
-specifier|private
-name|void
-name|openSchema
-parameter_list|()
-throws|throws
-name|OrmException
-block|{
-if|if
-condition|(
-name|db
-operator|==
-literal|null
-condition|)
-block|{
-name|db
-operator|=
-name|schemaFactory
-operator|.
-name|open
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 DECL|method|findOkRecord (Collection<SubmitRecord> in)
 specifier|private
 specifier|static
@@ -2964,11 +2940,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|merge (ChangeSet changes, IdentifiedUser caller, boolean checkPermissions)
+DECL|method|merge (ReviewDb db, ChangeSet changes, IdentifiedUser caller, boolean checkPermissions)
 specifier|public
 name|void
 name|merge
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|ChangeSet
 name|changes
 parameter_list|,
@@ -3004,6 +2983,12 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
 name|logDebug
 argument_list|(
 literal|"Beginning merge of {}"
@@ -3013,9 +2998,6 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|openSchema
-argument_list|()
-expr_stmt|;
 name|ChangeSet
 name|cs
 init|=
@@ -3100,22 +3082,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|db
-operator|!=
-literal|null
-condition|)
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 block|}
 DECL|method|integrateIntoHistory (ChangeSet cs, IdentifiedUser caller)
 specifier|private
@@ -3164,9 +3130,6 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|openSchema
-argument_list|()
-expr_stmt|;
 name|logDebug
 argument_list|(
 literal|"Perform the merges"
@@ -8247,9 +8210,6 @@ name|NoSuchChangeException
 block|{
 try|try
 block|{
-name|openSchema
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|ChangeData
@@ -8272,15 +8232,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|db
-operator|=
-literal|null
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
