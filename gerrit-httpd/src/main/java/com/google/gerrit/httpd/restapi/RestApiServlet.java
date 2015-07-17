@@ -2954,6 +2954,10 @@ name|res
 argument_list|,
 name|rsrc
 argument_list|,
+name|viewData
+operator|.
+name|view
+argument_list|,
 name|r
 operator|.
 name|caching
@@ -3711,11 +3715,13 @@ block|}
 end_function
 
 begin_function
-DECL|method|configureCaching (HttpServletRequest req, HttpServletResponse res, RestResource rsrc, CacheControl c)
+DECL|method|configureCaching ( HttpServletRequest req, HttpServletResponse res, R rsrc, RestView<R> view, CacheControl c)
 specifier|private
 specifier|static
 parameter_list|<
-name|T
+name|R
+extends|extends
+name|RestResource
 parameter_list|>
 name|void
 name|configureCaching
@@ -3726,8 +3732,14 @@ parameter_list|,
 name|HttpServletResponse
 name|res
 parameter_list|,
-name|RestResource
+name|R
 name|rsrc
+parameter_list|,
+name|RestView
+argument_list|<
+name|R
+argument_list|>
+name|view
 parameter_list|,
 name|CacheControl
 name|c
@@ -3769,6 +3781,8 @@ argument_list|(
 name|res
 argument_list|,
 name|rsrc
+argument_list|,
+name|view
 argument_list|)
 expr_stmt|;
 name|CacheHeaders
@@ -3802,6 +3816,8 @@ argument_list|(
 name|res
 argument_list|,
 name|rsrc
+argument_list|,
+name|view
 argument_list|)
 expr_stmt|;
 name|CacheHeaders
@@ -3845,19 +3861,63 @@ block|}
 end_function
 
 begin_function
-DECL|method|addResourceStateHeaders ( HttpServletResponse res, RestResource rsrc)
+DECL|method|addResourceStateHeaders ( HttpServletResponse res, R rsrc, RestView<R> view)
 specifier|private
 specifier|static
+parameter_list|<
+name|R
+extends|extends
+name|RestResource
+parameter_list|>
 name|void
 name|addResourceStateHeaders
 parameter_list|(
 name|HttpServletResponse
 name|res
 parameter_list|,
-name|RestResource
+name|R
 name|rsrc
+parameter_list|,
+name|RestView
+argument_list|<
+name|R
+argument_list|>
+name|view
 parameter_list|)
 block|{
+if|if
+condition|(
+name|view
+operator|instanceof
+name|ETagView
+condition|)
+block|{
+name|res
+operator|.
+name|setHeader
+argument_list|(
+name|HttpHeaders
+operator|.
+name|ETAG
+argument_list|,
+operator|(
+operator|(
+name|ETagView
+argument_list|<
+name|R
+argument_list|>
+operator|)
+name|view
+operator|)
+operator|.
+name|getETag
+argument_list|(
+name|rsrc
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|rsrc
@@ -7396,6 +7456,8 @@ argument_list|(
 name|req
 argument_list|,
 name|res
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
