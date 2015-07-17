@@ -168,6 +168,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|PageLinks
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -189,6 +203,22 @@ operator|.
 name|client
 operator|.
 name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
 import|;
 end_import
 
@@ -322,7 +352,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|ArrayList
 import|;
 end_import
 
@@ -332,7 +362,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|Collections
 import|;
 end_import
 
@@ -361,19 +391,19 @@ specifier|final
 name|SuggestBox
 name|base
 decl_stmt|;
-DECL|field|cb
+DECL|field|changeParent
 specifier|private
 specifier|final
 name|CheckBox
-name|cb
+name|changeParent
 decl_stmt|;
-DECL|field|changes
+DECL|field|candidateChanges
 specifier|private
 name|List
 argument_list|<
 name|ChangeInfo
 argument_list|>
-name|changes
+name|candidateChanges
 decl_stmt|;
 DECL|field|sendEnabled
 specifier|private
@@ -434,7 +464,9 @@ name|buttonRebaseChangeSend
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// create the suggestion box
+comment|// Create the suggestion box to filter over a list of recent changes
+comment|// open on the same branch. The list of candidates is primed by the
+comment|// changeParent CheckBox (below) getting enabled by the user.
 name|base
 operator|=
 operator|new
@@ -468,24 +500,23 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-name|LinkedList
+name|List
 argument_list|<
 name|ChangeSuggestion
 argument_list|>
 name|suggestions
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|ChangeInfo
 name|ci
 range|:
-name|changes
+name|candidateChanges
 control|)
 block|{
 if|if
@@ -618,8 +649,10 @@ name|rebaseSuggestBox
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// the checkbox which must be clicked before the change list is populated
-name|cb
+comment|// The changeParent checkbox must be clicked to load into browser memory
+comment|// a list of open changes from the same project and same branch that this
+comment|// change may rebase onto.
+name|changeParent
 operator|=
 operator|new
 name|CheckBox
@@ -632,7 +665,7 @@ name|rebaseConfirmMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|cb
+name|changeParent
 operator|.
 name|addClickHandler
 argument_list|(
@@ -650,40 +683,43 @@ name|ClickEvent
 name|event
 parameter_list|)
 block|{
-name|boolean
-name|checked
-init|=
-operator|(
-operator|(
-name|CheckBox
-operator|)
-name|event
-operator|.
-name|getSource
-argument_list|()
-operator|)
+if|if
+condition|(
+name|changeParent
 operator|.
 name|getValue
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|checked
 condition|)
 block|{
 name|ChangeList
 operator|.
 name|query
 argument_list|(
-literal|"project:"
-operator|+
+name|PageLinks
+operator|.
+name|projectQuery
+argument_list|(
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
 name|project
+argument_list|)
+argument_list|)
 operator|+
-literal|" AND branch:"
+literal|" "
 operator|+
+name|PageLinks
+operator|.
+name|op
+argument_list|(
+literal|"branch"
+argument_list|,
 name|branch
+argument_list|)
 operator|+
-literal|" AND is:open NOT age:90d"
+literal|" is:open -age:90d"
 argument_list|,
 name|Collections
 operator|.
@@ -710,7 +746,7 @@ name|ChangeList
 name|result
 parameter_list|)
 block|{
-name|changes
+name|candidateChanges
 operator|=
 name|Natives
 operator|.
@@ -722,6 +758,36 @@ expr_stmt|;
 name|updateControls
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|err
+parameter_list|)
+block|{
+name|updateControls
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|changeParent
+operator|.
+name|setValue
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|onFailure
+argument_list|(
+name|err
 argument_list|)
 expr_stmt|;
 block|}
@@ -746,7 +812,7 @@ name|contentPanel
 operator|.
 name|add
 argument_list|(
-name|cb
+name|changeParent
 argument_list|)
 expr_stmt|;
 name|contentPanel
@@ -908,7 +974,7 @@ name|getBase
 parameter_list|()
 block|{
 return|return
-name|cb
+name|changeParent
 operator|.
 name|getValue
 argument_list|()
