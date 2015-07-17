@@ -176,20 +176,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|String
-name|cmd
-init|=
-literal|"UPDATE changes SET status = 'n' WHERE status = 's';"
-decl_stmt|;
-name|ui
-operator|.
-name|message
-argument_list|(
-literal|"Running "
-operator|+
-name|cmd
-argument_list|)
-expr_stmt|;
 try|try
 init|(
 name|StatementExecutor
@@ -205,17 +191,10 @@ name|e
 operator|.
 name|execute
 argument_list|(
-name|cmd
+literal|"UPDATE changes SET status = 'n' WHERE status = 's';"
 argument_list|)
 expr_stmt|;
 block|}
-name|ui
-operator|.
-name|message
-argument_list|(
-literal|"done"
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
