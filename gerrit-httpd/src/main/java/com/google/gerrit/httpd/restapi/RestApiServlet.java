@@ -6191,10 +6191,19 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-literal|256
-operator|<=
 name|len
-operator|&&
+operator|<
+literal|256
+condition|)
+block|{
+return|return
+name|src
+return|;
+comment|// Do not compress very small payloads.
+block|}
+elseif|else
+if|if
+condition|(
 name|len
 operator|<=
 operator|(
