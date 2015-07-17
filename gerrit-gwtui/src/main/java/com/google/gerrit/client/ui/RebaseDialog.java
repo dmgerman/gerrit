@@ -168,6 +168,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|PageLinks
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -189,6 +203,22 @@ operator|.
 name|client
 operator|.
 name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
 import|;
 end_import
 
@@ -675,15 +705,31 @@ name|ChangeList
 operator|.
 name|query
 argument_list|(
-literal|"project:"
-operator|+
+name|PageLinks
+operator|.
+name|projectQuery
+argument_list|(
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
 name|project
+argument_list|)
+argument_list|)
 operator|+
-literal|" AND branch:"
+literal|" "
 operator|+
+name|PageLinks
+operator|.
+name|op
+argument_list|(
+literal|"branch"
+argument_list|,
 name|branch
+argument_list|)
 operator|+
-literal|" AND is:open NOT age:90d"
+literal|" is:open -age:90d"
 argument_list|,
 name|Collections
 operator|.
