@@ -1525,6 +1525,14 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+name|ReviewDb
+name|db
+init|=
+name|dbProvider
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|mergeOpProvider
 operator|.
 name|get
@@ -1532,6 +1540,8 @@ argument_list|()
 operator|.
 name|merge
 argument_list|(
+name|db
+argument_list|,
 name|submittedChanges
 argument_list|,
 name|caller
@@ -1541,10 +1551,7 @@ argument_list|)
 expr_stmt|;
 name|change
 operator|=
-name|dbProvider
-operator|.
-name|get
-argument_list|()
+name|db
 operator|.
 name|changes
 argument_list|()
