@@ -168,6 +168,16 @@ name|Option
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|EnumSet
+import|;
+end_import
+
 begin_class
 DECL|class|GetChange
 specifier|public
@@ -183,7 +193,27 @@ DECL|field|json
 specifier|private
 specifier|final
 name|ChangeJson
+operator|.
+name|Factory
 name|json
+decl_stmt|;
+DECL|field|options
+specifier|private
+specifier|final
+name|EnumSet
+argument_list|<
+name|ListChangesOption
+argument_list|>
+name|options
+init|=
+name|EnumSet
+operator|.
+name|noneOf
+argument_list|(
+name|ListChangesOption
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 annotation|@
 name|Option
@@ -204,9 +234,9 @@ name|ListChangesOption
 name|o
 parameter_list|)
 block|{
-name|json
+name|options
 operator|.
-name|addOption
+name|add
 argument_list|(
 name|o
 argument_list|)
@@ -231,9 +261,9 @@ name|String
 name|hex
 parameter_list|)
 block|{
-name|json
+name|options
 operator|.
-name|addOptions
+name|addAll
 argument_list|(
 name|ListChangesOption
 operator|.
@@ -253,10 +283,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|GetChange (ChangeJson json)
+DECL|method|GetChange (ChangeJson.Factory json)
 name|GetChange
 parameter_list|(
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 parameter_list|)
 block|{
@@ -290,6 +322,11 @@ name|withMustRevalidate
 argument_list|(
 name|json
 operator|.
+name|create
+argument_list|(
+name|options
+argument_list|)
+operator|.
 name|format
 argument_list|(
 name|rsrc
@@ -316,6 +353,11 @@ operator|.
 name|withMustRevalidate
 argument_list|(
 name|json
+operator|.
+name|create
+argument_list|(
+name|options
+argument_list|)
 operator|.
 name|format
 argument_list|(

@@ -537,6 +537,8 @@ DECL|field|json
 specifier|private
 specifier|final
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 decl_stmt|;
 DECL|field|indexer
@@ -561,7 +563,7 @@ name|updateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Restore (ChangeHooks hooks, RestoredSender.Factory restoredSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson json, ChangeIndexer indexer, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory updateFactory)
+DECL|method|Restore (ChangeHooks hooks, RestoredSender.Factory restoredSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson.Factory json, ChangeIndexer indexer, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory updateFactory)
 name|Restore
 parameter_list|(
 name|ChangeHooks
@@ -579,6 +581,8 @@ argument_list|>
 name|dbProvider
 parameter_list|,
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 parameter_list|,
 name|ChangeIndexer
@@ -1019,18 +1023,20 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ChangeInfo
-name|result
-init|=
+return|return
 name|json
+operator|.
+name|create
+argument_list|(
+name|ChangeJson
+operator|.
+name|NO_OPTIONS
+argument_list|)
 operator|.
 name|format
 argument_list|(
 name|change
 argument_list|)
-decl_stmt|;
-return|return
-name|result
 return|;
 block|}
 annotation|@

@@ -524,6 +524,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|EnumSet
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -560,6 +570,29 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|OPTIONS
+specifier|private
+specifier|static
+specifier|final
+name|EnumSet
+argument_list|<
+name|ListChangesOption
+argument_list|>
+name|OPTIONS
+init|=
+name|EnumSet
+operator|.
+name|of
+argument_list|(
+name|ListChangesOption
+operator|.
+name|CURRENT_REVISION
+argument_list|,
+name|ListChangesOption
+operator|.
+name|CURRENT_COMMIT
+argument_list|)
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -579,6 +612,8 @@ DECL|field|json
 specifier|private
 specifier|final
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 decl_stmt|;
 DECL|field|dbProvider
@@ -592,7 +627,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Rebase (GitRepositoryManager repoManager, Provider<RebaseChange> rebaseChange, ChangeJson json, Provider<ReviewDb> dbProvider)
+DECL|method|Rebase (GitRepositoryManager repoManager, Provider<RebaseChange> rebaseChange, ChangeJson.Factory json, Provider<ReviewDb> dbProvider)
 specifier|public
 name|Rebase
 parameter_list|(
@@ -606,6 +641,8 @@ argument_list|>
 name|rebaseChange
 parameter_list|,
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 parameter_list|,
 name|Provider
@@ -632,20 +669,6 @@ operator|.
 name|json
 operator|=
 name|json
-operator|.
-name|addOption
-argument_list|(
-name|ListChangesOption
-operator|.
-name|CURRENT_REVISION
-argument_list|)
-operator|.
-name|addOption
-argument_list|(
-name|ListChangesOption
-operator|.
-name|CURRENT_COMMIT
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -869,6 +892,11 @@ throw|;
 block|}
 return|return
 name|json
+operator|.
+name|create
+argument_list|(
+name|OPTIONS
+argument_list|)
 operator|.
 name|format
 argument_list|(
