@@ -556,7 +556,7 @@ operator|=
 name|showMetadata
 expr_stmt|;
 block|}
-DECL|method|filter (Map<String, Ref> refs, boolean filterTagsSeperately)
+DECL|method|filter (Map<String, Ref> refs, boolean filterTagsSeparately)
 specifier|public
 name|Map
 argument_list|<
@@ -575,7 +575,7 @@ argument_list|>
 name|refs
 parameter_list|,
 name|boolean
-name|filterTagsSeperately
+name|filterTagsSeparately
 parameter_list|)
 block|{
 if|if
@@ -972,7 +972,7 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|||
-name|filterTagsSeperately
+name|filterTagsSeparately
 operator|)
 condition|)
 block|{
@@ -992,7 +992,7 @@ name|tagCache
 argument_list|,
 name|db
 argument_list|,
-name|filterTagsSeperately
+name|filterTagsSeparately
 condition|?
 name|filter
 argument_list|(
