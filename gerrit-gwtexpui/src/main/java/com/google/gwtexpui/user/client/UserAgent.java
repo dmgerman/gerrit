@@ -108,17 +108,52 @@ specifier|public
 class|class
 name|UserAgent
 block|{
-comment|/** Does the browser have ShockwaveFlash plugin enabled? */
-DECL|field|hasFlash
+DECL|class|Flash
 specifier|public
 specifier|static
-specifier|final
+class|class
+name|Flash
+block|{
+DECL|field|checked
+specifier|private
+specifier|static
 name|boolean
-name|hasFlash
-init|=
+name|checked
+decl_stmt|;
+DECL|field|installed
+specifier|private
+specifier|static
+name|boolean
+name|installed
+decl_stmt|;
+comment|/**      * Does the browser have ShockwaveFlash plugin installed?      *<p>      * This method may still return true if the user has disabled Flash or set      * the plugin to "click to run".      */
+DECL|method|isInstalled ()
+specifier|public
+specifier|static
+name|boolean
+name|isInstalled
+parameter_list|()
+block|{
+if|if
+condition|(
+operator|!
+name|checked
+condition|)
+block|{
+name|installed
+operator|=
 name|hasFlash
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+name|checked
+operator|=
+literal|true
+expr_stmt|;
+block|}
+return|return
+name|installed
+return|;
+block|}
 DECL|method|hasFlash ()
 specifier|private
 specifier|static
@@ -126,8 +161,9 @@ specifier|native
 name|boolean
 name|hasFlash
 parameter_list|()
-comment|/*-{     if (navigator.plugins&& navigator.plugins.length) {       if (navigator.plugins['Shockwave Flash'])     return true;       if (navigator.plugins['Shockwave Flash 2.0']) return true;      } else if (navigator.mimeTypes&& navigator.mimeTypes.length) {       var mimeType = navigator.mimeTypes['application/x-shockwave-flash'];       if (mimeType&& mimeType.enabledPlugin) return true;      } else {       try { new ActiveXObject('ShockwaveFlash.ShockwaveFlash.7'); return true; } catch (e) {}       try { new ActiveXObject('ShockwaveFlash.ShockwaveFlash.6'); return true; } catch (e) {}       try { new ActiveXObject('ShockwaveFlash.ShockwaveFlash');   return true; } catch (e) {}     }     return false;   }-*/
+comment|/*-{       if (navigator.plugins&& navigator.plugins.length) {         if (navigator.plugins['Shockwave Flash'])     return true;         if (navigator.plugins['Shockwave Flash 2.0']) return true;        } else if (navigator.mimeTypes&& navigator.mimeTypes.length) {         var mimeType = navigator.mimeTypes['application/x-shockwave-flash'];         if (mimeType&& mimeType.enabledPlugin) return true;        } else {         try { new ActiveXObject('ShockwaveFlash.ShockwaveFlash.7'); return true; } catch (e) {}         try { new ActiveXObject('ShockwaveFlash.ShockwaveFlash.6'); return true; } catch (e) {}         try { new ActiveXObject('ShockwaveFlash.ShockwaveFlash');   return true; } catch (e) {}       }       return false;     }-*/
 function_decl|;
+block|}
 comment|/**    * Test for and disallow running this application in an&lt;iframe&gt;.    *<p>    * If the application is running within an iframe this method requests a    * browser generated redirect to pop the application out of the iframe into    * the top level window, and then aborts execution by throwing an exception.    * This is call should be placed early within the module's onLoad() method,    * before any real UI can be initialized that an attacking site could try to    * snip out and present in a confusing context.    *<p>    * If the break out works, execution will restart automatically in a proper    * top level window, where the script has full control over the display. If    * the break out fails, execution will abort and stop immediately, preventing    * UI widgets from being created, leaving the user with an empty frame.    */
 DECL|method|assertNotInIFrame ()
 specifier|public
