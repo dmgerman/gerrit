@@ -224,7 +224,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|Widget
+name|PopupPanel
 import|;
 end_import
 
@@ -234,13 +234,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtexpui
+name|gwt
 operator|.
 name|user
 operator|.
 name|client
 operator|.
-name|PluginSafePopupPanel
+name|ui
+operator|.
+name|Widget
 import|;
 end_import
 
@@ -250,7 +252,7 @@ specifier|public
 class|class
 name|UserPopupPanel
 extends|extends
-name|PluginSafePopupPanel
+name|PopupPanel
 block|{
 DECL|interface|Binder
 interface|interface
