@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -74,35 +74,65 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|resources
+name|core
 operator|.
 name|client
 operator|.
-name|CssResource
+name|GWT
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|i18n
+operator|.
+name|client
+operator|.
+name|Constants
 import|;
 end_import
 
 begin_interface
-DECL|interface|ClippyCss
-specifier|public
+DECL|interface|CopyableLabelText
 interface|interface
-name|ClippyCss
+name|CopyableLabelText
 extends|extends
-name|CssResource
+name|Constants
 block|{
-DECL|method|label ()
+DECL|field|I
+specifier|static
+specifier|final
+name|CopyableLabelText
+name|I
+init|=
+name|GWT
+operator|.
+name|create
+argument_list|(
+name|CopyableLabelText
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|method|tooltip ()
 name|String
-name|label
+name|tooltip
 parameter_list|()
 function_decl|;
-DECL|method|copier ()
+DECL|method|copied ()
 name|String
-name|copier
+name|copied
 parameter_list|()
 function_decl|;
-DECL|method|swf ()
+DECL|method|failed ()
 name|String
-name|swf
+name|failed
 parameter_list|()
 function_decl|;
 block|}
