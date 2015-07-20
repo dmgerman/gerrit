@@ -134,6 +134,24 @@ name|Window
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|DialogBox
+import|;
+end_import
+
 begin_comment
 comment|/** A DialogBox that automatically re-centers itself if the window changes */
 end_comment
@@ -144,7 +162,7 @@ specifier|public
 class|class
 name|AutoCenterDialogBox
 extends|extends
-name|PluginSafeDialogBox
+name|DialogBox
 block|{
 DECL|field|recenter
 specifier|private

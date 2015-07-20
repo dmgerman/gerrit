@@ -274,22 +274,6 @@ name|GlobalKey
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtexpui
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|PluginSafePopupPanel
-import|;
-end_import
-
 begin_comment
 comment|/** A dialog box telling the user they are not signed in. */
 end_comment
@@ -300,7 +284,7 @@ specifier|public
 class|class
 name|NotSignedInDialog
 extends|extends
-name|PluginSafePopupPanel
+name|PopupPanel
 implements|implements
 name|CloseHandler
 argument_list|<
