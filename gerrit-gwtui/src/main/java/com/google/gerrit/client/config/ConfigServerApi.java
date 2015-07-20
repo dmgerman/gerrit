@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|info
 operator|.
-name|Preferences
+name|AccountPreferencesInfo
 import|;
 end_import
 
@@ -92,7 +92,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|extensions
+name|info
 operator|.
 name|TopMenuList
 import|;
@@ -212,7 +212,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|defaultPreferences (AsyncCallback<Preferences> cb)
+DECL|method|defaultPreferences (AsyncCallback<AccountPreferencesInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -220,7 +220,7 @@ name|defaultPreferences
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|Preferences
+name|AccountPreferencesInfo
 argument_list|>
 name|cb
 parameter_list|)

@@ -186,7 +186,23 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|extensions
+name|info
+operator|.
+name|AccountPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|info
 operator|.
 name|TopMenuItem
 import|;
@@ -1715,7 +1731,7 @@ argument_list|(
 operator|new
 name|ScreenLoadCallback
 argument_list|<
-name|Preferences
+name|AccountPreferencesInfo
 argument_list|>
 argument_list|(
 name|this
@@ -1727,7 +1743,7 @@ specifier|public
 name|void
 name|preDisplay
 parameter_list|(
-name|Preferences
+name|AccountPreferencesInfo
 name|prefs
 parameter_list|)
 block|{
@@ -1836,12 +1852,12 @@ name|on
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (Preferences p)
+DECL|method|display (AccountPreferencesInfo p)
 specifier|private
 name|void
 name|display
 parameter_list|(
-name|Preferences
+name|AccountPreferencesInfo
 name|p
 parameter_list|)
 block|{
@@ -2654,7 +2670,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-name|Preferences
+name|AccountPreferencesInfo
 operator|.
 name|create
 argument_list|(
@@ -2666,7 +2682,7 @@ argument_list|,
 operator|new
 name|GerritCallback
 argument_list|<
-name|Preferences
+name|AccountPreferencesInfo
 argument_list|>
 argument_list|()
 block|{
@@ -2676,7 +2692,7 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-name|Preferences
+name|AccountPreferencesInfo
 name|prefs
 parameter_list|)
 block|{
@@ -2841,7 +2857,7 @@ argument_list|(
 operator|new
 name|GerritCallback
 argument_list|<
-name|Preferences
+name|AccountPreferencesInfo
 argument_list|>
 argument_list|()
 block|{
@@ -2851,7 +2867,7 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-name|Preferences
+name|AccountPreferencesInfo
 name|p
 parameter_list|)
 block|{

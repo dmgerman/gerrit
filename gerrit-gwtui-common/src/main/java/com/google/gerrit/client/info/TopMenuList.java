@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.extensions
+DECL|package|com.google.gerrit.client.info
 package|package
 name|com
 operator|.
@@ -62,25 +62,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|extensions
+name|info
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|core
-operator|.
-name|client
-operator|.
-name|JavaScriptObject
-import|;
-end_import
 
 begin_import
 import|import
@@ -99,39 +83,21 @@ import|;
 end_import
 
 begin_class
-DECL|class|TopMenu
+DECL|class|TopMenuList
 specifier|public
 class|class
-name|TopMenu
+name|TopMenuList
 extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|TopMenu ()
-specifier|protected
-name|TopMenu
-parameter_list|()
-block|{   }
-DECL|method|getName ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|getName
-parameter_list|()
-comment|/*-{ return this.name; }-*/
-function_decl|;
-DECL|method|getItems ()
-specifier|public
-specifier|final
-specifier|native
 name|JsArray
 argument_list|<
-name|TopMenuItem
+name|TopMenu
 argument_list|>
-name|getItems
+block|{
+DECL|method|TopMenuList ()
+specifier|protected
+name|TopMenuList
 parameter_list|()
-comment|/*-{ return this.items; }-*/
-function_decl|;
+block|{   }
 block|}
 end_class
 
