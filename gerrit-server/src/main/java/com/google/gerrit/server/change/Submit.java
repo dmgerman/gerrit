@@ -3146,11 +3146,13 @@ DECL|field|json
 specifier|private
 specifier|final
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CurrentRevision (Provider<ReviewDb> dbProvider, Submit submit, ChangeJson json)
+DECL|method|CurrentRevision (Provider<ReviewDb> dbProvider, Submit submit, ChangeJson.Factory json)
 name|CurrentRevision
 parameter_list|(
 name|Provider
@@ -3163,6 +3165,8 @@ name|Submit
 name|submit
 parameter_list|,
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 parameter_list|)
 block|{
@@ -3296,6 +3300,13 @@ argument_list|)
 decl_stmt|;
 return|return
 name|json
+operator|.
+name|create
+argument_list|(
+name|ChangeJson
+operator|.
+name|NO_OPTIONS
+argument_list|)
 operator|.
 name|format
 argument_list|(

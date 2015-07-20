@@ -901,10 +901,9 @@ decl_stmt|;
 DECL|field|changeJson
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ChangeJson
-argument_list|>
+operator|.
+name|Factory
 name|changeJson
 decl_stmt|;
 DECL|field|postHashtags
@@ -947,7 +946,7 @@ name|editDetail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeApiImpl (Provider<CurrentUser> user, Changes changeApi, Revisions revisions, RevisionApiImpl.Factory revisionApi, Provider<SuggestReviewers> suggestReviewers, Abandon abandon, Revert revert, Restore restore, SubmittedTogether submittedTogether, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, Provider<ChangeJson> changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, ChangeEdits.Detail editDetail, @Assisted ChangeResource change)
+DECL|method|ChangeApiImpl (Provider<CurrentUser> user, Changes changeApi, Revisions revisions, RevisionApiImpl.Factory revisionApi, Provider<SuggestReviewers> suggestReviewers, Abandon abandon, Revert revert, Restore restore, SubmittedTogether submittedTogether, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, ChangeEdits.Detail editDetail, @Assisted ChangeResource change)
 name|ChangeApiImpl
 parameter_list|(
 name|Provider
@@ -994,10 +993,9 @@ parameter_list|,
 name|PostReviewers
 name|postReviewers
 parameter_list|,
-name|Provider
-argument_list|<
 name|ChangeJson
-argument_list|>
+operator|.
+name|Factory
 name|changeJson
 parameter_list|,
 name|PostHashtags
@@ -1850,10 +1848,7 @@ block|}
 return|return
 name|changeJson
 operator|.
-name|get
-argument_list|()
-operator|.
-name|addOptions
+name|create
 argument_list|(
 name|s
 argument_list|)

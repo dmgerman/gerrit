@@ -343,6 +343,8 @@ DECL|field|json
 specifier|private
 specifier|final
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 decl_stmt|;
 DECL|field|dbProvider
@@ -362,10 +364,12 @@ name|mergeSuperSet
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmittedTogether (ChangeJson json, Provider<ReviewDb> dbProvider, MergeSuperSet mergeSuperSet)
+DECL|method|SubmittedTogether (ChangeJson.Factory json, Provider<ReviewDb> dbProvider, MergeSuperSet mergeSuperSet)
 name|SubmittedTogether
 parameter_list|(
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 parameter_list|,
 name|Provider
@@ -444,9 +448,10 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+return|return
 name|json
 operator|.
-name|addOptions
+name|create
 argument_list|(
 name|EnumSet
 operator|.
@@ -469,9 +474,6 @@ operator|.
 name|LABELS
 argument_list|)
 argument_list|)
-expr_stmt|;
-return|return
-name|json
 operator|.
 name|format
 argument_list|(

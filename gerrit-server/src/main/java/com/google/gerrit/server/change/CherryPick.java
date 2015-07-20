@@ -439,11 +439,13 @@ DECL|field|json
 specifier|private
 specifier|final
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPick (Provider<ReviewDb> dbProvider, CherryPickChange cherryPickChange, ChangeJson json)
+DECL|method|CherryPick (Provider<ReviewDb> dbProvider, CherryPickChange cherryPickChange, ChangeJson.Factory json)
 name|CherryPick
 parameter_list|(
 name|Provider
@@ -456,6 +458,8 @@ name|CherryPickChange
 name|cherryPickChange
 parameter_list|,
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 parameter_list|)
 block|{
@@ -688,6 +692,13 @@ argument_list|)
 decl_stmt|;
 return|return
 name|json
+operator|.
+name|create
+argument_list|(
+name|ChangeJson
+operator|.
+name|NO_OPTIONS
+argument_list|)
 operator|.
 name|format
 argument_list|(

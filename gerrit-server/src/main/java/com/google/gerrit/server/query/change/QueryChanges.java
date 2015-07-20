@@ -357,6 +357,8 @@ DECL|field|json
 specifier|private
 specifier|final
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 decl_stmt|;
 DECL|field|qb
@@ -562,10 +564,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryChanges (ChangeJson json, ChangeQueryBuilder qb, QueryProcessor qp, Provider<CurrentUser> user)
+DECL|method|QueryChanges (ChangeJson.Factory json, ChangeQueryBuilder qb, QueryProcessor qp, Provider<CurrentUser> user)
 name|QueryChanges
 parameter_list|(
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 parameter_list|,
 name|ChangeQueryBuilder
@@ -975,7 +979,7 @@ name|res
 init|=
 name|json
 operator|.
-name|addOptions
+name|create
 argument_list|(
 name|options
 argument_list|)

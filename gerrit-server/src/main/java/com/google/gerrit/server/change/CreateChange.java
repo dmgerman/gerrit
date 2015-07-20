@@ -965,11 +965,13 @@ operator|.
 name|Factory
 name|changeInserterFactory
 decl_stmt|;
-DECL|field|json
+DECL|field|jsonFactory
 specifier|private
 specifier|final
 name|ChangeJson
-name|json
+operator|.
+name|Factory
+name|jsonFactory
 decl_stmt|;
 DECL|field|changeUtil
 specifier|private
@@ -985,7 +987,7 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> userProvider, ProjectsCollection projectsCollection, CommitValidators.Factory commitValidatorsFactory, ChangeInserter.Factory changeInserterFactory, ChangeJson json, ChangeUtil changeUtil, @GerritServerConfig Config config)
+DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> userProvider, ProjectsCollection projectsCollection, CommitValidators.Factory commitValidatorsFactory, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeUtil changeUtil, @GerritServerConfig Config config)
 name|CreateChange
 parameter_list|(
 name|Provider
@@ -1022,6 +1024,8 @@ name|Factory
 name|changeInserterFactory
 parameter_list|,
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 parameter_list|,
 name|ChangeUtil
@@ -1080,7 +1084,7 @@ name|changeInserterFactory
 expr_stmt|;
 name|this
 operator|.
-name|json
+name|jsonFactory
 operator|=
 name|json
 expr_stmt|;
@@ -1837,6 +1841,18 @@ operator|.
 name|insert
 argument_list|()
 expr_stmt|;
+name|ChangeJson
+name|json
+init|=
+name|jsonFactory
+operator|.
+name|create
+argument_list|(
+name|ChangeJson
+operator|.
+name|NO_OPTIONS
+argument_list|)
+decl_stmt|;
 return|return
 name|Response
 operator|.

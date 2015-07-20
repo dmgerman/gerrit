@@ -535,6 +535,8 @@ DECL|field|json
 specifier|private
 specifier|final
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 decl_stmt|;
 DECL|field|indexer
@@ -559,7 +561,7 @@ name|cmUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Abandon (ChangeHooks hooks, AbandonedSender.Factory abandonedSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson json, ChangeIndexer indexer, ChangeUpdate.Factory updateFactory, ChangeMessagesUtil cmUtil)
+DECL|method|Abandon (ChangeHooks hooks, AbandonedSender.Factory abandonedSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson.Factory json, ChangeIndexer indexer, ChangeUpdate.Factory updateFactory, ChangeMessagesUtil cmUtil)
 name|Abandon
 parameter_list|(
 name|ChangeHooks
@@ -577,6 +579,8 @@ argument_list|>
 name|dbProvider
 parameter_list|,
 name|ChangeJson
+operator|.
+name|Factory
 name|json
 parameter_list|,
 name|ChangeIndexer
@@ -765,18 +769,20 @@ name|getAccount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ChangeInfo
-name|result
-init|=
+return|return
 name|json
+operator|.
+name|create
+argument_list|(
+name|ChangeJson
+operator|.
+name|NO_OPTIONS
+argument_list|)
 operator|.
 name|format
 argument_list|(
 name|change
 argument_list|)
-decl_stmt|;
-return|return
-name|result
 return|;
 block|}
 DECL|method|abandon (ChangeControl control, String msgTxt, Account acc)
