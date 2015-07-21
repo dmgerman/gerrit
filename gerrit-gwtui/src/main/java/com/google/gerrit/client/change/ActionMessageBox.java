@@ -340,22 +340,6 @@ name|NpTextArea
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtexpui
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|PluginSafePopupPanel
-import|;
-end_import
-
 begin_class
 DECL|class|ActionMessageBox
 specifier|abstract
@@ -412,7 +396,7 @@ name|activatingButton
 decl_stmt|;
 DECL|field|popup
 specifier|private
-name|PluginSafePopupPanel
+name|PopupPanel
 name|popup
 decl_stmt|;
 DECL|field|style
@@ -500,11 +484,11 @@ expr_stmt|;
 return|return;
 block|}
 specifier|final
-name|PluginSafePopupPanel
+name|PopupPanel
 name|p
 init|=
 operator|new
-name|PluginSafePopupPanel
+name|PopupPanel
 argument_list|(
 literal|true
 argument_list|)

@@ -95,9 +95,14 @@ name|String
 name|label
 parameter_list|()
 function_decl|;
-DECL|method|control ()
+DECL|method|copier ()
 name|String
-name|control
+name|copier
+parameter_list|()
+function_decl|;
+DECL|method|swf ()
+name|String
+name|swf
 parameter_list|()
 function_decl|;
 block|}

@@ -302,22 +302,6 @@ name|GlobalKey
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtexpui
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|PluginSafePopupPanel
-import|;
-end_import
-
 begin_class
 DECL|class|ReplyAction
 class|class
@@ -646,11 +630,11 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|final
-name|PluginSafePopupPanel
+name|PopupPanel
 name|p
 init|=
 operator|new
-name|PluginSafePopupPanel
+name|PopupPanel
 argument_list|(
 literal|true
 argument_list|,

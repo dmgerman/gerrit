@@ -266,6 +266,24 @@ name|client
 operator|.
 name|ui
 operator|.
+name|DialogBox
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
 name|FlowPanel
 import|;
 end_import
@@ -390,22 +408,6 @@ name|NpTextBox
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtexpui
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|PluginSafeDialogBox
-import|;
-end_import
-
 begin_comment
 comment|/** A popup containing all projects. */
 end_comment
@@ -423,7 +425,7 @@ name|projectsTab
 decl_stmt|;
 DECL|field|popup
 specifier|private
-name|PluginSafeDialogBox
+name|DialogBox
 name|popup
 decl_stmt|;
 DECL|field|filterTxt
@@ -1026,7 +1028,7 @@ expr_stmt|;
 name|popup
 operator|=
 operator|new
-name|PluginSafeDialogBox
+name|DialogBox
 argument_list|()
 expr_stmt|;
 name|popup

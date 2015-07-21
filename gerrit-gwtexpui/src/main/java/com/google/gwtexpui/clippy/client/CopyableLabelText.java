@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtexpui.user.client
+DECL|package|com.google.gwtexpui.clippy.client
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gwtexpui
 operator|.
-name|user
+name|clippy
 operator|.
 name|client
 package|;
@@ -74,30 +74,66 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|event
+name|core
 operator|.
-name|shared
+name|client
 operator|.
-name|EventHandler
+name|GWT
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|i18n
+operator|.
+name|client
+operator|.
+name|Constants
 import|;
 end_import
 
 begin_interface
-DECL|interface|DialogVisibleHandler
-specifier|public
+DECL|interface|CopyableLabelText
 interface|interface
-name|DialogVisibleHandler
+name|CopyableLabelText
 extends|extends
-name|EventHandler
+name|Constants
 block|{
-DECL|method|onDialogVisible (DialogVisibleEvent event)
-specifier|public
-name|void
-name|onDialogVisible
-parameter_list|(
-name|DialogVisibleEvent
-name|event
-parameter_list|)
+DECL|field|I
+specifier|static
+specifier|final
+name|CopyableLabelText
+name|I
+init|=
+name|GWT
+operator|.
+name|create
+argument_list|(
+name|CopyableLabelText
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|method|tooltip ()
+name|String
+name|tooltip
+parameter_list|()
+function_decl|;
+DECL|method|copied ()
+name|String
+name|copied
+parameter_list|()
+function_decl|;
+DECL|method|failed ()
+name|String
+name|failed
+parameter_list|()
 function_decl|;
 block|}
 end_interface
