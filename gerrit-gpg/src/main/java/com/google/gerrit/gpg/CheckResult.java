@@ -114,6 +114,17 @@ specifier|public
 class|class
 name|CheckResult
 block|{
+DECL|field|OK
+specifier|public
+specifier|static
+specifier|final
+name|CheckResult
+name|OK
+init|=
+operator|new
+name|CheckResult
+argument_list|()
+decl_stmt|;
 DECL|field|problems
 specifier|private
 specifier|final
