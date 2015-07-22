@@ -2450,24 +2450,6 @@ block|}
 elseif|else
 if|if
 condition|(
-comment|/* DEPRECATED URL */
-name|matchPrefix
-argument_list|(
-literal|"/c2/"
-argument_list|,
-name|token
-argument_list|)
-condition|)
-block|{
-name|change
-argument_list|(
-name|token
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
 comment|/* LEGACY URL */
 name|matchPrefix
 argument_list|(
