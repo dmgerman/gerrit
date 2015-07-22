@@ -159,9 +159,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|CommitPredicate
+DECL|class|CommitPrefixPredicate
 class|class
-name|CommitPredicate
+name|CommitPrefixPredicate
 extends|extends
 name|IndexPredicate
 argument_list|<
@@ -174,8 +174,8 @@ specifier|final
 name|AbbreviatedObjectId
 name|abbrevId
 decl_stmt|;
-DECL|method|CommitPredicate (AbbreviatedObjectId id)
-name|CommitPredicate
+DECL|method|CommitPrefixPredicate (AbbreviatedObjectId id)
+name|CommitPrefixPredicate
 parameter_list|(
 name|AbbreviatedObjectId
 name|id

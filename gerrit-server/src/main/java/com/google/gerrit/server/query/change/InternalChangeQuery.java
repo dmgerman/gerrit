@@ -376,20 +376,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|AbbreviatedObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|ObjectId
 import|;
 end_import
@@ -535,7 +521,7 @@ name|status
 argument_list|)
 return|;
 block|}
-DECL|method|commit (AbbreviatedObjectId id)
+DECL|method|commit (ObjectId id)
 specifier|private
 specifier|static
 name|Predicate
@@ -544,13 +530,13 @@ name|ChangeData
 argument_list|>
 name|commit
 parameter_list|(
-name|AbbreviatedObjectId
+name|ObjectId
 name|id
 parameter_list|)
 block|{
 return|return
 operator|new
-name|CommitPredicate
+name|ExactCommitPredicate
 argument_list|(
 name|id
 argument_list|)
@@ -892,7 +878,7 @@ name|add
 argument_list|(
 name|commit
 argument_list|(
-name|AbbreviatedObjectId
+name|ObjectId
 operator|.
 name|fromString
 argument_list|(
@@ -1128,35 +1114,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitPrefix (String prefix)
-specifier|public
-name|List
-argument_list|<
-name|ChangeData
-argument_list|>
-name|byCommitPrefix
-parameter_list|(
-name|String
-name|prefix
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|query
-argument_list|(
-name|commit
-argument_list|(
-name|AbbreviatedObjectId
-operator|.
-name|fromString
-argument_list|(
-name|prefix
-argument_list|)
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|byCommit (ObjectId id)
 specifier|public
 name|List
@@ -1176,12 +1133,7 @@ name|query
 argument_list|(
 name|commit
 argument_list|(
-name|AbbreviatedObjectId
-operator|.
-name|fromObjectId
-argument_list|(
 name|id
-argument_list|)
 argument_list|)
 argument_list|)
 return|;
