@@ -521,7 +521,7 @@ name|status
 argument_list|)
 return|;
 block|}
-DECL|method|commit (ObjectId id)
+DECL|method|commit (String id)
 specifier|private
 specifier|static
 name|Predicate
@@ -530,7 +530,7 @@ name|ChangeData
 argument_list|>
 name|commit
 parameter_list|(
-name|ObjectId
+name|String
 name|id
 parameter_list|)
 block|{
@@ -878,12 +878,7 @@ name|add
 argument_list|(
 name|commit
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
 name|s
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1134,6 +1129,9 @@ argument_list|(
 name|commit
 argument_list|(
 name|id
+operator|.
+name|name
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
