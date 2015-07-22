@@ -123,6 +123,15 @@ specifier|abstract
 class|class
 name|IndexConfig
 block|{
+DECL|field|DEFAULT_MAX_PREFIX_TERMS
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MAX_PREFIX_TERMS
+init|=
+literal|100
+decl_stmt|;
 DECL|method|createDefault ()
 specifier|public
 specifier|static
@@ -136,6 +145,8 @@ argument_list|(
 literal|0
 argument_list|,
 literal|0
+argument_list|,
+name|DEFAULT_MAX_PREFIX_TERMS
 argument_list|)
 return|;
 block|}
@@ -177,10 +188,23 @@ literal|"maxPages"
 argument_list|,
 literal|0
 argument_list|)
+argument_list|,
+name|cfg
+operator|.
+name|getInt
+argument_list|(
+literal|"index"
+argument_list|,
+literal|null
+argument_list|,
+literal|"maxPrefixTerms"
+argument_list|,
+name|DEFAULT_MAX_PREFIX_TERMS
+argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|create (int maxLimit, int maxPages)
+DECL|method|create (int maxLimit, int maxPages, int maxPrefixTerms)
 specifier|public
 specifier|static
 name|IndexConfig
@@ -191,6 +215,9 @@ name|maxLimit
 parameter_list|,
 name|int
 name|maxPages
+parameter_list|,
+name|int
+name|maxPrefixTerms
 parameter_list|)
 block|{
 return|return
@@ -202,6 +229,10 @@ argument_list|(
 name|maxLimit
 argument_list|,
 literal|"maxLimit"
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
 argument_list|,
 name|checkLimit
@@ -209,11 +240,24 @@ argument_list|(
 name|maxPages
 argument_list|,
 literal|"maxPages"
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+argument_list|,
+name|checkLimit
+argument_list|(
+name|maxPrefixTerms
+argument_list|,
+literal|"maxPrefixTerms"
+argument_list|,
+name|DEFAULT_MAX_PREFIX_TERMS
 argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|checkLimit (int limit, String name)
+DECL|method|checkLimit (int limit, String name, int defaultValue)
 specifier|private
 specifier|static
 name|int
@@ -224,6 +268,9 @@ name|limit
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|int
+name|defaultValue
 parameter_list|)
 block|{
 if|if
@@ -234,9 +281,7 @@ literal|0
 condition|)
 block|{
 return|return
-name|Integer
-operator|.
-name|MAX_VALUE
+name|defaultValue
 return|;
 block|}
 name|checkArgument
@@ -256,6 +301,7 @@ return|return
 name|limit
 return|;
 block|}
+comment|/**    * @return maximum limit supported by the underlying index, or limited for    * performance reasons.    */
 DECL|method|maxLimit ()
 specifier|public
 specifier|abstract
@@ -263,11 +309,20 @@ name|int
 name|maxLimit
 parameter_list|()
 function_decl|;
+comment|/**    * @return maximum number of pages (limit / start) supported by the    *     underlying index, or limited for performance reasons.    */
 DECL|method|maxPages ()
 specifier|public
 specifier|abstract
 name|int
 name|maxPages
+parameter_list|()
+function_decl|;
+comment|/**    * @return maximum number of prefix terms per query supported by the    *     underlying index, or limited for performance reasons. Not enforced for    *     general queries; only for specific cases where the query system can    *     split into equivalent subqueries.    */
+DECL|method|maxPrefixTerms ()
+specifier|public
+specifier|abstract
+name|int
+name|maxPrefixTerms
 parameter_list|()
 function_decl|;
 block|}

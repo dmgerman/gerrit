@@ -304,6 +304,22 @@ name|server
 operator|.
 name|index
 operator|.
+name|IndexConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|Schema
 import|;
 end_import
@@ -550,6 +566,12 @@ name|id
 argument_list|)
 return|;
 block|}
+DECL|field|indexConfig
+specifier|private
+specifier|final
+name|IndexConfig
+name|indexConfig
+decl_stmt|;
 DECL|field|qp
 specifier|private
 specifier|final
@@ -564,9 +586,12 @@ name|indexes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalChangeQuery (QueryProcessor queryProcessor, IndexCollection indexes)
+DECL|method|InternalChangeQuery (IndexConfig indexConfig, QueryProcessor queryProcessor, IndexCollection indexes)
 name|InternalChangeQuery
 parameter_list|(
+name|IndexConfig
+name|indexConfig
+parameter_list|,
 name|QueryProcessor
 name|queryProcessor
 parameter_list|,
@@ -574,6 +599,12 @@ name|IndexCollection
 name|indexes
 parameter_list|)
 block|{
+name|this
+operator|.
+name|indexConfig
+operator|=
+name|indexConfig
+expr_stmt|;
 name|qp
 operator|=
 name|queryProcessor
@@ -823,7 +854,10 @@ name|branch
 argument_list|,
 name|hashes
 argument_list|,
-literal|100
+name|indexConfig
+operator|.
+name|maxPrefixTerms
+argument_list|()
 argument_list|)
 return|;
 block|}
