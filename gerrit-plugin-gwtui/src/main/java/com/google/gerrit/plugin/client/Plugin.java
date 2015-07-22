@@ -104,6 +104,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|info
+operator|.
+name|AccountPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|plugin
 operator|.
 name|client
@@ -266,6 +282,26 @@ name|void
 name|refreshMenuBar
 parameter_list|()
 comment|/*-{ return this.refreshMenuBar() }-*/
+function_decl|;
+comment|/** @return the preferences of the currently signed in user, the default preferences if not signed in */
+DECL|method|getUserPreferences ()
+specifier|public
+specifier|final
+specifier|native
+name|AccountPreferencesInfo
+name|getUserPreferences
+parameter_list|()
+comment|/*-{ return this.getUserPreferences() }-*/
+function_decl|;
+comment|/** Refresh the user preferences of the current user. */
+DECL|method|refreshUserPreferences ()
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|refreshUserPreferences
+parameter_list|()
+comment|/*-{ return this.refreshUserPreferences() }-*/
 function_decl|;
 comment|/** @return the current user */
 DECL|method|getCurrentUser ()
