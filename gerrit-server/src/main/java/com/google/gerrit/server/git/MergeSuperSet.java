@@ -1010,7 +1010,7 @@ argument_list|()
 condition|)
 block|{
 comment|// Merged changes are ok to exclude
-name|List
+name|Iterable
 argument_list|<
 name|ChangeData
 argument_list|>
