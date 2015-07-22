@@ -88,6 +88,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|info
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|plugin
 operator|.
 name|client
@@ -250,6 +266,16 @@ name|void
 name|refreshMenuBar
 parameter_list|()
 comment|/*-{ return this.refreshMenuBar() }-*/
+function_decl|;
+comment|/** @return the current user */
+DECL|method|getCurrentUser ()
+specifier|public
+specifier|final
+specifier|native
+name|AccountInfo
+name|getCurrentUser
+parameter_list|()
+comment|/*-{ return this.getCurrentUser() }-*/
 function_decl|;
 comment|/** Check if user is signed in. */
 DECL|method|isSignedIn ()
