@@ -596,6 +596,23 @@ name|boolean
 name|addPopup
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|Gerrit
+operator|.
+name|info
+argument_list|()
+operator|.
+name|plugin
+argument_list|()
+operator|.
+name|hasAvatars
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 comment|// TODO Kill /accounts/*/avatar URL.
 name|String
 name|u
