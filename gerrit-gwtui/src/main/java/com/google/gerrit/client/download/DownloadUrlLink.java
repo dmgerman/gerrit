@@ -583,11 +583,11 @@ specifier|final
 name|DownloadSchemeInfo
 name|schemeInfo
 decl_stmt|;
-DECL|field|urlType
+DECL|field|scheme
 specifier|private
 specifier|final
 name|DownloadScheme
-name|urlType
+name|scheme
 decl_stmt|;
 DECL|method|DownloadUrlLink (DownloadPanel downloadPanel, DownloadSchemeInfo schemeInfo, String text)
 specifier|public
@@ -680,7 +680,7 @@ name|schemeInfo
 expr_stmt|;
 name|this
 operator|.
-name|urlType
+name|scheme
 operator|=
 name|urlType
 expr_stmt|;
@@ -692,7 +692,7 @@ name|getUrlType
 parameter_list|()
 block|{
 return|return
-name|urlType
+name|scheme
 return|;
 block|}
 annotation|@
@@ -719,20 +719,6 @@ expr_stmt|;
 name|select
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|Gerrit
-operator|.
-name|isSignedIn
-argument_list|()
-operator|&&
-name|urlType
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// If the user is signed-in, remember this choice for future panels.
-comment|//
 name|AccountGeneralPreferences
 name|pref
 init|=
@@ -744,11 +730,32 @@ operator|.
 name|getGeneralPreferences
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|isSignedIn
+argument_list|()
+operator|&&
+name|scheme
+operator|!=
+literal|null
+operator|&&
+name|scheme
+operator|!=
+name|pref
+operator|.
+name|getDownloadUrl
+argument_list|()
+condition|)
+block|{
+comment|// If the user is signed-in, remember this choice for future panels.
+comment|//
 name|pref
 operator|.
 name|setDownloadUrl
 argument_list|(
-name|urlType
+name|scheme
 argument_list|)
 expr_stmt|;
 name|com
