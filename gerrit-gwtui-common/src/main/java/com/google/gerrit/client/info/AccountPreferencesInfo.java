@@ -255,22 +255,21 @@ name|cast
 argument_list|()
 return|;
 block|}
-DECL|method|create (AccountGeneralPreferences in, List<TopMenuItem> myMenus)
+DECL|method|createDefault ()
 specifier|public
 specifier|static
 name|AccountPreferencesInfo
-name|create
-parameter_list|(
-name|AccountGeneralPreferences
-name|in
-parameter_list|,
-name|List
-argument_list|<
-name|TopMenuItem
-argument_list|>
-name|myMenus
-parameter_list|)
+name|createDefault
+parameter_list|()
 block|{
+name|AccountGeneralPreferences
+name|defaultPrefs
+init|=
+name|AccountGeneralPreferences
+operator|.
+name|createDefault
+argument_list|()
+decl_stmt|;
 name|AccountPreferencesInfo
 name|p
 init|=
@@ -284,7 +283,7 @@ name|p
 operator|.
 name|changesPerPage
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|getMaximumPageSize
 argument_list|()
@@ -294,7 +293,7 @@ name|p
 operator|.
 name|showSiteHeader
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|isShowSiteHeader
 argument_list|()
@@ -304,7 +303,7 @@ name|p
 operator|.
 name|useFlashClipboard
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|isUseFlashClipboard
 argument_list|()
@@ -314,7 +313,7 @@ name|p
 operator|.
 name|downloadScheme
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|getDownloadUrl
 argument_list|()
@@ -324,7 +323,7 @@ name|p
 operator|.
 name|downloadCommand
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|getDownloadCommand
 argument_list|()
@@ -334,7 +333,7 @@ name|p
 operator|.
 name|copySelfOnEmail
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|isCopySelfOnEmails
 argument_list|()
@@ -344,7 +343,7 @@ name|p
 operator|.
 name|dateFormat
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|getDateFormat
 argument_list|()
@@ -354,7 +353,7 @@ name|p
 operator|.
 name|timeFormat
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|getTimeFormat
 argument_list|()
@@ -364,7 +363,7 @@ name|p
 operator|.
 name|relativeDateInChangeTable
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|isRelativeDateInChangeTable
 argument_list|()
@@ -374,7 +373,7 @@ name|p
 operator|.
 name|sizeBarInChangeTable
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|isSizeBarInChangeTable
 argument_list|()
@@ -384,7 +383,7 @@ name|p
 operator|.
 name|legacycidInChangeTable
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|isLegacycidInChangeTable
 argument_list|()
@@ -394,7 +393,7 @@ name|p
 operator|.
 name|muteCommonPathPrefixes
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|isMuteCommonPathPrefixes
 argument_list|()
@@ -404,7 +403,7 @@ name|p
 operator|.
 name|reviewCategoryStrategy
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|getReviewCategoryStrategy
 argument_list|()
@@ -414,48 +413,14 @@ name|p
 operator|.
 name|diffView
 argument_list|(
-name|in
+name|defaultPrefs
 operator|.
 name|getDiffView
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|myMenus
-operator|!=
-literal|null
-condition|)
-block|{
-name|p
-operator|.
-name|setMyMenus
-argument_list|(
-name|myMenus
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|p
-return|;
-block|}
-DECL|method|createDefault ()
-specifier|public
-specifier|static
-name|AccountPreferencesInfo
-name|createDefault
-parameter_list|()
-block|{
-return|return
-name|create
-argument_list|(
-name|AccountGeneralPreferences
-operator|.
-name|createDefault
-argument_list|()
-argument_list|,
-literal|null
-argument_list|)
 return|;
 block|}
 DECL|method|changesPerPage ()
@@ -1122,6 +1087,7 @@ parameter_list|)
 comment|/*-{ this.diff_view = d }-*/
 function_decl|;
 DECL|method|setMyMenus (List<TopMenuItem> myMenus)
+specifier|public
 specifier|final
 name|void
 name|setMyMenus
