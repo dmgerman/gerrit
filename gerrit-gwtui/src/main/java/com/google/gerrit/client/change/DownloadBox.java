@@ -1786,6 +1786,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|Gerrit
+operator|.
+name|isSignedIn
+argument_list|()
+operator|&&
 name|scheme
 operator|!=
 literal|null
