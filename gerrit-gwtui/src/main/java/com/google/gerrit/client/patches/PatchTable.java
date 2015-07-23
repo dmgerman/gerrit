@@ -1621,13 +1621,10 @@ argument_list|()
 operator|&&
 name|Gerrit
 operator|.
-name|getUserAccount
+name|getUserPreferences
 argument_list|()
 operator|.
-name|getGeneralPreferences
-argument_list|()
-operator|.
-name|getDiffView
+name|diffView
 argument_list|()
 operator|.
 name|equals
