@@ -341,24 +341,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
-DECL|method|validateEmail (String token, AsyncCallback<VoidResult> callback)
-name|void
-name|validateEmail
-parameter_list|(
-name|String
-name|token
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|VoidResult
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 
