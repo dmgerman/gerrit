@@ -823,6 +823,10 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|NameAlreadyUsedException
+decl||
+name|InvalidUserNameException
 name|e
 parameter_list|)
 block|{
@@ -853,6 +857,10 @@ name|extId
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|NameAlreadyUsedException
+throws|,
+name|InvalidUserNameException
 block|{
 name|IdentifiedUser
 name|user
@@ -1070,6 +1078,9 @@ operator|.
 name|getUserName
 argument_list|()
 argument_list|)
+operator|.
+name|call
+argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -1963,6 +1974,8 @@ literal|"Identity in use by another account"
 argument_list|)
 throw|;
 block|}
+try|try
+block|{
 name|update
 argument_list|(
 name|db
@@ -1972,6 +1985,25 @@ argument_list|,
 name|extId
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NameAlreadyUsedException
+decl||
+name|InvalidUserNameException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AccountException
+argument_list|(
+literal|"Account update failed"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 else|else
 block|{
