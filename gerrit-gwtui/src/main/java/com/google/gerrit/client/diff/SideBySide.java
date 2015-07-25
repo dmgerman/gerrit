@@ -3057,8 +3057,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|prefs
-operator|.
 name|renderEntireFile
 argument_list|()
 condition|)
@@ -4109,29 +4107,6 @@ argument_list|,
 name|commentManager
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|prefs
-operator|.
-name|renderEntireFile
-argument_list|()
-operator|&&
-operator|!
-name|canEnableRenderEntireFile
-argument_list|(
-name|prefs
-argument_list|)
-condition|)
-block|{
-comment|// CodeMirror is too slow to layout an entire huge file.
-name|prefs
-operator|.
-name|renderEntireFile
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
 name|operation
 argument_list|(
 operator|new
@@ -4571,8 +4546,6 @@ name|set
 argument_list|(
 literal|"viewportMargin"
 argument_list|,
-name|prefs
-operator|.
 name|renderEntireFile
 argument_list|()
 condition|?
@@ -4597,14 +4570,32 @@ name|intralineStatus
 argument_list|()
 return|;
 block|}
-DECL|method|canEnableRenderEntireFile (DiffPreferences prefs)
+DECL|method|renderEntireFile ()
 name|boolean
-name|canEnableRenderEntireFile
+name|renderEntireFile
+parameter_list|()
+block|{
+return|return
+name|prefs
+operator|.
+name|renderEntireFile
+argument_list|()
+operator|&&
+name|canRenderEntireFile
+argument_list|(
+name|prefs
+argument_list|)
+return|;
+block|}
+DECL|method|canRenderEntireFile (DiffPreferences prefs)
+name|boolean
+name|canRenderEntireFile
 parameter_list|(
 name|DiffPreferences
 name|prefs
 parameter_list|)
 block|{
+comment|// CodeMirror is too slow to layout an entire huge file.
 return|return
 name|fileSize
 operator|.
@@ -5060,6 +5051,9 @@ name|context
 argument_list|,
 name|diff
 argument_list|)
+expr_stmt|;
+name|updateRenderEntireFile
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -6021,12 +6015,15 @@ argument_list|(
 name|RENDER_ENTIRE_FILE_KEYMAP
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|prefs
-operator|.
+name|boolean
+name|entireFile
+init|=
 name|renderEntireFile
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|entireFile
 condition|)
 block|{
 name|cmA
@@ -6050,10 +6047,7 @@ name|setOption
 argument_list|(
 literal|"viewportMargin"
 argument_list|,
-name|prefs
-operator|.
-name|renderEntireFile
-argument_list|()
+name|entireFile
 condition|?
 name|POSITIVE_INFINITY
 else|:
@@ -6066,10 +6060,7 @@ name|setOption
 argument_list|(
 literal|"viewportMargin"
 argument_list|,
-name|prefs
-operator|.
-name|renderEntireFile
-argument_list|()
+name|entireFile
 condition|?
 name|POSITIVE_INFINITY
 else|:
