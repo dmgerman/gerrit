@@ -65,7 +65,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -74,9 +74,25 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|CommonConstants
 operator|.
-name|Util
+name|C
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|CommonMessages
+operator|.
+name|M
 import|;
 end_import
 
@@ -210,8 +226,6 @@ literal|0
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|C
 operator|.
 name|inTheFuture
@@ -247,8 +261,6 @@ literal|1
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|C
 operator|.
 name|oneSecondAgo
@@ -258,8 +270,6 @@ block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|M
 operator|.
 name|secondsAgo
@@ -298,8 +308,6 @@ literal|1
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|C
 operator|.
 name|oneMinuteAgo
@@ -309,8 +317,6 @@ block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|M
 operator|.
 name|minutesAgo
@@ -349,8 +355,6 @@ literal|1
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|C
 operator|.
 name|oneHourAgo
@@ -360,8 +364,6 @@ block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|M
 operator|.
 name|hoursAgo
@@ -399,8 +401,6 @@ literal|1
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|C
 operator|.
 name|oneDayAgo
@@ -410,8 +410,6 @@ block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|M
 operator|.
 name|daysAgo
@@ -449,8 +447,6 @@ literal|1
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|C
 operator|.
 name|oneWeekAgo
@@ -460,8 +456,6 @@ block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|M
 operator|.
 name|weeksAgo
@@ -497,8 +491,6 @@ literal|1
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|C
 operator|.
 name|oneMonthAgo
@@ -508,8 +500,6 @@ block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|M
 operator|.
 name|monthsAgo
@@ -545,15 +535,11 @@ operator|>
 literal|1
 operator|)
 condition|?
-name|Util
-operator|.
 name|C
 operator|.
 name|years
 argument_list|()
 else|:
-name|Util
-operator|.
 name|C
 operator|.
 name|year
@@ -580,8 +566,6 @@ operator|>
 literal|1
 operator|)
 condition|?
-name|Util
-operator|.
 name|C
 operator|.
 name|months
@@ -592,8 +576,6 @@ name|months
 operator|==
 literal|1
 condition|?
-name|Util
-operator|.
 name|C
 operator|.
 name|month
@@ -610,8 +592,6 @@ literal|0
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|M
 operator|.
 name|years0MonthsAgo
@@ -625,8 +605,6 @@ block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|M
 operator|.
 name|yearsMonthsAgo
@@ -661,8 +639,6 @@ literal|1
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|C
 operator|.
 name|oneYearAgo
@@ -672,8 +648,6 @@ block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|M
 operator|.
 name|yearsAgo

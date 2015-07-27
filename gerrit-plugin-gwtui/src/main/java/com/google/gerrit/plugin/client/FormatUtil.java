@@ -104,6 +104,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|RelativeDateFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|info
 operator|.
 name|AccountInfo
@@ -232,6 +246,26 @@ argument_list|()
 operator|.
 name|getUserPreferences
 argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/** Format a date using git log's relative date format. */
+DECL|method|relativeFormat (Date dt)
+specifier|public
+specifier|static
+name|String
+name|relativeFormat
+parameter_list|(
+name|Date
+name|dt
+parameter_list|)
+block|{
+return|return
+name|RelativeDateFormatter
+operator|.
+name|format
+argument_list|(
+name|dt
 argument_list|)
 return|;
 block|}
