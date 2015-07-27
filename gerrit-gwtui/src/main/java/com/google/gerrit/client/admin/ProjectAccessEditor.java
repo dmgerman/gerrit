@@ -104,7 +104,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|config
+name|info
 operator|.
 name|GitwebInfo
 import|;

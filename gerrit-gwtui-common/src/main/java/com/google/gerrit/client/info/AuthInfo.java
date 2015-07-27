@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.config
+DECL|package|com.google.gerrit.client.info
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|config
+name|info
 package|;
 end_package
 

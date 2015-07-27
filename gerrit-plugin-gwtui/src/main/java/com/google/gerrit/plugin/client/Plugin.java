@@ -120,6 +120,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|info
+operator|.
+name|ServerInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|plugin
 operator|.
 name|client
@@ -302,6 +318,16 @@ name|void
 name|refreshUserPreferences
 parameter_list|()
 comment|/*-{ return this.refreshUserPreferences() }-*/
+function_decl|;
+comment|/** @return the server info */
+DECL|method|getServerInfo ()
+specifier|public
+specifier|final
+specifier|native
+name|ServerInfo
+name|getServerInfo
+parameter_list|()
+comment|/*-{ return this.getServerInfo() }-*/
 function_decl|;
 comment|/** @return the current user */
 DECL|method|getCurrentUser ()

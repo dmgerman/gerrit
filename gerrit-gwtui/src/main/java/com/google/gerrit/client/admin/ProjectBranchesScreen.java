@@ -212,9 +212,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|config
+name|info
 operator|.
-name|GitwebInfo
+name|ActionInfo
 import|;
 end_import
 
@@ -230,7 +230,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|ActionInfo
+name|GitwebInfo
 import|;
 end_import
 

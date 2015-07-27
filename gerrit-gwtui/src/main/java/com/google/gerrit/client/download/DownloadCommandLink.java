@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|config
+name|info
 operator|.
 name|DownloadInfo
 operator|.

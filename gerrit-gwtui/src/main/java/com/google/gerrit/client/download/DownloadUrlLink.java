@@ -106,11 +106,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|config
+name|info
 operator|.
-name|DownloadInfo
-operator|.
-name|DownloadSchemeInfo
+name|AccountPreferencesInfo
 import|;
 end_import
 
@@ -126,7 +124,9 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountPreferencesInfo
+name|DownloadInfo
+operator|.
+name|DownloadSchemeInfo
 import|;
 end_import
 

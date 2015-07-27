@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.config
+DECL|package|com.google.gerrit.client.info
 package|package
 name|com
 operator|.
@@ -62,9 +62,25 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|config
+name|info
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
 
 begin_import
 import|import
@@ -83,145 +99,145 @@ import|;
 end_import
 
 begin_class
-DECL|class|GitwebTypeInfo
+DECL|class|GerritInfo
 specifier|public
 class|class
-name|GitwebTypeInfo
+name|GerritInfo
 extends|extends
 name|JavaScriptObject
 block|{
-comment|/**    * Replace the standard path separator ('/') in a branch name or project    * name with a custom path separator configured by the property    * gitweb.pathSeparator.    * @param urlSegment The branch or project to replace the path separator in    * @return the urlSegment with the standard path separator replaced by the    * custom path separator    */
-DECL|method|replacePathSeparator (String urlSegment)
+DECL|method|allProjectsNameKey ()
 specifier|public
 specifier|final
-name|String
-name|replacePathSeparator
+name|Project
+operator|.
+name|NameKey
+name|allProjectsNameKey
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
+name|allProjects
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|isAllProjects (Project.NameKey p)
+specifier|public
+specifier|final
+name|boolean
+name|isAllProjects
 parameter_list|(
-name|String
-name|urlSegment
+name|Project
+operator|.
+name|NameKey
+name|p
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
-literal|"/"
+return|return
+name|allProjectsNameKey
+argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|pathSeparator
-argument_list|()
+name|p
 argument_list|)
-condition|)
+return|;
+block|}
+DECL|method|allUsersNameKey ()
+specifier|public
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|allUsersNameKey
+parameter_list|()
 block|{
 return|return
-name|urlSegment
+operator|new
+name|Project
 operator|.
-name|replace
+name|NameKey
 argument_list|(
-literal|"/"
-argument_list|,
-name|pathSeparator
+name|allUsers
 argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|isAllUsers (Project.NameKey p)
+specifier|public
+specifier|final
+name|boolean
+name|isAllUsers
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+block|{
 return|return
-name|urlSegment
+name|allUsersNameKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|p
+argument_list|)
 return|;
 block|}
-DECL|method|name ()
+DECL|method|allProjects ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|name
+name|allProjects
 parameter_list|()
-comment|/*-{ return this.name; }-*/
+comment|/*-{ return this.all_projects; }-*/
 function_decl|;
-DECL|method|revision ()
+DECL|method|allUsers ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|revision
+name|allUsers
 parameter_list|()
-comment|/*-{ return this.revision; }-*/
+comment|/*-{ return this.all_users; }-*/
 function_decl|;
-DECL|method|project ()
+DECL|method|docUrl ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|project
+name|docUrl
 parameter_list|()
-comment|/*-{ return this.project; }-*/
+comment|/*-{ return this.doc_url; }-*/
 function_decl|;
-DECL|method|branch ()
+DECL|method|reportBugUrl ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|branch
+name|reportBugUrl
 parameter_list|()
-comment|/*-{ return this.branch; }-*/
+comment|/*-{ return this.report_bug_url; }-*/
 function_decl|;
-DECL|method|rootTree ()
+DECL|method|reportBugText ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|rootTree
+name|reportBugText
 parameter_list|()
-comment|/*-{ return this.root_tree; }-*/
+comment|/*-{ return this.report_bug_text; }-*/
 function_decl|;
-DECL|method|file ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|file
-parameter_list|()
-comment|/*-{ return this.file; }-*/
-function_decl|;
-DECL|method|fileHistory ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|fileHistory
-parameter_list|()
-comment|/*-{ return this.file_history; }-*/
-function_decl|;
-DECL|method|pathSeparator ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|pathSeparator
-parameter_list|()
-comment|/*-{ return this.path_separator; }-*/
-function_decl|;
-DECL|method|linkDrafts ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|linkDrafts
-parameter_list|()
-comment|/*-{ return this.link_drafts || false; }-*/
-function_decl|;
-DECL|method|urlEncode ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|urlEncode
-parameter_list|()
-comment|/*-{ return this.url_encode || false; }-*/
-function_decl|;
-DECL|method|GitwebTypeInfo ()
+DECL|method|GerritInfo ()
 specifier|protected
-name|GitwebTypeInfo
+name|GerritInfo
 parameter_list|()
 block|{   }
 block|}
