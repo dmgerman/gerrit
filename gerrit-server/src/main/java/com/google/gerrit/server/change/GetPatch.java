@@ -926,6 +926,7 @@ name|append
 argument_list|(
 literal|"Mon Sep 17 00:00:00 2001\n"
 argument_list|)
+comment|// Fixed timestamp to match output of C Git's format-patch
 operator|.
 name|append
 argument_list|(
