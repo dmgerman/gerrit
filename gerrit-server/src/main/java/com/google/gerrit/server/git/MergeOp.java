@@ -1987,7 +1987,14 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"SubmitRuleEvaluator.evaluate returned empty list for %s in %s"
+literal|"SubmitRuleEvaluator.evaluate for change %s "
+operator|+
+literal|"returned empty list for %s in %s"
+argument_list|,
+name|cd
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|patchSet
 operator|.
@@ -2030,7 +2037,17 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"change is closed"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"change %s is closed"
+argument_list|,
+name|cd
+operator|.
+name|getId
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 case|case
@@ -2044,7 +2061,12 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"rule error: %s"
+literal|"rule error for change %s: %s"
+argument_list|,
+name|cd
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|record
 operator|.
@@ -2062,6 +2084,18 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+name|msg
+operator|.
+name|append
+argument_list|(
+name|cd
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|":"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|SubmitRecord
@@ -2091,29 +2125,11 @@ continue|continue;
 case|case
 name|REJECT
 case|:
-if|if
-condition|(
-name|msg
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
 name|msg
 operator|.
 name|append
 argument_list|(
-literal|"; "
-argument_list|)
-expr_stmt|;
-block|}
-name|msg
-operator|.
-name|append
-argument_list|(
-literal|"blocked by "
+literal|" blocked by "
 argument_list|)
 operator|.
 name|append
@@ -2121,35 +2137,24 @@ argument_list|(
 name|lbl
 operator|.
 name|label
+argument_list|)
+expr_stmt|;
+name|msg
+operator|.
+name|append
+argument_list|(
+literal|";"
 argument_list|)
 expr_stmt|;
 continue|continue;
 case|case
 name|NEED
 case|:
-if|if
-condition|(
-name|msg
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
 name|msg
 operator|.
 name|append
 argument_list|(
-literal|"; "
-argument_list|)
-expr_stmt|;
-block|}
-name|msg
-operator|.
-name|append
-argument_list|(
-literal|"needs "
+literal|" needs "
 argument_list|)
 operator|.
 name|append
@@ -2159,33 +2164,22 @@ operator|.
 name|label
 argument_list|)
 expr_stmt|;
+name|msg
+operator|.
+name|append
+argument_list|(
+literal|";"
+argument_list|)
+expr_stmt|;
 continue|continue;
 case|case
 name|IMPOSSIBLE
 case|:
-if|if
-condition|(
-name|msg
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
 name|msg
 operator|.
 name|append
 argument_list|(
-literal|"; "
-argument_list|)
-expr_stmt|;
-block|}
-name|msg
-operator|.
-name|append
-argument_list|(
-literal|"needs "
+literal|" needs "
 argument_list|)
 operator|.
 name|append
@@ -2200,6 +2194,13 @@ argument_list|(
 literal|" (check project access)"
 argument_list|)
 expr_stmt|;
+name|msg
+operator|.
+name|append
+argument_list|(
+literal|";"
+argument_list|)
+expr_stmt|;
 continue|continue;
 default|default:
 throw|throw
@@ -2210,7 +2211,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Unsupported SubmitRecord.Label %s for %s in %s"
+literal|"Unsupported SubmitRecord.Label %s for %s in %s in %s"
 argument_list|,
 name|lbl
 operator|.
@@ -2218,6 +2219,11 @@ name|toString
 argument_list|()
 argument_list|,
 name|patchSet
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|cd
 operator|.
 name|getId
 argument_list|()
@@ -2289,10 +2295,10 @@ name|IllegalStateException
 argument_list|()
 throw|;
 block|}
-DECL|method|checkPermissions (ChangeSet cs)
+DECL|method|checkSubmitRulesAndState (ChangeSet cs)
 specifier|private
 name|void
-name|checkPermissions
+name|checkSubmitRulesAndState
 parameter_list|(
 name|ChangeSet
 name|cs
@@ -2302,6 +2308,26 @@ name|ResourceConflictException
 throws|,
 name|OrmException
 block|{
+name|StringBuilder
+name|msgbuf
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|problemChanges
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Change
@@ -2314,6 +2340,8 @@ operator|.
 name|ids
 argument_list|()
 control|)
+block|{
+try|try
 block|{
 name|ChangeData
 name|cd
@@ -2346,7 +2374,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|ResourceConflictException
 argument_list|(
 literal|"Change "
 operator|+
@@ -2392,8 +2420,73 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+catch|catch
+parameter_list|(
+name|ResourceConflictException
+name|e
+parameter_list|)
+block|{
+name|msgbuf
+operator|.
+name|append
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
+name|problemChanges
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 block|}
-DECL|method|merge (ReviewDb db, ChangeSet changes, IdentifiedUser caller, boolean checkPermissions)
+block|}
+name|String
+name|reason
+init|=
+name|msgbuf
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|reason
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"The change could not be "
+operator|+
+literal|"submitted because it depends on change(s) "
+operator|+
+name|problemChanges
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|", which could not be submitted "
+operator|+
+literal|"because:\n"
+operator|+
+name|reason
+argument_list|)
+throw|;
+block|}
+block|}
+DECL|method|merge (ReviewDb db, ChangeSet changes, IdentifiedUser caller, boolean checkSubmitRules)
 specifier|public
 name|void
 name|merge
@@ -2408,7 +2501,7 @@ name|IdentifiedUser
 name|caller
 parameter_list|,
 name|boolean
-name|checkPermissions
+name|checkSubmitRules
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -2472,15 +2565,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|checkPermissions
+name|checkSubmitRules
 condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Checking permissions"
+literal|"Checking submit rules and state"
 argument_list|)
 expr_stmt|;
-name|checkPermissions
+name|checkSubmitRulesAndState
 argument_list|(
 name|cs
 argument_list|)
