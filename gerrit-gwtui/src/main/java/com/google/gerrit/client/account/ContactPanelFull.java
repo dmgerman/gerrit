@@ -90,9 +90,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|ui
+name|info
 operator|.
-name|OnEditEnabler
+name|AccountInfo
 import|;
 end_import
 
@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|client
 operator|.
-name|Account
+name|ui
+operator|.
+name|OnEditEnabler
 import|;
 end_import
 
@@ -663,26 +663,25 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|display (final Account userAccount)
+DECL|method|display (AccountInfo account)
 specifier|protected
 name|void
 name|display
 parameter_list|(
-specifier|final
-name|Account
-name|userAccount
+name|AccountInfo
+name|account
 parameter_list|)
 block|{
 name|super
 operator|.
 name|display
 argument_list|(
-name|userAccount
+name|account
 argument_list|)
 expr_stmt|;
 name|displayHasContact
 argument_list|(
-name|userAccount
+name|account
 argument_list|)
 expr_stmt|;
 name|addressTxt
@@ -714,31 +713,31 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|displayHasContact (final Account userAccount)
+DECL|method|displayHasContact (AccountInfo account)
 specifier|private
 name|void
 name|displayHasContact
 parameter_list|(
-specifier|final
-name|Account
-name|userAccount
+name|AccountInfo
+name|account
 parameter_list|)
 block|{
 if|if
 condition|(
-name|userAccount
+name|account
 operator|.
-name|isContactFiled
+name|contactFiledOn
 argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
-specifier|final
 name|Timestamp
 name|dt
 init|=
-name|userAccount
+name|account
 operator|.
-name|getContactFiledOn
+name|contactFiledOn
 argument_list|()
 decl_stmt|;
 name|hasContact
@@ -783,25 +782,24 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onSaveSuccess (final Account userAccount)
+DECL|method|onSaveSuccess (AccountInfo account)
 name|void
 name|onSaveSuccess
 parameter_list|(
-specifier|final
-name|Account
-name|userAccount
+name|AccountInfo
+name|account
 parameter_list|)
 block|{
 name|super
 operator|.
 name|onSaveSuccess
 argument_list|(
-name|userAccount
+name|account
 argument_list|)
 expr_stmt|;
 name|displayHasContact
 argument_list|(
-name|userAccount
+name|account
 argument_list|)
 expr_stmt|;
 block|}

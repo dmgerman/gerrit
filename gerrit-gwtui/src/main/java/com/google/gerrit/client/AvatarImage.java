@@ -638,7 +638,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getPreferredEmail
+name|email
 argument_list|()
 argument_list|)
 condition|)

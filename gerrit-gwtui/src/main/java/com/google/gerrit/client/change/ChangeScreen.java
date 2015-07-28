@@ -6075,7 +6075,7 @@ name|self
 init|=
 name|Gerrit
 operator|.
-name|getUserAccountInfo
+name|getUserAccount
 argument_list|()
 operator|.
 name|_accountId
