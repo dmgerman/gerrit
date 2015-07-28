@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|CharMatcher
-operator|.
-name|WHITESPACE
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -439,7 +423,10 @@ specifier|final
 name|CharMatcher
 name|LEADER
 init|=
-name|WHITESPACE
+name|CharMatcher
+operator|.
+name|whitespace
+argument_list|()
 operator|.
 name|or
 argument_list|(
@@ -579,7 +566,10 @@ argument_list|)
 expr_stmt|;
 name|hashtag
 operator|=
-name|WHITESPACE
+name|CharMatcher
+operator|.
+name|whitespace
+argument_list|()
 operator|.
 name|trimTrailingFrom
 argument_list|(

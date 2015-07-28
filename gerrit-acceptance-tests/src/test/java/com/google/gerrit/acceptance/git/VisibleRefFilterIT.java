@@ -1708,7 +1708,8 @@ name|on
 argument_list|(
 name|CharMatcher
 operator|.
-name|WHITESPACE
+name|whitespace
+argument_list|()
 argument_list|)
 operator|.
 name|omitEmptyStrings

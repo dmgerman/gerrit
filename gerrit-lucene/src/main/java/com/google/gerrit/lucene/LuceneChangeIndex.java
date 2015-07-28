@@ -2519,11 +2519,6 @@ name|schema
 return|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|replace (ChangeData cd)
 specifier|public
@@ -2642,11 +2637,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 annotation|@
 name|Override
 DECL|method|delete (Change.Id id)

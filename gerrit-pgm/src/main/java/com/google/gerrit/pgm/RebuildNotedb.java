@@ -1308,7 +1308,7 @@ name|waitFor
 argument_list|(
 name|Futures
 operator|.
-name|transform
+name|transformAsync
 argument_list|(
 name|Futures
 operator|.

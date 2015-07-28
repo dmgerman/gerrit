@@ -2313,7 +2313,8 @@ block|{
 return|return
 name|CharMatcher
 operator|.
-name|JAVA_LETTER_OR_DIGIT
+name|javaLetterOrDigit
+argument_list|()
 operator|.
 name|or
 argument_list|(

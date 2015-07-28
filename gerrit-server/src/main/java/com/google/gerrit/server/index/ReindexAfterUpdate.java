@@ -571,7 +571,7 @@ parameter_list|)
 block|{
 name|Futures
 operator|.
-name|transform
+name|transformAsync
 argument_list|(
 name|executor
 operator|.
