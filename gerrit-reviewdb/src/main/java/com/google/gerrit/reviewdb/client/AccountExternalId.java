@@ -145,6 +145,16 @@ name|SCHEME_USERNAME
 init|=
 literal|"username:"
 decl_stmt|;
+comment|/** Scheme used for GPG public keys. */
+DECL|field|SCHEME_GPGKEY
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SCHEME_GPGKEY
+init|=
+literal|"gpgkey:"
+decl_stmt|;
 comment|/** Scheme for external auth used during authentication, e.g. OAuth Token */
 DECL|field|SCHEME_EXTERNAL
 specifier|public

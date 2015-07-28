@@ -76,6 +76,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountExternalId
+operator|.
+name|SCHEME_GPGKEY
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|git
@@ -659,6 +677,19 @@ name|getExternalIds
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|extId
+operator|.
+name|isScheme
+argument_list|(
+name|SCHEME_GPGKEY
+argument_list|)
+condition|)
+block|{
+continue|continue;
+comment|// Omit GPG keys.
+block|}
 name|result
 operator|.
 name|add

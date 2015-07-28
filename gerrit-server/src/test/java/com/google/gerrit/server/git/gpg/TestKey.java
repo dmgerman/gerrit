@@ -70,6 +70,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|bouncycastle
@@ -236,19 +250,43 @@ end_import
 
 begin_class
 DECL|class|TestKey
+specifier|public
 class|class
 name|TestKey
 block|{
+DECL|method|allValidKeys ()
+specifier|public
+specifier|static
+name|ImmutableList
+argument_list|<
+name|TestKey
+argument_list|>
+name|allValidKeys
+parameter_list|()
+block|{
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|key1
+argument_list|()
+argument_list|,
+name|key2
+argument_list|()
+argument_list|,
+name|key5
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**    * A valid key with no expiration.    *    *<pre>    * pub   2048R/46328A8C 2015-07-08    *       Key fingerprint = 04AE A7ED 2F82 1133 E5B1  28D1 ED06 25DC 4632 8A8C    * uid                  Testuser One&lt;test1@example.com&gt;    * sub   2048R/F0AF69C0 2015-07-08    *</pre>    */
 DECL|method|key1 ()
+specifier|public
 specifier|static
 name|TestKey
 name|key1
 parameter_list|()
-throws|throws
-name|PGPException
-throws|,
-name|IOException
 block|{
 return|return
 operator|new
@@ -432,15 +470,12 @@ return|;
 block|}
 comment|/**    * A valid key expiring in 2065.    *    *<pre>    * pub   2048R/378A0AED 2015-07-08 [expires: 2065-06-25]    *       Key fingerprint = C378 369A CBCD 34CC 138D  90B1 4531 1A6F 378A 0AED    * uid                  Testuser Two&lt;test2@example.com&gt;    * sub   2048R/46D4F204 2015-07-08 [expires: 2065-06-25]    *</pre>    */
 DECL|method|key2 ()
+specifier|public
 specifier|static
 specifier|final
 name|TestKey
 name|key2
 parameter_list|()
-throws|throws
-name|PGPException
-throws|,
-name|IOException
 block|{
 return|return
 operator|new
@@ -626,15 +661,12 @@ return|;
 block|}
 comment|/**    * A key that expired in 2006.    *    *<pre>    * pub   2048R/17DE1ACD 2005-07-08 [expired: 2006-07-08]    *       Key fingerprint = 1D9E EB79 DD38 B049 939D  9CAF 3CEC 781B 17DE 1ACD    * uid                  Testuser Three&lt;test3@example.com&gt;    *</pre>    */
 DECL|method|key3 ()
+specifier|public
 specifier|static
 specifier|final
 name|TestKey
 name|key3
 parameter_list|()
-throws|throws
-name|PGPException
-throws|,
-name|IOException
 block|{
 return|return
 operator|new
@@ -820,15 +852,12 @@ return|;
 block|}
 comment|/**    * A self-revoked key with no expiration.    *    *<pre>    * pub   2048R/7CA87821 2015-07-08 [revoked: 2015-07-08]    *       Key fingerprint = E328 CAB1 1F7E B1BC 1451  ABA5 0855 2A17 7CA8 7821    * uid                  Testuser Four&lt;test4@example.com&gt;    *</pre>    */
 DECL|method|key4 ()
+specifier|public
 specifier|static
 specifier|final
 name|TestKey
 name|key4
 parameter_list|()
-throws|throws
-name|PGPException
-throws|,
-name|IOException
 block|{
 return|return
 operator|new
@@ -1024,14 +1053,11 @@ return|;
 block|}
 comment|/**    * A key with an additional user ID.    *    *<pre>    * pub   2048R/98C51DBF 2015-07-30    *       Key fingerprint = 42B3 294D 1924 D7EB AF4A  A99F 5024 BB44 98C5 1DBF    * uid                  foo:myId    * uid                  Testuser Five<test5@example.com>    * sub   2048R/C781A9E3 2015-07-30    *</pre>    */
 DECL|method|key5 ()
+specifier|public
 specifier|static
 name|TestKey
 name|key5
 parameter_list|()
-throws|throws
-name|PGPException
-throws|,
-name|IOException
 block|{
 return|return
 operator|new
@@ -1263,10 +1289,6 @@ parameter_list|,
 name|String
 name|secArmored
 parameter_list|)
-throws|throws
-name|PGPException
-throws|,
-name|IOException
 block|{
 name|this
 operator|.
@@ -1287,6 +1309,8 @@ operator|new
 name|BcKeyFingerprintCalculator
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|this
 operator|.
 name|pubRing
@@ -1318,7 +1342,25 @@ name|fc
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|PGPException
+decl||
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 DECL|method|getPublicKeyArmored ()
+specifier|public
 name|String
 name|getPublicKeyArmored
 parameter_list|()
@@ -1328,6 +1370,7 @@ name|pubArmored
 return|;
 block|}
 DECL|method|getSecretKeyArmored ()
+specifier|public
 name|String
 name|getSecretKeyArmored
 parameter_list|()
@@ -1337,6 +1380,7 @@ name|secArmored
 return|;
 block|}
 DECL|method|getPublicKeyRing ()
+specifier|public
 name|PGPPublicKeyRing
 name|getPublicKeyRing
 parameter_list|()
@@ -1346,6 +1390,7 @@ name|pubRing
 return|;
 block|}
 DECL|method|getPublicKey ()
+specifier|public
 name|PGPPublicKey
 name|getPublicKey
 parameter_list|()
@@ -1358,6 +1403,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getSecretKey ()
+specifier|public
 name|PGPSecretKey
 name|getSecretKey
 parameter_list|()
@@ -1370,6 +1416,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getKeyId ()
+specifier|public
 name|long
 name|getKeyId
 parameter_list|()
@@ -1383,6 +1430,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getFirstUserId ()
+specifier|public
 name|String
 name|getFirstUserId
 parameter_list|()
@@ -1402,6 +1450,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getPrivateKey ()
+specifier|public
 name|PGPPrivateKey
 name|getPrivateKey
 parameter_list|()
