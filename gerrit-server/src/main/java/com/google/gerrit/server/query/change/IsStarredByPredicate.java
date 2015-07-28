@@ -136,6 +136,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|Schema
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|OrPredicate
@@ -294,7 +310,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|predicates (Set<Change.Id> ids)
+DECL|method|predicates ( Schema<ChangeData> schema, Set<Change.Id> ids)
 specifier|private
 specifier|static
 name|List
@@ -306,6 +322,12 @@ argument_list|>
 argument_list|>
 name|predicates
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|Set
 argument_list|<
 name|Change
@@ -351,6 +373,8 @@ argument_list|(
 operator|new
 name|LegacyChangeIdPredicate
 argument_list|(
+name|schema
+argument_list|,
 name|id
 argument_list|)
 argument_list|)
@@ -407,6 +431,11 @@ name|super
 argument_list|(
 name|predicates
 argument_list|(
+name|args
+operator|.
+name|getSchema
+argument_list|()
+argument_list|,
 name|user
 operator|.
 name|getStarredChanges

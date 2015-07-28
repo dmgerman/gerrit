@@ -2391,6 +2391,11 @@ return|return
 operator|new
 name|LegacyChangeIdPredicate
 argument_list|(
+name|args
+operator|.
+name|getSchema
+argument_list|()
+argument_list|,
 name|Change
 operator|.
 name|Id

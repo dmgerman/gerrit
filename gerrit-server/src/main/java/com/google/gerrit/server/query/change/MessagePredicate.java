@@ -239,6 +239,11 @@ argument_list|(
 operator|new
 name|LegacyChangeIdPredicate
 argument_list|(
+name|index
+operator|.
+name|getSchema
+argument_list|()
+argument_list|,
 name|object
 operator|.
 name|getId

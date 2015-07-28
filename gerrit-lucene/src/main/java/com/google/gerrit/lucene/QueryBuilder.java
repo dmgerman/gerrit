@@ -66,6 +66,26 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|LegacyChangeIdPredicate
+operator|.
+name|idField
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -160,22 +180,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeField
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|FieldType
 import|;
 end_import
@@ -225,6 +229,22 @@ operator|.
 name|index
 operator|.
 name|RegexPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|Schema
 import|;
 end_import
 
@@ -522,26 +542,18 @@ specifier|public
 class|class
 name|QueryBuilder
 block|{
-DECL|field|ID_FIELD
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|ID_FIELD
-init|=
-name|ChangeField
-operator|.
-name|LEGACY_ID
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
-DECL|method|idTerm (ChangeData cd)
+DECL|method|idTerm (Schema<ChangeData> schema, ChangeData cd)
 specifier|public
 specifier|static
 name|Term
 name|idTerm
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
@@ -549,7 +561,13 @@ block|{
 return|return
 name|intTerm
 argument_list|(
-name|ID_FIELD
+name|idField
+argument_list|(
+name|schema
+argument_list|)
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|cd
 operator|.
@@ -561,12 +579,18 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|idTerm (Change.Id id)
+DECL|method|idTerm (Schema<ChangeData> schema, Change.Id id)
 specifier|public
 specifier|static
 name|Term
 name|idTerm
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -576,7 +600,13 @@ block|{
 return|return
 name|intTerm
 argument_list|(
-name|ID_FIELD
+name|idField
+argument_list|(
+name|schema
+argument_list|)
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|id
 operator|.
