@@ -399,6 +399,11 @@ argument_list|,
 literal|"branch"
 argument_list|)
 decl_stmt|;
+name|SubmoduleSubscription
+name|ss
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 if|if
@@ -645,7 +650,8 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-return|return
+name|ss
+operator|=
 operator|new
 name|SubmoduleSubscription
 argument_list|(
@@ -669,7 +675,7 @@ argument_list|)
 argument_list|,
 name|path
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -684,7 +690,7 @@ block|{
 comment|// Error in url syntax (in fact it is uri syntax)
 block|}
 return|return
-literal|null
+name|ss
 return|;
 block|}
 block|}
