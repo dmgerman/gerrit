@@ -360,15 +360,17 @@ comment|// so regardless of how submitWholeTopic is configured:
 name|noSubmitWholeTopicAssertions
 argument_list|(
 name|actions
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|revisionActionsTwoChangeChangesInTopic ()
+DECL|method|revisionActionsTwoChangesInTopic ()
 specifier|public
 name|void
-name|revisionActionsTwoChangeChangesInTopic
+name|revisionActionsTwoChangesInTopic
 parameter_list|()
 throws|throws
 name|Exception
@@ -387,13 +389,15 @@ argument_list|(
 name|changeId
 argument_list|)
 expr_stmt|;
-comment|// create another change with the same topic
+name|String
+name|changeId2
+init|=
 name|createChangeWithTopic
 argument_list|()
 operator|.
 name|getChangeId
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -471,7 +475,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Other changes in this topic are not ready"
+literal|"This change depends on other "
+operator|+
+literal|"changes which are not ready"
 argument_list|)
 expr_stmt|;
 block|}
@@ -480,16 +486,49 @@ block|{
 name|noSubmitWholeTopicAssertions
 argument_list|(
 name|actions
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|getActions
+argument_list|(
+name|changeId2
+argument_list|)
+operator|.
+name|get
+argument_list|(
+literal|"submit"
+argument_list|)
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
+expr_stmt|;
+name|approve
+argument_list|(
+name|changeId2
+argument_list|)
+expr_stmt|;
+name|noSubmitWholeTopicAssertions
+argument_list|(
+name|getActions
+argument_list|(
+name|changeId2
+argument_list|)
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 annotation|@
 name|Test
-DECL|method|revisionActionsTwoChangeChangesInTopic_conflicting ()
+DECL|method|revisionActionsTwoChangesInTopic_conflicting ()
 specifier|public
 name|void
-name|revisionActionsTwoChangeChangesInTopic_conflicting
+name|revisionActionsTwoChangesInTopic_conflicting
 parameter_list|()
 throws|throws
 name|Exception
@@ -674,7 +713,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Clicking the button would fail for other changes in the topic"
+literal|"Clicking the button would fail for other changes"
 argument_list|)
 expr_stmt|;
 block|}
@@ -683,22 +722,43 @@ block|{
 name|noSubmitWholeTopicAssertions
 argument_list|(
 name|actions
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 annotation|@
 name|Test
-DECL|method|revisionActionsTwoChangeChangesInTopicReady ()
+DECL|method|revisionActionsTwoChangesInTopicWithAncestorReady ()
 specifier|public
 name|void
-name|revisionActionsTwoChangeChangesInTopicReady
+name|revisionActionsTwoChangesInTopicWithAncestorReady
 parameter_list|()
 throws|throws
 name|Exception
 block|{
 name|String
 name|changeId
+init|=
+name|createChange
+argument_list|()
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
+name|approve
+argument_list|(
+name|changeId
+argument_list|)
+expr_stmt|;
+name|approve
+argument_list|(
+name|changeId
+argument_list|)
+expr_stmt|;
+name|String
+name|changeId1
 init|=
 name|createChangeWithTopic
 argument_list|()
@@ -708,7 +768,7 @@ argument_list|()
 decl_stmt|;
 name|approve
 argument_list|(
-name|changeId
+name|changeId1
 argument_list|)
 expr_stmt|;
 comment|// create another change with the same topic
@@ -736,7 +796,7 @@ name|actions
 init|=
 name|getActions
 argument_list|(
-name|changeId
+name|changeId1
 argument_list|)
 decl_stmt|;
 name|commonActionsAssertions
@@ -803,7 +863,11 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Submit all 2 changes of the same topic"
+literal|"Submit all 2 changes of the same "
+operator|+
+literal|"topic (3 changes including ancestors "
+operator|+
+literal|"and other changes related by topic)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -812,11 +876,97 @@ block|{
 name|noSubmitWholeTopicAssertions
 argument_list|(
 name|actions
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|noSubmitWholeTopicAssertions (Map<String, ActionInfo> actions)
+annotation|@
+name|Test
+DECL|method|revisionActionsReadyWithAncestors ()
+specifier|public
+name|void
+name|revisionActionsReadyWithAncestors
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|changeId
+init|=
+name|createChange
+argument_list|()
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
+name|approve
+argument_list|(
+name|changeId
+argument_list|)
+expr_stmt|;
+name|approve
+argument_list|(
+name|changeId
+argument_list|)
+expr_stmt|;
+name|String
+name|changeId1
+init|=
+name|createChange
+argument_list|()
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
+name|approve
+argument_list|(
+name|changeId1
+argument_list|)
+expr_stmt|;
+name|String
+name|changeId2
+init|=
+name|createChangeWithTopic
+argument_list|()
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
+name|approve
+argument_list|(
+name|changeId2
+argument_list|)
+expr_stmt|;
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|ActionInfo
+argument_list|>
+name|actions
+init|=
+name|getActions
+argument_list|(
+name|changeId2
+argument_list|)
+decl_stmt|;
+name|commonActionsAssertions
+argument_list|(
+name|actions
+argument_list|)
+expr_stmt|;
+comment|// The topic contains only one change, so standard text applies
+name|noSubmitWholeTopicAssertions
+argument_list|(
+name|actions
+argument_list|,
+literal|3
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|noSubmitWholeTopicAssertions (Map<String, ActionInfo> actions, int nrChanges)
 specifier|private
 name|void
 name|noSubmitWholeTopicAssertions
@@ -828,6 +978,9 @@ argument_list|,
 name|ActionInfo
 argument_list|>
 name|actions
+parameter_list|,
+name|int
+name|nrChanges
 parameter_list|)
 block|{
 name|ActionInfo
@@ -874,6 +1027,13 @@ argument_list|(
 literal|"POST"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|nrChanges
+operator|==
+literal|1
+condition|)
+block|{
 name|assertThat
 argument_list|(
 name|info
@@ -886,6 +1046,31 @@ argument_list|(
 literal|"Submit patch set 1 into master"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|assertThat
+argument_list|(
+name|info
+operator|.
+name|title
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Submit patch set 1 and ancestors (%d changes "
+operator|+
+literal|"altogether) into master"
+argument_list|,
+name|nrChanges
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|commonActionsAssertions (Map<String, ActionInfo> actions)
 specifier|private
