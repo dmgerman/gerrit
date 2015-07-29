@@ -1036,17 +1036,17 @@ specifier|final
 name|String
 name|secArmored
 decl_stmt|;
-DECL|field|pub
+DECL|field|pubRing
 specifier|private
 specifier|final
-name|PGPPublicKey
-name|pub
+name|PGPPublicKeyRing
+name|pubRing
 decl_stmt|;
-DECL|field|sec
+DECL|field|secRing
 specifier|private
 specifier|final
-name|PGPSecretKey
-name|sec
+name|PGPSecretKeyRing
+name|secRing
 decl_stmt|;
 DECL|method|TestKey (String pubArmored, String secArmored)
 specifier|private
@@ -1084,7 +1084,7 @@ argument_list|()
 decl_stmt|;
 name|this
 operator|.
-name|pub
+name|pubRing
 operator|=
 operator|new
 name|PGPPublicKeyRing
@@ -1096,13 +1096,10 @@ argument_list|)
 argument_list|,
 name|fc
 argument_list|)
-operator|.
-name|getPublicKey
-argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|sec
+name|secRing
 operator|=
 operator|new
 name|PGPSecretKeyRing
@@ -1114,9 +1111,6 @@ argument_list|)
 argument_list|,
 name|fc
 argument_list|)
-operator|.
-name|getSecretKey
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getPublicKeyArmored ()
@@ -1137,13 +1131,25 @@ return|return
 name|secArmored
 return|;
 block|}
+DECL|method|getPublicKeyRing ()
+name|PGPPublicKeyRing
+name|getPublicKeyRing
+parameter_list|()
+block|{
+return|return
+name|pubRing
+return|;
+block|}
 DECL|method|getPublicKey ()
 name|PGPPublicKey
 name|getPublicKey
 parameter_list|()
 block|{
 return|return
-name|pub
+name|pubRing
+operator|.
+name|getPublicKey
+argument_list|()
 return|;
 block|}
 DECL|method|getSecretKey ()
@@ -1152,7 +1158,10 @@ name|getSecretKey
 parameter_list|()
 block|{
 return|return
-name|sec
+name|secRing
+operator|.
+name|getSecretKey
+argument_list|()
 return|;
 block|}
 DECL|method|getKeyId ()
@@ -1161,7 +1170,8 @@ name|getKeyId
 parameter_list|()
 block|{
 return|return
-name|pub
+name|getPublicKey
+argument_list|()
 operator|.
 name|getKeyID
 argument_list|()
@@ -1176,7 +1186,8 @@ return|return
 operator|(
 name|String
 operator|)
-name|pub
+name|getPublicKey
+argument_list|()
 operator|.
 name|getUserIDs
 argument_list|()
@@ -1193,7 +1204,8 @@ throws|throws
 name|PGPException
 block|{
 return|return
-name|sec
+name|getSecretKey
+argument_list|()
 operator|.
 name|extractPrivateKey
 argument_list|(
