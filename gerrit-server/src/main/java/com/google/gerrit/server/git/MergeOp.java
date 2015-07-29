@@ -1895,7 +1895,8 @@ argument_list|)
 return|;
 block|}
 DECL|method|checkSubmitRule (ChangeData cd)
-specifier|private
+specifier|public
+specifier|static
 name|List
 argument_list|<
 name|SubmitRecord
