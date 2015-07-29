@@ -698,7 +698,7 @@ specifier|native
 name|boolean
 name|mergeable
 parameter_list|()
-comment|/*-{ return this.mergeable || false; }-*/
+comment|/*-{ return this.mergeable ? true : false; }-*/
 function_decl|;
 DECL|method|insertions ()
 specifier|public
