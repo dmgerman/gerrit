@@ -826,18 +826,6 @@ name|r
 parameter_list|)
 comment|/*-{ this.current_revision = r; }-*/
 function_decl|;
-DECL|method|setSubmittable (boolean x)
-specifier|private
-specifier|final
-specifier|native
-name|void
-name|setSubmittable
-parameter_list|(
-name|boolean
-name|x
-parameter_list|)
-comment|/*-{ this.submittable = x; }-*/
-function_decl|;
 DECL|method|revisions ()
 specifier|public
 specifier|final
@@ -1005,9 +993,6 @@ block|{
 name|init
 argument_list|()
 expr_stmt|;
-name|getMissingLabelIndex
-argument_list|()
-expr_stmt|;
 return|return
 name|_submittable
 argument_list|()
@@ -1022,7 +1007,7 @@ name|_submittable
 parameter_list|()
 comment|/*-{ return this.submittable ? true : false; }-*/
 function_decl|;
-comment|/**    * As a side effect this.submittable is evaluated and set accordingly.    *    * @return the index of the missing label or -1    *         if no label is missing, or if more than one label is missing.    */
+comment|/**    * @return the index of the missing label or -1    *         if no label is missing, or if more than one label is missing.    */
 DECL|method|getMissingLabelIndex ()
 specifier|public
 specifier|final
@@ -1132,11 +1117,6 @@ condition|)
 block|{
 comment|// more than one label is missing, so it's unclear which to quick
 comment|// approve, return -1
-name|setSubmittable
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 operator|-
 literal|1
@@ -1166,25 +1146,12 @@ comment|// Submit cannot happen, do not quick approve.
 case|case
 name|IMPOSSIBLE
 case|:
-name|setSubmittable
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 return|return
 operator|-
 literal|1
 return|;
 block|}
 block|}
-name|setSubmittable
-argument_list|(
-name|ret
-operator|==
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
 return|return
 name|ret
 return|;

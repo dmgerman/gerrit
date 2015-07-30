@@ -196,6 +196,11 @@ specifier|public
 name|Boolean
 name|mergeable
 decl_stmt|;
+DECL|field|submittable
+specifier|public
+name|Boolean
+name|submittable
+decl_stmt|;
 DECL|field|insertions
 specifier|public
 name|Integer
