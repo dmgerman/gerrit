@@ -132,6 +132,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -414,9 +430,14 @@ init|=
 name|getRemoteHead
 argument_list|()
 decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|change1
+init|=
 name|createChange
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
@@ -425,12 +446,35 @@ init|=
 name|createChange
 argument_list|()
 decl_stmt|;
+name|Change
+operator|.
+name|Id
+name|id1
+init|=
+name|change1
+operator|.
+name|getPatchSetId
+argument_list|()
+operator|.
+name|getParentKey
+argument_list|()
+decl_stmt|;
 name|submitWithConflict
 argument_list|(
 name|change2
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+literal|"The change could not be submitted because it depends on change(s) ["
+operator|+
+name|id1
+operator|+
+literal|"], which could not be submitted because:\n"
+operator|+
+name|id1
+operator|+
+literal|": needs Code-Review;"
 argument_list|)
 expr_stmt|;
 name|RevCommit
@@ -581,6 +625,22 @@ name|change2
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+literal|"Cannot merge "
+operator|+
+name|change2
+operator|.
+name|getCommitId
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|"\n"
+operator|+
+literal|"Project policy requires all submissions to be a fast-forward.\n\n"
+operator|+
+literal|"Please rebase the change locally and upload again for review."
 argument_list|)
 expr_stmt|;
 name|assertThat

@@ -752,6 +752,8 @@ name|change2
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+literal|"Merge Conflict"
 argument_list|)
 expr_stmt|;
 name|RevCommit

@@ -521,6 +521,24 @@ name|change2
 operator|.
 name|getChangeId
 argument_list|()
+argument_list|,
+literal|"Cannot merge "
+operator|+
+name|change2
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|"\n"
+operator|+
+literal|"Change could not be merged due to a path conflict.\n\n"
+operator|+
+literal|"Please rebase the change locally "
+operator|+
+literal|"and upload the rebased commit for review."
 argument_list|)
 expr_stmt|;
 name|assertThat

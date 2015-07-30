@@ -76,6 +76,22 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Iterables
@@ -165,6 +181,20 @@ operator|.
 name|ListChangesOption
 operator|.
 name|DETAILED_LABELS
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
 import|;
 end_import
 
@@ -1603,16 +1633,21 @@ argument_list|,
 name|HttpStatus
 operator|.
 name|SC_OK
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|submitWithConflict (String changeId)
+DECL|method|submitWithConflict (String changeId, String expectedError)
 specifier|protected
 name|void
 name|submitWithConflict
 parameter_list|(
 name|String
 name|changeId
+parameter_list|,
+name|String
+name|expectedError
 parameter_list|)
 throws|throws
 name|Exception
@@ -1624,10 +1659,12 @@ argument_list|,
 name|HttpStatus
 operator|.
 name|SC_CONFLICT
+argument_list|,
+name|expectedError
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|submit (String changeId, int expectedStatus)
+DECL|method|submit (String changeId, int expectedStatus, String msg)
 specifier|private
 name|void
 name|submit
@@ -1637,6 +1674,9 @@ name|changeId
 parameter_list|,
 name|int
 name|expectedStatus
+parameter_list|,
+name|String
+name|msg
 parameter_list|)
 throws|throws
 name|Exception
@@ -1691,6 +1731,15 @@ operator|.
 name|SC_OK
 condition|)
 block|{
+name|checkArgument
+argument_list|(
+name|msg
+operator|==
+literal|null
+argument_list|,
+literal|"msg must be null for successful submits"
+argument_list|)
+expr_stmt|;
 name|ChangeInfo
 name|change
 init|=
@@ -1733,6 +1782,37 @@ expr_stmt|;
 name|checkMergeResult
 argument_list|(
 name|change
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|msg
+argument_list|)
+argument_list|,
+literal|"msg must be a valid string "
+operator|+
+literal|"containing an error message for unsuccessful submits"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|r
+operator|.
+name|getEntityContent
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|msg
 argument_list|)
 expr_stmt|;
 block|}
