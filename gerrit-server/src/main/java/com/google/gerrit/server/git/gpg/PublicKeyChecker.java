@@ -130,6 +130,29 @@ specifier|public
 class|class
 name|PublicKeyChecker
 block|{
+comment|/**    * Check a public key.    *    * @param key the public key.    */
+DECL|method|check (PGPPublicKey key)
+specifier|public
+specifier|final
+name|CheckResult
+name|check
+parameter_list|(
+name|PGPPublicKey
+name|key
+parameter_list|)
+block|{
+return|return
+name|check
+argument_list|(
+name|key
+argument_list|,
+name|key
+operator|.
+name|getKeyID
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**    * Check a public key.    *    * @param key the public key.    * @param expectedKeyId the key ID that the caller expects.    */
 DECL|method|check (PGPPublicKey key, long expectedKeyId)
 specifier|public

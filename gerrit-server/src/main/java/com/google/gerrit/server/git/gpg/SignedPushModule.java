@@ -409,12 +409,38 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
 name|BouncyCastleUtil
 operator|.
 name|havePGP
 argument_list|()
 condition|)
 block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"BouncyCastle PGP not installed; signed push verification is"
+operator|+
+literal|" disabled"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|bind
+argument_list|(
+name|PublicKeyChecker
+operator|.
+name|class
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|GerritPublicKeyChecker
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|DynamicSet
 operator|.
 name|bind
@@ -434,19 +460,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"BouncyCastle PGP not installed; signed push verification is"
-operator|+
-literal|" disabled"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Singleton

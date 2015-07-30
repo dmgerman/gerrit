@@ -288,9 +288,15 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
+DECL|field|keyChecker
+specifier|private
+specifier|final
+name|PublicKeyChecker
+name|keyChecker
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SignedPushPreReceiveHook ( GitRepositoryManager repoManager, AllUsersName allUsers)
+DECL|method|SignedPushPreReceiveHook ( GitRepositoryManager repoManager, AllUsersName allUsers, PublicKeyChecker keyChecker)
 specifier|public
 name|SignedPushPreReceiveHook
 parameter_list|(
@@ -299,6 +305,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsers
+parameter_list|,
+name|PublicKeyChecker
+name|keyChecker
 parameter_list|)
 block|{
 name|this
@@ -312,6 +321,12 @@ operator|.
 name|allUsers
 operator|=
 name|allUsers
+expr_stmt|;
+name|this
+operator|.
+name|keyChecker
+operator|=
+name|keyChecker
 expr_stmt|;
 block|}
 annotation|@
@@ -356,9 +371,7 @@ init|=
 operator|new
 name|PushCertificateChecker
 argument_list|(
-operator|new
-name|PublicKeyChecker
-argument_list|()
+name|keyChecker
 argument_list|)
 block|{
 annotation|@
