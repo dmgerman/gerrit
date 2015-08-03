@@ -129,6 +129,13 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|delete ()
+name|void
+name|delete
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    */
 DECL|class|NotImplemented
 specifier|public
@@ -143,6 +150,22 @@ DECL|method|get ()
 specifier|public
 name|GpgKeyInfo
 name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|delete ()
+specifier|public
+name|void
+name|delete
 parameter_list|()
 throws|throws
 name|RestApiException
