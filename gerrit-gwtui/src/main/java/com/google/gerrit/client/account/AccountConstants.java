@@ -240,14 +240,9 @@ name|String
 name|tabAccountSummary
 parameter_list|()
 function_decl|;
-DECL|method|tabPreferences ()
+DECL|method|tabAgreements ()
 name|String
-name|tabPreferences
-parameter_list|()
-function_decl|;
-DECL|method|tabWatchedProjects ()
-name|String
-name|tabWatchedProjects
+name|tabAgreements
 parameter_list|()
 function_decl|;
 DECL|method|tabContactInformation ()
@@ -255,9 +250,9 @@ name|String
 name|tabContactInformation
 parameter_list|()
 function_decl|;
-DECL|method|tabSshKeys ()
+DECL|method|tabGpgKeys ()
 name|String
-name|tabSshKeys
+name|tabGpgKeys
 parameter_list|()
 function_decl|;
 DECL|method|tabHttpAccess ()
@@ -265,19 +260,29 @@ name|String
 name|tabHttpAccess
 parameter_list|()
 function_decl|;
-DECL|method|tabWebIdentities ()
-name|String
-name|tabWebIdentities
-parameter_list|()
-function_decl|;
 DECL|method|tabMyGroups ()
 name|String
 name|tabMyGroups
 parameter_list|()
 function_decl|;
-DECL|method|tabAgreements ()
+DECL|method|tabPreferences ()
 name|String
-name|tabAgreements
+name|tabPreferences
+parameter_list|()
+function_decl|;
+DECL|method|tabSshKeys ()
+name|String
+name|tabSshKeys
+parameter_list|()
+function_decl|;
+DECL|method|tabWatchedProjects ()
+name|String
+name|tabWatchedProjects
+parameter_list|()
+function_decl|;
+DECL|method|tabWebIdentities ()
+name|String
+name|tabWebIdentities
 parameter_list|()
 function_decl|;
 DECL|method|buttonShowAddSshKey ()
@@ -428,6 +433,21 @@ function_decl|;
 DECL|method|sshHostKeyKnownHostEntry ()
 name|String
 name|sshHostKeyKnownHostEntry
+parameter_list|()
+function_decl|;
+DECL|method|gpgKeyId ()
+name|String
+name|gpgKeyId
+parameter_list|()
+function_decl|;
+DECL|method|gpgKeyFingerprint ()
+name|String
+name|gpgKeyFingerprint
+parameter_list|()
+function_decl|;
+DECL|method|gpgKeyUserIds ()
+name|String
+name|gpgKeyUserIds
 parameter_list|()
 function_decl|;
 DECL|method|webIdStatus ()

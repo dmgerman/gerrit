@@ -923,6 +923,11 @@ name|String
 name|sshKeyPanelInvalid
 parameter_list|()
 function_decl|;
+DECL|method|sshKeyTable ()
+name|String
+name|sshKeyTable
+parameter_list|()
+function_decl|;
 DECL|method|stringListPanelButtons ()
 name|String
 name|stringListPanelButtons

@@ -209,6 +209,15 @@ name|SETTINGS_SSHKEYS
 init|=
 literal|"/settings/ssh-keys"
 decl_stmt|;
+DECL|field|SETTINGS_GPGKEYS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_GPGKEYS
+init|=
+literal|"/settings/gpg-keys"
+decl_stmt|;
 DECL|field|SETTINGS_HTTP_PASSWORD
 specifier|public
 specifier|static
