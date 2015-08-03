@@ -144,6 +144,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|BinaryResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|NotImplementedException
 import|;
 end_import
@@ -422,6 +438,14 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Returns patch of revision.    */
+DECL|method|patch ()
+name|BinaryResult
+name|patch
+parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
@@ -868,6 +892,22 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|patch ()
+specifier|public
+name|BinaryResult
+name|patch
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
