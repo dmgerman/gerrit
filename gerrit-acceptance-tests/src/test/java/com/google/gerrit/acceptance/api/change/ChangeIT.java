@@ -1707,6 +1707,25 @@ operator|.
 name|subject
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|Iterables
+operator|.
+name|getOnlyElement
+argument_list|(
+name|info
+operator|.
+name|messages
+argument_list|)
+operator|.
+name|message
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Uploaded patch set 1."
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
