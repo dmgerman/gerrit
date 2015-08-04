@@ -953,6 +953,19 @@ return|return
 name|old
 return|;
 block|}
+DECL|method|get ()
+specifier|public
+name|Context
+name|get
+parameter_list|()
+block|{
+return|return
+name|current
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 DECL|method|disableDb ()
 specifier|public
 name|Context

@@ -120,6 +120,7 @@ end_import
 
 begin_class
 DECL|class|Fingerprint
+specifier|public
 class|class
 name|Fingerprint
 block|{
@@ -131,6 +132,7 @@ index|[]
 name|fp
 decl_stmt|;
 DECL|method|Fingerprint (byte[] fp)
+specifier|public
 name|Fingerprint
 parameter_list|(
 name|byte
@@ -163,6 +165,7 @@ name|fp
 expr_stmt|;
 block|}
 DECL|method|get ()
+specifier|public
 name|byte
 index|[]
 name|get
@@ -173,6 +176,7 @@ name|fp
 return|;
 block|}
 DECL|method|equalsBytes (byte[] bytes)
+specifier|public
 name|boolean
 name|equalsBytes
 parameter_list|(
@@ -321,6 +325,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getId ()
+specifier|public
 name|long
 name|getId
 parameter_list|()

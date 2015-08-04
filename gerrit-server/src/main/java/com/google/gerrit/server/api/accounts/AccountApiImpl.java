@@ -965,7 +965,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|putGpgKeys (List<String> add)
+DECL|method|putGpgKeys (List<String> add, List<String> delete)
 specifier|public
 name|Map
 argument_list|<
@@ -980,6 +980,12 @@ argument_list|<
 name|String
 argument_list|>
 name|add
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|delete
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -1000,6 +1006,12 @@ operator|.
 name|add
 operator|=
 name|add
+expr_stmt|;
+name|in
+operator|.
+name|delete
+operator|=
+name|delete
 expr_stmt|;
 try|try
 block|{

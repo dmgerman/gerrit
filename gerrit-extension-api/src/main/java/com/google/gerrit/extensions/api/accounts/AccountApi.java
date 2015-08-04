@@ -207,7 +207,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|putGpgKeys (List<String> add)
+DECL|method|putGpgKeys (List<String> add, List<String> remove)
 name|Map
 argument_list|<
 name|String
@@ -221,6 +221,12 @@ argument_list|<
 name|String
 argument_list|>
 name|add
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|remove
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -318,7 +324,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|putGpgKeys (List<String> add)
+DECL|method|putGpgKeys (List<String> add, List<String> remove)
 specifier|public
 name|Map
 argument_list|<
@@ -333,6 +339,12 @@ argument_list|<
 name|String
 argument_list|>
 name|add
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|remove
 parameter_list|)
 throws|throws
 name|RestApiException
