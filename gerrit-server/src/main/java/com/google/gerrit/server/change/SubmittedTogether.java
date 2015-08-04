@@ -487,14 +487,6 @@ argument_list|,
 name|ListChangesOption
 operator|.
 name|CURRENT_COMMIT
-argument_list|,
-name|ListChangesOption
-operator|.
-name|DETAILED_LABELS
-argument_list|,
-name|ListChangesOption
-operator|.
-name|LABELS
 argument_list|)
 argument_list|)
 operator|.

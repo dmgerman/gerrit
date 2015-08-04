@@ -1753,6 +1753,42 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**    * Check if there are any problems with the given change. It doesn't take    * any problems of related changes into account.    *<p>    * @param cd the change to check for submittability    * @return if the change has any problems for submission    */
+DECL|method|submittable (ChangeData cd)
+specifier|public
+name|boolean
+name|submittable
+parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|)
+block|{
+try|try
+block|{
+name|MergeOp
+operator|.
+name|checkSubmitRule
+argument_list|(
+name|cd
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|ResourceConflictException
+decl||
+name|OrmException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
 annotation|@
 name|Override
 DECL|method|getDescription (RevisionResource resource)
