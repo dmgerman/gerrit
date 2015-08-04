@@ -86,6 +86,38 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugins
+operator|.
+name|Plugin
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugins
+operator|.
+name|StopPluginListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -101,6 +133,20 @@ operator|.
 name|inject
 operator|.
 name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|internal
+operator|.
+name|UniqueAnnotations
 import|;
 end_import
 
@@ -254,6 +300,28 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|bind
+argument_list|(
+name|StopPluginListener
+operator|.
+name|class
+argument_list|)
+operator|.
+name|annotatedWith
+argument_list|(
+name|UniqueAnnotations
+operator|.
+name|create
+argument_list|()
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|FilterProxy
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 return|;
@@ -266,6 +334,8 @@ class|class
 name|FilterProxy
 implements|implements
 name|Filter
+implements|,
+name|StopPluginListener
 block|{
 DECL|field|filters
 specifier|private
@@ -275,6 +345,19 @@ argument_list|<
 name|AllRequestFilter
 argument_list|>
 name|filters
+decl_stmt|;
+DECL|field|initializedFilters
+specifier|private
+name|DynamicSet
+argument_list|<
+name|AllRequestFilter
+argument_list|>
+name|initializedFilters
+decl_stmt|;
+DECL|field|filterConfig
+specifier|private
+name|FilterConfig
+name|filterConfig
 decl_stmt|;
 annotation|@
 name|Inject
@@ -294,6 +377,148 @@ name|filters
 operator|=
 name|filters
 expr_stmt|;
+name|this
+operator|.
+name|initializedFilters
+operator|=
+operator|new
+name|DynamicSet
+argument_list|<>
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|filterConfig
+operator|=
+literal|null
+expr_stmt|;
+block|}
+comment|/**      * Initializes a filter if needed      *      * @param filter The filter that should get initialized      * @return {@code true} iff filter is now initialized      * @throws ServletException if filter itself fails to init      */
+DECL|method|initFilterIfNeeded (AllRequestFilter filter)
+specifier|private
+specifier|synchronized
+name|boolean
+name|initFilterIfNeeded
+parameter_list|(
+name|AllRequestFilter
+name|filter
+parameter_list|)
+throws|throws
+name|ServletException
+block|{
+name|boolean
+name|ret
+init|=
+literal|true
+decl_stmt|;
+if|if
+condition|(
+name|filters
+operator|.
+name|contains
+argument_list|(
+name|filter
+argument_list|)
+condition|)
+block|{
+comment|// Regardless of whether or not the caller checked filter's
+comment|// containment in initializedFilters, we better re-check as we're now
+comment|// synchronized.
+if|if
+condition|(
+operator|!
+name|initializedFilters
+operator|.
+name|contains
+argument_list|(
+name|filter
+argument_list|)
+condition|)
+block|{
+name|filter
+operator|.
+name|init
+argument_list|(
+name|filterConfig
+argument_list|)
+expr_stmt|;
+name|initializedFilters
+operator|.
+name|add
+argument_list|(
+name|filter
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|ret
+operator|=
+literal|false
+expr_stmt|;
+block|}
+return|return
+name|ret
+return|;
+block|}
+DECL|method|cleanUpInitializedFilters ()
+specifier|private
+specifier|synchronized
+name|void
+name|cleanUpInitializedFilters
+parameter_list|()
+block|{
+name|Iterable
+argument_list|<
+name|AllRequestFilter
+argument_list|>
+name|filtersToCleanUp
+init|=
+name|initializedFilters
+decl_stmt|;
+name|initializedFilters
+operator|=
+operator|new
+name|DynamicSet
+argument_list|<>
+argument_list|()
+expr_stmt|;
+for|for
+control|(
+name|AllRequestFilter
+name|filter
+range|:
+name|filtersToCleanUp
+control|)
+block|{
+if|if
+condition|(
+name|filters
+operator|.
+name|contains
+argument_list|(
+name|filter
+argument_list|)
+condition|)
+block|{
+name|initializedFilters
+operator|.
+name|add
+argument_list|(
+name|filter
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|filter
+operator|.
+name|destroy
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 annotation|@
 name|Override
@@ -350,7 +575,7 @@ name|IOException
 throws|,
 name|ServletException
 block|{
-if|if
+while|while
 condition|(
 name|itr
 operator|.
@@ -358,10 +583,49 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
+name|AllRequestFilter
+name|filter
+init|=
 name|itr
 operator|.
 name|next
 argument_list|()
+decl_stmt|;
+comment|// To avoid {@code synchronized} on the the whole filtering (and
+comment|// thereby killing concurrency), we start the below disjunction
+comment|// with an unsynchronized check for containment. This
+comment|// unsynchronized check is always correct if no filters got
+comment|// initialized/cleaned concurrently behind our back.
+comment|// The case of concurrently initialized filters is saved by the
+comment|// call to initFilterIfNeeded. So that's fine too.
+comment|// The case of concurrently cleaned filters between the {@code if}
+comment|// condition and the call to {@code doFilter} is not saved by
+comment|// anything. If a filter is getting removed concurrently while
+comment|// another thread is in those two lines, doFilter might (but need
+comment|// not) fail.
+comment|//
+comment|// Since this failure only occurs if a filter is deleted
+comment|// (e.g.: a plugin reloaded) exactly when a thread is in those
+comment|// two lines, and it only breaks a single request, we're ok with
+comment|// it, given that this is really both really improbable and also
+comment|// the "proper" fix for it would basically kill concurrency of
+comment|// webrequests.
+if|if
+condition|(
+name|initializedFilters
+operator|.
+name|contains
+argument_list|(
+name|filter
+argument_list|)
+operator|||
+name|initFilterIfNeeded
+argument_list|(
+name|filter
+argument_list|)
+condition|)
+block|{
+name|filter
 operator|.
 name|doFilter
 argument_list|(
@@ -372,9 +636,9 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
-else|else
-block|{
+block|}
 name|last
 operator|.
 name|doFilter
@@ -384,7 +648,6 @@ argument_list|,
 name|res
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 operator|.
@@ -409,6 +672,14 @@ parameter_list|)
 throws|throws
 name|ServletException
 block|{
+comment|// Plugins that provide AllRequestFilters might get loaded later at
+comment|// runtime, long after this init method had been called. To allow to
+comment|// correctly init such plugins' AllRequestFilters, we keep the
+comment|// FilterConfig around, and reuse it to lazy init the AllRequestFilters.
+name|filterConfig
+operator|=
+name|config
+expr_stmt|;
 for|for
 control|(
 name|AllRequestFilter
@@ -417,11 +688,9 @@ range|:
 name|filters
 control|)
 block|{
-name|f
-operator|.
-name|init
+name|initFilterIfNeeded
 argument_list|(
-name|config
+name|f
 argument_list|)
 expr_stmt|;
 block|}
@@ -430,24 +699,58 @@ annotation|@
 name|Override
 DECL|method|destroy ()
 specifier|public
+specifier|synchronized
 name|void
 name|destroy
 parameter_list|()
 block|{
+name|Iterable
+argument_list|<
+name|AllRequestFilter
+argument_list|>
+name|filtersToDestroy
+init|=
+name|initializedFilters
+decl_stmt|;
+name|initializedFilters
+operator|=
+operator|new
+name|DynamicSet
+argument_list|<>
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|AllRequestFilter
-name|f
+name|filter
 range|:
-name|filters
+name|filtersToDestroy
 control|)
 block|{
-name|f
+name|filter
 operator|.
 name|destroy
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|onStopPlugin (Plugin plugin)
+specifier|public
+name|void
+name|onStopPlugin
+parameter_list|(
+name|Plugin
+name|plugin
+parameter_list|)
+block|{
+comment|// In order to allow properly garbage collection, we need to scrub
+comment|// initializedFilters clean of filters stemming from plugins as they
+comment|// get unloaded.
+name|cleanUpInitializedFilters
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 annotation|@
