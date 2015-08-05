@@ -92,7 +92,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|info
 operator|.
 name|ChangeInfo
 import|;

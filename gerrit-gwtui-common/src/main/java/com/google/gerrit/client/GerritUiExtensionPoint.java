@@ -108,11 +108,11 @@ enum|enum
 name|Key
 block|{
 DECL|enumConstant|ACCOUNT_INFO
-DECL|enumConstant|CHANGE_ID
+DECL|enumConstant|CHANGE_INFO
 DECL|enumConstant|PROJECT_NAME
 name|ACCOUNT_INFO
 block|,
-name|CHANGE_ID
+name|CHANGE_INFO
 block|,
 name|PROJECT_NAME
 block|}

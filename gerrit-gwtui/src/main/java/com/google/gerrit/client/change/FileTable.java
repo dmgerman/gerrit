@@ -198,7 +198,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|diff
+name|info
 operator|.
 name|FileInfo
 import|;

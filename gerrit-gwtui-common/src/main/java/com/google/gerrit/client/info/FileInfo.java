@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.diff
+DECL|package|com.google.gerrit.client.info
 package|package
 name|com
 operator|.
@@ -62,25 +62,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|diff
+name|info
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|changes
-operator|.
-name|Util
-import|;
-end_import
 
 begin_import
 import|import
@@ -501,12 +485,7 @@ argument_list|(
 name|path
 argument_list|)
 condition|?
-name|Util
-operator|.
-name|C
-operator|.
-name|commitMessage
-argument_list|()
+literal|"Commit Message"
 else|:
 name|path
 decl_stmt|;

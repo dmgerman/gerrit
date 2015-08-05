@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.client.info
 package|package
 name|com
 operator|.
@@ -62,71 +62,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|info
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|WebLinkInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|actions
-operator|.
-name|ActionInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|diff
-operator|.
-name|FileInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|info
-operator|.
-name|AccountInfo
-import|;
-end_import
 
 begin_import
 import|import
@@ -968,6 +906,7 @@ parameter_list|()
 comment|/*-{ return this.actions; }-*/
 function_decl|;
 DECL|method|_number ()
+specifier|public
 specifier|final
 specifier|native
 name|int
@@ -976,6 +915,7 @@ parameter_list|()
 comment|/*-{ return this._number; }-*/
 function_decl|;
 DECL|method|_more_changes ()
+specifier|public
 specifier|final
 specifier|native
 name|boolean
@@ -1446,6 +1386,7 @@ parameter_list|()
 comment|/*-{ return this.default_value; }-*/
 function_decl|;
 DECL|method|_value ()
+specifier|public
 specifier|final
 specifier|native
 name|short
