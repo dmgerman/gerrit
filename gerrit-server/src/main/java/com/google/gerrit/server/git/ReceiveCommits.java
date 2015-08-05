@@ -9883,6 +9883,8 @@ name|cmd
 argument_list|,
 literal|"change "
 operator|+
+name|canonicalWebUrl
+operator|+
 name|change
 operator|.
 name|getId

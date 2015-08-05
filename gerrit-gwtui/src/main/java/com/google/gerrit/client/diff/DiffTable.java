@@ -919,7 +919,7 @@ return|return
 name|changeType
 return|;
 block|}
-DECL|method|set (DiffPreferences prefs, JsArray<RevisionInfo> list, DiffInfo info, boolean editExists, int currentPatchSet, boolean open, boolean binary)
+DECL|method|set (DiffPreferences prefs, JsArray<RevisionInfo> list, DiffInfo info, boolean editExists, boolean current, boolean open, boolean binary)
 name|void
 name|set
 parameter_list|(
@@ -938,8 +938,8 @@ parameter_list|,
 name|boolean
 name|editExists
 parameter_list|,
-name|int
-name|currentPatchSet
+name|boolean
+name|current
 parameter_list|,
 name|boolean
 name|open
@@ -970,7 +970,7 @@ argument_list|()
 argument_list|,
 name|editExists
 argument_list|,
-name|currentPatchSet
+name|current
 argument_list|,
 name|open
 argument_list|,
@@ -990,7 +990,7 @@ argument_list|()
 argument_list|,
 name|editExists
 argument_list|,
-name|currentPatchSet
+name|current
 argument_list|,
 name|open
 argument_list|,
