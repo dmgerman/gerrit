@@ -240,6 +240,21 @@ name|AccountPreferencesInfo
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|create ()
+specifier|public
+specifier|static
+name|AccountPreferencesInfo
+name|create
+parameter_list|()
+block|{
+return|return
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+return|;
+block|}
 DECL|method|create (AccountGeneralPreferences in, List<TopMenuItem> myMenus)
 specifier|public
 specifier|static
