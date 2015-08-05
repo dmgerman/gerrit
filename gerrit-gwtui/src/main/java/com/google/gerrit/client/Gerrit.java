@@ -1505,6 +1505,12 @@ specifier|static
 name|AccountPreferencesInfo
 name|myPrefs
 decl_stmt|;
+DECL|field|urlAliasMatcher
+specifier|private
+specifier|static
+name|UrlAliasMatcher
+name|urlAliasMatcher
+decl_stmt|;
 DECL|field|hasDocumentation
 specifier|private
 specifier|static
@@ -2270,6 +2276,17 @@ return|return
 name|myServerInfo
 return|;
 block|}
+DECL|method|getUrlAliasMatcher ()
+specifier|public
+specifier|static
+name|UrlAliasMatcher
+name|getUrlAliasMatcher
+parameter_list|()
+block|{
+return|return
+name|urlAliasMatcher
+return|;
+block|}
 comment|/** Site theme information (site specific colors)/ */
 DECL|method|getTheme ()
 specifier|public
@@ -2941,6 +2958,17 @@ block|{
 name|myServerInfo
 operator|=
 name|info
+expr_stmt|;
+name|urlAliasMatcher
+operator|=
+operator|new
+name|UrlAliasMatcher
+argument_list|(
+name|info
+operator|.
+name|urlAliases
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|String
 name|du
