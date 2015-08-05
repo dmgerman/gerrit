@@ -959,7 +959,8 @@ specifier|private
 name|String
 name|mergeStrategy
 decl_stmt|;
-comment|// Only used for loading, not stored.
+comment|// Only used for loading, not stored. Callers MUST clear this field after
+comment|// loading to avoid leaking resources.
 DECL|field|load
 specifier|private
 specifier|transient
@@ -1527,10 +1528,21 @@ name|MergeException
 throws|,
 name|IOException
 block|{
-name|checkArgument
-argument_list|(
+name|LoadHelper
+name|load
+init|=
 name|key
 operator|.
+name|load
+decl_stmt|;
+name|key
+operator|.
+name|load
+operator|=
+literal|null
+expr_stmt|;
+name|checkArgument
+argument_list|(
 name|load
 operator|!=
 literal|null
@@ -1540,8 +1552,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 if|if
 condition|(
 name|key
@@ -1565,8 +1575,6 @@ block|}
 name|RefDatabase
 name|refDatabase
 init|=
-name|key
-operator|.
 name|load
 operator|.
 name|repo
@@ -1618,8 +1626,6 @@ name|CodeReviewCommit
 operator|.
 name|newRevWalk
 argument_list|(
-name|key
-operator|.
 name|load
 operator|.
 name|repo
@@ -1711,14 +1717,10 @@ name|key
 operator|.
 name|submitType
 argument_list|,
-name|key
-operator|.
 name|load
 operator|.
 name|db
 argument_list|,
-name|key
-operator|.
 name|load
 operator|.
 name|repo
@@ -1732,8 +1734,6 @@ name|canMerge
 argument_list|,
 name|accepted
 argument_list|,
-name|key
-operator|.
 name|load
 operator|.
 name|dest
@@ -1748,16 +1748,6 @@ argument_list|,
 name|rev
 argument_list|)
 return|;
-block|}
-block|}
-finally|finally
-block|{
-name|key
-operator|.
-name|load
-operator|=
-literal|null
-expr_stmt|;
 block|}
 block|}
 DECL|method|alreadyAccepted (RevWalk rw, Iterable<Ref> refs)
@@ -2077,6 +2067,15 @@ expr_stmt|;
 return|return
 literal|false
 return|;
+block|}
+finally|finally
+block|{
+name|key
+operator|.
+name|load
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 annotation|@
