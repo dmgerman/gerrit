@@ -1540,6 +1540,8 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|key
@@ -1560,8 +1562,6 @@ literal|true
 return|;
 comment|// Assume yes on new branch.
 block|}
-try|try
-block|{
 name|RefDatabase
 name|refDatabase
 init|=
