@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.account
+DECL|package|com.google.gerrit.client.info
 package|package
 name|com
 operator|.
@@ -62,25 +62,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|info
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|extensions
-operator|.
-name|TopMenuItem
-import|;
-end_import
 
 begin_import
 import|import
@@ -249,17 +233,17 @@ import|;
 end_import
 
 begin_class
-DECL|class|Preferences
+DECL|class|AccountPreferencesInfo
 specifier|public
 class|class
-name|Preferences
+name|AccountPreferencesInfo
 extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|create (AccountGeneralPreferences in, List<TopMenuItem> myMenus)
 specifier|public
 specifier|static
-name|Preferences
+name|AccountPreferencesInfo
 name|create
 parameter_list|(
 name|AccountGeneralPreferences
@@ -272,7 +256,7 @@ argument_list|>
 name|myMenus
 parameter_list|)
 block|{
-name|Preferences
+name|AccountPreferencesInfo
 name|p
 init|=
 name|createObject
@@ -1146,9 +1130,9 @@ name|m
 parameter_list|)
 comment|/*-{ this.my.push(m); }-*/
 function_decl|;
-DECL|method|Preferences ()
+DECL|method|AccountPreferencesInfo ()
 specifier|protected
-name|Preferences
+name|AccountPreferencesInfo
 parameter_list|()
 block|{   }
 block|}
