@@ -5013,11 +5013,6 @@ name|preferUnified
 parameter_list|()
 block|{
 return|return
-name|Gerrit
-operator|.
-name|isSignedIn
-argument_list|()
-operator|&&
 name|DiffView
 operator|.
 name|UNIFIED_DIFF
@@ -5026,13 +5021,10 @@ name|equals
 argument_list|(
 name|Gerrit
 operator|.
-name|getUserAccount
+name|getUserPreferences
 argument_list|()
 operator|.
-name|getGeneralPreferences
-argument_list|()
-operator|.
-name|getDiffView
+name|diffView
 argument_list|()
 argument_list|)
 return|;

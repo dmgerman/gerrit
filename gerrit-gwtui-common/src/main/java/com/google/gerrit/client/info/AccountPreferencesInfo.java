@@ -465,7 +465,9 @@ name|short
 name|changesPerPage
 parameter_list|()
 block|{
-return|return
+name|short
+name|changesPerPage
+init|=
 name|get
 argument_list|(
 literal|"changes_per_page"
@@ -474,6 +476,17 @@ name|AccountGeneralPreferences
 operator|.
 name|DEFAULT_PAGESIZE
 argument_list|)
+decl_stmt|;
+return|return
+literal|0
+operator|<
+name|changesPerPage
+condition|?
+name|changesPerPage
+else|:
+name|AccountGeneralPreferences
+operator|.
+name|DEFAULT_PAGESIZE
 return|;
 block|}
 DECL|method|get (String n, int d)
