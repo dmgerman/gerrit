@@ -701,7 +701,7 @@ operator|=
 name|path
 expr_stmt|;
 block|}
-DECL|method|setUpPatchSetNav (JsArray<RevisionInfo> list, DiffInfo.FileMeta meta, boolean editExists, int currentPatchSet, boolean open, boolean binary)
+DECL|method|setUpPatchSetNav (JsArray<RevisionInfo> list, DiffInfo.FileMeta meta, boolean editExists, boolean current, boolean open, boolean binary)
 name|void
 name|setUpPatchSetNav
 parameter_list|(
@@ -719,8 +719,8 @@ parameter_list|,
 name|boolean
 name|editExists
 parameter_list|,
-name|int
-name|currentPatchSet
+name|boolean
+name|current
 parameter_list|,
 name|boolean
 name|open
@@ -951,12 +951,7 @@ operator|(
 operator|!
 name|editExists
 operator|&&
-name|idActive
-operator|.
-name|get
-argument_list|()
-operator|==
-name|currentPatchSet
+name|current
 operator|)
 condition|)
 block|{
