@@ -847,12 +847,12 @@ specifier|private
 name|Change
 name|change
 decl_stmt|;
-DECL|field|projectKey
+DECL|field|project
 specifier|private
 name|Project
 operator|.
 name|NameKey
-name|projectKey
+name|project
 decl_stmt|;
 DECL|field|control
 specifier|private
@@ -1104,7 +1104,7 @@ operator|.
 name|getChange
 argument_list|()
 expr_stmt|;
-name|projectKey
+name|project
 operator|=
 name|change
 operator|.
@@ -1203,7 +1203,7 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|projectKey
+name|project
 argument_list|)
 init|)
 block|{
@@ -1357,7 +1357,7 @@ name|error
 argument_list|(
 literal|"Repository "
 operator|+
-name|projectKey
+name|project
 operator|+
 literal|" not found"
 argument_list|,
@@ -1386,7 +1386,7 @@ name|error
 argument_list|(
 literal|"Cannot open repository "
 operator|+
-name|projectKey
+name|project
 argument_list|,
 name|e
 argument_list|)
@@ -1416,8 +1416,6 @@ return|return
 operator|new
 name|PatchListKey
 argument_list|(
-name|projectKey
-argument_list|,
 name|aId
 argument_list|,
 name|bId
@@ -1444,6 +1442,8 @@ operator|.
 name|get
 argument_list|(
 name|key
+argument_list|,
+name|project
 argument_list|)
 return|;
 block|}
@@ -1485,7 +1485,7 @@ name|setRepository
 argument_list|(
 name|git
 argument_list|,
-name|projectKey
+name|project
 argument_list|)
 expr_stmt|;
 name|b

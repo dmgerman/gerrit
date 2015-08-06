@@ -829,7 +829,7 @@ decl_stmt|;
 name|Project
 operator|.
 name|NameKey
-name|projectKey
+name|project
 init|=
 name|change
 operator|.
@@ -870,8 +870,6 @@ init|=
 operator|new
 name|PatchListKey
 argument_list|(
-name|projectKey
-argument_list|,
 name|a
 argument_list|,
 name|b
@@ -891,6 +889,8 @@ operator|.
 name|get
 argument_list|(
 name|plKey
+argument_list|,
+name|project
 argument_list|)
 expr_stmt|;
 block|}

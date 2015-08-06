@@ -1560,6 +1560,8 @@ argument_list|(
 name|changeId
 argument_list|)
 argument_list|)
+argument_list|,
+name|project
 argument_list|)
 operator|.
 name|getPatches
@@ -1594,6 +1596,8 @@ name|revisionIdA
 argument_list|,
 name|revisionIdB
 argument_list|)
+argument_list|,
+name|project
 argument_list|)
 operator|.
 name|getPatches
@@ -1616,8 +1620,6 @@ return|return
 operator|new
 name|PatchListKey
 argument_list|(
-name|project
-argument_list|,
 name|revisionIdA
 argument_list|,
 name|revisionIdB

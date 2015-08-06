@@ -452,11 +452,6 @@ argument_list|(
 operator|new
 name|PatchListKey
 argument_list|(
-name|change
-operator|.
-name|getProject
-argument_list|()
-argument_list|,
 name|a
 argument_list|,
 name|b
@@ -465,6 +460,11 @@ name|Whitespace
 operator|.
 name|IGNORE_NONE
 argument_list|)
+argument_list|,
+name|change
+operator|.
+name|getProject
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Map

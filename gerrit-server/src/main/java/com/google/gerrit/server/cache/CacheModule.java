@@ -144,9 +144,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|AbstractModule
+name|server
+operator|.
+name|config
+operator|.
+name|FactoryModule
 import|;
 end_import
 
@@ -259,7 +263,7 @@ specifier|abstract
 class|class
 name|CacheModule
 extends|extends
-name|AbstractModule
+name|FactoryModule
 block|{
 DECL|field|ANY_CACHE
 specifier|private

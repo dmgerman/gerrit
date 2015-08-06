@@ -946,12 +946,12 @@ specifier|final
 name|ChangeEditUtil
 name|editUtil
 decl_stmt|;
-DECL|field|projectKey
+DECL|field|project
 specifier|private
 name|Project
 operator|.
 name|NameKey
-name|projectKey
+name|project
 decl_stmt|;
 DECL|field|psIdBase
 specifier|private
@@ -1289,7 +1289,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-name|projectKey
+name|project
 operator|=
 name|control
 operator|.
@@ -1543,7 +1543,7 @@ name|detail
 operator|.
 name|setProject
 argument_list|(
-name|projectKey
+name|project
 argument_list|)
 expr_stmt|;
 name|detail
@@ -1941,12 +1941,11 @@ argument_list|()
 throw|;
 block|}
 block|}
-DECL|method|keyFor (final Whitespace whitespace)
+DECL|method|keyFor (Whitespace whitespace)
 specifier|private
 name|PatchListKey
 name|keyFor
 parameter_list|(
-specifier|final
 name|Whitespace
 name|whitespace
 parameter_list|)
@@ -1955,8 +1954,6 @@ return|return
 operator|new
 name|PatchListKey
 argument_list|(
-name|projectKey
-argument_list|,
 name|oldId
 argument_list|,
 name|newId
@@ -1982,6 +1979,8 @@ operator|.
 name|get
 argument_list|(
 name|key
+argument_list|,
+name|project
 argument_list|)
 return|;
 block|}
