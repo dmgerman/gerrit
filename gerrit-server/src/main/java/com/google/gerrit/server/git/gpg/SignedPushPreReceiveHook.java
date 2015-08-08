@@ -106,22 +106,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|ReceiveCommits
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -263,7 +247,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Pre-receive hook to check signed pushes.  *<p>  * If configured, prior to processing any push using {@link ReceiveCommits},  * requires that any push certificate present must be valid.  */
+comment|/**  * Pre-receive hook to check signed pushes.  *<p>  * If configured, prior to processing any push using  * {@link com.google.gerrit.server.git.ReceiveCommits}, requires that any push  * certificate present must be valid.  */
 end_comment
 
 begin_class
