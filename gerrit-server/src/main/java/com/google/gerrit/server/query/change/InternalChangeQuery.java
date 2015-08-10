@@ -521,7 +521,7 @@ name|status
 argument_list|)
 return|;
 block|}
-DECL|method|commit (String id)
+DECL|method|commit (Schema<ChangeData> schema, String id)
 specifier|private
 specifier|static
 name|Predicate
@@ -530,14 +530,22 @@ name|ChangeData
 argument_list|>
 name|commit
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|String
 name|id
 parameter_list|)
 block|{
 return|return
 operator|new
-name|ExactCommitPredicate
+name|CommitPredicate
 argument_list|(
+name|schema
+argument_list|,
 name|id
 argument_list|)
 return|;
@@ -845,6 +853,17 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+init|=
+name|schema
+argument_list|(
+name|indexes
+argument_list|)
+decl_stmt|;
 name|List
 argument_list|<
 name|Predicate
@@ -878,6 +897,8 @@ name|add
 argument_list|(
 name|commit
 argument_list|(
+name|schema
+argument_list|,
 name|s
 argument_list|)
 argument_list|)
@@ -1128,6 +1149,11 @@ name|query
 argument_list|(
 name|commit
 argument_list|(
+name|schema
+argument_list|(
+name|indexes
+argument_list|)
+argument_list|,
 name|id
 operator|.
 name|name
