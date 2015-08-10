@@ -724,6 +724,22 @@ name|sshd
 operator|.
 name|common
 operator|.
+name|compression
+operator|.
+name|CompressionZlib
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|common
+operator|.
 name|file
 operator|.
 name|FileSystemFactory
@@ -2065,6 +2081,21 @@ argument_list|,
 literal|"kerberosPrincipal"
 argument_list|)
 decl_stmt|;
+specifier|final
+name|boolean
+name|enableCompression
+init|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"sshd"
+argument_list|,
+literal|"enableCompression"
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
 name|SshSessionBackend
 name|backend
 init|=
@@ -2161,7 +2192,9 @@ name|initSubsystems
 argument_list|()
 expr_stmt|;
 name|initCompression
-argument_list|()
+argument_list|(
+name|enableCompression
+argument_list|)
 expr_stmt|;
 name|initUserAuth
 argument_list|(
@@ -4346,27 +4379,33 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initCompression ()
+DECL|method|initCompression (boolean enableCompression)
 specifier|private
 name|void
 name|initCompression
-parameter_list|()
+parameter_list|(
+name|boolean
+name|enableCompression
+parameter_list|)
 block|{
-comment|// Always disable transparent compression. The majority of our data
-comment|// transfer is highly compressed Git pack files. We cannot make them
-comment|// any smaller than they already are.
-comment|//
-name|setCompressionFactories
-argument_list|(
-name|Arrays
-operator|.
-expr|<
+name|List
+argument_list|<
 name|NamedFactory
 argument_list|<
 name|Compression
 argument_list|>
-operator|>
-name|asList
+argument_list|>
+name|compressionFactories
+init|=
+name|Lists
+operator|.
+name|newArrayList
+argument_list|()
+decl_stmt|;
+comment|// Always support no compression over SSHD.
+name|compressionFactories
+operator|.
+name|add
 argument_list|(
 operator|new
 name|CompressionNone
@@ -4374,6 +4413,38 @@ operator|.
 name|Factory
 argument_list|()
 argument_list|)
+expr_stmt|;
+comment|// In the general case, we want to disable transparent compression, since
+comment|// the majority of our data transfer is highly compressed Git pack files
+comment|// and we cannot make them any smaller than they already are.
+comment|//
+comment|// However, if there are CPU in abundance and the server is reachable through
+comment|// slow networks, gits with huge amount of refs can benefit from SSH-compression
+comment|// since git does not compress the ref announcement during the handshake.
+comment|//
+comment|// Compression can be especially useful when Gerrit slaves are being used
+comment|// for the larger clones and fetches and the master server mostly takes small
+comment|// receive-packs.
+if|if
+condition|(
+name|enableCompression
+condition|)
+block|{
+name|compressionFactories
+operator|.
+name|add
+argument_list|(
+operator|new
+name|CompressionZlib
+operator|.
+name|Factory
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|setCompressionFactories
+argument_list|(
+name|compressionFactories
 argument_list|)
 expr_stmt|;
 block|}
