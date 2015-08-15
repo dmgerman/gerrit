@@ -192,7 +192,7 @@ name|setHeader
 argument_list|(
 literal|"Expires"
 argument_list|,
-literal|"Fri, 01 Jan 1990 00:00:00 GMT"
+literal|"Mon, 01 Jan 1990 00:00:00 GMT"
 argument_list|)
 expr_stmt|;
 name|res
