@@ -267,6 +267,7 @@ return|return
 name|fp
 return|;
 block|}
+comment|/**    * Wrap a fingerprint byte array.    *<p>    * The newly created Fingerprint object takes ownership of the byte array,    * which must not be subsequently modified. (Most callers, such as hex    * decoders and {@code    * org.bouncycastle.openpgp.PGPPublicKey#getFingerprint()}, already produce    * fresh byte arrays).    *    * @param fp 20-byte fingerprint byte array to wrap.    */
 DECL|method|Fingerprint (byte[] fp)
 specifier|public
 name|Fingerprint
@@ -276,8 +277,6 @@ index|[]
 name|fp
 parameter_list|)
 block|{
-comment|// Don't bother with defensive copies; PGPPublicKey#getFingerprint() already
-comment|// does so.
 name|this
 operator|.
 name|fp
