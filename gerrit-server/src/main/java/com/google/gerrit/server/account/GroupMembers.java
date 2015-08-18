@@ -640,7 +640,7 @@ argument_list|()
 return|;
 block|}
 specifier|final
-name|Set
+name|Iterable
 argument_list|<
 name|AccountGroup
 operator|.
@@ -660,7 +660,7 @@ operator|.
 name|getProjectState
 argument_list|()
 operator|.
-name|getOwners
+name|getAllOwners
 argument_list|()
 decl_stmt|;
 specifier|final
