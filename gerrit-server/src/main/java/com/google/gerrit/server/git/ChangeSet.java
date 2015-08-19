@@ -329,6 +329,19 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
+name|ImmutableSet
+operator|.
+name|Builder
+argument_list|<
+name|Change
+argument_list|>
+name|cb
+init|=
+name|ImmutableSet
+operator|.
+name|builder
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Change
@@ -424,6 +437,13 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|cb
+operator|.
+name|add
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 operator|new
@@ -460,6 +480,11 @@ name|build
 argument_list|()
 argument_list|,
 name|cbb
+operator|.
+name|build
+argument_list|()
+argument_list|,
+name|cb
 operator|.
 name|build
 argument_list|()
@@ -582,6 +607,16 @@ name|Id
 argument_list|>
 DECL|method|changesByBranch ()
 name|changesByBranch
+parameter_list|()
+function_decl|;
+DECL|method|changes ()
+specifier|public
+specifier|abstract
+name|ImmutableSet
+argument_list|<
+name|Change
+argument_list|>
+name|changes
 parameter_list|()
 function_decl|;
 annotation|@
