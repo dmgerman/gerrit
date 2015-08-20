@@ -66,22 +66,6 @@ name|account
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|AccountException
-import|;
-end_import
-
 begin_comment
 comment|/** Authentication failed due to incorrect user or password. */
 end_comment

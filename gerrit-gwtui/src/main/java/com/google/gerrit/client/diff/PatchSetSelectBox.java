@@ -106,7 +106,9 @@ name|client
 operator|.
 name|info
 operator|.
-name|WebLinkInfo
+name|ChangeInfo
+operator|.
+name|RevisionInfo
 import|;
 end_import
 
@@ -122,9 +124,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|ChangeInfo
-operator|.
-name|RevisionInfo
+name|WebLinkInfo
 import|;
 end_import
 

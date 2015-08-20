@@ -140,7 +140,9 @@ name|client
 operator|.
 name|info
 operator|.
-name|ChangeInfo
+name|AccountInfo
+operator|.
+name|AvatarInfo
 import|;
 end_import
 
@@ -156,9 +158,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountInfo
-operator|.
-name|AvatarInfo
+name|ChangeInfo
 import|;
 end_import
 
