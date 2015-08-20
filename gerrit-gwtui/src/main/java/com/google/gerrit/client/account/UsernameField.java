@@ -444,7 +444,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getUserName
+name|username
 argument_list|()
 decl_stmt|;
 name|userNameLbl
@@ -838,7 +838,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|VoidResult
 name|result
 parameter_list|)
@@ -848,7 +847,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|setUserName
+name|username
 argument_list|(
 name|newUserName
 argument_list|)

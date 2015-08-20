@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -98,6 +114,34 @@ name|JsArray
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtjsonrpc
+operator|.
+name|client
+operator|.
+name|impl
+operator|.
+name|ser
+operator|.
+name|JavaSqlTimestamp_JsonSerializer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_class
 DECL|class|AccountInfo
 specifier|public
@@ -106,6 +150,26 @@ name|AccountInfo
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|getId ()
+specifier|public
+specifier|final
+name|Account
+operator|.
+name|Id
+name|getId
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Account
+operator|.
+name|Id
+argument_list|(
+name|_accountId
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|_accountId ()
 specifier|public
 specifier|final
@@ -141,6 +205,158 @@ name|String
 name|username
 parameter_list|()
 comment|/*-{ return this.username; }-*/
+function_decl|;
+DECL|method|registeredOn ()
+specifier|public
+specifier|final
+name|Timestamp
+name|registeredOn
+parameter_list|()
+block|{
+name|Timestamp
+name|ts
+init|=
+name|_getRegisteredOn
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|ts
+operator|==
+literal|null
+condition|)
+block|{
+name|ts
+operator|=
+name|JavaSqlTimestamp_JsonSerializer
+operator|.
+name|parseTimestamp
+argument_list|(
+name|registeredOnRaw
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|_setRegisteredOn
+argument_list|(
+name|ts
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|ts
+return|;
+block|}
+DECL|method|registeredOnRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|registeredOnRaw
+parameter_list|()
+comment|/*-{ return this.registered_on; }-*/
+function_decl|;
+DECL|method|_getRegisteredOn ()
+specifier|private
+specifier|final
+specifier|native
+name|Timestamp
+name|_getRegisteredOn
+parameter_list|()
+comment|/*-{ return this._cts; }-*/
+function_decl|;
+DECL|method|_setRegisteredOn (Timestamp ts)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|_setRegisteredOn
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
+comment|/*-{ this._cts = ts; }-*/
+function_decl|;
+DECL|method|contactFiledOn ()
+specifier|public
+specifier|final
+name|Timestamp
+name|contactFiledOn
+parameter_list|()
+block|{
+if|if
+condition|(
+name|contactFiledOnRaw
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|Timestamp
+name|ts
+init|=
+name|_getContactFiledOn
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|ts
+operator|==
+literal|null
+condition|)
+block|{
+name|ts
+operator|=
+name|JavaSqlTimestamp_JsonSerializer
+operator|.
+name|parseTimestamp
+argument_list|(
+name|contactFiledOnRaw
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|_setContactFiledOn
+argument_list|(
+name|ts
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|ts
+return|;
+block|}
+return|return
+literal|null
+return|;
+block|}
+DECL|method|contactFiledOnRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|contactFiledOnRaw
+parameter_list|()
+comment|/*-{ return this.contact_filed_on; }-*/
+function_decl|;
+DECL|method|_getContactFiledOn ()
+specifier|private
+specifier|final
+specifier|native
+name|Timestamp
+name|_getContactFiledOn
+parameter_list|()
+comment|/*-{ return this._cts; }-*/
+function_decl|;
+DECL|method|_setContactFiledOn (Timestamp ts)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|_setContactFiledOn
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
+comment|/*-{ this._cts = ts; }-*/
 function_decl|;
 comment|/**    * @return true if the server supplied avatar information about this account.    *         The information may be an empty list, indicating no avatars are    *         available, such as when no plugin is installed. This method returns    *         false if the server did not check on avatars for the account.    */
 DECL|method|hasAvatarInfo ()
@@ -233,6 +449,42 @@ argument_list|>
 name|avatars
 parameter_list|()
 comment|/*-{ return this.avatars }-*/
+function_decl|;
+DECL|method|name (String n)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|name
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ this.name = n }-*/
+function_decl|;
+DECL|method|email (String e)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|email
+parameter_list|(
+name|String
+name|e
+parameter_list|)
+comment|/*-{ this.email = e }-*/
+function_decl|;
+DECL|method|username (String n)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|username
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ this.username = n }-*/
 function_decl|;
 DECL|method|create (int id, String name, String email, String username)
 specifier|public

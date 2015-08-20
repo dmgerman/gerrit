@@ -825,7 +825,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|setUserName
+name|username
 argument_list|(
 name|user
 operator|.
@@ -863,7 +863,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|setUserName
+name|username
 argument_list|(
 literal|null
 argument_list|)
@@ -1151,7 +1151,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getUserName
+name|username
 argument_list|()
 operator|!=
 literal|null
@@ -1229,7 +1229,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getUserName
+name|username
 argument_list|()
 operator|!=
 literal|null
@@ -1307,7 +1307,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getUserName
+name|username
 argument_list|()
 operator|!=
 literal|null

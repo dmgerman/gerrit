@@ -106,20 +106,6 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|FormatUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
 name|Gerrit
 import|;
 end_import
@@ -135,6 +121,22 @@ operator|.
 name|client
 operator|.
 name|GerritUiExtensionPoint
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|info
+operator|.
+name|AccountInfo
 import|;
 end_import
 
@@ -167,22 +169,6 @@ operator|.
 name|rpc
 operator|.
 name|RestApi
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
 import|;
 end_import
 
@@ -790,12 +776,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final Account account)
+DECL|method|display (AccountInfo account)
 name|void
 name|display
 parameter_list|(
-specifier|final
-name|Account
+name|AccountInfo
 name|account
 parameter_list|)
 block|{
@@ -817,12 +802,7 @@ name|avatar
 operator|.
 name|setAccount
 argument_list|(
-name|FormatUtil
-operator|.
-name|asInfo
-argument_list|(
 name|account
-argument_list|)
 argument_list|,
 literal|93
 argument_list|,
@@ -941,7 +921,7 @@ name|fieldIdx
 argument_list|,
 name|account
 operator|.
-name|getFullName
+name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -956,7 +936,7 @@ name|fieldIdx
 argument_list|,
 name|account
 operator|.
-name|getPreferredEmail
+name|email
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -973,7 +953,7 @@ name|mediumFormat
 argument_list|(
 name|account
 operator|.
-name|getRegisteredOn
+name|registeredOn
 argument_list|()
 argument_list|)
 argument_list|)

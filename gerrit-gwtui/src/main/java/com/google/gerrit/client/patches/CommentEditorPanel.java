@@ -612,7 +612,7 @@ name|setAuthorNameText
 argument_list|(
 name|Gerrit
 operator|.
-name|getUserAccountInfo
+name|getUserAccount
 argument_list|()
 argument_list|,
 name|PatchUtil

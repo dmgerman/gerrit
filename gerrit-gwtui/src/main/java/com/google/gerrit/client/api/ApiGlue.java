@@ -452,7 +452,7 @@ block|{
 return|return
 name|Gerrit
 operator|.
-name|getUserAccountInfo
+name|getUserAccount
 argument_list|()
 return|;
 block|}

@@ -656,7 +656,7 @@ name|ACCOUNT_INFO
 argument_list|,
 name|Gerrit
 operator|.
-name|getUserAccountInfo
+name|getUserAccount
 argument_list|()
 argument_list|)
 expr_stmt|;
