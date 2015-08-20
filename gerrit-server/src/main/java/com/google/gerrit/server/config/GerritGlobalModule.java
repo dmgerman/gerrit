@@ -3392,15 +3392,6 @@ operator|.
 name|class
 parameter_list|)
 constructor_decl|;
-name|bind
-parameter_list|(
-name|ChangeUserName
-operator|.
-name|CurrentUser
-operator|.
-name|class
-parameter_list|)
-constructor_decl|;
 name|factory
 parameter_list|(
 name|ChangeUserName

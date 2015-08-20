@@ -356,6 +356,65 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Set the username */
+DECL|method|setUsername (String account, String username, AsyncCallback<NativeString> cb)
+specifier|public
+specifier|static
+name|void
+name|setUsername
+parameter_list|(
+name|String
+name|account
+parameter_list|,
+name|String
+name|username
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|NativeString
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|UsernameInput
+name|input
+init|=
+name|UsernameInput
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|input
+operator|.
+name|username
+argument_list|(
+name|username
+argument_list|)
+expr_stmt|;
+operator|new
+name|RestApi
+argument_list|(
+literal|"/accounts/"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|account
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"username"
+argument_list|)
+operator|.
+name|put
+argument_list|(
+name|input
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Retrieve email addresses */
 DECL|method|getEmails (String account, AsyncCallback<JsArray<EmailInfo>> cb)
 specifier|public
@@ -797,6 +856,45 @@ block|}
 DECL|method|HttpPasswordInput ()
 specifier|protected
 name|HttpPasswordInput
+parameter_list|()
+block|{     }
+block|}
+DECL|class|UsernameInput
+specifier|private
+specifier|static
+class|class
+name|UsernameInput
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|username (String u)
+specifier|final
+specifier|native
+name|void
+name|username
+parameter_list|(
+name|String
+name|u
+parameter_list|)
+comment|/*-{ if(u)this.username=u; }-*/
+function_decl|;
+DECL|method|create ()
+specifier|static
+name|UsernameInput
+name|create
+parameter_list|()
+block|{
+return|return
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+return|;
+block|}
+DECL|method|UsernameInput ()
+specifier|protected
+name|UsernameInput
 parameter_list|()
 block|{     }
 block|}
