@@ -126,7 +126,9 @@ name|client
 operator|.
 name|info
 operator|.
-name|GitwebInfo
+name|ChangeInfo
+operator|.
+name|CommitInfo
 import|;
 end_import
 
@@ -142,9 +144,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|ChangeInfo
-operator|.
-name|CommitInfo
+name|GitwebInfo
 import|;
 end_import
 

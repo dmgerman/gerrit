@@ -174,7 +174,7 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
-name|WebSession
+name|RemoteUserUtil
 import|;
 end_import
 
@@ -188,7 +188,7 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
-name|RemoteUserUtil
+name|WebSession
 import|;
 end_import
 

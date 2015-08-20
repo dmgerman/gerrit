@@ -150,7 +150,7 @@ name|http
 operator|.
 name|HttpStatus
 operator|.
-name|SC_FORBIDDEN
+name|SC_CONFLICT
 import|;
 end_import
 
@@ -164,7 +164,7 @@ name|http
 operator|.
 name|HttpStatus
 operator|.
-name|SC_CONFLICT
+name|SC_FORBIDDEN
 import|;
 end_import
 

@@ -110,7 +110,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AuthType
+name|Account
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -126,9 +128,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-operator|.
-name|FieldName
+name|AuthType
 import|;
 end_import
 
