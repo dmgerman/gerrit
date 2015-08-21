@@ -1003,6 +1003,13 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|nrChanges
+operator|==
+literal|1
+condition|)
+block|{
 name|assertThat
 argument_list|(
 name|info
@@ -1015,6 +1022,22 @@ argument_list|(
 literal|"Submit"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|assertThat
+argument_list|(
+name|info
+operator|.
+name|label
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Submit including parents"
+argument_list|)
+expr_stmt|;
+block|}
 name|assertThat
 argument_list|(
 name|info
