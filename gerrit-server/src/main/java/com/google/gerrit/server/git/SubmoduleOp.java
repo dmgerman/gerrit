@@ -1358,7 +1358,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|updateSuperProjects (ReviewDb db, Set<Branch.NameKey> updatedBranches)
+DECL|method|updateSuperProjects (ReviewDb db, Collection<Branch.NameKey> updatedBranches)
 specifier|protected
 name|void
 name|updateSuperProjects
@@ -1366,7 +1366,7 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|Set
+name|Collection
 argument_list|<
 name|Branch
 operator|.

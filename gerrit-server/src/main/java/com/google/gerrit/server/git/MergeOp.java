@@ -220,6 +220,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|Multimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Table
 import|;
 end_import
@@ -2487,7 +2501,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|merge (ReviewDb db, ChangeSet changes, IdentifiedUser caller, boolean checkSubmitRules)
+DECL|method|merge (ReviewDb db, Change change, IdentifiedUser caller, boolean checkSubmitRules)
 specifier|public
 name|void
 name|merge
@@ -2495,8 +2509,8 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|ChangeSet
-name|changes
+name|Change
+name|change
 parameter_list|,
 name|IdentifiedUser
 name|caller
@@ -2523,7 +2537,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|changes
+name|change
 operator|.
 name|hashCode
 argument_list|()
@@ -2538,9 +2552,9 @@ name|db
 expr_stmt|;
 name|logDebug
 argument_list|(
-literal|"Beginning merge of {}"
+literal|"Beginning integration of {}"
 argument_list|,
-name|changes
+name|change
 argument_list|)
 expr_stmt|;
 try|try
@@ -2554,7 +2568,7 @@ name|completeChangeSet
 argument_list|(
 name|db
 argument_list|,
-name|changes
+name|change
 argument_list|)
 decl_stmt|;
 name|logDebug
@@ -2675,13 +2689,47 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|logDebug
 argument_list|(
 literal|"Perform the merges"
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+name|Multimap
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|,
+name|Branch
+operator|.
+name|NameKey
+argument_list|>
+name|br
+init|=
+name|cs
+operator|.
+name|branchesByProject
+argument_list|()
+decl_stmt|;
+name|Multimap
+argument_list|<
+name|Branch
+operator|.
+name|NameKey
+argument_list|,
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|cbb
+init|=
+name|cs
+operator|.
+name|changesByBranch
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Project
@@ -2689,9 +2737,9 @@ operator|.
 name|NameKey
 name|project
 range|:
-name|cs
+name|br
 operator|.
-name|projects
+name|keySet
 argument_list|()
 control|)
 block|{
@@ -2707,10 +2755,7 @@ operator|.
 name|NameKey
 name|branch
 range|:
-name|cs
-operator|.
-name|branchesByProject
-argument_list|()
+name|br
 operator|.
 name|get
 argument_list|(
@@ -2741,10 +2786,7 @@ operator|.
 name|Id
 name|id
 range|:
-name|cs
-operator|.
-name|changesByBranch
-argument_list|()
+name|cbb
 operator|.
 name|get
 argument_list|(
@@ -2906,9 +2948,9 @@ operator|.
 name|NameKey
 name|project
 range|:
-name|cs
+name|br
 operator|.
-name|projects
+name|keySet
 argument_list|()
 control|)
 block|{
@@ -2924,10 +2966,7 @@ operator|.
 name|NameKey
 name|branch
 range|:
-name|cs
-operator|.
-name|branchesByProject
-argument_list|()
+name|br
 operator|.
 name|get
 argument_list|(
@@ -3034,9 +3073,9 @@ name|updateSuperProjects
 argument_list|(
 name|subOp
 argument_list|,
-name|cs
+name|br
 operator|.
-name|branches
+name|values
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5823,7 +5862,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|updateSuperProjects (SubmoduleOp subOp, Set<Branch.NameKey> branches)
+DECL|method|updateSuperProjects (SubmoduleOp subOp, Collection<Branch.NameKey> branches)
 specifier|private
 name|void
 name|updateSuperProjects
@@ -5831,7 +5870,7 @@ parameter_list|(
 name|SubmoduleOp
 name|subOp
 parameter_list|,
-name|Set
+name|Collection
 argument_list|<
 name|Branch
 operator|.
