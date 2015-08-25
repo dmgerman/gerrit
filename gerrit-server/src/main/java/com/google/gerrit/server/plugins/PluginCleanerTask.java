@@ -264,7 +264,9 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Ignored
+block|}
 name|int
 name|left
 init|=

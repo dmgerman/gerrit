@@ -1192,7 +1192,9 @@ parameter_list|(
 name|UnknownHostException
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Ignored
+block|}
 name|jvmSummary
 operator|.
 name|currentWorkingDirectory

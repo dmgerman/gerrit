@@ -498,7 +498,9 @@ parameter_list|(
 name|PartialResultException
 name|e
 parameter_list|)
-block|{       }
+block|{
+comment|// Ignored
+block|}
 return|return
 name|r
 return|;

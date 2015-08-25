@@ -2722,7 +2722,17 @@ parameter_list|(
 name|PatchListNotAvailableException
 name|e
 parameter_list|)
-block|{     }
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot get patch list"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|addComments (ChangeAttribute ca, Collection<ChangeMessage> messages)
 specifier|public

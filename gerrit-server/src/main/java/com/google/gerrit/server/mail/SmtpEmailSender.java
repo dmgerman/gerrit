@@ -1654,7 +1654,9 @@ parameter_list|(
 name|IOException
 name|e2
 parameter_list|)
-block|{         }
+block|{
+comment|//Ignored
+block|}
 block|}
 throw|throw
 operator|new
@@ -1696,7 +1698,9 @@ parameter_list|(
 name|IOException
 name|e2
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 block|}
 throw|throw
 name|e

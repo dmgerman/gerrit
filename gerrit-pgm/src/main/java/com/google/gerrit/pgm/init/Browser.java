@@ -449,7 +449,9 @@ parameter_list|(
 name|InterruptedException
 name|ie
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 continue|continue;
 block|}
 name|s

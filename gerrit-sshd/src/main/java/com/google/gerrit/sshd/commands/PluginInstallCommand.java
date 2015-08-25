@@ -712,7 +712,9 @@ parameter_list|(
 name|IOException
 name|err
 parameter_list|)
-block|{       }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 block|}

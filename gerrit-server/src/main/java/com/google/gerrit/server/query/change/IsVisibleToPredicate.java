@@ -444,7 +444,9 @@ parameter_list|(
 name|NoSuchChangeException
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Ignored
+block|}
 return|return
 literal|false
 return|;
