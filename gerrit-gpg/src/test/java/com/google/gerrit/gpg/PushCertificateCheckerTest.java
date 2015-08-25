@@ -707,7 +707,7 @@ name|assertProblems
 argument_list|(
 name|cert
 argument_list|,
-literal|"No public keys found for Key ID "
+literal|"No public keys found for key ID "
 operator|+
 name|keyIdToString
 argument_list|(
@@ -752,7 +752,7 @@ name|assertProblems
 argument_list|(
 name|cert
 argument_list|,
-literal|"Invalid public key ("
+literal|"Invalid public key "
 operator|+
 name|keyToString
 argument_list|(
@@ -762,7 +762,7 @@ name|getPublicKey
 argument_list|()
 argument_list|)
 operator|+
-literal|"):\n  Key is expired"
+literal|":\n  Key is expired"
 argument_list|)
 expr_stmt|;
 block|}

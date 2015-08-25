@@ -768,7 +768,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"Invalid public key ("
+literal|"Invalid public key "
 argument_list|)
 operator|.
 name|append
@@ -781,7 +781,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"):"
+literal|":"
 argument_list|)
 decl_stmt|;
 for|for
@@ -853,7 +853,7 @@ name|deferredProblems
 operator|.
 name|add
 argument_list|(
-literal|"Error checking signature with public key ("
+literal|"Error checking signature with public key "
 operator|+
 name|keyToString
 argument_list|(
@@ -880,7 +880,7 @@ name|problems
 operator|.
 name|add
 argument_list|(
-literal|"No public keys found for Key ID "
+literal|"No public keys found for key ID "
 operator|+
 name|keyIdToString
 argument_list|(
