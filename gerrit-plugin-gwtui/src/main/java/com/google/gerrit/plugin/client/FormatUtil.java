@@ -142,8 +142,8 @@ name|FormatUtil
 block|{
 DECL|field|accountFormatter
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|AccountFormatter
 name|accountFormatter
 init|=

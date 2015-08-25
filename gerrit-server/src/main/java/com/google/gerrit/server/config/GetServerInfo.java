@@ -493,8 +493,8 @@ argument_list|>
 block|{
 DECL|field|URL_ALIAS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|URL_ALIAS
 init|=
@@ -502,8 +502,8 @@ literal|"urlAlias"
 decl_stmt|;
 DECL|field|KEY_MATCH
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|KEY_MATCH
 init|=
@@ -511,8 +511,8 @@ literal|"match"
 decl_stmt|;
 DECL|field|KEY_TOKEN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|KEY_TOKEN
 init|=

@@ -114,8 +114,8 @@ name|DateFormatter
 block|{
 DECL|field|ONE_YEAR
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|long
 name|ONE_YEAR
 init|=
