@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.gpg
+DECL|package|com.google.gerrit.gpg
 package|package
 name|com
 operator|.
@@ -60,13 +60,25 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|gpg
 package|;
 end_package
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|gpg
+operator|.
+name|PublicKeyStore
+operator|.
+name|keyIdToString
+import|;
+end_import
 
 begin_import
 import|import static
@@ -83,26 +95,6 @@ operator|.
 name|AccountExternalId
 operator|.
 name|SCHEME_GPGKEY
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|gpg
-operator|.
-name|PublicKeyStore
-operator|.
-name|keyIdToString
 import|;
 end_import
 

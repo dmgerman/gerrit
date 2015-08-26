@@ -195,7 +195,7 @@ name|EDIT_PREFIX
 init|=
 literal|"edit-"
 decl_stmt|;
-comment|/**    * Special ref for GPG public keys used by {@link    * com.google.gerrit.server.git.gpg.SignedPushPreReceiveHook}.    */
+comment|/**    * Special ref for GPG public keys used by {@link    * com.google.gerrit.gpg.SignedPushPreReceiveHook}.    */
 DECL|field|REFS_GPG_KEYS
 specifier|public
 specifier|static

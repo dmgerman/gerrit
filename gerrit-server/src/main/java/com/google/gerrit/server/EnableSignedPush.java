@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.restapi
+DECL|package|com.google.gerrit.server
 package|package
 name|com
 operator|.
@@ -60,60 +60,66 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|restapi
+name|server
 package|;
 end_package
 
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|RetentionPolicy
+operator|.
+name|RUNTIME
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|BindingAnnotation
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|Retention
+import|;
+end_import
+
 begin_comment
-comment|/** Method is not implemented in currently used implementation. */
+comment|/**  * Marker on a boolean indicating whether signed push is enabled on the server.  */
 end_comment
 
-begin_class
-DECL|class|NotImplementedException
-specifier|public
-class|class
-name|NotImplementedException
-extends|extends
-name|UnsupportedOperationException
-block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-DECL|method|NotImplementedException ()
-specifier|public
-name|NotImplementedException
-parameter_list|()
-block|{
-name|this
+begin_annotation_defn
+annotation|@
+name|Retention
 argument_list|(
-literal|"Not implemented"
+name|RUNTIME
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|NotImplementedException (String message)
+annotation|@
+name|BindingAnnotation
+DECL|annotation|EnableSignedPush
 specifier|public
-name|NotImplementedException
-parameter_list|(
-name|String
-name|message
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|message
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
+annotation_defn|@interface
+name|EnableSignedPush
+block|{ }
+end_annotation_defn
 
 end_unit
 

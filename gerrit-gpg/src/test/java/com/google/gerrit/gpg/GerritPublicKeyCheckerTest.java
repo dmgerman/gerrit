@@ -52,17 +52,13 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.gpg
+DECL|package|com.google.gerrit.gpg
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
-operator|.
-name|git
 operator|.
 name|gpg
 package|;
@@ -111,6 +107,22 @@ operator|.
 name|collect
 operator|.
 name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|gpg
+operator|.
+name|testutil
+operator|.
+name|TestKey
 import|;
 end_import
 

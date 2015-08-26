@@ -52,17 +52,13 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.gpg
+DECL|package|com.google.gerrit.gpg
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
-operator|.
-name|git
 operator|.
 name|gpg
 package|;
@@ -125,6 +121,20 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|EnableSignedPush
 import|;
 end_import
 
@@ -221,22 +231,6 @@ operator|.
 name|project
 operator|.
 name|ProjectState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|BouncyCastleUtil
 import|;
 end_import
 
@@ -432,7 +426,6 @@ end_import
 
 begin_class
 DECL|class|SignedPushModule
-specifier|public
 class|class
 name|SignedPushModule
 extends|extends
@@ -454,31 +447,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|isEnabled (Config cfg)
-specifier|public
-specifier|static
-name|boolean
-name|isEnabled
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|)
-block|{
-return|return
-name|cfg
-operator|.
-name|getBoolean
-argument_list|(
-literal|"receive"
-argument_list|,
-literal|null
-argument_list|,
-literal|"enableSignedPush"
-argument_list|,
-literal|false
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|configure ()
@@ -496,16 +464,13 @@ name|havePGP
 argument_list|()
 condition|)
 block|{
-name|log
-operator|.
-name|info
+throw|throw
+operator|new
+name|ProvisionException
 argument_list|(
-literal|"BouncyCastle PGP not installed; signed push verification is"
-operator|+
-literal|" disabled"
+literal|"Bouncy Castle PGP not installed"
 argument_list|)
-expr_stmt|;
-return|return;
+throw|;
 block|}
 name|bind
 argument_list|(
@@ -585,13 +550,18 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Initializer (@erritServerConfig Config cfg, SignedPushPreReceiveHook hook, ProjectCache projectCache)
+DECL|method|Initializer (@erritServerConfig Config cfg, @EnableSignedPush boolean enableSignedPush, SignedPushPreReceiveHook hook, ProjectCache projectCache)
 name|Initializer
 parameter_list|(
 annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
+parameter_list|,
+annotation|@
+name|EnableSignedPush
+name|boolean
+name|enableSignedPush
 parameter_list|,
 name|SignedPushPreReceiveHook
 name|hook
@@ -614,10 +584,7 @@ name|projectCache
 expr_stmt|;
 if|if
 condition|(
-name|isEnabled
-argument_list|(
-name|cfg
-argument_list|)
+name|enableSignedPush
 condition|)
 block|{
 name|String

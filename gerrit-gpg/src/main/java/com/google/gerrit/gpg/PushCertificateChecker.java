@@ -52,17 +52,13 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.gpg
+DECL|package|com.google.gerrit.gpg
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
-operator|.
-name|git
 operator|.
 name|gpg
 package|;
@@ -75,10 +71,6 @@ operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
-operator|.
-name|git
 operator|.
 name|gpg
 operator|.
@@ -95,10 +87,6 @@ operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
-operator|.
-name|git
 operator|.
 name|gpg
 operator|.

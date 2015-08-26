@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.restapi
+DECL|package|com.google.gerrit.server
 package|package
 name|com
 operator|.
@@ -60,23 +60,21 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|restapi
+name|server
 package|;
 end_package
 
 begin_comment
-comment|/** Method is not implemented in currently used implementation. */
+comment|/** Generic exception type for GPG-related exceptions. */
 end_comment
 
 begin_class
-DECL|class|NotImplementedException
+DECL|class|GpgException
 specifier|public
 class|class
-name|NotImplementedException
+name|GpgException
 extends|extends
-name|UnsupportedOperationException
+name|Exception
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -87,20 +85,9 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|NotImplementedException ()
+DECL|method|GpgException (String message)
 specifier|public
-name|NotImplementedException
-parameter_list|()
-block|{
-name|this
-argument_list|(
-literal|"Not implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|NotImplementedException (String message)
-specifier|public
-name|NotImplementedException
+name|GpgException
 parameter_list|(
 name|String
 name|message
@@ -109,6 +96,39 @@ block|{
 name|super
 argument_list|(
 name|message
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|GpgException (Throwable cause)
+specifier|public
+name|GpgException
+parameter_list|(
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|cause
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|GpgException (String message, Throwable cause)
+specifier|public
+name|GpgException
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|,
+name|cause
 argument_list|)
 expr_stmt|;
 block|}

@@ -304,6 +304,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|EnableSignedPush
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|Realm
@@ -371,24 +385,6 @@ operator|.
 name|change
 operator|.
 name|Submit
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|gpg
-operator|.
-name|SignedPushModule
 import|;
 end_import
 
@@ -604,9 +600,15 @@ name|AvatarProvider
 argument_list|>
 name|avatar
 decl_stmt|;
+DECL|field|enableSignedPush
+specifier|private
+specifier|final
+name|boolean
+name|enableSignedPush
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetServerInfo ( @erritServerConfig Config config, AuthConfig authConfig, Realm realm, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, GetArchive.AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, GitwebConfig gitwebConfig, DynamicItem<AvatarProvider> avatar)
+DECL|method|GetServerInfo ( @erritServerConfig Config config, AuthConfig authConfig, Realm realm, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, GetArchive.AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, GitwebConfig gitwebConfig, DynamicItem<AvatarProvider> avatar, @EnableSignedPush boolean enableSignedPush)
 specifier|public
 name|GetServerInfo
 parameter_list|(
@@ -663,6 +665,11 @@ argument_list|<
 name|AvatarProvider
 argument_list|>
 name|avatar
+parameter_list|,
+annotation|@
+name|EnableSignedPush
+name|boolean
+name|enableSignedPush
 parameter_list|)
 block|{
 name|this
@@ -736,6 +743,12 @@ operator|.
 name|avatar
 operator|=
 name|avatar
+expr_stmt|;
+name|this
+operator|.
+name|enableSignedPush
+operator|=
+name|enableSignedPush
 expr_stmt|;
 block|}
 annotation|@
@@ -881,9 +894,7 @@ operator|.
 name|receive
 operator|=
 name|getReceiveInfo
-argument_list|(
-name|config
-argument_list|)
+argument_list|()
 expr_stmt|;
 return|return
 name|info
@@ -2064,14 +2075,11 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getReceiveInfo (Config cfg)
+DECL|method|getReceiveInfo ()
 specifier|private
 name|ReceiveInfo
 name|getReceiveInfo
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|)
+parameter_list|()
 block|{
 name|ReceiveInfo
 name|info
@@ -2084,12 +2092,7 @@ name|info
 operator|.
 name|enableSignedPush
 operator|=
-name|SignedPushModule
-operator|.
-name|isEnabled
-argument_list|(
-name|cfg
-argument_list|)
+name|enableSignedPush
 expr_stmt|;
 return|return
 name|info
