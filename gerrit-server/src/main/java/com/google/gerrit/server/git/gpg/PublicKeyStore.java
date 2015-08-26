@@ -607,6 +607,16 @@ name|void
 name|close
 parameter_list|()
 block|{
+name|reset
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|reset ()
+specifier|private
+name|void
+name|reset
+parameter_list|()
+block|{
 if|if
 condition|(
 name|reader
@@ -637,7 +647,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|close
+name|reset
 argument_list|()
 expr_stmt|;
 name|reader
@@ -1297,7 +1307,7 @@ operator|.
 name|update
 argument_list|()
 decl_stmt|;
-name|close
+name|reset
 argument_list|()
 expr_stmt|;
 switch|switch
