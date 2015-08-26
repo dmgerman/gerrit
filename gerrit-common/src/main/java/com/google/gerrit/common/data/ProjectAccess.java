@@ -206,6 +206,14 @@ name|GroupInfo
 argument_list|>
 name|groupInfo
 decl_stmt|;
+DECL|field|fileHistoryLinks
+specifier|protected
+name|List
+argument_list|<
+name|WebLinkInfoCommon
+argument_list|>
+name|fileHistoryLinks
+decl_stmt|;
 DECL|method|ProjectAccess ()
 specifier|public
 name|ProjectAccess
@@ -580,6 +588,36 @@ name|groupInfo
 operator|=
 name|m
 expr_stmt|;
+block|}
+DECL|method|setFileHistoryLinks (List<WebLinkInfoCommon> links)
+specifier|public
+name|void
+name|setFileHistoryLinks
+parameter_list|(
+name|List
+argument_list|<
+name|WebLinkInfoCommon
+argument_list|>
+name|links
+parameter_list|)
+block|{
+name|fileHistoryLinks
+operator|=
+name|links
+expr_stmt|;
+block|}
+DECL|method|getFileHistoryLinks ()
+specifier|public
+name|List
+argument_list|<
+name|WebLinkInfoCommon
+argument_list|>
+name|getFileHistoryLinks
+parameter_list|()
+block|{
+return|return
+name|fileHistoryLinks
+return|;
 block|}
 block|}
 end_class
