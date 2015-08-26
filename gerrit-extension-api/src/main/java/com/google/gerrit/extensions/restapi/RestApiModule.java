@@ -104,9 +104,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|AbstractModule
+name|extensions
+operator|.
+name|config
+operator|.
+name|FactoryModule
 import|;
 end_import
 
@@ -173,7 +177,7 @@ specifier|abstract
 class|class
 name|RestApiModule
 extends|extends
-name|AbstractModule
+name|FactoryModule
 block|{
 DECL|field|GET
 specifier|protected
