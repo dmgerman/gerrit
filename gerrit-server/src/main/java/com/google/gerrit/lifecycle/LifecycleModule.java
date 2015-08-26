@@ -22,9 +22,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|events
+name|config
 operator|.
-name|LifecycleListener
+name|FactoryModule
 import|;
 end_import
 
@@ -36,11 +36,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|config
+name|events
 operator|.
-name|FactoryModule
+name|LifecycleListener
 import|;
 end_import
 

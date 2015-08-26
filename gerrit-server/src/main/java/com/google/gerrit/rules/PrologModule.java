@@ -74,9 +74,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|registration
+name|config
 operator|.
-name|DynamicSet
+name|FactoryModule
 import|;
 end_import
 
@@ -88,11 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|config
+name|registration
 operator|.
-name|FactoryModule
+name|DynamicSet
 import|;
 end_import
 

@@ -88,11 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|server
+name|config
 operator|.
-name|ReviewDb
+name|FactoryModule
 import|;
 end_import
 
@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|FactoryModule
+name|ReviewDb
 import|;
 end_import
 
