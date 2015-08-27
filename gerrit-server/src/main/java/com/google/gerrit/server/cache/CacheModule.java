@@ -146,7 +146,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
 name|config
 operator|.
