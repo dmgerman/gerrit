@@ -1566,11 +1566,6 @@ name|pdb
 init|=
 literal|null
 decl_stmt|;
-name|RevWalk
-name|recRw
-init|=
-literal|null
-decl_stmt|;
 name|StringBuilder
 name|msgbuf
 init|=
@@ -2280,14 +2275,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-name|recRw
-operator|=
-operator|new
-name|RevWalk
-argument_list|(
-name|pdb
-argument_list|)
-expr_stmt|;
 comment|// Recursive call: update subscribers of the subscriber
 name|updateSuperProjects
 argument_list|(
@@ -2325,19 +2312,6 @@ throw|;
 block|}
 finally|finally
 block|{
-if|if
-condition|(
-name|recRw
-operator|!=
-literal|null
-condition|)
-block|{
-name|recRw
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|pdb
