@@ -997,11 +997,11 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|removeGpgKeys (String account, Iterable<String> fingerprints, AsyncCallback<NativeMap<GpgKeyInfo>> cb)
+DECL|method|deleteGpgKeys (String account, Iterable<String> fingerprints, AsyncCallback<NativeMap<GpgKeyInfo>> cb)
 specifier|public
 specifier|static
 name|void
-name|removeGpgKeys
+name|deleteGpgKeys
 parameter_list|(
 name|String
 name|account
@@ -1042,7 +1042,7 @@ name|post
 argument_list|(
 name|GpgKeysInput
 operator|.
-name|remove
+name|delete
 argument_list|(
 name|fingerprints
 argument_list|)
@@ -1069,7 +1069,7 @@ name|key
 parameter_list|)
 block|{
 return|return
-name|createAdd
+name|createWithAdd
 argument_list|(
 name|Natives
 operator|.
@@ -1080,10 +1080,10 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|remove (Iterable<String> fingerprints)
+DECL|method|delete (Iterable<String> fingerprints)
 specifier|static
 name|GpgKeysInput
-name|remove
+name|delete
 parameter_list|(
 name|Iterable
 argument_list|<
@@ -1093,7 +1093,7 @@ name|fingerprints
 parameter_list|)
 block|{
 return|return
-name|createRemove
+name|createWithDelete
 argument_list|(
 name|Natives
 operator|.
@@ -1104,29 +1104,29 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|createAdd (JsArrayString keys)
+DECL|method|createWithAdd (JsArrayString keys)
 specifier|private
 specifier|static
 specifier|native
 name|GpgKeysInput
-name|createAdd
+name|createWithAdd
 parameter_list|(
 name|JsArrayString
 name|keys
 parameter_list|)
 comment|/*-{       return {'add': keys};     }-*/
 function_decl|;
-DECL|method|createRemove ( JsArrayString fingerprints)
+DECL|method|createWithDelete ( JsArrayString fingerprints)
 specifier|private
 specifier|static
 specifier|native
 name|GpgKeysInput
-name|createRemove
+name|createWithDelete
 parameter_list|(
 name|JsArrayString
 name|fingerprints
 parameter_list|)
-comment|/*-{       return {'remove': fingerprints};     }-*/
+comment|/*-{       return {'delete': fingerprints};     }-*/
 function_decl|;
 DECL|method|GpgKeysInput ()
 specifier|protected

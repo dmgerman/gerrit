@@ -1803,7 +1803,7 @@ block|}
 block|}
 name|AccountApi
 operator|.
-name|removeGpgKeys
+name|deleteGpgKeys
 argument_list|(
 literal|"self"
 argument_list|,
