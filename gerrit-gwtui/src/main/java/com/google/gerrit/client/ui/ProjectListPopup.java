@@ -1094,8 +1094,6 @@ argument_list|(
 name|popup
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|GlobalKey
 operator|.
 name|addApplication
@@ -1115,13 +1113,6 @@ name|popup
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|e
-parameter_list|)
-block|{       }
 name|projectsTab
 operator|.
 name|setRegisterKeys

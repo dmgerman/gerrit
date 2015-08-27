@@ -347,7 +347,9 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 name|manager
 operator|.
 name|stop

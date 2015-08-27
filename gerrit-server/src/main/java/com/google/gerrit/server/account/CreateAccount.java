@@ -1194,7 +1194,9 @@ parameter_list|(
 name|OrmException
 name|cleanupError
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 throw|throw
 operator|new
 name|UnprocessableEntityException

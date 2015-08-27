@@ -195,6 +195,8 @@ DECL|class|AndPredicateTest
 specifier|public
 class|class
 name|AndPredicateTest
+extends|extends
+name|PredicateTest
 block|{
 DECL|class|TestPredicate
 specifier|private
@@ -403,8 +405,15 @@ argument_list|,
 name|b
 argument_list|)
 decl_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|n
 operator|.
 name|getChildren
@@ -413,13 +422,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{     }
 name|assertChildren
 argument_list|(
 literal|"clear"
@@ -434,8 +436,15 @@ name|b
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|n
 operator|.
 name|getChildren
@@ -446,13 +455,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{     }
 name|assertChildren
 argument_list|(
 literal|"remove(0)"
@@ -467,8 +469,15 @@ name|b
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|UnsupportedOperationException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|n
 operator|.
 name|getChildren
@@ -480,13 +489,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{     }
 name|assertChildren
 argument_list|(
 literal|"remove(0)"

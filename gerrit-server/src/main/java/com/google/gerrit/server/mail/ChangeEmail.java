@@ -890,7 +890,17 @@ parameter_list|(
 name|OrmException
 name|e
 parameter_list|)
-block|{     }
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot get change reviewers"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 name|formatFooter
 argument_list|()
 expr_stmt|;

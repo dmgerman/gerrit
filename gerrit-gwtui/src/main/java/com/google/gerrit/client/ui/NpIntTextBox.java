@@ -504,7 +504,9 @@ parameter_list|(
 name|NumberFormatException
 name|e
 parameter_list|)
-block|{       }
+block|{
+comment|// Ignored
+block|}
 block|}
 return|return
 name|intValue

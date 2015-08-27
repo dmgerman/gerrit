@@ -1897,7 +1897,9 @@ parameter_list|(
 name|PartialResultException
 name|e
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 specifier|final
@@ -2126,7 +2128,9 @@ parameter_list|(
 name|PartialResultException
 name|e
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 catch|catch

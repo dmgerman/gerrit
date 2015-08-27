@@ -192,7 +192,9 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{       }
+block|{
+comment|// Ignored
+block|}
 name|loader
 operator|.
 name|rescan
@@ -221,7 +223,9 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 end_class

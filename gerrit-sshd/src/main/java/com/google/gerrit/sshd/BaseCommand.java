@@ -1640,7 +1640,9 @@ parameter_list|(
 name|IOException
 name|e2
 parameter_list|)
-block|{       }
+block|{
+comment|// Ignored
+block|}
 catch|catch
 parameter_list|(
 name|Throwable
@@ -1690,7 +1692,9 @@ parameter_list|(
 name|IOException
 name|e2
 parameter_list|)
-block|{       }
+block|{
+comment|// Ignored
+block|}
 catch|catch
 parameter_list|(
 name|Throwable
@@ -2163,7 +2167,9 @@ parameter_list|(
 name|Throwable
 name|e2
 parameter_list|)
-block|{           }
+block|{
+comment|// Ignored
+block|}
 try|try
 block|{
 name|err
@@ -2177,7 +2183,9 @@ parameter_list|(
 name|Throwable
 name|e2
 parameter_list|)
-block|{           }
+block|{
+comment|// Ignored
+block|}
 name|rc
 operator|=
 name|handleError
