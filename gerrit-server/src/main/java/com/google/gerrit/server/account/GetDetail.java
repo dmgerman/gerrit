@@ -316,15 +316,6 @@ operator|.
 name|getRegisteredOn
 argument_list|()
 expr_stmt|;
-name|info
-operator|.
-name|contactFiledOn
-operator|=
-name|a
-operator|.
-name|getContactFiledOn
-argument_list|()
-expr_stmt|;
 try|try
 block|{
 name|directory
@@ -393,11 +384,6 @@ DECL|field|registeredOn
 specifier|public
 name|Timestamp
 name|registeredOn
-decl_stmt|;
-DECL|field|contactFiledOn
-specifier|public
-name|Timestamp
-name|contactFiledOn
 decl_stmt|;
 DECL|method|AccountDetailInfo (Integer id)
 specifier|public

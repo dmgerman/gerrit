@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.contact
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|contact
+name|schema
 package|;
 end_package
 
@@ -72,13 +72,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|common
-operator|.
-name|errors
-operator|.
-name|ContactInformationStoreException
+name|Inject
 import|;
 end_import
 
@@ -88,79 +84,37 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|ContactInformation
+name|Provider
 import|;
 end_import
 
 begin_class
-DECL|class|NoContactStore
+DECL|class|Schema_111
 specifier|public
 class|class
-name|NoContactStore
-implements|implements
-name|ContactStore
+name|Schema_111
+extends|extends
+name|SchemaVersion
 block|{
 annotation|@
-name|Override
-DECL|method|isEnabled ()
-specifier|public
-name|boolean
-name|isEnabled
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|store (Account account, ContactInformation info)
-specifier|public
-name|void
-name|store
+name|Inject
+DECL|method|Schema_111 (Provider<Schema_110> prior)
+name|Schema_111
 parameter_list|(
-name|Account
-name|account
-parameter_list|,
-name|ContactInformation
-name|info
+name|Provider
+argument_list|<
+name|Schema_110
+argument_list|>
+name|prior
 parameter_list|)
-throws|throws
-name|ContactInformationStoreException
 block|{
-throw|throw
-operator|new
-name|ContactInformationStoreException
+name|super
 argument_list|(
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"ContactStore not configured"
+name|prior
 argument_list|)
-argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 end_class

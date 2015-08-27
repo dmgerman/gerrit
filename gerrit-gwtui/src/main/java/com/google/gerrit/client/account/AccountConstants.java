@@ -565,31 +565,6 @@ name|String
 name|contactFieldEmail
 parameter_list|()
 function_decl|;
-DECL|method|contactPrivacyDetailsHtml ()
-name|String
-name|contactPrivacyDetailsHtml
-parameter_list|()
-function_decl|;
-DECL|method|contactFieldAddress ()
-name|String
-name|contactFieldAddress
-parameter_list|()
-function_decl|;
-DECL|method|contactFieldCountry ()
-name|String
-name|contactFieldCountry
-parameter_list|()
-function_decl|;
-DECL|method|contactFieldPhone ()
-name|String
-name|contactFieldPhone
-parameter_list|()
-function_decl|;
-DECL|method|contactFieldFax ()
-name|String
-name|contactFieldFax
-parameter_list|()
-function_decl|;
 DECL|method|buttonOpenRegisterNewEmail ()
 name|String
 name|buttonOpenRegisterNewEmail

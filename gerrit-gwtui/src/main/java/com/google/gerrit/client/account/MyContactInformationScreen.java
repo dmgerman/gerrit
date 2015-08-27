@@ -76,7 +76,7 @@ name|SettingsScreen
 block|{
 DECL|field|panel
 specifier|private
-name|ContactPanelFull
+name|ContactPanelShort
 name|panel
 decl_stmt|;
 annotation|@
@@ -95,7 +95,7 @@ expr_stmt|;
 name|panel
 operator|=
 operator|new
-name|ContactPanelFull
+name|ContactPanelShort
 argument_list|()
 block|{
 annotation|@

@@ -671,23 +671,7 @@ specifier|protected
 name|String
 name|preferredEmail
 decl_stmt|;
-comment|/** When did the user last give us contact information? Null if never. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|5
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|contactFiledOn
-specifier|protected
-name|Timestamp
-name|contactFiledOn
-decl_stmt|;
+comment|// DELETED: id = 5 (contactFiledOn)
 comment|/** This user's preferences */
 annotation|@
 name|Column
@@ -897,42 +881,6 @@ block|{
 name|generalPreferences
 operator|=
 name|p
-expr_stmt|;
-block|}
-DECL|method|isContactFiled ()
-specifier|public
-name|boolean
-name|isContactFiled
-parameter_list|()
-block|{
-return|return
-name|contactFiledOn
-operator|!=
-literal|null
-return|;
-block|}
-DECL|method|getContactFiledOn ()
-specifier|public
-name|Timestamp
-name|getContactFiledOn
-parameter_list|()
-block|{
-return|return
-name|contactFiledOn
-return|;
-block|}
-DECL|method|setContactFiled (Timestamp ts)
-specifier|public
-name|void
-name|setContactFiled
-parameter_list|(
-name|Timestamp
-name|ts
-parameter_list|)
-block|{
-name|contactFiledOn
-operator|=
-name|ts
 expr_stmt|;
 block|}
 DECL|method|isActive ()

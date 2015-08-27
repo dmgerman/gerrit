@@ -791,17 +791,6 @@ argument_list|(
 literal|50
 argument_list|)
 expr_stmt|;
-comment|// contactstore
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|contactStore
-argument_list|)
-operator|.
-name|isNull
-argument_list|()
-expr_stmt|;
 comment|// download
 name|assertThat
 argument_list|(
@@ -1206,17 +1195,6 @@ name|isEqualTo
 argument_list|(
 literal|30
 argument_list|)
-expr_stmt|;
-comment|// contactstore
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|contactStore
-argument_list|)
-operator|.
-name|isNull
-argument_list|()
 expr_stmt|;
 comment|// download
 name|assertThat

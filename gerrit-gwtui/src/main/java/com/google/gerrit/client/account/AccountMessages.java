@@ -82,16 +82,6 @@ name|Messages
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Date
-import|;
-end_import
-
 begin_interface
 DECL|interface|AccountMessages
 specifier|public
@@ -130,14 +120,6 @@ name|enterIAGREE
 parameter_list|(
 name|String
 name|iagree
-parameter_list|)
-function_decl|;
-DECL|method|contactOnFile (Date lastDate)
-name|String
-name|contactOnFile
-parameter_list|(
-name|Date
-name|lastDate
 parameter_list|)
 function_decl|;
 block|}

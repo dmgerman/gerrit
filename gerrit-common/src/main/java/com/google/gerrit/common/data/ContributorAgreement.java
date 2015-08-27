@@ -145,11 +145,6 @@ name|PermissionRule
 argument_list|>
 name|accepted
 decl_stmt|;
-DECL|field|requireContactInformation
-specifier|protected
-name|boolean
-name|requireContactInformation
-decl_stmt|;
 DECL|field|autoVerify
 specifier|protected
 name|GroupReference
@@ -278,32 +273,6 @@ operator|=
 name|accepted
 expr_stmt|;
 block|}
-DECL|method|isRequireContactInformation ()
-specifier|public
-name|boolean
-name|isRequireContactInformation
-parameter_list|()
-block|{
-return|return
-name|requireContactInformation
-return|;
-block|}
-DECL|method|setRequireContactInformation (boolean requireContactInformation)
-specifier|public
-name|void
-name|setRequireContactInformation
-parameter_list|(
-name|boolean
-name|requireContactInformation
-parameter_list|)
-block|{
-name|this
-operator|.
-name|requireContactInformation
-operator|=
-name|requireContactInformation
-expr_stmt|;
-block|}
 DECL|method|getAutoVerify ()
 specifier|public
 name|GroupReference
@@ -426,12 +395,6 @@ name|Collections
 operator|.
 name|emptyList
 argument_list|()
-expr_stmt|;
-name|ca
-operator|.
-name|requireContactInformation
-operator|=
-name|requireContactInformation
 expr_stmt|;
 if|if
 condition|(

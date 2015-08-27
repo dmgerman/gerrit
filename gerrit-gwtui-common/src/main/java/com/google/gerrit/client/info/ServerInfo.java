@@ -176,15 +176,6 @@ name|change
 parameter_list|()
 comment|/*-{ return this.change; }-*/
 function_decl|;
-DECL|method|contactStore ()
-specifier|public
-specifier|final
-specifier|native
-name|ContactStoreInfo
-name|contactStore
-parameter_list|()
-comment|/*-{ return this.contact_store; }-*/
-function_decl|;
 DECL|method|download ()
 specifier|public
 specifier|final
@@ -337,20 +328,6 @@ name|_urlAliases
 parameter_list|()
 comment|/*-{ return this.url_aliases; }-*/
 function_decl|;
-DECL|method|hasContactStore ()
-specifier|public
-specifier|final
-name|boolean
-name|hasContactStore
-parameter_list|()
-block|{
-return|return
-name|contactStore
-argument_list|()
-operator|!=
-literal|null
-return|;
-block|}
 DECL|method|hasSshd ()
 specifier|public
 specifier|final
@@ -435,29 +412,6 @@ function_decl|;
 DECL|method|ChangeConfigInfo ()
 specifier|protected
 name|ChangeConfigInfo
-parameter_list|()
-block|{     }
-block|}
-DECL|class|ContactStoreInfo
-specifier|public
-specifier|static
-class|class
-name|ContactStoreInfo
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|url ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|url
-parameter_list|()
-comment|/*-{ return this.url; }-*/
-function_decl|;
-DECL|method|ContactStoreInfo ()
-specifier|protected
-name|ContactStoreInfo
 parameter_list|()
 block|{     }
 block|}

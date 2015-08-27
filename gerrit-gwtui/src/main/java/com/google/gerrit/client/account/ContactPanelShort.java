@@ -242,22 +242,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|ContactInformation
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|core
@@ -2422,13 +2406,6 @@ operator|=
 name|currentEmail
 expr_stmt|;
 block|}
-specifier|final
-name|ContactInformation
-name|info
-init|=
-name|toContactInformation
-argument_list|()
-decl_stmt|;
 name|save
 operator|.
 name|setEnabled
@@ -2452,8 +2429,6 @@ argument_list|(
 name|newName
 argument_list|,
 name|newEmail
-argument_list|,
-name|info
 argument_list|,
 operator|new
 name|GerritCallback
@@ -2588,15 +2563,6 @@ argument_list|(
 name|me
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|toContactInformation ()
-name|ContactInformation
-name|toContactInformation
-parameter_list|()
-block|{
-return|return
-literal|null
-return|;
 block|}
 DECL|method|emailListIndexOf (String value)
 specifier|private

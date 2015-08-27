@@ -88,16 +88,6 @@ name|GerritCss
 extends|extends
 name|CssResource
 block|{
-DECL|method|accountContactOnFile ()
-name|String
-name|accountContactOnFile
-parameter_list|()
-function_decl|;
-DECL|method|accountContactPrivacyDetails ()
-name|String
-name|accountContactPrivacyDetails
-parameter_list|()
-function_decl|;
 DECL|method|accountDashboard ()
 name|String
 name|accountDashboard

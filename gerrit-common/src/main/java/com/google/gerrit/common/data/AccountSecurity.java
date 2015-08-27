@@ -136,22 +136,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|ContactInformation
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtjsonrpc
 operator|.
 name|common
@@ -303,7 +287,7 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|updateContact (String fullName, String emailAddr, ContactInformation info, AsyncCallback<Account> callback)
+DECL|method|updateContact (String fullName, String emailAddr, AsyncCallback<Account> callback)
 name|void
 name|updateContact
 parameter_list|(
@@ -312,9 +296,6 @@ name|fullName
 parameter_list|,
 name|String
 name|emailAddr
-parameter_list|,
-name|ContactInformation
-name|info
 parameter_list|,
 name|AsyncCallback
 argument_list|<

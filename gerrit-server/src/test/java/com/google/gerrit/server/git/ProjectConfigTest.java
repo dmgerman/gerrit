@@ -676,9 +676,6 @@ operator|+
 literal|"  accepted = group Staff\n"
 comment|//
 operator|+
-literal|"  requireContactInformation = true\n"
-comment|//
-operator|+
 literal|"  autoVerify = group Developers\n"
 comment|//
 operator|+
@@ -835,17 +832,6 @@ name|isEqualTo
 argument_list|(
 literal|"Developers"
 argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|ca
-operator|.
-name|isRequireContactInformation
-argument_list|()
-argument_list|)
-operator|.
-name|isTrue
-argument_list|()
 expr_stmt|;
 name|AccessSection
 name|section
@@ -1426,9 +1412,6 @@ operator|+
 literal|"  accepted = group Developers\n"
 comment|//
 operator|+
-literal|"  requireContactInformation = true\n"
-comment|//
-operator|+
 literal|"  autoVerify = group Developers\n"
 comment|//
 operator|+
@@ -1524,13 +1507,6 @@ argument_list|(
 literal|"Individual"
 argument_list|)
 decl_stmt|;
-name|ca
-operator|.
-name|setRequireContactInformation
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|ca
 operator|.
 name|setAccepted
