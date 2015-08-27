@@ -233,6 +233,11 @@ name|LibraryDownloader
 argument_list|>
 name|downloadProvider
 decl_stmt|;
+DECL|field|bouncyCastlePGP
+comment|/* final */
+name|LibraryDownloader
+name|bouncyCastlePGP
+decl_stmt|;
 DECL|field|bouncyCastleProvider
 comment|/* final */
 name|LibraryDownloader
