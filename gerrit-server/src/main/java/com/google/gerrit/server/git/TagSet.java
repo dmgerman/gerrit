@@ -555,6 +555,11 @@ name|TagMatcher
 name|m
 parameter_list|)
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 name|RevWalk
 name|rw
 init|=

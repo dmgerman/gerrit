@@ -2909,6 +2909,8 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|TemporaryBuffer
 name|buf
 init|=
@@ -2925,8 +2927,7 @@ literal|1024
 operator|*
 literal|1024
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|fmt
 operator|.
@@ -2988,14 +2989,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|buf
-operator|.
-name|destroy
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 name|DirCacheBuilder
