@@ -1613,6 +1613,11 @@ parameter_list|)
 block|{
 try|try
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 name|ReviewDb
 name|db
 init|=

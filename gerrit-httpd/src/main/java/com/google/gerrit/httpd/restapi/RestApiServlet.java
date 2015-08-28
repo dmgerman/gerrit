@@ -7892,6 +7892,8 @@ argument_list|,
 name|maxSize
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|OutputStream
 name|encoded
 init|=
@@ -7910,7 +7912,8 @@ argument_list|,
 name|ISO_8859_1
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|bin
 operator|.
 name|writeTo
@@ -7918,11 +7921,7 @@ argument_list|(
 name|encoded
 argument_list|)
 expr_stmt|;
-name|encoded
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 return|return
 name|asBinaryResult
 argument_list|(

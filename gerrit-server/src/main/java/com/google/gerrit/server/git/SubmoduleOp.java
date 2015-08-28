@@ -1561,11 +1561,6 @@ name|author
 init|=
 literal|null
 decl_stmt|;
-name|Repository
-name|pdb
-init|=
-literal|null
-decl_stmt|;
 name|StringBuilder
 name|msgbuf
 init|=
@@ -1575,15 +1570,16 @@ argument_list|(
 literal|"Updated git submodules\n\n"
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|boolean
 name|sameAuthorForAll
 init|=
 literal|true
 decl_stmt|;
+try|try
+init|(
+name|Repository
 name|pdb
-operator|=
+init|=
 name|repoManager
 operator|.
 name|openRepository
@@ -1593,7 +1589,8 @@ operator|.
 name|getParentKey
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|pdb
@@ -2309,22 +2306,6 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|pdb
-operator|!=
-literal|null
-condition|)
-block|{
-name|pdb
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|readTree (final Repository pdb, final Ref branch)

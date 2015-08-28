@@ -249,6 +249,11 @@ name|cleanup
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
+annotation|@
 name|Override
 DECL|method|get ()
 specifier|public

@@ -973,6 +973,11 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 name|ReviewDb
 name|db
 init|=
