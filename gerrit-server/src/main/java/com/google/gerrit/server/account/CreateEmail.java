@@ -427,6 +427,7 @@ argument_list|>
 block|{
 DECL|field|log
 specifier|private
+specifier|static
 specifier|final
 name|Logger
 name|log
@@ -435,8 +436,9 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|getClass
-argument_list|()
+name|CreateEmail
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 DECL|interface|Factory
