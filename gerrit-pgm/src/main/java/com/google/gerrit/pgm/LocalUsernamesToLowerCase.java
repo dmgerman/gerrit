@@ -444,7 +444,7 @@ name|monitor
 operator|.
 name|beginTask
 argument_list|(
-literal|"Converting local username"
+literal|"Converting local usernames"
 argument_list|,
 name|todo
 operator|.
