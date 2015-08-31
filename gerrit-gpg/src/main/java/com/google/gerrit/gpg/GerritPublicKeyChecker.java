@@ -449,16 +449,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|checkCustom (PGPPublicKey key, long expectedKeyId, List<String> problems)
+DECL|method|checkCustom (PGPPublicKey key, List<String> problems)
 specifier|public
 name|void
 name|checkCustom
 parameter_list|(
 name|PGPPublicKey
 name|key
-parameter_list|,
-name|long
-name|expectedKeyId
 parameter_list|,
 name|List
 argument_list|<

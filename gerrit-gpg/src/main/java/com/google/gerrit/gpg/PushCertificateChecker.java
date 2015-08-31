@@ -818,11 +818,6 @@ operator|.
 name|check
 argument_list|(
 name|k
-argument_list|,
-name|sig
-operator|.
-name|getKeyID
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

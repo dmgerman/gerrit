@@ -65,22 +65,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|gpg
-operator|.
-name|PublicKeyStore
-operator|.
-name|keyIdToString
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -133,32 +117,6 @@ name|PGPPublicKey
 name|key
 parameter_list|)
 block|{
-return|return
-name|check
-argument_list|(
-name|key
-argument_list|,
-name|key
-operator|.
-name|getKeyID
-argument_list|()
-argument_list|)
-return|;
-block|}
-comment|/**    * Check a public key.    *    * @param key the public key.    * @param expectedKeyId the key ID that the caller expects.    */
-DECL|method|check (PGPPublicKey key, long expectedKeyId)
-specifier|public
-specifier|final
-name|CheckResult
-name|check
-parameter_list|(
-name|PGPPublicKey
-name|key
-parameter_list|,
-name|long
-name|expectedKeyId
-parameter_list|)
-block|{
 name|List
 argument_list|<
 name|String
@@ -170,29 +128,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|key
-operator|.
-name|getKeyID
-argument_list|()
-operator|!=
-name|expectedKeyId
-condition|)
-block|{
-name|problems
-operator|.
-name|add
-argument_list|(
-literal|"Public key does not match ID "
-operator|+
-name|keyIdToString
-argument_list|(
-name|expectedKeyId
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|key
@@ -271,8 +206,6 @@ name|checkCustom
 argument_list|(
 name|key
 argument_list|,
-name|expectedKeyId
-argument_list|,
 name|problems
 argument_list|)
 expr_stmt|;
@@ -284,17 +217,14 @@ name|problems
 argument_list|)
 return|;
 block|}
-comment|/**    * Perform custom checks.    *<p>    * Default implementation does nothing, but may be overridden by subclasses.    *    * @param key the public key.    * @param expectedKeyId the key ID that the caller expects.    * @param problems list to which any problems should be added.    */
-DECL|method|checkCustom (PGPPublicKey key, long expectedKeyId, List<String> problems)
+comment|/**    * Perform custom checks.    *<p>    * Default implementation does nothing, but may be overridden by subclasses.    *    * @param key the public key.    * @param problems list to which any problems should be added.    */
+DECL|method|checkCustom (PGPPublicKey key, List<String> problems)
 specifier|public
 name|void
 name|checkCustom
 parameter_list|(
 name|PGPPublicKey
 name|key
-parameter_list|,
-name|long
-name|expectedKeyId
 parameter_list|,
 name|List
 argument_list|<
