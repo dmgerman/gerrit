@@ -128,6 +128,22 @@ name|gpg
 operator|.
 name|PublicKeyStore
 operator|.
+name|REFS_GPG_KEYS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|gpg
+operator|.
+name|PublicKeyStore
+operator|.
 name|keyToString
 import|;
 end_import
@@ -431,22 +447,6 @@ operator|.
 name|client
 operator|.
 name|AccountExternalId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RefNames
 import|;
 end_import
 
@@ -907,8 +907,6 @@ name|repo
 operator|.
 name|getRef
 argument_list|(
-name|RefNames
-operator|.
 name|REFS_GPG_KEYS
 argument_list|)
 decl_stmt|;
@@ -926,8 +924,6 @@ name|repo
 operator|.
 name|updateRef
 argument_list|(
-name|RefNames
-operator|.
 name|REFS_GPG_KEYS
 argument_list|)
 decl_stmt|;
@@ -1003,8 +999,6 @@ block|{
 name|String
 name|ref
 init|=
-name|RefNames
-operator|.
 name|REFS_GPG_KEYS
 decl_stmt|;
 try|try

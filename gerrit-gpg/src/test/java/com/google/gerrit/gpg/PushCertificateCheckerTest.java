@@ -76,6 +76,22 @@ name|gpg
 operator|.
 name|PublicKeyStore
 operator|.
+name|REFS_GPG_KEYS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|gpg
+operator|.
+name|PublicKeyStore
+operator|.
 name|keyIdToString
 import|;
 end_import
@@ -135,22 +151,6 @@ operator|.
 name|testutil
 operator|.
 name|TestKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RefNames
 import|;
 end_import
 
@@ -491,8 +491,6 @@ name|tr
 operator|.
 name|branch
 argument_list|(
-name|RefNames
-operator|.
 name|REFS_GPG_KEYS
 argument_list|)
 operator|.
