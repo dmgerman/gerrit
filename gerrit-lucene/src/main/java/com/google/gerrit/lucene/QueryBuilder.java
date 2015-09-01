@@ -763,10 +763,14 @@ block|{
 try|try
 block|{
 name|BooleanQuery
+operator|.
+name|Builder
 name|q
 init|=
 operator|new
 name|BooleanQuery
+operator|.
+name|Builder
 argument_list|()
 decl_stmt|;
 for|for
@@ -807,6 +811,9 @@ expr_stmt|;
 block|}
 return|return
 name|q
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -847,10 +854,14 @@ block|{
 try|try
 block|{
 name|BooleanQuery
+operator|.
+name|Builder
 name|b
 init|=
 operator|new
 name|BooleanQuery
+operator|.
+name|Builder
 argument_list|()
 decl_stmt|;
 name|List
@@ -996,6 +1007,9 @@ expr_stmt|;
 block|}
 return|return
 name|b
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1067,14 +1081,12 @@ argument_list|)
 return|;
 block|}
 comment|// Lucene does not support negation, start with all and subtract.
-name|BooleanQuery
-name|q
-init|=
+return|return
 operator|new
 name|BooleanQuery
+operator|.
+name|Builder
 argument_list|()
-decl_stmt|;
-name|q
 operator|.
 name|add
 argument_list|(
@@ -1084,8 +1096,6 @@ argument_list|()
 argument_list|,
 name|MUST
 argument_list|)
-expr_stmt|;
-name|q
 operator|.
 name|add
 argument_list|(
@@ -1096,9 +1106,9 @@ argument_list|)
 argument_list|,
 name|MUST_NOT
 argument_list|)
-expr_stmt|;
-return|return
-name|q
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 DECL|method|fieldQuery (IndexPredicate<ChangeData> p)
