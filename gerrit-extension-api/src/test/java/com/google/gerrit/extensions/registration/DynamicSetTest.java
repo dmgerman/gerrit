@@ -140,6 +140,15 @@ specifier|public
 class|class
 name|DynamicSetTest
 block|{
+comment|// In tests for {@link DynamicSet#contains(Object)}, be sure to avoid
+comment|// {@code assertThat(ds).contains(...) @} and
+comment|// {@code assertThat(ds).DoesNotContains(...) @} as (since
+comment|// {@link DynamicSet@} is not a {@link Collection@}) those boil down to
+comment|// iterating over the {@link DynamicSet@} and checking equality instead
+comment|// of calling {@link DynamicSet#contains(Object)}.
+comment|// To test for {@link DynamicSet#contains(Object)}, use
+comment|// {@code assertThat(ds.contains(...)).isTrue() @} and
+comment|// {@code assertThat(ds.contains(...)).isFalse() @} instead.
 annotation|@
 name|Test
 DECL|method|testContainsWithEmpty ()
@@ -164,13 +173,17 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|ds
-argument_list|)
 operator|.
-name|doesNotContain
+name|contains
 argument_list|(
 literal|2
 argument_list|)
+argument_list|)
+operator|.
+name|isFalse
+argument_list|()
 expr_stmt|;
+comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -203,13 +216,17 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|ds
-argument_list|)
 operator|.
 name|contains
 argument_list|(
 literal|2
 argument_list|)
+argument_list|)
+operator|.
+name|isTrue
+argument_list|()
 expr_stmt|;
+comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -242,13 +259,17 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|ds
-argument_list|)
 operator|.
-name|doesNotContain
+name|contains
 argument_list|(
 literal|3
 argument_list|)
+argument_list|)
+operator|.
+name|isFalse
+argument_list|()
 expr_stmt|;
+comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -288,13 +309,17 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|ds
-argument_list|)
 operator|.
 name|contains
 argument_list|(
 literal|4
 argument_list|)
+argument_list|)
+operator|.
+name|isTrue
+argument_list|()
 expr_stmt|;
+comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -334,13 +359,17 @@ expr_stmt|;
 name|assertThat
 argument_list|(
 name|ds
-argument_list|)
 operator|.
-name|doesNotContain
+name|contains
 argument_list|(
 literal|3
 argument_list|)
+argument_list|)
+operator|.
+name|isFalse
+argument_list|()
 expr_stmt|;
+comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
@@ -416,13 +445,17 @@ comment|// At first, 4 is contained.
 name|assertThat
 argument_list|(
 name|ds
-argument_list|)
 operator|.
 name|contains
 argument_list|(
 literal|4
 argument_list|)
+argument_list|)
+operator|.
+name|isTrue
+argument_list|()
 expr_stmt|;
+comment|//See above comment about ds.contains
 comment|// Then we remove 4.
 name|handle
 operator|.
@@ -433,13 +466,17 @@ comment|// And now 4 should no longer be contained.
 name|assertThat
 argument_list|(
 name|ds
-argument_list|)
 operator|.
-name|doesNotContain
+name|contains
 argument_list|(
 literal|4
 argument_list|)
+argument_list|)
+operator|.
+name|isFalse
+argument_list|()
 expr_stmt|;
+comment|//See above comment about ds.contains
 block|}
 block|}
 end_class
