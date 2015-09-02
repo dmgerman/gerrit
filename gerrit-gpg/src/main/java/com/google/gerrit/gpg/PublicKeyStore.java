@@ -98,22 +98,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RefNames
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|bouncycastle
@@ -526,6 +510,16 @@ argument_list|(
 literal|"4b825dc642cb6eb9a060e54bf8d69288fbee4904"
 argument_list|)
 decl_stmt|;
+comment|/** Ref where GPG public keys are stored. */
+DECL|field|REFS_GPG_KEYS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_GPG_KEYS
+init|=
+literal|"refs/meta/gpg-keys"
+decl_stmt|;
 DECL|field|repo
 specifier|private
 specifier|final
@@ -663,8 +657,6 @@ argument_list|()
 operator|.
 name|exactRef
 argument_list|(
-name|RefNames
-operator|.
 name|REFS_GPG_KEYS
 argument_list|)
 decl_stmt|;
@@ -1255,7 +1247,7 @@ name|repo
 operator|.
 name|updateRef
 argument_list|(
-name|RefNames
+name|PublicKeyStore
 operator|.
 name|REFS_GPG_KEYS
 argument_list|)

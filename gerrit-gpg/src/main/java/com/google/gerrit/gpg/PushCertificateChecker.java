@@ -282,6 +282,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -331,6 +351,22 @@ specifier|abstract
 class|class
 name|PushCertificateChecker
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|PushCertificateChecker
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|publicKeyChecker
 specifier|private
 specifier|final
@@ -352,7 +388,7 @@ operator|=
 name|publicKeyChecker
 expr_stmt|;
 block|}
-comment|/**    * Check a push certificate.    *    * @return result of the check.    * @throws PGPException if an error occurred during GPG checks.    * @throws IOException if an error occurred reading from the repository.    */
+comment|/**    * Check a push certificate.    *    * @return result of the check.    */
 DECL|method|check (PushCertificate cert)
 specifier|public
 specifier|final
@@ -362,10 +398,6 @@ parameter_list|(
 name|PushCertificate
 name|cert
 parameter_list|)
-throws|throws
-name|PGPException
-throws|,
-name|IOException
 block|{
 if|if
 condition|(
@@ -387,6 +419,19 @@ literal|"Invalid nonce"
 argument_list|)
 return|;
 block|}
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|problems
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+try|try
+block|{
 name|PGPSignature
 name|sig
 init|=
@@ -398,33 +443,19 @@ decl_stmt|;
 if|if
 condition|(
 name|sig
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-return|return
-operator|new
-name|CheckResult
+annotation|@
+name|SuppressWarnings
 argument_list|(
-literal|"Invalid signature format"
+literal|"resource"
 argument_list|)
-return|;
-block|}
 name|Repository
 name|repo
 init|=
 name|getRepository
-argument_list|()
-decl_stmt|;
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|problems
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
 argument_list|()
 decl_stmt|;
 try|try
@@ -465,13 +496,6 @@ argument_list|,
 name|problems
 argument_list|)
 expr_stmt|;
-return|return
-operator|new
-name|CheckResult
-argument_list|(
-name|problems
-argument_list|)
-return|;
 block|}
 finally|finally
 block|{
@@ -490,6 +514,55 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
+else|else
+block|{
+name|problems
+operator|.
+name|add
+argument_list|(
+literal|"Invalid signature format"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|PGPException
+decl||
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|String
+name|msg
+init|=
+literal|"Internal error checking push certificate"
+decl_stmt|;
+name|log
+operator|.
+name|error
+argument_list|(
+name|msg
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|problems
+operator|.
+name|add
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+operator|new
+name|CheckResult
+argument_list|(
+name|problems
+argument_list|)
+return|;
 block|}
 comment|/**    * Get the repository that this checker should operate on.    *<p>    * This method is called once per call to {@link #check(PushCertificate)}.    *    * @return the repository.    * @throws IOException if an error occurred reading the repository.    */
 DECL|method|getRepository ()
@@ -768,7 +841,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"Invalid public key ("
+literal|"Invalid public key "
 argument_list|)
 operator|.
 name|append
@@ -781,7 +854,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"):"
+literal|":"
 argument_list|)
 decl_stmt|;
 for|for
@@ -853,7 +926,7 @@ name|deferredProblems
 operator|.
 name|add
 argument_list|(
-literal|"Error checking signature with public key ("
+literal|"Error checking signature with public key "
 operator|+
 name|keyToString
 argument_list|(
@@ -880,7 +953,7 @@ name|problems
 operator|.
 name|add
 argument_list|(
-literal|"No public keys found for Key ID "
+literal|"No public keys found for key ID "
 operator|+
 name|keyIdToString
 argument_list|(
