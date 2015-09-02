@@ -414,6 +414,22 @@ block|{
 comment|// Ignore.
 block|}
 annotation|@
+name|Override
+annotation|@
+name|Ignore
+annotation|@
+name|Test
+DECL|method|prepopulatedFields ()
+specifier|public
+name|void
+name|prepopulatedFields
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Ignore.
+block|}
+annotation|@
 name|Test
 DECL|method|isReviewed ()
 specifier|public

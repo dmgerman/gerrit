@@ -473,7 +473,7 @@ implements|implements
 name|ReviewDb
 block|{
 DECL|field|MESSAGE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
