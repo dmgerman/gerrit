@@ -82,7 +82,41 @@ name|index
 operator|.
 name|ChangeField
 operator|.
+name|COMMIT
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|ChangeField
+operator|.
 name|EXACT_COMMIT
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+operator|.
+name|OBJECT_ID_STRING_LENGTH
 import|;
 end_import
 
@@ -99,22 +133,6 @@ operator|.
 name|client
 operator|.
 name|PatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|ChangeField
 import|;
 end_import
 
@@ -180,20 +198,6 @@ name|OrmException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
-import|;
-end_import
-
 begin_class
 DECL|class|CommitPredicate
 class|class
@@ -231,8 +235,6 @@ operator|.
 name|length
 argument_list|()
 operator|==
-name|Constants
-operator|.
 name|OBJECT_ID_STRING_LENGTH
 operator|&&
 name|schema
@@ -248,8 +250,6 @@ name|EXACT_COMMIT
 return|;
 block|}
 return|return
-name|ChangeField
-operator|.
 name|COMMIT
 return|;
 block|}
