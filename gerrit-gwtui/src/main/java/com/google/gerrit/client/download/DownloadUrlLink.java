@@ -142,9 +142,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
-operator|.
-name|DownloadScheme
+name|CoreDownloadSchemes
 import|;
 end_import
 
@@ -308,11 +306,9 @@ block|{
 DECL|enumConstant|ANON_GIT
 name|ANON_GIT
 argument_list|(
-name|DownloadScheme
+name|CoreDownloadSchemes
 operator|.
 name|ANON_GIT
-argument_list|,
-literal|"git"
 argument_list|,
 name|Util
 operator|.
@@ -327,11 +323,9 @@ block|,
 DECL|enumConstant|ANON_HTTP
 name|ANON_HTTP
 argument_list|(
-name|DownloadScheme
+name|CoreDownloadSchemes
 operator|.
 name|ANON_HTTP
-argument_list|,
-literal|"anonymous http"
 argument_list|,
 name|Util
 operator|.
@@ -346,11 +340,9 @@ block|,
 DECL|enumConstant|SSH
 name|SSH
 argument_list|(
-name|DownloadScheme
+name|CoreDownloadSchemes
 operator|.
 name|SSH
-argument_list|,
-literal|"ssh"
 argument_list|,
 literal|"SSH"
 argument_list|)
@@ -358,21 +350,13 @@ block|,
 DECL|enumConstant|HTTP
 name|HTTP
 argument_list|(
-name|DownloadScheme
+name|CoreDownloadSchemes
 operator|.
 name|HTTP
-argument_list|,
-literal|"http"
 argument_list|,
 literal|"HTTP"
 argument_list|)
 block|;
-DECL|field|downloadScheme
-specifier|public
-specifier|final
-name|DownloadScheme
-name|downloadScheme
-decl_stmt|;
 DECL|field|name
 specifier|public
 specifier|final
@@ -385,13 +369,10 @@ specifier|final
 name|String
 name|text
 decl_stmt|;
-DECL|method|KnownScheme (DownloadScheme downloadScheme, String name, String text)
+DECL|method|KnownScheme (String name, String text)
 specifier|private
 name|KnownScheme
 parameter_list|(
-name|DownloadScheme
-name|downloadScheme
-parameter_list|,
 name|String
 name|name
 parameter_list|,
@@ -399,12 +380,6 @@ name|String
 name|text
 parameter_list|)
 block|{
-name|this
-operator|.
-name|downloadScheme
-operator|=
-name|downloadScheme
-expr_stmt|;
 name|this
 operator|.
 name|name
@@ -561,7 +536,7 @@ name|scheme
 argument_list|,
 name|knownScheme
 operator|.
-name|downloadScheme
+name|name
 argument_list|,
 name|knownScheme
 operator|.
@@ -582,6 +557,8 @@ argument_list|(
 name|downloadPanel
 argument_list|,
 name|scheme
+argument_list|,
+name|s
 argument_list|,
 name|s
 argument_list|)
@@ -608,10 +585,10 @@ decl_stmt|;
 DECL|field|scheme
 specifier|private
 specifier|final
-name|DownloadScheme
+name|String
 name|scheme
 decl_stmt|;
-DECL|method|DownloadUrlLink (DownloadPanel downloadPanel, DownloadSchemeInfo schemeInfo, String text)
+DECL|method|DownloadUrlLink (DownloadPanel downloadPanel, DownloadSchemeInfo schemeInfo, String urlType, String text)
 specifier|public
 name|DownloadUrlLink
 parameter_list|(
@@ -622,32 +599,6 @@ name|DownloadSchemeInfo
 name|schemeInfo
 parameter_list|,
 name|String
-name|text
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|downloadPanel
-argument_list|,
-name|schemeInfo
-argument_list|,
-literal|null
-argument_list|,
-name|text
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|DownloadUrlLink (DownloadPanel downloadPanel, DownloadSchemeInfo schemeInfo, DownloadScheme urlType, String text)
-specifier|public
-name|DownloadUrlLink
-parameter_list|(
-name|DownloadPanel
-name|downloadPanel
-parameter_list|,
-name|DownloadSchemeInfo
-name|schemeInfo
-parameter_list|,
-name|DownloadScheme
 name|urlType
 parameter_list|,
 name|String
@@ -709,7 +660,7 @@ expr_stmt|;
 block|}
 DECL|method|getUrlType ()
 specifier|public
-name|DownloadScheme
+name|String
 name|getUrlType
 parameter_list|()
 block|{
@@ -756,16 +707,16 @@ operator|.
 name|isSignedIn
 argument_list|()
 operator|&&
+operator|!
 name|scheme
-operator|!=
-literal|null
-operator|&&
-name|scheme
-operator|!=
+operator|.
+name|equals
+argument_list|(
 name|prefs
 operator|.
 name|downloadScheme
 argument_list|()
+argument_list|)
 condition|)
 block|{
 name|prefs

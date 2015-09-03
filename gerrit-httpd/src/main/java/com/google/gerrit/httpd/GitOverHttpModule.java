@@ -76,9 +76,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
-operator|.
-name|DownloadScheme
+name|CoreDownloadSchemes
 import|;
 end_import
 
@@ -316,7 +314,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|DownloadScheme
+name|CoreDownloadSchemes
 operator|.
 name|ANON_HTTP
 argument_list|)
@@ -328,7 +326,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|DownloadScheme
+name|CoreDownloadSchemes
 operator|.
 name|HTTP
 argument_list|)

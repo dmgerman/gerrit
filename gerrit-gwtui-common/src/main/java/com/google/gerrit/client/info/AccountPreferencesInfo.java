@@ -198,24 +198,6 @@ name|client
 operator|.
 name|AccountGeneralPreferences
 operator|.
-name|DownloadScheme
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGeneralPreferences
-operator|.
 name|ReviewCategoryStrategy
 import|;
 end_import
@@ -558,37 +540,9 @@ function_decl|;
 DECL|method|downloadScheme ()
 specifier|public
 specifier|final
-name|DownloadScheme
-name|downloadScheme
-parameter_list|()
-block|{
-name|String
-name|s
-init|=
-name|downloadSchemeRaw
-argument_list|()
-decl_stmt|;
-return|return
-name|s
-operator|!=
-literal|null
-condition|?
-name|DownloadScheme
-operator|.
-name|valueOf
-argument_list|(
-name|s
-argument_list|)
-else|:
-literal|null
-return|;
-block|}
-DECL|method|downloadSchemeRaw ()
-specifier|private
-specifier|final
 specifier|native
 name|String
-name|downloadSchemeRaw
+name|downloadScheme
 parameter_list|()
 comment|/*-{ return this.download_scheme }-*/
 function_decl|;
@@ -872,37 +826,12 @@ name|u
 parameter_list|)
 comment|/*-{ this.use_flash_clipboard = u }-*/
 function_decl|;
-DECL|method|downloadScheme (DownloadScheme d)
+DECL|method|downloadScheme (String d)
 specifier|public
-specifier|final
-name|void
-name|downloadScheme
-parameter_list|(
-name|DownloadScheme
-name|d
-parameter_list|)
-block|{
-name|downloadSchemeRaw
-argument_list|(
-name|d
-operator|!=
-literal|null
-condition|?
-name|d
-operator|.
-name|toString
-argument_list|()
-else|:
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|downloadSchemeRaw (String d)
-specifier|private
 specifier|final
 specifier|native
 name|void
-name|downloadSchemeRaw
+name|downloadScheme
 parameter_list|(
 name|String
 name|d

@@ -86,22 +86,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGeneralPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|aria
@@ -209,14 +193,12 @@ operator|==
 literal|0
 return|;
 block|}
-DECL|method|select (AccountGeneralPreferences.DownloadScheme urlType)
+DECL|method|select (String urlType)
 specifier|public
 name|void
 name|select
 parameter_list|(
-name|AccountGeneralPreferences
-operator|.
-name|DownloadScheme
+name|String
 name|urlType
 parameter_list|)
 block|{
@@ -267,8 +249,11 @@ name|d
 operator|.
 name|getUrlType
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|urlType
+argument_list|)
 condition|)
 block|{
 name|d
