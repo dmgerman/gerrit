@@ -238,6 +238,10 @@ operator|==
 name|OBJECT_ID_STRING_LENGTH
 operator|&&
 name|schema
+operator|!=
+literal|null
+operator|&&
+name|schema
 operator|.
 name|hasField
 argument_list|(
