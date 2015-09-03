@@ -1332,6 +1332,16 @@ operator|=
 name|auth
 expr_stmt|;
 block|}
+DECL|method|getExpiresAt ()
+specifier|public
+name|long
+name|getExpiresAt
+parameter_list|()
+block|{
+return|return
+name|expiresAt
+return|;
+block|}
 DECL|method|getAccountId ()
 name|Account
 operator|.
