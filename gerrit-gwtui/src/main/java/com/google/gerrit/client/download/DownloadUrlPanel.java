@@ -193,13 +193,13 @@ operator|==
 literal|0
 return|;
 block|}
-DECL|method|select (String urlType)
+DECL|method|select (String schemeName)
 specifier|public
 name|void
 name|select
 parameter_list|(
 name|String
-name|urlType
+name|schemeName
 parameter_list|)
 block|{
 name|DownloadUrlLink
@@ -247,12 +247,12 @@ if|if
 condition|(
 name|d
 operator|.
-name|getUrlType
+name|getSchemeName
 argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|urlType
+name|schemeName
 argument_list|)
 condition|)
 block|{
