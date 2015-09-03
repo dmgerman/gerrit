@@ -1048,6 +1048,21 @@ name|get
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|id
+operator|==
+literal|null
+condition|)
+block|{
+name|logAndThrowSubmoduleException
+argument_list|(
+literal|"Cannot resolve submodule destination branch "
+operator|+
+name|destBranch
+argument_list|)
+expr_stmt|;
+block|}
 name|RevCommit
 name|commit
 init|=
