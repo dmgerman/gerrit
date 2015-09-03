@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance
+DECL|package|com.google.gerrit.testutil
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|testutil
 package|;
 end_package
 
@@ -466,6 +466,7 @@ end_comment
 
 begin_class
 DECL|class|DisabledReviewDb
+specifier|public
 class|class
 name|DisabledReviewDb
 implements|implements
