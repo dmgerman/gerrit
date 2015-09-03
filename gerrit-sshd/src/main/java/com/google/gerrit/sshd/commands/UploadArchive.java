@@ -973,14 +973,8 @@ decl_stmt|;
 if|if
 condition|(
 name|treeId
-operator|.
-name|equals
-argument_list|(
-name|ObjectId
-operator|.
-name|zeroId
-argument_list|()
-argument_list|)
+operator|==
+literal|null
 condition|)
 block|{
 throw|throw
