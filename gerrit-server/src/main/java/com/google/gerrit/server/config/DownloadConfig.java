@@ -176,16 +176,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|EnumSet
 import|;
 end_import
@@ -196,27 +186,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -235,7 +205,7 @@ block|{
 DECL|field|downloadSchemes
 specifier|private
 specifier|final
-name|Set
+name|ImmutableSet
 argument_list|<
 name|DownloadScheme
 argument_list|>
@@ -244,7 +214,7 @@ decl_stmt|;
 DECL|field|downloadCommands
 specifier|private
 specifier|final
-name|Set
+name|ImmutableSet
 argument_list|<
 name|DownloadCommand
 argument_list|>
@@ -253,7 +223,7 @@ decl_stmt|;
 DECL|field|archiveFormats
 specifier|private
 specifier|final
-name|Set
+name|ImmutableSet
 argument_list|<
 name|ArchiveFormat
 argument_list|>
@@ -422,6 +392,10 @@ condition|)
 block|{
 name|archiveFormats
 operator|=
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
 name|EnumSet
 operator|.
 name|allOf
@@ -429,6 +403,7 @@ argument_list|(
 name|ArchiveFormat
 operator|.
 name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -450,9 +425,9 @@ condition|)
 block|{
 name|archiveFormats
 operator|=
-name|Collections
+name|ImmutableSet
 operator|.
-name|emptySet
+name|of
 argument_list|()
 expr_stmt|;
 block|}
@@ -460,9 +435,9 @@ else|else
 block|{
 name|archiveFormats
 operator|=
-operator|new
-name|HashSet
-argument_list|<>
+name|ImmutableSet
+operator|.
+name|copyOf
 argument_list|(
 name|ConfigUtil
 operator|.
@@ -518,7 +493,7 @@ block|}
 comment|/** Scheme used to download. */
 DECL|method|getDownloadSchemes ()
 specifier|public
-name|Set
+name|ImmutableSet
 argument_list|<
 name|DownloadScheme
 argument_list|>
@@ -532,7 +507,7 @@ block|}
 comment|/** Command used to download. */
 DECL|method|getDownloadCommands ()
 specifier|public
-name|Set
+name|ImmutableSet
 argument_list|<
 name|DownloadCommand
 argument_list|>
@@ -546,7 +521,7 @@ block|}
 comment|/** Archive formats for downloading. */
 DECL|method|getArchiveFormats ()
 specifier|public
-name|Set
+name|ImmutableSet
 argument_list|<
 name|ArchiveFormat
 argument_list|>
