@@ -3624,13 +3624,15 @@ block|}
 elseif|else
 if|if
 condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|repo
 operator|.
 name|getFullBranch
 argument_list|()
-operator|.
-name|equals
-argument_list|(
+argument_list|,
 name|destBranch
 operator|.
 name|get
@@ -4715,6 +4717,13 @@ name|currentTip
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|currentTip
+operator|!=
+literal|null
+condition|)
+block|{
 name|logDebug
 argument_list|(
 literal|"Branch already at merge tip {}, no update to perform"
@@ -4725,6 +4734,15 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"Both branch and merge tip are nonexistent, no update"
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|null
 return|;

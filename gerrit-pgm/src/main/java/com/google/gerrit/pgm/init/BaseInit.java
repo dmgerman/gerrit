@@ -1459,17 +1459,12 @@ argument_list|,
 name|currentSecureStoreClassName
 argument_list|)
 decl_stmt|;
+throw|throw
 name|die
 argument_list|(
 name|err
-argument_list|,
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"secure store mismatch"
 argument_list|)
-argument_list|)
-expr_stmt|;
+throw|;
 block|}
 name|m
 operator|.

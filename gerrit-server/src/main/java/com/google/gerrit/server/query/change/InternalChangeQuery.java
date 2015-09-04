@@ -877,6 +877,10 @@ decl_stmt|;
 if|if
 condition|(
 name|schema
+operator|!=
+literal|null
+operator|&&
+name|schema
 operator|.
 name|hasField
 argument_list|(

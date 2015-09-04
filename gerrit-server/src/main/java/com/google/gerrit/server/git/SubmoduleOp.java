@@ -1048,6 +1048,21 @@ name|get
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|id
+operator|==
+literal|null
+condition|)
+block|{
+name|logAndThrowSubmoduleException
+argument_list|(
+literal|"Cannot resolve submodule destination branch "
+operator|+
+name|destBranch
+argument_list|)
+expr_stmt|;
+block|}
 name|RevCommit
 name|commit
 init|=
@@ -1788,8 +1803,6 @@ argument_list|)
 decl_stmt|;
 name|ObjectId
 name|oldId
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -1971,13 +1984,6 @@ argument_list|(
 name|newCommit
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|oldId
-operator|!=
-literal|null
-condition|)
-block|{
 name|rw
 operator|.
 name|markUninteresting
@@ -1990,7 +1996,6 @@ name|oldId
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|RevCommit
