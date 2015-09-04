@@ -197,7 +197,7 @@ block|{
 DECL|method|schemes ()
 specifier|public
 specifier|final
-name|Set
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -205,13 +205,11 @@ name|schemes
 parameter_list|()
 block|{
 return|return
-name|Natives
-operator|.
-name|keys
-argument_list|(
 name|_schemes
 argument_list|()
-argument_list|)
+operator|.
+name|sortedKeys
+argument_list|()
 return|;
 block|}
 DECL|method|archives ()
@@ -310,7 +308,7 @@ block|{
 DECL|method|commandNames ()
 specifier|public
 specifier|final
-name|Set
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -318,13 +316,11 @@ name|commandNames
 parameter_list|()
 block|{
 return|return
-name|Natives
-operator|.
-name|keys
-argument_list|(
 name|_commands
 argument_list|()
-argument_list|)
+operator|.
+name|sortedKeys
+argument_list|()
 return|;
 block|}
 DECL|method|commands (String project)
@@ -439,7 +435,7 @@ block|}
 DECL|method|cloneCommandNames ()
 specifier|public
 specifier|final
-name|Set
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -447,19 +443,17 @@ name|cloneCommandNames
 parameter_list|()
 block|{
 return|return
-name|Natives
-operator|.
-name|keys
-argument_list|(
 name|_cloneCommands
 argument_list|()
-argument_list|)
+operator|.
+name|sortedKeys
+argument_list|()
 return|;
 block|}
 DECL|method|cloneCommands (String project)
 specifier|public
 specifier|final
-name|Set
+name|List
 argument_list|<
 name|DownloadCommandInfo
 argument_list|>
@@ -469,24 +463,37 @@ name|String
 name|project
 parameter_list|)
 block|{
-name|Set
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|commandNames
+init|=
+name|cloneCommandNames
+argument_list|()
+decl_stmt|;
+name|List
 argument_list|<
 name|DownloadCommandInfo
 argument_list|>
 name|commands
 init|=
 operator|new
-name|HashSet
+name|ArrayList
 argument_list|<>
+argument_list|(
+name|commandNames
+operator|.
+name|size
 argument_list|()
+argument_list|)
 decl_stmt|;
 for|for
 control|(
 name|String
 name|commandName
 range|:
-name|cloneCommandNames
-argument_list|()
+name|commandNames
 control|)
 block|{
 name|commands
