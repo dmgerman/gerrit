@@ -494,16 +494,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|MessageDigest
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Random
@@ -1194,8 +1184,6 @@ argument_list|)
 condition|?
 name|wrapBlob
 argument_list|(
-name|project
-argument_list|,
 name|path
 argument_list|,
 name|obj
@@ -1220,14 +1208,11 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|wrapBlob (ProjectState project, String path, final ObjectLoader obj, byte[] raw, MimeType contentType, @Nullable String suffix)
+DECL|method|wrapBlob (String path, final ObjectLoader obj, byte[] raw, MimeType contentType, @Nullable String suffix)
 specifier|private
 name|BinaryResult
 name|wrapBlob
 parameter_list|(
-name|ProjectState
-name|project
-parameter_list|,
 name|String
 name|path
 parameter_list|,
@@ -1275,6 +1260,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 DECL|method|zipBlob (final String path, final ObjectLoader obj, RevCommit commit, final @Nullable String suffix)
 specifier|private
 name|BinaryResult
