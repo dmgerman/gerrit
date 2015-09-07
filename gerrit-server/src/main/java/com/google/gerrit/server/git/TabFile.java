@@ -197,6 +197,8 @@ operator|new
 name|Parser
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|parse
@@ -292,9 +294,7 @@ name|rows
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Row
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|BufferedReader
