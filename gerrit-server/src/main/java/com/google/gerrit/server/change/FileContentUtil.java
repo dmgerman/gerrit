@@ -1265,7 +1265,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"resource"
 argument_list|)
-DECL|method|zipBlob (final String path, final ObjectLoader obj, RevCommit commit, final @Nullable String suffix)
+DECL|method|zipBlob (final String path, final ObjectLoader obj, RevCommit commit, @Nullable final String suffix)
 specifier|private
 name|BinaryResult
 name|zipBlob
@@ -1281,9 +1281,9 @@ parameter_list|,
 name|RevCommit
 name|commit
 parameter_list|,
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|String
 name|suffix
 parameter_list|)
