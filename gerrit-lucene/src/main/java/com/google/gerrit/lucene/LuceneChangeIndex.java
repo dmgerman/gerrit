@@ -3001,6 +3001,26 @@ argument_list|)
 return|;
 block|}
 block|}
+DECL|method|getOpenChangesIndex ()
+specifier|public
+name|SubIndex
+name|getOpenChangesIndex
+parameter_list|()
+block|{
+return|return
+name|openIndex
+return|;
+block|}
+DECL|method|getClosedChangesIndex ()
+specifier|public
+name|SubIndex
+name|getClosedChangesIndex
+parameter_list|()
+block|{
+return|return
+name|closedIndex
+return|;
+block|}
 DECL|class|QuerySource
 specifier|private
 class|class
