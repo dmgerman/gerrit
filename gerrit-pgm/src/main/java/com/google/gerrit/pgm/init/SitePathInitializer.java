@@ -767,6 +767,11 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"AddKey.vm"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"ChangeFooter.vm"
 argument_list|)
 expr_stmt|;
