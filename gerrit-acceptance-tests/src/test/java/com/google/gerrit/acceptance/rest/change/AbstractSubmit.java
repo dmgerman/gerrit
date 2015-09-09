@@ -1392,7 +1392,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Change has been successfully merged into the git repository by Administrator"
+literal|"Change has been successfully merged by Administrator"
 argument_list|)
 expr_stmt|;
 block|}
