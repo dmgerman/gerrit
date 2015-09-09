@@ -972,6 +972,16 @@ name|getSubstring
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|list
+operator|.
+name|setSuggest
+argument_list|(
+name|req
+operator|.
+name|getSuggest
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 return|return

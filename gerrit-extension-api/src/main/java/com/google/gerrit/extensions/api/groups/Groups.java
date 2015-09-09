@@ -303,6 +303,11 @@ specifier|private
 name|String
 name|substring
 decl_stmt|;
+DECL|field|suggest
+specifier|private
+name|String
+name|suggest
+decl_stmt|;
 DECL|method|get ()
 specifier|public
 name|List
@@ -615,6 +620,25 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|withSuggest (String suggest)
+specifier|public
+name|ListRequest
+name|withSuggest
+parameter_list|(
+name|String
+name|suggest
+parameter_list|)
+block|{
+name|this
+operator|.
+name|suggest
+operator|=
+name|suggest
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|getOptions ()
 specifier|public
 name|EnumSet
@@ -722,6 +746,16 @@ parameter_list|()
 block|{
 return|return
 name|substring
+return|;
+block|}
+DECL|method|getSuggest ()
+specifier|public
+name|String
+name|getSuggest
+parameter_list|()
+block|{
+return|return
+name|suggest
 return|;
 block|}
 block|}

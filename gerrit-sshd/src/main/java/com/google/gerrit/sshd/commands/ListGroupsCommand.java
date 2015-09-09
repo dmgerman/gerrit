@@ -140,6 +140,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|BadRequestException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|Url
 import|;
 end_import
@@ -187,6 +203,22 @@ operator|.
 name|account
 operator|.
 name|GetGroups
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|GroupBackend
 import|;
 end_import
 
@@ -487,7 +519,7 @@ name|verboseOutput
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MyListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups, final GroupJson json)
+DECL|method|MyListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups, final GroupJson json, GroupBackend groupBackend)
 name|MyListGroups
 parameter_list|(
 specifier|final
@@ -529,6 +561,9 @@ parameter_list|,
 specifier|final
 name|GroupJson
 name|json
+parameter_list|,
+name|GroupBackend
+name|groupBackend
 parameter_list|)
 block|{
 name|super
@@ -546,6 +581,8 @@ argument_list|,
 name|accountGetGroups
 argument_list|,
 name|json
+argument_list|,
+name|groupBackend
 argument_list|)
 expr_stmt|;
 block|}
@@ -559,6 +596,8 @@ name|out
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|BadRequestException
 block|{
 specifier|final
 name|ColumnFormatter
