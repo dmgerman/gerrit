@@ -174,7 +174,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|List
 import|;
 end_import
 
@@ -428,7 +428,7 @@ block|}
 DECL|method|getCommands ( DownloadSchemeInfo schemeInfo)
 specifier|protected
 specifier|abstract
-name|Set
+name|List
 argument_list|<
 name|DownloadCommandInfo
 argument_list|>

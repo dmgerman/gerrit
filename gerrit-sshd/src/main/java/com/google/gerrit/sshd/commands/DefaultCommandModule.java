@@ -78,9 +78,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
-operator|.
-name|DownloadScheme
+name|CoreDownloadSchemes
 import|;
 end_import
 
@@ -1047,21 +1045,9 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|DownloadScheme
+name|CoreDownloadSchemes
 operator|.
 name|SSH
-argument_list|)
-operator|||
-name|downloadConfig
-operator|.
-name|getDownloadSchemes
-argument_list|()
-operator|.
-name|contains
-argument_list|(
-name|DownloadScheme
-operator|.
-name|DEFAULT_DOWNLOADS
 argument_list|)
 return|;
 block|}

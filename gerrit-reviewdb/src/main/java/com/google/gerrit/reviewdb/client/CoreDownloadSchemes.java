@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.download
+DECL|package|com.google.gerrit.reviewdb.client
 package|package
 name|com
 operator|.
@@ -60,46 +60,74 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|reviewdb
 operator|.
-name|download
+name|client
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Messages
-import|;
-end_import
+begin_comment
+comment|/**  * Download scheme string constants supported by the download-commands core  * plugin.  */
+end_comment
 
-begin_interface
-DECL|interface|DownloadMessages
+begin_class
+DECL|class|CoreDownloadSchemes
 specifier|public
-interface|interface
-name|DownloadMessages
-extends|extends
-name|Messages
+class|class
+name|CoreDownloadSchemes
 block|{
-DECL|method|anonymousDownload (String protocol)
+DECL|field|ANON_GIT
+specifier|public
+specifier|static
+specifier|final
 name|String
-name|anonymousDownload
-parameter_list|(
+name|ANON_GIT
+init|=
+literal|"git"
+decl_stmt|;
+DECL|field|ANON_HTTP
+specifier|public
+specifier|static
+specifier|final
 name|String
-name|protocol
-parameter_list|)
-function_decl|;
+name|ANON_HTTP
+init|=
+literal|"anonymous http"
+decl_stmt|;
+DECL|field|HTTP
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|HTTP
+init|=
+literal|"http"
+decl_stmt|;
+DECL|field|SSH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SSH
+init|=
+literal|"ssh"
+decl_stmt|;
+DECL|field|REPO_DOWNLOAD
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REPO_DOWNLOAD
+init|=
+literal|"repo"
+decl_stmt|;
+DECL|method|CoreDownloadSchemes ()
+specifier|private
+name|CoreDownloadSchemes
+parameter_list|()
+block|{   }
 block|}
-end_interface
+end_class
 
 end_unit
 

@@ -934,16 +934,6 @@ name|Entry
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_class
 DECL|class|ProjectInfoScreen
 specifier|public
@@ -4885,7 +4875,7 @@ annotation|@
 name|Override
 DECL|method|getCommands (DownloadSchemeInfo schemeInfo)
 specifier|protected
-name|Set
+name|List
 argument_list|<
 name|DownloadCommandInfo
 argument_list|>
