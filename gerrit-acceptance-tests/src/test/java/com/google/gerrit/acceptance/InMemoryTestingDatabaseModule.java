@@ -543,7 +543,16 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"UNIT_TEST_GERRIT_SITE"
+name|cfg
+operator|.
+name|getString
+argument_list|(
+literal|"gerrit"
+argument_list|,
+literal|null
+argument_list|,
+literal|"tempSiteDir"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
