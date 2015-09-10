@@ -540,7 +540,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Objects
+name|List
 import|;
 end_import
 
@@ -550,7 +550,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Objects
 import|;
 end_import
 

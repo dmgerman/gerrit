@@ -1342,7 +1342,7 @@ name|server
 operator|.
 name|mail
 operator|.
-name|AddReviewerSender
+name|AddKeySender
 import|;
 end_import
 
@@ -1358,7 +1358,7 @@ name|server
 operator|.
 name|mail
 operator|.
-name|AddKeySender
+name|AddReviewerSender
 import|;
 end_import
 

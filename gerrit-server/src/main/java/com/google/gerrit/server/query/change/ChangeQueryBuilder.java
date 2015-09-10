@@ -376,7 +376,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|VersionedAccountQueries
+name|VersionedAccountDestinations
 import|;
 end_import
 
@@ -392,7 +392,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|VersionedAccountDestinations
+name|VersionedAccountQueries
 import|;
 end_import
 
