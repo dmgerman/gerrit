@@ -172,7 +172,7 @@ name|projects
 operator|.
 name|ProjectApi
 operator|.
-name|ListTagsRequest
+name|ListRefsRequest
 import|;
 end_import
 
@@ -1695,7 +1695,10 @@ block|}
 block|}
 DECL|method|getTags ()
 specifier|private
-name|ListTagsRequest
+name|ListRefsRequest
+argument_list|<
+name|TagInfo
+argument_list|>
 name|getTags
 parameter_list|()
 throws|throws

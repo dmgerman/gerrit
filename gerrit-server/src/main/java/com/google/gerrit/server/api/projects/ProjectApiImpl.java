@@ -1351,13 +1351,19 @@ annotation|@
 name|Override
 DECL|method|branches ()
 specifier|public
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|BranchInfo
+argument_list|>
 name|branches
 parameter_list|()
 block|{
 return|return
 operator|new
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|BranchInfo
+argument_list|>
 argument_list|()
 block|{
 annotation|@
@@ -1382,7 +1388,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|listBranches (ListBranchesRequest request)
+DECL|method|listBranches (ListRefsRequest<BranchInfo> request)
 specifier|private
 name|List
 argument_list|<
@@ -1390,7 +1396,10 @@ name|BranchInfo
 argument_list|>
 name|listBranches
 parameter_list|(
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|BranchInfo
+argument_list|>
 name|request
 parameter_list|)
 throws|throws
@@ -1477,13 +1486,19 @@ annotation|@
 name|Override
 DECL|method|tags ()
 specifier|public
-name|ListTagsRequest
+name|ListRefsRequest
+argument_list|<
+name|TagInfo
+argument_list|>
 name|tags
 parameter_list|()
 block|{
 return|return
 operator|new
-name|ListTagsRequest
+name|ListRefsRequest
+argument_list|<
+name|TagInfo
+argument_list|>
 argument_list|()
 block|{
 annotation|@
@@ -1508,7 +1523,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|listTags (ListTagsRequest request)
+DECL|method|listTags (ListRefsRequest<TagInfo> request)
 specifier|private
 name|List
 argument_list|<
@@ -1516,7 +1531,10 @@ name|TagInfo
 argument_list|>
 name|listTags
 parameter_list|(
-name|ListTagsRequest
+name|ListRefsRequest
+argument_list|<
+name|TagInfo
+argument_list|>
 name|request
 parameter_list|)
 throws|throws
