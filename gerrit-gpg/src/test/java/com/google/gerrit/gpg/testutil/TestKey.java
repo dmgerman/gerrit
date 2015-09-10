@@ -1294,7 +1294,7 @@ name|PGPSecretKeyRing
 name|secRing
 decl_stmt|;
 DECL|method|TestKey (String pubArmored, String secArmored)
-specifier|private
+specifier|public
 name|TestKey
 parameter_list|(
 name|String

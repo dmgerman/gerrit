@@ -1596,6 +1596,7 @@ operator|.
 name|getPublicKey
 argument_list|()
 decl_stmt|;
+comment|// Don't check web of trust; admins can fill in certifications later.
 name|CheckResult
 name|result
 init|=
