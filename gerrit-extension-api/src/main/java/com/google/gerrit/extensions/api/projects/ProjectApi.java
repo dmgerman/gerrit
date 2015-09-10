@@ -344,6 +344,16 @@ specifier|abstract
 class|class
 name|ListTagsRequest
 block|{
+DECL|field|limit
+specifier|private
+name|int
+name|limit
+decl_stmt|;
+DECL|field|start
+specifier|private
+name|int
+name|start
+decl_stmt|;
 DECL|method|get ()
 specifier|public
 specifier|abstract
@@ -356,6 +366,64 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|withStart (int start)
+specifier|public
+name|ListTagsRequest
+name|withStart
+parameter_list|(
+name|int
+name|start
+parameter_list|)
+block|{
+name|this
+operator|.
+name|start
+operator|=
+name|start
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|withLimit (int limit)
+specifier|public
+name|ListTagsRequest
+name|withLimit
+parameter_list|(
+name|int
+name|limit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|limit
+operator|=
+name|limit
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|getStart ()
+specifier|public
+name|int
+name|getStart
+parameter_list|()
+block|{
+return|return
+name|start
+return|;
+block|}
+DECL|method|getLimit ()
+specifier|public
+name|int
+name|getLimit
+parameter_list|()
+block|{
+return|return
+name|limit
+return|;
+block|}
 block|}
 DECL|method|children ()
 name|List

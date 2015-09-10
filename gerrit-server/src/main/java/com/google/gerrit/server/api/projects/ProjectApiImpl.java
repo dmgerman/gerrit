@@ -722,15 +722,18 @@ name|ListBranches
 argument_list|>
 name|listBranchesProvider
 decl_stmt|;
-DECL|field|listTags
+DECL|field|listTagsProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ListTags
-name|listTags
+argument_list|>
+name|listTagsProvider
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, Provider<ListBranches> listBranchesProvider, ListTags listTags, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, Provider<ListBranches> listBranchesProvider, Provider<ListTags> listTagsProvider, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|Provider
@@ -788,8 +791,11 @@ name|ListBranches
 argument_list|>
 name|listBranchesProvider
 parameter_list|,
+name|Provider
+argument_list|<
 name|ListTags
-name|listTags
+argument_list|>
+name|listTagsProvider
 parameter_list|,
 annotation|@
 name|Assisted
@@ -823,7 +829,7 @@ name|tagApiFactory
 argument_list|,
 name|listBranchesProvider
 argument_list|,
-name|listTags
+name|listTagsProvider
 argument_list|,
 name|project
 argument_list|,
@@ -833,7 +839,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, Provider<ListBranches> listBranchesProvider, ListTags listTags, @Assisted String name)
+DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, Provider<ListBranches> listBranchesProvider, Provider<ListTags> listTagsProvider, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|Provider
@@ -891,8 +897,11 @@ name|ListBranches
 argument_list|>
 name|listBranchesProvider
 parameter_list|,
+name|Provider
+argument_list|<
 name|ListTags
-name|listTags
+argument_list|>
+name|listTagsProvider
 parameter_list|,
 annotation|@
 name|Assisted
@@ -926,7 +935,7 @@ name|tagApiFactory
 argument_list|,
 name|listBranchesProvider
 argument_list|,
-name|listTags
+name|listTagsProvider
 argument_list|,
 literal|null
 argument_list|,
@@ -934,7 +943,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, Provider<ListBranches> listBranchesProvider, ListTags listTags, ProjectResource project, String name)
+DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, Provider<ListBranches> listBranchesProvider, Provider<ListTags> listTagsProvider, ProjectResource project, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -993,8 +1002,11 @@ name|ListBranches
 argument_list|>
 name|listBranchesProvider
 parameter_list|,
+name|Provider
+argument_list|<
 name|ListTags
-name|listTags
+argument_list|>
+name|listTagsProvider
 parameter_list|,
 name|ProjectResource
 name|project
@@ -1089,9 +1101,9 @@ name|listBranchesProvider
 expr_stmt|;
 name|this
 operator|.
-name|listTags
+name|listTagsProvider
 operator|=
-name|listTags
+name|listTagsProvider
 expr_stmt|;
 block|}
 annotation|@
@@ -1488,27 +1500,60 @@ name|RestApiException
 block|{
 return|return
 name|listTags
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 return|;
 block|}
 block|}
 return|;
 block|}
-DECL|method|listTags ()
+DECL|method|listTags (ListTagsRequest request)
 specifier|private
 name|List
 argument_list|<
 name|TagInfo
 argument_list|>
 name|listTags
-parameter_list|()
+parameter_list|(
+name|ListTagsRequest
+name|request
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
+name|ListTags
+name|list
+init|=
+name|listTagsProvider
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+name|list
+operator|.
+name|setLimit
+argument_list|(
+name|request
+operator|.
+name|getLimit
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|list
+operator|.
+name|setStart
+argument_list|(
+name|request
+operator|.
+name|getStart
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 return|return
-name|listTags
+name|list
 operator|.
 name|apply
 argument_list|(
