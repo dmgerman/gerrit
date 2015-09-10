@@ -364,6 +364,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|CodeReviewCommit
+operator|.
+name|CodeReviewRevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -1402,9 +1420,9 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, RevWalk rw)
+DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, CodeReviewRevWalk rw)
 specifier|public
-name|RevCommit
+name|CodeReviewCommit
 name|createCherryPickFromCommit
 parameter_list|(
 name|Repository
@@ -1425,7 +1443,7 @@ parameter_list|,
 name|String
 name|commitMsg
 parameter_list|,
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 parameter_list|)
 throws|throws
@@ -2566,24 +2584,20 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|canFastForward (final MergeSorter mergeSorter, final CodeReviewCommit mergeTip, final RevWalk rw, final CodeReviewCommit toMerge)
+DECL|method|canFastForward (MergeSorter mergeSorter, CodeReviewCommit mergeTip, CodeReviewRevWalk rw, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|canFastForward
 parameter_list|(
-specifier|final
 name|MergeSorter
 name|mergeSorter
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|toMerge
 parameter_list|)
@@ -2638,28 +2652,23 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|canCherryPick (final MergeSorter mergeSorter, final Repository repo, final CodeReviewCommit mergeTip, final RevWalk rw, final CodeReviewCommit toMerge)
+DECL|method|canCherryPick (MergeSorter mergeSorter, Repository repo, CodeReviewCommit mergeTip, CodeReviewRevWalk rw, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|canCherryPick
 parameter_list|(
-specifier|final
 name|MergeSorter
 name|mergeSorter
 parameter_list|,
-specifier|final
 name|Repository
 name|repo
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|toMerge
 parameter_list|)
@@ -2924,7 +2933,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|mergeOneCommit (PersonIdent author, PersonIdent committer, Repository repo, RevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
+DECL|method|mergeOneCommit (PersonIdent author, PersonIdent committer, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|mergeOneCommit
@@ -2938,7 +2947,7 @@ parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 parameter_list|,
 name|ObjectInserter
@@ -3162,29 +3171,24 @@ block|}
 end_function
 
 begin_function
-DECL|method|failed (final RevWalk rw, final RevFlag canMergeFlag, final CodeReviewCommit mergeTip, final CodeReviewCommit n, final CommitMergeStatus failure)
+DECL|method|failed (CodeReviewRevWalk rw, RevFlag canMergeFlag, CodeReviewCommit mergeTip, CodeReviewCommit n, CommitMergeStatus failure)
 specifier|private
 specifier|static
 name|CodeReviewCommit
 name|failed
 parameter_list|(
-specifier|final
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|RevFlag
 name|canMergeFlag
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|n
 parameter_list|,
-specifier|final
 name|CommitMergeStatus
 name|failure
 parameter_list|)
@@ -3224,9 +3228,6 @@ condition|(
 operator|(
 name|failed
 operator|=
-operator|(
-name|CodeReviewCommit
-operator|)
 name|rw
 operator|.
 name|next
@@ -3251,7 +3252,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|writeMergeCommit (PersonIdent author, PersonIdent committer, RevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Branch.NameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
+DECL|method|writeMergeCommit (PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Branch.NameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|writeMergeCommit
@@ -3262,7 +3263,7 @@ parameter_list|,
 name|PersonIdent
 name|committer
 parameter_list|,
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 parameter_list|,
 name|ObjectInserter
@@ -3325,24 +3326,23 @@ argument_list|(
 name|mergeTip
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-specifier|final
-name|RevCommit
-name|c
-range|:
-name|rw
-control|)
-block|{
-specifier|final
 name|CodeReviewCommit
 name|crc
-init|=
-operator|(
-name|CodeReviewCommit
-operator|)
-name|c
 decl_stmt|;
+while|while
+condition|(
+operator|(
+name|crc
+operator|=
+name|rw
+operator|.
+name|next
+argument_list|()
+operator|)
+operator|!=
+literal|null
+condition|)
+block|{
 if|if
 condition|(
 name|crc
@@ -3521,9 +3521,6 @@ expr_stmt|;
 name|CodeReviewCommit
 name|mergeResult
 init|=
-operator|(
-name|CodeReviewCommit
-operator|)
 name|rw
 operator|.
 name|parseCommit

@@ -790,9 +790,6 @@ expr_stmt|;
 name|CodeReviewCommit
 name|newTip
 init|=
-operator|(
-name|CodeReviewCommit
-operator|)
 name|args
 operator|.
 name|rw

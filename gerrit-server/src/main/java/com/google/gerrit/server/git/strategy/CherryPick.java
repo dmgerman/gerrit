@@ -1133,9 +1133,6 @@ decl_stmt|;
 name|CodeReviewCommit
 name|newCommit
 init|=
-operator|(
-name|CodeReviewCommit
-operator|)
 name|args
 operator|.
 name|mergeUtil

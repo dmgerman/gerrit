@@ -318,6 +318,40 @@ name|server
 operator|.
 name|git
 operator|.
+name|CodeReviewCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|CodeReviewCommit
+operator|.
+name|CodeReviewRevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|GitRepositoryManager
 import|;
 end_import
@@ -756,20 +790,6 @@ name|jgit
 operator|.
 name|revwalk
 operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
 name|RevWalk
 import|;
 end_import
@@ -1156,11 +1176,12 @@ argument_list|(
 name|project
 argument_list|)
 init|;
-name|RevWalk
+name|CodeReviewRevWalk
 name|revWalk
 operator|=
-operator|new
-name|RevWalk
+name|CodeReviewCommit
+operator|.
+name|newRevWalk
 argument_list|(
 name|git
 argument_list|)
@@ -1201,8 +1222,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-specifier|final
-name|RevCommit
+name|CodeReviewCommit
 name|mergeTip
 init|=
 name|revWalk
@@ -1215,7 +1235,7 @@ name|getObjectId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|RevCommit
+name|CodeReviewCommit
 name|commitToCherryPick
 init|=
 name|revWalk
@@ -1293,7 +1313,7 @@ argument_list|()
 operator|+
 literal|'\n'
 decl_stmt|;
-name|RevCommit
+name|CodeReviewCommit
 name|cherryPickCommit
 decl_stmt|;
 try|try
@@ -1675,7 +1695,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|insertPatchSet (Repository git, RevWalk revWalk, Change change, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser)
+DECL|method|insertPatchSet (Repository git, RevWalk revWalk, Change change, CodeReviewCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser)
 specifier|private
 name|Change
 operator|.
@@ -1691,7 +1711,7 @@ parameter_list|,
 name|Change
 name|change
 parameter_list|,
-name|RevCommit
+name|CodeReviewCommit
 name|cherryPickCommit
 parameter_list|,
 name|RefControl
@@ -1815,7 +1835,7 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|createNewChange (Repository git, RevWalk revWalk, Change.Key changeKey, Project.NameKey project, Ref destRef, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser, String topic)
+DECL|method|createNewChange (Repository git, RevWalk revWalk, Change.Key changeKey, Project.NameKey project, Ref destRef, CodeReviewCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser, String topic)
 specifier|private
 name|Change
 name|createNewChange
@@ -1839,7 +1859,7 @@ parameter_list|,
 name|Ref
 name|destRef
 parameter_list|,
-name|RevCommit
+name|CodeReviewCommit
 name|cherryPickCommit
 parameter_list|,
 name|RefControl
@@ -2117,7 +2137,7 @@ return|return
 name|change
 return|;
 block|}
-DECL|method|addMessageToSourceChange (Change change, PatchSet.Id patchSetId, String destinationBranch, RevCommit cherryPickCommit, IdentifiedUser identifiedUser, RefControl refControl)
+DECL|method|addMessageToSourceChange (Change change, PatchSet.Id patchSetId, String destinationBranch, CodeReviewCommit cherryPickCommit, IdentifiedUser identifiedUser, RefControl refControl)
 specifier|private
 name|void
 name|addMessageToSourceChange
@@ -2133,7 +2153,7 @@ parameter_list|,
 name|String
 name|destinationBranch
 parameter_list|,
-name|RevCommit
+name|CodeReviewCommit
 name|cherryPickCommit
 parameter_list|,
 name|IdentifiedUser

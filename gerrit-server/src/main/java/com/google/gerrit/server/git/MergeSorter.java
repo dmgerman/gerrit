@@ -68,6 +68,24 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|CodeReviewCommit
+operator|.
+name|CodeReviewRevWalk
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -105,20 +123,6 @@ operator|.
 name|revwalk
 operator|.
 name|RevFlag
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
 import|;
 end_import
 
@@ -191,7 +195,7 @@ block|{
 DECL|field|rw
 specifier|private
 specifier|final
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 decl_stmt|;
 DECL|field|canMergeFlag
@@ -209,22 +213,19 @@ name|RevCommit
 argument_list|>
 name|accepted
 decl_stmt|;
-DECL|method|MergeSorter (final RevWalk rw, final Set<RevCommit> alreadyAccepted, final RevFlag canMergeFlag)
+DECL|method|MergeSorter (CodeReviewRevWalk rw, Set<RevCommit> alreadyAccepted, RevFlag canMergeFlag)
 specifier|public
 name|MergeSorter
 parameter_list|(
-specifier|final
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|Set
 argument_list|<
 name|RevCommit
 argument_list|>
 name|alreadyAccepted
 parameter_list|,
-specifier|final
 name|RevFlag
 name|canMergeFlag
 parameter_list|)
@@ -339,10 +340,9 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-name|RevCommit
+name|CodeReviewCommit
 name|c
 decl_stmt|;
-specifier|final
 name|RevCommitList
 argument_list|<
 name|RevCommit
@@ -424,9 +424,6 @@ name|missing
 operator|.
 name|add
 argument_list|(
-operator|(
-name|CodeReviewCommit
-operator|)
 name|c
 argument_list|)
 expr_stmt|;

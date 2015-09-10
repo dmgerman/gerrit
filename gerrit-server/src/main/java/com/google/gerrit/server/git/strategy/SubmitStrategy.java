@@ -204,6 +204,24 @@ name|server
 operator|.
 name|git
 operator|.
+name|CodeReviewCommit
+operator|.
+name|CodeReviewRevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|MergeException
 import|;
 end_import
@@ -388,20 +406,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -496,7 +500,7 @@ decl_stmt|;
 DECL|field|rw
 specifier|protected
 specifier|final
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 decl_stmt|;
 DECL|field|inserter
@@ -558,7 +562,7 @@ specifier|final
 name|IdentifiedUser
 name|caller
 decl_stmt|;
-DECL|method|Arguments (IdentifiedUser.GenericFactory identifiedUserFactory, Provider<PersonIdent> serverIdent, ReviewDb db, ChangeControl.GenericFactory changeControlFactory, Repository repo, RevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, ApprovalsUtil approvalsUtil, MergeUtil mergeUtil, ChangeIndexer indexer, IdentifiedUser caller)
+DECL|method|Arguments (IdentifiedUser.GenericFactory identifiedUserFactory, Provider<PersonIdent> serverIdent, ReviewDb db, ChangeControl.GenericFactory changeControlFactory, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, ApprovalsUtil approvalsUtil, MergeUtil mergeUtil, ChangeIndexer indexer, IdentifiedUser caller)
 name|Arguments
 parameter_list|(
 name|IdentifiedUser
@@ -583,7 +587,7 @@ parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
-name|RevWalk
+name|CodeReviewRevWalk
 name|rw
 parameter_list|,
 name|ObjectInserter
