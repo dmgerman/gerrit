@@ -178,6 +178,11 @@ name|ListBranchesRequest
 name|branches
 parameter_list|()
 function_decl|;
+DECL|method|tags ()
+name|ListTagsRequest
+name|tags
+parameter_list|()
+function_decl|;
 DECL|class|ListBranchesRequest
 specifier|public
 specifier|abstract
@@ -333,6 +338,25 @@ name|regex
 return|;
 block|}
 block|}
+DECL|class|ListTagsRequest
+specifier|public
+specifier|abstract
+class|class
+name|ListTagsRequest
+block|{
+DECL|method|get ()
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|TagInfo
+argument_list|>
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+block|}
 DECL|method|children ()
 name|List
 argument_list|<
@@ -370,6 +394,17 @@ comment|/**    * Look up a branch by refname.    *<p>    *<strong>Note:</strong>
 DECL|method|branch (String ref)
 name|BranchApi
 name|branch
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Look up a tag by refname.    *<p>    * @param ref tag name, with or without "refs/tags/" prefix.    * @throws RestApiException if a problem occurred reading the project.    * @return API for accessing the tag.    */
+DECL|method|tag (String ref)
+name|TagApi
+name|tag
 parameter_list|(
 name|String
 name|ref
@@ -487,6 +522,20 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|tags ()
+specifier|public
+name|ListTagsRequest
+name|tags
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|children ()
 specifier|public
 name|List
@@ -549,6 +598,25 @@ DECL|method|branch (String ref)
 specifier|public
 name|BranchApi
 name|branch
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|tag (String ref)
+specifier|public
+name|TagApi
+name|tag
 parameter_list|(
 name|String
 name|ref

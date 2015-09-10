@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.project
+DECL|package|com.google.gerrit.extensions.api.projects
 package|package
 name|com
 operator|.
@@ -60,9 +60,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|project
+name|api
+operator|.
+name|projects
 package|;
 end_package
 
@@ -76,11 +78,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
+name|restapi
 operator|.
-name|projects
-operator|.
-name|TagInfo
+name|NotImplementedException
 import|;
 end_import
 
@@ -96,95 +96,50 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestView
+name|RestApiException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|TypeLiteral
-import|;
-end_import
-
-begin_class
-DECL|class|TagResource
+begin_interface
+DECL|interface|TagApi
+specifier|public
+interface|interface
+name|TagApi
+block|{
+DECL|method|get ()
+name|TagInfo
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+DECL|class|NotImplemented
 specifier|public
 class|class
-name|TagResource
-extends|extends
-name|ProjectResource
+name|NotImplemented
+implements|implements
+name|TagApi
 block|{
-DECL|field|TAG_KIND
-specifier|public
-specifier|static
-specifier|final
-name|TypeLiteral
-argument_list|<
-name|RestView
-argument_list|<
-name|TagResource
-argument_list|>
-argument_list|>
-name|TAG_KIND
-init|=
-operator|new
-name|TypeLiteral
-argument_list|<
-name|RestView
-argument_list|<
-name|TagResource
-argument_list|>
-argument_list|>
-argument_list|()
-block|{}
-decl_stmt|;
-DECL|field|tag
-specifier|private
-specifier|final
-name|TagInfo
-name|tag
-decl_stmt|;
-DECL|method|TagResource (ProjectControl control, TagInfo tag)
-specifier|public
-name|TagResource
-parameter_list|(
-name|ProjectControl
-name|control
-parameter_list|,
-name|TagInfo
-name|tag
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|control
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|tag
-operator|=
-name|tag
-expr_stmt|;
-block|}
-DECL|method|getTagInfo ()
+annotation|@
+name|Override
+DECL|method|get ()
 specifier|public
 name|TagInfo
-name|getTagInfo
+name|get
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
-return|return
-name|tag
-return|;
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
 block|}
 block|}
-end_class
+block|}
+end_interface
 
 end_unit
 
