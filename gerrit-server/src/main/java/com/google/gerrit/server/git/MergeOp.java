@@ -1933,6 +1933,26 @@ operator|.
 name|currentPatchSet
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|patchSet
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"missing current patch set for change "
+operator|+
+name|cd
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+throw|;
+block|}
 name|List
 argument_list|<
 name|SubmitRecord
