@@ -518,16 +518,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -689,6 +679,27 @@ argument_list|(
 name|toMerge
 argument_list|)
 decl_stmt|;
+name|boolean
+name|first
+init|=
+literal|true
+decl_stmt|;
+try|try
+init|(
+name|BatchUpdate
+name|u
+init|=
+name|args
+operator|.
+name|newBatchUpdate
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+init|)
+block|{
 while|while
 condition|(
 operator|!
@@ -708,35 +719,11 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|Timestamp
-name|now
-init|=
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
-decl_stmt|;
-try|try
-init|(
-name|BatchUpdate
-name|u
-init|=
-name|args
-operator|.
-name|newBatchUpdate
-argument_list|(
-name|now
-argument_list|)
-init|)
-block|{
-comment|// TODO(dborowitz): This won't work when mergeTip is updated only at the
-comment|// end of the batch.
 if|if
 condition|(
-name|mergeTip
-operator|.
-name|getCurrentTip
-argument_list|()
+name|first
+operator|&&
+name|branchTip
 operator|==
 literal|null
 condition|)
@@ -839,6 +826,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|first
+operator|=
+literal|false
+expr_stmt|;
+block|}
 name|u
 operator|.
 name|execute
@@ -857,17 +849,13 @@ throw|throw
 operator|new
 name|MergeException
 argument_list|(
-literal|"Cannot merge "
+literal|"Cannot cherry-pick onto "
 operator|+
-name|n
+name|args
 operator|.
-name|name
-argument_list|()
-argument_list|,
-name|e
+name|destBranch
 argument_list|)
 throw|;
-block|}
 block|}
 comment|// TODO(dborowitz): When BatchUpdate is hoisted out of CherryPick,
 comment|// SubmitStrategy should probably no longer return MergeTip, instead just
