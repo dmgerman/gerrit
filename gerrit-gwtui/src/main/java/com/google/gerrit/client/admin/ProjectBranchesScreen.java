@@ -1428,7 +1428,7 @@ argument_list|()
 expr_stmt|;
 name|savedPanel
 operator|=
-name|BRANCH
+name|BRANCHES
 expr_stmt|;
 block|}
 DECL|method|updateForm ()

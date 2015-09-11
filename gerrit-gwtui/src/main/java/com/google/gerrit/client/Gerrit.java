@@ -4582,7 +4582,7 @@ argument_list|()
 argument_list|,
 name|ProjectScreen
 operator|.
-name|BRANCH
+name|BRANCHES
 argument_list|)
 argument_list|)
 expr_stmt|;

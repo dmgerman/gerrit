@@ -5563,7 +5563,7 @@ if|if
 condition|(
 name|ProjectScreen
 operator|.
-name|BRANCH
+name|BRANCHES
 operator|.
 name|equals
 argument_list|(
@@ -5574,7 +5574,7 @@ name|matchPrefix
 argument_list|(
 name|ProjectScreen
 operator|.
-name|BRANCH
+name|BRANCHES
 argument_list|,
 name|panel
 argument_list|)

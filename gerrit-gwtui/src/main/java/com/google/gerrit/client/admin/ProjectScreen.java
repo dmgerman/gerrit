@@ -116,12 +116,12 @@ name|INFO
 init|=
 literal|"info"
 decl_stmt|;
-DECL|field|BRANCH
+DECL|field|BRANCHES
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|BRANCH
+name|BRANCHES
 init|=
 literal|"branches"
 decl_stmt|;
