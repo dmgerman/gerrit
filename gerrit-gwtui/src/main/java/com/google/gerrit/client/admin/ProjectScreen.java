@@ -143,6 +143,15 @@ name|DASHBOARDS
 init|=
 literal|"dashboards"
 decl_stmt|;
+DECL|field|TAGS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TAGS
+init|=
+literal|"tags"
+decl_stmt|;
 DECL|field|savedPanel
 specifier|protected
 specifier|static

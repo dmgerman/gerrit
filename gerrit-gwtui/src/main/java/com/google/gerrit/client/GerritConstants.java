@@ -313,6 +313,11 @@ name|String
 name|menuProjectsBranches
 parameter_list|()
 function_decl|;
+DECL|method|menuProjectsTags ()
+name|String
+name|menuProjectsTags
+parameter_list|()
+function_decl|;
 DECL|method|menuProjectsAccess ()
 name|String
 name|menuProjectsAccess
