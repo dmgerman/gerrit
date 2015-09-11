@@ -96,9 +96,9 @@ name|void
 name|configureServlets
 parameter_list|()
 block|{
-name|serve
+name|serveRegex
 argument_list|(
-literal|"/gitweb"
+literal|"^/(?:a/)?gitweb"
 argument_list|)
 operator|.
 name|with
