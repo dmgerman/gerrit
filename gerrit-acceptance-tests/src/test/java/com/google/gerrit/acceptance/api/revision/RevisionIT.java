@@ -708,6 +708,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -4101,15 +4111,6 @@ operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
-name|DateFormat
-name|dateFormat
-init|=
-operator|new
-name|SimpleDateFormat
-argument_list|(
-literal|"EEE, dd MMM yyyy HH:mm:ss Z"
-argument_list|)
-decl_stmt|;
 name|ChangeInfo
 name|change
 init|=
@@ -4132,10 +4133,23 @@ operator|.
 name|currentRevision
 argument_list|)
 decl_stmt|;
+name|DateFormat
+name|df
+init|=
+operator|new
+name|SimpleDateFormat
+argument_list|(
+literal|"EEE, dd MMM yyyy HH:mm:ss Z"
+argument_list|,
+name|Locale
+operator|.
+name|US
+argument_list|)
+decl_stmt|;
 name|String
 name|date
 init|=
-name|dateFormat
+name|df
 operator|.
 name|format
 argument_list|(
