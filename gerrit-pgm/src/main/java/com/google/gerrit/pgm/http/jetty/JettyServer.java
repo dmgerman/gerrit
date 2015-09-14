@@ -4622,7 +4622,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"tools/buck.properties"
+literal|"tools/buck/buck.properties"
 argument_list|)
 argument_list|)
 operator|.
