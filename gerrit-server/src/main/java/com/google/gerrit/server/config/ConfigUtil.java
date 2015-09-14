@@ -95,22 +95,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|StringUtils
-operator|.
-name|equalsIgnoreCase
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -370,13 +354,13 @@ control|)
 block|{
 if|if
 condition|(
-name|equalsIgnoreCase
-argument_list|(
 name|e
 operator|.
 name|name
 argument_list|()
-argument_list|,
+operator|.
+name|equalsIgnoreCase
+argument_list|(
 name|n
 argument_list|)
 condition|)
@@ -2045,11 +2029,15 @@ control|)
 block|{
 if|if
 condition|(
+name|b
+operator|!=
+literal|null
+operator|&&
+name|b
+operator|.
 name|equalsIgnoreCase
 argument_list|(
 name|a
-argument_list|,
-name|b
 argument_list|)
 condition|)
 block|{
