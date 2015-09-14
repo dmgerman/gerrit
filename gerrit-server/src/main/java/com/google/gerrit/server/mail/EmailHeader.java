@@ -833,7 +833,7 @@ literal|"EEE, d MMM yyyy HH:mm:ss Z"
 argument_list|,
 name|Locale
 operator|.
-name|ENGLISH
+name|US
 argument_list|)
 expr_stmt|;
 name|w
