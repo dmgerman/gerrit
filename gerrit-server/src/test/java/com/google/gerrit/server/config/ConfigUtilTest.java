@@ -224,8 +224,8 @@ name|ConfigUtilTest
 block|{
 DECL|field|SECT
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|SECT
 init|=
@@ -233,8 +233,8 @@ literal|"foo"
 decl_stmt|;
 DECL|field|SUB
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|SUB
 init|=
