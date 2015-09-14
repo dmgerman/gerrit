@@ -69,22 +69,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|StringUtils
-operator|.
-name|equalsIgnoreCase
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -1217,13 +1201,13 @@ control|)
 block|{
 if|if
 condition|(
-name|equalsIgnoreCase
-argument_list|(
 name|e
 operator|.
 name|toString
 argument_list|()
-argument_list|,
+operator|.
+name|equalsIgnoreCase
+argument_list|(
 name|r
 argument_list|)
 condition|)
