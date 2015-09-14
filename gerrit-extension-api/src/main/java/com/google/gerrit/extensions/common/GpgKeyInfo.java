@@ -82,6 +82,24 @@ specifier|public
 class|class
 name|GpgKeyInfo
 block|{
+comment|/**    * Status of checking an object like a key or signature.    *<p>    * Order of values in this enum is significant: OK is "better" than BAD, etc.    */
+DECL|enum|Status
+specifier|public
+enum|enum
+name|Status
+block|{
+comment|/** Something is wrong with this key. */
+DECL|enumConstant|BAD
+name|BAD
+block|,
+comment|/**      * Inspecting only this key found no problems, but the system does not fully      * trust the key's origin.      */
+DECL|enumConstant|OK
+name|OK
+block|,
+comment|/**      * This key is valid, and the system knows enough about the key and its      * origin to trust it.      */
+DECL|enumConstant|TRUSTED
+name|TRUSTED
+block|;   }
 DECL|field|id
 specifier|public
 name|String
