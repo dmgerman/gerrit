@@ -1097,6 +1097,9 @@ name|check
 argument_list|(
 name|cert
 argument_list|)
+operator|.
+name|getCheckResult
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(

@@ -209,6 +209,13 @@ name|COMMIT_FOOTERS
 argument_list|(
 literal|17
 argument_list|)
+block|,
+comment|/** Include push certificate information along with any patch sets. */
+DECL|enumConstant|PUSH_CERTIFICATES
+name|PUSH_CERTIFICATES
+argument_list|(
+literal|18
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
