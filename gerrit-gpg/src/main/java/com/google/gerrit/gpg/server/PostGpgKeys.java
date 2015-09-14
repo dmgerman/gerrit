@@ -386,6 +386,20 @@ name|gerrit
 operator|.
 name|gpg
 operator|.
+name|PublicKeyChecker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|gpg
+operator|.
 name|PublicKeyStore
 import|;
 end_import
@@ -1213,6 +1227,8 @@ argument_list|(
 name|newKeys
 argument_list|,
 name|toRemove
+argument_list|,
+name|store
 argument_list|)
 return|;
 block|}
@@ -1870,7 +1886,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|toJson ( Collection<PGPPublicKeyRing> keys, Set<Fingerprint> deleted)
+DECL|method|toJson ( Collection<PGPPublicKeyRing> keys, Set<Fingerprint> deleted, PublicKeyStore store)
 specifier|private
 specifier|static
 name|Map
@@ -1892,10 +1908,20 @@ argument_list|<
 name|Fingerprint
 argument_list|>
 name|deleted
+parameter_list|,
+name|PublicKeyStore
+name|store
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|PublicKeyChecker
+name|checker
+init|=
+operator|new
+name|PublicKeyChecker
+argument_list|()
+decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -1935,6 +1961,10 @@ operator|.
 name|toJson
 argument_list|(
 name|keyRing
+argument_list|,
+name|checker
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 name|infos

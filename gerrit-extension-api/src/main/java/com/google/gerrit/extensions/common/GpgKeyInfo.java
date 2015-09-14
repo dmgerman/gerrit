@@ -123,6 +123,19 @@ specifier|public
 name|String
 name|key
 decl_stmt|;
+DECL|field|status
+specifier|public
+name|Status
+name|status
+decl_stmt|;
+DECL|field|problems
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|problems
+decl_stmt|;
 block|}
 end_class
 

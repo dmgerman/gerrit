@@ -3021,6 +3021,32 @@ argument_list|(
 literal|"-----BEGIN PGP PUBLIC KEY BLOCK-----\n"
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|actual
+operator|.
+name|status
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|GpgKeyInfo
+operator|.
+name|Status
+operator|.
+name|TRUSTED
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|actual
+operator|.
+name|problems
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|addExternalIdEmail (TestAccount account, String email)
 specifier|private
