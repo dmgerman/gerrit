@@ -4181,6 +4181,15 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|advHooks
+operator|.
+name|add
+argument_list|(
+operator|new
+name|HackPushNegotiateHook
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|rp
 operator|.
 name|setAdvertiseRefsHook
