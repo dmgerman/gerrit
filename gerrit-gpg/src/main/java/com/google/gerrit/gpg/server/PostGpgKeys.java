@@ -372,7 +372,7 @@ name|gerrit
 operator|.
 name|gpg
 operator|.
-name|PublicKeyChecker
+name|GerritPublicKeyChecker
 import|;
 end_import
 
@@ -819,11 +819,13 @@ name|PublicKeyStore
 argument_list|>
 name|storeProvider
 decl_stmt|;
-DECL|field|checker
+DECL|field|checkerFactory
 specifier|private
 specifier|final
-name|PublicKeyChecker
-name|checker
+name|GerritPublicKeyChecker
+operator|.
+name|Factory
+name|checkerFactory
 decl_stmt|;
 DECL|field|addKeyFactory
 specifier|private
@@ -835,7 +837,7 @@ name|addKeyFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostGpgKeys (@erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<PublicKeyStore> storeProvider, PublicKeyChecker checker, AddKeySender.Factory addKeyFactory)
+DECL|method|PostGpgKeys (@erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory)
 name|PostGpgKeys
 parameter_list|(
 annotation|@
@@ -858,8 +860,10 @@ name|PublicKeyStore
 argument_list|>
 name|storeProvider
 parameter_list|,
-name|PublicKeyChecker
-name|checker
+name|GerritPublicKeyChecker
+operator|.
+name|Factory
+name|checkerFactory
 parameter_list|,
 name|AddKeySender
 operator|.
@@ -887,9 +891,9 @@ name|storeProvider
 expr_stmt|;
 name|this
 operator|.
-name|checker
+name|checkerFactory
 operator|=
-name|checker
+name|checkerFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1600,7 +1604,15 @@ comment|// Don't check web of trust; admins can fill in certifications later.
 name|CheckResult
 name|result
 init|=
-name|checker
+name|checkerFactory
+operator|.
+name|create
+argument_list|(
+name|rsrc
+operator|.
+name|getUser
+argument_list|()
+argument_list|)
 operator|.
 name|check
 argument_list|(

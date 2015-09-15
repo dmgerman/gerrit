@@ -591,14 +591,17 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Perform custom checks.    *<p>    * Default implementation reports no problems, but may be overridden by    * subclasses.    *    * @param key the public key.    * @return the result of the custom check.    */
-DECL|method|checkCustom (PGPPublicKey key)
+comment|/**    * Perform custom checks.    *<p>    * Default implementation reports no problems, but may be overridden by    * subclasses.    *    * @param key the public key.    * @param depth the depth from the initial key passed to {@link #check(    *     PGPPublicKey, PublicKeyStore)}: 0 if this was the initial key, up to a    *     maximum of {@code maxTrustDepth}.    * @return the result of the custom check.    */
+DECL|method|checkCustom (PGPPublicKey key, int depth)
 specifier|public
 name|CheckResult
 name|checkCustom
 parameter_list|(
 name|PGPPublicKey
 name|key
+parameter_list|,
+name|int
+name|depth
 parameter_list|)
 block|{
 return|return
@@ -646,6 +649,8 @@ init|=
 name|checkCustom
 argument_list|(
 name|key
+argument_list|,
+name|depth
 argument_list|)
 decl_stmt|;
 name|CheckResult
