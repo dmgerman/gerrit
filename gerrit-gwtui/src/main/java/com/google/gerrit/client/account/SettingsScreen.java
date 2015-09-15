@@ -361,10 +361,10 @@ operator|.
 name|info
 argument_list|()
 operator|.
-name|receive
+name|gerrit
 argument_list|()
 operator|.
-name|enableSignedPush
+name|editGpgKeys
 argument_list|()
 condition|)
 block|{

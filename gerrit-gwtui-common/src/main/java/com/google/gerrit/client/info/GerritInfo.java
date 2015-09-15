@@ -217,6 +217,15 @@ name|docUrl
 parameter_list|()
 comment|/*-{ return this.doc_url; }-*/
 function_decl|;
+DECL|method|editGpgKeys ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|editGpgKeys
+parameter_list|()
+comment|/*-{ return this.edit_gpg_keys || false; }-*/
+function_decl|;
 DECL|method|reportBugUrl ()
 specifier|public
 specifier|final

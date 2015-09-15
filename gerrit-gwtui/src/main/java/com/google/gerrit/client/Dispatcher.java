@@ -4350,6 +4350,17 @@ name|SETTINGS_GPGKEYS
 argument_list|,
 name|token
 argument_list|)
+operator|&&
+name|Gerrit
+operator|.
+name|info
+argument_list|()
+operator|.
+name|gerrit
+argument_list|()
+operator|.
+name|editGpgKeys
+argument_list|()
 condition|)
 block|{
 return|return
