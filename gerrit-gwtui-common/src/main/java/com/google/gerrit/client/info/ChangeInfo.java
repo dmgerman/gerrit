@@ -1860,6 +1860,24 @@ name|fetch
 parameter_list|()
 comment|/*-{ return this.fetch; }-*/
 function_decl|;
+DECL|method|hasPushCertificate ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|hasPushCertificate
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('push_certificate'); }-*/
+function_decl|;
+DECL|method|pushCertificate ()
+specifier|public
+specifier|final
+specifier|native
+name|PushCertificateInfo
+name|pushCertificate
+parameter_list|()
+comment|/*-{ return this.push_certificate; }-*/
+function_decl|;
 DECL|method|sortRevisionInfoByNumber (JsArray<RevisionInfo> list)
 specifier|public
 specifier|static

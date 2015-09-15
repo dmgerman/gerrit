@@ -875,6 +875,26 @@ name|String
 name|votable
 parameter_list|()
 function_decl|;
+DECL|method|pushCertMissing ()
+name|String
+name|pushCertMissing
+parameter_list|()
+function_decl|;
+DECL|method|pushCertBad ()
+name|String
+name|pushCertBad
+parameter_list|()
+function_decl|;
+DECL|method|pushCertOk ()
+name|String
+name|pushCertOk
+parameter_list|()
+function_decl|;
+DECL|method|pushCertTrusted ()
+name|String
+name|pushCertTrusted
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

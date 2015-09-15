@@ -423,6 +423,17 @@ name|ImageResource
 name|warning
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"question.png"
+argument_list|)
+DECL|method|question ()
+specifier|public
+name|ImageResource
+name|question
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

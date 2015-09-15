@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.account
+DECL|package|com.google.gerrit.client.info
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|info
 package|;
 end_package
 
@@ -82,69 +82,35 @@ name|JavaScriptObject
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|core
-operator|.
-name|client
-operator|.
-name|JsArrayString
-import|;
-end_import
-
 begin_class
-DECL|class|GpgKeyInfo
+DECL|class|PushCertificateInfo
 specifier|public
 class|class
-name|GpgKeyInfo
+name|PushCertificateInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|id ()
+DECL|method|certificate ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|id
+name|certificate
 parameter_list|()
-comment|/*-{ return this.id; }-*/
-function_decl|;
-DECL|method|fingerprint ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|fingerprint
-parameter_list|()
-comment|/*-{ return this.fingerprint; }-*/
-function_decl|;
-DECL|method|userIds ()
-specifier|public
-specifier|final
-specifier|native
-name|JsArrayString
-name|userIds
-parameter_list|()
-comment|/*-{ return this.user_ids; }-*/
+comment|/*-{ return this.certificate; }-*/
 function_decl|;
 DECL|method|key ()
 specifier|public
 specifier|final
 specifier|native
-name|String
+name|GpgKeyInfo
 name|key
 parameter_list|()
 comment|/*-{ return this.key; }-*/
 function_decl|;
-DECL|method|GpgKeyInfo ()
+DECL|method|PushCertificateInfo ()
 specifier|protected
-name|GpgKeyInfo
+name|PushCertificateInfo
 parameter_list|()
 block|{   }
 block|}
