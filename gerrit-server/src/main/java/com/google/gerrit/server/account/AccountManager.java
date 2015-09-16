@@ -989,6 +989,13 @@ operator|.
 name|FULL_NAME
 argument_list|)
 operator|&&
+name|who
+operator|.
+name|getDisplayName
+argument_list|()
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|eq
 argument_list|(
@@ -1045,6 +1052,13 @@ name|FieldName
 operator|.
 name|USER_NAME
 argument_list|)
+operator|&&
+name|who
+operator|.
+name|getUserName
+argument_list|()
+operator|!=
+literal|null
 operator|&&
 operator|!
 name|eq
