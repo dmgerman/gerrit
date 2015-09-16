@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -74,43 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
-operator|.
-name|info
-operator|.
-name|ActionInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
+name|reviewdb
 operator|.
 name|client
 operator|.
-name|info
-operator|.
-name|WebLinkInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|NativeMap
+name|RefNames
 import|;
 end_import
 
@@ -126,54 +94,56 @@ name|core
 operator|.
 name|client
 operator|.
-name|JsArray
+name|JavaScriptObject
 import|;
 end_import
 
 begin_class
-DECL|class|BranchInfo
+DECL|class|RefInfo
 specifier|public
 class|class
-name|BranchInfo
-extends|extends
 name|RefInfo
+extends|extends
+name|JavaScriptObject
 block|{
-DECL|method|canDelete ()
+DECL|method|getShortName ()
+specifier|public
+specifier|final
+name|String
+name|getShortName
+parameter_list|()
+block|{
+return|return
+name|RefNames
+operator|.
+name|shortName
+argument_list|(
+name|ref
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|ref ()
 specifier|public
 specifier|final
 specifier|native
-name|boolean
-name|canDelete
+name|String
+name|ref
 parameter_list|()
-comment|/*-{ return this['can_delete'] ? true : false; }-*/
+comment|/*-{ return this.ref; }-*/
 function_decl|;
-DECL|method|actions ()
+DECL|method|revision ()
 specifier|public
 specifier|final
 specifier|native
-name|NativeMap
-argument_list|<
-name|ActionInfo
-argument_list|>
-name|actions
+name|String
+name|revision
 parameter_list|()
-comment|/*-{ return this.actions }-*/
+comment|/*-{ return this.revision; }-*/
 function_decl|;
-DECL|method|webLinks ()
-specifier|public
-specifier|final
-specifier|native
-name|JsArray
-argument_list|<
-name|WebLinkInfo
-argument_list|>
-name|webLinks
-parameter_list|()
-comment|/*-{ return this.web_links; }-*/
-function_decl|;
-DECL|method|BranchInfo ()
+DECL|method|RefInfo ()
 specifier|protected
-name|BranchInfo
+name|RefInfo
 parameter_list|()
 block|{   }
 block|}
