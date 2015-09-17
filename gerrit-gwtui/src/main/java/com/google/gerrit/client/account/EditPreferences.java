@@ -94,6 +94,22 @@ name|extensions
 operator|.
 name|client
 operator|.
+name|KeyMapType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
 name|Theme
 import|;
 end_import
@@ -161,6 +177,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|cursorBlinkRate
+argument_list|(
+name|in
+operator|.
+name|cursorBlinkRate
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|hideTopMenu
 argument_list|(
 name|in
@@ -206,11 +231,38 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|matchBrackets
+argument_list|(
+name|in
+operator|.
+name|matchBrackets
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|autoCloseBrackets
+argument_list|(
+name|in
+operator|.
+name|autoCloseBrackets
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|theme
 argument_list|(
 name|in
 operator|.
 name|theme
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|keyMapType
+argument_list|(
+name|in
+operator|.
+name|keyMapType
 argument_list|)
 expr_stmt|;
 return|return
@@ -243,6 +295,13 @@ argument_list|()
 expr_stmt|;
 name|p
 operator|.
+name|cursorBlinkRate
+operator|=
+name|cursorBlinkRate
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
 name|hideTopMenu
 operator|=
 name|hideTopMenu
@@ -278,9 +337,30 @@ argument_list|()
 expr_stmt|;
 name|p
 operator|.
+name|matchBrackets
+operator|=
+name|matchBrackets
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|autoCloseBrackets
+operator|=
+name|autoCloseBrackets
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
 name|theme
 operator|=
 name|theme
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|keyMapType
+operator|=
+name|keyMapType
 argument_list|()
 expr_stmt|;
 block|}
@@ -326,6 +406,48 @@ name|i
 parameter_list|)
 comment|/*-{ this.theme = i }-*/
 function_decl|;
+DECL|method|keyMapType (KeyMapType i)
+specifier|public
+specifier|final
+name|void
+name|keyMapType
+parameter_list|(
+name|KeyMapType
+name|i
+parameter_list|)
+block|{
+name|setkeyMapTypeRaw
+argument_list|(
+name|i
+operator|!=
+literal|null
+condition|?
+name|i
+operator|.
+name|toString
+argument_list|()
+else|:
+name|KeyMapType
+operator|.
+name|DEFAULT
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setkeyMapTypeRaw (String i)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|setkeyMapTypeRaw
+parameter_list|(
+name|String
+name|i
+parameter_list|)
+comment|/*-{ this.key_map_type = i }-*/
+function_decl|;
 DECL|method|tabSize (int t)
 specifier|public
 specifier|final
@@ -349,6 +471,18 @@ name|int
 name|c
 parameter_list|)
 comment|/*-{ this.line_length = c }-*/
+function_decl|;
+DECL|method|cursorBlinkRate (int r)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|cursorBlinkRate
+parameter_list|(
+name|int
+name|r
+parameter_list|)
+comment|/*-{ this.cursor_blink_rate = r }-*/
 function_decl|;
 DECL|method|hideTopMenu (boolean s)
 specifier|public
@@ -410,6 +544,30 @@ name|s
 parameter_list|)
 comment|/*-{ this.hide_line_numbers = s }-*/
 function_decl|;
+DECL|method|matchBrackets (boolean m)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|matchBrackets
+parameter_list|(
+name|boolean
+name|m
+parameter_list|)
+comment|/*-{ this.match_brackets = m }-*/
+function_decl|;
+DECL|method|autoCloseBrackets (boolean c)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|autoCloseBrackets
+parameter_list|(
+name|boolean
+name|c
+parameter_list|)
+comment|/*-{ this.auto_close_brackets = c }-*/
+function_decl|;
 DECL|method|theme ()
 specifier|public
 specifier|final
@@ -449,6 +607,45 @@ name|themeRaw
 parameter_list|()
 comment|/*-{ return this.theme }-*/
 function_decl|;
+DECL|method|keyMapType ()
+specifier|public
+specifier|final
+name|KeyMapType
+name|keyMapType
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|keyMapTypeRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|KeyMapType
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+name|KeyMapType
+operator|.
+name|DEFAULT
+return|;
+block|}
+DECL|method|keyMapTypeRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|keyMapTypeRaw
+parameter_list|()
+comment|/*-{ return this.key_map_type }-*/
+function_decl|;
 DECL|method|tabSize ()
 specifier|public
 specifier|final
@@ -478,6 +675,22 @@ argument_list|(
 literal|"line_length"
 argument_list|,
 literal|100
+argument_list|)
+return|;
+block|}
+DECL|method|cursorBlinkRate ()
+specifier|public
+specifier|final
+name|int
+name|cursorBlinkRate
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+literal|"cursor_blink_rate"
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
@@ -525,6 +738,24 @@ name|boolean
 name|hideLineNumbers
 parameter_list|()
 comment|/*-{ return this.hide_line_numbers || false }-*/
+function_decl|;
+DECL|method|matchBrackets ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|matchBrackets
+parameter_list|()
+comment|/*-{ return this.match_brackets || false }-*/
+function_decl|;
+DECL|method|autoCloseBrackets ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|autoCloseBrackets
+parameter_list|()
+comment|/*-{ return this.auto_close_brackets || false }-*/
 function_decl|;
 DECL|method|get (String n, int d)
 specifier|private
