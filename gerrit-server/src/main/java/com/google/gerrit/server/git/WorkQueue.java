@@ -1412,7 +1412,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/** Runnable needing to know it was canceled. */
+comment|/**    * Runnable needing to know it was canceled.    * Note that cancel is called only in case the task is not in    * progress already.    */
 DECL|interface|CancelableRunnable
 specifier|public
 interface|interface
@@ -1424,6 +1424,21 @@ comment|/** Notifies the runnable it was canceled. */
 DECL|method|cancel ()
 name|void
 name|cancel
+parameter_list|()
+function_decl|;
+block|}
+comment|/**    * Base interface handles the case when task was canceled before    * actual execution and in case it was started cancel method is    * not called yet the task itself will be destroyed anyway (it    * will result in resource opening errors).    * This interface gives a chance to implementing classes for    * handling such scenario and act accordingly.    */
+DECL|interface|CanceledWhileRunning
+specifier|public
+interface|interface
+name|CanceledWhileRunning
+extends|extends
+name|CancelableRunnable
+block|{
+comment|/** Notifies the runnable it was canceled during execution. **/
+DECL|method|setCanceledWhileRunning ()
+name|void
+name|setCanceledWhileRunning
 parameter_list|()
 function_decl|;
 block|}
@@ -1701,7 +1716,10 @@ condition|(
 name|runnable
 operator|instanceof
 name|CancelableRunnable
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|running
 operator|.
 name|compareAndSet
@@ -1722,6 +1740,26 @@ operator|.
 name|cancel
 argument_list|()
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|runnable
+operator|instanceof
+name|CanceledWhileRunning
+condition|)
+block|{
+operator|(
+operator|(
+name|CanceledWhileRunning
+operator|)
+name|runnable
+operator|)
+operator|.
+name|setCanceledWhileRunning
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 name|executor
 operator|.
