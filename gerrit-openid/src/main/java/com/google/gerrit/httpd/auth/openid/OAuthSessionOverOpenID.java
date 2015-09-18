@@ -931,6 +931,13 @@ name|claimedIdentifier
 argument_list|)
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Claimed identity is set"
+argument_list|)
+expr_stmt|;
 name|Account
 operator|.
 name|Id
@@ -965,6 +972,13 @@ argument_list|)
 condition|)
 block|{
 comment|// Both link to the same account, that's what we expected.
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Both link to the same account. All is fine."
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1024,7 +1038,13 @@ literal|null
 condition|)
 block|{
 comment|// Claimed account already exists: link to it.
-comment|//
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Claimed account already exists: link to it."
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|accountManager
@@ -1085,12 +1105,11 @@ name|linkMode
 condition|)
 block|{
 comment|// Use case 2: link mode activated from the UI
-try|try
-block|{
-name|accountManager
+name|Account
 operator|.
-name|link
-argument_list|(
+name|Id
+name|accountId
+init|=
 name|identifiedUser
 operator|.
 name|get
@@ -1098,6 +1117,28 @@ argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Linking \"{}\" to \"{}\""
+argument_list|,
+name|user
+operator|.
+name|getExternalId
+argument_list|()
+argument_list|,
+name|accountId
+argument_list|)
+expr_stmt|;
+name|accountManager
+operator|.
+name|link
+argument_list|(
+name|accountId
 argument_list|,
 name|areq
 argument_list|)
@@ -1122,13 +1163,7 @@ argument_list|()
 operator|+
 literal|" to user identity: "
 operator|+
-name|identifiedUser
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
+name|accountId
 argument_list|)
 expr_stmt|;
 name|rsp
