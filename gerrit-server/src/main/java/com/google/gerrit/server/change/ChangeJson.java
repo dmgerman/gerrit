@@ -2765,6 +2765,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|infos
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
 name|r
 operator|.
 name|moreChanges
