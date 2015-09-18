@@ -198,7 +198,7 @@ name|projects
 operator|.
 name|ProjectApi
 operator|.
-name|ListBranchesRequest
+name|ListRefsRequest
 import|;
 end_import
 
@@ -873,7 +873,10 @@ expr_stmt|;
 block|}
 DECL|method|list ()
 specifier|private
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|BranchInfo
+argument_list|>
 name|list
 parameter_list|()
 throws|throws

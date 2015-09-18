@@ -174,33 +174,49 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|branches ()
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|BranchInfo
+argument_list|>
 name|branches
 parameter_list|()
 function_decl|;
-DECL|class|ListBranchesRequest
+DECL|method|tags ()
+name|ListRefsRequest
+argument_list|<
+name|TagInfo
+argument_list|>
+name|tags
+parameter_list|()
+function_decl|;
+DECL|class|ListRefsRequest
 specifier|public
 specifier|abstract
 class|class
-name|ListBranchesRequest
+name|ListRefsRequest
+parameter_list|<
+name|T
+extends|extends
+name|RefInfo
+parameter_list|>
 block|{
 DECL|field|limit
-specifier|private
+specifier|protected
 name|int
 name|limit
 decl_stmt|;
 DECL|field|start
-specifier|private
+specifier|protected
 name|int
 name|start
 decl_stmt|;
 DECL|field|substring
-specifier|private
+specifier|protected
 name|String
 name|substring
 decl_stmt|;
 DECL|field|regex
-specifier|private
+specifier|protected
 name|String
 name|regex
 decl_stmt|;
@@ -209,7 +225,7 @@ specifier|public
 specifier|abstract
 name|List
 argument_list|<
-name|BranchInfo
+name|T
 argument_list|>
 name|get
 parameter_list|()
@@ -218,7 +234,10 @@ name|RestApiException
 function_decl|;
 DECL|method|withLimit (int limit)
 specifier|public
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|T
+argument_list|>
 name|withLimit
 parameter_list|(
 name|int
@@ -237,7 +256,10 @@ return|;
 block|}
 DECL|method|withStart (int start)
 specifier|public
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|T
+argument_list|>
 name|withStart
 parameter_list|(
 name|int
@@ -256,7 +278,10 @@ return|;
 block|}
 DECL|method|withSubstring (String substring)
 specifier|public
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|T
+argument_list|>
 name|withSubstring
 parameter_list|(
 name|String
@@ -275,7 +300,10 @@ return|;
 block|}
 DECL|method|withRegex (String regex)
 specifier|public
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|T
+argument_list|>
 name|withRegex
 parameter_list|(
 name|String
@@ -370,6 +398,17 @@ comment|/**    * Look up a branch by refname.    *<p>    *<strong>Note:</strong>
 DECL|method|branch (String ref)
 name|BranchApi
 name|branch
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Look up a tag by refname.    *<p>    * @param ref tag name, with or without "refs/tags/" prefix.    * @throws RestApiException if a problem occurred reading the project.    * @return API for accessing the tag.    */
+DECL|method|tag (String ref)
+name|TagApi
+name|tag
 parameter_list|(
 name|String
 name|ref
@@ -475,8 +514,28 @@ annotation|@
 name|Override
 DECL|method|branches ()
 specifier|public
-name|ListBranchesRequest
+name|ListRefsRequest
+argument_list|<
+name|BranchInfo
+argument_list|>
 name|branches
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|tags ()
+specifier|public
+name|ListRefsRequest
+argument_list|<
+name|TagInfo
+argument_list|>
+name|tags
 parameter_list|()
 block|{
 throw|throw
@@ -549,6 +608,25 @@ DECL|method|branch (String ref)
 specifier|public
 name|BranchApi
 name|branch
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|tag (String ref)
+specifier|public
+name|TagApi
+name|tag
 parameter_list|(
 name|String
 name|ref
