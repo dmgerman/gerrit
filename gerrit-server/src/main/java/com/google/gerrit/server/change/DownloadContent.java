@@ -230,12 +230,12 @@ name|Option
 argument_list|(
 name|name
 operator|=
-literal|"--suffix"
+literal|"--parent"
 argument_list|)
-DECL|field|suffix
+DECL|field|parent
 specifier|private
-name|String
-name|suffix
+name|Integer
+name|parent
 decl_stmt|;
 annotation|@
 name|Inject
@@ -333,7 +333,7 @@ name|revstr
 argument_list|,
 name|path
 argument_list|,
-name|suffix
+name|parent
 argument_list|)
 return|;
 block|}
