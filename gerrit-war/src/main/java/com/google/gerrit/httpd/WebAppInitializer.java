@@ -544,6 +544,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|IndexModule
+operator|.
+name|IndexType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|SignedTokenEmailTokenVerifier
@@ -2438,14 +2456,19 @@ expr_stmt|;
 name|AbstractModule
 name|changeIndexModule
 decl_stmt|;
-switch|switch
-condition|(
+name|IndexType
+name|indexType
+init|=
 name|IndexModule
 operator|.
 name|getIndexType
 argument_list|(
 name|cfgInjector
 argument_list|)
+decl_stmt|;
+switch|switch
+condition|(
+name|indexType
 condition|)
 block|{
 case|case
@@ -2463,7 +2486,9 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"unsupported index.type"
+literal|"unsupported index.type = "
+operator|+
+name|indexType
 argument_list|)
 throw|;
 block|}
