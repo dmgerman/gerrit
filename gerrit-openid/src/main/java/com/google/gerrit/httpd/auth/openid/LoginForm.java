@@ -1251,6 +1251,15 @@ operator|.
 name|SIGN_IN
 expr_stmt|;
 block|}
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"mode \"{}\""
+argument_list|,
+name|mode
+argument_list|)
+expr_stmt|;
 name|OAuthServiceProvider
 name|oauthProvider
 init|=
@@ -1266,6 +1275,15 @@ operator|==
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"OpenId provider \"{}\""
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 name|discover
 argument_list|(
 name|req
@@ -1286,6 +1304,15 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"OAuth provider \"{}\""
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 name|OAuthSessionOverOpenID
 name|oauthSession
 init|=
