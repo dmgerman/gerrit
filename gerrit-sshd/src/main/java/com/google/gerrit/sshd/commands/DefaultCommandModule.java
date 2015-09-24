@@ -214,7 +214,6 @@ name|void
 name|configure
 parameter_list|()
 block|{
-specifier|final
 name|CommandName
 name|git
 init|=
@@ -225,7 +224,6 @@ argument_list|(
 literal|"git"
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CommandName
 name|gerrit
 init|=
@@ -248,7 +246,6 @@ argument_list|,
 literal|"index"
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CommandName
 name|logging
 init|=
@@ -261,7 +258,6 @@ argument_list|,
 literal|"logging"
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CommandName
 name|plugin
 init|=
@@ -274,7 +270,6 @@ argument_list|,
 literal|"plugin"
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CommandName
 name|testSubmit
 init|=
