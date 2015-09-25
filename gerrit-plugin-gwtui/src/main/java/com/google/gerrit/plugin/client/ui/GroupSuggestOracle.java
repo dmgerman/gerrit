@@ -488,6 +488,11 @@ extends|extends
 name|JavaScriptObject
 block|{
 comment|// Dummy class, does nothing.
+DECL|method|GroupInfo ()
+specifier|protected
+name|GroupInfo
+parameter_list|()
+block|{     }
 block|}
 block|}
 end_class
