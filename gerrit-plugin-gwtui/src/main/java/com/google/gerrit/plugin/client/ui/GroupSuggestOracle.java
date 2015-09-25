@@ -335,7 +335,7 @@ name|AsyncCallback
 argument_list|<
 name|NativeMap
 argument_list|<
-name|GroupInfo
+name|JavaScriptObject
 argument_list|>
 argument_list|>
 argument_list|()
@@ -348,7 +348,7 @@ name|onSuccess
 parameter_list|(
 name|NativeMap
 argument_list|<
-name|GroupInfo
+name|JavaScriptObject
 argument_list|>
 name|result
 parameter_list|)
@@ -478,21 +478,6 @@ name|empty
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-DECL|class|GroupInfo
-specifier|private
-specifier|static
-class|class
-name|GroupInfo
-extends|extends
-name|JavaScriptObject
-block|{
-comment|// Dummy class, does nothing.
-DECL|method|GroupInfo ()
-specifier|protected
-name|GroupInfo
-parameter_list|()
-block|{     }
 block|}
 block|}
 end_class
