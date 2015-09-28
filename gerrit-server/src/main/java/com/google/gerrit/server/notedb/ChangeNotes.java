@@ -713,6 +713,7 @@ decl_stmt|;
 DECL|field|PLC_ORDER
 specifier|public
 specifier|static
+specifier|final
 name|Comparator
 argument_list|<
 name|PatchLineComment
