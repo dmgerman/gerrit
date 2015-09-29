@@ -683,6 +683,7 @@ block|{
 DECL|field|PLC_ORDER
 specifier|public
 specifier|static
+specifier|final
 name|Ordering
 argument_list|<
 name|PatchLineComment
