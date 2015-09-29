@@ -534,6 +534,13 @@ argument_list|()
 decl_stmt|;
 name|async
 operator|.
+name|setName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+name|async
+operator|.
 name|setBlocking
 argument_list|(
 literal|true
