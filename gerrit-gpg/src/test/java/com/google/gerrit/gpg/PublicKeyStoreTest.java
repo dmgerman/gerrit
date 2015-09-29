@@ -196,6 +196,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|gpg
+operator|.
+name|testutil
+operator|.
+name|TestKeys
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|bouncycastle
@@ -515,7 +531,7 @@ block|{
 name|PGPPublicKey
 name|key
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -550,7 +566,7 @@ block|{
 name|PGPPublicKey
 name|key
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -584,7 +600,7 @@ block|{
 name|PGPPublicKey
 name|key
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -650,7 +666,7 @@ block|{
 name|TestKey
 name|key1
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -690,7 +706,7 @@ expr_stmt|;
 name|TestKey
 name|key2
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key2
 argument_list|()
@@ -761,7 +777,7 @@ block|{
 name|TestKey
 name|key1
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -769,7 +785,7 @@ decl_stmt|;
 name|TestKey
 name|key2
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key2
 argument_list|()
@@ -838,7 +854,7 @@ block|{
 name|TestKey
 name|key1
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -846,7 +862,7 @@ decl_stmt|;
 name|TestKey
 name|key2
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key2
 argument_list|()
@@ -922,7 +938,7 @@ block|{
 name|TestKey
 name|key1
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -930,7 +946,7 @@ decl_stmt|;
 name|TestKey
 name|key2
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key2
 argument_list|()
@@ -1152,7 +1168,7 @@ block|{
 name|TestKey
 name|key5
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key5
 argument_list|()
@@ -1332,7 +1348,7 @@ block|{
 name|TestKey
 name|key1
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -1426,7 +1442,7 @@ block|{
 name|TestKey
 name|key1
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -1461,7 +1477,7 @@ expr_stmt|;
 name|TestKey
 name|key2
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key2
 argument_list|()
@@ -1520,7 +1536,7 @@ block|{
 name|TestKey
 name|key1
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()

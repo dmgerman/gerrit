@@ -134,6 +134,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|gpg
+operator|.
+name|testutil
+operator|.
+name|TestKeys
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|lifecycle
 operator|.
 name|LifecycleManager
@@ -616,7 +632,7 @@ argument_list|(
 name|userId
 argument_list|)
 decl_stmt|;
-comment|// Note: does not match any key in TestKey.
+comment|// Note: does not match any key in TestKeys.
 name|userAccount
 operator|.
 name|setPreferredEmail
@@ -774,14 +790,14 @@ block|{
 name|TestKey
 name|key
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key5
 argument_list|()
 decl_stmt|;
 name|assertProblems
 argument_list|(
-name|TestKey
+name|TestKeys
 operator|.
 name|key5
 argument_list|()
@@ -831,7 +847,7 @@ argument_list|)
 expr_stmt|;
 name|assertProblems
 argument_list|(
-name|TestKey
+name|TestKeys
 operator|.
 name|key5
 argument_list|()
@@ -871,7 +887,7 @@ argument_list|)
 expr_stmt|;
 name|assertNoProblems
 argument_list|(
-name|TestKey
+name|TestKeys
 operator|.
 name|key5
 argument_list|()
@@ -899,7 +915,7 @@ argument_list|)
 expr_stmt|;
 name|assertProblems
 argument_list|(
-name|TestKey
+name|TestKeys
 operator|.
 name|key5
 argument_list|()
@@ -952,7 +968,7 @@ argument_list|()
 expr_stmt|;
 name|assertProblems
 argument_list|(
-name|TestKey
+name|TestKeys
 operator|.
 name|key5
 argument_list|()

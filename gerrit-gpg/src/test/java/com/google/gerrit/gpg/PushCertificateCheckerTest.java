@@ -156,6 +156,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|gpg
+operator|.
+name|testutil
+operator|.
+name|TestKeys
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|bouncycastle
@@ -457,7 +473,7 @@ block|{
 name|TestKey
 name|key1
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -465,7 +481,7 @@ decl_stmt|;
 name|TestKey
 name|key3
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key3
 argument_list|()
@@ -629,7 +645,7 @@ argument_list|(
 name|validNonce
 argument_list|()
 argument_list|,
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -658,7 +674,7 @@ name|newSignedCert
 argument_list|(
 literal|"invalid-nonce"
 argument_list|,
-name|TestKey
+name|TestKeys
 operator|.
 name|key1
 argument_list|()
@@ -685,7 +701,7 @@ block|{
 name|TestKey
 name|key2
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key2
 argument_list|()
@@ -730,7 +746,7 @@ block|{
 name|TestKey
 name|key3
 init|=
-name|TestKey
+name|TestKeys
 operator|.
 name|key3
 argument_list|()
