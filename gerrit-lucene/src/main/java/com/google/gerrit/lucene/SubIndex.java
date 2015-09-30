@@ -444,6 +444,7 @@ end_comment
 
 begin_class
 DECL|class|SubIndex
+specifier|public
 class|class
 name|SubIndex
 block|{
@@ -586,7 +587,7 @@ block|{
 name|delegateWriter
 operator|=
 operator|new
-name|IndexWriter
+name|AutoCommitWriter
 argument_list|(
 name|dir
 argument_list|,
@@ -636,8 +637,6 @@ name|writerConfig
 operator|.
 name|getLuceneConfig
 argument_list|()
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|delegateWriter
@@ -1123,6 +1122,16 @@ operator|.
 name|deleteAll
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|getWriter ()
+specifier|public
+name|TrackingIndexWriter
+name|getWriter
+parameter_list|()
+block|{
+return|return
+name|writer
+return|;
 block|}
 DECL|method|acquire ()
 name|IndexSearcher

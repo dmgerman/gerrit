@@ -178,6 +178,7 @@ end_comment
 
 begin_class
 DECL|class|AutoCommitWriter
+specifier|public
 class|class
 name|AutoCommitWriter
 extends|extends
@@ -188,6 +189,28 @@ specifier|private
 name|boolean
 name|autoCommit
 decl_stmt|;
+DECL|method|AutoCommitWriter (Directory dir, IndexWriterConfig config)
+name|AutoCommitWriter
+parameter_list|(
+name|Directory
+name|dir
+parameter_list|,
+name|IndexWriterConfig
+name|config
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|this
+argument_list|(
+name|dir
+argument_list|,
+name|config
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|AutoCommitWriter (Directory dir, IndexWriterConfig config, boolean autoCommit)
 name|AutoCommitWriter
 parameter_list|(
@@ -210,11 +233,27 @@ argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
+name|setAutoCommit
+argument_list|(
+name|autoCommit
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * This method will override Gerrit configuration index.name.commitWithin    * until next Gerrit restart (or reconfiguration through this method).    *    * @param enable auto commit    */
+DECL|method|setAutoCommit (boolean enable)
+specifier|public
+name|void
+name|setAutoCommit
+parameter_list|(
+name|boolean
+name|enable
+parameter_list|)
+block|{
 name|this
 operator|.
 name|autoCommit
 operator|=
-name|autoCommit
+name|enable
 expr_stmt|;
 block|}
 annotation|@
@@ -489,7 +528,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|autoFlush ()
-specifier|private
+specifier|public
 name|void
 name|autoFlush
 parameter_list|()
