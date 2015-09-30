@@ -386,20 +386,6 @@ name|gerrit
 operator|.
 name|gpg
 operator|.
-name|PublicKeyChecker
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|gpg
-operator|.
 name|PublicKeyStore
 import|;
 end_import
@@ -465,6 +451,20 @@ operator|.
 name|server
 operator|.
 name|GerritPersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|IdentifiedUser
 import|;
 end_import
 
@@ -1229,6 +1229,11 @@ argument_list|,
 name|toRemove
 argument_list|,
 name|store
+argument_list|,
+name|rsrc
+operator|.
+name|getUser
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1886,9 +1891,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|toJson ( Collection<PGPPublicKeyRing> keys, Set<Fingerprint> deleted, PublicKeyStore store)
+DECL|method|toJson ( Collection<PGPPublicKeyRing> keys, Set<Fingerprint> deleted, PublicKeyStore store, IdentifiedUser user)
 specifier|private
-specifier|static
 name|Map
 argument_list|<
 name|String
@@ -1911,16 +1915,24 @@ name|deleted
 parameter_list|,
 name|PublicKeyStore
 name|store
+parameter_list|,
+name|IdentifiedUser
+name|user
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|PublicKeyChecker
+comment|// Unlike when storing keys, include web-of-trust checks when producing
+comment|// result JSON, so the user at least knows of any issues.
+name|GerritPublicKeyChecker
 name|checker
 init|=
-operator|new
-name|PublicKeyChecker
-argument_list|()
+name|checkerFactory
+operator|.
+name|create
+argument_list|(
+name|user
+argument_list|)
 decl_stmt|;
 name|Map
 argument_list|<
