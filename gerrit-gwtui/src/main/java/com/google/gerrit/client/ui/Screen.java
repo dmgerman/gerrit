@@ -904,13 +904,6 @@ expr_stmt|;
 block|}
 name|Gerrit
 operator|.
-name|updateMenus
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-name|Gerrit
-operator|.
 name|EVENT_BUS
 operator|.
 name|fireEvent

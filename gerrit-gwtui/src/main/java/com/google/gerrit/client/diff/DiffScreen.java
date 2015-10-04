@@ -3082,7 +3082,7 @@ name|PatchUtil
 operator|.
 name|C
 operator|.
-name|chunkNext2
+name|chunkNext
 argument_list|()
 argument_list|)
 argument_list|,
@@ -3097,7 +3097,7 @@ name|PatchUtil
 operator|.
 name|C
 operator|.
-name|chunkPrev2
+name|chunkPrev
 argument_list|()
 argument_list|)
 argument_list|)
