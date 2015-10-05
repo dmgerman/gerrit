@@ -303,6 +303,8 @@ name|user
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 operator|.
 name|check
