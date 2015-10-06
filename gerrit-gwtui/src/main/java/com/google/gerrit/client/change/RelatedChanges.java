@@ -1587,17 +1587,6 @@ block|}
 else|else
 block|{
 comment|// TODO(sbeller): show only on latest revision
-if|if
-condition|(
-name|info
-operator|.
-name|status
-argument_list|()
-operator|.
-name|isOpen
-argument_list|()
-condition|)
-block|{
 name|ChangeApi
 operator|.
 name|change
@@ -1634,7 +1623,6 @@ name|revision
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|setForOpenChange (final ChangeInfo info, final String revision)

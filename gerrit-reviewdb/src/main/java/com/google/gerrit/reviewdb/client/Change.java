@@ -1645,6 +1645,29 @@ name|originalSubject
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/**    * Unique id for the changes submitted together assigned during merging.    * Only set if the status is MERGED.    */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|18
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|submissionId
+specifier|protected
+name|String
+name|submissionId
+decl_stmt|;
+end_decl_stmt
+
 begin_constructor
 DECL|method|Change ()
 specifier|protected
@@ -1790,6 +1813,12 @@ operator|=
 name|other
 operator|.
 name|originalSubject
+expr_stmt|;
+name|submissionId
+operator|=
+name|other
+operator|.
+name|submissionId
 expr_stmt|;
 name|topic
 operator|=
@@ -2112,6 +2141,38 @@ operator|=
 name|subject
 expr_stmt|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|method|getSubmissionId ()
+specifier|public
+name|String
+name|getSubmissionId
+parameter_list|()
+block|{
+return|return
+name|submissionId
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setSubmissionId (String id)
+specifier|public
+name|void
+name|setSubmissionId
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+name|this
+operator|.
+name|submissionId
+operator|=
+name|id
+expr_stmt|;
 block|}
 end_function
 
