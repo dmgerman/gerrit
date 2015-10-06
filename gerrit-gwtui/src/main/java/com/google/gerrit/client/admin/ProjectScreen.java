@@ -143,6 +143,15 @@ name|DASHBOARDS
 init|=
 literal|"dashboards"
 decl_stmt|;
+DECL|field|TAGS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TAGS
+init|=
+literal|"tags"
+decl_stmt|;
 DECL|field|savedPanel
 specifier|protected
 specifier|static
@@ -230,6 +239,13 @@ operator|.
 name|onInitUI
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|name
+operator|!=
+literal|null
+condition|)
+block|{
 name|setPageTitle
 argument_list|(
 name|Util
@@ -245,6 +261,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

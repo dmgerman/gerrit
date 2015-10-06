@@ -485,6 +485,11 @@ name|String
 name|cancelHeadButton
 parameter_list|()
 function_decl|;
+DECL|method|columnTagName ()
+name|String
+name|columnTagName
+parameter_list|()
+function_decl|;
 DECL|method|groupItemHelp ()
 name|String
 name|groupItemHelp
