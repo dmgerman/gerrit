@@ -1252,6 +1252,15 @@ operator|.
 name|tmp_dir
 argument_list|)
 expr_stmt|;
+name|Files
+operator|.
+name|createDirectories
+argument_list|(
+name|sitePath
+operator|.
+name|etc_dir
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|copyJarToTestSite ()
 specifier|private
