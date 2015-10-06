@@ -150,6 +150,24 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Change
+operator|.
+name|Status
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -1162,17 +1180,31 @@ name|all
 argument_list|()
 control|)
 block|{
-if|if
-condition|(
+name|Status
+name|status
+init|=
 name|c
 operator|.
 name|getStatus
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|status
+operator|!=
+literal|null
+operator|&&
+name|status
 operator|.
-name|isOpen
+name|isClosed
 argument_list|()
 condition|)
 block|{
+continue|continue;
+block|}
+comment|// The old "submitted" state is not supported anymore
+comment|// (thus status is null) but it was an opened state and needs
+comment|// to be migrated as such
 name|openByProject
 operator|.
 name|put
@@ -1188,7 +1220,6 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|openByProject
