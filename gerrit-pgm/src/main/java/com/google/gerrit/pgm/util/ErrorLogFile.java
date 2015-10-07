@@ -500,7 +500,7 @@ argument_list|,
 operator|new
 name|PatternLayout
 argument_list|(
-literal|"[%d] %-5p %c %x: %m%n"
+literal|"[%d] [%t] %-5p %c %x: %m%n"
 argument_list|)
 argument_list|)
 argument_list|)
