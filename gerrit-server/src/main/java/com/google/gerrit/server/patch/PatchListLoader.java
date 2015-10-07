@@ -934,6 +934,12 @@ specifier|final
 name|long
 name|timeoutMillis
 decl_stmt|;
+DECL|field|lock
+specifier|private
+specifier|final
+name|Object
+name|lock
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|PatchListLoader (GitRepositoryManager mgr, PatchListCache plc, @GerritServerConfig Config cfg, @DiffExecutor ExecutorService de)
@@ -976,6 +982,12 @@ expr_stmt|;
 name|diffExecutor
 operator|=
 name|de
+expr_stmt|;
+name|lock
+operator|=
+operator|new
+name|Object
+argument_list|()
 expr_stmt|;
 name|timeoutMillis
 operator|=
@@ -1625,6 +1637,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+synchronized|synchronized
+init|(
+name|lock
+init|)
+block|{
 return|return
 name|diffFormatter
 operator|.
@@ -1633,6 +1650,7 @@ argument_list|(
 name|diffEntry
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -1722,6 +1740,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|lock
+init|)
+block|{
 return|return
 name|toFileHeaderWithoutMyersDiff
 argument_list|(
@@ -1730,6 +1753,7 @@ argument_list|,
 name|diffEntry
 argument_list|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
