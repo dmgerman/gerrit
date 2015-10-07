@@ -894,6 +894,7 @@ name|RECEIVE_COMMITS
 block|,
 name|NONE
 block|}
+comment|// Injected fields.
 DECL|field|hooks
 specifier|private
 specifier|final
@@ -954,6 +955,7 @@ specifier|final
 name|ChangeMessagesUtil
 name|cmUtil
 decl_stmt|;
+comment|// Assisted-injected fields.
 DECL|field|commit
 specifier|private
 specifier|final
@@ -984,6 +986,7 @@ specifier|final
 name|RevWalk
 name|revWalk
 decl_stmt|;
+comment|// Lazily initialized fields.
 DECL|field|psId
 specifier|private
 name|PatchSet
@@ -991,15 +994,16 @@ operator|.
 name|Id
 name|psId
 decl_stmt|;
-DECL|field|message
-specifier|private
-name|String
-name|message
-decl_stmt|;
+comment|// Fields exposed as setters.
 DECL|field|sshInfo
 specifier|private
 name|SshInfo
 name|sshInfo
+decl_stmt|;
+DECL|field|message
+specifier|private
+name|String
+name|message
 decl_stmt|;
 DECL|field|validatePolicy
 specifier|private
