@@ -1763,8 +1763,6 @@ name|IOException
 throws|,
 name|OrmException
 throws|,
-name|NoSuchChangeException
-throws|,
 name|UpdateException
 throws|,
 name|RestApiException

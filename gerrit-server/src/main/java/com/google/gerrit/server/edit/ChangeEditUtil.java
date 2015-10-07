@@ -1457,8 +1457,6 @@ name|UpdateException
 throws|,
 name|InvalidChangeOperationException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|PatchSet

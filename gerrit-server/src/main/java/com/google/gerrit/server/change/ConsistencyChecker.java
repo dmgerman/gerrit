@@ -3074,8 +3074,6 @@ catch|catch
 parameter_list|(
 name|InvalidChangeOperationException
 decl||
-name|OrmException
-decl||
 name|IOException
 decl||
 name|NoSuchChangeException
