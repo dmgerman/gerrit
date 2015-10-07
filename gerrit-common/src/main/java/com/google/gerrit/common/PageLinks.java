@@ -200,6 +200,15 @@ name|SETTINGS_PREFERENCES
 init|=
 literal|"/settings/preferences"
 decl_stmt|;
+DECL|field|SETTINGS_DIFF_PREFERENCES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_DIFF_PREFERENCES
+init|=
+literal|"/settings/diff-preferences"
+decl_stmt|;
 DECL|field|SETTINGS_SSHKEYS
 specifier|public
 specifier|static
