@@ -652,9 +652,7 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|,
-name|Change
-operator|.
-name|Id
+name|ChangeData
 argument_list|>
 name|changesByBranch
 parameter_list|()
@@ -667,9 +665,7 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|,
-name|Change
-operator|.
-name|Id
+name|ChangeData
 argument_list|>
 name|ret
 init|=
@@ -699,9 +695,6 @@ name|getDest
 argument_list|()
 argument_list|,
 name|cd
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
