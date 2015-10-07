@@ -2301,6 +2301,9 @@ block|}
 name|checkMergedBitMatchesStatus
 argument_list|(
 name|currPs
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|currPsCommit
 argument_list|,
@@ -2309,13 +2312,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|checkMergedBitMatchesStatus (PatchSet ps, RevCommit commit, boolean merged)
+DECL|method|checkMergedBitMatchesStatus (PatchSet.Id psId, RevCommit commit, boolean merged)
 specifier|private
 name|void
 name|checkMergedBitMatchesStatus
 parameter_list|(
 name|PatchSet
-name|ps
+operator|.
+name|Id
+name|psId
 parameter_list|,
 name|RevCommit
 name|commit
@@ -2364,10 +2369,7 @@ literal|"Patch set %d (%s) is merged into destination ref %s (%s), but change"
 operator|+
 literal|" status is %s"
 argument_list|,
-name|ps
-operator|.
-name|getId
-argument_list|()
+name|psId
 operator|.
 name|get
 argument_list|()
@@ -2776,7 +2778,9 @@ expr_stmt|;
 return|return;
 block|}
 name|PatchSet
-name|ps
+operator|.
+name|Id
+name|psId
 init|=
 name|insertPatchSet
 argument_list|(
@@ -2785,14 +2789,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|ps
+name|psId
 operator|!=
 literal|null
 condition|)
 block|{
 name|checkMergedBitMatchesStatus
 argument_list|(
-name|ps
+name|psId
 argument_list|,
 name|commit
 argument_list|,
@@ -2908,6 +2912,8 @@ block|}
 DECL|method|insertPatchSet (RevCommit commit)
 specifier|private
 name|PatchSet
+operator|.
+name|Id
 name|insertPatchSet
 parameter_list|(
 name|RevCommit
@@ -3041,6 +3047,16 @@ operator|.
 name|insert
 argument_list|()
 expr_stmt|;
+name|PatchSet
+operator|.
+name|Id
+name|psId
+init|=
+name|change
+operator|.
+name|currentPatchSetId
+argument_list|()
+decl_stmt|;
 name|p
 operator|.
 name|status
@@ -3055,19 +3071,13 @@ name|outcome
 operator|=
 literal|"Inserted as patch set "
 operator|+
-name|change
-operator|.
-name|currentPatchSetId
-argument_list|()
+name|psId
 operator|.
 name|get
 argument_list|()
 expr_stmt|;
 return|return
-name|inserter
-operator|.
-name|getPatchSet
-argument_list|()
+name|psId
 return|;
 block|}
 catch|catch
