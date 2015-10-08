@@ -67,6 +67,34 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -332,20 +360,6 @@ argument_list|(
 name|Text
 operator|.
 name|class
-argument_list|)
-decl_stmt|;
-DECL|field|ISO_8859_1
-specifier|private
-specifier|static
-specifier|final
-name|Charset
-name|ISO_8859_1
-init|=
-name|Charset
-operator|.
-name|forName
-argument_list|(
-literal|"ISO-8859-1"
 argument_list|)
 decl_stmt|;
 DECL|field|bigFileThreshold
@@ -673,7 +687,7 @@ argument_list|()
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 return|;

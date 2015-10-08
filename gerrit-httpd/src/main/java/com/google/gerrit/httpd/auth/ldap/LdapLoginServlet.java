@@ -753,7 +753,10 @@ name|res
 operator|.
 name|setCharacterEncoding
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|res

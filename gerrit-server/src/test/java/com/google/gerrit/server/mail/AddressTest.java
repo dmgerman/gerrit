@@ -114,16 +114,6 @@ name|ExpectedException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
 begin_class
 DECL|class|AddressTest
 specifier|public
@@ -833,8 +823,6 @@ name|String
 name|email
 parameter_list|)
 block|{
-try|try
-block|{
 return|return
 operator|new
 name|Address
@@ -847,23 +835,6 @@ operator|.
 name|toHeaderString
 argument_list|()
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Cannot encode address"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 block|}
 end_class

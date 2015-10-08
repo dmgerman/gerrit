@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -187,16 +201,6 @@ operator|.
 name|util
 operator|.
 name|Base64
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -333,7 +337,7 @@ name|payload
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|String
@@ -358,8 +362,6 @@ block|}
 catch|catch
 parameter_list|(
 name|XsrfException
-decl||
-name|UnsupportedEncodingException
 name|e
 parameter_list|)
 block|{
@@ -446,11 +448,7 @@ throw|;
 block|}
 name|String
 name|payload
-decl_stmt|;
-try|try
-block|{
-name|payload
-operator|=
+init|=
 operator|new
 name|String
 argument_list|(
@@ -464,24 +462,9 @@ name|getData
 argument_list|()
 argument_list|)
 argument_list|,
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|err
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|InvalidTokenException
-argument_list|(
-name|err
-argument_list|)
-throw|;
-block|}
+decl_stmt|;
 name|Matcher
 name|matcher
 init|=

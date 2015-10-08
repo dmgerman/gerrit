@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -250,15 +264,6 @@ name|AuthSMTPClient
 extends|extends
 name|SMTPClient
 block|{
-DECL|field|UTF_8
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|UTF_8
-init|=
-literal|"UTF-8"
-decl_stmt|;
 DECL|field|authTypes
 specifier|private
 name|String
@@ -1167,8 +1172,6 @@ name|byte
 index|[]
 name|data
 parameter_list|)
-throws|throws
-name|UnsupportedEncodingException
 block|{
 return|return
 operator|new

@@ -65,16 +65,16 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|nio
 operator|.
-name|common
+name|charset
 operator|.
-name|base
+name|StandardCharsets
 operator|.
-name|Charsets
+name|UTF_8
 import|;
 end_import
 
@@ -247,18 +247,6 @@ operator|.
 name|io
 operator|.
 name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
 import|;
 end_import
 
@@ -542,8 +530,6 @@ argument_list|(
 name|content
 argument_list|)
 argument_list|,
-name|Charsets
-operator|.
 name|UTF_8
 operator|.
 name|name
@@ -727,8 +713,6 @@ argument_list|(
 name|content
 argument_list|)
 argument_list|,
-name|Charsets
-operator|.
 name|UTF_8
 operator|.
 name|name
@@ -788,8 +772,6 @@ name|content
 operator|.
 name|getBytes
 argument_list|(
-name|StandardCharsets
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)

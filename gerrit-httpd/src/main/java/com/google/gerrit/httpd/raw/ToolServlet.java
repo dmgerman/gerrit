@@ -116,6 +116,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|javax
 operator|.
 name|servlet
@@ -936,7 +950,10 @@ name|rsp
 operator|.
 name|setCharacterEncoding
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rsp

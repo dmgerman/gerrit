@@ -85,6 +85,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -403,16 +417,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -903,8 +907,6 @@ name|ObjectInserter
 name|inserter
 parameter_list|)
 throws|throws
-name|UnsupportedEncodingException
-throws|,
 name|IOException
 block|{
 name|String
@@ -956,7 +958,7 @@ name|noteContent
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 return|;

@@ -68,6 +68,20 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|pegdown
@@ -1007,7 +1021,7 @@ operator|.
 name|toByteArray
 argument_list|()
 argument_list|,
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 return|;
 block|}

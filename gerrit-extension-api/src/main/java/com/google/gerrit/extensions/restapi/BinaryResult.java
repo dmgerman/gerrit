@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -159,18 +173,6 @@ operator|.
 name|charset
 operator|.
 name|CodingErrorAction
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
 import|;
 end_import
 
@@ -669,8 +671,6 @@ argument_list|(
 name|enc
 argument_list|)
 else|:
-name|StandardCharsets
-operator|.
 name|UTF_8
 decl_stmt|;
 return|return
@@ -862,8 +862,6 @@ name|str
 operator|.
 name|getBytes
 argument_list|(
-name|StandardCharsets
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -875,7 +873,10 @@ argument_list|)
 expr_stmt|;
 name|setCharacterEncoding
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this

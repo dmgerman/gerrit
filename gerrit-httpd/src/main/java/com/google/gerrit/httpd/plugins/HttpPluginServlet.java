@@ -119,6 +119,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -3645,7 +3659,10 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|resourceCache
@@ -3667,7 +3684,10 @@ argument_list|)
 operator|.
 name|setCharacterEncoding
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 operator|.
 name|setLastModified
@@ -3687,7 +3707,10 @@ name|res
 operator|.
 name|setCharacterEncoding
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|res
@@ -4039,7 +4062,10 @@ condition|)
 block|{
 name|charEnc
 operator|=
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 expr_stmt|;
 block|}
 return|return
@@ -4214,7 +4240,10 @@ literal|null
 condition|?
 name|encoding
 else|:
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 argument_list|,
 name|rawmd

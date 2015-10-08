@@ -65,6 +65,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -187,18 +201,6 @@ operator|.
 name|charset
 operator|.
 name|Charset
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
 import|;
 end_import
 
@@ -428,8 +430,6 @@ specifier|final
 name|Charset
 name|ENC
 init|=
-name|StandardCharsets
-operator|.
 name|UTF_8
 decl_stmt|;
 comment|/** DOCTYPE for a standards mode HTML document. */
