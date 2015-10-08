@@ -175,7 +175,9 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/** Is the reference name a change reference?    *    * @deprecated use isChangeRef instead.    **/
+comment|/**    * Is the reference name a change reference?    *    * @deprecated use isChangeRef instead.    **/
+annotation|@
+name|Deprecated
 DECL|method|isRef (String name)
 specifier|public
 specifier|static
