@@ -152,6 +152,24 @@ name|ioutil
 operator|.
 name|BasicSerialization
 operator|.
+name|readFixInt64
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ioutil
+operator|.
+name|BasicSerialization
+operator|.
 name|writeBytes
 import|;
 end_import
@@ -207,6 +225,24 @@ operator|.
 name|BasicSerialization
 operator|.
 name|writeVarInt32
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ioutil
+operator|.
+name|BasicSerialization
+operator|.
+name|writeFixInt64
 import|;
 end_import
 
@@ -501,6 +537,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|0
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
@@ -556,10 +594,15 @@ specifier|final
 name|int
 name|deletions
 decl_stmt|;
-DECL|method|PatchListEntry (final FileHeader hdr, List<Edit> editList)
+DECL|field|sizeDelta
+specifier|private
+specifier|final
+name|long
+name|sizeDelta
+decl_stmt|;
+DECL|method|PatchListEntry (FileHeader hdr, List<Edit> editList, long sizeDelta)
 name|PatchListEntry
 parameter_list|(
-specifier|final
 name|FileHeader
 name|hdr
 parameter_list|,
@@ -568,6 +611,9 @@ argument_list|<
 name|Edit
 argument_list|>
 name|editList
+parameter_list|,
+name|long
+name|sizeDelta
 parameter_list|)
 block|{
 name|changeType
@@ -766,46 +812,47 @@ name|deletions
 operator|=
 name|del
 expr_stmt|;
+name|this
+operator|.
+name|sizeDelta
+operator|=
+name|sizeDelta
+expr_stmt|;
 block|}
-DECL|method|PatchListEntry (final ChangeType changeType, final PatchType patchType, final String oldName, final String newName, final byte[] header, final List<Edit> edits, final int insertions, final int deletions)
+DECL|method|PatchListEntry (ChangeType changeType, PatchType patchType, String oldName, String newName, byte[] header, List<Edit> edits, int insertions, int deletions, long sizeDelta)
 specifier|private
 name|PatchListEntry
 parameter_list|(
-specifier|final
 name|ChangeType
 name|changeType
 parameter_list|,
-specifier|final
 name|PatchType
 name|patchType
 parameter_list|,
-specifier|final
 name|String
 name|oldName
 parameter_list|,
-specifier|final
 name|String
 name|newName
 parameter_list|,
-specifier|final
 name|byte
 index|[]
 name|header
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|Edit
 argument_list|>
 name|edits
 parameter_list|,
-specifier|final
 name|int
 name|insertions
 parameter_list|,
-specifier|final
 name|int
 name|deletions
+parameter_list|,
+name|long
+name|sizeDelta
 parameter_list|)
 block|{
 name|this
@@ -855,6 +902,12 @@ operator|.
 name|deletions
 operator|=
 name|deletions
+expr_stmt|;
+name|this
+operator|.
+name|sizeDelta
+operator|=
+name|sizeDelta
 expr_stmt|;
 block|}
 DECL|method|weigh ()
@@ -1035,6 +1088,16 @@ parameter_list|()
 block|{
 return|return
 name|deletions
+return|;
+block|}
+DECL|method|getSizeDelta ()
+specifier|public
+name|long
+name|getSizeDelta
+parameter_list|()
+block|{
+return|return
+name|sizeDelta
 return|;
 block|}
 DECL|method|getHeaderLines ()
@@ -1238,11 +1301,10 @@ return|return
 name|p
 return|;
 block|}
-DECL|method|writeTo (final OutputStream out)
+DECL|method|writeTo (OutputStream out)
 name|void
 name|writeTo
 parameter_list|(
-specifier|final
 name|OutputStream
 name|out
 parameter_list|)
@@ -1296,6 +1358,13 @@ argument_list|(
 name|out
 argument_list|,
 name|deletions
+argument_list|)
+expr_stmt|;
+name|writeFixInt64
+argument_list|(
+name|out
+argument_list|,
+name|sizeDelta
 argument_list|)
 expr_stmt|;
 name|writeVarInt32
@@ -1359,19 +1428,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|readFrom (final InputStream in)
+DECL|method|readFrom (InputStream in)
 specifier|static
 name|PatchListEntry
 name|readFrom
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
 name|ChangeType
 name|changeType
 init|=
@@ -1385,7 +1452,6 @@ name|values
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|PatchType
 name|patchType
 init|=
@@ -1399,7 +1465,6 @@ name|values
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|String
 name|oldName
 init|=
@@ -1408,7 +1473,6 @@ argument_list|(
 name|in
 argument_list|)
 decl_stmt|;
-specifier|final
 name|String
 name|newName
 init|=
@@ -1417,7 +1481,6 @@ argument_list|(
 name|in
 argument_list|)
 decl_stmt|;
-specifier|final
 name|byte
 index|[]
 name|hdr
@@ -1427,7 +1490,6 @@ argument_list|(
 name|in
 argument_list|)
 decl_stmt|;
-specifier|final
 name|int
 name|ins
 init|=
@@ -1436,7 +1498,6 @@ argument_list|(
 name|in
 argument_list|)
 decl_stmt|;
-specifier|final
 name|int
 name|del
 init|=
@@ -1445,7 +1506,14 @@ argument_list|(
 name|in
 argument_list|)
 decl_stmt|;
-specifier|final
+name|long
+name|sizeDelta
+init|=
+name|readFixInt64
+argument_list|(
+name|in
+argument_list|)
+decl_stmt|;
 name|int
 name|editCount
 init|=
@@ -1454,7 +1522,6 @@ argument_list|(
 name|in
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Edit
 index|[]
 name|editArray
@@ -1552,6 +1619,8 @@ argument_list|,
 name|ins
 argument_list|,
 name|del
+argument_list|,
+name|sizeDelta
 argument_list|)
 return|;
 block|}
