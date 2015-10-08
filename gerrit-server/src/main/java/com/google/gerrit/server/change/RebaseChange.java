@@ -264,24 +264,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
-operator|.
-name|PatchSetInserter
-operator|.
-name|ValidatePolicy
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|BatchUpdate
@@ -349,6 +331,24 @@ operator|.
 name|git
 operator|.
 name|UpdateException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|validators
+operator|.
+name|CommitValidators
 import|;
 end_import
 
@@ -975,7 +975,9 @@ name|committerIdent
 argument_list|,
 literal|true
 argument_list|,
-name|ValidatePolicy
+name|CommitValidators
+operator|.
+name|Policy
 operator|.
 name|GERRIT
 argument_list|)
@@ -1348,7 +1350,7 @@ name|baseRev
 return|;
 block|}
 comment|/**    * Rebase the change of the given patch set on the given base commit.    *<p>    * The rebased commit is added as new patch set to the change.    *<p>    * E-mail notification and triggering of hooks is only done for the creation    * of the new patch set if {@code sendEmail} and {@code runHooks} are true,    * respectively.    *    * @param git the repository.    * @param inserter the object inserter.    * @param change the change to rebase.    * @param patchSetId the patch set ID to rebase.    * @param uploader the user that creates the rebased patch set.    * @param baseCommit the commit that should be the new base.    * @param mergeUtil merge utilities for the destination project.    * @param committerIdent the committer's identity.    * @param runHooks if hooks should be run for the new patch set.    * @param validate if commit validation should be run for the new patch set.    * @param rw the RevWalk.    * @return the new patch set, which is based on the given base commit.    * @throws NoSuchChangeException if the change to which the patch set belongs    *     does not exist or is not visible to the user.    * @throws OrmException if accessing the database fails.    * @throws IOException if rebase is not possible.    * @throws InvalidChangeOperationException if rebase is not possible or not    *     allowed.    * @throws RestApiException if updating the change fails due to an underlying    *     API call failing.    * @throws UpdateException if updating the change fails.    */
-DECL|method|rebase (Repository git, RevWalk rw, ObjectInserter inserter, Change change, PatchSet.Id patchSetId, IdentifiedUser uploader, RevCommit baseCommit, MergeUtil mergeUtil, PersonIdent committerIdent, boolean runHooks, ValidatePolicy validate)
+DECL|method|rebase (Repository git, RevWalk rw, ObjectInserter inserter, Change change, PatchSet.Id patchSetId, IdentifiedUser uploader, RevCommit baseCommit, MergeUtil mergeUtil, PersonIdent committerIdent, boolean runHooks, CommitValidators.Policy validate)
 specifier|public
 name|PatchSet
 name|rebase
@@ -1385,7 +1387,9 @@ parameter_list|,
 name|boolean
 name|runHooks
 parameter_list|,
-name|ValidatePolicy
+name|CommitValidators
+operator|.
+name|Policy
 name|validate
 parameter_list|)
 throws|throws

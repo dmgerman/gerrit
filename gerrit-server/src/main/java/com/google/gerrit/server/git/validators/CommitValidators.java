@@ -610,6 +610,24 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|enum|Policy
+specifier|public
+specifier|static
+enum|enum
+name|Policy
+block|{
+comment|/** Use {@link #validateForGerritCommits}. */
+DECL|enumConstant|GERRIT
+name|GERRIT
+block|,
+comment|/** Use {@link #validateForReceiveCommits}. */
+DECL|enumConstant|RECEIVE_COMMITS
+name|RECEIVE_COMMITS
+block|,
+comment|/** Do not validate commits. */
+DECL|enumConstant|NONE
+name|NONE
+block|}
 DECL|interface|Factory
 specifier|public
 interface|interface

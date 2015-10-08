@@ -852,22 +852,6 @@ name|commit
 parameter_list|)
 function_decl|;
 block|}
-comment|/**    * Whether to use {@link CommitValidators#validateForGerritCommits},    * {@link CommitValidators#validateForReceiveCommits}, or no commit    * validation.    */
-DECL|enum|ValidatePolicy
-specifier|public
-specifier|static
-enum|enum
-name|ValidatePolicy
-block|{
-DECL|enumConstant|GERRIT
-DECL|enumConstant|RECEIVE_COMMITS
-DECL|enumConstant|NONE
-name|GERRIT
-block|,
-name|RECEIVE_COMMITS
-block|,
-name|NONE
-block|}
 comment|// Injected fields.
 DECL|field|hooks
 specifier|private
@@ -973,10 +957,14 @@ name|message
 decl_stmt|;
 DECL|field|validatePolicy
 specifier|private
-name|ValidatePolicy
+name|CommitValidators
+operator|.
+name|Policy
 name|validatePolicy
 init|=
-name|ValidatePolicy
+name|CommitValidators
+operator|.
+name|Policy
 operator|.
 name|GERRIT
 decl_stmt|;
@@ -1302,12 +1290,14 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setValidatePolicy (ValidatePolicy validate)
+DECL|method|setValidatePolicy (CommitValidators.Policy validate)
 specifier|public
 name|PatchSetInserter
 name|setValidatePolicy
 parameter_list|(
-name|ValidatePolicy
+name|CommitValidators
+operator|.
+name|Policy
 name|validate
 parameter_list|)
 block|{

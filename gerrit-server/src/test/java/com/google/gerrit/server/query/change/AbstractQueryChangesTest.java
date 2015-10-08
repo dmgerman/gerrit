@@ -662,11 +662,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
+name|git
 operator|.
-name|PatchSetInserter
-operator|.
-name|ValidatePolicy
+name|BatchUpdate
 import|;
 end_import
 
@@ -682,7 +680,9 @@ name|server
 operator|.
 name|git
 operator|.
-name|BatchUpdate
+name|validators
+operator|.
+name|CommitValidators
 import|;
 end_import
 
@@ -10046,7 +10046,9 @@ argument_list|)
 operator|.
 name|setValidatePolicy
 argument_list|(
-name|ValidatePolicy
+name|CommitValidators
+operator|.
+name|Policy
 operator|.
 name|NONE
 argument_list|)
