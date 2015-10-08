@@ -1088,9 +1088,6 @@ argument_list|()
 argument_list|)
 init|)
 block|{
-name|ChangeInserter
-name|ins
-init|=
 name|changeInserterFactory
 operator|.
 name|create
@@ -1117,8 +1114,12 @@ name|Policy
 operator|.
 name|NONE
 argument_list|)
-decl_stmt|;
-name|ins
+operator|.
+name|setUpdateRef
+argument_list|(
+literal|false
+argument_list|)
+comment|// Created by commitToNewRef.
 operator|.
 name|insert
 argument_list|()

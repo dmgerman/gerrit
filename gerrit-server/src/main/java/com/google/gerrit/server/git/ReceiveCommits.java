@@ -11608,6 +11608,11 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
+name|setUpdateRef
+argument_list|(
+literal|false
+argument_list|)
+operator|.
 name|insert
 argument_list|()
 expr_stmt|;
