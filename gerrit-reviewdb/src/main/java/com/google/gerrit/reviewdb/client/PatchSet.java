@@ -154,11 +154,11 @@ class|class
 name|PatchSet
 block|{
 comment|/** Is the reference name a change reference? */
-DECL|method|isRef (String name)
+DECL|method|isChangeRef (String name)
 specifier|public
 specifier|static
 name|boolean
-name|isRef
+name|isChangeRef
 parameter_list|(
 name|String
 name|name
@@ -173,6 +173,24 @@ name|name
 argument_list|)
 operator|!=
 literal|null
+return|;
+block|}
+comment|/** Is the reference name a change reference?    *    * @deprecated use isChangeRef instead.    **/
+DECL|method|isRef (String name)
+specifier|public
+specifier|static
+name|boolean
+name|isRef
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|isChangeRef
+argument_list|(
+name|name
+argument_list|)
 return|;
 block|}
 DECL|method|joinGroups (Iterable<String> groups)

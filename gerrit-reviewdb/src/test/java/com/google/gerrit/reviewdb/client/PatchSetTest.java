@@ -527,7 +527,7 @@ name|assertThat
 argument_list|(
 name|PatchSet
 operator|.
-name|isRef
+name|isChangeRef
 argument_list|(
 name|refName
 argument_list|)
@@ -582,7 +582,7 @@ name|assertThat
 argument_list|(
 name|PatchSet
 operator|.
-name|isRef
+name|isChangeRef
 argument_list|(
 name|refName
 argument_list|)

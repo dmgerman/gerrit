@@ -2024,7 +2024,7 @@ literal|null
 operator|||
 name|PatchSet
 operator|.
-name|isRef
+name|isChangeRef
 argument_list|(
 name|ref
 operator|.
