@@ -180,20 +180,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|InternalUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -705,8 +691,9 @@ block|{
 comment|/* Check for canAdministrateServer may seem redundant, but allows      * for visibility of all groups that are not an internal group to      * server administrators.      */
 return|return
 name|user
-operator|instanceof
-name|InternalUser
+operator|.
+name|isInternalUser
+argument_list|()
 operator|||
 name|groupBackend
 operator|.
