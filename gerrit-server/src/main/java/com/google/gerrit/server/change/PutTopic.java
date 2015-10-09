@@ -670,6 +670,11 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|,
+name|ctl
+operator|.
+name|getCurrentUser
+argument_list|()
+argument_list|,
 name|TimeUtil
 operator|.
 name|nowTs
@@ -681,7 +686,13 @@ name|u
 operator|.
 name|addOp
 argument_list|(
-name|ctl
+name|req
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|op
 argument_list|)
@@ -803,7 +814,7 @@ name|change
 operator|=
 name|ctx
 operator|.
-name|readChange
+name|getChange
 argument_list|()
 expr_stmt|;
 name|String

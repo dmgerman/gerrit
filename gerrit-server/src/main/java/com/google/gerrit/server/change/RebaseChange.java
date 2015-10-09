@@ -1571,11 +1571,10 @@ argument_list|()
 argument_list|,
 name|change
 operator|.
-name|getDest
+name|getProject
 argument_list|()
-operator|.
-name|getParentKey
-argument_list|()
+argument_list|,
+name|uploader
 argument_list|,
 name|TimeUtil
 operator|.
@@ -1588,7 +1587,10 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|changeControl
+name|change
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|patchSetInserter
 operator|.
