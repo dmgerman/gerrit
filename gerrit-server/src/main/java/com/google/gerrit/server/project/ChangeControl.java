@@ -1874,11 +1874,6 @@ name|match
 argument_list|(
 name|destBranch
 argument_list|,
-name|this
-operator|.
-name|getRefControl
-argument_list|()
-operator|.
 name|getCurrentUser
 argument_list|()
 operator|.
