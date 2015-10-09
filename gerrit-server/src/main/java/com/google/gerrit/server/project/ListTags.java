@@ -1201,13 +1201,9 @@ return|return
 operator|new
 name|TagInfo
 argument_list|(
-name|Constants
+name|ref
 operator|.
-name|R_TAGS
-operator|+
-name|tag
-operator|.
-name|getTagName
+name|getName
 argument_list|()
 argument_list|,
 name|tag
