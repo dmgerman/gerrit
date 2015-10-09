@@ -994,8 +994,6 @@ name|Factory
 name|email
 decl_stmt|;
 DECL|field|hooks
-annotation|@
-name|Deprecated
 specifier|private
 specifier|final
 name|ChangeHooks
@@ -4338,8 +4336,6 @@ return|return
 literal|true
 return|;
 block|}
-annotation|@
-name|Deprecated
 DECL|method|fireCommentAddedHook (RevisionResource rsrc)
 specifier|private
 name|void
