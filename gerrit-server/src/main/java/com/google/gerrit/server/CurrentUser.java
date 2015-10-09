@@ -331,6 +331,17 @@ return|return
 literal|false
 return|;
 block|}
+comment|/** Check if the CurrentUser is an InternalUser. */
+DECL|method|isInternalUser ()
+specifier|public
+name|boolean
+name|isInternalUser
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

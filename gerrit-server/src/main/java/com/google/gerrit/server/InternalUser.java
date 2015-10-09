@@ -281,6 +281,18 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|isInternalUser ()
+specifier|public
+name|boolean
+name|isInternalUser
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
