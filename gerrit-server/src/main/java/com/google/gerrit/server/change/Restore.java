@@ -536,16 +536,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collections
@@ -705,7 +695,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource req, final RestoreInput input)
+DECL|method|apply (ChangeResource req, RestoreInput input)
 specifier|public
 name|ChangeInfo
 name|apply
@@ -713,20 +703,15 @@ parameter_list|(
 name|ChangeResource
 name|req
 parameter_list|,
-specifier|final
 name|RestoreInput
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
 name|RestApiException
 throws|,
 name|UpdateException
 throws|,
 name|OrmException
-throws|,
-name|IOException
 block|{
 name|ChangeControl
 name|ctl

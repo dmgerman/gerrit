@@ -1611,8 +1611,6 @@ catch|catch
 parameter_list|(
 name|OrmException
 decl||
-name|EmailException
-decl||
 name|IOException
 decl||
 name|UpdateException

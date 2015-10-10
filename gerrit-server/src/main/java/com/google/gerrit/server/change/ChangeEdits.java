@@ -1769,8 +1769,6 @@ name|AuthException
 throws|,
 name|IOException
 throws|,
-name|InvalidChangeOperationException
-throws|,
 name|ResourceNotFoundException
 throws|,
 name|OrmException
@@ -2295,8 +2293,6 @@ throws|throws
 name|AuthException
 throws|,
 name|ResourceConflictException
-throws|,
-name|IOException
 block|{
 name|String
 name|path
@@ -2547,8 +2543,6 @@ name|ChangeEditResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
 name|IOException
 block|{
 try|try

@@ -560,8 +560,6 @@ parameter_list|(
 name|RestApiException
 decl||
 name|IOException
-decl||
-name|InterruptedException
 name|e
 parameter_list|)
 block|{
