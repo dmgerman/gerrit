@@ -1171,12 +1171,12 @@ name|gen
 operator|.
 name|resolve
 argument_list|(
-literal|"tools"
-argument_list|)
+name|Paths
 operator|.
-name|resolve
+name|get
 argument_list|(
-literal|"buck.properties"
+literal|"tools/buck/buck.properties"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
