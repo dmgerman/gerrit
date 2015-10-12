@@ -458,6 +458,23 @@ name|Input
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|input
+operator|.
+name|token
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|UnprocessableEntityException
+argument_list|(
+literal|"missing token"
+argument_list|)
+throw|;
+block|}
 try|try
 block|{
 name|EmailTokenVerifier

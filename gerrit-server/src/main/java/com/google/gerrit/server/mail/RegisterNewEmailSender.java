@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -308,6 +324,8 @@ condition|)
 block|{
 name|emailToken
 operator|=
+name|checkNotNull
+argument_list|(
 name|tokenVerifier
 operator|.
 name|encode
@@ -318,6 +336,9 @@ name|getAccountId
 argument_list|()
 argument_list|,
 name|addr
+argument_list|)
+argument_list|,
+literal|"token"
 argument_list|)
 expr_stmt|;
 block|}

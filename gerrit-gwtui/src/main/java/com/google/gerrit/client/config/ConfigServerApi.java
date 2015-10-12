@@ -361,16 +361,16 @@ name|EmailConfirmationInput
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|setToken (String t)
+DECL|method|setToken (String token)
 specifier|final
 specifier|native
 name|void
 name|setToken
 parameter_list|(
 name|String
-name|t
+name|token
 parameter_list|)
-comment|/*-{ this.t = t; }-*/
+comment|/*-{ this.token = token; }-*/
 function_decl|;
 DECL|method|create ()
 specifier|static
