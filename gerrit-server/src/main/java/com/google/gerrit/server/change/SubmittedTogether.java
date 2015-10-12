@@ -656,6 +656,18 @@ name|emptyList
 argument_list|()
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// Skip sorting for singleton lists, to avoid WalkSorter opening the
+comment|// repo just to fill out the commit field in PatchSetData.
+name|cds
+operator|=
+name|sort
+argument_list|(
+name|cds
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|json
 operator|.
@@ -757,23 +769,8 @@ name|c
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|IOException
 block|{
-name|String
-name|subId
-init|=
-name|c
-operator|.
-name|getSubmissionId
-argument_list|()
-decl_stmt|;
-name|List
-argument_list|<
-name|ChangeData
-argument_list|>
-name|cds
-init|=
+return|return
 name|queryProvider
 operator|.
 name|get
@@ -781,21 +778,22 @@ argument_list|()
 operator|.
 name|bySubmissionId
 argument_list|(
-name|subId
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|cds
+name|c
 operator|.
-name|size
+name|getSubmissionId
 argument_list|()
-operator|<=
-literal|1
-condition|)
+argument_list|)
+return|;
+block|}
+DECL|method|getForAbandonedChange ()
+specifier|private
+name|List
+argument_list|<
+name|ChangeData
+argument_list|>
+name|getForAbandonedChange
+parameter_list|()
 block|{
-comment|// Bypass WalkSorter to avoid opening the repo just to populate the commit
-comment|// field in PatchSetData that we would throw out in apply() above anyway.
 return|return
 name|Collections
 operator|.
@@ -803,6 +801,25 @@ name|emptyList
 argument_list|()
 return|;
 block|}
+DECL|method|sort (List<ChangeData> cds)
+specifier|private
+name|List
+argument_list|<
+name|ChangeData
+argument_list|>
+name|sort
+parameter_list|(
+name|List
+argument_list|<
+name|ChangeData
+argument_list|>
+name|cds
+parameter_list|)
+throws|throws
+name|OrmException
+throws|,
+name|IOException
+block|{
 name|List
 argument_list|<
 name|ChangeData
@@ -848,22 +865,6 @@ expr_stmt|;
 block|}
 return|return
 name|sorted
-return|;
-block|}
-DECL|method|getForAbandonedChange ()
-specifier|private
-name|List
-argument_list|<
-name|ChangeData
-argument_list|>
-name|getForAbandonedChange
-parameter_list|()
-block|{
-return|return
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
 return|;
 block|}
 block|}
