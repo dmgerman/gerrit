@@ -877,7 +877,7 @@ literal|"--threads"
 argument_list|,
 name|usage
 operator|=
-literal|"Number of threads to use for indexing"
+literal|"Number of threads to use for rebuilding NoteDb"
 argument_list|)
 DECL|field|threads
 specifier|private
