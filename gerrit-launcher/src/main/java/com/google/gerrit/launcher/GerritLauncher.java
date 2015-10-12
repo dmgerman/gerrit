@@ -524,7 +524,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  init           Initialize a Gerrit installation"
+literal|"  init            Initialize a Gerrit installation"
 argument_list|)
 expr_stmt|;
 name|System
@@ -533,7 +533,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  reindex        Rebuild the secondary index"
+literal|"  rebuild-notedb  Rebuild the review notes database"
 argument_list|)
 expr_stmt|;
 name|System
@@ -542,7 +542,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  daemon         Run the Gerrit network daemons"
+literal|"  reindex         Rebuild the secondary index"
 argument_list|)
 expr_stmt|;
 name|System
@@ -551,7 +551,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  gsql           Run the interactive query console"
+literal|"  daemon          Run the Gerrit network daemons"
 argument_list|)
 expr_stmt|;
 name|System
@@ -560,7 +560,16 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  version        Display the build version number"
+literal|"  gsql            Run the interactive query console"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"  version         Display the build version number"
 argument_list|)
 expr_stmt|;
 name|System
@@ -576,7 +585,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  ls             List files available for cat"
+literal|"  ls              List files available for cat"
 argument_list|)
 expr_stmt|;
 name|System
@@ -585,7 +594,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  cat FILE       Display a file from the archive"
+literal|"  cat FILE        Display a file from the archive"
 argument_list|)
 expr_stmt|;
 name|System
