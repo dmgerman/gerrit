@@ -1749,6 +1749,15 @@ name|draft
 parameter_list|()
 comment|/*-{ return this.draft || false; }-*/
 function_decl|;
+DECL|method|uploader ()
+specifier|public
+specifier|final
+specifier|native
+name|AccountInfo
+name|uploader
+parameter_list|()
+comment|/*-{ return this.uploader; }-*/
+function_decl|;
 DECL|method|isEdit ()
 specifier|public
 specifier|final
