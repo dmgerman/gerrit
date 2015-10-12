@@ -97,6 +97,11 @@ specifier|public
 name|Integer
 name|linesDeleted
 decl_stmt|;
+DECL|field|sizeDelta
+specifier|public
+name|long
+name|sizeDelta
+decl_stmt|;
 block|}
 end_class
 
