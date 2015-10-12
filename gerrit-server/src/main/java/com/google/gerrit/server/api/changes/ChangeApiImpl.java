@@ -1469,6 +1469,8 @@ decl||
 name|EmailException
 decl||
 name|IOException
+decl||
+name|UpdateException
 name|e
 parameter_list|)
 block|{

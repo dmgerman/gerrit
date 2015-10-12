@@ -280,6 +280,8 @@ decl_stmt|;
 name|Change
 name|change1
 init|=
+name|insert
+argument_list|(
 name|newChange
 argument_list|(
 name|repo
@@ -292,9 +294,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-operator|.
-name|insert
-argument_list|()
+argument_list|)
 decl_stmt|;
 name|RevCommit
 name|commit2
@@ -320,6 +320,8 @@ decl_stmt|;
 name|Change
 name|change2
 init|=
+name|insert
+argument_list|(
 name|newChange
 argument_list|(
 name|repo
@@ -332,9 +334,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-operator|.
-name|insert
-argument_list|()
+argument_list|)
 decl_stmt|;
 name|assertQuery
 argument_list|(
