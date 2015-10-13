@@ -108,7 +108,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Iterables
+name|ImmutableList
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
+name|Iterables
 import|;
 end_import
 

@@ -66,6 +66,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|FormatUtil
+operator|.
+name|formatBytes
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -101,22 +117,6 @@ operator|.
 name|test
 operator|.
 name|GwtTest
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|FormatUtil
-operator|.
-name|formatBytes
 import|;
 end_import
 

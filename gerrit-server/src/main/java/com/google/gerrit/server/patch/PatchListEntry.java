@@ -116,6 +116,24 @@ name|ioutil
 operator|.
 name|BasicSerialization
 operator|.
+name|readFixInt64
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ioutil
+operator|.
+name|BasicSerialization
+operator|.
 name|readString
 import|;
 end_import
@@ -135,24 +153,6 @@ operator|.
 name|BasicSerialization
 operator|.
 name|readVarInt32
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|ioutil
-operator|.
-name|BasicSerialization
-operator|.
-name|readFixInt64
 import|;
 end_import
 
@@ -206,6 +206,24 @@ name|ioutil
 operator|.
 name|BasicSerialization
 operator|.
+name|writeFixInt64
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ioutil
+operator|.
+name|BasicSerialization
+operator|.
 name|writeString
 import|;
 end_import
@@ -225,24 +243,6 @@ operator|.
 name|BasicSerialization
 operator|.
 name|writeVarInt32
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|ioutil
-operator|.
-name|BasicSerialization
-operator|.
-name|writeFixInt64
 import|;
 end_import
 
