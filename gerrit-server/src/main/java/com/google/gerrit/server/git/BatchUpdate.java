@@ -561,6 +561,16 @@ return|return
 name|db
 return|;
 block|}
+DECL|method|getUser ()
+specifier|public
+name|CurrentUser
+name|getUser
+parameter_list|()
+block|{
+return|return
+name|user
+return|;
+block|}
 block|}
 DECL|class|RepoContext
 specifier|public
@@ -745,19 +755,6 @@ return|return
 name|update
 operator|.
 name|getChange
-argument_list|()
-return|;
-block|}
-DECL|method|getUser ()
-specifier|public
-name|CurrentUser
-name|getUser
-parameter_list|()
-block|{
-return|return
-name|update
-operator|.
-name|getUser
 argument_list|()
 return|;
 block|}

@@ -118,6 +118,29 @@ name|String
 argument_list|>
 name|remove
 decl_stmt|;
+DECL|method|HashtagsInput ()
+specifier|public
+name|HashtagsInput
+parameter_list|()
+block|{   }
+DECL|method|HashtagsInput (Set<String> add)
+specifier|public
+name|HashtagsInput
+parameter_list|(
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|add
+parameter_list|)
+block|{
+name|this
+operator|.
+name|add
+operator|=
+name|add
+expr_stmt|;
+block|}
 block|}
 end_class
 

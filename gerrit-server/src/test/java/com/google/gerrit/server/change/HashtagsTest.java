@@ -152,6 +152,9 @@ name|HashtagsUtil
 operator|.
 name|extractTags
 argument_list|(
+operator|(
+name|String
+operator|)
 literal|null
 argument_list|)
 argument_list|)
