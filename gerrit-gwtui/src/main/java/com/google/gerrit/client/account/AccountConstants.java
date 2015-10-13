@@ -255,6 +255,11 @@ name|String
 name|tabDiffPreferences
 parameter_list|()
 function_decl|;
+DECL|method|tabEditPreferences ()
+name|String
+name|tabEditPreferences
+parameter_list|()
+function_decl|;
 DECL|method|tabGpgKeys ()
 name|String
 name|tabGpgKeys
