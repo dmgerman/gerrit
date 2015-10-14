@@ -8415,6 +8415,10 @@ decl_stmt|;
 if|if
 condition|(
 name|uploader
+operator|==
+literal|null
+operator|||
+name|uploader
 operator|.
 name|_accountId
 argument_list|()
