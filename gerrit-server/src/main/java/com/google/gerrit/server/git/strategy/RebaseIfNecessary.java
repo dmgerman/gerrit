@@ -864,6 +864,10 @@ name|patchSetInfoFactory
 operator|.
 name|get
 argument_list|(
+name|args
+operator|.
+name|rw
+argument_list|,
 name|mergeTip
 operator|.
 name|getCurrentTip
