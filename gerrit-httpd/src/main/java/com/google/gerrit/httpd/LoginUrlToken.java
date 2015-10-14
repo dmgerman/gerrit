@@ -108,22 +108,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|Url
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|servlet
@@ -165,7 +149,7 @@ name|req
 parameter_list|)
 block|{
 name|String
-name|encodedToken
+name|token
 init|=
 name|req
 operator|.
@@ -178,7 +162,7 @@ name|Strings
 operator|.
 name|isNullOrEmpty
 argument_list|(
-name|encodedToken
+name|token
 argument_list|)
 condition|)
 block|{
@@ -198,12 +182,7 @@ argument_list|)
 operator|.
 name|trimLeadingFrom
 argument_list|(
-name|Url
-operator|.
-name|decode
-argument_list|(
-name|encodedToken
-argument_list|)
+name|token
 argument_list|)
 return|;
 block|}
