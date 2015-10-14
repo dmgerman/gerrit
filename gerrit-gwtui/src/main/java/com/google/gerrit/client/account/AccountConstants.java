@@ -250,6 +250,11 @@ name|String
 name|tabContactInformation
 parameter_list|()
 function_decl|;
+DECL|method|tabDiffPreferences ()
+name|String
+name|tabDiffPreferences
+parameter_list|()
+function_decl|;
 DECL|method|tabGpgKeys ()
 name|String
 name|tabGpgKeys
