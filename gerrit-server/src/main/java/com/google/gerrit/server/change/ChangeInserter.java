@@ -1515,8 +1515,6 @@ name|labelTypes
 argument_list|,
 name|patchSet
 argument_list|,
-name|patchSetInfo
-argument_list|,
 name|ctl
 argument_list|,
 name|approvals

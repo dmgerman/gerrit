@@ -14197,8 +14197,6 @@ name|labelTypes
 argument_list|,
 name|newPatchSet
 argument_list|,
-name|info
-argument_list|,
 name|changeCtl
 argument_list|,
 name|approvals
