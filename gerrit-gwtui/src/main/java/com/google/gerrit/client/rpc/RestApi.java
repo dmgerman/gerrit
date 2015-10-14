@@ -593,6 +593,16 @@ name|startsWith
 argument_list|(
 literal|"Must be signed-in"
 argument_list|)
+operator|||
+name|sce
+operator|.
+name|getEncodedResponse
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"Invalid authentication"
+argument_list|)
 operator|)
 return|;
 block|}
