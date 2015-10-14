@@ -209,6 +209,15 @@ name|SETTINGS_DIFF_PREFERENCES
 init|=
 literal|"/settings/diff-preferences"
 decl_stmt|;
+DECL|field|SETTINGS_EDIT_PREFERENCES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_EDIT_PREFERENCES
+init|=
+literal|"/settings/edit-preferences"
+decl_stmt|;
 DECL|field|SETTINGS_SSHKEYS
 specifier|public
 specifier|static
