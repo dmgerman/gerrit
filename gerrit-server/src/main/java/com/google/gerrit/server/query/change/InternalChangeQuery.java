@@ -935,10 +935,15 @@ name|EXACT_COMMIT
 argument_list|)
 condition|)
 block|{
-comment|// TODO(dborowitz): Move to IndexConfig and use in more places.
+comment|// Account for all commit predicates plus ref, project, status.
 name|batchSize
 operator|=
-literal|500
+name|indexConfig
+operator|.
+name|maxTerms
+argument_list|()
+operator|-
+literal|3
 expr_stmt|;
 block|}
 else|else
@@ -1012,6 +1017,28 @@ argument_list|,
 name|hashes
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|batchSize
+operator|>=
+name|hashes
+operator|.
+name|size
+argument_list|()
+condition|)
+block|{
+return|return
+name|query
+argument_list|(
+name|commitsOnBranchNotMerged
+argument_list|(
+name|branch
+argument_list|,
+name|commits
+argument_list|)
+argument_list|)
+return|;
+block|}
 name|int
 name|numBatches
 init|=
