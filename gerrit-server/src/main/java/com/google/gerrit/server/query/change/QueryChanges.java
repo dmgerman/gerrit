@@ -718,7 +718,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^Error in operator (.*:self)$"
+literal|"^Error in operator (.*:self|is:watched|is:owner|is:reviewer|has:.*)$"
 argument_list|)
 decl_stmt|;
 name|Matcher
