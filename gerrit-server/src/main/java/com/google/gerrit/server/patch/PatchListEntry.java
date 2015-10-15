@@ -600,6 +600,8 @@ specifier|final
 name|long
 name|sizeDelta
 decl_stmt|;
+comment|// Note: When adding new fields, the serialVersionUID in PatchListKey must be
+comment|// incremented so that entries from the cache are automatically invalidated.
 DECL|method|PatchListEntry (FileHeader hdr, List<Edit> editList, long sizeDelta)
 name|PatchListEntry
 parameter_list|(
