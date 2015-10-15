@@ -620,6 +620,18 @@ name|DataResource
 name|verilog
 parameter_list|()
 function_decl|;
+DECL|method|vhdl ()
+annotation|@
+name|Source
+argument_list|(
+literal|"vhdl.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|vhdl
+parameter_list|()
+function_decl|;
 DECL|method|xml ()
 annotation|@
 name|Source

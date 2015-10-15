@@ -540,6 +540,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|vhdl
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|xml
 argument_list|()
 block|,
