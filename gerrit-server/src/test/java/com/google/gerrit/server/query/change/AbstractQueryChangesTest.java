@@ -9377,13 +9377,12 @@ name|internalChangeQuery
 operator|.
 name|byCommitsOnBranchNotMerged
 argument_list|(
-name|indexes
+name|repo
 operator|.
-name|getSearchIndex
+name|getRepository
 argument_list|()
-operator|.
-name|getSchema
-argument_list|()
+argument_list|,
+name|db
 argument_list|,
 name|dest
 argument_list|,
@@ -9442,7 +9441,7 @@ decl_stmt|;
 name|String
 name|name
 init|=
-literal|"batch size "
+literal|"limit "
 operator|+
 name|i
 decl_stmt|;
