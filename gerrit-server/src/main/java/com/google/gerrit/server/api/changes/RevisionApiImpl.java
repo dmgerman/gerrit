@@ -1421,9 +1421,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|UpdateException
 name|e
 parameter_list|)
 block|{
