@@ -296,6 +296,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|ChangeUpdate
 import|;
 end_import
@@ -733,6 +749,19 @@ parameter_list|()
 block|{
 return|return
 name|update
+return|;
+block|}
+DECL|method|getChangeNotes ()
+specifier|public
+name|ChangeNotes
+name|getChangeNotes
+parameter_list|()
+block|{
+return|return
+name|update
+operator|.
+name|getChangeNotes
+argument_list|()
 return|;
 block|}
 DECL|method|getChangeControl ()
