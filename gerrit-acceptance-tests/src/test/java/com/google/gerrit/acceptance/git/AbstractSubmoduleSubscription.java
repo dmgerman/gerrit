@@ -471,10 +471,10 @@ literal|""
 argument_list|)
 return|;
 block|}
-DECL|method|createSubscription (TestRepository<?> repo, String branch, String subscribeToRepo, String subscribeToBranch)
+DECL|method|createSubmoduleSubscription (TestRepository<?> repo, String branch, String subscribeToRepo, String subscribeToBranch)
 specifier|protected
 name|void
-name|createSubscription
+name|createSubmoduleSubscription
 parameter_list|(
 name|TestRepository
 argument_list|<
@@ -501,7 +501,7 @@ operator|new
 name|Config
 argument_list|()
 decl_stmt|;
-name|prepareSubscriptionConfigEntry
+name|prepareSubmoduleConfigEntry
 argument_list|(
 name|config
 argument_list|,
@@ -510,7 +510,7 @@ argument_list|,
 name|subscribeToBranch
 argument_list|)
 expr_stmt|;
-name|pushSubscriptionConfig
+name|pushSubmoduleConfig
 argument_list|(
 name|repo
 argument_list|,
@@ -520,10 +520,10 @@ name|config
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|prepareSubscriptionConfigEntry (Config config, String subscribeToRepo, String subscribeToBranch)
+DECL|method|prepareSubmoduleConfigEntry (Config config, String subscribeToRepo, String subscribeToBranch)
 specifier|protected
 name|void
-name|prepareSubscriptionConfigEntry
+name|prepareSubmoduleConfigEntry
 parameter_list|(
 name|Config
 name|config
@@ -589,6 +589,13 @@ argument_list|,
 name|url
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|subscribeToBranch
+operator|!=
+literal|null
+condition|)
+block|{
 name|config
 operator|.
 name|setString
@@ -603,10 +610,11 @@ name|subscribeToBranch
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|pushSubscriptionConfig (TestRepository<?> repo, String branch, Config config)
+block|}
+DECL|method|pushSubmoduleConfig (TestRepository<?> repo, String branch, Config config)
 specifier|protected
 name|void
-name|pushSubscriptionConfig
+name|pushSubmoduleConfig
 parameter_list|(
 name|TestRepository
 argument_list|<

@@ -282,7 +282,7 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 decl_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|superRepo
 argument_list|,
@@ -743,7 +743,7 @@ operator|new
 name|Config
 argument_list|()
 decl_stmt|;
-name|prepareSubscriptionConfigEntry
+name|prepareSubmoduleConfigEntry
 argument_list|(
 name|config
 argument_list|,
@@ -752,7 +752,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|prepareSubscriptionConfigEntry
+name|prepareSubmoduleConfigEntry
 argument_list|(
 name|config
 argument_list|,
@@ -761,7 +761,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|prepareSubscriptionConfigEntry
+name|prepareSubmoduleConfigEntry
 argument_list|(
 name|config
 argument_list|,
@@ -770,7 +770,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|pushSubscriptionConfig
+name|pushSubmoduleConfig
 argument_list|(
 name|superRepo
 argument_list|,

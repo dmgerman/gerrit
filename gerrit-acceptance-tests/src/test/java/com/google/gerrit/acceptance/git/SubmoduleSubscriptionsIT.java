@@ -230,7 +230,7 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 decl_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|superRepo
 argument_list|,
@@ -302,7 +302,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|superRepo
 argument_list|,
@@ -385,7 +385,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|superRepo
 argument_list|,
@@ -497,7 +497,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|superRepo
 argument_list|,
@@ -654,7 +654,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|superRepo
 argument_list|,
@@ -773,7 +773,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|superRepo
 argument_list|,
@@ -885,7 +885,7 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 decl_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|superRepo
 argument_list|,
@@ -964,7 +964,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|superRepo
 argument_list|,
@@ -975,7 +975,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|createSubscription
+name|createSubmoduleSubscription
 argument_list|(
 name|subRepo
 argument_list|,
