@@ -744,6 +744,8 @@ operator|.
 name|getObjectId
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -751,7 +753,8 @@ name|repo
 operator|.
 name|getRevWalk
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|RevCommit
 name|c
 init|=
@@ -802,6 +805,7 @@ argument_list|(
 name|expectedId
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
