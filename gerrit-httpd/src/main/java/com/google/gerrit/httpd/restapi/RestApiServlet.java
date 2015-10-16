@@ -5213,9 +5213,6 @@ operator|.
 name|setCharacterEncoding
 argument_list|(
 name|UTF_8
-operator|.
-name|name
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5990,9 +5987,6 @@ operator|.
 name|setCharacterEncoding
 argument_list|(
 name|UTF_8
-operator|.
-name|name
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -6157,9 +6151,6 @@ operator|.
 name|setCharacterEncoding
 argument_list|(
 name|ISO_8859_1
-operator|.
-name|name
-argument_list|()
 argument_list|)
 return|;
 end_return

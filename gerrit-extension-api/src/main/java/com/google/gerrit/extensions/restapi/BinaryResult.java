@@ -277,7 +277,7 @@ name|OCTET_STREAM
 decl_stmt|;
 DECL|field|characterEncoding
 specifier|private
-name|String
+name|Charset
 name|characterEncoding
 decl_stmt|;
 DECL|field|contentLength
@@ -314,7 +314,7 @@ name|String
 name|getContentType
 parameter_list|()
 block|{
-name|String
+name|Charset
 name|enc
 init|=
 name|getCharacterEncoding
@@ -333,6 +333,9 @@ operator|+
 literal|"; charset="
 operator|+
 name|enc
+operator|.
+name|name
+argument_list|()
 return|;
 block|}
 return|return
@@ -368,7 +371,7 @@ block|}
 comment|/** Get the character encoding; null if not known. */
 DECL|method|getCharacterEncoding ()
 specifier|public
-name|String
+name|Charset
 name|getCharacterEncoding
 parameter_list|()
 block|{
@@ -377,12 +380,36 @@ name|characterEncoding
 return|;
 block|}
 comment|/** Set the character set used to encode text data and return {@code this}. */
+annotation|@
+name|Deprecated
 DECL|method|setCharacterEncoding (String encoding)
 specifier|public
 name|BinaryResult
 name|setCharacterEncoding
 parameter_list|(
 name|String
+name|encoding
+parameter_list|)
+block|{
+return|return
+name|setCharacterEncoding
+argument_list|(
+name|Charset
+operator|.
+name|forName
+argument_list|(
+name|encoding
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/** Set the character set used to encode text data and return {@code this}. */
+DECL|method|setCharacterEncoding (Charset encoding)
+specifier|public
+name|BinaryResult
+name|setCharacterEncoding
+parameter_list|(
+name|Charset
 name|encoding
 parameter_list|)
 block|{
@@ -641,7 +668,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|decode (byte[] data, String enc)
+DECL|method|decode (byte[] data, Charset enc)
 specifier|private
 specifier|static
 name|String
@@ -651,7 +678,7 @@ name|byte
 index|[]
 name|data
 parameter_list|,
-name|String
+name|Charset
 name|enc
 parameter_list|)
 block|{
@@ -664,12 +691,7 @@ name|enc
 operator|!=
 literal|null
 condition|?
-name|Charset
-operator|.
-name|forName
-argument_list|(
 name|enc
-argument_list|)
 else|:
 name|UTF_8
 decl_stmt|;
