@@ -1323,7 +1323,7 @@ name|ui
 operator|.
 name|message
 argument_list|(
-literal|"Renaming %s to %s"
+literal|"Renaming %s to %s\n"
 argument_list|,
 name|old
 argument_list|,
