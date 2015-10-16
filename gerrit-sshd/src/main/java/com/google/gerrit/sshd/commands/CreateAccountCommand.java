@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -295,16 +309,6 @@ operator|.
 name|io
 operator|.
 name|InputStreamReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -648,8 +652,6 @@ name|String
 name|readSshKey
 parameter_list|()
 throws|throws
-name|UnsupportedEncodingException
-throws|,
 name|IOException
 block|{
 if|if
@@ -688,7 +690,7 @@ name|InputStreamReader
 argument_list|(
 name|in
 argument_list|,
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;

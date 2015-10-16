@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -269,16 +283,6 @@ operator|.
 name|io
 operator|.
 name|PrintWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -497,8 +501,6 @@ specifier|final
 name|OutputStream
 name|out
 parameter_list|)
-throws|throws
-name|UnsupportedEncodingException
 block|{
 name|this
 operator|.
@@ -518,7 +520,7 @@ name|InputStreamReader
 argument_list|(
 name|in
 argument_list|,
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -534,7 +536,7 @@ name|OutputStreamWriter
 argument_list|(
 name|out
 argument_list|,
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;

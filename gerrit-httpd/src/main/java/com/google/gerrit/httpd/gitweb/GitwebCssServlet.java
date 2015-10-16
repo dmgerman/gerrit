@@ -83,6 +83,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -187,6 +201,18 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
 import|;
 end_import
 
@@ -336,10 +362,10 @@ DECL|field|ENC
 specifier|private
 specifier|static
 specifier|final
-name|String
+name|Charset
 name|ENC
 init|=
-literal|"UTF-8"
+name|UTF_8
 decl_stmt|;
 DECL|field|modified
 specifier|private
@@ -432,7 +458,7 @@ name|raw
 operator|.
 name|getBytes
 argument_list|(
-name|ENC
+name|UTF_8
 argument_list|)
 expr_stmt|;
 name|gz_css
@@ -532,6 +558,9 @@ operator|.
 name|setCharacterEncoding
 argument_list|(
 name|ENC
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 specifier|final

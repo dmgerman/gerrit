@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -2437,7 +2451,10 @@ name|getTemplate
 argument_list|(
 name|name
 argument_list|,
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|StringWriter

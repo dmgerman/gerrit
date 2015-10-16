@@ -66,16 +66,6 @@ name|mail
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
 begin_class
 DECL|class|Address
 specifier|public
@@ -375,37 +365,16 @@ name|String
 name|toString
 parameter_list|()
 block|{
-try|try
-block|{
 return|return
 name|toHeaderString
 argument_list|()
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Cannot encode address"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|toHeaderString ()
 specifier|public
 name|String
 name|toHeaderString
 parameter_list|()
-throws|throws
-name|UnsupportedEncodingException
 block|{
 if|if
 condition|(
@@ -541,8 +510,6 @@ specifier|final
 name|String
 name|name
 parameter_list|)
-throws|throws
-name|UnsupportedEncodingException
 block|{
 if|if
 condition|(

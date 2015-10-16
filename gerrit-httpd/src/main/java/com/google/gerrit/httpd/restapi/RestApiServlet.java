@@ -6156,7 +6156,10 @@ argument_list|)
 operator|.
 name|setCharacterEncoding
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
+operator|.
+name|name
+argument_list|()
 argument_list|)
 return|;
 end_return

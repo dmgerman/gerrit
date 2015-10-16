@@ -132,6 +132,20 @@ name|charset
 operator|.
 name|StandardCharsets
 operator|.
+name|ISO_8859_1
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
 name|UTF_8
 import|;
 end_import
@@ -3965,7 +3979,10 @@ name|InputStreamReader
 argument_list|(
 name|in
 argument_list|,
-literal|"ISO-8859-1"
+name|ISO_8859_1
+operator|.
+name|name
+argument_list|()
 argument_list|)
 argument_list|)
 init|)

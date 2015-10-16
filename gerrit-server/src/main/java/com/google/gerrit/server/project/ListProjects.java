@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -663,16 +677,6 @@ operator|.
 name|io
 operator|.
 name|PrintWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -1637,7 +1641,10 @@ argument_list|)
 operator|.
 name|setCharacterEncoding
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1700,8 +1707,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-try|try
-block|{
 name|stdout
 operator|=
 operator|new
@@ -1715,28 +1720,11 @@ name|OutputStreamWriter
 argument_list|(
 name|displayOutputStream
 argument_list|,
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"JVM lacks UTF-8 encoding"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 name|int
 name|foundIndex

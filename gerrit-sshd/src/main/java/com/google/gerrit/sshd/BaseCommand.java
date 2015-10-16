@@ -65,6 +65,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -532,9 +546,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|UnsupportedEncodingException
+name|charset
+operator|.
+name|Charset
 import|;
 end_import
 
@@ -593,10 +609,10 @@ DECL|field|ENC
 specifier|public
 specifier|static
 specifier|final
-name|String
+name|Charset
 name|ENC
 init|=
-literal|"UTF-8"
+name|UTF_8
 decl_stmt|;
 DECL|field|PRIVATE_STATUS
 specifier|private
@@ -1348,8 +1364,6 @@ name|OutputStream
 name|o
 parameter_list|)
 block|{
-try|try
-block|{
 return|return
 operator|new
 name|PrintWriter
@@ -1367,30 +1381,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-comment|// Our default encoding is required by the specifications for the
-comment|// runtime APIs, this should never, ever happen.
-comment|//
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"JVM lacks "
-operator|+
-name|ENC
-operator|+
-literal|" encoding"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|handleError (final Throwable e)
 specifier|private

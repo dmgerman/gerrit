@@ -68,6 +68,20 @@ begin_import
 import|import static
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -327,16 +341,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -1271,8 +1275,6 @@ name|String
 name|data
 parameter_list|)
 block|{
-try|try
-block|{
 name|MessageDigest
 name|md
 init|=
@@ -1287,7 +1289,7 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1300,23 +1302,6 @@ name|digest
 argument_list|()
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"UTF-8 encoding not available"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|KD (String secret, String data)
 specifier|private
@@ -1331,8 +1316,6 @@ name|String
 name|data
 parameter_list|)
 block|{
-try|try
-block|{
 name|MessageDigest
 name|md
 init|=
@@ -1347,7 +1330,7 @@ name|secret
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1369,7 +1352,7 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1382,23 +1365,6 @@ name|digest
 argument_list|()
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"UTF-8 encoding not available"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|newMD5 ()
 specifier|private
