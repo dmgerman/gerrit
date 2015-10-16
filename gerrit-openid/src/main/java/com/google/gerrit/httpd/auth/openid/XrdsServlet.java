@@ -146,18 +146,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|servlet
@@ -219,15 +207,6 @@ name|long
 name|serialVersionUID
 init|=
 literal|1L
-decl_stmt|;
-DECL|field|ENC
-specifier|private
-specifier|static
-specifier|final
-name|Charset
-name|ENC
-init|=
-name|UTF_8
 decl_stmt|;
 DECL|field|LOCATION
 specifier|static
@@ -301,7 +280,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|ENC
+name|UTF_8
 operator|.
 name|name
 argument_list|()
@@ -428,7 +407,7 @@ argument_list|()
 operator|.
 name|getBytes
 argument_list|(
-name|ENC
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|rsp
@@ -451,7 +430,7 @@ name|rsp
 operator|.
 name|setCharacterEncoding
 argument_list|(
-name|ENC
+name|UTF_8
 operator|.
 name|name
 argument_list|()
