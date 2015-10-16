@@ -69,16 +69,16 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|nio
 operator|.
-name|common
+name|charset
 operator|.
-name|base
+name|StandardCharsets
 operator|.
-name|Charsets
+name|ISO_8859_1
 import|;
 end_import
 
@@ -460,8 +460,6 @@ name|msg
 operator|.
 name|getBytes
 argument_list|(
-name|Charsets
-operator|.
 name|ISO_8859_1
 argument_list|)
 return|;

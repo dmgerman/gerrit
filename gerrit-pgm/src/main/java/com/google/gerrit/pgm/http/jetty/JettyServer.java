@@ -72,6 +72,20 @@ begin_import
 import|import static
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -93,20 +107,6 @@ operator|.
 name|TimeUnit
 operator|.
 name|SECONDS
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
 import|;
 end_import
 
@@ -4213,8 +4213,6 @@ name|res
 operator|.
 name|setCharacterEncoding
 argument_list|(
-name|Charsets
-operator|.
 name|UTF_8
 operator|.
 name|name
