@@ -334,11 +334,6 @@ specifier|private
 name|Path
 name|gen
 decl_stmt|;
-DECL|field|testSite
-specifier|private
-name|Path
-name|testSite
-decl_stmt|;
 DECL|field|pluginRoot
 specifier|private
 name|Path
@@ -369,6 +364,11 @@ specifier|private
 name|boolean
 name|standalone
 decl_stmt|;
+DECL|field|testSite
+specifier|protected
+name|Path
+name|testSite
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|beforeTest (Description description)
@@ -397,6 +397,9 @@ expr_stmt|;
 name|copyJarToTestSite
 argument_list|()
 expr_stmt|;
+name|beforeTestServerStarts
+argument_list|()
+expr_stmt|;
 name|super
 operator|.
 name|beforeTest
@@ -405,6 +408,14 @@ name|description
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|beforeTestServerStarts ()
+specifier|protected
+name|void
+name|beforeTestServerStarts
+parameter_list|()
+throws|throws
+name|Exception
+block|{   }
 DECL|method|setPluginConfigString (String name, String value)
 specifier|protected
 name|void
