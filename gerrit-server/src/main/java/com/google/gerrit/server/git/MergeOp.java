@@ -3608,6 +3608,13 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|rw
+operator|.
+name|setRetainBody
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|canMergeFlag
 operator|=
 name|rw

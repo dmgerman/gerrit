@@ -13616,6 +13616,8 @@ specifier|private
 name|void
 name|newPatchSet
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|PatchSet
 operator|.
@@ -13728,6 +13730,11 @@ name|patchSetInfoFactory
 operator|.
 name|get
 argument_list|(
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|,
 name|newCommit
 argument_list|,
 name|newPatchSet
@@ -17293,6 +17300,11 @@ name|patchSetInfoFactory
 operator|.
 name|get
 argument_list|(
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|,
 name|commit
 argument_list|,
 name|psi

@@ -434,11 +434,14 @@ operator|=
 name|byEmailCache
 expr_stmt|;
 block|}
-DECL|method|get (RevCommit src, PatchSet.Id psi)
+DECL|method|get (RevWalk rw, RevCommit src, PatchSet.Id psi)
 specifier|public
 name|PatchSetInfo
 name|get
 parameter_list|(
+name|RevWalk
+name|rw
+parameter_list|,
 name|RevCommit
 name|src
 parameter_list|,
@@ -447,7 +450,16 @@ operator|.
 name|Id
 name|psi
 parameter_list|)
+throws|throws
+name|IOException
 block|{
+name|rw
+operator|.
+name|parseBody
+argument_list|(
+name|src
+argument_list|)
+expr_stmt|;
 name|PatchSetInfo
 name|info
 init|=
@@ -659,6 +671,8 @@ name|info
 init|=
 name|get
 argument_list|(
+name|rw
+argument_list|,
 name|src
 argument_list|,
 name|patchSet
