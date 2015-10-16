@@ -1562,7 +1562,7 @@ name|cells
 argument_list|)
 return|;
 block|}
-DECL|method|addApprovals (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, PatchSetInfo info, ChangeControl changeCtl, Map<String, Short> approvals)
+DECL|method|addApprovals (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, ChangeControl changeCtl, Map<String, Short> approvals)
 specifier|public
 name|void
 name|addApprovals
@@ -1578,9 +1578,6 @@ name|labelTypes
 parameter_list|,
 name|PatchSet
 name|ps
-parameter_list|,
-name|PatchSetInfo
-name|info
 parameter_list|,
 name|ChangeControl
 name|changeCtl
@@ -1684,12 +1681,9 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|info
+name|ps
 operator|.
-name|getCommitter
-argument_list|()
-operator|.
-name|getAccount
+name|getUploader
 argument_list|()
 argument_list|,
 name|lt

@@ -1972,8 +1972,6 @@ name|labelTypes
 argument_list|,
 name|patchSet
 argument_list|,
-name|patchSetInfo
-argument_list|,
 name|ctx
 operator|.
 name|getChangeControl

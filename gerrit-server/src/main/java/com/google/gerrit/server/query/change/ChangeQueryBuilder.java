@@ -1170,6 +1170,15 @@ name|FIELD_LIMIT
 init|=
 literal|"limit"
 decl_stmt|;
+DECL|field|FIELD_MERGE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FIELD_MERGE
+init|=
+literal|"merge"
+decl_stmt|;
 DECL|field|FIELD_MERGEABLE
 specifier|public
 specifier|static
