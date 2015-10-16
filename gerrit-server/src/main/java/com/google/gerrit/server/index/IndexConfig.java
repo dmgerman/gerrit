@@ -123,6 +123,15 @@ specifier|abstract
 class|class
 name|IndexConfig
 block|{
+DECL|field|DEFAULT_MAX_TERMS
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MAX_TERMS
+init|=
+literal|500
+decl_stmt|;
 DECL|field|DEFAULT_MAX_PREFIX_TERMS
 specifier|private
 specifier|static
@@ -145,6 +154,8 @@ argument_list|(
 literal|0
 argument_list|,
 literal|0
+argument_list|,
+name|DEFAULT_MAX_TERMS
 argument_list|,
 name|DEFAULT_MAX_PREFIX_TERMS
 argument_list|)
@@ -197,6 +208,19 @@ literal|"index"
 argument_list|,
 literal|null
 argument_list|,
+literal|"maxTerms"
+argument_list|,
+literal|0
+argument_list|)
+argument_list|,
+name|cfg
+operator|.
+name|getInt
+argument_list|(
+literal|"index"
+argument_list|,
+literal|null
+argument_list|,
 literal|"maxPrefixTerms"
 argument_list|,
 name|DEFAULT_MAX_PREFIX_TERMS
@@ -204,7 +228,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|create (int maxLimit, int maxPages, int maxPrefixTerms)
+DECL|method|create (int maxLimit, int maxPages, int maxTerms, int maxPrefixTerms)
 specifier|public
 specifier|static
 name|IndexConfig
@@ -215,6 +239,9 @@ name|maxLimit
 parameter_list|,
 name|int
 name|maxPages
+parameter_list|,
+name|int
+name|maxTerms
 parameter_list|,
 name|int
 name|maxPrefixTerms
@@ -240,6 +267,17 @@ argument_list|(
 name|maxPages
 argument_list|,
 literal|"maxPages"
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+argument_list|,
+name|checkLimit
+argument_list|(
+name|maxTerms
+argument_list|,
+literal|"maxTerms"
 argument_list|,
 name|Integer
 operator|.
@@ -315,6 +353,14 @@ specifier|public
 specifier|abstract
 name|int
 name|maxPages
+parameter_list|()
+function_decl|;
+comment|/**    * @return maximum number of total index query terms supported by the    *     underlying index, or limited for performance reasons.    */
+DECL|method|maxTerms ()
+specifier|public
+specifier|abstract
+name|int
+name|maxTerms
 parameter_list|()
 function_decl|;
 comment|/**    * @return maximum number of prefix terms per query supported by the    *     underlying index, or limited for performance reasons. Not enforced for    *     general queries; only for specific cases where the query system can    *     split into equivalent subqueries.    */

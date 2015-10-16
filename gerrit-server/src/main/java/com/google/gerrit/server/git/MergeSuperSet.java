@@ -1059,6 +1059,10 @@ argument_list|()
 operator|.
 name|byCommitsOnBranchNotMerged
 argument_list|(
+name|repo
+argument_list|,
+name|db
+argument_list|,
 name|cd
 operator|.
 name|change

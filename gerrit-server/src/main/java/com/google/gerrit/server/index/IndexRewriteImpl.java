@@ -346,6 +346,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|MutableInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -892,13 +906,22 @@ specifier|final
 name|IndexCollection
 name|indexes
 decl_stmt|;
+DECL|field|config
+specifier|private
+specifier|final
+name|IndexConfig
+name|config
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IndexRewriteImpl (IndexCollection indexes)
+DECL|method|IndexRewriteImpl (IndexCollection indexes, IndexConfig config)
 name|IndexRewriteImpl
 parameter_list|(
 name|IndexCollection
 name|indexes
+parameter_list|,
+name|IndexConfig
+name|config
 parameter_list|)
 block|{
 name|this
@@ -906,6 +929,12 @@ operator|.
 name|indexes
 operator|=
 name|indexes
+expr_stmt|;
+name|this
+operator|.
+name|config
+operator|=
+name|config
 expr_stmt|;
 block|}
 annotation|@
@@ -958,6 +987,13 @@ name|limit
 operator|+=
 name|start
 expr_stmt|;
+name|MutableInteger
+name|leafTerms
+init|=
+operator|new
+name|MutableInteger
+argument_list|()
+decl_stmt|;
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -971,6 +1007,8 @@ argument_list|,
 name|index
 argument_list|,
 name|limit
+argument_list|,
+name|leafTerms
 argument_list|)
 decl_stmt|;
 if|if
@@ -1016,8 +1054,8 @@ name|out
 return|;
 block|}
 block|}
-comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @param limit maximum number of results to return.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    * @throws QueryParseException if the underlying index implementation does not    *     support this predicate.    */
-DECL|method|rewriteImpl (Predicate<ChangeData> in, ChangeIndex index, int limit)
+comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @param limit maximum number of results to return.    * @param leafTerms number of leaf index query terms encountered so far.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    * @throws QueryParseException if the underlying index implementation does not    *     support this predicate.    */
+DECL|method|rewriteImpl (Predicate<ChangeData> in, ChangeIndex index, int limit, MutableInteger leafTerms)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1036,6 +1074,9 @@ name|index
 parameter_list|,
 name|int
 name|limit
+parameter_list|,
+name|MutableInteger
+name|leafTerms
 parameter_list|)
 throws|throws
 name|QueryParseException
@@ -1050,6 +1091,27 @@ name|index
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|++
+name|leafTerms
+operator|.
+name|value
+operator|>
+name|config
+operator|.
+name|maxTerms
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|QueryParseException
+argument_list|(
+literal|"too many terms in query"
+argument_list|)
+throw|;
+block|}
 return|return
 name|in
 return|;
@@ -1178,6 +1240,8 @@ argument_list|,
 name|index
 argument_list|,
 name|limit
+argument_list|,
+name|leafTerms
 argument_list|)
 decl_stmt|;
 if|if
