@@ -280,7 +280,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|17L
+literal|18L
 decl_stmt|;
 DECL|field|oldId
 specifier|private
