@@ -1986,17 +1986,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|startChar
-operator|==
-literal|0
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-if|if
-condition|(
 name|note
 index|[
 name|ptr

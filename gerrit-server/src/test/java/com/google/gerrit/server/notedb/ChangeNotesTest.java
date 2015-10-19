@@ -5560,7 +5560,7 @@ name|CommentRange
 argument_list|(
 literal|3
 argument_list|,
-literal|1
+literal|0
 argument_list|,
 literal|4
 argument_list|,
@@ -5769,7 +5769,7 @@ literal|"File: file2\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"3:1-4:1\n"
+literal|"3:0-4:1\n"
 operator|+
 name|CommentsInNotesUtil
 operator|.
