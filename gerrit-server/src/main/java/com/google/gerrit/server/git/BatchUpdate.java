@@ -1480,11 +1480,9 @@ name|RestApiException
 name|e
 parameter_list|)
 block|{
-comment|// Propagate REST API exceptions thrown by operations. Most operations
-comment|// should throw non-REST exceptions like NoSuchChangeException, under the
-comment|// assumption that validation is done by REST API handlers in advance of
-comment|// executing the batch. They commonly throw ResourceConflictException to
-comment|// indicate an atomic operation failure.
+comment|// Propagate REST API exceptions thrown by operations; they commonly throw
+comment|// exceptions like ResourceConflictException to indicate an atomic update
+comment|// failure.
 throw|throw
 name|e
 throw|;
@@ -1520,6 +1518,8 @@ throws|throws
 name|IOException
 throws|,
 name|UpdateException
+throws|,
+name|RestApiException
 block|{
 try|try
 block|{
@@ -1561,6 +1561,10 @@ operator|.
 name|propagateIfPossible
 argument_list|(
 name|e
+argument_list|,
+name|RestApiException
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -1669,6 +1673,8 @@ name|executeChangeOps
 parameter_list|()
 throws|throws
 name|UpdateException
+throws|,
+name|RestApiException
 block|{
 try|try
 block|{
@@ -1796,6 +1802,10 @@ operator|.
 name|propagateIfPossible
 argument_list|(
 name|e
+argument_list|,
+name|RestApiException
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 throw|throw
