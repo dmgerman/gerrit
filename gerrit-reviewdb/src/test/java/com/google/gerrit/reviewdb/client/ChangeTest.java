@@ -68,25 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
+name|truth
 operator|.
-name|junit
+name|Truth
 operator|.
-name|Assert
-operator|.
-name|assertNull
+name|assertThat
 import|;
 end_import
 
@@ -304,16 +296,8 @@ name|String
 name|refName
 parameter_list|)
 block|{
-name|assertEquals
+name|assertThat
 argument_list|(
-operator|new
-name|Change
-operator|.
-name|Id
-argument_list|(
-name|changeId
-argument_list|)
-argument_list|,
 name|Change
 operator|.
 name|Id
@@ -321,6 +305,17 @@ operator|.
 name|fromRef
 argument_list|(
 name|refName
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+operator|new
+name|Change
+operator|.
+name|Id
+argument_list|(
+name|changeId
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -335,7 +330,7 @@ name|String
 name|refName
 parameter_list|)
 block|{
-name|assertNull
+name|assertThat
 argument_list|(
 name|Change
 operator|.
@@ -346,6 +341,9 @@ argument_list|(
 name|refName
 argument_list|)
 argument_list|)
+operator|.
+name|isNull
+argument_list|()
 expr_stmt|;
 block|}
 block|}
