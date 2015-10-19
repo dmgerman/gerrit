@@ -1406,7 +1406,7 @@ name|user
 init|=
 name|pc
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 name|user
@@ -2031,7 +2031,7 @@ operator|!
 operator|(
 name|pc
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -2055,7 +2055,7 @@ name|IdentifiedUser
 operator|)
 name|pc
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -2472,7 +2472,7 @@ operator|!
 operator|(
 name|pc
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -2504,7 +2504,7 @@ name|IdentifiedUser
 operator|)
 name|pc
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|)
 operator|.

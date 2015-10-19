@@ -1308,7 +1308,7 @@ name|IdentifiedUser
 operator|)
 name|control
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 name|Change

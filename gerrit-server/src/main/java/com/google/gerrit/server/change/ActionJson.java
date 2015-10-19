@@ -456,7 +456,7 @@ condition|(
 operator|!
 name|ctl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -479,7 +479,7 @@ name|of
 argument_list|(
 name|ctl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -631,7 +631,7 @@ operator|.
 name|getControl
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -653,7 +653,7 @@ operator|.
 name|getControl
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|)
 decl_stmt|;

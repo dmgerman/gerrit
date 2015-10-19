@@ -773,7 +773,7 @@ name|checkState
 argument_list|(
 name|sd
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|==
 literal|null

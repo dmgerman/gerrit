@@ -455,10 +455,10 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/** Identity of the user the control will compute for. */
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 return|return

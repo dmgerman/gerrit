@@ -324,10 +324,10 @@ name|sessionId
 return|;
 block|}
 comment|/** Identity of the authenticated user account on the socket. */
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 return|return

@@ -921,7 +921,7 @@ name|IdentifiedUser
 operator|)
 name|control
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|)
 operator|.

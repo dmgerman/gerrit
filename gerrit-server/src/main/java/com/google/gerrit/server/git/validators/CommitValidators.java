@@ -1455,7 +1455,7 @@ name|IdentifiedUser
 operator|)
 name|projectControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 expr_stmt|;
 block|}
@@ -2149,7 +2149,7 @@ name|IdentifiedUser
 operator|)
 name|refControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 if|if
@@ -2573,7 +2573,7 @@ name|IdentifiedUser
 operator|)
 name|refControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -2815,7 +2815,7 @@ name|IdentifiedUser
 operator|)
 name|refControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -2967,7 +2967,7 @@ name|IdentifiedUser
 operator|)
 name|refControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -3363,7 +3363,7 @@ if|if
 condition|(
 name|refControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -3378,7 +3378,7 @@ name|IdentifiedUser
 operator|)
 name|refControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 name|String

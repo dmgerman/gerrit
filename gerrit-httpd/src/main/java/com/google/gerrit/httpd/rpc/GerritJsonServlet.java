@@ -854,7 +854,7 @@ operator|.
 name|getWebSession
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1604,7 +1604,7 @@ comment|// The session must exist, and must be using this token.
 comment|//
 name|session
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|setAccessPath

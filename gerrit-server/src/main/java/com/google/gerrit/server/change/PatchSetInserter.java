@@ -1191,7 +1191,7 @@ name|checkArgument
 argument_list|(
 name|ctl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -1214,7 +1214,7 @@ name|IdentifiedUser
 operator|)
 name|ctl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 return|;
 block|}

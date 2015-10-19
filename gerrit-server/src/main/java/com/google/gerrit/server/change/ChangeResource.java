@@ -609,7 +609,7 @@ name|user
 init|=
 name|control
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 name|Hasher

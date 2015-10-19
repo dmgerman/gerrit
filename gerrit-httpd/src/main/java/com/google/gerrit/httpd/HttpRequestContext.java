@@ -218,10 +218,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 return|return
@@ -230,7 +230,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 return|;
 block|}

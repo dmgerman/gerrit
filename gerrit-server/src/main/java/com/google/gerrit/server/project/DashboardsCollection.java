@@ -826,7 +826,7 @@ name|user
 init|=
 name|myCtl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 name|String

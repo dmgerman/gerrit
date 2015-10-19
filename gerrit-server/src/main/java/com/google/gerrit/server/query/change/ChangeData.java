@@ -3568,7 +3568,7 @@ name|visibleTo
 operator|=
 name|ctl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 expr_stmt|;
 name|changeControl

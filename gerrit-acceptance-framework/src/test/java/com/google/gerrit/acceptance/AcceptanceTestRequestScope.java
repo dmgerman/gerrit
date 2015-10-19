@@ -556,10 +556,10 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 if|if
@@ -927,7 +927,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|)
 return|;

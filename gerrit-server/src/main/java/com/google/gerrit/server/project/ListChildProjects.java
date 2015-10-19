@@ -391,7 +391,7 @@ operator|.
 name|getControl
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|)
 return|;

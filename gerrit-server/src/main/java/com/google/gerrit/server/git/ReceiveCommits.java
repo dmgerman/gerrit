@@ -3622,7 +3622,7 @@ name|IdentifiedUser
 operator|)
 name|projectControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 expr_stmt|;
 name|this
@@ -11933,7 +11933,7 @@ name|IdentifiedUser
 operator|)
 name|changeCtl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|,
 literal|false

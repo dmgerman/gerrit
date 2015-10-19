@@ -389,7 +389,7 @@ operator|.
 name|getControl
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -415,7 +415,7 @@ operator|.
 name|getControl
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 name|ChangeData

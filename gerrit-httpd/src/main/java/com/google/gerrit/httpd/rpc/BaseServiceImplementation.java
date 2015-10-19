@@ -380,10 +380,10 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|protected
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 return|return

@@ -300,7 +300,7 @@ name|user
 operator|=
 name|args
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 expr_stmt|;
 block|}
@@ -332,7 +332,7 @@ name|user
 init|=
 name|args
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 name|List

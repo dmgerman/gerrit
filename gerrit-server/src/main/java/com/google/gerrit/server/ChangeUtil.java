@@ -2263,7 +2263,7 @@ argument_list|()
 argument_list|,
 name|refControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|,
 name|change

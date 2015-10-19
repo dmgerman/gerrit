@@ -566,10 +566,10 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 specifier|final
@@ -578,7 +578,7 @@ name|user
 init|=
 name|session
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 if|if

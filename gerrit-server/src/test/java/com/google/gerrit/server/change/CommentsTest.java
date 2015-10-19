@@ -1977,7 +1977,7 @@ name|Provides
 annotation|@
 name|Singleton
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|(
 name|IdentifiedUser
 operator|.

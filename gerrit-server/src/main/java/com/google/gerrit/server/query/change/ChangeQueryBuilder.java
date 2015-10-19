@@ -2106,7 +2106,7 @@ block|{
 name|CurrentUser
 name|u
 init|=
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 if|if
@@ -2153,9 +2153,9 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 throws|throws
 name|QueryParseException
@@ -4315,7 +4315,7 @@ name|visibleto
 argument_list|(
 name|args
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|)
 return|;

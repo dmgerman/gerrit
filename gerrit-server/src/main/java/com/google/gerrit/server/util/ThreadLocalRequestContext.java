@@ -352,7 +352,7 @@ block|{
 return|return
 name|ctx
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 return|;
 block|}

@@ -728,7 +728,7 @@ name|IdentifiedUser
 operator|)
 name|control
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 if|if
@@ -842,7 +842,7 @@ argument_list|()
 argument_list|,
 name|control
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|,
 name|TimeUtil

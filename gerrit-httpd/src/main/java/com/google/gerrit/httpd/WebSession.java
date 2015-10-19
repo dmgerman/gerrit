@@ -175,10 +175,10 @@ name|Key
 name|getLastLoginExternalId
 parameter_list|()
 function_decl|;
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 function_decl|;
 DECL|method|login (AuthResult res, boolean rememberMe)

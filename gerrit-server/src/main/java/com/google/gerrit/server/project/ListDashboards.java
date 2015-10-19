@@ -518,7 +518,7 @@ name|controlFor
 argument_list|(
 name|ctl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -870,7 +870,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|equals
@@ -911,17 +911,17 @@ return|return
 name|refControl
 return|;
 block|}
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 return|return
 name|getRefControl
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 return|;
 block|}
@@ -1107,7 +1107,7 @@ name|isOwner
 argument_list|()
 comment|// project owner can abandon
 operator|||
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getCapabilities
@@ -1430,7 +1430,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -1444,7 +1444,7 @@ init|=
 operator|(
 name|IdentifiedUser
 operator|)
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 return|return
@@ -1507,7 +1507,7 @@ name|OrmException
 block|{
 if|if
 condition|(
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -1541,7 +1541,7 @@ init|=
 operator|(
 name|IdentifiedUser
 operator|)
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 return|return
@@ -1615,7 +1615,7 @@ comment|// A user can always remove themselves.
 comment|//
 if|if
 condition|(
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -1629,7 +1629,7 @@ init|=
 operator|(
 name|IdentifiedUser
 operator|)
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 if|if
@@ -1692,7 +1692,7 @@ name|isOwner
 argument_list|()
 comment|// project owner
 operator|||
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getCapabilities
@@ -1749,7 +1749,7 @@ name|isOwner
 argument_list|()
 comment|// project owner can edit topic
 operator|||
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getCapabilities
@@ -1804,7 +1804,7 @@ name|isOwner
 argument_list|()
 comment|// project owner can edit hashtags
 operator|||
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getCapabilities
@@ -1874,7 +1874,7 @@ name|match
 argument_list|(
 name|destBranch
 argument_list|,
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getUserName
@@ -1944,7 +1944,7 @@ operator|.
 name|canViewDrafts
 argument_list|()
 operator|||
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isInternalUser

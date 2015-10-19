@@ -1078,7 +1078,7 @@ literal|"filter_submit_results"
 argument_list|,
 name|control
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|)
 expr_stmt|;

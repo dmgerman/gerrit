@@ -1292,7 +1292,7 @@ name|user
 init|=
 name|sd
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 if|if

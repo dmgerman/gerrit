@@ -661,16 +661,16 @@ return|return
 name|projectControl
 return|;
 block|}
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 return|return
 name|projectControl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 return|;
 block|}
@@ -788,7 +788,7 @@ block|{
 name|isVisible
 operator|=
 operator|(
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isInternalUser
@@ -1162,7 +1162,7 @@ operator|.
 name|isAllProjects
 argument_list|()
 operator|&&
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getCapabilities
@@ -1344,7 +1344,7 @@ name|admin
 decl_stmt|;
 switch|switch
 condition|(
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getAccessPath
@@ -1367,7 +1367,7 @@ argument_list|()
 expr_stmt|;
 name|admin
 operator|=
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getCapabilities
@@ -1534,7 +1534,7 @@ name|valid
 decl_stmt|;
 if|if
 condition|(
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -1548,7 +1548,7 @@ init|=
 operator|(
 name|IdentifiedUser
 operator|)
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1811,7 +1811,7 @@ return|;
 block|}
 switch|switch
 condition|(
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getAccessPath
@@ -1827,7 +1827,7 @@ argument_list|()
 return|;
 default|default:
 return|return
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getCapabilities

@@ -1274,7 +1274,7 @@ name|user
 init|=
 name|sd
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1590,7 +1590,7 @@ name|currentUser
 operator|=
 name|session
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 expr_stmt|;
 name|created

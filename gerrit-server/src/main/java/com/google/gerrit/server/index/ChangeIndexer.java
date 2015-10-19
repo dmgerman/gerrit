@@ -1276,7 +1276,7 @@ annotation|@
 name|Override
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 throw|throw

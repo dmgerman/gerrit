@@ -534,7 +534,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 specifier|final

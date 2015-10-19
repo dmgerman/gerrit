@@ -1050,7 +1050,7 @@ name|IdentifiedUser
 operator|)
 name|ctl
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|)
 operator|.

@@ -671,10 +671,10 @@ return|return
 name|group
 return|;
 block|}
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 return|return
@@ -778,7 +778,7 @@ argument_list|()
 decl_stmt|;
 name|isOwner
 operator|=
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getEffectiveGroups
@@ -789,7 +789,7 @@ argument_list|(
 name|ownerUUID
 argument_list|)
 operator|||
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|getCapabilities

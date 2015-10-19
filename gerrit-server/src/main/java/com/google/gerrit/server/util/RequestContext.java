@@ -118,9 +118,9 @@ specifier|public
 interface|interface
 name|RequestContext
 block|{
-DECL|method|getCurrentUser ()
+DECL|method|getUser ()
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 function_decl|;
 DECL|method|getReviewDbProvider ()

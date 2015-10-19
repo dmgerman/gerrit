@@ -3487,7 +3487,7 @@ if|if
 condition|(
 name|project
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 operator|.
 name|isIdentifiedUser
@@ -3503,7 +3503,7 @@ name|IdentifiedUser
 operator|)
 name|project
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 decl_stmt|;
 specifier|final

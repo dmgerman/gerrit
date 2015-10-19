@@ -741,13 +741,13 @@ annotation|@
 name|Override
 specifier|public
 name|CurrentUser
-name|getCurrentUser
+name|getUser
 parameter_list|()
 block|{
 return|return
 name|context
 operator|.
-name|getCurrentUser
+name|getUser
 argument_list|()
 return|;
 block|}

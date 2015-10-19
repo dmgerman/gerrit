@@ -459,7 +459,7 @@ operator|.
 name|getParentKey
 argument_list|()
 argument_list|,
-name|getCurrentUser
+name|getUser
 argument_list|()
 argument_list|)
 decl_stmt|;
