@@ -170,7 +170,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|RebaseChange
+name|RebaseChangeOp
 import|;
 end_import
 
@@ -539,11 +539,13 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
-DECL|field|rebaseChange
+DECL|field|rebaseFactory
 specifier|private
 specifier|final
-name|RebaseChange
-name|rebaseChange
+name|RebaseChangeOp
+operator|.
+name|Factory
+name|rebaseFactory
 decl_stmt|;
 DECL|field|projectCache
 specifier|private
@@ -573,7 +575,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent Provider<PersonIdent> myIdent, final BatchUpdate.Factory batchUpdateFactory, final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final RebaseChange rebaseChange, final ProjectCache projectCache, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer indexer)
+DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent Provider<PersonIdent> myIdent, final BatchUpdate.Factory batchUpdateFactory, final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final RebaseChangeOp.Factory rebaseFactory, final ProjectCache projectCache, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer indexer)
 name|SubmitStrategyFactory
 parameter_list|(
 specifier|final
@@ -607,8 +609,10 @@ name|PatchSetInfoFactory
 name|patchSetInfoFactory
 parameter_list|,
 specifier|final
-name|RebaseChange
-name|rebaseChange
+name|RebaseChangeOp
+operator|.
+name|Factory
+name|rebaseFactory
 parameter_list|,
 specifier|final
 name|ProjectCache
@@ -661,9 +665,9 @@ name|patchSetInfoFactory
 expr_stmt|;
 name|this
 operator|.
-name|rebaseChange
+name|rebaseFactory
 operator|=
-name|rebaseChange
+name|rebaseFactory
 expr_stmt|;
 name|this
 operator|.
@@ -844,7 +848,7 @@ name|args
 argument_list|,
 name|patchSetInfoFactory
 argument_list|,
-name|rebaseChange
+name|rebaseFactory
 argument_list|)
 return|;
 default|default:

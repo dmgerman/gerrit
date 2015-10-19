@@ -260,6 +260,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|GerritPersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|extensions
 operator|.
 name|events
@@ -412,6 +426,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|PersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|Repository
 import|;
 end_import
@@ -511,6 +539,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
 import|;
 end_import
 
@@ -704,6 +742,16 @@ argument_list|(
 name|cmd
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getTimeZone ()
+specifier|public
+name|TimeZone
+name|getTimeZone
+parameter_list|()
+block|{
+return|return
+name|tz
+return|;
 block|}
 block|}
 DECL|class|ChangeContext
@@ -933,6 +981,12 @@ specifier|final
 name|Timestamp
 name|when
 decl_stmt|;
+DECL|field|tz
+specifier|private
+specifier|final
+name|TimeZone
+name|tz
+decl_stmt|;
 DECL|field|ops
 specifier|private
 specifier|final
@@ -1015,7 +1069,7 @@ name|closeRepo
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|BatchUpdate (GitRepositoryManager repoManager, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, GitReferenceUpdated gitRefUpdated, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
+DECL|method|BatchUpdate (GitRepositoryManager repoManager, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, GitReferenceUpdated gitRefUpdated, @GerritPersonIdent PersonIdent serverIdent, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
 name|BatchUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -1036,6 +1090,11 @@ name|changeUpdateFactory
 parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
+parameter_list|,
+annotation|@
+name|GerritPersonIdent
+name|PersonIdent
+name|serverIdent
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1113,6 +1172,13 @@ operator|.
 name|when
 operator|=
 name|when
+expr_stmt|;
+name|tz
+operator|=
+name|serverIdent
+operator|.
+name|getTimeZone
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

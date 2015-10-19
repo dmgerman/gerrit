@@ -676,7 +676,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|RebaseChange
+name|RebaseUtil
 import|;
 end_import
 
@@ -880,11 +880,11 @@ specifier|final
 name|Rebase
 name|rebase
 decl_stmt|;
-DECL|field|rebaseChange
+DECL|field|rebaseUtil
 specifier|private
 specifier|final
-name|RebaseChange
-name|rebaseChange
+name|RebaseUtil
+name|rebaseUtil
 decl_stmt|;
 DECL|field|submit
 specifier|private
@@ -1029,7 +1029,7 @@ name|revisionActions
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RevisionApiImpl (Changes changes, CherryPick cherryPick, DeleteDraftPatchSet deleteDraft, Rebase rebase, RebaseChange rebaseChange, Submit submit, PublishDraftPatchSet publish, Reviewed.PutReviewed putReviewed, Reviewed.DeleteReviewed deleteReviewed, Provider<Files> files, Provider<Files.ListFiles> listFiles, Provider<GetPatch> getPatch, Provider<PostReview> review, Provider<Mergeable> mergeable, FileApiImpl.Factory fileApi, ListRevisionComments listComments, ListRevisionDrafts listDrafts, CreateDraftComment createDraft, DraftComments drafts, DraftApiImpl.Factory draftFactory, Comments comments, CommentApiImpl.Factory commentFactory, GetRevisionActions revisionActions, @Assisted RevisionResource r)
+DECL|method|RevisionApiImpl (Changes changes, CherryPick cherryPick, DeleteDraftPatchSet deleteDraft, Rebase rebase, RebaseUtil rebaseUtil, Submit submit, PublishDraftPatchSet publish, Reviewed.PutReviewed putReviewed, Reviewed.DeleteReviewed deleteReviewed, Provider<Files> files, Provider<Files.ListFiles> listFiles, Provider<GetPatch> getPatch, Provider<PostReview> review, Provider<Mergeable> mergeable, FileApiImpl.Factory fileApi, ListRevisionComments listComments, ListRevisionDrafts listDrafts, CreateDraftComment createDraft, DraftComments drafts, DraftApiImpl.Factory draftFactory, Comments comments, CommentApiImpl.Factory commentFactory, GetRevisionActions revisionActions, @Assisted RevisionResource r)
 name|RevisionApiImpl
 parameter_list|(
 name|Changes
@@ -1044,8 +1044,8 @@ parameter_list|,
 name|Rebase
 name|rebase
 parameter_list|,
-name|RebaseChange
-name|rebaseChange
+name|RebaseUtil
+name|rebaseUtil
 parameter_list|,
 name|Submit
 name|submit
@@ -1160,9 +1160,9 @@ name|rebase
 expr_stmt|;
 name|this
 operator|.
-name|rebaseChange
+name|rebaseUtil
 operator|=
-name|rebaseChange
+name|rebaseUtil
 expr_stmt|;
 name|this
 operator|.
@@ -1566,7 +1566,7 @@ name|canRebase
 parameter_list|()
 block|{
 return|return
-name|rebaseChange
+name|rebaseUtil
 operator|.
 name|canRebase
 argument_list|(

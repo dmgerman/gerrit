@@ -1310,6 +1310,25 @@ return|return
 name|change
 return|;
 block|}
+DECL|method|getPatchSet ()
+specifier|public
+name|PatchSet
+name|getPatchSet
+parameter_list|()
+block|{
+name|checkState
+argument_list|(
+name|patchSet
+operator|!=
+literal|null
+argument_list|,
+literal|"getPatchSet() only valid after executing update"
+argument_list|)
+expr_stmt|;
+return|return
+name|patchSet
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|updateRepo (RepoContext ctx)
