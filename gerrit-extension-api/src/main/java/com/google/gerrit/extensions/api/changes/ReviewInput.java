@@ -198,6 +198,12 @@ name|NotifyHandling
 operator|.
 name|ALL
 decl_stmt|;
+comment|/**    * If true check to make sure that the comments being posted aren't already    * present.    */
+DECL|field|omitDuplicateComments
+specifier|public
+name|boolean
+name|omitDuplicateComments
+decl_stmt|;
 comment|/**    * Account ID, name, email address or username of another user. The review    * will be posted/updated on behalf of this named user instead of the    * caller. Caller must have the labelAs-$NAME permission granted for each    * label that appears in {@link #labels}. This is in addition to the named    * user also needing to have permission to use the labels.    *<p>    * {@link #strictLabels} impacts how labels is processed for the named user,    * not the caller.    */
 DECL|field|onBehalfOf
 specifier|public
