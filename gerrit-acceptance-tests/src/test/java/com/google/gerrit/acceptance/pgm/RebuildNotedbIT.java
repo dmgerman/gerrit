@@ -83,6 +83,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -180,18 +194,6 @@ name|File
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-import|;
-end_import
-
 begin_class
 DECL|class|RebuildNotedbIT
 specifier|public
@@ -281,8 +283,6 @@ argument_list|,
 literal|"etc/gerrit.config"
 argument_list|)
 argument_list|,
-name|StandardCharsets
-operator|.
 name|UTF_8
 argument_list|)
 expr_stmt|;

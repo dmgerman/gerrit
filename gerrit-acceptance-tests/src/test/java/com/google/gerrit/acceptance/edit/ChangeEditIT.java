@@ -938,18 +938,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -7230,8 +7218,6 @@ name|String
 argument_list|(
 name|CONTENT_OLD
 argument_list|,
-name|StandardCharsets
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -7286,8 +7272,6 @@ name|String
 argument_list|(
 name|CONTENT_NEW2
 argument_list|,
-name|StandardCharsets
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|,
@@ -7341,8 +7325,6 @@ name|String
 argument_list|(
 name|CONTENT_OLD
 argument_list|,
-name|StandardCharsets
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
