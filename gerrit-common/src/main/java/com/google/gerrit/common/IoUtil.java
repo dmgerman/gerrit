@@ -190,6 +190,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -523,24 +533,23 @@ throw|;
 block|}
 block|}
 block|}
-DECL|method|loadJARs (Path... jars)
+DECL|method|loadJARs (Path jar)
 specifier|public
 specifier|static
 name|void
 name|loadJARs
 parameter_list|(
 name|Path
-modifier|...
-name|jars
+name|jar
 parameter_list|)
 block|{
 name|loadJARs
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singleton
 argument_list|(
-name|jars
+name|jar
 argument_list|)
 argument_list|)
 expr_stmt|;
