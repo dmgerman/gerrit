@@ -557,6 +557,18 @@ specifier|public
 class|class
 name|Context
 block|{
+DECL|method|getProject ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getProject
+parameter_list|()
+block|{
+return|return
+name|project
+return|;
+block|}
 DECL|method|getWhen ()
 specifier|public
 name|Timestamp
@@ -1249,6 +1261,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getUser ()
+specifier|public
+name|CurrentUser
+name|getUser
+parameter_list|()
+block|{
+return|return
+name|user
+return|;
 block|}
 DECL|method|getRepository ()
 specifier|public
