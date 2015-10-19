@@ -274,20 +274,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|GerritPersonIdent
 import|;
 end_import
@@ -860,14 +846,14 @@ specifier|final
 name|TimeZone
 name|serverTimeZone
 decl_stmt|;
-DECL|field|currentUser
+DECL|field|user
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|CurrentUser
+name|IdentifiedUser
 argument_list|>
-name|currentUser
+name|user
 decl_stmt|;
 DECL|field|changeInserterFactory
 specifier|private
@@ -917,7 +903,7 @@ name|batchUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickChange (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<CurrentUser> currentUser, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory updateFactory, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|CherryPickChange (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory updateFactory, BatchUpdate.Factory batchUpdateFactory)
 name|CherryPickChange
 parameter_list|(
 name|Provider
@@ -942,9 +928,9 @@ name|gitManager
 parameter_list|,
 name|Provider
 argument_list|<
-name|CurrentUser
+name|IdentifiedUser
 argument_list|>
-name|currentUser
+name|user
 parameter_list|,
 name|ChangeInserter
 operator|.
@@ -1004,9 +990,9 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|currentUser
+name|user
 operator|=
-name|currentUser
+name|user
 expr_stmt|;
 name|this
 operator|.
@@ -1130,10 +1116,7 @@ decl_stmt|;
 name|IdentifiedUser
 name|identifiedUser
 init|=
-operator|(
-name|IdentifiedUser
-operator|)
-name|currentUser
+name|user
 operator|.
 name|get
 argument_list|()

@@ -435,11 +435,11 @@ operator|.
 name|Factory
 name|groupControlFactory
 decl_stmt|;
-DECL|field|currentUser
+DECL|field|user
 specifier|private
 specifier|final
 name|CurrentUser
-name|currentUser
+name|user
 decl_stmt|;
 DECL|field|userFactory
 specifier|private
@@ -455,7 +455,7 @@ specifier|final
 name|AccountVisibility
 name|accountVisibility
 decl_stmt|;
-DECL|method|AccountControl (final ProjectCache projectCache, final GroupControl.Factory groupControlFactory, final CurrentUser currentUser, final IdentifiedUser.GenericFactory userFactory, final AccountVisibility accountVisibility)
+DECL|method|AccountControl (final ProjectCache projectCache, final GroupControl.Factory groupControlFactory, final CurrentUser user, final IdentifiedUser.GenericFactory userFactory, final AccountVisibility accountVisibility)
 name|AccountControl
 parameter_list|(
 specifier|final
@@ -470,7 +470,7 @@ name|groupControlFactory
 parameter_list|,
 specifier|final
 name|CurrentUser
-name|currentUser
+name|user
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -506,9 +506,9 @@ name|groupControlFactory
 expr_stmt|;
 name|this
 operator|.
-name|currentUser
+name|user
 operator|=
-name|currentUser
+name|user
 expr_stmt|;
 name|this
 operator|.
@@ -560,17 +560,12 @@ block|{
 comment|// Special case: I can always see myself.
 if|if
 condition|(
-name|currentUser
+name|user
 operator|.
 name|isIdentifiedUser
 argument_list|()
 operator|&&
-operator|(
-operator|(
-name|IdentifiedUser
-operator|)
-name|currentUser
-operator|)
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -587,7 +582,7 @@ return|;
 block|}
 if|if
 condition|(
-name|currentUser
+name|user
 operator|.
 name|getCapabilities
 argument_list|()
@@ -669,7 +664,7 @@ block|}
 block|}
 if|if
 condition|(
-name|currentUser
+name|user
 operator|.
 name|getEffectiveGroups
 argument_list|()

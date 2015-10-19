@@ -1582,14 +1582,14 @@ return|return
 name|subject
 return|;
 block|}
-DECL|field|userProvider
+DECL|field|user
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|CurrentUser
+name|IdentifiedUser
 argument_list|>
-name|userProvider
+name|user
 decl_stmt|;
 DECL|field|db
 specifier|private
@@ -1653,14 +1653,14 @@ name|updateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeUtil (Provider<CurrentUser> userProvider, Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ChangeIndexer indexer, BatchUpdate.Factory updateFactory)
+DECL|method|ChangeUtil (Provider<IdentifiedUser> user, Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ChangeIndexer indexer, BatchUpdate.Factory updateFactory)
 name|ChangeUtil
 parameter_list|(
 name|Provider
 argument_list|<
-name|CurrentUser
+name|IdentifiedUser
 argument_list|>
-name|userProvider
+name|user
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1701,9 +1701,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|userProvider
+name|user
 operator|=
-name|userProvider
+name|user
 expr_stmt|;
 name|this
 operator|.
@@ -1907,6 +1907,8 @@ name|PersonIdent
 name|authorIdent
 init|=
 name|user
+operator|.
+name|get
 argument_list|()
 operator|.
 name|newCommitterIdent
@@ -2132,6 +2134,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|user
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getAccountId
@@ -2328,6 +2332,8 @@ operator|.
 name|setFrom
 argument_list|(
 name|user
+operator|.
+name|get
 argument_list|()
 operator|.
 name|getAccountId
@@ -3299,22 +3305,6 @@ argument_list|(
 name|id
 argument_list|)
 throw|;
-block|}
-DECL|method|user ()
-specifier|private
-name|IdentifiedUser
-name|user
-parameter_list|()
-block|{
-return|return
-operator|(
-name|IdentifiedUser
-operator|)
-name|userProvider
-operator|.
-name|get
-argument_list|()
-return|;
 block|}
 DECL|method|deleteOnlyDraftPatchSetPreserveRef (ReviewDb db, PatchSet patch)
 specifier|private

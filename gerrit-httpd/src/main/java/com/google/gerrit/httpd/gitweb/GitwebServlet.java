@@ -3498,12 +3498,12 @@ specifier|final
 name|IdentifiedUser
 name|u
 init|=
-operator|(
-name|IdentifiedUser
-operator|)
 name|project
 operator|.
 name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 decl_stmt|;
 specifier|final

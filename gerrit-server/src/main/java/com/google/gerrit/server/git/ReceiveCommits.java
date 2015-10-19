@@ -2923,11 +2923,11 @@ operator|.
 name|newLinkedHashSet
 argument_list|()
 decl_stmt|;
-DECL|field|currentUser
+DECL|field|user
 specifier|private
 specifier|final
 name|IdentifiedUser
-name|currentUser
+name|user
 decl_stmt|;
 DECL|field|db
 specifier|private
@@ -3615,14 +3615,14 @@ name|IOException
 block|{
 name|this
 operator|.
-name|currentUser
+name|user
 operator|=
-operator|(
-name|IdentifiedUser
-operator|)
 name|projectControl
 operator|.
 name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 expr_stmt|;
 name|this
@@ -4873,7 +4873,7 @@ literal|"User: %s"
 argument_list|,
 name|displayName
 argument_list|(
-name|currentUser
+name|user
 argument_list|)
 argument_list|)
 argument_list|)
@@ -5205,7 +5205,7 @@ operator|.
 name|getNewId
 argument_list|()
 argument_list|,
-name|currentUser
+name|user
 operator|.
 name|getAccount
 argument_list|()
@@ -6511,7 +6511,7 @@ operator|.
 name|getRefName
 argument_list|()
 argument_list|,
-name|currentUser
+name|user
 operator|.
 name|getAccount
 argument_list|()
@@ -6831,7 +6831,7 @@ name|error
 argument_list|(
 literal|"User "
 operator|+
-name|currentUser
+name|user
 operator|.
 name|getUserName
 argument_list|()
@@ -6921,7 +6921,7 @@ name|newParent
 argument_list|)
 operator|&&
 operator|!
-name|currentUser
+name|user
 operator|.
 name|getCapabilities
 argument_list|()
@@ -7243,7 +7243,7 @@ name|error
 argument_list|(
 literal|"User "
 operator|+
-name|currentUser
+name|user
 operator|.
 name|getUserName
 argument_list|()
@@ -10295,7 +10295,7 @@ name|receiveConfig
 operator|.
 name|getEffectiveMaxBatchChangesLimit
 argument_list|(
-name|currentUser
+name|user
 argument_list|)
 decl_stmt|;
 for|for
@@ -11346,7 +11346,7 @@ name|nextChangeId
 argument_list|()
 argument_list|)
 argument_list|,
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -11594,7 +11594,7 @@ operator|.
 name|Id
 name|me
 init|=
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -11726,7 +11726,7 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|,
-name|currentUser
+name|user
 argument_list|,
 name|change
 operator|.
@@ -11928,12 +11928,12 @@ operator|.
 name|getChange
 argument_list|()
 argument_list|,
-operator|(
-name|IdentifiedUser
-operator|)
 name|changeCtl
 operator|.
 name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 argument_list|,
 literal|false
@@ -13524,7 +13524,7 @@ name|byChange
 argument_list|(
 name|change
 argument_list|,
-name|currentUser
+name|user
 argument_list|)
 expr_stmt|;
 block|}
@@ -13677,7 +13677,7 @@ name|RefNames
 operator|.
 name|refsEdit
 argument_list|(
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -13742,7 +13742,7 @@ name|newPatchSet
 operator|.
 name|setUploader
 argument_list|(
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -14056,7 +14056,7 @@ name|db
 argument_list|)
 argument_list|)
 argument_list|,
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -14210,7 +14210,7 @@ name|changeCtl
 argument_list|,
 name|priorPatchSet
 argument_list|,
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -14320,7 +14320,7 @@ operator|.
 name|Id
 name|me
 init|=
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -15293,7 +15293,7 @@ name|doChangeMergedHook
 argument_list|(
 name|change
 argument_list|,
-name|currentUser
+name|user
 operator|.
 name|getAccount
 argument_list|()
@@ -15324,7 +15324,7 @@ name|doCommentAddedHook
 argument_list|(
 name|change
 argument_list|,
-name|currentUser
+name|user
 operator|.
 name|getAccount
 argument_list|()
@@ -16342,7 +16342,7 @@ name|Strings
 operator|.
 name|isNullOrEmpty
 argument_list|(
-name|currentUser
+name|user
 operator|.
 name|getAccount
 argument_list|()
@@ -16483,7 +16483,7 @@ if|if
 condition|(
 name|defaultName
 operator|&&
-name|currentUser
+name|user
 operator|.
 name|hasEmailAddress
 argument_list|(
@@ -16509,7 +16509,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -16560,7 +16560,7 @@ name|a
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|currentUser
+name|user
 operator|.
 name|getAccount
 argument_list|()
@@ -16684,7 +16684,7 @@ argument_list|()
 argument_list|,
 name|c
 argument_list|,
-name|currentUser
+name|user
 argument_list|)
 decl_stmt|;
 name|CommitValidators
@@ -17417,7 +17417,7 @@ name|doChangeMergedHook
 argument_list|(
 name|change
 argument_list|,
-name|currentUser
+name|user
 operator|.
 name|getAccount
 argument_list|()
@@ -17761,7 +17761,7 @@ name|db
 argument_list|)
 argument_list|)
 argument_list|,
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -17905,7 +17905,7 @@ name|cm
 operator|.
 name|setFrom
 argument_list|(
-name|currentUser
+name|user
 operator|.
 name|getAccountId
 argument_list|()

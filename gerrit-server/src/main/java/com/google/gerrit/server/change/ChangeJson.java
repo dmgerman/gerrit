@@ -3753,12 +3753,7 @@ operator|.
 name|Id
 name|accountId
 init|=
-operator|(
-operator|(
-name|IdentifiedUser
-operator|)
 name|user
-operator|)
 operator|.
 name|getAccountId
 argument_list|()

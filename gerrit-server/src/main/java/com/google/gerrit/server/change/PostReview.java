@@ -2514,12 +2514,12 @@ name|OrmException
 block|{
 name|user
 operator|=
-operator|(
-name|IdentifiedUser
-operator|)
 name|ctx
 operator|.
 name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 expr_stmt|;
 name|change

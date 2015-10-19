@@ -1044,15 +1044,10 @@ name|AccountProjectWatch
 operator|.
 name|Key
 argument_list|(
-operator|(
-operator|(
-name|IdentifiedUser
-operator|)
 name|ctl
 operator|.
 name|getUser
 argument_list|()
-operator|)
 operator|.
 name|getAccountId
 argument_list|()

@@ -998,10 +998,10 @@ operator|||
 operator|!
 name|membershipsOf
 argument_list|(
-operator|(
-name|IdentifiedUser
-operator|)
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 argument_list|)
 operator|.
 name|contains

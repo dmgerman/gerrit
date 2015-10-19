@@ -1303,12 +1303,12 @@ decl_stmt|;
 name|IdentifiedUser
 name|caller
 init|=
-operator|(
-name|IdentifiedUser
-operator|)
 name|control
 operator|.
 name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 decl_stmt|;
 name|Change

@@ -289,12 +289,7 @@ argument_list|()
 condition|)
 block|{
 return|return
-operator|(
-operator|(
-name|IdentifiedUser
-operator|)
 name|user
-operator|)
 operator|.
 name|getAccountId
 argument_list|()

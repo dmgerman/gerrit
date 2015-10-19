@@ -152,20 +152,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -592,14 +578,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|field|userProvider
+DECL|field|user
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
-name|userProvider
+name|user
 decl_stmt|;
 DECL|field|queue
 specifier|private
@@ -621,7 +607,7 @@ name|maxWait
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectQoSFilter (final Provider<CurrentUser> userProvider, QueueProvider queue, final ServletContext context, @GerritServerConfig final Config cfg)
+DECL|method|ProjectQoSFilter (final Provider<CurrentUser> user, QueueProvider queue, final ServletContext context, @GerritServerConfig final Config cfg)
 name|ProjectQoSFilter
 parameter_list|(
 specifier|final
@@ -629,7 +615,7 @@ name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
-name|userProvider
+name|user
 parameter_list|,
 name|QueueProvider
 name|queue
@@ -647,9 +633,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|userProvider
+name|user
 operator|=
-name|userProvider
+name|user
 expr_stmt|;
 name|this
 operator|.
@@ -947,7 +933,7 @@ name|queue
 operator|.
 name|getQueue
 argument_list|(
-name|userProvider
+name|user
 operator|.
 name|get
 argument_list|()
@@ -1256,7 +1242,7 @@ decl_stmt|;
 name|CurrentUser
 name|who
 init|=
-name|userProvider
+name|user
 operator|.
 name|get
 argument_list|()
@@ -1272,12 +1258,10 @@ block|{
 name|String
 name|name
 init|=
-operator|(
-operator|(
-name|IdentifiedUser
-operator|)
 name|who
-operator|)
+operator|.
+name|asIdentifiedUser
+argument_list|()
 operator|.
 name|getUserName
 argument_list|()

@@ -572,7 +572,6 @@ name|CurrentUser
 name|getUser
 parameter_list|()
 block|{
-specifier|final
 name|CurrentUser
 name|user
 init|=
@@ -600,12 +599,7 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-operator|(
-operator|(
-name|IdentifiedUser
-operator|)
 name|user
-operator|)
 operator|.
 name|getAccountId
 argument_list|()

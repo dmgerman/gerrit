@@ -547,12 +547,12 @@ name|getUser
 parameter_list|()
 block|{
 return|return
-operator|(
-name|IdentifiedUser
-operator|)
 name|ctl
 operator|.
 name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 return|;
 block|}

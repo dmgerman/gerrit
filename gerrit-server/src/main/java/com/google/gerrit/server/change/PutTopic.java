@@ -788,12 +788,12 @@ name|this
 operator|.
 name|caller
 operator|=
-operator|(
-name|IdentifiedUser
-operator|)
 name|ctl
 operator|.
 name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 expr_stmt|;
 block|}

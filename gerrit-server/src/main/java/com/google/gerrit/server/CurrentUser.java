@@ -76,6 +76,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|AccountProjectWatch
 import|;
 end_import
@@ -330,6 +346,50 @@ block|{
 return|return
 literal|false
 return|;
+block|}
+comment|/** Cast to IdentifiedUser if possible. */
+DECL|method|asIdentifiedUser ()
+specifier|public
+name|IdentifiedUser
+name|asIdentifiedUser
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|" is not an IdentifiedUser"
+argument_list|)
+throw|;
+block|}
+comment|/** Return account ID if {@link #isIdentifiedUser} is true. */
+DECL|method|getAccountId ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getAccountId
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|" is not an IdentifiedUser"
+argument_list|)
+throw|;
 block|}
 comment|/** Check if the CurrentUser is an InternalUser. */
 DECL|method|isInternalUser ()

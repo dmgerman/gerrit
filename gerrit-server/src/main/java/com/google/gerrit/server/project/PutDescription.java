@@ -539,12 +539,12 @@ decl_stmt|;
 name|IdentifiedUser
 name|user
 init|=
-operator|(
-name|IdentifiedUser
-operator|)
 name|ctl
 operator|.
 name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 decl_stmt|;
 if|if

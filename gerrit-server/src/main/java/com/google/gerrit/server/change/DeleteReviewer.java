@@ -915,15 +915,10 @@ name|db
 argument_list|)
 argument_list|)
 argument_list|,
-operator|(
-operator|(
-name|IdentifiedUser
-operator|)
 name|control
 operator|.
 name|getUser
 argument_list|()
-operator|)
 operator|.
 name|getAccountId
 argument_list|()

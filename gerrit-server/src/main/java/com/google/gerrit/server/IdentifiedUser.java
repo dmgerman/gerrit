@@ -1691,7 +1691,20 @@ return|return
 name|state
 return|;
 block|}
-comment|/** The account identity for the user. */
+annotation|@
+name|Override
+DECL|method|asIdentifiedUser ()
+specifier|public
+name|IdentifiedUser
+name|asIdentifiedUser
+parameter_list|()
+block|{
+return|return
+name|this
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getAccountId ()
 specifier|public
 name|Account

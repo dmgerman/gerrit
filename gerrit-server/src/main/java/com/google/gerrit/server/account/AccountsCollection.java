@@ -690,10 +690,10 @@ argument_list|()
 condition|)
 block|{
 return|return
-operator|(
-name|IdentifiedUser
-operator|)
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 return|;
 block|}
 elseif|else

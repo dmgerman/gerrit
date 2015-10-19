@@ -872,14 +872,14 @@ specifier|final
 name|TimeZone
 name|serverTimeZone
 decl_stmt|;
-DECL|field|userProvider
+DECL|field|user
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
-name|userProvider
+name|user
 decl_stmt|;
 DECL|field|projectsCollection
 specifier|private
@@ -925,7 +925,7 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> userProvider, ProjectsCollection projectsCollection, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeUtil changeUtil, BatchUpdate.Factory updateFactory, @GerritServerConfig Config config)
+DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> user, ProjectsCollection projectsCollection, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeUtil changeUtil, BatchUpdate.Factory updateFactory, @GerritServerConfig Config config)
 name|CreateChange
 parameter_list|(
 name|Provider
@@ -946,7 +946,7 @@ name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
-name|userProvider
+name|user
 parameter_list|,
 name|ProjectsCollection
 name|projectsCollection
@@ -998,9 +998,9 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|userProvider
+name|user
 operator|=
-name|userProvider
+name|user
 expr_stmt|;
 name|this
 operator|.
@@ -1544,12 +1544,12 @@ decl_stmt|;
 name|IdentifiedUser
 name|me
 init|=
-operator|(
-name|IdentifiedUser
-operator|)
-name|userProvider
+name|user
 operator|.
 name|get
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 decl_stmt|;
 name|PersonIdent

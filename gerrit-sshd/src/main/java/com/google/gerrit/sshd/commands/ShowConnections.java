@@ -1310,10 +1310,10 @@ block|{
 name|IdentifiedUser
 name|u
 init|=
-operator|(
-name|IdentifiedUser
-operator|)
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

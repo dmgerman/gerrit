@@ -890,12 +890,12 @@ condition|)
 block|{
 name|self
 operator|=
-operator|(
-name|IdentifiedUser
-operator|)
 name|user
 operator|.
 name|get
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 expr_stmt|;
 name|self

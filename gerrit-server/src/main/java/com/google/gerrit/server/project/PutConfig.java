@@ -356,20 +356,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AllProjectsNameProvider
@@ -855,14 +841,14 @@ argument_list|>
 argument_list|>
 name|views
 decl_stmt|;
-DECL|field|currentUser
+DECL|field|user
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
-name|currentUser
+name|user
 decl_stmt|;
 DECL|field|hooks
 specifier|private
@@ -872,7 +858,7 @@ name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutConfig (@nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GitRepositoryManager gitMgr, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views, ChangeHooks hooks, Provider<CurrentUser> currentUser)
+DECL|method|PutConfig (@nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GitRepositoryManager gitMgr, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views, ChangeHooks hooks, Provider<CurrentUser> user)
 name|PutConfig
 parameter_list|(
 annotation|@
@@ -930,7 +916,7 @@ name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
-name|currentUser
+name|user
 parameter_list|)
 block|{
 name|this
@@ -1001,9 +987,9 @@ name|hooks
 expr_stmt|;
 name|this
 operator|.
-name|currentUser
+name|user
 operator|=
-name|currentUser
+name|user
 expr_stmt|;
 block|}
 annotation|@
@@ -1432,17 +1418,6 @@ name|commitRev
 argument_list|)
 condition|)
 block|{
-name|IdentifiedUser
-name|user
-init|=
-operator|(
-name|IdentifiedUser
-operator|)
-name|currentUser
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 name|hooks
 operator|.
 name|doRefUpdatedHook
@@ -1464,6 +1439,12 @@ argument_list|,
 name|commitRev
 argument_list|,
 name|user
+operator|.
+name|get
+argument_list|()
+operator|.
+name|asIdentifiedUser
+argument_list|()
 operator|.
 name|getAccount
 argument_list|()
@@ -1578,7 +1559,7 @@ name|state
 operator|.
 name|controlFor
 argument_list|(
-name|currentUser
+name|user
 operator|.
 name|get
 argument_list|()
