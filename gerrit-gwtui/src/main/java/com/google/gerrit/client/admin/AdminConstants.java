@@ -215,6 +215,11 @@ name|String
 name|enableSignedPush
 parameter_list|()
 function_decl|;
+DECL|method|requireSignedPush ()
+name|String
+name|requireSignedPush
+parameter_list|()
+function_decl|;
 DECL|method|requireChangeID ()
 name|String
 name|requireChangeID
