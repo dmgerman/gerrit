@@ -502,19 +502,15 @@ name|publicKeyChecker
 decl_stmt|;
 DECL|field|checkNonce
 specifier|private
-specifier|final
 name|boolean
 name|checkNonce
 decl_stmt|;
-DECL|method|PushCertificateChecker (PublicKeyChecker publicKeyChecker, boolean checkNonce)
+DECL|method|PushCertificateChecker (PublicKeyChecker publicKeyChecker)
 specifier|protected
 name|PushCertificateChecker
 parameter_list|(
 name|PublicKeyChecker
 name|publicKeyChecker
-parameter_list|,
-name|boolean
-name|checkNonce
 parameter_list|)
 block|{
 name|this
@@ -523,12 +519,30 @@ name|publicKeyChecker
 operator|=
 name|publicKeyChecker
 expr_stmt|;
+name|checkNonce
+operator|=
+literal|true
+expr_stmt|;
+block|}
+comment|/** Set whether to check the status of the nonce; defaults to true. */
+DECL|method|setCheckNonce (boolean checkNonce)
+specifier|public
+name|PushCertificateChecker
+name|setCheckNonce
+parameter_list|(
+name|boolean
+name|checkNonce
+parameter_list|)
+block|{
 name|this
 operator|.
 name|checkNonce
 operator|=
 name|checkNonce
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 comment|/**    * Check a push certificate.    *    * @return result of the check.    */
 DECL|method|check (PushCertificate cert)

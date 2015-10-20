@@ -644,8 +644,6 @@ argument_list|(
 operator|new
 name|PublicKeyChecker
 argument_list|()
-argument_list|,
-name|checkNonce
 argument_list|)
 block|{
 annotation|@
@@ -677,6 +675,11 @@ literal|false
 return|;
 block|}
 block|}
+operator|.
+name|setCheckNonce
+argument_list|(
+name|checkNonce
+argument_list|)
 return|;
 block|}
 annotation|@

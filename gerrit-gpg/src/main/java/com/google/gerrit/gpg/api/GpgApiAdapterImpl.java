@@ -682,7 +682,10 @@ operator|.
 name|create
 argument_list|(
 name|expectedUser
-argument_list|,
+argument_list|)
+operator|.
+name|setCheckNonce
+argument_list|(
 literal|false
 argument_list|)
 operator|.

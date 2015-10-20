@@ -175,15 +175,12 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (IdentifiedUser expectedUser, boolean checkNonce)
+DECL|method|create (IdentifiedUser expectedUser)
 name|GerritPushCertificateChecker
 name|create
 parameter_list|(
 name|IdentifiedUser
 name|expectedUser
-parameter_list|,
-name|boolean
-name|checkNonce
 parameter_list|)
 function_decl|;
 block|}
@@ -201,7 +198,7 @@ name|allUsers
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|GerritPushCertificateChecker ( GerritPublicKeyChecker.Factory keyCheckerFactory, GitRepositoryManager repoManager, AllUsersName allUsers, @Assisted IdentifiedUser expectedUser, @Assisted boolean checkNonce)
+DECL|method|GerritPushCertificateChecker ( GerritPublicKeyChecker.Factory keyCheckerFactory, GitRepositoryManager repoManager, AllUsersName allUsers, @Assisted IdentifiedUser expectedUser)
 name|GerritPushCertificateChecker
 parameter_list|(
 name|GerritPublicKeyChecker
@@ -219,11 +216,6 @@ annotation|@
 name|Assisted
 name|IdentifiedUser
 name|expectedUser
-parameter_list|,
-annotation|@
-name|Assisted
-name|boolean
-name|checkNonce
 parameter_list|)
 block|{
 name|super
@@ -237,8 +229,6 @@ name|setExpectedUser
 argument_list|(
 name|expectedUser
 argument_list|)
-argument_list|,
-name|checkNonce
 argument_list|)
 expr_stmt|;
 name|this
