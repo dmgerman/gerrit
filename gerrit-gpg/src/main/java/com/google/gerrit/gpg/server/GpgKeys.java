@@ -1315,14 +1315,13 @@ argument_list|,
 name|checkerFactory
 operator|.
 name|create
-argument_list|()
-operator|.
-name|setExpectedUser
 argument_list|(
 name|rsrc
 operator|.
 name|getUser
 argument_list|()
+argument_list|,
+name|store
 argument_list|)
 argument_list|,
 name|store

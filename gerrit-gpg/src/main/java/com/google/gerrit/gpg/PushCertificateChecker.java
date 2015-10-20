@@ -1171,6 +1171,11 @@ name|result
 init|=
 name|publicKeyChecker
 operator|.
+name|setStore
+argument_list|(
+name|store
+argument_list|)
+operator|.
 name|check
 argument_list|(
 name|signer
