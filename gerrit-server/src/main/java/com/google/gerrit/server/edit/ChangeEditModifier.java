@@ -1509,6 +1509,15 @@ name|IOException
 throws|,
 name|UnchangedCommitMessageException
 block|{
+name|msg
+operator|=
+name|msg
+operator|.
+name|trim
+argument_list|()
+operator|+
+literal|"\n"
+expr_stmt|;
 name|checkState
 argument_list|(
 operator|!

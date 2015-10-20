@@ -2896,7 +2896,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"New commit message\n\nChange-Id: %s"
+literal|"New commit message\n\nChange-Id: %s\n"
 argument_list|,
 name|change
 operator|.
@@ -3004,16 +3004,9 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-try|try
-block|{
-name|modifier
-operator|.
-name|modifyMessage
+name|assertUnchangedMessage
 argument_list|(
 name|edit
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|edit
 operator|.
@@ -3027,32 +3020,24 @@ name|getFullMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|fail
+name|assertUnchangedMessage
 argument_list|(
-literal|"UnchangedCommitMessageException expected"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnchangedCommitMessageException
-name|ex
-parameter_list|)
-block|{
-name|assertThat
-argument_list|(
-name|ex
+name|edit
+argument_list|,
+name|edit
 operator|.
-name|getMessage
+name|get
 argument_list|()
-argument_list|)
 operator|.
-name|isEqualTo
-argument_list|(
-literal|"New commit message cannot be same as existing commit message"
+name|getEditCommit
+argument_list|()
+operator|.
+name|getFullMessage
+argument_list|()
+operator|+
+literal|"\n\n"
 argument_list|)
 expr_stmt|;
-block|}
 name|String
 name|msg
 init|=
@@ -3060,7 +3045,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"New commit message\n\nChange-Id: %s"
+literal|"New commit message\n\nChange-Id: %s\n"
 argument_list|,
 name|change
 operator|.
@@ -3238,7 +3223,7 @@ literal|"New commit message\n\n"
 operator|+
 name|CONTENT_NEW2_STR
 operator|+
-literal|"\n\nChange-Id: %s"
+literal|"\n\nChange-Id: %s\n"
 argument_list|,
 name|change
 operator|.
@@ -3348,7 +3333,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"New commit message2\n\nChange-Id: %s"
+literal|"New commit message2\n\nChange-Id: %s\n"
 argument_list|,
 name|change
 operator|.
@@ -6459,6 +6444,64 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|assertUnchangedMessage (Optional<ChangeEdit> edit, String message)
+specifier|private
+name|void
+name|assertUnchangedMessage
+parameter_list|(
+name|Optional
+argument_list|<
+name|ChangeEdit
+argument_list|>
+name|edit
+parameter_list|,
+name|String
+name|message
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+try|try
+block|{
+name|modifier
+operator|.
+name|modifyMessage
+argument_list|(
+name|edit
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"UnchangedCommitMessageException expected"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnchangedCommitMessageException
+name|ex
+parameter_list|)
+block|{
+name|assertThat
+argument_list|(
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"New commit message cannot be same as existing commit message"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|newChange (Git git, PersonIdent ident)
 specifier|private
