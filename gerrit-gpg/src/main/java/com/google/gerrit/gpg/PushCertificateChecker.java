@@ -1160,8 +1160,6 @@ operator|.
 name|check
 argument_list|(
 name|signer
-argument_list|,
-name|store
 argument_list|)
 decl_stmt|;
 if|if

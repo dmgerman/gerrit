@@ -231,6 +231,9 @@ argument_list|(
 name|keyCheckerFactory
 operator|.
 name|create
+argument_list|()
+operator|.
+name|setExpectedUser
 argument_list|(
 name|expectedUser
 argument_list|)

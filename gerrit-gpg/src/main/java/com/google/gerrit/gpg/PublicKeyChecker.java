@@ -282,26 +282,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashSet
 import|;
 end_import
@@ -366,9 +346,13 @@ name|COMPLETE_TRUST
 init|=
 literal|120
 decl_stmt|;
+DECL|field|store
+specifier|private
+name|PublicKeyStore
+name|store
+decl_stmt|;
 DECL|field|trusted
 specifier|private
-specifier|final
 name|Map
 argument_list|<
 name|Long
@@ -379,45 +363,26 @@ name|trusted
 decl_stmt|;
 DECL|field|maxTrustDepth
 specifier|private
-specifier|final
 name|int
 name|maxTrustDepth
 decl_stmt|;
-comment|/** Create a new checker that does not check the web of trust. */
-DECL|method|PublicKeyChecker ()
+comment|/**    * Enable web-of-trust checks.    *<p>    * If enabled, a store must be set with {@link #setStore(PublicKeyStore)}.    * (These methods are separate since the store is a closeable resource that    * may not be available when reading trusted keys from a config.)    *    * @param maxTrustDepth maximum depth to search while looking for a trusted    *     key.    * @param trusted ultimately trusted key fingerprints, keyed by fingerprint;    *     may not be empty. To construct a map, see {@link    *     Fingerprint#byId(Iterable)}.    * @return a reference to this object.    */
+DECL|method|enableTrust (int maxTrustDepth, Map<Long, Fingerprint> trusted)
 specifier|public
 name|PublicKeyChecker
-parameter_list|()
-block|{
-name|this
-argument_list|(
-literal|0
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**    * @param maxTrustDepth maximum depth to search while looking for a trusted    *     key.    * @param trusted ultimately trusted key fingerprints; may not be empty. If    *     null, disable web-of-trust checks.    */
-DECL|method|PublicKeyChecker (int maxTrustDepth, Collection<Fingerprint> trusted)
-specifier|public
-name|PublicKeyChecker
+name|enableTrust
 parameter_list|(
 name|int
 name|maxTrustDepth
 parameter_list|,
-name|Collection
+name|Map
 argument_list|<
+name|Long
+argument_list|,
 name|Fingerprint
 argument_list|>
 name|trusted
 parameter_list|)
-block|{
-if|if
-condition|(
-name|trusted
-operator|!=
-literal|null
-condition|)
 block|{
 if|if
 condition|(
@@ -439,6 +404,10 @@ block|}
 if|if
 condition|(
 name|trusted
+operator|==
+literal|null
+operator|||
+name|trusted
 operator|.
 name|isEmpty
 argument_list|()
@@ -448,88 +417,55 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"at least one trusted key required"
+literal|"at least one trusted key is required"
 argument_list|)
 throw|;
 block|}
 name|this
 operator|.
+name|maxTrustDepth
+operator|=
+name|maxTrustDepth
+expr_stmt|;
+name|this
+operator|.
 name|trusted
 operator|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|()
-expr_stmt|;
-for|for
-control|(
-name|Fingerprint
-name|fp
-range|:
 name|trusted
-control|)
-block|{
-name|this
-operator|.
-name|trusted
-operator|.
-name|put
-argument_list|(
-name|fp
-operator|.
-name|getId
-argument_list|()
-argument_list|,
-name|fp
-argument_list|)
 expr_stmt|;
-block|}
-block|}
-else|else
-block|{
+return|return
 name|this
-operator|.
+return|;
+block|}
+comment|/** Disable web-of-trust checks. */
+DECL|method|disableTrust ()
+specifier|public
+name|PublicKeyChecker
+name|disableTrust
+parameter_list|()
+block|{
+name|store
+operator|=
+literal|null
+expr_stmt|;
 name|trusted
 operator|=
 literal|null
 expr_stmt|;
-block|}
+return|return
 name|this
-operator|.
-name|maxTrustDepth
-operator|=
-name|maxTrustDepth
-expr_stmt|;
+return|;
 block|}
-comment|/**    * Check a public key, including its web of trust.    *    * @param key the public key.    * @param store a store to read public keys from for trust checks. If this    *     store is not configured for web-of-trust checks, this argument is    *     ignored.    * @return the result of the check.    */
-DECL|method|check (PGPPublicKey key, PublicKeyStore store)
+comment|/**    * Set the public key store for web-of-trust checks.    *<p>    * If set, {@link #enableTrust(int, Map)} must also be called.    */
+DECL|method|setStore (PublicKeyStore store)
 specifier|public
-specifier|final
-name|CheckResult
-name|check
+name|PublicKeyChecker
+name|setStore
 parameter_list|(
-name|PGPPublicKey
-name|key
-parameter_list|,
 name|PublicKeyStore
 name|store
 parameter_list|)
 block|{
-if|if
-condition|(
-name|trusted
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-name|check
-argument_list|(
-name|key
-argument_list|)
-return|;
-block|}
-elseif|else
 if|if
 condition|(
 name|store
@@ -541,31 +477,21 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"PublicKeyStore required for web of trust checks"
+literal|"PublicKeyStore is required"
 argument_list|)
 throw|;
 block|}
-return|return
-name|check
-argument_list|(
-name|key
-argument_list|,
+name|this
+operator|.
 name|store
-argument_list|,
-literal|0
-argument_list|,
-literal|true
-argument_list|,
-operator|new
-name|HashSet
-argument_list|<
-name|Fingerprint
-argument_list|>
-argument_list|()
-argument_list|)
+operator|=
+name|store
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
-comment|/**    * Check only a public key, not including its web of trust.    *    * @param key the public key.    * @return the result of the check.    */
+comment|/**    * Check a public key.    *    * @param key the public key.    * @return the result of the check.    */
 DECL|method|check (PGPPublicKey key)
 specifier|public
 specifier|final
@@ -576,22 +502,50 @@ name|PGPPublicKey
 name|key
 parameter_list|)
 block|{
+if|if
+condition|(
+name|store
+operator|==
+literal|null
+operator|&&
+name|trusted
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"PublicKeyStore is required"
+argument_list|)
+throw|;
+block|}
 return|return
 name|check
 argument_list|(
 name|key
 argument_list|,
-literal|null
-argument_list|,
 literal|0
 argument_list|,
-literal|false
+literal|true
 argument_list|,
+name|trusted
+operator|!=
+literal|null
+condition|?
+operator|new
+name|HashSet
+argument_list|<
+name|Fingerprint
+argument_list|>
+argument_list|()
+else|:
 literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Perform custom checks.    *<p>    * Default implementation reports no problems, but may be overridden by    * subclasses.    *    * @param key the public key.    * @param depth the depth from the initial key passed to {@link #check(    *     PGPPublicKey, PublicKeyStore)}: 0 if this was the initial key, up to a    *     maximum of {@code maxTrustDepth}.    * @return the result of the custom check.    */
+comment|/**    * Perform custom checks.    *<p>    * Default implementation reports no problems, but may be overridden by    * subclasses.    *    * @param key the public key.    * @param depth the depth from the initial key passed to {@link #check(    *     PGPPublicKey)}: 0 if this was the initial key, up to a maximum of    *     {@code maxTrustDepth}.    * @return the result of the custom check.    */
 DECL|method|checkCustom (PGPPublicKey key, int depth)
 specifier|public
 name|CheckResult
@@ -611,16 +565,13 @@ name|ok
 argument_list|()
 return|;
 block|}
-DECL|method|check (PGPPublicKey key, PublicKeyStore store, int depth, boolean expand, Set<Fingerprint> seen)
+DECL|method|check (PGPPublicKey key, int depth, boolean expand, Set<Fingerprint> seen)
 specifier|private
 name|CheckResult
 name|check
 parameter_list|(
 name|PGPPublicKey
 name|key
-parameter_list|,
-name|PublicKeyStore
-name|store
 parameter_list|,
 name|int
 name|depth
@@ -962,10 +913,6 @@ condition|(
 name|trusted
 operator|==
 literal|null
-operator|||
-name|store
-operator|==
-literal|null
 condition|)
 block|{
 comment|// Trust checking not configured, server trusts all OK keys.
@@ -1236,8 +1183,6 @@ init|=
 name|check
 argument_list|(
 name|signer
-argument_list|,
-name|store
 argument_list|,
 name|depth
 operator|+
