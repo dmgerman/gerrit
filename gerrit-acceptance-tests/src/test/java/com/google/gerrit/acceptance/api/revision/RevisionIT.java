@@ -134,6 +134,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -145,20 +159,6 @@ operator|.
 name|Constants
 operator|.
 name|HEAD
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
 import|;
 end_import
 

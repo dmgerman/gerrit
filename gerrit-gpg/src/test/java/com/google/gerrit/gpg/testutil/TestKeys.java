@@ -105,29 +105,23 @@ name|ImmutableList
 operator|.
 name|of
 argument_list|(
-name|TestKeys
-operator|.
-name|key1
+name|validKeyWithoutExpiration
 argument_list|()
 argument_list|,
-name|TestKeys
-operator|.
-name|key2
+name|validKeyWithExpiration
 argument_list|()
 argument_list|,
-name|TestKeys
-operator|.
-name|key5
+name|validKeyWithSecondUserId
 argument_list|()
 argument_list|)
 return|;
 block|}
 comment|/**    * A valid key with no expiration.    *    *<pre>    * pub   2048R/46328A8C 2015-07-08    *       Key fingerprint = 04AE A7ED 2F82 1133 E5B1  28D1 ED06 25DC 4632 8A8C    * uid                  Testuser One&lt;test1@example.com&gt;    * sub   2048R/F0AF69C0 2015-07-08    *</pre>    */
-DECL|method|key1 ()
+DECL|method|validKeyWithoutExpiration ()
 specifier|public
 specifier|static
 name|TestKey
-name|key1
+name|validKeyWithoutExpiration
 parameter_list|()
 block|{
 return|return
@@ -311,12 +305,12 @@ argument_list|)
 return|;
 block|}
 comment|/**    * A valid key expiring in 2065.    *    *<pre>    * pub   2048R/378A0AED 2015-07-08 [expires: 2065-06-25]    *       Key fingerprint = C378 369A CBCD 34CC 138D  90B1 4531 1A6F 378A 0AED    * uid                  Testuser Two&lt;test2@example.com&gt;    * sub   2048R/46D4F204 2015-07-08 [expires: 2065-06-25]    *</pre>    */
-DECL|method|key2 ()
+DECL|method|validKeyWithExpiration ()
 specifier|public
 specifier|static
 specifier|final
 name|TestKey
-name|key2
+name|validKeyWithExpiration
 parameter_list|()
 block|{
 return|return
@@ -502,12 +496,12 @@ argument_list|)
 return|;
 block|}
 comment|/**    * A key that expired in 2006.    *    *<pre>    * pub   2048R/17DE1ACD 2005-07-08 [expired: 2006-07-08]    *       Key fingerprint = 1D9E EB79 DD38 B049 939D  9CAF 3CEC 781B 17DE 1ACD    * uid                  Testuser Three&lt;test3@example.com&gt;    *</pre>    */
-DECL|method|key3 ()
+DECL|method|expiredKey ()
 specifier|public
 specifier|static
 specifier|final
 name|TestKey
-name|key3
+name|expiredKey
 parameter_list|()
 block|{
 return|return
@@ -693,12 +687,12 @@ argument_list|)
 return|;
 block|}
 comment|/**    * A self-revoked key with no expiration.    *    *<pre>    * pub   2048R/7CA87821 2015-07-08 [revoked: 2015-07-08]    *       Key fingerprint = E328 CAB1 1F7E B1BC 1451  ABA5 0855 2A17 7CA8 7821    * uid                  Testuser Four&lt;test4@example.com&gt;    *</pre>    */
-DECL|method|key4 ()
+DECL|method|selfRevokedKey ()
 specifier|public
 specifier|static
 specifier|final
 name|TestKey
-name|key4
+name|selfRevokedKey
 parameter_list|()
 block|{
 return|return
@@ -894,11 +888,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * A key with an additional user ID.    *    *<pre>    * pub   2048R/98C51DBF 2015-07-30    *       Key fingerprint = 42B3 294D 1924 D7EB AF4A  A99F 5024 BB44 98C5 1DBF    * uid                  foo:myId    * uid                  Testuser Five<test5@example.com>    * sub   2048R/C781A9E3 2015-07-30    *</pre>    */
-DECL|method|key5 ()
+DECL|method|validKeyWithSecondUserId ()
 specifier|public
 specifier|static
 name|TestKey
-name|key5
+name|validKeyWithSecondUserId
 parameter_list|()
 block|{
 return|return
