@@ -1417,6 +1417,14 @@ condition|(
 name|noteDbPath
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|noteDbPath
+operator|.
+name|equals
+argument_list|(
+name|basePath
+argument_list|)
 condition|)
 block|{
 name|createRepository
