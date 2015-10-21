@@ -275,6 +275,32 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|refsDraftCommentsPrefix ()
+specifier|public
+name|void
+name|refsDraftCommentsPrefix
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertThat
+argument_list|(
+name|RefNames
+operator|.
+name|refsDraftCommentsPrefix
+argument_list|(
+name|accountId
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"refs/draft-comments/23/1011123-"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|refsEdit ()
 specifier|public
 name|void
