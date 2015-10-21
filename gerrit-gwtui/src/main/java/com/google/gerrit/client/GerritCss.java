@@ -148,6 +148,11 @@ name|String
 name|bottomheader
 parameter_list|()
 function_decl|;
+DECL|method|branchTableDeleteButton ()
+name|String
+name|branchTableDeleteButton
+parameter_list|()
+function_decl|;
 DECL|method|branchTablePrevNextLinks ()
 name|String
 name|branchTablePrevNextLinks
@@ -706,6 +711,11 @@ function_decl|;
 DECL|method|noborder ()
 name|String
 name|noborder
+parameter_list|()
+function_decl|;
+DECL|method|pagingLink ()
+name|String
+name|pagingLink
 parameter_list|()
 function_decl|;
 DECL|method|patchBrowserPopup ()
