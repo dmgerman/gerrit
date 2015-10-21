@@ -868,14 +868,6 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|def
-operator|.
-name|isConcrete
-argument_list|()
-condition|)
-block|{
-if|if
-condition|(
 operator|!
 name|Strings
 operator|.
@@ -885,6 +877,14 @@ name|def
 operator|.
 name|annotationName
 argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|def
+operator|.
+name|isConcrete
+argument_list|()
 condition|)
 block|{
 name|rawMap
@@ -898,7 +898,6 @@ argument_list|,
 name|def
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
@@ -930,6 +929,7 @@ name|className
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|ImmutableMap
