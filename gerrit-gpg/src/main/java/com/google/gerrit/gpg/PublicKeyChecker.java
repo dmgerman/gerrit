@@ -478,6 +478,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -587,6 +597,15 @@ DECL|field|maxTrustDepth
 specifier|private
 name|int
 name|maxTrustDepth
+decl_stmt|;
+DECL|field|effectiveTime
+specifier|private
+name|Date
+name|effectiveTime
+init|=
+operator|new
+name|Date
+argument_list|()
 decl_stmt|;
 comment|/**    * Enable web-of-trust checks.    *<p>    * If enabled, a store must be set with {@link #setStore(PublicKeyStore)}.    * (These methods are separate since the store is a closeable resource that    * may not be available when reading trusted keys from a config.)    *    * @param maxTrustDepth maximum depth to search while looking for a trusted    *     key.    * @param trusted ultimately trusted key fingerprints, keyed by fingerprint;    *     may not be empty. To construct a map, see {@link    *     Fingerprint#byId(Iterable)}.    * @return a reference to this object.    */
 DECL|method|enableTrust (int maxTrustDepth, Map<Long, Fingerprint> trusted)
@@ -709,6 +728,36 @@ return|return
 name|this
 return|;
 block|}
+comment|/**    * Set the effective time for checking the key.    *<p>    * If set, check whether the key should be considered valid (e.g. unexpired)    * as of this time.    *    * @param effectiveTime effective time.    * @return a reference to this object.    */
+DECL|method|setEffectiveTime (Date effectiveTime)
+specifier|public
+name|PublicKeyChecker
+name|setEffectiveTime
+parameter_list|(
+name|Date
+name|effectiveTime
+parameter_list|)
+block|{
+name|this
+operator|.
+name|effectiveTime
+operator|=
+name|effectiveTime
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|getEffectiveTime ()
+specifier|protected
+name|Date
+name|getEffectiveTime
+parameter_list|()
+block|{
+return|return
+name|effectiveTime
+return|;
+block|}
 comment|/**    * Check a public key.    *    * @param key the public key.    * @return the result of the check.    */
 DECL|method|check (PGPPublicKey key)
 specifier|public
@@ -806,6 +855,8 @@ init|=
 name|checkBasic
 argument_list|(
 name|key
+argument_list|,
+name|effectiveTime
 argument_list|)
 decl_stmt|;
 name|CheckResult
@@ -996,13 +1047,16 @@ name|problems
 argument_list|)
 return|;
 block|}
-DECL|method|checkBasic (PGPPublicKey key)
+DECL|method|checkBasic (PGPPublicKey key, Date now)
 specifier|private
 name|CheckResult
 name|checkBasic
 parameter_list|(
 name|PGPPublicKey
 name|key
+parameter_list|,
+name|Date
+name|now
 parameter_list|)
 block|{
 name|List
@@ -1022,27 +1076,36 @@ name|gatherRevocationProblems
 argument_list|(
 name|key
 argument_list|,
+name|now
+argument_list|,
 name|problems
 argument_list|)
 expr_stmt|;
 name|long
-name|validSecs
+name|validMs
 init|=
 name|key
 operator|.
 name|getValidSeconds
 argument_list|()
+operator|*
+literal|1000
 decl_stmt|;
 if|if
 condition|(
-name|validSecs
+name|validMs
 operator|!=
 literal|0
 condition|)
 block|{
 name|long
-name|createdSecs
+name|msSinceCreation
 init|=
+name|now
+operator|.
+name|getTime
+argument_list|()
+operator|-
 name|key
 operator|.
 name|getCreationTime
@@ -1050,26 +1113,12 @@ argument_list|()
 operator|.
 name|getTime
 argument_list|()
-operator|/
-literal|1000
-decl_stmt|;
-name|long
-name|nowSecs
-init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-operator|/
-literal|1000
 decl_stmt|;
 if|if
 condition|(
-name|nowSecs
-operator|-
-name|createdSecs
+name|msSinceCreation
 operator|>
-name|validSecs
+name|validMs
 condition|)
 block|{
 name|problems
@@ -1090,13 +1139,16 @@ name|problems
 argument_list|)
 return|;
 block|}
-DECL|method|gatherRevocationProblems (PGPPublicKey key, List<String> problems)
+DECL|method|gatherRevocationProblems (PGPPublicKey key, Date now, List<String> problems)
 specifier|private
 name|void
 name|gatherRevocationProblems
 parameter_list|(
 name|PGPPublicKey
 name|key
+parameter_list|,
+name|Date
+name|now
 parameter_list|,
 name|List
 argument_list|<
@@ -1138,6 +1190,8 @@ name|scanRevocations
 argument_list|(
 name|key
 argument_list|,
+name|now
+argument_list|,
 name|revocations
 argument_list|,
 name|revokers
@@ -1150,19 +1204,37 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|RevocationReason
+name|reason
+init|=
+name|getRevocationReason
+argument_list|(
+name|selfRevocation
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|isRevocationValid
+argument_list|(
+name|selfRevocation
+argument_list|,
+name|reason
+argument_list|,
+name|now
+argument_list|)
+condition|)
+block|{
 name|problems
 operator|.
 name|add
 argument_list|(
 name|reasonToString
 argument_list|(
-name|getRevocationReason
-argument_list|(
-name|selfRevocation
-argument_list|)
+name|reason
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -1196,13 +1268,59 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|scanRevocations (PGPPublicKey key, List<PGPSignature> revocations, Map<Long, RevocationKey> revokers)
+DECL|method|isRevocationValid (PGPSignature revocation, RevocationReason reason, Date now)
+specifier|private
+specifier|static
+name|boolean
+name|isRevocationValid
+parameter_list|(
+name|PGPSignature
+name|revocation
+parameter_list|,
+name|RevocationReason
+name|reason
+parameter_list|,
+name|Date
+name|now
+parameter_list|)
+block|{
+comment|// RFC4880 states:
+comment|// "If a key has been revoked because of a compromise, all signatures
+comment|// created by that key are suspect. However, if it was merely superseded or
+comment|// retired, old signatures are still valid."
+comment|//
+comment|// Note that GnuPG does not implement this correctly, as it does not
+comment|// consider the revocation reason and timestamp when checking whether a
+comment|// signature (data or certification) is valid.
+return|return
+name|reason
+operator|.
+name|getRevocationReason
+argument_list|()
+operator|==
+name|KEY_COMPROMISED
+operator|||
+name|revocation
+operator|.
+name|getCreationTime
+argument_list|()
+operator|.
+name|before
+argument_list|(
+name|now
+argument_list|)
+return|;
+block|}
+DECL|method|scanRevocations (PGPPublicKey key, Date now, List<PGPSignature> revocations, Map<Long, RevocationKey> revokers)
 specifier|private
 name|PGPSignature
 name|scanRevocations
 parameter_list|(
 name|PGPPublicKey
 name|key
+parameter_list|,
+name|Date
+name|now
 parameter_list|,
 name|List
 argument_list|<
@@ -1305,6 +1423,30 @@ block|}
 block|}
 else|else
 block|{
+name|RevocationReason
+name|reason
+init|=
+name|getRevocationReason
+argument_list|(
+name|sig
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|reason
+operator|!=
+literal|null
+operator|&&
+name|isRevocationValid
+argument_list|(
+name|sig
+argument_list|,
+name|reason
+argument_list|,
+name|now
+argument_list|)
+condition|)
+block|{
 name|revocations
 operator|.
 name|add
@@ -1312,6 +1454,7 @@ argument_list|(
 name|sig
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 break|break;
 case|case
@@ -1530,7 +1673,7 @@ name|getFingerprint
 argument_list|()
 decl_stmt|;
 name|PGPPublicKeyRing
-name|rkr
+name|revokerKeyRing
 init|=
 name|store
 operator|.
@@ -1541,22 +1684,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|rkr
+name|revokerKeyRing
 operator|==
 literal|null
-operator|||
-name|rkr
-operator|.
-name|getPublicKey
-argument_list|()
-operator|.
-name|getAlgorithm
-argument_list|()
-operator|!=
-name|revoker
-operator|.
-name|getAlgorithm
-argument_list|()
 condition|)
 block|{
 comment|// Revoker is authorized and there is a revocation signature by this
@@ -1605,6 +1735,50 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+name|PGPPublicKey
+name|rk
+init|=
+name|revokerKeyRing
+operator|.
+name|getPublicKey
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|rk
+operator|.
+name|getAlgorithm
+argument_list|()
+operator|!=
+name|revoker
+operator|.
+name|getAlgorithm
+argument_list|()
+condition|)
+block|{
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|checkBasic
+argument_list|(
+name|rk
+argument_list|,
+name|revocation
+operator|.
+name|getCreationTime
+argument_list|()
+argument_list|)
+operator|.
+name|isOk
+argument_list|()
+condition|)
+block|{
+comment|// Revoker's key was expired or revoked at time of revocation, so the
+comment|// revocation is invalid.
+continue|continue;
+block|}
 name|revocation
 operator|.
 name|init
@@ -1613,10 +1787,7 @@ operator|new
 name|BcPGPContentVerifierBuilderProvider
 argument_list|()
 argument_list|,
-name|rkr
-operator|.
-name|getPublicKey
-argument_list|()
+name|rk
 argument_list|)
 expr_stmt|;
 if|if
@@ -2053,6 +2224,9 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+comment|// Don't check the timestamp of these certifications. This allows admins
+comment|// to correct untrusted keys by signing them with a trusted key, such that
+comment|// older signatures created by those keys retroactively appear valid.
 annotation|@
 name|SuppressWarnings
 argument_list|(

@@ -1176,6 +1176,14 @@ argument_list|(
 name|store
 argument_list|)
 operator|.
+name|setEffectiveTime
+argument_list|(
+name|sig
+operator|.
+name|getCreationTime
+argument_list|()
+argument_list|)
+operator|.
 name|check
 argument_list|(
 name|signer
