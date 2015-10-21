@@ -682,6 +682,52 @@ literal|"Reviewer: 1@gerrit\n"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|parseTopic ()
+specifier|public
+name|void
+name|parseTopic
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Topic: Some Topic"
+argument_list|)
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Topic:"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Topic: Some Topic\n"
+operator|+
+literal|"Topic: Other Topic"
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|writeCommit (String body)
 specifier|private
 name|RevCommit
