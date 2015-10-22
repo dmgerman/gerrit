@@ -548,7 +548,7 @@ name|REFS_GPG_KEYS
 init|=
 literal|"refs/meta/gpg-keys"
 decl_stmt|;
-comment|/**    * Choose the public key that produced a signature.    *<p>    * @param keyRings candidate keys.    * @param sig signature object.    * @param data signed payload.    * @return the key chosen from {@code keyRings} that was able to verify the    *     signature, or null if none was found.    * @throws PGPException if an error occurred verifying the signature.    */
+comment|/**    * Choose the public key that produced a signature.    *<p>    * @param keyRings candidate keys.    * @param sig signature object.    * @param data signed payload.    * @return the key chosen from {@code keyRings} that was able to verify the    *     signature, or {@code null} if none was found.    * @throws PGPException if an error occurred verifying the signature.    */
 DECL|method|getSigner (Iterable<PGPPublicKeyRing> keyRings, PGPSignature sig, byte[] data)
 specifier|public
 specifier|static
@@ -622,7 +622,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Choose the public key that produced a certification.    *<p>    * @param keyRings candidate keys.    * @param sig signature object.    * @param userId user ID being certified.    * @param key key being certified.    * @return the key chosen from {@code keyRings} that was able to verify the    *     certification, or null if none was found.    * @throws PGPException if an error occurred verifying the certification.    */
+comment|/**    * Choose the public key that produced a certification.    *<p>    * @param keyRings candidate keys.    * @param sig signature object.    * @param userId user ID being certified.    * @param key key being certified.    * @return the key chosen from {@code keyRings} that was able to verify the    *     certification, or {@code null} if none was found.    * @throws PGPException if an error occurred verifying the certification.    */
 DECL|method|getSigner (Iterable<PGPPublicKeyRing> keyRings, PGPSignature sig, String userId, PGPPublicKey key)
 specifier|public
 specifier|static
