@@ -86,6 +86,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -729,6 +745,13 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|checkNotNull
+argument_list|(
+name|ps
+argument_list|,
+literal|"ps should not be null"
+argument_list|)
+expr_stmt|;
 name|ChangeData
 name|cd
 init|=
@@ -777,6 +800,13 @@ operator|.
 name|approvals
 argument_list|()
 decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|all
+argument_list|,
+literal|"all should not be null"
+argument_list|)
+expr_stmt|;
 name|Table
 argument_list|<
 name|String
