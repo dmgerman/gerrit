@@ -448,8 +448,6 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|IOException
-throws|,
-name|InterruptedException
 block|{
 name|BanResultInfo
 name|r

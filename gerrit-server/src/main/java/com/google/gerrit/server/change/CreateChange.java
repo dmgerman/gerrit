@@ -1065,8 +1065,6 @@ name|ChangeInfo
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
 name|OrmException
 throws|,
 name|IOException
