@@ -418,6 +418,25 @@ operator|new
 name|Config
 argument_list|()
 decl_stmt|;
+name|setAllEnabledConfig
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+return|return
+name|cfg
+return|;
+block|}
+DECL|method|setAllEnabledConfig (Config cfg)
+specifier|public
+specifier|static
+name|void
+name|setAllEnabledConfig
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|)
+block|{
 for|for
 control|(
 name|Table
@@ -462,9 +481,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-name|cfg
-return|;
 block|}
 DECL|field|writeChanges
 specifier|private
