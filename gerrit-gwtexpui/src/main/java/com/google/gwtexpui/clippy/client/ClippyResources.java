@@ -132,6 +132,22 @@ name|DoNotEmbed
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|ImageResource
+import|;
+end_import
+
 begin_interface
 DECL|interface|ClippyResources
 specifier|public
@@ -176,6 +192,16 @@ name|DoNotEmbed
 DECL|method|swf ()
 name|DataResource
 name|swf
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"clipboard-16.png"
+argument_list|)
+DECL|method|clipboard ()
+name|ImageResource
+name|clipboard
 parameter_list|()
 function_decl|;
 block|}
