@@ -338,18 +338,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -505,13 +493,6 @@ name|allEnabledConfig
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Inject
-DECL|field|notesMigration
-specifier|private
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 DECL|enum|Protocol
 specifier|protected
 enum|enum
