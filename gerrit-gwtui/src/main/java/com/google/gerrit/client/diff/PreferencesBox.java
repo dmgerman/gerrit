@@ -118,7 +118,27 @@ name|AccountDiffPreference
 operator|.
 name|Whitespace
 operator|.
-name|IGNORE_ALL_SPACE
+name|IGNORE_ALL
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountDiffPreference
+operator|.
+name|Whitespace
+operator|.
+name|IGNORE_LEADING_AND_TRAILING
 import|;
 end_import
 
@@ -158,27 +178,7 @@ name|AccountDiffPreference
 operator|.
 name|Whitespace
 operator|.
-name|IGNORE_SPACE_AT_EOL
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountDiffPreference
-operator|.
-name|Whitespace
-operator|.
-name|IGNORE_SPACE_CHANGE
+name|IGNORE_TRAILING
 import|;
 end_import
 
@@ -3651,10 +3651,10 @@ name|PatchUtil
 operator|.
 name|C
 operator|.
-name|whitespaceIGNORE_SPACE_AT_EOL
+name|whitespaceIGNORE_TRAILING
 argument_list|()
 argument_list|,
-name|IGNORE_SPACE_AT_EOL
+name|IGNORE_TRAILING
 operator|.
 name|name
 argument_list|()
@@ -3668,10 +3668,10 @@ name|PatchUtil
 operator|.
 name|C
 operator|.
-name|whitespaceIGNORE_SPACE_CHANGE
+name|whitespaceIGNORE_LEADING_AND_TRAILING
 argument_list|()
 argument_list|,
-name|IGNORE_SPACE_CHANGE
+name|IGNORE_LEADING_AND_TRAILING
 operator|.
 name|name
 argument_list|()
@@ -3685,10 +3685,10 @@ name|PatchUtil
 operator|.
 name|C
 operator|.
-name|whitespaceIGNORE_ALL_SPACE
+name|whitespaceIGNORE_ALL
 argument_list|()
 argument_list|,
-name|IGNORE_ALL_SPACE
+name|IGNORE_ALL
 operator|.
 name|name
 argument_list|()

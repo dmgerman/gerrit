@@ -1188,7 +1188,7 @@ name|ws
 condition|)
 block|{
 case|case
-name|IGNORE_ALL_SPACE
+name|IGNORE_ALL
 case|:
 return|return
 name|RawTextComparator
@@ -1196,7 +1196,7 @@ operator|.
 name|WS_IGNORE_ALL
 return|;
 case|case
-name|IGNORE_SPACE_AT_EOL
+name|IGNORE_TRAILING
 case|:
 return|return
 name|RawTextComparator
@@ -1204,7 +1204,7 @@ operator|.
 name|WS_IGNORE_TRAILING
 return|;
 case|case
-name|IGNORE_SPACE_CHANGE
+name|IGNORE_LEADING_AND_TRAILING
 case|:
 return|return
 name|RawTextComparator

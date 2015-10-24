@@ -498,7 +498,7 @@ name|NONE
 argument_list|)
 return|;
 case|case
-name|IGNORE_SPACE_AT_EOL
+name|IGNORE_TRAILING
 case|:
 return|return
 name|ignoreWhitespace
@@ -509,7 +509,7 @@ name|TRAILING
 argument_list|)
 return|;
 case|case
-name|IGNORE_SPACE_CHANGE
+name|IGNORE_LEADING_AND_TRAILING
 case|:
 return|return
 name|ignoreWhitespace
@@ -520,7 +520,7 @@ name|CHANGED
 argument_list|)
 return|;
 case|case
-name|IGNORE_ALL_SPACE
+name|IGNORE_ALL
 case|:
 return|return
 name|ignoreWhitespace

@@ -310,19 +310,19 @@ name|String
 name|whitespaceIGNORE_NONE
 parameter_list|()
 function_decl|;
-DECL|method|whitespaceIGNORE_SPACE_AT_EOL ()
+DECL|method|whitespaceIGNORE_TRAILING ()
 name|String
-name|whitespaceIGNORE_SPACE_AT_EOL
+name|whitespaceIGNORE_TRAILING
 parameter_list|()
 function_decl|;
-DECL|method|whitespaceIGNORE_SPACE_CHANGE ()
+DECL|method|whitespaceIGNORE_LEADING_AND_TRAILING ()
 name|String
-name|whitespaceIGNORE_SPACE_CHANGE
+name|whitespaceIGNORE_LEADING_AND_TRAILING
 parameter_list|()
 function_decl|;
-DECL|method|whitespaceIGNORE_ALL_SPACE ()
+DECL|method|whitespaceIGNORE_ALL ()
 name|String
-name|whitespaceIGNORE_ALL_SPACE
+name|whitespaceIGNORE_ALL
 parameter_list|()
 function_decl|;
 DECL|method|previousFileHelp ()
