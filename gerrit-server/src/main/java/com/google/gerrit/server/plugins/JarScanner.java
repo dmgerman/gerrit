@@ -851,7 +851,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Plugin %s has invaild class file %s inside of %s"
+literal|"Plugin %s has invalid class file %s inside of %s"
 argument_list|,
 name|pluginName
 argument_list|,
@@ -873,14 +873,6 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|def
-operator|.
-name|isConcrete
-argument_list|()
-condition|)
-block|{
-if|if
-condition|(
 operator|!
 name|Strings
 operator|.
@@ -890,6 +882,14 @@ name|def
 operator|.
 name|annotationName
 argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|def
+operator|.
+name|isConcrete
+argument_list|()
 condition|)
 block|{
 name|rawMap
@@ -903,7 +903,6 @@ argument_list|,
 name|def
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
@@ -935,6 +934,7 @@ name|className
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|ImmutableMap
