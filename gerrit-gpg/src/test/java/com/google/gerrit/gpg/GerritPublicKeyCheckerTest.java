@@ -72,22 +72,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|truth
 operator|.
 name|Truth
@@ -125,6 +109,24 @@ operator|.
 name|PublicKeyStore
 operator|.
 name|keyToString
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|gpg
+operator|.
+name|testutil
+operator|.
+name|TestKeys
+operator|.
+name|validKeyWithSecondUserId
 import|;
 end_import
 
@@ -349,22 +351,6 @@ operator|.
 name|testutil
 operator|.
 name|TestKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|gpg
-operator|.
-name|testutil
-operator|.
-name|TestKeys
 import|;
 end_import
 
@@ -811,6 +797,16 @@ operator|.
 name|util
 operator|.
 name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
 import|;
 end_import
 
@@ -1338,12 +1334,10 @@ block|{
 name|TestKey
 name|key
 init|=
-name|TestKeys
-operator|.
-name|key5
+name|validKeyWithSecondUserId
 argument_list|()
 decl_stmt|;
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checker
 init|=
 name|checkerFactory
@@ -1351,7 +1345,12 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
+operator|.
+name|disableTrust
+argument_list|()
 decl_stmt|;
 name|assertProblems
 argument_list|(
@@ -1394,7 +1393,12 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
+operator|.
+name|disableTrust
+argument_list|()
 expr_stmt|;
 name|assertNoProblems
 argument_list|(
@@ -1429,7 +1433,7 @@ argument_list|,
 literal|"nobody@example.com"
 argument_list|)
 expr_stmt|;
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checker
 init|=
 name|checkerFactory
@@ -1437,7 +1441,12 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
+operator|.
+name|disableTrust
+argument_list|()
 decl_stmt|;
 name|assertProblems
 argument_list|(
@@ -1445,9 +1454,7 @@ name|checker
 operator|.
 name|check
 argument_list|(
-name|TestKeys
-operator|.
-name|key5
+name|validKeyWithSecondUserId
 argument_list|()
 operator|.
 name|getPublicKey
@@ -1491,7 +1498,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checker
 init|=
 name|checkerFactory
@@ -1499,7 +1506,12 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
+operator|.
+name|disableTrust
+argument_list|()
 decl_stmt|;
 name|assertNoProblems
 argument_list|(
@@ -1507,9 +1519,7 @@ name|checker
 operator|.
 name|check
 argument_list|(
-name|TestKeys
-operator|.
-name|key5
+name|validKeyWithSecondUserId
 argument_list|()
 operator|.
 name|getPublicKey
@@ -1537,7 +1547,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checker
 init|=
 name|checkerFactory
@@ -1545,7 +1555,12 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
+operator|.
+name|disableTrust
+argument_list|()
 decl_stmt|;
 name|assertProblems
 argument_list|(
@@ -1553,9 +1568,7 @@ name|checker
 operator|.
 name|check
 argument_list|(
-name|TestKeys
-operator|.
-name|key5
+name|validKeyWithSecondUserId
 argument_list|()
 operator|.
 name|getPublicKey
@@ -1615,12 +1628,10 @@ expr_stmt|;
 name|TestKey
 name|key
 init|=
-name|TestKeys
-operator|.
-name|key5
+name|validKeyWithSecondUserId
 argument_list|()
 decl_stmt|;
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checker
 init|=
 name|checkerFactory
@@ -1628,7 +1639,12 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
+operator|.
+name|disableTrust
+argument_list|()
 decl_stmt|;
 name|assertProblems
 argument_list|(
@@ -1656,6 +1672,14 @@ operator|=
 name|checkerFactory
 operator|.
 name|create
+argument_list|()
+operator|.
+name|setStore
+argument_list|(
+name|store
+argument_list|)
+operator|.
+name|disableTrust
 argument_list|()
 expr_stmt|;
 name|assertProblems
@@ -1812,7 +1836,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Checker for A, checking A.
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checkerA
 init|=
 name|checkerFactory
@@ -1820,6 +1844,8 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 name|assertNoProblems
@@ -1832,14 +1858,12 @@ name|keyA
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Checker for B, checking B. Trust chain and IDs are correct, so the only
 comment|// problem is with the key itself.
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checkerB
 init|=
 name|checkerFactory
@@ -1847,6 +1871,8 @@ operator|.
 name|create
 argument_list|(
 name|userB
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 name|assertProblems
@@ -1859,8 +1885,6 @@ name|keyB
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|,
 name|Status
@@ -1953,7 +1977,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Checker for A, checking B.
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checkerA
 init|=
 name|checkerFactory
@@ -1961,6 +1985,8 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 name|assertProblems
@@ -1973,8 +1999,6 @@ name|keyB
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|,
 name|Status
@@ -1997,7 +2021,7 @@ literal|"  username:user"
 argument_list|)
 expr_stmt|;
 comment|// Checker for B, checking A.
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checkerB
 init|=
 name|checkerFactory
@@ -2005,6 +2029,8 @@ operator|.
 name|create
 argument_list|(
 name|userB
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 name|assertProblems
@@ -2017,8 +2043,6 @@ name|keyA
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|,
 name|Status
@@ -2077,7 +2101,7 @@ literal|"userB"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checker
 init|=
 name|checkerFactory
@@ -2085,6 +2109,8 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 name|assertProblems
@@ -2097,8 +2123,6 @@ name|keyA
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|,
 name|Status
@@ -2210,13 +2234,18 @@ argument_list|)
 decl_stmt|;
 comment|// This checker can check any key, so the only problems come from issues
 comment|// with the keys themselves, not having invalid user IDs.
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checker
 init|=
 name|checkerFactory
 operator|.
 name|create
 argument_list|()
+operator|.
+name|setStore
+argument_list|(
+name|store
+argument_list|)
 decl_stmt|;
 name|assertNoProblems
 argument_list|(
@@ -2228,8 +2257,6 @@ name|keyA
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2243,8 +2270,6 @@ name|keyB
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|,
 name|Status
@@ -2264,8 +2289,6 @@ name|keyC
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2279,8 +2302,6 @@ name|keyD
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2294,8 +2315,6 @@ name|keyE
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|,
 name|Status
@@ -2393,7 +2412,7 @@ literal|"userB"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checkerA
 init|=
 name|checkerFactory
@@ -2401,6 +2420,8 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 name|assertProblems
@@ -2413,8 +2434,6 @@ name|keyA
 operator|.
 name|getPublicKey
 argument_list|()
-argument_list|,
-name|store
 argument_list|)
 argument_list|,
 name|Status
@@ -2689,7 +2708,7 @@ return|return
 name|k
 return|;
 block|}
-DECL|method|assertProblems (CheckResult result, Status expectedStatus, String... expectedProblems)
+DECL|method|assertProblems (CheckResult result, Status expectedStatus, String first, String... rest)
 specifier|private
 name|void
 name|assertProblems
@@ -2701,19 +2720,43 @@ name|Status
 name|expectedStatus
 parameter_list|,
 name|String
+name|first
+parameter_list|,
+name|String
 modifier|...
-name|expectedProblems
+name|rest
 parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|checkArgument
-argument_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|expectedProblems
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
 name|expectedProblems
 operator|.
-name|length
-operator|>
-literal|0
+name|add
+argument_list|(
+name|first
+argument_list|)
+expr_stmt|;
+name|expectedProblems
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|rest
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -2737,12 +2780,8 @@ name|getProblems
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyElementsIn
 argument_list|(
-operator|(
-name|Object
-index|[]
-operator|)
 name|expectedProblems
 argument_list|)
 operator|.

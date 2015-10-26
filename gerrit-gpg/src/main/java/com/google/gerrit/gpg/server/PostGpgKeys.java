@@ -386,6 +386,20 @@ name|gerrit
 operator|.
 name|gpg
 operator|.
+name|PublicKeyChecker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|gpg
+operator|.
 name|PublicKeyStore
 import|;
 end_import
@@ -1633,7 +1647,12 @@ name|rsrc
 operator|.
 name|getUser
 argument_list|()
+argument_list|,
+name|store
 argument_list|)
+operator|.
+name|disableTrust
+argument_list|()
 operator|.
 name|check
 argument_list|(
@@ -1924,7 +1943,7 @@ name|IOException
 block|{
 comment|// Unlike when storing keys, include web-of-trust checks when producing
 comment|// result JSON, so the user at least knows of any issues.
-name|GerritPublicKeyChecker
+name|PublicKeyChecker
 name|checker
 init|=
 name|checkerFactory
@@ -1932,6 +1951,8 @@ operator|.
 name|create
 argument_list|(
 name|user
+argument_list|,
+name|store
 argument_list|)
 decl_stmt|;
 name|Map
@@ -1981,8 +2002,6 @@ operator|.
 name|check
 argument_list|(
 name|key
-argument_list|,
-name|store
 argument_list|)
 decl_stmt|;
 name|GpgKeyInfo
