@@ -407,6 +407,11 @@ specifier|protected
 name|InheritableBoolean
 name|enableSignedPush
 decl_stmt|;
+DECL|field|requireSignedPush
+specifier|protected
+name|InheritableBoolean
+name|requireSignedPush
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -469,6 +474,12 @@ operator|.
 name|INHERIT
 expr_stmt|;
 name|enableSignedPush
+operator|=
+name|InheritableBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|requireSignedPush
 operator|=
 name|InheritableBoolean
 operator|.
@@ -689,6 +700,30 @@ block|{
 name|enableSignedPush
 operator|=
 name|enable
+expr_stmt|;
+block|}
+DECL|method|getRequireSignedPush ()
+specifier|public
+name|InheritableBoolean
+name|getRequireSignedPush
+parameter_list|()
+block|{
+return|return
+name|requireSignedPush
+return|;
+block|}
+DECL|method|setRequireSignedPush (InheritableBoolean require)
+specifier|public
+name|void
+name|setRequireSignedPush
+parameter_list|(
+name|InheritableBoolean
+name|require
+parameter_list|)
+block|{
+name|requireSignedPush
+operator|=
+name|require
 expr_stmt|;
 block|}
 DECL|method|setMaxObjectSizeLimit (final String limit)

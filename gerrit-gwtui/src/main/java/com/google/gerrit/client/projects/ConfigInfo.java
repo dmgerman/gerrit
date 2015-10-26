@@ -347,6 +347,15 @@ name|enableSignedPush
 parameter_list|()
 comment|/*-{ return this.enable_signed_push; }-*/
 function_decl|;
+DECL|method|requireSignedPush ()
+specifier|public
+specifier|final
+specifier|native
+name|InheritedBooleanInfo
+name|requireSignedPush
+parameter_list|()
+comment|/*-{ return this.require_signed_push; }-*/
+function_decl|;
 DECL|method|submitType ()
 specifier|public
 specifier|final
