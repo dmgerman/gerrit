@@ -1108,12 +1108,11 @@ name|changeKindCache
 expr_stmt|;
 block|}
 comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to    * JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
-DECL|method|asChangeAttribute (final Change change)
+DECL|method|asChangeAttribute (Change change)
 specifier|public
 name|ChangeAttribute
 name|asChangeAttribute
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|)
@@ -1268,20 +1267,17 @@ name|a
 return|;
 block|}
 comment|/**    * Create a RefUpdateAttribute for the given old ObjectId, new ObjectId, and    * branch that is suitable for serialization to JSON.    *    * @param oldId    * @param newId    * @param refName    * @return object suitable for serialization to JSON    */
-DECL|method|asRefUpdateAttribute (final ObjectId oldId, final ObjectId newId, final Branch.NameKey refName)
+DECL|method|asRefUpdateAttribute (ObjectId oldId, ObjectId newId, Branch.NameKey refName)
 specifier|public
 name|RefUpdateAttribute
 name|asRefUpdateAttribute
 parameter_list|(
-specifier|final
 name|ObjectId
 name|oldId
 parameter_list|,
-specifier|final
 name|ObjectId
 name|newId
 parameter_list|,
-specifier|final
 name|Branch
 operator|.
 name|NameKey
@@ -1766,7 +1762,6 @@ name|open
 argument_list|()
 init|)
 block|{
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -1882,7 +1877,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|final
 name|PatchSet
 name|ps
 init|=
@@ -1921,7 +1915,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-specifier|final
 name|RevId
 name|revId
 init|=
@@ -1946,7 +1939,6 @@ name|revId
 argument_list|)
 control|)
 block|{
-specifier|final
 name|PatchSet
 name|p
 init|=
@@ -1995,7 +1987,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-specifier|final
 name|Change
 name|c
 init|=
@@ -2861,12 +2852,11 @@ block|}
 block|}
 block|}
 comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param patchSet    * @return object suitable for serialization to JSON    */
-DECL|method|asPatchSetAttribute (final PatchSet patchSet)
+DECL|method|asPatchSetAttribute (PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute
 name|asPatchSetAttribute
 parameter_list|(
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|)
@@ -2948,7 +2938,6 @@ operator|.
 name|isDraft
 argument_list|()
 expr_stmt|;
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -3454,12 +3443,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Create an AuthorAttribute for the given account suitable for serialization    * to JSON.    *    * @param account    * @return object suitable for serialization to JSON    */
-DECL|method|asAccountAttribute (final Account account)
+DECL|method|asAccountAttribute (Account account)
 specifier|public
 name|AccountAttribute
 name|asAccountAttribute
 parameter_list|(
-specifier|final
 name|Account
 name|account
 parameter_list|)
@@ -3791,12 +3779,11 @@ name|a
 return|;
 block|}
 comment|/** Get a link to the change; null if the server doesn't know its own address. */
-DECL|method|getChangeUrl (final Change change)
+DECL|method|getChangeUrl (Change change)
 specifier|private
 name|String
 name|getChangeUrl
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|)
@@ -3815,7 +3802,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-specifier|final
 name|StringBuilder
 name|r
 init|=
