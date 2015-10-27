@@ -324,22 +324,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSetAncestor
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|PatchSetApproval
 import|;
 end_import
@@ -2583,13 +2567,16 @@ operator|=
 name|commitMessage
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ReviewDb db, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, LabelTypes labelTypes)
+DECL|method|addPatchSets (ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|RevWalk
+name|revWalk
 parameter_list|,
 name|ChangeAttribute
 name|ca
@@ -2621,6 +2608,8 @@ name|addPatchSets
 argument_list|(
 name|db
 argument_list|,
+name|revWalk
+argument_list|,
 name|ca
 argument_list|,
 name|ps
@@ -2635,13 +2624,16 @@ name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ReviewDb db, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
+DECL|method|addPatchSets (ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|RevWalk
+name|revWalk
 parameter_list|,
 name|ChangeAttribute
 name|ca
@@ -2712,6 +2704,8 @@ init|=
 name|asPatchSetAttribute
 argument_list|(
 name|db
+argument_list|,
+name|revWalk
 argument_list|,
 name|p
 argument_list|)
@@ -3048,13 +3042,16 @@ block|}
 block|}
 block|}
 comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param patchSet    * @return object suitable for serialization to JSON    */
-DECL|method|asPatchSetAttribute (ReviewDb db, PatchSet patchSet)
+DECL|method|asPatchSetAttribute (ReviewDb db, RevWalk revWalk, PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute
 name|asPatchSetAttribute
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|RevWalk
+name|revWalk
 parameter_list|,
 name|PatchSet
 name|patchSet
@@ -3158,23 +3155,32 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
+name|RevCommit
+name|c
+init|=
+name|revWalk
+operator|.
+name|parseCommit
+argument_list|(
+name|ObjectId
+operator|.
+name|fromString
+argument_list|(
+name|p
+operator|.
+name|revision
+argument_list|)
+argument_list|)
+decl_stmt|;
 for|for
 control|(
-name|PatchSetAncestor
-name|a
+name|RevCommit
+name|parent
 range|:
-name|db
+name|c
 operator|.
-name|patchSetAncestors
+name|getParents
 argument_list|()
-operator|.
-name|ancestorsOf
-argument_list|(
-name|patchSet
-operator|.
-name|getId
-argument_list|()
-argument_list|)
 control|)
 block|{
 name|p
@@ -3183,12 +3189,9 @@ name|parents
 operator|.
 name|add
 argument_list|(
-name|a
+name|parent
 operator|.
-name|getAncestorRevision
-argument_list|()
-operator|.
-name|get
+name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3371,6 +3374,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
