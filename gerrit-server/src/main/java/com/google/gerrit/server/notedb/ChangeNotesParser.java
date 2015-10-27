@@ -1251,7 +1251,7 @@ control|)
 block|{
 name|Collections
 operator|.
-name|sort
+name|reverse
 argument_list|(
 operator|(
 name|List
@@ -1260,10 +1260,6 @@ name|ChangeMessage
 argument_list|>
 operator|)
 name|v
-argument_list|,
-name|ChangeNotes
-operator|.
-name|MESSAGE_BY_TIME
 argument_list|)
 expr_stmt|;
 block|}
