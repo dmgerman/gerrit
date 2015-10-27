@@ -2986,7 +2986,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"New commit message\n\nChange-Id: %s"
+literal|"New commit message\n\nChange-Id: %s\n"
 argument_list|,
 name|change
 operator|.
@@ -3179,6 +3179,40 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
+name|assertUnchangedMessage
+argument_list|(
+name|edit
+argument_list|,
+name|edit
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getEditCommit
+argument_list|()
+operator|.
+name|getFullMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertUnchangedMessage
+argument_list|(
+name|edit
+argument_list|,
+name|edit
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getEditCommit
+argument_list|()
+operator|.
+name|getFullMessage
+argument_list|()
+operator|+
+literal|"\n\n"
+argument_list|)
+expr_stmt|;
 name|String
 name|msg
 init|=
@@ -3186,7 +3220,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"New commit message\n\nChange-Id: %s"
+literal|"New commit message\n\nChange-Id: %s\n"
 argument_list|,
 name|change
 operator|.
@@ -3380,7 +3414,7 @@ literal|"New commit message\n\n"
 operator|+
 name|CONTENT_NEW2_STR
 operator|+
-literal|"\n\nChange-Id: %s"
+literal|"\n\nChange-Id: %s\n"
 argument_list|,
 name|change
 operator|.
@@ -3490,7 +3524,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"New commit message2\n\nChange-Id: %s"
+literal|"New commit message2\n\nChange-Id: %s\n"
 argument_list|,
 name|change
 operator|.
@@ -6895,6 +6929,52 @@ operator|.
 name|isEqualTo
 argument_list|(
 literal|1
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|assertUnchangedMessage (Optional<ChangeEdit> edit, String message)
+specifier|private
+name|void
+name|assertUnchangedMessage
+parameter_list|(
+name|Optional
+argument_list|<
+name|ChangeEdit
+argument_list|>
+name|edit
+parameter_list|,
+name|String
+name|message
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|UnchangedCommitMessageException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"New commit message cannot be same as existing commit message"
+argument_list|)
+expr_stmt|;
+name|modifier
+operator|.
+name|modifyMessage
+argument_list|(
+name|edit
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|message
 argument_list|)
 expr_stmt|;
 block|}

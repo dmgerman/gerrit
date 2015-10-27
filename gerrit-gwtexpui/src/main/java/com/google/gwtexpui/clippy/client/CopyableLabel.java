@@ -1584,6 +1584,13 @@ argument_list|)
 expr_stmt|;
 name|t
 operator|.
+name|setFocus
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|t
+operator|.
 name|selectAll
 argument_list|()
 expr_stmt|;
