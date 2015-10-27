@@ -766,20 +766,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -943,15 +929,6 @@ specifier|final
 name|PatchListCache
 name|patchListCache
 decl_stmt|;
-DECL|field|schema
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-decl_stmt|;
 DECL|field|psInfoFactory
 specifier|private
 specifier|final
@@ -963,15 +940,6 @@ specifier|private
 specifier|final
 name|PersonIdent
 name|myIdent
-decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
@@ -995,7 +963,7 @@ name|changeKindCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchSetInfoFactory psif, PatchListCache patchListCache, SchemaFactory<ReviewDb> schema, @GerritPersonIdent PersonIdent myIdent, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache)
+DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchSetInfoFactory psif, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -1017,22 +985,10 @@ parameter_list|,
 name|PatchListCache
 name|patchListCache
 parameter_list|,
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|myIdent
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|ChangeData
 operator|.
@@ -1066,12 +1022,6 @@ name|patchListCache
 expr_stmt|;
 name|this
 operator|.
-name|schema
-operator|=
-name|schema
-expr_stmt|;
-name|this
-operator|.
 name|psInfoFactory
 operator|=
 name|psif
@@ -1081,12 +1031,6 @@ operator|.
 name|myIdent
 operator|=
 name|myIdent
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1108,11 +1052,14 @@ name|changeKindCache
 expr_stmt|;
 block|}
 comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to    * JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
-DECL|method|asChangeAttribute (Change change)
+DECL|method|asChangeAttribute (ReviewDb db, Change change)
 specifier|public
 name|ChangeAttribute
 name|asChangeAttribute
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|Change
 name|change
 parameter_list|)
@@ -1201,9 +1148,6 @@ operator|.
 name|create
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|change
 argument_list|)
@@ -1413,11 +1357,14 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**    * Add allReviewers to an existing ChangeAttribute.    *    * @param a    * @param notes    */
-DECL|method|addAllReviewers (ChangeAttribute a, ChangeNotes notes)
+DECL|method|addAllReviewers (ReviewDb db, ChangeAttribute a, ChangeNotes notes)
 specifier|public
 name|void
 name|addAllReviewers
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|ChangeAttribute
 name|a
 parameter_list|,
@@ -1440,9 +1387,6 @@ operator|.
 name|getReviewers
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|notes
 argument_list|)
@@ -1721,11 +1665,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addDependencies (ChangeAttribute ca, Change change)
+DECL|method|addDependencies (ReviewDb db, ChangeAttribute ca, Change change)
 specifier|public
 name|void
 name|addDependencies
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|ChangeAttribute
 name|ca
 parameter_list|,
@@ -1752,15 +1699,6 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
 block|{
 name|PatchSet
 operator|.
@@ -2363,11 +2301,14 @@ operator|=
 name|commitMessage
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ChangeAttribute a, Collection<PatchSet> ps, LabelTypes labelTypes)
+DECL|method|addPatchSets (ReviewDb db, ChangeAttribute a, Collection<PatchSet> ps, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|ChangeAttribute
 name|a
 parameter_list|,
@@ -2383,6 +2324,8 @@ parameter_list|)
 block|{
 name|addPatchSets
 argument_list|(
+name|db
+argument_list|,
 name|a
 argument_list|,
 name|ps
@@ -2397,11 +2340,14 @@ name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, LabelTypes labelTypes)
+DECL|method|addPatchSets (ReviewDb db, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|ChangeAttribute
 name|ca
 parameter_list|,
@@ -2430,6 +2376,8 @@ parameter_list|)
 block|{
 name|addPatchSets
 argument_list|(
+name|db
+argument_list|,
 name|ca
 argument_list|,
 name|ps
@@ -2444,11 +2392,14 @@ name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
+DECL|method|addPatchSets (ReviewDb db, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|ChangeAttribute
 name|ca
 parameter_list|,
@@ -2517,6 +2468,8 @@ name|psa
 init|=
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|p
 argument_list|)
 decl_stmt|;
@@ -2852,11 +2805,14 @@ block|}
 block|}
 block|}
 comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param patchSet    * @return object suitable for serialization to JSON    */
-DECL|method|asPatchSetAttribute (PatchSet patchSet)
+DECL|method|asPatchSetAttribute (ReviewDb db, PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute
 name|asPatchSetAttribute
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|PatchSet
 name|patchSet
 parameter_list|)
@@ -2949,15 +2905,6 @@ name|getId
 argument_list|()
 decl_stmt|;
 try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
 block|{
 name|p
 operator|.

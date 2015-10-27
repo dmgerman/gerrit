@@ -2364,6 +2364,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -2375,6 +2377,8 @@ name|eventFactory
 operator|.
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
@@ -2641,6 +2645,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -2652,6 +2658,8 @@ name|eventFactory
 operator|.
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
@@ -2884,6 +2892,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -2906,6 +2916,8 @@ name|eventFactory
 operator|.
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
@@ -3278,6 +3290,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -3300,6 +3314,8 @@ name|eventFactory
 operator|.
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
@@ -3509,6 +3525,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -3531,6 +3549,8 @@ name|eventFactory
 operator|.
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
@@ -3746,6 +3766,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -3768,6 +3790,8 @@ name|eventFactory
 operator|.
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
@@ -3983,6 +4007,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -4005,6 +4031,8 @@ name|eventFactory
 operator|.
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
@@ -4420,6 +4448,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -4431,6 +4461,8 @@ name|eventFactory
 operator|.
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
@@ -4607,6 +4639,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -4864,6 +4898,8 @@ name|eventFactory
 operator|.
 name|asChangeAttribute
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
