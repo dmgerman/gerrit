@@ -2200,9 +2200,9 @@ name|create
 argument_list|(
 name|ctl
 argument_list|,
-name|change
+name|TimeUtil
 operator|.
-name|getCreatedOn
+name|nowTs
 argument_list|()
 argument_list|)
 decl_stmt|;
