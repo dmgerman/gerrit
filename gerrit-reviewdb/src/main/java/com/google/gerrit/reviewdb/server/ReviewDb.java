@@ -421,18 +421,7 @@ name|PatchSetAccess
 name|patchSets
 parameter_list|()
 function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|25
-argument_list|)
-DECL|method|patchSetAncestors ()
-name|PatchSetAncestorAccess
-name|patchSetAncestors
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 25)
 annotation|@
 name|Relation
 argument_list|(
