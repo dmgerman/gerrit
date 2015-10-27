@@ -214,7 +214,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|PatchSetAncestorSorter
+name|RelatedChangesSorter
 operator|.
 name|PatchSetData
 import|;
@@ -444,12 +444,12 @@ decl_stmt|;
 DECL|field|sorter
 specifier|private
 specifier|final
-name|PatchSetAncestorSorter
+name|RelatedChangesSorter
 name|sorter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetRelated (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, PatchSetAncestorSorter sorter)
+DECL|method|GetRelated (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, RelatedChangesSorter sorter)
 name|GetRelated
 parameter_list|(
 name|Provider
@@ -464,7 +464,7 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|PatchSetAncestorSorter
+name|RelatedChangesSorter
 name|sorter
 parameter_list|)
 block|{

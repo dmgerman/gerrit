@@ -501,9 +501,9 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|PatchSetAncestorSorter
+DECL|class|RelatedChangesSorter
 class|class
-name|PatchSetAncestorSorter
+name|RelatedChangesSorter
 block|{
 DECL|field|repoManager
 specifier|private
@@ -513,8 +513,8 @@ name|repoManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetAncestorSorter (GitRepositoryManager repoManager)
-name|PatchSetAncestorSorter
+DECL|method|RelatedChangesSorter (GitRepositoryManager repoManager)
+name|RelatedChangesSorter
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
@@ -1705,7 +1705,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|AutoValue_PatchSetAncestorSorter_PatchSetData
+name|AutoValue_RelatedChangesSorter_PatchSetData
 argument_list|(
 name|cd
 argument_list|,
