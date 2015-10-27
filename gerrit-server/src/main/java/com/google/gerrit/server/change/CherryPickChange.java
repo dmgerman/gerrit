@@ -2072,6 +2072,8 @@ name|refControl
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|ChangeMessage
 name|changeMessage
@@ -2217,6 +2219,11 @@ name|update
 argument_list|,
 name|changeMessage
 argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|commit
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|messageForDestinationChange (PatchSet.Id patchSetId, Branch.NameKey sourceBranch)
