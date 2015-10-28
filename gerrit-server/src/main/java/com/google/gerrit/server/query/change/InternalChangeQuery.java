@@ -790,6 +790,29 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|setRequestedFields (Set<String> fields)
+specifier|public
+name|InternalChangeQuery
+name|setRequestedFields
+parameter_list|(
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|fields
+parameter_list|)
+block|{
+name|qp
+operator|.
+name|setRequestedFields
+argument_list|(
+name|fields
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|byKey (Change.Key key)
 specifier|public
 name|List

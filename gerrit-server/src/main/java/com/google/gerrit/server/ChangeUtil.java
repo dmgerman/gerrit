@@ -116,6 +116,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Ordering
 import|;
 end_import
@@ -3233,6 +3247,27 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|// Use the index to search for changes, but don't return any stored fields,
+comment|// to force rereading in case the index is stale.
+name|InternalChangeQuery
+name|query
+init|=
+name|queryProvider
+operator|.
+name|get
+argument_list|()
+operator|.
+name|setRequestedFields
+argument_list|(
+name|ImmutableSet
+operator|.
+expr|<
+name|String
+operator|>
+name|of
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|// Try isolated changeId
 if|if
 condition|(
@@ -3248,10 +3283,7 @@ block|{
 return|return
 name|asChangeControls
 argument_list|(
-name|queryProvider
-operator|.
-name|get
-argument_list|()
+name|query
 operator|.
 name|byKeyPrefix
 argument_list|(
@@ -3285,10 +3317,7 @@ block|{
 return|return
 name|asChangeControls
 argument_list|(
-name|queryProvider
-operator|.
-name|get
-argument_list|()
+name|query
 operator|.
 name|byBranchKey
 argument_list|(
