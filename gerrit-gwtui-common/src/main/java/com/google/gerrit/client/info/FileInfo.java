@@ -215,6 +215,30 @@ function_decl|;
 comment|// JSNI methods cannot have 'long' as a parameter type or a return type and
 comment|// it's suggested to use double in this case:
 comment|// http://www.gwtproject.org/doc/latest/DevGuideCodingBasicsJSNI.html#important
+DECL|method|size ()
+specifier|public
+specifier|final
+name|long
+name|size
+parameter_list|()
+block|{
+return|return
+operator|(
+name|long
+operator|)
+name|_size
+argument_list|()
+return|;
+block|}
+DECL|method|_size ()
+specifier|private
+specifier|final
+specifier|native
+name|double
+name|_size
+parameter_list|()
+comment|/*-{ return this.size || 0; }-*/
+function_decl|;
 DECL|method|sizeDelta ()
 specifier|public
 specifier|final
