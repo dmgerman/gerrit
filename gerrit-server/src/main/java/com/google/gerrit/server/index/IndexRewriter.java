@@ -258,24 +258,6 @@ name|query
 operator|.
 name|change
 operator|.
-name|ChangeQueryRewriter
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
 name|ChangeStatusPredicate
 import|;
 end_import
@@ -348,6 +330,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -405,12 +399,12 @@ comment|/** Rewriter that pushes boolean logic into the secondary index. */
 end_comment
 
 begin_class
-DECL|class|IndexRewriteImpl
+annotation|@
+name|Singleton
+DECL|class|IndexRewriter
 specifier|public
 class|class
-name|IndexRewriteImpl
-implements|implements
-name|ChangeQueryRewriter
+name|IndexRewriter
 block|{
 comment|/** Set of all open change statuses. */
 DECL|field|OPEN_STATUSES
@@ -916,8 +910,8 @@ name|config
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IndexRewriteImpl (IndexCollection indexes, IndexConfig config)
-name|IndexRewriteImpl
+DECL|method|IndexRewriter (IndexCollection indexes, IndexConfig config)
+name|IndexRewriter
 parameter_list|(
 name|IndexCollection
 name|indexes
@@ -939,8 +933,6 @@ operator|=
 name|config
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|rewrite (Predicate<ChangeData> in, QueryOptions opts)
 specifier|public
 name|Predicate

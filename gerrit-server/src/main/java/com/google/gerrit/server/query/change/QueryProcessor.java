@@ -220,6 +220,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|IndexRewriter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -362,11 +378,11 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 decl_stmt|;
-DECL|field|queryRewriter
+DECL|field|rewriter
 specifier|private
 specifier|final
-name|ChangeQueryRewriter
-name|queryRewriter
+name|IndexRewriter
+name|rewriter
 decl_stmt|;
 DECL|field|indexConfig
 specifier|private
@@ -393,7 +409,7 @@ literal|true
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, ChangeQueryRewriter queryRewriter, IndexConfig indexConfig)
+DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, IndexRewriter rewriter, IndexConfig indexConfig)
 name|QueryProcessor
 parameter_list|(
 name|Provider
@@ -413,8 +429,8 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 parameter_list|,
-name|ChangeQueryRewriter
-name|queryRewriter
+name|IndexRewriter
+name|rewriter
 parameter_list|,
 name|IndexConfig
 name|indexConfig
@@ -440,9 +456,9 @@ name|changeControlFactory
 expr_stmt|;
 name|this
 operator|.
-name|queryRewriter
+name|rewriter
 operator|=
-name|queryRewriter
+name|rewriter
 expr_stmt|;
 name|this
 operator|.
@@ -791,7 +807,7 @@ name|ChangeData
 argument_list|>
 name|s
 init|=
-name|queryRewriter
+name|rewriter
 operator|.
 name|rewrite
 argument_list|(
@@ -824,7 +840,7 @@ argument_list|)
 expr_stmt|;
 name|s
 operator|=
-name|queryRewriter
+name|rewriter
 operator|.
 name|rewrite
 argument_list|(

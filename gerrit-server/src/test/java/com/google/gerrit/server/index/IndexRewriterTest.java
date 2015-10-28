@@ -473,10 +473,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|IndexRewriteTest
+DECL|class|IndexRewriterTest
 specifier|public
 class|class
-name|IndexRewriteTest
+name|IndexRewriterTest
 block|{
 DECL|field|CONFIG
 specifier|private
@@ -519,7 +519,7 @@ name|queryBuilder
 decl_stmt|;
 DECL|field|rewrite
 specifier|private
-name|IndexRewriteImpl
+name|IndexRewriter
 name|rewrite
 decl_stmt|;
 annotation|@
@@ -566,7 +566,7 @@ expr_stmt|;
 name|rewrite
 operator|=
 operator|new
-name|IndexRewriteImpl
+name|IndexRewriter
 argument_list|(
 name|indexes
 argument_list|,
@@ -2224,7 +2224,7 @@ throws|throws
 name|QueryParseException
 block|{
 return|return
-name|IndexRewriteImpl
+name|IndexRewriter
 operator|.
 name|getPossibleStatus
 argument_list|(
