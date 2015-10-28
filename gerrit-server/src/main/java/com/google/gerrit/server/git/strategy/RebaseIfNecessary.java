@@ -108,6 +108,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|MergeConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -221,22 +237,6 @@ operator|.
 name|git
 operator|.
 name|CommitMergeStatus
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|MergeConflictException
 import|;
 end_import
 
@@ -933,19 +933,9 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
+name|MergeConflictException
 name|e
 parameter_list|)
-block|{
-if|if
-condition|(
-name|e
-operator|.
-name|getCause
-argument_list|()
-operator|instanceof
-name|MergeConflictException
-condition|)
 block|{
 name|n
 operator|.
@@ -956,7 +946,6 @@ operator|.
 name|REBASE_MERGE_CONFLICT
 argument_list|)
 expr_stmt|;
-block|}
 throw|throw
 operator|new
 name|MergeException
@@ -966,6 +955,13 @@ operator|+
 name|n
 operator|.
 name|name
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|e
+operator|.
+name|getMessage
 argument_list|()
 argument_list|,
 name|e
@@ -981,11 +977,11 @@ decl||
 name|IOException
 decl||
 name|RestApiException
+decl||
+name|UpdateException
 name|e
 parameter_list|)
 block|{
-comment|// TODO(dborowitz): Allow Submit to unwrap ResourceConflictException
-comment|// so it can turn into a 409.
 throw|throw
 operator|new
 name|MergeException

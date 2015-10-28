@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.extensions.restapi
 package|package
 name|com
 operator|.
@@ -60,14 +60,14 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|git
+name|restapi
 package|;
 end_package
 
 begin_comment
-comment|/** Indicates that the commit cannot be merged without conflicts. */
+comment|/**  * Indicates that a commit cannot be merged without conflicts.  *<p>  * Messages should be viewable by end users.  */
 end_comment
 
 begin_class
@@ -76,7 +76,7 @@ specifier|public
 class|class
 name|MergeConflictException
 extends|extends
-name|Exception
+name|ResourceConflictException
 block|{
 DECL|field|serialVersionUID
 specifier|private
