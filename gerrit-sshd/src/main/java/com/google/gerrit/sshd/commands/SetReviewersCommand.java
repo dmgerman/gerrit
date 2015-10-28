@@ -809,26 +809,16 @@ name|ok
 operator|=
 literal|false
 expr_stmt|;
-name|Change
-operator|.
-name|Id
-name|changeId
-init|=
-name|rsrc
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
 name|log
 operator|.
 name|error
 argument_list|(
 literal|"Error updating reviewers on change "
 operator|+
-name|changeId
+name|rsrc
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|err
 argument_list|)
@@ -839,7 +829,10 @@ literal|"fatal"
 argument_list|,
 literal|"internal error while updating "
 operator|+
-name|changeId
+name|rsrc
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1228,9 +1221,6 @@ operator|.
 name|put
 argument_list|(
 name|ctl
-operator|.
-name|getChange
-argument_list|()
 operator|.
 name|getId
 argument_list|()

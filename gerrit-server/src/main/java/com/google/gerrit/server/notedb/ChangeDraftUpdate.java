@@ -784,9 +784,6 @@ name|create
 argument_list|(
 name|ctl
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 argument_list|,
@@ -1655,8 +1652,7 @@ name|refsDraftComments
 argument_list|(
 name|accountId
 argument_list|,
-name|getChange
-argument_list|()
+name|ctl
 operator|.
 name|getId
 argument_list|()

@@ -2966,9 +2966,6 @@ name|legacyId
 operator|=
 name|c
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 expr_stmt|;

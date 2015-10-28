@@ -1287,10 +1287,7 @@ literal|"edit already exists for the change %s"
 argument_list|,
 name|resource
 operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getChangeId
+name|getId
 argument_list|()
 argument_list|)
 argument_list|)

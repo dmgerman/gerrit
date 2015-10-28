@@ -598,20 +598,12 @@ argument_list|()
 operator|.
 name|setTitle
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Delete draft change %d"
-argument_list|,
+literal|"Delete draft change "
+operator|+
 name|rsrc
 operator|.
-name|getChange
+name|getId
 argument_list|()
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|)
 argument_list|)
 operator|.
 name|setVisible

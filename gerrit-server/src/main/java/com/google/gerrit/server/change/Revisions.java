@@ -1004,9 +1004,6 @@ name|byChange
 argument_list|(
 name|change
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 argument_list|)
@@ -1091,9 +1088,6 @@ operator|.
 name|Id
 argument_list|(
 name|change
-operator|.
-name|getChange
-argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -1255,9 +1249,6 @@ name|Id
 argument_list|(
 name|change
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 argument_list|,
@@ -1350,9 +1341,6 @@ name|Id
 name|changeId
 init|=
 name|change
-operator|.
-name|getChange
-argument_list|()
 operator|.
 name|getId
 argument_list|()

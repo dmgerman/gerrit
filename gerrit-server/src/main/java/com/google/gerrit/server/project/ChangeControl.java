@@ -732,9 +732,6 @@ name|NoSuchChangeException
 argument_list|(
 name|c
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 argument_list|)
@@ -988,6 +985,21 @@ name|getProjectControl
 argument_list|()
 operator|.
 name|getProject
+argument_list|()
+return|;
+block|}
+DECL|method|getId ()
+specifier|public
+name|Change
+operator|.
+name|Id
+name|getId
+parameter_list|()
+block|{
+return|return
+name|notes
+operator|.
+name|getChangeId
 argument_list|()
 return|;
 block|}

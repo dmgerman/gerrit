@@ -1130,9 +1130,6 @@ name|toString
 argument_list|(
 name|change
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 operator|.
