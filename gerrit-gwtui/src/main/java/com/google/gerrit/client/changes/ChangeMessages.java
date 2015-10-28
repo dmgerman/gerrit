@@ -215,6 +215,17 @@ name|int
 name|deletions
 parameter_list|)
 function_decl|;
+DECL|method|patchTableSize_ModifyBinaryFiles (String bytesInserted, String bytesDeleted)
+name|String
+name|patchTableSize_ModifyBinaryFiles
+parameter_list|(
+name|String
+name|bytesInserted
+parameter_list|,
+name|String
+name|bytesDeleted
+parameter_list|)
+function_decl|;
 DECL|method|patchTableSize_LongModify (int insertions, int deletions)
 name|String
 name|patchTableSize_LongModify

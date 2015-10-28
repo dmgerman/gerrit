@@ -504,6 +504,26 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/** The returned format string doesn't contain any +/- sign. */
+DECL|method|formatAbsBytes (long bytes)
+specifier|public
+specifier|static
+name|String
+name|formatAbsBytes
+parameter_list|(
+name|long
+name|bytes
+parameter_list|)
+block|{
+return|return
+name|formatBytes
+argument_list|(
+name|bytes
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 DECL|method|formatBytes (long bytes)
 specifier|public
 specifier|static
@@ -514,6 +534,41 @@ name|long
 name|bytes
 parameter_list|)
 block|{
+return|return
+name|formatBytes
+argument_list|(
+name|bytes
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+DECL|method|formatBytes (long bytes, boolean abs)
+specifier|private
+specifier|static
+name|String
+name|formatBytes
+parameter_list|(
+name|long
+name|bytes
+parameter_list|,
+name|boolean
+name|abs
+parameter_list|)
+block|{
+name|bytes
+operator|=
+name|abs
+condition|?
+name|Math
+operator|.
+name|abs
+argument_list|(
+name|bytes
+argument_list|)
+else|:
+name|bytes
+expr_stmt|;
 if|if
 condition|(
 name|bytes
@@ -522,6 +577,10 @@ literal|0
 condition|)
 block|{
 return|return
+name|abs
+condition|?
+literal|"0 B"
+else|:
 literal|"+/- 0 B"
 return|;
 block|}
@@ -542,6 +601,9 @@ operator|(
 name|bytes
 operator|>
 literal|0
+operator|&&
+operator|!
+name|abs
 condition|?
 literal|"+"
 else|:
@@ -585,6 +647,9 @@ operator|(
 name|bytes
 operator|>
 literal|0
+operator|&&
+operator|!
+name|abs
 condition|?
 literal|"+"
 else|:
