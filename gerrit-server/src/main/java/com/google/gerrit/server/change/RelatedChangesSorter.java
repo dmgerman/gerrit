@@ -501,9 +501,9 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|PatchSetAncestorSorter
+DECL|class|RelatedChangesSorter
 class|class
-name|PatchSetAncestorSorter
+name|RelatedChangesSorter
 block|{
 DECL|field|repoManager
 specifier|private
@@ -513,8 +513,8 @@ name|repoManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetAncestorSorter (GitRepositoryManager repoManager)
-name|PatchSetAncestorSorter
+DECL|method|RelatedChangesSorter (GitRepositoryManager repoManager)
+name|RelatedChangesSorter
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
@@ -1550,26 +1550,28 @@ name|psd
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Breadth-first search with oldest children first.
-comment|// TODO(dborowitz): After killing PatchSetAncestors, consider DFS to keep
-comment|// parallel history together.
-name|pending
-operator|.
-name|addAll
-argument_list|(
-name|Lists
-operator|.
-name|reverse
-argument_list|(
+comment|// Depth-first search with newest children first.
+for|for
+control|(
+name|PatchSetData
+name|child
+range|:
 name|children
 operator|.
 name|get
 argument_list|(
 name|psd
 argument_list|)
-argument_list|)
+control|)
+block|{
+name|pending
+operator|.
+name|addFirst
+argument_list|(
+name|child
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// If we saw the same change multiple times, prefer the latest patch set.
 name|List
@@ -1705,7 +1707,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|AutoValue_PatchSetAncestorSorter_PatchSetData
+name|AutoValue_RelatedChangesSorter_PatchSetData
 argument_list|(
 name|cd
 argument_list|,
