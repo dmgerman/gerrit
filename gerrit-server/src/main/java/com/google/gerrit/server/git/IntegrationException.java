@@ -67,14 +67,14 @@ package|;
 end_package
 
 begin_comment
-comment|/** Indicates the current branch's queue cannot be processed at this time. */
+comment|/** Indicates an integration operation (see {@link MergeOp}) failed. */
 end_comment
 
 begin_class
-DECL|class|MergeException
+DECL|class|IntegrationException
 specifier|public
 class|class
-name|MergeException
+name|IntegrationException
 extends|extends
 name|Exception
 block|{
@@ -87,9 +87,9 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|MergeException (String msg)
+DECL|method|IntegrationException (String msg)
 specifier|public
-name|MergeException
+name|IntegrationException
 parameter_list|(
 name|String
 name|msg
@@ -101,9 +101,9 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MergeException (Throwable why)
+DECL|method|IntegrationException (Throwable why)
 specifier|public
-name|MergeException
+name|IntegrationException
 parameter_list|(
 name|Throwable
 name|why
@@ -115,9 +115,9 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MergeException (String msg, Throwable why)
+DECL|method|IntegrationException (String msg, Throwable why)
 specifier|public
-name|MergeException
+name|IntegrationException
 parameter_list|(
 name|String
 name|msg

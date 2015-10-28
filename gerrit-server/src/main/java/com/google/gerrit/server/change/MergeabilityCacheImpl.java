@@ -374,7 +374,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeException
+name|IntegrationException
 import|;
 end_import
 
@@ -1419,7 +1419,7 @@ parameter_list|()
 throws|throws
 name|NoSuchProjectException
 throws|,
-name|MergeException
+name|IntegrationException
 throws|,
 name|IOException
 block|{

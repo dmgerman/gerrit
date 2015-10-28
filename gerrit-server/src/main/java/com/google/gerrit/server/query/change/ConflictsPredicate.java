@@ -206,7 +206,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeException
+name|IntegrationException
 import|;
 end_import
 
@@ -1167,7 +1167,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|MergeException
+name|IntegrationException
 decl||
 name|NoSuchProjectException
 decl||
@@ -1257,7 +1257,7 @@ name|CodeReviewCommit
 name|tip
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 name|Set
 argument_list|<
@@ -1333,7 +1333,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Failed to determine already accepted commits."
 argument_list|,

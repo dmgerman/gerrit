@@ -220,7 +220,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeException
+name|IntegrationException
 import|;
 end_import
 
@@ -732,7 +732,7 @@ name|IdentifiedUser
 name|caller
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 throws|,
 name|NoSuchProjectException
 block|{
@@ -869,7 +869,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 name|errorMsg
 argument_list|)

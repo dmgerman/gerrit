@@ -252,7 +252,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeException
+name|IntegrationException
 import|;
 end_import
 
@@ -554,7 +554,7 @@ argument_list|>
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 name|MergeTip
 name|mergeTip
@@ -948,7 +948,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot rebase "
 operator|+
@@ -984,7 +984,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot rebase "
 operator|+
@@ -1139,7 +1139,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot merge "
 operator|+
@@ -1185,7 +1185,7 @@ argument_list|>
 name|toSort
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 try|try
 block|{
@@ -1239,7 +1239,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Commit sorting failed"
 argument_list|,
@@ -1403,7 +1403,7 @@ name|CodeReviewCommit
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 return|return
 operator|!

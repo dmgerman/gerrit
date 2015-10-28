@@ -238,7 +238,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeException
+name|IntegrationException
 import|;
 end_import
 
@@ -825,7 +825,7 @@ operator|=
 name|args
 expr_stmt|;
 block|}
-comment|/**    * Runs this submit strategy.    *<p>    * If possible, the provided commits will be merged with this submit strategy.    *    * @param currentTip the mergeTip    * @param toMerge the list of submitted commits that should be merged using    *        this submit strategy. Implementations are responsible for ordering    *        of commits, and should not modify the input in place.    * @return the new merge tip.    * @throws MergeException    */
+comment|/**    * Runs this submit strategy.    *<p>    * If possible, the provided commits will be merged with this submit strategy.    *    * @param currentTip the mergeTip    * @param toMerge the list of submitted commits that should be merged using    *        this submit strategy. Implementations are responsible for ordering    *        of commits, and should not modify the input in place.    * @return the new merge tip.    * @throws IntegrationException    */
 DECL|method|run (final CodeReviewCommit currentTip, final Collection<CodeReviewCommit> toMerge)
 specifier|public
 specifier|final
@@ -844,7 +844,7 @@ argument_list|>
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 name|refLogIdent
 operator|=
@@ -885,9 +885,9 @@ argument_list|>
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 function_decl|;
-comment|/**    * Checks whether the given commit can be merged.    *<p>    * Implementations must ensure that invoking this method modifies neither the    * git repository nor the Gerrit database.    *    * @param mergeTip the merge tip.    * @param toMerge the commit that should be checked.    * @return {@code true} if the given commit can be merged, otherwise    *         {@code false}    * @throws MergeException    */
+comment|/**    * Checks whether the given commit can be merged.    *<p>    * Implementations must ensure that invoking this method modifies neither the    * git repository nor the Gerrit database.    *    * @param mergeTip the merge tip.    * @param toMerge the commit that should be checked.    * @return {@code true} if the given commit can be merged, otherwise    *         {@code false}    * @throws IntegrationException    */
 DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|public
 specifier|abstract
@@ -901,7 +901,7 @@ name|CodeReviewCommit
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 function_decl|;
 comment|/**    * Returns the identity that should be used for reflog entries when updating    * the destination branch.    *<p>    * The reflog identity may only be set during {@link #run(CodeReviewCommit,    * Collection)}, and this method is invalid to call beforehand.    *    * @return the ref log identity, which may be {@code null}.    */
 DECL|method|getRefLogIdent ()
