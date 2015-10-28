@@ -539,6 +539,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|0
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
@@ -594,6 +596,12 @@ specifier|final
 name|int
 name|deletions
 decl_stmt|;
+DECL|field|size
+specifier|private
+specifier|final
+name|long
+name|size
+decl_stmt|;
 DECL|field|sizeDelta
 specifier|private
 specifier|final
@@ -602,7 +610,7 @@ name|sizeDelta
 decl_stmt|;
 comment|// Note: When adding new fields, the serialVersionUID in PatchListKey must be
 comment|// incremented so that entries from the cache are automatically invalidated.
-DECL|method|PatchListEntry (FileHeader hdr, List<Edit> editList, long sizeDelta)
+DECL|method|PatchListEntry (FileHeader hdr, List<Edit> editList, long size, long sizeDelta)
 name|PatchListEntry
 parameter_list|(
 name|FileHeader
@@ -613,6 +621,9 @@ argument_list|<
 name|Edit
 argument_list|>
 name|editList
+parameter_list|,
+name|long
+name|size
 parameter_list|,
 name|long
 name|sizeDelta
@@ -816,12 +827,18 @@ name|del
 expr_stmt|;
 name|this
 operator|.
+name|size
+operator|=
+name|size
+expr_stmt|;
+name|this
+operator|.
 name|sizeDelta
 operator|=
 name|sizeDelta
 expr_stmt|;
 block|}
-DECL|method|PatchListEntry (ChangeType changeType, PatchType patchType, String oldName, String newName, byte[] header, List<Edit> edits, int insertions, int deletions, long sizeDelta)
+DECL|method|PatchListEntry (ChangeType changeType, PatchType patchType, String oldName, String newName, byte[] header, List<Edit> edits, int insertions, int deletions, long size, long sizeDelta)
 specifier|private
 name|PatchListEntry
 parameter_list|(
@@ -852,6 +869,9 @@ name|insertions
 parameter_list|,
 name|int
 name|deletions
+parameter_list|,
+name|long
+name|size
 parameter_list|,
 name|long
 name|sizeDelta
@@ -904,6 +924,12 @@ operator|.
 name|deletions
 operator|=
 name|deletions
+expr_stmt|;
+name|this
+operator|.
+name|size
+operator|=
+name|size
 expr_stmt|;
 name|this
 operator|.
@@ -1090,6 +1116,16 @@ parameter_list|()
 block|{
 return|return
 name|deletions
+return|;
+block|}
+DECL|method|getSize ()
+specifier|public
+name|long
+name|getSize
+parameter_list|()
+block|{
+return|return
+name|size
 return|;
 block|}
 DECL|method|getSizeDelta ()
@@ -1366,6 +1402,13 @@ name|writeFixInt64
 argument_list|(
 name|out
 argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+name|writeFixInt64
+argument_list|(
+name|out
+argument_list|,
 name|sizeDelta
 argument_list|)
 expr_stmt|;
@@ -1509,6 +1552,14 @@ name|in
 argument_list|)
 decl_stmt|;
 name|long
+name|size
+init|=
+name|readFixInt64
+argument_list|(
+name|in
+argument_list|)
+decl_stmt|;
+name|long
 name|sizeDelta
 init|=
 name|readFixInt64
@@ -1621,6 +1672,8 @@ argument_list|,
 name|ins
 argument_list|,
 name|del
+argument_list|,
+name|size
 argument_list|,
 name|sizeDelta
 argument_list|)

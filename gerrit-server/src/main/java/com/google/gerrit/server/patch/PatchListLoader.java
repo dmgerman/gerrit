@@ -1734,6 +1734,8 @@ argument_list|,
 name|fh
 argument_list|,
 name|newSize
+argument_list|,
+name|newSize
 operator|-
 name|oldSize
 argument_list|)
@@ -2356,6 +2358,13 @@ name|getContent
 argument_list|()
 decl_stmt|;
 name|long
+name|size
+init|=
+name|bContent
+operator|.
+name|length
+decl_stmt|;
+name|long
 name|sizeDelta
 init|=
 name|bContent
@@ -2423,11 +2432,13 @@ name|fh
 argument_list|,
 name|edits
 argument_list|,
+name|size
+argument_list|,
 name|sizeDelta
 argument_list|)
 return|;
 block|}
-DECL|method|newEntry (RevTree aTree, FileHeader fileHeader, long sizeDelta)
+DECL|method|newEntry (RevTree aTree, FileHeader fileHeader, long size, long sizeDelta)
 specifier|private
 name|PatchListEntry
 name|newEntry
@@ -2437,6 +2448,9 @@ name|aTree
 parameter_list|,
 name|FileHeader
 name|fileHeader
+parameter_list|,
+name|long
+name|size
 parameter_list|,
 name|long
 name|sizeDelta
@@ -2489,6 +2503,8 @@ operator|>
 name|emptyList
 argument_list|()
 argument_list|,
+name|size
+argument_list|,
 name|sizeDelta
 argument_list|)
 return|;
@@ -2532,6 +2548,8 @@ operator|>
 name|emptyList
 argument_list|()
 argument_list|,
+name|size
+argument_list|,
 name|sizeDelta
 argument_list|)
 return|;
@@ -2569,6 +2587,8 @@ operator|>
 name|emptyList
 argument_list|()
 argument_list|,
+name|size
+argument_list|,
 name|sizeDelta
 argument_list|)
 return|;
@@ -2582,6 +2602,8 @@ argument_list|(
 name|fileHeader
 argument_list|,
 name|edits
+argument_list|,
+name|size
 argument_list|,
 name|sizeDelta
 argument_list|)
