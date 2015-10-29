@@ -1598,6 +1598,24 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|ctx
+operator|.
+name|getDb
+argument_list|()
+operator|.
+name|patchSets
+argument_list|()
+operator|.
+name|update
+argument_list|(
+name|Collections
+operator|.
+name|singleton
+argument_list|(
+name|patchSet
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|addReviewers (ChangeContext ctx)
 specifier|private
