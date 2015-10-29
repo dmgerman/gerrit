@@ -586,6 +586,22 @@ name|server
 operator|.
 name|index
 operator|.
+name|IndexRewriter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|Schema
 import|;
 end_import
@@ -1419,10 +1435,7 @@ name|queryProvider
 decl_stmt|;
 DECL|field|rewriter
 specifier|final
-name|Provider
-argument_list|<
-name|ChangeQueryRewriter
-argument_list|>
+name|IndexRewriter
 name|rewriter
 decl_stmt|;
 DECL|field|userFactory
@@ -1546,7 +1559,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, IndexCollection indexes, SubmitStrategyFactory submitStrategyFactory, ConflictsCache conflictsCache, TrackingFooters trackingFooters, @GerritServerConfig Config cfg)
+DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, IndexCollection indexes, SubmitStrategyFactory submitStrategyFactory, ConflictsCache conflictsCache, TrackingFooters trackingFooters, @GerritServerConfig Config cfg)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -1562,10 +1575,7 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|Provider
-argument_list|<
-name|ChangeQueryRewriter
-argument_list|>
+name|IndexRewriter
 name|rewriter
 parameter_list|,
 name|IdentifiedUser
@@ -1721,7 +1731,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitStrategyFactory submitStrategyFactory, ConflictsCache conflictsCache, TrackingFooters trackingFooters, boolean allowsDrafts, ChangeIndex index)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitStrategyFactory submitStrategyFactory, ConflictsCache conflictsCache, TrackingFooters trackingFooters, boolean allowsDrafts, ChangeIndex index)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -1737,10 +1747,7 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|Provider
-argument_list|<
-name|ChangeQueryRewriter
-argument_list|>
+name|IndexRewriter
 name|rewriter
 parameter_list|,
 name|IdentifiedUser

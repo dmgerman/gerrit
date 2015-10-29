@@ -144,7 +144,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexRewriteImpl
+name|IndexRewriter
 operator|.
 name|CLOSED_STATUSES
 import|;
@@ -162,7 +162,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexRewriteImpl
+name|IndexRewriter
 operator|.
 name|OPEN_STATUSES
 import|;
@@ -590,7 +590,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexRewriteImpl
+name|IndexRewriter
 import|;
 end_import
 
@@ -2803,7 +2803,7 @@ name|Status
 argument_list|>
 name|statuses
 init|=
-name|IndexRewriteImpl
+name|IndexRewriter
 operator|.
 name|getPossibleStatus
 argument_list|(
