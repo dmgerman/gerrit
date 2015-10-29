@@ -847,6 +847,9 @@ argument_list|()
 operator|<
 name|p
 operator|.
+name|getOptions
+argument_list|()
+operator|.
 name|limit
 argument_list|()
 operator|+

@@ -458,9 +458,10 @@ argument_list|,
 name|this
 argument_list|)
 argument_list|,
-literal|0
-argument_list|,
-literal|1
+name|QueryOptions
+operator|.
+name|oneResult
+argument_list|()
 argument_list|)
 operator|.
 name|read

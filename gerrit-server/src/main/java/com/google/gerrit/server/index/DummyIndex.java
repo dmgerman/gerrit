@@ -110,22 +110,6 @@ name|server
 operator|.
 name|query
 operator|.
-name|QueryParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
 name|change
 operator|.
 name|ChangeData
@@ -147,6 +131,24 @@ operator|.
 name|change
 operator|.
 name|ChangeDataSource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|QueryOptions
 import|;
 end_import
 
@@ -233,7 +235,7 @@ name|IOException
 block|{   }
 annotation|@
 name|Override
-DECL|method|getSource (Predicate<ChangeData> p, int start, int limit)
+DECL|method|getSource (Predicate<ChangeData> p, QueryOptions opts)
 specifier|public
 name|ChangeDataSource
 name|getSource
@@ -244,14 +246,9 @@ name|ChangeData
 argument_list|>
 name|p
 parameter_list|,
-name|int
-name|start
-parameter_list|,
-name|int
-name|limit
+name|QueryOptions
+name|opts
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 throw|throw
 operator|new
