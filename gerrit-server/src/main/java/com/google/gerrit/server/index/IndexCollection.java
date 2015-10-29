@@ -174,18 +174,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|atomic
 operator|.
 name|AtomicReference
@@ -224,12 +212,6 @@ name|ChangeIndex
 argument_list|>
 name|searchIndex
 decl_stmt|;
-DECL|field|initLatch
-specifier|private
-specifier|final
-name|CountDownLatch
-name|initLatch
-decl_stmt|;
 annotation|@
 name|Inject
 annotation|@
@@ -257,16 +239,6 @@ name|AtomicReference
 argument_list|<>
 argument_list|()
 expr_stmt|;
-name|this
-operator|.
-name|initLatch
-operator|=
-operator|new
-name|CountDownLatch
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
 block|}
 comment|/** @return the current search index version. */
 DECL|method|getSearchIndex ()
@@ -275,22 +247,6 @@ name|ChangeIndex
 name|getSearchIndex
 parameter_list|()
 block|{
-try|try
-block|{
-name|initLatch
-operator|.
-name|await
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-comment|// ignore
-block|}
 return|return
 name|searchIndex
 operator|.
@@ -317,11 +273,6 @@ argument_list|(
 name|index
 argument_list|)
 decl_stmt|;
-name|initLatch
-operator|.
-name|countDown
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|old
