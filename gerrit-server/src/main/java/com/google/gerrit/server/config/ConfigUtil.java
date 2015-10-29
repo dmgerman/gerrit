@@ -1546,8 +1546,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Load section by inspecting Java class attributes.    *<p>    * Config values are stored optimized: no default values are stored.    * The loading is performed eagerly: all values are set.    *<p>    * Fields marked with final or transient modifiers are skipped.    *<p>    * Boolean fields are only set when their values are true.    *    * @param cfg config from which the values are loaded    * @param section section    * @param sub subsection    * @param s instance of class in which the values are set    * @param defaults instance of class with default values    * @return loaded instance    * @throws ConfigInvalidException    */
-DECL|method|loadSection (Config cfg, String section, String sub, T s, T defaults)
+comment|/**    * Load section by inspecting Java class attributes.    *<p>    * Config values are stored optimized: no default values are stored.    * The loading is performed eagerly: all values are set.    *<p>    * Fields marked with final or transient modifiers are skipped.    *    * @param cfg config from which the values are loaded    * @param section section    * @param sub subsection    * @param s instance of class in which the values are set    * @param defaults instance of class with default values    * @param i instance to merge during the load. When present, the    * boolean fields are not nullified when their values are false    * @return loaded instance    * @throws ConfigInvalidException    */
+DECL|method|loadSection (Config cfg, String section, String sub, T s, T defaults, T i)
 specifier|public
 specifier|static
 parameter_list|<
@@ -1570,6 +1570,9 @@ name|s
 parameter_list|,
 name|T
 name|defaults
+parameter_list|,
+name|T
+name|i
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -1776,6 +1779,10 @@ decl_stmt|;
 if|if
 condition|(
 name|b
+operator|||
+name|i
+operator|!=
+literal|null
 condition|)
 block|{
 name|f
@@ -1839,6 +1846,41 @@ name|getName
 argument_list|()
 argument_list|)
 throw|;
+block|}
+if|if
+condition|(
+name|i
+operator|!=
+literal|null
+condition|)
+block|{
+name|Object
+name|o
+init|=
+name|f
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|o
+operator|!=
+literal|null
+condition|)
+block|{
+name|f
+operator|.
+name|set
+argument_list|(
+name|s
+argument_list|,
+name|o
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
