@@ -2880,7 +2880,7 @@ name|IGNORE_NONE
 parameter_list|)
 operator|,
 DECL|enumConstant|TRAILING
-constructor|TRAILING(AccountDiffPreference.Whitespace.IGNORE_SPACE_AT_EOL
+constructor|TRAILING(AccountDiffPreference.Whitespace.IGNORE_TRAILING
 block|)
 enum|,
 DECL|enumConstant|CHANGED
@@ -2890,11 +2890,11 @@ name|AccountDiffPreference
 operator|.
 name|Whitespace
 operator|.
-name|IGNORE_SPACE_CHANGE
+name|IGNORE_LEADING_AND_TRAILING
 parameter_list|)
 operator|,
 DECL|enumConstant|ALL
-constructor|ALL(AccountDiffPreference.Whitespace.IGNORE_ALL_SPACE
+constructor|ALL(AccountDiffPreference.Whitespace.IGNORE_ALL
 block|)
 class|;
 end_class
