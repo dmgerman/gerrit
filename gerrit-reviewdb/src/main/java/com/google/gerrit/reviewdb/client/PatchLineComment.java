@@ -272,7 +272,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|set (String newValue)
-specifier|protected
+specifier|public
 name|void
 name|set
 parameter_list|(
