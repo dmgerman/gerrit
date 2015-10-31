@@ -98,11 +98,11 @@ name|short
 name|cnt
 parameter_list|)
 function_decl|;
-DECL|method|rowsPerPage (short cnt)
+DECL|method|rowsPerPage (int cnt)
 name|String
 name|rowsPerPage
 parameter_list|(
-name|short
+name|int
 name|cnt
 parameter_list|)
 function_decl|;

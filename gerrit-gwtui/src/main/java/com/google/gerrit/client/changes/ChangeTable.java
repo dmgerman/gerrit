@@ -284,7 +284,9 @@ name|extensions
 operator|.
 name|client
 operator|.
-name|ListChangesOption
+name|GeneralPreferencesInfo
+operator|.
+name|ReviewCategoryStrategy
 import|;
 end_import
 
@@ -296,13 +298,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
-operator|.
-name|ReviewCategoryStrategy
+name|ListChangesOption
 import|;
 end_import
 
