@@ -198,6 +198,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|client
+operator|.
+name|MenuItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|config
 operator|.
 name|DownloadScheme
@@ -281,22 +297,6 @@ operator|.
 name|restapi
 operator|.
 name|RestModifyView
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|webui
-operator|.
-name|TopMenu
 import|;
 end_import
 
@@ -761,8 +761,6 @@ DECL|field|my
 specifier|public
 name|List
 argument_list|<
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|>
 name|my
@@ -1452,7 +1450,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|storeMyMenus (VersionedAccountPreferences prefs, List<TopMenu.MenuItem> my)
+DECL|method|storeMyMenus (VersionedAccountPreferences prefs, List<MenuItem> my)
 specifier|public
 specifier|static
 name|void
@@ -1463,8 +1461,6 @@ name|prefs
 parameter_list|,
 name|List
 argument_list|<
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|>
 name|my
@@ -1496,8 +1492,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|TopMenu
-operator|.
 name|MenuItem
 name|item
 range|:

@@ -90,6 +90,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|client
+operator|.
+name|MenuItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -125,22 +141,6 @@ operator|.
 name|restapi
 operator|.
 name|RestReadView
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|webui
-operator|.
-name|TopMenu
 import|;
 end_import
 
@@ -892,8 +892,6 @@ decl_stmt|;
 DECL|field|my
 name|List
 argument_list|<
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|>
 name|my
@@ -1149,8 +1147,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|(
 literal|"Changes"
@@ -1166,8 +1162,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|(
 literal|"Drafts"
@@ -1183,8 +1177,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|(
 literal|"Draft Comments"
@@ -1200,8 +1192,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|(
 literal|"Edits"
@@ -1217,8 +1207,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|(
 literal|"Watched Changes"
@@ -1234,8 +1222,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|(
 literal|"Starred Changes"
@@ -1251,8 +1237,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|(
 literal|"Groups"
@@ -1276,8 +1260,6 @@ DECL|method|my (VersionedAccountPreferences v)
 specifier|private
 name|List
 argument_list|<
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|>
 name|my
@@ -1288,8 +1270,6 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|>
 name|my
@@ -1364,8 +1344,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TopMenu
-operator|.
 name|MenuItem
 argument_list|(
 name|subsection
