@@ -315,6 +315,11 @@ specifier|public
 name|String
 name|sd
 decl_stmt|;
+DECL|field|nd
+specifier|public
+name|String
+name|nd
+decl_stmt|;
 DECL|field|t
 specifier|public
 name|Theme
@@ -403,6 +408,14 @@ operator|.
 name|sd
 operator|=
 literal|"bar"
+expr_stmt|;
+comment|// This line is not needed, as it's null per default.
+comment|// Put it here to be explicit.
+name|i
+operator|.
+name|nd
+operator|=
+literal|null
 expr_stmt|;
 name|i
 operator|.
@@ -741,6 +754,23 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|cfg
+operator|.
+name|getString
+argument_list|(
+name|SECT
+argument_list|,
+name|SUB
+argument_list|,
+literal|"nd"
+argument_list|)
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
+expr_stmt|;
 name|SectionInfo
 name|out
 init|=
@@ -914,6 +944,16 @@ name|d
 operator|.
 name|sd
 argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|out
+operator|.
+name|nd
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
