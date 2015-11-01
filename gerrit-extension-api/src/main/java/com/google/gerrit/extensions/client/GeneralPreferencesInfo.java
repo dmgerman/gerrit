@@ -423,6 +423,11 @@ specifier|public
 name|Boolean
 name|muteCommonPathPrefixes
 decl_stmt|;
+DECL|field|signedOffBy
+specifier|public
+name|Boolean
+name|signedOffBy
+decl_stmt|;
 DECL|field|my
 specifier|public
 name|List
@@ -685,6 +690,12 @@ operator|.
 name|muteCommonPathPrefixes
 operator|=
 literal|true
+expr_stmt|;
+name|p
+operator|.
+name|signedOffBy
+operator|=
+literal|false
 expr_stmt|;
 return|return
 name|p

@@ -205,6 +205,11 @@ name|String
 name|muteCommonPathPrefixes
 parameter_list|()
 function_decl|;
+DECL|method|signedOffBy ()
+name|String
+name|signedOffBy
+parameter_list|()
+function_decl|;
 DECL|method|myMenu ()
 name|String
 name|myMenu

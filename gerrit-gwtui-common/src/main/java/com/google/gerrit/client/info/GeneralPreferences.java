@@ -450,6 +450,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|signedOffBy
+argument_list|(
+name|d
+operator|.
+name|signedOffBy
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|reviewCategoryStrategy
 argument_list|(
 name|d
@@ -700,6 +709,15 @@ name|boolean
 name|muteCommonPathPrefixes
 parameter_list|()
 comment|/*-{ return this.mute_common_path_prefixes || false }-*/
+function_decl|;
+DECL|method|signedOffBy ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|signedOffBy
+parameter_list|()
+comment|/*-{ return this.signed_off_by || false }-*/
 function_decl|;
 DECL|method|reviewCategoryStrategy ()
 specifier|public
@@ -1032,6 +1050,18 @@ name|boolean
 name|s
 parameter_list|)
 comment|/*-{ this.mute_common_path_prefixes = s }-*/
+function_decl|;
+DECL|method|signedOffBy (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|signedOffBy
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.signed_off_by = s }-*/
 function_decl|;
 DECL|method|reviewCategoryStrategy (ReviewCategoryStrategy s)
 specifier|public
