@@ -138,11 +138,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|Account
+name|GeneralPreferencesInfo
+operator|.
+name|EmailStrategy
 import|;
 end_import
 
@@ -158,9 +160,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
-operator|.
-name|EmailStrategy
+name|Account
 import|;
 end_import
 
@@ -778,7 +778,7 @@ name|strategy
 init|=
 name|fromUser
 operator|.
-name|getGeneralPreferences
+name|getGeneralPreferencesInfo
 argument_list|()
 operator|.
 name|getEmailStrategy
@@ -858,7 +858,7 @@ if|if
 condition|(
 name|thisUser
 operator|.
-name|getGeneralPreferences
+name|getGeneralPreferencesInfo
 argument_list|()
 operator|.
 name|getEmailStrategy

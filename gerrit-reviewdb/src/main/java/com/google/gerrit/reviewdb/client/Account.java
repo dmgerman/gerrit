@@ -96,6 +96,22 @@ name|extensions
 operator|.
 name|client
 operator|.
+name|GeneralPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
 name|DiffPreferencesInfo
 import|;
 end_import
@@ -688,25 +704,7 @@ name|String
 name|preferredEmail
 decl_stmt|;
 comment|// DELETED: id = 5 (contactFiledOn)
-comment|/** This user's preferences */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|6
-argument_list|,
-name|name
-operator|=
-name|Column
-operator|.
-name|NONE
-argument_list|)
-DECL|field|generalPreferences
-specifier|protected
-name|AccountGeneralPreferences
-name|generalPreferences
-decl_stmt|;
+comment|// DELETED: id = 6 (generalPreferences)
 comment|/** Is this user active */
 annotation|@
 name|Column
@@ -725,6 +723,12 @@ DECL|field|userName
 specifier|protected
 name|String
 name|userName
+decl_stmt|;
+comment|/**<i>stored in git, used for caching</i> the user's preferences. */
+DECL|field|generalPreferences
+specifier|private
+name|GeneralPreferencesInfo
+name|generalPreferences
 decl_stmt|;
 DECL|method|Account ()
 specifier|protected
@@ -756,17 +760,6 @@ operator|.
 name|registeredOn
 operator|=
 name|registeredOn
-expr_stmt|;
-name|generalPreferences
-operator|=
-operator|new
-name|AccountGeneralPreferences
-argument_list|()
-expr_stmt|;
-name|generalPreferences
-operator|.
-name|resetToDefaults
-argument_list|()
 expr_stmt|;
 block|}
 comment|/** Get local id of this account, to link with in other entities */
@@ -1017,23 +1010,22 @@ return|return
 name|registeredOn
 return|;
 block|}
-DECL|method|getGeneralPreferences ()
+DECL|method|getGeneralPreferencesInfo ()
 specifier|public
-name|AccountGeneralPreferences
-name|getGeneralPreferences
+name|GeneralPreferencesInfo
+name|getGeneralPreferencesInfo
 parameter_list|()
 block|{
 return|return
 name|generalPreferences
 return|;
 block|}
-DECL|method|setGeneralPreferences (final AccountGeneralPreferences p)
+DECL|method|setGeneralPreferences (GeneralPreferencesInfo p)
 specifier|public
 name|void
 name|setGeneralPreferences
 parameter_list|(
-specifier|final
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 name|p
 parameter_list|)
 block|{

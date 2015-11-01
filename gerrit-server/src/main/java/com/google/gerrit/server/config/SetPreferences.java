@@ -67,24 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|GetPreferences
-operator|.
-name|loadFromAllUsers
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -161,6 +143,22 @@ operator|.
 name|restapi
 operator|.
 name|RestModifyView
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|GeneralPreferencesLoader
 import|;
 end_import
 
@@ -278,6 +276,12 @@ argument_list|,
 name|GeneralPreferencesInfo
 argument_list|>
 block|{
+DECL|field|loader
+specifier|private
+specifier|final
+name|GeneralPreferencesLoader
+name|loader
+decl_stmt|;
 DECL|field|metaDataUpdateFactory
 specifier|private
 specifier|final
@@ -297,9 +301,12 @@ name|allUsersName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetPreferences (Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllUsersName allUsersName)
+DECL|method|SetPreferences (GeneralPreferencesLoader loader, Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllUsersName allUsersName)
 name|SetPreferences
 parameter_list|(
+name|GeneralPreferencesLoader
+name|loader
+parameter_list|,
 name|Provider
 argument_list|<
 name|MetaDataUpdate
@@ -312,6 +319,12 @@ name|AllUsersName
 name|allUsersName
 parameter_list|)
 block|{
+name|this
+operator|.
+name|loader
+operator|=
+name|loader
+expr_stmt|;
 name|this
 operator|.
 name|metaDataUpdateFactory
@@ -503,6 +516,8 @@ name|GeneralPreferencesInfo
 argument_list|()
 decl_stmt|;
 return|return
+name|loader
+operator|.
 name|loadFromAllUsers
 argument_list|(
 name|a
