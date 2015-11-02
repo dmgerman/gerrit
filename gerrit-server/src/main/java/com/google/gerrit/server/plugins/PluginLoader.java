@@ -1236,7 +1236,7 @@ block|}
 block|}
 DECL|method|installPluginFromStream (String originalName, InputStream in)
 specifier|public
-name|void
+name|String
 name|installPluginFromStream
 parameter_list|(
 name|String
@@ -1512,6 +1512,9 @@ name|cleanInBackground
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+name|name
+return|;
 block|}
 DECL|method|asTemp (InputStream in, String prefix, String suffix, Path dir)
 specifier|static
