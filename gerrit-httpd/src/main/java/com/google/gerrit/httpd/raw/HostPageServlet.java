@@ -1055,7 +1055,6 @@ name|getDiff
 operator|=
 name|diffPref
 expr_stmt|;
-specifier|final
 name|String
 name|pageName
 init|=
@@ -1182,7 +1181,6 @@ operator|.
 name|newHasher
 argument_list|()
 decl_stmt|;
-specifier|final
 name|byte
 index|[]
 name|buf
@@ -1281,13 +1279,12 @@ name|Page
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getPluginsLoadTimeout (final Config cfg)
+DECL|method|getPluginsLoadTimeout (Config cfg)
 specifier|private
 specifier|static
 name|int
 name|getPluginsLoadTimeout
 parameter_list|(
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
@@ -1332,16 +1329,14 @@ operator|)
 name|cfgValue
 return|;
 block|}
-DECL|method|json (final Object data, final StringWriter w)
+DECL|method|json (Object data, StringWriter w)
 specifier|private
 name|void
 name|json
 parameter_list|(
-specifier|final
 name|Object
 name|data
 parameter_list|,
-specifier|final
 name|StringWriter
 name|w
 parameter_list|)
@@ -1419,23 +1414,20 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|doGet (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doGet (HttpServletRequest req, HttpServletResponse rsp)
 specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
 name|Page
 operator|.
 name|Content
@@ -1446,7 +1438,6 @@ argument_list|(
 name|req
 argument_list|)
 decl_stmt|;
-specifier|final
 name|StringWriter
 name|w
 init|=
@@ -1454,7 +1445,6 @@ operator|new
 name|StringWriter
 argument_list|()
 decl_stmt|;
-specifier|final
 name|CurrentUser
 name|user
 init|=
@@ -1589,7 +1579,6 @@ argument_list|(
 name|w
 argument_list|)
 expr_stmt|;
-specifier|final
 name|byte
 index|[]
 name|hpd
@@ -1604,7 +1593,6 @@ argument_list|(
 name|UTF_8
 argument_list|)
 decl_stmt|;
-specifier|final
 name|byte
 index|[]
 name|raw
@@ -1624,7 +1612,6 @@ operator|.
 name|part2
 argument_list|)
 decl_stmt|;
-specifier|final
 name|byte
 index|[]
 name|tosend
@@ -2319,7 +2306,6 @@ operator|.
 name|site_footer
 argument_list|)
 expr_stmt|;
-specifier|final
 name|HostPageData
 name|pageData
 init|=
@@ -2348,7 +2334,6 @@ name|pluginsLoadTimeout
 operator|=
 name|pluginsLoadTimeout
 expr_stmt|;
-specifier|final
 name|StringWriter
 name|w
 init|=
@@ -2381,7 +2366,6 @@ argument_list|(
 literal|";"
 argument_list|)
 expr_stmt|;
-specifier|final
 name|Element
 name|data
 init|=
@@ -2507,12 +2491,11 @@ name|isStale
 argument_list|()
 return|;
 block|}
-DECL|method|asScript (final Element scriptNode)
+DECL|method|asScript (Element scriptNode)
 specifier|private
 name|void
 name|asScript
 parameter_list|(
-specifier|final
 name|Element
 name|scriptNode
 parameter_list|)
@@ -2561,7 +2544,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
 name|String
 name|raw
 init|=
@@ -2572,7 +2554,6 @@ argument_list|(
 name|hostDoc
 argument_list|)
 decl_stmt|;
-specifier|final
 name|int
 name|p
 init|=
@@ -2658,7 +2639,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
 name|FileInfo
 name|info
 init|=
@@ -2668,7 +2648,6 @@ argument_list|(
 name|src
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Element
 name|banner
 init|=
@@ -2782,7 +2761,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
 name|FileInfo
 name|info
 init|=
@@ -2792,7 +2770,6 @@ argument_list|(
 name|src
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Element
 name|banner
 init|=
