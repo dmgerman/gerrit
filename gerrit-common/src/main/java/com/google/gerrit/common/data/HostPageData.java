@@ -112,6 +112,26 @@ specifier|public
 class|class
 name|HostPageData
 block|{
+comment|/**    * Name of the cookie in which the XSRF token is sent from the server to the    * client during host page bootstrapping.    */
+DECL|field|XSRF_COOKIE_NAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|XSRF_COOKIE_NAME
+init|=
+literal|"XSRF_TOKEN"
+decl_stmt|;
+comment|/**    * Name of the HTTP header in which the client must send the XSRF token to the    * server on each request.    */
+DECL|field|XSRF_HEADER_NAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|XSRF_HEADER_NAME
+init|=
+literal|"X-Gerrit-Auth"
+decl_stmt|;
 DECL|field|version
 specifier|public
 name|String
@@ -121,11 +141,6 @@ DECL|field|accountDiffPref
 specifier|public
 name|DiffPreferencesInfo
 name|accountDiffPref
-decl_stmt|;
-DECL|field|xGerritAuth
-specifier|public
-name|String
-name|xGerritAuth
 decl_stmt|;
 DECL|field|theme
 specifier|public

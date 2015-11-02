@@ -119,6 +119,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|HostPageData
+operator|.
+name|XSRF_COOKIE_NAME
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -3142,17 +3160,11 @@ if|if
 condition|(
 name|result
 operator|.
-name|xGerritAuth
+name|accountDiffPref
 operator|!=
 literal|null
 condition|)
 block|{
-name|xGerritAuth
-operator|=
-name|result
-operator|.
-name|xGerritAuth
-expr_stmt|;
 comment|// TODO: Support options on the GetDetail REST endpoint so that it can
 comment|// also return the preferences. Then we can fetch everything with a
 comment|// single request and we don't need the callback group anymore.
@@ -3335,6 +3347,22 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
+name|xGerritAuth
+operator|=
+name|Cookies
+operator|.
+name|getCookie
+argument_list|(
+name|XSRF_COOKIE_NAME
+argument_list|)
+expr_stmt|;
+name|Cookies
+operator|.
+name|removeCookie
+argument_list|(
+name|XSRF_COOKIE_NAME
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
