@@ -386,7 +386,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeException
+name|IntegrationException
 import|;
 end_import
 
@@ -1069,7 +1069,7 @@ name|IOException
 throws|,
 name|InvalidChangeOperationException
 throws|,
-name|MergeException
+name|IntegrationException
 throws|,
 name|UpdateException
 throws|,
@@ -1612,7 +1612,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cherry pick failed: "
 operator|+

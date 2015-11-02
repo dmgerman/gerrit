@@ -256,7 +256,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeException
+name|IntegrationException
 import|;
 end_import
 
@@ -724,7 +724,7 @@ throw|;
 block|}
 catch|catch
 parameter_list|(
-name|MergeException
+name|IntegrationException
 decl||
 name|NoSuchChangeException
 name|e

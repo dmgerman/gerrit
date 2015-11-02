@@ -1278,7 +1278,7 @@ argument_list|>
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 for|for
 control|(
@@ -1346,7 +1346,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot fast-forward test during merge"
 argument_list|,
@@ -1377,7 +1377,7 @@ argument_list|>
 name|toSort
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 name|List
 argument_list|<
@@ -1413,7 +1413,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Branch head sorting failed"
 argument_list|,
@@ -2499,7 +2499,7 @@ name|CodeReviewCommit
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 if|if
 condition|(
@@ -2586,7 +2586,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot merge "
 operator|+
@@ -2618,7 +2618,7 @@ name|CodeReviewCommit
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 if|if
 condition|(
@@ -2659,7 +2659,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot fast-forward test during merge"
 argument_list|,
@@ -2689,7 +2689,7 @@ name|CodeReviewCommit
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 if|if
 condition|(
@@ -2781,7 +2781,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot merge "
 operator|+
@@ -2839,7 +2839,7 @@ name|CodeReviewCommit
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 try|try
 block|{
@@ -2871,7 +2871,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Branch head sorting failed"
 argument_list|,
@@ -2984,7 +2984,7 @@ name|CodeReviewCommit
 name|n
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 specifier|final
 name|ThreeWayMerger
@@ -3100,7 +3100,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot merge "
 operator|+
@@ -3125,7 +3125,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot merge "
 operator|+
@@ -4106,7 +4106,7 @@ argument_list|>
 name|alreadyAccepted
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 if|if
 condition|(
@@ -4223,7 +4223,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot mark clean merges"
 argument_list|,

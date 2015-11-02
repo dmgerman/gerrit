@@ -1915,7 +1915,7 @@ name|NameKey
 name|destBranch
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 name|destProject
 operator|=
@@ -1938,7 +1938,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"No such project: "
 operator|+
@@ -2787,7 +2787,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MergeException
+name|IntegrationException
 name|e
 parameter_list|)
 block|{
@@ -2837,7 +2837,7 @@ name|IdentifiedUser
 name|caller
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 throws|,
 name|NoSuchChangeException
 throws|,
@@ -3272,7 +3272,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot query the database"
 argument_list|,
@@ -3288,7 +3288,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot query the database"
 argument_list|,
@@ -3321,7 +3321,7 @@ name|CodeReviewCommit
 name|branchTip
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 throws|,
 name|OrmException
 block|{
@@ -3476,7 +3476,7 @@ name|IdentifiedUser
 name|caller
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 throws|,
 name|NoSuchProjectException
 block|{
@@ -3519,7 +3519,7 @@ name|NameKey
 name|name
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 throws|,
 name|NoSuchProjectException
 block|{
@@ -3571,7 +3571,7 @@ literal|'"'
 decl_stmt|;
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 name|m
 argument_list|,
@@ -3689,7 +3689,7 @@ name|NameKey
 name|destBranch
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 if|if
 condition|(
@@ -3806,7 +3806,7 @@ else|else
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"The destination branch "
 operator|+
@@ -3861,7 +3861,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot open branch"
 argument_list|,
@@ -3881,7 +3881,7 @@ name|NameKey
 name|destBranch
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 if|if
 condition|(
@@ -3931,7 +3931,7 @@ name|CodeReviewCommit
 name|branchTip
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 name|Set
 argument_list|<
@@ -4018,7 +4018,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Failed to determine already accepted commits."
 argument_list|,
@@ -4057,7 +4057,7 @@ argument_list|>
 name|submitted
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 name|logDebug
 argument_list|(
@@ -4113,7 +4113,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 name|e
 operator|.
@@ -4197,7 +4197,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Failed to validate changes"
 argument_list|,
@@ -4307,7 +4307,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot query the database"
 argument_list|,
@@ -4807,7 +4807,7 @@ name|NameKey
 name|destBranch
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 name|RefUpdate
 name|branchUpdate
@@ -4967,7 +4967,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Submit would store invalid"
 operator|+
@@ -5173,7 +5173,7 @@ name|LOCK_FAILURE
 case|:
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Failed to lock "
 operator|+
@@ -5211,7 +5211,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot update "
 operator|+
@@ -5414,7 +5414,7 @@ parameter_list|)
 throws|throws
 name|NoSuchChangeException
 throws|,
-name|MergeException
+name|IntegrationException
 throws|,
 name|ResourceConflictException
 throws|,
@@ -5787,7 +5787,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 literal|"Cannot merge "
 operator|+
@@ -5872,7 +5872,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 name|msg
 operator|.
@@ -5907,7 +5907,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|MergeException
+name|IntegrationException
 argument_list|(
 name|msg
 operator|.

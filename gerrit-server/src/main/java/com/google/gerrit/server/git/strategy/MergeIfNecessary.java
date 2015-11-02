@@ -96,7 +96,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|MergeException
+name|IntegrationException
 import|;
 end_import
 
@@ -190,7 +190,7 @@ argument_list|>
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 name|List
 argument_list|<
@@ -426,7 +426,7 @@ name|CodeReviewCommit
 name|toMerge
 parameter_list|)
 throws|throws
-name|MergeException
+name|IntegrationException
 block|{
 return|return
 name|args
