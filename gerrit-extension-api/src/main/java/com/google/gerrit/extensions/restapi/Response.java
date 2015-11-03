@@ -206,6 +206,25 @@ name|value
 argument_list|)
 return|;
 block|}
+comment|/** HTTP 202 Accepted: accepted as background task. */
+DECL|method|accepted (String location)
+specifier|public
+specifier|static
+name|Accepted
+name|accepted
+parameter_list|(
+name|String
+name|location
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Accepted
+argument_list|(
+name|location
+argument_list|)
+return|;
+block|}
 comment|/** HTTP 204 No Content: typically used when the resource is deleted. */
 annotation|@
 name|SuppressWarnings
@@ -695,6 +714,111 @@ operator|.
 name|format
 argument_list|(
 literal|"[302 Redirect] %s"
+argument_list|,
+name|location
+argument_list|)
+return|;
+block|}
+block|}
+comment|/** Accepted as task for asynchronous execution. */
+DECL|class|Accepted
+specifier|public
+specifier|static
+specifier|final
+class|class
+name|Accepted
+block|{
+DECL|field|location
+specifier|private
+specifier|final
+name|String
+name|location
+decl_stmt|;
+DECL|method|Accepted (String url)
+specifier|private
+name|Accepted
+parameter_list|(
+name|String
+name|url
+parameter_list|)
+block|{
+name|this
+operator|.
+name|location
+operator|=
+name|url
+expr_stmt|;
+block|}
+DECL|method|location ()
+specifier|public
+name|String
+name|location
+parameter_list|()
+block|{
+return|return
+name|location
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|location
+operator|.
+name|hashCode
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|equals (Object o)
+specifier|public
+name|boolean
+name|equals
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+return|return
+name|o
+operator|instanceof
+name|Accepted
+operator|&&
+operator|(
+operator|(
+name|Accepted
+operator|)
+name|o
+operator|)
+operator|.
+name|location
+operator|.
+name|equals
+argument_list|(
+name|location
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"[202 Accepted] %s"
 argument_list|,
 name|location
 argument_list|)
