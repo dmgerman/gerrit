@@ -914,7 +914,7 @@ decl_stmt|;
 DECL|field|staticServlet
 specifier|private
 specifier|final
-name|StaticServlet
+name|SiteStaticDirectoryServlet
 name|staticServlet
 decl_stmt|;
 DECL|field|isNoteDbEnabled
@@ -943,7 +943,7 @@ name|page
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet ( Provider<CurrentUser> cu, DynamicItem<WebSession> w, SitePaths sp, ThemeFactory themeFactory, ServletContext servletContext, DynamicSet<WebUiPlugin> webUiPlugins, DynamicSet<MessageOfTheDay> motd, @GerritServerConfig Config cfg, StaticServlet ss, NotesMigration migration, GetDiffPreferences diffPref)
+DECL|method|HostPageServlet ( Provider<CurrentUser> cu, DynamicItem<WebSession> w, SitePaths sp, ThemeFactory themeFactory, ServletContext servletContext, DynamicSet<WebUiPlugin> webUiPlugins, DynamicSet<MessageOfTheDay> motd, @GerritServerConfig Config cfg, SiteStaticDirectoryServlet ss, NotesMigration migration, GetDiffPreferences diffPref)
 name|HostPageServlet
 parameter_list|(
 name|Provider
@@ -984,7 +984,7 @@ name|GerritServerConfig
 name|Config
 name|cfg
 parameter_list|,
-name|StaticServlet
+name|SiteStaticDirectoryServlet
 name|ss
 parameter_list|,
 name|NotesMigration

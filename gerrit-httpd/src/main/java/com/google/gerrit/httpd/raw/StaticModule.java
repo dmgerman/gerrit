@@ -157,7 +157,7 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-name|StaticServlet
+name|SiteStaticDirectoryServlet
 operator|.
 name|class
 argument_list|)

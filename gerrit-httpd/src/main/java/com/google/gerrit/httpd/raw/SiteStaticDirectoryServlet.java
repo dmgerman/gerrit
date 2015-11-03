@@ -193,10 +193,10 @@ end_comment
 begin_class
 annotation|@
 name|Singleton
-DECL|class|StaticServlet
+DECL|class|SiteStaticDirectoryServlet
 specifier|public
 class|class
-name|StaticServlet
+name|SiteStaticDirectoryServlet
 extends|extends
 name|ResourceServlet
 block|{
@@ -217,8 +217,8 @@ name|staticBase
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StaticServlet ( SitePaths site, @GerritServerConfig Config cfg, @Named(StaticModule.CACHE) Cache<Path, Resource> cache)
-name|StaticServlet
+DECL|method|SiteStaticDirectoryServlet ( SitePaths site, @GerritServerConfig Config cfg, @Named(StaticModule.CACHE) Cache<Path, Resource> cache)
+name|SiteStaticDirectoryServlet
 parameter_list|(
 name|SitePaths
 name|site
