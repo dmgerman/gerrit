@@ -1346,6 +1346,39 @@ name|db
 argument_list|)
 return|;
 block|}
+comment|/** Can this user change the destination branch of this change       to the new ref? */
+DECL|method|canMoveTo (String ref, ReviewDb db)
+specifier|public
+name|boolean
+name|canMoveTo
+parameter_list|(
+name|String
+name|ref
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|getProjectControl
+argument_list|()
+operator|.
+name|controlForRef
+argument_list|(
+name|ref
+argument_list|)
+operator|.
+name|canUpload
+argument_list|()
+operator|&&
+name|canAbandon
+argument_list|(
+name|db
+argument_list|)
+return|;
+block|}
 comment|/** Can this user publish this draft change or any draft patch set of this change? */
 DECL|method|canPublish (final ReviewDb db)
 specifier|public

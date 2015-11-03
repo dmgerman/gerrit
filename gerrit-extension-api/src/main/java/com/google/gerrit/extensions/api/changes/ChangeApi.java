@@ -306,6 +306,26 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|move (String destination)
+name|void
+name|move
+parameter_list|(
+name|String
+name|destination
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|move (MoveInput in)
+name|void
+name|move
+parameter_list|(
+name|MoveInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Create a new change that reverts this change.    *    * @see Changes#id(int)    */
 DECL|method|revert ()
 name|ChangeApi
@@ -754,6 +774,44 @@ name|void
 name|restore
 parameter_list|(
 name|RestoreInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|move (String destination)
+specifier|public
+name|void
+name|move
+parameter_list|(
+name|String
+name|destination
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|move (MoveInput in)
+specifier|public
+name|void
+name|move
+parameter_list|(
+name|MoveInput
 name|in
 parameter_list|)
 throws|throws
