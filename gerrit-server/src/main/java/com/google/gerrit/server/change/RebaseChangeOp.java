@@ -1238,7 +1238,7 @@ operator|.
 name|asIdentifiedUser
 argument_list|()
 operator|.
-name|newRefLogIdent
+name|newCommitterIdent
 argument_list|(
 name|ctx
 operator|.
