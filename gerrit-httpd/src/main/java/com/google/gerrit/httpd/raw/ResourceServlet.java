@@ -976,6 +976,17 @@ block|}
 block|}
 if|if
 condition|(
+operator|!
+name|CacheHeaders
+operator|.
+name|hasCacheHeader
+argument_list|(
+name|rsp
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
 name|e
 operator|!=
 literal|null
@@ -1023,6 +1034,7 @@ argument_list|,
 name|refresh
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|rsp
 operator|.
