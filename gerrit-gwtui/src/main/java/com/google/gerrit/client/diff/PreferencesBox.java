@@ -3429,9 +3429,8 @@ block|{
 name|DiffPreferencesInfo
 name|p
 init|=
-name|Gerrit
-operator|.
-name|getDiffPreferences
+operator|new
+name|DiffPreferencesInfo
 argument_list|()
 decl_stmt|;
 name|result
