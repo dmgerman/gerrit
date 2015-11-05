@@ -878,7 +878,7 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
-name|ConfigSuite
+name|FakeAccountCache
 import|;
 end_import
 
@@ -892,7 +892,7 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
-name|FakeAccountCache
+name|GerritServerTests
 import|;
 end_import
 
@@ -1146,18 +1146,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|runner
-operator|.
-name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -1207,17 +1195,12 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|RunWith
-argument_list|(
-name|ConfigSuite
-operator|.
-name|class
-argument_list|)
 DECL|class|CommentsTest
 specifier|public
 class|class
 name|CommentsTest
+extends|extends
+name|GerritServerTests
 block|{
 DECL|field|TZ
 specifier|private
@@ -1233,35 +1216,6 @@ argument_list|(
 literal|"America/Los_Angeles"
 argument_list|)
 decl_stmt|;
-annotation|@
-name|ConfigSuite
-operator|.
-name|Parameter
-DECL|field|config
-specifier|public
-name|Config
-name|config
-decl_stmt|;
-annotation|@
-name|ConfigSuite
-operator|.
-name|Config
-annotation|@
-name|GerritServerConfig
-DECL|method|noteDbEnabled ()
-specifier|public
-specifier|static
-name|Config
-name|noteDbEnabled
-parameter_list|()
-block|{
-return|return
-name|NotesMigration
-operator|.
-name|allEnabledConfig
-argument_list|()
-return|;
-block|}
 annotation|@
 name|Rule
 DECL|field|exception
