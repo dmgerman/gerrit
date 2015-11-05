@@ -94,7 +94,9 @@ name|extensions
 operator|.
 name|client
 operator|.
-name|Theme
+name|DiffPreferencesInfo
+operator|.
+name|Whitespace
 import|;
 end_import
 
@@ -110,9 +112,7 @@ name|extensions
 operator|.
 name|client
 operator|.
-name|DiffPreferencesInfo
-operator|.
-name|Whitespace
+name|Theme
 import|;
 end_import
 
