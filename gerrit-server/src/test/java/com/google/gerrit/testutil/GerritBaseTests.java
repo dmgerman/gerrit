@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.query
+DECL|package|com.google.gerrit.testutil
 package|package
 name|com
 operator|.
@@ -60,34 +60,51 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|query
+name|testutil
 package|;
 end_package
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|junit
 operator|.
-name|gerrit
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|testutil
+name|junit
 operator|.
-name|GerritBaseTests
+name|rules
+operator|.
+name|ExpectedException
 import|;
 end_import
 
 begin_class
-DECL|class|PredicateTest
+DECL|class|GerritBaseTests
 specifier|public
 class|class
-name|PredicateTest
-extends|extends
 name|GerritBaseTests
-block|{ }
+block|{
+annotation|@
+name|Rule
+DECL|field|exception
+specifier|public
+name|ExpectedException
+name|exception
+init|=
+name|ExpectedException
+operator|.
+name|none
+argument_list|()
+decl_stmt|;
+block|}
 end_class
 
 end_unit

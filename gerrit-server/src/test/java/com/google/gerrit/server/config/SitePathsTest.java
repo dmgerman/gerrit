@@ -144,11 +144,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Rule
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|GerritBaseTests
 import|;
 end_import
 
@@ -159,18 +163,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|ExpectedException
 import|;
 end_import
 
@@ -237,19 +229,9 @@ DECL|class|SitePathsTest
 specifier|public
 class|class
 name|SitePathsTest
+extends|extends
+name|GerritBaseTests
 block|{
-annotation|@
-name|Rule
-DECL|field|exception
-specifier|public
-name|ExpectedException
-name|exception
-init|=
-name|ExpectedException
-operator|.
-name|none
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Test
 DECL|method|testCreate_NotExisting ()
