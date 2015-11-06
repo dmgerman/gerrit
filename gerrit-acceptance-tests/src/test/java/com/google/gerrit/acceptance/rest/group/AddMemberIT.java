@@ -69,22 +69,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth
-operator|.
-name|assertThat
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -95,18 +79,6 @@ operator|.
 name|acceptance
 operator|.
 name|AbstractDaemonTest
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|http
-operator|.
-name|HttpStatus
 import|;
 end_import
 
@@ -138,9 +110,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|int
-name|status
-init|=
 name|adminSession
 operator|.
 name|put
@@ -148,20 +117,8 @@ argument_list|(
 literal|"/groups/Administrators/members/non-existing"
 argument_list|)
 operator|.
-name|getStatusCode
+name|assertNotFound
 argument_list|()
-decl_stmt|;
-name|assertThat
-argument_list|(
-name|status
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
-name|HttpStatus
-operator|.
-name|SC_NOT_FOUND
-argument_list|)
 expr_stmt|;
 block|}
 block|}
