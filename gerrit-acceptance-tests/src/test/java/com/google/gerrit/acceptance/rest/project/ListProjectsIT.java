@@ -1636,7 +1636,6 @@ expr_stmt|;
 block|}
 DECL|method|assertBadRequest (ListRequest req)
 specifier|private
-specifier|static
 name|void
 name|assertBadRequest
 parameter_list|(
@@ -1646,22 +1645,20 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|req
 operator|.
 name|get
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|BadRequestException
-name|expected
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 DECL|method|filter (Iterable<ProjectInfo> infos)
 specifier|private

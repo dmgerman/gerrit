@@ -523,8 +523,15 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|AuthException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|approve
 argument_list|(
 name|a
@@ -532,15 +539,6 @@ argument_list|,
 name|changeId
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|AuthException
-name|expected
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 DECL|method|grantApproveToChangeOwner ()
 specifier|private
