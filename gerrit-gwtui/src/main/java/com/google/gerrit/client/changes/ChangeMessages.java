@@ -245,6 +245,14 @@ name|int
 name|deletions
 parameter_list|)
 function_decl|;
+DECL|method|diffBaseParent (int parentNum)
+name|String
+name|diffBaseParent
+parameter_list|(
+name|int
+name|parentNum
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

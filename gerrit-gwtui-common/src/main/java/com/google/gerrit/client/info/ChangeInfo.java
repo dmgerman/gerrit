@@ -2037,6 +2037,41 @@ return|return
 name|revisionInfo
 return|;
 block|}
+DECL|method|forParent (int number, CommitInfo commit)
+specifier|public
+specifier|static
+name|RevisionInfo
+name|forParent
+parameter_list|(
+name|int
+name|number
+parameter_list|,
+name|CommitInfo
+name|commit
+parameter_list|)
+block|{
+name|RevisionInfo
+name|revisionInfo
+init|=
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+decl_stmt|;
+name|revisionInfo
+operator|.
+name|takeFromParent
+argument_list|(
+name|number
+argument_list|,
+name|commit
+argument_list|)
+expr_stmt|;
+return|return
+name|revisionInfo
+return|;
+block|}
 DECL|method|takeFromEdit (EditInfo edit)
 specifier|private
 specifier|native
@@ -2047,6 +2082,20 @@ name|EditInfo
 name|edit
 parameter_list|)
 comment|/*-{       this._number = 0;       this.name = edit.name;       this.commit = edit.commit;       this.edit_base = edit.base_revision;     }-*/
+function_decl|;
+DECL|method|takeFromParent (int number, CommitInfo commit)
+specifier|private
+specifier|native
+name|void
+name|takeFromParent
+parameter_list|(
+name|int
+name|number
+parameter_list|,
+name|CommitInfo
+name|commit
+parameter_list|)
+comment|/*-{       this._number = number;       this.commit = commit;       this.name = this._number;     }-*/
 function_decl|;
 DECL|method|_number ()
 specifier|public

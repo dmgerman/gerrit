@@ -836,11 +836,6 @@ name|getProject
 argument_list|()
 decl_stmt|;
 name|ObjectId
-name|a
-init|=
-literal|null
-decl_stmt|;
-name|ObjectId
 name|b
 init|=
 name|ObjectId
@@ -866,11 +861,10 @@ decl_stmt|;
 name|PatchListKey
 name|plKey
 init|=
-operator|new
 name|PatchListKey
+operator|.
+name|againstDefaultBase
 argument_list|(
-name|a
-argument_list|,
 name|b
 argument_list|,
 name|ws

@@ -182,6 +182,17 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * @param parent 1-based parent number to diff against    */
+DECL|method|diff (int parent)
+name|DiffInfo
+name|diff
+parameter_list|(
+name|int
+name|parent
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Creates a request to retrieve the diff. On the returned request formatting    * options for the diff can be set.    */
 DECL|method|diffRequest ()
 name|DiffRequest
@@ -389,6 +400,25 @@ name|diff
 parameter_list|(
 name|String
 name|base
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|diff (int parent)
+specifier|public
+name|DiffInfo
+name|diff
+parameter_list|(
+name|int
+name|parent
 parameter_list|)
 throws|throws
 name|RestApiException

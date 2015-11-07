@@ -526,6 +526,14 @@ name|side
 argument_list|()
 argument_list|)
 argument_list|,
+name|getParentNumFromDisplaySide
+argument_list|(
+name|cm
+operator|.
+name|side
+argument_list|()
+argument_list|)
+argument_list|,
 name|line
 argument_list|,
 name|CommentRange
