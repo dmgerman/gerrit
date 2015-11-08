@@ -1036,6 +1036,21 @@ name|init
 operator|.
 name|flags
 operator|.
+name|dev
+operator|=
+name|isDev
+argument_list|()
+operator|&&
+name|init
+operator|.
+name|site
+operator|.
+name|isNew
+expr_stmt|;
+name|init
+operator|.
+name|flags
+operator|.
 name|skipPlugins
 operator|=
 name|skipPlugins
@@ -2761,6 +2776,19 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|method|isDev ()
+specifier|protected
+name|boolean
+name|isDev
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
 block|}
 end_function
 

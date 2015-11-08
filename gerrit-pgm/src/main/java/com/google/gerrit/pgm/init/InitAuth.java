@@ -212,20 +212,6 @@ name|Singleton
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
 begin_comment
 comment|/** Initialize the {@code auth} configuration section. */
 end_comment
@@ -257,12 +243,6 @@ name|ENABLE_SIGNED_PUSH
 init|=
 literal|"enableSignedPush"
 decl_stmt|;
-DECL|field|cfg
-specifier|private
-specifier|final
-name|Config
-name|cfg
-decl_stmt|;
 DECL|field|ui
 specifier|private
 specifier|final
@@ -293,6 +273,12 @@ specifier|final
 name|Libraries
 name|libraries
 decl_stmt|;
+DECL|field|flags
+specifier|private
+specifier|final
+name|InitFlags
+name|flags
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|InitAuth (InitFlags flags, ConsoleUI ui, Libraries libraries, Section.Factory sections)
@@ -315,11 +301,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|cfg
+name|flags
 operator|=
 name|flags
-operator|.
-name|cfg
 expr_stmt|;
 name|this
 operator|.
@@ -437,6 +421,14 @@ literal|"Authentication method"
 argument_list|,
 literal|"type"
 argument_list|,
+name|flags
+operator|.
+name|dev
+condition|?
+name|AuthType
+operator|.
+name|DEVELOPMENT_BECOME_ANY_ACCOUNT
+else|:
 name|AuthType
 operator|.
 name|OPENID
@@ -720,6 +712,8 @@ block|{
 name|boolean
 name|def
 init|=
+name|flags
+operator|.
 name|cfg
 operator|.
 name|getBoolean

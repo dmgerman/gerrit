@@ -232,6 +232,12 @@ specifier|public
 name|boolean
 name|skipPlugins
 decl_stmt|;
+comment|/** Dev mode */
+DECL|field|dev
+specifier|public
+name|boolean
+name|dev
+decl_stmt|;
 DECL|field|cfg
 specifier|public
 specifier|final

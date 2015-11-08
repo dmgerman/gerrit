@@ -524,6 +524,22 @@ name|String
 name|secureStoreLib
 decl_stmt|;
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--dev"
+argument_list|,
+name|usage
+operator|=
+literal|"Setup site with default options suitable for developers"
+argument_list|)
+DECL|field|dev
+specifier|private
+name|boolean
+name|dev
+decl_stmt|;
+annotation|@
 name|Inject
 DECL|field|browser
 name|Browser
@@ -877,6 +893,18 @@ parameter_list|()
 block|{
 return|return
 name|skipPlugins
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isDev ()
+specifier|protected
+name|boolean
+name|isDev
+parameter_list|()
+block|{
+return|return
+name|dev
 return|;
 block|}
 annotation|@
