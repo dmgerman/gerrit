@@ -241,7 +241,13 @@ literal|"sshd"
 argument_list|,
 literal|"batchThreads"
 argument_list|,
-literal|0
+name|cores
+operator|==
+literal|1
+condition|?
+literal|1
+else|:
+literal|2
 argument_list|)
 expr_stmt|;
 if|if
