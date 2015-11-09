@@ -280,6 +280,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ApprovalsUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|CurrentUser
 import|;
 end_import
@@ -779,9 +793,15 @@ specifier|final
 name|ChangeNotes
 name|notes
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|private
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, @Assisted RefControl refControl, @Assisted Change change)
+DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, @Assisted RefControl refControl, @Assisted Change change)
 name|ChangeControl
 parameter_list|(
 name|ChangeData
@@ -793,6 +813,9 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|notesFactory
+parameter_list|,
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 annotation|@
 name|Assisted
@@ -809,6 +832,8 @@ name|this
 argument_list|(
 name|changeDataFactory
 argument_list|,
+name|approvalsUtil
+argument_list|,
 name|refControl
 argument_list|,
 name|notesFactory
@@ -822,13 +847,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, @Assisted RefControl refControl, @Assisted ChangeNotes notes)
+DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, @Assisted RefControl refControl, @Assisted ChangeNotes notes)
 name|ChangeControl
 parameter_list|(
 name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
+parameter_list|,
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 annotation|@
 name|Assisted
@@ -846,6 +874,12 @@ operator|.
 name|changeDataFactory
 operator|=
 name|changeDataFactory
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.
@@ -890,6 +924,8 @@ operator|new
 name|ChangeControl
 argument_list|(
 name|changeDataFactory
+argument_list|,
+name|approvalsUtil
 argument_list|,
 name|getRefControl
 argument_list|()
@@ -1160,13 +1196,19 @@ argument_list|)
 return|;
 block|}
 comment|/** Can this user abandon this change? */
-DECL|method|canAbandon ()
+DECL|method|canAbandon (ReviewDb db)
 specifier|public
 name|boolean
 name|canAbandon
-parameter_list|()
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
+operator|(
 name|isOwner
 argument_list|()
 comment|// owner (aka creator) of the change can abandon
@@ -1201,6 +1243,13 @@ operator|.
 name|canAbandon
 argument_list|()
 comment|// user can abandon a specific ref
+operator|)
+operator|&&
+operator|!
+name|isPatchSetLocked
+argument_list|(
+name|db
+argument_list|)
 return|;
 block|}
 comment|/** Can this user publish this draft change or any draft patch set of this change? */
@@ -1266,13 +1315,19 @@ argument_list|)
 return|;
 block|}
 comment|/** Can this user rebase this change? */
-DECL|method|canRebase ()
+DECL|method|canRebase (ReviewDb db)
 specifier|public
 name|boolean
 name|canRebase
-parameter_list|()
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
+operator|(
 name|isOwner
 argument_list|()
 operator|||
@@ -1287,18 +1342,32 @@ argument_list|()
 operator|.
 name|canRebase
 argument_list|()
+operator|)
+operator|&&
+operator|!
+name|isPatchSetLocked
+argument_list|(
+name|db
+argument_list|)
 return|;
 block|}
 comment|/** Can this user restore this change? */
-DECL|method|canRestore ()
+DECL|method|canRestore (ReviewDb db)
 specifier|public
 name|boolean
 name|canRestore
-parameter_list|()
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 name|canAbandon
-argument_list|()
+argument_list|(
+name|db
+argument_list|)
 comment|// Anyone who can abandon the change can restore it back
 operator|&&
 name|getRefControl
@@ -1485,11 +1554,16 @@ argument_list|)
 return|;
 block|}
 comment|/** Can this user add a patch set to this change? */
-DECL|method|canAddPatchSet ()
+DECL|method|canAddPatchSet (ReviewDb db)
 specifier|public
 name|boolean
 name|canAddPatchSet
-parameter_list|()
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 name|getRefControl
@@ -1497,6 +1571,111 @@ argument_list|()
 operator|.
 name|canUpload
 argument_list|()
+operator|&&
+operator|!
+name|isPatchSetLocked
+argument_list|(
+name|db
+argument_list|)
+return|;
+block|}
+comment|/** Is the current patch set locked against state changes? */
+DECL|method|isPatchSetLocked (ReviewDb db)
+specifier|public
+name|boolean
+name|isPatchSetLocked
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+if|if
+condition|(
+name|getChange
+argument_list|()
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|MERGED
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+for|for
+control|(
+name|PatchSetApproval
+name|ap
+range|:
+name|approvalsUtil
+operator|.
+name|byPatchSet
+argument_list|(
+name|db
+argument_list|,
+name|this
+argument_list|,
+name|getChange
+argument_list|()
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+control|)
+block|{
+name|LabelType
+name|type
+init|=
+name|getLabelTypes
+argument_list|()
+operator|.
+name|byLabel
+argument_list|(
+name|ap
+operator|.
+name|getLabel
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|type
+operator|!=
+literal|null
+operator|&&
+name|ap
+operator|.
+name|getValue
+argument_list|()
+operator|==
+literal|1
+operator|&&
+name|type
+operator|.
+name|getFunctionName
+argument_list|()
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"PatchSetLock"
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
+return|return
+literal|false
 return|;
 block|}
 comment|/** Is this user the owner of the change? */

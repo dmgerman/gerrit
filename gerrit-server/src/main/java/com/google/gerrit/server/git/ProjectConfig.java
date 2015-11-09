@@ -1345,6 +1345,8 @@ argument_list|,
 literal|"NoBlock"
 argument_list|,
 literal|"NoOp"
+argument_list|,
+literal|"PatchSetLock"
 argument_list|)
 decl_stmt|;
 DECL|field|PLUGIN

@@ -12930,6 +12930,8 @@ name|autoClose
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|OrmException
 block|{
 if|if
 condition|(
@@ -13055,9 +13057,31 @@ operator|!
 name|changeCtl
 operator|.
 name|canAddPatchSet
-argument_list|()
+argument_list|(
+name|db
+argument_list|)
 condition|)
 block|{
+name|String
+name|locked
+init|=
+literal|"."
+decl_stmt|;
+if|if
+condition|(
+name|changeCtl
+operator|.
+name|isPatchSetLocked
+argument_list|(
+name|db
+argument_list|)
+condition|)
+block|{
+name|locked
+operator|=
+literal|". Change is patch set locked."
+expr_stmt|;
+block|}
 name|reject
 argument_list|(
 name|inputCommand
@@ -13065,6 +13089,8 @@ argument_list|,
 literal|"cannot replace "
 operator|+
 name|ontoChange
+operator|+
+name|locked
 argument_list|)
 expr_stmt|;
 return|return
