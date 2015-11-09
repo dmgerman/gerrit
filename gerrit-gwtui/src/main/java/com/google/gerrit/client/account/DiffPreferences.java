@@ -203,6 +203,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|cursorBlinkRate
+argument_list|(
+name|in
+operator|.
+name|cursorBlinkRate
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|context
 argument_list|(
 name|in
@@ -352,6 +361,15 @@ argument_list|(
 name|in
 operator|.
 name|skipDeleted
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|matchBrackets
+argument_list|(
+name|in
+operator|.
+name|matchBrackets
 argument_list|)
 expr_stmt|;
 return|return
@@ -391,6 +409,13 @@ argument_list|()
 expr_stmt|;
 name|p
 operator|.
+name|cursorBlinkRate
+operator|=
+name|cursorBlinkRate
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
 name|expandAllComments
 operator|=
 name|expandAllComments
@@ -492,6 +517,13 @@ operator|.
 name|hideEmptyPane
 operator|=
 name|hideEmptyPane
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|matchBrackets
+operator|=
+name|matchBrackets
 argument_list|()
 expr_stmt|;
 name|p
@@ -683,6 +715,22 @@ literal|100
 argument_list|)
 return|;
 block|}
+DECL|method|cursorBlinkRate ()
+specifier|public
+specifier|final
+name|int
+name|cursorBlinkRate
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+literal|"cursor_blink_rate"
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
 DECL|method|showLineNumbers ()
 specifier|public
 specifier|final
@@ -744,6 +792,18 @@ name|int
 name|c
 parameter_list|)
 comment|/*-{ this.context = c }-*/
+function_decl|;
+DECL|method|cursorBlinkRate (int r)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|cursorBlinkRate
+parameter_list|(
+name|int
+name|r
+parameter_list|)
+comment|/*-{ this.cursor_blink_rate = r }-*/
 function_decl|;
 DECL|method|intralineDifference (boolean i)
 specifier|public
@@ -877,18 +937,6 @@ name|r
 parameter_list|)
 comment|/*-{ this.render_entire_file = r }-*/
 function_decl|;
-DECL|method|hideEmptyPane (boolean s)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|hideEmptyPane
-parameter_list|(
-name|boolean
-name|s
-parameter_list|)
-comment|/*-{ this.hide_empty_pane = s }-*/
-function_decl|;
 DECL|method|retainHeader (boolean r)
 specifier|public
 specifier|final
@@ -900,6 +948,18 @@ name|boolean
 name|r
 parameter_list|)
 comment|/*-{ this.retain_header = r }-*/
+function_decl|;
+DECL|method|hideEmptyPane (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|hideEmptyPane
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.hide_empty_pane = s }-*/
 function_decl|;
 DECL|method|skipUncommented (boolean s)
 specifier|public
@@ -924,6 +984,18 @@ name|boolean
 name|s
 parameter_list|)
 comment|/*-{ this.skip_deleted = s }-*/
+function_decl|;
+DECL|method|matchBrackets (boolean m)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|matchBrackets
+parameter_list|(
+name|boolean
+name|m
+parameter_list|)
+comment|/*-{ this.match_brackets = m }-*/
 function_decl|;
 DECL|method|intralineDifference ()
 specifier|public
@@ -1059,6 +1131,15 @@ name|boolean
 name|skipDeleted
 parameter_list|()
 comment|/*-{ return this.skip_deleted || false }-*/
+function_decl|;
+DECL|method|matchBrackets ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|matchBrackets
+parameter_list|()
+comment|/*-{ return this.match_brackets || false }-*/
 function_decl|;
 DECL|method|setThemeRaw (String i)
 specifier|private
