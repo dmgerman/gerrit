@@ -136,6 +136,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|ThreadSettingsConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|schema
 operator|.
 name|DataSourceProvider
@@ -245,7 +261,7 @@ name|init
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SiteLibraryBasedDataSourceProvider (SitePaths site, @GerritServerConfig Config cfg, MetricMaker metrics, DataSourceProvider.Context ctx, DataSourceType dst)
+DECL|method|SiteLibraryBasedDataSourceProvider (SitePaths site, @GerritServerConfig Config cfg, MetricMaker metrics, ThreadSettingsConfig tsc, DataSourceProvider.Context ctx, DataSourceType dst)
 name|SiteLibraryBasedDataSourceProvider
 parameter_list|(
 name|SitePaths
@@ -258,6 +274,9 @@ name|cfg
 parameter_list|,
 name|MetricMaker
 name|metrics
+parameter_list|,
+name|ThreadSettingsConfig
+name|tsc
 parameter_list|,
 name|DataSourceProvider
 operator|.
@@ -273,6 +292,8 @@ argument_list|(
 name|cfg
 argument_list|,
 name|metrics
+argument_list|,
+name|tsc
 argument_list|,
 name|ctx
 argument_list|,
