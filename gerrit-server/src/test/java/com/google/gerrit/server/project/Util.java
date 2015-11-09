@@ -1116,6 +1116,47 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|patchSetLock ()
+specifier|public
+specifier|static
+specifier|final
+name|LabelType
+name|patchSetLock
+parameter_list|()
+block|{
+name|LabelType
+name|label
+init|=
+name|category
+argument_list|(
+literal|"Patch-Set-Lock"
+argument_list|,
+name|value
+argument_list|(
+literal|1
+argument_list|,
+literal|"Patch Set Locked"
+argument_list|)
+argument_list|,
+name|value
+argument_list|(
+literal|0
+argument_list|,
+literal|"Patch Set Unlocked"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|label
+operator|.
+name|setFunctionName
+argument_list|(
+literal|"PatchSetLock"
+argument_list|)
+expr_stmt|;
+return|return
+name|label
+return|;
+block|}
 DECL|method|value (int value, String text)
 specifier|public
 specifier|static
