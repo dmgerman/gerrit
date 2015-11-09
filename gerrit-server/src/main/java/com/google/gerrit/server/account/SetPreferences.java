@@ -787,9 +787,12 @@ decl_stmt|;
 DECL|field|metaDataUpdateFactory
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|User
+argument_list|>
 name|metaDataUpdateFactory
 decl_stmt|;
 DECL|field|allUsersName
@@ -809,7 +812,7 @@ name|downloadSchemes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetPreferences (Provider<CurrentUser> self, AccountCache cache, Provider<ReviewDb> db, MetaDataUpdate.User metaDataUpdateFactory, AllUsersName allUsersName, DynamicMap<DownloadScheme> downloadSchemes)
+DECL|method|SetPreferences (Provider<CurrentUser> self, AccountCache cache, Provider<ReviewDb> db, Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllUsersName allUsersName, DynamicMap<DownloadScheme> downloadSchemes)
 name|SetPreferences
 parameter_list|(
 name|Provider
@@ -827,9 +830,12 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|User
+argument_list|>
 name|metaDataUpdateFactory
 parameter_list|,
 name|AllUsersName
@@ -977,6 +983,9 @@ name|MetaDataUpdate
 name|md
 init|=
 name|metaDataUpdateFactory
+operator|.
+name|get
+argument_list|()
 operator|.
 name|create
 argument_list|(
