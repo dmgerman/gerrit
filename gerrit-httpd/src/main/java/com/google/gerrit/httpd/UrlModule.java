@@ -198,7 +198,7 @@ name|httpd
 operator|.
 name|raw
 operator|.
-name|StaticServlet
+name|StaticModule
 import|;
 end_import
 
@@ -732,18 +732,6 @@ argument_list|)
 expr_stmt|;
 name|serve
 argument_list|(
-literal|"/static/*"
-argument_list|)
-operator|.
-name|with
-argument_list|(
-name|StaticServlet
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|serve
-argument_list|(
 literal|"/Main.class"
 argument_list|)
 operator|.
@@ -1026,6 +1014,13 @@ argument_list|(
 name|RobotsServlet
 operator|.
 name|class
+argument_list|)
+expr_stmt|;
+name|install
+argument_list|(
+operator|new
+name|StaticModule
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
