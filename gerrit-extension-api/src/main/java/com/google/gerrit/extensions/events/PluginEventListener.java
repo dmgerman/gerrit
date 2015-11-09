@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -66,118 +66,42 @@ name|events
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|annotations
-operator|.
-name|ExtensionPoint
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|AccountInfo
-import|;
-end_import
-
 begin_comment
-comment|/** Notified when one or more references are modified. */
+comment|/** Notified when a plugin fires an event. */
 end_comment
 
 begin_interface
-annotation|@
-name|ExtensionPoint
-DECL|interface|GitReferenceUpdatedListener
+DECL|interface|PluginEventListener
 specifier|public
 interface|interface
-name|GitReferenceUpdatedListener
+name|PluginEventListener
 block|{
 DECL|interface|Event
 interface|interface
 name|Event
 block|{
-DECL|method|getProjectName ()
+DECL|method|pluginName ()
 name|String
-name|getProjectName
+name|pluginName
 parameter_list|()
 function_decl|;
-DECL|method|getRefName ()
+DECL|method|getType ()
 name|String
-name|getRefName
+name|getType
 parameter_list|()
 function_decl|;
-DECL|method|getOldObjectId ()
+DECL|method|getData ()
 name|String
-name|getOldObjectId
-parameter_list|()
-function_decl|;
-DECL|method|getNewObjectId ()
-name|String
-name|getNewObjectId
-parameter_list|()
-function_decl|;
-DECL|method|isCreate ()
-name|boolean
-name|isCreate
-parameter_list|()
-function_decl|;
-DECL|method|isDelete ()
-name|boolean
-name|isDelete
-parameter_list|()
-function_decl|;
-DECL|method|isNonFastForward ()
-name|boolean
-name|isNonFastForward
-parameter_list|()
-function_decl|;
-comment|/**      * The updater, could be null if it's the server.      */
-DECL|method|getUpdater ()
-annotation|@
-name|Nullable
-name|AccountInfo
-name|getUpdater
+name|getData
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|onGitReferenceUpdated (Event event)
+DECL|method|onPluginEvent (Event e)
 name|void
-name|onGitReferenceUpdated
+name|onPluginEvent
 parameter_list|(
 name|Event
-name|event
+name|e
 parameter_list|)
 function_decl|;
 block|}

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -76,51 +76,28 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|annotations
+name|common
 operator|.
-name|ExtensionPoint
+name|RevisionInfo
 import|;
 end_import
 
 begin_comment
-comment|/** Notified whenever the HEAD of a project is updated. */
+comment|/** Interface to be extendend by Events with a Revision. */
 end_comment
 
 begin_interface
-annotation|@
-name|ExtensionPoint
-DECL|interface|HeadUpdatedListener
+DECL|interface|RevisionEvent
 specifier|public
 interface|interface
-name|HeadUpdatedListener
+name|RevisionEvent
+extends|extends
+name|ChangeEvent
 block|{
-DECL|interface|Event
-interface|interface
-name|Event
-block|{
-DECL|method|getProjectName ()
-name|String
-name|getProjectName
+DECL|method|getRevision ()
+name|RevisionInfo
+name|getRevision
 parameter_list|()
-function_decl|;
-DECL|method|getOldHeadName ()
-name|String
-name|getOldHeadName
-parameter_list|()
-function_decl|;
-DECL|method|getNewHeadName ()
-name|String
-name|getNewHeadName
-parameter_list|()
-function_decl|;
-block|}
-DECL|method|onHeadUpdated (Event event)
-name|void
-name|onHeadUpdated
-parameter_list|(
-name|Event
-name|event
-parameter_list|)
 function_decl|;
 block|}
 end_interface

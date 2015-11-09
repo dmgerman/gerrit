@@ -95,7 +95,6 @@ interface|interface
 name|NewProjectCreatedListener
 block|{
 DECL|interface|Event
-specifier|public
 interface|interface
 name|Event
 block|{

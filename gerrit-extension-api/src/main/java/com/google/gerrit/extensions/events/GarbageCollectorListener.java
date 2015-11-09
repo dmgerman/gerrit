@@ -105,7 +105,6 @@ interface|interface
 name|GarbageCollectorListener
 block|{
 DECL|interface|Event
-specifier|public
 interface|interface
 name|Event
 block|{

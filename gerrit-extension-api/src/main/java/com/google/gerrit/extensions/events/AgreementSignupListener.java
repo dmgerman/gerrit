@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -74,20 +74,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|annotations
@@ -113,71 +99,38 @@ import|;
 end_import
 
 begin_comment
-comment|/** Notified when one or more references are modified. */
+comment|/** Notified whenever a user signed up for a Contributor License Agreement. */
 end_comment
 
 begin_interface
 annotation|@
 name|ExtensionPoint
-DECL|interface|GitReferenceUpdatedListener
+DECL|interface|AgreementSignupListener
 specifier|public
 interface|interface
-name|GitReferenceUpdatedListener
+name|AgreementSignupListener
 block|{
 DECL|interface|Event
 interface|interface
 name|Event
 block|{
-DECL|method|getProjectName ()
-name|String
-name|getProjectName
-parameter_list|()
-function_decl|;
-DECL|method|getRefName ()
-name|String
-name|getRefName
-parameter_list|()
-function_decl|;
-DECL|method|getOldObjectId ()
-name|String
-name|getOldObjectId
-parameter_list|()
-function_decl|;
-DECL|method|getNewObjectId ()
-name|String
-name|getNewObjectId
-parameter_list|()
-function_decl|;
-DECL|method|isCreate ()
-name|boolean
-name|isCreate
-parameter_list|()
-function_decl|;
-DECL|method|isDelete ()
-name|boolean
-name|isDelete
-parameter_list|()
-function_decl|;
-DECL|method|isNonFastForward ()
-name|boolean
-name|isNonFastForward
-parameter_list|()
-function_decl|;
-comment|/**      * The updater, could be null if it's the server.      */
-DECL|method|getUpdater ()
-annotation|@
-name|Nullable
+DECL|method|getAccount ()
 name|AccountInfo
-name|getUpdater
+name|getAccount
+parameter_list|()
+function_decl|;
+DECL|method|getAgreementName ()
+name|String
+name|getAgreementName
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|onGitReferenceUpdated (Event event)
+DECL|method|onAgreementSignup (Event e)
 name|void
-name|onGitReferenceUpdated
+name|onAgreementSignup
 parameter_list|(
 name|Event
-name|event
+name|e
 parameter_list|)
 function_decl|;
 block|}

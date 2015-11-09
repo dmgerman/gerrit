@@ -115,7 +115,6 @@ interface|interface
 name|UsageDataPublishedListener
 block|{
 DECL|interface|Event
-specifier|public
 interface|interface
 name|Event
 block|{
@@ -139,7 +138,6 @@ parameter_list|()
 function_decl|;
 block|}
 DECL|interface|Data
-specifier|public
 interface|interface
 name|Data
 block|{
@@ -155,7 +153,6 @@ parameter_list|()
 function_decl|;
 block|}
 DECL|interface|MetaData
-specifier|public
 interface|interface
 name|MetaData
 block|{
