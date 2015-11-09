@@ -314,7 +314,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
+name|NoSuchChangeException
 import|;
 end_import
 
@@ -330,7 +330,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|NoSuchChangeException
+name|RefControl
 import|;
 end_import
 
@@ -496,12 +496,15 @@ name|RestApiException
 throws|,
 name|UpdateException
 block|{
-name|ChangeControl
-name|control
+name|RefControl
+name|refControl
 init|=
 name|req
 operator|.
 name|getControl
+argument_list|()
+operator|.
+name|getRefControl
 argument_list|()
 decl_stmt|;
 name|Change
@@ -515,9 +518,9 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|control
+name|refControl
 operator|.
-name|canAddPatchSet
+name|canUpload
 argument_list|()
 condition|)
 block|{
@@ -568,7 +571,10 @@ name|changeUtil
 operator|.
 name|revert
 argument_list|(
-name|control
+name|req
+operator|.
+name|getControl
+argument_list|()
 argument_list|,
 name|change
 operator|.
