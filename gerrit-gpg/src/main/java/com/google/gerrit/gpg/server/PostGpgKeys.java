@@ -464,6 +464,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|GerritPersonIdent
 import|;
 end_import
@@ -838,6 +852,15 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|self
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|self
+decl_stmt|;
 DECL|field|storeProvider
 specifier|private
 specifier|final
@@ -865,7 +888,7 @@ name|addKeyFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostGpgKeys (@erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory)
+DECL|method|PostGpgKeys (@erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<CurrentUser> self, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory)
 name|PostGpgKeys
 parameter_list|(
 annotation|@
@@ -881,6 +904,12 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|self
 parameter_list|,
 name|Provider
 argument_list|<
@@ -910,6 +939,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|self
+operator|=
+name|self
 expr_stmt|;
 name|this
 operator|.
@@ -963,8 +998,12 @@ name|IOException
 block|{
 name|GpgKeys
 operator|.
-name|checkEnabled
-argument_list|()
+name|checkVisible
+argument_list|(
+name|self
+argument_list|,
+name|rsrc
+argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
