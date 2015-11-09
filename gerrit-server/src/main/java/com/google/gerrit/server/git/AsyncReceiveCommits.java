@@ -557,7 +557,7 @@ name|MINUTES
 operator|.
 name|toMillis
 argument_list|(
-literal|2
+literal|4
 argument_list|)
 argument_list|,
 name|TimeUnit
