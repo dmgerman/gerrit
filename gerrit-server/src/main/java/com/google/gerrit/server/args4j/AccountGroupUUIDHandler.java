@@ -329,13 +329,12 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-specifier|final
 name|GroupReference
 name|group
 init|=
 name|GroupBackends
 operator|.
-name|findBestSuggestion
+name|findExactSuggestion
 argument_list|(
 name|groupBackend
 argument_list|,
