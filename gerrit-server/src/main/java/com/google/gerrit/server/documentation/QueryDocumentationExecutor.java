@@ -528,13 +528,9 @@ name|DocQueryException
 block|{
 if|if
 condition|(
-name|parser
-operator|==
-literal|null
-operator|||
-name|searcher
-operator|==
-literal|null
+operator|!
+name|isAvailable
+argument_list|()
 condition|)
 block|{
 throw|throw
@@ -832,6 +828,22 @@ block|}
 comment|// We must NOT call dir.close() here, as DirectoryReader.open() expects an opened directory.
 return|return
 name|dir
+return|;
+block|}
+DECL|method|isAvailable ()
+specifier|public
+name|boolean
+name|isAvailable
+parameter_list|()
+block|{
+return|return
+name|parser
+operator|!=
+literal|null
+operator|&&
+name|searcher
+operator|!=
+literal|null
 return|;
 block|}
 annotation|@
