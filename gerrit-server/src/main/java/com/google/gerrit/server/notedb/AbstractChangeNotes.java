@@ -377,6 +377,23 @@ name|self
 argument_list|()
 return|;
 block|}
+DECL|method|reload ()
+specifier|public
+name|T
+name|reload
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+name|loaded
+operator|=
+literal|false
+expr_stmt|;
+return|return
+name|load
+argument_list|()
+return|;
+block|}
 DECL|method|loadRevision ()
 specifier|public
 name|ObjectId
