@@ -338,12 +338,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|isNotSignedIn
-argument_list|(
-name|caught
-argument_list|)
-operator|||
-name|isInvalidXSRF
+name|isSigninFailure
 argument_list|(
 name|caught
 argument_list|)
@@ -366,14 +361,6 @@ name|caught
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|Gerrit
-operator|.
-name|isSignedIn
-argument_list|()
-condition|)
-block|{
 operator|new
 name|ErrorDialog
 argument_list|(
@@ -388,17 +375,6 @@ operator|.
 name|center
 argument_list|()
 expr_stmt|;
-block|}
-else|else
-block|{
-operator|new
-name|NotSignedInDialog
-argument_list|()
-operator|.
-name|center
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 elseif|else
 if|if
@@ -649,8 +625,52 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|method|isSigninFailure (Throwable caught)
+specifier|public
+specifier|static
+name|boolean
+name|isSigninFailure
+parameter_list|(
+name|Throwable
+name|caught
+parameter_list|)
+block|{
+if|if
+condition|(
+name|isNotSignedIn
+argument_list|(
+name|caught
+argument_list|)
+operator|||
+name|isInvalidXSRF
+argument_list|(
+name|caught
+argument_list|)
+operator|||
+operator|(
+name|isNoSuchEntity
+argument_list|(
+name|caught
+argument_list|)
+operator|&&
+operator|!
+name|Gerrit
+operator|.
+name|isSignedIn
+argument_list|()
+operator|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
 DECL|method|isInvalidXSRF (final Throwable caught)
-specifier|private
+specifier|protected
 specifier|static
 name|boolean
 name|isInvalidXSRF
@@ -679,7 +699,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isNotSignedIn (Throwable caught)
-specifier|private
+specifier|protected
 specifier|static
 name|boolean
 name|isNotSignedIn
@@ -782,7 +802,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isNoSuchAccount (final Throwable caught)
-specifier|private
+specifier|protected
 specifier|static
 name|boolean
 name|isNoSuchAccount
@@ -811,7 +831,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isNameAlreadyUsed (final Throwable caught)
-specifier|private
+specifier|protected
 specifier|static
 name|boolean
 name|isNameAlreadyUsed
@@ -840,7 +860,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isNoSuchGroup (final Throwable caught)
-specifier|private
+specifier|protected
 specifier|static
 name|boolean
 name|isNoSuchGroup
