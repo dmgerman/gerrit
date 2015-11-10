@@ -139,6 +139,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|GerritServerTests
+operator|.
+name|isNoteDbTestEnabled
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1097,6 +1113,11 @@ argument_list|)
 operator|.
 name|hasSize
 argument_list|(
+name|isNoteDbTestEnabled
+argument_list|()
+condition|?
+literal|1
+else|:
 literal|2
 argument_list|)
 expr_stmt|;
