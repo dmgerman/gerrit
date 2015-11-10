@@ -161,6 +161,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -311,15 +323,8 @@ argument_list|,
 name|b
 argument_list|)
 decl_stmt|;
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|UnsupportedOperationException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+try|try
+block|{
 name|n
 operator|.
 name|getChildren
@@ -328,6 +333,20 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected UnsupportedOperationException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedOperationException
+name|e
+parameter_list|)
+block|{
+comment|// Expected
+block|}
 name|assertChildren
 argument_list|(
 literal|"clear"
@@ -342,15 +361,8 @@ name|b
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|UnsupportedOperationException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+try|try
+block|{
 name|n
 operator|.
 name|getChildren
@@ -361,6 +373,20 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected UnsupportedOperationException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedOperationException
+name|e
+parameter_list|)
+block|{
+comment|// Expected
+block|}
 name|assertChildren
 argument_list|(
 literal|"remove(0)"
@@ -375,15 +401,8 @@ name|b
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|UnsupportedOperationException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+try|try
+block|{
 name|n
 operator|.
 name|getChildren
@@ -395,9 +414,23 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected UnsupportedOperationException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedOperationException
+name|e
+parameter_list|)
+block|{
+comment|// Expected
+block|}
 name|assertChildren
 argument_list|(
-literal|"remove(0)"
+literal|"iterator().remove()"
 argument_list|,
 name|n
 argument_list|,
