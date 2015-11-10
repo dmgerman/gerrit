@@ -444,6 +444,15 @@ name|P_STATUS
 init|=
 literal|"status"
 decl_stmt|;
+DECL|field|P_AGENT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|P_AGENT
+init|=
+literal|"agent"
+decl_stmt|;
 DECL|field|session
 specifier|private
 specifier|final
@@ -778,7 +787,7 @@ literal|"AUTH"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onExecute (DispatchCommand dcmd, int exitValue)
+DECL|method|onExecute (DispatchCommand dcmd, int exitValue, SshSession sshSession)
 name|void
 name|onExecute
 parameter_list|(
@@ -787,6 +796,9 @@ name|dcmd
 parameter_list|,
 name|int
 name|exitValue
+parameter_list|,
+name|SshSession
+name|sshSession
 parameter_list|)
 block|{
 specifier|final
@@ -922,6 +934,31 @@ argument_list|,
 name|status
 argument_list|)
 expr_stmt|;
+name|String
+name|peerAgent
+init|=
+name|sshSession
+operator|.
+name|getPeerAgent
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|peerAgent
+operator|!=
+literal|null
+condition|)
+block|{
+name|event
+operator|.
+name|setProperty
+argument_list|(
+name|P_AGENT
+argument_list|,
+name|peerAgent
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|async

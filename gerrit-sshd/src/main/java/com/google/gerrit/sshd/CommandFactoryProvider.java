@@ -1270,6 +1270,11 @@ argument_list|(
 name|cmd
 argument_list|,
 name|rc
+argument_list|,
+name|ctx
+operator|.
+name|getSession
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
