@@ -1210,7 +1210,7 @@ name|Status
 operator|.
 name|MERGED
 argument_list|,
-literal|"use submit(Iterable<PatchSetApproval>)"
+literal|"use merge(Iterable<SubmitRecord>)"
 argument_list|)
 expr_stmt|;
 name|this
