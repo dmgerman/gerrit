@@ -6819,6 +6819,11 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
+name|update
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
 name|indexer
 operator|.
 name|index
