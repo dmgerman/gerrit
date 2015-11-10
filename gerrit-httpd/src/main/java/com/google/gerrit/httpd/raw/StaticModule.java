@@ -472,6 +472,10 @@ condition|(
 name|warFs
 operator|==
 literal|null
+operator|&&
+name|buckOut
+operator|!=
+literal|null
 condition|)
 block|{
 name|filter
