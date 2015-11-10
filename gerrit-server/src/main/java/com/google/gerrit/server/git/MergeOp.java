@@ -6782,6 +6782,31 @@ name|psId
 argument_list|)
 condition|)
 block|{
+name|update
+operator|.
+name|setPatchSetId
+argument_list|(
+name|psId
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+comment|// Create a new ChangeUpdate instance because we need to store meta data
+comment|// on another patch set (psIdNewRev).
+name|update
+operator|=
+name|updateFactory
+operator|.
+name|create
+argument_list|(
+name|control
+argument_list|,
+name|timestamp
+argument_list|)
+expr_stmt|;
 name|batch
 operator|=
 name|approve
