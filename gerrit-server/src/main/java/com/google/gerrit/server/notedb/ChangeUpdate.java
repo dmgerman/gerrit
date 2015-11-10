@@ -1220,6 +1220,24 @@ operator|=
 name|status
 expr_stmt|;
 block|}
+DECL|method|fixStatus (Change.Status status)
+specifier|public
+name|void
+name|fixStatus
+parameter_list|(
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|)
+block|{
+name|this
+operator|.
+name|status
+operator|=
+name|status
+expr_stmt|;
+block|}
 DECL|method|putApproval (String label, short value)
 specifier|public
 name|void
