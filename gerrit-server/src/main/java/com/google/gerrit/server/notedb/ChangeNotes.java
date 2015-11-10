@@ -951,7 +951,15 @@ name|SubmitRecord
 argument_list|>
 name|submitRecords
 decl_stmt|;
-DECL|field|changeMessages
+DECL|field|allChangeMessages
+specifier|private
+name|ImmutableList
+argument_list|<
+name|ChangeMessage
+argument_list|>
+name|allChangeMessages
+decl_stmt|;
+DECL|field|changeMessagesByPatchSet
 specifier|private
 name|ImmutableListMultimap
 argument_list|<
@@ -961,7 +969,7 @@ name|Id
 argument_list|,
 name|ChangeMessage
 argument_list|>
-name|changeMessages
+name|changeMessagesByPatchSet
 decl_stmt|;
 DECL|field|comments
 specifier|private
@@ -1140,8 +1148,21 @@ return|return
 name|submitRecords
 return|;
 block|}
-comment|/** @return change messages by patch set, in chronological order. */
+comment|/** @return all change messages, in chronological order, oldest first. */
 DECL|method|getChangeMessages ()
+specifier|public
+name|ImmutableList
+argument_list|<
+name|ChangeMessage
+argument_list|>
+name|getChangeMessages
+parameter_list|()
+block|{
+return|return
+name|allChangeMessages
+return|;
+block|}
+comment|/**    * @return change messages by patch set, in chronological order, oldest    *     first.    */
 specifier|public
 name|ImmutableListMultimap
 argument_list|<
@@ -1151,11 +1172,12 @@ name|Id
 argument_list|,
 name|ChangeMessage
 argument_list|>
-name|getChangeMessages
+DECL|method|getChangeMessagesByPatchSet ()
+name|getChangeMessagesByPatchSet
 parameter_list|()
 block|{
 return|return
-name|changeMessages
+name|changeMessagesByPatchSet
 return|;
 block|}
 comment|/** @return inline comments on each revision. */
@@ -1473,11 +1495,18 @@ operator|.
 name|buildApprovals
 argument_list|()
 expr_stmt|;
-name|changeMessages
+name|changeMessagesByPatchSet
 operator|=
 name|parser
 operator|.
-name|buildMessages
+name|buildMessagesByPatchSet
+argument_list|()
+expr_stmt|;
+name|allChangeMessages
+operator|=
+name|parser
+operator|.
+name|buildAllMessages
 argument_list|()
 expr_stmt|;
 name|comments
@@ -1647,7 +1676,14 @@ operator|.
 name|of
 argument_list|()
 expr_stmt|;
-name|changeMessages
+name|allChangeMessages
+operator|=
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+expr_stmt|;
+name|changeMessagesByPatchSet
 operator|=
 name|ImmutableListMultimap
 operator|.

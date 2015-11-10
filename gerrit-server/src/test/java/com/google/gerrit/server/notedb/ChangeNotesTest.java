@@ -4355,7 +4355,7 @@ name|changeMessages
 init|=
 name|notes
 operator|.
-name|getChangeMessages
+name|getChangeMessagesByPatchSet
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -4568,7 +4568,7 @@ name|changeMessages
 init|=
 name|notes
 operator|.
-name|getChangeMessages
+name|getChangeMessagesByPatchSet
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -4707,7 +4707,7 @@ name|changeMessages
 init|=
 name|notes
 operator|.
-name|getChangeMessages
+name|getChangeMessagesByPatchSet
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -4895,7 +4895,7 @@ name|changeMessages
 init|=
 name|notes
 operator|.
-name|getChangeMessages
+name|getChangeMessagesByPatchSet
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -5148,7 +5148,7 @@ name|changeMessages
 init|=
 name|notes
 operator|.
-name|getChangeMessages
+name|getChangeMessagesByPatchSet
 argument_list|()
 decl_stmt|;
 name|assertThat

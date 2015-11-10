@@ -343,8 +343,6 @@ block|}
 else|else
 block|{
 return|return
-name|sortChangeMessages
-argument_list|(
 name|notes
 operator|.
 name|load
@@ -352,10 +350,6 @@ argument_list|()
 operator|.
 name|getChangeMessages
 argument_list|()
-operator|.
-name|values
-argument_list|()
-argument_list|)
 return|;
 block|}
 block|}
@@ -408,7 +402,7 @@ operator|.
 name|load
 argument_list|()
 operator|.
-name|getChangeMessages
+name|getChangeMessagesByPatchSet
 argument_list|()
 operator|.
 name|get
