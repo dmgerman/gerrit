@@ -532,6 +532,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
@@ -1104,6 +1120,12 @@ operator|.
 name|Factory
 name|updateFactory
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|field|fix
 specifier|private
 name|FixInput
@@ -1159,7 +1181,7 @@ name|problems
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConsistencyChecker (Provider<ReviewDb> db, GitRepositoryManager repoManager, Provider<CurrentUser> user, @GerritPersonIdent Provider<PersonIdent> serverIdent, ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, BatchUpdate.Factory updateFactory)
+DECL|method|ConsistencyChecker (Provider<ReviewDb> db, GitRepositoryManager repoManager, Provider<CurrentUser> user, @GerritPersonIdent Provider<PersonIdent> serverIdent, ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, BatchUpdate.Factory updateFactory, ChangeIndexer indexer)
 name|ConsistencyChecker
 parameter_list|(
 name|Provider
@@ -1202,6 +1224,9 @@ name|BatchUpdate
 operator|.
 name|Factory
 name|updateFactory
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 block|{
 name|this
@@ -1251,6 +1276,12 @@ operator|.
 name|updateFactory
 operator|=
 name|updateFactory
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 name|reset
 argument_list|()
@@ -3308,6 +3339,18 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|change
+argument_list|)
+expr_stmt|;
 name|p
 operator|.
 name|status
@@ -3326,6 +3369,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
