@@ -123,6 +123,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1645,20 +1657,27 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|BadRequestException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+try|try
+block|{
 name|req
 operator|.
 name|get
 argument_list|()
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected BadRequestException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|BadRequestException
+name|expected
+parameter_list|)
+block|{
+comment|// Expected.
+block|}
 block|}
 DECL|method|filter (Iterable<ProjectInfo> infos)
 specifier|private
