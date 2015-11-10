@@ -142,20 +142,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|ChangeHooks
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|restapi
@@ -777,12 +763,6 @@ parameter_list|)
 function_decl|;
 block|}
 comment|// Injected fields.
-DECL|field|hooks
-specifier|private
-specifier|final
-name|ChangeHooks
-name|hooks
-decl_stmt|;
 DECL|field|patchSetInfoFactory
 specifier|private
 specifier|final
@@ -961,13 +941,10 @@ name|oldReviewers
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PatchSetInserter (ChangeHooks hooks, ReviewDb db, ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, PatchSetUtil psUtil, RevisionCreated revisionCreated, @Assisted ChangeControl ctl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
+DECL|method|PatchSetInserter (ReviewDb db, ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, PatchSetUtil psUtil, RevisionCreated revisionCreated, @Assisted ChangeControl ctl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
 specifier|public
 name|PatchSetInserter
 parameter_list|(
-name|ChangeHooks
-name|hooks
-parameter_list|,
 name|ReviewDb
 name|db
 parameter_list|,
@@ -1017,12 +994,6 @@ name|RevCommit
 name|commit
 parameter_list|)
 block|{
-name|this
-operator|.
-name|hooks
-operator|=
-name|hooks
-expr_stmt|;
 name|this
 operator|.
 name|db
@@ -1873,20 +1844,6 @@ name|getUser
 argument_list|()
 operator|.
 name|getAccountId
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|hooks
-operator|.
-name|doPatchsetCreatedHook
-argument_list|(
-name|change
-argument_list|,
-name|patchSet
-argument_list|,
-name|ctx
-operator|.
-name|getDb
 argument_list|()
 argument_list|)
 expr_stmt|;

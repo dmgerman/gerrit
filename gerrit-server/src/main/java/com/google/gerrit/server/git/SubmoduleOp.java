@@ -104,20 +104,6 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHooks
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
 name|Nullable
 import|;
 end_import
@@ -804,12 +790,6 @@ specifier|final
 name|Account
 name|account
 decl_stmt|;
-DECL|field|changeHooks
-specifier|private
-specifier|final
-name|ChangeHooks
-name|changeHooks
-decl_stmt|;
 DECL|field|verboseSuperProject
 specifier|private
 specifier|final
@@ -830,7 +810,7 @@ name|orm
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent PersonIdent myIdent, @GerritServerConfig Config cfg, GitReferenceUpdated gitRefUpdated, ProjectCache projectCache, ProjectState.Factory projectStateFactory, @Nullable Account account, ChangeHooks changeHooks, @Assisted MergeOpRepoManager orm)
+DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent PersonIdent myIdent, @GerritServerConfig Config cfg, GitReferenceUpdated gitRefUpdated, ProjectCache projectCache, ProjectState.Factory projectStateFactory, @Nullable Account account, @Assisted MergeOpRepoManager orm)
 specifier|public
 name|SubmoduleOp
 parameter_list|(
@@ -864,9 +844,6 @@ annotation|@
 name|Nullable
 name|Account
 name|account
-parameter_list|,
-name|ChangeHooks
-name|changeHooks
 parameter_list|,
 annotation|@
 name|Assisted
@@ -909,12 +886,6 @@ operator|.
 name|account
 operator|=
 name|account
-expr_stmt|;
-name|this
-operator|.
-name|changeHooks
-operator|=
-name|changeHooks
 expr_stmt|;
 name|this
 operator|.
@@ -2594,17 +2565,6 @@ name|subscriber
 operator|.
 name|getParentKey
 argument_list|()
-argument_list|,
-name|rfu
-argument_list|,
-name|account
-argument_list|)
-expr_stmt|;
-name|changeHooks
-operator|.
-name|doRefUpdatedHook
-argument_list|(
-name|subscriber
 argument_list|,
 name|rfu
 argument_list|,

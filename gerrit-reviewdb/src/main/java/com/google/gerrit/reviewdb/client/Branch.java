@@ -193,6 +193,32 @@ name|branchName
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|NameKey (String proj, final String branchName)
+specifier|public
+name|NameKey
+parameter_list|(
+name|String
+name|proj
+parameter_list|,
+specifier|final
+name|String
+name|branchName
+parameter_list|)
+block|{
+name|this
+argument_list|(
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
+name|proj
+argument_list|)
+argument_list|,
+name|branchName
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|get ()

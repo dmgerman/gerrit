@@ -651,6 +651,10 @@ argument_list|()
 argument_list|,
 literal|"refs/meta/config"
 argument_list|,
+literal|null
+argument_list|,
+name|initialHead
+argument_list|,
 name|initialHead
 argument_list|,
 name|updatedHead

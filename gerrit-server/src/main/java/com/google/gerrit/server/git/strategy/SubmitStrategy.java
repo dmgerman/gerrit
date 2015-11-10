@@ -106,20 +106,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|ChangeHooks
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -295,6 +281,24 @@ operator|.
 name|change
 operator|.
 name|RebaseChangeOp
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|ChangeMerged
 import|;
 end_import
 
@@ -846,10 +850,10 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 decl_stmt|;
-DECL|field|hooks
+DECL|field|changeMerged
 specifier|final
-name|ChangeHooks
-name|hooks
+name|ChangeMerged
+name|changeMerged
 decl_stmt|;
 DECL|field|cmUtil
 specifier|final
@@ -992,7 +996,7 @@ name|mergeUtil
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, ChangeHooks hooks, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, TagCache tagCache, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commits, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted String submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, TagCache tagCache, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commits, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted String submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1011,8 +1015,8 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 parameter_list|,
-name|ChangeHooks
-name|hooks
+name|ChangeMerged
+name|changeMerged
 parameter_list|,
 name|ChangeMessagesUtil
 name|cmUtil
@@ -1152,9 +1156,9 @@ name|changeControlFactory
 expr_stmt|;
 name|this
 operator|.
-name|hooks
+name|changeMerged
 operator|=
-name|hooks
+name|changeMerged
 expr_stmt|;
 name|this
 operator|.

@@ -94,20 +94,6 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHooks
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
 name|Nullable
 import|;
 end_import
@@ -828,12 +814,6 @@ operator|.
 name|Factory
 name|updateFactory
 decl_stmt|;
-DECL|field|hooks
-specifier|private
-specifier|final
-name|ChangeHooks
-name|hooks
-decl_stmt|;
 DECL|field|createChangeSenderFactory
 specifier|private
 specifier|final
@@ -879,7 +859,7 @@ name|draftPublished
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PublishDraftPatchSet ( AccountResolver accountResolver, ApprovalsUtil approvalsUtil, BatchUpdate.Factory updateFactory, ChangeHooks hooks, CreateChangeSender.Factory createChangeSenderFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, Provider<ReviewDb> dbProvider, ReplacePatchSetSender.Factory replacePatchSetFactory, DraftPublished draftPublished)
+DECL|method|PublishDraftPatchSet ( AccountResolver accountResolver, ApprovalsUtil approvalsUtil, BatchUpdate.Factory updateFactory, CreateChangeSender.Factory createChangeSenderFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, Provider<ReviewDb> dbProvider, ReplacePatchSetSender.Factory replacePatchSetFactory, DraftPublished draftPublished)
 specifier|public
 name|PublishDraftPatchSet
 parameter_list|(
@@ -893,9 +873,6 @@ name|BatchUpdate
 operator|.
 name|Factory
 name|updateFactory
-parameter_list|,
-name|ChangeHooks
-name|hooks
 parameter_list|,
 name|CreateChangeSender
 operator|.
@@ -940,12 +917,6 @@ operator|.
 name|updateFactory
 operator|=
 name|updateFactory
-expr_stmt|;
-name|this
-operator|.
-name|hooks
-operator|=
-name|hooks
 expr_stmt|;
 name|this
 operator|.
@@ -1772,20 +1743,6 @@ name|getUser
 argument_list|()
 operator|.
 name|getAccountId
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|hooks
-operator|.
-name|doDraftPublishedHook
-argument_list|(
-name|change
-argument_list|,
-name|patchSet
-argument_list|,
-name|ctx
-operator|.
-name|getDb
 argument_list|()
 argument_list|)
 expr_stmt|;

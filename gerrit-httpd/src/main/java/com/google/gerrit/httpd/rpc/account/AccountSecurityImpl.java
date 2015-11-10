@@ -106,20 +106,6 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHooks
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
 name|data
 operator|.
 name|AccountSecurity
@@ -550,12 +536,6 @@ operator|.
 name|Factory
 name|externalIdDetailFactory
 decl_stmt|;
-DECL|field|hooks
-specifier|private
-specifier|final
-name|ChangeHooks
-name|hooks
-decl_stmt|;
 DECL|field|groupCache
 specifier|private
 specifier|final
@@ -576,7 +556,7 @@ name|agreementSignup
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final Realm r, final Provider<IdentifiedUser> u, final ProjectCache pc, final AccountByEmailCache abec, final AccountCache uac, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory, final ChangeHooks hooks, final GroupCache groupCache, final AuditService auditService, AgreementSignup agreementSignup)
+DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final Realm r, final Provider<IdentifiedUser> u, final ProjectCache pc, final AccountByEmailCache abec, final AccountCache uac, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory, final GroupCache groupCache, final AuditService auditService, AgreementSignup agreementSignup)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -627,10 +607,6 @@ name|ExternalIdDetailFactory
 operator|.
 name|Factory
 name|externalIdDetailFactory
-parameter_list|,
-specifier|final
-name|ChangeHooks
-name|hooks
 parameter_list|,
 specifier|final
 name|GroupCache
@@ -688,12 +664,6 @@ operator|.
 name|externalIdDetailFactory
 operator|=
 name|externalIdDetailFactory
-expr_stmt|;
-name|this
-operator|.
-name|hooks
-operator|=
-name|hooks
 expr_stmt|;
 name|this
 operator|.
@@ -1209,18 +1179,6 @@ decl_stmt|;
 name|agreementSignup
 operator|.
 name|fire
-argument_list|(
-name|account
-argument_list|,
-name|ca
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|hooks
-operator|.
-name|doClaSignupHook
 argument_list|(
 name|account
 argument_list|,
