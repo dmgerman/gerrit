@@ -1924,6 +1924,7 @@ return|;
 block|}
 block|}
 DECL|class|Weigher
+specifier|public
 specifier|static
 class|class
 name|Weigher
