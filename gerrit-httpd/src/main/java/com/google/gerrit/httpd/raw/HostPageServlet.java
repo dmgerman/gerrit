@@ -1749,13 +1749,6 @@ argument_list|)
 expr_stmt|;
 name|c
 operator|.
-name|setHttpOnly
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|c
-operator|.
 name|setSecure
 argument_list|(
 name|isSecure
