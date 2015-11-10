@@ -163,6 +163,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -804,22 +816,8 @@ name|getChildren
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|IllegalArgumentException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Expected exactly one child"
-argument_list|)
-expr_stmt|;
+try|try
+block|{
 name|n
 operator|.
 name|copy
@@ -833,22 +831,31 @@ name|emptyList
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
+name|fail
 argument_list|(
-name|IllegalArgumentException
-operator|.
-name|class
+literal|"Expected IllegalArgumentException"
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+name|assertEquals
 argument_list|(
 literal|"Expected exactly one child"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+try|try
+block|{
 name|n
 operator|.
 name|copy
@@ -864,6 +871,29 @@ name|getChildren
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+name|assertEquals
+argument_list|(
+literal|"Expected exactly one child"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
