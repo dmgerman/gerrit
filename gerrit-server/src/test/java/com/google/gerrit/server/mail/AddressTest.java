@@ -83,6 +83,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -548,24 +560,8 @@ name|String
 name|in
 parameter_list|)
 block|{
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|IllegalArgumentException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Invalid email address: "
-operator|+
-name|in
-argument_list|)
-expr_stmt|;
+try|try
+block|{
 name|Address
 operator|.
 name|parse
@@ -573,6 +569,36 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException for "
+operator|+
+name|in
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+name|assertThat
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Invalid email address: "
+operator|+
+name|in
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
