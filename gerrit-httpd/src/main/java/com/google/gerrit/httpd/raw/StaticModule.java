@@ -443,9 +443,9 @@ name|void
 name|serveGwtUi
 parameter_list|()
 block|{
-name|serve
+name|serveRegex
 argument_list|(
-literal|"/gerrit_ui/*"
+literal|"^/gerrit_ui/(?!rpc/)(.*)$"
 argument_list|)
 operator|.
 name|with
