@@ -155,8 +155,6 @@ argument_list|()
 decl_stmt|;
 name|blockRead
 argument_list|(
-name|project
-argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;

@@ -462,8 +462,6 @@ name|Exception
 block|{
 name|blockRead
 argument_list|(
-name|project
-argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
@@ -497,8 +495,6 @@ name|Exception
 block|{
 name|blockRead
 argument_list|(
-name|project
-argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
@@ -548,8 +544,6 @@ name|Exception
 block|{
 name|blockRead
 argument_list|(
-name|project
-argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
@@ -1763,8 +1757,6 @@ argument_list|)
 expr_stmt|;
 name|blockRead
 argument_list|(
-name|project
-argument_list|,
 literal|"refs/heads/hidden"
 argument_list|)
 expr_stmt|;

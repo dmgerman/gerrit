@@ -286,8 +286,6 @@ name|Exception
 block|{
 name|blockRead
 argument_list|(
-name|project
-argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
@@ -467,8 +465,6 @@ name|Exception
 block|{
 name|blockRead
 argument_list|(
-name|project
-argument_list|,
 literal|"refs/heads/dev"
 argument_list|)
 expr_stmt|;
@@ -542,8 +538,6 @@ name|Exception
 block|{
 name|blockRead
 argument_list|(
-name|project
-argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
