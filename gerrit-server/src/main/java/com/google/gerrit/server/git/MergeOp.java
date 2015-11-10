@@ -6263,6 +6263,8 @@ argument_list|,
 name|mergedId
 argument_list|)
 expr_stmt|;
+comment|// The change notes must be forcefully reloaded so that the SUBMIT
+comment|// approval that we added earlier is visible
 name|submitter
 operator|=
 name|approvalsUtil
@@ -6274,6 +6276,9 @@ argument_list|,
 name|commit
 operator|.
 name|notes
+argument_list|()
+operator|.
+name|reload
 argument_list|()
 argument_list|,
 name|mergedId
