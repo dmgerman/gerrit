@@ -801,9 +801,8 @@ operator|.
 name|getChange
 argument_list|()
 expr_stmt|;
-name|String
 name|newTopicName
-init|=
+operator|=
 name|Strings
 operator|.
 name|nullToEmpty
@@ -812,10 +811,9 @@ name|input
 operator|.
 name|topic
 argument_list|)
-decl_stmt|;
-name|String
+expr_stmt|;
 name|oldTopicName
-init|=
+operator|=
 name|Strings
 operator|.
 name|nullToEmpty
@@ -825,7 +823,7 @@ operator|.
 name|getTopic
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|oldTopicName
