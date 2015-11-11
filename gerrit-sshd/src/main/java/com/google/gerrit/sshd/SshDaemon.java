@@ -2353,7 +2353,7 @@ argument_list|)
 expr_stmt|;
 specifier|final
 name|Counter0
-name|sesssionsCreated
+name|sessionsCreated
 init|=
 name|metricMaker
 operator|.
@@ -2400,7 +2400,7 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-name|sesssionsCreated
+name|sessionsCreated
 operator|.
 name|increment
 argument_list|()
