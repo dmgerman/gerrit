@@ -1160,6 +1160,14 @@ name|getNameKey
 argument_list|()
 argument_list|,
 name|cmd
+argument_list|,
+name|identifiedUser
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Branch

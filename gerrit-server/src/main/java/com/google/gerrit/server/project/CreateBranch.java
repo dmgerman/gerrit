@@ -1203,6 +1203,14 @@ operator|.
 name|Type
 operator|.
 name|CREATE
+argument_list|,
+name|identifiedUser
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|hooks

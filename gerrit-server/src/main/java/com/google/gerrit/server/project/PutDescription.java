@@ -742,6 +742,11 @@ argument_list|,
 name|baseRev
 argument_list|,
 name|commitRev
+argument_list|,
+name|user
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|hooks
