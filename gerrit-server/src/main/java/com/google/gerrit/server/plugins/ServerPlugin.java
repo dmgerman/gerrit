@@ -1447,6 +1447,11 @@ operator|new
 name|ServerPluginInfoModule
 argument_list|(
 name|this
+argument_list|,
+name|env
+operator|.
+name|getServerMetrics
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

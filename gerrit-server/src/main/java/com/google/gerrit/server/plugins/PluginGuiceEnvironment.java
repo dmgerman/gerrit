@@ -372,6 +372,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|metrics
+operator|.
+name|MetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|util
@@ -721,6 +735,12 @@ name|ReloadPluginListener
 argument_list|>
 name|onReload
 decl_stmt|;
+DECL|field|serverMetrics
+specifier|private
+specifier|final
+name|MetricMaker
+name|serverMetrics
+decl_stmt|;
 DECL|field|sysModule
 specifier|private
 name|Module
@@ -898,7 +918,7 @@ name|httpMaps
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginGuiceEnvironment ( Injector sysInjector, ThreadLocalRequestContext local, ServerInformation srvInfo, CopyConfigModule ccm)
+DECL|method|PluginGuiceEnvironment ( Injector sysInjector, ThreadLocalRequestContext local, ServerInformation srvInfo, CopyConfigModule ccm, MetricMaker serverMetrics)
 name|PluginGuiceEnvironment
 parameter_list|(
 name|Injector
@@ -912,6 +932,9 @@ name|srvInfo
 parameter_list|,
 name|CopyConfigModule
 name|ccm
+parameter_list|,
+name|MetricMaker
+name|serverMetrics
 parameter_list|)
 block|{
 name|this
@@ -954,6 +977,12 @@ argument_list|()
 operator|.
 name|keySet
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|serverMetrics
+operator|=
+name|serverMetrics
 expr_stmt|;
 name|onStart
 operator|=
@@ -1047,6 +1076,15 @@ parameter_list|()
 block|{
 return|return
 name|srvInfo
+return|;
+block|}
+DECL|method|getServerMetrics ()
+name|MetricMaker
+name|getServerMetrics
+parameter_list|()
+block|{
+return|return
+name|serverMetrics
 return|;
 block|}
 DECL|method|hasDynamicItem (TypeLiteral<?> type)
@@ -3986,6 +4024,22 @@ block|}
 if|if
 condition|(
 name|StopPluginListener
+operator|.
+name|class
+operator|.
+name|isAssignableFrom
+argument_list|(
+name|type
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
+name|MetricMaker
 operator|.
 name|class
 operator|.
