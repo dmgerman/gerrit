@@ -2788,6 +2788,16 @@ name|modules
 operator|.
 name|add
 argument_list|(
+name|RequestMetricsFilter
+operator|.
+name|module
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|modules
+operator|.
+name|add
+argument_list|(
 name|sysInjector
 operator|.
 name|getInstance
