@@ -52,13 +52,15 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.events
+DECL|package|com.google.gerrit.server.extensions.events
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
+operator|.
+name|server
 operator|.
 name|extensions
 operator|.
@@ -76,9 +78,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|annotations
+name|common
 operator|.
-name|ExtensionPoint
+name|ChangeInfo
 import|;
 end_import
 
@@ -92,97 +94,56 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|events
 operator|.
-name|AccountInfo
+name|ChangeEvent
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|ApprovalInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_comment
-comment|/** Notified whenever a comment is added to a change. */
-end_comment
-
-begin_interface
-annotation|@
-name|ExtensionPoint
-DECL|interface|CommentAddedListener
+begin_class
+DECL|class|AbstractChangeEvent
 specifier|public
-interface|interface
-name|CommentAddedListener
+specifier|abstract
+class|class
+name|AbstractChangeEvent
+implements|implements
+name|ChangeEvent
 block|{
-DECL|interface|Event
-interface|interface
-name|Event
-extends|extends
-name|RevisionEvent
-block|{
-DECL|method|getAuthor ()
-name|AccountInfo
-name|getAuthor
-parameter_list|()
-function_decl|;
-DECL|method|getComment ()
-name|String
-name|getComment
-parameter_list|()
-function_decl|;
-DECL|method|getApprovals ()
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|ApprovalInfo
-argument_list|>
-name|getApprovals
-parameter_list|()
-function_decl|;
-DECL|method|getOldApprovals ()
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|ApprovalInfo
-argument_list|>
-name|getOldApprovals
-parameter_list|()
-function_decl|;
-block|}
-DECL|method|onCommentAdded (Event event)
-name|void
-name|onCommentAdded
+DECL|field|changeInfo
+specifier|private
+specifier|final
+name|ChangeInfo
+name|changeInfo
+decl_stmt|;
+DECL|method|AbstractChangeEvent (ChangeInfo change)
+specifier|protected
+name|AbstractChangeEvent
 parameter_list|(
-name|Event
-name|event
+name|ChangeInfo
+name|change
 parameter_list|)
-function_decl|;
+block|{
+name|this
+operator|.
+name|changeInfo
+operator|=
+name|change
+expr_stmt|;
 block|}
-end_interface
+annotation|@
+name|Override
+DECL|method|getChange ()
+specifier|public
+name|ChangeInfo
+name|getChange
+parameter_list|()
+block|{
+return|return
+name|changeInfo
+return|;
+block|}
+block|}
+end_class
 
 end_unit
 
