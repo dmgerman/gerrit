@@ -821,7 +821,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|>
 name|reviewers
 decl_stmt|;
@@ -1432,10 +1432,10 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|ReviewerState
+name|ReviewerStateInternal
 name|state
 range|:
-name|ReviewerState
+name|ReviewerStateInternal
 operator|.
 name|values
 argument_list|()
@@ -2923,12 +2923,12 @@ name|email
 argument_list|)
 throw|;
 block|}
-DECL|method|parseReviewer (ReviewerState state, String line)
+DECL|method|parseReviewer (ReviewerStateInternal state, String line)
 specifier|private
 name|void
 name|parseReviewer
 parameter_list|(
-name|ReviewerState
+name|ReviewerStateInternal
 name|state
 parameter_list|,
 name|String
@@ -3014,7 +3014,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|>
 argument_list|>
 name|rit
@@ -3043,7 +3043,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|>
 name|e
 init|=
@@ -3059,7 +3059,7 @@ operator|.
 name|getValue
 argument_list|()
 operator|==
-name|ReviewerState
+name|ReviewerStateInternal
 operator|.
 name|REMOVED
 condition|)

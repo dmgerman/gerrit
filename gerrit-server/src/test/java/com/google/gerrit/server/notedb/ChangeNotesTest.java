@@ -94,7 +94,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ReviewerState
+name|ReviewerStateInternal
 operator|.
 name|CC
 import|;
@@ -112,7 +112,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ReviewerState
+name|ReviewerStateInternal
 operator|.
 name|REVIEWER
 import|;

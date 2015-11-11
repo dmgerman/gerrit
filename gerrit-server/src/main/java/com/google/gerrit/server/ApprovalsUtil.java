@@ -81,6 +81,42 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ReviewerStateInternal
+operator|.
+name|CC
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ReviewerStateInternal
+operator|.
+name|REVIEWER
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -512,7 +548,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ReviewerState
+name|ReviewerStateInternal
 import|;
 end_import
 
@@ -836,12 +872,12 @@ operator|=
 name|copier
 expr_stmt|;
 block|}
-comment|/**    * Get all reviewers for a change.    *    * @param db review database.    * @param notes change notes.    * @return multimap of reviewers keyed by state, where each account appears    *     exactly once in {@link SetMultimap#values()}, and    *     {@link ReviewerState#REMOVED} is not present.    * @throws OrmException if reviewers for the change could not be read.    */
+comment|/**    * Get all reviewers for a change.    *    * @param db review database.    * @param notes change notes.    * @return multimap of reviewers keyed by state, where each account appears    *     exactly once in {@link SetMultimap#values()}, and    *     {@link ReviewerStateInternal#REMOVED} is not present.    * @throws OrmException if reviewers for the change could not be read.    */
 DECL|method|getReviewers ( ReviewDb db, ChangeNotes notes)
 specifier|public
 name|ImmutableSetMultimap
 argument_list|<
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|,
 name|Account
 operator|.
@@ -895,12 +931,12 @@ name|getReviewers
 argument_list|()
 return|;
 block|}
-comment|/**    * Get all reviewers for a change.    *    * @param allApprovals all approvals to consider; must all belong to the same    *     change.    * @return multimap of reviewers keyed by state, where each account appears    *     exactly once in {@link SetMultimap#values()}, and    *     {@link ReviewerState#REMOVED} is not present.    */
+comment|/**    * Get all reviewers for a change.    *    * @param allApprovals all approvals to consider; must all belong to the same    *     change.    * @return multimap of reviewers keyed by state, where each account appears    *     exactly once in {@link SetMultimap#values()}, and    *     {@link ReviewerStateInternal#REMOVED} is not present.    */
 DECL|method|getReviewers ( ChangeNotes notes, Iterable<PatchSetApproval> allApprovals)
 specifier|public
 name|ImmutableSetMultimap
 argument_list|<
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|,
 name|Account
 operator|.
@@ -951,7 +987,7 @@ specifier|private
 specifier|static
 name|ImmutableSetMultimap
 argument_list|<
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|,
 name|Account
 operator|.
@@ -973,7 +1009,7 @@ literal|null
 decl_stmt|;
 name|SetMultimap
 argument_list|<
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|,
 name|Account
 operator|.
@@ -1073,8 +1109,6 @@ name|reviewers
 operator|.
 name|put
 argument_list|(
-name|ReviewerState
-operator|.
 name|REVIEWER
 argument_list|,
 name|id
@@ -1084,8 +1118,6 @@ name|reviewers
 operator|.
 name|remove
 argument_list|(
-name|ReviewerState
-operator|.
 name|CC
 argument_list|,
 name|id
@@ -1100,8 +1132,6 @@ name|reviewers
 operator|.
 name|containsEntry
 argument_list|(
-name|ReviewerState
-operator|.
 name|REVIEWER
 argument_list|,
 name|id
@@ -1112,8 +1142,6 @@ name|reviewers
 operator|.
 name|put
 argument_list|(
-name|ReviewerState
-operator|.
 name|CC
 argument_list|,
 name|id
@@ -1537,8 +1565,6 @@ name|putReviewer
 argument_list|(
 name|account
 argument_list|,
-name|ReviewerState
-operator|.
 name|REVIEWER
 argument_list|)
 expr_stmt|;

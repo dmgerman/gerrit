@@ -925,7 +925,7 @@ DECL|field|reviewers
 specifier|private
 name|ImmutableSetMultimap
 argument_list|<
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|,
 name|Account
 operator|.
@@ -1086,7 +1086,7 @@ DECL|method|getReviewers ()
 specifier|public
 name|ImmutableSetMultimap
 argument_list|<
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|,
 name|Account
 operator|.
@@ -1561,7 +1561,7 @@ name|ImmutableSetMultimap
 operator|.
 name|Builder
 argument_list|<
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|,
 name|Account
 operator|.
@@ -1584,7 +1584,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|>
 name|e
 range|:

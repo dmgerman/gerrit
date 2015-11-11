@@ -805,7 +805,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|>
 name|reviewers
 decl_stmt|;
@@ -1947,7 +1947,7 @@ operator|=
 name|hashtags
 expr_stmt|;
 block|}
-DECL|method|putReviewer (Account.Id reviewer, ReviewerState type)
+DECL|method|putReviewer (Account.Id reviewer, ReviewerStateInternal type)
 specifier|public
 name|void
 name|putReviewer
@@ -1957,7 +1957,7 @@ operator|.
 name|Id
 name|reviewer
 parameter_list|,
-name|ReviewerState
+name|ReviewerStateInternal
 name|type
 parameter_list|)
 block|{
@@ -1965,7 +1965,7 @@ name|checkArgument
 argument_list|(
 name|type
 operator|!=
-name|ReviewerState
+name|ReviewerStateInternal
 operator|.
 name|REMOVED
 argument_list|,
@@ -1999,7 +1999,7 @@ name|put
 argument_list|(
 name|reviewer
 argument_list|,
-name|ReviewerState
+name|ReviewerStateInternal
 operator|.
 name|REMOVED
 argument_list|)
@@ -2542,7 +2542,7 @@ name|Account
 operator|.
 name|Id
 argument_list|,
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|>
 name|e
 range|:
