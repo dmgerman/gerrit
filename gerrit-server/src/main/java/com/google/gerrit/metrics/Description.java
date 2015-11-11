@@ -183,6 +183,15 @@ name|GAUGE
 init|=
 literal|"GAUGE"
 decl_stmt|;
+DECL|field|FIELD_ORDERING
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FIELD_ORDERING
+init|=
+literal|"FIELD_ORDERING"
+decl_stmt|;
 DECL|field|TRUE_VALUE
 specifier|public
 specifier|static
@@ -249,6 +258,20 @@ name|Units
 parameter_list|()
 block|{     }
 block|}
+DECL|enum|FieldOrdering
+specifier|public
+specifier|static
+enum|enum
+name|FieldOrdering
+block|{
+comment|/** Default ordering places fields at end of the parent metric name. */
+DECL|enumConstant|AT_END
+name|AT_END
+block|,
+comment|/**      * Splits the metric name by inserting field values before the last '/' in      * the metric name. For example {@code "plugins/replication/push_latency"}      * with a {@code Field.ofString("remote")} will create submetrics named      * {@code "plugins/replication/some-server/push_latency"}.      */
+DECL|enumConstant|PREFIX_FIELDS_BASENAME
+name|PREFIX_FIELDS_BASENAME
+block|;   }
 DECL|field|annotations
 specifier|private
 specifier|final
@@ -311,7 +334,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Indicates the metric may be usefully interpreted as a count over short    * periods of time, such as request arrival rate. May only be applied to a    * {@link Counter}.    */
+comment|/**    * Indicates the metric may be usefully interpreted as a count over short    * periods of time, such as request arrival rate. May only be applied to a    * {@link Counter0}.    */
 DECL|method|setRate ()
 specifier|public
 name|Description
@@ -351,7 +374,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Indicates the metric accumulates over the lifespan of the process. A    * {@link Counter} like total requests handled accumulates over the process    * and should be {@code setCumulative()}.    */
+comment|/**    * Indicates the metric accumulates over the lifespan of the process. A    * {@link Counter0} like total requests handled accumulates over the process    * and should be {@code setCumulative()}.    */
 DECL|method|setCumulative ()
 specifier|public
 name|Description
@@ -365,6 +388,32 @@ argument_list|(
 name|CUMULATIVE
 argument_list|,
 name|TRUE_VALUE
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/** Configure how fields are ordered into submetric names. */
+DECL|method|setFieldOrdering (FieldOrdering ordering)
+specifier|public
+name|Description
+name|setFieldOrdering
+parameter_list|(
+name|FieldOrdering
+name|ordering
+parameter_list|)
+block|{
+name|annotations
+operator|.
+name|put
+argument_list|(
+name|FIELD_ORDERING
+argument_list|,
+name|ordering
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -432,6 +481,40 @@ argument_list|(
 name|CUMULATIVE
 argument_list|)
 argument_list|)
+return|;
+block|}
+comment|/** Get the suggested field ordering. */
+DECL|method|getFieldOrdering ()
+specifier|public
+name|FieldOrdering
+name|getFieldOrdering
+parameter_list|()
+block|{
+name|String
+name|o
+init|=
+name|annotations
+operator|.
+name|get
+argument_list|(
+name|FIELD_ORDERING
+argument_list|)
+decl_stmt|;
+return|return
+name|o
+operator|!=
+literal|null
+condition|?
+name|FieldOrdering
+operator|.
+name|valueOf
+argument_list|(
+name|o
+argument_list|)
+else|:
+name|FieldOrdering
+operator|.
+name|AT_END
 return|;
 block|}
 comment|/**    * Decode the unit as a unit of time.    *    * @return valid time unit.    * @throws IllegalArgumentException if the unit is not a valid unit of time.    */

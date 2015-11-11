@@ -206,7 +206,7 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
-name|Counter
+name|Counter0
 import|;
 end_import
 
@@ -2352,7 +2352,7 @@ block|}
 argument_list|)
 expr_stmt|;
 specifier|final
-name|Counter
+name|Counter0
 name|sesssionsCreated
 init|=
 name|metricMaker

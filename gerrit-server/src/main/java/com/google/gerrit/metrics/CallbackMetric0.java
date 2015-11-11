@@ -64,56 +64,33 @@ name|metrics
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|RegistrationHandle
-import|;
-end_import
-
 begin_comment
-comment|/**  * Metric whose value increments during the life of the process.  *<p>  * Suitable uses are "total requests handled", "bytes sent", etc.  * Use {@link Description#setRate()} to suggest the monitoring system  * should also track the rate of increments if this is of interest.  *<p>  * For an instantaneous read of a value that can change over time  * (e.g. "memory in use") use a {@link CallbackMetric}.  */
+comment|/**  * Metric whose value is supplied when the trigger is invoked.  *  *<pre>  *   CallbackMetric0<Long> hits = metricMaker.newCallbackMetric("hits", ...);  *   CallbackMetric0<Long> total = metricMaker.newCallbackMetric("total", ...);  *   metricMaker.newTrigger(hits, total, new Runnable() {  *     public void run() {  *       hits.set(1);  *       total.set(5);  *     }  *   });  *</pre>  *  * @param<V> type of the metric value, typically Integer or Long.  */
 end_comment
 
 begin_class
-DECL|class|Counter
+DECL|class|CallbackMetric0
 specifier|public
 specifier|abstract
 class|class
-name|Counter
+name|CallbackMetric0
+parameter_list|<
+name|V
+parameter_list|>
 implements|implements
-name|RegistrationHandle
+name|CallbackMetric
+argument_list|<
+name|V
+argument_list|>
 block|{
-comment|/** Increment the counter by one event. */
-DECL|method|increment ()
-specifier|public
-name|void
-name|increment
-parameter_list|()
-block|{
-name|incrementBy
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**    * Increment the counter by a specified amount.    *    * @param value value to increment by, must be>= 0.    */
-DECL|method|incrementBy (long value)
+comment|/**    * Supply the current value of the metric.    *    * @param value current value.    */
+DECL|method|set (V value)
 specifier|public
 specifier|abstract
 name|void
-name|incrementBy
+name|set
 parameter_list|(
-name|long
+name|V
 name|value
 parameter_list|)
 function_decl|;

@@ -186,7 +186,7 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
-name|Timer
+name|Timer0
 import|;
 end_import
 
@@ -708,7 +708,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"resource"
 argument_list|)
-name|Timer
+name|Timer0
 operator|.
 name|Context
 name|context
@@ -1283,7 +1283,7 @@ name|Metrics
 block|{
 DECL|field|executionTime
 specifier|final
-name|Timer
+name|Timer0
 name|executionTime
 decl_stmt|;
 annotation|@

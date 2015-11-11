@@ -81,21 +81,44 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Metric whose value is supplied when the trigger is invoked.  *  * @see CallbackMetric0  * @param<V> type of the metric value, typically Integer or Long.  */
+comment|/**  * Metric whose value increments during the life of the process.  *<p>  * Suitable uses are "total requests handled", "bytes sent", etc.  * Use {@link Description#setRate()} to suggest the monitoring system  * should also track the rate of increments if this is of interest.  *<p>  * For an instantaneous read of a value that can change over time  * (e.g. "memory in use") use a {@link CallbackMetric}.  */
 end_comment
 
-begin_interface
-DECL|interface|CallbackMetric
+begin_class
+DECL|class|Counter0
 specifier|public
-interface|interface
-name|CallbackMetric
-parameter_list|<
-name|V
-parameter_list|>
-extends|extends
+specifier|abstract
+class|class
+name|Counter0
+implements|implements
 name|RegistrationHandle
-block|{ }
-end_interface
+block|{
+comment|/** Increment the counter by one event. */
+DECL|method|increment ()
+specifier|public
+name|void
+name|increment
+parameter_list|()
+block|{
+name|incrementBy
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Increment the counter by a specified amount.    *    * @param value value to increment by, must be>= 0.    */
+DECL|method|incrementBy (long value)
+specifier|public
+specifier|abstract
+name|void
+name|incrementBy
+parameter_list|(
+name|long
+name|value
+parameter_list|)
+function_decl|;
+block|}
+end_class
 
 end_unit
 

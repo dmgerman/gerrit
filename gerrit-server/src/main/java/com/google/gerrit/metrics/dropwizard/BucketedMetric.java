@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.metrics
+DECL|package|com.google.gerrit.metrics.dropwizard
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|metrics
+operator|.
+name|dropwizard
 package|;
 end_package
 
@@ -72,29 +74,86 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|common
 operator|.
-name|registration
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
 operator|.
-name|RegistrationHandle
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|codahale
+operator|.
+name|metrics
+operator|.
+name|Metric
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
 import|;
 end_import
 
 begin_comment
-comment|/**  * Metric whose value is supplied when the trigger is invoked.  *  * @see CallbackMetric0  * @param<V> type of the metric value, typically Integer or Long.  */
+comment|/** Metric broken down into buckets by {@link Field} values. */
 end_comment
 
 begin_interface
-DECL|interface|CallbackMetric
-specifier|public
+DECL|interface|BucketedMetric
 interface|interface
-name|CallbackMetric
-parameter_list|<
-name|V
-parameter_list|>
+name|BucketedMetric
 extends|extends
-name|RegistrationHandle
-block|{ }
+name|Metric
+block|{
+DECL|method|getTotal ()
+annotation|@
+name|Nullable
+name|Metric
+name|getTotal
+parameter_list|()
+function_decl|;
+DECL|method|getFields ()
+name|Field
+argument_list|<
+name|?
+argument_list|>
+index|[]
+name|getFields
+parameter_list|()
+function_decl|;
+DECL|method|getCells ()
+name|Map
+argument_list|<
+name|?
+argument_list|,
+name|Metric
+argument_list|>
+name|getCells
+parameter_list|()
+function_decl|;
+block|}
 end_interface
 
 end_unit
