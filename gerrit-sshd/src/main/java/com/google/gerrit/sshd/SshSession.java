@@ -200,6 +200,12 @@ specifier|volatile
 name|String
 name|authError
 decl_stmt|;
+DECL|field|peerAgent
+specifier|private
+specifier|volatile
+name|String
+name|peerAgent
+decl_stmt|;
 DECL|method|SshSession (final int sessionId, SocketAddress peer)
 name|SshSession
 parameter_list|(
@@ -353,6 +359,30 @@ block|{
 return|return
 name|remoteAsString
 return|;
+block|}
+DECL|method|getPeerAgent ()
+specifier|public
+name|String
+name|getPeerAgent
+parameter_list|()
+block|{
+return|return
+name|peerAgent
+return|;
+block|}
+DECL|method|setPeerAgent (String agent)
+specifier|public
+name|void
+name|setPeerAgent
+parameter_list|(
+name|String
+name|agent
+parameter_list|)
+block|{
+name|peerAgent
+operator|=
+name|agent
+expr_stmt|;
 block|}
 DECL|method|getUsername ()
 name|String

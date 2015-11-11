@@ -547,6 +547,16 @@ argument_list|,
 name|err
 argument_list|)
 expr_stmt|;
+name|session
+operator|.
+name|setPeerAgent
+argument_list|(
+name|up
+operator|.
+name|getPeerUserAgent
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
