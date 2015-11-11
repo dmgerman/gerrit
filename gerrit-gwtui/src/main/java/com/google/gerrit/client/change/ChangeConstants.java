@@ -84,6 +84,7 @@ end_import
 
 begin_interface
 DECL|interface|ChangeConstants
+specifier|public
 interface|interface
 name|ChangeConstants
 extends|extends

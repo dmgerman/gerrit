@@ -226,6 +226,23 @@ name|String
 name|bytesDeleted
 parameter_list|)
 function_decl|;
+DECL|method|patchTableSize_ModifyBinaryFilesWithPercentages (String bytesInserted, String percentageInserted, String bytesDeleted, String percentageDeleted)
+name|String
+name|patchTableSize_ModifyBinaryFilesWithPercentages
+parameter_list|(
+name|String
+name|bytesInserted
+parameter_list|,
+name|String
+name|percentageInserted
+parameter_list|,
+name|String
+name|bytesDeleted
+parameter_list|,
+name|String
+name|percentageDeleted
+parameter_list|)
+function_decl|;
 DECL|method|patchTableSize_LongModify (int insertions, int deletions)
 name|String
 name|patchTableSize_LongModify

@@ -102,6 +102,11 @@ specifier|public
 name|long
 name|sizeDelta
 decl_stmt|;
+DECL|field|size
+specifier|public
+name|long
+name|size
+decl_stmt|;
 block|}
 end_class
 
