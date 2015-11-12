@@ -398,6 +398,39 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
+comment|/** Converts a value string passed to an operator into a {@link Predicate}. */
+DECL|interface|OperatorFactory
+specifier|public
+interface|interface
+name|OperatorFactory
+parameter_list|<
+name|T
+parameter_list|,
+name|Q
+extends|extends
+name|QueryBuilder
+parameter_list|<
+name|T
+parameter_list|>
+parameter_list|>
+block|{
+DECL|method|create (Q builder, String value)
+name|Predicate
+argument_list|<
+name|T
+argument_list|>
+name|create
+parameter_list|(
+name|Q
+name|builder
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+throws|throws
+name|QueryParseException
+function_decl|;
+block|}
 comment|/**    * Defines the operators known by a QueryBuilder.    *    * This class is thread-safe and may be reused or cached.    *    * @param<T> type of object the predicates can evaluate in memory.    * @param<Q> type of the query builder subclass.    */
 DECL|class|Definition
 specifier|public
@@ -848,7 +881,7 @@ argument_list|(
 literal|"rawtypes"
 argument_list|)
 DECL|field|opFactories
-specifier|private
+specifier|protected
 specifier|final
 name|Map
 argument_list|<
@@ -1605,39 +1638,6 @@ argument_list|,
 name|why
 argument_list|)
 return|;
-block|}
-comment|/** Converts a value string passed to an operator into a {@link Predicate}. */
-DECL|interface|OperatorFactory
-specifier|protected
-interface|interface
-name|OperatorFactory
-parameter_list|<
-name|T
-parameter_list|,
-name|Q
-extends|extends
-name|QueryBuilder
-parameter_list|<
-name|T
-parameter_list|>
-parameter_list|>
-block|{
-DECL|method|create (Q builder, String value)
-name|Predicate
-argument_list|<
-name|T
-argument_list|>
-name|create
-parameter_list|(
-name|Q
-name|builder
-parameter_list|,
-name|String
-name|value
-parameter_list|)
-throws|throws
-name|QueryParseException
-function_decl|;
 block|}
 comment|/** Denotes a method which is a query operator. */
 annotation|@
