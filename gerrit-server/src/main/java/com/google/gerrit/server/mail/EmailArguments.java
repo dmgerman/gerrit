@@ -194,6 +194,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|StarredChangesUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|AccountCache
@@ -657,9 +671,14 @@ name|OutgoingEmailValidationListener
 argument_list|>
 name|outgoingEmailValidationListeners
 decl_stmt|;
+DECL|field|starredChangesUtil
+specifier|final
+name|StarredChangesUtil
+name|starredChangesUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RuntimeInstance velocityRuntime, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RuntimeInstance velocityRuntime, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners, StarredChangesUtil starredChangesUtil)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -762,6 +781,9 @@ argument_list|<
 name|OutgoingEmailValidationListener
 argument_list|>
 name|outgoingEmailValidationListeners
+parameter_list|,
+name|StarredChangesUtil
+name|starredChangesUtil
 parameter_list|)
 block|{
 name|this
@@ -916,6 +938,12 @@ operator|.
 name|outgoingEmailValidationListeners
 operator|=
 name|outgoingEmailValidationListeners
+expr_stmt|;
+name|this
+operator|.
+name|starredChangesUtil
+operator|=
+name|starredChangesUtil
 expr_stmt|;
 block|}
 block|}
