@@ -1031,6 +1031,24 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--strict-labels"
+argument_list|,
+name|usage
+operator|=
+literal|"Strictly check if the labels "
+operator|+
+literal|"specified can be applied to the given patch set(s)"
+argument_list|)
+DECL|field|strictLabels
+specifier|private
+name|boolean
+name|strictLabels
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
 literal|"--label"
 argument_list|,
 name|aliases
@@ -1766,7 +1784,7 @@ name|review
 operator|.
 name|strictLabels
 operator|=
-literal|false
+name|strictLabels
 expr_stmt|;
 for|for
 control|(
