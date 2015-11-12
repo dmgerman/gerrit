@@ -1840,12 +1840,6 @@ operator|.
 name|Factory
 name|mergeUtilFactory
 decl_stmt|;
-DECL|field|submit
-specifier|private
-specifier|final
-name|Submit
-name|submit
-decl_stmt|;
 DECL|field|userFactory
 specifier|private
 specifier|final
@@ -1948,7 +1942,7 @@ name|fix
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, GitRepositoryManager repoManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, Submit submit, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, GpgApiAdapter gpgApi, @Assisted Set<ListChangesOption> options)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, GitRepositoryManager repoManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, GpgApiAdapter gpgApi, @Assisted Set<ListChangesOption> options)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -1979,9 +1973,6 @@ name|MergeUtil
 operator|.
 name|Factory
 name|mergeUtilFactory
-parameter_list|,
-name|Submit
-name|submit
 parameter_list|,
 name|IdentifiedUser
 operator|.
@@ -2087,12 +2078,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|submit
-operator|=
-name|submit
 expr_stmt|;
 name|this
 operator|.
@@ -3656,7 +3641,7 @@ name|out
 operator|.
 name|submittable
 operator|=
-name|submit
+name|Submit
 operator|.
 name|submittable
 argument_list|(
