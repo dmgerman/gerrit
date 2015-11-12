@@ -94,7 +94,14 @@ name|V
 parameter_list|>
 extends|extends
 name|RegistrationHandle
-block|{ }
+block|{
+DECL|method|prune ()
+specifier|public
+name|void
+name|prune
+parameter_list|()
+function_decl|;
+block|}
 end_interface
 
 end_unit

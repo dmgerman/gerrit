@@ -111,6 +111,8 @@ name|field1
 parameter_list|)
 function_decl|;
 comment|/** Prune any submetrics that were not assigned during this trigger. */
+annotation|@
+name|Override
 DECL|method|prune ()
 specifier|public
 name|void
