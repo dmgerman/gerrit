@@ -5220,7 +5220,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doClaSignupHook (Account account, ContributorAgreement cla)
+DECL|method|doClaSignupHook (Account account, String claName)
 specifier|public
 name|void
 name|doClaSignupHook
@@ -5228,8 +5228,8 @@ parameter_list|(
 name|Account
 name|account
 parameter_list|,
-name|ContributorAgreement
-name|cla
+name|String
+name|claName
 parameter_list|)
 block|{
 if|if
@@ -5283,10 +5283,7 @@ name|args
 argument_list|,
 literal|"--cla-name"
 argument_list|,
-name|cla
-operator|.
-name|getName
-argument_list|()
+name|claName
 argument_list|)
 expr_stmt|;
 name|runHook
