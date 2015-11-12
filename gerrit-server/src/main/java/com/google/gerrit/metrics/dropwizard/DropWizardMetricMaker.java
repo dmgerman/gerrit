@@ -548,6 +548,18 @@ name|TimeUnit
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_comment
 comment|/**  * Connects Gerrit metric package onto DropWizard.  *  * @see<a href="http://www.dropwizard.io/">DropWizard</a>  */
 end_comment
@@ -851,6 +863,8 @@ parameter_list|)
 block|{
 name|checkCounterDescription
 argument_list|(
+name|name
+argument_list|,
 name|desc
 argument_list|)
 expr_stmt|;
@@ -902,6 +916,8 @@ parameter_list|)
 block|{
 name|checkCounterDescription
 argument_list|(
+name|name
+argument_list|,
 name|desc
 argument_list|)
 expr_stmt|;
@@ -986,6 +1002,8 @@ parameter_list|)
 block|{
 name|checkCounterDescription
 argument_list|(
+name|name
+argument_list|,
 name|desc
 argument_list|)
 expr_stmt|;
@@ -1078,6 +1096,8 @@ parameter_list|)
 block|{
 name|checkCounterDescription
 argument_list|(
+name|name
+argument_list|,
 name|desc
 argument_list|)
 expr_stmt|;
@@ -1123,16 +1143,24 @@ name|counter3
 argument_list|()
 return|;
 block|}
-DECL|method|checkCounterDescription (Description desc)
+DECL|method|checkCounterDescription (String name, Description desc)
 specifier|private
 specifier|static
 name|void
 name|checkCounterDescription
 parameter_list|(
+name|String
+name|name
+parameter_list|,
 name|Description
 name|desc
 parameter_list|)
 block|{
+name|checkMetricName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 name|checkArgument
 argument_list|(
 operator|!
@@ -1304,6 +1332,8 @@ parameter_list|)
 block|{
 name|checkTimerDescription
 argument_list|(
+name|name
+argument_list|,
 name|desc
 argument_list|)
 expr_stmt|;
@@ -1350,6 +1380,8 @@ parameter_list|)
 block|{
 name|checkTimerDescription
 argument_list|(
+name|name
+argument_list|,
 name|desc
 argument_list|)
 expr_stmt|;
@@ -1434,6 +1466,8 @@ parameter_list|)
 block|{
 name|checkTimerDescription
 argument_list|(
+name|name
+argument_list|,
 name|desc
 argument_list|)
 expr_stmt|;
@@ -1526,6 +1560,8 @@ parameter_list|)
 block|{
 name|checkTimerDescription
 argument_list|(
+name|name
+argument_list|,
 name|desc
 argument_list|)
 expr_stmt|;
@@ -1571,16 +1607,24 @@ name|timer3
 argument_list|()
 return|;
 block|}
-DECL|method|checkTimerDescription (Description desc)
+DECL|method|checkTimerDescription (String name, Description desc)
 specifier|private
 specifier|static
 name|void
 name|checkTimerDescription
 parameter_list|(
+name|String
+name|name
+parameter_list|,
 name|Description
 name|desc
 parameter_list|)
 block|{
+name|checkMetricName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 name|checkArgument
 argument_list|(
 operator|!
@@ -1686,6 +1730,11 @@ name|Description
 name|desc
 parameter_list|)
 block|{
+name|checkMetricName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 name|define
 argument_list|(
 name|name
@@ -1744,6 +1793,11 @@ argument_list|>
 name|field1
 parameter_list|)
 block|{
+name|checkMetricName
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 name|CallbackMetricImpl1
 argument_list|<
 name|F1
@@ -1971,6 +2025,51 @@ argument_list|,
 name|desc
 operator|.
 name|getAnnotations
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|field|METRIC_NAME_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|METRIC_NAME_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[a-zA-Z0-9_-]+(/[a-zA-Z0-9_-]+)*"
+argument_list|)
+decl_stmt|;
+DECL|method|checkMetricName (String name)
+specifier|private
+specifier|static
+name|void
+name|checkMetricName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+name|METRIC_NAME_PATTERN
+operator|.
+name|matcher
+argument_list|(
+name|name
+argument_list|)
+operator|.
+name|matches
+argument_list|()
+argument_list|,
+literal|"metric name must match %s"
+argument_list|,
+name|METRIC_NAME_PATTERN
+operator|.
+name|pattern
 argument_list|()
 argument_list|)
 expr_stmt|;
