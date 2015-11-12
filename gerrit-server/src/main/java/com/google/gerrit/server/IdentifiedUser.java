@@ -1398,9 +1398,11 @@ name|validEmails
 init|=
 name|Sets
 operator|.
-name|newHashSetWithExpectedSize
+name|newTreeSet
 argument_list|(
-literal|4
+name|String
+operator|.
+name|CASE_INSENSITIVE_ORDER
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -1810,9 +1812,11 @@ name|invalidEmails
 operator|=
 name|Sets
 operator|.
-name|newHashSetWithExpectedSize
+name|newTreeSet
 argument_list|(
-literal|4
+name|String
+operator|.
+name|CASE_INSENSITIVE_ORDER
 argument_list|)
 expr_stmt|;
 block|}
