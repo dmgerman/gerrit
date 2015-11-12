@@ -220,7 +220,7 @@ name|metricMaker
 operator|.
 name|newCounter
 argument_list|(
-literal|"git/upload-pack"
+literal|"git/upload-pack/request_count"
 argument_list|,
 operator|new
 name|Description

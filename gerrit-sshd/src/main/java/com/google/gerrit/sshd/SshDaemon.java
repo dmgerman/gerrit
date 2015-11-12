@@ -2416,7 +2416,7 @@ name|metricMaker
 operator|.
 name|newCounter
 argument_list|(
-literal|"sshd/sessions/authentication-failed"
+literal|"sshd/sessions/authentication_failures"
 argument_list|,
 operator|new
 name|Description
