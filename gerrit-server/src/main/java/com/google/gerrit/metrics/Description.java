@@ -183,6 +183,15 @@ name|GAUGE
 init|=
 literal|"GAUGE"
 decl_stmt|;
+DECL|field|CONSTANT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CONSTANT
+init|=
+literal|"CONSTANT"
+decl_stmt|;
 DECL|field|FIELD_ORDERING
 specifier|public
 specifier|static
@@ -334,6 +343,26 @@ return|return
 name|this
 return|;
 block|}
+comment|/**    * Mark the value as constant for the life of this process. Typically used for    * software versions, command line arguments, etc. that cannot change without    * a process restart.    */
+DECL|method|setConstant ()
+specifier|public
+name|Description
+name|setConstant
+parameter_list|()
+block|{
+name|annotations
+operator|.
+name|put
+argument_list|(
+name|CONSTANT
+argument_list|,
+name|TRUE_VALUE
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 comment|/**    * Indicates the metric may be usefully interpreted as a count over short    * periods of time, such as request arrival rate. May only be applied to a    * {@link Counter0}.    */
 DECL|method|setRate ()
 specifier|public
@@ -418,6 +447,27 @@ argument_list|)
 expr_stmt|;
 return|return
 name|this
+return|;
+block|}
+comment|/** True if the metric value never changes after startup. */
+DECL|method|isConstant ()
+specifier|public
+name|boolean
+name|isConstant
+parameter_list|()
+block|{
+return|return
+name|TRUE_VALUE
+operator|.
+name|equals
+argument_list|(
+name|annotations
+operator|.
+name|get
+argument_list|(
+name|CONSTANT
+argument_list|)
+argument_list|)
 return|;
 block|}
 comment|/** True if the metric may be interpreted as a rate over time. */
