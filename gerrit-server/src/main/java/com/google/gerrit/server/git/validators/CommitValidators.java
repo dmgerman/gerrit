@@ -1073,8 +1073,6 @@ argument_list|(
 operator|new
 name|ChangeHookValidator
 argument_list|(
-name|refControl
-argument_list|,
 name|hooks
 argument_list|)
 argument_list|)
@@ -1302,8 +1300,6 @@ argument_list|(
 operator|new
 name|ChangeHookValidator
 argument_list|(
-name|refControl
-argument_list|,
 name|hooks
 argument_list|)
 argument_list|)
@@ -3320,35 +3316,20 @@ name|ChangeHookValidator
 implements|implements
 name|CommitValidationListener
 block|{
-DECL|field|refControl
-specifier|private
-specifier|final
-name|RefControl
-name|refControl
-decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
 name|ChangeHooks
 name|hooks
 decl_stmt|;
-DECL|method|ChangeHookValidator (RefControl refControl, ChangeHooks hooks)
+DECL|method|ChangeHookValidator (ChangeHooks hooks)
 specifier|public
 name|ChangeHookValidator
 parameter_list|(
-name|RefControl
-name|refControl
-parameter_list|,
 name|ChangeHooks
 name|hooks
 parameter_list|)
 block|{
-name|this
-operator|.
-name|refControl
-operator|=
-name|refControl
-expr_stmt|;
 name|this
 operator|.
 name|hooks
@@ -3372,27 +3353,12 @@ parameter_list|)
 throws|throws
 name|CommitValidationException
 block|{
-if|if
-condition|(
-name|refControl
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|isIdentifiedUser
-argument_list|()
-condition|)
-block|{
 name|IdentifiedUser
 name|user
 init|=
-name|refControl
+name|receiveEvent
 operator|.
-name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
-argument_list|()
+name|user
 decl_stmt|;
 name|String
 name|refname
@@ -3448,7 +3414,7 @@ name|REFS_CHANGES
 argument_list|)
 condition|)
 block|{
-comment|/*            * If the ref-update hook tries to distinguish behavior between pushes to            * refs/heads/... and refs/for/..., make sure we send it the correct refname.            * Also, if this is targetting refs/for/, make sure we behave the same as            * what a push to refs/for/ would behave; in particular, setting oldrev to            * 0000000000000000000000000000000000000000.            */
+comment|/*           * If the ref-update hook tries to distinguish behavior between pushes to           * refs/heads/... and refs/for/..., make sure we send it the correct refname.           * Also, if this is targetting refs/for/, make sure we behave the same as           * what a push to refs/for/ would behave; in particular, setting oldrev to           * 0000000000000000000000000000000000000000.           */
 name|refname
 operator|=
 name|refname
@@ -3520,7 +3486,6 @@ name|trim
 argument_list|()
 argument_list|)
 throw|;
-block|}
 block|}
 return|return
 name|Collections
