@@ -115,6 +115,42 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ReviewerStateInternal
+operator|.
+name|CC
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ReviewerStateInternal
+operator|.
+name|REVIEWER
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -508,7 +544,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ReviewerState
+name|ReviewerStateInternal
 import|;
 end_import
 
@@ -987,7 +1023,7 @@ DECL|field|oldReviewers
 specifier|private
 name|SetMultimap
 argument_list|<
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|,
 name|Account
 operator|.
@@ -1923,8 +1959,6 @@ name|oldReviewers
 operator|.
 name|get
 argument_list|(
-name|ReviewerState
-operator|.
 name|REVIEWER
 argument_list|)
 argument_list|)
@@ -1937,8 +1971,6 @@ name|oldReviewers
 operator|.
 name|get
 argument_list|(
-name|ReviewerState
-operator|.
 name|CC
 argument_list|)
 argument_list|)

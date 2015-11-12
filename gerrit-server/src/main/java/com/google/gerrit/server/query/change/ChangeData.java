@@ -534,7 +534,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ReviewerState
+name|ReviewerStateInternal
 import|;
 end_import
 
@@ -4265,7 +4265,7 @@ DECL|method|reviewers ()
 specifier|public
 name|SetMultimap
 argument_list|<
-name|ReviewerState
+name|ReviewerStateInternal
 argument_list|,
 name|Account
 operator|.

@@ -84,6 +84,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ReviewerStateInternal
+operator|.
+name|REVIEWER
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -775,22 +793,6 @@ operator|.
 name|notedb
 operator|.
 name|ChangeUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|ReviewerState
 import|;
 end_import
 
@@ -6720,8 +6722,6 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|ReviewerState
-operator|.
 name|REVIEWER
 argument_list|)
 expr_stmt|;
