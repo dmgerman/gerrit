@@ -484,7 +484,7 @@ name|Gerrit
 operator|.
 name|selfRedirect
 argument_list|(
-literal|"/login/"
+literal|"/login"
 argument_list|)
 argument_list|)
 expr_stmt|;
