@@ -395,7 +395,7 @@ operator|=
 literal|1
 argument_list|)
 DECL|field|changeId
-specifier|protected
+specifier|public
 name|Change
 operator|.
 name|Id
@@ -409,12 +409,12 @@ operator|=
 literal|2
 argument_list|)
 DECL|field|patchSetId
-specifier|protected
+specifier|public
 name|int
 name|patchSetId
 decl_stmt|;
 DECL|method|Id ()
-specifier|protected
+specifier|public
 name|Id
 parameter_list|()
 block|{

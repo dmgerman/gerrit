@@ -146,12 +146,12 @@ operator|=
 literal|1
 argument_list|)
 DECL|field|id
-specifier|protected
+specifier|public
 name|String
 name|id
 decl_stmt|;
 DECL|method|LabelId ()
-specifier|protected
+specifier|public
 name|LabelId
 parameter_list|()
 block|{   }
