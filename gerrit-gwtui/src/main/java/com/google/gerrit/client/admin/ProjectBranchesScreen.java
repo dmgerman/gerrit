@@ -1780,7 +1780,8 @@ name|start
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
+else|else
+block|{
 if|if
 condition|(
 name|query
@@ -1793,6 +1794,7 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
+block|}
 name|query
 operator|=
 name|q
