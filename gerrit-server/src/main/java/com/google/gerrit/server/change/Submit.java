@@ -1784,6 +1784,7 @@ block|}
 comment|/**    * Check if there are any problems with the given change. It doesn't take    * any problems of related changes into account.    *<p>    * @param cd the change to check for submittability    * @return if the change has any problems for submission    */
 DECL|method|submittable (ChangeData cd)
 specifier|public
+specifier|static
 name|boolean
 name|submittable
 parameter_list|(
