@@ -466,6 +466,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|io
+operator|.
+name|CountingOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|math
 operator|.
 name|IntMath
@@ -2000,6 +2014,12 @@ name|status
 init|=
 name|SC_OK
 decl_stmt|;
+name|long
+name|responseBytes
+init|=
+operator|-
+literal|1
+decl_stmt|;
 name|Object
 name|result
 init|=
@@ -3079,6 +3099,8 @@ operator|instanceof
 name|BinaryResult
 condition|)
 block|{
+name|responseBytes
+operator|=
 name|replyBinaryResult
 argument_list|(
 name|req
@@ -3094,6 +3116,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|responseBytes
+operator|=
 name|replyJson
 argument_list|(
 name|req
@@ -3114,6 +3138,8 @@ name|MalformedJsonException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3140,6 +3166,8 @@ name|JsonParseException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3166,6 +3194,8 @@ name|BadRequestException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3198,6 +3228,8 @@ name|AuthException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3230,6 +3262,8 @@ name|AmbiguousViewException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3257,6 +3291,8 @@ name|ResourceNotFoundException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3289,6 +3325,8 @@ name|MethodNotAllowedException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3321,6 +3359,8 @@ name|ResourceConflictException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3353,6 +3393,8 @@ name|PreconditionFailedException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3385,6 +3427,8 @@ name|UnprocessableEntityException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3417,6 +3461,8 @@ name|NotImplementedException
 name|e
 parameter_list|)
 block|{
+name|responseBytes
+operator|=
 name|replyError
 argument_list|(
 name|req
@@ -3448,6 +3494,8 @@ name|status
 operator|=
 name|SC_INTERNAL_SERVER_ERROR
 expr_stmt|;
+name|responseBytes
+operator|=
 name|handleException
 argument_list|(
 name|e
@@ -3513,6 +3561,28 @@ argument_list|(
 name|metric
 argument_list|,
 name|status
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|responseBytes
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
+name|globals
+operator|.
+name|metrics
+operator|.
+name|responseBytes
+operator|.
+name|record
+argument_list|(
+name|metric
+argument_list|,
+name|responseBytes
 argument_list|)
 expr_stmt|;
 block|}
@@ -5192,7 +5262,7 @@ begin_function
 DECL|method|replyJson (@ullable HttpServletRequest req, HttpServletResponse res, Multimap<String, String> config, Object result)
 specifier|public
 specifier|static
-name|void
+name|long
 name|replyJson
 parameter_list|(
 annotation|@
@@ -5307,6 +5377,7 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+return|return
 name|replyBinaryResult
 argument_list|(
 name|req
@@ -5328,7 +5399,7 @@ argument_list|(
 name|UTF_8
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -5726,7 +5797,7 @@ literal|"resource"
 argument_list|)
 DECL|method|replyBinaryResult ( @ullable HttpServletRequest req, HttpServletResponse res, BinaryResult bin)
 specifier|static
-name|void
+name|long
 name|replyBinaryResult
 parameter_list|(
 annotation|@
@@ -5938,13 +6009,17 @@ condition|)
 block|{
 try|try
 init|(
-name|OutputStream
+name|CountingOutputStream
 name|dst
 init|=
+operator|new
+name|CountingOutputStream
+argument_list|(
 name|res
 operator|.
 name|getOutputStream
 argument_list|()
+argument_list|)
 init|)
 block|{
 name|bin
@@ -5954,8 +6029,17 @@ argument_list|(
 name|dst
 argument_list|)
 expr_stmt|;
+return|return
+name|dst
+operator|.
+name|getCount
+argument_list|()
+return|;
 block|}
 block|}
+return|return
+literal|0
+return|;
 block|}
 finally|finally
 block|{
@@ -7374,7 +7458,7 @@ begin_function
 DECL|method|handleException (Throwable err, HttpServletRequest req, HttpServletResponse res)
 specifier|private
 specifier|static
-name|void
+name|long
 name|handleException
 parameter_list|(
 name|Throwable
@@ -7456,6 +7540,7 @@ operator|.
 name|reset
 argument_list|()
 expr_stmt|;
+return|return
 name|replyError
 argument_list|(
 name|req
@@ -7468,8 +7553,11 @@ literal|"Internal server error"
 argument_list|,
 name|err
 argument_list|)
-expr_stmt|;
+return|;
 block|}
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -7477,7 +7565,7 @@ begin_function
 DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, @Nullable Throwable err)
 specifier|public
 specifier|static
-name|void
+name|long
 name|replyError
 parameter_list|(
 name|HttpServletRequest
@@ -7500,6 +7588,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+return|return
 name|replyError
 argument_list|(
 name|req
@@ -7516,7 +7605,7 @@ name|NONE
 argument_list|,
 name|err
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -7524,7 +7613,7 @@ begin_function
 DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, CacheControl c, @Nullable Throwable err)
 specifier|public
 specifier|static
-name|void
+name|long
 name|replyError
 parameter_list|(
 name|HttpServletRequest
@@ -7587,6 +7676,7 @@ argument_list|(
 name|statusCode
 argument_list|)
 expr_stmt|;
+return|return
 name|replyText
 argument_list|(
 name|req
@@ -7595,14 +7685,14 @@ name|res
 argument_list|,
 name|msg
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
 begin_function
 DECL|method|replyText (@ullable HttpServletRequest req, HttpServletResponse res, String text)
 specifier|static
-name|void
+name|long
 name|replyText
 parameter_list|(
 annotation|@
@@ -7638,6 +7728,7 @@ name|text
 argument_list|)
 condition|)
 block|{
+return|return
 name|replyJson
 argument_list|(
 name|req
@@ -7659,7 +7750,7 @@ argument_list|(
 name|text
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{
@@ -7679,6 +7770,7 @@ operator|+=
 literal|"\n"
 expr_stmt|;
 block|}
+return|return
 name|replyBinaryResult
 argument_list|(
 name|req
@@ -7697,7 +7789,7 @@ argument_list|(
 literal|"text/plain"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 end_function
