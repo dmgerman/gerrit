@@ -440,9 +440,14 @@ name|this
 operator|.
 name|prefix
 operator|=
-literal|"plugins/"
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"plugins/%s/"
+argument_list|,
 name|pluginName
+argument_list|)
 expr_stmt|;
 name|cleanup
 operator|=
