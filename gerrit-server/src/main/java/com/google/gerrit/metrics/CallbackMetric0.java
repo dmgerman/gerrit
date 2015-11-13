@@ -94,6 +94,14 @@ name|V
 name|value
 parameter_list|)
 function_decl|;
+annotation|@
+name|Override
+DECL|method|prune ()
+specifier|public
+name|void
+name|prune
+parameter_list|()
+block|{}
 block|}
 end_class
 
