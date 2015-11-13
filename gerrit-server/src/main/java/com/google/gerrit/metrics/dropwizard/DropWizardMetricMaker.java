@@ -740,13 +740,6 @@ name|JGitMetricModule
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|bind
-argument_list|(
-name|CacheMetrics
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 DECL|class|RestModule
@@ -797,6 +790,13 @@ operator|.
 name|to
 argument_list|(
 name|GetMetric
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|CacheMetrics
 operator|.
 name|class
 argument_list|)
