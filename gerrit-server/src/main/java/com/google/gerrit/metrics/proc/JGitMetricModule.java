@@ -104,7 +104,9 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
-name|MetricMaker
+name|Description
+operator|.
+name|Units
 import|;
 end_import
 
@@ -118,9 +120,7 @@ name|gerrit
 operator|.
 name|metrics
 operator|.
-name|Description
-operator|.
-name|Units
+name|MetricMaker
 import|;
 end_import
 
