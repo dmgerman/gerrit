@@ -2770,6 +2770,8 @@ argument_list|(
 operator|new
 name|GerritOptions
 argument_list|(
+name|config
+argument_list|,
 name|headless
 argument_list|,
 name|slave

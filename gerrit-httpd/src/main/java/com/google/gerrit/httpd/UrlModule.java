@@ -1016,11 +1016,14 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+comment|// Static paths are bound last, since they may include a wildcard for /*.
 name|install
 argument_list|(
 operator|new
 name|StaticModule
-argument_list|()
+argument_list|(
+name|options
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
