@@ -2186,6 +2186,9 @@ name|dbInjector
 operator|=
 name|createDbInjector
 argument_list|(
+literal|true
+comment|/* enableMetrics */
+argument_list|,
 name|MULTI_USER
 argument_list|)
 expr_stmt|;
@@ -2425,17 +2428,6 @@ argument_list|(
 name|SchemaVersionCheck
 operator|.
 name|module
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|modules
-operator|.
-name|add
-argument_list|(
-operator|new
-name|DropWizardMetricMaker
-operator|.
-name|ApiModule
 argument_list|()
 argument_list|)
 expr_stmt|;
