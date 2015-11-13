@@ -339,6 +339,22 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|beginSet ()
+specifier|public
+name|void
+name|beginSet
+parameter_list|()
+block|{   }
+annotation|@
+name|Override
+DECL|method|endSet ()
+specifier|public
+name|void
+name|endSet
+parameter_list|()
+block|{   }
+annotation|@
+name|Override
 DECL|method|set (V value)
 specifier|public
 name|void

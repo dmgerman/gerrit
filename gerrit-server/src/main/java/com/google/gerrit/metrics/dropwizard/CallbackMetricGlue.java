@@ -71,6 +71,16 @@ DECL|interface|CallbackMetricGlue
 interface|interface
 name|CallbackMetricGlue
 block|{
+DECL|method|beginSet ()
+name|void
+name|beginSet
+parameter_list|()
+function_decl|;
+DECL|method|endSet ()
+name|void
+name|endSet
+parameter_list|()
+function_decl|;
 DECL|method|register (Runnable trigger)
 name|void
 name|register
@@ -78,6 +88,11 @@ parameter_list|(
 name|Runnable
 name|trigger
 parameter_list|)
+function_decl|;
+DECL|method|remove ()
+name|void
+name|remove
+parameter_list|()
 function_decl|;
 block|}
 end_interface

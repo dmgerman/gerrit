@@ -110,6 +110,13 @@ name|F1
 name|field1
 parameter_list|)
 function_decl|;
+comment|/** Prune any submetrics that were not assigned during this trigger. */
+DECL|method|prune ()
+specifier|public
+name|void
+name|prune
+parameter_list|()
+block|{   }
 block|}
 end_class
 
