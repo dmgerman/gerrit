@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|FileUtil
-operator|.
-name|lastModified
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -883,12 +867,12 @@ block|{
 return|return
 name|snapshot
 operator|.
-name|lastModified
-argument_list|()
-operator|!=
-name|lastModified
+name|isModified
 argument_list|(
 name|jar
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 return|;
 block|}
