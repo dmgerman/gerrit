@@ -1573,6 +1573,22 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--polygerrit-dev"
+argument_list|,
+name|usage
+operator|=
+literal|"Force PolyGerrit UI for development"
+argument_list|)
+DECL|field|polyGerritDev
+specifier|private
+name|boolean
+name|polyGerritDev
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
 literal|"--init"
 argument_list|,
 name|aliases
@@ -2783,6 +2799,8 @@ argument_list|,
 name|headless
 argument_list|,
 name|slave
+argument_list|,
+name|polyGerritDev
 argument_list|)
 argument_list|)
 expr_stmt|;

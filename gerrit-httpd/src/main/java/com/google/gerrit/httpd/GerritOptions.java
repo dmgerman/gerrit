@@ -96,13 +96,19 @@ specifier|final
 name|boolean
 name|slave
 decl_stmt|;
-DECL|field|polyGerrit
+DECL|field|enablePolyGerrit
 specifier|private
 specifier|final
 name|boolean
-name|polyGerrit
+name|enablePolyGerrit
 decl_stmt|;
-DECL|method|GerritOptions (Config cfg, boolean headless, boolean slave)
+DECL|field|forcePolyGerritDev
+specifier|private
+specifier|final
+name|boolean
+name|forcePolyGerritDev
+decl_stmt|;
+DECL|method|GerritOptions (Config cfg, boolean headless, boolean slave, boolean forcePolyGerritDev)
 specifier|public
 name|GerritOptions
 parameter_list|(
@@ -114,6 +120,9 @@ name|headless
 parameter_list|,
 name|boolean
 name|slave
+parameter_list|,
+name|boolean
+name|forcePolyGerritDev
 parameter_list|)
 block|{
 name|this
@@ -130,8 +139,10 @@ name|slave
 expr_stmt|;
 name|this
 operator|.
-name|polyGerrit
+name|enablePolyGerrit
 operator|=
+name|forcePolyGerritDev
+operator|||
 name|cfg
 operator|.
 name|getBoolean
@@ -145,6 +156,12 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|forcePolyGerritDev
+operator|=
+name|forcePolyGerritDev
+expr_stmt|;
 block|}
 DECL|method|enableDefaultUi ()
 specifier|public
@@ -157,7 +174,7 @@ operator|!
 name|headless
 operator|&&
 operator|!
-name|polyGerrit
+name|enablePolyGerrit
 return|;
 block|}
 DECL|method|enableMasterFeatures ()
@@ -181,7 +198,20 @@ return|return
 operator|!
 name|headless
 operator|&&
-name|polyGerrit
+name|enablePolyGerrit
+return|;
+block|}
+DECL|method|forcePolyGerritDev ()
+specifier|public
+name|boolean
+name|forcePolyGerritDev
+parameter_list|()
+block|{
+return|return
+operator|!
+name|headless
+operator|&&
+name|forcePolyGerritDev
 return|;
 block|}
 block|}
