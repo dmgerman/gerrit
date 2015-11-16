@@ -1781,6 +1781,7 @@ block|}
 return|;
 block|}
 DECL|class|Resource
+specifier|public
 specifier|static
 class|class
 name|Resource

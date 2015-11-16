@@ -150,6 +150,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Key
 import|;
 end_import
@@ -325,6 +337,7 @@ init|=
 literal|"BowerServlet"
 decl_stmt|;
 DECL|field|CACHE
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -343,6 +356,8 @@ specifier|private
 name|Paths
 name|paths
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|method|StaticModule (GerritOptions options)
 specifier|public
 name|StaticModule
