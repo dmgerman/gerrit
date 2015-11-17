@@ -166,6 +166,7 @@ name|REFS_DASHBOARDS
 init|=
 literal|"refs/meta/dashboards/"
 decl_stmt|;
+comment|/** Draft inline comments of a user on a change */
 DECL|field|REFS_DRAFT_COMMENTS
 specifier|public
 specifier|static
