@@ -269,7 +269,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"refs/draft-comments/23/1011123-67473"
+literal|"refs/draft-comments/23/1011123/67473"
 argument_list|)
 expr_stmt|;
 block|}
@@ -295,7 +295,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"refs/draft-comments/23/1011123-"
+literal|"refs/draft-comments/23/1011123/"
 argument_list|)
 expr_stmt|;
 block|}
