@@ -5712,6 +5712,9 @@ case|case
 name|PATH_CONFLICT
 case|:
 case|case
+name|REBASE_MERGE_CONFLICT
+case|:
+case|case
 name|MANUAL_RECURSIVE_MERGE
 case|:
 case|case
