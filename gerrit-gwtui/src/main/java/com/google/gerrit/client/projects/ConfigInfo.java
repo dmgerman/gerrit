@@ -356,6 +356,15 @@ name|requireSignedPush
 parameter_list|()
 comment|/*-{ return this.require_signed_push; }-*/
 function_decl|;
+DECL|method|rejectImplicitMerges ()
+specifier|public
+specifier|final
+specifier|native
+name|InheritedBooleanInfo
+name|rejectImplicitMerges
+parameter_list|()
+comment|/*-{ return this.reject_implicit_merges; }-*/
+function_decl|;
 DECL|method|submitType ()
 specifier|public
 specifier|final

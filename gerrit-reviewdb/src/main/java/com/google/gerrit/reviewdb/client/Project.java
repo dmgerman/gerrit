@@ -412,6 +412,11 @@ specifier|protected
 name|InheritableBoolean
 name|requireSignedPush
 decl_stmt|;
+DECL|field|rejectImplicitMerges
+specifier|protected
+name|InheritableBoolean
+name|rejectImplicitMerges
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -592,6 +597,16 @@ return|return
 name|maxObjectSizeLimit
 return|;
 block|}
+DECL|method|getRejectImplicitMerges ()
+specifier|public
+name|InheritableBoolean
+name|getRejectImplicitMerges
+parameter_list|()
+block|{
+return|return
+name|rejectImplicitMerges
+return|;
+block|}
 DECL|method|setUseContributorAgreements (final InheritableBoolean u)
 specifier|public
 name|void
@@ -739,6 +754,20 @@ block|{
 name|maxObjectSizeLimit
 operator|=
 name|limit
+expr_stmt|;
+block|}
+DECL|method|setRejectImplicitMerges (InheritableBoolean check)
+specifier|public
+name|void
+name|setRejectImplicitMerges
+parameter_list|(
+name|InheritableBoolean
+name|check
+parameter_list|)
+block|{
+name|rejectImplicitMerges
+operator|=
+name|check
 expr_stmt|;
 block|}
 DECL|method|getSubmitType ()
