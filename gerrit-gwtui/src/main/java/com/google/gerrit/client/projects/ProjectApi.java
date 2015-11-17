@@ -862,7 +862,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, InheritableBoolean enableSignedPush, InheritableBoolean requireSignedPush, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
+DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, InheritableBoolean enableSignedPush, InheritableBoolean requireSignedPush, InheritableBoolean rejectImplicitMerges, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -896,6 +896,9 @@ name|enableSignedPush
 parameter_list|,
 name|InheritableBoolean
 name|requireSignedPush
+parameter_list|,
+name|InheritableBoolean
+name|rejectImplicitMerges
 parameter_list|,
 name|String
 name|maxObjectSizeLimit
@@ -1006,6 +1009,13 @@ name|requireSignedPush
 argument_list|)
 expr_stmt|;
 block|}
+name|in
+operator|.
+name|setRejectImplicitMerges
+argument_list|(
+name|rejectImplicitMerges
+argument_list|)
+expr_stmt|;
 name|in
 operator|.
 name|setMaxObjectSizeLimit
@@ -1715,6 +1725,35 @@ name|String
 name|v
 parameter_list|)
 comment|/*-{ if(v)this.require_signed_push=v; }-*/
+function_decl|;
+DECL|method|setRejectImplicitMerges (InheritableBoolean v)
+specifier|final
+name|void
+name|setRejectImplicitMerges
+parameter_list|(
+name|InheritableBoolean
+name|v
+parameter_list|)
+block|{
+name|setRejectImplicitMergesRaw
+argument_list|(
+name|v
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setRejectImplicitMergesRaw (String v)
+specifier|private
+specifier|native
+name|void
+name|setRejectImplicitMergesRaw
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ if(v)this.reject_implicit_merges=v; }-*/
 function_decl|;
 DECL|method|setMaxObjectSizeLimit (String l)
 specifier|final

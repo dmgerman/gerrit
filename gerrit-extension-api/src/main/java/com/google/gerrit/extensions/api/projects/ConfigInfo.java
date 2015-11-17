@@ -198,6 +198,11 @@ specifier|public
 name|InheritedBooleanInfo
 name|requireSignedPush
 decl_stmt|;
+DECL|field|rejectImplicitMerges
+specifier|public
+name|InheritedBooleanInfo
+name|rejectImplicitMerges
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|MaxObjectSizeLimitInfo

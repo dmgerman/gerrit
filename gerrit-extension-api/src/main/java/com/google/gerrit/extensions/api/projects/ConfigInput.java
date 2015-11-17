@@ -172,6 +172,11 @@ specifier|public
 name|InheritableBoolean
 name|requireSignedPush
 decl_stmt|;
+DECL|field|rejectImplicitMerges
+specifier|public
+name|InheritableBoolean
+name|rejectImplicitMerges
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|String

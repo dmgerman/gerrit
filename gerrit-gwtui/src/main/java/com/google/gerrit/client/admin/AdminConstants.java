@@ -225,6 +225,11 @@ name|String
 name|requireChangeID
 parameter_list|()
 function_decl|;
+DECL|method|rejectImplicitMerges ()
+name|String
+name|rejectImplicitMerges
+parameter_list|()
+function_decl|;
 DECL|method|headingMaxObjectSizeLimit ()
 name|String
 name|headingMaxObjectSizeLimit

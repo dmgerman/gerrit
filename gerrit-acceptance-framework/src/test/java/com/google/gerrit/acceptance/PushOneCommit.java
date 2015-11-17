@@ -2340,6 +2340,29 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getMessage ()
+specifier|public
+name|String
+name|getMessage
+parameter_list|()
+block|{
+name|RemoteRefUpdate
+name|refUpdate
+init|=
+name|result
+operator|.
+name|getRemoteUpdate
+argument_list|(
+name|ref
+argument_list|)
+decl_stmt|;
+return|return
+name|message
+argument_list|(
+name|refUpdate
+argument_list|)
+return|;
+block|}
 DECL|method|message (RemoteRefUpdate refUpdate)
 specifier|private
 name|String
