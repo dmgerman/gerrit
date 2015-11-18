@@ -129,8 +129,8 @@ specifier|public
 specifier|static
 class|class
 name|Context
-implements|implements
-name|AutoCloseable
+extends|extends
+name|TimerContext
 block|{
 DECL|field|timer
 specifier|private
@@ -154,12 +154,6 @@ specifier|private
 specifier|final
 name|Object
 name|field2
-decl_stmt|;
-DECL|field|startNanos
-specifier|private
-specifier|final
-name|long
-name|startNanos
 decl_stmt|;
 annotation|@
 name|SuppressWarnings
@@ -215,23 +209,17 @@ name|field2
 operator|=
 name|field2
 expr_stmt|;
-name|this
-operator|.
-name|startNanos
-operator|=
-name|System
-operator|.
-name|nanoTime
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|close ()
+DECL|method|record (long elapsed)
 specifier|public
 name|void
-name|close
-parameter_list|()
+name|record
+parameter_list|(
+name|long
+name|elapsed
+parameter_list|)
 block|{
 name|timer
 operator|.
@@ -241,12 +229,7 @@ name|field1
 argument_list|,
 name|field2
 argument_list|,
-name|System
-operator|.
-name|nanoTime
-argument_list|()
-operator|-
-name|startNanos
+name|elapsed
 argument_list|,
 name|NANOSECONDS
 argument_list|)
