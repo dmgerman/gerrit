@@ -358,22 +358,6 @@ name|server
 operator|.
 name|git
 operator|.
-name|ChangeCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|GitRepositoryManager
 import|;
 end_import
@@ -425,6 +409,22 @@ operator|.
 name|MultiProgressMonitor
 operator|.
 name|Task
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|ScanningChangeCacheImpl
 import|;
 end_import
 
@@ -1053,12 +1053,6 @@ name|ReviewDb
 argument_list|>
 name|schemaFactory
 decl_stmt|;
-DECL|field|changeCache
-specifier|private
-specifier|final
-name|ChangeCache
-name|changeCache
-decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -1125,7 +1119,7 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SiteIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeCache changeCache, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor(BATCH) ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, @GerritServerConfig Config config)
+DECL|method|SiteIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor(BATCH) ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, @GerritServerConfig Config config)
 name|SiteIndexer
 parameter_list|(
 name|SchemaFactory
@@ -1133,9 +1127,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schemaFactory
-parameter_list|,
-name|ChangeCache
-name|changeCache
 parameter_list|,
 name|ChangeData
 operator|.
@@ -1169,12 +1160,6 @@ operator|.
 name|schemaFactory
 operator|=
 name|schemaFactory
-expr_stmt|;
-name|this
-operator|.
-name|changeCache
-operator|=
-name|changeCache
 expr_stmt|;
 name|this
 operator|.
@@ -1854,11 +1839,13 @@ control|(
 name|Change
 name|c
 range|:
-name|changeCache
+name|ScanningChangeCacheImpl
 operator|.
-name|get
+name|scan
 argument_list|(
-name|project
+name|repo
+argument_list|,
+name|db
 argument_list|)
 control|)
 block|{
