@@ -104,7 +104,6 @@ name|GroupIncludeCache
 block|{
 comment|/** @return groups directly a member of the passed group. */
 DECL|method|subgroupsOf (AccountGroup.UUID group)
-specifier|public
 name|Set
 argument_list|<
 name|AccountGroup
@@ -121,7 +120,6 @@ parameter_list|)
 function_decl|;
 comment|/** @return any groups the passed group belongs to. */
 DECL|method|parentGroupsOf (AccountGroup.UUID groupId)
-specifier|public
 name|Set
 argument_list|<
 name|AccountGroup
@@ -138,7 +136,6 @@ parameter_list|)
 function_decl|;
 comment|/** @return set of any UUIDs that are not internal groups. */
 DECL|method|allExternalMembers ()
-specifier|public
 name|Set
 argument_list|<
 name|AccountGroup
@@ -149,7 +146,6 @@ name|allExternalMembers
 parameter_list|()
 function_decl|;
 DECL|method|evictSubgroupsOf (AccountGroup.UUID groupId)
-specifier|public
 name|void
 name|evictSubgroupsOf
 parameter_list|(
@@ -160,7 +156,6 @@ name|groupId
 parameter_list|)
 function_decl|;
 DECL|method|evictParentGroupsOf (AccountGroup.UUID groupId)
-specifier|public
 name|void
 name|evictParentGroupsOf
 parameter_list|(

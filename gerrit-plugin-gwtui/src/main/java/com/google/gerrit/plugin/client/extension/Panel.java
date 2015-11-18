@@ -152,7 +152,6 @@ name|EntryPoint
 block|{
 comment|/**      * Invoked when the panel has been created.      *<p>      * The implementation should create a single widget to define the content of      * this panel and add it to the passed panel instance.      *<p>      * To use multiple widgets, compose them in panels such as {@code FlowPanel}      * and add only the top level widget to the panel.      *<p>      * The panel is already attached to the browser DOM.      * Any widgets added to the screen will immediately receive {@code onLoad()}.      * GWT will fire {@code onUnload()} when the panel is removed from the UI,      * generally caused by the user navigating to another screen.      *      * @param panel panel that will contain the panel widget.      */
 DECL|method|onLoad (Panel panel)
-specifier|public
 name|void
 name|onLoad
 parameter_list|(

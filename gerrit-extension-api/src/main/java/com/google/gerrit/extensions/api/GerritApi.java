@@ -179,31 +179,26 @@ interface|interface
 name|GerritApi
 block|{
 DECL|method|accounts ()
-specifier|public
 name|Accounts
 name|accounts
 parameter_list|()
 function_decl|;
 DECL|method|changes ()
-specifier|public
 name|Changes
 name|changes
 parameter_list|()
 function_decl|;
 DECL|method|config ()
-specifier|public
 name|Config
 name|config
 parameter_list|()
 function_decl|;
 DECL|method|groups ()
-specifier|public
 name|Groups
 name|groups
 parameter_list|()
 function_decl|;
 DECL|method|projects ()
-specifier|public
 name|Projects
 name|projects
 parameter_list|()

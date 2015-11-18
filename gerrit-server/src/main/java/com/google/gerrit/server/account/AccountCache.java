@@ -93,7 +93,6 @@ interface|interface
 name|AccountCache
 block|{
 DECL|method|get (Account.Id accountId)
-specifier|public
 name|AccountState
 name|get
 parameter_list|(
@@ -104,7 +103,6 @@ name|accountId
 parameter_list|)
 function_decl|;
 DECL|method|getIfPresent (Account.Id accountId)
-specifier|public
 name|AccountState
 name|getIfPresent
 parameter_list|(
@@ -115,7 +113,6 @@ name|accountId
 parameter_list|)
 function_decl|;
 DECL|method|getByUsername (String username)
-specifier|public
 name|AccountState
 name|getByUsername
 parameter_list|(
@@ -124,7 +121,6 @@ name|username
 parameter_list|)
 function_decl|;
 DECL|method|evict (Account.Id accountId)
-specifier|public
 name|void
 name|evict
 parameter_list|(
@@ -135,7 +131,6 @@ name|accountId
 parameter_list|)
 function_decl|;
 DECL|method|evictByUsername (String username)
-specifier|public
 name|void
 name|evictByUsername
 parameter_list|(

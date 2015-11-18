@@ -73,7 +73,6 @@ interface|interface
 name|ResourceKey
 block|{
 DECL|method|weigh ()
-specifier|public
 name|int
 name|weigh
 parameter_list|()

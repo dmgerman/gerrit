@@ -176,7 +176,6 @@ name|MergeValidationListener
 block|{
 comment|/**    * Validate a commit before it is merged.    *    * @param repo the repository    * @param commit commit details    * @param destProject the destination project    * @param destBranch the destination branch    * @param patchSetId the patch set ID    * @throws MergeValidationException if the commit fails to validate    */
 DECL|method|onPreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId)
-specifier|public
 name|void
 name|onPreMerge
 parameter_list|(

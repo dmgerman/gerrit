@@ -122,7 +122,6 @@ name|PredicateProvider
 block|{
 comment|/** Return set of packages that contain Prolog predicates */
 DECL|method|getPackages ()
-specifier|public
 name|ImmutableSet
 argument_list|<
 name|String

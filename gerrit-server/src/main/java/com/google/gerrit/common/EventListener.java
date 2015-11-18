@@ -105,7 +105,6 @@ interface|interface
 name|EventListener
 block|{
 DECL|method|onEvent (Event event)
-specifier|public
 name|void
 name|onEvent
 parameter_list|(

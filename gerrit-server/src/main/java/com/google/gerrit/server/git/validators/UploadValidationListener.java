@@ -182,7 +182,6 @@ name|UploadValidationListener
 block|{
 comment|/**    * Validate an upload before it begins.    *    * @param repository The repository    * @param project The project    * @param remoteHost Remote address/hostname of the user    * @param wants The list of wanted objects. These may be RevObject or    *        RevCommit if the processor parsed them. Implementors should not rely    *        on the values being parsed.    * @param haves The list of common objects. Empty on an initial clone request.    *        These may be RevObject or RevCommit if the processor parsed them.    *        Implementors should not rely on the values being parsed.    * @throws ValidationException to block the upload and send a message    *         back to the end-user over the client's protocol connection.    */
 DECL|method|onPreUpload (Repository repository, Project project, String remoteHost, UploadPack up, Collection<? extends ObjectId> wants, Collection<? extends ObjectId> haves)
-specifier|public
 name|void
 name|onPreUpload
 parameter_list|(

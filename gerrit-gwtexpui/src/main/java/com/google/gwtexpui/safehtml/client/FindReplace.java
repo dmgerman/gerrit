@@ -94,14 +94,12 @@ name|FindReplace
 block|{
 comment|/**    * @return regular expression to match substrings with; should be treated as    *     immutable.    */
 DECL|method|pattern ()
-specifier|public
 name|RegExp
 name|pattern
 parameter_list|()
 function_decl|;
 comment|/**    * Find and replace a single instance of this pattern in an input.    *<p>    *<b>WARNING:</b> No XSS sanitization is done on the return value of this    * method, e.g. this value may be passed directly to    * {@link SafeHtml#replaceAll(String, String)}. Implementations must sanitize output    * appropriately.    *    * @param input input string.    * @return result of regular expression replacement.    * @throws IllegalArgumentException if the input could not be safely sanitized.    */
 DECL|method|replace (String input)
-specifier|public
 name|String
 name|replace
 parameter_list|(

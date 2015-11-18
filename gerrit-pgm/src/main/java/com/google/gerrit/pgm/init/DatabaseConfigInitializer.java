@@ -95,7 +95,6 @@ name|DatabaseConfigInitializer
 block|{
 comment|/**    * Performs database platform specific configuration steps and writes    * configuration parameters into the given database section    */
 DECL|method|initConfig (Section databaseSection)
-specifier|public
 name|void
 name|initConfig
 parameter_list|(

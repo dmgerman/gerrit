@@ -152,7 +152,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (String address)
-specifier|public
 name|RegisterNewEmailSender
 name|create
 parameter_list|(

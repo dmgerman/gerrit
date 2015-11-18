@@ -89,7 +89,6 @@ interface|interface
 name|ConflictsCache
 block|{
 DECL|method|put (ConflictKey key, Boolean value)
-specifier|public
 name|void
 name|put
 parameter_list|(
@@ -103,7 +102,6 @@ function_decl|;
 annotation|@
 name|Nullable
 DECL|method|getIfPresent (ConflictKey key)
-specifier|public
 name|Boolean
 name|getIfPresent
 parameter_list|(

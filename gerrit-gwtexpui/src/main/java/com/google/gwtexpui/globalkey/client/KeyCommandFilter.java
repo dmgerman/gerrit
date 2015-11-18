@@ -73,7 +73,6 @@ interface|interface
 name|KeyCommandFilter
 block|{
 DECL|method|include (KeyCommand key)
-specifier|public
 name|boolean
 name|include
 parameter_list|(

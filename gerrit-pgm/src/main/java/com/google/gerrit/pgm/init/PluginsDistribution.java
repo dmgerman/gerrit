@@ -123,7 +123,6 @@ name|Processor
 block|{
 comment|/**      * @param pluginName the name of the plugin (without the .jar extension)      * @param in the content of the plugin .jar file. Implementors don't have to      *        close this stream.      * @throws IOException implementations will typically propagate any      *         IOException caused by dealing with the InputStream back to the      *         caller      */
 DECL|method|process (String pluginName, InputStream in)
-specifier|public
 name|void
 name|process
 parameter_list|(
@@ -139,7 +138,6 @@ function_decl|;
 block|}
 comment|/**    * Iterate over plugins package in the Gerrit distribution    *    * @param processor invoke for each plugin via its process method    * @throws FileNotFoundException if the location of the plugins couldn't be    *         determined    * @throws IOException in case of any other IO error caused by reading the    *         plugin input stream    */
 DECL|method|foreach (Processor processor)
-specifier|public
 name|void
 name|foreach
 parameter_list|(
@@ -153,7 +151,6 @@ name|IOException
 function_decl|;
 comment|/**    * List plugins included in the Gerrit distribution    * @return list of plugins names included in the Gerrit distribution    * @throws FileNotFoundException if the location of the plugins couldn't be    *         determined    */
 DECL|method|listPluginNames ()
-specifier|public
 name|List
 argument_list|<
 name|String

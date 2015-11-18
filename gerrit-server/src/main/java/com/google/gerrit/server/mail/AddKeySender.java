@@ -178,7 +178,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (IdentifiedUser user, AccountSshKey sshKey)
-specifier|public
 name|AddKeySender
 name|create
 parameter_list|(
@@ -190,7 +189,6 @@ name|sshKey
 parameter_list|)
 function_decl|;
 DECL|method|create (IdentifiedUser user, List<String> gpgKey)
-specifier|public
 name|AddKeySender
 name|create
 parameter_list|(

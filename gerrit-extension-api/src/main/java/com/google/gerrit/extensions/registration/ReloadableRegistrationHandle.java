@@ -102,7 +102,6 @@ extends|extends
 name|RegistrationHandle
 block|{
 DECL|method|getKey ()
-specifier|public
 name|Key
 argument_list|<
 name|T
@@ -111,7 +110,6 @@ name|getKey
 parameter_list|()
 function_decl|;
 DECL|method|replace (Key<T> key, Provider<T> item)
-specifier|public
 name|RegistrationHandle
 name|replace
 parameter_list|(

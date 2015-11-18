@@ -77,7 +77,6 @@ interface|interface
 name|StartPluginListener
 block|{
 DECL|method|onStartPlugin (Plugin plugin)
-specifier|public
 name|void
 name|onStartPlugin
 parameter_list|(

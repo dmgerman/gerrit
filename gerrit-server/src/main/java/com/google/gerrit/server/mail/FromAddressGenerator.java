@@ -93,7 +93,6 @@ interface|interface
 name|FromAddressGenerator
 block|{
 DECL|method|isGenericAddress (Account.Id fromId)
-specifier|public
 name|boolean
 name|isGenericAddress
 parameter_list|(
@@ -104,7 +103,6 @@ name|fromId
 parameter_list|)
 function_decl|;
 DECL|method|from (Account.Id fromId)
-specifier|public
 name|Address
 name|from
 parameter_list|(

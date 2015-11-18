@@ -154,8 +154,6 @@ name|GitRepositoryManager
 block|{
 comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository.    * @throws IOException the name cannot be read as a repository.    */
 DECL|method|openRepository (Project.NameKey name)
-specifier|public
-specifier|abstract
 name|Repository
 name|openRepository
 parameter_list|(
@@ -171,8 +169,6 @@ name|IOException
 function_decl|;
 comment|/**    * Create (and open) a repository by name.    *<p>    * If the implementation supports separate metadata repositories, this method    * must also create the metadata repository, but does not open it.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryCaseMismatchException the name collides with an existing    *         repository name, but only in case of a character within the name.    * @throws RepositoryNotFoundException the name is invalid.    * @throws IOException the repository cannot be created.    */
 DECL|method|createRepository (Project.NameKey name)
-specifier|public
-specifier|abstract
 name|Repository
 name|createRepository
 parameter_list|(
@@ -190,8 +186,6 @@ name|IOException
 function_decl|;
 comment|/**    * Open the repository storing metadata for the given project.    *<p>    * This includes any project-specific metadata<em>except</em> what is stored    * in {@code refs/meta/config}. Implementations may choose to store all    * metadata in the original project.    *    * @param name the base project name name.    * @return the cached metadata Repository instance. Caller must call    *         {@code close()} when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository.    * @throws IOException the name cannot be read as a repository.    */
 DECL|method|openMetadataRepository (Project.NameKey name)
-specifier|public
-specifier|abstract
 name|Repository
 name|openMetadataRepository
 parameter_list|(
@@ -207,8 +201,6 @@ name|IOException
 function_decl|;
 comment|/** @return set of all known projects, sorted by natural NameKey order. */
 DECL|method|list ()
-specifier|public
-specifier|abstract
 name|SortedSet
 argument_list|<
 name|Project
@@ -220,8 +212,6 @@ parameter_list|()
 function_decl|;
 comment|/**    * Read the {@code GIT_DIR/description} file for gitweb.    *<p>    * NB: This code should really be in JGit, as a member of the Repository    * object. Until it moves there, its here.    *    * @param name the repository name, relative to the base directory.    * @return description text; null if no description has been configured.    * @throws RepositoryNotFoundException the named repository does not exist.    * @throws IOException the description file exists, but is not readable by    *         this process.    */
 DECL|method|getProjectDescription (Project.NameKey name)
-specifier|public
-specifier|abstract
 name|String
 name|getProjectDescription
 parameter_list|(
@@ -237,8 +227,6 @@ name|IOException
 function_decl|;
 comment|/**    * Set the {@code GIT_DIR/description} file for gitweb.    *<p>    * NB: This code should really be in JGit, as a member of the Repository    * object. Until it moves there, its here.    *    * @param name the repository name, relative to the base directory.    * @param description new description text for the repository.    */
 DECL|method|setProjectDescription (Project.NameKey name, final String description)
-specifier|public
-specifier|abstract
 name|void
 name|setProjectDescription
 parameter_list|(

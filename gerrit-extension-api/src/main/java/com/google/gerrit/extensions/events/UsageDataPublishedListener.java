@@ -160,25 +160,21 @@ interface|interface
 name|MetaData
 block|{
 DECL|method|getName ()
-specifier|public
 name|String
 name|getName
 parameter_list|()
 function_decl|;
 DECL|method|getUnitName ()
-specifier|public
 name|String
 name|getUnitName
 parameter_list|()
 function_decl|;
 DECL|method|getUnitSymbol ()
-specifier|public
 name|String
 name|getUnitSymbol
 parameter_list|()
 function_decl|;
 DECL|method|getDescription ()
-specifier|public
 name|String
 name|getDescription
 parameter_list|()

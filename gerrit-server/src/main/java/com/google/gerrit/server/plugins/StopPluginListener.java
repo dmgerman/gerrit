@@ -77,7 +77,6 @@ interface|interface
 name|StopPluginListener
 block|{
 DECL|method|onStopPlugin (Plugin plugin)
-specifier|public
 name|void
 name|onStopPlugin
 parameter_list|(

@@ -109,7 +109,6 @@ interface|interface
 name|SshKeyCache
 block|{
 DECL|method|evict (String username)
-specifier|public
 name|void
 name|evict
 parameter_list|(
@@ -118,7 +117,6 @@ name|username
 parameter_list|)
 function_decl|;
 DECL|method|create (AccountSshKey.Id id, String encoded)
-specifier|public
 name|AccountSshKey
 name|create
 parameter_list|(

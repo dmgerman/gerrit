@@ -147,19 +147,16 @@ interface|interface
 name|WebSession
 block|{
 DECL|method|isSignedIn ()
-specifier|public
 name|boolean
 name|isSignedIn
 parameter_list|()
 function_decl|;
 DECL|method|getXGerritAuth ()
-specifier|public
 name|String
 name|getXGerritAuth
 parameter_list|()
 function_decl|;
 DECL|method|isValidXGerritAuth (String keyIn)
-specifier|public
 name|boolean
 name|isValidXGerritAuth
 parameter_list|(
@@ -168,7 +165,6 @@ name|keyIn
 parameter_list|)
 function_decl|;
 DECL|method|getLastLoginExternalId ()
-specifier|public
 name|AccountExternalId
 operator|.
 name|Key
@@ -176,13 +172,11 @@ name|getLastLoginExternalId
 parameter_list|()
 function_decl|;
 DECL|method|getUser ()
-specifier|public
 name|CurrentUser
 name|getUser
 parameter_list|()
 function_decl|;
 DECL|method|login (AuthResult res, boolean rememberMe)
-specifier|public
 name|void
 name|login
 parameter_list|(
@@ -195,7 +189,6 @@ parameter_list|)
 function_decl|;
 comment|/** Set the user account for this current request only. */
 DECL|method|setUserAccountId (Account.Id id)
-specifier|public
 name|void
 name|setUserAccountId
 parameter_list|(
@@ -206,7 +199,6 @@ name|id
 parameter_list|)
 function_decl|;
 DECL|method|isAccessPathOk (AccessPath path)
-specifier|public
 name|boolean
 name|isAccessPathOk
 parameter_list|(
@@ -215,7 +207,6 @@ name|path
 parameter_list|)
 function_decl|;
 DECL|method|setAccessPathOk (AccessPath path, boolean ok)
-specifier|public
 name|void
 name|setAccessPathOk
 parameter_list|(
@@ -227,13 +218,11 @@ name|ok
 parameter_list|)
 function_decl|;
 DECL|method|logout ()
-specifier|public
 name|void
 name|logout
 parameter_list|()
 function_decl|;
 DECL|method|getSessionId ()
-specifier|public
 name|String
 name|getSessionId
 parameter_list|()

@@ -122,7 +122,6 @@ name|ReceivePackInitializer
 block|{
 comment|/**    * ReceivePack initialization.    *    * Invoked by Gerrit when a new ReceivePack instance is created and just    * before it is used. Implementors will usually call setXXX methods on the    * receivePack parameter in order to set additional properties on it.    *    * @param project project for which the ReceivePack is created    * @param receivePack the ReceivePack instance which is being initialized    */
 DECL|method|init (Project.NameKey project, ReceivePack receivePack)
-specifier|public
 name|void
 name|init
 parameter_list|(

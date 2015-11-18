@@ -92,7 +92,6 @@ name|V
 parameter_list|>
 block|{
 DECL|method|onRemoval (String pluginName, String cacheName, RemovalNotification<K, V> notification)
-specifier|public
 name|void
 name|onRemoval
 parameter_list|(

@@ -89,7 +89,6 @@ interface|interface
 name|EventSource
 block|{
 DECL|method|addEventListener (EventListener listener, CurrentUser user)
-specifier|public
 name|void
 name|addEventListener
 parameter_list|(
@@ -101,7 +100,6 @@ name|user
 parameter_list|)
 function_decl|;
 DECL|method|removeEventListener (EventListener listener)
-specifier|public
 name|void
 name|removeEventListener
 parameter_list|(

@@ -243,7 +243,6 @@ throw|;
 block|}
 block|}
 DECL|method|get (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo, ReviewDb db)
-specifier|public
 name|boolean
 name|get
 parameter_list|(
@@ -272,7 +271,6 @@ name|db
 parameter_list|)
 function_decl|;
 DECL|method|getIfPresent (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy)
-specifier|public
 name|Boolean
 name|getIfPresent
 parameter_list|(

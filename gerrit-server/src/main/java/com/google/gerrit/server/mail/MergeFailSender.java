@@ -157,7 +157,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (Change.Id id)
-specifier|public
 name|MergeFailSender
 name|create
 parameter_list|(

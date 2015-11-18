@@ -115,7 +115,6 @@ interface|interface
 name|ChangeCache
 block|{
 DECL|method|get (Project.NameKey name)
-specifier|public
 name|List
 argument_list|<
 name|Change

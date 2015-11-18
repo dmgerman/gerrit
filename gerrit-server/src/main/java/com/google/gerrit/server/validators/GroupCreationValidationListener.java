@@ -112,7 +112,6 @@ name|GroupCreationValidationListener
 block|{
 comment|/**    * Group creation validation.    *    * Invoked by Gerrit just before a new group is going to be created.    *    * @param args arguments for the group creation    * @throws ValidationException if validation fails    */
 DECL|method|validateNewGroup (CreateGroupArgs args)
-specifier|public
 name|void
 name|validateNewGroup
 parameter_list|(

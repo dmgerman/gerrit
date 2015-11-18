@@ -112,7 +112,6 @@ name|ProjectCreationValidationListener
 block|{
 comment|/**    * Project creation validation.    *    * Invoked by Gerrit just before a new project is going to be created.    *    * @param args arguments for the project creation    * @throws ValidationException if validation fails    */
 DECL|method|validateNewProject (CreateProjectArgs args)
-specifier|public
 name|void
 name|validateNewProject
 parameter_list|(

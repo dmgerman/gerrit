@@ -154,7 +154,6 @@ argument_list|(
 literal|"deleteNormal.png"
 argument_list|)
 DECL|method|deleteNormal ()
-specifier|public
 name|ImageResource
 name|deleteNormal
 parameter_list|()
@@ -165,7 +164,6 @@ argument_list|(
 literal|"deleteHover.png"
 argument_list|)
 DECL|method|deleteHover ()
-specifier|public
 name|ImageResource
 name|deleteHover
 parameter_list|()
@@ -176,7 +174,6 @@ argument_list|(
 literal|"undoNormal.png"
 argument_list|)
 DECL|method|undoNormal ()
-specifier|public
 name|ImageResource
 name|undoNormal
 parameter_list|()

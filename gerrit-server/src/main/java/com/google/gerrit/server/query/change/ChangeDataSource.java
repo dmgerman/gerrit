@@ -97,7 +97,6 @@ argument_list|>
 block|{
 comment|/** @return true if all returned ChangeData.hasChange() will be true. */
 DECL|method|hasChange ()
-specifier|public
 name|boolean
 name|hasChange
 parameter_list|()

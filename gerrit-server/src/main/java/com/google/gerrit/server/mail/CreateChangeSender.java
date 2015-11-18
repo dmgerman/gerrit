@@ -259,7 +259,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (Change.Id id)
-specifier|public
 name|CreateChangeSender
 name|create
 parameter_list|(
