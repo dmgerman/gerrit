@@ -395,7 +395,7 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|doClaSignupHook (Account account, ContributorAgreement cla)
+DECL|method|doClaSignupHook (Account account, String claName)
 specifier|public
 name|void
 name|doClaSignupHook
@@ -403,8 +403,8 @@ parameter_list|(
 name|Account
 name|account
 parameter_list|,
-name|ContributorAgreement
-name|cla
+name|String
+name|claName
 parameter_list|)
 block|{   }
 annotation|@

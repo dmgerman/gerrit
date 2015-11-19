@@ -509,7 +509,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-DECL|method|doClaSignupHook (Account account, ContributorAgreement cla)
+DECL|method|doClaSignupHook (Account account, String claName)
 specifier|public
 name|void
 name|doClaSignupHook
@@ -517,8 +517,8 @@ parameter_list|(
 name|Account
 name|account
 parameter_list|,
-name|ContributorAgreement
-name|cla
+name|String
+name|claName
 parameter_list|)
 function_decl|;
 comment|/**    * Fire the Ref update Hook    *    * @param project The target project    * @param refName The Branch.NameKey of the ref provided by client    * @param uploader The gerrit user running the command    * @param oldId The ref's old id    * @param newId The ref's new id    */
