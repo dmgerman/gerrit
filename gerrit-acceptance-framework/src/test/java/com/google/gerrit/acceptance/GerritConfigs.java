@@ -135,7 +135,6 @@ annotation_defn|@interface
 name|GerritConfigs
 block|{
 DECL|method|value ()
-specifier|public
 name|GerritConfig
 index|[]
 name|value

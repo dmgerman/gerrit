@@ -91,7 +91,6 @@ extends|extends
 name|EventHandler
 block|{
 DECL|method|onScreenLoad (ScreenLoadEvent event)
-specifier|public
 name|void
 name|onScreenLoad
 parameter_list|(

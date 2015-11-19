@@ -570,7 +570,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (ReviewDb db, Project.NameKey project, CurrentUser user, Timestamp when)
-specifier|public
 name|BatchUpdate
 name|create
 parameter_list|(

@@ -77,7 +77,6 @@ interface|interface
 name|ReloadPluginListener
 block|{
 DECL|method|onReloadPlugin (Plugin oldPlugin, Plugin newPlugin)
-specifier|public
 name|void
 name|onReloadPlugin
 parameter_list|(

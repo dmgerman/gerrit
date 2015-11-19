@@ -105,14 +105,12 @@ parameter_list|>
 block|{
 comment|/** @return an estimate of the number of results from {@link #read()}. */
 DECL|method|getCardinality ()
-specifier|public
 name|int
 name|getCardinality
 parameter_list|()
 function_decl|;
 comment|/** @return read from the database and return the results. */
 DECL|method|read ()
-specifier|public
 name|ResultSet
 argument_list|<
 name|T

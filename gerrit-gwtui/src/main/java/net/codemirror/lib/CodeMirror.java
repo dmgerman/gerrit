@@ -1575,7 +1575,6 @@ interface|interface
 name|EventHandler
 block|{
 DECL|method|handle (CodeMirror instance, NativeEvent event)
-specifier|public
 name|void
 name|handle
 parameter_list|(
@@ -1593,7 +1592,6 @@ interface|interface
 name|RenderLineHandler
 block|{
 DECL|method|handle (CodeMirror instance, LineHandle handle, Element element)
-specifier|public
 name|void
 name|handle
 parameter_list|(
@@ -1614,7 +1612,6 @@ interface|interface
 name|GutterClickHandler
 block|{
 DECL|method|handle (CodeMirror instance, int line, String gutter, NativeEvent clickEvent)
-specifier|public
 name|void
 name|handle
 parameter_list|(
@@ -1638,7 +1635,6 @@ interface|interface
 name|BeforeSelectionChangeHandler
 block|{
 DECL|method|handle (CodeMirror instance, Pos anchor, Pos head)
-specifier|public
 name|void
 name|handle
 parameter_list|(
@@ -1659,7 +1655,6 @@ interface|interface
 name|ChangesHandler
 block|{
 DECL|method|handle (CodeMirror instance)
-specifier|public
 name|void
 name|handle
 parameter_list|(

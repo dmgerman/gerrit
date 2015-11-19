@@ -85,7 +85,6 @@ block|,
 name|BATCH
 block|}
 DECL|method|getQueue (QueueType type)
-specifier|public
 name|WorkQueue
 operator|.
 name|Executor

@@ -241,7 +241,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (Change.Id id)
-specifier|public
 name|ReplacePatchSetSender
 name|create
 parameter_list|(

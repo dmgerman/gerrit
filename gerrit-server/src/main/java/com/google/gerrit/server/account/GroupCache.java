@@ -107,7 +107,6 @@ interface|interface
 name|GroupCache
 block|{
 DECL|method|get (AccountGroup.Id groupId)
-specifier|public
 name|AccountGroup
 name|get
 parameter_list|(
@@ -118,7 +117,6 @@ name|groupId
 parameter_list|)
 function_decl|;
 DECL|method|get (AccountGroup.NameKey name)
-specifier|public
 name|AccountGroup
 name|get
 parameter_list|(
@@ -132,7 +130,6 @@ comment|/**    * Lookup a group definition by its UUID. The returned definition 
 annotation|@
 name|Nullable
 DECL|method|get (AccountGroup.UUID uuid)
-specifier|public
 name|AccountGroup
 name|get
 parameter_list|(
@@ -144,8 +141,6 @@ parameter_list|)
 function_decl|;
 comment|/** @return sorted iteration of groups. */
 DECL|method|all ()
-specifier|public
-specifier|abstract
 name|Iterable
 argument_list|<
 name|AccountGroup
@@ -155,7 +150,6 @@ parameter_list|()
 function_decl|;
 comment|/** Notify the cache that a new group was constructed. */
 DECL|method|onCreateGroup (AccountGroup.NameKey newGroupName)
-specifier|public
 name|void
 name|onCreateGroup
 parameter_list|(
@@ -166,7 +160,6 @@ name|newGroupName
 parameter_list|)
 function_decl|;
 DECL|method|evict (AccountGroup group)
-specifier|public
 name|void
 name|evict
 parameter_list|(
@@ -175,7 +168,6 @@ name|group
 parameter_list|)
 function_decl|;
 DECL|method|evictAfterRename (final AccountGroup.NameKey oldName, final AccountGroup.NameKey newName)
-specifier|public
 name|void
 name|evictAfterRename
 parameter_list|(

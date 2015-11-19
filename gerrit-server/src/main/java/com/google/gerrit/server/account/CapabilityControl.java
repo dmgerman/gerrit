@@ -373,7 +373,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (CurrentUser user)
-specifier|public
 name|CapabilityControl
 name|create
 parameter_list|(

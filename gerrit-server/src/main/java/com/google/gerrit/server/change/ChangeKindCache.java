@@ -169,7 +169,6 @@ interface|interface
 name|ChangeKindCache
 block|{
 DECL|method|getChangeKind (ProjectState project, Repository repo, ObjectId prior, ObjectId next)
-specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
@@ -187,7 +186,6 @@ name|next
 parameter_list|)
 function_decl|;
 DECL|method|getChangeKind (ReviewDb db, Change change, PatchSet patch)
-specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(

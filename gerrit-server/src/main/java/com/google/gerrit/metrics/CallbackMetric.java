@@ -96,7 +96,6 @@ extends|extends
 name|RegistrationHandle
 block|{
 DECL|method|prune ()
-specifier|public
 name|void
 name|prune
 parameter_list|()

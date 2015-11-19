@@ -2273,7 +2273,6 @@ interface|interface
 name|CommandRunnable
 block|{
 DECL|method|run ()
-specifier|public
 name|void
 name|run
 parameter_list|()
@@ -2293,7 +2292,6 @@ block|{
 comment|// execute parser command before running, in order to be able to retrieve
 comment|// project name
 DECL|method|executeParseCommand ()
-specifier|public
 name|void
 name|executeParseCommand
 parameter_list|()
@@ -2301,7 +2299,6 @@ throws|throws
 name|Exception
 function_decl|;
 DECL|method|getProjectName ()
-specifier|public
 name|Project
 operator|.
 name|NameKey

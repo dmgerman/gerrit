@@ -87,26 +87,22 @@ interface|interface
 name|DataSourceType
 block|{
 DECL|method|getDriver ()
-specifier|public
 name|String
 name|getDriver
 parameter_list|()
 function_decl|;
 DECL|method|getUrl ()
-specifier|public
 name|String
 name|getUrl
 parameter_list|()
 function_decl|;
 DECL|method|usePool ()
-specifier|public
 name|boolean
 name|usePool
 parameter_list|()
 function_decl|;
 comment|/**    * Return a ScriptRunner that runs the index script. Must not return    * {@code null}, but may return a ScriptRunner that does nothing.    *    * @throws IOException    */
 DECL|method|getIndexScript ()
-specifier|public
 name|ScriptRunner
 name|getIndexScript
 parameter_list|()

@@ -106,16 +106,14 @@ name|LifecycleListener
 extends|extends
 name|EventListener
 block|{
-comment|/** Invoke when the server is starting. */
+comment|/** Invoked when the server is starting. */
 DECL|method|start ()
-specifier|public
 name|void
 name|start
 parameter_list|()
 function_decl|;
 comment|/** Invoked when the server is stopping. */
 DECL|method|stop ()
-specifier|public
 name|void
 name|stop
 parameter_list|()

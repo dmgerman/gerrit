@@ -94,7 +94,6 @@ name|HasLastModified
 block|{
 comment|/**      * @return time for the Last-Modified header. HTTP truncates the header      *         value to seconds.      */
 DECL|method|getLastModified ()
-specifier|public
 name|Timestamp
 name|getLastModified
 parameter_list|()
@@ -107,7 +106,6 @@ interface|interface
 name|HasETag
 block|{
 DECL|method|getETag ()
-specifier|public
 name|String
 name|getETag
 parameter_list|()

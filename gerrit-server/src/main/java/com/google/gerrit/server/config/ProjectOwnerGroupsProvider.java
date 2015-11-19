@@ -176,7 +176,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (Project.NameKey project)
-specifier|public
 name|ProjectOwnerGroupsProvider
 name|create
 parameter_list|(

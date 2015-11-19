@@ -87,7 +87,6 @@ name|R
 argument_list|>
 block|{
 DECL|method|getETag (R rsrc)
-specifier|public
 name|String
 name|getETag
 parameter_list|(

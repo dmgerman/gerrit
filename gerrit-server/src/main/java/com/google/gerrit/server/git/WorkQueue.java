@@ -1455,7 +1455,6 @@ name|Runnable
 block|{
 comment|/** Notifies the runnable it was canceled. */
 DECL|method|cancel ()
-specifier|public
 name|void
 name|cancel
 parameter_list|()

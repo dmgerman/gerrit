@@ -77,7 +77,6 @@ interface|interface
 name|EmailExpander
 block|{
 DECL|method|canExpand (String user)
-specifier|public
 name|boolean
 name|canExpand
 parameter_list|(
@@ -86,7 +85,6 @@ name|user
 parameter_list|)
 function_decl|;
 DECL|method|expand (String user)
-specifier|public
 name|String
 name|expand
 parameter_list|(

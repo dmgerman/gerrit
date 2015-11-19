@@ -130,21 +130,18 @@ name|ProjectCache
 block|{
 comment|/** @return the parent state for all projects on this server. */
 DECL|method|getAllProjects ()
-specifier|public
 name|ProjectState
 name|getAllProjects
 parameter_list|()
 function_decl|;
 comment|/** @return the project state of the project storing meta data for all users. */
 DECL|method|getAllUsers ()
-specifier|public
 name|ProjectState
 name|getAllUsers
 parameter_list|()
 function_decl|;
 comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists or a error occurred.    * @see #checkedGet(com.google.gerrit.reviewdb.client.Project.NameKey)    */
 DECL|method|get (Project.NameKey projectName)
-specifier|public
 name|ProjectState
 name|get
 parameter_list|(
@@ -156,7 +153,6 @@ parameter_list|)
 function_decl|;
 comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @throws IOException when there was an error.    * @return the cached data; null if no such project exists.    */
 DECL|method|checkedGet (Project.NameKey projectName)
-specifier|public
 name|ProjectState
 name|checkedGet
 parameter_list|(
@@ -170,7 +166,6 @@ name|IOException
 function_decl|;
 comment|/** Invalidate the cached information about the given project. */
 DECL|method|evict (Project p)
-specifier|public
 name|void
 name|evict
 parameter_list|(
@@ -180,7 +175,6 @@ parameter_list|)
 function_decl|;
 comment|/** Invalidate the cached information about the given project. */
 DECL|method|evict (Project.NameKey p)
-specifier|public
 name|void
 name|evict
 parameter_list|(
@@ -201,8 +195,6 @@ parameter_list|)
 function_decl|;
 comment|/** @return sorted iteration of projects. */
 DECL|method|all ()
-specifier|public
-specifier|abstract
 name|Iterable
 argument_list|<
 name|Project
@@ -214,8 +206,6 @@ parameter_list|()
 function_decl|;
 comment|/**    * @return estimated set of relevant groups extracted from hot project access    *         rules. If the cache is cold or too small for the entire project set    *         of the server, this set may be incomplete.    */
 DECL|method|guessRelevantGroupUUIDs ()
-specifier|public
-specifier|abstract
 name|Set
 argument_list|<
 name|AccountGroup
@@ -227,8 +217,6 @@ parameter_list|()
 function_decl|;
 comment|/**    * Filter the set of registered project names by common prefix.    *    * @param prefix common prefix.    * @return sorted iteration of projects sharing the same prefix.    */
 DECL|method|byName (String prefix)
-specifier|public
-specifier|abstract
 name|Iterable
 argument_list|<
 name|Project
@@ -243,7 +231,6 @@ parameter_list|)
 function_decl|;
 comment|/** Notify the cache that a new project was constructed. */
 DECL|method|onCreateProject (Project.NameKey newProjectName)
-specifier|public
 name|void
 name|onCreateProject
 parameter_list|(

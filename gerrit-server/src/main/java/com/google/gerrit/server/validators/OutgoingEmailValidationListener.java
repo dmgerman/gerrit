@@ -191,7 +191,6 @@ decl_stmt|;
 block|}
 comment|/**    * Outgoing e-mail validation.    *    * Invoked by Gerrit just before an e-mail is sent, after all e-mail templates    * have been applied.    *    * Plugins may modify the following fields in args:    * - smtpFromAddress    * - smtpRcptTo    * - body    * - headers    *    * @param args E-mail properties. Some are mutable.    * @throws ValidationException if validation fails.    */
 DECL|method|validateOutgoingEmail (OutgoingEmailValidationListener.Args args)
-specifier|public
 name|void
 name|validateOutgoingEmail
 parameter_list|(

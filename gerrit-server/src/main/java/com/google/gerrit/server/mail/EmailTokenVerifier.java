@@ -110,7 +110,6 @@ name|EmailTokenVerifier
 block|{
 comment|/**    * Construct a token to verify an email address for a user.    *    * @param accountId the caller that wants to add an email to their account.    * @param emailAddress the address to add.    * @return an unforgeable string to email to {@code emailAddress}. Presenting    *         the string provides proof the user has the ability to read messages    *         sent to that address. Must not be null.    */
 DECL|method|encode (Account.Id accountId, String emailAddress)
-specifier|public
 name|String
 name|encode
 parameter_list|(
@@ -125,7 +124,6 @@ parameter_list|)
 function_decl|;
 comment|/**    * Decode a token previously created.    * @param tokenString the string created by encode. Never null.    * @return a pair of account id and email address.    * @throws InvalidTokenException the token is invalid, expired, malformed, etc.    */
 DECL|method|decode (String tokenString)
-specifier|public
 name|ParsedToken
 name|decode
 parameter_list|(

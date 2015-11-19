@@ -190,7 +190,6 @@ name|ChangeIndex
 block|{
 comment|/** @return the schema version used by this index. */
 DECL|method|getSchema ()
-specifier|public
 name|Schema
 argument_list|<
 name|ChangeData
@@ -200,14 +199,12 @@ parameter_list|()
 function_decl|;
 comment|/** Close this index. */
 DECL|method|close ()
-specifier|public
 name|void
 name|close
 parameter_list|()
 function_decl|;
 comment|/**    * Update a change document in the index.    *<p>    * Semantically equivalent to deleting the document and reinserting it with    * new field values. A document that does not already exist is created. Results    * may not be immediately visible to searchers, but should be visible within a    * reasonable amount of time.    *    * @param cd change document    *    * @throws IOException    */
 DECL|method|replace (ChangeData cd)
-specifier|public
 name|void
 name|replace
 parameter_list|(
@@ -219,7 +216,6 @@ name|IOException
 function_decl|;
 comment|/**    * Delete a change document from the index by id.    *    * @param id change id    *    * @throws IOException    */
 DECL|method|delete (Change.Id id)
-specifier|public
 name|void
 name|delete
 parameter_list|(
@@ -233,7 +229,6 @@ name|IOException
 function_decl|;
 comment|/**    * Delete all change documents from the index.    *    * @throws IOException    */
 DECL|method|deleteAll ()
-specifier|public
 name|void
 name|deleteAll
 parameter_list|()
@@ -242,7 +237,6 @@ name|IOException
 function_decl|;
 comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *<p>    * This method may be called multiple times for variations on the same    * predicate or multiple predicate subtrees in the course of processing a    * single query, so it should not have any side effects (e.g. starting a    * search in the background).    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @param opts query options not implied by the predicate, such as start and    *     limit.    * @return a source of documents matching the predicate. Documents must be    *     returned in descending updated timestamp order.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
 DECL|method|getSource (Predicate<ChangeData> p, QueryOptions opts)
-specifier|public
 name|ChangeDataSource
 name|getSource
 parameter_list|(
@@ -260,7 +254,6 @@ name|QueryParseException
 function_decl|;
 comment|/**    * Mark whether this index is up-to-date and ready to serve reads.    *    * @param ready whether the index is ready    * @throws IOException    */
 DECL|method|markReady (boolean ready)
-specifier|public
 name|void
 name|markReady
 parameter_list|(

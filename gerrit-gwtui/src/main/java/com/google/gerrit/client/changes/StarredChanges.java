@@ -359,7 +359,6 @@ interface|interface
 name|ChangeStarHandler
 block|{
 DECL|method|onChangeStar (ChangeStarEvent event)
-specifier|public
 name|void
 name|onChangeStar
 parameter_list|(

@@ -493,7 +493,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (NotifyHandling notify, Change.Id id)
-specifier|public
 name|CommentSender
 name|create
 parameter_list|(

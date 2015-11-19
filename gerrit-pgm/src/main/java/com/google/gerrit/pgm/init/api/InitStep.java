@@ -79,7 +79,6 @@ interface|interface
 name|InitStep
 block|{
 DECL|method|run ()
-specifier|public
 name|void
 name|run
 parameter_list|()
@@ -88,7 +87,6 @@ name|Exception
 function_decl|;
 comment|/** Executed after the site has been initialized */
 DECL|method|postRun ()
-specifier|public
 name|void
 name|postRun
 parameter_list|()

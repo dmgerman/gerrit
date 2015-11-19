@@ -99,19 +99,16 @@ interface|interface
 name|TreeNode
 block|{
 DECL|method|getDisplayName ()
-specifier|public
 name|String
 name|getDisplayName
 parameter_list|()
 function_decl|;
 DECL|method|isVisible ()
-specifier|public
 name|boolean
 name|isVisible
 parameter_list|()
 function_decl|;
 DECL|method|getChildren ()
-specifier|public
 name|SortedSet
 argument_list|<
 name|?

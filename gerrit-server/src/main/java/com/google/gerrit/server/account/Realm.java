@@ -130,7 +130,6 @@ name|Realm
 block|{
 comment|/** Can the end-user modify this field of their own account? */
 DECL|method|allowsEdit (Account.FieldName field)
-specifier|public
 name|boolean
 name|allowsEdit
 parameter_list|(
@@ -142,7 +141,6 @@ parameter_list|)
 function_decl|;
 comment|/** Returns the account fields that the end-user can modify. */
 DECL|method|getEditableFields ()
-specifier|public
 name|Set
 argument_list|<
 name|Account
@@ -153,7 +151,6 @@ name|getEditableFields
 parameter_list|()
 function_decl|;
 DECL|method|authenticate (AuthRequest who)
-specifier|public
 name|AuthRequest
 name|authenticate
 parameter_list|(
@@ -164,7 +161,6 @@ throws|throws
 name|AccountException
 function_decl|;
 DECL|method|link (ReviewDb db, Account.Id to, AuthRequest who)
-specifier|public
 name|AuthRequest
 name|link
 parameter_list|(
@@ -183,7 +179,6 @@ throws|throws
 name|AccountException
 function_decl|;
 DECL|method|unlink (ReviewDb db, Account.Id to, AuthRequest who)
-specifier|public
 name|AuthRequest
 name|unlink
 parameter_list|(
@@ -202,7 +197,6 @@ throws|throws
 name|AccountException
 function_decl|;
 DECL|method|onCreateAccount (AuthRequest who, Account account)
-specifier|public
 name|void
 name|onCreateAccount
 parameter_list|(
@@ -215,7 +209,6 @@ parameter_list|)
 function_decl|;
 comment|/** @return true if the user has the given email address. */
 DECL|method|hasEmailAddress (IdentifiedUser who, String email)
-specifier|public
 name|boolean
 name|hasEmailAddress
 parameter_list|(
@@ -228,7 +221,6 @@ parameter_list|)
 function_decl|;
 comment|/** @return all known email addresses for the identified user. */
 DECL|method|getEmailAddresses (IdentifiedUser who)
-specifier|public
 name|Set
 argument_list|<
 name|String
@@ -241,7 +233,6 @@ parameter_list|)
 function_decl|;
 comment|/**    * Locate an account whose local username is the given account name.    *<p>    * Generally this only works for local realms, such as one backed by an LDAP    * directory, or where there is an {@link EmailExpander} configured that knows    * how to convert the accountName into an email address, and then locate the    * user by that email address.    */
 DECL|method|lookup (String accountName)
-specifier|public
 name|Account
 operator|.
 name|Id

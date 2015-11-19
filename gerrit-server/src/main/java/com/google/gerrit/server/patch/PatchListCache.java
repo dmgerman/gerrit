@@ -125,7 +125,6 @@ interface|interface
 name|PatchListCache
 block|{
 DECL|method|get (PatchListKey key, Project.NameKey project)
-specifier|public
 name|PatchList
 name|get
 parameter_list|(
@@ -141,7 +140,6 @@ throws|throws
 name|PatchListNotAvailableException
 function_decl|;
 DECL|method|get (Change change, PatchSet patchSet)
-specifier|public
 name|PatchList
 name|get
 parameter_list|(
@@ -155,7 +153,6 @@ throws|throws
 name|PatchListNotAvailableException
 function_decl|;
 DECL|method|getIntraLineDiff (IntraLineDiffKey key, IntraLineDiffArgs args)
-specifier|public
 name|IntraLineDiff
 name|getIntraLineDiff
 parameter_list|(

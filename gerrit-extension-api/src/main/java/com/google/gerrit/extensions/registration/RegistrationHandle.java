@@ -78,7 +78,6 @@ name|RegistrationHandle
 block|{
 comment|/** Delete this registration. */
 DECL|method|remove ()
-specifier|public
 name|void
 name|remove
 parameter_list|()

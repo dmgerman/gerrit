@@ -124,7 +124,6 @@ name|CommitValidationListener
 block|{
 comment|/**    * Commit validation.    *    * @param receiveEvent commit event details    * @return list of validation messages    * @throws CommitValidationException if validation fails    */
 DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
-specifier|public
 name|List
 argument_list|<
 name|CommitValidationMessage

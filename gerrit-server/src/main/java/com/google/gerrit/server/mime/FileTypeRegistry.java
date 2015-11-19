@@ -98,8 +98,6 @@ name|FileTypeRegistry
 block|{
 comment|/**    * Get the most specific MIME type available for a file.    *    * @param path name of the file. The base name (component after the last '/')    *        may be used to help determine the MIME type, such as by examining    *        the extension (portion after the last '.' if present).    * @param content the complete file content. If non-null the content may be    *        used to guess the MIME type by examining the beginning for common    *        file headers.    * @return the MIME type for this content. If the MIME type is not recognized    *         or cannot be determined, {@link MimeUtil2#UNKNOWN_MIME_TYPE} which    *         is an alias for {@code application/octet-stream}.    */
 DECL|method|getMimeType (final String path, final byte[] content)
-specifier|public
-specifier|abstract
 name|MimeType
 name|getMimeType
 parameter_list|(
@@ -115,8 +113,6 @@ parameter_list|)
 function_decl|;
 comment|/**    * Is this content type safe to transmit to a browser directly?    *    * @param type the MIME type of the file content.    * @return true if the Gerrit administrator wants to permit this content to be    *         served as-is; false if the administrator does not trust this    *         content type and wants it to be protected (typically by wrapping    *         the data in a ZIP archive).    */
 DECL|method|isSafeInline (final MimeType type)
-specifier|public
-specifier|abstract
 name|boolean
 name|isSafeInline
 parameter_list|(

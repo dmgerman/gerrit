@@ -178,7 +178,6 @@ interface|interface
 name|Parser
 block|{
 DECL|method|parse (String str)
-specifier|public
 name|String
 name|parse
 parameter_list|(

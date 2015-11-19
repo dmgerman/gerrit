@@ -155,7 +155,6 @@ name|ReplyToChangeSender
 parameter_list|>
 block|{
 DECL|method|create (Change.Id id)
-specifier|public
 name|T
 name|create
 parameter_list|(

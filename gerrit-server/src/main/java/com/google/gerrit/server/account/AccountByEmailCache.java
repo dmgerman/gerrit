@@ -103,7 +103,6 @@ interface|interface
 name|AccountByEmailCache
 block|{
 DECL|method|get (String email)
-specifier|public
 name|Set
 argument_list|<
 name|Account
@@ -117,7 +116,6 @@ name|email
 parameter_list|)
 function_decl|;
 DECL|method|evict (String email)
-specifier|public
 name|void
 name|evict
 parameter_list|(

@@ -122,7 +122,6 @@ name|HashtagValidationListener
 block|{
 comment|/**    * Invoked by Gerrit before hashtags are changed.    *    * @param change the change on which the hashtags are changed    * @param toAdd the hashtags to be added    * @param toRemove the hashtags to be removed    * @throws ValidationException if validation fails    */
 DECL|method|validateHashtags (Change change, Set<String> toAdd, Set<String> toRemove)
-specifier|public
 name|void
 name|validateHashtags
 parameter_list|(
