@@ -2252,7 +2252,7 @@ name|InvalidChangeOperationException
 argument_list|(
 name|e
 operator|.
-name|getMessage
+name|getFullMessage
 argument_list|()
 argument_list|)
 throw|;
