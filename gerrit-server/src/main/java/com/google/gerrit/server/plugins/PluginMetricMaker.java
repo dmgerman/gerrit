@@ -392,6 +392,7 @@ end_import
 
 begin_class
 DECL|class|PluginMetricMaker
+specifier|public
 class|class
 name|PluginMetricMaker
 extends|extends
@@ -421,6 +422,7 @@ argument_list|>
 name|cleanup
 decl_stmt|;
 DECL|method|PluginMetricMaker (MetricMaker root, String pluginName)
+specifier|public
 name|PluginMetricMaker
 parameter_list|(
 name|MetricMaker
