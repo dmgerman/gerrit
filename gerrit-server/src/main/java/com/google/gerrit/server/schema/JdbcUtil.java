@@ -132,6 +132,7 @@ name|hostname
 return|;
 block|}
 DECL|method|port (String port)
+specifier|public
 specifier|static
 name|String
 name|port

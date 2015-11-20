@@ -226,7 +226,7 @@ operator|=
 literal|1
 argument_list|)
 DECL|field|id
-specifier|protected
+specifier|public
 name|int
 name|id
 decl_stmt|;
