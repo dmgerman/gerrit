@@ -65,7 +65,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Metric whose value is supplied when the trigger is invoked.  *  *<pre>  *   CallbackMetric0<Long> hits = metricMaker.newCallbackMetric("hits", ...);  *   CallbackMetric0<Long> total = metricMaker.newCallbackMetric("total", ...);  *   metricMaker.newTrigger(hits, total, new Runnable() {  *     public void run() {  *       hits.set(1);  *       total.set(5);  *     }  *   });  *</pre>  *  * @param<V> type of the metric value, typically Integer or Long.  */
+comment|/**  * Metric whose value is supplied when the trigger is invoked.  *  *<pre>  *   CallbackMetric0&lt;Long&gt; hits = metricMaker.newCallbackMetric("hits", ...);  *   CallbackMetric0&lt;Long&gt; total = metricMaker.newCallbackMetric("total", ...);  *   metricMaker.newTrigger(hits, total, new Runnable() {  *     public void run() {  *       hits.set(1);  *       total.set(5);  *     }  *   });  *</pre>  *  * @param<V> type of the metric value, typically Integer or Long.  */
 end_comment
 
 begin_class

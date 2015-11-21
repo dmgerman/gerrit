@@ -121,7 +121,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Increment the counter by a specified amount.    *    * @param field1 bucket to increment.    * @param field2 bucket to increment.    * @param value value to increment by, must be>= 0.    */
+comment|/**    * Increment the counter by a specified amount.    *    * @param field1 bucket to increment.    * @param field2 bucket to increment.    * @param value value to increment by, must be&gt;= 0.    */
 DECL|method|incrementBy (F1 field1, F2 field2, long value)
 specifier|public
 specifier|abstract

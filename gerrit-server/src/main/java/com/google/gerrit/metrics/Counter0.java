@@ -106,7 +106,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Increment the counter by a specified amount.    *    * @param value value to increment by, must be>= 0.    */
+comment|/**    * Increment the counter by a specified amount.    *    * @param value value to increment by, must be&gt;= 0.    */
 DECL|method|incrementBy (long value)
 specifier|public
 specifier|abstract
