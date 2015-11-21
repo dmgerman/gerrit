@@ -822,7 +822,7 @@ name|ctl
 init|=
 name|EasyMock
 operator|.
-name|createNiceMock
+name|createMock
 argument_list|(
 name|ChangeControl
 operator|.
