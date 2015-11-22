@@ -260,6 +260,18 @@ name|nio
 operator|.
 name|file
 operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
 name|Path
 import|;
 end_import
@@ -3363,6 +3375,23 @@ name|gerrithome
 return|;
 block|}
 block|}
+comment|/**    * Locate the path of the {@code eclipse-out} directory in a source tree.    *    * @throws FileNotFoundException if the directory cannot be found.    */
+DECL|method|getDeveloperEclipseOut ()
+specifier|public
+specifier|static
+name|Path
+name|getDeveloperEclipseOut
+parameter_list|()
+throws|throws
+name|FileNotFoundException
+block|{
+return|return
+name|resolveInSourceRoot
+argument_list|(
+literal|"eclipse-out"
+argument_list|)
+return|;
+block|}
 comment|/**    * Locate the path of the {@code buck-out} directory in a source tree.    *    * @throws FileNotFoundException if the directory cannot be found.    */
 DECL|method|getDeveloperBuckOut ()
 specifier|public
@@ -3373,7 +3402,26 @@ parameter_list|()
 throws|throws
 name|FileNotFoundException
 block|{
-comment|// Find ourselves in the CLASSPATH, we should be a loose class file.
+return|return
+name|resolveInSourceRoot
+argument_list|(
+literal|"buck-out"
+argument_list|)
+return|;
+block|}
+DECL|method|resolveInSourceRoot (String name)
+specifier|private
+specifier|static
+name|Path
+name|resolveInSourceRoot
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|FileNotFoundException
+block|{
+comment|// Find ourselves in the classpath, as a loose class file or jar.
 name|Class
 argument_list|<
 name|GerritLauncher
@@ -3511,13 +3559,13 @@ throw|throw
 operator|new
 name|FileNotFoundException
 argument_list|(
-literal|"Cannot find extract path from "
+literal|"Cannot extract path from "
 operator|+
 name|u
 argument_list|)
 throw|;
 block|}
-comment|// Pop up to the top level classes folder that contains us.
+comment|// Pop up to the top-level source folder by looking for .buckconfig.
 name|Path
 name|dir
 init|=
@@ -3534,14 +3582,16 @@ decl_stmt|;
 while|while
 condition|(
 operator|!
-name|name
+name|Files
+operator|.
+name|isRegularFile
 argument_list|(
 name|dir
-argument_list|)
 operator|.
-name|equals
+name|resolve
 argument_list|(
-literal|"buck-out"
+literal|".buckconfig"
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -3558,20 +3608,13 @@ condition|(
 name|parent
 operator|==
 literal|null
-operator|||
-name|parent
-operator|.
-name|equals
-argument_list|(
-name|dir
-argument_list|)
 condition|)
 block|{
 throw|throw
 operator|new
 name|FileNotFoundException
 argument_list|(
-literal|"Cannot find buck-out from "
+literal|"Cannot find source root from "
 operator|+
 name|u
 argument_list|)
@@ -3582,28 +3625,41 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
-return|return
-name|dir
-return|;
-block|}
-DECL|method|name (Path dir)
-specifier|private
-specifier|static
-name|String
-name|name
-parameter_list|(
 name|Path
+name|ret
+init|=
 name|dir
-parameter_list|)
+operator|.
+name|resolve
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|Files
+operator|.
+name|exists
+argument_list|(
+name|ret
+argument_list|)
+condition|)
 block|{
-return|return
+throw|throw
+operator|new
+name|FileNotFoundException
+argument_list|(
+name|name
+operator|+
+literal|" not found in source root "
+operator|+
 name|dir
-operator|.
-name|getFileName
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+argument_list|)
+throw|;
+block|}
+return|return
+name|ret
 return|;
 block|}
 DECL|method|useDevClasspath ()
@@ -3620,7 +3676,7 @@ block|{
 name|Path
 name|out
 init|=
-name|getDeveloperBuckOut
+name|getDeveloperEclipseOut
 argument_list|()
 decl_stmt|;
 name|List
@@ -3639,11 +3695,6 @@ operator|.
 name|add
 argument_list|(
 name|out
-operator|.
-name|resolve
-argument_list|(
-literal|"eclipse"
-argument_list|)
 operator|.
 name|resolve
 argument_list|(
