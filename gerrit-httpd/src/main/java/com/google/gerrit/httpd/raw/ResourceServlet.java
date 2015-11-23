@@ -817,7 +817,7 @@ operator|=
 name|refresh
 expr_stmt|;
 block|}
-comment|/**    * Get the resource path on the filesystem that should be served for this    * request.    *    * @param pathInfo result of {@link HttpServletRequest#getPathInfo()}.    * @return path where static content can be found.    */
+comment|/**    * Get the resource path on the filesystem that should be served for this    * request.    *    * @param pathInfo result of {@link HttpServletRequest#getPathInfo()}.    * @return path where static content can be found.    * @throws IOException if an error occurred resolving the resource.    */
 DECL|method|getResourcePath (String pathInfo)
 specifier|protected
 specifier|abstract
@@ -827,6 +827,8 @@ parameter_list|(
 name|String
 name|pathInfo
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 DECL|method|getLastModifiedTime (Path p)
 specifier|protected
@@ -1374,6 +1376,8 @@ block|}
 catch|catch
 parameter_list|(
 name|ExecutionException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
