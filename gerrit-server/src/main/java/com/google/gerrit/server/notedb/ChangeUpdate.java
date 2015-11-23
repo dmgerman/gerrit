@@ -2328,8 +2328,7 @@ name|ChangeNoteUtil
 operator|.
 name|changeRefName
 argument_list|(
-name|getChange
-argument_list|()
+name|ctl
 operator|.
 name|getId
 argument_list|()

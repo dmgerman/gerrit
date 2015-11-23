@@ -1750,9 +1750,6 @@ name|beginTransaction
 argument_list|(
 name|rsrc
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 argument_list|)
@@ -1764,9 +1761,6 @@ operator|.
 name|bumpRowVersionNotLastUpdatedOn
 argument_list|(
 name|rsrc
-operator|.
-name|getChange
-argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -1840,9 +1834,6 @@ operator|.
 name|indexAsync
 argument_list|(
 name|rsrc
-operator|.
-name|getChange
-argument_list|()
 operator|.
 name|getId
 argument_list|()

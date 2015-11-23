@@ -630,9 +630,6 @@ name|changeId
 init|=
 name|rsrc
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 decl_stmt|;
@@ -846,9 +843,6 @@ name|bumpRowVersionNotLastUpdatedOn
 argument_list|(
 name|rsrc
 operator|.
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 argument_list|,
@@ -900,9 +894,6 @@ operator|.
 name|Key
 argument_list|(
 name|rsrc
-operator|.
-name|getChange
-argument_list|()
 operator|.
 name|getId
 argument_list|()

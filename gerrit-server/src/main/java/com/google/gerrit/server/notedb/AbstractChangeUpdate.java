@@ -592,8 +592,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|getChange
-argument_list|()
+name|ctl
 operator|.
 name|getId
 argument_list|()

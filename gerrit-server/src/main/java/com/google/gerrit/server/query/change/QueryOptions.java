@@ -104,6 +104,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -111,6 +125,16 @@ operator|.
 name|index
 operator|.
 name|IndexConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -123,7 +147,7 @@ specifier|abstract
 class|class
 name|QueryOptions
 block|{
-DECL|method|create (IndexConfig config, int start, int limit)
+DECL|method|create (IndexConfig config, int start, int limit, Set<String> fields)
 specifier|public
 specifier|static
 name|QueryOptions
@@ -137,6 +161,12 @@ name|start
 parameter_list|,
 name|int
 name|limit
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|fields
 parameter_list|)
 block|{
 name|checkArgument
@@ -170,6 +200,13 @@ argument_list|,
 name|start
 argument_list|,
 name|limit
+argument_list|,
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
+name|fields
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -191,6 +228,14 @@ argument_list|,
 literal|0
 argument_list|,
 literal|1
+argument_list|,
+name|ImmutableSet
+operator|.
+expr|<
+name|String
+operator|>
+name|of
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -215,6 +260,16 @@ name|int
 name|limit
 parameter_list|()
 function_decl|;
+DECL|method|fields ()
+specifier|public
+specifier|abstract
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|fields
+parameter_list|()
+function_decl|;
 DECL|method|withLimit (int newLimit)
 specifier|public
 name|QueryOptions
@@ -234,6 +289,9 @@ name|start
 argument_list|()
 argument_list|,
 name|newLimit
+argument_list|,
+name|fields
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -255,6 +313,9 @@ argument_list|,
 name|newStart
 argument_list|,
 name|limit
+argument_list|()
+argument_list|,
+name|fields
 argument_list|()
 argument_list|)
 return|;

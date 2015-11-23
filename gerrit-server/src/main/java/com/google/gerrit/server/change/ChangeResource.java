@@ -374,6 +374,22 @@ return|return
 name|control
 return|;
 block|}
+DECL|method|getId ()
+specifier|public
+name|Change
+operator|.
+name|Id
+name|getId
+parameter_list|()
+block|{
+return|return
+name|getControl
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+return|;
+block|}
 DECL|method|getChange ()
 specifier|public
 name|Change
@@ -613,9 +629,6 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|getChange
-argument_list|()
-operator|.
 name|getId
 argument_list|()
 argument_list|)
