@@ -2171,9 +2171,16 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|slave
+condition|)
+block|{
 name|initIndexType
 argument_list|()
 expr_stmt|;
+block|}
 name|sysInjector
 operator|=
 name|createSysInjector
@@ -2974,6 +2981,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|slave
+operator|&&
 name|indexType
 operator|==
 name|IndexType
