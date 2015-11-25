@@ -280,6 +280,14 @@ name|String
 name|fullName
 parameter_list|)
 function_decl|;
+DECL|method|removeVote (String label)
+name|String
+name|removeVote
+parameter_list|(
+name|String
+name|label
+parameter_list|)
+function_decl|;
 DECL|method|messageWrittenOn (String date)
 name|String
 name|messageWrittenOn

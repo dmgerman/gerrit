@@ -261,6 +261,17 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Look up the reviewer of the change.    *<p>    * @param id ID of the account, can be a string of the format    *     "Full Name<mail@example.com>", just the email address, a full name    *     if it is unique, an account ID, a user name or 'self' for the    *     calling user.    * @return API for accessing the reviewer.    * @throws RestApiException if id is not account ID or is a user that isn't    *     known to be a reviewer for this change.    */
+DECL|method|reviewer (String id)
+name|ReviewerApi
+name|reviewer
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|abandon ()
 name|void
 name|abandon
@@ -619,6 +630,25 @@ name|RevisionApi
 name|revision
 parameter_list|(
 name|int
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|reviewer (String id)
+specifier|public
+name|ReviewerApi
+name|reviewer
+parameter_list|(
+name|String
 name|id
 parameter_list|)
 throws|throws
