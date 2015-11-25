@@ -407,6 +407,15 @@ name|MY_GROUPS
 init|=
 literal|"/groups/self"
 decl_stmt|;
+DECL|field|DOCUMENTATION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DOCUMENTATION
+init|=
+literal|"/Documentation/"
+decl_stmt|;
 DECL|method|toChange (final ChangeInfo c)
 specifier|public
 specifier|static
@@ -955,6 +964,27 @@ operator|+
 literal|"/"
 operator|+
 name|path
+return|;
+block|}
+DECL|method|toDocumentationQuery (String query)
+specifier|public
+specifier|static
+name|String
+name|toDocumentationQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+return|return
+name|DOCUMENTATION
+operator|+
+name|KeyUtil
+operator|.
+name|encode
+argument_list|(
+name|query
+argument_list|)
 return|;
 block|}
 DECL|method|status (Status status)

@@ -1573,6 +1573,12 @@ specifier|static
 name|boolean
 name|hasDocumentation
 decl_stmt|;
+DECL|field|docSearch
+specifier|private
+specifier|static
+name|boolean
+name|docSearch
+decl_stmt|;
 DECL|field|docUrl
 specifier|private
 specifier|static
@@ -3166,6 +3172,16 @@ operator|=
 name|du
 expr_stmt|;
 block|}
+name|docSearch
+operator|=
+name|info
+operator|.
+name|gerrit
+argument_list|()
+operator|.
+name|docSearch
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -5857,6 +5873,17 @@ name|urlAliases
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|hasDocSearch ()
+specifier|public
+specifier|static
+name|boolean
+name|hasDocSearch
+parameter_list|()
+block|{
+return|return
+name|docSearch
+return|;
 block|}
 DECL|method|getDocIndex (final AsyncCallback<DocInfo> cb)
 specifier|private

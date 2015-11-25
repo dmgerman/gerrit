@@ -508,6 +508,16 @@ name|String
 name|stringListPanelDown
 parameter_list|()
 function_decl|;
+DECL|method|searchDropdownChanges ()
+name|String
+name|searchDropdownChanges
+parameter_list|()
+function_decl|;
+DECL|method|searchDropdownDoc ()
+name|String
+name|searchDropdownDoc
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
