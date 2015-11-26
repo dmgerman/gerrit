@@ -278,16 +278,6 @@ name|javax
 operator|.
 name|servlet
 operator|.
-name|ServletException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
 name|http
 operator|.
 name|HttpServlet
