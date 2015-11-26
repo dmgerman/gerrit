@@ -2774,6 +2774,12 @@ name|GarbageCollectionModule
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|slave
+condition|)
+block|{
 name|modules
 operator|.
 name|add
@@ -2785,6 +2791,7 @@ name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|cfgInjector
 operator|.
