@@ -86,6 +86,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -210,7 +224,7 @@ name|abandonMessage
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeCleanupConfig (@erritServerConfig Config cfg, @CanonicalWebUrl String canonicalWebUrl)
+DECL|method|ChangeCleanupConfig (@erritServerConfig Config cfg, @CanonicalWebUrl @Nullable String canonicalWebUrl)
 name|ChangeCleanupConfig
 parameter_list|(
 annotation|@
@@ -220,6 +234,8 @@ name|cfg
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
+annotation|@
+name|Nullable
 name|String
 name|canonicalWebUrl
 parameter_list|)
@@ -348,6 +364,17 @@ operator|=
 name|DEFAULT_ABANDON_MESSAGE
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|webUrl
+argument_list|)
+condition|)
+block|{
 name|abandonMessage
 operator|=
 name|abandonMessage
@@ -359,6 +386,7 @@ argument_list|,
 name|webUrl
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|abandonMessage
 return|;
