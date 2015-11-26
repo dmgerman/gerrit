@@ -1757,7 +1757,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|query (Predicate<ChangeData> p)
-specifier|private
+specifier|public
 name|List
 argument_list|<
 name|ChangeData
