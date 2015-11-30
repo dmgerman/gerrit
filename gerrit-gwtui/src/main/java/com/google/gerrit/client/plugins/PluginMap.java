@@ -147,7 +147,7 @@ block|{
 operator|new
 name|RestApi
 argument_list|(
-literal|"/plugins/"
+literal|"plugins"
 argument_list|)
 operator|.
 name|addParameterTrue
