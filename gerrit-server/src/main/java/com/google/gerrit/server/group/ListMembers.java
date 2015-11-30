@@ -495,7 +495,7 @@ expr_stmt|;
 block|}
 DECL|method|setRecursive (boolean recursive)
 specifier|public
-name|void
+name|ListMembers
 name|setRecursive
 parameter_list|(
 name|boolean
@@ -508,6 +508,9 @@ name|recursive
 operator|=
 name|recursive
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Override
