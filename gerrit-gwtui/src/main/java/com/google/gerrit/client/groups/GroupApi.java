@@ -258,7 +258,7 @@ decl_stmt|;
 operator|new
 name|RestApi
 argument_list|(
-literal|"/groups/"
+literal|"groups"
 argument_list|)
 operator|.
 name|id
@@ -1381,7 +1381,7 @@ return|return
 operator|new
 name|RestApi
 argument_list|(
-literal|"/groups/"
+literal|"groups"
 argument_list|)
 operator|.
 name|id

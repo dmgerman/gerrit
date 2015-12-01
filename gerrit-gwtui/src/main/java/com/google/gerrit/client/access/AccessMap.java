@@ -194,7 +194,7 @@ init|=
 operator|new
 name|RestApi
 argument_list|(
-literal|"/access/"
+literal|"access"
 argument_list|)
 decl_stmt|;
 for|for

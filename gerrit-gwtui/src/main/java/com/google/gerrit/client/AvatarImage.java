@@ -654,7 +654,7 @@ init|=
 operator|new
 name|RestApi
 argument_list|(
-literal|"/accounts/"
+literal|"accounts"
 argument_list|)
 operator|.
 name|id
