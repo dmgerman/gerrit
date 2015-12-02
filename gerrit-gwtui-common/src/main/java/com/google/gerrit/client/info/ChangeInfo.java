@@ -296,7 +296,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|HashSet
 import|;
 end_import
 
@@ -306,7 +306,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
+name|List
 import|;
 end_import
 
