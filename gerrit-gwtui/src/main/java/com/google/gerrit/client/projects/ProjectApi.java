@@ -363,7 +363,7 @@ expr_stmt|;
 operator|new
 name|RestApi
 argument_list|(
-literal|"projects"
+literal|"/projects/"
 argument_list|)
 operator|.
 name|id
@@ -1391,7 +1391,7 @@ return|return
 operator|new
 name|RestApi
 argument_list|(
-literal|"projects"
+literal|"/projects/"
 argument_list|)
 operator|.
 name|id

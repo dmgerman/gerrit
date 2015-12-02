@@ -163,7 +163,7 @@ block|{
 operator|new
 name|RestApi
 argument_list|(
-literal|"accounts/self/groups"
+literal|"/accounts/self/groups"
 argument_list|)
 operator|.
 name|get
@@ -193,7 +193,7 @@ block|{
 operator|new
 name|RestApi
 argument_list|(
-literal|"groups"
+literal|"/groups/"
 argument_list|)
 operator|.
 name|id

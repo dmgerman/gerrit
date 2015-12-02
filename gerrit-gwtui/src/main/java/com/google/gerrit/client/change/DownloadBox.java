@@ -1046,7 +1046,7 @@ argument_list|(
 operator|new
 name|RestApi
 argument_list|(
-literal|"changes"
+literal|"/changes/"
 argument_list|)
 operator|.
 name|id
@@ -1102,7 +1102,7 @@ argument_list|(
 operator|new
 name|RestApi
 argument_list|(
-literal|"changes"
+literal|"/changes/"
 argument_list|)
 operator|.
 name|id
@@ -1273,7 +1273,7 @@ argument_list|(
 operator|new
 name|RestApi
 argument_list|(
-literal|"changes"
+literal|"/changes/"
 argument_list|)
 operator|.
 name|id

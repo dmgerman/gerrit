@@ -170,6 +170,15 @@ name|DocScreen
 extends|extends
 name|Screen
 block|{
+DECL|field|URI
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|URI
+init|=
+literal|"/Documentation/"
+decl_stmt|;
 DECL|field|table
 specifier|private
 name|DocTable
@@ -380,7 +389,7 @@ init|=
 operator|new
 name|RestApi
 argument_list|(
-literal|"Documentation"
+name|URI
 argument_list|)
 decl_stmt|;
 name|call
