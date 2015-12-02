@@ -1411,9 +1411,6 @@ name|comment
 operator|.
 name|message
 argument_list|()
-operator|.
-name|trim
-argument_list|()
 else|:
 literal|""
 decl_stmt|;
