@@ -148,7 +148,7 @@ block|{
 operator|new
 name|RestApi
 argument_list|(
-literal|"accounts/self/capabilities"
+literal|"/accounts/self/capabilities"
 argument_list|)
 operator|.
 name|addParameter

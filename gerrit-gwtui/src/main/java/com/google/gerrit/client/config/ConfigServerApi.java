@@ -224,7 +224,7 @@ block|{
 operator|new
 name|RestApi
 argument_list|(
-literal|"config/server/capabilities"
+literal|"/config/server/capabilities/"
 argument_list|)
 operator|.
 name|get
@@ -249,7 +249,7 @@ block|{
 operator|new
 name|RestApi
 argument_list|(
-literal|"config/server/top-menus"
+literal|"/config/server/top-menus"
 argument_list|)
 operator|.
 name|get
@@ -274,7 +274,7 @@ block|{
 operator|new
 name|RestApi
 argument_list|(
-literal|"config/server/preferences"
+literal|"/config/server/preferences"
 argument_list|)
 operator|.
 name|get
@@ -299,7 +299,7 @@ block|{
 operator|new
 name|RestApi
 argument_list|(
-literal|"config/server/info"
+literal|"/config/server/info"
 argument_list|)
 operator|.
 name|get
@@ -342,7 +342,7 @@ expr_stmt|;
 operator|new
 name|RestApi
 argument_list|(
-literal|"config/server/email.confirm"
+literal|"/config/server/email.confirm"
 argument_list|)
 operator|.
 name|put

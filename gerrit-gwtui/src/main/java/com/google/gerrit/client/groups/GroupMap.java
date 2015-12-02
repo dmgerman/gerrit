@@ -342,7 +342,7 @@ return|return
 operator|new
 name|RestApi
 argument_list|(
-literal|"groups"
+literal|"/groups/"
 argument_list|)
 return|;
 block|}

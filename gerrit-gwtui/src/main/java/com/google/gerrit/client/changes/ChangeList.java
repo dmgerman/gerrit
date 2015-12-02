@@ -194,7 +194,7 @@ specifier|final
 name|String
 name|URI
 init|=
-literal|"changes"
+literal|"/changes/"
 decl_stmt|;
 comment|/** Run multiple queries in a single remote invocation. */
 DECL|method|queryMultiple ( final AsyncCallback<JsArray<ChangeList>> callback, Set<ListChangesOption> options, String... queries)
