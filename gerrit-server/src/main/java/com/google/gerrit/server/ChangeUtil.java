@@ -1569,9 +1569,15 @@ operator|.
 name|Factory
 name|changeUpdateFactory
 decl_stmt|;
+DECL|field|starredChangesUtil
+specifier|private
+specifier|final
+name|StarredChangesUtil
+name|starredChangesUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeUtil (Provider<IdentifiedUser> user, Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeControl.GenericFactory changeControlFactory, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ChangeIndexer indexer, BatchUpdate.Factory updateFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory changeUpdateFactory)
+DECL|method|ChangeUtil (Provider<IdentifiedUser> user, Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeControl.GenericFactory changeControlFactory, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ChangeIndexer indexer, BatchUpdate.Factory updateFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory changeUpdateFactory, StarredChangesUtil starredChangesUtil)
 name|ChangeUtil
 parameter_list|(
 name|Provider
@@ -1628,6 +1634,9 @@ name|ChangeUpdate
 operator|.
 name|Factory
 name|changeUpdateFactory
+parameter_list|,
+name|StarredChangesUtil
+name|starredChangesUtil
 parameter_list|)
 block|{
 name|this
@@ -1701,6 +1710,12 @@ operator|.
 name|changeUpdateFactory
 operator|=
 name|changeUpdateFactory
+expr_stmt|;
+name|this
+operator|.
+name|starredChangesUtil
+operator|=
+name|starredChangesUtil
 expr_stmt|;
 block|}
 DECL|method|revert (ChangeControl ctl, PatchSet.Id patchSetId, String message, PersonIdent myIdent)
@@ -2782,22 +2797,11 @@ name|changeId
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|db
+name|starredChangesUtil
 operator|.
-name|starredChanges
-argument_list|()
-operator|.
-name|delete
-argument_list|(
-name|db
-operator|.
-name|starredChanges
-argument_list|()
-operator|.
-name|byChange
+name|unstarAll
 argument_list|(
 name|changeId
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|db
