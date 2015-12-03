@@ -2357,7 +2357,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|UpdateException
 decl||
 name|OrmException
 name|e
