@@ -356,22 +356,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|mail
-operator|.
-name|EmailSettings
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -706,7 +690,7 @@ name|membershipCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LdapRealm ( Helper helper, AuthConfig authConfig, EmailExpander emailExpander, EmailSettings emailSettings, @Named(LdapModule.GROUP_CACHE) final LoadingCache<String, Set<AccountGroup.UUID>> membershipCache, @Named(LdapModule.USERNAME_CACHE) final LoadingCache<String, Optional<Account.Id>> usernameCache, @GerritServerConfig final Config config)
+DECL|method|LdapRealm ( Helper helper, AuthConfig authConfig, EmailExpander emailExpander, @Named(LdapModule.GROUP_CACHE) final LoadingCache<String, Set<AccountGroup.UUID>> membershipCache, @Named(LdapModule.USERNAME_CACHE) final LoadingCache<String, Optional<Account.Id>> usernameCache, @GerritServerConfig final Config config)
 name|LdapRealm
 parameter_list|(
 name|Helper
@@ -717,9 +701,6 @@ name|authConfig
 parameter_list|,
 name|EmailExpander
 name|emailExpander
-parameter_list|,
-name|EmailSettings
-name|emailSettings
 parameter_list|,
 annotation|@
 name|Named
@@ -870,9 +851,10 @@ block|}
 if|if
 condition|(
 operator|!
-name|emailSettings
+name|authConfig
 operator|.
-name|allowRegisterNewEmail
+name|isAllowRegisterNewEmail
+argument_list|()
 condition|)
 block|{
 name|readOnlyAccountFields

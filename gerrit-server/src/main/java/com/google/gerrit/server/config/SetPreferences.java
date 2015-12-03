@@ -218,6 +218,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -271,9 +283,12 @@ block|{
 DECL|field|metaDataUpdateFactory
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|User
+argument_list|>
 name|metaDataUpdateFactory
 decl_stmt|;
 DECL|field|allUsersName
@@ -284,12 +299,15 @@ name|allUsersName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetPreferences (MetaDataUpdate.User metaDataUpdateFactory, AllUsersName allUsersName)
+DECL|method|SetPreferences (Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllUsersName allUsersName)
 name|SetPreferences
 parameter_list|(
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|User
+argument_list|>
 name|metaDataUpdateFactory
 parameter_list|,
 name|AllUsersName
@@ -425,6 +443,9 @@ name|MetaDataUpdate
 name|md
 init|=
 name|metaDataUpdateFactory
+operator|.
+name|get
+argument_list|()
 operator|.
 name|create
 argument_list|(

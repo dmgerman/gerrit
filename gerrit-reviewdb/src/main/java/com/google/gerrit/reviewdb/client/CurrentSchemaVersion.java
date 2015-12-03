@@ -158,7 +158,7 @@ operator|=
 literal|1
 argument_list|)
 DECL|field|one
-specifier|protected
+specifier|public
 name|String
 name|one
 init|=
@@ -242,7 +242,7 @@ operator|=
 literal|1
 argument_list|)
 DECL|field|singleton
-specifier|protected
+specifier|public
 name|Key
 name|singleton
 decl_stmt|;
@@ -261,7 +261,7 @@ name|int
 name|versionNbr
 decl_stmt|;
 DECL|method|CurrentSchemaVersion ()
-specifier|protected
+specifier|public
 name|CurrentSchemaVersion
 parameter_list|()
 block|{   }

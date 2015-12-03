@@ -421,6 +421,12 @@ specifier|final
 name|SignedToken
 name|emailReg
 decl_stmt|;
+DECL|field|allowRegisterNewEmail
+specifier|private
+specifier|final
+name|boolean
+name|allowRegisterNewEmail
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|AuthConfig (@erritServerConfig final Config cfg)
@@ -751,6 +757,19 @@ argument_list|,
 literal|"userNameToLowerCase"
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+name|allowRegisterNewEmail
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|"allowRegisterNewEmail"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|String
@@ -1426,6 +1445,16 @@ operator|==
 name|AuthType
 operator|.
 name|LDAP_BIND
+return|;
+block|}
+DECL|method|isAllowRegisterNewEmail ()
+specifier|public
+name|boolean
+name|isAllowRegisterNewEmail
+parameter_list|()
+block|{
+return|return
+name|allowRegisterNewEmail
 return|;
 block|}
 block|}
