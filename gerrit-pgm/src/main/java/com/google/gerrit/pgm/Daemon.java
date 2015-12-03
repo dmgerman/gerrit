@@ -2250,9 +2250,16 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|slave
+condition|)
+block|{
 name|initIndexType
 argument_list|()
 expr_stmt|;
+block|}
 name|sysInjector
 operator|=
 name|createSysInjector
@@ -2861,6 +2868,12 @@ name|GarbageCollectionModule
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|slave
+condition|)
+block|{
 name|modules
 operator|.
 name|add
@@ -2872,6 +2885,7 @@ name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|cfgInjector
 operator|.
@@ -3068,6 +3082,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|slave
+operator|&&
 name|indexType
 operator|==
 name|IndexType
