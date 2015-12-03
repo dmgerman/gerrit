@@ -873,6 +873,18 @@ operator|-
 literal|1
 return|;
 block|}
+DECL|method|size ()
+name|int
+name|size
+parameter_list|()
+block|{
+return|return
+name|patchMap
+operator|.
+name|size
+argument_list|()
+return|;
+block|}
 DECL|method|patchMap ()
 specifier|private
 name|Map
