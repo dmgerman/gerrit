@@ -541,7 +541,7 @@ try|try
 block|{
 name|changeUtil
 operator|.
-name|deleteDraftChange
+name|deleteDraftChangeInNewTransaction
 argument_list|(
 name|rsrc
 operator|.
