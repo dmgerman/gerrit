@@ -713,6 +713,11 @@ name|String
 name|noborder
 parameter_list|()
 function_decl|;
+DECL|method|nowrap ()
+name|String
+name|nowrap
+parameter_list|()
+function_decl|;
 DECL|method|pagingLink ()
 name|String
 name|pagingLink
