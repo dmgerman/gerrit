@@ -1250,7 +1250,7 @@ name|control
 init|=
 name|rsrc
 operator|.
-name|getControl
+name|getReviewerControl
 argument_list|()
 decl_stmt|;
 name|PostResult
@@ -1273,6 +1273,9 @@ block|{
 name|addReviewers
 argument_list|(
 name|rsrc
+operator|.
+name|getChangeResource
+argument_list|()
 argument_list|,
 name|result
 argument_list|,

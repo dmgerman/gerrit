@@ -630,7 +630,7 @@ name|changeId
 init|=
 name|rsrc
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 decl_stmt|;
 name|ReviewDb
@@ -843,7 +843,7 @@ name|bumpRowVersionNotLastUpdatedOn
 argument_list|(
 name|rsrc
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|db
@@ -895,7 +895,7 @@ name|Key
 argument_list|(
 name|rsrc
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|ChangeUtil
@@ -1066,6 +1066,9 @@ argument_list|(
 name|db
 argument_list|,
 name|rsrc
+operator|.
+name|getChangeResource
+argument_list|()
 operator|.
 name|getNotes
 argument_list|()

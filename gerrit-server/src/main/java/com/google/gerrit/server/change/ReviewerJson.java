@@ -601,7 +601,7 @@ argument_list|)
 argument_list|,
 name|rsrc
 operator|.
-name|getUserControl
+name|getReviewerControl
 argument_list|()
 argument_list|)
 decl_stmt|;

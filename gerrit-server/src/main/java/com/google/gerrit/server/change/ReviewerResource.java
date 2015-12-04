@@ -78,6 +78,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|RestResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestView
 import|;
 end_import
@@ -95,6 +111,22 @@ operator|.
 name|client
 operator|.
 name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
 import|;
 end_import
 
@@ -173,8 +205,8 @@ DECL|class|ReviewerResource
 specifier|public
 class|class
 name|ReviewerResource
-extends|extends
-name|ChangeResource
+implements|implements
+name|RestResource
 block|{
 DECL|field|REVIEWER_KIND
 specifier|public
@@ -206,23 +238,12 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ChangeResource rsrc, IdentifiedUser user)
+DECL|method|create (ChangeResource change, Account.Id id)
 name|ReviewerResource
 name|create
 parameter_list|(
 name|ChangeResource
-name|rsrc
-parameter_list|,
-name|IdentifiedUser
-name|user
-parameter_list|)
-function_decl|;
-DECL|method|create (ChangeResource rsrc, Account.Id id)
-name|ReviewerResource
-name|create
-parameter_list|(
-name|ChangeResource
-name|rsrc
+name|change
 parameter_list|,
 name|Account
 operator|.
@@ -231,6 +252,12 @@ name|id
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|change
+specifier|private
+specifier|final
+name|ChangeResource
+name|change
+decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
@@ -239,35 +266,7 @@ name|user
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ReviewerResource (@ssisted ChangeResource rsrc, @Assisted IdentifiedUser user)
-name|ReviewerResource
-parameter_list|(
-annotation|@
-name|Assisted
-name|ChangeResource
-name|rsrc
-parameter_list|,
-annotation|@
-name|Assisted
-name|IdentifiedUser
-name|user
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|rsrc
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
-expr_stmt|;
-block|}
-annotation|@
-name|AssistedInject
-DECL|method|ReviewerResource (IdentifiedUser.GenericFactory userFactory, @Assisted ChangeResource rsrc, @Assisted Account.Id id)
+DECL|method|ReviewerResource (IdentifiedUser.GenericFactory userFactory, @Assisted ChangeResource change, @Assisted Account.Id id)
 name|ReviewerResource
 parameter_list|(
 name|IdentifiedUser
@@ -278,7 +277,7 @@ parameter_list|,
 annotation|@
 name|Assisted
 name|ChangeResource
-name|rsrc
+name|change
 parameter_list|,
 annotation|@
 name|Assisted
@@ -289,17 +288,60 @@ name|id
 parameter_list|)
 block|{
 name|this
-argument_list|(
-name|rsrc
-argument_list|,
+operator|.
+name|change
+operator|=
+name|change
+expr_stmt|;
+name|this
+operator|.
+name|user
+operator|=
 name|userFactory
 operator|.
 name|create
 argument_list|(
 name|id
 argument_list|)
-argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getChangeResource ()
+specifier|public
+name|ChangeResource
+name|getChangeResource
+parameter_list|()
+block|{
+return|return
+name|change
+return|;
+block|}
+DECL|method|getChangeId ()
+specifier|public
+name|Change
+operator|.
+name|Id
+name|getChangeId
+parameter_list|()
+block|{
+return|return
+name|change
+operator|.
+name|getId
+argument_list|()
+return|;
+block|}
+DECL|method|getChange ()
+specifier|public
+name|Change
+name|getChange
+parameter_list|()
+block|{
+return|return
+name|change
+operator|.
+name|getChange
+argument_list|()
+return|;
 block|}
 DECL|method|getReviewerUser ()
 specifier|public
@@ -311,14 +353,30 @@ return|return
 name|user
 return|;
 block|}
-comment|/**    * @return the control for the reviewer's user (as opposed to the caller's    *     user as returned by {@link #getControl()}).    */
-DECL|method|getUserControl ()
+comment|/**    * @return the control for the caller's user (as opposed to the reviewer's    *     user as returned by {@link #getReviewerControl()}).    */
+DECL|method|getControl ()
 specifier|public
 name|ChangeControl
-name|getUserControl
+name|getControl
 parameter_list|()
 block|{
 return|return
+name|change
+operator|.
+name|getControl
+argument_list|()
+return|;
+block|}
+comment|/**    * @return the control for the reviewer's user (as opposed to the caller's    *     user as returned by {@link #getControl()}).    */
+DECL|method|getReviewerControl ()
+specifier|public
+name|ChangeControl
+name|getReviewerControl
+parameter_list|()
+block|{
+return|return
+name|change
+operator|.
 name|getControl
 argument_list|()
 operator|.
