@@ -737,13 +737,6 @@ name|suggestions
 operator|.
 name|add
 argument_list|(
-literal|"is:submitted"
-argument_list|)
-expr_stmt|;
-name|suggestions
-operator|.
-name|add
-argument_list|(
 literal|"is:merged"
 argument_list|)
 expr_stmt|;
@@ -787,13 +780,6 @@ operator|.
 name|add
 argument_list|(
 literal|"status:reviewed"
-argument_list|)
-expr_stmt|;
-name|suggestions
-operator|.
-name|add
-argument_list|(
-literal|"status:submitted"
 argument_list|)
 expr_stmt|;
 name|suggestions
