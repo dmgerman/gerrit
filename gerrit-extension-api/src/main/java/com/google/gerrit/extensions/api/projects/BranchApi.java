@@ -80,6 +80,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|BinaryResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|NotImplementedException
 import|;
 end_import
@@ -127,6 +143,17 @@ DECL|method|delete ()
 name|void
 name|delete
 parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Returns the content of a file from the HEAD revision.    */
+DECL|method|file (String path)
+name|BinaryResult
+name|file
+parameter_list|(
+name|String
+name|path
+parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
@@ -180,6 +207,25 @@ specifier|public
 name|void
 name|delete
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|file (String path)
+specifier|public
+name|BinaryResult
+name|file
+parameter_list|(
+name|String
+name|path
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
