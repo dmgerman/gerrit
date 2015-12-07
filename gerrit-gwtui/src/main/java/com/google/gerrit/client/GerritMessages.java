@@ -217,6 +217,17 @@ name|String
 name|message
 parameter_list|)
 function_decl|;
+DECL|method|fileCount (int fileNumber, int fileCount)
+name|String
+name|fileCount
+parameter_list|(
+name|int
+name|fileNumber
+parameter_list|,
+name|int
+name|fileCount
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
