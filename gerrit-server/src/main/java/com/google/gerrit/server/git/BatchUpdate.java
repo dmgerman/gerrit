@@ -651,6 +651,16 @@ return|return
 name|user
 return|;
 block|}
+DECL|method|getOrder ()
+specifier|public
+name|Order
+name|getOrder
+parameter_list|()
+block|{
+return|return
+name|order
+return|;
+block|}
 block|}
 DECL|class|RepoContext
 specifier|public
