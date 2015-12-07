@@ -356,6 +356,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|PersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|Ref
 import|;
 end_import
@@ -986,6 +1000,7 @@ operator|instanceof
 name|RevTag
 condition|)
 block|{
+comment|// Annotated or signed tag
 name|RevTag
 name|tag
 init|=
@@ -994,7 +1009,14 @@ name|RevTag
 operator|)
 name|object
 decl_stmt|;
-comment|// Annotated or signed tag
+name|PersonIdent
+name|tagger
+init|=
+name|tag
+operator|.
+name|getTaggerIdent
+argument_list|()
+decl_stmt|;
 return|return
 operator|new
 name|TagInfo
@@ -1025,6 +1047,10 @@ operator|.
 name|trim
 argument_list|()
 argument_list|,
+name|tagger
+operator|!=
+literal|null
+condition|?
 name|CommonConverters
 operator|.
 name|toGitPerson
@@ -1034,6 +1060,8 @@ operator|.
 name|getTaggerIdent
 argument_list|()
 argument_list|)
+else|:
+literal|null
 argument_list|)
 return|;
 block|}
