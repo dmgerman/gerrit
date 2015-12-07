@@ -94,20 +94,6 @@ name|concurrent
 operator|.
 name|TimeUnit
 operator|.
-name|MILLISECONDS
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
 name|MINUTES
 import|;
 end_import
@@ -221,6 +207,20 @@ operator|.
 name|InMemoryRepositoryManager
 operator|.
 name|Repo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|TestTimeUtil
 import|;
 end_import
 
@@ -439,11 +439,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|clockStepMs
-operator|=
-name|MILLISECONDS
+name|TestTimeUtil
 operator|.
-name|convert
+name|resetWithClockStep
 argument_list|(
 literal|2
 argument_list|,
