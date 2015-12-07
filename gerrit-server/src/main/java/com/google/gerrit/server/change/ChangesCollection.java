@@ -691,6 +691,22 @@ if|if
 condition|(
 name|ctls
 operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceNotFoundException
+argument_list|(
+name|id
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|ctls
+operator|.
 name|size
 argument_list|()
 operator|!=
@@ -701,6 +717,8 @@ throw|throw
 operator|new
 name|ResourceNotFoundException
 argument_list|(
+literal|"Multiple changes found for "
+operator|+
 name|id
 argument_list|)
 throw|;
