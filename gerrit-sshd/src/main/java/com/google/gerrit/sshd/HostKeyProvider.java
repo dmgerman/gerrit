@@ -126,23 +126,9 @@ name|sshd
 operator|.
 name|common
 operator|.
-name|KeyPairProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|common
-operator|.
 name|keyprovider
 operator|.
-name|FileKeyPairProvider
+name|KeyPairProvider
 import|;
 end_import
 
@@ -378,9 +364,6 @@ argument_list|(
 name|objKey
 operator|.
 name|toAbsolutePath
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;

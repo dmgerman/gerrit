@@ -138,7 +138,7 @@ name|server
 operator|.
 name|session
 operator|.
-name|ServerSession
+name|ServerSessionImpl
 import|;
 end_import
 
@@ -151,7 +151,7 @@ DECL|class|GerritServerSession
 class|class
 name|GerritServerSession
 extends|extends
-name|ServerSession
+name|ServerSessionImpl
 block|{
 DECL|method|GerritServerSession (ServerFactoryManager server, IoSession ioSession)
 name|GerritServerSession

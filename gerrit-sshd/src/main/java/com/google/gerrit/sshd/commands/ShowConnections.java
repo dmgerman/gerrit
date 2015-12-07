@@ -336,9 +336,11 @@ name|apache
 operator|.
 name|sshd
 operator|.
-name|server
+name|common
 operator|.
-name|Environment
+name|session
+operator|.
+name|AbstractSession
 import|;
 end_import
 
@@ -352,9 +354,7 @@ name|sshd
 operator|.
 name|server
 operator|.
-name|session
-operator|.
-name|ServerSession
+name|Environment
 import|;
 end_import
 
@@ -881,13 +881,10 @@ range|:
 name|list
 control|)
 block|{
-name|ServerSession
+name|AbstractSession
 name|s
 init|=
-operator|(
-name|ServerSession
-operator|)
-name|ServerSession
+name|AbstractSession
 operator|.
 name|getSession
 argument_list|(

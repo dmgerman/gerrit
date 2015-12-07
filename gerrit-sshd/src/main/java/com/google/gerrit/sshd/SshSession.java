@@ -102,6 +102,8 @@ name|sshd
 operator|.
 name|common
 operator|.
+name|session
+operator|.
 name|Session
 operator|.
 name|AttributeKey
