@@ -1483,7 +1483,7 @@ specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|IdentifiedUser
+name|CurrentUser
 argument_list|>
 name|user
 decl_stmt|;
@@ -1577,12 +1577,12 @@ name|starredChangesUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeUtil (Provider<IdentifiedUser> user, Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeControl.GenericFactory changeControlFactory, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ChangeIndexer indexer, BatchUpdate.Factory updateFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory changeUpdateFactory, StarredChangesUtil starredChangesUtil)
+DECL|method|ChangeUtil (Provider<CurrentUser> user, Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeControl.GenericFactory changeControlFactory, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ChangeIndexer indexer, BatchUpdate.Factory updateFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory changeUpdateFactory, StarredChangesUtil starredChangesUtil)
 name|ChangeUtil
 parameter_list|(
 name|Provider
 argument_list|<
-name|IdentifiedUser
+name|CurrentUser
 argument_list|>
 name|user
 parameter_list|,
@@ -1873,6 +1873,9 @@ init|=
 name|user
 operator|.
 name|get
+argument_list|()
+operator|.
+name|asIdentifiedUser
 argument_list|()
 operator|.
 name|newCommitterIdent
