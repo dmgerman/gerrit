@@ -3028,6 +3028,10 @@ block|{
 return|return
 name|atrScope
 operator|.
+name|set
+argument_list|(
+name|atrScope
+operator|.
 name|newContext
 argument_list|(
 name|reviewDbProvider
@@ -3038,6 +3042,7 @@ name|anonymousUser
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
