@@ -919,7 +919,19 @@ name|getExternalId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Use case 1: claimed identity was provided during handshake phase
+name|Account
+operator|.
+name|Id
+name|claimedId
+init|=
+literal|null
+decl_stmt|;
+comment|// We try to retrieve claimed identity.
+comment|// For some reason, for example staging instance
+comment|// it may deviate from the really old OpenID identity.
+comment|// What we want to avoid in any event is to create new
+comment|// account instead of linking to the existing one.
+comment|// That why we query it here, not to lose linking mode.
 if|if
 condition|(
 operator|!
@@ -931,24 +943,49 @@ name|claimedIdentifier
 argument_list|)
 condition|)
 block|{
-name|Account
-operator|.
-name|Id
 name|claimedId
-init|=
+operator|=
 name|accountManager
 operator|.
 name|lookup
 argument_list|(
 name|claimedIdentifier
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+if|if
+condition|(
+name|claimedId
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Claimed identity is unknown"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|// Use case 1: claimed identity was provided during handshake phase
+comment|// and user account exists for this identity
 if|if
 condition|(
 name|claimedId
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Claimed identity is set and is known"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|actualId
 operator|!=
 literal|null
@@ -969,8 +1006,8 @@ block|}
 else|else
 block|{
 comment|// This is (for now) a fatal error. There are two records
-comment|// for what might be the same user.
-comment|//
+comment|// for what might be the same user. The admin would have to
+comment|// link the accounts manually.
 name|log
 operator|.
 name|error
@@ -1011,17 +1048,7 @@ expr_stmt|;
 return|return;
 block|}
 block|}
-elseif|else
-if|if
-condition|(
-name|claimedId
-operator|!=
-literal|null
-operator|&&
-name|actualId
-operator|==
-literal|null
-condition|)
+else|else
 block|{
 comment|// Claimed account already exists: link to it.
 comment|//
