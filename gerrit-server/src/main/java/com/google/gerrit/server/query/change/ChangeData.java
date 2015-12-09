@@ -4697,8 +4697,6 @@ name|getDest
 argument_list|()
 argument_list|,
 name|repo
-argument_list|,
-name|db
 argument_list|)
 expr_stmt|;
 block|}

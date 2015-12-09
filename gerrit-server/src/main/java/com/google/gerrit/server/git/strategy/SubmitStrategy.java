@@ -862,22 +862,6 @@ parameter_list|)
 throws|throws
 name|IntegrationException
 function_decl|;
-comment|/**    * Checks whether the given commit can be merged.    *<p>    * Implementations must ensure that invoking this method modifies neither the    * git repository nor the Gerrit database.    *    * @param mergeTip the merge tip.    * @param toMerge the commit that should be checked.    * @return {@code true} if the given commit can be merged, otherwise    *         {@code false}    * @throws IntegrationException    */
-DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
-specifier|public
-specifier|abstract
-name|boolean
-name|dryRun
-parameter_list|(
-name|CodeReviewCommit
-name|mergeTip
-parameter_list|,
-name|CodeReviewCommit
-name|toMerge
-parameter_list|)
-throws|throws
-name|IntegrationException
-function_decl|;
 comment|/**    * Returns all commits that have been newly created for the changes that are    * getting merged.    *<p>    * By default this method returns an empty map, but subclasses may override    * this method to provide any newly created commits.    *<p>    * This method may only be called after {@link #run(CodeReviewCommit,    * Collection)}.    *    * @return new commits created for changes that were merged.    */
 DECL|method|getNewCommits ()
 specifier|public

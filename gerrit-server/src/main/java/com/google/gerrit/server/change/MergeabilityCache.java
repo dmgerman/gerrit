@@ -100,22 +100,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -176,7 +160,7 @@ name|MergeabilityCache
 block|{
 annotation|@
 name|Override
-DECL|method|get (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo, ReviewDb db)
+DECL|method|get (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo)
 specifier|public
 name|boolean
 name|get
@@ -200,9 +184,6 @@ name|dest
 parameter_list|,
 name|Repository
 name|repo
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 block|{
 throw|throw
@@ -242,7 +223,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|get (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo, ReviewDb db)
+DECL|method|get (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo)
 name|boolean
 name|get
 parameter_list|(
@@ -265,9 +246,6 @@ name|dest
 parameter_list|,
 name|Repository
 name|repo
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 function_decl|;
 DECL|method|getIfPresent (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy)
