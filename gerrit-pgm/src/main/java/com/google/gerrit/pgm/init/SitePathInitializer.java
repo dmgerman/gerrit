@@ -792,6 +792,11 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"DeleteVote.vm"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"Footer.vm"
 argument_list|)
 expr_stmt|;
