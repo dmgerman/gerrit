@@ -537,10 +537,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (final CodeReviewCommit branchTip, final Collection<CodeReviewCommit> toMerge)
-specifier|protected
+DECL|method|run (final CodeReviewCommit branchTip, final Collection<CodeReviewCommit> toMerge)
+specifier|public
 name|MergeTip
-name|_run
+name|run
 parameter_list|(
 specifier|final
 name|CodeReviewCommit
