@@ -311,18 +311,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|retryOnLockFailure ()
-specifier|public
-name|boolean
-name|retryOnLockFailure
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|public
 name|boolean

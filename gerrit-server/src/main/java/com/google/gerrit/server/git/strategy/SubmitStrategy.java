@@ -372,22 +372,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|RefUpdate
-operator|.
-name|Result
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|Repository
 import|;
 end_import
@@ -913,17 +897,6 @@ name|Collections
 operator|.
 name|emptyMap
 argument_list|()
-return|;
-block|}
-comment|/**    * Returns whether a merge that failed with {@link Result#LOCK_FAILURE} should    * be retried.    *<p>    * May be overridden by subclasses.    *    * @return {@code true} if a merge that failed with    *         {@link Result#LOCK_FAILURE} should be retried, otherwise    *         {@code false}    */
-DECL|method|retryOnLockFailure ()
-specifier|public
-name|boolean
-name|retryOnLockFailure
-parameter_list|()
-block|{
-return|return
-literal|true
 return|;
 block|}
 block|}
