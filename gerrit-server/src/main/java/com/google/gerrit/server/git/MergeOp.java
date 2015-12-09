@@ -1617,11 +1617,6 @@ specifier|private
 name|ObjectInserter
 name|inserter
 decl_stmt|;
-DECL|field|refLogIdent
-specifier|private
-name|PersonIdent
-name|refLogIdent
-decl_stmt|;
 DECL|field|pendingRefUpdates
 specifier|private
 name|Map
@@ -3141,6 +3136,8 @@ init|=
 name|updateBranch
 argument_list|(
 name|branch
+argument_list|,
+name|caller
 argument_list|)
 decl_stmt|;
 name|pendingRefUpdates
@@ -3440,13 +3437,6 @@ argument_list|,
 name|toMerge
 argument_list|)
 decl_stmt|;
-name|refLogIdent
-operator|=
-name|strategy
-operator|.
-name|getRefLogIdent
-argument_list|()
-expr_stmt|;
 name|logDebug
 argument_list|(
 literal|"Produced {} new commits"
@@ -4814,7 +4804,7 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|updateBranch (Branch.NameKey destBranch)
+DECL|method|updateBranch (Branch.NameKey destBranch, IdentifiedUser caller)
 specifier|private
 name|RefUpdate
 name|updateBranch
@@ -4823,6 +4813,9 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+name|IdentifiedUser
+name|caller
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -5015,7 +5008,18 @@ name|branchUpdate
 operator|.
 name|setRefLogIdent
 argument_list|(
-name|refLogIdent
+name|identifiedUserFactory
+operator|.
+name|create
+argument_list|(
+name|caller
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+operator|.
+name|newRefLogIdent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|branchUpdate

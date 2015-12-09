@@ -806,11 +806,6 @@ specifier|final
 name|Arguments
 name|args
 decl_stmt|;
-DECL|field|refLogIdent
-specifier|private
-name|PersonIdent
-name|refLogIdent
-decl_stmt|;
 DECL|method|SubmitStrategy (Arguments args)
 name|SubmitStrategy
 parameter_list|(
@@ -846,10 +841,6 @@ parameter_list|)
 throws|throws
 name|IntegrationException
 block|{
-name|refLogIdent
-operator|=
-literal|null
-expr_stmt|;
 name|checkState
 argument_list|(
 name|args
@@ -903,18 +894,6 @@ parameter_list|)
 throws|throws
 name|IntegrationException
 function_decl|;
-comment|/**    * Returns the identity that should be used for reflog entries when updating    * the destination branch.    *<p>    * The reflog identity may only be set during {@link #run(CodeReviewCommit,    * Collection)}, and this method is invalid to call beforehand.    *    * @return the ref log identity, which may be {@code null}.    */
-DECL|method|getRefLogIdent ()
-specifier|public
-specifier|final
-name|PersonIdent
-name|getRefLogIdent
-parameter_list|()
-block|{
-return|return
-name|refLogIdent
-return|;
-block|}
 comment|/**    * Returns all commits that have been newly created for the changes that are    * getting merged.    *<p>    * By default this method returns an empty map, but subclasses may override    * this method to provide any newly created commits.    *<p>    * This method may only be called after {@link #run(CodeReviewCommit,    * Collection)}.    *    * @return new commits created for changes that were merged.    */
 DECL|method|getNewCommits ()
 specifier|public
@@ -946,42 +925,6 @@ block|{
 return|return
 literal|true
 return|;
-block|}
-comment|/**    * Set the ref log identity if it wasn't set yet.    */
-DECL|method|setRefLogIdent ()
-specifier|protected
-specifier|final
-name|void
-name|setRefLogIdent
-parameter_list|()
-block|{
-if|if
-condition|(
-name|refLogIdent
-operator|==
-literal|null
-condition|)
-block|{
-name|refLogIdent
-operator|=
-name|args
-operator|.
-name|identifiedUserFactory
-operator|.
-name|create
-argument_list|(
-name|args
-operator|.
-name|caller
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-operator|.
-name|newRefLogIdent
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 end_class

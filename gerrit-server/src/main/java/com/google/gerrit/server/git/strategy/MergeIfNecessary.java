@@ -405,9 +405,6 @@ operator|.
 name|alreadyAccepted
 argument_list|)
 expr_stmt|;
-name|setRefLogIdent
-argument_list|()
-expr_stmt|;
 return|return
 name|mergeTip
 return|;
