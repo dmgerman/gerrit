@@ -301,10 +301,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getUser ()
+DECL|method|getReviewerUser ()
 specifier|public
 name|IdentifiedUser
-name|getUser
+name|getReviewerUser
 parameter_list|()
 block|{
 return|return

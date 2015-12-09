@@ -1239,7 +1239,7 @@ name|member
 init|=
 name|rsrc
 operator|.
-name|getUser
+name|getReviewerUser
 argument_list|()
 operator|.
 name|getAccount

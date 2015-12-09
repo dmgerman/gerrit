@@ -543,7 +543,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getUser
+name|getReviewerUser
 argument_list|()
 operator|.
 name|getAccountId

@@ -666,7 +666,7 @@ name|Op
 argument_list|(
 name|r
 operator|.
-name|getUser
+name|getReviewerUser
 argument_list|()
 operator|.
 name|getAccountId

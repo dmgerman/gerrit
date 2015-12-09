@@ -865,7 +865,7 @@ name|removeReviewer
 argument_list|(
 name|rsrc
 operator|.
-name|getUser
+name|getReviewerUser
 argument_list|()
 operator|.
 name|getAccountId
@@ -1048,7 +1048,7 @@ name|user
 init|=
 name|rsrc
 operator|.
-name|getUser
+name|getReviewerUser
 argument_list|()
 operator|.
 name|getAccountId
