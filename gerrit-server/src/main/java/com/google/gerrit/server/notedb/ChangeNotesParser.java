@@ -152,7 +152,7 @@ name|notedb
 operator|.
 name|ChangeNoteUtil
 operator|.
-name|FOOTER_TOPIC
+name|FOOTER_SUBMITTED_WITH
 import|;
 end_import
 
@@ -170,7 +170,7 @@ name|notedb
 operator|.
 name|ChangeNoteUtil
 operator|.
-name|FOOTER_SUBMITTED_WITH
+name|FOOTER_TOPIC
 import|;
 end_import
 
