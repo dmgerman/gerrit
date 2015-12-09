@@ -242,6 +242,18 @@ argument_list|(
 literal|"Submitted-with"
 argument_list|)
 decl_stmt|;
+DECL|field|FOOTER_TOPIC
+specifier|static
+specifier|final
+name|FooterKey
+name|FOOTER_TOPIC
+init|=
+operator|new
+name|FooterKey
+argument_list|(
+literal|"Topic"
+argument_list|)
+decl_stmt|;
 DECL|method|changeRefName (Change.Id id)
 specifier|public
 specifier|static

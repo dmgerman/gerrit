@@ -1747,6 +1747,16 @@ name|change
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|update
+operator|.
+name|setTopic
+argument_list|(
+name|change
+operator|.
+name|getTopic
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|LabelTypes
 name|labelTypes
 init|=
