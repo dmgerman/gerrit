@@ -470,7 +470,46 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Fire the Topic Changed Hook.    *    * @param change The change itself.    * @param account The gerrit user who changed the topic.    * @param oldTopic The old topic name.    * @param db The review database.    */
+comment|/**    * Fire the Reviewer Deleted Hook    *    * @param change The change itself.    * @param account The reviewer that was removed.    * @param patchSet The patchset that the reviewer was removed from.    * @param comment The comment given.    * @param approvals Map of label IDs to scores.    * @param oldApprovals Map of label IDs to old approval scores    * @param db The review database.    * @throws OrmException    */
+DECL|method|doReviewerDeletedHook (Change change, Account account, PatchSet patchSet, String comment, Map<String, Short> approvals, Map<String, Short> oldApprovals, ReviewDb db)
+name|void
+name|doReviewerDeletedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|Account
+name|account
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|,
+name|String
+name|comment
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Short
+argument_list|>
+name|approvals
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Short
+argument_list|>
+name|oldApprovals
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+comment|/**    * Fire the Topic Changed Hook    *    * @param change The change itself.    * @param account The gerrit user who changed the topic.    * @param oldTopic The old topic name.    * @param db The review database.    */
 DECL|method|doTopicChangedHook (Change change, Account account, String oldTopic, ReviewDb db)
 name|void
 name|doTopicChangedHook

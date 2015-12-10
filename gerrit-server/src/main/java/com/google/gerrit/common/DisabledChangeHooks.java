@@ -545,6 +545,45 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
+DECL|method|doReviewerDeletedHook (Change change, Account account, PatchSet patchSet, String comment, Map<String, Short> approvals, Map<String, Short> oldApprovals, ReviewDb db)
+specifier|public
+name|void
+name|doReviewerDeletedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|Account
+name|account
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|,
+name|String
+name|comment
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Short
+argument_list|>
+name|approvals
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Short
+argument_list|>
+name|oldApprovals
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
 DECL|method|doTopicChangedHook (Change change, Account account, String oldTopic, ReviewDb db)
 specifier|public
 name|void
