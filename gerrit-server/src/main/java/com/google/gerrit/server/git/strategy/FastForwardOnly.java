@@ -305,23 +305,8 @@ operator|.
 name|alreadyAccepted
 argument_list|)
 expr_stmt|;
-name|setRefLogIdent
-argument_list|()
-expr_stmt|;
 return|return
 name|mergeTip
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|retryOnLockFailure ()
-specifier|public
-name|boolean
-name|retryOnLockFailure
-parameter_list|()
-block|{
-return|return
-literal|false
 return|;
 block|}
 annotation|@

@@ -927,9 +927,6 @@ name|getCurrentTip
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setRefLogIdent
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1126,9 +1123,6 @@ name|args
 operator|.
 name|alreadyAccepted
 argument_list|)
-expr_stmt|;
-name|setRefLogIdent
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch

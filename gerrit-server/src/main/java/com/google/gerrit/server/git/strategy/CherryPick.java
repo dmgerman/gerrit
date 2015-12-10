@@ -1500,9 +1500,6 @@ argument_list|,
 name|newCommit
 argument_list|)
 expr_stmt|;
-name|setRefLogIdent
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|class|CherryPickMultipleParentsOp
@@ -1712,9 +1709,6 @@ name|args
 operator|.
 name|alreadyAccepted
 argument_list|)
-expr_stmt|;
-name|setRefLogIdent
-argument_list|()
 expr_stmt|;
 block|}
 block|}
