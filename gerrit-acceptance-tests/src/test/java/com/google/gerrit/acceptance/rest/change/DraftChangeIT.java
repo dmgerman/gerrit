@@ -417,7 +417,11 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Change is not a draft"
+literal|"Change is not a draft: "
+operator|+
+name|c
+operator|.
+name|_number
 argument_list|)
 expr_stmt|;
 name|response

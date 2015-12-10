@@ -589,6 +589,21 @@ name|when
 parameter_list|)
 function_decl|;
 block|}
+comment|/** Order of execution of the various phases. */
+DECL|enum|Order
+specifier|public
+specifier|static
+enum|enum
+name|Order
+block|{
+comment|/**      * Update the repository and execute all ref updates before touching the      * database.      *<p>      * The default and most common, as Gerrit does not behave well when a patch      * set has no corresponding ref in the repo.      */
+DECL|enumConstant|REPO_BEFORE_DB
+name|REPO_BEFORE_DB
+block|,
+comment|/**      * Update the database before touching the repository.      *<p>      * Generally only used when deleting patch sets, which should be deleted      * first from the database (for the same reason as above.)      */
+DECL|enumConstant|DB_BEFORE_REPO
+name|DB_BEFORE_REPO
+block|;   }
 DECL|class|Context
 specifier|public
 class|class
@@ -634,6 +649,16 @@ parameter_list|()
 block|{
 return|return
 name|user
+return|;
+block|}
+DECL|method|getOrder ()
+specifier|public
+name|Order
+name|getOrder
+parameter_list|()
+block|{
+return|return
+name|order
 return|;
 block|}
 block|}
@@ -772,6 +797,11 @@ specifier|final
 name|ChangeUpdate
 name|update
 decl_stmt|;
+DECL|field|deleted
+specifier|private
+name|boolean
+name|deleted
+decl_stmt|;
 DECL|method|ChangeContext (ChangeControl ctl)
 specifier|private
 name|ChangeContext
@@ -845,6 +875,19 @@ operator|.
 name|getChange
 argument_list|()
 return|;
+block|}
+DECL|method|markDeleted ()
+specifier|public
+name|void
+name|markDeleted
+parameter_list|()
+block|{
+name|this
+operator|.
+name|deleted
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 DECL|class|Op
@@ -1066,6 +1109,11 @@ specifier|private
 name|boolean
 name|closeRepo
 decl_stmt|;
+DECL|field|order
+specifier|private
+name|Order
+name|order
+decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|BatchUpdate (GitRepositoryManager repoManager, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, GitReferenceUpdated gitRefUpdated, @GerritPersonIdent PersonIdent serverIdent, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
@@ -1179,6 +1227,12 @@ operator|.
 name|getTimeZone
 argument_list|()
 expr_stmt|;
+name|order
+operator|=
+name|Order
+operator|.
+name|REPO_BEFORE_DB
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1272,6 +1326,25 @@ name|inserter
 argument_list|,
 literal|"inserter"
 argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setOrder (Order order)
+specifier|public
+name|BatchUpdate
+name|setOrder
+parameter_list|(
+name|Order
+name|order
+parameter_list|)
+block|{
+name|this
+operator|.
+name|order
+operator|=
+name|order
 expr_stmt|;
 return|return
 name|this
@@ -1504,12 +1577,42 @@ name|RestApiException
 block|{
 try|try
 block|{
+switch|switch
+condition|(
+name|order
+condition|)
+block|{
+case|case
+name|REPO_BEFORE_DB
+case|:
 name|executeRefUpdates
 argument_list|()
 expr_stmt|;
 name|executeChangeOps
 argument_list|()
 expr_stmt|;
+break|break;
+case|case
+name|DB_BEFORE_REPO
+case|:
+name|executeChangeOps
+argument_list|()
+expr_stmt|;
+name|executeRefUpdates
+argument_list|()
+expr_stmt|;
+break|break;
+default|default:
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"invalid execution order: "
+operator|+
+name|order
+argument_list|)
+throw|;
+block|}
 name|reindexChanges
 argument_list|()
 expr_stmt|;
@@ -1842,6 +1945,28 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|ctx
+operator|.
+name|deleted
+condition|)
+block|{
+name|indexFutures
+operator|.
+name|add
+argument_list|(
+name|indexer
+operator|.
+name|deleteAsync
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|indexFutures
 operator|.
 name|add
@@ -1854,6 +1979,7 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch

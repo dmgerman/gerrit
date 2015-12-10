@@ -592,7 +592,7 @@ name|ReviewerInfo
 argument_list|(
 name|rsrc
 operator|.
-name|getUser
+name|getReviewerUser
 argument_list|()
 operator|.
 name|getAccountId
@@ -601,7 +601,7 @@ argument_list|)
 argument_list|,
 name|rsrc
 operator|.
-name|getUserControl
+name|getReviewerControl
 argument_list|()
 argument_list|)
 decl_stmt|;
