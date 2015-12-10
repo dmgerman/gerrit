@@ -1023,6 +1023,11 @@ DECL|field|noteMap
 name|NoteMap
 name|noteMap
 decl_stmt|;
+DECL|field|currentPatchSet
+specifier|private
+name|PatchSet
+name|currentPatchSet
+decl_stmt|;
 DECL|field|allUsers
 specifier|private
 specifier|final
@@ -1437,6 +1442,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|getCurrentPatchSet ()
+specifier|public
+name|PatchSet
+name|getCurrentPatchSet
+parameter_list|()
+block|{
+return|return
+name|currentPatchSet
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|onLoad ()
@@ -1641,6 +1656,13 @@ name|parser
 operator|.
 name|submissionId
 argument_list|)
+expr_stmt|;
+name|currentPatchSet
+operator|=
+name|parser
+operator|.
+name|getCurrentPatchSet
+argument_list|()
 expr_stmt|;
 if|if
 condition|(

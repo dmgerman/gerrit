@@ -114,6 +114,24 @@ name|notedb
 operator|.
 name|ChangeNoteUtil
 operator|.
+name|FOOTER_COMMIT
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNoteUtil
+operator|.
 name|FOOTER_HASHTAGS
 import|;
 end_import
@@ -1008,6 +1026,11 @@ DECL|field|topic
 specifier|private
 name|String
 name|topic
+decl_stmt|;
+DECL|field|commit
+specifier|private
+name|ObjectId
+name|commit
 decl_stmt|;
 DECL|field|hashtags
 specifier|private
@@ -2257,6 +2280,29 @@ name|topic
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setCommit (ObjectId commit)
+specifier|public
+name|void
+name|setCommit
+parameter_list|(
+name|ObjectId
+name|commit
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+name|commit
+operator|!=
+literal|null
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|commit
+operator|=
+name|commit
+expr_stmt|;
+block|}
 DECL|method|setHashtags (Set<String> hashtags)
 specifier|public
 name|void
@@ -2666,13 +2712,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onSave (CommitBuilder commit)
+DECL|method|onSave (CommitBuilder cb)
 specifier|protected
 name|boolean
 name|onSave
 parameter_list|(
 name|CommitBuilder
-name|commit
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -2690,7 +2736,7 @@ return|return
 literal|false
 return|;
 block|}
-name|commit
+name|cb
 operator|.
 name|setAuthor
 argument_list|(
@@ -2706,7 +2752,7 @@ name|when
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|commit
+name|cb
 operator|.
 name|setCommitter
 argument_list|(
@@ -2886,6 +2932,26 @@ argument_list|,
 name|FOOTER_TOPIC
 argument_list|,
 name|topic
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|commit
+operator|!=
+literal|null
+condition|)
+block|{
+name|addFooter
+argument_list|(
+name|msg
+argument_list|,
+name|FOOTER_COMMIT
+argument_list|,
+name|commit
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3303,7 +3369,7 @@ block|}
 block|}
 block|}
 block|}
-name|commit
+name|cb
 operator|.
 name|setMessage
 argument_list|(
@@ -3389,6 +3455,10 @@ operator|==
 literal|null
 operator|&&
 name|topic
+operator|==
+literal|null
+operator|&&
+name|commit
 operator|==
 literal|null
 return|;
