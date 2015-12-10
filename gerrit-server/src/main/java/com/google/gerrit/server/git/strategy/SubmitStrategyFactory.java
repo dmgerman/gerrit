@@ -545,7 +545,7 @@ name|mergeUtilFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( @erritPersonIdent Provider<PersonIdent> myIdent, final BatchUpdate.Factory batchUpdateFactory, final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final RebaseChangeOp.Factory rebaseFactory, final ProjectCache projectCache, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory)
+DECL|method|SubmitStrategyFactory ( @erritPersonIdent Provider<PersonIdent> myIdent, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, PatchSetInfoFactory patchSetInfoFactory, RebaseChangeOp.Factory rebaseFactory, ProjectCache projectCache, ApprovalsUtil approvalsUtil, MergeUtil.Factory mergeUtilFactory)
 name|SubmitStrategyFactory
 parameter_list|(
 annotation|@
@@ -556,37 +556,30 @@ name|PersonIdent
 argument_list|>
 name|myIdent
 parameter_list|,
-specifier|final
 name|BatchUpdate
 operator|.
 name|Factory
 name|batchUpdateFactory
 parameter_list|,
-specifier|final
 name|ChangeControl
 operator|.
 name|GenericFactory
 name|changeControlFactory
 parameter_list|,
-specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 parameter_list|,
-specifier|final
 name|RebaseChangeOp
 operator|.
 name|Factory
 name|rebaseFactory
 parameter_list|,
-specifier|final
 name|ProjectCache
 name|projectCache
 parameter_list|,
-specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
-specifier|final
 name|MergeUtil
 operator|.
 name|Factory
@@ -796,7 +789,6 @@ name|rebaseFactory
 argument_list|)
 return|;
 default|default:
-specifier|final
 name|String
 name|errorMsg
 init|=
@@ -833,7 +825,6 @@ parameter_list|)
 throws|throws
 name|NoSuchProjectException
 block|{
-specifier|final
 name|ProjectState
 name|p
 init|=
