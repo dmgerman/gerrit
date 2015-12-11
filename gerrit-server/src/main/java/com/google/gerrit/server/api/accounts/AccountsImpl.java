@@ -456,6 +456,31 @@ block|}
 block|}
 annotation|@
 name|Override
+DECL|method|id (int id)
+specifier|public
+name|AccountApi
+name|id
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+return|return
+name|id
+argument_list|(
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|self ()
 specifier|public
 name|AccountApi

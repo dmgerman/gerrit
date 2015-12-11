@@ -143,6 +143,17 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * @see #id(String)    */
+DECL|method|id (int id)
+name|AccountApi
+name|id
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Look up the account of the current in-scope user.    *    * @see #id(String)    */
 DECL|method|self ()
 name|AccountApi
@@ -277,6 +288,25 @@ name|AccountApi
 name|id
 parameter_list|(
 name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|id (int id)
+specifier|public
+name|AccountApi
+name|id
+parameter_list|(
+name|int
 name|id
 parameter_list|)
 throws|throws
