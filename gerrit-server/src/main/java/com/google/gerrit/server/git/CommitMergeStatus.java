@@ -144,13 +144,6 @@ literal|""
 argument_list|)
 block|,
 comment|/** */
-DECL|enumConstant|NO_SUBMIT_TYPE
-name|NO_SUBMIT_TYPE
-argument_list|(
-literal|""
-argument_list|)
-block|,
-comment|/** */
 DECL|enumConstant|MANUAL_RECURSIVE_MERGE
 name|MANUAL_RECURSIVE_MERGE
 argument_list|(
