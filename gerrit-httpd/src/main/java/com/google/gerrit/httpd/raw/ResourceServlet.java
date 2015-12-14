@@ -644,6 +644,13 @@ argument_list|)
 decl|.
 name|put
 argument_list|(
+literal|"ico"
+argument_list|,
+literal|"image/x-icon"
+argument_list|)
+decl|.
+name|put
+argument_list|(
 literal|"jpeg"
 argument_list|,
 literal|"image/jpeg"
