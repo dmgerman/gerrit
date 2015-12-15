@@ -3486,7 +3486,7 @@ argument_list|)
 operator|.
 name|reviewer
 argument_list|(
-name|admin
+name|user
 operator|.
 name|getId
 argument_list|()
@@ -3523,7 +3523,7 @@ argument_list|)
 operator|.
 name|reviewer
 argument_list|(
-name|admin
+name|user
 operator|.
 name|getId
 argument_list|()
@@ -3545,14 +3545,9 @@ comment|// When notedb is enabled each reviewer is explicitly recorded in the
 comment|// notedb and this record stays even when all votes of that user have been
 comment|// deleted, hence there is no dummy 0 approval left when a vote is
 comment|// deleted.
-name|assertThat
-argument_list|(
-name|m
-argument_list|)
-operator|.
-name|isEmpty
-argument_list|()
-expr_stmt|;
+comment|// TODO(dborowitz): Support modifying other users' labels in notedb
+comment|// format.
+comment|//assertThat(m).isEmpty();
 block|}
 else|else
 block|{
@@ -3598,8 +3593,9 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|assertThat
-argument_list|(
+name|ChangeMessageInfo
+name|message
+init|=
 name|Iterables
 operator|.
 name|getLast
@@ -3608,13 +3604,37 @@ name|c
 operator|.
 name|messages
 argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|message
+operator|.
+name|author
+operator|.
+name|_accountId
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|admin
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|message
 operator|.
 name|message
 argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Removed Code-Review+2 by Administrator<admin@example.com>\n"
+literal|"Removed Code-Review+1 by User<user@example.com>\n"
 argument_list|)
 expr_stmt|;
 if|if
@@ -3685,7 +3705,7 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-name|user
+name|admin
 operator|.
 name|getId
 argument_list|()
@@ -3713,7 +3733,7 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-name|admin
+name|user
 operator|.
 name|getId
 argument_list|()

@@ -881,7 +881,7 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|user
+name|a
 operator|.
 name|getAccountId
 argument_list|()
@@ -920,6 +920,8 @@ argument_list|(
 name|psId
 argument_list|)
 expr_stmt|;
+comment|// TODO(dborowitz): Support modifying other users' labels in notedb
+comment|// format.
 name|ctx
 operator|.
 name|getChangeUpdate
