@@ -328,6 +328,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|auth
+operator|.
+name|oauth
+operator|.
+name|OAuthTokenCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -544,15 +562,16 @@ specifier|final
 name|CanonicalWebUrl
 name|urlProvider
 decl_stmt|;
+DECL|field|tokenCache
+specifier|private
+specifier|final
+name|OAuthTokenCache
+name|tokenCache
+decl_stmt|;
 DECL|field|serviceProvider
 specifier|private
 name|OAuthServiceProvider
 name|serviceProvider
-decl_stmt|;
-DECL|field|token
-specifier|private
-name|OAuthToken
-name|token
 decl_stmt|;
 DECL|field|user
 specifier|private
@@ -571,7 +590,7 @@ name|linkMode
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OAuthSession (DynamicItem<WebSession> webSession, Provider<IdentifiedUser> identifiedUser, AccountManager accountManager, CanonicalWebUrl urlProvider)
+DECL|method|OAuthSession (DynamicItem<WebSession> webSession, Provider<IdentifiedUser> identifiedUser, AccountManager accountManager, CanonicalWebUrl urlProvider, OAuthTokenCache tokenCache)
 name|OAuthSession
 parameter_list|(
 name|DynamicItem
@@ -591,6 +610,9 @@ name|accountManager
 parameter_list|,
 name|CanonicalWebUrl
 name|urlProvider
+parameter_list|,
+name|OAuthTokenCache
+name|tokenCache
 parameter_list|)
 block|{
 name|this
@@ -624,6 +646,12 @@ name|urlProvider
 operator|=
 name|urlProvider
 expr_stmt|;
+name|this
+operator|.
+name|tokenCache
+operator|=
+name|tokenCache
+expr_stmt|;
 block|}
 DECL|method|isLoggedIn ()
 name|boolean
@@ -631,13 +659,12 @@ name|isLoggedIn
 parameter_list|()
 block|{
 return|return
-name|token
-operator|!=
-literal|null
-operator|&&
+name|tokenCache
+operator|.
+name|has
+argument_list|(
 name|user
-operator|!=
-literal|null
+argument_list|)
 return|;
 block|}
 DECL|method|isOAuthFinal (HttpServletRequest request)
@@ -728,8 +755,9 @@ operator|+
 name|this
 argument_list|)
 expr_stmt|;
+name|OAuthToken
 name|token
-operator|=
+init|=
 name|oauth
 operator|.
 name|getAccessToken
@@ -745,7 +773,7 @@ literal|"code"
 argument_list|)
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|user
 operator|=
 name|oauth
@@ -755,6 +783,27 @@ argument_list|(
 name|token
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|user
+operator|!=
+literal|null
+operator|&&
+name|token
+operator|!=
+literal|null
+condition|)
+block|{
+name|tokenCache
+operator|.
+name|put
+argument_list|(
+name|user
+argument_list|,
+name|token
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|isLoggedIn
@@ -1372,9 +1421,12 @@ name|void
 name|logout
 parameter_list|()
 block|{
-name|token
-operator|=
-literal|null
+name|tokenCache
+operator|.
+name|remove
+argument_list|(
+name|user
+argument_list|)
 expr_stmt|;
 name|user
 operator|=
@@ -1524,7 +1576,12 @@ block|{
 return|return
 literal|"OAuthSession [token="
 operator|+
-name|token
+name|tokenCache
+operator|.
+name|get
+argument_list|(
+name|user
+argument_list|)
 operator|+
 literal|", user="
 operator|+
