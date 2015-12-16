@@ -3080,6 +3080,21 @@ argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
+comment|// Case insensitive
+name|assertQuery
+argument_list|(
+literal|"author:jAuThOr"
+argument_list|,
+name|change1
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"author:ExAmPlE"
+argument_list|,
+name|change1
+argument_list|)
+expr_stmt|;
 comment|// By non-existing email address / name / part
 name|assertQuery
 argument_list|(
@@ -3179,6 +3194,21 @@ comment|// By name part
 name|assertQuery
 argument_list|(
 literal|"committer:Committer"
+argument_list|,
+name|change1
+argument_list|)
+expr_stmt|;
+comment|// Case insensitive
+name|assertQuery
+argument_list|(
+literal|"committer:jCoMmItTeR"
+argument_list|,
+name|change1
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"committer:ExAmPlE"
 argument_list|,
 name|change1
 argument_list|)
