@@ -80,6 +80,24 @@ name|client
 operator|.
 name|AccountExternalId
 operator|.
+name|SCHEME_EXTERNAL
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountExternalId
+operator|.
 name|SCHEME_GERRIT
 import|;
 end_import
@@ -99,24 +117,6 @@ operator|.
 name|AccountExternalId
 operator|.
 name|SCHEME_MAILTO
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountExternalId
-operator|.
-name|SCHEME_EXTERNAL
 import|;
 end_import
 
