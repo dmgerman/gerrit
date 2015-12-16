@@ -2492,6 +2492,16 @@ name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Index module shutdown must happen before work queue shutdown, otherwise
+comment|// work queue can get stuck waiting on index futures that will never return.
+name|modules
+operator|.
+name|add
+argument_list|(
+name|createIndexModule
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|modules
 operator|.
 name|add
@@ -2655,14 +2665,6 @@ name|GpgModule
 argument_list|(
 name|config
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|modules
-operator|.
-name|add
-argument_list|(
-name|createIndexModule
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
