@@ -177,6 +177,9 @@ argument_list|,
 name|FIELD_COMMITTER
 argument_list|,
 name|value
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
