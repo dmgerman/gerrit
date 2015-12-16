@@ -537,6 +537,19 @@ operator|+
 literal|"Label: Label4=-1\n"
 argument_list|)
 expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Label: -Label1\n"
+operator|+
+literal|"Label: -Label1 Other Account<2@gerrit>\n"
+argument_list|)
+expr_stmt|;
 name|assertParseFails
 argument_list|(
 literal|"Update change\n"
@@ -568,6 +581,39 @@ operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Label: X+Y\n"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Label: Label1 Other Account<2@gerrit>\n"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Label: -Label!1\n"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Label: -Label!1 Other Account<2@gerrit>\n"
 argument_list|)
 expr_stmt|;
 block|}
