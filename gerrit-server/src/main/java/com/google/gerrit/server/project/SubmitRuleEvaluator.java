@@ -1124,7 +1124,7 @@ literal|"Submit rule '%s' for change %s of %s has "
 operator|+
 literal|"no solution."
 argument_list|,
-name|getSubmitRule
+name|getSubmitRuleName
 argument_list|()
 argument_list|,
 name|cd
@@ -2137,7 +2137,7 @@ name|typeError
 argument_list|(
 literal|"Submit rule '"
 operator|+
-name|getSubmitRule
+name|getSubmitRuleName
 argument_list|()
 operator|+
 literal|"' for change "
@@ -2181,7 +2181,7 @@ name|typeError
 argument_list|(
 literal|"Submit rule '"
 operator|+
-name|getSubmitRule
+name|getSubmitRuleName
 argument_list|()
 operator|+
 literal|"' for change "
@@ -3315,6 +3315,25 @@ argument_list|)
 expr_stmt|;
 return|return
 name|submitRule
+return|;
+block|}
+DECL|method|getSubmitRuleName ()
+specifier|public
+name|String
+name|getSubmitRuleName
+parameter_list|()
+block|{
+return|return
+name|submitRule
+operator|!=
+literal|null
+condition|?
+name|submitRule
+operator|.
+name|toString
+argument_list|()
+else|:
+literal|"<unknown rule>"
 return|;
 block|}
 DECL|method|initPatchSet ()
