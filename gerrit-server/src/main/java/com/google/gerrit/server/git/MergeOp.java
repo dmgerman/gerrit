@@ -2525,11 +2525,6 @@ argument_list|(
 name|cd
 argument_list|)
 operator|.
-name|setPatchSet
-argument_list|(
-name|patchSet
-argument_list|)
-operator|.
 name|evaluate
 argument_list|()
 expr_stmt|;

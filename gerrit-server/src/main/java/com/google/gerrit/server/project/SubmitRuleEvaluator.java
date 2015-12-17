@@ -1154,7 +1154,9 @@ literal|" not found"
 argument_list|)
 return|;
 block|}
-elseif|else
+name|initPatchSet
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|patchSet
