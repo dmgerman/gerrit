@@ -210,6 +210,20 @@ operator|=
 name|errorMessage
 expr_stmt|;
 block|}
+DECL|method|isOk ()
+specifier|public
+name|boolean
+name|isOk
+parameter_list|()
+block|{
+return|return
+name|status
+operator|==
+name|Status
+operator|.
+name|OK
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|toString ()
