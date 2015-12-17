@@ -1453,6 +1453,15 @@ argument_list|)
 throw|;
 block|}
 try|try
+init|(
+name|MergeOp
+name|op
+init|=
+name|mergeOpProvider
+operator|.
+name|get
+argument_list|()
+init|)
 block|{
 name|ReviewDb
 name|db
@@ -1462,10 +1471,7 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|mergeOpProvider
-operator|.
-name|get
-argument_list|()
+name|op
 operator|.
 name|merge
 argument_list|(
