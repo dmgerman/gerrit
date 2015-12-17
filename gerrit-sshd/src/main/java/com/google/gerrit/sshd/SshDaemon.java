@@ -1746,18 +1746,12 @@ name|SshInfo
 implements|,
 name|LifecycleListener
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"hiding"
-argument_list|)
-comment|// Don't use AbstractCloseable's logger.
-DECL|field|log
+DECL|field|sshDaemonLog
 specifier|private
 specifier|static
 specifier|final
 name|Logger
-name|log
+name|sshDaemonLog
 init|=
 name|LoggerFactory
 operator|.
@@ -2856,7 +2850,7 @@ name|e
 argument_list|)
 throw|;
 block|}
-name|log
+name|sshDaemonLog
 operator|.
 name|info
 argument_list|(
@@ -2935,7 +2929,7 @@ operator|.
 name|await
 argument_list|()
 expr_stmt|;
-name|log
+name|sshDaemonLog
 operator|.
 name|info
 argument_list|(
@@ -2949,7 +2943,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
+name|sshDaemonLog
 operator|.
 name|warn
 argument_list|(
@@ -3110,7 +3104,7 @@ name|JSchException
 name|e
 parameter_list|)
 block|{
-name|log
+name|sshDaemonLog
 operator|.
 name|warn
 argument_list|(
@@ -3961,7 +3955,7 @@ name|InvalidKeyException
 name|e
 parameter_list|)
 block|{
-name|log
+name|sshDaemonLog
 operator|.
 name|warn
 argument_list|(
@@ -3994,7 +3988,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|sshDaemonLog
 operator|.
 name|warn
 argument_list|(
@@ -4454,7 +4448,7 @@ argument_list|(
 literal|" is supported"
 argument_list|)
 expr_stmt|;
-name|log
+name|sshDaemonLog
 operator|.
 name|error
 argument_list|(
@@ -4799,7 +4793,7 @@ name|Factory
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|log
+name|sshDaemonLog
 operator|.
 name|info
 argument_list|(
@@ -4821,7 +4815,7 @@ name|canRead
 argument_list|()
 condition|)
 block|{
-name|log
+name|sshDaemonLog
 operator|.
 name|error
 argument_list|(
@@ -4874,7 +4868,7 @@ literal|"host/localhost"
 expr_stmt|;
 block|}
 block|}
-name|log
+name|sshDaemonLog
 operator|.
 name|info
 argument_list|(
@@ -4894,7 +4888,7 @@ literal|"host/"
 argument_list|)
 condition|)
 block|{
-name|log
+name|sshDaemonLog
 operator|.
 name|warn
 argument_list|(
