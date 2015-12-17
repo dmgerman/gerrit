@@ -439,6 +439,8 @@ block|}
 name|VersionedAccountPreferences
 name|p
 decl_stmt|;
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -451,8 +453,7 @@ name|create
 argument_list|(
 name|allUsersName
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|p
 operator|=
@@ -510,14 +511,6 @@ name|getRepository
 argument_list|()
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|md
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

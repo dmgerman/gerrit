@@ -2108,6 +2108,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -2117,8 +2119,7 @@ name|create
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|cfg
 operator|.
@@ -2126,14 +2127,6 @@ name|commit
 argument_list|(
 name|md
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|md
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

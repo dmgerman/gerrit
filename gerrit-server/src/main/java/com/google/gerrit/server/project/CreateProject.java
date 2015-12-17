@@ -2174,6 +2174,8 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -2186,8 +2188,7 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ProjectConfig
 name|config
@@ -2433,14 +2434,6 @@ name|commit
 argument_list|(
 name|md
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|md
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|projectCache

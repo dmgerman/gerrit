@@ -297,6 +297,8 @@ DECL|class|MetaDataUpdate
 specifier|public
 class|class
 name|MetaDataUpdate
+implements|implements
+name|AutoCloseable
 block|{
 DECL|class|User
 specifier|public
@@ -989,6 +991,8 @@ name|batch
 return|;
 block|}
 comment|/** Close the cached Repository handle. */
+annotation|@
+name|Override
 DECL|method|close ()
 specifier|public
 name|void

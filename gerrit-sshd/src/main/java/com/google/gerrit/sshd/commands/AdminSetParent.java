@@ -1029,7 +1029,7 @@ expr_stmt|;
 continue|continue;
 block|}
 try|try
-block|{
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -1039,8 +1039,7 @@ name|create
 argument_list|(
 name|nameKey
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ProjectConfig
 name|config
@@ -1094,15 +1093,6 @@ argument_list|(
 name|md
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|md
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(

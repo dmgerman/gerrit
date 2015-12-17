@@ -796,6 +796,8 @@ comment|//
 name|ProjectConfig
 name|config
 decl_stmt|;
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -805,8 +807,7 @@ name|create
 argument_list|(
 name|projectName
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|config
 operator|=
@@ -904,14 +905,6 @@ name|open
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|md
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 specifier|final
 name|RefControl

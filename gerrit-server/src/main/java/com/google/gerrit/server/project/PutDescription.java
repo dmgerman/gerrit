@@ -598,7 +598,7 @@ argument_list|)
 throw|;
 block|}
 try|try
-block|{
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -611,8 +611,7 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ProjectConfig
 name|config
@@ -829,15 +828,6 @@ name|getDescription
 argument_list|()
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|md
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(

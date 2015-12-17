@@ -868,6 +868,10 @@ range|:
 name|projects
 control|)
 block|{
+comment|// Load the current configuration from the repository, ensuring it's the most
+comment|// recent version available. If it differs from what was in the project
+comment|// state, force a cache flush now.
+comment|//
 name|Project
 operator|.
 name|NameKey
@@ -881,6 +885,19 @@ argument_list|(
 name|p
 argument_list|)
 decl_stmt|;
+try|try
+init|(
+name|MetaDataUpdate
+name|md
+init|=
+name|metaDataUpdateFactory
+operator|.
+name|create
+argument_list|(
+name|projectName
+argument_list|)
+init|)
+block|{
 name|ProjectControl
 name|pc
 init|=
@@ -891,34 +908,14 @@ argument_list|)
 decl_stmt|;
 name|ProjectConfig
 name|config
-decl_stmt|;
-try|try
-block|{
-comment|// Load the current configuration from the repository, ensuring it's the most
-comment|// recent version available. If it differs from what was in the project
-comment|// state, force a cache flush now.
-comment|//
-name|MetaDataUpdate
-name|md
 init|=
-name|metaDataUpdateFactory
-operator|.
-name|create
-argument_list|(
-name|projectName
-argument_list|)
-decl_stmt|;
-try|try
-block|{
-name|config
-operator|=
 name|ProjectConfig
 operator|.
 name|read
 argument_list|(
 name|md
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|config
@@ -1010,6 +1007,21 @@ name|projectName
 argument_list|)
 expr_stmt|;
 block|}
+name|access
+operator|.
+name|put
+argument_list|(
+name|p
+argument_list|,
+operator|new
+name|ProjectAccessInfo
+argument_list|(
+name|pc
+argument_list|,
+name|config
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1028,15 +1040,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-finally|finally
-block|{
-name|md
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 catch|catch
 parameter_list|(
 name|RepositoryNotFoundException
@@ -1051,21 +1054,6 @@ name|p
 argument_list|)
 throw|;
 block|}
-name|access
-operator|.
-name|put
-argument_list|(
-name|p
-argument_list|,
-operator|new
-name|ProjectAccessInfo
-argument_list|(
-name|pc
-argument_list|,
-name|config
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 return|return
 name|access
