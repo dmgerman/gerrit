@@ -3545,9 +3545,14 @@ comment|// When notedb is enabled each reviewer is explicitly recorded in the
 comment|// notedb and this record stays even when all votes of that user have been
 comment|// deleted, hence there is no dummy 0 approval left when a vote is
 comment|// deleted.
-comment|// TODO(dborowitz): Support modifying other users' labels in notedb
-comment|// format.
-comment|//assertThat(m).isEmpty();
+name|assertThat
+argument_list|(
+name|m
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{

@@ -920,15 +920,18 @@ argument_list|(
 name|psId
 argument_list|)
 expr_stmt|;
-comment|// TODO(dborowitz): Support modifying other users' labels in notedb
-comment|// format.
 name|ctx
 operator|.
 name|getChangeUpdate
 argument_list|()
 operator|.
-name|removeApproval
+name|removeApprovalFor
 argument_list|(
+name|a
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|,
 name|label
 argument_list|)
 expr_stmt|;
