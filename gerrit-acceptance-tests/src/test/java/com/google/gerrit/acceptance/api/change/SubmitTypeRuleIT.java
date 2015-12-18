@@ -386,22 +386,6 @@ name|server
 operator|.
 name|git
 operator|.
-name|IntegrationException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|MetaDataUpdate
 import|;
 end_import
@@ -1832,39 +1816,8 @@ argument_list|)
 operator|.
 name|hasMessage
 argument_list|(
-literal|"Merge Conflict"
-argument_list|)
-expr_stmt|;
-name|Throwable
-name|t
-init|=
-name|e
-operator|.
-name|getCause
-argument_list|()
-decl_stmt|;
-name|assertThat
-argument_list|(
-name|t
-argument_list|)
-operator|.
-name|isInstanceOf
-argument_list|(
-name|IntegrationException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|t
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
+literal|"Failed to submit 2 changes due to the following problems:\n"
+operator|+
 literal|"Change "
 operator|+
 name|r1
@@ -1875,9 +1828,11 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|" has submit type CHERRY_PICK, "
+literal|": Change has submit type "
 operator|+
-literal|"but previously chose submit type MERGE_IF_NECESSARY from change "
+literal|"CHERRY_PICK, but previously chose submit type MERGE_IF_NECESSARY "
+operator|+
+literal|"from change "
 operator|+
 name|r2
 operator|.
