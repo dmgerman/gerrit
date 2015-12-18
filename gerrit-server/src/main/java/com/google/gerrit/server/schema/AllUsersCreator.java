@@ -535,6 +535,8 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -549,7 +551,8 @@ name|allUsersName
 argument_list|,
 name|git
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|md
 operator|.
 name|getCommitBuilder
@@ -747,6 +750,7 @@ argument_list|(
 name|md
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

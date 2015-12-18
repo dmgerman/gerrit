@@ -292,20 +292,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Before
@@ -319,16 +305,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -546,10 +522,10 @@ name|void
 name|grantApproveToChangeOwner
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|ConfigInvalidException
+name|Exception
 block|{
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -559,7 +535,8 @@ name|create
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|md
 operator|.
 name|setMessage
@@ -669,6 +646,7 @@ name|getProject
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|createMyChange ()
 specifier|private

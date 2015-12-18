@@ -737,6 +737,8 @@ block|{
 name|load
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -760,7 +762,8 @@ argument_list|()
 argument_list|,
 name|bru
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|md
 operator|.
 name|setAllowEmpty
@@ -776,6 +779,7 @@ argument_list|(
 name|md
 argument_list|)
 return|;
+block|}
 block|}
 return|return
 operator|new

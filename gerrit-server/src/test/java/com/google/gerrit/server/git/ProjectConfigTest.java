@@ -1821,6 +1821,8 @@ name|MissingObjectException
 throws|,
 name|IncorrectObjectTypeException
 block|{
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -1841,7 +1843,8 @@ argument_list|()
 argument_list|,
 name|db
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|util
 operator|.
 name|tick
@@ -1899,6 +1902,7 @@ name|getObjectId
 argument_list|()
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|update (RevCommit rev)
 specifier|private

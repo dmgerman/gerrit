@@ -910,6 +910,8 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -924,7 +926,8 @@ name|allProjectsName
 argument_list|,
 name|git
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|md
 operator|.
 name|getCommitBuilder
@@ -1503,6 +1506,7 @@ operator|.
 name|REFS_CONFIG
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|initCodeReviewLabel (ProjectConfig c)
 specifier|public

@@ -1536,6 +1536,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|MetaDataUpdate
 name|md
 init|=
@@ -1553,7 +1555,8 @@ argument_list|()
 argument_list|,
 name|user
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|pc
 operator|.
 name|commit
@@ -1574,6 +1577,7 @@ name|getNameKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|psa (Account.Id accountId, String label, int value)
 specifier|private
