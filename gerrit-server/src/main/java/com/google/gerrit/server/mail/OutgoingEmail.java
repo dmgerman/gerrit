@@ -1821,7 +1821,7 @@ comment|// selection filters previously for this type of message were
 comment|// unable to match a destination. Don't bother sending it.
 name|log
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"Skipping delivery of email with no recipients"
 argument_list|)
