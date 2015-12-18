@@ -1776,14 +1776,6 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 decl_stmt|;
-DECL|field|changeDataFactory
-specifier|private
-specifier|final
-name|ChangeData
-operator|.
-name|Factory
-name|changeDataFactory
-decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
@@ -1987,7 +1979,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeHooks hooks, ChangeIndexer indexer, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory updateFactory, GitReferenceUpdated gitRefUpdated, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory identifiedUserFactory, LabelNormalizer labelNormalizer, EmailMerge.Factory mergedSenderFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, PatchSetInfoFactory patchSetInfoFactory, ProjectCache projectCache, InternalChangeQuery internalChangeQuery, @GerritPersonIdent PersonIdent serverIdent, SubmitStrategyFactory submitStrategyFactory, Provider<SubmoduleOp> subOpProvider, TagCache tagCache)
+DECL|method|MergeOp (AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeHooks hooks, ChangeIndexer indexer, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory updateFactory, GitReferenceUpdated gitRefUpdated, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory identifiedUserFactory, LabelNormalizer labelNormalizer, EmailMerge.Factory mergedSenderFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, PatchSetInfoFactory patchSetInfoFactory, ProjectCache projectCache, InternalChangeQuery internalChangeQuery, @GerritPersonIdent PersonIdent serverIdent, SubmitStrategyFactory submitStrategyFactory, Provider<SubmoduleOp> subOpProvider, TagCache tagCache)
 name|MergeOp
 parameter_list|(
 name|AccountCache
@@ -2000,11 +1992,6 @@ name|ChangeControl
 operator|.
 name|GenericFactory
 name|changeControlFactory
-parameter_list|,
-name|ChangeData
-operator|.
-name|Factory
-name|changeDataFactory
 parameter_list|,
 name|ChangeHooks
 name|hooks
@@ -2091,12 +2078,6 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
-expr_stmt|;
-name|this
-operator|.
-name|changeDataFactory
-operator|=
-name|changeDataFactory
 expr_stmt|;
 name|this
 operator|.
@@ -4613,10 +4594,7 @@ name|st
 init|=
 name|getSubmitType
 argument_list|(
-name|commit
-operator|.
-name|getControl
-argument_list|()
+name|cd
 argument_list|,
 name|ps
 argument_list|)
@@ -4933,13 +4911,13 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getSubmitType (ChangeControl ctl, PatchSet ps)
+DECL|method|getSubmitType (ChangeData cd, PatchSet ps)
 specifier|private
 name|SubmitType
 name|getSubmitType
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeData
+name|cd
 parameter_list|,
 name|PatchSet
 name|ps
@@ -4947,18 +4925,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|ChangeData
-name|cd
-init|=
-name|changeDataFactory
-operator|.
-name|create
-argument_list|(
-name|db
-argument_list|,
-name|ctl
-argument_list|)
-decl_stmt|;
 name|SubmitTypeRecord
 name|r
 init|=
@@ -4993,12 +4959,9 @@ name|logError
 argument_list|(
 literal|"Failed to get submit type for "
 operator|+
-name|ctl
+name|cd
 operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5022,12 +4985,9 @@ name|logError
 argument_list|(
 literal|"Failed to get submit type for "
 operator|+
-name|ctl
+name|cd
 operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|,
 name|e
