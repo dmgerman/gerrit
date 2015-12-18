@@ -821,6 +821,20 @@ name|void
 name|start
 parameter_list|()
 block|{
+name|String
+name|runReindex
+init|=
+literal|"No index versions ready; run java -jar "
+operator|+
+name|sitePaths
+operator|.
+name|gerrit_war
+operator|.
+name|toAbsolutePath
+argument_list|()
+operator|+
+literal|" reindex"
+decl_stmt|;
 name|FileBasedConfig
 name|cfg
 decl_stmt|;
@@ -866,7 +880,7 @@ throw|throw
 operator|new
 name|ProvisionException
 argument_list|(
-literal|"No index versions ready; run Reindex"
+name|runReindex
 argument_list|)
 throw|;
 block|}
@@ -902,7 +916,7 @@ throw|throw
 operator|new
 name|ProvisionException
 argument_list|(
-literal|"No index versions ready; run Reindex"
+name|runReindex
 argument_list|)
 throw|;
 block|}
@@ -1026,7 +1040,7 @@ throw|throw
 operator|new
 name|ProvisionException
 argument_list|(
-literal|"No index versions ready; run Reindex"
+name|runReindex
 argument_list|)
 throw|;
 block|}
