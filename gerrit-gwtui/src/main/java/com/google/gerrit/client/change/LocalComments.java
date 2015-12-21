@@ -1073,13 +1073,16 @@ name|PARENT
 operator|.
 name|toString
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|elements
 index|[
 name|offset
 operator|+
 literal|3
 index|]
+argument_list|)
 operator|)
 condition|?
 name|Side
