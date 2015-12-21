@@ -130,7 +130,7 @@ name|index
 operator|.
 name|ChangeField
 operator|.
-name|LEGACY_ID2
+name|LEGACY_ID
 import|;
 end_import
 
@@ -1547,7 +1547,7 @@ name|sortFieldName
 argument_list|(
 name|ChangeField
 operator|.
-name|LEGACY_ID2
+name|LEGACY_ID
 argument_list|)
 decl_stmt|;
 DECL|field|CUSTOM_CHAR_MAPPING
@@ -3000,7 +3000,7 @@ decl_stmt|;
 name|String
 name|idFieldName
 init|=
-name|LEGACY_ID2
+name|LEGACY_ID
 operator|.
 name|getName
 argument_list|()
@@ -3237,7 +3237,7 @@ name|schemaHasRequestedField
 argument_list|(
 name|ChangeField
 operator|.
-name|LEGACY_ID2
+name|LEGACY_ID
 argument_list|,
 name|opts
 operator|.
@@ -3281,7 +3281,7 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-name|LEGACY_ID2
+name|LEGACY_ID
 operator|.
 name|getName
 argument_list|()
@@ -4082,7 +4082,7 @@ name|f
 operator|==
 name|ChangeField
 operator|.
-name|LEGACY_ID2
+name|LEGACY_ID
 condition|)
 block|{
 name|int

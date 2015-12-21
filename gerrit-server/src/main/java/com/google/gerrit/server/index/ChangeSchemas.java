@@ -235,7 +235,7 @@ name|schema
 argument_list|(
 name|ChangeField
 operator|.
-name|LEGACY_ID2
+name|LEGACY_ID
 argument_list|,
 name|ChangeField
 operator|.

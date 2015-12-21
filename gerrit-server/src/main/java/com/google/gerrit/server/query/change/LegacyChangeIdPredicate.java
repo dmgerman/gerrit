@@ -82,7 +82,7 @@ name|index
 operator|.
 name|ChangeField
 operator|.
-name|LEGACY_ID2
+name|LEGACY_ID
 import|;
 end_import
 
@@ -152,7 +152,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|LEGACY_ID2
+name|LEGACY_ID
 argument_list|,
 name|ChangeQueryBuilder
 operator|.

@@ -78,7 +78,7 @@ name|index
 operator|.
 name|ChangeField
 operator|.
-name|LEGACY_ID2
+name|LEGACY_ID
 import|;
 end_import
 
@@ -537,7 +537,7 @@ block|{
 return|return
 name|intTerm
 argument_list|(
-name|LEGACY_ID2
+name|LEGACY_ID
 operator|.
 name|getName
 argument_list|()
@@ -567,7 +567,7 @@ block|{
 return|return
 name|intTerm
 argument_list|(
-name|LEGACY_ID2
+name|LEGACY_ID
 operator|.
 name|getName
 argument_list|()

@@ -547,7 +547,7 @@ class|class
 name|ChangeField
 block|{
 comment|/** Legacy change ID. */
-DECL|field|LEGACY_ID2
+DECL|field|LEGACY_ID
 specifier|public
 specifier|static
 specifier|final
@@ -557,7 +557,7 @@ name|ChangeData
 argument_list|,
 name|Integer
 argument_list|>
-name|LEGACY_ID2
+name|LEGACY_ID
 init|=
 operator|new
 name|FieldDef
