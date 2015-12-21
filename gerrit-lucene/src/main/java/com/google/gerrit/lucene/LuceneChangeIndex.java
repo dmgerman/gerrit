@@ -144,6 +144,24 @@ name|server
 operator|.
 name|index
 operator|.
+name|ChangeField
+operator|.
+name|LEGACY_ID2
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|IndexRewriter
 operator|.
 name|CLOSED_STATUSES
@@ -693,24 +711,6 @@ operator|.
 name|change
 operator|.
 name|ChangeDataSource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|LegacyChangeIdPredicate
 import|;
 end_import
 
@@ -2098,12 +2098,7 @@ name|idSortField
 operator|=
 name|sortFieldName
 argument_list|(
-name|LegacyChangeIdPredicate
-operator|.
-name|idField
-argument_list|(
-name|schema
-argument_list|)
+name|LEGACY_ID2
 argument_list|)
 expr_stmt|;
 name|CustomMappingAnalyzer
@@ -2305,11 +2300,6 @@ name|SearcherFactory
 argument_list|()
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 specifier|final
 name|Map
 argument_list|<
@@ -2325,12 +2315,8 @@ name|ImmutableMap
 operator|.
 name|of
 argument_list|(
-name|ChangeField
-operator|.
-name|LEGACY_ID
-operator|.
-name|getName
-argument_list|()
+comment|// TODO(dborowitz): Remove; this is dead code anyway.
+literal|"_id"
 argument_list|,
 name|UninvertingReader
 operator|.
@@ -2540,8 +2526,6 @@ name|QueryBuilder
 operator|.
 name|idTerm
 argument_list|(
-name|schema
-argument_list|,
 name|cd
 argument_list|)
 decl_stmt|;
@@ -2663,8 +2647,6 @@ name|QueryBuilder
 operator|.
 name|idTerm
 argument_list|(
-name|schema
-argument_list|,
 name|id
 argument_list|)
 decl_stmt|;
@@ -2872,11 +2854,6 @@ name|ready
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|getSort ()
 specifier|private
 name|Sort
@@ -2950,12 +2927,8 @@ argument_list|,
 operator|new
 name|SortField
 argument_list|(
-name|ChangeField
-operator|.
-name|LEGACY_ID
-operator|.
-name|getName
-argument_list|()
+comment|// TODO(dborowitz): Remove; this is dead code anyway.
+literal|"_id"
 argument_list|,
 name|SortField
 operator|.
@@ -3265,7 +3238,9 @@ decl_stmt|;
 name|String
 name|idFieldName
 init|=
-name|idFieldName
+name|LEGACY_ID2
+operator|.
+name|getName
 argument_list|()
 decl_stmt|;
 for|for
@@ -3482,11 +3457,6 @@ block|}
 block|}
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|fields (QueryOptions opts)
 specifier|private
 name|Set
@@ -3524,18 +3494,6 @@ operator|.
 name|fields
 argument_list|()
 argument_list|)
-operator|||
-name|schemaHasRequestedField
-argument_list|(
-name|ChangeField
-operator|.
-name|LEGACY_ID
-argument_list|,
-name|opts
-operator|.
-name|fields
-argument_list|()
-argument_list|)
 condition|)
 block|{
 return|return
@@ -3561,7 +3519,9 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
-name|idFieldName
+name|LEGACY_ID2
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3604,38 +3564,6 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
-return|;
-block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-DECL|method|idFieldName ()
-specifier|private
-name|String
-name|idFieldName
-parameter_list|()
-block|{
-return|return
-name|schema
-operator|.
-name|getField
-argument_list|(
-name|ChangeField
-operator|.
-name|LEGACY_ID2
-argument_list|,
-name|ChangeField
-operator|.
-name|LEGACY_ID
-argument_list|)
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getName
-argument_list|()
 return|;
 block|}
 DECL|method|toChangeData (Document doc, Set<String> fields, String idFieldName)
@@ -4321,11 +4249,6 @@ return|return
 name|result
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|add (Document doc, Values<ChangeData> values)
 specifier|private
 name|void
@@ -4397,12 +4320,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|f
-operator|==
-name|ChangeField
-operator|.
-name|LEGACY_ID
-operator|||
 name|f
 operator|==
 name|ChangeField

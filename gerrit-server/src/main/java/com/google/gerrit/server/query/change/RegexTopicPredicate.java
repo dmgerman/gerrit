@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|ChangeField
+operator|.
+name|FUZZY_TOPIC
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -97,22 +115,6 @@ operator|.
 name|index
 operator|.
 name|RegexPredicate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|Schema
 import|;
 end_import
 
@@ -170,27 +172,16 @@ specifier|final
 name|RunAutomaton
 name|pattern
 decl_stmt|;
-DECL|method|RegexTopicPredicate (Schema<ChangeData> schema, String re)
+DECL|method|RegexTopicPredicate (String re)
 name|RegexTopicPredicate
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|String
 name|re
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|FuzzyTopicPredicate
-operator|.
-name|topicField
-argument_list|(
-name|schema
-argument_list|)
+name|FUZZY_TOPIC
 argument_list|,
 name|re
 argument_list|)

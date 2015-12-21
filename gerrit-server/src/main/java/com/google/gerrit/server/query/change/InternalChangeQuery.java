@@ -1529,11 +1529,6 @@ argument_list|(
 operator|new
 name|ExactTopicPredicate
 argument_list|(
-name|schema
-argument_list|(
-name|indexes
-argument_list|)
-argument_list|,
 name|topic
 argument_list|)
 argument_list|,

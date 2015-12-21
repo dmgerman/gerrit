@@ -74,13 +74,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
+name|index
 operator|.
-name|change
+name|ChangeField
 operator|.
-name|LegacyChangeIdPredicate
-operator|.
-name|idField
+name|LEGACY_ID2
 import|;
 end_import
 
@@ -229,22 +227,6 @@ operator|.
 name|index
 operator|.
 name|RegexPredicate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|Schema
 import|;
 end_import
 
@@ -542,18 +524,12 @@ specifier|public
 class|class
 name|QueryBuilder
 block|{
-DECL|method|idTerm (Schema<ChangeData> schema, ChangeData cd)
+DECL|method|idTerm (ChangeData cd)
 specifier|public
 specifier|static
 name|Term
 name|idTerm
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
@@ -561,10 +537,7 @@ block|{
 return|return
 name|intTerm
 argument_list|(
-name|idField
-argument_list|(
-name|schema
-argument_list|)
+name|LEGACY_ID2
 operator|.
 name|getName
 argument_list|()
@@ -579,18 +552,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|idTerm (Schema<ChangeData> schema, Change.Id id)
+DECL|method|idTerm (Change.Id id)
 specifier|public
 specifier|static
 name|Term
 name|idTerm
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -600,10 +567,7 @@ block|{
 return|return
 name|intTerm
 argument_list|(
-name|idField
-argument_list|(
-name|schema
-argument_list|)
+name|LEGACY_ID2
 operator|.
 name|getName
 argument_list|()
