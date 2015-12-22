@@ -278,6 +278,16 @@ specifier|volatile
 name|Runnable
 name|trigger
 decl_stmt|;
+DECL|field|lock
+specifier|private
+specifier|final
+name|Object
+name|lock
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
 DECL|method|BucketedCallback (DropWizardMetricMaker metrics, MetricRegistry registry, String name, Class<V> valueType, Description desc, Field<?>... fields)
 name|BucketedCallback
 parameter_list|(
@@ -595,7 +605,7 @@ return|;
 block|}
 synchronized|synchronized
 init|(
-name|cells
+name|lock
 init|)
 block|{
 name|c
