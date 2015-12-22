@@ -1404,22 +1404,6 @@ argument_list|(
 name|ctx
 argument_list|)
 expr_stmt|;
-name|patchSetInfo
-operator|=
-name|patchSetInfoFactory
-operator|.
-name|get
-argument_list|(
-name|ctx
-operator|.
-name|getRevWalk
-argument_list|()
-argument_list|,
-name|commit
-argument_list|,
-name|psId
-argument_list|)
-expr_stmt|;
 name|ctx
 operator|.
 name|addRefUpdate
@@ -1463,6 +1447,8 @@ throws|throws
 name|OrmException
 throws|,
 name|InvalidChangeOperationException
+throws|,
+name|IOException
 block|{
 name|ChangeControl
 name|ctl
@@ -1714,6 +1700,22 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+name|patchSetInfo
+operator|=
+name|patchSetInfoFactory
+operator|.
+name|get
+argument_list|(
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|,
+name|commit
+argument_list|,
+name|psId
+argument_list|)
+expr_stmt|;
 comment|// TODO(dborowitz): Throw ResourceConflictException instead of using
 comment|// AtomicUpdate.
 name|change

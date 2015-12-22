@@ -1008,6 +1008,8 @@ throws|throws
 name|OrmException
 throws|,
 name|InvalidChangeOperationException
+throws|,
+name|IOException
 block|{
 name|patchSetInserter
 operator|.
