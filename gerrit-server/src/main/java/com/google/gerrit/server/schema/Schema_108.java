@@ -344,6 +344,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|errors
+operator|.
+name|MissingObjectException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|lib
 operator|.
 name|Constants
@@ -687,6 +701,8 @@ name|e
 operator|.
 name|getValue
 argument_list|()
+argument_list|,
+name|ui
 argument_list|)
 expr_stmt|;
 block|}
@@ -735,7 +751,7 @@ literal|"done"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateProjectGroups (ReviewDb db, Repository repo, RevWalk rw, Set<Change.Id> changes)
+DECL|method|updateProjectGroups (ReviewDb db, Repository repo, RevWalk rw, Set<Change.Id> changes, UpdateUI ui)
 specifier|private
 specifier|static
 name|void
@@ -757,6 +773,9 @@ operator|.
 name|Id
 argument_list|>
 name|changes
+parameter_list|,
+name|UpdateUI
+name|ui
 parameter_list|)
 throws|throws
 name|OrmException
@@ -826,6 +845,8 @@ name|ref
 operator|.
 name|getObjectId
 argument_list|()
+argument_list|,
+name|ui
 argument_list|)
 decl_stmt|;
 if|if
@@ -977,6 +998,8 @@ argument_list|(
 name|rw
 argument_list|,
 name|id
+argument_list|,
+name|ui
 argument_list|)
 decl_stmt|;
 if|if
@@ -1378,7 +1401,7 @@ return|return
 name|openByProject
 return|;
 block|}
-DECL|method|maybeParseCommit (RevWalk rw, ObjectId id)
+DECL|method|maybeParseCommit (RevWalk rw, ObjectId id, UpdateUI ui)
 specifier|private
 specifier|static
 name|RevCommit
@@ -1389,6 +1412,9 @@ name|rw
 parameter_list|,
 name|ObjectId
 name|id
+parameter_list|,
+name|UpdateUI
+name|ui
 parameter_list|)
 throws|throws
 name|IOException
@@ -1396,14 +1422,12 @@ block|{
 if|if
 condition|(
 name|id
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-return|return
-literal|null
-return|;
-block|}
+try|try
+block|{
 name|RevObject
 name|obj
 init|=
@@ -1426,6 +1450,32 @@ name|RevCommit
 operator|)
 name|obj
 else|:
+literal|null
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|MissingObjectException
+name|moe
+parameter_list|)
+block|{
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"Missing object: "
+operator|+
+name|id
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|return
 literal|null
 return|;
 block|}

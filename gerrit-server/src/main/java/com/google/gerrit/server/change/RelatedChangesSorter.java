@@ -464,6 +464,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|LinkedHashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -803,7 +813,7 @@ block|}
 block|}
 block|}
 block|}
-name|List
+name|Collection
 argument_list|<
 name|PatchSetData
 argument_list|>
@@ -1082,7 +1092,7 @@ block|}
 DECL|method|walkAncestors (ProjectControl ctl, ListMultimap<PatchSetData, PatchSetData> parents, PatchSetData start)
 specifier|private
 specifier|static
-name|List
+name|Collection
 argument_list|<
 name|PatchSetData
 argument_list|>
@@ -1105,14 +1115,14 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|List
+name|LinkedHashSet
 argument_list|<
 name|PatchSetData
 argument_list|>
 name|result
 init|=
 operator|new
-name|ArrayList
+name|LinkedHashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1153,6 +1163,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|result
+operator|.
+name|contains
+argument_list|(
+name|psd
+argument_list|)
+operator|||
 operator|!
 name|isVisible
 argument_list|(
@@ -1193,7 +1210,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|walkDescendants (ProjectControl ctl, ListMultimap<PatchSetData, PatchSetData> children, PatchSetData start, List<PatchSetData> otherPatchSetsOfStart, List<PatchSetData> ancestors)
+DECL|method|walkDescendants (ProjectControl ctl, ListMultimap<PatchSetData, PatchSetData> children, PatchSetData start, List<PatchSetData> otherPatchSetsOfStart, Iterable<PatchSetData> ancestors)
 specifier|private
 specifier|static
 name|List
@@ -1222,7 +1239,7 @@ name|PatchSetData
 argument_list|>
 name|otherPatchSetsOfStart
 parameter_list|,
-name|List
+name|Iterable
 argument_list|<
 name|PatchSetData
 argument_list|>
@@ -1414,6 +1431,17 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+name|Set
+argument_list|<
+name|PatchSetData
+argument_list|>
+name|seen
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
 name|List
 argument_list|<
 name|PatchSetData
@@ -1462,6 +1490,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|seen
+operator|.
+name|contains
+argument_list|(
+name|psd
+argument_list|)
+operator|||
 operator|!
 name|isVisible
 argument_list|(
@@ -1473,6 +1508,13 @@ condition|)
 block|{
 continue|continue;
 block|}
+name|seen
+operator|.
+name|add
+argument_list|(
+name|psd
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
