@@ -130,20 +130,6 @@ literal|""
 argument_list|)
 block|,
 comment|/** */
-DECL|enumConstant|NO_PATCH_SET
-name|NO_PATCH_SET
-argument_list|(
-literal|""
-argument_list|)
-block|,
-comment|/** */
-DECL|enumConstant|REVISION_GONE
-name|REVISION_GONE
-argument_list|(
-literal|""
-argument_list|)
-block|,
-comment|/** */
 DECL|enumConstant|MANUAL_RECURSIVE_MERGE
 name|MANUAL_RECURSIVE_MERGE
 argument_list|(
