@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -141,7 +155,10 @@ name|RefEvent
 block|{
 DECL|field|change
 specifier|public
+name|Supplier
+argument_list|<
 name|ChangeAttribute
+argument_list|>
 name|change
 decl_stmt|;
 DECL|method|ChangeEvent (String type)
@@ -176,6 +193,9 @@ name|NameKey
 argument_list|(
 name|change
 operator|.
+name|get
+argument_list|()
+operator|.
 name|project
 argument_list|)
 return|;
@@ -194,6 +214,9 @@ operator|.
 name|fullName
 argument_list|(
 name|change
+operator|.
+name|get
+argument_list|()
 operator|.
 name|branch
 argument_list|)
@@ -214,6 +237,9 @@ operator|.
 name|Key
 argument_list|(
 name|change
+operator|.
+name|get
+argument_list|()
 operator|.
 name|id
 argument_list|)
