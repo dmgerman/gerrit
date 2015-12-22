@@ -587,47 +587,12 @@ name|defaultTypeError
 parameter_list|()
 block|{
 return|return
-name|createTypeError
+name|SubmitTypeRecord
+operator|.
+name|error
 argument_list|(
 name|DEFAULT_MSG
 argument_list|)
-return|;
-block|}
-DECL|method|createTypeError (String err)
-specifier|public
-specifier|static
-name|SubmitTypeRecord
-name|createTypeError
-parameter_list|(
-name|String
-name|err
-parameter_list|)
-block|{
-name|SubmitTypeRecord
-name|rec
-init|=
-operator|new
-name|SubmitTypeRecord
-argument_list|()
-decl_stmt|;
-name|rec
-operator|.
-name|status
-operator|=
-name|SubmitTypeRecord
-operator|.
-name|Status
-operator|.
-name|RULE_ERROR
-expr_stmt|;
-name|rec
-operator|.
-name|errorMessage
-operator|=
-name|err
-expr_stmt|;
-return|return
-name|rec
 return|;
 block|}
 comment|/**    * Exception thrown when the label term of a submit record    * unexpectedly didn't contain a user term.    */
@@ -1997,7 +1962,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|createTypeError
+name|SubmitTypeRecord
+operator|.
+name|error
 argument_list|(
 literal|"Patch set "
 operator|+
@@ -2032,7 +1999,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|createTypeError
+name|SubmitTypeRecord
+operator|.
+name|error
 argument_list|(
 literal|"Patch set "
 operator|+
@@ -2072,7 +2041,9 @@ name|err
 argument_list|)
 expr_stmt|;
 return|return
-name|createTypeError
+name|SubmitTypeRecord
+operator|.
+name|error
 argument_list|(
 name|msg
 argument_list|)
@@ -2335,7 +2306,9 @@ block|}
 else|else
 block|{
 return|return
-name|createTypeError
+name|SubmitTypeRecord
+operator|.
+name|error
 argument_list|(
 name|err
 argument_list|)
