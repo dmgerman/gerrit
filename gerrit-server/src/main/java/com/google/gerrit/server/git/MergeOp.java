@@ -4737,16 +4737,6 @@ name|MergeValidationException
 name|mve
 parameter_list|)
 block|{
-name|commit
-operator|.
-name|setStatusCode
-argument_list|(
-name|mve
-operator|.
-name|getStatus
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|problems
 operator|.
 name|put
@@ -4755,10 +4745,7 @@ name|changeId
 argument_list|,
 name|mve
 operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|toString
+name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5918,24 +5905,6 @@ name|CANNOT_CHERRY_PICK_ROOT
 case|:
 case|case
 name|NOT_FAST_FORWARD
-case|:
-case|case
-name|INVALID_PROJECT_CONFIGURATION
-case|:
-case|case
-name|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_PERMITTED
-case|:
-case|case
-name|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_EDITABLE
-case|:
-case|case
-name|INVALID_PROJECT_CONFIGURATION_PARENT_PROJECT_NOT_FOUND
-case|:
-case|case
-name|INVALID_PROJECT_CONFIGURATION_ROOT_PROJECT_CANNOT_HAVE_PARENT
-case|:
-case|case
-name|SETTING_PARENT_PROJECT_ONLY_ALLOWED_BY_ADMIN
 case|:
 comment|// TODO(dborowitz): Reformat these messages to be more appropriate for
 comment|// short problem descriptions.
