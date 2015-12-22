@@ -494,15 +494,13 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"The change could not be submitted because it depends on change(s) ["
+literal|"Failed to submit 2 changes due to the following problems:\n"
+operator|+
+literal|"Change "
 operator|+
 name|id1
 operator|+
-literal|"], which could not be submitted because:\n"
-operator|+
-name|id1
-operator|+
-literal|": needs Code-Review;"
+literal|": needs Code-Review"
 argument_list|)
 expr_stmt|;
 name|RevCommit
