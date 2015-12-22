@@ -596,7 +596,7 @@ name|git
 operator|.
 name|strategy
 operator|.
-name|SubmitStrategyFactory
+name|SubmitDryRun
 import|;
 end_import
 
@@ -1647,10 +1647,10 @@ name|ListChildProjects
 argument_list|>
 name|listChildProjects
 decl_stmt|;
-DECL|field|submitStrategyFactory
+DECL|field|submitDryRun
 specifier|final
-name|SubmitStrategyFactory
-name|submitStrategyFactory
+name|SubmitDryRun
+name|submitDryRun
 decl_stmt|;
 DECL|field|conflictsCache
 specifier|final
@@ -1698,7 +1698,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, IndexCollection indexes, SubmitStrategyFactory submitStrategyFactory, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, @GerritServerConfig Config cfg)
+DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, IndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, @GerritServerConfig Config cfg)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -1787,8 +1787,8 @@ parameter_list|,
 name|IndexCollection
 name|indexes
 parameter_list|,
-name|SubmitStrategyFactory
-name|submitStrategyFactory
+name|SubmitDryRun
+name|submitDryRun
 parameter_list|,
 name|ConflictsCache
 name|conflictsCache
@@ -1851,7 +1851,7 @@ name|projectCache
 argument_list|,
 name|listChildProjects
 argument_list|,
-name|submitStrategyFactory
+name|submitDryRun
 argument_list|,
 name|conflictsCache
 argument_list|,
@@ -1891,7 +1891,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitStrategyFactory submitStrategyFactory, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, boolean allowsDrafts)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, boolean allowsDrafts)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -1977,8 +1977,8 @@ name|ListChildProjects
 argument_list|>
 name|listChildProjects
 parameter_list|,
-name|SubmitStrategyFactory
-name|submitStrategyFactory
+name|SubmitDryRun
+name|submitDryRun
 parameter_list|,
 name|ConflictsCache
 name|conflictsCache
@@ -2118,9 +2118,9 @@ name|listChildProjects
 expr_stmt|;
 name|this
 operator|.
-name|submitStrategyFactory
+name|submitDryRun
 operator|=
-name|submitStrategyFactory
+name|submitDryRun
 expr_stmt|;
 name|this
 operator|.
@@ -2214,7 +2214,7 @@ name|projectCache
 argument_list|,
 name|listChildProjects
 argument_list|,
-name|submitStrategyFactory
+name|submitDryRun
 argument_list|,
 name|conflictsCache
 argument_list|,

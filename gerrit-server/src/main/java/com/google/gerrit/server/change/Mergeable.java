@@ -1151,11 +1151,6 @@ name|getDest
 argument_list|()
 argument_list|,
 name|git
-argument_list|,
-name|db
-operator|.
-name|get
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1287,11 +1282,6 @@ name|getDest
 argument_list|()
 argument_list|,
 name|git
-argument_list|,
-name|db
-operator|.
-name|get
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

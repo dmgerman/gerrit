@@ -177,10 +177,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (final CodeReviewCommit branchTip, final Collection<CodeReviewCommit> toMerge)
-specifier|protected
+DECL|method|run (final CodeReviewCommit branchTip, final Collection<CodeReviewCommit> toMerge)
+specifier|public
 name|MergeTip
-name|_run
+name|run
 parameter_list|(
 specifier|final
 name|CodeReviewCommit
@@ -309,13 +309,16 @@ return|return
 name|mergeTip
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
-specifier|public
+DECL|method|dryRun (SubmitDryRun.Arguments args, CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
+specifier|static
 name|boolean
 name|dryRun
 parameter_list|(
+name|SubmitDryRun
+operator|.
+name|Arguments
+name|args
+parameter_list|,
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
