@@ -652,21 +652,23 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"Cannot merge "
+literal|"Failed to submit 1 change due to the following problems:\n"
+operator|+
+literal|"Change "
 operator|+
 name|change2
 operator|.
-name|getCommitId
+name|getChange
 argument_list|()
 operator|.
-name|name
+name|getId
 argument_list|()
 operator|+
-literal|"\n"
+literal|": Project policy requires "
 operator|+
-literal|"Project policy requires all submissions to be a fast-forward.\n\n"
+literal|"all submissions to be a fast-forward. Please rebase the change "
 operator|+
-literal|"Please rebase the change locally and upload again for review."
+literal|"locally and upload again for review."
 argument_list|)
 expr_stmt|;
 name|assertThat

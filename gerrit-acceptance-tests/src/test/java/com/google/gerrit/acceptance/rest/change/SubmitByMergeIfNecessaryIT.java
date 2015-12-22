@@ -1245,21 +1245,21 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"Cannot merge "
+literal|"Failed to submit 5 changes due to the following problems:\n"
+operator|+
+literal|"Change "
 operator|+
 name|change3
 operator|.
-name|getCommit
+name|getChange
 argument_list|()
 operator|.
-name|name
+name|getId
 argument_list|()
 operator|+
-literal|"\n"
+literal|": Change could not be "
 operator|+
-literal|"Change could not be merged due to a path conflict.\n\n"
-operator|+
-literal|"Please rebase the change locally "
+literal|"merged due to a path conflict. Please rebase the change locally "
 operator|+
 literal|"and upload the rebased commit for review."
 argument_list|)
@@ -2000,6 +2000,16 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|String
+name|cnt
+init|=
+name|isSubmitWholeTopicEnabled
+argument_list|()
+condition|?
+literal|"2 changes"
+else|:
+literal|"1 change"
+decl_stmt|;
 name|submitWithConflict
 argument_list|(
 name|change3a
@@ -2007,7 +2017,25 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"Merge Conflict"
+literal|"Failed to submit "
+operator|+
+name|cnt
+operator|+
+literal|" due to the following problems:\n"
+operator|+
+literal|"Change "
+operator|+
+name|change3a
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|": depends on change that"
+operator|+
+literal|" was not submitted"
 argument_list|)
 expr_stmt|;
 name|RevCommit

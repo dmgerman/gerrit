@@ -242,22 +242,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|CommitMergeStatus
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -957,12 +941,17 @@ name|r
 operator|.
 name|assertMessage
 argument_list|(
-name|CommitMergeStatus
+literal|"Change "
+operator|+
+name|r
 operator|.
-name|PATH_CONFLICT
-operator|.
-name|getMessage
+name|getChange
 argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|": change could not be merged due to a path conflict."
 argument_list|)
 expr_stmt|;
 block|}
