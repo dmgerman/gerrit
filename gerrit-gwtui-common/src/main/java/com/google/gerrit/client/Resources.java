@@ -115,6 +115,16 @@ name|ImageResource
 name|addFileComment
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"user_add.png"
+argument_list|)
+DECL|method|addUser ()
+name|ImageResource
+name|addUser
+parameter_list|()
+function_decl|;
 comment|// derived from resultset_next.png
 annotation|@
 name|Source
