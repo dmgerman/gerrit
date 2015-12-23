@@ -104,40 +104,44 @@ name|Resources
 extends|extends
 name|ClientBundle
 block|{
+comment|/**    * silk icons (CC-BY3.0): http://famfamfam.com/lab/icons/silk/    */
 annotation|@
 name|Source
 argument_list|(
-literal|"addFileComment.png"
+literal|"note_add.png"
 argument_list|)
 DECL|method|addFileComment ()
 name|ImageResource
 name|addFileComment
 parameter_list|()
 function_decl|;
+comment|// derived from resultset_next.png
 annotation|@
 name|Source
 argument_list|(
-literal|"arrowDown.png"
+literal|"resultset_down_gray.png"
 argument_list|)
 DECL|method|arrowDown ()
 name|ImageResource
 name|arrowDown
 parameter_list|()
 function_decl|;
+comment|// derived from resultset_next.png
 annotation|@
 name|Source
 argument_list|(
-literal|"arrowRight.png"
+literal|"resultset_next_gray.png"
 argument_list|)
 DECL|method|arrowRight ()
 name|ImageResource
 name|arrowRight
 parameter_list|()
 function_decl|;
+comment|// derived from resultset_next.png
 annotation|@
 name|Source
 argument_list|(
-literal|"arrowUp.png"
+literal|"resultset_up_gray.png"
 argument_list|)
 DECL|method|arrowUp ()
 name|ImageResource
@@ -147,47 +151,18 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"deleteHover.png"
-argument_list|)
-DECL|method|deleteHover ()
-name|ImageResource
-name|deleteHover
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"deleteNormal.png"
-argument_list|)
-DECL|method|deleteNormal ()
-name|ImageResource
-name|deleteNormal
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"diffy26.png"
-argument_list|)
-DECL|method|gerritAvatar26 ()
-name|ImageResource
-name|gerritAvatar26
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"downloadIcon.png"
+literal|"page_white_put.png"
 argument_list|)
 DECL|method|downloadIcon ()
 name|ImageResource
 name|downloadIcon
 parameter_list|()
 function_decl|;
+comment|// derived from comment.png
 annotation|@
 name|Source
 argument_list|(
-literal|"draftComments.png"
+literal|"comment_draft.png"
 argument_list|)
 DECL|method|draftComments ()
 name|ImageResource
@@ -197,7 +172,7 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"editText.png"
+literal|"page_edit.png"
 argument_list|)
 DECL|method|edit ()
 name|ImageResource
@@ -207,7 +182,7 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"editUndo.png"
+literal|"arrow_undo.png"
 argument_list|)
 DECL|method|editUndo ()
 name|ImageResource
@@ -217,13 +192,115 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"gear.png"
+literal|"cog.png"
 argument_list|)
 DECL|method|gear ()
 name|ImageResource
 name|gear
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"tick.png"
+argument_list|)
+DECL|method|greenCheck ()
+name|ImageResource
+name|greenCheck
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"lightbulb.png"
+argument_list|)
+DECL|method|info ()
+name|ImageResource
+name|info
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"find.png"
+argument_list|)
+DECL|method|queryIcon ()
+name|ImageResource
+name|queryIcon
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"lock.png"
+argument_list|)
+DECL|method|readOnly ()
+name|ImageResource
+name|readOnly
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"cross.png"
+argument_list|)
+DECL|method|redNot ()
+name|ImageResource
+name|redNot
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"disk.png"
+argument_list|)
+DECL|method|save ()
+name|ImageResource
+name|save
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"star.png"
+argument_list|)
+DECL|method|starFilled ()
+name|ImageResource
+name|starFilled
+parameter_list|()
+function_decl|;
+comment|// derived from star.png
+annotation|@
+name|Source
+argument_list|(
+literal|"star-open.png"
+argument_list|)
+DECL|method|starOpen ()
+name|ImageResource
+name|starOpen
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"exclamation.png"
+argument_list|)
+DECL|method|warning ()
+name|ImageResource
+name|warning
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"help.png"
+argument_list|)
+DECL|method|question ()
+name|ImageResource
+name|question
+parameter_list|()
+function_decl|;
+comment|/**    * tango icon library (public domain):    * http://tango.freedesktop.org/Tango_Icon_Library    */
 annotation|@
 name|Source
 argument_list|(
@@ -257,26 +334,6 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"greenCheck.png"
-argument_list|)
-DECL|method|greenCheck ()
-name|ImageResource
-name|greenCheck
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"info.png"
-argument_list|)
-DECL|method|info ()
-name|ImageResource
-name|info
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
 literal|"listAdd.png"
 argument_list|)
 DECL|method|listAdd ()
@@ -284,16 +341,7 @@ name|ImageResource
 name|listAdd
 parameter_list|()
 function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"mediaFloppy.png"
-argument_list|)
-DECL|method|save ()
-name|ImageResource
-name|save
-parameter_list|()
-function_decl|;
+comment|// derived from important.png
 annotation|@
 name|Source
 argument_list|(
@@ -304,36 +352,7 @@ name|ImageResource
 name|merge
 parameter_list|()
 function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"queryIcon.png"
-argument_list|)
-DECL|method|queryIcon ()
-name|ImageResource
-name|queryIcon
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"readOnly.png"
-argument_list|)
-DECL|method|readOnly ()
-name|ImageResource
-name|readOnly
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"redNot.png"
-argument_list|)
-DECL|method|redNot ()
-name|ImageResource
-name|redNot
-parameter_list|()
-function_decl|;
+comment|/**    * contributed by the artist under Apache2.0    */
 annotation|@
 name|Source
 argument_list|(
@@ -347,36 +366,6 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"starFilled.png"
-argument_list|)
-DECL|method|starFilled ()
-name|ImageResource
-name|starFilled
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"starOpen.png"
-argument_list|)
-DECL|method|starOpen ()
-name|ImageResource
-name|starOpen
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"undoNormal.png"
-argument_list|)
-DECL|method|undoNormal ()
-name|ImageResource
-name|undoNormal
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
 literal|"unifiedDiff.png"
 argument_list|)
 DECL|method|unifiedDiff ()
@@ -384,24 +373,15 @@ name|ImageResource
 name|unifiedDiff
 parameter_list|()
 function_decl|;
+comment|/**    * contributed by the artist under CC-BY3.0    */
 annotation|@
 name|Source
 argument_list|(
-literal|"warning.png"
+literal|"diffy26.png"
 argument_list|)
-DECL|method|warning ()
+DECL|method|gerritAvatar26 ()
 name|ImageResource
-name|warning
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"question.png"
-argument_list|)
-DECL|method|question ()
-name|ImageResource
-name|question
+name|gerritAvatar26
 parameter_list|()
 function_decl|;
 block|}

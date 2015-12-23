@@ -803,6 +803,11 @@ name|String
 name|projectNameColumn
 parameter_list|()
 function_decl|;
+DECL|method|queryIcon ()
+name|String
+name|queryIcon
+parameter_list|()
+function_decl|;
 DECL|method|rebaseContentPanel ()
 name|String
 name|rebaseContentPanel
