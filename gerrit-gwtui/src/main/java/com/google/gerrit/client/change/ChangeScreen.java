@@ -1591,6 +1591,11 @@ name|String
 name|hashtagName
 parameter_list|()
 function_decl|;
+DECL|method|hashtagIcon ()
+name|String
+name|hashtagIcon
+parameter_list|()
+function_decl|;
 DECL|method|highlight ()
 name|String
 name|highlight

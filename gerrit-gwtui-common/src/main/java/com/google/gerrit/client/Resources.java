@@ -118,6 +118,16 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"tag_blue_add.png"
+argument_list|)
+DECL|method|addHashtag ()
+name|ImageResource
+name|addHashtag
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"user_add.png"
 argument_list|)
 DECL|method|addUser ()
@@ -217,6 +227,16 @@ argument_list|)
 DECL|method|greenCheck ()
 name|ImageResource
 name|greenCheck
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"tag_blue.png"
+argument_list|)
+DECL|method|hashtag ()
+name|ImageResource
+name|hashtag
 parameter_list|()
 function_decl|;
 annotation|@
