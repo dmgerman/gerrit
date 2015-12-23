@@ -11329,11 +11329,6 @@ specifier|final
 name|RevCommit
 name|commit
 decl_stmt|;
-DECL|field|change
-specifier|final
-name|Change
-name|change
-decl_stmt|;
 DECL|field|cmd
 specifier|final
 name|ReceiveCommand
@@ -11343,6 +11338,10 @@ DECL|field|ins
 specifier|final
 name|ChangeInserter
 name|ins
+decl_stmt|;
+DECL|field|change
+name|Change
+name|change
 decl_stmt|;
 DECL|field|created
 name|boolean
@@ -11945,6 +11944,13 @@ block|}
 name|created
 operator|=
 literal|true
+expr_stmt|;
+name|change
+operator|=
+name|ins
+operator|.
+name|getChange
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
