@@ -6833,7 +6833,7 @@ name|getComments
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -7073,7 +7073,7 @@ name|getComments
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -7308,7 +7308,7 @@ name|getComments
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -7565,7 +7565,7 @@ name|getComments
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -7744,7 +7744,7 @@ name|otherUserId
 argument_list|)
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -7836,7 +7836,7 @@ name|getComments
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -8070,7 +8070,7 @@ name|otherUserId
 argument_list|)
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -8163,7 +8163,7 @@ name|otherUserId
 argument_list|)
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -8187,7 +8187,7 @@ name|getComments
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -8424,7 +8424,7 @@ name|otherUserId
 argument_list|)
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -8541,7 +8541,7 @@ name|getComments
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -9308,7 +9308,7 @@ name|getComments
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
@@ -9445,7 +9445,7 @@ name|getComments
 argument_list|()
 argument_list|)
 operator|.
-name|containsExactly
+name|containsExactlyEntriesIn
 argument_list|(
 name|ImmutableMultimap
 operator|.
