@@ -522,19 +522,21 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"Cannot merge "
+literal|"Failed to submit 1 change due to the following problems:\n"
+operator|+
+literal|"Change "
 operator|+
 name|change2
 operator|.
-name|getCommit
+name|getChange
 argument_list|()
 operator|.
-name|name
+name|getId
 argument_list|()
 operator|+
-literal|"\n"
+literal|": "
 operator|+
-literal|"Change could not be merged due to a path conflict.\n\n"
+literal|"Change could not be merged due to a path conflict. "
 operator|+
 literal|"Please rebase the change locally "
 operator|+

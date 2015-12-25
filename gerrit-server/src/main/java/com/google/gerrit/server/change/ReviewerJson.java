@@ -876,11 +876,6 @@ argument_list|(
 name|cd
 argument_list|)
 operator|.
-name|setPatchSet
-argument_list|(
-name|ps
-argument_list|)
-operator|.
 name|setFastEvalLabels
 argument_list|(
 literal|true

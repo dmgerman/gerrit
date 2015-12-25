@@ -332,22 +332,6 @@ name|server
 operator|.
 name|git
 operator|.
-name|CommitMergeStatus
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|ProjectConfig
 import|;
 end_import
@@ -600,6 +584,74 @@ name|ProjectConfigValidator
 implements|implements
 name|MergeValidationListener
 block|{
+DECL|field|INVALID_CONFIG
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|INVALID_CONFIG
+init|=
+literal|"Change contains an invalid project configuration."
+decl_stmt|;
+DECL|field|PARENT_NOT_FOUND
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PARENT_NOT_FOUND
+init|=
+literal|"Change contains an invalid project configuration:\n"
+operator|+
+literal|"Parent project does not exist."
+decl_stmt|;
+DECL|field|PLUGIN_VALUE_NOT_EDITABLE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PLUGIN_VALUE_NOT_EDITABLE
+init|=
+literal|"Change contains an invalid project configuration:\n"
+operator|+
+literal|"One of the plugin configuration parameters is not editable."
+decl_stmt|;
+DECL|field|PLUGIN_VALUE_NOT_PERMITTED
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PLUGIN_VALUE_NOT_PERMITTED
+init|=
+literal|"Change contains an invalid project configuration:\n"
+operator|+
+literal|"One of the plugin configuration parameters has a value that is not"
+operator|+
+literal|" permitted."
+decl_stmt|;
+DECL|field|ROOT_NO_PARENT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ROOT_NO_PARENT
+init|=
+literal|"Change contains an invalid project configuration:\n"
+operator|+
+literal|"The root project cannot have a parent."
+decl_stmt|;
+DECL|field|SET_BY_ADMIN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SET_BY_ADMIN
+init|=
+literal|"Change contains a project configuration that changes the parent"
+operator|+
+literal|" project.\n"
+operator|+
+literal|"The change must be submitted by a Gerrit administrator."
+decl_stmt|;
 DECL|field|allProjectsName
 specifier|private
 specifier|final
@@ -847,9 +899,7 @@ throw|throw
 operator|new
 name|MergeValidationException
 argument_list|(
-name|CommitMergeStatus
-operator|.
-name|INVALID_PROJECT_CONFIGURATION_ROOT_PROJECT_CANNOT_HAVE_PARENT
+name|ROOT_NO_PARENT
 argument_list|)
 throw|;
 block|}
@@ -895,9 +945,7 @@ throw|throw
 operator|new
 name|MergeValidationException
 argument_list|(
-name|CommitMergeStatus
-operator|.
-name|SETTING_PARENT_PROJECT_ONLY_ALLOWED_BY_ADMIN
+name|SET_BY_ADMIN
 argument_list|)
 throw|;
 block|}
@@ -931,9 +979,7 @@ throw|throw
 operator|new
 name|MergeValidationException
 argument_list|(
-name|CommitMergeStatus
-operator|.
-name|SETTING_PARENT_PROJECT_ONLY_ALLOWED_BY_ADMIN
+name|SET_BY_ADMIN
 argument_list|)
 throw|;
 block|}
@@ -953,9 +999,7 @@ throw|throw
 operator|new
 name|MergeValidationException
 argument_list|(
-name|CommitMergeStatus
-operator|.
-name|INVALID_PROJECT_CONFIGURATION_PARENT_PROJECT_NOT_FOUND
+name|PARENT_NOT_FOUND
 argument_list|)
 throw|;
 block|}
@@ -1066,9 +1110,7 @@ throw|throw
 operator|new
 name|MergeValidationException
 argument_list|(
-name|CommitMergeStatus
-operator|.
-name|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_EDITABLE
+name|PLUGIN_VALUE_NOT_EDITABLE
 argument_list|)
 throw|;
 block|}
@@ -1108,9 +1150,7 @@ throw|throw
 operator|new
 name|MergeValidationException
 argument_list|(
-name|CommitMergeStatus
-operator|.
-name|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_PERMITTED
+name|PLUGIN_VALUE_NOT_PERMITTED
 argument_list|)
 throw|;
 block|}
@@ -1128,9 +1168,7 @@ throw|throw
 operator|new
 name|MergeValidationException
 argument_list|(
-name|CommitMergeStatus
-operator|.
-name|INVALID_PROJECT_CONFIGURATION
+name|INVALID_CONFIG
 argument_list|)
 throw|;
 block|}

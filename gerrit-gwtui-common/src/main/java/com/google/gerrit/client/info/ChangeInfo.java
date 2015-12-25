@@ -154,6 +154,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|SubmitType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -991,6 +1007,48 @@ name|boolean
 name|_more_changes
 parameter_list|()
 comment|/*-{ return this._more_changes ? true : false; }-*/
+function_decl|;
+DECL|method|submitType ()
+specifier|public
+specifier|final
+name|SubmitType
+name|submitType
+parameter_list|()
+block|{
+name|String
+name|submitType
+init|=
+name|_submitType
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|submitType
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|SubmitType
+operator|.
+name|valueOf
+argument_list|(
+name|submitType
+argument_list|)
+return|;
+block|}
+DECL|method|_submitType ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|_submitType
+parameter_list|()
+comment|/*-{ return this.submit_type; }-*/
 function_decl|;
 DECL|method|submittable ()
 specifier|public

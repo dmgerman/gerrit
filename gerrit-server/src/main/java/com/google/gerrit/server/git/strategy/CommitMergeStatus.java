@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.git.strategy
 package|package
 name|com
 operator|.
@@ -63,8 +63,14 @@ operator|.
 name|server
 operator|.
 name|git
+operator|.
+name|strategy
 package|;
 end_package
+
+begin_comment
+comment|/**  * Status codes set on {@link com.google.gerrit.server.git.CodeReviewCommit}s by  * {@link SubmitStrategy} implementations.  */
+end_comment
 
 begin_enum
 DECL|enum|CommitMergeStatus
@@ -72,35 +78,30 @@ specifier|public
 enum|enum
 name|CommitMergeStatus
 block|{
-comment|/** */
 DECL|enumConstant|CLEAN_MERGE
 name|CLEAN_MERGE
 argument_list|(
 literal|"Change has been successfully merged"
 argument_list|)
 block|,
-comment|/** */
 DECL|enumConstant|CLEAN_PICK
 name|CLEAN_PICK
 argument_list|(
 literal|"Change has been successfully cherry-picked"
 argument_list|)
 block|,
-comment|/** */
 DECL|enumConstant|CLEAN_REBASE
 name|CLEAN_REBASE
 argument_list|(
 literal|"Change has been successfully rebased"
 argument_list|)
 block|,
-comment|/** */
 DECL|enumConstant|ALREADY_MERGED
 name|ALREADY_MERGED
 argument_list|(
 literal|""
 argument_list|)
 block|,
-comment|/** */
 DECL|enumConstant|PATH_CONFLICT
 name|PATH_CONFLICT
 argument_list|(
@@ -111,7 +112,6 @@ operator|+
 literal|"Please rebase the change locally and upload the rebased commit for review."
 argument_list|)
 block|,
-comment|/** */
 DECL|enumConstant|REBASE_MERGE_CONFLICT
 name|REBASE_MERGE_CONFLICT
 argument_list|(
@@ -122,28 +122,12 @@ operator|+
 literal|"Please rebase the change locally and upload the rebased commit for review."
 argument_list|)
 block|,
-comment|/** */
 DECL|enumConstant|MISSING_DEPENDENCY
 name|MISSING_DEPENDENCY
 argument_list|(
 literal|""
 argument_list|)
 block|,
-comment|/** */
-DECL|enumConstant|NO_PATCH_SET
-name|NO_PATCH_SET
-argument_list|(
-literal|""
-argument_list|)
-block|,
-comment|/** */
-DECL|enumConstant|REVISION_GONE
-name|REVISION_GONE
-argument_list|(
-literal|""
-argument_list|)
-block|,
-comment|/** */
 DECL|enumConstant|MANUAL_RECURSIVE_MERGE
 name|MANUAL_RECURSIVE_MERGE
 argument_list|(
@@ -154,7 +138,6 @@ operator|+
 literal|"Please merge (or rebase) the change locally and upload the resolution for review."
 argument_list|)
 block|,
-comment|/** */
 DECL|enumConstant|CANNOT_CHERRY_PICK_ROOT
 name|CANNOT_CHERRY_PICK_ROOT
 argument_list|(
@@ -165,7 +148,6 @@ operator|+
 literal|"Please merge the change locally and upload the merge commit for review."
 argument_list|)
 block|,
-comment|/** */
 DECL|enumConstant|CANNOT_REBASE_ROOT
 name|CANNOT_REBASE_ROOT
 argument_list|(
@@ -176,7 +158,6 @@ operator|+
 literal|"Please merge the change locally and upload the merge commit for review."
 argument_list|)
 block|,
-comment|/** */
 DECL|enumConstant|NOT_FAST_FORWARD
 name|NOT_FAST_FORWARD
 argument_list|(
@@ -186,58 +167,6 @@ literal|"\n"
 operator|+
 literal|"Please rebase the change locally and upload again for review."
 argument_list|)
-block|,
-comment|/** */
-DECL|enumConstant|INVALID_PROJECT_CONFIGURATION
-name|INVALID_PROJECT_CONFIGURATION
-argument_list|(
-literal|"Change contains an invalid project configuration."
-argument_list|)
-block|,
-comment|/** */
-DECL|enumConstant|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_PERMITTED
-name|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_PERMITTED
-argument_list|(
-literal|"Change contains an invalid project configuration:\n"
-operator|+
-literal|"One of the plugin configuration parameters has a value that is not permitted."
-argument_list|)
-block|,
-comment|/** */
-DECL|enumConstant|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_EDITABLE
-name|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_EDITABLE
-argument_list|(
-literal|"Change contains an invalid project configuration:\n"
-operator|+
-literal|"One of the plugin configuration parameters is not editable."
-argument_list|)
-block|,
-comment|/** */
-DECL|enumConstant|INVALID_PROJECT_CONFIGURATION_PARENT_PROJECT_NOT_FOUND
-name|INVALID_PROJECT_CONFIGURATION_PARENT_PROJECT_NOT_FOUND
-argument_list|(
-literal|"Change contains an invalid project configuration:\n"
-operator|+
-literal|"Parent project does not exist."
-argument_list|)
-block|,
-comment|/** */
-DECL|enumConstant|INVALID_PROJECT_CONFIGURATION_ROOT_PROJECT_CANNOT_HAVE_PARENT
-name|INVALID_PROJECT_CONFIGURATION_ROOT_PROJECT_CANNOT_HAVE_PARENT
-argument_list|(
-literal|"Change contains an invalid project configuration:\n"
-operator|+
-literal|"The root project cannot have a parent."
-argument_list|)
-block|,
-comment|/** */
-DECL|enumConstant|SETTING_PARENT_PROJECT_ONLY_ALLOWED_BY_ADMIN
-name|SETTING_PARENT_PROJECT_ONLY_ALLOWED_BY_ADMIN
-argument_list|(
-literal|"Change contains a project configuration that changes the parent project.\n"
-operator|+
-literal|"The change must be submitted by a Gerrit administrator."
-argument_list|)
 block|;
 DECL|field|message
 specifier|private
@@ -245,6 +174,7 @@ name|String
 name|message
 decl_stmt|;
 DECL|method|CommitMergeStatus (String message)
+specifier|private
 name|CommitMergeStatus
 parameter_list|(
 name|String

@@ -90,20 +90,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|acceptance
@@ -744,21 +730,21 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"Cannot merge "
+literal|"Failed to submit 1 change due to the following problems:\n"
+operator|+
+literal|"Change "
 operator|+
 name|change2
 operator|.
-name|getCommitId
+name|getChange
 argument_list|()
 operator|.
-name|name
+name|getId
 argument_list|()
 operator|+
-literal|"\n"
+literal|": Change could not be "
 operator|+
-literal|"Change could not be merged due to a path conflict.\n\n"
-operator|+
-literal|"Please rebase the change locally and "
+literal|"merged due to a path conflict. Please rebase the change locally and "
 operator|+
 literal|"upload the rebased commit for review."
 argument_list|)
@@ -1032,21 +1018,21 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"Cannot merge "
+literal|"Failed to submit 1 change due to the following problems:\n"
+operator|+
+literal|"Change "
 operator|+
 name|change3
 operator|.
-name|getCommitId
+name|getChange
 argument_list|()
 operator|.
-name|name
+name|getId
 argument_list|()
 operator|+
-literal|"\n"
+literal|": Change could not be "
 operator|+
-literal|"Change could not be merged due to a path conflict.\n\n"
-operator|+
-literal|"Please rebase the change locally and "
+literal|"merged due to a path conflict. Please rebase the change locally and "
 operator|+
 literal|"upload the rebased commit for review."
 argument_list|)
@@ -1564,21 +1550,21 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"Cannot merge "
+literal|"Failed to submit 1 change due to the following problems:\n"
+operator|+
+literal|"Change "
 operator|+
 name|change3
 operator|.
-name|getCommitId
+name|getChange
 argument_list|()
 operator|.
-name|name
+name|getId
 argument_list|()
 operator|+
-literal|"\n"
+literal|": Change could not be "
 operator|+
-literal|"Change could not be merged due to a path conflict.\n\n"
-operator|+
-literal|"Please rebase the change locally and "
+literal|"merged due to a path conflict. Please rebase the change locally and "
 operator|+
 literal|"upload the rebased commit for review."
 argument_list|)
@@ -1610,28 +1596,6 @@ argument_list|(
 name|ChangeStatus
 operator|.
 name|NEW
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|Iterables
-operator|.
-name|getLast
-argument_list|(
-name|info3
-operator|.
-name|messages
-argument_list|)
-operator|.
-name|message
-operator|.
-name|toLowerCase
-argument_list|()
-argument_list|)
-operator|.
-name|contains
-argument_list|(
-literal|"path conflict"
 argument_list|)
 expr_stmt|;
 comment|// Tip has not changed.

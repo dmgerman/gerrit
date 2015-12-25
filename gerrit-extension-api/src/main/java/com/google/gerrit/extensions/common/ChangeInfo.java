@@ -100,6 +100,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|SubmitType
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -206,6 +222,11 @@ DECL|field|reviewed
 specifier|public
 name|Boolean
 name|reviewed
+decl_stmt|;
+DECL|field|submitType
+specifier|public
+name|SubmitType
+name|submitType
 decl_stmt|;
 DECL|field|mergeable
 specifier|public
