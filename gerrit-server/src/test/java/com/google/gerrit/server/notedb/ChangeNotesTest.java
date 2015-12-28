@@ -3470,16 +3470,6 @@ init|=
 name|newChange
 argument_list|()
 decl_stmt|;
-name|ChangeUpdate
-name|update
-init|=
-name|newUpdate
-argument_list|(
-name|c
-argument_list|,
-name|changeOwner
-argument_list|)
-decl_stmt|;
 comment|// initially topic is not set
 name|ChangeNotes
 name|notes
@@ -3515,6 +3505,16 @@ name|String
 name|topic
 init|=
 literal|"myTopic"
+decl_stmt|;
+name|ChangeUpdate
+name|update
+init|=
+name|newUpdate
+argument_list|(
+name|c
+argument_list|,
+name|changeOwner
+argument_list|)
 decl_stmt|;
 name|update
 operator|.
@@ -3552,6 +3552,15 @@ name|topic
 argument_list|)
 expr_stmt|;
 comment|// clear topic by setting empty string
+name|update
+operator|=
+name|newUpdate
+argument_list|(
+name|c
+argument_list|,
+name|changeOwner
+argument_list|)
+expr_stmt|;
 name|update
 operator|.
 name|setTopic
@@ -3591,6 +3600,15 @@ operator|=
 literal|"otherTopic"
 expr_stmt|;
 name|update
+operator|=
+name|newUpdate
+argument_list|(
+name|c
+argument_list|,
+name|changeOwner
+argument_list|)
+expr_stmt|;
+name|update
 operator|.
 name|setTopic
 argument_list|(
@@ -3626,6 +3644,15 @@ name|topic
 argument_list|)
 expr_stmt|;
 comment|// clear topic by setting null
+name|update
+operator|=
+name|newUpdate
+argument_list|(
+name|c
+argument_list|,
+name|changeOwner
+argument_list|)
+expr_stmt|;
 name|update
 operator|.
 name|setTopic
