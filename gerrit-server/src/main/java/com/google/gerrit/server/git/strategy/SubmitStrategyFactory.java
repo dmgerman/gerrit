@@ -174,6 +174,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|MergeOp
+operator|.
+name|CommitStatus
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|NoSuchProjectException
@@ -348,7 +366,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller)
+DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, CommitStatus commits)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -384,6 +402,9 @@ name|destBranch
 parameter_list|,
 name|IdentifiedUser
 name|caller
+parameter_list|,
+name|CommitStatus
+name|commits
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -400,6 +421,8 @@ operator|.
 name|create
 argument_list|(
 name|destBranch
+argument_list|,
+name|commits
 argument_list|,
 name|rw
 argument_list|,
