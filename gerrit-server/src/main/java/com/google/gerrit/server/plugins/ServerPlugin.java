@@ -1045,6 +1045,13 @@ operator|new
 name|LifecycleManager
 argument_list|()
 expr_stmt|;
+name|serverManager
+operator|.
+name|add
+argument_list|(
+name|root
+argument_list|)
+expr_stmt|;
 name|AutoRegisterModules
 name|auto
 init|=
