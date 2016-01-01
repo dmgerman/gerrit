@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -92,7 +106,10 @@ name|PatchSetEvent
 block|{
 DECL|field|reviewer
 specifier|public
+name|Supplier
+argument_list|<
 name|AccountAttribute
+argument_list|>
 name|reviewer
 decl_stmt|;
 DECL|method|ReviewerAddedEvent ()

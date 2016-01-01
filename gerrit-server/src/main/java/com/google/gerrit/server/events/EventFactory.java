@@ -796,6 +796,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|SchemaFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -1048,9 +1062,18 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
+DECL|field|schema
+specifier|private
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schema
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchSetInfoFactory psif, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider)
+DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchSetInfoFactory psif, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -1093,6 +1116,12 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
+parameter_list|,
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schema
 parameter_list|)
 block|{
 name|this
@@ -1149,8 +1178,66 @@ name|queryProvider
 operator|=
 name|queryProvider
 expr_stmt|;
+name|this
+operator|.
+name|schema
+operator|=
+name|schema
+expr_stmt|;
 block|}
 comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to    * JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
+DECL|method|asChangeAttribute (Change change)
+specifier|public
+name|ChangeAttribute
+name|asChangeAttribute
+parameter_list|(
+name|Change
+name|change
+parameter_list|)
+block|{
+try|try
+init|(
+name|ReviewDb
+name|db
+init|=
+name|schema
+operator|.
+name|open
+argument_list|()
+init|)
+block|{
+return|return
+name|asChangeAttribute
+argument_list|(
+name|db
+argument_list|,
+name|change
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot open database connection"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return
+operator|new
+name|ChangeAttribute
+argument_list|()
+return|;
+block|}
+block|}
+comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to    * JSON.    *    * @param db Review database    * @param change    * @return object suitable for serialization to JSON    */
 DECL|method|asChangeAttribute (ReviewDb db, Change change)
 specifier|public
 name|ChangeAttribute
@@ -3042,6 +3129,28 @@ block|}
 block|}
 block|}
 comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param patchSet    * @return object suitable for serialization to JSON    */
+DECL|method|asPatchSetAttribute (RevWalk revWalk, PatchSet patchSet)
+specifier|public
+name|PatchSetAttribute
+name|asPatchSetAttribute
+parameter_list|(
+name|RevWalk
+name|revWalk
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|)
+block|{
+return|return
+name|asPatchSetAttribute
+argument_list|(
+name|revWalk
+argument_list|,
+name|patchSet
+argument_list|)
+return|;
+block|}
+comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param db Review database    * @param patchSet    * @return object suitable for serialization to JSON    */
 DECL|method|asPatchSetAttribute (ReviewDb db, RevWalk revWalk, PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute

@@ -1042,6 +1042,9 @@ name|changeMergedEvent
 operator|.
 name|change
 operator|.
+name|get
+argument_list|()
+operator|.
 name|number
 argument_list|,
 name|changeMergedEvent

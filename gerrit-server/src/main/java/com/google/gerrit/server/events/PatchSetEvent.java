@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Supplier
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -92,7 +106,10 @@ name|ChangeEvent
 block|{
 DECL|field|patchSet
 specifier|public
+name|Supplier
+argument_list|<
 name|PatchSetAttribute
+argument_list|>
 name|patchSet
 decl_stmt|;
 DECL|method|PatchSetEvent (String type)
