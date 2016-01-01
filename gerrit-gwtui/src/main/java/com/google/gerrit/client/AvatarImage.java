@@ -611,6 +611,11 @@ name|hasAvatars
 argument_list|()
 condition|)
 block|{
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 comment|// TODO Kill /accounts/*/avatar URL.
