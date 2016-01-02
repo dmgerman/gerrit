@@ -1280,6 +1280,8 @@ parameter_list|)
 throws|throws
 name|MergeException
 block|{
+comment|// Test for merge instead of cherry pick to avoid false negatives
+comment|// on commit chains.
 return|return
 operator|!
 name|args
@@ -1299,7 +1301,7 @@ name|args
 operator|.
 name|mergeUtil
 operator|.
-name|canCherryPick
+name|canMerge
 argument_list|(
 name|args
 operator|.
@@ -1310,10 +1312,6 @@ operator|.
 name|repo
 argument_list|,
 name|mergeTip
-argument_list|,
-name|args
-operator|.
-name|rw
 argument_list|,
 name|toMerge
 argument_list|)
