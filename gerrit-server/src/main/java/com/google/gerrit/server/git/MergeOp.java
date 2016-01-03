@@ -2963,6 +2963,8 @@ name|get
 argument_list|(
 name|branch
 argument_list|)
+argument_list|,
+name|caller
 argument_list|)
 decl_stmt|;
 name|toSubmit
@@ -4040,7 +4042,7 @@ return|return
 name|alreadyAccepted
 return|;
 block|}
-DECL|method|validateChangeList ( Collection<ChangeData> submitted)
+DECL|method|validateChangeList ( Collection<ChangeData> submitted, IdentifiedUser caller)
 specifier|private
 name|ListMultimap
 argument_list|<
@@ -4055,6 +4057,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|submitted
+parameter_list|,
+name|IdentifiedUser
+name|caller
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -4578,6 +4583,8 @@ name|ps
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|caller
 argument_list|)
 expr_stmt|;
 block|}
