@@ -4846,16 +4846,22 @@ name|event
 operator|.
 name|patchSet
 operator|=
-literal|null
+name|patchSetAttributeSupplier
+argument_list|(
+name|change
+argument_list|,
+name|patchSet
+argument_list|)
 expr_stmt|;
-comment|//patchSetAttributeSupplier(change, patchSet, db);
 name|event
 operator|.
 name|reviewer
 operator|=
-literal|null
+name|accountAttributeSupplier
+argument_list|(
+name|account
+argument_list|)
 expr_stmt|;
-comment|//accountAttributeSupplier(account);
 name|fireEvent
 argument_list|(
 name|change
