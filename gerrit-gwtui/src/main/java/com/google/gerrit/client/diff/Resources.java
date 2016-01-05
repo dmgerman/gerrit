@@ -164,6 +164,7 @@ name|Style
 name|scrollbarStyle
 parameter_list|()
 function_decl|;
+comment|/**    * tango icon library (public domain):    * http://tango.freedesktop.org/Tango_Icon_Library    */
 DECL|method|goPrev ()
 annotation|@
 name|Source
