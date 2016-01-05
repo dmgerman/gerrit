@@ -272,6 +272,11 @@ comment|/* final */
 name|LibraryDownloader
 name|db2DriverLicense
 decl_stmt|;
+DECL|field|hanaDriver
+comment|/* final */
+name|LibraryDownloader
+name|hanaDriver
+decl_stmt|;
 DECL|field|mysqlDriver
 comment|/* final */
 name|LibraryDownloader
