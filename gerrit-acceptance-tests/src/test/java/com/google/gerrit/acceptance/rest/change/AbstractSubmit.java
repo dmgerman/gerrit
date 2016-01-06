@@ -2061,7 +2061,7 @@ name|ref
 init|=
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|refName
 argument_list|)
@@ -2755,7 +2755,7 @@ name|parseCommit
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 literal|"refs/heads/"
 operator|+
@@ -2830,7 +2830,7 @@ name|parseCommit
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|name
 argument_list|)

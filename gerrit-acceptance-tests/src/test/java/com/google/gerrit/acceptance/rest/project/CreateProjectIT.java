@@ -2014,7 +2014,7 @@ name|assertThat
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|Constants
 operator|.
@@ -2116,7 +2116,7 @@ name|lookupCommit
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|ref
 argument_list|)

@@ -866,7 +866,7 @@ init|=
 name|repo
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 literal|"HEAD"
 argument_list|)
@@ -976,7 +976,7 @@ init|=
 name|repo
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 literal|"HEAD"
 argument_list|)
@@ -1785,7 +1785,7 @@ name|parseCommit
 argument_list|(
 name|r
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|branch
 argument_list|)
@@ -1892,7 +1892,7 @@ name|parseCommit
 argument_list|(
 name|r
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|branch
 argument_list|)
@@ -2012,7 +2012,7 @@ name|tagRef
 init|=
 name|repo
 operator|.
-name|getRef
+name|findRef
 argument_list|(
 name|tag
 operator|.
@@ -2152,7 +2152,7 @@ name|headCommit
 init|=
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|branch
 argument_list|)

@@ -1991,18 +1991,16 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|setProjectDescription (final Project.NameKey name, final String description)
+DECL|method|setProjectDescription (Project.NameKey name, String description)
 specifier|public
 name|void
 name|setProjectDescription
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|description
 parameter_list|)
@@ -2020,7 +2018,6 @@ name|name
 argument_list|)
 init|)
 block|{
-specifier|final
 name|String
 name|old
 init|=
@@ -2057,7 +2054,6 @@ condition|)
 block|{
 return|return;
 block|}
-specifier|final
 name|LockFile
 name|f
 init|=
@@ -2074,10 +2070,6 @@ argument_list|()
 argument_list|,
 literal|"description"
 argument_list|)
-argument_list|,
-name|FS
-operator|.
-name|DETECTED
 argument_list|)
 decl_stmt|;
 if|if

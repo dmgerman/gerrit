@@ -1222,7 +1222,7 @@ operator|=
 name|repo
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 literal|"HEAD"
 argument_list|)

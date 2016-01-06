@@ -204,7 +204,7 @@ init|=
 name|repo
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|HEAD
 argument_list|)
@@ -357,7 +357,7 @@ init|=
 name|repo
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|HEAD
 argument_list|)

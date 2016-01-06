@@ -1610,7 +1610,7 @@ if|if
 condition|(
 name|pdb
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|subscriber
 operator|.
@@ -1638,7 +1638,7 @@ name|pdb
 argument_list|,
 name|pdb
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|subscriber
 operator|.
@@ -2080,7 +2080,7 @@ name|currentCommitId
 init|=
 name|pdb
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|subscriber
 operator|.

@@ -4510,7 +4510,7 @@ name|assertThat
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|update1
 operator|.
@@ -4551,7 +4551,7 @@ name|assertThat
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|update2
 operator|.
@@ -4728,7 +4728,7 @@ name|assertThat
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|update1
 operator|.
@@ -4744,7 +4744,7 @@ name|assertThat
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|update2
 operator|.

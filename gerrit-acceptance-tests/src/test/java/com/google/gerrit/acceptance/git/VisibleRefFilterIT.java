@@ -842,7 +842,7 @@ name|setNewObjectId
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 literal|"refs/heads/master"
 argument_list|)
@@ -895,7 +895,7 @@ name|setNewObjectId
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 literal|"refs/heads/branch"
 argument_list|)

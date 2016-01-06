@@ -1083,7 +1083,7 @@ operator|.
 name|getRepository
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|REFS_GPG_KEYS
 argument_list|)

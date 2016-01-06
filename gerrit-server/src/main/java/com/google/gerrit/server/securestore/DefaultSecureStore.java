@@ -612,10 +612,6 @@ operator|new
 name|LockFile
 argument_list|(
 name|path
-argument_list|,
-name|FS
-operator|.
-name|DETECTED
 argument_list|)
 decl_stmt|;
 if|if
