@@ -308,18 +308,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -457,10 +445,7 @@ block|{
 DECL|field|serverIdent
 specifier|protected
 specifier|final
-name|Provider
-argument_list|<
 name|PersonIdent
-argument_list|>
 name|serverIdent
 decl_stmt|;
 DECL|field|db
@@ -550,13 +535,10 @@ specifier|final
 name|IdentifiedUser
 name|caller
 decl_stmt|;
-DECL|method|Arguments (Provider<PersonIdent> serverIdent, ReviewDb db, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, ApprovalsUtil approvalsUtil, MergeUtil mergeUtil, IdentifiedUser caller)
+DECL|method|Arguments (PersonIdent serverIdent, ReviewDb db, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, ApprovalsUtil approvalsUtil, MergeUtil mergeUtil, IdentifiedUser caller)
 name|Arguments
 parameter_list|(
-name|Provider
-argument_list|<
 name|PersonIdent
-argument_list|>
 name|serverIdent
 parameter_list|,
 name|ReviewDb

@@ -696,6 +696,9 @@ operator|.
 name|Arguments
 argument_list|(
 name|myIdent
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|db
 argument_list|,

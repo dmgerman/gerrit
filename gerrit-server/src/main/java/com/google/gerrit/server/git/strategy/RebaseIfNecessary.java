@@ -438,20 +438,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -1160,9 +1146,6 @@ argument_list|(
 name|args
 operator|.
 name|serverIdent
-operator|.
-name|get
-argument_list|()
 argument_list|)
 operator|.
 name|setRunHooks
@@ -1613,16 +1596,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|PersonIdent
-name|myIdent
-init|=
-name|args
-operator|.
-name|serverIdent
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 comment|// TODO(dborowitz): Can't use repo from ctx due to canMergeFlag.
 name|CodeReviewCommit
 name|newTip
@@ -1633,9 +1606,13 @@ name|mergeUtil
 operator|.
 name|mergeOneCommit
 argument_list|(
-name|myIdent
+name|args
+operator|.
+name|serverIdent
 argument_list|,
-name|myIdent
+name|args
+operator|.
+name|serverIdent
 argument_list|,
 name|args
 operator|.

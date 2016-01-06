@@ -1079,9 +1079,6 @@ name|args
 operator|.
 name|serverIdent
 operator|.
-name|get
-argument_list|()
-operator|.
 name|getTimeZone
 argument_list|()
 argument_list|)
@@ -1609,9 +1606,6 @@ argument_list|(
 name|args
 operator|.
 name|serverIdent
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|ctx
 operator|.
