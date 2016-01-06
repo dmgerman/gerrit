@@ -4415,6 +4415,11 @@ name|p
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|draftby (Account.Id who)
 specifier|private
 name|Predicate
