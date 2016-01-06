@@ -549,7 +549,7 @@ operator|.
 name|getRepository
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 literal|"HEAD"
 argument_list|)
@@ -1339,7 +1339,7 @@ operator|.
 name|getRepository
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|refName
 argument_list|)
@@ -2318,7 +2318,7 @@ operator|.
 name|getRepository
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|ref
 argument_list|)

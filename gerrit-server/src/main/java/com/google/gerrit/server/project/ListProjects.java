@@ -3288,7 +3288,7 @@ name|ref
 init|=
 name|git
 operator|.
-name|getRef
+name|findRef
 argument_list|(
 name|showBranch
 operator|.

@@ -1148,7 +1148,7 @@ name|i
 argument_list|,
 name|testRepo
 operator|.
-name|getClock
+name|getDate
 argument_list|()
 argument_list|)
 argument_list|)

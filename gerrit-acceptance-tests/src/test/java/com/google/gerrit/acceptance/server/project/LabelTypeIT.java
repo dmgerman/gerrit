@@ -2119,7 +2119,7 @@ name|assertThat
 argument_list|(
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 literal|"refs/heads/master"
 argument_list|)

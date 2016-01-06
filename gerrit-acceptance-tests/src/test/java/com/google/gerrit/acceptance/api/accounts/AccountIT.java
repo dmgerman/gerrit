@@ -963,7 +963,7 @@ name|ref
 init|=
 name|repo
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|REFS_GPG_KEYS
 argument_list|)

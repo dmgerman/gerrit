@@ -1878,7 +1878,7 @@ name|ref
 init|=
 name|db
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|RefNames
 operator|.
