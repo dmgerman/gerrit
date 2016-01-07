@@ -3128,7 +3128,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param patchSet    * @return object suitable for serialization to JSON    */
+comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param revWalk    * @param patchSet    * @return object suitable for serialization to JSON    */
 DECL|method|asPatchSetAttribute (RevWalk revWalk, PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute
@@ -3141,14 +3141,49 @@ name|PatchSet
 name|patchSet
 parameter_list|)
 block|{
+try|try
+init|(
+name|ReviewDb
+name|db
+init|=
+name|schema
+operator|.
+name|open
+argument_list|()
+init|)
+block|{
 return|return
 name|asPatchSetAttribute
 argument_list|(
+name|db
+argument_list|,
 name|revWalk
 argument_list|,
 name|patchSet
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot open database connection"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return
+operator|new
+name|PatchSetAttribute
+argument_list|()
+return|;
+block|}
 block|}
 comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param db Review database    * @param patchSet    * @return object suitable for serialization to JSON    */
 DECL|method|asPatchSetAttribute (ReviewDb db, RevWalk revWalk, PatchSet patchSet)
