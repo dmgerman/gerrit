@@ -292,6 +292,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|GetAvatar
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|StarredChanges
 import|;
 end_import
@@ -429,6 +445,12 @@ operator|.
 name|Factory
 name|accountLoaderFactory
 decl_stmt|;
+DECL|field|getAvatar
+specifier|private
+specifier|final
+name|GetAvatar
+name|getAvatar
+decl_stmt|;
 DECL|field|starredChangesCreate
 specifier|private
 specifier|final
@@ -461,7 +483,7 @@ name|gpgApiAdapter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountApiImpl (AccountLoader.Factory ailf, ChangesCollection changes, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, CreateEmail.Factory createEmailFactory, GpgApiAdapter gpgApiAdapter, @Assisted AccountResource account)
+DECL|method|AccountApiImpl (AccountLoader.Factory ailf, ChangesCollection changes, GetAvatar getAvatar, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, CreateEmail.Factory createEmailFactory, GpgApiAdapter gpgApiAdapter, @Assisted AccountResource account)
 name|AccountApiImpl
 parameter_list|(
 name|AccountLoader
@@ -471,6 +493,9 @@ name|ailf
 parameter_list|,
 name|ChangesCollection
 name|changes
+parameter_list|,
+name|GetAvatar
+name|getAvatar
 parameter_list|,
 name|StarredChanges
 operator|.
@@ -513,6 +538,12 @@ operator|.
 name|changes
 operator|=
 name|changes
+expr_stmt|;
+name|this
+operator|.
+name|getAvatar
+operator|=
+name|getAvatar
 expr_stmt|;
 name|this
 operator|.
@@ -612,6 +643,28 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getAvatarUrl ()
+specifier|public
+name|String
+name|getAvatarUrl
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+return|return
+name|getAvatar
+operator|.
+name|apply
+argument_list|(
+name|account
+argument_list|)
+operator|.
+name|location
+argument_list|()
+return|;
 block|}
 annotation|@
 name|Override

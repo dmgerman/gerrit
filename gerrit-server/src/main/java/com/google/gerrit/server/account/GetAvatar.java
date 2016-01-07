@@ -214,6 +214,7 @@ end_import
 
 begin_class
 DECL|class|GetAvatar
+specifier|public
 class|class
 name|GetAvatar
 implements|implements

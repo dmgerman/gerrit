@@ -165,6 +165,13 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|getAvatarUrl ()
+name|String
+name|getAvatarUrl
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|starChange (String id)
 name|void
 name|starChange
@@ -255,6 +262,22 @@ DECL|method|get ()
 specifier|public
 name|AccountInfo
 name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getAvatarUrl ()
+specifier|public
+name|String
+name|getAvatarUrl
 parameter_list|()
 throws|throws
 name|RestApiException
