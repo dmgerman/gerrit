@@ -490,9 +490,9 @@ argument_list|)
 expr_stmt|;
 name|assertPersonEquals
 argument_list|(
-name|serverIdent
+name|admin
 operator|.
-name|get
+name|getIdent
 argument_list|()
 argument_list|,
 name|head
