@@ -126,6 +126,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|CodeReviewCommit
@@ -174,8 +188,8 @@ specifier|public
 interface|interface
 name|MergeValidationListener
 block|{
-comment|/**    * Validate a commit before it is merged.    *    * @param repo the repository    * @param commit commit details    * @param destProject the destination project    * @param destBranch the destination branch    * @param patchSetId the patch set ID    * @throws MergeValidationException if the commit fails to validate    */
-DECL|method|onPreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId)
+comment|/**    * Validate a commit before it is merged.    *    * @param repo the repository    * @param commit commit details    * @param destProject the destination project    * @param destBranch the destination branch    * @param patchSetId the patch set ID    * @param caller the user who initiated the merge request    * @throws MergeValidationException if the commit fails to validate    */
+DECL|method|onPreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 name|void
 name|onPreMerge
 parameter_list|(
@@ -197,6 +211,9 @@ name|PatchSet
 operator|.
 name|Id
 name|patchSetId
+parameter_list|,
+name|IdentifiedUser
+name|caller
 parameter_list|)
 throws|throws
 name|MergeValidationException

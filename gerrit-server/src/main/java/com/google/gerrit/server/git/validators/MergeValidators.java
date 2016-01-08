@@ -492,7 +492,7 @@ operator|=
 name|projectConfigValidatorFactory
 expr_stmt|;
 block|}
-DECL|method|validatePreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId)
+DECL|method|validatePreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|validatePreMerge
@@ -515,6 +515,9 @@ name|PatchSet
 operator|.
 name|Id
 name|patchSetId
+parameter_list|,
+name|IdentifiedUser
+name|caller
 parameter_list|)
 throws|throws
 name|MergeValidationException
@@ -572,6 +575,8 @@ argument_list|,
 name|destBranch
 argument_list|,
 name|patchSetId
+argument_list|,
+name|caller
 argument_list|)
 expr_stmt|;
 block|}
@@ -773,7 +778,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge (final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final Branch.NameKey destBranch, final PatchSet.Id patchSetId)
+DECL|method|onPreMerge (final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final Branch.NameKey destBranch, final PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -801,6 +806,9 @@ name|PatchSet
 operator|.
 name|Id
 name|patchSetId
+parameter_list|,
+name|IdentifiedUser
+name|caller
 parameter_list|)
 throws|throws
 name|MergeValidationException
@@ -1213,7 +1221,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId)
+DECL|method|onPreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1236,6 +1244,9 @@ name|PatchSet
 operator|.
 name|Id
 name|patchSetId
+parameter_list|,
+name|IdentifiedUser
+name|caller
 parameter_list|)
 throws|throws
 name|MergeValidationException
@@ -1261,6 +1272,8 @@ argument_list|,
 name|destBranch
 argument_list|,
 name|patchSetId
+argument_list|,
+name|caller
 argument_list|)
 expr_stmt|;
 block|}
