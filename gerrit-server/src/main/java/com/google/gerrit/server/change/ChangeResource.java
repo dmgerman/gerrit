@@ -332,6 +332,16 @@ name|RestResource
 implements|,
 name|HasETag
 block|{
+comment|/**    * JSON format version number for ETag computations.    *<p>    * Should be bumped on any JSON format change (new fields, etc.) so that    * otherwise unmodified changes get new ETags.    */
+DECL|field|JSON_FORMAT_VERSION
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|JSON_FORMAT_VERSION
+init|=
+literal|1
+decl_stmt|;
 DECL|field|CHANGE_KIND
 specifier|public
 specifier|static
@@ -496,6 +506,11 @@ name|user
 parameter_list|)
 block|{
 name|h
+operator|.
+name|putInt
+argument_list|(
+name|JSON_FORMAT_VERSION
+argument_list|)
 operator|.
 name|putLong
 argument_list|(
