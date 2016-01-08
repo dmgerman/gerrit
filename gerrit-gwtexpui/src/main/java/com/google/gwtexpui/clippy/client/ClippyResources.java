@@ -197,7 +197,7 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"clipboard-16.png"
+literal|"page_white_copy.png"
 argument_list|)
 DECL|method|clipboard ()
 name|ImageResource
