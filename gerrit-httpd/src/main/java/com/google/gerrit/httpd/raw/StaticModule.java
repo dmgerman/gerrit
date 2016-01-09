@@ -1381,38 +1381,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|RebuildBowerComponentsFilter
-name|rebuildFilter
-init|=
-operator|new
-name|RebuildBowerComponentsFilter
-argument_list|(
-name|buckOut
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|String
-name|p
-range|:
-name|POLYGERRIT_INDEX_PATHS
-control|)
-block|{
-comment|// Rebuilding bower_components once per load on the index request,
-comment|// is sufficient, since it will finish building before attempting to
-comment|// access any bower_components resources. Plus it saves contention and
-comment|// extraneous buck builds.
-name|filter
-argument_list|(
-name|p
-argument_list|)
-operator|.
-name|through
-argument_list|(
-name|rebuildFilter
-argument_list|)
-expr_stmt|;
-block|}
 name|serve
 argument_list|(
 literal|"/bower_components/*"
@@ -1590,6 +1558,8 @@ name|Resource
 argument_list|>
 name|cache
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 return|return
 operator|new
