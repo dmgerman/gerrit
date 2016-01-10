@@ -576,6 +576,13 @@ argument_list|(
 literal|"Create follow-up change"
 argument_list|)
 expr_stmt|;
+name|descr
+operator|.
+name|setLabel
+argument_list|(
+literal|"Follow-Up"
+argument_list|)
+expr_stmt|;
 name|out
 operator|.
 name|put
