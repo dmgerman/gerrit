@@ -143,9 +143,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|DeveloperGwtUiServlet
+DECL|class|DirectoryGwtUiServlet
 class|class
-name|DeveloperGwtUiServlet
+name|DirectoryGwtUiServlet
 extends|extends
 name|ResourceServlet
 block|{
@@ -181,8 +181,8 @@ specifier|final
 name|Path
 name|ui
 decl_stmt|;
-DECL|method|DeveloperGwtUiServlet (Cache<Path, Resource> cache, Path unpackedWar)
-name|DeveloperGwtUiServlet
+DECL|method|DirectoryGwtUiServlet (Cache<Path, Resource> cache, Path unpackedWar, boolean dev)
+name|DirectoryGwtUiServlet
 parameter_list|(
 name|Cache
 argument_list|<
@@ -194,6 +194,9 @@ name|cache
 parameter_list|,
 name|Path
 name|unpackedWar
+parameter_list|,
+name|boolean
+name|dev
 parameter_list|)
 throws|throws
 name|IOException
@@ -214,6 +217,17 @@ argument_list|(
 literal|"gerrit_ui"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|Files
+operator|.
+name|exists
+argument_list|(
+name|ui
+argument_list|)
+condition|)
+block|{
 name|Files
 operator|.
 name|createDirectory
@@ -221,6 +235,12 @@ argument_list|(
 name|ui
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|dev
+condition|)
+block|{
 name|ui
 operator|.
 name|toFile
@@ -229,6 +249,7 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
