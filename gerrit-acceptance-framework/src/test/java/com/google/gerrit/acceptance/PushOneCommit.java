@@ -1373,6 +1373,18 @@ operator|=
 name|force
 expr_stmt|;
 block|}
+DECL|method|noParents ()
+specifier|public
+name|void
+name|noParents
+parameter_list|()
+block|{
+name|commitBuilder
+operator|.
+name|noParents
+argument_list|()
+expr_stmt|;
+block|}
 DECL|class|Result
 specifier|public
 class|class
