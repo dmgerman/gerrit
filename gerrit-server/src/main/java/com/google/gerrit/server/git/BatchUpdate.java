@@ -761,7 +761,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getBatchRefUpdate ()
-specifier|public
+specifier|private
 name|BatchRefUpdate
 name|getBatchRefUpdate
 parameter_list|()
