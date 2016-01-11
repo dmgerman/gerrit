@@ -171,6 +171,19 @@ name|waitForShutdown
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|manualShutdown ()
+specifier|public
+specifier|static
+name|void
+name|manualShutdown
+parameter_list|()
+block|{
+name|cb
+operator|.
+name|manualShutdown
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|RuntimeShutdown ()
 specifier|private
 name|RuntimeShutdown
@@ -385,6 +398,25 @@ name|notifyAll
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|manualShutdown ()
+name|void
+name|manualShutdown
+parameter_list|()
+block|{
+name|Runtime
+operator|.
+name|getRuntime
+argument_list|()
+operator|.
+name|removeShutdownHook
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|run
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|waitForShutdown ()
 name|void
