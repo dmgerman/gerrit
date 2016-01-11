@@ -1767,6 +1767,17 @@ name|getTopic
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|/* TODO: fixStatus is used here because the tests      * (byStatusClosed() in AbstractQueryChangesTest)      * insert changes that are already merged,      * and setStatus may not be used to set the Status to merged      *      * is it possible to make the tests use the merge code path,      * instead of setting the status directly?      */
+name|update
+operator|.
+name|fixStatus
+argument_list|(
+name|change
+operator|.
+name|getStatus
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|LabelTypes
 name|labelTypes
 init|=
