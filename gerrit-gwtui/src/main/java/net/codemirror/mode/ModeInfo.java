@@ -526,6 +526,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|swift
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|velocity
 argument_list|()
 block|,
