@@ -4219,6 +4219,13 @@ name|getPatchsetId
 argument_list|()
 operator|!=
 literal|null
+operator|&&
+name|c
+operator|.
+name|getStatusCode
+argument_list|()
+operator|==
+literal|null
 condition|)
 block|{
 name|c
