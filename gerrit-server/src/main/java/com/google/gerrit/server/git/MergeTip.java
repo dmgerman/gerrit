@@ -170,6 +170,11 @@ specifier|public
 class|class
 name|MergeTip
 block|{
+DECL|field|initialTip
+specifier|private
+name|CodeReviewCommit
+name|initialTip
+decl_stmt|;
 DECL|field|branchTip
 specifier|private
 name|CodeReviewCommit
@@ -185,15 +190,15 @@ name|ObjectId
 argument_list|>
 name|mergeResults
 decl_stmt|;
-comment|/**    * @param initial Tip before the merge operation; may be null, indicating an    *     unborn branch.    * @param toMerge List of CodeReview commits to be merged in merge operation;    *     may not be null or empty.    */
-DECL|method|MergeTip (@ullable CodeReviewCommit initial, Collection<CodeReviewCommit> toMerge)
+comment|/**    * @param initialTip tip before the merge operation; may be null, indicating    *     an unborn branch.    * @param toMerge list of commits to be merged in merge operation; may not be    *     null or empty.    */
+DECL|method|MergeTip (@ullable CodeReviewCommit initialTip, Collection<CodeReviewCommit> toMerge)
 specifier|public
 name|MergeTip
 parameter_list|(
 annotation|@
 name|Nullable
 name|CodeReviewCommit
-name|initial
+name|initialTip
 parameter_list|,
 name|Collection
 argument_list|<
@@ -222,18 +227,24 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|initialTip
+operator|=
+name|initialTip
+expr_stmt|;
+name|this
+operator|.
+name|branchTip
+operator|=
+name|initialTip
+expr_stmt|;
+name|this
+operator|.
 name|mergeResults
 operator|=
 name|Maps
 operator|.
 name|newHashMap
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|branchTip
-operator|=
-name|initial
 expr_stmt|;
 comment|// Assume fast-forward merge until opposite is proven.
 for|for
@@ -260,6 +271,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**    * @return the initial tip of the branch before the merge operation started;    *     may be null, indicating a previously unborn branch.    */
+DECL|method|getInitialTip ()
+specifier|public
+name|CodeReviewCommit
+name|getInitialTip
+parameter_list|()
+block|{
+return|return
+name|initialTip
+return|;
 block|}
 comment|/**    * Moves this MergeTip to newTip and appends mergeResult.    *    * @param newTip The new tip; may not be null.    * @param mergedFrom The result of the merge of {@code newTip}.    */
 DECL|method|moveTipTo (CodeReviewCommit newTip, ObjectId mergedFrom)
