@@ -2273,6 +2273,11 @@ specifier|private
 name|String
 name|submissionId
 decl_stmt|;
+DECL|field|caller
+specifier|private
+name|IdentifiedUser
+name|caller
+decl_stmt|;
 DECL|field|db
 specifier|private
 name|ReviewDb
@@ -3325,6 +3330,12 @@ name|OrmException
 throws|,
 name|ResourceConflictException
 block|{
+name|this
+operator|.
+name|caller
+operator|=
+name|caller
+expr_stmt|;
 name|updateSubmissionId
 argument_list|(
 name|change
@@ -3396,8 +3407,6 @@ block|{
 name|integrateIntoHistory
 argument_list|(
 name|cs
-argument_list|,
-name|caller
 argument_list|)
 expr_stmt|;
 block|}
@@ -3616,16 +3625,13 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-DECL|method|integrateIntoHistory (ChangeSet cs, IdentifiedUser caller)
+DECL|method|integrateIntoHistory (ChangeSet cs)
 specifier|private
 name|void
 name|integrateIntoHistory
 parameter_list|(
 name|ChangeSet
 name|cs
-parameter_list|,
-name|IdentifiedUser
-name|caller
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -3735,8 +3741,6 @@ name|get
 argument_list|(
 name|branch
 argument_list|)
-argument_list|,
-name|caller
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3808,8 +3812,6 @@ argument_list|,
 name|ob
 operator|.
 name|oldTip
-argument_list|,
-name|caller
 argument_list|)
 decl_stmt|;
 name|ob
@@ -3953,8 +3955,6 @@ argument_list|(
 name|or
 argument_list|,
 name|branch
-argument_list|,
-name|caller
 argument_list|)
 decl_stmt|;
 name|BranchBatch
@@ -3975,8 +3975,6 @@ name|submitting
 operator|.
 name|changes
 argument_list|()
-argument_list|,
-name|caller
 argument_list|)
 expr_stmt|;
 name|updateSubmoduleSubscriptions
@@ -4218,7 +4216,7 @@ name|toMerge
 argument_list|)
 return|;
 block|}
-DECL|method|createStrategy (OpenRepo or, Branch.NameKey destBranch, SubmitType submitType, CodeReviewCommit branchTip, IdentifiedUser caller)
+DECL|method|createStrategy (OpenRepo or, Branch.NameKey destBranch, SubmitType submitType, CodeReviewCommit branchTip)
 specifier|private
 name|SubmitStrategy
 name|createStrategy
@@ -4236,9 +4234,6 @@ name|submitType
 parameter_list|,
 name|CodeReviewCommit
 name|branchTip
-parameter_list|,
-name|IdentifiedUser
-name|caller
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -4437,7 +4432,7 @@ name|changes
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|validateChangeList (OpenRepo or, Collection<ChangeData> submitted, IdentifiedUser caller)
+DECL|method|validateChangeList (OpenRepo or, Collection<ChangeData> submitted)
 specifier|private
 name|BranchBatch
 name|validateChangeList
@@ -4450,9 +4445,6 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|submitted
-parameter_list|,
-name|IdentifiedUser
-name|caller
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -5244,7 +5236,7 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|updateBranch (OpenRepo or, Branch.NameKey destBranch, IdentifiedUser caller)
+DECL|method|updateBranch (OpenRepo or, Branch.NameKey destBranch)
 specifier|private
 name|boolean
 name|updateBranch
@@ -5256,9 +5248,6 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
-parameter_list|,
-name|IdentifiedUser
-name|caller
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -6105,7 +6094,7 @@ name|cs
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateChangeStatus (OpenBranch ob, List<ChangeData> submitted, IdentifiedUser caller)
+DECL|method|updateChangeStatus (OpenBranch ob, List<ChangeData> submitted)
 specifier|private
 name|void
 name|updateChangeStatus
@@ -6118,9 +6107,6 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|submitted
-parameter_list|,
-name|IdentifiedUser
-name|caller
 parameter_list|)
 throws|throws
 name|ResourceConflictException
@@ -6238,8 +6224,6 @@ expr_stmt|;
 name|setApproval
 argument_list|(
 name|cd
-argument_list|,
-name|caller
 argument_list|)
 expr_stmt|;
 name|ObjectId
@@ -7163,16 +7147,13 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|setApproval (ChangeData cd, IdentifiedUser user)
+DECL|method|setApproval (ChangeData cd)
 specifier|private
 name|void
 name|setApproval
 parameter_list|(
 name|ChangeData
 name|cd
-parameter_list|,
-name|IdentifiedUser
-name|user
 parameter_list|)
 throws|throws
 name|OrmException
@@ -7237,10 +7218,6 @@ argument_list|(
 literal|"Add approval for "
 operator|+
 name|cd
-operator|+
-literal|" from user "
-operator|+
-name|user
 argument_list|)
 expr_stmt|;
 name|ChangeUpdate
@@ -7266,7 +7243,7 @@ name|update
 operator|.
 name|putReviewer
 argument_list|(
-name|user
+name|caller
 operator|.
 name|getAccountId
 argument_list|()
@@ -7349,7 +7326,7 @@ name|control
 argument_list|,
 name|psId
 argument_list|,
-name|user
+name|caller
 argument_list|,
 name|update
 argument_list|,
