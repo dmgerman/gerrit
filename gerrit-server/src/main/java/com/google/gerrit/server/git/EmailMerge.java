@@ -488,6 +488,7 @@ name|submitter
 expr_stmt|;
 block|}
 DECL|method|sendAsync ()
+specifier|public
 name|void
 name|sendAsync
 parameter_list|()
