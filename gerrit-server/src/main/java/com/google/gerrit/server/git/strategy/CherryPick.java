@@ -1144,16 +1144,6 @@ block|{
 comment|// Merge conflict; don't update change.
 return|return;
 block|}
-name|ctx
-operator|.
-name|getUpdate
-argument_list|()
-operator|.
-name|setPatchSetId
-argument_list|(
-name|psId
-argument_list|)
-expr_stmt|;
 name|PatchSet
 name|ps
 init|=
@@ -1324,7 +1314,9 @@ expr_stmt|;
 name|ctx
 operator|.
 name|getUpdate
-argument_list|()
+argument_list|(
+name|psId
+argument_list|)
 operator|.
 name|putApproval
 argument_list|(

@@ -11985,7 +11985,12 @@ block|{
 name|ctx
 operator|.
 name|getUpdate
+argument_list|(
+name|ps
+operator|.
+name|getId
 argument_list|()
+argument_list|)
 operator|.
 name|setTopic
 argument_list|(

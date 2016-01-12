@@ -2815,16 +2815,6 @@ argument_list|(
 name|psId
 argument_list|)
 expr_stmt|;
-name|ctx
-operator|.
-name|getUpdate
-argument_list|()
-operator|.
-name|setPatchSetId
-argument_list|(
-name|psId
-argument_list|)
-expr_stmt|;
 name|boolean
 name|dirty
 init|=
@@ -3545,6 +3535,18 @@ expr_stmt|;
 block|}
 break|break;
 block|}
+name|ChangeUpdate
+name|u
+init|=
+name|ctx
+operator|.
+name|getUpdate
+argument_list|(
+name|psId
+argument_list|)
+decl_stmt|;
+comment|// TODO(dborowitz): Currently doesn't work for PUBLISH_ALL_REVISIONS with
+comment|// notedb.
 name|plcUtil
 operator|.
 name|deleteComments
@@ -3554,10 +3556,7 @@ operator|.
 name|getDb
 argument_list|()
 argument_list|,
-name|ctx
-operator|.
-name|getUpdate
-argument_list|()
+name|u
 argument_list|,
 name|del
 argument_list|)
@@ -3571,10 +3570,7 @@ operator|.
 name|getDb
 argument_list|()
 argument_list|,
-name|ctx
-operator|.
-name|getUpdate
-argument_list|()
+name|u
 argument_list|,
 name|ups
 argument_list|)
@@ -3898,7 +3894,9 @@ init|=
 name|ctx
 operator|.
 name|getUpdate
-argument_list|()
+argument_list|(
+name|psId
+argument_list|)
 decl_stmt|;
 name|LabelTypes
 name|labelTypes
@@ -4872,7 +4870,9 @@ argument_list|,
 name|ctx
 operator|.
 name|getUpdate
-argument_list|()
+argument_list|(
+name|psId
+argument_list|)
 argument_list|,
 name|message
 argument_list|)
