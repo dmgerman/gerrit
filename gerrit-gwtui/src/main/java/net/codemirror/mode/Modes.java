@@ -548,6 +548,18 @@ name|DataResource
 name|smalltalk
 parameter_list|()
 function_decl|;
+DECL|method|swift ()
+annotation|@
+name|Source
+argument_list|(
+literal|"swift.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|swift
+parameter_list|()
+function_decl|;
 DECL|method|soy ()
 annotation|@
 name|Source
