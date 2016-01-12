@@ -1720,6 +1720,18 @@ name|getStatusCode
 argument_list|()
 argument_list|)
 operator|.
+name|named
+argument_list|(
+literal|"Status code ["
+operator|+
+name|r
+operator|.
+name|getEntityContent
+argument_list|()
+operator|+
+literal|"]"
+argument_list|)
+operator|.
 name|isEqualTo
 argument_list|(
 name|expectedStatus
