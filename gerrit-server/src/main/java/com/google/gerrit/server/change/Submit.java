@@ -1500,22 +1500,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|NoSuchChangeException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"Submission failed"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 if|if
 condition|(
 name|change

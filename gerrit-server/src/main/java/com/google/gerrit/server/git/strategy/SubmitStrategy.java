@@ -930,10 +930,20 @@ name|this
 operator|.
 name|project
 operator|=
+name|checkNotNull
+argument_list|(
 name|projectCache
 operator|.
 name|get
 argument_list|(
+name|destBranch
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|)
+argument_list|,
+literal|"project not found: %s"
+argument_list|,
 name|destBranch
 operator|.
 name|getParentKey
