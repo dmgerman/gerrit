@@ -1191,6 +1191,17 @@ argument_list|(
 name|project
 argument_list|)
 init|;
+comment|// This inserter and revwalk *must* be passed to any BatchUpdates
+comment|// created later on, to ensure the cherry-picked commit is flushed
+comment|// before patch sets are updated.
+name|ObjectInserter
+name|oi
+operator|=
+name|git
+operator|.
+name|newObjectInserter
+argument_list|()
+init|;
 name|CodeReviewRevWalk
 name|revWalk
 operator|=
@@ -1198,7 +1209,10 @@ name|CodeReviewCommit
 operator|.
 name|newRevWalk
 argument_list|(
-name|git
+name|oi
+operator|.
+name|newReader
+argument_list|()
 argument_list|)
 init|)
 block|{
@@ -1332,15 +1346,6 @@ name|CodeReviewCommit
 name|cherryPickCommit
 decl_stmt|;
 try|try
-init|(
-name|ObjectInserter
-name|oi
-init|=
-name|git
-operator|.
-name|newObjectInserter
-argument_list|()
-init|)
 block|{
 name|ProjectState
 name|projectState
