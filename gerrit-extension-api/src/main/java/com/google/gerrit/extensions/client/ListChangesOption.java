@@ -175,6 +175,16 @@ argument_list|(
 literal|11
 argument_list|)
 block|,
+comment|/** Not used anymore, kept for backward compatibility */
+DECL|enumConstant|Deprecated
+annotation|@
+name|Deprecated
+DECL|enumConstant|DRAFT_COMMENTS
+name|DRAFT_COMMENTS
+argument_list|(
+literal|12
+argument_list|)
+block|,
 comment|/** Include download commands for the caller. */
 DECL|enumConstant|DOWNLOAD_COMMANDS
 name|DOWNLOAD_COMMANDS

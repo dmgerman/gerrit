@@ -3582,6 +3582,8 @@ name|get
 argument_list|(
 name|branch
 argument_list|)
+argument_list|,
+name|caller
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4388,7 +4390,7 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|validateChangeList (OpenRepo or, Collection<ChangeData> submitted)
+DECL|method|validateChangeList (OpenRepo or, Collection<ChangeData> submitted, IdentifiedUser caller)
 specifier|private
 name|BranchBatch
 name|validateChangeList
@@ -4401,6 +4403,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|submitted
+parameter_list|,
+name|IdentifiedUser
+name|caller
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -4800,6 +4805,8 @@ name|ps
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|caller
 argument_list|)
 expr_stmt|;
 block|}

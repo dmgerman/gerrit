@@ -509,6 +509,17 @@ parameter_list|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+operator|!
+name|Files
+operator|.
+name|isDirectory
+argument_list|(
+name|p
+argument_list|)
+condition|)
+block|{
 name|Files
 operator|.
 name|createDirectories
@@ -516,6 +527,7 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|p
 return|;
