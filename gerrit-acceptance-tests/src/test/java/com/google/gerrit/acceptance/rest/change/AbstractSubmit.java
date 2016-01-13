@@ -2343,6 +2343,14 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|submitter
+argument_list|)
+operator|.
+name|isNotNull
+argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|submitter
 operator|.
 name|isSubmit
 argument_list|()
