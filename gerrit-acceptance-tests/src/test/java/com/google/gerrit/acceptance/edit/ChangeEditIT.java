@@ -968,6 +968,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|field|editUtil
+specifier|private
 name|ChangeEditUtil
 name|editUtil
 decl_stmt|;
