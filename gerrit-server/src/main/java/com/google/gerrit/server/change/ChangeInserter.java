@@ -1664,7 +1664,7 @@ name|ctl
 init|=
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 decl_stmt|;
 name|ChangeUpdate
@@ -1672,7 +1672,7 @@ name|update
 init|=
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 decl_stmt|;
 name|patchSetInfo
@@ -1832,7 +1832,7 @@ name|patchSet
 argument_list|,
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 argument_list|,
 name|approvals

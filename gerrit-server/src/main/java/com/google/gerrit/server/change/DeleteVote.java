@@ -774,7 +774,7 @@ name|ctl
 init|=
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 decl_stmt|;
 name|PatchSet
@@ -912,7 +912,7 @@ argument_list|)
 expr_stmt|;
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 operator|.
 name|setPatchSetId
@@ -922,7 +922,7 @@ argument_list|)
 expr_stmt|;
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 operator|.
 name|removeApprovalFor
@@ -1069,7 +1069,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 argument_list|,
 name|changeMessage

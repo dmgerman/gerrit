@@ -2817,7 +2817,7 @@ argument_list|)
 expr_stmt|;
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 operator|.
 name|setPatchSetId
@@ -3556,7 +3556,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 argument_list|,
 name|del
@@ -3573,7 +3573,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 argument_list|,
 name|ups
@@ -3641,7 +3641,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeNotes
+name|getNotes
 argument_list|()
 argument_list|)
 control|)
@@ -3708,7 +3708,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeNotes
+name|getNotes
 argument_list|()
 argument_list|,
 name|user
@@ -3790,7 +3790,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeNotes
+name|getNotes
 argument_list|()
 argument_list|)
 control|)
@@ -3897,7 +3897,7 @@ name|update
 init|=
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 decl_stmt|;
 name|LabelTypes
@@ -3905,7 +3905,7 @@ name|labelTypes
 init|=
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 operator|.
 name|getLabelTypes
@@ -4426,7 +4426,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 operator|.
 name|getLabelTypes
@@ -4557,7 +4557,7 @@ name|labelTypes
 init|=
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 operator|.
 name|getLabelTypes
@@ -4592,7 +4592,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 argument_list|,
 name|psId
@@ -4871,7 +4871,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 argument_list|,
 name|message

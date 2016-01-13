@@ -1441,7 +1441,7 @@ name|ctl
 init|=
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 decl_stmt|;
 name|change
@@ -1456,7 +1456,7 @@ name|update
 init|=
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 decl_stmt|;
 if|if
@@ -1783,7 +1783,7 @@ name|db
 argument_list|,
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 argument_list|,
 name|changeMessage

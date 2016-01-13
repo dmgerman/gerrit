@@ -11984,7 +11984,7 @@ name|Exception
 block|{
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 operator|.
 name|setTopic

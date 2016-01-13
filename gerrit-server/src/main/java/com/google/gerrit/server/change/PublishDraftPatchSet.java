@@ -1326,7 +1326,7 @@ condition|(
 operator|!
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 operator|.
 name|canPublish
@@ -1426,7 +1426,7 @@ name|update
 init|=
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 decl_stmt|;
 name|wasDraftChange
@@ -1602,7 +1602,7 @@ name|labelTypes
 init|=
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 operator|.
 name|getLabelTypes
@@ -1627,7 +1627,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeNotes
+name|getNotes
 argument_list|()
 argument_list|)
 operator|.
@@ -1720,7 +1720,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 argument_list|,
 name|labelTypes

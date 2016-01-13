@@ -864,20 +864,20 @@ name|when
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getChangeUpdate ()
+DECL|method|getUpdate ()
 specifier|public
 name|ChangeUpdate
-name|getChangeUpdate
+name|getUpdate
 parameter_list|()
 block|{
 return|return
 name|update
 return|;
 block|}
-DECL|method|getChangeNotes ()
+DECL|method|getNotes ()
 specifier|public
 name|ChangeNotes
-name|getChangeNotes
+name|getNotes
 parameter_list|()
 block|{
 return|return
@@ -887,10 +887,10 @@ name|getChangeNotes
 argument_list|()
 return|;
 block|}
-DECL|method|getChangeControl ()
+DECL|method|getControl ()
 specifier|public
 name|ChangeControl
-name|getChangeControl
+name|getControl
 parameter_list|()
 block|{
 return|return
@@ -2576,7 +2576,7 @@ expr_stmt|;
 block|}
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 operator|.
 name|commit

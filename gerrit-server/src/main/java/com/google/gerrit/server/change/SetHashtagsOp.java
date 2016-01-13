@@ -617,7 +617,7 @@ condition|(
 operator|!
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 operator|.
 name|canEditHashtags
@@ -637,7 +637,7 @@ name|update
 init|=
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 decl_stmt|;
 name|ChangeNotes

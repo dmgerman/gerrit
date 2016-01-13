@@ -1146,7 +1146,7 @@ return|return;
 block|}
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 operator|.
 name|setPatchSetId
@@ -1323,7 +1323,7 @@ argument_list|)
 expr_stmt|;
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 operator|.
 name|putApproval

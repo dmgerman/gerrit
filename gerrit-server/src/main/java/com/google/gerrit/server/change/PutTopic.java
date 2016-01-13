@@ -899,7 +899,7 @@ argument_list|)
 expr_stmt|;
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 operator|.
 name|setTopic
@@ -996,7 +996,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeUpdate
+name|getUpdate
 argument_list|()
 argument_list|,
 name|cmsg
