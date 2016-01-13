@@ -2000,6 +2000,23 @@ block|}
 end_function
 
 begin_function
+DECL|method|setCreatedOn (Timestamp ts)
+specifier|public
+name|void
+name|setCreatedOn
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
+block|{
+name|createdOn
+operator|=
+name|ts
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|method|getLastUpdatedOn ()
 specifier|public
 name|Timestamp

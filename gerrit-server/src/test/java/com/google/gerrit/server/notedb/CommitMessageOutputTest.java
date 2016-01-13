@@ -905,7 +905,7 @@ operator|.
 name|getTime
 argument_list|()
 operator|+
-literal|1000
+literal|2000
 argument_list|)
 argument_list|)
 expr_stmt|;

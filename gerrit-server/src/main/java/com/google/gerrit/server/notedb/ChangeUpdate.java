@@ -2567,6 +2567,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|getRevision
+argument_list|()
+operator|!=
+literal|null
+operator|&&
 name|isEmpty
 argument_list|()
 condition|)
