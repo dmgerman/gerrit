@@ -4359,10 +4359,16 @@ operator|+
 literal|": ["
 operator|+
 name|ps2
+operator|.
+name|getId
+argument_list|()
 operator|+
 literal|", "
 operator|+
 name|ps3
+operator|.
+name|getId
+argument_list|()
 operator|+
 literal|"]"
 argument_list|)

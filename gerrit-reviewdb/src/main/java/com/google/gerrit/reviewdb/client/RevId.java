@@ -292,6 +292,27 @@ operator|+
 literal|"}"
 return|;
 block|}
+DECL|method|matches (String str)
+specifier|public
+name|boolean
+name|matches
+parameter_list|(
+name|String
+name|str
+parameter_list|)
+block|{
+return|return
+name|id
+operator|.
+name|startsWith
+argument_list|(
+name|str
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
