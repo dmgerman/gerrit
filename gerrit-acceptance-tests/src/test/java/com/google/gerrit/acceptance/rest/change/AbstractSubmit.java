@@ -1720,6 +1720,18 @@ name|getStatusCode
 argument_list|()
 argument_list|)
 operator|.
+name|named
+argument_list|(
+literal|"Status code ["
+operator|+
+name|r
+operator|.
+name|getEntityContent
+argument_list|()
+operator|+
+literal|"]"
+argument_list|)
+operator|.
 name|isEqualTo
 argument_list|(
 name|expectedStatus
@@ -2340,6 +2352,14 @@ name|psId
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|assertThat
+argument_list|(
+name|submitter
+argument_list|)
+operator|.
+name|isNotNull
+argument_list|()
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|submitter

@@ -142,22 +142,6 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
-operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -285,6 +269,24 @@ operator|.
 name|git
 operator|.
 name|IntegrationException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|MergeOp
+operator|.
+name|CommitStatus
 import|;
 end_import
 
@@ -536,26 +538,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -614,7 +596,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( Branch.NameKey destBranch, CodeReviewRevWalk rw, IdentifiedUser caller, ObjectInserter inserter, Repository repo, RevFlag canMergeFlag, ReviewDb db, Set<RevCommit> alreadyAccepted)
+DECL|method|create ( Branch.NameKey destBranch, CommitStatus commits, CodeReviewRevWalk rw, IdentifiedUser caller, ObjectInserter inserter, Repository repo, RevFlag canMergeFlag, ReviewDb db, Set<RevCommit> alreadyAccepted)
 name|Arguments
 name|create
 parameter_list|(
@@ -622,6 +604,9 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+name|CommitStatus
+name|commits
 parameter_list|,
 name|CodeReviewRevWalk
 name|rw
@@ -702,6 +687,11 @@ specifier|final
 name|CodeReviewRevWalk
 name|rw
 decl_stmt|;
+DECL|field|commits
+specifier|final
+name|CommitStatus
+name|commits
+decl_stmt|;
 DECL|field|caller
 specifier|final
 name|IdentifiedUser
@@ -752,7 +742,7 @@ name|mergeUtil
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|Arguments ( ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, @Assisted Branch.NameKey destBranch, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted)
+DECL|method|Arguments ( ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commits, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted)
 name|Arguments
 parameter_list|(
 name|ApprovalsUtil
@@ -795,6 +785,11 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+annotation|@
+name|Assisted
+name|CommitStatus
+name|commits
 parameter_list|,
 annotation|@
 name|Assisted
@@ -885,6 +880,12 @@ name|destBranch
 expr_stmt|;
 name|this
 operator|.
+name|commits
+operator|=
+name|commits
+expr_stmt|;
+name|this
+operator|.
 name|rw
 operator|=
 name|rw
@@ -929,10 +930,20 @@ name|this
 operator|.
 name|project
 operator|=
+name|checkNotNull
+argument_list|(
 name|projectCache
 operator|.
 name|get
 argument_list|(
+name|destBranch
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|)
+argument_list|,
+literal|"project not found: %s"
+argument_list|,
 name|destBranch
 operator|.
 name|getParentKey
@@ -1043,27 +1054,6 @@ parameter_list|)
 throws|throws
 name|IntegrationException
 function_decl|;
-comment|/**    * Returns all commits that have been newly created for the changes that are    * getting merged.    *<p>    * By default this method returns an empty map, but subclasses may override    * this method to provide any newly created commits.    *<p>    * This method may only be called after {@link #run(CodeReviewCommit,    * Collection)}.    *    * @return new commits created for changes that were merged.    */
-DECL|method|getNewCommits ()
-specifier|public
-name|Map
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|,
-name|CodeReviewCommit
-argument_list|>
-name|getNewCommits
-parameter_list|()
-block|{
-return|return
-name|Collections
-operator|.
-name|emptyMap
-argument_list|()
-return|;
-block|}
 block|}
 end_class
 

@@ -174,9 +174,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|git
 operator|.
-name|NoSuchProjectException
+name|MergeOp
+operator|.
+name|CommitStatus
 import|;
 end_import
 
@@ -348,7 +350,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller)
+DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, CommitStatus commits)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -384,11 +386,12 @@ name|destBranch
 parameter_list|,
 name|IdentifiedUser
 name|caller
+parameter_list|,
+name|CommitStatus
+name|commits
 parameter_list|)
 throws|throws
 name|IntegrationException
-throws|,
-name|NoSuchProjectException
 block|{
 name|SubmitStrategy
 operator|.
@@ -400,6 +403,8 @@ operator|.
 name|create
 argument_list|(
 name|destBranch
+argument_list|,
+name|commits
 argument_list|,
 name|rw
 argument_list|,
@@ -416,26 +421,6 @@ argument_list|,
 name|alreadyAccepted
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|args
-operator|.
-name|project
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|NoSuchProjectException
-argument_list|(
-name|destBranch
-operator|.
-name|getParentKey
-argument_list|()
-argument_list|)
-throw|;
-block|}
 switch|switch
 condition|(
 name|submitType

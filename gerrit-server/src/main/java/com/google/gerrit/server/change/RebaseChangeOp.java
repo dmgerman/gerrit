@@ -1047,6 +1047,25 @@ name|ctx
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getRebasedCommit ()
+specifier|public
+name|RevCommit
+name|getRebasedCommit
+parameter_list|()
+block|{
+name|checkState
+argument_list|(
+name|rebasedCommit
+operator|!=
+literal|null
+argument_list|,
+literal|"getRebasedCommit() only valid after updateRepo"
+argument_list|)
+expr_stmt|;
+return|return
+name|rebasedCommit
+return|;
+block|}
 DECL|method|getPatchSet ()
 specifier|public
 name|PatchSet

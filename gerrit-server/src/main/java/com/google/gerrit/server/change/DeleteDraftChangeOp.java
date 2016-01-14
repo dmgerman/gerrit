@@ -574,7 +574,7 @@ condition|(
 operator|!
 name|ctx
 operator|.
-name|getChangeControl
+name|getControl
 argument_list|()
 operator|.
 name|canDeleteDraft

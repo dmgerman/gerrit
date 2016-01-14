@@ -660,7 +660,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeNotes
+name|getNotes
 argument_list|()
 argument_list|,
 name|key
@@ -757,8 +757,10 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getChangeUpdate
-argument_list|()
+name|getUpdate
+argument_list|(
+name|psId
+argument_list|)
 argument_list|,
 name|Collections
 operator|.
