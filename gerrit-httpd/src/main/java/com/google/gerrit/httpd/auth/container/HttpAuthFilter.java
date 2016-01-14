@@ -324,6 +324,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -466,6 +476,12 @@ specifier|final
 name|String
 name|externalIdHeader
 decl_stmt|;
+DECL|field|userNameToLowerCase
+specifier|private
+specifier|final
+name|boolean
+name|userNameToLowerCase
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|HttpAuthFilter (final DynamicItem<WebSession> webSession, final AuthConfig authConfig)
@@ -594,6 +610,13 @@ operator|.
 name|getHttpExternalIdHeader
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|userNameToLowerCase
+operator|=
+name|authConfig
+operator|.
+name|isUserNameToLowerCase
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -860,7 +883,9 @@ name|HttpServletRequest
 name|req
 parameter_list|)
 block|{
-return|return
+name|String
+name|remoteUser
+init|=
 name|RemoteUserUtil
 operator|.
 name|getRemoteUser
@@ -869,6 +894,20 @@ name|req
 argument_list|,
 name|loginHeader
 argument_list|)
+decl_stmt|;
+return|return
+name|userNameToLowerCase
+condition|?
+name|remoteUser
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|US
+argument_list|)
+else|:
+name|remoteUser
 return|;
 block|}
 DECL|method|getRemoteDisplayname (HttpServletRequest req)
