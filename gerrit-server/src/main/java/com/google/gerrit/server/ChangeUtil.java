@@ -1420,6 +1420,12 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|seq
+specifier|private
+specifier|final
+name|Sequences
+name|seq
+decl_stmt|;
 DECL|field|queryProvider
 specifier|private
 specifier|final
@@ -1483,7 +1489,7 @@ name|changeUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeUtil (Provider<CurrentUser> user, Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeControl.GenericFactory changeControlFactory, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, GitRepositoryManager gitManager, BatchUpdate.Factory updateFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory changeUpdateFactory)
+DECL|method|ChangeUtil (Provider<CurrentUser> user, Provider<ReviewDb> db, Sequences seq, Provider<InternalChangeQuery> queryProvider, ChangeControl.GenericFactory changeControlFactory, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, GitRepositoryManager gitManager, BatchUpdate.Factory updateFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory changeUpdateFactory)
 name|ChangeUtil
 parameter_list|(
 name|Provider
@@ -1497,6 +1503,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|Sequences
+name|seq
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1547,6 +1556,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|seq
+operator|=
+name|seq
 expr_stmt|;
 name|this
 operator|.
@@ -1988,10 +2003,7 @@ name|Change
 operator|.
 name|Id
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
+name|seq
 operator|.
 name|nextChangeId
 argument_list|()

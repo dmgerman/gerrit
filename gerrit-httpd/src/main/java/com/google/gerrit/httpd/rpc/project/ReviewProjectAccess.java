@@ -328,6 +328,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|Sequences
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|GroupBackend
@@ -761,6 +775,12 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|seq
+specifier|private
+specifier|final
+name|Sequences
+name|seq
+decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
@@ -806,7 +826,7 @@ name|updateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewProjectAccess (final ProjectControl.Factory projectControlFactory, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, IdentifiedUser user, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsNameProvider allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ReviewProjectAccess (final ProjectControl.Factory projectControlFactory, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, IdentifiedUser user, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsNameProvider allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, Sequences seq, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ReviewProjectAccess
 parameter_list|(
 specifier|final
@@ -859,6 +879,9 @@ argument_list|<
 name|SetParent
 argument_list|>
 name|setParent
+parameter_list|,
+name|Sequences
+name|seq
 parameter_list|,
 annotation|@
 name|Assisted
@@ -935,6 +958,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|seq
+operator|=
+name|seq
 expr_stmt|;
 name|this
 operator|.
@@ -1016,7 +1045,7 @@ name|Change
 operator|.
 name|Id
 argument_list|(
-name|db
+name|seq
 operator|.
 name|nextChangeId
 argument_list|()

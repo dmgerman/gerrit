@@ -460,6 +460,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|Sequences
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -882,6 +896,12 @@ specifier|final
 name|GitRepositoryManager
 name|gitManager
 decl_stmt|;
+DECL|field|seq
+specifier|private
+specifier|final
+name|Sequences
+name|seq
+decl_stmt|;
 DECL|field|serverTimeZone
 specifier|private
 specifier|final
@@ -941,7 +961,7 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> user, ProjectsCollection projectsCollection, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeUtil changeUtil, BatchUpdate.Factory updateFactory, @GerritServerConfig Config config)
+DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, Sequences seq, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> user, ProjectsCollection projectsCollection, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeUtil changeUtil, BatchUpdate.Factory updateFactory, @GerritServerConfig Config config)
 name|CreateChange
 parameter_list|(
 name|Provider
@@ -952,6 +972,9 @@ name|db
 parameter_list|,
 name|GitRepositoryManager
 name|gitManager
+parameter_list|,
+name|Sequences
+name|seq
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -1002,6 +1025,12 @@ operator|.
 name|gitManager
 operator|=
 name|gitManager
+expr_stmt|;
+name|this
+operator|.
+name|seq
+operator|=
+name|seq
 expr_stmt|;
 name|this
 operator|.
@@ -1649,10 +1678,7 @@ name|Change
 operator|.
 name|Id
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
+name|seq
 operator|.
 name|nextChangeId
 argument_list|()
