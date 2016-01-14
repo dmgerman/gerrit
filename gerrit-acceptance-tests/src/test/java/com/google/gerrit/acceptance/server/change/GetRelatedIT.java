@@ -411,15 +411,6 @@ name|ChangeEditModifier
 name|editModifier
 decl_stmt|;
 annotation|@
-name|Inject
-DECL|field|changeDataFactory
-specifier|private
-name|ChangeData
-operator|.
-name|Factory
-name|changeDataFactory
-decl_stmt|;
-annotation|@
 name|Test
 DECL|method|getRelatedNoResult ()
 specifier|public
@@ -3090,6 +3081,9 @@ argument_list|,
 name|getPatchSet
 argument_list|(
 name|ch2
+operator|.
+name|currentPatchSetId
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3418,12 +3412,7 @@ comment|// Pretend PS1,1 was pushed before the groups field was added.
 name|PatchSet
 name|ps1_1
 init|=
-name|db
-operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|get
+name|getPatchSet
 argument_list|(
 name|psId1_1
 argument_list|)
@@ -3703,32 +3692,6 @@ argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
-return|;
-block|}
-DECL|method|getPatchSet (Change c)
-specifier|private
-name|PatchSet
-name|getPatchSet
-parameter_list|(
-name|Change
-name|c
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|db
-operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|c
-operator|.
-name|currentPatchSetId
-argument_list|()
-argument_list|)
 return|;
 block|}
 DECL|method|getChange (ObjectId c)

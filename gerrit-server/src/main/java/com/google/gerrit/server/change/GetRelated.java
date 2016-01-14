@@ -212,11 +212,41 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchSetUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|RelatedChangesSorter
 operator|.
 name|PatchSetData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotes
 import|;
 end_import
 
@@ -425,6 +455,12 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
+DECL|field|psUtil
+specifier|private
+specifier|final
+name|PatchSetUtil
+name|psUtil
+decl_stmt|;
 DECL|field|sorter
 specifier|private
 specifier|final
@@ -433,7 +469,7 @@ name|sorter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetRelated (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, RelatedChangesSorter sorter)
+DECL|method|GetRelated (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, RelatedChangesSorter sorter)
 name|GetRelated
 parameter_list|(
 name|Provider
@@ -447,6 +483,9 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
+parameter_list|,
+name|PatchSetUtil
+name|psUtil
 parameter_list|,
 name|RelatedChangesSorter
 name|sorter
@@ -463,6 +502,12 @@ operator|.
 name|queryProvider
 operator|=
 name|queryProvider
+expr_stmt|;
+name|this
+operator|.
+name|psUtil
+operator|=
+name|psUtil
 expr_stmt|;
 name|this
 operator|.
@@ -534,10 +579,7 @@ name|getAllGroups
 argument_list|(
 name|rsrc
 operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
+name|getNotes
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -845,7 +887,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getAllGroups (Change.Id changeId)
+DECL|method|getAllGroups (ChangeNotes notes)
 specifier|private
 name|Set
 argument_list|<
@@ -853,10 +895,8 @@ name|String
 argument_list|>
 name|getAllGroups
 parameter_list|(
-name|Change
-operator|.
-name|Id
-name|changeId
+name|ChangeNotes
+name|notes
 parameter_list|)
 throws|throws
 name|OrmException
@@ -877,17 +917,16 @@ control|(
 name|PatchSet
 name|ps
 range|:
+name|psUtil
+operator|.
+name|byChange
+argument_list|(
 name|db
 operator|.
 name|get
 argument_list|()
-operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|byChange
-argument_list|(
-name|changeId
+argument_list|,
+name|notes
 argument_list|)
 control|)
 block|{

@@ -557,6 +557,8 @@ literal|"\" is not a valid patch set"
 argument_list|)
 throw|;
 block|}
+comment|// TODO(dborowitz): Use PatchSetUtils; probably requires a non-static
+comment|// implementation.
 name|PatchSet
 name|patchSet
 init|=

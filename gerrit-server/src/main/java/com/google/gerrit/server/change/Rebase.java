@@ -1537,6 +1537,8 @@ name|basePatchSetId
 argument_list|)
 return|;
 block|}
+comment|// TODO(dborowitz): Use PatchSetUtil; requires additional refactoring as we
+comment|// just turn around and get the change at the caller.
 comment|// Try parsing base as a change number (assume current patch set).
 name|PatchSet
 name|basePatchSet

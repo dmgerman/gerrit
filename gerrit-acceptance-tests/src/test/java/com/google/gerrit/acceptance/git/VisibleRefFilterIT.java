@@ -1240,12 +1240,7 @@ decl_stmt|;
 name|PatchSet
 name|ps1
 init|=
-name|db
-operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|get
+name|getPatchSet
 argument_list|(
 operator|new
 name|PatchSet
@@ -1374,12 +1369,7 @@ decl_stmt|;
 name|PatchSet
 name|ps1
 init|=
-name|db
-operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|get
+name|getPatchSet
 argument_list|(
 operator|new
 name|PatchSet

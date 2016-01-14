@@ -318,6 +318,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchSetUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|Sequences
 import|;
 end_import
@@ -905,6 +919,12 @@ specifier|final
 name|ChangeMessagesUtil
 name|changeMessagesUtil
 decl_stmt|;
+DECL|field|psUtil
+specifier|private
+specifier|final
+name|PatchSetUtil
+name|psUtil
+decl_stmt|;
 DECL|field|updateFactory
 specifier|private
 specifier|final
@@ -923,7 +943,7 @@ name|batchUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickChange (Provider<ReviewDb> db, Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory updateFactory, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|CherryPickChange (Provider<ReviewDb> db, Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, PatchSetUtil psUtil, ChangeUpdate.Factory updateFactory, BatchUpdate.Factory batchUpdateFactory)
 name|CherryPickChange
 parameter_list|(
 name|Provider
@@ -972,6 +992,9 @@ name|mergeUtilFactory
 parameter_list|,
 name|ChangeMessagesUtil
 name|changeMessagesUtil
+parameter_list|,
+name|PatchSetUtil
+name|psUtil
 parameter_list|,
 name|ChangeUpdate
 operator|.
@@ -1046,6 +1069,12 @@ operator|.
 name|changeMessagesUtil
 operator|=
 name|changeMessagesUtil
+expr_stmt|;
+name|this
+operator|.
+name|psUtil
+operator|=
+name|psUtil
 expr_stmt|;
 name|this
 operator|.
@@ -1496,7 +1525,6 @@ literal|"Cannot create a new patch set."
 argument_list|)
 throw|;
 block|}
-elseif|else
 if|if
 condition|(
 name|destChanges
@@ -1509,15 +1537,16 @@ condition|)
 block|{
 comment|// The change key exists on the destination branch. The cherry pick
 comment|// will be added as a new patch set.
-return|return
-name|insertPatchSet
+name|ChangeControl
+name|destCtl
+init|=
+name|refControl
+operator|.
+name|getProjectControl
+argument_list|()
+operator|.
+name|controlFor
 argument_list|(
-name|git
-argument_list|,
-name|revWalk
-argument_list|,
-name|oi
-argument_list|,
 name|destChanges
 operator|.
 name|get
@@ -1527,6 +1556,18 @@ argument_list|)
 operator|.
 name|change
 argument_list|()
+argument_list|)
+decl_stmt|;
+return|return
+name|insertPatchSet
+argument_list|(
+name|git
+argument_list|,
+name|revWalk
+argument_list|,
+name|oi
+argument_list|,
+name|destCtl
 argument_list|,
 name|cherryPickCommit
 argument_list|,
@@ -1671,7 +1712,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|insertPatchSet (Repository git, RevWalk revWalk, ObjectInserter oi, Change change, CodeReviewCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser)
+DECL|method|insertPatchSet (Repository git, RevWalk revWalk, ObjectInserter oi, ChangeControl ctl, CodeReviewCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser)
 specifier|private
 name|Change
 operator|.
@@ -1687,8 +1728,8 @@ parameter_list|,
 name|ObjectInserter
 name|oi
 parameter_list|,
-name|Change
-name|change
+name|ChangeControl
+name|ctl
 parameter_list|,
 name|CodeReviewCommit
 name|cherryPickCommit
@@ -1708,6 +1749,14 @@ name|UpdateException
 throws|,
 name|RestApiException
 block|{
+name|Change
+name|change
+init|=
+name|ctl
+operator|.
+name|getChange
+argument_list|()
+decl_stmt|;
 name|PatchSet
 operator|.
 name|Id
@@ -1752,19 +1801,18 @@ decl_stmt|;
 name|PatchSet
 name|current
 init|=
+name|psUtil
+operator|.
+name|current
+argument_list|(
 name|db
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|ctl
 operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|change
-operator|.
-name|currentPatchSetId
+name|getNotes
 argument_list|()
 argument_list|)
 decl_stmt|;

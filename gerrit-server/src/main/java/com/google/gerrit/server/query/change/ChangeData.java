@@ -452,6 +452,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchSetUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|MergeabilityCache
@@ -1325,6 +1339,7 @@ name|patchSets
 argument_list|()
 expr_stmt|;
 block|}
+return|return;
 block|}
 name|List
 argument_list|<
@@ -1531,6 +1546,7 @@ name|currentPatchSet
 argument_list|()
 expr_stmt|;
 block|}
+return|return;
 block|}
 name|Map
 argument_list|<
@@ -1695,6 +1711,7 @@ name|currentApprovals
 argument_list|()
 expr_stmt|;
 block|}
+return|return;
 block|}
 name|List
 argument_list|<
@@ -2254,6 +2271,8 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|id
 argument_list|)
 decl_stmt|;
@@ -2347,6 +2366,12 @@ specifier|final
 name|PatchLineCommentsUtil
 name|plcUtil
 decl_stmt|;
+DECL|field|psUtil
+specifier|private
+specifier|final
+name|PatchSetUtil
+name|psUtil
+decl_stmt|;
 DECL|field|patchListCache
 specifier|private
 specifier|final
@@ -2408,7 +2433,7 @@ name|currentPatchSet
 decl_stmt|;
 DECL|field|patchSets
 specifier|private
-name|Collection
+name|List
 argument_list|<
 name|PatchSet
 argument_list|>
@@ -2543,7 +2568,7 @@ name|committer
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Assisted ReviewDb db, @Assisted Change.Id id)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Assisted ReviewDb db, @Assisted Change.Id id)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -2581,6 +2606,9 @@ name|cmUtil
 parameter_list|,
 name|PatchLineCommentsUtil
 name|plcUtil
+parameter_list|,
+name|PatchSetUtil
+name|psUtil
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -2666,6 +2694,12 @@ name|plcUtil
 expr_stmt|;
 name|this
 operator|.
+name|psUtil
+operator|=
+name|psUtil
+expr_stmt|;
+name|this
+operator|.
 name|patchListCache
 operator|=
 name|patchListCache
@@ -2689,7 +2723,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Assisted ReviewDb db, @Assisted Change c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Assisted ReviewDb db, @Assisted Change c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -2727,6 +2761,9 @@ name|cmUtil
 parameter_list|,
 name|PatchLineCommentsUtil
 name|plcUtil
+parameter_list|,
+name|PatchSetUtil
+name|psUtil
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -2810,6 +2847,12 @@ name|plcUtil
 expr_stmt|;
 name|this
 operator|.
+name|psUtil
+operator|=
+name|psUtil
+expr_stmt|;
+name|this
+operator|.
 name|patchListCache
 operator|=
 name|patchListCache
@@ -2840,7 +2883,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Assisted ReviewDb db, @Assisted ChangeControl c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Assisted ReviewDb db, @Assisted ChangeControl c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -2878,6 +2921,9 @@ name|cmUtil
 parameter_list|,
 name|PatchLineCommentsUtil
 name|plcUtil
+parameter_list|,
+name|PatchSetUtil
+name|psUtil
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -2958,6 +3004,12 @@ operator|.
 name|plcUtil
 operator|=
 name|plcUtil
+expr_stmt|;
+name|this
+operator|.
+name|psUtil
+operator|=
+name|psUtil
 expr_stmt|;
 name|this
 operator|.
@@ -4191,7 +4243,7 @@ block|}
 comment|/**    * @return patches for the change.    * @throws OrmException an error occurred reading the database.    */
 DECL|method|patchSets ()
 specifier|public
-name|Collection
+name|List
 argument_list|<
 name|PatchSet
 argument_list|>
@@ -4209,30 +4261,27 @@ condition|)
 block|{
 name|patchSets
 operator|=
-name|db
-operator|.
-name|patchSets
-argument_list|()
+name|psUtil
 operator|.
 name|byChange
 argument_list|(
-name|legacyId
-argument_list|)
-operator|.
-name|toList
+name|db
+argument_list|,
+name|notes
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return
 name|patchSets
 return|;
 block|}
-DECL|method|setPatchSets (Collection<PatchSet> patchSets)
+DECL|method|setPatchSets (List<PatchSet> patchSets)
 specifier|public
 name|void
 name|setPatchSets
 parameter_list|(
-name|Collection
+name|List
 argument_list|<
 name|PatchSet
 argument_list|>

@@ -1332,6 +1332,8 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
+comment|// TODO(dborowitz): Use PatchSetUtil. Requires signature changes to pass
+comment|// in ChangeNotes.
 return|return
 name|db
 operator|.

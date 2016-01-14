@@ -6797,6 +6797,7 @@ operator|.
 name|currentPatchSetId
 argument_list|()
 decl_stmt|;
+comment|// TODO(dborowitz): Use PatchSetUtil after BatchUpdate migration.
 name|merged
 operator|=
 name|db
