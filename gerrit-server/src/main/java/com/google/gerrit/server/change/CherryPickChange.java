@@ -318,6 +318,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|Sequences
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|BatchUpdate
@@ -825,6 +839,12 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|seq
+specifier|private
+specifier|final
+name|Sequences
+name|seq
+decl_stmt|;
 DECL|field|queryProvider
 specifier|private
 specifier|final
@@ -903,7 +923,7 @@ name|batchUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickChange (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory updateFactory, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|CherryPickChange (Provider<ReviewDb> db, Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, ChangeUpdate.Factory updateFactory, BatchUpdate.Factory batchUpdateFactory)
 name|CherryPickChange
 parameter_list|(
 name|Provider
@@ -911,6 +931,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|Sequences
+name|seq
 parameter_list|,
 name|Provider
 argument_list|<
@@ -966,6 +989,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|seq
+operator|=
+name|seq
 expr_stmt|;
 name|this
 operator|.
@@ -1905,10 +1934,7 @@ name|Change
 operator|.
 name|Id
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
+name|seq
 operator|.
 name|nextChangeId
 argument_list|()

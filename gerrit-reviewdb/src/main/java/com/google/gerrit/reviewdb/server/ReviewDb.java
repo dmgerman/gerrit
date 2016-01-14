@@ -484,9 +484,22 @@ parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;
-comment|/** Next unique id for a {@link Change}. */
+DECL|field|FIRST_CHANGE_ID
+name|int
+name|FIRST_CHANGE_ID
+init|=
+literal|1
+decl_stmt|;
+comment|/**    * Next unique id for a {@link Change}.    *    * @deprecated use {@link com.google.gerrit.server.Sequences#nextChangeId()}.    */
 annotation|@
 name|Sequence
+argument_list|(
+name|startWith
+operator|=
+name|FIRST_CHANGE_ID
+argument_list|)
+annotation|@
+name|Deprecated
 DECL|method|nextChangeId ()
 name|int
 name|nextChangeId

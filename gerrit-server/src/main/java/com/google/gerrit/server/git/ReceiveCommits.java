@@ -1148,6 +1148,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|Sequences
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|AccountCache
@@ -2994,6 +3008,12 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|seq
+specifier|private
+specifier|final
+name|Sequences
+name|seq
+decl_stmt|;
 DECL|field|queryProvider
 specifier|private
 specifier|final
@@ -3465,12 +3485,16 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final Provider<InternalChangeQuery> queryProvider, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final Provider<SubmoduleOp> subOpProvider, final Provider<Submit> submitProvider, final Provider<MergeOp> mergeOpProvider, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration, final ChangeEditUtil editUtil, final BatchUpdate.Factory batchUpdateFactory, final SetHashtagsOp.Factory hashtagsFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final Sequences seq, final Provider<InternalChangeQuery> queryProvider, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final Provider<SubmoduleOp> subOpProvider, final Provider<Submit> submitProvider, final Provider<MergeOp> mergeOpProvider, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration, final ChangeEditUtil editUtil, final BatchUpdate.Factory batchUpdateFactory, final SetHashtagsOp.Factory hashtagsFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
 name|ReviewDb
 name|db
+parameter_list|,
+specifier|final
+name|Sequences
+name|seq
 parameter_list|,
 specifier|final
 name|Provider
@@ -3713,6 +3737,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|seq
+operator|=
+name|seq
 expr_stmt|;
 name|this
 operator|.
@@ -11452,7 +11482,7 @@ name|Change
 operator|.
 name|Id
 argument_list|(
-name|db
+name|seq
 operator|.
 name|nextChangeId
 argument_list|()
