@@ -165,10 +165,13 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|getAvatarUrl ()
+DECL|method|getAvatarUrl (int size)
 name|String
 name|getAvatarUrl
-parameter_list|()
+parameter_list|(
+name|int
+name|size
+parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
@@ -274,11 +277,14 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|getAvatarUrl ()
+DECL|method|getAvatarUrl (int size)
 specifier|public
 name|String
 name|getAvatarUrl
-parameter_list|()
+parameter_list|(
+name|int
+name|size
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
