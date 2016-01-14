@@ -108,6 +108,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -127,6 +139,13 @@ operator|.
 name|Email
 argument_list|>
 block|{
+annotation|@
+name|Inject
+DECL|method|GetEmail ()
+specifier|public
+name|GetEmail
+parameter_list|()
+block|{   }
 annotation|@
 name|Override
 DECL|method|apply (AccountResource.Email rsrc)
