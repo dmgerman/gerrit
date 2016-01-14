@@ -136,6 +136,14 @@ name|RefUpdatedEvent
 extends|extends
 name|RefEvent
 block|{
+DECL|field|TYPE
+specifier|static
+specifier|final
+name|String
+name|TYPE
+init|=
+literal|"ref-updated"
+decl_stmt|;
 DECL|field|submitter
 specifier|public
 name|Supplier
@@ -159,7 +167,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"ref-updated"
+name|TYPE
 argument_list|)
 expr_stmt|;
 block|}

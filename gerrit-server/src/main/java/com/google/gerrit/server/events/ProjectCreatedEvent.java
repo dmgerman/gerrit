@@ -90,6 +90,14 @@ name|ProjectCreatedEvent
 extends|extends
 name|ProjectEvent
 block|{
+DECL|field|TYPE
+specifier|static
+specifier|final
+name|String
+name|TYPE
+init|=
+literal|"project-created"
+decl_stmt|;
 DECL|field|projectName
 specifier|public
 name|String
@@ -107,7 +115,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"project-created"
+name|TYPE
 argument_list|)
 expr_stmt|;
 block|}

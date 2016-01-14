@@ -132,6 +132,14 @@ name|CommitReceivedEvent
 extends|extends
 name|RefEvent
 block|{
+DECL|field|TYPE
+specifier|static
+specifier|final
+name|String
+name|TYPE
+init|=
+literal|"commit-received"
+decl_stmt|;
 DECL|field|command
 specifier|public
 name|ReceiveCommand
@@ -164,7 +172,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"commit-received"
+name|TYPE
 argument_list|)
 expr_stmt|;
 block|}

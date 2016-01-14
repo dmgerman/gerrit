@@ -609,6 +609,15 @@ name|DroppedOutputEvent
 extends|extends
 name|Event
 block|{
+DECL|field|TYPE
+specifier|private
+specifier|final
+specifier|static
+name|String
+name|TYPE
+init|=
+literal|"dropped-output"
+decl_stmt|;
 DECL|method|DroppedOutputEvent ()
 specifier|public
 name|DroppedOutputEvent
@@ -616,29 +625,24 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"dropped-output"
+name|TYPE
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|field|droppedOutputEvent
-specifier|private
-specifier|static
-specifier|final
-name|DroppedOutputEvent
-name|droppedOutputEvent
-init|=
-operator|new
-name|DroppedOutputEvent
-argument_list|()
-decl_stmt|;
 static|static
 block|{
 name|EventTypes
 operator|.
-name|registerClass
+name|register
 argument_list|(
-name|droppedOutputEvent
+name|DroppedOutputEvent
+operator|.
+name|TYPE
+argument_list|,
+name|DroppedOutputEvent
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}
@@ -747,7 +751,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/** True if {@link #droppedOutputEvent} needs to be sent. */
+comment|/** True if {@link DroppedOutputEvent} needs to be sent. */
 DECL|field|dropped
 specifier|private
 specifier|volatile
@@ -1150,7 +1154,9 @@ condition|)
 block|{
 name|write
 argument_list|(
-name|droppedOutputEvent
+operator|new
+name|DroppedOutputEvent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|dropped

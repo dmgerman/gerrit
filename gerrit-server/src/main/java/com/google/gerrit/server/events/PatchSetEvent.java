@@ -88,6 +88,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|data
@@ -112,17 +128,22 @@ name|PatchSetAttribute
 argument_list|>
 name|patchSet
 decl_stmt|;
-DECL|method|PatchSetEvent (String type)
+DECL|method|PatchSetEvent (String type, Change change)
 specifier|protected
 name|PatchSetEvent
 parameter_list|(
 name|String
 name|type
+parameter_list|,
+name|Change
+name|change
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|type
+argument_list|,
+name|change
 argument_list|)
 expr_stmt|;
 block|}
