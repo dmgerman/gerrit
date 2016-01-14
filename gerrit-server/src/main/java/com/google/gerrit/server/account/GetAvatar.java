@@ -232,6 +232,11 @@ name|AvatarProvider
 argument_list|>
 name|avatarProvider
 decl_stmt|;
+DECL|field|size
+specifier|private
+name|int
+name|size
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -249,11 +254,20 @@ name|usage
 operator|=
 literal|"recommended size in pixels, height and width"
 argument_list|)
-DECL|field|size
-specifier|private
+DECL|method|setSize (int s)
+specifier|public
+name|void
+name|setSize
+parameter_list|(
 name|int
+name|s
+parameter_list|)
+block|{
 name|size
-decl_stmt|;
+operator|=
+name|s
+expr_stmt|;
+block|}
 annotation|@
 name|Inject
 DECL|method|GetAvatar (DynamicItem<AvatarProvider> avatarProvider)
