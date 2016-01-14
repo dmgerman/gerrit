@@ -661,6 +661,12 @@ operator|.
 name|Factory
 name|rebaseFactory
 decl_stmt|;
+DECL|field|rebaseUtil
+specifier|private
+specifier|final
+name|RebaseUtil
+name|rebaseUtil
+decl_stmt|;
 DECL|field|json
 specifier|private
 specifier|final
@@ -680,7 +686,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Rebase (BatchUpdate.Factory updateFactory, GitRepositoryManager repoManager, RebaseChangeOp.Factory rebaseFactory, ChangeJson.Factory json, Provider<ReviewDb> dbProvider)
+DECL|method|Rebase (BatchUpdate.Factory updateFactory, GitRepositoryManager repoManager, RebaseChangeOp.Factory rebaseFactory, RebaseUtil rebaseUtil, ChangeJson.Factory json, Provider<ReviewDb> dbProvider)
 specifier|public
 name|Rebase
 parameter_list|(
@@ -696,6 +702,9 @@ name|RebaseChangeOp
 operator|.
 name|Factory
 name|rebaseFactory
+parameter_list|,
+name|RebaseUtil
+name|rebaseUtil
 parameter_list|,
 name|ChangeJson
 operator|.
@@ -726,6 +735,12 @@ operator|.
 name|rebaseFactory
 operator|=
 name|rebaseFactory
+expr_stmt|;
+name|this
+operator|.
+name|rebaseUtil
+operator|=
+name|rebaseUtil
 expr_stmt|;
 name|this
 operator|.
@@ -1775,7 +1790,7 @@ argument_list|)
 expr_stmt|;
 name|enabled
 operator|=
-name|RebaseUtil
+name|rebaseUtil
 operator|.
 name|canRebase
 argument_list|(
@@ -1786,11 +1801,6 @@ argument_list|,
 name|repo
 argument_list|,
 name|rw
-argument_list|,
-name|dbProvider
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

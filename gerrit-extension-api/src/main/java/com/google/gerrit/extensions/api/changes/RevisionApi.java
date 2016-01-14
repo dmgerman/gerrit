@@ -320,6 +320,8 @@ DECL|method|canRebase ()
 name|boolean
 name|canRebase
 parameter_list|()
+throws|throws
+name|RestApiException
 function_decl|;
 DECL|method|setReviewed (String path, boolean reviewed)
 name|void

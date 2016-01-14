@@ -526,6 +526,12 @@ operator|.
 name|Factory
 name|mergeUtilFactory
 decl_stmt|;
+DECL|field|rebaseUtil
+specifier|private
+specifier|final
+name|RebaseUtil
+name|rebaseUtil
+decl_stmt|;
 DECL|field|ctl
 specifier|private
 specifier|final
@@ -598,7 +604,7 @@ name|rebasedPatchSet
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|RebaseChangeOp ( PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, @Assisted ChangeControl ctl, @Assisted PatchSet originalPatchSet, @Assisted @Nullable String baseCommitish)
+DECL|method|RebaseChangeOp ( PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, RebaseUtil rebaseUtil, @Assisted ChangeControl ctl, @Assisted PatchSet originalPatchSet, @Assisted @Nullable String baseCommitish)
 name|RebaseChangeOp
 parameter_list|(
 name|PatchSetInserter
@@ -610,6 +616,9 @@ name|MergeUtil
 operator|.
 name|Factory
 name|mergeUtilFactory
+parameter_list|,
+name|RebaseUtil
+name|rebaseUtil
 parameter_list|,
 annotation|@
 name|Assisted
@@ -640,6 +649,12 @@ operator|.
 name|mergeUtilFactory
 operator|=
 name|mergeUtilFactory
+expr_stmt|;
+name|this
+operator|.
+name|rebaseUtil
+operator|=
+name|rebaseUtil
 expr_stmt|;
 name|this
 operator|.
@@ -857,7 +872,7 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|RebaseUtil
+name|rebaseUtil
 operator|.
 name|findBaseRevision
 argument_list|(
@@ -879,11 +894,6 @@ argument_list|,
 name|ctx
 operator|.
 name|getRevWalk
-argument_list|()
-argument_list|,
-name|ctx
-operator|.
-name|getDb
 argument_list|()
 argument_list|)
 argument_list|)
