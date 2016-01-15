@@ -1189,21 +1189,8 @@ argument_list|)
 expr_stmt|;
 name|ctx
 operator|.
-name|getDb
+name|saveChange
 argument_list|()
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|update
-argument_list|(
-name|Collections
-operator|.
-name|singleton
-argument_list|(
-name|c
-argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|previousPatchSetInfo (ChangeContext ctx)
