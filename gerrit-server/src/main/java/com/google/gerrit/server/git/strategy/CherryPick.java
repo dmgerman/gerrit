@@ -726,6 +726,8 @@ operator|+
 name|args
 operator|.
 name|destBranch
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
