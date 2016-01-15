@@ -829,13 +829,7 @@ argument_list|()
 operator|+
 literal|" not in branch "
 operator|+
-name|change
-operator|.
-name|getDest
-argument_list|()
-operator|.
-name|get
-argument_list|()
+name|branch
 argument_list|)
 throw|;
 block|}
