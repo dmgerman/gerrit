@@ -984,6 +984,13 @@ specifier|private
 name|boolean
 name|allowClosed
 decl_stmt|;
+DECL|field|copyApprovals
+specifier|private
+name|boolean
+name|copyApprovals
+init|=
+literal|true
+decl_stmt|;
 comment|// Fields set during some phase of BatchUpdate.Op.
 DECL|field|change
 specifier|private
@@ -1303,6 +1310,25 @@ operator|.
 name|allowClosed
 operator|=
 name|allowClosed
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setCopyApprovals (boolean copyApprovals)
+specifier|public
+name|PatchSetInserter
+name|setCopyApprovals
+parameter_list|(
+name|boolean
+name|copyApprovals
+parameter_list|)
+block|{
+name|this
+operator|.
+name|copyApprovals
+operator|=
+name|copyApprovals
 expr_stmt|;
 return|return
 name|this
@@ -1739,6 +1765,11 @@ operator|.
 name|saveChange
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|copyApprovals
+condition|)
+block|{
 name|approvalCopier
 operator|.
 name|copy
@@ -1750,6 +1781,7 @@ argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|changeMessage

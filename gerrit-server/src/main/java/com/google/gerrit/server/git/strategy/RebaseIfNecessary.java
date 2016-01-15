@@ -1041,6 +1041,13 @@ name|setRunHooks
 argument_list|(
 literal|false
 argument_list|)
+comment|// Bypass approval copier since we're going to copy all approvals
+comment|// later anyway.
+operator|.
+name|setCopyApprovals
+argument_list|(
+literal|false
+argument_list|)
 operator|.
 name|setValidatePolicy
 argument_list|(
@@ -1199,8 +1206,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// rebaseOp may already have copied some approvals; use upsert, not
-comment|// insert, to avoid constraint violation on database.
 name|args
 operator|.
 name|db
@@ -1208,7 +1213,7 @@ operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
-name|upsert
+name|insert
 argument_list|(
 name|approvals
 argument_list|)
