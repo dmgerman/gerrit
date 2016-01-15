@@ -2075,6 +2075,27 @@ block|}
 end_function
 
 begin_function
+DECL|method|setOwner (Account.Id owner)
+specifier|public
+name|void
+name|setOwner
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|owner
+parameter_list|)
+block|{
+name|this
+operator|.
+name|owner
+operator|=
+name|owner
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|method|getDest ()
 specifier|public
 name|Branch

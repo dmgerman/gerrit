@@ -1572,6 +1572,15 @@ operator|.
 name|lastUpdatedOn
 argument_list|)
 expr_stmt|;
+name|change
+operator|.
+name|setOwner
+argument_list|(
+name|parser
+operator|.
+name|ownerId
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|parser

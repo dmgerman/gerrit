@@ -916,6 +916,12 @@ DECL|field|lastUpdatedOn
 name|Timestamp
 name|lastUpdatedOn
 decl_stmt|;
+DECL|field|ownerId
+name|Account
+operator|.
+name|Id
+name|ownerId
+decl_stmt|;
 DECL|field|changeId
 specifier|private
 specifier|final
@@ -1451,6 +1457,10 @@ argument_list|(
 name|commit
 argument_list|)
 decl_stmt|;
+name|ownerId
+operator|=
+name|accountId
+expr_stmt|;
 name|parseChangeMessage
 argument_list|(
 name|psId
