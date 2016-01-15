@@ -688,6 +688,8 @@ block|}
 catch|catch
 parameter_list|(
 name|UpdateException
+decl||
+name|RestApiException
 name|e
 parameter_list|)
 block|{
@@ -717,26 +719,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-throw|throw
-operator|new
-name|IntegrationException
-argument_list|(
-literal|"Cannot rebase onto "
-operator|+
-name|args
-operator|.
-name|destBranch
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
-name|RestApiException
-name|e
-parameter_list|)
-block|{
 throw|throw
 operator|new
 name|IntegrationException
