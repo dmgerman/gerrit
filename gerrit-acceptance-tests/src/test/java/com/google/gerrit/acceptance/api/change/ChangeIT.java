@@ -184,7 +184,7 @@ name|group
 operator|.
 name|SystemGroupBackend
 operator|.
-name|REGISTERED_USERS
+name|CHANGE_OWNER
 import|;
 end_import
 
@@ -202,7 +202,7 @@ name|group
 operator|.
 name|SystemGroupBackend
 operator|.
-name|CHANGE_OWNER
+name|REGISTERED_USERS
 import|;
 end_import
 
