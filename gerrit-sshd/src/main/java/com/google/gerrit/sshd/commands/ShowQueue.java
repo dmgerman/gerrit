@@ -618,6 +618,12 @@ name|state
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|OTHER
+case|:
+case|case
+name|SLEEPING
+case|:
 default|default:
 name|start
 operator|=
@@ -960,6 +966,9 @@ case|:
 return|return
 literal|"sleeping"
 return|;
+case|case
+name|OTHER
+case|:
 default|default:
 return|return
 name|state

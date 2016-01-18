@@ -3676,6 +3676,24 @@ operator|=
 literal|"Repaired patch set ref"
 expr_stmt|;
 return|return;
+case|case
+name|IO_FAILURE
+case|:
+case|case
+name|LOCK_FAILURE
+case|:
+case|case
+name|NOT_ATTEMPTED
+case|:
+case|case
+name|REJECTED
+case|:
+case|case
+name|REJECTED_CURRENT_BRANCH
+case|:
+case|case
+name|RENAMED
+case|:
 default|default:
 name|p
 operator|.

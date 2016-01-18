@@ -1575,6 +1575,12 @@ argument_list|)
 throw|;
 block|}
 comment|//$FALL-THROUGH$
+case|case
+name|ABANDONED
+case|:
+case|case
+name|DRAFT
+case|:
 default|default:
 throw|throw
 operator|new

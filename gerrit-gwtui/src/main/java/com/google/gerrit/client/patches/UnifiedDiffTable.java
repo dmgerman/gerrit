@@ -1660,6 +1660,9 @@ name|diffTextINSERT
 argument_list|()
 expr_stmt|;
 break|break;
+case|case
+name|REPLACE
+case|:
 default|default:
 continue|continue;
 block|}

@@ -934,6 +934,21 @@ argument_list|(
 literal|"cannot delete current branch"
 argument_list|)
 throw|;
+case|case
+name|IO_FAILURE
+case|:
+case|case
+name|LOCK_FAILURE
+case|:
+case|case
+name|NOT_ATTEMPTED
+case|:
+case|case
+name|REJECTED
+case|:
+case|case
+name|RENAMED
+case|:
 default|default:
 name|log
 operator|.

@@ -12222,6 +12222,12 @@ expr_stmt|;
 break|break;
 block|}
 comment|//$FALL-THROUGH$
+case|case
+name|ABANDONED
+case|:
+case|case
+name|DRAFT
+case|:
 default|default:
 name|addMessage
 argument_list|(

@@ -1015,6 +1015,9 @@ return|return
 literal|"status:merged"
 return|;
 case|case
+name|DRAFT
+case|:
+case|case
 name|NEW
 case|:
 default|default:

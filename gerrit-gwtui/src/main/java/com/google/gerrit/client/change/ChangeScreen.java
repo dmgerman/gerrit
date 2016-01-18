@@ -7693,6 +7693,12 @@ literal|false
 expr_stmt|;
 block|}
 break|break;
+case|case
+name|MAY
+case|:
+case|case
+name|OK
+case|:
 default|default:
 break|break;
 block|}

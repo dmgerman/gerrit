@@ -336,6 +336,12 @@ operator|.
 name|isAllowRegisterNewEmail
 argument_list|()
 return|;
+case|case
+name|FULL_NAME
+case|:
+case|case
+name|USER_NAME
+case|:
 default|default:
 return|return
 literal|true

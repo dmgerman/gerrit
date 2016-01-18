@@ -2857,6 +2857,12 @@ name|toggleShowIntraline
 argument_list|()
 expr_stmt|;
 break|break;
+case|case
+name|FAILURE
+case|:
+case|case
+name|TIMEOUT
+case|:
 default|default:
 break|break;
 block|}
