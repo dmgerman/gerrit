@@ -282,6 +282,8 @@ name|change1
 init|=
 name|insert
 argument_list|(
+name|repo
+argument_list|,
 name|newChangeForCommit
 argument_list|(
 name|repo
@@ -316,6 +318,8 @@ name|change2
 init|=
 name|insert
 argument_list|(
+name|repo
+argument_list|,
 name|newChangeForCommit
 argument_list|(
 name|repo

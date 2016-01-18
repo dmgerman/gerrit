@@ -1592,6 +1592,9 @@ argument_list|,
 name|cherryPickCommit
 argument_list|,
 name|refControl
+operator|.
+name|getRefName
+argument_list|()
 argument_list|,
 name|identifiedUser
 argument_list|,
@@ -1865,7 +1868,7 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|createNewChange (Repository git, RevWalk revWalk, ObjectInserter oi, Project.NameKey project, CodeReviewCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser, String topic, Branch.NameKey sourceBranch)
+DECL|method|createNewChange (Repository git, RevWalk revWalk, ObjectInserter oi, Project.NameKey project, CodeReviewCommit cherryPickCommit, String refName, IdentifiedUser identifiedUser, String topic, Branch.NameKey sourceBranch)
 specifier|private
 name|Change
 operator|.
@@ -1889,8 +1892,8 @@ parameter_list|,
 name|CodeReviewCommit
 name|cherryPickCommit
 parameter_list|,
-name|RefControl
-name|refControl
+name|String
+name|refName
 parameter_list|,
 name|IdentifiedUser
 name|identifiedUser
@@ -1935,11 +1938,11 @@ name|changeInserterFactory
 operator|.
 name|create
 argument_list|(
-name|refControl
-argument_list|,
 name|changeId
 argument_list|,
 name|cherryPickCommit
+argument_list|,
+name|refName
 argument_list|)
 operator|.
 name|setValidatePolicy

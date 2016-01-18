@@ -1653,11 +1653,11 @@ name|changeInserterFactory
 operator|.
 name|create
 argument_list|(
-name|refControl
-argument_list|,
 name|changeId
 argument_list|,
 name|c
+argument_list|,
+name|refName
 argument_list|)
 operator|.
 name|setValidatePolicy
