@@ -186,7 +186,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|CurrentUser
 import|;
 end_import
 
@@ -512,12 +512,6 @@ specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|IdentifiedUser
-name|user
-decl_stmt|;
 DECL|field|projectAccessFactory
 specifier|private
 specifier|final
@@ -534,7 +528,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectAccess (ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsNameProvider allProjects, Provider<SetParent> setParent, ChangeHooks hooks, GitReferenceUpdated gitRefUpdated, IdentifiedUser user, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ChangeProjectAccess (ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsNameProvider allProjects, Provider<SetParent> setParent, ChangeHooks hooks, GitReferenceUpdated gitRefUpdated, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 parameter_list|(
 name|ProjectAccessFactory
@@ -572,9 +566,6 @@ name|hooks
 parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
-parameter_list|,
-name|IdentifiedUser
-name|user
 parameter_list|,
 annotation|@
 name|Assisted
@@ -670,22 +661,16 @@ name|gitRefUpdated
 operator|=
 name|gitRefUpdated
 expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
-expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateProjectConfig (ProjectControl ctl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
+DECL|method|updateProjectConfig (CurrentUser user, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 name|ProjectAccess
 name|updateProjectConfig
 parameter_list|(
-name|ProjectControl
-name|ctl
+name|CurrentUser
+name|user
 parameter_list|,
 name|ProjectConfig
 name|config
@@ -767,6 +752,9 @@ name|getId
 argument_list|()
 argument_list|,
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 operator|.
 name|getAccount
 argument_list|()

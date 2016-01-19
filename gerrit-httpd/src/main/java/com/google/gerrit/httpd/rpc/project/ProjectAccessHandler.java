@@ -300,6 +300,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|GroupBackend
@@ -1181,6 +1195,9 @@ return|return
 name|updateProjectConfig
 argument_list|(
 name|projectControl
+operator|.
+name|getUser
+argument_list|()
 argument_list|,
 name|config
 argument_list|,
@@ -1205,14 +1222,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|updateProjectConfig (ProjectControl ctl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
+DECL|method|updateProjectConfig (CurrentUser user, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 specifier|abstract
 name|T
 name|updateProjectConfig
 parameter_list|(
-name|ProjectControl
-name|ctl
+name|CurrentUser
+name|user
 parameter_list|,
 name|ProjectConfig
 name|config
