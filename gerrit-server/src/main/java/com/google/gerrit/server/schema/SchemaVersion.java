@@ -1000,7 +1000,7 @@ init|)
 block|{
 name|s
 operator|.
-name|renameField
+name|renameColumn
 argument_list|(
 name|e
 argument_list|,
