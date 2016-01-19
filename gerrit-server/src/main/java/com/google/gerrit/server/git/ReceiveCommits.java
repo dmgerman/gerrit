@@ -11435,6 +11435,13 @@ name|getRefName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ins
+operator|.
+name|setUpdateRefCommand
+argument_list|(
+name|cmd
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|insertChange ()
 name|CheckedFuture
@@ -11807,7 +11814,7 @@ argument_list|)
 operator|.
 name|setUpdateRef
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
