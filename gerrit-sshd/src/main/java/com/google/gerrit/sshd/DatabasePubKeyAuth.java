@@ -234,7 +234,7 @@ name|sshd
 operator|.
 name|common
 operator|.
-name|KeyPairProvider
+name|SshException
 import|;
 end_import
 
@@ -248,7 +248,9 @@ name|sshd
 operator|.
 name|common
 operator|.
-name|SshException
+name|keyprovider
+operator|.
+name|KeyPairProvider
 import|;
 end_import
 
@@ -264,7 +266,9 @@ name|common
 operator|.
 name|util
 operator|.
-name|Buffer
+name|buffer
+operator|.
+name|ByteArrayBuffer
 import|;
 end_import
 
@@ -277,6 +281,10 @@ operator|.
 name|sshd
 operator|.
 name|server
+operator|.
+name|auth
+operator|.
+name|pubkey
 operator|.
 name|PublickeyAuthenticator
 import|;
@@ -1321,7 +1329,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|Buffer
+name|ByteArrayBuffer
 argument_list|(
 name|bin
 argument_list|)

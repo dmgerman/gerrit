@@ -254,11 +254,11 @@ name|apache
 operator|.
 name|sshd
 operator|.
-name|server
+name|common
 operator|.
 name|session
 operator|.
-name|ServerSession
+name|AbstractSession
 import|;
 end_import
 
@@ -303,6 +303,16 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -515,13 +525,10 @@ name|values
 argument_list|()
 control|)
 block|{
-name|ServerSession
+name|AbstractSession
 name|serverSession
 init|=
-operator|(
-name|ServerSession
-operator|)
-name|ServerSession
+name|AbstractSession
 operator|.
 name|getSession
 argument_list|(
@@ -611,7 +618,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|InterruptedException
+name|IOException
 name|e
 parameter_list|)
 block|{

@@ -392,7 +392,11 @@ name|sshd
 operator|.
 name|server
 operator|.
-name|PublickeyAuthenticator
+name|auth
+operator|.
+name|gss
+operator|.
+name|GSSAuthenticator
 import|;
 end_import
 
@@ -408,9 +412,9 @@ name|server
 operator|.
 name|auth
 operator|.
-name|gss
+name|pubkey
 operator|.
-name|GSSAuthenticator
+name|PublickeyAuthenticator
 import|;
 end_import
 
