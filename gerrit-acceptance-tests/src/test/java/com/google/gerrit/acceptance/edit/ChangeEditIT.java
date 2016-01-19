@@ -1563,7 +1563,7 @@ literal|"Uploaded patch set 1."
 argument_list|,
 literal|"Uploaded patch set 2."
 argument_list|,
-literal|"Patch set 3: Published edit on patch set 2."
+literal|"Patch Set 3: Published edit on patch set 2."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1736,7 +1736,7 @@ literal|"Uploaded patch set 1."
 argument_list|,
 literal|"Uploaded patch set 2."
 argument_list|,
-literal|"Patch set 3: Published edit on patch set 2."
+literal|"Patch Set 3: Published edit on patch set 2."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3357,7 +3357,7 @@ literal|"Uploaded patch set 1."
 argument_list|,
 literal|"Uploaded patch set 2."
 argument_list|,
-literal|"Patch set 3: Commit message was updated."
+literal|"Patch Set 3: Commit message was updated."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3605,7 +3605,7 @@ literal|"Uploaded patch set 1."
 argument_list|,
 literal|"Uploaded patch set 2."
 argument_list|,
-literal|"Patch set 3: Commit message was updated."
+literal|"Patch Set 3: Commit message was updated."
 argument_list|)
 argument_list|)
 expr_stmt|;
