@@ -1009,6 +1009,11 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
+name|changeData
+operator|.
+name|notes
+argument_list|()
+argument_list|,
 name|patchSet
 operator|.
 name|getId
@@ -1019,6 +1024,8 @@ block|}
 catch|catch
 parameter_list|(
 name|PatchSetInfoNotAvailableException
+decl||
+name|OrmException
 name|err
 parameter_list|)
 block|{

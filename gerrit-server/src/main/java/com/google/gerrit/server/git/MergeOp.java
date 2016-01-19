@@ -848,6 +848,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|ChangeUpdate
 import|;
 end_import
@@ -6814,9 +6830,9 @@ name|c
 operator|=
 name|setMergedPatchSet
 argument_list|(
-name|c
+name|commit
 operator|.
-name|getId
+name|notes
 argument_list|()
 argument_list|,
 name|mergedId
@@ -7022,15 +7038,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setMergedPatchSet (Change.Id changeId, final PatchSet.Id merged)
+DECL|method|setMergedPatchSet (final ChangeNotes notes, final PatchSet.Id merged)
 specifier|private
 name|Change
 name|setMergedPatchSet
 parameter_list|(
-name|Change
-operator|.
-name|Id
-name|changeId
+specifier|final
+name|ChangeNotes
+name|notes
 parameter_list|,
 specifier|final
 name|PatchSet
@@ -7049,7 +7064,10 @@ argument_list|()
 operator|.
 name|atomicUpdate
 argument_list|(
-name|changeId
+name|notes
+operator|.
+name|getChangeId
+argument_list|()
 argument_list|,
 operator|new
 name|AtomicUpdate
@@ -7114,6 +7132,8 @@ operator|.
 name|get
 argument_list|(
 name|db
+argument_list|,
+name|notes
 argument_list|,
 name|merged
 argument_list|)

@@ -764,6 +764,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -1697,6 +1713,14 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|notesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+decl_stmt|;
 comment|/** Queue of hooks that need to run. */
 DECL|field|hookQueue
 specifier|private
@@ -1747,7 +1771,7 @@ decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (WorkQueue queue, GitRepositoryManager repoManager, @GerritServerConfig Config config, @AnonymousCowardName String anonymousCowardName, SitePaths sitePath, ProjectCache projectCache, AccountCache accountCache, EventFactory eventFactory, DynamicSet<EventListener> unrestrictedListeners)
+DECL|method|ChangeHookRunner (WorkQueue queue, GitRepositoryManager repoManager, ChangeNotes.Factory notesFactory, @GerritServerConfig Config config, @AnonymousCowardName String anonymousCowardName, SitePaths sitePath, ProjectCache projectCache, AccountCache accountCache, EventFactory eventFactory, DynamicSet<EventListener> unrestrictedListeners)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
@@ -1756,6 +1780,11 @@ name|queue
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1797,6 +1826,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|notesFactory
+operator|=
+name|notesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2072,6 +2107,24 @@ name|build
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|newNotes (Change change)
+specifier|private
+name|ChangeNotes
+name|newNotes
+parameter_list|(
+name|Change
+name|change
+parameter_list|)
+block|{
+return|return
+name|notesFactory
+operator|.
+name|create
+argument_list|(
+name|change
+argument_list|)
+return|;
 block|}
 DECL|method|hook (Config config, Path path, String name)
 specifier|private
@@ -2535,6 +2588,14 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|change
+argument_list|)
+decl_stmt|;
 name|PatchSetCreatedEvent
 name|event
 init|=
@@ -2587,7 +2648,7 @@ name|patchSet
 operator|=
 name|patchSetAttributeSupplier
 argument_list|(
-name|change
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)
@@ -2830,6 +2891,14 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|change
+argument_list|)
+decl_stmt|;
 name|DraftPublishedEvent
 name|event
 init|=
@@ -2882,7 +2951,7 @@ name|patchSet
 operator|=
 name|patchSetAttributeSupplier
 argument_list|(
-name|change
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)
@@ -3108,6 +3177,14 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|change
+argument_list|)
+decl_stmt|;
 name|CommentAddedEvent
 name|event
 init|=
@@ -3155,7 +3232,7 @@ name|patchSet
 operator|=
 name|patchSetAttributeSupplier
 argument_list|(
-name|change
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)
@@ -3571,6 +3648,14 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|change
+argument_list|)
+decl_stmt|;
 name|ChangeMergedEvent
 name|event
 init|=
@@ -3618,7 +3703,7 @@ name|patchSet
 operator|=
 name|patchSetAttributeSupplier
 argument_list|(
-name|change
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)
@@ -3823,6 +3908,14 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|change
+argument_list|)
+decl_stmt|;
 name|MergeFailedEvent
 name|event
 init|=
@@ -3870,7 +3963,7 @@ name|patchSet
 operator|=
 name|patchSetAttributeSupplier
 argument_list|(
-name|change
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)
@@ -4081,6 +4174,14 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|change
+argument_list|)
+decl_stmt|;
 name|ChangeAbandonedEvent
 name|event
 init|=
@@ -4127,7 +4228,7 @@ name|patchSet
 operator|=
 name|patchSetAttributeSupplier
 argument_list|(
-name|change
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)
@@ -4335,6 +4436,14 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|change
+argument_list|)
+decl_stmt|;
 name|ChangeRestoredEvent
 name|event
 init|=
@@ -4381,7 +4490,7 @@ name|patchSet
 operator|=
 name|patchSetAttributeSupplier
 argument_list|(
-name|change
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)
@@ -4826,6 +4935,14 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|change
+argument_list|)
+decl_stmt|;
 name|ReviewerAddedEvent
 name|event
 init|=
@@ -4864,7 +4981,7 @@ name|patchSet
 operator|=
 name|patchSetAttributeSupplier
 argument_list|(
-name|change
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)
@@ -5862,7 +5979,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|patchSetAttributeSupplier ( final Change change, final PatchSet patchSet)
+DECL|method|patchSetAttributeSupplier ( final ChangeNotes notes, final PatchSet patchSet)
 specifier|private
 name|Supplier
 argument_list|<
@@ -5871,8 +5988,8 @@ argument_list|>
 name|patchSetAttributeSupplier
 parameter_list|(
 specifier|final
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|,
 specifier|final
 name|PatchSet
@@ -5907,7 +6024,10 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|getProject
 argument_list|()
@@ -5929,6 +6049,8 @@ operator|.
 name|asPatchSetAttribute
 argument_list|(
 name|revWalk
+argument_list|,
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)

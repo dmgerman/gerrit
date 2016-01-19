@@ -1662,7 +1662,7 @@ name|includeFiles
 argument_list|,
 name|d
 operator|.
-name|change
+name|notes
 argument_list|()
 argument_list|,
 name|labelTypes
@@ -1703,6 +1703,11 @@ name|get
 argument_list|()
 argument_list|,
 name|rw
+argument_list|,
+name|d
+operator|.
+name|notes
+argument_list|()
 argument_list|,
 name|current
 argument_list|)
