@@ -13480,6 +13480,27 @@ expr_stmt|;
 block|}
 block|}
 block|}
+catch|catch
+parameter_list|(
+name|OrmException
+decl||
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Failed to insert patch set"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
 finally|finally
 block|{
 synchronized|synchronized
