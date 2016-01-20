@@ -889,22 +889,29 @@ specifier|protected
 name|String
 name|groups
 decl_stmt|;
+comment|//DELETED id = 7 (pushCertficate)
 comment|/** Certificate sent with a push that created this patch set. */
 annotation|@
 name|Column
 argument_list|(
 name|id
 operator|=
-literal|7
+literal|8
 argument_list|,
 name|notNull
 operator|=
 literal|false
+argument_list|,
+name|length
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
-DECL|field|pushCertficate
+DECL|field|pushCertificate
 specifier|protected
 name|String
-name|pushCertficate
+name|pushCertificate
 decl_stmt|;
 DECL|method|PatchSet ()
 specifier|protected
@@ -1113,7 +1120,7 @@ name|getPushCertificate
 parameter_list|()
 block|{
 return|return
-name|pushCertficate
+name|pushCertificate
 return|;
 block|}
 DECL|method|setPushCertificate (String cert)
@@ -1125,7 +1132,7 @@ name|String
 name|cert
 parameter_list|)
 block|{
-name|pushCertficate
+name|pushCertificate
 operator|=
 name|cert
 expr_stmt|;
