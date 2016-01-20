@@ -1706,10 +1706,10 @@ literal|"Uploaded patch set %s."
 argument_list|,
 name|ins
 operator|.
-name|getPatchSet
+name|getPatchSetId
 argument_list|()
 operator|.
-name|getPatchSetId
+name|get
 argument_list|()
 argument_list|)
 argument_list|)

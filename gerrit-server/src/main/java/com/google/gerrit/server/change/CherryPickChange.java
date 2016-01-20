@@ -1889,14 +1889,6 @@ name|isDraft
 argument_list|()
 argument_list|)
 operator|.
-name|setUploader
-argument_list|(
-name|identifiedUser
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-operator|.
 name|setSendMail
 argument_list|(
 literal|false
@@ -2013,10 +2005,7 @@ name|messageForDestinationChange
 argument_list|(
 name|ins
 operator|.
-name|getPatchSet
-argument_list|()
-operator|.
-name|getId
+name|getPatchSetId
 argument_list|()
 argument_list|,
 name|sourceBranch

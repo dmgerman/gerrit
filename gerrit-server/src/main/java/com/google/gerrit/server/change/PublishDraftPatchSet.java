@@ -1699,6 +1699,9 @@ argument_list|(
 name|accountResolver
 argument_list|,
 name|patchSet
+operator|.
+name|isDraft
+argument_list|()
 argument_list|,
 name|footerLines
 argument_list|)

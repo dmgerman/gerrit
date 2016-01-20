@@ -528,6 +528,31 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|getDefaultGroups (ObjectId commit)
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getDefaultGroups
+parameter_list|(
+name|ObjectId
+name|commit
+parameter_list|)
+block|{
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|commit
+operator|.
+name|name
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|getGroups (RevisionResource rsrc)
 specifier|public
 specifier|static

@@ -3316,17 +3316,6 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
-name|setUploader
-argument_list|(
-name|user
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-operator|.
 name|setMessage
 argument_list|(
 literal|"Patch set for merged commit inserted by consistency checker"
