@@ -1758,24 +1758,6 @@ literal|" is read-only"
 argument_list|)
 throw|;
 block|}
-DECL|method|getProjectName (Change change)
-specifier|static
-name|Project
-operator|.
-name|NameKey
-name|getProjectName
-parameter_list|(
-name|Change
-name|change
-parameter_list|)
-block|{
-return|return
-name|change
-operator|.
-name|getProject
-argument_list|()
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|getProjectName ()
@@ -1787,11 +1769,11 @@ name|getProjectName
 parameter_list|()
 block|{
 return|return
-name|getProjectName
-argument_list|(
 name|getChange
 argument_list|()
-argument_list|)
+operator|.
+name|getProject
+argument_list|()
 return|;
 block|}
 block|}

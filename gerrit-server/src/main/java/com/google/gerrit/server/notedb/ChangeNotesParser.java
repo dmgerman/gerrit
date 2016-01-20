@@ -1030,12 +1030,10 @@ name|repoManager
 operator|.
 name|openMetadataRepository
 argument_list|(
-name|ChangeNotes
-operator|.
-name|getProjectName
-argument_list|(
 name|change
-argument_list|)
+operator|.
+name|getProject
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|approvals
