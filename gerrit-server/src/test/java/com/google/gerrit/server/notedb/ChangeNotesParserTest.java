@@ -333,6 +333,8 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
 literal|"Patch-Set: 1\n"
 argument_list|)
 expr_stmt|;
@@ -413,6 +415,8 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Status: NEW\n"
@@ -423,6 +427,8 @@ argument_list|(
 literal|"Update change\n"
 operator|+
 literal|"\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -470,6 +476,8 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
 literal|"Patch-Set: 1\n"
 argument_list|)
 expr_stmt|;
@@ -496,6 +504,8 @@ argument_list|(
 literal|"Update change\n"
 operator|+
 literal|"\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
 argument_list|)
@@ -526,6 +536,8 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Label: Label1=+1\n"
@@ -542,6 +554,8 @@ argument_list|(
 literal|"Update change\n"
 operator|+
 literal|"\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -633,6 +647,8 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Submitted-with: NOT_READY\n"
@@ -709,6 +725,8 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Submission-id: 1-1453387607626-96fabc25"
@@ -743,6 +761,8 @@ argument_list|(
 literal|"Update change\n"
 operator|+
 literal|"\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -779,6 +799,8 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Topic: Some Topic"
@@ -789,6 +811,8 @@ argument_list|(
 literal|"Update change\n"
 operator|+
 literal|"\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -806,6 +830,52 @@ operator|+
 literal|"Topic: Some Topic\n"
 operator|+
 literal|"Topic: Other Topic"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseBranch ()
+specifier|public
+name|void
+name|parseBranch
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Patch-Set: 1"
+argument_list|)
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Branch: master\n"
+operator|+
+literal|"Patch-Set: 1"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Branch: refs/heads/stable"
 argument_list|)
 expr_stmt|;
 block|}

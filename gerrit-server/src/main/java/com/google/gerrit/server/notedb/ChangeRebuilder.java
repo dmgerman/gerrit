@@ -983,6 +983,8 @@ argument_list|(
 operator|new
 name|PatchSetEvent
 argument_list|(
+name|change
+argument_list|,
 name|ps
 argument_list|)
 argument_list|)
@@ -2092,15 +2094,24 @@ name|PatchSetEvent
 extends|extends
 name|Event
 block|{
+DECL|field|change
+specifier|private
+specifier|final
+name|Change
+name|change
+decl_stmt|;
 DECL|field|ps
 specifier|private
 specifier|final
 name|PatchSet
 name|ps
 decl_stmt|;
-DECL|method|PatchSetEvent (PatchSet ps)
+DECL|method|PatchSetEvent (Change change, PatchSet ps)
 name|PatchSetEvent
 parameter_list|(
+name|Change
+name|change
+parameter_list|,
 name|PatchSet
 name|ps
 parameter_list|)
@@ -2122,6 +2133,12 @@ operator|.
 name|getCreatedOn
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|change
+operator|=
+name|change
 expr_stmt|;
 name|this
 operator|.
@@ -2160,6 +2177,19 @@ operator|.
 name|setSubject
 argument_list|(
 literal|"Create change"
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setBranch
+argument_list|(
+name|change
+operator|.
+name|getDest
+argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -2111,6 +2111,27 @@ block|}
 end_function
 
 begin_function
+DECL|method|setDest (Branch.NameKey dest)
+specifier|public
+name|void
+name|setDest
+parameter_list|(
+name|Branch
+operator|.
+name|NameKey
+name|dest
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dest
+operator|=
+name|dest
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|method|getProject ()
 specifier|public
 name|Project
