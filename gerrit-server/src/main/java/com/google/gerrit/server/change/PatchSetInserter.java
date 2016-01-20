@@ -1487,6 +1487,18 @@ argument_list|(
 name|psId
 argument_list|)
 decl_stmt|;
+name|update
+operator|.
+name|setSubject
+argument_list|(
+literal|"Create patch set "
+operator|+
+name|psId
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!

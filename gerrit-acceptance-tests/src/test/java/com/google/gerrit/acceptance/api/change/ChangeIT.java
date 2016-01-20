@@ -6842,6 +6842,19 @@ name|getObjectId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|assertThat
+argument_list|(
+name|commitPatchSetCreation
+operator|.
+name|getShortMessage
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Create patch set 2"
+argument_list|)
+expr_stmt|;
 name|PersonIdent
 name|expectedAuthor
 init|=
@@ -6940,6 +6953,19 @@ literal|0
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|assertThat
+argument_list|(
+name|commitChangeCreation
+operator|.
+name|getShortMessage
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Create change"
+argument_list|)
+expr_stmt|;
 name|expectedAuthor
 operator|=
 name|ChangeNoteUtil

@@ -2043,6 +2043,13 @@ argument_list|)
 decl_stmt|;
 name|update
 operator|.
+name|setSubject
+argument_list|(
+literal|"Create change"
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
 name|setTopic
 argument_list|(
 name|change

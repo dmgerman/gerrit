@@ -774,6 +774,19 @@ name|getObjectId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|assertThat
+argument_list|(
+name|commit
+operator|.
+name|getShortMessage
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Create change"
+argument_list|)
+expr_stmt|;
 name|PersonIdent
 name|expectedAuthor
 init|=
