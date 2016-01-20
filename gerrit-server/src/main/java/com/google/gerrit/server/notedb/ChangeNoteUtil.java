@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -349,7 +363,10 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|VisibleForTesting
 DECL|method|newIdent (Account author, Date when, PersonIdent serverIdent, String anonymousCowardName)
+specifier|public
 specifier|static
 name|PersonIdent
 name|newIdent
