@@ -1182,7 +1182,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -1205,7 +1205,9 @@ literal|null
 condition|)
 block|{
 comment|// Took the fast-forward option, nothing to do.
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|rebaseOp
 operator|.
@@ -1336,6 +1338,9 @@ name|caller
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override

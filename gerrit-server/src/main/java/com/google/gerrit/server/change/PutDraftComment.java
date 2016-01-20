@@ -936,7 +936,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -1256,6 +1256,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 block|}
 DECL|method|update (PatchLineComment e, DraftInput in)

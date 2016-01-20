@@ -1117,7 +1117,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -1136,7 +1136,9 @@ literal|null
 condition|)
 block|{
 comment|// Merge conflict; don't update change.
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|PatchSet
 name|prevPs
@@ -1316,6 +1318,9 @@ name|caller
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 DECL|class|CherryPickMultipleParentsOp

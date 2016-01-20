@@ -844,7 +844,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -883,7 +883,9 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 comment|// Nothing to do.
 block|}
 if|if
@@ -954,6 +956,9 @@ argument_list|(
 name|ctx
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override

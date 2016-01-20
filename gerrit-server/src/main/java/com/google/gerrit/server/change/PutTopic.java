@@ -788,7 +788,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -850,7 +850,9 @@ name|newTopicName
 argument_list|)
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|String
 name|summary
@@ -1002,6 +1004,9 @@ argument_list|,
 name|cmsg
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override

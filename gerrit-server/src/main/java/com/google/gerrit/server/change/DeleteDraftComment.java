@@ -661,7 +661,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -704,7 +704,9 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 comment|// Nothing to do.
 block|}
 name|PatchSet
@@ -803,6 +805,9 @@ name|c
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 block|}

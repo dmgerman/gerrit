@@ -1337,7 +1337,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -1435,6 +1435,9 @@ argument_list|(
 name|ctx
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 DECL|method|saveChange (ChangeContext ctx)
 specifier|private

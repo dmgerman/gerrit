@@ -2774,7 +2774,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -2885,6 +2885,9 @@ name|saveChange
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+name|dirty
+return|;
 block|}
 annotation|@
 name|Override

@@ -1152,7 +1152,7 @@ literal|"unused"
 argument_list|)
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -1160,7 +1160,11 @@ name|ctx
 parameter_list|)
 throws|throws
 name|Exception
-block|{     }
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|// TODO(dborowitz): Support async operations?
 annotation|@
 name|SuppressWarnings
@@ -2743,6 +2747,11 @@ expr_stmt|;
 name|ChangeContext
 name|ctx
 decl_stmt|;
+name|boolean
+name|dirty
+init|=
+literal|false
+decl_stmt|;
 try|try
 block|{
 name|ctx
@@ -2763,6 +2772,8 @@ name|getValue
 argument_list|()
 control|)
 block|{
+name|dirty
+operator||=
 name|op
 operator|.
 name|updateChange
@@ -2846,11 +2857,17 @@ name|changes
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|dirty
+condition|)
+block|{
 name|db
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -2860,6 +2877,11 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|dirty
+condition|)
+block|{
 name|BatchMetaDataUpdate
 name|bmdu
 init|=
@@ -2948,6 +2970,7 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

@@ -1028,7 +1028,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -1041,13 +1041,16 @@ name|InvalidChangeOperationException
 throws|,
 name|IOException
 block|{
+name|boolean
+name|ret
+init|=
 name|patchSetInserter
 operator|.
 name|updateChange
 argument_list|(
 name|ctx
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|rebasedPatchSet
 operator|=
 name|patchSetInserter
@@ -1055,6 +1058,9 @@ operator|.
 name|getPatchSet
 argument_list|()
 expr_stmt|;
+return|return
+name|ret
+return|;
 block|}
 annotation|@
 name|Override

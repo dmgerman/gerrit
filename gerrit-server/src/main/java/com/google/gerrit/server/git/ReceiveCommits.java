@@ -11990,14 +11990,12 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|ctx
 operator|.
@@ -12013,6 +12011,9 @@ operator|.
 name|topic
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 argument_list|)
