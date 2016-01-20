@@ -669,6 +669,9 @@ case|:
 case|case
 name|MODIFIED
 case|:
+case|case
+name|REWRITE
+case|:
 name|oldName
 operator|=
 literal|null
