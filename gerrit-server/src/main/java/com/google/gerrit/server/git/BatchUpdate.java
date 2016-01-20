@@ -420,6 +420,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -1878,6 +1894,12 @@ specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 decl_stmt|;
+DECL|field|notesMigration
+specifier|private
+specifier|final
+name|NotesMigration
+name|notesMigration
+decl_stmt|;
 DECL|field|project
 specifier|private
 specifier|final
@@ -2000,7 +2022,7 @@ name|order
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|BatchUpdate (GitRepositoryManager repoManager, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, GitReferenceUpdated gitRefUpdated, @GerritPersonIdent PersonIdent serverIdent, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
+DECL|method|BatchUpdate (GitRepositoryManager repoManager, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, GitReferenceUpdated gitRefUpdated, NotesMigration notesMigration, @GerritPersonIdent PersonIdent serverIdent, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
 name|BatchUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -2021,6 +2043,9 @@ name|changeUpdateFactory
 parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
+parameter_list|,
+name|NotesMigration
+name|notesMigration
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -2085,6 +2110,12 @@ operator|.
 name|gitRefUpdated
 operator|=
 name|gitRefUpdated
+expr_stmt|;
+name|this
+operator|.
+name|notesMigration
+operator|=
+name|notesMigration
 expr_stmt|;
 name|this
 operator|.
@@ -3059,7 +3090,9 @@ block|}
 comment|// Pass in preloaded change to controlFor, to avoid:
 comment|//  - reading from a db that does not belong to this update
 comment|//  - attempting to read a change that doesn't exist yet
-return|return
+name|ChangeContext
+name|ctx
+init|=
 operator|new
 name|ChangeContext
 argument_list|(
@@ -3078,6 +3111,26 @@ argument_list|(
 name|db
 argument_list|)
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|notesMigration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
+block|{
+name|ctx
+operator|.
+name|getNotes
+argument_list|()
+operator|.
+name|load
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|ctx
 return|;
 block|}
 DECL|method|executePostOps ()
