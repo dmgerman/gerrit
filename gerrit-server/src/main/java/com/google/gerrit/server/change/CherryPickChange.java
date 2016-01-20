@@ -1912,8 +1912,6 @@ throws|,
 name|UpdateException
 throws|,
 name|OrmException
-throws|,
-name|IOException
 block|{
 name|Change
 operator|.

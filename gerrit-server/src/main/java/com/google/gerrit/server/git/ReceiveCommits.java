@@ -11578,8 +11578,6 @@ name|Void
 name|call
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
 name|OrmException
 throws|,
 name|RestApiException
@@ -11659,8 +11657,6 @@ name|ReviewDb
 name|threadLocalDb
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
 name|OrmException
 throws|,
 name|RestApiException

@@ -1285,8 +1285,6 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|change
 operator|=
@@ -1390,8 +1388,6 @@ parameter_list|(
 name|RevCommit
 name|commit
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|List
 argument_list|<
@@ -1440,6 +1436,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+try|try
+block|{
 name|ObjectId
 name|id
 init|=
@@ -1506,6 +1504,21 @@ name|toString
 argument_list|()
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|method|getChange ()
 specifier|public

@@ -1197,8 +1197,6 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
 block|}
 DECL|class|ChainedReceiveCommands
@@ -2384,8 +2382,6 @@ parameter_list|(
 name|InsertChangeOp
 name|op
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Context
 name|ctx
