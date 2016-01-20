@@ -3755,13 +3755,6 @@ argument_list|(
 name|c
 argument_list|)
 decl_stmt|;
-name|notes
-operator|=
-name|newNotes
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
 name|assertThat
 argument_list|(
 name|notes
