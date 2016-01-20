@@ -2000,6 +2000,23 @@ block|}
 end_function
 
 begin_function
+DECL|method|setCreatedOn (Timestamp ts)
+specifier|public
+name|void
+name|setCreatedOn
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
+block|{
+name|createdOn
+operator|=
+name|ts
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|method|getLastUpdatedOn ()
 specifier|public
 name|Timestamp
@@ -2054,6 +2071,27 @@ block|{
 return|return
 name|owner
 return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setOwner (Account.Id owner)
+specifier|public
+name|void
+name|setOwner
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|owner
+parameter_list|)
+block|{
+name|this
+operator|.
+name|owner
+operator|=
+name|owner
+expr_stmt|;
 block|}
 end_function
 
