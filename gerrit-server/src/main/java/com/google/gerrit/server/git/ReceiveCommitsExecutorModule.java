@@ -308,11 +308,11 @@ name|Provides
 annotation|@
 name|Singleton
 annotation|@
-name|EmailReviewCommentsExecutor
-DECL|method|createEmailReviewCommentsExecutor ( @erritServerConfig Config config, WorkQueue queues)
+name|SendEmailExecutor
+DECL|method|createSendEmailExecutor ( @erritServerConfig Config config, WorkQueue queues)
 specifier|public
 name|ExecutorService
-name|createEmailReviewCommentsExecutor
+name|createSendEmailExecutor
 parameter_list|(
 annotation|@
 name|GerritServerConfig
@@ -360,7 +360,7 @@ name|createQueue
 argument_list|(
 name|poolSize
 argument_list|,
-literal|"EmailReviewComments"
+literal|"SendEmail"
 argument_list|)
 return|;
 block|}

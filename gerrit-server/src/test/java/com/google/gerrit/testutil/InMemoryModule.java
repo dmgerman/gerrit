@@ -482,22 +482,6 @@ name|server
 operator|.
 name|git
 operator|.
-name|EmailReviewCommentsExecutor
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|GarbageCollection
 import|;
 end_import
@@ -531,6 +515,22 @@ operator|.
 name|git
 operator|.
 name|PerThreadRequestScope
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|SendEmailExecutor
 import|;
 end_import
 
@@ -1692,11 +1692,11 @@ name|Provides
 annotation|@
 name|Singleton
 annotation|@
-name|EmailReviewCommentsExecutor
-DECL|method|createEmailReviewCommentsExecutor ()
+name|SendEmailExecutor
+DECL|method|createSendEmailExecutor ()
 specifier|public
 name|ExecutorService
-name|createEmailReviewCommentsExecutor
+name|createSendEmailExecutor
 parameter_list|()
 block|{
 return|return
