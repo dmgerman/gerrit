@@ -1425,8 +1425,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-try|try
-block|{
 name|ObjectId
 name|id
 init|=
@@ -1493,21 +1491,6 @@ name|toString
 argument_list|()
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|getPatchSetId ()
 specifier|public
