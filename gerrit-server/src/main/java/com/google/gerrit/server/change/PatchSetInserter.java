@@ -1392,7 +1392,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -1680,13 +1680,6 @@ argument_list|(
 name|patchSetInfo
 argument_list|)
 expr_stmt|;
-name|ChangeUtil
-operator|.
-name|updated
-argument_list|(
-name|change
-argument_list|)
-expr_stmt|;
 name|ctx
 operator|.
 name|saveChange
@@ -1728,6 +1721,9 @@ name|changeMessage
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override

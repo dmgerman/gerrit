@@ -188,6 +188,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|MergeTip
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -350,7 +366,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, CommitStatus commits)
+DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commits, String submissionId)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -387,8 +403,14 @@ parameter_list|,
 name|IdentifiedUser
 name|caller
 parameter_list|,
+name|MergeTip
+name|mergeTip
+parameter_list|,
 name|CommitStatus
 name|commits
+parameter_list|,
+name|String
+name|submissionId
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -410,6 +432,8 @@ name|rw
 argument_list|,
 name|caller
 argument_list|,
+name|mergeTip
+argument_list|,
 name|inserter
 argument_list|,
 name|repo
@@ -419,6 +443,8 @@ argument_list|,
 name|db
 argument_list|,
 name|alreadyAccepted
+argument_list|,
+name|submissionId
 argument_list|)
 decl_stmt|;
 switch|switch

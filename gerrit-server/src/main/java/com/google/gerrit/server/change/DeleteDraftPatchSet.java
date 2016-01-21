@@ -280,20 +280,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|PatchSetUtil
 import|;
 end_import
@@ -844,7 +830,7 @@ annotation|@
 name|Override
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -883,7 +869,9 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 comment|// Nothing to do.
 block|}
 if|if
@@ -954,6 +942,9 @@ argument_list|(
 name|ctx
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override
@@ -1212,13 +1203,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|ChangeUtil
-operator|.
-name|updated
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
 name|ctx
 operator|.
 name|saveChange

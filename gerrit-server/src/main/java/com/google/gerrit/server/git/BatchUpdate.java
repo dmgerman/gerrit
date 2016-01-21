@@ -420,6 +420,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -1152,7 +1168,7 @@ literal|"unused"
 argument_list|)
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
+name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
@@ -1160,7 +1176,11 @@ name|ctx
 parameter_list|)
 throws|throws
 name|Exception
-block|{     }
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|// TODO(dborowitz): Support async operations?
 annotation|@
 name|SuppressWarnings
@@ -1874,6 +1894,12 @@ specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 decl_stmt|;
+DECL|field|notesMigration
+specifier|private
+specifier|final
+name|NotesMigration
+name|notesMigration
+decl_stmt|;
 DECL|field|project
 specifier|private
 specifier|final
@@ -1996,7 +2022,7 @@ name|order
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|BatchUpdate (GitRepositoryManager repoManager, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, GitReferenceUpdated gitRefUpdated, @GerritPersonIdent PersonIdent serverIdent, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
+DECL|method|BatchUpdate (GitRepositoryManager repoManager, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, GitReferenceUpdated gitRefUpdated, NotesMigration notesMigration, @GerritPersonIdent PersonIdent serverIdent, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
 name|BatchUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -2017,6 +2043,9 @@ name|changeUpdateFactory
 parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
+parameter_list|,
+name|NotesMigration
+name|notesMigration
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -2081,6 +2110,12 @@ operator|.
 name|gitRefUpdated
 operator|=
 name|gitRefUpdated
+expr_stmt|;
+name|this
+operator|.
+name|notesMigration
+operator|=
+name|notesMigration
 expr_stmt|;
 name|this
 operator|.
@@ -2743,6 +2778,11 @@ expr_stmt|;
 name|ChangeContext
 name|ctx
 decl_stmt|;
+name|boolean
+name|dirty
+init|=
+literal|false
+decl_stmt|;
 try|try
 block|{
 name|ctx
@@ -2763,6 +2803,8 @@ name|getValue
 argument_list|()
 control|)
 block|{
+name|dirty
+operator||=
 name|op
 operator|.
 name|updateChange
@@ -2771,6 +2813,19 @@ name|ctx
 argument_list|)
 expr_stmt|;
 block|}
+name|ctx
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|setLastUpdatedOn
+argument_list|(
+name|ctx
+operator|.
+name|getWhen
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Iterable
 argument_list|<
 name|Change
@@ -2846,11 +2901,17 @@ name|changes
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|dirty
+condition|)
+block|{
 name|db
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -2860,6 +2921,11 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|dirty
+condition|)
+block|{
 name|BatchMetaDataUpdate
 name|bmdu
 init|=
@@ -2951,6 +3017,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|Exception
@@ -3023,7 +3090,9 @@ block|}
 comment|// Pass in preloaded change to controlFor, to avoid:
 comment|//  - reading from a db that does not belong to this update
 comment|//  - attempting to read a change that doesn't exist yet
-return|return
+name|ChangeContext
+name|ctx
+init|=
 operator|new
 name|ChangeContext
 argument_list|(
@@ -3042,6 +3111,26 @@ argument_list|(
 name|db
 argument_list|)
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|notesMigration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
+block|{
+name|ctx
+operator|.
+name|getNotes
+argument_list|()
+operator|.
+name|load
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|ctx
 return|;
 block|}
 DECL|method|executePostOps ()

@@ -130,6 +130,10 @@ comment|/** The change has been closed. */
 DECL|enumConstant|CLOSED
 name|CLOSED
 block|,
+comment|/** The change was submitted bypassing submit rules. */
+DECL|enumConstant|FORCED
+name|FORCED
+block|,
 comment|/**      * An internal server error occurred preventing computation.      *<p>      * Additional detail may be available in {@link SubmitRecord#errorMessage}.      */
 DECL|enumConstant|RULE_ERROR
 name|RULE_ERROR
