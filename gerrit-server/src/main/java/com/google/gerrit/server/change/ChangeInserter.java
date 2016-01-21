@@ -2040,9 +2040,19 @@ argument_list|)
 decl_stmt|;
 name|update
 operator|.
-name|setSubject
+name|setSubjectForCommit
 argument_list|(
 literal|"Create change"
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setSubject
+argument_list|(
+name|change
+operator|.
+name|getSubject
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|update

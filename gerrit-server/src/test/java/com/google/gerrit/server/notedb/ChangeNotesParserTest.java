@@ -336,6 +336,8 @@ operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
@@ -420,6 +422,8 @@ operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Status: NEW\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseSucceeds
@@ -433,6 +437,8 @@ operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Status: new\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
@@ -479,6 +485,8 @@ operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
@@ -508,6 +516,8 @@ operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
@@ -547,6 +557,8 @@ operator|+
 literal|"Label: Label3=0\n"
 operator|+
 literal|"Label: Label4=-1\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseSucceeds
@@ -562,6 +574,8 @@ operator|+
 literal|"Label: -Label1\n"
 operator|+
 literal|"Label: -Label1 Other Account<2@gerrit>\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
@@ -651,6 +665,8 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
+literal|"Subject: This is a test change\n"
+operator|+
 literal|"Submitted-with: NOT_READY\n"
 operator|+
 literal|"Submitted-with: OK: Verified: Change Owner<1@gerrit>\n"
@@ -729,6 +745,8 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
+literal|"Subject: This is a test change\n"
+operator|+
 literal|"Submission-id: 1-1453387607626-96fabc25"
 argument_list|)
 expr_stmt|;
@@ -769,6 +787,8 @@ operator|+
 literal|"Reviewer: Change Owner<1@gerrit>\n"
 operator|+
 literal|"CC: Other Account<2@gerrit>\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
@@ -803,7 +823,9 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
-literal|"Topic: Some Topic"
+literal|"Topic: Some Topic\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseSucceeds
@@ -816,7 +838,9 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
-literal|"Topic:"
+literal|"Topic:\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
@@ -851,7 +875,9 @@ literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
-literal|"Patch-Set: 1"
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseSucceeds
@@ -862,7 +888,9 @@ literal|"\n"
 operator|+
 literal|"Branch: master\n"
 operator|+
-literal|"Patch-Set: 1"
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
@@ -876,6 +904,43 @@ operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Branch: refs/heads/stable"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseSubject ()
+specifier|public
+name|void
+name|parseSubject
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Subject: Some subject of a change\n"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Subject: Some subject of a change\n"
+operator|+
+literal|"Subject: Some other subject\n"
 argument_list|)
 expr_stmt|;
 block|}

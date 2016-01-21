@@ -3081,6 +3081,16 @@ argument_list|)
 decl_stmt|;
 name|u
 operator|.
+name|setSubject
+argument_list|(
+name|c
+operator|.
+name|getSubject
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|u
+operator|.
 name|setBranch
 argument_list|(
 name|c

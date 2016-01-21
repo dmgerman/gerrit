@@ -1432,7 +1432,7 @@ argument_list|)
 decl_stmt|;
 name|update
 operator|.
-name|setSubject
+name|setSubjectForCommit
 argument_list|(
 literal|"Create patch set "
 operator|+
@@ -1522,6 +1522,16 @@ else|:
 literal|null
 expr_stmt|;
 block|}
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|parseBody
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
 name|patchSet
 operator|=
 name|psUtil
