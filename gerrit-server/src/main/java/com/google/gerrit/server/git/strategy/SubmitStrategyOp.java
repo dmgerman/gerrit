@@ -1028,11 +1028,144 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Update change and notes from ctx.
+name|PatchSet
+name|newPatchSet
+init|=
 name|updateChangeImpl
 argument_list|(
 name|ctx
 argument_list|)
+decl_stmt|;
+name|PatchSet
+operator|.
+name|Id
+name|oldPsId
+init|=
+name|checkNotNull
+argument_list|(
+name|toMerge
+operator|.
+name|getPatchsetId
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|PatchSet
+operator|.
+name|Id
+name|newPsId
+init|=
+name|checkNotNull
+argument_list|(
+name|ctx
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|newPatchSet
+operator|==
+literal|null
+condition|)
+block|{
+name|checkState
+argument_list|(
+name|oldPsId
+operator|.
+name|equals
+argument_list|(
+name|newPsId
+argument_list|)
+argument_list|,
+literal|"patch set advanced from %s to %s but updateChangeImpl did not return"
+operator|+
+literal|" new patch set instance"
+argument_list|,
+name|oldPsId
+argument_list|,
+name|newPsId
+argument_list|)
 expr_stmt|;
+comment|// Ok to use stale notes to get the old patch set, which didn't change
+comment|// during the submit strategy.
+name|mergedPatchSet
+operator|=
+name|checkNotNull
+argument_list|(
+name|args
+operator|.
+name|psUtil
+operator|.
+name|get
+argument_list|(
+name|ctx
+operator|.
+name|getDb
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getNotes
+argument_list|()
+argument_list|,
+name|oldPsId
+argument_list|)
+argument_list|,
+literal|"missing old patch set %s"
+argument_list|,
+name|oldPsId
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|PatchSet
+operator|.
+name|Id
+name|n
+init|=
+name|newPatchSet
+operator|.
+name|getId
+argument_list|()
+decl_stmt|;
+name|checkState
+argument_list|(
+operator|!
+name|n
+operator|.
+name|equals
+argument_list|(
+name|oldPsId
+argument_list|)
+operator|&&
+name|n
+operator|.
+name|equals
+argument_list|(
+name|newPsId
+argument_list|)
+argument_list|,
+literal|"current patch was %s and is now %s, but updateChangeImpl returned"
+operator|+
+literal|" new patch set instance at %s"
+argument_list|,
+name|oldPsId
+argument_list|,
+name|newPsId
+argument_list|,
+name|n
+argument_list|)
+expr_stmt|;
+name|mergedPatchSet
+operator|=
+name|newPatchSet
+expr_stmt|;
+block|}
 name|Change
 name|c
 init|=
@@ -2152,22 +2285,6 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO(dborowitz): Use PatchSetUtil? But we don't have a recent notes.
-name|mergedPatchSet
-operator|=
-name|db
-operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|c
-operator|.
-name|currentPatchSetId
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|c
 operator|.
 name|setStatus
@@ -2462,10 +2579,10 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{   }
-comment|/**    * @see #updateChange(ChangeContext)    * @param ctx    */
+comment|/**    * @see #updateChange(ChangeContext)    * @param ctx    * @return a new patch set if one was created by the submit strategy, or null    *     if not.    */
 DECL|method|updateChangeImpl (ChangeContext ctx)
 specifier|protected
-name|void
+name|PatchSet
 name|updateChangeImpl
 parameter_list|(
 name|ChangeContext
@@ -2473,7 +2590,11 @@ name|ctx
 parameter_list|)
 throws|throws
 name|Exception
-block|{   }
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|/**    * @see #postUpdate(Context)    * @param ctx    */
 DECL|method|postUpdateImpl (Context ctx)
 specifier|protected

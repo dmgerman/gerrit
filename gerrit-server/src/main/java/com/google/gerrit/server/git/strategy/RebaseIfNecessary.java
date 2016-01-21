@@ -1019,7 +1019,7 @@ annotation|@
 name|Override
 DECL|method|updateChangeImpl (ChangeContext ctx)
 specifier|public
-name|void
+name|PatchSet
 name|updateChangeImpl
 parameter_list|(
 name|ChangeContext
@@ -1042,7 +1042,9 @@ literal|null
 condition|)
 block|{
 comment|// Took the fast-forward option, nothing to do.
-return|return;
+return|return
+literal|null
+return|;
 block|}
 name|rebaseOp
 operator|.
@@ -1160,6 +1162,12 @@ name|getControl
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+name|rebaseOp
+operator|.
+name|getPatchSet
+argument_list|()
+return|;
 block|}
 annotation|@
 name|Override
