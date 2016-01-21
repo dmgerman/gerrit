@@ -488,7 +488,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|WorkQueue
+name|SendEmailExecutor
 import|;
 end_import
 
@@ -852,6 +852,18 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ExecutorService
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeInserter
 specifier|public
@@ -947,11 +959,11 @@ operator|.
 name|Factory
 name|createChangeSenderFactory
 decl_stmt|;
-DECL|field|workQueue
+DECL|field|sendEmailExecutor
 specifier|private
 specifier|final
-name|WorkQueue
-name|workQueue
+name|ExecutorService
+name|sendEmailExecutor
 decl_stmt|;
 DECL|field|commitValidatorsFactory
 specifier|private
@@ -1101,7 +1113,7 @@ name|patchSet
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeInserter (ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ChangeHooks hooks, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CreateChangeSender.Factory createChangeSenderFactory, WorkQueue workQueue, CommitValidators.Factory commitValidatorsFactory, @Assisted Change.Id changeId, @Assisted RevCommit commit, @Assisted String refName)
+DECL|method|ChangeInserter (ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ChangeHooks hooks, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CreateChangeSender.Factory createChangeSenderFactory, @SendEmailExecutor ExecutorService sendEmailExecutor, CommitValidators.Factory commitValidatorsFactory, @Assisted Change.Id changeId, @Assisted RevCommit commit, @Assisted String refName)
 name|ChangeInserter
 parameter_list|(
 name|ProjectControl
@@ -1129,8 +1141,10 @@ operator|.
 name|Factory
 name|createChangeSenderFactory
 parameter_list|,
-name|WorkQueue
-name|workQueue
+annotation|@
+name|SendEmailExecutor
+name|ExecutorService
+name|sendEmailExecutor
 parameter_list|,
 name|CommitValidators
 operator|.
@@ -1199,9 +1213,9 @@ name|createChangeSenderFactory
 expr_stmt|;
 name|this
 operator|.
-name|workQueue
+name|sendEmailExecutor
 operator|=
-name|workQueue
+name|sendEmailExecutor
 expr_stmt|;
 name|this
 operator|.
@@ -2377,10 +2391,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|workQueue
-operator|.
-name|getDefaultQueue
-argument_list|()
+name|sendEmailExecutor
 operator|.
 name|submit
 argument_list|(
