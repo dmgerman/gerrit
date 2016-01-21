@@ -1107,6 +1107,27 @@ return|return
 name|rebasedCommit
 return|;
 block|}
+DECL|method|getPatchSetId ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|getPatchSetId
+parameter_list|()
+block|{
+name|checkState
+argument_list|(
+name|rebasedPatchSetId
+operator|!=
+literal|null
+argument_list|,
+literal|"getPatchSetId() only valid after updateRepo"
+argument_list|)
+expr_stmt|;
+return|return
+name|rebasedPatchSetId
+return|;
+block|}
 DECL|method|getPatchSet ()
 specifier|public
 name|PatchSet
