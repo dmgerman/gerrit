@@ -1166,6 +1166,11 @@ name|message
 argument_list|(
 name|ctx
 argument_list|,
+name|commit
+operator|.
+name|getPatchsetId
+argument_list|()
+argument_list|,
 name|txt
 operator|+
 name|getByAccountName
@@ -1194,6 +1199,11 @@ operator|=
 name|message
 argument_list|(
 name|ctx
+argument_list|,
+name|commit
+operator|.
+name|getPatchsetId
+argument_list|()
 argument_list|,
 name|txt
 operator|+
@@ -2012,7 +2022,7 @@ return|return
 literal|""
 return|;
 block|}
-DECL|method|message (ChangeContext ctx, String body)
+DECL|method|message (ChangeContext ctx, PatchSet.Id psId, String body)
 specifier|private
 name|ChangeMessage
 name|message
@@ -2020,10 +2030,20 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|,
+name|PatchSet
+operator|.
+name|Id
+name|psId
+parameter_list|,
 name|String
 name|body
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|psId
+argument_list|)
+expr_stmt|;
 name|String
 name|uuid
 decl_stmt|;
@@ -2063,20 +2083,14 @@ name|ChangeMessage
 operator|.
 name|Key
 argument_list|(
-name|ctx
+name|psId
 operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
+name|getParentKey
 argument_list|()
 argument_list|,
 name|uuid
 argument_list|)
 argument_list|,
-comment|// TODO(dborowitz): Pre-BatchUpdate behavior wrote the merged message on
-comment|// the old patch set ID, so that's what we do here. I don't think this
-comment|// was intentional, and it should be changed.
 literal|null
 argument_list|,
 name|ctx
@@ -2084,13 +2098,7 @@ operator|.
 name|getWhen
 argument_list|()
 argument_list|,
-name|toMerge
-operator|.
-name|change
-argument_list|()
-operator|.
-name|currentPatchSetId
-argument_list|()
+name|psId
 argument_list|)
 decl_stmt|;
 name|m
