@@ -411,11 +411,11 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailMerge (@mailReviewCommentsExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter)
+DECL|method|EmailMerge (@endEmailExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter)
 name|EmailMerge
 parameter_list|(
 annotation|@
-name|EmailReviewCommentsExecutor
+name|SendEmailExecutor
 name|ExecutorService
 name|executor
 parameter_list|,

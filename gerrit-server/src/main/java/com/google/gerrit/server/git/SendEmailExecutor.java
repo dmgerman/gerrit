@@ -86,22 +86,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|EmailReviewComments
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|BindingAnnotation
@@ -121,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on the global {@link WorkQueue.Executor} used by  * {@link EmailReviewComments}.  */
+comment|/**  * Marker on the global {@link WorkQueue.Executor} used to send email.  */
 end_comment
 
 begin_annotation_defn
@@ -132,10 +116,10 @@ name|RUNTIME
 argument_list|)
 annotation|@
 name|BindingAnnotation
-DECL|annotation|EmailReviewCommentsExecutor
+DECL|annotation|SendEmailExecutor
 specifier|public
 annotation_defn|@interface
-name|EmailReviewCommentsExecutor
+name|SendEmailExecutor
 block|{ }
 end_annotation_defn
 

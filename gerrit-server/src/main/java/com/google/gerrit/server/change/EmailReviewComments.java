@@ -224,7 +224,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|EmailReviewCommentsExecutor
+name|SendEmailExecutor
 import|;
 end_import
 
@@ -565,11 +565,11 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailReviewComments ( @mailReviewCommentsExecutor ExecutorService executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted Change change, @Assisted PatchSet patchSet, @Assisted Account.Id authorId, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
+DECL|method|EmailReviewComments ( @endEmailExecutor ExecutorService executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted Change change, @Assisted PatchSet patchSet, @Assisted Account.Id authorId, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
 name|EmailReviewComments
 parameter_list|(
 annotation|@
-name|EmailReviewCommentsExecutor
+name|SendEmailExecutor
 name|ExecutorService
 name|executor
 parameter_list|,
