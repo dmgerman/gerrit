@@ -200,6 +200,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchSetUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|RebaseChangeOp
@@ -660,6 +674,11 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
+DECL|field|psUtil
+specifier|final
+name|PatchSetUtil
+name|psUtil
+decl_stmt|;
 DECL|field|projectCache
 specifier|final
 name|ProjectCache
@@ -750,7 +769,7 @@ name|mergeUtil
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|Arguments ( ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commits, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted)
+DECL|method|Arguments ( ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commits, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted)
 name|Arguments
 parameter_list|(
 name|ApprovalsUtil
@@ -773,6 +792,9 @@ name|mergeUtilFactory
 parameter_list|,
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
+parameter_list|,
+name|PatchSetUtil
+name|psUtil
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -861,6 +883,12 @@ operator|.
 name|patchSetInfoFactory
 operator|=
 name|patchSetInfoFactory
+expr_stmt|;
+name|this
+operator|.
+name|psUtil
+operator|=
+name|psUtil
 expr_stmt|;
 name|this
 operator|.

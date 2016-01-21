@@ -390,6 +390,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchSetUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -964,9 +978,15 @@ specifier|final
 name|PatchListCache
 name|patchListCache
 decl_stmt|;
+DECL|field|psUtil
+specifier|private
+specifier|final
+name|PatchSetUtil
+name|psUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListFiles (Provider<ReviewDb> db, Provider<CurrentUser> self, FileInfoJson fileInfoJson, Revisions revisions, GitRepositoryManager gitManager, PatchListCache patchListCache)
+DECL|method|ListFiles (Provider<ReviewDb> db, Provider<CurrentUser> self, FileInfoJson fileInfoJson, Revisions revisions, GitRepositoryManager gitManager, PatchListCache patchListCache, PatchSetUtil psUtil)
 name|ListFiles
 parameter_list|(
 name|Provider
@@ -992,6 +1012,9 @@ name|gitManager
 parameter_list|,
 name|PatchListCache
 name|patchListCache
+parameter_list|,
+name|PatchSetUtil
+name|psUtil
 parameter_list|)
 block|{
 name|this
@@ -1029,6 +1052,12 @@ operator|.
 name|patchListCache
 operator|=
 name|patchListCache
+expr_stmt|;
+name|this
+operator|.
+name|psUtil
+operator|=
+name|psUtil
 expr_stmt|;
 block|}
 DECL|method|setReviewed (boolean r)
@@ -1933,16 +1962,20 @@ operator|.
 name|getChange
 argument_list|()
 argument_list|,
+name|psUtil
+operator|.
+name|get
+argument_list|(
 name|db
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|resource
 operator|.
-name|patchSets
+name|getNotes
 argument_list|()
-operator|.
-name|get
-argument_list|(
+argument_list|,
 name|old
 argument_list|)
 argument_list|)

@@ -542,6 +542,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|ChangeUpdate
 import|;
 end_import
@@ -1174,6 +1190,14 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 decl_stmt|;
+DECL|field|notesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+decl_stmt|;
 DECL|field|changeUpdateFactory
 specifier|private
 specifier|final
@@ -1237,7 +1261,7 @@ name|problems
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConsistencyChecker (Provider<ReviewDb> db, GitRepositoryManager repoManager, Provider<CurrentUser> user, @GerritPersonIdent Provider<PersonIdent> serverIdent, ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, BatchUpdate.Factory updateFactory, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory)
+DECL|method|ConsistencyChecker (Provider<ReviewDb> db, GitRepositoryManager repoManager, Provider<CurrentUser> user, @GerritPersonIdent Provider<PersonIdent> serverIdent, ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, BatchUpdate.Factory updateFactory, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, ChangeUpdate.Factory changeUpdateFactory)
 name|ConsistencyChecker
 parameter_list|(
 name|Provider
@@ -1288,6 +1312,11 @@ name|ChangeControl
 operator|.
 name|GenericFactory
 name|changeControlFactory
+parameter_list|,
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
 parameter_list|,
 name|ChangeUpdate
 operator|.
@@ -1354,6 +1383,12 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
+expr_stmt|;
+name|this
+operator|.
+name|notesFactory
+operator|=
+name|notesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -3281,17 +3316,6 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
-name|setUploader
-argument_list|(
-name|user
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-operator|.
 name|setMessage
 argument_list|(
 literal|"Patch set for merged commit inserted by consistency checker"
@@ -3796,6 +3820,16 @@ name|cid
 argument_list|)
 throw|;
 block|}
+name|ChangeNotes
+name|notes
+init|=
+name|notesFactory
+operator|.
+name|create
+argument_list|(
+name|c
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|psId
@@ -3934,6 +3968,8 @@ operator|.
 name|get
 argument_list|(
 name|db
+argument_list|,
+name|notes
 argument_list|,
 name|latest
 argument_list|)

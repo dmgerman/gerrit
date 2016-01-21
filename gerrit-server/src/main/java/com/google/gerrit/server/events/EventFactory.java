@@ -2711,7 +2711,7 @@ name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
+DECL|method|addPatchSets (ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, ChangeNotes notes, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
@@ -2747,8 +2747,8 @@ parameter_list|,
 name|boolean
 name|includeFiles
 parameter_list|,
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|LabelTypes
 name|labelTypes
@@ -2794,6 +2794,8 @@ name|db
 argument_list|,
 name|revWalk
 argument_list|,
+name|notes
+argument_list|,
 name|p
 argument_list|)
 decl_stmt|;
@@ -2832,7 +2834,7 @@ if|if
 condition|(
 name|includeFiles
 operator|&&
-name|change
+name|notes
 operator|!=
 literal|null
 condition|)
@@ -2841,7 +2843,10 @@ name|addPatchSetFileNames
 argument_list|(
 name|psa
 argument_list|,
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 argument_list|,
 name|p
 argument_list|)
@@ -3129,13 +3134,16 @@ block|}
 block|}
 block|}
 comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param revWalk    * @param patchSet    * @return object suitable for serialization to JSON    */
-DECL|method|asPatchSetAttribute (RevWalk revWalk, PatchSet patchSet)
+DECL|method|asPatchSetAttribute (RevWalk revWalk, ChangeNotes notes, PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute
 name|asPatchSetAttribute
 parameter_list|(
 name|RevWalk
 name|revWalk
+parameter_list|,
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|PatchSet
 name|patchSet
@@ -3158,6 +3166,8 @@ argument_list|(
 name|db
 argument_list|,
 name|revWalk
+argument_list|,
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)
@@ -3186,7 +3196,7 @@ return|;
 block|}
 block|}
 comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param db Review database    * @param patchSet    * @return object suitable for serialization to JSON    */
-DECL|method|asPatchSetAttribute (ReviewDb db, RevWalk revWalk, PatchSet patchSet)
+DECL|method|asPatchSetAttribute (ReviewDb db, RevWalk revWalk, ChangeNotes notes, PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute
 name|asPatchSetAttribute
@@ -3196,6 +3206,9 @@ name|db
 parameter_list|,
 name|RevWalk
 name|revWalk
+parameter_list|,
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|PatchSet
 name|patchSet
@@ -3348,6 +3361,8 @@ operator|.
 name|get
 argument_list|(
 name|db
+argument_list|,
+name|notes
 argument_list|,
 name|pId
 argument_list|)

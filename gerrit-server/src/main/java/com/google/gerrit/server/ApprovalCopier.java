@@ -606,9 +606,15 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
+DECL|field|psUtil
+specifier|private
+specifier|final
+name|PatchSetUtil
+name|psUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ApprovalCopier (GitRepositoryManager repoManager, ProjectCache projectCache, ChangeKindCache changeKindCache, LabelNormalizer labelNormalizer, ChangeData.Factory changeDataFactory)
+DECL|method|ApprovalCopier (GitRepositoryManager repoManager, ProjectCache projectCache, ChangeKindCache changeKindCache, LabelNormalizer labelNormalizer, ChangeData.Factory changeDataFactory, PatchSetUtil psUtil)
 name|ApprovalCopier
 parameter_list|(
 name|GitRepositoryManager
@@ -627,6 +633,9 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
+parameter_list|,
+name|PatchSetUtil
+name|psUtil
 parameter_list|)
 block|{
 name|this
@@ -658,6 +667,12 @@ operator|.
 name|changeDataFactory
 operator|=
 name|changeDataFactory
+expr_stmt|;
+name|this
+operator|.
+name|psUtil
+operator|=
+name|psUtil
 expr_stmt|;
 block|}
 DECL|method|copy (ReviewDb db, ChangeControl ctl, PatchSet ps)
@@ -719,13 +734,17 @@ block|{
 name|PatchSet
 name|ps
 init|=
-name|db
-operator|.
-name|patchSets
-argument_list|()
+name|psUtil
 operator|.
 name|get
 argument_list|(
+name|db
+argument_list|,
+name|ctl
+operator|.
+name|getNotes
+argument_list|()
+argument_list|,
 name|psId
 argument_list|)
 decl_stmt|;

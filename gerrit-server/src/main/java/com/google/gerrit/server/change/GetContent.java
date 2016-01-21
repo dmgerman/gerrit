@@ -326,7 +326,10 @@ operator|.
 name|getRevision
 argument_list|()
 operator|.
-name|getChange
+name|getChangeResource
+argument_list|()
+operator|.
+name|getNotes
 argument_list|()
 argument_list|)
 decl_stmt|;
