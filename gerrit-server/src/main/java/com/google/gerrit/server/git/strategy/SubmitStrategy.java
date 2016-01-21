@@ -587,7 +587,9 @@ block|}
 block|}
 return|;
 block|}
+comment|// TODO(dborowitz): make non-public when converting to BatchUpdate.
 DECL|class|Arguments
+specifier|public
 specifier|static
 class|class
 name|Arguments
@@ -682,7 +684,9 @@ operator|.
 name|NameKey
 name|destBranch
 decl_stmt|;
+comment|// TODO(dborowitz): make non-public when converting to BatchUpdate.
 DECL|field|rw
+specifier|public
 specifier|final
 name|CodeReviewRevWalk
 name|rw
@@ -707,7 +711,9 @@ specifier|final
 name|Repository
 name|repo
 decl_stmt|;
+comment|// TODO(dborowitz): make non-public when converting to BatchUpdate.
 DECL|field|canMergeFlag
+specifier|public
 specifier|final
 name|RevFlag
 name|canMergeFlag
@@ -735,7 +741,9 @@ specifier|final
 name|MergeSorter
 name|mergeSorter
 decl_stmt|;
+comment|// TODO(dborowitz): make non-public when converting to BatchUpdate.
 DECL|field|mergeUtil
+specifier|public
 specifier|final
 name|MergeUtil
 name|mergeUtil
@@ -1012,8 +1020,9 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|// TODO(dborowitz): make non-public when converting to BatchUpdate.
 DECL|field|args
-specifier|protected
+specifier|public
 specifier|final
 name|Arguments
 name|args
