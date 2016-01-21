@@ -647,7 +647,7 @@ name|status
 argument_list|)
 return|;
 block|}
-DECL|method|commit (Schema<ChangeData> schema, String id)
+DECL|method|commit (String id)
 specifier|private
 specifier|static
 name|Predicate
@@ -656,12 +656,6 @@ name|ChangeData
 argument_list|>
 name|commit
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|String
 name|id
 parameter_list|)
@@ -670,8 +664,6 @@ return|return
 operator|new
 name|CommitPredicate
 argument_list|(
-name|schema
-argument_list|,
 name|id
 argument_list|)
 return|;
@@ -1394,11 +1386,6 @@ name|or
 argument_list|(
 name|commits
 argument_list|(
-name|schema
-argument_list|(
-name|indexes
-argument_list|)
-argument_list|,
 name|hashes
 argument_list|)
 argument_list|)
@@ -1406,7 +1393,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|commits (Schema<ChangeData> schema, List<String> hashes)
+DECL|method|commits (List<String> hashes)
 specifier|private
 specifier|static
 name|List
@@ -1418,12 +1405,6 @@ argument_list|>
 argument_list|>
 name|commits
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|List
 argument_list|<
 name|String
@@ -1464,8 +1445,6 @@ name|add
 argument_list|(
 name|commit
 argument_list|(
-name|schema
-argument_list|,
 name|s
 argument_list|)
 argument_list|)
@@ -1581,11 +1560,6 @@ name|query
 argument_list|(
 name|commit
 argument_list|(
-name|schema
-argument_list|(
-name|indexes
-argument_list|)
-argument_list|,
 name|hash
 argument_list|)
 argument_list|)
@@ -1622,11 +1596,6 @@ argument_list|)
 argument_list|,
 name|commit
 argument_list|(
-name|schema
-argument_list|(
-name|indexes
-argument_list|)
-argument_list|,
 name|hash
 argument_list|)
 argument_list|)
@@ -1693,11 +1662,6 @@ name|or
 argument_list|(
 name|commits
 argument_list|(
-name|schema
-argument_list|(
-name|indexes
-argument_list|)
-argument_list|,
 name|hashes
 argument_list|)
 argument_list|)
@@ -1744,11 +1708,6 @@ argument_list|)
 argument_list|,
 name|commit
 argument_list|(
-name|schema
-argument_list|(
-name|indexes
-argument_list|)
-argument_list|,
 name|hash
 argument_list|)
 argument_list|)

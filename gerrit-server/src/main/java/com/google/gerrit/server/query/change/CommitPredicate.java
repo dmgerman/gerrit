@@ -174,22 +174,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|Schema
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -208,7 +192,7 @@ argument_list|<
 name|ChangeData
 argument_list|>
 block|{
-DECL|method|commitField (Schema<ChangeData> schema, String id)
+DECL|method|commitField (String id)
 specifier|static
 name|FieldDef
 argument_list|<
@@ -218,12 +202,6 @@ name|?
 argument_list|>
 name|commitField
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|String
 name|id
 parameter_list|)
@@ -236,17 +214,6 @@ name|length
 argument_list|()
 operator|==
 name|OBJECT_ID_STRING_LENGTH
-operator|&&
-name|schema
-operator|!=
-literal|null
-operator|&&
-name|schema
-operator|.
-name|hasField
-argument_list|(
-name|EXACT_COMMIT
-argument_list|)
 condition|)
 block|{
 return|return
@@ -257,15 +224,9 @@ return|return
 name|COMMIT
 return|;
 block|}
-DECL|method|CommitPredicate (Schema<ChangeData> schema, String id)
+DECL|method|CommitPredicate (String id)
 name|CommitPredicate
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|String
 name|id
 parameter_list|)
@@ -274,8 +235,6 @@ name|super
 argument_list|(
 name|commitField
 argument_list|(
-name|schema
-argument_list|,
 name|id
 argument_list|)
 argument_list|,
