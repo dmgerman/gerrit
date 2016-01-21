@@ -747,6 +747,8 @@ name|update
 operator|.
 name|merge
 argument_list|(
+literal|"1-1453387607626-96fabc25"
+argument_list|,
 name|ImmutableList
 operator|.
 name|of
@@ -834,6 +836,8 @@ operator|+
 literal|"Patch-set: 1\n"
 operator|+
 literal|"Status: merged\n"
+operator|+
+literal|"Submission-id: 1-1453387607626-96fabc25\n"
 operator|+
 literal|"Submitted-with: NOT_READY\n"
 operator|+
@@ -1165,6 +1169,8 @@ name|update
 operator|.
 name|merge
 argument_list|(
+literal|"1-1453387607626-96fabc25"
+argument_list|,
 name|ImmutableList
 operator|.
 name|of
@@ -1192,6 +1198,8 @@ operator|+
 literal|"Patch-set: 1\n"
 operator|+
 literal|"Status: merged\n"
+operator|+
+literal|"Submission-id: 1-1453387607626-96fabc25\n"
 operator|+
 literal|"Submitted-with: RULE_ERROR Problem with patch set: 1\n"
 argument_list|,

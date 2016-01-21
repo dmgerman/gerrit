@@ -695,6 +695,41 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|parseSubmissionId ()
+specifier|public
+name|void
+name|parseSubmissionId
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Submission-id: 1-1453387607626-96fabc25"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Submission-id: 1-1453387607626-96fabc25\n"
+operator|+
+literal|"Submission-id: 1-1453387901516-5d1e2450"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|parseReviewer ()
 specifier|public
 name|void

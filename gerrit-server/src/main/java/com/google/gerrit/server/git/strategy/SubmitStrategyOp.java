@@ -1560,6 +1560,10 @@ name|newPsUpdate
 operator|.
 name|merge
 argument_list|(
+name|args
+operator|.
+name|submissionId
+argument_list|,
 name|records
 argument_list|)
 expr_stmt|;
