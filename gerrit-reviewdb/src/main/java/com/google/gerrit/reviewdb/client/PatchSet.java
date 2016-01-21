@@ -900,6 +900,12 @@ argument_list|,
 name|notNull
 operator|=
 literal|false
+argument_list|,
+name|length
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
 DECL|field|pushCertficate
 specifier|protected
