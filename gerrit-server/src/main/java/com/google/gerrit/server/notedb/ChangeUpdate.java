@@ -802,6 +802,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevWalk
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -1669,7 +1683,6 @@ name|commitSubject
 expr_stmt|;
 block|}
 DECL|method|setSubject (String subject)
-specifier|public
 name|void
 name|setSubject
 parameter_list|(
@@ -1683,6 +1696,17 @@ name|subject
 operator|=
 name|subject
 expr_stmt|;
+block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|getCommit ()
+name|ObjectId
+name|getCommit
+parameter_list|()
+block|{
+return|return
+name|commit
+return|;
 block|}
 DECL|method|setChangeMessage (String changeMessage)
 specifier|public
@@ -2280,20 +2304,35 @@ name|topic
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setCommit (ObjectId commit)
+DECL|method|setCommit (RevWalk rw, ObjectId id)
 specifier|public
 name|void
 name|setCommit
 parameter_list|(
+name|RevWalk
+name|rw
+parameter_list|,
 name|ObjectId
-name|commit
+name|id
 parameter_list|)
+throws|throws
+name|IOException
 block|{
-name|checkArgument
+name|RevCommit
+name|commit
+init|=
+name|rw
+operator|.
+name|parseCommit
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+name|rw
+operator|.
+name|parseBody
 argument_list|(
 name|commit
-operator|!=
-literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -2301,6 +2340,13 @@ operator|.
 name|commit
 operator|=
 name|commit
+expr_stmt|;
+name|subject
+operator|=
+name|commit
+operator|.
+name|getShortMessage
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setHashtags (Set<String> hashtags)
@@ -3435,10 +3481,6 @@ operator|==
 literal|null
 operator|&&
 name|status
-operator|==
-literal|null
-operator|&&
-name|subject
 operator|==
 literal|null
 operator|&&

@@ -415,6 +415,22 @@ literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
 operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Commit: "
+operator|+
+name|update
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|"\n"
+operator|+
 literal|"Reviewer: Change Owner<1@gerrit>\n"
 operator|+
 literal|"CC: Other Account<2@gerrit>\n"
@@ -647,6 +663,22 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
+operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Commit: "
+operator|+
+name|update
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|"\n"
 argument_list|,
 name|update
 operator|.
@@ -699,16 +731,29 @@ argument_list|(
 literal|"Foo"
 argument_list|)
 expr_stmt|;
+name|RevCommit
+name|commit
+init|=
+name|tr
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|message
+argument_list|(
+literal|"Subject"
+argument_list|)
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
 name|update
 operator|.
 name|setCommit
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
-literal|"deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
-argument_list|)
+name|rw
+argument_list|,
+name|commit
 argument_list|)
 expr_stmt|;
 name|update
@@ -741,7 +786,18 @@ literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
 operator|+
-literal|"Commit: deadbeefdeadbeefdeadbeefdeadbeefdeadbeef\n"
+literal|"Subject: Subject\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Commit: "
+operator|+
+name|commit
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|"\n"
 argument_list|,
 name|update
 operator|.
