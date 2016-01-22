@@ -899,9 +899,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|ObjectId
-name|newId
-init|=
+name|rebasedCommit
+operator|=
 name|rebaseCommit
 argument_list|(
 name|ctx
@@ -909,15 +908,6 @@ argument_list|,
 name|original
 argument_list|,
 name|baseCommit
-argument_list|)
-decl_stmt|;
-name|rebasedCommit
-operator|=
-name|rw
-operator|.
-name|parseCommit
-argument_list|(
-name|newId
 argument_list|)
 expr_stmt|;
 name|rebasedPatchSetId
