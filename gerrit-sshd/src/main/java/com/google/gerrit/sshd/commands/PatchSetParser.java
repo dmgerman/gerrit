@@ -318,6 +318,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|PatchSetParser
+specifier|public
 class|class
 name|PatchSetParser
 block|{
