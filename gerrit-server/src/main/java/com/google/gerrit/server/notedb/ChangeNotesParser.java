@@ -1598,12 +1598,27 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 block|{
-name|createdOn
-operator|=
-name|getCommitTime
+name|Timestamp
+name|ts
+init|=
+operator|new
+name|Timestamp
 argument_list|(
 name|commit
+operator|.
+name|getCommitterIdent
+argument_list|()
+operator|.
+name|getWhen
+argument_list|()
+operator|.
+name|getTime
+argument_list|()
 argument_list|)
+decl_stmt|;
+name|createdOn
+operator|=
+name|ts
 expr_stmt|;
 if|if
 condition|(
@@ -1614,10 +1629,7 @@ condition|)
 block|{
 name|lastUpdatedOn
 operator|=
-name|getCommitTime
-argument_list|(
-name|commit
-argument_list|)
+name|ts
 expr_stmt|;
 block|}
 if|if
@@ -1715,6 +1727,8 @@ argument_list|,
 name|accountId
 argument_list|,
 name|commit
+argument_list|,
+name|ts
 argument_list|)
 expr_stmt|;
 if|if
@@ -1772,6 +1786,10 @@ argument_list|(
 name|psId
 argument_list|,
 name|currRev
+argument_list|,
+name|accountId
+argument_list|,
+name|ts
 argument_list|)
 expr_stmt|;
 block|}
@@ -1815,7 +1833,7 @@ name|psId
 argument_list|,
 name|accountId
 argument_list|,
-name|commit
+name|ts
 argument_list|,
 name|line
 argument_list|)
@@ -2093,7 +2111,7 @@ name|cie
 throw|;
 block|}
 block|}
-DECL|method|parsePatchSet (PatchSet.Id psId, ObjectId rev)
+DECL|method|parsePatchSet (PatchSet.Id psId, ObjectId rev, Account.Id accountId, Timestamp ts)
 specifier|private
 name|void
 name|parsePatchSet
@@ -2105,6 +2123,14 @@ name|psId
 parameter_list|,
 name|ObjectId
 name|rev
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|Timestamp
+name|ts
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -2175,6 +2201,20 @@ operator|.
 name|name
 argument_list|()
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|ps
+operator|.
+name|setUploader
+argument_list|(
+name|accountId
+argument_list|)
+expr_stmt|;
+name|ps
+operator|.
+name|setCreatedOn
+argument_list|(
+name|ts
 argument_list|)
 expr_stmt|;
 name|patchSets
@@ -2512,7 +2552,7 @@ name|psId
 argument_list|)
 return|;
 block|}
-DECL|method|parseChangeMessage (PatchSet.Id psId, Account.Id accountId, RevCommit commit)
+DECL|method|parseChangeMessage (PatchSet.Id psId, Account.Id accountId, RevCommit commit, Timestamp ts)
 specifier|private
 name|void
 name|parseChangeMessage
@@ -2529,6 +2569,9 @@ name|accountId
 parameter_list|,
 name|RevCommit
 name|commit
+parameter_list|,
+name|Timestamp
+name|ts
 parameter_list|)
 block|{
 name|byte
@@ -2779,10 +2822,7 @@ argument_list|)
 argument_list|,
 name|accountId
 argument_list|,
-name|getCommitTime
-argument_list|(
-name|commit
-argument_list|)
+name|ts
 argument_list|,
 name|psId
 argument_list|)
@@ -2850,7 +2890,7 @@ name|PUBLISHED
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseApproval (PatchSet.Id psId, Account.Id accountId, RevCommit commit, String line)
+DECL|method|parseApproval (PatchSet.Id psId, Account.Id accountId, Timestamp ts, String line)
 specifier|private
 name|void
 name|parseApproval
@@ -2865,8 +2905,8 @@ operator|.
 name|Id
 name|accountId
 parameter_list|,
-name|RevCommit
-name|commit
+name|Timestamp
+name|ts
 parameter_list|,
 name|String
 name|line
@@ -2902,14 +2942,14 @@ name|psId
 argument_list|,
 name|accountId
 argument_list|,
-name|commit
+name|ts
 argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseAddApproval (PatchSet.Id psId, Account.Id committerId, RevCommit commit, String line)
+DECL|method|parseAddApproval (PatchSet.Id psId, Account.Id committerId, Timestamp ts, String line)
 specifier|private
 name|void
 name|parseAddApproval
@@ -2924,8 +2964,8 @@ operator|.
 name|Id
 name|committerId
 parameter_list|,
-name|RevCommit
-name|commit
+name|Timestamp
+name|ts
 parameter_list|,
 name|String
 name|line
@@ -3136,10 +3176,7 @@ operator|.
 name|value
 argument_list|()
 argument_list|,
-name|getCommitTime
-argument_list|(
-name|commit
-argument_list|)
+name|ts
 argument_list|)
 argument_list|)
 argument_list|)
@@ -4366,33 +4403,6 @@ name|actual
 argument_list|)
 throw|;
 block|}
-block|}
-DECL|method|getCommitTime (RevCommit commit)
-specifier|private
-specifier|static
-name|Timestamp
-name|getCommitTime
-parameter_list|(
-name|RevCommit
-name|commit
-parameter_list|)
-block|{
-return|return
-operator|new
-name|Timestamp
-argument_list|(
-name|commit
-operator|.
-name|getCommitterIdent
-argument_list|()
-operator|.
-name|getWhen
-argument_list|()
-operator|.
-name|getTime
-argument_list|()
-argument_list|)
-return|;
 block|}
 DECL|method|parseException (String fmt, Object... args)
 specifier|private
