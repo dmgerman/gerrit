@@ -1002,6 +1002,69 @@ literal|"Commit: beef"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|parsePatchSetState ()
+specifier|public
+name|void
+name|parsePatchSetState
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1 (PUBLISHED)\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Subject: Some subject of a change\n"
+argument_list|)
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1 (DRAFT)\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Subject: Some subject of a change\n"
+argument_list|)
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1 (DELETED)\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Subject: Some subject of a change\n"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1 (NOT A STATUS)\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Subject: Some subject of a change\n"
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|writeCommit (String body)
 specifier|private
 name|RevCommit
