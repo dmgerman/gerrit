@@ -108,7 +108,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountPreferencesInfo
+name|GeneralPreferences
 import|;
 end_import
 
@@ -304,7 +304,7 @@ DECL|method|getUserPreferences ()
 specifier|public
 specifier|final
 specifier|native
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|getUserPreferences
 parameter_list|()
 comment|/*-{ return this.getUserPreferences() }-*/

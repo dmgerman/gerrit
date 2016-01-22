@@ -301,17 +301,17 @@ import|;
 end_import
 
 begin_class
-DECL|class|AccountPreferencesInfo
+DECL|class|GeneralPreferences
 specifier|public
 class|class
-name|AccountPreferencesInfo
+name|GeneralPreferences
 extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|create ()
 specifier|public
 specifier|static
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|create
 parameter_list|()
 block|{
@@ -326,7 +326,7 @@ block|}
 DECL|method|createDefault ()
 specifier|public
 specifier|static
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|createDefault
 parameter_list|()
 block|{
@@ -338,7 +338,7 @@ operator|.
 name|createDefault
 argument_list|()
 decl_stmt|;
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|p
 init|=
 name|createObject
@@ -1359,9 +1359,9 @@ name|initUrlAliases
 parameter_list|()
 comment|/*-{ this.url_aliases = {}; }-*/
 function_decl|;
-DECL|method|AccountPreferencesInfo ()
+DECL|method|GeneralPreferences ()
 specifier|protected
-name|AccountPreferencesInfo
+name|GeneralPreferences
 parameter_list|()
 block|{   }
 block|}

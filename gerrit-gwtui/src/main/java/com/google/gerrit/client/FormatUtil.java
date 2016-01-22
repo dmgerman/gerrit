@@ -108,7 +108,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountPreferencesInfo
+name|GeneralPreferences
 import|;
 end_import
 
@@ -170,13 +170,13 @@ specifier|static
 name|DateFormatter
 name|dateFormatter
 decl_stmt|;
-DECL|method|setPreferences (AccountPreferencesInfo prefs)
+DECL|method|setPreferences (GeneralPreferences prefs)
 specifier|public
 specifier|static
 name|void
 name|setPreferences
 parameter_list|(
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|prefs
 parameter_list|)
 block|{

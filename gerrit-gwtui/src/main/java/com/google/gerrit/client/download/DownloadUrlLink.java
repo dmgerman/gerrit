@@ -108,7 +108,9 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountPreferencesInfo
+name|DownloadInfo
+operator|.
+name|DownloadSchemeInfo
 import|;
 end_import
 
@@ -124,9 +126,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|DownloadInfo
-operator|.
-name|DownloadSchemeInfo
+name|GeneralPreferences
 import|;
 end_import
 
@@ -494,7 +494,7 @@ expr_stmt|;
 name|select
 argument_list|()
 expr_stmt|;
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|prefs
 init|=
 name|Gerrit
@@ -528,10 +528,10 @@ argument_list|(
 name|schemeName
 argument_list|)
 expr_stmt|;
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|in
 init|=
-name|AccountPreferencesInfo
+name|GeneralPreferences
 operator|.
 name|create
 argument_list|()
