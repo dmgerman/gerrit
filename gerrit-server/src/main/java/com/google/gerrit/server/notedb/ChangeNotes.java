@@ -1581,6 +1581,15 @@ operator|.
 name|ownerId
 argument_list|)
 expr_stmt|;
+name|change
+operator|.
+name|setSubmissionId
+argument_list|(
+name|parser
+operator|.
+name|submissionId
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|parser

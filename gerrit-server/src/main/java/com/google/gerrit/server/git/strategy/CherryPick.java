@@ -945,7 +945,7 @@ annotation|@
 name|Override
 DECL|method|updateChangeImpl (ChangeContext ctx)
 specifier|public
-name|void
+name|PatchSet
 name|updateChangeImpl
 parameter_list|(
 name|ChangeContext
@@ -993,6 +993,9 @@ name|getNotes
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|PatchSet
+name|newPs
+init|=
 name|args
 operator|.
 name|psUtil
@@ -1030,7 +1033,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|ctx
 operator|.
 name|getChange
@@ -1058,6 +1061,9 @@ name|getControl
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+name|newPs
+return|;
 block|}
 block|}
 DECL|class|CherryPickMultipleParentsOp
