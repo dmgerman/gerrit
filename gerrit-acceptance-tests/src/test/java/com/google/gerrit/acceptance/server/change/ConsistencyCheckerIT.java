@@ -106,6 +106,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|TruthJUnit
+operator|.
+name|assume
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|testutil
@@ -590,6 +606,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// TODO(dborowitz): Re-enable when ConsistencyChecker supports notedb.
+name|assume
+argument_list|()
+operator|.
+name|that
+argument_list|(
+name|notesMigration
+operator|.
+name|enabled
+argument_list|()
+argument_list|)
+operator|.
+name|isFalse
+argument_list|()
+expr_stmt|;
 comment|// Ignore client clone of project; repurpose as server-side TestRepository.
 name|testRepo
 operator|=
