@@ -392,6 +392,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AuthConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|ConfigUtil
 import|;
 end_import
@@ -921,6 +937,12 @@ specifier|final
 name|GetDiffPreferences
 name|getDiff
 decl_stmt|;
+DECL|field|authConfig
+specifier|private
+specifier|final
+name|AuthConfig
+name|authConfig
+decl_stmt|;
 DECL|field|page
 specifier|private
 specifier|volatile
@@ -929,7 +951,7 @@ name|page
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet ( Provider<CurrentUser> cu, DynamicItem<WebSession> w, SitePaths sp, ThemeFactory themeFactory, ServletContext servletContext, DynamicSet<WebUiPlugin> webUiPlugins, DynamicSet<MessageOfTheDay> motd, @GerritServerConfig Config cfg, SiteStaticDirectoryServlet ss, NotesMigration migration, GetDiffPreferences diffPref)
+DECL|method|HostPageServlet ( Provider<CurrentUser> cu, DynamicItem<WebSession> w, SitePaths sp, ThemeFactory themeFactory, ServletContext servletContext, DynamicSet<WebUiPlugin> webUiPlugins, DynamicSet<MessageOfTheDay> motd, @GerritServerConfig Config cfg, AuthConfig authCfg, SiteStaticDirectoryServlet ss, NotesMigration migration, GetDiffPreferences diffPref)
 name|HostPageServlet
 parameter_list|(
 name|Provider
@@ -969,6 +991,9 @@ annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
+parameter_list|,
+name|AuthConfig
+name|authCfg
 parameter_list|,
 name|SiteStaticDirectoryServlet
 name|ss
@@ -1030,6 +1055,10 @@ literal|"refreshHeaderFooter"
 argument_list|,
 literal|true
 argument_list|)
+expr_stmt|;
+name|authConfig
+operator|=
+name|authCfg
 expr_stmt|;
 name|staticServlet
 operator|=
@@ -1699,7 +1728,6 @@ block|}
 block|}
 DECL|method|setXGerritAuthCookie (HttpServletRequest req, HttpServletResponse rsp, WebSession session)
 specifier|private
-specifier|static
 name|void
 name|setXGerritAuthCookie
 parameter_list|(
@@ -1758,6 +1786,11 @@ name|c
 operator|.
 name|setSecure
 argument_list|(
+name|authConfig
+operator|.
+name|getCookieSecure
+argument_list|()
+operator|&&
 name|isSecure
 argument_list|(
 name|req
