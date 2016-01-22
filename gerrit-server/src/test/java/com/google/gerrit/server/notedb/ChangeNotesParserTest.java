@@ -1065,6 +1065,69 @@ literal|"Subject: Some subject of a change\n"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|parsePatchSetGroups ()
+specifier|public
+name|void
+name|parsePatchSetGroups
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Commit: abcd1234abcd1234abcd1234abcd1234abcd1234\n"
+operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Groups: a,b,c\n"
+argument_list|)
+expr_stmt|;
+comment|// No patch set commit parsed on which we can set groups.
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Groups: a,b,c\n"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Commit: abcd1234abcd1234abcd1234abcd1234abcd1234\n"
+operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Groups: a,b,c\n"
+operator|+
+literal|"Groups: d,e,f\n"
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|writeCommit (String body)
 specifier|private
 name|RevCommit
