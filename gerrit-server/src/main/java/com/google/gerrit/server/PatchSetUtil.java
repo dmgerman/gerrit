@@ -252,9 +252,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
+name|revwalk
 operator|.
-name|ObjectId
+name|RevCommit
 import|;
 end_import
 
@@ -419,7 +419,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|insert (ReviewDb db, ChangeUpdate update, PatchSet.Id psId, ObjectId id, boolean draft, Iterable<String> groups, String pushCertificate)
+DECL|method|insert (ReviewDb db, ChangeUpdate update, PatchSet.Id psId, RevCommit commit, boolean draft, Iterable<String> groups, String pushCertificate)
 specifier|public
 name|PatchSet
 name|insert
@@ -435,8 +435,8 @@ operator|.
 name|Id
 name|psId
 parameter_list|,
-name|ObjectId
-name|id
+name|RevCommit
+name|commit
 parameter_list|,
 name|boolean
 name|draft
@@ -544,7 +544,7 @@ argument_list|(
 operator|new
 name|RevId
 argument_list|(
-name|id
+name|commit
 operator|.
 name|name
 argument_list|()
@@ -617,6 +617,37 @@ name|ps
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|update
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getSubject
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|commit
+operator|.
+name|getShortMessage
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|update
+operator|.
+name|setSubject
+argument_list|(
+name|commit
+operator|.
+name|getShortMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|migration

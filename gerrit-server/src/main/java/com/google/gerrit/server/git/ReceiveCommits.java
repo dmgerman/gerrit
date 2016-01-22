@@ -14473,7 +14473,7 @@ argument_list|)
 decl_stmt|;
 name|update
 operator|.
-name|setSubject
+name|setSubjectForCommit
 argument_list|(
 literal|"Create patch set "
 operator|+

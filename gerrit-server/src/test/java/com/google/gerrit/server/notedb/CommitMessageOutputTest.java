@@ -738,7 +738,7 @@ argument_list|)
 decl_stmt|;
 name|update
 operator|.
-name|setSubject
+name|setSubjectForCommit
 argument_list|(
 literal|"Submit patch set 1"
 argument_list|)
@@ -1160,7 +1160,7 @@ argument_list|)
 decl_stmt|;
 name|update
 operator|.
-name|setSubject
+name|setSubjectForCommit
 argument_list|(
 literal|"Submit patch set 1"
 argument_list|)
