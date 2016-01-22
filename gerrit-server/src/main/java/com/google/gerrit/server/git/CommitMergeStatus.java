@@ -126,7 +126,7 @@ comment|/** */
 DECL|enumConstant|MISSING_DEPENDENCY
 name|MISSING_DEPENDENCY
 argument_list|(
-literal|""
+literal|"Missing dependency"
 argument_list|)
 block|,
 comment|/** */

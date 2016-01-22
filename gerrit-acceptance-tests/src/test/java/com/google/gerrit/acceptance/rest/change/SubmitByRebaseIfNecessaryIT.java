@@ -753,7 +753,17 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"Merge Conflict"
+literal|"Cannot rebase "
+operator|+
+name|change2
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|": The change could not be rebased due to a conflict during merge."
 argument_list|)
 expr_stmt|;
 name|RevCommit

@@ -2802,9 +2802,10 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"Merge Conflict"
-argument_list|,
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -4063,6 +4064,12 @@ name|caller
 parameter_list|)
 throws|throws
 name|IntegrationException
+throws|,
+name|ResourceConflictException
+throws|,
+name|NoSuchChangeException
+throws|,
+name|OrmException
 block|{
 name|logDebug
 argument_list|(
@@ -4687,6 +4694,40 @@ name|cd
 argument_list|)
 expr_stmt|;
 block|}
+name|List
+argument_list|<
+name|ChangeData
+argument_list|>
+name|notSubmittable
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+name|submitted
+argument_list|)
+decl_stmt|;
+name|notSubmittable
+operator|.
+name|removeAll
+argument_list|(
+name|toSubmit
+operator|.
+name|values
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|updateChangeStatus
+argument_list|(
+name|notSubmittable
+argument_list|,
+literal|null
+argument_list|,
+literal|false
+argument_list|,
+name|caller
+argument_list|)
+expr_stmt|;
 name|logDebug
 argument_list|(
 literal|"Submitting on this run: {}"
@@ -5396,7 +5437,7 @@ return|return
 literal|""
 return|;
 block|}
-DECL|method|updateChangeStatus (List<ChangeData> submitted, Branch.NameKey destBranch, boolean dryRun, IdentifiedUser caller)
+DECL|method|updateChangeStatus (List<ChangeData> changes, Branch.NameKey destBranch, boolean dryRun, IdentifiedUser caller)
 specifier|private
 name|void
 name|updateChangeStatus
@@ -5405,7 +5446,7 @@ name|List
 argument_list|<
 name|ChangeData
 argument_list|>
-name|submitted
+name|changes
 parameter_list|,
 name|Branch
 operator|.
@@ -5437,7 +5478,7 @@ name|logDebug
 argument_list|(
 literal|"Updating change status for {} changes"
 argument_list|,
-name|submitted
+name|changes
 operator|.
 name|size
 argument_list|()
@@ -5450,7 +5491,7 @@ name|logDebug
 argument_list|(
 literal|"Checking change state for {} changes in a dry run"
 argument_list|,
-name|submitted
+name|changes
 operator|.
 name|size
 argument_list|()
@@ -5460,19 +5501,25 @@ block|}
 name|MergeTip
 name|mergeTip
 init|=
+name|destBranch
+operator|!=
+literal|null
+condition|?
 name|mergeTips
 operator|.
 name|get
 argument_list|(
 name|destBranch
 argument_list|)
+else|:
+literal|null
 decl_stmt|;
 for|for
 control|(
 name|ChangeData
 name|cd
 range|:
-name|submitted
+name|changes
 control|)
 block|{
 name|Change

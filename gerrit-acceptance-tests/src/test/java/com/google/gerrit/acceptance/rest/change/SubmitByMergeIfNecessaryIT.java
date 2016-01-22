@@ -2007,7 +2007,17 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-literal|"Merge Conflict"
+literal|"Cannot merge "
+operator|+
+name|change3a
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|"\nMissing dependency"
 argument_list|)
 expr_stmt|;
 name|RevCommit
