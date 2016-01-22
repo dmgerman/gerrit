@@ -554,6 +554,9 @@ case|case
 name|CANNOT_CHERRY_PICK_ROOT
 case|:
 case|case
+name|CANNOT_REBASE_ROOT
+case|:
+case|case
 name|NOT_FAST_FORWARD
 case|:
 comment|// TODO(dborowitz): Reformat these messages to be more appropriate for
