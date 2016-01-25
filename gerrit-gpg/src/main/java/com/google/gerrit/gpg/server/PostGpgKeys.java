@@ -1900,6 +1900,24 @@ case|case
 name|NO_CHANGE
 case|:
 break|break;
+case|case
+name|IO_FAILURE
+case|:
+case|case
+name|LOCK_FAILURE
+case|:
+case|case
+name|NOT_ATTEMPTED
+case|:
+case|case
+name|REJECTED
+case|:
+case|case
+name|REJECTED_CURRENT_BRANCH
+case|:
+case|case
+name|RENAMED
+case|:
 default|default:
 comment|// TODO(dborowitz): Backoff and retry on LOCK_FAILURE.
 throw|throw

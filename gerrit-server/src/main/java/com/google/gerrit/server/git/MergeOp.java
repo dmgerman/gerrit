@@ -3095,6 +3095,12 @@ name|labels
 argument_list|)
 argument_list|)
 throw|;
+case|case
+name|FORCED
+case|:
+case|case
+name|OK
+case|:
 default|default:
 throw|throw
 operator|new
@@ -3104,9 +3110,11 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Unsupported SubmitRecord %s for %s in %s"
+literal|"Unexpected SubmitRecord status %s for %s in %s"
 argument_list|,
 name|record
+operator|.
+name|status
 argument_list|,
 name|patchSet
 operator|.

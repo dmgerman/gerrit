@@ -2262,6 +2262,30 @@ expr_stmt|;
 comment|// TODO since this is performed "in the background" no mail will be
 comment|// sent to inform users about the updated branch
 break|break;
+case|case
+name|FORCED
+case|:
+case|case
+name|IO_FAILURE
+case|:
+case|case
+name|LOCK_FAILURE
+case|:
+case|case
+name|NOT_ATTEMPTED
+case|:
+case|case
+name|NO_CHANGE
+case|:
+case|case
+name|REJECTED
+case|:
+case|case
+name|REJECTED_CURRENT_BRANCH
+case|:
+case|case
+name|RENAMED
+case|:
 default|default:
 throw|throw
 operator|new

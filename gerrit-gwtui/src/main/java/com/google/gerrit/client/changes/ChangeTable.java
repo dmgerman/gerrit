@@ -2970,6 +2970,9 @@ argument_list|,
 literal|" "
 argument_list|)
 return|;
+case|case
+name|NONE
+case|:
 default|default:
 return|return
 literal|null

@@ -2900,6 +2900,9 @@ case|:
 return|return
 literal|true
 return|;
+case|case
+name|LINK_IDENTIY
+case|:
 default|default:
 return|return
 literal|false

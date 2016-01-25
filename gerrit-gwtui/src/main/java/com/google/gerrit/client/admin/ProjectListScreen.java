@@ -915,6 +915,9 @@ name|state
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|ACTIVE
+case|:
 default|default:
 comment|// Intentionally left blank, do not show an icon when active.
 break|break;

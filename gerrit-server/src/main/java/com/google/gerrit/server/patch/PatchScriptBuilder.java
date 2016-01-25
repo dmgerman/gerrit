@@ -1423,6 +1423,9 @@ case|:
 case|case
 name|RENAMED
 case|:
+case|case
+name|REWRITE
+case|:
 return|return
 literal|true
 return|;
@@ -1468,6 +1471,9 @@ name|DELETED
 case|:
 case|case
 name|MODIFIED
+case|:
+case|case
+name|REWRITE
 case|:
 return|return
 name|entry
@@ -1526,6 +1532,9 @@ name|COPIED
 case|:
 case|case
 name|RENAMED
+case|:
+case|case
+name|REWRITE
 case|:
 default|default:
 return|return

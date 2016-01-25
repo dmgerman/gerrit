@@ -2389,6 +2389,9 @@ name|row
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|PRETTY
+case|:
 default|default:
 specifier|final
 name|JsonObject
@@ -2543,6 +2546,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|PRETTY
+case|:
 default|default:
 specifier|final
 name|JsonObject

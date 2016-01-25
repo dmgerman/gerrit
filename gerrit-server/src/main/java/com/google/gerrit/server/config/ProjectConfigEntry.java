@@ -1721,6 +1721,9 @@ case|:
 case|case
 name|STRING
 case|:
+case|case
+name|ARRAY
+case|:
 default|default:
 name|configEntry
 operator|.

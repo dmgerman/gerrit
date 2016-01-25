@@ -4696,6 +4696,15 @@ operator|=
 literal|true
 expr_stmt|;
 break|break;
+case|case
+name|IMPOSSIBLE
+case|:
+case|case
+name|MAY
+case|:
+case|case
+name|NEED
+case|:
 default|default:
 break|break;
 block|}
