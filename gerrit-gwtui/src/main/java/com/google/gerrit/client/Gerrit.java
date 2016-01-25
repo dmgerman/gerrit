@@ -340,7 +340,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountPreferencesInfo
+name|AuthInfo
 import|;
 end_import
 
@@ -356,7 +356,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|AuthInfo
+name|GeneralPreferences
 import|;
 end_import
 
@@ -1558,7 +1558,7 @@ decl_stmt|;
 DECL|field|myPrefs
 specifier|private
 specifier|static
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|myPrefs
 decl_stmt|;
 DECL|field|urlAliasMatcher
@@ -2403,7 +2403,7 @@ comment|/** @return the preferences of the currently signed in user, the default
 DECL|method|getUserPreferences ()
 specifier|public
 specifier|static
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|getUserPreferences
 parameter_list|()
 block|{
@@ -2814,7 +2814,7 @@ literal|null
 expr_stmt|;
 name|myPrefs
 operator|=
-name|AccountPreferencesInfo
+name|GeneralPreferences
 operator|.
 name|createDefault
 argument_list|()
@@ -3346,7 +3346,7 @@ argument_list|(
 operator|new
 name|GerritCallback
 argument_list|<
-name|AccountPreferencesInfo
+name|GeneralPreferences
 argument_list|>
 argument_list|()
 block|{
@@ -3356,7 +3356,7 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|prefs
 parameter_list|)
 block|{
@@ -3442,7 +3442,7 @@ argument_list|)
 expr_stmt|;
 name|myPrefs
 operator|=
-name|AccountPreferencesInfo
+name|GeneralPreferences
 operator|.
 name|createDefault
 argument_list|()
@@ -5746,7 +5746,7 @@ argument_list|(
 operator|new
 name|GerritCallback
 argument_list|<
-name|AccountPreferencesInfo
+name|GeneralPreferences
 argument_list|>
 argument_list|()
 block|{
@@ -5756,7 +5756,7 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|prefs
 parameter_list|)
 block|{
@@ -5774,7 +5774,7 @@ else|else
 block|{
 name|setUserPreferences
 argument_list|(
-name|AccountPreferencesInfo
+name|GeneralPreferences
 operator|.
 name|createDefault
 argument_list|()
@@ -5782,13 +5782,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setUserPreferences (AccountPreferencesInfo prefs)
+DECL|method|setUserPreferences (GeneralPreferences prefs)
 specifier|public
 specifier|static
 name|void
 name|setUserPreferences
 parameter_list|(
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|prefs
 parameter_list|)
 block|{

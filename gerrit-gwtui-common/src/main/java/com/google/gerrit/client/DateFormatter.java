@@ -76,7 +76,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountPreferencesInfo
+name|GeneralPreferences
 import|;
 end_import
 
@@ -159,11 +159,11 @@ specifier|final
 name|DateTimeFormat
 name|dtfmt
 decl_stmt|;
-DECL|method|DateFormatter (AccountPreferencesInfo prefs)
+DECL|method|DateFormatter (GeneralPreferences prefs)
 specifier|public
 name|DateFormatter
 parameter_list|(
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|prefs
 parameter_list|)
 block|{

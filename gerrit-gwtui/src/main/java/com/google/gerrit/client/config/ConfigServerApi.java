@@ -92,7 +92,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountPreferencesInfo
+name|GeneralPreferences
 import|;
 end_import
 
@@ -258,7 +258,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|defaultPreferences (AsyncCallback<AccountPreferencesInfo> cb)
+DECL|method|defaultPreferences (AsyncCallback<GeneralPreferences> cb)
 specifier|public
 specifier|static
 name|void
@@ -266,7 +266,7 @@ name|defaultPreferences
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|AccountPreferencesInfo
+name|GeneralPreferences
 argument_list|>
 name|cb
 parameter_list|)

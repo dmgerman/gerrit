@@ -122,7 +122,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountPreferencesInfo
+name|GeneralPreferences
 import|;
 end_import
 
@@ -476,7 +476,7 @@ DECL|method|getUserPreferences ()
 specifier|private
 specifier|static
 specifier|final
-name|AccountPreferencesInfo
+name|GeneralPreferences
 name|getUserPreferences
 parameter_list|()
 block|{
