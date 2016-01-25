@@ -955,6 +955,14 @@ name|OrmException
 throws|,
 name|IOException
 function_decl|;
+comment|/** Whether no updates have been done. */
+DECL|method|isEmpty ()
+specifier|public
+specifier|abstract
+name|boolean
+name|isEmpty
+parameter_list|()
+function_decl|;
 comment|/**    * @return the NameKey for the project where the update will be stored,    *    which is not necessarily the same as the change's project.    */
 DECL|method|getProjectName ()
 specifier|protected
