@@ -520,16 +520,6 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -1066,7 +1056,7 @@ name|psId
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// No need to delete from notedb; draft patch sets will be filtered out.
+comment|// No need to delete from notedb; deleted patch sets are filtered out.
 name|db
 operator|.
 name|patchComments
@@ -1103,19 +1093,23 @@ name|psId
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|db
-operator|.
-name|patchSets
-argument_list|()
+name|psUtil
 operator|.
 name|delete
 argument_list|(
-name|Collections
+name|db
+argument_list|,
+name|ctx
 operator|.
-name|singleton
+name|getUpdate
 argument_list|(
 name|patchSet
+operator|.
+name|getId
+argument_list|()
 argument_list|)
+argument_list|,
+name|patchSet
 argument_list|)
 expr_stmt|;
 block|}

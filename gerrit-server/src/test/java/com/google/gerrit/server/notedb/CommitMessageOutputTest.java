@@ -415,6 +415,22 @@ literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
 operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Commit: "
+operator|+
+name|update
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|"\n"
+operator|+
 literal|"Reviewer: Change Owner<1@gerrit>\n"
 operator|+
 literal|"CC: Other Account<2@gerrit>\n"
@@ -647,6 +663,141 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
+operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Commit: "
+operator|+
+name|update
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|"\n"
+argument_list|,
+name|update
+operator|.
+name|getRevision
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|changeWithRevision ()
+specifier|public
+name|void
+name|changeWithRevision
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Change
+name|c
+init|=
+name|TestChanges
+operator|.
+name|newChange
+argument_list|(
+name|project
+argument_list|,
+name|changeOwner
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|,
+literal|1
+argument_list|)
+decl_stmt|;
+name|ChangeUpdate
+name|update
+init|=
+name|newUpdate
+argument_list|(
+name|c
+argument_list|,
+name|changeOwner
+argument_list|)
+decl_stmt|;
+name|update
+operator|.
+name|setChangeMessage
+argument_list|(
+literal|"Foo"
+argument_list|)
+expr_stmt|;
+name|RevCommit
+name|commit
+init|=
+name|tr
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|message
+argument_list|(
+literal|"Subject"
+argument_list|)
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|update
+operator|.
+name|setCommit
+argument_list|(
+name|rw
+argument_list|,
+name|commit
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|update
+operator|.
+name|getRefName
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"refs/changes/01/1/meta"
+argument_list|)
+expr_stmt|;
+name|assertBodyEquals
+argument_list|(
+literal|"Update patch set 1\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Foo\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Subject: Subject\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Commit: "
+operator|+
+name|commit
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|"\n"
 argument_list|,
 name|update
 operator|.
