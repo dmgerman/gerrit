@@ -643,6 +643,8 @@ argument_list|(
 name|rw
 argument_list|,
 name|commit
+argument_list|,
+name|pushCertificate
 argument_list|)
 expr_stmt|;
 if|if
