@@ -164,7 +164,7 @@ name|client
 operator|.
 name|GeneralPreferencesInfo
 operator|.
-name|EmailStrategy
+name|DownloadCommand
 import|;
 end_import
 
@@ -182,7 +182,7 @@ name|client
 operator|.
 name|GeneralPreferencesInfo
 operator|.
-name|DownloadCommand
+name|EmailStrategy
 import|;
 end_import
 
