@@ -738,18 +738,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|sql
 operator|.
 name|Timestamp
@@ -1133,16 +1121,6 @@ name|note
 operator|.
 name|length
 decl_stmt|;
-name|Charset
-name|enc
-init|=
-name|RawParseUtils
-operator|.
-name|parseEncoding
-argument_list|(
-name|note
-argument_list|)
-decl_stmt|;
 name|MutableInteger
 name|curr
 init|=
@@ -1194,8 +1172,6 @@ name|curr
 argument_list|,
 name|changeId
 argument_list|,
-name|enc
-argument_list|,
 name|isForBase
 condition|?
 name|BASE_PATCH_SET
@@ -1216,8 +1192,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|changeId
-argument_list|,
-name|enc
 argument_list|,
 name|REVISION
 argument_list|)
@@ -1272,8 +1246,6 @@ argument_list|,
 name|revId
 argument_list|,
 name|isForBase
-argument_list|,
-name|enc
 argument_list|,
 name|status
 argument_list|)
@@ -1335,7 +1307,7 @@ name|newIdent
 argument_list|)
 return|;
 block|}
-DECL|method|parseComment (byte[] note, MutableInteger curr, String currentFileName, PatchSet.Id psId, RevId revId, boolean isForBase, Charset enc, Status status)
+DECL|method|parseComment (byte[] note, MutableInteger curr, String currentFileName, PatchSet.Id psId, RevId revId, boolean isForBase, Status status)
 specifier|private
 specifier|static
 name|PatchLineComment
@@ -1361,9 +1333,6 @@ name|revId
 parameter_list|,
 name|boolean
 name|isForBase
-parameter_list|,
-name|Charset
-name|enc
 parameter_list|,
 name|Status
 name|status
@@ -1423,8 +1392,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|changeId
-argument_list|,
-name|enc
 argument_list|)
 expr_stmt|;
 block|}
@@ -1485,8 +1452,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|changeId
-argument_list|,
-name|enc
 argument_list|)
 decl_stmt|;
 name|Account
@@ -1501,8 +1466,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|changeId
-argument_list|,
-name|enc
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -1523,7 +1486,7 @@ name|PARENT
 operator|.
 name|getBytes
 argument_list|(
-name|enc
+name|UTF_8
 argument_list|)
 argument_list|)
 operator|)
@@ -1551,8 +1514,6 @@ name|curr
 argument_list|,
 name|changeId
 argument_list|,
-name|enc
-argument_list|,
 name|PARENT
 argument_list|)
 expr_stmt|;
@@ -1568,8 +1529,6 @@ name|curr
 argument_list|,
 name|changeId
 argument_list|,
-name|enc
-argument_list|,
 name|UUID
 argument_list|)
 decl_stmt|;
@@ -1583,8 +1542,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|changeId
-argument_list|,
-name|enc
 argument_list|)
 decl_stmt|;
 name|String
@@ -1594,7 +1551,7 @@ name|RawParseUtils
 operator|.
 name|decode
 argument_list|(
-name|enc
+name|UTF_8
 argument_list|,
 name|note
 argument_list|,
@@ -1746,7 +1703,7 @@ return|return
 name|plc
 return|;
 block|}
-DECL|method|parseStringField (byte[] note, MutableInteger curr, Change.Id changeId, Charset enc, String fieldName)
+DECL|method|parseStringField (byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
 specifier|private
 specifier|static
 name|String
@@ -1763,9 +1720,6 @@ name|Change
 operator|.
 name|Id
 name|changeId
-parameter_list|,
-name|Charset
-name|enc
 parameter_list|,
 name|String
 name|fieldName
@@ -1794,8 +1748,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|fieldName
-argument_list|,
-name|enc
 argument_list|,
 name|changeId
 argument_list|)
@@ -1827,7 +1779,7 @@ name|RawParseUtils
 operator|.
 name|decode
 argument_list|(
-name|enc
+name|UTF_8
 argument_list|,
 name|note
 argument_list|,
@@ -2145,7 +2097,7 @@ return|return
 name|range
 return|;
 block|}
-DECL|method|parsePsId (byte[] note, MutableInteger curr, Change.Id changeId, Charset enc, String fieldName)
+DECL|method|parsePsId (byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
 specifier|private
 specifier|static
 name|PatchSet
@@ -2165,9 +2117,6 @@ operator|.
 name|Id
 name|changeId
 parameter_list|,
-name|Charset
-name|enc
-parameter_list|,
 name|String
 name|fieldName
 parameter_list|)
@@ -2181,8 +2130,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|fieldName
-argument_list|,
-name|enc
 argument_list|,
 name|changeId
 argument_list|)
@@ -2287,7 +2234,7 @@ name|patchSetId
 argument_list|)
 return|;
 block|}
-DECL|method|parseFilename (byte[] note, MutableInteger curr, Change.Id changeId, Charset enc)
+DECL|method|parseFilename (byte[] note, MutableInteger curr, Change.Id changeId)
 specifier|private
 specifier|static
 name|String
@@ -2304,9 +2251,6 @@ name|Change
 operator|.
 name|Id
 name|changeId
-parameter_list|,
-name|Charset
-name|enc
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -2318,8 +2262,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|FILE
-argument_list|,
-name|enc
 argument_list|,
 name|changeId
 argument_list|)
@@ -2386,7 +2328,7 @@ name|RawParseUtils
 operator|.
 name|decode
 argument_list|(
-name|enc
+name|UTF_8
 argument_list|,
 name|note
 argument_list|,
@@ -2399,7 +2341,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|parseTimestamp (byte[] note, MutableInteger curr, Change.Id changeId, Charset enc)
+DECL|method|parseTimestamp (byte[] note, MutableInteger curr, Change.Id changeId)
 specifier|private
 specifier|static
 name|Timestamp
@@ -2416,9 +2358,6 @@ name|Change
 operator|.
 name|Id
 name|changeId
-parameter_list|,
-name|Charset
-name|enc
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -2447,7 +2386,7 @@ name|RawParseUtils
 operator|.
 name|decode
 argument_list|(
-name|enc
+name|UTF_8
 argument_list|,
 name|note
 argument_list|,
@@ -2518,7 +2457,7 @@ name|changeId
 argument_list|)
 return|;
 block|}
-DECL|method|parseAuthor (byte[] note, MutableInteger curr, Change.Id changeId, Charset enc)
+DECL|method|parseAuthor (byte[] note, MutableInteger curr, Change.Id changeId)
 specifier|private
 specifier|static
 name|Account
@@ -2537,9 +2476,6 @@ name|Change
 operator|.
 name|Id
 name|changeId
-parameter_list|,
-name|Charset
-name|enc
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -2551,8 +2487,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|AUTHOR
-argument_list|,
-name|enc
 argument_list|,
 name|changeId
 argument_list|)
@@ -2623,7 +2557,7 @@ name|changeId
 argument_list|)
 return|;
 block|}
-DECL|method|parseCommentLength (byte[] note, MutableInteger curr, Change.Id changeId, Charset enc)
+DECL|method|parseCommentLength (byte[] note, MutableInteger curr, Change.Id changeId)
 specifier|private
 specifier|static
 name|int
@@ -2640,9 +2574,6 @@ name|Change
 operator|.
 name|Id
 name|changeId
-parameter_list|,
-name|Charset
-name|enc
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -2654,8 +2585,6 @@ argument_list|,
 name|curr
 argument_list|,
 name|LENGTH
-argument_list|,
-name|enc
 argument_list|,
 name|changeId
 argument_list|)
@@ -3045,7 +2974,7 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|checkHeaderLineFormat (byte[] note, MutableInteger curr, String fieldName, Charset enc, Change.Id changeId)
+DECL|method|checkHeaderLineFormat (byte[] note, MutableInteger curr, String fieldName, Change.Id changeId)
 specifier|private
 specifier|static
 name|void
@@ -3060,9 +2989,6 @@ name|curr
 parameter_list|,
 name|String
 name|fieldName
-parameter_list|,
-name|Charset
-name|enc
 parameter_list|,
 name|Change
 operator|.
@@ -3089,7 +3015,7 @@ name|fieldName
 operator|.
 name|getBytes
 argument_list|(
-name|enc
+name|UTF_8
 argument_list|)
 argument_list|)
 operator|!=
