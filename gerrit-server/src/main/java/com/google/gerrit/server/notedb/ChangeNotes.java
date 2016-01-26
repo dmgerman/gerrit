@@ -1091,9 +1091,20 @@ name|String
 argument_list|>
 name|hashtags
 decl_stmt|;
+comment|// Mutable note map state, only used by ChangeUpdate to make in-place editing
+comment|// of notes easier.
 DECL|field|noteMap
 name|NoteMap
 name|noteMap
+decl_stmt|;
+DECL|field|revisionNotes
+name|Map
+argument_list|<
+name|RevId
+argument_list|,
+name|RevisionNote
+argument_list|>
+name|revisionNotes
 decl_stmt|;
 DECL|field|allUsers
 specifier|private
@@ -1508,6 +1519,20 @@ return|return
 name|noteMap
 return|;
 block|}
+DECL|method|getRevisionNotes ()
+name|Map
+argument_list|<
+name|RevId
+argument_list|,
+name|RevisionNote
+argument_list|>
+name|getRevisionNotes
+parameter_list|()
+block|{
+return|return
+name|revisionNotes
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|getRefName ()
@@ -1678,7 +1703,13 @@ name|noteMap
 operator|=
 name|parser
 operator|.
-name|commentNoteMap
+name|noteMap
+expr_stmt|;
+name|revisionNotes
+operator|=
+name|parser
+operator|.
+name|revisionNotes
 expr_stmt|;
 name|change
 operator|.

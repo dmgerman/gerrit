@@ -136,6 +136,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|RevisionNote
+operator|.
+name|MAX_NOTE_SZ
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -900,17 +918,6 @@ name|String
 name|UUID
 init|=
 literal|"UUID"
-decl_stmt|;
-DECL|field|MAX_NOTE_SZ
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|MAX_NOTE_SZ
-init|=
-literal|25
-operator|<<
-literal|20
 decl_stmt|;
 DECL|method|parseCommentsFromNotes (Repository repo, String refName, RevWalk walk, Change.Id changeId, Multimap<RevId, PatchLineComment> comments, Status status)
 specifier|public
