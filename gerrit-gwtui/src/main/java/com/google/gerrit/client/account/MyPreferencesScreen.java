@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DEFAULT_PAGESIZE
 import|;
@@ -92,11 +92,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|PAGESIZE_CHOICES
 import|;
@@ -280,11 +280,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 import|;
 end_import
 
@@ -296,29 +296,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
-operator|.
-name|EmailStrategy
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|ReviewCategoryStrategy
 import|;
@@ -680,7 +662,7 @@ expr_stmt|;
 for|for
 control|(
 specifier|final
-name|short
+name|int
 name|v
 range|:
 name|PAGESIZE_CHOICES
@@ -725,7 +707,7 @@ operator|.
 name|messageShowInReviewCategoryNone
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|ReviewCategoryStrategy
 operator|.
@@ -746,7 +728,7 @@ operator|.
 name|messageShowInReviewCategoryName
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|ReviewCategoryStrategy
 operator|.
@@ -767,7 +749,7 @@ operator|.
 name|messageShowInReviewCategoryEmail
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|ReviewCategoryStrategy
 operator|.
@@ -788,7 +770,7 @@ operator|.
 name|messageShowInReviewCategoryUsername
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|ReviewCategoryStrategy
 operator|.
@@ -809,7 +791,7 @@ operator|.
 name|messageShowInReviewCategoryAbbrev
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|ReviewCategoryStrategy
 operator|.
@@ -836,7 +818,7 @@ operator|.
 name|messageEnabled
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|EmailStrategy
 operator|.
@@ -857,7 +839,7 @@ operator|.
 name|messageCCMeOnMyComments
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|EmailStrategy
 operator|.
@@ -878,7 +860,7 @@ operator|.
 name|messageDisabled
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|EmailStrategy
 operator|.
@@ -915,7 +897,7 @@ operator|.
 name|sideBySide
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DiffView
 operator|.
@@ -946,7 +928,7 @@ operator|.
 name|unifiedDiff
 argument_list|()
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DiffView
 operator|.
@@ -971,12 +953,12 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DateFormat
 name|fmt
 range|:
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DateFormat
 operator|.
@@ -1062,12 +1044,12 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|TimeFormat
 name|fmt
 range|:
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|TimeFormat
 operator|.
@@ -1976,7 +1958,7 @@ name|setListBox
 argument_list|(
 name|dateFormat
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DateFormat
 operator|.
@@ -1993,7 +1975,7 @@ name|setListBox
 argument_list|(
 name|timeFormat
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|TimeFormat
 operator|.
@@ -2050,7 +2032,7 @@ name|setListBox
 argument_list|(
 name|reviewCategoryStrategy
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|ReviewCategoryStrategy
 operator|.
@@ -2066,7 +2048,7 @@ name|setListBox
 argument_list|(
 name|diffView
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DiffView
 operator|.
@@ -2082,7 +2064,7 @@ name|setListBox
 argument_list|(
 name|emailStrategy
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|EmailStrategy
 operator|.
@@ -2171,7 +2153,7 @@ name|values
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setListBox (final ListBox f, final short defaultValue, final short currentValue)
+DECL|method|setListBox (final ListBox f, final int defaultValue, final int currentValue)
 specifier|private
 name|void
 name|setListBox
@@ -2181,11 +2163,11 @@ name|ListBox
 name|f
 parameter_list|,
 specifier|final
-name|short
+name|int
 name|defaultValue
 parameter_list|,
 specifier|final
-name|short
+name|int
 name|currentValue
 parameter_list|)
 block|{
@@ -2352,9 +2334,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getListBox (final ListBox f, final short defaultValue)
+DECL|method|getListBox (final ListBox f, final int defaultValue)
 specifier|private
-name|short
+name|int
 name|getListBox
 parameter_list|(
 specifier|final
@@ -2362,7 +2344,7 @@ name|ListBox
 name|f
 parameter_list|,
 specifier|final
-name|short
+name|int
 name|defaultValue
 parameter_list|)
 block|{
@@ -2551,13 +2533,13 @@ name|getListBox
 argument_list|(
 name|dateFormat
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DateFormat
 operator|.
 name|STD
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DateFormat
 operator|.
@@ -2574,13 +2556,13 @@ name|getListBox
 argument_list|(
 name|timeFormat
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|TimeFormat
 operator|.
 name|HHMM_12
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|TimeFormat
 operator|.
@@ -2656,13 +2638,13 @@ name|getListBox
 argument_list|(
 name|diffView
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DiffView
 operator|.
 name|SIDE_BY_SIDE
 argument_list|,
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DiffView
 operator|.
@@ -2679,10 +2661,14 @@ name|getListBox
 argument_list|(
 name|emailStrategy
 argument_list|,
+name|GeneralPreferencesInfo
+operator|.
 name|EmailStrategy
 operator|.
 name|ENABLED
 argument_list|,
+name|GeneralPreferencesInfo
+operator|.
 name|EmailStrategy
 operator|.
 name|values

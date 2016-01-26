@@ -1302,11 +1302,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|Account
+name|GeneralPreferencesInfo
+operator|.
+name|DiffView
 import|;
 end_import
 
@@ -1322,9 +1324,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
-operator|.
-name|DiffView
+name|Account
 import|;
 end_import
 

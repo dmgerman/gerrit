@@ -72,6 +72,16 @@ specifier|public
 class|class
 name|UserConfigSections
 block|{
+comment|/** The general user preferences. */
+DECL|field|GENERAL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|GENERAL
+init|=
+literal|"general"
+decl_stmt|;
 comment|/** The my menu user preferences. */
 DECL|field|MY
 specifier|public

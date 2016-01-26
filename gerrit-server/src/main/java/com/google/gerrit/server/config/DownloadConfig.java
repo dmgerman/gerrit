@@ -88,11 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
+name|GeneralPreferencesInfo
 operator|.
 name|DownloadCommand
 import|;
