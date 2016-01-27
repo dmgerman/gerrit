@@ -110,6 +110,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|Iterables
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Sets
 import|;
 end_import
@@ -190,6 +204,52 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|ChangeMessageInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -205,6 +265,16 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
 import|;
 end_import
 
@@ -305,6 +375,13 @@ argument_list|(
 literal|"tag2"
 argument_list|)
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag added: tag2"
+argument_list|)
+expr_stmt|;
 comment|// Adding another single hashtag to change that already has one hashtag
 comment|// returns a sorted list of hashtags with existing and new.
 name|addHashtags
@@ -328,6 +405,13 @@ argument_list|)
 operator|.
 name|inOrder
 argument_list|()
+expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag added: tag1"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -373,6 +457,13 @@ operator|.
 name|inOrder
 argument_list|()
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtags added: tag1, tag3"
+argument_list|)
+expr_stmt|;
 comment|// Adding multiple hashtags to change that already has hashtags returns a
 comment|// sorted list of hashtags with existing and new.
 name|addHashtags
@@ -402,6 +493,13 @@ argument_list|)
 operator|.
 name|inOrder
 argument_list|()
+expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtags added: tag2, tag4"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -441,6 +539,23 @@ argument_list|(
 literal|"tag2"
 argument_list|)
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag added: tag2"
+argument_list|)
+expr_stmt|;
+name|Timestamp
+name|lastMsgDate
+init|=
+name|getLastMessage
+argument_list|(
+name|r
+argument_list|)
+operator|.
+name|date
+decl_stmt|;
 name|addHashtags
 argument_list|(
 name|r
@@ -456,6 +571,13 @@ operator|.
 name|containsExactly
 argument_list|(
 literal|"tag2"
+argument_list|)
+expr_stmt|;
+name|assertNoNewMessageSince
+argument_list|(
+name|r
+argument_list|,
+name|lastMsgDate
 argument_list|)
 expr_stmt|;
 name|addHashtags
@@ -481,6 +603,13 @@ argument_list|)
 operator|.
 name|inOrder
 argument_list|()
+expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag added: tag1"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -519,6 +648,13 @@ argument_list|(
 literal|"tag1"
 argument_list|)
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag added: tag1"
+argument_list|)
+expr_stmt|;
 comment|// Leading # is stripped from multiple added tags.
 name|addHashtags
 argument_list|(
@@ -546,6 +682,13 @@ operator|.
 name|inOrder
 argument_list|()
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtags added: tag2, tag3"
+argument_list|)
+expr_stmt|;
 comment|// Leading # is stripped from removed tag.
 name|removeHashtags
 argument_list|(
@@ -569,6 +712,13 @@ operator|.
 name|inOrder
 argument_list|()
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag removed: tag2"
+argument_list|)
+expr_stmt|;
 comment|// Leading # is stripped from multiple removed tags.
 name|removeHashtags
 argument_list|(
@@ -587,6 +737,13 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtags removed: tag1, tag3"
+argument_list|)
+expr_stmt|;
 comment|// Leading # and space are stripped from added tag.
 name|addHashtags
 argument_list|(
@@ -603,6 +760,13 @@ operator|.
 name|containsExactly
 argument_list|(
 literal|"tag1"
+argument_list|)
+expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag added: tag1"
 argument_list|)
 expr_stmt|;
 comment|// Multiple leading # are stripped from added tag.
@@ -628,6 +792,13 @@ operator|.
 name|inOrder
 argument_list|()
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag added: tag2"
+argument_list|)
+expr_stmt|;
 comment|// Multiple leading spaces and # are stripped from added tag.
 name|addHashtags
 argument_list|(
@@ -652,6 +823,13 @@ argument_list|)
 operator|.
 name|inOrder
 argument_list|()
+expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag added: tag3"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -706,6 +884,13 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag removed: tag1"
+argument_list|)
+expr_stmt|;
 comment|// Removing a single tag from a change that has multiple tags returns a
 comment|// sorted list of remaining tags.
 name|addHashtags
@@ -740,6 +925,13 @@ argument_list|)
 operator|.
 name|inOrder
 argument_list|()
+expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag removed: tag2"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -803,6 +995,13 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtags removed: tag1, tag2"
+argument_list|)
+expr_stmt|;
 comment|// Removing multiple tags from a change that has multiple tags returns a
 comment|// sorted list of remaining tags.
 name|addHashtags
@@ -861,6 +1060,13 @@ operator|.
 name|inOrder
 argument_list|()
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtags removed: tag2, tag4"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -882,6 +1088,16 @@ init|=
 name|createChange
 argument_list|()
 decl_stmt|;
+name|Timestamp
+name|lastMsgDate
+init|=
+name|getLastMessage
+argument_list|(
+name|r
+argument_list|)
+operator|.
+name|date
+decl_stmt|;
 name|removeHashtags
 argument_list|(
 name|r
@@ -897,6 +1113,13 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
+name|assertNoNewMessageSince
+argument_list|(
+name|r
+argument_list|,
+name|lastMsgDate
+argument_list|)
+expr_stmt|;
 comment|// Removing a single non-existing tag from a change that only has one other
 comment|// tag returns a list of only one tag.
 name|addHashtags
@@ -905,6 +1128,15 @@ name|r
 argument_list|,
 literal|"tag1"
 argument_list|)
+expr_stmt|;
+name|lastMsgDate
+operator|=
+name|getLastMessage
+argument_list|(
+name|r
+argument_list|)
+operator|.
+name|date
 expr_stmt|;
 name|removeHashtags
 argument_list|(
@@ -923,6 +1155,13 @@ argument_list|(
 literal|"tag1"
 argument_list|)
 expr_stmt|;
+name|assertNoNewMessageSince
+argument_list|(
+name|r
+argument_list|,
+name|lastMsgDate
+argument_list|)
+expr_stmt|;
 comment|// Removing a single non-existing tag from a change that has multiple tags
 comment|// returns a sorted list of tags without any deleted.
 name|addHashtags
@@ -935,6 +1174,15 @@ literal|"tag2"
 argument_list|,
 literal|"tag3"
 argument_list|)
+expr_stmt|;
+name|lastMsgDate
+operator|=
+name|getLastMessage
+argument_list|(
+name|r
+argument_list|)
+operator|.
+name|date
 expr_stmt|;
 name|removeHashtags
 argument_list|(
@@ -959,6 +1207,13 @@ argument_list|)
 operator|.
 name|inOrder
 argument_list|()
+expr_stmt|;
+name|assertNoNewMessageSince
+argument_list|(
+name|r
+argument_list|,
+name|lastMsgDate
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -1058,6 +1313,13 @@ argument_list|,
 literal|"tag4"
 argument_list|)
 expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtags added: tag3, tag4\nHashtag removed: tag1"
+argument_list|)
+expr_stmt|;
 comment|// Adding and removing the same hashtag actually removes it.
 name|addHashtags
 argument_list|(
@@ -1134,6 +1396,13 @@ argument_list|,
 literal|"tag2"
 argument_list|,
 literal|"tag4"
+argument_list|)
+expr_stmt|;
+name|assertMessage
+argument_list|(
+name|r
+argument_list|,
+literal|"Hashtag removed: tag3"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1318,6 +1587,135 @@ argument_list|(
 name|input
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|assertMessage (PushOneCommit.Result r, String expectedMessage)
+specifier|private
+name|void
+name|assertMessage
+parameter_list|(
+name|PushOneCommit
+operator|.
+name|Result
+name|r
+parameter_list|,
+name|String
+name|expectedMessage
+parameter_list|)
+throws|throws
+name|RestApiException
+throws|,
+name|OrmException
+block|{
+name|assertThat
+argument_list|(
+name|getLastMessage
+argument_list|(
+name|r
+argument_list|)
+operator|.
+name|message
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|expectedMessage
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|assertNoNewMessageSince (PushOneCommit.Result r, Timestamp date)
+specifier|private
+name|void
+name|assertNoNewMessageSince
+parameter_list|(
+name|PushOneCommit
+operator|.
+name|Result
+name|r
+parameter_list|,
+name|Timestamp
+name|date
+parameter_list|)
+throws|throws
+name|RestApiException
+throws|,
+name|OrmException
+block|{
+name|assertThat
+argument_list|(
+name|getLastMessage
+argument_list|(
+name|r
+argument_list|)
+operator|.
+name|date
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|date
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getLastMessage (PushOneCommit.Result r)
+specifier|private
+name|ChangeMessageInfo
+name|getLastMessage
+parameter_list|(
+name|PushOneCommit
+operator|.
+name|Result
+name|r
+parameter_list|)
+throws|throws
+name|RestApiException
+throws|,
+name|OrmException
+block|{
+name|ChangeMessageInfo
+name|lastMessage
+init|=
+name|Iterables
+operator|.
+name|getLast
+argument_list|(
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|r
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+operator|.
+name|get
+argument_list|()
+operator|.
+name|messages
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|lastMessage
+argument_list|)
+operator|.
+name|isNotNull
+argument_list|()
+expr_stmt|;
+return|return
+name|lastMessage
+return|;
 block|}
 block|}
 end_class
