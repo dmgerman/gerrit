@@ -366,12 +366,6 @@ specifier|public
 class|class
 name|PatchSetUtil
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-comment|// TODO(dborowitz): Read from notedb.
 DECL|field|migration
 specifier|private
 specifier|final
@@ -425,12 +419,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-comment|// TODO(dborowitz): Read from notedb.
 DECL|method|get (ReviewDb db, ChangeNotes notes, PatchSet.Id psId)
 specifier|public
 name|PatchSet
@@ -450,10 +438,34 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+if|if
+condition|(
+operator|!
+name|migration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
+block|{
 return|return
 name|db
 operator|.
 name|patchSets
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|psId
+argument_list|)
+return|;
+block|}
+return|return
+name|notes
+operator|.
+name|load
+argument_list|()
+operator|.
+name|getPatchSets
 argument_list|()
 operator|.
 name|get
@@ -643,6 +655,8 @@ argument_list|(
 name|rw
 argument_list|,
 name|commit
+argument_list|,
+name|pushCertificate
 argument_list|)
 expr_stmt|;
 if|if
