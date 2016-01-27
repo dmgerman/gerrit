@@ -3600,8 +3600,10 @@ name|ctl
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isEmpty ()
-specifier|private
+specifier|public
 name|boolean
 name|isEmpty
 parameter_list|()
