@@ -1025,9 +1025,9 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 throws|throws
-name|OrmException
+name|ResourceConflictException
 throws|,
-name|InvalidChangeOperationException
+name|OrmException
 throws|,
 name|IOException
 block|{
