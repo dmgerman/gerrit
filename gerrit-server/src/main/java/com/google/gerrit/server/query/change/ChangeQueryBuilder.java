@@ -3187,11 +3187,6 @@ return|return
 operator|new
 name|CommitPredicate
 argument_list|(
-name|args
-operator|.
-name|getSchema
-argument_list|()
-argument_list|,
 name|id
 argument_list|)
 return|;
