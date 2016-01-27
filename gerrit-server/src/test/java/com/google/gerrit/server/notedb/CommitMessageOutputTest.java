@@ -415,6 +415,18 @@ literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
 operator|+
+literal|"Change-id: "
+operator|+
+name|c
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"\n"
+operator|+
 literal|"Subject: Change subject\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
@@ -664,6 +676,18 @@ literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
 operator|+
+literal|"Change-id: "
+operator|+
+name|c
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"\n"
+operator|+
 literal|"Subject: Change subject\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
@@ -785,6 +809,18 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Patch-set: 1\n"
+operator|+
+literal|"Change-id: "
+operator|+
+name|c
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"\n"
 operator|+
 literal|"Subject: Subject\n"
 operator|+
