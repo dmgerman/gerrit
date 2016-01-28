@@ -5536,7 +5536,7 @@ name|getGroups
 argument_list|()
 argument_list|)
 operator|.
-name|isNull
+name|isEmpty
 argument_list|()
 expr_stmt|;
 comment|// ps1

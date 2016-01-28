@@ -86,6 +86,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -354,6 +370,16 @@ name|Collections
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/** Utilities for manipulating patch sets. */
 end_comment
@@ -513,7 +539,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|insert (ReviewDb db, RevWalk rw, ChangeUpdate update, PatchSet.Id psId, ObjectId commit, boolean draft, Iterable<String> groups, String pushCertificate)
+DECL|method|insert (ReviewDb db, RevWalk rw, ChangeUpdate update, PatchSet.Id psId, ObjectId commit, boolean draft, List<String> groups, String pushCertificate)
 specifier|public
 name|PatchSet
 name|insert
@@ -538,7 +564,7 @@ parameter_list|,
 name|boolean
 name|draft
 parameter_list|,
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -552,6 +578,13 @@ name|OrmException
 throws|,
 name|IOException
 block|{
+name|checkNotNull
+argument_list|(
+name|groups
+argument_list|,
+literal|"groups may not be null"
+argument_list|)
+expr_stmt|;
 name|ensurePatchSetMatches
 argument_list|(
 name|psId
@@ -657,6 +690,13 @@ argument_list|,
 name|commit
 argument_list|,
 name|pushCertificate
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setGroups
+argument_list|(
+name|groups
 argument_list|)
 expr_stmt|;
 if|if
@@ -890,7 +930,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setGroups (ReviewDb db, ChangeUpdate update, PatchSet ps, Iterable<String> groups)
+DECL|method|setGroups (ReviewDb db, ChangeUpdate update, PatchSet ps, List<String> groups)
 specifier|public
 name|void
 name|setGroups
@@ -904,7 +944,7 @@ parameter_list|,
 name|PatchSet
 name|ps
 parameter_list|,
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>

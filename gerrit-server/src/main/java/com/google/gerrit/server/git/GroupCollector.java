@@ -286,6 +286,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|SortedSetMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -1420,7 +1434,7 @@ block|}
 block|}
 DECL|method|getGroups ()
 specifier|public
-name|SetMultimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -1435,7 +1449,7 @@ name|done
 operator|=
 literal|true
 expr_stmt|;
-name|SetMultimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
