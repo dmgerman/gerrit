@@ -88,20 +88,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|base
 operator|.
 name|Optional
@@ -1017,11 +1003,8 @@ name|NotesMigration
 name|migration
 decl_stmt|;
 annotation|@
-name|VisibleForTesting
-annotation|@
 name|Inject
 DECL|method|PatchLineCommentsUtil (GitRepositoryManager repoManager, AllUsersNameProvider allUsersProvider, DraftCommentNotes.Factory draftFactory, NotesMigration migration)
-specifier|public
 name|PatchLineCommentsUtil
 parameter_list|(
 name|GitRepositoryManager
