@@ -1060,10 +1060,15 @@ expr_stmt|;
 name|ReviewDb
 name|db
 init|=
+name|DeleteDraftChangeOp
+operator|.
+name|unwrap
+argument_list|(
 name|ctx
 operator|.
 name|getDb
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|db
 operator|.

@@ -146,6 +146,7 @@ end_import
 
 begin_class
 DECL|class|BatchUpdateReviewDb
+specifier|public
 class|class
 name|BatchUpdateReviewDb
 extends|extends
@@ -180,6 +181,16 @@ name|changes
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|unsafeGetDelegate ()
+specifier|public
+name|ReviewDb
+name|unsafeGetDelegate
+parameter_list|()
+block|{
+return|return
+name|delegate
+return|;
 block|}
 annotation|@
 name|Override
