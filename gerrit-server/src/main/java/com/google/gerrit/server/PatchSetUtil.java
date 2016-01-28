@@ -142,7 +142,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
+name|ImmutableCollection
 import|;
 end_import
 
@@ -502,7 +502,7 @@ return|;
 block|}
 DECL|method|byChange (ReviewDb db, ChangeNotes notes)
 specifier|public
-name|ImmutableList
+name|ImmutableCollection
 argument_list|<
 name|PatchSet
 argument_list|>
@@ -516,6 +516,15 @@ name|notes
 parameter_list|)
 throws|throws
 name|OrmException
+block|{
+if|if
+condition|(
+operator|!
+name|migration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
 block|{
 return|return
 name|ChangeUtil
@@ -537,6 +546,19 @@ name|getChangeId
 argument_list|()
 argument_list|)
 argument_list|)
+return|;
+block|}
+return|return
+name|notes
+operator|.
+name|load
+argument_list|()
+operator|.
+name|getPatchSets
+argument_list|()
+operator|.
+name|values
+argument_list|()
 return|;
 block|}
 DECL|method|insert (ReviewDb db, RevWalk rw, ChangeUpdate update, PatchSet.Id psId, ObjectId commit, boolean draft, List<String> groups, String pushCertificate)
