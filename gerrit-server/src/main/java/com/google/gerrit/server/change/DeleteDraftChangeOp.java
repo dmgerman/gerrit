@@ -711,7 +711,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// No need to delete from notedb; draft patch sets will be filtered out.
+comment|// Only delete from reviewdb here; deletion from notedb is handled in
+comment|// BatchUpdate.
 name|db
 operator|.
 name|patchComments
@@ -755,7 +756,15 @@ argument_list|()
 operator|.
 name|delete
 argument_list|(
+name|db
+operator|.
 name|patchSets
+argument_list|()
+operator|.
+name|byChange
+argument_list|(
+name|id
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|db
