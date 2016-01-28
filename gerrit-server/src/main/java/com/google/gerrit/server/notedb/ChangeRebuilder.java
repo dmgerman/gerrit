@@ -2848,6 +2848,8 @@ name|update
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|OrmException
 block|{
 name|checkUpdate
 argument_list|(
@@ -2879,6 +2881,19 @@ operator|.
 name|setSubjectForCommit
 argument_list|(
 literal|"Create change"
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setChangeId
+argument_list|(
+name|change
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|update

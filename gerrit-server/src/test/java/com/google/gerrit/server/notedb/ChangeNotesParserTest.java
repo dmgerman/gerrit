@@ -335,6 +335,8 @@ literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
@@ -419,6 +421,8 @@ literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Status: NEW\n"
@@ -433,6 +437,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -484,6 +490,8 @@ literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
@@ -514,6 +522,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -548,6 +558,8 @@ literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Label: Label1=+1\n"
@@ -568,6 +580,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -663,6 +677,8 @@ literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
@@ -743,6 +759,8 @@ literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
@@ -781,6 +799,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -821,6 +841,8 @@ literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Topic: Some Topic\n"
@@ -835,6 +857,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -875,6 +899,8 @@ literal|"\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
@@ -887,6 +913,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Branch: master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Patch-Set: 1\n"
 operator|+
@@ -909,6 +937,45 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|parseChangeId ()
+specifier|public
+name|void
+name|parseChangeId
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Subject: This is a test change\n"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Change-id: I159532ef4844d7c18f7f3fd37a0b275590d41b1b"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|parseSubject ()
 specifier|public
 name|void
@@ -926,6 +993,8 @@ operator|+
 literal|"Patch-Set: 1\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Subject: Some subject of a change\n"
 argument_list|)
@@ -963,6 +1032,8 @@ operator|+
 literal|"Patch-set: 1\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Subject: Some subject of a change\n"
 operator|+
@@ -1022,6 +1093,8 @@ literal|"Patch-set: 1 (PUBLISHED)\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Subject: Some subject of a change\n"
 argument_list|)
 expr_stmt|;
@@ -1035,6 +1108,8 @@ literal|"Patch-set: 1 (DRAFT)\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
 literal|"Subject: Some subject of a change\n"
 argument_list|)
 expr_stmt|;
@@ -1047,6 +1122,8 @@ operator|+
 literal|"Patch-set: 1 (DELETED)\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Subject: Some subject of a change\n"
 argument_list|)
@@ -1084,6 +1161,8 @@ operator|+
 literal|"Patch-set: 1\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
 literal|"Commit: abcd1234abcd1234abcd1234abcd1234abcd1234\n"
 operator|+
