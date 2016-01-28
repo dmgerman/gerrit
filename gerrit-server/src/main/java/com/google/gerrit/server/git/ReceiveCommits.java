@@ -3085,6 +3085,14 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
+DECL|field|notesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+decl_stmt|;
 DECL|field|updateFactory
 specifier|private
 specifier|final
@@ -3545,7 +3553,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final Sequences seq, final Provider<InternalChangeQuery> queryProvider, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final PatchSetUtil psUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, @SendEmailExecutor final ExecutorService sendEmailExecutor, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final Provider<SubmoduleOp> subOpProvider, final Provider<Submit> submitProvider, final Provider<MergeOp> mergeOpProvider, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration, final ChangeEditUtil editUtil, final BatchUpdate.Factory batchUpdateFactory, final SetHashtagsOp.Factory hashtagsFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final Sequences seq, final Provider<InternalChangeQuery> queryProvider, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeNotes.Factory notesFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final PatchSetUtil psUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, @SendEmailExecutor final ExecutorService sendEmailExecutor, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final Provider<SubmoduleOp> subOpProvider, final Provider<Submit> submitProvider, final Provider<MergeOp> mergeOpProvider, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration, final ChangeEditUtil editUtil, final BatchUpdate.Factory batchUpdateFactory, final SetHashtagsOp.Factory hashtagsFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -3575,6 +3583,12 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
+parameter_list|,
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
 parameter_list|,
 specifier|final
 name|ChangeUpdate
@@ -3821,6 +3835,12 @@ operator|.
 name|changeDataFactory
 operator|=
 name|changeDataFactory
+expr_stmt|;
+name|this
+operator|.
+name|notesFactory
+operator|=
+name|notesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -10300,12 +10320,17 @@ decl_stmt|;
 name|GroupCollector
 name|groupCollector
 init|=
-operator|new
 name|GroupCollector
+operator|.
+name|create
 argument_list|(
 name|refsById
 argument_list|,
 name|db
+argument_list|,
+name|psUtil
+argument_list|,
+name|notesFactory
 argument_list|)
 decl_stmt|;
 name|rp

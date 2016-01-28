@@ -753,7 +753,6 @@ expr_stmt|;
 block|}
 DECL|method|updateProjectGroups (ReviewDb db, Repository repo, RevWalk rw, Set<Change.Id> changes, UpdateUI ui)
 specifier|private
-specifier|static
 name|void
 name|updateProjectGroups
 parameter_list|(
@@ -1022,8 +1021,9 @@ block|}
 name|GroupCollector
 name|collector
 init|=
-operator|new
 name|GroupCollector
+operator|.
+name|createForSchemaUpgradeOnly
 argument_list|(
 name|changeRefsBySha
 argument_list|,
