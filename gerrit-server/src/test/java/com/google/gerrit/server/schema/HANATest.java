@@ -79,18 +79,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|hamcrest
-operator|.
-name|CoreMatchers
-operator|.
-name|sameInstance
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -257,14 +245,11 @@ name|getIndexScript
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
-argument_list|(
-name|sameInstance
+name|isSameAs
 argument_list|(
 name|ScriptRunner
 operator|.
 name|NOOP
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
