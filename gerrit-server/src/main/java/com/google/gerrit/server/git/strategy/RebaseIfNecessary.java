@@ -1200,7 +1200,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO(dborowitz): Can't use repo from ctx due to canMergeFlag.
 name|CodeReviewCommit
 name|newTip
 init|=
@@ -1229,10 +1228,6 @@ argument_list|,
 name|args
 operator|.
 name|inserter
-argument_list|,
-name|args
-operator|.
-name|canMergeFlag
 argument_list|,
 name|args
 operator|.

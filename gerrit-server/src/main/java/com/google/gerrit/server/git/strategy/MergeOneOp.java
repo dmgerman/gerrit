@@ -271,10 +271,6 @@ argument_list|()
 argument_list|,
 name|args
 operator|.
-name|canMergeFlag
-argument_list|,
-name|args
-operator|.
 name|destBranch
 argument_list|,
 name|args
