@@ -2186,7 +2186,7 @@ name|getInt
 argument_list|(
 literal|"index"
 argument_list|,
-literal|"defaultMaxClauseCount"
+literal|"maxTerms"
 argument_list|,
 name|BooleanQuery
 operator|.
