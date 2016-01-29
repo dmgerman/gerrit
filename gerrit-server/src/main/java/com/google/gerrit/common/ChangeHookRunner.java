@@ -6026,10 +6026,7 @@ name|openRepository
 argument_list|(
 name|notes
 operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getProject
+name|getProjectName
 argument_list|()
 argument_list|)
 init|;

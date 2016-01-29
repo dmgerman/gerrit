@@ -1670,10 +1670,10 @@ name|project
 init|=
 name|ctl
 operator|.
-name|getChange
+name|getProject
 argument_list|()
 operator|.
-name|getProject
+name|getNameKey
 argument_list|()
 decl_stmt|;
 try|try
@@ -2335,10 +2335,7 @@ name|openRepository
 argument_list|(
 name|notes
 operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getProject
+name|getProjectName
 argument_list|()
 argument_list|)
 init|;

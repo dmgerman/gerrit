@@ -142,6 +142,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -1139,14 +1155,6 @@ range|:
 name|matched
 control|)
 block|{
-name|Change
-name|c
-init|=
-name|ctl
-operator|.
-name|getChange
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1154,7 +1162,7 @@ name|changes
 operator|.
 name|containsKey
 argument_list|(
-name|c
+name|ctl
 operator|.
 name|getId
 argument_list|()
@@ -1162,7 +1170,10 @@ argument_list|)
 operator|&&
 name|inProject
 argument_list|(
-name|c
+name|ctl
+operator|.
+name|getProject
+argument_list|()
 argument_list|)
 operator|&&
 name|ctl
@@ -1247,13 +1258,13 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|inProject (Change change)
+DECL|method|inProject (Project project)
 specifier|private
 name|boolean
 name|inProject
 parameter_list|(
-name|Change
-name|change
+name|Project
+name|project
 parameter_list|)
 block|{
 if|if
@@ -1274,9 +1285,9 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|change
+name|project
 operator|.
-name|getProject
+name|getNameKey
 argument_list|()
 argument_list|)
 return|;
