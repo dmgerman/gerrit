@@ -200,6 +200,15 @@ name|DEF_COPY_ALL_SCORES_ON_TRIVIAL_REBASE
 init|=
 literal|false
 decl_stmt|;
+DECL|field|DEF_COPY_ALL_SCORES_ON_MERGE_FIRST_PARENT_UPDATE
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|DEF_COPY_ALL_SCORES_ON_MERGE_FIRST_PARENT_UPDATE
+init|=
+literal|false
+decl_stmt|;
 DECL|field|DEF_COPY_MAX_SCORE
 specifier|public
 specifier|static
@@ -684,6 +693,11 @@ specifier|protected
 name|boolean
 name|copyMaxScore
 decl_stmt|;
+DECL|field|copyAllScoresOnMergeFirstParentUpdate
+specifier|protected
+name|boolean
+name|copyAllScoresOnMergeFirstParentUpdate
+decl_stmt|;
 DECL|field|copyAllScoresOnTrivialRebase
 specifier|protected
 name|boolean
@@ -911,6 +925,11 @@ expr_stmt|;
 name|setCopyAllScoresOnTrivialRebase
 argument_list|(
 name|DEF_COPY_ALL_SCORES_ON_TRIVIAL_REBASE
+argument_list|)
+expr_stmt|;
+name|setCopyAllScoresOnMergeFirstParentUpdate
+argument_list|(
+name|DEF_COPY_ALL_SCORES_ON_MERGE_FIRST_PARENT_UPDATE
 argument_list|)
 expr_stmt|;
 name|setCopyMaxScore
@@ -1205,6 +1224,32 @@ operator|.
 name|copyMaxScore
 operator|=
 name|copyMaxScore
+expr_stmt|;
+block|}
+DECL|method|isCopyAllScoresOnMergeFirstParentUpdate ()
+specifier|public
+name|boolean
+name|isCopyAllScoresOnMergeFirstParentUpdate
+parameter_list|()
+block|{
+return|return
+name|copyAllScoresOnMergeFirstParentUpdate
+return|;
+block|}
+DECL|method|setCopyAllScoresOnMergeFirstParentUpdate ( boolean copyAllScoresOnMergeFirstParentUpdate)
+specifier|public
+name|void
+name|setCopyAllScoresOnMergeFirstParentUpdate
+parameter_list|(
+name|boolean
+name|copyAllScoresOnMergeFirstParentUpdate
+parameter_list|)
+block|{
+name|this
+operator|.
+name|copyAllScoresOnMergeFirstParentUpdate
+operator|=
+name|copyAllScoresOnMergeFirstParentUpdate
 expr_stmt|;
 block|}
 DECL|method|isCopyAllScoresOnTrivialRebase ()
