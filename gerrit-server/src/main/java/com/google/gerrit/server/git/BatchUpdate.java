@@ -2050,6 +2050,14 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 decl_stmt|;
+DECL|field|changeNotesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|changeNotesFactory
+decl_stmt|;
 DECL|field|changeUpdateFactory
 specifier|private
 specifier|final
@@ -2198,7 +2206,7 @@ name|order
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|BatchUpdate (GitRepositoryManager repoManager, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, GitReferenceUpdated gitRefUpdated, NotesMigration notesMigration, PatchLineCommentsUtil plcUtil, @GerritPersonIdent PersonIdent serverIdent, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
+DECL|method|BatchUpdate (GitRepositoryManager repoManager, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory changeNotesFactory, ChangeUpdate.Factory changeUpdateFactory, GitReferenceUpdated gitRefUpdated, NotesMigration notesMigration, PatchLineCommentsUtil plcUtil, @GerritPersonIdent PersonIdent serverIdent, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
 name|BatchUpdate
 parameter_list|(
 name|GitRepositoryManager
@@ -2211,6 +2219,11 @@ name|ChangeControl
 operator|.
 name|GenericFactory
 name|changeControlFactory
+parameter_list|,
+name|ChangeNotes
+operator|.
+name|Factory
+name|changeNotesFactory
 parameter_list|,
 name|ChangeUpdate
 operator|.
@@ -2277,6 +2290,12 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
+expr_stmt|;
+name|this
+operator|.
+name|changeNotesFactory
+operator|=
+name|changeNotesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -3312,6 +3331,16 @@ block|}
 comment|// Pass in preloaded change to controlFor, to avoid:
 comment|//  - reading from a db that does not belong to this update
 comment|//  - attempting to read a change that doesn't exist yet
+name|ChangeNotes
+name|notes
+init|=
+name|changeNotesFactory
+operator|.
+name|createForNew
+argument_list|(
+name|c
+argument_list|)
+decl_stmt|;
 name|ChangeContext
 name|ctx
 init|=
@@ -3322,7 +3351,7 @@ name|changeControlFactory
 operator|.
 name|controlFor
 argument_list|(
-name|c
+name|notes
 argument_list|,
 name|user
 argument_list|)

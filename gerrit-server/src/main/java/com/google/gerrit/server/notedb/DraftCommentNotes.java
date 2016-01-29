@@ -767,7 +767,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getProjectName ()
-specifier|protected
+specifier|public
 name|Project
 operator|.
 name|NameKey

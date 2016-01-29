@@ -992,6 +992,29 @@ name|change
 argument_list|)
 return|;
 block|}
+DECL|method|createForNew (Change change)
+specifier|public
+name|ChangeNotes
+name|createForNew
+parameter_list|(
+name|Change
+name|change
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ChangeNotes
+argument_list|(
+name|repoManager
+argument_list|,
+name|migration
+argument_list|,
+name|allUsersProvider
+argument_list|,
+name|change
+argument_list|)
+return|;
+block|}
 block|}
 DECL|field|change
 specifier|private
@@ -2062,7 +2085,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getProjectName ()
-specifier|protected
+specifier|public
 name|Project
 operator|.
 name|NameKey
