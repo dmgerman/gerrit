@@ -827,6 +827,8 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
+name|db
+argument_list|,
 name|c
 argument_list|)
 decl_stmt|;

@@ -440,6 +440,22 @@ name|reviewdb
 operator|.
 name|server
 operator|.
+name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
 name|ReviewDbUtil
 import|;
 end_import
@@ -969,11 +985,19 @@ operator|=
 name|allUsersProvider
 expr_stmt|;
 block|}
-DECL|method|create (Change change)
+DECL|method|create (@uppressWarningsR) ReviewDb db, Change change)
 specifier|public
 name|ChangeNotes
 name|create
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+name|ReviewDb
+name|db
+parameter_list|,
 name|Change
 name|change
 parameter_list|)

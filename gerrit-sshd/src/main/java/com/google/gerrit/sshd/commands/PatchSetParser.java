@@ -904,6 +904,11 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|c
 argument_list|)
 return|;
