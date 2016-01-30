@@ -972,6 +972,11 @@ DECL|field|source
 name|EventSource
 name|source
 decl_stmt|;
+DECL|field|eventListener
+specifier|private
+name|EventListener
+name|eventListener
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -1001,10 +1006,8 @@ operator|.
 name|id
 argument_list|)
 decl_stmt|;
-name|source
-operator|.
-name|addEventListener
-argument_list|(
+name|eventListener
+operator|=
 operator|new
 name|EventListener
 argument_list|()
@@ -1055,6 +1058,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
+expr_stmt|;
+name|source
+operator|.
+name|addEventListener
+argument_list|(
+name|eventListener
 argument_list|,
 name|listenerUser
 argument_list|)
@@ -1068,6 +1077,13 @@ name|void
 name|cleanup
 parameter_list|()
 block|{
+name|source
+operator|.
+name|removeEventListener
+argument_list|(
+name|eventListener
+argument_list|)
+expr_stmt|;
 name|db
 operator|.
 name|close
