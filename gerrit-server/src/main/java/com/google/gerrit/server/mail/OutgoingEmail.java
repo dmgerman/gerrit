@@ -118,6 +118,26 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|ReviewInput
+operator|.
+name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -587,6 +607,15 @@ operator|.
 name|Id
 name|fromId
 decl_stmt|;
+DECL|field|notify
+specifier|protected
+name|NotifyHandling
+name|notify
+init|=
+name|NotifyHandling
+operator|.
+name|ALL
+decl_stmt|;
 DECL|method|OutgoingEmail (EmailArguments ea, String mc)
 specifier|protected
 name|OutgoingEmail
@@ -631,6 +660,22 @@ operator|=
 name|id
 expr_stmt|;
 block|}
+DECL|method|setNotify (NotifyHandling notify)
+specifier|public
+name|void
+name|setNotify
+parameter_list|(
+name|NotifyHandling
+name|notify
+parameter_list|)
+block|{
+name|this
+operator|.
+name|notify
+operator|=
+name|notify
+expr_stmt|;
+block|}
 comment|/**    * Format and enqueue the message for delivery.    *    * @throws EmailException    */
 DECL|method|send ()
 specifier|public
@@ -640,6 +685,20 @@ parameter_list|()
 throws|throws
 name|EmailException
 block|{
+if|if
+condition|(
+name|NotifyHandling
+operator|.
+name|NONE
+operator|.
+name|equals
+argument_list|(
+name|notify
+argument_list|)
+condition|)
+block|{
+return|return;
+block|}
 if|if
 condition|(
 operator|!
