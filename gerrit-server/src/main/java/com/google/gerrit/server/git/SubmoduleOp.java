@@ -1582,7 +1582,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"Updated git submodules\n\n"
+literal|"Update git submodules\n\n"
 argument_list|)
 decl_stmt|;
 name|boolean

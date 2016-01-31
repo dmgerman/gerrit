@@ -424,7 +424,7 @@ name|superRepo
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"Updated git submodules\n\n"
+literal|"Update git submodules\n\n"
 argument_list|)
 expr_stmt|;
 comment|// Any following update also has a short message
@@ -454,7 +454,7 @@ name|superRepo
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"Updated git submodules\n\n"
+literal|"Update git submodules\n\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -543,7 +543,7 @@ name|superRepo
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"Updated git submodules\n\n"
+literal|"Update git submodules\n\n"
 operator|+
 literal|"Project: "
 operator|+
@@ -588,7 +588,7 @@ name|superRepo
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"Updated git submodules\n\n"
+literal|"Update git submodules\n\n"
 operator|+
 literal|"Project: "
 operator|+
