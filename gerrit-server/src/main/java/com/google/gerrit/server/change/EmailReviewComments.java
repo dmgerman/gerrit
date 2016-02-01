@@ -130,22 +130,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|ChangeMessage
 import|;
 end_import
@@ -241,6 +225,22 @@ operator|.
 name|mail
 operator|.
 name|CommentSender
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotes
 import|;
 end_import
 
@@ -454,15 +454,15 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( NotifyHandling notify, Change change, PatchSet patchSet, Account.Id authorId, ChangeMessage message, List<PatchLineComment> comments)
+DECL|method|create ( NotifyHandling notify, ChangeNotes notes, PatchSet patchSet, Account.Id authorId, ChangeMessage message, List<PatchLineComment> comments)
 name|EmailReviewComments
 name|create
 parameter_list|(
 name|NotifyHandling
 name|notify
 parameter_list|,
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|PatchSet
 name|patchSet
@@ -524,11 +524,11 @@ specifier|final
 name|NotifyHandling
 name|notify
 decl_stmt|;
-DECL|field|change
+DECL|field|notes
 specifier|private
 specifier|final
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 decl_stmt|;
 DECL|field|patchSet
 specifier|private
@@ -565,7 +565,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailReviewComments ( @endEmailExecutor ExecutorService executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted Change change, @Assisted PatchSet patchSet, @Assisted Account.Id authorId, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
+DECL|method|EmailReviewComments ( @endEmailExecutor ExecutorService executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted ChangeNotes notes, @Assisted PatchSet patchSet, @Assisted Account.Id authorId, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
 name|EmailReviewComments
 parameter_list|(
 annotation|@
@@ -597,8 +597,8 @@ name|notify
 parameter_list|,
 annotation|@
 name|Assisted
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|,
 annotation|@
 name|Assisted
@@ -664,9 +664,9 @@ name|notify
 expr_stmt|;
 name|this
 operator|.
-name|change
+name|notes
 operator|=
-name|change
+name|notes
 expr_stmt|;
 name|this
 operator|.
@@ -738,9 +738,9 @@ name|commentSenderFactory
 operator|.
 name|create
 argument_list|(
-name|change
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -761,7 +761,10 @@ name|patchSetInfoFactory
 operator|.
 name|get
 argument_list|(
-name|change
+name|notes
+operator|.
+name|getProjectName
+argument_list|()
 argument_list|,
 name|patchSet
 argument_list|)
