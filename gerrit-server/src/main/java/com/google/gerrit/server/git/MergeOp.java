@@ -1351,6 +1351,13 @@ argument_list|(
 literal|"CAN_MERGE"
 argument_list|)
 expr_stmt|;
+name|rw
+operator|.
+name|retainOnReset
+argument_list|(
+name|canMergeFlag
+argument_list|)
+expr_stmt|;
 name|ins
 operator|=
 name|repo

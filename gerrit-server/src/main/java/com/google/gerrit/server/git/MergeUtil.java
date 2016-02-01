@@ -2981,7 +2981,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|mergeOneCommit (PersonIdent author, PersonIdent committer, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
+DECL|method|mergeOneCommit (PersonIdent author, PersonIdent committer, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|mergeOneCommit
@@ -3000,9 +3000,6 @@ name|rw
 parameter_list|,
 name|ObjectInserter
 name|inserter
-parameter_list|,
-name|RevFlag
-name|canMergeFlag
 parameter_list|,
 name|Branch
 operator|.
@@ -3059,8 +3056,6 @@ name|rw
 argument_list|,
 name|inserter
 argument_list|,
-name|canMergeFlag
-argument_list|,
 name|destBranch
 argument_list|,
 name|mergeTip
@@ -3079,8 +3074,6 @@ block|{
 name|failed
 argument_list|(
 name|rw
-argument_list|,
-name|canMergeFlag
 argument_list|,
 name|mergeTip
 argument_list|,
@@ -3107,8 +3100,6 @@ block|{
 name|failed
 argument_list|(
 name|rw
-argument_list|,
-name|canMergeFlag
 argument_list|,
 name|mergeTip
 argument_list|,
@@ -3219,7 +3210,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|failed (CodeReviewRevWalk rw, RevFlag canMergeFlag, CodeReviewCommit mergeTip, CodeReviewCommit n, CommitMergeStatus failure)
+DECL|method|failed (CodeReviewRevWalk rw, CodeReviewCommit mergeTip, CodeReviewCommit n, CommitMergeStatus failure)
 specifier|private
 specifier|static
 name|CodeReviewCommit
@@ -3227,9 +3218,6 @@ name|failed
 parameter_list|(
 name|CodeReviewRevWalk
 name|rw
-parameter_list|,
-name|RevFlag
-name|canMergeFlag
 parameter_list|,
 name|CodeReviewCommit
 name|mergeTip
@@ -3249,10 +3237,8 @@ name|IOException
 block|{
 name|rw
 operator|.
-name|resetRetain
-argument_list|(
-name|canMergeFlag
-argument_list|)
+name|reset
+argument_list|()
 expr_stmt|;
 name|rw
 operator|.
@@ -3300,7 +3286,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|writeMergeCommit (PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Branch.NameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
+DECL|method|writeMergeCommit (PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|writeMergeCommit
@@ -3316,9 +3302,6 @@ name|rw
 parameter_list|,
 name|ObjectInserter
 name|inserter
-parameter_list|,
-name|RevFlag
-name|canMergeFlag
 parameter_list|,
 name|Branch
 operator|.
@@ -3355,10 +3338,8 @@ argument_list|()
 decl_stmt|;
 name|rw
 operator|.
-name|resetRetain
-argument_list|(
-name|canMergeFlag
-argument_list|)
+name|reset
+argument_list|()
 expr_stmt|;
 name|rw
 operator|.
