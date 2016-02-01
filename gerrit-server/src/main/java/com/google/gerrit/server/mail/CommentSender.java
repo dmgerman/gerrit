@@ -492,13 +492,10 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (NotifyHandling notify, Change.Id id)
+DECL|method|create (Change.Id id)
 name|CommentSender
 name|create
 parameter_list|(
-name|NotifyHandling
-name|notify
-parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -506,12 +503,6 @@ name|id
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|notify
-specifier|private
-specifier|final
-name|NotifyHandling
-name|notify
-decl_stmt|;
 DECL|field|inlineComments
 specifier|private
 name|List
@@ -533,7 +524,7 @@ name|plcUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommentSender (EmailArguments ea, PatchLineCommentsUtil plcUtil, @Assisted NotifyHandling notify, @Assisted Change.Id id)
+DECL|method|CommentSender (EmailArguments ea, PatchLineCommentsUtil plcUtil, @Assisted Change.Id id)
 specifier|public
 name|CommentSender
 parameter_list|(
@@ -542,11 +533,6 @@ name|ea
 parameter_list|,
 name|PatchLineCommentsUtil
 name|plcUtil
-parameter_list|,
-annotation|@
-name|Assisted
-name|NotifyHandling
-name|notify
 parameter_list|,
 annotation|@
 name|Assisted
@@ -571,12 +557,6 @@ argument_list|,
 name|id
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|notify
-operator|=
-name|notify
 expr_stmt|;
 name|this
 operator|.

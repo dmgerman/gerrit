@@ -738,8 +738,6 @@ name|commentSenderFactory
 operator|.
 name|create
 argument_list|(
-name|notify
-argument_list|,
 name|change
 operator|.
 name|getId
@@ -781,6 +779,13 @@ operator|.
 name|setPatchLineComments
 argument_list|(
 name|comments
+argument_list|)
+expr_stmt|;
+name|cm
+operator|.
+name|setNotify
+argument_list|(
+name|notify
 argument_list|)
 expr_stmt|;
 name|cm
