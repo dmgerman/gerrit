@@ -701,6 +701,11 @@ argument_list|)
 operator|.
 name|format
 argument_list|(
+name|revision
+operator|.
+name|getProject
+argument_list|()
+argument_list|,
 name|cherryPickedChangeId
 argument_list|)
 return|;

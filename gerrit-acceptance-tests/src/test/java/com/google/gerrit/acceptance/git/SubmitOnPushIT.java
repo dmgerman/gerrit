@@ -474,15 +474,6 @@ name|ApprovalsUtil
 name|approvalsUtil
 decl_stmt|;
 annotation|@
-name|Inject
-DECL|field|changeNotesFactory
-specifier|private
-name|ChangeNotes
-operator|.
-name|Factory
-name|changeNotesFactory
-decl_stmt|;
-annotation|@
 name|Test
 DECL|method|submitOnPush ()
 specifier|public
@@ -1677,7 +1668,7 @@ block|{
 name|ChangeNotes
 name|notes
 init|=
-name|changeNotesFactory
+name|notesFactory
 operator|.
 name|create
 argument_list|(
