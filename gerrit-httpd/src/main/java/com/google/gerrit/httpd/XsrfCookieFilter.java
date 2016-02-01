@@ -116,6 +116,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AuthConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -280,9 +296,15 @@ name|WebSession
 argument_list|>
 name|session
 decl_stmt|;
+DECL|field|authConfig
+specifier|private
+specifier|final
+name|AuthConfig
+name|authConfig
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|XsrfCookieFilter ( Provider<CurrentUser> user, DynamicItem<WebSession> session)
+DECL|method|XsrfCookieFilter ( Provider<CurrentUser> user, DynamicItem<WebSession> session, AuthConfig authConfig)
 name|XsrfCookieFilter
 parameter_list|(
 name|Provider
@@ -296,6 +318,9 @@ argument_list|<
 name|WebSession
 argument_list|>
 name|session
+parameter_list|,
+name|AuthConfig
+name|authConfig
 parameter_list|)
 block|{
 name|this
@@ -309,6 +334,12 @@ operator|.
 name|session
 operator|=
 name|session
+expr_stmt|;
+name|this
+operator|.
+name|authConfig
+operator|=
+name|authConfig
 expr_stmt|;
 block|}
 annotation|@
@@ -377,7 +408,6 @@ expr_stmt|;
 block|}
 DECL|method|setXsrfTokenCookie (HttpServletRequest req, HttpServletResponse rsp, WebSession session)
 specifier|private
-specifier|static
 name|void
 name|setXsrfTokenCookie
 parameter_list|(
@@ -429,6 +459,11 @@ name|c
 operator|.
 name|setSecure
 argument_list|(
+name|authConfig
+operator|.
+name|getCookieSecure
+argument_list|()
+operator|&&
 name|isSecure
 argument_list|(
 name|req
@@ -461,7 +496,6 @@ expr_stmt|;
 block|}
 DECL|method|isSecure (HttpServletRequest req)
 specifier|private
-specifier|static
 name|boolean
 name|isSecure
 parameter_list|(
