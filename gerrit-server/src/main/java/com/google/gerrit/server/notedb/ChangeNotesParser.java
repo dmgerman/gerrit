@@ -708,6 +708,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RefNames
 import|;
 end_import
@@ -1310,11 +1326,18 @@ name|ChangeMessage
 argument_list|>
 name|changeMessagesByPatchSet
 decl_stmt|;
-DECL|method|ChangeNotesParser (Change change, ObjectId tip, RevWalk walk, GitRepositoryManager repoManager)
+DECL|method|ChangeNotesParser (Project.NameKey project, Change.Id changeId, ObjectId tip, RevWalk walk, GitRepositoryManager repoManager)
 name|ChangeNotesParser
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
-name|change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 name|ObjectId
 name|tip
@@ -1334,10 +1357,7 @@ name|this
 operator|.
 name|id
 operator|=
-name|change
-operator|.
-name|getId
-argument_list|()
+name|changeId
 expr_stmt|;
 name|this
 operator|.
@@ -1359,10 +1379,7 @@ name|repoManager
 operator|.
 name|openMetadataRepository
 argument_list|(
-name|change
-operator|.
-name|getProject
-argument_list|()
+name|project
 argument_list|)
 expr_stmt|;
 name|approvals

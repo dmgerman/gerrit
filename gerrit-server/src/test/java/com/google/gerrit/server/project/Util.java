@@ -1130,6 +1130,43 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|verified ()
+specifier|public
+specifier|static
+specifier|final
+name|LabelType
+name|verified
+parameter_list|()
+block|{
+return|return
+name|category
+argument_list|(
+literal|"Verified"
+argument_list|,
+name|value
+argument_list|(
+literal|1
+argument_list|,
+literal|"Verified"
+argument_list|)
+argument_list|,
+name|value
+argument_list|(
+literal|0
+argument_list|,
+literal|"No score"
+argument_list|)
+argument_list|,
+name|value
+argument_list|(
+operator|-
+literal|1
+argument_list|,
+literal|"Fails"
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|patchSetLock ()
 specifier|public
 specifier|static

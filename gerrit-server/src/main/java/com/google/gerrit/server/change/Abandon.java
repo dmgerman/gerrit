@@ -853,14 +853,6 @@ argument_list|,
 name|account
 argument_list|)
 decl_stmt|;
-name|Change
-name|c
-init|=
-name|control
-operator|.
-name|getChange
-argument_list|()
-decl_stmt|;
 try|try
 init|(
 name|BatchUpdate
@@ -875,9 +867,12 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|c
+name|control
 operator|.
 name|getProject
+argument_list|()
+operator|.
+name|getNameKey
 argument_list|()
 argument_list|,
 name|control
@@ -896,7 +891,7 @@ name|u
 operator|.
 name|addOp
 argument_list|(
-name|c
+name|control
 operator|.
 name|getId
 argument_list|()

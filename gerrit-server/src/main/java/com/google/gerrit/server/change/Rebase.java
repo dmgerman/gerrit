@@ -1821,7 +1821,7 @@ name|controlFor
 argument_list|(
 name|cd
 operator|.
-name|change
+name|notes
 argument_list|()
 argument_list|)
 argument_list|,

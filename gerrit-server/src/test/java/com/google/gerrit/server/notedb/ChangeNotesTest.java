@@ -6711,7 +6711,12 @@ init|=
 operator|new
 name|ChangeNotesParser
 argument_list|(
+name|project
+argument_list|,
 name|c
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|commitWithComments
 operator|.
@@ -6786,7 +6791,12 @@ init|=
 operator|new
 name|ChangeNotesParser
 argument_list|(
+name|project
+argument_list|,
 name|c
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|commitWithApprovals
 operator|.

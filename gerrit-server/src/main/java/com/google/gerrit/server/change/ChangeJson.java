@@ -7471,10 +7471,10 @@ name|project
 init|=
 name|ctl
 operator|.
-name|getChange
+name|getProject
 argument_list|()
 operator|.
-name|getProject
+name|getNameKey
 argument_list|()
 decl_stmt|;
 name|CommitInfo

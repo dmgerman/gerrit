@@ -18158,6 +18158,19 @@ name|getLastUpdatedOn
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// we cannot reconstruct the submit records for when this change was
+comment|// submitted, this is why we must fix the status
+name|update
+operator|.
+name|fixStatus
+argument_list|(
+name|Change
+operator|.
+name|Status
+operator|.
+name|MERGED
+argument_list|)
+expr_stmt|;
 name|cmUtil
 operator|.
 name|addChangeMessage

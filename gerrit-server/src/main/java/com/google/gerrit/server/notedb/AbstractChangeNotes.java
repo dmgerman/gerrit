@@ -492,7 +492,7 @@ parameter_list|()
 function_decl|;
 comment|/**    * @return the NameKey for the project where the notes should be stored,    *    which is not necessarily the same as the change's project.    */
 DECL|method|getProjectName ()
-specifier|protected
+specifier|public
 specifier|abstract
 name|Project
 operator|.
