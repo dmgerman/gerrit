@@ -1035,6 +1035,9 @@ name|project
 argument_list|,
 name|change
 argument_list|)
+operator|.
+name|load
+argument_list|()
 return|;
 block|}
 DECL|method|createFromIndexedChange (Change change)
@@ -1073,6 +1076,8 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 operator|new
@@ -1091,6 +1096,9 @@ argument_list|()
 argument_list|,
 name|change
 argument_list|)
+operator|.
+name|load
+argument_list|()
 return|;
 block|}
 block|}
