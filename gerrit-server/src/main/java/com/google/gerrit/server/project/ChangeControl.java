@@ -854,20 +854,22 @@ operator|=
 name|approvalsUtil
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-DECL|method|create (RefControl refControl, Change change)
+DECL|method|create (RefControl refControl, Project.NameKey project, Change.Id changeId)
 name|ChangeControl
 name|create
 parameter_list|(
 name|RefControl
 name|refControl
 parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
-name|change
+operator|.
+name|Id
+name|changeId
 parameter_list|)
 throws|throws
 name|OrmException
@@ -883,7 +885,9 @@ name|create
 argument_list|(
 name|db
 argument_list|,
-name|change
+name|project
+argument_list|,
+name|changeId
 argument_list|)
 argument_list|)
 return|;

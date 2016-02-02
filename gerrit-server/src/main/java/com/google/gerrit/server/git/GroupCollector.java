@@ -306,7 +306,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
+name|PatchSet
 import|;
 end_import
 
@@ -322,7 +322,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
+name|Project
 import|;
 end_import
 
@@ -733,7 +733,7 @@ specifier|private
 name|boolean
 name|done
 decl_stmt|;
-DECL|method|create (Multimap<ObjectId, Ref> changeRefsById, final ReviewDb db, final PatchSetUtil psUtil, final ChangeNotes.Factory notesFactory)
+DECL|method|create (Multimap<ObjectId, Ref> changeRefsById, final ReviewDb db, final PatchSetUtil psUtil, final ChangeNotes.Factory notesFactory, final Project.NameKey project)
 specifier|public
 specifier|static
 name|GroupCollector
@@ -760,6 +760,12 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|notesFactory
+parameter_list|,
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|)
 block|{
 return|return
@@ -792,34 +798,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-comment|// TODO(dborowitz): Shouldn't have to look up Change.
-name|Change
-name|c
-init|=
-name|db
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|psId
-operator|.
-name|getParentKey
-argument_list|()
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|c
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
+comment|// TODO(dborowitz): Reuse open repository from caller.
 name|ChangeNotes
 name|notes
 init|=
@@ -829,7 +808,12 @@ name|create
 argument_list|(
 name|db
 argument_list|,
-name|c
+name|project
+argument_list|,
+name|psId
+operator|.
+name|getParentKey
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|PatchSet

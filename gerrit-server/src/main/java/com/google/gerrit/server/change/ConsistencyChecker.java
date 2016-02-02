@@ -3848,6 +3848,11 @@ argument_list|(
 name|db
 argument_list|,
 name|c
+operator|.
+name|getProject
+argument_list|()
+argument_list|,
+name|cid
 argument_list|)
 decl_stmt|;
 if|if
