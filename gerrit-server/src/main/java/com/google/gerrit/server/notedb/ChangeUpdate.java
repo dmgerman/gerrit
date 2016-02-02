@@ -94,6 +94,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkState
 import|;
 end_import
@@ -2603,18 +2619,25 @@ operator|=
 name|psState
 expr_stmt|;
 block|}
-DECL|method|setGroups (Iterable<String> groups)
+DECL|method|setGroups (List<String> groups)
 specifier|public
 name|void
 name|setGroups
 parameter_list|(
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|groups
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|groups
+argument_list|,
+literal|"groups may not be null"
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|groups

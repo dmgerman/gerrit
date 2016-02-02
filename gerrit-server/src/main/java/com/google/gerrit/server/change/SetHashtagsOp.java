@@ -845,19 +845,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-if|if
-condition|(
-name|existingHashtags
-operator|!=
-literal|null
-operator|&&
-operator|!
-name|existingHashtags
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
 name|updated
 operator|.
 name|addAll
@@ -879,7 +866,6 @@ argument_list|(
 name|existingHashtags
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|updated

@@ -2254,13 +2254,6 @@ name|currentPs
 operator|.
 name|getGroups
 argument_list|()
-operator|==
-literal|null
-operator|||
-name|currentPs
-operator|.
-name|getGroups
-argument_list|()
 operator|.
 name|isEmpty
 argument_list|()

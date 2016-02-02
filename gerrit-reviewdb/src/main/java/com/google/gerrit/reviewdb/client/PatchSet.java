@@ -120,6 +120,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -177,13 +187,12 @@ name|name
 argument_list|)
 return|;
 block|}
-DECL|method|joinGroups (Iterable<String> groups)
-specifier|public
+DECL|method|joinGroups (List<String> groups)
 specifier|static
 name|String
 name|joinGroups
 parameter_list|(
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -197,9 +206,13 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"groups may not be null"
+argument_list|)
+throw|;
 block|}
 name|StringBuilder
 name|sb
@@ -277,9 +290,13 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"groups may not be null"
+argument_list|)
+throw|;
 block|}
 name|List
 argument_list|<
@@ -1071,6 +1088,20 @@ argument_list|>
 name|getGroups
 parameter_list|()
 block|{
+if|if
+condition|(
+name|groups
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
+block|}
 return|return
 name|splitGroups
 argument_list|(
@@ -1078,18 +1109,33 @@ name|groups
 argument_list|)
 return|;
 block|}
-DECL|method|setGroups (Iterable<String> groups)
+DECL|method|setGroups (List<String> groups)
 specifier|public
 name|void
 name|setGroups
 parameter_list|(
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|groups
 parameter_list|)
 block|{
+if|if
+condition|(
+name|groups
+operator|==
+literal|null
+condition|)
+block|{
+name|groups
+operator|=
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+expr_stmt|;
+block|}
 name|this
 operator|.
 name|groups

@@ -738,6 +738,26 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|PatchSetInserter
 specifier|public
@@ -898,11 +918,16 @@ name|draft
 decl_stmt|;
 DECL|field|groups
 specifier|private
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|groups
+init|=
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 decl_stmt|;
 DECL|field|runHooks
 specifier|private
@@ -1184,18 +1209,25 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setGroups (Iterable<String> groups)
+DECL|method|setGroups (List<String> groups)
 specifier|public
 name|PatchSetInserter
 name|setGroups
 parameter_list|(
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|groups
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|groups
+argument_list|,
+literal|"groups may not be null"
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|groups
@@ -1470,7 +1502,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1481,8 +1513,9 @@ decl_stmt|;
 if|if
 condition|(
 name|newGroups
-operator|==
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|PatchSet

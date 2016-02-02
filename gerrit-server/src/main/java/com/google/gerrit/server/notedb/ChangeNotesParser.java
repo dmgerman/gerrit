@@ -2605,12 +2605,14 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|!
 name|ps
 operator|.
 name|getGroups
 argument_list|()
-operator|!=
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return;

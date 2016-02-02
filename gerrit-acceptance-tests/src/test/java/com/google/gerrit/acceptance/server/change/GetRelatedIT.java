@@ -3466,11 +3466,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Pretend PS1,1 was pushed before the groups field was added.
-name|setGroups
+name|clearGroups
 argument_list|(
 name|psId1_1
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 name|indexer
@@ -3819,23 +3817,16 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|setGroups (final PatchSet.Id psId, final Iterable<String> groups)
+DECL|method|clearGroups (final PatchSet.Id psId)
 specifier|private
 name|void
-name|setGroups
+name|clearGroups
 parameter_list|(
 specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|psId
-parameter_list|,
-specifier|final
-name|Iterable
-argument_list|<
-name|String
-argument_list|>
-name|groups
 parameter_list|)
 throws|throws
 name|Exception
@@ -3930,7 +3921,13 @@ argument_list|)
 argument_list|,
 name|ps
 argument_list|,
-name|groups
+name|ImmutableList
+operator|.
+expr|<
+name|String
+operator|>
+name|of
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

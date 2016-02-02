@@ -1041,11 +1041,16 @@ name|message
 decl_stmt|;
 DECL|field|groups
 specifier|private
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|groups
+init|=
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 decl_stmt|;
 DECL|field|validatePolicy
 specifier|private
@@ -1792,18 +1797,25 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setGroups (Iterable<String> groups)
+DECL|method|setGroups (List<String> groups)
 specifier|public
 name|ChangeInserter
 name|setGroups
 parameter_list|(
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|groups
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|groups
+argument_list|,
+literal|"groups may not be empty"
+argument_list|)
+expr_stmt|;
 name|checkState
 argument_list|(
 name|patchSet
@@ -2183,7 +2195,7 @@ name|Status
 operator|.
 name|DRAFT
 decl_stmt|;
-name|Iterable
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -2194,8 +2206,9 @@ decl_stmt|;
 if|if
 condition|(
 name|newGroups
-operator|==
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|newGroups

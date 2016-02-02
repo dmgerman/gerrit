@@ -118,6 +118,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Multimap
 import|;
 end_import
@@ -753,7 +767,6 @@ expr_stmt|;
 block|}
 DECL|method|updateProjectGroups (ReviewDb db, Repository repo, RevWalk rw, Set<Change.Id> changes, UpdateUI ui)
 specifier|private
-specifier|static
 name|void
 name|updateProjectGroups
 parameter_list|(
@@ -1022,8 +1035,9 @@ block|}
 name|GroupCollector
 name|collector
 init|=
-operator|new
 name|GroupCollector
+operator|.
+name|createForSchemaUpgradeOnly
 argument_list|(
 name|changeRefsBySha
 argument_list|,
@@ -1187,10 +1201,15 @@ name|ps
 operator|.
 name|setGroups
 argument_list|(
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
 name|e
 operator|.
 name|getValue
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

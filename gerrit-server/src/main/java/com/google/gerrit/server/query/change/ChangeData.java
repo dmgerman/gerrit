@@ -2433,7 +2433,7 @@ name|currentPatchSet
 decl_stmt|;
 DECL|field|patchSets
 specifier|private
-name|List
+name|Collection
 argument_list|<
 name|PatchSet
 argument_list|>
@@ -4240,10 +4240,10 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * @return patches for the change.    * @throws OrmException an error occurred reading the database.    */
+comment|/**    * @return patches for the change, in patch set ID order.    * @throws OrmException an error occurred reading the database.    */
 DECL|method|patchSets ()
 specifier|public
-name|List
+name|Collection
 argument_list|<
 name|PatchSet
 argument_list|>
