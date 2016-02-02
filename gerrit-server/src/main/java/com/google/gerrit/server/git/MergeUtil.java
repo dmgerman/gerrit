@@ -4255,7 +4255,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|findUnmergedChanges (Set<Change.Id> expected, CodeReviewRevWalk rw, RevFlag canMergeFlag, CodeReviewCommit oldTip, CodeReviewCommit mergeTip)
+DECL|method|findUnmergedChanges (Set<Change.Id> expected, CodeReviewRevWalk rw, RevFlag canMergeFlag, CodeReviewCommit oldTip, CodeReviewCommit mergeTip, Iterable<Change.Id> alreadyMerged)
 specifier|public
 name|Set
 argument_list|<
@@ -4284,6 +4284,14 @@ name|oldTip
 parameter_list|,
 name|CodeReviewCommit
 name|mergeTip
+parameter_list|,
+name|Iterable
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|alreadyMerged
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -4319,6 +4327,15 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Iterables
+operator|.
+name|addAll
+argument_list|(
+name|found
+argument_list|,
+name|alreadyMerged
+argument_list|)
+expr_stmt|;
 name|rw
 operator|.
 name|resetRetain
@@ -4467,6 +4484,61 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|method|findAnyMergedInto (CodeReviewRevWalk rw, Iterable<CodeReviewCommit> commits, CodeReviewCommit tip)
+specifier|public
+specifier|static
+name|CodeReviewCommit
+name|findAnyMergedInto
+parameter_list|(
+name|CodeReviewRevWalk
+name|rw
+parameter_list|,
+name|Iterable
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|commits
+parameter_list|,
+name|CodeReviewCommit
+name|tip
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+for|for
+control|(
+name|CodeReviewCommit
+name|c
+range|:
+name|commits
+control|)
+block|{
+comment|// TODO(dborowitz): Seems like this could get expensive for many patch
+comment|// sets. Is there a more efficient implementation?
+if|if
+condition|(
+name|rw
+operator|.
+name|isMergedInto
+argument_list|(
+name|c
+argument_list|,
+name|tip
+argument_list|)
+condition|)
+block|{
+return|return
+name|c
+return|;
+block|}
+block|}
+return|return
+literal|null
+return|;
 block|}
 end_function
 

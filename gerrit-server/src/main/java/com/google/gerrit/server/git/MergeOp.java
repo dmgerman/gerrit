@@ -406,6 +406,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|SubmitInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|client
 operator|.
 name|SubmitType
@@ -2560,6 +2578,11 @@ specifier|private
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|submitInput
+specifier|private
+name|SubmitInput
+name|submitInput
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|MergeOp (ChangeControl.GenericFactory changeControlFactory, ChangeIndexer indexer, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory changeUpdateFactory, BatchUpdate.Factory batchUpdateFactory, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory identifiedUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, ProjectCache projectCache, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, Provider<SubmoduleOp> subOpProvider)
@@ -3687,7 +3710,7 @@ literal|8
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|merge (ReviewDb db, Change change, IdentifiedUser caller, boolean checkSubmitRules)
+DECL|method|merge (ReviewDb db, Change change, IdentifiedUser caller, boolean checkSubmitRules, SubmitInput submitInput)
 specifier|public
 name|void
 name|merge
@@ -3703,12 +3726,21 @@ name|caller
 parameter_list|,
 name|boolean
 name|checkSubmitRules
+parameter_list|,
+name|SubmitInput
+name|submitInput
 parameter_list|)
 throws|throws
 name|OrmException
 throws|,
 name|RestApiException
 block|{
+name|this
+operator|.
+name|submitInput
+operator|=
+name|submitInput
+expr_stmt|;
 name|this
 operator|.
 name|caller
@@ -4319,6 +4351,8 @@ argument_list|,
 operator|new
 name|SubmitStrategyListener
 argument_list|(
+name|submitInput
+argument_list|,
 name|strategies
 argument_list|,
 name|commits

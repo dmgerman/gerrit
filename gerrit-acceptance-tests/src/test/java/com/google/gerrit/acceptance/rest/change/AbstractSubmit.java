@@ -1819,6 +1819,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1845,6 +1847,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1875,11 +1879,13 @@ operator|.
 name|class
 argument_list|,
 name|expectedError
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|submit (String changeId, SubmitInput input, Class<? extends RestApiException> expectedExceptionType, String expectedExceptionMsg)
-specifier|private
+DECL|method|submit (String changeId, SubmitInput input, Class<? extends RestApiException> expectedExceptionType, String expectedExceptionMsg, boolean checkMergeResult)
+specifier|protected
 name|void
 name|submit
 parameter_list|(
@@ -1899,6 +1905,9 @@ name|expectedExceptionType
 parameter_list|,
 name|String
 name|expectedExceptionMsg
+parameter_list|,
+name|boolean
+name|checkMergeResult
 parameter_list|)
 throws|throws
 name|Exception
@@ -2042,11 +2051,17 @@ operator|.
 name|MERGED
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|checkMergeResult
+condition|)
+block|{
 name|checkMergeResult
 argument_list|(
 name|change
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|checkMergeResult (ChangeInfo change)
 specifier|private
