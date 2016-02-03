@@ -856,6 +856,33 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|byLegacyChangeId (Change.Id id)
+specifier|public
+name|List
+argument_list|<
+name|ChangeData
+argument_list|>
+name|byLegacyChangeId
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|query
+argument_list|(
+operator|new
+name|LegacyChangeIdPredicate
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|byBranchKey (Branch.NameKey branch, Change.Key key)
 specifier|public
 name|List

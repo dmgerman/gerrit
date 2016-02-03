@@ -4679,6 +4679,15 @@ name|c
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|db
+argument_list|,
+name|c
+argument_list|)
+expr_stmt|;
 name|ChangeUpdate
 name|u
 init|=
