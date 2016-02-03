@@ -84,6 +84,10 @@ comment|/** Conflict-free merge between the new parent and the prior patch set. 
 DECL|enumConstant|TRIVIAL_REBASE
 name|TRIVIAL_REBASE
 block|,
+comment|/** Conflict-free change of first (left) parent of a merge commit. */
+DECL|enumConstant|MERGE_FIRST_PARENT_UPDATE
+name|MERGE_FIRST_PARENT_UPDATE
+block|,
 comment|/** Same tree and same parent tree. */
 DECL|enumConstant|NO_CODE_CHANGE
 name|NO_CODE_CHANGE

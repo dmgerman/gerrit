@@ -14313,6 +14313,9 @@ name|changeKind
 condition|)
 block|{
 case|case
+name|MERGE_FIRST_PARENT_UPDATE
+case|:
+case|case
 name|TRIVIAL_REBASE
 case|:
 case|case
