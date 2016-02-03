@@ -1259,11 +1259,11 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|factory
+name|bind
 argument_list|(
 name|ChangeControl
 operator|.
-name|AssistedFactory
+name|Factory
 operator|.
 name|class
 argument_list|)

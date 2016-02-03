@@ -1197,7 +1197,7 @@ specifier|private
 specifier|final
 name|ChangeControl
 operator|.
-name|AssistedFactory
+name|Factory
 name|changeControlFactory
 decl_stmt|;
 DECL|field|permissionFilter
@@ -1267,7 +1267,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeControl.AssistedFactory changeControlFactory, TagCache tagCache, ChangeCache changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeControl.Factory changeControlFactory, TagCache tagCache, ChangeCache changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -1303,7 +1303,7 @@ name|repoManager
 parameter_list|,
 name|ChangeControl
 operator|.
-name|AssistedFactory
+name|Factory
 name|changeControlFactory
 parameter_list|,
 name|TagCache

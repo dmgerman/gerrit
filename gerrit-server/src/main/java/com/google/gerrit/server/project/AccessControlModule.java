@@ -288,11 +288,11 @@ argument_list|(
 name|SINGLETON
 argument_list|)
 expr_stmt|;
-name|factory
+name|bind
 argument_list|(
 name|ChangeControl
 operator|.
-name|AssistedFactory
+name|Factory
 operator|.
 name|class
 argument_list|)
