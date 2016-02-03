@@ -248,18 +248,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|shouldSendMessage ()
-specifier|protected
-name|boolean
-name|shouldSendMessage
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|format ()
 specifier|protected
 name|void
