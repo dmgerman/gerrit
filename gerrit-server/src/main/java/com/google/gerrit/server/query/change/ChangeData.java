@@ -3821,6 +3821,8 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|()
 argument_list|)

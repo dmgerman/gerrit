@@ -855,7 +855,7 @@ name|approvalsUtil
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, @Assisted RefControl refControl, @Assisted Change change)
+DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ReviewDb db, @Assisted RefControl refControl, @Assisted Change change)
 name|ChangeControl
 parameter_list|(
 name|ChangeData
@@ -870,6 +870,9 @@ name|notesFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+name|ReviewDb
+name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -894,6 +897,8 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 argument_list|)

@@ -2498,6 +2498,8 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
+name|db
+argument_list|,
 name|getOnlyElement
 argument_list|(
 name|queryProvider
@@ -2597,6 +2599,8 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
+name|db
+argument_list|,
 name|getOnlyElement
 argument_list|(
 name|queryProvider

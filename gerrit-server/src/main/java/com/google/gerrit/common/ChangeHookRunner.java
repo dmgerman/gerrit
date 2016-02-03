@@ -2108,11 +2108,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|newNotes (Change change)
+DECL|method|newNotes (ReviewDb db, Change change)
 specifier|private
 name|ChangeNotes
 name|newNotes
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|Change
 name|change
 parameter_list|)
@@ -2122,6 +2125,8 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 return|;
@@ -2593,6 +2598,8 @@ name|notes
 init|=
 name|newNotes
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
@@ -2896,6 +2903,8 @@ name|notes
 init|=
 name|newNotes
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
@@ -3182,6 +3191,8 @@ name|notes
 init|=
 name|newNotes
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
@@ -3653,6 +3664,8 @@ name|notes
 init|=
 name|newNotes
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
@@ -3913,6 +3926,8 @@ name|notes
 init|=
 name|newNotes
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
@@ -4179,6 +4194,8 @@ name|notes
 init|=
 name|newNotes
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
@@ -4441,6 +4458,8 @@ name|notes
 init|=
 name|newNotes
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
@@ -4940,6 +4959,8 @@ name|notes
 init|=
 name|newNotes
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
