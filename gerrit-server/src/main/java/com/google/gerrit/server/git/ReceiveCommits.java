@@ -5527,48 +5527,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|err
-parameter_list|)
-block|{
-name|reject
-argument_list|(
-name|replace
-operator|.
-name|inputCommand
-argument_list|,
-literal|"internal server error"
-argument_list|)
-expr_stmt|;
-name|log
-operator|.
-name|error
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot add patch set to %d of %s"
-argument_list|,
-name|e
-operator|.
-name|getKey
-argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|project
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|,
-name|err
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|InsertException
 name|err
 parameter_list|)
@@ -5590,7 +5549,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Cannot add patch set to %d of %s"
+literal|"Cannot add patch set to change %d in project %s"
 argument_list|,
 name|e
 operator|.
