@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -678,9 +662,6 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|ChangeSet
-name|result
-decl_stmt|;
 if|if
 condition|(
 name|Submit
@@ -691,8 +672,7 @@ name|cfg
 argument_list|)
 condition|)
 block|{
-name|result
-operator|=
+return|return
 name|completeChangeSetIncludingTopics
 argument_list|(
 name|db
@@ -703,12 +683,11 @@ argument_list|(
 name|cd
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{
-name|result
-operator|=
+return|return
 name|completeChangeSetWithoutTopic
 argument_list|(
 name|db
@@ -719,36 +698,8 @@ argument_list|(
 name|cd
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-name|checkState
-argument_list|(
-name|result
-operator|.
-name|ids
-argument_list|()
-operator|.
-name|contains
-argument_list|(
-name|change
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-argument_list|,
-literal|"change %s missing from result %s"
-argument_list|,
-name|change
-operator|.
-name|getId
-argument_list|()
-argument_list|,
-name|result
-argument_list|)
-expr_stmt|;
-return|return
-name|result
 return|;
+block|}
 block|}
 DECL|method|completeChangeSetWithoutTopic (ReviewDb db, ChangeSet changes)
 specifier|private
@@ -1049,7 +1000,8 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Always include the input, even if merged. This allows
-comment|// SubmitStrategyOp to correct the situation later.
+comment|// SubmitStrategyOp to correct the situation later, assuming it gets
+comment|// returned by byCommitsOnBranchNotMerged below.
 name|hashes
 operator|.
 name|add
@@ -1097,7 +1049,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// Merged changes are ok to exclude
 name|Iterable
 argument_list|<
 name|ChangeData
