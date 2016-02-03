@@ -542,6 +542,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -1432,15 +1446,16 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|controlFor (final Change change)
+DECL|method|controlFor (Change change)
 specifier|public
 name|ChangeControl
 name|controlFor
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 name|changeControlFactory

@@ -950,6 +950,8 @@ throws|,
 name|IOException
 throws|,
 name|InvalidChangeOperationException
+throws|,
+name|OrmException
 block|{
 name|Optional
 argument_list|<
@@ -3136,6 +3138,8 @@ throws|,
 name|IOException
 throws|,
 name|ResourceNotFoundException
+throws|,
+name|OrmException
 block|{
 name|Optional
 argument_list|<

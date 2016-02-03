@@ -1616,6 +1616,8 @@ throws|,
 name|NoSuchChangeException
 throws|,
 name|IOException
+throws|,
+name|OrmException
 block|{
 if|if
 condition|(
@@ -1722,6 +1724,8 @@ throws|,
 name|NoSuchChangeException
 throws|,
 name|IOException
+throws|,
+name|OrmException
 block|{
 name|edit
 operator|=

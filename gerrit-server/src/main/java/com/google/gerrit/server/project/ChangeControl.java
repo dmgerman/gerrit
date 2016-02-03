@@ -530,6 +530,8 @@ name|user
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
+throws|,
+name|OrmException
 block|{
 specifier|final
 name|Project
@@ -852,6 +854,11 @@ operator|=
 name|approvalsUtil
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|create (RefControl refControl, Change change)
 name|ChangeControl
 name|create
@@ -862,6 +869,8 @@ parameter_list|,
 name|Change
 name|change
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 name|create
