@@ -122,6 +122,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -343,10 +359,15 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Change.Id changeId, Account.Id submitter)
+DECL|method|create (Project.NameKey project, Change.Id changeId, Account.Id submitter)
 name|EmailMerge
 name|create
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -388,6 +409,14 @@ specifier|final
 name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|changeId
 specifier|private
 specifier|final
@@ -411,7 +440,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailMerge (@endEmailExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter)
+DECL|method|EmailMerge (@endEmailExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted Project.NameKey project, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter)
 name|EmailMerge
 parameter_list|(
 annotation|@
@@ -432,6 +461,13 @@ name|schemaFactory
 parameter_list|,
 name|ThreadLocalRequestContext
 name|requestContext
+parameter_list|,
+annotation|@
+name|Assisted
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 annotation|@
 name|Assisted
@@ -473,6 +509,12 @@ operator|.
 name|requestContext
 operator|=
 name|requestContext
+expr_stmt|;
+name|this
+operator|.
+name|project
+operator|=
+name|project
 expr_stmt|;
 name|this
 operator|.
@@ -528,6 +570,8 @@ name|mergedSenderFactory
 operator|.
 name|create
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|)
 decl_stmt|;

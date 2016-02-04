@@ -266,6 +266,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|PatchLineCommentsUtil
@@ -492,10 +508,15 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Change.Id id)
+DECL|method|create (Project.NameKey project, Change.Id id)
 name|CommentSender
 name|create
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -524,7 +545,7 @@ name|plcUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommentSender (EmailArguments ea, PatchLineCommentsUtil plcUtil, @Assisted Change.Id id)
+DECL|method|CommentSender (EmailArguments ea, PatchLineCommentsUtil plcUtil, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|CommentSender
 parameter_list|(
@@ -533,6 +554,13 @@ name|ea
 parameter_list|,
 name|PatchLineCommentsUtil
 name|plcUtil
+parameter_list|,
+annotation|@
+name|Assisted
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 annotation|@
 name|Assisted
@@ -553,6 +581,8 @@ argument_list|,
 name|newChangeData
 argument_list|(
 name|ea
+argument_list|,
+name|project
 argument_list|,
 name|id
 argument_list|)

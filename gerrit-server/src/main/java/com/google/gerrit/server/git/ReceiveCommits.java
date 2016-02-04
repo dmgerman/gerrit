@@ -15451,6 +15451,11 @@ name|replacePatchSetFactory
 operator|.
 name|create
 argument_list|(
+name|project
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
 name|change
 operator|.
 name|getId
@@ -18254,6 +18259,11 @@ name|mergedSenderFactory
 operator|.
 name|create
 argument_list|(
+name|project
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
 name|ps
 operator|.
 name|getId

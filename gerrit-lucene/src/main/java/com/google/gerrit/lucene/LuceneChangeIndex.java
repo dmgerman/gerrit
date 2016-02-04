@@ -3452,12 +3452,6 @@ operator|.
 name|intValue
 argument_list|()
 decl_stmt|;
-comment|// TODO(ekempin): Pass project to changeDataFactory
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 name|Project
 operator|.
 name|NameKey
@@ -3492,6 +3486,8 @@ name|db
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|project
 argument_list|,
 operator|new
 name|Change

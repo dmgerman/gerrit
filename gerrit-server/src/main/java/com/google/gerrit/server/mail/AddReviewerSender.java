@@ -104,6 +104,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -156,10 +172,15 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Change.Id id)
+DECL|method|create (Project.NameKey project, Change.Id id)
 name|AddReviewerSender
 name|create
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -169,12 +190,19 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AddReviewerSender (EmailArguments ea, @Assisted Change.Id id)
+DECL|method|AddReviewerSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|AddReviewerSender
 parameter_list|(
 name|EmailArguments
 name|ea
+parameter_list|,
+annotation|@
+name|Assisted
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 annotation|@
 name|Assisted
@@ -193,6 +221,8 @@ argument_list|,
 name|newChangeData
 argument_list|(
 name|ea
+argument_list|,
+name|project
 argument_list|,
 name|id
 argument_list|)

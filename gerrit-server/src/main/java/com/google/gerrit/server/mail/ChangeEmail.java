@@ -258,6 +258,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -583,7 +599,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|newChangeData (EmailArguments ea, Change.Id id)
+DECL|method|newChangeData (EmailArguments ea, Project.NameKey project, Change.Id id)
 specifier|protected
 specifier|static
 name|ChangeData
@@ -591,6 +607,11 @@ name|newChangeData
 parameter_list|(
 name|EmailArguments
 name|ea
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|Change
 operator|.
@@ -611,6 +632,8 @@ name|db
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|project
 argument_list|,
 name|id
 argument_list|)

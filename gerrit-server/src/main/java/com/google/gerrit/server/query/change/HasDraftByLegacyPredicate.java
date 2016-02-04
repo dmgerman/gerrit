@@ -424,14 +424,27 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// TODO Don't load the changes directly from the database, but provide
+comment|// project name + change ID to changeDataFactory, or delete this predicate.
 for|for
 control|(
 name|Change
-operator|.
-name|Id
-name|id
+name|c
 range|:
+name|args
+operator|.
+name|db
+operator|.
+name|get
+argument_list|()
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|get
+argument_list|(
 name|ids
+argument_list|)
 control|)
 block|{
 name|r
@@ -451,7 +464,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|id
+name|c
 argument_list|)
 argument_list|)
 expr_stmt|;
