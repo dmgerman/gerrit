@@ -356,6 +356,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RevId
 import|;
 end_import
@@ -1725,14 +1741,19 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * @param cs set of changes to be submitted at once    * @param identifiedUser the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
-DECL|method|problemsForSubmittingChangeset ( ChangeSet cs, IdentifiedUser identifiedUser)
+comment|/**    * @param cs set of changes to be submitted at once    * @param project the name of the project    * @param identifiedUser the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
+DECL|method|problemsForSubmittingChangeset (ChangeSet cs, Project.NameKey project, IdentifiedUser identifiedUser)
 specifier|private
 name|String
 name|problemsForSubmittingChangeset
 parameter_list|(
 name|ChangeSet
 name|cs
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|IdentifiedUser
 name|identifiedUser
@@ -1773,6 +1794,8 @@ name|changeControlFactory
 operator|.
 name|controlFor
 argument_list|(
+name|project
+argument_list|,
 name|psId
 operator|.
 name|getParentKey
@@ -2253,6 +2276,11 @@ init|=
 name|problemsForSubmittingChangeset
 argument_list|(
 name|cs
+argument_list|,
+name|resource
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|resource
 operator|.
