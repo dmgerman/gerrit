@@ -1841,6 +1841,16 @@ condition|(
 name|currentPatchSetId
 operator|==
 literal|null
+operator|||
+name|psId
+operator|.
+name|get
+argument_list|()
+operator|>
+name|currentPatchSetId
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
 name|currentPatchSetId
