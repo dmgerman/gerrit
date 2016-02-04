@@ -3633,6 +3633,23 @@ argument_list|(
 name|legacyId
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|change
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"Unable to load change "
+operator|+
+name|legacyId
+argument_list|)
+throw|;
+block|}
 return|return
 name|change
 return|;
