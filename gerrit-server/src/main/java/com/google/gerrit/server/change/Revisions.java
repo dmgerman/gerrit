@@ -1045,6 +1045,8 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
+throws|,
+name|OrmException
 block|{
 name|Optional
 argument_list|<

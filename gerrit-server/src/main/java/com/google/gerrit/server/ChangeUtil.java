@@ -2529,6 +2529,8 @@ name|byKeyPrefix
 argument_list|(
 name|id
 argument_list|)
+argument_list|,
+name|user
 argument_list|)
 return|;
 block|}
@@ -2577,6 +2579,8 @@ operator|.
 name|id
 argument_list|()
 argument_list|)
+argument_list|,
+name|user
 argument_list|)
 return|;
 block|}
@@ -2587,7 +2591,7 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-DECL|method|asChangeControls (List<ChangeData> cds)
+DECL|method|asChangeControls (List<ChangeData> cds, CurrentUser user)
 specifier|private
 name|List
 argument_list|<
@@ -2600,6 +2604,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|cds
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2637,9 +2644,6 @@ operator|.
 name|changeControl
 argument_list|(
 name|user
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

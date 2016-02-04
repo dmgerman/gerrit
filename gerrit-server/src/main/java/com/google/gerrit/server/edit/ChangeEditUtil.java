@@ -904,7 +904,7 @@ operator|=
 name|psUtil
 expr_stmt|;
 block|}
-comment|/**    * Retrieve edit for a change and the user from the request scope.    *<p>    * At most one change edit can exist per user and change.    *    * @param change    * @return edit for this change for this user, if present.    * @throws AuthException    * @throws IOException    */
+comment|/**    * Retrieve edit for a change and the user from the request scope.    *<p>    * At most one change edit can exist per user and change.    *    * @param change    * @return edit for this change for this user, if present.    * @throws AuthException    * @throws IOException    * @throws OrmException    */
 DECL|method|byChange (Change change)
 specifier|public
 name|Optional
@@ -920,6 +920,8 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
+throws|,
+name|OrmException
 block|{
 try|try
 block|{

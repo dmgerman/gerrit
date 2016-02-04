@@ -332,6 +332,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -542,7 +556,7 @@ operator|=
 name|userFactory
 expr_stmt|;
 block|}
-comment|/**    * @param change change containing the given approvals.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label    *     type and permissions for the user. Approvals for unknown labels are not    *     included in the output, nor are approvals where the user has no    *     permissions for that label.    * @throws NoSuchChangeException    */
+comment|/**    * @param change change containing the given approvals.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label    *     type and permissions for the user. Approvals for unknown labels are not    *     included in the output, nor are approvals where the user has no    *     permissions for that label.    * @throws NoSuchChangeException    * @throws OrmException    */
 DECL|method|normalize (Change change, Collection<PatchSetApproval> approvals)
 specifier|public
 name|Result
@@ -559,6 +573,8 @@ name|approvals
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
+throws|,
+name|OrmException
 block|{
 return|return
 name|normalize

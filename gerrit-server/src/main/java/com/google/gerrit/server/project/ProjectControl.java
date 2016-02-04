@@ -542,6 +542,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -1197,7 +1211,7 @@ specifier|private
 specifier|final
 name|ChangeControl
 operator|.
-name|AssistedFactory
+name|Factory
 name|changeControlFactory
 decl_stmt|;
 DECL|field|permissionFilter
@@ -1267,7 +1281,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeControl.AssistedFactory changeControlFactory, TagCache tagCache, ChangeCache changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeControl.Factory changeControlFactory, TagCache tagCache, ChangeCache changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -1303,7 +1317,7 @@ name|repoManager
 parameter_list|,
 name|ChangeControl
 operator|.
-name|AssistedFactory
+name|Factory
 name|changeControlFactory
 parameter_list|,
 name|TagCache
@@ -1432,15 +1446,16 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|controlFor (final Change change)
+DECL|method|controlFor (Change change)
 specifier|public
 name|ChangeControl
 name|controlFor
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 name|changeControlFactory
