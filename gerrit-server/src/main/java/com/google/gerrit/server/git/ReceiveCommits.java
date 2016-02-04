@@ -6497,58 +6497,28 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Can't insert change/patchset for "
+literal|"Can't insert change/patch set for "
 operator|+
 name|project
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|". "
-operator|+
-name|err
-operator|.
-name|getMessage
-argument_list|()
 argument_list|,
 name|err
 argument_list|)
 expr_stmt|;
-name|String
-name|rejection
-init|=
-literal|"internal server error"
-decl_stmt|;
-if|if
-condition|(
-name|err
-operator|.
-name|getCause
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-name|rejection
-operator|+=
-literal|": "
-operator|+
-name|err
-operator|.
-name|getCause
-argument_list|()
-operator|.
-name|getMessage
-argument_list|()
-expr_stmt|;
-block|}
 name|reject
 argument_list|(
 name|magicBranch
 operator|.
 name|cmd
 argument_list|,
-name|rejection
+literal|"internal server error: "
+operator|+
+name|err
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
