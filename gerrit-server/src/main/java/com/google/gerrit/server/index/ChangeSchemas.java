@@ -372,6 +372,8 @@ operator|.
 name|COMMITTER
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Deprecated
 DECL|field|V26
 specifier|static
 specifier|final
@@ -522,6 +524,26 @@ argument_list|,
 name|ChangeField
 operator|.
 name|DRAFTBY
+argument_list|)
+decl_stmt|;
+DECL|field|V27
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V27
+init|=
+name|schema
+argument_list|(
+name|V26
+operator|.
+name|getFields
+argument_list|()
+operator|.
+name|values
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|method|schema (Collection<FieldDef<ChangeData, ?>> fields)
