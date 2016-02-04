@@ -242,6 +242,22 @@ name|org
 operator|.
 name|apache
 operator|.
+name|commons
+operator|.
+name|validator
+operator|.
+name|routines
+operator|.
+name|EmailValidator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|velocity
 operator|.
 name|Template
@@ -1799,13 +1815,6 @@ literal|0
 condition|)
 block|{
 comment|// If we have no message body, don't send.
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Skipping delivery of email with no body"
-argument_list|)
-expr_stmt|;
 return|return
 literal|false
 return|;
@@ -1821,13 +1830,6 @@ block|{
 comment|// If we have nobody to send this message to, then all of our
 comment|// selection filters previously for this type of message were
 comment|// unable to match a destination. Don't bother sending it.
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Skipping delivery of email with no recipients"
-argument_list|)
-expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2077,6 +2079,38 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
+name|EmailValidator
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|isValid
+argument_list|(
+name|addr
+operator|.
+name|email
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Not emailing "
+operator|+
+name|addr
+operator|.
+name|email
+operator|+
+literal|" (invalid email address)"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
 name|args
 operator|.
 name|emailSender
@@ -2089,6 +2123,21 @@ name|email
 argument_list|)
 condition|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Not emailing "
+operator|+
+name|addr
+operator|.
+name|email
+operator|+
+literal|" (prohibited by allowrcpt)"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|smtpRcptTo
@@ -2155,23 +2204,6 @@ name|BCC
 case|:
 break|break;
 block|}
-block|}
-block|}
-else|else
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Not emailing "
-operator|+
-name|addr
-operator|.
-name|email
-operator|+
-literal|" (prohibited by allowrcpt)"
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}

@@ -5803,7 +5803,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Cannot add patch set to %d of %s"
+literal|"Cannot add patch set to change %d in project %s"
 argument_list|,
 name|e
 operator|.

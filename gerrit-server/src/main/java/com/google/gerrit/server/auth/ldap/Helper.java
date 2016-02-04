@@ -1646,19 +1646,6 @@ name|AccountException
 name|e
 parameter_list|)
 block|{
-name|LdapRealm
-operator|.
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Account "
-operator|+
-name|username
-operator|+
-literal|" not found, assuming empty group membership"
-argument_list|)
-expr_stmt|;
 return|return
 name|Collections
 operator|.
@@ -1804,19 +1791,6 @@ name|AccountException
 name|e
 parameter_list|)
 block|{
-name|LdapRealm
-operator|.
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Account "
-operator|+
-name|username
-operator|+
-literal|" not found, assuming empty group membership"
-argument_list|)
-expr_stmt|;
 return|return
 name|Collections
 operator|.

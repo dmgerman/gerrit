@@ -264,18 +264,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|shouldSendMessage ()
-specifier|protected
-name|boolean
-name|shouldSendMessage
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|format ()
 specifier|protected
 name|void
@@ -344,6 +332,23 @@ expr_stmt|;
 block|}
 return|return
 name|emailToken
+return|;
+block|}
+DECL|method|isAllowed ()
+specifier|public
+name|boolean
+name|isAllowed
+parameter_list|()
+block|{
+return|return
+name|args
+operator|.
+name|emailSender
+operator|.
+name|canEmail
+argument_list|(
+name|addr
+argument_list|)
 return|;
 block|}
 block|}
