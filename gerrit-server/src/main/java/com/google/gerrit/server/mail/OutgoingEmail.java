@@ -2005,7 +2005,16 @@ literal|" (prohibited by allowrcpt)"
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|smtpRcptTo
+operator|.
+name|add
+argument_list|(
+name|addr
+argument_list|)
+condition|)
 block|{
 switch|switch
 condition|(
