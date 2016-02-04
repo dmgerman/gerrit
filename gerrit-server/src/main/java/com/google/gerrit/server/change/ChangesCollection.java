@@ -250,7 +250,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeUtil
+name|ChangeFinder
 import|;
 end_import
 
@@ -447,11 +447,11 @@ argument_list|>
 argument_list|>
 name|views
 decl_stmt|;
-DECL|field|changeUtil
+DECL|field|changeFinder
 specifier|private
 specifier|final
-name|ChangeUtil
-name|changeUtil
+name|ChangeFinder
+name|changeFinder
 decl_stmt|;
 DECL|field|createChange
 specifier|private
@@ -467,7 +467,7 @@ name|changeIndexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangesCollection ( Provider<ReviewDb> db, Provider<CurrentUser> user, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeUtil changeUtil, CreateChange createChange, ChangeIndexer changeIndexer)
+DECL|method|ChangesCollection ( Provider<ReviewDb> db, Provider<CurrentUser> user, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeFinder changeFinder, CreateChange createChange, ChangeIndexer changeIndexer)
 name|ChangesCollection
 parameter_list|(
 name|Provider
@@ -497,8 +497,8 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-name|ChangeUtil
-name|changeUtil
+name|ChangeFinder
+name|changeFinder
 parameter_list|,
 name|CreateChange
 name|createChange
@@ -533,9 +533,9 @@ name|views
 expr_stmt|;
 name|this
 operator|.
-name|changeUtil
+name|changeFinder
 operator|=
-name|changeUtil
+name|changeFinder
 expr_stmt|;
 name|this
 operator|.
@@ -607,9 +607,9 @@ name|ChangeControl
 argument_list|>
 name|ctls
 init|=
-name|changeUtil
+name|changeFinder
 operator|.
-name|findChanges
+name|find
 argument_list|(
 name|id
 operator|.
@@ -784,9 +784,9 @@ name|ChangeControl
 argument_list|>
 name|ctls
 init|=
-name|changeUtil
+name|changeFinder
 operator|.
-name|findChanges
+name|find
 argument_list|(
 name|id
 argument_list|,
