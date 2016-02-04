@@ -575,8 +575,6 @@ argument_list|,
 literal|0
 argument_list|,
 literal|3
-argument_list|,
-literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;

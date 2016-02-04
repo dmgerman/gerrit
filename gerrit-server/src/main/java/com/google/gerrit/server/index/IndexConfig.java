@@ -132,15 +132,6 @@ name|DEFAULT_MAX_TERMS
 init|=
 literal|500
 decl_stmt|;
-DECL|field|DEFAULT_MAX_PREFIX_TERMS
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|DEFAULT_MAX_PREFIX_TERMS
-init|=
-literal|100
-decl_stmt|;
 DECL|method|createDefault ()
 specifier|public
 specifier|static
@@ -156,8 +147,6 @@ argument_list|,
 literal|0
 argument_list|,
 name|DEFAULT_MAX_TERMS
-argument_list|,
-name|DEFAULT_MAX_PREFIX_TERMS
 argument_list|)
 return|;
 block|}
@@ -212,23 +201,10 @@ literal|"maxTerms"
 argument_list|,
 literal|0
 argument_list|)
-argument_list|,
-name|cfg
-operator|.
-name|getInt
-argument_list|(
-literal|"index"
-argument_list|,
-literal|null
-argument_list|,
-literal|"maxPrefixTerms"
-argument_list|,
-name|DEFAULT_MAX_PREFIX_TERMS
-argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|create (int maxLimit, int maxPages, int maxTerms, int maxPrefixTerms)
+DECL|method|create (int maxLimit, int maxPages, int maxTerms)
 specifier|public
 specifier|static
 name|IndexConfig
@@ -242,9 +218,6 @@ name|maxPages
 parameter_list|,
 name|int
 name|maxTerms
-parameter_list|,
-name|int
-name|maxPrefixTerms
 parameter_list|)
 block|{
 return|return
@@ -282,15 +255,6 @@ argument_list|,
 name|Integer
 operator|.
 name|MAX_VALUE
-argument_list|)
-argument_list|,
-name|checkLimit
-argument_list|(
-name|maxPrefixTerms
-argument_list|,
-literal|"maxPrefixTerms"
-argument_list|,
-name|DEFAULT_MAX_PREFIX_TERMS
 argument_list|)
 argument_list|)
 return|;
@@ -361,14 +325,6 @@ specifier|public
 specifier|abstract
 name|int
 name|maxTerms
-parameter_list|()
-function_decl|;
-comment|/**    * @return maximum number of prefix terms per query supported by the    *     underlying index, or limited for performance reasons. Not enforced for    *     general queries; only for specific cases where the query system can    *     split into equivalent subqueries.    */
-DECL|method|maxPrefixTerms ()
-specifier|public
-specifier|abstract
-name|int
-name|maxPrefixTerms
 parameter_list|()
 function_decl|;
 block|}
