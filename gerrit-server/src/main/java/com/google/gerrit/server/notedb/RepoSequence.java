@@ -937,7 +937,7 @@ name|repo
 init|=
 name|repoManager
 operator|.
-name|openRepository
+name|openMetadataRepository
 argument_list|(
 name|projectName
 argument_list|)
