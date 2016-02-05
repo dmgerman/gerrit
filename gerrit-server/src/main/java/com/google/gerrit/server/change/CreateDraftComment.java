@@ -699,7 +699,7 @@ operator|&&
 name|in
 operator|.
 name|line
-operator|<=
+operator|<
 literal|0
 condition|)
 block|{
@@ -707,7 +707,7 @@ throw|throw
 operator|new
 name|BadRequestException
 argument_list|(
-literal|"line must be> 0"
+literal|"line must be>= 0"
 argument_list|)
 throw|;
 block|}
