@@ -415,7 +415,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"restricted to members of Modify Accounts"
+literal|"requires Modify Account capability"
 argument_list|)
 throw|;
 block|}
