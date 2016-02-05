@@ -324,6 +324,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -488,6 +504,14 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 decl_stmt|;
+DECL|field|notesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+decl_stmt|;
 DECL|field|indexes
 specifier|private
 specifier|final
@@ -539,7 +563,7 @@ name|requestedFields
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, IndexCollection indexes, IndexRewriter rewriter, IndexConfig indexConfig, Metrics metrics)
+DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, IndexCollection indexes, IndexRewriter rewriter, IndexConfig indexConfig, Metrics metrics)
 name|QueryProcessor
 parameter_list|(
 name|Provider
@@ -558,6 +582,11 @@ name|ChangeControl
 operator|.
 name|GenericFactory
 name|changeControlFactory
+parameter_list|,
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
 parameter_list|,
 name|IndexCollection
 name|indexes
@@ -589,6 +618,12 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
+expr_stmt|;
+name|this
+operator|.
+name|notesFactory
+operator|=
+name|notesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -831,6 +866,8 @@ operator|new
 name|IsVisibleToPredicate
 argument_list|(
 name|db
+argument_list|,
+name|notesFactory
 argument_list|,
 name|changeControlFactory
 argument_list|,

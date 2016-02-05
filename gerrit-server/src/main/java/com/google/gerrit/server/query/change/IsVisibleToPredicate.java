@@ -124,6 +124,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -271,6 +287,14 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|notesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+decl_stmt|;
 DECL|field|changeControl
 specifier|private
 specifier|final
@@ -285,7 +309,7 @@ specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|IsVisibleToPredicate (Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, CurrentUser user)
+DECL|method|IsVisibleToPredicate (Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, ChangeControl.GenericFactory changeControlFactory, CurrentUser user)
 name|IsVisibleToPredicate
 parameter_list|(
 name|Provider
@@ -293,6 +317,11 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
 parameter_list|,
 name|ChangeControl
 operator|.
@@ -320,6 +349,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|notesFactory
+operator|=
+name|notesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -383,6 +418,16 @@ return|return
 literal|false
 return|;
 block|}
+name|ChangeNotes
+name|notes
+init|=
+name|notesFactory
+operator|.
+name|createFromIndexedChange
+argument_list|(
+name|c
+argument_list|)
+decl_stmt|;
 name|ChangeControl
 name|cc
 init|=
@@ -390,7 +435,7 @@ name|changeControl
 operator|.
 name|controlFor
 argument_list|(
-name|c
+name|notes
 argument_list|,
 name|user
 argument_list|)

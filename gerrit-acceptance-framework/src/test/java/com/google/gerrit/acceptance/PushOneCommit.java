@@ -1665,6 +1665,14 @@ argument_list|(
 name|db
 argument_list|,
 name|c
+operator|.
+name|getProject
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 argument_list|)
 operator|.

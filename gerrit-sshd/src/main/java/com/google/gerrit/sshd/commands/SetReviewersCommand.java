@@ -174,7 +174,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeUtil
+name|ChangeFinder
 import|;
 end_import
 
@@ -742,10 +742,10 @@ name|changesCollection
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|changeUtil
+DECL|field|changeFinder
 specifier|private
-name|ChangeUtil
-name|changeUtil
+name|ChangeFinder
+name|changeFinder
 decl_stmt|;
 DECL|field|toRemove
 specifier|private
@@ -1119,9 +1119,9 @@ name|ChangeControl
 argument_list|>
 name|matched
 init|=
-name|changeUtil
+name|changeFinder
 operator|.
-name|findChanges
+name|find
 argument_list|(
 name|id
 argument_list|,

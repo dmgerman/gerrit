@@ -322,6 +322,10 @@ name|migration
 operator|.
 name|enabled
 argument_list|()
+operator|||
+name|changeId
+operator|==
+literal|null
 condition|)
 block|{
 name|loadDefaults

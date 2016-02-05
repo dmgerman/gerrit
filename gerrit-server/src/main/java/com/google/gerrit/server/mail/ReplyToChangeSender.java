@@ -106,6 +106,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|query
@@ -154,10 +170,15 @@ extends|extends
 name|ReplyToChangeSender
 parameter_list|>
 block|{
-DECL|method|create (Change.Id id)
+DECL|method|create (Project.NameKey project, Change.Id id)
 name|T
 name|create
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id

@@ -356,6 +356,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RevId
 import|;
 end_import
@@ -525,6 +541,22 @@ operator|.
 name|git
 operator|.
 name|MergeSuperSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotes
 import|;
 end_import
 
@@ -976,6 +1008,14 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 decl_stmt|;
+DECL|field|changeNotesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|changeNotesFactory
+decl_stmt|;
 DECL|field|mergeOpProvider
 specifier|private
 specifier|final
@@ -1056,7 +1096,7 @@ name|queryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Submit (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, ChangeData.Factory changeDataFactory, ChangeMessagesUtil cmUtil, ChangeControl.GenericFactory changeControlFactory, Provider<MergeOp> mergeOpProvider, MergeSuperSet mergeSuperSet, AccountsCollection accounts, ChangesCollection changes, @GerritServerConfig Config cfg, Provider<InternalChangeQuery> queryProvider)
+DECL|method|Submit (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, ChangeData.Factory changeDataFactory, ChangeMessagesUtil cmUtil, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory changeNotesFactory, Provider<MergeOp> mergeOpProvider, MergeSuperSet mergeSuperSet, AccountsCollection accounts, ChangesCollection changes, @GerritServerConfig Config cfg, Provider<InternalChangeQuery> queryProvider)
 name|Submit
 parameter_list|(
 name|Provider
@@ -1080,6 +1120,11 @@ name|ChangeControl
 operator|.
 name|GenericFactory
 name|changeControlFactory
+parameter_list|,
+name|ChangeNotes
+operator|.
+name|Factory
+name|changeNotesFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1137,6 +1182,12 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
+expr_stmt|;
+name|this
+operator|.
+name|changeNotesFactory
+operator|=
+name|changeNotesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1585,18 +1636,25 @@ argument_list|)
 expr_stmt|;
 name|change
 operator|=
-name|db
+name|changeNotesFactory
 operator|.
-name|changes
-argument_list|()
-operator|.
-name|get
+name|create
 argument_list|(
+name|db
+argument_list|,
+name|change
+operator|.
+name|getProject
+argument_list|()
+argument_list|,
 name|change
 operator|.
 name|getId
 argument_list|()
 argument_list|)
+operator|.
+name|getChange
+argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -1683,14 +1741,19 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * @param cs set of changes to be submitted at once    * @param identifiedUser the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
-DECL|method|problemsForSubmittingChangeset ( ChangeSet cs, IdentifiedUser identifiedUser)
+comment|/**    * @param cs set of changes to be submitted at once    * @param project the name of the project    * @param identifiedUser the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
+DECL|method|problemsForSubmittingChangeset (ChangeSet cs, Project.NameKey project, IdentifiedUser identifiedUser)
 specifier|private
 name|String
 name|problemsForSubmittingChangeset
 parameter_list|(
 name|ChangeSet
 name|cs
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|IdentifiedUser
 name|identifiedUser
@@ -1731,6 +1794,8 @@ name|changeControlFactory
 operator|.
 name|controlFor
 argument_list|(
+name|project
+argument_list|,
 name|psId
 operator|.
 name|getParentKey
@@ -2211,6 +2276,11 @@ init|=
 name|problemsForSubmittingChangeset
 argument_list|(
 name|cs
+argument_list|,
+name|resource
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|resource
 operator|.

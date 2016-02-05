@@ -374,7 +374,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeUtil
+name|ChangeFinder
 import|;
 end_import
 
@@ -933,11 +933,11 @@ operator|.
 name|Factory
 name|jsonFactory
 decl_stmt|;
-DECL|field|changeUtil
+DECL|field|changeFinder
 specifier|private
 specifier|final
-name|ChangeUtil
-name|changeUtil
+name|ChangeFinder
+name|changeFinder
 decl_stmt|;
 DECL|field|updateFactory
 specifier|private
@@ -961,7 +961,7 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, Sequences seq, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> user, ProjectsCollection projectsCollection, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeUtil changeUtil, BatchUpdate.Factory updateFactory, PatchSetUtil psUtil, @GerritServerConfig Config config)
+DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, Sequences seq, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> user, ProjectsCollection projectsCollection, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeFinder changeFinder, BatchUpdate.Factory updateFactory, PatchSetUtil psUtil, @GerritServerConfig Config config)
 name|CreateChange
 parameter_list|(
 name|Provider
@@ -1000,8 +1000,8 @@ operator|.
 name|Factory
 name|json
 parameter_list|,
-name|ChangeUtil
-name|changeUtil
+name|ChangeFinder
+name|changeFinder
 parameter_list|,
 name|BatchUpdate
 operator|.
@@ -1070,9 +1070,9 @@ name|json
 expr_stmt|;
 name|this
 operator|.
-name|changeUtil
+name|changeFinder
 operator|=
-name|changeUtil
+name|changeFinder
 expr_stmt|;
 name|this
 operator|.
@@ -1395,9 +1395,9 @@ name|ChangeControl
 argument_list|>
 name|ctls
 init|=
-name|changeUtil
+name|changeFinder
 operator|.
-name|findChanges
+name|find
 argument_list|(
 name|input
 operator|.
@@ -1854,6 +1854,8 @@ name|json
 operator|.
 name|format
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|)
 argument_list|)

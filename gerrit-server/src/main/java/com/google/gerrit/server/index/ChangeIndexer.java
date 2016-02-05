@@ -186,6 +186,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -826,7 +842,7 @@ name|indexes
 expr_stmt|;
 block|}
 comment|/**    * Start indexing a change.    *    * @param id change to index.    * @return future for the indexing task.    */
-DECL|method|indexAsync (Change.Id id)
+DECL|method|indexAsync (Project.NameKey project, Change.Id id)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -836,6 +852,11 @@ name|IOException
 argument_list|>
 name|indexAsync
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -852,6 +873,8 @@ argument_list|(
 operator|new
 name|IndexTask
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 argument_list|)
@@ -870,7 +893,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Start indexing multiple changes in parallel.    *    * @param ids changes to index.    * @return future for completing indexing of all changes.    */
-DECL|method|indexAsync (Collection<Change.Id> ids)
+DECL|method|indexAsync (Project.NameKey project, Collection<Change.Id> ids)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -880,6 +903,11 @@ name|IOException
 argument_list|>
 name|indexAsync
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Collection
 argument_list|<
 name|Change
@@ -924,6 +952,8 @@ name|add
 argument_list|(
 name|indexAsync
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 argument_list|)
@@ -1132,6 +1162,14 @@ argument_list|<
 name|Void
 argument_list|>
 block|{
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|id
 specifier|private
 specifier|final
@@ -1140,16 +1178,27 @@ operator|.
 name|Id
 name|id
 decl_stmt|;
-DECL|method|IndexTask (Change.Id id)
+DECL|method|IndexTask (Project.NameKey project, Change.Id id)
 specifier|private
 name|IndexTask
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
 name|id
 parameter_list|)
 block|{
+name|this
+operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
 name|this
 operator|.
 name|id
@@ -1315,6 +1364,8 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|project
 argument_list|,
 name|id
 argument_list|)
