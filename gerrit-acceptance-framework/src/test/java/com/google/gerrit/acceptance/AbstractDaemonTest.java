@@ -2739,6 +2739,26 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+return|return
+name|createChange
+argument_list|(
+literal|"refs/for/master"
+argument_list|)
+return|;
+block|}
+DECL|method|createChange (String ref)
+specifier|protected
+name|PushOneCommit
+operator|.
+name|Result
+name|createChange
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 name|PushOneCommit
 name|push
 init|=
@@ -2765,7 +2785,7 @@ name|push
 operator|.
 name|to
 argument_list|(
-literal|"refs/for/master"
+name|ref
 argument_list|)
 decl_stmt|;
 name|result

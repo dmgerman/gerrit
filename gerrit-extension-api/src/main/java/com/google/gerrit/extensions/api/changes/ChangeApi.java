@@ -335,6 +335,22 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Publishes a draft change.    */
+DECL|method|publish ()
+name|void
+name|publish
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Deletes a draft change.    */
+DECL|method|delete ()
+name|void
+name|delete
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|topic ()
 name|String
 name|topic
@@ -775,6 +791,38 @@ parameter_list|(
 name|RevertInput
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|publish ()
+specifier|public
+name|void
+name|publish
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|delete ()
+specifier|public
+name|void
+name|delete
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
