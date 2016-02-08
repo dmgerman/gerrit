@@ -1214,6 +1214,7 @@ name|change
 argument_list|()
 expr_stmt|;
 block|}
+return|return;
 block|}
 name|Map
 argument_list|<
