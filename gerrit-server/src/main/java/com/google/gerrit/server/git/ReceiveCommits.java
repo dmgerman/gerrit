@@ -13688,16 +13688,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|reject
-argument_list|(
-name|inputCommand
-argument_list|,
-literal|"no changes made"
-argument_list|)
-expr_stmt|;
-return|return
-literal|false
-return|;
 block|}
 else|else
 block|{
