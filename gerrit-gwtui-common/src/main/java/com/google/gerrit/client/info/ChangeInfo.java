@@ -596,6 +596,23 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|submitted ()
+specifier|public
+specifier|final
+name|Timestamp
+name|submitted
+parameter_list|()
+block|{
+return|return
+name|JavaSqlTimestamp_JsonSerializer
+operator|.
+name|parseTimestamp
+argument_list|(
+name|submittedRaw
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|idAbbreviated ()
 specifier|public
 specifier|final
@@ -831,6 +848,15 @@ name|String
 name|updatedRaw
 parameter_list|()
 comment|/*-{ return this.updated; }-*/
+function_decl|;
+DECL|method|submittedRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|submittedRaw
+parameter_list|()
+comment|/*-{ return this.submitted; }-*/
 function_decl|;
 DECL|method|starred ()
 specifier|public

@@ -213,6 +213,11 @@ specifier|public
 name|Timestamp
 name|updated
 decl_stmt|;
+DECL|field|submitted
+specifier|public
+name|Timestamp
+name|submitted
+decl_stmt|;
 DECL|field|starred
 specifier|public
 name|Boolean
