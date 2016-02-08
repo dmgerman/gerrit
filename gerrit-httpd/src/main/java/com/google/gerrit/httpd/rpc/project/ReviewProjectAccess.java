@@ -1277,6 +1277,8 @@ decl||
 name|OrmException
 decl||
 name|RestApiException
+decl||
+name|UpdateException
 name|e
 parameter_list|)
 block|{
@@ -1376,6 +1378,8 @@ decl||
 name|OrmException
 decl||
 name|RestApiException
+decl||
+name|UpdateException
 name|e
 parameter_list|)
 block|{

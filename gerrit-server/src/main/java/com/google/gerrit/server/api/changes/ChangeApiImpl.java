@@ -1878,6 +1878,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|IOException
+decl||
+name|UpdateException
 name|e
 parameter_list|)
 block|{

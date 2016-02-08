@@ -3289,6 +3289,14 @@ argument_list|(
 name|reviewers
 argument_list|)
 operator|.
+name|isNotNull
+argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|reviewers
+argument_list|)
+operator|.
 name|hasSize
 argument_list|(
 literal|1
