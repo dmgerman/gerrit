@@ -3693,6 +3693,8 @@ name|changeControlFactory
 operator|.
 name|controlFor
 argument_list|(
+name|db
+argument_list|,
 name|c
 argument_list|,
 name|userFactory
@@ -3772,6 +3774,8 @@ name|changeControlFactory
 operator|.
 name|controlFor
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|,
 name|user
@@ -3786,6 +3790,8 @@ name|changeControlFactory
 operator|.
 name|controlFor
 argument_list|(
+name|db
+argument_list|,
 name|project
 argument_list|,
 name|legacyId

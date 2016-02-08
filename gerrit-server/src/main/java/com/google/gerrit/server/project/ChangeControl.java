@@ -380,7 +380,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
+name|Singleton
 import|;
 end_import
 
@@ -424,6 +424,8 @@ specifier|public
 class|class
 name|ChangeControl
 block|{
+annotation|@
+name|Singleton
 DECL|class|GenericFactory
 specifier|public
 specifier|static
@@ -437,15 +439,6 @@ name|ProjectControl
 operator|.
 name|GenericFactory
 name|projectControl
-decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 decl_stmt|;
 DECL|field|notesFactory
 specifier|private
@@ -463,19 +456,13 @@ name|changeFinder
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory ( ProjectControl.GenericFactory p, Provider<ReviewDb> d, ChangeNotes.Factory n, ChangeFinder f)
+DECL|method|GenericFactory ( ProjectControl.GenericFactory p, ChangeNotes.Factory n, ChangeFinder f)
 name|GenericFactory
 parameter_list|(
 name|ProjectControl
 operator|.
 name|GenericFactory
 name|p
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|d
 parameter_list|,
 name|ChangeNotes
 operator|.
@@ -490,10 +477,6 @@ name|projectControl
 operator|=
 name|p
 expr_stmt|;
-name|db
-operator|=
-name|d
-expr_stmt|;
 name|notesFactory
 operator|=
 name|n
@@ -503,11 +486,14 @@ operator|=
 name|f
 expr_stmt|;
 block|}
-DECL|method|controlFor (Project.NameKey project, Change.Id changeId, CurrentUser user)
+DECL|method|controlFor (ReviewDb db, Project.NameKey project, Change.Id changeId, CurrentUser user)
 specifier|public
 name|ChangeControl
 name|controlFor
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -534,9 +520,6 @@ operator|.
 name|create
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|project
 argument_list|,
@@ -547,11 +530,14 @@ name|user
 argument_list|)
 return|;
 block|}
-DECL|method|controlFor (Change change, CurrentUser user)
+DECL|method|controlFor (ReviewDb db, Change change, CurrentUser user)
 specifier|public
 name|ChangeControl
 name|controlFor
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -588,6 +574,8 @@ argument_list|)
 operator|.
 name|controlFor
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 return|;
@@ -689,11 +677,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|validateFor (Change.Id changeId, CurrentUser user)
+DECL|method|validateFor (ReviewDb db, Change.Id changeId, CurrentUser user)
 specifier|public
 name|ChangeControl
 name|validateFor
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -722,6 +713,8 @@ decl_stmt|;
 return|return
 name|validateFor
 argument_list|(
+name|db
+argument_list|,
 name|ctl
 operator|.
 name|getChange
@@ -731,11 +724,14 @@ name|user
 argument_list|)
 return|;
 block|}
-DECL|method|validateFor (Change change, CurrentUser user)
+DECL|method|validateFor (ReviewDb db, Change change, CurrentUser user)
 specifier|public
 name|ChangeControl
 name|validateFor
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -752,6 +748,8 @@ name|c
 init|=
 name|controlFor
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|,
 name|user
@@ -765,9 +763,6 @@ operator|.
 name|isVisible
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -787,18 +782,14 @@ name|c
 return|;
 block|}
 block|}
+annotation|@
+name|Singleton
 DECL|class|Factory
 specifier|public
 specifier|static
 class|class
 name|Factory
 block|{
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -823,12 +814,9 @@ name|approvalsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory (ReviewDb db, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil)
+DECL|method|Factory (ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil)
 name|Factory
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ChangeData
 operator|.
 name|Factory
@@ -843,12 +831,6 @@ name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|)
 block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
 name|this
 operator|.
 name|changeDataFactory
@@ -868,12 +850,15 @@ operator|=
 name|approvalsUtil
 expr_stmt|;
 block|}
-DECL|method|create (RefControl refControl, Project.NameKey project, Change.Id changeId)
+DECL|method|create (RefControl refControl, ReviewDb db, Project.NameKey project, Change.Id changeId)
 name|ChangeControl
 name|create
 parameter_list|(
 name|RefControl
 name|refControl
+parameter_list|,
+name|ReviewDb
+name|db
 parameter_list|,
 name|Project
 operator|.

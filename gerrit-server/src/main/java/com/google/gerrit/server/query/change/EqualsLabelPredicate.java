@@ -784,6 +784,11 @@ name|ccFactory
 operator|.
 name|controlFor
 argument_list|(
+name|dbProvider
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|change
 argument_list|,
 name|reviewer

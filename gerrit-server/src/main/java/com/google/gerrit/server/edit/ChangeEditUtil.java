@@ -932,6 +932,11 @@ name|changeControlFactory
 operator|.
 name|controlFor
 argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|change
 argument_list|,
 name|user
