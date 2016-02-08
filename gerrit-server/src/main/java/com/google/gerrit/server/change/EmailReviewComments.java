@@ -112,22 +112,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -207,6 +191,20 @@ operator|.
 name|server
 operator|.
 name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|IdentifiedUser
 import|;
 end_import
 
@@ -356,18 +354,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|OutOfScopeException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Provider
 import|;
 end_import
@@ -478,7 +464,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( NotifyHandling notify, Change change, PatchSet patchSet, Account.Id authorId, ChangeMessage message, List<PatchLineComment> comments)
+DECL|method|create ( NotifyHandling notify, Change change, PatchSet patchSet, IdentifiedUser user, ChangeMessage message, List<PatchLineComment> comments)
 name|EmailReviewComments
 name|create
 parameter_list|(
@@ -491,10 +477,8 @@ parameter_list|,
 name|PatchSet
 name|patchSet
 parameter_list|,
-name|Account
-operator|.
-name|Id
-name|authorId
+name|IdentifiedUser
+name|user
 parameter_list|,
 name|ChangeMessage
 name|message
@@ -560,13 +544,11 @@ specifier|final
 name|PatchSet
 name|patchSet
 decl_stmt|;
-DECL|field|authorId
+DECL|field|user
 specifier|private
 specifier|final
-name|Account
-operator|.
-name|Id
-name|authorId
+name|IdentifiedUser
+name|user
 decl_stmt|;
 DECL|field|message
 specifier|private
@@ -589,7 +571,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailReviewComments ( @mailReviewCommentsExecutor final Executor executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted Change change, @Assisted PatchSet patchSet, @Assisted Account.Id authorId, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
+DECL|method|EmailReviewComments ( @mailReviewCommentsExecutor final Executor executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted Change change, @Assisted PatchSet patchSet, @Assisted IdentifiedUser user, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
 name|EmailReviewComments
 parameter_list|(
 annotation|@
@@ -632,10 +614,8 @@ name|patchSet
 parameter_list|,
 annotation|@
 name|Assisted
-name|Account
-operator|.
-name|Id
-name|authorId
+name|IdentifiedUser
+name|user
 parameter_list|,
 annotation|@
 name|Assisted
@@ -701,9 +681,9 @@ name|patchSet
 expr_stmt|;
 name|this
 operator|.
-name|authorId
+name|user
 operator|=
-name|authorId
+name|user
 expr_stmt|;
 name|this
 operator|.
@@ -886,7 +866,10 @@ name|cm
 operator|.
 name|setFrom
 argument_list|(
-name|authorId
+name|user
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|cm
@@ -994,13 +977,12 @@ name|CurrentUser
 name|getCurrentUser
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|OutOfScopeException
-argument_list|(
-literal|"No user on email thread"
-argument_list|)
-throw|;
+return|return
+name|user
+operator|.
+name|getRealUser
+argument_list|()
+return|;
 block|}
 annotation|@
 name|Override

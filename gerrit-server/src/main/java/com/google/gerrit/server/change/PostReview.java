@@ -1657,7 +1657,7 @@ argument_list|()
 argument_list|,
 name|revision
 operator|.
-name|getAccountId
+name|getUser
 argument_list|()
 argument_list|,
 name|message
