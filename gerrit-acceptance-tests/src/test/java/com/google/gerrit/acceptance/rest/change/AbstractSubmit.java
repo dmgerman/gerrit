@@ -1031,15 +1031,6 @@ name|mergeResults
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|notesFactory
-specifier|private
-name|ChangeNotes
-operator|.
-name|Factory
-name|notesFactory
-decl_stmt|;
-annotation|@
-name|Inject
 DECL|field|approvalsUtil
 specifier|private
 name|ApprovalsUtil
