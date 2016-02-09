@@ -714,6 +714,8 @@ name|changeControl
 operator|.
 name|validateFor
 argument_list|(
+name|db
+argument_list|,
 name|changeId
 argument_list|,
 name|userProvider

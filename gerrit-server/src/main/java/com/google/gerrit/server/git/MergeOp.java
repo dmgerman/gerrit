@@ -5939,6 +5939,8 @@ name|changeControlFactory
 operator|.
 name|controlFor
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|,
 name|identifiedUserFactory

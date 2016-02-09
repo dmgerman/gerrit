@@ -451,6 +451,9 @@ name|changeControlFactory
 operator|.
 name|validateFor
 argument_list|(
+name|getDb
+argument_list|()
+argument_list|,
 name|patchKey
 operator|.
 name|getParentKey

@@ -1446,11 +1446,14 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|controlFor (Change change)
+DECL|method|controlFor (ReviewDb db, Change change)
 specifier|public
 name|ChangeControl
 name|controlFor
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|Change
 name|change
 parameter_list|)
@@ -1469,6 +1472,8 @@ operator|.
 name|getDest
 argument_list|()
 argument_list|)
+argument_list|,
+name|db
 argument_list|,
 name|change
 operator|.

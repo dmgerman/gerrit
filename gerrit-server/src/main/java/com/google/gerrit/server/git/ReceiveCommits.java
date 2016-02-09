@@ -12115,6 +12115,10 @@ name|projectControl
 operator|.
 name|controlFor
 argument_list|(
+name|state
+operator|.
+name|db
+argument_list|,
 name|change
 argument_list|)
 argument_list|,
@@ -13348,6 +13352,8 @@ name|projectControl
 operator|.
 name|controlFor
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
@@ -17631,6 +17637,8 @@ name|projectControl
 operator|.
 name|controlFor
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;

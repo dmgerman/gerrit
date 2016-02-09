@@ -369,6 +369,19 @@ name|get
 argument_list|()
 return|;
 block|}
+DECL|method|getDb ()
+specifier|protected
+name|ReviewDb
+name|getDb
+parameter_list|()
+block|{
+return|return
+name|schema
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 comment|/**    * Executes {@code action.run} with an active ReviewDb connection.    *<p>    * A database handle is automatically opened and closed around the action's    * {@link Action#run(ReviewDb)} method. OrmExceptions are caught and passed    * into the onFailure method of the callback.    *    * @param<T> type of result the callback expects.    * @param callback the callback that will receive the result.    * @param action the action logic to perform.    */
 DECL|method|run (final AsyncCallback<T> callback, final Action<T> action)
 specifier|protected
