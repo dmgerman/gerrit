@@ -457,6 +457,11 @@ specifier|private
 name|boolean
 name|exists
 decl_stmt|;
+DECL|field|skipDownload
+specifier|private
+name|boolean
+name|skipDownload
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|LibraryDownloader (ConsoleUI ui, SitePaths site)
@@ -583,6 +588,21 @@ name|lib
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setSkipDownload (boolean skipDownload)
+name|void
+name|setSkipDownload
+parameter_list|(
+name|boolean
+name|skipDownload
+parameter_list|)
+block|{
+name|this
+operator|.
+name|skipDownload
+operator|=
+name|skipDownload
+expr_stmt|;
+block|}
 DECL|method|downloadRequired ()
 name|void
 name|downloadRequired
@@ -646,6 +666,13 @@ name|void
 name|download
 parameter_list|()
 block|{
+if|if
+condition|(
+name|skipDownload
+condition|)
+block|{
+return|return;
+block|}
 if|if
 condition|(
 name|jarUrl
