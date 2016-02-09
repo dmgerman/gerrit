@@ -697,6 +697,9 @@ case|:
 case|case
 name|CLEAN_PICK
 case|:
+case|case
+name|SKIPPED_IDENTICAL_TREE
+case|:
 break|break;
 comment|// Merge strategy accepted this change.
 case|case
