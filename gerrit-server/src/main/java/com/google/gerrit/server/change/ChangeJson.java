@@ -3437,7 +3437,7 @@ argument_list|()
 argument_list|,
 name|cd
 operator|.
-name|getProject
+name|project
 argument_list|()
 argument_list|,
 name|cd
