@@ -424,6 +424,8 @@ name|argsFactory
 operator|.
 name|create
 argument_list|(
+name|submitType
+argument_list|,
 name|destBranch
 argument_list|,
 name|commits

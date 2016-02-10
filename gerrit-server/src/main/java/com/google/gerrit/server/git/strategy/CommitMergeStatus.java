@@ -122,6 +122,12 @@ operator|+
 literal|"Please rebase the change locally and upload the rebased commit for review."
 argument_list|)
 block|,
+DECL|enumConstant|SKIPPED_IDENTICAL_TREE
+name|SKIPPED_IDENTICAL_TREE
+argument_list|(
+literal|"Marking change merged without cherry-picking to branch, as the resulting commit would be empty."
+argument_list|)
+block|,
 DECL|enumConstant|MISSING_DEPENDENCY
 name|MISSING_DEPENDENCY
 argument_list|(
