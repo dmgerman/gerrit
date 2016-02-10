@@ -198,6 +198,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|ChangeInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|BadRequestException
@@ -482,11 +498,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ChangeInfo
+name|ChangeInput
 name|ci
 init|=
 operator|new
-name|ChangeInfo
+name|ChangeInput
 argument_list|()
 decl_stmt|;
 name|ci
@@ -520,11 +536,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ChangeInfo
+name|ChangeInput
 name|ci
 init|=
 operator|new
-name|ChangeInfo
+name|ChangeInput
 argument_list|()
 decl_stmt|;
 name|ci
@@ -564,10 +580,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ChangeInfo
+name|ChangeInput
 name|ci
 init|=
-name|newChangeInfo
+name|newChangeInput
 argument_list|(
 name|ChangeStatus
 operator|.
@@ -598,7 +614,7 @@ name|Exception
 block|{
 name|assertCreateSucceeds
 argument_list|(
-name|newChangeInfo
+name|newChangeInput
 argument_list|(
 name|ChangeStatus
 operator|.
@@ -631,7 +647,7 @@ argument_list|()
 expr_stmt|;
 name|assertCreateSucceeds
 argument_list|(
-name|newChangeInfo
+name|newChangeInput
 argument_list|(
 name|ChangeStatus
 operator|.
@@ -662,10 +678,10 @@ operator|.
 name|isFalse
 argument_list|()
 expr_stmt|;
-name|ChangeInfo
+name|ChangeInput
 name|ci
 init|=
-name|newChangeInfo
+name|newChangeInput
 argument_list|(
 name|ChangeStatus
 operator|.
@@ -713,7 +729,7 @@ name|c
 init|=
 name|assertCreateSucceeds
 argument_list|(
-name|newChangeInfo
+name|newChangeInput
 argument_list|(
 name|ChangeStatus
 operator|.
@@ -872,20 +888,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|newChangeInfo (ChangeStatus status)
+DECL|method|newChangeInput (ChangeStatus status)
 specifier|private
-name|ChangeInfo
-name|newChangeInfo
+name|ChangeInput
+name|newChangeInput
 parameter_list|(
 name|ChangeStatus
 name|status
 parameter_list|)
 block|{
-name|ChangeInfo
+name|ChangeInput
 name|in
 init|=
 operator|new
-name|ChangeInfo
+name|ChangeInput
 argument_list|()
 decl_stmt|;
 name|in
@@ -925,12 +941,12 @@ return|return
 name|in
 return|;
 block|}
-DECL|method|assertCreateSucceeds (ChangeInfo in)
+DECL|method|assertCreateSucceeds (ChangeInput in)
 specifier|private
 name|ChangeInfo
 name|assertCreateSucceeds
 parameter_list|(
-name|ChangeInfo
+name|ChangeInput
 name|in
 parameter_list|)
 throws|throws
@@ -1066,12 +1082,12 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|assertCreateFails (ChangeInfo in, Class<? extends RestApiException> errType, String errSubstring)
+DECL|method|assertCreateFails (ChangeInput in, Class<? extends RestApiException> errType, String errSubstring)
 specifier|private
 name|void
 name|assertCreateFails
 parameter_list|(
-name|ChangeInfo
+name|ChangeInput
 name|in
 parameter_list|,
 name|Class
