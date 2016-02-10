@@ -130,7 +130,7 @@ specifier|final
 name|int
 name|DEFAULT_MAX_TERMS
 init|=
-literal|500
+literal|1024
 decl_stmt|;
 DECL|method|createDefault ()
 specifier|public
@@ -252,9 +252,7 @@ name|maxTerms
 argument_list|,
 literal|"maxTerms"
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+name|DEFAULT_MAX_TERMS
 argument_list|)
 argument_list|)
 return|;

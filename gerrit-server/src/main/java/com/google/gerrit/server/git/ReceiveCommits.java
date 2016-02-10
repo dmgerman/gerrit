@@ -6088,7 +6088,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Cannot add patch set to %d of %s"
+literal|"Cannot add patch set to change %d in project %s"
 argument_list|,
 name|e
 operator|.
@@ -14172,6 +14172,27 @@ name|state
 argument_list|)
 return|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+decl||
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Failed to insert patch set"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
 block|}
 finally|finally
 block|{

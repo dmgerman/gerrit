@@ -3999,6 +3999,15 @@ name|isAssignableFrom
 argument_list|(
 name|type
 argument_list|)
+comment|// This is needed for secondary index to work from plugin listeners
+operator|&&
+operator|!
+name|is
+argument_list|(
+literal|"com.google.gerrit.server.index.IndexCollection"
+argument_list|,
+name|type
+argument_list|)
 condition|)
 block|{
 return|return

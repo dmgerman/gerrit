@@ -579,7 +579,10 @@ decl_stmt|;
 DECL|field|queryBuilder
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ChangeQueryBuilder
+argument_list|>
 name|queryBuilder
 decl_stmt|;
 DECL|field|setDiff
@@ -590,7 +593,7 @@ name|setDiff
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> identifiedUser, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory, final ChangeQueryBuilder queryBuilder, SetDiffPreferences setDiff)
+DECL|method|AccountServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> identifiedUser, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory, final Provider<ChangeQueryBuilder> queryBuilder, SetDiffPreferences setDiff)
 name|AccountServiceImpl
 parameter_list|(
 specifier|final
@@ -620,7 +623,10 @@ name|Factory
 name|agreementInfoFactory
 parameter_list|,
 specifier|final
+name|Provider
+argument_list|<
 name|ChangeQueryBuilder
+argument_list|>
 name|queryBuilder
 parameter_list|,
 name|SetDiffPreferences
@@ -1124,6 +1130,9 @@ block|{
 try|try
 block|{
 name|queryBuilder
+operator|.
+name|get
+argument_list|()
 operator|.
 name|parse
 argument_list|(

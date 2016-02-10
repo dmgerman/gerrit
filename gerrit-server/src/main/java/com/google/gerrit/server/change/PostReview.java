@@ -2962,9 +2962,6 @@ argument_list|,
 name|ps
 argument_list|,
 name|user
-operator|.
-name|getAccountId
-argument_list|()
 argument_list|,
 name|message
 argument_list|,
