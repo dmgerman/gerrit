@@ -2857,13 +2857,6 @@ argument_list|(
 name|XSRF_COOKIE_NAME
 argument_list|)
 expr_stmt|;
-name|Cookies
-operator|.
-name|removeCookie
-argument_list|(
-name|XSRF_COOKIE_NAME
-argument_list|)
-expr_stmt|;
 name|JsonUtil
 operator|.
 name|setDefaultXsrfManager
