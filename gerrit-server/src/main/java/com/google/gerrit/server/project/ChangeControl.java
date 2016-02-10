@@ -294,20 +294,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeFinder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|CurrentUser
 import|;
 end_import
@@ -448,15 +434,9 @@ operator|.
 name|Factory
 name|notesFactory
 decl_stmt|;
-DECL|field|changeFinder
-specifier|private
-specifier|final
-name|ChangeFinder
-name|changeFinder
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory ( ProjectControl.GenericFactory p, ChangeNotes.Factory n, ChangeFinder f)
+DECL|method|GenericFactory ( ProjectControl.GenericFactory p, ChangeNotes.Factory n)
 name|GenericFactory
 parameter_list|(
 name|ProjectControl
@@ -468,9 +448,6 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|n
-parameter_list|,
-name|ChangeFinder
-name|f
 parameter_list|)
 block|{
 name|projectControl
@@ -480,10 +457,6 @@ expr_stmt|;
 name|notesFactory
 operator|=
 name|n
-expr_stmt|;
-name|changeFinder
-operator|=
-name|f
 expr_stmt|;
 block|}
 DECL|method|controlFor (ReviewDb db, Project.NameKey project, Change.Id changeId, CurrentUser user)
@@ -698,33 +671,23 @@ name|NoSuchChangeException
 throws|,
 name|OrmException
 block|{
-name|ChangeControl
-name|ctl
-init|=
-name|changeFinder
-operator|.
-name|findOne
-argument_list|(
-name|changeId
-argument_list|,
-name|user
-argument_list|)
-decl_stmt|;
 return|return
 name|validateFor
 argument_list|(
 name|db
 argument_list|,
-name|ctl
+name|notesFactory
 operator|.
-name|getChange
-argument_list|()
+name|createChecked
+argument_list|(
+name|changeId
+argument_list|)
 argument_list|,
 name|user
 argument_list|)
 return|;
 block|}
-DECL|method|validateFor (ReviewDb db, Change change, CurrentUser user)
+DECL|method|validateFor (ReviewDb db, ChangeNotes notes, CurrentUser user)
 specifier|public
 name|ChangeControl
 name|validateFor
@@ -732,8 +695,8 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|CurrentUser
 name|user
@@ -748,9 +711,7 @@ name|c
 init|=
 name|controlFor
 argument_list|(
-name|db
-argument_list|,
-name|change
+name|notes
 argument_list|,
 name|user
 argument_list|)

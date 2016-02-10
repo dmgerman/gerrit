@@ -2900,7 +2900,7 @@ name|c
 init|=
 name|notesFactory
 operator|.
-name|create
+name|createChecked
 argument_list|(
 name|db
 operator|.
@@ -2923,10 +2923,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|c
-operator|==
-literal|null
-operator|||
 operator|!
 name|c
 operator|.
@@ -2948,6 +2944,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|NoSuchChangeException
 name|e
 parameter_list|)
 block|{
@@ -3893,7 +3891,7 @@ name|notes
 init|=
 name|notesFactory
 operator|.
-name|create
+name|createChecked
 argument_list|(
 name|db
 argument_list|,
@@ -3910,23 +3908,6 @@ operator|.
 name|getChange
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|c
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"Change missing: "
-operator|+
-name|cid
-argument_list|)
-throw|;
-block|}
 if|if
 condition|(
 name|psId
@@ -4194,6 +4175,8 @@ parameter_list|(
 name|PatchSetInfoNotAvailableException
 decl||
 name|OrmException
+decl||
+name|NoSuchChangeException
 name|e
 parameter_list|)
 block|{

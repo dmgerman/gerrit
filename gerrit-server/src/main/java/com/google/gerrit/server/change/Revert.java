@@ -495,6 +495,8 @@ throws|,
 name|RestApiException
 throws|,
 name|UpdateException
+throws|,
+name|NoSuchChangeException
 block|{
 name|RefControl
 name|refControl
