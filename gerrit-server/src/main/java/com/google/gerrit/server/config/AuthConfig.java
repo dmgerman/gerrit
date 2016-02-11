@@ -409,6 +409,12 @@ specifier|final
 name|String
 name|cookiePath
 decl_stmt|;
+DECL|field|cookieDomain
+specifier|private
+specifier|final
+name|String
+name|cookieDomain
+decl_stmt|;
 DECL|field|cookieSecure
 specifier|private
 specifier|final
@@ -677,6 +683,19 @@ argument_list|,
 literal|null
 argument_list|,
 literal|"cookiepath"
+argument_list|)
+expr_stmt|;
+name|cookieDomain
+operator|=
+name|cfg
+operator|.
+name|getString
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|null
+argument_list|,
+literal|"cookiedomain"
 argument_list|)
 expr_stmt|;
 name|cookieSecure
@@ -1117,6 +1136,16 @@ parameter_list|()
 block|{
 return|return
 name|cookiePath
+return|;
+block|}
+DECL|method|getCookieDomain ()
+specifier|public
+name|String
+name|getCookieDomain
+parameter_list|()
+block|{
+return|return
+name|cookieDomain
 return|;
 block|}
 DECL|method|getCookieSecure ()
