@@ -76,6 +76,22 @@ name|common
 operator|.
 name|base
 operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Preconditions
 operator|.
 name|checkArgument
@@ -389,7 +405,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Get the latest value of a ref according to this sequence of commands.    *<p>    * Once the value for a ref is read once, it is cached in this instance, so    * that multiple callers using this instance for lookups see a single    * consistent snapshot.    *    * @param repo repository to read from, if result is not cached.    * @param refName name of the ref.    * @return value of the ref, taking into account commands that have already    *     been added to this instance.    */
+comment|/**    * Get the latest value of a ref according to this sequence of commands.    *<p>    * Once the value for a ref is read once, it is cached in this instance, so    * that multiple callers using this instance for lookups see a single    * consistent snapshot.    *    * @param repo repository to read from, if result is not cached.    * @param refName name of the ref.    * @return value of the ref, taking into account commands that have already    *     been added to this instance. Null if the ref is deleted, matching the    *     behavior of {@link Repository#exactRef(String)}.    */
 DECL|method|getObjectId (Repository repo, String refName)
 specifier|public
 name|ObjectId
@@ -422,10 +438,13 @@ literal|null
 condition|)
 block|{
 return|return
+name|zeroToNull
+argument_list|(
 name|cmd
 operator|.
 name|getNewId
 argument_list|()
+argument_list|)
 return|;
 block|}
 name|ObjectId
@@ -446,7 +465,10 @@ literal|null
 condition|)
 block|{
 return|return
+name|zeroToNull
+argument_list|(
 name|old
+argument_list|)
 return|;
 block|}
 name|Ref
@@ -473,15 +495,59 @@ argument_list|()
 else|:
 literal|null
 decl_stmt|;
+comment|// Cache missing ref as zeroId to match value in commands map.
 name|oldIds
 operator|.
 name|put
 argument_list|(
 name|refName
 argument_list|,
+name|firstNonNull
+argument_list|(
 name|id
+argument_list|,
+name|ObjectId
+operator|.
+name|zeroId
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|id
+return|;
+block|}
+DECL|method|zeroToNull (ObjectId id)
+specifier|private
+specifier|static
+name|ObjectId
+name|zeroToNull
+parameter_list|(
+name|ObjectId
+name|id
+parameter_list|)
+block|{
+if|if
+condition|(
+name|id
+operator|==
+literal|null
+operator|||
+name|id
+operator|.
+name|equals
+argument_list|(
+name|ObjectId
+operator|.
+name|zeroId
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 return|return
 name|id
 return|;

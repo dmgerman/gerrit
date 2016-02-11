@@ -2220,6 +2220,13 @@ argument_list|,
 name|refName
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|old
+operator|!=
+literal|null
+condition|)
+block|{
 name|cmds
 operator|.
 name|add
@@ -2238,6 +2245,7 @@ name|refName
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|round (Date when)
 specifier|private
