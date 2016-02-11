@@ -3814,6 +3814,8 @@ argument_list|(
 name|cs
 argument_list|)
 expr_stmt|;
+name|MergeSuperSet
+operator|.
 name|reloadChanges
 argument_list|(
 name|cs
@@ -3907,37 +3909,6 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
-block|}
-block|}
-DECL|method|reloadChanges (ChangeSet cs)
-specifier|private
-specifier|static
-name|void
-name|reloadChanges
-parameter_list|(
-name|ChangeSet
-name|cs
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-comment|// Reload changes in case index was stale.
-for|for
-control|(
-name|ChangeData
-name|cd
-range|:
-name|cs
-operator|.
-name|changes
-argument_list|()
-control|)
-block|{
-name|cd
-operator|.
-name|reloadChange
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|failFast (ChangeSet cs)
