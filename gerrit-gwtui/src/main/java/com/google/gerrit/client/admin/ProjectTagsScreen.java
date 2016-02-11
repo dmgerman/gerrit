@@ -782,7 +782,7 @@ name|setText
 argument_list|(
 literal|0
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 name|Util
 operator|.
@@ -798,7 +798,7 @@ name|setText
 argument_list|(
 literal|0
 argument_list|,
-literal|1
+literal|2
 argument_list|,
 name|Util
 operator|.
@@ -822,7 +822,7 @@ name|addStyleName
 argument_list|(
 literal|0
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 name|Gerrit
 operator|.
@@ -841,7 +841,7 @@ name|addStyleName
 argument_list|(
 literal|0
 argument_list|,
-literal|1
+literal|2
 argument_list|,
 name|Gerrit
 operator|.
@@ -980,7 +980,7 @@ name|setWidget
 argument_list|(
 name|row
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 operator|new
 name|InlineHTML
@@ -1013,7 +1013,7 @@ name|setText
 argument_list|(
 name|row
 argument_list|,
-literal|1
+literal|2
 argument_list|,
 name|k
 operator|.
@@ -1030,7 +1030,7 @@ name|setText
 argument_list|(
 name|row
 argument_list|,
-literal|1
+literal|2
 argument_list|,
 literal|""
 argument_list|)
@@ -1063,7 +1063,7 @@ name|addStyleName
 argument_list|(
 name|row
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 name|dataCellStyle
 argument_list|)
@@ -1074,7 +1074,7 @@ name|addStyleName
 argument_list|(
 name|row
 argument_list|,
-literal|1
+literal|2
 argument_list|,
 name|dataCellStyle
 argument_list|)

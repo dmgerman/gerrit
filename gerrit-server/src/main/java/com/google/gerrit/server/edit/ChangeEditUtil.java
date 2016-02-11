@@ -1697,7 +1697,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"Patch set "
+literal|"Patch Set "
 argument_list|)
 operator|.
 name|append
