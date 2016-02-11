@@ -136,7 +136,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NotesMigration
+name|ConfigNotesMigration
 import|;
 end_import
 
@@ -264,7 +264,7 @@ name|Files
 operator|.
 name|append
 argument_list|(
-name|NotesMigration
+name|ConfigNotesMigration
 operator|.
 name|allEnabledConfig
 argument_list|()

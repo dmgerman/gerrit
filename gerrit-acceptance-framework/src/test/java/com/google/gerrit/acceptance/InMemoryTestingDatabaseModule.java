@@ -260,7 +260,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NotesMigration
+name|ConfigNotesMigration
 import|;
 end_import
 
@@ -688,11 +688,13 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|bind
+name|install
 argument_list|(
-name|NotesMigration
+operator|new
+name|ConfigNotesMigration
 operator|.
-name|class
+name|Module
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|TypeLiteral

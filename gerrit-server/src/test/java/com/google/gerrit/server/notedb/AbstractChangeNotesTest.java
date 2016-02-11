@@ -901,7 +901,7 @@ specifier|final
 name|NotesMigration
 name|MIGRATION
 init|=
-name|NotesMigration
+name|ConfigNotesMigration
 operator|.
 name|allEnabled
 argument_list|()

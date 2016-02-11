@@ -90,7 +90,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NotesMigration
+name|ConfigNotesMigration
 import|;
 end_import
 
@@ -340,7 +340,7 @@ name|isNoteDbTestEnabled
 argument_list|()
 condition|)
 block|{
-name|NotesMigration
+name|ConfigNotesMigration
 operator|.
 name|setAllEnabledConfig
 argument_list|(
