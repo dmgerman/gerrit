@@ -434,22 +434,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|allEnabled ()
-specifier|public
-specifier|static
-name|ConfigNotesMigration
-name|allEnabled
-parameter_list|()
-block|{
-return|return
-operator|new
-name|ConfigNotesMigration
-argument_list|(
-name|allEnabledConfig
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|allEnabledConfig ()
 specifier|public
 specifier|static
@@ -464,25 +448,6 @@ operator|new
 name|Config
 argument_list|()
 decl_stmt|;
-name|setAllEnabledConfig
-argument_list|(
-name|cfg
-argument_list|)
-expr_stmt|;
-return|return
-name|cfg
-return|;
-block|}
-DECL|method|setAllEnabledConfig (Config cfg)
-specifier|public
-specifier|static
-name|void
-name|setAllEnabledConfig
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|)
-block|{
 for|for
 control|(
 name|Table
@@ -527,6 +492,9 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|cfg
+return|;
 block|}
 DECL|field|writeChanges
 specifier|private

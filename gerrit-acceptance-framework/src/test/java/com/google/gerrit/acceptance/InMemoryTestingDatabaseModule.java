@@ -260,7 +260,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ConfigNotesMigration
+name|NotesMigration
 import|;
 end_import
 
@@ -383,6 +383,20 @@ operator|.
 name|testutil
 operator|.
 name|InMemoryRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|TestNotesMigration
 import|;
 end_import
 
@@ -688,13 +702,18 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|install
+name|bind
 argument_list|(
-operator|new
-name|ConfigNotesMigration
+name|NotesMigration
 operator|.
-name|Module
-argument_list|()
+name|class
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|TestNotesMigration
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|TypeLiteral
