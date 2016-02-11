@@ -564,6 +564,11 @@ operator|.
 name|Description
 argument_list|()
 operator|.
+name|setLabel
+argument_list|(
+literal|"Delete"
+argument_list|)
+operator|.
 name|setTitle
 argument_list|(
 literal|"Delete draft change "
