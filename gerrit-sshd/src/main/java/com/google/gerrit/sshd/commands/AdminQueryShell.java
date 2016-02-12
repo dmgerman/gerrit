@@ -301,7 +301,26 @@ block|{
 name|checkPermission
 argument_list|()
 expr_stmt|;
-specifier|final
+block|}
+catch|catch
+parameter_list|(
+name|PermissionDeniedException
+name|err
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnloggedFailure
+argument_list|(
+literal|"fatal: "
+operator|+
+name|err
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
 name|QueryShell
 name|shell
 init|=
@@ -343,26 +362,6 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|PermissionDeniedException
-name|err
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|UnloggedFailure
-argument_list|(
-literal|"fatal: "
-operator|+
-name|err
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-throw|;
 block|}
 block|}
 comment|/**    * Assert that the current user is permitted to perform raw queries.    *<p>    * As the @RequireCapability guards at various entry points of internal    * commands implicitly add administrators (which we want to avoid), we also    * check permissions within QueryShell and grant access only to those who    * canPerformRawQuery, regardless of whether they are administrators or not.    *    * @throws PermissionDeniedException    */
