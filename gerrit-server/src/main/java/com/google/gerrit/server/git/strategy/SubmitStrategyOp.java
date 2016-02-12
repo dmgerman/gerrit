@@ -1778,8 +1778,6 @@ operator|.
 name|getId
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|CodeReviewCommit
 name|commit
 init|=
@@ -1792,20 +1790,34 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|commit
+argument_list|,
+literal|"missing commit for change "
+operator|+
+name|id
+argument_list|)
+expr_stmt|;
 name|CommitMergeStatus
 name|s
 init|=
 name|commit
-operator|!=
-literal|null
-condition|?
-name|commit
 operator|.
 name|getStatusCode
 argument_list|()
-else|:
-literal|null
 decl_stmt|;
+name|checkNotNull
+argument_list|(
+name|s
+argument_list|,
+literal|"status not set for change "
+operator|+
+name|id
+operator|+
+literal|" expected to previously fail fast"
+argument_list|)
+expr_stmt|;
 name|logDebug
 argument_list|(
 literal|"Status of change {} ({}) on {}: {}"
@@ -1823,17 +1835,6 @@ name|getDest
 argument_list|()
 argument_list|,
 name|s
-argument_list|)
-expr_stmt|;
-name|checkState
-argument_list|(
-name|s
-operator|!=
-literal|null
-argument_list|,
-literal|"status not set for change %s; expected to previously fail fast"
-argument_list|,
-name|id
 argument_list|)
 expr_stmt|;
 name|setApproval
@@ -1868,6 +1869,8 @@ comment|// ChangeMergedEvent in the fixup case, but we'll just live with that.
 else|:
 name|alreadyMerged
 expr_stmt|;
+try|try
+block|{
 name|setMerged
 argument_list|(
 name|ctx
