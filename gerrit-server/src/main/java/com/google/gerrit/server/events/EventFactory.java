@@ -2756,6 +2756,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|checkNotNull
+argument_list|(
+name|notes
+argument_list|,
+literal|"notes may not be null"
+argument_list|)
+expr_stmt|;
 name|ca
 operator|.
 name|patchSets
@@ -2826,10 +2833,6 @@ expr_stmt|;
 if|if
 condition|(
 name|includeFiles
-operator|&&
-name|notes
-operator|!=
-literal|null
 condition|)
 block|{
 name|addPatchSetFileNames
