@@ -447,14 +447,7 @@ name|sd
 operator|=
 literal|"bar"
 expr_stmt|;
-comment|// This line is not needed, as it's null per default.
-comment|// Put it here to be explicit.
-name|i
-operator|.
-name|nd
-operator|=
-literal|null
-expr_stmt|;
+comment|// i.nd = null; // Don't need to explicitly set it; it's null by default
 name|i
 operator|.
 name|t

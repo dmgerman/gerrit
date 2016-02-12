@@ -80,7 +80,7 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkState
+name|checkNotNull
 import|;
 end_import
 
@@ -1008,11 +1008,9 @@ return|return
 literal|null
 return|;
 block|}
-name|checkState
+name|checkNotNull
 argument_list|(
 name|newCommit
-operator|!=
-literal|null
 argument_list|,
 literal|"no new commit produced by CherryPick of %s, expected to fail fast"
 argument_list|,
