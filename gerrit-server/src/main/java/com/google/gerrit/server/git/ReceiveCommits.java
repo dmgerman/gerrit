@@ -17673,6 +17673,33 @@ operator|.
 name|getChange
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|change
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+name|project
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" change "
+operator|+
+name|cid
+operator|+
+literal|" is missing"
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 name|ChangeControl
 name|ctl
 init|=
@@ -17704,10 +17731,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|change
-operator|==
-literal|null
-operator|||
 name|ps
 operator|==
 literal|null
@@ -17722,7 +17745,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|" "
+literal|" patch set "
 operator|+
 name|psi
 operator|+
