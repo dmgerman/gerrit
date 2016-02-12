@@ -86,6 +86,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|pgm
+operator|.
+name|init
+operator|.
+name|api
+operator|.
+name|LibraryDownload
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -218,6 +236,16 @@ name|Modifier
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/** Standard {@link LibraryDownloader} instances derived from configuration. */
 end_comment
@@ -246,6 +274,21 @@ argument_list|<
 name|LibraryDownloader
 argument_list|>
 name|downloadProvider
+decl_stmt|;
+DECL|field|skippedDownloads
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|skippedDownloads
+decl_stmt|;
+DECL|field|skipAllDownloads
+specifier|private
+specifier|final
+name|boolean
+name|skipAllDownloads
 decl_stmt|;
 DECL|field|bouncyCastlePGP
 comment|/* final */
@@ -289,7 +332,7 @@ name|oracleDriver
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Libraries (final Provider<LibraryDownloader> downloadProvider)
+DECL|method|Libraries (final Provider<LibraryDownloader> downloadProvider, @LibraryDownload List<String> skippedDownloads, @LibraryDownload Boolean skipAllDownloads)
 name|Libraries
 parameter_list|(
 specifier|final
@@ -298,6 +341,19 @@ argument_list|<
 name|LibraryDownloader
 argument_list|>
 name|downloadProvider
+parameter_list|,
+annotation|@
+name|LibraryDownload
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|skippedDownloads
+parameter_list|,
+annotation|@
+name|LibraryDownload
+name|Boolean
+name|skipAllDownloads
 parameter_list|)
 block|{
 name|this
@@ -305,6 +361,18 @@ operator|.
 name|downloadProvider
 operator|=
 name|downloadProvider
+expr_stmt|;
+name|this
+operator|.
+name|skippedDownloads
+operator|=
+name|skippedDownloads
+expr_stmt|;
+name|this
+operator|.
+name|skipAllDownloads
+operator|=
+name|skipAllDownloads
 expr_stmt|;
 name|init
 argument_list|()
@@ -646,6 +714,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|dl
+operator|.
+name|setSkipDownload
+argument_list|(
+name|skipAllDownloads
+operator|||
+name|skippedDownloads
+operator|.
+name|contains
+argument_list|(
+name|n
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getOptional (Config cfg, String name, String key)
 specifier|private
