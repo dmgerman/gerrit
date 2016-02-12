@@ -2843,6 +2843,13 @@ name|CommitMergeStatus
 name|s
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|s
+argument_list|,
+literal|"CommitMergeStatus may not be null"
+argument_list|)
+expr_stmt|;
 name|String
 name|txt
 init|=
@@ -3012,16 +3019,30 @@ name|CLEAN_REBASE
 argument_list|)
 return|;
 default|default:
-return|return
-name|message
+throw|throw
+operator|new
+name|IllegalStateException
 argument_list|(
-name|ctx
-argument_list|,
+literal|"unexpected submit type "
+operator|+
+name|args
+operator|.
+name|submitType
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|" for change "
+operator|+
 name|commit
-argument_list|,
-literal|null
+operator|.
+name|change
+argument_list|()
+operator|.
+name|getId
+argument_list|()
 argument_list|)
-return|;
+throw|;
 block|}
 block|}
 else|else
