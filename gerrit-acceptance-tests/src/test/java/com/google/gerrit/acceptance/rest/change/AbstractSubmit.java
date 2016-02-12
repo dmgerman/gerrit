@@ -2002,9 +2002,28 @@ operator|.
 name|getSimpleName
 argument_list|()
 operator|+
-literal|" with message: "
+literal|" with message: \""
 operator|+
 name|expectedExceptionMsg
+operator|+
+literal|"\" but got exception of type "
+operator|+
+name|e
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|" with message \""
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|"\""
 argument_list|,
 name|e
 argument_list|)
