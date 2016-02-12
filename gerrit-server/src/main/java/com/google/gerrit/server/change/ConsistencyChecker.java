@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -559,6 +575,22 @@ operator|.
 name|notedb
 operator|.
 name|ChangeUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigration
 import|;
 end_import
 
@@ -1128,6 +1160,12 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|notesMigration
+specifier|private
+specifier|final
+name|NotesMigration
+name|notesMigration
+decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
@@ -1261,7 +1299,7 @@ name|problems
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConsistencyChecker (Provider<ReviewDb> db, GitRepositoryManager repoManager, Provider<CurrentUser> user, @GerritPersonIdent Provider<PersonIdent> serverIdent, ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, BatchUpdate.Factory updateFactory, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, ChangeUpdate.Factory changeUpdateFactory)
+DECL|method|ConsistencyChecker (Provider<ReviewDb> db, GitRepositoryManager repoManager, NotesMigration notesMigration, Provider<CurrentUser> user, @GerritPersonIdent Provider<PersonIdent> serverIdent, ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, BatchUpdate.Factory updateFactory, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, ChangeUpdate.Factory changeUpdateFactory)
 name|ConsistencyChecker
 parameter_list|(
 name|Provider
@@ -1272,6 +1310,9 @@ name|db
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|notesMigration
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1329,6 +1370,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|notesMigration
+operator|=
+name|notesMigration
 expr_stmt|;
 name|this
 operator|.
@@ -1598,6 +1645,17 @@ name|void
 name|checkImpl
 parameter_list|()
 block|{
+name|checkState
+argument_list|(
+operator|!
+name|notesMigration
+operator|.
+name|readChanges
+argument_list|()
+argument_list|,
+literal|"ConsistencyChecker for notedb not yet implemented"
+argument_list|)
+expr_stmt|;
 name|checkOwner
 argument_list|()
 expr_stmt|;
