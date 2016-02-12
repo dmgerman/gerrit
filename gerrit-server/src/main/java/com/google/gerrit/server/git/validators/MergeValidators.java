@@ -675,14 +675,6 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|identifiedUserFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-decl_stmt|;
 DECL|field|approvalsUtil
 specifier|private
 specifier|final
@@ -711,7 +703,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ProjectConfigValidator (AllProjectsName allProjectsName, ReviewDb db, ProjectCache projectCache, IdentifiedUser.GenericFactory iuf, ApprovalsUtil approvalsUtil, DynamicMap<ProjectConfigEntry> pluginConfigEntries)
+DECL|method|ProjectConfigValidator (AllProjectsName allProjectsName, ReviewDb db, ProjectCache projectCache, ApprovalsUtil approvalsUtil, DynamicMap<ProjectConfigEntry> pluginConfigEntries)
 specifier|public
 name|ProjectConfigValidator
 parameter_list|(
@@ -723,11 +715,6 @@ name|db
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|iuf
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
@@ -756,12 +743,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|identifiedUserFactory
-operator|=
-name|iuf
 expr_stmt|;
 name|this
 operator|.
@@ -957,24 +938,10 @@ name|SET_BY_ADMIN
 argument_list|)
 throw|;
 block|}
-specifier|final
-name|IdentifiedUser
-name|submitter
-init|=
-name|identifiedUserFactory
-operator|.
-name|create
-argument_list|(
-name|psa
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 operator|!
-name|submitter
+name|caller
 operator|.
 name|getCapabilities
 argument_list|()
