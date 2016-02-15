@@ -2628,7 +2628,7 @@ argument_list|)
 operator|.
 name|on
 argument_list|(
-literal|"["
+literal|"'['"
 argument_list|,
 name|header
 operator|.
@@ -2642,7 +2642,7 @@ argument_list|)
 operator|.
 name|on
 argument_list|(
-literal|"]"
+literal|"']'"
 argument_list|,
 name|header
 operator|.
