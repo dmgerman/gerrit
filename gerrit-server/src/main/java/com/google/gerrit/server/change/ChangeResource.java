@@ -387,23 +387,6 @@ operator|=
 name|control
 expr_stmt|;
 block|}
-DECL|method|ChangeResource (ChangeResource copy)
-specifier|protected
-name|ChangeResource
-parameter_list|(
-name|ChangeResource
-name|copy
-parameter_list|)
-block|{
-name|this
-operator|.
-name|control
-operator|=
-name|copy
-operator|.
-name|control
-expr_stmt|;
-block|}
 DECL|method|getControl ()
 specifier|public
 name|ChangeControl
