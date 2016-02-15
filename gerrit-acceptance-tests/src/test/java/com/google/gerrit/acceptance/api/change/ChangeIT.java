@@ -7643,9 +7643,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|ChangeInfo
-name|info
-init|=
 name|gApi
 operator|.
 name|changes
@@ -7658,7 +7655,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 block|}
 DECL|method|getReviewers ( Collection<AccountInfo> r)
 specifier|private
