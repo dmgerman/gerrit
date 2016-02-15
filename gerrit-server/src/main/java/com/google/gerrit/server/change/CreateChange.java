@@ -1977,9 +1977,10 @@ name|json
 operator|.
 name|format
 argument_list|(
-name|project
-argument_list|,
-name|changeId
+name|ins
+operator|.
+name|getChange
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
