@@ -3512,7 +3512,7 @@ name|getChangeKind
 argument_list|(
 name|db
 argument_list|,
-name|change
+name|notes
 argument_list|,
 name|patchSet
 argument_list|)

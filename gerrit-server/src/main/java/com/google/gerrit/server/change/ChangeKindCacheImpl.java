@@ -182,22 +182,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|PatchSet
 import|;
 end_import
@@ -279,6 +263,22 @@ operator|.
 name|git
 operator|.
 name|MergeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotes
 import|;
 end_import
 
@@ -878,7 +878,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ReviewDb db, Change change, PatchSet patch)
+DECL|method|getChangeKind (ReviewDb db, ChangeNotes notes, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
@@ -886,8 +886,8 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|PatchSet
 name|patch
@@ -900,7 +900,7 @@ name|this
 argument_list|,
 name|db
 argument_list|,
-name|change
+name|notes
 argument_list|,
 name|patch
 argument_list|,
@@ -2091,7 +2091,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ReviewDb db, Change change, PatchSet patch)
+DECL|method|getChangeKind (ReviewDb db, ChangeNotes notes, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
@@ -2099,8 +2099,8 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|PatchSet
 name|patch
@@ -2113,7 +2113,7 @@ name|this
 argument_list|,
 name|db
 argument_list|,
-name|change
+name|notes
 argument_list|,
 name|patch
 argument_list|,
@@ -2125,7 +2125,7 @@ name|repoManager
 argument_list|)
 return|;
 block|}
-DECL|method|getChangeKindInternal ( ChangeKindCache cache, ReviewDb db, Change change, PatchSet patch, ChangeData.Factory changeDataFactory, ProjectCache projectCache, GitRepositoryManager repoManager)
+DECL|method|getChangeKindInternal ( ChangeKindCache cache, ReviewDb db, ChangeNotes notes, PatchSet patch, ChangeData.Factory changeDataFactory, ProjectCache projectCache, GitRepositoryManager repoManager)
 specifier|private
 specifier|static
 name|ChangeKind
@@ -2137,8 +2137,8 @@ parameter_list|,
 name|ReviewDb
 name|db
 parameter_list|,
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|PatchSet
 name|patch
@@ -2187,9 +2187,9 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|change
+name|notes
 operator|.
-name|getProject
+name|getProjectName
 argument_list|()
 argument_list|)
 init|)
@@ -2201,9 +2201,9 @@ name|projectCache
 operator|.
 name|checkedGet
 argument_list|(
-name|change
+name|notes
 operator|.
-name|getProject
+name|getProjectName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2216,7 +2216,7 @@ name|create
 argument_list|(
 name|db
 argument_list|,
-name|change
+name|notes
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -2363,7 +2363,7 @@ argument_list|()
 operator|+
 literal|"of change "
 operator|+
-name|change
+name|notes
 operator|.
 name|getChangeId
 argument_list|()

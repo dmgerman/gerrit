@@ -1557,9 +1557,6 @@ argument_list|(
 name|db
 argument_list|,
 name|notes
-operator|.
-name|getChange
-argument_list|()
 argument_list|)
 return|;
 block|}
