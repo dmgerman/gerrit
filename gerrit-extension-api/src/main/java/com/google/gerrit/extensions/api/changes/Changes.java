@@ -110,6 +110,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|ChangeInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|NotImplementedException
@@ -207,11 +223,11 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|create (ChangeInfo in)
+DECL|method|create (ChangeInput in)
 name|ChangeApi
 name|create
 parameter_list|(
-name|ChangeInfo
+name|ChangeInput
 name|in
 parameter_list|)
 throws|throws
@@ -631,12 +647,12 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|create (ChangeInfo in)
+DECL|method|create (ChangeInput in)
 specifier|public
 name|ChangeApi
 name|create
 parameter_list|(
-name|ChangeInfo
+name|ChangeInput
 name|in
 parameter_list|)
 throws|throws
