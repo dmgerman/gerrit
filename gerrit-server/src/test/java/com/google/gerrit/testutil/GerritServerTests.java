@@ -80,22 +80,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -210,6 +194,11 @@ DECL|field|configName
 specifier|private
 name|String
 name|configName
+decl_stmt|;
+DECL|field|notesMigration
+specifier|protected
+name|TestNotesMigration
+name|notesMigration
 decl_stmt|;
 DECL|method|isNoteDbTestEnabled ()
 specifier|public
@@ -334,20 +323,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
+name|notesMigration
+operator|=
+operator|new
+name|TestNotesMigration
+argument_list|()
+operator|.
+name|setAllEnabled
+argument_list|(
 name|isNoteDbTestEnabled
 argument_list|()
-condition|)
-block|{
-name|NotesMigration
-operator|.
-name|setAllEnabledConfig
-argument_list|(
-name|config
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|afterTest ()
 specifier|public
