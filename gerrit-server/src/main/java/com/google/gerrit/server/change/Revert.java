@@ -841,15 +841,6 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|user
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
-decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -922,7 +913,7 @@ name|myIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Revert (Provider<ReviewDb> db, Provider<CurrentUser> user, GitRepositoryManager repoManager, ChangeInserter.Factory changeInserterFactory, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory changeUpdateFactory, BatchUpdate.Factory updateFactory, Sequences seq, PatchSetUtil psUtil, RevertedSender.Factory revertedSenderFactory, ChangeJson.Factory json, @GerritPersonIdent PersonIdent myIdent)
+DECL|method|Revert (Provider<ReviewDb> db, GitRepositoryManager repoManager, ChangeInserter.Factory changeInserterFactory, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory changeUpdateFactory, BatchUpdate.Factory updateFactory, Sequences seq, PatchSetUtil psUtil, RevertedSender.Factory revertedSenderFactory, ChangeJson.Factory json, @GerritPersonIdent PersonIdent myIdent)
 name|Revert
 parameter_list|(
 name|Provider
@@ -930,12 +921,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|user
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -985,12 +970,6 @@ operator|.
 name|db
 operator|=
 name|db
-expr_stmt|;
-name|this
-operator|.
-name|user
-operator|=
-name|user
 expr_stmt|;
 name|this
 operator|.
@@ -1330,6 +1309,14 @@ operator|.
 name|getNameKey
 argument_list|()
 decl_stmt|;
+name|CurrentUser
+name|user
+init|=
+name|ctl
+operator|.
+name|getUser
+argument_list|()
+decl_stmt|;
 try|try
 init|(
 name|Repository
@@ -1377,9 +1364,6 @@ name|PersonIdent
 name|authorIdent
 init|=
 name|user
-operator|.
-name|get
-argument_list|()
 operator|.
 name|asIdentifiedUser
 argument_list|()
@@ -1667,9 +1651,6 @@ argument_list|)
 argument_list|,
 name|user
 operator|.
-name|get
-argument_list|()
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
@@ -1802,10 +1783,7 @@ argument_list|()
 argument_list|,
 name|project
 argument_list|,
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|,
 name|TimeUtil
 operator|.
@@ -1858,9 +1836,6 @@ operator|.
 name|setFrom
 argument_list|(
 name|user
-operator|.
-name|get
-argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
