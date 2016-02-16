@@ -2142,9 +2142,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ObjectId
-name|id
-init|=
+return|return
 name|inserter
 operator|.
 name|insert
@@ -2153,14 +2151,6 @@ operator|new
 name|TreeFormatter
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|inserter
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
-return|return
-name|id
 return|;
 block|}
 block|}
