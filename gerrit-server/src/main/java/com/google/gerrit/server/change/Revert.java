@@ -1144,11 +1144,6 @@ operator|.
 name|getControl
 argument_list|()
 argument_list|,
-name|change
-operator|.
-name|currentPatchSetId
-argument_list|()
-argument_list|,
 name|Strings
 operator|.
 name|emptyToNull
@@ -1198,7 +1193,7 @@ name|revertedChangeId
 argument_list|)
 return|;
 block|}
-DECL|method|revert (ChangeControl ctl, PatchSet.Id patchSetId, String message)
+DECL|method|revert (ChangeControl ctl, String message)
 specifier|private
 name|Change
 operator|.
@@ -1207,11 +1202,6 @@ name|revert
 parameter_list|(
 name|ChangeControl
 name|ctl
-parameter_list|,
-name|PatchSet
-operator|.
-name|Id
-name|patchSetId
 parameter_list|,
 name|String
 name|message
@@ -1236,9 +1226,25 @@ operator|.
 name|Id
 name|changeIdToRevert
 init|=
-name|patchSetId
+name|ctl
 operator|.
-name|getParentKey
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+decl_stmt|;
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+init|=
+name|ctl
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|currentPatchSetId
 argument_list|()
 decl_stmt|;
 name|PatchSet
