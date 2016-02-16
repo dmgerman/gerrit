@@ -905,15 +905,15 @@ operator|.
 name|Factory
 name|json
 decl_stmt|;
-DECL|field|myIdent
+DECL|field|serverIdent
 specifier|private
 specifier|final
 name|PersonIdent
-name|myIdent
+name|serverIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Revert (Provider<ReviewDb> db, GitRepositoryManager repoManager, ChangeInserter.Factory changeInserterFactory, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory changeUpdateFactory, BatchUpdate.Factory updateFactory, Sequences seq, PatchSetUtil psUtil, RevertedSender.Factory revertedSenderFactory, ChangeJson.Factory json, @GerritPersonIdent PersonIdent myIdent)
+DECL|method|Revert (Provider<ReviewDb> db, GitRepositoryManager repoManager, ChangeInserter.Factory changeInserterFactory, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory changeUpdateFactory, BatchUpdate.Factory updateFactory, Sequences seq, PatchSetUtil psUtil, RevertedSender.Factory revertedSenderFactory, ChangeJson.Factory json, @GerritPersonIdent PersonIdent serverIdent)
 name|Revert
 parameter_list|(
 name|Provider
@@ -962,7 +962,7 @@ parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|PersonIdent
-name|myIdent
+name|serverIdent
 parameter_list|)
 block|{
 name|this
@@ -1027,9 +1027,9 @@ name|json
 expr_stmt|;
 name|this
 operator|.
-name|myIdent
+name|serverIdent
 operator|=
-name|myIdent
+name|serverIdent
 expr_stmt|;
 block|}
 annotation|@
@@ -1147,17 +1147,6 @@ name|input
 operator|.
 name|message
 argument_list|)
-argument_list|,
-operator|new
-name|PersonIdent
-argument_list|(
-name|myIdent
-argument_list|,
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1199,7 +1188,7 @@ name|revertedChangeId
 argument_list|)
 return|;
 block|}
-DECL|method|revert (ChangeControl ctl, PatchSet.Id patchSetId, String message, PersonIdent myIdent)
+DECL|method|revert (ChangeControl ctl, PatchSet.Id patchSetId, String message)
 specifier|private
 name|Change
 operator|.
@@ -1216,9 +1205,6 @@ name|patchSetId
 parameter_list|,
 name|String
 name|message
-parameter_list|,
-name|PersonIdent
-name|myIdent
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -1361,6 +1347,20 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|PersonIdent
+name|committerIdent
+init|=
+operator|new
+name|PersonIdent
+argument_list|(
+name|serverIdent
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|PersonIdent
 name|authorIdent
 init|=
 name|user
@@ -1370,12 +1370,12 @@ argument_list|()
 operator|.
 name|newCommitterIdent
 argument_list|(
-name|myIdent
+name|committerIdent
 operator|.
 name|getWhen
 argument_list|()
 argument_list|,
-name|myIdent
+name|committerIdent
 operator|.
 name|getTimeZone
 argument_list|()
@@ -1505,7 +1505,7 @@ name|commitToRevert
 argument_list|,
 name|authorIdent
 argument_list|,
-name|myIdent
+name|committerIdent
 argument_list|,
 name|message
 argument_list|)
