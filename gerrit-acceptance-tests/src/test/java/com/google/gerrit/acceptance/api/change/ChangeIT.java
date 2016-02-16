@@ -8702,8 +8702,9 @@ literal|1
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|ChangeResource
+name|changeResourceFactory
+operator|.
+name|create
 argument_list|(
 name|ctls
 operator|.

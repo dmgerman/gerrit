@@ -566,6 +566,14 @@ specifier|final
 name|RebaseUtil
 name|rebaseUtil
 decl_stmt|;
+DECL|field|changeResourceFactory
+specifier|private
+specifier|final
+name|ChangeResource
+operator|.
+name|Factory
+name|changeResourceFactory
+decl_stmt|;
 DECL|field|ctl
 specifier|private
 specifier|final
@@ -638,7 +646,7 @@ name|rebasedPatchSet
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|RebaseChangeOp ( PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, RebaseUtil rebaseUtil, @Assisted ChangeControl ctl, @Assisted PatchSet originalPatchSet, @Assisted @Nullable String baseCommitish)
+DECL|method|RebaseChangeOp ( PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, RebaseUtil rebaseUtil, ChangeResource.Factory changeResourceFactory, @Assisted ChangeControl ctl, @Assisted PatchSet originalPatchSet, @Assisted @Nullable String baseCommitish)
 name|RebaseChangeOp
 parameter_list|(
 name|PatchSetInserter
@@ -653,6 +661,11 @@ name|mergeUtilFactory
 parameter_list|,
 name|RebaseUtil
 name|rebaseUtil
+parameter_list|,
+name|ChangeResource
+operator|.
+name|Factory
+name|changeResourceFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -689,6 +702,12 @@ operator|.
 name|rebaseUtil
 operator|=
 name|rebaseUtil
+expr_stmt|;
+name|this
+operator|.
+name|changeResourceFactory
+operator|=
+name|changeResourceFactory
 expr_stmt|;
 name|this
 operator|.
@@ -981,8 +1000,9 @@ argument_list|(
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changeResourceFactory
+operator|.
+name|create
 argument_list|(
 name|ctl
 argument_list|)
