@@ -390,20 +390,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|PersonIdent
 import|;
 end_import
@@ -1542,16 +1528,6 @@ parameter_list|()
 block|{
 return|return
 name|changeId
-return|;
-block|}
-DECL|method|getCommitId ()
-specifier|public
-name|ObjectId
-name|getCommitId
-parameter_list|()
-block|{
-return|return
-name|commit
 return|;
 block|}
 DECL|method|getCommit ()

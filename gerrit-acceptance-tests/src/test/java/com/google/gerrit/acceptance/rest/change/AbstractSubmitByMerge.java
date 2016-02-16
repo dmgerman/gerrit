@@ -470,7 +470,7 @@ name|isEqualTo
 argument_list|(
 name|change2
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -550,7 +550,7 @@ name|reset
 argument_list|(
 name|change
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -624,7 +624,7 @@ name|isEqualTo
 argument_list|(
 name|change3
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -805,7 +805,7 @@ name|isEqualTo
 argument_list|(
 name|change2
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 argument_list|)
 expr_stmt|;

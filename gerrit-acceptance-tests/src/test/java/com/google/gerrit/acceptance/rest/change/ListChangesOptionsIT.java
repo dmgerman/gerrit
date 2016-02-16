@@ -784,7 +784,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|name

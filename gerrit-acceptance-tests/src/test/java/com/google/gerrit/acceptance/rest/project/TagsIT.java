@@ -870,7 +870,7 @@ name|isEqualTo
 argument_list|(
 name|r1
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|getName
@@ -915,7 +915,7 @@ name|isEqualTo
 argument_list|(
 name|r2
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|getName
@@ -1006,7 +1006,7 @@ name|isEqualTo
 argument_list|(
 name|r2
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|getName
@@ -1704,7 +1704,7 @@ name|isEqualTo
 argument_list|(
 name|r1
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|getName
@@ -1748,7 +1748,7 @@ name|isEqualTo
 argument_list|(
 name|r2
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|getName
@@ -1815,7 +1815,7 @@ name|isEqualTo
 argument_list|(
 name|r1
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|getName
@@ -1957,7 +1957,7 @@ name|isEqualTo
 argument_list|(
 name|r1
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|getName
