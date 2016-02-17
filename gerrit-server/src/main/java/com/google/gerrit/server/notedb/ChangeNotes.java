@@ -1508,6 +1508,7 @@ name|load
 argument_list|()
 return|;
 block|}
+comment|/**      * Create change notes for a change that was loaded from index. This method      * should only be used when database access is harmful and potentially stale      * data from the index is acceptable.      *      * @param change change loaded from secondary index      * @return change notes      */
 DECL|method|createFromIndexedChange (Change change)
 specifier|public
 name|ChangeNotes
