@@ -1322,7 +1322,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|field|identifiedUserFactory
-specifier|private
+specifier|protected
 name|IdentifiedUser
 operator|.
 name|GenericFactory
