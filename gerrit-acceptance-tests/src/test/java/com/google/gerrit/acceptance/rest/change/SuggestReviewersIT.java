@@ -538,11 +538,11 @@ name|GerritConfig
 argument_list|(
 name|name
 operator|=
-literal|"suggest.accounts"
+literal|"accounts.visibility"
 argument_list|,
 name|value
 operator|=
-literal|"false"
+literal|"NONE"
 argument_list|)
 DECL|method|suggestReviewersNoResult1 ()
 specifier|public
@@ -594,18 +594,6 @@ annotation|@
 name|GerritConfigs
 argument_list|(
 block|{
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"suggest.accounts"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
