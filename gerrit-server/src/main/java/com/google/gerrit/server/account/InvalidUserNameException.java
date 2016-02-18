@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.errors
+DECL|package|com.google.gerrit.server.account
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|server
 operator|.
-name|errors
+name|account
 package|;
 end_package
 
