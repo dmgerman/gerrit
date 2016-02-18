@@ -1030,6 +1030,12 @@ name|name
 operator|=
 literal|"--suggest"
 argument_list|,
+name|aliases
+operator|=
+block|{
+literal|"-s"
+block|}
+argument_list|,
 name|usage
 operator|=
 literal|"to get a suggestion of groups"
