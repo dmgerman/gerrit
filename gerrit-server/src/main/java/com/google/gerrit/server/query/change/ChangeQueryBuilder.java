@@ -530,22 +530,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|AllUsersNameProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -1660,7 +1644,7 @@ name|allProjectsName
 decl_stmt|;
 DECL|field|allUsersName
 specifier|final
-name|AllUsersNameProvider
+name|AllUsersName
 name|allUsersName
 decl_stmt|;
 DECL|field|patchListCache
@@ -1737,7 +1721,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, IndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, @GerritServerConfig Config cfg)
+DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, IndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, @GerritServerConfig Config cfg)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -1810,7 +1794,7 @@ parameter_list|,
 name|AllProjectsName
 name|allProjectsName
 parameter_list|,
-name|AllUsersNameProvider
+name|AllUsersName
 name|allUsersName
 parameter_list|,
 name|PatchListCache
@@ -1937,7 +1921,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersNameProvider allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, boolean allowsDrafts)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, boolean allowsDrafts)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2010,7 +1994,7 @@ parameter_list|,
 name|AllProjectsName
 name|allProjectsName
 parameter_list|,
-name|AllUsersNameProvider
+name|AllUsersName
 name|allUsersName
 parameter_list|,
 name|PatchListCache
@@ -5439,16 +5423,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 block|{
-name|AllUsersName
-name|allUsers
-init|=
-name|args
-operator|.
-name|allUsersName
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 try|try
 init|(
 name|Repository
@@ -5460,7 +5434,9 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|allUsers
+name|args
+operator|.
+name|allUsersName
 argument_list|)
 init|)
 block|{
@@ -5522,10 +5498,9 @@ name|QueryParseException
 argument_list|(
 literal|"Unknown named query (no "
 operator|+
-name|allUsers
+name|args
 operator|.
-name|get
-argument_list|()
+name|allUsersName
 operator|+
 literal|" repo): "
 operator|+
@@ -5611,16 +5586,6 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 block|{
-name|AllUsersName
-name|allUsers
-init|=
-name|args
-operator|.
-name|allUsersName
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 try|try
 init|(
 name|Repository
@@ -5632,7 +5597,9 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|allUsers
+name|args
+operator|.
+name|allUsersName
 argument_list|)
 init|)
 block|{
@@ -5702,10 +5669,9 @@ name|QueryParseException
 argument_list|(
 literal|"Unknown named destination (no "
 operator|+
-name|allUsers
+name|args
 operator|.
-name|get
-argument_list|()
+name|allUsersName
 operator|+
 literal|" repo): "
 operator|+

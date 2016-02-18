@@ -380,22 +380,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AllUsersNameProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -1098,14 +1082,14 @@ name|migration
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchLineCommentsUtil (GitRepositoryManager repoManager, AllUsersNameProvider allUsersProvider, DraftCommentNotes.Factory draftFactory, NotesMigration migration)
+DECL|method|PatchLineCommentsUtil (GitRepositoryManager repoManager, AllUsersName allUsers, DraftCommentNotes.Factory draftFactory, NotesMigration migration)
 name|PatchLineCommentsUtil
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-name|AllUsersNameProvider
-name|allUsersProvider
+name|AllUsersName
+name|allUsers
 parameter_list|,
 name|DraftCommentNotes
 operator|.
@@ -1126,10 +1110,7 @@ name|this
 operator|.
 name|allUsers
 operator|=
-name|allUsersProvider
-operator|.
-name|get
-argument_list|()
+name|allUsers
 expr_stmt|;
 name|this
 operator|.

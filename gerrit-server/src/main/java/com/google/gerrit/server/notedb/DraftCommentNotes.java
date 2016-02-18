@@ -216,22 +216,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AllUsersNameProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -387,7 +371,7 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersNameProvider allUsers)
+DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers)
 specifier|public
 name|Factory
 parameter_list|(
@@ -397,7 +381,7 @@ parameter_list|,
 name|NotesMigration
 name|migration
 parameter_list|,
-name|AllUsersNameProvider
+name|AllUsersName
 name|allUsers
 parameter_list|)
 block|{
@@ -418,9 +402,6 @@ operator|.
 name|draftsProject
 operator|=
 name|allUsers
-operator|.
-name|get
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|create (Change.Id changeId, Account.Id accountId)

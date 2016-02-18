@@ -288,22 +288,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AllUsersNameProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -745,7 +729,7 @@ return|return
 name|ps
 return|;
 block|}
-DECL|method|newUpdate (Injector injector, GitRepositoryManager repoManager, NotesMigration migration, Change c, final AllUsersNameProvider allUsers, final IdentifiedUser user)
+DECL|method|newUpdate (Injector injector, GitRepositoryManager repoManager, NotesMigration migration, Change c, final AllUsersName allUsers, final IdentifiedUser user)
 specifier|public
 specifier|static
 name|ChangeUpdate
@@ -764,7 +748,7 @@ name|Change
 name|c
 parameter_list|,
 specifier|final
-name|AllUsersNameProvider
+name|AllUsersName
 name|allUsers
 parameter_list|,
 specifier|final
@@ -820,18 +804,6 @@ operator|.
 name|toInstance
 argument_list|(
 name|user
-argument_list|)
-expr_stmt|;
-name|bind
-argument_list|(
-name|AllUsersName
-operator|.
-name|class
-argument_list|)
-operator|.
-name|toProvider
-argument_list|(
-name|allUsers
 argument_list|)
 expr_stmt|;
 block|}
@@ -1091,8 +1063,8 @@ name|update
 return|;
 block|}
 block|}
-DECL|method|stubChangeControl ( GitRepositoryManager repoManager, NotesMigration migration, Change c, AllUsersNameProvider allUsers, IdentifiedUser user)
-specifier|public
+DECL|method|stubChangeControl ( GitRepositoryManager repoManager, NotesMigration migration, Change c, AllUsersName allUsers, IdentifiedUser user)
+specifier|private
 specifier|static
 name|ChangeControl
 name|stubChangeControl
@@ -1106,7 +1078,7 @@ parameter_list|,
 name|Change
 name|c
 parameter_list|,
-name|AllUsersNameProvider
+name|AllUsersName
 name|allUsers
 parameter_list|,
 name|IdentifiedUser

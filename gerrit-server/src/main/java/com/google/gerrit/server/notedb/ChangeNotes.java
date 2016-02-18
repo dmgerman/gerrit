@@ -560,22 +560,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AllUsersNameProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -1172,11 +1156,11 @@ specifier|final
 name|NotesMigration
 name|migration
 decl_stmt|;
-DECL|field|allUsersProvider
+DECL|field|allUsers
 specifier|private
 specifier|final
-name|AllUsersNameProvider
-name|allUsersProvider
+name|AllUsersName
+name|allUsers
 decl_stmt|;
 DECL|field|queryProvider
 specifier|private
@@ -1197,7 +1181,7 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersNameProvider allUsersProvider, Provider<InternalChangeQuery> queryProvider, ProjectCache projectCache)
+DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, Provider<InternalChangeQuery> queryProvider, ProjectCache projectCache)
 specifier|public
 name|Factory
 parameter_list|(
@@ -1207,8 +1191,8 @@ parameter_list|,
 name|NotesMigration
 name|migration
 parameter_list|,
-name|AllUsersNameProvider
-name|allUsersProvider
+name|AllUsersName
+name|allUsers
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1234,9 +1218,9 @@ name|migration
 expr_stmt|;
 name|this
 operator|.
-name|allUsersProvider
+name|allUsers
 operator|=
-name|allUsersProvider
+name|allUsers
 expr_stmt|;
 name|this
 operator|.
@@ -1539,7 +1523,7 @@ name|repoManager
 argument_list|,
 name|migration
 argument_list|,
-name|allUsersProvider
+name|allUsers
 argument_list|,
 name|project
 argument_list|,
@@ -1568,7 +1552,7 @@ name|repoManager
 argument_list|,
 name|migration
 argument_list|,
-name|allUsersProvider
+name|allUsers
 argument_list|,
 name|change
 operator|.
@@ -1598,7 +1582,7 @@ name|repoManager
 argument_list|,
 name|migration
 argument_list|,
-name|allUsersProvider
+name|allUsers
 argument_list|,
 name|change
 operator|.
@@ -1663,7 +1647,7 @@ name|repoManager
 argument_list|,
 name|migration
 argument_list|,
-name|allUsersProvider
+name|allUsers
 argument_list|,
 name|change
 operator|.
@@ -1711,7 +1695,7 @@ name|repoManager
 argument_list|,
 name|migration
 argument_list|,
-name|allUsersProvider
+name|allUsers
 argument_list|,
 name|change
 operator|.
@@ -2044,7 +2028,7 @@ name|draftCommentNotes
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
-DECL|method|ChangeNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersNameProvider allUsersProvider, Project.NameKey project, Change change)
+DECL|method|ChangeNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, Project.NameKey project, Change change)
 specifier|public
 name|ChangeNotes
 parameter_list|(
@@ -2054,8 +2038,8 @@ parameter_list|,
 name|NotesMigration
 name|migration
 parameter_list|,
-name|AllUsersNameProvider
-name|allUsersProvider
+name|AllUsersName
+name|allUsers
 parameter_list|,
 name|Project
 operator|.
@@ -2088,10 +2072,7 @@ name|this
 operator|.
 name|allUsers
 operator|=
-name|allUsersProvider
-operator|.
-name|get
-argument_list|()
+name|allUsers
 expr_stmt|;
 name|this
 operator|.
