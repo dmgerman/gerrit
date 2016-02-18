@@ -690,7 +690,7 @@ name|getCommit
 argument_list|(
 name|r
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -705,7 +705,7 @@ name|isEqualTo
 argument_list|(
 name|r
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|name
@@ -920,7 +920,7 @@ name|assertNotFound
 argument_list|(
 name|r
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 argument_list|)
 expr_stmt|;

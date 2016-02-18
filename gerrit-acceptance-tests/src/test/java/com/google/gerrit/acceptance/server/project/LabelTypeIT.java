@@ -2338,7 +2338,7 @@ name|isEqualTo
 argument_list|(
 name|r
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 argument_list|)
 expr_stmt|;

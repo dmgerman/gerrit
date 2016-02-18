@@ -405,7 +405,7 @@ name|abbreviated
 init|=
 name|r
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|abbreviate
@@ -674,7 +674,7 @@ name|abbreviated
 init|=
 name|r
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|abbreviate

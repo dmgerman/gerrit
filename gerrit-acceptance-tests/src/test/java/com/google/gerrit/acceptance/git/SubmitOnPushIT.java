@@ -1453,7 +1453,7 @@ name|RefSpec
 argument_list|(
 name|r
 operator|.
-name|getCommitId
+name|getCommit
 argument_list|()
 operator|.
 name|name
