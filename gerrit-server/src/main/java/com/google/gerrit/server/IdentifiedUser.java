@@ -1891,12 +1891,8 @@ name|getName
 parameter_list|()
 block|{
 return|return
-operator|new
-name|AccountInfo
-argument_list|(
 name|getAccount
 argument_list|()
-argument_list|)
 operator|.
 name|getName
 argument_list|(
