@@ -1900,6 +1900,26 @@ return|return
 name|validEmails
 return|;
 block|}
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+operator|new
+name|AccountInfo
+argument_list|(
+name|getAccount
+argument_list|()
+argument_list|)
+operator|.
+name|getName
+argument_list|(
+name|anonymousCowardName
+argument_list|)
+return|;
+block|}
 DECL|method|getNameEmail ()
 specifier|public
 name|String
