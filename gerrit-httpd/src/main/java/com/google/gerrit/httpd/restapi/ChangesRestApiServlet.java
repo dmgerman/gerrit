@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd.rpc.access
+DECL|package|com.google.gerrit.httpd.restapi
 package|package
 name|com
 operator|.
@@ -62,9 +62,7 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
-name|rpc
-operator|.
-name|access
+name|restapi
 package|;
 end_package
 
@@ -76,27 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
-operator|.
-name|restapi
-operator|.
-name|RestApiServlet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
-name|access
+name|change
 operator|.
-name|AccessCollection
+name|ChangesCollection
 import|;
 end_import
 
@@ -139,10 +121,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|AccessRestApiServlet
+DECL|class|ChangesRestApiServlet
 specifier|public
 class|class
-name|AccessRestApiServlet
+name|ChangesRestApiServlet
 extends|extends
 name|RestApiServlet
 block|{
@@ -157,8 +139,8 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccessRestApiServlet (RestApiServlet.Globals globals, Provider<AccessCollection> access)
-name|AccessRestApiServlet
+DECL|method|ChangesRestApiServlet (RestApiServlet.Globals globals, Provider<ChangesCollection> changes)
+name|ChangesRestApiServlet
 parameter_list|(
 name|RestApiServlet
 operator|.
@@ -167,16 +149,16 @@ name|globals
 parameter_list|,
 name|Provider
 argument_list|<
-name|AccessCollection
+name|ChangesCollection
 argument_list|>
-name|access
+name|changes
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|globals
 argument_list|,
-name|access
+name|changes
 argument_list|)
 expr_stmt|;
 block|}
