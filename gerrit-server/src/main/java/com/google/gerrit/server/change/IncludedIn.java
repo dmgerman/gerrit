@@ -74,22 +74,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|IncludedInDetail
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|config
@@ -668,7 +652,9 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-name|IncludedInDetail
+name|IncludedInResolver
+operator|.
+name|Result
 name|d
 init|=
 name|IncludedInResolver
@@ -805,10 +791,12 @@ argument_list|>
 argument_list|>
 name|external
 decl_stmt|;
-DECL|method|IncludedInInfo (IncludedInDetail in, Map<String, Collection<String>> e)
+DECL|method|IncludedInInfo (IncludedInResolver.Result in, Map<String, Collection<String>> e)
 name|IncludedInInfo
 parameter_list|(
-name|IncludedInDetail
+name|IncludedInResolver
+operator|.
+name|Result
 name|in
 parameter_list|,
 name|Map
