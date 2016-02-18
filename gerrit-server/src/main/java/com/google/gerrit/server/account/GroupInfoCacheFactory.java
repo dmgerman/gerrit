@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|reviewdb
 operator|.
-name|data
+name|client
 operator|.
-name|GroupInfoCache
+name|AccountGroup
 import|;
 end_import
 
@@ -120,11 +120,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|group
 operator|.
-name|AccountGroup
+name|GroupInfoCache
 import|;
 end_import
 

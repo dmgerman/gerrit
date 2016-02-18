@@ -52,8 +52,22 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.data
+DECL|package|com.google.gerrit.server.group
 package|package
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+package|;
+end_package
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -63,8 +77,10 @@ operator|.
 name|common
 operator|.
 name|data
-package|;
-end_package
+operator|.
+name|GroupInfo
+import|;
+end_import
 
 begin_import
 import|import
