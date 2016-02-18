@@ -68,22 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|IncludedInDetail
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -897,7 +881,9 @@ throws|throws
 name|Exception
 block|{
 comment|// Check tip commit
-name|IncludedInDetail
+name|IncludedInResolver
+operator|.
+name|Result
 name|detail
 init|=
 name|resolve
@@ -966,7 +952,9 @@ throws|throws
 name|Exception
 block|{
 comment|// Check first commit
-name|IncludedInDetail
+name|IncludedInResolver
+operator|.
+name|Result
 name|detail
 init|=
 name|resolve
@@ -1098,7 +1086,9 @@ throws|throws
 name|Exception
 block|{
 comment|// Check a commit somewhere in the middle
-name|IncludedInDetail
+name|IncludedInResolver
+operator|.
+name|Result
 name|detail
 init|=
 name|resolve
@@ -1172,7 +1162,9 @@ expr_stmt|;
 block|}
 DECL|method|resolve (RevCommit commit)
 specifier|private
-name|IncludedInDetail
+name|IncludedInResolver
+operator|.
+name|Result
 name|resolve
 parameter_list|(
 name|RevCommit
