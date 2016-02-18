@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.account
+DECL|package|com.google.gerrit.server.group
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
+name|group
 package|;
 end_package
 
@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|reviewdb
 operator|.
-name|data
+name|client
 operator|.
-name|GroupInfoCache
+name|AccountGroup
 import|;
 end_import
 
@@ -120,11 +120,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountGroup
+name|GroupBackend
 import|;
 end_import
 
