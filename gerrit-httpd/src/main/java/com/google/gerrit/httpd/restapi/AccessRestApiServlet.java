@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd.rpc.group
+DECL|package|com.google.gerrit.httpd.restapi
 package|package
 name|com
 operator|.
@@ -62,9 +62,7 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
-name|rpc
-operator|.
-name|group
+name|restapi
 package|;
 end_package
 
@@ -76,27 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
-operator|.
-name|restapi
-operator|.
-name|RestApiServlet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
-name|group
+name|access
 operator|.
-name|GroupsCollection
+name|AccessCollection
 import|;
 end_import
 
@@ -139,10 +121,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|GroupsRestApiServlet
+DECL|class|AccessRestApiServlet
 specifier|public
 class|class
-name|GroupsRestApiServlet
+name|AccessRestApiServlet
 extends|extends
 name|RestApiServlet
 block|{
@@ -157,8 +139,8 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsRestApiServlet (RestApiServlet.Globals globals, Provider<GroupsCollection> groups)
-name|GroupsRestApiServlet
+DECL|method|AccessRestApiServlet (RestApiServlet.Globals globals, Provider<AccessCollection> access)
+name|AccessRestApiServlet
 parameter_list|(
 name|RestApiServlet
 operator|.
@@ -167,16 +149,16 @@ name|globals
 parameter_list|,
 name|Provider
 argument_list|<
-name|GroupsCollection
+name|AccessCollection
 argument_list|>
-name|groups
+name|access
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|globals
 argument_list|,
-name|groups
+name|access
 argument_list|)
 expr_stmt|;
 block|}
