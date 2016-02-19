@@ -1223,6 +1223,111 @@ literal|"Groups: d,e,f\n"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|parseServerIdent ()
+specifier|public
+name|void
+name|parseServerIdent
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|msg
+init|=
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Subject: Change subject\n"
+decl_stmt|;
+name|assertParseSucceeds
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+name|writeCommit
+argument_list|(
+name|msg
+argument_list|,
+name|serverIdent
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|msg
+operator|=
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"With a message."
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Subject: Change subject\n"
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+name|writeCommit
+argument_list|(
+name|msg
+argument_list|,
+name|serverIdent
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|msg
+operator|=
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Label: Label1=+1\n"
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+name|writeCommit
+argument_list|(
+name|msg
+argument_list|,
+name|serverIdent
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|writeCommit (String body)
 specifier|private
 name|RevCommit
@@ -1383,6 +1488,26 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|assertParseSucceeds
+argument_list|(
+name|writeCommit
+argument_list|(
+name|body
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|assertParseSucceeds (RevCommit commit)
+specifier|private
+name|void
+name|assertParseSucceeds
+parameter_list|(
+name|RevCommit
+name|commit
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 try|try
 init|(
 name|ChangeNotesParser
@@ -1390,10 +1515,7 @@ name|parser
 init|=
 name|newParser
 argument_list|(
-name|writeCommit
-argument_list|(
-name|body
-argument_list|)
+name|commit
 argument_list|)
 init|)
 block|{

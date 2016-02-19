@@ -292,6 +292,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|GerritPersonIdent
 import|;
 end_import
@@ -307,6 +321,20 @@ operator|.
 name|server
 operator|.
 name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|InternalUser
 import|;
 end_import
 
@@ -963,6 +991,11 @@ specifier|protected
 name|PersonIdent
 name|serverIdent
 decl_stmt|;
+DECL|field|internalUser
+specifier|protected
+name|InternalUser
+name|internalUser
+decl_stmt|;
 DECL|field|project
 specifier|protected
 name|Project
@@ -1530,6 +1563,14 @@ operator|.
 name|getAccountId
 argument_list|()
 expr_stmt|;
+name|internalUser
+operator|=
+operator|new
+name|InternalUser
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|setTimeForTesting ()
 specifier|private
@@ -1649,7 +1690,7 @@ return|return
 name|c
 return|;
 block|}
-DECL|method|newUpdate (Change c, IdentifiedUser user)
+DECL|method|newUpdate (Change c, CurrentUser user)
 specifier|protected
 name|ChangeUpdate
 name|newUpdate
@@ -1657,7 +1698,7 @@ parameter_list|(
 name|Change
 name|c
 parameter_list|,
-name|IdentifiedUser
+name|CurrentUser
 name|user
 parameter_list|)
 throws|throws

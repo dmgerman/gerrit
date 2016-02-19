@@ -1468,16 +1468,8 @@ name|cb
 operator|.
 name|setAuthor
 argument_list|(
-name|newIdent
-argument_list|(
-name|getUser
+name|newAuthorIdent
 argument_list|()
-operator|.
-name|getAccount
-argument_list|()
-argument_list|,
-name|when
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|cb
