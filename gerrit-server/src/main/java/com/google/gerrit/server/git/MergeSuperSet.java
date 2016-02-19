@@ -230,6 +230,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|Submit
@@ -695,7 +709,7 @@ operator|=
 name|repoManager
 expr_stmt|;
 block|}
-DECL|method|completeChangeSet (ReviewDb db, Change change)
+DECL|method|completeChangeSet (ReviewDb db, Change change, CurrentUser user)
 specifier|public
 name|ChangeSet
 name|completeChangeSet
@@ -705,6 +719,9 @@ name|db
 parameter_list|,
 name|Change
 name|change
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 throws|throws
 name|MissingObjectException
@@ -735,6 +752,13 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|cd
+operator|.
+name|changeControl
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|Submit
@@ -755,6 +779,8 @@ name|ChangeSet
 argument_list|(
 name|cd
 argument_list|)
+argument_list|,
+name|user
 argument_list|)
 return|;
 block|}
@@ -770,11 +796,13 @@ name|ChangeSet
 argument_list|(
 name|cd
 argument_list|)
+argument_list|,
+name|user
 argument_list|)
 return|;
 block|}
 block|}
-DECL|method|completeChangeSetWithoutTopic (ReviewDb db, ChangeSet changes)
+DECL|method|completeChangeSetWithoutTopic (ReviewDb db, ChangeSet changes, CurrentUser user)
 specifier|private
 name|ChangeSet
 name|completeChangeSetWithoutTopic
@@ -784,6 +812,9 @@ name|db
 parameter_list|,
 name|ChangeSet
 name|changes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 throws|throws
 name|MissingObjectException
@@ -887,6 +918,13 @@ argument_list|,
 name|cId
 argument_list|)
 decl_stmt|;
+name|cd
+operator|.
+name|changeControl
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
 name|SubmitTypeRecord
 name|str
 init|=
@@ -1178,7 +1216,7 @@ name|ret
 argument_list|)
 return|;
 block|}
-DECL|method|completeChangeSetIncludingTopics ( ReviewDb db, ChangeSet changes)
+DECL|method|completeChangeSetIncludingTopics ( ReviewDb db, ChangeSet changes, CurrentUser user)
 specifier|private
 name|ChangeSet
 name|completeChangeSetIncludingTopics
@@ -1188,6 +1226,9 @@ name|db
 parameter_list|,
 name|ChangeSet
 name|changes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 throws|throws
 name|MissingObjectException
@@ -1222,6 +1263,8 @@ argument_list|(
 name|db
 argument_list|,
 name|changes
+argument_list|,
+name|user
 argument_list|)
 decl_stmt|;
 while|while
@@ -1334,6 +1377,8 @@ argument_list|(
 name|db
 argument_list|,
 name|changes
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
 block|}

@@ -78,6 +78,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
 import|;
 end_import
@@ -1487,6 +1503,32 @@ argument_list|(
 name|changeId
 argument_list|)
 decl_stmt|;
+name|checkArgument
+argument_list|(
+name|change
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|project
+argument_list|)
+argument_list|,
+literal|"passed project %s when creating ChangeNotes for %s, but actual"
+operator|+
+literal|" project is %s"
+argument_list|,
+name|project
+argument_list|,
+name|changeId
+argument_list|,
+name|change
+operator|.
+name|getProject
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// TODO: Throw NoSuchChangeException when the change is not found in the
 comment|// database
 return|return

@@ -220,6 +220,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|WalkSorter
@@ -603,6 +617,14 @@ operator|=
 name|getForOpenChange
 argument_list|(
 name|c
+argument_list|,
+name|resource
+operator|.
+name|getControl
+argument_list|()
+operator|.
+name|getUser
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -715,7 +737,7 @@ name|e
 throw|;
 block|}
 block|}
-DECL|method|getForOpenChange (Change c)
+DECL|method|getForOpenChange (Change c, CurrentUser user)
 specifier|private
 name|List
 argument_list|<
@@ -725,6 +747,9 @@ name|getForOpenChange
 parameter_list|(
 name|Change
 name|c
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 throws|throws
 name|OrmException
@@ -744,6 +769,8 @@ name|get
 argument_list|()
 argument_list|,
 name|c
+argument_list|,
+name|user
 argument_list|)
 decl_stmt|;
 return|return
