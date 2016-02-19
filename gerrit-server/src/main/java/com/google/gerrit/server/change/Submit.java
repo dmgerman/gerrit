@@ -936,14 +936,14 @@ name|CLICK_FAILURE_TOOLTIP
 init|=
 literal|"Clicking the button would fail"
 decl_stmt|;
-DECL|field|CLICK_FAILURE_OTHER_TOOLTIP
+DECL|field|CHANGES_NOT_MERGEABLE
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|CLICK_FAILURE_OTHER_TOOLTIP
+name|CHANGES_NOT_MERGEABLE
 init|=
-literal|"Clicking the button would fail for other changes"
+literal|"See the \"Submitted Together\" tab for problems"
 decl_stmt|;
 DECL|class|Output
 specifier|public
@@ -1851,7 +1851,7 @@ name|csIsMergeable
 condition|)
 block|{
 return|return
-name|CLICK_FAILURE_OTHER_TOOLTIP
+name|CHANGES_NOT_MERGEABLE
 return|;
 block|}
 block|}
