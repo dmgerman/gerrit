@@ -540,6 +540,45 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Retrieve the account name */
+DECL|method|getName (String account, AsyncCallback<NativeString> cb)
+specifier|public
+specifier|static
+name|void
+name|getName
+parameter_list|(
+name|String
+name|account
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|NativeString
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+operator|new
+name|RestApi
+argument_list|(
+literal|"/accounts/"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|account
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"name"
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Retrieve email addresses */
 DECL|method|getEmails (String account, AsyncCallback<JsArray<EmailInfo>> cb)
 specifier|public
