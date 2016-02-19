@@ -686,6 +686,54 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|getChangeRepo ()
+name|Repository
+name|getChangeRepo
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|initChangeRepo
+argument_list|()
+expr_stmt|;
+return|return
+name|changeRepo
+operator|.
+name|repo
+return|;
+block|}
+DECL|method|getChangeRevWalk ()
+name|RevWalk
+name|getChangeRevWalk
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|initChangeRepo
+argument_list|()
+expr_stmt|;
+return|return
+name|changeRepo
+operator|.
+name|rw
+return|;
+block|}
+DECL|method|getChangeCommands ()
+name|ChainedReceiveCommands
+name|getChangeCommands
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|initChangeRepo
+argument_list|()
+expr_stmt|;
+return|return
+name|changeRepo
+operator|.
+name|cmds
+return|;
+block|}
 DECL|method|setAllUsersRepo (Repository repo, RevWalk rw, ObjectInserter ins, ChainedReceiveCommands cmds)
 specifier|public
 name|NoteDbUpdateManager
