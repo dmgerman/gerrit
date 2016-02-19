@@ -898,6 +898,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|search (String query, int n)
+specifier|public
 name|List
 argument_list|<
 name|AccountInfo

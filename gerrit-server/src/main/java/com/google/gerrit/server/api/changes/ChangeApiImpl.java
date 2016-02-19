@@ -640,7 +640,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|SuggestReviewers
+name|SuggestChangeReviewers
 import|;
 end_import
 
@@ -816,7 +816,7 @@ specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|SuggestReviewers
+name|SuggestChangeReviewers
 argument_list|>
 name|suggestReviewers
 decl_stmt|;
@@ -916,7 +916,7 @@ name|editDetail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeApiImpl (Provider<CurrentUser> user, Changes changeApi, Revisions revisions, RevisionApiImpl.Factory revisionApi, Provider<SuggestReviewers> suggestReviewers, Abandon abandon, Revert revert, Restore restore, SubmittedTogether submittedTogether, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, ChangeEdits.Detail editDetail, @Assisted ChangeResource change)
+DECL|method|ChangeApiImpl (Provider<CurrentUser> user, Changes changeApi, Revisions revisions, RevisionApiImpl.Factory revisionApi, Provider<SuggestChangeReviewers> suggestReviewers, Abandon abandon, Revert revert, Restore restore, SubmittedTogether submittedTogether, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, ChangeEdits.Detail editDetail, @Assisted ChangeResource change)
 name|ChangeApiImpl
 parameter_list|(
 name|Provider
@@ -938,7 +938,7 @@ name|revisionApi
 parameter_list|,
 name|Provider
 argument_list|<
-name|SuggestReviewers
+name|SuggestChangeReviewers
 argument_list|>
 name|suggestReviewers
 parameter_list|,
@@ -1710,7 +1710,7 @@ name|RestApiException
 block|{
 try|try
 block|{
-name|SuggestReviewers
+name|SuggestChangeReviewers
 name|mySuggestReviewers
 init|=
 name|suggestReviewers
