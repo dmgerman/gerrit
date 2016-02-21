@@ -194,22 +194,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AllProjectsNameProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -250,11 +234,11 @@ name|webLinks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectJson (AllProjectsNameProvider allProjectsNameProvider, WebLinks webLinks)
+DECL|method|ProjectJson (AllProjectsName allProjectsName, WebLinks webLinks)
 name|ProjectJson
 parameter_list|(
-name|AllProjectsNameProvider
-name|allProjectsNameProvider
+name|AllProjectsName
+name|allProjectsName
 parameter_list|,
 name|WebLinks
 name|webLinks
@@ -264,10 +248,7 @@ name|this
 operator|.
 name|allProjects
 operator|=
-name|allProjectsNameProvider
-operator|.
-name|get
-argument_list|()
+name|allProjectsName
 expr_stmt|;
 name|this
 operator|.

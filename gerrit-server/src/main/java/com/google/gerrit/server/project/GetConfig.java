@@ -140,7 +140,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|AllProjectsNameProvider
+name|AllProjectsName
 import|;
 end_import
 
@@ -259,7 +259,7 @@ decl_stmt|;
 DECL|field|allProjects
 specifier|private
 specifier|final
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 decl_stmt|;
 DECL|field|views
@@ -276,7 +276,7 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetConfig (@nableSignedPush boolean serverEnableSignedPush, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|GetConfig (@nableSignedPush boolean serverEnableSignedPush, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|GetConfig
 parameter_list|(
@@ -297,7 +297,7 @@ parameter_list|,
 name|PluginConfigFactory
 name|cfgFactory
 parameter_list|,
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 parameter_list|,
 name|DynamicMap

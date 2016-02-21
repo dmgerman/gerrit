@@ -218,7 +218,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|AllProjectsNameProvider
+name|AllProjectsName
 import|;
 end_import
 
@@ -528,7 +528,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectAccess (ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsNameProvider allProjects, Provider<SetParent> setParent, ChangeHooks hooks, GitReferenceUpdated gitRefUpdated, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ChangeProjectAccess (ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, ChangeHooks hooks, GitReferenceUpdated gitRefUpdated, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 parameter_list|(
 name|ProjectAccessFactory
@@ -552,7 +552,7 @@ operator|.
 name|User
 name|metaDataUpdateFactory
 parameter_list|,
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 parameter_list|,
 name|Provider

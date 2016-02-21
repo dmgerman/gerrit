@@ -250,7 +250,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|AllProjectsNameProvider
+name|AllProjectsName
 import|;
 end_import
 
@@ -501,7 +501,7 @@ specifier|public
 name|ThemeInfo
 name|theme
 decl_stmt|;
-DECL|method|ConfigInfo (boolean serverEnableSignedPush, ProjectControl control, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|ConfigInfo (boolean serverEnableSignedPush, ProjectControl control, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|ConfigInfo
 parameter_list|(
@@ -523,7 +523,7 @@ parameter_list|,
 name|PluginConfigFactory
 name|cfgFactory
 parameter_list|,
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 parameter_list|,
 name|DynamicMap
@@ -1068,7 +1068,7 @@ name|getTheme
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getPluginConfig ( ProjectState project, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects)
+DECL|method|getPluginConfig ( ProjectState project, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects)
 specifier|private
 name|Map
 argument_list|<
@@ -1095,7 +1095,7 @@ parameter_list|,
 name|PluginConfigFactory
 name|cfgFactory
 parameter_list|,
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 parameter_list|)
 block|{
