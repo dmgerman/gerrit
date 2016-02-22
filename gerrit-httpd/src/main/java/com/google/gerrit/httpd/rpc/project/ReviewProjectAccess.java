@@ -394,7 +394,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|AllProjectsNameProvider
+name|AllProjectsName
 import|;
 end_import
 
@@ -790,7 +790,7 @@ name|updateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewProjectAccess (final ProjectControl.Factory projectControlFactory, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsNameProvider allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, Sequences seq, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ReviewProjectAccess (final ProjectControl.Factory projectControlFactory, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsName allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, Sequences seq, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ReviewProjectAccess
 parameter_list|(
 specifier|final
@@ -819,7 +819,7 @@ parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 parameter_list|,
 name|ChangesCollection

@@ -358,7 +358,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|AllProjectsNameProvider
+name|AllProjectsName
 import|;
 end_import
 
@@ -849,7 +849,7 @@ decl_stmt|;
 DECL|field|allProjects
 specifier|private
 specifier|final
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 decl_stmt|;
 DECL|field|views
@@ -887,7 +887,7 @@ name|gitRefUpdated
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutConfig (@nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GitRepositoryManager gitMgr, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views, ChangeHooks hooks, GitReferenceUpdated gitRefUpdated, Provider<CurrentUser> user)
+DECL|method|PutConfig (@nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GitRepositoryManager gitMgr, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views, ChangeHooks hooks, GitReferenceUpdated gitRefUpdated, Provider<CurrentUser> user)
 name|PutConfig
 parameter_list|(
 annotation|@
@@ -926,7 +926,7 @@ parameter_list|,
 name|PluginConfigFactory
 name|cfgFactory
 parameter_list|,
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 parameter_list|,
 name|DynamicMap

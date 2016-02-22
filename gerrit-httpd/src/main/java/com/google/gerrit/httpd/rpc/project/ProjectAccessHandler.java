@@ -348,7 +348,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|AllProjectsNameProvider
+name|AllProjectsName
 import|;
 end_import
 
@@ -596,7 +596,7 @@ decl_stmt|;
 DECL|field|allProjects
 specifier|private
 specifier|final
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 decl_stmt|;
 DECL|field|setParent
@@ -648,7 +648,7 @@ specifier|private
 name|boolean
 name|checkIfOwner
 decl_stmt|;
-DECL|method|ProjectAccessHandler (ProjectControl.Factory projectControlFactory, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsNameProvider allProjects, Provider<SetParent> setParent, Project.NameKey projectName, ObjectId base, List<AccessSection> sectionList, Project.NameKey parentProjectName, String message, boolean checkIfOwner)
+DECL|method|ProjectAccessHandler (ProjectControl.Factory projectControlFactory, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, Project.NameKey projectName, ObjectId base, List<AccessSection> sectionList, Project.NameKey parentProjectName, String message, boolean checkIfOwner)
 specifier|protected
 name|ProjectAccessHandler
 parameter_list|(
@@ -665,7 +665,7 @@ operator|.
 name|User
 name|metaDataUpdateFactory
 parameter_list|,
-name|AllProjectsNameProvider
+name|AllProjectsName
 name|allProjects
 parameter_list|,
 name|Provider
@@ -1033,9 +1033,6 @@ operator|.
 name|equals
 argument_list|(
 name|allProjects
-operator|.
-name|get
-argument_list|()
 argument_list|)
 operator|&&
 operator|!
@@ -1047,9 +1044,6 @@ operator|.
 name|getParent
 argument_list|(
 name|allProjects
-operator|.
-name|get
-argument_list|()
 argument_list|)
 operator|.
 name|equals
@@ -1080,9 +1074,6 @@ argument_list|(
 name|parentProjectName
 argument_list|,
 name|allProjects
-operator|.
-name|get
-argument_list|()
 argument_list|)
 operator|.
 name|get
