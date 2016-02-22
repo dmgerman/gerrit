@@ -537,6 +537,8 @@ name|rsrc
 operator|.
 name|getChange
 argument_list|()
+argument_list|,
+name|user
 argument_list|)
 decl_stmt|;
 for|for
