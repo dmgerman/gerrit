@@ -2006,34 +2006,7 @@ name|msgBuf
 operator|.
 name|append
 argument_list|(
-literal|"Patch Set "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|patchSetId
-operator|.
-name|get
-argument_list|()
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|": Reverted"
-argument_list|)
-expr_stmt|;
-name|msgBuf
-operator|.
-name|append
-argument_list|(
-literal|"\n\n"
-argument_list|)
-expr_stmt|;
-name|msgBuf
-operator|.
-name|append
-argument_list|(
-literal|"This patchset was reverted in change: "
+literal|"Created a revert of this change as "
 argument_list|)
 operator|.
 name|append

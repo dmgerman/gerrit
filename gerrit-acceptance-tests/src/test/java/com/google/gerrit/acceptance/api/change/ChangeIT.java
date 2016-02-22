@@ -1896,9 +1896,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Patch Set 1: Reverted\n\n"
-operator|+
-literal|"This patchset was reverted in change: %s"
+literal|"Created a revert of this change as %s"
 argument_list|,
 name|revertChange
 operator|.
