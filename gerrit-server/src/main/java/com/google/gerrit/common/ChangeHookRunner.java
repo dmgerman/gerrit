@@ -2366,7 +2366,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Fire the update hook      *      */
 annotation|@
 name|Override
 DECL|method|doRefUpdateHook (Project project, String refname, Account uploader, ObjectId oldId, ObjectId newId)
@@ -2583,7 +2582,6 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Patchset Created Hook.      *      * @param change The change itself.      * @param patchSet The Patchset that was created.      * @param db Review database.      * @throws OrmException      */
 annotation|@
 name|Override
 DECL|method|doPatchsetCreatedHook (Change change, PatchSet patchSet, ReviewDb db)
