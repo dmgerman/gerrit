@@ -1181,7 +1181,7 @@ argument_list|)
 expr_stmt|;
 name|plcUtil
 operator|.
-name|insertComments
+name|putComments
 argument_list|(
 name|ctx
 operator|.
@@ -1233,7 +1233,7 @@ expr_stmt|;
 block|}
 name|plcUtil
 operator|.
-name|updateComments
+name|putComments
 argument_list|(
 name|ctx
 operator|.

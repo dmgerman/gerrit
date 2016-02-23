@@ -751,7 +751,11 @@ name|cb
 init|=
 name|applyImpl
 argument_list|(
+name|rw
+argument_list|,
 name|ins
+argument_list|,
+name|curr
 argument_list|)
 decl_stmt|;
 if|if
@@ -890,16 +894,20 @@ name|result
 return|;
 block|}
 comment|/**    * Create a commit containing the contents of this update.    *    * @param ins inserter to write to; callers should not flush.    * @return a new commit builder representing this commit, or null to indicate    *     the meta ref should be deleted as a result of this update. The parent,    *     author, and committer fields in the return value are always    *     overwritten. The tree ID may be unset by this method, which indicates    *     to the caller that it should be copied from the parent commit.    * @throws OrmException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
-comment|// TODO(dborowitz): ChangeUpdate needs to be able to reread its ChangeNotes at
-comment|// the old SHA-1, which would imply passing curr here.
-DECL|method|applyImpl (ObjectInserter ins)
+DECL|method|applyImpl (RevWalk rw, ObjectInserter ins, ObjectId curr)
 specifier|protected
 specifier|abstract
 name|CommitBuilder
 name|applyImpl
 parameter_list|(
+name|RevWalk
+name|rw
+parameter_list|,
 name|ObjectInserter
 name|ins
+parameter_list|,
+name|ObjectId
+name|curr
 parameter_list|)
 throws|throws
 name|OrmException

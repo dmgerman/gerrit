@@ -923,14 +923,26 @@ name|boolean
 name|isEmpty
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
 operator|!
 name|migration
 operator|.
 name|writeChanges
 argument_list|()
-operator|||
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+return|return
 name|changeUpdates
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|draftUpdates
 operator|.
 name|isEmpty
 argument_list|()
@@ -1070,14 +1082,22 @@ block|}
 name|addCommands
 argument_list|()
 expr_stmt|;
+comment|// ChangeUpdates must execute before ChangeDraftUpdates.
+comment|//
+comment|// ChangeUpdate will automatically delete draft comments for any published
+comment|// comments, but the updates to the two repos don't happen atomically.
+comment|// Thus if the change meta update succeeds and the All-Users update fails,
+comment|// we may have stale draft comments. Doing it in this order allows stale
+comment|// comments to be filtered out by ChangeNotes, reflecting the fact that
+comment|// comments can only go from DRAFT to PUBLISHED, not vice versa.
 name|execute
 argument_list|(
-name|allUsersRepo
+name|changeRepo
 argument_list|)
 expr_stmt|;
 name|execute
 argument_list|(
-name|changeRepo
+name|allUsersRepo
 argument_list|)
 expr_stmt|;
 block|}

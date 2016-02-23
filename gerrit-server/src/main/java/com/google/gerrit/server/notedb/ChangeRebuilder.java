@@ -3105,7 +3105,7 @@ expr_stmt|;
 block|}
 name|update
 operator|.
-name|insertComment
+name|putComment
 argument_list|(
 name|c
 argument_list|)
@@ -3145,7 +3145,7 @@ expr_stmt|;
 block|}
 name|draftUpdate
 operator|.
-name|insertComment
+name|putComment
 argument_list|(
 name|c
 argument_list|)

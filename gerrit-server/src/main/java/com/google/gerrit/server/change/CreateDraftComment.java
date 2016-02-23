@@ -1092,7 +1092,7 @@ argument_list|)
 expr_stmt|;
 name|plcUtil
 operator|.
-name|insertComments
+name|putComments
 argument_list|(
 name|ctx
 operator|.

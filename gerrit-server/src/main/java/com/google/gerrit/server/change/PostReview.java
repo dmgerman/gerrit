@@ -3610,7 +3610,7 @@ argument_list|)
 expr_stmt|;
 name|plcUtil
 operator|.
-name|upsertComments
+name|putComments
 argument_list|(
 name|ctx
 operator|.
