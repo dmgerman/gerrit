@@ -546,6 +546,42 @@ name|server
 operator|.
 name|git
 operator|.
+name|BatchUpdate
+operator|.
+name|ChangeContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|BatchUpdate
+operator|.
+name|Context
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|UpdateException
 import|;
 end_import
@@ -1943,13 +1979,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateChange (BatchUpdate.ChangeContext ctx)
+DECL|method|updateChange (ChangeContext ctx)
 specifier|public
 name|boolean
 name|updateChange
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|ChangeContext
 name|ctx
 parameter_list|)
@@ -2045,13 +2079,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|postUpdate (BatchUpdate.Context ctx)
+DECL|method|postUpdate (Context ctx)
 specifier|public
 name|void
 name|postUpdate
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|Context
 name|ctx
 parameter_list|)

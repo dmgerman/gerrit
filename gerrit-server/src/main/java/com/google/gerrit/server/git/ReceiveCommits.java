@@ -16422,8 +16422,6 @@ specifier|public
 name|boolean
 name|updateChange
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|ChangeContext
 name|ctx
 parameter_list|)

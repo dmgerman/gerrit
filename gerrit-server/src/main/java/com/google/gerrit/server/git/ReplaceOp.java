@@ -1436,13 +1436,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateChange (BatchUpdate.ChangeContext ctx)
+DECL|method|updateChange (ChangeContext ctx)
 specifier|public
 name|boolean
 name|updateChange
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|ChangeContext
 name|ctx
 parameter_list|)
