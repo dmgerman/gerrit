@@ -78,6 +78,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -95,22 +111,6 @@ operator|.
 name|server
 operator|.
 name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|ChangeNotes
 import|;
 end_import
 
@@ -185,15 +185,15 @@ name|ObjectId
 name|next
 parameter_list|)
 function_decl|;
-DECL|method|getChangeKind (ReviewDb db, ChangeNotes notes, PatchSet patch)
+DECL|method|getChangeKind (ReviewDb db, Change change, PatchSet patch)
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|ChangeNotes
-name|notes
+name|Change
+name|change
 parameter_list|,
 name|PatchSet
 name|patch
