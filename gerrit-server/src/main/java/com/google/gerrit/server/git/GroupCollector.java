@@ -394,6 +394,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|NoSuchChangeException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -685,6 +701,8 @@ name|psId
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchChangeException
 function_decl|;
 block|}
 DECL|field|patchSetsBySha
@@ -797,6 +815,8 @@ name|psId
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchChangeException
 block|{
 comment|// TODO(dborowitz): Reuse open repository from caller.
 name|ChangeNotes
@@ -804,7 +824,7 @@ name|notes
 init|=
 name|notesFactory
 operator|.
-name|create
+name|createChecked
 argument_list|(
 name|db
 argument_list|,
@@ -1430,6 +1450,8 @@ name|getGroups
 parameter_list|()
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchChangeException
 block|{
 name|done
 operator|=
@@ -1636,6 +1658,8 @@ name|candidates
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchChangeException
 block|{
 name|Set
 argument_list|<
@@ -1860,6 +1884,8 @@ name|group
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchChangeException
 block|{
 name|ObjectId
 name|id

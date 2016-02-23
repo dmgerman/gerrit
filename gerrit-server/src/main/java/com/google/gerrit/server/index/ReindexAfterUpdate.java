@@ -274,6 +274,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|project
+operator|.
+name|NoSuchChangeException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|change
@@ -994,6 +1010,8 @@ throws|throws
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|NoSuchChangeException
 block|{
 comment|// Reload change, as some time may have passed since GetChanges.
 name|ReviewDb
@@ -1012,7 +1030,7 @@ name|c
 init|=
 name|notesFactory
 operator|.
-name|create
+name|createChecked
 argument_list|(
 name|db
 argument_list|,
