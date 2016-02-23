@@ -96,7 +96,7 @@ name|extensions
 operator|.
 name|client
 operator|.
-name|GeneralPreferencesInfo
+name|DiffPreferencesInfo
 import|;
 end_import
 
@@ -112,7 +112,7 @@ name|extensions
 operator|.
 name|client
 operator|.
-name|DiffPreferencesInfo
+name|GeneralPreferencesInfo
 import|;
 end_import
 
