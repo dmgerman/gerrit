@@ -2325,12 +2325,12 @@ name|OrmException
 throws|,
 name|NoSuchChangeException
 block|{
-name|Change
-name|c
+name|ChangeNotes
+name|notes
 decl_stmt|;
 try|try
 block|{
-name|c
+name|notes
 operator|=
 name|notesFactory
 operator|.
@@ -2345,9 +2345,6 @@ name|project
 argument_list|,
 name|id
 argument_list|)
-operator|.
-name|getChange
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -2402,7 +2399,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|c
+name|notes
 argument_list|)
 argument_list|)
 return|;
