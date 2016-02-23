@@ -743,6 +743,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|// TODO: The same method exists in EventFactory, find a common place for it
 DECL|method|toUserIdentity (final PersonIdent who)
 specifier|private
 name|UserIdentity
