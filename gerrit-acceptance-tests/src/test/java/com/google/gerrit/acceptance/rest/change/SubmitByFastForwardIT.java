@@ -74,13 +74,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|common
 operator|.
-name|acceptance
+name|truth
 operator|.
-name|GitUtil
+name|Truth
 operator|.
-name|pushHead
+name|assertThat
 import|;
 end_import
 
@@ -90,13 +90,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|truth
+name|acceptance
 operator|.
-name|Truth
+name|GitUtil
 operator|.
-name|assertThat
+name|pushHead
 import|;
 end_import
 
@@ -124,7 +124,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|PushOneCommit
+name|GitUtil
 import|;
 end_import
 
@@ -138,7 +138,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GitUtil
+name|PushOneCommit
 import|;
 end_import
 
