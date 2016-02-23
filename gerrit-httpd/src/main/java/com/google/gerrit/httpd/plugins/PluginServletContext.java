@@ -274,7 +274,9 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-literal|"plugin"
+name|PluginServletContext
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 DECL|method|create (Plugin plugin, String contextPath)
