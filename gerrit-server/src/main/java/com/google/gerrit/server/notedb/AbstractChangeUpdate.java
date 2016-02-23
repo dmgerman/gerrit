@@ -387,17 +387,17 @@ specifier|final
 name|String
 name|anonymousCowardName
 decl_stmt|;
-DECL|field|serverIdent
-specifier|protected
-specifier|final
-name|PersonIdent
-name|serverIdent
-decl_stmt|;
 DECL|field|when
 specifier|protected
 specifier|final
 name|Date
 name|when
+decl_stmt|;
+DECL|field|serverIdent
+specifier|private
+specifier|final
+name|PersonIdent
+name|serverIdent
 decl_stmt|;
 DECL|field|psId
 specifier|protected
@@ -599,7 +599,7 @@ name|psId
 expr_stmt|;
 block|}
 DECL|method|newAuthorIdent ()
-specifier|protected
+specifier|private
 name|PersonIdent
 name|newAuthorIdent
 parameter_list|()
@@ -770,6 +770,27 @@ name|z
 return|;
 comment|// Impl intends to delete the ref.
 block|}
+name|cb
+operator|.
+name|setAuthor
+argument_list|(
+name|newAuthorIdent
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|cb
+operator|.
+name|setCommitter
+argument_list|(
+operator|new
+name|PersonIdent
+argument_list|(
+name|serverIdent
+argument_list|,
+name|when
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -868,7 +889,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Create a commit containing the contents of this update.    *    * @param ins inserter to write to; callers should not flush.    * @return a new commit builder representing this commit, or null to indicate    *     the meta ref should be deleted as a result of this update. The parent    *     field in the return value is always overwritten. The tree ID may be    *     unset by this method, which indicates to the caller that it should be    *     copied from the parent commit.    * @throws OrmException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
+comment|/**    * Create a commit containing the contents of this update.    *    * @param ins inserter to write to; callers should not flush.    * @return a new commit builder representing this commit, or null to indicate    *     the meta ref should be deleted as a result of this update. The parent,    *     author, and committer fields in the return value are always    *     overwritten. The tree ID may be unset by this method, which indicates    *     to the caller that it should be copied from the parent commit.    * @throws OrmException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
 comment|// TODO(dborowitz): ChangeUpdate needs to be able to reread its ChangeNotes at
 comment|// the old SHA-1, which would imply passing curr here.
 DECL|method|applyImpl (ObjectInserter ins)

@@ -1466,27 +1466,6 @@ argument_list|()
 decl_stmt|;
 name|cb
 operator|.
-name|setAuthor
-argument_list|(
-name|newAuthorIdent
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|cb
-operator|.
-name|setCommitter
-argument_list|(
-operator|new
-name|PersonIdent
-argument_list|(
-name|serverIdent
-argument_list|,
-name|when
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|cb
-operator|.
 name|setMessage
 argument_list|(
 literal|"Update draft comments"
