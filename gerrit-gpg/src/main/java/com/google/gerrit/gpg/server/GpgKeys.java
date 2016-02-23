@@ -871,7 +871,8 @@ name|str
 init|=
 name|CharMatcher
 operator|.
-name|WHITESPACE
+name|whitespace
+argument_list|()
 operator|.
 name|removeFrom
 argument_list|(
@@ -1041,7 +1042,8 @@ name|str
 operator|=
 name|CharMatcher
 operator|.
-name|WHITESPACE
+name|whitespace
+argument_list|()
 operator|.
 name|removeFrom
 argument_list|(
