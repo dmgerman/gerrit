@@ -256,16 +256,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|SubmittedTogetherIT
 specifier|public
@@ -1130,7 +1120,7 @@ name|RevCommit
 name|getRemoteHead
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 try|try
 init|(

@@ -484,16 +484,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -3895,7 +3885,7 @@ name|Id
 name|ps
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|getRelated
@@ -3929,7 +3919,7 @@ name|int
 name|ps
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|String
 name|url
@@ -3981,7 +3971,7 @@ name|RevCommit
 name|c
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|testRepo
 operator|.
@@ -4008,7 +3998,7 @@ name|ObjectId
 name|c
 parameter_list|)
 throws|throws
-name|OrmException
+name|Exception
 block|{
 return|return
 name|getChange
@@ -4032,7 +4022,7 @@ name|ObjectId
 name|c
 parameter_list|)
 throws|throws
-name|OrmException
+name|Exception
 block|{
 return|return
 name|Iterables

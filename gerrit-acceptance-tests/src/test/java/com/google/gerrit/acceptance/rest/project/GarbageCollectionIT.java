@@ -172,16 +172,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|GarbageCollectionIT
 specifier|public
@@ -322,7 +312,7 @@ name|String
 name|endPoint
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r

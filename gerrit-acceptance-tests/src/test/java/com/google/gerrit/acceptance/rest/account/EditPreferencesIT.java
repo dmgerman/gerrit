@@ -170,16 +170,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|EditPreferencesIT
 specifier|public
@@ -556,7 +546,7 @@ name|RestResponse
 name|r
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|newGson
@@ -586,6 +576,8 @@ parameter_list|,
 name|EditPreferencesInfo
 name|in
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|assertThat
 argument_list|(

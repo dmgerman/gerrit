@@ -280,16 +280,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|InputStream
 import|;
 end_import
@@ -786,7 +776,7 @@ name|String
 name|c
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ByteArrayOutputStream
 name|out

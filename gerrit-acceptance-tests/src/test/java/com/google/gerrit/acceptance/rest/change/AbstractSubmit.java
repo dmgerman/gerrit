@@ -790,22 +790,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|NoSuchChangeException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|testutil
 operator|.
 name|ConfigSuite
@@ -823,20 +807,6 @@ operator|.
 name|testutil
 operator|.
 name|TestTimeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -1035,16 +1005,6 @@ operator|.
 name|io
 operator|.
 name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -2760,9 +2720,7 @@ name|int
 name|psId
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
-name|NoSuchChangeException
+name|Exception
 block|{
 name|Change
 name|c
@@ -2868,9 +2826,7 @@ name|int
 name|psId
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
-name|NoSuchChangeException
+name|Exception
 block|{
 name|Change
 name|c
@@ -2952,7 +2908,7 @@ name|boolean
 name|contentMerge
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertRebase
 argument_list|(
@@ -3009,7 +2965,7 @@ name|boolean
 name|contentMerge
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|Repository
 name|repo
@@ -3132,7 +3088,7 @@ name|Repository
 name|repo
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|getHead
@@ -3157,7 +3113,7 @@ name|String
 name|branch
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 try|try
 init|(
@@ -3190,7 +3146,7 @@ name|RevCommit
 name|getRemoteHead
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|getRemoteHead
@@ -3218,7 +3174,7 @@ name|String
 name|branch
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 try|try
 init|(
@@ -3283,7 +3239,7 @@ argument_list|>
 name|getRemoteLog
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|getRemoteLog
@@ -3306,7 +3262,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 try|try
 init|(
@@ -3347,7 +3303,7 @@ name|Repository
 name|repo
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ObjectId
 name|oldTreeId
@@ -3386,7 +3342,7 @@ name|String
 name|getLatestRemoteDiff
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 try|try
 init|(
@@ -3457,7 +3413,7 @@ name|ObjectId
 name|newTreeId
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ByteArrayOutputStream
 name|out

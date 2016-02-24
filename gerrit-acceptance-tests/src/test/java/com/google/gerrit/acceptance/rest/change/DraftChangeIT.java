@@ -332,20 +332,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -365,16 +351,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -1269,7 +1245,7 @@ name|RestSession
 name|s
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|s
@@ -1291,7 +1267,7 @@ name|String
 name|changeId
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 return|return
 name|adminSession
@@ -1315,9 +1291,7 @@ name|String
 name|changeId
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
-name|OrmException
+name|Exception
 block|{
 name|PatchSet
 name|patchSet
