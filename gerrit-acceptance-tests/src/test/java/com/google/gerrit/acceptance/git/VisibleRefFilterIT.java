@@ -635,6 +635,11 @@ expr_stmt|;
 name|setUpChanges
 argument_list|()
 expr_stmt|;
+name|atrScope
+operator|.
+name|disableDb
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|setUpPermissions ()
 specifier|private
