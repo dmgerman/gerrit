@@ -1256,23 +1256,6 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createDraftChange ()
-specifier|private
-name|PushOneCommit
-operator|.
-name|Result
-name|createDraftChange
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-return|return
-name|pushTo
-argument_list|(
-literal|"refs/drafts/master"
-argument_list|)
-return|;
-block|}
 DECL|method|deleteChange (String changeId, RestSession s)
 specifier|private
 specifier|static

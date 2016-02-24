@@ -737,10 +737,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|createDraftChange ()
+DECL|method|createNewDraftChange ()
 specifier|public
 name|void
-name|createDraftChange
+name|createNewDraftChange
 parameter_list|()
 throws|throws
 name|Exception
@@ -770,10 +770,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|createDraftChangeNotAllowed ()
+DECL|method|createNewDraftChangeNotAllowed ()
 specifier|public
 name|void
-name|createDraftChangeNotAllowed
+name|createNewDraftChangeNotAllowed
 parameter_list|()
 throws|throws
 name|Exception
