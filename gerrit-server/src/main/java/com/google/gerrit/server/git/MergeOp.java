@@ -3830,7 +3830,7 @@ parameter_list|)
 block|{
 name|logError
 argument_list|(
-literal|"Merge Conflict"
+literal|"Error from integrateIntoHistory"
 argument_list|,
 name|e
 argument_list|)
@@ -3839,7 +3839,10 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"Merge Conflict"
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
@@ -4379,11 +4382,62 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
+comment|// BatchUpdate may have inadvertently wrapped an IntegrationException
+comment|// thrown by some legacy SubmitStrategyOp code that intended the error
+comment|// message to be user-visible. Copy the message from the wrapped
+comment|// exception.
+comment|//
+comment|// If you happen across one of these, the correct fix is to convert the
+comment|// inner IntegrationException to a ResourceConflictException.
+name|String
+name|msg
+decl_stmt|;
+if|if
+condition|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|IntegrationException
+condition|)
+block|{
+name|msg
+operator|=
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|.
+name|getMessage
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|msg
+operator|=
+literal|"Error submitting change"
+operator|+
+operator|(
+name|cs
+operator|.
+name|size
+argument_list|()
+operator|!=
+literal|1
+condition|?
+literal|"s"
+else|:
+literal|""
+operator|)
+expr_stmt|;
+block|}
 throw|throw
 operator|new
 name|IntegrationException
 argument_list|(
-literal|"Error submitting changes"
+name|msg
 argument_list|,
 name|e
 argument_list|)
