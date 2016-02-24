@@ -624,6 +624,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|InternalUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|BatchUpdate
@@ -2430,13 +2444,13 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
-DECL|field|identifiedUserFactory
+DECL|field|internalUserFactory
 specifier|private
 specifier|final
-name|IdentifiedUser
+name|InternalUser
 operator|.
-name|GenericFactory
-name|identifiedUserFactory
+name|Factory
+name|internalUserFactory
 decl_stmt|;
 DECL|field|mergeSuperSet
 specifier|private
@@ -2565,7 +2579,7 @@ name|submitInput
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory identifiedUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, ProjectCache projectCache, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, Provider<SubmoduleOp> subOpProvider)
+DECL|method|MergeOp (ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, GitRepositoryManager repoManager, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, ProjectCache projectCache, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, Provider<SubmoduleOp> subOpProvider)
 name|MergeOp
 parameter_list|(
 name|ChangeMessagesUtil
@@ -2579,10 +2593,10 @@ parameter_list|,
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-name|IdentifiedUser
+name|InternalUser
 operator|.
-name|GenericFactory
-name|identifiedUserFactory
+name|Factory
+name|internalUserFactory
 parameter_list|,
 name|MergeSuperSet
 name|mergeSuperSet
@@ -2628,9 +2642,9 @@ name|repoManager
 expr_stmt|;
 name|this
 operator|.
-name|identifiedUserFactory
+name|internalUserFactory
 operator|=
-name|identifiedUserFactory
+name|internalUserFactory
 expr_stmt|;
 name|this
 operator|.
@@ -5808,7 +5822,6 @@ name|destProject
 argument_list|)
 control|)
 block|{
-comment|//TODO: Use InternalUser instead of change owner
 try|try
 init|(
 name|BatchUpdate
@@ -5822,18 +5835,10 @@ name|db
 argument_list|,
 name|destProject
 argument_list|,
-name|identifiedUserFactory
+name|internalUserFactory
 operator|.
 name|create
-argument_list|(
-name|cd
-operator|.
-name|change
 argument_list|()
-operator|.
-name|getOwner
-argument_list|()
-argument_list|)
 argument_list|,
 name|TimeUtil
 operator|.
