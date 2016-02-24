@@ -340,20 +340,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|PatchSetUtil
 import|;
 end_import
@@ -728,7 +714,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource req, final AbandonInput input)
+DECL|method|apply (ChangeResource req, AbandonInput input)
 specifier|public
 name|ChangeInfo
 name|apply
@@ -736,7 +722,6 @@ parameter_list|(
 name|ChangeResource
 name|req
 parameter_list|,
-specifier|final
 name|AbandonInput
 name|input
 parameter_list|)
@@ -753,17 +738,6 @@ init|=
 name|req
 operator|.
 name|getControl
-argument_list|()
-decl_stmt|;
-name|IdentifiedUser
-name|caller
-init|=
-name|control
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
 argument_list|()
 decl_stmt|;
 if|if
@@ -799,7 +773,13 @@ name|input
 operator|.
 name|message
 argument_list|,
-name|caller
+name|control
+operator|.
+name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
+argument_list|()
 operator|.
 name|getAccount
 argument_list|()
