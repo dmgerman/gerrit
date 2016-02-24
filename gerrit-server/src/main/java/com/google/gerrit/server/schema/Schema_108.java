@@ -318,6 +318,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|NoSuchChangeException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -723,6 +739,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|NoSuchChangeException
 name|err
 parameter_list|)
 block|{
@@ -794,6 +812,8 @@ throws|throws
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|NoSuchChangeException
 block|{
 comment|// Match sorting in ReceiveCommits.
 name|rw
@@ -1103,6 +1123,8 @@ name|patchSetsBySha
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchChangeException
 block|{
 name|Map
 argument_list|<

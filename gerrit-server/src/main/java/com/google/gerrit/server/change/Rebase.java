@@ -1181,6 +1181,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|NoSuchChangeException
 block|{
 if|if
 condition|(
@@ -1628,6 +1630,8 @@ name|base
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchChangeException
 block|{
 name|ReviewDb
 name|db
@@ -1908,6 +1912,8 @@ name|id
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchChangeException
 block|{
 if|if
 condition|(
@@ -1937,7 +1943,7 @@ name|notes
 init|=
 name|notesFactory
 operator|.
-name|create
+name|createChecked
 argument_list|(
 name|dbProvider
 operator|.
