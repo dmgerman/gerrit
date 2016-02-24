@@ -1044,9 +1044,6 @@ operator|=
 name|newMessage
 argument_list|(
 name|ctx
-operator|.
-name|getDb
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|cmUtil
@@ -1067,13 +1064,13 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|newMessage (ReviewDb db)
+DECL|method|newMessage (ChangeContext ctx)
 specifier|private
 name|ChangeMessage
 name|newMessage
 parameter_list|(
-name|ReviewDb
-name|db
+name|ChangeContext
+name|ctx
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1151,7 +1148,10 @@ name|ChangeUtil
 operator|.
 name|messageUUID
 argument_list|(
-name|db
+name|ctx
+operator|.
+name|getDb
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1160,9 +1160,9 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|change
+name|ctx
 operator|.
-name|getLastUpdatedOn
+name|getWhen
 argument_list|()
 argument_list|,
 name|change
