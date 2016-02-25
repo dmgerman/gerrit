@@ -238,7 +238,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|set (String newValue)
-specifier|protected
+specifier|public
 name|void
 name|set
 parameter_list|(
@@ -463,6 +463,20 @@ block|{
 return|return
 name|writtenOn
 return|;
+block|}
+DECL|method|setWrittenOn (Timestamp ts)
+specifier|public
+name|void
+name|setWrittenOn
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
+block|{
+name|writtenOn
+operator|=
+name|ts
+expr_stmt|;
 block|}
 DECL|method|getMessage ()
 specifier|public
