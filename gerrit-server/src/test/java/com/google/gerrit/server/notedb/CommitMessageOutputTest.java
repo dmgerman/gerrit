@@ -403,7 +403,7 @@ name|parseCommit
 argument_list|(
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -706,7 +706,7 @@ literal|"\n"
 argument_list|,
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -837,7 +837,7 @@ literal|"\n"
 argument_list|,
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -892,7 +892,7 @@ literal|"Label: -Code-Review\n"
 argument_list|,
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1010,7 +1010,7 @@ name|parseCommit
 argument_list|(
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1265,7 +1265,7 @@ name|parseCommit
 argument_list|(
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1392,7 +1392,7 @@ literal|"Submitted-with: RULE_ERROR Problem with patch set: 1\n"
 argument_list|,
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1455,7 +1455,7 @@ literal|"Reviewer: Change Owner<1@gerrit>\n"
 argument_list|,
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1518,7 +1518,7 @@ literal|"Patch-set: 1\n"
 argument_list|,
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1591,7 +1591,7 @@ literal|"Patch-set: 1\n"
 argument_list|,
 name|update
 operator|.
-name|getRevision
+name|getResult
 argument_list|()
 argument_list|)
 expr_stmt|;

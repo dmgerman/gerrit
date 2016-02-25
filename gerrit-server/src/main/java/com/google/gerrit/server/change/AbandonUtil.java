@@ -92,7 +92,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|InternalUser
 import|;
 end_import
 
@@ -308,13 +308,13 @@ specifier|final
 name|ChangeCleanupConfig
 name|cfg
 decl_stmt|;
-DECL|field|identifiedUserFactory
+DECL|field|internalUserFactory
 specifier|private
 specifier|final
-name|IdentifiedUser
+name|InternalUser
 operator|.
-name|GenericFactory
-name|identifiedUserFactory
+name|Factory
+name|internalUserFactory
 decl_stmt|;
 DECL|field|queryProcessor
 specifier|private
@@ -336,16 +336,16 @@ name|abandon
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, IdentifiedUser.GenericFactory identifiedUserFactory, QueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder, Abandon abandon)
+DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, QueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder, Abandon abandon)
 name|AbandonUtil
 parameter_list|(
 name|ChangeCleanupConfig
 name|cfg
 parameter_list|,
-name|IdentifiedUser
+name|InternalUser
 operator|.
-name|GenericFactory
-name|identifiedUserFactory
+name|Factory
+name|internalUserFactory
 parameter_list|,
 name|QueryProcessor
 name|queryProcessor
@@ -365,9 +365,9 @@ name|cfg
 expr_stmt|;
 name|this
 operator|.
-name|identifiedUserFactory
+name|internalUserFactory
 operator|=
-name|identifiedUserFactory
+name|internalUserFactory
 expr_stmt|;
 name|this
 operator|.
@@ -495,8 +495,6 @@ name|cfg
 operator|.
 name|getAbandonMessage
 argument_list|()
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 name|count
@@ -596,18 +594,10 @@ name|cd
 operator|.
 name|changeControl
 argument_list|(
-name|identifiedUserFactory
+name|internalUserFactory
 operator|.
 name|create
-argument_list|(
-name|cd
-operator|.
-name|change
 argument_list|()
-operator|.
-name|getOwner
-argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}

@@ -258,7 +258,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|CurrentUser
 import|;
 end_import
 
@@ -729,7 +729,7 @@ return|return
 name|ps
 return|;
 block|}
-DECL|method|newUpdate (Injector injector, GitRepositoryManager repoManager, NotesMigration migration, Change c, final AllUsersName allUsers, final IdentifiedUser user)
+DECL|method|newUpdate (Injector injector, GitRepositoryManager repoManager, NotesMigration migration, Change c, final AllUsersName allUsers, final CurrentUser user)
 specifier|public
 specifier|static
 name|ChangeUpdate
@@ -752,7 +752,7 @@ name|AllUsersName
 name|allUsers
 parameter_list|,
 specifier|final
-name|IdentifiedUser
+name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
@@ -796,7 +796,7 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
-name|IdentifiedUser
+name|CurrentUser
 operator|.
 name|class
 argument_list|)
@@ -925,6 +925,9 @@ name|PersonIdent
 name|ident
 init|=
 name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
 operator|.
 name|newCommitterIdent
 argument_list|(
@@ -1063,7 +1066,7 @@ name|update
 return|;
 block|}
 block|}
-DECL|method|stubChangeControl ( GitRepositoryManager repoManager, NotesMigration migration, Change c, AllUsersName allUsers, IdentifiedUser user)
+DECL|method|stubChangeControl ( GitRepositoryManager repoManager, NotesMigration migration, Change c, AllUsersName allUsers, CurrentUser user)
 specifier|private
 specifier|static
 name|ChangeControl
@@ -1081,7 +1084,7 @@ parameter_list|,
 name|AllUsersName
 name|allUsers
 parameter_list|,
-name|IdentifiedUser
+name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
