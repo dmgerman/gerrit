@@ -1343,7 +1343,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"cannot depend on self"
+literal|"cannot rebase change onto itself"
 argument_list|)
 throw|;
 block|}
