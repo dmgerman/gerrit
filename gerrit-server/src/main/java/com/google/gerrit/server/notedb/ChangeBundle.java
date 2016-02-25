@@ -2004,6 +2004,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|getChange ()
+specifier|public
+name|Change
+name|getChange
+parameter_list|()
+block|{
+return|return
+name|change
+return|;
+block|}
 DECL|method|differencesFrom (ChangeBundle o)
 specifier|public
 name|ImmutableList
