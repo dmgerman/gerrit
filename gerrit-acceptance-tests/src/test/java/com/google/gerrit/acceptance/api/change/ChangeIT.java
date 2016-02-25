@@ -2828,13 +2828,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|ResourceConflictException
-operator|.
-name|class
-argument_list|)
 DECL|method|rebaseUpToDateChange ()
 specifier|public
 name|void
@@ -2851,6 +2844,22 @@ init|=
 name|createChange
 argument_list|()
 decl_stmt|;
+name|exception
+operator|.
+name|equals
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"Change is already up to date"
+argument_list|)
+expr_stmt|;
 name|gApi
 operator|.
 name|changes
