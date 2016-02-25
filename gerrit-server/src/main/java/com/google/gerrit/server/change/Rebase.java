@@ -1475,7 +1475,7 @@ operator|.
 name|getKey
 argument_list|()
 operator|+
-literal|" is a descendant of the current  change - recursion not allowed"
+literal|" is a descendant of the current change - recursion not allowed"
 argument_list|)
 throw|;
 block|}

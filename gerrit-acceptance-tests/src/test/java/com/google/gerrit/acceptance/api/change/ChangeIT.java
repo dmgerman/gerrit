@@ -3347,13 +3347,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|ResourceConflictException
-operator|.
-name|class
-argument_list|)
 DECL|method|rebaseChangeBaseRecursion ()
 specifier|public
 name|void
@@ -3396,6 +3389,34 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
+expr_stmt|;
+name|String
+name|expectedMessage
+init|=
+literal|"base change "
+operator|+
+name|r2
+operator|.
+name|getChangeId
+argument_list|()
+operator|+
+literal|" is a descendant of the current change - recursion not allowed"
+decl_stmt|;
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+name|expectedMessage
+argument_list|)
 expr_stmt|;
 name|gApi
 operator|.
