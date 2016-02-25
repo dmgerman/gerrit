@@ -320,6 +320,16 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -389,6 +399,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Ignore
 DECL|class|HookTestCase
 specifier|public
 specifier|abstract
