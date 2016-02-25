@@ -894,6 +894,8 @@ block|}
 catch|catch
 parameter_list|(
 name|MergeConflictException
+decl||
+name|NoSuchChangeException
 name|e
 parameter_list|)
 block|{
