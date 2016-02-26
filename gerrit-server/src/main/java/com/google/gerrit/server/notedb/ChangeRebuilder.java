@@ -3022,8 +3022,8 @@ return|;
 comment|// Only one event of this type allowed per update.
 block|}
 block|}
-comment|// TODO(dborowitz): Additional heuristics, like keeping ChangeEvents
-comment|// separate if they affect overlapping fields.
+comment|// TODO(dborowitz): Additional heuristics, like keeping events separate if
+comment|// they affect overlapping fields within a single entity.
 return|return
 literal|true
 return|;
@@ -4283,6 +4283,11 @@ literal|true
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Override
 DECL|method|apply (ChangeUpdate update)
 name|void
@@ -4351,6 +4356,27 @@ argument_list|(
 name|change
 operator|.
 name|getStatus
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|change
+operator|.
+name|getSubmissionId
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|update
+operator|.
+name|setSubmissionId
+argument_list|(
+name|change
+operator|.
+name|getSubmissionId
 argument_list|()
 argument_list|)
 expr_stmt|;
