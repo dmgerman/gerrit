@@ -1190,6 +1190,13 @@ argument_list|)
 expr_stmt|;
 name|bru
 operator|.
+name|setAllowNonFastForwards
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|bru
+operator|.
 name|execute
 argument_list|(
 name|or
