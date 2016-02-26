@@ -450,6 +450,16 @@ name|Status
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|PushOneCommit
 specifier|public
@@ -1144,6 +1154,42 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setParents (List<RevCommit> parents)
+specifier|public
+name|void
+name|setParents
+parameter_list|(
+name|List
+argument_list|<
+name|RevCommit
+argument_list|>
+name|parents
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|commitBuilder
+operator|.
+name|noParents
+argument_list|()
+expr_stmt|;
+for|for
+control|(
+name|RevCommit
+name|p
+range|:
+name|parents
+control|)
+block|{
+name|commitBuilder
+operator|.
+name|parent
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|to (String ref)
 specifier|public
 name|Result
@@ -1197,7 +1243,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|execute (String ref)
-specifier|private
+specifier|public
 name|Result
 name|execute
 parameter_list|(
