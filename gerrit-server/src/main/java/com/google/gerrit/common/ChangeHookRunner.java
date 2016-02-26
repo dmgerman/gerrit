@@ -6160,32 +6160,6 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireEventForUnrestrictedListeners (ProjectCreatedEvent event)
-specifier|private
-name|void
-name|fireEventForUnrestrictedListeners
-parameter_list|(
-name|ProjectCreatedEvent
-name|event
-parameter_list|)
-block|{
-for|for
-control|(
-name|EventListener
-name|listener
-range|:
-name|unrestrictedListeners
-control|)
-block|{
-name|listener
-operator|.
-name|onEvent
-argument_list|(
-name|event
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|isVisibleTo (Project.NameKey project, ProjectCreatedEvent event, CurrentUser user)
 specifier|private
 name|boolean
