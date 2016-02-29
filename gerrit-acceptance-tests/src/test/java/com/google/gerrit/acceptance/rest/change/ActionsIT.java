@@ -713,7 +713,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Clicking the button would fail for other changes"
+literal|"See the \"Submitted Together\" tab for problems"
 argument_list|)
 expr_stmt|;
 block|}
