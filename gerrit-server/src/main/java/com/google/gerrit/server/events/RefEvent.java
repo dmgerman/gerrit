@@ -66,6 +66,22 @@ name|events
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Branch
+import|;
+end_import
+
 begin_class
 DECL|class|RefEvent
 specifier|public
@@ -88,6 +104,28 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getBranchNameKey ()
+specifier|public
+name|Branch
+operator|.
+name|NameKey
+name|getBranchNameKey
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Branch
+operator|.
+name|NameKey
+argument_list|(
+name|getProjectNameKey
+argument_list|()
+argument_list|,
+name|getRefName
+argument_list|()
+argument_list|)
+return|;
 block|}
 DECL|method|getRefName ()
 specifier|public
