@@ -2404,7 +2404,7 @@ expr_stmt|;
 comment|// Rebasing the second change again should fail
 name|exception
 operator|.
-name|equals
+name|expect
 argument_list|(
 name|ResourceConflictException
 operator|.
@@ -2846,7 +2846,7 @@ argument_list|()
 decl_stmt|;
 name|exception
 operator|.
-name|equals
+name|expect
 argument_list|(
 name|ResourceConflictException
 operator|.
