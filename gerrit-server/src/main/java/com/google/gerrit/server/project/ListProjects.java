@@ -1410,7 +1410,7 @@ name|type
 init|=
 name|FilterType
 operator|.
-name|CODE
+name|ALL
 decl_stmt|;
 DECL|field|showDescription
 specifier|private
