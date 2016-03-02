@@ -1926,7 +1926,7 @@ literal|"backend"
 argument_list|,
 name|SshSessionBackend
 operator|.
-name|MINA
+name|NIO2
 argument_list|)
 decl_stmt|;
 name|System
