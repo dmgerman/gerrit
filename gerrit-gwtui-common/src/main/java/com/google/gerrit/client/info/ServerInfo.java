@@ -132,6 +132,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArrayString
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -430,6 +446,15 @@ name|boolean
 name|hasAvatars
 parameter_list|()
 comment|/*-{ return this.has_avatars || false; }-*/
+function_decl|;
+DECL|method|jsResourcePaths ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|jsResourcePaths
+parameter_list|()
+comment|/*-{         return this.js_resource_paths || []; }-*/
 function_decl|;
 DECL|method|PluginConfigInfo ()
 specifier|protected

@@ -245,10 +245,10 @@ name|JsPlugin
 extends|extends
 name|Plugin
 block|{
-DECL|field|httpInjector
+DECL|field|sysInjector
 specifier|private
 name|Injector
-name|httpInjector
+name|sysInjector
 decl_stmt|;
 DECL|method|JsPlugin (String name, Path srcFile, PluginUser pluginUser, FileSnapshot snapshot)
 name|JsPlugin
@@ -374,7 +374,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|httpInjector
+name|sysInjector
 operator|=
 name|Guice
 operator|.
@@ -419,7 +419,7 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|httpInjector
+name|sysInjector
 operator|=
 literal|null
 expr_stmt|;
@@ -434,7 +434,7 @@ name|getSysInjector
 parameter_list|()
 block|{
 return|return
-literal|null
+name|sysInjector
 return|;
 block|}
 annotation|@
@@ -462,7 +462,7 @@ name|getHttpInjector
 parameter_list|()
 block|{
 return|return
-name|httpInjector
+literal|null
 return|;
 block|}
 annotation|@

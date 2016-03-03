@@ -142,7 +142,7 @@ name|server
 operator|.
 name|plugins
 operator|.
-name|HttpModuleGenerator
+name|ModuleGenerator
 import|;
 end_import
 
@@ -360,7 +360,7 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
-name|HttpModuleGenerator
+name|ModuleGenerator
 operator|.
 name|class
 argument_list|)
