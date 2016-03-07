@@ -5910,10 +5910,7 @@ operator|.
 name|create
 argument_list|()
 argument_list|,
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|ts
 argument_list|)
 init|)
 block|{
