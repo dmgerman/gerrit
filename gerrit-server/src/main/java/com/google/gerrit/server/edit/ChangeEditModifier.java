@@ -790,6 +790,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Map
@@ -1126,6 +1136,11 @@ name|zeroId
 argument_list|()
 argument_list|,
 name|revision
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|indexer
@@ -1741,6 +1756,14 @@ operator|.
 name|getRefName
 argument_list|()
 decl_stmt|;
+name|Timestamp
+name|now
+init|=
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+decl_stmt|;
 name|ObjectId
 name|commit
 init|=
@@ -1758,6 +1781,8 @@ name|getTree
 argument_list|()
 argument_list|,
 name|msg
+argument_list|,
+name|now
 argument_list|)
 decl_stmt|;
 name|inserter
@@ -1779,6 +1804,8 @@ argument_list|,
 name|prevEdit
 argument_list|,
 name|commit
+argument_list|,
+name|now
 argument_list|)
 return|;
 block|}
@@ -2122,6 +2149,14 @@ literal|"no changes were made"
 argument_list|)
 throw|;
 block|}
+name|Timestamp
+name|now
+init|=
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+decl_stmt|;
 name|ObjectId
 name|commit
 init|=
@@ -2134,6 +2169,8 @@ argument_list|,
 name|prevEdit
 argument_list|,
 name|newTree
+argument_list|,
+name|now
 argument_list|)
 decl_stmt|;
 name|inserter
@@ -2155,6 +2192,8 @@ argument_list|,
 name|prevEdit
 argument_list|,
 name|commit
+argument_list|,
+name|now
 argument_list|)
 return|;
 block|}
@@ -2239,7 +2278,7 @@ name|in
 argument_list|)
 return|;
 block|}
-DECL|method|createCommit (IdentifiedUser me, ObjectInserter inserter, RevCommit revision, ObjectId tree)
+DECL|method|createCommit (IdentifiedUser me, ObjectInserter inserter, RevCommit revision, ObjectId tree, Timestamp when)
 specifier|private
 name|ObjectId
 name|createCommit
@@ -2255,6 +2294,9 @@ name|revision
 parameter_list|,
 name|ObjectId
 name|tree
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 throws|throws
 name|IOException
@@ -2274,10 +2316,12 @@ name|revision
 operator|.
 name|getFullMessage
 argument_list|()
+argument_list|,
+name|when
 argument_list|)
 return|;
 block|}
-DECL|method|createCommit (IdentifiedUser me, ObjectInserter inserter, RevCommit revision, ObjectId tree, String msg)
+DECL|method|createCommit (IdentifiedUser me, ObjectInserter inserter, RevCommit revision, ObjectId tree, String msg, Timestamp when)
 specifier|private
 name|ObjectId
 name|createCommit
@@ -2296,6 +2340,9 @@ name|tree
 parameter_list|,
 name|String
 name|msg
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 throws|throws
 name|IOException
@@ -2341,6 +2388,8 @@ argument_list|(
 name|getCommitterIdent
 argument_list|(
 name|me
+argument_list|,
+name|when
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2360,7 +2409,7 @@ name|builder
 argument_list|)
 return|;
 block|}
-DECL|method|update (Repository repo, IdentifiedUser me, String refName, RevWalk rw, ObjectId oldObjectId, ObjectId newEdit)
+DECL|method|update (Repository repo, IdentifiedUser me, String refName, RevWalk rw, ObjectId oldObjectId, ObjectId newEdit, Timestamp when)
 specifier|private
 name|RefUpdate
 operator|.
@@ -2384,6 +2433,9 @@ name|oldObjectId
 parameter_list|,
 name|ObjectId
 name|newEdit
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 throws|throws
 name|IOException
@@ -2419,6 +2471,8 @@ argument_list|(
 name|getRefLogIdent
 argument_list|(
 name|me
+argument_list|,
+name|when
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2926,13 +2980,16 @@ return|return
 name|dc
 return|;
 block|}
-DECL|method|getCommitterIdent (IdentifiedUser user)
+DECL|method|getCommitterIdent (IdentifiedUser user, Timestamp when)
 specifier|private
 name|PersonIdent
 name|getCommitterIdent
 parameter_list|(
 name|IdentifiedUser
 name|user
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 return|return
@@ -2940,22 +2997,22 @@ name|user
 operator|.
 name|newCommitterIdent
 argument_list|(
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|when
 argument_list|,
 name|tz
 argument_list|)
 return|;
 block|}
-DECL|method|getRefLogIdent (IdentifiedUser user)
+DECL|method|getRefLogIdent (IdentifiedUser user, Timestamp when)
 specifier|private
 name|PersonIdent
 name|getRefLogIdent
 parameter_list|(
 name|IdentifiedUser
 name|user
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 return|return
@@ -2963,10 +3020,7 @@ name|user
 operator|.
 name|newRefLogIdent
 argument_list|(
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|when
 argument_list|,
 name|tz
 argument_list|)
