@@ -110,6 +110,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
 import|;
 end_import
@@ -390,7 +400,7 @@ specifier|protected
 name|PatchSetApproval
 parameter_list|()
 block|{   }
-DECL|method|PatchSetApproval (PatchSetApproval.Key k, short v, Timestamp ts)
+DECL|method|PatchSetApproval (PatchSetApproval.Key k, short v, Date ts)
 specifier|public
 name|PatchSetApproval
 parameter_list|(
@@ -402,7 +412,7 @@ parameter_list|,
 name|short
 name|v
 parameter_list|,
-name|Timestamp
+name|Date
 name|ts
 parameter_list|)
 block|{
@@ -557,19 +567,44 @@ return|return
 name|granted
 return|;
 block|}
-DECL|method|setGranted (Timestamp ts)
+DECL|method|setGranted (Date when)
 specifier|public
 name|void
 name|setGranted
 parameter_list|(
-name|Timestamp
-name|ts
+name|Date
+name|when
 parameter_list|)
+block|{
+if|if
+condition|(
+name|when
+operator|instanceof
+name|Timestamp
+condition|)
 block|{
 name|granted
 operator|=
-name|ts
+operator|(
+name|Timestamp
+operator|)
+name|when
 expr_stmt|;
+block|}
+else|else
+block|{
+name|granted
+operator|=
+operator|new
+name|Timestamp
+argument_list|(
+name|when
+operator|.
+name|getTime
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|getLabel ()
 specifier|public
