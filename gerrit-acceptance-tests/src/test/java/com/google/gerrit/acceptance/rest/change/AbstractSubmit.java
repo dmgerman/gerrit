@@ -2811,7 +2811,7 @@ name|assertThat
 argument_list|(
 name|submitter
 operator|.
-name|isSubmit
+name|isLegacySubmit
 argument_list|()
 argument_list|)
 operator|.

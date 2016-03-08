@@ -2378,7 +2378,8 @@ argument_list|()
 argument_list|,
 name|LabelId
 operator|.
-name|SUBMIT
+name|legacySubmit
+argument_list|()
 argument_list|)
 argument_list|,
 operator|(
@@ -2633,7 +2634,7 @@ name|includeUnchanged
 operator|||
 name|psa
 operator|.
-name|isSubmit
+name|isLegacySubmit
 argument_list|()
 condition|)
 block|{

@@ -4676,7 +4676,7 @@ if|if
 condition|(
 name|a
 operator|.
-name|isSubmit
+name|isLegacySubmit
 argument_list|()
 condition|)
 block|{

@@ -1687,7 +1687,7 @@ name|assertThat
 argument_list|(
 name|a
 operator|.
-name|isSubmit
+name|isLegacySubmit
 argument_list|()
 argument_list|)
 operator|.

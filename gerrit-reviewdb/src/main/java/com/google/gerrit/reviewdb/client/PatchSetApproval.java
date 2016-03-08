@@ -620,19 +620,16 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|isSubmit ()
+DECL|method|isLegacySubmit ()
 specifier|public
 name|boolean
-name|isSubmit
+name|isLegacySubmit
 parameter_list|()
 block|{
 return|return
 name|LabelId
 operator|.
-name|SUBMIT
-operator|.
-name|get
-argument_list|()
+name|LEGACY_SUBMIT_NAME
 operator|.
 name|equals
 argument_list|(
