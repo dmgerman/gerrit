@@ -484,6 +484,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -1199,6 +1209,11 @@ argument_list|(
 name|comment
 argument_list|,
 name|in
+argument_list|,
+name|ctx
+operator|.
+name|getWhen
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1251,6 +1266,11 @@ argument_list|(
 name|comment
 argument_list|,
 name|in
+argument_list|,
+name|ctx
+operator|.
+name|getWhen
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1261,7 +1281,7 @@ literal|true
 return|;
 block|}
 block|}
-DECL|method|update (PatchLineComment e, DraftInput in)
+DECL|method|update (PatchLineComment e, DraftInput in, Timestamp when)
 specifier|private
 specifier|static
 name|PatchLineComment
@@ -1272,6 +1292,9 @@ name|e
 parameter_list|,
 name|DraftInput
 name|in
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -1393,10 +1416,7 @@ name|e
 operator|.
 name|setWrittenOn
 argument_list|(
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|when
 argument_list|)
 expr_stmt|;
 return|return

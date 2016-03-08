@@ -313,6 +313,33 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|emptyMap ()
+specifier|static
+name|RevisionNoteMap
+name|emptyMap
+parameter_list|()
+block|{
+return|return
+operator|new
+name|RevisionNoteMap
+argument_list|(
+name|NoteMap
+operator|.
+name|newEmptyMap
+argument_list|()
+argument_list|,
+name|ImmutableMap
+operator|.
+expr|<
+name|RevId
+argument_list|,
+name|RevisionNote
+operator|>
+name|of
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|RevisionNoteMap (NoteMap noteMap, ImmutableMap<RevId, RevisionNote> revisionNotes)
 specifier|private
 name|RevisionNoteMap

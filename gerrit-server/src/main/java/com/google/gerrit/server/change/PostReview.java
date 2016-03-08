@@ -4235,9 +4235,9 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|,
-name|TimeUtil
+name|ctx
 operator|.
-name|nowTs
+name|getWhen
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4494,9 +4494,9 @@ name|short
 operator|)
 literal|0
 argument_list|,
-name|TimeUtil
+name|ctx
 operator|.
-name|nowTs
+name|getWhen
 argument_list|()
 argument_list|)
 decl_stmt|;
