@@ -1068,30 +1068,6 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Synchronously delete a change.    *    * @param id change ID to delete.    */
-DECL|method|delete (Change.Id id)
-specifier|public
-name|void
-name|delete
-parameter_list|(
-name|Change
-operator|.
-name|Id
-name|id
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-operator|new
-name|DeleteTask
-argument_list|(
-name|id
-argument_list|)
-operator|.
-name|call
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|getWriteIndexes ()
 specifier|private
 name|Collection
