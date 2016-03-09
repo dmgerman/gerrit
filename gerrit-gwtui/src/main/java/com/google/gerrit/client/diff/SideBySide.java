@@ -4498,6 +4498,16 @@ argument_list|)
 operator|.
 name|set
 argument_list|(
+literal|"matchBrackets"
+argument_list|,
+name|prefs
+operator|.
+name|matchBrackets
+argument_list|()
+argument_list|)
+operator|.
+name|set
+argument_list|(
 literal|"mode"
 argument_list|,
 name|fileSize
