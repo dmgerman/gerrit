@@ -1713,18 +1713,6 @@ name|Exception
 block|{
 if|if
 condition|(
-name|changeComment
-operator|==
-literal|null
-condition|)
-block|{
-name|changeComment
-operator|=
-literal|""
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|notify
 operator|==
 literal|null
@@ -1834,27 +1822,17 @@ argument_list|(
 name|customLabels
 argument_list|)
 expr_stmt|;
-comment|// If review labels are being applied, the comment will be included
-comment|// on the review note. We don't need to add it again on the abandon
-comment|// or restore comment.
+comment|// We don't need to add the review comment when abandoning/restoring.
 if|if
 condition|(
-operator|!
-name|review
-operator|.
-name|labels
-operator|.
-name|isEmpty
-argument_list|()
-operator|&&
-operator|(
 name|abandonChange
 operator|||
 name|restoreChange
-operator|)
 condition|)
 block|{
-name|changeComment
+name|review
+operator|.
+name|message
 operator|=
 literal|null
 expr_stmt|;
@@ -1877,7 +1855,12 @@ name|input
 operator|.
 name|message
 operator|=
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|changeComment
+argument_list|)
 expr_stmt|;
 name|applyReview
 argument_list|(
@@ -1914,7 +1897,12 @@ name|input
 operator|.
 name|message
 operator|=
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|changeComment
+argument_list|)
 expr_stmt|;
 name|changeApi
 argument_list|(
