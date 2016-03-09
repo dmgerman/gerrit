@@ -787,7 +787,7 @@ if|if
 condition|(
 name|psa
 operator|.
-name|isSubmit
+name|isLegacySubmit
 argument_list|()
 condition|)
 block|{

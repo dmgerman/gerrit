@@ -2278,7 +2278,7 @@ literal|0
 operator|&&
 name|a
 operator|.
-name|isSubmit
+name|isLegacySubmit
 argument_list|()
 condition|)
 block|{
