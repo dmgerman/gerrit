@@ -96,6 +96,10 @@ name|Event
 import|;
 end_import
 
+begin_comment
+comment|/**  * Allows to listen to events without user visibility restrictions. To listen to  * events visible to a specific user, use {@link UserScopedEventListener}.  */
+end_comment
+
 begin_interface
 annotation|@
 name|ExtensionPoint

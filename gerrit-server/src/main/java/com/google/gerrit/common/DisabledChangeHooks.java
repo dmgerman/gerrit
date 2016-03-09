@@ -186,20 +186,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|events
 operator|.
 name|ChangeEvent
@@ -316,23 +302,7 @@ implements|implements
 name|ChangeHooks
 implements|,
 name|EventDispatcher
-implements|,
-name|EventSource
 block|{
-annotation|@
-name|Override
-DECL|method|addEventListener (EventListener listener, CurrentUser user)
-specifier|public
-name|void
-name|addEventListener
-parameter_list|(
-name|EventListener
-name|listener
-parameter_list|,
-name|CurrentUser
-name|user
-parameter_list|)
-block|{   }
 annotation|@
 name|Override
 DECL|method|doChangeAbandonedHook (Change change, Account account, PatchSet patchSet, String reason, ReviewDb db)
@@ -618,17 +588,6 @@ name|hashtags
 parameter_list|,
 name|ReviewDb
 name|db
-parameter_list|)
-block|{   }
-annotation|@
-name|Override
-DECL|method|removeEventListener (EventListener listener)
-specifier|public
-name|void
-name|removeEventListener
-parameter_list|(
-name|EventListener
-name|listener
 parameter_list|)
 block|{   }
 annotation|@

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -72,6 +72,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
+name|ExtensionPoint
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -79,33 +95,23 @@ import|;
 end_import
 
 begin_comment
-comment|/** Distributes Events to ChangeListeners.  Register listeners here. */
+comment|/**  * Allows to listen to events visible to the specified user. To listen to events  * without user visibility restrictions, use {@link EventListener}.  */
 end_comment
 
 begin_interface
-DECL|interface|EventSource
+annotation|@
+name|ExtensionPoint
+DECL|interface|UserScopedEventListener
 specifier|public
 interface|interface
-name|EventSource
+name|UserScopedEventListener
+extends|extends
+name|EventListener
 block|{
-DECL|method|addEventListener (EventListener listener, CurrentUser user)
-name|void
-name|addEventListener
-parameter_list|(
-name|EventListener
-name|listener
-parameter_list|,
+DECL|method|getUser ()
 name|CurrentUser
-name|user
-parameter_list|)
-function_decl|;
-DECL|method|removeEventListener (EventListener listener)
-name|void
-name|removeEventListener
-parameter_list|(
-name|EventListener
-name|listener
-parameter_list|)
+name|getUser
+parameter_list|()
 function_decl|;
 block|}
 end_interface
