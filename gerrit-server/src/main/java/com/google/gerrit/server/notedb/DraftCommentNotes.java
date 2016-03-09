@@ -409,11 +409,17 @@ specifier|final
 name|AllUsersName
 name|draftsProject
 decl_stmt|;
+DECL|field|commentsUtil
+specifier|private
+specifier|final
+name|CommentsInNotesUtil
+name|commentsUtil
+decl_stmt|;
 annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers)
+DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, CommentsInNotesUtil commentsUtil)
 specifier|public
 name|Factory
 parameter_list|(
@@ -425,6 +431,9 @@ name|migration
 parameter_list|,
 name|AllUsersName
 name|allUsers
+parameter_list|,
+name|CommentsInNotesUtil
+name|commentsUtil
 parameter_list|)
 block|{
 name|this
@@ -444,6 +453,12 @@ operator|.
 name|draftsProject
 operator|=
 name|allUsers
+expr_stmt|;
+name|this
+operator|.
+name|commentsUtil
+operator|=
+name|commentsUtil
 expr_stmt|;
 block|}
 DECL|method|create (Change.Id changeId, Account.Id accountId)
@@ -472,6 +487,8 @@ name|migration
 argument_list|,
 name|draftsProject
 argument_list|,
+name|commentsUtil
+argument_list|,
 name|changeId
 argument_list|,
 name|accountId
@@ -484,6 +501,12 @@ specifier|private
 specifier|final
 name|AllUsersName
 name|draftsProject
+decl_stmt|;
+DECL|field|commentsUtil
+specifier|private
+specifier|final
+name|CommentsInNotesUtil
+name|commentsUtil
 decl_stmt|;
 DECL|field|author
 specifier|private
@@ -508,7 +531,7 @@ specifier|private
 name|RevisionNoteMap
 name|revisionNoteMap
 decl_stmt|;
-DECL|method|DraftCommentNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName draftsProject, Change.Id changeId, Account.Id author)
+DECL|method|DraftCommentNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName draftsProject, CommentsInNotesUtil commentsUtil, Change.Id changeId, Account.Id author)
 name|DraftCommentNotes
 parameter_list|(
 name|GitRepositoryManager
@@ -519,6 +542,9 @@ name|migration
 parameter_list|,
 name|AllUsersName
 name|draftsProject
+parameter_list|,
+name|CommentsInNotesUtil
+name|commentsUtil
 parameter_list|,
 name|Change
 operator|.
@@ -551,6 +577,12 @@ operator|.
 name|author
 operator|=
 name|author
+expr_stmt|;
+name|this
+operator|.
+name|commentsUtil
+operator|=
+name|commentsUtil
 expr_stmt|;
 block|}
 DECL|method|getRevisionNoteMap ()
@@ -713,6 +745,8 @@ name|RevisionNoteMap
 operator|.
 name|parse
 argument_list|(
+name|commentsUtil
+argument_list|,
 name|getChangeId
 argument_list|()
 argument_list|,

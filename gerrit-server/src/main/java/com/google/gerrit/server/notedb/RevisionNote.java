@@ -440,9 +440,12 @@ specifier|final
 name|String
 name|pushCert
 decl_stmt|;
-DECL|method|RevisionNote (Change.Id changeId, ObjectReader reader, ObjectId noteId, boolean draftsOnly)
+DECL|method|RevisionNote (CommentsInNotesUtil commentsUtil, Change.Id changeId, ObjectReader reader, ObjectId noteId, boolean draftsOnly)
 name|RevisionNote
 parameter_list|(
+name|CommentsInNotesUtil
+name|commentsUtil
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -551,7 +554,7 @@ name|ImmutableList
 operator|.
 name|copyOf
 argument_list|(
-name|CommentsInNotesUtil
+name|commentsUtil
 operator|.
 name|parseNote
 argument_list|(

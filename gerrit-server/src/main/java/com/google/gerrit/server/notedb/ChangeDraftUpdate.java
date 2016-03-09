@@ -665,7 +665,7 @@ name|delete
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, CommentsInNotesUtil commentsUtil, @Assisted ChangeControl ctl, @Assisted Date when)
+DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil changeNoteUtil, CommentsInNotesUtil commentsUtil, @Assisted ChangeControl ctl, @Assisted Date when)
 specifier|private
 name|ChangeDraftUpdate
 parameter_list|(
@@ -687,6 +687,9 @@ name|migration
 parameter_list|,
 name|AllUsersName
 name|allUsers
+parameter_list|,
+name|ChangeNoteUtil
+name|changeNoteUtil
 parameter_list|,
 name|CommentsInNotesUtil
 name|commentsUtil
@@ -713,6 +716,8 @@ argument_list|,
 name|serverIdent
 argument_list|,
 name|anonymousCowardName
+argument_list|,
+name|changeNoteUtil
 argument_list|,
 name|when
 argument_list|)
@@ -1350,6 +1355,8 @@ name|RevisionNoteMap
 operator|.
 name|parse
 argument_list|(
+name|commentsUtil
+argument_list|,
 name|ctl
 operator|.
 name|getId

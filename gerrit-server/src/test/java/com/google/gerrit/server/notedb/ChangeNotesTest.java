@@ -7220,6 +7220,10 @@ argument_list|,
 name|rw
 argument_list|,
 name|repoManager
+argument_list|,
+name|changeNoteUtil
+argument_list|,
+name|commentsUtil
 argument_list|)
 init|)
 block|{
@@ -7300,6 +7304,10 @@ argument_list|,
 name|rw
 argument_list|,
 name|repoManager
+argument_list|,
+name|changeNoteUtil
+argument_list|,
+name|commentsUtil
 argument_list|)
 init|)
 block|{

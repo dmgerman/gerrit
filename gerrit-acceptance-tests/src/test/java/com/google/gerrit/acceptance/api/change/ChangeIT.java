@@ -8068,7 +8068,7 @@ expr_stmt|;
 name|PersonIdent
 name|expectedAuthor
 init|=
-name|ChangeNoteUtil
+name|changeNoteUtil
 operator|.
 name|newIdent
 argument_list|(
@@ -8178,7 +8178,7 @@ argument_list|)
 expr_stmt|;
 name|expectedAuthor
 operator|=
-name|ChangeNoteUtil
+name|changeNoteUtil
 operator|.
 name|newIdent
 argument_list|(

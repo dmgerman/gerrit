@@ -1171,7 +1171,7 @@ name|draftUpdate
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, CommentsInNotesUtil commentsUtil, ChangeNoteUtil changeNoteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1214,6 +1214,9 @@ name|ctl
 parameter_list|,
 name|CommentsInNotesUtil
 name|commentsUtil
+parameter_list|,
+name|ChangeNoteUtil
+name|changeNoteUtil
 parameter_list|)
 block|{
 name|this
@@ -1242,12 +1245,14 @@ name|getWhen
 argument_list|()
 argument_list|,
 name|commentsUtil
+argument_list|,
+name|changeNoteUtil
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, CommentsInNotesUtil commentsUtil, ChangeNoteUtil changeNoteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1295,6 +1300,9 @@ name|when
 parameter_list|,
 name|CommentsInNotesUtil
 name|commentsUtil
+parameter_list|,
+name|ChangeNoteUtil
+name|changeNoteUtil
 parameter_list|)
 block|{
 name|this
@@ -1334,6 +1342,8 @@ name|nameComparator
 argument_list|()
 argument_list|,
 name|commentsUtil
+argument_list|,
+name|changeNoteUtil
 argument_list|)
 expr_stmt|;
 block|}
@@ -1361,7 +1371,7 @@ return|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, CommentsInNotesUtil commentsUtil, ChangeNoteUtil changeNoteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1414,6 +1424,9 @@ name|labelNameComparator
 parameter_list|,
 name|CommentsInNotesUtil
 name|commentsUtil
+parameter_list|,
+name|ChangeNoteUtil
+name|changeNoteUtil
 parameter_list|)
 block|{
 name|super
@@ -1427,6 +1440,8 @@ argument_list|,
 name|serverIdent
 argument_list|,
 name|anonymousCowardName
+argument_list|,
+name|changeNoteUtil
 argument_list|,
 name|when
 argument_list|)
@@ -2662,6 +2677,8 @@ name|RevisionNoteMap
 operator|.
 name|parse
 argument_list|(
+name|commentsUtil
+argument_list|,
 name|ctl
 operator|.
 name|getId
