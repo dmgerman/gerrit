@@ -1507,6 +1507,11 @@ operator|new
 name|ApprovalEvent
 argument_list|(
 name|psa
+argument_list|,
+name|change
+operator|.
+name|getCreatedOn
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1554,6 +1559,11 @@ argument_list|(
 name|msg
 argument_list|,
 name|notedbChange
+argument_list|,
+name|change
+operator|.
+name|getCreatedOn
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2300,6 +2310,11 @@ argument_list|,
 name|commitTime
 argument_list|,
 name|hashtags
+argument_list|,
+name|change
+operator|.
+name|getCreatedOn
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2586,6 +2601,17 @@ operator|.
 name|start
 argument_list|()
 operator|.
+name|compareTrueFirst
+argument_list|(
+name|a
+operator|.
+name|predatesChange
+argument_list|,
+name|b
+operator|.
+name|predatesChange
+argument_list|)
+operator|.
 name|compare
 argument_list|(
 name|a
@@ -2665,7 +2691,12 @@ specifier|final
 name|Timestamp
 name|when
 decl_stmt|;
-DECL|method|Event (PatchSet.Id psId, Account.Id who, Timestamp when)
+DECL|field|predatesChange
+specifier|final
+name|boolean
+name|predatesChange
+decl_stmt|;
+DECL|method|Event (PatchSet.Id psId, Account.Id who, Timestamp when, Timestamp changeCreatedOn)
 specifier|protected
 name|Event
 parameter_list|(
@@ -2681,6 +2712,9 @@ name|who
 parameter_list|,
 name|Timestamp
 name|when
+parameter_list|,
+name|Timestamp
+name|changeCreatedOn
 parameter_list|)
 block|{
 name|this
@@ -2695,10 +2729,24 @@ name|who
 operator|=
 name|who
 expr_stmt|;
+comment|// Truncate timestamps at the change's createdOn timestamp.
+name|predatesChange
+operator|=
+name|when
+operator|.
+name|before
+argument_list|(
+name|changeCreatedOn
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|when
 operator|=
+name|predatesChange
+condition|?
+name|changeCreatedOn
+else|:
 name|when
 expr_stmt|;
 block|}
@@ -3288,11 +3336,14 @@ specifier|private
 name|PatchSetApproval
 name|psa
 decl_stmt|;
-DECL|method|ApprovalEvent (PatchSetApproval psa)
+DECL|method|ApprovalEvent (PatchSetApproval psa, Timestamp changeCreatedOn)
 name|ApprovalEvent
 parameter_list|(
 name|PatchSetApproval
 name|psa
+parameter_list|,
+name|Timestamp
+name|changeCreatedOn
 parameter_list|)
 block|{
 name|super
@@ -3311,6 +3362,8 @@ name|psa
 operator|.
 name|getGranted
 argument_list|()
+argument_list|,
+name|changeCreatedOn
 argument_list|)
 expr_stmt|;
 name|this
@@ -3415,6 +3468,11 @@ name|getUploader
 argument_list|()
 argument_list|,
 name|ps
+operator|.
+name|getCreatedOn
+argument_list|()
+argument_list|,
+name|change
 operator|.
 name|getCreatedOn
 argument_list|()
@@ -3738,6 +3796,11 @@ name|c
 operator|.
 name|getWrittenOn
 argument_list|()
+argument_list|,
+name|change
+operator|.
+name|getCreatedOn
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -3881,7 +3944,7 @@ name|String
 argument_list|>
 name|hashtags
 decl_stmt|;
-DECL|method|HashtagsEvent (PatchSet.Id psId, Account.Id who, Timestamp when, Set<String> hashtags)
+DECL|method|HashtagsEvent (PatchSet.Id psId, Account.Id who, Timestamp when, Set<String> hashtags, Timestamp changeCreatdOn)
 name|HashtagsEvent
 parameter_list|(
 name|PatchSet
@@ -3902,6 +3965,9 @@ argument_list|<
 name|String
 argument_list|>
 name|hashtags
+parameter_list|,
+name|Timestamp
+name|changeCreatdOn
 parameter_list|)
 block|{
 name|super
@@ -3911,6 +3977,8 @@ argument_list|,
 name|who
 argument_list|,
 name|when
+argument_list|,
+name|changeCreatdOn
 argument_list|)
 expr_stmt|;
 name|this
@@ -4044,7 +4112,7 @@ specifier|final
 name|Change
 name|notedbChange
 decl_stmt|;
-DECL|method|ChangeMessageEvent (ChangeMessage message, Change notedbChange)
+DECL|method|ChangeMessageEvent (ChangeMessage message, Change notedbChange, Timestamp changeCreatedOn)
 name|ChangeMessageEvent
 parameter_list|(
 name|ChangeMessage
@@ -4052,6 +4120,9 @@ name|message
 parameter_list|,
 name|Change
 name|notedbChange
+parameter_list|,
+name|Timestamp
+name|changeCreatedOn
 parameter_list|)
 block|{
 name|super
@@ -4070,6 +4141,8 @@ name|message
 operator|.
 name|getWrittenOn
 argument_list|()
+argument_list|,
+name|changeCreatedOn
 argument_list|)
 expr_stmt|;
 name|this
@@ -4401,13 +4474,14 @@ operator|.
 name|getOwner
 argument_list|()
 argument_list|,
-comment|// TODO(dborowitz): This should maybe be a synthetic timestamp just
-comment|// after the actual last update in the history. On the one hand using
-comment|// the commit updated time is reasonable, but on the other it might be
-comment|// non-monotonic, and who knows what would break then.
 name|change
 operator|.
 name|getLastUpdatedOn
+argument_list|()
+argument_list|,
+name|change
+operator|.
+name|getCreatedOn
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -2348,7 +2348,7 @@ literal|"message differs for ChangeMessage on "
 operator|+
 name|id
 operator|+
-literal|" at index 0:"
+literal|" at index 1:"
 operator|+
 literal|" {message 1} != {message 2}"
 argument_list|)
