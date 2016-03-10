@@ -1364,21 +1364,14 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
-name|SubmitInput
+name|JavaScriptObject
 name|in
 init|=
-name|SubmitInput
+name|JavaScriptObject
 operator|.
-name|create
+name|createObject
 argument_list|()
 decl_stmt|;
-name|in
-operator|.
-name|waitForMerge
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|call
 argument_list|(
 name|id
@@ -1907,45 +1900,6 @@ block|}
 DECL|method|RebaseInput ()
 specifier|protected
 name|RebaseInput
-parameter_list|()
-block|{     }
-block|}
-DECL|class|SubmitInput
-specifier|private
-specifier|static
-class|class
-name|SubmitInput
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|waitForMerge (boolean b)
-specifier|final
-specifier|native
-name|void
-name|waitForMerge
-parameter_list|(
-name|boolean
-name|b
-parameter_list|)
-comment|/*-{ this.wait_for_merge=b; }-*/
-function_decl|;
-DECL|method|create ()
-specifier|static
-name|SubmitInput
-name|create
-parameter_list|()
-block|{
-return|return
-operator|(
-name|SubmitInput
-operator|)
-name|createObject
-argument_list|()
-return|;
-block|}
-DECL|method|SubmitInput ()
-specifier|protected
-name|SubmitInput
 parameter_list|()
 block|{     }
 block|}

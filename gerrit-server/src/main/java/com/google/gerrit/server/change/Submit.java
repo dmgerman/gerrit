@@ -1099,11 +1099,6 @@ specifier|final
 name|boolean
 name|failAfterRefUpdates
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|TestSubmitInput (SubmitInput base, boolean failAfterRefUpdates)
 specifier|public
 name|TestSubmitInput
@@ -1122,14 +1117,6 @@ operator|=
 name|base
 operator|.
 name|onBehalfOf
-expr_stmt|;
-name|this
-operator|.
-name|waitForMerge
-operator|=
-name|base
-operator|.
-name|waitForMerge
 expr_stmt|;
 name|this
 operator|.
