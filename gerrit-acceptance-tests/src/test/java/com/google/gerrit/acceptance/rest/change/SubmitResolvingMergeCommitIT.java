@@ -1971,10 +1971,13 @@ name|assertThat
 argument_list|(
 name|submit
 operator|.
-name|isPatchSetMergeable
+name|unmergeableChanges
 argument_list|(
 name|cs
 argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo

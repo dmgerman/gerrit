@@ -1217,6 +1217,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|suggestBox
+operator|.
+name|setText
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|addReviewer (final String reviewer, boolean confirmed)
 specifier|private
