@@ -1124,7 +1124,7 @@ name|topic
 decl_stmt|;
 DECL|field|commit
 specifier|private
-name|ObjectId
+name|String
 name|commit
 decl_stmt|;
 DECL|field|hashtags
@@ -1891,7 +1891,12 @@ name|getCommit
 parameter_list|()
 block|{
 return|return
+name|ObjectId
+operator|.
+name|fromString
+argument_list|(
 name|commit
+argument_list|)
 return|;
 block|}
 DECL|method|setChangeMessage (String changeMessage)
@@ -2184,6 +2189,9 @@ operator|.
 name|commit
 operator|=
 name|commit
+operator|.
+name|name
+argument_list|()
 expr_stmt|;
 name|subject
 operator|=
@@ -2191,6 +2199,30 @@ name|commit
 operator|.
 name|getShortMessage
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|pushCert
+operator|=
+name|pushCert
+expr_stmt|;
+block|}
+comment|/**    * Set the revision without depending on the commit being present in the    * repository; should only be used for converting old corrupt commits.    */
+DECL|method|setRevisionForMissingCommit (String id, String pushCert)
+specifier|public
+name|void
+name|setRevisionForMissingCommit
+parameter_list|(
+name|String
+name|id
+parameter_list|,
+name|String
+name|pushCert
+parameter_list|)
+block|{
+name|commit
+operator|=
+name|id
 expr_stmt|;
 name|this
 operator|.
@@ -2425,9 +2457,6 @@ operator|new
 name|RevId
 argument_list|(
 name|commit
-operator|.
-name|name
-argument_list|()
 argument_list|)
 argument_list|)
 operator|.
@@ -3076,9 +3105,6 @@ argument_list|,
 name|FOOTER_COMMIT
 argument_list|,
 name|commit
-operator|.
-name|name
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

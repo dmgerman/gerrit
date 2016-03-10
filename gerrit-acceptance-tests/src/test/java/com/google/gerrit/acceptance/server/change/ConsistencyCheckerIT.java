@@ -639,6 +639,9 @@ throws|throws
 name|Exception
 block|{
 comment|// TODO(dborowitz): Re-enable when ConsistencyChecker supports notedb.
+comment|// Note that we *do* want to enable these tests with GERRIT_CHECK_NOTEDB, as
+comment|// we need to be able to convert old, corrupt changes. However, those tests
+comment|// don't necessarily need to pass.
 name|assume
 argument_list|()
 operator|.

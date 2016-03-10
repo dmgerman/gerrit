@@ -1282,6 +1282,9 @@ name|project
 argument_list|)
 control|)
 block|{
+comment|// TODO(dborowitz): This can fail if the project no longer exists.
+comment|// We might not want to just skip conversion of those changes, and
+comment|// instead move them somewhere like a special lost+found repo.
 name|ListenableFuture
 argument_list|<
 name|?
