@@ -151,6 +151,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|SECONDS
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -874,18 +888,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|regex
 operator|.
 name|Matcher
@@ -910,24 +912,33 @@ specifier|public
 class|class
 name|ChangeRebuilder
 block|{
-DECL|field|TS_WINDOW_MS
+comment|/**    * The maximum amount of time between the ReviewDb timestamp of the first and    * last events batched together into a single NoteDb update.    *<p>    * Used to account for the fact that different records with their own    * timestamps (e.g. {@link PatchSetApproval} and {@link ChangeMessage})    * historically didn't necessarily use the same timestamp, and tended to call    * {@code System.currentTimeMillis()} independently.    */
+DECL|field|MAX_WINDOW_MS
+specifier|static
+specifier|final
+name|long
+name|MAX_WINDOW_MS
+init|=
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|3
+argument_list|)
+decl_stmt|;
+comment|/**    * The maximum amount of time between two consecutive events to consider them    * to be in the same batch.    */
+DECL|field|MAX_DELTA_MS
 specifier|private
 specifier|static
 specifier|final
 name|long
-name|TS_WINDOW_MS
+name|MAX_DELTA_MS
 init|=
-name|TimeUnit
+name|SECONDS
 operator|.
-name|MILLISECONDS
-operator|.
-name|convert
+name|toMillis
 argument_list|(
 literal|1
-argument_list|,
-name|TimeUnit
-operator|.
-name|SECONDS
 argument_list|)
 decl_stmt|;
 DECL|field|schemaFactory
@@ -2696,7 +2707,7 @@ operator|.
 name|getTime
 argument_list|()
 operator|<=
-name|TS_WINDOW_MS
+name|MAX_WINDOW_MS
 argument_list|,
 literal|"event at %s outside update window starting at %s"
 argument_list|,
@@ -2824,24 +2835,6 @@ name|long
 name|serialVersionUID
 init|=
 literal|1L
-decl_stmt|;
-DECL|field|MAX_DELTA_MS
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|MAX_DELTA_MS
-init|=
-literal|1000
-decl_stmt|;
-DECL|field|MAX_WINDOW_MS
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|MAX_WINDOW_MS
-init|=
-literal|5000
 decl_stmt|;
 DECL|method|getLast ()
 specifier|private

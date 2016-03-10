@@ -684,13 +684,32 @@ name|tz
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|long
+name|maxMs
+init|=
+name|ChangeRebuilder
+operator|.
+name|MAX_WINDOW_MS
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|maxMs
+argument_list|)
+operator|.
+name|isGreaterThan
+argument_list|(
+literal|1000L
+argument_list|)
+expr_stmt|;
 name|TestTimeUtil
 operator|.
 name|resetWithClockStep
 argument_list|(
-literal|1
+name|maxMs
+operator|*
+literal|2
 argument_list|,
-name|SECONDS
+name|MILLISECONDS
 argument_list|)
 expr_stmt|;
 name|project
@@ -744,19 +763,44 @@ name|systemTimeZone
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|subSecondResolution ()
+DECL|method|superWindowResolution ()
 specifier|private
 name|void
-name|subSecondResolution
+name|superWindowResolution
 parameter_list|()
 block|{
 name|TestTimeUtil
 operator|.
 name|setClockStep
 argument_list|(
-literal|100
+name|ChangeRebuilder
+operator|.
+name|MAX_WINDOW_MS
+operator|*
+literal|2
 argument_list|,
 name|MILLISECONDS
+argument_list|)
+expr_stmt|;
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|subWindowResolution ()
+specifier|private
+name|void
+name|subWindowResolution
+parameter_list|()
+block|{
+name|TestTimeUtil
+operator|.
+name|setClockStep
+argument_list|(
+literal|1
+argument_list|,
+name|SECONDS
 argument_list|)
 expr_stmt|;
 name|TimeUtil
@@ -885,11 +929,11 @@ literal|"}"
 argument_list|,
 literal|"createdOn differs for Changes:"
 operator|+
-literal|" {2009-09-30 17:00:00.0} != {2009-09-30 17:00:01.0}"
+literal|" {2009-09-30 17:00:00.0} != {2009-09-30 17:00:06.0}"
 argument_list|,
 literal|"lastUpdatedOn differs for Changes:"
 operator|+
-literal|" {2009-09-30 17:00:00.0} != {2009-09-30 17:00:01.0}"
+literal|" {2009-09-30 17:00:00.0} != {2009-09-30 17:00:06.0}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1014,14 +1058,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|diffChangesMixedSourcesRoundsTimestamp ()
+DECL|method|diffChangesMixedSourcesAllowsSlop ()
 specifier|public
 name|void
-name|diffChangesMixedSourcesRoundsTimestamp
+name|diffChangesMixedSourcesAllowsSlop
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|subWindowResolution
+argument_list|()
+expr_stmt|;
 name|Change
 name|c1
 init|=
@@ -1046,9 +1093,6 @@ literal|100
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|subSecondResolution
-argument_list|()
-expr_stmt|;
 name|Change
 name|c2
 init|=
@@ -1139,7 +1183,7 @@ argument_list|()
 operator|+
 literal|":"
 operator|+
-literal|" {2009-09-30 17:00:00.0} != {2009-09-30 17:00:01.1}"
+literal|" {2009-09-30 17:00:01.0} != {2009-09-30 17:00:02.0}"
 argument_list|,
 literal|"lastUpdatedOn differs for Change.Id "
 operator|+
@@ -1150,10 +1194,10 @@ argument_list|()
 operator|+
 literal|":"
 operator|+
-literal|" {2009-09-30 17:00:00.0} != {2009-09-30 17:00:01.2}"
+literal|" {2009-09-30 17:00:01.0} != {2009-09-30 17:00:03.0}"
 argument_list|)
 expr_stmt|;
-comment|// One NoteDb, timestamp is rounded.
+comment|// One NoteDb, slop is allowed.
 name|b1
 operator|=
 operator|new
@@ -1198,23 +1242,90 @@ argument_list|,
 name|REVIEW_DB
 argument_list|)
 expr_stmt|;
-name|assertDiffs
+name|assertNoDiffs
 argument_list|(
 name|b1
 argument_list|,
 name|b2
+argument_list|)
+expr_stmt|;
+name|assertNoDiffs
+argument_list|(
+name|b2
 argument_list|,
-literal|"createdOn differs for Change.Id "
-operator|+
-name|c1
-operator|.
-name|getId
+name|b1
+argument_list|)
+expr_stmt|;
+comment|// But not too much slop.
+name|superWindowResolution
 argument_list|()
-operator|+
-literal|":"
-operator|+
-literal|" {2009-09-30 17:00:00.0} != {2009-09-30 17:00:01.0}"
+expr_stmt|;
+name|Change
+name|c3
+init|=
+name|clone
+argument_list|(
+name|c1
+argument_list|)
+decl_stmt|;
+name|c3
+operator|.
+name|setLastUpdatedOn
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|b1
+operator|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c1
 argument_list|,
+name|messages
+argument_list|()
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|NOTE_DB
+argument_list|)
+expr_stmt|;
+name|ChangeBundle
+name|b3
+init|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c3
+argument_list|,
+name|messages
+argument_list|()
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|REVIEW_DB
+argument_list|)
+decl_stmt|;
+name|String
+name|msg
+init|=
 literal|"lastUpdatedOn differs for Change.Id "
 operator|+
 name|c1
@@ -1222,9 +1333,26 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
+literal|" in NoteDb vs. ReviewDb:"
 operator|+
-literal|" {2009-09-30 17:00:00.0} != {2009-09-30 17:00:01.0}"
+literal|" {2009-09-30 17:00:01.0} != {2009-09-30 17:00:10.0}"
+decl_stmt|;
+name|assertDiffs
+argument_list|(
+name|b1
+argument_list|,
+name|b3
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertDiffs
+argument_list|(
+name|b3
+argument_list|,
+name|b1
+argument_list|,
+name|msg
 argument_list|)
 expr_stmt|;
 block|}
@@ -1766,6 +1894,292 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|diffChangeMessagesWithDifferentCounts ()
+specifier|public
+name|void
+name|diffChangeMessagesWithDifferentCounts
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Change
+name|c
+init|=
+name|TestChanges
+operator|.
+name|newChange
+argument_list|(
+name|project
+argument_list|,
+name|accountId
+argument_list|)
+decl_stmt|;
+name|int
+name|id
+init|=
+name|c
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+name|ChangeMessage
+name|cm1
+init|=
+operator|new
+name|ChangeMessage
+argument_list|(
+operator|new
+name|ChangeMessage
+operator|.
+name|Key
+argument_list|(
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+literal|"uuid1"
+argument_list|)
+argument_list|,
+name|accountId
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|cm1
+operator|.
+name|setMessage
+argument_list|(
+literal|"message 1"
+argument_list|)
+expr_stmt|;
+name|ChangeMessage
+name|cm2
+init|=
+operator|new
+name|ChangeMessage
+argument_list|(
+operator|new
+name|ChangeMessage
+operator|.
+name|Key
+argument_list|(
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+literal|"uuid2"
+argument_list|)
+argument_list|,
+name|accountId
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|cm1
+operator|.
+name|setMessage
+argument_list|(
+literal|"message 2"
+argument_list|)
+expr_stmt|;
+comment|// Both ReviewDb: Uses same keySet diff as other types.
+name|ChangeBundle
+name|b1
+init|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|(
+name|cm1
+argument_list|,
+name|cm2
+argument_list|)
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|REVIEW_DB
+argument_list|)
+decl_stmt|;
+name|ChangeBundle
+name|b2
+init|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|(
+name|cm1
+argument_list|)
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|REVIEW_DB
+argument_list|)
+decl_stmt|;
+name|assertDiffs
+argument_list|(
+name|b1
+argument_list|,
+name|b2
+argument_list|,
+literal|"ChangeMessage.Key sets differ: ["
+operator|+
+name|id
+operator|+
+literal|",uuid2] only in A; [] only in B"
+argument_list|)
+expr_stmt|;
+comment|// One NoteDb: UUIDs in keys can't be used for comparison, just diff counts.
+name|b1
+operator|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|(
+name|cm1
+argument_list|,
+name|cm2
+argument_list|)
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|REVIEW_DB
+argument_list|)
+expr_stmt|;
+name|b2
+operator|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|(
+name|cm1
+argument_list|)
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|NOTE_DB
+argument_list|)
+expr_stmt|;
+name|assertDiffs
+argument_list|(
+name|b1
+argument_list|,
+name|b2
+argument_list|,
+literal|"Differing numbers of ChangeMessages for Change.Id "
+operator|+
+name|id
+operator|+
+literal|":\n"
+operator|+
+literal|"ChangeMessage{key="
+operator|+
+name|id
+operator|+
+literal|",uuid1, author=100,"
+operator|+
+literal|" writtenOn=2009-09-30 17:00:06.0, patchset="
+operator|+
+name|id
+operator|+
+literal|",1,"
+operator|+
+literal|" message=[message 2]}\n"
+operator|+
+literal|"ChangeMessage{key="
+operator|+
+name|id
+operator|+
+literal|",uuid2, author=100,"
+operator|+
+literal|" writtenOn=2009-09-30 17:00:12.0, patchset="
+operator|+
+name|id
+operator|+
+literal|",1,"
+operator|+
+literal|" message=[null]}\n"
+operator|+
+literal|"--- vs. ---\n"
+operator|+
+literal|"ChangeMessage{key="
+operator|+
+name|id
+operator|+
+literal|",uuid1, author=100,"
+operator|+
+literal|" writtenOn=2009-09-30 17:00:06.0, patchset="
+operator|+
+name|id
+operator|+
+literal|",1,"
+operator|+
+literal|" message=[message 2]}"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|diffChangeMessagesMixedSourcesWithDifferences ()
 specifier|public
 name|void
@@ -1930,50 +2344,29 @@ name|b1
 argument_list|,
 name|b2
 argument_list|,
-literal|"ChangeMessage present 2 times in A but 1 time in B:"
-operator|+
-literal|" NormalizedChangeMessage{changeId="
+literal|"message differs for ChangeMessage on "
 operator|+
 name|id
 operator|+
-literal|", author=100,"
+literal|" at index 0:"
 operator|+
-literal|" writtenOn=2009-09-30 17:00:01.0, message=message 1,"
-operator|+
-literal|" patchset="
-operator|+
-name|id
-operator|+
-literal|",1}"
-argument_list|,
-literal|"ChangeMessage present 0 times in A but 1 time in B:"
-operator|+
-literal|" NormalizedChangeMessage{changeId="
-operator|+
-name|id
-operator|+
-literal|", author=100,"
-operator|+
-literal|" writtenOn=2009-09-30 17:00:01.0, message=message 2,"
-operator|+
-literal|" patchset="
-operator|+
-name|id
-operator|+
-literal|",1}"
+literal|" {message 1} != {message 2}"
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|diffChangeMessagesMixedSourcesRoundsTimestamp ()
+DECL|method|diffChangeMessagesMixedSourcesAllowsSlop ()
 specifier|public
 name|void
-name|diffChangeMessagesMixedSourcesRoundsTimestamp
+name|diffChangeMessagesMixedSourcesAllowsSlop
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|subWindowResolution
+argument_list|()
+expr_stmt|;
 name|Change
 name|c
 init|=
@@ -1986,9 +2379,6 @@ argument_list|,
 name|accountId
 argument_list|)
 decl_stmt|;
-name|subSecondResolution
-argument_list|()
-expr_stmt|;
 name|ChangeMessage
 name|cm1
 init|=
@@ -2105,10 +2495,10 @@ argument_list|()
 operator|+
 literal|",uuid1:"
 operator|+
-literal|" {2009-09-30 17:00:01.1} != {2009-09-30 17:00:01.2}"
+literal|" {2009-09-30 17:00:02.0} != {2009-09-30 17:00:03.0}"
 argument_list|)
 expr_stmt|;
-comment|// One NoteDb, timestamp is rounded.
+comment|// One NoteDb, slop is allowed.
 name|b1
 operator|=
 operator|new
@@ -2162,6 +2552,116 @@ argument_list|(
 name|b1
 argument_list|,
 name|b2
+argument_list|)
+expr_stmt|;
+name|assertNoDiffs
+argument_list|(
+name|b2
+argument_list|,
+name|b1
+argument_list|)
+expr_stmt|;
+comment|// But not too much slop.
+name|superWindowResolution
+argument_list|()
+expr_stmt|;
+name|ChangeMessage
+name|cm3
+init|=
+name|clone
+argument_list|(
+name|cm1
+argument_list|)
+decl_stmt|;
+name|cm3
+operator|.
+name|setWrittenOn
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|b1
+operator|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|(
+name|cm1
+argument_list|)
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|NOTE_DB
+argument_list|)
+expr_stmt|;
+name|ChangeBundle
+name|b3
+init|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|(
+name|cm3
+argument_list|)
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|REVIEW_DB
+argument_list|)
+decl_stmt|;
+name|String
+name|msg
+init|=
+literal|"writtenOn differs for ChangeMessage on "
+operator|+
+name|c
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" at index 0 in NoteDb vs. ReviewDb:"
+operator|+
+literal|" {2009-09-30 17:00:02.0} != {2009-09-30 17:00:10.0}"
+decl_stmt|;
+name|assertDiffs
+argument_list|(
+name|b1
+argument_list|,
+name|b3
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertDiffs
+argument_list|(
+name|b3
+argument_list|,
+name|b1
+argument_list|,
+name|msg
 argument_list|)
 expr_stmt|;
 block|}
@@ -2522,14 +3022,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|diffPatchSetsMixedSourcesRoundsTimestamp ()
+DECL|method|diffPatchSetsMixedSourcesAllowsSlop ()
 specifier|public
 name|void
-name|diffPatchSetsMixedSourcesRoundsTimestamp
+name|diffPatchSetsMixedSourcesAllowsSlop
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|subWindowResolution
+argument_list|()
+expr_stmt|;
 name|Change
 name|c
 init|=
@@ -2542,9 +3045,6 @@ argument_list|,
 name|accountId
 argument_list|)
 decl_stmt|;
-name|subSecondResolution
-argument_list|()
-expr_stmt|;
 name|PatchSet
 name|ps1
 init|=
@@ -2672,10 +3172,10 @@ argument_list|()
 operator|+
 literal|",1:"
 operator|+
-literal|" {2009-09-30 17:00:01.0} != {2009-09-30 17:00:01.2}"
+literal|" {2009-09-30 17:00:02.0} != {2009-09-30 17:00:03.0}"
 argument_list|)
 expr_stmt|;
-comment|// One NoteDb, timestamp is rounded.
+comment|// One NoteDb, slop is allowed.
 name|b1
 operator|=
 operator|new
@@ -2729,6 +3229,109 @@ argument_list|(
 name|b1
 argument_list|,
 name|b2
+argument_list|)
+expr_stmt|;
+comment|// But not too much slop.
+name|superWindowResolution
+argument_list|()
+expr_stmt|;
+name|PatchSet
+name|ps3
+init|=
+name|clone
+argument_list|(
+name|ps1
+argument_list|)
+decl_stmt|;
+name|ps3
+operator|.
+name|setCreatedOn
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|b1
+operator|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|()
+argument_list|,
+name|patchSets
+argument_list|(
+name|ps1
+argument_list|)
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|NOTE_DB
+argument_list|)
+expr_stmt|;
+name|ChangeBundle
+name|b3
+init|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|()
+argument_list|,
+name|patchSets
+argument_list|(
+name|ps3
+argument_list|)
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|REVIEW_DB
+argument_list|)
+decl_stmt|;
+name|String
+name|msg
+init|=
+literal|"createdOn differs for PatchSet.Id "
+operator|+
+name|c
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|",1 in NoteDb vs. ReviewDb:"
+operator|+
+literal|" {2009-09-30 17:00:02.0} != {2009-09-30 17:00:10.0}"
+decl_stmt|;
+name|assertDiffs
+argument_list|(
+name|b1
+argument_list|,
+name|b3
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertDiffs
+argument_list|(
+name|b3
+argument_list|,
+name|b1
+argument_list|,
+name|msg
 argument_list|)
 expr_stmt|;
 block|}
@@ -3062,10 +3665,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|diffPatchSetApprovalsMixedSourcesRoundsTimestamp ()
+DECL|method|diffPatchSetApprovalsMixedSourcesAllowsSlop ()
 specifier|public
 name|void
-name|diffPatchSetApprovalsMixedSourcesRoundsTimestamp
+name|diffPatchSetApprovalsMixedSourcesAllowsSlop
 parameter_list|()
 throws|throws
 name|Exception
@@ -3082,7 +3685,7 @@ argument_list|,
 name|accountId
 argument_list|)
 decl_stmt|;
-name|subSecondResolution
+name|subWindowResolution
 argument_list|()
 expr_stmt|;
 name|PatchSetApproval
@@ -3208,10 +3811,10 @@ argument_list|()
 operator|+
 literal|"%2C1,100,Code-Review:"
 operator|+
-literal|" {2009-09-30 17:00:01.0} != {2009-09-30 17:00:01.2}"
+literal|" {2009-09-30 17:00:07.0} != {2009-09-30 17:00:08.0}"
 argument_list|)
 expr_stmt|;
-comment|// One NoteDb, timestamp is rounded.
+comment|// One NoteDb, slop is allowed.
 name|b1
 operator|=
 operator|new
@@ -3265,6 +3868,109 @@ argument_list|(
 name|b1
 argument_list|,
 name|b2
+argument_list|)
+expr_stmt|;
+comment|// But not too much slop.
+name|superWindowResolution
+argument_list|()
+expr_stmt|;
+name|PatchSetApproval
+name|a3
+init|=
+name|clone
+argument_list|(
+name|a1
+argument_list|)
+decl_stmt|;
+name|a3
+operator|.
+name|setGranted
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|b1
+operator|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|()
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|(
+name|a1
+argument_list|)
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|NOTE_DB
+argument_list|)
+expr_stmt|;
+name|ChangeBundle
+name|b3
+init|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|()
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|(
+name|a3
+argument_list|)
+argument_list|,
+name|comments
+argument_list|()
+argument_list|,
+name|REVIEW_DB
+argument_list|)
+decl_stmt|;
+name|String
+name|msg
+init|=
+literal|"granted differs for PatchSetApproval.Key "
+operator|+
+name|c
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|"%2C1,100,Code-Review in NoteDb vs. ReviewDb:"
+operator|+
+literal|" {2009-09-30 17:00:07.0} != {2009-09-30 17:00:15.0}"
+decl_stmt|;
+name|assertDiffs
+argument_list|(
+name|b1
+argument_list|,
+name|b3
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertDiffs
+argument_list|(
+name|b3
+argument_list|,
+name|b1
+argument_list|,
+name|msg
 argument_list|)
 expr_stmt|;
 block|}
@@ -3607,14 +4313,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|diffPatchLineCommentsMixedSourcesRoundsTimestamp ()
+DECL|method|diffPatchLineCommentsMixedSourcesAllowsSlop ()
 specifier|public
 name|void
-name|diffPatchLineCommentsMixedSourcesRoundsTimestamp
+name|diffPatchLineCommentsMixedSourcesAllowsSlop
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|subWindowResolution
+argument_list|()
+expr_stmt|;
 name|Change
 name|c
 init|=
@@ -3627,9 +4336,6 @@ argument_list|,
 name|accountId
 argument_list|)
 decl_stmt|;
-name|subSecondResolution
-argument_list|()
-expr_stmt|;
 name|PatchLineComment
 name|c1
 init|=
@@ -3756,10 +4462,10 @@ argument_list|()
 operator|+
 literal|",1,filename,uuid:"
 operator|+
-literal|" {2009-09-30 17:00:01.0} != {2009-09-30 17:00:01.2}"
+literal|" {2009-09-30 17:00:02.0} != {2009-09-30 17:00:03.0}"
 argument_list|)
 expr_stmt|;
-comment|// One NoteDb, timestamp is rounded.
+comment|// One NoteDb, slop is allowed.
 name|b1
 operator|=
 operator|new
@@ -3813,6 +4519,109 @@ argument_list|(
 name|b1
 argument_list|,
 name|b2
+argument_list|)
+expr_stmt|;
+comment|// But not too much slop.
+name|superWindowResolution
+argument_list|()
+expr_stmt|;
+name|PatchLineComment
+name|c3
+init|=
+name|clone
+argument_list|(
+name|c1
+argument_list|)
+decl_stmt|;
+name|c3
+operator|.
+name|setWrittenOn
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|b1
+operator|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|()
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|(
+name|c1
+argument_list|)
+argument_list|,
+name|NOTE_DB
+argument_list|)
+expr_stmt|;
+name|ChangeBundle
+name|b3
+init|=
+operator|new
+name|ChangeBundle
+argument_list|(
+name|c
+argument_list|,
+name|messages
+argument_list|()
+argument_list|,
+name|patchSets
+argument_list|()
+argument_list|,
+name|approvals
+argument_list|()
+argument_list|,
+name|comments
+argument_list|(
+name|c3
+argument_list|)
+argument_list|,
+name|REVIEW_DB
+argument_list|)
+decl_stmt|;
+name|String
+name|msg
+init|=
+literal|"writtenOn differs for PatchLineComment.Key "
+operator|+
+name|c
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|",1,filename,uuid in NoteDb vs. ReviewDb:"
+operator|+
+literal|" {2009-09-30 17:00:02.0} != {2009-09-30 17:00:10.0}"
+decl_stmt|;
+name|assertDiffs
+argument_list|(
+name|b1
+argument_list|,
+name|b3
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertDiffs
+argument_list|(
+name|b3
+argument_list|,
+name|b1
+argument_list|,
+name|msg
 argument_list|)
 expr_stmt|;
 block|}

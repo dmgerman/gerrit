@@ -531,6 +531,40 @@ operator|=
 name|id
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"ChangeMessage{"
+operator|+
+literal|"key="
+operator|+
+name|key
+operator|+
+literal|", author="
+operator|+
+name|author
+operator|+
+literal|", writtenOn="
+operator|+
+name|writtenOn
+operator|+
+literal|", patchset="
+operator|+
+name|patchset
+operator|+
+literal|", message=["
+operator|+
+name|message
+operator|+
+literal|"]}"
+return|;
+block|}
 block|}
 end_class
 
