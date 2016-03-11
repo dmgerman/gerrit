@@ -74,6 +74,14 @@ specifier|public
 class|class
 name|SubmitInput
 block|{
+comment|/** Not used anymore, kept for backward compatibility */
+annotation|@
+name|Deprecated
+DECL|field|waitForMerge
+specifier|public
+name|boolean
+name|waitForMerge
+decl_stmt|;
 DECL|field|onBehalfOf
 specifier|public
 name|String
