@@ -435,7 +435,7 @@ block|}
 block|}
 comment|/**    * Listeners to receive changes as they happen (limited by visibility of    * user).    */
 DECL|field|listeners
-specifier|private
+specifier|protected
 specifier|final
 name|DynamicSet
 argument_list|<
@@ -445,7 +445,7 @@ name|listeners
 decl_stmt|;
 comment|/** Listeners to receive all changes as they happen. */
 DECL|field|unrestrictedListeners
-specifier|private
+specifier|protected
 specifier|final
 name|DynamicSet
 argument_list|<
@@ -454,13 +454,13 @@ argument_list|>
 name|unrestrictedListeners
 decl_stmt|;
 DECL|field|projectCache
-specifier|private
+specifier|protected
 specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
 DECL|field|notesFactory
-specifier|private
+specifier|protected
 specifier|final
 name|ChangeNotes
 operator|.
@@ -621,7 +621,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|fireEventForUnrestrictedListeners (Event event)
-specifier|private
+specifier|protected
 name|void
 name|fireEventForUnrestrictedListeners
 parameter_list|(
