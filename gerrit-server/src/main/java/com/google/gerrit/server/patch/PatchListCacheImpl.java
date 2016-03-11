@@ -673,11 +673,6 @@ operator|.
 name|getProject
 argument_list|()
 decl_stmt|;
-name|ObjectId
-name|a
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|patchSet
@@ -730,7 +725,7 @@ argument_list|(
 operator|new
 name|PatchListKey
 argument_list|(
-name|a
+literal|null
 argument_list|,
 name|b
 argument_list|,
