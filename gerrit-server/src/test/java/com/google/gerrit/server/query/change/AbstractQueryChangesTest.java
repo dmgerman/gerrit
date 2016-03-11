@@ -1230,9 +1230,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|concurrent
-operator|.
-name|TimeUnit
+name|Map
 import|;
 end_import
 
@@ -1242,7 +1240,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 

@@ -84,13 +84,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
 name|common
 operator|.
-name|data
+name|base
 operator|.
-name|HostPageData
+name|Strings
 import|;
 end_import
 
@@ -100,11 +98,13 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
-name|base
+name|data
 operator|.
-name|Strings
+name|HostPageData
 import|;
 end_import
 
