@@ -170,7 +170,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ReviewersUtil
+name|IdentifiedUser
+operator|.
+name|GenericFactory
 import|;
 end_import
 
@@ -184,9 +186,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-operator|.
-name|GenericFactory
+name|ReviewersUtil
 import|;
 end_import
 
