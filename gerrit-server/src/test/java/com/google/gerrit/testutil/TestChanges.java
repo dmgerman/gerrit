@@ -370,22 +370,6 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|CommentsInNotesUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
 name|NotesMigration
 import|;
 end_import
@@ -876,15 +860,6 @@ operator|.
 name|class
 argument_list|)
 argument_list|,
-name|injector
-operator|.
-name|getInstance
-argument_list|(
-name|CommentsInNotesUtil
-operator|.
-name|class
-argument_list|)
-argument_list|,
 name|user
 argument_list|)
 argument_list|,
@@ -1120,7 +1095,7 @@ name|update
 return|;
 block|}
 block|}
-DECL|method|stubChangeControl ( GitRepositoryManager repoManager, NotesMigration migration, Change c, AllUsersName allUsers, ChangeNoteUtil changeNoteUtil, CommentsInNotesUtil commentsUtil, CurrentUser user)
+DECL|method|stubChangeControl ( GitRepositoryManager repoManager, NotesMigration migration, Change c, AllUsersName allUsers, ChangeNoteUtil noteUtil, CurrentUser user)
 specifier|private
 specifier|static
 name|ChangeControl
@@ -1139,10 +1114,7 @@ name|AllUsersName
 name|allUsers
 parameter_list|,
 name|ChangeNoteUtil
-name|changeNoteUtil
-parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|noteUtil
 parameter_list|,
 name|CurrentUser
 name|user
@@ -1220,9 +1192,7 @@ name|migration
 argument_list|,
 name|allUsers
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|c
 operator|.

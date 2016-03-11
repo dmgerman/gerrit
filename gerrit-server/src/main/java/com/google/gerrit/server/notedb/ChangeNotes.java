@@ -1205,23 +1205,17 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|changeNoteUtil
+DECL|field|noteUtil
 specifier|private
 specifier|final
 name|ChangeNoteUtil
-name|changeNoteUtil
-decl_stmt|;
-DECL|field|commentsUtil
-specifier|private
-specifier|final
-name|CommentsInNotesUtil
-name|commentsUtil
+name|noteUtil
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, Provider<InternalChangeQuery> queryProvider, ProjectCache projectCache, ChangeNoteUtil changeNoteUtil, CommentsInNotesUtil commentsUtil)
+DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, Provider<InternalChangeQuery> queryProvider, ProjectCache projectCache, ChangeNoteUtil noteUtil)
 specifier|public
 name|Factory
 parameter_list|(
@@ -1244,10 +1238,7 @@ name|ProjectCache
 name|projectCache
 parameter_list|,
 name|ChangeNoteUtil
-name|changeNoteUtil
-parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|noteUtil
 parameter_list|)
 block|{
 name|this
@@ -1282,15 +1273,9 @@ name|projectCache
 expr_stmt|;
 name|this
 operator|.
-name|changeNoteUtil
+name|noteUtil
 operator|=
-name|changeNoteUtil
-expr_stmt|;
-name|this
-operator|.
-name|commentsUtil
-operator|=
-name|commentsUtil
+name|noteUtil
 expr_stmt|;
 block|}
 DECL|method|createChecked (ReviewDb db, Change c)
@@ -1586,9 +1571,7 @@ name|migration
 argument_list|,
 name|allUsers
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|project
 argument_list|,
@@ -1619,9 +1602,7 @@ name|migration
 argument_list|,
 name|allUsers
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|change
 operator|.
@@ -1653,9 +1634,7 @@ name|migration
 argument_list|,
 name|allUsers
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|change
 operator|.
@@ -1725,9 +1704,7 @@ name|migration
 argument_list|,
 name|allUsers
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|change
 operator|.
@@ -1777,9 +1754,7 @@ name|migration
 argument_list|,
 name|allUsers
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|change
 operator|.
@@ -1926,9 +1901,7 @@ name|migration
 argument_list|,
 name|allUsers
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|project
 argument_list|,
@@ -2838,17 +2811,11 @@ name|db
 return|;
 block|}
 block|}
-DECL|field|changeNoteUtil
+DECL|field|noteUtil
 specifier|private
 specifier|final
 name|ChangeNoteUtil
-name|changeNoteUtil
-decl_stmt|;
-DECL|field|commentsUtil
-specifier|private
-specifier|final
-name|CommentsInNotesUtil
-name|commentsUtil
+name|noteUtil
 decl_stmt|;
 DECL|field|project
 specifier|private
@@ -2975,7 +2942,7 @@ name|draftCommentNotes
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
-DECL|method|ChangeNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil changeNoteUtil, CommentsInNotesUtil commentsUtil, Project.NameKey project, Change change)
+DECL|method|ChangeNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, Project.NameKey project, Change change)
 specifier|public
 name|ChangeNotes
 parameter_list|(
@@ -2989,10 +2956,7 @@ name|AllUsersName
 name|allUsers
 parameter_list|,
 name|ChangeNoteUtil
-name|changeNoteUtil
-parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|noteUtil
 parameter_list|,
 name|Project
 operator|.
@@ -3029,15 +2993,9 @@ name|allUsers
 expr_stmt|;
 name|this
 operator|.
-name|changeNoteUtil
+name|noteUtil
 operator|=
-name|changeNoteUtil
-expr_stmt|;
-name|this
-operator|.
-name|commentsUtil
-operator|=
-name|commentsUtil
+name|noteUtil
 expr_stmt|;
 name|this
 operator|.
@@ -3404,7 +3362,7 @@ name|migration
 argument_list|,
 name|allUsers
 argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|getChangeId
 argument_list|()
@@ -3629,9 +3587,7 @@ name|walk
 argument_list|,
 name|repoManager
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|)
 init|)
 block|{

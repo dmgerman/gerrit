@@ -571,13 +571,13 @@ operator|=
 name|pushCert
 expr_stmt|;
 block|}
-DECL|method|build (CommentsInNotesUtil commentsUtil)
+DECL|method|build (ChangeNoteUtil noteUtil)
 name|byte
 index|[]
 name|build
 parameter_list|(
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 parameter_list|)
 block|{
 name|ByteArrayOutputStream
@@ -698,7 +698,7 @@ argument_list|,
 name|PLC_ORDER
 argument_list|)
 expr_stmt|;
-name|commentsUtil
+name|noteUtil
 operator|.
 name|buildNote
 argument_list|(

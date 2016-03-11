@@ -1211,17 +1211,11 @@ DECL|field|revisionNoteMap
 name|RevisionNoteMap
 name|revisionNoteMap
 decl_stmt|;
-DECL|field|changeNoteUtil
+DECL|field|noteUtil
 specifier|private
 specifier|final
 name|ChangeNoteUtil
-name|changeNoteUtil
-decl_stmt|;
-DECL|field|commentsUtil
-specifier|private
-specifier|final
-name|CommentsInNotesUtil
-name|commentsUtil
+name|noteUtil
 decl_stmt|;
 DECL|field|id
 specifier|private
@@ -1296,7 +1290,7 @@ name|ChangeMessage
 argument_list|>
 name|changeMessagesByPatchSet
 decl_stmt|;
-DECL|method|ChangeNotesParser (Project.NameKey project, Change.Id changeId, ObjectId tip, RevWalk walk, GitRepositoryManager repoManager, ChangeNoteUtil changeNoteUtil, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeNotesParser (Project.NameKey project, Change.Id changeId, ObjectId tip, RevWalk walk, GitRepositoryManager repoManager, ChangeNoteUtil noteUtil)
 name|ChangeNotesParser
 parameter_list|(
 name|Project
@@ -1319,10 +1313,7 @@ name|GitRepositoryManager
 name|repoManager
 parameter_list|,
 name|ChangeNoteUtil
-name|changeNoteUtil
-parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|noteUtil
 parameter_list|)
 throws|throws
 name|RepositoryNotFoundException
@@ -1360,15 +1351,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|changeNoteUtil
+name|noteUtil
 operator|=
-name|changeNoteUtil
-expr_stmt|;
-name|this
-operator|.
-name|commentsUtil
-operator|=
-name|commentsUtil
+name|noteUtil
 expr_stmt|;
 name|approvals
 operator|=
@@ -3539,7 +3524,7 @@ name|RevisionNoteMap
 operator|.
 name|parse
 argument_list|(
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|id
 argument_list|,
@@ -3831,7 +3816,7 @@ argument_list|)
 expr_stmt|;
 name|accountId
 operator|=
-name|changeNoteUtil
+name|noteUtil
 operator|.
 name|parseIdent
 argument_list|(
@@ -4066,7 +4051,7 @@ argument_list|)
 expr_stmt|;
 name|accountId
 operator|=
-name|changeNoteUtil
+name|noteUtil
 operator|.
 name|parseIdent
 argument_list|(
@@ -4662,7 +4647,7 @@ name|label
 operator|.
 name|appliedBy
 operator|=
-name|changeNoteUtil
+name|noteUtil
 operator|.
 name|parseIdent
 argument_list|(
@@ -4756,7 +4741,7 @@ literal|null
 return|;
 block|}
 return|return
-name|changeNoteUtil
+name|noteUtil
 operator|.
 name|parseIdent
 argument_list|(
@@ -4817,7 +4802,7 @@ operator|.
 name|Id
 name|accountId
 init|=
-name|changeNoteUtil
+name|noteUtil
 operator|.
 name|parseIdent
 argument_list|(

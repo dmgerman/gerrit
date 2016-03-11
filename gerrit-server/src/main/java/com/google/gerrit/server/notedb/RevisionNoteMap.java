@@ -218,13 +218,13 @@ name|RevisionNote
 argument_list|>
 name|revisionNotes
 decl_stmt|;
-DECL|method|parse (CommentsInNotesUtil commentsUtil, Change.Id changeId, ObjectReader reader, NoteMap noteMap, boolean draftsOnly)
+DECL|method|parse (ChangeNoteUtil noteUtil, Change.Id changeId, ObjectReader reader, NoteMap noteMap, boolean draftsOnly)
 specifier|static
 name|RevisionNoteMap
 name|parse
 parameter_list|(
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 parameter_list|,
 name|Change
 operator|.
@@ -272,7 +272,7 @@ init|=
 operator|new
 name|RevisionNote
 argument_list|(
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|changeId
 argument_list|,

@@ -387,11 +387,11 @@ specifier|final
 name|String
 name|anonymousCowardName
 decl_stmt|;
-DECL|field|changeNoteUtil
+DECL|field|noteUtil
 specifier|protected
 specifier|final
 name|ChangeNoteUtil
-name|changeNoteUtil
+name|noteUtil
 decl_stmt|;
 DECL|field|when
 specifier|protected
@@ -417,7 +417,7 @@ specifier|private
 name|ObjectId
 name|result
 decl_stmt|;
-DECL|method|AbstractChangeUpdate (NotesMigration migration, GitRepositoryManager repoManager, ChangeControl ctl, PersonIdent serverIdent, String anonymousCowardName, ChangeNoteUtil changeNoteUtil, Date when)
+DECL|method|AbstractChangeUpdate (NotesMigration migration, GitRepositoryManager repoManager, ChangeControl ctl, PersonIdent serverIdent, String anonymousCowardName, ChangeNoteUtil noteUtil, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
@@ -437,7 +437,7 @@ name|String
 name|anonymousCowardName
 parameter_list|,
 name|ChangeNoteUtil
-name|changeNoteUtil
+name|noteUtil
 parameter_list|,
 name|Date
 name|when
@@ -475,9 +475,9 @@ name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
-name|changeNoteUtil
+name|noteUtil
 operator|=
-name|changeNoteUtil
+name|noteUtil
 expr_stmt|;
 name|this
 operator|.
@@ -633,7 +633,7 @@ name|IdentifiedUser
 condition|)
 block|{
 return|return
-name|changeNoteUtil
+name|noteUtil
 operator|.
 name|newIdent
 argument_list|(
@@ -684,7 +684,7 @@ name|when
 parameter_list|)
 block|{
 return|return
-name|changeNoteUtil
+name|noteUtil
 operator|.
 name|newIdent
 argument_list|(

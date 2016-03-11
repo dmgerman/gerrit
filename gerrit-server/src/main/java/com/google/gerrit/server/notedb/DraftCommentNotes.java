@@ -409,17 +409,17 @@ specifier|final
 name|AllUsersName
 name|draftsProject
 decl_stmt|;
-DECL|field|commentsUtil
+DECL|field|noteUtil
 specifier|private
 specifier|final
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, CommentsInNotesUtil commentsUtil)
+DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil)
 specifier|public
 name|Factory
 parameter_list|(
@@ -432,8 +432,8 @@ parameter_list|,
 name|AllUsersName
 name|allUsers
 parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 parameter_list|)
 block|{
 name|this
@@ -456,9 +456,9 @@ name|allUsers
 expr_stmt|;
 name|this
 operator|.
-name|commentsUtil
+name|noteUtil
 operator|=
-name|commentsUtil
+name|noteUtil
 expr_stmt|;
 block|}
 DECL|method|create (Change.Id changeId, Account.Id accountId)
@@ -487,7 +487,7 @@ name|migration
 argument_list|,
 name|draftsProject
 argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|changeId
 argument_list|,
@@ -502,11 +502,11 @@ specifier|final
 name|AllUsersName
 name|draftsProject
 decl_stmt|;
-DECL|field|commentsUtil
+DECL|field|noteUtil
 specifier|private
 specifier|final
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 decl_stmt|;
 DECL|field|author
 specifier|private
@@ -531,7 +531,7 @@ specifier|private
 name|RevisionNoteMap
 name|revisionNoteMap
 decl_stmt|;
-DECL|method|DraftCommentNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName draftsProject, CommentsInNotesUtil commentsUtil, Change.Id changeId, Account.Id author)
+DECL|method|DraftCommentNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName draftsProject, ChangeNoteUtil noteUtil, Change.Id changeId, Account.Id author)
 name|DraftCommentNotes
 parameter_list|(
 name|GitRepositoryManager
@@ -543,8 +543,8 @@ parameter_list|,
 name|AllUsersName
 name|draftsProject
 parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 parameter_list|,
 name|Change
 operator|.
@@ -580,9 +580,9 @@ name|author
 expr_stmt|;
 name|this
 operator|.
-name|commentsUtil
+name|noteUtil
 operator|=
-name|commentsUtil
+name|noteUtil
 expr_stmt|;
 block|}
 DECL|method|getRevisionNoteMap ()
@@ -745,7 +745,7 @@ name|RevisionNoteMap
 operator|.
 name|parse
 argument_list|(
-name|commentsUtil
+name|noteUtil
 argument_list|,
 name|getChangeId
 argument_list|()

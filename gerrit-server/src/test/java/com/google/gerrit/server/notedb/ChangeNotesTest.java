@@ -6590,7 +6590,7 @@ literal|"\n"
 operator|+
 literal|"1:2-3:4\n"
 operator|+
-name|CommentsInNotesUtil
+name|ChangeNoteUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -7221,9 +7221,7 @@ name|rw
 argument_list|,
 name|repoManager
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|)
 init|)
 block|{
@@ -7305,9 +7303,7 @@ name|rw
 argument_list|,
 name|repoManager
 argument_list|,
-name|changeNoteUtil
-argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|)
 init|)
 block|{
@@ -9110,7 +9106,7 @@ literal|"\n"
 operator|+
 literal|"1:1-2:1\n"
 operator|+
-name|CommentsInNotesUtil
+name|ChangeNoteUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -9133,7 +9129,7 @@ literal|"\n"
 operator|+
 literal|"2:1-3:1\n"
 operator|+
-name|CommentsInNotesUtil
+name|ChangeNoteUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -9160,7 +9156,7 @@ literal|"\n"
 operator|+
 literal|"3:0-4:1\n"
 operator|+
-name|CommentsInNotesUtil
+name|ChangeNoteUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -9503,7 +9499,7 @@ literal|"\n"
 operator|+
 literal|"1:1-2:1\n"
 operator|+
-name|CommentsInNotesUtil
+name|ChangeNoteUtil
 operator|.
 name|formatTime
 argument_list|(
@@ -9526,7 +9522,7 @@ literal|"\n"
 operator|+
 literal|"2:1-3:1\n"
 operator|+
-name|CommentsInNotesUtil
+name|ChangeNoteUtil
 operator|.
 name|formatTime
 argument_list|(
