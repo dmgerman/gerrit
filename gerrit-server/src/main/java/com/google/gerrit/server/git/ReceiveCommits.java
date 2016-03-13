@@ -11799,6 +11799,13 @@ argument_list|(
 name|msg
 argument_list|)
 operator|.
+name|setNotify
+argument_list|(
+name|magicBranch
+operator|.
+name|notify
+argument_list|)
+operator|.
 name|setRequestScopePropagator
 argument_list|(
 name|requestScopePropagator
