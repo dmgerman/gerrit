@@ -682,6 +682,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|lib
 operator|.
 name|Constants
@@ -985,9 +999,15 @@ operator|.
 name|Factory
 name|updateManagerFactory
 decl_stmt|;
+DECL|field|changeNoteUtil
+specifier|private
+specifier|final
+name|ChangeNoteUtil
+name|changeNoteUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeRebuilder (SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, ChangeControl.GenericFactory controlFactory, IdentifiedUser.GenericFactory userFactory, InternalUser.Factory internalUserFactory, PatchListCache patchListCache, ChangeUpdate.Factory updateFactory, ChangeDraftUpdate.Factory draftUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory)
+DECL|method|ChangeRebuilder (SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, ChangeControl.GenericFactory controlFactory, IdentifiedUser.GenericFactory userFactory, InternalUser.Factory internalUserFactory, PatchListCache patchListCache, ChangeUpdate.Factory updateFactory, ChangeDraftUpdate.Factory draftUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeNoteUtil changeNoteUtil)
 name|ChangeRebuilder
 parameter_list|(
 name|SchemaFactory
@@ -1031,6 +1051,9 @@ name|NoteDbUpdateManager
 operator|.
 name|Factory
 name|updateManagerFactory
+parameter_list|,
+name|ChangeNoteUtil
+name|changeNoteUtil
 parameter_list|)
 block|{
 name|this
@@ -1086,6 +1109,12 @@ operator|.
 name|updateManagerFactory
 operator|=
 name|updateManagerFactory
+expr_stmt|;
+name|this
+operator|.
+name|changeNoteUtil
+operator|=
+name|changeNoteUtil
 expr_stmt|;
 block|}
 DECL|method|rebuildAsync (final Change.Id id, ListeningExecutorService executor)
@@ -1173,6 +1202,8 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
+throws|,
+name|ConfigInvalidException
 block|{
 name|Change
 name|change
@@ -2031,6 +2062,8 @@ name|manager
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|String
 name|refName
@@ -2126,13 +2159,18 @@ operator|.
 name|Id
 name|authorId
 init|=
-name|ChangeNoteUtil
+name|changeNoteUtil
 operator|.
 name|parseIdent
 argument_list|(
 name|commit
 operator|.
 name|getAuthorIdent
+argument_list|()
+argument_list|,
+name|change
+operator|.
+name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;

@@ -638,12 +638,6 @@ operator|.
 name|Id
 name|accountId
 decl_stmt|;
-DECL|field|commentsUtil
-specifier|private
-specifier|final
-name|CommentsInNotesUtil
-name|commentsUtil
-decl_stmt|;
 comment|// TODO: can go back to a list?
 DECL|field|put
 specifier|private
@@ -665,7 +659,7 @@ name|delete
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, CommentsInNotesUtil commentsUtil, @Assisted ChangeControl ctl, @Assisted Date when)
+DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted ChangeControl ctl, @Assisted Date when)
 specifier|private
 name|ChangeDraftUpdate
 parameter_list|(
@@ -688,8 +682,8 @@ parameter_list|,
 name|AllUsersName
 name|allUsers
 parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 parameter_list|,
 annotation|@
 name|Assisted
@@ -714,6 +708,8 @@ name|serverIdent
 argument_list|,
 name|anonymousCowardName
 argument_list|,
+name|noteUtil
+argument_list|,
 name|when
 argument_list|)
 expr_stmt|;
@@ -722,12 +718,6 @@ operator|.
 name|draftsProject
 operator|=
 name|allUsers
-expr_stmt|;
-name|this
-operator|.
-name|commentsUtil
-operator|=
-name|commentsUtil
 expr_stmt|;
 name|checkState
 argument_list|(
@@ -1113,7 +1103,7 @@ argument_list|()
 operator|.
 name|build
 argument_list|(
-name|commentsUtil
+name|noteUtil
 argument_list|)
 decl_stmt|;
 if|if
@@ -1350,6 +1340,8 @@ name|RevisionNoteMap
 operator|.
 name|parse
 argument_list|(
+name|noteUtil
+argument_list|,
 name|ctl
 operator|.
 name|getId

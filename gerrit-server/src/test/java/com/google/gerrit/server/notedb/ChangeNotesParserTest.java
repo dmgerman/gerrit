@@ -1344,7 +1344,7 @@ name|writeCommit
 argument_list|(
 name|body
 argument_list|,
-name|ChangeNoteUtil
+name|noteUtil
 operator|.
 name|newIdent
 argument_list|(
@@ -1629,6 +1629,8 @@ argument_list|,
 name|walk
 argument_list|,
 name|repoManager
+argument_list|,
+name|noteUtil
 argument_list|)
 return|;
 block|}

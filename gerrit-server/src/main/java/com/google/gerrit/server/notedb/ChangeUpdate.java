@@ -1022,12 +1022,6 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
-DECL|field|commentsUtil
-specifier|private
-specifier|final
-name|CommentsInNotesUtil
-name|commentsUtil
-decl_stmt|;
 DECL|field|draftUpdateFactory
 specifier|private
 specifier|final
@@ -1171,7 +1165,7 @@ name|draftUpdate
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1212,8 +1206,8 @@ name|Assisted
 name|ChangeControl
 name|ctl
 parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 parameter_list|)
 block|{
 name|this
@@ -1241,13 +1235,13 @@ operator|.
 name|getWhen
 argument_list|()
 argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1293,8 +1287,8 @@ name|Assisted
 name|Date
 name|when
 parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 parameter_list|)
 block|{
 name|this
@@ -1333,7 +1327,7 @@ operator|.
 name|nameComparator
 argument_list|()
 argument_list|,
-name|commentsUtil
+name|noteUtil
 argument_list|)
 expr_stmt|;
 block|}
@@ -1361,7 +1355,7 @@ return|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1412,8 +1406,8 @@ name|String
 argument_list|>
 name|labelNameComparator
 parameter_list|,
-name|CommentsInNotesUtil
-name|commentsUtil
+name|ChangeNoteUtil
+name|noteUtil
 parameter_list|)
 block|{
 name|super
@@ -1428,6 +1422,8 @@ name|serverIdent
 argument_list|,
 name|anonymousCowardName
 argument_list|,
+name|noteUtil
+argument_list|,
 name|when
 argument_list|)
 expr_stmt|;
@@ -1436,12 +1432,6 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
-expr_stmt|;
-name|this
-operator|.
-name|commentsUtil
-operator|=
-name|commentsUtil
 expr_stmt|;
 name|this
 operator|.
@@ -2503,7 +2493,7 @@ argument_list|()
 operator|.
 name|build
 argument_list|(
-name|commentsUtil
+name|noteUtil
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2662,6 +2652,8 @@ name|RevisionNoteMap
 operator|.
 name|parse
 argument_list|(
+name|noteUtil
+argument_list|,
 name|ctl
 operator|.
 name|getId
