@@ -130,6 +130,10 @@ comment|/** NoteDb is disabled. */
 DECL|enumConstant|OFF
 name|OFF
 block|,
+comment|/** Writing data to NoteDb is enabled. */
+DECL|enumConstant|WRITE
+name|WRITE
+block|,
 comment|/** Reading and writing all data to NoteDb is enabled. */
 DECL|enumConstant|READ_WRITE
 name|READ_WRITE
