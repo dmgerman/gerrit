@@ -270,7 +270,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexCollection
+name|Index
 import|;
 end_import
 
@@ -580,14 +580,14 @@ name|ChangeIndex
 name|index
 parameter_list|)
 function_decl|;
-DECL|method|create (ListeningExecutorService executor, IndexCollection indexes)
+DECL|method|create (ListeningExecutorService executor, ChangeIndexCollection indexes)
 name|ChangeIndexer
 name|create
 parameter_list|(
 name|ListeningExecutorService
 name|executor
 parameter_list|,
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|)
 function_decl|;
@@ -721,7 +721,7 @@ decl_stmt|;
 DECL|field|indexes
 specifier|private
 specifier|final
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|index
@@ -849,7 +849,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListener, @Assisted ListeningExecutorService executor, @Assisted IndexCollection indexes)
+DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListener, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
 name|ChangeIndexer
 parameter_list|(
 name|SchemaFactory
@@ -879,7 +879,7 @@ name|executor
 parameter_list|,
 annotation|@
 name|Assisted
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|)
 block|{
@@ -1065,7 +1065,12 @@ name|IOException
 block|{
 for|for
 control|(
-name|ChangeIndex
+name|Index
+argument_list|<
+name|?
+argument_list|,
+name|ChangeData
+argument_list|>
 name|i
 range|:
 name|getWriteIndexes

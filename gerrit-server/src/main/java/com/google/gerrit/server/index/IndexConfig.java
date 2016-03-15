@@ -98,24 +98,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|change
-operator|.
-name|ChangeIndex
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -129,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation-specific configuration for secondary indexes.  *<p>  * Contains configuration that is tied to a specific index implementation but is  * otherwise global, i.e. not tied to a specific {@link ChangeIndex} and schema  * version.  */
+comment|/**  * Implementation-specific configuration for secondary indexes.  *<p>  * Contains configuration that is tied to a specific index implementation but is  * otherwise global, i.e. not tied to a specific {@link Index} and schema  * version.  */
 end_comment
 
 begin_class

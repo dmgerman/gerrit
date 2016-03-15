@@ -292,7 +292,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexCollection
+name|IndexConfig
 import|;
 end_import
 
@@ -308,7 +308,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexConfig
+name|QueryOptions
 import|;
 end_import
 
@@ -440,24 +440,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|QueryOptions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|testutil
 operator|.
 name|GerritBaseTests
@@ -541,7 +523,7 @@ name|index
 decl_stmt|;
 DECL|field|indexes
 specifier|private
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|queryBuilder
@@ -577,7 +559,7 @@ expr_stmt|;
 name|indexes
 operator|=
 operator|new
-name|IndexCollection
+name|ChangeIndexCollection
 argument_list|()
 expr_stmt|;
 name|indexes
@@ -2225,9 +2207,9 @@ name|limit
 parameter_list|)
 block|{
 return|return
-name|QueryOptions
+name|IndexedChangeQuery
 operator|.
-name|create
+name|createOptions
 argument_list|(
 name|CONFIG
 argument_list|,

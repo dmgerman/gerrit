@@ -182,7 +182,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexCollection
+name|Schema
 import|;
 end_import
 
@@ -198,7 +198,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|Schema
+name|change
+operator|.
+name|ChangeIndexCollection
 import|;
 end_import
 
@@ -724,7 +726,7 @@ decl_stmt|;
 DECL|field|indexes
 specifier|private
 specifier|final
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|reindexerFactory
@@ -748,7 +750,7 @@ name|reindexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, LuceneChangeIndex.Factory indexFactory, IndexCollection indexes, OnlineReindexer.Factory reindexerFactory)
+DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, LuceneChangeIndex.Factory indexFactory, ChangeIndexCollection indexes, OnlineReindexer.Factory reindexerFactory)
 name|LuceneVersionManager
 parameter_list|(
 annotation|@
@@ -764,7 +766,7 @@ operator|.
 name|Factory
 name|indexFactory
 parameter_list|,
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|,
 name|OnlineReindexer

@@ -368,22 +368,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexCollection
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|IndexConfig
 import|;
 end_import
@@ -419,6 +403,24 @@ operator|.
 name|change
 operator|.
 name|ChangeIndex
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
+name|ChangeIndexCollection
 import|;
 end_import
 
@@ -745,7 +747,7 @@ decl_stmt|;
 DECL|field|indexes
 specifier|private
 specifier|final
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|changeDataFactory
@@ -766,7 +768,7 @@ name|notesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalChangeQuery (IndexConfig indexConfig, QueryProcessor queryProcessor, IndexCollection indexes, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory)
+DECL|method|InternalChangeQuery (IndexConfig indexConfig, QueryProcessor queryProcessor, ChangeIndexCollection indexes, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory)
 name|InternalChangeQuery
 parameter_list|(
 name|IndexConfig
@@ -775,7 +777,7 @@ parameter_list|,
 name|QueryProcessor
 name|queryProcessor
 parameter_list|,
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|,
 name|ChangeData
@@ -2169,7 +2171,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|schema (@ullable IndexCollection indexes)
+DECL|method|schema ( @ullable ChangeIndexCollection indexes)
 specifier|private
 specifier|static
 name|Schema
@@ -2180,7 +2182,7 @@ name|schema
 parameter_list|(
 annotation|@
 name|Nullable
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|)
 block|{

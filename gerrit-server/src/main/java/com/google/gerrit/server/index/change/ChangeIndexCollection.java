@@ -96,7 +96,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|Index
+name|IndexCollection
 import|;
 end_import
 
@@ -118,22 +118,38 @@ name|ChangeData
 import|;
 end_import
 
-begin_interface
-DECL|interface|ChangeIndex
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_class
+annotation|@
+name|Singleton
+DECL|class|ChangeIndexCollection
 specifier|public
-interface|interface
-name|ChangeIndex
+class|class
+name|ChangeIndexCollection
 extends|extends
-name|Index
+name|IndexCollection
 argument_list|<
 name|Change
 operator|.
 name|Id
 argument_list|,
 name|ChangeData
+argument_list|,
+name|ChangeIndex
 argument_list|>
 block|{ }
-end_interface
+end_class
 
 end_unit
 

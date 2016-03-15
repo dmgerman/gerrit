@@ -198,6 +198,24 @@ name|index
 operator|.
 name|change
 operator|.
+name|ChangeIndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
 name|ChangeIndexer
 import|;
 end_import
@@ -442,19 +460,12 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|bind
-argument_list|(
-name|IndexCollection
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|listener
 argument_list|()
 operator|.
 name|to
 argument_list|(
-name|IndexCollection
+name|ChangeIndexCollection
 operator|.
 name|class
 argument_list|)
@@ -473,7 +484,7 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getChangeIndexer ( @ndexExecutorINTERACTIVE) ListeningExecutorService executor, ChangeIndexer.Factory factory, IndexCollection indexes)
+DECL|method|getChangeIndexer ( @ndexExecutorINTERACTIVE) ListeningExecutorService executor, ChangeIndexer.Factory factory, ChangeIndexCollection indexes)
 name|ChangeIndexer
 name|getChangeIndexer
 parameter_list|(
@@ -490,7 +501,7 @@ operator|.
 name|Factory
 name|factory
 parameter_list|,
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|)
 block|{

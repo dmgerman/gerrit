@@ -78,22 +78,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
-operator|.
-name|IndexCollection
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|OperatorPredicate
@@ -186,10 +170,10 @@ name|FakeQueryBuilder
 extends|extends
 name|ChangeQueryBuilder
 block|{
-DECL|method|FakeQueryBuilder (IndexCollection indexes)
+DECL|method|FakeQueryBuilder (ChangeIndexCollection indexes)
 name|FakeQueryBuilder
 parameter_list|(
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|)
 block|{
