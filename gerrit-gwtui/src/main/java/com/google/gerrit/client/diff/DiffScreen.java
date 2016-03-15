@@ -2599,8 +2599,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|prefs
-operator|.
 name|renderEntireFile
 argument_list|()
 condition|)
