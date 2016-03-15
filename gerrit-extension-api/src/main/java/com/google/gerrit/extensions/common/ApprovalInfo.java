@@ -84,6 +84,11 @@ name|ApprovalInfo
 extends|extends
 name|AccountInfo
 block|{
+DECL|field|tag
+specifier|public
+name|String
+name|tag
+decl_stmt|;
 DECL|field|value
 specifier|public
 name|Integer

@@ -875,6 +875,15 @@ name|getRange
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|r
+operator|.
+name|tag
+operator|=
+name|c
+operator|.
+name|getTag
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|loader

@@ -2142,7 +2142,7 @@ literal|" writtenOn=2009-09-30 17:00:06.0, patchset="
 operator|+
 name|id
 operator|+
-literal|",1,"
+literal|",1, tag=null,"
 operator|+
 literal|" message=[message 2]}\n"
 operator|+
@@ -2156,7 +2156,7 @@ literal|" writtenOn=2009-09-30 17:00:12.0, patchset="
 operator|+
 name|id
 operator|+
-literal|",1,"
+literal|",1, tag=null,"
 operator|+
 literal|" message=[null]}\n"
 operator|+
@@ -2172,7 +2172,7 @@ literal|" writtenOn=2009-09-30 17:00:06.0, patchset="
 operator|+
 name|id
 operator|+
-literal|",1,"
+literal|",1, tag=null,"
 operator|+
 literal|" message=[message 2]}"
 argument_list|)

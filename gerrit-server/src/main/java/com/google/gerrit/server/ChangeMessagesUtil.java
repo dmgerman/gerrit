@@ -494,6 +494,16 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|update
+operator|.
+name|setTag
+argument_list|(
+name|changeMessage
+operator|.
+name|getTag
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|db
 operator|.
 name|changeMessages

@@ -5162,6 +5162,11 @@ block|}
 name|Integer
 name|value
 decl_stmt|;
+name|String
+name|tag
+init|=
+literal|null
+decl_stmt|;
 name|Timestamp
 name|date
 init|=
@@ -5229,6 +5234,13 @@ else|:
 literal|null
 expr_stmt|;
 block|}
+name|tag
+operator|=
+name|psa
+operator|.
+name|getTag
+argument_list|()
+expr_stmt|;
 name|date
 operator|=
 name|psa
@@ -5275,6 +5287,8 @@ argument_list|(
 name|accountId
 argument_list|,
 name|value
+argument_list|,
+name|tag
 argument_list|,
 name|date
 argument_list|)
@@ -5628,6 +5642,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|byLabel
@@ -5740,6 +5756,15 @@ operator|.
 name|getGranted
 argument_list|()
 expr_stmt|;
+name|info
+operator|.
+name|tag
+operator|=
+name|psa
+operator|.
+name|getTag
+argument_list|()
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -5774,7 +5799,7 @@ return|return
 name|labels
 return|;
 block|}
-DECL|method|approvalInfo (Account.Id id, Integer value, Timestamp date)
+DECL|method|approvalInfo (Account.Id id, Integer value, String tag, Timestamp date)
 specifier|private
 name|ApprovalInfo
 name|approvalInfo
@@ -5786,6 +5811,9 @@ name|id
 parameter_list|,
 name|Integer
 name|value
+parameter_list|,
+name|String
+name|tag
 parameter_list|,
 name|Timestamp
 name|date
@@ -5814,6 +5842,12 @@ operator|.
 name|date
 operator|=
 name|date
+expr_stmt|;
+name|ai
+operator|.
+name|tag
+operator|=
+name|tag
 expr_stmt|;
 name|accountLoader
 operator|.
@@ -6395,6 +6429,15 @@ operator|=
 name|message
 operator|.
 name|getMessage
+argument_list|()
+expr_stmt|;
+name|cmi
+operator|.
+name|tag
+operator|=
+name|message
+operator|.
+name|getTag
 argument_list|()
 expr_stmt|;
 name|cmi
