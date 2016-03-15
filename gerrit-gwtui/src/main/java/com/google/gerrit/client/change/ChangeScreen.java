@@ -2456,11 +2456,11 @@ expr_stmt|;
 name|addExtensionPoints
 argument_list|(
 name|info
-argument_list|)
-expr_stmt|;
+argument_list|,
 name|initCurrentRevision
 argument_list|(
 name|info
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|loadConfigInfo
@@ -2709,13 +2709,16 @@ name|info
 argument_list|)
 return|;
 block|}
-DECL|method|addExtensionPoints (ChangeInfo change)
+DECL|method|addExtensionPoints (ChangeInfo change, RevisionInfo rev)
 specifier|private
 name|void
 name|addExtensionPoints
 parameter_list|(
 name|ChangeInfo
 name|change
+parameter_list|,
+name|RevisionInfo
+name|rev
 parameter_list|)
 block|{
 name|addExtensionPoint
@@ -2727,6 +2730,8 @@ argument_list|,
 name|headerExtension
 argument_list|,
 name|change
+argument_list|,
+name|rev
 argument_list|)
 expr_stmt|;
 name|addExtensionPoint
@@ -2738,6 +2743,8 @@ argument_list|,
 name|headerExtensionMiddle
 argument_list|,
 name|change
+argument_list|,
+name|rev
 argument_list|)
 expr_stmt|;
 name|addExtensionPoint
@@ -2749,6 +2756,8 @@ argument_list|,
 name|headerExtensionRight
 argument_list|,
 name|change
+argument_list|,
+name|rev
 argument_list|)
 expr_stmt|;
 name|addExtensionPoint
@@ -2760,10 +2769,12 @@ argument_list|,
 name|changeExtension
 argument_list|,
 name|change
+argument_list|,
+name|rev
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addExtensionPoint (GerritUiExtensionPoint extensionPoint, Panel p, ChangeInfo change)
+DECL|method|addExtensionPoint (GerritUiExtensionPoint extensionPoint, Panel p, ChangeInfo change, RevisionInfo rev)
 specifier|private
 name|void
 name|addExtensionPoint
@@ -2776,6 +2787,9 @@ name|p
 parameter_list|,
 name|ChangeInfo
 name|change
+parameter_list|,
+name|RevisionInfo
+name|rev
 parameter_list|)
 block|{
 name|ExtensionPanel
@@ -2798,6 +2812,19 @@ operator|.
 name|CHANGE_INFO
 argument_list|,
 name|change
+argument_list|)
+expr_stmt|;
+name|extensionPanel
+operator|.
+name|putObject
+argument_list|(
+name|GerritUiExtensionPoint
+operator|.
+name|Key
+operator|.
+name|REVISION_INFO
+argument_list|,
+name|rev
 argument_list|)
 expr_stmt|;
 name|p

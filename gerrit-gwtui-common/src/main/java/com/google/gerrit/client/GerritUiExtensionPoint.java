@@ -110,11 +110,14 @@ block|{
 DECL|enumConstant|ACCOUNT_INFO
 DECL|enumConstant|CHANGE_INFO
 DECL|enumConstant|PROJECT_NAME
+DECL|enumConstant|REVISION_INFO
 name|ACCOUNT_INFO
 block|,
 name|CHANGE_INFO
 block|,
 name|PROJECT_NAME
+block|,
+name|REVISION_INFO
 block|}
 block|}
 end_enum
