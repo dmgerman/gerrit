@@ -1421,12 +1421,24 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|serve
+argument_list|(
+literal|"/fonts/*"
+argument_list|)
+operator|.
+name|with
+argument_list|(
+name|FontsServlet
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
-comment|// In the war case, bower_components are either inlined by vulcanize, or
-comment|// live under /polygerrit_ui in the war file, so we don't need a
-comment|// separate servlet.
+comment|// In the war case, bower_components and fonts are either inlined
+comment|// by vulcanize, or live under /polygerrit_ui in the war file,
+comment|// so we don't need a separate servlet.
 block|}
 name|Key
 argument_list|<
@@ -1592,6 +1604,43 @@ block|{
 return|return
 operator|new
 name|BowerComponentsServlet
+argument_list|(
+name|cache
+argument_list|,
+name|getPaths
+argument_list|()
+operator|.
+name|buckOut
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Provides
+annotation|@
+name|Singleton
+DECL|method|getFontsServlet ( @amedCACHE) Cache<Path, Resource> cache)
+name|FontsServlet
+name|getFontsServlet
+parameter_list|(
+annotation|@
+name|Named
+argument_list|(
+name|CACHE
+argument_list|)
+name|Cache
+argument_list|<
+name|Path
+argument_list|,
+name|Resource
+argument_list|>
+name|cache
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+operator|new
+name|FontsServlet
 argument_list|(
 name|cache
 argument_list|,
