@@ -80,6 +80,8 @@ name|server
 operator|.
 name|index
 operator|.
+name|change
+operator|.
 name|ChangeField
 operator|.
 name|FUZZY_TOPIC
@@ -128,7 +130,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeIndex
+name|IndexPredicate
 import|;
 end_import
 
@@ -144,7 +146,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexPredicate
+name|change
+operator|.
+name|ChangeIndex
 import|;
 end_import
 

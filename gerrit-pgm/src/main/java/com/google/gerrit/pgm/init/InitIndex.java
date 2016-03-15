@@ -194,7 +194,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeSchemas
+name|IndexModule
+operator|.
+name|IndexType
 import|;
 end_import
 
@@ -210,9 +212,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexModule
+name|change
 operator|.
-name|IndexType
+name|ChangeSchemas
 import|;
 end_import
 

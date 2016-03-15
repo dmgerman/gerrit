@@ -1474,6 +1474,8 @@ name|server
 operator|.
 name|index
 operator|.
+name|change
+operator|.
 name|ReindexAfterUpdate
 import|;
 end_import

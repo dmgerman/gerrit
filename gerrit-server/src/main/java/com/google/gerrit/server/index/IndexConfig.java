@@ -98,6 +98,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
+name|ChangeIndex
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse

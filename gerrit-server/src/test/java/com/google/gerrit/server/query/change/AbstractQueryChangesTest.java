@@ -808,7 +808,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeField
+name|IndexCollection
 import|;
 end_import
 
@@ -824,7 +824,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexCollection
+name|change
+operator|.
+name|ChangeField
 import|;
 end_import
 

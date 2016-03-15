@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.index
+DECL|package|com.google.gerrit.server.index.change
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|index
+operator|.
+name|change
 package|;
 end_package
 
@@ -192,6 +194,8 @@ name|server
 operator|.
 name|index
 operator|.
+name|change
+operator|.
 name|IndexedChangeQuery
 operator|.
 name|convertOptions
@@ -273,6 +277,38 @@ operator|.
 name|client
 operator|.
 name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexConfig
 import|;
 end_import
 
@@ -500,7 +536,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|index
 specifier|private
-name|FakeIndex
+name|FakeChangeIndex
 name|index
 decl_stmt|;
 DECL|field|indexes
@@ -531,9 +567,9 @@ block|{
 name|index
 operator|=
 operator|new
-name|FakeIndex
+name|FakeChangeIndex
 argument_list|(
-name|FakeIndex
+name|FakeChangeIndex
 operator|.
 name|V2
 argument_list|)
@@ -1699,9 +1735,9 @@ operator|.
 name|setSearchIndex
 argument_list|(
 operator|new
-name|FakeIndex
+name|FakeChangeIndex
 argument_list|(
-name|FakeIndex
+name|FakeChangeIndex
 operator|.
 name|V1
 argument_list|)

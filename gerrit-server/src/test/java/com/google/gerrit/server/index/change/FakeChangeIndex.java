@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.index
+DECL|package|com.google.gerrit.server.index.change
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|index
+operator|.
+name|change
 package|;
 end_package
 
@@ -93,6 +95,38 @@ operator|.
 name|client
 operator|.
 name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|FieldDef
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|Schema
 import|;
 end_import
 
@@ -223,9 +257,9 @@ end_import
 begin_class
 annotation|@
 name|Ignore
-DECL|class|FakeIndex
+DECL|class|FakeChangeIndex
 class|class
-name|FakeIndex
+name|FakeChangeIndex
 implements|implements
 name|ChangeIndex
 block|{
@@ -399,8 +433,8 @@ name|ChangeData
 argument_list|>
 name|schema
 decl_stmt|;
-DECL|method|FakeIndex (Schema<ChangeData> schema)
-name|FakeIndex
+DECL|method|FakeChangeIndex (Schema<ChangeData> schema)
+name|FakeChangeIndex
 parameter_list|(
 name|Schema
 argument_list|<
@@ -487,7 +521,7 @@ name|QueryParseException
 block|{
 return|return
 operator|new
-name|FakeIndex
+name|FakeChangeIndex
 operator|.
 name|Source
 argument_list|(

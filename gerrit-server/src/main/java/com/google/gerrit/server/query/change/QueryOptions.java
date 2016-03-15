@@ -96,6 +96,8 @@ name|server
 operator|.
 name|index
 operator|.
+name|change
+operator|.
 name|ChangeField
 operator|.
 name|CHANGE
@@ -113,6 +115,8 @@ operator|.
 name|server
 operator|.
 name|index
+operator|.
+name|change
 operator|.
 name|ChangeField
 operator|.
