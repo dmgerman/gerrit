@@ -2073,6 +2073,10 @@ name|getRevId
 argument_list|()
 operator|!=
 literal|null
+argument_list|,
+literal|"RevId required for comment: %s"
+argument_list|,
+name|c
 argument_list|)
 expr_stmt|;
 name|checkArgument

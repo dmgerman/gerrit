@@ -684,6 +684,27 @@ block|}
 end_function
 
 begin_function
+DECL|method|getPatchSetId ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|getPatchSetId
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|getParentKey
+argument_list|()
+operator|.
+name|getParentKey
+argument_list|()
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|getLine ()
 specifier|public
 name|int
