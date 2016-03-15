@@ -506,7 +506,9 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
-name|TestTimeUtil
+name|FakeEmailSender
+operator|.
+name|Message
 import|;
 end_import
 
@@ -520,9 +522,7 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
-name|FakeEmailSender
-operator|.
-name|Message
+name|TestTimeUtil
 import|;
 end_import
 
