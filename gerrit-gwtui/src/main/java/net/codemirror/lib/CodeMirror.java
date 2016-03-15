@@ -1482,6 +1482,42 @@ name|this
 argument_list|)
 return|;
 block|}
+DECL|method|setGutterMarker (int line, String gutterId, Element value)
+specifier|public
+specifier|final
+specifier|native
+name|LineHandle
+name|setGutterMarker
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|String
+name|gutterId
+parameter_list|,
+name|Element
+name|value
+parameter_list|)
+comment|/*-{     return this.setGutterMarker(line, gutterId, value);   }-*/
+function_decl|;
+DECL|method|setGutterMarker (LineHandle line, String gutterId, Element value)
+specifier|public
+specifier|final
+specifier|native
+name|LineHandle
+name|setGutterMarker
+parameter_list|(
+name|LineHandle
+name|line
+parameter_list|,
+name|String
+name|gutterId
+parameter_list|,
+name|Element
+name|value
+parameter_list|)
+comment|/*-{     return this.setGutterMarker(line, gutterId, value);   }-*/
+function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
 name|CodeMirror

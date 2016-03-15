@@ -170,6 +170,24 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|diff
+operator|.
+name|DiffScreen
+operator|.
+name|DiffScreenType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|info
 operator|.
 name|ChangeInfo
@@ -938,6 +956,12 @@ specifier|final
 name|String
 name|path
 decl_stmt|;
+DECL|field|diffScreenType
+specifier|private
+specifier|final
+name|DiffScreenType
+name|diffScreenType
+decl_stmt|;
 DECL|field|hasPrev
 specifier|private
 name|boolean
@@ -963,7 +987,7 @@ specifier|private
 name|ReviewedState
 name|reviewedState
 decl_stmt|;
-DECL|method|Header (KeyCommandSet keys, PatchSet.Id base, PatchSet.Id patchSetId, String path)
+DECL|method|Header (KeyCommandSet keys, PatchSet.Id base, PatchSet.Id patchSetId, String path, DiffScreenType diffSreenType)
 name|Header
 parameter_list|(
 name|KeyCommandSet
@@ -981,6 +1005,9 @@ name|patchSetId
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+name|DiffScreenType
+name|diffSreenType
 parameter_list|)
 block|{
 name|initWidget
@@ -1016,6 +1043,12 @@ operator|.
 name|path
 operator|=
 name|path
+expr_stmt|;
+name|this
+operator|.
+name|diffScreenType
+operator|=
+name|diffSreenType
 expr_stmt|;
 if|if
 condition|(
@@ -2093,6 +2126,12 @@ name|info
 parameter_list|)
 block|{
 return|return
+name|diffScreenType
+operator|==
+name|DiffScreenType
+operator|.
+name|UNIFIED
+operator|||
 name|info
 operator|.
 name|binary
