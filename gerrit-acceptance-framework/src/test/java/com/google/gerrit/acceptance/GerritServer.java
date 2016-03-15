@@ -65,22 +65,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -298,7 +282,7 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
-name|GerritServerTests
+name|NoteDbChecker
 import|;
 end_import
 
@@ -312,7 +296,7 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
-name|NoteDbChecker
+name|NoteDbMode
 import|;
 end_import
 
@@ -1939,27 +1923,19 @@ try|try
 block|{
 if|if
 condition|(
-name|GerritServerTests
+name|NoteDbMode
 operator|.
-name|isEnvVarTrue
+name|get
+argument_list|()
+operator|.
+name|equals
 argument_list|(
-literal|"GERRIT_CHECK_NOTEDB"
+name|NoteDbMode
+operator|.
+name|CHECK
 argument_list|)
 condition|)
 block|{
-name|checkState
-argument_list|(
-operator|!
-name|GerritServerTests
-operator|.
-name|isNoteDbTestEnabled
-argument_list|()
-argument_list|,
-literal|"cannot rebuild and check NoteDb when starting from scratch with"
-operator|+
-literal|" NoteDb enabled"
-argument_list|)
-expr_stmt|;
 name|testInjector
 operator|.
 name|getInstance

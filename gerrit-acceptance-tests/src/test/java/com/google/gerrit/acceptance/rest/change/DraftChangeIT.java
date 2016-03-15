@@ -101,22 +101,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testutil
-operator|.
-name|GerritServerTests
-operator|.
-name|isNoteDbTestEnabled
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -327,6 +311,20 @@ operator|.
 name|testutil
 operator|.
 name|ConfigSuite
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|NoteDbMode
 import|;
 end_import
 
@@ -1072,7 +1070,9 @@ expr_stmt|;
 name|ReviewerState
 name|rs
 init|=
-name|isNoteDbTestEnabled
+name|NoteDbMode
+operator|.
+name|readWrite
 argument_list|()
 condition|?
 name|ReviewerState

@@ -85,22 +85,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testutil
-operator|.
-name|GerritServerTests
-operator|.
-name|isNoteDbTestEnabled
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -164,6 +148,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|NoteDbMode
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -218,7 +216,9 @@ argument_list|()
 operator|.
 name|that
 argument_list|(
-name|isNoteDbTestEnabled
+name|NoteDbMode
+operator|.
+name|readWrite
 argument_list|()
 argument_list|)
 operator|.

@@ -277,22 +277,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testutil
-operator|.
-name|GerritServerTests
-operator|.
-name|isNoteDbTestEnabled
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -925,6 +909,20 @@ operator|.
 name|FakeEmailSender
 operator|.
 name|Message
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|NoteDbMode
 import|;
 end_import
 
@@ -4036,7 +4034,9 @@ name|AccountInfo
 argument_list|>
 name|reviewers
 init|=
-name|isNoteDbTestEnabled
+name|NoteDbMode
+operator|.
+name|readWrite
 argument_list|()
 condition|?
 name|c
@@ -4358,7 +4358,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|isNoteDbTestEnabled
+name|NoteDbMode
+operator|.
+name|readWrite
 argument_list|()
 condition|)
 block|{
@@ -4898,7 +4900,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|isNoteDbTestEnabled
+name|NoteDbMode
+operator|.
+name|readWrite
 argument_list|()
 condition|)
 block|{
@@ -5005,7 +5009,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|isNoteDbTestEnabled
+name|NoteDbMode
+operator|.
+name|readWrite
 argument_list|()
 condition|)
 block|{
