@@ -1438,6 +1438,63 @@ operator|.
 name|LEGACY_ID
 argument_list|)
 decl_stmt|;
+DECL|method|idTerm (ChangeData cd)
+specifier|static
+name|Term
+name|idTerm
+parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|)
+block|{
+return|return
+name|QueryBuilder
+operator|.
+name|intTerm
+argument_list|(
+name|LEGACY_ID
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|cd
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|idTerm (Change.Id id)
+specifier|static
+name|Term
+name|idTerm
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+name|QueryBuilder
+operator|.
+name|intTerm
+argument_list|(
+name|LEGACY_ID
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|sortFieldName (FieldDef<?, ?> f)
 specifier|private
 specifier|static
@@ -1527,6 +1584,9 @@ DECL|field|queryBuilder
 specifier|private
 specifier|final
 name|QueryBuilder
+argument_list|<
+name|ChangeData
+argument_list|>
 name|queryBuilder
 decl_stmt|;
 DECL|field|openIndex
@@ -1649,7 +1709,10 @@ name|queryBuilder
 operator|=
 operator|new
 name|QueryBuilder
+argument_list|<>
 argument_list|(
+name|schema
+argument_list|,
 name|openConfig
 operator|.
 name|getAnalyzer
@@ -1900,7 +1963,7 @@ block|{
 name|Term
 name|id
 init|=
-name|QueryBuilder
+name|LuceneChangeIndex
 operator|.
 name|idTerm
 argument_list|(
@@ -2021,7 +2084,7 @@ block|{
 name|Term
 name|idTerm
 init|=
-name|QueryBuilder
+name|LuceneChangeIndex
 operator|.
 name|idTerm
 argument_list|(
@@ -3666,8 +3729,12 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|add (Document doc, Values<ChangeData> values)
+DECL|method|add (Document doc, Values<V> values)
 specifier|private
+specifier|static
+parameter_list|<
+name|V
+parameter_list|>
 name|void
 name|add
 parameter_list|(
@@ -3676,7 +3743,7 @@ name|doc
 parameter_list|,
 name|Values
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|values
 parameter_list|)
@@ -3719,7 +3786,7 @@ argument_list|)
 decl_stmt|;
 name|FieldDef
 argument_list|<
-name|ChangeData
+name|V
 argument_list|,
 name|?
 argument_list|>
