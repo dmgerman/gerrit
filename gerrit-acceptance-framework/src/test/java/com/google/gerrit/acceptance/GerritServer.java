@@ -238,6 +238,8 @@ name|server
 operator|.
 name|index
 operator|.
+name|change
+operator|.
 name|ChangeSchemas
 import|;
 end_import

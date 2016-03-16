@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.index
+DECL|package|com.google.gerrit.server.index.change
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|index
+operator|.
+name|change
 package|;
 end_package
 
@@ -245,6 +247,22 @@ operator|.
 name|QueueProvider
 operator|.
 name|QueueType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexExecutor
 import|;
 end_import
 
@@ -486,7 +504,7 @@ decl_stmt|;
 DECL|field|indexes
 specifier|private
 specifier|final
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|notesFactory
@@ -505,7 +523,7 @@ name|executor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReindexAfterUpdate ( OneOffRequestContext requestContext, Provider<InternalChangeQuery> queryProvider, ChangeIndexer.Factory indexerFactory, IndexCollection indexes, ChangeNotes.Factory notesFactory, @IndexExecutor(QueueType.BATCH) ListeningExecutorService executor)
+DECL|method|ReindexAfterUpdate ( OneOffRequestContext requestContext, Provider<InternalChangeQuery> queryProvider, ChangeIndexer.Factory indexerFactory, ChangeIndexCollection indexes, ChangeNotes.Factory notesFactory, @IndexExecutor(QueueType.BATCH) ListeningExecutorService executor)
 name|ReindexAfterUpdate
 parameter_list|(
 name|OneOffRequestContext
@@ -522,7 +540,7 @@ operator|.
 name|Factory
 name|indexerFactory
 parameter_list|,
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|,
 name|ChangeNotes

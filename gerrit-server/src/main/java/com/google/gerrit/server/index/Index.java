@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|query
 operator|.
-name|Change
+name|DataSource
 import|;
 end_import
 
@@ -116,60 +116,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|ChangeData
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|ChangeDataSource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|QueryOptions
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -179,20 +125,25 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Secondary index implementation for change documents.  *<p>  * {@link ChangeData} objects are inserted into the index and are queried by  * converting special {@link com.google.gerrit.server.query.Predicate} instances  * into index-aware predicates that use the index search results as a source.  *<p>  * Implementations must be thread-safe and should batch inserts/updates where  * appropriate.  */
+comment|/**  * Secondary index implementation for arbitrary documents.  *<p>  * Documents are inserted into the index and are queried by converting special  * {@link com.google.gerrit.server.query.Predicate} instances into index-aware  * predicates that use the index search results as a source.  *<p>  * Implementations must be thread-safe and should batch inserts/updates where  * appropriate.  */
 end_comment
 
 begin_interface
-DECL|interface|ChangeIndex
+DECL|interface|Index
 specifier|public
 interface|interface
-name|ChangeIndex
+name|Index
+parameter_list|<
+name|K
+parameter_list|,
+name|V
+parameter_list|>
 block|{
 comment|/** @return the schema version used by this index. */
 DECL|method|getSchema ()
 name|Schema
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|getSchema
 parameter_list|()
@@ -203,31 +154,29 @@ name|void
 name|close
 parameter_list|()
 function_decl|;
-comment|/**    * Update a change document in the index.    *<p>    * Semantically equivalent to deleting the document and reinserting it with    * new field values. A document that does not already exist is created. Results    * may not be immediately visible to searchers, but should be visible within a    * reasonable amount of time.    *    * @param cd change document    *    * @throws IOException    */
-DECL|method|replace (ChangeData cd)
+comment|/**    * Update a document in the index.    *<p>    * Semantically equivalent to deleting the document and reinserting it with    * new field values. A document that does not already exist is created. Results    * may not be immediately visible to searchers, but should be visible within a    * reasonable amount of time.    *    * @param obj document object    *    * @throws IOException    */
+DECL|method|replace (V obj)
 name|void
 name|replace
 parameter_list|(
-name|ChangeData
-name|cd
+name|V
+name|obj
 parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Delete a change document from the index by id.    *    * @param id change id    *    * @throws IOException    */
-DECL|method|delete (Change.Id id)
+comment|/**    * Delete a document from the index by key.    *    * @param key document key    *    * @throws IOException    */
+DECL|method|delete (K key)
 name|void
 name|delete
 parameter_list|(
-name|Change
-operator|.
-name|Id
-name|id
+name|K
+name|key
 parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Delete all change documents from the index.    *    * @throws IOException    */
+comment|/**    * Delete all documents from the index.    *    * @throws IOException    */
 DECL|method|deleteAll ()
 name|void
 name|deleteAll
@@ -235,14 +184,17 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *<p>    * This method may be called multiple times for variations on the same    * predicate or multiple predicate subtrees in the course of processing a    * single query, so it should not have any side effects (e.g. starting a    * search in the background).    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @param opts query options not implied by the predicate, such as start and    *     limit.    * @return a source of documents matching the predicate. Documents must be    *     returned in descending updated timestamp order.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
-DECL|method|getSource (Predicate<ChangeData> p, QueryOptions opts)
-name|ChangeDataSource
+comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *<p>    * This method may be called multiple times for variations on the same    * predicate or multiple predicate subtrees in the course of processing a    * single query, so it should not have any side effects (e.g. starting a    * search in the background).    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @param opts query options not implied by the predicate, such as start and    *     limit.    * @return a source of documents matching the predicate, returned in a    *     defined order depending on the type of documents.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
+DECL|method|getSource (Predicate<V> p, QueryOptions opts)
+name|DataSource
+argument_list|<
+name|V
+argument_list|>
 name|getSource
 parameter_list|(
 name|Predicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|,

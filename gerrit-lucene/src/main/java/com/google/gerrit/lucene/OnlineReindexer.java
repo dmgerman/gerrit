@@ -106,23 +106,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeIndex
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|IndexCollection
+name|Index
 import|;
 end_import
 
@@ -139,6 +123,42 @@ operator|.
 name|index
 operator|.
 name|SiteIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
+name|ChangeIndex
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
+name|ChangeIndexCollection
 import|;
 end_import
 
@@ -277,7 +297,7 @@ block|}
 DECL|field|indexes
 specifier|private
 specifier|final
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|batchIndexer
@@ -315,10 +335,10 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OnlineReindexer ( IndexCollection indexes, SiteIndexer batchIndexer, ProjectCache projectCache, @Assisted int version)
+DECL|method|OnlineReindexer ( ChangeIndexCollection indexes, SiteIndexer batchIndexer, ProjectCache projectCache, @Assisted int version)
 name|OnlineReindexer
 parameter_list|(
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|,
 name|SiteIndexer
@@ -461,13 +481,18 @@ return|return
 name|version
 return|;
 block|}
-DECL|method|version (ChangeIndex i)
+DECL|method|version (Index<?, ?> i)
 specifier|private
 specifier|static
 name|int
 name|version
 parameter_list|(
-name|ChangeIndex
+name|Index
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
 name|i
 parameter_list|)
 block|{

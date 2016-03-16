@@ -732,6 +732,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|DataSource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -2488,7 +2504,10 @@ name|legacyId
 decl_stmt|;
 DECL|field|returnedBySource
 specifier|private
-name|ChangeDataSource
+name|DataSource
+argument_list|<
+name|ChangeData
+argument_list|>
 name|returnedBySource
 decl_stmt|;
 DECL|field|project
@@ -3537,12 +3556,15 @@ return|return
 name|db
 return|;
 block|}
-DECL|method|isFromSource (ChangeDataSource s)
+DECL|method|isFromSource (DataSource<ChangeData> s)
 specifier|public
 name|boolean
 name|isFromSource
 parameter_list|(
-name|ChangeDataSource
+name|DataSource
+argument_list|<
+name|ChangeData
+argument_list|>
 name|s
 parameter_list|)
 block|{
@@ -3552,12 +3574,15 @@ operator|==
 name|returnedBySource
 return|;
 block|}
-DECL|method|cacheFromSource (ChangeDataSource s)
+DECL|method|cacheFromSource (DataSource<ChangeData> s)
 specifier|public
 name|void
 name|cacheFromSource
 parameter_list|(
-name|ChangeDataSource
+name|DataSource
+argument_list|<
+name|ChangeData
+argument_list|>
 name|s
 parameter_list|)
 block|{

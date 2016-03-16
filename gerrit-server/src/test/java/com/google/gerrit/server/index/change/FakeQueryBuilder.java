@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.index
+DECL|package|com.google.gerrit.server.index.change
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|index
+operator|.
+name|change
 package|;
 end_package
 
@@ -168,10 +170,10 @@ name|FakeQueryBuilder
 extends|extends
 name|ChangeQueryBuilder
 block|{
-DECL|method|FakeQueryBuilder (IndexCollection indexes)
+DECL|method|FakeQueryBuilder (ChangeIndexCollection indexes)
 name|FakeQueryBuilder
 parameter_list|(
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|)
 block|{

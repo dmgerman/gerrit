@@ -80,7 +80,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeField
+name|RegexPredicate
 import|;
 end_import
 
@@ -96,7 +96,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|RegexPredicate
+name|change
+operator|.
+name|ChangeField
 import|;
 end_import
 

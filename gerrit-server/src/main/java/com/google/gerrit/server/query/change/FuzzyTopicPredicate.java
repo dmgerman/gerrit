@@ -80,6 +80,8 @@ name|server
 operator|.
 name|index
 operator|.
+name|change
+operator|.
 name|ChangeField
 operator|.
 name|FUZZY_TOPIC
@@ -128,6 +130,24 @@ name|server
 operator|.
 name|index
 operator|.
+name|IndexPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
 name|ChangeIndex
 import|;
 end_import
@@ -144,7 +164,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexPredicate
+name|change
+operator|.
+name|IndexedChangeQuery
 import|;
 end_import
 
@@ -320,7 +342,7 @@ argument_list|,
 name|this
 argument_list|)
 argument_list|,
-name|QueryOptions
+name|IndexedChangeQuery
 operator|.
 name|oneResult
 argument_list|()

@@ -124,18 +124,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -185,12 +173,25 @@ comment|/** Dynamic pointers to the index versions used for searching and writin
 end_comment
 
 begin_class
-annotation|@
-name|Singleton
 DECL|class|IndexCollection
 specifier|public
+specifier|abstract
 class|class
 name|IndexCollection
+parameter_list|<
+name|K
+parameter_list|,
+name|V
+parameter_list|,
+name|I
+extends|extends
+name|Index
+parameter_list|<
+name|K
+parameter_list|,
+name|V
+parameter_list|>
+parameter_list|>
 implements|implements
 name|LifecycleListener
 block|{
@@ -199,7 +200,7 @@ specifier|private
 specifier|final
 name|CopyOnWriteArrayList
 argument_list|<
-name|ChangeIndex
+name|I
 argument_list|>
 name|writeIndexes
 decl_stmt|;
@@ -208,7 +209,7 @@ specifier|private
 specifier|final
 name|AtomicReference
 argument_list|<
-name|ChangeIndex
+name|I
 argument_list|>
 name|searchIndex
 decl_stmt|;
@@ -243,7 +244,7 @@ block|}
 comment|/** @return the current search index version. */
 DECL|method|getSearchIndex ()
 specifier|public
-name|ChangeIndex
+name|I
 name|getSearchIndex
 parameter_list|()
 block|{
@@ -254,16 +255,16 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|setSearchIndex (ChangeIndex index)
+DECL|method|setSearchIndex (I index)
 specifier|public
 name|void
 name|setSearchIndex
 parameter_list|(
-name|ChangeIndex
+name|I
 name|index
 parameter_list|)
 block|{
-name|ChangeIndex
+name|I
 name|old
 init|=
 name|searchIndex
@@ -303,7 +304,7 @@ DECL|method|getWriteIndexes ()
 specifier|public
 name|Collection
 argument_list|<
-name|ChangeIndex
+name|I
 argument_list|>
 name|getWriteIndexes
 parameter_list|()
@@ -317,13 +318,13 @@ name|writeIndexes
 argument_list|)
 return|;
 block|}
-DECL|method|addWriteIndex (ChangeIndex index)
+DECL|method|addWriteIndex (I index)
 specifier|public
 specifier|synchronized
-name|ChangeIndex
+name|I
 name|addWriteIndex
 parameter_list|(
-name|ChangeIndex
+name|I
 name|index
 parameter_list|)
 block|{
@@ -490,7 +491,7 @@ block|}
 block|}
 DECL|method|getWriteIndex (int version)
 specifier|public
-name|ChangeIndex
+name|I
 name|getWriteIndex
 parameter_list|(
 name|int
@@ -499,7 +500,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|ChangeIndex
+name|I
 name|i
 range|:
 name|writeIndexes
@@ -543,7 +544,7 @@ name|void
 name|stop
 parameter_list|()
 block|{
-name|ChangeIndex
+name|I
 name|read
 init|=
 name|searchIndex
@@ -566,7 +567,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|ChangeIndex
+name|I
 name|write
 range|:
 name|writeIndexes

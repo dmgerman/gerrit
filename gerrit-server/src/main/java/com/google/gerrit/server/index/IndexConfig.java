@@ -111,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation-specific configuration for secondary indexes.  *<p>  * Contains configuration that is tied to a specific index implementation but is  * otherwise global, i.e. not tied to a specific {@link ChangeIndex} and schema  * version.  */
+comment|/**  * Implementation-specific configuration for secondary indexes.  *<p>  * Contains configuration that is tied to a specific index implementation but is  * otherwise global, i.e. not tied to a specific {@link Index} and schema  * version.  */
 end_comment
 
 begin_class

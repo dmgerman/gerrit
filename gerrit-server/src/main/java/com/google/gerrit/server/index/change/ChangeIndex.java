@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.query.change
+DECL|package|com.google.gerrit.server.index.change
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
+name|index
 operator|.
 name|change
 package|;
@@ -76,11 +76,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|change
+name|client
 operator|.
-name|HashtagsUtil
+name|Change
 import|;
 end_import
 
@@ -96,7 +96,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexPredicate
+name|Index
 import|;
 end_import
 
@@ -110,125 +110,30 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
+name|query
 operator|.
 name|change
 operator|.
-name|ChangeField
+name|ChangeData
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_class
-DECL|class|HashtagPredicate
-class|class
-name|HashtagPredicate
+begin_interface
+DECL|interface|ChangeIndex
+specifier|public
+interface|interface
+name|ChangeIndex
 extends|extends
-name|IndexPredicate
+name|Index
 argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|,
 name|ChangeData
 argument_list|>
-block|{
-DECL|method|HashtagPredicate (String hashtag)
-name|HashtagPredicate
-parameter_list|(
-name|String
-name|hashtag
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|ChangeField
-operator|.
-name|HASHTAG
-argument_list|,
-name|HashtagsUtil
-operator|.
-name|cleanupHashtag
-argument_list|(
-name|hashtag
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|match (final ChangeData object)
-specifier|public
-name|boolean
-name|match
-parameter_list|(
-specifier|final
-name|ChangeData
-name|object
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-for|for
-control|(
-name|String
-name|hashtag
-range|:
-name|object
-operator|.
-name|notes
-argument_list|()
-operator|.
-name|load
-argument_list|()
-operator|.
-name|getHashtags
-argument_list|()
-control|)
-block|{
-if|if
-condition|(
-name|hashtag
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-name|getValue
-argument_list|()
-argument_list|)
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getCost ()
-specifier|public
-name|int
-name|getCost
-parameter_list|()
-block|{
-return|return
-literal|1
-return|;
-block|}
-block|}
-end_class
+block|{ }
+end_interface
 
 end_unit
 

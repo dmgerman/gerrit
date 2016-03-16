@@ -808,6 +808,8 @@ name|server
 operator|.
 name|index
 operator|.
+name|change
+operator|.
 name|ChangeField
 import|;
 end_import
@@ -824,7 +826,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexCollection
+name|change
+operator|.
+name|ChangeIndexCollection
 import|;
 end_import
 
@@ -1344,7 +1348,7 @@ DECL|field|indexes
 annotation|@
 name|Inject
 specifier|protected
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|schemaFactory

@@ -90,20 +90,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|base
 operator|.
 name|Function
@@ -452,7 +438,7 @@ name|int
 name|version
 decl_stmt|;
 DECL|method|Schema (Iterable<FieldDef<T, ?>> fields)
-specifier|protected
+specifier|public
 name|Schema
 parameter_list|(
 name|Iterable
@@ -475,8 +461,6 @@ name|fields
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|VisibleForTesting
 DECL|method|Schema (int version, Iterable<FieldDef<T, ?>> fields)
 specifier|public
 name|Schema
@@ -1078,6 +1062,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|setVersion (int version)
+specifier|public
 name|void
 name|setVersion
 parameter_list|(

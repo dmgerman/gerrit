@@ -219,6 +219,7 @@ name|T
 argument_list|>
 block|{
 DECL|method|Single (String name, FieldType<T> type, boolean stored)
+specifier|protected
 name|Single
 parameter_list|(
 name|String
@@ -282,6 +283,7 @@ argument_list|>
 argument_list|>
 block|{
 DECL|method|Repeatable (String name, FieldType<T> type, boolean stored)
+specifier|protected
 name|Repeatable
 parameter_list|(
 name|String
@@ -342,11 +344,13 @@ class|class
 name|FillArgs
 block|{
 DECL|field|trackingFooters
+specifier|public
 specifier|final
 name|TrackingFooters
 name|trackingFooters
 decl_stmt|;
 DECL|field|allowsDrafts
+specifier|public
 specifier|final
 name|boolean
 name|allowsDrafts

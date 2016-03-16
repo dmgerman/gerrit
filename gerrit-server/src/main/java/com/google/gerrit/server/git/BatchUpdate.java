@@ -402,6 +402,8 @@ name|server
 operator|.
 name|index
 operator|.
+name|change
+operator|.
 name|ChangeIndexer
 import|;
 end_import

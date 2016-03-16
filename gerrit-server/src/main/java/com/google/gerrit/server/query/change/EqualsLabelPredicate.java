@@ -222,7 +222,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeField
+name|IndexPredicate
 import|;
 end_import
 
@@ -238,7 +238,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexPredicate
+name|change
+operator|.
+name|ChangeField
 import|;
 end_import
 

@@ -80,6 +80,24 @@ name|server
 operator|.
 name|index
 operator|.
+name|IndexPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
 name|ChangeField
 import|;
 end_import
@@ -95,6 +113,8 @@ operator|.
 name|server
 operator|.
 name|index
+operator|.
+name|change
 operator|.
 name|ChangeIndex
 import|;
@@ -112,7 +132,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexPredicate
+name|change
+operator|.
+name|IndexedChangeQuery
 import|;
 end_import
 
@@ -256,7 +278,7 @@ name|getSource
 argument_list|(
 name|p
 argument_list|,
-name|QueryOptions
+name|IndexedChangeQuery
 operator|.
 name|oneResult
 argument_list|()

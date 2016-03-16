@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.index
+DECL|package|com.google.gerrit.server.index.change
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|index
+operator|.
+name|change
 package|;
 end_package
 
@@ -125,6 +127,54 @@ operator|.
 name|Change
 operator|.
 name|Status
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|QueryOptions
 import|;
 end_import
 
@@ -295,24 +345,6 @@ operator|.
 name|change
 operator|.
 name|OrSource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|QueryOptions
 import|;
 end_import
 
@@ -899,7 +931,7 @@ block|}
 DECL|field|indexes
 specifier|private
 specifier|final
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 decl_stmt|;
 DECL|field|config
@@ -910,10 +942,10 @@ name|config
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IndexRewriter (IndexCollection indexes, IndexConfig config)
+DECL|method|IndexRewriter (ChangeIndexCollection indexes, IndexConfig config)
 name|IndexRewriter
 parameter_list|(
-name|IndexCollection
+name|ChangeIndexCollection
 name|indexes
 parameter_list|,
 name|IndexConfig
