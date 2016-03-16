@@ -1543,7 +1543,7 @@ block|{
 return|return
 name|toPatch
 argument_list|(
-literal|""
+literal|"sidebyside"
 argument_list|,
 name|diffBase
 argument_list|,
@@ -1586,7 +1586,7 @@ block|{
 return|return
 name|toPatch
 argument_list|(
-literal|""
+literal|"sidebyside"
 argument_list|,
 name|diffBase
 argument_list|,
@@ -4036,7 +4036,7 @@ name|codemirror
 argument_list|(
 name|token
 argument_list|,
-literal|null
+name|baseId
 argument_list|,
 name|id
 argument_list|,

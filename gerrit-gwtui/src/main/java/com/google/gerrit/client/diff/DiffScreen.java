@@ -460,6 +460,24 @@ name|extensions
 operator|.
 name|client
 operator|.
+name|GeneralPreferencesInfo
+operator|.
+name|DiffView
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
 name|ListChangesOption
 import|;
 end_import
@@ -1046,16 +1064,6 @@ name|n
 expr_stmt|;
 block|}
 block|}
-DECL|enum|DiffScreenType
-enum|enum
-name|DiffScreenType
-block|{
-DECL|enumConstant|SIDE_BY_SIDE
-DECL|enumConstant|UNIFIED
-name|SIDE_BY_SIDE
-block|,
-name|UNIFIED
-block|}
 DECL|field|changeId
 specifier|private
 specifier|final
@@ -1087,6 +1095,11 @@ DECL|field|prefs
 specifier|final
 name|DiffPreferences
 name|prefs
+decl_stmt|;
+DECL|field|diffScreenType
+specifier|final
+name|DiffView
+name|diffScreenType
 decl_stmt|;
 DECL|field|startSide
 specifier|private
@@ -1169,7 +1182,7 @@ DECL|field|header
 name|Header
 name|header
 decl_stmt|;
-DECL|method|DiffScreen ( PatchSet.Id base, PatchSet.Id revision, String path, DisplaySide startSide, int startLine, DiffScreenType diffScreenType)
+DECL|method|DiffScreen ( PatchSet.Id base, PatchSet.Id revision, String path, DisplaySide startSide, int startLine, DiffView diffScreenType)
 name|DiffScreen
 parameter_list|(
 name|PatchSet
@@ -1191,7 +1204,7 @@ parameter_list|,
 name|int
 name|startLine
 parameter_list|,
-name|DiffScreenType
+name|DiffView
 name|diffScreenType
 parameter_list|)
 block|{
@@ -1233,6 +1246,12 @@ operator|.
 name|startLine
 operator|=
 name|startLine
+expr_stmt|;
+name|this
+operator|.
+name|diffScreenType
+operator|=
+name|diffScreenType
 expr_stmt|;
 name|prefs
 operator|=

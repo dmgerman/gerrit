@@ -170,24 +170,6 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|diff
-operator|.
-name|DiffScreen
-operator|.
-name|DiffScreenType
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
 name|info
 operator|.
 name|ChangeInfo
@@ -383,6 +365,24 @@ operator|.
 name|common
 operator|.
 name|PageLinks
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|GeneralPreferencesInfo
+operator|.
+name|DiffView
 import|;
 end_import
 
@@ -959,7 +959,7 @@ decl_stmt|;
 DECL|field|diffScreenType
 specifier|private
 specifier|final
-name|DiffScreenType
+name|DiffView
 name|diffScreenType
 decl_stmt|;
 DECL|field|hasPrev
@@ -987,7 +987,7 @@ specifier|private
 name|ReviewedState
 name|reviewedState
 decl_stmt|;
-DECL|method|Header (KeyCommandSet keys, PatchSet.Id base, PatchSet.Id patchSetId, String path, DiffScreenType diffSreenType)
+DECL|method|Header (KeyCommandSet keys, PatchSet.Id base, PatchSet.Id patchSetId, String path, DiffView diffSreenType)
 name|Header
 parameter_list|(
 name|KeyCommandSet
@@ -1006,7 +1006,7 @@ parameter_list|,
 name|String
 name|path
 parameter_list|,
-name|DiffScreenType
+name|DiffView
 name|diffSreenType
 parameter_list|)
 block|{
@@ -2128,14 +2128,9 @@ block|{
 return|return
 name|diffScreenType
 operator|==
-name|DiffScreenType
+name|DiffView
 operator|.
-name|UNIFIED
-operator|||
-name|info
-operator|.
-name|binary
-argument_list|()
+name|UNIFIED_DIFF
 condition|?
 name|Dispatcher
 operator|.
