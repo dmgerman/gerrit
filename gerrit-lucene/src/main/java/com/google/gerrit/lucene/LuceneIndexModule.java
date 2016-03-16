@@ -374,15 +374,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|factory
-argument_list|(
-name|OnlineReindexer
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|install
 argument_list|(
 operator|new
