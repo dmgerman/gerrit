@@ -1388,8 +1388,7 @@ name|equals
 argument_list|(
 name|view
 operator|.
-name|getPath
-argument_list|()
+name|path
 argument_list|)
 condition|)
 block|{
