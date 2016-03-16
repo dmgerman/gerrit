@@ -104,6 +104,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|lucene
+operator|.
+name|LuceneVersionManager
+operator|.
+name|CHANGES_PREFIX
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|git
@@ -1792,6 +1808,8 @@ operator|.
 name|getDir
 argument_list|(
 name|sitePaths
+argument_list|,
+name|CHANGES_PREFIX
 argument_list|,
 name|schema
 argument_list|)

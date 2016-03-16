@@ -457,7 +457,6 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|CHANGES_PREFIX
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -558,7 +557,7 @@ name|ready
 expr_stmt|;
 block|}
 block|}
-DECL|method|getDir (SitePaths sitePaths, Schema<ChangeData> schema)
+DECL|method|getDir (SitePaths sitePaths, String prefix, Schema<?> schema)
 specifier|static
 name|Path
 name|getDir
@@ -566,9 +565,12 @@ parameter_list|(
 name|SitePaths
 name|sitePaths
 parameter_list|,
+name|String
+name|prefix
+parameter_list|,
 name|Schema
 argument_list|<
-name|ChangeData
+name|?
 argument_list|>
 name|schema
 parameter_list|)
@@ -586,7 +588,7 @@ name|format
 argument_list|(
 literal|"%s%04d"
 argument_list|,
-name|CHANGES_PREFIX
+name|prefix
 argument_list|,
 name|schema
 operator|.
@@ -1343,6 +1345,8 @@ init|=
 name|getDir
 argument_list|(
 name|sitePaths
+argument_list|,
+name|CHANGES_PREFIX
 argument_list|,
 name|schema
 argument_list|)
