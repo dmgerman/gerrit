@@ -1822,8 +1822,9 @@ return|return
 name|labelTypes
 return|;
 block|}
+comment|/** Returns whether the project is hidden. */
 DECL|method|isHidden ()
-specifier|private
+specifier|public
 name|boolean
 name|isHidden
 parameter_list|()
@@ -1853,11 +1854,11 @@ name|HIDDEN
 argument_list|)
 return|;
 block|}
-comment|/** Can this user see this project exists? */
-DECL|method|isVisible ()
+comment|/**    * Returns whether the project is readable to the current user. Note    * that the project could still be hidden.    */
+DECL|method|isReadable ()
 specifier|public
 name|boolean
-name|isVisible
+name|isReadable
 parameter_list|()
 block|{
 return|return
@@ -1874,6 +1875,18 @@ operator|.
 name|READ
 argument_list|)
 operator|)
+return|;
+block|}
+comment|/**    * Returns whether the project is accessible to the current user, i.e.    * readable and not hidden.    */
+DECL|method|isVisible ()
+specifier|public
+name|boolean
+name|isVisible
+parameter_list|()
+block|{
+return|return
+name|isReadable
+argument_list|()
 operator|&&
 operator|!
 name|isHidden
