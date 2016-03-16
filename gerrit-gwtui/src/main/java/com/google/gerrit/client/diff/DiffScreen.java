@@ -1065,7 +1065,6 @@ name|Id
 name|changeId
 decl_stmt|;
 DECL|field|base
-specifier|private
 specifier|final
 name|PatchSet
 operator|.
@@ -1073,7 +1072,6 @@ name|Id
 name|base
 decl_stmt|;
 DECL|field|revision
-specifier|private
 specifier|final
 name|PatchSet
 operator|.
@@ -1081,10 +1079,14 @@ name|Id
 name|revision
 decl_stmt|;
 DECL|field|path
-specifier|private
 specifier|final
 name|String
 name|path
+decl_stmt|;
+DECL|field|prefs
+specifier|final
+name|DiffPreferences
+name|prefs
 decl_stmt|;
 DECL|field|startSide
 specifier|private
@@ -1095,11 +1097,6 @@ DECL|field|startLine
 specifier|private
 name|int
 name|startLine
-decl_stmt|;
-DECL|field|prefs
-specifier|private
-name|DiffPreferences
-name|prefs
 decl_stmt|;
 DECL|field|changeStatus
 specifier|private
@@ -1891,8 +1888,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|getPrefs
-argument_list|()
+name|prefs
 operator|.
 name|hideTopMenu
 argument_list|()
@@ -3940,37 +3936,6 @@ name|SkipManager
 name|getSkipManager
 parameter_list|()
 function_decl|;
-DECL|method|getPrefs ()
-name|DiffPreferences
-name|getPrefs
-parameter_list|()
-block|{
-return|return
-name|prefs
-return|;
-block|}
-DECL|method|getRevision ()
-name|PatchSet
-operator|.
-name|Id
-name|getRevision
-parameter_list|()
-block|{
-return|return
-name|revision
-return|;
-block|}
-DECL|method|getBase ()
-name|PatchSet
-operator|.
-name|Id
-name|getBase
-parameter_list|()
-block|{
-return|return
-name|base
-return|;
-block|}
 DECL|method|getChangeStatus ()
 name|Change
 operator|.
@@ -4656,15 +4621,6 @@ name|boolean
 name|hide
 parameter_list|)
 function_decl|;
-DECL|method|getPath ()
-name|String
-name|getPath
-parameter_list|()
-block|{
-return|return
-name|path
-return|;
-block|}
 DECL|method|prefetchNextFile ()
 name|void
 name|prefetchNextFile
