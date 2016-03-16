@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 Goldman Sachs
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -239,22 +239,18 @@ name|userFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritGSSAuthenticator (final AccountCache accounts, final SshScope sshScope, final SshLog sshLog, final IdentifiedUser.GenericFactory userFactory)
+DECL|method|GerritGSSAuthenticator (AccountCache accounts, SshScope sshScope, SshLog sshLog, IdentifiedUser.GenericFactory userFactory)
 name|GerritGSSAuthenticator
 parameter_list|(
-specifier|final
 name|AccountCache
 name|accounts
 parameter_list|,
-specifier|final
 name|SshScope
 name|sshScope
 parameter_list|,
-specifier|final
 name|SshLog
 name|sshLog
 parameter_list|,
-specifier|final
 name|IdentifiedUser
 operator|.
 name|GenericFactory
