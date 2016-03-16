@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|lucene
 operator|.
-name|LuceneChangeIndex
+name|AbstractLuceneIndex
 import|;
 end_import
 
@@ -429,7 +429,7 @@ operator|.
 name|LUCENE
 argument_list|)
 decl_stmt|;
-name|LuceneChangeIndex
+name|AbstractLuceneIndex
 operator|.
 name|setReady
 argument_list|(
