@@ -551,6 +551,12 @@ specifier|final
 name|CommentInfo
 name|comment
 decl_stmt|;
+DECL|field|displaySide
+specifier|private
+specifier|final
+name|DisplaySide
+name|displaySide
+decl_stmt|;
 DECL|field|replyBox
 specifier|private
 name|DraftBox
@@ -627,7 +633,7 @@ DECL|field|avatar
 name|AvatarImage
 name|avatar
 decl_stmt|;
-DECL|method|PublishedBox ( CommentGroup group, CommentLinkProcessor clp, PatchSet.Id psId, CommentInfo info, boolean open)
+DECL|method|PublishedBox ( CommentGroup group, CommentLinkProcessor clp, PatchSet.Id psId, CommentInfo info, DisplaySide displaySide, boolean open)
 name|PublishedBox
 parameter_list|(
 name|CommentGroup
@@ -643,6 +649,9 @@ name|psId
 parameter_list|,
 name|CommentInfo
 name|info
+parameter_list|,
+name|DisplaySide
+name|displaySide
 parameter_list|,
 name|boolean
 name|open
@@ -669,6 +678,12 @@ operator|.
 name|comment
 operator|=
 name|info
+expr_stmt|;
+name|this
+operator|.
+name|displaySide
+operator|=
+name|displaySide
 expr_stmt|;
 if|if
 condition|(
@@ -1063,11 +1078,7 @@ argument_list|()
 operator|.
 name|addDraftBox
 argument_list|(
-name|getCm
-argument_list|()
-operator|.
-name|side
-argument_list|()
+name|displaySide
 argument_list|,
 name|commentReply
 argument_list|)
@@ -1319,11 +1330,7 @@ argument_list|()
 operator|.
 name|addDraftBox
 argument_list|(
-name|getCm
-argument_list|()
-operator|.
-name|side
-argument_list|()
+name|displaySide
 argument_list|,
 name|result
 argument_list|)
