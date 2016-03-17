@@ -1070,8 +1070,6 @@ argument_list|(
 name|search
 operator|.
 name|schema
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|indexes
@@ -1120,8 +1118,6 @@ argument_list|(
 name|v
 operator|.
 name|schema
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;

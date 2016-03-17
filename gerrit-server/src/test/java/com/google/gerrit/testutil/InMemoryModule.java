@@ -1925,10 +1925,6 @@ argument_list|,
 name|int
 operator|.
 name|class
-argument_list|,
-name|String
-operator|.
-name|class
 argument_list|)
 decl_stmt|;
 return|return
@@ -1942,8 +1938,6 @@ argument_list|(
 name|version
 argument_list|,
 literal|0
-argument_list|,
-literal|null
 argument_list|)
 return|;
 block|}

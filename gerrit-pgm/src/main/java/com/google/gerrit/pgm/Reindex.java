@@ -607,22 +607,6 @@ name|Option
 argument_list|(
 name|name
 operator|=
-literal|"--output"
-argument_list|,
-name|usage
-operator|=
-literal|"Prefix for output; path for local disk index, or prefix for remote index"
-argument_list|)
-DECL|field|outputBase
-specifier|private
-name|String
-name|outputBase
-decl_stmt|;
-annotation|@
-name|Option
-argument_list|(
-name|name
-operator|=
 literal|"--verbose"
 argument_list|,
 name|usage
@@ -972,8 +956,6 @@ argument_list|(
 name|version
 argument_list|,
 name|threads
-argument_list|,
-name|outputBase
 argument_list|)
 expr_stmt|;
 break|break;

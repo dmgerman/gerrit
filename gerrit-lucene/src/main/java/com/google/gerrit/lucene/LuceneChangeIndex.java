@@ -356,20 +356,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -1360,18 +1346,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|sql
 operator|.
 name|Timestamp
@@ -1738,7 +1712,7 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Schema<ChangeData> schema, String base)
+DECL|method|create (Schema<ChangeData> schema)
 name|LuceneChangeIndex
 name|create
 parameter_list|(
@@ -1747,9 +1721,6 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|schema
-parameter_list|,
-name|String
-name|base
 parameter_list|)
 function_decl|;
 block|}
@@ -2008,7 +1979,7 @@ name|closedIndex
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor(INTERACTIVE) ListeningExecutorService executor, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, @Assisted Schema<ChangeData> schema, @Assisted @Nullable String base)
+DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor(INTERACTIVE) ListeningExecutorService executor, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, @Assisted Schema<ChangeData> schema)
 name|LuceneChangeIndex
 parameter_list|(
 annotation|@
@@ -2048,13 +2019,6 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|schema
-parameter_list|,
-annotation|@
-name|Assisted
-annotation|@
-name|Nullable
-name|String
-name|base
 parameter_list|)
 throws|throws
 name|IOException
@@ -2222,17 +2186,6 @@ block|{
 name|Path
 name|dir
 init|=
-name|base
-operator|!=
-literal|null
-condition|?
-name|Paths
-operator|.
-name|get
-argument_list|(
-name|base
-argument_list|)
-else|:
 name|LuceneVersionManager
 operator|.
 name|getDir
