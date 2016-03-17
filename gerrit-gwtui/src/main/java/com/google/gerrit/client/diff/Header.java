@@ -2524,6 +2524,27 @@ name|DiffInfo
 name|diff
 parameter_list|)
 block|{
+if|if
+condition|(
+name|diff
+operator|.
+name|binary
+argument_list|()
+condition|)
+block|{
+name|UIObject
+operator|.
+name|setVisible
+argument_list|(
+name|noDiff
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+comment|// Don't bother showing "No Differences"
+block|}
+else|else
+block|{
 name|JsArray
 argument_list|<
 name|Region
@@ -2575,6 +2596,7 @@ argument_list|,
 name|b
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

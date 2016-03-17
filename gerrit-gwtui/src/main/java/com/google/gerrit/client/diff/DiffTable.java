@@ -803,6 +803,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|info
+operator|.
+name|binary
+argument_list|()
+operator|&&
+operator|(
 name|s
 operator|.
 name|startsWith
@@ -830,6 +837,7 @@ name|startsWith
 argument_list|(
 literal|"--- "
 argument_list|)
+operator|)
 condition|)
 block|{
 continue|continue;
