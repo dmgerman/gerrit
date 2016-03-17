@@ -899,6 +899,8 @@ literal|1
 argument_list|,
 name|side
 argument_list|)
+operator|+
+literal|1
 decl_stmt|;
 name|UnifiedCommentGroup
 name|group
@@ -2264,6 +2266,8 @@ argument_list|(
 name|side
 argument_list|,
 name|cmLine
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
