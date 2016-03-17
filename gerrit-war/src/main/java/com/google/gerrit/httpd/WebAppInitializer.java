@@ -2720,8 +2720,9 @@ case|case
 name|LUCENE
 case|:
 return|return
-operator|new
 name|LuceneIndexModule
+operator|.
+name|latestVersionWithOnlineUpgrade
 argument_list|()
 return|;
 default|default:

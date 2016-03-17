@@ -232,24 +232,6 @@ name|index
 operator|.
 name|change
 operator|.
-name|AllChangesIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|change
-operator|.
 name|ChangeIndex
 import|;
 end_import
@@ -286,7 +268,7 @@ name|index
 operator|.
 name|change
 operator|.
-name|ChangeSchemas
+name|ChangeIndexDefintion
 import|;
 end_import
 
@@ -799,11 +781,11 @@ specifier|final
 name|ChangeIndexCollection
 name|indexes
 decl_stmt|;
-DECL|field|allChangesIndexer
+DECL|field|changeDef
 specifier|private
 specifier|final
-name|AllChangesIndexer
-name|allChangesIndexer
+name|ChangeIndexDefintion
+name|changeDef
 decl_stmt|;
 DECL|field|onlineUpgrade
 specifier|private
@@ -827,7 +809,7 @@ name|reindexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, LuceneChangeIndex.Factory indexFactory, ChangeIndexCollection indexes, AllChangesIndexer allChangesIndexer)
+DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, LuceneChangeIndex.Factory indexFactory, ChangeIndexCollection indexes, ChangeIndexDefintion changeDef)
 name|LuceneVersionManager
 parameter_list|(
 annotation|@
@@ -846,8 +828,8 @@ parameter_list|,
 name|ChangeIndexCollection
 name|indexes
 parameter_list|,
-name|AllChangesIndexer
-name|allChangesIndexer
+name|ChangeIndexDefintion
+name|changeDef
 parameter_list|)
 block|{
 name|this
@@ -870,9 +852,9 @@ name|indexes
 expr_stmt|;
 name|this
 operator|.
-name|allChangesIndexer
+name|changeDef
 operator|=
-name|allChangesIndexer
+name|changeDef
 expr_stmt|;
 name|this
 operator|.
@@ -1138,6 +1120,9 @@ expr_stmt|;
 name|LuceneChangeIndex
 name|searchIndex
 init|=
+operator|(
+name|LuceneChangeIndex
+operator|)
 name|indexFactory
 operator|.
 name|create
@@ -1238,9 +1223,7 @@ operator|new
 name|OnlineReindexer
 argument_list|<>
 argument_list|(
-name|indexes
-argument_list|,
-name|allChangesIndexer
+name|changeDef
 argument_list|,
 name|latest
 argument_list|)
@@ -1408,9 +1391,10 @@ name|ChangeData
 argument_list|>
 name|schema
 range|:
-name|ChangeSchemas
+name|changeDef
 operator|.
-name|ALL
+name|getSchemas
+argument_list|()
 operator|.
 name|values
 argument_list|()

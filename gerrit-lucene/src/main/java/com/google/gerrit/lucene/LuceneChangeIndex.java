@@ -1319,23 +1319,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|interface|Factory
-specifier|static
-interface|interface
-name|Factory
-block|{
-DECL|method|create (Schema<ChangeData> schema)
-name|LuceneChangeIndex
-name|create
-parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|)
-function_decl|;
-block|}
 DECL|field|sitePaths
 specifier|private
 specifier|final

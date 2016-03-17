@@ -134,7 +134,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMap
+name|ImmutableSet
 import|;
 end_import
 
@@ -148,7 +148,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableSet
+name|ImmutableSortedMap
 import|;
 end_import
 
@@ -306,7 +306,7 @@ specifier|static
 parameter_list|<
 name|V
 parameter_list|>
-name|ImmutableMap
+name|ImmutableSortedMap
 argument_list|<
 name|Integer
 argument_list|,
@@ -343,7 +343,7 @@ name|schemas
 init|=
 name|Maps
 operator|.
-name|newTreeMap
+name|newHashMap
 argument_list|()
 decl_stmt|;
 for|for
@@ -548,7 +548,7 @@ argument_list|)
 throw|;
 block|}
 return|return
-name|ImmutableMap
+name|ImmutableSortedMap
 operator|.
 name|copyOf
 argument_list|(

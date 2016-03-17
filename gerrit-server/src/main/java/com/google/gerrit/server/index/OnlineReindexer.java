@@ -233,11 +233,11 @@ operator|new
 name|AtomicBoolean
 argument_list|()
 decl_stmt|;
-DECL|method|OnlineReindexer ( IndexCollection<K, V, I> indexes, SiteIndexer<K, V, I> batchIndexer, int version)
+DECL|method|OnlineReindexer ( IndexDefinition<K, V, I> def, int version)
 specifier|public
 name|OnlineReindexer
 parameter_list|(
-name|IndexCollection
+name|IndexDefinition
 argument_list|<
 name|K
 argument_list|,
@@ -245,17 +245,7 @@ name|V
 argument_list|,
 name|I
 argument_list|>
-name|indexes
-parameter_list|,
-name|SiteIndexer
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|,
-name|I
-argument_list|>
-name|batchIndexer
+name|def
 parameter_list|,
 name|int
 name|version
@@ -265,13 +255,19 @@ name|this
 operator|.
 name|indexes
 operator|=
-name|indexes
+name|def
+operator|.
+name|getIndexCollection
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
 name|batchIndexer
 operator|=
-name|batchIndexer
+name|def
+operator|.
+name|getSiteIndexer
+argument_list|()
 expr_stmt|;
 name|this
 operator|.

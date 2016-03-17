@@ -2954,8 +2954,9 @@ literal|null
 condition|?
 name|luceneModule
 else|:
-operator|new
 name|LuceneIndexModule
+operator|.
+name|latestVersionWithOnlineUpgrade
 argument_list|()
 return|;
 default|default:

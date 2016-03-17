@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -96,22 +96,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|Index
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|IndexDefinition
 import|;
 end_import
@@ -134,29 +118,25 @@ name|ChangeData
 import|;
 end_import
 
-begin_interface
-DECL|interface|ChangeIndex
-specifier|public
-interface|interface
-name|ChangeIndex
-extends|extends
-name|Index
-argument_list|<
-name|Change
+begin_import
+import|import
+name|com
 operator|.
-name|Id
-argument_list|,
-name|ChangeData
-argument_list|>
-block|{
-DECL|interface|Factory
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_class
+DECL|class|ChangeIndexDefintion
 specifier|public
-interface|interface
-name|Factory
+class|class
+name|ChangeIndexDefintion
 extends|extends
 name|IndexDefinition
-operator|.
-name|IndexFactory
 argument_list|<
 name|Change
 operator|.
@@ -166,9 +146,40 @@ name|ChangeData
 argument_list|,
 name|ChangeIndex
 argument_list|>
-block|{   }
+block|{
+annotation|@
+name|Inject
+DECL|method|ChangeIndexDefintion ( ChangeIndexCollection indexCollection, ChangeIndex.Factory indexFactory, AllChangesIndexer allChangesIndexer)
+name|ChangeIndexDefintion
+parameter_list|(
+name|ChangeIndexCollection
+name|indexCollection
+parameter_list|,
+name|ChangeIndex
+operator|.
+name|Factory
+name|indexFactory
+parameter_list|,
+name|AllChangesIndexer
+name|allChangesIndexer
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|ChangeSchemaDefinitions
+operator|.
+name|INSTANCE
+argument_list|,
+name|indexCollection
+argument_list|,
+name|indexFactory
+argument_list|,
+name|allChangesIndexer
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 
