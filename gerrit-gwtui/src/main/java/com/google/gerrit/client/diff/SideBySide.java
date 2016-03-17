@@ -1692,6 +1692,13 @@ argument_list|)
 operator|.
 name|set
 argument_list|(
+literal|"inputStyle"
+argument_list|,
+literal|"textarea"
+argument_list|)
+operator|.
+name|set
+argument_list|(
 literal|"keyMap"
 argument_list|,
 literal|"vim_ro"
