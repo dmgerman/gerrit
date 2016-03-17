@@ -178,9 +178,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|common
 operator|.
-name|RestSession
+name|RawInputUtil
 import|;
 end_import
 
@@ -3463,9 +3463,9 @@ argument_list|()
 argument_list|,
 literal|"a.txt"
 argument_list|,
-name|RestSession
+name|RawInputUtil
 operator|.
-name|newRawInput
+name|create
 argument_list|(
 operator|new
 name|byte
