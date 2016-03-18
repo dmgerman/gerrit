@@ -4023,6 +4023,12 @@ argument_list|()
 operator|/
 literal|1000L
 expr_stmt|;
+name|a
+operator|.
+name|oldValue
+operator|=
+literal|null
+expr_stmt|;
 name|LabelType
 name|lt
 init|=

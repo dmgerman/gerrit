@@ -87,6 +87,11 @@ specifier|public
 name|String
 name|value
 decl_stmt|;
+DECL|field|oldValue
+specifier|public
+name|String
+name|oldValue
+decl_stmt|;
 DECL|field|grantedOn
 specifier|public
 name|Long
