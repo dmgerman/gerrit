@@ -131,10 +131,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ChangeIndexDefintion
+DECL|class|ChangeIndexDefinition
 specifier|public
 class|class
-name|ChangeIndexDefintion
+name|ChangeIndexDefinition
 extends|extends
 name|IndexDefinition
 argument_list|<
@@ -149,8 +149,8 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|ChangeIndexDefintion ( ChangeIndexCollection indexCollection, ChangeIndex.Factory indexFactory, AllChangesIndexer allChangesIndexer)
-name|ChangeIndexDefintion
+DECL|method|ChangeIndexDefinition ( ChangeIndexCollection indexCollection, ChangeIndex.Factory indexFactory, AllChangesIndexer allChangesIndexer)
+name|ChangeIndexDefinition
 parameter_list|(
 name|ChangeIndexCollection
 name|indexCollection

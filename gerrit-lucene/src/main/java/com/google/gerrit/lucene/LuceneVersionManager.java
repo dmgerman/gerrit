@@ -268,7 +268,7 @@ name|index
 operator|.
 name|change
 operator|.
-name|ChangeIndexDefintion
+name|ChangeIndexDefinition
 import|;
 end_import
 
@@ -784,7 +784,7 @@ decl_stmt|;
 DECL|field|changeDef
 specifier|private
 specifier|final
-name|ChangeIndexDefintion
+name|ChangeIndexDefinition
 name|changeDef
 decl_stmt|;
 DECL|field|onlineUpgrade
@@ -809,7 +809,7 @@ name|reindexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, LuceneChangeIndex.Factory indexFactory, ChangeIndexCollection indexes, ChangeIndexDefintion changeDef)
+DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, LuceneChangeIndex.Factory indexFactory, ChangeIndexCollection indexes, ChangeIndexDefinition changeDef)
 name|LuceneVersionManager
 parameter_list|(
 annotation|@
@@ -828,7 +828,7 @@ parameter_list|,
 name|ChangeIndexCollection
 name|indexes
 parameter_list|,
-name|ChangeIndexDefintion
+name|ChangeIndexDefinition
 name|changeDef
 parameter_list|)
 block|{
