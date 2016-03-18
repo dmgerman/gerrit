@@ -723,18 +723,8 @@ name|edits
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO: expected failure, issue #3423
-comment|// The current code wrongly marks the first space of the second line,
-comment|// instead of the one inserted after the '*'.
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|AssertionError
-operator|.
-name|class
-argument_list|)
 DECL|method|insertedWhitespaceIsRecognizedInMultipleLines ()
 specifier|public
 name|void
