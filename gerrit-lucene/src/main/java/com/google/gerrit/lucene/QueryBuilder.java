@@ -70,17 +70,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|common
 operator|.
-name|server
+name|base
 operator|.
-name|index
+name|Preconditions
 operator|.
-name|change
-operator|.
-name|ChangeField
-operator|.
-name|LEGACY_ID
+name|checkArgument
 import|;
 end_import
 
@@ -160,22 +156,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|index
@@ -229,6 +209,22 @@ operator|.
 name|index
 operator|.
 name|RegexPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|Schema
 import|;
 end_import
 
@@ -325,24 +321,6 @@ operator|.
 name|query
 operator|.
 name|QueryParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|ChangeData
 import|;
 end_import
 
@@ -525,62 +503,62 @@ DECL|class|QueryBuilder
 specifier|public
 class|class
 name|QueryBuilder
+parameter_list|<
+name|V
+parameter_list|>
 block|{
-DECL|method|idTerm (ChangeData cd)
-specifier|public
+DECL|method|intTerm (String name, int value)
 specifier|static
 name|Term
-name|idTerm
+name|intTerm
 parameter_list|(
-name|ChangeData
-name|cd
+name|String
+name|name
+parameter_list|,
+name|int
+name|value
 parameter_list|)
 block|{
-return|return
-name|intTerm
+name|BytesRefBuilder
+name|builder
+init|=
+operator|new
+name|BytesRefBuilder
+argument_list|()
+decl_stmt|;
+name|NumericUtils
+operator|.
+name|intToPrefixCodedBytes
 argument_list|(
-name|LEGACY_ID
-operator|.
-name|getName
-argument_list|()
+name|value
 argument_list|,
-name|cd
-operator|.
-name|getId
-argument_list|()
+literal|0
+argument_list|,
+name|builder
+argument_list|)
+expr_stmt|;
+return|return
+operator|new
+name|Term
+argument_list|(
+name|name
+argument_list|,
+name|builder
 operator|.
 name|get
 argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|idTerm (Change.Id id)
-specifier|public
-specifier|static
-name|Term
-name|idTerm
-parameter_list|(
-name|Change
-operator|.
-name|Id
-name|id
-parameter_list|)
-block|{
-return|return
-name|intTerm
-argument_list|(
-name|LEGACY_ID
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|id
-operator|.
-name|get
-argument_list|()
-argument_list|)
-return|;
-block|}
+DECL|field|schema
+specifier|private
+specifier|final
+name|Schema
+argument_list|<
+name|V
+argument_list|>
+name|schema
+decl_stmt|;
 DECL|field|queryBuilder
 specifier|private
 specifier|final
@@ -595,14 +573,26 @@ operator|.
 name|QueryBuilder
 name|queryBuilder
 decl_stmt|;
-DECL|method|QueryBuilder (Analyzer analyzer)
+DECL|method|QueryBuilder (Schema<V> schema, Analyzer analyzer)
 specifier|public
 name|QueryBuilder
 parameter_list|(
+name|Schema
+argument_list|<
+name|V
+argument_list|>
+name|schema
+parameter_list|,
 name|Analyzer
 name|analyzer
 parameter_list|)
 block|{
+name|this
+operator|.
+name|schema
+operator|=
+name|schema
+expr_stmt|;
 name|queryBuilder
 operator|=
 operator|new
@@ -620,14 +610,14 @@ name|analyzer
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|toQuery (Predicate<ChangeData> p)
+DECL|method|toQuery (Predicate<V> p)
 specifier|public
 name|Query
 name|toQuery
 parameter_list|(
 name|Predicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -692,7 +682,7 @@ argument_list|(
 operator|(
 name|IndexPredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 operator|)
 name|p
@@ -712,14 +702,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|or (Predicate<ChangeData> p)
+DECL|method|or (Predicate<V> p)
 specifier|private
 name|Query
 name|or
 parameter_list|(
 name|Predicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -803,14 +793,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|and (Predicate<ChangeData> p)
+DECL|method|and (Predicate<V> p)
 specifier|private
 name|Query
 name|and
 parameter_list|(
 name|Predicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -866,7 +856,7 @@ control|)
 block|{
 name|Predicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|c
 init|=
@@ -886,7 +876,7 @@ condition|)
 block|{
 name|Predicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|n
 init|=
@@ -913,7 +903,7 @@ argument_list|(
 operator|(
 name|TimestampRangePredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 operator|)
 name|n
@@ -999,14 +989,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|not (Predicate<ChangeData> p)
+DECL|method|not (Predicate<V> p)
 specifier|private
 name|Query
 name|not
 parameter_list|(
 name|Predicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -1015,7 +1005,7 @@ name|QueryParseException
 block|{
 name|Predicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|n
 init|=
@@ -1039,7 +1029,7 @@ argument_list|(
 operator|(
 name|TimestampRangePredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 operator|)
 name|n
@@ -1077,20 +1067,48 @@ name|build
 argument_list|()
 return|;
 block|}
-DECL|method|fieldQuery (IndexPredicate<ChangeData> p)
+DECL|method|fieldQuery (IndexPredicate<V> p)
 specifier|private
 name|Query
 name|fieldQuery
 parameter_list|(
 name|IndexPredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
 throws|throws
 name|QueryParseException
 block|{
+name|checkArgument
+argument_list|(
+name|schema
+operator|.
+name|hasField
+argument_list|(
+name|p
+operator|.
+name|getField
+argument_list|()
+argument_list|)
+argument_list|,
+literal|"field not in schema v%s: %s"
+argument_list|,
+name|schema
+operator|.
+name|getVersion
+argument_list|()
+argument_list|,
+name|p
+operator|.
+name|getField
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|p
@@ -1225,58 +1243,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|intTerm (String name, int value)
-specifier|private
-specifier|static
-name|Term
-name|intTerm
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|int
-name|value
-parameter_list|)
-block|{
-name|BytesRefBuilder
-name|builder
-init|=
-operator|new
-name|BytesRefBuilder
-argument_list|()
-decl_stmt|;
-name|NumericUtils
-operator|.
-name|intToPrefixCodedBytes
-argument_list|(
-name|value
-argument_list|,
-literal|0
-argument_list|,
-name|builder
-argument_list|)
-expr_stmt|;
-return|return
-operator|new
-name|Term
-argument_list|(
-name|name
-argument_list|,
-name|builder
-operator|.
-name|get
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|intQuery (IndexPredicate<ChangeData> p)
+DECL|method|intQuery (IndexPredicate<V> p)
 specifier|private
 name|Query
 name|intQuery
 parameter_list|(
 name|IndexPredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -1341,14 +1315,14 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|intRangeQuery (IndexPredicate<ChangeData> p)
+DECL|method|intRangeQuery (IndexPredicate<V> p)
 specifier|private
 name|Query
 name|intRangeQuery
 parameter_list|(
 name|IndexPredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -1364,14 +1338,14 @@ condition|)
 block|{
 name|IntegerRangePredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|r
 init|=
 operator|(
 name|IntegerRangePredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 operator|)
 name|p
@@ -1455,14 +1429,14 @@ name|p
 argument_list|)
 throw|;
 block|}
-DECL|method|timestampQuery (IndexPredicate<ChangeData> p)
+DECL|method|timestampQuery (IndexPredicate<V> p)
 specifier|private
 name|Query
 name|timestampQuery
 parameter_list|(
 name|IndexPredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -1478,14 +1452,14 @@ condition|)
 block|{
 name|TimestampRangePredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|r
 init|=
 operator|(
 name|TimestampRangePredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 operator|)
 name|p
@@ -1535,14 +1509,14 @@ name|p
 argument_list|)
 throw|;
 block|}
-DECL|method|notTimestamp (TimestampRangePredicate<ChangeData> r)
+DECL|method|notTimestamp (TimestampRangePredicate<V> r)
 specifier|private
 name|Query
 name|notTimestamp
 parameter_list|(
 name|TimestampRangePredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|r
 parameter_list|)
@@ -1601,14 +1575,14 @@ name|r
 argument_list|)
 throw|;
 block|}
-DECL|method|exactQuery (IndexPredicate<ChangeData> p)
+DECL|method|exactQuery (IndexPredicate<V> p)
 specifier|private
 name|Query
 name|exactQuery
 parameter_list|(
 name|IndexPredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -1656,14 +1630,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|regexQuery (IndexPredicate<ChangeData> p)
+DECL|method|regexQuery (IndexPredicate<V> p)
 specifier|private
 name|Query
 name|regexQuery
 parameter_list|(
 name|IndexPredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -1751,14 +1725,14 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|prefixQuery (IndexPredicate<ChangeData> p)
+DECL|method|prefixQuery (IndexPredicate<V> p)
 specifier|private
 name|Query
 name|prefixQuery
 parameter_list|(
 name|IndexPredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
@@ -1786,14 +1760,14 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|fullTextQuery (IndexPredicate<ChangeData> p)
+DECL|method|fullTextQuery (IndexPredicate<V> p)
 specifier|private
 name|Query
 name|fullTextQuery
 parameter_list|(
 name|IndexPredicate
 argument_list|<
-name|ChangeData
+name|V
 argument_list|>
 name|p
 parameter_list|)
