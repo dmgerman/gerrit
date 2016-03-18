@@ -272,7 +272,7 @@ name|index
 operator|.
 name|change
 operator|.
-name|ChangeIndexDefintion
+name|ChangeIndexDefinition
 import|;
 end_import
 
@@ -634,7 +634,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Provides
-DECL|method|getIndexDefinitions ( ChangeIndexDefintion changes)
+DECL|method|getIndexDefinitions ( ChangeIndexDefinition changes)
 name|Collection
 argument_list|<
 name|IndexDefinition
@@ -648,7 +648,7 @@ argument_list|>
 argument_list|>
 name|getIndexDefinitions
 parameter_list|(
-name|ChangeIndexDefintion
+name|ChangeIndexDefinition
 name|changes
 parameter_list|)
 block|{
