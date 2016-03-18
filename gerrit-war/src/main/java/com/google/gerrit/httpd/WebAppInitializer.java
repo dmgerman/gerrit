@@ -528,7 +528,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|LocalDiskRepositoryManager
+name|GitRepositoryManagerModule
 import|;
 end_import
 
@@ -2351,17 +2351,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|LocalDiskRepositoryManager
-operator|.
-name|Module
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|modules
-operator|.
-name|add
-argument_list|(
-operator|new
 name|ConfigNotesMigration
 operator|.
 name|Module
@@ -2434,6 +2423,20 @@ name|EventBroker
 operator|.
 name|Module
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|modules
+operator|.
+name|add
+argument_list|(
+name|cfgInjector
+operator|.
+name|getInstance
+argument_list|(
+name|GitRepositoryManagerModule
+operator|.
+name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|modules
