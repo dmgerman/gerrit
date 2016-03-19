@@ -2977,12 +2977,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|gotoSibling (final int offset)
+DECL|method|gotoSibling (int offset)
 specifier|private
 name|void
 name|gotoSibling
 parameter_list|(
-specifier|final
 name|int
 name|offset
 parameter_list|)
@@ -4401,7 +4400,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -4440,7 +4438,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -4486,7 +4483,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -4520,7 +4516,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -5891,7 +5886,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|loadConfigInfo (final ChangeInfo info, final String base)
+DECL|method|loadConfigInfo (final ChangeInfo info, String base)
 specifier|private
 name|void
 name|loadConfigInfo
@@ -5900,7 +5895,6 @@ specifier|final
 name|ChangeInfo
 name|info
 parameter_list|,
-specifier|final
 name|String
 name|base
 parameter_list|)
@@ -6122,7 +6116,6 @@ block|}
 block|}
 block|}
 block|}
-specifier|final
 name|RevisionInfo
 name|rev
 init|=
@@ -6131,7 +6124,6 @@ argument_list|(
 name|info
 argument_list|)
 decl_stmt|;
-specifier|final
 name|RevisionInfo
 name|b
 init|=
@@ -6440,20 +6432,17 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|loadDiff (final RevisionInfo base, final RevisionInfo rev, final Timestamp myLastReply, CallbackGroup group)
+DECL|method|loadDiff (RevisionInfo base, RevisionInfo rev, Timestamp myLastReply, CallbackGroup group)
 specifier|private
 name|void
 name|loadDiff
 parameter_list|(
-specifier|final
 name|RevisionInfo
 name|base
 parameter_list|,
-specifier|final
 name|RevisionInfo
 name|rev
 parameter_list|,
-specifier|final
 name|Timestamp
 name|myLastReply
 parameter_list|,
@@ -6461,7 +6450,6 @@ name|CallbackGroup
 name|group
 parameter_list|)
 block|{
-specifier|final
 name|List
 argument_list|<
 name|NativeMap
@@ -6481,7 +6469,6 @@ argument_list|,
 name|group
 argument_list|)
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|NativeMap
