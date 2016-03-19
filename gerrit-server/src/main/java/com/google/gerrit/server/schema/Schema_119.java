@@ -636,6 +636,16 @@ name|java
 operator|.
 name|sql
 operator|.
+name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
 name|ResultSet
 import|;
 end_import
@@ -677,6 +687,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -813,6 +833,50 @@ name|OrmException
 throws|,
 name|SQLException
 block|{
+name|JdbcSchema
+name|schema
+init|=
+operator|(
+name|JdbcSchema
+operator|)
+name|db
+decl_stmt|;
+name|Connection
+name|connection
+init|=
+name|schema
+operator|.
+name|getConnection
+argument_list|()
+decl_stmt|;
+name|String
+name|tableName
+init|=
+literal|"accounts"
+decl_stmt|;
+name|String
+name|emailStrategy
+init|=
+literal|"email_strategy"
+decl_stmt|;
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|columns
+init|=
+name|schema
+operator|.
+name|getDialect
+argument_list|()
+operator|.
+name|listColumns
+argument_list|(
+name|connection
+argument_list|,
+name|tableName
+argument_list|)
+decl_stmt|;
 name|Map
 argument_list|<
 name|Account
@@ -867,7 +931,20 @@ literal|"download_url, "
 operator|+
 literal|"download_command, "
 operator|+
-literal|"email_strategy, "
+operator|(
+name|columns
+operator|.
+name|contains
+argument_list|(
+name|emailStrategy
+argument_list|)
+condition|?
+name|emailStrategy
+operator|+
+literal|", "
+else|:
+literal|"copy_self_on_email, "
+operator|)
 operator|+
 literal|"date_format, "
 operator|+
@@ -885,7 +962,9 @@ literal|"review_category_strategy, "
 operator|+
 literal|"mute_common_path_prefixes "
 operator|+
-literal|"from accounts"
+literal|"from "
+operator|+
+name|tableName
 argument_list|)
 init|)
 block|{
@@ -1003,6 +1082,13 @@ operator|.
 name|getString
 argument_list|(
 literal|7
+argument_list|)
+argument_list|,
+name|columns
+operator|.
+name|contains
+argument_list|(
+name|emailStrategy
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1477,7 +1563,7 @@ name|v
 argument_list|)
 return|;
 block|}
-DECL|method|toEmailStrategy (String v)
+DECL|method|toEmailStrategy (String v, boolean emailStrategyColumnExists)
 specifier|private
 specifier|static
 name|EmailStrategy
@@ -1485,7 +1571,12 @@ name|toEmailStrategy
 parameter_list|(
 name|String
 name|v
+parameter_list|,
+name|boolean
+name|emailStrategyColumnExists
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 if|if
 condition|(
@@ -1500,6 +1591,11 @@ operator|.
 name|ENABLED
 return|;
 block|}
+if|if
+condition|(
+name|emailStrategyColumnExists
+condition|)
+block|{
 return|return
 name|EmailStrategy
 operator|.
@@ -1508,6 +1604,57 @@ argument_list|(
 name|v
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|v
+operator|.
+name|equals
+argument_list|(
+literal|"N"
+argument_list|)
+condition|)
+block|{
+comment|// EMAIL_STRATEGY='ENABLED' WHERE (COPY_SELF_ON_EMAIL='N')
+return|return
+name|EmailStrategy
+operator|.
+name|ENABLED
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|v
+operator|.
+name|equals
+argument_list|(
+literal|"Y"
+argument_list|)
+condition|)
+block|{
+comment|// EMAIL_STRATEGY='CC_ON_OWN_COMMENTS' WHERE (COPY_SELF_ON_EMAIL='Y')
+return|return
+name|EmailStrategy
+operator|.
+name|CC_ON_OWN_COMMENTS
+return|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"invalid value in accounts.copy_self_on_email: "
+operator|+
+name|v
+argument_list|)
+throw|;
+block|}
+block|}
 block|}
 DECL|method|toReviewCategoryStrategy (String v)
 specifier|private
