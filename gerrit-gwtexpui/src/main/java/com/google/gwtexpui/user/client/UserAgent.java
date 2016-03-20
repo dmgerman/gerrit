@@ -474,6 +474,36 @@ name|newloc
 parameter_list|)
 comment|/*-{ top.location.href = newloc }-*/
 function_decl|;
+comment|/**    * Test if Gerrit is running on a mobile browser. This check could be    * incomplete, but should cover most cases. Regexes shamelessly borrowed from    * CodeMirror.    */
+DECL|method|isMobile ()
+specifier|public
+specifier|static
+specifier|native
+name|boolean
+name|isMobile
+parameter_list|()
+comment|/*-{     var ua = $wnd.navigator.userAgent;     var ios = /AppleWebKit/.test(ua)&& /Mobile\/\w+/.test(ua);     return ios         || /Android|webOS|BlackBerry|Opera Mini|Opera Mobi|IEMobile/i.test(ua);   }-*/
+function_decl|;
+comment|/**    * Check if the height of the browser view is greater than its width.    */
+DECL|method|isPortrait ()
+specifier|public
+specifier|static
+name|boolean
+name|isPortrait
+parameter_list|()
+block|{
+return|return
+name|Window
+operator|.
+name|getClientHeight
+argument_list|()
+operator|>
+name|Window
+operator|.
+name|getClientWidth
+argument_list|()
+return|;
+block|}
 DECL|method|UserAgent ()
 specifier|private
 name|UserAgent
