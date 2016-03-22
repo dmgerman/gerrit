@@ -3910,7 +3910,15 @@ block|{
 name|int
 name|height
 init|=
-name|getCodeMirrorHeight
+name|header
+operator|.
+name|getOffsetHeight
+argument_list|()
+operator|+
+name|getDiffTable
+argument_list|()
+operator|.
+name|getHeaderHeight
 argument_list|()
 decl_stmt|;
 for|for
@@ -3931,12 +3939,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getCodeMirrorHeight ()
-specifier|abstract
-name|int
-name|getCodeMirrorHeight
-parameter_list|()
-function_decl|;
 DECL|method|getChunkManager ()
 specifier|abstract
 name|ChunkManager

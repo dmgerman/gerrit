@@ -1357,7 +1357,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// Estimate initial CM3 height, fixed up in onShowView.
+comment|// Estimate initial CodeMirror height, fixed up in onShowView.
 name|int
 name|height
 init|=
@@ -2347,34 +2347,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|resizeCodeMirror ()
-name|void
-name|resizeCodeMirror
-parameter_list|()
-block|{
-name|int
-name|hdr
-init|=
-name|header
-operator|.
-name|getOffsetHeight
-argument_list|()
-operator|+
-name|diffTable
-operator|.
-name|getHeaderHeight
-argument_list|()
-decl_stmt|;
-name|cm
-operator|.
-name|adjustHeight
-argument_list|(
-name|hdr
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
 DECL|method|operation (final Runnable apply)
 name|void
 name|operation
@@ -2408,43 +2380,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getCodeMirrorHeight ()
-name|int
-name|getCodeMirrorHeight
-parameter_list|()
-block|{
-name|int
-name|rest
-init|=
-name|Gerrit
-operator|.
-name|getHeaderFooterHeight
-argument_list|()
-operator|+
-name|header
-operator|.
-name|getOffsetHeight
-argument_list|()
-operator|+
-name|diffTable
-operator|.
-name|getHeaderHeight
-argument_list|()
-operator|+
-literal|5
-decl_stmt|;
-comment|// Estimate
-return|return
-name|Window
-operator|.
-name|getClientHeight
-argument_list|()
-operator|-
-name|rest
-return|;
 block|}
 annotation|@
 name|Override
