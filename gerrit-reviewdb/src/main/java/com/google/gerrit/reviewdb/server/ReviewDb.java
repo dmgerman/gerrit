@@ -423,18 +423,7 @@ name|PatchLineCommentAccess
 name|patchComments
 parameter_list|()
 function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|28
-argument_list|)
-DECL|method|submoduleSubscriptions ()
-name|SubmoduleSubscriptionAccess
-name|submoduleSubscriptions
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 28)
 annotation|@
 name|Relation
 argument_list|(

@@ -672,21 +672,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|submoduleSubscriptions ()
-specifier|public
-name|SubmoduleSubscriptionAccess
-name|submoduleSubscriptions
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|submoduleSubscriptions
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|accountGroupById ()
 specifier|public
 name|AccountGroupByIdAccess
