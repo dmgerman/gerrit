@@ -118,6 +118,15 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
+name|DraftCommentNotes
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
 name|NoteDbUpdateManager
 operator|.
 name|Factory
