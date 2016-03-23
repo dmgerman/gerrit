@@ -702,13 +702,13 @@ name|executeQuery
 argument_list|(
 literal|"SELECT "
 operator|+
-literal|"key.super_project.project_name, "
+literal|"super_project_project_name, "
 operator|+
-literal|"key.super_project.branch_name, "
+literal|"super_project_branch_name, "
 operator|+
-literal|"submodule.project_name "
+literal|"submodule_project_name, "
 operator|+
-literal|"submodule.branch_name "
+literal|"submodule_branch_name "
 operator|+
 literal|"FROM submodule_subscriptions"
 argument_list|)
