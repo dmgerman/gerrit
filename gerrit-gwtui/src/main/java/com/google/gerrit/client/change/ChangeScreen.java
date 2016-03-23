@@ -7785,9 +7785,14 @@ name|statusText
 operator|.
 name|setInnerText
 argument_list|(
-literal|"Needs "
-operator|+
+name|Util
+operator|.
+name|M
+operator|.
+name|needs
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|canSubmit
@@ -7813,9 +7818,14 @@ name|statusText
 operator|.
 name|setInnerText
 argument_list|(
-literal|"Not "
-operator|+
+name|Util
+operator|.
+name|M
+operator|.
+name|blockedOn
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|canSubmit
