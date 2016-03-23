@@ -298,7 +298,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|CommitBuilder
+name|ObjectId
 import|;
 end_import
 
@@ -312,7 +312,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectId
+name|ObjectReader
 import|;
 end_import
 
@@ -689,11 +689,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onLoad ()
+DECL|method|onLoad (RevWalk walk)
 specifier|protected
 name|void
 name|onLoad
-parameter_list|()
+parameter_list|(
+name|RevWalk
+name|walk
+parameter_list|)
 throws|throws
 name|IOException
 throws|,
@@ -717,18 +720,6 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-try|try
-init|(
-name|RevWalk
-name|walk
-init|=
-operator|new
-name|RevWalk
-argument_list|(
-name|reader
-argument_list|)
-init|)
-block|{
 name|RevCommit
 name|tipCommit
 init|=
@@ -738,6 +729,14 @@ name|parseCommit
 argument_list|(
 name|rev
 argument_list|)
+decl_stmt|;
+name|ObjectReader
+name|reader
+init|=
+name|walk
+operator|.
+name|getObjectReader
+argument_list|()
 decl_stmt|;
 name|revisionNoteMap
 operator|=
@@ -823,36 +822,6 @@ argument_list|(
 name|cs
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Override
-DECL|method|onSave (CommitBuilder commit)
-specifier|protected
-name|boolean
-name|onSave
-parameter_list|(
-name|CommitBuilder
-name|commit
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|ConfigInvalidException
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
-name|getClass
-argument_list|()
-operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|" is read-only"
-argument_list|)
-throw|;
 block|}
 annotation|@
 name|Override
