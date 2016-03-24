@@ -318,20 +318,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -540,13 +526,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onLoad (RevWalk walk)
+DECL|method|onLoad (LoadHandle handle)
 specifier|protected
 name|void
 name|onLoad
 parameter_list|(
-name|RevWalk
-name|walk
+name|LoadHandle
+name|handle
 parameter_list|)
 throws|throws
 name|IOException
@@ -556,7 +542,9 @@ block|{
 name|ObjectId
 name|rev
 init|=
-name|getRevision
+name|handle
+operator|.
+name|id
 argument_list|()
 decl_stmt|;
 if|if
@@ -574,7 +562,10 @@ block|}
 name|RevCommit
 name|tipCommit
 init|=
+name|handle
+operator|.
 name|walk
+argument_list|()
 operator|.
 name|parseCommit
 argument_list|(
@@ -584,7 +575,10 @@ decl_stmt|;
 name|ObjectReader
 name|reader
 init|=
+name|handle
+operator|.
 name|walk
+argument_list|()
 operator|.
 name|getObjectReader
 argument_list|()

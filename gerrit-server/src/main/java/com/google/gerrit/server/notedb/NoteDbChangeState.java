@@ -462,6 +462,7 @@ parameter_list|()
 function_decl|;
 block|}
 DECL|method|parse (Change c)
+specifier|public
 specifier|static
 name|NoteDbChangeState
 name|parse
@@ -696,7 +697,7 @@ block|}
 DECL|method|applyDelta (Change change, Delta delta)
 specifier|public
 specifier|static
-name|void
+name|NoteDbChangeState
 name|applyDelta
 parameter_list|(
 name|Change
@@ -713,7 +714,9 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return;
+return|return
+literal|null
+return|;
 block|}
 name|String
 name|oldStr
@@ -742,7 +745,9 @@ block|{
 comment|// Neither an old nor a new meta ID was present, most likely because we
 comment|// aren't writing a NoteDb graph at all for this change at this point. No
 comment|// point in proceeding.
-return|return;
+return|return
+literal|null
+return|;
 block|}
 name|NoteDbChangeState
 name|oldState
@@ -801,7 +806,9 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|null
+return|;
 block|}
 block|}
 else|else
@@ -914,18 +921,35 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|NoteDbChangeState
+name|state
+init|=
+operator|new
+name|NoteDbChangeState
+argument_list|(
 name|change
 operator|.
-name|setNoteDbState
-argument_list|(
-name|toString
-argument_list|(
+name|getId
+argument_list|()
+argument_list|,
 name|changeMetaId
 argument_list|,
 name|draftIds
 argument_list|)
+decl_stmt|;
+name|change
+operator|.
+name|setNoteDbState
+argument_list|(
+name|state
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+name|state
+return|;
 block|}
 DECL|method|toString (ObjectId changeMetaId, Map<Account.Id, ObjectId> draftIds)
 specifier|private
@@ -1256,8 +1280,6 @@ return|return
 name|changeId
 return|;
 block|}
-annotation|@
-name|VisibleForTesting
 DECL|method|getChangeMetaId ()
 name|ObjectId
 name|getChangeMetaId

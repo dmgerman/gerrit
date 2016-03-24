@@ -249,7 +249,7 @@ specifier|public
 specifier|final
 name|ListenableFuture
 argument_list|<
-name|?
+name|NoteDbChangeState
 argument_list|>
 name|rebuildAsync
 parameter_list|(
@@ -271,14 +271,14 @@ argument_list|(
 operator|new
 name|Callable
 argument_list|<
-name|Void
+name|NoteDbChangeState
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|Void
+name|NoteDbChangeState
 name|call
 parameter_list|()
 throws|throws
@@ -295,17 +295,15 @@ name|open
 argument_list|()
 init|)
 block|{
+return|return
 name|rebuild
 argument_list|(
 name|db
 argument_list|,
 name|id
 argument_list|)
-expr_stmt|;
-block|}
-return|return
-literal|null
 return|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -314,7 +312,7 @@ block|}
 DECL|method|rebuild (ReviewDb db, Change.Id changeId)
 specifier|public
 specifier|abstract
-name|void
+name|NoteDbChangeState
 name|rebuild
 parameter_list|(
 name|ReviewDb

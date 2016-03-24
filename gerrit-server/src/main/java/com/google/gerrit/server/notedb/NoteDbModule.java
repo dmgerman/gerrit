@@ -114,6 +114,20 @@ name|ReviewDb
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
 begin_class
 DECL|class|NoteDbModule
 specifier|public
@@ -253,7 +267,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|void
+name|NoteDbChangeState
 name|rebuild
 parameter_list|(
 name|ReviewDb
@@ -264,12 +278,12 @@ operator|.
 name|Id
 name|changeId
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
+return|return
+literal|null
+return|;
 block|}
 block|}
 argument_list|)
