@@ -1456,7 +1456,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// Estimate initial CM3 height, fixed up in onShowView.
+comment|// Estimate initial CodeMirror height, fixed up in onShowView.
 name|int
 name|height
 init|=
@@ -2470,25 +2470,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getCodeMirrorHeight ()
-name|int
-name|getCodeMirrorHeight
-parameter_list|()
-block|{
-return|return
-name|header
-operator|.
-name|getOffsetHeight
-argument_list|()
-operator|+
-name|diffTable
-operator|.
-name|getHeaderHeight
-argument_list|()
-return|;
 block|}
 annotation|@
 name|Override

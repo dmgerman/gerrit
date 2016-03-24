@@ -635,35 +635,11 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getHeaderHeight ()
+specifier|abstract
 name|int
 name|getHeaderHeight
 parameter_list|()
-block|{
-name|int
-name|h
-init|=
-name|patchSetSelectBoxA
-operator|.
-name|getOffsetHeight
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|header
-condition|)
-block|{
-name|h
-operator|+=
-name|diffHeaderRow
-operator|.
-name|getOffsetHeight
-argument_list|()
-expr_stmt|;
-block|}
-return|return
-name|h
-return|;
-block|}
+function_decl|;
 DECL|method|getChangeType ()
 name|ChangeType
 name|getChangeType
@@ -992,6 +968,15 @@ name|DiffScreen
 name|getDiffScreen
 parameter_list|()
 function_decl|;
+DECL|method|hasHeader ()
+name|boolean
+name|hasHeader
+parameter_list|()
+block|{
+return|return
+name|header
+return|;
+block|}
 block|}
 end_class
 
