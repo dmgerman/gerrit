@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbTable
+operator|.
+name|CHANGES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -77,6 +95,20 @@ operator|.
 name|annotations
 operator|.
 name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Timer1
 import|;
 end_import
 
@@ -306,9 +338,14 @@ specifier|final
 name|ChangeNoteUtil
 name|noteUtil
 decl_stmt|;
+DECL|field|metrics
+specifier|final
+name|NoteDbMetrics
+name|metrics
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args ( GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil)
+DECL|method|Args ( GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, NoteDbMetrics metrics)
 name|Args
 parameter_list|(
 name|GitRepositoryManager
@@ -322,6 +359,9 @@ name|allUsers
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
+parameter_list|,
+name|NoteDbMetrics
+name|metrics
 parameter_list|)
 block|{
 name|this
@@ -347,6 +387,12 @@ operator|.
 name|noteUtil
 operator|=
 name|noteUtil
+expr_stmt|;
+name|this
+operator|.
+name|metrics
+operator|=
+name|metrics
 expr_stmt|;
 block|}
 block|}
@@ -465,9 +511,25 @@ return|;
 block|}
 try|try
 init|(
+name|Timer1
+operator|.
+name|Context
+name|timer
+init|=
+name|args
+operator|.
+name|metrics
+operator|.
+name|readLatency
+operator|.
+name|start
+argument_list|(
+name|CHANGES
+argument_list|)
+init|;
 name|Repository
 name|repo
-init|=
+operator|=
 name|args
 operator|.
 name|repoManager

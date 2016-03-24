@@ -7222,6 +7222,10 @@ argument_list|,
 name|repoManager
 argument_list|,
 name|noteUtil
+argument_list|,
+name|args
+operator|.
+name|metrics
 argument_list|)
 init|)
 block|{
@@ -7304,6 +7308,10 @@ argument_list|,
 name|repoManager
 argument_list|,
 name|noteUtil
+argument_list|,
+name|args
+operator|.
+name|metrics
 argument_list|)
 init|)
 block|{

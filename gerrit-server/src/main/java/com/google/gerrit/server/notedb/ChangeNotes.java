@@ -3432,6 +3432,10 @@ argument_list|,
 name|args
 operator|.
 name|noteUtil
+argument_list|,
+name|args
+operator|.
+name|metrics
 argument_list|)
 init|)
 block|{
