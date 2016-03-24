@@ -938,6 +938,16 @@ return|return
 name|result
 return|;
 block|}
+DECL|method|allowWriteToNewRef ()
+specifier|public
+name|boolean
+name|allowWriteToNewRef
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 DECL|method|emptyTree (ObjectInserter ins)
 specifier|private
 specifier|static

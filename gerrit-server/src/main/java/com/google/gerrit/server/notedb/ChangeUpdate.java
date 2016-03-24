@@ -1158,6 +1158,11 @@ specifier|private
 name|String
 name|pushCert
 decl_stmt|;
+DECL|field|isAllowWriteToNewtRef
+specifier|private
+name|boolean
+name|isAllowWriteToNewtRef
+decl_stmt|;
 DECL|field|draftUpdate
 specifier|private
 name|ChangeDraftUpdate
@@ -3771,6 +3776,32 @@ parameter_list|()
 block|{
 return|return
 name|draftUpdate
+return|;
+block|}
+DECL|method|setAllowWriteToNewRef (boolean allow)
+specifier|public
+name|void
+name|setAllowWriteToNewRef
+parameter_list|(
+name|boolean
+name|allow
+parameter_list|)
+block|{
+name|isAllowWriteToNewtRef
+operator|=
+name|allow
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|allowWriteToNewRef ()
+specifier|public
+name|boolean
+name|allowWriteToNewRef
+parameter_list|()
+block|{
+return|return
+name|isAllowWriteToNewtRef
 return|;
 block|}
 DECL|method|addFooter (StringBuilder sb, FooterKey footer)

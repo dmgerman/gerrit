@@ -1808,7 +1808,9 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-return|return
+name|ChangeUpdate
+name|update
+init|=
 name|TestChanges
 operator|.
 name|newUpdate
@@ -1819,6 +1821,16 @@ name|c
 argument_list|,
 name|user
 argument_list|)
+decl_stmt|;
+name|update
+operator|.
+name|setAllowWriteToNewRef
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|update
 return|;
 block|}
 DECL|method|newNotes (Change c)
