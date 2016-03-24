@@ -7407,10 +7407,10 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|byHashtagWithNotedb ()
+DECL|method|byHashtagWithNoteDb ()
 specifier|public
 name|void
-name|byHashtagWithNotedb
+name|byHashtagWithNoteDb
 parameter_list|()
 throws|throws
 name|Exception
@@ -7532,10 +7532,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|byHashtagWithoutNotedb ()
+DECL|method|byHashtagWithoutNoteDb ()
 specifier|public
 name|void
-name|byHashtagWithoutNotedb
+name|byHashtagWithoutNoteDb
 parameter_list|()
 throws|throws
 name|Exception
@@ -9758,7 +9758,7 @@ name|reviewedBy
 argument_list|()
 expr_stmt|;
 comment|// TODO(dborowitz): Swap out GitRepositoryManager somehow? Will probably be
-comment|// necessary for notedb anyway.
+comment|// necessary for NoteDb anyway.
 name|cd
 operator|.
 name|isMergeable

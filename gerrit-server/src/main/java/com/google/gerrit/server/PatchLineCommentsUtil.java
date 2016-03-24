@@ -2417,7 +2417,7 @@ name|bru
 operator|.
 name|setRefLogMessage
 argument_list|(
-literal|"Delete drafts from notedb"
+literal|"Delete drafts from NoteDb"
 argument_list|,
 literal|false
 argument_list|)

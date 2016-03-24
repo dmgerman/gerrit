@@ -919,7 +919,7 @@ return|return
 name|update
 return|;
 block|}
-comment|// Change doesn't exist yet. Notedb requires that there be a commit for the
+comment|// Change doesn't exist yet. NoteDb requires that there be a commit for the
 comment|// first patch set, so create one.
 try|try
 init|(

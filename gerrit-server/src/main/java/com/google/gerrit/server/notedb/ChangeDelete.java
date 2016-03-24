@@ -270,7 +270,7 @@ name|ru
 operator|.
 name|setRefLogMessage
 argument_list|(
-literal|"Delete change from notedb"
+literal|"Delete change from NoteDb"
 argument_list|,
 literal|false
 argument_list|)

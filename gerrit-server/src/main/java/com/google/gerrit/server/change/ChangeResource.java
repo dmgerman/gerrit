@@ -618,7 +618,7 @@ argument_list|,
 name|buf
 argument_list|)
 expr_stmt|;
-comment|// TODO(dborowitz): Include more notedb and other related refs, e.g. drafts
+comment|// TODO(dborowitz): Include more NoteDb and other related refs, e.g. drafts
 comment|// and edits.
 for|for
 control|(

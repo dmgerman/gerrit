@@ -186,7 +186,7 @@ name|REFS_STARRED_CHANGES
 init|=
 literal|"refs/starred-changes/"
 decl_stmt|;
-comment|/** Sequence counters in notedb. */
+comment|/** Sequence counters in NoteDb. */
 DECL|field|REFS_SEQUENCES
 specifier|public
 specifier|static
@@ -206,7 +206,7 @@ name|REFS_CACHE_AUTOMERGE
 init|=
 literal|"refs/cache-automerge/"
 decl_stmt|;
-comment|/** Suffix of a meta ref in the notedb. */
+comment|/** Suffix of a meta ref in the NoteDb. */
 DECL|field|META_SUFFIX
 specifier|public
 specifier|static

@@ -4026,8 +4026,8 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-comment|// When notedb is enabled adding a reviewer records that user as reviewer
-comment|// in notedb. When notedb is disabled adding a reviewer results in a dummy 0
+comment|// When NoteDb is enabled adding a reviewer records that user as reviewer
+comment|// in NoteDb. When NoteDb is disabled adding a reviewer results in a dummy 0
 comment|// approval on the change which is treated as CC when the ChangeInfo is
 comment|// created.
 name|Collection
@@ -4362,8 +4362,8 @@ name|isNoteDbTestEnabled
 argument_list|()
 condition|)
 block|{
-comment|// When notedb is enabled adding a reviewer records that user as reviewer
-comment|// in notedb.
+comment|// When NoteDb is enabled adding a reviewer records that user as reviewer
+comment|// in NoteDb.
 name|assertThat
 argument_list|(
 name|reviewers
@@ -4442,7 +4442,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// When notedb is disabled adding a reviewer results in a dummy 0 approval
+comment|// When NoteDb is disabled adding a reviewer results in a dummy 0 approval
 comment|// on the change which is treated as CC when the ChangeInfo is created.
 name|assertThat
 argument_list|(
@@ -4902,8 +4902,8 @@ name|isNoteDbTestEnabled
 argument_list|()
 condition|)
 block|{
-comment|// When notedb is enabled each reviewer is explicitly recorded in the
-comment|// notedb and this record stays even when all votes of that user have been
+comment|// When NoteDb is enabled each reviewer is explicitly recorded in the
+comment|// NoteDb and this record stays even when all votes of that user have been
 comment|// deleted, hence there is no dummy 0 approval left when a vote is
 comment|// deleted.
 name|assertThat
@@ -4917,7 +4917,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// When notedb is disabled there is a dummy 0 approval on the change so
+comment|// When NoteDb is disabled there is a dummy 0 approval on the change so
 comment|// that the user is still returned as CC when all votes of that user have
 comment|// been deleted.
 name|assertThat
@@ -5009,8 +5009,8 @@ name|isNoteDbTestEnabled
 argument_list|()
 condition|)
 block|{
-comment|// When notedb is enabled each reviewer is explicitly recorded in the
-comment|// notedb and this record stays even when all votes of that user have been
+comment|// When NoteDb is enabled each reviewer is explicitly recorded in the
+comment|// NoteDb and this record stays even when all votes of that user have been
 comment|// deleted.
 name|assertThat
 argument_list|(
@@ -5048,7 +5048,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// When notedb is disabled users that have only dummy 0 approvals on the
+comment|// When NoteDb is disabled users that have only dummy 0 approvals on the
 comment|// change are returned as CC and not as REVIEWER.
 name|assertThat
 argument_list|(
@@ -6534,7 +6534,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TODO(dborowitz): Re-enable when ConsistencyChecker supports notedb.
+comment|// TODO(dborowitz): Re-enable when ConsistencyChecker supports NoteDb.
 name|assume
 argument_list|()
 operator|.
@@ -7915,10 +7915,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|notedbCommitsOnPatchSetCreation ()
+DECL|method|noteDbCommitsOnPatchSetCreation ()
 specifier|public
 name|void
-name|notedbCommitsOnPatchSetCreation
+name|noteDbCommitsOnPatchSetCreation
 parameter_list|()
 throws|throws
 name|Exception

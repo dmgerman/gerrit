@@ -1655,7 +1655,7 @@ operator|.
 name|readChanges
 argument_list|()
 argument_list|,
-literal|"ConsistencyChecker for notedb not yet implemented"
+literal|"ConsistencyChecker for NoteDb not yet implemented"
 argument_list|)
 expr_stmt|;
 name|checkOwner

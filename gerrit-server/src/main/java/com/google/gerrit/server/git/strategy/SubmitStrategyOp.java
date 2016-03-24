@@ -2618,7 +2618,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO(dborowitz): Don't use a label in notedb; just check when status
+comment|// TODO(dborowitz): Don't use a label in NoteDb; just check when status
 comment|// change happened.
 for|for
 control|(

@@ -1033,7 +1033,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-comment|// For notedb itself, no need to delete these entities, as they are
+comment|// For NoteDb itself, no need to delete these entities, as they are
 comment|// automatically filtered out when patch sets are deleted.
 name|psUtil
 operator|.

@@ -504,7 +504,7 @@ argument_list|>
 name|fields
 parameter_list|)
 block|{
-comment|// Always include project since it is needed to load the change from notedb.
+comment|// Always include project since it is needed to load the change from NoteDb.
 if|if
 condition|(
 operator|!

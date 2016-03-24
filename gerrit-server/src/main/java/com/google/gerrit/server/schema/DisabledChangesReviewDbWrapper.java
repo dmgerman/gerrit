@@ -333,7 +333,7 @@ specifier|final
 name|String
 name|MSG
 init|=
-literal|"This table has been migrated to notedb"
+literal|"This table has been migrated to NoteDb"
 decl_stmt|;
 DECL|field|changes
 specifier|private

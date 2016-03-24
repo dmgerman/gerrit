@@ -509,7 +509,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Copies approvals between patch sets.  *<p>  * The result of a copy may either be stored, as when stamping approvals in the  * database at submit time, or refreshed on demand, as when reading approvals  * from the notedb.  */
+comment|/**  * Copies approvals between patch sets.  *<p>  * The result of a copy may either be stored, as when stamping approvals in the  * database at submit time, or refreshed on demand, as when reading approvals  * from the NoteDb.  */
 end_comment
 
 begin_class
