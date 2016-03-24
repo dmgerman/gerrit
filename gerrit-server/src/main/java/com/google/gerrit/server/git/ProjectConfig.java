@@ -524,7 +524,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|AccountProjectWatch
+operator|.
+name|NotifyType
 import|;
 end_import
 
@@ -540,9 +542,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountProjectWatch
-operator|.
-name|NotifyType
+name|Branch
 import|;
 end_import
 
