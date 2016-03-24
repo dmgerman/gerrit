@@ -1801,7 +1801,7 @@ operator|.
 name|readChanges
 argument_list|()
 argument_list|,
-literal|"notedb disabled"
+literal|"NoteDb disabled"
 argument_list|)
 expr_stmt|;
 try|try

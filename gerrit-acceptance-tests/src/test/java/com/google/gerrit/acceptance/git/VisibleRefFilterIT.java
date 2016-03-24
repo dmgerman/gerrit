@@ -1565,7 +1565,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Assert that refs seen by a non-admin user match expected.    *    * @param expectedWithMeta expected refs, in order. If notedb is disabled by    *     the configuration, any notedb refs (i.e. ending in "/meta") are removed    *     from the expected list before comparing to the actual results.    * @throws Exception    */
+comment|/**    * Assert that refs seen by a non-admin user match expected.    *    * @param expectedWithMeta expected refs, in order. If NoteDb is disabled by    *     the configuration, any NoteDb refs (i.e. ending in "/meta") are removed    *     from the expected list before comparing to the actual results.    * @throws Exception    */
 DECL|method|assertRefs (String... expectedWithMeta)
 specifier|private
 name|void

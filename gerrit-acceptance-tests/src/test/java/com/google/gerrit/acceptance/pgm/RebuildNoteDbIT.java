@@ -195,10 +195,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|RebuildNotedbIT
+DECL|class|RebuildNoteDbIT
 specifier|public
 class|class
-name|RebuildNotedbIT
+name|RebuildNoteDbIT
 block|{
 DECL|field|sitePath
 specifier|private
@@ -288,7 +288,7 @@ argument_list|)
 expr_stmt|;
 name|runGerrit
 argument_list|(
-literal|"RebuildNotedb"
+literal|"RebuildNoteDb"
 argument_list|,
 literal|"-d"
 argument_list|,

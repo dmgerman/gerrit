@@ -814,10 +814,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|notedbCommit ()
+DECL|method|noteDbCommit ()
 specifier|public
 name|void
-name|notedbCommit
+name|noteDbCommit
 parameter_list|()
 throws|throws
 name|Exception

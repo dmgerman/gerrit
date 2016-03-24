@@ -173,7 +173,7 @@ import|;
 end_import
 
 begin_comment
-comment|// TODO(dborowitz): Not necessary once we switch to notedb.
+comment|// TODO(dborowitz): Not necessary once we switch to NoteDb.
 end_comment
 
 begin_comment

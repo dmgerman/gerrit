@@ -895,10 +895,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|RebuildNotedb
+DECL|class|RebuildNoteDb
 specifier|public
 class|class
-name|RebuildNotedb
+name|RebuildNoteDb
 extends|extends
 name|SiteProgram
 block|{
@@ -913,7 +913,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|RebuildNotedb
+name|RebuildNoteDb
 operator|.
 name|class
 argument_list|)
@@ -1079,7 +1079,7 @@ condition|)
 block|{
 name|die
 argument_list|(
-literal|"Notedb is not enabled."
+literal|"NoteDb is not enabled."
 argument_list|)
 expr_stmt|;
 block|}
@@ -1114,7 +1114,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"Rebuilding the notedb"
+literal|"Rebuilding the NoteDb"
 argument_list|)
 expr_stmt|;
 name|Multimap
@@ -1406,7 +1406,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Error rebuilding notedb"
+literal|"Error rebuilding NoteDb"
 argument_list|,
 name|e
 argument_list|)

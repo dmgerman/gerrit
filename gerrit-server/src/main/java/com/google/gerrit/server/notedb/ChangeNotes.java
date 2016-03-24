@@ -1649,10 +1649,10 @@ argument_list|()
 return|;
 block|}
 comment|// TODO(dborowitz): Remove when deleting index schemas<27.
-DECL|method|createFromIdOnlyWhenNotedbDisabled ( ReviewDb db, Change.Id changeId)
+DECL|method|createFromIdOnlyWhenNoteDbDisabled ( ReviewDb db, Change.Id changeId)
 specifier|public
 name|ChangeNotes
-name|createFromIdOnlyWhenNotedbDisabled
+name|createFromIdOnlyWhenNoteDbDisabled
 parameter_list|(
 name|ReviewDb
 name|db
@@ -1675,7 +1675,7 @@ argument_list|()
 argument_list|,
 literal|"do not call"
 operator|+
-literal|" createFromIdOnlyWhenNotedbDisabled when notedb is enabled"
+literal|" createFromIdOnlyWhenNoteDbDisabled when NoteDb is enabled"
 argument_list|)
 expr_stmt|;
 name|Change
@@ -1720,10 +1720,10 @@ return|;
 block|}
 comment|// TODO(ekempin): Remove when database backend is deleted
 comment|/**      * Instantiate ChangeNotes for a change that has been loaded by a batch read      * from the database.      */
-DECL|method|createFromChangeOnlyWhenNotedbDisabled (Change change)
+DECL|method|createFromChangeOnlyWhenNoteDbDisabled (Change change)
 specifier|private
 name|ChangeNotes
-name|createFromChangeOnlyWhenNotedbDisabled
+name|createFromChangeOnlyWhenNoteDbDisabled
 parameter_list|(
 name|Change
 name|change
@@ -1741,7 +1741,7 @@ argument_list|()
 argument_list|,
 literal|"do not call"
 operator|+
-literal|" createFromChangeWhenNotedbDisabled when notedb is enabled"
+literal|" createFromChangeWhenNoteDbDisabled when NoteDb is enabled"
 argument_list|)
 expr_stmt|;
 return|return
@@ -2064,7 +2064,7 @@ name|notes
 operator|.
 name|add
 argument_list|(
-name|createFromChangeOnlyWhenNotedbDisabled
+name|createFromChangeOnlyWhenNoteDbDisabled
 argument_list|(
 name|c
 argument_list|)
@@ -2221,7 +2221,7 @@ block|{
 name|ChangeNotes
 name|cn
 init|=
-name|createFromChangeOnlyWhenNotedbDisabled
+name|createFromChangeOnlyWhenNoteDbDisabled
 argument_list|(
 name|c
 argument_list|)
@@ -2331,7 +2331,7 @@ name|ChangeNotes
 argument_list|>
 name|changes
 init|=
-name|scanNotedb
+name|scanNoteDb
 argument_list|(
 name|repo
 argument_list|,
@@ -2394,7 +2394,7 @@ block|{
 name|ChangeNotes
 name|notes
 init|=
-name|createFromChangeOnlyWhenNotedbDisabled
+name|createFromChangeOnlyWhenNoteDbDisabled
 argument_list|(
 name|change
 argument_list|)
@@ -2476,7 +2476,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|scanNotedb
+name|scanNoteDb
 argument_list|(
 name|repo
 argument_list|,
@@ -2579,7 +2579,7 @@ name|notes
 operator|.
 name|add
 argument_list|(
-name|createFromChangeOnlyWhenNotedbDisabled
+name|createFromChangeOnlyWhenNoteDbDisabled
 argument_list|(
 name|change
 argument_list|)
@@ -2591,13 +2591,13 @@ return|return
 name|notes
 return|;
 block|}
-DECL|method|scanNotedb (Repository repo, ReviewDb db, Project.NameKey project)
+DECL|method|scanNoteDb (Repository repo, ReviewDb db, Project.NameKey project)
 specifier|private
 name|List
 argument_list|<
 name|ChangeNotes
 argument_list|>
-name|scanNotedb
+name|scanNoteDb
 parameter_list|(
 name|Repository
 name|repo

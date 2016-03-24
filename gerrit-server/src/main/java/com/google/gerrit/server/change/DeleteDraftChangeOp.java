@@ -479,7 +479,7 @@ name|db
 parameter_list|)
 block|{
 comment|// This is special. We want to delete exactly the rows that are present in
-comment|// the database, even when reading everything else from notedb, so we need
+comment|// the database, even when reading everything else from NoteDb, so we need
 comment|// to bypass the write-only wrapper.
 if|if
 condition|(
@@ -802,7 +802,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Only delete from reviewdb here; deletion from notedb is handled in
+comment|// Only delete from ReviewDb here; deletion from NoteDb is handled in
 comment|// BatchUpdate.
 name|db
 operator|.

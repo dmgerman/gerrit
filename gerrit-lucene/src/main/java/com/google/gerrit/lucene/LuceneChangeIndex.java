@@ -2687,7 +2687,7 @@ argument_list|)
 condition|)
 block|{
 comment|// Schema is not new enough to have project field. Ensure we have ID
-comment|// field, and call createOnlyWhenNotedbDisabled from toChangeData below.
+comment|// field, and call createOnlyWhenNoteDbDisabled from toChangeData below.
 if|if
 condition|(
 name|fs
@@ -2900,13 +2900,13 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// Old schema without project field: we can safely assume notedb is
+comment|// Old schema without project field: we can safely assume NoteDb is
 comment|// disabled.
 name|cd
 operator|=
 name|changeDataFactory
 operator|.
-name|createOnlyWhenNotedbDisabled
+name|createOnlyWhenNoteDbDisabled
 argument_list|(
 name|db
 operator|.

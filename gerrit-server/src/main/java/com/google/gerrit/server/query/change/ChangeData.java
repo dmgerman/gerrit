@@ -2306,9 +2306,9 @@ name|c
 parameter_list|)
 function_decl|;
 comment|// TODO(dborowitz): Remove when deleting index schemas<27.
-DECL|method|createOnlyWhenNotedbDisabled (ReviewDb db, Change.Id id)
+DECL|method|createOnlyWhenNoteDbDisabled (ReviewDb db, Change.Id id)
 name|ChangeData
-name|createOnlyWhenNotedbDisabled
+name|createOnlyWhenNoteDbDisabled
 parameter_list|(
 name|ReviewDb
 name|db
@@ -3446,7 +3446,7 @@ operator|.
 name|readChanges
 argument_list|()
 argument_list|,
-literal|"do not call createOnlyWhenNotedbDisabled when notedb is enabled"
+literal|"do not call createOnlyWhenNoteDbDisabled when NoteDb is enabled"
 argument_list|)
 expr_stmt|;
 name|this
@@ -4070,7 +4070,7 @@ argument_list|()
 argument_list|,
 literal|"should not have created "
 operator|+
-literal|" ChangeData without a project when notedb is enabled"
+literal|" ChangeData without a project when NoteDb is enabled"
 argument_list|)
 expr_stmt|;
 name|project
@@ -4381,7 +4381,7 @@ name|notes
 operator|=
 name|notesFactory
 operator|.
-name|createFromIdOnlyWhenNotedbDisabled
+name|createFromIdOnlyWhenNoteDbDisabled
 argument_list|(
 name|db
 argument_list|,

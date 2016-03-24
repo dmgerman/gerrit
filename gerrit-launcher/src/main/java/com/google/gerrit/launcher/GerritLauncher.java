@@ -609,15 +609,6 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  rebuild-notedb  Rebuild the review notes database"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
 literal|"  reindex         Rebuild the secondary index"
 argument_list|)
 expr_stmt|;

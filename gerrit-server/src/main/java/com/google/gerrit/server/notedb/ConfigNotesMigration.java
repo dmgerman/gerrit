@@ -238,14 +238,14 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|field|NOTEDB
+DECL|field|NOTE_DB
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|NOTEDB
+name|NOTE_DB
 init|=
-literal|"notedb"
+literal|"noteDb"
 decl_stmt|;
 DECL|field|READ
 specifier|private
@@ -317,7 +317,7 @@ name|cfg
 operator|.
 name|getSubsections
 argument_list|(
-name|NOTEDB
+name|NOTE_DB
 argument_list|)
 control|)
 block|{
@@ -333,7 +333,7 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 argument_list|,
-literal|"invalid notedb table: %s"
+literal|"invalid NoteDb table: %s"
 argument_list|,
 name|t
 argument_list|)
@@ -347,7 +347,7 @@ name|cfg
 operator|.
 name|getNames
 argument_list|(
-name|NOTEDB
+name|NOTE_DB
 argument_list|,
 name|t
 argument_list|)
@@ -377,7 +377,7 @@ argument_list|(
 name|READ
 argument_list|)
 argument_list|,
-literal|"invalid notedb key: %s.%s"
+literal|"invalid NoteDb key: %s.%s"
 argument_list|,
 name|t
 argument_list|,
@@ -392,7 +392,7 @@ name|cfg
 operator|.
 name|getBoolean
 argument_list|(
-name|NOTEDB
+name|NOTE_DB
 argument_list|,
 name|t
 argument_list|,
@@ -408,7 +408,7 @@ name|cfg
 operator|.
 name|getBoolean
 argument_list|(
-name|NOTEDB
+name|NOTE_DB
 argument_list|,
 name|t
 argument_list|,
@@ -463,7 +463,7 @@ name|cfg
 operator|.
 name|setBoolean
 argument_list|(
-name|NOTEDB
+name|NOTE_DB
 argument_list|,
 name|t
 operator|.
@@ -479,7 +479,7 @@ name|cfg
 operator|.
 name|setBoolean
 argument_list|(
-name|NOTEDB
+name|NOTE_DB
 argument_list|,
 name|t
 operator|.
@@ -530,7 +530,7 @@ name|cfg
 operator|.
 name|getBoolean
 argument_list|(
-name|NOTEDB
+name|NOTE_DB
 argument_list|,
 name|Table
 operator|.
@@ -550,7 +550,7 @@ name|cfg
 operator|.
 name|getBoolean
 argument_list|(
-name|NOTEDB
+name|NOTE_DB
 argument_list|,
 name|Table
 operator|.

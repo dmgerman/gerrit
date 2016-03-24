@@ -486,7 +486,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** Load default values for any instance variables when notedb is disabled. */
+comment|/** Load default values for any instance variables when NoteDb is disabled. */
 DECL|method|loadDefaults ()
 specifier|protected
 specifier|abstract

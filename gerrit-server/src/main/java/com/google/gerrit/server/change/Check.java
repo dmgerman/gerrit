@@ -507,7 +507,7 @@ throw|throw
 operator|new
 name|NotImplementedException
 argument_list|(
-literal|"check not implemented for notedb"
+literal|"check not implemented for NoteDb"
 argument_list|)
 throw|;
 block|}

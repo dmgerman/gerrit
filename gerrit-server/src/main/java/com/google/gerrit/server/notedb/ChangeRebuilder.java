@@ -1517,7 +1517,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|Change
-name|notedbChange
+name|noteDbChange
 init|=
 operator|new
 name|Change
@@ -1558,7 +1558,7 @@ name|ChangeMessageEvent
 argument_list|(
 name|msg
 argument_list|,
-name|notedbChange
+name|noteDbChange
 argument_list|,
 name|change
 operator|.
@@ -1586,7 +1586,7 @@ name|FinalUpdatesEvent
 argument_list|(
 name|change
 argument_list|,
-name|notedbChange
+name|noteDbChange
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4106,20 +4106,20 @@ specifier|final
 name|ChangeMessage
 name|message
 decl_stmt|;
-DECL|field|notedbChange
+DECL|field|noteDbChange
 specifier|private
 specifier|final
 name|Change
-name|notedbChange
+name|noteDbChange
 decl_stmt|;
-DECL|method|ChangeMessageEvent (ChangeMessage message, Change notedbChange, Timestamp changeCreatedOn)
+DECL|method|ChangeMessageEvent (ChangeMessage message, Change noteDbChange, Timestamp changeCreatedOn)
 name|ChangeMessageEvent
 parameter_list|(
 name|ChangeMessage
 name|message
 parameter_list|,
 name|Change
-name|notedbChange
+name|noteDbChange
 parameter_list|,
 name|Timestamp
 name|changeCreatedOn
@@ -4153,9 +4153,9 @@ name|message
 expr_stmt|;
 name|this
 operator|.
-name|notedbChange
+name|noteDbChange
 operator|=
-name|notedbChange
+name|noteDbChange
 expr_stmt|;
 block|}
 annotation|@
@@ -4259,7 +4259,7 @@ argument_list|(
 name|topic
 argument_list|)
 expr_stmt|;
-name|notedbChange
+name|noteDbChange
 operator|.
 name|setTopic
 argument_list|(
@@ -4302,7 +4302,7 @@ argument_list|(
 name|topic
 argument_list|)
 expr_stmt|;
-name|notedbChange
+name|noteDbChange
 operator|.
 name|setTopic
 argument_list|(
@@ -4331,7 +4331,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|notedbChange
+name|noteDbChange
 operator|.
 name|setTopic
 argument_list|(
@@ -4381,7 +4381,7 @@ operator|.
 name|ABANDONED
 argument_list|)
 expr_stmt|;
-name|notedbChange
+name|noteDbChange
 operator|.
 name|setStatus
 argument_list|(
@@ -4418,7 +4418,7 @@ operator|.
 name|NEW
 argument_list|)
 expr_stmt|;
-name|notedbChange
+name|noteDbChange
 operator|.
 name|setStatus
 argument_list|(
@@ -4446,20 +4446,20 @@ specifier|final
 name|Change
 name|change
 decl_stmt|;
-DECL|field|notedbChange
+DECL|field|noteDbChange
 specifier|private
 specifier|final
 name|Change
-name|notedbChange
+name|noteDbChange
 decl_stmt|;
-DECL|method|FinalUpdatesEvent (Change change, Change notedbChange)
+DECL|method|FinalUpdatesEvent (Change change, Change noteDbChange)
 name|FinalUpdatesEvent
 parameter_list|(
 name|Change
 name|change
 parameter_list|,
 name|Change
-name|notedbChange
+name|noteDbChange
 parameter_list|)
 block|{
 name|super
@@ -4493,9 +4493,9 @@ name|change
 expr_stmt|;
 name|this
 operator|.
-name|notedbChange
+name|noteDbChange
 operator|=
-name|notedbChange
+name|noteDbChange
 expr_stmt|;
 block|}
 annotation|@
@@ -4538,7 +4538,7 @@ operator|.
 name|getTopic
 argument_list|()
 argument_list|,
-name|notedbChange
+name|noteDbChange
 operator|.
 name|getTopic
 argument_list|()
@@ -4568,7 +4568,7 @@ operator|.
 name|getStatus
 argument_list|()
 argument_list|,
-name|notedbChange
+name|noteDbChange
 operator|.
 name|getStatus
 argument_list|()
@@ -4621,7 +4621,7 @@ name|update
 operator|.
 name|setSubjectForCommit
 argument_list|(
-literal|"Final notedb migration updates"
+literal|"Final NoteDb migration updates"
 argument_list|)
 expr_stmt|;
 block|}

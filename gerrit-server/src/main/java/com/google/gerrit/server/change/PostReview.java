@@ -3669,7 +3669,7 @@ name|psId
 argument_list|)
 decl_stmt|;
 comment|// TODO(dborowitz): Currently doesn't work for PUBLISH_ALL_REVISIONS with
-comment|// notedb.
+comment|// NoteDb.
 name|plcUtil
 operator|.
 name|deleteComments
