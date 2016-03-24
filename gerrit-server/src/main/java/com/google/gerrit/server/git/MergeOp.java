@@ -1564,13 +1564,6 @@ specifier|static
 class|class
 name|OpenBranch
 block|{
-DECL|field|name
-specifier|final
-name|Branch
-operator|.
-name|NameKey
-name|name
-decl_stmt|;
 DECL|field|update
 specifier|final
 name|RefUpdate
@@ -1599,12 +1592,6 @@ parameter_list|)
 throws|throws
 name|IntegrationException
 block|{
-name|this
-operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
 try|try
 block|{
 name|update
