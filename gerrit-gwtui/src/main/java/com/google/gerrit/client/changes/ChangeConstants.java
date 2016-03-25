@@ -160,36 +160,6 @@ name|String
 name|recentlyClosed
 parameter_list|()
 function_decl|;
-DECL|method|starredHeading ()
-name|String
-name|starredHeading
-parameter_list|()
-function_decl|;
-DECL|method|watchedHeading ()
-name|String
-name|watchedHeading
-parameter_list|()
-function_decl|;
-DECL|method|draftsHeading ()
-name|String
-name|draftsHeading
-parameter_list|()
-function_decl|;
-DECL|method|allOpenChanges ()
-name|String
-name|allOpenChanges
-parameter_list|()
-function_decl|;
-DECL|method|allAbandonedChanges ()
-name|String
-name|allAbandonedChanges
-parameter_list|()
-function_decl|;
-DECL|method|allMergedChanges ()
-name|String
-name|allMergedChanges
-parameter_list|()
-function_decl|;
 DECL|method|changeTableColumnSubject ()
 name|String
 name|changeTableColumnSubject
@@ -208,11 +178,6 @@ function_decl|;
 DECL|method|changeTableColumnOwner ()
 name|String
 name|changeTableColumnOwner
-parameter_list|()
-function_decl|;
-DECL|method|changeTableColumnReviewers ()
-name|String
-name|changeTableColumnReviewers
 parameter_list|()
 function_decl|;
 DECL|method|changeTableColumnProject ()
@@ -268,21 +233,6 @@ function_decl|;
 DECL|method|upToChangeList ()
 name|String
 name|upToChangeList
-parameter_list|()
-function_decl|;
-DECL|method|expandCollapseDependencies ()
-name|String
-name|expandCollapseDependencies
-parameter_list|()
-function_decl|;
-DECL|method|previousPatchSet ()
-name|String
-name|previousPatchSet
-parameter_list|()
-function_decl|;
-DECL|method|nextPatchSet ()
-name|String
-name|nextPatchSet
 parameter_list|()
 function_decl|;
 DECL|method|keyReloadChange ()
@@ -360,29 +310,9 @@ name|String
 name|patchTableDiffUnified
 parameter_list|()
 function_decl|;
-DECL|method|patchTableDownloadPreImage ()
-name|String
-name|patchTableDownloadPreImage
-parameter_list|()
-function_decl|;
-DECL|method|patchTableDownloadPostImage ()
-name|String
-name|patchTableDownloadPostImage
-parameter_list|()
-function_decl|;
-DECL|method|patchTableBinary ()
-name|String
-name|patchTableBinary
-parameter_list|()
-function_decl|;
 DECL|method|commitMessage ()
 name|String
 name|commitMessage
-parameter_list|()
-function_decl|;
-DECL|method|fileCommentHeader ()
-name|String
-name|fileCommentHeader
 parameter_list|()
 function_decl|;
 DECL|method|patchTablePrev ()
@@ -420,56 +350,6 @@ name|String
 name|nextPatchLinkIcon
 parameter_list|()
 function_decl|;
-DECL|method|changeScreenIncludedIn ()
-name|String
-name|changeScreenIncludedIn
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenDependencies ()
-name|String
-name|changeScreenDependencies
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenDependsOn ()
-name|String
-name|changeScreenDependsOn
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenNeededBy ()
-name|String
-name|changeScreenNeededBy
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenComments ()
-name|String
-name|changeScreenComments
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenAddComment ()
-name|String
-name|changeScreenAddComment
-parameter_list|()
-function_decl|;
-DECL|method|approvalTableReviewer ()
-name|String
-name|approvalTableReviewer
-parameter_list|()
-function_decl|;
-DECL|method|approvalTableAddReviewer ()
-name|String
-name|approvalTableAddReviewer
-parameter_list|()
-function_decl|;
-DECL|method|approvalTableRemoveNotPermitted ()
-name|String
-name|approvalTableRemoveNotPermitted
-parameter_list|()
-function_decl|;
-DECL|method|approvalTableCouldNotRemove ()
-name|String
-name|approvalTableCouldNotRemove
-parameter_list|()
-function_decl|;
 DECL|method|approvalTableAddReviewerHint ()
 name|String
 name|approvalTableAddReviewerHint
@@ -478,31 +358,6 @@ function_decl|;
 DECL|method|approvalTableAddManyReviewersConfirmationDialogTitle ()
 name|String
 name|approvalTableAddManyReviewersConfirmationDialogTitle
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoBlockOwner ()
-name|String
-name|changeInfoBlockOwner
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoBlockProject ()
-name|String
-name|changeInfoBlockProject
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoBlockBranch ()
-name|String
-name|changeInfoBlockBranch
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoBlockTopic ()
-name|String
-name|changeInfoBlockTopic
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoBlockTopicAlterTopicToolTip ()
-name|String
-name|changeInfoBlockTopicAlterTopicToolTip
 parameter_list|()
 function_decl|;
 DECL|method|changeInfoBlockUploaded ()
@@ -515,109 +370,14 @@ name|String
 name|changeInfoBlockUpdated
 parameter_list|()
 function_decl|;
-DECL|method|changeInfoBlockStatus ()
-name|String
-name|changeInfoBlockStatus
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoBlockSubmitType ()
-name|String
-name|changeInfoBlockSubmitType
-parameter_list|()
-function_decl|;
 DECL|method|changePermalink ()
 name|String
 name|changePermalink
 parameter_list|()
 function_decl|;
-DECL|method|changeInfoBlockCanMerge ()
-name|String
-name|changeInfoBlockCanMerge
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoBlockCanMergeYes ()
-name|String
-name|changeInfoBlockCanMergeYes
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoBlockCanMergeNo ()
-name|String
-name|changeInfoBlockCanMergeNo
-parameter_list|()
-function_decl|;
-DECL|method|buttonAlterTopic ()
-name|String
-name|buttonAlterTopic
-parameter_list|()
-function_decl|;
-DECL|method|buttonAlterTopicBegin ()
-name|String
-name|buttonAlterTopicBegin
-parameter_list|()
-function_decl|;
-DECL|method|buttonAlterTopicSend ()
-name|String
-name|buttonAlterTopicSend
-parameter_list|()
-function_decl|;
-DECL|method|buttonAlterTopicCancel ()
-name|String
-name|buttonAlterTopicCancel
-parameter_list|()
-function_decl|;
-DECL|method|headingAlterTopicMessage ()
-name|String
-name|headingAlterTopicMessage
-parameter_list|()
-function_decl|;
-DECL|method|alterTopicTitle ()
-name|String
-name|alterTopicTitle
-parameter_list|()
-function_decl|;
-DECL|method|alterTopicLabel ()
-name|String
-name|alterTopicLabel
-parameter_list|()
-function_decl|;
-DECL|method|includedInTableBranch ()
-name|String
-name|includedInTableBranch
-parameter_list|()
-function_decl|;
-DECL|method|includedInTableTag ()
-name|String
-name|includedInTableTag
-parameter_list|()
-function_decl|;
 DECL|method|messageNoAuthor ()
 name|String
 name|messageNoAuthor
-parameter_list|()
-function_decl|;
-DECL|method|messageExpandMostRecent ()
-name|String
-name|messageExpandMostRecent
-parameter_list|()
-function_decl|;
-DECL|method|messageExpandRecent ()
-name|String
-name|messageExpandRecent
-parameter_list|()
-function_decl|;
-DECL|method|messageExpandAll ()
-name|String
-name|messageExpandAll
-parameter_list|()
-function_decl|;
-DECL|method|messageCollapseAll ()
-name|String
-name|messageCollapseAll
-parameter_list|()
-function_decl|;
-DECL|method|messageNeedsRebaseOrHasDependency ()
-name|String
-name|messageNeedsRebaseOrHasDependency
 parameter_list|()
 function_decl|;
 DECL|method|sideBySide ()
@@ -628,46 +388,6 @@ function_decl|;
 DECL|method|unifiedDiff ()
 name|String
 name|unifiedDiff
-parameter_list|()
-function_decl|;
-DECL|method|patchSetInfoAuthor ()
-name|String
-name|patchSetInfoAuthor
-parameter_list|()
-function_decl|;
-DECL|method|patchSetInfoCommitter ()
-name|String
-name|patchSetInfoCommitter
-parameter_list|()
-function_decl|;
-DECL|method|patchSetInfoDownload ()
-name|String
-name|patchSetInfoDownload
-parameter_list|()
-function_decl|;
-DECL|method|patchSetInfoParents ()
-name|String
-name|patchSetInfoParents
-parameter_list|()
-function_decl|;
-DECL|method|patchSetWithDraftCommentsToolTip ()
-name|String
-name|patchSetWithDraftCommentsToolTip
-parameter_list|()
-function_decl|;
-DECL|method|initialCommit ()
-name|String
-name|initialCommit
-parameter_list|()
-function_decl|;
-DECL|method|buttonRebaseChange ()
-name|String
-name|buttonRebaseChange
-parameter_list|()
-function_decl|;
-DECL|method|buttonRevertChangeBegin ()
-name|String
-name|buttonRevertChangeBegin
 parameter_list|()
 function_decl|;
 DECL|method|buttonRevertChangeSend ()
@@ -683,11 +403,6 @@ function_decl|;
 DECL|method|revertChangeTitle ()
 name|String
 name|revertChangeTitle
-parameter_list|()
-function_decl|;
-DECL|method|buttonCherryPickChangeBegin ()
-name|String
-name|buttonCherryPickChangeBegin
 parameter_list|()
 function_decl|;
 DECL|method|buttonCherryPickChangeSend ()
@@ -735,31 +450,6 @@ name|String
 name|rebaseTitle
 parameter_list|()
 function_decl|;
-DECL|method|buttonAbandonChangeBegin ()
-name|String
-name|buttonAbandonChangeBegin
-parameter_list|()
-function_decl|;
-DECL|method|buttonAbandonChangeSend ()
-name|String
-name|buttonAbandonChangeSend
-parameter_list|()
-function_decl|;
-DECL|method|headingAbandonMessage ()
-name|String
-name|headingAbandonMessage
-parameter_list|()
-function_decl|;
-DECL|method|abandonChangeTitle ()
-name|String
-name|abandonChangeTitle
-parameter_list|()
-function_decl|;
-DECL|method|referenceVersion ()
-name|String
-name|referenceVersion
-parameter_list|()
-function_decl|;
 DECL|method|baseDiffItem ()
 name|String
 name|baseDiffItem
@@ -768,66 +458,6 @@ function_decl|;
 DECL|method|autoMerge ()
 name|String
 name|autoMerge
-parameter_list|()
-function_decl|;
-DECL|method|buttonReview ()
-name|String
-name|buttonReview
-parameter_list|()
-function_decl|;
-DECL|method|buttonPublishCommentsSend ()
-name|String
-name|buttonPublishCommentsSend
-parameter_list|()
-function_decl|;
-DECL|method|buttonPublishCommentsCancel ()
-name|String
-name|buttonPublishCommentsCancel
-parameter_list|()
-function_decl|;
-DECL|method|headingCoverMessage ()
-name|String
-name|headingCoverMessage
-parameter_list|()
-function_decl|;
-DECL|method|headingPatchComments ()
-name|String
-name|headingPatchComments
-parameter_list|()
-function_decl|;
-DECL|method|buttonRestoreChangeBegin ()
-name|String
-name|buttonRestoreChangeBegin
-parameter_list|()
-function_decl|;
-DECL|method|restoreChangeTitle ()
-name|String
-name|restoreChangeTitle
-parameter_list|()
-function_decl|;
-DECL|method|headingRestoreMessage ()
-name|String
-name|headingRestoreMessage
-parameter_list|()
-function_decl|;
-DECL|method|buttonRestoreChangeSend ()
-name|String
-name|buttonRestoreChangeSend
-parameter_list|()
-function_decl|;
-DECL|method|buttonPublishPatchSet ()
-name|String
-name|buttonPublishPatchSet
-parameter_list|()
-function_decl|;
-DECL|method|buttonDeleteDraftChange ()
-name|String
-name|buttonDeleteDraftChange
-parameter_list|()
-function_decl|;
-DECL|method|buttonDeleteDraftPatchSet ()
-name|String
-name|buttonDeleteDraftPatchSet
 parameter_list|()
 function_decl|;
 DECL|method|pagedChangeListPrev ()
@@ -840,11 +470,6 @@ name|String
 name|pagedChangeListNext
 parameter_list|()
 function_decl|;
-DECL|method|draftPatchSetLabel ()
-name|String
-name|draftPatchSetLabel
-parameter_list|()
-function_decl|;
 DECL|method|reviewed ()
 name|String
 name|reviewed
@@ -853,11 +478,6 @@ function_decl|;
 DECL|method|submitFailed ()
 name|String
 name|submitFailed
-parameter_list|()
-function_decl|;
-DECL|method|buttonClose ()
-name|String
-name|buttonClose
 parameter_list|()
 function_decl|;
 DECL|method|diffAllSideBySide ()
