@@ -502,6 +502,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -1894,8 +1908,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * @param cs set of changes to be submitted at once    * @param identifiedUser the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
-DECL|method|problemsForSubmittingChangeset (ChangeSet cs, IdentifiedUser identifiedUser)
+comment|/**    * @param cs set of changes to be submitted at once    * @param user the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
+DECL|method|problemsForSubmittingChangeset (ChangeSet cs, CurrentUser user)
 specifier|private
 name|String
 name|problemsForSubmittingChangeset
@@ -1903,8 +1917,8 @@ parameter_list|(
 name|ChangeSet
 name|cs
 parameter_list|,
-name|IdentifiedUser
-name|identifiedUser
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 try|try
@@ -1940,7 +1954,7 @@ name|c
 operator|.
 name|changeControl
 argument_list|(
-name|identifiedUser
+name|user
 argument_list|)
 decl_stmt|;
 if|if

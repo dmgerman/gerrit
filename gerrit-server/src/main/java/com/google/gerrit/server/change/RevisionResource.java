@@ -204,7 +204,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|CurrentUser
 import|;
 end_import
 
@@ -515,7 +515,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getUser ()
-name|IdentifiedUser
+name|CurrentUser
 name|getUser
 parameter_list|()
 block|{
@@ -524,9 +524,6 @@ name|getControl
 argument_list|()
 operator|.
 name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
 argument_list|()
 return|;
 block|}
