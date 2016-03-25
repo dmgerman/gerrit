@@ -287,7 +287,7 @@ argument_list|)
 expr_stmt|;
 name|checker
 operator|.
-name|checkChanges
+name|rebuildAndCheckChanges
 argument_list|(
 name|id
 argument_list|)
@@ -336,7 +336,7 @@ argument_list|)
 expr_stmt|;
 name|checker
 operator|.
-name|checkChanges
+name|rebuildAndCheckChanges
 argument_list|(
 name|id
 argument_list|)

@@ -1945,7 +1945,7 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|checkAllChanges
+name|rebuildAndCheckAllChanges
 argument_list|()
 expr_stmt|;
 block|}
