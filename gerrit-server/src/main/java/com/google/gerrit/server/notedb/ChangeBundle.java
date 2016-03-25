@@ -1684,6 +1684,10 @@ argument_list|,
 literal|17
 argument_list|,
 literal|18
+argument_list|,
+comment|// TODO(dborowitz): It's potentially possible to compare noteDbState in
+comment|// the Change with the state implied by a ChangeNotes.
+literal|101
 argument_list|)
 expr_stmt|;
 name|checkColumns
@@ -2264,7 +2268,7 @@ argument_list|)
 else|:
 literal|"Changes"
 decl_stmt|;
-name|diffColumns
+name|diffColumnsExcluding
 argument_list|(
 name|diffs
 argument_list|,
@@ -2281,6 +2285,10 @@ argument_list|,
 name|bundleB
 argument_list|,
 name|b
+argument_list|,
+literal|"rowVersion"
+argument_list|,
+literal|"noteDbState"
 argument_list|)
 expr_stmt|;
 block|}

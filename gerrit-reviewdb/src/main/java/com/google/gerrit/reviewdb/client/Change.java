@@ -1747,6 +1747,35 @@ name|submissionId
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/** @see com.google.gerrit.server.notedb.NoteDbChangeState */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|101
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|,
+name|length
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+DECL|field|noteDbState
+specifier|protected
+name|String
+name|noteDbState
+decl_stmt|;
+end_decl_stmt
+
 begin_constructor
 DECL|method|Change ()
 specifier|protected
@@ -1904,6 +1933,12 @@ operator|=
 name|other
 operator|.
 name|topic
+expr_stmt|;
+name|noteDbState
+operator|=
+name|other
+operator|.
+name|noteDbState
 expr_stmt|;
 block|}
 end_constructor
@@ -2470,6 +2505,36 @@ operator|.
 name|topic
 operator|=
 name|topic
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|getNoteDbState ()
+specifier|public
+name|String
+name|getNoteDbState
+parameter_list|()
+block|{
+return|return
+name|noteDbState
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setNoteDbState (String state)
+specifier|public
+name|void
+name|setNoteDbState
+parameter_list|(
+name|String
+name|state
+parameter_list|)
+block|{
+name|noteDbState
+operator|=
+name|state
 expr_stmt|;
 block|}
 end_function

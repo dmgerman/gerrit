@@ -178,6 +178,15 @@ name|NoteDbTable
 argument_list|>
 name|updateLatency
 decl_stmt|;
+comment|/**    * The portion of {@link #updateLatency} due to preparing the sequence of    * updates.    *<p>    * May include some I/O (e.g. reading old refs), but excludes writes.    */
+DECL|field|stageUpdateLatency
+specifier|final
+name|Timer1
+argument_list|<
+name|NoteDbTable
+argument_list|>
+name|stageUpdateLatency
+decl_stmt|;
 comment|/**    * End-to-end latency for reading changes from NoteDb, including reading    * ref(s) and parsing.    */
 DECL|field|readLatency
 specifier|final
@@ -244,6 +253,33 @@ argument_list|(
 name|Units
 operator|.
 name|MILLISECONDS
+argument_list|)
+argument_list|,
+name|view
+argument_list|)
+expr_stmt|;
+name|stageUpdateLatency
+operator|=
+name|metrics
+operator|.
+name|newTimer
+argument_list|(
+literal|"notedb/stage_update_latency"
+argument_list|,
+operator|new
+name|Description
+argument_list|(
+literal|"Latency for staging updates to NoteDb by table"
+argument_list|)
+operator|.
+name|setCumulative
+argument_list|()
+operator|.
+name|setUnit
+argument_list|(
+name|Units
+operator|.
+name|MICROSECONDS
 argument_list|)
 argument_list|,
 name|view
