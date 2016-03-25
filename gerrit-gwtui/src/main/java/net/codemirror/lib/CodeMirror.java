@@ -1442,6 +1442,22 @@ name|km
 parameter_list|)
 comment|/*-{     $wnd.CodeMirror.keyMap[name] = km   }-*/
 function_decl|;
+DECL|method|addCommand (String name, CommandRunner runner)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|void
+name|addCommand
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|CommandRunner
+name|runner
+parameter_list|)
+comment|/*-{     $wnd.CodeMirror.commands[name] = function(cm) {       runner.@net.codemirror.lib.CodeMirror.CommandRunner::run(         Lnet/codemirror/lib/CodeMirror;)(cm);     };   }-*/
+function_decl|;
 DECL|method|vim ()
 specifier|public
 specifier|final
@@ -1693,6 +1709,20 @@ block|{
 DECL|method|handle (CodeMirror instance)
 name|void
 name|handle
+parameter_list|(
+name|CodeMirror
+name|instance
+parameter_list|)
+function_decl|;
+block|}
+DECL|interface|CommandRunner
+specifier|public
+interface|interface
+name|CommandRunner
+block|{
+DECL|method|run (CodeMirror instance)
+name|void
+name|run
 parameter_list|(
 name|CodeMirror
 name|instance
