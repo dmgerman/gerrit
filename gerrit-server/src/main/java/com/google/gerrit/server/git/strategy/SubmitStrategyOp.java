@@ -2543,7 +2543,7 @@ operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
-name|update
+name|upsert
 argument_list|(
 name|zero
 argument_list|(
