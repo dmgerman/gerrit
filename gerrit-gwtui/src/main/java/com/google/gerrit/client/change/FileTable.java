@@ -1972,7 +1972,7 @@ name|REVIEW
 condition|?
 name|Dispatcher
 operator|.
-name|toSideBySide
+name|toPatch
 argument_list|(
 name|base
 argument_list|,
