@@ -377,6 +377,11 @@ name|String
 name|diffHeader
 parameter_list|()
 function_decl|;
+DECL|method|showLineNumbers ()
+name|String
+name|showLineNumbers
+parameter_list|()
+function_decl|;
 block|}
 DECL|field|patchSetNavRow
 annotation|@
