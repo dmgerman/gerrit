@@ -5363,6 +5363,22 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|Element
+operator|.
+name|as
+argument_list|(
+name|clickEvent
+operator|.
+name|getEventTarget
+argument_list|()
+argument_list|)
+operator|.
+name|hasClassName
+argument_list|(
+name|getLineNumberClassName
+argument_list|()
+argument_list|)
+operator|&&
 name|clickEvent
 operator|.
 name|getButton
@@ -5489,6 +5505,12 @@ parameter_list|,
 name|DisplaySide
 name|side
 parameter_list|)
+function_decl|;
+DECL|method|getLineNumberClassName ()
+specifier|abstract
+name|String
+name|getLineNumberClassName
+parameter_list|()
 function_decl|;
 DECL|method|lineOnOther (DisplaySide side, int line)
 name|LineOnOtherInfo

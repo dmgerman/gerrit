@@ -2318,6 +2318,22 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getLineNumberClassName ()
+name|String
+name|getLineNumberClassName
+parameter_list|()
+block|{
+return|return
+name|UnifiedTable
+operator|.
+name|style
+operator|.
+name|unifiedLineNumber
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

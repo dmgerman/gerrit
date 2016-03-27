@@ -627,6 +627,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|LINE_NUMBER_CLASSNAME
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|LINE_NUMBER_CLASSNAME
+init|=
+literal|"CodeMirror-linenumber"
+decl_stmt|;
 annotation|@
 name|UiField
 argument_list|(
@@ -2511,6 +2520,17 @@ parameter_list|()
 block|{
 return|return
 literal|true
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getLineNumberClassName ()
+name|String
+name|getLineNumberClassName
+parameter_list|()
+block|{
+return|return
+name|LINE_NUMBER_CLASSNAME
 return|;
 block|}
 block|}
