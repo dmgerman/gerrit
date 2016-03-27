@@ -120,7 +120,7 @@ name|diff
 operator|.
 name|UnifiedChunkManager
 operator|.
-name|LineSidePair
+name|LineRegionInfo
 import|;
 end_import
 
@@ -2313,6 +2313,8 @@ return|return
 name|cm
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCmLine (int line, DisplaySide side)
 name|int
 name|getCmLine
@@ -2335,9 +2337,9 @@ name|side
 argument_list|)
 return|;
 block|}
-DECL|method|getLineSidePairFromCmLine (int cmLine)
-name|LineSidePair
-name|getLineSidePairFromCmLine
+DECL|method|getLineRegionInfoFromCmLine (int cmLine)
+name|LineRegionInfo
+name|getLineRegionInfoFromCmLine
 parameter_list|(
 name|int
 name|cmLine
@@ -2346,7 +2348,7 @@ block|{
 return|return
 name|chunkManager
 operator|.
-name|getLineSidePairFromCmLine
+name|getLineRegionInfoFromCmLine
 argument_list|(
 name|cmLine
 argument_list|)

@@ -343,6 +343,15 @@ return|return
 name|line
 return|;
 block|}
+DECL|method|getSide ()
+name|DisplaySide
+name|getSide
+parameter_list|()
+block|{
+return|return
+name|side
+return|;
+block|}
 DECL|method|add (PublishedBox box)
 name|void
 name|add

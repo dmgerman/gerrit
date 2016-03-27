@@ -2114,6 +2114,23 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getCmLine (int line, DisplaySide side)
+name|int
+name|getCmLine
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|DisplaySide
+name|side
+parameter_list|)
+block|{
+return|return
+name|line
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|updateActiveLine (final CodeMirror cm)
 name|Runnable
 name|updateActiveLine

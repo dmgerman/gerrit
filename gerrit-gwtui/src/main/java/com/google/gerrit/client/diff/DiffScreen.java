@@ -5445,6 +5445,18 @@ name|DiffTable
 name|getDiffTable
 parameter_list|()
 function_decl|;
+DECL|method|getCmLine (int line, DisplaySide side)
+specifier|abstract
+name|int
+name|getCmLine
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|DisplaySide
+name|side
+parameter_list|)
+function_decl|;
 DECL|method|lineOnOther (DisplaySide side, int line)
 name|LineOnOtherInfo
 name|lineOnOther

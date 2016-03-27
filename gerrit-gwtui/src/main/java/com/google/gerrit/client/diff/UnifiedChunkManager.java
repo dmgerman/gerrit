@@ -1974,9 +1974,9 @@ return|;
 block|}
 block|}
 block|}
-DECL|method|getLineSidePairFromCmLine (int cmLine)
-name|LineSidePair
-name|getLineSidePairFromCmLine
+DECL|method|getLineRegionInfoFromCmLine (int cmLine)
+name|LineRegionInfo
+name|getLineRegionInfoFromCmLine
 parameter_list|(
 name|int
 name|cmLine
@@ -2019,6 +2019,7 @@ operator|>=
 literal|0
 condition|)
 block|{
+comment|// The line is right at the start of a diff chunk.
 name|UnifiedDiffChunkInfo
 name|info
 init|=
@@ -2031,23 +2032,26 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|LineSidePair
+name|LineRegionInfo
 argument_list|(
 name|info
 operator|.
 name|getStart
 argument_list|()
 argument_list|,
+name|displaySideToRegionType
+argument_list|(
 name|info
 operator|.
 name|getSide
 argument_list|()
 argument_list|)
+argument_list|)
 return|;
 block|}
 else|else
 block|{
-comment|// The line might be within a DiffChunk
+comment|// The line might be within or after a diff chunk.
 name|res
 operator|=
 operator|-
@@ -2097,7 +2101,11 @@ name|info
 operator|.
 name|getEnd
 argument_list|()
-operator|&&
+condition|)
+block|{
+comment|// After a diff chunk
+if|if
+condition|(
 name|info
 operator|.
 name|getSide
@@ -2108,11 +2116,11 @@ operator|.
 name|A
 condition|)
 block|{
-comment|// For the common region after a deletion chunk, return the line and
-comment|// side info on side B
+comment|// For the common region after a deletion chunk, associate the line
+comment|// on side B with a common region.
 return|return
 operator|new
-name|LineSidePair
+name|LineRegionInfo
 argument_list|(
 name|getLineMapper
 argument_list|()
@@ -2129,9 +2137,9 @@ operator|.
 name|getLine
 argument_list|()
 argument_list|,
-name|DisplaySide
+name|RegionType
 operator|.
-name|B
+name|COMMON
 argument_list|)
 return|;
 block|}
@@ -2139,58 +2147,118 @@ else|else
 block|{
 return|return
 operator|new
-name|LineSidePair
+name|LineRegionInfo
 argument_list|(
 name|lineOnInfoSide
 argument_list|,
+name|RegionType
+operator|.
+name|COMMON
+argument_list|)
+return|;
+block|}
+block|}
+else|else
+block|{
+comment|// Within a diff chunk
+return|return
+operator|new
+name|LineRegionInfo
+argument_list|(
+name|lineOnInfoSide
+argument_list|,
+name|displaySideToRegionType
+argument_list|(
 name|info
 operator|.
 name|getSide
 argument_list|()
 argument_list|)
+argument_list|)
 return|;
 block|}
 block|}
 else|else
 block|{
-comment|// Always return side B
+comment|// The line is before any diff chunk, so it always equals cmLine and
+comment|// belongs to a common region.
 return|return
 operator|new
-name|LineSidePair
+name|LineRegionInfo
 argument_list|(
 name|cmLine
 argument_list|,
-name|DisplaySide
+name|RegionType
 operator|.
-name|B
+name|COMMON
 argument_list|)
 return|;
 block|}
 block|}
 block|}
-DECL|class|LineSidePair
+DECL|enum|RegionType
+enum|enum
+name|RegionType
+block|{
+DECL|enumConstant|INSERT
+DECL|enumConstant|DELETE
+DECL|enumConstant|COMMON
+name|INSERT
+block|,
+name|DELETE
+block|,
+name|COMMON
+block|,   }
+DECL|method|displaySideToRegionType (DisplaySide side)
+specifier|private
+specifier|static
+name|RegionType
+name|displaySideToRegionType
+parameter_list|(
+name|DisplaySide
+name|side
+parameter_list|)
+block|{
+return|return
+name|side
+operator|==
+name|DisplaySide
+operator|.
+name|A
+condition|?
+name|RegionType
+operator|.
+name|DELETE
+else|:
+name|RegionType
+operator|.
+name|INSERT
+return|;
+block|}
+comment|/**    * Helper class to associate a line in the original file with the type of the    * region it belongs to.    *    * @field line The 0-based line number in the original file. Note that this    *     might be different from the line number shown in CodeMirror.    * @field type The type of the region the line belongs to. Can be INSERT,    *     DELETE or COMMON.    */
+DECL|class|LineRegionInfo
 specifier|static
 class|class
-name|LineSidePair
+name|LineRegionInfo
 block|{
 DECL|field|line
-specifier|private
+specifier|final
 name|int
 name|line
 decl_stmt|;
-DECL|field|side
-specifier|private
-name|DisplaySide
-name|side
+DECL|field|type
+specifier|final
+name|RegionType
+name|type
 decl_stmt|;
-DECL|method|LineSidePair (int line, DisplaySide side)
-name|LineSidePair
+DECL|method|LineRegionInfo (int line, RegionType type)
+name|LineRegionInfo
 parameter_list|(
 name|int
 name|line
 parameter_list|,
-name|DisplaySide
-name|side
+name|RegionType
+name|type
 parameter_list|)
 block|{
 name|this
@@ -2201,27 +2269,31 @@ name|line
 expr_stmt|;
 name|this
 operator|.
-name|side
+name|type
 operator|=
-name|side
+name|type
 expr_stmt|;
-block|}
-DECL|method|getLine ()
-name|int
-name|getLine
-parameter_list|()
-block|{
-return|return
-name|line
-return|;
 block|}
 DECL|method|getSide ()
 name|DisplaySide
 name|getSide
 parameter_list|()
 block|{
+comment|// Always return DisplaySide.B for INSERT or COMMON
 return|return
-name|side
+name|type
+operator|==
+name|RegionType
+operator|.
+name|DELETE
+condition|?
+name|DisplaySide
+operator|.
+name|A
+else|:
+name|DisplaySide
+operator|.
+name|B
 return|;
 block|}
 block|}
