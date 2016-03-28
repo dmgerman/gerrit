@@ -131,6 +131,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbTable
+operator|.
+name|CHANGES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -155,6 +173,20 @@ operator|.
 name|collect
 operator|.
 name|ListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Timer1
 import|;
 end_import
 
@@ -538,6 +570,12 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|metrics
+specifier|private
+specifier|final
+name|NoteDbMetrics
+name|metrics
+decl_stmt|;
 DECL|field|projectName
 specifier|private
 specifier|final
@@ -580,7 +618,7 @@ name|allUsersRepo
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|NoteDbUpdateManager (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsersName, @Assisted Project.NameKey projectName)
+DECL|method|NoteDbUpdateManager (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsersName, NoteDbMetrics metrics, @Assisted Project.NameKey projectName)
 name|NoteDbUpdateManager
 parameter_list|(
 name|GitRepositoryManager
@@ -591,6 +629,9 @@ name|migration
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|NoteDbMetrics
+name|metrics
 parameter_list|,
 annotation|@
 name|Assisted
@@ -617,6 +658,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|metrics
+operator|=
+name|metrics
 expr_stmt|;
 name|this
 operator|.
@@ -1062,6 +1109,21 @@ block|{
 return|return;
 block|}
 try|try
+init|(
+name|Timer1
+operator|.
+name|Context
+name|timer
+init|=
+name|metrics
+operator|.
+name|updateLatency
+operator|.
+name|start
+argument_list|(
+name|CHANGES
+argument_list|)
+init|)
 block|{
 name|initChangeRepo
 argument_list|()

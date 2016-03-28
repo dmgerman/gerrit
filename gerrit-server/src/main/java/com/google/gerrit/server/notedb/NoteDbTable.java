@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -66,77 +66,42 @@ name|notedb
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|config
-operator|.
-name|FactoryModule
-import|;
-end_import
-
-begin_class
-DECL|class|NoteDbModule
-specifier|public
-class|class
-name|NoteDbModule
-extends|extends
-name|FactoryModule
+begin_enum
+DECL|enum|NoteDbTable
+enum|enum
+name|NoteDbTable
 block|{
-annotation|@
-name|Override
-DECL|method|configure ()
-specifier|public
-name|void
-name|configure
+DECL|enumConstant|CHANGES
+name|CHANGES
+block|;
+DECL|method|key ()
+name|String
+name|key
 parameter_list|()
 block|{
-name|factory
-argument_list|(
-name|ChangeUpdate
+return|return
+name|name
+argument_list|()
 operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|ChangeDraftUpdate
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|DraftCommentNotes
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|NoteDbUpdateManager
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+name|toLowerCase
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|key
+argument_list|()
+return|;
 block|}
 block|}
-end_class
+end_enum
 
 end_unit
 

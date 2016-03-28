@@ -283,6 +283,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbTable
+operator|.
+name|CHANGES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -563,6 +581,20 @@ operator|.
 name|data
 operator|.
 name|SubmitRecord
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Timer1
 import|;
 end_import
 
@@ -1217,6 +1249,12 @@ specifier|final
 name|ChangeNoteUtil
 name|noteUtil
 decl_stmt|;
+DECL|field|metrics
+specifier|private
+specifier|final
+name|NoteDbMetrics
+name|metrics
+decl_stmt|;
 DECL|field|id
 specifier|private
 specifier|final
@@ -1290,7 +1328,7 @@ name|ChangeMessage
 argument_list|>
 name|changeMessagesByPatchSet
 decl_stmt|;
-DECL|method|ChangeNotesParser (Project.NameKey project, Change.Id changeId, ObjectId tip, RevWalk walk, GitRepositoryManager repoManager, ChangeNoteUtil noteUtil)
+DECL|method|ChangeNotesParser (Project.NameKey project, Change.Id changeId, ObjectId tip, RevWalk walk, GitRepositoryManager repoManager, ChangeNoteUtil noteUtil, NoteDbMetrics metrics)
 name|ChangeNotesParser
 parameter_list|(
 name|Project
@@ -1314,6 +1352,9 @@ name|repoManager
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
+parameter_list|,
+name|NoteDbMetrics
+name|metrics
 parameter_list|)
 throws|throws
 name|RepositoryNotFoundException
@@ -1354,6 +1395,12 @@ operator|.
 name|noteUtil
 operator|=
 name|noteUtil
+expr_stmt|;
+name|this
+operator|.
+name|metrics
+operator|=
+name|metrics
 expr_stmt|;
 name|approvals
 operator|=
@@ -1449,6 +1496,9 @@ name|ConfigInvalidException
 throws|,
 name|IOException
 block|{
+comment|// Don't include initial parse in timer, as this might do more I/O to page
+comment|// in the block containing most commits. Later reads are not guaranteed to
+comment|// avoid I/O, but often should.
 name|walk
 operator|.
 name|markStart
@@ -1461,6 +1511,23 @@ name|tip
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|Timer1
+operator|.
+name|Context
+name|timer
+init|=
+name|metrics
+operator|.
+name|parseLatency
+operator|.
+name|start
+argument_list|(
+name|CHANGES
+argument_list|)
+init|)
+block|{
 for|for
 control|(
 name|RevCommit
@@ -1497,6 +1564,7 @@ expr_stmt|;
 name|checkMandatoryFooters
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 name|ImmutableListMultimap
 argument_list|<
