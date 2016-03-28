@@ -1442,6 +1442,19 @@ name|km
 parameter_list|)
 comment|/*-{     $wnd.CodeMirror.keyMap[name] = km   }-*/
 function_decl|;
+DECL|method|normalizeKeyMap (KeyMap km)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|void
+name|normalizeKeyMap
+parameter_list|(
+name|KeyMap
+name|km
+parameter_list|)
+comment|/*-{     $wnd.CodeMirror.normalizeKeyMap(km);   }-*/
+function_decl|;
 DECL|method|addCommand (String name, CommandRunner runner)
 specifier|public
 specifier|static
