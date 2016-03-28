@@ -423,6 +423,11 @@ name|String
 name|keySearch
 parameter_list|()
 function_decl|;
+DECL|method|keyEditor ()
+name|String
+name|keyEditor
+parameter_list|()
+function_decl|;
 DECL|method|keyHelp ()
 name|String
 name|keyHelp
