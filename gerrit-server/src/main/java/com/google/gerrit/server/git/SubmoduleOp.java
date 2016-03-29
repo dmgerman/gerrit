@@ -1134,7 +1134,7 @@ return|return
 name|ret
 return|;
 block|}
-specifier|private
+specifier|public
 name|Collection
 argument_list|<
 name|SubmoduleSubscription
@@ -1148,7 +1148,7 @@ name|NameKey
 name|branch
 parameter_list|)
 throws|throws
-name|SubmoduleException
+name|IOException
 block|{
 name|logDebug
 argument_list|(
@@ -1191,8 +1191,6 @@ operator|.
 name|getConfig
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 for|for
 control|(
 name|SubscribeSection
@@ -1261,23 +1259,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|SubmoduleException
-argument_list|(
-literal|"Could not update superproject"
-argument_list|,
-name|e
-argument_list|)
-throw|;
 block|}
 name|logDebug
 argument_list|(
@@ -1357,6 +1338,8 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 for|for
 control|(
 name|Branch
@@ -1391,6 +1374,21 @@ name|sub
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|SubmoduleException
+argument_list|(
+literal|"Could not calculate all superprojects"
+argument_list|)
+throw|;
 block|}
 name|updatedSubscribers
 operator|.

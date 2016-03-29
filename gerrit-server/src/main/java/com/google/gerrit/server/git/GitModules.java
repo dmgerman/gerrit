@@ -574,7 +574,7 @@ name|void
 name|load
 parameter_list|()
 throws|throws
-name|SubmoduleException
+name|IOException
 block|{
 name|Project
 operator|.
@@ -738,14 +738,12 @@ block|}
 catch|catch
 parameter_list|(
 name|ConfigInvalidException
-decl||
-name|IOException
 name|e
 parameter_list|)
 block|{
 throw|throw
 operator|new
-name|SubmoduleException
+name|IOException
 argument_list|(
 literal|"Could not read .gitmodule file of super project: "
 operator|+
