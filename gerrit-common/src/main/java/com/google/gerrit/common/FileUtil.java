@@ -66,6 +66,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|GwtIncompatible
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -173,6 +187,11 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|GwtIncompatible
+argument_list|(
+literal|"Unemulated classes in java.io, java.nio and JGit"
+argument_list|)
 DECL|class|FileUtil
 specifier|public
 class|class
