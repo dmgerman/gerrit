@@ -196,20 +196,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|base
 operator|.
 name|Joiner
@@ -227,6 +213,20 @@ operator|.
 name|collect
 operator|.
 name|ComparisonChain
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableCollection
 import|;
 end_import
 
@@ -1881,9 +1881,8 @@ specifier|final
 name|Source
 name|source
 decl_stmt|;
-annotation|@
-name|VisibleForTesting
 DECL|method|ChangeBundle ( Change change, Iterable<ChangeMessage> changeMessages, Iterable<PatchSet> patchSets, Iterable<PatchSetApproval> patchSetApprovals, Iterable<PatchLineComment> patchLineComments, Source source)
+specifier|public
 name|ChangeBundle
 parameter_list|(
 name|Change
@@ -2130,6 +2129,63 @@ parameter_list|()
 block|{
 return|return
 name|change
+return|;
+block|}
+DECL|method|getChangeMessages ()
+name|ImmutableCollection
+argument_list|<
+name|ChangeMessage
+argument_list|>
+name|getChangeMessages
+parameter_list|()
+block|{
+return|return
+name|changeMessages
+return|;
+block|}
+DECL|method|getPatchSets ()
+name|ImmutableCollection
+argument_list|<
+name|PatchSet
+argument_list|>
+name|getPatchSets
+parameter_list|()
+block|{
+return|return
+name|patchSets
+operator|.
+name|values
+argument_list|()
+return|;
+block|}
+DECL|method|getPatchSetApprovals ()
+name|ImmutableCollection
+argument_list|<
+name|PatchSetApproval
+argument_list|>
+name|getPatchSetApprovals
+parameter_list|()
+block|{
+return|return
+name|patchSetApprovals
+operator|.
+name|values
+argument_list|()
+return|;
+block|}
+DECL|method|getPatchLineComments ()
+name|ImmutableCollection
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|getPatchLineComments
+parameter_list|()
+block|{
+return|return
+name|patchLineComments
+operator|.
+name|values
+argument_list|()
 return|;
 block|}
 DECL|method|differencesFrom (ChangeBundle o)

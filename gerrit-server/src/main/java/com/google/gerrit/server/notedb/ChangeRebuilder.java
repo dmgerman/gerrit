@@ -332,6 +332,27 @@ name|OrmException
 throws|,
 name|ConfigInvalidException
 function_decl|;
+DECL|method|rebuild (NoteDbUpdateManager manager, ChangeBundle bundle)
+specifier|public
+specifier|abstract
+name|NoteDbChangeState
+name|rebuild
+parameter_list|(
+name|NoteDbUpdateManager
+name|manager
+parameter_list|,
+name|ChangeBundle
+name|bundle
+parameter_list|)
+throws|throws
+name|NoSuchChangeException
+throws|,
+name|IOException
+throws|,
+name|OrmException
+throws|,
+name|ConfigInvalidException
+function_decl|;
 block|}
 end_class
 
