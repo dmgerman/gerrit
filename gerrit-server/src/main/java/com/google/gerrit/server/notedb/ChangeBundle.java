@@ -3660,7 +3660,7 @@ decl_stmt|;
 name|long
 name|max
 init|=
-name|ChangeRebuilder
+name|ChangeRebuilderImpl
 operator|.
 name|MAX_WINDOW_MS
 decl_stmt|;

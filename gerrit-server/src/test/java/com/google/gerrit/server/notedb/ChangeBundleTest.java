@@ -687,7 +687,7 @@ expr_stmt|;
 name|long
 name|maxMs
 init|=
-name|ChangeRebuilder
+name|ChangeRebuilderImpl
 operator|.
 name|MAX_WINDOW_MS
 decl_stmt|;
@@ -773,7 +773,7 @@ name|TestTimeUtil
 operator|.
 name|setClockStep
 argument_list|(
-name|ChangeRebuilder
+name|ChangeRebuilderImpl
 operator|.
 name|MAX_WINDOW_MS
 operator|*
