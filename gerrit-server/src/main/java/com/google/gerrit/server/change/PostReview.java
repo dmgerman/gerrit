@@ -4032,6 +4032,32 @@ name|emptyMap
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// If no labels were modified and change is closed, abort early.
+comment|// This avoids trying to record a modified label caused by a user
+comment|// losing access to a label after the change was submitted.
+if|if
+condition|(
+name|inLabels
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|ctx
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getStatus
+argument_list|()
+operator|.
+name|isClosed
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|List
 argument_list|<
 name|PatchSetApproval
@@ -4698,6 +4724,7 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 operator|!
 name|del
 operator|.
@@ -4709,10 +4736,8 @@ name|ups
 operator|.
 name|isEmpty
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 name|ctx
 operator|.
 name|getChange
@@ -4732,7 +4757,6 @@ argument_list|(
 literal|"change is closed"
 argument_list|)
 throw|;
-block|}
 block|}
 name|forceCallerAsReviewer
 argument_list|(
