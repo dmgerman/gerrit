@@ -3284,8 +3284,7 @@ name|DraftCommentNotes
 argument_list|(
 name|args
 argument_list|,
-name|getChangeId
-argument_list|()
+name|change
 argument_list|,
 name|author
 argument_list|)

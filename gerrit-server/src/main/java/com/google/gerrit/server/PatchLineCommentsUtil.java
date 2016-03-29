@@ -2122,6 +2122,9 @@ name|comments
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
+comment|// To be used only by HasDraftByLegacyPredicate.
 DECL|method|draftByAuthor (ReviewDb db, Account.Id author)
 specifier|public
 name|List
@@ -2217,18 +2220,26 @@ argument_list|(
 name|refName
 argument_list|)
 decl_stmt|;
-name|comments
-operator|.
-name|addAll
-argument_list|(
+comment|// Avoid loading notes for all affected changes just to be able to auto-
+comment|// rebuild. This is only used in a corner case in the search codepath, so
+comment|// returning slightly stale values is ok.
+name|DraftCommentNotes
+name|notes
+init|=
 name|draftFactory
 operator|.
-name|create
+name|createWithAutoRebuildingDisabled
 argument_list|(
 name|changeId
 argument_list|,
 name|author
 argument_list|)
+decl_stmt|;
+name|comments
+operator|.
+name|addAll
+argument_list|(
+name|notes
 operator|.
 name|load
 argument_list|()
