@@ -745,7 +745,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|writeChanges
+name|writeAccounts
 argument_list|()
 condition|)
 block|{
@@ -1044,7 +1044,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|writeChanges
+name|writeAccounts
 argument_list|()
 condition|)
 block|{
@@ -1267,7 +1267,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|writeChanges
+name|writeAccounts
 argument_list|()
 condition|)
 block|{
@@ -1511,7 +1511,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|readChanges
+name|readAccounts
 argument_list|()
 condition|)
 block|{
@@ -1682,7 +1682,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|readChanges
+name|readAccounts
 argument_list|()
 condition|)
 block|{

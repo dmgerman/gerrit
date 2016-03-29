@@ -142,6 +142,30 @@ return|return
 name|writeChanges
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|readAccounts ()
+specifier|public
+name|boolean
+name|readAccounts
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|writeAccounts ()
+specifier|public
+name|boolean
+name|writeAccounts
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 DECL|method|setReadChanges (boolean readChanges)
 specifier|public
 name|TestNotesMigration

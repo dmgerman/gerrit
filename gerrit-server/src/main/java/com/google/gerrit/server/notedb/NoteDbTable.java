@@ -71,6 +71,9 @@ DECL|enum|NoteDbTable
 enum|enum
 name|NoteDbTable
 block|{
+DECL|enumConstant|ACCOUNTS
+name|ACCOUNTS
+block|,
 DECL|enumConstant|CHANGES
 name|CHANGES
 block|;

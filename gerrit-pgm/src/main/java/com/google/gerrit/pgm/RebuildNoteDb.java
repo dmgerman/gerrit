@@ -1155,15 +1155,6 @@ argument_list|,
 name|allUsersRepo
 argument_list|)
 expr_stmt|;
-name|deleteRefs
-argument_list|(
-name|RefNames
-operator|.
-name|REFS_STARRED_CHANGES
-argument_list|,
-name|allUsersRepo
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|Project
