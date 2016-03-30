@@ -574,6 +574,30 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Matcher
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_class
 annotation|@
 name|NoHttpd
@@ -3167,6 +3191,35 @@ argument_list|)
 expr_stmt|;
 name|addDraft
 argument_list|(
+name|r1
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|r1
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|newDraft
+argument_list|(
+name|FILE_NAME
+argument_list|,
+name|Side
+operator|.
+name|PARENT
+argument_list|,
+literal|2
+argument_list|,
+literal|"what happened to this?"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|addDraft
+argument_list|(
 name|r2
 operator|.
 name|getChangeId
@@ -3447,7 +3500,7 @@ argument_list|)
 operator|.
 name|hasSize
 argument_list|(
-literal|1
+literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -3464,8 +3517,59 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
+literal|"what happened to this?"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|ps1List
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|side
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|Side
+operator|.
+name|PARENT
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|ps1List
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|message
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
 literal|"nit: trailing whitespace"
 argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|ps1List
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|side
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -3660,6 +3764,8 @@ argument_list|()
 decl_stmt|;
 name|assertThat
 argument_list|(
+name|extractComments
+argument_list|(
 name|messages
 operator|.
 name|get
@@ -3670,16 +3776,15 @@ operator|.
 name|body
 argument_list|()
 argument_list|)
+argument_list|)
 operator|.
-name|contains
+name|isEqualTo
 argument_list|(
-literal|"\n"
-operator|+
 literal|"Patch Set 2:\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"(3 comments)\n"
+literal|"(4 comments)\n"
 operator|+
 literal|"\n"
 operator|+
@@ -3696,6 +3801,14 @@ operator|+
 literal|"/1/a.txt\n"
 operator|+
 literal|"File a.txt:\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"PS1, Line 2: \n"
+operator|+
+literal|"what happened to this?\n"
+operator|+
+literal|"\n"
 operator|+
 literal|"\n"
 operator|+
@@ -3732,12 +3845,59 @@ operator|+
 literal|"typo: content\n"
 operator|+
 literal|"\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"-- \n"
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|extractComments (String msg)
+specifier|private
+specifier|static
+name|String
+name|extractComments
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+block|{
+comment|// Extract lines between start "....." and end "-- ".
+name|Pattern
+name|p
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|".*[.]{5}\n+(.*)\\n+-- \n.*"
+argument_list|,
+name|Pattern
+operator|.
+name|DOTALL
+argument_list|)
+decl_stmt|;
+name|Matcher
+name|m
+init|=
+name|p
+operator|.
+name|matcher
+argument_list|(
+name|msg
+argument_list|)
+decl_stmt|;
+return|return
+name|m
+operator|.
+name|matches
+argument_list|()
+condition|?
+name|m
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+else|:
+name|msg
+return|;
 block|}
 DECL|method|addComment (PushOneCommit.Result r, String message)
 specifier|private
