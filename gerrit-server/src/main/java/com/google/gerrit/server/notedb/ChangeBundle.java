@@ -2132,6 +2132,7 @@ name|change
 return|;
 block|}
 DECL|method|getChangeMessages ()
+specifier|public
 name|ImmutableCollection
 argument_list|<
 name|ChangeMessage
@@ -2144,6 +2145,7 @@ name|changeMessages
 return|;
 block|}
 DECL|method|getPatchSets ()
+specifier|public
 name|ImmutableCollection
 argument_list|<
 name|PatchSet
@@ -2159,6 +2161,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getPatchSetApprovals ()
+specifier|public
 name|ImmutableCollection
 argument_list|<
 name|PatchSetApproval
@@ -2174,6 +2177,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getPatchLineComments ()
+specifier|public
 name|ImmutableCollection
 argument_list|<
 name|PatchLineComment
@@ -2186,6 +2190,16 @@ name|patchLineComments
 operator|.
 name|values
 argument_list|()
+return|;
+block|}
+DECL|method|getSource ()
+specifier|public
+name|Source
+name|getSource
+parameter_list|()
+block|{
+return|return
+name|source
 return|;
 block|}
 DECL|method|differencesFrom (ChangeBundle o)
