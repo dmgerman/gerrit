@@ -4637,6 +4637,10 @@ argument_list|,
 name|commits
 argument_list|,
 name|submissionId
+argument_list|,
+name|submitInput
+operator|.
+name|notify
 argument_list|)
 return|;
 block|}
