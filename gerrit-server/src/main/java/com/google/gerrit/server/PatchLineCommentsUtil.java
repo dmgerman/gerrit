@@ -2910,7 +2910,7 @@ throw|;
 block|}
 block|}
 DECL|method|getDraftRefs (Change.Id changeId)
-specifier|private
+specifier|public
 name|Map
 argument_list|<
 name|String
