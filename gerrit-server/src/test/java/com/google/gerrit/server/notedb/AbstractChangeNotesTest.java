@@ -1861,6 +1861,16 @@ argument_list|)
 decl_stmt|;
 name|update
 operator|.
+name|setPatchSetId
+argument_list|(
+name|c
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
 name|setAllowWriteToNewRef
 argument_list|(
 literal|true

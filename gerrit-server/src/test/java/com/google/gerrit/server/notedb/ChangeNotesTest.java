@@ -13110,7 +13110,7 @@ name|exception
 operator|.
 name|expect
 argument_list|(
-name|UnsupportedOperationException
+name|IllegalStateException
 operator|.
 name|class
 argument_list|)

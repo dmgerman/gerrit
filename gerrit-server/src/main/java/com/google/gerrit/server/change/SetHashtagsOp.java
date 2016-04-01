@@ -746,7 +746,7 @@ name|notes
 init|=
 name|update
 operator|.
-name|getChangeNotes
+name|getNotes
 argument_list|()
 operator|.
 name|load

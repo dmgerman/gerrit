@@ -467,14 +467,11 @@ argument_list|()
 argument_list|,
 name|update
 operator|.
-name|getUser
-argument_list|()
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
 argument_list|,
-literal|"cannot store change message of %s in update of %s"
+literal|"cannot store change message by %s in update by %s"
 argument_list|,
 name|changeMessage
 operator|.
@@ -482,9 +479,6 @@ name|getAuthor
 argument_list|()
 argument_list|,
 name|update
-operator|.
-name|getUser
-argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
