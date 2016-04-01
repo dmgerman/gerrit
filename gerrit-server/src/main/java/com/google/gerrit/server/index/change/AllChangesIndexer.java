@@ -458,7 +458,7 @@ name|server
 operator|.
 name|patch
 operator|.
-name|PatchListLoader
+name|AutoMerger
 import|;
 end_import
 
@@ -990,9 +990,15 @@ specifier|final
 name|ThreeWayMergeStrategy
 name|mergeStrategy
 decl_stmt|;
+DECL|field|autoMerger
+specifier|private
+specifier|final
+name|AutoMerger
+name|autoMerger
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AllChangesIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor(BATCH) ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, ChangeNotes.Factory notesFactory, @GerritServerConfig Config config, ProjectCache projectCache)
+DECL|method|AllChangesIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor(BATCH) ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, ChangeNotes.Factory notesFactory, @GerritServerConfig Config config, ProjectCache projectCache, AutoMerger autoMerger)
 name|AllChangesIndexer
 parameter_list|(
 name|SchemaFactory
@@ -1034,6 +1040,9 @@ name|config
 parameter_list|,
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|AutoMerger
+name|autoMerger
 parameter_list|)
 block|{
 name|this
@@ -1088,6 +1097,12 @@ name|getMergeStrategy
 argument_list|(
 name|config
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|autoMerger
+operator|=
+name|autoMerger
 expr_stmt|;
 block|}
 annotation|@
@@ -1983,6 +1998,8 @@ name|indexer
 argument_list|,
 name|mergeStrategy
 argument_list|,
+name|autoMerger
+argument_list|,
 name|byId
 argument_list|,
 name|repo
@@ -2064,6 +2081,12 @@ specifier|final
 name|ThreeWayMergeStrategy
 name|mergeStrategy
 decl_stmt|;
+DECL|field|autoMerger
+specifier|private
+specifier|final
+name|AutoMerger
+name|autoMerger
+decl_stmt|;
 DECL|field|byId
 specifier|private
 specifier|final
@@ -2104,7 +2127,7 @@ specifier|private
 name|RevWalk
 name|walk
 decl_stmt|;
-DECL|method|ProjectIndexer (ChangeIndexer indexer, ThreeWayMergeStrategy mergeStrategy, Multimap<ObjectId, ChangeData> changesByCommitId, Repository repo, ProgressMonitor done, ProgressMonitor failed, PrintWriter verboseWriter)
+DECL|method|ProjectIndexer (ChangeIndexer indexer, ThreeWayMergeStrategy mergeStrategy, AutoMerger autoMerger, Multimap<ObjectId, ChangeData> changesByCommitId, Repository repo, ProgressMonitor done, ProgressMonitor failed, PrintWriter verboseWriter)
 specifier|private
 name|ProjectIndexer
 parameter_list|(
@@ -2113,6 +2136,9 @@ name|indexer
 parameter_list|,
 name|ThreeWayMergeStrategy
 name|mergeStrategy
+parameter_list|,
+name|AutoMerger
+name|autoMerger
 parameter_list|,
 name|Multimap
 argument_list|<
@@ -2146,6 +2172,12 @@ operator|.
 name|mergeStrategy
 operator|=
 name|mergeStrategy
+expr_stmt|;
+name|this
+operator|.
+name|autoMerger
+operator|=
+name|autoMerger
 expr_stmt|;
 name|this
 operator|.
@@ -2751,9 +2783,9 @@ case|case
 literal|2
 case|:
 return|return
-name|PatchListLoader
+name|autoMerger
 operator|.
-name|automerge
+name|merge
 argument_list|(
 name|repo
 argument_list|,
