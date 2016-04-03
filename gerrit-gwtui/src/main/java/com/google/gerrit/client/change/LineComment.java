@@ -658,7 +658,7 @@ block|{
 return|return
 name|Dispatcher
 operator|.
-name|toSideBySide
+name|toPatch
 argument_list|(
 literal|null
 argument_list|,
