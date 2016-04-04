@@ -106,6 +106,8 @@ name|server
 operator|.
 name|auth
 operator|.
+name|pubkey
+operator|.
 name|CachingPublicKeyAuthenticator
 block|{
 annotation|@
