@@ -518,6 +518,7 @@ index|[]
 name|patches
 decl_stmt|;
 DECL|method|PatchList (@ullable final AnyObjectId oldId, final AnyObjectId newId, final boolean againstParent, final PatchListEntry[] patches)
+specifier|public
 name|PatchList
 parameter_list|(
 annotation|@
