@@ -272,7 +272,7 @@ block|}
 DECL|method|copyTo (EditPreferencesInfo p)
 specifier|public
 specifier|final
-name|void
+name|EditPreferencesInfo
 name|copyTo
 parameter_list|(
 name|EditPreferencesInfo
@@ -363,6 +363,9 @@ operator|=
 name|keyMapType
 argument_list|()
 expr_stmt|;
+return|return
+name|p
+return|;
 block|}
 DECL|method|theme (Theme i)
 specifier|public

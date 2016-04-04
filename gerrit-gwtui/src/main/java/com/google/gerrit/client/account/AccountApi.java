@@ -327,7 +327,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Put the account edit preferences */
-DECL|method|putEditPreferences (EditPreferences in, AsyncCallback<VoidResult> cb)
+DECL|method|putEditPreferences (EditPreferences in, AsyncCallback<EditPreferences> cb)
 specifier|public
 specifier|static
 name|void
@@ -338,7 +338,7 @@ name|in
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|EditPreferences
 argument_list|>
 name|cb
 parameter_list|)
