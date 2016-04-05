@@ -531,11 +531,14 @@ name|s1
 operator|.
 name|getProject
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|superBranch
 operator|.
 name|getParentKey
 argument_list|()
+argument_list|)
 condition|)
 block|{
 name|s
