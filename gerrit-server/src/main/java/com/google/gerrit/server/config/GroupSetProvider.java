@@ -242,6 +242,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -291,7 +301,7 @@ name|groupIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupSetProvider (GroupBackend groupBackend, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx, String[] groupNames)
+DECL|method|GroupSetProvider (GroupBackend groupBackend, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx, List<String> groupNames)
 specifier|protected
 name|GroupSetProvider
 parameter_list|(
@@ -304,8 +314,10 @@ parameter_list|,
 name|ServerRequestContext
 name|serverCtx
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|groupNames
 parameter_list|)
 block|{
