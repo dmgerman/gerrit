@@ -320,9 +320,17 @@ name|String
 name|sourcePath
 parameter_list|)
 function_decl|;
-DECL|method|needApproval (String labelName)
+DECL|method|blockedOn (String labelName)
 name|String
-name|needApproval
+name|blockedOn
+parameter_list|(
+name|String
+name|labelName
+parameter_list|)
+function_decl|;
+DECL|method|needs (String labelName)
+name|String
+name|needs
 parameter_list|(
 name|String
 name|labelName
