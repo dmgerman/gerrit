@@ -114,6 +114,20 @@ name|Project
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_comment
 comment|/** Provides a cached list of {@link PatchListEntry}. */
 end_comment
@@ -142,6 +156,19 @@ function_decl|;
 DECL|method|get (Change change, PatchSet patchSet)
 name|PatchList
 name|get
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|)
+throws|throws
+name|PatchListNotAvailableException
+function_decl|;
+DECL|method|getOldId (Change change, PatchSet patchSet)
+name|ObjectId
+name|getOldId
 parameter_list|(
 name|Change
 name|change

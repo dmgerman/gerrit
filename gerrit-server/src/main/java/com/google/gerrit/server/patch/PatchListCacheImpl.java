@@ -738,6 +738,34 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getOldId (Change change, PatchSet patchSet)
+specifier|public
+name|ObjectId
+name|getOldId
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|)
+throws|throws
+name|PatchListNotAvailableException
+block|{
+return|return
+name|get
+argument_list|(
+name|change
+argument_list|,
+name|patchSet
+argument_list|)
+operator|.
+name|getOldId
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getIntraLineDiff (IntraLineDiffKey key, IntraLineDiffArgs args)
 specifier|public
 name|IntraLineDiff

@@ -196,20 +196,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|base
 operator|.
 name|Joiner
@@ -227,6 +213,20 @@ operator|.
 name|collect
 operator|.
 name|ComparisonChain
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableCollection
 import|;
 end_import
 
@@ -1684,6 +1684,10 @@ argument_list|,
 literal|17
 argument_list|,
 literal|18
+argument_list|,
+comment|// TODO(dborowitz): It's potentially possible to compare noteDbState in
+comment|// the Change with the state implied by a ChangeNotes.
+literal|101
 argument_list|)
 expr_stmt|;
 name|checkColumns
@@ -1877,9 +1881,8 @@ specifier|final
 name|Source
 name|source
 decl_stmt|;
-annotation|@
-name|VisibleForTesting
 DECL|method|ChangeBundle ( Change change, Iterable<ChangeMessage> changeMessages, Iterable<PatchSet> patchSets, Iterable<PatchSetApproval> patchSetApprovals, Iterable<PatchLineComment> patchLineComments, Source source)
+specifier|public
 name|ChangeBundle
 parameter_list|(
 name|Change
@@ -2128,6 +2131,77 @@ return|return
 name|change
 return|;
 block|}
+DECL|method|getChangeMessages ()
+specifier|public
+name|ImmutableCollection
+argument_list|<
+name|ChangeMessage
+argument_list|>
+name|getChangeMessages
+parameter_list|()
+block|{
+return|return
+name|changeMessages
+return|;
+block|}
+DECL|method|getPatchSets ()
+specifier|public
+name|ImmutableCollection
+argument_list|<
+name|PatchSet
+argument_list|>
+name|getPatchSets
+parameter_list|()
+block|{
+return|return
+name|patchSets
+operator|.
+name|values
+argument_list|()
+return|;
+block|}
+DECL|method|getPatchSetApprovals ()
+specifier|public
+name|ImmutableCollection
+argument_list|<
+name|PatchSetApproval
+argument_list|>
+name|getPatchSetApprovals
+parameter_list|()
+block|{
+return|return
+name|patchSetApprovals
+operator|.
+name|values
+argument_list|()
+return|;
+block|}
+DECL|method|getPatchLineComments ()
+specifier|public
+name|ImmutableCollection
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|getPatchLineComments
+parameter_list|()
+block|{
+return|return
+name|patchLineComments
+operator|.
+name|values
+argument_list|()
+return|;
+block|}
+DECL|method|getSource ()
+specifier|public
+name|Source
+name|getSource
+parameter_list|()
+block|{
+return|return
+name|source
+return|;
+block|}
 DECL|method|differencesFrom (ChangeBundle o)
 specifier|public
 name|ImmutableList
@@ -2264,7 +2338,7 @@ argument_list|)
 else|:
 literal|"Changes"
 decl_stmt|;
-name|diffColumns
+name|diffColumnsExcluding
 argument_list|(
 name|diffs
 argument_list|,
@@ -2281,6 +2355,10 @@ argument_list|,
 name|bundleB
 argument_list|,
 name|b
+argument_list|,
+literal|"rowVersion"
+argument_list|,
+literal|"noteDbState"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3652,7 +3730,7 @@ decl_stmt|;
 name|long
 name|max
 init|=
-name|ChangeRebuilder
+name|ChangeRebuilderImpl
 operator|.
 name|MAX_WINDOW_MS
 decl_stmt|;

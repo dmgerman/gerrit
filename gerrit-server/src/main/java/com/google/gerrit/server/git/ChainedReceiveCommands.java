@@ -184,6 +184,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -581,6 +591,27 @@ name|cmd
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/** @return an unmodifiable view of commands. */
+DECL|method|getCommands ()
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|ReceiveCommand
+argument_list|>
+name|getCommands
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableMap
+argument_list|(
+name|commands
+argument_list|)
+return|;
 block|}
 block|}
 end_class

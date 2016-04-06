@@ -876,6 +876,8 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Non-atomic operation on Accounts table; not much we can do to make it
+comment|// atomic.
 name|starredChangesUtil
 operator|.
 name|unstarAll

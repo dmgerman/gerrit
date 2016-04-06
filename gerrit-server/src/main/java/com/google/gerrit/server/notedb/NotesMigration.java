@@ -91,6 +91,20 @@ name|boolean
 name|writeChanges
 parameter_list|()
 function_decl|;
+DECL|method|readAccounts ()
+specifier|public
+specifier|abstract
+name|boolean
+name|readAccounts
+parameter_list|()
+function_decl|;
+DECL|method|writeAccounts ()
+specifier|public
+specifier|abstract
+name|boolean
+name|writeAccounts
+parameter_list|()
+function_decl|;
 DECL|method|enabled ()
 specifier|public
 name|boolean
@@ -102,6 +116,12 @@ name|writeChanges
 argument_list|()
 operator|||
 name|readChanges
+argument_list|()
+operator|||
+name|writeAccounts
+argument_list|()
+operator|||
+name|readAccounts
 argument_list|()
 return|;
 block|}
