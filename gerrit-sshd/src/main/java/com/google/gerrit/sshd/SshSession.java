@@ -102,9 +102,7 @@ name|sshd
 operator|.
 name|common
 operator|.
-name|session
-operator|.
-name|Session
+name|AttributeStore
 operator|.
 name|AttributeKey
 import|;
