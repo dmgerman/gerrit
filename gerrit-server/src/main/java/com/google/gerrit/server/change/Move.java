@@ -256,7 +256,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|ChangeMessage
+name|Change
+operator|.
+name|Status
 import|;
 end_import
 
@@ -272,9 +274,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
-operator|.
-name|Status
+name|ChangeMessage
 import|;
 end_import
 
@@ -426,6 +426,24 @@ name|server
 operator|.
 name|git
 operator|.
+name|BatchUpdate
+operator|.
+name|ChangeContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|GitRepositoryManager
 import|;
 end_import
@@ -459,24 +477,6 @@ operator|.
 name|notedb
 operator|.
 name|ChangeUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|BatchUpdate
-operator|.
-name|ChangeContext
 import|;
 end_import
 
