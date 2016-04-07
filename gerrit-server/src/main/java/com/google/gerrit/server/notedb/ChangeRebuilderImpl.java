@@ -1374,9 +1374,7 @@ argument_list|,
 name|bundle
 argument_list|)
 expr_stmt|;
-name|NoteDbChangeState
-name|newState
-init|=
+return|return
 name|NoteDbChangeState
 operator|.
 name|applyDelta
@@ -1396,14 +1394,6 @@ name|getId
 argument_list|()
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|manager
-operator|.
-name|execute
-argument_list|()
-expr_stmt|;
-return|return
-name|newState
 return|;
 block|}
 DECL|method|buildUpdates (NoteDbUpdateManager manager, ChangeBundle bundle)
