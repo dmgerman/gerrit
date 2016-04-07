@@ -4018,6 +4018,25 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|saveProjectConfig (ProjectConfig cfg)
+specifier|protected
+name|void
+name|saveProjectConfig
+parameter_list|(
+name|ProjectConfig
+name|cfg
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|saveProjectConfig
+argument_list|(
+name|project
+argument_list|,
+name|cfg
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|grant (String permission, Project.NameKey project, String ref)
 specifier|protected
 name|void
