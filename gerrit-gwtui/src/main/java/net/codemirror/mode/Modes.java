@@ -797,6 +797,18 @@ name|DataResource
 name|mathematica
 parameter_list|()
 function_decl|;
+DECL|method|mbox ()
+annotation|@
+name|Source
+argument_list|(
+literal|"mbox.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|mbox
+parameter_list|()
+function_decl|;
 DECL|method|mirc ()
 annotation|@
 name|Source
@@ -977,6 +989,18 @@ name|DataResource
 name|pig
 parameter_list|()
 function_decl|;
+DECL|method|powershell ()
+annotation|@
+name|Source
+argument_list|(
+literal|"powershell.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|powershell
+parameter_list|()
+function_decl|;
 DECL|method|properties ()
 annotation|@
 name|Source
@@ -1095,6 +1119,18 @@ annotation|@
 name|DoNotEmbed
 name|DataResource
 name|rust
+parameter_list|()
+function_decl|;
+DECL|method|sas ()
+annotation|@
+name|Source
+argument_list|(
+literal|"sas.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|sas
 parameter_list|()
 function_decl|;
 DECL|method|sass ()
@@ -1481,6 +1517,18 @@ name|DataResource
 name|vue
 parameter_list|()
 function_decl|;
+DECL|method|webidl ()
+annotation|@
+name|Source
+argument_list|(
+literal|"webidl.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|webidl
+parameter_list|()
+function_decl|;
 DECL|method|xml ()
 annotation|@
 name|Source
@@ -1503,6 +1551,18 @@ annotation|@
 name|DoNotEmbed
 name|DataResource
 name|xquery
+parameter_list|()
+function_decl|;
+DECL|method|yacas ()
+annotation|@
+name|Source
+argument_list|(
+literal|"yacas.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|yacas
 parameter_list|()
 function_decl|;
 DECL|method|yaml_frontmatter ()
