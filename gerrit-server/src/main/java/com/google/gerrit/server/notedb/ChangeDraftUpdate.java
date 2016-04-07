@@ -100,22 +100,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|eclipse
@@ -440,6 +424,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Date
 import|;
 end_import
@@ -450,7 +454,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|HashSet
 import|;
 end_import
 
@@ -460,7 +464,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
+name|List
 import|;
 end_import
 
@@ -576,13 +580,10 @@ specifier|final
 name|AllUsersName
 name|draftsProject
 decl_stmt|;
-comment|// TODO: can go back to a list?
 DECL|field|put
 specifier|private
-name|Map
+name|List
 argument_list|<
-name|Key
-argument_list|,
 name|PatchLineComment
 argument_list|>
 name|put
@@ -673,7 +674,7 @@ operator|.
 name|put
 operator|=
 operator|new
-name|HashMap
+name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
@@ -719,13 +720,8 @@ argument_list|)
 expr_stmt|;
 name|put
 operator|.
-name|put
+name|add
 argument_list|(
-name|key
-argument_list|(
-name|c
-argument_list|)
-argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
@@ -814,10 +810,9 @@ name|comment
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** @return the tree id for the updated tree */
-DECL|method|storeCommentsInNotes (RevWalk rw, ObjectInserter ins, ObjectId curr)
+DECL|method|storeCommentsInNotes (RevWalk rw, ObjectInserter ins, ObjectId curr, CommitBuilder cb)
 specifier|private
-name|ObjectId
+name|CommitBuilder
 name|storeCommentsInNotes
 parameter_list|(
 name|RevWalk
@@ -828,6 +823,9 @@ name|ins
 parameter_list|,
 name|ObjectId
 name|curr
+parameter_list|,
+name|CommitBuilder
+name|cb
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -883,9 +881,6 @@ name|PatchLineComment
 name|c
 range|:
 name|put
-operator|.
-name|values
-argument_list|()
 control|)
 block|{
 if|if
@@ -960,6 +955,11 @@ name|getBuilders
 argument_list|()
 decl_stmt|;
 name|boolean
+name|touchedAnyRevs
+init|=
+literal|false
+decl_stmt|;
+name|boolean
 name|hasComments
 init|=
 literal|false
@@ -1024,6 +1024,29 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|Arrays
+operator|.
+name|equals
+argument_list|(
+name|data
+argument_list|,
+name|e
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|baseRaw
+argument_list|)
+condition|)
+block|{
+name|touchedAnyRevs
+operator|=
+literal|true
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|data
 operator|.
 name|length
@@ -1072,6 +1095,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// If we didn't touch any notes, tell the caller this was a no-op update. We
+comment|// couldn't have done this in isEmpty() below because we hadn't read the old
+comment|// data yet.
+if|if
+condition|(
+operator|!
+name|touchedAnyRevs
+condition|)
+block|{
+return|return
+name|NO_OP_UPDATE
+return|;
+block|}
 comment|// If we touched every revision and there are no comments left, tell the
 comment|// caller to delete the entire ref.
 name|boolean
@@ -1101,7 +1137,10 @@ return|return
 literal|null
 return|;
 block|}
-return|return
+name|cb
+operator|.
+name|setTreeId
+argument_list|(
 name|rnm
 operator|.
 name|noteMap
@@ -1110,6 +1149,10 @@ name|writeTree
 argument_list|(
 name|ins
 argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|cb
 return|;
 block|}
 DECL|method|getRevisionNoteMap (RevWalk rw, ObjectId curr)
@@ -1176,6 +1219,14 @@ name|zeroId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|RevisionNoteMap
+name|rnm
+init|=
+name|draftNotes
+operator|.
+name|getRevisionNoteMap
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|idFromNotes
@@ -1184,16 +1235,14 @@ name|equals
 argument_list|(
 name|curr
 argument_list|)
+operator|&&
+name|rnm
+operator|!=
+literal|null
 condition|)
 block|{
 return|return
-name|checkNotNull
-argument_list|(
-name|getNotes
-argument_list|()
-operator|.
-name|revisionNoteMap
-argument_list|)
+name|rnm
 return|;
 block|}
 block|}
@@ -1305,9 +1354,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|ObjectId
-name|treeId
-init|=
+return|return
 name|storeCommentsInNotes
 argument_list|(
 name|rw
@@ -1315,30 +1362,10 @@ argument_list|,
 name|ins
 argument_list|,
 name|curr
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|treeId
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-comment|// Delete ref.
-block|}
+argument_list|,
 name|cb
-operator|.
-name|setTreeId
-argument_list|(
-name|checkNotNull
-argument_list|(
-name|treeId
 argument_list|)
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1354,9 +1381,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-return|return
-name|cb
-return|;
 block|}
 annotation|@
 name|Override

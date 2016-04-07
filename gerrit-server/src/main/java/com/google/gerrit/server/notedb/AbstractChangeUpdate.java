@@ -970,6 +970,19 @@ name|z
 return|;
 comment|// Impl intends to delete the ref.
 block|}
+elseif|else
+if|if
+condition|(
+name|cb
+operator|==
+name|NO_OP_UPDATE
+condition|)
+block|{
+return|return
+literal|null
+return|;
+comment|// Impl is a no-op.
+block|}
 name|cb
 operator|.
 name|setAuthor
@@ -1088,7 +1101,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Create a commit containing the contents of this update.    *    * @param ins inserter to write to; callers should not flush.    * @return a new commit builder representing this commit, or null to indicate    *     the meta ref should be deleted as a result of this update. The parent,    *     author, and committer fields in the return value are always    *     overwritten. The tree ID may be unset by this method, which indicates    *     to the caller that it should be copied from the parent commit.    * @throws OrmException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
+comment|/**    * Create a commit containing the contents of this update.    *    * @param ins inserter to write to; callers should not flush.    * @return a new commit builder representing this commit, or null to indicate    *     the meta ref should be deleted as a result of this update. The parent,    *     author, and committer fields in the return value are always    *     overwritten. The tree ID may be unset by this method, which indicates    *     to the caller that it should be copied from the parent commit. To    *     indicate that this update is a no-op (but this could not be determined    *     by {@link #isEmpty()}), return the sentinel {@link #NO_OP_UPDATE}.    * @throws OrmException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
 DECL|method|applyImpl (RevWalk rw, ObjectInserter ins, ObjectId curr)
 specifier|protected
 specifier|abstract
@@ -1109,6 +1122,17 @@ name|OrmException
 throws|,
 name|IOException
 function_decl|;
+DECL|field|NO_OP_UPDATE
+specifier|protected
+specifier|static
+specifier|final
+name|CommitBuilder
+name|NO_OP_UPDATE
+init|=
+operator|new
+name|CommitBuilder
+argument_list|()
+decl_stmt|;
 DECL|method|getResult ()
 name|ObjectId
 name|getResult
