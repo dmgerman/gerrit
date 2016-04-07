@@ -468,10 +468,10 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Test
-DECL|method|moveChange_shortRef ()
+DECL|method|moveChangeWithShortRef ()
 specifier|public
 name|void
-name|moveChange_shortRef
+name|moveChangeWithShortRef
 parameter_list|()
 throws|throws
 name|Exception
@@ -549,10 +549,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|moveChange_fullRef ()
+DECL|method|moveChangeWithFullRef ()
 specifier|public
 name|void
-name|moveChange_fullRef
+name|moveChangeWithFullRef
 parameter_list|()
 throws|throws
 name|Exception
@@ -831,10 +831,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|moveChange_sameChangeId ()
+DECL|method|moveChangeToSameChangeId ()
 specifier|public
 name|void
-name|moveChange_sameChangeId
+name|moveChangeToSameChangeId
 parameter_list|()
 throws|throws
 name|Exception
@@ -1291,10 +1291,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|moveChangeToBranch_WithoutUploadPerms ()
+DECL|method|moveChangeToBranchWithoutUploadPerms ()
 specifier|public
 name|void
-name|moveChangeToBranch_WithoutUploadPerms
+name|moveChangeToBranchWithoutUploadPerms
 parameter_list|()
 throws|throws
 name|Exception
@@ -1393,10 +1393,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|moveChangeFromBranch_WithoutAbandonPerms ()
+DECL|method|moveChangeFromBranchWithoutAbandonPerms ()
 specifier|public
 name|void
-name|moveChangeFromBranch_WithoutAbandonPerms
+name|moveChangeFromBranchWithoutAbandonPerms
 parameter_list|()
 throws|throws
 name|Exception
@@ -1648,10 +1648,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|moveChange_WithCurrentPatchSetLocked ()
+DECL|method|moveChangeWithCurrentPatchSetLocked ()
 specifier|public
 name|void
-name|moveChange_WithCurrentPatchSetLocked
+name|moveChangeWithCurrentPatchSetLocked
 parameter_list|()
 throws|throws
 name|Exception
