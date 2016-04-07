@@ -1105,7 +1105,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|genSshKey ()
-specifier|private
+specifier|public
 specifier|static
 name|KeyPair
 name|genSshKey
@@ -1134,7 +1134,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|publicKey (KeyPair sshKey, String comment)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|publicKey
