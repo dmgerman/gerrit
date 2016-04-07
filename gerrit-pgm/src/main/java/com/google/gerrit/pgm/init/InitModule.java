@@ -285,6 +285,15 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|factory
+argument_list|(
+name|VersionedAuthorizedKeysOnInit
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 comment|// Steps are executed in the order listed here.
 comment|//
 name|step

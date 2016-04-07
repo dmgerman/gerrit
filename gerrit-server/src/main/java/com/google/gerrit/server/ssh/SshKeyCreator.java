@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -98,106 +98,13 @@ name|AccountSshKey
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|AbstractModule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Module
-import|;
-end_import
-
-begin_class
-DECL|class|NoSshKeyCache
+begin_interface
+DECL|interface|SshKeyCreator
 specifier|public
-class|class
-name|NoSshKeyCache
-implements|implements
-name|SshKeyCache
-implements|,
+interface|interface
 name|SshKeyCreator
 block|{
-DECL|method|module ()
-specifier|public
-specifier|static
-name|Module
-name|module
-parameter_list|()
-block|{
-return|return
-operator|new
-name|AbstractModule
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|protected
-name|void
-name|configure
-parameter_list|()
-block|{
-name|bind
-argument_list|(
-name|SshKeyCache
-operator|.
-name|class
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|NoSshKeyCache
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|bind
-argument_list|(
-name|SshKeyCreator
-operator|.
-name|class
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|NoSshKeyCache
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|evict (String username)
-specifier|public
-name|void
-name|evict
-parameter_list|(
-name|String
-name|username
-parameter_list|)
-block|{   }
-annotation|@
-name|Override
 DECL|method|create (AccountSshKey.Id id, String encoded)
-specifier|public
 name|AccountSshKey
 name|create
 parameter_list|(
@@ -211,15 +118,9 @@ name|encoded
 parameter_list|)
 throws|throws
 name|InvalidSshKeyException
-block|{
-throw|throw
-operator|new
-name|InvalidSshKeyException
-argument_list|()
-throw|;
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

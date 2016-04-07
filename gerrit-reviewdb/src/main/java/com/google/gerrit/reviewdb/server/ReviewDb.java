@@ -265,18 +265,7 @@ name|AccountExternalIdAccess
 name|accountExternalIds
 parameter_list|()
 function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|8
-argument_list|)
-DECL|method|accountSshKeys ()
-name|AccountSshKeyAccess
-name|accountSshKeys
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 8)
 annotation|@
 name|Relation
 argument_list|(
