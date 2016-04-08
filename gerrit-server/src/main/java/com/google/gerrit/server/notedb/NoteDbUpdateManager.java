@@ -547,7 +547,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Object to manage a single sequence of updates to NoteDb.  *<p>  * Instances are one-time-use. Handles updating both the change meta repo and  * the All-Users meta repo for any affected changes, with proper ordering.  *<p>  * To see the state that would be applied prior to executing the full sequence  * of updates, use {@link #stage()}.  */
+comment|/**  * Object to manage a single sequence of updates to NoteDb.  *<p>  * Instances are one-time-use. Handles updating both the change repo and the  * All-Users repo for any affected changes, with proper ordering.  *<p>  * To see the state that would be applied prior to executing the full sequence  * of updates, use {@link #stage()}.  */
 end_comment
 
 begin_class
@@ -1063,8 +1063,6 @@ operator|=
 name|openRepo
 argument_list|(
 name|projectName
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -1089,8 +1087,6 @@ operator|=
 name|openRepo
 argument_list|(
 name|projectName
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1115,13 +1111,11 @@ operator|=
 name|openRepo
 argument_list|(
 name|allUsersName
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|openRepo (Project.NameKey p, boolean meta)
+DECL|method|openRepo (Project.NameKey p)
 specifier|private
 name|OpenRepo
 name|openRepo
@@ -1130,9 +1124,6 @@ name|Project
 operator|.
 name|NameKey
 name|p
-parameter_list|,
-name|boolean
-name|meta
 parameter_list|)
 throws|throws
 name|IOException
@@ -1140,15 +1131,6 @@ block|{
 name|Repository
 name|repo
 init|=
-name|meta
-condition|?
-name|repoManager
-operator|.
-name|openMetadataRepository
-argument_list|(
-name|p
-argument_list|)
-else|:
 name|repoManager
 operator|.
 name|openRepository

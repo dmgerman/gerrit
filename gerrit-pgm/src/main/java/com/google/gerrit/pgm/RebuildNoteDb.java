@@ -1140,7 +1140,7 @@ name|allUsersRepo
 init|=
 name|repoManager
 operator|.
-name|openMetadataRepository
+name|openRepository
 argument_list|(
 name|allUsersName
 argument_list|)

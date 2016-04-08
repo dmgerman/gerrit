@@ -168,22 +168,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -300,7 +284,7 @@ name|config
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MultiBaseLocalDiskRepositoryManager (SitePaths site, @GerritServerConfig Config cfg, NotesMigration notesMigration, RepositoryConfig config)
+DECL|method|MultiBaseLocalDiskRepositoryManager (SitePaths site, @GerritServerConfig Config cfg, RepositoryConfig config)
 name|MultiBaseLocalDiskRepositoryManager
 parameter_list|(
 name|SitePaths
@@ -311,9 +295,6 @@ name|GerritServerConfig
 name|Config
 name|cfg
 parameter_list|,
-name|NotesMigration
-name|notesMigration
-parameter_list|,
 name|RepositoryConfig
 name|config
 parameter_list|)
@@ -323,8 +304,6 @@ argument_list|(
 name|site
 argument_list|,
 name|cfg
-argument_list|,
-name|notesMigration
 argument_list|)
 expr_stmt|;
 name|this

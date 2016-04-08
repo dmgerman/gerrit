@@ -529,29 +529,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|openMetadataRepository ( Project.NameKey name)
-specifier|public
-specifier|synchronized
-name|Repo
-name|openMetadataRepository
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|name
-parameter_list|)
-throws|throws
-name|RepositoryNotFoundException
-block|{
-return|return
-name|openRepository
-argument_list|(
-name|name
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|list ()
 specifier|public
 specifier|synchronized
