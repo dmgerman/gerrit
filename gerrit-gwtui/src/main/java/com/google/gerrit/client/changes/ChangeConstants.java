@@ -480,16 +480,6 @@ name|String
 name|submitFailed
 parameter_list|()
 function_decl|;
-DECL|method|diffAllSideBySide ()
-name|String
-name|diffAllSideBySide
-parameter_list|()
-function_decl|;
-DECL|method|diffAllUnified ()
-name|String
-name|diffAllUnified
-parameter_list|()
-function_decl|;
 DECL|method|votable ()
 name|String
 name|votable

@@ -74,7 +74,6 @@ name|GerritTopMenu
 block|{
 DECL|enumConstant|ALL
 DECL|enumConstant|MY
-DECL|enumConstant|DIFFERENCES
 DECL|enumConstant|PROJECTS
 DECL|enumConstant|PEOPLE
 DECL|enumConstant|PLUGINS
@@ -82,8 +81,6 @@ DECL|enumConstant|DOCUMENTATION
 name|ALL
 block|,
 name|MY
-block|,
-name|DIFFERENCES
 block|,
 name|PROJECTS
 block|,

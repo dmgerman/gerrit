@@ -90,94 +90,14 @@ name|PatchConstants
 extends|extends
 name|Constants
 block|{
-DECL|method|draft ()
-name|String
-name|draft
-parameter_list|()
-function_decl|;
-DECL|method|buttonReply ()
-name|String
-name|buttonReply
-parameter_list|()
-function_decl|;
-DECL|method|buttonEdit ()
-name|String
-name|buttonEdit
-parameter_list|()
-function_decl|;
-DECL|method|buttonSave ()
-name|String
-name|buttonSave
-parameter_list|()
-function_decl|;
-DECL|method|buttonCancel ()
-name|String
-name|buttonCancel
-parameter_list|()
-function_decl|;
-DECL|method|buttonDiscard ()
-name|String
-name|buttonDiscard
-parameter_list|()
-function_decl|;
-DECL|method|noDifference ()
-name|String
-name|noDifference
-parameter_list|()
-function_decl|;
 DECL|method|patchBase ()
 name|String
 name|patchBase
 parameter_list|()
 function_decl|;
-DECL|method|patchBaseAutoMerge ()
-name|String
-name|patchBaseAutoMerge
-parameter_list|()
-function_decl|;
-DECL|method|patchHeaderPatchSet ()
-name|String
-name|patchHeaderPatchSet
-parameter_list|()
-function_decl|;
-DECL|method|patchHeaderOld ()
-name|String
-name|patchHeaderOld
-parameter_list|()
-function_decl|;
-DECL|method|patchHeaderNew ()
-name|String
-name|patchHeaderNew
-parameter_list|()
-function_decl|;
 DECL|method|patchSet ()
 name|String
 name|patchSet
-parameter_list|()
-function_decl|;
-DECL|method|patchHistoryTitle ()
-name|String
-name|patchHistoryTitle
-parameter_list|()
-function_decl|;
-DECL|method|disabledOnLargeFiles ()
-name|String
-name|disabledOnLargeFiles
-parameter_list|()
-function_decl|;
-DECL|method|intralineFailure ()
-name|String
-name|intralineFailure
-parameter_list|()
-function_decl|;
-DECL|method|intralineTimeout ()
-name|String
-name|intralineTimeout
-parameter_list|()
-function_decl|;
-DECL|method|illegalNumberOfColumns ()
-name|String
-name|illegalNumberOfColumns
 parameter_list|()
 function_decl|;
 DECL|method|upToChange ()
@@ -210,16 +130,6 @@ name|String
 name|chunkNext
 parameter_list|()
 function_decl|;
-DECL|method|chunkPrev2 ()
-name|String
-name|chunkPrev2
-parameter_list|()
-function_decl|;
-DECL|method|chunkNext2 ()
-name|String
-name|chunkNext2
-parameter_list|()
-function_decl|;
 DECL|method|commentPrev ()
 name|String
 name|commentPrev
@@ -238,11 +148,6 @@ function_decl|;
 DECL|method|focusSideB ()
 name|String
 name|focusSideB
-parameter_list|()
-function_decl|;
-DECL|method|fileList ()
-name|String
-name|fileList
 parameter_list|()
 function_decl|;
 DECL|method|expandComment ()
@@ -268,11 +173,6 @@ function_decl|;
 DECL|method|showPreferences ()
 name|String
 name|showPreferences
-parameter_list|()
-function_decl|;
-DECL|method|openEditScreen ()
-name|String
-name|openEditScreen
 parameter_list|()
 function_decl|;
 DECL|method|toggleReviewed ()
@@ -335,16 +235,6 @@ name|String
 name|nextFileHelp
 parameter_list|()
 function_decl|;
-DECL|method|reviewedAnd ()
-name|String
-name|reviewedAnd
-parameter_list|()
-function_decl|;
-DECL|method|next ()
-name|String
-name|next
-parameter_list|()
-function_decl|;
 DECL|method|download ()
 name|String
 name|download
@@ -360,39 +250,9 @@ name|String
 name|addFileCommentToolTip
 parameter_list|()
 function_decl|;
-DECL|method|addFileCommentByDoubleClick ()
-name|String
-name|addFileCommentByDoubleClick
-parameter_list|()
-function_decl|;
-DECL|method|buttonReplyDone ()
-name|String
-name|buttonReplyDone
-parameter_list|()
-function_decl|;
 DECL|method|cannedReplyDone ()
 name|String
 name|cannedReplyDone
-parameter_list|()
-function_decl|;
-DECL|method|fileTypeSymlink ()
-name|String
-name|fileTypeSymlink
-parameter_list|()
-function_decl|;
-DECL|method|fileTypeGitlink ()
-name|String
-name|fileTypeGitlink
-parameter_list|()
-function_decl|;
-DECL|method|patchSkipRegionStart ()
-name|String
-name|patchSkipRegionStart
-parameter_list|()
-function_decl|;
-DECL|method|patchSkipRegionEnd ()
-name|String
-name|patchSkipRegionEnd
 parameter_list|()
 function_decl|;
 DECL|method|sideBySideDiff ()
