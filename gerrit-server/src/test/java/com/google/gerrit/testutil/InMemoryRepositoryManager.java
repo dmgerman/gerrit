@@ -369,6 +369,13 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// TODO(dborowitz): Allow atomic transactions when this is supported:
+comment|// https://git.eclipse.org/r/#/c/61841/2/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/InMemoryRepository.java@313
+name|setPerformsAtomicTransactions
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
