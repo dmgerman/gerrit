@@ -259,11 +259,17 @@ name|String
 argument_list|>
 name|installPlugins
 decl_stmt|;
+DECL|field|installAllPlugins
+specifier|public
+specifier|final
+name|boolean
+name|installAllPlugins
+decl_stmt|;
 annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|InitFlags (final SitePaths site, final SecureStore secureStore, @InstallPlugins final List<String> installPlugins)
+DECL|method|InitFlags (final SitePaths site, final SecureStore secureStore, @InstallPlugins final List<String> installPlugins, @InstallAllPlugins final Boolean installAllPlugins)
 specifier|public
 name|InitFlags
 parameter_list|(
@@ -283,6 +289,12 @@ argument_list|<
 name|String
 argument_list|>
 name|installPlugins
+parameter_list|,
+annotation|@
+name|InstallAllPlugins
+specifier|final
+name|Boolean
+name|installAllPlugins
 parameter_list|)
 throws|throws
 name|IOException
@@ -298,6 +310,12 @@ operator|.
 name|installPlugins
 operator|=
 name|installPlugins
+expr_stmt|;
+name|this
+operator|.
+name|installAllPlugins
+operator|=
+name|installAllPlugins
 expr_stmt|;
 name|cfg
 operator|=
