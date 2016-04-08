@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -281,8 +295,10 @@ return|;
 block|}
 DECL|method|getOwnerGroups (Project.NameKey project)
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getOwnerGroups
 parameter_list|(
 name|Project
@@ -292,6 +308,10 @@ name|project
 parameter_list|)
 block|{
 return|return
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
 name|cfg
 operator|.
 name|getStringList
@@ -307,6 +327,7 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|OWNER_GROUP_NAME
+argument_list|)
 argument_list|)
 return|;
 block|}
