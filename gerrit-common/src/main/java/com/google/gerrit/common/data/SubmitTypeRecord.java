@@ -94,7 +94,6 @@ name|SubmitTypeRecord
 block|{
 DECL|enum|Status
 specifier|public
-specifier|static
 enum|enum
 name|Status
 block|{

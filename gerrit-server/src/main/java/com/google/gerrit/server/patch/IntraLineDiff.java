@@ -292,7 +292,6 @@ name|serialVersionUID
 decl_stmt|;
 DECL|enum|Status
 specifier|public
-specifier|static
 enum|enum
 name|Status
 implements|implements

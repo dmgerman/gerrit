@@ -306,7 +306,6 @@ literal|'P'
 decl_stmt|;
 DECL|enum|Status
 specifier|public
-specifier|static
 enum|enum
 name|Status
 block|{

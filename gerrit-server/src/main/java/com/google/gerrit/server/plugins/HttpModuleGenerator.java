@@ -83,7 +83,6 @@ name|javascript
 parameter_list|)
 function_decl|;
 DECL|class|NOP
-specifier|static
 class|class
 name|NOP
 extends|extends

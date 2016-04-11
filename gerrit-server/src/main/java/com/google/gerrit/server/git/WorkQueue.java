@@ -1478,7 +1478,6 @@ block|{
 comment|/**      * Summarized status of a single task.      *<p>      * Tasks have the following state flow:      *<ol>      *<li>{@link #SLEEPING}: if scheduled with a non-zero delay.</li>      *<li>{@link #READY}: waiting for an available worker thread.</li>      *<li>{@link #RUNNING}: actively executing on a worker thread.</li>      *<li>{@link #DONE}: finished executing, if not periodic.</li>      *</ol>      */
 DECL|enum|State
 specifier|public
-specifier|static
 enum|enum
 name|State
 block|{

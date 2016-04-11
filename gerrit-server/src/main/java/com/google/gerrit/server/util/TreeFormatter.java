@@ -94,7 +94,6 @@ name|TreeFormatter
 block|{
 DECL|interface|TreeNode
 specifier|public
-specifier|static
 interface|interface
 name|TreeNode
 block|{

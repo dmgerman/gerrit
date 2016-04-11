@@ -1486,7 +1486,6 @@ argument_list|)
 decl_stmt|;
 DECL|enum|SshSessionBackend
 specifier|public
-specifier|static
 enum|enum
 name|SshSessionBackend
 block|{

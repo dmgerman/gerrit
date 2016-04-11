@@ -124,7 +124,6 @@ name|JavaScriptObject
 block|{
 DECL|enum|NotifyHandling
 specifier|public
-specifier|static
 enum|enum
 name|NotifyHandling
 block|{
@@ -142,7 +141,6 @@ name|ALL
 block|}
 DECL|enum|DraftHandling
 specifier|public
-specifier|static
 enum|enum
 name|DraftHandling
 block|{

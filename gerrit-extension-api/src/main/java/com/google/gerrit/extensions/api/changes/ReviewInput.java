@@ -212,7 +212,6 @@ name|onBehalfOf
 decl_stmt|;
 DECL|enum|DraftHandling
 specifier|public
-specifier|static
 enum|enum
 name|DraftHandling
 block|{
@@ -234,7 +233,6 @@ name|PUBLISH_ALL_REVISIONS
 block|}
 DECL|enum|NotifyHandling
 specifier|public
-specifier|static
 enum|enum
 name|NotifyHandling
 block|{

@@ -161,7 +161,6 @@ throws|throws
 name|InvalidPluginException
 function_decl|;
 DECL|class|NOP
-specifier|static
 class|class
 name|NOP
 implements|implements

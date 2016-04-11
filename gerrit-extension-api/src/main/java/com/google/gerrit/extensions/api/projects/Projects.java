@@ -218,7 +218,6 @@ name|ListRequest
 block|{
 DECL|enum|FilterType
 specifier|public
-specifier|static
 enum|enum
 name|FilterType
 block|{

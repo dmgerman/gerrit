@@ -368,7 +368,6 @@ name|CapabilityControl
 block|{
 DECL|interface|Factory
 specifier|public
-specifier|static
 interface|interface
 name|Factory
 block|{

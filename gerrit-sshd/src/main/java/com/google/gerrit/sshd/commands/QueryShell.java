@@ -419,7 +419,6 @@ function_decl|;
 block|}
 DECL|enum|OutputFormat
 specifier|public
-specifier|static
 enum|enum
 name|OutputFormat
 block|{

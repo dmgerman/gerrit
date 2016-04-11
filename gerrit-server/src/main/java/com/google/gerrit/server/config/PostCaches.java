@@ -380,7 +380,6 @@ block|}
 block|}
 DECL|enum|Operation
 specifier|public
-specifier|static
 enum|enum
 name|Operation
 block|{

@@ -114,7 +114,6 @@ name|SubmitRecord
 block|{
 DECL|enum|Status
 specifier|public
-specifier|static
 enum|enum
 name|Status
 block|{
@@ -164,7 +163,6 @@ name|Label
 block|{
 DECL|enum|Status
 specifier|public
-specifier|static
 enum|enum
 name|Status
 block|{

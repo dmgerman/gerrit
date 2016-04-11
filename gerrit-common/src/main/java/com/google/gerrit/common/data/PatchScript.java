@@ -214,7 +214,6 @@ name|PatchScript
 block|{
 DECL|enum|DisplayMethod
 specifier|public
-specifier|static
 enum|enum
 name|DisplayMethod
 block|{
@@ -229,7 +228,6 @@ name|IMG
 block|}
 DECL|enum|FileMode
 specifier|public
-specifier|static
 enum|enum
 name|FileMode
 block|{

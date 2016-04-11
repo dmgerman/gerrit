@@ -128,7 +128,6 @@ decl_stmt|;
 comment|/** Preferred method to download a change. */
 DECL|enum|DownloadCommand
 specifier|public
-specifier|static
 enum|enum
 name|DownloadCommand
 block|{
@@ -149,7 +148,6 @@ name|FORMAT_PATCH
 block|}
 DECL|enum|DateFormat
 specifier|public
-specifier|static
 enum|enum
 name|DateFormat
 block|{
@@ -256,7 +254,6 @@ block|}
 block|}
 DECL|enum|ReviewCategoryStrategy
 specifier|public
-specifier|static
 enum|enum
 name|ReviewCategoryStrategy
 block|{
@@ -277,7 +274,6 @@ name|ABBREV
 block|}
 DECL|enum|DiffView
 specifier|public
-specifier|static
 enum|enum
 name|DiffView
 block|{
@@ -289,7 +285,6 @@ name|UNIFIED_DIFF
 block|}
 DECL|enum|EmailStrategy
 specifier|public
-specifier|static
 enum|enum
 name|EmailStrategy
 block|{
@@ -304,7 +299,6 @@ name|DISABLED
 block|}
 DECL|enum|TimeFormat
 specifier|public
-specifier|static
 enum|enum
 name|TimeFormat
 block|{

@@ -750,7 +750,6 @@ block|}
 comment|/** Arbitrary action to run with a database connection. */
 DECL|interface|Action
 specifier|public
-specifier|static
 interface|interface
 name|Action
 parameter_list|<

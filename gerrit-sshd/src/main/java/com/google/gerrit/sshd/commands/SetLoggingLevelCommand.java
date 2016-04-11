@@ -312,7 +312,6 @@ literal|"log4j.configuration"
 decl_stmt|;
 DECL|enum|LevelOption
 specifier|private
-specifier|static
 enum|enum
 name|LevelOption
 block|{

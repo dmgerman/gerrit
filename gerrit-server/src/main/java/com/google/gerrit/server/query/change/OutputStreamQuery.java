@@ -640,7 +640,6 @@ argument_list|)
 decl_stmt|;
 DECL|enum|OutputFormat
 specifier|public
-specifier|static
 enum|enum
 name|OutputFormat
 block|{

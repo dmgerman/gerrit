@@ -269,7 +269,6 @@ block|{     }
 block|}
 DECL|enum|FieldOrdering
 specifier|public
-specifier|static
 enum|enum
 name|FieldOrdering
 block|{

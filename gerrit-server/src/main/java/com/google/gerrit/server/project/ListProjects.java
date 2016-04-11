@@ -813,7 +813,6 @@ argument_list|)
 decl_stmt|;
 DECL|enum|FilterType
 specifier|public
-specifier|static
 enum|enum
 name|FilterType
 block|{

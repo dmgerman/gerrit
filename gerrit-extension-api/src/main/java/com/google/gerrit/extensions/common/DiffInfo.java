@@ -145,7 +145,6 @@ name|binary
 decl_stmt|;
 DECL|enum|IntraLineStatus
 specifier|public
-specifier|static
 enum|enum
 name|IntraLineStatus
 block|{

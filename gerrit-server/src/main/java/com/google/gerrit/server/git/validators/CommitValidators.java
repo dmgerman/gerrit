@@ -692,7 +692,6 @@ argument_list|)
 decl_stmt|;
 DECL|enum|Policy
 specifier|public
-specifier|static
 enum|enum
 name|Policy
 block|{

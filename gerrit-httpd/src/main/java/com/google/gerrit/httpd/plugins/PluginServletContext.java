@@ -959,7 +959,6 @@ return|;
 block|}
 block|}
 DECL|interface|API
-specifier|static
 interface|interface
 name|API
 block|{

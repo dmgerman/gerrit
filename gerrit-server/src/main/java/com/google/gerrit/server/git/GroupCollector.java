@@ -683,7 +683,6 @@ return|;
 block|}
 DECL|interface|Lookup
 specifier|private
-specifier|static
 interface|interface
 name|Lookup
 block|{

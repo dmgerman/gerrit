@@ -139,7 +139,6 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|C
-specifier|static
 specifier|final
 name|ChangeConstants
 name|C
@@ -154,7 +153,6 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|M
-specifier|static
 specifier|final
 name|ChangeMessages
 name|M

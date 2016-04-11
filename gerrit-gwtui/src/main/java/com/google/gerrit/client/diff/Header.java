@@ -852,7 +852,6 @@ expr_stmt|;
 block|}
 DECL|enum|ReviewedState
 specifier|private
-specifier|static
 enum|enum
 name|ReviewedState
 block|{

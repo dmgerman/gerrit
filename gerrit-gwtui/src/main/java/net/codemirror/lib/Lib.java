@@ -152,7 +152,6 @@ extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
-specifier|static
 specifier|final
 name|Lib
 name|I

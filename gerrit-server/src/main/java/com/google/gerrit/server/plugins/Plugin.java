@@ -263,7 +263,6 @@ name|Plugin
 block|{
 DECL|enum|ApiType
 specifier|public
-specifier|static
 enum|enum
 name|ApiType
 block|{

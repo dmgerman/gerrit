@@ -85,7 +85,6 @@ class|class
 name|DiscoveryResult
 block|{
 DECL|enum|Status
-specifier|static
 enum|enum
 name|Status
 block|{

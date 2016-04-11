@@ -106,7 +106,6 @@ extends|extends
 name|Constants
 block|{
 DECL|field|I
-specifier|static
 specifier|final
 name|CopyableLabelText
 name|I
