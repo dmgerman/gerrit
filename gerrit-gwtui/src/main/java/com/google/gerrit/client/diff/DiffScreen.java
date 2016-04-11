@@ -1287,6 +1287,8 @@ argument_list|,
 name|path
 argument_list|,
 name|diffScreenType
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}
