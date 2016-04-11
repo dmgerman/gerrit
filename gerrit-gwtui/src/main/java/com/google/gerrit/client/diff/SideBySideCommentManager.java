@@ -2129,7 +2129,8 @@ return|;
 block|}
 name|int
 name|lineA
-decl_stmt|,
+decl_stmt|;
+name|int
 name|lineB
 decl_stmt|;
 if|if

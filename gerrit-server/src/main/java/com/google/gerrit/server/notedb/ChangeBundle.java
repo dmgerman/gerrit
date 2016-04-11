@@ -3512,7 +3512,8 @@ argument_list|()
 decl_stmt|;
 name|Timestamp
 name|ta
-decl_stmt|,
+decl_stmt|;
+name|Timestamp
 name|tb
 decl_stmt|;
 try|try
