@@ -514,8 +514,8 @@ annotation|@
 name|AutoValue
 DECL|class|LoadHandle
 specifier|public
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|LoadHandle
 implements|implements

@@ -669,8 +669,8 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|Base
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Base
 block|{
