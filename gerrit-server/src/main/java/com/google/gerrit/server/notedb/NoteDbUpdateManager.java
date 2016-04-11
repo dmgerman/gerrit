@@ -767,11 +767,6 @@ name|ChangeDraftUpdate
 argument_list|>
 name|draftUpdates
 decl_stmt|;
-DECL|field|codeRepo
-specifier|private
-name|OpenRepo
-name|codeRepo
-decl_stmt|;
 DECL|field|changeRepo
 specifier|private
 name|OpenRepo
@@ -913,47 +908,6 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setCodeRepo (Repository repo, RevWalk rw)
-specifier|public
-name|NoteDbUpdateManager
-name|setCodeRepo
-parameter_list|(
-name|Repository
-name|repo
-parameter_list|,
-name|RevWalk
-name|rw
-parameter_list|)
-block|{
-name|checkState
-argument_list|(
-name|codeRepo
-operator|==
-literal|null
-argument_list|,
-literal|"code repo already initialized"
-argument_list|)
-expr_stmt|;
-name|codeRepo
-operator|=
-operator|new
-name|OpenRepo
-argument_list|(
-name|repo
-argument_list|,
-name|rw
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
 DECL|method|setAllUsersRepo (Repository repo, RevWalk rw, ObjectInserter ins, ChainedReceiveCommands cmds)
 specifier|public
 name|NoteDbUpdateManager
@@ -1015,20 +969,6 @@ return|return
 name|changeRepo
 return|;
 block|}
-DECL|method|getCodeRepo ()
-name|OpenRepo
-name|getCodeRepo
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|initCodeRepo
-argument_list|()
-expr_stmt|;
-return|return
-name|codeRepo
-return|;
-block|}
 DECL|method|getAllUsersRepo ()
 name|OpenRepo
 name|getAllUsersRepo
@@ -1042,30 +982,6 @@ expr_stmt|;
 return|return
 name|allUsersRepo
 return|;
-block|}
-DECL|method|initCodeRepo ()
-specifier|private
-name|void
-name|initCodeRepo
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-if|if
-condition|(
-name|codeRepo
-operator|==
-literal|null
-condition|)
-block|{
-name|codeRepo
-operator|=
-name|openRepo
-argument_list|(
-name|projectName
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|initChangeRepo ()
 specifier|private
