@@ -492,7 +492,9 @@ name|IndexType
 operator|.
 name|LUCENE
 condition|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 else|else
 block|{
 specifier|final
