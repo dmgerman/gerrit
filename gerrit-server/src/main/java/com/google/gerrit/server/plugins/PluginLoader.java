@@ -4097,7 +4097,6 @@ argument_list|)
 condition|)
 block|{
 assert|assert
-operator|(
 operator|!
 name|activePlugins
 operator|.
@@ -4105,7 +4104,6 @@ name|containsKey
 argument_list|(
 name|name
 argument_list|)
-operator|)
 assert|;
 name|activePlugins
 operator|.
@@ -4258,11 +4256,9 @@ literal|null
 argument_list|)
 decl_stmt|;
 assert|assert
-operator|(
 name|winner
 operator|!=
 literal|null
-operator|)
 assert|;
 comment|// Disable all loser plugins by renaming their file names to
 comment|// "file.disabled" and replace the disabled files in the multimap.
