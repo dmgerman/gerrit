@@ -3287,6 +3287,8 @@ argument_list|,
 name|change
 argument_list|,
 name|author
+argument_list|,
+name|autoRebuild
 argument_list|)
 expr_stmt|;
 name|draftCommentNotes
