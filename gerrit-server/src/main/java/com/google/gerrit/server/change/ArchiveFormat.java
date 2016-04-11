@@ -224,7 +224,6 @@ name|String
 name|mimeType
 decl_stmt|;
 DECL|method|ArchiveFormat (String mimeType, ArchiveCommand.Format<?> format)
-specifier|private
 name|ArchiveFormat
 parameter_list|(
 name|String

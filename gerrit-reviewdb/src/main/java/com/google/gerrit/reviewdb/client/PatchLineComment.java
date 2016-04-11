@@ -326,7 +326,6 @@ name|char
 name|code
 decl_stmt|;
 DECL|method|Status (final char c)
-specifier|private
 name|Status
 parameter_list|(
 specifier|final

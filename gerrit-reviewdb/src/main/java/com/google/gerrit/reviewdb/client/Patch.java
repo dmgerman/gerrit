@@ -353,7 +353,6 @@ name|char
 name|code
 decl_stmt|;
 DECL|method|ChangeType (final char c)
-specifier|private
 name|ChangeType
 parameter_list|(
 specifier|final
@@ -480,7 +479,6 @@ name|char
 name|code
 decl_stmt|;
 DECL|method|PatchType (final char c)
-specifier|private
 name|PatchType
 parameter_list|(
 specifier|final

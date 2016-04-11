@@ -1285,22 +1285,21 @@ name|changeStatus
 decl_stmt|;
 end_decl_stmt
 
-begin_constructor
+begin_expr_stmt
 DECL|method|Status (char c, ChangeStatus cs)
-specifier|private
 name|Status
-parameter_list|(
+argument_list|(
 name|char
 name|c
-parameter_list|,
+argument_list|,
 name|ChangeStatus
 name|cs
-parameter_list|)
+argument_list|)
 block|{
 name|code
 operator|=
 name|c
-expr_stmt|;
+block|;
 name|closed
 operator|=
 operator|!
@@ -1313,26 +1312,22 @@ name|c
 operator|<=
 name|MAX_OPEN
 operator|)
-expr_stmt|;
+block|;
 name|changeStatus
 operator|=
 name|cs
-expr_stmt|;
-block|}
-end_constructor
-
-begin_function
+block|;     }
 DECL|method|getCode ()
 specifier|public
 name|char
 name|getCode
-parameter_list|()
+argument_list|()
 block|{
 return|return
 name|code
 return|;
 block|}
-end_function
+end_expr_stmt
 
 begin_function
 DECL|method|isOpen ()

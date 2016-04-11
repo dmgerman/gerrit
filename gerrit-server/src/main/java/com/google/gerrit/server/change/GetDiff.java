@@ -3005,25 +3005,23 @@ name|whitespace
 decl_stmt|;
 end_decl_stmt
 
-begin_constructor
+begin_expr_stmt
 DECL|method|IgnoreWhitespace (DiffPreferencesInfo.Whitespace whitespace)
-specifier|private
 name|IgnoreWhitespace
-parameter_list|(
+argument_list|(
 name|DiffPreferencesInfo
 operator|.
 name|Whitespace
 name|whitespace
-parameter_list|)
+argument_list|)
 block|{
 name|this
 operator|.
 name|whitespace
 operator|=
 name|whitespace
-expr_stmt|;
-block|}
-end_constructor
+block|;     }
+end_expr_stmt
 
 begin_class
 unit|}    public
