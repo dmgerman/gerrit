@@ -2852,12 +2852,16 @@ argument_list|()
 operator|instanceof
 name|AddressList
 operator|&&
+operator|!
 name|entry
 operator|.
 name|getKey
 argument_list|()
-operator|!=
+operator|.
+name|equals
+argument_list|(
 literal|"From"
+argument_list|)
 condition|)
 block|{
 operator|(
