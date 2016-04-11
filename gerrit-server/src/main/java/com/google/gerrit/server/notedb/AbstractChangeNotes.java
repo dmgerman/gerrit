@@ -754,7 +754,7 @@ name|args
 operator|.
 name|repoManager
 operator|.
-name|openMetadataRepository
+name|openRepository
 argument_list|(
 name|getProjectName
 argument_list|()
@@ -916,7 +916,7 @@ name|args
 operator|.
 name|repoManager
 operator|.
-name|openMetadataRepository
+name|openRepository
 argument_list|(
 name|getProjectName
 argument_list|()

@@ -8012,7 +8012,7 @@ name|repo
 init|=
 name|repoManager
 operator|.
-name|openMetadataRepository
+name|openRepository
 argument_list|(
 name|project
 argument_list|)

@@ -2144,7 +2144,7 @@ name|repo
 init|=
 name|repoManager
 operator|.
-name|openMetadataRepository
+name|openRepository
 argument_list|(
 name|project
 argument_list|)
@@ -2231,7 +2231,7 @@ name|repo
 init|=
 name|repoManager
 operator|.
-name|openMetadataRepository
+name|openRepository
 argument_list|(
 name|allUsers
 argument_list|)
@@ -2325,7 +2325,7 @@ name|repo
 init|=
 name|repoManager
 operator|.
-name|openMetadataRepository
+name|openRepository
 argument_list|(
 name|p
 argument_list|)
