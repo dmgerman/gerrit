@@ -1515,7 +1515,7 @@ name|ps
 argument_list|,
 name|manager
 operator|.
-name|getCodeRepo
+name|getChangeRepo
 argument_list|()
 operator|.
 name|rw
