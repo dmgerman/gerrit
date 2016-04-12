@@ -182,7 +182,7 @@ block|,
 literal|"string\twith\ttabs"
 block|,
 literal|"string\\twith\\ttabs"
-block|}
+block|, }
 decl_stmt|;
 for|for
 control|(

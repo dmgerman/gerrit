@@ -516,7 +516,7 @@ block|,
 literal|"FirstName.LastName@Corporation.com"
 block|,
 literal|"!#$%&'+-/=.?^`{|}~@[IPv6:0123:4567:89AB:CDEF:0123:4567:89AB:CDEF]"
-block|}
+block|,   }
 decl_stmt|;
 annotation|@
 name|Before

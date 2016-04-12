@@ -839,7 +839,7 @@ name|getVersion
 argument_list|()
 block|,
 literal|null
-block|}
+block|, }
 argument_list|)
 expr_stmt|;
 block|}

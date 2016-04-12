@@ -143,7 +143,7 @@ block|,
 literal|"\\x1e"
 block|,
 literal|"\\x1f"
-block|}
+block|, }
 decl_stmt|;
 comment|/**    * Escapes the input string so that all non-printable characters    * (0x00-0x1f) are represented as a hex escape (\x00, \x01, ...)    * or as a C-style escape sequence (\a, \b, \t, \n, \v, \f, or \r).    * Backslashes in the input string are doubled (\\).    */
 DECL|method|escapeString (final String str)
