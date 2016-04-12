@@ -13448,7 +13448,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Cannt retrieve edit"
+literal|"Cannot retrieve edit"
 argument_list|,
 name|e
 argument_list|)
