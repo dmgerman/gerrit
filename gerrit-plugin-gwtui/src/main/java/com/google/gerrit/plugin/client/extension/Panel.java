@@ -169,7 +169,6 @@ extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|body ()
-specifier|final
 specifier|native
 name|Element
 name|body
@@ -177,7 +176,6 @@ parameter_list|()
 comment|/*-{ return this.body }-*/
 function_decl|;
 DECL|method|get (String k)
-specifier|final
 specifier|native
 name|String
 name|get
@@ -188,7 +186,6 @@ parameter_list|)
 comment|/*-{ return this.p[k]; }-*/
 function_decl|;
 DECL|method|getInt (String k, int d)
-specifier|final
 specifier|native
 name|int
 name|getInt
@@ -202,7 +199,6 @@ parameter_list|)
 comment|/*-{       return this.p.hasOwnProperty(k) ? this.p[k] : d     }-*/
 function_decl|;
 DECL|method|getBoolean (String k, boolean d)
-specifier|final
 specifier|native
 name|int
 name|getBoolean
@@ -216,7 +212,6 @@ parameter_list|)
 comment|/*-{       return this.p.hasOwnProperty(k) ? this.p[k] : d     }-*/
 function_decl|;
 DECL|method|getObject (String k)
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|getObject
@@ -227,7 +222,6 @@ parameter_list|)
 comment|/*-{ return this.p[k]; }-*/
 function_decl|;
 DECL|method|detach (Panel p)
-specifier|final
 specifier|native
 name|void
 name|detach

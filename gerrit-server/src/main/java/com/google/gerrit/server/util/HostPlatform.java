@@ -107,7 +107,6 @@ comment|/** @return true if this JVM is running on a Windows platform. */
 DECL|method|isWin32 ()
 specifier|public
 specifier|static
-specifier|final
 name|boolean
 name|isWin32
 parameter_list|()
@@ -119,7 +118,6 @@ block|}
 DECL|method|computeWin32 ()
 specifier|private
 specifier|static
-specifier|final
 name|boolean
 name|computeWin32
 parameter_list|()

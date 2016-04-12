@@ -768,7 +768,6 @@ return|;
 block|}
 DECL|method|encode (String segment)
 specifier|private
-specifier|final
 name|String
 name|encode
 parameter_list|(

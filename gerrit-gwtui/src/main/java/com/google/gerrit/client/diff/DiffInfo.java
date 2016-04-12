@@ -342,7 +342,6 @@ return|;
 block|}
 DECL|method|filterWebLinks (DiffView diffView)
 specifier|private
-specifier|final
 name|List
 argument_list|<
 name|WebLinkInfo

@@ -339,7 +339,6 @@ block|}
 DECL|method|getPluginName ()
 specifier|private
 specifier|static
-specifier|final
 name|String
 name|getPluginName
 parameter_list|()
@@ -370,7 +369,6 @@ block|}
 DECL|method|go (String urlOrToken)
 specifier|private
 specifier|static
-specifier|final
 name|void
 name|go
 parameter_list|(
@@ -426,7 +424,6 @@ block|}
 DECL|method|refresh ()
 specifier|private
 specifier|static
-specifier|final
 name|void
 name|refresh
 parameter_list|()
@@ -445,7 +442,6 @@ block|}
 DECL|method|getServerInfo ()
 specifier|private
 specifier|static
-specifier|final
 name|ServerInfo
 name|getServerInfo
 parameter_list|()
@@ -460,7 +456,6 @@ block|}
 DECL|method|getCurrentUser ()
 specifier|private
 specifier|static
-specifier|final
 name|AccountInfo
 name|getCurrentUser
 parameter_list|()
@@ -475,7 +470,6 @@ block|}
 DECL|method|getUserPreferences ()
 specifier|private
 specifier|static
-specifier|final
 name|GeneralPreferences
 name|getUserPreferences
 parameter_list|()
@@ -490,7 +484,6 @@ block|}
 DECL|method|refreshUserPreferences ()
 specifier|private
 specifier|static
-specifier|final
 name|void
 name|refreshUserPreferences
 parameter_list|()
@@ -504,7 +497,6 @@ block|}
 DECL|method|refreshMenuBar ()
 specifier|private
 specifier|static
-specifier|final
 name|void
 name|refreshMenuBar
 parameter_list|()
@@ -518,7 +510,6 @@ block|}
 DECL|method|isSignedIn ()
 specifier|private
 specifier|static
-specifier|final
 name|boolean
 name|isSignedIn
 parameter_list|()
@@ -533,7 +524,6 @@ block|}
 DECL|method|showError (String message)
 specifier|private
 specifier|static
-specifier|final
 name|void
 name|showError
 parameter_list|(

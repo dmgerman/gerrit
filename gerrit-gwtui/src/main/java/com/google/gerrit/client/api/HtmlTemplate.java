@@ -195,7 +195,6 @@ function_decl|;
 DECL|method|css (String css)
 specifier|private
 specifier|static
-specifier|final
 name|String
 name|css
 parameter_list|(
@@ -233,7 +232,6 @@ block|}
 DECL|method|id (IdMap idMap, String key)
 specifier|private
 specifier|static
-specifier|final
 name|String
 name|id
 parameter_list|(
@@ -272,7 +270,6 @@ block|}
 DECL|method|html (ReplacementMap opts, String id)
 specifier|private
 specifier|static
-specifier|final
 name|String
 name|html
 parameter_list|(
@@ -360,7 +357,6 @@ block|}
 DECL|method|parseHtml ( String html, IdMap ids, ReplacementMap opts, boolean wantElements)
 specifier|private
 specifier|static
-specifier|final
 name|Node
 name|parseHtml
 parameter_list|(

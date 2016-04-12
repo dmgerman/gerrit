@@ -790,7 +790,6 @@ block|}
 DECL|method|doGet (Config cfg, String name, String key, boolean required)
 specifier|private
 specifier|static
-specifier|final
 name|String
 name|doGet
 parameter_list|(

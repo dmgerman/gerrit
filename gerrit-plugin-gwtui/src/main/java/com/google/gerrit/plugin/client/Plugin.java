@@ -246,7 +246,6 @@ block|}
 comment|/** Installed name of the plugin. */
 DECL|method|getName ()
 specifier|public
-specifier|final
 name|String
 name|getName
 parameter_list|()
@@ -259,7 +258,6 @@ block|}
 comment|/** Installed name of the plugin. */
 DECL|method|getPluginName ()
 specifier|public
-specifier|final
 specifier|native
 name|String
 name|getPluginName
@@ -269,7 +267,6 @@ function_decl|;
 comment|/** Navigate the UI to the screen identified by the token. */
 DECL|method|go (String token)
 specifier|public
-specifier|final
 specifier|native
 name|void
 name|go
@@ -282,7 +279,6 @@ function_decl|;
 comment|/** Refresh the current UI. */
 DECL|method|refresh ()
 specifier|public
-specifier|final
 specifier|native
 name|void
 name|refresh
@@ -292,7 +288,6 @@ function_decl|;
 comment|/** Refresh Gerrit's menu bar. */
 DECL|method|refreshMenuBar ()
 specifier|public
-specifier|final
 specifier|native
 name|void
 name|refreshMenuBar
@@ -302,7 +297,6 @@ function_decl|;
 comment|/** @return the preferences of the currently signed in user, the default preferences if not signed in */
 DECL|method|getUserPreferences ()
 specifier|public
-specifier|final
 specifier|native
 name|GeneralPreferences
 name|getUserPreferences
@@ -312,7 +306,6 @@ function_decl|;
 comment|/** Refresh the user preferences of the current user. */
 DECL|method|refreshUserPreferences ()
 specifier|public
-specifier|final
 specifier|native
 name|void
 name|refreshUserPreferences
@@ -322,7 +315,6 @@ function_decl|;
 comment|/** @return the server info */
 DECL|method|getServerInfo ()
 specifier|public
-specifier|final
 specifier|native
 name|ServerInfo
 name|getServerInfo
@@ -332,7 +324,6 @@ function_decl|;
 comment|/** @return the current user */
 DECL|method|getCurrentUser ()
 specifier|public
-specifier|final
 specifier|native
 name|AccountInfo
 name|getCurrentUser
@@ -342,7 +333,6 @@ function_decl|;
 comment|/** Check if user is signed in. */
 DECL|method|isSignedIn ()
 specifier|public
-specifier|final
 specifier|native
 name|boolean
 name|isSignedIn
@@ -352,7 +342,6 @@ function_decl|;
 comment|/** Show message in Gerrit's ErrorDialog. */
 DECL|method|showError (String message)
 specifier|public
-specifier|final
 specifier|native
 name|void
 name|showError
@@ -365,7 +354,6 @@ function_decl|;
 comment|/**    * Register a screen displayed at {@code /#/x/plugin/token}.    *    * @param token literal anchor token appearing after the plugin name. For    *        regular expression matching use {@code screenRegex()} .    * @param entry callback function invoked to create the screen widgets.    */
 DECL|method|screen (String token, Screen.EntryPoint entry)
 specifier|public
-specifier|final
 name|void
 name|screen
 parameter_list|(
@@ -406,7 +394,6 @@ function_decl|;
 comment|/**    * Register a screen displayed at {@code /#/x/plugin/regex}.    *    * @param regex JavaScript {@code RegExp} expression to match the anchor token    *        after the plugin name. Matching groups are exposed through the    *        {@code Screen} object passed into the {@code Screen.EntryPoint}.    * @param entry callback function invoked to create the screen widgets.    */
 DECL|method|screenRegex (String regex, Screen.EntryPoint entry)
 specifier|public
-specifier|final
 name|void
 name|screenRegex
 parameter_list|(
@@ -447,7 +434,6 @@ function_decl|;
 comment|/**    * Register a settings screen displayed at {@code /#/settings/x/plugin/token}.    *    * @param token literal anchor token appearing after the plugin name.    * @param entry callback function invoked to create the settings screen widgets.    */
 DECL|method|settingsScreen (String token, String menu, Screen.EntryPoint entry)
 specifier|public
-specifier|final
 name|void
 name|settingsScreen
 parameter_list|(
@@ -496,7 +482,6 @@ function_decl|;
 comment|/**    * Register a panel for a UI extension point.    *    * @param extensionPoint the UI extension point for which the panel should be    *        registered.    * @param entry callback function invoked to create the panel widgets.    */
 DECL|method|panel (GerritUiExtensionPoint extensionPoint, Panel.EntryPoint entry)
 specifier|public
-specifier|final
 name|void
 name|panel
 parameter_list|(

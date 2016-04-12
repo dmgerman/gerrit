@@ -153,7 +153,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|url ()
-specifier|final
 specifier|native
 name|String
 name|url
@@ -161,7 +160,6 @@ parameter_list|()
 comment|/*-{ return this._scriptUrl }-*/
 function_decl|;
 DECL|method|name ()
-specifier|final
 specifier|native
 name|String
 name|name
@@ -169,7 +167,6 @@ parameter_list|()
 comment|/*-{ return this.name }-*/
 function_decl|;
 DECL|method|loaded ()
-specifier|final
 specifier|native
 name|boolean
 name|loaded
@@ -177,7 +174,6 @@ parameter_list|()
 comment|/*-{ return this._success || this._failure != null }-*/
 function_decl|;
 DECL|method|failure ()
-specifier|final
 specifier|native
 name|Exception
 name|failure
@@ -185,7 +181,6 @@ parameter_list|()
 comment|/*-{ return this._failure }-*/
 function_decl|;
 DECL|method|failure (Exception e)
-specifier|final
 specifier|native
 name|void
 name|failure
@@ -196,7 +191,6 @@ parameter_list|)
 comment|/*-{ this._failure = e }-*/
 function_decl|;
 DECL|method|success ()
-specifier|final
 specifier|native
 name|boolean
 name|success
@@ -204,7 +198,6 @@ parameter_list|()
 comment|/*-{ return this._success || false }-*/
 function_decl|;
 DECL|method|_initialized ()
-specifier|final
 specifier|native
 name|void
 name|_initialized

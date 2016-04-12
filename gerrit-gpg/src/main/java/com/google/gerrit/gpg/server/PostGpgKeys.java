@@ -1934,7 +1934,6 @@ block|}
 block|}
 DECL|method|toExtIdKey (byte[] fp)
 specifier|private
-specifier|final
 name|AccountExternalId
 operator|.
 name|Key

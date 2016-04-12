@@ -135,7 +135,6 @@ comment|/*-{     if ($wnd.Gerrit === undefined || $wnd.Gerrit.JsonString === und
 function_decl|;
 DECL|method|wrap (String s)
 specifier|static
-specifier|final
 name|NativeString
 name|wrap
 parameter_list|(
@@ -169,7 +168,6 @@ comment|/*-{ return new T(s) }-*/
 function_decl|;
 DECL|method|asString ()
 specifier|public
-specifier|final
 specifier|native
 name|String
 name|asString
@@ -178,7 +176,6 @@ comment|/*-{ return this.s; }-*/
 function_decl|;
 specifier|public
 specifier|static
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|NativeString
@@ -253,7 +250,6 @@ block|}
 DECL|method|is (JavaScriptObject o)
 specifier|public
 specifier|static
-specifier|final
 name|boolean
 name|is
 parameter_list|(

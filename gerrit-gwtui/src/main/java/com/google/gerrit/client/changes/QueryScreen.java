@@ -345,7 +345,6 @@ block|{
 annotation|@
 name|Override
 specifier|public
-specifier|final
 name|void
 name|onSuccess
 parameter_list|(
