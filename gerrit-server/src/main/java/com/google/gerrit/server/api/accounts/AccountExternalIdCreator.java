@@ -118,7 +118,6 @@ name|AccountExternalIdCreator
 block|{
 comment|/**    * Returns additional external identifiers to assign to a given    * user when creating an account.    *    * @param id the identifier of the account.    * @param username the name of the user.    * @param email an optional email address to assign to the external    * identifiers, or {@code null}.    *    * @return a list of external identifiers, or an empty list.    */
 DECL|method|create (Account.Id id, String username, String email)
-specifier|public
 name|List
 argument_list|<
 name|AccountExternalId

@@ -183,7 +183,6 @@ name|RestApiException
 function_decl|;
 comment|/**    * API for setting parameters and getting result.    * Used for {@code suggestAccounts()}.    *    * @see #suggestAccounts()    */
 DECL|class|SuggestAccountsRequest
-specifier|public
 specifier|abstract
 class|class
 name|SuggestAccountsRequest
@@ -274,7 +273,6 @@ block|}
 block|}
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
-specifier|public
 class|class
 name|NotImplemented
 implements|implements

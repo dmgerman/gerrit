@@ -93,8 +93,6 @@ name|user
 parameter_list|)
 function_decl|;
 DECL|class|None
-specifier|public
-specifier|static
 class|class
 name|None
 implements|implements
@@ -170,8 +168,6 @@ return|;
 block|}
 block|}
 DECL|class|Simple
-specifier|public
-specifier|static
 class|class
 name|Simple
 implements|implements

@@ -211,7 +211,6 @@ name|list
 parameter_list|()
 function_decl|;
 DECL|class|ListRequest
-specifier|public
 specifier|abstract
 class|class
 name|ListRequest
@@ -673,7 +672,6 @@ block|}
 block|}
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
-specifier|public
 class|class
 name|NotImplemented
 implements|implements

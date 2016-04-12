@@ -107,9 +107,6 @@ extends|extends
 name|Constants
 block|{
 DECL|field|I
-specifier|public
-specifier|static
-specifier|final
 name|KeyConstants
 name|I
 init|=

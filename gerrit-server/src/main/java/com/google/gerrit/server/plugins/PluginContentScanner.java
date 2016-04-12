@@ -306,8 +306,6 @@ block|}
 decl_stmt|;
 comment|/**    * Plugin class extension meta-data    *    * Class name and annotation value of the class    * provided by a plugin to extend an existing    * extension point in Gerrit.    */
 DECL|class|ExtensionMetaData
-specifier|public
-specifier|static
 class|class
 name|ExtensionMetaData
 block|{

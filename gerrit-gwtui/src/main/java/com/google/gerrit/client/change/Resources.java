@@ -123,9 +123,6 @@ extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
-specifier|public
-specifier|static
-specifier|final
 name|Resources
 name|I
 init|=
@@ -139,7 +136,6 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|C
-specifier|final
 name|ChangeConstants
 name|C
 init|=
@@ -153,7 +149,6 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|M
-specifier|final
 name|ChangeMessages
 name|M
 init|=

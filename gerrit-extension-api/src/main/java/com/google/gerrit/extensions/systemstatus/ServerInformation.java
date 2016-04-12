@@ -78,7 +78,6 @@ name|ServerInformation
 block|{
 comment|/** Current state of the server. */
 DECL|enum|State
-specifier|public
 enum|enum
 name|State
 block|{

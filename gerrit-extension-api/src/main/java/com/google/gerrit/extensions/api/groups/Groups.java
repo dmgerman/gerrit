@@ -222,7 +222,6 @@ name|list
 parameter_list|()
 function_decl|;
 DECL|class|ListRequest
-specifier|public
 specifier|abstract
 class|class
 name|ListRequest

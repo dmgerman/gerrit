@@ -148,8 +148,6 @@ name|OutgoingEmailValidationListener
 block|{
 comment|/**    * Arguments supplied to validateOutgoingEmail.    */
 DECL|class|Args
-specifier|public
-specifier|static
 class|class
 name|Args
 block|{

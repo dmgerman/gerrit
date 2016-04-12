@@ -205,7 +205,6 @@ parameter_list|()
 function_decl|;
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
-specifier|public
 class|class
 name|NotImplemented
 implements|implements

@@ -107,9 +107,6 @@ extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
-specifier|public
-specifier|static
-specifier|final
 name|KeyResources
 name|I
 init|=

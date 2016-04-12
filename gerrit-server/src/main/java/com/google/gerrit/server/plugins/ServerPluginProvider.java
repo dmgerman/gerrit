@@ -140,7 +140,6 @@ name|ServerPluginProvider
 block|{
 comment|/**    * Descriptor of the Plugin that ServerPluginProvider has to load.    */
 DECL|class|PluginDescription
-specifier|public
 class|class
 name|PluginDescription
 block|{

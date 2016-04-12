@@ -191,7 +191,6 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|class|DiffRequest
-specifier|public
 specifier|abstract
 class|class
 name|DiffRequest
@@ -344,7 +343,6 @@ block|}
 block|}
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
-specifier|public
 class|class
 name|NotImplemented
 implements|implements

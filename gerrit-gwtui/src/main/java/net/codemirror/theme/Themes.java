@@ -119,9 +119,6 @@ extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
-specifier|public
-specifier|static
-specifier|final
 name|Themes
 name|I
 init|=

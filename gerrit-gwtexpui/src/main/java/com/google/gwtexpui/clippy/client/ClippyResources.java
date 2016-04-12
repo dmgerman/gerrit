@@ -157,9 +157,6 @@ extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
-specifier|public
-specifier|static
-specifier|final
 name|ClippyResources
 name|I
 init|=

@@ -139,7 +139,6 @@ annotation_defn|@interface
 name|CommandMetaData
 block|{
 DECL|enum|Mode
-specifier|public
 enum|enum
 name|Mode
 block|{

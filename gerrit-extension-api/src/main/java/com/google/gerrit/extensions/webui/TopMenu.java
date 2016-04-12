@@ -133,7 +133,6 @@ interface|interface
 name|TopMenu
 block|{
 DECL|class|MenuEntry
-specifier|public
 class|class
 name|MenuEntry
 block|{
