@@ -548,6 +548,22 @@ name|server
 operator|.
 name|change
 operator|.
+name|Index
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
 name|ListChangeComments
 import|;
 end_import
@@ -1050,6 +1066,12 @@ specifier|final
 name|Check
 name|check
 decl_stmt|;
+DECL|field|index
+specifier|private
+specifier|final
+name|Index
+name|index
+decl_stmt|;
 DECL|field|editDetail
 specifier|private
 specifier|final
@@ -1066,7 +1088,7 @@ name|move
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeApiImpl (Provider<CurrentUser> user, Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, Provider<SuggestChangeReviewers> suggestReviewers, Abandon abandon, Revert revert, Restore restore, SubmittedTogether submittedTogether, PublishDraftPatchSet.CurrentRevision publishDraftChange, DeleteDraftChange deleteDraftChange, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, ChangeEdits.Detail editDetail, Move move, @Assisted ChangeResource change)
+DECL|method|ChangeApiImpl (Provider<CurrentUser> user, Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, Provider<SuggestChangeReviewers> suggestReviewers, Abandon abandon, Revert revert, Restore restore, SubmittedTogether submittedTogether, PublishDraftPatchSet.CurrentRevision publishDraftChange, DeleteDraftChange deleteDraftChange, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, Index index, ChangeEdits.Detail editDetail, Move move, @Assisted ChangeResource change)
 name|ChangeApiImpl
 parameter_list|(
 name|Provider
@@ -1148,6 +1170,9 @@ name|listDrafts
 parameter_list|,
 name|Check
 name|check
+parameter_list|,
+name|Index
+name|index
 parameter_list|,
 name|ChangeEdits
 operator|.
@@ -1294,6 +1319,12 @@ operator|.
 name|check
 operator|=
 name|check
+expr_stmt|;
+name|this
+operator|.
+name|index
+operator|=
+name|index
 expr_stmt|;
 name|this
 operator|.
@@ -2621,6 +2652,49 @@ operator|new
 name|RestApiException
 argument_list|(
 literal|"Cannot check change"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|index ()
+specifier|public
+name|void
+name|index
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+try|try
+block|{
+name|index
+operator|.
+name|apply
+argument_list|(
+name|change
+argument_list|,
+operator|new
+name|Index
+operator|.
+name|Input
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RestApiException
+argument_list|(
+literal|"Cannot index change"
 argument_list|,
 name|e
 argument_list|)

@@ -533,6 +533,13 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|index ()
+name|void
+name|index
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|class|SuggestedReviewersRequest
 specifier|abstract
 class|class
@@ -1178,6 +1185,22 @@ parameter_list|(
 name|FixInput
 name|fix
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|index ()
+specifier|public
+name|void
+name|index
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
