@@ -875,7 +875,11 @@ name|yesno
 argument_list|(
 name|upgrade
 argument_list|,
-literal|"version %s is already installed, overwrite it"
+literal|"%s %s is already installed, overwrite it"
+argument_list|,
+name|plugin
+operator|.
+name|name
 argument_list|,
 name|installedPluginVersion
 argument_list|)
@@ -937,6 +941,46 @@ argument_list|,
 name|p
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|upgrade
+condition|)
+block|{
+comment|// or update that is not an upgrade
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"Updated %s to %s\n"
+argument_list|,
+name|plugin
+operator|.
+name|name
+argument_list|,
+name|plugin
+operator|.
+name|version
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"Installed %s %s\n"
+argument_list|,
+name|plugin
+operator|.
+name|name
+argument_list|,
+name|plugin
+operator|.
+name|version
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
