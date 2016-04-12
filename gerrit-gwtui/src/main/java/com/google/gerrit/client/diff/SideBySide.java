@@ -888,7 +888,7 @@ name|COMMIT_MSG
 operator|.
 name|equals
 argument_list|(
-name|prefs
+name|path
 argument_list|)
 condition|?
 literal|72
