@@ -195,7 +195,6 @@ name|searcherFactory
 decl_stmt|;
 comment|/**    * Creates and returns a new SearcherManager from the given    * {@link IndexWriter}.    *    * @param writer    *          the IndexWriter to open the IndexReader from.    * @param applyAllDeletes    *          If<code>true</code>, all buffered deletes will be applied (made    *          visible) in the {@link IndexSearcher} / {@link DirectoryReader}.    *          If<code>false</code>, the deletes may or may not be applied, but    *          remain buffered (in IndexWriter) so that they will be applied in    *          the future. Applying deletes can be costly, so if your app can    *          tolerate deleted documents being returned you might gain some    *          performance by passing<code>false</code>. See    *          {@link DirectoryReader#openIfChanged(DirectoryReader, IndexWriter, boolean)}.    * @param searcherFactory    *          An optional {@link SearcherFactory}. Pass<code>null</code> if you    *          don't require the searcher to be warmed before going live or other    *          custom behavior.    *    * @throws IOException if there is a low-level I/O error    */
 DECL|method|WrappableSearcherManager (IndexWriter writer, boolean applyAllDeletes, SearcherFactory searcherFactory)
-specifier|public
 name|WrappableSearcherManager
 parameter_list|(
 name|IndexWriter
@@ -249,7 +248,6 @@ expr_stmt|;
 block|}
 comment|/**    * Creates and returns a new SearcherManager from the given {@link Directory}.    * @param dir the directory to open the DirectoryReader on.    * @param searcherFactory An optional {@link SearcherFactory}. Pass    *<code>null</code> if you don't require the searcher to be warmed    *        before going live or other custom behavior.    *    * @throws IOException if there is a low-level I/O error    */
 DECL|method|WrappableSearcherManager (Directory dir, SearcherFactory searcherFactory)
-specifier|public
 name|WrappableSearcherManager
 parameter_list|(
 name|Directory
@@ -298,7 +296,6 @@ expr_stmt|;
 block|}
 comment|/**    * Creates and returns a new SearcherManager from an existing {@link DirectoryReader}.  Note that    * this steals the incoming reference.    *    * @param reader the DirectoryReader.    * @param searcherFactory An optional {@link SearcherFactory}. Pass    *<code>null</code> if you don't require the searcher to be warmed    *        before going live or other custom behavior.    *    * @throws IOException if there is a low-level I/O error    */
 DECL|method|WrappableSearcherManager (DirectoryReader reader, SearcherFactory searcherFactory)
-specifier|public
 name|WrappableSearcherManager
 parameter_list|(
 name|DirectoryReader

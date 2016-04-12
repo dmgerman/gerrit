@@ -175,7 +175,6 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|MySql (@erritServerConfig final Config cfg)
-specifier|public
 name|MySql
 parameter_list|(
 annotation|@

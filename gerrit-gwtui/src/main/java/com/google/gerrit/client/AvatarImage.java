@@ -848,7 +848,6 @@ name|Timer
 name|hideTimer
 decl_stmt|;
 DECL|method|PopupHandler (AccountInfo account, UIObject target)
-specifier|public
 name|PopupHandler
 parameter_list|(
 name|AccountInfo

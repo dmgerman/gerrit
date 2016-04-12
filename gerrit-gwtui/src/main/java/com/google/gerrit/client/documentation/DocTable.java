@@ -276,7 +276,6 @@ init|=
 literal|0
 decl_stmt|;
 DECL|method|DocTable ()
-specifier|public
 name|DocTable
 parameter_list|()
 block|{
@@ -768,7 +767,6 @@ extends|extends
 name|Anchor
 block|{
 DECL|method|DocLink (DocInfo d)
-specifier|public
 name|DocLink
 parameter_list|(
 name|DocInfo

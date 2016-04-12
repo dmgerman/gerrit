@@ -142,7 +142,6 @@ name|String
 name|authorizedBase
 decl_stmt|;
 DECL|method|ContextMapper (String contextPath)
-specifier|public
 name|ContextMapper
 parameter_list|(
 name|String

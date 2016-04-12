@@ -1001,7 +1001,6 @@ name|ChangeInfo
 name|change
 decl_stmt|;
 DECL|method|ChangeSuggestion (ChangeInfo change)
-specifier|public
 name|ChangeSuggestion
 parameter_list|(
 name|ChangeInfo

@@ -1265,7 +1265,6 @@ name|String
 name|fullQuery
 decl_stmt|;
 DECL|method|SearchSuggestion (String suggestion, String fullQuery)
-specifier|public
 name|SearchSuggestion
 parameter_list|(
 name|String

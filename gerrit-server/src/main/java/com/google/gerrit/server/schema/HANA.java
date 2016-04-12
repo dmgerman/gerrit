@@ -185,7 +185,6 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|HANA (@erritServerConfig final Config cfg)
-specifier|public
 name|HANA
 parameter_list|(
 annotation|@

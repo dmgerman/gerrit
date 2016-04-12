@@ -544,6 +544,7 @@ specifier|final
 name|ApproveOption
 name|cmdOption
 decl_stmt|;
+comment|// CS IGNORE RedundantModifier FOR NEXT 1 LINES. REASON: needed by org.kohsuke.args4j.Option
 DECL|method|Handler (final CmdLineParser parser, final OptionDef option, final Setter<Short> setter)
 specifier|public
 name|Handler

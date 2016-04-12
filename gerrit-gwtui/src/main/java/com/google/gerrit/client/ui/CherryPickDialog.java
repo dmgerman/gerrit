@@ -620,7 +620,6 @@ name|BranchInfo
 name|branch
 decl_stmt|;
 DECL|method|BranchSuggestion (BranchInfo branch)
-specifier|public
 name|BranchSuggestion
 parameter_list|(
 name|BranchInfo

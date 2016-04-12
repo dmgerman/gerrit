@@ -1839,7 +1839,6 @@ init|=
 literal|"Invalid Revision"
 decl_stmt|;
 DECL|method|InvalidRevisionException ()
-specifier|public
 name|InvalidRevisionException
 parameter_list|()
 block|{
