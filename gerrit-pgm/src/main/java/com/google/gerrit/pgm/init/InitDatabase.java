@@ -172,8 +172,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|api
-operator|.
 name|config
 operator|.
 name|GerritServerIdProvider
