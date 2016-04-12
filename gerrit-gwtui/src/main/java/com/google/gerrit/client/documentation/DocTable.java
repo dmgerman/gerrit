@@ -265,15 +265,11 @@ DECL|field|rows
 specifier|private
 name|int
 name|rows
-init|=
-literal|0
 decl_stmt|;
 DECL|field|dataBeginRow
 specifier|private
 name|int
 name|dataBeginRow
-init|=
-literal|0
 decl_stmt|;
 DECL|method|DocTable ()
 name|DocTable
