@@ -66,6 +66,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|GwtIncompatible
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|joda
@@ -91,6 +105,11 @@ comment|/** Static utility methods for dealing with dates and times. */
 end_comment
 
 begin_class
+annotation|@
+name|GwtIncompatible
+argument_list|(
+literal|"Unemulated org.joda.time.DateTimeUtils"
+argument_list|)
 DECL|class|TimeUtil
 specifier|public
 class|class
