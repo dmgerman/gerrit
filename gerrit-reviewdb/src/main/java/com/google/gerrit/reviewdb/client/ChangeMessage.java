@@ -348,6 +348,23 @@ operator|.
 name|Id
 name|patchset
 decl_stmt|;
+comment|/** Tag associated with change message */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|tag
+specifier|protected
+name|String
+name|tag
+decl_stmt|;
 DECL|method|ChangeMessage ()
 specifier|protected
 name|ChangeMessage
@@ -503,6 +520,32 @@ operator|=
 name|s
 expr_stmt|;
 block|}
+DECL|method|getTag ()
+specifier|public
+name|String
+name|getTag
+parameter_list|()
+block|{
+return|return
+name|tag
+return|;
+block|}
+DECL|method|setTag (String tag)
+specifier|public
+name|void
+name|setTag
+parameter_list|(
+name|String
+name|tag
+parameter_list|)
+block|{
+name|this
+operator|.
+name|tag
+operator|=
+name|tag
+expr_stmt|;
+block|}
 DECL|method|getPatchSetId ()
 specifier|public
 name|PatchSet
@@ -557,6 +600,10 @@ operator|+
 literal|", patchset="
 operator|+
 name|patchset
+operator|+
+literal|", tag="
+operator|+
+name|tag
 operator|+
 literal|", message=["
 operator|+

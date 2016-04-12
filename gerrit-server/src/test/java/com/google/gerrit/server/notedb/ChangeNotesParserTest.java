@@ -1328,6 +1328,70 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|parseTag ()
+specifier|public
+name|void
+name|parseTag
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Tag:\n"
+argument_list|)
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Tag: jenkins\n"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-Set: 1\n"
+operator|+
+literal|"Branch: refs/heads/master\n"
+operator|+
+literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"Subject: Change subject\n"
+operator|+
+literal|"Tag: ci\n"
+operator|+
+literal|"Tag: jenkins\n"
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|writeCommit (String body)
 specifier|private
 name|RevCommit

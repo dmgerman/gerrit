@@ -87,6 +87,11 @@ specifier|public
 name|String
 name|id
 decl_stmt|;
+DECL|field|tag
+specifier|public
+name|String
+name|tag
+decl_stmt|;
 DECL|field|author
 specifier|public
 name|AccountInfo

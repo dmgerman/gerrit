@@ -147,6 +147,11 @@ specifier|public
 name|String
 name|message
 decl_stmt|;
+DECL|field|tag
+specifier|public
+name|String
+name|tag
+decl_stmt|;
 DECL|field|labels
 specifier|public
 name|Map

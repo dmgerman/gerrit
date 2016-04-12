@@ -393,6 +393,22 @@ specifier|protected
 name|Timestamp
 name|granted
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|tag
+specifier|protected
+name|String
+name|tag
+decl_stmt|;
 comment|// DELETED: id = 4 (changeOpen)
 comment|// DELETED: id = 5 (changeSortKey)
 DECL|method|PatchSetApproval ()
@@ -606,6 +622,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|setTag (String t)
+specifier|public
+name|void
+name|setTag
+parameter_list|(
+name|String
+name|t
+parameter_list|)
+block|{
+name|tag
+operator|=
+name|t
+expr_stmt|;
+block|}
 DECL|method|getLabel ()
 specifier|public
 name|String
@@ -636,6 +666,16 @@ argument_list|(
 name|getLabel
 argument_list|()
 argument_list|)
+return|;
+block|}
+DECL|method|getTag ()
+specifier|public
+name|String
+name|getTag
+parameter_list|()
+block|{
+return|return
+name|tag
 return|;
 block|}
 annotation|@
@@ -669,6 +709,16 @@ operator|.
 name|append
 argument_list|(
 name|value
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|",tag:"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|tag
 argument_list|)
 operator|.
 name|append
@@ -739,6 +789,17 @@ name|p
 operator|.
 name|granted
 argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|tag
+argument_list|,
+name|p
+operator|.
+name|tag
+argument_list|)
 return|;
 block|}
 return|return
@@ -763,6 +824,8 @@ argument_list|,
 name|value
 argument_list|,
 name|granted
+argument_list|,
+name|tag
 argument_list|)
 return|;
 block|}
