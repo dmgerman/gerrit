@@ -318,7 +318,6 @@ block|}
 DECL|method|get (String id)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|get

@@ -702,7 +702,6 @@ expr_stmt|;
 block|}
 DECL|method|addLineClassNative (int line, String where, String lineClass)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|addLineClassNative
@@ -749,7 +748,6 @@ expr_stmt|;
 block|}
 DECL|method|addLineClassNative (LineHandle line, String where, String lineClass)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|addLineClassNative
@@ -796,7 +794,6 @@ expr_stmt|;
 block|}
 DECL|method|removeLineClassNative (int line, String where, String lineClass)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|removeLineClassNative
@@ -843,7 +840,6 @@ expr_stmt|;
 block|}
 DECL|method|removeLineClassNative (LineHandle line, String where, String lineClass)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|removeLineClassNative

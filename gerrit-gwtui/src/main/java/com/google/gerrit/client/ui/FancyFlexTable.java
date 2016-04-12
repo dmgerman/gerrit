@@ -1203,7 +1203,6 @@ block|{   }
 DECL|method|setRowItem (Element td, ItemType c)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 parameter_list|<
 name|ItemType
@@ -1222,7 +1221,6 @@ function_decl|;
 DECL|method|getRowItem (Element td)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 parameter_list|<
 name|ItemType

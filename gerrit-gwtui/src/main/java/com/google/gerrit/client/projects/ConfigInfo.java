@@ -417,7 +417,6 @@ comment|/*-{ return this.actions; }-*/
 function_decl|;
 DECL|method|submitTypeRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|submitTypeRaw
@@ -457,7 +456,6 @@ return|;
 block|}
 DECL|method|stateRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|stateRaw
@@ -475,7 +473,6 @@ comment|/*-{ return this.max_object_size_limit; }-*/
 function_decl|;
 DECL|method|commentlinks0 ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
@@ -797,7 +794,6 @@ return|;
 block|}
 DECL|method|configuredValueRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|configuredValueRaw

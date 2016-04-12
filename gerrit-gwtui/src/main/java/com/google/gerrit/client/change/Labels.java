@@ -582,7 +582,6 @@ block|}
 DECL|method|init (String r, String v)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|void
 name|init

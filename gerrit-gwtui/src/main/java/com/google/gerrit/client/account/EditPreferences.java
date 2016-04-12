@@ -399,7 +399,6 @@ expr_stmt|;
 block|}
 DECL|method|setThemeRaw (String i)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setThemeRaw
@@ -441,7 +440,6 @@ expr_stmt|;
 block|}
 DECL|method|setkeyMapTypeRaw (String i)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setkeyMapTypeRaw
@@ -603,7 +601,6 @@ return|;
 block|}
 DECL|method|themeRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|themeRaw
@@ -642,7 +639,6 @@ return|;
 block|}
 DECL|method|keyMapTypeRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|keyMapTypeRaw
@@ -762,7 +758,6 @@ comment|/*-{ return this.auto_close_brackets || false }-*/
 function_decl|;
 DECL|method|get (String n, int d)
 specifier|private
-specifier|final
 specifier|native
 name|int
 name|get

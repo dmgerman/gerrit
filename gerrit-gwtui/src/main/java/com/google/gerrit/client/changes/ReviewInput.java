@@ -256,7 +256,6 @@ expr_stmt|;
 block|}
 DECL|method|_notify (String n)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|_notify
@@ -287,7 +286,6 @@ expr_stmt|;
 block|}
 DECL|method|_drafts (String n)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|_drafts
@@ -299,7 +297,6 @@ comment|/*-{ this.drafts=n; }-*/
 function_decl|;
 DECL|method|init ()
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|init

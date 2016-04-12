@@ -318,7 +318,6 @@ comment|/*-{ return this.url_aliases[n]; }-*/
 function_decl|;
 DECL|method|_urlAliases ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
