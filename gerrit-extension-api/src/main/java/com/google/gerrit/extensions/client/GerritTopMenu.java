@@ -97,7 +97,6 @@ name|String
 name|menuName
 decl_stmt|;
 DECL|method|GerritTopMenu ()
-specifier|private
 name|GerritTopMenu
 parameter_list|()
 block|{

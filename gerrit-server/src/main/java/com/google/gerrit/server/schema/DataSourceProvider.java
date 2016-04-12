@@ -594,7 +594,6 @@ block|}
 block|}
 DECL|enum|Context
 specifier|public
-specifier|static
 enum|enum
 name|Context
 block|{

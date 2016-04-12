@@ -2268,7 +2268,6 @@ block|}
 comment|/** Runnable function which can throw an exception. */
 DECL|interface|CommandRunnable
 specifier|public
-specifier|static
 interface|interface
 name|CommandRunnable
 block|{
@@ -2283,7 +2282,6 @@ block|}
 comment|/** Runnable function which can retrieve a project name related to the task */
 DECL|interface|ProjectCommandRunnable
 specifier|public
-specifier|static
 interface|interface
 name|ProjectCommandRunnable
 extends|extends

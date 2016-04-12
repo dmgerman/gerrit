@@ -448,7 +448,6 @@ block|}
 block|}
 DECL|enum|Encryption
 specifier|public
-specifier|static
 enum|enum
 name|Encryption
 block|{

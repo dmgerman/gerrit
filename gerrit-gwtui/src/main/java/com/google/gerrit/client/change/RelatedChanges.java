@@ -912,7 +912,6 @@ name|count
 parameter_list|)
 function_decl|;
 DECL|method|Tab (String defaultTitle, String tooltip)
-specifier|private
 name|Tab
 parameter_list|(
 name|String

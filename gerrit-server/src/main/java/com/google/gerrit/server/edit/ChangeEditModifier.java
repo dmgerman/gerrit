@@ -832,7 +832,6 @@ name|ChangeEditModifier
 block|{
 DECL|enum|TreeOperation
 specifier|private
-specifier|static
 enum|enum
 name|TreeOperation
 block|{

@@ -594,7 +594,6 @@ block|}
 block|}
 DECL|interface|Tag
 specifier|private
-specifier|static
 interface|interface
 name|Tag
 block|{

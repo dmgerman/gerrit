@@ -97,7 +97,6 @@ literal|"Force Edit"
 decl_stmt|;
 DECL|enum|Action
 specifier|public
-specifier|static
 enum|enum
 name|Action
 block|{

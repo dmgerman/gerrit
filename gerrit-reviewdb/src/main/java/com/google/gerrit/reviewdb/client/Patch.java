@@ -299,7 +299,6 @@ block|}
 comment|/** Type of modification made to the file path. */
 DECL|enum|ChangeType
 specifier|public
-specifier|static
 enum|enum
 name|ChangeType
 implements|implements
@@ -354,7 +353,6 @@ name|char
 name|code
 decl_stmt|;
 DECL|method|ChangeType (final char c)
-specifier|private
 name|ChangeType
 parameter_list|(
 specifier|final
@@ -455,7 +453,6 @@ block|}
 comment|/** Type of formatting for this patch. */
 DECL|enum|PatchType
 specifier|public
-specifier|static
 enum|enum
 name|PatchType
 implements|implements
@@ -482,7 +479,6 @@ name|char
 name|code
 decl_stmt|;
 DECL|method|PatchType (final char c)
-specifier|private
 name|PatchType
 parameter_list|(
 specifier|final

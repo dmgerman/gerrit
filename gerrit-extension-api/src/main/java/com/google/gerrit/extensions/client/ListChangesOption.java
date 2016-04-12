@@ -234,7 +234,6 @@ name|int
 name|value
 decl_stmt|;
 DECL|method|ListChangesOption (int v)
-specifier|private
 name|ListChangesOption
 parameter_list|(
 name|int

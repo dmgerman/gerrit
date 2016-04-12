@@ -177,7 +177,6 @@ argument_list|>
 block|{
 DECL|enum|Header
 specifier|public
-specifier|static
 enum|enum
 name|Header
 block|{

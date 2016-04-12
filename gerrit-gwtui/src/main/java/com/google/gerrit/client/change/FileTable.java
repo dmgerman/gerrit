@@ -1003,7 +1003,6 @@ function_decl|;
 block|}
 DECL|enum|Mode
 specifier|public
-specifier|static
 enum|enum
 name|Mode
 block|{

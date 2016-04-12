@@ -352,7 +352,6 @@ parameter_list|()
 block|{   }
 DECL|enum|Cols
 specifier|private
-specifier|static
 enum|enum
 name|Cols
 block|{

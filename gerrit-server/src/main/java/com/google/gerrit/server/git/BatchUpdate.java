@@ -866,7 +866,6 @@ block|}
 comment|/** Order of execution of the various phases. */
 DECL|enum|Order
 specifier|public
-specifier|static
 enum|enum
 name|Order
 block|{

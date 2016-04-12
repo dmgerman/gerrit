@@ -354,7 +354,6 @@ decl_stmt|;
 comment|/** Handler that can receive notifications of a change's starred status. */
 DECL|interface|ChangeStarHandler
 specifier|public
-specifier|static
 interface|interface
 name|ChangeStarHandler
 block|{

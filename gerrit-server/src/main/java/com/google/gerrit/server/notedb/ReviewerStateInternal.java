@@ -269,7 +269,6 @@ name|ReviewerState
 name|state
 decl_stmt|;
 DECL|method|ReviewerStateInternal (FooterKey footerKey, ReviewerState state)
-specifier|private
 name|ReviewerStateInternal
 parameter_list|(
 name|FooterKey

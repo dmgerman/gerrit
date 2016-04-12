@@ -167,7 +167,6 @@ name|Account
 block|{
 DECL|enum|FieldName
 specifier|public
-specifier|static
 enum|enum
 name|FieldName
 block|{

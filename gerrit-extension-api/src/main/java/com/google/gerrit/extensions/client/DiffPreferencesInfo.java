@@ -140,7 +140,6 @@ block|}
 decl_stmt|;
 DECL|enum|Whitespace
 specifier|public
-specifier|static
 enum|enum
 name|Whitespace
 block|{

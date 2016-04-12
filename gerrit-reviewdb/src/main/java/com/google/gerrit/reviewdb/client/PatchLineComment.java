@@ -306,7 +306,6 @@ literal|'P'
 decl_stmt|;
 DECL|enum|Status
 specifier|public
-specifier|static
 enum|enum
 name|Status
 block|{
@@ -327,7 +326,6 @@ name|char
 name|code
 decl_stmt|;
 DECL|method|Status (final char c)
-specifier|private
 name|Status
 parameter_list|(
 specifier|final

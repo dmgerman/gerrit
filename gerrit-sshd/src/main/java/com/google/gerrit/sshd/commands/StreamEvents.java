@@ -619,8 +619,8 @@ name|Event
 block|{
 DECL|field|TYPE
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|TYPE
 init|=

@@ -376,7 +376,6 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|interface|Style
-specifier|static
 interface|interface
 name|Style
 extends|extends

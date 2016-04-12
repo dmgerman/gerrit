@@ -180,7 +180,6 @@ name|String
 name|message
 decl_stmt|;
 DECL|method|CommitMergeStatus (String message)
-specifier|private
 name|CommitMergeStatus
 parameter_list|(
 name|String

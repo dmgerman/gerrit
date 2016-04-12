@@ -4771,8 +4771,8 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|BranchBatch
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|BranchBatch
 block|{

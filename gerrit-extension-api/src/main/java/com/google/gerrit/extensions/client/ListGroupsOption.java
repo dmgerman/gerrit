@@ -107,7 +107,6 @@ name|int
 name|value
 decl_stmt|;
 DECL|method|ListGroupsOption (int v)
-specifier|private
 name|ListGroupsOption
 parameter_list|(
 name|int
