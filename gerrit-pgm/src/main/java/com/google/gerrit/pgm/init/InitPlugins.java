@@ -826,6 +826,10 @@ argument_list|(
 name|pluginName
 argument_list|)
 operator|||
+name|initFlags
+operator|.
+name|installAllPlugins
+operator|||
 name|ui
 operator|.
 name|yesno

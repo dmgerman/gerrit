@@ -629,6 +629,8 @@ name|String
 operator|>
 name|emptyList
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 specifier|final
