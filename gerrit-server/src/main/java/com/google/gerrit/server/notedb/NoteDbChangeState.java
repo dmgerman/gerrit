@@ -952,7 +952,7 @@ name|state
 return|;
 block|}
 DECL|method|toString (ObjectId changeMetaId, Map<Account.Id, ObjectId> draftIds)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|toString
@@ -1092,6 +1092,7 @@ argument_list|>
 name|draftIds
 decl_stmt|;
 DECL|method|NoteDbChangeState (Change.Id changeId, ObjectId changeMetaId, Map<Account.Id, ObjectId> draftIds)
+specifier|public
 name|NoteDbChangeState
 parameter_list|(
 name|Change
