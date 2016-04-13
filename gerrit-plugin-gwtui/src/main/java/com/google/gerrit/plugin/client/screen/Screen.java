@@ -190,7 +190,6 @@ extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|body ()
-specifier|final
 specifier|native
 name|Element
 name|body
@@ -198,7 +197,6 @@ parameter_list|()
 comment|/*-{ return this.body }-*/
 function_decl|;
 DECL|method|token_match ()
-specifier|final
 specifier|native
 name|JsArrayString
 name|token_match
@@ -206,7 +204,6 @@ parameter_list|()
 comment|/*-{ return this.token_match }-*/
 function_decl|;
 DECL|method|show ()
-specifier|final
 specifier|native
 name|void
 name|show
@@ -214,7 +211,6 @@ parameter_list|()
 comment|/*-{ this.show() }-*/
 function_decl|;
 DECL|method|setTitle (String t)
-specifier|final
 specifier|native
 name|void
 name|setTitle
@@ -225,7 +221,6 @@ parameter_list|)
 comment|/*-{ this.setTitle(t) }-*/
 function_decl|;
 DECL|method|setWindowTitle (String t)
-specifier|final
 specifier|native
 name|void
 name|setWindowTitle
@@ -236,7 +231,6 @@ parameter_list|)
 comment|/*-{ this.setWindowTitle(t) }-*/
 function_decl|;
 DECL|method|detach (Screen s)
-specifier|final
 specifier|native
 name|void
 name|detach
@@ -293,7 +287,6 @@ block|}
 comment|/** @return the token suffix after {@code "/#/x/plugin-name/"}. */
 DECL|method|getToken ()
 specifier|public
-specifier|final
 name|String
 name|getToken
 parameter_list|()
@@ -308,7 +301,6 @@ block|}
 comment|/**    * @param group groups range from 1 to {@code getTokenGroups() - 1}. Token    *        group 0 is the entire token, see {@link #getToken()}.    * @return the token from the regex match group.    */
 DECL|method|getToken (int group)
 specifier|public
-specifier|final
 name|String
 name|getToken
 parameter_list|(
@@ -331,7 +323,6 @@ block|}
 comment|/** @return total number of token groups. */
 DECL|method|getTokenGroups ()
 specifier|public
-specifier|final
 name|int
 name|getTokenGroups
 parameter_list|()
@@ -349,7 +340,6 @@ block|}
 comment|/**    * Set the page title text; appears above the widget.    *    * @param titleText text to display above the widget.    */
 DECL|method|setPageTitle (String titleText)
 specifier|public
-specifier|final
 name|void
 name|setPageTitle
 parameter_list|(
@@ -368,7 +358,6 @@ block|}
 comment|/**    * Set the window title text; appears in the browser window title bar.    *    * @param titleText text to display in the window title bar.    */
 DECL|method|setWindowTitle (String titleText)
 specifier|public
-specifier|final
 name|void
 name|setWindowTitle
 parameter_list|(
@@ -387,7 +376,6 @@ block|}
 comment|/**    * Add the widget and immediately show the screen.    *    * @param w child containing the content.    */
 DECL|method|show (Widget w)
 specifier|public
-specifier|final
 name|void
 name|show
 parameter_list|(
@@ -409,7 +397,6 @@ block|}
 comment|/** Show this screen in the web interface. */
 DECL|method|show ()
 specifier|public
-specifier|final
 name|void
 name|show
 parameter_list|()

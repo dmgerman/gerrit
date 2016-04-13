@@ -423,7 +423,6 @@ block|}
 DECL|method|findTheme (Theme theme)
 specifier|private
 specifier|static
-specifier|final
 name|ExternalTextResource
 name|findTheme
 parameter_list|(

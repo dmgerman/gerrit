@@ -232,7 +232,6 @@ name|File
 name|pluginsDir
 decl_stmt|;
 DECL|method|UnzippedDistribution (ServletContext servletContext)
-specifier|public
 name|UnzippedDistribution
 parameter_list|(
 name|ServletContext

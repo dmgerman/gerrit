@@ -185,7 +185,6 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|PostgreSQL (@erritServerConfig final Config cfg)
-specifier|public
 name|PostgreSQL
 parameter_list|(
 annotation|@

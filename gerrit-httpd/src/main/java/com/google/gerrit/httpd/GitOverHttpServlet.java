@@ -981,7 +981,6 @@ name|boolean
 name|enableReceive
 decl_stmt|;
 DECL|method|Module (boolean enableReceive)
-specifier|public
 name|Module
 parameter_list|(
 name|boolean

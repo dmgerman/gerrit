@@ -1785,7 +1785,6 @@ name|ChangeInserter
 name|ins
 decl_stmt|;
 DECL|method|SendEmailOp (ChangeInserter ins)
-specifier|public
 name|SendEmailOp
 parameter_list|(
 name|ChangeInserter
@@ -1907,7 +1906,6 @@ name|ObjectId
 name|computedChangeId
 decl_stmt|;
 DECL|method|PostRevertedMessageOp (ObjectId computedChangeId)
-specifier|public
 name|PostRevertedMessageOp
 parameter_list|(
 name|ObjectId

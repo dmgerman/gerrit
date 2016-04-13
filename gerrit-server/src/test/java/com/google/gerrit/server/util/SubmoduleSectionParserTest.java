@@ -1924,7 +1924,6 @@ name|String
 name|branch
 decl_stmt|;
 DECL|method|SubmoduleSection (final String url, final String path, final String branch)
-specifier|public
 name|SubmoduleSection
 parameter_list|(
 specifier|final

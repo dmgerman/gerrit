@@ -1301,7 +1301,6 @@ block|}
 block|}
 DECL|method|isAdminHighPriorityCommand ()
 specifier|private
-specifier|final
 name|boolean
 name|isAdminHighPriorityCommand
 parameter_list|()

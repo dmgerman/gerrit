@@ -627,7 +627,6 @@ init|=
 literal|"dropped-output"
 decl_stmt|;
 DECL|method|DroppedOutputEvent ()
-specifier|public
 name|DroppedOutputEvent
 parameter_list|()
 block|{

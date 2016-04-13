@@ -429,7 +429,6 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|DbGroupMemberAuditListener (SchemaFactory<ReviewDb> schema, AccountCache accountCache, GroupCache groupCache, UniversalGroupBackend groupBackend)
-specifier|public
 name|DbGroupMemberAuditListener
 parameter_list|(
 name|SchemaFactory

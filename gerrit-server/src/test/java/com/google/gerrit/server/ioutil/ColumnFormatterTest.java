@@ -129,7 +129,6 @@ name|StringWriter
 name|stringWriter
 decl_stmt|;
 DECL|method|PrintWriterComparator ()
-specifier|public
 name|PrintWriterComparator
 parameter_list|()
 block|{

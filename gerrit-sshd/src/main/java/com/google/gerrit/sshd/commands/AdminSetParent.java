@@ -689,8 +689,6 @@ name|Project
 operator|.
 name|NameKey
 name|newParentKey
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override

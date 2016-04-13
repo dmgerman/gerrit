@@ -167,7 +167,6 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|MaxDb (@erritServerConfig final Config cfg)
-specifier|public
 name|MaxDb
 parameter_list|(
 annotation|@

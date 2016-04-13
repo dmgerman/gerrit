@@ -265,18 +265,13 @@ DECL|field|rows
 specifier|private
 name|int
 name|rows
-init|=
-literal|0
 decl_stmt|;
 DECL|field|dataBeginRow
 specifier|private
 name|int
 name|dataBeginRow
-init|=
-literal|0
 decl_stmt|;
 DECL|method|DocTable ()
-specifier|public
 name|DocTable
 parameter_list|()
 block|{
@@ -768,7 +763,6 @@ extends|extends
 name|Anchor
 block|{
 DECL|method|DocLink (DocInfo d)
-specifier|public
 name|DocLink
 parameter_list|(
 name|DocInfo

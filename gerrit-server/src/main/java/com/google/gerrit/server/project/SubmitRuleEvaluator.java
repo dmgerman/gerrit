@@ -614,7 +614,6 @@ init|=
 literal|1L
 decl_stmt|;
 DECL|method|UserTermExpected (SubmitRecord.Label label)
-specifier|public
 name|UserTermExpected
 parameter_list|(
 name|SubmitRecord

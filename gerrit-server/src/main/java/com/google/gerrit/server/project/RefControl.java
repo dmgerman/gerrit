@@ -2285,15 +2285,11 @@ DECL|field|allowMin
 specifier|private
 name|int
 name|allowMin
-init|=
-literal|0
 decl_stmt|;
 DECL|field|allowMax
 specifier|private
 name|int
 name|allowMax
-init|=
-literal|0
 decl_stmt|;
 DECL|field|blockMin
 specifier|private

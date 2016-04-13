@@ -134,7 +134,6 @@ init|=
 literal|1L
 decl_stmt|;
 DECL|method|RepositoryStatistics (Properties p)
-specifier|public
 name|RepositoryStatistics
 parameter_list|(
 name|Properties

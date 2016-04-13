@@ -479,8 +479,6 @@ DECL|field|skipPlugins
 specifier|private
 name|boolean
 name|skipPlugins
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Option

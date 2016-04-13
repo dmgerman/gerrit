@@ -309,8 +309,6 @@ DECL|field|sent
 specifier|protected
 name|boolean
 name|sent
-init|=
-literal|false
 decl_stmt|;
 DECL|method|CommentedActionDialog (final String title, final String heading)
 specifier|public

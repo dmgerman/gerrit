@@ -733,7 +733,6 @@ name|String
 name|newTopicName
 decl_stmt|;
 DECL|method|Op (Input input)
-specifier|public
 name|Op
 parameter_list|(
 name|Input

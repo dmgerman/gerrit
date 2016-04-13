@@ -972,7 +972,6 @@ name|NameKey
 name|newDestKey
 decl_stmt|;
 DECL|method|Op (ChangeControl ctl, MoveInput input)
-specifier|public
 name|Op
 parameter_list|(
 name|ChangeControl

@@ -299,8 +299,6 @@ DECL|field|base64
 specifier|private
 name|boolean
 name|base64
-init|=
-literal|false
 decl_stmt|;
 DECL|field|attachmentName
 specifier|private

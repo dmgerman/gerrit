@@ -4982,7 +4982,6 @@ name|String
 name|labelSuffix
 decl_stmt|;
 DECL|method|LabeledWidgetsGrid ()
-specifier|public
 name|LabeledWidgetsGrid
 parameter_list|()
 block|{
