@@ -86,6 +86,11 @@ specifier|public
 name|Integer
 name|lineLength
 decl_stmt|;
+DECL|field|indentUnit
+specifier|public
+name|Integer
+name|indentUnit
+decl_stmt|;
 DECL|field|cursorBlinkRate
 specifier|public
 name|Integer
@@ -161,6 +166,12 @@ operator|.
 name|lineLength
 operator|=
 literal|100
+expr_stmt|;
+name|i
+operator|.
+name|indentUnit
+operator|=
+literal|2
 expr_stmt|;
 name|i
 operator|.

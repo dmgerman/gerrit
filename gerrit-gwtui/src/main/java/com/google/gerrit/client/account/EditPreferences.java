@@ -177,6 +177,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|indentUnit
+argument_list|(
+name|in
+operator|.
+name|indentUnit
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|cursorBlinkRate
 argument_list|(
 name|in
@@ -291,6 +300,13 @@ operator|.
 name|lineLength
 operator|=
 name|lineLength
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|indentUnit
+operator|=
+name|indentUnit
 argument_list|()
 expr_stmt|;
 name|p
@@ -472,6 +488,18 @@ name|int
 name|c
 parameter_list|)
 comment|/*-{ this.line_length = c }-*/
+function_decl|;
+DECL|method|indentUnit (int c)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|indentUnit
+parameter_list|(
+name|int
+name|c
+parameter_list|)
+comment|/*-{ this.indent_unit = c }-*/
 function_decl|;
 DECL|method|cursorBlinkRate (int r)
 specifier|public
@@ -674,6 +702,22 @@ argument_list|(
 literal|"line_length"
 argument_list|,
 literal|100
+argument_list|)
+return|;
+block|}
+DECL|method|indentUnit ()
+specifier|public
+specifier|final
+name|int
+name|indentUnit
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+literal|"indent_unit"
+argument_list|,
+literal|2
 argument_list|)
 return|;
 block|}
