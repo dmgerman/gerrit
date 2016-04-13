@@ -2018,7 +2018,7 @@ name|starredQuery
 else|:
 name|starredChangesUtil
 operator|.
-name|query
+name|queryFromIndex
 argument_list|(
 name|accountId
 argument_list|)
@@ -2077,7 +2077,7 @@ name|starredQuery
 operator|=
 name|starredChangesUtil
 operator|.
-name|query
+name|queryFromIndex
 argument_list|(
 name|accountId
 argument_list|)

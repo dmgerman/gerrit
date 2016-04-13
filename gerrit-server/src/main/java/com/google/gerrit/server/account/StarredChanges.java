@@ -450,6 +450,16 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -952,6 +962,8 @@ throws|throws
 name|AuthException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -986,6 +998,11 @@ name|get
 argument_list|()
 operator|.
 name|getAccountId
+argument_list|()
+argument_list|,
+name|change
+operator|.
+name|getProject
 argument_list|()
 argument_list|,
 name|change
@@ -1192,6 +1209,8 @@ throws|throws
 name|AuthException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -1224,6 +1243,14 @@ name|get
 argument_list|()
 operator|.
 name|getAccountId
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getProject
 argument_list|()
 argument_list|,
 name|rsrc
