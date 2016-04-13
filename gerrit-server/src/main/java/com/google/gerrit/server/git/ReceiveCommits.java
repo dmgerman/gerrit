@@ -2537,6 +2537,19 @@ literal|"Please read the documentation and contact an administrator\n"
 operator|+
 literal|"if you feel the configuration is incorrect"
 decl_stmt|;
+DECL|field|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
+init|=
+literal|"same Change-Id in multiple changes.\n"
+operator|+
+literal|"Squash the commits with the same Change-Id or "
+operator|+
+literal|"ensure Change-Ids are unique for each commit"
+decl_stmt|;
 DECL|enum|Error
 specifier|private
 enum|enum
@@ -10598,7 +10611,7 @@ name|magicBranch
 operator|.
 name|cmd
 argument_list|,
-literal|"squash commits first"
+name|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
 argument_list|)
 expr_stmt|;
 name|newChanges
@@ -13127,7 +13140,7 @@ name|reject
 argument_list|(
 name|inputCommand
 argument_list|,
-literal|"squash commits first"
+name|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
 argument_list|)
 expr_stmt|;
 return|return
