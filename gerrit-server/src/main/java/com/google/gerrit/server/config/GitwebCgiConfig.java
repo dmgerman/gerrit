@@ -314,7 +314,7 @@ block|,
 literal|"/var/www/static"
 block|,
 literal|"/var/www"
-block|}
+block|,     }
 decl_stmt|;
 name|Path
 name|cgi

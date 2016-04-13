@@ -1442,7 +1442,7 @@ block|,
 literal|'e'
 block|,
 literal|'f'
-block|}
+block|,}
 decl_stmt|;
 DECL|method|LHEX (byte[] bin)
 specifier|private

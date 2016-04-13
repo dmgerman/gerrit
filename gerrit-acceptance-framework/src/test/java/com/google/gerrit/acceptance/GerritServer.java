@@ -1142,7 +1142,7 @@ block|,
 literal|"--console-log"
 block|,
 literal|"--show-stack-trace"
-block|}
+block|,}
 argument_list|)
 decl_stmt|;
 if|if
@@ -1261,7 +1261,7 @@ block|,
 literal|"--no-auto-start"
 block|,
 literal|"--skip-plugins"
-block|}
+block|,}
 argument_list|)
 decl_stmt|;
 if|if

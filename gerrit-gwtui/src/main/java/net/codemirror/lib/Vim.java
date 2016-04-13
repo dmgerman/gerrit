@@ -171,7 +171,7 @@ block|,
 literal|"Ctrl-B"
 block|,
 literal|"Ctrl-R"
-block|}
+block|,}
 control|)
 block|{
 name|km

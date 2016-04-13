@@ -751,26 +751,21 @@ index|[]
 block|{
 literal|"ssh-keygen"
 block|,
-comment|//
 literal|"-q"
 comment|/* quiet */
 block|,
-comment|//
 literal|"-t"
 block|,
 literal|"rsa"
 block|,
-comment|//
 literal|"-P"
 block|,
 literal|""
 block|,
-comment|//
 literal|"-C"
 block|,
 name|comment
 block|,
-comment|//
 literal|"-f"
 block|,
 name|site
@@ -782,8 +777,7 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-comment|//
-block|}
+block|,             }
 argument_list|)
 operator|.
 name|waitFor
@@ -818,26 +812,21 @@ index|[]
 block|{
 literal|"ssh-keygen"
 block|,
-comment|//
 literal|"-q"
 comment|/* quiet */
 block|,
-comment|//
 literal|"-t"
 block|,
 literal|"dsa"
 block|,
-comment|//
 literal|"-P"
 block|,
 literal|""
 block|,
-comment|//
 literal|"-C"
 block|,
 name|comment
 block|,
-comment|//
 literal|"-f"
 block|,
 name|site
@@ -849,8 +838,7 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-comment|//
-block|}
+block|,             }
 argument_list|)
 operator|.
 name|waitFor

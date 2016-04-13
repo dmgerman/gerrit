@@ -395,7 +395,7 @@ block|,
 literal|"topic"
 block|,
 literal|"/"
-block|}
+block|,}
 decl_stmt|;
 DECL|interface|Binder
 interface|interface

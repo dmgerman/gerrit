@@ -1278,7 +1278,7 @@ operator|(
 name|byte
 operator|)
 name|h
-block|}
+block|,}
 return|;
 block|}
 block|}
