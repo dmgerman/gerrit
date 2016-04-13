@@ -273,7 +273,6 @@ comment|/*-{ return this.schemes[n]; }-*/
 function_decl|;
 DECL|method|_schemes ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
@@ -285,7 +284,6 @@ comment|/*-{ return this.schemes; }-*/
 function_decl|;
 DECL|method|_archives ()
 specifier|private
-specifier|final
 specifier|native
 name|JsArrayString
 name|_archives
@@ -640,7 +638,6 @@ comment|/*-{ return this.clone_commands[n]; }-*/
 function_decl|;
 DECL|method|_commands ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
@@ -652,7 +649,6 @@ comment|/*-{ return this.commands; }-*/
 function_decl|;
 DECL|method|_cloneCommands ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<

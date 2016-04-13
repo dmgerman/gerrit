@@ -158,7 +158,6 @@ comment|/*-{ return this.key; }-*/
 function_decl|;
 DECL|method|statusRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|statusRaw

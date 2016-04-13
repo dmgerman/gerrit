@@ -1138,7 +1138,6 @@ block|}
 DECL|method|init (String d, String t, String r, String o)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|void
 name|init

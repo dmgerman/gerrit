@@ -135,8 +135,6 @@ name|InvalidTokenException
 function_decl|;
 comment|/** Exception thrown when a token does not parse correctly. */
 DECL|class|InvalidTokenException
-specifier|public
-specifier|static
 class|class
 name|InvalidTokenException
 extends|extends
@@ -181,8 +179,6 @@ block|}
 block|}
 comment|/** Pair returned from decode to provide the data used during encode. */
 DECL|class|ParsedToken
-specifier|public
-specifier|static
 class|class
 name|ParsedToken
 block|{

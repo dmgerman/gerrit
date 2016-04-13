@@ -462,7 +462,6 @@ return|;
 block|}
 DECL|method|changeTypeRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|changeTypeRaw
@@ -501,7 +500,6 @@ return|;
 block|}
 DECL|method|intralineStatusRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|intralineStatusRaw

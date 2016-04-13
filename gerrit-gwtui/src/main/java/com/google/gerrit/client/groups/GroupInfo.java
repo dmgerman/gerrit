@@ -248,7 +248,6 @@ comment|/*-{ return this.includes; }-*/
 function_decl|;
 DECL|method|group_id ()
 specifier|private
-specifier|final
 specifier|native
 name|int
 name|group_id
@@ -257,7 +256,6 @@ comment|/*-{ return this.group_id; }-*/
 function_decl|;
 DECL|method|owner_id ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|owner_id
@@ -266,7 +264,6 @@ comment|/*-{ return this.owner_id; }-*/
 function_decl|;
 DECL|method|owner_id (String o)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|owner_id

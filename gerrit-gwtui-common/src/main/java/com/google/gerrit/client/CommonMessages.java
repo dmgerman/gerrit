@@ -105,9 +105,6 @@ extends|extends
 name|Messages
 block|{
 DECL|field|M
-specifier|public
-specifier|static
-specifier|final
 name|CommonMessages
 name|M
 init|=

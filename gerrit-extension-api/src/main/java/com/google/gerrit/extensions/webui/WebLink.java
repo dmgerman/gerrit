@@ -78,8 +78,6 @@ name|WebLink
 block|{
 comment|/**    * Class that holds target defaults for WebLink anchors.    */
 DECL|class|Target
-specifier|public
-specifier|static
 class|class
 name|Target
 block|{

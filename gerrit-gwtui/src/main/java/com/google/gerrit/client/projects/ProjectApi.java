@@ -1533,7 +1533,6 @@ expr_stmt|;
 block|}
 DECL|method|setUseContributorAgreementsRaw (String v)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setUseContributorAgreementsRaw
@@ -1563,7 +1562,6 @@ expr_stmt|;
 block|}
 DECL|method|setUseContentMergeRaw (String v)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setUseContentMergeRaw
@@ -1593,7 +1591,6 @@ expr_stmt|;
 block|}
 DECL|method|setUseSignedOffByRaw (String v)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setUseSignedOffByRaw
@@ -1623,7 +1620,6 @@ expr_stmt|;
 block|}
 DECL|method|setRequireChangeIdRaw (String v)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setRequireChangeIdRaw
@@ -1653,7 +1649,6 @@ expr_stmt|;
 block|}
 DECL|method|setCreateNewChangeForAllNotInTargetRaw (String v)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setCreateNewChangeForAllNotInTargetRaw
@@ -1683,7 +1678,6 @@ expr_stmt|;
 block|}
 DECL|method|setEnableSignedPushRaw (String v)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setEnableSignedPushRaw
@@ -1713,7 +1707,6 @@ expr_stmt|;
 block|}
 DECL|method|setRequireSignedPushRaw (String v)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setRequireSignedPushRaw
@@ -1754,7 +1747,6 @@ expr_stmt|;
 block|}
 DECL|method|setSubmitTypeRaw (String t)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setSubmitTypeRaw
@@ -1784,7 +1776,6 @@ expr_stmt|;
 block|}
 DECL|method|setStateRaw (String s)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setStateRaw
@@ -1922,7 +1913,6 @@ block|}
 block|}
 DECL|method|setPluginConfigValuesRaw (NativeMap<ConfigParameterValueMap> v)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setPluginConfigValuesRaw

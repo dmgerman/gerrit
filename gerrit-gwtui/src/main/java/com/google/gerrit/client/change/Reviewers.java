@@ -2108,7 +2108,6 @@ comment|/*-{ return this.approvals[l]; }-*/
 function_decl|;
 DECL|method|_approvals ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<

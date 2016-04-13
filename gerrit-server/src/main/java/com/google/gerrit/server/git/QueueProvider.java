@@ -73,8 +73,6 @@ interface|interface
 name|QueueProvider
 block|{
 DECL|enum|QueueType
-specifier|public
-specifier|static
 enum|enum
 name|QueueType
 block|{

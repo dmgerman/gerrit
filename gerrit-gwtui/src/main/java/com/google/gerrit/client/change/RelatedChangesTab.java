@@ -866,7 +866,6 @@ decl_stmt|;
 DECL|method|init (String o)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|String
 name|init
@@ -3950,7 +3949,6 @@ block|}
 DECL|method|createDocumentFragment ()
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|Node
 name|createDocumentFragment

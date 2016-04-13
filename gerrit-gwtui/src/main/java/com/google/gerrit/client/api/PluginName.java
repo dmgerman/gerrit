@@ -386,7 +386,6 @@ function_decl|;
 DECL|method|hasStack (JavaScriptException e)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|boolean
 name|hasStack
@@ -541,7 +540,6 @@ block|}
 DECL|method|getStack (JavaScriptException e)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JsArrayString
 name|getStack

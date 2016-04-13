@@ -125,8 +125,6 @@ parameter_list|)
 function_decl|;
 comment|/** Describes an action invokable through the web interface. */
 DECL|class|Description
-specifier|public
-specifier|static
 class|class
 name|Description
 block|{

@@ -214,7 +214,6 @@ comment|/*-{ return this.member; }-*/
 function_decl|;
 DECL|method|dateRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|dateRaw
@@ -223,7 +222,6 @@ comment|/*-{ return this.date; }-*/
 function_decl|;
 DECL|method|typeRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|typeRaw

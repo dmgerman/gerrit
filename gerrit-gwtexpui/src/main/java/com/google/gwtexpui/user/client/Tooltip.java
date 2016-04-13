@@ -165,7 +165,6 @@ extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
-specifier|final
 name|Resources
 name|I
 init|=

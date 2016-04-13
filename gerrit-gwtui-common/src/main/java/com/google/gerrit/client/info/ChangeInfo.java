@@ -560,7 +560,6 @@ return|;
 block|}
 DECL|method|_getCts ()
 specifier|private
-specifier|final
 specifier|native
 name|Timestamp
 name|_getCts
@@ -569,7 +568,6 @@ comment|/*-{ return this._cts; }-*/
 function_decl|;
 DECL|method|_setCts (Timestamp ts)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|_setCts
@@ -806,7 +804,6 @@ comment|/*-{ return this.deletions; }-*/
 function_decl|;
 DECL|method|statusRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|statusRaw
@@ -833,7 +830,6 @@ comment|/*-{ return this.owner; }-*/
 function_decl|;
 DECL|method|createdRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|createdRaw
@@ -842,7 +838,6 @@ comment|/*-{ return this.created; }-*/
 function_decl|;
 DECL|method|updatedRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|updatedRaw
@@ -851,7 +846,6 @@ comment|/*-{ return this.updated; }-*/
 function_decl|;
 DECL|method|submittedRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|submittedRaw
@@ -1043,7 +1037,6 @@ comment|/*-{ return this.removable_reviewers; }-*/
 function_decl|;
 DECL|method|_reviewers ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
@@ -1256,7 +1249,6 @@ return|;
 block|}
 DECL|method|_submitType ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|_submitType
@@ -1280,7 +1272,6 @@ return|;
 block|}
 DECL|method|_submittable ()
 specifier|private
-specifier|final
 specifier|native
 name|boolean
 name|_submittable
@@ -1656,7 +1647,6 @@ return|;
 block|}
 DECL|method|_values ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
@@ -2052,7 +2042,6 @@ return|;
 block|}
 DECL|method|takeFromEdit (EditInfo edit)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|takeFromEdit
@@ -2664,7 +2653,6 @@ comment|/*-{ return this.email; }-*/
 function_decl|;
 DECL|method|dateRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|dateRaw
@@ -2731,7 +2719,6 @@ comment|/*-{ return this._revision_number || 0; }-*/
 function_decl|;
 DECL|method|dateRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|dateRaw
@@ -2853,7 +2840,6 @@ comment|/*-{ return this.external[n]; }-*/
 function_decl|;
 DECL|method|external ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<

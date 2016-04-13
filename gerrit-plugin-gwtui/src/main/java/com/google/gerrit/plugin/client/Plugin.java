@@ -391,7 +391,6 @@ expr_stmt|;
 block|}
 DECL|method|screen (String t, JavaScriptObject e)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|screen
@@ -433,7 +432,6 @@ expr_stmt|;
 block|}
 DECL|method|screenRegex (String p, JavaScriptObject e)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|screenRegex
@@ -480,7 +478,6 @@ expr_stmt|;
 block|}
 DECL|method|settingsScreen (String t, String m, JavaScriptObject e)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|settingsScreen
@@ -528,7 +525,6 @@ expr_stmt|;
 block|}
 DECL|method|panel (String i, JavaScriptObject e)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|panel
@@ -563,7 +559,6 @@ function_decl|;
 DECL|method|install (String u)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|Plugin
 name|install
@@ -576,7 +571,6 @@ function_decl|;
 DECL|method|wrap (Screen.EntryPoint b)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|wrap
@@ -591,7 +585,6 @@ function_decl|;
 DECL|method|wrap (Panel.EntryPoint b)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|wrap

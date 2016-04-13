@@ -502,7 +502,6 @@ block|}
 DECL|method|settingsScreens ()
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
@@ -608,7 +607,6 @@ function_decl|;
 DECL|method|create ( JavaScriptObject T, Definition d, ExtensionSettingsScreen s, Element e)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|Context
 name|create
@@ -640,7 +638,6 @@ decl_stmt|;
 DECL|method|init ()
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|init

@@ -151,8 +151,6 @@ interface|interface
 name|MergeabilityCache
 block|{
 DECL|class|NotImplemented
-specifier|public
-specifier|static
 class|class
 name|NotImplemented
 implements|implements

@@ -232,7 +232,6 @@ return|;
 block|}
 DECL|method|_size ()
 specifier|private
-specifier|final
 specifier|native
 name|double
 name|_size
@@ -256,7 +255,6 @@ return|;
 block|}
 DECL|method|_sizeDelta ()
 specifier|private
-specifier|final
 specifier|native
 name|double
 name|_sizeDelta

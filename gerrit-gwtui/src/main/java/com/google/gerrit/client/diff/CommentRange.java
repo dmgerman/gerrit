@@ -265,7 +265,6 @@ comment|/*-{ return this.end_character; }-*/
 function_decl|;
 DECL|method|set (int sl, int sc, int el, int ec)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|set

@@ -576,7 +576,6 @@ expr_stmt|;
 block|}
 DECL|method|sideRaw (String s)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|sideRaw
@@ -654,7 +653,6 @@ return|;
 block|}
 DECL|method|sideRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|sideRaw
@@ -716,7 +714,6 @@ return|;
 block|}
 DECL|method|updatedRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|updatedRaw
@@ -725,7 +722,6 @@ comment|/*-{ return this.updated }-*/
 function_decl|;
 DECL|method|updatedTimestamp ()
 specifier|private
-specifier|final
 specifier|native
 name|Timestamp
 name|updatedTimestamp
@@ -734,7 +730,6 @@ comment|/*-{ return this._ts }-*/
 function_decl|;
 DECL|method|updatedTimestamp (Timestamp t)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|updatedTimestamp

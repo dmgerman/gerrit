@@ -415,7 +415,6 @@ block|}
 DECL|method|get (String id)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|get
@@ -428,7 +427,6 @@ function_decl|;
 DECL|method|invoke (JavaScriptObject h, ChangeInfo a, RevisionInfo r)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|boolean
 name|invoke

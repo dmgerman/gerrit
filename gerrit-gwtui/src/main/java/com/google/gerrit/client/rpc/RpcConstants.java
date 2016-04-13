@@ -107,9 +107,6 @@ extends|extends
 name|Constants
 block|{
 DECL|field|C
-specifier|public
-specifier|static
-specifier|final
 name|RpcConstants
 name|C
 init|=

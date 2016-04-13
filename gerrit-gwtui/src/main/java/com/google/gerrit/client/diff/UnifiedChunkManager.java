@@ -344,7 +344,6 @@ decl_stmt|;
 DECL|method|initOnClick ()
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|initOnClick

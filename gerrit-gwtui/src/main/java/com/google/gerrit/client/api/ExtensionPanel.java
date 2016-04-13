@@ -784,7 +784,6 @@ function_decl|;
 DECL|method|create ( JavaScriptObject T, Definition d, Element e)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|Context
 name|create
@@ -813,7 +812,6 @@ decl_stmt|;
 DECL|method|init ()
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|init

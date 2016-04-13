@@ -533,7 +533,6 @@ comment|/*-{ return this.is_git_basic_auth || false; }-*/
 function_decl|;
 DECL|method|authTypeRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|authTypeRaw
@@ -542,7 +541,6 @@ comment|/*-{ return this.auth_type; }-*/
 function_decl|;
 DECL|method|_editableAccountFields ()
 specifier|private
-specifier|final
 specifier|native
 name|JsArrayString
 name|_editableAccountFields

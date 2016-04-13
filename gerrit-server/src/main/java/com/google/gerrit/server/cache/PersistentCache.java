@@ -78,8 +78,6 @@ name|diskStats
 parameter_list|()
 function_decl|;
 DECL|class|DiskStats
-specifier|public
-specifier|static
 class|class
 name|DiskStats
 block|{

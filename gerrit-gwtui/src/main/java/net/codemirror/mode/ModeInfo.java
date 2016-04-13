@@ -1656,7 +1656,6 @@ comment|/*-{ return this.mimes || [this.mime] }-*/
 function_decl|;
 DECL|method|ext ()
 specifier|private
-specifier|final
 specifier|native
 name|JsArrayString
 name|ext

@@ -523,7 +523,6 @@ return|;
 block|}
 DECL|method|get (String n, int d)
 specifier|private
-specifier|final
 specifier|native
 name|short
 name|get
@@ -593,7 +592,6 @@ return|;
 block|}
 DECL|method|downloadCommandRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|downloadCommandRaw
@@ -630,7 +628,6 @@ return|;
 block|}
 DECL|method|dateFormatRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|dateFormatRaw
@@ -667,7 +664,6 @@ return|;
 block|}
 DECL|method|timeFormatRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|timeFormatRaw
@@ -751,7 +747,6 @@ return|;
 block|}
 DECL|method|reviewCategeoryStrategyRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|reviewCategeoryStrategyRaw
@@ -788,7 +783,6 @@ return|;
 block|}
 DECL|method|diffViewRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|diffViewRaw
@@ -825,7 +819,6 @@ return|;
 block|}
 DECL|method|emailStrategyRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|emailStrategyRaw
@@ -956,7 +949,6 @@ expr_stmt|;
 block|}
 DECL|method|dateFormatRaw (String f)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|dateFormatRaw
@@ -993,7 +985,6 @@ expr_stmt|;
 block|}
 DECL|method|timeFormatRaw (String f)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|timeFormatRaw
@@ -1090,7 +1081,6 @@ expr_stmt|;
 block|}
 DECL|method|reviewCategoryStrategyRaw (String s)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|reviewCategoryStrategyRaw
@@ -1127,7 +1117,6 @@ expr_stmt|;
 block|}
 DECL|method|diffViewRaw (String d)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|diffViewRaw
@@ -1164,7 +1153,6 @@ expr_stmt|;
 block|}
 DECL|method|emailStrategyRaw (String s)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|emailStrategyRaw
@@ -1282,7 +1270,6 @@ return|;
 block|}
 DECL|method|urlAliasToken (String m)
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|urlAliasToken
@@ -1294,7 +1281,6 @@ comment|/*-{ return this.url_aliases[m]; }-*/
 function_decl|;
 DECL|method|_urlAliases ()
 specifier|private
-specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
@@ -1357,7 +1343,6 @@ block|}
 block|}
 DECL|method|putUrlAlias (String m, String t)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|putUrlAlias
@@ -1372,7 +1357,6 @@ comment|/*-{ this.url_aliases[m] = t; }-*/
 function_decl|;
 DECL|method|initUrlAliases ()
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|initUrlAliases

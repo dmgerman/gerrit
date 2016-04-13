@@ -248,7 +248,6 @@ return|;
 block|}
 DECL|method|registeredOnRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|registeredOnRaw
@@ -257,7 +256,6 @@ comment|/*-{ return this.registered_on; }-*/
 function_decl|;
 DECL|method|_getRegisteredOn ()
 specifier|private
-specifier|final
 specifier|native
 name|Timestamp
 name|_getRegisteredOn
@@ -266,7 +264,6 @@ comment|/*-{ return this._cts; }-*/
 function_decl|;
 DECL|method|_setRegisteredOn (Timestamp ts)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|_setRegisteredOn
@@ -358,7 +355,6 @@ return|;
 block|}
 DECL|method|avatars ()
 specifier|private
-specifier|final
 specifier|native
 name|JsArray
 argument_list|<

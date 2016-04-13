@@ -127,7 +127,6 @@ comment|// Used from core and plugins
 DECL|method|init ()
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|init
@@ -156,7 +155,6 @@ block|}
 DECL|method|wrap0 (JavaScriptObject T, String s)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|NativeString
 name|wrap0
@@ -275,7 +273,6 @@ block|}
 DECL|method|is (JavaScriptObject T, JavaScriptObject o)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|boolean
 name|is

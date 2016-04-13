@@ -1143,7 +1143,6 @@ comment|/*-{ return this.match_brackets || false }-*/
 function_decl|;
 DECL|method|setThemeRaw (String i)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setThemeRaw
@@ -1155,7 +1154,6 @@ comment|/*-{ this.theme = i }-*/
 function_decl|;
 DECL|method|setIgnoreWhitespaceRaw (String i)
 specifier|private
-specifier|final
 specifier|native
 name|void
 name|setIgnoreWhitespaceRaw
@@ -1167,7 +1165,6 @@ comment|/*-{ this.ignore_whitespace = i }-*/
 function_decl|;
 DECL|method|ignoreWhitespaceRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|ignoreWhitespaceRaw
@@ -1176,7 +1173,6 @@ comment|/*-{ return this.ignore_whitespace }-*/
 function_decl|;
 DECL|method|themeRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|themeRaw
@@ -1185,7 +1181,6 @@ comment|/*-{ return this.theme }-*/
 function_decl|;
 DECL|method|get (String n, int d)
 specifier|private
-specifier|final
 specifier|native
 name|int
 name|get

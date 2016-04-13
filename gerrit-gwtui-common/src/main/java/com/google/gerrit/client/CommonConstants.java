@@ -105,9 +105,6 @@ extends|extends
 name|Constants
 block|{
 DECL|field|C
-specifier|public
-specifier|static
-specifier|final
 name|CommonConstants
 name|C
 init|=

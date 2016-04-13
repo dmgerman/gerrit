@@ -190,7 +190,6 @@ name|tags
 parameter_list|()
 function_decl|;
 DECL|class|ListRefsRequest
-specifier|public
 specifier|abstract
 class|class
 name|ListRefsRequest
@@ -418,7 +417,6 @@ name|RestApiException
 function_decl|;
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
-specifier|public
 class|class
 name|NotImplemented
 implements|implements

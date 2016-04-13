@@ -430,7 +430,6 @@ block|}
 DECL|method|projectAction (String id)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|projectAction
@@ -443,7 +442,6 @@ function_decl|;
 DECL|method|branchAction (String id)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|JavaScriptObject
 name|branchAction

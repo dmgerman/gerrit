@@ -229,7 +229,6 @@ function_decl|;
 DECL|method|set (CodeMirror c, Extras e)
 specifier|private
 specifier|static
-specifier|final
 specifier|native
 name|void
 name|set

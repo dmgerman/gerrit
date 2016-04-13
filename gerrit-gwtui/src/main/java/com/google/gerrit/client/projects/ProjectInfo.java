@@ -245,7 +245,6 @@ return|;
 block|}
 DECL|method|getStringState ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|getStringState

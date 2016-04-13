@@ -534,7 +534,6 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|class|SuggestedReviewersRequest
-specifier|public
 specifier|abstract
 class|class
 name|SuggestedReviewersRequest
@@ -622,7 +621,6 @@ block|}
 block|}
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
-specifier|public
 class|class
 name|NotImplemented
 implements|implements

@@ -128,7 +128,6 @@ return|;
 block|}
 DECL|method|statusRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|statusRaw
