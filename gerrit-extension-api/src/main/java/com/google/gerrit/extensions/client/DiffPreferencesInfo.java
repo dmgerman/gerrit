@@ -260,6 +260,11 @@ specifier|public
 name|Boolean
 name|skipDeleted
 decl_stmt|;
+DECL|field|skipUnchanged
+specifier|public
+name|Boolean
+name|skipUnchanged
+decl_stmt|;
 DECL|field|skipUncommented
 specifier|public
 name|Boolean
@@ -364,6 +369,12 @@ expr_stmt|;
 name|i
 operator|.
 name|skipDeleted
+operator|=
+literal|false
+expr_stmt|;
+name|i
+operator|.
+name|skipUnchanged
 operator|=
 literal|false
 expr_stmt|;

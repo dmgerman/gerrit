@@ -347,6 +347,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|skipUnchanged
+argument_list|(
+name|in
+operator|.
+name|skipUnchanged
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|skipUncommented
 argument_list|(
 name|in
@@ -468,6 +477,13 @@ operator|.
 name|skipDeleted
 operator|=
 name|skipDeleted
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|skipUnchanged
+operator|=
+name|skipUnchanged
 argument_list|()
 expr_stmt|;
 name|p
@@ -961,6 +977,18 @@ name|s
 parameter_list|)
 comment|/*-{ this.hide_empty_pane = s }-*/
 function_decl|;
+DECL|method|skipUnchanged (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|skipUnchanged
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.skip_unchanged = s }-*/
+function_decl|;
 DECL|method|skipUncommented (boolean s)
 specifier|public
 specifier|final
@@ -1113,6 +1141,15 @@ name|boolean
 name|retainHeader
 parameter_list|()
 comment|/*-{ return this.retain_header || false }-*/
+function_decl|;
+DECL|method|skipUnchanged ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|skipUnchanged
+parameter_list|()
+comment|/*-{ return this.skip_unchanged || false }-*/
 function_decl|;
 DECL|method|skipUncommented ()
 specifier|public

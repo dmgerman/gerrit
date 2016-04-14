@@ -828,6 +828,13 @@ argument_list|(
 name|comments
 argument_list|)
 expr_stmt|;
+name|header
+operator|.
+name|setupPrevNextFiles
+argument_list|(
+name|comments
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 return|;
