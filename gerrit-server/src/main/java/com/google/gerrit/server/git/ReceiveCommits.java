@@ -5378,6 +5378,13 @@ name|c
 operator|.
 name|change
 argument_list|,
+name|c
+operator|.
+name|change
+operator|.
+name|getSubject
+argument_list|()
+argument_list|,
 literal|false
 argument_list|)
 argument_list|)
@@ -5535,6 +5542,13 @@ name|u
 operator|.
 name|change
 argument_list|,
+name|u
+operator|.
+name|info
+operator|.
+name|getSubject
+argument_list|()
+argument_list|,
 name|edit
 argument_list|)
 argument_list|)
@@ -5547,7 +5561,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|formatChangeUrl (String url, Change change, boolean edit)
+DECL|method|formatChangeUrl (String url, Change change, String subject, boolean edit)
 specifier|private
 specifier|static
 name|String
@@ -5558,6 +5572,9 @@ name|url
 parameter_list|,
 name|Change
 name|change
+parameter_list|,
+name|String
+name|subject
 parameter_list|,
 name|boolean
 name|edit
@@ -5599,10 +5616,7 @@ name|ChangeUtil
 operator|.
 name|cropSubject
 argument_list|(
-name|change
-operator|.
-name|getSubject
-argument_list|()
+name|subject
 argument_list|)
 argument_list|)
 decl_stmt|;
