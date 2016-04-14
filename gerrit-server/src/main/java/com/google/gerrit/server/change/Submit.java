@@ -1134,6 +1134,14 @@ name|onBehalfOf
 expr_stmt|;
 name|this
 operator|.
+name|notify
+operator|=
+name|base
+operator|.
+name|notify
+expr_stmt|;
+name|this
+operator|.
 name|failAfterRefUpdates
 operator|=
 name|failAfterRefUpdates

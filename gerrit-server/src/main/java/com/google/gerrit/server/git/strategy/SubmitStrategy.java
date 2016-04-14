@@ -122,6 +122,26 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|ReviewInput
+operator|.
+name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|client
 operator|.
 name|SubmitType
@@ -732,7 +752,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( SubmitType submitType, Branch.NameKey destBranch, CommitStatus commits, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, ObjectInserter inserter, Repository repo, RevFlag canMergeFlag, ReviewDb db, Set<RevCommit> alreadyAccepted, String submissionId)
+DECL|method|create ( SubmitType submitType, Branch.NameKey destBranch, CommitStatus commits, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, ObjectInserter inserter, Repository repo, RevFlag canMergeFlag, ReviewDb db, Set<RevCommit> alreadyAccepted, String submissionId, NotifyHandling notifyHandling)
 name|Arguments
 name|create
 parameter_list|(
@@ -776,6 +796,9 @@ name|alreadyAccepted
 parameter_list|,
 name|String
 name|submissionId
+parameter_list|,
+name|NotifyHandling
+name|notifyHandling
 parameter_list|)
 function_decl|;
 block|}
@@ -927,6 +950,11 @@ specifier|final
 name|SubmitType
 name|submitType
 decl_stmt|;
+DECL|field|notifyHandling
+specifier|final
+name|NotifyHandling
+name|notifyHandling
+decl_stmt|;
 DECL|field|project
 specifier|final
 name|ProjectState
@@ -944,7 +972,7 @@ name|mergeUtil
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, ChangeHooks hooks, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, TagCache tagCache, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commits, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted String submissionId, @Assisted SubmitType submitType)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, ChangeHooks hooks, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, TagCache tagCache, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commits, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted String submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1071,6 +1099,11 @@ annotation|@
 name|Assisted
 name|SubmitType
 name|submitType
+parameter_list|,
+annotation|@
+name|Assisted
+name|NotifyHandling
+name|notifyHandling
 parameter_list|)
 block|{
 name|this
@@ -1234,6 +1267,12 @@ operator|.
 name|submitType
 operator|=
 name|submitType
+expr_stmt|;
+name|this
+operator|.
+name|notifyHandling
+operator|=
+name|notifyHandling
 expr_stmt|;
 name|this
 operator|.

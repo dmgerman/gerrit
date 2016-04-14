@@ -92,6 +92,26 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|ReviewInput
+operator|.
+name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -366,7 +386,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commits, String submissionId)
+DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commits, String submissionId, NotifyHandling notifyHandling)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -411,6 +431,9 @@ name|commits
 parameter_list|,
 name|String
 name|submissionId
+parameter_list|,
+name|NotifyHandling
+name|notifyHandling
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -447,6 +470,8 @@ argument_list|,
 name|alreadyAccepted
 argument_list|,
 name|submissionId
+argument_list|,
+name|notifyHandling
 argument_list|)
 decl_stmt|;
 switch|switch

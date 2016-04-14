@@ -88,6 +88,26 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|ReviewInput
+operator|.
+name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -373,7 +393,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.NameKey project, Change.Id changeId, Account.Id submitter)
+DECL|method|create (Project.NameKey project, Change.Id changeId, Account.Id submitter, NotifyHandling notifyHandling)
 name|EmailMerge
 name|create
 parameter_list|(
@@ -391,6 +411,9 @@ name|Account
 operator|.
 name|Id
 name|submitter
+parameter_list|,
+name|NotifyHandling
+name|notifyHandling
 parameter_list|)
 function_decl|;
 block|}
@@ -455,6 +478,12 @@ operator|.
 name|Id
 name|submitter
 decl_stmt|;
+DECL|field|notifyHandling
+specifier|private
+specifier|final
+name|NotifyHandling
+name|notifyHandling
+decl_stmt|;
 DECL|field|db
 specifier|private
 name|ReviewDb
@@ -462,7 +491,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailMerge (@endEmailExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, IdentifiedUser.GenericFactory identifiedUserFactory, @Assisted Project.NameKey project, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter)
+DECL|method|EmailMerge (@endEmailExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, IdentifiedUser.GenericFactory identifiedUserFactory, @Assisted Project.NameKey project, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter, @Assisted NotifyHandling notifyHandling)
 name|EmailMerge
 parameter_list|(
 annotation|@
@@ -511,6 +540,11 @@ name|Account
 operator|.
 name|Id
 name|submitter
+parameter_list|,
+annotation|@
+name|Assisted
+name|NotifyHandling
+name|notifyHandling
 parameter_list|)
 block|{
 name|this
@@ -560,6 +594,12 @@ operator|.
 name|submitter
 operator|=
 name|submitter
+expr_stmt|;
+name|this
+operator|.
+name|notifyHandling
+operator|=
+name|notifyHandling
 expr_stmt|;
 block|}
 DECL|method|sendAsync ()
@@ -623,6 +663,13 @@ name|submitter
 argument_list|)
 expr_stmt|;
 block|}
+name|cm
+operator|.
+name|setNotify
+argument_list|(
+name|notifyHandling
+argument_list|)
+expr_stmt|;
 name|cm
 operator|.
 name|send
