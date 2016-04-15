@@ -705,23 +705,17 @@ name|reviewerFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|postReviewersProvider
+DECL|field|postReviewers
 specifier|private
-name|Provider
-argument_list|<
 name|PostReviewers
-argument_list|>
-name|postReviewersProvider
+name|postReviewers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|deleteReviewerProvider
+DECL|field|deleteReviewer
 specifier|private
-name|Provider
-argument_list|<
 name|DeleteReviewer
-argument_list|>
-name|deleteReviewerProvider
+name|deleteReviewer
 decl_stmt|;
 annotation|@
 name|Inject
@@ -885,14 +879,6 @@ literal|true
 decl_stmt|;
 comment|// Remove reviewers
 comment|//
-name|DeleteReviewer
-name|delete
-init|=
-name|deleteReviewerProvider
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|Account
@@ -922,7 +908,7 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|delete
+name|deleteReviewer
 operator|.
 name|apply
 argument_list|(
@@ -999,14 +985,6 @@ block|}
 block|}
 comment|// Add reviewers
 comment|//
-name|PostReviewers
-name|post
-init|=
-name|postReviewersProvider
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -1041,7 +1019,7 @@ try|try
 block|{
 name|error
 operator|=
-name|post
+name|postReviewers
 operator|.
 name|apply
 argument_list|(
