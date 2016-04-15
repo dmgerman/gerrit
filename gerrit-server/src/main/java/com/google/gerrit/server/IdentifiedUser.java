@@ -2047,6 +2047,8 @@ return|return
 name|starredChanges
 return|;
 block|}
+annotation|@
+name|Deprecated
 DECL|method|clearStarredChanges ()
 specifier|public
 name|void
@@ -2064,10 +2066,7 @@ literal|null
 expr_stmt|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
+name|Deprecated
 DECL|method|asyncStarredChanges ()
 specifier|public
 name|void
@@ -2096,6 +2095,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Deprecated
 DECL|method|abortStarredChanges ()
 specifier|public
 name|void

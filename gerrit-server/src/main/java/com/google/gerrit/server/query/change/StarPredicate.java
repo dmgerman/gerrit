@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -94,6 +94,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|StarredChangesUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|index
 operator|.
 name|IndexPredicate
@@ -133,11 +147,10 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Deprecated
-DECL|class|IsStarredByPredicate
+DECL|class|StarPredicate
+specifier|public
 class|class
-name|IsStarredByPredicate
+name|StarPredicate
 extends|extends
 name|IndexPredicate
 argument_list|<
@@ -152,22 +165,40 @@ operator|.
 name|Id
 name|accountId
 decl_stmt|;
-DECL|method|IsStarredByPredicate (Account.Id accountId)
-name|IsStarredByPredicate
+DECL|field|label
+specifier|private
+specifier|final
+name|String
+name|label
+decl_stmt|;
+DECL|method|StarPredicate (Account.Id accountId, String label)
+name|StarPredicate
 parameter_list|(
 name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+name|String
+name|label
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|ChangeField
 operator|.
-name|STARREDBY
+name|STAR
 argument_list|,
+name|StarredChangesUtil
+operator|.
+name|StarField
+operator|.
+name|create
+argument_list|(
 name|accountId
+argument_list|,
+name|label
+argument_list|)
 operator|.
 name|toString
 argument_list|()
@@ -178,6 +209,12 @@ operator|.
 name|accountId
 operator|=
 name|accountId
+expr_stmt|;
+name|this
+operator|.
+name|label
+operator|=
+name|label
 expr_stmt|;
 block|}
 annotation|@
@@ -196,12 +233,17 @@ block|{
 return|return
 name|cd
 operator|.
-name|starredBy
+name|stars
 argument_list|()
+operator|.
+name|get
+argument_list|(
+name|accountId
+argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|accountId
+name|label
 argument_list|)
 return|;
 block|}
@@ -228,11 +270,11 @@ block|{
 return|return
 name|ChangeQueryBuilder
 operator|.
-name|FIELD_STARREDBY
+name|FIELD_STAR
 operator|+
 literal|":"
 operator|+
-name|accountId
+name|label
 return|;
 block|}
 block|}

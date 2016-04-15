@@ -135,7 +135,7 @@ class|class
 name|ReviewDbUtil
 block|{
 DECL|field|INT_KEY_FUNCTION
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Function
