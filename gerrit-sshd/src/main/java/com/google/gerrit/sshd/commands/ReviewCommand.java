@@ -490,18 +490,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|kohsuke
@@ -1135,10 +1123,7 @@ annotation|@
 name|Inject
 DECL|field|gApi
 specifier|private
-name|Provider
-argument_list|<
 name|GerritApi
-argument_list|>
 name|gApi
 decl_stmt|;
 annotation|@
@@ -1611,9 +1596,6 @@ name|RestApiException
 block|{
 name|gApi
 operator|.
-name|get
-argument_list|()
-operator|.
 name|changes
 argument_list|()
 operator|.
@@ -2053,9 +2035,6 @@ name|RestApiException
 block|{
 return|return
 name|gApi
-operator|.
-name|get
-argument_list|()
 operator|.
 name|changes
 argument_list|()
