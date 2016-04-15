@@ -249,10 +249,16 @@ operator|.
 name|natural
 argument_list|()
 operator|.
+name|nullsFirst
+argument_list|()
+operator|.
 name|onResultOf
 argument_list|(
 name|INT_KEY_FUNCTION
 argument_list|)
+operator|.
+name|nullsFirst
+argument_list|()
 decl_stmt|;
 annotation|@
 name|SuppressWarnings
