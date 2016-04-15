@@ -217,6 +217,17 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|lines
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|r
+return|;
+block|}
 for|for
 control|(
 name|FooterLine
