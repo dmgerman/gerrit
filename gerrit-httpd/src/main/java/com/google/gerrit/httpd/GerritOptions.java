@@ -102,6 +102,12 @@ specifier|final
 name|boolean
 name|enablePolyGerrit
 decl_stmt|;
+DECL|field|enableGwtUi
+specifier|private
+specifier|final
+name|boolean
+name|enableGwtUi
+decl_stmt|;
 DECL|field|forcePolyGerritDev
 specifier|private
 specifier|final
@@ -158,23 +164,49 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|enableGwtUi
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"gerrit"
+argument_list|,
+literal|null
+argument_list|,
+literal|"enableGwtUi"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|forcePolyGerritDev
 operator|=
 name|forcePolyGerritDev
 expr_stmt|;
 block|}
-DECL|method|enableDefaultUi ()
+DECL|method|headless ()
 specifier|public
 name|boolean
-name|enableDefaultUi
+name|headless
+parameter_list|()
+block|{
+return|return
+name|headless
+return|;
+block|}
+DECL|method|enableGwtUi ()
+specifier|public
+name|boolean
+name|enableGwtUi
 parameter_list|()
 block|{
 return|return
 operator|!
 name|headless
 operator|&&
-operator|!
-name|enablePolyGerrit
+name|enableGwtUi
 return|;
 block|}
 DECL|method|enableMasterFeatures ()
