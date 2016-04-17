@@ -113,6 +113,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
+name|ChangeSchemaDefinitions
+operator|.
+name|NAME
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -482,7 +502,7 @@ name|searcherFactory
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ChangeSubIndex ( Schema<ChangeData> schema, SitePaths sitePaths, Directory dir, String name, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
+DECL|method|ChangeSubIndex ( Schema<ChangeData> schema, SitePaths sitePaths, Directory dir, String subIndex, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
 name|ChangeSubIndex
 parameter_list|(
 name|Schema
@@ -498,7 +518,7 @@ name|Directory
 name|dir
 parameter_list|,
 name|String
-name|name
+name|subIndex
 parameter_list|,
 name|GerritIndexWriterConfig
 name|writerConfig
@@ -517,7 +537,9 @@ name|sitePaths
 argument_list|,
 name|dir
 argument_list|,
-name|name
+name|NAME
+argument_list|,
+name|subIndex
 argument_list|,
 name|writerConfig
 argument_list|,
