@@ -184,18 +184,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -669,10 +657,7 @@ annotation|@
 name|Inject
 DECL|field|db
 specifier|private
-name|Provider
-argument_list|<
 name|ReviewDb
-argument_list|>
 name|db
 decl_stmt|;
 DECL|field|options
@@ -1330,9 +1315,6 @@ operator|.
 name|canReadCommit
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|rw
 argument_list|,

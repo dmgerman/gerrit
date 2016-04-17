@@ -519,7 +519,7 @@ name|verboseOutput
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MyListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups, final GroupJson json, GroupBackend groupBackend)
+DECL|method|MyListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final GetGroups accountGetGroups, final GroupJson json, GroupBackend groupBackend)
 name|MyListGroups
 parameter_list|(
 specifier|final
@@ -552,10 +552,7 @@ name|GenericFactory
 name|userFactory
 parameter_list|,
 specifier|final
-name|Provider
-argument_list|<
 name|GetGroups
-argument_list|>
 name|accountGetGroups
 parameter_list|,
 specifier|final

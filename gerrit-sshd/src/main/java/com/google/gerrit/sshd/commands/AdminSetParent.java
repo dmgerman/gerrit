@@ -356,18 +356,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -677,10 +665,7 @@ annotation|@
 name|Inject
 DECL|field|listChildProjects
 specifier|private
-name|Provider
-argument_list|<
 name|ListChildProjects
-argument_list|>
 name|listChildProjects
 decl_stmt|;
 DECL|field|newParentKey
@@ -1337,9 +1322,6 @@ name|ProjectInfo
 name|child
 range|:
 name|listChildProjects
-operator|.
-name|get
-argument_list|()
 operator|.
 name|apply
 argument_list|(

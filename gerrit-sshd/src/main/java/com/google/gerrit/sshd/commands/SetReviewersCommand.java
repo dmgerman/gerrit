@@ -360,18 +360,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|kohsuke
@@ -719,13 +707,10 @@ name|deleteReviewer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|userProvider
+DECL|field|currentUser
 specifier|private
-name|Provider
-argument_list|<
 name|CurrentUser
-argument_list|>
-name|userProvider
+name|currentUser
 decl_stmt|;
 annotation|@
 name|Inject
@@ -1103,10 +1088,7 @@ name|find
 argument_list|(
 name|id
 argument_list|,
-name|userProvider
-operator|.
-name|get
-argument_list|()
+name|currentUser
 argument_list|)
 decl_stmt|;
 name|List
