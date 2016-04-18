@@ -1155,7 +1155,7 @@ name|c
 argument_list|,
 name|d
 operator|.
-name|patches
+name|visiblePatches
 argument_list|()
 argument_list|,
 name|includeApprovals
@@ -1191,7 +1191,7 @@ name|c
 argument_list|,
 name|d
 operator|.
-name|patches
+name|visiblePatches
 argument_list|()
 argument_list|,
 name|includeApprovals
@@ -1229,6 +1229,18 @@ condition|(
 name|current
 operator|!=
 literal|null
+operator|&&
+name|cc
+operator|.
+name|isPatchVisible
+argument_list|(
+name|current
+argument_list|,
+name|d
+operator|.
+name|db
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|c
@@ -1335,7 +1347,7 @@ name|c
 argument_list|,
 name|d
 operator|.
-name|patches
+name|visiblePatches
 argument_list|()
 argument_list|,
 name|includeApprovals
