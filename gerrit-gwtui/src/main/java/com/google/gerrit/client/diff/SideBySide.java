@@ -663,11 +663,6 @@ specifier|private
 name|SideBySideCommentManager
 name|commentManager
 decl_stmt|;
-DECL|field|skipManager
-specifier|private
-name|SideBySideSkipManager
-name|skipManager
-decl_stmt|;
 DECL|method|SideBySide ( PatchSet.Id base, PatchSet.Id revision, String path, DisplaySide startSide, int startLine)
 specifier|public
 name|SideBySide
@@ -1438,16 +1433,6 @@ argument_list|,
 name|diffTable
 operator|.
 name|scrollbar
-argument_list|)
-expr_stmt|;
-name|skipManager
-operator|=
-operator|new
-name|SideBySideSkipManager
-argument_list|(
-name|this
-argument_list|,
-name|commentManager
 argument_list|)
 expr_stmt|;
 name|operation
@@ -2549,13 +2534,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getSkipManager ()
-name|SideBySideSkipManager
-name|getSkipManager
+DECL|method|isSideBySide ()
+name|boolean
+name|isSideBySide
 parameter_list|()
 block|{
 return|return
-name|skipManager
+literal|true
 return|;
 block|}
 block|}

@@ -1089,8 +1089,7 @@ block|{
 name|getDiffScreen
 argument_list|()
 operator|.
-name|getSkipManager
-argument_list|()
+name|skipManager
 operator|.
 name|ensureFirstLineIsVisible
 argument_list|()

@@ -735,11 +735,6 @@ specifier|private
 name|UnifiedCommentManager
 name|commentManager
 decl_stmt|;
-DECL|field|skipManager
-specifier|private
-name|UnifiedSkipManager
-name|skipManager
-decl_stmt|;
 DECL|field|autoHideDiffTableHeader
 specifier|private
 name|boolean
@@ -1339,16 +1334,6 @@ argument_list|,
 name|diffTable
 operator|.
 name|scrollbar
-argument_list|)
-expr_stmt|;
-name|skipManager
-operator|=
-operator|new
-name|UnifiedSkipManager
-argument_list|(
-name|this
-argument_list|,
-name|commentManager
 argument_list|)
 expr_stmt|;
 name|operation
@@ -2451,13 +2436,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getSkipManager ()
-name|UnifiedSkipManager
-name|getSkipManager
+DECL|method|isSideBySide ()
+name|boolean
+name|isSideBySide
 parameter_list|()
 block|{
 return|return
-name|skipManager
+literal|false
 return|;
 block|}
 block|}

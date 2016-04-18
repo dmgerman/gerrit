@@ -1022,8 +1022,7 @@ condition|)
 block|{
 name|host
 operator|.
-name|getSkipManager
-argument_list|()
+name|skipManager
 operator|.
 name|ensureFirstLineIsVisible
 argument_list|()

@@ -1082,10 +1082,10 @@ specifier|final
 name|DiffPreferences
 name|prefs
 decl_stmt|;
-DECL|field|diffScreenType
+DECL|field|skipManager
 specifier|final
-name|DiffView
-name|diffScreenType
+name|SkipManager
+name|skipManager
 decl_stmt|;
 DECL|field|startSide
 specifier|private
@@ -1233,12 +1233,6 @@ name|startLine
 operator|=
 name|startLine
 expr_stmt|;
-name|this
-operator|.
-name|diffScreenType
-operator|=
-name|diffScreenType
-expr_stmt|;
 name|prefs
 operator|=
 name|DiffPreferences
@@ -1289,6 +1283,14 @@ argument_list|,
 name|diffScreenType
 argument_list|,
 name|prefs
+argument_list|)
+expr_stmt|;
+name|skipManager
+operator|=
+operator|new
+name|SkipManager
+argument_list|(
+name|this
 argument_list|)
 expr_stmt|;
 block|}
@@ -3917,14 +3919,12 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|getSkipManager
-argument_list|()
+name|skipManager
 operator|.
 name|removeAll
 argument_list|()
 expr_stmt|;
-name|getSkipManager
-argument_list|()
+name|skipManager
 operator|.
 name|render
 argument_list|(
@@ -4213,12 +4213,6 @@ DECL|method|getCommentManager ()
 specifier|abstract
 name|CommentManager
 name|getCommentManager
-parameter_list|()
-function_decl|;
-DECL|method|getSkipManager ()
-specifier|abstract
-name|SkipManager
-name|getSkipManager
 parameter_list|()
 function_decl|;
 DECL|method|getChangeStatus ()
@@ -5122,8 +5116,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|getSkipManager
-argument_list|()
+name|skipManager
 operator|.
 name|removeAll
 argument_list|()
@@ -5155,8 +5148,7 @@ argument_list|(
 name|diff
 argument_list|)
 expr_stmt|;
-name|getSkipManager
-argument_list|()
+name|skipManager
 operator|.
 name|render
 argument_list|(
@@ -5496,6 +5488,12 @@ parameter_list|(
 name|CommentsCollections
 name|comments
 parameter_list|)
+function_decl|;
+DECL|method|isSideBySide ()
+specifier|abstract
+name|boolean
+name|isSideBySide
+parameter_list|()
 function_decl|;
 block|}
 end_class
