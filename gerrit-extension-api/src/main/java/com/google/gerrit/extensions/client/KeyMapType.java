@@ -78,6 +78,9 @@ block|,
 DECL|enumConstant|EMACS
 name|EMACS
 block|,
+DECL|enumConstant|SUBLIME
+name|SUBLIME
+block|,
 DECL|enumConstant|VIM
 name|VIM
 block|}
