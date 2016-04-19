@@ -715,6 +715,8 @@ operator|+
 literal|" -owner:"
 operator|+
 name|who
+operator|+
+literal|" -star:ignore"
 return|;
 block|}
 DECL|method|queryClosed (String who)

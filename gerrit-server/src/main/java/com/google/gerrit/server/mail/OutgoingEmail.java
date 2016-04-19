@@ -2752,7 +2752,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|removeUser (Account user)
-specifier|private
+specifier|protected
 name|void
 name|removeUser
 parameter_list|(
