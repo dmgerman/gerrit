@@ -155,10 +155,7 @@ annotation|@
 name|Inject
 DECL|field|currentUser
 specifier|private
-name|Provider
-argument_list|<
 name|CurrentUser
-argument_list|>
 name|currentUser
 decl_stmt|;
 DECL|method|AliasCommandProvider (CommandName command)

@@ -156,18 +156,6 @@ name|Inject
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
 begin_comment
 comment|/** Command that allows testing of prolog submit-rules in a live instance. */
 end_comment
@@ -195,10 +183,7 @@ annotation|@
 name|Inject
 DECL|field|view
 specifier|private
-name|Provider
-argument_list|<
 name|TestSubmitRule
-argument_list|>
 name|view
 decl_stmt|;
 annotation|@
@@ -216,9 +201,6 @@ parameter_list|()
 block|{
 return|return
 name|view
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 block|}

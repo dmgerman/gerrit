@@ -374,18 +374,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -652,10 +640,7 @@ block|}
 DECL|field|db
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ReviewDb
-argument_list|>
 name|db
 decl_stmt|;
 DECL|field|repoManager
@@ -764,13 +749,10 @@ name|out
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OutputStreamQuery ( Provider<ReviewDb> db, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, QueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
+DECL|method|OutputStreamQuery ( ReviewDb db, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, QueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
 name|OutputStreamQuery
 parameter_list|(
-name|Provider
-argument_list|<
 name|ReviewDb
-argument_list|>
 name|db
 parameter_list|,
 name|GitRepositoryManager
@@ -1413,9 +1395,6 @@ operator|.
 name|asChangeAttribute
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|d
 operator|.
@@ -1472,9 +1451,6 @@ operator|.
 name|addAllReviewers
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|c
 argument_list|,
@@ -1632,9 +1608,6 @@ operator|.
 name|addPatchSets
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|rw
 argument_list|,
@@ -1697,9 +1670,6 @@ operator|.
 name|asPatchSetAttribute
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|rw
 argument_list|,
@@ -1801,9 +1771,6 @@ operator|.
 name|addPatchSets
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|rw
 argument_list|,

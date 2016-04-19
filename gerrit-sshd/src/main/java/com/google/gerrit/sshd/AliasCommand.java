@@ -156,18 +156,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -259,10 +247,7 @@ decl_stmt|;
 DECL|field|currentUser
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|CurrentUser
-argument_list|>
 name|currentUser
 decl_stmt|;
 DECL|field|command
@@ -280,7 +265,7 @@ name|Command
 argument_list|>
 name|atomicCmd
 decl_stmt|;
-DECL|method|AliasCommand (@ommandNameCommands.ROOT) DispatchCommandProvider root, Provider<CurrentUser> currentUser, CommandName command)
+DECL|method|AliasCommand (@ommandNameCommands.ROOT) DispatchCommandProvider root, CurrentUser currentUser, CommandName command)
 name|AliasCommand
 parameter_list|(
 annotation|@
@@ -293,10 +278,7 @@ argument_list|)
 name|DispatchCommandProvider
 name|root
 parameter_list|,
-name|Provider
-argument_list|<
 name|CurrentUser
-argument_list|>
 name|currentUser
 parameter_list|,
 name|CommandName
@@ -712,18 +694,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|CurrentUser
-name|user
-init|=
-name|currentUser
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 name|CapabilityControl
 name|ctl
 init|=
-name|user
+name|currentUser
 operator|.
 name|getCapabilities
 argument_list|()
@@ -757,7 +731,7 @@ name|format
 argument_list|(
 literal|"fatal: %s does not have \"%s\" capability."
 argument_list|,
-name|user
+name|currentUser
 operator|.
 name|getUserName
 argument_list|()

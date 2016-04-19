@@ -300,18 +300,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|kohsuke
@@ -442,10 +430,7 @@ annotation|@
 name|Inject
 DECL|field|listCaches
 specifier|private
-name|Provider
-argument_list|<
 name|ListCaches
-argument_list|>
 name|listCaches
 decl_stmt|;
 annotation|@
@@ -669,9 +654,6 @@ name|String
 argument_list|>
 operator|)
 name|listCaches
-operator|.
-name|get
-argument_list|()
 operator|.
 name|setFormat
 argument_list|(

@@ -204,18 +204,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -359,10 +347,7 @@ block|}
 DECL|field|currentUser
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|CurrentUser
-argument_list|>
 name|currentUser
 decl_stmt|;
 DECL|field|commands
@@ -441,14 +426,10 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DispatchCommand (final Provider<CurrentUser> cu, @Assisted final Map<String, CommandProvider> all)
+DECL|method|DispatchCommand (CurrentUser cu, @Assisted final Map<String, CommandProvider> all)
 name|DispatchCommand
 parameter_list|(
-specifier|final
-name|Provider
-argument_list|<
 name|CurrentUser
-argument_list|>
 name|cu
 parameter_list|,
 annotation|@

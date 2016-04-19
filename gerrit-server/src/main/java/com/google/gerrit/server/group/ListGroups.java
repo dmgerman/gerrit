@@ -685,10 +685,7 @@ decl_stmt|;
 DECL|field|accountGetGroups
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GetGroups
-argument_list|>
 name|accountGetGroups
 decl_stmt|;
 DECL|field|json
@@ -1124,7 +1121,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups, GroupJson json, GroupBackend groupBackend)
+DECL|method|ListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final GetGroups accountGetGroups, GroupJson json, GroupBackend groupBackend)
 specifier|protected
 name|ListGroups
 parameter_list|(
@@ -1158,10 +1155,7 @@ name|GenericFactory
 name|userFactory
 parameter_list|,
 specifier|final
-name|Provider
-argument_list|<
 name|GetGroups
-argument_list|>
 name|accountGetGroups
 parameter_list|,
 name|GroupJson
@@ -1408,9 +1402,6 @@ condition|)
 block|{
 return|return
 name|accountGetGroups
-operator|.
-name|get
-argument_list|()
 operator|.
 name|apply
 argument_list|(
