@@ -91,7 +91,13 @@ class|class
 name|DraftInput
 extends|extends
 name|Comment
-block|{ }
+block|{
+DECL|field|tag
+specifier|public
+name|String
+name|tag
+decl_stmt|;
+block|}
 end_class
 
 end_unit

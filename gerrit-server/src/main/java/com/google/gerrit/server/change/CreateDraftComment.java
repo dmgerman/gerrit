@@ -1076,6 +1076,15 @@ operator|.
 name|range
 argument_list|)
 expr_stmt|;
+name|comment
+operator|.
+name|setTag
+argument_list|(
+name|in
+operator|.
+name|tag
+argument_list|)
+expr_stmt|;
 name|setCommentRevId
 argument_list|(
 name|comment

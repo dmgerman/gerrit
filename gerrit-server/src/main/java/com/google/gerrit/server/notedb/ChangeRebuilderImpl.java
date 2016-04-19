@@ -2532,6 +2532,16 @@ name|getPatchSetId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|update
+operator|.
+name|setTag
+argument_list|(
+name|events
+operator|.
+name|getTag
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Event
@@ -3253,6 +3263,11 @@ specifier|final
 name|Timestamp
 name|when
 decl_stmt|;
+DECL|field|tag
+specifier|final
+name|String
+name|tag
+decl_stmt|;
 DECL|field|predatesChange
 specifier|final
 name|boolean
@@ -3264,7 +3279,7 @@ operator|.
 name|Id
 name|psId
 decl_stmt|;
-DECL|method|Event (PatchSet.Id psId, Account.Id who, Timestamp when, Timestamp changeCreatedOn)
+DECL|method|Event (PatchSet.Id psId, Account.Id who, Timestamp when, Timestamp changeCreatedOn, String tag)
 specifier|protected
 name|Event
 parameter_list|(
@@ -3283,6 +3298,9 @@ name|when
 parameter_list|,
 name|Timestamp
 name|changeCreatedOn
+parameter_list|,
+name|String
+name|tag
 parameter_list|)
 block|{
 name|this
@@ -3296,6 +3314,12 @@ operator|.
 name|who
 operator|=
 name|who
+expr_stmt|;
+name|this
+operator|.
+name|tag
+operator|=
+name|tag
 expr_stmt|;
 comment|// Truncate timestamps at the change's createdOn timestamp.
 name|predatesChange
@@ -3602,12 +3626,26 @@ name|last
 operator|.
 name|psId
 argument_list|)
+operator|||
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|e
+operator|.
+name|tag
+argument_list|,
+name|last
+operator|.
+name|tag
+argument_list|)
 condition|)
 block|{
 return|return
 literal|false
 return|;
-comment|// Different patch set or author.
+comment|// Different patch set, author, or tag.
 block|}
 name|long
 name|t
@@ -3916,6 +3954,18 @@ name|anonymousCowardName
 argument_list|)
 return|;
 block|}
+DECL|method|getTag ()
+name|String
+name|getTag
+parameter_list|()
+block|{
+return|return
+name|getLast
+argument_list|()
+operator|.
+name|tag
+return|;
+block|}
 block|}
 DECL|class|ApprovalEvent
 specifier|private
@@ -3958,6 +4008,11 @@ name|getGranted
 argument_list|()
 argument_list|,
 name|changeCreatedOn
+argument_list|,
+name|psa
+operator|.
+name|getTag
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -4070,6 +4125,8 @@ name|change
 operator|.
 name|getCreatedOn
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -4416,6 +4473,11 @@ name|change
 operator|.
 name|getCreatedOn
 argument_list|()
+argument_list|,
+name|c
+operator|.
+name|getTag
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -4594,6 +4656,10 @@ argument_list|,
 name|when
 argument_list|,
 name|changeCreatdOn
+argument_list|,
+comment|// Somewhat confusingly, hashtags do not use the setTag method on
+comment|// AbstractChangeUpdate, so pass null as the tag.
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -4758,6 +4824,11 @@ name|getWrittenOn
 argument_list|()
 argument_list|,
 name|changeCreatedOn
+argument_list|,
+name|message
+operator|.
+name|getTag
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -5116,6 +5187,8 @@ name|change
 operator|.
 name|getCreatedOn
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
