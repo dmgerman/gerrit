@@ -419,6 +419,9 @@ argument_list|(
 name|REFS_DRAFT_COMMENTS
 argument_list|,
 name|accountId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|r
@@ -456,27 +459,30 @@ argument_list|(
 name|REFS_DRAFT_COMMENTS
 argument_list|,
 name|accountId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|refsStarredChanges (Account.Id accountId, Change.Id changeId)
+DECL|method|refsStarredChanges (Change.Id changeId, Account.Id accountId)
 specifier|public
 specifier|static
 name|String
 name|refsStarredChanges
 parameter_list|(
-name|Account
-operator|.
-name|Id
-name|accountId
-parameter_list|,
 name|Change
 operator|.
 name|Id
 name|changeId
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|accountId
 parameter_list|)
 block|{
 name|StringBuilder
@@ -486,14 +492,17 @@ name|buildRefsPrefix
 argument_list|(
 name|REFS_STARRED_CHANGES
 argument_list|,
-name|accountId
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|r
 operator|.
 name|append
 argument_list|(
-name|changeId
+name|accountId
 operator|.
 name|get
 argument_list|()
@@ -506,16 +515,16 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|refsStarredChangesPrefix (Account.Id accountId)
+DECL|method|refsStarredChangesPrefix (Change.Id changeId)
 specifier|public
 specifier|static
 name|String
 name|refsStarredChangesPrefix
 parameter_list|(
-name|Account
+name|Change
 operator|.
 name|Id
-name|accountId
+name|changeId
 parameter_list|)
 block|{
 return|return
@@ -523,14 +532,17 @@ name|buildRefsPrefix
 argument_list|(
 name|REFS_STARRED_CHANGES
 argument_list|,
-name|accountId
+name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|buildRefsPrefix (String prefix, Account.Id accountId)
+DECL|method|buildRefsPrefix (String prefix, int id)
 specifier|private
 specifier|static
 name|StringBuilder
@@ -539,10 +551,8 @@ parameter_list|(
 name|String
 name|prefix
 parameter_list|,
-name|Account
-operator|.
-name|Id
-name|accountId
+name|int
+name|id
 parameter_list|)
 block|{
 name|StringBuilder
@@ -562,10 +572,7 @@ expr_stmt|;
 name|int
 name|n
 init|=
-name|accountId
-operator|.
-name|get
-argument_list|()
+name|id
 operator|%
 literal|100
 decl_stmt|;
@@ -602,10 +609,7 @@ name|r
 operator|.
 name|append
 argument_list|(
-name|accountId
-operator|.
-name|get
-argument_list|()
+name|id
 argument_list|)
 expr_stmt|;
 name|r

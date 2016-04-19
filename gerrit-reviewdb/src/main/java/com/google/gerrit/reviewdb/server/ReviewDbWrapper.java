@@ -552,21 +552,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|starredChanges ()
-specifier|public
-name|StarredChangeAccess
-name|starredChanges
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|starredChanges
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|accountProjectWatches ()
 specifier|public
 name|AccountProjectWatchAccess

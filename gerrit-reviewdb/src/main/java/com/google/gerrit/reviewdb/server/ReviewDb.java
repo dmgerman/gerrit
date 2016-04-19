@@ -325,19 +325,8 @@ name|AccountGroupMemberAuditAccess
 name|accountGroupMembersAudit
 parameter_list|()
 function_decl|;
-comment|//Deleted @Relation(id = 17)
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|18
-argument_list|)
-DECL|method|starredChanges ()
-name|StarredChangeAccess
-name|starredChanges
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 17)
+comment|// Deleted @Relation(id = 18)
 annotation|@
 name|Relation
 argument_list|(
