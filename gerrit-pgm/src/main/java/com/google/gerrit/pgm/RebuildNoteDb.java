@@ -1061,11 +1061,12 @@ name|enabled
 argument_list|()
 condition|)
 block|{
+throw|throw
 name|die
 argument_list|(
 literal|"NoteDb is not enabled."
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 name|LifecycleManager
 name|sysManager
