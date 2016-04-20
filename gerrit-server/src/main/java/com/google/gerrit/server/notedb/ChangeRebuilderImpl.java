@@ -1363,7 +1363,9 @@ name|changeId
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
+name|NoteDbChangeState
+name|result
+init|=
 name|execute
 argument_list|(
 name|db
@@ -1372,6 +1374,14 @@ name|changeId
 argument_list|,
 name|manager
 argument_list|)
+decl_stmt|;
+name|manager
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
+return|return
+name|result
 return|;
 block|}
 DECL|method|execute (ReviewDb db, Change.Id changeId, NoteDbUpdateManager manager)
