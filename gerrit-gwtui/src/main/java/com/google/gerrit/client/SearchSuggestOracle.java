@@ -235,6 +235,16 @@ argument_list|(
 literal|"owner:"
 argument_list|,
 literal|"reviewer:"
+argument_list|,
+literal|"commentby:"
+argument_list|,
+literal|"reviewedby:"
+argument_list|,
+literal|"author:"
+argument_list|,
+literal|"committer:"
+argument_list|,
+literal|"from:"
 argument_list|)
 argument_list|,
 operator|new
