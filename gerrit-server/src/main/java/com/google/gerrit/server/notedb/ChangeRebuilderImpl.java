@@ -2179,11 +2179,16 @@ control|(
 name|PatchLineCommentEvent
 name|e
 range|:
+name|EVENT_ORDER
+operator|.
+name|sortedCopy
+argument_list|(
 name|draftCommentEvents
 operator|.
 name|get
 argument_list|(
 name|author
+argument_list|)
 argument_list|)
 control|)
 block|{
