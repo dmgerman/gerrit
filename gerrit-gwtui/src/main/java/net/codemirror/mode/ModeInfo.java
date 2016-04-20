@@ -848,6 +848,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|sass
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|scheme
 argument_list|()
 block|,
