@@ -1809,8 +1809,6 @@ throws|throws
 name|IOException
 throws|,
 name|OrmException
-throws|,
-name|ConfigInvalidException
 block|{
 name|Change
 name|change
@@ -2671,8 +2669,6 @@ name|manager
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|ConfigInvalidException
 block|{
 name|String
 name|refName
@@ -2764,7 +2760,11 @@ name|Account
 operator|.
 name|Id
 name|authorId
-init|=
+decl_stmt|;
+try|try
+block|{
+name|authorId
+operator|=
 name|changeNoteUtil
 operator|.
 name|parseIdent
@@ -2779,7 +2779,17 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ConfigInvalidException
+name|e
+parameter_list|)
+block|{
+continue|continue;
+comment|// Corrupt data, no valid hashtags in this commit.
+block|}
 name|PatchSet
 operator|.
 name|Id
