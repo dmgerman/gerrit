@@ -2488,6 +2488,13 @@ operator|.
 name|createWithAutoRebuildingDisabled
 argument_list|(
 name|change
+argument_list|,
+name|manager
+operator|.
+name|getChangeRepo
+argument_list|()
+operator|.
+name|cmds
 argument_list|)
 argument_list|,
 name|events
@@ -2573,6 +2580,8 @@ name|change
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -2596,6 +2605,13 @@ operator|.
 name|createWithAutoRebuildingDisabled
 argument_list|(
 name|change
+argument_list|,
+name|manager
+operator|.
+name|getChangeRepo
+argument_list|()
+operator|.
+name|cmds
 argument_list|)
 argument_list|,
 name|events
