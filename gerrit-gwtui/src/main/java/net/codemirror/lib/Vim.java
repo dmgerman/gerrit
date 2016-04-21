@@ -299,6 +299,18 @@ name|key
 parameter_list|)
 comment|/*-{     $wnd.CodeMirror.Vim.handleKey(this, key)   }-*/
 function_decl|;
+DECL|method|handleEx (String exCommand)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|handleEx
+parameter_list|(
+name|String
+name|exCommand
+parameter_list|)
+comment|/*-{     $wnd.CodeMirror.Vim.handleEx(this, exCommand);   }-*/
+function_decl|;
 DECL|method|hasSearchHighlight ()
 specifier|public
 specifier|final
