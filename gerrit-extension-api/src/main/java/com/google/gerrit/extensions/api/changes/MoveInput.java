@@ -79,10 +79,10 @@ specifier|public
 name|String
 name|message
 decl_stmt|;
-DECL|field|destination_branch
+DECL|field|destinationBranch
 specifier|public
 name|String
-name|destination_branch
+name|destinationBranch
 decl_stmt|;
 block|}
 end_class

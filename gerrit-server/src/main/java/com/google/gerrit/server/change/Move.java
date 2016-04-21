@@ -821,7 +821,7 @@ argument_list|()
 decl_stmt|;
 name|input
 operator|.
-name|destination_branch
+name|destinationBranch
 operator|=
 name|RefNames
 operator|.
@@ -829,7 +829,7 @@ name|fullName
 argument_list|(
 name|input
 operator|.
-name|destination_branch
+name|destinationBranch
 argument_list|)
 expr_stmt|;
 if|if
@@ -841,7 +841,7 @@ name|canMoveTo
 argument_list|(
 name|input
 operator|.
-name|destination_branch
+name|destinationBranch
 argument_list|,
 name|dbProvider
 operator|.
@@ -1081,7 +1081,7 @@ name|projectKey
 argument_list|,
 name|input
 operator|.
-name|destination_branch
+name|destinationBranch
 argument_list|)
 expr_stmt|;
 name|Branch
@@ -1206,7 +1206,7 @@ name|resolve
 argument_list|(
 name|input
 operator|.
-name|destination_branch
+name|destinationBranch
 argument_list|)
 decl_stmt|;
 comment|// Check if destination ref exists in project repo
@@ -1225,7 +1225,7 @@ literal|"Destination "
 operator|+
 name|input
 operator|.
-name|destination_branch
+name|destinationBranch
 operator|+
 literal|" not found in the project"
 argument_list|)
@@ -1261,7 +1261,7 @@ literal|"Current patchset revision is reachable from tip of "
 operator|+
 name|input
 operator|.
-name|destination_branch
+name|destinationBranch
 argument_list|)
 throw|;
 block|}

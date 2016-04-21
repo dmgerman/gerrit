@@ -1907,7 +1907,7 @@ argument_list|()
 decl_stmt|;
 name|in
 operator|.
-name|destination_branch
+name|destinationBranch
 operator|=
 name|destination
 expr_stmt|;
