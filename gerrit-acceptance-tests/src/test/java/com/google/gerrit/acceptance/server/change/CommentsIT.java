@@ -3276,6 +3276,64 @@ literal|"typo: content"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|addDraft
+argument_list|(
+name|r2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|r2
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|newDraft
+argument_list|(
+name|FILE_NAME
+argument_list|,
+name|Side
+operator|.
+name|PARENT
+argument_list|,
+literal|1
+argument_list|,
+literal|"comment 1 on base"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|addDraft
+argument_list|(
+name|r2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|r2
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|newDraft
+argument_list|(
+name|FILE_NAME
+argument_list|,
+name|Side
+operator|.
+name|PARENT
+argument_list|,
+literal|2
+argument_list|,
+literal|"comment 2 on base"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
@@ -3675,7 +3733,7 @@ argument_list|)
 operator|.
 name|hasSize
 argument_list|(
-literal|2
+literal|4
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -3692,7 +3750,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"join lines"
+literal|"comment 1 on base"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -3702,6 +3760,40 @@ operator|.
 name|get
 argument_list|(
 literal|1
+argument_list|)
+operator|.
+name|message
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"comment 2 on base"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|ps2List
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+operator|.
+name|message
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"join lines"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|ps2List
+operator|.
+name|get
+argument_list|(
+literal|3
 argument_list|)
 operator|.
 name|message
@@ -3784,7 +3876,7 @@ literal|"Patch Set 2:\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"(4 comments)\n"
+literal|"(6 comments)\n"
 operator|+
 literal|"\n"
 operator|+
@@ -3829,6 +3921,22 @@ operator|+
 literal|"/2/a.txt\n"
 operator|+
 literal|"File a.txt:\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"PS2, Line 1: \n"
+operator|+
+literal|"comment 1 on base\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"PS2, Line 2: \n"
+operator|+
+literal|"comment 2 on base\n"
+operator|+
+literal|"\n"
 operator|+
 literal|"\n"
 operator|+
