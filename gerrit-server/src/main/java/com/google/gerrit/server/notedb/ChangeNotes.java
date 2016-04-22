@@ -1475,6 +1475,17 @@ decl_stmt|;
 name|checkArgument
 argument_list|(
 name|change
+operator|!=
+literal|null
+argument_list|,
+literal|"change %s not found in ReviewDb"
+argument_list|,
+name|changeId
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
+name|change
 operator|.
 name|getProject
 argument_list|()
@@ -1617,6 +1628,17 @@ argument_list|(
 name|changeId
 argument_list|)
 decl_stmt|;
+name|checkArgument
+argument_list|(
+name|change
+operator|!=
+literal|null
+argument_list|,
+literal|"change %s not found in ReviewDb"
+argument_list|,
+name|changeId
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|ChangeNotes
