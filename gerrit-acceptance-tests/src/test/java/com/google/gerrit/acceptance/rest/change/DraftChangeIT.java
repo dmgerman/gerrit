@@ -470,7 +470,7 @@ name|deleteChange
 argument_list|(
 name|changeId
 argument_list|,
-name|adminSession
+name|adminRestSession
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -589,7 +589,7 @@ name|deleteChange
 argument_list|(
 name|changeId
 argument_list|,
-name|adminSession
+name|adminRestSession
 argument_list|)
 operator|.
 name|assertNoContent
@@ -1270,7 +1270,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -1315,7 +1315,7 @@ name|currentPatchSet
 argument_list|()
 decl_stmt|;
 return|return
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(

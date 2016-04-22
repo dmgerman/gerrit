@@ -365,7 +365,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -465,7 +465,7 @@ argument_list|(
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|userSession
+name|userRestSession
 operator|.
 name|get
 argument_list|(

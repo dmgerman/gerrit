@@ -197,7 +197,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(

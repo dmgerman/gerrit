@@ -1523,7 +1523,7 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -1675,7 +1675,7 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|delete
 argument_list|(
@@ -1789,7 +1789,7 @@ operator|.
 name|FORCED
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -1807,7 +1807,7 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -2209,7 +2209,7 @@ operator|.
 name|getWhen
 argument_list|()
 decl_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -2500,7 +2500,7 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -3215,7 +3215,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -3257,7 +3257,7 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -3273,7 +3273,7 @@ expr_stmt|;
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|getJsonAccept
 argument_list|(
@@ -3351,7 +3351,7 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -3431,7 +3431,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -3580,7 +3580,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -4044,7 +4044,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|delete
 argument_list|(
@@ -4127,7 +4127,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|delete
 argument_list|(
@@ -4170,7 +4170,7 @@ operator|.
 name|NEW
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|delete
 argument_list|(
@@ -4717,7 +4717,7 @@ name|newPath
 operator|=
 name|FILE_NAME3
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -4863,7 +4863,7 @@ name|restorePath
 operator|=
 name|FILE_NAME
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -5179,7 +5179,7 @@ argument_list|(
 name|CONTENT_NEW
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|putRaw
 argument_list|(
@@ -5262,7 +5262,7 @@ argument_list|(
 name|CONTENT_NEW2
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|putRaw
 argument_list|(
@@ -5384,7 +5384,7 @@ argument_list|(
 name|CONTENT_NEW
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|putRaw
 argument_list|(
@@ -5488,7 +5488,7 @@ operator|.
 name|NEW
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -5570,7 +5570,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -5671,7 +5671,7 @@ argument_list|(
 name|CONTENT_NEW
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|putRaw
 argument_list|(
@@ -5742,7 +5742,7 @@ expr_stmt|;
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|getJsonAccept
 argument_list|(
@@ -5805,7 +5805,7 @@ operator|.
 name|NEW
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|delete
 argument_list|(
@@ -5829,7 +5829,7 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -6938,7 +6938,7 @@ expr_stmt|;
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|getJsonAccept
 argument_list|(
@@ -6986,7 +6986,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|getJsonAccept
 argument_list|(
@@ -7112,7 +7112,7 @@ expr_stmt|;
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|getJsonAccept
 argument_list|(
@@ -7153,7 +7153,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|getJsonAccept
 argument_list|(
@@ -7704,7 +7704,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(

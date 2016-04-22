@@ -185,7 +185,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -279,7 +279,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|userSession
+name|userRestSession
 operator|.
 name|get
 argument_list|(
@@ -304,7 +304,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(

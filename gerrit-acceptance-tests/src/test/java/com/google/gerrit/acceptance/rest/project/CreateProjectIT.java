@@ -577,7 +577,7 @@ decl_stmt|;
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -673,7 +673,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -699,7 +699,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|putWithHeader
 argument_list|(
@@ -737,7 +737,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -784,7 +784,7 @@ argument_list|(
 literal|"otherName"
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -833,7 +833,7 @@ literal|"invalid ref name"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(

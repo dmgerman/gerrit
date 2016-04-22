@@ -268,7 +268,7 @@ expr_stmt|;
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -345,7 +345,7 @@ name|admin
 operator|.
 name|username
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -393,7 +393,7 @@ name|username
 operator|=
 literal|"newUsername"
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -422,7 +422,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(

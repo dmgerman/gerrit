@@ -161,7 +161,7 @@ name|newGroupName
 init|=
 literal|"dupGroupA"
 decl_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -170,7 +170,7 @@ operator|+
 name|newGroupName
 argument_list|)
 expr_stmt|;
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -184,7 +184,7 @@ argument_list|()
 operator|.
 name|withFailureMessage
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -192,7 +192,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()
@@ -225,7 +225,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -234,7 +234,7 @@ operator|+
 name|newGroupName
 argument_list|)
 expr_stmt|;
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -248,7 +248,7 @@ argument_list|()
 operator|.
 name|withFailureMessage
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -256,7 +256,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()
@@ -319,7 +319,7 @@ name|newGroupName
 init|=
 literal|"Registered Users"
 decl_stmt|;
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -333,7 +333,7 @@ argument_list|()
 operator|.
 name|withFailureMessage
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -341,7 +341,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()
@@ -366,7 +366,7 @@ name|newGroupName
 init|=
 literal|"Registered Users"
 decl_stmt|;
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -380,7 +380,7 @@ argument_list|()
 operator|.
 name|withFailureMessage
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -388,7 +388,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()
@@ -413,7 +413,7 @@ name|newGroupName
 init|=
 literal|"newGroupB"
 decl_stmt|;
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -427,7 +427,7 @@ argument_list|()
 operator|.
 name|withFailureMessage
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -435,7 +435,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()

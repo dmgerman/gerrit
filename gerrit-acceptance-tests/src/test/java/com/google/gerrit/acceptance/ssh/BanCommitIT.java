@@ -247,7 +247,7 @@ decl_stmt|;
 name|String
 name|response
 init|=
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -271,7 +271,7 @@ argument_list|()
 operator|.
 name|withFailureMessage
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -279,7 +279,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()

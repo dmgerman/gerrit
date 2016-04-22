@@ -3944,7 +3944,7 @@ argument_list|()
 operator|.
 name|fromJson
 argument_list|(
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(

@@ -119,7 +119,7 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|post
 argument_list|(
@@ -158,7 +158,7 @@ argument_list|(
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
-name|userSession
+name|userRestSession
 operator|.
 name|post
 argument_list|(

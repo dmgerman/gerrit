@@ -177,7 +177,7 @@ name|newGroupName
 init|=
 literal|"newGroup"
 decl_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -191,7 +191,7 @@ name|newProjectName
 init|=
 literal|"newProject"
 decl_stmt|;
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -209,7 +209,7 @@ argument_list|()
 operator|.
 name|withFailureMessage
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -217,7 +217,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()
@@ -266,7 +266,7 @@ name|newGroupName
 init|=
 literal|"newGroup"
 decl_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -285,7 +285,7 @@ name|newProjectName
 init|=
 literal|"newProject"
 decl_stmt|;
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -303,7 +303,7 @@ argument_list|()
 operator|.
 name|withFailureMessage
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -311,7 +311,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()
