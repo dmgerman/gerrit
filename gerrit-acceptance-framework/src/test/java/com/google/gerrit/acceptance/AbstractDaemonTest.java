@@ -3382,7 +3382,7 @@ name|SshSession
 argument_list|(
 name|server
 argument_list|,
-name|admin
+name|account
 argument_list|)
 argument_list|,
 name|identifiedUserFactory
