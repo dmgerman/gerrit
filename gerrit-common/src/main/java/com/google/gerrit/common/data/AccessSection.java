@@ -363,6 +363,24 @@ literal|null
 return|;
 block|}
 block|}
+DECL|method|addPermission (Permission p)
+specifier|public
+name|void
+name|addPermission
+parameter_list|(
+name|Permission
+name|p
+parameter_list|)
+block|{
+name|getPermissions
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|remove (Permission permission)
 specifier|public
 name|void
