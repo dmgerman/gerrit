@@ -1077,7 +1077,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, StarredChangesUtil starredChangesUtil, final AuthConfig authConfig, Realm realm, @AnonymousCowardName final String anonymousCowardName, @CanonicalWebUrl final Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, @DisableReverseDnsLookup final Boolean disableReverseDnsLookup, @RemotePeer final Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
+DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, @Nullable StarredChangesUtil starredChangesUtil, final AuthConfig authConfig, Realm realm, @AnonymousCowardName final String anonymousCowardName, @CanonicalWebUrl final Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, @DisableReverseDnsLookup final Boolean disableReverseDnsLookup, @RemotePeer final Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
 name|RequestFactory
 parameter_list|(
 name|CapabilityControl
@@ -1085,6 +1085,8 @@ operator|.
 name|Factory
 name|capabilityControlFactory
 parameter_list|,
+annotation|@
+name|Nullable
 name|StarredChangesUtil
 name|starredChangesUtil
 parameter_list|,
