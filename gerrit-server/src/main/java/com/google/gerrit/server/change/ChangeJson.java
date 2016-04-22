@@ -3533,15 +3533,9 @@ name|out
 operator|.
 name|hashtags
 operator|=
-name|ctl
+name|cd
 operator|.
-name|getNotes
-argument_list|()
-operator|.
-name|load
-argument_list|()
-operator|.
-name|getHashtags
+name|hashtags
 argument_list|()
 expr_stmt|;
 name|out
