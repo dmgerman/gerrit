@@ -729,6 +729,24 @@ name|self
 argument_list|()
 return|;
 block|}
+if|if
+condition|(
+name|args
+operator|.
+name|migration
+operator|.
+name|failOnLoad
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"Reading from NoteDb is disabled"
+argument_list|)
+throw|;
+block|}
 try|try
 init|(
 name|Timer1

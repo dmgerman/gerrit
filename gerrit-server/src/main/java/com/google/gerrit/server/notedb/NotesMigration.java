@@ -105,6 +105,17 @@ name|boolean
 name|writeAccounts
 parameter_list|()
 function_decl|;
+comment|/**    * Whether to fail when reading any data from NoteDb.    *<p>    * Used in conjunction with {@link #readChanges()} for tests.    */
+DECL|method|failOnLoad ()
+specifier|public
+name|boolean
+name|failOnLoad
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 DECL|method|enabled ()
 specifier|public
 name|boolean

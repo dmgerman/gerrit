@@ -118,6 +118,12 @@ specifier|volatile
 name|boolean
 name|writeChanges
 decl_stmt|;
+DECL|field|failOnLoad
+specifier|private
+specifier|volatile
+name|boolean
+name|failOnLoad
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|readChanges ()
@@ -166,6 +172,18 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|failOnLoad ()
+specifier|public
+name|boolean
+name|failOnLoad
+parameter_list|()
+block|{
+return|return
+name|failOnLoad
+return|;
+block|}
 DECL|method|setReadChanges (boolean readChanges)
 specifier|public
 name|TestNotesMigration
@@ -199,6 +217,25 @@ operator|.
 name|writeChanges
 operator|=
 name|writeChanges
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setFailOnLoad (boolean failOnLoad)
+specifier|public
+name|TestNotesMigration
+name|setFailOnLoad
+parameter_list|(
+name|boolean
+name|failOnLoad
+parameter_list|)
+block|{
+name|this
+operator|.
+name|failOnLoad
+operator|=
+name|failOnLoad
 expr_stmt|;
 return|return
 name|this
