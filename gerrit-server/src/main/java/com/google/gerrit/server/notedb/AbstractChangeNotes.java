@@ -807,10 +807,10 @@ name|self
 argument_list|()
 return|;
 block|}
-DECL|method|openHandle (Repository repo)
+DECL|method|readRef (Repository repo)
 specifier|protected
-name|LoadHandle
-name|openHandle
+name|ObjectId
+name|readRef
 parameter_list|(
 name|Repository
 name|repo
@@ -833,16 +833,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
-name|LoadHandle
-operator|.
-name|create
-argument_list|(
-operator|new
-name|RevWalk
-argument_list|(
-name|repo
-argument_list|)
-argument_list|,
 name|ref
 operator|!=
 literal|null
@@ -853,6 +843,34 @@ name|getObjectId
 argument_list|()
 else|:
 literal|null
+return|;
+block|}
+DECL|method|openHandle (Repository repo)
+specifier|protected
+name|LoadHandle
+name|openHandle
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|LoadHandle
+operator|.
+name|create
+argument_list|(
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
+argument_list|,
+name|readRef
+argument_list|(
+name|repo
+argument_list|)
 argument_list|)
 return|;
 block|}

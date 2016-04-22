@@ -442,6 +442,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|SubmitRecord
@@ -637,6 +651,22 @@ operator|.
 name|server
 operator|.
 name|ReviewDbUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|ChainedReceiveCommands
 import|;
 end_import
 
@@ -1605,13 +1635,16 @@ name|load
 argument_list|()
 return|;
 block|}
-DECL|method|createWithAutoRebuildingDisabled (Change change)
+DECL|method|createWithAutoRebuildingDisabled (Change change, ChainedReceiveCommands cmds)
 specifier|public
 name|ChangeNotes
 name|createWithAutoRebuildingDisabled
 parameter_list|(
 name|Change
 name|change
+parameter_list|,
+name|ChainedReceiveCommands
+name|cmds
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1630,6 +1663,8 @@ argument_list|,
 name|change
 argument_list|,
 literal|false
+argument_list|,
+name|cmds
 argument_list|)
 operator|.
 name|load
@@ -2749,6 +2784,12 @@ specifier|final
 name|boolean
 name|autoRebuild
 decl_stmt|;
+DECL|field|cmds
+specifier|private
+specifier|final
+name|ChainedReceiveCommands
+name|cmds
+decl_stmt|;
 DECL|field|patchSets
 specifier|private
 name|ImmutableSortedMap
@@ -2879,10 +2920,12 @@ argument_list|,
 name|change
 argument_list|,
 literal|true
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ChangeNotes (Args args, Project.NameKey project, Change change, boolean autoRebuild)
+DECL|method|ChangeNotes (Args args, Project.NameKey project, Change change, boolean autoRebuild, @Nullable ChainedReceiveCommands cmds)
 specifier|private
 name|ChangeNotes
 parameter_list|(
@@ -2899,6 +2942,11 @@ name|change
 parameter_list|,
 name|boolean
 name|autoRebuild
+parameter_list|,
+annotation|@
+name|Nullable
+name|ChainedReceiveCommands
+name|cmds
 parameter_list|)
 block|{
 name|super
@@ -2944,6 +2992,12 @@ operator|.
 name|autoRebuild
 operator|=
 name|autoRebuild
+expr_stmt|;
+name|this
+operator|.
+name|cmds
+operator|=
+name|cmds
 expr_stmt|;
 block|}
 DECL|method|getChange ()
@@ -3921,6 +3975,42 @@ parameter_list|()
 block|{
 return|return
 name|project
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|readRef (Repository repo)
+specifier|protected
+name|ObjectId
+name|readRef
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|cmds
+operator|!=
+literal|null
+condition|?
+name|cmds
+operator|.
+name|getObjectId
+argument_list|(
+name|repo
+argument_list|,
+name|getRefName
+argument_list|()
+argument_list|)
+else|:
+name|super
+operator|.
+name|readRef
+argument_list|(
+name|repo
+argument_list|)
 return|;
 block|}
 annotation|@
