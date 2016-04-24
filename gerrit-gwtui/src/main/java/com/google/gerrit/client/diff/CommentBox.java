@@ -389,8 +389,7 @@ operator|.
 name|getManager
 argument_list|()
 operator|.
-name|getDiffScreen
-argument_list|()
+name|host
 decl_stmt|;
 name|int
 name|startCmLine

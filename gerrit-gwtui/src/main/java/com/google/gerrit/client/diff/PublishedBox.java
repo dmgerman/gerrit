@@ -1109,8 +1109,7 @@ argument_list|(
 name|getCommentManager
 argument_list|()
 operator|.
-name|getDiffScreen
-argument_list|()
+name|host
 operator|.
 name|getToken
 argument_list|()
@@ -1194,8 +1193,7 @@ argument_list|(
 name|getCommentManager
 argument_list|()
 operator|.
-name|getDiffScreen
-argument_list|()
+name|host
 operator|.
 name|getToken
 argument_list|()
@@ -1242,8 +1240,7 @@ argument_list|(
 name|getCommentManager
 argument_list|()
 operator|.
-name|getDiffScreen
-argument_list|()
+name|host
 operator|.
 name|getToken
 argument_list|()
