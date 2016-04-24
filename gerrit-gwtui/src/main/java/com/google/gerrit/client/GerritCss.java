@@ -188,21 +188,6 @@ name|String
 name|cSTATUS
 parameter_list|()
 function_decl|;
-DECL|method|cellsNextToFileComment ()
-name|String
-name|cellsNextToFileComment
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenDescription ()
-name|String
-name|changeScreenDescription
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenStarIcon ()
-name|String
-name|changeScreenStarIcon
-parameter_list|()
-function_decl|;
 DECL|method|changeSize ()
 name|String
 name|changeSize
@@ -216,81 +201,6 @@ function_decl|;
 DECL|method|changeTablePrevNextLinks ()
 name|String
 name|changeTablePrevNextLinks
-parameter_list|()
-function_decl|;
-DECL|method|changeTypeCell ()
-name|String
-name|changeTypeCell
-parameter_list|()
-function_decl|;
-DECL|method|commentCell ()
-name|String
-name|commentCell
-parameter_list|()
-function_decl|;
-DECL|method|commentEditorPanel ()
-name|String
-name|commentEditorPanel
-parameter_list|()
-function_decl|;
-DECL|method|commentHolder ()
-name|String
-name|commentHolder
-parameter_list|()
-function_decl|;
-DECL|method|commentHolderLeftmost ()
-name|String
-name|commentHolderLeftmost
-parameter_list|()
-function_decl|;
-DECL|method|commentPanel ()
-name|String
-name|commentPanel
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelAuthorCell ()
-name|String
-name|commentPanelAuthorCell
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelButtons ()
-name|String
-name|commentPanelButtons
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelContent ()
-name|String
-name|commentPanelContent
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelDateCell ()
-name|String
-name|commentPanelDateCell
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelHeader ()
-name|String
-name|commentPanelHeader
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelLast ()
-name|String
-name|commentPanelLast
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelMessage ()
-name|String
-name|commentPanelMessage
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelSummary ()
-name|String
-name|commentPanelSummary
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelSummaryCell ()
-name|String
-name|commentPanelSummaryCell
 parameter_list|()
 function_decl|;
 DECL|method|commentedActionDialog ()
@@ -346,46 +256,6 @@ function_decl|;
 DECL|method|dataHeaderHidden ()
 name|String
 name|dataHeaderHidden
-parameter_list|()
-function_decl|;
-DECL|method|diffLinkCell ()
-name|String
-name|diffLinkCell
-parameter_list|()
-function_decl|;
-DECL|method|diffText ()
-name|String
-name|diffText
-parameter_list|()
-function_decl|;
-DECL|method|diffTextCONTEXT ()
-name|String
-name|diffTextCONTEXT
-parameter_list|()
-function_decl|;
-DECL|method|diffTextDELETE ()
-name|String
-name|diffTextDELETE
-parameter_list|()
-function_decl|;
-DECL|method|diffTextFileHeader ()
-name|String
-name|diffTextFileHeader
-parameter_list|()
-function_decl|;
-DECL|method|diffTextHunkHeader ()
-name|String
-name|diffTextHunkHeader
-parameter_list|()
-function_decl|;
-DECL|method|diffTextINSERT ()
-name|String
-name|diffTextINSERT
-parameter_list|()
-function_decl|;
-DECL|method|diffTextNoLF ()
-name|String
-name|diffTextNoLF
 parameter_list|()
 function_decl|;
 DECL|method|downloadBox ()
@@ -448,11 +318,6 @@ name|String
 name|downloadLink_Active
 parameter_list|()
 function_decl|;
-DECL|method|drafts ()
-name|String
-name|drafts
-parameter_list|()
-function_decl|;
 DECL|method|editHeadButton ()
 name|String
 name|editHeadButton
@@ -496,36 +361,6 @@ function_decl|;
 DECL|method|loadingPluginsDialog ()
 name|String
 name|loadingPluginsDialog
-parameter_list|()
-function_decl|;
-DECL|method|fileColumnHeader ()
-name|String
-name|fileColumnHeader
-parameter_list|()
-function_decl|;
-DECL|method|fileCommentBorder ()
-name|String
-name|fileCommentBorder
-parameter_list|()
-function_decl|;
-DECL|method|fileLine ()
-name|String
-name|fileLine
-parameter_list|()
-function_decl|;
-DECL|method|fileLineDELETE ()
-name|String
-name|fileLineDELETE
-parameter_list|()
-function_decl|;
-DECL|method|fileLineINSERT ()
-name|String
-name|fileLineINSERT
-parameter_list|()
-function_decl|;
-DECL|method|filePathCell ()
-name|String
-name|filePathCell
 parameter_list|()
 function_decl|;
 DECL|method|gerritBody ()
@@ -603,11 +438,6 @@ name|String
 name|iconCell
 parameter_list|()
 function_decl|;
-DECL|method|iconCellOfFileCommentRow ()
-name|String
-name|iconCellOfFileCommentRow
-parameter_list|()
-function_decl|;
 DECL|method|iconHeader ()
 name|String
 name|iconHeader
@@ -638,11 +468,6 @@ name|String
 name|leftMostCell
 parameter_list|()
 function_decl|;
-DECL|method|lineNumber ()
-name|String
-name|lineNumber
-parameter_list|()
-function_decl|;
 DECL|method|link ()
 name|String
 name|link
@@ -656,11 +481,6 @@ function_decl|;
 DECL|method|linkMenuItemNotLast ()
 name|String
 name|linkMenuItemNotLast
-parameter_list|()
-function_decl|;
-DECL|method|linkPanel ()
-name|String
-name|linkPanel
 parameter_list|()
 function_decl|;
 DECL|method|maxObjectSizeLimitEffectiveLabel ()
@@ -708,64 +528,14 @@ name|String
 name|negscore
 parameter_list|()
 function_decl|;
-DECL|method|noborder ()
-name|String
-name|noborder
-parameter_list|()
-function_decl|;
-DECL|method|nowrap ()
-name|String
-name|nowrap
-parameter_list|()
-function_decl|;
 DECL|method|pagingLink ()
 name|String
 name|pagingLink
 parameter_list|()
 function_decl|;
-DECL|method|patchBrowserPopup ()
-name|String
-name|patchBrowserPopup
-parameter_list|()
-function_decl|;
-DECL|method|patchBrowserPopupBody ()
-name|String
-name|patchBrowserPopupBody
-parameter_list|()
-function_decl|;
-DECL|method|patchCellReverseDiff ()
-name|String
-name|patchCellReverseDiff
-parameter_list|()
-function_decl|;
-DECL|method|patchContentTable ()
-name|String
-name|patchContentTable
-parameter_list|()
-function_decl|;
-DECL|method|patchHistoryTable ()
-name|String
-name|patchHistoryTable
-parameter_list|()
-function_decl|;
-DECL|method|patchHistoryTablePatchSetHeader ()
-name|String
-name|patchHistoryTablePatchSetHeader
-parameter_list|()
-function_decl|;
-DECL|method|patchNoDifference ()
-name|String
-name|patchNoDifference
-parameter_list|()
-function_decl|;
 DECL|method|patchSetActions ()
 name|String
 name|patchSetActions
-parameter_list|()
-function_decl|;
-DECL|method|patchSizeCell ()
-name|String
-name|patchSizeCell
 parameter_list|()
 function_decl|;
 DECL|method|pluginProjectConfigInheritedValue ()
@@ -833,16 +603,6 @@ name|String
 name|registerScreenSection
 parameter_list|()
 function_decl|;
-DECL|method|reviewedPanelBottom ()
-name|String
-name|reviewedPanelBottom
-parameter_list|()
-function_decl|;
-DECL|method|rightBorder ()
-name|String
-name|rightBorder
-parameter_list|()
-function_decl|;
 DECL|method|rpcStatus ()
 name|String
 name|rpcStatus
@@ -873,11 +633,6 @@ name|String
 name|sectionHeader
 parameter_list|()
 function_decl|;
-DECL|method|sideBySideScreenLinkTable ()
-name|String
-name|sideBySideScreenLinkTable
-parameter_list|()
-function_decl|;
 DECL|method|singleLine ()
 name|String
 name|singleLine
@@ -886,11 +641,6 @@ function_decl|;
 DECL|method|smallHeading ()
 name|String
 name|smallHeading
-parameter_list|()
-function_decl|;
-DECL|method|sourceFilePath ()
-name|String
-name|sourceFilePath
 parameter_list|()
 function_decl|;
 DECL|method|specialBranchDataCell ()
@@ -943,11 +693,6 @@ name|String
 name|stringListPanelButtons
 parameter_list|()
 function_decl|;
-DECL|method|topMostCell ()
-name|String
-name|topMostCell
-parameter_list|()
-function_decl|;
 DECL|method|topmenu ()
 name|String
 name|topmenu
@@ -976,16 +721,6 @@ function_decl|;
 DECL|method|topmost ()
 name|String
 name|topmost
-parameter_list|()
-function_decl|;
-DECL|method|unifiedTable ()
-name|String
-name|unifiedTable
-parameter_list|()
-function_decl|;
-DECL|method|unifiedTableHeader ()
-name|String
-name|unifiedTableHeader
 parameter_list|()
 function_decl|;
 DECL|method|userInfoPopup ()
