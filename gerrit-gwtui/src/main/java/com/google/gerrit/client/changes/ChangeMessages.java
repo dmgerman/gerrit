@@ -98,30 +98,6 @@ name|String
 name|fullName
 parameter_list|)
 function_decl|;
-DECL|method|changesOpenInProject (String string)
-name|String
-name|changesOpenInProject
-parameter_list|(
-name|String
-name|string
-parameter_list|)
-function_decl|;
-DECL|method|changesMergedInProject (String string)
-name|String
-name|changesMergedInProject
-parameter_list|(
-name|String
-name|string
-parameter_list|)
-function_decl|;
-DECL|method|changesAbandonedInProject (String string)
-name|String
-name|changesAbandonedInProject
-parameter_list|(
-name|String
-name|string
-parameter_list|)
-function_decl|;
 DECL|method|revertChangeDefaultMessage (String commitMsg, String commitId)
 name|String
 name|revertChangeDefaultMessage
@@ -152,56 +128,12 @@ name|String
 name|changeId
 parameter_list|)
 function_decl|;
-DECL|method|outdatedHeader (int outdated)
-name|String
-name|outdatedHeader
-parameter_list|(
-name|int
-name|outdated
-parameter_list|)
-function_decl|;
-DECL|method|patchSetHeader (int id)
-name|String
-name|patchSetHeader
-parameter_list|(
-name|int
-name|id
-parameter_list|)
-function_decl|;
 DECL|method|loadingPatchSet (int id)
 name|String
 name|loadingPatchSet
 parameter_list|(
 name|int
 name|id
-parameter_list|)
-function_decl|;
-DECL|method|submitPatchSet (int id)
-name|String
-name|submitPatchSet
-parameter_list|(
-name|int
-name|id
-parameter_list|)
-function_decl|;
-DECL|method|patchTableComments (@luralCount int count)
-name|String
-name|patchTableComments
-parameter_list|(
-annotation|@
-name|PluralCount
-name|int
-name|count
-parameter_list|)
-function_decl|;
-DECL|method|patchTableDrafts (@luralCount int count)
-name|String
-name|patchTableDrafts
-parameter_list|(
-annotation|@
-name|PluralCount
-name|int
-name|count
 parameter_list|)
 function_decl|;
 DECL|method|patchTableSize_Modify (int insertions, int deletions)
@@ -254,24 +186,6 @@ name|int
 name|deletions
 parameter_list|)
 function_decl|;
-DECL|method|patchTableSize_Lines (@luralCount int insertions)
-name|String
-name|patchTableSize_Lines
-parameter_list|(
-annotation|@
-name|PluralCount
-name|int
-name|insertions
-parameter_list|)
-function_decl|;
-DECL|method|removeHashtag (String name)
-name|String
-name|removeHashtag
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-function_decl|;
 DECL|method|removeReviewer (String fullName)
 name|String
 name|removeReviewer
@@ -286,38 +200,6 @@ name|removeVote
 parameter_list|(
 name|String
 name|label
-parameter_list|)
-function_decl|;
-DECL|method|messageWrittenOn (String date)
-name|String
-name|messageWrittenOn
-parameter_list|(
-name|String
-name|date
-parameter_list|)
-function_decl|;
-DECL|method|renamedFrom (String sourcePath)
-name|String
-name|renamedFrom
-parameter_list|(
-name|String
-name|sourcePath
-parameter_list|)
-function_decl|;
-DECL|method|copiedFrom (String sourcePath)
-name|String
-name|copiedFrom
-parameter_list|(
-name|String
-name|sourcePath
-parameter_list|)
-function_decl|;
-DECL|method|otherFrom (String sourcePath)
-name|String
-name|otherFrom
-parameter_list|(
-name|String
-name|sourcePath
 parameter_list|)
 function_decl|;
 DECL|method|blockedOn (String labelName)
@@ -336,25 +218,6 @@ name|String
 name|labelName
 parameter_list|)
 function_decl|;
-DECL|method|publishComments (String changeId, int ps)
-name|String
-name|publishComments
-parameter_list|(
-name|String
-name|changeId
-parameter_list|,
-name|int
-name|ps
-parameter_list|)
-function_decl|;
-DECL|method|lineHeader (int line)
-name|String
-name|lineHeader
-parameter_list|(
-name|int
-name|line
-parameter_list|)
-function_decl|;
 DECL|method|changeQueryWindowTitle (String query)
 name|String
 name|changeQueryWindowTitle
@@ -369,65 +232,6 @@ name|changeQueryPageTitle
 parameter_list|(
 name|String
 name|query
-parameter_list|)
-function_decl|;
-DECL|method|reviewerNotFound (String who)
-name|String
-name|reviewerNotFound
-parameter_list|(
-name|String
-name|who
-parameter_list|)
-function_decl|;
-DECL|method|accountInactive (String who)
-name|String
-name|accountInactive
-parameter_list|(
-name|String
-name|who
-parameter_list|)
-function_decl|;
-DECL|method|changeNotVisibleTo (String who)
-name|String
-name|changeNotVisibleTo
-parameter_list|(
-name|String
-name|who
-parameter_list|)
-function_decl|;
-DECL|method|groupIsEmpty (String group)
-name|String
-name|groupIsEmpty
-parameter_list|(
-name|String
-name|group
-parameter_list|)
-function_decl|;
-DECL|method|groupIsNotAllowed (String group)
-name|String
-name|groupIsNotAllowed
-parameter_list|(
-name|String
-name|group
-parameter_list|)
-function_decl|;
-DECL|method|groupHasTooManyMembers (String group)
-name|String
-name|groupHasTooManyMembers
-parameter_list|(
-name|String
-name|group
-parameter_list|)
-function_decl|;
-DECL|method|groupManyMembersConfirmation (String group, int memberCount)
-name|String
-name|groupManyMembersConfirmation
-parameter_list|(
-name|String
-name|group
-parameter_list|,
-name|int
-name|memberCount
 parameter_list|)
 function_decl|;
 DECL|method|insertionsAndDeletions (int insertions, int deletions)

@@ -295,21 +295,6 @@ name|String
 name|patchTableColumnSize
 parameter_list|()
 function_decl|;
-DECL|method|patchTableColumnDiff ()
-name|String
-name|patchTableColumnDiff
-parameter_list|()
-function_decl|;
-DECL|method|patchTableDiffSideBySide ()
-name|String
-name|patchTableDiffSideBySide
-parameter_list|()
-function_decl|;
-DECL|method|patchTableDiffUnified ()
-name|String
-name|patchTableDiffUnified
-parameter_list|()
-function_decl|;
 DECL|method|commitMessage ()
 name|String
 name|commitMessage
@@ -330,26 +315,6 @@ name|String
 name|patchTableOpenDiff
 parameter_list|()
 function_decl|;
-DECL|method|patchTableOpenUnifiedDiff ()
-name|String
-name|patchTableOpenUnifiedDiff
-parameter_list|()
-function_decl|;
-DECL|method|upToChangeIconLink ()
-name|String
-name|upToChangeIconLink
-parameter_list|()
-function_decl|;
-DECL|method|prevPatchLinkIcon ()
-name|String
-name|prevPatchLinkIcon
-parameter_list|()
-function_decl|;
-DECL|method|nextPatchLinkIcon ()
-name|String
-name|nextPatchLinkIcon
-parameter_list|()
-function_decl|;
 DECL|method|approvalTableAddReviewerHint ()
 name|String
 name|approvalTableAddReviewerHint
@@ -368,11 +333,6 @@ function_decl|;
 DECL|method|changeInfoBlockUpdated ()
 name|String
 name|changeInfoBlockUpdated
-parameter_list|()
-function_decl|;
-DECL|method|changePermalink ()
-name|String
-name|changePermalink
 parameter_list|()
 function_decl|;
 DECL|method|messageNoAuthor ()
@@ -468,11 +428,6 @@ function_decl|;
 DECL|method|pagedChangeListNext ()
 name|String
 name|pagedChangeListNext
-parameter_list|()
-function_decl|;
-DECL|method|reviewed ()
-name|String
-name|reviewed
 parameter_list|()
 function_decl|;
 DECL|method|submitFailed ()
