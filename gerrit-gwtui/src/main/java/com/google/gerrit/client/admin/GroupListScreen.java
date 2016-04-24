@@ -885,10 +885,7 @@ name|open
 argument_list|(
 name|event
 operator|.
-name|getNativeEvent
-argument_list|()
-operator|.
-name|getKeyCode
+name|getNativeKeyCode
 argument_list|()
 operator|==
 name|KeyCodes
