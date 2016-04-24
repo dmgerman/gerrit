@@ -5464,8 +5464,7 @@ return|return
 name|getChunkManager
 argument_list|()
 operator|.
-name|getLineMapper
-argument_list|()
+name|lineMapper
 operator|.
 name|lineOnOther
 argument_list|(

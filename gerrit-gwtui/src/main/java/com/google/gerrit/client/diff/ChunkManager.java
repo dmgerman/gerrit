@@ -212,16 +212,14 @@ parameter_list|)
 comment|/*-{ e.onclick = f }-*/
 function_decl|;
 DECL|field|scrollbar
-specifier|private
 specifier|final
 name|Scrollbar
 name|scrollbar
 decl_stmt|;
-DECL|field|mapper
-specifier|private
+DECL|field|lineMapper
 specifier|final
 name|LineMapper
-name|mapper
+name|lineMapper
 decl_stmt|;
 DECL|field|markers
 specifier|private
@@ -254,30 +252,12 @@ name|scrollbar
 expr_stmt|;
 name|this
 operator|.
-name|mapper
+name|lineMapper
 operator|=
 operator|new
 name|LineMapper
 argument_list|()
 expr_stmt|;
-block|}
-DECL|method|getLineMapper ()
-name|LineMapper
-name|getLineMapper
-parameter_list|()
-block|{
-return|return
-name|mapper
-return|;
-block|}
-DECL|method|getScrollbar ()
-name|Scrollbar
-name|getScrollbar
-parameter_list|()
-block|{
-return|return
-name|scrollbar
-return|;
 block|}
 DECL|method|getFirst ()
 specifier|abstract
@@ -302,7 +282,7 @@ name|void
 name|reset
 parameter_list|()
 block|{
-name|mapper
+name|lineMapper
 operator|.
 name|reset
 argument_list|()

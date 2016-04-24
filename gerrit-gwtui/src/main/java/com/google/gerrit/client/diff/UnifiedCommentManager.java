@@ -2200,8 +2200,7 @@ name|infoOnSideA
 init|=
 name|manager
 operator|.
-name|getLineMapper
-argument_list|()
+name|lineMapper
 operator|.
 name|lineOnOther
 argument_list|(
@@ -2292,8 +2291,7 @@ name|infoOnSideB
 init|=
 name|manager
 operator|.
-name|getLineMapper
-argument_list|()
+name|lineMapper
 operator|.
 name|lineOnOther
 argument_list|(
@@ -2384,8 +2382,7 @@ name|toLineOnSideA
 init|=
 name|manager
 operator|.
-name|getLineMapper
-argument_list|()
+name|lineMapper
 operator|.
 name|lineOnOther
 argument_list|(

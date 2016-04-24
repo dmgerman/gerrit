@@ -1530,8 +1530,7 @@ name|cmB
 argument_list|,
 name|chunkManager
 operator|.
-name|getLineMapper
-argument_list|()
+name|lineMapper
 argument_list|)
 expr_stmt|;
 name|setPrefsAction

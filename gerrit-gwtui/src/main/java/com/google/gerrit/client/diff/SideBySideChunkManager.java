@@ -705,12 +705,6 @@ operator|.
 name|render
 argument_list|()
 expr_stmt|;
-name|LineMapper
-name|mapper
-init|=
-name|getLineMapper
-argument_list|()
-decl_stmt|;
 name|chunks
 operator|=
 operator|new
@@ -789,7 +783,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|mapper
+name|lineMapper
 operator|.
 name|appendCommon
 argument_list|(
@@ -814,7 +808,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|mapper
+name|lineMapper
 operator|.
 name|appendCommon
 argument_list|(
@@ -834,7 +828,7 @@ name|common
 argument_list|()
 condition|)
 block|{
-name|mapper
+name|lineMapper
 operator|.
 name|appendCommon
 argument_list|(
@@ -967,16 +961,10 @@ name|String
 name|diffColor
 parameter_list|)
 block|{
-name|LineMapper
-name|mapper
-init|=
-name|getLineMapper
-argument_list|()
-decl_stmt|;
 name|int
 name|startA
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineA
 argument_list|()
@@ -984,7 +972,7 @@ decl_stmt|;
 name|int
 name|startB
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineB
 argument_list|()
@@ -1142,7 +1130,7 @@ argument_list|,
 name|startB
 argument_list|)
 expr_stmt|;
-name|mapper
+name|lineMapper
 operator|.
 name|appendReplace
 argument_list|(
@@ -1154,7 +1142,7 @@ expr_stmt|;
 name|int
 name|endA
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineA
 argument_list|()
@@ -1164,7 +1152,7 @@ decl_stmt|;
 name|int
 name|endB
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineB
 argument_list|()
@@ -1233,12 +1221,6 @@ name|int
 name|startB
 parameter_list|)
 block|{
-name|Scrollbar
-name|scrollbar
-init|=
-name|getScrollbar
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|region

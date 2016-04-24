@@ -547,12 +547,6 @@ operator|.
 name|render
 argument_list|()
 expr_stmt|;
-name|LineMapper
-name|mapper
-init|=
-name|getLineMapper
-argument_list|()
-decl_stmt|;
 name|chunks
 operator|=
 operator|new
@@ -601,7 +595,7 @@ block|{
 name|int
 name|origLineA
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineA
 argument_list|()
@@ -609,7 +603,7 @@ decl_stmt|;
 name|int
 name|origLineB
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineB
 argument_list|()
@@ -635,7 +629,7 @@ operator|.
 name|length
 argument_list|()
 decl_stmt|;
-name|mapper
+name|lineMapper
 operator|.
 name|appendCommon
 argument_list|(
@@ -712,7 +706,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|mapper
+name|lineMapper
 operator|.
 name|appendCommon
 argument_list|(
@@ -740,7 +734,7 @@ name|common
 argument_list|()
 condition|)
 block|{
-name|mapper
+name|lineMapper
 operator|.
 name|appendCommon
 argument_list|(
@@ -795,16 +789,10 @@ name|boolean
 name|useIntralineBg
 parameter_list|)
 block|{
-name|LineMapper
-name|mapper
-init|=
-name|getLineMapper
-argument_list|()
-decl_stmt|;
 name|int
 name|startA
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineA
 argument_list|()
@@ -812,7 +800,7 @@ decl_stmt|;
 name|int
 name|startB
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineB
 argument_list|()
@@ -972,7 +960,7 @@ name|cmLine
 argument_list|)
 expr_stmt|;
 comment|// TODO: verify addGutterTag
-name|mapper
+name|lineMapper
 operator|.
 name|appendReplace
 argument_list|(
@@ -984,7 +972,7 @@ expr_stmt|;
 name|int
 name|endA
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineA
 argument_list|()
@@ -994,7 +982,7 @@ decl_stmt|;
 name|int
 name|endB
 init|=
-name|mapper
+name|lineMapper
 operator|.
 name|getLineB
 argument_list|()
@@ -1147,12 +1135,6 @@ name|int
 name|cmLine
 parameter_list|)
 block|{
-name|Scrollbar
-name|scrollbar
-init|=
-name|getScrollbar
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|region
@@ -1944,8 +1926,7 @@ name|info
 operator|.
 name|cmLine
 operator|+
-name|getLineMapper
-argument_list|()
+name|lineMapper
 operator|.
 name|lineOnOther
 argument_list|(
@@ -2115,8 +2096,7 @@ return|return
 operator|new
 name|LineRegionInfo
 argument_list|(
-name|getLineMapper
-argument_list|()
+name|lineMapper
 operator|.
 name|lineOnOther
 argument_list|(
