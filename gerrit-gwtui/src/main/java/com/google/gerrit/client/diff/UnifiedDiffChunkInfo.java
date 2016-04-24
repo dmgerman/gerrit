@@ -75,11 +75,11 @@ extends|extends
 name|DiffChunkInfo
 block|{
 DECL|field|cmLine
-specifier|private
+specifier|final
 name|int
 name|cmLine
 decl_stmt|;
-DECL|method|UnifiedDiffChunkInfo (DisplaySide side, int start, int end, int cmLine, boolean edit)
+DECL|method|UnifiedDiffChunkInfo (DisplaySide side, int start, int startOnOther, int end, int cmLine, boolean edit)
 name|UnifiedDiffChunkInfo
 parameter_list|(
 name|DisplaySide
@@ -87,6 +87,9 @@ name|side
 parameter_list|,
 name|int
 name|start
+parameter_list|,
+name|int
+name|startOnOther
 parameter_list|,
 name|int
 name|end
@@ -104,6 +107,8 @@ name|side
 argument_list|,
 name|start
 argument_list|,
+name|startOnOther
+argument_list|,
 name|end
 argument_list|,
 name|edit
@@ -115,15 +120,6 @@ name|cmLine
 operator|=
 name|cmLine
 expr_stmt|;
-block|}
-DECL|method|getCmLine ()
-name|int
-name|getCmLine
-parameter_list|()
-block|{
-return|return
-name|cmLine
-return|;
 block|}
 block|}
 end_class

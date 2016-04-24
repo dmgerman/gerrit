@@ -1182,6 +1182,8 @@ name|addDiffChunk
 argument_list|(
 name|cmB
 argument_list|,
+name|endB
+argument_list|,
 name|endA
 argument_list|,
 name|aLen
@@ -1202,6 +1204,8 @@ block|{
 name|addDiffChunk
 argument_list|(
 name|cmA
+argument_list|,
+name|endA
 argument_list|,
 name|endB
 argument_list|,
@@ -1713,13 +1717,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addDiffChunk (CodeMirror cmToPad, int lineOnOther, int chunkSize, boolean edit)
+DECL|method|addDiffChunk (CodeMirror cmToPad, int line, int lineOnOther, int chunkSize, boolean edit)
 specifier|private
 name|void
 name|addDiffChunk
 parameter_list|(
 name|CodeMirror
 name|cmToPad
+parameter_list|,
+name|int
+name|line
 parameter_list|,
 name|int
 name|lineOnOther
@@ -1749,6 +1756,12 @@ name|side
 argument_list|()
 argument_list|,
 name|lineOnOther
+operator|-
+name|chunkSize
+operator|+
+literal|1
+argument_list|,
+name|line
 operator|-
 name|chunkSize
 operator|+
@@ -1835,11 +1848,10 @@ name|line
 argument_list|,
 literal|0
 argument_list|,
+literal|0
+argument_list|,
 literal|false
 argument_list|)
-argument_list|,
-name|getDiffChunkComparator
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|diffChunkNavHelper
