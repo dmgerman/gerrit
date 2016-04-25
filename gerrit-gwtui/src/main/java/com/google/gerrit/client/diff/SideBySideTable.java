@@ -252,11 +252,6 @@ name|String
 name|diff
 parameter_list|()
 function_decl|;
-DECL|method|showLineNumbers ()
-name|String
-name|showLineNumbers
-parameter_list|()
-function_decl|;
 DECL|method|hideA ()
 name|String
 name|hideA

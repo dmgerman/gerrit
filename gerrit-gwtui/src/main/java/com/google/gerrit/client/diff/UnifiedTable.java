@@ -249,6 +249,11 @@ name|String
 name|unifiedLineNumber
 parameter_list|()
 function_decl|;
+DECL|method|unifiedLineNumberEmpty ()
+name|String
+name|unifiedLineNumberEmpty
+parameter_list|()
+function_decl|;
 DECL|method|lineNumbersLeft ()
 name|String
 name|lineNumbersLeft
