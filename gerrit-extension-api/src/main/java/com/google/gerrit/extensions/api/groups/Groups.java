@@ -578,6 +578,25 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|withOwned (boolean owned)
+specifier|public
+name|ListRequest
+name|withOwned
+parameter_list|(
+name|boolean
+name|owned
+parameter_list|)
+block|{
+name|this
+operator|.
+name|owned
+operator|=
+name|owned
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|withLimit (int limit)
 specifier|public
 name|ListRequest
