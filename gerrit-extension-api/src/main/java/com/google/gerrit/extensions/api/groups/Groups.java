@@ -773,7 +773,8 @@ return|return
 name|suggest
 return|;
 block|}
-comment|/**      * A default implementation which allows source compatibility      * when adding new methods to the interface.      **/
+block|}
+comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
 class|class
 name|NotImplemented
@@ -850,7 +851,6 @@ operator|new
 name|NotImplementedException
 argument_list|()
 throw|;
-block|}
 block|}
 block|}
 block|}
