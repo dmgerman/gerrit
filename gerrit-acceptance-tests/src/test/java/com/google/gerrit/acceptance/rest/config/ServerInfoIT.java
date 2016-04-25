@@ -580,7 +580,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -1043,7 +1043,7 @@ name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -1053,7 +1053,7 @@ expr_stmt|;
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -1107,7 +1107,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(

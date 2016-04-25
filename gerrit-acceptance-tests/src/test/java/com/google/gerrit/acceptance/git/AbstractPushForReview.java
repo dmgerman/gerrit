@@ -677,7 +677,7 @@ name|Exception
 block|{
 name|sshUrl
 operator|=
-name|sshSession
+name|adminSshSession
 operator|.
 name|getUrl
 argument_list|()

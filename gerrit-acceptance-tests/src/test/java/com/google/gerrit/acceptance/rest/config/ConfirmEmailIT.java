@@ -268,7 +268,7 @@ argument_list|,
 literal|"new.mail@example.com"
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -318,7 +318,7 @@ argument_list|,
 literal|"new.mail@example.com"
 argument_list|)
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -358,7 +358,7 @@ name|token
 operator|=
 literal|"invalidToken"
 expr_stmt|;
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(

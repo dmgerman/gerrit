@@ -269,7 +269,7 @@ decl_stmt|;
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -423,7 +423,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -453,7 +453,7 @@ argument_list|()
 expr_stmt|;
 name|r
 operator|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(
@@ -547,7 +547,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|userSession
+name|userRestSession
 operator|.
 name|put
 argument_list|(

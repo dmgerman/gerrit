@@ -1287,7 +1287,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -1331,7 +1331,7 @@ literal|true
 expr_stmt|;
 name|r
 operator|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(

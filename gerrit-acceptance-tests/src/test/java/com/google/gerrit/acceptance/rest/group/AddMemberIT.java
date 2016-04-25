@@ -110,7 +110,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|adminSession
+name|adminRestSession
 operator|.
 name|put
 argument_list|(

@@ -183,7 +183,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -246,7 +246,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|delete
 argument_list|(
@@ -274,7 +274,7 @@ argument_list|()
 expr_stmt|;
 name|r
 operator|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -337,7 +337,7 @@ block|{
 name|RestResponse
 name|r
 init|=
-name|adminSession
+name|adminRestSession
 operator|.
 name|get
 argument_list|(
@@ -393,7 +393,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|userSession
+name|userRestSession
 operator|.
 name|delete
 argument_list|(

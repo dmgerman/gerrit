@@ -1319,7 +1319,7 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -1330,7 +1330,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()
@@ -1341,7 +1341,7 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -2839,7 +2839,7 @@ block|{
 name|String
 name|rawResponse
 init|=
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec
 argument_list|(
@@ -2853,7 +2853,7 @@ argument_list|()
 operator|.
 name|withFailureMessage
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|getError
 argument_list|()
@@ -2861,7 +2861,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|sshSession
+name|adminSshSession
 operator|.
 name|hasError
 argument_list|()

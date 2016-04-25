@@ -419,7 +419,7 @@ decl_stmt|;
 name|InputStream
 name|out
 init|=
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec2
 argument_list|(
@@ -688,7 +688,7 @@ decl_stmt|;
 name|InputStream
 name|out
 init|=
-name|sshSession
+name|adminSshSession
 operator|.
 name|exec2
 argument_list|(

@@ -479,7 +479,7 @@ name|changeId
 argument_list|,
 name|ps
 argument_list|,
-name|adminSession
+name|adminRestSession
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -580,7 +580,7 @@ name|changeId
 argument_list|,
 name|ps
 argument_list|,
-name|userSession
+name|userRestSession
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -759,7 +759,7 @@ name|changeId
 argument_list|,
 name|ps
 argument_list|,
-name|adminSession
+name|adminRestSession
 argument_list|)
 operator|.
 name|assertNoContent
@@ -817,7 +817,7 @@ name|changeId
 argument_list|,
 name|ps
 argument_list|,
-name|adminSession
+name|adminRestSession
 argument_list|)
 operator|.
 name|assertNoContent
