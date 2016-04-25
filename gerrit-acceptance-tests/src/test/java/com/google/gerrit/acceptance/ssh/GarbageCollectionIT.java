@@ -529,16 +529,40 @@ argument_list|(
 literal|"gerrit gc --all"
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|s
+operator|.
+name|hasError
+argument_list|()
+argument_list|)
+operator|.
+name|isTrue
+argument_list|()
+expr_stmt|;
+name|String
+name|error
+init|=
+name|s
+operator|.
+name|getError
+argument_list|()
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|error
+argument_list|)
+operator|.
+name|isNotNull
+argument_list|()
+expr_stmt|;
 name|assertError
 argument_list|(
 literal|"One of the following capabilities is required to access this"
 operator|+
 literal|" resource: [runGC, maintainServer]"
 argument_list|,
-name|s
-operator|.
-name|getError
-argument_list|()
+name|error
 argument_list|)
 expr_stmt|;
 name|s
