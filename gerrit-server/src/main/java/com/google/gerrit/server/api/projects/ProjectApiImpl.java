@@ -152,6 +152,24 @@ name|extensions
 operator|.
 name|api
 operator|.
+name|access
+operator|.
+name|ProjectAccessInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
 name|projects
 operator|.
 name|ProjectApi
@@ -713,6 +731,14 @@ operator|.
 name|Factory
 name|tagApi
 decl_stmt|;
+DECL|field|accessApi
+specifier|private
+specifier|final
+name|AccessApiImpl
+operator|.
+name|Factory
+name|accessApi
+decl_stmt|;
 DECL|field|listBranchesProvider
 specifier|private
 specifier|final
@@ -733,7 +759,7 @@ name|listTagsProvider
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, Provider<ListBranches> listBranchesProvider, Provider<ListTags> listTagsProvider, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, AccessApiImpl.Factory accessApiFactory, Provider<ListBranches> listBranchesProvider, Provider<ListTags> listTagsProvider, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|Provider
@@ -784,6 +810,11 @@ name|TagApiImpl
 operator|.
 name|Factory
 name|tagApiFactory
+parameter_list|,
+name|AccessApiImpl
+operator|.
+name|Factory
+name|accessApiFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -827,6 +858,8 @@ name|branchApiFactory
 argument_list|,
 name|tagApiFactory
 argument_list|,
+name|accessApiFactory
+argument_list|,
 name|listBranchesProvider
 argument_list|,
 name|listTagsProvider
@@ -839,7 +872,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, Provider<ListBranches> listBranchesProvider, Provider<ListTags> listTagsProvider, @Assisted String name)
+DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, AccessApiImpl.Factory accessApiFactory, Provider<ListBranches> listBranchesProvider, Provider<ListTags> listTagsProvider, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|Provider
@@ -891,6 +924,11 @@ operator|.
 name|Factory
 name|tagApiFactory
 parameter_list|,
+name|AccessApiImpl
+operator|.
+name|Factory
+name|accessApiFactory
+parameter_list|,
 name|Provider
 argument_list|<
 name|ListBranches
@@ -933,6 +971,8 @@ name|branchApiFactory
 argument_list|,
 name|tagApiFactory
 argument_list|,
+name|accessApiFactory
+argument_list|,
 name|listBranchesProvider
 argument_list|,
 name|listTagsProvider
@@ -943,7 +983,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, Provider<ListBranches> listBranchesProvider, Provider<ListTags> listTagsProvider, ProjectResource project, String name)
+DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, AccessApiImpl.Factory accessApiFactory, Provider<ListBranches> listBranchesProvider, Provider<ListTags> listTagsProvider, ProjectResource project, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -995,6 +1035,11 @@ name|TagApiImpl
 operator|.
 name|Factory
 name|tagApiFactory
+parameter_list|,
+name|AccessApiImpl
+operator|.
+name|Factory
+name|accessApiFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1092,6 +1137,12 @@ operator|.
 name|tagApi
 operator|=
 name|tagApiFactory
+expr_stmt|;
+name|this
+operator|.
+name|accessApi
+operator|=
+name|accessApiFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1302,6 +1353,29 @@ argument_list|(
 name|checkExists
 argument_list|()
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|access ()
+specifier|public
+name|ProjectAccessInfo
+name|access
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+return|return
+name|accessApi
+operator|.
+name|create
+argument_list|(
+name|checkExists
+argument_list|()
+argument_list|)
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 annotation|@

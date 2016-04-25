@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.api.projects
+DECL|package|com.google.gerrit.extensions.api.projects
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
 name|api
 operator|.
@@ -80,9 +80,9 @@ name|extensions
 operator|.
 name|api
 operator|.
-name|projects
+name|access
 operator|.
-name|Projects
+name|ProjectAccessInfo
 import|;
 end_import
 
@@ -96,90 +96,67 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|config
+name|restapi
 operator|.
-name|FactoryModule
+name|NotImplementedException
 import|;
 end_import
 
-begin_class
-DECL|class|Module
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
+begin_interface
+DECL|interface|AccessApi
 specifier|public
+interface|interface
+name|AccessApi
+block|{
+DECL|method|get ()
+name|ProjectAccessInfo
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+DECL|class|NotImplemented
 class|class
-name|Module
-extends|extends
-name|FactoryModule
+name|NotImplemented
+implements|implements
+name|AccessApi
 block|{
 annotation|@
 name|Override
-DECL|method|configure ()
-specifier|protected
-name|void
-name|configure
+DECL|method|get ()
+specifier|public
+name|ProjectAccessInfo
+name|get
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
-name|bind
-argument_list|(
-name|Projects
-operator|.
-name|class
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|ProjectsImpl
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|BranchApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|TagApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|ProjectApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|ChildProjectApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|AccessApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
 block|}
 block|}
-end_class
+block|}
+end_interface
 
 end_unit
 
