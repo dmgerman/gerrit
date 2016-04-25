@@ -1472,11 +1472,9 @@ argument_list|(
 name|changeId
 argument_list|)
 decl_stmt|;
-name|checkArgument
+name|checkNotNull
 argument_list|(
 name|change
-operator|!=
-literal|null
 argument_list|,
 literal|"change %s not found in ReviewDb"
 argument_list|,
@@ -1628,11 +1626,9 @@ argument_list|(
 name|changeId
 argument_list|)
 decl_stmt|;
-name|checkArgument
+name|checkNotNull
 argument_list|(
 name|change
-operator|!=
-literal|null
 argument_list|,
 literal|"change %s not found in ReviewDb"
 argument_list|,
