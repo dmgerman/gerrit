@@ -116,6 +116,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -189,6 +205,20 @@ operator|.
 name|lib
 operator|.
 name|CommitBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -490,17 +520,43 @@ specifier|final
 name|PersonIdent
 name|gerritIdent
 decl_stmt|;
+DECL|field|save
+specifier|private
+specifier|final
+name|boolean
+name|save
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AutoMerger (@erritPersonIdent PersonIdent gerritIdent)
+DECL|method|AutoMerger ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent gerritIdent)
 name|AutoMerger
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
+parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|gerritIdent
 parameter_list|)
 block|{
+name|save
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"change"
+argument_list|,
+literal|null
+argument_list|,
+literal|"cacheAutomerge"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|gerritIdent
@@ -509,7 +565,7 @@ name|gerritIdent
 expr_stmt|;
 block|}
 comment|/**    * Perform an auto-merge of the parents of the given merge commit.    *    * @return auto-merge commit or {@code null} if an auto-merge commit    *     couldn't be created. Headers of the returned RevCommit are parsed.    */
-DECL|method|merge (Repository repo, RevWalk rw, RevCommit merge, ThreeWayMergeStrategy mergeStrategy)
+DECL|method|merge (Repository repo, RevWalk rw, final ObjectInserter ins, RevCommit merge, ThreeWayMergeStrategy mergeStrategy)
 specifier|public
 name|RevCommit
 name|merge
@@ -519,6 +575,10 @@ name|repo
 parameter_list|,
 name|RevWalk
 name|rw
+parameter_list|,
+specifier|final
+name|ObjectInserter
+name|ins
 parameter_list|,
 name|RevCommit
 name|merge
@@ -630,6 +690,8 @@ name|repo
 argument_list|,
 name|rw
 argument_list|,
+name|ins
+argument_list|,
 name|refName
 argument_list|,
 name|obj
@@ -653,17 +715,6 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-try|try
-init|(
-name|ObjectInserter
-name|ins
-init|=
-name|repo
-operator|.
-name|newObjectInserter
-argument_list|()
-init|)
-block|{
 name|DirCache
 name|dc
 init|=
@@ -706,14 +757,14 @@ specifier|public
 name|void
 name|flush
 parameter_list|()
-block|{         }
+block|{       }
 annotation|@
 name|Override
 specifier|public
 name|void
 name|close
 parameter_list|()
-block|{         }
+block|{       }
 block|}
 argument_list|)
 expr_stmt|;
@@ -1330,6 +1381,8 @@ name|repo
 argument_list|,
 name|rw
 argument_list|,
+name|ins
+argument_list|,
 name|refName
 argument_list|,
 name|treeId
@@ -1338,8 +1391,7 @@ name|merge
 argument_list|)
 return|;
 block|}
-block|}
-DECL|method|commit (Repository repo, RevWalk rw, String refName, ObjectId tree, RevCommit merge)
+DECL|method|commit (Repository repo, RevWalk rw, ObjectInserter ins, String refName, ObjectId tree, RevCommit merge)
 specifier|private
 name|RevCommit
 name|commit
@@ -1349,6 +1401,9 @@ name|repo
 parameter_list|,
 name|RevWalk
 name|rw
+parameter_list|,
+name|ObjectInserter
+name|ins
 parameter_list|,
 name|String
 name|refName
@@ -1457,17 +1512,6 @@ block|}
 name|ObjectId
 name|commitId
 decl_stmt|;
-try|try
-init|(
-name|ObjectInserter
-name|ins
-init|=
-name|repo
-operator|.
-name|newObjectInserter
-argument_list|()
-init|)
-block|{
 name|commitId
 operator|=
 name|ins
@@ -1477,12 +1521,16 @@ argument_list|(
 name|cb
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|save
+condition|)
+block|{
 name|ins
 operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-block|}
 name|RefUpdate
 name|ru
 init|=
@@ -1510,6 +1558,7 @@ operator|.
 name|forceUpdate
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|rw
 operator|.

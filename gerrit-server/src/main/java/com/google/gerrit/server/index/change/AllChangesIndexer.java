@@ -2122,11 +2122,6 @@ specifier|final
 name|Repository
 name|repo
 decl_stmt|;
-DECL|field|walk
-specifier|private
-name|RevWalk
-name|walk
-decl_stmt|;
 DECL|method|ProjectIndexer (ChangeIndexer indexer, ThreeWayMergeStrategy mergeStrategy, AutoMerger autoMerger, Multimap<ObjectId, ChangeData> changesByCommitId, Repository repo, ProgressMonitor done, ProgressMonitor failed, PrintWriter verboseWriter)
 specifier|private
 name|ProjectIndexer
@@ -2220,15 +2215,28 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
+name|ObjectInserter
+name|ins
+init|=
+name|repo
+operator|.
+name|newObjectInserter
+argument_list|()
+init|;
+name|RevWalk
 name|walk
 operator|=
 operator|new
 name|RevWalk
 argument_list|(
-name|repo
+name|ins
+operator|.
+name|newReader
+argument_list|()
 argument_list|)
-expr_stmt|;
-try|try
+init|)
 block|{
 comment|// Walk only refs first to cover as many changes as we can without having
 comment|// to mark every single change.
@@ -2320,6 +2328,10 @@ condition|)
 block|{
 name|getPathsAndIndex
 argument_list|(
+name|walk
+argument_list|,
+name|ins
+argument_list|,
 name|bCommit
 argument_list|)
 expr_stmt|;
@@ -2345,28 +2357,30 @@ control|)
 block|{
 name|getPathsAndIndex
 argument_list|(
+name|walk
+argument_list|,
+name|ins
+argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-finally|finally
-block|{
-name|walk
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 return|return
 literal|null
 return|;
 block|}
-DECL|method|getPathsAndIndex (ObjectId b)
+DECL|method|getPathsAndIndex (RevWalk walk, ObjectInserter ins, ObjectId b)
 specifier|private
 name|void
 name|getPathsAndIndex
 parameter_list|(
+name|RevWalk
+name|walk
+parameter_list|,
+name|ObjectInserter
+name|ins
+parameter_list|,
 name|ObjectId
 name|b
 parameter_list|)
@@ -2431,6 +2445,8 @@ argument_list|(
 name|bCommit
 argument_list|,
 name|walk
+argument_list|,
+name|ins
 argument_list|)
 decl_stmt|;
 name|df
@@ -2714,7 +2730,7 @@ name|paths
 argument_list|)
 return|;
 block|}
-DECL|method|aFor (RevCommit b, RevWalk walk)
+DECL|method|aFor (RevCommit b, RevWalk walk, ObjectInserter ins)
 specifier|private
 name|RevTree
 name|aFor
@@ -2724,6 +2740,9 @@ name|b
 parameter_list|,
 name|RevWalk
 name|walk
+parameter_list|,
+name|ObjectInserter
+name|ins
 parameter_list|)
 throws|throws
 name|IOException
@@ -2792,6 +2811,8 @@ argument_list|(
 name|repo
 argument_list|,
 name|walk
+argument_list|,
+name|ins
 argument_list|,
 name|b
 argument_list|,
