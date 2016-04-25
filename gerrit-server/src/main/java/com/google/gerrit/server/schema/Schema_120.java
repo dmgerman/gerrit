@@ -715,7 +715,6 @@ literal|"submodule_branch_name "
 operator|+
 literal|"FROM submodule_subscriptions"
 argument_list|)
-init|;
 init|)
 block|{
 while|while
