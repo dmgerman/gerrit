@@ -171,6 +171,16 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"lightbulb.png"
+argument_list|)
+DECL|method|blame ()
+name|ImageResource
+name|blame
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"page_white_put.png"
 argument_list|)
 DECL|method|downloadIcon ()

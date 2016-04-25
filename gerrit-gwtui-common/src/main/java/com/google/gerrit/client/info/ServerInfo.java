@@ -379,6 +379,15 @@ name|allowDrafts
 parameter_list|()
 comment|/*-{ return this.allow_drafts || false; }-*/
 function_decl|;
+DECL|method|allowBlame ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|allowBlame
+parameter_list|()
+comment|/*-{ return this.allow_blame || false; }-*/
+function_decl|;
 DECL|method|largeChange ()
 specifier|public
 specifier|final

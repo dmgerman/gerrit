@@ -245,6 +245,11 @@ name|String
 name|edit
 parameter_list|()
 function_decl|;
+DECL|method|blame ()
+name|String
+name|blame
+parameter_list|()
+function_decl|;
 DECL|method|addFileCommentToolTip ()
 name|String
 name|addFileCommentToolTip
