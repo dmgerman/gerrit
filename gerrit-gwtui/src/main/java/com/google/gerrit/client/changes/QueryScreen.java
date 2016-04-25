@@ -278,6 +278,22 @@ operator|+
 name|ID_PATTERN
 argument_list|)
 decl_stmt|;
+DECL|field|CHANGE_ID_TRIPLET
+specifier|private
+specifier|static
+specifier|final
+name|RegExp
+name|CHANGE_ID_TRIPLET
+init|=
+name|RegExp
+operator|.
+name|compile
+argument_list|(
+literal|"^(.)+~(.)+~"
+operator|+
+name|ID_PATTERN
+argument_list|)
+decl_stmt|;
 DECL|method|forQuery (String query)
 specifier|public
 specifier|static
@@ -576,6 +592,13 @@ name|query
 argument_list|)
 operator|||
 name|CHANGE_ID
+operator|.
+name|test
+argument_list|(
+name|query
+argument_list|)
+operator|||
+name|CHANGE_ID_TRIPLET
 operator|.
 name|test
 argument_list|(
