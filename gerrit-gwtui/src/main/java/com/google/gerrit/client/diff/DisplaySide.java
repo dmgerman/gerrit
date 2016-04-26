@@ -81,6 +81,22 @@ DECL|enumConstant|B
 name|A
 block|,
 name|B
+block|;
+DECL|method|otherSide ()
+name|DisplaySide
+name|otherSide
+parameter_list|()
+block|{
+return|return
+name|this
+operator|==
+name|A
+condition|?
+name|B
+else|:
+name|A
+return|;
+block|}
 block|}
 end_enum
 
