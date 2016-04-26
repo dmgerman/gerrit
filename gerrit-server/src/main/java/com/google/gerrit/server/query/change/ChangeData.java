@@ -80,6 +80,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkState
 import|;
 end_import
@@ -223,6 +239,20 @@ operator|.
 name|collect
 operator|.
 name|SetMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -2722,7 +2752,7 @@ name|committer
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -2773,6 +2803,8 @@ parameter_list|,
 name|MergeabilityCache
 name|mergeabilityCache
 parameter_list|,
+annotation|@
+name|Nullable
 name|StarredChangesUtil
 name|starredChangesUtil
 parameter_list|,
@@ -2901,7 +2933,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Change c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Change c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -2952,6 +2984,8 @@ parameter_list|,
 name|MergeabilityCache
 name|mergeabilityCache
 parameter_list|,
+annotation|@
+name|Nullable
 name|StarredChangesUtil
 name|starredChangesUtil
 parameter_list|,
@@ -3077,7 +3111,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted ChangeNotes cn)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted ChangeNotes cn)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3128,6 +3162,8 @@ parameter_list|,
 name|MergeabilityCache
 name|mergeabilityCache
 parameter_list|,
+annotation|@
+name|Nullable
 name|StarredChangesUtil
 name|starredChangesUtil
 parameter_list|,
@@ -3260,7 +3296,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted ChangeControl c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted ChangeControl c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3311,6 +3347,8 @@ parameter_list|,
 name|MergeabilityCache
 name|mergeabilityCache
 parameter_list|,
+annotation|@
+name|Nullable
 name|StarredChangesUtil
 name|starredChangesUtil
 parameter_list|,
@@ -3450,7 +3488,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Change.Id id)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Change.Id id)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3501,6 +3539,8 @@ parameter_list|,
 name|MergeabilityCache
 name|mergeabilityCache
 parameter_list|,
+annotation|@
+name|Nullable
 name|StarredChangesUtil
 name|starredChangesUtil
 parameter_list|,
@@ -6025,7 +6065,10 @@ condition|)
 block|{
 name|starredByUser
 operator|=
+name|checkNotNull
+argument_list|(
 name|starredChangesUtil
+argument_list|)
 operator|.
 name|byChange
 argument_list|(
