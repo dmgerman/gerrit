@@ -1571,6 +1571,10 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|IOException
+decl||
+name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
@@ -1622,6 +1626,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|IOException
+decl||
+name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
@@ -1669,6 +1675,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|IOException
+decl||
+name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{

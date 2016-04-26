@@ -90,11 +90,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
-operator|.
-name|AccountProjectWatch
+name|CurrentUser
 import|;
 end_import
 
@@ -108,7 +106,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
+name|account
+operator|.
+name|WatchConfig
+operator|.
+name|ProjectWatchKey
 import|;
 end_import
 
@@ -349,7 +351,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|AccountProjectWatch
+name|ProjectWatchKey
 name|w
 range|:
 name|getWatches
@@ -370,7 +372,7 @@ if|if
 condition|(
 name|w
 operator|.
-name|getFilter
+name|filter
 argument_list|()
 operator|!=
 literal|null
@@ -386,7 +388,7 @@ name|parse
 argument_list|(
 name|w
 operator|.
-name|getFilter
+name|filter
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -432,7 +434,7 @@ if|if
 condition|(
 name|w
 operator|.
-name|getProjectNameKey
+name|project
 argument_list|()
 operator|.
 name|equals
@@ -458,7 +460,7 @@ name|project
 argument_list|(
 name|w
 operator|.
-name|getProjectNameKey
+name|project
 argument_list|()
 operator|.
 name|get
@@ -592,7 +594,7 @@ specifier|private
 specifier|static
 name|Collection
 argument_list|<
-name|AccountProjectWatch
+name|ProjectWatchKey
 argument_list|>
 name|getWatches
 parameter_list|(
@@ -638,13 +640,16 @@ argument_list|)
 operator|.
 name|getProjectWatches
 argument_list|()
+operator|.
+name|keySet
+argument_list|()
 return|;
 block|}
 return|return
 name|Collections
 operator|.
 expr|<
-name|AccountProjectWatch
+name|ProjectWatchKey
 operator|>
 name|emptySet
 argument_list|()

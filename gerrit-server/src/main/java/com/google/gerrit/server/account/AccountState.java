@@ -219,6 +219,8 @@ operator|.
 name|client
 operator|.
 name|AccountProjectWatch
+operator|.
+name|NotifyType
 import|;
 end_import
 
@@ -254,6 +256,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|WatchConfig
+operator|.
+name|ProjectWatchKey
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -269,6 +289,16 @@ operator|.
 name|util
 operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
 import|;
 end_import
 
@@ -365,9 +395,14 @@ decl_stmt|;
 DECL|field|projectWatches
 specifier|private
 specifier|final
-name|Collection
+name|Map
 argument_list|<
-name|AccountProjectWatch
+name|ProjectWatchKey
+argument_list|,
+name|Set
+argument_list|<
+name|NotifyType
+argument_list|>
 argument_list|>
 name|projectWatches
 decl_stmt|;
@@ -386,7 +421,7 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|AccountState (Account account, Set<AccountGroup.UUID> actualGroups, Collection<AccountExternalId> externalIds, Collection<AccountProjectWatch> projectWatches)
+DECL|method|AccountState (Account account, Set<AccountGroup.UUID> actualGroups, Collection<AccountExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
 specifier|public
 name|AccountState
 parameter_list|(
@@ -407,9 +442,14 @@ name|AccountExternalId
 argument_list|>
 name|externalIds
 parameter_list|,
-name|Collection
+name|Map
 argument_list|<
-name|AccountProjectWatch
+name|ProjectWatchKey
+argument_list|,
+name|Set
+argument_list|<
+name|NotifyType
+argument_list|>
 argument_list|>
 name|projectWatches
 parameter_list|)
@@ -546,9 +586,14 @@ block|}
 comment|/** The project watches of the account. */
 DECL|method|getProjectWatches ()
 specifier|public
-name|Collection
+name|Map
 argument_list|<
-name|AccountProjectWatch
+name|ProjectWatchKey
+argument_list|,
+name|Set
+argument_list|<
+name|NotifyType
+argument_list|>
 argument_list|>
 name|getProjectWatches
 parameter_list|()

@@ -162,11 +162,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountProjectWatch
+name|AccountState
 import|;
 end_import
 
@@ -182,7 +182,9 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountState
+name|WatchConfig
+operator|.
+name|ProjectWatchKey
 import|;
 end_import
 
@@ -1012,6 +1014,9 @@ name|input
 operator|.
 name|getProjectWatches
 argument_list|()
+operator|.
+name|keySet
+argument_list|()
 argument_list|)
 operator|.
 name|transform
@@ -1019,7 +1024,7 @@ argument_list|(
 operator|new
 name|Function
 argument_list|<
-name|AccountProjectWatch
+name|ProjectWatchKey
 argument_list|,
 name|String
 argument_list|>
@@ -1031,14 +1036,14 @@ specifier|public
 name|String
 name|apply
 parameter_list|(
-name|AccountProjectWatch
+name|ProjectWatchKey
 name|in
 parameter_list|)
 block|{
 return|return
 name|in
 operator|.
-name|getProjectNameKey
+name|project
 argument_list|()
 operator|.
 name|get
