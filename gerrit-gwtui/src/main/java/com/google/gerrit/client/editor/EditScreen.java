@@ -2558,7 +2558,7 @@ literal|null
 condition|?
 name|modeInfo
 operator|.
-name|mode
+name|mime
 argument_list|()
 else|:
 literal|null
@@ -2842,7 +2842,7 @@ literal|null
 condition|?
 name|mode
 operator|.
-name|mode
+name|mime
 argument_list|()
 else|:
 literal|null
