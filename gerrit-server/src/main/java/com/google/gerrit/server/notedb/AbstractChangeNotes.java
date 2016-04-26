@@ -242,6 +242,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotesCommit
+operator|.
+name|ChangeNotesRevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -339,20 +357,6 @@ operator|.
 name|lib
 operator|.
 name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
 import|;
 end_import
 
@@ -521,13 +525,13 @@ name|LoadHandle
 implements|implements
 name|AutoCloseable
 block|{
-DECL|method|create (RevWalk walk, ObjectId id)
+DECL|method|create (ChangeNotesRevWalk walk, ObjectId id)
 specifier|public
 specifier|static
 name|LoadHandle
 name|create
 parameter_list|(
-name|RevWalk
+name|ChangeNotesRevWalk
 name|walk
 parameter_list|,
 name|ObjectId
@@ -578,7 +582,7 @@ annotation|@
 name|Nullable
 specifier|public
 specifier|abstract
-name|RevWalk
+name|ChangeNotesRevWalk
 name|walk
 parameter_list|()
 function_decl|;
@@ -879,8 +883,9 @@ name|LoadHandle
 operator|.
 name|create
 argument_list|(
-operator|new
-name|RevWalk
+name|ChangeNotesCommit
+operator|.
+name|newRevWalk
 argument_list|(
 name|repo
 argument_list|)

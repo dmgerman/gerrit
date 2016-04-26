@@ -362,20 +362,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -1021,8 +1007,9 @@ name|LoadHandle
 operator|.
 name|create
 argument_list|(
-operator|new
-name|RevWalk
+name|ChangeNotesCommit
+operator|.
+name|newRevWalk
 argument_list|(
 name|repo
 argument_list|)

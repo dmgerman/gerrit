@@ -818,6 +818,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|ChangeNotesCommit
+operator|.
+name|ChangeNotesRevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|util
 operator|.
 name|LabelVote
@@ -947,34 +965,6 @@ operator|.
 name|revwalk
 operator|.
 name|FooterKey
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
 import|;
 end_import
 
@@ -1306,7 +1296,7 @@ decl_stmt|;
 DECL|field|walk
 specifier|private
 specifier|final
-name|RevWalk
+name|ChangeNotesRevWalk
 name|walk
 decl_stmt|;
 DECL|field|repo
@@ -1367,7 +1357,7 @@ name|ChangeMessage
 argument_list|>
 name|changeMessagesByPatchSet
 decl_stmt|;
-DECL|method|ChangeNotesParser (Project.NameKey project, Change.Id changeId, ObjectId tip, RevWalk walk, GitRepositoryManager repoManager, ChangeNoteUtil noteUtil, NoteDbMetrics metrics)
+DECL|method|ChangeNotesParser (Project.NameKey project, Change.Id changeId, ObjectId tip, ChangeNotesRevWalk walk, GitRepositoryManager repoManager, ChangeNoteUtil noteUtil, NoteDbMetrics metrics)
 name|ChangeNotesParser
 parameter_list|(
 name|Project
@@ -1383,7 +1373,7 @@ parameter_list|,
 name|ObjectId
 name|tip
 parameter_list|,
-name|RevWalk
+name|ChangeNotesRevWalk
 name|walk
 parameter_list|,
 name|GitRepositoryManager
@@ -1567,13 +1557,22 @@ name|CHANGES
 argument_list|)
 init|)
 block|{
-for|for
-control|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
-range|:
+decl_stmt|;
+while|while
+condition|(
+operator|(
+name|commit
+operator|=
 name|walk
-control|)
+operator|.
+name|next
+argument_list|()
+operator|)
+operator|!=
+literal|null
+condition|)
 block|{
 name|parse
 argument_list|(
@@ -1824,12 +1823,12 @@ name|changeMessagesByPatchSet
 argument_list|)
 return|;
 block|}
-DECL|method|parse (RevCommit commit)
+DECL|method|parse (ChangeNotesCommit commit)
 specifier|private
 name|void
 name|parse
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -2192,7 +2191,7 @@ name|parseSubmitRecords
 argument_list|(
 name|commit
 operator|.
-name|getFooterLines
+name|getFooterLineValues
 argument_list|(
 name|FOOTER_SUBMITTED_WITH
 argument_list|)
@@ -2214,7 +2213,7 @@ name|line
 range|:
 name|commit
 operator|.
-name|getFooterLines
+name|getFooterLineValues
 argument_list|(
 name|FOOTER_LABEL
 argument_list|)
@@ -2254,7 +2253,7 @@ name|line
 range|:
 name|commit
 operator|.
-name|getFooterLines
+name|getFooterLineValues
 argument_list|(
 name|state
 operator|.
@@ -2300,12 +2299,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|parseSubmissionId (RevCommit commit)
+DECL|method|parseSubmissionId (ChangeNotesCommit commit)
 specifier|private
 name|String
 name|parseSubmissionId
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -2320,12 +2319,12 @@ name|FOOTER_SUBMISSION_ID
 argument_list|)
 return|;
 block|}
-DECL|method|parseBranch (RevCommit commit)
+DECL|method|parseBranch (ChangeNotesCommit commit)
 specifier|private
 name|String
 name|parseBranch
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -2356,12 +2355,12 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|parseChangeId (RevCommit commit)
+DECL|method|parseChangeId (ChangeNotesCommit commit)
 specifier|private
 name|String
 name|parseChangeId
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -2376,12 +2375,12 @@ name|FOOTER_CHANGE_ID
 argument_list|)
 return|;
 block|}
-DECL|method|parseSubject (RevCommit commit)
+DECL|method|parseSubject (ChangeNotesCommit commit)
 specifier|private
 name|String
 name|parseSubject
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -2396,12 +2395,12 @@ name|FOOTER_SUBJECT
 argument_list|)
 return|;
 block|}
-DECL|method|parseTopic (RevCommit commit)
+DECL|method|parseTopic (ChangeNotesCommit commit)
 specifier|private
 name|String
 name|parseTopic
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -2416,12 +2415,12 @@ name|FOOTER_TOPIC
 argument_list|)
 return|;
 block|}
-DECL|method|parseOneFooter (RevCommit commit, FooterKey footerKey)
+DECL|method|parseOneFooter (ChangeNotesCommit commit, FooterKey footerKey)
 specifier|private
 name|String
 name|parseOneFooter
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|,
 name|FooterKey
@@ -2438,7 +2437,7 @@ name|footerLines
 init|=
 name|commit
 operator|.
-name|getFooterLines
+name|getFooterLineValues
 argument_list|(
 name|footerKey
 argument_list|)
@@ -2484,12 +2483,12 @@ literal|0
 argument_list|)
 return|;
 block|}
-DECL|method|parseExactlyOneFooter (RevCommit commit, FooterKey footerKey)
+DECL|method|parseExactlyOneFooter (ChangeNotesCommit commit, FooterKey footerKey)
 specifier|private
 name|String
 name|parseExactlyOneFooter
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|,
 name|FooterKey
@@ -2534,12 +2533,12 @@ return|return
 name|line
 return|;
 block|}
-DECL|method|parseRevision (RevCommit commit)
+DECL|method|parseRevision (ChangeNotesCommit commit)
 specifier|private
 name|ObjectId
 name|parseRevision
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -2756,7 +2755,7 @@ name|ts
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseGroups (PatchSet.Id psId, RevCommit commit)
+DECL|method|parseGroups (PatchSet.Id psId, ChangeNotesCommit commit)
 specifier|private
 name|void
 name|parseGroups
@@ -2766,7 +2765,7 @@ operator|.
 name|Id
 name|psId
 parameter_list|,
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -2861,18 +2860,19 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseHashtags (RevCommit commit)
+DECL|method|parseHashtags (ChangeNotesCommit commit)
 specifier|private
 name|void
 name|parseHashtags
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
 block|{
-comment|// Commits are parsed in reverse order and only the last set of hashtags should be used.
+comment|// Commits are parsed in reverse order and only the last set of hashtags
+comment|// should be used.
 if|if
 condition|(
 name|hashtags
@@ -2890,7 +2890,7 @@ name|hashtagsLines
 init|=
 name|commit
 operator|.
-name|getFooterLines
+name|getFooterLineValues
 argument_list|(
 name|FOOTER_HASHTAGS
 argument_list|)
@@ -2975,12 +2975,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseTag (RevCommit commit)
+DECL|method|parseTag (ChangeNotesCommit commit)
 specifier|private
 name|void
 name|parseTag
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -2998,7 +2998,7 @@ name|tagLines
 init|=
 name|commit
 operator|.
-name|getFooterLines
+name|getFooterLineValues
 argument_list|(
 name|FOOTER_TAG
 argument_list|)
@@ -3046,14 +3046,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|parseStatus (RevCommit commit)
+DECL|method|parseStatus (ChangeNotesCommit commit)
 specifier|private
 name|Change
 operator|.
 name|Status
 name|parseStatus
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -3067,7 +3067,7 @@ name|statusLines
 init|=
 name|commit
 operator|.
-name|getFooterLines
+name|getFooterLineValues
 argument_list|(
 name|FOOTER_STATUS
 argument_list|)
@@ -3163,14 +3163,14 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|parsePatchSetId (RevCommit commit)
+DECL|method|parsePatchSetId (ChangeNotesCommit commit)
 specifier|private
 name|PatchSet
 operator|.
 name|Id
 name|parsePatchSetId
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -3252,12 +3252,12 @@ name|psId
 argument_list|)
 return|;
 block|}
-DECL|method|parsePatchSetState (RevCommit commit)
+DECL|method|parsePatchSetState (ChangeNotesCommit commit)
 specifier|private
 name|PatchSetState
 name|parsePatchSetState
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws
@@ -3380,7 +3380,7 @@ name|psIdLine
 argument_list|)
 throw|;
 block|}
-DECL|method|parseChangeMessage (PatchSet.Id psId, Account.Id accountId, RevCommit commit, Timestamp ts)
+DECL|method|parseChangeMessage (PatchSet.Id psId, Account.Id accountId, ChangeNotesCommit commit, Timestamp ts)
 specifier|private
 name|ChangeMessage
 name|parseChangeMessage
@@ -3395,7 +3395,7 @@ operator|.
 name|Id
 name|accountId
 parameter_list|,
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|,
 name|Timestamp
@@ -3715,7 +3715,7 @@ operator|.
 name|getObjectReader
 argument_list|()
 decl_stmt|;
-name|RevCommit
+name|ChangeNotesCommit
 name|tipCommit
 init|=
 name|walk
@@ -4971,14 +4971,14 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|parseIdent (RevCommit commit)
+DECL|method|parseIdent (ChangeNotesCommit commit)
 specifier|private
 name|Account
 operator|.
 name|Id
 name|parseIdent
 parameter_list|(
-name|RevCommit
+name|ChangeNotesCommit
 name|commit
 parameter_list|)
 throws|throws

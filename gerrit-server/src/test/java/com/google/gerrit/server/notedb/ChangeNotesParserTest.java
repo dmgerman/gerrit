@@ -110,6 +110,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotesCommit
+operator|.
+name|ChangeNotesRevWalk
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -228,20 +246,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|After
@@ -286,7 +290,7 @@ name|testRepo
 decl_stmt|;
 DECL|field|walk
 specifier|private
-name|RevWalk
+name|ChangeNotesRevWalk
 name|walk
 decl_stmt|;
 annotation|@
@@ -310,8 +314,9 @@ argument_list|)
 expr_stmt|;
 name|walk
 operator|=
-operator|new
-name|RevWalk
+name|ChangeNotesCommit
+operator|.
+name|newRevWalk
 argument_list|(
 name|repo
 argument_list|)
@@ -353,7 +358,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
 argument_list|)
@@ -366,7 +371,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 argument_list|,
 operator|new
 name|PersonIdent
@@ -396,7 +401,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 argument_list|,
 operator|new
 name|PersonIdent
@@ -439,7 +444,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Status: NEW\n"
 operator|+
@@ -456,7 +461,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Status: new\n"
 operator|+
@@ -469,7 +474,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Status: OOPS\n"
 argument_list|)
@@ -480,7 +485,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Status: NEW\n"
 operator|+
@@ -508,7 +513,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
 argument_list|)
@@ -526,9 +531,9 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 argument_list|)
 expr_stmt|;
 name|assertParseSucceeds
@@ -541,7 +546,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
 argument_list|)
@@ -552,7 +557,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: x\n"
+literal|"Patch-set: x\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -576,7 +581,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Label: Label1=+1\n"
 operator|+
@@ -599,7 +604,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Label: -Label1\n"
 operator|+
@@ -614,7 +619,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Label: Label1=X\n"
 argument_list|)
@@ -625,7 +630,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Label: Label1 = 1\n"
 argument_list|)
@@ -636,7 +641,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Label: X+Y\n"
 argument_list|)
@@ -647,7 +652,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Label: Label1 Other Account<2@gerrit>\n"
 argument_list|)
@@ -658,7 +663,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Label: -Label!1\n"
 argument_list|)
@@ -669,7 +674,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Label: -Label!1 Other Account<2@gerrit>\n"
 argument_list|)
@@ -695,7 +700,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
 operator|+
@@ -718,7 +723,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Submitted-with: OOPS\n"
 argument_list|)
@@ -729,7 +734,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Submitted-with: NEED: X+Y\n"
 argument_list|)
@@ -740,7 +745,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Submitted-with: OK: X+Y: Change Owner<1@gerrit>\n"
 argument_list|)
@@ -751,7 +756,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Submitted-with: OK: Code-Review: 1@gerrit\n"
 argument_list|)
@@ -777,7 +782,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
 operator|+
@@ -790,7 +795,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Submission-id: 1-1453387607626-96fabc25\n"
 operator|+
@@ -818,7 +823,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Reviewer: Change Owner<1@gerrit>\n"
 operator|+
@@ -833,7 +838,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Reviewer: 1@gerrit\n"
 argument_list|)
@@ -859,7 +864,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Topic: Some Topic\n"
 operator|+
@@ -876,7 +881,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Topic:\n"
 operator|+
@@ -889,7 +894,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Topic: Some Topic\n"
 operator|+
@@ -917,7 +922,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
 argument_list|)
@@ -932,7 +937,7 @@ literal|"Branch: master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
 argument_list|)
@@ -943,7 +948,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -971,7 +976,7 @@ literal|"Branch: refs/heads/master\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Subject: This is a test change\n"
 argument_list|)
@@ -982,7 +987,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Change-id: I577fb248e474018276351785930358ec0450e9f7\n"
 operator|+
@@ -1006,7 +1011,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -1021,7 +1026,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Subject: Some subject of a change\n"
 operator|+
@@ -1344,7 +1349,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -1361,7 +1366,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -1378,7 +1383,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -1389,6 +1394,32 @@ operator|+
 literal|"Tag: ci\n"
 operator|+
 literal|"Tag: jenkins\n"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|caseInsensitiveFooters ()
+specifier|public
+name|void
+name|caseInsensitiveFooters
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"BRaNch: refs/heads/master\n"
+operator|+
+literal|"Change-ID: I577fb248e474018276351785930358ec0450e9f7\n"
+operator|+
+literal|"patcH-set: 1\n"
+operator|+
+literal|"subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 block|}
