@@ -377,6 +377,15 @@ operator|.
 name|HASHTAG_CASE_AWARE
 argument_list|)
 decl_stmt|;
+DECL|field|NAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NAME
+init|=
+literal|"changes"
+decl_stmt|;
 DECL|field|INSTANCE
 specifier|public
 specifier|static
@@ -395,7 +404,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"changes"
+name|NAME
 argument_list|,
 name|ChangeData
 operator|.

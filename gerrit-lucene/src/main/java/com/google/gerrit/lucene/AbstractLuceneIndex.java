@@ -86,6 +86,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Joiner
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Sets
@@ -831,7 +845,7 @@ name|NrtFuture
 argument_list|>
 name|notDoneNrtFutures
 decl_stmt|;
-DECL|method|AbstractLuceneIndex ( Schema<V> schema, SitePaths sitePaths, Directory dir, final String name, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
+DECL|method|AbstractLuceneIndex ( Schema<V> schema, SitePaths sitePaths, Directory dir, String name, String subIndex, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
 name|AbstractLuceneIndex
 parameter_list|(
 name|Schema
@@ -846,9 +860,11 @@ parameter_list|,
 name|Directory
 name|dir
 parameter_list|,
-specifier|final
 name|String
 name|name
+parameter_list|,
+name|String
+name|subIndex
 parameter_list|,
 name|GerritIndexWriterConfig
 name|writerConfig
@@ -877,6 +893,27 @@ name|dir
 operator|=
 name|dir
 expr_stmt|;
+specifier|final
+name|String
+name|index
+init|=
+name|Joiner
+operator|.
+name|on
+argument_list|(
+literal|'_'
+argument_list|)
+operator|.
+name|skipNulls
+argument_list|()
+operator|.
+name|join
+argument_list|(
+name|name
+argument_list|,
+name|subIndex
+argument_list|)
+decl_stmt|;
 name|IndexWriter
 name|delegateWriter
 decl_stmt|;
@@ -967,7 +1004,7 @@ name|setNameFormat
 argument_list|(
 literal|"Commit-%d "
 operator|+
-name|name
+name|index
 argument_list|)
 operator|.
 name|setDaemon
@@ -1026,7 +1063,7 @@ name|error
 argument_list|(
 literal|"Error committing "
 operator|+
-name|name
+name|index
 operator|+
 literal|" Lucene index"
 argument_list|,
@@ -1046,7 +1083,7 @@ name|error
 argument_list|(
 literal|"Error committing "
 operator|+
-name|name
+name|index
 operator|+
 literal|" Lucene index"
 argument_list|,
@@ -1073,7 +1110,7 @@ name|error
 argument_list|(
 literal|"SEVERE: Error closing "
 operator|+
-name|name
+name|index
 operator|+
 literal|" Lucene index  after OOM; index may be corrupted."
 argument_list|,
