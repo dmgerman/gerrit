@@ -508,18 +508,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -643,10 +631,7 @@ decl_stmt|;
 DECL|field|listMembers
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ListMembers
-argument_list|>
 name|listMembers
 decl_stmt|;
 DECL|field|addMembers
@@ -693,7 +678,7 @@ name|rsrc
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|GroupApiImpl ( GetGroup getGroup, GetDetail getDetail, GetName getName, PutName putName, GetOwner getOwner, PutOwner putOwner, GetDescription getDescription, PutDescription putDescription, GetOptions getOptions, PutOptions putOptions, Provider<ListMembers> listMembers, AddMembers addMembers, DeleteMembers deleteMembers, ListIncludedGroups listGroups, AddIncludedGroups addGroups, DeleteIncludedGroups deleteGroups, GetAuditLog getAuditLog, @Assisted GroupResource rsrc)
+DECL|method|GroupApiImpl ( GetGroup getGroup, GetDetail getDetail, GetName getName, PutName putName, GetOwner getOwner, PutOwner putOwner, GetDescription getDescription, PutDescription putDescription, GetOptions getOptions, PutOptions putOptions, ListMembers listMembers, AddMembers addMembers, DeleteMembers deleteMembers, ListIncludedGroups listGroups, AddIncludedGroups addGroups, DeleteIncludedGroups deleteGroups, GetAuditLog getAuditLog, @Assisted GroupResource rsrc)
 name|GroupApiImpl
 parameter_list|(
 name|GetGroup
@@ -726,10 +711,7 @@ parameter_list|,
 name|PutOptions
 name|putOptions
 parameter_list|,
-name|Provider
-argument_list|<
 name|ListMembers
-argument_list|>
 name|listMembers
 parameter_list|,
 name|AddMembers
@@ -1307,15 +1289,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
-name|ListMembers
-name|list
-init|=
 name|listMembers
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
-name|list
 operator|.
 name|setRecursive
 argument_list|(
@@ -1325,7 +1299,7 @@ expr_stmt|;
 try|try
 block|{
 return|return
-name|list
+name|listMembers
 operator|.
 name|apply
 argument_list|(

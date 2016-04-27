@@ -248,18 +248,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -305,10 +293,7 @@ decl_stmt|;
 DECL|field|getDiff
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GetDiff
-argument_list|>
 name|getDiff
 decl_stmt|;
 DECL|field|file
@@ -319,16 +304,13 @@ name|file
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FileApiImpl (GetContent getContent, Provider<GetDiff> getDiff, @Assisted FileResource file)
+DECL|method|FileApiImpl (GetContent getContent, GetDiff getDiff, @Assisted FileResource file)
 name|FileApiImpl
 parameter_list|(
 name|GetContent
 name|getContent
 parameter_list|,
-name|Provider
-argument_list|<
 name|GetDiff
-argument_list|>
 name|getDiff
 parameter_list|,
 annotation|@
@@ -413,9 +395,6 @@ block|{
 return|return
 name|getDiff
 operator|.
-name|get
-argument_list|()
-operator|.
 name|apply
 argument_list|(
 name|file
@@ -463,9 +442,6 @@ try|try
 block|{
 return|return
 name|getDiff
-operator|.
-name|get
-argument_list|()
 operator|.
 name|setBase
 argument_list|(
@@ -549,14 +525,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
-name|GetDiff
-name|diff
-init|=
-name|getDiff
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|r
@@ -567,7 +535,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|diff
+name|getDiff
 operator|.
 name|setBase
 argument_list|(
@@ -588,7 +556,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|diff
+name|getDiff
 operator|.
 name|setContext
 argument_list|(
@@ -609,7 +577,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|diff
+name|getDiff
 operator|.
 name|setIntraline
 argument_list|(
@@ -630,7 +598,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|diff
+name|getDiff
 operator|.
 name|setWhitespace
 argument_list|(
@@ -644,7 +612,7 @@ block|}
 try|try
 block|{
 return|return
-name|diff
+name|getDiff
 operator|.
 name|apply
 argument_list|(

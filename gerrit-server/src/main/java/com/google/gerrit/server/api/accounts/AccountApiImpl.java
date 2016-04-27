@@ -584,18 +584,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -690,10 +678,7 @@ decl_stmt|;
 DECL|field|getAvatar
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GetAvatar
-argument_list|>
 name|getAvatar
 decl_stmt|;
 DECL|field|getPreferences
@@ -776,7 +761,7 @@ name|addSshKey
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountApiImpl (AccountLoader.Factory ailf, ChangesCollection changes, Provider<GetAvatar> getAvatar, GetPreferences getPreferences, SetPreferences setPreferences, GetDiffPreferences getDiffPreferences, SetDiffPreferences setDiffPreferences, GetEditPreferences getEditPreferences, SetEditPreferences setEditPreferences, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, CreateEmail.Factory createEmailFactory, GpgApiAdapter gpgApiAdapter, GetSshKeys getSshKeys, AddSshKey addSshKey, @Assisted AccountResource account)
+DECL|method|AccountApiImpl (AccountLoader.Factory ailf, ChangesCollection changes, GetAvatar getAvatar, GetPreferences getPreferences, SetPreferences setPreferences, GetDiffPreferences getDiffPreferences, SetDiffPreferences setDiffPreferences, GetEditPreferences getEditPreferences, SetEditPreferences setEditPreferences, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, CreateEmail.Factory createEmailFactory, GpgApiAdapter gpgApiAdapter, GetSshKeys getSshKeys, AddSshKey addSshKey, @Assisted AccountResource account)
 name|AccountApiImpl
 parameter_list|(
 name|AccountLoader
@@ -787,10 +772,7 @@ parameter_list|,
 name|ChangesCollection
 name|changes
 parameter_list|,
-name|Provider
-argument_list|<
 name|GetAvatar
-argument_list|>
 name|getAvatar
 parameter_list|,
 name|GetPreferences
@@ -1025,15 +1007,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
-name|GetAvatar
-name|myGetAvatar
-init|=
 name|getAvatar
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
-name|myGetAvatar
 operator|.
 name|setSize
 argument_list|(
@@ -1041,7 +1015,7 @@ name|size
 argument_list|)
 expr_stmt|;
 return|return
-name|myGetAvatar
+name|getAvatar
 operator|.
 name|apply
 argument_list|(
