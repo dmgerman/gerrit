@@ -456,12 +456,16 @@ operator|.
 name|ALL_SCHEMA_DEFS
 control|)
 block|{
-comment|// TODO(dborowitz): Totally broken for non-change indexes.
 name|AbstractLuceneIndex
 operator|.
 name|setReady
 argument_list|(
 name|site
+argument_list|,
+name|def
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|def
 operator|.

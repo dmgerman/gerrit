@@ -544,22 +544,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|storage
-operator|.
-name|file
-operator|.
-name|FileBasedConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -728,7 +712,7 @@ operator|+
 literal|"_SORT"
 return|;
 block|}
-DECL|method|setReady (SitePaths sitePaths, int version, boolean ready)
+DECL|method|setReady (SitePaths sitePaths, String name, int version, boolean ready)
 specifier|public
 specifier|static
 name|void
@@ -736,6 +720,9 @@ name|setReady
 parameter_list|(
 name|SitePaths
 name|sitePaths
+parameter_list|,
+name|String
+name|name
 parameter_list|,
 name|int
 name|version
@@ -748,22 +735,20 @@ name|IOException
 block|{
 try|try
 block|{
-comment|// TODO(dborowitz): Totally broken for non-change indexes.
-name|FileBasedConfig
+name|GerritIndexStatus
 name|cfg
 init|=
-name|LuceneVersionManager
-operator|.
-name|loadGerritIndexConfig
+operator|new
+name|GerritIndexStatus
 argument_list|(
 name|sitePaths
 argument_list|)
 decl_stmt|;
-name|LuceneVersionManager
+name|cfg
 operator|.
 name|setReady
 argument_list|(
-name|cfg
+name|name
 argument_list|,
 name|version
 argument_list|,
@@ -811,6 +796,12 @@ specifier|private
 specifier|final
 name|Directory
 name|dir
+decl_stmt|;
+DECL|field|name
+specifier|private
+specifier|final
+name|String
+name|name
 decl_stmt|;
 DECL|field|writer
 specifier|private
@@ -892,6 +883,12 @@ operator|.
 name|dir
 operator|=
 name|dir
+expr_stmt|;
+name|this
+operator|.
+name|name
+operator|=
+name|name
 expr_stmt|;
 specifier|final
 name|String
@@ -1294,6 +1291,8 @@ block|{
 name|setReady
 argument_list|(
 name|sitePaths
+argument_list|,
+name|name
 argument_list|,
 name|schema
 operator|.

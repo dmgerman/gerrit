@@ -1347,12 +1347,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|field|sitePaths
-specifier|private
-specifier|final
-name|SitePaths
-name|sitePaths
-decl_stmt|;
 DECL|field|fillArgs
 specifier|private
 specifier|final
@@ -1458,12 +1452,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|this
-operator|.
-name|sitePaths
-operator|=
-name|sitePaths
-expr_stmt|;
 name|this
 operator|.
 name|fillArgs
@@ -2099,19 +2087,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Do not delegate to ChangeSubIndex#markReady, since changes have an
-comment|// additional level of directory nesting.
-name|AbstractLuceneIndex
+comment|// Arbitrary done on open index, as ready bit is set
+comment|// per index and not sub index
+name|openIndex
 operator|.
-name|setReady
+name|markReady
 argument_list|(
-name|sitePaths
-argument_list|,
-name|schema
-operator|.
-name|getVersion
-argument_list|()
-argument_list|,
 name|ready
 argument_list|)
 expr_stmt|;
