@@ -76,6 +76,22 @@ name|common
 operator|.
 name|base
 operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Preconditions
 operator|.
 name|checkArgument
@@ -1887,6 +1903,50 @@ operator|.
 name|cmds
 argument_list|)
 expr_stmt|;
+name|Integer
+name|minPsNum
+init|=
+literal|null
+decl_stmt|;
+for|for
+control|(
+name|PatchSet
+name|ps
+range|:
+name|bundle
+operator|.
+name|getPatchSets
+argument_list|()
+control|)
+block|{
+name|int
+name|n
+init|=
+name|ps
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|minPsNum
+operator|==
+literal|null
+operator|||
+name|n
+operator|<
+name|minPsNum
+condition|)
+block|{
+name|minPsNum
+operator|=
+name|n
+expr_stmt|;
+block|}
+block|}
 for|for
 control|(
 name|PatchSet
@@ -1908,6 +1968,11 @@ argument_list|(
 name|change
 argument_list|,
 name|ps
+argument_list|,
+name|checkNotNull
+argument_list|(
+name|minPsNum
+argument_list|)
 argument_list|,
 name|manager
 operator|.
@@ -2066,6 +2131,8 @@ name|getId
 argument_list|()
 argument_list|,
 name|events
+argument_list|,
+name|minPsNum
 argument_list|)
 expr_stmt|;
 name|events
@@ -2313,7 +2380,7 @@ name|PLC_ORDER
 argument_list|)
 return|;
 block|}
-DECL|method|sortEvents (Change.Id changeId, List<Event> events)
+DECL|method|sortEvents (Change.Id changeId, List<Event> events, Integer minPsNum)
 specifier|private
 name|void
 name|sortEvents
@@ -2328,6 +2395,9 @@ argument_list|<
 name|Event
 argument_list|>
 name|events
+parameter_list|,
+name|Integer
+name|minPsNum
 parameter_list|)
 block|{
 name|Collections
@@ -2340,12 +2410,24 @@ name|EVENT_ORDER
 argument_list|)
 expr_stmt|;
 comment|// Fill in any missing patch set IDs using the latest patch set of the
-comment|// change at the time of the event. This is as if a user added a
+comment|// change at the time of the event, because NoteDb can't represent actions
+comment|// with no associated patch set ID. This workaround is as if a user added a
 comment|// ChangeMessage on the change by replying from the latest patch set.
+comment|//
+comment|// Start with the first patch set that actually exists. If there are no
+comment|// patch sets at all, minPsNum will be null, so just bail and use 1 as the
+comment|// patch set ID. The corresponding patch set won't exist, but this change is
+comment|// probably corrupt anyway, as deleting the last draft patch set should have
+comment|// deleted the whole change.
 name|int
 name|ps
 init|=
+name|firstNonNull
+argument_list|(
+name|minPsNum
+argument_list|,
 literal|1
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -4085,13 +4167,19 @@ specifier|final
 name|PatchSet
 name|ps
 decl_stmt|;
+DECL|field|createChange
+specifier|private
+specifier|final
+name|boolean
+name|createChange
+decl_stmt|;
 DECL|field|rw
 specifier|private
 specifier|final
 name|RevWalk
 name|rw
 decl_stmt|;
-DECL|method|PatchSetEvent (Change change, PatchSet ps, RevWalk rw)
+DECL|method|PatchSetEvent (Change change, PatchSet ps, int minPsNum, RevWalk rw)
 name|PatchSetEvent
 parameter_list|(
 name|Change
@@ -4099,6 +4187,9 @@ name|change
 parameter_list|,
 name|PatchSet
 name|ps
+parameter_list|,
+name|int
+name|minPsNum
 parameter_list|,
 name|RevWalk
 name|rw
@@ -4147,6 +4238,17 @@ name|rw
 operator|=
 name|rw
 expr_stmt|;
+name|this
+operator|.
+name|createChange
+operator|=
+name|ps
+operator|.
+name|getPatchSetId
+argument_list|()
+operator|==
+name|minPsNum
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -4190,12 +4292,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|ps
-operator|.
-name|getPatchSetId
-argument_list|()
-operator|==
-literal|1
+name|createChange
 condition|)
 block|{
 name|update
