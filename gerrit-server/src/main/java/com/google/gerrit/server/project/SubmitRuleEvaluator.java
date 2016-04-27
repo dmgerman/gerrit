@@ -3339,6 +3339,21 @@ operator|.
 name|currentPatchSet
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|patchSet
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"No patch set found"
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 DECL|method|getProjectName ()

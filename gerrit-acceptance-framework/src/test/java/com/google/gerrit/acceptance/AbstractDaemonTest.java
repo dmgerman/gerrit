@@ -2855,6 +2855,28 @@ name|ref
 argument_list|)
 return|;
 block|}
+DECL|method|amendChangeAsDraft (String changeId)
+specifier|protected
+name|PushOneCommit
+operator|.
+name|Result
+name|amendChangeAsDraft
+parameter_list|(
+name|String
+name|changeId
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|amendChange
+argument_list|(
+name|changeId
+argument_list|,
+literal|"refs/drafts/master"
+argument_list|)
+return|;
+block|}
 DECL|method|info (String id)
 specifier|protected
 name|ChangeInfo
