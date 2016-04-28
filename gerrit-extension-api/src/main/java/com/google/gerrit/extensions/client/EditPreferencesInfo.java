@@ -131,6 +131,11 @@ specifier|public
 name|Boolean
 name|autoCloseBrackets
 decl_stmt|;
+DECL|field|showBase
+specifier|public
+name|Boolean
+name|showBase
+decl_stmt|;
 DECL|field|theme
 specifier|public
 name|Theme
@@ -218,6 +223,12 @@ expr_stmt|;
 name|i
 operator|.
 name|autoCloseBrackets
+operator|=
+literal|false
+expr_stmt|;
+name|i
+operator|.
+name|showBase
 operator|=
 literal|false
 expr_stmt|;

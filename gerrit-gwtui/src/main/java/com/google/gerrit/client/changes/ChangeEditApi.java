@@ -237,7 +237,7 @@ class|class
 name|ChangeEditApi
 block|{
 comment|/** Get file (or commit message) contents. */
-DECL|method|get (PatchSet.Id id, String path, HttpCallback<NativeString> cb)
+DECL|method|get (PatchSet.Id id, String path, boolean base, HttpCallback<NativeString> cb)
 specifier|public
 specifier|static
 name|void
@@ -250,6 +250,9 @@ name|id
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+name|boolean
+name|base
 parameter_list|,
 name|HttpCallback
 argument_list|<
@@ -323,6 +326,13 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
+operator|.
+name|addParameter
+argument_list|(
+literal|"base"
+argument_list|,
+name|base
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -341,12 +351,53 @@ argument_list|()
 argument_list|,
 name|path
 argument_list|)
+operator|.
+name|addParameter
+argument_list|(
+literal|"base"
+argument_list|,
+name|base
+argument_list|)
 expr_stmt|;
 block|}
 name|api
 operator|.
 name|get
 argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Get file (or commit message) contents of the edit. */
+DECL|method|get (PatchSet.Id id, String path, HttpCallback<NativeString> cb)
+specifier|public
+specifier|static
+name|void
+name|get
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|String
+name|path
+parameter_list|,
+name|HttpCallback
+argument_list|<
+name|NativeString
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|get
+argument_list|(
+name|id
+argument_list|,
+name|path
+argument_list|,
+literal|false
+argument_list|,
 name|cb
 argument_list|)
 expr_stmt|;

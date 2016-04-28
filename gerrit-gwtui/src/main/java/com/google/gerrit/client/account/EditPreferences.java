@@ -258,6 +258,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|showBase
+argument_list|(
+name|in
+operator|.
+name|showBase
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|theme
 argument_list|(
 name|in
@@ -363,6 +372,13 @@ operator|.
 name|autoCloseBrackets
 operator|=
 name|autoCloseBrackets
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|showBase
+operator|=
+name|showBase
 argument_list|()
 expr_stmt|;
 name|p
@@ -597,6 +613,18 @@ name|c
 parameter_list|)
 comment|/*-{ this.auto_close_brackets = c }-*/
 function_decl|;
+DECL|method|showBase (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|showBase
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.show_base = s }-*/
+function_decl|;
 DECL|method|theme ()
 specifier|public
 specifier|final
@@ -799,6 +827,15 @@ name|boolean
 name|autoCloseBrackets
 parameter_list|()
 comment|/*-{ return this.auto_close_brackets || false }-*/
+function_decl|;
+DECL|method|showBase ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|showBase
+parameter_list|()
+comment|/*-{ return this.show_base || false }-*/
 function_decl|;
 DECL|method|get (String n, int d)
 specifier|private
