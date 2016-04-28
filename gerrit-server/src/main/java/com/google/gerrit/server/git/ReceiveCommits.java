@@ -3440,104 +3440,83 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final Sequences seq, final Provider<InternalChangeQuery> queryProvider, final SchemaFactory<ReviewDb> schemaFactory, final ChangeNotes.Factory notesFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final MergedSender.Factory mergedSenderFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ChangeMessagesUtil cmUtil, final PatchSetUtil psUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, @SendEmailExecutor final ExecutorService sendEmailExecutor, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final Provider<SubmoduleOp> subOpProvider, final Provider<Submit> submitProvider, final Provider<MergeOp> mergeOpProvider, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration, final ChangeEditUtil editUtil, final BatchUpdate.Factory batchUpdateFactory, final SetHashtagsOp.Factory hashtagsFactory, final ReplaceOp.Factory replaceOpFactory)
+DECL|method|ReceiveCommits (ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schemaFactory, ChangeNotes.Factory notesFactory, AccountResolver accountResolver, CmdLineParser.Factory optionParserFactory, MergedSender.Factory mergedSenderFactory, GitReferenceUpdated gitRefUpdated, PatchSetInfoFactory patchSetInfoFactory, ChangeHooks hooks, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ProjectCache projectCache, GitRepositoryManager repoManager, TagCache tagCache, AccountCache accountCache, ChangeCache changeCache, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, @SendEmailExecutor ExecutorService sendEmailExecutor, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, Provider<SubmoduleOp> subOpProvider, Provider<Submit> submitProvider, Provider<MergeOp> mergeOpProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory)
 name|ReceiveCommits
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|Sequences
 name|seq
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
 name|schemaFactory
 parameter_list|,
-specifier|final
 name|ChangeNotes
 operator|.
 name|Factory
 name|notesFactory
 parameter_list|,
-specifier|final
 name|AccountResolver
 name|accountResolver
 parameter_list|,
-specifier|final
 name|CmdLineParser
 operator|.
 name|Factory
 name|optionParserFactory
 parameter_list|,
-specifier|final
 name|MergedSender
 operator|.
 name|Factory
 name|mergedSenderFactory
 parameter_list|,
-specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 parameter_list|,
-specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 parameter_list|,
-specifier|final
 name|ChangeHooks
 name|hooks
 parameter_list|,
-specifier|final
 name|ChangeMessagesUtil
 name|cmUtil
 parameter_list|,
-specifier|final
 name|PatchSetUtil
 name|psUtil
 parameter_list|,
-specifier|final
 name|ProjectCache
 name|projectCache
 parameter_list|,
-specifier|final
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-specifier|final
 name|TagCache
 name|tagCache
 parameter_list|,
-specifier|final
 name|AccountCache
 name|accountCache
 parameter_list|,
-specifier|final
 name|ChangeCache
 name|changeCache
 parameter_list|,
-specifier|final
 name|ChangesCollection
 name|changes
 parameter_list|,
-specifier|final
 name|ChangeInserter
 operator|.
 name|Factory
 name|changeInserterFactory
 parameter_list|,
-specifier|final
 name|CommitValidators
 operator|.
 name|Factory
@@ -3545,13 +3524,11 @@ name|commitValidatorsFactory
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
-specifier|final
 name|String
 name|canonicalWebUrl
 parameter_list|,
 annotation|@
 name|SendEmailExecutor
-specifier|final
 name|ExecutorService
 name|sendEmailExecutor
 parameter_list|,
@@ -3560,15 +3537,12 @@ name|ChangeUpdateExecutor
 name|ListeningExecutorService
 name|changeUpdateExector
 parameter_list|,
-specifier|final
 name|RequestScopePropagator
 name|requestScopePropagator
 parameter_list|,
-specifier|final
 name|SshInfo
 name|sshInfo
 parameter_list|,
-specifier|final
 name|AllProjectsName
 name|allProjectsName
 parameter_list|,
@@ -3592,65 +3566,54 @@ name|lazyPostReceive
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|ProjectControl
 name|projectControl
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|Repository
 name|repo
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|SubmoduleOp
 argument_list|>
 name|subOpProvider
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|Submit
 argument_list|>
 name|submitProvider
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|MergeOp
 argument_list|>
 name|mergeOpProvider
 parameter_list|,
-specifier|final
 name|DynamicMap
 argument_list|<
 name|ProjectConfigEntry
 argument_list|>
 name|pluginConfigEntries
 parameter_list|,
-specifier|final
 name|NotesMigration
 name|notesMigration
 parameter_list|,
-specifier|final
 name|ChangeEditUtil
 name|editUtil
 parameter_list|,
-specifier|final
 name|BatchUpdate
 operator|.
 name|Factory
 name|batchUpdateFactory
 parameter_list|,
-specifier|final
 name|SetHashtagsOp
 operator|.
 name|Factory
 name|hashtagsFactory
 parameter_list|,
-specifier|final
 name|ReplaceOp
 operator|.
 name|Factory
@@ -4462,12 +4425,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Set a message sender for this operation. */
-DECL|method|setMessageSender (final MessageSender ms)
+DECL|method|setMessageSender (MessageSender ms)
 specifier|public
 name|void
 name|setMessageSender
 parameter_list|(
-specifier|final
 name|MessageSender
 name|ms
 parameter_list|)
@@ -4670,18 +4632,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|processCommands (final Collection<ReceiveCommand> commands, final MultiProgressMonitor progress)
+DECL|method|processCommands (Collection<ReceiveCommand> commands, MultiProgressMonitor progress)
 name|void
 name|processCommands
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|ReceiveCommand
 argument_list|>
 name|commands
 parameter_list|,
-specifier|final
 name|MultiProgressMonitor
 name|progress
 parameter_list|)
@@ -5009,7 +4969,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|ReceiveCommand
 name|c
 range|:
@@ -6429,12 +6388,11 @@ return|return
 name|displayName
 return|;
 block|}
-DECL|method|parseCommands (final Collection<ReceiveCommand> commands)
+DECL|method|parseCommands (Collection<ReceiveCommand> commands)
 specifier|private
 name|void
 name|parseCommands
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|ReceiveCommand
@@ -6444,7 +6402,6 @@ parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 range|:
@@ -6518,7 +6475,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-specifier|final
 name|Matcher
 name|m
 init|=
@@ -6542,7 +6498,6 @@ condition|)
 block|{
 comment|// The referenced change must exist and must still be open.
 comment|//
-specifier|final
 name|Change
 operator|.
 name|Id
@@ -7211,12 +7166,11 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|parseCreate (final ReceiveCommand cmd)
+DECL|method|parseCreate (ReceiveCommand cmd)
 specifier|private
 name|void
 name|parseCreate
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
@@ -7361,12 +7315,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseUpdate (final ReceiveCommand cmd)
+DECL|method|parseUpdate (ReceiveCommand cmd)
 specifier|private
 name|void
 name|parseUpdate
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
@@ -7478,12 +7431,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isCommit (final ReceiveCommand cmd)
+DECL|method|isCommit (ReceiveCommand cmd)
 specifier|private
 name|boolean
 name|isCommit
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
@@ -7575,12 +7527,11 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|parseDelete (final ReceiveCommand cmd)
+DECL|method|parseDelete (ReceiveCommand cmd)
 specifier|private
 name|void
 name|parseDelete
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
@@ -7701,12 +7652,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|parseRewind (final ReceiveCommand cmd)
+DECL|method|parseRewind (ReceiveCommand cmd)
 specifier|private
 name|void
 name|parseRewind
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
@@ -8211,11 +8161,10 @@ name|usage
 operator|=
 literal|"label(s) to assign (defaults to +1 if no value provided"
 argument_list|)
-DECL|method|addLabel (final String token)
+DECL|method|addLabel (String token)
 name|void
 name|addLabel
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -8764,12 +8713,11 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|parseMagicBranch (final ReceiveCommand cmd)
+DECL|method|parseMagicBranch (ReceiveCommand cmd)
 specifier|private
 name|void
 name|parseMagicBranch
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
@@ -9589,7 +9537,6 @@ comment|// history being sent for review will start it and thus
 comment|// is "connected" to the branch.
 return|return;
 block|}
-specifier|final
 name|RevCommit
 name|h
 init|=
@@ -9603,7 +9550,6 @@ name|getObjectId
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|RevFilter
 name|oldRevFilter
 init|=
@@ -9744,16 +9690,14 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|parseReplaceCommand (final ReceiveCommand cmd, final Change.Id changeId)
+DECL|method|parseReplaceCommand (ReceiveCommand cmd, Change.Id changeId)
 specifier|private
 name|void
 name|parseReplaceCommand
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|,
-specifier|final
 name|Change
 operator|.
 name|Id
@@ -9783,7 +9727,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-specifier|final
 name|RevCommit
 name|newCommit
 decl_stmt|;
@@ -9839,7 +9782,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-specifier|final
 name|Change
 name|changeEnt
 decl_stmt|;
@@ -9968,24 +9910,20 @@ name|newCommit
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|requestReplace (final ReceiveCommand cmd, final boolean checkMergedInto, final Change change, final RevCommit newCommit)
+DECL|method|requestReplace (ReceiveCommand cmd, boolean checkMergedInto, Change change, RevCommit newCommit)
 specifier|private
 name|boolean
 name|requestReplace
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|,
-specifier|final
 name|boolean
 name|checkMergedInto
 parameter_list|,
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|RevCommit
 name|newCommit
 parameter_list|)
@@ -10021,7 +9959,6 @@ return|return
 literal|false
 return|;
 block|}
-specifier|final
 name|ReplaceRequest
 name|req
 init|=
@@ -10294,7 +10231,6 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
-specifier|final
 name|Set
 argument_list|<
 name|Change
@@ -10308,7 +10244,6 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-specifier|final
 name|int
 name|maxBatchChanges
 init|=
@@ -10325,7 +10260,6 @@ init|;
 condition|;
 control|)
 block|{
-specifier|final
 name|RevCommit
 name|c
 init|=
@@ -10468,7 +10402,6 @@ literal|"to override please set the base manually"
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -10510,7 +10443,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-specifier|final
 name|String
 name|idStr
 init|=
@@ -11585,7 +11517,6 @@ operator|.
 name|getPatchSetId
 argument_list|()
 decl_stmt|;
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -11596,7 +11527,6 @@ operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|FooterLine
@@ -11608,7 +11538,6 @@ operator|.
 name|getFooterLines
 argument_list|()
 decl_stmt|;
-specifier|final
 name|MailRecipients
 name|recipients
 init|=
@@ -12717,24 +12646,20 @@ operator|.
 name|of
 argument_list|()
 decl_stmt|;
-DECL|method|ReplaceRequest (final Change.Id toChange, final RevCommit newCommit, final ReceiveCommand cmd, final boolean checkMergedInto)
+DECL|method|ReplaceRequest (Change.Id toChange, RevCommit newCommit, ReceiveCommand cmd, boolean checkMergedInto)
 name|ReplaceRequest
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
 name|toChange
 parameter_list|,
-specifier|final
 name|RevCommit
 name|newCommit
 parameter_list|,
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|,
-specifier|final
 name|boolean
 name|checkMergedInto
 parameter_list|)
@@ -13095,7 +13020,6 @@ return|;
 block|}
 for|for
 control|(
-specifier|final
 name|Ref
 name|r
 range|:
@@ -13236,7 +13160,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-specifier|final
 name|boolean
 name|messageEq
 init|=
@@ -13253,7 +13176,6 @@ name|getFullMessage
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|boolean
 name|parentsEq
 init|=
@@ -13264,7 +13186,6 @@ argument_list|,
 name|priorCommit
 argument_list|)
 decl_stmt|;
-specifier|final
 name|boolean
 name|authorEq
 init|=
@@ -13275,7 +13196,6 @@ argument_list|,
 name|priorCommit
 argument_list|)
 decl_stmt|;
-specifier|final
 name|ObjectReader
 name|reader
 init|=
@@ -15042,7 +14962,6 @@ name|getFullName
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|RevWalk
 name|walk
 init|=
@@ -15484,7 +15403,6 @@ name|ReceiveCommand
 name|cmd
 parameter_list|)
 block|{
-specifier|final
 name|RevWalk
 name|rw
 init|=
@@ -15574,7 +15492,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|SetMultimap
 argument_list|<
 name|ObjectId
@@ -15598,7 +15515,6 @@ name|byKey
 init|=
 literal|null
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|ReplaceRequest
@@ -15715,7 +15631,6 @@ block|}
 block|}
 for|for
 control|(
-specifier|final
 name|String
 name|changeId
 range|:
@@ -15742,7 +15657,6 @@ name|branch
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|Change
 name|onto
 init|=
@@ -15769,7 +15683,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-specifier|final
 name|ReplaceRequest
 name|req
 init|=
@@ -15807,14 +15720,12 @@ block|}
 block|}
 for|for
 control|(
-specifier|final
 name|ReplaceRequest
 name|req
 range|:
 name|toClose
 control|)
 block|{
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -16206,7 +16117,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|Map
 argument_list|<
 name|Change
@@ -16768,12 +16678,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|reject (final ReceiveCommand cmd)
+DECL|method|reject (ReceiveCommand cmd)
 specifier|private
 name|void
 name|reject
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
@@ -16786,16 +16695,14 @@ literal|"prohibited by Gerrit"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|reject (final ReceiveCommand cmd, final String why)
+DECL|method|reject (ReceiveCommand cmd, String why)
 specifier|private
 name|void
 name|reject
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|,
-specifier|final
 name|String
 name|why
 parameter_list|)
@@ -16817,13 +16724,12 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|isHead (final ReceiveCommand cmd)
+DECL|method|isHead (ReceiveCommand cmd)
 specifier|private
 specifier|static
 name|boolean
 name|isHead
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
@@ -16842,13 +16748,12 @@ name|R_HEADS
 argument_list|)
 return|;
 block|}
-DECL|method|isConfig (final ReceiveCommand cmd)
+DECL|method|isConfig (ReceiveCommand cmd)
 specifier|private
 specifier|static
 name|boolean
 name|isConfig
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
