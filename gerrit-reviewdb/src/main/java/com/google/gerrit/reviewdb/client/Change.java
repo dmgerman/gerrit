@@ -2210,6 +2210,19 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|method|getOriginalSubjectOrNull ()
+specifier|public
+name|String
+name|getOriginalSubjectOrNull
+parameter_list|()
+block|{
+return|return
+name|originalSubject
+return|;
+block|}
+end_function
+
 begin_comment
 comment|/** Get the id of the most current {@link PatchSet} in this change. */
 end_comment
