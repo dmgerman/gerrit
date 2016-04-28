@@ -254,13 +254,11 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|nio
+name|junit
 operator|.
-name|file
-operator|.
-name|Path
+name|Test
 import|;
 end_import
 
@@ -278,11 +276,13 @@ end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|junit
+name|nio
 operator|.
-name|Test
+name|file
+operator|.
+name|Path
 import|;
 end_import
 

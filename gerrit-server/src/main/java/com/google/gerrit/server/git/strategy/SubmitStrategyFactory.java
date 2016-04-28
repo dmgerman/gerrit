@@ -78,9 +78,13 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|SubmitType
+name|changes
+operator|.
+name|ReviewInput
+operator|.
+name|NotifyHandling
 import|;
 end_import
 
@@ -94,13 +98,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
+name|client
 operator|.
-name|changes
-operator|.
-name|ReviewInput
-operator|.
-name|NotifyHandling
+name|SubmitType
 import|;
 end_import
 
