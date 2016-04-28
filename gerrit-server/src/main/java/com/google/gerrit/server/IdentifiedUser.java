@@ -1970,6 +1970,11 @@ name|effectiveGroups
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Override
 DECL|method|getStarredChanges ()
 specifier|public
@@ -2058,6 +2063,11 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|asyncStarredChanges ()
 specifier|public
 name|void
