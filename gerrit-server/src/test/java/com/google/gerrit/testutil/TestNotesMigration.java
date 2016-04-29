@@ -311,6 +311,16 @@ case|case
 name|OFF
 case|:
 default|default:
+name|setWriteChanges
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|setReadChanges
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 break|break;
 block|}
 return|return

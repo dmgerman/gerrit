@@ -275,7 +275,7 @@ name|byte
 index|[]
 name|END_SIGNATURE
 init|=
-literal|"-----END PGP SIGNATURE-----"
+literal|"-----END PGP SIGNATURE-----\n"
 operator|.
 name|getBytes
 argument_list|(

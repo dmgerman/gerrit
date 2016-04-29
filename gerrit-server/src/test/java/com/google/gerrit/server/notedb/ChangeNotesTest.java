@@ -210,20 +210,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|CharMatcher
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Function
 import|;
 end_import
@@ -7178,21 +7164,6 @@ literal|"Nor is this a real signature.\n"
 operator|+
 literal|"-----END PGP SIGNATURE-----\n"
 decl_stmt|;
-name|String
-name|trimmedCert
-init|=
-name|CharMatcher
-operator|.
-name|is
-argument_list|(
-literal|'\n'
-argument_list|)
-operator|.
-name|trimTrailingFrom
-argument_list|(
-name|pushCert
-argument_list|)
-decl_stmt|;
 comment|// ps2 with push cert
 name|Change
 name|c
@@ -7343,7 +7314,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|trimmedCert
+name|pushCert
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -7531,7 +7502,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|trimmedCert
+name|pushCert
 argument_list|)
 expr_stmt|;
 name|assertThat
