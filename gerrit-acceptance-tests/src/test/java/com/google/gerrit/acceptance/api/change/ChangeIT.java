@@ -277,6 +277,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|SECONDS
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -942,6 +956,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|TestTimeUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1007,6 +1035,26 @@ operator|.
 name|revwalk
 operator|.
 name|RevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
 import|;
 end_import
 
@@ -1110,6 +1158,54 @@ name|ChangeIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|systemTimeZone
+specifier|private
+name|String
+name|systemTimeZone
+decl_stmt|;
+annotation|@
+name|Before
+DECL|method|setTimeForTesting ()
+specifier|public
+name|void
+name|setTimeForTesting
+parameter_list|()
+block|{
+name|systemTimeZone
+operator|=
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"user.timezone"
+argument_list|,
+literal|"US/Eastern"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|After
+DECL|method|resetTime ()
+specifier|public
+name|void
+name|resetTime
+parameter_list|()
+block|{
+name|TestTimeUtil
+operator|.
+name|useSystemTime
+argument_list|()
+expr_stmt|;
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"user.timezone"
+argument_list|,
+name|systemTimeZone
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 DECL|method|get ()
@@ -3854,6 +3950,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|TestTimeUtil
+operator|.
+name|resetWithClockStep
+argument_list|(
+literal|1
+argument_list|,
+name|SECONDS
+argument_list|)
+expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
@@ -4113,7 +4218,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Ensure ETag is updated but lastUpdatedOn isn't.
+comment|// Ensure ETag and lastUpdatedOn are updated.
 name|rsrc
 operator|=
 name|parseResource
@@ -4145,7 +4250,7 @@ name|getLastUpdatedOn
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|isNotEqualTo
 argument_list|(
 name|oldTs
 argument_list|)

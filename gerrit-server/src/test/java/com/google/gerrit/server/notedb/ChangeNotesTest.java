@@ -5831,7 +5831,6 @@ argument_list|(
 name|ts6
 argument_list|)
 expr_stmt|;
-comment|// Updates that should not touch the timestamp.
 name|update
 operator|=
 name|newUpdate
@@ -5879,7 +5878,7 @@ argument_list|(
 name|ts8
 argument_list|)
 operator|.
-name|isEqualTo
+name|isGreaterThan
 argument_list|(
 name|ts7
 argument_list|)
@@ -5931,7 +5930,7 @@ argument_list|(
 name|ts9
 argument_list|)
 operator|.
-name|isEqualTo
+name|isGreaterThan
 argument_list|(
 name|ts8
 argument_list|)
