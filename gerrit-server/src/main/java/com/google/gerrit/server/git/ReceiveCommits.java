@@ -8364,8 +8364,6 @@ expr_stmt|;
 block|}
 comment|//TODO(dpursehouse): validate hashtags
 block|}
-annotation|@
-name|Inject
 DECL|method|MagicBranchInput (ReceiveCommand cmd, LabelTypes labelTypes, NotesMigration notesMigration)
 name|MagicBranchInput
 parameter_list|(
