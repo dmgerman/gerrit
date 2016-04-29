@@ -901,7 +901,13 @@ name|loginHeader
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|userNameToLowerCase
+operator|&&
+name|remoteUser
+operator|!=
+literal|null
+operator|)
 condition|?
 name|remoteUser
 operator|.
