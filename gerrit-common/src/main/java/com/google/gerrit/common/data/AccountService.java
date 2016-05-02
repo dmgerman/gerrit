@@ -106,22 +106,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|client
-operator|.
-name|DiffPreferencesInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -239,24 +223,6 @@ name|AccountService
 extends|extends
 name|RemoteJsonService
 block|{
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
-DECL|method|changeDiffPreferences (DiffPreferencesInfo diffPref, AsyncCallback<VoidResult> callback)
-name|void
-name|changeDiffPreferences
-parameter_list|(
-name|DiffPreferencesInfo
-name|diffPref
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|VoidResult
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 annotation|@
 name|SignInRequired
 DECL|method|myProjectWatch (AsyncCallback<List<AccountProjectWatchInfo>> callback)
