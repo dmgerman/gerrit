@@ -2229,6 +2229,27 @@ literal|false
 argument_list|)
 return|;
 block|}
+DECL|method|isContributorAgreementsEnabled ()
+specifier|protected
+name|boolean
+name|isContributorAgreementsEnabled
+parameter_list|()
+block|{
+return|return
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|null
+argument_list|,
+literal|"contributorAgreements"
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
 DECL|method|beforeTest (Description description)
 specifier|protected
 name|void
