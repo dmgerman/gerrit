@@ -640,11 +640,6 @@ name|String
 name|newAgreement
 parameter_list|()
 function_decl|;
-DECL|method|agreementStatus ()
-name|String
-name|agreementStatus
-parameter_list|()
-function_decl|;
 DECL|method|agreementName ()
 name|String
 name|agreementName
@@ -653,16 +648,6 @@ function_decl|;
 DECL|method|agreementDescription ()
 name|String
 name|agreementDescription
-parameter_list|()
-function_decl|;
-DECL|method|agreementStatus_EXPIRED ()
-name|String
-name|agreementStatus_EXPIRED
-parameter_list|()
-function_decl|;
-DECL|method|agreementStatus_VERIFIED ()
-name|String
-name|agreementStatus_VERIFIED
 parameter_list|()
 function_decl|;
 DECL|method|newAgreementSelectTypeHeading ()
