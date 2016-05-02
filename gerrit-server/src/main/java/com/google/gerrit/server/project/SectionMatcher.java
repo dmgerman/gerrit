@@ -98,6 +98,20 @@ name|Project
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|CurrentUser
+import|;
+end_import
+
 begin_comment
 comment|/**  * Matches an AccessSection against a reference name.  *<p>  * These matchers are "compiled" versions of the AccessSection name, supporting  * faster selection of which sections are relevant to any given input reference.  */
 end_comment
@@ -216,7 +230,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|match (String ref, String username)
+DECL|method|match (String ref, CurrentUser user)
 specifier|public
 name|boolean
 name|match
@@ -224,8 +238,8 @@ parameter_list|(
 name|String
 name|ref
 parameter_list|,
-name|String
-name|username
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 return|return
@@ -237,7 +251,7 @@ name|match
 argument_list|(
 name|ref
 argument_list|,
-name|username
+name|user
 argument_list|)
 return|;
 block|}

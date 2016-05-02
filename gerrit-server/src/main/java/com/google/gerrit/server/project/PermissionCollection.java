@@ -242,9 +242,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|Inject
+name|server
+operator|.
+name|CurrentUser
 import|;
 end_import
 
@@ -256,7 +258,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
+name|Inject
 import|;
 end_import
 
@@ -279,16 +281,6 @@ operator|.
 name|util
 operator|.
 name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -402,8 +394,8 @@ operator|=
 name|sorter
 expr_stmt|;
 block|}
-comment|/**      * Get all permissions that apply to a reference.      *      * @param matcherList collection of sections that should be considered, in      *        priority order (project specific definitions must appear before      *        inherited ones).      * @param ref reference being accessed.      * @param usernameProvider if the reference is a per-user reference, access      *        sections using the parameter variable "${username}" will first      *        have each of {@code usernames} inserted into them before seeing if      *        they apply to the reference named by {@code ref}.      * @return map of permissions that apply to this reference, keyed by      *         permission name.      */
-DECL|method|filter (Iterable<SectionMatcher> matcherList, String ref, Provider<? extends Collection<String>> usernameProvider)
+comment|/**      * Get all permissions that apply to a reference.      *      * @param matcherList collection of sections that should be considered, in      *        priority order (project specific definitions must appear before      *        inherited ones).      * @param ref reference being accessed.      * @param user if the reference is a per-user reference, e.g. access      *        sections using the parameter variable "${username}" will have      *        each username inserted into them to see if they apply to the      *        reference named by {@code ref}.      * @return map of permissions that apply to this reference, keyed by      *         permission name.      */
+DECL|method|filter (Iterable<SectionMatcher> matcherList, String ref, CurrentUser user)
 name|PermissionCollection
 name|filter
 parameter_list|(
@@ -416,16 +408,8 @@ parameter_list|,
 name|String
 name|ref
 parameter_list|,
-name|Provider
-argument_list|<
-name|?
-extends|extends
-name|Collection
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
-name|usernameProvider
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 if|if
@@ -474,14 +458,6 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-name|Collection
-argument_list|<
-name|String
-argument_list|>
-name|usernames
-init|=
-literal|null
-decl_stmt|;
 name|boolean
 name|perUser
 init|=
@@ -561,36 +537,13 @@ literal|true
 expr_stmt|;
 if|if
 condition|(
-name|usernames
-operator|==
-literal|null
-condition|)
-block|{
-name|usernames
-operator|=
-name|usernameProvider
-operator|.
-name|get
-argument_list|()
-expr_stmt|;
-block|}
-for|for
-control|(
-name|String
-name|username
-range|:
-name|usernames
-control|)
-block|{
-if|if
-condition|(
 name|sm
 operator|.
 name|match
 argument_list|(
 name|ref
 argument_list|,
-name|username
+name|user
 argument_list|)
 condition|)
 block|{
@@ -608,7 +561,6 @@ name|project
 argument_list|)
 expr_stmt|;
 break|break;
-block|}
 block|}
 block|}
 elseif|else

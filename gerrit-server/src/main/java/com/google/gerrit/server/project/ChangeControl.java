@@ -2244,9 +2244,6 @@ name|destBranch
 argument_list|,
 name|getUser
 argument_list|()
-operator|.
-name|getUserName
-argument_list|()
 argument_list|)
 return|;
 block|}
