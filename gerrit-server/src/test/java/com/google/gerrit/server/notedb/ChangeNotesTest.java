@@ -96,7 +96,7 @@ name|client
 operator|.
 name|RefNames
 operator|.
-name|refsDraftComments
+name|changeMetaRef
 import|;
 end_import
 
@@ -108,13 +108,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|notedb
+name|client
 operator|.
-name|ChangeNoteUtil
+name|RefNames
 operator|.
-name|changeRefName
+name|refsDraftComments
 import|;
 end_import
 
@@ -4518,7 +4518,7 @@ name|repo
 operator|.
 name|exactRef
 argument_list|(
-name|changeRefName
+name|changeMetaRef
 argument_list|(
 name|c
 operator|.
@@ -4569,7 +4569,7 @@ name|repo
 operator|.
 name|exactRef
 argument_list|(
-name|changeRefName
+name|changeMetaRef
 argument_list|(
 name|c
 operator|.
@@ -13867,7 +13867,7 @@ name|repo
 operator|.
 name|exactRef
 argument_list|(
-name|changeRefName
+name|changeMetaRef
 argument_list|(
 name|c
 operator|.

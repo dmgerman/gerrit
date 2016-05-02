@@ -101,6 +101,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|changeMetaRef
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -473,22 +491,6 @@ operator|.
 name|notedb
 operator|.
 name|ChangeBundle
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|ChangeNoteUtil
 import|;
 end_import
 
@@ -2119,9 +2121,7 @@ name|getMetaRef
 argument_list|(
 name|project
 argument_list|,
-name|ChangeNoteUtil
-operator|.
-name|changeRefName
+name|changeMetaRef
 argument_list|(
 name|id
 argument_list|)

@@ -138,6 +138,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|changeMetaRef
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|notedb
@@ -3021,9 +3039,7 @@ name|getRefName
 parameter_list|()
 block|{
 return|return
-name|ChangeNoteUtil
-operator|.
-name|changeRefName
+name|changeMetaRef
 argument_list|(
 name|getId
 argument_list|()
