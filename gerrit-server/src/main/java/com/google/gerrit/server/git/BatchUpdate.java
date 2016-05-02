@@ -1098,10 +1098,12 @@ specifier|private
 name|boolean
 name|deleted
 decl_stmt|;
-DECL|field|saved
+DECL|field|bumpLastUpdatedOn
 specifier|private
 name|boolean
-name|saved
+name|bumpLastUpdatedOn
+init|=
+literal|true
 decl_stmt|;
 DECL|method|ChangeContext (ChangeControl ctl, ReviewDbWrapper dbWrapper)
 specifier|private
@@ -1298,23 +1300,18 @@ return|return
 name|c
 return|;
 block|}
-DECL|method|saveChange ()
+DECL|method|bumpLastUpdatedOn (boolean bump)
 specifier|public
 name|void
-name|saveChange
-parameter_list|()
+name|bumpLastUpdatedOn
+parameter_list|(
+name|boolean
+name|bump
+parameter_list|)
 block|{
-name|checkState
-argument_list|(
-operator|!
-name|deleted
-argument_list|,
-literal|"cannot both save and delete change"
-argument_list|)
-expr_stmt|;
-name|saved
+name|bumpLastUpdatedOn
 operator|=
-literal|true
+name|bump
 expr_stmt|;
 block|}
 DECL|method|deleteChange ()
@@ -1323,14 +1320,6 @@ name|void
 name|deleteChange
 parameter_list|()
 block|{
-name|checkState
-argument_list|(
-operator|!
-name|saved
-argument_list|,
-literal|"cannot both save and delete change"
-argument_list|)
-expr_stmt|;
 name|deleted
 operator|=
 literal|true
@@ -2983,6 +2972,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Bump lastUpdatedOn or rowVersion and commit.
+name|Iterable
+argument_list|<
+name|Change
+argument_list|>
+name|cs
+init|=
+name|changesToUpdate
+argument_list|(
+name|ctx
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|newChanges
@@ -2993,6 +2993,7 @@ name|id
 argument_list|)
 condition|)
 block|{
+comment|// Insert rather than upsert in case of a race on change IDs.
 name|db
 operator|.
 name|changes
@@ -3000,32 +3001,7 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|bumpLastUpdatedOn
-argument_list|(
-name|ctx
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|ctx
-operator|.
-name|saved
-condition|)
-block|{
-name|db
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|update
-argument_list|(
-name|bumpLastUpdatedOn
-argument_list|(
-name|ctx
-argument_list|)
+name|cs
 argument_list|)
 expr_stmt|;
 block|}
@@ -3044,10 +3020,7 @@ argument_list|()
 operator|.
 name|delete
 argument_list|(
-name|bumpLastUpdatedOn
-argument_list|(
-name|ctx
-argument_list|)
+name|cs
 argument_list|)
 expr_stmt|;
 block|}
@@ -3060,10 +3033,7 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|bumpRowVersionNotLastUpdatedOn
-argument_list|(
-name|ctx
-argument_list|)
+name|cs
 argument_list|)
 expr_stmt|;
 block|}
@@ -3198,14 +3168,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|bumpLastUpdatedOn (ChangeContext ctx)
+DECL|method|changesToUpdate (ChangeContext ctx)
 specifier|private
 specifier|static
 name|Iterable
 argument_list|<
 name|Change
 argument_list|>
-name|bumpLastUpdatedOn
+name|changesToUpdate
 parameter_list|(
 name|ChangeContext
 name|ctx
@@ -3221,6 +3191,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|ctx
+operator|.
+name|bumpLastUpdatedOn
+operator|&&
 name|c
 operator|.
 name|getLastUpdatedOn
@@ -3252,31 +3226,6 @@ operator|.
 name|singleton
 argument_list|(
 name|c
-argument_list|)
-return|;
-block|}
-DECL|method|bumpRowVersionNotLastUpdatedOn ( ChangeContext ctx)
-specifier|private
-specifier|static
-name|Iterable
-argument_list|<
-name|Change
-argument_list|>
-name|bumpRowVersionNotLastUpdatedOn
-parameter_list|(
-name|ChangeContext
-name|ctx
-parameter_list|)
-block|{
-return|return
-name|Collections
-operator|.
-name|singleton
-argument_list|(
-name|ctx
-operator|.
-name|getChange
-argument_list|()
 argument_list|)
 return|;
 block|}

@@ -1368,11 +1368,6 @@ throw|;
 block|}
 name|ctx
 operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
-name|ctx
-operator|.
 name|getDb
 argument_list|()
 operator|.

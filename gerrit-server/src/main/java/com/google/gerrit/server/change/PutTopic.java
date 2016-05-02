@@ -890,11 +890,6 @@ name|getTopic
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
 name|ChangeMessage
 name|cmsg
 init|=

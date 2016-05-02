@@ -2090,11 +2090,6 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
 return|return
 literal|true
 return|;

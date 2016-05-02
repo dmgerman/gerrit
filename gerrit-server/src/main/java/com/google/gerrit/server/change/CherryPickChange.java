@@ -2197,12 +2197,6 @@ argument_list|,
 name|changeMessage
 argument_list|)
 expr_stmt|;
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
-comment|// Bump lastUpdatedOn to match message.
 return|return
 literal|true
 return|;

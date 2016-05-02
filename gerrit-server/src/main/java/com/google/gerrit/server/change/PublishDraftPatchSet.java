@@ -1499,11 +1499,6 @@ name|getStatus
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|savePatchSet (ChangeContext ctx)
@@ -1555,19 +1550,6 @@ argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
-comment|// Force ETag invalidation if not done already
-if|if
-condition|(
-operator|!
-name|wasDraftChange
-condition|)
-block|{
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|addReviewers (ChangeContext ctx)
 specifier|private

@@ -1295,6 +1295,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|ctx
+operator|.
+name|bumpLastUpdatedOn
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 return|return
 literal|true
 return|;
