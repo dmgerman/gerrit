@@ -1005,6 +1005,14 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+comment|// The change might have been a draft and got deleted
+if|if
+condition|(
+name|c
+operator|!=
+literal|null
+condition|)
+block|{
 name|indexerFactory
 operator|.
 name|create
@@ -1021,6 +1029,7 @@ argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|null
 return|;
