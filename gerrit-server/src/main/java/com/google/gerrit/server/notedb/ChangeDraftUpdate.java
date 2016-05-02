@@ -1409,10 +1409,10 @@ name|RefNames
 operator|.
 name|refsDraftComments
 argument_list|(
-name|accountId
-argument_list|,
 name|getId
 argument_list|()
+argument_list|,
+name|accountId
 argument_list|)
 return|;
 block|}

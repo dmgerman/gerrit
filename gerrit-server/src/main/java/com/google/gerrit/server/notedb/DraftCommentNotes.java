@@ -678,10 +678,10 @@ name|RefNames
 operator|.
 name|refsDraftComments
 argument_list|(
-name|author
-argument_list|,
 name|getChangeId
 argument_list|()
+argument_list|,
+name|author
 argument_list|)
 return|;
 block|}
