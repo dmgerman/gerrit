@@ -16341,11 +16341,6 @@ operator|.
 name|MERGED
 argument_list|)
 expr_stmt|;
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
 comment|// we cannot reconstruct the submit records for when this change was
 comment|// submitted, this is why we must fix the status
 name|update

@@ -1714,11 +1714,6 @@ argument_list|(
 name|patchSetInfo
 argument_list|)
 expr_stmt|;
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|copyApprovals

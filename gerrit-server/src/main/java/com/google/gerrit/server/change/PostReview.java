@@ -2935,17 +2935,6 @@ argument_list|(
 name|ctx
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|dirty
-condition|)
-block|{
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
-block|}
 return|return
 name|dirty
 return|;

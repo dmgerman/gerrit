@@ -5173,11 +5173,6 @@ argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
 return|return
 literal|true
 return|;

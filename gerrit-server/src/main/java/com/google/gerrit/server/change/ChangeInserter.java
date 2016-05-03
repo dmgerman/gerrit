@@ -2310,11 +2310,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
 comment|/* TODO: fixStatus is used here because the tests      * (byStatusClosed() in AbstractQueryChangesTest)      * insert changes that are already merged,      * and setStatus may not be used to set the Status to merged      *      * is it possible to make the tests use the merge code path,      * instead of setting the status directly?      */
 name|update
 operator|.

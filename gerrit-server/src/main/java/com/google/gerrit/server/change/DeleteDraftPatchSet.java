@@ -1232,11 +1232,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|deletedOnlyPatchSet ()
 specifier|private

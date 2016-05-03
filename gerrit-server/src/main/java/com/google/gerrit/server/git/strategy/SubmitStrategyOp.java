@@ -3307,11 +3307,6 @@ operator|.
 name|submissionId
 argument_list|)
 expr_stmt|;
-name|ctx
-operator|.
-name|saveChange
-argument_list|()
-expr_stmt|;
 comment|// TODO(dborowitz): We need to be able to change the author of the message,
 comment|// which is not the user from the update context. addMergedMessage was able
 comment|// to do this in the past.
