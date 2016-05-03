@@ -186,17 +186,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|requestSuggestions (final Request request, final Callback cb)
+DECL|method|requestSuggestions (Request request, Callback cb)
 specifier|public
 specifier|final
 name|void
 name|requestSuggestions
 parameter_list|(
-specifier|final
 name|Request
 name|request
 parameter_list|,
-specifier|final
 name|Callback
 name|cb
 parameter_list|)
@@ -402,6 +400,19 @@ name|ds
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|qstr
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|qstr
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|StringBuilder
 name|pattern
 init|=
@@ -489,6 +500,7 @@ argument_list|,
 literal|"$1$2$3"
 argument_list|)
 expr_stmt|;
+block|}
 name|displayString
 operator|=
 name|ds

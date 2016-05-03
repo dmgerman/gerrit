@@ -236,12 +236,6 @@ specifier|final
 name|boolean
 name|suggestAccounts
 decl_stmt|;
-DECL|field|suggestFrom
-specifier|private
-specifier|final
-name|int
-name|suggestFrom
-decl_stmt|;
 DECL|field|maxAllowed
 specifier|private
 specifier|final
@@ -375,16 +369,6 @@ parameter_list|()
 block|{
 return|return
 name|suggestAccounts
-return|;
-block|}
-DECL|method|getSuggestFrom ()
-specifier|public
-name|int
-name|getSuggestFrom
-parameter_list|()
-block|{
-return|return
-name|suggestFrom
 return|;
 block|}
 DECL|method|getLimit ()
@@ -540,23 +524,6 @@ name|NONE
 operator|)
 expr_stmt|;
 block|}
-name|this
-operator|.
-name|suggestFrom
-operator|=
-name|cfg
-operator|.
-name|getInt
-argument_list|(
-literal|"suggest"
-argument_list|,
-literal|null
-argument_list|,
-literal|"from"
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|maxAllowed
