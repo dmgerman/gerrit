@@ -340,6 +340,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|deleteSshKey (int seq)
+name|void
+name|deleteSshKey
+parameter_list|(
+name|int
+name|seq
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|listGpgKeys ()
 name|Map
 argument_list|<
@@ -618,6 +628,25 @@ name|addSshKey
 parameter_list|(
 name|String
 name|key
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|deleteSshKey (int seq)
+specifier|public
+name|void
+name|deleteSshKey
+parameter_list|(
+name|int
+name|seq
 parameter_list|)
 throws|throws
 name|RestApiException

@@ -477,21 +477,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|accountSshKeys ()
-specifier|public
-name|AccountSshKeyAccess
-name|accountSshKeys
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|accountSshKeys
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|accountGroups ()
 specifier|public
 name|AccountGroupAccess
