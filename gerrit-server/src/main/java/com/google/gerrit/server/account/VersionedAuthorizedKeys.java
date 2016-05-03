@@ -452,6 +452,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
 import|;
 end_import
@@ -1541,6 +1551,10 @@ argument_list|)
 decl_stmt|;
 name|keys
 operator|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|Collections
 operator|.
 name|nCopies
@@ -1565,6 +1579,7 @@ name|AccountSshKey
 operator|>
 name|absent
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
