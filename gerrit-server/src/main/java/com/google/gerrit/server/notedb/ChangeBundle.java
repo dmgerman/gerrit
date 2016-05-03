@@ -2514,6 +2514,11 @@ else|:
 literal|"Changes"
 decl_stmt|;
 name|boolean
+name|excludeSubject
+init|=
+literal|false
+decl_stmt|;
+name|boolean
 name|excludeOrigSubj
 init|=
 literal|false
@@ -2539,6 +2544,11 @@ operator|.
 name|getLastUpdatedOn
 argument_list|()
 decl_stmt|;
+comment|// Ignore subject if the NoteDb subject starts with the ReviewDb subject.
+comment|// The NoteDb subject is read directly from the commit, whereas the ReviewDb
+comment|// subject historically may have been truncated to fit in a SQL varchar
+comment|// column.
+comment|//
 comment|// Ignore null original subject on the ReviewDb side, as this field is
 comment|// always set in NoteDb.
 comment|//
@@ -2560,6 +2570,21 @@ operator|==
 name|NOTE_DB
 condition|)
 block|{
+name|excludeSubject
+operator|=
+name|b
+operator|.
+name|getSubject
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|a
+operator|.
+name|getSubject
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|excludeOrigSubj
 operator|=
 name|a
@@ -2612,6 +2637,21 @@ operator|==
 name|REVIEW_DB
 condition|)
 block|{
+name|excludeSubject
+operator|=
+name|a
+operator|.
+name|getSubject
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|b
+operator|.
+name|getSubject
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|excludeOrigSubj
 operator|=
 name|b
@@ -2670,6 +2710,19 @@ argument_list|,
 literal|"rowVersion"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|excludeSubject
+condition|)
+block|{
+name|exclude
+operator|.
+name|add
+argument_list|(
+literal|"subject"
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|excludeOrigSubj
