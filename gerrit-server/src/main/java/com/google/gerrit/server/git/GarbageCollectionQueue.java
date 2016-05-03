@@ -124,6 +124,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -147,9 +157,9 @@ name|NameKey
 argument_list|>
 name|projectsScheduledForGc
 init|=
-name|Sets
-operator|.
-name|newHashSet
+operator|new
+name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|addAll (Collection<Project.NameKey> projects)

@@ -1330,9 +1330,9 @@ name|ChangeData
 argument_list|>
 name|missing
 init|=
-name|Maps
-operator|.
-name|newHashMap
+operator|new
+name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1697,9 +1697,9 @@ name|ChangeData
 argument_list|>
 name|missing
 init|=
-name|Maps
-operator|.
-name|newHashMap
+operator|new
+name|HashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

@@ -536,6 +536,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -1552,9 +1562,9 @@ name|Section
 argument_list|>
 name|sections
 init|=
-name|Lists
-operator|.
-name|newArrayList
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|DashboardInfo (String ref, String name)

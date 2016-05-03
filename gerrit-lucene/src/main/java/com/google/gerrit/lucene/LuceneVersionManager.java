@@ -1541,9 +1541,9 @@ argument_list|>
 argument_list|>
 name|versions
 init|=
-name|Maps
-operator|.
-name|newTreeMap
+operator|new
+name|TreeMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

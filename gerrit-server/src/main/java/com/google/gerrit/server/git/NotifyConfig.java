@@ -86,20 +86,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|common
@@ -151,6 +137,16 @@ operator|.
 name|util
 operator|.
 name|EnumSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
 import|;
 end_import
 
@@ -229,9 +225,9 @@ name|GroupReference
 argument_list|>
 name|groups
 init|=
-name|Sets
-operator|.
-name|newHashSet
+operator|new
+name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|addresses
@@ -242,9 +238,9 @@ name|Address
 argument_list|>
 name|addresses
 init|=
-name|Sets
-operator|.
-name|newHashSet
+operator|new
+name|HashSet
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|getName ()

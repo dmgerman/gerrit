@@ -86,20 +86,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Maps
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|common
@@ -224,6 +210,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
+import|;
+end_import
+
 begin_comment
 comment|/** List capabilities visible to the calling user. */
 end_comment
@@ -314,9 +310,9 @@ name|CapabilityInfo
 argument_list|>
 name|output
 init|=
-name|Maps
-operator|.
-name|newTreeMap
+operator|new
+name|TreeMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|collectCoreCapabilities
