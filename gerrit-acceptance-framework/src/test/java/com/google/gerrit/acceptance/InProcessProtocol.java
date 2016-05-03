@@ -1769,15 +1769,6 @@ name|getTimeout
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|ctl
-operator|.
-name|allRefsAreVisible
-argument_list|()
-condition|)
-block|{
 name|up
 operator|.
 name|setAdvertiseRefsHook
@@ -1802,7 +1793,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|List
 argument_list|<
 name|PreUploadHook

@@ -4159,6 +4159,7 @@ operator|.
 name|checkReferencedObjectsAreReachable
 argument_list|)
 expr_stmt|;
+block|}
 name|rp
 operator|.
 name|setAdvertiseRefsHook
@@ -4180,7 +4181,6 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|List
 argument_list|<
 name|AdvertiseRefsHook
