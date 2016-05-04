@@ -1202,9 +1202,9 @@ name|name
 argument_list|)
 throw|;
 block|}
-name|RefControl
+name|RefPattern
 operator|.
-name|validateRefPattern
+name|validate
 argument_list|(
 name|name
 argument_list|)

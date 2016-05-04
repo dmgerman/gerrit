@@ -428,7 +428,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|RefControl
+name|RefPattern
 import|;
 end_import
 
@@ -920,9 +920,9 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|RefControl
+name|RefPattern
 operator|.
-name|validateRefPattern
+name|validate
 argument_list|(
 name|name
 argument_list|)

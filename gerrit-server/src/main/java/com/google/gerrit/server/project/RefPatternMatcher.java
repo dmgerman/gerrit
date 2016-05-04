@@ -78,7 +78,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|RefControl
+name|RefPattern
 operator|.
 name|isRE
 import|;
@@ -497,10 +497,24 @@ comment|// Replace ${username} with ":USERNAME:" as : is not legal
 comment|// in a reference and the string :USERNAME: is not likely to
 comment|// be a valid part of the regex. This later allows the pattern
 comment|// prefix to be clipped, saving time on evaluation.
+name|String
+name|replacement
+init|=
+literal|":"
+operator|+
+name|RefPattern
+operator|.
+name|USERNAME
+operator|.
+name|toUpperCase
+argument_list|()
+operator|+
+literal|":"
+decl_stmt|;
 name|Automaton
 name|am
 init|=
-name|RefControl
+name|RefPattern
 operator|.
 name|toRegExp
 argument_list|(
@@ -512,9 +526,11 @@ name|Collections
 operator|.
 name|singletonMap
 argument_list|(
-literal|"username"
+name|RefPattern
+operator|.
+name|USERNAME
 argument_list|,
-literal|":USERNAME:"
+name|replacement
 argument_list|)
 argument_list|)
 argument_list|)
@@ -542,7 +558,7 @@ name|rePrefix
 operator|.
 name|indexOf
 argument_list|(
-literal|":USERNAME:"
+name|replacement
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -874,7 +890,9 @@ name|Collections
 operator|.
 name|singletonMap
 argument_list|(
-literal|"username"
+name|RefPattern
+operator|.
+name|USERNAME
 argument_list|,
 name|userName
 argument_list|)

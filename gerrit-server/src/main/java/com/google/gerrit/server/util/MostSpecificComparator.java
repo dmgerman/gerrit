@@ -94,7 +94,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|RefControl
+name|RefPattern
 import|;
 end_import
 
@@ -333,7 +333,7 @@ name|example
 decl_stmt|;
 if|if
 condition|(
-name|RefControl
+name|RefPattern
 operator|.
 name|isRE
 argument_list|(
@@ -343,7 +343,7 @@ condition|)
 block|{
 name|example
 operator|=
-name|RefControl
+name|RefPattern
 operator|.
 name|shortestExample
 argument_list|(
@@ -423,7 +423,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|RefControl
+name|RefPattern
 operator|.
 name|isRE
 argument_list|(
@@ -432,7 +432,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|RefControl
+name|RefPattern
 operator|.
 name|toRegExp
 argument_list|(
@@ -479,7 +479,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|RefControl
+name|RefPattern
 operator|.
 name|isRE
 argument_list|(
@@ -488,7 +488,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|RefControl
+name|RefPattern
 operator|.
 name|toRegExp
 argument_list|(

@@ -94,7 +94,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|RefControl
+name|RefPattern
 operator|.
 name|isRE
 import|;
@@ -422,7 +422,7 @@ condition|)
 block|{
 name|ref
 operator|=
-name|RefControl
+name|RefPattern
 operator|.
 name|shortestExample
 argument_list|(
