@@ -1578,11 +1578,11 @@ name|RefNames
 operator|.
 name|refsDraftComments
 argument_list|(
+name|changeId
+argument_list|,
 name|account
 operator|.
 name|id
-argument_list|,
-name|changeId
 argument_list|)
 argument_list|)
 return|;

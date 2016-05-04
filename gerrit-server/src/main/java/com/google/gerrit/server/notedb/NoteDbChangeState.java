@@ -99,6 +99,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|changeMetaRef
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1162,9 +1180,7 @@ name|changeRepo
 operator|.
 name|exactRef
 argument_list|(
-name|ChangeNoteUtil
-operator|.
-name|changeRefName
+name|changeMetaRef
 argument_list|(
 name|changeId
 argument_list|)
@@ -1228,9 +1244,9 @@ name|RefNames
 operator|.
 name|refsDraftComments
 argument_list|(
-name|accountId
-argument_list|,
 name|changeId
+argument_list|,
+name|accountId
 argument_list|)
 argument_list|)
 decl_stmt|;
