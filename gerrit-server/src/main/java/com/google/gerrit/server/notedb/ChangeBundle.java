@@ -2549,8 +2549,22 @@ comment|// The NoteDb subject is read directly from the commit, whereas the Revi
 comment|// subject historically may have been truncated to fit in a SQL varchar
 comment|// column.
 comment|//
-comment|// Ignore null original subject on the ReviewDb side, as this field is
-comment|// always set in NoteDb.
+comment|// Ignore original subject on the ReviewDb side when comparing to NoteDb.
+comment|// This field may have any number of values:
+comment|//  - It may be null, if the change has had no new patch sets pushed since
+comment|//    migrating to schema 103.
+comment|//  - It may match the first patch set subject, if the change was created
+comment|//    after migrating to schema 103.
+comment|//  - It may match the subject of the first patch set that was pushed after
+comment|//    the migration to schema 103, even though that is neither the subject
+comment|//    of the first patch set nor the subject of the last patch set. (See
+comment|//    Change#setCurrentPatchSet as of 43b10f86 for this behavior.) This
+comment|//    subject of an intermediate patch set is not available to the
+comment|//    ChangeBundle; we would have to get the subject from the repo, which is
+comment|//    inconvenient at this point.
+comment|//
+comment|// Ignore original subject on the ReviewDb side if it equals the subject of
+comment|// the current patch set.
 comment|//
 comment|// Ignore empty topic on the ReviewDb side if it is null on the NoteDb side.
 comment|//
@@ -2587,12 +2601,7 @@ argument_list|)
 expr_stmt|;
 name|excludeOrigSubj
 operator|=
-name|a
-operator|.
-name|getOriginalSubjectOrNull
-argument_list|()
-operator|==
-literal|null
+literal|true
 expr_stmt|;
 name|excludeTopic
 operator|=
@@ -2654,12 +2663,7 @@ argument_list|)
 expr_stmt|;
 name|excludeOrigSubj
 operator|=
-name|b
-operator|.
-name|getOriginalSubjectOrNull
-argument_list|()
-operator|==
-literal|null
+literal|true
 expr_stmt|;
 name|excludeTopic
 operator|=
