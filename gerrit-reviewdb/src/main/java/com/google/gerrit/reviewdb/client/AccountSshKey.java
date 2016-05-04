@@ -243,6 +243,18 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
+DECL|method|isValid ()
+specifier|public
+name|boolean
+name|isValid
+parameter_list|()
+block|{
+return|return
+name|seq
+operator|>
+literal|0
+return|;
+block|}
 block|}
 annotation|@
 name|Column
@@ -324,9 +336,11 @@ name|pub
 expr_stmt|;
 name|valid
 operator|=
-literal|true
+name|id
+operator|.
+name|isValid
+argument_list|()
 expr_stmt|;
-comment|// We can assume it is fine.
 block|}
 DECL|method|getAccount ()
 specifier|public
@@ -563,6 +577,11 @@ parameter_list|()
 block|{
 return|return
 name|valid
+operator|&&
+name|id
+operator|.
+name|isValid
+argument_list|()
 return|;
 block|}
 DECL|method|setInvalid ()
