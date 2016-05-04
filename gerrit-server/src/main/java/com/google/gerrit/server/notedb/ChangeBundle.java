@@ -76,6 +76,22 @@ name|common
 operator|.
 name|base
 operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Preconditions
 operator|.
 name|checkArgument
@@ -2460,14 +2476,14 @@ name|Ordering
 operator|.
 name|natural
 argument_list|()
+operator|.
+name|nullsFirst
+argument_list|()
 decl_stmt|;
 name|Timestamp
 name|ts
 init|=
-name|change
-operator|.
-name|getLastUpdatedOn
-argument_list|()
+literal|null
 decl_stmt|;
 for|for
 control|(
@@ -2582,7 +2598,15 @@ expr_stmt|;
 block|}
 block|}
 return|return
+name|firstNonNull
+argument_list|(
 name|ts
+argument_list|,
+name|change
+operator|.
+name|getLastUpdatedOn
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|diffChanges (List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
