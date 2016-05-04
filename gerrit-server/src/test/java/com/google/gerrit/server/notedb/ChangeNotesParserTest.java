@@ -423,6 +423,36 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertParseFails
+argument_list|(
+name|writeCommit
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+argument_list|,
+operator|new
+name|PersonIdent
+argument_list|(
+literal|"Change\n\u1234<Owner>"
+argument_list|,
+literal|"\n\nx<@>\u0002gerrit"
+argument_list|,
+name|serverIdent
+operator|.
+name|getWhen
+argument_list|()
+argument_list|,
+name|serverIdent
+operator|.
+name|getTimeZone
+argument_list|()
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
