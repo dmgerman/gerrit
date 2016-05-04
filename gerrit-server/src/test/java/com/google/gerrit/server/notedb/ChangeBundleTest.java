@@ -1358,10 +1358,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|diffChangesIgnoresNullOriginalSubjectInReviewDb ()
+DECL|method|diffChangesIgnoresOriginalSubjectInReviewDb ()
 specifier|public
 name|void
-name|diffChangesIgnoresNullOriginalSubjectInReviewDb
+name|diffChangesIgnoresOriginalSubjectInReviewDb
 parameter_list|()
 throws|throws
 name|Exception
@@ -1401,7 +1401,7 @@ argument_list|()
 argument_list|,
 literal|"Subject"
 argument_list|,
-literal|null
+literal|"Original A"
 argument_list|)
 expr_stmt|;
 name|Change
@@ -1426,7 +1426,7 @@ operator|.
 name|getSubject
 argument_list|()
 argument_list|,
-literal|"Original subject"
+literal|"Original B"
 argument_list|)
 expr_stmt|;
 comment|// Both ReviewDb, exact match required.
@@ -1491,7 +1491,7 @@ argument_list|()
 operator|+
 literal|":"
 operator|+
-literal|" {null} != {Original subject}"
+literal|" {Original A} != {Original B}"
 argument_list|)
 expr_stmt|;
 comment|// Both NoteDb, exact match required.
@@ -1554,10 +1554,10 @@ argument_list|()
 operator|+
 literal|":"
 operator|+
-literal|" {null} != {Original subject}"
+literal|" {Original A} != {Original B}"
 argument_list|)
 expr_stmt|;
-comment|// Original subject ignored if ReviewDb has null value.
+comment|// One ReviewDb, one NoteDb, original subject is ignored.
 name|b1
 operator|=
 operator|new
@@ -1609,67 +1609,11 @@ argument_list|,
 name|b2
 argument_list|)
 expr_stmt|;
-comment|// Exact match still required if NoteDb has null value (not realistic).
-name|b1
-operator|=
-operator|new
-name|ChangeBundle
+name|assertNoDiffs
 argument_list|(
-name|c1
-argument_list|,
-name|messages
-argument_list|()
-argument_list|,
-name|patchSets
-argument_list|()
-argument_list|,
-name|approvals
-argument_list|()
-argument_list|,
-name|comments
-argument_list|()
-argument_list|,
-name|NOTE_DB
-argument_list|)
-expr_stmt|;
-name|b2
-operator|=
-operator|new
-name|ChangeBundle
-argument_list|(
-name|c2
-argument_list|,
-name|messages
-argument_list|()
-argument_list|,
-name|patchSets
-argument_list|()
-argument_list|,
-name|approvals
-argument_list|()
-argument_list|,
-name|comments
-argument_list|()
-argument_list|,
-name|REVIEW_DB
-argument_list|)
-expr_stmt|;
-name|assertDiffs
-argument_list|(
-name|b1
-argument_list|,
 name|b2
 argument_list|,
-literal|"originalSubject differs for Change.Id "
-operator|+
-name|c1
-operator|.
-name|getId
-argument_list|()
-operator|+
-literal|":"
-operator|+
-literal|" {null} != {Original subject}"
+name|b1
 argument_list|)
 expr_stmt|;
 block|}
