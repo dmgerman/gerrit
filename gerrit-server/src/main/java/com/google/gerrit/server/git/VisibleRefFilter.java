@@ -872,14 +872,28 @@ block|}
 elseif|else
 if|if
 condition|(
+name|showMetadata
+operator|&&
 operator|(
-name|accountId
-operator|=
-name|Account
+name|RefNames
 operator|.
-name|Id
+name|isRefsEditOf
+argument_list|(
+name|ref
 operator|.
-name|fromRef
+name|getLeaf
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|currAccountId
+argument_list|)
+operator|||
+operator|(
+name|RefNames
+operator|.
+name|isRefsEdit
 argument_list|(
 name|ref
 operator|.
@@ -889,33 +903,17 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
-operator|)
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// Reference related to an account is visible only for the current
-comment|// account.
-comment|//
-comment|// TODO(dborowitz): If a ref matches an account and a change, verify
-comment|// both (to exclude e.g. edits on changes that the user has lost access
-comment|// to).
-if|if
-condition|(
-name|showMetadata
 operator|&&
-operator|(
 name|canViewMetadata
-operator|||
-name|accountId
-operator|.
-name|equals
-argument_list|(
-name|currAccountId
-argument_list|)
+operator|)
 operator|)
 condition|)
 block|{
+comment|// Change edit reference related is visible to the account that owns the
+comment|// change edit.
+comment|//
+comment|// TODO(dborowitz): Verify if change is visible (to exclude edits on
+comment|// changes that the user has lost access to).
 name|result
 operator|.
 name|put
@@ -928,7 +926,6 @@ argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 elseif|else
 if|if
@@ -1038,6 +1035,48 @@ comment|// Use the leaf to lookup the control data. If the reference is
 comment|// symbolic we want the control around the final target. If its
 comment|// not symbolic then getLeaf() is a no-op returning ref itself.
 comment|//
+if|if
+condition|(
+operator|(
+name|accountId
+operator|=
+name|Account
+operator|.
+name|Id
+operator|.
+name|fromRef
+argument_list|(
+name|ref
+operator|.
+name|getLeaf
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|)
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// Reference related to an account is visible only for the current
+comment|// account.
+if|if
+condition|(
+name|showMetadata
+operator|&&
+operator|(
+name|canViewMetadata
+operator|||
+name|accountId
+operator|.
+name|equals
+argument_list|(
+name|currAccountId
+argument_list|)
+operator|)
+condition|)
+block|{
 name|result
 operator|.
 name|put
@@ -1050,6 +1089,23 @@ argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|result
+operator|.
+name|put
+argument_list|(
+name|ref
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|ref
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|// If we have tags that were deferred, we need to do a revision walk
