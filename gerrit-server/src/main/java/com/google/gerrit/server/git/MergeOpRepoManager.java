@@ -404,6 +404,7 @@ end_comment
 
 begin_class
 DECL|class|MergeOpRepoManager
+specifier|public
 class|class
 name|MergeOpRepoManager
 implements|implements
