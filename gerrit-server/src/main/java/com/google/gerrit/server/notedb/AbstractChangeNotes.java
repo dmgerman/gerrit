@@ -660,13 +660,19 @@ name|this
 operator|.
 name|args
 operator|=
+name|checkNotNull
+argument_list|(
 name|args
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|changeId
 operator|=
+name|checkNotNull
+argument_list|(
 name|changeId
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getChangeId ()
@@ -719,10 +725,6 @@ name|migration
 operator|.
 name|readChanges
 argument_list|()
-operator|||
-name|changeId
-operator|==
-literal|null
 condition|)
 block|{
 name|loadDefaults
