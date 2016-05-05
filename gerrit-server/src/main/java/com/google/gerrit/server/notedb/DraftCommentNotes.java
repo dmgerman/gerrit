@@ -915,20 +915,21 @@ comment|// Only check if this particular user's drafts are up to date, to avoid
 comment|// reading unnecessary refs.
 if|if
 condition|(
-name|state
-operator|==
-literal|null
-operator|||
 operator|!
-name|state
+name|NoteDbChangeState
 operator|.
 name|areDraftsUpToDate
 argument_list|(
+name|state
+argument_list|,
 operator|new
 name|RepoRefCache
 argument_list|(
 name|repo
 argument_list|)
+argument_list|,
+name|getChangeId
+argument_list|()
 argument_list|,
 name|author
 argument_list|)
