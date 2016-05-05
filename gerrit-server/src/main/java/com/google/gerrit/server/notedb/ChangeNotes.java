@@ -2816,12 +2816,6 @@ specifier|final
 name|Change
 name|change
 decl_stmt|;
-DECL|field|autoRebuild
-specifier|private
-specifier|final
-name|boolean
-name|autoRebuild
-decl_stmt|;
 DECL|field|refs
 specifier|private
 specifier|final
@@ -2995,6 +2989,8 @@ name|change
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|autoRebuild
 argument_list|)
 expr_stmt|;
 name|this
@@ -3012,12 +3008,6 @@ name|Change
 argument_list|(
 name|change
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|autoRebuild
-operator|=
-name|autoRebuild
 expr_stmt|;
 name|this
 operator|.
@@ -4056,6 +4046,36 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
+name|ObjectId
+name|id
+init|=
+name|readRef
+argument_list|(
+name|repo
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|state
+operator|==
+literal|null
+operator|&&
+name|id
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|super
+operator|.
+name|openHandle
+argument_list|(
+name|repo
+argument_list|,
+name|id
+argument_list|)
+return|;
+block|}
 name|RefCache
 name|refs
 init|=
@@ -4095,6 +4115,8 @@ return|return
 name|rebuildAndOpen
 argument_list|(
 name|repo
+argument_list|,
+name|id
 argument_list|)
 return|;
 block|}
@@ -4108,13 +4130,16 @@ name|repo
 argument_list|)
 return|;
 block|}
-DECL|method|rebuildAndOpen (Repository repo)
+DECL|method|rebuildAndOpen (Repository repo, ObjectId oldId)
 specifier|private
 name|LoadHandle
 name|rebuildAndOpen
 parameter_list|(
 name|Repository
 name|repo
+parameter_list|,
+name|ObjectId
+name|oldId
 parameter_list|)
 throws|throws
 name|IOException
@@ -4157,6 +4182,8 @@ operator|.
 name|openHandle
 argument_list|(
 name|repo
+argument_list|,
+name|oldId
 argument_list|)
 return|;
 comment|// May be null in tests.
@@ -4197,6 +4224,8 @@ operator|.
 name|openHandle
 argument_list|(
 name|repo
+argument_list|,
+name|oldId
 argument_list|)
 return|;
 block|}

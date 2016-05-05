@@ -449,12 +449,6 @@ operator|.
 name|Id
 name|author
 decl_stmt|;
-DECL|field|autoRebuild
-specifier|private
-specifier|final
-name|boolean
-name|autoRebuild
-decl_stmt|;
 DECL|field|comments
 specifier|private
 name|ImmutableListMultimap
@@ -531,6 +525,8 @@ argument_list|(
 name|args
 argument_list|,
 name|changeId
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|this
@@ -544,12 +540,6 @@ operator|.
 name|author
 operator|=
 name|author
-expr_stmt|;
-name|this
-operator|.
-name|autoRebuild
-operator|=
-literal|true
 expr_stmt|;
 block|}
 DECL|method|DraftCommentNotes ( Args args, Change change, Account.Id author, boolean autoRebuild)
@@ -578,6 +568,8 @@ name|change
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|autoRebuild
 argument_list|)
 expr_stmt|;
 name|this
@@ -591,12 +583,6 @@ operator|.
 name|author
 operator|=
 name|author
-expr_stmt|;
-name|this
-operator|.
-name|autoRebuild
-operator|=
-name|autoRebuild
 expr_stmt|;
 block|}
 DECL|method|getRevisionNoteMap ()

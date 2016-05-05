@@ -626,6 +626,12 @@ specifier|final
 name|Args
 name|args
 decl_stmt|;
+DECL|field|autoRebuild
+specifier|protected
+specifier|final
+name|boolean
+name|autoRebuild
+decl_stmt|;
 DECL|field|changeId
 specifier|private
 specifier|final
@@ -644,7 +650,7 @@ specifier|private
 name|boolean
 name|loaded
 decl_stmt|;
-DECL|method|AbstractChangeNotes (Args args, Change.Id changeId)
+DECL|method|AbstractChangeNotes (Args args, Change.Id changeId, boolean autoRebuild)
 name|AbstractChangeNotes
 parameter_list|(
 name|Args
@@ -654,6 +660,9 @@ name|Change
 operator|.
 name|Id
 name|changeId
+parameter_list|,
+name|boolean
+name|autoRebuild
 parameter_list|)
 block|{
 name|this
@@ -673,6 +682,12 @@ name|checkNotNull
 argument_list|(
 name|changeId
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|autoRebuild
+operator|=
+name|autoRebuild
 expr_stmt|;
 block|}
 DECL|method|getChangeId ()
@@ -716,15 +731,35 @@ name|self
 argument_list|()
 return|;
 block|}
-if|if
-condition|(
-operator|!
+name|boolean
+name|read
+init|=
 name|args
 operator|.
 name|migration
 operator|.
 name|readChanges
 argument_list|()
+decl_stmt|;
+name|boolean
+name|readOrWrite
+init|=
+name|read
+operator|||
+name|args
+operator|.
+name|migration
+operator|.
+name|writeChanges
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|readOrWrite
+operator|||
+operator|!
+name|autoRebuild
 condition|)
 block|{
 name|loadDefaults
@@ -784,6 +819,8 @@ name|getProjectName
 argument_list|()
 argument_list|)
 init|;
+comment|// Call openHandle even if reading is disabled, to trigger
+comment|// auto-rebuilding before this object may get passed to a ChangeUpdate.
 name|LoadHandle
 name|handle
 operator|=
@@ -792,6 +829,11 @@ argument_list|(
 name|repo
 argument_list|)
 init|)
+block|{
+if|if
+condition|(
+name|read
+condition|)
 block|{
 name|revision
 operator|=
@@ -805,6 +847,13 @@ argument_list|(
 name|handle
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|loadDefaults
+argument_list|()
+expr_stmt|;
+block|}
 name|loaded
 operator|=
 literal|true
@@ -881,6 +930,30 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|openHandle
+argument_list|(
+name|repo
+argument_list|,
+name|readRef
+argument_list|(
+name|repo
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|openHandle (Repository repo, ObjectId id)
+specifier|protected
+name|LoadHandle
+name|openHandle
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|,
+name|ObjectId
+name|id
+parameter_list|)
+block|{
+return|return
 name|LoadHandle
 operator|.
 name|create
@@ -892,10 +965,7 @@ argument_list|(
 name|repo
 argument_list|)
 argument_list|,
-name|readRef
-argument_list|(
-name|repo
-argument_list|)
+name|id
 argument_list|)
 return|;
 block|}
