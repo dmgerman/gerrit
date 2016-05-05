@@ -684,7 +684,23 @@ name|server
 operator|.
 name|git
 operator|.
-name|ChainedReceiveCommands
+name|RefCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|RepoRefCache
 import|;
 end_import
 
@@ -1657,7 +1673,7 @@ name|load
 argument_list|()
 return|;
 block|}
-DECL|method|createWithAutoRebuildingDisabled (Change change, ChainedReceiveCommands cmds)
+DECL|method|createWithAutoRebuildingDisabled (Change change, RefCache refs)
 specifier|public
 name|ChangeNotes
 name|createWithAutoRebuildingDisabled
@@ -1665,8 +1681,8 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|ChainedReceiveCommands
-name|cmds
+name|RefCache
+name|refs
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1686,7 +1702,7 @@ name|change
 argument_list|,
 literal|false
 argument_list|,
-name|cmds
+name|refs
 argument_list|)
 operator|.
 name|load
@@ -2806,11 +2822,11 @@ specifier|final
 name|boolean
 name|autoRebuild
 decl_stmt|;
-DECL|field|cmds
+DECL|field|refs
 specifier|private
 specifier|final
-name|ChainedReceiveCommands
-name|cmds
+name|RefCache
+name|refs
 decl_stmt|;
 DECL|field|patchSets
 specifier|private
@@ -2947,7 +2963,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ChangeNotes (Args args, Project.NameKey project, Change change, boolean autoRebuild, @Nullable ChainedReceiveCommands cmds)
+DECL|method|ChangeNotes (Args args, Project.NameKey project, Change change, boolean autoRebuild, @Nullable RefCache refs)
 specifier|private
 name|ChangeNotes
 parameter_list|(
@@ -2967,8 +2983,8 @@ name|autoRebuild
 parameter_list|,
 annotation|@
 name|Nullable
-name|ChainedReceiveCommands
-name|cmds
+name|RefCache
+name|refs
 parameter_list|)
 block|{
 name|super
@@ -3005,9 +3021,9 @@ name|autoRebuild
 expr_stmt|;
 name|this
 operator|.
-name|cmds
+name|refs
 operator|=
-name|cmds
+name|refs
 expr_stmt|;
 block|}
 DECL|method|getChange ()
@@ -3989,19 +4005,20 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|cmds
+name|refs
 operator|!=
 literal|null
 condition|?
-name|cmds
+name|refs
 operator|.
-name|getObjectId
+name|get
 argument_list|(
-name|repo
-argument_list|,
 name|getRefName
 argument_list|()
 argument_list|)
+operator|.
+name|orNull
+argument_list|()
 else|:
 name|super
 operator|.
@@ -4039,6 +4056,25 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
+name|RefCache
+name|refs
+init|=
+name|this
+operator|.
+name|refs
+operator|!=
+literal|null
+condition|?
+name|this
+operator|.
+name|refs
+else|:
+operator|new
+name|RepoRefCache
+argument_list|(
+name|repo
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|state
@@ -4050,7 +4086,7 @@ name|state
 operator|.
 name|isChangeUpToDate
 argument_list|(
-name|repo
+name|refs
 argument_list|)
 condition|)
 block|{
