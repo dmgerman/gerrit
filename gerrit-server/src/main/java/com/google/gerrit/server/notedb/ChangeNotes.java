@@ -2976,15 +2976,9 @@ argument_list|(
 name|args
 argument_list|,
 name|change
-operator|!=
-literal|null
-condition|?
-name|change
 operator|.
 name|getId
 argument_list|()
-else|:
-literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -2997,17 +2991,11 @@ name|this
 operator|.
 name|change
 operator|=
-name|change
-operator|!=
-literal|null
-condition|?
 operator|new
 name|Change
 argument_list|(
 name|change
 argument_list|)
-else|:
-literal|null
 expr_stmt|;
 name|this
 operator|.
@@ -3557,16 +3545,12 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-try|try
-init|(
 name|ChangeNotesParser
 name|parser
 init|=
 operator|new
 name|ChangeNotesParser
 argument_list|(
-name|project
-argument_list|,
 name|change
 operator|.
 name|getId
@@ -3581,18 +3565,13 @@ argument_list|()
 argument_list|,
 name|args
 operator|.
-name|repoManager
-argument_list|,
-name|args
-operator|.
 name|noteUtil
 argument_list|,
 name|args
 operator|.
 name|metrics
 argument_list|)
-init|)
-block|{
+decl_stmt|;
 name|parser
 operator|.
 name|parseAll
@@ -3782,8 +3761,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO(dborowitz): This should be an error, but for now it's required
-comment|// for some tests to pass.
+comment|// TODO(dborowitz): This should be an error, but for now it's required for
+comment|// some tests to pass.
 name|change
 operator|.
 name|clearCurrentPatchSet
@@ -3909,7 +3888,6 @@ operator|.
 name|submitRecords
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override

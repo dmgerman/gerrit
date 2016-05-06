@@ -2857,7 +2857,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Hashtags currently only work when noteDB is enabled
+comment|// Hashtags only work when reading from NoteDB is enabled
 name|assume
 argument_list|()
 operator|.
@@ -2865,7 +2865,7 @@ name|that
 argument_list|(
 name|notesMigration
 operator|.
-name|enabled
+name|readChanges
 argument_list|()
 argument_list|)
 operator|.
@@ -3055,7 +3055,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Hashtags currently only work when noteDB is enabled
+comment|// Hashtags only work when reading from NoteDB is enabled
 name|assume
 argument_list|()
 operator|.
@@ -3063,7 +3063,7 @@ name|that
 argument_list|(
 name|notesMigration
 operator|.
-name|enabled
+name|readChanges
 argument_list|()
 argument_list|)
 operator|.
