@@ -3158,55 +3158,32 @@ name|b1
 argument_list|,
 name|b2
 argument_list|,
-literal|"Differing numbers of ChangeMessages for Change.Id "
+literal|"ChangeMessages differ for Change.Id "
 operator|+
 name|id
 operator|+
-literal|":\n"
+literal|"\n"
 operator|+
-literal|"ChangeMessage{key="
+literal|"Only in A:\n  "
 operator|+
-name|id
-operator|+
-literal|",uuid1, author=100,"
-operator|+
-literal|" writtenOn=2009-09-30 17:00:06.0, patchset="
-operator|+
-name|id
-operator|+
-literal|",1, tag=null,"
-operator|+
-literal|" message=[message 2]}\n"
-operator|+
-literal|"ChangeMessage{key="
+name|cm2
+argument_list|)
+expr_stmt|;
+name|assertDiffs
+argument_list|(
+name|b2
+argument_list|,
+name|b1
+argument_list|,
+literal|"ChangeMessages differ for Change.Id "
 operator|+
 name|id
 operator|+
-literal|",uuid2, author=100,"
+literal|"\n"
 operator|+
-literal|" writtenOn=2009-09-30 17:00:12.0, patchset="
+literal|"Only in B:\n  "
 operator|+
-name|id
-operator|+
-literal|",1, tag=null,"
-operator|+
-literal|" message=[null]}\n"
-operator|+
-literal|"--- vs. ---\n"
-operator|+
-literal|"ChangeMessage{key="
-operator|+
-name|id
-operator|+
-literal|",uuid1, author=100,"
-operator|+
-literal|" writtenOn=2009-09-30 17:00:06.0, patchset="
-operator|+
-name|id
-operator|+
-literal|",1, tag=null,"
-operator|+
-literal|" message=[message 2]}"
+name|cm2
 argument_list|)
 expr_stmt|;
 block|}
@@ -3370,19 +3347,53 @@ argument_list|,
 name|NOTE_DB
 argument_list|)
 decl_stmt|;
+comment|// Implementation happens to pair up cm1 in b1 with cm3 in b2 because it
+comment|// depends on iteration order and doesn't care about UUIDs. The important
+comment|// thing is that there's some diff.
 name|assertDiffs
 argument_list|(
 name|b1
 argument_list|,
 name|b2
 argument_list|,
-literal|"message differs for ChangeMessage on "
+literal|"ChangeMessages differ for Change.Id "
 operator|+
 name|id
 operator|+
-literal|" at index 1:"
+literal|"\n"
 operator|+
-literal|" {message 1} != {message 2}"
+literal|"Only in A:\n  "
+operator|+
+name|cm3
+operator|+
+literal|"\n"
+operator|+
+literal|"Only in B:\n  "
+operator|+
+name|cm2
+argument_list|)
+expr_stmt|;
+name|assertDiffs
+argument_list|(
+name|b2
+argument_list|,
+name|b1
+argument_list|,
+literal|"ChangeMessages differ for Change.Id "
+operator|+
+name|id
+operator|+
+literal|"\n"
+operator|+
+literal|"Only in A:\n  "
+operator|+
+name|cm2
+operator|+
+literal|"\n"
+operator|+
+literal|"Only in B:\n  "
+operator|+
+name|cm3
 argument_list|)
 expr_stmt|;
 block|}
@@ -3664,19 +3675,16 @@ argument_list|,
 name|REVIEW_DB
 argument_list|)
 decl_stmt|;
-name|String
-name|msg
+name|int
+name|id
 init|=
-literal|"writtenOn differs for ChangeMessage on "
-operator|+
 name|c
 operator|.
 name|getId
 argument_list|()
-operator|+
-literal|" at index 0 in NoteDb vs. ReviewDb:"
-operator|+
-literal|" {2009-09-30 17:00:02.0} != {2009-09-30 17:00:10.0}"
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|assertDiffs
 argument_list|(
@@ -3684,7 +3692,21 @@ name|b1
 argument_list|,
 name|b3
 argument_list|,
-name|msg
+literal|"ChangeMessages differ for Change.Id "
+operator|+
+name|id
+operator|+
+literal|"\n"
+operator|+
+literal|"Only in A:\n  "
+operator|+
+name|cm1
+operator|+
+literal|"\n"
+operator|+
+literal|"Only in B:\n  "
+operator|+
+name|cm3
 argument_list|)
 expr_stmt|;
 name|assertDiffs
@@ -3693,7 +3715,21 @@ name|b3
 argument_list|,
 name|b1
 argument_list|,
-name|msg
+literal|"ChangeMessages differ for Change.Id "
+operator|+
+name|id
+operator|+
+literal|"\n"
+operator|+
+literal|"Only in A:\n  "
+operator|+
+name|cm3
+operator|+
+literal|"\n"
+operator|+
+literal|"Only in B:\n  "
+operator|+
+name|cm1
 argument_list|)
 expr_stmt|;
 block|}
@@ -3968,17 +4004,44 @@ name|b1
 argument_list|,
 name|b2
 argument_list|,
-literal|"patchset differs for ChangeMessage on "
+literal|"ChangeMessages differ for Change.Id "
 operator|+
 name|id
 operator|+
-literal|" at index 0:"
+literal|"\n"
 operator|+
-literal|" {"
+literal|"Only in A:\n  "
+operator|+
+name|cm1
+operator|+
+literal|"\n"
+operator|+
+literal|"Only in B:\n  "
+operator|+
+name|cm2
+argument_list|)
+expr_stmt|;
+name|assertDiffs
+argument_list|(
+name|b2
+argument_list|,
+name|b1
+argument_list|,
+literal|"ChangeMessages differ for Change.Id "
 operator|+
 name|id
 operator|+
-literal|",1} != {null}"
+literal|"\n"
+operator|+
+literal|"Only in A:\n  "
+operator|+
+name|cm2
+operator|+
+literal|"\n"
+operator|+
+literal|"Only in B:\n  "
+operator|+
+name|cm1
 argument_list|)
 expr_stmt|;
 block|}
