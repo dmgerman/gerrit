@@ -223,6 +223,14 @@ specifier|public
 name|Boolean
 name|starred
 decl_stmt|;
+DECL|field|stars
+specifier|public
+name|Collection
+argument_list|<
+name|String
+argument_list|>
+name|stars
+decl_stmt|;
 DECL|field|reviewed
 specifier|public
 name|Boolean
