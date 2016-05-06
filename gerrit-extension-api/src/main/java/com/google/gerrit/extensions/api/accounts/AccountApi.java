@@ -642,7 +642,6 @@ name|NotImplementedException
 argument_list|()
 throw|;
 block|}
-empty_stmt|;
 annotation|@
 name|Override
 DECL|method|deleteWatchedProjects (List<String> in)
