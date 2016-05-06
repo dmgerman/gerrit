@@ -76,6 +76,22 @@ name|common
 operator|.
 name|base
 operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Preconditions
 operator|.
 name|checkArgument
@@ -269,6 +285,20 @@ operator|.
 name|collect
 operator|.
 name|ImmutableMap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSortedMap
 import|;
 end_import
 
@@ -1196,7 +1226,7 @@ block|}
 DECL|method|patchSetMap (Iterable<PatchSet> in)
 specifier|private
 specifier|static
-name|Map
+name|TreeMap
 argument_list|<
 name|PatchSet
 operator|.
@@ -1213,7 +1243,7 @@ argument_list|>
 name|in
 parameter_list|)
 block|{
-name|Map
+name|TreeMap
 argument_list|<
 name|PatchSet
 operator|.
@@ -1956,7 +1986,7 @@ decl_stmt|;
 DECL|field|patchSets
 specifier|private
 specifier|final
-name|ImmutableMap
+name|ImmutableSortedMap
 argument_list|<
 name|PatchSet
 operator|.
@@ -2055,9 +2085,9 @@ name|this
 operator|.
 name|patchSets
 operator|=
-name|ImmutableMap
+name|ImmutableSortedMap
 operator|.
-name|copyOf
+name|copyOfSorted
 argument_list|(
 name|patchSetMap
 argument_list|(
@@ -2396,6 +2426,40 @@ name|diffs
 argument_list|)
 return|;
 block|}
+DECL|method|getFirstPatchSetTime ()
+specifier|private
+name|Timestamp
+name|getFirstPatchSetTime
+parameter_list|()
+block|{
+if|if
+condition|(
+name|patchSets
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+name|change
+operator|.
+name|getCreatedOn
+argument_list|()
+return|;
+block|}
+return|return
+name|patchSets
+operator|.
+name|firstEntry
+argument_list|()
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|getCreatedOn
+argument_list|()
+return|;
+block|}
 DECL|method|getLatestTimestamp ()
 specifier|private
 name|Timestamp
@@ -2412,14 +2476,14 @@ name|Ordering
 operator|.
 name|natural
 argument_list|()
+operator|.
+name|nullsFirst
+argument_list|()
 decl_stmt|;
 name|Timestamp
 name|ts
 init|=
-name|change
-operator|.
-name|getLastUpdatedOn
-argument_list|()
+literal|null
 decl_stmt|;
 for|for
 control|(
@@ -2534,7 +2598,15 @@ expr_stmt|;
 block|}
 block|}
 return|return
+name|firstNonNull
+argument_list|(
 name|ts
+argument_list|,
+name|change
+operator|.
+name|getLastUpdatedOn
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|diffChanges (List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
@@ -2597,6 +2669,11 @@ else|:
 literal|"Changes"
 decl_stmt|;
 name|boolean
+name|excludeCreatedOn
+init|=
+literal|false
+decl_stmt|;
+name|boolean
 name|excludeSubject
 init|=
 literal|false
@@ -2627,6 +2704,9 @@ operator|.
 name|getLastUpdatedOn
 argument_list|()
 decl_stmt|;
+comment|// Allow created timestamp in NoteDb to be either the created timestamp of
+comment|// the change, or the timestamp of the first remaining patch set.
+comment|//
 comment|// Ignore subject if the NoteDb subject starts with the ReviewDb subject.
 comment|// The NoteDb subject is read directly from the commit, whereas the ReviewDb
 comment|// subject historically may have been truncated to fit in a SQL varchar
@@ -2667,6 +2747,26 @@ operator|==
 name|NOTE_DB
 condition|)
 block|{
+name|excludeCreatedOn
+operator|=
+operator|!
+name|timestampsDiffer
+argument_list|(
+name|bundleA
+argument_list|,
+name|bundleA
+operator|.
+name|getFirstPatchSetTime
+argument_list|()
+argument_list|,
+name|bundleB
+argument_list|,
+name|b
+operator|.
+name|getCreatedOn
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|excludeSubject
 operator|=
 name|b
@@ -2729,6 +2829,26 @@ operator|==
 name|REVIEW_DB
 condition|)
 block|{
+name|excludeCreatedOn
+operator|=
+operator|!
+name|timestampsDiffer
+argument_list|(
+name|bundleA
+argument_list|,
+name|a
+operator|.
+name|getCreatedOn
+argument_list|()
+argument_list|,
+name|bundleB
+argument_list|,
+name|bundleB
+operator|.
+name|getFirstPatchSetTime
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|excludeSubject
 operator|=
 name|a
@@ -2799,6 +2919,19 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|excludeCreatedOn
+condition|)
+block|{
+name|exclude
+operator|.
+name|add
+argument_list|(
+literal|"createdOn"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|excludeSubject
 condition|)
 block|{
@@ -2857,9 +2990,9 @@ argument_list|,
 name|exclude
 argument_list|)
 expr_stmt|;
-comment|// Allow timestamps to either be exactly equal (within slop), or the NoteDb
-comment|// timestamp to be equal to the latest entity timestamp in the whole
-comment|// ReviewDb bundle (within slop).
+comment|// Allow last updated timestamps to either be exactly equal (within slop),
+comment|// or the NoteDb timestamp to be equal to the latest entity timestamp in the
+comment|// whole ReviewDb bundle (within slop).
 if|if
 condition|(
 name|timestampsDiffer
