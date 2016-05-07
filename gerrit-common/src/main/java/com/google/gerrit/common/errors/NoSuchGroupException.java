@@ -206,25 +206,6 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchGroupException (final AccountGroup.NameKey k)
-specifier|public
-name|NoSuchGroupException
-parameter_list|(
-specifier|final
-name|AccountGroup
-operator|.
-name|NameKey
-name|k
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|k
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|NoSuchGroupException (final AccountGroup.NameKey k, final Throwable why)
 specifier|public
 name|NoSuchGroupException
