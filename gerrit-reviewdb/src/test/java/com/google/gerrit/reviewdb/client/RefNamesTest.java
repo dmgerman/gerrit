@@ -96,7 +96,7 @@ name|client
 operator|.
 name|RefNames
 operator|.
-name|parseShardedRefPart
+name|parseRefSuffix
 import|;
 end_import
 
@@ -114,7 +114,7 @@ name|client
 operator|.
 name|RefNames
 operator|.
-name|parseRefSuffix
+name|parseShardedRefPart
 import|;
 end_import
 
