@@ -1961,15 +1961,6 @@ return|return
 name|keysAction
 return|;
 block|}
-DECL|method|getKeysComment ()
-name|KeyCommandSet
-name|getKeysComment
-parameter_list|()
-block|{
-return|return
-name|keysComment
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|onUnload ()
