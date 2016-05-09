@@ -5352,7 +5352,17 @@ name|diffs
 argument_list|,
 name|desc
 argument_list|,
+name|bundleA
+operator|.
+name|getChange
+argument_list|()
+argument_list|,
 name|ta
+argument_list|,
+name|bundleB
+operator|.
+name|getChange
+argument_list|()
 argument_list|,
 name|tb
 argument_list|,
@@ -5368,7 +5378,17 @@ name|diffs
 argument_list|,
 name|desc
 argument_list|,
+name|bundleB
+operator|.
+name|getChange
+argument_list|()
+argument_list|,
 name|tb
+argument_list|,
+name|bundleA
+operator|.
+name|getChange
+argument_list|()
 argument_list|,
 name|ta
 argument_list|,
@@ -5434,7 +5454,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-DECL|method|diffTimestamps (List<String> diffs, String desc, Timestamp tsFromNoteDb, Timestamp tsFromReviewDb, String field)
+DECL|method|diffTimestamps (List<String> diffs, String desc, Change changeFromNoteDb, Timestamp tsFromNoteDb, Change changeFromReviewDb, Timestamp tsFromReviewDb, String field)
 specifier|private
 specifier|static
 name|void
@@ -5449,8 +5469,14 @@ parameter_list|,
 name|String
 name|desc
 parameter_list|,
+name|Change
+name|changeFromNoteDb
+parameter_list|,
 name|Timestamp
 name|tsFromNoteDb
+parameter_list|,
+name|Change
+name|changeFromReviewDb
 parameter_list|,
 name|Timestamp
 name|tsFromReviewDb
@@ -5483,6 +5509,34 @@ argument_list|,
 name|tsFromNoteDb
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|tsFromReviewDb
+operator|.
+name|before
+argument_list|(
+name|changeFromReviewDb
+operator|.
+name|getCreatedOn
+argument_list|()
+argument_list|)
+operator|&&
+name|tsFromNoteDb
+operator|.
+name|equals
+argument_list|(
+name|changeFromNoteDb
+operator|.
+name|getCreatedOn
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Timestamp predates change creation. These are truncated to change
+comment|// creation time during NoteDb conversion, so allow this if the timestamp
+comment|// in NoteDb matches the createdOn time in NoteDb.
+return|return;
+block|}
 name|long
 name|delta
 init|=
