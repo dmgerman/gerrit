@@ -4020,6 +4020,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|toggleShowIntraline ()
+specifier|private
 name|void
 name|toggleShowIntraline
 parameter_list|()
@@ -4488,6 +4489,7 @@ name|apply
 parameter_list|)
 function_decl|;
 DECL|method|upToChange (final boolean openReplyBox)
+specifier|private
 name|Runnable
 name|upToChange
 parameter_list|(
@@ -4624,6 +4626,7 @@ block|}
 return|;
 block|}
 DECL|method|maybePrevVimSearch (final CodeMirror cm)
+specifier|private
 name|Runnable
 name|maybePrevVimSearch
 parameter_list|(
@@ -4689,6 +4692,7 @@ block|}
 return|;
 block|}
 DECL|method|maybeNextVimSearch (final CodeMirror cm)
+specifier|private
 name|Runnable
 name|maybeNextVimSearch
 parameter_list|(
@@ -5394,6 +5398,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|bucketFileSize (DiffInfo diff)
+specifier|private
 specifier|static
 name|FileSize
 name|bucketFileSize
