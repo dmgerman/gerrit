@@ -993,6 +993,7 @@ extends|extends
 name|Screen
 block|{
 DECL|field|RENDER_ENTIRE_FILE_KEYMAP
+specifier|private
 specifier|static
 specifier|final
 name|KeyMap
