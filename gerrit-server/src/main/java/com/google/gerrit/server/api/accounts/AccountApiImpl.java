@@ -418,6 +418,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|DeleteWatchedProjects
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|GetAvatar
 import|;
 end_import
@@ -514,7 +530,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|DeleteWatchedProjects
+name|PostWatchedProjects
 import|;
 end_import
 
@@ -579,22 +595,6 @@ operator|.
 name|account
 operator|.
 name|SshKeys
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|PostWatchedProjects
 import|;
 end_import
 
