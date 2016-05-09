@@ -1543,6 +1543,15 @@ name|value
 parameter_list|)
 comment|/*-{     return this.setGutterMarker(line, gutterId, value);   }-*/
 function_decl|;
+DECL|method|hasSearchHighlight ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|hasSearchHighlight
+parameter_list|()
+comment|/*-{     return this.state.search&& !!this.state.search.query;   }-*/
+function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
 name|CodeMirror
