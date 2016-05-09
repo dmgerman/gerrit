@@ -769,6 +769,14 @@ operator|.
 name|newHasher
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|user
+operator|.
+name|isIdentifiedUser
+argument_list|()
+condition|)
+block|{
 name|h
 operator|.
 name|putString
@@ -792,6 +800,7 @@ argument_list|,
 name|UTF_8
 argument_list|)
 expr_stmt|;
+block|}
 name|prepareETag
 argument_list|(
 name|h
