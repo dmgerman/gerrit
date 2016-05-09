@@ -78,6 +78,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|StarsInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|client
 operator|.
 name|DiffPreferencesInfo
@@ -145,6 +163,22 @@ operator|.
 name|common
 operator|.
 name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|ChangeInfo
 import|;
 end_import
 
@@ -229,6 +263,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|SortedSet
 import|;
 end_import
 
@@ -345,23 +389,59 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|starChange (String id)
+DECL|method|starChange (String changeId)
 name|void
 name|starChange
 parameter_list|(
 name|String
-name|id
+name|changeId
 parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|unstarChange (String id)
+DECL|method|unstarChange (String changeId)
 name|void
 name|unstarChange
 parameter_list|(
 name|String
-name|id
+name|changeId
 parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|setStars (String changeId, StarsInput input)
+name|void
+name|setStars
+parameter_list|(
+name|String
+name|changeId
+parameter_list|,
+name|StarsInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|getStars (String changeId)
+name|SortedSet
+argument_list|<
+name|String
+argument_list|>
+name|getStars
+parameter_list|(
+name|String
+name|changeId
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|getStarredChanges ()
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|getStarredChanges
+parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
@@ -666,13 +746,13 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|starChange (String id)
+DECL|method|starChange (String changeId)
 specifier|public
 name|void
 name|starChange
 parameter_list|(
 name|String
-name|id
+name|changeId
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -685,14 +765,77 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|unstarChange (String id)
+DECL|method|unstarChange (String changeId)
 specifier|public
 name|void
 name|unstarChange
 parameter_list|(
 name|String
-name|id
+name|changeId
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setStars (String changeId, StarsInput input)
+specifier|public
+name|void
+name|setStars
+parameter_list|(
+name|String
+name|changeId
+parameter_list|,
+name|StarsInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getStars (String changeId)
+specifier|public
+name|SortedSet
+argument_list|<
+name|String
+argument_list|>
+name|getStars
+parameter_list|(
+name|String
+name|changeId
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getStarredChanges ()
+specifier|public
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|getStarredChanges
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{

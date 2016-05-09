@@ -310,6 +310,14 @@ specifier|final
 name|Revisions
 name|revisions
 decl_stmt|;
+DECL|field|changeResourceFactory
+specifier|private
+specifier|final
+name|ChangeResource
+operator|.
+name|Factory
+name|changeResourceFactory
+decl_stmt|;
 DECL|field|changeViews
 specifier|private
 specifier|final
@@ -324,11 +332,16 @@ name|changeViews
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ActionJson ( Revisions revisions, DynamicMap<RestView<ChangeResource>> changeViews)
+DECL|method|ActionJson ( Revisions revisions, ChangeResource.Factory changeResourceFactory, DynamicMap<RestView<ChangeResource>> changeViews)
 name|ActionJson
 parameter_list|(
 name|Revisions
 name|revisions
+parameter_list|,
+name|ChangeResource
+operator|.
+name|Factory
+name|changeResourceFactory
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -345,6 +358,12 @@ operator|.
 name|revisions
 operator|=
 name|revisions
+expr_stmt|;
+name|this
+operator|.
+name|changeResourceFactory
+operator|=
+name|changeResourceFactory
 expr_stmt|;
 name|this
 operator|.
@@ -496,8 +515,9 @@ name|from
 argument_list|(
 name|changeViews
 argument_list|,
-operator|new
-name|ChangeResource
+name|changeResourceFactory
+operator|.
+name|create
 argument_list|(
 name|ctl
 argument_list|)

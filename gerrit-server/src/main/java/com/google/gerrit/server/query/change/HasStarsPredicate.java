@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -133,11 +133,10 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Deprecated
-DECL|class|IsStarredByPredicate
+DECL|class|HasStarsPredicate
+specifier|public
 class|class
-name|IsStarredByPredicate
+name|HasStarsPredicate
 extends|extends
 name|IndexPredicate
 argument_list|<
@@ -152,8 +151,8 @@ operator|.
 name|Id
 name|accountId
 decl_stmt|;
-DECL|method|IsStarredByPredicate (Account.Id accountId)
-name|IsStarredByPredicate
+DECL|method|HasStarsPredicate (Account.Id accountId)
+name|HasStarsPredicate
 parameter_list|(
 name|Account
 operator|.
@@ -165,7 +164,7 @@ name|super
 argument_list|(
 name|ChangeField
 operator|.
-name|STARREDBY
+name|STARBY
 argument_list|,
 name|accountId
 operator|.
@@ -196,10 +195,10 @@ block|{
 return|return
 name|cd
 operator|.
-name|starredBy
+name|stars
 argument_list|()
 operator|.
-name|contains
+name|containsKey
 argument_list|(
 name|accountId
 argument_list|)
@@ -228,7 +227,7 @@ block|{
 return|return
 name|ChangeQueryBuilder
 operator|.
-name|FIELD_STARREDBY
+name|FIELD_STARBY
 operator|+
 literal|":"
 operator|+

@@ -1252,6 +1252,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|StarredChangesUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|WebLinks
 import|;
 end_import
@@ -1986,6 +2000,14 @@ operator|.
 name|Factory
 name|notesFactory
 decl_stmt|;
+DECL|field|changeResourceFactory
+specifier|private
+specifier|final
+name|ChangeResource
+operator|.
+name|Factory
+name|changeResourceFactory
+decl_stmt|;
 DECL|field|accountLoader
 specifier|private
 name|AccountLoader
@@ -2013,7 +2035,7 @@ name|fix
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, GitRepositoryManager repoManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, GpgApiAdapter gpgApi, ChangeNotes.Factory notesFactory, @Assisted Set<ListChangesOption> options)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, GitRepositoryManager repoManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, GpgApiAdapter gpgApi, ChangeNotes.Factory notesFactory, ChangeResource.Factory changeResourceFactory, @Assisted Set<ListChangesOption> options)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -2097,6 +2119,11 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|notesFactory
+parameter_list|,
+name|ChangeResource
+operator|.
+name|Factory
+name|changeResourceFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -2220,6 +2247,12 @@ operator|.
 name|notesFactory
 operator|=
 name|notesFactory
+expr_stmt|;
+name|this
+operator|.
+name|changeResourceFactory
+operator|=
+name|changeResourceFactory
 expr_stmt|;
 name|this
 operator|.
@@ -7407,8 +7440,9 @@ argument_list|,
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changeResourceFactory
+operator|.
+name|create
 argument_list|(
 name|ctl
 argument_list|)

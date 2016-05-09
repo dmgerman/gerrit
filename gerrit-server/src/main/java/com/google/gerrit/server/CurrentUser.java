@@ -274,6 +274,8 @@ name|getEffectiveGroups
 parameter_list|()
 function_decl|;
 comment|/** Set of changes starred by this user. */
+annotation|@
+name|Deprecated
 DECL|method|getStarredChanges ()
 specifier|public
 specifier|abstract

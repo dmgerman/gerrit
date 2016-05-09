@@ -419,9 +419,17 @@ specifier|final
 name|CreateChange
 name|createChange
 decl_stmt|;
+DECL|field|changeResourceFactory
+specifier|private
+specifier|final
+name|ChangeResource
+operator|.
+name|Factory
+name|changeResourceFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangesCollection ( Provider<ReviewDb> db, Provider<CurrentUser> user, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeFinder changeFinder, CreateChange createChange)
+DECL|method|ChangesCollection ( Provider<ReviewDb> db, Provider<CurrentUser> user, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeFinder changeFinder, CreateChange createChange, ChangeResource.Factory changeResourceFactory)
 name|ChangesCollection
 parameter_list|(
 name|Provider
@@ -456,6 +464,11 @@ name|changeFinder
 parameter_list|,
 name|CreateChange
 name|createChange
+parameter_list|,
+name|ChangeResource
+operator|.
+name|Factory
+name|changeResourceFactory
 parameter_list|)
 block|{
 name|this
@@ -493,6 +506,12 @@ operator|.
 name|createChange
 operator|=
 name|createChange
+expr_stmt|;
+name|this
+operator|.
+name|changeResourceFactory
+operator|=
+name|changeResourceFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -637,8 +656,9 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|new
-name|ChangeResource
+name|changeResourceFactory
+operator|.
+name|create
 argument_list|(
 name|ctl
 argument_list|)
@@ -753,8 +773,9 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|new
-name|ChangeResource
+name|changeResourceFactory
+operator|.
+name|create
 argument_list|(
 name|ctl
 argument_list|)
@@ -794,8 +815,9 @@ name|control
 parameter_list|)
 block|{
 return|return
-operator|new
-name|ChangeResource
+name|changeResourceFactory
+operator|.
+name|create
 argument_list|(
 name|control
 argument_list|)
