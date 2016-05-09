@@ -1842,6 +1842,16 @@ name|getChange
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|PatchSet
+operator|.
+name|Id
+name|currPsId
+init|=
+name|change
+operator|.
+name|currentPatchSetId
+argument_list|()
+decl_stmt|;
 comment|// We will rebuild all events, except for draft comments, in buckets based
 comment|// on author and timestamp.
 name|List
@@ -1947,6 +1957,38 @@ name|getPatchSets
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|ps
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|>
+name|currPsId
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Skipping patch set {}, which is higher than current patch set {}"
+argument_list|,
+name|ps
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|currPsId
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 name|psIds
 operator|.
 name|add
