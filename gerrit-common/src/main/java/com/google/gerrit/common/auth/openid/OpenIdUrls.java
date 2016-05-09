@@ -74,15 +74,6 @@ specifier|public
 class|class
 name|OpenIdUrls
 block|{
-DECL|field|OPENID_IDENTIFIER
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|OPENID_IDENTIFIER
-init|=
-literal|"openid_identifier"
-decl_stmt|;
 DECL|field|LASTID_COOKIE
 specifier|public
 specifier|static

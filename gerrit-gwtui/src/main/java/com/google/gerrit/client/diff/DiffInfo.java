@@ -224,24 +224,6 @@ name|DiffInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|field|GITLINK
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|GITLINK
-init|=
-literal|"x-git/gitlink"
-decl_stmt|;
-DECL|field|SYMLINK
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SYMLINK
-init|=
-literal|"x-git/symlink"
-decl_stmt|;
 DECL|method|metaA ()
 specifier|public
 specifier|final

@@ -570,7 +570,7 @@ specifier|final
 name|String
 name|TIME_IN_THE_PAST
 init|=
-literal|"Fri, 01 Jan 1990 00:00:00 GMT"
+literal|"Mon, 01 Jan 1990 00:00:00 GMT"
 decl_stmt|;
 DECL|field|handler
 specifier|private

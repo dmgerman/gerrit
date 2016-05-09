@@ -78,22 +78,6 @@ name|common
 operator|.
 name|errors
 operator|.
-name|CorruptEntityException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|errors
-operator|.
 name|NoSuchEntityException
 import|;
 end_import
@@ -556,7 +540,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Extract a line from the file, as a string.    *    * @param file the file index to extract.    * @param line the line number to extract (1 based; 1 is the first line).    * @return the string version of the file line.    * @throws CorruptEntityException the patch cannot be read.    * @throws IOException the patch or complete file content cannot be read.    * @throws NoSuchEntityException    */
+comment|/**    * Extract a line from the file, as a string.    *    * @param file the file index to extract.    * @param line the line number to extract (1 based; 1 is the first line).    * @return the string version of the file line.    * @throws IOException the patch or complete file content cannot be read.    * @throws NoSuchEntityException    */
 DECL|method|getLine (final int file, final int line)
 specifier|public
 name|String
@@ -571,8 +555,6 @@ name|int
 name|line
 parameter_list|)
 throws|throws
-name|CorruptEntityException
-throws|,
 name|IOException
 throws|,
 name|NoSuchEntityException
@@ -656,7 +638,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-comment|/**    * Return number of lines in file.    *    * @param file the file index to extract.    * @return number of lines in file.    * @throws CorruptEntityException the patch cannot be read.    * @throws IOException the patch or complete file content cannot be read.    * @throws NoSuchEntityException the file is not exist.    */
+comment|/**    * Return number of lines in file.    *    * @param file the file index to extract.    * @return number of lines in file.    * @throws IOException the patch or complete file content cannot be read.    * @throws NoSuchEntityException the file is not exist.    */
 DECL|method|getLineCount (final int file)
 specifier|public
 name|int
@@ -667,8 +649,6 @@ name|int
 name|file
 parameter_list|)
 throws|throws
-name|CorruptEntityException
-throws|,
 name|IOException
 throws|,
 name|NoSuchEntityException

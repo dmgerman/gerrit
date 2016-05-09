@@ -365,7 +365,7 @@ class|class
 name|Extras
 block|{
 DECL|field|ANNOTATION_GUTTER_ID
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -374,6 +374,7 @@ init|=
 literal|"CodeMirror-lint-markers"
 decl_stmt|;
 DECL|field|C
+specifier|private
 specifier|static
 specifier|final
 name|BlameConfig

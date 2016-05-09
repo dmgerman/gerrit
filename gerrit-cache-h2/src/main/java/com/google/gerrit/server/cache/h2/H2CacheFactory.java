@@ -484,6 +484,7 @@ implements|,
 name|LifecycleListener
 block|{
 DECL|field|log
+specifier|private
 specifier|static
 specifier|final
 name|Logger

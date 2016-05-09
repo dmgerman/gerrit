@@ -487,36 +487,6 @@ name|action
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ActionButton (ChangeInfo change, EditInfo edit, ActionInfo action)
-specifier|public
-name|ActionButton
-parameter_list|(
-name|ChangeInfo
-name|change
-parameter_list|,
-name|EditInfo
-name|edit
-parameter_list|,
-name|ActionInfo
-name|action
-parameter_list|)
-block|{
-name|this
-argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|,
-name|change
-argument_list|,
-name|edit
-argument_list|,
-literal|null
-argument_list|,
-name|action
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|ActionButton (Project.NameKey project, BranchInfo branch, ChangeInfo change, EditInfo edit, RevisionInfo revision, ActionInfo action)
 specifier|private
 name|ActionButton
