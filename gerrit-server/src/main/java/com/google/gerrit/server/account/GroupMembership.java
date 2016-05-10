@@ -155,7 +155,7 @@ argument_list|>
 name|groupIds
 parameter_list|)
 function_decl|;
-comment|/**    * Returns a set containing an input member of {@code contains(id)} is true.    *<p>    * This is batch form of contains that returns specific group information.    * Implementors may implement the method as:    *    *<pre>    * Set&lt;AccountGroup.UUID&gt; r = new HashSet<>();    * for (AccountGroup.UUID id : groupIds)    *   if (contains(id)) r.add(id);    *</pre>    */
+comment|/**    * Returns a set containing an input member of {@code contains(id)} is true.    *<p>    * This is batch form of contains that returns specific group information.    * Implementors may implement the method as:    *    *<pre>    * Set&lt;AccountGroup.UUID&gt; r = new HashSet&lt;&gt;();    * for (AccountGroup.UUID id : groupIds)    *   if (contains(id)) r.add(id);    *</pre>    */
 DECL|method|intersection (Iterable<AccountGroup.UUID> groupIds)
 name|Set
 argument_list|<
