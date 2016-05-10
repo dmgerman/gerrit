@@ -1549,8 +1549,6 @@ name|ChangeNotes
 argument_list|(
 name|args
 argument_list|,
-name|project
-argument_list|,
 name|change
 argument_list|)
 operator|.
@@ -1575,11 +1573,6 @@ argument_list|(
 name|args
 argument_list|,
 name|change
-operator|.
-name|getProject
-argument_list|()
-argument_list|,
-name|change
 argument_list|)
 return|;
 block|}
@@ -1599,11 +1592,6 @@ operator|new
 name|ChangeNotes
 argument_list|(
 name|args
-argument_list|,
-name|change
-operator|.
-name|getProject
-argument_list|()
 argument_list|,
 name|change
 argument_list|)
@@ -1676,11 +1664,6 @@ argument_list|(
 name|args
 argument_list|,
 name|change
-operator|.
-name|getProject
-argument_list|()
-argument_list|,
-name|change
 argument_list|)
 operator|.
 name|load
@@ -1706,11 +1689,6 @@ operator|new
 name|ChangeNotes
 argument_list|(
 name|args
-argument_list|,
-name|change
-operator|.
-name|getProject
-argument_list|()
 argument_list|,
 name|change
 argument_list|,
@@ -1756,11 +1734,6 @@ operator|new
 name|ChangeNotes
 argument_list|(
 name|args
-argument_list|,
-name|change
-operator|.
-name|getProject
-argument_list|()
 argument_list|,
 name|change
 argument_list|)
@@ -1897,8 +1870,6 @@ operator|new
 name|ChangeNotes
 argument_list|(
 name|args
-argument_list|,
-name|project
 argument_list|,
 name|change
 argument_list|)
@@ -2816,14 +2787,6 @@ return|return
 name|db
 return|;
 block|}
-DECL|field|project
-specifier|private
-specifier|final
-name|Project
-operator|.
-name|NameKey
-name|project
-decl_stmt|;
 DECL|field|refs
 specifier|private
 specifier|final
@@ -2933,17 +2896,12 @@ name|draftCommentNotes
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
-DECL|method|ChangeNotes (Args args, Project.NameKey project, Change change)
+DECL|method|ChangeNotes (Args args, Change change)
 specifier|public
 name|ChangeNotes
 parameter_list|(
 name|Args
 name|args
-parameter_list|,
-name|Project
-operator|.
-name|NameKey
-name|project
 parameter_list|,
 name|Change
 name|change
@@ -2953,8 +2911,6 @@ name|this
 argument_list|(
 name|args
 argument_list|,
-name|project
-argument_list|,
 name|change
 argument_list|,
 literal|true
@@ -2963,17 +2919,12 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ChangeNotes (Args args, Project.NameKey project, Change change, boolean autoRebuild, @Nullable RefCache refs)
+DECL|method|ChangeNotes (Args args, Change change, boolean autoRebuild, @Nullable RefCache refs)
 specifier|private
 name|ChangeNotes
 parameter_list|(
 name|Args
 name|args
-parameter_list|,
-name|Project
-operator|.
-name|NameKey
-name|project
 parameter_list|,
 name|Change
 name|change
@@ -2998,12 +2949,6 @@ argument_list|()
 argument_list|,
 name|autoRebuild
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|project
-operator|=
-name|project
 expr_stmt|;
 name|this
 operator|.
@@ -3663,7 +3608,10 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|(
-name|project
+name|change
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|parser
 operator|.
@@ -3931,7 +3879,10 @@ name|getProjectName
 parameter_list|()
 block|{
 return|return
-name|project
+name|change
+operator|.
+name|getProject
+argument_list|()
 return|;
 block|}
 annotation|@
