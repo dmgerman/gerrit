@@ -402,10 +402,10 @@ name|columns
 init|=
 literal|80
 decl_stmt|;
-DECL|field|taskNameWidth
+DECL|field|maxCommandWidth
 specifier|private
 name|int
-name|taskNameWidth
+name|maxCommandWidth
 decl_stmt|;
 annotation|@
 name|Override
@@ -490,7 +490,7 @@ parameter_list|()
 throws|throws
 name|UnloggedFailure
 block|{
-name|taskNameWidth
+name|maxCommandWidth
 operator|=
 name|wide
 condition|?
@@ -660,7 +660,7 @@ operator|.
 name|length
 argument_list|()
 operator|<
-name|taskNameWidth
+name|maxCommandWidth
 condition|?
 name|task
 operator|.
@@ -674,7 +674,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|taskNameWidth
+name|maxCommandWidth
 argument_list|)
 decl_stmt|;
 name|stdout
