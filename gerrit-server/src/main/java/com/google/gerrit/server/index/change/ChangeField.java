@@ -3684,7 +3684,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * Star labels on this change in the format:<account-id>:<label>    */
+comment|/**    * Star labels on this change in the format:&lt;account-id&gt;:&lt;label&gt;    */
 DECL|field|STAR
 specifier|public
 specifier|static
