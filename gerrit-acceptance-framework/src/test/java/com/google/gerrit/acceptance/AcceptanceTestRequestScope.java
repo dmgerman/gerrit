@@ -1057,6 +1057,47 @@ return|return
 name|old
 return|;
 block|}
+DECL|method|reopenDb ()
+specifier|public
+name|Context
+name|reopenDb
+parameter_list|()
+block|{
+comment|// Setting a new context with the same fields is enough to get the ReviewDb
+comment|// provider to reopen the database.
+name|Context
+name|old
+init|=
+name|current
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+return|return
+name|set
+argument_list|(
+operator|new
+name|Context
+argument_list|(
+name|old
+operator|.
+name|schemaFactory
+argument_list|,
+name|old
+operator|.
+name|session
+argument_list|,
+name|old
+operator|.
+name|user
+argument_list|,
+name|old
+operator|.
+name|created
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/** Returns exactly one instance per command executed. */
 DECL|field|REQUEST
 specifier|static
