@@ -3394,6 +3394,11 @@ return|return
 name|info
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|toChangeInfo (ChangeData cd, Optional<PatchSet.Id> limitToPsId)
 specifier|private
 name|ChangeInfo

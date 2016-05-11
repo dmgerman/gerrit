@@ -791,6 +791,11 @@ else|:
 name|out
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|query ()
 specifier|private
 name|List

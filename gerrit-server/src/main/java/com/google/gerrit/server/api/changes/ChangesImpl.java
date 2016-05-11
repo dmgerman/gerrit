@@ -858,6 +858,11 @@ name|query
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|get (final QueryRequest q)
 specifier|private
 name|List
