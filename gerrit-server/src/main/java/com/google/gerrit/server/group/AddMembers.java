@@ -1296,6 +1296,15 @@ expr_stmt|;
 block|}
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|newAccountGroupMembers
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|auditService
 operator|.
 name|dispatchAddAccountsToGroup
@@ -1351,6 +1360,7 @@ name|getAccountId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|createAccountByLdap (String user)
