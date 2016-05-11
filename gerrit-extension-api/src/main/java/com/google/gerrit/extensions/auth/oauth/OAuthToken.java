@@ -68,6 +68,16 @@ name|oauth
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
 begin_comment
 comment|/* OAuth token */
 end_comment
@@ -77,7 +87,18 @@ DECL|class|OAuthToken
 specifier|public
 class|class
 name|OAuthToken
+implements|implements
+name|Serializable
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|token
 specifier|private
 specifier|final
@@ -96,6 +117,13 @@ specifier|final
 name|String
 name|raw
 decl_stmt|;
+comment|/**    * Time of expiration of this token, or {@code Long#MAX_VALUE} if this    * token never expires, or time of expiration is unknown.    */
+DECL|field|expiresAt
+specifier|private
+specifier|final
+name|long
+name|expiresAt
+decl_stmt|;
 DECL|method|OAuthToken (String token, String secret, String raw)
 specifier|public
 name|OAuthToken
@@ -108,6 +136,37 @@ name|secret
 parameter_list|,
 name|String
 name|raw
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|token
+argument_list|,
+name|secret
+argument_list|,
+name|raw
+argument_list|,
+name|Long
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|OAuthToken (String token, String secret, String raw, long expiresAt)
+specifier|public
+name|OAuthToken
+parameter_list|(
+name|String
+name|token
+parameter_list|,
+name|String
+name|secret
+parameter_list|,
+name|String
+name|raw
+parameter_list|,
+name|long
+name|expiresAt
 parameter_list|)
 block|{
 name|this
@@ -127,6 +186,12 @@ operator|.
 name|raw
 operator|=
 name|raw
+expr_stmt|;
+name|this
+operator|.
+name|expiresAt
+operator|=
+name|expiresAt
 expr_stmt|;
 block|}
 DECL|method|getToken ()
@@ -157,6 +222,31 @@ parameter_list|()
 block|{
 return|return
 name|raw
+return|;
+block|}
+DECL|method|getExpiresAt ()
+specifier|public
+name|long
+name|getExpiresAt
+parameter_list|()
+block|{
+return|return
+name|expiresAt
+return|;
+block|}
+DECL|method|isExpired ()
+specifier|public
+name|boolean
+name|isExpired
+parameter_list|()
+block|{
+return|return
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|>
+name|expiresAt
 return|;
 block|}
 block|}
