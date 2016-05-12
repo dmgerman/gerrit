@@ -151,10 +151,10 @@ comment|/** Efficiently builds a {@link GroupInfoCache}. */
 end_comment
 
 begin_class
-DECL|class|GroupInfoCacheFactory
+DECL|class|GroupInfoCache
 specifier|public
 class|class
-name|GroupInfoCacheFactory
+name|GroupInfoCache
 block|{
 DECL|interface|Factory
 specifier|public
@@ -162,7 +162,7 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create ()
-name|GroupInfoCacheFactory
+name|GroupInfoCache
 name|create
 parameter_list|()
 function_decl|;
@@ -190,8 +190,8 @@ name|out
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupInfoCacheFactory (GroupBackend groupBackend)
-name|GroupInfoCacheFactory
+DECL|method|GroupInfoCache (GroupBackend groupBackend)
+name|GroupInfoCache
 parameter_list|(
 name|GroupBackend
 name|groupBackend

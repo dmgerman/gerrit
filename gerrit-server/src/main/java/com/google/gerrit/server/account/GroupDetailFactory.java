@@ -222,7 +222,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|GroupInfoCacheFactory
+name|GroupInfoCache
 import|;
 end_import
 
@@ -380,7 +380,7 @@ decl_stmt|;
 DECL|field|gic
 specifier|private
 specifier|final
-name|GroupInfoCacheFactory
+name|GroupInfoCache
 name|gic
 decl_stmt|;
 DECL|field|groupId
@@ -398,7 +398,7 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupDetailFactory (final ReviewDb db, final GroupControl.Factory groupControl, final GroupCache groupCache, final GroupBackend groupBackend, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final GroupInfoCacheFactory.Factory groupInfoCacheFactory, @Assisted final AccountGroup.Id groupId)
+DECL|method|GroupDetailFactory (final ReviewDb db, final GroupControl.Factory groupControl, final GroupCache groupCache, final GroupBackend groupBackend, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final GroupInfoCache.Factory groupInfoCacheFactory, @Assisted final AccountGroup.Id groupId)
 name|GroupDetailFactory
 parameter_list|(
 specifier|final
@@ -426,7 +426,7 @@ name|Factory
 name|accountInfoCacheFactory
 parameter_list|,
 specifier|final
-name|GroupInfoCacheFactory
+name|GroupInfoCache
 operator|.
 name|Factory
 name|groupInfoCacheFactory

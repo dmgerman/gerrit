@@ -1526,7 +1526,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|GroupInfoCacheFactory
+name|GroupInfoCache
 import|;
 end_import
 
@@ -2712,7 +2712,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|GroupInfoCacheFactory
+name|GroupInfoCache
 operator|.
 name|Factory
 operator|.
