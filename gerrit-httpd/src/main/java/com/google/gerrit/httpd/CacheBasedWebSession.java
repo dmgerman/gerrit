@@ -867,6 +867,29 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getAccountId ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getAccountId
+parameter_list|()
+block|{
+return|return
+name|val
+operator|!=
+literal|null
+condition|?
+name|val
+operator|.
+name|getAccountId
+argument_list|()
+else|:
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getUser ()
 specifier|public
 name|CurrentUser
