@@ -257,40 +257,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Indicate one or more groups will be needed later on. */
-DECL|method|want (final Iterable<AccountGroup.UUID> uuids)
-specifier|public
-name|void
-name|want
-parameter_list|(
-specifier|final
-name|Iterable
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
-name|uuids
-parameter_list|)
-block|{
-for|for
-control|(
-specifier|final
-name|AccountGroup
-operator|.
-name|UUID
-name|uuid
-range|:
-name|uuids
-control|)
-block|{
-name|want
-argument_list|(
-name|uuid
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|get (final AccountGroup.UUID uuid)
 specifier|public
 name|GroupDescription
