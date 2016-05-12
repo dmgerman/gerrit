@@ -1774,38 +1774,6 @@ name|PostInput
 parameter_list|()
 block|{     }
 block|}
-DECL|class|Result
-specifier|public
-specifier|static
-class|class
-name|Result
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|hashtags ()
-specifier|public
-specifier|final
-specifier|native
-name|JsArrayString
-name|hashtags
-parameter_list|()
-comment|/*-{ return this.hashtags; }-*/
-function_decl|;
-DECL|method|error ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|error
-parameter_list|()
-comment|/*-{ return this.error; }-*/
-function_decl|;
-DECL|method|Result ()
-specifier|protected
-name|Result
-parameter_list|()
-block|{     }
-block|}
 block|}
 end_class
 
