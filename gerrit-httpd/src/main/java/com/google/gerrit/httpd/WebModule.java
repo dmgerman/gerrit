@@ -592,6 +592,14 @@ name|registerInParentInjectors
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|install
+argument_list|(
+name|UniversalWebLoginFilter
+operator|.
+name|module
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|installAuthModule ()
 specifier|private
