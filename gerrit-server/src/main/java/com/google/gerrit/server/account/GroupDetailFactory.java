@@ -398,34 +398,28 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupDetailFactory (final ReviewDb db, final GroupControl.Factory groupControl, final GroupCache groupCache, final GroupBackend groupBackend, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final GroupInfoCache.Factory groupInfoCacheFactory, @Assisted final AccountGroup.Id groupId)
+DECL|method|GroupDetailFactory (ReviewDb db, GroupControl.Factory groupControl, GroupCache groupCache, GroupBackend groupBackend, AccountInfoCacheFactory.Factory accountInfoCacheFactory, GroupInfoCache.Factory groupInfoCacheFactory, @Assisted AccountGroup.Id groupId)
 name|GroupDetailFactory
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|GroupControl
 operator|.
 name|Factory
 name|groupControl
 parameter_list|,
-specifier|final
 name|GroupCache
 name|groupCache
 parameter_list|,
-specifier|final
 name|GroupBackend
 name|groupBackend
 parameter_list|,
-specifier|final
 name|AccountInfoCacheFactory
 operator|.
 name|Factory
 name|accountInfoCacheFactory
 parameter_list|,
-specifier|final
 name|GroupInfoCache
 operator|.
 name|Factory
@@ -433,7 +427,6 @@ name|groupInfoCacheFactory
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -510,7 +503,6 @@ argument_list|(
 name|groupId
 argument_list|)
 expr_stmt|;
-specifier|final
 name|AccountGroup
 name|group
 init|=
@@ -521,7 +513,6 @@ argument_list|(
 name|groupId
 argument_list|)
 decl_stmt|;
-specifier|final
 name|GroupDetail
 name|detail
 init|=
@@ -635,7 +626,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|AccountGroupMember
 name|m
 range|:
@@ -701,16 +691,13 @@ specifier|public
 name|int
 name|compare
 parameter_list|(
-specifier|final
 name|AccountGroupMember
 name|o1
 parameter_list|,
-specifier|final
 name|AccountGroupMember
 name|o2
 parameter_list|)
 block|{
-specifier|final
 name|Account
 name|a
 init|=
@@ -724,7 +711,6 @@ name|getAccountId
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Account
 name|b
 init|=
@@ -854,7 +840,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|AccountGroupById
 name|m
 range|:
@@ -915,11 +900,9 @@ specifier|public
 name|int
 name|compare
 parameter_list|(
-specifier|final
 name|AccountGroupById
 name|o1
 parameter_list|,
-specifier|final
 name|AccountGroupById
 name|o2
 parameter_list|)
