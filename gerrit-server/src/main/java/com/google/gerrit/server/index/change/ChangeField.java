@@ -692,7 +692,9 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-literal|"change_id"
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_CHANGE_ID
 argument_list|,
 name|FieldType
 operator|.
@@ -1204,7 +1206,9 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-literal|"submissionid"
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_SUBMISSIONID
 argument_list|,
 name|FieldType
 operator|.
@@ -1358,7 +1362,9 @@ name|String
 argument_list|>
 argument_list|(
 comment|// Named for backwards compatibility.
-literal|"file"
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_FILE
 argument_list|,
 name|FieldType
 operator|.
@@ -1529,7 +1535,9 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-literal|"hashtag"
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_HASHTAG
 argument_list|,
 name|FieldType
 operator|.
@@ -1736,7 +1744,9 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-literal|"filepart"
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_FILEPART
 argument_list|,
 name|FieldType
 operator|.
@@ -2087,7 +2097,9 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-literal|"exactcommit"
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_EXACTCOMMIT
 argument_list|,
 name|FieldType
 operator|.
@@ -3182,7 +3194,9 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-literal|"mergeable2"
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_MERGEABLE
 argument_list|,
 name|FieldType
 operator|.
@@ -3919,7 +3933,9 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-literal|"group"
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_GROUP
 argument_list|,
 name|FieldType
 operator|.
