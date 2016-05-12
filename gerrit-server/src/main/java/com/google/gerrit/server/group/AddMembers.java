@@ -1680,11 +1680,6 @@ operator|.
 name|Input
 argument_list|>
 block|{
-DECL|class|Input
-specifier|static
-class|class
-name|Input
-block|{     }
 DECL|field|get
 specifier|private
 specifier|final
