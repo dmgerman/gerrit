@@ -3759,7 +3759,7 @@ name|isValid
 argument_list|(
 name|refName
 argument_list|)
-operator|&
+operator|&&
 name|isValidRegex
 argument_list|(
 name|refName
