@@ -753,16 +753,6 @@ operator|)
 name|clazz
 return|;
 block|}
-DECL|method|getSrcJar ()
-name|Path
-name|getSrcJar
-parameter_list|()
-block|{
-return|return
-name|getSrcFile
-argument_list|()
-return|;
-block|}
 DECL|method|getDataDir ()
 name|Path
 name|getDataDir
