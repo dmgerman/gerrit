@@ -2295,15 +2295,6 @@ name|cm
 block|}
 return|;
 block|}
-DECL|method|getCm ()
-name|CodeMirror
-name|getCm
-parameter_list|()
-block|{
-return|return
-name|cm
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|getDiffTable ()
