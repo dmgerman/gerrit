@@ -766,14 +766,6 @@ name|PluginLoader
 implements|implements
 name|LifecycleListener
 block|{
-DECL|field|PLUGIN_TMP_PREFIX
-specifier|static
-specifier|final
-name|String
-name|PLUGIN_TMP_PREFIX
-init|=
-literal|"plugin_"
-decl_stmt|;
 DECL|field|log
 specifier|static
 specifier|final
