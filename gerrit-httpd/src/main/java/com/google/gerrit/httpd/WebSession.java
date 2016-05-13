@@ -92,6 +92,24 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Account
+operator|.
+name|Id
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|AccountExternalId
 import|;
 end_import
@@ -225,6 +243,11 @@ function_decl|;
 DECL|method|getSessionId ()
 name|String
 name|getSessionId
+parameter_list|()
+function_decl|;
+DECL|method|getAccountId ()
+name|Id
+name|getAccountId
 parameter_list|()
 function_decl|;
 block|}
