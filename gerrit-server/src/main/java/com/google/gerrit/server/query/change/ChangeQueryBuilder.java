@@ -2362,8 +2362,6 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|otherId
 argument_list|)
 argument_list|)
@@ -4732,10 +4730,6 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|args
-operator|.
-name|db
-argument_list|,
 name|id
 argument_list|)
 argument_list|)
@@ -5060,10 +5054,6 @@ name|OwnerinPredicate
 argument_list|(
 name|args
 operator|.
-name|db
-argument_list|,
-name|args
-operator|.
 name|userFactory
 argument_list|,
 name|g
@@ -5232,10 +5222,6 @@ return|return
 operator|new
 name|ReviewerinPredicate
 argument_list|(
-name|args
-operator|.
-name|db
-argument_list|,
 name|args
 operator|.
 name|userFactory

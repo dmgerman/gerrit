@@ -1260,10 +1260,6 @@ name|identifiedUserFactory
 operator|.
 name|create
 argument_list|(
-name|args
-operator|.
-name|db
-argument_list|,
 name|w
 operator|.
 name|getAccountId

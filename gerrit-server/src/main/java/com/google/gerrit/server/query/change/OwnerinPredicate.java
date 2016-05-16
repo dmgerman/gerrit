@@ -108,22 +108,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -160,18 +144,6 @@ name|OrmException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
 begin_class
 DECL|class|OwnerinPredicate
 class|class
@@ -182,15 +154,6 @@ argument_list|<
 name|ChangeData
 argument_list|>
 block|{
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|userFactory
 specifier|private
 specifier|final
@@ -207,15 +170,9 @@ operator|.
 name|UUID
 name|uuid
 decl_stmt|;
-DECL|method|OwnerinPredicate (Provider<ReviewDb> dbProvider, IdentifiedUser.GenericFactory userFactory, AccountGroup.UUID uuid)
+DECL|method|OwnerinPredicate (IdentifiedUser.GenericFactory userFactory, AccountGroup.UUID uuid)
 name|OwnerinPredicate
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|,
 name|IdentifiedUser
 operator|.
 name|GenericFactory
@@ -238,12 +195,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -311,8 +262,6 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|dbProvider
-argument_list|,
 name|change
 operator|.
 name|getOwner

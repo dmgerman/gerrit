@@ -772,8 +772,6 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|dbProvider
-argument_list|,
 name|approver
 argument_list|)
 decl_stmt|;

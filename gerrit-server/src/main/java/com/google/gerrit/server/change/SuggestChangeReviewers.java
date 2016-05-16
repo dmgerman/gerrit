@@ -483,8 +483,6 @@ name|identifiedUserFactory
 operator|.
 name|create
 argument_list|(
-name|dbProvider
-argument_list|,
 name|account
 argument_list|)
 decl_stmt|;
