@@ -757,7 +757,7 @@ if|if
 condition|(
 operator|!
 name|readOrWrite
-operator|||
+operator|&&
 operator|!
 name|autoRebuild
 condition|)
