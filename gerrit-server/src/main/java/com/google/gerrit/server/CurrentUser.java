@@ -72,11 +72,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
-operator|.
-name|Account
+name|Nullable
 import|;
 end_import
 
@@ -92,7 +90,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountProjectWatch
+name|Account
 import|;
 end_import
 
@@ -164,16 +162,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -189,6 +177,43 @@ specifier|abstract
 class|class
 name|CurrentUser
 block|{
+comment|/** Unique key for plugin/extension specific data on a CurrentUser. */
+DECL|class|PropertyKey
+specifier|public
+specifier|static
+specifier|final
+class|class
+name|PropertyKey
+parameter_list|<
+name|T
+parameter_list|>
+block|{
+DECL|method|create ()
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|PropertyKey
+argument_list|<
+name|T
+argument_list|>
+name|create
+parameter_list|()
+block|{
+return|return
+operator|new
+name|PropertyKey
+argument_list|<>
+argument_list|()
+return|;
+block|}
+DECL|method|PropertyKey ()
+specifier|private
+name|PropertyKey
+parameter_list|()
+block|{     }
+block|}
 DECL|field|capabilityControlFactory
 specifier|private
 specifier|final
@@ -286,17 +311,6 @@ operator|.
 name|Id
 argument_list|>
 name|getStarredChanges
-parameter_list|()
-function_decl|;
-comment|/** Filters selecting changes the user wants to monitor. */
-DECL|method|getNotificationFilters ()
-specifier|public
-specifier|abstract
-name|Collection
-argument_list|<
-name|AccountProjectWatch
-argument_list|>
-name|getNotificationFilters
 parameter_list|()
 function_decl|;
 comment|/** Unique name of the user on this server, if one has been assigned. */
@@ -404,6 +418,49 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**    * Lookup a previously stored property.    *    * @param key unique property key.    * @return previously stored value, or {@code null}.    */
+annotation|@
+name|Nullable
+DECL|method|get (PropertyKey<T> key)
+specifier|public
+parameter_list|<
+name|T
+parameter_list|>
+name|T
+name|get
+parameter_list|(
+name|PropertyKey
+argument_list|<
+name|T
+argument_list|>
+name|key
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|/**    * Store a property for later retrieval.    *    * @param key unique property key.    * @param value value to store; or {@code null} to clear the value.    */
+DECL|method|put (PropertyKey<T> key, @Nullable T value)
+specifier|public
+parameter_list|<
+name|T
+parameter_list|>
+name|void
+name|put
+parameter_list|(
+name|PropertyKey
+argument_list|<
+name|T
+argument_list|>
+name|key
+parameter_list|,
+annotation|@
+name|Nullable
+name|T
+name|value
+parameter_list|)
+block|{   }
 block|}
 end_class
 
