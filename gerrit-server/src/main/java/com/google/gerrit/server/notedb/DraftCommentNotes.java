@@ -228,6 +228,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|RepoRefCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|NoSuchChangeException
@@ -433,12 +449,6 @@ operator|.
 name|Id
 name|author
 decl_stmt|;
-DECL|field|autoRebuild
-specifier|private
-specifier|final
-name|boolean
-name|autoRebuild
-decl_stmt|;
 DECL|field|comments
 specifier|private
 name|ImmutableListMultimap
@@ -515,6 +525,8 @@ argument_list|(
 name|args
 argument_list|,
 name|changeId
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|this
@@ -528,12 +540,6 @@ operator|.
 name|author
 operator|=
 name|author
-expr_stmt|;
-name|this
-operator|.
-name|autoRebuild
-operator|=
-literal|true
 expr_stmt|;
 block|}
 DECL|method|DraftCommentNotes ( Args args, Change change, Account.Id author, boolean autoRebuild)
@@ -562,6 +568,8 @@ name|change
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|autoRebuild
 argument_list|)
 expr_stmt|;
 name|this
@@ -575,12 +583,6 @@ operator|.
 name|author
 operator|=
 name|author
-expr_stmt|;
-name|this
-operator|.
-name|autoRebuild
-operator|=
-name|autoRebuild
 expr_stmt|;
 block|}
 DECL|method|getRevisionNoteMap ()
@@ -899,16 +901,21 @@ comment|// Only check if this particular user's drafts are up to date, to avoid
 comment|// reading unnecessary refs.
 if|if
 condition|(
-name|state
-operator|==
-literal|null
-operator|||
 operator|!
-name|state
+name|NoteDbChangeState
 operator|.
 name|areDraftsUpToDate
 argument_list|(
+name|state
+argument_list|,
+operator|new
+name|RepoRefCache
+argument_list|(
 name|repo
+argument_list|)
+argument_list|,
+name|getChangeId
+argument_list|()
 argument_list|,
 name|author
 argument_list|)
