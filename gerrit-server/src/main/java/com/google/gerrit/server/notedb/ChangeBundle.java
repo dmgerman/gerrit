@@ -3513,8 +3513,8 @@ comment|/**    * Set of fields that must always exactly match between ReviewDb a
 annotation|@
 name|AutoValue
 DECL|class|ChangeMessageCandidate
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|ChangeMessageCandidate
 block|{
