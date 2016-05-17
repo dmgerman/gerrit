@@ -486,6 +486,7 @@ argument_list|(
 name|projectKeyToDelete
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|UnprocessableEntityException
@@ -495,6 +496,7 @@ operator|+
 literal|" is not currently watched by this user."
 argument_list|)
 throw|;
+block|}
 name|keysToDelete
 operator|.
 name|add

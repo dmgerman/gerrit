@@ -268,7 +268,6 @@ argument_list|()
 decl_stmt|;
 DECL|interface|Factory
 specifier|public
-specifier|static
 interface|interface
 name|Factory
 extends|extends
