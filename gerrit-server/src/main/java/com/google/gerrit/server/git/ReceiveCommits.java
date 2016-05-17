@@ -11807,6 +11807,17 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|magicBranch
+operator|.
+name|hashtags
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|bu
 operator|.
 name|addOp
@@ -11832,6 +11843,7 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!

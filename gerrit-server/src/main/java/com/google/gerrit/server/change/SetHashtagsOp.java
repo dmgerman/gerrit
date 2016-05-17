@@ -390,6 +390,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|validators
 operator|.
 name|HashtagValidationListener
@@ -518,6 +534,12 @@ name|input
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|notesMigration
+specifier|private
+specifier|final
+name|NotesMigration
+name|notesMigration
+decl_stmt|;
 DECL|field|cmUtil
 specifier|private
 specifier|final
@@ -583,9 +605,12 @@ name|updatedHashtags
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|SetHashtagsOp ( ChangeMessagesUtil cmUtil, ChangeHooks hooks, DynamicSet<HashtagValidationListener> validationListeners, @Assisted @Nullable HashtagsInput input)
+DECL|method|SetHashtagsOp ( NotesMigration notesMigration, ChangeMessagesUtil cmUtil, ChangeHooks hooks, DynamicSet<HashtagValidationListener> validationListeners, @Assisted @Nullable HashtagsInput input)
 name|SetHashtagsOp
 parameter_list|(
+name|NotesMigration
+name|notesMigration
+parameter_list|,
 name|ChangeMessagesUtil
 name|cmUtil
 parameter_list|,
@@ -606,6 +631,12 @@ name|HashtagsInput
 name|input
 parameter_list|)
 block|{
+name|this
+operator|.
+name|notesMigration
+operator|=
+name|notesMigration
+expr_stmt|;
 name|this
 operator|.
 name|cmUtil
@@ -669,6 +700,23 @@ name|OrmException
 throws|,
 name|IOException
 block|{
+if|if
+condition|(
+operator|!
+name|notesMigration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"Cannot add hashtags; NoteDb is disabled"
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|input
