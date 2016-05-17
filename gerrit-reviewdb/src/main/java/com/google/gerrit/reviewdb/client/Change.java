@@ -535,6 +535,19 @@ argument_list|,
 name|endChangeId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|id
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|id
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 return|return
 operator|new
 name|Change
@@ -548,6 +561,10 @@ argument_list|(
 name|id
 argument_list|)
 argument_list|)
+return|;
+block|}
+return|return
+literal|null
 return|;
 block|}
 DECL|method|startIndex (String ref)
