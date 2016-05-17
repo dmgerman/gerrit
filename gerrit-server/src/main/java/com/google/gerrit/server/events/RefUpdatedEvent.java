@@ -137,6 +137,7 @@ extends|extends
 name|RefEvent
 block|{
 DECL|field|TYPE
+specifier|public
 specifier|static
 specifier|final
 name|String

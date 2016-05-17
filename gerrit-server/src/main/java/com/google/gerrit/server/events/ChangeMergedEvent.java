@@ -121,6 +121,7 @@ extends|extends
 name|PatchSetEvent
 block|{
 DECL|field|TYPE
+specifier|public
 specifier|static
 specifier|final
 name|String
