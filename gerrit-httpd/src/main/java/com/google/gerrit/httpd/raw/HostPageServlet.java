@@ -964,7 +964,7 @@ name|isNoteDbEnabled
 operator|=
 name|migration
 operator|.
-name|enabled
+name|readChanges
 argument_list|()
 expr_stmt|;
 name|pluginsLoadTimeout
