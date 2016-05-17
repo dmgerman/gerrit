@@ -98,6 +98,34 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|NoHttpd
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|ConfigSuite
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -107,6 +135,20 @@ operator|.
 name|junit
 operator|.
 name|TestRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -191,6 +233,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|NoHttpd
 DECL|class|SubmoduleSubscriptionsIT
 specifier|public
 class|class
@@ -198,6 +242,22 @@ name|SubmoduleSubscriptionsIT
 extends|extends
 name|AbstractSubmoduleSubscription
 block|{
+annotation|@
+name|ConfigSuite
+operator|.
+name|Config
+DECL|method|submitWholeTopicEnabled ()
+specifier|public
+specifier|static
+name|Config
+name|submitWholeTopicEnabled
+parameter_list|()
+block|{
+return|return
+name|submitWholeTopicEnabledConfig
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Test
 annotation|@
