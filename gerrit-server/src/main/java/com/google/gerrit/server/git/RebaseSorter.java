@@ -338,6 +338,18 @@ range|:
 name|accepted
 control|)
 block|{
+comment|// n also tip of directly pushed branch => n remains 'interesting' here
+if|if
+condition|(
+operator|!
+name|c
+operator|.
+name|equals
+argument_list|(
+name|n
+argument_list|)
+condition|)
+block|{
 name|rw
 operator|.
 name|markUninteresting
@@ -345,6 +357,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|CodeReviewCommit
 name|c
