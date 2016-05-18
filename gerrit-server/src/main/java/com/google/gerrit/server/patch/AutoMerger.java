@@ -1369,11 +1369,6 @@ name|ins
 argument_list|)
 expr_stmt|;
 block|}
-name|ins
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 return|return
 name|commit
 argument_list|(
