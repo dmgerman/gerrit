@@ -106,6 +106,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|Permission
@@ -311,7 +325,7 @@ name|AbstractSubmoduleSubscription
 extends|extends
 name|AbstractDaemonTest
 block|{
-DECL|method|createProjectWithPush (String name)
+DECL|method|createProjectWithPush (String name, @Nullable Project.NameKey parent)
 specifier|protected
 name|TestRepository
 argument_list|<
@@ -321,6 +335,13 @@ name|createProjectWithPush
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+annotation|@
+name|Nullable
+name|Project
+operator|.
+name|NameKey
+name|parent
 parameter_list|)
 throws|throws
 name|Exception
@@ -333,6 +354,8 @@ init|=
 name|createProject
 argument_list|(
 name|name
+argument_list|,
+name|parent
 argument_list|)
 decl_stmt|;
 name|grant
@@ -361,6 +384,29 @@ return|return
 name|cloneProject
 argument_list|(
 name|project
+argument_list|)
+return|;
+block|}
+DECL|method|createProjectWithPush (String name)
+specifier|protected
+name|TestRepository
+argument_list|<
+name|?
+argument_list|>
+name|createProjectWithPush
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|createProjectWithPush
+argument_list|(
+name|name
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
