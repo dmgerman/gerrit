@@ -1085,7 +1085,7 @@ name|submitWholeTopicEnabledConfig
 argument_list|()
 return|;
 block|}
-DECL|field|mergeResults
+DECL|field|changeMergedEvents
 specifier|private
 name|Map
 argument_list|<
@@ -1093,7 +1093,7 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|mergeResults
+name|changeMergedEvents
 decl_stmt|;
 annotation|@
 name|Inject
@@ -1199,7 +1199,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|mergeResults
+name|changeMergedEvents
 operator|=
 operator|new
 name|HashMap
@@ -1285,7 +1285,7 @@ operator|.
 name|newRev
 argument_list|)
 expr_stmt|;
-name|mergeResults
+name|changeMergedEvents
 operator|.
 name|put
 argument_list|(
@@ -2351,7 +2351,7 @@ argument_list|()
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|mergeResults
+name|changeMergedEvents
 argument_list|)
 operator|.
 name|isNotEmpty
@@ -2360,7 +2360,7 @@ expr_stmt|;
 name|String
 name|newRev
 init|=
-name|mergeResults
+name|changeMergedEvents
 operator|.
 name|get
 argument_list|(
