@@ -3277,7 +3277,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// push with hashtags should fail when noteDb is disabled
+comment|// Push with hashtags should fail when reading from NoteDb is disabled.
 name|assume
 argument_list|()
 operator|.
@@ -3285,7 +3285,7 @@ name|that
 argument_list|(
 name|notesMigration
 operator|.
-name|enabled
+name|readChanges
 argument_list|()
 argument_list|)
 operator|.

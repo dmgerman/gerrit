@@ -8370,7 +8370,7 @@ condition|(
 operator|!
 name|notesMigration
 operator|.
-name|enabled
+name|readChanges
 argument_list|()
 condition|)
 block|{
