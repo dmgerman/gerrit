@@ -1638,14 +1638,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|deleteWatchedProjects (List<String> in)
+DECL|method|deleteWatchedProjects (List<ProjectWatchInfo> in)
 specifier|public
 name|void
 name|deleteWatchedProjects
 parameter_list|(
 name|List
 argument_list|<
-name|String
+name|ProjectWatchInfo
 argument_list|>
 name|in
 parameter_list|)
