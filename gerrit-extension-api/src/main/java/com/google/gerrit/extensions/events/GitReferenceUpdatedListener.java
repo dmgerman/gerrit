@@ -74,11 +74,41 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|annotations
 operator|.
 name|ExtensionPoint
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|AccountInfo
 import|;
 end_import
 
@@ -132,6 +162,14 @@ function_decl|;
 DECL|method|isNonFastForward ()
 name|boolean
 name|isNonFastForward
+parameter_list|()
+function_decl|;
+comment|/**      * The updater, could be null if it's the server.      */
+DECL|method|getUpdater ()
+annotation|@
+name|Nullable
+name|AccountInfo
+name|getUpdater
 parameter_list|()
 function_decl|;
 block|}

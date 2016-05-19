@@ -720,6 +720,14 @@ name|commit
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|hooks

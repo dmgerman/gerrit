@@ -2791,6 +2791,14 @@ operator|.
 name|Type
 operator|.
 name|CREATE
+argument_list|,
+name|currentUser
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;

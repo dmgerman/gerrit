@@ -5185,6 +5185,11 @@ name|getNameKey
 argument_list|()
 argument_list|,
 name|c
+argument_list|,
+name|user
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|hooks
@@ -14120,6 +14125,11 @@ name|zeroId
 argument_list|()
 argument_list|,
 name|newCommit
+argument_list|,
+name|user
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
