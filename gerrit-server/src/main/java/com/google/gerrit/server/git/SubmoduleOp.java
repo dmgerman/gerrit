@@ -1335,14 +1335,11 @@ return|return
 name|ret
 return|;
 block|}
-DECL|method|updateSuperProjects (ReviewDb db, Collection<Branch.NameKey> updatedBranches, String updateId, MergeOpRepoManager orm)
+DECL|method|updateSuperProjects ( Collection<Branch.NameKey> updatedBranches, String updateId, MergeOpRepoManager orm)
 specifier|protected
 name|void
 name|updateSuperProjects
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Collection
 argument_list|<
 name|Branch
