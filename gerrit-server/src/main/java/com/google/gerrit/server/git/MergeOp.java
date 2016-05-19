@@ -4875,8 +4875,6 @@ name|subOp
 operator|.
 name|updateSuperProjects
 argument_list|(
-name|db
-argument_list|,
 name|branches
 argument_list|,
 name|submissionId

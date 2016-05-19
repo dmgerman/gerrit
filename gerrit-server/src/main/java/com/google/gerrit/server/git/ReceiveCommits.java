@@ -5269,8 +5269,6 @@ name|op
 operator|.
 name|updateSuperProjects
 argument_list|(
-name|db
-argument_list|,
 name|branches
 argument_list|,
 literal|"receiveID"
