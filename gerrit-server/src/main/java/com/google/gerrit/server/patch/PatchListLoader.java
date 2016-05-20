@@ -1027,12 +1027,6 @@ specifier|final
 name|long
 name|timeoutMillis
 decl_stmt|;
-DECL|field|lock
-specifier|private
-specifier|final
-name|Object
-name|lock
-decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|PatchListLoader (GitRepositoryManager mgr, PatchListCache plc, @GerritServerConfig Config cfg, @DiffExecutor ExecutorService de, @Assisted PatchListKey k, @Assisted Project.NameKey p)
@@ -1095,12 +1089,6 @@ expr_stmt|;
 name|project
 operator|=
 name|p
-expr_stmt|;
-name|lock
-operator|=
-operator|new
-name|Object
-argument_list|()
 expr_stmt|;
 name|timeoutMillis
 operator|=
@@ -1931,7 +1919,7 @@ name|IOException
 block|{
 synchronized|synchronized
 init|(
-name|lock
+name|diffEntry
 init|)
 block|{
 return|return
@@ -2029,7 +2017,7 @@ argument_list|)
 expr_stmt|;
 synchronized|synchronized
 init|(
-name|lock
+name|diffEntry
 init|)
 block|{
 return|return
