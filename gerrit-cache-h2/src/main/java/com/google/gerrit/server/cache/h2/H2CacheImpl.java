@@ -1657,9 +1657,7 @@ name|h
 init|=
 operator|new
 name|ValueHolder
-argument_list|<
-name|V
-argument_list|>
+argument_list|<>
 argument_list|(
 name|loader
 operator|.
