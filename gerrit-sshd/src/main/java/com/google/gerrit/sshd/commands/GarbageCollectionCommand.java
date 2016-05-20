@@ -487,11 +487,8 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 literal|"needs projects as command arguments or --all option"
 argument_list|)
 throw|;
@@ -508,11 +505,8 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 literal|"either specify projects as command arguments or use --all option"
 argument_list|)
 throw|;

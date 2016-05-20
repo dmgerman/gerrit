@@ -545,8 +545,7 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
 literal|"Processing of prolog script failed: "
 operator|+

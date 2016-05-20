@@ -839,9 +839,9 @@ name|ok
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
-literal|"fatal: one or more updates failed; review output above"
+literal|"one or more updates failed; review output above"
 argument_list|)
 throw|;
 block|}
@@ -1165,7 +1165,7 @@ case|case
 literal|0
 case|:
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"\""
 operator|+
@@ -1207,7 +1207,7 @@ expr_stmt|;
 break|break;
 default|default:
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"\""
 operator|+
@@ -1303,26 +1303,6 @@ parameter_list|)
 block|{
 comment|// Ignored
 block|}
-block|}
-DECL|method|error (String msg)
-specifier|private
-specifier|static
-name|UnloggedFailure
-name|error
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-return|return
-operator|new
-name|UnloggedFailure
-argument_list|(
-literal|1
-argument_list|,
-name|msg
-argument_list|)
-return|;
 block|}
 block|}
 end_class

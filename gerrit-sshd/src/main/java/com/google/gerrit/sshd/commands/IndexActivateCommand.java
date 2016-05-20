@@ -305,8 +305,7 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
 literal|"Failed to activate latest index: "
 operator|+

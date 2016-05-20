@@ -1178,7 +1178,7 @@ name|restoreChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"abandon and restore actions are mutually exclusive"
 argument_list|)
@@ -1190,7 +1190,7 @@ name|submitChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"abandon and submit actions are mutually exclusive"
 argument_list|)
@@ -1202,7 +1202,7 @@ name|publishPatchSet
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"abandon and publish actions are mutually exclusive"
 argument_list|)
@@ -1214,7 +1214,7 @@ name|deleteDraftPatchSet
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"abandon and delete actions are mutually exclusive"
 argument_list|)
@@ -1226,7 +1226,7 @@ name|rebaseChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"abandon and rebase actions are mutually exclusive"
 argument_list|)
@@ -1244,7 +1244,7 @@ name|restoreChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"publish and restore actions are mutually exclusive"
 argument_list|)
@@ -1256,7 +1256,7 @@ name|submitChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"publish and submit actions are mutually exclusive"
 argument_list|)
@@ -1268,7 +1268,7 @@ name|deleteDraftPatchSet
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"publish and delete actions are mutually exclusive"
 argument_list|)
@@ -1286,7 +1286,7 @@ name|restoreChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"json and restore actions are mutually exclusive"
 argument_list|)
@@ -1298,7 +1298,7 @@ name|submitChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"json and submit actions are mutually exclusive"
 argument_list|)
@@ -1310,7 +1310,7 @@ name|deleteDraftPatchSet
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"json and delete actions are mutually exclusive"
 argument_list|)
@@ -1322,7 +1322,7 @@ name|publishPatchSet
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"json and publish actions are mutually exclusive"
 argument_list|)
@@ -1334,7 +1334,7 @@ name|abandonChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"json and abandon actions are mutually exclusive"
 argument_list|)
@@ -1348,7 +1348,7 @@ literal|null
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"json and message are mutually exclusive"
 argument_list|)
@@ -1360,7 +1360,7 @@ name|rebaseChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"json and rebase actions are mutually exclusive"
 argument_list|)
@@ -1374,7 +1374,7 @@ literal|null
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"json and tag actions are mutually exclusive"
 argument_list|)
@@ -1392,7 +1392,7 @@ name|deleteDraftPatchSet
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"rebase and delete actions are mutually exclusive"
 argument_list|)
@@ -1404,7 +1404,7 @@ name|submitChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"rebase and submit actions are mutually exclusive"
 argument_list|)
@@ -1419,7 +1419,7 @@ name|submitChange
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"delete and submit actions are mutually exclusive"
 argument_list|)
@@ -1578,7 +1578,7 @@ name|ok
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"one or more reviews failed; review output above"
 argument_list|)
@@ -1700,7 +1700,7 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"internal error while reading review input"
 argument_list|)
@@ -2018,12 +2018,9 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -2135,8 +2132,7 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
 literal|"missing "
 operator|+
@@ -2282,27 +2278,6 @@ parameter_list|)
 block|{
 comment|// Ignored
 block|}
-block|}
-DECL|method|error (final String msg)
-specifier|private
-specifier|static
-name|UnloggedFailure
-name|error
-parameter_list|(
-specifier|final
-name|String
-name|msg
-parameter_list|)
-block|{
-return|return
-operator|new
-name|UnloggedFailure
-argument_list|(
-literal|1
-argument_list|,
-name|msg
-argument_list|)
-return|;
 block|}
 block|}
 end_class

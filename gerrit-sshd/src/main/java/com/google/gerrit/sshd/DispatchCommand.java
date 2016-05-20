@@ -519,11 +519,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 name|msg
 operator|.
 name|toString
@@ -572,11 +569,8 @@ operator|+
 literal|": not found"
 decl_stmt|;
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 name|msg
 argument_list|)
 throw|;
@@ -677,11 +671,8 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 name|commandName
 operator|+
 literal|" does not take arguments"

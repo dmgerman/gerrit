@@ -309,11 +309,8 @@ name|err
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|"fatal: "
-operator|+
 name|err
 operator|.
 name|getMessage
