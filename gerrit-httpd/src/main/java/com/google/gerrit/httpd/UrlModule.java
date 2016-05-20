@@ -627,6 +627,18 @@ name|legacyGerritScreen
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Forward PolyGerrit URLs to their respective GWT equivalents.
+name|serveRegex
+argument_list|(
+literal|"^/(c|q|x|admin|dashboard|settings)/(.*)"
+argument_list|)
+operator|.
+name|with
+argument_list|(
+name|gerritUrl
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 name|serve
 argument_list|(
@@ -796,18 +808,6 @@ name|query
 argument_list|(
 literal|"is:starred"
 argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Forward PolyGerrit URLs to their respective GWT equivalents.
-name|serveRegex
-argument_list|(
-literal|"^/(c|q|x|admin|dashboard|settings)/(.*)"
-argument_list|)
-operator|.
-name|with
-argument_list|(
-name|gerritUrl
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|serveRegex
