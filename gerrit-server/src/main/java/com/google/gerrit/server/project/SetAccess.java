@@ -288,7 +288,7 @@ name|api
 operator|.
 name|access
 operator|.
-name|ProjectAccessInput
+name|ProjectAccessInfo
 import|;
 end_import
 
@@ -306,7 +306,7 @@ name|api
 operator|.
 name|access
 operator|.
-name|ProjectAccessInfo
+name|ProjectAccessInput
 import|;
 end_import
 
@@ -403,6 +403,22 @@ operator|.
 name|restapi
 operator|.
 name|UnprocessableEntityException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
 import|;
 end_import
 
@@ -2041,6 +2057,24 @@ argument_list|(
 name|md
 argument_list|)
 decl_stmt|;
+name|Account
+name|account
+init|=
+name|user
+operator|.
+name|isIdentifiedUser
+argument_list|()
+condition|?
+name|user
+operator|.
+name|asIdentifiedUser
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
+else|:
+literal|null
+decl_stmt|;
 name|gitRefUpdated
 operator|.
 name|fire
@@ -2063,6 +2097,8 @@ name|commit
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|account
 argument_list|)
 expr_stmt|;
 name|projectCache
