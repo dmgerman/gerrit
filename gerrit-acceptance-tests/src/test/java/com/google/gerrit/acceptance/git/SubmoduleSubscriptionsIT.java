@@ -118,9 +118,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|reviewdb
 operator|.
-name|ConfigSuite
+name|client
+operator|.
+name|Project
 import|;
 end_import
 
@@ -132,11 +134,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|testutil
 operator|.
-name|client
-operator|.
-name|Project
+name|ConfigSuite
 import|;
 end_import
 
