@@ -256,6 +256,7 @@ begin_class
 annotation|@
 name|Ignore
 DECL|class|FakeChangeIndex
+specifier|public
 class|class
 name|FakeChangeIndex
 implements|implements
