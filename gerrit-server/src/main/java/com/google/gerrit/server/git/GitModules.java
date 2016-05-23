@@ -188,6 +188,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|project
+operator|.
+name|ProjectCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|util
 operator|.
 name|SubmoduleSectionParser
@@ -449,14 +465,6 @@ specifier|final
 name|String
 name|thisServer
 decl_stmt|;
-DECL|field|subSecParserFactory
-specifier|private
-specifier|final
-name|SubmoduleSectionParser
-operator|.
-name|Factory
-name|subSecParserFactory
-decl_stmt|;
 DECL|field|branch
 specifier|private
 specifier|final
@@ -486,7 +494,7 @@ name|subscriptions
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|GitModules ( @anonicalWebUrl @ullable String canonicalWebUrl, SubmoduleSectionParser.Factory subSecParserFactory, @Assisted Branch.NameKey branch, @Assisted String submissionId, @Assisted MergeOpRepoManager orm)
+DECL|method|GitModules ( @anonicalWebUrl @ullable String canonicalWebUrl, @Assisted Branch.NameKey branch, @Assisted String submissionId, @Assisted MergeOpRepoManager orm)
 name|GitModules
 parameter_list|(
 annotation|@
@@ -495,11 +503,6 @@ annotation|@
 name|Nullable
 name|String
 name|canonicalWebUrl
-parameter_list|,
-name|SubmoduleSectionParser
-operator|.
-name|Factory
-name|subSecParserFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -521,12 +524,6 @@ parameter_list|)
 throws|throws
 name|SubmoduleException
 block|{
-name|this
-operator|.
-name|subSecParserFactory
-operator|=
-name|subSecParserFactory
-expr_stmt|;
 name|this
 operator|.
 name|orm
@@ -580,10 +577,13 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|load ()
+DECL|method|load (ProjectCache cache)
 name|void
 name|load
-parameter_list|()
+parameter_list|(
+name|ProjectCache
+name|cache
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -755,10 +755,11 @@ argument_list|)
 decl_stmt|;
 name|subscriptions
 operator|=
-name|subSecParserFactory
-operator|.
-name|create
+operator|new
+name|SubmoduleSectionParser
 argument_list|(
+name|cache
+argument_list|,
 name|bbc
 argument_list|,
 name|thisServer

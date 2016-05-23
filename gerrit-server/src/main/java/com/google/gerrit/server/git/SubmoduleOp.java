@@ -1288,7 +1288,11 @@ decl_stmt|;
 name|m
 operator|.
 name|load
-argument_list|()
+argument_list|(
+name|this
+operator|.
+name|projectCache
+argument_list|)
 expr_stmt|;
 name|ret
 operator|.
