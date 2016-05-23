@@ -6700,7 +6700,10 @@ name|cfg
 operator|.
 name|load
 argument_list|(
-name|repo
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
 argument_list|,
 name|cmd
 operator|.

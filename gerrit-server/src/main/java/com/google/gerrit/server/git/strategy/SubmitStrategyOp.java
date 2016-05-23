@@ -1182,7 +1182,7 @@ name|load
 argument_list|(
 name|ctx
 operator|.
-name|getRepository
+name|getRevWalk
 argument_list|()
 argument_list|,
 name|commit
