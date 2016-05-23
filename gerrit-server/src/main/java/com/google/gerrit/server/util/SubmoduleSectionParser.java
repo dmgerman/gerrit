@@ -641,13 +641,7 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|(
-operator|new
-name|Project
-operator|.
-name|NameKey
-argument_list|(
-name|projectName
-argument_list|)
+name|projectKey
 argument_list|,
 name|branch
 argument_list|)
