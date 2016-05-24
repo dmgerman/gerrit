@@ -116,22 +116,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ProjectCache
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -208,12 +192,6 @@ specifier|public
 class|class
 name|SubmoduleSectionParser
 block|{
-DECL|field|projectCache
-specifier|private
-specifier|final
-name|ProjectCache
-name|projectCache
-decl_stmt|;
 DECL|field|bbc
 specifier|private
 specifier|final
@@ -234,13 +212,10 @@ operator|.
 name|NameKey
 name|superProjectBranch
 decl_stmt|;
-DECL|method|SubmoduleSectionParser (ProjectCache projectCache, Config bbc, String canonicalWebUrl, Branch.NameKey superProjectBranch)
+DECL|method|SubmoduleSectionParser (Config bbc, String canonicalWebUrl, Branch.NameKey superProjectBranch)
 specifier|public
 name|SubmoduleSectionParser
 parameter_list|(
-name|ProjectCache
-name|projectCache
-parameter_list|,
 name|Config
 name|bbc
 parameter_list|,
@@ -253,12 +228,6 @@ name|NameKey
 name|superProjectBranch
 parameter_list|)
 block|{
-name|this
-operator|.
-name|projectCache
-operator|=
-name|projectCache
-expr_stmt|;
 name|this
 operator|.
 name|bbc
@@ -394,11 +363,6 @@ name|id
 argument_list|,
 literal|"branch"
 argument_list|)
-decl_stmt|;
-name|SubmoduleSubscription
-name|ss
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -737,20 +701,7 @@ argument_list|(
 name|project
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|projectCache
-operator|.
-name|get
-argument_list|(
-name|projectKey
-argument_list|)
-operator|!=
-literal|null
-condition|)
-block|{
-name|ss
-operator|=
+return|return
 operator|new
 name|SubmoduleSubscription
 argument_list|(
@@ -768,8 +719,7 @@ argument_list|)
 argument_list|,
 name|path
 argument_list|)
-expr_stmt|;
-block|}
+return|;
 block|}
 block|}
 catch|catch
@@ -781,7 +731,7 @@ block|{
 comment|// Error in url syntax (in fact it is uri syntax)
 block|}
 return|return
-name|ss
+literal|null
 return|;
 block|}
 block|}
