@@ -223,7 +223,7 @@ specifier|final
 name|String
 name|THIS_SERVER
 init|=
-literal|"localhost"
+literal|"http://localhost/"
 decl_stmt|;
 annotation|@
 name|Test
