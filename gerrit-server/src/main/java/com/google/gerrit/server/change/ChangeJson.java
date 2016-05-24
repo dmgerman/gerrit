@@ -7478,8 +7478,6 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|in
 operator|.
 name|getUploader

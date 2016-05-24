@@ -426,20 +426,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|util
-operator|.
-name|Providers
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -1671,13 +1657,6 @@ name|identifiedUserFactory
 operator|.
 name|create
 argument_list|(
-name|Providers
-operator|.
-name|of
-argument_list|(
-name|db
-argument_list|)
-argument_list|,
 name|user
 operator|.
 name|getId

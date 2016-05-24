@@ -754,9 +754,6 @@ name|identifiedUserFactory
 operator|.
 name|create
 argument_list|(
-name|getReviewDbProvider
-argument_list|()
-argument_list|,
 name|submitter
 argument_list|)
 operator|.
