@@ -1244,6 +1244,13 @@ name|branch
 argument_list|)
 control|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Checking subscribe section "
+operator|+
+name|s
+argument_list|)
+expr_stmt|;
 name|Collection
 argument_list|<
 name|Branch
@@ -1303,6 +1310,13 @@ name|branch
 argument_list|)
 control|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Checking SubmoduleSubscription "
+operator|+
+name|ss
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|projectCache
@@ -1321,6 +1335,13 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Adding SubmoduleSubscription "
+operator|+
+name|ss
+argument_list|)
+expr_stmt|;
 name|ret
 operator|.
 name|add
