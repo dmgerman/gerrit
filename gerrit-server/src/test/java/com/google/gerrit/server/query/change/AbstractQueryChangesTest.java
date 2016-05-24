@@ -4381,8 +4381,9 @@ name|containsEntry
 argument_list|(
 literal|"Code-Review"
 argument_list|,
-operator|new
 name|Short
+operator|.
+name|valueOf
 argument_list|(
 operator|(
 name|short
