@@ -1905,12 +1905,6 @@ name|RevCommit
 name|c
 parameter_list|)
 block|{
-specifier|final
-name|String
-name|changeId
-init|=
-literal|"Change-Id:"
-decl_stmt|;
 name|StringBuilder
 name|sb
 init|=
@@ -1939,7 +1933,7 @@ argument_list|()
 operator|.
 name|indexOf
 argument_list|(
-name|changeId
+name|CHANGE_ID_PREFIX
 argument_list|)
 operator|>=
 literal|0
@@ -1988,7 +1982,7 @@ name|lastLine
 operator|.
 name|indexOf
 argument_list|(
-name|changeId
+name|CHANGE_ID_PREFIX
 argument_list|)
 operator|==
 operator|-
@@ -2013,7 +2007,26 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Hint: A potential Change-Id was found, but it was not in the "
+literal|"Hint: A potential "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|FooterConstants
+operator|.
+name|CHANGE_ID
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"Change-Id was found, but it was not in the "
 argument_list|)
 expr_stmt|;
 name|sb
@@ -2043,7 +2056,26 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Hint: To automatically insert Change-Id, install the hook:\n"
+literal|"Hint: To automatically insert "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|FooterConstants
+operator|.
+name|CHANGE_ID
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|", install the hook:\n"
 argument_list|)
 expr_stmt|;
 name|sb
