@@ -234,12 +234,9 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: --tree and --show-branch options are not compatible."
+literal|"--tree and --show-branch options are not compatible."
 argument_list|)
 throw|;
 block|}
@@ -257,12 +254,9 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: --tree and --description options are not compatible."
+literal|"--tree and --description options are not compatible."
 argument_list|)
 throw|;
 block|}

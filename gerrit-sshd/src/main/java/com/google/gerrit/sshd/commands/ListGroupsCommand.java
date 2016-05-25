@@ -450,12 +450,9 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: --user and --project options are not compatible."
+literal|"--user and --project options are not compatible."
 argument_list|)
 throw|;
 block|}

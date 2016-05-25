@@ -684,12 +684,9 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: child projects have to be specified as "
+literal|"child projects have to be specified as "
 operator|+
 literal|"arguments or the --children-of option has to be set"
 argument_list|)
@@ -709,14 +706,9 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: --exclude can only be used together "
-operator|+
-literal|"with --children-of"
+literal|"--exclude can only be used together with --children-of"
 argument_list|)
 throw|;
 block|}
@@ -1179,11 +1171,8 @@ argument_list|)
 expr_stmt|;
 block|}
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 name|err
 operator|.
 name|toString

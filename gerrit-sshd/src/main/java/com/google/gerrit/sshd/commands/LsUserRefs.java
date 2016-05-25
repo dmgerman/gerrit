@@ -785,10 +785,9 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|"fatal: '"
+literal|"'"
 operator|+
 name|projectControl
 operator|.
@@ -809,10 +808,9 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|"fatal: Error opening: '"
+literal|"Error opening: '"
 operator|+
 name|projectControl
 operator|.

@@ -1024,12 +1024,9 @@ literal|null
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: Project name is required."
+literal|"Project name is required."
 argument_list|)
 throw|;
 block|}
@@ -1257,18 +1254,8 @@ name|err
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: "
-operator|+
-name|err
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
 name|err
 argument_list|)
 throw|;
@@ -1366,11 +1353,8 @@ literal|2
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 literal|"Invalid plugin config value '"
 operator|+
 name|pluginConfigValue

@@ -1077,11 +1077,8 @@ name|inactive
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 literal|"--active and --inactive options are mutually exclusive."
 argument_list|)
 throw|;
@@ -1100,14 +1097,11 @@ argument_list|)
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"--http-password and --clear-http-password options are mutually "
+literal|"--http-password and --clear-http-password options are "
 operator|+
-literal|"exclusive."
+literal|"mutually exclusive."
 argument_list|)
 throw|;
 block|}
@@ -1129,11 +1123,8 @@ argument_list|)
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 literal|"Only one option may use the stdin"
 argument_list|)
 throw|;
@@ -1189,11 +1180,8 @@ argument_list|)
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 literal|"--preferred-email and --delete-email options are mutually "
 operator|+
 literal|"exclusive for the same email address."

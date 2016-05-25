@@ -627,11 +627,8 @@ operator|)
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
 literal|"--files option needs --patch-sets or --current-patch-set"
 argument_list|)
 throw|;

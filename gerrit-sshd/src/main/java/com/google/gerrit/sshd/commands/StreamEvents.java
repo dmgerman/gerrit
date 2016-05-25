@@ -68,24 +68,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|sshd
-operator|.
-name|CommandMetaData
-operator|.
-name|Mode
-operator|.
-name|MASTER
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|nio
@@ -486,10 +468,6 @@ argument_list|,
 name|description
 operator|=
 literal|"Monitor events occurring in real time"
-argument_list|,
-name|runsAt
-operator|=
-name|MASTER
 argument_list|)
 DECL|class|StreamEvents
 specifier|final

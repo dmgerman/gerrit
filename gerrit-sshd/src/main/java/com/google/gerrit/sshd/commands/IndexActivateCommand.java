@@ -67,24 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|sshd
-operator|.
-name|CommandMetaData
-operator|.
-name|Mode
-operator|.
-name|MASTER
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -214,10 +196,6 @@ argument_list|,
 name|description
 operator|=
 literal|"Activate the latest index version available"
-argument_list|,
-name|runsAt
-operator|=
-name|MASTER
 argument_list|)
 DECL|class|IndexActivateCommand
 specifier|public
@@ -305,8 +283,7 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
 literal|"Failed to activate latest index: "
 operator|+

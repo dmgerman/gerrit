@@ -470,9 +470,9 @@ literal|0
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
-literal|"error: cannot use --list with --all or --cache"
+literal|"cannot use --list with --all or --cache"
 argument_list|)
 throw|;
 block|}
@@ -494,9 +494,9 @@ literal|0
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
-literal|"error: cannot combine --all and --cache"
+literal|"cannot combine --all and --cache"
 argument_list|)
 throw|;
 block|}
@@ -610,26 +610,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-block|}
-DECL|method|error (String msg)
-specifier|private
-specifier|static
-name|UnloggedFailure
-name|error
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-return|return
-operator|new
-name|UnloggedFailure
-argument_list|(
-literal|1
-argument_list|,
-name|msg
-argument_list|)
-return|;
 block|}
 annotation|@
 name|SuppressWarnings

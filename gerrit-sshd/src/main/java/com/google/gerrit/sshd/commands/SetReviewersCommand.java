@@ -406,16 +406,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -617,7 +607,7 @@ literal|true
 argument_list|,
 name|metaVar
 operator|=
-literal|"COMMIT"
+literal|"CHANGE"
 argument_list|,
 name|usage
 operator|=
@@ -839,9 +829,9 @@ name|ok
 condition|)
 block|{
 throw|throw
-name|error
+name|die
 argument_list|(
-literal|"fatal: one or more updates failed; review output above"
+literal|"one or more updates failed; review output above"
 argument_list|)
 throw|;
 block|}
@@ -1165,7 +1155,7 @@ case|case
 literal|0
 case|:
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"\""
 operator|+
@@ -1207,7 +1197,7 @@ expr_stmt|;
 break|break;
 default|default:
 throw|throw
-name|error
+name|die
 argument_list|(
 literal|"\""
 operator|+
@@ -1259,70 +1249,6 @@ return|return
 literal|true
 return|;
 block|}
-block|}
-DECL|method|writeError (String type, String msg)
-specifier|private
-name|void
-name|writeError
-parameter_list|(
-name|String
-name|type
-parameter_list|,
-name|String
-name|msg
-parameter_list|)
-block|{
-try|try
-block|{
-name|err
-operator|.
-name|write
-argument_list|(
-operator|(
-name|type
-operator|+
-literal|": "
-operator|+
-name|msg
-operator|+
-literal|"\n"
-operator|)
-operator|.
-name|getBytes
-argument_list|(
-name|ENC
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
-block|}
-DECL|method|error (String msg)
-specifier|private
-specifier|static
-name|UnloggedFailure
-name|error
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-return|return
-operator|new
-name|UnloggedFailure
-argument_list|(
-literal|1
-argument_list|,
-name|msg
-argument_list|)
-return|;
 block|}
 block|}
 end_class

@@ -723,12 +723,9 @@ name|enableRunAs
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: suexec disabled by auth.enableRunAs = false"
+literal|"suexec disabled by auth.enableRunAs = false"
 argument_list|)
 throw|;
 block|}
@@ -746,12 +743,9 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|die
 argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: suexec not permitted"
+literal|"suexec not permitted"
 argument_list|)
 throw|;
 block|}
