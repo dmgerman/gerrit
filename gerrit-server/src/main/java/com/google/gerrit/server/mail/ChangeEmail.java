@@ -910,7 +910,7 @@ operator|.
 name|reviewers
 argument_list|()
 operator|.
-name|values
+name|all
 argument_list|()
 control|)
 block|{
@@ -1992,7 +1992,7 @@ operator|.
 name|reviewers
 argument_list|()
 operator|.
-name|values
+name|all
 argument_list|()
 control|)
 block|{
@@ -2070,7 +2070,7 @@ operator|.
 name|reviewers
 argument_list|()
 operator|.
-name|get
+name|byState
 argument_list|(
 name|REVIEWER
 argument_list|)

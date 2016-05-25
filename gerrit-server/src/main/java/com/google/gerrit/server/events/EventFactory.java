@@ -1581,7 +1581,7 @@ argument_list|,
 name|notes
 argument_list|)
 operator|.
-name|values
+name|all
 argument_list|()
 decl_stmt|;
 if|if

@@ -3935,11 +3935,13 @@ name|Entry
 argument_list|<
 name|ReviewerStateInternal
 argument_list|,
-name|Collection
+name|Map
 argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|,
+name|Timestamp
 argument_list|>
 argument_list|>
 name|e
@@ -3949,7 +3951,10 @@ operator|.
 name|reviewers
 argument_list|()
 operator|.
-name|asMap
+name|asTable
+argument_list|()
+operator|.
+name|rowMap
 argument_list|()
 operator|.
 name|entrySet
@@ -3975,6 +3980,9 @@ argument_list|(
 name|e
 operator|.
 name|getValue
+argument_list|()
+operator|.
+name|keySet
 argument_list|()
 argument_list|)
 argument_list|)
@@ -5031,7 +5039,7 @@ operator|.
 name|reviewers
 argument_list|()
 operator|.
-name|values
+name|all
 argument_list|()
 argument_list|)
 expr_stmt|;
