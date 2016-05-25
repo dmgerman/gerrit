@@ -607,7 +607,7 @@ literal|true
 argument_list|,
 name|metaVar
 operator|=
-literal|"COMMIT"
+literal|"CHANGE"
 argument_list|,
 name|usage
 operator|=
