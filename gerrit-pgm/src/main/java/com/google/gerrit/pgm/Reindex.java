@@ -580,22 +580,6 @@ specifier|private
 name|boolean
 name|verbose
 decl_stmt|;
-annotation|@
-name|Option
-argument_list|(
-name|name
-operator|=
-literal|"--dry-run"
-argument_list|,
-name|usage
-operator|=
-literal|"Dry run: don't write anything to index"
-argument_list|)
-DECL|field|dryRun
-specifier|private
-name|boolean
-name|dryRun
-decl_stmt|;
 DECL|field|dbInjector
 specifier|private
 name|Injector
