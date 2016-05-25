@@ -2095,11 +2095,17 @@ expr_stmt|;
 name|assertMerged
 argument_list|(
 name|change2nd
+operator|.
+name|getChangeId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertMerged
 argument_list|(
 name|change
+operator|.
+name|getChangeId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
