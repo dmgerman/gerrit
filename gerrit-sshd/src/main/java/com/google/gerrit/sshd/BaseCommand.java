@@ -1722,6 +1722,50 @@ name|why
 argument_list|)
 return|;
 block|}
+DECL|method|writeError (String type, String msg)
+specifier|protected
+name|void
+name|writeError
+parameter_list|(
+name|String
+name|type
+parameter_list|,
+name|String
+name|msg
+parameter_list|)
+block|{
+try|try
+block|{
+name|err
+operator|.
+name|write
+argument_list|(
+operator|(
+name|type
+operator|+
+literal|": "
+operator|+
+name|msg
+operator|+
+literal|"\n"
+operator|)
+operator|.
+name|getBytes
+argument_list|(
+name|ENC
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|// Ignored
+block|}
+block|}
 DECL|method|checkExclusivity (final Object arg1, final String arg1name, final Object arg2, final String arg2name)
 specifier|public
 name|void

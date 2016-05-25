@@ -1495,8 +1495,8 @@ literal|false
 expr_stmt|;
 name|writeError
 argument_list|(
-literal|"error: "
-operator|+
+literal|"error"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -1518,6 +1518,8 @@ literal|false
 expr_stmt|;
 name|writeError
 argument_list|(
+literal|"error"
+argument_list|,
 literal|"no such change "
 operator|+
 name|patchSet
@@ -1545,7 +1547,9 @@ literal|false
 expr_stmt|;
 name|writeError
 argument_list|(
-literal|"fatal: internal server error while reviewing "
+literal|"fatal"
+argument_list|,
+literal|"internal server error while reviewing "
 operator|+
 name|patchSet
 operator|.
@@ -1691,6 +1695,8 @@ parameter_list|)
 block|{
 name|writeError
 argument_list|(
+literal|"error"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -2244,40 +2250,6 @@ operator|.
 name|parseCommandLine
 argument_list|()
 expr_stmt|;
-block|}
-DECL|method|writeError (final String msg)
-specifier|private
-name|void
-name|writeError
-parameter_list|(
-specifier|final
-name|String
-name|msg
-parameter_list|)
-block|{
-try|try
-block|{
-name|err
-operator|.
-name|write
-argument_list|(
-name|msg
-operator|.
-name|getBytes
-argument_list|(
-name|ENC
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
 block|}
 block|}
 end_class
