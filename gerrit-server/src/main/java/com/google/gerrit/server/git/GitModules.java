@@ -188,22 +188,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ProjectCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|util
 operator|.
 name|SubmoduleSectionParser
@@ -527,13 +511,10 @@ operator|=
 name|canonicalWebUrl
 expr_stmt|;
 block|}
-DECL|method|load (ProjectCache cache)
+DECL|method|load ()
 name|void
 name|load
-parameter_list|(
-name|ProjectCache
-name|cache
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{
@@ -708,8 +689,6 @@ operator|=
 operator|new
 name|SubmoduleSectionParser
 argument_list|(
-name|cache
-argument_list|,
 name|bbc
 argument_list|,
 name|canonicalWebUrl
