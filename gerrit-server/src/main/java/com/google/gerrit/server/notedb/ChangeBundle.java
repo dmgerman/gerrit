@@ -268,6 +268,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Collections2
@@ -3238,21 +3252,33 @@ name|excludeOrigSubj
 init|=
 literal|false
 decl_stmt|;
+comment|// Subject is not technically a nullable field, but we observed some null
+comment|// subjects in the wild on googlesource.com, so treat null as empty.
 name|String
 name|aSubj
 init|=
+name|Strings
+operator|.
+name|nullToEmpty
+argument_list|(
 name|a
 operator|.
 name|getSubject
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|String
 name|bSubj
 init|=
+name|Strings
+operator|.
+name|nullToEmpty
+argument_list|(
 name|b
 operator|.
 name|getSubject
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Allow created timestamp in NoteDb to be either the created timestamp of
 comment|// the change, or the timestamp of the first remaining patch set.
