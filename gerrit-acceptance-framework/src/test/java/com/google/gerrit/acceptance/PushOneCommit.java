@@ -1807,7 +1807,7 @@ name|c
 argument_list|)
 argument_list|)
 operator|.
-name|values
+name|all
 argument_list|()
 decl_stmt|;
 name|assertThat

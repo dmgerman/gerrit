@@ -108,20 +108,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Multimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|common
@@ -172,9 +158,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|AccountResolver
+name|ReviewerSet
 import|;
 end_import
 
@@ -188,9 +172,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|account
 operator|.
-name|ReviewerStateInternal
+name|AccountResolver
 import|;
 end_import
 
@@ -404,20 +388,13 @@ return|return
 name|recipients
 return|;
 block|}
-DECL|method|getRecipientsFromReviewers ( Multimap<ReviewerStateInternal, Account.Id> reviewers)
+DECL|method|getRecipientsFromReviewers ( ReviewerSet reviewers)
 specifier|public
 specifier|static
 name|MailRecipients
 name|getRecipientsFromReviewers
 parameter_list|(
-name|Multimap
-argument_list|<
-name|ReviewerStateInternal
-argument_list|,
-name|Account
-operator|.
-name|Id
-argument_list|>
+name|ReviewerSet
 name|reviewers
 parameter_list|)
 block|{
@@ -436,7 +413,7 @@ name|addAll
 argument_list|(
 name|reviewers
 operator|.
-name|get
+name|byState
 argument_list|(
 name|REVIEWER
 argument_list|)
@@ -450,7 +427,7 @@ name|addAll
 argument_list|(
 name|reviewers
 operator|.
-name|get
+name|byState
 argument_list|(
 name|CC
 argument_list|)
