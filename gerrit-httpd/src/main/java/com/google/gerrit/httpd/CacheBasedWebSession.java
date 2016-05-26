@@ -998,6 +998,18 @@ expr_stmt|;
 name|saveCookie
 argument_list|()
 expr_stmt|;
+name|user
+operator|=
+name|identified
+operator|.
+name|create
+argument_list|(
+name|val
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** Set the user account for this current request only. */
 annotation|@
@@ -1086,6 +1098,13 @@ operator|=
 literal|null
 expr_stmt|;
 name|saveCookie
+argument_list|()
+expr_stmt|;
+name|user
+operator|=
+name|anonymousProvider
+operator|.
+name|get
 argument_list|()
 expr_stmt|;
 block|}
