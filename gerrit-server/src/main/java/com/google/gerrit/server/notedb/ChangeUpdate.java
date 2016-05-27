@@ -1010,12 +1010,12 @@ name|Date
 name|when
 parameter_list|)
 function_decl|;
-DECL|method|create (ChangeNotes notes, @Nullable Account.Id accountId, PersonIdent authorIdent, Date when, Comparator<String> labelNameComparator)
+DECL|method|create (Change change, @Nullable Account.Id accountId, PersonIdent authorIdent, Date when, Comparator<String> labelNameComparator)
 name|ChangeUpdate
 name|create
 parameter_list|(
-name|ChangeNotes
-name|notes
+name|Change
+name|change
 parameter_list|,
 annotation|@
 name|Nullable
@@ -1543,7 +1543,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted @Nullable Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted @Nullable Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1578,8 +1578,8 @@ name|noteUtil
 parameter_list|,
 annotation|@
 name|Assisted
-name|ChangeNotes
-name|notes
+name|Change
+name|change
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1619,7 +1619,9 @@ name|serverIdent
 argument_list|,
 name|anonymousCowardName
 argument_list|,
-name|notes
+literal|null
+argument_list|,
+name|change
 argument_list|,
 name|accountId
 argument_list|,
@@ -2208,13 +2210,44 @@ operator|==
 literal|null
 condition|)
 block|{
+name|ChangeNotes
+name|notes
+init|=
+name|getNotes
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|notes
+operator|!=
+literal|null
+condition|)
+block|{
 name|draftUpdate
 operator|=
 name|draftUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|getNotes
+name|notes
+argument_list|,
+name|accountId
+argument_list|,
+name|authorIdent
+argument_list|,
+name|when
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|draftUpdate
+operator|=
+name|draftUpdateFactory
+operator|.
+name|create
+argument_list|(
+name|getChange
 argument_list|()
 argument_list|,
 name|accountId
@@ -2224,6 +2257,7 @@ argument_list|,
 name|when
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|draftUpdate
@@ -2787,13 +2821,25 @@ block|{
 comment|// If reading from changes is enabled, then the old ChangeNotes already
 comment|// parsed the revision notes. We can reuse them as long as the ref hasn't
 comment|// advanced.
+name|ChangeNotes
+name|notes
+init|=
+name|getNotes
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|notes
+operator|!=
+literal|null
+condition|)
+block|{
 name|ObjectId
 name|idFromNotes
 init|=
 name|firstNonNull
 argument_list|(
-name|getNotes
-argument_list|()
+name|notes
 operator|.
 name|load
 argument_list|()
@@ -2826,6 +2872,7 @@ operator|.
 name|revisionNoteMap
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 name|NoteMap

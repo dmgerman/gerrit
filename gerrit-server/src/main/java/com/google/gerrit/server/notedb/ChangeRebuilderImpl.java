@@ -1197,14 +1197,6 @@ operator|.
 name|Factory
 name|draftUpdateFactory
 decl_stmt|;
-DECL|field|notesFactory
-specifier|private
-specifier|final
-name|ChangeNotes
-operator|.
-name|Factory
-name|notesFactory
-decl_stmt|;
 DECL|field|changeNoteUtil
 specifier|private
 specifier|final
@@ -1253,7 +1245,7 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeRebuilderImpl (SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNotes.Factory notesFactory, ChangeNoteUtil changeNoteUtil, ChangeUpdate.Factory updateFactory, NoteDbUpdateManager.Factory updateManagerFactory, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @AnonymousCowardName String anonymousCowardName)
+DECL|method|ChangeRebuilderImpl (SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeUpdate.Factory updateFactory, NoteDbUpdateManager.Factory updateManagerFactory, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @AnonymousCowardName String anonymousCowardName)
 name|ChangeRebuilderImpl
 parameter_list|(
 name|SchemaFactory
@@ -1269,11 +1261,6 @@ name|ChangeDraftUpdate
 operator|.
 name|Factory
 name|draftUpdateFactory
-parameter_list|,
-name|ChangeNotes
-operator|.
-name|Factory
-name|notesFactory
 parameter_list|,
 name|ChangeNoteUtil
 name|changeNoteUtil
@@ -1323,12 +1310,6 @@ operator|.
 name|draftUpdateFactory
 operator|=
 name|draftUpdateFactory
-expr_stmt|;
-name|this
-operator|.
-name|notesFactory
-operator|=
-name|notesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2886,19 +2867,7 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|notesFactory
-operator|.
-name|createWithAutoRebuildingDisabled
-argument_list|(
 name|change
-argument_list|,
-name|manager
-operator|.
-name|getChangeRepo
-argument_list|()
-operator|.
-name|cmds
-argument_list|)
 argument_list|,
 name|events
 operator|.
@@ -2993,8 +2962,6 @@ name|change
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|IOException
 block|{
 if|if
 condition|(
@@ -3013,19 +2980,7 @@ name|draftUpdateFactory
 operator|.
 name|create
 argument_list|(
-name|notesFactory
-operator|.
-name|createWithAutoRebuildingDisabled
-argument_list|(
 name|change
-argument_list|,
-name|manager
-operator|.
-name|getChangeRepo
-argument_list|()
-operator|.
-name|cmds
-argument_list|)
 argument_list|,
 name|events
 operator|.
