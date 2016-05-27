@@ -713,7 +713,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"See the \"Submitted Together\" tab for problems, specially see: 2"
+literal|"See the \"Submitted Together\" tab for problems, specifically see: 2"
 argument_list|)
 expr_stmt|;
 block|}

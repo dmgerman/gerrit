@@ -995,7 +995,7 @@ specifier|final
 name|String
 name|CHANGES_NOT_MERGEABLE
 init|=
-literal|"See the \"Submitted Together\" tab for problems, specially see: "
+literal|"See the \"Submitted Together\" tab for problems, specifically see: "
 decl_stmt|;
 DECL|class|Output
 specifier|public
