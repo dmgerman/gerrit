@@ -222,6 +222,22 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|sorted
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IntegrationException
+argument_list|(
+literal|"nothing to merge"
+argument_list|)
+throw|;
+block|}
 name|firstFastForward
 operator|=
 name|sorted
