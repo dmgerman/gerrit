@@ -3293,16 +3293,6 @@ operator|.
 name|getLastUpdatedOn
 argument_list|()
 decl_stmt|;
-name|CharMatcher
-name|s
-init|=
-name|CharMatcher
-operator|.
-name|is
-argument_list|(
-literal|' '
-argument_list|)
-decl_stmt|;
 name|boolean
 name|excludeSubject
 init|=
@@ -3411,9 +3401,7 @@ argument_list|)
 expr_stmt|;
 name|aSubj
 operator|=
-name|s
-operator|.
-name|trimLeadingFrom
+name|cleanReviewDbSubject
 argument_list|(
 name|aSubj
 argument_list|)
@@ -3516,9 +3504,7 @@ argument_list|)
 expr_stmt|;
 name|bSubj
 operator|=
-name|s
-operator|.
-name|trimLeadingFrom
+name|cleanReviewDbSubject
 argument_list|(
 name|bSubj
 argument_list|)
@@ -3760,6 +3746,69 @@ name|s
 argument_list|)
 else|:
 literal|null
+return|;
+block|}
+DECL|method|cleanReviewDbSubject (String s)
+specifier|private
+specifier|static
+name|String
+name|cleanReviewDbSubject
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+name|s
+operator|=
+name|CharMatcher
+operator|.
+name|is
+argument_list|(
+literal|' '
+argument_list|)
+operator|.
+name|trimLeadingFrom
+argument_list|(
+name|s
+argument_list|)
+expr_stmt|;
+comment|// An old JGit bug failed to extract subjects from commits with "\r\n"
+comment|// terminators: https://bugs.eclipse.org/bugs/show_bug.cgi?id=400707
+comment|// Changes created with this bug may have "\r\n" converted to "\r " and the
+comment|// entire commit in the subject. The version of JGit used to read NoteDb
+comment|// changes parses these subjects correctly, so we need to clean up old
+comment|// ReviewDb subjects before comparing.
+name|int
+name|rn
+init|=
+name|s
+operator|.
+name|indexOf
+argument_list|(
+literal|"\r \r "
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|rn
+operator|>=
+literal|0
+condition|)
+block|{
+name|s
+operator|=
+name|s
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|rn
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|s
 return|;
 block|}
 comment|/**    * Set of fields that must always exactly match between ReviewDb and NoteDb.    *<p>    * Used to limit the worst-case quadratic search when pairing off matching    * messages below.    */
