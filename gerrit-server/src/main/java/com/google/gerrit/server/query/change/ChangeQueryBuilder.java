@@ -76,6 +76,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+operator|.
+name|CHANGE_ID_PATTERN
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|query
@@ -1116,7 +1134,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^[iI][0-9a-f]{4,}.*$"
+name|CHANGE_ID_PATTERN
 argument_list|)
 decl_stmt|;
 DECL|field|DEF_CHANGE

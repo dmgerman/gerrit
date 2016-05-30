@@ -1169,6 +1169,16 @@ name|INITIAL_PATCH_SET_ID
 init|=
 literal|1
 decl_stmt|;
+comment|/** Change-Id pattern. */
+DECL|field|CHANGE_ID_PATTERN
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CHANGE_ID_PATTERN
+init|=
+literal|"^[iI][0-9a-f]{4,}.*$"
+decl_stmt|;
 comment|/**    * Current state within the basic workflow of the change.    *    *<p>    * Within the database, lower case codes ('a'..'z') indicate a change that is    * still open, and that can be modified/refined further, while upper case    * codes ('A'..'Z') indicate a change that is closed and cannot be further    * modified.    * */
 DECL|enum|Status
 specifier|public
