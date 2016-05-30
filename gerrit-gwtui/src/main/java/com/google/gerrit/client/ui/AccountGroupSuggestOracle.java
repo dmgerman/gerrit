@@ -267,6 +267,12 @@ operator|.
 name|suggestAccountGroupForProject
 argument_list|(
 name|projectName
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+name|projectName
 operator|.
 name|get
 argument_list|()
