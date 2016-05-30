@@ -976,7 +976,7 @@ init|=
 operator|new
 name|SimpleDateFormat
 argument_list|(
-literal|"YYYY-MM-dd HH:mm:ss Z"
+literal|"yyyy-MM-dd HH:mm:ss Z"
 argument_list|)
 operator|.
 name|parse

@@ -1417,7 +1417,7 @@ init|=
 operator|new
 name|SimpleDateFormat
 argument_list|(
-literal|"YYYY-MM-dd HH:mm:ss"
+literal|"yyyy-MM-dd HH:mm:ss"
 argument_list|)
 decl_stmt|;
 name|PublicKeyChecker
@@ -2261,7 +2261,7 @@ return|return
 operator|new
 name|SimpleDateFormat
 argument_list|(
-literal|"YYYY-MM-dd HH:mm:ss Z"
+literal|"yyyy-MM-dd HH:mm:ss Z"
 argument_list|)
 operator|.
 name|parse
