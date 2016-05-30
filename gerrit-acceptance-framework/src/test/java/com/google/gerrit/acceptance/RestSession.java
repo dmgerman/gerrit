@@ -355,6 +355,33 @@ name|get
 argument_list|)
 return|;
 block|}
+DECL|method|head (String endPoint)
+specifier|public
+name|RestResponse
+name|head
+parameter_list|(
+name|String
+name|endPoint
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|execute
+argument_list|(
+name|Request
+operator|.
+name|Head
+argument_list|(
+name|url
+operator|+
+literal|"/a"
+operator|+
+name|endPoint
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|put (String endPoint)
 specifier|public
 name|RestResponse
