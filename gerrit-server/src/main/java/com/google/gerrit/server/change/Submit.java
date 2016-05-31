@@ -988,6 +988,15 @@ name|CLICK_FAILURE_TOOLTIP
 init|=
 literal|"Clicking the button would fail"
 decl_stmt|;
+DECL|field|CHANGE_UNMERGEABLE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|CHANGE_UNMERGEABLE
+init|=
+literal|"Problems with integrating this change"
+decl_stmt|;
 DECL|field|CHANGES_NOT_MERGEABLE
 specifier|private
 specifier|static
@@ -1772,12 +1781,15 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * @param cs set of changes to be submitted at once    * @param identifiedUser the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
-DECL|method|problemsForSubmittingChangeset ( ChangeSet cs, IdentifiedUser identifiedUser)
+comment|/**    * @param cd the change the user is currently looking at    * @param cs set of changes to be submitted at once    * @param identifiedUser the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
+DECL|method|problemsForSubmittingChangeset (ChangeData cd, ChangeSet cs, IdentifiedUser identifiedUser)
 specifier|private
 name|String
 name|problemsForSubmittingChangeset
 parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|,
 name|ChangeSet
 name|cs
 parameter_list|,
@@ -1908,6 +1920,41 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+for|for
+control|(
+name|ChangeData
+name|c
+range|:
+name|unmergeable
+control|)
+block|{
+if|if
+condition|(
+name|c
+operator|.
+name|change
+argument_list|()
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|cd
+operator|.
+name|change
+argument_list|()
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+name|CHANGE_UNMERGEABLE
+return|;
+block|}
+block|}
 return|return
 name|CHANGES_NOT_MERGEABLE
 operator|+
@@ -2313,6 +2360,8 @@ name|submitProblems
 init|=
 name|problemsForSubmittingChangeset
 argument_list|(
+name|cd
+argument_list|,
 name|cs
 argument_list|,
 name|resource
