@@ -2224,35 +2224,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-name|Boolean
-name|enabled
-decl_stmt|;
-try|try
-block|{
-name|enabled
-operator|=
-name|cd
-operator|.
-name|isMergeable
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|OrmRuntimeException
-argument_list|(
-literal|"Could not determine mergeability"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 name|ChangeSet
 name|cs
 decl_stmt|;
@@ -2350,6 +2321,43 @@ name|getUser
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Boolean
+name|enabled
+decl_stmt|;
+try|try
+block|{
+comment|// Recheck mergeability rather than using value stored in the index,
+comment|// which may be stale.
+comment|// TODO(dborowitz): This is ugly; consider providing a way to not read
+comment|// stored fields from the index in the first place.
+comment|// cd.setMergeable(null);
+comment|// That was done in unmergeableChanges which was called by
+comment|// problemsForSubmittingChangeset, so now it is safe to read from
+comment|// the cache, as it yields the same result.
+name|enabled
+operator|=
+name|cd
+operator|.
+name|isMergeable
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|OrmRuntimeException
+argument_list|(
+literal|"Could not determine mergeability"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|submitProblems
