@@ -1752,6 +1752,11 @@ name|ListMembers
 argument_list|>
 name|listMembers
 decl_stmt|;
+DECL|field|starredChangesUtil
+specifier|final
+name|StarredChangesUtil
+name|starredChangesUtil
+decl_stmt|;
 DECL|field|allowsDrafts
 specifier|final
 name|boolean
@@ -1770,7 +1775,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, @GerritServerConfig Config cfg)
+DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, @GerritServerConfig Config cfg)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -1882,6 +1887,9 @@ name|ListMembers
 argument_list|>
 name|listMembers
 parameter_list|,
+name|StarredChangesUtil
+name|starredChangesUtil
+parameter_list|,
 annotation|@
 name|GerritServerConfig
 name|Config
@@ -1951,6 +1959,8 @@ name|indexConfig
 argument_list|,
 name|listMembers
 argument_list|,
+name|starredChangesUtil
+argument_list|,
 name|cfg
 operator|==
 literal|null
@@ -1970,7 +1980,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, boolean allowsDrafts)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, IndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, boolean allowsDrafts)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2081,6 +2091,9 @@ argument_list|<
 name|ListMembers
 argument_list|>
 name|listMembers
+parameter_list|,
+name|StarredChangesUtil
+name|starredChangesUtil
 parameter_list|,
 name|boolean
 name|allowsDrafts
@@ -2244,6 +2257,12 @@ name|listMembers
 expr_stmt|;
 name|this
 operator|.
+name|starredChangesUtil
+operator|=
+name|starredChangesUtil
+expr_stmt|;
+name|this
+operator|.
 name|allowsDrafts
 operator|=
 name|allowsDrafts
@@ -2317,6 +2336,8 @@ argument_list|,
 name|indexConfig
 argument_list|,
 name|listMembers
+argument_list|,
+name|starredChangesUtil
 argument_list|,
 name|allowsDrafts
 argument_list|)
@@ -4354,7 +4375,8 @@ name|DEFAULT_LABEL
 argument_list|)
 return|;
 block|}
-return|return
+if|if
+condition|(
 name|args
 operator|.
 name|getSchema
@@ -4366,24 +4388,57 @@ name|ChangeField
 operator|.
 name|STARREDBY
 argument_list|)
-condition|?
+condition|)
+block|{
+return|return
 operator|new
 name|IsStarredByPredicate
 argument_list|(
 name|who
 argument_list|)
-else|:
+return|;
+block|}
+try|try
+block|{
+comment|// starred changes are not contained in the index, we must read them from
+comment|// git
+return|return
 operator|new
 name|IsStarredByLegacyPredicate
 argument_list|(
+name|who
+argument_list|,
 name|args
 operator|.
-name|asUser
+name|starredChangesUtil
+operator|.
+name|byAccount
 argument_list|(
 name|who
+argument_list|,
+name|StarredChangesUtil
+operator|.
+name|DEFAULT_LABEL
 argument_list|)
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|QueryParseException
+argument_list|(
+literal|"Failed to query starred changes."
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Operator

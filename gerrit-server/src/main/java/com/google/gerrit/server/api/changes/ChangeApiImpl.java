@@ -404,20 +404,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|change
 operator|.
 name|Abandon
@@ -902,12 +888,6 @@ name|change
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|user
-specifier|private
-specifier|final
-name|CurrentUser
-name|user
-decl_stmt|;
 DECL|field|changeApi
 specifier|private
 specifier|final
@@ -1070,12 +1050,9 @@ name|move
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeApiImpl (CurrentUser user, Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, SuggestChangeReviewers suggestReviewers, Abandon abandon, Revert revert, Restore restore, SubmittedTogether submittedTogether, PublishDraftPatchSet.CurrentRevision publishDraftChange, DeleteDraftChange deleteDraftChange, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, Index index, ChangeEdits.Detail editDetail, Move move, @Assisted ChangeResource change)
+DECL|method|ChangeApiImpl (Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, SuggestChangeReviewers suggestReviewers, Abandon abandon, Revert revert, Restore restore, SubmittedTogether submittedTogether, PublishDraftPatchSet.CurrentRevision publishDraftChange, DeleteDraftChange deleteDraftChange, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, Index index, ChangeEdits.Detail editDetail, Move move, @Assisted ChangeResource change)
 name|ChangeApiImpl
 parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|,
 name|Changes
 name|changeApi
 parameter_list|,
@@ -1164,12 +1141,6 @@ name|ChangeResource
 name|change
 parameter_list|)
 block|{
-name|this
-operator|.
-name|user
-operator|=
-name|user
-expr_stmt|;
 name|this
 operator|.
 name|changeApi
@@ -2173,11 +2144,6 @@ throw|;
 block|}
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|get (EnumSet<ListChangesOption> s)
 specifier|public
@@ -2195,23 +2161,6 @@ name|RestApiException
 block|{
 try|try
 block|{
-if|if
-condition|(
-name|user
-operator|.
-name|isIdentifiedUser
-argument_list|()
-condition|)
-block|{
-name|user
-operator|.
-name|asIdentifiedUser
-argument_list|()
-operator|.
-name|clearStarredChanges
-argument_list|()
-expr_stmt|;
-block|}
 return|return
 name|changeJson
 operator|.

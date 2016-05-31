@@ -102,22 +102,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|account
@@ -153,16 +137,6 @@ operator|.
 name|servlet
 operator|.
 name|RequestScoped
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -296,21 +270,6 @@ specifier|public
 specifier|abstract
 name|GroupMembership
 name|getEffectiveGroups
-parameter_list|()
-function_decl|;
-comment|/** Set of changes starred by this user. */
-annotation|@
-name|Deprecated
-DECL|method|getStarredChanges ()
-specifier|public
-specifier|abstract
-name|Set
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
-name|getStarredChanges
 parameter_list|()
 function_decl|;
 comment|/** Unique name of the user on this server, if one has been assigned. */

@@ -72,22 +72,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|account
@@ -166,16 +150,6 @@ name|Collections
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
 comment|/** An anonymous user who has not yet authenticated. */
 end_comment
@@ -226,26 +200,6 @@ operator|.
 name|ANONYMOUS_USERS
 argument_list|)
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getStarredChanges ()
-specifier|public
-name|Set
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
-name|getStarredChanges
-parameter_list|()
-block|{
-return|return
-name|Collections
-operator|.
-name|emptySet
-argument_list|()
 return|;
 block|}
 annotation|@
