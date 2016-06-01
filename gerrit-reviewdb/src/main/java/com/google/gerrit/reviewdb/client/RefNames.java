@@ -142,6 +142,16 @@ name|REFS_USERS
 init|=
 literal|"refs/users/"
 decl_stmt|;
+comment|/** Magic user branch in All-Users {@code refs/users/self} */
+DECL|field|REFS_USERS_SELF
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_USERS_SELF
+init|=
+literal|"refs/users/self"
+decl_stmt|;
 comment|/** Default user preference settings */
 DECL|field|REFS_USERS_DEFAULT
 specifier|public

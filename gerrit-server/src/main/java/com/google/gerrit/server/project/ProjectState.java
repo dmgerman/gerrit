@@ -434,6 +434,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|SitePaths
 import|;
 end_import
@@ -808,6 +824,12 @@ specifier|final
 name|boolean
 name|isAllProjects
 decl_stmt|;
+DECL|field|isAllUsers
+specifier|private
+specifier|final
+name|boolean
+name|isAllUsers
+decl_stmt|;
 DECL|field|sitePaths
 specifier|private
 specifier|final
@@ -931,7 +953,7 @@ name|capabilities
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( final SitePaths sitePaths, final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, final List<CommentLinkInfo> commentLinks, @Assisted final ProjectConfig config)
+DECL|method|ProjectState ( final SitePaths sitePaths, final ProjectCache projectCache, final AllProjectsName allProjectsName, final AllUsersName allUsersName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, final List<CommentLinkInfo> commentLinks, @Assisted final ProjectConfig config)
 specifier|public
 name|ProjectState
 parameter_list|(
@@ -946,6 +968,10 @@ parameter_list|,
 specifier|final
 name|AllProjectsName
 name|allProjectsName
+parameter_list|,
+specifier|final
+name|AllUsersName
+name|allUsersName
 parameter_list|,
 specifier|final
 name|ProjectControl
@@ -1008,6 +1034,23 @@ operator|.
 name|equals
 argument_list|(
 name|allProjectsName
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|isAllUsers
+operator|=
+name|config
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|allUsersName
 argument_list|)
 expr_stmt|;
 name|this
@@ -2043,6 +2086,16 @@ parameter_list|()
 block|{
 return|return
 name|isAllProjects
+return|;
+block|}
+DECL|method|isAllUsers ()
+specifier|public
+name|boolean
+name|isAllUsers
+parameter_list|()
+block|{
+return|return
+name|isAllUsers
 return|;
 block|}
 DECL|method|isUseContributorAgreements ()
