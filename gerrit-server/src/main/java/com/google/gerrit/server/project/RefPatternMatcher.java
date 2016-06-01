@@ -851,6 +851,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+return|return
 name|Iterables
 operator|.
 name|concat
@@ -867,7 +868,7 @@ name|getUserName
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 if|if
 condition|(
