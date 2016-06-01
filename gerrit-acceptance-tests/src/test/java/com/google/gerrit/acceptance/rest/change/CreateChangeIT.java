@@ -714,6 +714,7 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|message
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -721,7 +722,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s Adminitrstaor %s"
+literal|"%sAdministrator<%s>"
 argument_list|,
 name|SIGNED_OFF_BY_TAG
 argument_list|,
@@ -732,7 +733,6 @@ argument_list|()
 operator|.
 name|getEmailAddress
 argument_list|()
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

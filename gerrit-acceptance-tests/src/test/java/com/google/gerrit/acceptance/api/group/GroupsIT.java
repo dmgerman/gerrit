@@ -1270,11 +1270,11 @@ argument_list|()
 operator|.
 name|keySet
 argument_list|()
+argument_list|)
 operator|.
 name|contains
 argument_list|(
 name|dupGroupName
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1292,11 +1292,11 @@ argument_list|()
 operator|.
 name|keySet
 argument_list|()
+argument_list|)
 operator|.
 name|contains
 argument_list|(
 name|dupGroupNameLowerCase
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4003,10 +4003,10 @@ argument_list|)
 operator|.
 name|members
 argument_list|()
+argument_list|)
 operator|.
 name|isEmpty
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|assertIncludes (String group, String... expectedNames)
@@ -4146,10 +4146,10 @@ argument_list|)
 operator|.
 name|includedGroups
 argument_list|()
+argument_list|)
 operator|.
 name|isEmpty
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getFromCache (String name)
