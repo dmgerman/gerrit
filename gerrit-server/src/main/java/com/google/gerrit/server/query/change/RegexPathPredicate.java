@@ -215,8 +215,6 @@ name|files
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// The ChangeData can't do expensive lookups right now. Bypass
 comment|// them and include the result anyway. We might be able to do
 comment|// a narrow later on to a smaller set.
@@ -224,7 +222,6 @@ comment|//
 return|return
 literal|true
 return|;
-block|}
 block|}
 annotation|@
 name|Override

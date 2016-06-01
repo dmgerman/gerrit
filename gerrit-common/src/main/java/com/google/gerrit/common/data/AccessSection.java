@@ -356,12 +356,9 @@ return|return
 name|p
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
-block|}
 block|}
 DECL|method|addPermission (Permission p)
 specifier|public

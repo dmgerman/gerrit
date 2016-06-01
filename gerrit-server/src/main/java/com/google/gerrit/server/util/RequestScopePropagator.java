@@ -417,15 +417,12 @@ name|call
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|wrapped
 operator|.
 name|call
 argument_list|()
 return|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -599,8 +596,6 @@ block|}
 block|}
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|Runnable
@@ -663,7 +658,6 @@ return|;
 block|}
 block|}
 return|;
-block|}
 block|}
 comment|/**    * @see #wrap(Callable)    */
 DECL|method|wrapImpl (final Callable<T> callable)

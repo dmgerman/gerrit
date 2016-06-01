@@ -1296,8 +1296,6 @@ name|hashes
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|byCommitsOnBranchNotMergedFromIndex
 argument_list|(
@@ -1306,7 +1304,6 @@ argument_list|,
 name|hashes
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|byCommitsOnBranchNotMergedFromDatabase ( Repository repo, final ReviewDb db, final Branch.NameKey branch, List<String> hashes)
 specifier|private
@@ -2051,8 +2048,6 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|query
 argument_list|(
@@ -2063,7 +2058,6 @@ name|cs
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|byProjectGroups (Project.NameKey project, Collection<String> groups)
 specifier|public

@@ -332,8 +332,6 @@ operator|+
 name|val
 return|;
 block|}
-else|else
-block|{
 return|return
 name|getOperator
 argument_list|()
@@ -344,7 +342,6 @@ name|val
 operator|+
 literal|"\""
 return|;
-block|}
 block|}
 block|}
 end_class

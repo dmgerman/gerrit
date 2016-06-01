@@ -2583,8 +2583,6 @@ throw|;
 block|}
 break|break;
 block|}
-else|else
-block|{
 name|IdString
 name|id
 init|=
@@ -2805,7 +2803,6 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|checkRequiresCapability
 argument_list|(
@@ -6861,8 +6858,6 @@ name|core
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|core
 operator|=
 name|views
@@ -6928,7 +6923,6 @@ name|rsrc
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 name|Map
 argument_list|<
@@ -7788,8 +7782,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 if|if
 condition|(
 operator|!
@@ -7826,7 +7818,6 @@ literal|"text/plain"
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 end_function
 

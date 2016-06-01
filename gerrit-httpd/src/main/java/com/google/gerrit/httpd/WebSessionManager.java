@@ -1025,8 +1025,6 @@ name|sessionMaxAgeMillis
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// Client should not store the cookie, as the user asked for us
 comment|// to not remember them long-term. Sending -1 as the age will
 comment|// cause the cookie to be only for this "browser session", which
@@ -1036,7 +1034,6 @@ return|return
 operator|-
 literal|1
 return|;
-block|}
 block|}
 DECL|method|get (final Key key)
 name|Val

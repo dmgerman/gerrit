@@ -952,13 +952,10 @@ return|return
 literal|null
 return|;
 block|}
-else|else
-block|{
 name|result
 operator|=
 name|t
 expr_stmt|;
-block|}
 block|}
 block|}
 return|return
@@ -1672,14 +1669,11 @@ operator|.
 name|READY
 return|;
 block|}
-else|else
-block|{
 return|return
 name|State
 operator|.
 name|SLEEPING
 return|;
-block|}
 block|}
 DECL|method|getStartTime ()
 specifier|public
@@ -1761,12 +1755,9 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|false
 return|;
-block|}
 block|}
 annotation|@
 name|Override

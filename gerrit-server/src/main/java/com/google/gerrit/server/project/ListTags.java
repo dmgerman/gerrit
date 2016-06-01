@@ -1263,8 +1263,6 @@ literal|null
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// Lightweight tag
 return|return
 operator|new
@@ -1284,7 +1282,6 @@ name|getName
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class

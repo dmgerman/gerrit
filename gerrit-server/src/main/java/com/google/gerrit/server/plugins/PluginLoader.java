@@ -1199,8 +1199,6 @@ name|values
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 name|List
 argument_list|<
 name|Plugin
@@ -1230,7 +1228,6 @@ expr_stmt|;
 return|return
 name|plugins
 return|;
-block|}
 block|}
 DECL|method|installPluginFromStream (String originalName, InputStream in)
 specifier|public

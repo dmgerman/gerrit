@@ -1894,12 +1894,9 @@ return|return
 name|dbprop
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
-block|}
 block|}
 annotation|@
 name|Override

@@ -2616,8 +2616,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|RevId
 name|revId
 init|=
@@ -2769,7 +2767,6 @@ name|enabled
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**    * If the merge was attempted and it failed the system usually writes a    * comment as a ChangeMessage and sets status to NEW. Find the relevant    * message and return it.    */
 DECL|method|getConflictMessage (RevisionResource rsrc)

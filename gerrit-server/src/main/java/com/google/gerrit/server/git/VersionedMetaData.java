@@ -2299,15 +2299,12 @@ name|MAX_VALUE
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|byte
 index|[]
 block|{}
 return|;
-block|}
 block|}
 DECL|method|getObjectId (String fileName)
 specifier|protected

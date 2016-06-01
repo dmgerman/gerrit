@@ -1157,12 +1157,9 @@ return|return
 name|r
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
-block|}
 block|}
 DECL|method|mergeFrom (Permission src)
 name|void

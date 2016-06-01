@@ -2377,8 +2377,6 @@ name|sizeDelta
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|PatchListEntry
@@ -2392,7 +2390,6 @@ argument_list|,
 name|sizeDelta
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|aFor (PatchListKey key, Repository repo, RevWalk rw, ObjectInserter ins, RevCommit b)
 specifier|private

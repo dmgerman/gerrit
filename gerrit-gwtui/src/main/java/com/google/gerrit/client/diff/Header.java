@@ -2253,8 +2253,6 @@ return|return
 name|k
 return|;
 block|}
-else|else
-block|{
 name|link
 operator|.
 name|getElement
@@ -2288,7 +2286,6 @@ expr_stmt|;
 return|return
 literal|null
 return|;
-block|}
 block|}
 DECL|method|shouldSkipFile (FileInfo curr, CommentsCollections comments)
 specifier|private
@@ -2419,14 +2416,11 @@ condition|)
 block|{
 continue|continue;
 block|}
-else|else
-block|{
 name|prevInfo
 operator|=
 name|curr
 expr_stmt|;
 break|break;
-block|}
 block|}
 for|for
 control|(
@@ -2470,14 +2464,11 @@ condition|)
 block|{
 continue|continue;
 block|}
-else|else
-block|{
 name|nextInfo
 operator|=
 name|curr
 expr_stmt|;
 break|break;
-block|}
 block|}
 name|KeyCommand
 name|p

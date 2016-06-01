@@ -357,8 +357,6 @@ literal|""
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|Response
 operator|.
@@ -367,7 +365,6 @@ argument_list|(
 literal|""
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 annotation|@

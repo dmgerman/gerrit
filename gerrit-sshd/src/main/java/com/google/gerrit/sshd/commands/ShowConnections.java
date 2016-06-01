@@ -1361,12 +1361,9 @@ name|toString
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|""
 return|;
-block|}
 block|}
 DECL|method|hostname (final SocketAddress remoteAddress)
 specifier|private

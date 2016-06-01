@@ -1624,8 +1624,6 @@ operator|.
 name|exitCode
 return|;
 block|}
-else|else
-block|{
 try|try
 block|{
 name|err
@@ -1673,7 +1671,6 @@ block|}
 return|return
 literal|128
 return|;
-block|}
 block|}
 DECL|method|die (String msg)
 specifier|protected

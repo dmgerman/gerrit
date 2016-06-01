@@ -2988,8 +2988,6 @@ name|create
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|ChangeStatusPredicate
 operator|.
@@ -2998,7 +2996,6 @@ argument_list|(
 name|statusName
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|status_open ()
 specifier|public
@@ -3707,8 +3704,6 @@ name|file
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|EqualsFilePredicate
 operator|.
@@ -3719,7 +3714,6 @@ argument_list|,
 name|file
 argument_list|)
 return|;
-block|}
 block|}
 annotation|@
 name|Operator
@@ -3753,8 +3747,6 @@ name|path
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|EqualsPathPredicate
@@ -3764,7 +3756,6 @@ argument_list|,
 name|path
 argument_list|)
 return|;
-block|}
 block|}
 annotation|@
 name|Operator

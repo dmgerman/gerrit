@@ -287,8 +287,6 @@ name|nullsLast
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|Ordering
 operator|.
@@ -298,7 +296,6 @@ operator|.
 name|nullsFirst
 argument_list|()
 return|;
-block|}
 block|}
 block|}
 end_class

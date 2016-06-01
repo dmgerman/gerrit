@@ -575,8 +575,6 @@ name|value
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|label
 argument_list|()
@@ -586,7 +584,6 @@ operator|+
 name|value
 argument_list|()
 return|;
-block|}
 block|}
 annotation|@
 name|Override

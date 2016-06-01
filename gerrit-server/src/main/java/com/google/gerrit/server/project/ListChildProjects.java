@@ -369,8 +369,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|getDirectChildProjects
 argument_list|(
@@ -380,7 +378,6 @@ name|getNameKey
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|getDirectChildProjects (Project.NameKey parent)
 specifier|private
@@ -636,15 +633,12 @@ name|n
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
 return|;
-block|}
 block|}
 DECL|method|getChildProjectsRecursively (ProjectNode p)
 specifier|private

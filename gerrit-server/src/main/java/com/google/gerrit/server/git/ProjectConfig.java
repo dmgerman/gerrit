@@ -1886,8 +1886,6 @@ name|name
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|CommentLinkInfo
@@ -1897,7 +1895,6 @@ argument_list|(
 name|name
 argument_list|)
 return|;
-block|}
 block|}
 return|return
 operator|new
@@ -2909,15 +2906,12 @@ name|validationErrors
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
 return|;
-block|}
 block|}
 annotation|@
 name|Override

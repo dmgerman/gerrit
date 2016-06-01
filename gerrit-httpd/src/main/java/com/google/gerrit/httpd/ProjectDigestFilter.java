@@ -1204,8 +1204,6 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 name|rsp
 operator|.
 name|stale
@@ -1222,7 +1220,6 @@ expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1251,8 +1248,6 @@ literal|false
 return|;
 block|}
 block|}
-else|else
-block|{
 name|rsp
 operator|.
 name|sendError
@@ -1263,7 +1258,6 @@ expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 DECL|method|H (String data)
 specifier|private

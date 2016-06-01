@@ -361,12 +361,9 @@ operator|+
 literal|")"
 return|;
 block|}
-else|else
-block|{
 return|return
 name|branch
 return|;
-block|}
 block|}
 DECL|method|query (Project.NameKey project, Change.Status status, String branch, String topic)
 specifier|public

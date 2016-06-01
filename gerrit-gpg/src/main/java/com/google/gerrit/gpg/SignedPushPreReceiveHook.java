@@ -459,8 +459,6 @@ name|isOk
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 comment|// Directly updating one or more refs: require a trusted key.
 return|return
 name|result
@@ -468,7 +466,6 @@ operator|.
 name|isTrusted
 argument_list|()
 return|;
-block|}
 block|}
 DECL|method|onlyMagicBranches (Iterable<ReceiveCommand> commands)
 specifier|private

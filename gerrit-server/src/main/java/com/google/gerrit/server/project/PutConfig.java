@@ -1558,8 +1558,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 name|log
 operator|.
 name|warn
@@ -1585,7 +1583,6 @@ operator|+
 name|projectName
 argument_list|)
 throw|;
-block|}
 block|}
 name|ProjectState
 name|state

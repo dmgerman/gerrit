@@ -700,8 +700,6 @@ return|return
 name|repo
 return|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|RepositoryNotFoundException
@@ -712,7 +710,6 @@ name|get
 argument_list|()
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 end_class

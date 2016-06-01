@@ -543,8 +543,6 @@ name|seen
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|AccountGroup
 name|group
 init|=
@@ -573,16 +571,12 @@ name|seen
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|Collections
 operator|.
 name|emptySet
 argument_list|()
 return|;
-block|}
-block|}
 block|}
 DECL|method|getProjectOwners (final Project.NameKey project, final Set<AccountGroup.UUID> seen)
 specifier|private

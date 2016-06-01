@@ -1397,14 +1397,11 @@ name|ServiceNotAuthorizedException
 argument_list|()
 throw|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|ServiceNotEnabledException
 argument_list|()
 throw|;
-block|}
 block|}
 name|req
 operator|.

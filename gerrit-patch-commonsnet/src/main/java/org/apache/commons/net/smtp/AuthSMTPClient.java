@@ -491,8 +491,6 @@ name|getDefault
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|(
 name|SSLSocketFactory
@@ -502,7 +500,6 @@ operator|.
 name|getDefault
 argument_list|()
 return|;
-block|}
 block|}
 annotation|@
 name|Override

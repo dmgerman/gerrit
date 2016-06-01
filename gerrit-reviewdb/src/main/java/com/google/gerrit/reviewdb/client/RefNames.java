@@ -1033,10 +1033,7 @@ return|return
 literal|null
 return|;
 block|}
-else|else
-block|{
 break|break;
-block|}
 block|}
 block|}
 name|int

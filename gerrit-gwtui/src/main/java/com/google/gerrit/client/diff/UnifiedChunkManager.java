@@ -1840,8 +1840,6 @@ name|getCmLine
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 comment|// The line might be within a DiffChunk
 name|res
 operator|=
@@ -1929,8 +1927,6 @@ name|getStart
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 comment|// Need to add the length of the insertion chunk
 return|return
 name|delete
@@ -1957,7 +1953,6 @@ argument_list|()
 operator|+
 literal|1
 return|;
-block|}
 block|}
 elseif|else
 if|if
@@ -2011,13 +2006,9 @@ argument_list|()
 return|;
 block|}
 block|}
-else|else
-block|{
 return|return
 name|line
 return|;
-block|}
-block|}
 block|}
 DECL|method|getLineRegionInfoFromCmLine (int cmLine)
 name|LineRegionInfo
@@ -2094,8 +2085,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// The line might be within or after a diff chunk.
 name|res
 operator|=
@@ -2187,8 +2176,6 @@ name|COMMON
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|LineRegionInfo
@@ -2201,9 +2188,6 @@ name|COMMON
 argument_list|)
 return|;
 block|}
-block|}
-else|else
-block|{
 comment|// Within a diff chunk
 return|return
 operator|new
@@ -2221,9 +2205,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-block|}
-else|else
-block|{
 comment|// The line is before any diff chunk, so it always equals cmLine and
 comment|// belongs to a common region.
 return|return
@@ -2237,8 +2218,6 @@ operator|.
 name|COMMON
 argument_list|)
 return|;
-block|}
-block|}
 block|}
 DECL|enum|RegionType
 enum|enum

@@ -386,8 +386,6 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 return|return
 name|Response
 operator|.
@@ -396,7 +394,6 @@ argument_list|(
 name|url
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class

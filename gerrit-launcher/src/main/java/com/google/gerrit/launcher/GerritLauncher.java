@@ -1280,12 +1280,9 @@ name|intValue
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|0
 return|;
-block|}
 block|}
 DECL|method|programClassName (String cn)
 specifier|private

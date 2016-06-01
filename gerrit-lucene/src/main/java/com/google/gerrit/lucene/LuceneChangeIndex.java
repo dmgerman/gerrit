@@ -2772,8 +2772,6 @@ return|return
 name|fs
 return|;
 block|}
-else|else
-block|{
 return|return
 name|Sets
 operator|.
@@ -2792,7 +2790,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 comment|// New enough schema to have project field, so ensure that is requested.
 if|if
@@ -2822,8 +2819,6 @@ return|return
 name|fs
 return|;
 block|}
-else|else
-block|{
 return|return
 name|Sets
 operator|.
@@ -2847,7 +2842,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|toChangeData (Document doc, Set<String> fields, String idFieldName)
 specifier|private

@@ -445,8 +445,6 @@ literal|true
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|LineGap
 name|lookup
 init|=
@@ -516,8 +514,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// Line after gap
 return|return
 operator|new
@@ -530,8 +526,6 @@ argument_list|,
 literal|true
 argument_list|)
 return|;
-block|}
-block|}
 block|}
 DECL|method|align (DisplaySide mySide, int line)
 name|AlignedPair

@@ -595,8 +595,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|RefControl
@@ -609,7 +607,6 @@ argument_list|,
 name|relevant
 argument_list|)
 return|;
-block|}
 block|}
 comment|/** Is this user a ref owner? */
 DECL|method|isOwner ()
@@ -1509,8 +1506,6 @@ name|PUSH_SIGNED_TAG
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|owner
 operator|||
@@ -1521,7 +1516,6 @@ operator|.
 name|PUSH_TAG
 argument_list|)
 return|;
-block|}
 block|}
 else|else
 block|{

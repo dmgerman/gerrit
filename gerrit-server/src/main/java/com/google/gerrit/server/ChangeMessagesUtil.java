@@ -366,8 +366,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|notes
 operator|.
@@ -377,7 +375,6 @@ operator|.
 name|getChangeMessages
 argument_list|()
 return|;
-block|}
 block|}
 DECL|method|byPatchSet (ReviewDb db, ChangeNotes notes, PatchSet.Id psId)
 specifier|public

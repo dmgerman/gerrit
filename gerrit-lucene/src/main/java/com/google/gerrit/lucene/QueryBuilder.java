@@ -1393,8 +1393,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|NumericRangeQuery
 operator|.
@@ -1417,7 +1415,6 @@ argument_list|,
 literal|true
 argument_list|)
 return|;
-block|}
 block|}
 throw|throw
 operator|new
@@ -1604,8 +1601,6 @@ name|p
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|TermQuery
@@ -1628,7 +1623,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|regexQuery (IndexPredicate<V> p)
 specifier|private

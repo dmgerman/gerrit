@@ -389,8 +389,6 @@ name|local
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// zero means "no limit", in this case the max is more limiting
 return|return
 name|Math
@@ -402,7 +400,6 @@ argument_list|,
 name|local
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class

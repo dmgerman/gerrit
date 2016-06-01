@@ -2547,8 +2547,6 @@ return|return
 name|res
 return|;
 block|}
-else|else
-block|{
 return|return
 name|toChangeInfo
 argument_list|(
@@ -2557,7 +2555,6 @@ argument_list|,
 name|limitToPsId
 argument_list|)
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(

@@ -1614,8 +1614,6 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 name|itr
 operator|=
 name|Collections
@@ -1634,7 +1632,6 @@ expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 annotation|@
 name|Override

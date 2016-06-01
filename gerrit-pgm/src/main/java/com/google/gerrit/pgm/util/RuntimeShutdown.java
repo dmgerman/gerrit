@@ -287,14 +287,11 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 comment|// We don't permit adding a task once shutdown has started.
 comment|//
 return|return
 literal|false
 return|;
-block|}
 block|}
 block|}
 annotation|@

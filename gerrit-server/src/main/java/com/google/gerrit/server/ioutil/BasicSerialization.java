@@ -616,8 +616,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-else|else
-block|{
 name|output
 operator|.
 name|write
@@ -635,7 +633,6 @@ name|value
 operator|>>>=
 literal|7
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/** Read a fixed length byte array whose length is specified as a varint. */

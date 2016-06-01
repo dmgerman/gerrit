@@ -930,8 +930,6 @@ name|ds
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// Don't use the connection pool.
 comment|//
 try|try
@@ -1024,7 +1022,6 @@ argument_list|,
 name|se
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 DECL|method|exportPoolMetrics (final BasicDataSource pool)

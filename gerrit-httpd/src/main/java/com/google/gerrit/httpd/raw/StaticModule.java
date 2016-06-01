@@ -1018,8 +1018,6 @@ literal|true
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|log
 operator|.
 name|warn
@@ -1027,7 +1025,6 @@ argument_list|(
 literal|"Cannot read httpd.robotsFile, using default"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|Paths
 name|p
@@ -1063,8 +1060,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|SingleFileServlet
@@ -1079,7 +1074,6 @@ argument_list|,
 literal|true
 argument_list|)
 return|;
-block|}
 block|}
 annotation|@
 name|Provides
@@ -1142,8 +1136,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|SingleFileServlet
@@ -1158,7 +1150,6 @@ argument_list|,
 literal|true
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|webappSourcePath (String name)
 specifier|private
@@ -1358,8 +1349,6 @@ name|warFs
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|DirectoryGwtUiServlet
@@ -1376,7 +1365,6 @@ name|isDev
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 DECL|class|PolyGerritUiModule
@@ -2011,8 +1999,6 @@ return|return
 literal|null
 return|;
 block|}
-else|else
-block|{
 name|ProvisionException
 name|pe
 init|=
@@ -2032,7 +2018,6 @@ expr_stmt|;
 throw|throw
 name|pe
 throw|;
-block|}
 block|}
 return|return
 name|war

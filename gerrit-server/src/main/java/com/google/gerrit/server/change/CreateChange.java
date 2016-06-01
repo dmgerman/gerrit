@@ -1720,8 +1720,6 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 name|parentCommit
 operator|=
 name|destRef
@@ -1729,7 +1727,6 @@ operator|.
 name|getObjectId
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{

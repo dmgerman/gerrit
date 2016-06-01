@@ -3968,8 +3968,6 @@ name|canonicalWebUrl
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|"http://"
 operator|+
@@ -3978,7 +3976,6 @@ argument_list|(
 name|canonicalWebUrl
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**    * Get the Gerrit hostname.    *    * @return the hostname from the canonical URL if it is configured, otherwise    *         whatever the OS says the hostname is.    */
 DECL|method|getGerritHost (String canonicalWebUrl)

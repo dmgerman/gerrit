@@ -869,8 +869,6 @@ operator|+
 name|val
 return|;
 block|}
-else|else
-block|{
 return|return
 name|ChangeQueryBuilder
 operator|.
@@ -882,7 +880,6 @@ name|val
 operator|+
 literal|"\""
 return|;
-block|}
 block|}
 block|}
 end_class

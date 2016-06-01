@@ -1192,8 +1192,6 @@ return|return
 name|reviewer
 return|;
 block|}
-else|else
-block|{
 return|return
 name|reviewer
 operator|.
@@ -1204,7 +1202,6 @@ argument_list|,
 name|limit
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|suggestAccountFullTextSearch ( SuggestReviewers suggestReviewers, VisibilityControl visibilityControl)
 specifier|private

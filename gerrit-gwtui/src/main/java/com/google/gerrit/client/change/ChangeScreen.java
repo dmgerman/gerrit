@@ -7549,8 +7549,6 @@ return|return
 name|rev
 return|;
 block|}
-else|else
-block|{
 operator|new
 name|ErrorDialog
 argument_list|(
@@ -7580,7 +7578,6 @@ argument_list|(
 literal|"no revision, cannot proceed"
 argument_list|)
 throw|;
-block|}
 block|}
 comment|/**    *    * Resolve a revision or patch set id string to RevisionInfo.    * When this view is created from the changes table, revision    * is passed as a real revision.    * When this view is created from side by side (by closing it with 'u')    * patch set id is passed.    *    * @param info change info    * @param revOrId revision or patch set id    * @param defaultValue value returned when rev is null    * @return resolved revision or default value    */
 DECL|method|resolveRevisionOrPatchSetId (ChangeInfo info, String revOrId, String defaultValue)

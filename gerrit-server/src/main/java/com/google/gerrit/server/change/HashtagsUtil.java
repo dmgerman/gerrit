@@ -328,8 +328,6 @@ name|emptySet
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 name|HashSet
 argument_list|<
 name|String
@@ -395,7 +393,6 @@ block|}
 return|return
 name|result
 return|;
-block|}
 block|}
 DECL|method|HashtagsUtil ()
 specifier|private

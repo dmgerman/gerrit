@@ -1357,8 +1357,6 @@ block|}
 block|}
 return|;
 block|}
-else|else
-block|{
 specifier|final
 name|com
 operator|.
@@ -1414,7 +1412,6 @@ expr_stmt|;
 block|}
 block|}
 return|;
-block|}
 block|}
 annotation|@
 name|Override

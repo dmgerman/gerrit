@@ -397,8 +397,6 @@ return|return
 name|p
 return|;
 block|}
-else|else
-block|{
 comment|// Both formats of host key exist, we don't know which format
 comment|// should be authoritative. Complain and abort.
 comment|//
@@ -425,9 +423,6 @@ name|stdKeys
 argument_list|)
 throw|;
 block|}
-block|}
-else|else
-block|{
 if|if
 condition|(
 name|stdKeys
@@ -489,7 +484,6 @@ expr_stmt|;
 return|return
 name|kp
 return|;
-block|}
 block|}
 block|}
 end_class

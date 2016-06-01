@@ -5129,12 +5129,9 @@ operator|+
 literal|"/"
 return|;
 block|}
-else|else
-block|{
 return|return
 name|def
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(

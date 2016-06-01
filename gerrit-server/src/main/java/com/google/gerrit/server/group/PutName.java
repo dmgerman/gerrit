@@ -863,12 +863,9 @@ literal|"already exists"
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 throw|throw
 name|e
 throw|;
-block|}
 block|}
 name|group
 operator|.

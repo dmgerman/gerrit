@@ -882,8 +882,6 @@ name|expVal
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|noLabelQuery
 argument_list|(
@@ -892,7 +890,6 @@ argument_list|,
 name|label
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|noLabelQuery (Args args, String label)
 specifier|private
@@ -1032,8 +1029,6 @@ literal|null
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|List
 argument_list|<
 name|Predicate
@@ -1084,7 +1079,6 @@ argument_list|(
 name|r
 argument_list|)
 return|;
-block|}
 block|}
 annotation|@
 name|Override

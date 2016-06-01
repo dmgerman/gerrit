@@ -142,8 +142,6 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 name|System
 operator|.
 name|err
@@ -169,7 +167,6 @@ expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 DECL|method|parse (String version)
 specifier|private

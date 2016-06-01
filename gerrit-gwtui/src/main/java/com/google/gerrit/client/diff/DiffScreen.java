@@ -4154,14 +4154,11 @@ return|return
 literal|1
 return|;
 block|}
-else|else
-block|{
 return|return
 name|line
 operator|-
 name|offset
 return|;
-block|}
 block|}
 DECL|method|openEditScreen (final CodeMirror cm)
 specifier|private

@@ -267,8 +267,6 @@ name|oneSecondAgo
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|M
 operator|.
@@ -277,7 +275,6 @@ argument_list|(
 name|seconds
 argument_list|)
 return|;
-block|}
 block|}
 comment|// minutes
 if|if
@@ -314,8 +311,6 @@ name|oneMinuteAgo
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|M
 operator|.
@@ -324,7 +319,6 @@ argument_list|(
 name|minutes
 argument_list|)
 return|;
-block|}
 block|}
 comment|// hours
 if|if
@@ -361,8 +355,6 @@ name|oneHourAgo
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|M
 operator|.
@@ -371,7 +363,6 @@ argument_list|(
 name|hours
 argument_list|)
 return|;
-block|}
 block|}
 comment|// up to 14 days use days
 if|if
@@ -407,8 +398,6 @@ name|oneDayAgo
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|M
 operator|.
@@ -417,7 +406,6 @@ argument_list|(
 name|days
 argument_list|)
 return|;
-block|}
 block|}
 comment|// up to 10 weeks use weeks
 if|if
@@ -453,8 +441,6 @@ name|oneWeekAgo
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|M
 operator|.
@@ -463,7 +449,6 @@ argument_list|(
 name|weeks
 argument_list|)
 return|;
-block|}
 block|}
 comment|// months
 if|if
@@ -497,8 +482,6 @@ name|oneMonthAgo
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|M
 operator|.
@@ -507,7 +490,6 @@ argument_list|(
 name|months
 argument_list|)
 return|;
-block|}
 block|}
 comment|// up to 5 years use "year, months" rounded to months
 if|if
@@ -602,8 +584,6 @@ name|yearLabel
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|M
 operator|.
@@ -618,7 +598,6 @@ argument_list|,
 name|monthLabel
 argument_list|)
 return|;
-block|}
 block|}
 comment|// years
 name|long
@@ -645,8 +624,6 @@ name|oneYearAgo
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|M
 operator|.
@@ -655,7 +632,6 @@ argument_list|(
 name|years
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|upperLimit (long unit)
 specifier|private

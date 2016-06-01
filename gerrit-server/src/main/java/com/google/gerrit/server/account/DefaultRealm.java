@@ -304,8 +304,6 @@ literal|true
 return|;
 block|}
 block|}
-else|else
-block|{
 switch|switch
 condition|(
 name|field
@@ -330,7 +328,6 @@ default|default:
 return|return
 literal|true
 return|;
-block|}
 block|}
 block|}
 annotation|@

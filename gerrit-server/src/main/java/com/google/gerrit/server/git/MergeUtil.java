@@ -1621,8 +1621,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|MergeConflictException
@@ -1630,7 +1628,6 @@ argument_list|(
 literal|"merge conflict"
 argument_list|)
 throw|;
-block|}
 block|}
 DECL|method|createCherryPickCommitMessage (RevCommit n, ChangeControl ctl, PatchSet.Id psId)
 specifier|public
@@ -3062,22 +3059,19 @@ name|n
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|failed
-argument_list|(
+parameter_list|(
 name|rw
-argument_list|,
+parameter_list|,
 name|mergeTip
-argument_list|,
+parameter_list|,
 name|n
-argument_list|,
+parameter_list|,
 name|CommitMergeStatus
 operator|.
 name|PATH_CONFLICT
-argument_list|)
-expr_stmt|;
-block|}
+parameter_list|)
+constructor_decl|;
 block|}
 end_class
 
@@ -3909,8 +3903,6 @@ name|getName
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|MergeStrategy
 operator|.
@@ -3920,9 +3912,6 @@ name|getName
 argument_list|()
 return|;
 block|}
-block|}
-else|else
-block|{
 comment|// No auto conflict resolving allowed. If any of the
 comment|// affected files was modified, merge will fail.
 return|return
@@ -3933,7 +3922,6 @@ operator|.
 name|getName
 argument_list|()
 return|;
-block|}
 block|}
 end_function
 

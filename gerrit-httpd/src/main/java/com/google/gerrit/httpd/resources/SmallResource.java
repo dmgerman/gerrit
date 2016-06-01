@@ -321,8 +321,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-else|else
-block|{
 name|res
 operator|.
 name|setDateHeader
@@ -332,7 +330,6 @@ argument_list|,
 name|lastModified
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|res
 operator|.

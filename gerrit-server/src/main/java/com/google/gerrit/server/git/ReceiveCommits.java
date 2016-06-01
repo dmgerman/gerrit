@@ -7663,8 +7663,6 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 name|reject
 argument_list|(
 name|cmd
@@ -7675,7 +7673,6 @@ expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 DECL|method|parseDelete (ReceiveCommand cmd)
 specifier|private
@@ -10858,8 +10855,6 @@ condition|)
 block|{
 continue|continue;
 block|}
-else|else
-block|{
 name|newChanges
 operator|=
 name|Collections
@@ -10868,7 +10863,6 @@ name|emptyList
 argument_list|()
 expr_stmt|;
 return|return;
-block|}
 block|}
 if|if
 condition|(
@@ -17027,8 +17021,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|RequestState
@@ -17039,7 +17031,6 @@ name|getNameKey
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 annotation|@
 name|SuppressWarnings

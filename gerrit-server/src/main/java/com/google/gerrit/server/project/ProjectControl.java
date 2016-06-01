@@ -2524,10 +2524,7 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 break|break;
-block|}
 block|}
 block|}
 return|return

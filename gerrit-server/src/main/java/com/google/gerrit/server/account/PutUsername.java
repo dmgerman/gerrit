@@ -555,12 +555,9 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 throw|throw
 name|e
 throw|;
-block|}
 block|}
 catch|catch
 parameter_list|(

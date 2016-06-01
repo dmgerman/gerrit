@@ -790,8 +790,6 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 name|response
 operator|.
 name|sendError
@@ -803,9 +801,6 @@ return|return
 literal|false
 return|;
 block|}
-block|}
-else|else
-block|{
 name|log
 operator|.
 name|debug
@@ -841,7 +836,6 @@ expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 DECL|method|authenticateAndRedirect (HttpServletRequest req, HttpServletResponse rsp)
 specifier|private

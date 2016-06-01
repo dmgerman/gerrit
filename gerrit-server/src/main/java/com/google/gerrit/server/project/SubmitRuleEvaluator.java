@@ -1157,15 +1157,12 @@ literal|"Cannot submit draft patch sets"
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|createRuleError
 argument_list|(
 literal|"Cannot submit draft changes"
 argument_list|)
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1872,15 +1869,12 @@ name|defaultRuleError
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|createRuleError
 argument_list|(
 name|err
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**    * Evaluate the submit type rules to get the submit type.    *    * @return record from the evaluated rules.    */
 DECL|method|getSubmitType ()
@@ -2290,8 +2284,6 @@ name|defaultTypeError
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|SubmitTypeRecord
 operator|.
@@ -2300,7 +2292,6 @@ argument_list|(
 name|err
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|evaluateImpl ( String userRuleLocatorName, String userRuleWrapperName, String filterRuleLocatorName, String filterRuleWrapperName, CurrentUser user)
 specifier|private

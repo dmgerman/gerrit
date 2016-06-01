@@ -1078,8 +1078,6 @@ name|env
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 if|if
 condition|(
 name|username
@@ -1117,7 +1115,6 @@ argument_list|(
 name|env
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|kerberosOpen (final Properties env)
 specifier|private
@@ -1929,8 +1926,6 @@ name|emptySet
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|ImmutableSet
 operator|.
@@ -1939,7 +1934,6 @@ argument_list|(
 name|actual
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|recursivelyExpandGroups (final Set<String> groupDNs, final LdapSchema schema, final DirContext ctx, final String groupDN)
 specifier|private

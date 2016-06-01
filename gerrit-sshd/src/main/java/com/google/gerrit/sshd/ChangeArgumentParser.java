@@ -599,13 +599,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// No --project option, so they want every project.
 return|return
 literal|true
 return|;
-block|}
 block|}
 block|}
 end_class

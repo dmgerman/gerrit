@@ -544,8 +544,6 @@ name|name
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|MoreObjects
 operator|.
@@ -565,7 +563,6 @@ argument_list|,
 name|defaultValue
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|setString (String name, String value)
 specifier|public

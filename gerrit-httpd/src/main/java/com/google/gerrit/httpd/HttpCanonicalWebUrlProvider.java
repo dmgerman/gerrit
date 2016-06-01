@@ -308,12 +308,9 @@ return|return
 literal|null
 return|;
 block|}
-else|else
-block|{
 throw|throw
 name|noWeb
 throw|;
-block|}
 block|}
 return|return
 name|CanonicalWebUrl

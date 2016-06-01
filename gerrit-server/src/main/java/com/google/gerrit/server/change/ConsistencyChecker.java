@@ -4248,15 +4248,12 @@ name|newRefLogIdent
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|serverIdent
 operator|.
 name|get
 argument_list|()
 return|;
-block|}
 block|}
 DECL|method|parseObjectId (String objIdStr, String desc)
 specifier|private

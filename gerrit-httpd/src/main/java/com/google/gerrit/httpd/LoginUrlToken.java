@@ -170,8 +170,6 @@ return|return
 name|DEFAULT_TOKEN
 return|;
 block|}
-else|else
-block|{
 return|return
 name|CharMatcher
 operator|.
@@ -185,7 +183,6 @@ argument_list|(
 name|token
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|LoginUrlToken ()
 specifier|private

@@ -2722,8 +2722,6 @@ return|return
 name|in
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|PatchSetApproval
@@ -2733,7 +2731,6 @@ argument_list|,
 name|in
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 return|;

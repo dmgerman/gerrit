@@ -799,12 +799,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|segment
 return|;
-block|}
 block|}
 DECL|method|GitwebInfo ()
 specifier|protected

@@ -976,8 +976,6 @@ operator|.
 name|BATCH
 return|;
 block|}
-else|else
-block|{
 return|return
 name|QueueProvider
 operator|.
@@ -985,7 +983,6 @@ name|QueueType
 operator|.
 name|INTERACTIVE
 return|;
-block|}
 block|}
 comment|/** True if the user has this permission. Works only for non labels. */
 DECL|method|canPerform (String permissionName)
@@ -1014,8 +1011,6 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|!
 name|access
@@ -1026,7 +1021,6 @@ operator|.
 name|isEmpty
 argument_list|()
 return|;
-block|}
 block|}
 comment|/** The range of permitted values associated with a label permission. */
 DECL|method|getRange (String permission)

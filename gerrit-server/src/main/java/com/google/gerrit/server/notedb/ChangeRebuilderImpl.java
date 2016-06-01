@@ -3329,8 +3329,6 @@ name|of
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|Sets
 operator|.
@@ -3354,7 +3352,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|parsePatchSetId (Change change, RevCommit commit)
 specifier|private

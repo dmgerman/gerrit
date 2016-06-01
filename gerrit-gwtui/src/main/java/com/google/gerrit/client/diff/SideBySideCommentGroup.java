@@ -871,8 +871,6 @@ operator|.
 name|line
 return|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|IllegalStateException
@@ -880,7 +878,6 @@ argument_list|(
 literal|"Cannot compare SideBySideCommentGroup with different sides"
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 end_class

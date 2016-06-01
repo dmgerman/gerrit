@@ -709,8 +709,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-else|else
-block|{
 if|if
 condition|(
 name|service
@@ -744,7 +742,6 @@ argument_list|,
 name|service
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{

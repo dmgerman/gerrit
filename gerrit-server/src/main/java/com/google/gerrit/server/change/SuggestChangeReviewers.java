@@ -455,8 +455,6 @@ block|}
 block|}
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|VisibilityControl
@@ -505,7 +503,6 @@ return|;
 block|}
 block|}
 return|;
-block|}
 block|}
 block|}
 end_class

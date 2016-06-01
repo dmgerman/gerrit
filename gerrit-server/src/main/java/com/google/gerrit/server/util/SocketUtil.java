@@ -578,8 +578,6 @@ name|port
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|InetSocketAddress
 operator|.
@@ -590,7 +588,6 @@ argument_list|,
 name|port
 argument_list|)
 return|;
-block|}
 block|}
 comment|/** Parse and resolve an address string, looking up the IP address. */
 DECL|method|resolve (final String desc, final int defaultPort)
@@ -641,8 +638,6 @@ return|return
 name|addr
 return|;
 block|}
-else|else
-block|{
 try|try
 block|{
 specifier|final
@@ -689,7 +684,6 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 DECL|method|SocketUtil ()

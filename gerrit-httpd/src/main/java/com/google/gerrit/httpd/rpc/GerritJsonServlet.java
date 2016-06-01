@@ -1488,15 +1488,12 @@ name|getMethod
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|currentMethod
 operator|.
 name|get
 argument_list|()
 return|;
-block|}
 block|}
 annotation|@
 name|Override

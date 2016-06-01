@@ -535,8 +535,6 @@ name|getCacheInfos
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 name|List
 argument_list|<
 name|String
@@ -636,13 +634,9 @@ name|UTF_8
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|cacheNames
 return|;
-block|}
-block|}
 block|}
 DECL|enum|CacheType
 specifier|public

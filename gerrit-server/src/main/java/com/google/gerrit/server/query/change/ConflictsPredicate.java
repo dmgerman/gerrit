@@ -1405,8 +1405,6 @@ return|return
 name|files
 return|;
 block|}
-else|else
-block|{
 return|return
 name|args
 operator|.
@@ -1427,7 +1425,6 @@ operator|.
 name|currentFilePaths
 argument_list|()
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(

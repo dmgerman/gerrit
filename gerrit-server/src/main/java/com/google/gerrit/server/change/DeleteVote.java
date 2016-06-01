@@ -1643,8 +1643,6 @@ operator|+
 name|value
 return|;
 block|}
-else|else
-block|{
 return|return
 name|Short
 operator|.
@@ -1653,7 +1651,6 @@ argument_list|(
 name|value
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class

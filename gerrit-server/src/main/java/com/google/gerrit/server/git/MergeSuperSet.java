@@ -786,8 +786,6 @@ name|user
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|completeChangeSetWithoutTopic
 argument_list|(
@@ -802,7 +800,6 @@ argument_list|,
 name|user
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|completeChangeSetWithoutTopic (ReviewDb db, ChangeSet changes, CurrentUser user)
 specifier|private

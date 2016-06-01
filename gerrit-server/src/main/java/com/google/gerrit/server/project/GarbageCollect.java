@@ -578,8 +578,6 @@ name|input
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|applySync
 argument_list|(
@@ -588,7 +586,6 @@ argument_list|,
 name|input
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|applyAsync (final Project.NameKey project, final Input input)
 specifier|private

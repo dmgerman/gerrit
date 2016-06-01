@@ -1498,12 +1498,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|defaultId
 return|;
-block|}
 block|}
 DECL|class|DashboardInfo
 specifier|static

@@ -2372,8 +2372,6 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-else|else
-block|{
 name|setEdit
 argument_list|(
 literal|false
@@ -2397,7 +2395,6 @@ name|focus
 argument_list|()
 expr_stmt|;
 return|return;
-block|}
 block|}
 name|expandTimer
 operator|.

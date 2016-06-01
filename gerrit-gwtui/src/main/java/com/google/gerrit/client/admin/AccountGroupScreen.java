@@ -350,8 +350,6 @@ name|tab
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|toGroup
 argument_list|(
@@ -363,7 +361,6 @@ argument_list|,
 name|tab
 argument_list|)
 return|;
-block|}
 block|}
 annotation|@
 name|Override

@@ -1011,8 +1011,6 @@ name|changeId
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 try|try
 block|{
 name|ChangeControl
@@ -1068,7 +1066,6 @@ operator|+
 literal|"\" no such change"
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 DECL|method|inProject (Change change, ProjectControl projectControl)

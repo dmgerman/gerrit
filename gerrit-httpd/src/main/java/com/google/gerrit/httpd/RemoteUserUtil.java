@@ -197,8 +197,6 @@ name|auth
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// Nonstandard HTTP header. We have been told to trust this
 comment|// header blindly as-is.
 return|return
@@ -212,7 +210,6 @@ name|loginHeader
 argument_list|)
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**    * Extracts username from an HTTP Basic or Digest authentication    * header.    *    * @param auth header value which is used for extracting.    * @return username if available or null.    */
 DECL|method|extractUsername (String auth)

@@ -1393,13 +1393,10 @@ operator|-
 literal|1
 return|;
 block|}
-else|else
-block|{
 name|ret
 operator|=
 name|i
 expr_stmt|;
-block|}
 continue|continue;
 case|case
 name|OK

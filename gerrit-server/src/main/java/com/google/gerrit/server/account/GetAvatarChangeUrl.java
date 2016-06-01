@@ -272,12 +272,9 @@ name|ResourceNotFoundException
 argument_list|()
 throw|;
 block|}
-else|else
-block|{
 return|return
 name|url
 return|;
-block|}
 block|}
 block|}
 end_class

@@ -837,8 +837,6 @@ argument_list|)
 return|;
 block|}
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|IntraLineDiff
@@ -850,7 +848,6 @@ operator|.
 name|DISABLED
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class

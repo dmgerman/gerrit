@@ -527,8 +527,6 @@ return|return
 name|allTasks
 return|;
 block|}
-else|else
-block|{
 name|Map
 argument_list|<
 name|String
@@ -655,7 +653,6 @@ block|}
 return|return
 name|visibleTasks
 return|;
-block|}
 block|}
 DECL|method|getTasks ()
 specifier|private

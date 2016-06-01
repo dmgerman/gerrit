@@ -2718,8 +2718,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|Screen
 name|r
 init|=
@@ -2739,7 +2737,6 @@ expr_stmt|;
 return|return
 name|r
 return|;
-block|}
 block|}
 DECL|method|dashboard (final String token)
 specifier|private
@@ -4785,14 +4782,11 @@ return|return
 name|view
 return|;
 block|}
-else|else
-block|{
 return|return
 operator|new
 name|NotFoundScreen
 argument_list|()
 return|;
-block|}
 block|}
 return|return
 operator|new
@@ -5934,12 +5928,9 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|false
 return|;
-block|}
 block|}
 DECL|method|skip (String token)
 specifier|private

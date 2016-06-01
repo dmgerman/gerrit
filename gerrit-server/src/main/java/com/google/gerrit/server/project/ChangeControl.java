@@ -2135,8 +2135,6 @@ argument_list|()
 comment|// user can edit topic on a specific ref
 return|;
 block|}
-else|else
-block|{
 return|return
 name|getRefControl
 argument_list|()
@@ -2144,7 +2142,6 @@ operator|.
 name|canForceEditTopicName
 argument_list|()
 return|;
-block|}
 block|}
 comment|/** Can this user edit the hashtag name? */
 DECL|method|canEditHashtags ()

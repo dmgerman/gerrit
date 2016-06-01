@@ -943,12 +943,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
-block|}
 block|}
 DECL|method|getRemoteEmail (HttpServletRequest req)
 name|String
@@ -977,12 +974,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
-block|}
 block|}
 DECL|method|getRemoteExternalIdToken (HttpServletRequest req)
 name|String
@@ -1011,12 +1005,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
-block|}
 block|}
 DECL|method|getLoginHeader ()
 name|String

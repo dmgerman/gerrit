@@ -519,8 +519,6 @@ name|none
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|UnprocessableEntityException
@@ -528,7 +526,6 @@ argument_list|(
 literal|"invalid token"
 argument_list|)
 throw|;
-block|}
 block|}
 catch|catch
 parameter_list|(

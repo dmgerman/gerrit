@@ -534,8 +534,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|stdout
 operator|.
 name|format
@@ -626,7 +624,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-block|}
 return|return
 literal|null
 return|;

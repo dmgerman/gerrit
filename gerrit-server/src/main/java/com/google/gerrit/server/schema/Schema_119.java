@@ -1605,8 +1605,6 @@ name|v
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 if|if
 condition|(
 name|v
@@ -1653,7 +1651,6 @@ operator|+
 name|v
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 DECL|method|toReviewCategoryStrategy (String v)

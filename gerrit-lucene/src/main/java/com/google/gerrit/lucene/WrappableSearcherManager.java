@@ -417,8 +417,6 @@ return|return
 literal|null
 return|;
 block|}
-else|else
-block|{
 return|return
 name|getSearcher
 argument_list|(
@@ -427,7 +425,6 @@ argument_list|,
 name|newReader
 argument_list|)
 return|;
-block|}
 block|}
 annotation|@
 name|Override

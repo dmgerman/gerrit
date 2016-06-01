@@ -1087,8 +1087,6 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 name|log
 operator|.
 name|warn
@@ -1110,7 +1108,6 @@ expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(

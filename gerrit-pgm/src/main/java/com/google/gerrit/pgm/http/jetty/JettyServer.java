@@ -2634,8 +2634,6 @@ literal|0
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// We have more than one path served out of this container so
 comment|// combine them in a handler which supports dispatching to the
 comment|// individual contexts.
@@ -2667,7 +2665,6 @@ expr_stmt|;
 return|return
 name|r
 return|;
-block|}
 block|}
 DECL|method|makeContext (final String contextPath, final JettyEnv env, final Config cfg)
 specifier|private

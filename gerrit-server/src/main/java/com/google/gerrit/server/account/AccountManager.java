@@ -748,8 +748,6 @@ name|who
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 comment|// Account exists
 name|Account
 name|act
@@ -808,7 +806,6 @@ argument_list|,
 literal|false
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 catch|catch

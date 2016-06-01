@@ -334,8 +334,6 @@ return|return
 name|name
 return|;
 block|}
-else|else
-block|{
 return|return
 name|plugin
 operator|+
@@ -343,7 +341,6 @@ literal|"-"
 operator|+
 name|name
 return|;
-block|}
 block|}
 end_function
 

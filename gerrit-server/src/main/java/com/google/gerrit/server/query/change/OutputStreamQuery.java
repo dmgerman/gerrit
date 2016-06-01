@@ -2139,8 +2139,6 @@ return|return
 literal|""
 return|;
 block|}
-else|else
-block|{
 return|return
 name|String
 operator|.
@@ -2155,7 +2153,6 @@ argument_list|,
 literal|" "
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|showField (String field, Object value, int depth)
 specifier|private

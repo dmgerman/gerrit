@@ -849,8 +849,6 @@ name|user
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|sd
 operator|.
 name|authenticationError
@@ -863,7 +861,6 @@ expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 if|if
 condition|(

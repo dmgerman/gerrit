@@ -261,8 +261,6 @@ operator|+
 name|object
 return|;
 block|}
-else|else
-block|{
 return|return
 name|String
 operator|.
@@ -271,7 +269,6 @@ argument_list|(
 name|object
 argument_list|)
 return|;
-block|}
 block|}
 annotation|@
 name|Override

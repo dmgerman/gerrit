@@ -1747,15 +1747,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|MoreExecutors
 operator|.
 name|newDirectExecutorService
 argument_list|()
 return|;
-block|}
 block|}
 DECL|method|getChangesByProject ()
 specifier|private

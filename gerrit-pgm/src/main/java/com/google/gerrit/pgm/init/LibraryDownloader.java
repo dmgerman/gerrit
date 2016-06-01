@@ -835,8 +835,6 @@ return|return
 name|required
 return|;
 block|}
-else|else
-block|{
 specifier|final
 name|StringBuilder
 name|msg
@@ -947,7 +945,6 @@ argument_list|,
 name|name
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|doGet ()
 specifier|private
