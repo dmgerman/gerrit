@@ -919,6 +919,11 @@ specifier|private
 name|IdentifiedUser
 name|caller
 decl_stmt|;
+DECL|field|submissionId
+specifier|private
+name|String
+name|submissionId
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|MergeOpRepoManager ( GitRepositoryManager repoManager, ProjectCache projectCache, BatchUpdate.Factory batchUpdateFactory)
@@ -962,7 +967,7 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setContext (ReviewDb db, Timestamp ts, IdentifiedUser caller)
+DECL|method|setContext (ReviewDb db, Timestamp ts, IdentifiedUser caller, String submissionId)
 name|void
 name|setContext
 parameter_list|(
@@ -974,6 +979,9 @@ name|ts
 parameter_list|,
 name|IdentifiedUser
 name|caller
+parameter_list|,
+name|String
+name|submissionId
 parameter_list|)
 block|{
 name|this
@@ -994,6 +1002,22 @@ name|caller
 operator|=
 name|caller
 expr_stmt|;
+name|this
+operator|.
+name|submissionId
+operator|=
+name|submissionId
+expr_stmt|;
+block|}
+DECL|method|getSubmissionId ()
+specifier|public
+name|String
+name|getSubmissionId
+parameter_list|()
+block|{
+return|return
+name|submissionId
+return|;
 block|}
 DECL|method|getRepo (Project.NameKey project)
 specifier|public

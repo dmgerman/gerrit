@@ -340,7 +340,23 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Inject
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|AssistedInject
 import|;
 end_import
 
@@ -718,6 +734,20 @@ specifier|public
 class|class
 name|SubmoduleOp
 block|{
+DECL|interface|Factory
+specifier|public
+interface|interface
+name|Factory
+block|{
+DECL|method|create (MergeOpRepoManager orm)
+name|SubmoduleOp
+name|create
+parameter_list|(
+name|MergeOpRepoManager
+name|orm
+parameter_list|)
+function_decl|;
+block|}
 DECL|field|log
 specifier|private
 specifier|static
@@ -792,14 +822,15 @@ specifier|final
 name|boolean
 name|enableSuperProjectSubscriptions
 decl_stmt|;
-DECL|field|updateId
+DECL|field|orm
 specifier|private
-name|String
-name|updateId
+specifier|final
+name|MergeOpRepoManager
+name|orm
 decl_stmt|;
 annotation|@
-name|Inject
-DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent PersonIdent myIdent, @GerritServerConfig Config cfg, GitReferenceUpdated gitRefUpdated, ProjectCache projectCache, ProjectState.Factory projectStateFactory, @Nullable Account account, ChangeHooks changeHooks)
+name|AssistedInject
+DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent PersonIdent myIdent, @GerritServerConfig Config cfg, GitReferenceUpdated gitRefUpdated, ProjectCache projectCache, ProjectState.Factory projectStateFactory, @Nullable Account account, ChangeHooks changeHooks, @Assisted MergeOpRepoManager orm)
 specifier|public
 name|SubmoduleOp
 parameter_list|(
@@ -836,6 +867,11 @@ name|account
 parameter_list|,
 name|ChangeHooks
 name|changeHooks
+parameter_list|,
+annotation|@
+name|Assisted
+name|MergeOpRepoManager
+name|orm
 parameter_list|)
 block|{
 name|this
@@ -910,8 +946,14 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|orm
+operator|=
+name|orm
+expr_stmt|;
 block|}
-DECL|method|getDestinationBranches (Branch.NameKey src, SubscribeSection s, MergeOpRepoManager orm)
+DECL|method|getDestinationBranches (Branch.NameKey src, SubscribeSection s)
 specifier|public
 name|Collection
 argument_list|<
@@ -928,9 +970,6 @@ name|src
 parameter_list|,
 name|SubscribeSection
 name|s
-parameter_list|,
-name|MergeOpRepoManager
-name|orm
 parameter_list|)
 throws|throws
 name|IOException
@@ -1171,16 +1210,13 @@ name|Collection
 argument_list|<
 name|SubmoduleSubscription
 argument_list|>
-DECL|method|superProjectSubscriptionsForSubmoduleBranch ( Branch.NameKey srcBranch, MergeOpRepoManager orm)
+DECL|method|superProjectSubscriptionsForSubmoduleBranch (Branch.NameKey srcBranch)
 name|superProjectSubscriptionsForSubmoduleBranch
 parameter_list|(
 name|Branch
 operator|.
 name|NameKey
 name|srcBranch
-parameter_list|,
-name|MergeOpRepoManager
-name|orm
 parameter_list|)
 throws|throws
 name|IOException
@@ -1264,8 +1300,6 @@ argument_list|(
 name|srcBranch
 argument_list|,
 name|s
-argument_list|,
-name|orm
 argument_list|)
 decl_stmt|;
 for|for
@@ -1369,8 +1403,6 @@ name|create
 argument_list|(
 name|targetBranch
 argument_list|,
-name|updateId
-argument_list|,
 name|orm
 argument_list|)
 decl_stmt|;
@@ -1445,7 +1477,7 @@ return|return
 name|ret
 return|;
 block|}
-DECL|method|updateSuperProjects ( Collection<Branch.NameKey> updatedBranches, String updateId, MergeOpRepoManager orm)
+DECL|method|updateSuperProjects (Collection<Branch.NameKey> updatedBranches)
 specifier|protected
 name|void
 name|updateSuperProjects
@@ -1457,12 +1489,6 @@ operator|.
 name|NameKey
 argument_list|>
 name|updatedBranches
-parameter_list|,
-name|String
-name|updateId
-parameter_list|,
-name|MergeOpRepoManager
-name|orm
 parameter_list|)
 throws|throws
 name|SubmoduleException
@@ -1480,12 +1506,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|this
-operator|.
-name|updateId
-operator|=
-name|updateId
-expr_stmt|;
 name|logDebug
 argument_list|(
 literal|"Updating superprojects"
@@ -1599,8 +1619,6 @@ init|=
 name|superProjectSubscriptionsForSubmoduleBranch
 argument_list|(
 name|b
-argument_list|,
-name|orm
 argument_list|)
 decl_stmt|;
 for|for
@@ -1751,8 +1769,6 @@ name|get
 argument_list|(
 name|dst
 argument_list|)
-argument_list|,
-name|orm
 argument_list|)
 expr_stmt|;
 block|}
@@ -1777,7 +1793,7 @@ block|}
 block|}
 block|}
 comment|/**    * Update the submodules in one branch of one repository.    *    * @param subscriber the branch of the repository which should be changed.    * @param updates submodule updates which should be updated to.    * @throws SubmoduleException    */
-DECL|method|updateGitlinks (Branch.NameKey subscriber, Collection<SubmoduleSubscription> updates, MergeOpRepoManager orm)
+DECL|method|updateGitlinks (Branch.NameKey subscriber, Collection<SubmoduleSubscription> updates)
 specifier|private
 name|void
 name|updateGitlinks
@@ -1792,9 +1808,6 @@ argument_list|<
 name|SubmoduleSubscription
 argument_list|>
 name|updates
-parameter_list|,
-name|MergeOpRepoManager
-name|orm
 parameter_list|)
 throws|throws
 name|SubmoduleException
@@ -2758,7 +2771,10 @@ name|debug
 argument_list|(
 literal|"["
 operator|+
-name|updateId
+name|orm
+operator|.
+name|getSubmissionId
+argument_list|()
 operator|+
 literal|"]"
 operator|+

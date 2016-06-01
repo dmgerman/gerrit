@@ -407,7 +407,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Branch.NameKey project, String submissionId, MergeOpRepoManager m)
+DECL|method|create (Branch.NameKey project, MergeOpRepoManager m)
 name|GitModules
 name|create
 parameter_list|(
@@ -415,9 +415,6 @@ name|Branch
 operator|.
 name|NameKey
 name|project
-parameter_list|,
-name|String
-name|submissionId
 parameter_list|,
 name|MergeOpRepoManager
 name|m
@@ -448,7 +445,7 @@ name|subscriptions
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|GitModules ( @anonicalWebUrl @ullable String canonicalWebUrl, @Assisted Branch.NameKey branch, @Assisted String submissionId, @Assisted MergeOpRepoManager orm)
+DECL|method|GitModules ( @anonicalWebUrl @ullable String canonicalWebUrl, @Assisted Branch.NameKey branch, @Assisted MergeOpRepoManager orm)
 name|GitModules
 parameter_list|(
 annotation|@
@@ -467,11 +464,6 @@ name|branch
 parameter_list|,
 annotation|@
 name|Assisted
-name|String
-name|submissionId
-parameter_list|,
-annotation|@
-name|Assisted
 name|MergeOpRepoManager
 name|orm
 parameter_list|)
@@ -482,7 +474,10 @@ name|this
 operator|.
 name|submissionId
 operator|=
-name|submissionId
+name|orm
+operator|.
+name|getSubmissionId
+argument_list|()
 expr_stmt|;
 name|Project
 operator|.

@@ -870,18 +870,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -1873,14 +1861,13 @@ specifier|final
 name|SubmitStrategyFactory
 name|submitStrategyFactory
 decl_stmt|;
-DECL|field|subOpProvider
+DECL|field|subOpFactory
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|SubmoduleOp
-argument_list|>
-name|subOpProvider
+operator|.
+name|Factory
+name|subOpFactory
 decl_stmt|;
 DECL|field|orm
 specifier|private
@@ -1961,7 +1948,7 @@ name|submitInput
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, Provider<SubmoduleOp> subOpProvider, MergeOpRepoManager orm)
+DECL|method|MergeOp (ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, MergeOpRepoManager orm)
 name|MergeOp
 parameter_list|(
 name|ChangeMessagesUtil
@@ -1991,11 +1978,10 @@ parameter_list|,
 name|SubmitStrategyFactory
 name|submitStrategyFactory
 parameter_list|,
-name|Provider
-argument_list|<
 name|SubmoduleOp
-argument_list|>
-name|subOpProvider
+operator|.
+name|Factory
+name|subOpFactory
 parameter_list|,
 name|MergeOpRepoManager
 name|orm
@@ -2045,9 +2031,9 @@ name|submitStrategyFactory
 expr_stmt|;
 name|this
 operator|.
-name|subOpProvider
+name|subOpFactory
 operator|=
-name|subOpProvider
+name|subOpFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2950,6 +2936,8 @@ argument_list|,
 name|ts
 argument_list|,
 name|caller
+argument_list|,
+name|submissionId
 argument_list|)
 expr_stmt|;
 name|logDebug
@@ -4864,10 +4852,12 @@ expr_stmt|;
 name|SubmoduleOp
 name|subOp
 init|=
-name|subOpProvider
+name|subOpFactory
 operator|.
-name|get
-argument_list|()
+name|create
+argument_list|(
+name|orm
+argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -4876,10 +4866,6 @@ operator|.
 name|updateSuperProjects
 argument_list|(
 name|branches
-argument_list|,
-name|submissionId
-argument_list|,
-name|orm
 argument_list|)
 expr_stmt|;
 name|logDebug
