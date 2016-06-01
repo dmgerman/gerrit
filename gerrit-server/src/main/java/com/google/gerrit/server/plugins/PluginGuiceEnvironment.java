@@ -2671,7 +2671,7 @@ operator|.
 name|create
 argument_list|()
 operator|.
-name|getClass
+name|annotationType
 argument_list|()
 decl_stmt|;
 DECL|method|reattachSet ( ListMultimap<TypeLiteral<?>, ReloadableRegistrationHandle<?>> oldHandles, Map<TypeLiteral<?>, DynamicSet<?>> sets, @Nullable Injector src, Plugin newPlugin)
