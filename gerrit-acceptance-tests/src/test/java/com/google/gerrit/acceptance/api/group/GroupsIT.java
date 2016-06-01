@@ -3800,10 +3800,10 @@ argument_list|)
 operator|.
 name|members
 argument_list|()
+argument_list|)
 operator|.
 name|isEmpty
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|assertIncludes (String group, String... expectedNames)
@@ -3943,10 +3943,10 @@ argument_list|)
 operator|.
 name|includedGroups
 argument_list|()
+argument_list|)
 operator|.
 name|isEmpty
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getFromCache (String name)
