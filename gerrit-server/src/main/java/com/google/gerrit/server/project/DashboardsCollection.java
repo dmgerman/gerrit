@@ -714,6 +714,9 @@ if|if
 condition|(
 name|id
 operator|.
+name|toString
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 literal|"default"
@@ -766,6 +769,9 @@ decl_stmt|;
 if|if
 condition|(
 name|id
+operator|.
+name|toString
+argument_list|()
 operator|.
 name|equals
 argument_list|(
