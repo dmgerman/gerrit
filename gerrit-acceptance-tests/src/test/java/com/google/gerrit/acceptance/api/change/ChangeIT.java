@@ -7306,6 +7306,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|setApiUser
+argument_list|(
+name|admin
+argument_list|)
+expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
@@ -7376,10 +7381,14 @@ expr_stmt|;
 name|createChange
 argument_list|()
 expr_stmt|;
-name|setApiUserAnonymous
+name|createDraftChange
 argument_list|()
 expr_stmt|;
-comment|// Identified user may async get stars from DB.
+name|setApiUser
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
 name|AcceptanceTestRequestScope
 operator|.
 name|Context
