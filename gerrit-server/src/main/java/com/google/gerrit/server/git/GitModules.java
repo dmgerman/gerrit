@@ -636,6 +636,13 @@ operator|.
 name|emptySet
 argument_list|()
 expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"The .gitmodules file doesn't exist in "
+operator|+
+name|branch
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|BlobBasedConfig
