@@ -756,6 +756,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -866,6 +886,22 @@ name|BatchUpdate
 implements|implements
 name|AutoCloseable
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|BatchUpdate
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|interface|Factory
 specifier|public
 interface|interface
@@ -3072,7 +3108,6 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Execute NoteDb updates after committing ReviewDb updates.
 if|if
 condition|(
 name|notesMigration
@@ -3081,6 +3116,8 @@ name|writeChanges
 argument_list|()
 condition|)
 block|{
+try|try
+block|{
 if|if
 condition|(
 name|updateManager
@@ -3088,6 +3125,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Execute NoteDb updates after committing ReviewDb updates.
 name|updateManager
 operator|.
 name|execute
@@ -3117,6 +3155,27 @@ argument_list|)
 operator|.
 name|delete
 argument_list|()
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+comment|// Ignore all errors trying to update NoteDb at this point. We've
+comment|// already written the NoteDbChangeState to ReviewDb, which means
+comment|// if the state is out of date it will be rebuilt the next time it
+comment|// is needed.
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Ignoring NoteDb update error after ReviewDb write"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}

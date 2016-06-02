@@ -1311,6 +1311,13 @@ name|void
 name|configure
 parameter_list|()
 block|{
+name|Config
+name|cfg
+init|=
+operator|new
+name|Config
+argument_list|()
+decl_stmt|;
 name|install
 argument_list|(
 operator|new
@@ -1323,7 +1330,9 @@ argument_list|(
 name|NoteDbModule
 operator|.
 name|forTest
-argument_list|()
+argument_list|(
+name|cfg
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|bind
@@ -1443,9 +1452,7 @@ argument_list|)
 operator|.
 name|toInstance
 argument_list|(
-operator|new
-name|Config
-argument_list|()
+name|cfg
 argument_list|)
 expr_stmt|;
 name|bind
