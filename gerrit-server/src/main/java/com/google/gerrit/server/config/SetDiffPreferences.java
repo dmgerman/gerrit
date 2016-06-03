@@ -492,7 +492,7 @@ annotation|@
 name|Override
 DECL|method|apply (ConfigResource configResource, DiffPreferencesInfo in)
 specifier|public
-name|Object
+name|DiffPreferencesInfo
 name|apply
 parameter_list|(
 name|ConfigResource
