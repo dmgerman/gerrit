@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2015 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.api.projects
+DECL|package|com.google.gerrit.server.project
 package|package
 name|com
 operator|.
@@ -60,11 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|api
-operator|.
-name|projects
+name|project
 package|;
 end_package
 
@@ -78,9 +76,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|api
 operator|.
-name|NotImplementedException
+name|projects
+operator|.
+name|TagInput
 import|;
 end_import
 
@@ -96,78 +96,74 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestApiException
+name|ResourceConflictException
 import|;
 end_import
 
-begin_interface
-DECL|interface|TagApi
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestModifyView
+import|;
+end_import
+
+begin_class
+DECL|class|PutTag
 specifier|public
-interface|interface
-name|TagApi
-block|{
-DECL|method|create (TagInput input)
-name|TagApi
-name|create
-parameter_list|(
-name|TagInput
-name|input
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|get ()
-name|TagInfo
-name|get
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
-DECL|class|NotImplemented
 class|class
-name|NotImplemented
+name|PutTag
 implements|implements
-name|TagApi
+name|RestModifyView
+argument_list|<
+name|TagResource
+argument_list|,
+name|TagInput
+argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|create (TagInput input)
+DECL|method|apply (TagResource resource, TagInput input)
 specifier|public
-name|TagApi
-name|create
+name|Object
+name|apply
 parameter_list|(
+name|TagResource
+name|resource
+parameter_list|,
 name|TagInput
 name|input
 parameter_list|)
 throws|throws
-name|RestApiException
+name|ResourceConflictException
 block|{
 throw|throw
 operator|new
-name|NotImplementedException
+name|ResourceConflictException
+argument_list|(
+literal|"Tag \""
+operator|+
+name|resource
+operator|.
+name|getTagInfo
 argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|get ()
-specifier|public
-name|TagInfo
-name|get
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
+operator|.
+name|ref
+operator|+
+literal|"\" already exists"
+argument_list|)
 throw|;
 block|}
 block|}
-block|}
-end_interface
+end_class
 
 end_unit
 

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2015 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -80,94 +80,35 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|NotImplementedException
+name|DefaultInput
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|RestApiException
-import|;
-end_import
-
-begin_interface
-DECL|interface|TagApi
+begin_class
+DECL|class|TagInput
 specifier|public
-interface|interface
-name|TagApi
-block|{
-DECL|method|create (TagInput input)
-name|TagApi
-name|create
-parameter_list|(
-name|TagInput
-name|input
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|get ()
-name|TagInfo
-name|get
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
-DECL|class|NotImplemented
 class|class
-name|NotImplemented
-implements|implements
-name|TagApi
-block|{
-annotation|@
-name|Override
-DECL|method|create (TagInput input)
-specifier|public
-name|TagApi
-name|create
-parameter_list|(
 name|TagInput
-name|input
-parameter_list|)
-throws|throws
-name|RestApiException
 block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
 annotation|@
-name|Override
-DECL|method|get ()
+name|DefaultInput
+DECL|field|ref
 specifier|public
-name|TagInfo
-name|get
-parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
+name|String
+name|ref
+decl_stmt|;
+DECL|field|revision
+specifier|public
+name|String
+name|revision
+decl_stmt|;
+DECL|field|message
+specifier|public
+name|String
+name|message
+decl_stmt|;
 block|}
-block|}
-block|}
-end_interface
+end_class
 
 end_unit
 
