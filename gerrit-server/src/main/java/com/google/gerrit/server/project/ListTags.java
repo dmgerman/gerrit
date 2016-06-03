@@ -220,7 +220,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|ChangeCache
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -236,7 +236,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|GitRepositoryManager
+name|SearchingChangeCacheImpl
 import|;
 end_import
 
@@ -269,6 +269,22 @@ operator|.
 name|git
 operator|.
 name|VisibleRefFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotes
 import|;
 end_import
 
@@ -526,10 +542,18 @@ specifier|final
 name|TagCache
 name|tagCache
 decl_stmt|;
+DECL|field|changeNotesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|changeNotesFactory
+decl_stmt|;
 DECL|field|changeCache
 specifier|private
 specifier|final
-name|ChangeCache
+name|SearchingChangeCacheImpl
 name|changeCache
 decl_stmt|;
 annotation|@
@@ -702,7 +726,7 @@ name|matchRegex
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListTags (GitRepositoryManager repoManager, Provider<ReviewDb> dbProvider, TagCache tagCache, ChangeCache changeCache)
+DECL|method|ListTags (GitRepositoryManager repoManager, Provider<ReviewDb> dbProvider, TagCache tagCache, ChangeNotes.Factory changeNotesFactory, SearchingChangeCacheImpl changeCache)
 specifier|public
 name|ListTags
 parameter_list|(
@@ -718,7 +742,12 @@ parameter_list|,
 name|TagCache
 name|tagCache
 parameter_list|,
-name|ChangeCache
+name|ChangeNotes
+operator|.
+name|Factory
+name|changeNotesFactory
+parameter_list|,
+name|SearchingChangeCacheImpl
 name|changeCache
 parameter_list|)
 block|{
@@ -739,6 +768,12 @@ operator|.
 name|tagCache
 operator|=
 name|tagCache
+expr_stmt|;
+name|this
+operator|.
+name|changeNotesFactory
+operator|=
+name|changeNotesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1138,6 +1173,8 @@ operator|new
 name|VisibleRefFilter
 argument_list|(
 name|tagCache
+argument_list|,
+name|changeNotesFactory
 argument_list|,
 name|changeCache
 argument_list|,
