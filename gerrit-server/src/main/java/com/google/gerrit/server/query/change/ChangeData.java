@@ -2794,6 +2794,11 @@ name|String
 argument_list|>
 name|stars
 decl_stmt|;
+DECL|field|reviewers
+specifier|private
+name|ReviewerSet
+name|reviewers
+decl_stmt|;
 DECL|field|author
 specifier|private
 name|PersonIdent
@@ -5354,7 +5359,15 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
-return|return
+if|if
+condition|(
+name|reviewers
+operator|==
+literal|null
+condition|)
+block|{
+name|reviewers
+operator|=
 name|approvalsUtil
 operator|.
 name|getReviewers
@@ -5368,7 +5381,27 @@ operator|.
 name|values
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|reviewers
 return|;
+block|}
+DECL|method|setReviewers (ReviewerSet reviewers)
+specifier|public
+name|void
+name|setReviewers
+parameter_list|(
+name|ReviewerSet
+name|reviewers
+parameter_list|)
+block|{
+name|this
+operator|.
+name|reviewers
+operator|=
+name|reviewers
+expr_stmt|;
 block|}
 DECL|method|publishedComments ()
 specifier|public

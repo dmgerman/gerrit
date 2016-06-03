@@ -1120,6 +1120,32 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+return|return
+name|isVisible
+argument_list|(
+name|db
+argument_list|,
+literal|null
+argument_list|)
+return|;
+block|}
+comment|/** Can this user see this change? */
+DECL|method|isVisible (ReviewDb db, @Nullable ChangeData cd)
+specifier|public
+name|boolean
+name|isVisible
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+annotation|@
+name|Nullable
+name|ChangeData
+name|cd
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
 if|if
 condition|(
 name|getChange
@@ -1139,7 +1165,7 @@ name|isDraftVisible
 argument_list|(
 name|db
 argument_list|,
-literal|null
+name|cd
 argument_list|)
 condition|)
 block|{
