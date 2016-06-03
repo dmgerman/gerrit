@@ -193,7 +193,7 @@ extends|extends
 name|VersionedMetaData
 block|{
 DECL|field|PREFERENCES
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
