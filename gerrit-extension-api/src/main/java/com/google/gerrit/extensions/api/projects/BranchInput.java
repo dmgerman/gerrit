@@ -97,6 +97,11 @@ specifier|public
 name|String
 name|revision
 decl_stmt|;
+DECL|field|ref
+specifier|public
+name|String
+name|ref
+decl_stmt|;
 block|}
 end_class
 
