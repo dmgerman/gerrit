@@ -2975,7 +2975,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|canReadCommit (ReviewDb db, RevWalk rw, RevCommit commit)
+DECL|method|canReadCommit (ReviewDb db, Repository repo, RevCommit commit)
 specifier|public
 name|boolean
 name|canReadCommit
@@ -2983,8 +2983,8 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|RevWalk
-name|rw
+name|Repository
+name|repo
 parameter_list|,
 name|RevCommit
 name|commit
@@ -2992,11 +2992,14 @@ parameter_list|)
 block|{
 try|try
 init|(
-name|Repository
-name|repo
+name|RevWalk
+name|rw
 init|=
-name|openRepository
-argument_list|()
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
 init|)
 block|{
 return|return
@@ -3183,26 +3186,6 @@ argument_list|,
 name|refs
 operator|.
 name|values
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|openRepository ()
-name|Repository
-name|openRepository
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-return|return
-name|repoManager
-operator|.
-name|openRepository
-argument_list|(
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
 argument_list|()
 argument_list|)
 return|;

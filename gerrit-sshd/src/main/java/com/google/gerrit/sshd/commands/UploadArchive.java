@@ -1312,7 +1312,7 @@ name|canReadCommit
 argument_list|(
 name|db
 argument_list|,
-name|rw
+name|repo
 argument_list|,
 name|commit
 argument_list|)
