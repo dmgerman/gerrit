@@ -1090,7 +1090,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|storeUrlAliases (VersionedAccountPreferences prefs, Map<String, String> urlAliases)
-specifier|private
+specifier|public
 specifier|static
 name|void
 name|storeUrlAliases

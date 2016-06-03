@@ -429,6 +429,26 @@ name|username
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|evictAll ()
+specifier|public
+specifier|synchronized
+name|void
+name|evictAll
+parameter_list|()
+block|{
+name|byId
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|byUsername
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|put (Account account)
 specifier|public
 specifier|synchronized

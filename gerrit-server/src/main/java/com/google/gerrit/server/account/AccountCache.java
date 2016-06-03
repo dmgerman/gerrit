@@ -150,6 +150,13 @@ name|String
 name|username
 parameter_list|)
 function_decl|;
+DECL|method|evictAll ()
+name|void
+name|evictAll
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 
