@@ -178,10 +178,10 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Test
-DECL|method|GetDiffPreferences ()
+DECL|method|getDiffPreferences ()
 specifier|public
 name|void
-name|GetDiffPreferences
+name|getDiffPreferences
 parameter_list|()
 throws|throws
 name|Exception
@@ -205,10 +205,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|SetDiffPreferences ()
+DECL|method|setDiffPreferences ()
 specifier|public
 name|void
-name|SetDiffPreferences
+name|setDiffPreferences
 parameter_list|()
 throws|throws
 name|Exception
