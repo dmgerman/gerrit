@@ -337,7 +337,9 @@ name|BadRequestException
 throws|,
 name|ResourceConflictException
 throws|,
-name|Exception
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 return|return
 name|readFromGit

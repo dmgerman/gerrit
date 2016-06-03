@@ -504,7 +504,9 @@ parameter_list|)
 throws|throws
 name|BadRequestException
 throws|,
-name|Exception
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 if|if
 condition|(
