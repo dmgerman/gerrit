@@ -1306,7 +1306,7 @@ name|orm
 operator|.
 name|getRepo
 argument_list|(
-name|project
+name|p
 argument_list|)
 decl_stmt|;
 name|ObjectId
@@ -1318,7 +1318,7 @@ name|repo
 operator|.
 name|resolve
 argument_list|(
-name|branch
+name|targetBranch
 operator|.
 name|get
 argument_list|()
@@ -1335,7 +1335,7 @@ name|logDebug
 argument_list|(
 literal|"The branch "
 operator|+
-name|branch
+name|targetBranch
 operator|+
 literal|" doesn't exist."
 argument_list|)
