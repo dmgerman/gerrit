@@ -427,8 +427,8 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-comment|// Must be a Provider due to dependency cycle between ChangeRebuilder and
-comment|// Args via ChangeNotes.Factory.
+comment|// Providers required to avoid dependency cycles.
+comment|// ChangeRebuilder -> ChangeNotes.Factory -> Args
 DECL|field|rebuilder
 specifier|final
 name|Provider
@@ -437,9 +437,18 @@ name|ChangeRebuilder
 argument_list|>
 name|rebuilder
 decl_stmt|;
+comment|// ChangeNoteCache -> Args
+DECL|field|cache
+specifier|final
+name|Provider
+argument_list|<
+name|ChangeNotesCache
+argument_list|>
+name|cache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args ( GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, NoteDbMetrics metrics, Provider<ReviewDb> db, Provider<ChangeRebuilder> rebuilder)
+DECL|method|Args ( GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, NoteDbMetrics metrics, Provider<ReviewDb> db, Provider<ChangeRebuilder> rebuilder, Provider<ChangeNotesCache> cache)
 name|Args
 parameter_list|(
 name|GitRepositoryManager
@@ -468,6 +477,12 @@ argument_list|<
 name|ChangeRebuilder
 argument_list|>
 name|rebuilder
+parameter_list|,
+name|Provider
+argument_list|<
+name|ChangeNotesCache
+argument_list|>
+name|cache
 parameter_list|)
 block|{
 name|this
@@ -511,6 +526,12 @@ operator|.
 name|rebuilder
 operator|=
 name|rebuilder
+expr_stmt|;
+name|this
+operator|.
+name|cache
+operator|=
+name|cache
 expr_stmt|;
 block|}
 block|}

@@ -100,6 +100,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|notedb
@@ -1064,7 +1080,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-set: 1\n"
+literal|"Patch-set: 2\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -1081,7 +1097,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-set: 1\n"
+literal|"Patch-set: 2\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -1098,7 +1114,7 @@ literal|"Update patch set 1\n"
 operator|+
 literal|"Uploaded patch set 1.\n"
 operator|+
-literal|"Patch-set: 1\n"
+literal|"Patch-set: 2\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -1193,7 +1209,7 @@ literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-set: 1\n"
+literal|"Patch-set: 2\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -1206,29 +1222,13 @@ operator|+
 literal|"Groups: a,b,c\n"
 argument_list|)
 expr_stmt|;
-comment|// No patch set commit parsed on which we can set groups.
 name|assertParseFails
 argument_list|(
 literal|"Update change\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Branch: refs/heads/master\n"
-operator|+
-literal|"Subject: Change subject\n"
-operator|+
-literal|"Groups: a,b,c\n"
-argument_list|)
-expr_stmt|;
-name|assertParseFails
-argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
+literal|"Patch-set: 2\n"
 operator|+
 literal|"Branch: refs/heads/master\n"
 operator|+
@@ -1488,6 +1488,23 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Change
+name|change
+init|=
+name|newChange
+argument_list|()
+decl_stmt|;
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|change
+argument_list|)
+operator|.
+name|load
+argument_list|()
+decl_stmt|;
 try|try
 init|(
 name|ObjectInserter
@@ -1509,6 +1526,16 @@ operator|new
 name|CommitBuilder
 argument_list|()
 decl_stmt|;
+name|cb
+operator|.
+name|setParentId
+argument_list|(
+name|notes
+operator|.
+name|getRevision
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|cb
 operator|.
 name|setAuthor
@@ -1698,6 +1725,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|walk
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|ChangeNotesParser

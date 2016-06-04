@@ -2818,9 +2818,9 @@ name|readChanges
 argument_list|()
 condition|)
 block|{
-comment|// If reading from changes is enabled, then the old ChangeNotes already
-comment|// parsed the revision notes. We can reuse them as long as the ref hasn't
-comment|// advanced.
+comment|// If reading from changes is enabled, then the old ChangeNotes may have
+comment|// already parsed the revision notes. We can reuse them as long as the ref
+comment|// hasn't advanced.
 name|ChangeNotes
 name|notes
 init|=
@@ -2830,6 +2830,12 @@ decl_stmt|;
 if|if
 condition|(
 name|notes
+operator|!=
+literal|null
+operator|&&
+name|notes
+operator|.
+name|revisionNoteMap
 operator|!=
 literal|null
 condition|)
@@ -2864,13 +2870,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|checkNotNull
-argument_list|(
-name|getNotes
-argument_list|()
+name|notes
 operator|.
 name|revisionNoteMap
-argument_list|)
 return|;
 block|}
 block|}
