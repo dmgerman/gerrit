@@ -1171,13 +1171,13 @@ name|Collection
 argument_list|<
 name|SubmoduleSubscription
 argument_list|>
-DECL|method|superProjectSubscriptionsForSubmoduleBranch ( Branch.NameKey branch, MergeOpRepoManager orm)
+DECL|method|superProjectSubscriptionsForSubmoduleBranch ( Branch.NameKey srcBranch, MergeOpRepoManager orm)
 name|superProjectSubscriptionsForSubmoduleBranch
 parameter_list|(
 name|Branch
 operator|.
 name|NameKey
-name|branch
+name|srcBranch
 parameter_list|,
 name|MergeOpRepoManager
 name|orm
@@ -1189,7 +1189,7 @@ name|logDebug
 argument_list|(
 literal|"Calculating possible superprojects for "
 operator|+
-name|branch
+name|srcBranch
 argument_list|)
 expr_stmt|;
 name|Collection
@@ -1206,9 +1206,9 @@ decl_stmt|;
 name|Project
 operator|.
 name|NameKey
-name|project
+name|srcProject
 init|=
-name|branch
+name|srcBranch
 operator|.
 name|getParentKey
 argument_list|()
@@ -1220,7 +1220,7 @@ name|projectCache
 operator|.
 name|get
 argument_list|(
-name|project
+name|srcProject
 argument_list|)
 operator|.
 name|getConfig
@@ -1240,7 +1240,7 @@ argument_list|)
 operator|.
 name|getSubscribeSections
 argument_list|(
-name|branch
+name|srcBranch
 argument_list|)
 control|)
 block|{
@@ -1261,7 +1261,7 @@ name|branches
 init|=
 name|getDestinationBranches
 argument_list|(
-name|branch
+name|srcBranch
 argument_list|,
 name|s
 argument_list|,
@@ -1281,7 +1281,7 @@ block|{
 name|Project
 operator|.
 name|NameKey
-name|p
+name|targetProject
 init|=
 name|targetBranch
 operator|.
@@ -1294,7 +1294,7 @@ name|orm
 operator|.
 name|openRepo
 argument_list|(
-name|p
+name|targetProject
 argument_list|,
 literal|false
 argument_list|)
@@ -1306,7 +1306,7 @@ name|orm
 operator|.
 name|getRepo
 argument_list|(
-name|p
+name|targetProject
 argument_list|)
 decl_stmt|;
 name|ObjectId
@@ -1353,7 +1353,7 @@ name|logDebug
 argument_list|(
 literal|"The project "
 operator|+
-name|p
+name|targetProject
 operator|+
 literal|" doesn't exist"
 argument_list|)
@@ -1383,7 +1383,7 @@ name|m
 operator|.
 name|subscribedTo
 argument_list|(
-name|branch
+name|srcBranch
 argument_list|)
 control|)
 block|{
@@ -1434,7 +1434,7 @@ name|logDebug
 argument_list|(
 literal|"Calculated superprojects for "
 operator|+
-name|branch
+name|srcBranch
 operator|+
 literal|" are "
 operator|+
