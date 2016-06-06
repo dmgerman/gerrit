@@ -416,6 +416,8 @@ parameter_list|(
 name|IOException
 decl||
 name|RestApiException
+decl||
+name|OrmException
 name|e
 parameter_list|)
 block|{
