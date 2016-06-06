@@ -774,8 +774,8 @@ comment|/**    * Subset of Change columns that can be represented in NoteDb.    
 annotation|@
 name|AutoValue
 DECL|class|ChangeColumns
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|ChangeColumns
 block|{

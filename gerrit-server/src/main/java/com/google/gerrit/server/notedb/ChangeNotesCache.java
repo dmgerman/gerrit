@@ -401,8 +401,8 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|Key
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Key
 block|{
@@ -432,8 +432,8 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|Value
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Value
 block|{
