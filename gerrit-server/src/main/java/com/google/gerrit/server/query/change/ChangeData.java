@@ -5403,6 +5403,16 @@ operator|=
 name|reviewers
 expr_stmt|;
 block|}
+DECL|method|getReviewers ()
+specifier|public
+name|ReviewerSet
+name|getReviewers
+parameter_list|()
+block|{
+return|return
+name|reviewers
+return|;
+block|}
 DECL|method|publishedComments ()
 specifier|public
 name|Collection

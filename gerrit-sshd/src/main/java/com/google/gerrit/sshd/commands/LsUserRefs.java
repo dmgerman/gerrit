@@ -222,7 +222,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|ChangeCache
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -238,7 +238,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|GitRepositoryManager
+name|SearchingChangeCacheImpl
 import|;
 end_import
 
@@ -271,6 +271,22 @@ operator|.
 name|git
 operator|.
 name|VisibleRefFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotes
 import|;
 end_import
 
@@ -480,9 +496,18 @@ name|tagCache
 decl_stmt|;
 annotation|@
 name|Inject
+DECL|field|changeNotesFactory
+specifier|private
+name|ChangeNotes
+operator|.
+name|Factory
+name|changeNotesFactory
+decl_stmt|;
+annotation|@
+name|Inject
 DECL|field|changeCache
 specifier|private
-name|ChangeCache
+name|SearchingChangeCacheImpl
 name|changeCache
 decl_stmt|;
 annotation|@
@@ -687,6 +712,8 @@ operator|new
 name|VisibleRefFilter
 argument_list|(
 name|tagCache
+argument_list|,
+name|changeNotesFactory
 argument_list|,
 name|changeCache
 argument_list|,

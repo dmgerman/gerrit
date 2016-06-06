@@ -438,7 +438,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|ChangeCache
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -454,7 +454,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|GitRepositoryManager
+name|SearchingChangeCacheImpl
 import|;
 end_import
 
@@ -1192,6 +1192,14 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|changeNotesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|changeNotesFactory
+decl_stmt|;
 DECL|field|changeControlFactory
 specifier|private
 specifier|final
@@ -1226,7 +1234,7 @@ decl_stmt|;
 DECL|field|changeCache
 specifier|private
 specifier|final
-name|ChangeCache
+name|SearchingChangeCacheImpl
 name|changeCache
 decl_stmt|;
 DECL|field|allSections
@@ -1267,7 +1275,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeControl.Factory changeControlFactory, TagCache tagCache, ChangeCache changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeNotes.Factory changeNotesFactory, ChangeControl.Factory changeControlFactory, TagCache tagCache, SearchingChangeCacheImpl changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -1301,6 +1309,11 @@ parameter_list|,
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
+name|ChangeNotes
+operator|.
+name|Factory
+name|changeNotesFactory
+parameter_list|,
 name|ChangeControl
 operator|.
 name|Factory
@@ -1309,7 +1322,7 @@ parameter_list|,
 name|TagCache
 name|tagCache
 parameter_list|,
-name|ChangeCache
+name|SearchingChangeCacheImpl
 name|changeCache
 parameter_list|,
 annotation|@
@@ -1335,6 +1348,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|changeNotesFactory
+operator|=
+name|changeNotesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -3070,6 +3089,8 @@ operator|new
 name|VisibleRefFilter
 argument_list|(
 name|tagCache
+argument_list|,
+name|changeNotesFactory
 argument_list|,
 name|changeCache
 argument_list|,
