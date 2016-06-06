@@ -3872,6 +3872,18 @@ operator|!
 name|upToDate
 condition|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Rechecked change {} after a rebuild error, but it was not up to"
+operator|+
+literal|" date; rethrowing exception"
+argument_list|,
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
 throw|throw
 name|e
 throw|;
