@@ -1993,14 +1993,6 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 operator|.
-name|named
-argument_list|(
-name|message
-argument_list|(
-name|refUpdate
-argument_list|)
-argument_list|)
-operator|.
 name|contains
 argument_list|(
 name|expectedMessage

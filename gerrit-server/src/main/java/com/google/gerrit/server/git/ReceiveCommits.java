@@ -5908,8 +5908,10 @@ argument_list|()
 argument_list|,
 name|ins
 argument_list|)
+operator|.
+name|updateChangesInParallel
+argument_list|()
 expr_stmt|;
-comment|// TODO(dborowitz): Support parallel operations in BatchUpdate.
 for|for
 control|(
 name|ReplaceRequest
@@ -15021,8 +15023,10 @@ argument_list|()
 argument_list|,
 name|ins
 argument_list|)
+operator|.
+name|updateChangesInParallel
+argument_list|()
 expr_stmt|;
-comment|// TODO(dborowitz): Change updates in parallel.
 comment|// TODO(dborowitz): Teach BatchUpdate to ignore missing changes.
 name|RevCommit
 name|newTip
