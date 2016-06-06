@@ -1341,7 +1341,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Delete change edit.    *    * @param edit change edit to delete    * @throws IOException    */
+comment|/**    * Delete change edit.    *    * @param edit change edit to delete    * @throws IOException    * @throws OrmException    */
 DECL|method|delete (ChangeEdit edit)
 specifier|public
 name|void
@@ -1352,6 +1352,8 @@ name|edit
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|OrmException
 block|{
 name|Change
 name|change

@@ -2601,6 +2601,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|OrmException
 name|e
 parameter_list|)
 block|{

@@ -396,6 +396,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -974,7 +988,7 @@ name|getTimeZone
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Create new change edit.    *    * @param change to create change edit for    * @param ps patch set to create change edit on    * @return result    * @throws AuthException    * @throws IOException    * @throws ResourceConflictException When change edit already    * exists for the change    */
+comment|/**    * Create new change edit.    *    * @param change to create change edit for    * @param ps patch set to create change edit on    * @return result    * @throws AuthException    * @throws IOException    * @throws ResourceConflictException When change edit already    * exists for the change    * @throws OrmException    */
 DECL|method|createEdit (Change change, PatchSet ps)
 specifier|public
 name|RefUpdate
@@ -994,6 +1008,8 @@ throws|,
 name|IOException
 throws|,
 name|ResourceConflictException
+throws|,
+name|OrmException
 block|{
 if|if
 condition|(
