@@ -416,6 +416,7 @@ begin_class
 annotation|@
 name|AutoValue
 DECL|class|ChangeNotesState
+specifier|public
 specifier|abstract
 class|class
 name|ChangeNotesState

@@ -338,6 +338,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|ChangeNotesCache
+specifier|public
 class|class
 name|ChangeNotesCache
 block|{
@@ -352,6 +353,7 @@ init|=
 literal|"change_notes"
 decl_stmt|;
 DECL|method|module ()
+specifier|public
 specifier|static
 name|Module
 name|module
@@ -401,6 +403,7 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|Key
+specifier|public
 specifier|abstract
 specifier|static
 class|class
