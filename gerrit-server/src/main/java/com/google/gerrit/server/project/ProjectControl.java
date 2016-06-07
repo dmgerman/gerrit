@@ -1232,6 +1232,8 @@ name|TagCache
 name|tagCache
 decl_stmt|;
 DECL|field|changeCache
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|SearchingChangeCacheImpl
@@ -1275,7 +1277,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeNotes.Factory changeNotesFactory, ChangeControl.Factory changeControlFactory, TagCache tagCache, SearchingChangeCacheImpl changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeNotes.Factory changeNotesFactory, ChangeControl.Factory changeControlFactory, TagCache tagCache, @Nullable SearchingChangeCacheImpl changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -1322,6 +1324,8 @@ parameter_list|,
 name|TagCache
 name|tagCache
 parameter_list|,
+annotation|@
+name|Nullable
 name|SearchingChangeCacheImpl
 name|changeCache
 parameter_list|,

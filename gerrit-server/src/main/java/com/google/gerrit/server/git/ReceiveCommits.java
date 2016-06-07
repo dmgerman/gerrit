@@ -3449,7 +3449,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schemaFactory, ChangeNotes.Factory notesFactory, AccountResolver accountResolver, CmdLineParser.Factory optionParserFactory, MergedSender.Factory mergedSenderFactory, GitReferenceUpdated gitRefUpdated, PatchSetInfoFactory patchSetInfoFactory, ChangeHooks hooks, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ProjectCache projectCache, GitRepositoryManager repoManager, TagCache tagCache, AccountCache accountCache, SearchingChangeCacheImpl changeCache, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, @SendEmailExecutor ExecutorService sendEmailExecutor, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, Provider<SubmoduleOp> subOpProvider, Provider<Submit> submitProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory)
+DECL|method|ReceiveCommits (ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schemaFactory, ChangeNotes.Factory notesFactory, AccountResolver accountResolver, CmdLineParser.Factory optionParserFactory, MergedSender.Factory mergedSenderFactory, GitReferenceUpdated gitRefUpdated, PatchSetInfoFactory patchSetInfoFactory, ChangeHooks hooks, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ProjectCache projectCache, GitRepositoryManager repoManager, TagCache tagCache, AccountCache accountCache, @Nullable SearchingChangeCacheImpl changeCache, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, @SendEmailExecutor ExecutorService sendEmailExecutor, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, Provider<SubmoduleOp> subOpProvider, Provider<Submit> submitProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory)
 name|ReceiveCommits
 parameter_list|(
 name|ReviewDb
@@ -3515,6 +3515,8 @@ parameter_list|,
 name|AccountCache
 name|accountCache
 parameter_list|,
+annotation|@
+name|Nullable
 name|SearchingChangeCacheImpl
 name|changeCache
 parameter_list|,

@@ -104,6 +104,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|Capable
@@ -1544,6 +1558,8 @@ name|TagCache
 name|tagCache
 decl_stmt|;
 DECL|field|changeCache
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|SearchingChangeCacheImpl
@@ -1596,7 +1612,7 @@ name|threadContext
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Upload ( Provider<ReviewDb> dbProvider, Provider<CurrentUser> userProvider, TagCache tagCache, SearchingChangeCacheImpl changeCache, ProjectControl.GenericFactory projectControlFactory, ChangeNotes.Factory changeNotesFactory, TransferConfig transferConfig, DynamicSet<PreUploadHook> preUploadHooks, UploadValidators.Factory uploadValidatorsFactory, ThreadLocalRequestContext threadContext)
+DECL|method|Upload ( Provider<ReviewDb> dbProvider, Provider<CurrentUser> userProvider, TagCache tagCache, @Nullable SearchingChangeCacheImpl changeCache, ProjectControl.GenericFactory projectControlFactory, ChangeNotes.Factory changeNotesFactory, TransferConfig transferConfig, DynamicSet<PreUploadHook> preUploadHooks, UploadValidators.Factory uploadValidatorsFactory, ThreadLocalRequestContext threadContext)
 name|Upload
 parameter_list|(
 name|Provider
@@ -1614,6 +1630,8 @@ parameter_list|,
 name|TagCache
 name|tagCache
 parameter_list|,
+annotation|@
+name|Nullable
 name|SearchingChangeCacheImpl
 name|changeCache
 parameter_list|,

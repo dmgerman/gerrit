@@ -102,6 +102,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|Capable
@@ -1643,6 +1657,8 @@ name|Factory
 name|changeNotesFactory
 decl_stmt|;
 DECL|field|changeCache
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|SearchingChangeCacheImpl
@@ -1658,7 +1674,7 @@ name|uploadValidatorsFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UploadFilter (Provider<ReviewDb> db, TagCache tagCache, ChangeNotes.Factory changeNotesFactory, SearchingChangeCacheImpl changeCache, UploadValidators.Factory uploadValidatorsFactory)
+DECL|method|UploadFilter (Provider<ReviewDb> db, TagCache tagCache, ChangeNotes.Factory changeNotesFactory, @Nullable SearchingChangeCacheImpl changeCache, UploadValidators.Factory uploadValidatorsFactory)
 name|UploadFilter
 parameter_list|(
 name|Provider
@@ -1675,6 +1691,8 @@ operator|.
 name|Factory
 name|changeNotesFactory
 parameter_list|,
+annotation|@
+name|Nullable
 name|SearchingChangeCacheImpl
 name|changeCache
 parameter_list|,

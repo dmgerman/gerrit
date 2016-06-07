@@ -88,6 +88,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -551,6 +565,8 @@ name|Factory
 name|changeNotesFactory
 decl_stmt|;
 DECL|field|changeCache
+annotation|@
+name|Nullable
 specifier|private
 specifier|final
 name|SearchingChangeCacheImpl
@@ -726,7 +742,7 @@ name|matchRegex
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListTags (GitRepositoryManager repoManager, Provider<ReviewDb> dbProvider, TagCache tagCache, ChangeNotes.Factory changeNotesFactory, SearchingChangeCacheImpl changeCache)
+DECL|method|ListTags (GitRepositoryManager repoManager, Provider<ReviewDb> dbProvider, TagCache tagCache, ChangeNotes.Factory changeNotesFactory, @Nullable SearchingChangeCacheImpl changeCache)
 specifier|public
 name|ListTags
 parameter_list|(
@@ -747,6 +763,8 @@ operator|.
 name|Factory
 name|changeNotesFactory
 parameter_list|,
+annotation|@
+name|Nullable
 name|SearchingChangeCacheImpl
 name|changeCache
 parameter_list|)
