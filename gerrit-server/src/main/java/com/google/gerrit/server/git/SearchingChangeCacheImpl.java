@@ -558,8 +558,8 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|CachedChange
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|CachedChange
 block|{
