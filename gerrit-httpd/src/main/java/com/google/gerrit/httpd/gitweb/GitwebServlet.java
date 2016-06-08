@@ -1822,7 +1822,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"    $q = qq{#q,project:$ENV{'GERRIT_PROJECT_NAME'}};\n"
+literal|"    $q = qq{#/q/project:$ENV{'GERRIT_PROJECT_NAME'}};\n"
 argument_list|)
 expr_stmt|;
 name|p
@@ -1836,7 +1836,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"    $q = qq{#q,project:$ENV{'GERRIT_PROJECT_NAME'}"
+literal|"    $q = qq{#/q/project:$ENV{'GERRIT_PROJECT_NAME'}"
 argument_list|)
 expr_stmt|;
 name|p
