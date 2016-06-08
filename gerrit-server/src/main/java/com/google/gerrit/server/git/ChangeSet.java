@@ -611,9 +611,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|Change
-operator|.
-name|Id
+name|ChangeData
 argument_list|>
 name|changesByProject
 parameter_list|()
@@ -626,9 +624,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|Change
-operator|.
-name|Id
+name|ChangeData
 argument_list|>
 name|ret
 init|=
@@ -661,9 +657,6 @@ name|getProject
 argument_list|()
 argument_list|,
 name|cd
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
