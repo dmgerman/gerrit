@@ -919,17 +919,6 @@ argument_list|(
 literal|"REPORT BUG"
 argument_list|)
 expr_stmt|;
-comment|// gitweb
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|gitweb
-argument_list|)
-operator|.
-name|isNull
-argument_list|()
-expr_stmt|;
 comment|// plugin
 name|assertThat
 argument_list|(
@@ -1441,17 +1430,6 @@ operator|.
 name|gerrit
 operator|.
 name|reportBugText
-argument_list|)
-operator|.
-name|isNull
-argument_list|()
-expr_stmt|;
-comment|// gitweb
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|gitweb
 argument_list|)
 operator|.
 name|isNull
