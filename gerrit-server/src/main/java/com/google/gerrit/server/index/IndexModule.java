@@ -612,6 +612,13 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|bind
+argument_list|(
+name|ChangeIndexCollection
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|listener
 argument_list|()
 operator|.
