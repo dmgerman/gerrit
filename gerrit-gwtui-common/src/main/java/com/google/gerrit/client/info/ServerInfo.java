@@ -210,15 +210,6 @@ name|gerrit
 parameter_list|()
 comment|/*-{ return this.gerrit; }-*/
 function_decl|;
-DECL|method|gitweb ()
-specifier|public
-specifier|final
-specifier|native
-name|GitwebInfo
-name|gitweb
-parameter_list|()
-comment|/*-{ return this.gitweb; }-*/
-function_decl|;
 DECL|method|plugin ()
 specifier|public
 specifier|final

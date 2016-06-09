@@ -118,13 +118,6 @@ name|pathSeparator
 init|=
 literal|'/'
 decl_stmt|;
-DECL|field|linkDrafts
-specifier|private
-name|boolean
-name|linkDrafts
-init|=
-literal|true
-decl_stmt|;
 DECL|field|urlEncode
 specifier|private
 name|boolean
@@ -342,34 +335,6 @@ operator|.
 name|pathSeparator
 operator|=
 name|separator
-expr_stmt|;
-block|}
-comment|/** @return whether to generate links to draft patch sets. */
-DECL|method|getLinkDrafts ()
-specifier|public
-name|boolean
-name|getLinkDrafts
-parameter_list|()
-block|{
-return|return
-name|linkDrafts
-return|;
-block|}
-comment|/**    * Set whether to generate links to draft patch sets.    *    * @param linkDrafts new value.    */
-DECL|method|setLinkDrafts (boolean linkDrafts)
-specifier|public
-name|void
-name|setLinkDrafts
-parameter_list|(
-name|boolean
-name|linkDrafts
-parameter_list|)
-block|{
-name|this
-operator|.
-name|linkDrafts
-operator|=
-name|linkDrafts
 expr_stmt|;
 block|}
 comment|/** @return whether to URL encode path segments. */
