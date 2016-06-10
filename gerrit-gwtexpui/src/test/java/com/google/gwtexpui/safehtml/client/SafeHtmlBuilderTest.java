@@ -397,6 +397,14 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|b
+operator|.
+name|asString
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
 literal|"ab"
 argument_list|)
 expr_stmt|;
