@@ -1062,6 +1062,15 @@ name|CLICK_FAILURE_TOOLTIP
 init|=
 literal|"Clicking the button would fail"
 decl_stmt|;
+DECL|field|CHANGE_UNMERGEABLE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|CHANGE_UNMERGEABLE
+init|=
+literal|"Problems with integrating this change"
+decl_stmt|;
 DECL|field|CHANGES_NOT_MERGEABLE
 specifier|private
 specifier|static
@@ -1069,7 +1078,7 @@ specifier|final
 name|String
 name|CHANGES_NOT_MERGEABLE
 init|=
-literal|"See the \"Submitted Together\" tab for problems, specially see: "
+literal|"Problems with change(s): "
 decl_stmt|;
 DECL|class|Output
 specifier|public
@@ -1916,12 +1925,15 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * @param cs set of changes to be submitted at once    * @param user the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
-DECL|method|problemsForSubmittingChangeset (ChangeSet cs, CurrentUser user)
+comment|/**    * @param cd the change the user is currently looking at    * @param cs set of changes to be submitted at once    * @param user the user who is checking to submit    * @return a reason why any of the changes is not submittable or null    */
+DECL|method|problemsForSubmittingChangeset (ChangeData cd, ChangeSet cs, CurrentUser user)
 specifier|private
 name|String
 name|problemsForSubmittingChangeset
 parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|,
 name|ChangeSet
 name|cs
 parameter_list|,
@@ -2033,6 +2045,41 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+for|for
+control|(
+name|ChangeData
+name|c
+range|:
+name|unmergeable
+control|)
+block|{
+if|if
+condition|(
+name|c
+operator|.
+name|change
+argument_list|()
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|cd
+operator|.
+name|change
+argument_list|()
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+name|CHANGE_UNMERGEABLE
+return|;
+block|}
+block|}
 return|return
 name|CHANGES_NOT_MERGEABLE
 operator|+
@@ -2348,35 +2395,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-name|Boolean
-name|enabled
-decl_stmt|;
-try|try
-block|{
-name|enabled
-operator|=
-name|cd
-operator|.
-name|isMergeable
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|OrmRuntimeException
-argument_list|(
-literal|"Could not determine mergeability"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 name|ChangeSet
 name|cs
 decl_stmt|;
@@ -2474,6 +2492,8 @@ name|submitProblems
 init|=
 name|problemsForSubmittingChangeset
 argument_list|(
+name|cd
+argument_list|,
 name|cs
 argument_list|,
 name|resource
@@ -2482,6 +2502,43 @@ name|getUser
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Boolean
+name|enabled
+decl_stmt|;
+try|try
+block|{
+comment|// Recheck mergeability rather than using value stored in the index,
+comment|// which may be stale.
+comment|// TODO(dborowitz): This is ugly; consider providing a way to not read
+comment|// stored fields from the index in the first place.
+comment|// cd.setMergeable(null);
+comment|// That was done in unmergeableChanges which was called by
+comment|// problemsForSubmittingChangeset, so now it is safe to read from
+comment|// the cache, as it yields the same result.
+name|enabled
+operator|=
+name|cd
+operator|.
+name|isMergeable
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|OrmRuntimeException
+argument_list|(
+literal|"Could not determine mergeability"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|submitProblems

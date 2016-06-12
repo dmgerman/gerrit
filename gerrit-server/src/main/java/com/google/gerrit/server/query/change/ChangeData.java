@@ -5822,10 +5822,13 @@ operator|.
 name|Id
 name|id
 init|=
+name|checkNotNull
+argument_list|(
 name|change
 operator|.
 name|getId
 argument_list|()
+argument_list|)
 decl_stmt|;
 try|try
 init|(
@@ -5864,6 +5867,10 @@ control|)
 block|{
 if|if
 condition|(
+name|id
+operator|.
+name|equals
+argument_list|(
 name|Change
 operator|.
 name|Id
@@ -5872,10 +5879,6 @@ name|fromEditRefPart
 argument_list|(
 name|ref
 argument_list|)
-operator|.
-name|equals
-argument_list|(
-name|id
 argument_list|)
 condition|)
 block|{
