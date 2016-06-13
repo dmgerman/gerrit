@@ -1101,8 +1101,6 @@ operator|.
 name|class
 argument_list|,
 literal|"Failing after ref updates"
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 comment|// Bad: ref advanced but change wasn't updated.
@@ -1288,8 +1286,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Skip checking the merge result; in the fixup case, the newRev in
-comment|// ChangeMergedEvent won't match the current branch tip.
 name|submit
 argument_list|(
 name|change2
@@ -1304,8 +1300,6 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 comment|// Change status and patch set entities were updated, and branch tip stayed
