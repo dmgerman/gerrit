@@ -2236,13 +2236,6 @@ argument_list|(
 name|md
 argument_list|)
 decl_stmt|;
-name|config
-operator|.
-name|load
-argument_list|(
-name|md
-argument_list|)
-expr_stmt|;
 name|Project
 name|newProject
 init|=

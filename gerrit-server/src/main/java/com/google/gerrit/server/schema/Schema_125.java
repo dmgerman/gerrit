@@ -641,13 +641,6 @@ argument_list|)
 decl_stmt|;
 name|config
 operator|.
-name|load
-argument_list|(
-name|md
-argument_list|)
-expr_stmt|;
-name|config
-operator|.
 name|getAccessSection
 argument_list|(
 name|RefNames
@@ -956,13 +949,6 @@ argument_list|(
 name|md
 argument_list|)
 decl_stmt|;
-name|parentConfig
-operator|.
-name|load
-argument_list|(
-name|md
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|LabelType
