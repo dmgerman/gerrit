@@ -229,6 +229,15 @@ name|SETTINGS_HTTP_PASSWORD
 init|=
 literal|"/settings/http-password"
 decl_stmt|;
+DECL|field|SETTINGS_OAUTH_TOKEN
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_OAUTH_TOKEN
+init|=
+literal|"/settings/oauth-token"
+decl_stmt|;
 DECL|field|SETTINGS_WEBIDENT
 specifier|public
 specifier|static

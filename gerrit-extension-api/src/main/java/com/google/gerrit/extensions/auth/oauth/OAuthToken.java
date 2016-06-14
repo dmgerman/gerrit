@@ -124,6 +124,13 @@ specifier|final
 name|long
 name|expiresAt
 decl_stmt|;
+comment|/**    * The identifier of the OAuth provider that issued this token    * in the form<tt>"plugin-name:provider-name"</tt>, or {@code null}.    */
+DECL|field|providerId
+specifier|private
+specifier|final
+name|String
+name|providerId
+decl_stmt|;
 DECL|method|OAuthToken (String token, String secret, String raw)
 specifier|public
 name|OAuthToken
@@ -149,10 +156,12 @@ argument_list|,
 name|Long
 operator|.
 name|MAX_VALUE
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OAuthToken (String token, String secret, String raw, long expiresAt)
+DECL|method|OAuthToken (String token, String secret, String raw, long expiresAt, String providerId)
 specifier|public
 name|OAuthToken
 parameter_list|(
@@ -167,6 +176,9 @@ name|raw
 parameter_list|,
 name|long
 name|expiresAt
+parameter_list|,
+name|String
+name|providerId
 parameter_list|)
 block|{
 name|this
@@ -192,6 +204,12 @@ operator|.
 name|expiresAt
 operator|=
 name|expiresAt
+expr_stmt|;
+name|this
+operator|.
+name|providerId
+operator|=
+name|providerId
 expr_stmt|;
 block|}
 DECL|method|getToken ()
@@ -247,6 +265,16 @@ name|currentTimeMillis
 argument_list|()
 operator|>
 name|expiresAt
+return|;
+block|}
+DECL|method|getProviderId ()
+specifier|public
+name|String
+name|getProviderId
+parameter_list|()
+block|{
+return|return
+name|providerId
 return|;
 block|}
 block|}

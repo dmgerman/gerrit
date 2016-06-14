@@ -275,6 +275,11 @@ name|String
 name|tabMyGroups
 parameter_list|()
 function_decl|;
+DECL|method|tabOAuthToken ()
+name|String
+name|tabOAuthToken
+parameter_list|()
+function_decl|;
 DECL|method|tabPreferences ()
 name|String
 name|tabPreferences
@@ -378,6 +383,31 @@ function_decl|;
 DECL|method|invalidUserEmail ()
 name|String
 name|invalidUserEmail
+parameter_list|()
+function_decl|;
+DECL|method|labelOAuthToken ()
+name|String
+name|labelOAuthToken
+parameter_list|()
+function_decl|;
+DECL|method|labelOAuthExpires ()
+name|String
+name|labelOAuthExpires
+parameter_list|()
+function_decl|;
+DECL|method|labelOAuthNetRCEntry ()
+name|String
+name|labelOAuthNetRCEntry
+parameter_list|()
+function_decl|;
+DECL|method|labelOAuthGitCookie ()
+name|String
+name|labelOAuthGitCookie
+parameter_list|()
+function_decl|;
+DECL|method|labelOAuthExpired ()
+name|String
+name|labelOAuthExpired
 parameter_list|()
 function_decl|;
 DECL|method|sshKeyInvalid ()

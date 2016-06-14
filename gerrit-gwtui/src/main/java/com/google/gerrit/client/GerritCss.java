@@ -528,6 +528,46 @@ name|String
 name|negscore
 parameter_list|()
 function_decl|;
+DECL|method|oauthExpires ()
+name|String
+name|oauthExpires
+parameter_list|()
+function_decl|;
+DECL|method|oauthInfoBlock ()
+name|String
+name|oauthInfoBlock
+parameter_list|()
+function_decl|;
+DECL|method|oauthPanel ()
+name|String
+name|oauthPanel
+parameter_list|()
+function_decl|;
+DECL|method|oauthPanelCookieEntry ()
+name|String
+name|oauthPanelCookieEntry
+parameter_list|()
+function_decl|;
+DECL|method|oauthPanelCookieHeading ()
+name|String
+name|oauthPanelCookieHeading
+parameter_list|()
+function_decl|;
+DECL|method|oauthPanelNetRCEntry ()
+name|String
+name|oauthPanelNetRCEntry
+parameter_list|()
+function_decl|;
+DECL|method|oauthPanelNetRCHeading ()
+name|String
+name|oauthPanelNetRCHeading
+parameter_list|()
+function_decl|;
+DECL|method|oauthToken ()
+name|String
+name|oauthToken
+parameter_list|()
+function_decl|;
 DECL|method|pagingLink ()
 name|String
 name|pagingLink
