@@ -595,6 +595,11 @@ operator|.
 name|getRevWalk
 argument_list|()
 decl_stmt|;
+name|rw
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 for|for

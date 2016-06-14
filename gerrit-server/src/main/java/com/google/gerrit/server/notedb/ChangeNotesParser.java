@@ -1471,6 +1471,11 @@ comment|// in the block containing most commits. Later reads are not guaranteed 
 comment|// avoid I/O, but often should.
 name|walk
 operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+name|walk
+operator|.
 name|markStart
 argument_list|(
 name|walk
