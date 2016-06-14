@@ -12946,7 +12946,7 @@ name|reject
 argument_list|(
 name|inputCommand
 argument_list|,
-literal|"cannot replace "
+literal|"cannot add patch set to "
 operator|+
 name|ontoChange
 operator|+
