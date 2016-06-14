@@ -352,6 +352,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|RestApiException
@@ -1246,6 +1262,15 @@ operator|.
 name|Factory
 name|changeUpdateFactory
 decl_stmt|;
+DECL|field|accountPatchReviewStore
+specifier|private
+specifier|final
+name|DynamicItem
+argument_list|<
+name|AccountPatchReviewStore
+argument_list|>
+name|accountPatchReviewStore
+decl_stmt|;
 DECL|field|fix
 specifier|private
 name|FixInput
@@ -1301,7 +1326,7 @@ name|problems
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConsistencyChecker (Provider<ReviewDb> db, GitRepositoryManager repoManager, NotesMigration notesMigration, Provider<CurrentUser> user, @GerritPersonIdent Provider<PersonIdent> serverIdent, ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, BatchUpdate.Factory updateFactory, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, ChangeUpdate.Factory changeUpdateFactory)
+DECL|method|ConsistencyChecker (Provider<ReviewDb> db, GitRepositoryManager repoManager, NotesMigration notesMigration, Provider<CurrentUser> user, @GerritPersonIdent Provider<PersonIdent> serverIdent, ProjectControl.GenericFactory projectControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetInserter.Factory patchSetInserterFactory, BatchUpdate.Factory updateFactory, ChangeIndexer indexer, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, ChangeUpdate.Factory changeUpdateFactory, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore)
 name|ConsistencyChecker
 parameter_list|(
 name|Provider
@@ -1365,6 +1390,12 @@ name|ChangeUpdate
 operator|.
 name|Factory
 name|changeUpdateFactory
+parameter_list|,
+name|DynamicItem
+argument_list|<
+name|AccountPatchReviewStore
+argument_list|>
+name|accountPatchReviewStore
 parameter_list|)
 block|{
 name|this
@@ -1444,6 +1475,12 @@ operator|.
 name|changeUpdateFactory
 operator|=
 name|changeUpdateFactory
+expr_stmt|;
+name|this
+operator|.
+name|accountPatchReviewStore
+operator|=
+name|accountPatchReviewStore
 expr_stmt|;
 name|reset
 argument_list|()
@@ -4074,22 +4111,14 @@ block|}
 comment|// Delete dangling primary key references. Don't delete ChangeMessages,
 comment|// which don't use patch sets as a primary key, and may provide useful
 comment|// historical information.
-name|db
+name|accountPatchReviewStore
 operator|.
-name|accountPatchReviews
+name|get
 argument_list|()
 operator|.
-name|delete
-argument_list|(
-name|db
-operator|.
-name|accountPatchReviews
-argument_list|()
-operator|.
-name|byPatchSet
+name|clearReviewed
 argument_list|(
 name|psId
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|db
