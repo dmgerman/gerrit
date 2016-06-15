@@ -94,22 +94,6 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|client
-operator|.
-name|SubmittedTogetherOption
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|common
 operator|.
 name|ChangeInfo
@@ -361,19 +345,13 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|submittedTogether (EnumSet<SubmittedTogetherOption> o)
+DECL|method|submittedTogether ()
 name|List
 argument_list|<
 name|ChangeInfo
 argument_list|>
 name|submittedTogether
-parameter_list|(
-name|EnumSet
-argument_list|<
-name|SubmittedTogetherOption
-argument_list|>
-name|o
-parameter_list|)
+parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
@@ -1234,20 +1212,14 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|submittedTogether ( EnumSet<SubmittedTogetherOption> o)
+DECL|method|submittedTogether ()
 specifier|public
 name|List
 argument_list|<
 name|ChangeInfo
 argument_list|>
 name|submittedTogether
-parameter_list|(
-name|EnumSet
-argument_list|<
-name|SubmittedTogetherOption
-argument_list|>
-name|o
-parameter_list|)
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
