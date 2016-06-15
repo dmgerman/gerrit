@@ -589,6 +589,16 @@ name|user
 argument_list|)
 expr_stmt|;
 block|}
+name|h
+operator|.
+name|putBoolean
+argument_list|(
+name|cs
+operator|.
+name|furtherHiddenChanges
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

@@ -351,7 +351,14 @@ name|ChangeData
 argument_list|>
 name|changeData
 decl_stmt|;
-DECL|method|ChangeSet (Iterable<ChangeData> changes)
+comment|/**    * Whether additional changes are not included in changeData because they    * are not visible to current user.    */
+DECL|field|furtherHiddenChanges
+specifier|private
+specifier|final
+name|boolean
+name|furtherHiddenChanges
+decl_stmt|;
+DECL|method|ChangeSet (Iterable<ChangeData> changes, boolean furtherHiddenChanges)
 specifier|public
 name|ChangeSet
 parameter_list|(
@@ -360,6 +367,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|changes
+parameter_list|,
+name|boolean
+name|furtherHiddenChanges
 parameter_list|)
 block|{
 name|Map
@@ -422,6 +432,12 @@ argument_list|(
 name|cds
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|furtherHiddenChanges
+operator|=
+name|furtherHiddenChanges
+expr_stmt|;
 block|}
 DECL|method|ChangeSet (ChangeData change)
 specifier|public
@@ -439,6 +455,8 @@ name|of
 argument_list|(
 name|change
 argument_list|)
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -748,6 +766,16 @@ name|values
 argument_list|()
 return|;
 block|}
+DECL|method|furtherHiddenChanges ()
+specifier|public
+name|boolean
+name|furtherHiddenChanges
+parameter_list|()
+block|{
+return|return
+name|furtherHiddenChanges
+return|;
+block|}
 DECL|method|size ()
 specifier|public
 name|int
@@ -759,6 +787,14 @@ name|changeData
 operator|.
 name|size
 argument_list|()
+operator|+
+operator|(
+name|furtherHiddenChanges
+condition|?
+literal|1
+else|:
+literal|0
+operator|)
 return|;
 block|}
 annotation|@
@@ -778,6 +814,14 @@ argument_list|()
 operator|+
 name|ids
 argument_list|()
+operator|+
+operator|(
+name|furtherHiddenChanges
+condition|?
+literal|" and further hidden changes"
+else|:
+literal|""
+operator|)
 return|;
 block|}
 block|}

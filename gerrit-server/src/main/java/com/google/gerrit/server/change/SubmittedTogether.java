@@ -755,6 +755,8 @@ throws|throws
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|AuthException
 block|{
 name|ChangeSet
 name|cs
@@ -773,6 +775,22 @@ argument_list|,
 name|user
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|cs
+operator|.
+name|furtherHiddenChanges
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|AuthException
+argument_list|(
+literal|"change would be submitted with a change that you cannot see"
+argument_list|)
+throw|;
+block|}
 return|return
 name|cs
 operator|.
