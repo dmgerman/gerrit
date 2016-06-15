@@ -5254,9 +5254,9 @@ block|{
 return|return
 name|in
 operator|.
-name|change
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 operator|.
 name|get
@@ -5313,7 +5313,10 @@ name|canonicalWebUrl
 argument_list|,
 name|u
 operator|.
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 argument_list|,
 name|u
 operator|.
@@ -11978,7 +11981,10 @@ name|newCommitId
 argument_list|,
 name|r
 operator|.
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -12493,12 +12499,9 @@ name|getChangeId
 argument_list|()
 argument_list|)
 operator|.
-name|change
+name|notes
 operator|=
 name|notes
-operator|.
-name|getChange
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -12530,9 +12533,9 @@ specifier|final
 name|boolean
 name|checkMergedInto
 decl_stmt|;
-DECL|field|change
-name|Change
-name|change
+DECL|field|notes
+name|ChangeNotes
+name|notes
 decl_stmt|;
 DECL|field|changeCtl
 name|ChangeControl
@@ -12756,7 +12759,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|change
+name|notes
 operator|==
 literal|null
 condition|)
@@ -12778,7 +12781,10 @@ return|;
 block|}
 name|priorPatchSet
 operator|=
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -12867,9 +12873,7 @@ name|projectControl
 operator|.
 name|controlFor
 argument_list|(
-name|db
-argument_list|,
-name|change
+name|notes
 argument_list|)
 expr_stmt|;
 if|if
@@ -12921,7 +12925,10 @@ block|}
 elseif|else
 if|if
 condition|(
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|getStatus
 argument_list|()
@@ -13327,7 +13334,10 @@ parameter_list|()
 block|{
 name|psId
 operator|=
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -13505,9 +13515,9 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|change
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|psId
@@ -13544,7 +13554,10 @@ name|nextPatchSetId
 argument_list|(
 name|allRefs
 argument_list|,
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -13682,7 +13695,10 @@ name|requestScopePropagator
 argument_list|,
 name|projectControl
 argument_list|,
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|getDest
 argument_list|()
@@ -13713,9 +13729,9 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|change
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|replaceOp
@@ -13732,9 +13748,9 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|change
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 operator|new
@@ -15198,7 +15214,7 @@ name|Change
 operator|.
 name|Key
 argument_list|,
-name|Change
+name|ChangeNotes
 argument_list|>
 name|byKey
 init|=
@@ -15317,7 +15333,7 @@ name|branch
 argument_list|)
 expr_stmt|;
 block|}
-name|Change
+name|ChangeNotes
 name|onto
 init|=
 name|byKey
@@ -15350,7 +15366,7 @@ name|id
 init|=
 name|onto
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -15371,7 +15387,7 @@ argument_list|)
 decl_stmt|;
 name|req
 operator|.
-name|change
+name|notes
 operator|=
 name|onto
 expr_stmt|;
@@ -15503,7 +15519,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|openChangesByBranch (Branch.NameKey branch)
+DECL|method|openChangesByBranch ( Branch.NameKey branch)
 specifier|private
 name|Map
 argument_list|<
@@ -15511,7 +15527,7 @@ name|Change
 operator|.
 name|Key
 argument_list|,
-name|Change
+name|ChangeNotes
 argument_list|>
 name|openChangesByBranch
 parameter_list|(
@@ -15529,7 +15545,7 @@ name|Change
 operator|.
 name|Key
 argument_list|,
-name|Change
+name|ChangeNotes
 argument_list|>
 name|r
 init|=
@@ -15568,7 +15584,7 @@ argument_list|()
 argument_list|,
 name|cd
 operator|.
-name|change
+name|notes
 argument_list|()
 argument_list|)
 expr_stmt|;

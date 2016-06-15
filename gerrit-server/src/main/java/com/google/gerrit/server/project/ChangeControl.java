@@ -308,6 +308,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchSetUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -773,9 +787,15 @@ specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 decl_stmt|;
+DECL|field|patchSetUtil
+specifier|private
+specifier|final
+name|PatchSetUtil
+name|patchSetUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory (ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil)
+DECL|method|Factory (ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, PatchSetUtil patchSetUtil)
 name|Factory
 parameter_list|(
 name|ChangeData
@@ -790,6 +810,9 @@ name|notesFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+name|PatchSetUtil
+name|patchSetUtil
 parameter_list|)
 block|{
 name|this
@@ -809,6 +832,12 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
+expr_stmt|;
+name|this
+operator|.
+name|patchSetUtil
+operator|=
+name|patchSetUtil
 expr_stmt|;
 block|}
 DECL|method|create (RefControl refControl, ReviewDb db, Project.NameKey project, Change.Id changeId)
@@ -900,6 +929,8 @@ argument_list|,
 name|refControl
 argument_list|,
 name|notes
+argument_list|,
+name|patchSetUtil
 argument_list|)
 return|;
 block|}
@@ -930,7 +961,13 @@ specifier|final
 name|ChangeNotes
 name|notes
 decl_stmt|;
-DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, RefControl refControl, ChangeNotes notes)
+DECL|field|patchSetUtil
+specifier|private
+specifier|final
+name|PatchSetUtil
+name|patchSetUtil
+decl_stmt|;
+DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, RefControl refControl, ChangeNotes notes, PatchSetUtil patchSetUtil)
 name|ChangeControl
 parameter_list|(
 name|ChangeData
@@ -946,6 +983,9 @@ name|refControl
 parameter_list|,
 name|ChangeNotes
 name|notes
+parameter_list|,
+name|PatchSetUtil
+name|patchSetUtil
 parameter_list|)
 block|{
 name|this
@@ -971,6 +1011,12 @@ operator|.
 name|notes
 operator|=
 name|notes
+expr_stmt|;
+name|this
+operator|.
+name|patchSetUtil
+operator|=
+name|patchSetUtil
 expr_stmt|;
 block|}
 DECL|method|forUser (final CurrentUser who)
@@ -1015,6 +1061,8 @@ name|who
 argument_list|)
 argument_list|,
 name|notes
+argument_list|,
+name|patchSetUtil
 argument_list|)
 return|;
 block|}
@@ -1728,6 +1776,20 @@ operator|&&
 operator|!
 name|isPatchSetLocked
 argument_list|(
+name|db
+argument_list|)
+operator|&&
+name|isPatchVisible
+argument_list|(
+name|patchSetUtil
+operator|.
+name|current
+argument_list|(
+name|db
+argument_list|,
+name|notes
+argument_list|)
+argument_list|,
 name|db
 argument_list|)
 return|;
