@@ -3540,7 +3540,12 @@ operator|.
 name|getDb
 argument_list|()
 argument_list|,
-name|mergeResultRev
+name|args
+operator|.
+name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
 operator|.
 name|name
 argument_list|()

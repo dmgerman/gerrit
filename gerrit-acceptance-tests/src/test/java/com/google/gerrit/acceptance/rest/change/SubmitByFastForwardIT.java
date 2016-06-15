@@ -382,16 +382,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -528,10 +518,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-comment|//TODO(dpursehouse) this test fails because the change-merged event for
-comment|//the second change has the wrong newRev. See issue 4194.
 annotation|@
 name|Test
 DECL|method|submitTwoChangesWithFastForward ()
