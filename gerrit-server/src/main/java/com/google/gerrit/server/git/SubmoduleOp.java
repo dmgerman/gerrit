@@ -2296,6 +2296,17 @@ name|subOr
 operator|.
 name|rw
 operator|.
+name|resetRetain
+argument_list|(
+name|subOr
+operator|.
+name|canMergeFlag
+argument_list|)
+expr_stmt|;
+name|subOr
+operator|.
+name|rw
+operator|.
 name|markStart
 argument_list|(
 name|newCommit
