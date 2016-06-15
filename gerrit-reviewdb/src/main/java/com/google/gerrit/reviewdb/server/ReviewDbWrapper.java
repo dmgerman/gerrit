@@ -552,21 +552,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|accountPatchReviews ()
-specifier|public
-name|AccountPatchReviewAccess
-name|accountPatchReviews
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|accountPatchReviews
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|changes ()
 specifier|public
 name|ChangeAccess
