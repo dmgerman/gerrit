@@ -720,6 +720,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NoteDbUpdateManager
+operator|.
+name|Result
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchListCache
@@ -1386,7 +1404,7 @@ annotation|@
 name|Override
 DECL|method|rebuild (ReviewDb db, Change.Id changeId)
 specifier|public
-name|NoteDbChangeState
+name|Result
 name|rebuild
 parameter_list|(
 name|ReviewDb
@@ -1481,7 +1499,7 @@ return|;
 block|}
 DECL|method|execute (ReviewDb db, Change.Id changeId, NoteDbUpdateManager manager)
 specifier|private
-name|NoteDbChangeState
+name|Result
 name|execute
 parameter_list|(
 name|ReviewDb
@@ -1539,19 +1557,14 @@ operator|.
 name|getNoteDbState
 argument_list|()
 decl_stmt|;
-name|NoteDbChangeState
-name|newState
+name|Result
+name|r
 init|=
-name|NoteDbChangeState
-operator|.
-name|applyDelta
-argument_list|(
-name|change
-argument_list|,
 name|manager
 operator|.
-name|stage
-argument_list|()
+name|stageAndApplyDelta
+argument_list|(
+name|change
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1642,7 +1655,7 @@ block|{
 comment|// Drop this rebuild; another thread completed it.
 block|}
 return|return
-name|newState
+name|r
 return|;
 block|}
 DECL|class|AbortUpdateException
@@ -1677,7 +1690,7 @@ annotation|@
 name|Override
 DECL|method|rebuild (NoteDbUpdateManager manager, ChangeBundle bundle)
 specifier|public
-name|NoteDbChangeState
+name|Result
 name|rebuild
 parameter_list|(
 name|NoteDbUpdateManager
@@ -1715,16 +1728,11 @@ name|bundle
 argument_list|)
 expr_stmt|;
 return|return
-name|NoteDbChangeState
-operator|.
-name|applyDelta
-argument_list|(
-name|change
-argument_list|,
 name|manager
 operator|.
-name|stage
-argument_list|()
+name|stageAndApplyDelta
+argument_list|(
+name|change
 argument_list|)
 return|;
 block|}

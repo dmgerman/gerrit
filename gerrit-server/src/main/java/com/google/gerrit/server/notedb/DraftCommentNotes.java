@@ -951,8 +951,10 @@ name|IOException
 block|{
 try|try
 block|{
-name|NoteDbChangeState
-name|newState
+name|NoteDbUpdateManager
+operator|.
+name|Result
+name|r
 init|=
 name|args
 operator|.
@@ -976,7 +978,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|newState
+name|r
 operator|==
 literal|null
 condition|)
@@ -994,7 +996,10 @@ block|}
 name|ObjectId
 name|draftsId
 init|=
+name|r
+operator|.
 name|newState
+argument_list|()
 operator|.
 name|getDraftIds
 argument_list|()

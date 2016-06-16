@@ -170,6 +170,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NoteDbUpdateManager
+operator|.
+name|Result
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|NoSuchChangeException
@@ -293,7 +311,7 @@ specifier|public
 specifier|final
 name|ListenableFuture
 argument_list|<
-name|NoteDbChangeState
+name|Result
 argument_list|>
 name|rebuildAsync
 parameter_list|(
@@ -315,14 +333,14 @@ argument_list|(
 operator|new
 name|Callable
 argument_list|<
-name|NoteDbChangeState
+name|Result
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|NoteDbChangeState
+name|Result
 name|call
 parameter_list|()
 throws|throws
@@ -356,7 +374,7 @@ block|}
 DECL|method|rebuild (ReviewDb db, Change.Id changeId)
 specifier|public
 specifier|abstract
-name|NoteDbChangeState
+name|Result
 name|rebuild
 parameter_list|(
 name|ReviewDb
@@ -379,7 +397,7 @@ function_decl|;
 DECL|method|rebuild (NoteDbUpdateManager manager, ChangeBundle bundle)
 specifier|public
 specifier|abstract
-name|NoteDbChangeState
+name|Result
 name|rebuild
 parameter_list|(
 name|NoteDbUpdateManager

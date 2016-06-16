@@ -152,6 +152,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NoteDbUpdateManager
+operator|.
+name|Result
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|NoSuchChangeException
@@ -339,7 +357,7 @@ annotation|@
 name|Override
 DECL|method|rebuild (ReviewDb db, Change.Id changeId)
 specifier|public
-name|NoteDbChangeState
+name|Result
 name|rebuild
 parameter_list|(
 name|ReviewDb
@@ -359,7 +377,7 @@ name|OrmException
 throws|,
 name|ConfigInvalidException
 block|{
-name|NoteDbChangeState
+name|Result
 name|result
 init|=
 name|delegate
@@ -397,7 +415,7 @@ annotation|@
 name|Override
 DECL|method|rebuild (NoteDbUpdateManager manager, ChangeBundle bundle)
 specifier|public
-name|NoteDbChangeState
+name|Result
 name|rebuild
 parameter_list|(
 name|NoteDbUpdateManager
