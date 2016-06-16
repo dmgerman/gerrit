@@ -515,15 +515,6 @@ argument_list|,
 literal|"d"
 argument_list|)
 decl_stmt|;
-comment|// First change stays untouched.
-name|approve
-argument_list|(
-name|change
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// Change 2 is a fast-forward, no need to merge.
 name|submit
 argument_list|(
@@ -712,6 +703,7 @@ name|getCommitterIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// First change stays untouched.
 name|assertNew
 argument_list|(
 name|change
