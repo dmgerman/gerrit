@@ -911,6 +911,20 @@ argument_list|,
 literal|"third content"
 argument_list|)
 decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|change4
+init|=
+name|createChange
+argument_list|(
+literal|"Change 4"
+argument_list|,
+literal|"d.txt"
+argument_list|,
+literal|"fourth content"
+argument_list|)
+decl_stmt|;
 name|approve
 argument_list|(
 name|change2
@@ -919,9 +933,17 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|submit
+name|approve
 argument_list|(
 name|change3
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|submit
+argument_list|(
+name|change4
 operator|.
 name|getChangeId
 argument_list|()
@@ -950,6 +972,14 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertApproved
+argument_list|(
+name|change4
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|RevCommit
 name|headAfterSecondSubmit
 init|=
@@ -969,7 +999,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Change 3"
+literal|"Change 4"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -979,7 +1009,7 @@ argument_list|)
 operator|.
 name|isNotEqualTo
 argument_list|(
-name|change3
+name|change4
 operator|.
 name|getCommit
 argument_list|()
@@ -987,7 +1017,7 @@ argument_list|)
 expr_stmt|;
 name|assertCurrentRevision
 argument_list|(
-name|change3
+name|change4
 operator|.
 name|getChangeId
 argument_list|()
@@ -1020,7 +1050,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Change 2"
+literal|"Change 3"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1030,7 +1060,7 @@ argument_list|)
 operator|.
 name|isNotEqualTo
 argument_list|(
-name|change2
+name|change3
 operator|.
 name|getCommit
 argument_list|()
@@ -1038,7 +1068,7 @@ argument_list|)
 expr_stmt|;
 name|assertCurrentRevision
 argument_list|(
-name|change2
+name|change3
 operator|.
 name|getChangeId
 argument_list|()
@@ -1066,6 +1096,44 @@ argument_list|(
 name|grandparent
 argument_list|)
 operator|.
+name|isNotEqualTo
+argument_list|(
+name|change2
+operator|.
+name|getCommit
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertCurrentRevision
+argument_list|(
+name|change2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+literal|2
+argument_list|,
+name|grandparent
+argument_list|)
+expr_stmt|;
+name|RevCommit
+name|greatgrandparent
+init|=
+name|parse
+argument_list|(
+name|grandparent
+operator|.
+name|getParent
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|greatgrandparent
+argument_list|)
+operator|.
 name|isEqualTo
 argument_list|(
 name|change1
@@ -1083,7 +1151,7 @@ argument_list|()
 argument_list|,
 literal|1
 argument_list|,
-name|grandparent
+name|greatgrandparent
 argument_list|)
 expr_stmt|;
 name|assertRefUpdatedEvents
@@ -1120,6 +1188,16 @@ name|name
 argument_list|()
 argument_list|,
 name|change3
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|headAfterSecondSubmit
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|change4
 operator|.
 name|getChangeId
 argument_list|()

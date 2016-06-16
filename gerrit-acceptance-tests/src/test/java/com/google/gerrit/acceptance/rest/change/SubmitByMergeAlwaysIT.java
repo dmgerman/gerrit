@@ -419,7 +419,7 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Submit two changes at the same time
+comment|// Submit three changes at the same time
 name|PushOneCommit
 operator|.
 name|Result
@@ -448,6 +448,20 @@ argument_list|,
 literal|"d"
 argument_list|)
 decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|change4
+init|=
+name|createChange
+argument_list|(
+literal|"Change 4"
+argument_list|,
+literal|"e"
+argument_list|,
+literal|"e"
+argument_list|)
+decl_stmt|;
 name|approve
 argument_list|(
 name|change2
@@ -456,7 +470,7 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|submit
+name|approve
 argument_list|(
 name|change3
 operator|.
@@ -464,7 +478,15 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Submitting change 3 should result in change 2 also being submitted
+name|submit
+argument_list|(
+name|change4
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Submitting change 4 should result in changes 2 and 3 also being submitted
 name|assertMerged
 argument_list|(
 name|change2
@@ -473,8 +495,16 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertMerged
+argument_list|(
+name|change3
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// The remote head should now be a merge of the new head after
-comment|// the previous submit, and "Change 3".
+comment|// the previous submit, and "Change 4".
 name|RevCommit
 name|headAfterSecondSubmit
 init|=
@@ -501,7 +531,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change3
+name|change4
 operator|.
 name|getCommit
 argument_list|()
@@ -589,7 +619,6 @@ argument_list|,
 name|headAfterSecondSubmit
 argument_list|)
 expr_stmt|;
-comment|//TODO(dpursehouse) why are change-merged events in reverse order?
 name|assertChangeMergedEvents
 argument_list|(
 name|change
@@ -598,6 +627,16 @@ name|getChangeId
 argument_list|()
 argument_list|,
 name|headAfterFirstSubmit
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|change2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|headAfterSecondSubmit
 operator|.
 name|name
 argument_list|()
@@ -612,7 +651,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|change2
+name|change4
 operator|.
 name|getChangeId
 argument_list|()

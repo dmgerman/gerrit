@@ -510,9 +510,23 @@ name|createChange
 argument_list|(
 literal|"Change 4"
 argument_list|,
-literal|"d"
+literal|"e"
 argument_list|,
-literal|"d"
+literal|"e"
+argument_list|)
+decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|change5
+init|=
+name|createChange
+argument_list|(
+literal|"Change 5"
+argument_list|,
+literal|"f"
+argument_list|,
+literal|"f"
 argument_list|)
 decl_stmt|;
 comment|// Change 2 is a fast-forward, no need to merge.
@@ -601,7 +615,7 @@ name|getCommitterIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// We need to merge changes 3 and 4.
+comment|// We need to merge changes 3, 4 and 5.
 name|approve
 argument_list|(
 name|change3
@@ -610,9 +624,17 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|submit
+name|approve
 argument_list|(
 name|change4
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|submit
+argument_list|(
+name|change5
 operator|.
 name|getChangeId
 argument_list|()
@@ -644,7 +666,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change4
+name|change5
 operator|.
 name|getCommit
 argument_list|()
@@ -725,7 +747,6 @@ argument_list|,
 name|headAfterSecondSubmit
 argument_list|)
 expr_stmt|;
-comment|//TODO(dpursehouse) why are change-merged events in reverse order?
 name|assertChangeMergedEvents
 argument_list|(
 name|change2
@@ -734,6 +755,16 @@ name|getChangeId
 argument_list|()
 argument_list|,
 name|headAfterFirstSubmit
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|change3
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|headAfterSecondSubmit
 operator|.
 name|name
 argument_list|()
@@ -748,7 +779,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|change3
+name|change5
 operator|.
 name|getChangeId
 argument_list|()
