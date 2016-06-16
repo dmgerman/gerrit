@@ -1510,7 +1510,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"ChangeHook.doCommentAddedHook delivery failed"
+literal|"ChangeHook.doReviewerDeletedHook invocation failed"
 argument_list|,
 name|e
 argument_list|)
