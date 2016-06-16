@@ -692,7 +692,6 @@ argument_list|>
 name|getComments
 parameter_list|()
 block|{
-comment|// TODO(dborowitz): Defensive copy?
 return|return
 name|comments
 return|;
