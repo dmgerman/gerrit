@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -996,22 +1012,16 @@ name|project
 argument_list|)
 control|)
 block|{
-comment|// TODO(jrn): avoid this copy once ChangeData.changeControl
-comment|// becomes less fussy.
-name|cd
-operator|=
-name|changeDataFactory
-operator|.
-name|create
+name|checkState
 argument_list|(
-name|db
-argument_list|,
-name|project
-argument_list|,
 name|cd
 operator|.
-name|getId
+name|hasChangeControl
 argument_list|()
+argument_list|,
+literal|"completeChangeSet forgot to set changeControl for current user"
+operator|+
+literal|" at ChangeData creation time"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1020,9 +1030,7 @@ operator|!
 name|cd
 operator|.
 name|changeControl
-argument_list|(
-name|user
-argument_list|)
+argument_list|()
 operator|.
 name|isVisible
 argument_list|(
@@ -1309,6 +1317,13 @@ range|:
 name|destChanges
 control|)
 block|{
+name|chd
+operator|.
+name|changeControl
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
 name|ret
 operator|.
 name|add
@@ -1473,15 +1488,20 @@ name|topic
 argument_list|)
 control|)
 block|{
-if|if
-condition|(
-operator|!
 name|topicCd
 operator|.
 name|changeControl
 argument_list|(
 name|user
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|topicCd
+operator|.
+name|changeControl
+argument_list|()
 operator|.
 name|isVisible
 argument_list|(
