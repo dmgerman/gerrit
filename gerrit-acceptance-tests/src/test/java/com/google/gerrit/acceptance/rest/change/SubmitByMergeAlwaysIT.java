@@ -321,11 +321,11 @@ comment|// Submit a change so that the remote head advances
 name|PushOneCommit
 operator|.
 name|Result
-name|change2
+name|change
 init|=
 name|createChange
 argument_list|(
-literal|"Change 2"
+literal|"Change 1"
 argument_list|,
 literal|"b"
 argument_list|,
@@ -334,14 +334,14 @@ argument_list|)
 decl_stmt|;
 name|submit
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// The remote head should now be a merge of the previous head
-comment|// and "Change 2"
+comment|// and "Change 1"
 name|RevCommit
 name|headAfterFirstSubmit
 init|=
@@ -368,7 +368,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getCommit
 argument_list|()
@@ -423,11 +423,11 @@ comment|// Submit two changes at the same time
 name|PushOneCommit
 operator|.
 name|Result
-name|change3
+name|change2
 init|=
 name|createChange
 argument_list|(
-literal|"Change 3"
+literal|"Change 2"
 argument_list|,
 literal|"c"
 argument_list|,
@@ -437,11 +437,11 @@ decl_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
-name|change4
+name|change3
 init|=
 name|createChange
 argument_list|(
-literal|"Change 4"
+literal|"Change 3"
 argument_list|,
 literal|"d"
 argument_list|,
@@ -450,7 +450,7 @@ argument_list|)
 decl_stmt|;
 name|approve
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -458,23 +458,23 @@ argument_list|)
 expr_stmt|;
 name|submit
 argument_list|(
-name|change4
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Submitting change 4 should result in change 3 also being submitted
-name|assertMerged
-argument_list|(
 name|change3
 operator|.
 name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Submitting change 3 should result in change 2 also being submitted
+name|assertMerged
+argument_list|(
+name|change2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// The remote head should now be a merge of the new head after
-comment|// the previous submit, and "Change 4".
+comment|// the previous submit, and "Change 3".
 name|RevCommit
 name|headAfterSecondSubmit
 init|=
@@ -501,7 +501,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change4
+name|change3
 operator|.
 name|getCommit
 argument_list|()
@@ -592,7 +592,7 @@ expr_stmt|;
 comment|//TODO(dpursehouse) why are change-merged events in reverse order?
 name|assertChangeMergedEvents
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getChangeId
 argument_list|()
@@ -602,7 +602,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|change4
+name|change3
 operator|.
 name|getChangeId
 argument_list|()
@@ -612,7 +612,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()

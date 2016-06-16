@@ -1457,15 +1457,36 @@ expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
+name|change
+init|=
+name|createChange
+argument_list|(
+literal|"Change 1"
+argument_list|,
+literal|"b"
+argument_list|,
+literal|"b"
+argument_list|)
+decl_stmt|;
+name|testRepo
+operator|.
+name|reset
+argument_list|(
+name|initialHead
+argument_list|)
+expr_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
 name|change2
 init|=
 name|createChange
 argument_list|(
 literal|"Change 2"
 argument_list|,
-literal|"b"
+literal|"c"
 argument_list|,
-literal|"b"
+literal|"c"
 argument_list|)
 decl_stmt|;
 name|testRepo
@@ -1484,32 +1505,19 @@ name|createChange
 argument_list|(
 literal|"Change 3"
 argument_list|,
-literal|"c"
+literal|"d"
 argument_list|,
-literal|"c"
+literal|"d"
 argument_list|)
 decl_stmt|;
-name|testRepo
-operator|.
-name|reset
+name|approve
 argument_list|(
-name|initialHead
+name|change
+operator|.
+name|getChangeId
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|PushOneCommit
-operator|.
-name|Result
-name|change4
-init|=
-name|createChange
-argument_list|(
-literal|"Change 4"
-argument_list|,
-literal|"d"
-argument_list|,
-literal|"d"
-argument_list|)
-decl_stmt|;
 name|approve
 argument_list|(
 name|change2
@@ -1518,17 +1526,9 @@ name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|approve
-argument_list|(
-name|change3
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|submit
 argument_list|(
-name|change4
+name|change3
 operator|.
 name|getChangeId
 argument_list|()
@@ -1558,7 +1558,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change4
+name|change3
 operator|.
 name|getCommit
 argument_list|()
@@ -1590,7 +1590,7 @@ argument_list|)
 expr_stmt|;
 name|assertNew
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getChangeId
 argument_list|()
@@ -1598,7 +1598,7 @@ argument_list|)
 expr_stmt|;
 name|assertNew
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -1618,7 +1618,7 @@ argument_list|)
 expr_stmt|;
 name|assertChangeMergedEvents
 argument_list|(
-name|change4
+name|change3
 operator|.
 name|getChangeId
 argument_list|()
@@ -1661,11 +1661,11 @@ expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
-name|change2
+name|change
 init|=
 name|createChange
 argument_list|(
-literal|"Change 2"
+literal|"Change 1"
 argument_list|,
 literal|"b"
 argument_list|,
@@ -1675,11 +1675,11 @@ decl_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
-name|change3
+name|change2
 init|=
 name|createChange
 argument_list|(
-literal|"Change 3"
+literal|"Change 2"
 argument_list|,
 literal|"c"
 argument_list|,
@@ -1688,7 +1688,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getCommit
 argument_list|()
@@ -1701,16 +1701,16 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getCommit
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Submit succeeds; change3 is successfully cherry-picked onto head.
+comment|// Submit succeeds; change2 is successfully cherry-picked onto head.
 name|submit
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -1722,11 +1722,11 @@ init|=
 name|getRemoteHead
 argument_list|()
 decl_stmt|;
-comment|// Submit succeeds; change2 is successfully cherry-picked onto head
-comment|// (which was change3's cherry-pick).
+comment|// Submit succeeds; change is successfully cherry-picked onto head
+comment|// (which was change2's cherry-pick).
 name|submit
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getChangeId
 argument_list|()
@@ -1738,7 +1738,7 @@ init|=
 name|getRemoteHead
 argument_list|()
 decl_stmt|;
-comment|// change2 is the new tip.
+comment|// change is the new tip.
 name|List
 argument_list|<
 name|RevCommit
@@ -1763,7 +1763,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getCommit
 argument_list|()
@@ -1812,7 +1812,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getCommit
 argument_list|()
@@ -1880,7 +1880,7 @@ argument_list|)
 expr_stmt|;
 name|assertChangeMergedEvents
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -1890,7 +1890,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|change2
+name|change
 operator|.
 name|getChangeId
 argument_list|()
@@ -1928,11 +1928,11 @@ expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
-name|change2
+name|change
 init|=
 name|createChange
 argument_list|(
-literal|"Change 2"
+literal|"Change 1"
 argument_list|,
 literal|"b"
 argument_list|,
@@ -1942,11 +1942,11 @@ decl_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
-name|change3
+name|change2
 init|=
 name|createChange
 argument_list|(
-literal|"Change 3"
+literal|"Change 2"
 argument_list|,
 literal|"b"
 argument_list|,
@@ -1955,7 +1955,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getCommit
 argument_list|()
@@ -1968,17 +1968,17 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getCommit
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Submit fails; change3 contains the delta "b1" -> "b2", which cannot be
+comment|// Submit fails; change2 contains the delta "b1" -> "b2", which cannot be
 comment|// applied against tip.
 name|submitWithConflict
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -1987,7 +1987,7 @@ literal|"Failed to submit 1 change due to the following problems:\n"
 operator|+
 literal|"Change "
 operator|+
-name|change3
+name|change2
 operator|.
 name|getChange
 argument_list|()
@@ -2007,7 +2007,7 @@ name|info3
 init|=
 name|get
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -2061,7 +2061,7 @@ argument_list|)
 expr_stmt|;
 name|assertNoSubmitter
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -2102,15 +2102,29 @@ expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
+name|change
+init|=
+name|createChange
+argument_list|(
+literal|"Change 1"
+argument_list|,
+literal|"b"
+argument_list|,
+literal|"b"
+argument_list|)
+decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
 name|change2
 init|=
 name|createChange
 argument_list|(
 literal|"Change 2"
 argument_list|,
-literal|"b"
+literal|"c"
 argument_list|,
-literal|"b"
+literal|"c"
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -2122,30 +2136,16 @@ name|createChange
 argument_list|(
 literal|"Change 3"
 argument_list|,
-literal|"c"
-argument_list|,
-literal|"c"
-argument_list|)
-decl_stmt|;
-name|PushOneCommit
-operator|.
-name|Result
-name|change4
-init|=
-name|createChange
-argument_list|(
-literal|"Change 5"
-argument_list|,
 literal|"e"
 argument_list|,
 literal|"e"
 argument_list|)
 decl_stmt|;
-comment|// Out of the above, only submit 4. 2,3 are not related to 4
-comment|// by topic or ancestor (due to cherrypicking!)
+comment|// Out of the above, only submit change 3. Changes 1 and 2 are not
+comment|// related to change 3 by topic or ancestor (due to cherrypicking!)
 name|approve
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -2153,7 +2153,7 @@ argument_list|)
 expr_stmt|;
 name|submit
 argument_list|(
-name|change4
+name|change3
 operator|.
 name|getChangeId
 argument_list|()
@@ -2167,7 +2167,7 @@ argument_list|()
 decl_stmt|;
 name|assertNew
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getChangeId
 argument_list|()
@@ -2175,7 +2175,7 @@ argument_list|)
 expr_stmt|;
 name|assertNew
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -2190,7 +2190,7 @@ argument_list|)
 expr_stmt|;
 name|assertChangeMergedEvents
 argument_list|(
-name|change4
+name|change3
 operator|.
 name|getChangeId
 argument_list|()

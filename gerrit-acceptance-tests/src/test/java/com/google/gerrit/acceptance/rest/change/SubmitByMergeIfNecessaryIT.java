@@ -448,15 +448,36 @@ expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
+name|change
+init|=
+name|createChange
+argument_list|(
+literal|"Change 1"
+argument_list|,
+literal|"b"
+argument_list|,
+literal|"b"
+argument_list|)
+decl_stmt|;
+name|testRepo
+operator|.
+name|reset
+argument_list|(
+name|initialHead
+argument_list|)
+expr_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
 name|change2
 init|=
 name|createChange
 argument_list|(
 literal|"Change 2"
 argument_list|,
-literal|"b"
+literal|"c"
 argument_list|,
-literal|"b"
+literal|"c"
 argument_list|)
 decl_stmt|;
 name|testRepo
@@ -475,18 +496,11 @@ name|createChange
 argument_list|(
 literal|"Change 3"
 argument_list|,
-literal|"c"
+literal|"d"
 argument_list|,
-literal|"c"
+literal|"d"
 argument_list|)
 decl_stmt|;
-name|testRepo
-operator|.
-name|reset
-argument_list|(
-name|initialHead
-argument_list|)
-expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
@@ -501,33 +515,19 @@ argument_list|,
 literal|"d"
 argument_list|)
 decl_stmt|;
-name|PushOneCommit
-operator|.
-name|Result
-name|change5
-init|=
-name|createChange
-argument_list|(
-literal|"Change 5"
-argument_list|,
-literal|"d"
-argument_list|,
-literal|"d"
-argument_list|)
-decl_stmt|;
-comment|// Change 2 stays untouched.
+comment|// First change stays untouched.
 name|approve
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Change 3 is a fast-forward, no need to merge.
+comment|// Change 2 is a fast-forward, no need to merge.
 name|submit
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -554,7 +554,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getCommit
 argument_list|()
@@ -610,10 +610,10 @@ name|getCommitterIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// We need to merge changes 4 and 5.
+comment|// We need to merge changes 3 and 4.
 name|approve
 argument_list|(
-name|change4
+name|change3
 operator|.
 name|getChangeId
 argument_list|()
@@ -621,7 +621,7 @@ argument_list|)
 expr_stmt|;
 name|submit
 argument_list|(
-name|change5
+name|change4
 operator|.
 name|getChangeId
 argument_list|()
@@ -653,7 +653,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change5
+name|change4
 operator|.
 name|getCommit
 argument_list|()
@@ -677,7 +677,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getCommit
 argument_list|()
@@ -714,7 +714,7 @@ argument_list|)
 expr_stmt|;
 name|assertNew
 argument_list|(
-name|change2
+name|change
 operator|.
 name|getChangeId
 argument_list|()
@@ -736,7 +736,7 @@ expr_stmt|;
 comment|//TODO(dpursehouse) why are change-merged events in reverse order?
 name|assertChangeMergedEvents
 argument_list|(
-name|change3
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -746,7 +746,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|change5
+name|change4
 operator|.
 name|getChangeId
 argument_list|()
@@ -756,7 +756,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|change4
+name|change3
 operator|.
 name|getChangeId
 argument_list|()
@@ -2879,7 +2879,7 @@ argument_list|)
 expr_stmt|;
 comment|// Propose a change for master, but leave it open for master!
 name|PushOneCommit
-name|change2
+name|change
 init|=
 name|pushFactory
 operator|.
@@ -2906,7 +2906,7 @@ operator|.
 name|Result
 name|change2result
 init|=
-name|change2
+name|change
 operator|.
 name|to
 argument_list|(

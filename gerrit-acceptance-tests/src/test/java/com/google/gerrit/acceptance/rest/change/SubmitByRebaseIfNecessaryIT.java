@@ -2311,14 +2311,14 @@ expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
-name|change2nd
+name|change2
 init|=
 name|createChange
 argument_list|()
 decl_stmt|;
 name|approve
 argument_list|(
-name|change2nd
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -2329,7 +2329,7 @@ operator|.
 name|NameKey
 name|project
 init|=
-name|change2nd
+name|change2
 operator|.
 name|getChange
 argument_list|()
@@ -2359,7 +2359,7 @@ name|createBranchWithRevision
 argument_list|(
 name|branch
 argument_list|,
-name|change2nd
+name|change2
 operator|.
 name|getCommit
 argument_list|()
@@ -2375,7 +2375,7 @@ argument_list|()
 operator|.
 name|id
 argument_list|(
-name|change2nd
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -2389,7 +2389,7 @@ argument_list|()
 expr_stmt|;
 name|assertMerged
 argument_list|(
-name|change2nd
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
@@ -2428,7 +2428,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|change2nd
+name|change2
 operator|.
 name|getChangeId
 argument_list|()
