@@ -202,6 +202,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|transport
 operator|.
 name|PackParser
@@ -291,6 +305,17 @@ argument_list|,
 name|InsertedObject
 argument_list|>
 name|inserted
+init|=
+operator|new
+name|LinkedHashMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
+DECL|field|closeReader
+specifier|private
+specifier|final
+name|boolean
+name|closeReader
 decl_stmt|;
 DECL|method|InMemoryInserter (ObjectReader reader)
 name|InMemoryInserter
@@ -308,12 +333,30 @@ argument_list|(
 name|reader
 argument_list|)
 expr_stmt|;
-name|inserted
+name|closeReader
 operator|=
-operator|new
-name|LinkedHashMap
-argument_list|<>
+literal|false
+expr_stmt|;
+block|}
+DECL|method|InMemoryInserter (Repository repo)
+name|InMemoryInserter
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|)
+block|{
+name|this
+operator|.
+name|reader
+operator|=
+name|repo
+operator|.
+name|newObjectReader
 argument_list|()
+expr_stmt|;
+name|closeReader
+operator|=
+literal|true
 expr_stmt|;
 block|}
 annotation|@
@@ -419,7 +462,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|insert (InsertedObject obj)
-specifier|private
 name|ObjectId
 name|insert
 parameter_list|(
@@ -495,7 +537,17 @@ name|void
 name|close
 parameter_list|()
 block|{
-comment|// Do nothing; this class owns no open resources.
+if|if
+condition|(
+name|closeReader
+condition|)
+block|{
+name|reader
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|method|getInsertedObjects ()
 specifier|public
