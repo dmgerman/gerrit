@@ -1401,11 +1401,7 @@ specifier|static
 class|class
 name|Op
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
+comment|/**      * Override this method to update the repo.      *      * @param ctx context      */
 DECL|method|updateRepo (RepoContext ctx)
 specifier|public
 name|void
@@ -1417,12 +1413,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
-comment|/**      * Override this method to modify a change.      *      * @return whether anything was changed that might require a write to      * the metadata storage.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
+comment|/**      * Override this method to modify a change.      *      * @param ctx context      * @return whether anything was changed that might require a write to      * the metadata storage.      */
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
 name|boolean
@@ -1438,12 +1429,8 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * Override this method to perform operations after the update.      *      * @param ctx context      */
 comment|// TODO(dborowitz): Support async operations?
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 DECL|method|postUpdate (Context ctx)
 specifier|public
 name|void
