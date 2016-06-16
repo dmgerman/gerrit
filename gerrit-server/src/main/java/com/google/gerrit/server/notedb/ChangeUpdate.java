@@ -1697,12 +1697,6 @@ name|updateManager
 operator|.
 name|stage
 argument_list|()
-operator|.
-name|get
-argument_list|(
-name|getId
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|updateManager

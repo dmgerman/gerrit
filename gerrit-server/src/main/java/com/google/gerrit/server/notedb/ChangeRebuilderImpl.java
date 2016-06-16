@@ -1539,11 +1539,6 @@ name|manager
 operator|.
 name|stage
 argument_list|()
-operator|.
-name|get
-argument_list|(
-name|changeId
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|db
@@ -1636,14 +1631,6 @@ name|manager
 operator|.
 name|stage
 argument_list|()
-operator|.
-name|get
-argument_list|(
-name|change
-operator|.
-name|getId
-argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}
