@@ -902,9 +902,6 @@ argument_list|(
 name|initialHead
 argument_list|)
 expr_stmt|;
-name|RevCommit
-name|b
-init|=
 name|commitBuilder
 argument_list|()
 operator|.
@@ -922,7 +919,7 @@ argument_list|)
 operator|.
 name|create
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|pushHead
 argument_list|(
 name|testRepo
