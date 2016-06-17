@@ -286,7 +286,10 @@ name|mergeTip
 operator|.
 name|moveTipTo
 argument_list|(
+name|amendGitlink
+argument_list|(
 name|merged
+argument_list|)
 argument_list|,
 name|toMerge
 argument_list|)

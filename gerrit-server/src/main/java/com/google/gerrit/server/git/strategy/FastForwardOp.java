@@ -118,16 +118,6 @@ name|IntegrationException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|FastForwardOp
 class|class
@@ -158,7 +148,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|updateRepoImpl (RepoContext ctx)
-specifier|public
+specifier|protected
 name|void
 name|updateRepoImpl
 parameter_list|(
@@ -167,8 +157,6 @@ name|ctx
 parameter_list|)
 throws|throws
 name|IntegrationException
-throws|,
-name|IOException
 block|{
 name|args
 operator|.
@@ -176,7 +164,10 @@ name|mergeTip
 operator|.
 name|moveTipTo
 argument_list|(
+name|amendGitlink
+argument_list|(
 name|toMerge
+argument_list|)
 argument_list|,
 name|toMerge
 argument_list|)

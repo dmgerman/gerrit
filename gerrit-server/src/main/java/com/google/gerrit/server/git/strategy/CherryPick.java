@@ -619,21 +619,31 @@ parameter_list|(
 name|RepoContext
 name|ctx
 parameter_list|)
+throws|throws
+name|IntegrationException
 block|{
 comment|// The branch is unborn. Take fast-forward resolution to create the
 comment|// branch.
+name|CodeReviewCommit
+name|newCommit
+init|=
+name|amendGitlink
+argument_list|(
+name|toMerge
+argument_list|)
+decl_stmt|;
 name|args
 operator|.
 name|mergeTip
 operator|.
 name|moveTipTo
 argument_list|(
-name|toMerge
+name|newCommit
 argument_list|,
 name|toMerge
 argument_list|)
 expr_stmt|;
-name|toMerge
+name|newCommit
 operator|.
 name|setStatusCode
 argument_list|(
@@ -750,6 +760,8 @@ name|RepoContext
 name|ctx
 parameter_list|)
 throws|throws
+name|IntegrationException
+throws|,
 name|IOException
 block|{
 comment|// If there is only one parent, a cherry-pick can be done by taking the
@@ -890,6 +902,13 @@ return|return;
 block|}
 comment|// Initial copy doesn't have new patch set ID since change hasn't been
 comment|// updated yet.
+name|newCommit
+operator|=
+name|amendGitlink
+argument_list|(
+name|newCommit
+argument_list|)
+expr_stmt|;
 name|newCommit
 operator|.
 name|copyFrom
@@ -1217,7 +1236,10 @@ name|mergeTip
 operator|.
 name|moveTipTo
 argument_list|(
+name|amendGitlink
+argument_list|(
 name|toMerge
+argument_list|)
 argument_list|,
 name|toMerge
 argument_list|)
@@ -1278,6 +1300,13 @@ argument_list|,
 name|toMerge
 argument_list|)
 decl_stmt|;
+name|result
+operator|=
+name|amendGitlink
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
 name|mergeTip
 operator|.
 name|moveTipTo
