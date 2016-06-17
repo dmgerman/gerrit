@@ -583,7 +583,9 @@ name|BadRequestException
 throws|,
 name|ResourceConflictException
 throws|,
-name|Exception
+name|IOException
+throws|,
+name|OrmException
 block|{
 try|try
 block|{

@@ -101,18 +101,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -199,22 +187,6 @@ operator|.
 name|restapi
 operator|.
 name|AuthException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|RestApiException
 import|;
 end_import
 
@@ -945,8 +917,22 @@ name|isSubmitWholeTopicEnabled
 argument_list|()
 condition|)
 block|{
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|AuthException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"change would be submitted with a change that you cannot see"
+argument_list|)
+expr_stmt|;
 name|gApi
 operator|.
 name|changes
@@ -960,48 +946,6 @@ operator|.
 name|submittedTogether
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected AuthException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RestApiException
-name|e
-parameter_list|)
-block|{
-comment|// TODO(jrn): fix extension API not to wrap the RestApiException.
-name|assertThat
-argument_list|(
-name|e
-operator|.
-name|getCause
-argument_list|()
-argument_list|)
-operator|.
-name|isInstanceOf
-argument_list|(
-name|AuthException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|e
-operator|.
-name|getCause
-argument_list|()
-argument_list|)
-operator|.
-name|hasMessage
-argument_list|(
-literal|"change would be submitted with a change that you cannot see"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 else|else
 block|{
