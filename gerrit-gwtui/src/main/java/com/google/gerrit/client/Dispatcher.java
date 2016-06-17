@@ -380,22 +380,6 @@ name|common
 operator|.
 name|PageLinks
 operator|.
-name|SETTINGS_OAUTH_TOKEN
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|PageLinks
-operator|.
 name|SETTINGS_MYGROUPS
 import|;
 end_import
@@ -413,6 +397,22 @@ operator|.
 name|PageLinks
 operator|.
 name|SETTINGS_NEW_AGREEMENT
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|PageLinks
+operator|.
+name|SETTINGS_OAUTH_TOKEN
 import|;
 end_import
 
