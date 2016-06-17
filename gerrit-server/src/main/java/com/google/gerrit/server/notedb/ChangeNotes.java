@@ -133,6 +133,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbTable
+operator|.
+name|CHANGES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -435,6 +453,20 @@ operator|.
 name|data
 operator|.
 name|SubmitRecord
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Timer1
 import|;
 end_import
 
@@ -3721,6 +3753,25 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
+name|Timer1
+operator|.
+name|Context
+name|timer
+init|=
+name|args
+operator|.
+name|metrics
+operator|.
+name|autoRebuildLatency
+operator|.
+name|start
+argument_list|(
+name|CHANGES
+argument_list|)
+init|)
+block|{
 name|Change
 operator|.
 name|Id
@@ -3749,8 +3800,6 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|NoteDbUpdateManager
 name|manager
 init|=
@@ -3830,6 +3879,17 @@ comment|// ChangeBundle.
 comment|//
 comment|// Parse notes from the staged result so we can return something useful
 comment|// to the caller instead of throwing.
+name|args
+operator|.
+name|metrics
+operator|.
+name|autoRebuildFailureCount
+operator|.
+name|increment
+argument_list|(
+name|CHANGES
+argument_list|)
+expr_stmt|;
 name|rebuildResult
 operator|=
 name|checkNotNull
