@@ -1604,7 +1604,7 @@ class|class
 name|Listener
 block|{
 DECL|field|NONE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Listener
