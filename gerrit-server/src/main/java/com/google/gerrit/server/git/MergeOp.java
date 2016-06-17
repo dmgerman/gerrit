@@ -78,6 +78,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
 import|;
 end_import
@@ -427,6 +443,22 @@ operator|.
 name|client
 operator|.
 name|SubmitType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|AuthException
 import|;
 end_import
 
@@ -1176,6 +1208,17 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|cs
+operator|.
+name|furtherHiddenChanges
+argument_list|()
+argument_list|,
+literal|"CommitStatus must not be called with hidden changes"
+argument_list|)
+expr_stmt|;
 name|changes
 operator|=
 name|cs
@@ -2558,6 +2601,17 @@ name|ChangeSet
 name|cs
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|cs
+operator|.
+name|furtherHiddenChanges
+argument_list|()
+argument_list|,
+literal|"checkSubmitRulesAndState called for topic with hidden change"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ChangeData
@@ -2704,6 +2758,17 @@ name|ChangeSet
 name|cs
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|cs
+operator|.
+name|furtherHiddenChanges
+argument_list|()
+argument_list|,
+literal|"cannot bypass submit rules for topic with hidden change"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ChangeData
@@ -2988,6 +3053,29 @@ argument_list|,
 name|cs
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|cs
+operator|.
+name|furtherHiddenChanges
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|AuthException
+argument_list|(
+literal|"A change to be submitted with "
+operator|+
+name|change
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" is not visible"
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|commits
@@ -3255,6 +3343,17 @@ name|IntegrationException
 throws|,
 name|RestApiException
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|cs
+operator|.
+name|furtherHiddenChanges
+argument_list|()
+argument_list|,
+literal|"cannot integrate hidden changes into history"
+argument_list|)
+expr_stmt|;
 name|logDebug
 argument_list|(
 literal|"Beginning merge attempt on {}"
