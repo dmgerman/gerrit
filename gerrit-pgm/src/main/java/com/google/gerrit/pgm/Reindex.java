@@ -248,22 +248,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|ScanningChangeCacheImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|Index
@@ -916,18 +900,6 @@ operator|.
 name|add
 argument_list|(
 name|indexModule
-argument_list|)
-expr_stmt|;
-comment|// Scan changes from git instead of relying on the secondary index, as we
-comment|// will have just deleted the old (possibly corrupt) index.
-name|modules
-operator|.
-name|add
-argument_list|(
-name|ScanningChangeCacheImpl
-operator|.
-name|module
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|modules

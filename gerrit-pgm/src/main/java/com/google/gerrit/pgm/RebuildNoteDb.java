@@ -1670,14 +1670,6 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|install
-argument_list|(
-name|SearchingChangeCacheImpl
-operator|.
-name|module
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|DynamicSet
 operator|.
 name|bind
