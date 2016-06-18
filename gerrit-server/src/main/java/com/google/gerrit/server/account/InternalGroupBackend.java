@@ -242,6 +242,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -379,14 +393,19 @@ name|UUID
 name|uuid
 parameter_list|)
 block|{
+comment|// See AccountGroup.isInternalGroup
 return|return
-name|AccountGroup
+name|ObjectId
 operator|.
-name|isInternalGroup
+name|isId
 argument_list|(
 name|uuid
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
+comment|// [0-9a-f]{40};
 block|}
 annotation|@
 name|Override
