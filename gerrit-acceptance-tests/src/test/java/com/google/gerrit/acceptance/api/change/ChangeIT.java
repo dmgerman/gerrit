@@ -5175,6 +5175,17 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|eventRecorder
+operator|.
+name|assertReviewerDeletedEvents
+argument_list|(
+name|changeId
+argument_list|,
+name|user
+operator|.
+name|email
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test

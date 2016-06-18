@@ -230,6 +230,17 @@ argument_list|)
 expr_stmt|;
 name|register
 argument_list|(
+name|ReviewerDeletedEvent
+operator|.
+name|TYPE
+argument_list|,
+name|ReviewerDeletedEvent
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|register
+argument_list|(
 name|PatchSetCreatedEvent
 operator|.
 name|TYPE
