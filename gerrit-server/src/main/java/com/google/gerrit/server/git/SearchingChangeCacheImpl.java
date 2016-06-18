@@ -114,6 +114,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -245,6 +259,24 @@ operator|.
 name|cache
 operator|.
 name|CacheModule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|change
+operator|.
+name|ChangeField
 import|;
 end_import
 
@@ -628,7 +660,8 @@ operator|=
 name|changeDataFactory
 expr_stmt|;
 block|}
-DECL|method|getChangeData (ReviewDb db, Project.NameKey name)
+comment|/**    * Read changes for the project from the secondary index.    *<p>    * Returned changes only include the {@code Change} object (with id, branch)    * and the reviewers. Additional stored fields are not loaded from the index.    *    * @param db database handle to populate missing change data (probably    *        unused).    * @param project project to read.    * @return list of known changes; empty if no changes.    */
+DECL|method|getChangeData (ReviewDb db, Project.NameKey project)
 specifier|public
 name|List
 argument_list|<
@@ -642,7 +675,7 @@ parameter_list|,
 name|Project
 operator|.
 name|NameKey
-name|name
+name|project
 parameter_list|)
 block|{
 try|try
@@ -657,7 +690,7 @@ name|cache
 operator|.
 name|get
 argument_list|(
-name|name
+name|project
 argument_list|)
 decl_stmt|;
 name|List
@@ -738,7 +771,7 @@ name|warn
 argument_list|(
 literal|"Cannot fetch changes for "
 operator|+
-name|name
+name|project
 argument_list|,
 name|e
 argument_list|)
@@ -896,6 +929,28 @@ name|queryProvider
 operator|.
 name|get
 argument_list|()
+operator|.
+name|setRequestedFields
+argument_list|(
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|ChangeField
+operator|.
+name|CHANGE
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|ChangeField
+operator|.
+name|REVIEWER
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
 operator|.
 name|byProject
 argument_list|(
