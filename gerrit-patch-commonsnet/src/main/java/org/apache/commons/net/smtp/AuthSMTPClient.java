@@ -503,31 +503,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getReplyStrings ()
-specifier|public
-name|String
-index|[]
-name|getReplyStrings
-parameter_list|()
-block|{
-return|return
-name|_replyLines
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|_replyLines
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|login ()
 specifier|public
 name|boolean
