@@ -921,11 +921,11 @@ name|PrologMachineCopy
 name|rulesMachine
 decl_stmt|;
 comment|/** Last system time the configuration's revision was examined. */
-DECL|field|lastCheckTime
+DECL|field|lastCheckGeneration
 specifier|private
 specifier|volatile
 name|long
-name|lastCheckTime
+name|lastCheckGeneration
 decl_stmt|;
 comment|/** Local access sections, wrapped in SectionMatchers for faster evaluation. */
 DECL|field|localAccessSections
@@ -1266,6 +1266,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|initLastCheck (long generation)
+name|void
+name|initLastCheck
+parameter_list|(
+name|long
+name|generation
+parameter_list|)
+block|{
+name|lastCheckGeneration
+operator|=
+name|generation
+expr_stmt|;
+block|}
 DECL|method|needsRefresh (long generation)
 name|boolean
 name|needsRefresh
@@ -1288,12 +1301,12 @@ return|;
 block|}
 if|if
 condition|(
-name|lastCheckTime
+name|lastCheckGeneration
 operator|!=
 name|generation
 condition|)
 block|{
-name|lastCheckTime
+name|lastCheckGeneration
 operator|=
 name|generation
 expr_stmt|;
