@@ -442,6 +442,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -663,9 +679,15 @@ specifier|final
 name|QueryDocumentationExecutor
 name|docSearcher
 decl_stmt|;
+DECL|field|migration
+specifier|private
+specifier|final
+name|NotesMigration
+name|migration
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetServerInfo ( @erritServerConfig Config config, AuthConfig authConfig, Realm realm, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, DynamicSet<WebUiPlugin> webUiPlugins, GetArchive.AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, DynamicItem<AvatarProvider> avatar, @EnableSignedPush boolean enableSignedPush, QueryDocumentationExecutor docSearcher)
+DECL|method|GetServerInfo ( @erritServerConfig Config config, AuthConfig authConfig, Realm realm, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, DynamicSet<WebUiPlugin> webUiPlugins, GetArchive.AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, DynamicItem<AvatarProvider> avatar, @EnableSignedPush boolean enableSignedPush, QueryDocumentationExecutor docSearcher, NotesMigration migration)
 specifier|public
 name|GetServerInfo
 parameter_list|(
@@ -733,6 +755,9 @@ name|enableSignedPush
 parameter_list|,
 name|QueryDocumentationExecutor
 name|docSearcher
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|)
 block|{
 name|this
@@ -819,6 +844,12 @@ name|docSearcher
 operator|=
 name|docSearcher
 expr_stmt|;
+name|this
+operator|.
+name|migration
+operator|=
+name|migration
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -886,6 +917,15 @@ argument_list|,
 name|allProjectsName
 argument_list|,
 name|allUsersName
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
+name|noteDbEnabled
+operator|=
+name|isNoteDbEnabled
+argument_list|(
+name|config
 argument_list|)
 expr_stmt|;
 name|info
@@ -1877,6 +1917,22 @@ operator|+
 literal|'/'
 return|;
 block|}
+DECL|method|isNoteDbEnabled (Config cfg)
+specifier|private
+name|boolean
+name|isNoteDbEnabled
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|)
+block|{
+return|return
+name|migration
+operator|.
+name|readChanges
+argument_list|()
+return|;
+block|}
 DECL|method|getPluginInfo ()
 specifier|private
 name|PluginConfigInfo
@@ -2233,6 +2289,11 @@ DECL|field|gerrit
 specifier|public
 name|GerritInfo
 name|gerrit
+decl_stmt|;
+DECL|field|noteDbEnabled
+specifier|public
+name|Boolean
+name|noteDbEnabled
 decl_stmt|;
 DECL|field|plugin
 specifier|public
