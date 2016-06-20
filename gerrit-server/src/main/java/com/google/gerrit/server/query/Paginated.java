@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.query.change
+DECL|package|com.google.gerrit.server.query
 package|package
 name|com
 operator|.
@@ -63,8 +63,6 @@ operator|.
 name|server
 operator|.
 name|query
-operator|.
-name|change
 package|;
 end_package
 
@@ -117,6 +115,9 @@ DECL|interface|Paginated
 specifier|public
 interface|interface
 name|Paginated
+parameter_list|<
+name|T
+parameter_list|>
 block|{
 DECL|method|getOptions ()
 name|QueryOptions
@@ -126,7 +127,7 @@ function_decl|;
 DECL|method|restart (int start)
 name|ResultSet
 argument_list|<
-name|ChangeData
+name|T
 argument_list|>
 name|restart
 parameter_list|(
