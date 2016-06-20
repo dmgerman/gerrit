@@ -1294,6 +1294,8 @@ DECL|field|checkExpectedState
 specifier|private
 name|boolean
 name|checkExpectedState
+init|=
+literal|true
 decl_stmt|;
 annotation|@
 name|AssistedInject
@@ -2887,6 +2889,9 @@ argument_list|(
 name|changeRepo
 operator|.
 name|cmds
+operator|.
+name|getRepoRefCache
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2990,6 +2995,9 @@ argument_list|(
 name|allUsersRepo
 operator|.
 name|cmds
+operator|.
+name|getRepoRefCache
+argument_list|()
 argument_list|,
 name|accountId
 argument_list|)
