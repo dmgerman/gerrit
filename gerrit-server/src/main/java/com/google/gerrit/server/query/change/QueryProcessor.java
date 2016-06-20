@@ -996,9 +996,6 @@ argument_list|(
 name|limit
 argument_list|)
 expr_stmt|;
-comment|// Always bump limit by 1, even if this results in exceeding the permitted
-comment|// max for this user. The only way to see if there are more changes is to
-comment|// ask for one more result from the query.
 if|if
 condition|(
 name|limit
@@ -1047,6 +1044,9 @@ literal|"of results"
 argument_list|)
 throw|;
 block|}
+comment|// Always bump limit by 1, even if this results in exceeding the permitted
+comment|// max for this user. The only way to see if there are more changes is to
+comment|// ask for one more result from the query.
 name|QueryOptions
 name|opts
 init|=
