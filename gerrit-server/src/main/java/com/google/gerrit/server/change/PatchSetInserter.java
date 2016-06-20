@@ -540,22 +540,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|RefControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|ssh
 operator|.
 name|NoSshInfo
@@ -757,12 +741,12 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (RefControl refControl, PatchSet.Id psId, RevCommit commit)
+DECL|method|create (ChangeControl ctl, PatchSet.Id psId, RevCommit commit)
 name|PatchSetInserter
 name|create
 parameter_list|(
-name|RefControl
-name|refControl
+name|ChangeControl
+name|ctl
 parameter_list|,
 name|PatchSet
 operator|.
@@ -848,11 +832,14 @@ specifier|final
 name|RevCommit
 name|commit
 decl_stmt|;
-DECL|field|refControl
+comment|// Read prior to running the batch update, so must only be used during
+comment|// updateRepo; updateChange and later must use the control from the
+comment|// ChangeContext.
+DECL|field|origCtl
 specifier|private
 specifier|final
-name|RefControl
-name|refControl
+name|ChangeControl
+name|origCtl
 decl_stmt|;
 comment|// Fields exposed as setters.
 DECL|field|sshInfo
@@ -950,7 +937,7 @@ name|oldReviewers
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PatchSetInserter (ChangeHooks hooks, ReviewDb db, ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, PatchSetUtil psUtil, @Assisted RefControl refControl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
+DECL|method|PatchSetInserter (ChangeHooks hooks, ReviewDb db, ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, PatchSetUtil psUtil, @Assisted ChangeControl ctl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
 specifier|public
 name|PatchSetInserter
 parameter_list|(
@@ -987,8 +974,8 @@ name|psUtil
 parameter_list|,
 annotation|@
 name|Assisted
-name|RefControl
-name|refControl
+name|ChangeControl
+name|ctl
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1059,9 +1046,9 @@ name|psUtil
 expr_stmt|;
 name|this
 operator|.
-name|refControl
+name|origCtl
 operator|=
-name|refControl
+name|ctl
 expr_stmt|;
 name|this
 operator|.
@@ -1896,7 +1883,10 @@ name|commitValidatorsFactory
 operator|.
 name|create
 argument_list|(
-name|refControl
+name|origCtl
+operator|.
+name|getRefControl
+argument_list|()
 argument_list|,
 name|sshInfo
 argument_list|,
@@ -1953,7 +1943,7 @@ operator|+
 literal|"new"
 argument_list|)
 argument_list|,
-name|refControl
+name|origCtl
 operator|.
 name|getProjectControl
 argument_list|()
@@ -1961,7 +1951,10 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|,
-name|refControl
+name|origCtl
+operator|.
+name|getRefControl
+argument_list|()
 operator|.
 name|getRefName
 argument_list|()

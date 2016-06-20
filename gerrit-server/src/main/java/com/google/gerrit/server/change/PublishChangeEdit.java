@@ -332,7 +332,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|NoSuchProjectException
+name|NoSuchChangeException
 import|;
 end_import
 
@@ -569,7 +569,7 @@ name|Input
 name|in
 parameter_list|)
 throws|throws
-name|NoSuchProjectException
+name|NoSuchChangeException
 throws|,
 name|IOException
 throws|,
