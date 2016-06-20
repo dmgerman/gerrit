@@ -1538,6 +1538,8 @@ specifier|private
 name|AuthResult
 name|create
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|String
 name|fakeId

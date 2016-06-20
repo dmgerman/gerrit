@@ -412,6 +412,16 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 DECL|class|CreateEmail
 specifier|public
@@ -609,6 +619,8 @@ throws|,
 name|EmailException
 throws|,
 name|MethodNotAllowedException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -767,6 +779,8 @@ throws|,
 name|EmailException
 throws|,
 name|MethodNotAllowedException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(

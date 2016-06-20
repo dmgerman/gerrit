@@ -1696,6 +1696,8 @@ throws|,
 name|RestApiException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|EmailInput
 name|in
@@ -1762,6 +1764,8 @@ throws|throws
 name|RestApiException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -1856,6 +1860,8 @@ throws|throws
 name|RestApiException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 for|for
 control|(

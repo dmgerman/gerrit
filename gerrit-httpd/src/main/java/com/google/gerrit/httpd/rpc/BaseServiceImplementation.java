@@ -246,6 +246,16 @@ name|Provider
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/** Support for services which require a {@link ReviewDb} instance. */
 end_comment
@@ -552,6 +562,20 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|callback
+operator|.
+name|onFailure
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|Failure
 name|e
 parameter_list|)
@@ -736,6 +760,8 @@ throws|,
 name|NoSuchGroupException
 throws|,
 name|InvalidQueryException
+throws|,
+name|IOException
 function_decl|;
 block|}
 block|}

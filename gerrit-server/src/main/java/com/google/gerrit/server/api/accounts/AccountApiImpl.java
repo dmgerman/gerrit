@@ -2068,6 +2068,8 @@ parameter_list|(
 name|EmailException
 decl||
 name|OrmException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{

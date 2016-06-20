@@ -1093,6 +1093,8 @@ throws|throws
 name|AccountException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|AccountExternalId
 name|remoteAuthExtId

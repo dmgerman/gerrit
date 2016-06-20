@@ -590,6 +590,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -857,6 +867,8 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -1112,6 +1124,8 @@ throws|throws
 name|OrmException
 throws|,
 name|ResourceConflictException
+throws|,
+name|IOException
 block|{
 comment|// Do not allow creating groups with the same name as system groups
 name|List

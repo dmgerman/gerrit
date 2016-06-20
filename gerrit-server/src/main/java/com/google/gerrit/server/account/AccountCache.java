@@ -82,6 +82,16 @@ name|Account
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/** Caches important (but small) account state to avoid database hits. */
 end_comment
@@ -129,6 +139,8 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 DECL|method|evictByUsername (String username)
 name|void
