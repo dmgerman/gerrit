@@ -1460,7 +1460,10 @@ return|return
 name|changeId
 return|;
 block|}
+annotation|@
+name|VisibleForTesting
 DECL|method|getChangeMetaId ()
+specifier|public
 name|ObjectId
 name|getChangeMetaId
 parameter_list|()
