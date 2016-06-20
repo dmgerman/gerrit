@@ -1415,11 +1415,16 @@ name|Futures
 operator|.
 name|makeChecked
 argument_list|(
+name|Futures
+operator|.
+name|nonCancellationPropagating
+argument_list|(
 name|executor
 operator|.
 name|submit
 argument_list|(
 name|task
+argument_list|)
 argument_list|)
 argument_list|,
 name|MAPPER
