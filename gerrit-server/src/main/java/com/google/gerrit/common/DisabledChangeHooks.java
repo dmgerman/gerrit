@@ -192,20 +192,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|RefUpdate
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -391,25 +377,6 @@ name|patchSet
 parameter_list|,
 name|ReviewDb
 name|db
-parameter_list|)
-block|{   }
-annotation|@
-name|Override
-DECL|method|doRefUpdatedHook (Branch.NameKey refName, RefUpdate refUpdate, Account account)
-specifier|public
-name|void
-name|doRefUpdatedHook
-parameter_list|(
-name|Branch
-operator|.
-name|NameKey
-name|refName
-parameter_list|,
-name|RefUpdate
-name|refUpdate
-parameter_list|,
-name|Account
-name|account
 parameter_list|)
 block|{   }
 annotation|@

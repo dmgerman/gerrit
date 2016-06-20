@@ -206,20 +206,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|RefUpdate
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -389,23 +375,6 @@ name|db
 parameter_list|)
 throws|throws
 name|OrmException
-function_decl|;
-comment|/**    * Fire the Ref Updated Hook.    *    * @param refName The updated project and branch.    * @param refUpdate An actual RefUpdate object    * @param account The gerrit user who moved the ref    */
-DECL|method|doRefUpdatedHook (Branch.NameKey refName, RefUpdate refUpdate, Account account)
-name|void
-name|doRefUpdatedHook
-parameter_list|(
-name|Branch
-operator|.
-name|NameKey
-name|refName
-parameter_list|,
-name|RefUpdate
-name|refUpdate
-parameter_list|,
-name|Account
-name|account
-parameter_list|)
 function_decl|;
 comment|/**    * Fire the Ref Updated Hook.    *    * @param refName The Branch.NameKey of the ref that was updated.    * @param oldId The ref's old id.    * @param newId The ref's new id.    * @param account The gerrit user who moved the ref.    */
 DECL|method|doRefUpdatedHook (Branch.NameKey refName, ObjectId oldId, ObjectId newId, Account account)
