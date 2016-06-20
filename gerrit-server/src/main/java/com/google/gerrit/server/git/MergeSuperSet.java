@@ -1617,12 +1617,6 @@ argument_list|>
 name|visibleTopicsSeen
 parameter_list|)
 throws|throws
-name|MissingObjectException
-throws|,
-name|IncorrectObjectTypeException
-throws|,
-name|IOException
-throws|,
 name|OrmException
 block|{
 name|List
