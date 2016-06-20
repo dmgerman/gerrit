@@ -924,9 +924,7 @@ operator|.
 name|noteDbEnabled
 operator|=
 name|isNoteDbEnabled
-argument_list|(
-name|config
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|info
 operator|.
@@ -1917,14 +1915,11 @@ operator|+
 literal|'/'
 return|;
 block|}
-DECL|method|isNoteDbEnabled (Config cfg)
+DECL|method|isNoteDbEnabled ()
 specifier|private
 name|boolean
 name|isNoteDbEnabled
-parameter_list|(
-name|Config
-name|cfg
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|migration
