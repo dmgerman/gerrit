@@ -138,6 +138,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|deleteVote (DeleteVoteInput input)
+name|void
+name|deleteVote
+parameter_list|(
+name|DeleteVoteInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|remove ()
 name|void
 name|remove
@@ -182,6 +192,25 @@ name|deleteVote
 parameter_list|(
 name|String
 name|label
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|deleteVote (DeleteVoteInput input)
+specifier|public
+name|void
+name|deleteVote
+parameter_list|(
+name|DeleteVoteInput
+name|input
 parameter_list|)
 throws|throws
 name|RestApiException
