@@ -222,6 +222,22 @@ name|server
 operator|.
 name|query
 operator|.
+name|LimitPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
 name|NotPredicate
 import|;
 end_import
@@ -324,7 +340,7 @@ name|query
 operator|.
 name|change
 operator|.
-name|ChangeStatusPredicate
+name|ChangeQueryBuilder
 import|;
 end_import
 
@@ -342,7 +358,7 @@ name|query
 operator|.
 name|change
 operator|.
-name|LimitPredicate
+name|ChangeStatusPredicate
 import|;
 end_import
 
@@ -1159,7 +1175,12 @@ comment|// and included that in their limit computation.
 return|return
 operator|new
 name|LimitPredicate
+argument_list|<>
 argument_list|(
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_LIMIT
+argument_list|,
 name|opts
 operator|.
 name|limit
