@@ -202,6 +202,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|QueryResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -326,7 +342,7 @@ decl_stmt|;
 DECL|field|imp
 specifier|private
 specifier|final
-name|QueryProcessor
+name|ChangeQueryProcessor
 name|imp
 decl_stmt|;
 DECL|field|options
@@ -511,7 +527,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryChanges (ChangeJson.Factory json, ChangeQueryBuilder qb, QueryProcessor qp)
+DECL|method|QueryChanges (ChangeJson.Factory json, ChangeQueryBuilder qb, ChangeQueryProcessor qp)
 name|QueryChanges
 parameter_list|(
 name|ChangeJson
@@ -522,7 +538,7 @@ parameter_list|,
 name|ChangeQueryBuilder
 name|qb
 parameter_list|,
-name|QueryProcessor
+name|ChangeQueryProcessor
 name|qp
 parameter_list|)
 block|{
@@ -816,12 +832,15 @@ decl_stmt|;
 name|List
 argument_list|<
 name|QueryResult
+argument_list|<
+name|ChangeData
+argument_list|>
 argument_list|>
 name|results
 init|=
 name|imp
 operator|.
-name|queryChanges
+name|query
 argument_list|(
 name|qb
 operator|.
@@ -889,7 +908,7 @@ argument_list|(
 name|n
 argument_list|)
 operator|.
-name|moreChanges
+name|more
 argument_list|()
 condition|)
 block|{

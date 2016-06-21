@@ -1494,6 +1494,22 @@ name|server
 operator|.
 name|query
 operator|.
+name|QueryResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
 name|change
 operator|.
 name|ChangeData
@@ -1517,24 +1533,6 @@ operator|.
 name|ChangeData
 operator|.
 name|ChangedLines
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|QueryResult
 import|;
 end_import
 
@@ -2657,7 +2655,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|formatQueryResults (List<QueryResult> in)
+DECL|method|formatQueryResults ( List<QueryResult<ChangeData>> in)
 specifier|public
 name|List
 argument_list|<
@@ -2671,6 +2669,9 @@ parameter_list|(
 name|List
 argument_list|<
 name|QueryResult
+argument_list|<
+name|ChangeData
+argument_list|>
 argument_list|>
 name|in
 parameter_list|)
@@ -2704,6 +2705,9 @@ operator|new
 name|Function
 argument_list|<
 name|QueryResult
+argument_list|<
+name|ChangeData
+argument_list|>
 argument_list|,
 name|List
 argument_list|<
@@ -2722,13 +2726,16 @@ argument_list|>
 name|apply
 parameter_list|(
 name|QueryResult
+argument_list|<
+name|ChangeData
+argument_list|>
 name|in
 parameter_list|)
 block|{
 return|return
 name|in
 operator|.
-name|changes
+name|entities
 argument_list|()
 return|;
 block|}
@@ -2773,6 +2780,9 @@ decl_stmt|;
 for|for
 control|(
 name|QueryResult
+argument_list|<
+name|ChangeData
+argument_list|>
 name|r
 range|:
 name|in
@@ -2790,7 +2800,7 @@ name|out
 argument_list|,
 name|r
 operator|.
-name|changes
+name|entities
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2804,7 +2814,7 @@ argument_list|()
 operator|&&
 name|r
 operator|.
-name|moreChanges
+name|more
 argument_list|()
 condition|)
 block|{

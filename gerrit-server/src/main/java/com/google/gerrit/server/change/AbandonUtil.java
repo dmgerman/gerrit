@@ -194,7 +194,7 @@ name|query
 operator|.
 name|change
 operator|.
-name|QueryProcessor
+name|ChangeQueryProcessor
 import|;
 end_import
 
@@ -319,7 +319,7 @@ decl_stmt|;
 DECL|field|queryProcessor
 specifier|private
 specifier|final
-name|QueryProcessor
+name|ChangeQueryProcessor
 name|queryProcessor
 decl_stmt|;
 DECL|field|queryBuilder
@@ -336,7 +336,7 @@ name|abandon
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, QueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder, Abandon abandon)
+DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, ChangeQueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder, Abandon abandon)
 name|AbandonUtil
 parameter_list|(
 name|ChangeCleanupConfig
@@ -347,7 +347,7 @@ operator|.
 name|Factory
 name|internalUserFactory
 parameter_list|,
-name|QueryProcessor
+name|ChangeQueryProcessor
 name|queryProcessor
 parameter_list|,
 name|ChangeQueryBuilder
@@ -454,7 +454,7 @@ argument_list|(
 literal|false
 argument_list|)
 operator|.
-name|queryChanges
+name|query
 argument_list|(
 name|queryBuilder
 operator|.
@@ -464,7 +464,7 @@ name|query
 argument_list|)
 argument_list|)
 operator|.
-name|changes
+name|entities
 argument_list|()
 decl_stmt|;
 name|int
