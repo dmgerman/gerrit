@@ -206,7 +206,7 @@ name|index
 operator|.
 name|change
 operator|.
-name|IndexRewriter
+name|ChangeIndexRewriter
 operator|.
 name|CLOSED_STATUSES
 import|;
@@ -226,7 +226,7 @@ name|index
 operator|.
 name|change
 operator|.
-name|IndexRewriter
+name|ChangeIndexRewriter
 operator|.
 name|OPEN_STATUSES
 import|;
@@ -680,7 +680,7 @@ name|index
 operator|.
 name|change
 operator|.
-name|IndexRewriter
+name|ChangeIndexRewriter
 import|;
 end_import
 
@@ -2043,7 +2043,7 @@ name|Status
 argument_list|>
 name|statuses
 init|=
-name|IndexRewriter
+name|ChangeIndexRewriter
 operator|.
 name|getPossibleStatus
 argument_list|(

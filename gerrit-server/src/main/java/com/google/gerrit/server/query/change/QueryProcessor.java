@@ -346,7 +346,7 @@ name|index
 operator|.
 name|change
 operator|.
-name|IndexRewriter
+name|ChangeIndexRewriter
 import|;
 end_import
 
@@ -575,7 +575,7 @@ decl_stmt|;
 DECL|field|rewriter
 specifier|private
 specifier|final
-name|IndexRewriter
+name|ChangeIndexRewriter
 name|rewriter
 decl_stmt|;
 DECL|field|indexConfig
@@ -617,7 +617,7 @@ name|requestedFields
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, ChangeIndexCollection indexes, IndexRewriter rewriter, IndexConfig indexConfig, Metrics metrics)
+DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, IndexConfig indexConfig, Metrics metrics)
 name|QueryProcessor
 parameter_list|(
 name|Provider
@@ -645,7 +645,7 @@ parameter_list|,
 name|ChangeIndexCollection
 name|indexes
 parameter_list|,
-name|IndexRewriter
+name|ChangeIndexRewriter
 name|rewriter
 parameter_list|,
 name|IndexConfig
