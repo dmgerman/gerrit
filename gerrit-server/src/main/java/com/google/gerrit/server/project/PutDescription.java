@@ -122,7 +122,7 @@ name|api
 operator|.
 name|projects
 operator|.
-name|PutDescriptionInput
+name|DescriptionInput
 import|;
 end_import
 
@@ -432,7 +432,7 @@ name|RestModifyView
 argument_list|<
 name|ProjectResource
 argument_list|,
-name|PutDescriptionInput
+name|DescriptionInput
 argument_list|>
 block|{
 DECL|field|cache
@@ -523,7 +523,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ProjectResource resource, PutDescriptionInput input)
+DECL|method|apply (ProjectResource resource, DescriptionInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -534,7 +534,7 @@ parameter_list|(
 name|ProjectResource
 name|resource
 parameter_list|,
-name|PutDescriptionInput
+name|DescriptionInput
 name|input
 parameter_list|)
 throws|throws
@@ -556,7 +556,7 @@ block|{
 name|input
 operator|=
 operator|new
-name|PutDescriptionInput
+name|DescriptionInput
 argument_list|()
 expr_stmt|;
 comment|// Delete would set description to null.

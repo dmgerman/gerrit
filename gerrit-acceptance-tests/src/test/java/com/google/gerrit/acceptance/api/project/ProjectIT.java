@@ -178,7 +178,7 @@ name|api
 operator|.
 name|projects
 operator|.
-name|ProjectInput
+name|DescriptionInput
 import|;
 end_import
 
@@ -196,7 +196,7 @@ name|api
 operator|.
 name|projects
 operator|.
-name|PutDescriptionInput
+name|ProjectInput
 import|;
 end_import
 
@@ -562,11 +562,11 @@ operator|.
 name|isEmpty
 argument_list|()
 expr_stmt|;
-name|PutDescriptionInput
+name|DescriptionInput
 name|in
 init|=
 operator|new
-name|PutDescriptionInput
+name|DescriptionInput
 argument_list|()
 decl_stmt|;
 name|in

@@ -124,8 +124,6 @@ name|api
 operator|.
 name|projects
 operator|.
-name|ProjectInput
-operator|.
 name|ConfigValue
 import|;
 end_import

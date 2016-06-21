@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2015 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -70,37 +70,32 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|DefaultInput
+name|List
 import|;
 end_import
 
 begin_class
-DECL|class|PutDescriptionInput
+DECL|class|ConfigValue
 specifier|public
 class|class
-name|PutDescriptionInput
+name|ConfigValue
 block|{
-annotation|@
-name|DefaultInput
-DECL|field|description
+DECL|field|value
 specifier|public
 name|String
-name|description
+name|value
 decl_stmt|;
-DECL|field|commitMessage
+DECL|field|values
 specifier|public
+name|List
+argument_list|<
 name|String
-name|commitMessage
+argument_list|>
+name|values
 decl_stmt|;
 block|}
 end_class

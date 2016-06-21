@@ -190,6 +190,24 @@ name|api
 operator|.
 name|projects
 operator|.
+name|DescriptionInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|projects
+operator|.
 name|ProjectApi
 import|;
 end_import
@@ -209,24 +227,6 @@ operator|.
 name|projects
 operator|.
 name|ProjectInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|api
-operator|.
-name|projects
-operator|.
-name|PutDescriptionInput
 import|;
 end_import
 
@@ -1444,12 +1444,12 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|description (PutDescriptionInput in)
+DECL|method|description (DescriptionInput in)
 specifier|public
 name|void
 name|description
 parameter_list|(
-name|PutDescriptionInput
+name|DescriptionInput
 name|in
 parameter_list|)
 throws|throws

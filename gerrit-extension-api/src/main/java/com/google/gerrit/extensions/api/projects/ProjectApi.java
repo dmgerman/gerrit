@@ -199,11 +199,11 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|description (PutDescriptionInput in)
+DECL|method|description (DescriptionInput in)
 name|void
 name|description
 parameter_list|(
-name|PutDescriptionInput
+name|DescriptionInput
 name|in
 parameter_list|)
 throws|throws
@@ -579,12 +579,12 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|description (PutDescriptionInput in)
+DECL|method|description (DescriptionInput in)
 specifier|public
 name|void
 name|description
 parameter_list|(
-name|PutDescriptionInput
+name|DescriptionInput
 name|in
 parameter_list|)
 throws|throws
