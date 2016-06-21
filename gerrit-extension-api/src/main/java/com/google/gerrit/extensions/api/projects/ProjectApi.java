@@ -259,6 +259,16 @@ argument_list|>
 name|tags
 parameter_list|()
 function_decl|;
+DECL|method|deleteBranches (DeleteBranchesInput in)
+name|void
+name|deleteBranches
+parameter_list|(
+name|DeleteBranchesInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|class|ListRefsRequest
 specifier|abstract
 class|class
@@ -768,6 +778,25 @@ name|tag
 parameter_list|(
 name|String
 name|ref
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|deleteBranches (DeleteBranchesInput in)
+specifier|public
+name|void
+name|deleteBranches
+parameter_list|(
+name|DeleteBranchesInput
+name|in
 parameter_list|)
 throws|throws
 name|RestApiException

@@ -226,6 +226,24 @@ name|api
 operator|.
 name|projects
 operator|.
+name|DeleteBranchesInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|projects
+operator|.
 name|DescriptionInput
 import|;
 end_import
@@ -472,6 +490,22 @@ name|server
 operator|.
 name|project
 operator|.
+name|DeleteBranches
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|GetAccess
 import|;
 end_import
@@ -649,6 +683,20 @@ operator|.
 name|project
 operator|.
 name|SetAccess
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
 import|;
 end_import
 
@@ -867,9 +915,15 @@ specifier|final
 name|ListTags
 name|listTags
 decl_stmt|;
+DECL|field|deleteBranches
+specifier|private
+specifier|final
+name|DeleteBranches
+name|deleteBranches
+decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|CurrentUser
@@ -932,6 +986,9 @@ name|listBranches
 parameter_list|,
 name|ListTags
 name|listTags
+parameter_list|,
+name|DeleteBranches
+name|deleteBranches
 parameter_list|,
 annotation|@
 name|Assisted
@@ -975,6 +1032,8 @@ name|listBranches
 argument_list|,
 name|listTags
 argument_list|,
+name|deleteBranches
+argument_list|,
 name|project
 argument_list|,
 literal|null
@@ -983,7 +1042,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, @Assisted String name)
+DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|CurrentUser
@@ -1047,6 +1106,9 @@ parameter_list|,
 name|ListTags
 name|listTags
 parameter_list|,
+name|DeleteBranches
+name|deleteBranches
+parameter_list|,
 annotation|@
 name|Assisted
 name|String
@@ -1089,13 +1151,15 @@ name|listBranches
 argument_list|,
 name|listTags
 argument_list|,
+name|deleteBranches
+argument_list|,
 literal|null
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, ProjectResource project, String name)
+DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, ProjectResource project, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -1159,6 +1223,9 @@ name|listBranches
 parameter_list|,
 name|ListTags
 name|listTags
+parameter_list|,
+name|DeleteBranches
+name|deleteBranches
 parameter_list|,
 name|ProjectResource
 name|project
@@ -1280,6 +1347,12 @@ operator|.
 name|listTags
 operator|=
 name|listTags
+expr_stmt|;
+name|this
+operator|.
+name|deleteBranches
+operator|=
+name|deleteBranches
 expr_stmt|;
 block|}
 annotation|@
@@ -2066,6 +2139,51 @@ argument_list|,
 name|ref
 argument_list|)
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|deleteBranches (DeleteBranchesInput in)
+specifier|public
+name|void
+name|deleteBranches
+parameter_list|(
+name|DeleteBranchesInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+try|try
+block|{
+name|deleteBranches
+operator|.
+name|apply
+argument_list|(
+name|checkExists
+argument_list|()
+argument_list|,
+name|in
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+decl||
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RestApiException
+argument_list|(
+literal|"Cannot delete branches"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|method|checkExists ()
 specifier|private

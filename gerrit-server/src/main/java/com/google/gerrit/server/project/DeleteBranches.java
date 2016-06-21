@@ -452,6 +452,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|DeleteBranches
+specifier|public
 class|class
 name|DeleteBranches
 implements|implements
