@@ -985,7 +985,7 @@ operator|.
 name|noteDbEnabled
 argument_list|)
 operator|.
-name|isFalse
+name|isNull
 argument_list|()
 expr_stmt|;
 block|}
