@@ -138,6 +138,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|projects
+operator|.
+name|ProjectConfigEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|events
 operator|.
 name|GitReferenceUpdatedListener
@@ -382,29 +400,6 @@ specifier|public
 class|class
 name|ProjectConfigEntry
 block|{
-DECL|enum|Type
-specifier|public
-enum|enum
-name|Type
-block|{
-DECL|enumConstant|STRING
-DECL|enumConstant|INT
-DECL|enumConstant|LONG
-DECL|enumConstant|BOOLEAN
-DECL|enumConstant|LIST
-DECL|enumConstant|ARRAY
-name|STRING
-block|,
-name|INT
-block|,
-name|LONG
-block|,
-name|BOOLEAN
-block|,
-name|LIST
-block|,
-name|ARRAY
-block|}
 DECL|field|displayName
 specifier|private
 specifier|final
@@ -432,7 +427,7 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|Type
+name|ProjectConfigEntryType
 name|type
 decl_stmt|;
 DECL|field|permittedValues
@@ -514,7 +509,7 @@ name|displayName
 argument_list|,
 name|defaultValue
 argument_list|,
-name|Type
+name|ProjectConfigEntryType
 operator|.
 name|STRING
 argument_list|,
@@ -601,7 +596,7 @@ argument_list|(
 name|defaultValue
 argument_list|)
 argument_list|,
-name|Type
+name|ProjectConfigEntryType
 operator|.
 name|INT
 argument_list|,
@@ -688,7 +683,7 @@ argument_list|(
 name|defaultValue
 argument_list|)
 argument_list|,
-name|Type
+name|ProjectConfigEntryType
 operator|.
 name|LONG
 argument_list|,
@@ -748,7 +743,7 @@ argument_list|(
 name|defaultValue
 argument_list|)
 argument_list|,
-name|Type
+name|ProjectConfigEntryType
 operator|.
 name|BOOLEAN
 argument_list|,
@@ -852,7 +847,7 @@ name|displayName
 argument_list|,
 name|defaultValue
 argument_list|,
-name|Type
+name|ProjectConfigEntryType
 operator|.
 name|LIST
 argument_list|,
@@ -983,7 +978,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|Type
+name|ProjectConfigEntryType
 operator|.
 name|LIST
 argument_list|,
@@ -1045,7 +1040,7 @@ end_class
 
 begin_expr_stmt
 unit|}    public
-DECL|method|ProjectConfigEntry (String displayName, String defaultValue, Type type, List<String> permittedValues, boolean inheritable, String description)
+DECL|method|ProjectConfigEntry (String displayName, String defaultValue, ProjectConfigEntryType type, List<String> permittedValues, boolean inheritable, String description)
 name|ProjectConfigEntry
 argument_list|(
 name|String
@@ -1054,7 +1049,7 @@ argument_list|,
 name|String
 name|defaultValue
 argument_list|,
-name|Type
+name|ProjectConfigEntryType
 name|type
 argument_list|,
 name|List
@@ -1110,7 +1105,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|Type
+name|ProjectConfigEntryType
 operator|.
 name|ARRAY
 operator|&&
@@ -1182,7 +1177,7 @@ end_function
 begin_function
 DECL|method|getType ()
 specifier|public
-name|Type
+name|ProjectConfigEntryType
 name|getType
 parameter_list|()
 block|{

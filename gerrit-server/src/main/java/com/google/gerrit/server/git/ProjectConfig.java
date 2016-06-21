@@ -670,7 +670,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 import|;
 end_import
 
@@ -1583,7 +1583,7 @@ DECL|field|commentLinkSections
 specifier|private
 name|List
 argument_list|<
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 argument_list|>
 name|commentLinkSections
 decl_stmt|;
@@ -1702,7 +1702,7 @@ block|}
 DECL|method|buildCommentLink (Config cfg, String name, boolean allowRaw)
 specifier|public
 specifier|static
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 name|buildCommentLink
 parameter_list|(
 name|Config
@@ -1878,7 +1878,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 operator|.
 name|Enabled
 argument_list|(
@@ -1888,7 +1888,7 @@ return|;
 block|}
 return|return
 operator|new
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 operator|.
 name|Disabled
 argument_list|(
@@ -1898,7 +1898,7 @@ return|;
 block|}
 return|return
 operator|new
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 argument_list|(
 name|name
 argument_list|,
@@ -2667,7 +2667,7 @@ DECL|method|getCommentLinkSections ()
 specifier|public
 name|Collection
 argument_list|<
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 argument_list|>
 name|getCommentLinkSections
 parameter_list|()

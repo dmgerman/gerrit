@@ -96,14 +96,34 @@ name|Strings
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|projects
+operator|.
+name|CommentLinkInfo
+import|;
+end_import
+
 begin_comment
 comment|/** Info about a single commentlink section in a config. */
 end_comment
 
 begin_class
-DECL|class|CommentLinkInfo
+DECL|class|CommentLinkInfoImpl
 specifier|public
 class|class
+name|CommentLinkInfoImpl
+extends|extends
 name|CommentLinkInfo
 block|{
 DECL|class|Enabled
@@ -112,7 +132,7 @@ specifier|static
 class|class
 name|Enabled
 extends|extends
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 block|{
 DECL|method|Enabled (String name)
 specifier|public
@@ -148,7 +168,7 @@ specifier|static
 class|class
 name|Disabled
 extends|extends
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 block|{
 DECL|method|Disabled (String name)
 specifier|public
@@ -178,41 +198,9 @@ literal|true
 return|;
 block|}
 block|}
-DECL|field|match
+DECL|method|CommentLinkInfoImpl (String name, String match, String link, String html, Boolean enabled)
 specifier|public
-specifier|final
-name|String
-name|match
-decl_stmt|;
-DECL|field|link
-specifier|public
-specifier|final
-name|String
-name|link
-decl_stmt|;
-DECL|field|html
-specifier|public
-specifier|final
-name|String
-name|html
-decl_stmt|;
-DECL|field|enabled
-specifier|public
-specifier|final
-name|Boolean
-name|enabled
-decl_stmt|;
-comment|// null means true
-DECL|field|name
-specifier|public
-specifier|final
-specifier|transient
-name|String
-name|name
-decl_stmt|;
-DECL|method|CommentLinkInfo (String name, String match, String link, String html, Boolean enabled)
-specifier|public
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 parameter_list|(
 name|String
 name|name
@@ -330,9 +318,9 @@ operator|=
 name|enabled
 expr_stmt|;
 block|}
-DECL|method|CommentLinkInfo (CommentLinkInfo src, boolean enabled)
+DECL|method|CommentLinkInfoImpl (CommentLinkInfo src, boolean enabled)
 specifier|private
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 parameter_list|(
 name|CommentLinkInfo
 name|src
@@ -380,9 +368,9 @@ operator|=
 name|enabled
 expr_stmt|;
 block|}
-DECL|method|CommentLinkInfo (String name, boolean enabled)
+DECL|method|CommentLinkInfoImpl (String name, boolean enabled)
 specifier|private
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 parameter_list|(
 name|String
 name|name
@@ -441,7 +429,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|CommentLinkInfo
+name|CommentLinkInfoImpl
 argument_list|(
 name|src
 argument_list|,
