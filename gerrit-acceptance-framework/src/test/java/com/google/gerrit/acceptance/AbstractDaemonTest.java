@@ -1963,7 +1963,7 @@ name|eventRecorderFactory
 operator|.
 name|create
 argument_list|(
-name|user
+name|admin
 argument_list|)
 expr_stmt|;
 block|}
