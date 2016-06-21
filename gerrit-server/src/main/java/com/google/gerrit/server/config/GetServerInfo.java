@@ -923,8 +923,11 @@ name|info
 operator|.
 name|noteDbEnabled
 operator|=
+name|toBoolean
+argument_list|(
 name|isNoteDbEnabled
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|info
 operator|.
