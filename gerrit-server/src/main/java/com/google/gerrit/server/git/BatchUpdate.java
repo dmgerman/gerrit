@@ -4399,7 +4399,7 @@ name|notes
 init|=
 name|changeNotesFactory
 operator|.
-name|createForNew
+name|createForBatchUpdate
 argument_list|(
 name|c
 argument_list|)

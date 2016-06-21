@@ -1534,10 +1534,10 @@ name|change
 argument_list|)
 return|;
 block|}
-DECL|method|createForNew (Change change)
+DECL|method|createForBatchUpdate (Change change)
 specifier|public
 name|ChangeNotes
-name|createForNew
+name|createForBatchUpdate
 parameter_list|(
 name|Change
 name|change
@@ -1552,6 +1552,10 @@ argument_list|(
 name|args
 argument_list|,
 name|change
+argument_list|,
+literal|false
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|load

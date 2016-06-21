@@ -278,6 +278,16 @@ name|refCache
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getRepoRefCache ()
+specifier|public
+name|RepoRefCache
+name|getRepoRefCache
+parameter_list|()
+block|{
+return|return
+name|refCache
+return|;
+block|}
 DECL|method|isEmpty ()
 specifier|public
 name|boolean
