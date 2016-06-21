@@ -226,6 +226,23 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|config ()
+name|ConfigInfo
+name|config
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|config (ConfigInput in)
+name|ConfigInfo
+name|config
+parameter_list|(
+name|ConfigInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|branches ()
 name|ListRefsRequest
 argument_list|<
@@ -549,6 +566,41 @@ specifier|public
 name|ProjectAccessInfo
 name|access
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|config ()
+specifier|public
+name|ConfigInfo
+name|config
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|config (ConfigInput in)
+specifier|public
+name|ConfigInfo
+name|config
+parameter_list|(
+name|ConfigInput
+name|in
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
