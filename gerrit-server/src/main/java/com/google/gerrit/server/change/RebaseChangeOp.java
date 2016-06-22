@@ -1043,9 +1043,6 @@ operator|.
 name|create
 argument_list|(
 name|ctl
-operator|.
-name|getRefControl
-argument_list|()
 argument_list|,
 name|rebasedPatchSetId
 argument_list|,

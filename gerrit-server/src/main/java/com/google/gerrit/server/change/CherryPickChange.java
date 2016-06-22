@@ -1602,8 +1602,6 @@ argument_list|,
 name|destCtl
 argument_list|,
 name|cherryPickCommit
-argument_list|,
-name|refControl
 argument_list|)
 expr_stmt|;
 block|}
@@ -1744,7 +1742,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|insertPatchSet (BatchUpdate bu, Repository git, ChangeControl ctl, CodeReviewCommit cherryPickCommit, RefControl refControl)
+DECL|method|insertPatchSet (BatchUpdate bu, Repository git, ChangeControl destCtl, CodeReviewCommit cherryPickCommit)
 specifier|private
 name|Change
 operator|.
@@ -1758,13 +1756,10 @@ name|Repository
 name|git
 parameter_list|,
 name|ChangeControl
-name|ctl
+name|destCtl
 parameter_list|,
 name|CodeReviewCommit
 name|cherryPickCommit
-parameter_list|,
-name|RefControl
-name|refControl
 parameter_list|)
 throws|throws
 name|IOException
@@ -1772,9 +1767,9 @@ throws|,
 name|OrmException
 block|{
 name|Change
-name|change
+name|destChange
 init|=
-name|ctl
+name|destCtl
 operator|.
 name|getChange
 argument_list|()
@@ -1790,7 +1785,7 @@ name|nextPatchSetId
 argument_list|(
 name|git
 argument_list|,
-name|change
+name|destChange
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -1803,7 +1798,7 @@ name|patchSetInserterFactory
 operator|.
 name|create
 argument_list|(
-name|refControl
+name|destCtl
 argument_list|,
 name|psId
 argument_list|,
@@ -1832,7 +1827,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|ctl
+name|destCtl
 operator|.
 name|getNotes
 argument_list|()
@@ -1842,7 +1837,7 @@ name|bu
 operator|.
 name|addOp
 argument_list|(
-name|change
+name|destChange
 operator|.
 name|getId
 argument_list|()
@@ -1876,7 +1871,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|change
+name|destChange
 operator|.
 name|getId
 argument_list|()
