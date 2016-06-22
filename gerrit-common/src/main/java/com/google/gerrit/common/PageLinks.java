@@ -907,7 +907,7 @@ argument_list|,
 name|topic
 argument_list|)
 operator|+
-literal|" or("
+literal|" ("
 operator|+
 name|status
 argument_list|(
@@ -916,7 +916,7 @@ operator|.
 name|NEW
 argument_list|)
 operator|+
-literal|" "
+literal|" OR "
 operator|+
 name|status
 argument_list|(
