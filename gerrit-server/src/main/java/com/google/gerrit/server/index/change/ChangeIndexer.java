@@ -172,6 +172,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|events
+operator|.
+name|ChangeIndexedListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|registration
 operator|.
 name|DynamicSet
@@ -237,24 +253,6 @@ operator|.
 name|server
 operator|.
 name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|extensions
-operator|.
-name|events
-operator|.
-name|ChangeIndexedListener
 import|;
 end_import
 
@@ -1174,16 +1172,22 @@ block|}
 name|fireChangeIndexedEvent
 argument_list|(
 name|cd
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireChangeIndexedEvent (ChangeData change)
+DECL|method|fireChangeIndexedEvent (int id)
 specifier|private
 name|void
 name|fireChangeIndexedEvent
 parameter_list|(
-name|ChangeData
-name|change
+name|int
+name|id
 parameter_list|)
 block|{
 for|for
@@ -1198,19 +1202,17 @@ name|listener
 operator|.
 name|onChangeIndexed
 argument_list|(
-name|change
+name|id
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fireChangeDeletedFromIndexEvent (Change.Id id)
+DECL|method|fireChangeDeletedFromIndexEvent (int id)
 specifier|private
 name|void
 name|fireChangeDeletedFromIndexEvent
 parameter_list|(
-name|Change
-operator|.
-name|Id
+name|int
 name|id
 parameter_list|)
 block|{
@@ -1853,6 +1855,9 @@ block|}
 name|fireChangeDeletedFromIndexEvent
 argument_list|(
 name|id
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

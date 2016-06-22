@@ -52,15 +52,13 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.extensions.events
+DECL|package|com.google.gerrit.extensions.events
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
 operator|.
 name|extensions
 operator|.
@@ -84,40 +82,6 @@ name|ExtensionPoint
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|ChangeData
-import|;
-end_import
-
 begin_comment
 comment|/** Notified whenever a change is indexed or deleted from the index. */
 end_comment
@@ -131,22 +95,20 @@ interface|interface
 name|ChangeIndexedListener
 block|{
 comment|/** Invoked when a change is indexed. */
-DECL|method|onChangeIndexed (ChangeData change)
+DECL|method|onChangeIndexed (int id)
 name|void
 name|onChangeIndexed
 parameter_list|(
-name|ChangeData
-name|change
+name|int
+name|id
 parameter_list|)
 function_decl|;
 comment|/** Invoked when a change is deleted from the index. */
-DECL|method|onChangeDeleted (Change.Id id)
+DECL|method|onChangeDeleted (int id)
 name|void
 name|onChangeDeleted
 parameter_list|(
-name|Change
-operator|.
-name|Id
+name|int
 name|id
 parameter_list|)
 function_decl|;
