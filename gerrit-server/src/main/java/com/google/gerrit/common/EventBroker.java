@@ -366,6 +366,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -467,9 +479,18 @@ operator|.
 name|Factory
 name|notesFactory
 decl_stmt|;
+DECL|field|dbProvider
+specifier|protected
+specifier|final
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|dbProvider
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventBroker (DynamicSet<UserScopedEventListener> listeners, DynamicSet<EventListener> unrestrictedListeners, ProjectCache projectCache, ChangeNotes.Factory notesFactory)
+DECL|method|EventBroker (DynamicSet<UserScopedEventListener> listeners, DynamicSet<EventListener> unrestrictedListeners, ProjectCache projectCache, ChangeNotes.Factory notesFactory, Provider<ReviewDb> dbProvider)
 specifier|public
 name|EventBroker
 parameter_list|(
@@ -492,6 +513,12 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|notesFactory
+parameter_list|,
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|dbProvider
 parameter_list|)
 block|{
 name|this
@@ -518,10 +545,16 @@ name|notesFactory
 operator|=
 name|notesFactory
 expr_stmt|;
+name|this
+operator|.
+name|dbProvider
+operator|=
+name|dbProvider
+expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (Change change, ChangeEvent event, ReviewDb db)
+DECL|method|postEvent (Change change, ChangeEvent event)
 specifier|public
 name|void
 name|postEvent
@@ -531,9 +564,6 @@ name|change
 parameter_list|,
 name|ChangeEvent
 name|event
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 throws|throws
 name|OrmException
@@ -543,8 +573,6 @@ argument_list|(
 name|change
 argument_list|,
 name|event
-argument_list|,
-name|db
 argument_list|)
 expr_stmt|;
 block|}
@@ -598,16 +626,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (Event event, ReviewDb db)
+DECL|method|postEvent (Event event)
 specifier|public
 name|void
 name|postEvent
 parameter_list|(
 name|Event
 name|event
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 throws|throws
 name|OrmException
@@ -615,8 +640,6 @@ block|{
 name|fireEvent
 argument_list|(
 name|event
-argument_list|,
-name|db
 argument_list|)
 expr_stmt|;
 block|}
@@ -646,7 +669,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fireEvent (Change change, ChangeEvent event, ReviewDb db)
+DECL|method|fireEvent (Change change, ChangeEvent event)
 specifier|protected
 name|void
 name|fireEvent
@@ -656,9 +679,6 @@ name|change
 parameter_list|,
 name|ChangeEvent
 name|event
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 throws|throws
 name|OrmException
@@ -681,8 +701,6 @@ name|listener
 operator|.
 name|getUser
 argument_list|()
-argument_list|,
-name|db
 argument_list|)
 condition|)
 block|{
@@ -801,16 +819,13 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireEvent (Event event, ReviewDb db)
+DECL|method|fireEvent (Event event)
 specifier|protected
 name|void
 name|fireEvent
 parameter_list|(
 name|Event
 name|event
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 throws|throws
 name|OrmException
@@ -833,8 +848,6 @@ name|listener
 operator|.
 name|getUser
 argument_list|()
-argument_list|,
-name|db
 argument_list|)
 condition|)
 block|{
@@ -900,7 +913,7 @@ name|isVisible
 argument_list|()
 return|;
 block|}
-DECL|method|isVisibleTo (Change change, CurrentUser user, ReviewDb db)
+DECL|method|isVisibleTo (Change change, CurrentUser user)
 specifier|protected
 name|boolean
 name|isVisibleTo
@@ -910,9 +923,6 @@ name|change
 parameter_list|,
 name|CurrentUser
 name|user
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 throws|throws
 name|OrmException
@@ -961,6 +971,14 @@ name|controlFor
 argument_list|(
 name|user
 argument_list|)
+decl_stmt|;
+name|ReviewDb
+name|db
+init|=
+name|dbProvider
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 return|return
 name|pc
@@ -1038,7 +1056,7 @@ name|isVisible
 argument_list|()
 return|;
 block|}
-DECL|method|isVisibleTo (Event event, CurrentUser user, ReviewDb db)
+DECL|method|isVisibleTo (Event event, CurrentUser user)
 specifier|protected
 name|boolean
 name|isVisibleTo
@@ -1048,9 +1066,6 @@ name|event
 parameter_list|,
 name|CurrentUser
 name|user
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1112,7 +1127,10 @@ name|notesFactory
 operator|.
 name|create
 argument_list|(
-name|db
+name|dbProvider
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|refEvent
 operator|.
@@ -1131,8 +1149,6 @@ argument_list|(
 name|change
 argument_list|,
 name|user
-argument_list|,
-name|db
 argument_list|)
 return|;
 block|}

@@ -120,22 +120,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|events
@@ -216,8 +200,8 @@ specifier|public
 interface|interface
 name|EventDispatcher
 block|{
-comment|/**    * Post a stream event that is related to a change    *    * @param change The change that the event is related to    * @param event The event to post    * @param db The database    * @throws OrmException    */
-DECL|method|postEvent (Change change, ChangeEvent event, ReviewDb db)
+comment|/**    * Post a stream event that is related to a change    *    * @param change The change that the event is related to    * @param event The event to post    * @throws OrmException    */
+DECL|method|postEvent (Change change, ChangeEvent event)
 name|void
 name|postEvent
 parameter_list|(
@@ -226,9 +210,6 @@ name|change
 parameter_list|,
 name|ChangeEvent
 name|event
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 throws|throws
 name|OrmException
@@ -261,16 +242,13 @@ name|ProjectEvent
 name|event
 parameter_list|)
 function_decl|;
-comment|/**    * Post a stream event generically.    *<p>    * If you are creating a RefEvent or ChangeEvent from scratch,    * it is more efficient to use the specific postEvent methods    * for those use cases.    *    * @param event The event to post.    * @param db The database.    */
-DECL|method|postEvent (Event event, ReviewDb db)
+comment|/**    * Post a stream event generically.    *<p>    * If you are creating a RefEvent or ChangeEvent from scratch,    * it is more efficient to use the specific postEvent methods    * for those use cases.    *    * @param event The event to post.    */
+DECL|method|postEvent (Event event)
 name|void
 name|postEvent
 parameter_list|(
 name|Event
 name|event
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|)
 throws|throws
 name|OrmException
