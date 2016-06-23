@@ -454,6 +454,26 @@ literal|1
 argument_list|)
 return|;
 block|}
+DECL|method|noScore ()
+specifier|public
+specifier|static
+name|ReviewInput
+name|noScore
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ReviewInput
+argument_list|()
+operator|.
+name|label
+argument_list|(
+literal|"Code-Review"
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
 DECL|method|approve ()
 specifier|public
 specifier|static
