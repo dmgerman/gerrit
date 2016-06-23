@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Interface to be extendend by Events with a Change. */
+comment|/** Interface to be extended by Events with a Change. */
 end_comment
 
 begin_interface
