@@ -552,7 +552,9 @@ name|api
 operator|.
 name|changes
 operator|.
-name|RevisionApi
+name|ReviewInput
+operator|.
+name|NotifyHandling
 import|;
 end_import
 
@@ -570,9 +572,7 @@ name|api
 operator|.
 name|changes
 operator|.
-name|ReviewInput
-operator|.
-name|NotifyHandling
+name|RevisionApi
 import|;
 end_import
 
@@ -879,22 +879,6 @@ operator|.
 name|client
 operator|.
 name|PatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
 import|;
 end_import
 
