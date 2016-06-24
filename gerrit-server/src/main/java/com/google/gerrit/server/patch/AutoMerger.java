@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -589,6 +605,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|checkArgument
+argument_list|(
+name|rw
+operator|.
+name|getObjectReader
+argument_list|()
+operator|.
+name|getCreatedFromInserter
+argument_list|()
+operator|==
+name|ins
+argument_list|)
+expr_stmt|;
 name|rw
 operator|.
 name|parseHeaders
