@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.query.change
+DECL|package|com.google.gerrit.server.query
 package|package
 name|com
 operator|.
@@ -63,8 +63,6 @@ operator|.
 name|server
 operator|.
 name|query
-operator|.
-name|change
 package|;
 end_package
 
@@ -98,22 +96,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|Predicate
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -123,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Results of a query over changes. */
+comment|/** Results of a query over entities. */
 end_comment
 
 begin_class
@@ -134,10 +116,19 @@ specifier|public
 specifier|abstract
 class|class
 name|QueryResult
+parameter_list|<
+name|T
+parameter_list|>
 block|{
-DECL|method|create (@ullable String query, Predicate<ChangeData> predicate, int limit, List<ChangeData> changes)
+DECL|method|create (@ullable String query, Predicate<T> predicate, int limit, List<T> entites)
 specifier|static
+parameter_list|<
+name|T
+parameter_list|>
 name|QueryResult
+argument_list|<
+name|T
+argument_list|>
 name|create
 parameter_list|(
 annotation|@
@@ -147,7 +138,7 @@ name|query
 parameter_list|,
 name|Predicate
 argument_list|<
-name|ChangeData
+name|T
 argument_list|>
 name|predicate
 parameter_list|,
@@ -156,17 +147,17 @@ name|limit
 parameter_list|,
 name|List
 argument_list|<
-name|ChangeData
+name|T
 argument_list|>
-name|changes
+name|entites
 parameter_list|)
 block|{
 name|boolean
-name|moreChanges
+name|more
 decl_stmt|;
 if|if
 condition|(
-name|changes
+name|entites
 operator|.
 name|size
 argument_list|()
@@ -174,13 +165,13 @@ operator|>
 name|limit
 condition|)
 block|{
-name|moreChanges
+name|more
 operator|=
 literal|true
 expr_stmt|;
-name|changes
+name|entites
 operator|=
-name|changes
+name|entites
 operator|.
 name|subList
 argument_list|(
@@ -192,7 +183,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|moreChanges
+name|more
 operator|=
 literal|false
 expr_stmt|;
@@ -200,14 +191,15 @@ block|}
 return|return
 operator|new
 name|AutoValue_QueryResult
+argument_list|<>
 argument_list|(
 name|query
 argument_list|,
 name|predicate
 argument_list|,
-name|changes
+name|entites
 argument_list|,
-name|moreChanges
+name|more
 argument_list|)
 return|;
 block|}
@@ -227,28 +219,28 @@ specifier|public
 specifier|abstract
 name|Predicate
 argument_list|<
-name|ChangeData
+name|T
 argument_list|>
 name|predicate
 parameter_list|()
 function_decl|;
 comment|/** @return the query results. */
-DECL|method|changes ()
+DECL|method|entities ()
 specifier|public
 specifier|abstract
 name|List
 argument_list|<
-name|ChangeData
+name|T
 argument_list|>
-name|changes
+name|entities
 parameter_list|()
 function_decl|;
-comment|/**    * @return whether the query could be retried with    *     {@link QueryProcessor#setStart(int)} to produce more results. Never    *     true if {@link #changes()} is empty.    */
-DECL|method|moreChanges ()
+comment|/**    * @return whether the query could be retried with    *     {@link QueryProcessor#setStart(int)} to produce more results. Never    *     true if {@link #entities()} is empty.    */
+DECL|method|more ()
 specifier|public
 specifier|abstract
 name|boolean
-name|moreChanges
+name|more
 parameter_list|()
 function_decl|;
 block|}

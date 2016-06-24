@@ -340,6 +340,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|QueryResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gson
 operator|.
 name|Gson
@@ -658,7 +674,7 @@ decl_stmt|;
 DECL|field|queryProcessor
 specifier|private
 specifier|final
-name|QueryProcessor
+name|ChangeQueryProcessor
 name|queryProcessor
 decl_stmt|;
 DECL|field|eventFactory
@@ -749,7 +765,7 @@ name|out
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OutputStreamQuery ( ReviewDb db, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, QueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
+DECL|method|OutputStreamQuery ( ReviewDb db, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, ChangeQueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
 name|OutputStreamQuery
 parameter_list|(
 name|ReviewDb
@@ -761,7 +777,7 @@ parameter_list|,
 name|ChangeQueryBuilder
 name|queryBuilder
 parameter_list|,
-name|QueryProcessor
+name|ChangeQueryProcessor
 name|queryProcessor
 parameter_list|,
 name|EventFactory
@@ -1152,11 +1168,14 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 name|QueryResult
+argument_list|<
+name|ChangeData
+argument_list|>
 name|results
 init|=
 name|queryProcessor
 operator|.
-name|queryChanges
+name|query
 argument_list|(
 name|queryBuilder
 operator|.
@@ -1175,7 +1194,7 @@ name|d
 range|:
 name|results
 operator|.
-name|changes
+name|entities
 argument_list|()
 control|)
 block|{
@@ -1215,7 +1234,7 @@ name|rowCount
 operator|=
 name|results
 operator|.
-name|changes
+name|entities
 argument_list|()
 operator|.
 name|size
@@ -1227,7 +1246,7 @@ name|moreChanges
 operator|=
 name|results
 operator|.
-name|moreChanges
+name|more
 argument_list|()
 expr_stmt|;
 name|stats

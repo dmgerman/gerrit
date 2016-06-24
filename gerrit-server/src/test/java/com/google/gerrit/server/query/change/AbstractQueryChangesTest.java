@@ -1464,7 +1464,7 @@ DECL|field|queryProcessor
 annotation|@
 name|Inject
 specifier|protected
-name|QueryProcessor
+name|ChangeQueryProcessor
 name|queryProcessor
 decl_stmt|;
 DECL|field|schemaCreator
@@ -10846,7 +10846,7 @@ name|cds
 init|=
 name|queryProcessor
 operator|.
-name|queryChanges
+name|query
 argument_list|(
 name|queryBuilder
 operator|.
@@ -10862,7 +10862,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|changes
+name|entities
 argument_list|()
 decl_stmt|;
 name|assertThat
@@ -11034,7 +11034,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|queryChanges
+name|query
 argument_list|(
 name|queryBuilder
 operator|.
@@ -11050,7 +11050,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
-name|changes
+name|entities
 argument_list|()
 decl_stmt|;
 name|assertThat

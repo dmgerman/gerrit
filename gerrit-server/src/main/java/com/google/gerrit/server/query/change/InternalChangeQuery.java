@@ -617,7 +617,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Execute a single query over changes, for use by Gerrit internals.  *<p>  * By default, visibility of returned changes is not enforced (unlike in {@link  * QueryProcessor}). The methods in this class are not typically used by  * user-facing paths, but rather by internal callers that need to process all  * matching results.  */
+comment|/**  * Execute a single query over changes, for use by Gerrit internals.  *<p>  * By default, visibility of returned changes is not enforced (unlike in {@link  * ChangeQueryProcessor}). The methods in this class are not typically used by  * user-facing paths, but rather by internal callers that need to process all  * matching results.  */
 end_comment
 
 begin_class
@@ -757,7 +757,7 @@ decl_stmt|;
 DECL|field|qp
 specifier|private
 specifier|final
-name|QueryProcessor
+name|ChangeQueryProcessor
 name|qp
 decl_stmt|;
 DECL|field|indexes
@@ -784,13 +784,13 @@ name|notesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalChangeQuery (IndexConfig indexConfig, QueryProcessor queryProcessor, ChangeIndexCollection indexes, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory)
+DECL|method|InternalChangeQuery (IndexConfig indexConfig, ChangeQueryProcessor queryProcessor, ChangeIndexCollection indexes, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory)
 name|InternalChangeQuery
 parameter_list|(
 name|IndexConfig
 name|indexConfig
 parameter_list|,
-name|QueryProcessor
+name|ChangeQueryProcessor
 name|queryProcessor
 parameter_list|,
 name|ChangeIndexCollection
@@ -2189,12 +2189,12 @@ block|{
 return|return
 name|qp
 operator|.
-name|queryChanges
+name|query
 argument_list|(
 name|p
 argument_list|)
 operator|.
-name|changes
+name|entities
 argument_list|()
 return|;
 block|}
