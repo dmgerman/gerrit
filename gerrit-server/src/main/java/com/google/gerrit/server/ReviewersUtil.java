@@ -1714,7 +1714,7 @@ name|isVisibleTo
 argument_list|(
 name|account
 argument_list|)
-comment|// Can the account see the current user?
+comment|// Can the current user see the account?
 operator|&&
 name|accountControl
 operator|.
