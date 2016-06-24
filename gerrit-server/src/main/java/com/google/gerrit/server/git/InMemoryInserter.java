@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.notedb
+DECL|package|com.google.gerrit.server.git
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|git
 package|;
 end_package
 
@@ -284,6 +284,7 @@ end_import
 
 begin_class
 DECL|class|InMemoryInserter
+specifier|public
 class|class
 name|InMemoryInserter
 extends|extends
@@ -318,6 +319,7 @@ name|boolean
 name|closeReader
 decl_stmt|;
 DECL|method|InMemoryInserter (ObjectReader reader)
+specifier|public
 name|InMemoryInserter
 parameter_list|(
 name|ObjectReader
@@ -339,6 +341,7 @@ literal|false
 expr_stmt|;
 block|}
 DECL|method|InMemoryInserter (Repository repo)
+specifier|public
 name|InMemoryInserter
 parameter_list|(
 name|Repository
@@ -462,6 +465,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|insert (InsertedObject obj)
+specifier|public
 name|ObjectId
 name|insert
 parameter_list|(
