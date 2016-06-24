@@ -264,6 +264,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|InMemoryInserter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|MergeUtil
 import|;
 end_import
@@ -409,6 +425,20 @@ operator|.
 name|lib
 operator|.
 name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectInserter
 import|;
 end_import
 
@@ -1402,6 +1432,18 @@ block|}
 comment|// A trivial rebase can be detected by looking for the next commit
 comment|// having the same tree as would exist when the prior commit is
 comment|// cherry-picked onto the next commit's new first parent.
+try|try
+init|(
+name|ObjectInserter
+name|ins
+init|=
+operator|new
+name|InMemoryInserter
+argument_list|(
+name|repo
+argument_list|)
+init|)
+block|{
 name|ThreeWayMerger
 name|merger
 init|=
@@ -1411,12 +1453,7 @@ name|newThreeWayMerger
 argument_list|(
 name|repo
 argument_list|,
-name|MergeUtil
-operator|.
-name|createDryRunInserter
-argument_list|(
-name|repo
-argument_list|)
+name|ins
 argument_list|,
 name|key
 operator|.
@@ -1435,8 +1472,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 if|if
 condition|(
 name|merger
