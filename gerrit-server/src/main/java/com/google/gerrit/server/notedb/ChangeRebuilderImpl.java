@@ -1265,6 +1265,12 @@ operator|.
 name|Factory
 name|updateManagerFactory
 decl_stmt|;
+DECL|field|migration
+specifier|private
+specifier|final
+name|NotesMigration
+name|migration
+decl_stmt|;
 DECL|field|patchListCache
 specifier|private
 specifier|final
@@ -1291,7 +1297,7 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeRebuilderImpl (SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeUpdate.Factory updateFactory, NoteDbUpdateManager.Factory updateManagerFactory, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @AnonymousCowardName String anonymousCowardName)
+DECL|method|ChangeRebuilderImpl (SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeUpdate.Factory updateFactory, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration migration, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @AnonymousCowardName String anonymousCowardName)
 name|ChangeRebuilderImpl
 parameter_list|(
 name|SchemaFactory
@@ -1320,6 +1326,9 @@ name|NoteDbUpdateManager
 operator|.
 name|Factory
 name|updateManagerFactory
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -1374,6 +1383,12 @@ operator|.
 name|updateManagerFactory
 operator|=
 name|updateManagerFactory
+expr_stmt|;
+name|this
+operator|.
+name|migration
+operator|=
+name|migration
 expr_stmt|;
 name|this
 operator|.
@@ -1820,11 +1835,36 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|migration
+operator|.
+name|failChangeWrites
+argument_list|()
+condition|)
+block|{
 name|manager
 operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Don't even attempt to execute if read-only, it would fail anyway. But
+comment|// do throw an exception to the caller so they know to use the staged
+comment|// results instead of reading from the repo.
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+name|NoteDbUpdateManager
+operator|.
+name|CHANGES_READ_ONLY
+argument_list|)
+throw|;
+block|}
 block|}
 catch|catch
 parameter_list|(

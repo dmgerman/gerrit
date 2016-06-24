@@ -395,7 +395,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|writeChanges
+name|commitChangeWrites
 argument_list|()
 condition|)
 block|{
