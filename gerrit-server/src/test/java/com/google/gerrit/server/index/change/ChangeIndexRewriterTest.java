@@ -497,10 +497,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|IndexRewriterTest
+DECL|class|ChangeIndexRewriterTest
 specifier|public
 class|class
-name|IndexRewriterTest
+name|ChangeIndexRewriterTest
 extends|extends
 name|GerritBaseTests
 block|{
@@ -533,7 +533,7 @@ name|queryBuilder
 decl_stmt|;
 DECL|field|rewrite
 specifier|private
-name|IndexRewriter
+name|ChangeIndexRewriter
 name|rewrite
 decl_stmt|;
 annotation|@
@@ -580,7 +580,7 @@ expr_stmt|;
 name|rewrite
 operator|=
 operator|new
-name|IndexRewriter
+name|ChangeIndexRewriter
 argument_list|(
 name|indexes
 argument_list|,
@@ -2244,7 +2244,7 @@ throws|throws
 name|QueryParseException
 block|{
 return|return
-name|IndexRewriter
+name|ChangeIndexRewriter
 operator|.
 name|getPossibleStatus
 argument_list|(

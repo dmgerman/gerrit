@@ -98,6 +98,26 @@ name|query
 operator|.
 name|change
 operator|.
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_LIMIT
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
 name|ChangeStatusPredicate
 operator|.
 name|open
@@ -346,7 +366,7 @@ name|index
 operator|.
 name|change
 operator|.
-name|IndexRewriter
+name|ChangeIndexRewriter
 import|;
 end_import
 
@@ -397,6 +417,22 @@ operator|.
 name|project
 operator|.
 name|ChangeControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|LimitPredicate
 import|;
 end_import
 
@@ -575,7 +611,7 @@ decl_stmt|;
 DECL|field|rewriter
 specifier|private
 specifier|final
-name|IndexRewriter
+name|ChangeIndexRewriter
 name|rewriter
 decl_stmt|;
 DECL|field|indexConfig
@@ -617,7 +653,7 @@ name|requestedFields
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, ChangeIndexCollection indexes, IndexRewriter rewriter, IndexConfig indexConfig, Metrics metrics)
+DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, IndexConfig indexConfig, Metrics metrics)
 name|QueryProcessor
 parameter_list|(
 name|Provider
@@ -645,7 +681,7 @@ parameter_list|,
 name|ChangeIndexCollection
 name|indexes
 parameter_list|,
-name|IndexRewriter
+name|ChangeIndexRewriter
 name|rewriter
 parameter_list|,
 name|IndexConfig
@@ -1517,6 +1553,8 @@ name|LimitPredicate
 operator|.
 name|getLimit
 argument_list|(
+name|FIELD_LIMIT
+argument_list|,
 name|p
 argument_list|)
 decl_stmt|;

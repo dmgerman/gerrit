@@ -292,6 +292,16 @@ name|Singleton
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -427,6 +437,8 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(

@@ -452,6 +452,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -795,6 +805,8 @@ throws|throws
 name|OrmException
 throws|,
 name|Failure
+throws|,
+name|IOException
 block|{
 name|IdentifiedUser
 name|self
@@ -1052,6 +1064,8 @@ throws|throws
 name|OrmException
 throws|,
 name|Failure
+throws|,
+name|IOException
 block|{
 name|ContributorAgreement
 name|ca

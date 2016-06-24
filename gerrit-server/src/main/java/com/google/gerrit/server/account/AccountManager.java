@@ -372,6 +372,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -687,6 +697,8 @@ name|who
 parameter_list|)
 throws|throws
 name|AccountException
+throws|,
+name|IOException
 block|{
 name|who
 operator|=
@@ -984,6 +996,8 @@ throws|,
 name|NameAlreadyUsedException
 throws|,
 name|InvalidUserNameException
+throws|,
+name|IOException
 block|{
 name|IdentifiedUser
 name|user
@@ -1411,6 +1425,8 @@ throws|throws
 name|OrmException
 throws|,
 name|AccountException
+throws|,
+name|IOException
 block|{
 name|Account
 operator|.
@@ -2038,6 +2054,8 @@ throws|throws
 name|AccountException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 try|try
 init|(
@@ -2286,6 +2304,8 @@ throws|throws
 name|OrmException
 throws|,
 name|AccountException
+throws|,
+name|IOException
 block|{
 try|try
 init|(
@@ -2473,6 +2493,8 @@ throws|throws
 name|AccountException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 try|try
 init|(

@@ -182,6 +182,22 @@ name|server
 operator|.
 name|query
 operator|.
+name|Paginated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
 name|Predicate
 import|;
 end_import
@@ -814,11 +830,22 @@ comment|// If our source is a paginated source and we skipped at
 comment|// least one of its results, we may not have filled the full
 comment|// limit the caller wants.  Restart the source and continue.
 comment|//
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|Paginated
+argument_list|<
+name|ChangeData
+argument_list|>
 name|p
 init|=
 operator|(
 name|Paginated
+argument_list|<
+name|ChangeData
+argument_list|>
 operator|)
 name|source
 decl_stmt|;

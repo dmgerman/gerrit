@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.account
+DECL|package|com.google.gerrit.server.index
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
+name|index
 package|;
 end_package
 
@@ -74,81 +74,57 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|query
 operator|.
-name|Account
+name|Predicate
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|io
+name|google
 operator|.
-name|IOException
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|QueryParseException
 import|;
 end_import
 
-begin_comment
-comment|/** Caches important (but small) account state to avoid database hits. */
-end_comment
-
 begin_interface
-DECL|interface|AccountCache
+DECL|interface|IndexRewriter
 specifier|public
 interface|interface
-name|AccountCache
+name|IndexRewriter
+parameter_list|<
+name|T
+parameter_list|>
 block|{
-DECL|method|get (Account.Id accountId)
-name|AccountState
-name|get
+DECL|method|rewrite (Predicate<T> in, QueryOptions opts)
+name|Predicate
+argument_list|<
+name|T
+argument_list|>
+name|rewrite
 parameter_list|(
-name|Account
-operator|.
-name|Id
-name|accountId
-parameter_list|)
-function_decl|;
-DECL|method|getIfPresent (Account.Id accountId)
-name|AccountState
-name|getIfPresent
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|accountId
-parameter_list|)
-function_decl|;
-DECL|method|getByUsername (String username)
-name|AccountState
-name|getByUsername
-parameter_list|(
-name|String
-name|username
-parameter_list|)
-function_decl|;
-DECL|method|evict (Account.Id accountId)
-name|void
-name|evict
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|accountId
+name|Predicate
+argument_list|<
+name|T
+argument_list|>
+name|in
+parameter_list|,
+name|QueryOptions
+name|opts
 parameter_list|)
 throws|throws
-name|IOException
-function_decl|;
-DECL|method|evictByUsername (String username)
-name|void
-name|evictByUsername
-parameter_list|(
-name|String
-name|username
-parameter_list|)
+name|QueryParseException
 function_decl|;
 block|}
 end_interface

@@ -402,6 +402,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|HashSet
@@ -695,6 +705,8 @@ throws|throws
 name|Failure
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 try|try
 block|{
@@ -758,6 +770,8 @@ throws|throws
 name|RestApiException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|GroupInput
 name|input
@@ -851,6 +865,8 @@ throws|throws
 name|RestApiException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|AddMembers
 operator|.

@@ -174,6 +174,22 @@ name|server
 operator|.
 name|index
 operator|.
+name|IndexRewriter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|QueryOptions
 import|;
 end_import
@@ -191,6 +207,22 @@ operator|.
 name|query
 operator|.
 name|AndPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|LimitPredicate
 import|;
 end_import
 
@@ -308,7 +340,7 @@ name|query
 operator|.
 name|change
 operator|.
-name|ChangeStatusPredicate
+name|ChangeQueryBuilder
 import|;
 end_import
 
@@ -326,7 +358,7 @@ name|query
 operator|.
 name|change
 operator|.
-name|LimitPredicate
+name|ChangeStatusPredicate
 import|;
 end_import
 
@@ -433,10 +465,15 @@ end_comment
 begin_class
 annotation|@
 name|Singleton
-DECL|class|IndexRewriter
+DECL|class|ChangeIndexRewriter
 specifier|public
 class|class
+name|ChangeIndexRewriter
+implements|implements
 name|IndexRewriter
+argument_list|<
+name|ChangeData
+argument_list|>
 block|{
 comment|/** Set of all open change statuses. */
 DECL|field|OPEN_STATUSES
@@ -942,8 +979,8 @@ name|config
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IndexRewriter (ChangeIndexCollection indexes, IndexConfig config)
-name|IndexRewriter
+DECL|method|ChangeIndexRewriter (ChangeIndexCollection indexes, IndexConfig config)
+name|ChangeIndexRewriter
 parameter_list|(
 name|ChangeIndexCollection
 name|indexes
@@ -965,6 +1002,8 @@ operator|=
 name|config
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|rewrite (Predicate<ChangeData> in, QueryOptions opts)
 specifier|public
 name|Predicate
@@ -1136,7 +1175,12 @@ comment|// and included that in their limit computation.
 return|return
 operator|new
 name|LimitPredicate
+argument_list|<>
 argument_list|(
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_LIMIT
+argument_list|,
 name|opts
 operator|.
 name|limit

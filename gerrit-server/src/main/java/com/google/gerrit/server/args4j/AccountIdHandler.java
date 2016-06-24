@@ -296,6 +296,16 @@ name|Setter
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 DECL|class|AccountIdHandler
 specifier|public
@@ -525,6 +535,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
@@ -561,6 +573,8 @@ name|user
 parameter_list|)
 throws|throws
 name|CmdLineException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(

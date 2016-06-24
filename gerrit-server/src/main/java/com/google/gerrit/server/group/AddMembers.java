@@ -530,6 +530,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collection
@@ -919,6 +929,8 @@ throws|,
 name|UnprocessableEntityException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|AccountGroup
 name|internalGroup
@@ -1077,6 +1089,8 @@ throws|,
 name|UnprocessableEntityException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 try|try
 block|{
@@ -1198,6 +1212,8 @@ name|newMemberIds
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|Map
 argument_list|<
@@ -1371,6 +1387,8 @@ parameter_list|(
 name|String
 name|user
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -1588,6 +1606,8 @@ throws|,
 name|ResourceNotFoundException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|AddMembers
 operator|.
