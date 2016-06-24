@@ -303,6 +303,15 @@ name|FIELD_LIMIT
 init|=
 literal|"limit"
 decl_stmt|;
+DECL|field|FIELD_VISIBLETO
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FIELD_VISIBLETO
+init|=
+literal|"visibleto"
+decl_stmt|;
 DECL|field|mydef
 specifier|private
 specifier|static
