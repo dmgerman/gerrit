@@ -8020,7 +8020,7 @@ name|value
 argument_list|(
 literal|1
 argument_list|,
-literal|"Failed"
+literal|"Passes"
 argument_list|)
 argument_list|,
 name|value
@@ -8035,7 +8035,7 @@ argument_list|(
 operator|-
 literal|1
 argument_list|,
-literal|"Passes"
+literal|"Failed"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -8139,7 +8139,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|verified
+name|custom1
 argument_list|)
 expr_stmt|;
 name|cfg
@@ -8154,7 +8154,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|verified
+name|custom2
 argument_list|)
 expr_stmt|;
 name|String
