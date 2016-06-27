@@ -523,7 +523,7 @@ operator|=
 name|accountVisibility
 expr_stmt|;
 block|}
-comment|/**    * Returns true if the otherUser is allowed to see the current user, based    * on the account visibility policy. Depending on the group membership    * realms supported, this may not be able to determine SAME_GROUP or    * VISIBLE_GROUP correctly (defaulting to not being visible). This is because    * {@link GroupMembership#getKnownGroups()} may only return a subset of the    * effective groups.    */
+comment|/**    * Returns true if the current user is allowed to see the otherUser, based    * on the account visibility policy. Depending on the group membership    * realms supported, this may not be able to determine SAME_GROUP or    * VISIBLE_GROUP correctly (defaulting to not being visible). This is because    * {@link GroupMembership#getKnownGroups()} may only return a subset of the    * effective groups.    */
 DECL|method|canSee (final Account otherUser)
 specifier|public
 name|boolean
@@ -544,7 +544,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns true if the otherUser is allowed to see the current user, based    * on the account visibility policy. Depending on the group membership    * realms supported, this may not be able to determine SAME_GROUP or    * VISIBLE_GROUP correctly (defaulting to not being visible). This is because    * {@link GroupMembership#getKnownGroups()} may only return a subset of the    * effective groups.    */
+comment|/**    * Returns true if the current user is allowed to see the otherUser, based    * on the account visibility policy. Depending on the group membership    * realms supported, this may not be able to determine SAME_GROUP or    * VISIBLE_GROUP correctly (defaulting to not being visible). This is because    * {@link GroupMembership#getKnownGroups()} may only return a subset of the    * effective groups.    */
 DECL|method|canSee (final Account.Id otherUser)
 specifier|public
 name|boolean
