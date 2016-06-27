@@ -233,6 +233,34 @@ name|email
 argument_list|)
 return|;
 block|}
+DECL|method|equalsName (String name)
+specifier|static
+name|Predicate
+argument_list|<
+name|AccountState
+argument_list|>
+name|equalsName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AccountPredicate
+argument_list|(
+name|AccountField
+operator|.
+name|NAME_PART
+argument_list|,
+name|AccountQueryBuilder
+operator|.
+name|FIELD_NAME
+argument_list|,
+name|name
+argument_list|)
+return|;
+block|}
 DECL|method|username (String username)
 specifier|static
 name|Predicate

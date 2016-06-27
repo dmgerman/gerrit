@@ -336,6 +336,15 @@ name|FIELD_LIMIT
 init|=
 literal|"limit"
 decl_stmt|;
+DECL|field|FIELD_NAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FIELD_NAME
+init|=
+literal|"name"
+decl_stmt|;
 DECL|field|FIELD_USERNAME
 specifier|public
 specifier|static
@@ -614,6 +623,29 @@ return|;
 block|}
 annotation|@
 name|Operator
+DECL|method|name (String name)
+specifier|public
+name|Predicate
+argument_list|<
+name|AccountState
+argument_list|>
+name|name
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|AccountPredicates
+operator|.
+name|equalsName
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Operator
 DECL|method|username (String username)
 specifier|public
 name|Predicate
@@ -727,7 +759,7 @@ name|preds
 operator|.
 name|add
 argument_list|(
-name|email
+name|name
 argument_list|(
 name|query
 argument_list|)
