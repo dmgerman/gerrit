@@ -328,18 +328,7 @@ name|AccountProjectWatchAccess
 name|accountProjectWatches
 parameter_list|()
 function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|20
-argument_list|)
-DECL|method|accountPatchReviews ()
-name|AccountPatchReviewAccess
-name|accountPatchReviews
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 20)
 annotation|@
 name|Relation
 argument_list|(
