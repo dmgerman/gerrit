@@ -684,6 +684,9 @@ operator|.
 name|equals
 argument_list|(
 name|otherUser
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 condition|)
 block|{
