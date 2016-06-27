@@ -1827,6 +1827,10 @@ name|getProject
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Disable auto-rebuilding. This may be called async for a
+comment|// large number of changes in one project, increasing
+comment|// write contention. Plus, we haven't propagated the
+comment|// request scope for the rebuilder to open the db.
 return|return
 operator|new
 name|ChangeNotes
@@ -1834,6 +1838,10 @@ argument_list|(
 name|args
 argument_list|,
 name|change
+argument_list|,
+literal|false
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|load
