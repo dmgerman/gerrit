@@ -249,6 +249,9 @@ argument_list|,
 name|pred
 argument_list|,
 name|opts
+operator|.
+name|convertForBackend
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
