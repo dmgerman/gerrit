@@ -672,6 +672,14 @@ specifier|public
 class|class
 name|NoteDbUpdateManager
 block|{
+DECL|field|CHANGES_READ_ONLY
+specifier|public
+specifier|static
+name|String
+name|CHANGES_READ_ONLY
+init|=
+literal|"NoteDb changes are read-only"
+decl_stmt|;
 DECL|interface|Factory
 specifier|public
 interface|interface
@@ -1667,7 +1675,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|writeChanges
+name|commitChangeWrites
 argument_list|()
 condition|)
 block|{
@@ -2401,6 +2409,23 @@ name|OrmException
 throws|,
 name|IOException
 block|{
+comment|// Check before even inspecting the list, as this is a programmer error.
+if|if
+condition|(
+name|migration
+operator|.
+name|failChangeWrites
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+name|CHANGES_READ_ONLY
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|isEmpty

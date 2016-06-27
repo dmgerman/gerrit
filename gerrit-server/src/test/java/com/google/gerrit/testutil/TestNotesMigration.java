@@ -136,6 +136,8 @@ return|return
 name|readChanges
 return|;
 block|}
+comment|// Increase visbility from superclass, as tests may want to check whether
+comment|// NoteDb data is written in specific migration scenarios.
 annotation|@
 name|Override
 DECL|method|writeChanges ()
