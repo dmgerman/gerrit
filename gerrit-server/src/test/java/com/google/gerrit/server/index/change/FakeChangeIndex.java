@@ -368,11 +368,9 @@ name|int
 name|getCardinality
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|()
-throw|;
+return|return
+literal|1
+return|;
 block|}
 annotation|@
 name|Override

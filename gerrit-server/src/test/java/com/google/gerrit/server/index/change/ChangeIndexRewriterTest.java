@@ -374,7 +374,7 @@ name|query
 operator|.
 name|change
 operator|.
-name|AndSource
+name|AndChangeSource
 import|;
 end_import
 
@@ -687,7 +687,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|AndSource
+name|AndChangeSource
 operator|.
 name|class
 argument_list|)
@@ -797,7 +797,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|AndSource
+name|AndChangeSource
 operator|.
 name|class
 argument_list|)
@@ -869,7 +869,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|AndSource
+name|AndChangeSource
 operator|.
 name|class
 argument_list|)
@@ -1003,7 +1003,7 @@ argument_list|)
 operator|.
 name|isSameAs
 argument_list|(
-name|AndSource
+name|AndChangeSource
 operator|.
 name|class
 argument_list|)
@@ -1170,7 +1170,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|AndSource
+name|AndChangeSource
 operator|.
 name|class
 argument_list|)
@@ -1267,7 +1267,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|AndSource
+name|AndChangeSource
 operator|.
 name|class
 argument_list|)
@@ -1356,7 +1356,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|AndSource
+name|AndChangeSource
 operator|.
 name|class
 argument_list|)
@@ -1452,7 +1452,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|AndSource
+name|AndChangeSource
 operator|.
 name|class
 argument_list|)
@@ -2140,7 +2140,7 @@ name|SafeVarargs
 DECL|method|andSource (Predicate<ChangeData>.... preds)
 specifier|private
 specifier|static
-name|AndSource
+name|AndChangeSource
 name|andSource
 parameter_list|(
 name|Predicate
@@ -2153,7 +2153,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|AndSource
+name|AndChangeSource
 argument_list|(
 name|Arrays
 operator|.

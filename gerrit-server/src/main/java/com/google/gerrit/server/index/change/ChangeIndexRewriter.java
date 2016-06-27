@@ -324,7 +324,7 @@ name|query
 operator|.
 name|change
 operator|.
-name|AndSource
+name|AndChangeSource
 import|;
 end_import
 
@@ -1871,7 +1871,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|AndSource
+name|AndChangeSource
 argument_list|(
 name|all
 argument_list|)
