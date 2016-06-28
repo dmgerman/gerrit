@@ -223,8 +223,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-annotation|@
-name|Override
 DECL|method|match (T object)
 specifier|public
 name|boolean
@@ -282,18 +280,6 @@ return|return
 name|range
 operator|.
 name|max
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getCost ()
-specifier|public
-name|int
-name|getCost
-parameter_list|()
-block|{
-return|return
-literal|1
 return|;
 block|}
 block|}

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.query.change
+DECL|package|com.google.gerrit.server.query
 package|package
 name|com
 operator|.
@@ -63,44 +63,8 @@ operator|.
 name|server
 operator|.
 name|query
-operator|.
-name|change
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|change
-operator|.
-name|ChangeField
-import|;
-end_import
 
 begin_import
 import|import
@@ -116,88 +80,34 @@ name|OrmException
 import|;
 end_import
 
-begin_class
-DECL|class|HasDraftByPredicate
-class|class
-name|HasDraftByPredicate
-extends|extends
-name|ChangeIndexPredicate
-block|{
-DECL|field|accountId
-specifier|private
-specifier|final
-name|Account
-operator|.
-name|Id
-name|accountId
-decl_stmt|;
-DECL|method|HasDraftByPredicate (Account.Id accountId)
-name|HasDraftByPredicate
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|accountId
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|ChangeField
-operator|.
-name|DRAFTBY
-argument_list|,
-name|accountId
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|accountId
-operator|=
-name|accountId
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|match (ChangeData cd)
+begin_interface
+DECL|interface|Matchable
 specifier|public
+interface|interface
+name|Matchable
+parameter_list|<
+name|T
+parameter_list|>
+block|{
+comment|/**    * Does this predicate match this object?    *    * @throws OrmException    */
+DECL|method|match (T object)
 name|boolean
 name|match
 parameter_list|(
-name|ChangeData
-name|cd
+name|T
+name|object
 parameter_list|)
 throws|throws
 name|OrmException
-block|{
-return|return
-name|cd
-operator|.
-name|draftsByUser
-argument_list|()
-operator|.
-name|contains
-argument_list|(
-name|accountId
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
+function_decl|;
+comment|/** @return a cost estimate to run this predicate, higher figures cost more. */
 DECL|method|getCost ()
-specifier|public
 name|int
 name|getCost
 parameter_list|()
-block|{
-return|return
-literal|1
-return|;
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

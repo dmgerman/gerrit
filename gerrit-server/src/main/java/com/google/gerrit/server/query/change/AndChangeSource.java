@@ -96,6 +96,22 @@ name|server
 operator|.
 name|query
 operator|.
+name|IsVisibleToPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
 name|Predicate
 import|;
 end_import
@@ -161,14 +177,12 @@ argument_list|>
 implements|implements
 name|ChangeDataSource
 block|{
-DECL|method|AndChangeSource (Collection<? extends Predicate<ChangeData>> that)
+DECL|method|AndChangeSource (Collection<Predicate<ChangeData>> that)
 specifier|public
 name|AndChangeSource
 parameter_list|(
 name|Collection
 argument_list|<
-name|?
-extends|extends
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -180,25 +194,24 @@ block|{
 name|super
 argument_list|(
 name|that
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AndChangeSource (Collection<? extends Predicate<ChangeData>> that, int start)
+DECL|method|AndChangeSource (Predicate<ChangeData> that, IsVisibleToPredicate<ChangeData> isVisibleToPredicate, int start)
 specifier|public
 name|AndChangeSource
 parameter_list|(
-name|Collection
-argument_list|<
-name|?
-extends|extends
 name|Predicate
 argument_list|<
 name|ChangeData
 argument_list|>
-argument_list|>
 name|that
+parameter_list|,
+name|IsVisibleToPredicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|isVisibleToPredicate
 parameter_list|,
 name|int
 name|start
@@ -207,6 +220,8 @@ block|{
 name|super
 argument_list|(
 name|that
+argument_list|,
+name|isVisibleToPredicate
 argument_list|,
 name|start
 argument_list|)

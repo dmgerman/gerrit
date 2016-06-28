@@ -132,33 +132,6 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|match (String object)
-specifier|public
-name|boolean
-name|match
-parameter_list|(
-name|String
-name|object
-parameter_list|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getCost ()
-specifier|public
-name|int
-name|getCost
-parameter_list|()
-block|{
-return|return
-literal|0
-return|;
-block|}
 block|}
 DECL|method|f (String name, String value)
 specifier|protected

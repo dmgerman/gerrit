@@ -222,18 +222,6 @@ name|Date
 name|getMaxTimestamp
 parameter_list|()
 function_decl|;
-annotation|@
-name|Override
-DECL|method|getCost ()
-specifier|public
-name|int
-name|getCost
-parameter_list|()
-block|{
-return|return
-literal|1
-return|;
-block|}
 block|}
 end_class
 

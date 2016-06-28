@@ -96,22 +96,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexPredicate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|change
 operator|.
 name|ChangeField
@@ -137,10 +121,7 @@ DECL|class|SubmissionIdPredicate
 class|class
 name|SubmissionIdPredicate
 extends|extends
-name|IndexPredicate
-argument_list|<
-name|ChangeData
-argument_list|>
+name|ChangeIndexPredicate
 block|{
 DECL|method|SubmissionIdPredicate (String changeSet)
 name|SubmissionIdPredicate

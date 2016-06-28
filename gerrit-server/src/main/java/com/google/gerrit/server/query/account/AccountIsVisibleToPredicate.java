@@ -126,7 +126,7 @@ name|server
 operator|.
 name|query
 operator|.
-name|OperatorPredicate
+name|IsVisibleToPredicate
 import|;
 end_import
 
@@ -163,12 +163,12 @@ import|;
 end_import
 
 begin_class
-DECL|class|IsVisibleToPredicate
+DECL|class|AccountIsVisibleToPredicate
 specifier|public
 class|class
-name|IsVisibleToPredicate
+name|AccountIsVisibleToPredicate
 extends|extends
-name|OperatorPredicate
+name|IsVisibleToPredicate
 argument_list|<
 name|AccountState
 argument_list|>
@@ -243,8 +243,8 @@ specifier|final
 name|AccountControl
 name|accountControl
 decl_stmt|;
-DECL|method|IsVisibleToPredicate (AccountControl accountControl)
-name|IsVisibleToPredicate
+DECL|method|AccountIsVisibleToPredicate (AccountControl accountControl)
+name|AccountIsVisibleToPredicate
 parameter_list|(
 name|AccountControl
 name|accountControl

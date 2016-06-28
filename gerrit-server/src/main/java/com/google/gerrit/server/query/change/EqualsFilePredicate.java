@@ -80,22 +80,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexPredicate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|change
 operator|.
 name|ChangeField
@@ -157,10 +141,7 @@ DECL|class|EqualsFilePredicate
 class|class
 name|EqualsFilePredicate
 extends|extends
-name|IndexPredicate
-argument_list|<
-name|ChangeData
-argument_list|>
+name|ChangeIndexPredicate
 block|{
 DECL|method|create (Arguments args, String value)
 specifier|static

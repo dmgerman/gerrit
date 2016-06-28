@@ -120,22 +120,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexPredicate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|change
 operator|.
 name|ChangeField
@@ -162,10 +146,7 @@ specifier|public
 class|class
 name|CommitterPredicate
 extends|extends
-name|IndexPredicate
-argument_list|<
-name|ChangeData
-argument_list|>
+name|ChangeIndexPredicate
 block|{
 DECL|method|CommitterPredicate (String value)
 name|CommitterPredicate

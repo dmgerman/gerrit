@@ -4938,7 +4938,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|IsVisibleToPredicate
+name|ChangeIsVisibleToPredicate
 argument_list|(
 name|args
 operator|.
