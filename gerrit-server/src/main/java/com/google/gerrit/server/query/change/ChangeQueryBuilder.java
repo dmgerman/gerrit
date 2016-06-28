@@ -3304,9 +3304,10 @@ block|{
 comment|// not status: alias?
 block|}
 throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|()
+name|error
+argument_list|(
+literal|"Invalid query"
+argument_list|)
 throw|;
 block|}
 annotation|@
