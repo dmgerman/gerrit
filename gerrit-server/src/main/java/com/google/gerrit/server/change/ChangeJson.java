@@ -2006,6 +2006,12 @@ operator|.
 name|Factory
 name|changeResourceFactory
 decl_stmt|;
+DECL|field|changeKindCache
+specifier|private
+specifier|final
+name|ChangeKindCache
+name|changeKindCache
+decl_stmt|;
 DECL|field|accountLoader
 specifier|private
 name|AccountLoader
@@ -2033,7 +2039,7 @@ name|fix
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, GitRepositoryManager repoManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, GpgApiAdapter gpgApi, ChangeNotes.Factory notesFactory, ChangeResource.Factory changeResourceFactory, @Assisted Set<ListChangesOption> options)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, GitRepositoryManager repoManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, GpgApiAdapter gpgApi, ChangeNotes.Factory notesFactory, ChangeResource.Factory changeResourceFactory, ChangeKindCache changeKindCache, @Assisted Set<ListChangesOption> options)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -2122,6 +2128,9 @@ name|ChangeResource
 operator|.
 name|Factory
 name|changeResourceFactory
+parameter_list|,
+name|ChangeKindCache
+name|changeKindCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -2251,6 +2260,12 @@ operator|.
 name|changeResourceFactory
 operator|=
 name|changeResourceFactory
+expr_stmt|;
+name|this
+operator|.
+name|changeKindCache
+operator|=
+name|changeKindCache
 expr_stmt|;
 name|this
 operator|.
@@ -4151,6 +4166,8 @@ operator|=
 name|revisions
 argument_list|(
 name|ctl
+argument_list|,
+name|cd
 argument_list|,
 name|src
 argument_list|)
@@ -6878,7 +6895,7 @@ name|ORDER_NULLS_FIRST
 argument_list|)
 return|;
 block|}
-DECL|method|revisions (ChangeControl ctl, Map<PatchSet.Id, PatchSet> map)
+DECL|method|revisions (ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map)
 specifier|private
 name|Map
 argument_list|<
@@ -6890,6 +6907,9 @@ name|revisions
 parameter_list|(
 name|ChangeControl
 name|ctl
+parameter_list|,
+name|ChangeData
+name|cd
 parameter_list|,
 name|Map
 argument_list|<
@@ -7006,6 +7026,8 @@ argument_list|,
 name|toRevisionInfo
 argument_list|(
 name|ctl
+argument_list|,
+name|cd
 argument_list|,
 name|in
 argument_list|,
@@ -7262,6 +7284,18 @@ name|toRevisionInfo
 argument_list|(
 name|ctl
 argument_list|,
+name|changeDataFactory
+operator|.
+name|create
+argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|ctl
+argument_list|)
+argument_list|,
 name|in
 argument_list|,
 name|repo
@@ -7277,13 +7311,16 @@ name|rev
 return|;
 block|}
 block|}
-DECL|method|toRevisionInfo (ChangeControl ctl, PatchSet in, Repository repo)
+DECL|method|toRevisionInfo (ChangeControl ctl, ChangeData cd, PatchSet in, Repository repo)
 specifier|private
 name|RevisionInfo
 name|toRevisionInfo
 parameter_list|(
 name|ChangeControl
 name|ctl
+parameter_list|,
+name|ChangeData
+name|cd
 parameter_list|,
 name|PatchSet
 name|in
@@ -7396,6 +7433,21 @@ operator|=
 name|makeFetchMap
 argument_list|(
 name|ctl
+argument_list|,
+name|in
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|kind
+operator|=
+name|changeKindCache
+operator|.
+name|getChangeKind
+argument_list|(
+name|repo
+argument_list|,
+name|cd
 argument_list|,
 name|in
 argument_list|)

@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ChangeKind
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -102,6 +118,11 @@ DECL|field|draft
 specifier|public
 name|Boolean
 name|draft
+decl_stmt|;
+DECL|field|kind
+specifier|public
+name|ChangeKind
+name|kind
 decl_stmt|;
 DECL|field|_number
 specifier|public
