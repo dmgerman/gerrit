@@ -947,8 +947,8 @@ return|;
 block|}
 DECL|class|OtherUser
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|OtherUser
 block|{
