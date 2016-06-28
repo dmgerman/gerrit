@@ -74,6 +74,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -161,6 +177,22 @@ operator|.
 name|index
 operator|.
 name|IndexConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexPredicate
 import|;
 end_import
 
@@ -309,6 +341,27 @@ operator|.
 name|Factory
 name|accountControlFactory
 decl_stmt|;
+static|static
+block|{
+comment|// It is assumed that basic rewrites do not touch visibleto predicates.
+name|checkState
+argument_list|(
+operator|!
+name|IsVisibleToPredicate
+operator|.
+name|class
+operator|.
+name|isAssignableFrom
+argument_list|(
+name|IndexPredicate
+operator|.
+name|class
+argument_list|)
+argument_list|,
+literal|"AccountQueryProcessor assumes visibleto is not used by the index rewriter."
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Inject
 DECL|method|AccountQueryProcessor (Provider<CurrentUser> userProvider, Metrics metrics, IndexConfig indexConfig, AccountIndexCollection indexes, AccountIndexRewriter rewriter, AccountControl.Factory accountControlFactory)
