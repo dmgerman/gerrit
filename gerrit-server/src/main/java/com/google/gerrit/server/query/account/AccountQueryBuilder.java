@@ -727,7 +727,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|defaultField (String query)
-specifier|protected
+specifier|public
 name|Predicate
 argument_list|<
 name|AccountState
