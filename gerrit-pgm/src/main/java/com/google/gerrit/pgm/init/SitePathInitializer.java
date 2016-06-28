@@ -812,11 +812,6 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
-literal|"MergeFail.vm"
-argument_list|)
-expr_stmt|;
-name|extractMailExample
-argument_list|(
 literal|"NewChange.vm"
 argument_list|)
 expr_stmt|;
