@@ -1014,7 +1014,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|RuntimeException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -1022,7 +1022,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Failure in GitReferenceUpdatedListener"
+literal|"Error in event listener"
 argument_list|,
 name|e
 argument_list|)

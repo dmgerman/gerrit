@@ -377,7 +377,7 @@ block|{
 return|return;
 block|}
 name|Event
-name|e
+name|event
 init|=
 operator|new
 name|Event
@@ -397,13 +397,30 @@ range|:
 name|listeners
 control|)
 block|{
+try|try
+block|{
 name|l
 operator|.
 name|onReviewerAdded
 argument_list|(
-name|e
+name|event
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Error in event listener, e"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|fire (Change change, PatchSet patchSet, Account account)
