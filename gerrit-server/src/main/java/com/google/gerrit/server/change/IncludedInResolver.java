@@ -779,6 +779,11 @@ argument_list|,
 name|after
 argument_list|)
 expr_stmt|;
+name|rw
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
 comment|// It is highly likely that the target is reachable from the "after" set
 comment|// Within the "before" set we are trying to handle cases arising from clock skew
 return|return
