@@ -148,6 +148,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeData
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -210,6 +228,20 @@ name|db
 parameter_list|,
 name|Change
 name|change
+parameter_list|,
+name|PatchSet
+name|patch
+parameter_list|)
+function_decl|;
+DECL|method|getChangeKind (Repository repo, ChangeData cd, PatchSet patch)
+name|ChangeKind
+name|getChangeKind
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|,
+name|ChangeData
+name|cd
 parameter_list|,
 name|PatchSet
 name|patch
