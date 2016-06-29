@@ -198,6 +198,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -394,7 +406,10 @@ decl_stmt|;
 DECL|field|cfgProvider
 specifier|private
 specifier|final
-name|GerritServerConfigProvider
+name|Provider
+argument_list|<
+name|Config
+argument_list|>
 name|cfgProvider
 decl_stmt|;
 DECL|field|projectCache
@@ -436,13 +451,18 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginConfigFactory (SitePaths site, GerritServerConfigProvider cfgProvider, ProjectCache projectCache, ProjectState.Factory projectStateFactory)
+DECL|method|PluginConfigFactory ( SitePaths site, @GerritServerConfig Provider<Config> cfgProvider, ProjectCache projectCache, ProjectState.Factory projectStateFactory)
 name|PluginConfigFactory
 parameter_list|(
 name|SitePaths
 name|site
 parameter_list|,
-name|GerritServerConfigProvider
+annotation|@
+name|GerritServerConfig
+name|Provider
+argument_list|<
+name|Config
+argument_list|>
 name|cfgProvider
 parameter_list|,
 name|ProjectCache
