@@ -754,6 +754,9 @@ return|;
 block|}
 block|}
 argument_list|)
+operator|.
+name|toSet
+argument_list|()
 return|;
 block|}
 block|}
