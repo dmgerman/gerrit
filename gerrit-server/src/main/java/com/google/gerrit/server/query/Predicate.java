@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -77,20 +93,6 @@ operator|.
 name|collect
 operator|.
 name|Iterables
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -504,27 +506,76 @@ argument_list|>
 name|children
 parameter_list|)
 function_decl|;
-comment|/**    * Does this predicate match this object?    *    * @throws OrmException    */
-DECL|method|match (T object)
+DECL|method|isMatchable ()
 specifier|public
-specifier|abstract
 name|boolean
-name|match
-parameter_list|(
-name|T
-name|object
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-comment|/** @return a cost estimate to run this predicate, higher figures cost more. */
-DECL|method|getCost ()
-specifier|public
-specifier|abstract
-name|int
-name|getCost
+name|isMatchable
 parameter_list|()
-function_decl|;
+block|{
+return|return
+name|this
+operator|instanceof
+name|Matchable
+return|;
+block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+DECL|method|asMatchable ()
+specifier|public
+name|Matchable
+argument_list|<
+name|T
+argument_list|>
+name|asMatchable
+parameter_list|()
+block|{
+name|checkState
+argument_list|(
+name|isMatchable
+argument_list|()
+argument_list|,
+literal|"not matchable"
+argument_list|)
+expr_stmt|;
+return|return
+operator|(
+name|Matchable
+argument_list|<
+name|T
+argument_list|>
+operator|)
+name|this
+return|;
+block|}
+comment|/** @return a cost estimate to run this predicate, higher figures cost more. */
+DECL|method|estimateCost ()
+specifier|public
+name|int
+name|estimateCost
+parameter_list|()
+block|{
+if|if
+condition|(
+operator|!
+name|isMatchable
+argument_list|()
+condition|)
+block|{
+return|return
+literal|1
+return|;
+block|}
+return|return
+name|asMatchable
+argument_list|()
+operator|.
+name|getCost
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|hashCode ()
@@ -556,6 +607,11 @@ name|T
 parameter_list|>
 extends|extends
 name|Predicate
+argument_list|<
+name|T
+argument_list|>
+implements|implements
+name|Matchable
 argument_list|<
 name|T
 argument_list|>

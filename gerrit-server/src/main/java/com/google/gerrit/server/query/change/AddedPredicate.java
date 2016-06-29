@@ -80,22 +80,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|IntegerRangePredicate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|change
 operator|.
 name|ChangeField
@@ -138,10 +122,7 @@ specifier|public
 class|class
 name|AddedPredicate
 extends|extends
-name|IntegerRangePredicate
-argument_list|<
-name|ChangeData
-argument_list|>
+name|IntegerRangeChangePredicate
 block|{
 DECL|method|AddedPredicate (String value)
 name|AddedPredicate

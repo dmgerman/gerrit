@@ -79,6 +79,11 @@ name|IntPredicate
 argument_list|<
 name|T
 argument_list|>
+implements|implements
+name|Matchable
+argument_list|<
+name|T
+argument_list|>
 block|{
 annotation|@
 name|SuppressWarnings

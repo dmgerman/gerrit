@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -124,6 +140,11 @@ name|T
 parameter_list|>
 extends|extends
 name|Predicate
+argument_list|<
+name|T
+argument_list|>
+implements|implements
+name|Matchable
 argument_list|<
 name|T
 argument_list|>
@@ -301,6 +322,21 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|isMatchable ()
+specifier|public
+name|boolean
+name|isMatchable
+parameter_list|()
+block|{
+return|return
+name|that
+operator|.
+name|isMatchable
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|match (final T object)
 specifier|public
 name|boolean
@@ -313,9 +349,33 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|checkState
+argument_list|(
+name|that
+operator|.
+name|isMatchable
+argument_list|()
+argument_list|,
+literal|"match invoked, but child predicate %s "
+operator|+
+literal|"doesn't implement %s"
+argument_list|,
+name|that
+argument_list|,
+name|Matchable
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 operator|!
 name|that
+operator|.
+name|asMatchable
+argument_list|()
 operator|.
 name|match
 argument_list|(
@@ -334,7 +394,7 @@ block|{
 return|return
 name|that
 operator|.
-name|getCost
+name|estimateCost
 argument_list|()
 return|;
 block|}

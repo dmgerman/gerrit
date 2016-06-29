@@ -104,22 +104,6 @@ name|Change
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|IndexPredicate
-import|;
-end_import
-
 begin_comment
 comment|/** Predicate over change number (aka legacy ID or Change.Id). */
 end_comment
@@ -130,10 +114,7 @@ specifier|public
 class|class
 name|LegacyChangeIdPredicate
 extends|extends
-name|IndexPredicate
-argument_list|<
-name|ChangeData
-argument_list|>
+name|ChangeIndexPredicate
 block|{
 DECL|field|id
 specifier|private

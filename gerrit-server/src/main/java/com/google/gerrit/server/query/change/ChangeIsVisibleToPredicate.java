@@ -174,7 +174,7 @@ name|server
 operator|.
 name|query
 operator|.
-name|OperatorPredicate
+name|IsVisibleToPredicate
 import|;
 end_import
 
@@ -205,11 +205,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|IsVisibleToPredicate
+DECL|class|ChangeIsVisibleToPredicate
 class|class
-name|IsVisibleToPredicate
+name|ChangeIsVisibleToPredicate
 extends|extends
-name|OperatorPredicate
+name|IsVisibleToPredicate
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -309,8 +309,8 @@ specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|IsVisibleToPredicate (Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, ChangeControl.GenericFactory changeControlFactory, CurrentUser user)
-name|IsVisibleToPredicate
+DECL|method|ChangeIsVisibleToPredicate (Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, ChangeControl.GenericFactory changeControlFactory, CurrentUser user)
+name|ChangeIsVisibleToPredicate
 parameter_list|(
 name|Provider
 argument_list|<

@@ -113,7 +113,7 @@ argument_list|>
 name|def
 decl_stmt|;
 DECL|method|IndexPredicate (FieldDef<I, ?> def, String value)
-specifier|public
+specifier|protected
 name|IndexPredicate
 parameter_list|(
 name|FieldDef
