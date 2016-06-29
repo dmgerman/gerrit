@@ -6923,6 +6923,25 @@ name|LinkedHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|repoManager
+operator|.
+name|openRepository
+argument_list|(
+name|ctl
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+init|)
+block|{
 for|for
 control|(
 name|PatchSet
@@ -6989,6 +7008,8 @@ argument_list|(
 name|ctl
 argument_list|,
 name|in
+argument_list|,
+name|repo
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6997,6 +7018,7 @@ block|}
 return|return
 name|res
 return|;
+block|}
 block|}
 DECL|method|loadPatchSets (ChangeData cd, Optional<PatchSet.Id> limitToPsId)
 specifier|private
@@ -7214,6 +7236,25 @@ name|DETAILED_ACCOUNTS
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|repoManager
+operator|.
+name|openRepository
+argument_list|(
+name|ctl
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+init|)
+block|{
 name|RevisionInfo
 name|rev
 init|=
@@ -7222,6 +7263,8 @@ argument_list|(
 name|ctl
 argument_list|,
 name|in
+argument_list|,
+name|repo
 argument_list|)
 decl_stmt|;
 name|accountLoader
@@ -7233,7 +7276,8 @@ return|return
 name|rev
 return|;
 block|}
-DECL|method|toRevisionInfo (ChangeControl ctl, PatchSet in)
+block|}
+DECL|method|toRevisionInfo (ChangeControl ctl, PatchSet in, Repository repo)
 specifier|private
 name|RevisionInfo
 name|toRevisionInfo
@@ -7243,6 +7287,9 @@ name|ctl
 parameter_list|,
 name|PatchSet
 name|in
+parameter_list|,
+name|Repository
+name|repo
 parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
@@ -7403,17 +7450,15 @@ argument_list|()
 decl_stmt|;
 try|try
 init|(
-name|Repository
-name|repo
+name|RevWalk
+name|rw
 init|=
-name|repoManager
-operator|.
-name|openRepository
+operator|new
+name|RevWalk
 argument_list|(
-name|project
+name|repo
 argument_list|)
-init|;           RevWalk rw = new RevWalk(repo)
-block|)
+init|)
 block|{
 name|String
 name|rev
@@ -7666,9 +7711,6 @@ return|return
 name|out
 return|;
 block|}
-end_class
-
-begin_function
 DECL|method|toCommit (ChangeControl ctl, RevWalk rw, RevCommit commit, boolean addLinks)
 name|CommitInfo
 name|toCommit
@@ -7861,9 +7903,6 @@ return|return
 name|info
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|makeFetchMap (ChangeControl ctl, PatchSet in)
 specifier|private
 name|Map
@@ -8063,9 +8102,6 @@ return|return
 name|r
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|populateFetchMap (DownloadScheme scheme, DynamicMap<DownloadCommand> commands, String projectName, String refName, FetchInfo fetchInfo)
 specifier|public
 specifier|static
@@ -8156,9 +8192,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|addCommand (FetchInfo fetchInfo, String commandName, String c)
 specifier|private
 specifier|static
@@ -8206,9 +8239,6 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|finish (ChangeInfo info)
 specifier|static
 name|void
@@ -8260,9 +8290,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|addApproval (LabelInfo label, ApprovalInfo approval)
 specifier|private
 specifier|static
@@ -8305,9 +8332,6 @@ name|approval
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_class
 annotation|@
 name|AutoValue
 DECL|class|LabelWithStatus
@@ -8402,8 +8426,8 @@ name|status
 parameter_list|()
 function_decl|;
 block|}
+block|}
 end_class
 
-unit|}
 end_unit
 
