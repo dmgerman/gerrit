@@ -108,7 +108,7 @@ name|String
 name|value
 decl_stmt|;
 DECL|method|OperatorPredicate (final String name, final String value)
-specifier|public
+specifier|protected
 name|OperatorPredicate
 parameter_list|(
 specifier|final
