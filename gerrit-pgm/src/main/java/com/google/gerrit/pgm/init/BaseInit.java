@@ -293,6 +293,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDbUtil
+operator|.
+name|unwrapDb
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -2569,10 +2587,13 @@ init|=
 operator|(
 name|JdbcSchema
 operator|)
+name|unwrapDb
+argument_list|(
 name|schema
 operator|.
 name|open
 argument_list|()
+argument_list|)
 init|;               JdbcExecutor e = new JdbcExecutor(db)
 block|)
 block|{

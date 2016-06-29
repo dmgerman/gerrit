@@ -1122,6 +1122,7 @@ argument_list|(
 name|psId
 argument_list|)
 expr_stmt|;
+comment|// Use the unwrap from DeleteDraftChangeOp to handle BatchUpdateReviewDb.
 name|ReviewDb
 name|db
 init|=

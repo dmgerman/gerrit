@@ -544,6 +544,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDbUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|ChangeUtil
@@ -771,22 +787,6 @@ operator|.
 name|notedb
 operator|.
 name|TestChangeRebuilderWrapper
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|DisabledChangesReviewDbWrapper
 import|;
 end_import
 
@@ -2173,7 +2173,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 operator|.
 name|changes
@@ -2223,7 +2223,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 operator|.
 name|changes
@@ -2531,7 +2531,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 operator|.
 name|changes
@@ -2585,7 +2585,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 operator|.
 name|changes
@@ -2675,7 +2675,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 operator|.
 name|changes
@@ -2756,7 +2756,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 operator|.
 name|changes
@@ -2970,7 +2970,7 @@ name|ChangeBundle
 operator|.
 name|fromReviewDb
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 argument_list|,
 name|id
@@ -3300,7 +3300,7 @@ name|ChangeBundle
 operator|.
 name|fromReviewDb
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 argument_list|,
 name|id
@@ -3534,7 +3534,7 @@ name|ChangeBundle
 operator|.
 name|fromReviewDb
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 argument_list|,
 name|id
@@ -3746,7 +3746,7 @@ name|ChangeBundle
 operator|.
 name|fromReviewDb
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 argument_list|,
 name|id
@@ -4035,7 +4035,7 @@ name|ChangeBundle
 operator|.
 name|fromReviewDb
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 argument_list|,
 name|id
@@ -4205,7 +4205,7 @@ expr_stmt|;
 name|ReviewDb
 name|db
 init|=
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 decl_stmt|;
 name|Change
@@ -4421,7 +4421,7 @@ name|ChangeBundle
 operator|.
 name|fromReviewDb
 argument_list|(
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 argument_list|,
 name|id
@@ -6913,7 +6913,7 @@ block|{
 name|ReviewDb
 name|db
 init|=
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 decl_stmt|;
 name|Change
@@ -6988,7 +6988,7 @@ block|{
 name|Change
 name|c
 init|=
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 operator|.
 name|changes
@@ -7079,7 +7079,7 @@ block|{
 name|Change
 name|c
 init|=
-name|unwrapDb
+name|getUnwrappedDb
 argument_list|()
 operator|.
 name|changes
@@ -7634,10 +7634,10 @@ return|return
 name|msg
 return|;
 block|}
-DECL|method|unwrapDb ()
+DECL|method|getUnwrappedDb ()
 specifier|private
 name|ReviewDb
-name|unwrapDb
+name|getUnwrappedDb
 parameter_list|()
 block|{
 name|ReviewDb
@@ -7648,28 +7648,13 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|db
-operator|instanceof
-name|DisabledChangesReviewDbWrapper
-condition|)
-block|{
-name|db
-operator|=
-operator|(
-operator|(
-name|DisabledChangesReviewDbWrapper
-operator|)
-name|db
-operator|)
-operator|.
-name|unsafeGetDelegate
-argument_list|()
-expr_stmt|;
-block|}
 return|return
+name|ReviewDbUtil
+operator|.
+name|unwrapDb
+argument_list|(
 name|db
+argument_list|)
 return|;
 block|}
 block|}
