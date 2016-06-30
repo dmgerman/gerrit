@@ -6077,6 +6077,7 @@ block|{
 comment|// Skip.
 block|}
 block|}
+comment|// Adapt the capacity of this list when adding more default predicates.
 name|List
 argument_list|<
 name|Predicate
@@ -6090,7 +6091,7 @@ name|Lists
 operator|.
 name|newArrayListWithCapacity
 argument_list|(
-literal|9
+literal|11
 argument_list|)
 decl_stmt|;
 try|try
@@ -6253,6 +6254,8 @@ name|query
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Adapt the capacity of the "predicates" list when adding more default
+comment|// predicates.
 return|return
 name|Predicate
 operator|.
