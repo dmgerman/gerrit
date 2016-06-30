@@ -242,7 +242,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|SuggestAccounts
+name|QueryAccounts
 import|;
 end_import
 
@@ -339,18 +339,18 @@ name|CurrentUser
 argument_list|>
 name|self
 decl_stmt|;
-DECL|field|suggestAccountsProvider
+DECL|field|queryAccountsProvider
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|SuggestAccounts
+name|QueryAccounts
 argument_list|>
-name|suggestAccountsProvider
+name|queryAccountsProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountsImpl (AccountsCollection accounts, AccountApiImpl.Factory api, Provider<CurrentUser> self, Provider<SuggestAccounts> suggestAccountsProvider)
+DECL|method|AccountsImpl (AccountsCollection accounts, AccountApiImpl.Factory api, Provider<CurrentUser> self, Provider<QueryAccounts> queryAccountsProvider)
 name|AccountsImpl
 parameter_list|(
 name|AccountsCollection
@@ -369,9 +369,9 @@ name|self
 parameter_list|,
 name|Provider
 argument_list|<
-name|SuggestAccounts
+name|QueryAccounts
 argument_list|>
-name|suggestAccountsProvider
+name|queryAccountsProvider
 parameter_list|)
 block|{
 name|this
@@ -394,9 +394,9 @@ name|self
 expr_stmt|;
 name|this
 operator|.
-name|suggestAccountsProvider
+name|queryAccountsProvider
 operator|=
-name|suggestAccountsProvider
+name|queryAccountsProvider
 expr_stmt|;
 block|}
 annotation|@
@@ -608,15 +608,22 @@ name|RestApiException
 block|{
 try|try
 block|{
-name|SuggestAccounts
-name|mySuggestAccounts
+name|QueryAccounts
+name|myQueryAccounts
 init|=
-name|suggestAccountsProvider
+name|queryAccountsProvider
 operator|.
 name|get
 argument_list|()
 decl_stmt|;
-name|mySuggestAccounts
+name|myQueryAccounts
+operator|.
+name|setSuggest
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|myQueryAccounts
 operator|.
 name|setQuery
 argument_list|(
@@ -626,7 +633,7 @@ name|getQuery
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|mySuggestAccounts
+name|myQueryAccounts
 operator|.
 name|setLimit
 argument_list|(
@@ -637,7 +644,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|mySuggestAccounts
+name|myQueryAccounts
 operator|.
 name|apply
 argument_list|(

@@ -374,7 +374,7 @@ specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|SuggestAccounts
+name|QueryAccounts
 argument_list|>
 name|list
 decl_stmt|;
@@ -400,7 +400,7 @@ name|createAccountFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountsCollection (Provider<CurrentUser> self, AccountResolver resolver, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<SuggestAccounts> list, DynamicMap<RestView<AccountResource>> views, CreateAccount.Factory createAccountFactory)
+DECL|method|AccountsCollection (Provider<CurrentUser> self, AccountResolver resolver, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<QueryAccounts> list, DynamicMap<RestView<AccountResource>> views, CreateAccount.Factory createAccountFactory)
 name|AccountsCollection
 parameter_list|(
 name|Provider
@@ -424,7 +424,7 @@ name|userFactory
 parameter_list|,
 name|Provider
 argument_list|<
-name|SuggestAccounts
+name|QueryAccounts
 argument_list|>
 name|list
 parameter_list|,
