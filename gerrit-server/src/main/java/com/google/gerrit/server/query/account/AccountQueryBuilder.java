@@ -514,7 +514,7 @@ if|if
 condition|(
 literal|"self"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|query
 argument_list|)
