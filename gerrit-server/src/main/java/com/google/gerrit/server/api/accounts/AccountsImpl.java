@@ -779,6 +779,16 @@ name|getLimit
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|myQueryAccounts
+operator|.
+name|setStart
+argument_list|(
+name|r
+operator|.
+name|getStart
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|myQueryAccounts
 operator|.

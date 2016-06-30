@@ -306,6 +306,11 @@ specifier|private
 name|int
 name|limit
 decl_stmt|;
+DECL|field|start
+specifier|private
+name|int
+name|start
+decl_stmt|;
 comment|/**      * Executes query and returns a list of accounts.      */
 DECL|method|get ()
 specifier|public
@@ -359,6 +364,26 @@ return|return
 name|this
 return|;
 block|}
+comment|/**      * Set number of accounts to skip.      * Optional; no accounts are skipped when not provided.      */
+DECL|method|withStart (int start)
+specifier|public
+name|QueryRequest
+name|withStart
+parameter_list|(
+name|int
+name|start
+parameter_list|)
+block|{
+name|this
+operator|.
+name|start
+operator|=
+name|start
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|getQuery ()
 specifier|public
 name|String
@@ -377,6 +402,16 @@ parameter_list|()
 block|{
 return|return
 name|limit
+return|;
+block|}
+DECL|method|getStart ()
+specifier|public
+name|int
+name|getStart
+parameter_list|()
+block|{
+return|return
+name|start
 return|;
 block|}
 block|}
