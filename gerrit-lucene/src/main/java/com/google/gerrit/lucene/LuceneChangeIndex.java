@@ -3322,6 +3322,18 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// No ChangedLines stored, likely due to failure during reindexing, for
+comment|// example due to LargeObjectException. But we know the field was
+comment|// requested, so update ChangeData to prevent callers from trying to
+comment|// lazily load it, as that would probably also fail.
+name|cd
+operator|.
+name|setNoChangedLines
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|method|decodeMergeable (Document doc, ChangeData cd)
 specifier|private

@@ -214,7 +214,7 @@ block|}
 DECL|method|getValueInt (T object)
 specifier|protected
 specifier|abstract
-name|int
+name|Integer
 name|getValueInt
 parameter_list|(
 name|T
@@ -234,7 +234,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|int
+name|Integer
 name|valueInt
 init|=
 name|getValueInt
@@ -242,6 +242,17 @@ argument_list|(
 name|object
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|valueInt
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 return|return
 name|valueInt
 operator|>=
