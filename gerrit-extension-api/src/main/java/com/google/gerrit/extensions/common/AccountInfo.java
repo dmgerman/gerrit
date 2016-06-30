@@ -110,6 +110,11 @@ name|AvatarInfo
 argument_list|>
 name|avatars
 decl_stmt|;
+DECL|field|_moreAccounts
+specifier|public
+name|Boolean
+name|_moreAccounts
+decl_stmt|;
 DECL|method|AccountInfo (Integer id)
 specifier|public
 name|AccountInfo
