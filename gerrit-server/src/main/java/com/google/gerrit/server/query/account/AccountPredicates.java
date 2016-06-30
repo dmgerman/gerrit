@@ -281,6 +281,9 @@ operator|.
 name|FIELD_EMAIL
 argument_list|,
 name|email
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -309,6 +312,9 @@ operator|.
 name|FIELD_NAME
 argument_list|,
 name|name
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -380,6 +386,9 @@ operator|.
 name|FIELD_USERNAME
 argument_list|,
 name|username
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 return|;
 block|}
