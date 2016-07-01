@@ -147,7 +147,7 @@ annotation|@
 name|Override
 DECL|method|getValueInt (ChangeData changeData)
 specifier|protected
-name|int
+name|Integer
 name|getValueInt
 parameter_list|(
 name|ChangeData
@@ -157,12 +157,16 @@ throws|throws
 name|OrmException
 block|{
 return|return
+name|ChangeField
+operator|.
+name|ADDED
+operator|.
+name|get
+argument_list|(
 name|changeData
-operator|.
-name|changedLines
-argument_list|()
-operator|.
-name|insertions
+argument_list|,
+literal|null
+argument_list|)
 return|;
 block|}
 block|}

@@ -3670,7 +3670,10 @@ argument_list|(
 name|cd
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|ChangedLines
+argument_list|>
 name|changedLines
 init|=
 name|cd
@@ -3681,8 +3684,9 @@ decl_stmt|;
 if|if
 condition|(
 name|changedLines
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|out
@@ -3691,6 +3695,9 @@ name|insertions
 operator|=
 name|changedLines
 operator|.
+name|get
+argument_list|()
+operator|.
 name|insertions
 expr_stmt|;
 name|out
@@ -3698,6 +3705,9 @@ operator|.
 name|deletions
 operator|=
 name|changedLines
+operator|.
+name|get
+argument_list|()
 operator|.
 name|deletions
 expr_stmt|;
