@@ -97,13 +97,9 @@ block|{
 DECL|interface|Event
 interface|interface
 name|Event
-block|{
-DECL|method|getProjectName ()
-name|String
-name|getProjectName
-parameter_list|()
-function_decl|;
-block|}
+extends|extends
+name|ProjectEvent
+block|{   }
 DECL|method|onProjectDeleted (Event event)
 name|void
 name|onProjectDeleted

@@ -91,6 +91,8 @@ DECL|interface|ChangeEvent
 specifier|public
 interface|interface
 name|ChangeEvent
+extends|extends
+name|GerritEvent
 block|{
 DECL|method|getChange ()
 name|ChangeInfo

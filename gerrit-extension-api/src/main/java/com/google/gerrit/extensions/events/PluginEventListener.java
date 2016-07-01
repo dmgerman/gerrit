@@ -79,6 +79,8 @@ block|{
 DECL|interface|Event
 interface|interface
 name|Event
+extends|extends
+name|GerritEvent
 block|{
 DECL|method|pluginName ()
 name|String

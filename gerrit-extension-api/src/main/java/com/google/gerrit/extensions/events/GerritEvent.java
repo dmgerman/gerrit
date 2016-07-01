@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -66,66 +66,16 @@ name|events
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|annotations
-operator|.
-name|ExtensionPoint
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Properties
-import|;
-end_import
-
 begin_comment
-comment|/**  * Notified whenever the garbage collector has run successfully on a project.  */
+comment|/** Base interface to be extended by Events. */
 end_comment
 
 begin_interface
-annotation|@
-name|ExtensionPoint
-DECL|interface|GarbageCollectorListener
+DECL|interface|GerritEvent
 specifier|public
 interface|interface
-name|GarbageCollectorListener
-block|{
-DECL|interface|Event
-interface|interface
-name|Event
-extends|extends
-name|ProjectEvent
-block|{
-comment|/**      * @return Properties describing the result of the garbage collection      *         performed by JGit.      * @see<a href="http://download.eclipse.org/jgit/site/3.7.0.201502260915-r/apidocs/org/eclipse/jgit/api/GarbageCollectCommand.html#call%28%29">GarbageCollectCommand</a>      */
-DECL|method|getStatistics ()
-name|Properties
-name|getStatistics
-parameter_list|()
-function_decl|;
-block|}
-DECL|method|onGarbageCollected (Event event)
-name|void
-name|onGarbageCollected
-parameter_list|(
-name|Event
-name|event
-parameter_list|)
-function_decl|;
-block|}
+name|GerritEvent
+block|{ }
 end_interface
 
 end_unit

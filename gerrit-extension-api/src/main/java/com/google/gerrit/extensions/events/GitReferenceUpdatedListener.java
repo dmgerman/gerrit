@@ -127,12 +127,9 @@ block|{
 DECL|interface|Event
 interface|interface
 name|Event
+extends|extends
+name|ProjectEvent
 block|{
-DECL|method|getProjectName ()
-name|String
-name|getProjectName
-parameter_list|()
-function_decl|;
 DECL|method|getRefName ()
 name|String
 name|getRefName
