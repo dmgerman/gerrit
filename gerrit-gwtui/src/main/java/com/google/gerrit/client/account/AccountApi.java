@@ -397,6 +397,11 @@ argument_list|(
 literal|"/accounts/"
 argument_list|)
 operator|.
+name|addParameterTrue
+argument_list|(
+literal|"suggest"
+argument_list|)
+operator|.
 name|addParameter
 argument_list|(
 literal|"q"
