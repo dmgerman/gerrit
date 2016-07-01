@@ -2006,6 +2006,12 @@ operator|.
 name|Factory
 name|changeResourceFactory
 decl_stmt|;
+DECL|field|changeKindCache
+specifier|private
+specifier|final
+name|ChangeKindCache
+name|changeKindCache
+decl_stmt|;
 DECL|field|accountLoader
 specifier|private
 name|AccountLoader
@@ -2033,7 +2039,7 @@ name|fix
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, GitRepositoryManager repoManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, GpgApiAdapter gpgApi, ChangeNotes.Factory notesFactory, ChangeResource.Factory changeResourceFactory, @Assisted Set<ListChangesOption> options)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, GitRepositoryManager repoManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, GpgApiAdapter gpgApi, ChangeNotes.Factory notesFactory, ChangeResource.Factory changeResourceFactory, ChangeKindCache changeKindCache, @Assisted Set<ListChangesOption> options)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -2122,6 +2128,9 @@ name|ChangeResource
 operator|.
 name|Factory
 name|changeResourceFactory
+parameter_list|,
+name|ChangeKindCache
+name|changeKindCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -2251,6 +2260,12 @@ operator|.
 name|changeResourceFactory
 operator|=
 name|changeResourceFactory
+expr_stmt|;
+name|this
+operator|.
+name|changeKindCache
+operator|=
+name|changeKindCache
 expr_stmt|;
 name|this
 operator|.
@@ -4151,6 +4166,8 @@ operator|=
 name|revisions
 argument_list|(
 name|ctl
+argument_list|,
+name|cd
 argument_list|,
 name|src
 argument_list|)
@@ -6878,7 +6895,7 @@ name|ORDER_NULLS_FIRST
 argument_list|)
 return|;
 block|}
-DECL|method|revisions (ChangeControl ctl, Map<PatchSet.Id, PatchSet> map)
+DECL|method|revisions (ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map)
 specifier|private
 name|Map
 argument_list|<
@@ -6890,6 +6907,9 @@ name|revisions
 parameter_list|(
 name|ChangeControl
 name|ctl
+parameter_list|,
+name|ChangeData
+name|cd
 parameter_list|,
 name|Map
 argument_list|<
@@ -6923,6 +6943,25 @@ name|LinkedHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|repoManager
+operator|.
+name|openRepository
+argument_list|(
+name|ctl
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+init|)
+block|{
 for|for
 control|(
 name|PatchSet
@@ -6988,7 +7027,11 @@ name|toRevisionInfo
 argument_list|(
 name|ctl
 argument_list|,
+name|cd
+argument_list|,
 name|in
+argument_list|,
+name|repo
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6997,6 +7040,7 @@ block|}
 return|return
 name|res
 return|;
+block|}
 block|}
 DECL|method|loadPatchSets (ChangeData cd, Optional<PatchSet.Id> limitToPsId)
 specifier|private
@@ -7214,6 +7258,25 @@ name|DETAILED_ACCOUNTS
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|repoManager
+operator|.
+name|openRepository
+argument_list|(
+name|ctl
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+init|)
+block|{
 name|RevisionInfo
 name|rev
 init|=
@@ -7221,7 +7284,21 @@ name|toRevisionInfo
 argument_list|(
 name|ctl
 argument_list|,
+name|changeDataFactory
+operator|.
+name|create
+argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|ctl
+argument_list|)
+argument_list|,
 name|in
+argument_list|,
+name|repo
 argument_list|)
 decl_stmt|;
 name|accountLoader
@@ -7233,7 +7310,8 @@ return|return
 name|rev
 return|;
 block|}
-DECL|method|toRevisionInfo (ChangeControl ctl, PatchSet in)
+block|}
+DECL|method|toRevisionInfo (ChangeControl ctl, ChangeData cd, PatchSet in, Repository repo)
 specifier|private
 name|RevisionInfo
 name|toRevisionInfo
@@ -7241,8 +7319,14 @@ parameter_list|(
 name|ChangeControl
 name|ctl
 parameter_list|,
+name|ChangeData
+name|cd
+parameter_list|,
 name|PatchSet
 name|in
+parameter_list|,
+name|Repository
+name|repo
 parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
@@ -7353,6 +7437,21 @@ argument_list|,
 name|in
 argument_list|)
 expr_stmt|;
+name|out
+operator|.
+name|kind
+operator|=
+name|changeKindCache
+operator|.
+name|getChangeKind
+argument_list|(
+name|repo
+argument_list|,
+name|cd
+argument_list|,
+name|in
+argument_list|)
+expr_stmt|;
 name|boolean
 name|setCommit
 init|=
@@ -7403,17 +7502,15 @@ argument_list|()
 decl_stmt|;
 try|try
 init|(
-name|Repository
-name|repo
+name|RevWalk
+name|rw
 init|=
-name|repoManager
-operator|.
-name|openRepository
+operator|new
+name|RevWalk
 argument_list|(
-name|project
+name|repo
 argument_list|)
-init|;           RevWalk rw = new RevWalk(repo)
-block|)
+init|)
 block|{
 name|String
 name|rev
@@ -7666,9 +7763,6 @@ return|return
 name|out
 return|;
 block|}
-end_class
-
-begin_function
 DECL|method|toCommit (ChangeControl ctl, RevWalk rw, RevCommit commit, boolean addLinks)
 name|CommitInfo
 name|toCommit
@@ -7861,9 +7955,6 @@ return|return
 name|info
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|makeFetchMap (ChangeControl ctl, PatchSet in)
 specifier|private
 name|Map
@@ -8063,9 +8154,6 @@ return|return
 name|r
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|populateFetchMap (DownloadScheme scheme, DynamicMap<DownloadCommand> commands, String projectName, String refName, FetchInfo fetchInfo)
 specifier|public
 specifier|static
@@ -8156,9 +8244,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|addCommand (FetchInfo fetchInfo, String commandName, String c)
 specifier|private
 specifier|static
@@ -8206,9 +8291,6 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|finish (ChangeInfo info)
 specifier|static
 name|void
@@ -8260,9 +8342,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|addApproval (LabelInfo label, ApprovalInfo approval)
 specifier|private
 specifier|static
@@ -8305,9 +8384,6 @@ name|approval
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_class
 annotation|@
 name|AutoValue
 DECL|class|LabelWithStatus
@@ -8402,8 +8478,8 @@ name|status
 parameter_list|()
 function_decl|;
 block|}
+block|}
 end_class
 
-unit|}
 end_unit
 

@@ -74,9 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|change
+name|client
 operator|.
 name|ChangeKind
 import|;
