@@ -468,6 +468,23 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
+if|if
+condition|(
+name|in
+operator|.
+name|name
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"input.name is required"
+argument_list|)
+throw|;
+block|}
 return|return
 name|name
 argument_list|(
