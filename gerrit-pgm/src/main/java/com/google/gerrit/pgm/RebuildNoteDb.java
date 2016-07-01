@@ -72,6 +72,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDbUtil
+operator|.
+name|unwrapDb
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|schema
@@ -431,24 +449,6 @@ operator|.
 name|server
 operator|.
 name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDbUtil
-operator|.
-name|unwrapDb
 import|;
 end_import
 
