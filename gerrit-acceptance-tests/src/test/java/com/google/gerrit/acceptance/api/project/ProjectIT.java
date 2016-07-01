@@ -320,10 +320,10 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Test
-DECL|method|createProjectFoo ()
+DECL|method|createProject ()
 specifier|public
 name|void
-name|createProjectFoo
+name|createProject
 parameter_list|()
 throws|throws
 name|Exception
@@ -362,10 +362,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|createProjectFooWithGitSuffix ()
+DECL|method|createProjectWithGitSuffix ()
 specifier|public
 name|void
-name|createProjectFooWithGitSuffix
+name|createProjectWithGitSuffix
 parameter_list|()
 throws|throws
 name|Exception
