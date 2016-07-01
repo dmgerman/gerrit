@@ -1233,6 +1233,32 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|testSuggestReviewersFullTextSearch
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|suggestReviewersFullTextSearchWithAccountIndex ()
+specifier|public
+name|void
+name|suggestReviewersFullTextSearchWithAccountIndex
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|testSuggestReviewersFullTextSearch
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|testSuggestReviewersFullTextSearch ()
+specifier|private
+name|void
+name|testSuggestReviewersFullTextSearch
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|String
 name|changeId
 init|=

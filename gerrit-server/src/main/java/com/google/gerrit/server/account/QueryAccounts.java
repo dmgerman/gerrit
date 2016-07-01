@@ -1404,7 +1404,7 @@ name|queryPred
 operator|=
 name|queryBuilder
 operator|.
-name|defaultField
+name|defaultQuery
 argument_list|(
 name|query
 argument_list|)

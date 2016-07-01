@@ -1596,6 +1596,20 @@ argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
+literal|"Jo Do"
+argument_list|,
+name|user1
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"jo do"
+argument_list|,
+name|user1
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
 literal|"self"
 argument_list|,
 name|currentUserInfo
