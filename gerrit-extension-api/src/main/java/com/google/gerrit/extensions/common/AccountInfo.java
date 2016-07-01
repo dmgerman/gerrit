@@ -97,6 +97,14 @@ specifier|public
 name|String
 name|email
 decl_stmt|;
+DECL|field|secondaryEmails
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|secondaryEmails
+decl_stmt|;
 DECL|field|username
 specifier|public
 name|String

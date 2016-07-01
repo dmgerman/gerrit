@@ -117,6 +117,10 @@ comment|/** Preferred email address to contact the user at. */
 DECL|enumConstant|EMAIL
 name|EMAIL
 block|,
+comment|/** All secondary email addresses of the user. */
+DECL|enumConstant|SECONDARY_EMAILS
+name|SECONDARY_EMAILS
+block|,
 comment|/** User profile images. */
 DECL|enumConstant|AVATARS
 name|AVATARS

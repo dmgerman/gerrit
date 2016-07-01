@@ -200,7 +200,9 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Inject
+name|assistedinject
+operator|.
+name|Assisted
 import|;
 end_import
 
@@ -214,7 +216,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|Assisted
+name|AssistedInject
 import|;
 end_import
 
@@ -305,7 +307,7 @@ class|class
 name|AccountLoader
 block|{
 DECL|field|DETAILED_OPTIONS
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Set
@@ -357,6 +359,17 @@ name|boolean
 name|detailed
 parameter_list|)
 function_decl|;
+DECL|method|create (Set<FillOptions> options)
+name|AccountLoader
+name|create
+parameter_list|(
+name|Set
+argument_list|<
+name|FillOptions
+argument_list|>
+name|options
+parameter_list|)
+function_decl|;
 block|}
 DECL|field|directory
 specifier|private
@@ -396,7 +409,7 @@ argument_list|>
 name|provided
 decl_stmt|;
 annotation|@
-name|Inject
+name|AssistedInject
 DECL|method|AccountLoader (InternalAccountDirectory directory, @Assisted boolean detailed)
 name|AccountLoader
 parameter_list|(
@@ -410,13 +423,9 @@ name|detailed
 parameter_list|)
 block|{
 name|this
-operator|.
+argument_list|(
 name|directory
-operator|=
-name|directory
-expr_stmt|;
-name|options
-operator|=
+argument_list|,
 name|detailed
 condition|?
 name|DETAILED_OPTIONS
@@ -424,6 +433,37 @@ else|:
 name|InternalAccountDirectory
 operator|.
 name|ID_ONLY
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|AssistedInject
+DECL|method|AccountLoader (InternalAccountDirectory directory, @Assisted Set<FillOptions> options)
+name|AccountLoader
+parameter_list|(
+name|InternalAccountDirectory
+name|directory
+parameter_list|,
+annotation|@
+name|Assisted
+name|Set
+argument_list|<
+name|FillOptions
+argument_list|>
+name|options
+parameter_list|)
+block|{
+name|this
+operator|.
+name|directory
+operator|=
+name|directory
+expr_stmt|;
+name|this
+operator|.
+name|options
+operator|=
+name|options
 expr_stmt|;
 name|created
 operator|=
