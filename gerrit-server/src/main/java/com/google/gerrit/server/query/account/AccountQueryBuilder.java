@@ -737,8 +737,6 @@ parameter_list|(
 name|String
 name|query
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 name|List
 argument_list|<
@@ -766,6 +764,8 @@ name|query
 argument_list|)
 condition|)
 block|{
+try|try
+block|{
 name|preds
 operator|.
 name|add
@@ -779,6 +779,15 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|QueryParseException
+name|e
+parameter_list|)
+block|{
+comment|// Skip.
+block|}
 block|}
 name|Integer
 name|id
