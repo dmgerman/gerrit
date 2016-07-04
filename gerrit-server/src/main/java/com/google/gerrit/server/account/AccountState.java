@@ -200,6 +200,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountProjectWatch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -284,6 +300,15 @@ name|AccountExternalId
 argument_list|>
 name|externalIds
 decl_stmt|;
+DECL|field|projectWatches
+specifier|private
+specifier|final
+name|Collection
+argument_list|<
+name|AccountProjectWatch
+argument_list|>
+name|projectWatches
+decl_stmt|;
 DECL|field|properties
 specifier|private
 name|Cache
@@ -299,15 +324,13 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|AccountState (final Account account, final Set<AccountGroup.UUID> actualGroups, final Collection<AccountExternalId> externalIds)
+DECL|method|AccountState (Account account, Set<AccountGroup.UUID> actualGroups, Collection<AccountExternalId> externalIds, Collection<AccountProjectWatch> projectWatches)
 specifier|public
 name|AccountState
 parameter_list|(
-specifier|final
 name|Account
 name|account
 parameter_list|,
-specifier|final
 name|Set
 argument_list|<
 name|AccountGroup
@@ -316,12 +339,17 @@ name|UUID
 argument_list|>
 name|actualGroups
 parameter_list|,
-specifier|final
 name|Collection
 argument_list|<
 name|AccountExternalId
 argument_list|>
 name|externalIds
+parameter_list|,
+name|Collection
+argument_list|<
+name|AccountProjectWatch
+argument_list|>
+name|projectWatches
 parameter_list|)
 block|{
 name|this
@@ -341,6 +369,12 @@ operator|.
 name|externalIds
 operator|=
 name|externalIds
+expr_stmt|;
+name|this
+operator|.
+name|projectWatches
+operator|=
+name|projectWatches
 expr_stmt|;
 name|this
 operator|.
@@ -445,6 +479,20 @@ parameter_list|()
 block|{
 return|return
 name|externalIds
+return|;
+block|}
+comment|/** The project watches of the account. */
+DECL|method|getProjectWatches ()
+specifier|public
+name|Collection
+argument_list|<
+name|AccountProjectWatch
+argument_list|>
+name|getProjectWatches
+parameter_list|()
+block|{
+return|return
+name|projectWatches
 return|;
 block|}
 comment|/** The set of groups maintained directly within the Gerrit database. */
