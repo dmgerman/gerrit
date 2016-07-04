@@ -323,9 +323,11 @@ name|adminSshSession
 operator|.
 name|exec
 argument_list|(
-literal|"gerrit create-group "
+literal|"gerrit create-group '"
 operator|+
 name|newGroupName
+operator|+
+literal|"'"
 argument_list|)
 expr_stmt|;
 name|assert_
@@ -349,6 +351,23 @@ argument_list|)
 operator|.
 name|isTrue
 argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|adminSshSession
+operator|.
+name|getError
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"fatal: group '"
+operator|+
+name|newGroupName
+operator|+
+literal|"' already exists\n"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -370,9 +389,14 @@ name|adminSshSession
 operator|.
 name|exec
 argument_list|(
-literal|"gerrit create-group "
+literal|"gerrit create-group '"
 operator|+
 name|newGroupName
+operator|.
+name|toUpperCase
+argument_list|()
+operator|+
+literal|"'"
 argument_list|)
 expr_stmt|;
 name|assert_
@@ -396,6 +420,23 @@ argument_list|)
 operator|.
 name|isTrue
 argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|adminSshSession
+operator|.
+name|getError
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"fatal: group '"
+operator|+
+name|newGroupName
+operator|+
+literal|"' already exists\n"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
