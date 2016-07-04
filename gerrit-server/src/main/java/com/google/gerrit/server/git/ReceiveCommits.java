@@ -11906,11 +11906,9 @@ name|getNewId
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|checkState
+name|checkNotNull
 argument_list|(
 name|tipChange
-operator|!=
-literal|null
 argument_list|,
 literal|"tip of push does not correspond to a change; found these changes: %s"
 argument_list|,
