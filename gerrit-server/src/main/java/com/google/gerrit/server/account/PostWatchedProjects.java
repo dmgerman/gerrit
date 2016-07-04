@@ -365,11 +365,13 @@ name|self
 decl_stmt|;
 DECL|field|getWatchedProjects
 specifier|private
+specifier|final
 name|GetWatchedProjects
 name|getWatchedProjects
 decl_stmt|;
 DECL|field|dbProvider
 specifier|private
+specifier|final
 name|Provider
 argument_list|<
 name|ReviewDb
@@ -378,6 +380,7 @@ name|dbProvider
 decl_stmt|;
 DECL|field|projectsCollection
 specifier|private
+specifier|final
 name|ProjectsCollection
 name|projectsCollection
 decl_stmt|;
