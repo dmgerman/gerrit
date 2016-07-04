@@ -1438,6 +1438,16 @@ argument_list|,
 literal|"Jane Roe"
 argument_list|)
 decl_stmt|;
+name|AccountInfo
+name|user3
+init|=
+name|newAccountWithFullName
+argument_list|(
+literal|"user3"
+argument_list|,
+literal|"Mr Selfish"
+argument_list|)
+decl_stmt|;
 name|assertQuery
 argument_list|(
 literal|"notexisting"
@@ -1511,6 +1521,15 @@ argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
+literal|"self"
+argument_list|,
+name|currentUserInfo
+argument_list|,
+name|user3
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
 literal|"name:John"
 argument_list|,
 name|user1
@@ -1542,6 +1561,13 @@ argument_list|(
 literal|"name:DOE"
 argument_list|,
 name|user1
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"name:self"
+argument_list|,
+name|user3
 argument_list|)
 expr_stmt|;
 name|assertQuery
