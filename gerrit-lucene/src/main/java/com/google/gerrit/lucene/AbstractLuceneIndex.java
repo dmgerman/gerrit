@@ -836,6 +836,11 @@ name|NrtFuture
 argument_list|>
 name|notDoneNrtFutures
 decl_stmt|;
+DECL|field|autoCommitExecutor
+specifier|private
+name|ScheduledThreadPoolExecutor
+name|autoCommitExecutor
+decl_stmt|;
 DECL|method|AbstractLuceneIndex ( Schema<V> schema, SitePaths sitePaths, Directory dir, String name, String subIndex, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
 name|AbstractLuceneIndex
 parameter_list|(
@@ -988,6 +993,8 @@ name|delegateWriter
 operator|=
 name|autoCommitWriter
 expr_stmt|;
+name|autoCommitExecutor
+operator|=
 operator|new
 name|ScheduledThreadPoolExecutor
 argument_list|(
@@ -1012,6 +1019,8 @@ operator|.
 name|build
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|autoCommitExecutor
 operator|.
 name|scheduleAtFixedRate
 argument_list|(
@@ -1311,6 +1320,19 @@ name|void
 name|close
 parameter_list|()
 block|{
+if|if
+condition|(
+name|autoCommitExecutor
+operator|!=
+literal|null
+condition|)
+block|{
+name|autoCommitExecutor
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
+block|}
 name|reopenThread
 operator|.
 name|close
