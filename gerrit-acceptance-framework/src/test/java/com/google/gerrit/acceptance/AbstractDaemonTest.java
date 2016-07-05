@@ -1951,6 +1951,20 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Before
+DECL|method|clearSender ()
+specifier|public
+name|void
+name|clearSender
+parameter_list|()
+block|{
+name|sender
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Before
 DECL|method|startEventRecorder ()
 specifier|public
 name|void
