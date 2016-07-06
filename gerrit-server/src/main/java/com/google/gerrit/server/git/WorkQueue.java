@@ -2060,6 +2060,13 @@ argument_list|(
 name|runnable
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|innerObj
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|Field
@@ -2115,6 +2122,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 block|}
 block|}
 block|}
