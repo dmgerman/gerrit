@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountProjectWatch
+name|WatchConfig
 operator|.
 name|NotifyType
 import|;

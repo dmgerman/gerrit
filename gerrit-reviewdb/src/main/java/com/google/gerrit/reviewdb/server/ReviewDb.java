@@ -316,18 +316,7 @@ parameter_list|()
 function_decl|;
 comment|// Deleted @Relation(id = 17)
 comment|// Deleted @Relation(id = 18)
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|19
-argument_list|)
-DECL|method|accountProjectWatches ()
-name|AccountProjectWatchAccess
-name|accountProjectWatches
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 19)
 comment|// Deleted @Relation(id = 20)
 annotation|@
 name|Relation
