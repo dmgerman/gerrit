@@ -102,6 +102,13 @@ name|DETAILS
 argument_list|(
 literal|0
 argument_list|)
+block|,
+comment|/** Return all secondary emails. */
+DECL|enumConstant|ALL_EMAILS
+name|ALL_EMAILS
+argument_list|(
+literal|1
+argument_list|)
 block|;
 DECL|field|value
 specifier|private

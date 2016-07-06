@@ -120,6 +120,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArrayString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtjsonrpc
 operator|.
 name|client
@@ -196,6 +212,15 @@ name|String
 name|email
 parameter_list|()
 comment|/*-{ return this.email; }-*/
+function_decl|;
+DECL|method|secondaryEmails ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|secondaryEmails
+parameter_list|()
+comment|/*-{ return this.secondary_emails; }-*/
 function_decl|;
 DECL|method|username ()
 specifier|public
