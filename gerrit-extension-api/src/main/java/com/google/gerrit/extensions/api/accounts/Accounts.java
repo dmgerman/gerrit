@@ -198,6 +198,28 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** Create a new account with the given username and default options. */
+DECL|method|create (String username)
+name|AccountApi
+name|create
+parameter_list|(
+name|String
+name|username
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** Create a new account. */
+DECL|method|create (AccountInput input)
+name|AccountApi
+name|create
+parameter_list|(
+name|AccountInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Suggest users for a given query.    *<p>    * Example code:    * {@code suggestAccounts().withQuery("Reviewer").withLimit(5).get()}    *    * @return API for setting parameters and getting result.    */
 DECL|method|suggestAccounts ()
 name|SuggestAccountsRequest
@@ -605,6 +627,44 @@ specifier|public
 name|AccountApi
 name|self
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|create (String username)
+specifier|public
+name|AccountApi
+name|create
+parameter_list|(
+name|String
+name|username
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|create (AccountInput input)
+specifier|public
+name|AccountApi
+name|create
+parameter_list|(
+name|AccountInput
+name|input
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
