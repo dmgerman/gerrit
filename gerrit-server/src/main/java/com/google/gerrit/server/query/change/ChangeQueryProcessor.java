@@ -542,8 +542,6 @@ argument_list|,
 name|start
 argument_list|,
 name|limit
-operator|+
-literal|1
 argument_list|,
 name|requestedFields
 argument_list|)

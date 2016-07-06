@@ -1034,9 +1034,11 @@ name|createOptions
 argument_list|(
 name|indexConfig
 argument_list|,
-name|page
+name|start
 argument_list|,
 name|limit
+operator|+
+literal|1
 argument_list|,
 name|getRequestedFields
 argument_list|()
