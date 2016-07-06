@@ -3445,7 +3445,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|task
+operator|.
+name|dirty
+condition|)
 block|{
 name|indexFutures
 operator|.
@@ -3932,6 +3938,10 @@ operator|.
 name|StagedResult
 name|noteDbResult
 decl_stmt|;
+DECL|field|dirty
+name|boolean
+name|dirty
+decl_stmt|;
 DECL|field|deleted
 name|boolean
 name|deleted
@@ -4106,11 +4116,6 @@ name|NoteDbUpdateManager
 name|updateManager
 init|=
 literal|null
-decl_stmt|;
-name|boolean
-name|dirty
-init|=
-literal|false
 decl_stmt|;
 name|db
 operator|.
