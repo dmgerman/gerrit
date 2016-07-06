@@ -69,6 +69,40 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ReviewerState
+operator|.
+name|REVIEWER
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ReviewerState
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -102,6 +136,11 @@ specifier|public
 name|Boolean
 name|confirmed
 decl_stmt|;
+DECL|field|state
+specifier|public
+name|ReviewerState
+name|state
+decl_stmt|;
 DECL|method|confirmed ()
 specifier|public
 name|boolean
@@ -118,6 +157,24 @@ condition|?
 name|confirmed
 else|:
 literal|false
+return|;
+block|}
+DECL|method|state ()
+specifier|public
+name|ReviewerState
+name|state
+parameter_list|()
+block|{
+return|return
+operator|(
+name|state
+operator|!=
+literal|null
+operator|)
+condition|?
+name|state
+else|:
+name|REVIEWER
 return|;
 block|}
 block|}
