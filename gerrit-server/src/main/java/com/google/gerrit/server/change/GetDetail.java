@@ -290,6 +290,15 @@ operator|.
 name|MESSAGES
 argument_list|)
 expr_stmt|;
+name|delegate
+operator|.
+name|addOption
+argument_list|(
+name|ListChangesOption
+operator|.
+name|REVIEWER_UPDATES
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override

@@ -325,6 +325,14 @@ argument_list|>
 argument_list|>
 name|reviewers
 decl_stmt|;
+DECL|field|reviewerUpdates
+specifier|public
+name|Collection
+argument_list|<
+name|ReviewerUpdateInfo
+argument_list|>
+name|reviewerUpdates
+decl_stmt|;
 DECL|field|messages
 specifier|public
 name|Collection

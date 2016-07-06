@@ -226,6 +226,13 @@ name|PUSH_CERTIFICATES
 argument_list|(
 literal|18
 argument_list|)
+block|,
+comment|/** Include change's reviewer updates. */
+DECL|enumConstant|REVIEWER_UPDATES
+name|REVIEWER_UPDATES
+argument_list|(
+literal|19
+argument_list|)
 block|;
 DECL|field|value
 specifier|private

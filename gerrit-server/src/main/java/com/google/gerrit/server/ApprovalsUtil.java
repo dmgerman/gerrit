@@ -920,6 +920,47 @@ name|getReviewers
 argument_list|()
 return|;
 block|}
+comment|/**    * Get updates to reviewer set.    * Always returns empty list for ReviewDb.    *    * @param notes change notes.    * @return reviewer updates for the change.    * @throws OrmException if reviewer updates for the change could not be read.    */
+DECL|method|getReviewerUpdates (ChangeNotes notes)
+specifier|public
+name|List
+argument_list|<
+name|ReviewerStatusUpdate
+argument_list|>
+name|getReviewerUpdates
+parameter_list|(
+name|ChangeNotes
+name|notes
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+if|if
+condition|(
+operator|!
+name|migration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
+block|{
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+return|;
+block|}
+return|return
+name|notes
+operator|.
+name|load
+argument_list|()
+operator|.
+name|getReviewerUpdates
+argument_list|()
+return|;
+block|}
 DECL|method|addReviewers (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, Change change, PatchSet ps, PatchSetInfo info, Iterable<Account.Id> wantReviewers, Collection<Account.Id> existingReviewers)
 specifier|public
 name|List

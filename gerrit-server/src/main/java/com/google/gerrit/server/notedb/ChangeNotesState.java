@@ -370,6 +370,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ReviewerStatusUpdate
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -491,6 +505,14 @@ argument_list|,
 name|ImmutableList
 operator|.
 expr|<
+name|ReviewerStatusUpdate
+operator|>
+name|of
+argument_list|()
+argument_list|,
+name|ImmutableList
+operator|.
+expr|<
 name|SubmitRecord
 operator|>
 name|of
@@ -528,7 +550,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|create ( Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Change.Status status, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, Multimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, Multimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, Multimap<RevId, PatchLineComment> publishedComments)
+DECL|method|create ( Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Change.Status status, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, Multimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, Multimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, Multimap<RevId, PatchLineComment> publishedComments)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -627,6 +649,12 @@ operator|.
 name|Id
 argument_list|>
 name|allPastReviewers
+parameter_list|,
+name|List
+argument_list|<
+name|ReviewerStatusUpdate
+argument_list|>
+name|reviewerUpdates
 parameter_list|,
 name|List
 argument_list|<
@@ -739,6 +767,13 @@ operator|.
 name|copyOf
 argument_list|(
 name|allPastReviewers
+argument_list|)
+argument_list|,
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
+name|reviewerUpdates
 argument_list|)
 argument_list|,
 name|ImmutableList
@@ -934,6 +969,15 @@ operator|.
 name|Id
 argument_list|>
 name|allPastReviewers
+parameter_list|()
+function_decl|;
+DECL|method|reviewerUpdates ()
+specifier|abstract
+name|ImmutableList
+argument_list|<
+name|ReviewerStatusUpdate
+argument_list|>
+name|reviewerUpdates
 parameter_list|()
 function_decl|;
 DECL|method|submitRecords ()
