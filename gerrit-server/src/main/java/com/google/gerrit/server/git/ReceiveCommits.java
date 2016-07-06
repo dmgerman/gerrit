@@ -5544,9 +5544,9 @@ name|change
 argument_list|,
 name|u
 operator|.
-name|info
+name|newCommit
 operator|.
-name|getSubject
+name|getShortMessage
 argument_list|()
 argument_list|,
 name|edit

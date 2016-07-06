@@ -1169,6 +1169,36 @@ operator|.
 name|isNotNull
 argument_list|()
 expr_stmt|;
+name|r
+operator|.
+name|assertMessage
+argument_list|(
+literal|"Updated Changes:\n  "
+operator|+
+name|canonicalWebUrl
+operator|.
+name|get
+argument_list|()
+operator|+
+name|r
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" "
+operator|+
+name|edit
+operator|.
+name|commit
+operator|.
+name|subject
+operator|+
+literal|" [EDIT]\n"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
