@@ -318,6 +318,30 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|externalId (String externalId)
+specifier|static
+name|Predicate
+argument_list|<
+name|AccountState
+argument_list|>
+name|externalId
+parameter_list|(
+name|String
+name|externalId
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AccountPredicate
+argument_list|(
+name|AccountField
+operator|.
+name|EXTERNAL_ID
+argument_list|,
+name|externalId
+argument_list|)
+return|;
+block|}
 DECL|method|isActive ()
 specifier|public
 specifier|static
