@@ -8071,6 +8071,8 @@ operator|)
 literal|2
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|NoteDbUpdateManager
 name|updateManager
 init|=
@@ -8080,7 +8082,8 @@ name|create
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|updateManager
 operator|.
 name|add
@@ -8100,6 +8103,7 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+block|}
 name|ChangeNotes
 name|notes
 init|=
@@ -8333,6 +8337,11 @@ operator|.
 name|currentPatchSetId
 argument_list|()
 decl_stmt|;
+name|RevCommit
+name|tipCommit
+decl_stmt|;
+try|try
+init|(
 name|NoteDbUpdateManager
 name|updateManager
 init|=
@@ -8342,7 +8351,8 @@ name|create
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|PatchLineComment
 name|comment1
 init|=
@@ -8427,14 +8437,12 @@ argument_list|(
 name|update2
 argument_list|)
 expr_stmt|;
-name|RevCommit
-name|tipCommit
-decl_stmt|;
 name|updateManager
 operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+block|}
 name|ChangeNotes
 name|notes
 init|=
@@ -8744,6 +8752,8 @@ operator|.
 name|isNotNull
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|NoteDbUpdateManager
 name|updateManager
 init|=
@@ -8753,7 +8763,8 @@ name|create
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|updateManager
 operator|.
 name|add
@@ -8773,6 +8784,7 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+block|}
 name|Ref
 name|ref1
 init|=
@@ -16467,6 +16479,8 @@ argument_list|(
 name|comment2
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|NoteDbUpdateManager
 name|manager
 init|=
@@ -16479,7 +16493,8 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|manager
 operator|.
 name|add
@@ -16492,6 +16507,7 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Looking at drafts directly shows the zombie comment.
 name|DraftCommentNotes
 name|draftNotes
@@ -16807,6 +16823,8 @@ argument_list|(
 name|comment2
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|NoteDbUpdateManager
 name|manager
 init|=
@@ -16816,7 +16834,8 @@ name|create
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|manager
 operator|.
 name|add
@@ -16836,6 +16855,7 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+block|}
 name|ChangeNotes
 name|notes
 init|=

@@ -1217,6 +1217,13 @@ name|get
 argument_list|()
 decl_stmt|;
 name|NoteDbUpdateManager
+operator|.
+name|Result
+name|r
+decl_stmt|;
+try|try
+init|(
+name|NoteDbUpdateManager
 name|manager
 init|=
 name|rebuilder
@@ -1227,7 +1234,8 @@ name|db
 argument_list|,
 name|cid
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|manager
@@ -1245,18 +1253,15 @@ argument_list|)
 return|;
 comment|// May be null in tests.
 block|}
-name|NoteDbUpdateManager
-operator|.
-name|Result
 name|r
-init|=
+operator|=
 name|manager
 operator|.
 name|stageAndApplyDelta
 argument_list|(
 name|change
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 try|try
 block|{
 name|rebuilder
@@ -1330,6 +1335,7 @@ name|r
 argument_list|)
 argument_list|)
 return|;
+block|}
 block|}
 return|return
 name|LoadHandle

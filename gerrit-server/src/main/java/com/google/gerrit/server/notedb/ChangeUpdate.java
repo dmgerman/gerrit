@@ -1668,6 +1668,8 @@ name|IOException
 throws|,
 name|OrmException
 block|{
+try|try
+init|(
 name|NoteDbUpdateManager
 name|updateManager
 init|=
@@ -1678,7 +1680,8 @@ argument_list|(
 name|getProjectName
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|updateManager
 operator|.
 name|add
@@ -1699,6 +1702,7 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|getResult
 argument_list|()
