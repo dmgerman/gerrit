@@ -432,6 +432,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|AccountCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|AccountResolver
 import|;
 end_import
@@ -1787,6 +1803,11 @@ specifier|final
 name|StarredChangesUtil
 name|starredChangesUtil
 decl_stmt|;
+DECL|field|accountCache
+specifier|final
+name|AccountCache
+name|accountCache
+decl_stmt|;
 DECL|field|allowsDrafts
 specifier|final
 name|boolean
@@ -1805,7 +1826,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, @GerritServerConfig Config cfg)
+DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -1920,6 +1941,9 @@ parameter_list|,
 name|StarredChangesUtil
 name|starredChangesUtil
 parameter_list|,
+name|AccountCache
+name|accountCache
+parameter_list|,
 annotation|@
 name|GerritServerConfig
 name|Config
@@ -1991,6 +2015,8 @@ name|listMembers
 argument_list|,
 name|starredChangesUtil
 argument_list|,
+name|accountCache
+argument_list|,
 name|cfg
 operator|==
 literal|null
@@ -2010,7 +2036,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, boolean allowsDrafts)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2124,6 +2150,9 @@ name|listMembers
 parameter_list|,
 name|StarredChangesUtil
 name|starredChangesUtil
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|boolean
 name|allowsDrafts
@@ -2293,6 +2322,12 @@ name|starredChangesUtil
 expr_stmt|;
 name|this
 operator|.
+name|accountCache
+operator|=
+name|accountCache
+expr_stmt|;
+name|this
+operator|.
 name|allowsDrafts
 operator|=
 name|allowsDrafts
@@ -2368,6 +2403,8 @@ argument_list|,
 name|listMembers
 argument_list|,
 name|starredChangesUtil
+argument_list|,
+name|accountCache
 argument_list|,
 name|allowsDrafts
 argument_list|)
