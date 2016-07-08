@@ -596,10 +596,10 @@ specifier|private
 name|PersonIdent
 name|committerIdent
 decl_stmt|;
-DECL|field|runHooks
+DECL|field|fireRevisionCreated
 specifier|private
 name|boolean
-name|runHooks
+name|fireRevisionCreated
 init|=
 literal|true
 decl_stmt|;
@@ -768,20 +768,20 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setRunHooks (boolean runHooks)
+DECL|method|setFireRevisionCreated (boolean fireRevisionCreated)
 specifier|public
 name|RebaseChangeOp
-name|setRunHooks
+name|setFireRevisionCreated
 parameter_list|(
 name|boolean
-name|runHooks
+name|fireRevisionCreated
 parameter_list|)
 block|{
 name|this
 operator|.
-name|runHooks
+name|fireRevisionCreated
 operator|=
-name|runHooks
+name|fireRevisionCreated
 expr_stmt|;
 return|return
 name|this
@@ -1062,9 +1062,9 @@ argument_list|(
 literal|false
 argument_list|)
 operator|.
-name|setRunHooks
+name|setFireRevisionCreated
 argument_list|(
-name|runHooks
+name|fireRevisionCreated
 argument_list|)
 operator|.
 name|setCopyApprovals

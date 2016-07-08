@@ -1191,10 +1191,10 @@ specifier|private
 name|ReceiveCommand
 name|updateRefCommand
 decl_stmt|;
-DECL|field|runHooks
+DECL|field|fireRevisionCreated
 specifier|private
 name|boolean
-name|runHooks
+name|fireRevisionCreated
 decl_stmt|;
 DECL|field|sendMail
 specifier|private
@@ -1426,7 +1426,7 @@ literal|null
 expr_stmt|;
 name|this
 operator|.
-name|runHooks
+name|fireRevisionCreated
 operator|=
 literal|true
 expr_stmt|;
@@ -1932,20 +1932,20 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setRunHooks (boolean runHooks)
+DECL|method|setFireRevisionCreated (boolean fireRevisionCreated)
 specifier|public
 name|ChangeInserter
-name|setRunHooks
+name|setFireRevisionCreated
 parameter_list|(
 name|boolean
-name|runHooks
+name|fireRevisionCreated
 parameter_list|)
 block|{
 name|this
 operator|.
-name|runHooks
+name|fireRevisionCreated
 operator|=
-name|runHooks
+name|fireRevisionCreated
 expr_stmt|;
 return|return
 name|this
@@ -2657,7 +2657,7 @@ block|}
 comment|/* For labels that are not set in this operation, show the "current" value      * of 0, and no oldValue as the value was not modified by this operation.      * For labels that are set in this operation, the value was modified, so      * show a transition from an oldValue of 0 to the new value.      */
 if|if
 condition|(
-name|runHooks
+name|fireRevisionCreated
 condition|)
 block|{
 name|revisionCreated

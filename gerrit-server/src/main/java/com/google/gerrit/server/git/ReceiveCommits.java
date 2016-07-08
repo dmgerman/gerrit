@@ -11843,7 +11843,7 @@ name|hashtags
 argument_list|)
 argument_list|)
 operator|.
-name|setRunHooks
+name|setFireEvent
 argument_list|(
 literal|false
 argument_list|)
