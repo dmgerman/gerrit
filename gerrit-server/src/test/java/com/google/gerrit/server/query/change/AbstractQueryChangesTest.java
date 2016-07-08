@@ -11652,7 +11652,7 @@ argument_list|(
 literal|false
 argument_list|)
 operator|.
-name|setRunHooks
+name|setFireRevisionCreated
 argument_list|(
 literal|false
 argument_list|)

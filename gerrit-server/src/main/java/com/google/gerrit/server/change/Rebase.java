@@ -985,7 +985,7 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
-name|setRunHooks
+name|setFireRevisionCreated
 argument_list|(
 literal|true
 argument_list|)

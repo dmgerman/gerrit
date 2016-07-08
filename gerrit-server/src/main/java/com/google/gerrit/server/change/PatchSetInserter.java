@@ -887,10 +887,10 @@ operator|.
 name|emptyList
 argument_list|()
 decl_stmt|;
-DECL|field|runHooks
+DECL|field|fireRevisionCreated
 specifier|private
 name|boolean
-name|runHooks
+name|fireRevisionCreated
 init|=
 literal|true
 decl_stmt|;
@@ -1189,20 +1189,20 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setRunHooks (boolean runHooks)
+DECL|method|setFireRevisionCreated (boolean fireRevisionCreated)
 specifier|public
 name|PatchSetInserter
-name|setRunHooks
+name|setFireRevisionCreated
 parameter_list|(
 name|boolean
-name|runHooks
+name|fireRevisionCreated
 parameter_list|)
 block|{
 name|this
 operator|.
-name|runHooks
+name|fireRevisionCreated
 operator|=
-name|runHooks
+name|fireRevisionCreated
 expr_stmt|;
 return|return
 name|this
@@ -1827,7 +1827,7 @@ block|}
 block|}
 if|if
 condition|(
-name|runHooks
+name|fireRevisionCreated
 condition|)
 block|{
 name|revisionCreated

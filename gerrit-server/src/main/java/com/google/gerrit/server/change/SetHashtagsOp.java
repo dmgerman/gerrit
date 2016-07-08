@@ -571,10 +571,10 @@ specifier|final
 name|HashtagsInput
 name|input
 decl_stmt|;
-DECL|field|runHooks
+DECL|field|fireEvent
 specifier|private
 name|boolean
-name|runHooks
+name|fireEvent
 init|=
 literal|true
 decl_stmt|;
@@ -666,20 +666,20 @@ operator|=
 name|input
 expr_stmt|;
 block|}
-DECL|method|setRunHooks (boolean runHooks)
+DECL|method|setFireEvent (boolean fireEvent)
 specifier|public
 name|SetHashtagsOp
-name|setRunHooks
+name|setFireEvent
 parameter_list|(
 name|boolean
-name|runHooks
+name|fireEvent
 parameter_list|)
 block|{
 name|this
 operator|.
-name|runHooks
+name|fireEvent
 operator|=
-name|runHooks
+name|fireEvent
 expr_stmt|;
 return|return
 name|this
@@ -1212,7 +1212,7 @@ condition|(
 name|updated
 argument_list|()
 operator|&&
-name|runHooks
+name|fireEvent
 condition|)
 block|{
 name|hashtagsEdited
