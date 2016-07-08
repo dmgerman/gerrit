@@ -654,10 +654,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|deleteNonExistingProject ()
+DECL|method|deleteNonExistingProjectWatch ()
 specifier|public
 name|void
-name|deleteNonExistingProject
+name|deleteNonExistingProjectWatch
 parameter_list|()
 throws|throws
 name|Exception
@@ -765,18 +765,10 @@ argument_list|(
 name|d
 argument_list|)
 expr_stmt|;
+comment|// Check that trying to delete a non-existing watch doesn't fail
 name|setApiUser
 argument_list|(
 name|user
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|UnprocessableEntityException
-operator|.
-name|class
 argument_list|)
 expr_stmt|;
 name|gApi
