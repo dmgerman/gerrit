@@ -3217,6 +3217,26 @@ try|try
 block|{
 if|if
 condition|(
+name|notesMigration
+operator|.
+name|commitChangeWrites
+argument_list|()
+operator|&&
+name|repo
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// A NoteDb change may have been rebuilt since the repo was originally
+comment|// opened, so make sure we see that.
+name|repo
+operator|.
+name|scanForRepoChanges
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
 operator|!
 name|ops
 operator|.
@@ -3403,6 +3423,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
