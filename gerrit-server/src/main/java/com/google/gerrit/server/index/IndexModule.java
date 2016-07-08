@@ -326,6 +326,24 @@ name|index
 operator|.
 name|account
 operator|.
+name|AccountIndexerImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|account
+operator|.
 name|AccountSchemaDefinitions
 import|;
 end_import
@@ -725,7 +743,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|AccountIndexer
+name|AccountIndexerImpl
 operator|.
 name|Factory
 operator|.
@@ -975,11 +993,11 @@ unit|}    @
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getAccountIndexer (AccountIndexer.Factory factory, AccountIndexCollection indexes)
+DECL|method|getAccountIndexer (AccountIndexerImpl.Factory factory, AccountIndexCollection indexes)
 name|AccountIndexer
 name|getAccountIndexer
 parameter_list|(
-name|AccountIndexer
+name|AccountIndexerImpl
 operator|.
 name|Factory
 name|factory
