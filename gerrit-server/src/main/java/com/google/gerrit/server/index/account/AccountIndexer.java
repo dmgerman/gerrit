@@ -90,6 +90,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -223,10 +237,12 @@ name|AccountIndexCollection
 name|indexes
 parameter_list|)
 function_decl|;
-DECL|method|create (AccountIndex index)
+DECL|method|create (@ullable AccountIndex index)
 name|AccountIndexer
 name|create
 parameter_list|(
+annotation|@
+name|Nullable
 name|AccountIndex
 name|index
 parameter_list|)
