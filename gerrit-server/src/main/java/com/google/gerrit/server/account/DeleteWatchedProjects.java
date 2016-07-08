@@ -618,6 +618,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|watchesToDelete
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|dbProvider
 operator|.
 name|get
@@ -638,6 +647,7 @@ argument_list|(
 name|accountId
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|Response
