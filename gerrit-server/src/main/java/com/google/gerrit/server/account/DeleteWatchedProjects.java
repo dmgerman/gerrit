@@ -596,7 +596,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|watchedProjectsMap
 operator|.
 name|containsKey
@@ -605,18 +604,6 @@ name|key
 argument_list|)
 condition|)
 block|{
-throw|throw
-operator|new
-name|UnprocessableEntityException
-argument_list|(
-name|projectInfo
-operator|.
-name|project
-operator|+
-literal|" is not currently watched by this user."
-argument_list|)
-throw|;
-block|}
 name|watchesToDelete
 operator|.
 name|add
@@ -629,6 +616,7 @@ name|key
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|dbProvider
 operator|.
