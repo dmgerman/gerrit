@@ -3184,22 +3184,26 @@ name|delete
 argument_list|()
 expr_stmt|;
 comment|// approve and submit the change
-name|submit
+name|submitWithConflict
 argument_list|(
 name|changeResult
 operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-operator|new
-name|SubmitInput
-argument_list|()
-argument_list|,
-name|ResourceConflictException
+literal|"Failed to submit 1 change due to the following problems:\n"
+operator|+
+literal|"Change "
+operator|+
+name|changeResult
 operator|.
-name|class
-argument_list|,
-literal|"nothing to merge"
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|": depends on change that was not submitted"
 argument_list|)
 expr_stmt|;
 name|assertRefUpdatedEvents

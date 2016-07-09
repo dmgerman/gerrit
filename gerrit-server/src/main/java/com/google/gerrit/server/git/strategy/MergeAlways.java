@@ -217,6 +217,12 @@ name|getInitialTip
 argument_list|()
 operator|==
 literal|null
+operator|&&
+operator|!
+name|sorted
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// The branch is unborn. Take a fast-forward resolution to
