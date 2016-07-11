@@ -547,7 +547,7 @@ name|url
 operator|=
 name|H2
 operator|.
-name|appendCacheSize
+name|appendUrlOptions
 argument_list|(
 name|cfg
 argument_list|,
