@@ -458,7 +458,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s does not implement%s"
+literal|"%s does not implement %s"
 argument_list|,
 name|PluginServletContext
 operator|.
