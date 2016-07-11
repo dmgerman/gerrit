@@ -771,11 +771,11 @@ argument_list|()
 decl_stmt|;
 specifier|final
 name|GuiceFilter
-name|filter
+name|guiceFilter
 decl_stmt|;
 try|try
 block|{
-name|filter
+name|guiceFilter
 operator|=
 name|plugin
 operator|.
@@ -830,7 +830,7 @@ argument_list|,
 literal|"/"
 argument_list|)
 decl_stmt|;
-name|filter
+name|guiceFilter
 operator|.
 name|init
 argument_list|(
@@ -883,7 +883,7 @@ name|void
 name|remove
 parameter_list|()
 block|{
-name|filter
+name|guiceFilter
 operator|.
 name|destroy
 argument_list|()
@@ -893,7 +893,7 @@ block|}
 argument_list|)
 expr_stmt|;
 return|return
-name|filter
+name|guiceFilter
 return|;
 block|}
 return|return
