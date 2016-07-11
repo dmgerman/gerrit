@@ -161,12 +161,12 @@ name|ChangeAttribute
 argument_list|>
 name|change
 decl_stmt|;
-DECL|field|projectNameKey
+DECL|field|project
 specifier|public
 name|Project
 operator|.
 name|NameKey
-name|projectNameKey
+name|project
 decl_stmt|;
 DECL|field|refName
 specifier|public
@@ -198,7 +198,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|projectNameKey
+name|project
 operator|=
 name|change
 operator|.
@@ -243,7 +243,7 @@ name|getProjectNameKey
 parameter_list|()
 block|{
 return|return
-name|projectNameKey
+name|project
 return|;
 block|}
 annotation|@
