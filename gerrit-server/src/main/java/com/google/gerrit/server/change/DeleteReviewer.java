@@ -1882,6 +1882,14 @@ operator|.
 name|setChangeMessage
 argument_list|(
 name|changeMessage
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|changeMessage
+operator|.
+name|getWrittenOn
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|cm

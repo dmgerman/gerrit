@@ -763,6 +763,14 @@ operator|.
 name|setChangeMessage
 argument_list|(
 name|message
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|message
+operator|.
+name|getWrittenOn
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|cm
