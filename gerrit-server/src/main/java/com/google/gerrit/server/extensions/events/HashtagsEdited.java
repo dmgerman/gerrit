@@ -230,6 +230,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collection
@@ -312,7 +322,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, AccountInfo editor, Collection<String> hashtags, Collection<String> added, Collection<String> removed)
+DECL|method|fire (ChangeInfo change, AccountInfo editor, Collection<String> hashtags, Collection<String> added, Collection<String> removed, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -340,6 +350,9 @@ argument_list|<
 name|String
 argument_list|>
 name|removed
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -371,6 +384,8 @@ argument_list|,
 name|added
 argument_list|,
 name|removed
+argument_list|,
+name|when
 argument_list|)
 decl_stmt|;
 for|for
@@ -409,7 +424,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, Id accountId, ImmutableSortedSet<String> updatedHashtags, Set<String> toAdd, Set<String> toRemove)
+DECL|method|fire (Change change, Id accountId, ImmutableSortedSet<String> hashtags, Set<String> added, Set<String> removed, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -424,19 +439,22 @@ name|ImmutableSortedSet
 argument_list|<
 name|String
 argument_list|>
-name|updatedHashtags
+name|hashtags
 parameter_list|,
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|toAdd
+name|added
 parameter_list|,
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|toRemove
+name|removed
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -471,11 +489,13 @@ argument_list|(
 name|accountId
 argument_list|)
 argument_list|,
-name|updatedHashtags
+name|hashtags
 argument_list|,
-name|toAdd
+name|added
 argument_list|,
-name|toRemove
+name|removed
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -537,7 +557,7 @@ name|String
 argument_list|>
 name|removedHashtags
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, AccountInfo editor, Collection<String> updated, Collection<String> added, Collection<String> removed)
+DECL|method|Event (ChangeInfo change, AccountInfo editor, Collection<String> updated, Collection<String> added, Collection<String> removed, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -563,11 +583,18 @@ argument_list|<
 name|String
 argument_list|>
 name|removed
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|change
+argument_list|,
+name|editor
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|this

@@ -383,7 +383,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo author, String comment, Map<String, ApprovalInfo> approvals, Map<String, ApprovalInfo> oldApprovals)
+DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo author, String comment, Map<String, ApprovalInfo> approvals, Map<String, ApprovalInfo> oldApprovals, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -415,6 +415,9 @@ argument_list|,
 name|ApprovalInfo
 argument_list|>
 name|oldApprovals
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -448,6 +451,8 @@ argument_list|,
 name|approvals
 argument_list|,
 name|oldApprovals
+argument_list|,
+name|when
 argument_list|)
 decl_stmt|;
 for|for
@@ -486,7 +491,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, PatchSet ps, Account author, String comment, Map<String, Short> approvals, Map<String, Short> oldApprovals, Timestamp ts)
+DECL|method|fire (Change change, PatchSet ps, Account author, String comment, Map<String, Short> approvals, Map<String, Short> oldApprovals, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -520,7 +525,7 @@ argument_list|>
 name|oldApprovals
 parameter_list|,
 name|Timestamp
-name|ts
+name|when
 parameter_list|)
 block|{
 if|if
@@ -577,7 +582,7 @@ name|author
 argument_list|,
 name|approvals
 argument_list|,
-name|ts
+name|when
 argument_list|)
 argument_list|,
 name|util
@@ -588,8 +593,10 @@ name|author
 argument_list|,
 name|oldApprovals
 argument_list|,
-name|ts
+name|when
 argument_list|)
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -662,7 +669,7 @@ name|ApprovalInfo
 argument_list|>
 name|oldApprovals
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo author, String comment, Map<String, ApprovalInfo> approvals, Map<String, ApprovalInfo> oldApprovals)
+DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo author, String comment, Map<String, ApprovalInfo> approvals, Map<String, ApprovalInfo> oldApprovals, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -692,6 +699,9 @@ argument_list|,
 name|ApprovalInfo
 argument_list|>
 name|oldApprovals
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
@@ -699,6 +709,10 @@ argument_list|(
 name|change
 argument_list|,
 name|revision
+argument_list|,
+name|author
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|this

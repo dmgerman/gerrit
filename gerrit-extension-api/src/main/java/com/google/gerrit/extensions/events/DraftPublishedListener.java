@@ -116,6 +116,8 @@ name|Event
 extends|extends
 name|RevisionEvent
 block|{
+annotation|@
+name|Deprecated
 DECL|method|getPublisher ()
 name|AccountInfo
 name|getPublisher

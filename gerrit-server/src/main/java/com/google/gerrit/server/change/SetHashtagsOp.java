@@ -1234,6 +1234,11 @@ argument_list|,
 name|toAdd
 argument_list|,
 name|toRemove
+argument_list|,
+name|ctx
+operator|.
+name|getWhen
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

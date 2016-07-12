@@ -116,6 +116,8 @@ name|Event
 extends|extends
 name|ChangeEvent
 block|{
+annotation|@
+name|Deprecated
 DECL|method|getEditor ()
 name|AccountInfo
 name|getEditor

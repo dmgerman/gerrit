@@ -282,6 +282,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeMerged
 specifier|public
@@ -347,7 +357,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo merger, String newRevisionId)
+DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo merger, String newRevisionId, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -363,6 +373,9 @@ name|merger
 parameter_list|,
 name|String
 name|newRevisionId
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -392,6 +405,8 @@ argument_list|,
 name|merger
 argument_list|,
 name|newRevisionId
+argument_list|,
+name|when
 argument_list|)
 decl_stmt|;
 for|for
@@ -430,7 +445,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, PatchSet ps, Account merger, String newRevisionId)
+DECL|method|fire (Change change, PatchSet ps, Account merger, String newRevisionId, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -446,6 +461,9 @@ name|merger
 parameter_list|,
 name|String
 name|newRevisionId
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -493,6 +511,8 @@ name|merger
 argument_list|)
 argument_list|,
 name|newRevisionId
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -543,7 +563,7 @@ specifier|final
 name|String
 name|newRevisionId
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo merger, String newRevisionId)
+DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo merger, String newRevisionId, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -557,6 +577,9 @@ name|merger
 parameter_list|,
 name|String
 name|newRevisionId
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
@@ -564,6 +587,10 @@ argument_list|(
 name|change
 argument_list|,
 name|revision
+argument_list|,
+name|merger
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|this

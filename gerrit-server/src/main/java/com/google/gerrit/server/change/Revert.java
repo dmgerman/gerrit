@@ -2002,6 +2002,11 @@ name|ins
 operator|.
 name|getChange
 argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getWhen
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Change
@@ -2054,6 +2059,14 @@ argument_list|(
 name|ins
 operator|.
 name|getChangeMessage
+argument_list|()
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getWhen
 argument_list|()
 argument_list|)
 expr_stmt|;

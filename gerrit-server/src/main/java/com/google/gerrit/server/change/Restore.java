@@ -1209,6 +1209,14 @@ operator|.
 name|setChangeMessage
 argument_list|(
 name|message
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getWhen
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|cm
@@ -1265,6 +1273,11 @@ name|input
 operator|.
 name|message
 argument_list|)
+argument_list|,
+name|ctx
+operator|.
+name|getWhen
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

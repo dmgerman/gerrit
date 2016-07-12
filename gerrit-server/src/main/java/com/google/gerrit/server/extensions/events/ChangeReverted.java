@@ -178,6 +178,16 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeReverted
 specifier|public
@@ -243,7 +253,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (Change change, Change revertChange)
+DECL|method|fire (Change change, Change revertChange, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -253,6 +263,9 @@ name|change
 parameter_list|,
 name|Change
 name|revertChange
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -286,6 +299,8 @@ name|changeInfo
 argument_list|(
 name|revertChange
 argument_list|)
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -306,7 +321,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fire (ChangeInfo change, ChangeInfo revertChange)
+DECL|method|fire (ChangeInfo change, ChangeInfo revertChange, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -316,6 +331,9 @@ name|change
 parameter_list|,
 name|ChangeInfo
 name|revertChange
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -341,6 +359,8 @@ argument_list|(
 name|change
 argument_list|,
 name|revertChange
+argument_list|,
+name|when
 argument_list|)
 decl_stmt|;
 for|for
@@ -397,7 +417,7 @@ specifier|final
 name|ChangeInfo
 name|revertChange
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, ChangeInfo revertChange)
+DECL|method|Event (ChangeInfo change, ChangeInfo revertChange, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -405,11 +425,20 @@ name|change
 parameter_list|,
 name|ChangeInfo
 name|revertChange
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|change
+argument_list|,
+name|revertChange
+operator|.
+name|owner
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|this

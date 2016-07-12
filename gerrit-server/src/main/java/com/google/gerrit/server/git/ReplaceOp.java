@@ -2779,6 +2779,14 @@ operator|.
 name|setChangeMessage
 argument_list|(
 name|msg
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getWhen
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -2908,6 +2916,11 @@ name|getUser
 argument_list|()
 operator|.
 name|getAccountId
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getWhen
 argument_list|()
 argument_list|)
 expr_stmt|;

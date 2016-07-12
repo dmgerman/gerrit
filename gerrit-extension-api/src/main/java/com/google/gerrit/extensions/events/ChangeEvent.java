@@ -78,7 +78,33 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|ChangeInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
 import|;
 end_import
 
@@ -97,6 +123,16 @@ block|{
 DECL|method|getChange ()
 name|ChangeInfo
 name|getChange
+parameter_list|()
+function_decl|;
+DECL|method|getWho ()
+name|AccountInfo
+name|getWho
+parameter_list|()
+function_decl|;
+DECL|method|getWhen ()
+name|Timestamp
+name|getWhen
 parameter_list|()
 function_decl|;
 block|}
