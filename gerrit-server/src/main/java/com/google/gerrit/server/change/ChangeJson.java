@@ -7802,6 +7802,17 @@ operator|new
 name|CommitInfo
 argument_list|()
 decl_stmt|;
+comment|// TODO(fishywang): this is redundant with the map key, find a better way to provide the SHA-1
+comment|// for RevisionEvent.
+name|info
+operator|.
+name|commit
+operator|=
+name|commit
+operator|.
+name|name
+argument_list|()
+expr_stmt|;
 name|info
 operator|.
 name|parents
