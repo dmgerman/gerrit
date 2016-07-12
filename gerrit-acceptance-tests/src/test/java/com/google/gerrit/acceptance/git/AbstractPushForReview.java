@@ -390,7 +390,7 @@ name|api
 operator|.
 name|changes
 operator|.
-name|ReviewInput
+name|NotifyHandling
 import|;
 end_import
 
@@ -409,8 +409,6 @@ operator|.
 name|changes
 operator|.
 name|ReviewInput
-operator|.
-name|NotifyHandling
 import|;
 end_import
 

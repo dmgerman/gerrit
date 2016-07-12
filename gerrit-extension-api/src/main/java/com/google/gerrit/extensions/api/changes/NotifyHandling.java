@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -68,36 +68,25 @@ name|changes
 package|;
 end_package
 
-begin_class
-DECL|class|SubmitInput
+begin_enum
+DECL|enum|NotifyHandling
 specifier|public
-class|class
-name|SubmitInput
+enum|enum
+name|NotifyHandling
 block|{
-comment|/** Not used anymore, kept for backward compatibility */
-annotation|@
-name|Deprecated
-DECL|field|waitForMerge
-specifier|public
-name|boolean
-name|waitForMerge
-decl_stmt|;
-DECL|field|onBehalfOf
-specifier|public
-name|String
-name|onBehalfOf
-decl_stmt|;
-DECL|field|notify
-specifier|public
-name|NotifyHandling
-name|notify
-init|=
-name|NotifyHandling
-operator|.
+DECL|enumConstant|NONE
+DECL|enumConstant|OWNER
+DECL|enumConstant|OWNER_REVIEWERS
+DECL|enumConstant|ALL
+name|NONE
+block|,
+name|OWNER
+block|,
+name|OWNER_REVIEWERS
+block|,
 name|ALL
-decl_stmt|;
 block|}
-end_class
+end_enum
 
 end_unit
 
