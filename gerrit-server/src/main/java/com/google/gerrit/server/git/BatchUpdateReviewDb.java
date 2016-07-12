@@ -204,6 +204,38 @@ return|return
 name|changesWrapper
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|commit ()
+specifier|public
+name|void
+name|commit
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"do not call commit; BatchUpdate always manages transactions"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|rollback ()
+specifier|public
+name|void
+name|rollback
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"do not call rollback; BatchUpdate always manages transactions"
+argument_list|)
+throw|;
+block|}
 DECL|class|BatchUpdateChanges
 specifier|private
 specifier|static
@@ -266,9 +298,9 @@ throw|throw
 operator|new
 name|UnsupportedOperationException
 argument_list|(
-literal|"do not call upsert; either use InsertChangeOp for insertion, or"
+literal|"do not call upsert; existing changes are updated automatically,"
 operator|+
-literal|" ChangeContext#saveChange() for update"
+literal|" or use InsertChangeOp for insertion"
 argument_list|)
 throw|;
 block|}
@@ -290,7 +322,7 @@ throw|throw
 operator|new
 name|UnsupportedOperationException
 argument_list|(
-literal|"do not call update; use ChangeContext#saveChange()"
+literal|"do not call update; change is updated automatically"
 argument_list|)
 throw|;
 block|}
