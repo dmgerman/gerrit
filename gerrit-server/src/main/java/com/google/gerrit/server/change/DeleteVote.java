@@ -424,7 +424,7 @@ name|extensions
 operator|.
 name|events
 operator|.
-name|CommentAdded
+name|VoteDeleted
 import|;
 end_import
 
@@ -718,11 +718,11 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
-DECL|field|commentAdded
+DECL|field|voteDeleted
 specifier|private
 specifier|final
-name|CommentAdded
-name|commentAdded
+name|VoteDeleted
+name|voteDeleted
 decl_stmt|;
 DECL|field|deleteVoteSenderFactory
 specifier|private
@@ -734,7 +734,7 @@ name|deleteVoteSenderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteVote (Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, IdentifiedUser.GenericFactory userFactory, CommentAdded commentAdded, DeleteVoteSender.Factory deleteVoteSenderFactory)
+DECL|method|DeleteVote (Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, IdentifiedUser.GenericFactory userFactory, VoteDeleted voteDeleted, DeleteVoteSender.Factory deleteVoteSenderFactory)
 name|DeleteVote
 parameter_list|(
 name|Provider
@@ -762,8 +762,8 @@ operator|.
 name|GenericFactory
 name|userFactory
 parameter_list|,
-name|CommentAdded
-name|commentAdded
+name|VoteDeleted
+name|voteDeleted
 parameter_list|,
 name|DeleteVoteSender
 operator|.
@@ -809,9 +809,9 @@ name|userFactory
 expr_stmt|;
 name|this
 operator|.
-name|commentAdded
+name|voteDeleted
 operator|=
-name|commentAdded
+name|voteDeleted
 expr_stmt|;
 name|this
 operator|.
@@ -1707,7 +1707,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|commentAdded
+name|voteDeleted
 operator|.
 name|fire
 argument_list|(
@@ -1715,19 +1715,23 @@ name|change
 argument_list|,
 name|ps
 argument_list|,
-name|user
+name|newApprovals
+argument_list|,
+name|oldApprovals
+argument_list|,
+name|input
 operator|.
-name|getAccount
-argument_list|()
+name|notify
 argument_list|,
 name|changeMessage
 operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|newApprovals
-argument_list|,
-name|oldApprovals
+name|user
+operator|.
+name|getAccount
+argument_list|()
 argument_list|,
 name|ctx
 operator|.
