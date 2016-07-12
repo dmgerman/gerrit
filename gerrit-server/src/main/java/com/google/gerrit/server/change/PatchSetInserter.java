@@ -838,12 +838,6 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|commitValidatorsFactory
 specifier|private
 specifier|final
@@ -997,15 +991,12 @@ name|oldReviewers
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PatchSetInserter (ChangeHooks hooks, ReviewDb db, ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, @Assisted RefControl refControl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
+DECL|method|PatchSetInserter (ChangeHooks hooks, ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, @Assisted RefControl refControl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
 specifier|public
 name|PatchSetInserter
 parameter_list|(
 name|ChangeHooks
 name|hooks
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
@@ -1052,12 +1043,6 @@ operator|.
 name|hooks
 operator|=
 name|hooks
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1428,6 +1413,14 @@ name|OrmException
 throws|,
 name|InvalidChangeOperationException
 block|{
+name|ReviewDb
+name|db
+init|=
+name|ctx
+operator|.
+name|getDb
+argument_list|()
+decl_stmt|;
 name|ChangeControl
 name|ctl
 init|=
