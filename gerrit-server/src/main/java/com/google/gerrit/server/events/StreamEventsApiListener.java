@@ -2384,10 +2384,10 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onReviewerAdded (ReviewerAddedListener.Event ev)
+DECL|method|onReviewersAdded (ReviewerAddedListener.Event ev)
 specifier|public
 name|void
-name|onReviewerAdded
+name|onReviewersAdded
 parameter_list|(
 name|ReviewerAddedListener
 operator|.
@@ -2455,16 +2455,24 @@ name|notes
 argument_list|)
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|AccountInfo
+name|reviewer
+range|:
+name|ev
+operator|.
+name|getReviewers
+argument_list|()
+control|)
+block|{
 name|event
 operator|.
 name|reviewer
 operator|=
 name|accountAttributeSupplier
 argument_list|(
-name|ev
-operator|.
-name|getReviewer
-argument_list|()
+name|reviewer
 argument_list|)
 expr_stmt|;
 name|dispatcher
@@ -2479,6 +2487,7 @@ argument_list|,
 name|event
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

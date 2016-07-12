@@ -98,8 +98,18 @@ name|AccountInfo
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
-comment|/** Notified whenever a Reviewer is added to a change. */
+comment|/** Notified whenever one or more Reviewers are added to a change. */
 end_comment
 
 begin_interface
@@ -116,15 +126,18 @@ name|Event
 extends|extends
 name|ChangeEvent
 block|{
-DECL|method|getReviewer ()
+DECL|method|getReviewers ()
+name|List
+argument_list|<
 name|AccountInfo
-name|getReviewer
+argument_list|>
+name|getReviewers
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|onReviewerAdded (Event event)
+DECL|method|onReviewersAdded (Event event)
 name|void
-name|onReviewerAdded
+name|onReviewersAdded
 parameter_list|(
 name|Event
 name|event
