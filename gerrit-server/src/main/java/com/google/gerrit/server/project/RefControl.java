@@ -1190,8 +1190,8 @@ name|PUSH
 argument_list|)
 return|;
 block|}
-comment|/**    * Determines whether the user can create a new Git ref.    *    * @param db db for checking change visibility.    * @param rw revision pool {@code object} was parsed in; must be reset before    *     calling this method.    * @param object the object the user will start the reference with.    * @return {@code true} if the user specified can create a new Git ref    */
-DECL|method|canCreate (ReviewDb db, RevWalk rw, RevObject object)
+comment|/**    * Determines whether the user can create a new Git ref.    *    * @param db db for checking change visibility.    * @param repo repository on which user want to create    * @param object the object the user will start the reference with.    * @return {@code true} if the user specified can create a new Git ref    */
+DECL|method|canCreate (ReviewDb db, Repository repo, RevObject object)
 specifier|public
 name|boolean
 name|canCreate
@@ -1199,8 +1199,8 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|RevWalk
-name|rw
+name|Repository
+name|repo
 parameter_list|,
 name|RevObject
 name|object
@@ -1343,7 +1343,7 @@ name|isMergedIntoBranchOrTag
 argument_list|(
 name|db
 argument_list|,
-name|rw
+name|repo
 argument_list|,
 operator|(
 name|RevCommit
@@ -1382,6 +1382,16 @@ operator|)
 name|object
 decl_stmt|;
 try|try
+init|(
+name|RevWalk
+name|rw
+init|=
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
+init|)
 block|{
 name|rw
 operator|.
@@ -1524,7 +1534,7 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|isMergedIntoBranchOrTag (ReviewDb db, RevWalk rw, RevCommit commit)
+DECL|method|isMergedIntoBranchOrTag (ReviewDb db, Repository repo, RevCommit commit)
 specifier|private
 name|boolean
 name|isMergedIntoBranchOrTag
@@ -1532,8 +1542,8 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|RevWalk
-name|rw
+name|Repository
+name|repo
 parameter_list|,
 name|RevCommit
 name|commit
@@ -1541,13 +1551,14 @@ parameter_list|)
 block|{
 try|try
 init|(
-name|Repository
-name|repo
+name|RevWalk
+name|rw
 init|=
-name|projectControl
-operator|.
-name|openRepository
-argument_list|()
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
 init|)
 block|{
 name|List

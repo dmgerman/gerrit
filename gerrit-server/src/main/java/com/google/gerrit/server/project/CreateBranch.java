@@ -894,11 +894,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-name|rw
-operator|.
-name|reset
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -911,7 +906,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|rw
+name|repo
 argument_list|,
 name|object
 argument_list|)

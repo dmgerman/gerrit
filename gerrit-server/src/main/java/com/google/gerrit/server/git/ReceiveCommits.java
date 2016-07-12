@@ -7332,14 +7332,6 @@ name|getRefName
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|rp
-operator|.
-name|getRevWalk
-argument_list|()
-operator|.
-name|reset
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|ctl
@@ -7350,7 +7342,7 @@ name|db
 argument_list|,
 name|rp
 operator|.
-name|getRevWalk
+name|getRepository
 argument_list|()
 argument_list|,
 name|obj

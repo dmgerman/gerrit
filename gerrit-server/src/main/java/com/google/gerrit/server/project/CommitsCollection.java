@@ -520,7 +520,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|rw
+name|repo
 argument_list|,
 name|commit
 argument_list|)
