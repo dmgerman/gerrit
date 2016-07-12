@@ -5604,7 +5604,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"delete not permitted"
+literal|"delete reviewer not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -6332,7 +6332,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"delete not permitted"
+literal|"delete vote not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
