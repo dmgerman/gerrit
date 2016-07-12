@@ -2077,7 +2077,7 @@ name|accountAttributeSupplier
 argument_list|(
 name|ev
 operator|.
-name|getEditor
+name|getWho
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2204,7 +2204,7 @@ name|accountAttributeSupplier
 argument_list|(
 name|ev
 operator|.
-name|getUploader
+name|getWho
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2603,7 +2603,7 @@ name|accountAttributeSupplier
 argument_list|(
 name|ev
 operator|.
-name|getEditor
+name|getWho
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2890,7 +2890,7 @@ name|accountAttributeSupplier
 argument_list|(
 name|ev
 operator|.
-name|getPublisher
+name|getWho
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2997,7 +2997,7 @@ name|accountAttributeSupplier
 argument_list|(
 name|ev
 operator|.
-name|getAuthor
+name|getWho
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3130,7 +3130,7 @@ name|accountAttributeSupplier
 argument_list|(
 name|ev
 operator|.
-name|getRestorer
+name|getWho
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3254,7 +3254,7 @@ name|accountAttributeSupplier
 argument_list|(
 name|ev
 operator|.
-name|getMerger
+name|getWho
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3378,7 +3378,7 @@ name|accountAttributeSupplier
 argument_list|(
 name|ev
 operator|.
-name|getAbandoner
+name|getWho
 argument_list|()
 argument_list|)
 expr_stmt|;

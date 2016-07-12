@@ -1624,6 +1624,17 @@ name|currPs
 argument_list|,
 name|reviewer
 argument_list|,
+name|ctx
+operator|.
+name|getUser
+argument_list|()
+operator|.
+name|asIdentifiedUser
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
+argument_list|,
 name|changeMessage
 operator|.
 name|getMessage

@@ -142,6 +142,8 @@ name|Event
 extends|extends
 name|RevisionEvent
 block|{
+annotation|@
+name|Deprecated
 DECL|method|getAuthor ()
 name|AccountInfo
 name|getAuthor

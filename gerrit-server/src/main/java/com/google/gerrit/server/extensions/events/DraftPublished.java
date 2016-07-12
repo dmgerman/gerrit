@@ -282,6 +282,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_class
 DECL|class|DraftPublished
 specifier|public
@@ -348,7 +358,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo publisher)
+DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo publisher, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -361,6 +371,9 @@ name|revision
 parameter_list|,
 name|AccountInfo
 name|publisher
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -388,6 +401,8 @@ argument_list|,
 name|revision
 argument_list|,
 name|publisher
+argument_list|,
+name|when
 argument_list|)
 decl_stmt|;
 for|for
@@ -426,7 +441,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, PatchSet patchSet, Account.Id accountId)
+DECL|method|fire (Change change, PatchSet patchSet, Account.Id accountId, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -441,6 +456,9 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 try|try
@@ -472,6 +490,8 @@ name|accountInfo
 argument_list|(
 name|accountId
 argument_list|)
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -516,7 +536,7 @@ specifier|final
 name|AccountInfo
 name|publisher
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo publisher)
+DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo publisher, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -527,6 +547,9 @@ name|revision
 parameter_list|,
 name|AccountInfo
 name|publisher
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
@@ -534,6 +557,10 @@ argument_list|(
 name|change
 argument_list|,
 name|revision
+argument_list|,
+name|publisher
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|this

@@ -282,6 +282,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_class
 DECL|class|RevisionCreated
 specifier|public
@@ -347,7 +357,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo uploader)
+DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo uploader, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -360,6 +370,9 @@ name|revision
 parameter_list|,
 name|AccountInfo
 name|uploader
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -387,6 +400,8 @@ argument_list|,
 name|revision
 argument_list|,
 name|uploader
+argument_list|,
+name|when
 argument_list|)
 decl_stmt|;
 for|for
@@ -425,7 +440,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, PatchSet patchSet, Account.Id uploader)
+DECL|method|fire (Change change, PatchSet patchSet, Account.Id uploader, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -440,6 +455,9 @@ name|Account
 operator|.
 name|Id
 name|uploader
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -485,6 +503,8 @@ name|accountInfo
 argument_list|(
 name|uploader
 argument_list|)
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -529,7 +549,7 @@ specifier|final
 name|AccountInfo
 name|uploader
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo uploader)
+DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo uploader, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -540,6 +560,9 @@ name|revision
 parameter_list|,
 name|AccountInfo
 name|uploader
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
@@ -547,6 +570,10 @@ argument_list|(
 name|change
 argument_list|,
 name|revision
+argument_list|,
+name|uploader
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|this

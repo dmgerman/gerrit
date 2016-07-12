@@ -80,6 +80,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|ChangeInfo
 import|;
 end_import
@@ -116,6 +132,16 @@ name|RevisionEvent
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_class
 DECL|class|AbstractRevisionEvent
 specifier|public
@@ -133,7 +159,7 @@ specifier|final
 name|RevisionInfo
 name|revisionInfo
 decl_stmt|;
-DECL|method|AbstractRevisionEvent (ChangeInfo change, RevisionInfo revision)
+DECL|method|AbstractRevisionEvent (ChangeInfo change, RevisionInfo revision, AccountInfo who, Timestamp when)
 specifier|protected
 name|AbstractRevisionEvent
 parameter_list|(
@@ -142,11 +168,21 @@ name|change
 parameter_list|,
 name|RevisionInfo
 name|revision
+parameter_list|,
+name|AccountInfo
+name|who
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|change
+argument_list|,
+name|who
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|revisionInfo

@@ -210,6 +210,16 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_class
 DECL|class|TopicEdited
 specifier|public
@@ -275,7 +285,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, AccountInfo editor, String oldTopic)
+DECL|method|fire (ChangeInfo change, AccountInfo editor, String oldTopic, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -288,6 +298,9 @@ name|editor
 parameter_list|,
 name|String
 name|oldTopic
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -315,6 +328,8 @@ argument_list|,
 name|editor
 argument_list|,
 name|oldTopic
+argument_list|,
+name|when
 argument_list|)
 decl_stmt|;
 for|for
@@ -353,7 +368,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, Account account, String oldTopicName)
+DECL|method|fire (Change change, Account account, String oldTopicName, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -366,6 +381,9 @@ name|account
 parameter_list|,
 name|String
 name|oldTopicName
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -401,6 +419,8 @@ name|account
 argument_list|)
 argument_list|,
 name|oldTopicName
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -445,7 +465,7 @@ specifier|final
 name|String
 name|oldTopic
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, AccountInfo editor, String oldTopic)
+DECL|method|Event (ChangeInfo change, AccountInfo editor, String oldTopic, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -456,11 +476,18 @@ name|editor
 parameter_list|,
 name|String
 name|oldTopic
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|change
+argument_list|,
+name|editor
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|this

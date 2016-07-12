@@ -383,7 +383,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo reviewer, String message, Map<String, ApprovalInfo> newApprovals, Map<String, ApprovalInfo> oldApprovals)
+DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo reviewer, AccountInfo remover, String message, Map<String, ApprovalInfo> newApprovals, Map<String, ApprovalInfo> oldApprovals, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -396,6 +396,9 @@ name|revision
 parameter_list|,
 name|AccountInfo
 name|reviewer
+parameter_list|,
+name|AccountInfo
+name|remover
 parameter_list|,
 name|String
 name|message
@@ -415,6 +418,9 @@ argument_list|,
 name|ApprovalInfo
 argument_list|>
 name|oldApprovals
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -443,11 +449,15 @@ name|revision
 argument_list|,
 name|reviewer
 argument_list|,
+name|remover
+argument_list|,
 name|message
 argument_list|,
 name|newApprovals
 argument_list|,
 name|oldApprovals
+argument_list|,
+name|when
 argument_list|)
 decl_stmt|;
 for|for
@@ -486,7 +496,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, PatchSet patchSet, Account reviewer, String message, Map<String, Short> newApprovals, Map<String, Short> oldApprovals, Timestamp ts)
+DECL|method|fire (Change change, PatchSet patchSet, Account reviewer, Account remover, String message, Map<String, Short> newApprovals, Map<String, Short> oldApprovals, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -499,6 +509,9 @@ name|patchSet
 parameter_list|,
 name|Account
 name|reviewer
+parameter_list|,
+name|Account
+name|remover
 parameter_list|,
 name|String
 name|message
@@ -520,7 +533,7 @@ argument_list|>
 name|oldApprovals
 parameter_list|,
 name|Timestamp
-name|ts
+name|when
 parameter_list|)
 block|{
 if|if
@@ -567,6 +580,13 @@ argument_list|(
 name|reviewer
 argument_list|)
 argument_list|,
+name|util
+operator|.
+name|accountInfo
+argument_list|(
+name|remover
+argument_list|)
+argument_list|,
 name|message
 argument_list|,
 name|util
@@ -577,7 +597,7 @@ name|reviewer
 argument_list|,
 name|newApprovals
 argument_list|,
-name|ts
+name|when
 argument_list|)
 argument_list|,
 name|util
@@ -588,8 +608,10 @@ name|reviewer
 argument_list|,
 name|oldApprovals
 argument_list|,
-name|ts
+name|when
 argument_list|)
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -662,7 +684,7 @@ name|ApprovalInfo
 argument_list|>
 name|oldApprovals
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo reviewer, String comment, Map<String, ApprovalInfo> newApprovals, Map<String, ApprovalInfo> oldApprovals)
+DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo reviewer, AccountInfo remover, String comment, Map<String, ApprovalInfo> newApprovals, Map<String, ApprovalInfo> oldApprovals, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -673,6 +695,9 @@ name|revision
 parameter_list|,
 name|AccountInfo
 name|reviewer
+parameter_list|,
+name|AccountInfo
+name|remover
 parameter_list|,
 name|String
 name|comment
@@ -692,6 +717,9 @@ argument_list|,
 name|ApprovalInfo
 argument_list|>
 name|oldApprovals
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
@@ -699,6 +727,10 @@ argument_list|(
 name|change
 argument_list|,
 name|revision
+argument_list|,
+name|remover
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|this

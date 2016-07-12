@@ -282,6 +282,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_class
 DECL|class|ReviewerAdded
 specifier|public
@@ -347,7 +357,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo reviewer)
+DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo reviewer, AccountInfo adder, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -360,6 +370,12 @@ name|revision
 parameter_list|,
 name|AccountInfo
 name|reviewer
+parameter_list|,
+name|AccountInfo
+name|adder
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -387,6 +403,10 @@ argument_list|,
 name|revision
 argument_list|,
 name|reviewer
+argument_list|,
+name|adder
+argument_list|,
+name|when
 argument_list|)
 decl_stmt|;
 for|for
@@ -423,7 +443,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, PatchSet patchSet, Account account)
+DECL|method|fire (Change change, PatchSet patchSet, Account account, Account adder, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -436,6 +456,12 @@ name|patchSet
 parameter_list|,
 name|Account
 name|account
+parameter_list|,
+name|Account
+name|adder
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 if|if
@@ -481,6 +507,15 @@ name|accountInfo
 argument_list|(
 name|account
 argument_list|)
+argument_list|,
+name|util
+operator|.
+name|accountInfo
+argument_list|(
+name|adder
+argument_list|)
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -525,7 +560,7 @@ specifier|final
 name|AccountInfo
 name|reviewer
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo reviewer)
+DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo reviewer, AccountInfo adder, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -536,6 +571,12 @@ name|revision
 parameter_list|,
 name|AccountInfo
 name|reviewer
+parameter_list|,
+name|AccountInfo
+name|adder
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|super
@@ -543,6 +584,10 @@ argument_list|(
 name|change
 argument_list|,
 name|revision
+argument_list|,
+name|adder
+argument_list|,
+name|when
 argument_list|)
 expr_stmt|;
 name|this
