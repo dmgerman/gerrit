@@ -946,6 +946,44 @@ return|return
 name|result
 return|;
 block|}
+DECL|method|getExecutor (String queueName)
+specifier|public
+name|Executor
+name|getExecutor
+parameter_list|(
+name|String
+name|queueName
+parameter_list|)
+block|{
+for|for
+control|(
+name|Executor
+name|e
+range|:
+name|queues
+control|)
+block|{
+if|if
+condition|(
+name|e
+operator|.
+name|queueName
+operator|.
+name|equals
+argument_list|(
+name|queueName
+argument_list|)
+condition|)
+block|{
+return|return
+name|e
+return|;
+block|}
+block|}
+return|return
+literal|null
+return|;
+block|}
 DECL|method|stop ()
 specifier|private
 name|void
@@ -1034,10 +1072,15 @@ argument_list|>
 argument_list|>
 name|all
 decl_stmt|;
-DECL|method|Executor (final int corePoolSize, final String prefix)
+DECL|field|queueName
+specifier|private
+specifier|final
+name|String
+name|queueName
+decl_stmt|;
+DECL|method|Executor (int corePoolSize, final String prefix)
 name|Executor
 parameter_list|(
-specifier|final
 name|int
 name|corePoolSize
 parameter_list|,
@@ -1145,6 +1188,10 @@ operator|+
 literal|4
 comment|// concurrency level
 argument_list|)
+expr_stmt|;
+name|queueName
+operator|=
+name|prefix
 expr_stmt|;
 block|}
 DECL|method|unregisterWorkQueue ()
@@ -1682,6 +1729,18 @@ parameter_list|()
 block|{
 return|return
 name|startTime
+return|;
+block|}
+DECL|method|getQueueName ()
+specifier|public
+name|String
+name|getQueueName
+parameter_list|()
+block|{
+return|return
+name|executor
+operator|.
+name|queueName
 return|;
 block|}
 annotation|@
