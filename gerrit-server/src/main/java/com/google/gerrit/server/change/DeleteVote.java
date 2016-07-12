@@ -1461,7 +1461,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"delete not permitted"
+literal|"delete vote not permitted"
 argument_list|)
 throw|;
 block|}
