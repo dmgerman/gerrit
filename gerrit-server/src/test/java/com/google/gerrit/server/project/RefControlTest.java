@@ -5652,8 +5652,6 @@ name|projectCache
 argument_list|,
 name|sectionSorter
 argument_list|,
-name|repoManager
-argument_list|,
 literal|null
 argument_list|,
 name|changeControlFactory

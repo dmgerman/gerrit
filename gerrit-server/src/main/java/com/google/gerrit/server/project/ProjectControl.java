@@ -438,22 +438,6 @@ name|server
 operator|.
 name|git
 operator|.
-name|GitRepositoryManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|SearchingChangeCacheImpl
 import|;
 end_import
@@ -1186,12 +1170,6 @@ specifier|final
 name|ProjectState
 name|state
 decl_stmt|;
-DECL|field|repoManager
-specifier|private
-specifier|final
-name|GitRepositoryManager
-name|repoManager
-decl_stmt|;
 DECL|field|changeNotesFactory
 specifier|private
 specifier|final
@@ -1277,7 +1255,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeNotes.Factory changeNotesFactory, ChangeControl.Factory changeControlFactory, TagCache tagCache, @Nullable SearchingChangeCacheImpl changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, ChangeNotes.Factory changeNotesFactory, ChangeControl.Factory changeControlFactory, TagCache tagCache, @Nullable SearchingChangeCacheImpl changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -1307,9 +1285,6 @@ name|PermissionCollection
 operator|.
 name|Factory
 name|permissionFilter
-parameter_list|,
-name|GitRepositoryManager
-name|repoManager
 parameter_list|,
 name|ChangeNotes
 operator|.
@@ -1347,12 +1322,6 @@ name|ProjectState
 name|ps
 parameter_list|)
 block|{
-name|this
-operator|.
-name|repoManager
-operator|=
-name|repoManager
-expr_stmt|;
 name|this
 operator|.
 name|changeNotesFactory
