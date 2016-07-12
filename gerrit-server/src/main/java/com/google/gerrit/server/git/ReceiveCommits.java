@@ -5290,7 +5290,7 @@ name|u
 operator|.
 name|info
 operator|.
-name|getMessage
+name|getSubject
 argument_list|()
 expr_stmt|;
 block|}
