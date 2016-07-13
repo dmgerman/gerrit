@@ -1289,6 +1289,30 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|setParent (RevCommit parent)
+specifier|public
+name|void
+name|setParent
+parameter_list|(
+name|RevCommit
+name|parent
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|commitBuilder
+operator|.
+name|noParents
+argument_list|()
+expr_stmt|;
+name|commitBuilder
+operator|.
+name|parent
+argument_list|(
+name|parent
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|to (String ref)
 specifier|public
 name|Result

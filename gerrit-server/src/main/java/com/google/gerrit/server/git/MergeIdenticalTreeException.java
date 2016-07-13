@@ -66,8 +66,24 @@ name|git
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
 begin_comment
-comment|/** Indicates that the commit is already contained in destination banch. */
+comment|/**  * Indicates that the commit is already contained in destination branch.  *  */
 end_comment
 
 begin_class
@@ -76,7 +92,7 @@ specifier|public
 class|class
 name|MergeIdenticalTreeException
 extends|extends
-name|Exception
+name|RestApiException
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -87,6 +103,7 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+comment|/** @param msg message to return to the client describing the error. */
 DECL|method|MergeIdenticalTreeException (String msg)
 specifier|public
 name|MergeIdenticalTreeException
