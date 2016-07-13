@@ -7032,6 +7032,8 @@ argument_list|,
 name|in
 argument_list|,
 name|repo
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7299,6 +7301,8 @@ argument_list|,
 name|in
 argument_list|,
 name|repo
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|accountLoader
@@ -7311,7 +7315,7 @@ name|rev
 return|;
 block|}
 block|}
-DECL|method|toRevisionInfo (ChangeControl ctl, ChangeData cd, PatchSet in, Repository repo)
+DECL|method|toRevisionInfo (ChangeControl ctl, ChangeData cd, PatchSet in, Repository repo, boolean fillCommit)
 specifier|private
 name|RevisionInfo
 name|toRevisionInfo
@@ -7327,6 +7331,9 @@ name|in
 parameter_list|,
 name|Repository
 name|repo
+parameter_list|,
+name|boolean
+name|fillCommit
 parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
@@ -7566,6 +7573,8 @@ name|has
 argument_list|(
 name|WEB_LINKS
 argument_list|)
+argument_list|,
+name|fillCommit
 argument_list|)
 expr_stmt|;
 block|}
@@ -7763,7 +7772,7 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|toCommit (ChangeControl ctl, RevWalk rw, RevCommit commit, boolean addLinks)
+DECL|method|toCommit (ChangeControl ctl, RevWalk rw, RevCommit commit, boolean addLinks, boolean fillCommit)
 name|CommitInfo
 name|toCommit
 parameter_list|(
@@ -7778,6 +7787,9 @@ name|commit
 parameter_list|,
 name|boolean
 name|addLinks
+parameter_list|,
+name|boolean
+name|fillCommit
 parameter_list|)
 throws|throws
 name|IOException
@@ -7802,6 +7814,21 @@ operator|new
 name|CommitInfo
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|fillCommit
+condition|)
+block|{
+name|info
+operator|.
+name|commit
+operator|=
+name|commit
+operator|.
+name|name
+argument_list|()
+expr_stmt|;
+block|}
 name|info
 operator|.
 name|parents
