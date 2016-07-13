@@ -2845,10 +2845,7 @@ name|user
 operator|=
 name|ctx
 operator|.
-name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
+name|getIdentifiedUser
 argument_list|()
 expr_stmt|;
 name|notes

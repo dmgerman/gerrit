@@ -2045,9 +2045,6 @@ name|setFrom
 argument_list|(
 name|ctx
 operator|.
-name|getUser
-argument_list|()
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
@@ -2184,9 +2181,6 @@ argument_list|)
 argument_list|)
 argument_list|,
 name|ctx
-operator|.
-name|getUser
-argument_list|()
 operator|.
 name|getAccountId
 argument_list|()

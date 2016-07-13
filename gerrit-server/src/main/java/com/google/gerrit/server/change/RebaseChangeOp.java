@@ -1463,10 +1463,7 @@ name|setCommitter
 argument_list|(
 name|ctx
 operator|.
-name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
+name|getIdentifiedUser
 argument_list|()
 operator|.
 name|newCommitterIdent

@@ -1533,12 +1533,6 @@ argument_list|)
 argument_list|,
 name|ctx
 operator|.
-name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
-argument_list|()
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
@@ -1612,10 +1606,7 @@ name|user
 init|=
 name|ctx
 operator|.
-name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
+name|getIdentifiedUser
 argument_list|()
 decl_stmt|;
 if|if

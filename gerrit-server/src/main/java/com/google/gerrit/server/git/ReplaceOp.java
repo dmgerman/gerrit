@@ -1940,9 +1940,6 @@ name|remove
 argument_list|(
 name|ctx
 operator|.
-name|getUser
-argument_list|()
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
@@ -2169,9 +2166,6 @@ argument_list|)
 argument_list|,
 name|ctx
 operator|.
-name|getUser
-argument_list|()
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
@@ -2363,9 +2357,6 @@ argument_list|,
 name|priorPatchSetId
 argument_list|,
 name|ctx
-operator|.
-name|getUser
-argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
@@ -2668,16 +2659,11 @@ comment|// Normally the ref updated hook is fired by BatchUpdate, but ReplaceOp 
 comment|// special because its ref is actually updated by ReceiveCommits, so from
 comment|// BatchUpdate's perspective there is no ref update. Thus we have to fire it
 comment|// manually.
+specifier|final
 name|Account
 name|account
 init|=
 name|ctx
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
-argument_list|()
 operator|.
 name|getAccount
 argument_list|()
@@ -2756,12 +2742,9 @@ name|cm
 operator|.
 name|setFrom
 argument_list|(
-name|ctx
+name|account
 operator|.
-name|getUser
-argument_list|()
-operator|.
-name|getAccountId
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2911,9 +2894,6 @@ argument_list|,
 name|newPatchSet
 argument_list|,
 name|ctx
-operator|.
-name|getUser
-argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
@@ -3154,12 +3134,6 @@ argument_list|,
 name|newPatchSet
 argument_list|,
 name|ctx
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
-argument_list|()
 operator|.
 name|getAccount
 argument_list|()
