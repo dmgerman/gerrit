@@ -769,12 +769,6 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|commitValidatorsFactory
 specifier|private
 specifier|final
@@ -941,13 +935,10 @@ name|oldReviewers
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PatchSetInserter (ReviewDb db, ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, PatchSetUtil psUtil, RevisionCreated revisionCreated, @Assisted ChangeControl ctl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
+DECL|method|PatchSetInserter (ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, PatchSetUtil psUtil, RevisionCreated revisionCreated, @Assisted ChangeControl ctl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
 specifier|public
 name|PatchSetInserter
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
@@ -994,12 +985,6 @@ name|RevCommit
 name|commit
 parameter_list|)
 block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
 name|this
 operator|.
 name|approvalsUtil
@@ -1372,6 +1357,14 @@ name|OrmException
 throws|,
 name|IOException
 block|{
+name|ReviewDb
+name|db
+init|=
+name|ctx
+operator|.
+name|getDb
+argument_list|()
+decl_stmt|;
 name|ChangeControl
 name|ctl
 init|=
@@ -1476,10 +1469,7 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
+name|db
 argument_list|,
 name|ctx
 operator|.
@@ -1509,10 +1499,7 @@ name|psUtil
 operator|.
 name|insert
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
+name|db
 argument_list|,
 name|ctx
 operator|.
