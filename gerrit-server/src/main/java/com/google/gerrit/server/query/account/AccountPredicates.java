@@ -490,6 +490,30 @@ name|externalId
 argument_list|)
 return|;
 block|}
+DECL|method|fullName (String fullName)
+specifier|static
+name|Predicate
+argument_list|<
+name|AccountState
+argument_list|>
+name|fullName
+parameter_list|(
+name|String
+name|fullName
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AccountPredicate
+argument_list|(
+name|AccountField
+operator|.
+name|FULL_NAME
+argument_list|,
+name|fullName
+argument_list|)
+return|;
+block|}
 DECL|method|isActive ()
 specifier|public
 specifier|static
