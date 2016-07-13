@@ -318,6 +318,32 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|byDefault (String query)
+specifier|public
+name|List
+argument_list|<
+name|AccountState
+argument_list|>
+name|byDefault
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|query
+argument_list|(
+name|AccountPredicates
+operator|.
+name|defaultPredicate
+argument_list|(
+name|query
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|byExternalId (String externalId)
 specifier|public
 name|List
