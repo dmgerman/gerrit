@@ -1106,7 +1106,9 @@ name|READ
 argument_list|,
 name|admins
 argument_list|,
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|)
 expr_stmt|;
 name|Util
@@ -1119,7 +1121,9 @@ name|Permission
 operator|.
 name|READ
 argument_list|,
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|)
 expr_stmt|;
 name|saveProjectConfig
@@ -1193,7 +1197,9 @@ name|READ
 argument_list|,
 name|REGISTERED_USERS
 argument_list|,
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|)
 expr_stmt|;
 name|assertRefs
@@ -1220,7 +1226,9 @@ literal|"refs/heads/branch"
 argument_list|,
 literal|"refs/heads/master"
 argument_list|,
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|,
 literal|"refs/tags/branch-tag"
 argument_list|,
@@ -1736,7 +1744,9 @@ literal|"refs/heads/branch"
 argument_list|,
 literal|"refs/heads/master"
 argument_list|,
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|,
 literal|"refs/tags/branch-tag"
 argument_list|,

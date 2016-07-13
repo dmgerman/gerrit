@@ -220,6 +220,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -357,7 +373,9 @@ argument_list|)
 argument_list|,
 name|branch
 argument_list|(
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|,
 literal|null
 argument_list|,
@@ -428,7 +446,9 @@ argument_list|)
 argument_list|,
 name|branch
 argument_list|(
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|,
 literal|null
 argument_list|,
@@ -638,7 +658,9 @@ name|of
 argument_list|(
 literal|"HEAD"
 argument_list|,
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|,
 literal|"refs/heads/master"
 argument_list|,
@@ -666,7 +688,9 @@ name|of
 argument_list|(
 literal|"HEAD"
 argument_list|,
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|,
 literal|"refs/heads/master"
 argument_list|,

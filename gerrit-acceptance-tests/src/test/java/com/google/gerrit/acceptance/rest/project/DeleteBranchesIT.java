@@ -244,6 +244,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -897,7 +913,9 @@ name|newArrayList
 argument_list|(
 literal|"HEAD"
 argument_list|,
-literal|"refs/meta/config"
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|,
 literal|"refs/heads/master"
 argument_list|)
