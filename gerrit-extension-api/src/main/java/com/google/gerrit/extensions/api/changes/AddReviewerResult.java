@@ -124,7 +124,7 @@ specifier|public
 name|Boolean
 name|confirm
 decl_stmt|;
-comment|/**    * @{List} of individual reviewers added to the change. The size of this list    * may be greater than one (e.g. when a group is added). Null if no reviewers    * were added.    */
+comment|/**    * List of individual reviewers added to the change. The size of this    * list may be greater than one (e.g. when a group is added). Null if no    * reviewers were added.    */
 annotation|@
 name|Nullable
 DECL|field|reviewers
