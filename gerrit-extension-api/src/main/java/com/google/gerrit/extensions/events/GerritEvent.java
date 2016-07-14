@@ -66,6 +66,24 @@ name|events
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|NotifyHandling
+import|;
+end_import
+
 begin_comment
 comment|/** Base interface to be extended by Events. */
 end_comment
@@ -75,7 +93,13 @@ DECL|interface|GerritEvent
 specifier|public
 interface|interface
 name|GerritEvent
-block|{ }
+block|{
+DECL|method|getNotify ()
+name|NotifyHandling
+name|getNotify
+parameter_list|()
+function_decl|;
+block|}
 end_interface
 
 end_unit

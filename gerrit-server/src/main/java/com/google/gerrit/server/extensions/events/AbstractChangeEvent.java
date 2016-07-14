@@ -78,6 +78,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|common
 operator|.
 name|AccountInfo
@@ -153,7 +171,13 @@ specifier|final
 name|Timestamp
 name|when
 decl_stmt|;
-DECL|method|AbstractChangeEvent (ChangeInfo change, AccountInfo who, Timestamp when)
+DECL|field|notify
+specifier|private
+specifier|final
+name|NotifyHandling
+name|notify
+decl_stmt|;
+DECL|method|AbstractChangeEvent (ChangeInfo change, AccountInfo who, Timestamp when, NotifyHandling notify)
 specifier|protected
 name|AbstractChangeEvent
 parameter_list|(
@@ -165,6 +189,9 @@ name|who
 parameter_list|,
 name|Timestamp
 name|when
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 block|{
 name|this
@@ -184,6 +211,12 @@ operator|.
 name|when
 operator|=
 name|when
+expr_stmt|;
+name|this
+operator|.
+name|notify
+operator|=
+name|notify
 expr_stmt|;
 block|}
 annotation|@
@@ -220,6 +253,18 @@ parameter_list|()
 block|{
 return|return
 name|when
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getNotify ()
+specifier|public
+name|NotifyHandling
+name|getNotify
+parameter_list|()
+block|{
+return|return
+name|notify
 return|;
 block|}
 block|}

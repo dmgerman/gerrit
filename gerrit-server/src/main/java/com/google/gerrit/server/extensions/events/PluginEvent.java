@@ -210,6 +210,8 @@ specifier|private
 specifier|static
 class|class
 name|Event
+extends|extends
+name|AbstractNoNotifyEvent
 implements|implements
 name|PluginEventListener
 operator|.
