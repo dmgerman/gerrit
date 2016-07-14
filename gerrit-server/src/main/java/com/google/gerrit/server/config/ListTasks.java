@@ -829,6 +829,11 @@ specifier|public
 name|String
 name|projectName
 decl_stmt|;
+DECL|field|queueName
+specifier|public
+name|String
+name|queueName
+decl_stmt|;
 DECL|method|TaskInfo (Task<?> task)
 specifier|public
 name|TaskInfo
@@ -899,6 +904,15 @@ operator|=
 name|task
 operator|.
 name|toString
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|queueName
+operator|=
+name|task
+operator|.
+name|getQueueName
 argument_list|()
 expr_stmt|;
 if|if
