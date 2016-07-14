@@ -295,20 +295,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|SECONDS
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -4087,20 +4073,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TestTimeUtil
-operator|.
-name|resetWithClockStep
-argument_list|(
-literal|1
-argument_list|,
-name|SECONDS
-argument_list|)
-expr_stmt|;
-name|sender
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
