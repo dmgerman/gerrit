@@ -557,7 +557,10 @@ name|pushedRef
 operator|+=
 literal|"/"
 operator|+
+name|name
+argument_list|(
 name|topic
+argument_list|)
 expr_stmt|;
 block|}
 name|String
