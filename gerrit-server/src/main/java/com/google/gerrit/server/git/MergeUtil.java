@@ -1837,8 +1837,6 @@ name|mergeCommit
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 name|List
 argument_list|<
 name|String
@@ -1880,7 +1878,6 @@ name|conflicts
 argument_list|)
 argument_list|)
 throw|;
-block|}
 block|}
 DECL|method|createConflictMessage (List<String> conflicts)
 specifier|public
