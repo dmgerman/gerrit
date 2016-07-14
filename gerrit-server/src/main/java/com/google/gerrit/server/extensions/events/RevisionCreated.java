@@ -375,7 +375,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo uploader, Timestamp when)
+DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo uploader, Timestamp when, NotifyHandling notify)
 specifier|public
 name|void
 name|fire
@@ -391,6 +391,9 @@ name|uploader
 parameter_list|,
 name|Timestamp
 name|when
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 block|{
 if|if
@@ -420,6 +423,8 @@ argument_list|,
 name|uploader
 argument_list|,
 name|when
+argument_list|,
+name|notify
 argument_list|)
 decl_stmt|;
 for|for
@@ -458,7 +463,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, PatchSet patchSet, Account.Id uploader, Timestamp when)
+DECL|method|fire (Change change, PatchSet patchSet, Account.Id uploader, Timestamp when, NotifyHandling notify)
 specifier|public
 name|void
 name|fire
@@ -476,6 +481,9 @@ name|uploader
 parameter_list|,
 name|Timestamp
 name|when
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 block|{
 if|if
@@ -523,6 +531,8 @@ name|uploader
 argument_list|)
 argument_list|,
 name|when
+argument_list|,
+name|notify
 argument_list|)
 expr_stmt|;
 block|}
@@ -567,7 +577,7 @@ specifier|final
 name|AccountInfo
 name|uploader
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo uploader, Timestamp when)
+DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo uploader, Timestamp when, NotifyHandling notify)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -581,6 +591,9 @@ name|uploader
 parameter_list|,
 name|Timestamp
 name|when
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 block|{
 name|super
@@ -593,9 +606,7 @@ name|uploader
 argument_list|,
 name|when
 argument_list|,
-name|NotifyHandling
-operator|.
-name|ALL
+name|notify
 argument_list|)
 expr_stmt|;
 name|this
