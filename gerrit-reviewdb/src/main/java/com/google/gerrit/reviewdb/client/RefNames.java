@@ -811,6 +811,25 @@ name|EDIT_PREFIX
 argument_list|)
 return|;
 block|}
+DECL|method|isRefsUsers (String ref)
+specifier|public
+specifier|static
+name|boolean
+name|isRefsUsers
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+block|{
+return|return
+name|ref
+operator|.
+name|startsWith
+argument_list|(
+name|REFS_USERS
+argument_list|)
+return|;
+block|}
 DECL|method|parseShardedRefPart (String name)
 specifier|static
 name|Integer
