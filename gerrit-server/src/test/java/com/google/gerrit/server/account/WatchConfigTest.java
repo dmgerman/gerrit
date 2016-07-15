@@ -83,18 +83,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -122,7 +110,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
+name|AccountProjectWatch
+operator|.
+name|NotifyType
 import|;
 end_import
 
@@ -138,9 +128,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountProjectWatch
-operator|.
-name|NotifyType
+name|Project
 import|;
 end_import
 
@@ -182,15 +170,17 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|eclipse
+name|google
 operator|.
-name|jgit
+name|gerrit
 operator|.
-name|errors
+name|server
 operator|.
-name|ConfigInvalidException
+name|git
+operator|.
+name|ValidationError
 import|;
 end_import
 
@@ -214,7 +204,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
+name|Before
 import|;
 end_import
 
@@ -230,13 +220,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|junit
+name|util
 operator|.
-name|rules
-operator|.
-name|ExpectedException
+name|ArrayList
 import|;
 end_import
 
@@ -266,6 +254,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -285,19 +283,38 @@ DECL|class|WatchConfigTest
 specifier|public
 class|class
 name|WatchConfigTest
-block|{
-annotation|@
-name|Rule
-DECL|field|exception
-specifier|public
-name|ExpectedException
-name|exception
-init|=
-name|ExpectedException
+implements|implements
+name|ValidationError
 operator|.
-name|none
+name|Sink
+block|{
+DECL|field|validationErrors
+specifier|private
+name|List
+argument_list|<
+name|ValidationError
+argument_list|>
+name|validationErrors
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Before
+DECL|method|setup ()
+specifier|public
+name|void
+name|setup
+parameter_list|()
+block|{
+name|validationErrors
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 DECL|method|parseWatchConfig ()
@@ -360,8 +377,18 @@ literal|1000000
 argument_list|)
 argument_list|,
 name|cfg
+argument_list|,
+name|this
 argument_list|)
 decl_stmt|;
+name|assertThat
+argument_list|(
+name|validationErrors
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
 name|Project
 operator|.
 name|NameKey
@@ -574,24 +601,6 @@ operator|+
 literal|"  notify = [NEW_PATCHSETS]\n"
 argument_list|)
 expr_stmt|;
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|ConfigInvalidException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"Invalid notify type INVALID in project watch of account 1000000"
-operator|+
-literal|" for project myProject: branch:master [INVALID, NEW_CHANGES]"
-argument_list|)
-expr_stmt|;
 name|WatchConfig
 operator|.
 name|parse
@@ -605,6 +614,40 @@ literal|1000000
 argument_list|)
 argument_list|,
 name|cfg
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|validationErrors
+argument_list|)
+operator|.
+name|hasSize
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|validationErrors
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"watch.config: Invalid notify type INVALID in project watch of"
+operator|+
+literal|" account 1000000 for project myProject: branch:master"
+operator|+
+literal|" [INVALID, NEW_CHANGES]"
 argument_list|)
 expr_stmt|;
 block|}
@@ -769,6 +812,14 @@ operator|.
 name|ALL
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|validationErrors
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -957,7 +1008,6 @@ expr_stmt|;
 block|}
 DECL|method|assertParseNotifyValue (String notifyValue, String expectedFilter, Set<NotifyType> expectedNotifyTypes)
 specifier|private
-specifier|static
 name|void
 name|assertParseNotifyValue
 parameter_list|(
@@ -973,8 +1023,6 @@ name|NotifyType
 argument_list|>
 name|expectedNotifyTypes
 parameter_list|)
-throws|throws
-name|ConfigInvalidException
 block|{
 name|NotifyValue
 name|nv
@@ -1058,7 +1106,6 @@ expr_stmt|;
 block|}
 DECL|method|assertParseNotifyValueFails (String notifyValue)
 specifier|private
-specifier|static
 name|void
 name|assertParseNotifyValueFails
 parameter_list|(
@@ -1066,41 +1113,48 @@ name|String
 name|notifyValue
 parameter_list|)
 block|{
-try|try
-block|{
+name|assertThat
+argument_list|(
+name|validationErrors
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
 name|parseNotifyValue
 argument_list|(
 name|notifyValue
 argument_list|)
 expr_stmt|;
-name|fail
+name|assertThat
 argument_list|(
-literal|"expected ConfigInvalidException for notifyValue: "
+name|validationErrors
+argument_list|)
+operator|.
+name|named
+argument_list|(
+literal|"expected validation error for notifyValue: "
 operator|+
 name|notifyValue
 argument_list|)
+operator|.
+name|isNotEmpty
+argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ConfigInvalidException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
+name|validationErrors
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|parseNotifyValue (String notifyValue)
 specifier|private
-specifier|static
 name|NotifyValue
 name|parseNotifyValue
 parameter_list|(
 name|String
 name|notifyValue
 parameter_list|)
-throws|throws
-name|ConfigInvalidException
 block|{
 return|return
 name|NotifyValue
@@ -1118,8 +1172,29 @@ argument_list|,
 literal|"project"
 argument_list|,
 name|notifyValue
+argument_list|,
+name|this
 argument_list|)
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|error (ValidationError error)
+specifier|public
+name|void
+name|error
+parameter_list|(
+name|ValidationError
+name|error
+parameter_list|)
+block|{
+name|validationErrors
+operator|.
+name|add
+argument_list|(
+name|error
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
