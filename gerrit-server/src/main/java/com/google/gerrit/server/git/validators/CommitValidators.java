@@ -2365,7 +2365,9 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|ConfigInvalidException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
@@ -2380,7 +2382,7 @@ operator|.
 name|getUserName
 argument_list|()
 operator|+
-literal|" tried to push invalid project configuration "
+literal|" tried to push an invalid project configuration "
 operator|+
 name|receiveEvent
 operator|.
@@ -2392,7 +2394,7 @@ operator|.
 name|name
 argument_list|()
 operator|+
-literal|" for "
+literal|" for project "
 operator|+
 name|receiveEvent
 operator|.
