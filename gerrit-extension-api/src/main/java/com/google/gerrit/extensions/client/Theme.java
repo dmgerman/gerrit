@@ -100,8 +100,8 @@ block|,
 DECL|enumConstant|PARAISO_LIGHT
 name|PARAISO_LIGHT
 block|,
-DECL|enumConstant|SOLARIZED_LIGHT
-name|SOLARIZED_LIGHT
+DECL|enumConstant|SOLARIZED
+name|SOLARIZED
 block|,
 DECL|enumConstant|TTCN
 name|TTCN
@@ -187,9 +187,6 @@ name|RUBYBLUE
 block|,
 DECL|enumConstant|SETI
 name|SETI
-block|,
-DECL|enumConstant|SOLARIZED_DARK
-name|SOLARIZED_DARK
 block|,
 DECL|enumConstant|THE_MATRIX
 name|THE_MATRIX
@@ -299,9 +296,6 @@ case|case
 name|SETI
 case|:
 case|case
-name|SOLARIZED_DARK
-case|:
-case|case
 name|THE_MATRIX
 case|:
 case|case
@@ -353,7 +347,7 @@ case|case
 name|PARAISO_LIGHT
 case|:
 case|case
-name|SOLARIZED_LIGHT
+name|SOLARIZED
 case|:
 case|case
 name|TTCN
