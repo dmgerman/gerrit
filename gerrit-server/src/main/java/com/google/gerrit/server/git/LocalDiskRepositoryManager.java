@@ -2558,6 +2558,7 @@ operator|.
 name|DOT_GIT
 argument_list|)
 operator|&&
+operator|(
 name|name
 operator|.
 name|endsWith
@@ -2566,6 +2567,21 @@ name|Constants
 operator|.
 name|DOT_GIT_EXT
 argument_list|)
+operator|||
+name|FileKey
+operator|.
+name|isGitRepository
+argument_list|(
+name|p
+operator|.
+name|toFile
+argument_list|()
+argument_list|,
+name|FS
+operator|.
+name|DETECTED
+argument_list|)
+operator|)
 return|;
 block|}
 DECL|method|addProject (Path p)
