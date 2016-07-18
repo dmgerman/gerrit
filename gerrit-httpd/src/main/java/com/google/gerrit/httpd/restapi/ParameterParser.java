@@ -542,6 +542,8 @@ block|}
 catch|catch
 parameter_list|(
 name|CmdLineException
+decl||
+name|NumberFormatException
 name|e
 parameter_list|)
 block|{
