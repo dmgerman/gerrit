@@ -886,6 +886,18 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
 begin_comment
 comment|/** View of a single {@link Change} based on the log of its notes branch. */
 end_comment
@@ -3531,8 +3543,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-try|try
-init|(
 name|Timer1
 operator|.
 name|Context
@@ -3548,7 +3558,8 @@ name|start
 argument_list|(
 name|CHANGES
 argument_list|)
-init|)
+decl_stmt|;
+try|try
 block|{
 name|Change
 operator|.
@@ -3662,6 +3673,16 @@ comment|// ChangeBundle.
 comment|//
 comment|// Parse notes from the staged result so we can return something useful
 comment|// to the caller instead of throwing.
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Rebuilding change {} failed"
+argument_list|,
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|args
 operator|.
 name|metrics
@@ -3779,6 +3800,38 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
+block|}
+finally|finally
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Rebuilt change {} in project {} in {} ms"
+argument_list|,
+name|getChangeId
+argument_list|()
+argument_list|,
+name|getProjectName
+argument_list|()
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|convert
+argument_list|(
+name|timer
+operator|.
+name|stop
+argument_list|()
+argument_list|,
+name|TimeUnit
+operator|.
+name|NANOSECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
