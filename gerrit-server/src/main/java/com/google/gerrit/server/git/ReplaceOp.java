@@ -2096,6 +2096,14 @@ name|approvals
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|String
+name|kindMessage
+init|=
+name|changeKindMessage
+argument_list|(
+name|changeKind
+argument_list|)
+decl_stmt|;
 name|StringBuilder
 name|message
 init|=
@@ -2103,14 +2111,6 @@ operator|new
 name|StringBuilder
 argument_list|(
 name|approvalMessage
-argument_list|)
-decl_stmt|;
-name|String
-name|kindMessage
-init|=
-name|changeKindMessage
-argument_list|(
-name|changeKind
 argument_list|)
 decl_stmt|;
 if|if
@@ -2129,6 +2129,16 @@ operator|.
 name|append
 argument_list|(
 name|kindMessage
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|message
+operator|.
+name|append
+argument_list|(
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -2289,13 +2299,13 @@ operator|.
 name|get
 argument_list|()
 operator|+
-literal|" was rebased"
+literal|" was rebased."
 return|;
 case|case
 name|NO_CODE_CHANGE
 case|:
 return|return
-literal|": Commit message was updated"
+literal|": Commit message was updated."
 return|;
 case|case
 name|REWORK

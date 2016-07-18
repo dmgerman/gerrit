@@ -11717,6 +11717,13 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|msg
+operator|.
+name|append
+argument_list|(
+literal|'.'
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
