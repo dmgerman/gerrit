@@ -622,7 +622,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|revision
-specifier|private
+specifier|protected
 name|RevCommit
 name|revision
 decl_stmt|;
