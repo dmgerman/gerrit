@@ -1914,7 +1914,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|createProject (CreateProjectArgs args)
-specifier|public
+specifier|private
 name|Project
 name|createProject
 parameter_list|(
