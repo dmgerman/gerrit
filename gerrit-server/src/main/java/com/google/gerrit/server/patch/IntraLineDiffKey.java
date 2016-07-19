@@ -161,6 +161,7 @@ implements|implements
 name|Serializable
 block|{
 DECL|field|serialVersionUID
+specifier|public
 specifier|static
 specifier|final
 name|long
