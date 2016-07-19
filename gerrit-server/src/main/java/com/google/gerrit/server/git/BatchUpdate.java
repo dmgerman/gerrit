@@ -1696,11 +1696,11 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-DECL|class|Op
+DECL|class|RepoOnlyOp
 specifier|public
 specifier|static
 class|class
-name|Op
+name|RepoOnlyOp
 block|{
 comment|/**      * Override this method to update the repo.      *      * @param ctx context      */
 DECL|method|updateRepo (RepoContext ctx)
@@ -1714,6 +1714,28 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+comment|/**      * Override this method to do something after the update      * e.g. send email or run hooks      *      * @param ctx context      */
+comment|//TODO(dborowitz): Support async operations?
+DECL|method|postUpdate (Context ctx)
+specifier|public
+name|void
+name|postUpdate
+parameter_list|(
+name|Context
+name|ctx
+parameter_list|)
+throws|throws
+name|Exception
+block|{     }
+block|}
+DECL|class|Op
+specifier|public
+specifier|static
+class|class
+name|Op
+extends|extends
+name|RepoOnlyOp
+block|{
 comment|/**      * Override this method to modify a change.      *      * @param ctx context      * @return whether anything was changed that might require a write to      * the metadata storage.      */
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
@@ -1730,19 +1752,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Override this method to perform operations after the update.      *      * @param ctx context      */
-comment|// TODO(dborowitz): Support async operations?
-DECL|method|postUpdate (Context ctx)
-specifier|public
-name|void
-name|postUpdate
-parameter_list|(
-name|Context
-name|ctx
-parameter_list|)
-throws|throws
-name|Exception
-block|{     }
 block|}
 DECL|class|InsertChangeOp
 specifier|public
@@ -1772,7 +1781,7 @@ class|class
 name|Listener
 block|{
 DECL|field|NONE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Listener
@@ -2524,6 +2533,20 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|repoOnlyOps
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|RepoOnlyOp
+argument_list|>
+name|repoOnlyOps
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
 DECL|field|repo
 specifier|private
 name|Repository
@@ -3081,6 +3104,38 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|addRepoOnlyOp (RepoOnlyOp op)
+specifier|public
+name|BatchUpdate
+name|addRepoOnlyOp
+parameter_list|(
+name|RepoOnlyOp
+name|op
+parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+operator|!
+operator|(
+name|op
+operator|instanceof
+name|Op
+operator|)
+argument_list|,
+literal|"use addOp()"
+argument_list|)
+expr_stmt|;
+name|repoOnlyOps
+operator|.
+name|add
+argument_list|(
+name|op
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|insertChange (InsertChangeOp op)
 specifier|public
 name|BatchUpdate
@@ -3233,6 +3288,22 @@ name|ops
 operator|.
 name|values
 argument_list|()
+control|)
+block|{
+name|op
+operator|.
+name|updateRepo
+argument_list|(
+name|ctx
+argument_list|)
+expr_stmt|;
+block|}
+for|for
+control|(
+name|RepoOnlyOp
+name|op
+range|:
+name|repoOnlyOps
 control|)
 block|{
 name|op
@@ -5069,6 +5140,22 @@ name|ops
 operator|.
 name|values
 argument_list|()
+control|)
+block|{
+name|op
+operator|.
+name|postUpdate
+argument_list|(
+name|ctx
+argument_list|)
+expr_stmt|;
+block|}
+for|for
+control|(
+name|RepoOnlyOp
+name|op
+range|:
+name|repoOnlyOps
 control|)
 block|{
 name|op

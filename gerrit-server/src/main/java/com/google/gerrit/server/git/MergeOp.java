@@ -4834,6 +4834,8 @@ name|subOpFactory
 operator|.
 name|create
 argument_list|(
+name|branches
+argument_list|,
 name|orm
 argument_list|)
 decl_stmt|;
@@ -4842,9 +4844,7 @@ block|{
 name|subOp
 operator|.
 name|updateSuperProjects
-argument_list|(
-name|branches
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|logDebug
 argument_list|(
