@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -134,6 +150,17 @@ argument_list|<
 name|ReviewerInfo
 argument_list|>
 name|reviewers
+decl_stmt|;
+comment|/**    * List of accounts CCed on the change. The size of this list may be    * greater than one (e.g. when a group is CCed). Null if no accounts were CCed    * or if reviewers is non-null.    */
+annotation|@
+name|Nullable
+DECL|field|ccs
+specifier|public
+name|List
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|ccs
 decl_stmt|;
 comment|/**    * Constructs a partially initialized result for the given reviewer.    *    * @param input String identifier of an account or group, from user request    */
 DECL|method|AddReviewerResult (String input)

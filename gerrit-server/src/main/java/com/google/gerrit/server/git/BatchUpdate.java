@@ -2933,6 +2933,11 @@ argument_list|,
 literal|"use insertChange"
 argument_list|)
 expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|op
+argument_list|)
+expr_stmt|;
 name|ops
 operator|.
 name|put

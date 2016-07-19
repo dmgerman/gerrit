@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -69,24 +69,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|client
-operator|.
-name|ReviewerState
-operator|.
-name|REVIEWER
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -94,89 +76,58 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|common
 operator|.
-name|client
-operator|.
-name|ReviewerState
+name|Nullable
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|DefaultInput
+name|Map
 import|;
 end_import
+
+begin_comment
+comment|/**  * Result object representing the outcome of a review request.  */
+end_comment
 
 begin_class
-DECL|class|AddReviewerInput
+DECL|class|ReviewResult
 specifier|public
 class|class
-name|AddReviewerInput
+name|ReviewResult
 block|{
+comment|/**    * Map of labels to values after the review was posted. Null if any    * reviewer additions were rejected.    */
 annotation|@
-name|DefaultInput
-DECL|field|reviewer
+name|Nullable
+DECL|field|labels
 specifier|public
+name|Map
+argument_list|<
 name|String
-name|reviewer
+argument_list|,
+name|Short
+argument_list|>
+name|labels
 decl_stmt|;
-DECL|field|confirmed
+comment|/**    * Map of account or group identifier to outcome of adding as a reviewer.    * Null if no reviewer additions were requested.    */
+annotation|@
+name|Nullable
+DECL|field|reviewers
 specifier|public
-name|Boolean
-name|confirmed
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|AddReviewerResult
+argument_list|>
+name|reviewers
 decl_stmt|;
-DECL|field|state
-specifier|public
-name|ReviewerState
-name|state
-decl_stmt|;
-DECL|method|confirmed ()
-specifier|public
-name|boolean
-name|confirmed
-parameter_list|()
-block|{
-return|return
-operator|(
-name|confirmed
-operator|!=
-literal|null
-operator|)
-condition|?
-name|confirmed
-else|:
-literal|false
-return|;
-block|}
-DECL|method|state ()
-specifier|public
-name|ReviewerState
-name|state
-parameter_list|()
-block|{
-return|return
-operator|(
-name|state
-operator|!=
-literal|null
-operator|)
-condition|?
-name|state
-else|:
-name|REVIEWER
-return|;
-block|}
 block|}
 end_class
 
