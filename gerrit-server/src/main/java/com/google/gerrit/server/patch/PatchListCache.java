@@ -166,7 +166,7 @@ parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
 function_decl|;
-DECL|method|getOldId (Change change, PatchSet patchSet)
+DECL|method|getOldId (Change change, PatchSet patchSet, Integer parentNum)
 name|ObjectId
 name|getOldId
 parameter_list|(
@@ -175,6 +175,9 @@ name|change
 parameter_list|,
 name|PatchSet
 name|patchSet
+parameter_list|,
+name|Integer
+name|parentNum
 parameter_list|)
 throws|throws
 name|PatchListNotAvailableException

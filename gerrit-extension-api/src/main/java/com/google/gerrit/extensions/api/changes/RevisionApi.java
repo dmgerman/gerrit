@@ -373,6 +373,21 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|files (int parentNum)
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|FileInfo
+argument_list|>
+name|files
+parameter_list|(
+name|int
+name|parentNum
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|file (String path)
 name|FileApi
 name|file
@@ -760,6 +775,30 @@ name|files
 parameter_list|(
 name|String
 name|base
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|files (int parentNum)
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|FileInfo
+argument_list|>
+name|files
+parameter_list|(
+name|int
+name|parentNum
 parameter_list|)
 throws|throws
 name|RestApiException

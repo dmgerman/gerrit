@@ -717,7 +717,7 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|set (DiffPreferences prefs, JsArray<RevisionInfo> list, DiffInfo info, boolean editExists, boolean current, boolean open, boolean binary)
+DECL|method|set (DiffPreferences prefs, JsArray<RevisionInfo> list, int parents, DiffInfo info, boolean editExists, boolean current, boolean open, boolean binary)
 name|void
 name|set
 parameter_list|(
@@ -729,6 +729,9 @@ argument_list|<
 name|RevisionInfo
 argument_list|>
 name|list
+parameter_list|,
+name|int
+name|parents
 parameter_list|,
 name|DiffInfo
 name|info
@@ -761,6 +764,8 @@ name|setUpPatchSetNav
 argument_list|(
 name|list
 argument_list|,
+name|parents
+argument_list|,
 name|info
 operator|.
 name|metaA
@@ -780,6 +785,8 @@ operator|.
 name|setUpPatchSetNav
 argument_list|(
 name|list
+argument_list|,
+name|parents
 argument_list|,
 name|info
 operator|.

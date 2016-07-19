@@ -185,6 +185,43 @@ name|CommentRange
 name|range
 parameter_list|)
 block|{
+return|return
+name|create
+argument_list|(
+name|path
+argument_list|,
+name|side
+argument_list|,
+literal|0
+argument_list|,
+name|line
+argument_list|,
+name|range
+argument_list|)
+return|;
+block|}
+DECL|method|create (String path, Side side, int parent, int line, CommentRange range)
+specifier|public
+specifier|static
+name|CommentInfo
+name|create
+parameter_list|(
+name|String
+name|path
+parameter_list|,
+name|Side
+name|side
+parameter_list|,
+name|int
+name|parent
+parameter_list|,
+name|int
+name|line
+parameter_list|,
+name|CommentRange
+name|range
+parameter_list|)
+block|{
 name|CommentInfo
 name|n
 init|=
@@ -206,6 +243,13 @@ operator|.
 name|side
 argument_list|(
 name|side
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|parent
+argument_list|(
+name|parent
 argument_list|)
 expr_stmt|;
 if|if
@@ -289,6 +333,16 @@ argument_list|(
 name|r
 operator|.
 name|side
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|parent
+argument_list|(
+name|r
+operator|.
+name|parent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -394,6 +448,16 @@ argument_list|(
 name|s
 operator|.
 name|side
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|parent
+argument_list|(
+name|s
+operator|.
+name|parent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -585,6 +649,27 @@ name|s
 parameter_list|)
 comment|/*-{ this.side = s }-*/
 function_decl|;
+DECL|method|parent (int n)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|parent
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+comment|/*-{ this.parent = n }-*/
+function_decl|;
+DECL|method|hasParent ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|hasParent
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('parent') }-*/
+function_decl|;
 DECL|method|path ()
 specifier|public
 specifier|final
@@ -658,6 +743,15 @@ name|String
 name|sideRaw
 parameter_list|()
 comment|/*-{ return this.side }-*/
+function_decl|;
+DECL|method|parent ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|parent
+parameter_list|()
+comment|/*-{ return this.parent }-*/
 function_decl|;
 DECL|method|updated ()
 specifier|public
