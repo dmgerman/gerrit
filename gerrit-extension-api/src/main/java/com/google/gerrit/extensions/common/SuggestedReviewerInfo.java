@@ -82,6 +82,16 @@ specifier|public
 name|GroupBaseInfo
 name|group
 decl_stmt|;
+DECL|field|count
+specifier|public
+name|int
+name|count
+decl_stmt|;
+DECL|field|confirm
+specifier|public
+name|Boolean
+name|confirm
+decl_stmt|;
 block|}
 end_class
 
