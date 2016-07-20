@@ -144,7 +144,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A<a href=\"http://go.here/\" target=\"_blank\">http://go.here/</a> B"
+literal|"A<a href=\"http://go.here/\" target=\"_blank\" rel=\"nofollow\""
+operator|+
+literal|">http://go.here/</a> B"
 argument_list|)
 expr_stmt|;
 block|}
@@ -194,7 +196,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A<a href=\"https://go.here/\" target=\"_blank\">https://go.here/</a> B"
+literal|"A<a href=\"https://go.here/\" target=\"_blank\" rel=\"nofollow\""
+operator|+
+literal|">https://go.here/</a> B"
 argument_list|)
 expr_stmt|;
 block|}
@@ -244,7 +248,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A (<a href=\"http://go.here/\" target=\"_blank\">http://go.here/</a>) B"
+literal|"A (<a href=\"http://go.here/\" target=\"_blank\" rel=\"nofollow\""
+operator|+
+literal|">http://go.here/</a>) B"
 argument_list|)
 expr_stmt|;
 block|}
@@ -294,7 +300,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A<a href=\"http://go.here/#m()\" target=\"_blank\">http://go.here/#m()</a> B"
+literal|"A<a href=\"http://go.here/#m()\" target=\"_blank\" rel=\"nofollow\""
+operator|+
+literal|">http://go.here/#m()</a> B"
 argument_list|)
 expr_stmt|;
 block|}
@@ -344,7 +352,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A&lt;<a href=\"http://go.here/\" target=\"_blank\">http://go.here/</a>&gt; B"
+literal|"A&lt;<a href=\"http://go.here/\" target=\"_blank\" rel=\"nofollow\""
+operator|+
+literal|">http://go.here/</a>&gt; B"
 argument_list|)
 expr_stmt|;
 block|}
@@ -394,7 +404,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A<a href=\"http://go.here/foo\" target=\"_blank\">http://go.here/foo</a> B"
+literal|"A<a href=\"http://go.here/foo\" target=\"_blank\" rel=\"nofollow\""
+operator|+
+literal|">http://go.here/foo</a> B"
 argument_list|)
 expr_stmt|;
 block|}
@@ -444,7 +456,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A<a href=\"http://go.here/\" target=\"_blank\">http://go.here/</a>. B"
+literal|"A<a href=\"http://go.here/\" target=\"_blank\" rel=\"nofollow\""
+operator|+
+literal|">http://go.here/</a>. B"
 argument_list|)
 expr_stmt|;
 block|}
@@ -494,7 +508,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A<a href=\"http://go.here/\" target=\"_blank\">http://go.here/</a>, B"
+literal|"A<a href=\"http://go.here/\" target=\"_blank\" rel=\"nofollow\""
+operator|+
+literal|">http://go.here/</a>, B"
 argument_list|)
 expr_stmt|;
 block|}
@@ -544,7 +560,9 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A<a href=\"http://go.here/.\" target=\"_blank\">http://go.here/.</a>. B"
+literal|"A<a href=\"http://go.here/.\" target=\"_blank\" rel=\"nofollow\""
+operator|+
+literal|">http://go.here/.</a>. B"
 argument_list|)
 expr_stmt|;
 block|}
