@@ -360,20 +360,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|assistedinject
@@ -2016,7 +2002,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Create a gitlink update commit on the tip of subscriber or modify the    * {@param baseCommit} with gitlink update patch    */
+comment|/**    * Create a gitlink update commit on the tip of subscriber or modify the    * baseCommit with gitlink update patch    */
 DECL|method|composeGitlinksCommit ( final Branch.NameKey subscriber, RevCommit baseCommit)
 specifier|public
 name|CodeReviewCommit
@@ -2035,8 +2021,6 @@ throws|throws
 name|IOException
 throws|,
 name|SubmoduleException
-throws|,
-name|OrmException
 block|{
 name|PersonIdent
 name|author
