@@ -856,8 +856,6 @@ operator|.
 name|Id
 name|psa
 decl_stmt|;
-annotation|@
-name|Nullable
 DECL|field|parentNum
 specifier|private
 specifier|final
