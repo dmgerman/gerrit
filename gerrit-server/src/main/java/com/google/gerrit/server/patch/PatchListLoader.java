@@ -1205,8 +1205,11 @@ name|getParent
 argument_list|(
 literal|0
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|a
+argument_list|)
 decl_stmt|;
 name|RevCommit
 name|aCommit
