@@ -92,7 +92,9 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|RestResponse
+name|PushOneCommit
+operator|.
+name|Result
 import|;
 end_import
 
@@ -106,9 +108,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|PushOneCommit
-operator|.
-name|Result
+name|RestResponse
 import|;
 end_import
 
