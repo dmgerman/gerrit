@@ -1576,7 +1576,7 @@ return|return
 name|ret
 return|;
 block|}
-specifier|private
+specifier|public
 name|Collection
 argument_list|<
 name|SubmoduleSubscription
