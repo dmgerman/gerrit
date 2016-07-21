@@ -153,6 +153,8 @@ operator|.
 name|client
 operator|.
 name|AccountProjectWatch
+operator|.
+name|NotifyType
 import|;
 end_import
 
@@ -190,6 +192,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|WatchConfig
+operator|.
+name|ProjectWatchKey
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -205,6 +225,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -487,12 +517,16 @@ operator|>
 name|of
 argument_list|()
 argument_list|,
-name|ImmutableSet
-operator|.
-expr|<
-name|AccountProjectWatch
-operator|>
-name|of
+operator|new
+name|HashMap
+argument_list|<
+name|ProjectWatchKey
+argument_list|,
+name|Set
+argument_list|<
+name|NotifyType
+argument_list|>
+argument_list|>
 argument_list|()
 argument_list|)
 return|;
