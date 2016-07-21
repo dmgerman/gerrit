@@ -528,7 +528,7 @@ argument_list|()
 decl_stmt|;
 name|NumericUtils
 operator|.
-name|intToPrefixCodedBytes
+name|intToPrefixCoded
 argument_list|(
 name|value
 argument_list|,
