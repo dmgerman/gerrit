@@ -2068,6 +2068,7 @@ return|;
 block|}
 DECL|class|GroupAsReviewer
 specifier|private
+specifier|static
 class|class
 name|GroupAsReviewer
 block|{

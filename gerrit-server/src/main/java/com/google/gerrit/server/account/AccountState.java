@@ -321,6 +321,7 @@ block|{
 DECL|field|ACCOUNT_ID_FUNCTION
 specifier|public
 specifier|static
+specifier|final
 name|Function
 argument_list|<
 name|AccountState
