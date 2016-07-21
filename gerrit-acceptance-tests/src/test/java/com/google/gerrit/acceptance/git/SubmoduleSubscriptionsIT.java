@@ -1221,6 +1221,35 @@ operator|.
 name|getRevWalk
 argument_list|()
 decl_stmt|;
+name|expectToHaveCommitMessage
+argument_list|(
+name|superRepo
+argument_list|,
+literal|"master"
+argument_list|,
+literal|"Update git submodules\n\n"
+operator|+
+literal|"* Update "
+operator|+
+name|name
+argument_list|(
+literal|"subscribed-to-project"
+argument_list|)
+operator|+
+literal|" from branch 'master'"
+argument_list|)
+expr_stmt|;
+comment|// The next commit should generate only its commit message,
+comment|// omitting previous commit logs
+name|subHEAD
+operator|=
+name|pushChangeTo
+argument_list|(
+name|subRepo
+argument_list|,
+literal|"master"
+argument_list|)
+expr_stmt|;
 name|RevCommit
 name|subCommitMsg
 init|=
@@ -1239,73 +1268,28 @@ literal|"master"
 argument_list|,
 literal|"Update git submodules\n\n"
 operator|+
-literal|"Project: "
+literal|"* Update "
 operator|+
 name|name
 argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 operator|+
-literal|" master "
+literal|" from branch 'master'"
 operator|+
-name|subHEAD
-operator|.
-name|name
-argument_list|()
-operator|+
-literal|"\n\n"
-argument_list|)
-expr_stmt|;
-comment|// The next commit should generate only its commit message,
-comment|// omitting previous commit logs
-name|subHEAD
-operator|=
-name|pushChangeTo
-argument_list|(
-name|subRepo
-argument_list|,
-literal|"master"
-argument_list|)
-expr_stmt|;
-name|subCommitMsg
-operator|=
-name|rw
-operator|.
-name|parseCommit
-argument_list|(
-name|subHEAD
-argument_list|)
-expr_stmt|;
-name|expectToHaveCommitMessage
-argument_list|(
-name|superRepo
-argument_list|,
-literal|"master"
-argument_list|,
-literal|"Update git submodules\n\n"
-operator|+
-literal|"Project: "
-operator|+
-name|name
-argument_list|(
-literal|"subscribed-to-project"
-argument_list|)
-operator|+
-literal|" master "
-operator|+
-name|subHEAD
-operator|.
-name|name
-argument_list|()
-operator|+
-literal|"\n\n"
+literal|"\n  - "
 operator|+
 name|subCommitMsg
 operator|.
 name|getFullMessage
 argument_list|()
-operator|+
-literal|"\n\n"
+operator|.
+name|replace
+argument_list|(
+literal|"\n"
+argument_list|,
+literal|"\n    "
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
