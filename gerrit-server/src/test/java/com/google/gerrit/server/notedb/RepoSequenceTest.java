@@ -1427,7 +1427,7 @@ name|RETRYER
 argument_list|)
 return|;
 block|}
-DECL|method|newSequence (String name, int start, int batchSize, Runnable afterReadRef, Retryer<RefUpdate.Result> retryer)
+DECL|method|newSequence (String name, final int start, int batchSize, Runnable afterReadRef, Retryer<RefUpdate.Result> retryer)
 specifier|private
 name|RepoSequence
 name|newSequence
@@ -1435,6 +1435,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+specifier|final
 name|int
 name|start
 parameter_list|,
@@ -1463,7 +1464,24 @@ name|project
 argument_list|,
 name|name
 argument_list|,
+operator|new
+name|RepoSequence
+operator|.
+name|Seed
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|int
+name|get
+parameter_list|()
+block|{
+return|return
 name|start
+return|;
+block|}
+block|}
 argument_list|,
 name|batchSize
 argument_list|,

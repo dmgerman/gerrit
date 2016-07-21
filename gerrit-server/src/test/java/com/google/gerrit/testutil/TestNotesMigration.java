@@ -136,6 +136,20 @@ return|return
 name|readChanges
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|readChangeSequence ()
+specifier|public
+name|boolean
+name|readChangeSequence
+parameter_list|()
+block|{
+comment|// Unlike ConfigNotesMigration, read change numbers from NoteDb by default
+comment|// when reads are enabled, to improve test coverage.
+return|return
+name|readChanges
+return|;
+block|}
 comment|// Increase visbility from superclass, as tests may want to check whether
 comment|// NoteDb data is written in specific migration scenarios.
 annotation|@

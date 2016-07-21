@@ -277,6 +277,15 @@ name|WRITE
 init|=
 literal|"write"
 decl_stmt|;
+DECL|field|SEQUENCE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SEQUENCE
+init|=
+literal|"sequence"
+decl_stmt|;
 DECL|method|checkConfig (Config cfg)
 specifier|private
 specifier|static
@@ -473,6 +482,12 @@ specifier|final
 name|boolean
 name|readChanges
 decl_stmt|;
+DECL|field|readChangeSequence
+specifier|private
+specifier|final
+name|boolean
+name|readChangeSequence
+decl_stmt|;
 DECL|field|writeAccounts
 specifier|private
 specifier|final
@@ -537,6 +552,28 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// Reading change sequence numbers from NoteDb is not the default even if
+comment|// reading changes themselves is. Once this is enabled, it's not easy to
+comment|// undo: ReviewDb might hand out numbers that have already been assigned by
+comment|// NoteDb. This decision for the default may be reevaluated later.
+name|readChangeSequence
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+name|NOTE_DB
+argument_list|,
+name|CHANGES
+operator|.
+name|key
+argument_list|()
+argument_list|,
+name|SEQUENCE
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|writeAccounts
 operator|=
 name|cfg
@@ -596,6 +633,18 @@ parameter_list|()
 block|{
 return|return
 name|readChanges
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|readChangeSequence ()
+specifier|public
+name|boolean
+name|readChangeSequence
+parameter_list|()
+block|{
+return|return
+name|readChangeSequence
 return|;
 block|}
 annotation|@

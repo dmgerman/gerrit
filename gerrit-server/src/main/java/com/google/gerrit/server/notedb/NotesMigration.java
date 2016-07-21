@@ -93,6 +93,14 @@ name|boolean
 name|writeChanges
 parameter_list|()
 function_decl|;
+comment|/**    * Read sequential change ID numbers from NoteDb.    *<p>    * If true, change IDs are read from {@code refs/sequences/changes} in    * All-Projects. If false, change IDs are read from ReviewDb's native    * sequences.    */
+DECL|method|readChangeSequence ()
+specifier|public
+specifier|abstract
+name|boolean
+name|readChangeSequence
+parameter_list|()
+function_decl|;
 DECL|method|readAccounts ()
 specifier|public
 specifier|abstract
