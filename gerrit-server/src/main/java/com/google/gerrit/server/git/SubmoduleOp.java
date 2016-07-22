@@ -2326,8 +2326,6 @@ literal|"The branch was probably deleted from the subscriber repository"
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 name|currentCommit
 operator|=
 name|or
@@ -2342,7 +2340,6 @@ name|getObjectId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|StringBuilder
 name|msgbuf
 init|=
@@ -2483,8 +2480,6 @@ return|return
 literal|null
 return|;
 block|}
-else|else
-block|{
 name|CommitBuilder
 name|commit
 init|=
@@ -2574,7 +2569,6 @@ argument_list|(
 name|id
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**    * Amend an existing commit with gitlink updates    */
 DECL|method|composeGitlinksCommit ( final Branch.NameKey subscriber, CodeReviewCommit currentCommit)
@@ -2731,8 +2725,6 @@ return|return
 name|currentCommit
 return|;
 block|}
-else|else
-block|{
 name|or
 operator|.
 name|rw
@@ -2841,7 +2833,6 @@ argument_list|(
 name|id
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|updateSubmodule (DirCache dc, DirCacheEditor ed, StringBuilder msgbuf, final SubmoduleSubscription s)
 specifier|private
@@ -3119,8 +3110,6 @@ return|return
 literal|null
 return|;
 block|}
-else|else
-block|{
 name|ed
 operator|.
 name|add
@@ -3198,7 +3187,6 @@ expr_stmt|;
 return|return
 name|newCommit
 return|;
-block|}
 block|}
 DECL|method|createSubmoduleCommitMsg (StringBuilder msgbuf, SubmoduleSubscription s, OpenRepo subOr, RevCommit newCommit, RevCommit oldCommit)
 specifier|private
@@ -3585,8 +3573,6 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
 name|projects
 operator|.
 name|add
@@ -3594,7 +3580,6 @@ argument_list|(
 name|project
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|prev
 operator|=
