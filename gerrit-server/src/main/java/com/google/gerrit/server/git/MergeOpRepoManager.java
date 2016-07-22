@@ -1098,7 +1098,7 @@ return|;
 block|}
 DECL|method|openRepo (Project.NameKey project, boolean abortIfOpen)
 specifier|public
-name|void
+name|OpenRepo
 name|openRepo
 parameter_list|(
 name|Project
@@ -1135,8 +1135,6 @@ name|project
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
 if|if
 condition|(
 name|openRepos
@@ -1147,8 +1145,14 @@ name|project
 argument_list|)
 condition|)
 block|{
-return|return;
-block|}
+return|return
+name|openRepos
+operator|.
+name|get
+argument_list|(
+name|project
+argument_list|)
+return|;
 block|}
 name|ProjectState
 name|projectState
@@ -1202,6 +1206,9 @@ argument_list|,
 name|or
 argument_list|)
 expr_stmt|;
+return|return
+name|or
+return|;
 block|}
 catch|catch
 parameter_list|(
