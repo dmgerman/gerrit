@@ -1530,6 +1530,57 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|class|ConflictingUpdateException
+specifier|private
+specifier|static
+class|class
+name|ConflictingUpdateException
+extends|extends
+name|OrmRuntimeException
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|method|ConflictingUpdateException (Change change, String expectedNoteDbState)
+name|ConflictingUpdateException
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|String
+name|expectedNoteDbState
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Expected change %s to have noteDbState %s but was %s"
+argument_list|,
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|expectedNoteDbState
+argument_list|,
+name|change
+operator|.
+name|getNoteDbState
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Override
 DECL|method|rebuild (NoteDbUpdateManager manager, ChangeBundle bundle)
@@ -1793,6 +1844,34 @@ name|Change
 name|change
 parameter_list|)
 block|{
+name|String
+name|currNoteDbState
+init|=
+name|change
+operator|.
+name|getNoteDbState
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|currNoteDbState
+argument_list|,
+name|newNoteDbState
+argument_list|)
+condition|)
+block|{
+comment|// Another thread completed the same rebuild we were about to.
+throw|throw
+operator|new
+name|AbortUpdateException
+argument_list|()
+throw|;
+block|}
+elseif|else
 if|if
 condition|(
 operator|!
@@ -1802,17 +1881,19 @@ name|equals
 argument_list|(
 name|oldNoteDbState
 argument_list|,
-name|change
-operator|.
-name|getNoteDbState
-argument_list|()
+name|currNoteDbState
 argument_list|)
 condition|)
 block|{
+comment|// Another thread updated the state to something else.
 throw|throw
 operator|new
-name|AbortUpdateException
-argument_list|()
+name|ConflictingUpdateException
+argument_list|(
+name|change
+argument_list|,
+name|oldNoteDbState
+argument_list|)
 throw|;
 block|}
 name|change
@@ -1866,7 +1947,30 @@ name|AbortUpdateException
 name|e
 parameter_list|)
 block|{
-comment|// Drop this rebuild; another thread completed it.
+comment|// Drop this rebuild; another thread completed it. It's ok to not execute
+comment|// the update in this case, since the object referenced in the Result was
+comment|// flushed to the repo by whatever thread won the race.
+block|}
+catch|catch
+parameter_list|(
+name|ConflictingUpdateException
+name|e
+parameter_list|)
+block|{
+comment|// Rethrow as an OrmException so the caller knows to use staged results.
+comment|// Strictly speaking they are not completely up to date, but result we
+comment|// send to the caller is the same as if this rebuild had executed before
+comment|// the other thread.
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
 block|}
 return|return
 name|r
