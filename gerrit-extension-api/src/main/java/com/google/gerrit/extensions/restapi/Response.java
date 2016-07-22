@@ -267,6 +267,37 @@ name|location
 argument_list|)
 return|;
 block|}
+comment|/** Arbitrary status code with wrapped result. */
+DECL|method|withStatusCode (int statusCode, T value)
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|Response
+argument_list|<
+name|T
+argument_list|>
+name|withStatusCode
+parameter_list|(
+name|int
+name|statusCode
+parameter_list|,
+name|T
+name|value
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Impl
+argument_list|<>
+argument_list|(
+name|statusCode
+argument_list|,
+name|value
+argument_list|)
+return|;
+block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(

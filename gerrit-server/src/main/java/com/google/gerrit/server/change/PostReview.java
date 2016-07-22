@@ -165,6 +165,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_BAD_REQUEST
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -587,6 +601,22 @@ operator|.
 name|restapi
 operator|.
 name|ResourceConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|Response
 import|;
 end_import
 
@@ -1485,7 +1515,10 @@ annotation|@
 name|Override
 DECL|method|apply (RevisionResource revision, ReviewInput input)
 specifier|public
+name|Response
+argument_list|<
 name|ReviewResult
+argument_list|>
 name|apply
 parameter_list|(
 name|RevisionResource
@@ -1519,7 +1552,10 @@ return|;
 block|}
 DECL|method|apply (RevisionResource revision, ReviewInput input, Timestamp ts)
 specifier|public
+name|Response
+argument_list|<
 name|ReviewResult
+argument_list|>
 name|apply
 parameter_list|(
 name|RevisionResource
@@ -1819,7 +1855,14 @@ name|confirm
 condition|)
 block|{
 return|return
+name|Response
+operator|.
+name|withStatusCode
+argument_list|(
+name|SC_BAD_REQUEST
+argument_list|,
 name|output
+argument_list|)
 return|;
 block|}
 name|output
@@ -1941,7 +1984,12 @@ expr_stmt|;
 block|}
 block|}
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|output
+argument_list|)
 return|;
 block|}
 DECL|method|onBehalfOf (RevisionResource rev, ReviewInput in)
