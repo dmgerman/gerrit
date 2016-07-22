@@ -72,6 +72,7 @@ end_comment
 
 begin_class
 DECL|class|SubmoduleException
+specifier|public
 class|class
 name|SubmoduleException
 extends|extends
