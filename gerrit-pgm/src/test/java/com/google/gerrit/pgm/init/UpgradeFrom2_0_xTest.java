@@ -1013,6 +1013,35 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getListForPlugin (String pluginName, String section, String subsection, String name)
+specifier|public
+name|String
+index|[]
+name|getListForPlugin
+parameter_list|(
+name|String
+name|pluginName
+parameter_list|,
+name|String
+name|section
+parameter_list|,
+name|String
+name|subsection
+parameter_list|,
+name|String
+name|name
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not used by tests"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|setList (String section, String subsection, String name, List<String> values)
 specifier|public
 name|void

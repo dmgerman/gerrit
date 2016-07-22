@@ -184,6 +184,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|securestore
+operator|.
+name|SecureStore
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -426,6 +442,12 @@ operator|.
 name|Factory
 name|projectStateFactory
 decl_stmt|;
+DECL|field|secureStore
+specifier|private
+specifier|final
+name|SecureStore
+name|secureStore
+decl_stmt|;
 DECL|field|pluginConfigs
 specifier|private
 specifier|final
@@ -451,7 +473,7 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginConfigFactory ( SitePaths site, @GerritServerConfig Provider<Config> cfgProvider, ProjectCache projectCache, ProjectState.Factory projectStateFactory)
+DECL|method|PluginConfigFactory ( SitePaths site, @GerritServerConfig Provider<Config> cfgProvider, ProjectCache projectCache, ProjectState.Factory projectStateFactory, SecureStore secureStore)
 name|PluginConfigFactory
 parameter_list|(
 name|SitePaths
@@ -472,6 +494,9 @@ name|ProjectState
 operator|.
 name|Factory
 name|projectStateFactory
+parameter_list|,
+name|SecureStore
+name|secureStore
 parameter_list|)
 block|{
 name|this
@@ -497,6 +522,12 @@ operator|.
 name|projectStateFactory
 operator|=
 name|projectStateFactory
+expr_stmt|;
+name|this
+operator|.
+name|secureStore
+operator|=
+name|secureStore
 expr_stmt|;
 name|this
 operator|.
@@ -808,13 +839,26 @@ operator|.
 name|DETECTED
 argument_list|)
 decl_stmt|;
+name|GlobalPluginConfig
+name|pluginConfig
+init|=
+operator|new
+name|GlobalPluginConfig
+argument_list|(
+name|pluginName
+argument_list|,
+name|cfg
+argument_list|,
+name|secureStore
+argument_list|)
+decl_stmt|;
 name|pluginConfigs
 operator|.
 name|put
 argument_list|(
 name|pluginName
 argument_list|,
-name|cfg
+name|pluginConfig
 argument_list|)
 expr_stmt|;
 if|if
@@ -844,7 +888,7 @@ literal|"; assuming defaults"
 argument_list|)
 expr_stmt|;
 return|return
-name|cfg
+name|pluginConfig
 return|;
 block|}
 try|try
@@ -879,7 +923,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|cfg
+name|pluginConfig
 return|;
 block|}
 comment|/**    * Returns the configuration for the specified plugin that is stored in the    * '{@code<plugin-name>.config}' file in the 'refs/meta/config' branch of    * the specified project.    *    * @param projectName the name of the project for which the plugin    *        configuration should be returned    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the '{@code<plugin-name>.config}'    *         file of the specified project    * @throws NoSuchProjectException thrown if the specified project does not    *         exist    */
