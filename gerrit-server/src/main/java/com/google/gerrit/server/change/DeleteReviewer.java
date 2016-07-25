@@ -1156,9 +1156,9 @@ name|psUtil
 operator|.
 name|current
 argument_list|(
-name|dbProvider
+name|ctx
 operator|.
-name|get
+name|getDb
 argument_list|()
 argument_list|,
 name|ctx
