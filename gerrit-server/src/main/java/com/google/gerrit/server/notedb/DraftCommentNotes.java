@@ -1341,9 +1341,14 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Rebuilding change {} via drafts failed"
+literal|"Rebuilding change {} via drafts failed: {}"
 argument_list|,
 name|getChangeId
+argument_list|()
+argument_list|,
+name|e
+operator|.
+name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
