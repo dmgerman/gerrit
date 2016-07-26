@@ -891,6 +891,35 @@ name|canWrite
 argument_list|()
 return|;
 block|}
+comment|/** @return true if this user can add a new patch set to this ref */
+DECL|method|canAddPatchSet ()
+specifier|public
+name|boolean
+name|canAddPatchSet
+parameter_list|()
+block|{
+return|return
+name|projectControl
+operator|.
+name|controlForRef
+argument_list|(
+literal|"refs/for/"
+operator|+
+name|getRefName
+argument_list|()
+argument_list|)
+operator|.
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|ADD_PATCH_SET
+argument_list|)
+operator|&&
+name|canWrite
+argument_list|()
+return|;
+block|}
 comment|/** @return true if this user can submit merge patch sets to this ref */
 DECL|method|canUploadMerges ()
 specifier|public

@@ -3262,7 +3262,7 @@ name|r
 operator|.
 name|assertErrorStatus
 argument_list|(
-literal|"cannot replace "
+literal|"cannot add patch set to "
 operator|+
 name|r
 operator|.

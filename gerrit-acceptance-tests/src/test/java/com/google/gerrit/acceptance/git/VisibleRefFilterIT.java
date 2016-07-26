@@ -1565,15 +1565,6 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
-name|editModifier
-operator|.
-name|createEdit
-argument_list|(
-name|c
-argument_list|,
-name|ps1
-argument_list|)
-expr_stmt|;
 name|assertRefs
 argument_list|(
 comment|// Change 1 is visible due to accessDatabase capability, even though
@@ -1603,15 +1594,6 @@ literal|"refs/tags/master-tag"
 argument_list|,
 comment|// All edits are visible due to accessDatabase capability.
 literal|"refs/users/00/1000000/edit-"
-operator|+
-name|c1
-operator|.
-name|get
-argument_list|()
-operator|+
-literal|"/1"
-argument_list|,
-literal|"refs/users/01/1000001/edit-"
 operator|+
 name|c1
 operator|.
