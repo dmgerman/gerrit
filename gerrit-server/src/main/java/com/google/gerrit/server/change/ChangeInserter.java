@@ -1535,6 +1535,23 @@ operator|=
 name|cmd
 expr_stmt|;
 block|}
+DECL|method|setPushCertificate (String cert)
+specifier|public
+name|void
+name|setPushCertificate
+parameter_list|(
+name|String
+name|cert
+parameter_list|)
+block|{
+name|patchSet
+operator|.
+name|setPushCertificate
+argument_list|(
+name|cert
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getPatchSet ()
 specifier|public
 name|PatchSet
