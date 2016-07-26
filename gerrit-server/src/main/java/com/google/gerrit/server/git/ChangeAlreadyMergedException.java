@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -66,33 +66,17 @@ name|git
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|RestApiException
-import|;
-end_import
-
 begin_comment
-comment|/**  * Indicates that the commit is already contained in destination branch.  * Either the commit itself is in the source tree, or the content is merged  */
+comment|/**  * Indicates that the change or commit is already in the source tree.  */
 end_comment
 
 begin_class
-DECL|class|MergeIdenticalTreeException
+DECL|class|ChangeAlreadyMergedException
 specifier|public
 class|class
-name|MergeIdenticalTreeException
+name|ChangeAlreadyMergedException
 extends|extends
-name|RestApiException
+name|MergeIdenticalTreeException
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -104,9 +88,9 @@ init|=
 literal|1L
 decl_stmt|;
 comment|/** @param msg message to return to the client describing the error. */
-DECL|method|MergeIdenticalTreeException (String msg)
+DECL|method|ChangeAlreadyMergedException (String msg)
 specifier|public
-name|MergeIdenticalTreeException
+name|ChangeAlreadyMergedException
 parameter_list|(
 name|String
 name|msg

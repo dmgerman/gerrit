@@ -113,6 +113,16 @@ specifier|public
 name|boolean
 name|mergeable
 decl_stmt|;
+DECL|field|commitMerged
+specifier|public
+name|boolean
+name|commitMerged
+decl_stmt|;
+DECL|field|contentMerged
+specifier|public
+name|boolean
+name|contentMerged
+decl_stmt|;
 DECL|field|conflicts
 specifier|public
 name|List
