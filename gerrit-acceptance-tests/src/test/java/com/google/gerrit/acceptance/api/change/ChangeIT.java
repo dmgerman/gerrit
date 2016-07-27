@@ -892,7 +892,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|RefNames
+name|Project
 import|;
 end_import
 
@@ -908,7 +908,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
+name|RefNames
 import|;
 end_import
 
