@@ -1225,6 +1225,11 @@ specifier|private
 name|PatchSet
 name|patchSet
 decl_stmt|;
+DECL|field|pushCert
+specifier|private
+name|String
+name|pushCert
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ChangeInserter (ProjectControl.GenericFactory projectControlFactory, ChangeControl.GenericFactory changeControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CreateChangeSender.Factory createChangeSenderFactory, @SendEmailExecutor ExecutorService sendEmailExecutor, CommitValidators.Factory commitValidatorsFactory, CommentAdded commentAdded, RevisionCreated revisionCreated, @Assisted Change.Id changeId, @Assisted RevCommit commit, @Assisted String refName)
@@ -1998,6 +2003,20 @@ operator|=
 name|cmd
 expr_stmt|;
 block|}
+DECL|method|setPushCertificate (String cert)
+specifier|public
+name|void
+name|setPushCertificate
+parameter_list|(
+name|String
+name|cert
+parameter_list|)
+block|{
+name|pushCert
+operator|=
+name|cert
+expr_stmt|;
+block|}
 DECL|method|getPatchSet ()
 specifier|public
 name|PatchSet
@@ -2339,7 +2358,7 @@ name|draft
 argument_list|,
 name|newGroups
 argument_list|,
-literal|null
+name|pushCert
 argument_list|)
 expr_stmt|;
 comment|/* TODO: fixStatus is used here because the tests      * (byStatusClosed() in AbstractQueryChangesTest)      * insert changes that are already merged,      * and setStatus may not be used to set the Status to merged      *      * is it possible to make the tests use the merge code path,      * instead of setting the status directly?      */
