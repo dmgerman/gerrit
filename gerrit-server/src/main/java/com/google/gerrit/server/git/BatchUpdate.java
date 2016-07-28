@@ -658,7 +658,43 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|NoteDbChangeState
+operator|.
+name|PrimaryStorage
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|NoteDbUpdateManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbUpdateManager
+operator|.
+name|MismatchedStateException
 import|;
 end_import
 
@@ -771,20 +807,6 @@ operator|.
 name|util
 operator|.
 name|RequestId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmConcurrencyException
 import|;
 end_import
 
@@ -4913,8 +4935,8 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|ChangeContext
-name|ctx
+name|PrimaryStorage
+name|storage
 decl_stmt|;
 name|db
 operator|.
@@ -4928,8 +4950,9 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+name|ChangeContext
 name|ctx
-operator|=
+init|=
 name|newChangeContext
 argument_list|(
 name|db
@@ -4940,7 +4963,44 @@ name|rw
 argument_list|,
 name|id
 argument_list|)
+decl_stmt|;
+name|storage
+operator|=
+name|PrimaryStorage
+operator|.
+name|of
+argument_list|(
+name|ctx
+operator|.
+name|getChange
+argument_list|()
+argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|storage
+operator|==
+name|PrimaryStorage
+operator|.
+name|NOTE_DB
+operator|&&
+operator|!
+name|notesMigration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"must have NoteDb enabled to update change "
+operator|+
+name|id
+argument_list|)
+throw|;
+block|}
 comment|// Call updateChange on each op.
 name|logDebug
 argument_list|(
@@ -5019,7 +5079,18 @@ name|deleted
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Bump lastUpdatedOn or rowVersion and commit.
+if|if
+condition|(
+name|storage
+operator|==
+name|PrimaryStorage
+operator|.
+name|REVIEW_DB
+condition|)
+block|{
+comment|// If primary storage of this change is in ReviewDb, bump
+comment|// lastUpdatedOn or rowVersion and commit. Otherwise, don't waste
+comment|// time updating ReviewDb at all.
 name|Iterable
 argument_list|<
 name|Change
@@ -5033,9 +5104,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|newChanges
-operator|.
-name|containsKey
+name|isNewChange
 argument_list|(
 name|id
 argument_list|)
@@ -5111,6 +5180,17 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"Skipping ReviewDb write since primary storage is {}"
+argument_list|,
+name|storage
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 finally|finally
 block|{
 name|db
@@ -5119,6 +5199,44 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
+comment|// Do not execute the NoteDbUpdateManager, as we don't want too much
+comment|// contention on the underlying repo, and we would rather use a single
+comment|// ObjectInserter/BatchRefUpdate later.
+comment|//
+comment|// TODO(dborowitz): May or may not be worth trying to batch together
+comment|// flushed inserters as well.
+if|if
+condition|(
+name|storage
+operator|==
+name|PrimaryStorage
+operator|.
+name|NOTE_DB
+condition|)
+block|{
+comment|// Should have failed above if NoteDb is disabled.
+name|checkState
+argument_list|(
+name|notesMigration
+operator|.
+name|commitChangeWrites
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|noteDbResult
+operator|=
+name|updateManager
+operator|.
+name|stage
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|notesMigration
@@ -5129,12 +5247,6 @@ condition|)
 block|{
 try|try
 block|{
-comment|// Do not execute the NoteDbUpdateManager, as we don't want too much
-comment|// contention on the underlying repo, and we would rather use a
-comment|// single ObjectInserter/BatchRefUpdate later.
-comment|//
-comment|// TODO(dborowitz): May or may not be worth trying to batch
-comment|// together flushed inserters as well.
 name|noteDbResult
 operator|=
 name|updateManager
@@ -5389,6 +5501,14 @@ name|u
 argument_list|)
 expr_stmt|;
 block|}
+name|Change
+name|c
+init|=
+name|ctx
+operator|.
+name|getChange
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|deleted
@@ -5398,10 +5518,7 @@ name|updateManager
 operator|.
 name|deleteChange
 argument_list|(
-name|ctx
-operator|.
-name|getChange
-argument_list|()
+name|c
 operator|.
 name|getId
 argument_list|()
@@ -5414,30 +5531,49 @@ name|updateManager
 operator|.
 name|stageAndApplyDelta
 argument_list|(
-name|ctx
-operator|.
-name|getChange
-argument_list|()
+name|c
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmConcurrencyException
+name|MismatchedStateException
 name|ex
 parameter_list|)
 block|{
-comment|// Refused to apply update because NoteDb was out of sync. Go ahead with
-comment|// this ReviewDb update; it's still out of sync, but this is no worse
-comment|// than before, and it will eventually get rebuilt.
+comment|// Refused to apply update because NoteDb was out of sync, which can
+comment|// only happen if ReviewDb is the primary storage for this change.
+comment|//
+comment|// Go ahead with this ReviewDb update; it's still out of sync, but this
+comment|// is no worse than before, and it will eventually get rebuilt.
 name|logDebug
 argument_list|(
-literal|"Ignoring OrmConcurrencyException while staging"
+literal|"Ignoring MismatchedStateException while staging"
 argument_list|)
 expr_stmt|;
 block|}
 return|return
 name|updateManager
+return|;
+block|}
+DECL|method|isNewChange (Change.Id id)
+specifier|private
+name|boolean
+name|isNewChange
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+name|newChanges
+operator|.
+name|containsKey
+argument_list|(
+name|id
+argument_list|)
 return|;
 block|}
 DECL|method|logDebug (String msg, Throwable t)

@@ -326,6 +326,24 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|NoteDbChangeState
+operator|.
+name|PrimaryStorage
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|NoteDbUpdateManager
 operator|.
 name|StagedResult
@@ -711,13 +729,17 @@ name|Id
 name|author
 parameter_list|)
 block|{
+comment|// PrimaryStorage is unknown; this should only called by
+comment|// PatchLineCommentsUtil#draftByAuthor, which can live with this.
 name|super
 argument_list|(
 name|args
 argument_list|,
 name|changeId
 argument_list|,
-literal|true
+literal|null
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
@@ -770,6 +792,13 @@ name|change
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|PrimaryStorage
+operator|.
+name|of
+argument_list|(
+name|change
+argument_list|)
 argument_list|,
 name|autoRebuild
 argument_list|)

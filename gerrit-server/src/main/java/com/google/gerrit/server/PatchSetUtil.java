@@ -108,6 +108,26 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|NoteDbChangeState
+operator|.
+name|PrimaryStorage
+operator|.
+name|REVIEW_DB
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|PatchSetState
 operator|.
 name|DRAFT
@@ -253,6 +273,24 @@ operator|.
 name|notedb
 operator|.
 name|ChangeUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbChangeState
+operator|.
+name|PrimaryStorage
 import|;
 end_import
 
@@ -960,6 +998,22 @@ operator|.
 name|DELETED
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|PrimaryStorage
+operator|.
+name|of
+argument_list|(
+name|update
+operator|.
+name|getChange
+argument_list|()
+argument_list|)
+operator|==
+name|REVIEW_DB
+condition|)
+block|{
+comment|// Avoid OrmConcurrencyException trying to delete non-existent entities.
 name|db
 operator|.
 name|patchSets
@@ -975,6 +1029,7 @@ name|ps
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|ensurePatchSetMatches (PatchSet.Id psId, ChangeUpdate update)
 specifier|private
