@@ -120,6 +120,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -223,6 +235,8 @@ comment|/** Configures Velocity template engine for sending email. */
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|VelocityRuntimeProvider
 specifier|public
 class|class

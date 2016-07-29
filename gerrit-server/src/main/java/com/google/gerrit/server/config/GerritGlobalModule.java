@@ -2671,11 +2671,6 @@ name|VelocityRuntimeProvider
 operator|.
 name|class
 argument_list|)
-operator|.
-name|in
-argument_list|(
-name|SINGLETON
-argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
