@@ -1791,7 +1791,9 @@ literal|"Full-text search over empty string not supported"
 argument_list|)
 throw|;
 block|}
-return|return
+name|Query
+name|query
+init|=
 name|queryBuilder
 operator|.
 name|createPhraseQuery
@@ -1806,6 +1808,26 @@ argument_list|()
 argument_list|,
 name|value
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|query
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|QueryParseException
+argument_list|(
+literal|"Cannot create full-text query with value: "
+operator|+
+name|value
+argument_list|)
+throw|;
+block|}
+return|return
+name|query
 return|;
 block|}
 DECL|method|toIndexTimeInMinutes (Date ts)
