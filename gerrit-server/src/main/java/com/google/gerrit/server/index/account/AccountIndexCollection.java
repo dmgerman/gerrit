@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -124,6 +138,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -146,7 +172,17 @@ name|AccountState
 argument_list|,
 name|AccountIndex
 argument_list|>
-block|{ }
+block|{
+annotation|@
+name|Inject
+annotation|@
+name|VisibleForTesting
+DECL|method|AccountIndexCollection ()
+specifier|public
+name|AccountIndexCollection
+parameter_list|()
+block|{   }
+block|}
 end_class
 
 end_unit

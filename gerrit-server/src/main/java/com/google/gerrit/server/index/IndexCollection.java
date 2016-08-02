@@ -74,20 +74,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|Lists
@@ -107,18 +93,6 @@ operator|.
 name|events
 operator|.
 name|LifecycleListener
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
 import|;
 end_import
 
@@ -213,12 +187,8 @@ name|I
 argument_list|>
 name|searchIndex
 decl_stmt|;
-annotation|@
-name|Inject
-annotation|@
-name|VisibleForTesting
 DECL|method|IndexCollection ()
-specifier|public
+specifier|protected
 name|IndexCollection
 parameter_list|()
 block|{
