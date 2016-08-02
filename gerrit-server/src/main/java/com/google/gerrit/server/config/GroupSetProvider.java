@@ -200,18 +200,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Provider
 import|;
 end_import
@@ -299,8 +287,6 @@ name|UUID
 argument_list|>
 name|groupIds
 decl_stmt|;
-annotation|@
-name|Inject
 DECL|method|GroupSetProvider (GroupBackend groupBackend, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx, List<String> groupNames)
 specifier|protected
 name|GroupSetProvider
