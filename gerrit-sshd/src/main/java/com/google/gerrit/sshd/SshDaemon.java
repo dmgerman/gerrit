@@ -2488,6 +2488,11 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|setupSessionTimeout
+argument_list|(
+name|sessionFactory
+argument_list|)
+expr_stmt|;
 name|daemonAcceptor
 operator|=
 name|createAcceptor
