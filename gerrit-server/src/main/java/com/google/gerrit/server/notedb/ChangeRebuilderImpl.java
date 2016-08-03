@@ -1910,46 +1910,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|migration
-operator|.
-name|failChangeWrites
-argument_list|()
-condition|)
-block|{
-name|manager
-operator|.
-name|execute
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// Don't even attempt to execute if read-only, it would fail anyway. But
-comment|// do throw an exception to the caller so they know to use the staged
-comment|// results instead of reading from the repo.
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-name|NoteDbUpdateManager
-operator|.
-name|CHANGES_READ_ONLY
-argument_list|)
-throw|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|AbortUpdateException
-name|e
-parameter_list|)
-block|{
-comment|// Drop this rebuild; another thread completed it. It's ok to not execute
-comment|// the update in this case, since the object referenced in the Result was
-comment|// flushed to the repo by whatever thread won the race.
 block|}
 catch|catch
 parameter_list|(
@@ -1972,6 +1932,84 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+catch|catch
+parameter_list|(
+name|AbortUpdateException
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|NoteDbChangeState
+operator|.
+name|parse
+argument_list|(
+name|changeId
+argument_list|,
+name|newNoteDbState
+argument_list|)
+operator|.
+name|isUpToDate
+argument_list|(
+name|manager
+operator|.
+name|getChangeRepo
+argument_list|()
+operator|.
+name|cmds
+operator|.
+name|getRepoRefCache
+argument_list|()
+argument_list|,
+name|manager
+operator|.
+name|getAllUsersRepo
+argument_list|()
+operator|.
+name|cmds
+operator|.
+name|getRepoRefCache
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// If the state in ReviewDb matches NoteDb at this point, it means
+comment|// another thread successfully completed this rebuild. It's ok to not
+comment|// execute the update in this case, since the object referenced in the
+comment|// Result was flushed to the repo by whatever thread won the race.
+return|return
+name|r
+return|;
+block|}
+comment|// If the state doesn't match, that means another thread attempted this
+comment|// rebuild, but failed. Fall through and try to update the ref again.
+block|}
+if|if
+condition|(
+name|migration
+operator|.
+name|failChangeWrites
+argument_list|()
+condition|)
+block|{
+comment|// Don't even attempt to execute if read-only, it would fail anyway. But
+comment|// do throw an exception to the caller so they know to use the staged
+comment|// results instead of reading from the repo.
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+name|NoteDbUpdateManager
+operator|.
+name|CHANGES_READ_ONLY
+argument_list|)
+throw|;
+block|}
+name|manager
+operator|.
+name|execute
+argument_list|()
+expr_stmt|;
 return|return
 name|r
 return|;
