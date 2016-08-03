@@ -252,6 +252,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|InMemoryInserter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|MergeUtil
 import|;
 end_import
@@ -847,6 +863,12 @@ specifier|final
 name|long
 name|timeoutMillis
 decl_stmt|;
+DECL|field|save
+specifier|private
+specifier|final
+name|boolean
+name|save
+decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|PatchListLoader (GitRepositoryManager mgr, PatchListCache plc, @GerritServerConfig Config cfg, @DiffExecutor ExecutorService de, AutoMerger am, @Assisted PatchListKey k, @Assisted Project.NameKey p)
@@ -951,6 +973,15 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 expr_stmt|;
+name|save
+operator|=
+name|AutoMerger
+operator|.
+name|cacheAutomerge
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1037,16 +1068,38 @@ name|DEFAULT
 return|;
 block|}
 block|}
-DECL|method|readPatchList (final PatchListKey key, final Repository repo)
+DECL|method|newInserter (Repository repo)
+specifier|private
+name|ObjectInserter
+name|newInserter
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|)
+block|{
+return|return
+name|save
+condition|?
+name|repo
+operator|.
+name|newObjectInserter
+argument_list|()
+else|:
+operator|new
+name|InMemoryInserter
+argument_list|(
+name|repo
+argument_list|)
+return|;
+block|}
+DECL|method|readPatchList (PatchListKey key, Repository repo)
 specifier|private
 name|PatchList
 name|readPatchList
 parameter_list|(
-specifier|final
 name|PatchListKey
 name|key
 parameter_list|,
-specifier|final
 name|Repository
 name|repo
 parameter_list|)
@@ -1055,7 +1108,6 @@ name|IOException
 throws|,
 name|PatchListNotAvailableException
 block|{
-specifier|final
 name|RawTextComparator
 name|cmp
 init|=
@@ -1072,10 +1124,10 @@ init|(
 name|ObjectInserter
 name|ins
 init|=
+name|newInserter
+argument_list|(
 name|repo
-operator|.
-name|newObjectInserter
-argument_list|()
+argument_list|)
 init|;
 name|ObjectReader
 name|reader
@@ -1106,7 +1158,6 @@ name|INSTANCE
 argument_list|)
 init|)
 block|{
-specifier|final
 name|RevCommit
 name|b
 init|=
@@ -1120,7 +1171,6 @@ name|getNewId
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|RevObject
 name|a
 init|=
@@ -1147,7 +1197,6 @@ block|{
 comment|// TODO(sop) Remove this case.
 comment|// This is a merge commit, compared to its ancestor.
 comment|//
-specifier|final
 name|PatchListEntry
 index|[]
 name|entries
@@ -1188,7 +1237,6 @@ name|entries
 argument_list|)
 return|;
 block|}
-specifier|final
 name|boolean
 name|againstParent
 init|=
@@ -1245,9 +1293,14 @@ argument_list|()
 decl_stmt|;
 name|df
 operator|.
-name|setRepository
+name|setReader
 argument_list|(
+name|reader
+argument_list|,
 name|repo
+operator|.
+name|getConfig
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|df
@@ -1517,8 +1570,6 @@ name|oldSize
 init|=
 name|getFileSize
 argument_list|(
-name|repo
-argument_list|,
 name|reader
 argument_list|,
 name|e
@@ -1539,8 +1590,6 @@ name|newSize
 init|=
 name|getFileSize
 argument_list|(
-name|repo
-argument_list|,
 name|reader
 argument_list|,
 name|e
@@ -1603,15 +1652,12 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getFileSize (Repository repo, ObjectReader reader, FileMode mode, String path, RevTree t)
+DECL|method|getFileSize (ObjectReader reader, FileMode mode, String path, RevTree t)
 specifier|private
 specifier|static
 name|long
 name|getFileSize
 parameter_list|(
-name|Repository
-name|repo
-parameter_list|,
 name|ObjectReader
 name|reader
 parameter_list|,
@@ -1662,7 +1708,7 @@ name|tw
 operator|!=
 literal|null
 condition|?
-name|repo
+name|reader
 operator|.
 name|open
 argument_list|(
@@ -2450,7 +2496,7 @@ name|parseAny
 argument_list|(
 name|emptyTree
 argument_list|(
-name|repo
+name|ins
 argument_list|)
 argument_list|)
 return|;
@@ -2541,34 +2587,22 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|emptyTree (final Repository repo)
+DECL|method|emptyTree (ObjectInserter ins)
 specifier|private
 specifier|static
 name|ObjectId
 name|emptyTree
 parameter_list|(
-specifier|final
-name|Repository
-name|repo
+name|ObjectInserter
+name|ins
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-try|try
-init|(
-name|ObjectInserter
-name|oi
-init|=
-name|repo
-operator|.
-name|newObjectInserter
-argument_list|()
-init|)
-block|{
 name|ObjectId
 name|id
 init|=
-name|oi
+name|ins
 operator|.
 name|insert
 argument_list|(
@@ -2582,7 +2616,7 @@ index|[]
 block|{}
 argument_list|)
 decl_stmt|;
-name|oi
+name|ins
 operator|.
 name|flush
 argument_list|()
@@ -2590,7 +2624,6 @@ expr_stmt|;
 return|return
 name|id
 return|;
-block|}
 block|}
 block|}
 end_class
