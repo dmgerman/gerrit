@@ -1209,17 +1209,6 @@ argument_list|)
 operator|.
 name|version
 decl_stmt|;
-if|if
-condition|(
-name|onlineUpgrade
-operator|&&
-name|latest
-operator|!=
-name|search
-operator|.
-name|version
-condition|)
-block|{
 name|OnlineReindexer
 argument_list|<
 name|K
@@ -1239,6 +1228,29 @@ argument_list|,
 name|latest
 argument_list|)
 decl_stmt|;
+name|reindexers
+operator|.
+name|put
+argument_list|(
+name|def
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|reindexer
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|onlineUpgrade
+operator|&&
+name|latest
+operator|!=
+name|search
+operator|.
+name|version
+condition|)
+block|{
 synchronized|synchronized
 init|(
 name|this
@@ -1258,18 +1270,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|reindexers
-operator|.
-name|put
-argument_list|(
-name|def
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|reindexer
-argument_list|)
-expr_stmt|;
 name|reindexer
 operator|.
 name|start
@@ -1279,8 +1279,8 @@ block|}
 block|}
 block|}
 block|}
-comment|/**    * Start the online reindexer if the current index is not already the latest.    *    * @return true if started, otherwise false.    * @throws ReindexerAlreadyRunningException    */
-DECL|method|startReindexer (String name)
+comment|/**    * Start the online reindexer if the current index is not already the latest.    *    * @param  force start re-index    * @return true if started, otherwise false.    * @throws ReindexerAlreadyRunningException    */
+DECL|method|startReindexer (String name, boolean force)
 specifier|public
 specifier|synchronized
 name|boolean
@@ -1288,6 +1288,9 @@ name|startReindexer
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|boolean
+name|force
 parameter_list|)
 throws|throws
 name|ReindexerAlreadyRunningException
@@ -1316,6 +1319,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|force
+operator|||
 operator|!
 name|isCurrentIndexVersionLatest
 argument_list|(

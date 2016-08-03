@@ -178,6 +178,18 @@ name|Argument
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
+import|;
+end_import
+
 begin_class
 annotation|@
 name|RequiresCapability
@@ -204,6 +216,22 @@ name|IndexStartCommand
 extends|extends
 name|SshCommand
 block|{
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--force"
+argument_list|,
+name|usage
+operator|=
+literal|"force a re-index"
+argument_list|)
+DECL|field|force
+specifier|private
+name|boolean
+name|force
+decl_stmt|;
 annotation|@
 name|Argument
 argument_list|(
@@ -254,6 +282,8 @@ operator|.
 name|startReindexer
 argument_list|(
 name|name
+argument_list|,
+name|force
 argument_list|)
 condition|)
 block|{
