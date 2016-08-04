@@ -662,7 +662,7 @@ condition|(
 operator|!
 name|s
 operator|.
-name|getRefSpecs
+name|getMatchingRefSpecs
 argument_list|()
 operator|.
 name|contains
@@ -675,7 +675,7 @@ comment|// For the migration we use only exact RefSpecs, we're not trying to
 comment|// generalize it.
 name|s
 operator|.
-name|addRefSpec
+name|addMatchingRefSpec
 argument_list|(
 name|newRefSpec
 argument_list|)
