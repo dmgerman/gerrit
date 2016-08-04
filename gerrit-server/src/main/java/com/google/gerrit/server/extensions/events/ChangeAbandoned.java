@@ -375,7 +375,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo abandoner, String reason, Timestamp when)
+DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
 specifier|public
 name|void
 name|fire
@@ -394,6 +394,9 @@ name|reason
 parameter_list|,
 name|Timestamp
 name|when
+parameter_list|,
+name|NotifyHandling
+name|notifyHandling
 parameter_list|)
 block|{
 if|if
@@ -425,6 +428,8 @@ argument_list|,
 name|reason
 argument_list|,
 name|when
+argument_list|,
+name|notifyHandling
 argument_list|)
 decl_stmt|;
 for|for
@@ -463,7 +468,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, PatchSet ps, Account abandoner, String reason, Timestamp when)
+DECL|method|fire (Change change, PatchSet ps, Account abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
 specifier|public
 name|void
 name|fire
@@ -482,6 +487,9 @@ name|reason
 parameter_list|,
 name|Timestamp
 name|when
+parameter_list|,
+name|NotifyHandling
+name|notifyHandling
 parameter_list|)
 block|{
 if|if
@@ -531,6 +539,8 @@ argument_list|,
 name|reason
 argument_list|,
 name|when
+argument_list|,
+name|notifyHandling
 argument_list|)
 expr_stmt|;
 block|}
@@ -581,7 +591,7 @@ specifier|final
 name|String
 name|reason
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo abandoner, String reason, Timestamp when)
+DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -598,6 +608,9 @@ name|reason
 parameter_list|,
 name|Timestamp
 name|when
+parameter_list|,
+name|NotifyHandling
+name|notifyHandling
 parameter_list|)
 block|{
 name|super
@@ -610,9 +623,7 @@ name|abandoner
 argument_list|,
 name|when
 argument_list|,
-name|NotifyHandling
-operator|.
-name|ALL
+name|notifyHandling
 argument_list|)
 expr_stmt|;
 name|this
