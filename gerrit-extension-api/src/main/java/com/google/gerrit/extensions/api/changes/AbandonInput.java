@@ -84,24 +84,6 @@ name|DefaultInput
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|api
-operator|.
-name|changes
-operator|.
-name|NotifyHandling
-import|;
-end_import
-
 begin_class
 DECL|class|AbandonInput
 specifier|public
