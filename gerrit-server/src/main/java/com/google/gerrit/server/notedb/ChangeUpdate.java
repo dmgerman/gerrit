@@ -2448,6 +2448,23 @@ operator|=
 name|hashtags
 expr_stmt|;
 block|}
+DECL|method|getReviewers ()
+specifier|public
+name|Map
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|,
+name|ReviewerStateInternal
+argument_list|>
+name|getReviewers
+parameter_list|()
+block|{
+return|return
+name|reviewers
+return|;
+block|}
 DECL|method|putReviewer (Account.Id reviewer, ReviewerStateInternal type)
 specifier|public
 name|void
