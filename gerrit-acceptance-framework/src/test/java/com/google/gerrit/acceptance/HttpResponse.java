@@ -283,6 +283,48 @@ name|getStatusCode
 argument_list|()
 return|;
 block|}
+DECL|method|getContentType ()
+specifier|public
+name|String
+name|getContentType
+parameter_list|()
+block|{
+return|return
+name|response
+operator|.
+name|getFirstHeader
+argument_list|(
+literal|"X-FYI-Content-Type"
+argument_list|)
+operator|.
+name|getValue
+argument_list|()
+return|;
+block|}
+DECL|method|hasContent ()
+specifier|public
+name|boolean
+name|hasContent
+parameter_list|()
+block|{
+name|Preconditions
+operator|.
+name|checkNotNull
+argument_list|(
+name|response
+argument_list|,
+literal|"Response is not initialized."
+argument_list|)
+expr_stmt|;
+return|return
+name|response
+operator|.
+name|getEntity
+argument_list|()
+operator|!=
+literal|null
+return|;
+block|}
 DECL|method|getEntityContent ()
 specifier|public
 name|String
