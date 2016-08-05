@@ -152,18 +152,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|ProvisionException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -173,6 +161,26 @@ operator|.
 name|lib
 operator|.
 name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -210,6 +218,22 @@ name|CommentLinkInfo
 argument_list|>
 argument_list|>
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|CommentLinkProvider
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|cfg
 specifier|private
 specifier|final
@@ -284,6 +308,8 @@ range|:
 name|subsections
 control|)
 block|{
+try|try
+block|{
 name|CommentLinkInfo
 name|cl
 init|=
@@ -306,9 +332,9 @@ name|isOverrideOnly
 argument_list|()
 condition|)
 block|{
-throw|throw
-operator|new
-name|ProvisionException
+name|log
+operator|.
+name|warn
 argument_list|(
 literal|"commentlink "
 operator|+
@@ -316,7 +342,8 @@ name|name
 operator|+
 literal|" empty except for \"enabled\""
 argument_list|)
-throw|;
+expr_stmt|;
+continue|continue;
 block|}
 name|cls
 operator|.
@@ -325,6 +352,26 @@ argument_list|(
 name|cl
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"invalid commentlink: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return
 name|ImmutableList
