@@ -649,6 +649,7 @@ block|{
 DECL|field|SORT_APPROVALS
 specifier|private
 specifier|static
+specifier|final
 name|Ordering
 argument_list|<
 name|PatchSetApproval
