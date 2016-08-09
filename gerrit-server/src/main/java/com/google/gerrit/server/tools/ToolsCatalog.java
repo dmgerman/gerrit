@@ -86,6 +86,34 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -332,15 +360,33 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**    * Lookup an entry in the tools catalog.    *    * @param name path of the item, relative to the root of the catalog.    * @return the entry; null if the item is not part of the catalog.    */
-DECL|method|get (String name)
+annotation|@
+name|Nullable
+DECL|method|get (@ullable String name)
 specifier|public
 name|Entry
 name|get
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|name
 parameter_list|)
 block|{
+if|if
+condition|(
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 if|if
 condition|(
 name|name
@@ -697,6 +743,8 @@ name|toc
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|read (String path)
 specifier|private
 specifier|static
@@ -826,6 +874,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Nullable
 DECL|method|dirOf (String path)
 specifier|private
 specifier|static
