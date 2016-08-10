@@ -83,18 +83,18 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
+import|import static
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|commons
+name|common
 operator|.
-name|validator
+name|truth
 operator|.
-name|routines
+name|Truth
 operator|.
-name|EmailValidator
+name|assertThat
 import|;
 end_import
 
@@ -155,6 +155,30 @@ literal|"#! "
 decl_stmt|;
 annotation|@
 name|Test
+DECL|method|validateLocalDomain ()
+specifier|public
+name|void
+name|validateLocalDomain
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertThat
+argument_list|(
+name|OutgoingEmailValidator
+operator|.
+name|isValid
+argument_list|(
+literal|"foo@bar.local"
+argument_list|)
+argument_list|)
+operator|.
+name|isTrue
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|validateTopLevelDomains ()
 specifier|public
 name|void
@@ -209,14 +233,6 @@ argument_list|)
 decl_stmt|;
 name|String
 name|tld
-decl_stmt|;
-name|EmailValidator
-name|validator
-init|=
-name|EmailValidator
-operator|.
-name|getInstance
-argument_list|()
 decl_stmt|;
 while|while
 condition|(
@@ -294,7 +310,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|validator
+name|OutgoingEmailValidator
 operator|.
 name|isValid
 argument_list|(
@@ -332,7 +348,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|validator
+name|OutgoingEmailValidator
 operator|.
 name|isValid
 argument_list|(
