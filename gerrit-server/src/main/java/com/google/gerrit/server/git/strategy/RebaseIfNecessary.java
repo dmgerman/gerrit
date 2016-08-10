@@ -444,6 +444,46 @@ name|first
 init|=
 literal|true
 decl_stmt|;
+for|for
+control|(
+name|CodeReviewCommit
+name|c
+range|:
+name|sorted
+control|)
+block|{
+if|if
+condition|(
+name|c
+operator|.
+name|getParentCount
+argument_list|()
+operator|>
+literal|1
+condition|)
+block|{
+comment|// Since there is a merge commit, sort and prune again using
+comment|// MERGE_IF_NECESSARY semantics to avoid creating duplicate
+comment|// commits.
+comment|//
+name|sorted
+operator|=
+name|args
+operator|.
+name|mergeUtil
+operator|.
+name|reduceToMinimalMerge
+argument_list|(
+name|args
+operator|.
+name|mergeSorter
+argument_list|,
+name|sorted
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
+block|}
 while|while
 condition|(
 operator|!

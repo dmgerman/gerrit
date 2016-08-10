@@ -2897,14 +2897,9 @@ argument_list|<
 name|?
 argument_list|>
 operator|&&
-literal|"GET"
-operator|.
-name|equals
+name|isGetOrHead
 argument_list|(
 name|req
-operator|.
-name|getMethod
-argument_list|()
 argument_list|)
 condition|)
 block|{
