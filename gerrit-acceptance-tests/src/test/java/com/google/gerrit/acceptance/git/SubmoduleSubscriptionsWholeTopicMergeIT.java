@@ -362,7 +362,7 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 decl_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"subscribed-to-project"
 argument_list|,
@@ -805,7 +805,7 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 decl_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"subscribed-to-project"
 argument_list|,
@@ -1365,7 +1365,7 @@ argument_list|(
 literal|"sub3"
 argument_list|)
 decl_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"sub1"
 argument_list|,
@@ -1376,7 +1376,7 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"sub2"
 argument_list|,
@@ -1387,7 +1387,7 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"sub3"
 argument_list|,
@@ -1677,7 +1677,7 @@ argument_list|(
 literal|"sub"
 argument_list|)
 decl_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"sub"
 argument_list|,
@@ -1904,7 +1904,7 @@ argument_list|(
 literal|"standalone"
 argument_list|)
 decl_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"sub"
 argument_list|,
@@ -2152,7 +2152,7 @@ argument_list|(
 literal|"bottom-project"
 argument_list|)
 decl_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"mid-project"
 argument_list|,
@@ -2163,7 +2163,7 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"bottom-project"
 argument_list|,
@@ -2378,7 +2378,7 @@ argument_list|(
 literal|"bottom-project"
 argument_list|)
 decl_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"mid-project"
 argument_list|,
@@ -2389,7 +2389,7 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"bottom-project"
 argument_list|,
@@ -2400,7 +2400,7 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"bottom-project"
 argument_list|,
@@ -2684,7 +2684,7 @@ argument_list|,
 literal|"master"
 argument_list|)
 expr_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"bottom-project"
 argument_list|,
@@ -2695,7 +2695,7 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"mid-project"
 argument_list|,
@@ -2706,7 +2706,7 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"top-project"
 argument_list|,
@@ -2856,7 +2856,7 @@ argument_list|(
 literal|"subscribed-to-project"
 argument_list|)
 decl_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"subscribed-to-project"
 argument_list|,
@@ -2867,7 +2867,7 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
-name|allowSubmoduleSubscription
+name|allowMatchingSubmoduleSubscription
 argument_list|(
 literal|"super-project"
 argument_list|,
