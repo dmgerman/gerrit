@@ -186,6 +186,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|RequestId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|testutil
 operator|.
 name|TestChanges
@@ -930,11 +946,21 @@ argument_list|(
 literal|"Submit patch set 1"
 argument_list|)
 expr_stmt|;
+name|RequestId
+name|submissionId
+init|=
+name|RequestId
+operator|.
+name|forChange
+argument_list|(
+name|c
+argument_list|)
+decl_stmt|;
 name|update
 operator|.
 name|merge
 argument_list|(
-literal|"1-1453387607626-96fabc25"
+name|submissionId
 argument_list|,
 name|ImmutableList
 operator|.
@@ -1024,7 +1050,14 @@ literal|"Patch-set: 1\n"
 operator|+
 literal|"Status: merged\n"
 operator|+
-literal|"Submission-id: 1-1453387607626-96fabc25\n"
+literal|"Submission-id: "
+operator|+
+name|submissionId
+operator|.
+name|toStringForStorage
+argument_list|()
+operator|+
+literal|"\n"
 operator|+
 literal|"Submitted-with: NOT_READY\n"
 operator|+
@@ -1352,11 +1385,21 @@ argument_list|(
 literal|"Submit patch set 1"
 argument_list|)
 expr_stmt|;
+name|RequestId
+name|submissionId
+init|=
+name|RequestId
+operator|.
+name|forChange
+argument_list|(
+name|c
+argument_list|)
+decl_stmt|;
 name|update
 operator|.
 name|merge
 argument_list|(
-literal|"1-1453387607626-96fabc25"
+name|submissionId
 argument_list|,
 name|ImmutableList
 operator|.
@@ -1386,7 +1429,14 @@ literal|"Patch-set: 1\n"
 operator|+
 literal|"Status: merged\n"
 operator|+
-literal|"Submission-id: 1-1453387607626-96fabc25\n"
+literal|"Submission-id: "
+operator|+
+name|submissionId
+operator|.
+name|toStringForStorage
+argument_list|()
+operator|+
+literal|"\n"
 operator|+
 literal|"Submitted-with: RULE_ERROR Problem with patch set: 1\n"
 argument_list|,

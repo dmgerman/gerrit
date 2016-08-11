@@ -238,6 +238,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|RequestId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -400,7 +416,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commits, String submissionId, NotifyHandling notifyHandling, SubmoduleOp submoduleOp)
+DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commits, RequestId submissionId, NotifyHandling notifyHandling, SubmoduleOp submoduleOp)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -443,7 +459,7 @@ parameter_list|,
 name|CommitStatus
 name|commits
 parameter_list|,
-name|String
+name|RequestId
 name|submissionId
 parameter_list|,
 name|NotifyHandling

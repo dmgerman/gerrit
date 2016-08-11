@@ -722,6 +722,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|RequestId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -1924,12 +1940,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|merge (String submissionId, Iterable<SubmitRecord> submitRecords)
+DECL|method|merge (RequestId submissionId, Iterable<SubmitRecord> submitRecords)
 specifier|public
 name|void
 name|merge
 parameter_list|(
-name|String
+name|RequestId
 name|submissionId
 parameter_list|,
 name|Iterable
@@ -1954,6 +1970,9 @@ operator|.
 name|submissionId
 operator|=
 name|submissionId
+operator|.
+name|toStringForStorage
+argument_list|()
 expr_stmt|;
 name|this
 operator|.

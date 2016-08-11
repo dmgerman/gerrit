@@ -3320,6 +3320,9 @@ argument_list|(
 name|args
 operator|.
 name|submissionId
+operator|.
+name|toStringForStorage
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// TODO(dborowitz): We need to be able to change the author of the message,
@@ -3763,15 +3766,11 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"["
-operator|+
 name|this
 operator|.
 name|args
 operator|.
 name|submissionId
-operator|+
-literal|"]"
 operator|+
 name|msg
 argument_list|,
@@ -3805,13 +3804,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"["
-operator|+
 name|args
 operator|.
 name|submissionId
-operator|+
-literal|"]"
 operator|+
 name|msg
 argument_list|,
@@ -3851,13 +3846,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"["
-operator|+
 name|args
 operator|.
 name|submissionId
-operator|+
-literal|"]"
 operator|+
 name|msg
 argument_list|,
@@ -3871,13 +3862,9 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"["
-operator|+
 name|args
 operator|.
 name|submissionId
-operator|+
-literal|"]"
 operator|+
 name|msg
 argument_list|)

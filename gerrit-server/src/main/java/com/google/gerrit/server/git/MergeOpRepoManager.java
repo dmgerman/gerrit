@@ -230,6 +230,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|RequestId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -962,7 +978,7 @@ name|caller
 decl_stmt|;
 DECL|field|submissionId
 specifier|private
-name|String
+name|RequestId
 name|submissionId
 decl_stmt|;
 annotation|@
@@ -1008,7 +1024,7 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setContext (ReviewDb db, Timestamp ts, IdentifiedUser caller, String submissionId)
+DECL|method|setContext (ReviewDb db, Timestamp ts, IdentifiedUser caller, RequestId submissionId)
 name|void
 name|setContext
 parameter_list|(
@@ -1021,7 +1037,7 @@ parameter_list|,
 name|IdentifiedUser
 name|caller
 parameter_list|,
-name|String
+name|RequestId
 name|submissionId
 parameter_list|)
 block|{
@@ -1052,7 +1068,7 @@ expr_stmt|;
 block|}
 DECL|method|getSubmissionId ()
 specifier|public
-name|String
+name|RequestId
 name|getSubmissionId
 parameter_list|()
 block|{

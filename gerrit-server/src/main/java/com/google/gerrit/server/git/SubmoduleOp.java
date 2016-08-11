@@ -3824,14 +3824,10 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"["
-operator|+
 name|orm
 operator|.
 name|getSubmissionId
 argument_list|()
-operator|+
-literal|"]"
 operator|+
 name|msg
 argument_list|,
