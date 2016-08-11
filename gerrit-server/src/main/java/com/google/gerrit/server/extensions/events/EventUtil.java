@@ -494,11 +494,11 @@ name|create
 argument_list|(
 name|EnumSet
 operator|.
-name|of
+name|allOf
 argument_list|(
 name|ListChangesOption
 operator|.
-name|CURRENT_COMMIT
+name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
