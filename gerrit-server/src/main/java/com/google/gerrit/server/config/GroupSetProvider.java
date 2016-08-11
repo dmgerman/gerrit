@@ -244,6 +244,10 @@ name|Set
 import|;
 end_import
 
+begin_comment
+comment|/** Parses groups referenced in the {@code gerrit.config} file. */
+end_comment
+
 begin_class
 DECL|class|GroupSetProvider
 specifier|public
@@ -261,22 +265,6 @@ name|UUID
 argument_list|>
 argument_list|>
 block|{
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|GroupSetProvider
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|field|groupIds
 specifier|protected
 name|Set
@@ -357,21 +345,9 @@ decl_stmt|;
 if|if
 condition|(
 name|g
-operator|==
+operator|!=
 literal|null
 condition|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Group \"{}\" not in database, skipping."
-argument_list|,
-name|n
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|builder
 operator|.
@@ -381,6 +357,29 @@ name|g
 operator|.
 name|getUUID
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|getClass
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Group \"{}\" not available, skipping."
+argument_list|,
+name|n
 argument_list|)
 expr_stmt|;
 block|}
