@@ -1114,7 +1114,7 @@ name|abbreviate
 argument_list|(
 name|commit
 argument_list|,
-literal|8
+literal|7
 argument_list|)
 decl_stmt|;
 return|return
