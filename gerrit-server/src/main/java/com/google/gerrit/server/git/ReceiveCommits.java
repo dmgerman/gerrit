@@ -4609,9 +4609,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 name|String
 operator|.
@@ -4990,9 +4988,7 @@ name|SubmoduleException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Can't update the superprojects"
 argument_list|,
@@ -5293,9 +5289,7 @@ name|e
 parameter_list|)
 block|{
 comment|// Log and fall back to original change subject
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 literal|"failed to get subject for edit patch set"
 argument_list|,
@@ -5632,9 +5626,7 @@ argument_list|,
 literal|"internal server error"
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 name|String
 operator|.
@@ -5683,9 +5675,7 @@ argument_list|,
 literal|"internal server error"
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 name|String
 operator|.
@@ -5798,9 +5788,7 @@ argument_list|(
 name|createChangeResult
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 name|String
 operator|.
@@ -5868,9 +5856,7 @@ name|lastCreateChangeErrors
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 name|String
 operator|.
@@ -6115,9 +6101,7 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Can't insert change/patch set for "
 operator|+
@@ -6200,9 +6184,7 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Error submit changes to "
 operator|+
@@ -6809,9 +6791,7 @@ argument_list|,
 literal|"invalid project configuration"
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"User "
 operator|+
@@ -7217,9 +7197,7 @@ argument_list|,
 literal|"invalid project configuration"
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"User "
 operator|+
@@ -7302,9 +7280,7 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Invalid object "
 operator|+
@@ -7559,9 +7535,7 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Invalid object "
 operator|+
@@ -7788,9 +7762,7 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Invalid object "
 operator|+
@@ -9338,9 +9310,7 @@ argument_list|(
 name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Invalid pack upload; one or more objects weren't sent"
 argument_list|,
@@ -9467,9 +9437,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 name|String
 operator|.
@@ -9582,9 +9550,7 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 name|String
 operator|.
@@ -9760,9 +9726,7 @@ argument_list|(
 name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Invalid pack upload; one or more objects weren't sent"
 argument_list|,
@@ -9874,9 +9838,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot parse "
 operator|+
@@ -9933,9 +9895,7 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot lookup existing change "
 operator|+
@@ -9959,9 +9919,7 @@ name|NoSuchChangeException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Change not found "
 operator|+
@@ -11005,9 +10963,7 @@ argument_list|(
 name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Invalid pack upload; one or more objects weren't sent"
 argument_list|,
@@ -11029,9 +10985,7 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot query database to locate prior changes"
 argument_list|,
@@ -11271,9 +11225,7 @@ name|NoSuchChangeException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Error collecting groups for changes"
 argument_list|,
@@ -11373,9 +11325,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 name|String
 operator|.
@@ -12340,9 +12290,7 @@ name|OrmException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 name|String
 operator|.
@@ -12402,9 +12350,7 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 name|String
 operator|.
@@ -12881,9 +12827,7 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 name|String
 operator|.
@@ -13526,9 +13470,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot retrieve edit"
 argument_list|,
@@ -14996,9 +14938,7 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 literal|"Cannot default full_name"
 argument_list|,
@@ -15029,9 +14969,7 @@ argument_list|(
 name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Invalid pack upload; one or more objects weren't sent"
 argument_list|,
@@ -15688,9 +15626,7 @@ name|RestApiException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Can't insert patchset"
 argument_list|,
@@ -15708,9 +15644,7 @@ name|UpdateException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Can't scan for changes to close"
 argument_list|,
@@ -15886,6 +15820,129 @@ operator|.
 name|REFS_CONFIG
 argument_list|)
 return|;
+block|}
+DECL|method|logWarn (String msg, Throwable t)
+specifier|private
+name|void
+name|logWarn
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Throwable
+name|t
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isWarnEnabled
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|t
+operator|!=
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+name|receiveId
+operator|+
+name|msg
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+name|receiveId
+operator|+
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+DECL|method|logError (String msg, Throwable t)
+specifier|private
+name|void
+name|logError
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Throwable
+name|t
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isErrorEnabled
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|t
+operator|!=
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+name|receiveId
+operator|+
+name|msg
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+name|receiveId
+operator|+
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+DECL|method|logError (String msg)
+specifier|private
+name|void
+name|logError
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+block|{
+name|logError
+argument_list|(
+name|msg
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
