@@ -78,7 +78,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertThat
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assertThat
+name|assert_
 import|;
 end_import
 
