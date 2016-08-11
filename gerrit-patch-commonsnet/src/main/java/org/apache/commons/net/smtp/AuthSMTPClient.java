@@ -380,6 +380,11 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|verify
+condition|)
+block|{
 name|SSLParameters
 name|sslParams
 init|=
@@ -406,6 +411,7 @@ argument_list|(
 name|sslParams
 argument_list|)
 expr_stmt|;
+block|}
 comment|// XXX: Can't call _connectAction_() because SMTP server doesn't
 comment|// give banner information again after STARTTLS, thus SMTP._connectAction_()
 comment|// will wait on __getReply() forever, see source code of commons-net-2.2.
