@@ -2574,11 +2574,6 @@ condition|)
 block|{
 try|try
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
 name|WatchConfig
 name|wc
 init|=
