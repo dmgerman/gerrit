@@ -4511,6 +4511,19 @@ block|}
 name|preparePatchSetsForReplace
 argument_list|()
 expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Executing batch with {} commands"
+argument_list|,
+name|batch
+operator|.
+name|getCommands
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -4542,6 +4555,11 @@ operator|.
 name|edit
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Allowing non-fast-forward for edit ref"
+argument_list|)
+expr_stmt|;
 name|batch
 operator|.
 name|setAllowNonFastForwards
@@ -4652,6 +4670,16 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Handling error conditions: {}"
+argument_list|,
+name|errors
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Error
@@ -4763,6 +4791,16 @@ name|UPDATE
 condition|)
 block|{
 comment|// aka fast-forward
+name|logDebug
+argument_list|(
+literal|"Updating tag cache on fast-forward of {}"
+argument_list|,
+name|c
+operator|.
+name|getRefName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|tagCache
 operator|.
 name|updateFastForward
@@ -4854,6 +4892,11 @@ name|c
 argument_list|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Reloading project in cache"
+argument_list|)
+expr_stmt|;
 name|projectCache
 operator|.
 name|evict
@@ -4913,6 +4956,16 @@ name|REFS_CHANGES
 argument_list|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Firing ref update for {}"
+argument_list|,
+name|c
+operator|.
+name|getRefName
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// We only fire gitRefUpdated for direct refs updates.
 comment|// Events for change refs are fired when they are created.
 comment|//
@@ -4930,6 +4983,19 @@ argument_list|,
 name|user
 operator|.
 name|getAccount
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"Assuming ref update event for {} has fired"
+argument_list|,
+name|c
+operator|.
+name|getRefName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5554,18 +5620,23 @@ operator|==
 name|OK
 condition|)
 block|{
-name|checkState
-argument_list|(
-name|NEW_PATCHSET
-operator|.
-name|matcher
-argument_list|(
+name|String
+name|refName
+init|=
 name|replace
 operator|.
 name|inputCommand
 operator|.
 name|getRefName
 argument_list|()
+decl_stmt|;
+name|checkState
+argument_list|(
+name|NEW_PATCHSET
+operator|.
+name|matcher
+argument_list|(
+name|refName
 argument_list|)
 operator|.
 name|matches
@@ -5582,16 +5653,18 @@ operator|.
 name|getRefName
 argument_list|()
 argument_list|,
-name|replace
-operator|.
-name|inputCommand
-operator|.
-name|getRefName
-argument_list|()
+name|refName
 argument_list|)
 expr_stmt|;
 try|try
 block|{
+name|logDebug
+argument_list|(
+literal|"One-off insertion of patch set for {}"
+argument_list|,
+name|refName
+argument_list|)
+expr_stmt|;
 name|replace
 operator|.
 name|insertPatchSetWithoutBatchUpdate
@@ -5692,12 +5765,25 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// refs/for/ or refs/drafts/ not used, or it already failed earlier.
+comment|// No need to continue.
 if|if
 condition|(
 name|magicBranch
 operator|==
 literal|null
-operator|||
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"No magic branch, nothing more to do"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+elseif|else
+if|if
+condition|(
 name|magicBranch
 operator|.
 name|cmd
@@ -5708,8 +5794,40 @@ operator|!=
 name|NOT_ATTEMPTED
 condition|)
 block|{
-comment|// refs/for/ or refs/drafts/ not used, or it already failed earlier.
-comment|// No need to continue.
+name|logWarn
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Skipping change updates on %s because ref update failed: %s %s"
+argument_list|,
+name|project
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|magicBranch
+operator|.
+name|cmd
+operator|.
+name|getResult
+argument_list|()
+argument_list|,
+name|Strings
+operator|.
+name|nullToEmpty
+argument_list|(
+name|magicBranch
+operator|.
+name|cmd
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|List
@@ -5821,6 +5939,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|logDebug
+argument_list|(
+literal|"Counted {} ok to insert, out of {} to replace and {} new"
+argument_list|,
+name|okToInsert
+argument_list|,
+name|replaceCount
+argument_list|,
+name|newChanges
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|okToInsert
@@ -5999,6 +6131,11 @@ name|bu
 argument_list|)
 expr_stmt|;
 block|}
+name|logDebug
+argument_list|(
+literal|"Executing batch"
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|bu
@@ -6057,6 +6194,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Rejecting due to message from ReplaceOp"
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|replace
@@ -6186,7 +6328,7 @@ parameter_list|)
 block|{
 name|logError
 argument_list|(
-literal|"Error submit changes to "
+literal|"Error submitting changes to "
 operator|+
 name|project
 operator|.
@@ -6388,6 +6530,16 @@ argument_list|>
 name|commands
 parameter_list|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Parsing {} commands"
+argument_list|,
+name|commands
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ReceiveCommand
@@ -6407,7 +6559,18 @@ name|NOT_ATTEMPTED
 condition|)
 block|{
 comment|// Already rejected by the core receive process.
-comment|//
+name|logDebug
+argument_list|(
+literal|"Already processed by core: {} {}"
+argument_list|,
+name|cmd
+operator|.
+name|getResult
+argument_list|()
+argument_list|,
+name|cmd
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 if|if
@@ -6486,6 +6649,30 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|String
+name|newName
+init|=
+name|RefNames
+operator|.
+name|refsUsers
+argument_list|(
+name|user
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|logDebug
+argument_list|(
+literal|"Swapping out command for {} to {}"
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_USERS_SELF
+argument_list|,
+name|newName
+argument_list|)
+expr_stmt|;
 specifier|final
 name|ReceiveCommand
 name|orgCmd
@@ -6507,15 +6694,7 @@ operator|.
 name|getNewId
 argument_list|()
 argument_list|,
-name|RefNames
-operator|.
-name|refsUsers
-argument_list|(
-name|user
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
+name|newName
 argument_list|,
 name|cmd
 operator|.
@@ -6681,6 +6860,16 @@ name|cmd
 argument_list|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Processing {} command"
+argument_list|,
+name|cmd
+operator|.
+name|getRefName
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -7313,6 +7502,13 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|logDebug
+argument_list|(
+literal|"Creating {}"
+argument_list|,
+name|cmd
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isHead
@@ -7392,6 +7588,13 @@ name|ReceiveCommand
 name|cmd
 parameter_list|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Updating {}"
+argument_list|,
+name|cmd
+argument_list|)
+expr_stmt|;
 name|RefControl
 name|ctl
 init|=
@@ -7599,6 +7802,13 @@ name|ReceiveCommand
 name|cmd
 parameter_list|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Deleting {}"
+argument_list|,
+name|cmd
+argument_list|)
+expr_stmt|;
 name|RefControl
 name|ctl
 init|=
@@ -7795,6 +8005,13 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|logDebug
+argument_list|(
+literal|"Rewinding {}"
+argument_list|,
+name|cmd
+argument_list|)
+expr_stmt|;
 name|RefControl
 name|ctl
 init|=
@@ -8798,6 +9015,16 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|logDebug
+argument_list|(
+literal|"Found magic branch {}"
+argument_list|,
+name|cmd
+operator|.
+name|getRefName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|magicBranch
 operator|=
 operator|new
@@ -8884,6 +9111,11 @@ name|wasHelpRequestedByOption
 argument_list|()
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Invalid branch syntax"
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|cmd
@@ -8970,6 +9202,15 @@ name|ref
 argument_list|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Handling {}"
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_USERS_SELF
+argument_list|)
+expr_stmt|;
 name|ref
 operator|=
 name|RefNames
@@ -9008,6 +9249,13 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Ref {} not found"
+argument_list|,
+name|ref
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|ref
@@ -9294,6 +9542,16 @@ name|getNewId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Tip of push: {}"
+argument_list|,
+name|tip
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -9344,6 +9602,11 @@ operator|==
 literal|0
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Forcing newChangeForAllNotInTarget = false"
+argument_list|)
+expr_stmt|;
 name|newChangeForAllNotInTarget
 operator|=
 literal|false
@@ -9358,6 +9621,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Handling %base: {}"
+argument_list|,
+name|magicBranch
+operator|.
+name|base
+argument_list|)
+expr_stmt|;
 name|magicBranch
 operator|.
 name|baseCommit
@@ -9476,6 +9748,11 @@ condition|(
 name|newChangeForAllNotInTarget
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Handling newChangeForAllNotInTarget"
+argument_list|)
+expr_stmt|;
 name|String
 name|destBranch
 init|=
@@ -9541,6 +9818,23 @@ name|parseCommit
 argument_list|(
 name|baseHead
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Set baseCommit = {}"
+argument_list|,
+name|magicBranch
+operator|.
+name|baseCommit
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -9621,6 +9915,11 @@ block|{
 comment|// The destination branch does not yet exist. Assume the
 comment|// history being sent for review will start it and thus
 comment|// is "connected" to the branch.
+name|logDebug
+argument_list|(
+literal|"Branch is unborn"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|RevCommit
@@ -9636,6 +9935,16 @@ name|getObjectId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|logDebug
+argument_list|(
+literal|"Current branch tip: {}"
+argument_list|,
+name|h
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|RevFilter
 name|oldRevFilter
 init|=
@@ -9788,6 +10097,11 @@ name|Id
 name|changeId
 parameter_list|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Parsing replace command"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|cmd
@@ -9829,6 +10143,13 @@ name|cmd
 operator|.
 name|getNewId
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Replacing with {}"
+argument_list|,
+name|newCommit
 argument_list|)
 expr_stmt|;
 block|}
@@ -9976,6 +10297,16 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|logDebug
+argument_list|(
+literal|"Replacing change {}"
+argument_list|,
+name|changeEnt
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|requestReplace
 argument_list|(
 name|cmd
@@ -10099,6 +10430,11 @@ name|void
 name|selectNewAndReplacedChangesFromMagicBranch
 parameter_list|()
 block|{
+name|logDebug
+argument_list|(
+literal|"Finding new and replaced changes"
+argument_list|)
+expr_stmt|;
 name|newChanges
 operator|=
 operator|new
@@ -10207,6 +10543,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Marking {} base commits uninteresting"
+argument_list|,
+name|magicBranch
+operator|.
+name|baseCommit
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|RevCommit
@@ -10250,6 +10598,26 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Marking target ref {} ({}) uninteresting"
+argument_list|,
+name|magicBranch
+operator|.
+name|ctl
+operator|.
+name|getRefName
+argument_list|()
+argument_list|,
+name|targetRef
+operator|.
+name|getObjectId
+argument_list|()
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|rp
 operator|.
 name|getRevWalk
@@ -10333,6 +10701,16 @@ argument_list|(
 name|user
 argument_list|)
 decl_stmt|;
+name|int
+name|total
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|alreadyTracked
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 init|;
@@ -10359,6 +10737,17 @@ condition|)
 block|{
 break|break;
 block|}
+name|total
+operator|++
+expr_stmt|;
+name|String
+name|name
+init|=
+name|c
+operator|.
+name|name
+argument_list|()
+decl_stmt|;
 name|groupCollector
 operator|.
 name|visit
@@ -10389,6 +10778,9 @@ argument_list|()
 condition|)
 block|{
 comment|// Commit is already tracked.
+name|alreadyTracked
+operator|++
+expr_stmt|;
 comment|// Corner cases where an existing commit might need a new group:
 comment|// A) Existing commit has a null group; wasn't assigned during schema
 comment|//    upgrade, or schema upgrade is performed on a running server.
@@ -10440,6 +10832,13 @@ condition|)
 block|{
 continue|continue;
 block|}
+name|logDebug
+argument_list|(
+literal|"Creating new change for {} even though it is already tracked"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -10471,6 +10870,11 @@ operator|.
 name|emptyList
 argument_list|()
 expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Aborting early due to invalid commit"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 comment|// Don't allow merges to be uploaded in commit chain via all-not-in-target
@@ -10497,6 +10901,14 @@ operator|+
 literal|"to override please set the base manually"
 argument_list|)
 expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Rejecting merge commit {} with newChangeForAllNotInTarget"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+comment|// TODO(dborowitz): Should we early return here?
 block|}
 name|List
 argument_list|<
@@ -10605,12 +11017,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|maxBatchChanges
-operator|!=
-literal|0
-operator|&&
+name|int
+name|n
+init|=
 name|pending
 operator|.
 name|size
@@ -10620,10 +11029,27 @@ name|newChanges
 operator|.
 name|size
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|maxBatchChanges
+operator|!=
+literal|0
+operator|&&
+name|n
 operator|>
 name|maxBatchChanges
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"{} changes exceeds limit of {}"
+argument_list|,
+name|n
+argument_list|,
+name|maxBatchChanges
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|magicBranch
@@ -10645,6 +11071,29 @@ expr_stmt|;
 return|return;
 block|}
 block|}
+name|logDebug
+argument_list|(
+literal|"Finished initial RevWalk with {} commits total: {} already"
+operator|+
+literal|" tracked, {} new changes with no Change-Id, and {} deferred"
+operator|+
+literal|" lookups"
+argument_list|,
+name|total
+argument_list|,
+name|alreadyTracked
+argument_list|,
+name|newChanges
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|pending
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Iterator
@@ -10685,6 +11134,15 @@ name|changeKey
 argument_list|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Multiple commits with Change-Id {}"
+argument_list|,
+name|p
+operator|.
+name|changeKey
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|magicBranch
@@ -10723,6 +11181,53 @@ operator|>
 literal|1
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Multiple changes in project with Change-Id {}: {}"
+argument_list|,
+name|p
+operator|.
+name|changeKey
+argument_list|,
+name|Lists
+operator|.
+name|transform
+argument_list|(
+name|changes
+argument_list|,
+operator|new
+name|Function
+argument_list|<
+name|ChangeData
+argument_list|,
+name|String
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|apply
+parameter_list|(
+name|ChangeData
+name|in
+parameter_list|)
+block|{
+return|return
+name|in
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+block|}
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// WTF, multiple changes in this project have the same key?
 comment|// Since the commit is new, the user should recreate it with
 comment|// a different Change-Id. In practice, we should never see
@@ -10944,6 +11449,21 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|logDebug
+argument_list|(
+literal|"Finished deferred lookups with {} updates and {} new changes"
+argument_list|,
+name|replaceByChange
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|newChanges
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -11216,6 +11736,11 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
+name|logDebug
+argument_list|(
+literal|"Finished updating groups from GroupCollector"
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -11258,6 +11783,11 @@ name|String
 name|forRef
 parameter_list|)
 block|{
+name|int
+name|i
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|Ref
@@ -11318,6 +11848,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|i
+operator|++
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -11350,6 +11883,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|logDebug
+argument_list|(
+literal|"Marked {} heads as uninteresting"
+argument_list|,
+name|i
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|isValidChangeId (String idStr)
 specifier|private
@@ -12171,6 +12711,23 @@ argument_list|,
 name|bySha
 argument_list|)
 expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Processing submit with tip change {} ({})"
+argument_list|,
+name|tipChange
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|magicBranch
+operator|.
+name|cmd
+operator|.
+name|getNewId
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|MergeOp
@@ -12404,6 +12961,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|logDebug
+argument_list|(
+literal|"Read {} changes to replace"
+argument_list|,
+name|replaceByChange
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ReplaceRequest
@@ -14677,6 +15244,11 @@ argument_list|()
 operator|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Short-circuiting new commit validation"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|boolean
@@ -14775,6 +15347,11 @@ name|getRefName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|int
+name|i
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|RevCommit
@@ -14793,6 +15370,9 @@ literal|null
 condition|;
 control|)
 block|{
+name|i
+operator|++
+expr_stmt|;
 if|if
 condition|(
 name|existing
@@ -14955,6 +15535,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|logDebug
+argument_list|(
+literal|"Validated {} new commits"
+argument_list|,
+name|i
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -15086,6 +15673,16 @@ name|CommitValidationException
 name|e
 parameter_list|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Commit validation failed on {}"
+argument_list|,
+name|c
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|messages
 operator|.
 name|addAll
@@ -15134,6 +15731,11 @@ name|ReceiveCommand
 name|cmd
 parameter_list|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Starting auto-closing of changes"
+argument_list|)
+expr_stmt|;
 name|String
 name|refName
 init|=
@@ -15331,6 +15933,16 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+name|int
+name|existingPatchSets
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|newPatchSets
+init|=
+literal|0
+decl_stmt|;
 name|COMMIT
 label|:
 for|for
@@ -15374,6 +15986,9 @@ argument_list|()
 argument_list|)
 control|)
 block|{
+name|existingPatchSets
+operator|++
+expr_stmt|;
 name|PatchSet
 operator|.
 name|Id
@@ -15470,6 +16085,9 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|newPatchSets
+operator|++
+expr_stmt|;
 comment|// Hold onto this until we're done with the walk, as the call to
 comment|// req.validate below calls isMergedInto which resets the walk.
 name|ReplaceRequest
@@ -15541,6 +16159,13 @@ literal|true
 argument_list|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Not closing {} because validation failed"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 name|req
@@ -15614,6 +16239,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|logDebug
+argument_list|(
+literal|"Auto-closing {} changes with existing patch sets and {} with"
+operator|+
+literal|" new patch sets"
+argument_list|,
+name|existingPatchSets
+argument_list|,
+name|newPatchSets
+argument_list|)
+expr_stmt|;
 name|bu
 operator|.
 name|execute
@@ -15821,6 +16457,40 @@ name|REFS_CONFIG
 argument_list|)
 return|;
 block|}
+DECL|method|logDebug (String msg, Object... args)
+specifier|private
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Object
+modifier|...
+name|args
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|receiveId
+operator|+
+name|msg
+argument_list|,
+name|args
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|logWarn (String msg, Throwable t)
 specifier|private
 name|void
@@ -15873,6 +16543,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+DECL|method|logWarn (String msg)
+specifier|private
+name|void
+name|logWarn
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+block|{
+name|logWarn
+argument_list|(
+name|msg
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|logError (String msg, Throwable t)
 specifier|private
