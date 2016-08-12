@@ -333,18 +333,9 @@ name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
 decl_stmt|;
-DECL|field|schema
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountResolver (Realm realm, AccountByEmailCache byEmail, AccountCache byId, AccountIndexCollection accountIndexes, Provider<InternalAccountQuery> accountQueryProvider, Provider<ReviewDb> schema)
+DECL|method|AccountResolver (Realm realm, AccountByEmailCache byEmail, AccountCache byId, AccountIndexCollection accountIndexes, Provider<InternalAccountQuery> accountQueryProvider)
 name|AccountResolver
 parameter_list|(
 name|Realm
@@ -364,12 +355,6 @@ argument_list|<
 name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
 parameter_list|)
 block|{
 name|this
@@ -402,20 +387,16 @@ name|accountQueryProvider
 operator|=
 name|accountQueryProvider
 expr_stmt|;
-name|this
-operator|.
-name|schema
-operator|=
-name|schema
-expr_stmt|;
 block|}
 comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name"), an account id    *        ("18419") or an user name ("username").    * @return the single account that matches; null if no account matches or    *         there are multiple candidates.    */
-DECL|method|find (final String nameOrEmail)
+DECL|method|find (ReviewDb db, String nameOrEmail)
 specifier|public
 name|Account
 name|find
 parameter_list|(
-specifier|final
+name|ReviewDb
+name|db
+parameter_list|,
 name|String
 name|nameOrEmail
 parameter_list|)
@@ -432,6 +413,8 @@ name|r
 init|=
 name|findAll
 argument_list|(
+name|db
+argument_list|,
 name|nameOrEmail
 argument_list|)
 decl_stmt|;
@@ -522,8 +505,8 @@ return|return
 name|match
 return|;
 block|}
-comment|/**    * Find all accounts matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name"), an account id    *        ("18419") or an user name ("username").    * @return the accounts that match, empty collection if none.  Never null.    */
-DECL|method|findAll (String nameOrEmail)
+comment|/**    * Find all accounts matching the name or name/email string.    *    * @param db open database handle.    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name"), an account id    *        ("18419") or an user name ("username").    * @return the accounts that match, empty collection if none.  Never null.    */
+DECL|method|findAll (ReviewDb db, String nameOrEmail)
 specifier|public
 name|Set
 argument_list|<
@@ -533,6 +516,9 @@ name|Id
 argument_list|>
 name|findAll
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|String
 name|nameOrEmail
 parameter_list|)
@@ -585,6 +571,8 @@ if|if
 condition|(
 name|exists
 argument_list|(
+name|db
+argument_list|,
 name|id
 argument_list|)
 condition|)
@@ -633,6 +621,8 @@ if|if
 condition|(
 name|exists
 argument_list|(
+name|db
+argument_list|,
 name|id
 argument_list|)
 condition|)
@@ -701,15 +691,20 @@ block|}
 return|return
 name|findAllByNameOrEmail
 argument_list|(
+name|db
+argument_list|,
 name|nameOrEmail
 argument_list|)
 return|;
 block|}
-DECL|method|exists (Account.Id id)
+DECL|method|exists (ReviewDb db, Account.Id id)
 specifier|private
 name|boolean
 name|exists
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -719,10 +714,7 @@ throws|throws
 name|OrmException
 block|{
 return|return
-name|schema
-operator|.
-name|get
-argument_list|()
+name|db
 operator|.
 name|accounts
 argument_list|()
@@ -735,13 +727,15 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name").    * @return the single account that matches; null if no account matches or    *         there are multiple candidates.    */
-DECL|method|findByNameOrEmail (final String nameOrEmail)
+comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param db open database handle.    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name").    * @return the single account that matches; null if no account matches or    *         there are multiple candidates.    */
+DECL|method|findByNameOrEmail (ReviewDb db, String nameOrEmail)
 specifier|public
 name|Account
 name|findByNameOrEmail
 parameter_list|(
-specifier|final
+name|ReviewDb
+name|db
+parameter_list|,
 name|String
 name|nameOrEmail
 parameter_list|)
@@ -758,6 +752,8 @@ name|r
 init|=
 name|findAllByNameOrEmail
 argument_list|(
+name|db
+argument_list|,
 name|nameOrEmail
 argument_list|)
 decl_stmt|;
@@ -788,8 +784,8 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name").    * @return the accounts that match, empty collection if none. Never null.    */
-DECL|method|findAllByNameOrEmail (final String nameOrEmail)
+comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param db open database handle.    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name").    * @return the accounts that match, empty collection if none. Never null.    */
+DECL|method|findAllByNameOrEmail (ReviewDb db, String nameOrEmail)
 specifier|public
 name|Set
 argument_list|<
@@ -799,14 +795,15 @@ name|Id
 argument_list|>
 name|findAllByNameOrEmail
 parameter_list|(
-specifier|final
+name|ReviewDb
+name|db
+parameter_list|,
 name|String
 name|nameOrEmail
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|int
 name|lt
 init|=
@@ -817,7 +814,6 @@ argument_list|(
 literal|'<'
 argument_list|)
 decl_stmt|;
-specifier|final
 name|int
 name|gt
 init|=
@@ -992,7 +988,6 @@ name|nameOrEmail
 argument_list|)
 return|;
 block|}
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -1143,10 +1138,7 @@ name|Account
 argument_list|>
 name|m
 init|=
-name|schema
-operator|.
-name|get
-argument_list|()
+name|db
 operator|.
 name|accounts
 argument_list|()
@@ -1218,10 +1210,7 @@ control|(
 name|Account
 name|act
 range|:
-name|schema
-operator|.
-name|get
-argument_list|()
+name|db
 operator|.
 name|accounts
 argument_list|()
@@ -1252,10 +1241,7 @@ control|(
 name|AccountExternalId
 name|extId
 range|:
-name|schema
-operator|.
-name|get
-argument_list|()
+name|db
 operator|.
 name|accountExternalIds
 argument_list|()
@@ -1306,10 +1292,7 @@ control|(
 name|AccountExternalId
 name|extId
 range|:
-name|schema
-operator|.
-name|get
-argument_list|()
+name|db
 operator|.
 name|accountExternalIds
 argument_list|()

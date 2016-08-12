@@ -630,6 +630,8 @@ name|accountResolver
 operator|.
 name|find
 argument_list|(
+name|db
+argument_list|,
 name|userName
 argument_list|)
 expr_stmt|;

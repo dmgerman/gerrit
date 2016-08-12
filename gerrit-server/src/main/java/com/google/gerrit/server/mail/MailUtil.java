@@ -156,6 +156,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|ReviewerSet
@@ -266,12 +282,15 @@ specifier|public
 class|class
 name|MailUtil
 block|{
-DECL|method|getRecipientsFromFooters ( AccountResolver accountResolver, boolean draftPatchSet, List<FooterLine> footerLines)
+DECL|method|getRecipientsFromFooters ( ReviewDb db, AccountResolver accountResolver, boolean draftPatchSet, List<FooterLine> footerLines)
 specifier|public
 specifier|static
 name|MailRecipients
 name|getRecipientsFromFooters
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|AccountResolver
 name|accountResolver
 parameter_list|,
@@ -326,6 +345,8 @@ name|add
 argument_list|(
 name|toAccountId
 argument_list|(
+name|db
+argument_list|,
 name|accountResolver
 argument_list|,
 name|footerLine
@@ -360,6 +381,8 @@ name|add
 argument_list|(
 name|toAccountId
 argument_list|(
+name|db
+argument_list|,
 name|accountResolver
 argument_list|,
 name|footerLine
@@ -437,7 +460,7 @@ return|return
 name|recipients
 return|;
 block|}
-DECL|method|toAccountId (final AccountResolver accountResolver, final String nameOrEmail)
+DECL|method|toAccountId (ReviewDb db, AccountResolver accountResolver, String nameOrEmail)
 specifier|private
 specifier|static
 name|Account
@@ -445,11 +468,12 @@ operator|.
 name|Id
 name|toAccountId
 parameter_list|(
-specifier|final
+name|ReviewDb
+name|db
+parameter_list|,
 name|AccountResolver
 name|accountResolver
 parameter_list|,
-specifier|final
 name|String
 name|nameOrEmail
 parameter_list|)
@@ -458,7 +482,6 @@ name|OrmException
 throws|,
 name|NoSuchAccountException
 block|{
-specifier|final
 name|Account
 name|a
 init|=
@@ -466,6 +489,8 @@ name|accountResolver
 operator|.
 name|findByNameOrEmail
 argument_list|(
+name|db
+argument_list|,
 name|nameOrEmail
 argument_list|)
 decl_stmt|;

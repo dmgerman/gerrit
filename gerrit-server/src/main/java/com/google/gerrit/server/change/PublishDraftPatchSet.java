@@ -1660,6 +1660,11 @@ name|recipients
 operator|=
 name|getRecipientsFromFooters
 argument_list|(
+name|ctx
+operator|.
+name|getDb
+argument_list|()
+argument_list|,
 name|accountResolver
 argument_list|,
 name|patchSet
