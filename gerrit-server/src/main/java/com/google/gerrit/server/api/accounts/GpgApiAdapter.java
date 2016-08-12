@@ -220,6 +220,11 @@ specifier|public
 interface|interface
 name|GpgApiAdapter
 block|{
+DECL|method|isEnabled ()
+name|boolean
+name|isEnabled
+parameter_list|()
+function_decl|;
 DECL|method|listGpgKeys (AccountResource account)
 name|Map
 argument_list|<

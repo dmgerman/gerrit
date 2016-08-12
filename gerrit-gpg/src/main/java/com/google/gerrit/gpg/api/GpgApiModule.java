@@ -498,6 +498,18 @@ literal|"GPG key APIs disabled"
 decl_stmt|;
 annotation|@
 name|Override
+DECL|method|isEnabled ()
+specifier|public
+name|boolean
+name|isEnabled
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|listGpgKeys (AccountResource account)
 specifier|public
 name|Map
