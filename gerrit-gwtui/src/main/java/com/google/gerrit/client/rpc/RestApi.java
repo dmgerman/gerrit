@@ -678,33 +678,40 @@ case|case
 name|SC_UNAVAILABLE
 case|:
 case|case
-literal|400
+name|Response
+operator|.
+name|SC_BAD_REQUEST
 case|:
-comment|// Bad Request
 case|case
-literal|401
+name|Response
+operator|.
+name|SC_UNAUTHORIZED
 case|:
-comment|// Unauthorized
 case|case
-literal|403
+name|Response
+operator|.
+name|SC_FORBIDDEN
 case|:
-comment|// Forbidden
 case|case
-literal|404
+name|Response
+operator|.
+name|SC_NOT_FOUND
 case|:
-comment|// Not Found
 case|case
-literal|405
+name|Response
+operator|.
+name|SC_METHOD_NOT_ALLOWED
 case|:
-comment|// Method Not Allowed
 case|case
-literal|409
+name|Response
+operator|.
+name|SC_CONFLICT
 case|:
-comment|// Conflict
 case|case
-literal|412
+name|Response
+operator|.
+name|SC_PRECONDITION_FAILED
 case|:
-comment|// Precondition Failed
 case|case
 literal|422
 case|:
