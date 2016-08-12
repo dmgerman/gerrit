@@ -1114,10 +1114,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMaster ()
+DECL|method|pushForMaster ()
 specifier|public
 name|void
-name|testPushForMaster
+name|pushForMaster
 parameter_list|()
 throws|throws
 name|Exception
@@ -1153,10 +1153,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOutput ()
+DECL|method|output ()
 specifier|public
 name|void
-name|testOutput
+name|output
 parameter_list|()
 throws|throws
 name|Exception
@@ -1396,10 +1396,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithTopic ()
+DECL|method|pushForMasterWithTopic ()
 specifier|public
 name|void
-name|testPushForMasterWithTopic
+name|pushForMasterWithTopic
 parameter_list|()
 throws|throws
 name|Exception
@@ -1471,10 +1471,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithNotify ()
+DECL|method|pushForMasterWithNotify ()
 specifier|public
 name|void
-name|testPushForMasterWithNotify
+name|pushForMasterWithNotify
 parameter_list|()
 throws|throws
 name|Exception
@@ -1714,10 +1714,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithCc ()
+DECL|method|pushForMasterWithCc ()
 specifier|public
 name|void
-name|testPushForMasterWithCc
+name|pushForMasterWithCc
 parameter_list|()
 throws|throws
 name|Exception
@@ -1869,10 +1869,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithReviewer ()
+DECL|method|pushForMasterWithReviewer ()
 specifier|public
 name|void
-name|testPushForMasterWithReviewer
+name|pushForMasterWithReviewer
 parameter_list|()
 throws|throws
 name|Exception
@@ -2031,10 +2031,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterAsDraft ()
+DECL|method|pushForMasterAsDraft ()
 specifier|public
 name|void
-name|testPushForMasterAsDraft
+name|pushForMasterAsDraft
 parameter_list|()
 throws|throws
 name|Exception
@@ -2097,10 +2097,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterAsEdit ()
+DECL|method|pushForMasterAsEdit ()
 specifier|public
 name|void
-name|testPushForMasterAsEdit
+name|pushForMasterAsEdit
 parameter_list|()
 throws|throws
 name|Exception
@@ -2208,10 +2208,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithMessage ()
+DECL|method|pushForMasterWithMessage ()
 specifier|public
 name|void
-name|testPushForMasterWithMessage
+name|pushForMasterWithMessage
 parameter_list|()
 throws|throws
 name|Exception
@@ -2299,10 +2299,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithApprovals ()
+DECL|method|pushForMasterWithApprovals ()
 specifier|public
 name|void
-name|testPushForMasterWithApprovals
+name|pushForMasterWithApprovals
 parameter_list|()
 throws|throws
 name|Exception
@@ -2614,10 +2614,10 @@ block|}
 comment|/**    * There was a bug that allowed a user with Forge Committer Identity access    * right to upload a commit and put *votes on behalf of another user* on it.    * This test checks that this is not possible, but that the votes that are    * specified on push are applied only on behalf of the uploader.    *    * This particular bug only occurred when there was more than one label    * defined. However to test that the votes that are specified on push are    * applied on behalf of the uploader a single label is sufficient.    */
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithApprovalsForgeCommitterButNoForgeVote ()
+DECL|method|pushForMasterWithApprovalsForgeCommitterButNoForgeVote ()
 specifier|public
 name|void
-name|testPushForMasterWithApprovalsForgeCommitterButNoForgeVote
+name|pushForMasterWithApprovalsForgeCommitterButNoForgeVote
 parameter_list|()
 throws|throws
 name|Exception
@@ -2869,10 +2869,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushWithMultipleApprovals ()
+DECL|method|pushWithMultipleApprovals ()
 specifier|public
 name|void
-name|testPushWithMultipleApprovals
+name|pushWithMultipleApprovals
 parameter_list|()
 throws|throws
 name|Exception
@@ -3105,10 +3105,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushNewPatchsetToRefsChanges ()
+DECL|method|pushNewPatchsetToRefsChanges ()
 specifier|public
 name|void
-name|testPushNewPatchsetToRefsChanges
+name|pushNewPatchsetToRefsChanges
 parameter_list|()
 throws|throws
 name|Exception
@@ -3189,10 +3189,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushNewPatchsetToPatchSetLockedChange ()
+DECL|method|pushNewPatchsetToPatchSetLockedChange ()
 specifier|public
 name|void
-name|testPushNewPatchsetToPatchSetLockedChange
+name|pushNewPatchsetToPatchSetLockedChange
 parameter_list|()
 throws|throws
 name|Exception
@@ -3293,10 +3293,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithApprovals_MissingLabel ()
+DECL|method|pushForMasterWithApprovals_MissingLabel ()
 specifier|public
 name|void
-name|testPushForMasterWithApprovals_MissingLabel
+name|pushForMasterWithApprovals_MissingLabel
 parameter_list|()
 throws|throws
 name|Exception
@@ -3321,10 +3321,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithApprovals_ValueOutOfRange ()
+DECL|method|pushForMasterWithApprovals_ValueOutOfRange ()
 specifier|public
 name|void
-name|testPushForMasterWithApprovals_ValueOutOfRange
+name|pushForMasterWithApprovals_ValueOutOfRange
 parameter_list|()
 throws|throws
 name|Exception
@@ -3349,10 +3349,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForNonExistingBranch ()
+DECL|method|pushForNonExistingBranch ()
 specifier|public
 name|void
-name|testPushForNonExistingBranch
+name|pushForNonExistingBranch
 parameter_list|()
 throws|throws
 name|Exception
@@ -3388,10 +3388,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithHashtags ()
+DECL|method|pushForMasterWithHashtags ()
 specifier|public
 name|void
-name|testPushForMasterWithHashtags
+name|pushForMasterWithHashtags
 parameter_list|()
 throws|throws
 name|Exception
@@ -3586,10 +3586,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithMultipleHashtags ()
+DECL|method|pushForMasterWithMultipleHashtags ()
 specifier|public
 name|void
-name|testPushForMasterWithMultipleHashtags
+name|pushForMasterWithMultipleHashtags
 parameter_list|()
 throws|throws
 name|Exception
@@ -3808,10 +3808,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushForMasterWithHashtagsNoteDbDisabled ()
+DECL|method|pushForMasterWithHashtagsNoteDbDisabled ()
 specifier|public
 name|void
-name|testPushForMasterWithHashtagsNoteDbDisabled
+name|pushForMasterWithHashtagsNoteDbDisabled
 parameter_list|()
 throws|throws
 name|Exception
@@ -3851,10 +3851,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushCommitUsingSignedOffBy ()
+DECL|method|pushCommitUsingSignedOffBy ()
 specifier|public
 name|void
-name|testPushCommitUsingSignedOffBy
+name|pushCommitUsingSignedOffBy
 parameter_list|()
 throws|throws
 name|Exception
@@ -4011,10 +4011,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateNewChangeForAllNotInTarget ()
+DECL|method|createNewChangeForAllNotInTarget ()
 specifier|public
 name|void
-name|testCreateNewChangeForAllNotInTarget
+name|createNewChangeForAllNotInTarget
 parameter_list|()
 throws|throws
 name|Exception
@@ -4181,10 +4181,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushSameCommitTwiceUsingMagicBranchBaseOption ()
+DECL|method|pushSameCommitTwiceUsingMagicBranchBaseOption ()
 specifier|public
 name|void
-name|testPushSameCommitTwiceUsingMagicBranchBaseOption
+name|pushSameCommitTwiceUsingMagicBranchBaseOption
 parameter_list|()
 throws|throws
 name|Exception
@@ -4454,10 +4454,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushAFewChanges ()
+DECL|method|pushAFewChanges ()
 specifier|public
 name|void
-name|testPushAFewChanges
+name|pushAFewChanges
 parameter_list|()
 throws|throws
 name|Exception
@@ -4689,10 +4689,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCantAutoCloseChangeAlreadyMergedToBranch ()
+DECL|method|cantAutoCloseChangeAlreadyMergedToBranch ()
 specifier|public
 name|void
-name|testCantAutoCloseChangeAlreadyMergedToBranch
+name|cantAutoCloseChangeAlreadyMergedToBranch
 parameter_list|()
 throws|throws
 name|Exception
@@ -4915,10 +4915,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAccidentallyPushNewPatchSetDirectlyToBranchAndRecoverByPushingToRefsChanges ()
+DECL|method|accidentallyPushNewPatchSetDirectlyToBranchAndRecoverByPushingToRefsChanges ()
 specifier|public
 name|void
-name|testAccidentallyPushNewPatchSetDirectlyToBranchAndRecoverByPushingToRefsChanges
+name|accidentallyPushNewPatchSetDirectlyToBranchAndRecoverByPushingToRefsChanges
 parameter_list|()
 throws|throws
 name|Exception
@@ -5045,10 +5045,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAccidentallyPushNewPatchSetDirectlyToBranchAndCantRecoverByPushingToRefsFor ()
+DECL|method|accidentallyPushNewPatchSetDirectlyToBranchAndCantRecoverByPushingToRefsFor ()
 specifier|public
 name|void
-name|testAccidentallyPushNewPatchSetDirectlyToBranchAndCantRecoverByPushingToRefsFor
+name|accidentallyPushNewPatchSetDirectlyToBranchAndCantRecoverByPushingToRefsFor
 parameter_list|()
 throws|throws
 name|Exception
