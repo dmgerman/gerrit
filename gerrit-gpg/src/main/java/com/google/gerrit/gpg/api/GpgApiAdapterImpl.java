@@ -451,6 +451,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|isEnabled ()
+specifier|public
+name|boolean
+name|isEnabled
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|listGpgKeys (AccountResource account)
 specifier|public
 name|Map

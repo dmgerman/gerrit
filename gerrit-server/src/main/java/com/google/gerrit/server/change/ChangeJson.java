@@ -7990,6 +7990,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|gpgApi
+operator|.
+name|isEnabled
+argument_list|()
+operator|&&
 name|has
 argument_list|(
 name|PUSH_CERTIFICATES
