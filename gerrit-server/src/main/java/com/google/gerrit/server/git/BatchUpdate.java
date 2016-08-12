@@ -300,6 +300,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -719,6 +733,22 @@ operator|.
 name|project
 operator|.
 name|NoSuchRefException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|RequestId
 import|;
 end_import
 
@@ -1972,7 +2002,7 @@ return|return
 name|p
 return|;
 block|}
-DECL|method|execute (Collection<BatchUpdate> updates, Listener listener)
+DECL|method|execute (Collection<BatchUpdate> updates, Listener listener, @Nullable RequestId requestId)
 specifier|static
 name|void
 name|execute
@@ -1985,6 +2015,11 @@ name|updates
 parameter_list|,
 name|Listener
 name|listener
+parameter_list|,
+annotation|@
+name|Nullable
+name|RequestId
+name|requestId
 parameter_list|)
 throws|throws
 name|UpdateException
@@ -2000,6 +2035,53 @@ argument_list|()
 condition|)
 block|{
 return|return;
+block|}
+if|if
+condition|(
+name|requestId
+operator|!=
+literal|null
+condition|)
+block|{
+for|for
+control|(
+name|BatchUpdate
+name|u
+range|:
+name|updates
+control|)
+block|{
+name|checkArgument
+argument_list|(
+name|u
+operator|.
+name|requestId
+operator|==
+literal|null
+operator|||
+name|u
+operator|.
+name|requestId
+operator|==
+name|requestId
+argument_list|,
+literal|"refusing to overwrite RequestId %s in update with %s"
+argument_list|,
+name|u
+operator|.
+name|requestId
+argument_list|,
+name|requestId
+argument_list|)
+expr_stmt|;
+name|u
+operator|.
+name|setRequestId
+argument_list|(
+name|requestId
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 try|try
 block|{
@@ -2587,6 +2669,11 @@ specifier|private
 name|boolean
 name|updateChangesInParallel
 decl_stmt|;
+DECL|field|requestId
+specifier|private
+name|RequestId
+name|requestId
+decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|BatchUpdate ( @erritServerConfig Config cfg, AllUsersName allUsers, ChangeControl.GenericFactory changeControlFactory, ChangeIndexer indexer, ChangeNotes.Factory changeNotesFactory, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, ChangeUpdate.Factory changeUpdateFactory, @GerritPersonIdent PersonIdent serverIdent, GitReferenceUpdated gitRefUpdated, GitRepositoryManager repoManager, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration notesMigration, SchemaFactory<ReviewDb> schemaFactory, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
@@ -2835,6 +2922,25 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|setRequestId (RequestId requestId)
+specifier|public
+name|BatchUpdate
+name|setRequestId
+parameter_list|(
+name|RequestId
+name|requestId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|requestId
+operator|=
+name|requestId
+expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 DECL|method|setRepository (Repository repo, RevWalk revWalk, ObjectInserter inserter)
 specifier|public
@@ -3257,6 +3363,8 @@ name|this
 argument_list|)
 argument_list|,
 name|listener
+argument_list|,
+name|requestId
 argument_list|)
 expr_stmt|;
 block|}
@@ -3272,6 +3380,16 @@ name|RestApiException
 block|{
 try|try
 block|{
+name|logDebug
+argument_list|(
+literal|"Executing updateRepo on {} ops"
+argument_list|,
+name|ops
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|RepoContext
 name|ctx
 init|=
@@ -3298,6 +3416,25 @@ name|ctx
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|repoOnlyOps
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"Executing updateRepo on {} RepoOnlyOps"
+argument_list|,
+name|ops
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|RepoOnlyOp
@@ -3314,6 +3451,7 @@ name|ctx
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|inserter
@@ -3321,10 +3459,23 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Flushing inserter"
+argument_list|)
+expr_stmt|;
 name|inserter
 operator|.
 name|flush
 argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"No objects to flush"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -3376,6 +3527,11 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"No ref updates to execute"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 comment|// May not be opened if the caller added ref updates but no new objects.
@@ -3397,6 +3553,19 @@ operator|.
 name|addTo
 argument_list|(
 name|batchRefUpdate
+argument_list|)
+expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Executing batch of {} ref updates"
+argument_list|,
+name|batchRefUpdate
+operator|.
+name|getCommands
+argument_list|()
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|batchRefUpdate
@@ -3477,6 +3646,13 @@ name|UpdateException
 throws|,
 name|RestApiException
 block|{
+name|logDebug
+argument_list|(
+literal|"Executing change ops (parallel? {})"
+argument_list|,
+name|parallel
+argument_list|)
+expr_stmt|;
 name|ListeningExecutorService
 name|executor
 init|=
@@ -3524,6 +3700,11 @@ condition|)
 block|{
 comment|// A NoteDb change may have been rebuilt since the repo was originally
 comment|// opened, so make sure we see that.
+name|logDebug
+argument_list|(
+literal|"Preemptively scanning for repo changes"
+argument_list|)
+expr_stmt|;
 name|repo
 operator|.
 name|scanForRepoChanges
@@ -3546,6 +3727,11 @@ condition|)
 block|{
 comment|// Fail fast before attempting any writes if changes are read-only, as
 comment|// this is a programmer error.
+name|logDebug
+argument_list|(
+literal|"Failing early due to read-only Changes table"
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|OrmException
@@ -3633,6 +3819,20 @@ argument_list|(
 name|task
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|parallel
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"Direct execution of task for ops: {}"
+argument_list|,
+name|ops
+argument_list|)
+expr_stmt|;
+block|}
 name|futures
 operator|.
 name|add
@@ -3646,6 +3846,31 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|parallel
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"Waiting on futures for {} ops spanning {} changes"
+argument_list|,
+name|ops
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|ops
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|// TODO(dborowitz): Timing is wrong for non-parallel updates.
 name|long
 name|startNanos
 init|=
@@ -3898,6 +4123,7 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// Always log even without RequestId.
 name|log
 operator|.
 name|debug
@@ -3954,6 +4180,16 @@ comment|// for use only by the updateRepo phase.
 comment|//
 comment|// See the comments in NoteDbUpdateManager#execute() for why we execute the
 comment|// updates on the change repo first.
+name|logDebug
+argument_list|(
+literal|"Executing NoteDb updates for {} changes"
+argument_list|,
+name|tasks
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|BatchRefUpdate
@@ -3985,6 +4221,11 @@ name|newObjectInserter
 argument_list|()
 init|)
 block|{
+name|int
+name|objs
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|ChangeTask
@@ -4002,8 +4243,16 @@ operator|==
 literal|null
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"No-op update to {}"
+argument_list|,
+name|task
+operator|.
+name|id
+argument_list|)
+expr_stmt|;
 continue|continue;
-comment|// No-op update.
 block|}
 for|for
 control|(
@@ -4039,6 +4288,9 @@ name|changeObjects
 argument_list|()
 control|)
 block|{
+name|objs
+operator|++
+expr_stmt|;
 name|ins
 operator|.
 name|insert
@@ -4072,6 +4324,21 @@ name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
+name|logDebug
+argument_list|(
+literal|"Collected {} objects and {} ref updates to change repo"
+argument_list|,
+name|objs
+argument_list|,
+name|changeRefUpdate
+operator|.
+name|getCommands
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|executeNoteDbUpdate
 argument_list|(
 name|getRevWalk
@@ -4110,6 +4377,11 @@ name|newObjectInserter
 argument_list|()
 init|)
 block|{
+name|int
+name|objs
+init|=
+literal|0
+decl_stmt|;
 name|BatchRefUpdate
 name|allUsersRefUpdate
 init|=
@@ -4183,6 +4455,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|logDebug
+argument_list|(
+literal|"Collected {} objects and {} ref updates to All-Users"
+argument_list|,
+name|objs
+argument_list|,
+name|allUsersRefUpdate
+operator|.
+name|getCommands
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|executeNoteDbUpdate
 argument_list|(
 name|allUsersRw
@@ -4193,6 +4480,14 @@ name|allUsersRefUpdate
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"No All-Users updates"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 catch|catch
@@ -4205,6 +4500,7 @@ comment|// Ignore all errors trying to update NoteDb at this point. We've
 comment|// already written the NoteDbChangeState to ReviewDb, which means
 comment|// if the state is out of date it will be rebuilt the next time it
 comment|// is needed.
+comment|// Always log even without RequestId.
 name|log
 operator|.
 name|debug
@@ -4244,6 +4540,11 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"No commands, skipping flush and ref update"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|ins
@@ -4352,6 +4653,11 @@ DECL|field|deleted
 name|boolean
 name|deleted
 decl_stmt|;
+DECL|field|taskId
+specifier|private
+name|String
+name|taskId
+decl_stmt|;
 DECL|method|ChangeTask (Change.Id id, Collection<Op> changeOps, Thread mainThread)
 specifier|private
 name|ChangeTask
@@ -4400,6 +4706,23 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|taskId
+operator|=
+name|id
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"-"
+operator|+
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|Thread
@@ -4555,6 +4878,16 @@ name|id
 argument_list|)
 expr_stmt|;
 comment|// Call updateChange on each op.
+name|logDebug
+argument_list|(
+literal|"Calling updateChange on {} ops"
+argument_list|,
+name|changeOps
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Op
@@ -4579,6 +4912,11 @@ operator|!
 name|dirty
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"No ops reported dirty, short-circuiting"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|deleted
@@ -4587,6 +4925,17 @@ name|ctx
 operator|.
 name|deleted
 expr_stmt|;
+if|if
+condition|(
+name|deleted
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"Change was deleted"
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Stage the NoteDb update and store its state in the Change.
 if|if
 condition|(
@@ -4629,6 +4978,11 @@ argument_list|)
 condition|)
 block|{
 comment|// Insert rather than upsert in case of a race on change IDs.
+name|logDebug
+argument_list|(
+literal|"Inserting change"
+argument_list|)
+expr_stmt|;
 name|db
 operator|.
 name|changes
@@ -4646,6 +5000,11 @@ condition|(
 name|deleted
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Deleting change"
+argument_list|)
+expr_stmt|;
 name|db
 operator|.
 name|changes
@@ -4659,6 +5018,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|logDebug
+argument_list|(
+literal|"Updating change"
+argument_list|)
+expr_stmt|;
 name|db
 operator|.
 name|changes
@@ -4741,6 +5105,13 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Error updating change (should be rethrown)"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|Throwables
 operator|.
 name|propagateIfPossible
@@ -4893,6 +5264,11 @@ name|OrmException
 throws|,
 name|IOException
 block|{
+name|logDebug
+argument_list|(
+literal|"Staging NoteDb update"
+argument_list|)
+expr_stmt|;
 name|NoteDbUpdateManager
 name|updateManager
 init|=
@@ -4989,10 +5365,94 @@ block|{
 comment|// Refused to apply update because NoteDb was out of sync. Go ahead with
 comment|// this ReviewDb update; it's still out of sync, but this is no worse
 comment|// than before, and it will eventually get rebuilt.
+name|logDebug
+argument_list|(
+literal|"Ignoring OrmConcurrencyException while staging"
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|updateManager
 return|;
+block|}
+DECL|method|logDebug (String msg, Throwable t)
+specifier|private
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Throwable
+name|t
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|BatchUpdate
+operator|.
+name|this
+operator|.
+name|logDebug
+argument_list|(
+literal|"["
+operator|+
+name|taskId
+operator|+
+literal|"]"
+operator|+
+name|msg
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|logDebug (String msg, Object... args)
+specifier|private
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Object
+modifier|...
+name|args
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|BatchUpdate
+operator|.
+name|this
+operator|.
+name|logDebug
+argument_list|(
+literal|"["
+operator|+
+name|taskId
+operator|+
+literal|"]"
+operator|+
+name|msg
+argument_list|,
+name|args
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
@@ -5109,6 +5569,90 @@ operator|.
 name|postUpdate
 argument_list|(
 name|ctx
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_function
+DECL|method|logDebug (String msg, Throwable t)
+specifier|private
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Throwable
+name|t
+parameter_list|)
+block|{
+if|if
+condition|(
+name|requestId
+operator|!=
+literal|null
+operator|&&
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|requestId
+operator|+
+name|msg
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_function
+DECL|method|logDebug (String msg, Object... args)
+specifier|private
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Object
+modifier|...
+name|args
+parameter_list|)
+block|{
+comment|// Only log if there is a requestId assigned, since those are the
+comment|// expensive/complicated requests like MergeOp. Doing it every time would be
+comment|// noisy.
+if|if
+condition|(
+name|requestId
+operator|!=
+literal|null
+operator|&&
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|requestId
+operator|+
+name|msg
+argument_list|,
+name|args
 argument_list|)
 expr_stmt|;
 block|}

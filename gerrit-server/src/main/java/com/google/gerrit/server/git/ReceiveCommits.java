@@ -6066,6 +6066,13 @@ operator|.
 name|updateChangesInParallel
 argument_list|()
 expr_stmt|;
+name|bu
+operator|.
+name|setRequestId
+argument_list|(
+name|receiveId
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|ReplaceRequest
@@ -14488,6 +14495,13 @@ argument_list|,
 name|ins
 argument_list|)
 expr_stmt|;
+name|bu
+operator|.
+name|setRequestId
+argument_list|(
+name|receiveId
+argument_list|)
+expr_stmt|;
 name|addOps
 argument_list|(
 name|bu
@@ -15821,6 +15835,13 @@ argument_list|)
 operator|.
 name|updateChangesInParallel
 argument_list|()
+expr_stmt|;
+name|bu
+operator|.
+name|setRequestId
+argument_list|(
+name|receiveId
+argument_list|)
 expr_stmt|;
 comment|// TODO(dborowitz): Teach BatchUpdate to ignore missing changes.
 name|RevCommit
