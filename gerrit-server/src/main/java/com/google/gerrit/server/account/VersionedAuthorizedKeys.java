@@ -481,8 +481,6 @@ class|class
 name|VersionedAuthorizedKeys
 extends|extends
 name|VersionedMetaData
-implements|implements
-name|AutoCloseable
 block|{
 annotation|@
 name|Singleton
@@ -670,8 +668,6 @@ name|ConfigInvalidException
 throws|,
 name|InvalidSshKeyException
 block|{
-try|try
-init|(
 name|VersionedAuthorizedKeys
 name|authorizedKeys
 init|=
@@ -679,8 +675,7 @@ name|read
 argument_list|(
 name|accountId
 argument_list|)
-init|)
-block|{
+decl_stmt|;
 name|AccountSshKey
 name|key
 init|=
@@ -700,7 +695,6 @@ return|return
 name|key
 return|;
 block|}
-block|}
 DECL|method|deleteKey (Account.Id accountId, int seq)
 specifier|public
 name|void
@@ -719,8 +713,6 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-try|try
-init|(
 name|VersionedAuthorizedKeys
 name|authorizedKeys
 init|=
@@ -728,8 +720,7 @@ name|read
 argument_list|(
 name|accountId
 argument_list|)
-init|)
-block|{
+decl_stmt|;
 if|if
 condition|(
 name|authorizedKeys
@@ -745,7 +736,6 @@ argument_list|(
 name|authorizedKeys
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|markKeyInvalid (Account.Id accountId, int seq)
@@ -766,8 +756,6 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-try|try
-init|(
 name|VersionedAuthorizedKeys
 name|authorizedKeys
 init|=
@@ -775,8 +763,7 @@ name|read
 argument_list|(
 name|accountId
 argument_list|)
-init|)
-block|{
+decl_stmt|;
 if|if
 condition|(
 name|authorizedKeys
@@ -792,7 +779,6 @@ argument_list|(
 name|authorizedKeys
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|read (Account.Id accountId)
@@ -960,11 +946,6 @@ specifier|final
 name|String
 name|ref
 decl_stmt|;
-DECL|field|git
-specifier|private
-name|Repository
-name|git
-decl_stmt|;
 DECL|field|keys
 specifier|private
 name|List
@@ -1028,44 +1009,6 @@ block|{
 return|return
 name|ref
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|load (Repository git)
-specifier|public
-name|void
-name|load
-parameter_list|(
-name|Repository
-name|git
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|ConfigInvalidException
-block|{
-name|checkState
-argument_list|(
-name|this
-operator|.
-name|git
-operator|==
-literal|null
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|git
-operator|=
-name|git
-expr_stmt|;
-name|super
-operator|.
-name|load
-argument_list|(
-name|git
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1548,28 +1491,6 @@ argument_list|(
 name|key
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Override
-DECL|method|close ()
-specifier|public
-name|void
-name|close
-parameter_list|()
-block|{
-if|if
-condition|(
-name|git
-operator|!=
-literal|null
-condition|)
-block|{
-name|git
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}
