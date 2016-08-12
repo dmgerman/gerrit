@@ -986,7 +986,7 @@ decl_stmt|;
 for|for
 control|(
 name|String
-name|nameOrEmail
+name|nameOrEmailOrId
 range|:
 name|input
 operator|.
@@ -998,7 +998,7 @@ name|a
 init|=
 name|findAccount
 argument_list|(
-name|nameOrEmail
+name|nameOrEmailOrId
 argument_list|)
 decl_stmt|;
 if|if
@@ -1020,7 +1020,7 @@ name|format
 argument_list|(
 literal|"Account Inactive: %s"
 argument_list|,
-name|nameOrEmail
+name|nameOrEmailOrId
 argument_list|)
 argument_list|)
 throw|;
@@ -1075,13 +1075,12 @@ name|newMemberIds
 argument_list|)
 return|;
 block|}
-DECL|method|findAccount (String nameOrEmail)
-specifier|private
+DECL|method|findAccount (String nameOrEmailOrId)
 name|Account
 name|findAccount
 parameter_list|(
 name|String
-name|nameOrEmail
+name|nameOrEmailOrId
 parameter_list|)
 throws|throws
 name|AuthException
@@ -1099,7 +1098,7 @@ name|accounts
 operator|.
 name|parse
 argument_list|(
-name|nameOrEmail
+name|nameOrEmailOrId
 argument_list|)
 operator|.
 name|getAccount
@@ -1139,7 +1138,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|nameOrEmail
+name|nameOrEmailOrId
 argument_list|)
 operator|==
 literal|null
@@ -1151,7 +1150,7 @@ name|a
 init|=
 name|createAccountByLdap
 argument_list|(
-name|nameOrEmail
+name|nameOrEmailOrId
 argument_list|)
 decl_stmt|;
 if|if

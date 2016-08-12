@@ -68,6 +68,16 @@ name|groups
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|GroupInput
 specifier|public
@@ -93,6 +103,14 @@ DECL|field|ownerId
 specifier|public
 name|String
 name|ownerId
+decl_stmt|;
+DECL|field|members
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|members
 decl_stmt|;
 block|}
 end_class
