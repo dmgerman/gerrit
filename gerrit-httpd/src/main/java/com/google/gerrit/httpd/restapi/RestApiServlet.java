@@ -1724,6 +1724,17 @@ name|FORM_TYPE
 init|=
 literal|"application/x-www-form-urlencoded"
 decl_stmt|;
+comment|// HTTP 422 Unprocessable Entity.
+comment|// TODO: Remove when HttpServletResponse.SC_UNPROCESSABLE_ENTITY is available
+DECL|field|SC_UNPROCESSABLE_ENTITY
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|SC_UNPROCESSABLE_ENTITY
+init|=
+literal|422
+decl_stmt|;
 DECL|field|HEAP_EST_SIZE
 specifier|private
 specifier|static
@@ -3508,7 +3519,7 @@ name|res
 argument_list|,
 name|status
 operator|=
-literal|422
+name|SC_UNPROCESSABLE_ENTITY
 argument_list|,
 name|messageOr
 argument_list|(
