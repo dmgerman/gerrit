@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -1992,6 +1992,22 @@ name|server
 operator|.
 name|mail
 operator|.
+name|MailTemplates
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
 name|MergedSender
 import|;
 end_import
@@ -2025,6 +2041,22 @@ operator|.
 name|mail
 operator|.
 name|ReplacePatchSetSender
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|MailSoyTofuProvider
 import|;
 end_import
 
@@ -2545,6 +2577,22 @@ operator|.
 name|internal
 operator|.
 name|UniqueAnnotations
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|template
+operator|.
+name|soy
+operator|.
+name|tofu
+operator|.
+name|SoyTofu
 import|;
 end_import
 
@@ -3283,6 +3331,27 @@ operator|.
 name|toProvider
 argument_list|(
 name|VelocityRuntimeProvider
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|SoyTofu
+operator|.
+name|class
+argument_list|)
+operator|.
+name|annotatedWith
+argument_list|(
+name|MailTemplates
+operator|.
+name|class
+argument_list|)
+operator|.
+name|toProvider
+argument_list|(
+name|MailSoyTofuProvider
 operator|.
 name|class
 argument_list|)

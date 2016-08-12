@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -279,6 +279,22 @@ operator|.
 name|server
 operator|.
 name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|template
+operator|.
+name|soy
+operator|.
+name|tofu
+operator|.
+name|SoyTofu
 import|;
 end_import
 
@@ -615,6 +631,16 @@ DECL|field|velocityContext
 specifier|protected
 name|VelocityContext
 name|velocityContext
+decl_stmt|;
+DECL|field|soyContext
+specifier|protected
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|soyContext
 decl_stmt|;
 DECL|field|args
 specifier|protected
@@ -1020,6 +1046,9 @@ throws|throws
 name|EmailException
 block|{
 name|setupVelocityContext
+argument_list|()
+expr_stmt|;
+name|setupSoyContext
 argument_list|()
 expr_stmt|;
 name|smtpFromAddress
@@ -2385,6 +2414,25 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setupSoyContext ()
+specifier|protected
+name|void
+name|setupSoyContext
+parameter_list|()
+block|{
+name|soyContext
+operator|=
+operator|new
+name|LinkedHashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+argument_list|()
+expr_stmt|;
+comment|// TODO(wyatta): set data here.
+block|}
 DECL|method|velocify (String template)
 specifier|protected
 name|String
@@ -2599,6 +2647,38 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|soyFile (String name)
+specifier|protected
+name|String
+name|soyFile
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|EmailException
+block|{
+return|return
+name|args
+operator|.
+name|soyTofu
+operator|.
+name|newRenderer
+argument_list|(
+literal|"com.google.gerrit.server.mail.template."
+operator|+
+name|name
+argument_list|)
+operator|.
+name|setData
+argument_list|(
+name|soyContext
+argument_list|)
+operator|.
+name|render
+argument_list|()
+return|;
 block|}
 DECL|method|joinStrings (Iterable<Object> in, String joiner)
 specifier|public

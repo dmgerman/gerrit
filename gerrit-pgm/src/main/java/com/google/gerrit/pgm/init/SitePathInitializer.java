@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -803,6 +803,11 @@ expr_stmt|;
 name|extractMailExample
 argument_list|(
 literal|"Footer.vm"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
+literal|"footer.soy"
 argument_list|)
 expr_stmt|;
 name|extractMailExample
