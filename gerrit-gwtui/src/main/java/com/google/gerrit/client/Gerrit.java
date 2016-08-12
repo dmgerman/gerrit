@@ -2704,11 +2704,19 @@ name|void
 name|onModuleLoad
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|canLoadInIFrame
+argument_list|()
+condition|)
+block|{
 name|UserAgent
 operator|.
 name|assertNotInIFrame
 argument_list|()
 expr_stmt|;
+block|}
 name|setXsrfToken
 argument_list|()
 expr_stmt|;
@@ -3254,6 +3262,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|canLoadInIFrame ()
+specifier|private
+specifier|native
+name|boolean
+name|canLoadInIFrame
+parameter_list|()
+comment|/*-{     return $wnd.gerrit_hostpagedata.canLoadInIFrame || false;   }-*/
+function_decl|;
 DECL|method|initHostname ()
 specifier|private
 specifier|static

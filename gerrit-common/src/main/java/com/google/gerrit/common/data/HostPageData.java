@@ -173,6 +173,11 @@ specifier|public
 name|boolean
 name|isNoteDbEnabled
 decl_stmt|;
+DECL|field|canLoadInIFrame
+specifier|public
+name|boolean
+name|canLoadInIFrame
+decl_stmt|;
 DECL|class|Theme
 specifier|public
 specifier|static
