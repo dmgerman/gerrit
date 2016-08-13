@@ -226,7 +226,7 @@ name|idRaw
 argument_list|(
 name|URL
 operator|.
-name|encodeQueryString
+name|encodePathSegment
 argument_list|(
 name|id
 argument_list|)
