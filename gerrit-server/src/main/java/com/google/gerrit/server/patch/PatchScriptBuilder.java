@@ -982,8 +982,9 @@ name|patchListCache
 operator|.
 name|getIntraLineDiff
 argument_list|(
-operator|new
 name|IntraLineDiffKey
+operator|.
+name|create
 argument_list|(
 name|a
 operator|.
@@ -996,10 +997,6 @@ argument_list|,
 name|diffPrefs
 operator|.
 name|ignoreWhitespace
-operator|!=
-name|Whitespace
-operator|.
-name|IGNORE_NONE
 argument_list|)
 argument_list|,
 name|IntraLineDiffArgs
