@@ -1696,7 +1696,7 @@ block|}
 DECL|method|createMergeCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, String mergeStrategy, PersonIdent committerIndent, String commitMsg, RevWalk rw)
 specifier|public
 specifier|static
-name|ObjectId
+name|RevCommit
 name|createMergeCommit
 parameter_list|(
 name|Repository
@@ -1744,9 +1744,16 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|MergeIdenticalTreeException
+name|ChangeAlreadyMergedException
 argument_list|(
-literal|"merge identical tree: change(s) has been already merged!"
+literal|"'"
+operator|+
+name|originalCommit
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"' has already been merged"
 argument_list|)
 throw|;
 block|}
@@ -1829,11 +1836,16 @@ name|commitMsg
 argument_list|)
 expr_stmt|;
 return|return
+name|rw
+operator|.
+name|parseCommit
+argument_list|(
 name|inserter
 operator|.
 name|insert
 argument_list|(
 name|mergeCommit
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -4781,17 +4793,41 @@ name|IOException
 block|{
 try|try
 block|{
-return|return
-name|rw
-operator|.
-name|parseCommit
-argument_list|(
+name|ObjectId
+name|commitId
+init|=
 name|repo
 operator|.
 name|resolve
 argument_list|(
 name|str
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|commitId
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"Cannot resolve '"
+operator|+
+name|str
+operator|+
+literal|"' to a commit"
+argument_list|)
+throw|;
+block|}
+return|return
+name|rw
+operator|.
+name|parseCommit
+argument_list|(
+name|commitId
 argument_list|)
 return|;
 block|}
