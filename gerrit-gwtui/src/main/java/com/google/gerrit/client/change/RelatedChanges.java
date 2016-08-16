@@ -1469,7 +1469,19 @@ name|revision
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO(sbeller): show only on latest revision
+if|if
+condition|(
+name|info
+operator|.
+name|currentRevision
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|revision
+argument_list|)
+condition|)
+block|{
 name|ChangeApi
 operator|.
 name|change
@@ -1506,6 +1518,7 @@ name|revision
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
