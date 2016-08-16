@@ -97,6 +97,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -875,6 +887,14 @@ DECL|field|force
 specifier|private
 name|boolean
 name|force
+decl_stmt|;
+DECL|field|pushOptions
+specifier|private
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|pushOptions
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1740,6 +1760,8 @@ operator|!=
 literal|null
 argument_list|,
 name|force
+argument_list|,
+name|pushOptions
 argument_list|)
 argument_list|,
 name|c
@@ -1779,6 +1801,38 @@ operator|.
 name|force
 operator|=
 name|force
+expr_stmt|;
+block|}
+DECL|method|getPushOptions ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getPushOptions
+parameter_list|()
+block|{
+return|return
+name|pushOptions
+return|;
+block|}
+DECL|method|setPushOptions (List<String> pushOptions)
+specifier|public
+name|void
+name|setPushOptions
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|pushOptions
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pushOptions
+operator|=
+name|pushOptions
 expr_stmt|;
 block|}
 DECL|method|noParents ()
@@ -1945,6 +1999,27 @@ block|{
 return|return
 name|commit
 return|;
+block|}
+DECL|method|assertPushOptions (List<String> pushOptions)
+specifier|public
+name|void
+name|assertPushOptions
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|pushOptions
+parameter_list|)
+block|{
+name|assertEquals
+argument_list|(
+name|pushOptions
+argument_list|,
+name|getPushOptions
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|assertChange (Change.Status expectedStatus, String expectedTopic, TestAccount... expectedReviewers)
 specifier|public
