@@ -313,7 +313,7 @@ name|user
 init|=
 name|args
 operator|.
-name|getUser
+name|getIdentifiedUser
 argument_list|()
 decl_stmt|;
 name|List
