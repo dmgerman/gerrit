@@ -343,14 +343,12 @@ name|compresser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Lifecycle (final WorkQueue queue, final LogFileCompressor compressor)
+DECL|method|Lifecycle (WorkQueue queue, LogFileCompressor compressor)
 name|Lifecycle
 parameter_list|(
-specifier|final
 name|WorkQueue
 name|queue
 parameter_list|,
-specifier|final
 name|LogFileCompressor
 name|compressor
 parameter_list|)
@@ -410,10 +408,9 @@ name|logs_dir
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LogFileCompressor (final SitePaths site)
+DECL|method|LogFileCompressor (SitePaths site)
 name|LogFileCompressor
 parameter_list|(
-specifier|final
 name|SitePaths
 name|site
 parameter_list|)
