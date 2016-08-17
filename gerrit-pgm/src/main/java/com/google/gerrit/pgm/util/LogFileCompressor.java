@@ -335,11 +335,11 @@ specifier|final
 name|WorkQueue
 name|queue
 decl_stmt|;
-DECL|field|compresser
+DECL|field|compressor
 specifier|private
 specifier|final
 name|LogFileCompressor
-name|compresser
+name|compressor
 decl_stmt|;
 annotation|@
 name|Inject
@@ -361,7 +361,7 @@ name|queue
 expr_stmt|;
 name|this
 operator|.
-name|compresser
+name|compressor
 operator|=
 name|compressor
 expr_stmt|;
@@ -381,7 +381,7 @@ argument_list|()
 operator|.
 name|scheduleAtFixedRate
 argument_list|(
-name|compresser
+name|compressor
 argument_list|,
 literal|1
 argument_list|,
