@@ -1188,7 +1188,7 @@ name|ignoreWhitespace
 operator|=
 name|Whitespace
 operator|.
-name|IGNORE_ALL
+name|IGNORE_LEADING_AND_TRAILING
 expr_stmt|;
 block|}
 name|prefs
