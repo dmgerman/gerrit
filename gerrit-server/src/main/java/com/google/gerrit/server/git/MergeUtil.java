@@ -3123,12 +3123,22 @@ throw|throw
 operator|new
 name|IntegrationException
 argument_list|(
-literal|"Cannot merge "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cannot merge commit %s with mergetip %s"
+argument_list|,
 name|toMerge
 operator|.
 name|name
 argument_list|()
+argument_list|,
+name|mergeTip
+operator|.
+name|name
+argument_list|()
+argument_list|)
 argument_list|,
 name|e
 argument_list|)
