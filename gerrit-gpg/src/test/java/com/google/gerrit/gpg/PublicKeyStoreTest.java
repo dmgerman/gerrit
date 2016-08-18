@@ -1778,14 +1778,14 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-name|actual
-argument_list|,
 name|Arrays
 operator|.
 name|asList
 argument_list|(
 name|expected
 argument_list|)
+argument_list|,
+name|actual
 argument_list|)
 expr_stmt|;
 block|}
