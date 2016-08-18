@@ -279,6 +279,43 @@ specifier|abstract
 class|class
 name|ChangeRebuilder
 block|{
+DECL|class|NoPatchSetsException
+specifier|public
+specifier|static
+class|class
+name|NoPatchSetsException
+extends|extends
+name|OrmException
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|method|NoPatchSetsException (Change.Id changeId)
+name|NoPatchSetsException
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|)
+block|{
+name|super
+argument_list|(
+literal|"Change "
+operator|+
+name|changeId
+operator|+
+literal|" cannot be rebuilt because it has no patch sets"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|field|schemaFactory
 specifier|private
 specifier|final
