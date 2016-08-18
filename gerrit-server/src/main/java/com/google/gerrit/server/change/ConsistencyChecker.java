@@ -3152,7 +3152,8 @@ return|return;
 block|}
 name|ProblemInfo
 name|insertPatchSetProblem
-decl_stmt|,
+decl_stmt|;
+name|ProblemInfo
 name|deleteOldPatchSetProblem
 decl_stmt|;
 if|if
