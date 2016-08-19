@@ -589,6 +589,27 @@ operator|=
 name|w
 expr_stmt|;
 block|}
+DECL|method|updateOriginalValue (final TextBoxBase tb)
+specifier|public
+name|void
+name|updateOriginalValue
+parameter_list|(
+specifier|final
+name|TextBoxBase
+name|tb
+parameter_list|)
+block|{
+name|originalValue
+operator|=
+name|tb
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+block|}
 comment|// Register input widgets to be listened to
 DECL|method|listenTo (final TextBoxBase tb)
 specifier|public

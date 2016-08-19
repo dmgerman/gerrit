@@ -673,6 +673,11 @@ specifier|private
 name|Button
 name|registerNewEmail
 decl_stmt|;
+DECL|field|onEditEnabler
+specifier|private
+name|OnEditEnabler
+name|onEditEnabler
+decl_stmt|;
 DECL|method|ContactPanelShort ()
 name|ContactPanelShort
 parameter_list|()
@@ -1397,6 +1402,16 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|onEditEnabler
+operator|=
+operator|new
+name|OnEditEnabler
+argument_list|(
+name|save
+argument_list|,
+name|nameTxt
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|canEditFullName ()
 specifier|private
@@ -1698,11 +1713,10 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-operator|new
-name|OnEditEnabler
+name|onEditEnabler
+operator|.
+name|updateOriginalValue
 argument_list|(
-name|save
-argument_list|,
 name|nameTxt
 argument_list|)
 expr_stmt|;
@@ -1816,11 +1830,10 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-operator|new
-name|OnEditEnabler
+name|onEditEnabler
+operator|.
+name|updateOriginalValue
 argument_list|(
-name|save
-argument_list|,
 name|nameTxt
 argument_list|)
 expr_stmt|;
