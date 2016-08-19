@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -202,13 +216,15 @@ specifier|public
 interface|interface
 name|ChangeKindCache
 block|{
-DECL|method|getChangeKind (ProjectState project, Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind (ProjectState project, @Nullable Repository repo, ObjectId prior, ObjectId next)
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
 name|ProjectState
 name|project
 parameter_list|,
+annotation|@
+name|Nullable
 name|Repository
 name|repo
 parameter_list|,
@@ -233,10 +249,12 @@ name|PatchSet
 name|patch
 parameter_list|)
 function_decl|;
-DECL|method|getChangeKind (Repository repo, ChangeData cd, PatchSet patch)
+DECL|method|getChangeKind (@ullable Repository repo, ChangeData cd, PatchSet patch)
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
+annotation|@
+name|Nullable
 name|Repository
 name|repo
 parameter_list|,

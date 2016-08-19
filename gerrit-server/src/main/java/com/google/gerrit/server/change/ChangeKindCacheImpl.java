@@ -178,6 +178,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -215,6 +229,22 @@ operator|.
 name|client
 operator|.
 name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
 import|;
 end_import
 
@@ -839,7 +869,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ProjectState project, Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind (ProjectState project, @Nullable Repository repo, ObjectId prior, ObjectId next)
 specifier|public
 name|ChangeKind
 name|getChangeKind
@@ -847,6 +877,8 @@ parameter_list|(
 name|ProjectState
 name|project
 parameter_list|,
+annotation|@
+name|Nullable
 name|Repository
 name|repo
 parameter_list|,
@@ -877,6 +909,16 @@ operator|new
 name|Loader
 argument_list|(
 name|key
+argument_list|,
+name|repoManager
+argument_list|,
+name|project
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|,
 name|repo
 argument_list|)
@@ -960,11 +1002,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (Repository repo, ChangeData cd, PatchSet patch)
+DECL|method|getChangeKind (@ullable Repository repo, ChangeData cd, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
+annotation|@
+name|Nullable
 name|Repository
 name|repo
 parameter_list|,
@@ -1317,21 +1361,45 @@ specifier|final
 name|Key
 name|key
 decl_stmt|;
-DECL|field|repo
+DECL|field|repoManager
+specifier|private
+specifier|final
+name|GitRepositoryManager
+name|repoManager
+decl_stmt|;
+DECL|field|projectName
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|projectName
+decl_stmt|;
+DECL|field|alreadyOpenRepo
 specifier|private
 specifier|final
 name|Repository
-name|repo
+name|alreadyOpenRepo
 decl_stmt|;
-DECL|method|Loader (Key key, Repository repo)
+DECL|method|Loader (Key key, GitRepositoryManager repoManager, Project.NameKey projectName, @Nullable Repository alreadyOpenRepo)
 specifier|private
 name|Loader
 parameter_list|(
 name|Key
 name|key
 parameter_list|,
+name|GitRepositoryManager
+name|repoManager
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
+annotation|@
+name|Nullable
 name|Repository
-name|repo
+name|alreadyOpenRepo
 parameter_list|)
 block|{
 name|this
@@ -1342,9 +1410,21 @@ name|key
 expr_stmt|;
 name|this
 operator|.
-name|repo
+name|repoManager
 operator|=
-name|repo
+name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|projectName
+operator|=
+name|projectName
+expr_stmt|;
+name|this
+operator|.
+name|alreadyOpenRepo
+operator|=
+name|alreadyOpenRepo
 expr_stmt|;
 block|}
 annotation|@
@@ -1378,6 +1458,37 @@ name|ChangeKind
 operator|.
 name|NO_CODE_CHANGE
 return|;
+block|}
+name|Repository
+name|repo
+init|=
+name|alreadyOpenRepo
+decl_stmt|;
+name|boolean
+name|close
+init|=
+literal|false
+decl_stmt|;
+if|if
+condition|(
+name|repo
+operator|==
+literal|null
+condition|)
+block|{
+name|repo
+operator|=
+name|repoManager
+operator|.
+name|openRepository
+argument_list|(
+name|projectName
+argument_list|)
+expr_stmt|;
+name|close
+operator|=
+literal|true
+expr_stmt|;
 block|}
 try|try
 init|(
@@ -1628,6 +1739,20 @@ name|ChangeKind
 operator|.
 name|REWORK
 return|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|close
+condition|)
+block|{
+name|repo
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|onlyFirstParentChanged (RevCommit prior, RevCommit next)
@@ -2079,7 +2204,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ProjectState project, Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind (ProjectState project, @Nullable Repository repo, ObjectId prior, ObjectId next)
 specifier|public
 name|ChangeKind
 name|getChangeKind
@@ -2087,6 +2212,8 @@ parameter_list|(
 name|ProjectState
 name|project
 parameter_list|,
+annotation|@
+name|Nullable
 name|Repository
 name|repo
 parameter_list|,
@@ -2123,6 +2250,16 @@ operator|new
 name|Loader
 argument_list|(
 name|key
+argument_list|,
+name|repoManager
+argument_list|,
+name|project
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|,
 name|repo
 argument_list|)
@@ -2204,11 +2341,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (Repository repo, ChangeData cd, PatchSet patch)
+DECL|method|getChangeKind (@ullable Repository repo, ChangeData cd, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
+annotation|@
+name|Nullable
 name|Repository
 name|repo
 parameter_list|,
@@ -2234,7 +2373,7 @@ name|projectCache
 argument_list|)
 return|;
 block|}
-DECL|method|getChangeKindInternal ( ChangeKindCache cache, Repository repo, ChangeData change, PatchSet patch, ProjectCache projectCache)
+DECL|method|getChangeKindInternal ( ChangeKindCache cache, @Nullable Repository repo, ChangeData change, PatchSet patch, ProjectCache projectCache)
 specifier|private
 specifier|static
 name|ChangeKind
@@ -2243,6 +2382,8 @@ parameter_list|(
 name|ChangeKindCache
 name|cache
 parameter_list|,
+annotation|@
+name|Nullable
 name|Repository
 name|repo
 parameter_list|,
