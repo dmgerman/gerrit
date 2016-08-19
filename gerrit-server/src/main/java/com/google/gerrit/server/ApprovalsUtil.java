@@ -1637,9 +1637,13 @@ return|return
 name|need
 return|;
 block|}
+comment|/**    * Adds approvals to ChangeUpdate and writes to ReviewDb.    *    * @param db review database.    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param changeCtl change control for user adding approvals.    * @param approvals approvals to add.    * @throws OrmException    */
 DECL|method|addApprovals (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, ChangeControl changeCtl, Map<String, Short> approvals)
 specifier|public
-name|void
+name|Iterable
+argument_list|<
+name|PatchSetApproval
+argument_list|>
 name|addApprovals
 parameter_list|(
 name|ReviewDb
@@ -1670,13 +1674,19 @@ name|OrmException
 block|{
 if|if
 condition|(
-operator|!
 name|approvals
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
+block|}
 name|checkApprovals
 argument_list|(
 name|approvals
@@ -1776,16 +1786,25 @@ name|ts
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+for|for
+control|(
+name|PatchSetApproval
+name|psa
+range|:
+name|cells
+control|)
+block|{
 name|update
 operator|.
 name|putApproval
 argument_list|(
-name|vote
+name|psa
 operator|.
-name|getKey
+name|getLabel
 argument_list|()
 argument_list|,
-name|vote
+name|psa
 operator|.
 name|getValue
 argument_list|()
@@ -1802,7 +1821,9 @@ argument_list|(
 name|cells
 argument_list|)
 expr_stmt|;
-block|}
+return|return
+name|cells
+return|;
 block|}
 DECL|method|checkLabel (LabelTypes labelTypes, String name, Short value)
 specifier|public
