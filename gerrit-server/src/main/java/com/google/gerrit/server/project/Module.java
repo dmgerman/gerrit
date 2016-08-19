@@ -629,6 +629,15 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|factory
+argument_list|(
+name|RefValidationHelper
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|get
 argument_list|(
 name|BRANCH_KIND
