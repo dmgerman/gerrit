@@ -1307,7 +1307,7 @@ parameter_list|)
 block|{
 name|Throwables
 operator|.
-name|propagateIfInstanceOf
+name|throwIfInstanceOf
 argument_list|(
 name|e
 operator|.
