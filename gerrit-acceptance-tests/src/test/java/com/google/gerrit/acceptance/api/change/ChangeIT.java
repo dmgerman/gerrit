@@ -4734,7 +4734,38 @@ parameter_list|)
 block|{
 comment|// Expected.
 block|}
-comment|// check that the author/committer was NOT emailed (he can't see the change)
+comment|// check that the author/committer was NOT added as reviewer (he can't see
+comment|// the change)
+name|assertThat
+argument_list|(
+name|change
+operator|.
+name|reviewers
+operator|.
+name|get
+argument_list|(
+name|REVIEWER
+argument_list|)
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|change
+operator|.
+name|reviewers
+operator|.
+name|get
+argument_list|(
+name|CC
+argument_list|)
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|sender
