@@ -174,20 +174,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|common
-operator|.
-name|VoidResult
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -263,24 +249,6 @@ name|AccountExternalId
 operator|.
 name|Key
 argument_list|>
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
-DECL|method|enterAgreement (String agreementName, AsyncCallback<VoidResult> callback)
-name|void
-name|enterAgreement
-parameter_list|(
-name|String
-name|agreementName
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|VoidResult
 argument_list|>
 name|callback
 parameter_list|)
