@@ -142,6 +142,22 @@ name|core
 operator|.
 name|client
 operator|.
+name|JsArray
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
 name|JsArrayString
 import|;
 end_import
@@ -366,6 +382,53 @@ return|return
 name|fields
 return|;
 block|}
+DECL|method|contributorAgreements ()
+specifier|public
+specifier|final
+name|List
+argument_list|<
+name|AgreementInfo
+argument_list|>
+name|contributorAgreements
+parameter_list|()
+block|{
+name|List
+argument_list|<
+name|AgreementInfo
+argument_list|>
+name|agreements
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|AgreementInfo
+name|a
+range|:
+name|Natives
+operator|.
+name|asList
+argument_list|(
+name|_contributorAgreements
+argument_list|()
+argument_list|)
+control|)
+block|{
+name|agreements
+operator|.
+name|add
+argument_list|(
+name|a
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|agreements
+return|;
+block|}
 DECL|method|siteHasUsernames ()
 specifier|public
 specifier|final
@@ -520,6 +583,17 @@ name|JsArrayString
 name|_editableAccountFields
 parameter_list|()
 comment|/*-{ return this.editable_account_fields; }-*/
+function_decl|;
+DECL|method|_contributorAgreements ()
+specifier|private
+specifier|native
+name|JsArray
+argument_list|<
+name|AgreementInfo
+argument_list|>
+name|_contributorAgreements
+parameter_list|()
+comment|/*-{ return this.contributor_agreements; }-*/
 function_decl|;
 DECL|method|AuthInfo ()
 specifier|protected

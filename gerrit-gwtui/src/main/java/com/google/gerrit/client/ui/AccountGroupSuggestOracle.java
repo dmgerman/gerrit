@@ -78,7 +78,7 @@ name|client
 operator|.
 name|groups
 operator|.
-name|GroupInfo
+name|GroupMap
 import|;
 end_import
 
@@ -92,9 +92,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|groups
+name|info
 operator|.
-name|GroupMap
+name|GroupInfo
 import|;
 end_import
 

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.groups
+DECL|package|com.google.gerrit.client.info
 package|package
 name|com
 operator|.
@@ -62,25 +62,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|groups
+name|info
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|info
-operator|.
-name|AccountInfo
-import|;
-end_import
 
 begin_import
 import|import

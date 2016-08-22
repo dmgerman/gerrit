@@ -168,7 +168,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|groups
+name|info
 operator|.
 name|GroupInfo
 import|;

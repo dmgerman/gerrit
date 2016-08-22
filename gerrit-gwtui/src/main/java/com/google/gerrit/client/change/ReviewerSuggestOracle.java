@@ -108,9 +108,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|groups
+name|info
 operator|.
-name|GroupBaseInfo
+name|AccountInfo
 import|;
 end_import
 
@@ -126,7 +126,7 @@ name|client
 operator|.
 name|info
 operator|.
-name|AccountInfo
+name|GroupBaseInfo
 import|;
 end_import
 
