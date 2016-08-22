@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|registration
+name|client
 operator|.
-name|DynamicSet
+name|AuthType
 import|;
 end_import
 
@@ -90,11 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|registration
 operator|.
-name|AuthType
+name|DynamicSet
 import|;
 end_import
 

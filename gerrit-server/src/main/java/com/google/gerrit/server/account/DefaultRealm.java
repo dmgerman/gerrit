@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|Account
+name|AuthType
 import|;
 end_import
 
@@ -124,7 +124,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AuthType
+name|Account
 import|;
 end_import
 
