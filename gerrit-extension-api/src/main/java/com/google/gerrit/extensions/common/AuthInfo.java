@@ -124,6 +124,14 @@ specifier|public
 name|Boolean
 name|useContributorAgreements
 decl_stmt|;
+DECL|field|contributorAgreements
+specifier|public
+name|List
+argument_list|<
+name|AgreementInfo
+argument_list|>
+name|contributorAgreements
+decl_stmt|;
 DECL|field|editableAccountFields
 specifier|public
 name|List
