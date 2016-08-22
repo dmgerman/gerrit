@@ -863,6 +863,11 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"cast"
+argument_list|)
+annotation|@
 name|Test
 DECL|method|testBasePathWhenNotConfigured ()
 specifier|public
@@ -934,6 +939,11 @@ name|basePath
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"cast"
+argument_list|)
 annotation|@
 name|Test
 DECL|method|testBasePathForSpecificFilter ()
