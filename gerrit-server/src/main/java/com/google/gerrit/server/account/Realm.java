@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|AccountFieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -113,13 +129,11 @@ interface|interface
 name|Realm
 block|{
 comment|/** Can the end-user modify this field of their own account? */
-DECL|method|allowsEdit (Account.FieldName field)
+DECL|method|allowsEdit (AccountFieldName field)
 name|boolean
 name|allowsEdit
 parameter_list|(
-name|Account
-operator|.
-name|FieldName
+name|AccountFieldName
 name|field
 parameter_list|)
 function_decl|;
@@ -127,9 +141,7 @@ comment|/** Returns the account fields that the end-user can modify. */
 DECL|method|getEditableFields ()
 name|Set
 argument_list|<
-name|Account
-operator|.
-name|FieldName
+name|AccountFieldName
 argument_list|>
 name|getEditableFields
 parameter_list|()

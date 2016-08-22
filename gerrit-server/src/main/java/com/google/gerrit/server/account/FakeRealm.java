@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|Account
+name|AccountFieldName
 import|;
 end_import
 
@@ -95,8 +95,6 @@ operator|.
 name|client
 operator|.
 name|Account
-operator|.
-name|FieldName
 import|;
 end_import
 
@@ -114,12 +112,12 @@ name|AbstractRealm
 block|{
 annotation|@
 name|Override
-DECL|method|allowsEdit (FieldName field)
+DECL|method|allowsEdit (AccountFieldName field)
 specifier|public
 name|boolean
 name|allowsEdit
 parameter_list|(
-name|FieldName
+name|AccountFieldName
 name|field
 parameter_list|)
 block|{

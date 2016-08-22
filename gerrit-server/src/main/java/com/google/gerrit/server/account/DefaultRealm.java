@@ -88,6 +88,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|AccountFieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -226,15 +242,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|allowsEdit (final Account.FieldName field)
+DECL|method|allowsEdit (final AccountFieldName field)
 specifier|public
 name|boolean
 name|allowsEdit
 parameter_list|(
 specifier|final
-name|Account
-operator|.
-name|FieldName
+name|AccountFieldName
 name|field
 parameter_list|)
 block|{

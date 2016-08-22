@@ -166,6 +166,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|AccountFieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -653,9 +669,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|Account
-operator|.
-name|FieldName
+name|AccountFieldName
 argument_list|>
 name|readOnlyAccountFields
 decl_stmt|;
@@ -813,9 +827,7 @@ name|readOnlyAccountFields
 operator|.
 name|add
 argument_list|(
-name|Account
-operator|.
-name|FieldName
+name|AccountFieldName
 operator|.
 name|FULL_NAME
 argument_list|)
@@ -839,9 +851,7 @@ name|readOnlyAccountFields
 operator|.
 name|add
 argument_list|(
-name|Account
-operator|.
-name|FieldName
+name|AccountFieldName
 operator|.
 name|USER_NAME
 argument_list|)
@@ -860,9 +870,7 @@ name|readOnlyAccountFields
 operator|.
 name|add
 argument_list|(
-name|Account
-operator|.
-name|FieldName
+name|AccountFieldName
 operator|.
 name|REGISTER_NEW_EMAIL
 argument_list|)
@@ -1476,15 +1484,13 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|allowsEdit (final Account.FieldName field)
+DECL|method|allowsEdit (final AccountFieldName field)
 specifier|public
 name|boolean
 name|allowsEdit
 parameter_list|(
 specifier|final
-name|Account
-operator|.
-name|FieldName
+name|AccountFieldName
 name|field
 parameter_list|)
 block|{
