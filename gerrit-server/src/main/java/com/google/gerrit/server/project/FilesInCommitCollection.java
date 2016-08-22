@@ -152,6 +152,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -167,6 +183,16 @@ operator|.
 name|inject
 operator|.
 name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -197,9 +223,15 @@ argument_list|>
 argument_list|>
 name|views
 decl_stmt|;
+DECL|field|repoManager
+specifier|private
+specifier|final
+name|GitRepositoryManager
+name|repoManager
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FilesInCommitCollection (DynamicMap<RestView<FileResource>> views)
+DECL|method|FilesInCommitCollection (DynamicMap<RestView<FileResource>> views, GitRepositoryManager repoManager)
 name|FilesInCommitCollection
 parameter_list|(
 name|DynamicMap
@@ -210,6 +242,9 @@ name|FileResource
 argument_list|>
 argument_list|>
 name|views
+parameter_list|,
+name|GitRepositoryManager
+name|repoManager
 parameter_list|)
 block|{
 name|this
@@ -217,6 +252,12 @@ operator|.
 name|views
 operator|=
 name|views
+expr_stmt|;
+name|this
+operator|.
+name|repoManager
+operator|=
+name|repoManager
 expr_stmt|;
 block|}
 annotation|@
@@ -253,11 +294,16 @@ name|id
 parameter_list|)
 throws|throws
 name|ResourceNotFoundException
+throws|,
+name|IOException
 block|{
 return|return
-operator|new
 name|FileResource
+operator|.
+name|create
 argument_list|(
+name|repoManager
+argument_list|,
 name|parent
 operator|.
 name|getProject
