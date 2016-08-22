@@ -395,6 +395,8 @@ parameter_list|(
 name|String
 name|path
 parameter_list|)
+throws|throws
+name|RestApiException
 function_decl|;
 DECL|method|mergeable ()
 name|MergeableInfo
