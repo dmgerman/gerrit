@@ -176,13 +176,31 @@ name|AsyncCallback
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|Button
+import|;
+end_import
+
 begin_class
 DECL|class|DraftActions
 specifier|public
 class|class
 name|DraftActions
 block|{
-DECL|method|publish (Change.Id id, String revision)
+DECL|method|publish (Change.Id id, String revision, Button... draftButtons)
 specifier|static
 name|void
 name|publish
@@ -194,6 +212,10 @@ name|id
 parameter_list|,
 name|String
 name|revision
+parameter_list|,
+name|Button
+modifier|...
+name|draftButtons
 parameter_list|)
 block|{
 name|ChangeApi
@@ -210,11 +232,13 @@ argument_list|,
 name|cs
 argument_list|(
 name|id
+argument_list|,
+name|draftButtons
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|delete (Change.Id id, String revision)
+DECL|method|delete (Change.Id id, String revision, Button... draftButtons)
 specifier|static
 name|void
 name|delete
@@ -226,6 +250,10 @@ name|id
 parameter_list|,
 name|String
 name|revision
+parameter_list|,
+name|Button
+modifier|...
+name|draftButtons
 parameter_list|)
 block|{
 name|ChangeApi
@@ -242,11 +270,13 @@ argument_list|,
 name|cs
 argument_list|(
 name|id
+argument_list|,
+name|draftButtons
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|delete (Change.Id id)
+DECL|method|delete (Change.Id id, Button... draftButtons)
 specifier|static
 name|void
 name|delete
@@ -255,6 +285,10 @@ name|Change
 operator|.
 name|Id
 name|id
+parameter_list|,
+name|Button
+modifier|...
+name|draftButtons
 parameter_list|)
 block|{
 name|ChangeApi
@@ -267,11 +301,13 @@ name|get
 argument_list|()
 argument_list|,
 name|mine
-argument_list|()
+argument_list|(
+name|draftButtons
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cs ( final Change.Id id)
+DECL|method|cs ( final Change.Id id, final Button... draftButtons)
 specifier|public
 specifier|static
 name|GerritCallback
@@ -285,8 +321,20 @@ name|Change
 operator|.
 name|Id
 name|id
+parameter_list|,
+specifier|final
+name|Button
+modifier|...
+name|draftButtons
 parameter_list|)
 block|{
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|,
+name|draftButtons
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|GerritCallback
@@ -328,6 +376,13 @@ name|Throwable
 name|err
 parameter_list|)
 block|{
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|,
+name|draftButtons
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|SubmitFailureDialog
@@ -377,7 +432,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|mine ()
+DECL|method|mine ( final Button... draftButtons)
 specifier|private
 specifier|static
 name|AsyncCallback
@@ -385,8 +440,20 @@ argument_list|<
 name|JavaScriptObject
 argument_list|>
 name|mine
-parameter_list|()
+parameter_list|(
+specifier|final
+name|Button
+modifier|...
+name|draftButtons
+parameter_list|)
 block|{
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|,
+name|draftButtons
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|GerritCallback
@@ -425,6 +492,13 @@ name|Throwable
 name|err
 parameter_list|)
 block|{
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|,
+name|draftButtons
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|SubmitFailureDialog
@@ -470,6 +544,45 @@ block|}
 block|}
 block|}
 return|;
+block|}
+DECL|method|setEnabled (boolean enabled, Button... draftButtons)
+specifier|private
+specifier|static
+name|void
+name|setEnabled
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|,
+name|Button
+modifier|...
+name|draftButtons
+parameter_list|)
+block|{
+if|if
+condition|(
+name|draftButtons
+operator|!=
+literal|null
+condition|)
+block|{
+for|for
+control|(
+name|Button
+name|b
+range|:
+name|draftButtons
+control|)
+block|{
+name|b
+operator|.
+name|setEnabled
+argument_list|(
+name|enabled
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 end_class
