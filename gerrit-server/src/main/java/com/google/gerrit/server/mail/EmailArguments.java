@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -520,6 +520,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|template
+operator|.
+name|soy
+operator|.
+name|tofu
+operator|.
+name|SoyTofu
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -694,6 +710,11 @@ specifier|final
 name|RuntimeInstance
 name|velocityRuntime
 decl_stmt|;
+DECL|field|soyTofu
+specifier|final
+name|SoyTofu
+name|soyTofu
+decl_stmt|;
 DECL|field|settings
 specifier|final
 name|EmailSettings
@@ -727,7 +748,7 @@ name|accountQueryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RuntimeInstance velocityRuntime, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners, StarredChangesUtil starredChangesUtil, AccountIndexCollection accountIndexes, Provider<InternalAccountQuery> accountQueryProvider)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RuntimeInstance velocityRuntime, @MailTemplates SoyTofu soyTofu, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners, StarredChangesUtil starredChangesUtil, AccountIndexCollection accountIndexes, Provider<InternalAccountQuery> accountQueryProvider)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -813,6 +834,11 @@ name|changeDataFactory
 parameter_list|,
 name|RuntimeInstance
 name|velocityRuntime
+parameter_list|,
+annotation|@
+name|MailTemplates
+name|SoyTofu
+name|soyTofu
 parameter_list|,
 name|EmailSettings
 name|settings
@@ -978,6 +1004,12 @@ operator|.
 name|velocityRuntime
 operator|=
 name|velocityRuntime
+expr_stmt|;
+name|this
+operator|.
+name|soyTofu
+operator|=
+name|soyTofu
 expr_stmt|;
 name|this
 operator|.
