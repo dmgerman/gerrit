@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountExternalId
+name|AuthType
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AuthType
+name|AccountExternalId
 import|;
 end_import
 

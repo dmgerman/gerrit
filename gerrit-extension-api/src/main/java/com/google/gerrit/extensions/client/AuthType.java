@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.reviewdb.client
+DECL|package|com.google.gerrit.extensions.client
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 package|;
