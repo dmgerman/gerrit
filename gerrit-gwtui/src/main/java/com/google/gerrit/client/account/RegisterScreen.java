@@ -166,13 +166,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|Account
-operator|.
-name|FieldName
+name|AccountFieldName
 import|;
 end_import
 
@@ -524,7 +522,7 @@ argument_list|()
 operator|.
 name|canEdit
 argument_list|(
-name|FieldName
+name|AccountFieldName
 operator|.
 name|USER_NAME
 argument_list|)
