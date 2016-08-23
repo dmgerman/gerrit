@@ -589,13 +589,6 @@ name|Modes
 operator|.
 name|I
 operator|.
-name|jade
-argument_list|()
-block|,
-name|Modes
-operator|.
-name|I
-operator|.
 name|javascript
 argument_list|()
 block|,
@@ -779,6 +772,13 @@ operator|.
 name|I
 operator|.
 name|protobuf
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
+name|pug
 argument_list|()
 block|,
 name|Modes
