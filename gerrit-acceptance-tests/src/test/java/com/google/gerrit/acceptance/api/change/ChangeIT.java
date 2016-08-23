@@ -1120,20 +1120,6 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
-name|NoteDbMode
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testutil
-operator|.
 name|TestTimeUtil
 import|;
 end_import
@@ -7788,38 +7774,13 @@ operator|.
 name|votes
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|NoteDbMode
-operator|.
-name|readWrite
-argument_list|()
-condition|)
-block|{
-comment|// When NoteDb is enabled each reviewer is explicitly recorded in the
-comment|// NoteDb and this record stays even when all votes of that user have been
-comment|// deleted, hence there is no dummy 0 approval left when a vote is
-comment|// deleted.
+comment|// Dummy 0 approval on the change to block vote copying to this patch set.
 name|assertThat
 argument_list|(
 name|m
 argument_list|)
 operator|.
-name|isEmpty
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// When NoteDb is disabled there is a dummy 0 approval on the change so
-comment|// that the user is still returned as CC when all votes of that user have
-comment|// been deleted.
-name|assertThat
-argument_list|(
-name|m
-argument_list|)
-operator|.
-name|containsEntry
+name|containsExactly
 argument_list|(
 literal|"Code-Review"
 argument_list|,
@@ -7834,7 +7795,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|ChangeInfo
 name|c
 init|=
