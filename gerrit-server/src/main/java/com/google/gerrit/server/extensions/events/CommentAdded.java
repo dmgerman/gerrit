@@ -653,12 +653,6 @@ name|CommentAddedListener
 operator|.
 name|Event
 block|{
-DECL|field|author
-specifier|private
-specifier|final
-name|AccountInfo
-name|author
-decl_stmt|;
 DECL|field|comment
 specifier|private
 specifier|final
@@ -739,12 +733,6 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|author
-operator|=
-name|author
-expr_stmt|;
-name|this
-operator|.
 name|comment
 operator|=
 name|comment
@@ -761,18 +749,6 @@ name|oldApprovals
 operator|=
 name|oldApprovals
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getAuthor ()
-specifier|public
-name|AccountInfo
-name|getAuthor
-parameter_list|()
-block|{
-return|return
-name|author
-return|;
 block|}
 annotation|@
 name|Override

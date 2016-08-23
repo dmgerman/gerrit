@@ -84,22 +84,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|AccountInfo
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -126,13 +110,6 @@ name|Event
 extends|extends
 name|ChangeEvent
 block|{
-annotation|@
-name|Deprecated
-DECL|method|getEditor ()
-name|AccountInfo
-name|getEditor
-parameter_list|()
-function_decl|;
 DECL|method|getHashtags ()
 name|Collection
 argument_list|<

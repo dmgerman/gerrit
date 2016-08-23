@@ -82,22 +82,6 @@ name|ExtensionPoint
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|AccountInfo
-import|;
-end_import
-
 begin_comment
 comment|/** Notified whenever a Draft is published. */
 end_comment
@@ -115,15 +99,7 @@ interface|interface
 name|Event
 extends|extends
 name|RevisionEvent
-block|{
-annotation|@
-name|Deprecated
-DECL|method|getPublisher ()
-name|AccountInfo
-name|getPublisher
-parameter_list|()
-function_decl|;
-block|}
+block|{   }
 DECL|method|onDraftPublished (Event event)
 name|void
 name|onDraftPublished

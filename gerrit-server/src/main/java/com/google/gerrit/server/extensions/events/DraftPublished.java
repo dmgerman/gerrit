@@ -548,12 +548,6 @@ name|DraftPublishedListener
 operator|.
 name|Event
 block|{
-DECL|field|publisher
-specifier|private
-specifier|final
-name|AccountInfo
-name|publisher
-decl_stmt|;
 DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo publisher, Timestamp when)
 name|Event
 parameter_list|(
@@ -585,24 +579,6 @@ operator|.
 name|ALL
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|publisher
-operator|=
-name|publisher
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getPublisher ()
-specifier|public
-name|AccountInfo
-name|getPublisher
-parameter_list|()
-block|{
-return|return
-name|publisher
-return|;
 block|}
 block|}
 block|}

@@ -571,12 +571,6 @@ name|RevisionCreatedListener
 operator|.
 name|Event
 block|{
-DECL|field|uploader
-specifier|private
-specifier|final
-name|AccountInfo
-name|uploader
-decl_stmt|;
 DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo uploader, Timestamp when, NotifyHandling notify)
 name|Event
 parameter_list|(
@@ -609,24 +603,6 @@ argument_list|,
 name|notify
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|uploader
-operator|=
-name|uploader
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getUploader ()
-specifier|public
-name|AccountInfo
-name|getUploader
-parameter_list|()
-block|{
-return|return
-name|uploader
-return|;
 block|}
 block|}
 block|}

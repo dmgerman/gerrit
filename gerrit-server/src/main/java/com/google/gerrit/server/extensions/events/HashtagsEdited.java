@@ -546,11 +546,6 @@ name|HashtagsEditedListener
 operator|.
 name|Event
 block|{
-DECL|field|editor
-specifier|private
-name|AccountInfo
-name|editor
-decl_stmt|;
 DECL|field|updatedHashtags
 specifier|private
 name|Collection
@@ -621,12 +616,6 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|editor
-operator|=
-name|editor
-expr_stmt|;
-name|this
-operator|.
 name|updatedHashtags
 operator|=
 name|updated
@@ -643,18 +632,6 @@ name|removedHashtags
 operator|=
 name|removed
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getEditor ()
-specifier|public
-name|AccountInfo
-name|getEditor
-parameter_list|()
-block|{
-return|return
-name|editor
-return|;
 block|}
 annotation|@
 name|Override

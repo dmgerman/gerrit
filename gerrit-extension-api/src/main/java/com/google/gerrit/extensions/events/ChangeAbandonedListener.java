@@ -82,22 +82,6 @@ name|ExtensionPoint
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|AccountInfo
-import|;
-end_import
-
 begin_comment
 comment|/** Notified whenever a Change is abandoned. */
 end_comment
@@ -116,13 +100,6 @@ name|Event
 extends|extends
 name|RevisionEvent
 block|{
-annotation|@
-name|Deprecated
-DECL|method|getAbandoner ()
-name|AccountInfo
-name|getAbandoner
-parameter_list|()
-function_decl|;
 DECL|method|getReason ()
 name|String
 name|getReason

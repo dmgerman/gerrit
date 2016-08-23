@@ -82,22 +82,6 @@ name|ExtensionPoint
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|AccountInfo
-import|;
-end_import
-
 begin_comment
 comment|/** Notified whenever a Change Topic is changed. */
 end_comment
@@ -116,13 +100,6 @@ name|Event
 extends|extends
 name|ChangeEvent
 block|{
-annotation|@
-name|Deprecated
-DECL|method|getEditor ()
-name|AccountInfo
-name|getEditor
-parameter_list|()
-function_decl|;
 DECL|method|getOldTopic ()
 name|String
 name|getOldTopic

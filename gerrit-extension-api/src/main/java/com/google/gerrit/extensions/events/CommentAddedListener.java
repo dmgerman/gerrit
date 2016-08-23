@@ -94,22 +94,6 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|AccountInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
 name|ApprovalInfo
 import|;
 end_import
@@ -142,13 +126,6 @@ name|Event
 extends|extends
 name|RevisionEvent
 block|{
-annotation|@
-name|Deprecated
-DECL|method|getAuthor ()
-name|AccountInfo
-name|getAuthor
-parameter_list|()
-function_decl|;
 DECL|method|getComment ()
 name|String
 name|getComment
