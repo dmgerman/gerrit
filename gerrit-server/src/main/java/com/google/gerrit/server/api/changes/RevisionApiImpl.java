@@ -2252,10 +2252,6 @@ parameter_list|(
 name|String
 name|path
 parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-try|try
 block|{
 return|return
 name|fileApi
@@ -2277,23 +2273,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RestApiException
-argument_list|(
-literal|"Cannot retrieve file"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 annotation|@
 name|Override
