@@ -6883,10 +6883,10 @@ name|get
 argument_list|()
 operator|.
 name|reviewers
+argument_list|)
 operator|.
 name|isEmpty
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
