@@ -843,6 +843,26 @@ name|getAgreementUrl
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|info
+operator|.
+name|autoVerifyGroup
+operator|.
+name|name
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|ca
+operator|.
+name|getAutoVerify
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Signing the same agreement again has no effect
 name|gApi
 operator|.

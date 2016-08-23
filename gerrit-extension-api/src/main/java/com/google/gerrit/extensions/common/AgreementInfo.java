@@ -87,6 +87,11 @@ specifier|public
 name|String
 name|url
 decl_stmt|;
+DECL|field|autoVerifyGroup
+specifier|public
+name|GroupInfo
+name|autoVerifyGroup
+decl_stmt|;
 block|}
 end_class
 
