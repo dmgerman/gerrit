@@ -2425,7 +2425,7 @@ parameter_list|)
 block|{
 name|Throwables
 operator|.
-name|propagateIfPossible
+name|throwIfUnchecked
 argument_list|(
 name|e
 argument_list|)
@@ -3487,7 +3487,7 @@ parameter_list|)
 block|{
 name|Throwables
 operator|.
-name|propagateIfPossible
+name|throwIfInstanceOf
 argument_list|(
 name|e
 argument_list|,
@@ -3935,7 +3935,7 @@ parameter_list|)
 block|{
 name|Throwables
 operator|.
-name|propagateIfInstanceOf
+name|throwIfInstanceOf
 argument_list|(
 name|e
 operator|.
@@ -3949,7 +3949,7 @@ argument_list|)
 expr_stmt|;
 name|Throwables
 operator|.
-name|propagateIfInstanceOf
+name|throwIfInstanceOf
 argument_list|(
 name|e
 operator|.

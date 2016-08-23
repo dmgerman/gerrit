@@ -346,7 +346,7 @@ parameter_list|)
 block|{
 name|Throwables
 operator|.
-name|propagateIfPossible
+name|throwIfUnchecked
 argument_list|(
 name|e
 operator|.
