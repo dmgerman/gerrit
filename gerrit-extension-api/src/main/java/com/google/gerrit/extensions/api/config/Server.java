@@ -110,6 +110,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|ServerInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|NotImplementedException
@@ -142,6 +158,13 @@ comment|/**    * @return Version of server.    */
 DECL|method|getVersion ()
 name|String
 name|getVersion
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|getInfo ()
+name|ServerInfo
+name|getInfo
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -193,6 +216,22 @@ DECL|method|getVersion ()
 specifier|public
 name|String
 name|getVersion
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getInfo ()
+specifier|public
+name|ServerInfo
+name|getInfo
 parameter_list|()
 throws|throws
 name|RestApiException
