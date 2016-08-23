@@ -590,22 +590,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|ssh
-operator|.
-name|SshInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -874,11 +858,6 @@ name|ChangeControl
 name|origCtl
 decl_stmt|;
 comment|// Fields exposed as setters.
-DECL|field|sshInfo
-specifier|private
-name|SshInfo
-name|sshInfo
-decl_stmt|;
 DECL|field|message
 specifier|private
 name|String
@@ -1117,25 +1096,6 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setSshInfo (SshInfo sshInfo)
-specifier|public
-name|PatchSetInserter
-name|setSshInfo
-parameter_list|(
-name|SshInfo
-name|sshInfo
-parameter_list|)
-block|{
-name|this
-operator|.
-name|sshInfo
-operator|=
-name|sshInfo
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
 DECL|method|setValidatePolicy (CommitValidators.Policy validate)
 specifier|public
 name|PatchSetInserter
@@ -1341,9 +1301,6 @@ name|IOException
 throws|,
 name|OrmException
 block|{
-name|init
-argument_list|()
-expr_stmt|;
 name|validate
 argument_list|(
 name|ctx
@@ -1893,27 +1850,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|init ()
-specifier|private
-name|void
-name|init
-parameter_list|()
-block|{
-if|if
-condition|(
-name|sshInfo
-operator|==
-literal|null
-condition|)
-block|{
-name|sshInfo
-operator|=
-operator|new
-name|NoSshInfo
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 DECL|method|validate (RepoContext ctx)
 specifier|private
 name|void
@@ -1943,7 +1879,9 @@ operator|.
 name|getRefControl
 argument_list|()
 argument_list|,
-name|sshInfo
+operator|new
+name|NoSshInfo
+argument_list|()
 argument_list|,
 name|ctx
 operator|.
