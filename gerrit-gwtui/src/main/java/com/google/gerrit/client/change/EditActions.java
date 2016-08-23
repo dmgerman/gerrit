@@ -158,13 +158,31 @@ name|JavaScriptObject
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|Button
+import|;
+end_import
+
 begin_class
 DECL|class|EditActions
 specifier|public
 class|class
 name|EditActions
 block|{
-DECL|method|deleteEdit (Change.Id id)
+DECL|method|deleteEdit (Change.Id id, Button... editButtons)
 specifier|static
 name|void
 name|deleteEdit
@@ -173,6 +191,10 @@ name|Change
 operator|.
 name|Id
 name|id
+parameter_list|,
+name|Button
+modifier|...
+name|editButtons
 parameter_list|)
 block|{
 name|ChangeApi
@@ -187,11 +209,13 @@ argument_list|,
 name|cs
 argument_list|(
 name|id
+argument_list|,
+name|editButtons
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|publishEdit (Change.Id id)
+DECL|method|publishEdit (Change.Id id, Button... editButtons)
 specifier|static
 name|void
 name|publishEdit
@@ -200,6 +224,10 @@ name|Change
 operator|.
 name|Id
 name|id
+parameter_list|,
+name|Button
+modifier|...
+name|editButtons
 parameter_list|)
 block|{
 name|ChangeApi
@@ -214,11 +242,13 @@ argument_list|,
 name|cs
 argument_list|(
 name|id
+argument_list|,
+name|editButtons
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|rebaseEdit (Change.Id id)
+DECL|method|rebaseEdit (Change.Id id, Button... editButtons)
 specifier|static
 name|void
 name|rebaseEdit
@@ -227,6 +257,10 @@ name|Change
 operator|.
 name|Id
 name|id
+parameter_list|,
+name|Button
+modifier|...
+name|editButtons
 parameter_list|)
 block|{
 name|ChangeApi
@@ -241,11 +275,13 @@ argument_list|,
 name|cs
 argument_list|(
 name|id
+argument_list|,
+name|editButtons
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cs ( final Change.Id id)
+DECL|method|cs ( final Change.Id id, final Button... editButtons)
 specifier|public
 specifier|static
 name|GerritCallback
@@ -259,8 +295,20 @@ name|Change
 operator|.
 name|Id
 name|id
+parameter_list|,
+specifier|final
+name|Button
+modifier|...
+name|editButtons
 parameter_list|)
 block|{
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|,
+name|editButtons
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|GerritCallback
@@ -302,6 +350,13 @@ name|Throwable
 name|err
 parameter_list|)
 block|{
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|,
+name|editButtons
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|SubmitFailureDialog
@@ -350,6 +405,45 @@ block|}
 block|}
 block|}
 return|;
+block|}
+DECL|method|setEnabled (boolean enabled, Button... editButtons)
+specifier|private
+specifier|static
+name|void
+name|setEnabled
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|,
+name|Button
+modifier|...
+name|editButtons
+parameter_list|)
+block|{
+if|if
+condition|(
+name|editButtons
+operator|!=
+literal|null
+condition|)
+block|{
+for|for
+control|(
+name|Button
+name|b
+range|:
+name|editButtons
+control|)
+block|{
+name|b
+operator|.
+name|setEnabled
+argument_list|(
+name|enabled
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 end_class
