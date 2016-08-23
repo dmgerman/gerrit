@@ -3944,7 +3944,11 @@ argument_list|,
 name|tipCommit
 argument_list|)
 argument_list|,
-literal|false
+name|PatchLineComment
+operator|.
+name|Status
+operator|.
+name|PUBLISHED
 argument_list|)
 expr_stmt|;
 name|Map

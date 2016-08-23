@@ -1431,7 +1431,11 @@ argument_list|()
 argument_list|,
 name|noteMap
 argument_list|,
-literal|true
+name|PatchLineComment
+operator|.
+name|Status
+operator|.
+name|DRAFT
 argument_list|)
 return|;
 block|}
