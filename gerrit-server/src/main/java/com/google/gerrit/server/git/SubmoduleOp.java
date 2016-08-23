@@ -2870,7 +2870,7 @@ operator|.
 name|getFullMessage
 argument_list|()
 operator|+
-literal|"\n\n*submodules:\n"
+literal|"\n\n* submodules:\n"
 operator|+
 name|msgbuf
 operator|.
