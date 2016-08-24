@@ -1493,6 +1493,31 @@ name|DEFAULT
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|anonymousAccess ()
+specifier|public
+name|void
+name|anonymousAccess
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|setApiUserAnonymous
+argument_list|()
+expr_stmt|;
+name|gApi
+operator|.
+name|config
+argument_list|()
+operator|.
+name|server
+argument_list|()
+operator|.
+name|getInfo
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
