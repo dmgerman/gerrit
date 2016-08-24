@@ -108,7 +108,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|ScreenLoadCallback
+name|Natives
 import|;
 end_import
 
@@ -124,7 +124,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|Natives
+name|ScreenLoadCallback
 import|;
 end_import
 
