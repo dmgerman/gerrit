@@ -311,10 +311,9 @@ operator|.
 name|Builder
 name|builder
 init|=
-operator|new
 name|SoyFileSet
 operator|.
-name|Builder
+name|builder
 argument_list|()
 decl_stmt|;
 for|for
