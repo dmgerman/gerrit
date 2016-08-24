@@ -1495,6 +1495,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"auth.contributorAgreements"
+argument_list|,
+name|value
+operator|=
+literal|"true"
+argument_list|)
 DECL|method|anonymousAccess ()
 specifier|public
 name|void
@@ -1503,6 +1514,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|configureContributorAgreement
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|setApiUserAnonymous
 argument_list|()
 expr_stmt|;
