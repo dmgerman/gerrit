@@ -5945,12 +5945,9 @@ return|return
 literal|null
 return|;
 block|}
-else|else
-block|{
 throw|throw
 name|e
 throw|;
-block|}
 block|}
 try|try
 init|(

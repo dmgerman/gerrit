@@ -284,22 +284,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|template
-operator|.
-name|soy
-operator|.
-name|tofu
-operator|.
-name|SoyTofu
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -2424,11 +2408,7 @@ name|soyContext
 operator|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// TODO(wyatta): set data here.
@@ -2656,8 +2636,6 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
-throws|throws
-name|EmailException
 block|{
 return|return
 name|args
