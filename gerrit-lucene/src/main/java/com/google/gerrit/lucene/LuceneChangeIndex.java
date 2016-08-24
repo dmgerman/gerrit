@@ -3670,16 +3670,6 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|String
-name|idFieldName
-init|=
-name|ChangeField
-operator|.
-name|LEGACY_ID
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|Document
