@@ -306,7 +306,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getWithHeader (String endPoint, Header header)
-specifier|private
+specifier|public
 name|RestResponse
 name|getWithHeader
 parameter_list|(

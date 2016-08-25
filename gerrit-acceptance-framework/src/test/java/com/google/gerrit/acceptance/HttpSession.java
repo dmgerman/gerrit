@@ -235,8 +235,18 @@ name|httpPassword
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|url ()
+specifier|public
+name|String
+name|url
+parameter_list|()
+block|{
+return|return
+name|url
+return|;
+block|}
 DECL|method|execute (Request request)
-specifier|protected
+specifier|public
 name|RestResponse
 name|execute
 parameter_list|(
