@@ -689,18 +689,6 @@ name|DataResource
 name|idl
 parameter_list|()
 function_decl|;
-DECL|method|jade ()
-annotation|@
-name|Source
-argument_list|(
-literal|"jade.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-name|DataResource
-name|jade
-parameter_list|()
-function_decl|;
 DECL|method|javascript ()
 annotation|@
 name|Source
@@ -1023,6 +1011,18 @@ annotation|@
 name|DoNotEmbed
 name|DataResource
 name|protobuf
+parameter_list|()
+function_decl|;
+DECL|method|pug ()
+annotation|@
+name|Source
+argument_list|(
+literal|"pug.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|pug
 parameter_list|()
 function_decl|;
 DECL|method|puppet ()
