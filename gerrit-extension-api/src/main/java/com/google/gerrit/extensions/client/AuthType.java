@@ -72,11 +72,11 @@ specifier|public
 enum|enum
 name|AuthType
 block|{
-comment|/** Login relies upon the OpenID standard: {@link "http://openid.net/"} */
+comment|/** Login relies upon the<a href="http://openid.net/">OpenID standard</a> */
 DECL|enumConstant|OPENID
 name|OPENID
 block|,
-comment|/** Login relies upon the OpenID standard: {@link "http://openid.net/"} in Single Sign On mode */
+comment|/** Login relies upon the<a href="http://openid.net/">OpenID standard</a> in Single Sign On mode */
 DECL|enumConstant|OPENID_SSO
 name|OPENID_SSO
 block|,
@@ -88,7 +88,7 @@ comment|/**    * Login relies upon the container/web server security, but also u
 DECL|enumConstant|HTTP_LDAP
 name|HTTP_LDAP
 block|,
-comment|/**    * Login via client SSL certificate.    *<p>    * This authentication type is actually kind of SSO. Gerrit will configure    * Jetty's SSL channel to request client's SSL certificate. For this    * authentication to work a Gerrit administrator has to import the root    * certificate of the trust chain used to issue the client's certificate    * into the<review-site>/etc/keystore.    *<p>    * After the authentication is done Gerrit will obtain basic user    * registration (name and email) from LDAP, and some group memberships.    * Therefore, the "_LDAP" suffix in the name of this authentication type.    */
+comment|/**    * Login via client SSL certificate.    *<p>    * This authentication type is actually kind of SSO. Gerrit will configure    * Jetty's SSL channel to request client's SSL certificate. For this    * authentication to work a Gerrit administrator has to import the root    * certificate of the trust chain used to issue the client's certificate    * into the&lt;review-site&gt;/etc/keystore.    *<p>    * After the authentication is done Gerrit will obtain basic user    * registration (name and email) from LDAP, and some group memberships.    * Therefore, the "_LDAP" suffix in the name of this authentication type.    */
 DECL|enumConstant|CLIENT_SSL_CERT_LDAP
 name|CLIENT_SSL_CERT_LDAP
 block|,
