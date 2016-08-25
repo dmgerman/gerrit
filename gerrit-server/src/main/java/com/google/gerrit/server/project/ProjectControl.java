@@ -2340,7 +2340,7 @@ name|msg
 operator|.
 name|append
 argument_list|(
-literal|" A Contributor Agreement must be completed before uploading"
+literal|"A Contributor Agreement must be completed before uploading"
 argument_list|)
 expr_stmt|;
 if|if
