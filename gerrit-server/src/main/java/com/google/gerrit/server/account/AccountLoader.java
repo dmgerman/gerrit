@@ -610,7 +610,7 @@ parameter_list|)
 block|{
 name|Throwables
 operator|.
-name|throwIfInstanceOf
+name|propagateIfPossible
 argument_list|(
 name|e
 operator|.

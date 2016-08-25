@@ -652,7 +652,7 @@ comment|// If there was an error computing the result, carry it
 comment|// up to the caller so the cache knows this key is invalid.
 name|Throwables
 operator|.
-name|throwIfInstanceOf
+name|propagateIfInstanceOf
 argument_list|(
 name|e
 operator|.

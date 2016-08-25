@@ -2642,7 +2642,7 @@ condition|)
 block|{
 name|Throwables
 operator|.
-name|throwIfInstanceOf
+name|propagateIfPossible
 argument_list|(
 name|e
 argument_list|,
