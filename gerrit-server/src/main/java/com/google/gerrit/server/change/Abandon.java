@@ -937,6 +937,9 @@ operator|new
 name|Op
 argument_list|(
 name|control
+operator|.
+name|getUser
+argument_list|()
 argument_list|,
 name|msgTxt
 argument_list|,
@@ -1132,6 +1135,9 @@ operator|new
 name|Op
 argument_list|(
 name|control
+operator|.
+name|getUser
+argument_list|()
 argument_list|,
 name|msgTxt
 argument_list|,
@@ -1239,12 +1245,6 @@ name|BatchUpdate
 operator|.
 name|Op
 block|{
-DECL|field|control
-specifier|private
-specifier|final
-name|ChangeControl
-name|control
-decl_stmt|;
 DECL|field|msgTxt
 specifier|private
 specifier|final
@@ -1278,12 +1278,12 @@ specifier|private
 name|ChangeMessage
 name|message
 decl_stmt|;
-DECL|method|Op (ChangeControl control, String msgTxt, NotifyHandling notifyHandling)
+DECL|method|Op (CurrentUser user, String msgTxt, NotifyHandling notifyHandling)
 specifier|private
 name|Op
 parameter_list|(
-name|ChangeControl
-name|control
+name|CurrentUser
+name|user
 parameter_list|,
 name|String
 name|msgTxt
@@ -1294,12 +1294,6 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|control
-operator|=
-name|control
-expr_stmt|;
-name|this
-operator|.
 name|msgTxt
 operator|=
 name|msgTxt
@@ -1310,14 +1304,6 @@ name|notifyHandling
 operator|=
 name|notifyHandling
 expr_stmt|;
-name|CurrentUser
-name|user
-init|=
-name|control
-operator|.
-name|getUser
-argument_list|()
-decl_stmt|;
 name|account
 operator|=
 name|user
