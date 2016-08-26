@@ -1001,6 +1001,13 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Explicitly reset the user to force a new request context
+name|setApiUser
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
+comment|// Verify that the agreement was signed
 name|result
 operator|=
 name|gApi
