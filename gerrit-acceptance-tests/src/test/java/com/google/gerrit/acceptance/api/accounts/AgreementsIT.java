@@ -115,6 +115,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1580,10 +1592,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|createChangeWithoutCLA ()
+DECL|method|createChangeRespectsCLA ()
 specifier|public
 name|void
-name|createChangeWithoutCLA
+name|createChangeRespectsCLA
 parameter_list|()
 throws|throws
 name|Exception
@@ -1627,22 +1639,69 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
-name|exception
+try|try
+block|{
+name|gApi
 operator|.
-name|expect
+name|changes
+argument_list|()
+operator|.
+name|create
 argument_list|(
-name|AuthException
-operator|.
-name|class
+name|newChangeInput
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|exception
+name|fail
+argument_list|(
+literal|"Expected AuthException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AuthException
+name|e
+parameter_list|)
+block|{
+name|assertThat
+argument_list|(
+name|e
 operator|.
-name|expectMessage
+name|getMessage
+argument_list|()
+argument_list|)
+operator|.
+name|contains
 argument_list|(
 literal|"A Contributor Agreement must be completed"
 argument_list|)
 expr_stmt|;
+block|}
+comment|// Sign the agreement
+name|gApi
+operator|.
+name|accounts
+argument_list|()
+operator|.
+name|self
+argument_list|()
+operator|.
+name|signAgreement
+argument_list|(
+name|ca
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Explicitly reset the user to force a new request context
+name|setApiUser
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
+comment|// Create a change succeeds after signing the agreement
 name|gApi
 operator|.
 name|changes
