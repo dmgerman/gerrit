@@ -97,6 +97,25 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|PatchListNotAvailableException (String message, Throwable cause)
+specifier|public
+name|PatchListNotAvailableException
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|,
+name|cause
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|PatchListNotAvailableException (Throwable cause)
 specifier|public
 name|PatchListNotAvailableException
