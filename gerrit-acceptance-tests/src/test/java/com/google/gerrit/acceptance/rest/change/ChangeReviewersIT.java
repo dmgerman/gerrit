@@ -3876,7 +3876,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-literal|"Patch Set 1: Code-Review+2\n"
+literal|"Patch Set 1: Code-Review+2"
 argument_list|)
 expr_stmt|;
 block|}

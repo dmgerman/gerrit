@@ -420,9 +420,9 @@ name|EmailException
 block|{
 name|appendText
 argument_list|(
-name|velocifyFile
+name|textTemplate
 argument_list|(
-literal|"Merged.vm"
+literal|"Merged"
 argument_list|)
 argument_list|)
 expr_stmt|;

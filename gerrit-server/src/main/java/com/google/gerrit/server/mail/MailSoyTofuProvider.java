@@ -271,8 +271,26 @@ index|[]
 name|TEMPLATES
 init|=
 block|{
+literal|"Abandoned.soy"
+block|,
+literal|"Comment.soy"
+block|,
+literal|"CommentFooter.soy"
+block|,
+literal|"DeleteReviewer.soy"
+block|,
+literal|"DeleteVote.soy"
+block|,
 literal|"Footer.soy"
-block|,   }
+block|,
+literal|"Merged.soy"
+block|,
+literal|"ReplacePatchSet.soy"
+block|,
+literal|"Restored.soy"
+block|,
+literal|"Reverted.soy"
+block|}
 decl_stmt|;
 DECL|field|site
 specifier|private

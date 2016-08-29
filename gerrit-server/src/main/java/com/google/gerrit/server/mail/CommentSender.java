@@ -758,9 +758,9 @@ name|EmailException
 block|{
 name|appendText
 argument_list|(
-name|velocifyFile
+name|textTemplate
 argument_list|(
-literal|"Comment.vm"
+literal|"Comment"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -777,9 +777,9 @@ name|EmailException
 block|{
 name|appendText
 argument_list|(
-name|velocifyFile
+name|textTemplate
 argument_list|(
-literal|"CommentFooter.vm"
+literal|"CommentFooter"
 argument_list|)
 argument_list|)
 expr_stmt|;
