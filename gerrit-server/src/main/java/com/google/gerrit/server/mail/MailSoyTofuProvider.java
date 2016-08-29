@@ -271,7 +271,7 @@ index|[]
 name|TEMPLATES
 init|=
 block|{
-literal|"footer.soy"
+literal|"Footer.soy"
 block|,   }
 decl_stmt|;
 DECL|field|site
