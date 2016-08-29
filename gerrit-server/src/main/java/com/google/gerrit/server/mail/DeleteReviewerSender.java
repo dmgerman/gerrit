@@ -478,6 +478,30 @@ return|return
 name|names
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|setupSoyContext ()
+specifier|protected
+name|void
+name|setupSoyContext
+parameter_list|()
+block|{
+name|super
+operator|.
+name|setupSoyContext
+argument_list|()
+expr_stmt|;
+name|soyContextEmailData
+operator|.
+name|put
+argument_list|(
+literal|"reviewerNames"
+argument_list|,
+name|getReviewerNames
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

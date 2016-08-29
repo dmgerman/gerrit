@@ -842,6 +842,30 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|setupSoyContext ()
+specifier|protected
+name|void
+name|setupSoyContext
+parameter_list|()
+block|{
+name|super
+operator|.
+name|setupSoyContext
+argument_list|()
+expr_stmt|;
+name|soyContextEmailData
+operator|.
+name|put
+argument_list|(
+literal|"approvals"
+argument_list|,
+name|getApprovals
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
