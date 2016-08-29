@@ -155,6 +155,16 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|remove (DeleteReviewerInput input)
+name|void
+name|remove
+parameter_list|(
+name|DeleteReviewerInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
 class|class
@@ -228,6 +238,25 @@ specifier|public
 name|void
 name|remove
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|remove (DeleteReviewerInput input)
+specifier|public
+name|void
+name|remove
+parameter_list|(
+name|DeleteReviewerInput
+name|input
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
