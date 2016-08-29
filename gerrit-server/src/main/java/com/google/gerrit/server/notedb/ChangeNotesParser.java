@@ -1135,8 +1135,8 @@ decl_stmt|;
 annotation|@
 name|AutoValue
 DECL|class|ApprovalKey
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|ApprovalKey
 block|{
