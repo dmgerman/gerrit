@@ -361,7 +361,7 @@ argument_list|,
 operator|new
 name|Description
 argument_list|(
-literal|"Time spenting in the 'Counting...' phase"
+literal|"Time spent in the 'Counting...' phase"
 argument_list|)
 operator|.
 name|setCumulative
@@ -388,7 +388,7 @@ argument_list|,
 operator|new
 name|Description
 argument_list|(
-literal|"Time spenting in the 'Compressing...' phase"
+literal|"Time spent in the 'Compressing...' phase"
 argument_list|)
 operator|.
 name|setCumulative
@@ -415,7 +415,7 @@ argument_list|,
 operator|new
 name|Description
 argument_list|(
-literal|"Time spenting transferring bytes to client"
+literal|"Time spent transferring bytes to client"
 argument_list|)
 operator|.
 name|setCumulative
