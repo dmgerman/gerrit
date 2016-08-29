@@ -367,7 +367,7 @@ argument_list|>
 name|field3
 parameter_list|)
 function_decl|;
-comment|/** Metric statistical distribution of values. */
+comment|/** Metric recording statistical distribution of values. */
 DECL|method|newHistogram (String name, Description desc)
 specifier|public
 specifier|abstract
