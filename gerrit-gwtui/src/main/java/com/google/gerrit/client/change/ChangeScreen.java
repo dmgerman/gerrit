@@ -6381,6 +6381,17 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
+name|group
+operator|.
+name|done
+argument_list|()
+expr_stmt|;
+name|group
+operator|=
+operator|new
+name|CallbackGroup
+argument_list|()
+expr_stmt|;
 name|loadCommit
 argument_list|(
 name|rev
@@ -6928,7 +6939,15 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{               }
+block|{
+name|files
+operator|.
+name|showError
+argument_list|(
+name|caught
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 argument_list|)
 argument_list|)

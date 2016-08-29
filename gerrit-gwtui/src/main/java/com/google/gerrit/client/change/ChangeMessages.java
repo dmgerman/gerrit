@@ -197,6 +197,14 @@ name|int
 name|patchSet
 parameter_list|)
 function_decl|;
+DECL|method|failedToLoadFileList (String error)
+name|String
+name|failedToLoadFileList
+parameter_list|(
+name|String
+name|error
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
