@@ -5397,8 +5397,12 @@ operator|.
 name|reviewers
 argument_list|()
 operator|.
-name|all
-argument_list|()
+name|byState
+argument_list|(
+name|ReviewerStateInternal
+operator|.
+name|REVIEWER
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
