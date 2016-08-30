@@ -273,6 +273,12 @@ init|=
 block|{
 literal|"Abandoned.soy"
 block|,
+literal|"AddKey.soy"
+block|,
+literal|"ChangeSubject.soy"
+block|,
+literal|"ChangeFooter.soy"
+block|,
 literal|"Comment.soy"
 block|,
 literal|"CommentFooter.soy"
@@ -284,6 +290,10 @@ block|,
 literal|"Footer.soy"
 block|,
 literal|"Merged.soy"
+block|,
+literal|"NewChange.soy"
+block|,
+literal|"RegisterNewEmail.soy"
 block|,
 literal|"ReplacePatchSet.soy"
 block|,

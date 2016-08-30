@@ -377,9 +377,9 @@ name|EmailException
 block|{
 name|appendText
 argument_list|(
-name|velocifyFile
+name|textTemplate
 argument_list|(
-literal|"NewChange.vm"
+literal|"NewChange"
 argument_list|)
 argument_list|)
 expr_stmt|;
