@@ -624,7 +624,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
+name|HashMap
 import|;
 end_import
 
@@ -634,7 +634,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|HashSet
 import|;
 end_import
 
