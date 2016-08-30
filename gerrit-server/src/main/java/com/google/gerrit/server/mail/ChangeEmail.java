@@ -2805,6 +2805,7 @@ block|}
 DECL|field|HEAP_EST_SIZE
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|HEAP_EST_SIZE
 init|=
