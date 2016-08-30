@@ -9813,7 +9813,9 @@ name|ref
 argument_list|)
 operator|.
 name|canSubmit
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 condition|)
 block|{
 name|reject
