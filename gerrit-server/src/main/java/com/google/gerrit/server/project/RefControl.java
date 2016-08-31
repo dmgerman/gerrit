@@ -969,11 +969,14 @@ argument_list|()
 return|;
 block|}
 comment|/** @return true if this user can submit patch sets to this ref */
-DECL|method|canSubmit ()
+DECL|method|canSubmit (boolean isChangeOwner)
 specifier|public
 name|boolean
 name|canSubmit
-parameter_list|()
+parameter_list|(
+name|boolean
+name|isChangeOwner
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -1005,6 +1008,8 @@ argument_list|(
 name|Permission
 operator|.
 name|SUBMIT
+argument_list|,
+name|isChangeOwner
 argument_list|)
 operator|&&
 name|canWrite
@@ -2605,9 +2610,31 @@ name|permissionName
 parameter_list|)
 block|{
 return|return
+name|canPerform
+argument_list|(
+name|permissionName
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+DECL|method|canPerform (String permissionName, boolean isChangeOwner)
+name|boolean
+name|canPerform
+parameter_list|(
+name|String
+name|permissionName
+parameter_list|,
+name|boolean
+name|isChangeOwner
+parameter_list|)
+block|{
+return|return
 name|doCanPerform
 argument_list|(
 name|permissionName
+argument_list|,
+name|isChangeOwner
 argument_list|,
 literal|false
 argument_list|)
@@ -2629,17 +2656,22 @@ name|doCanPerform
 argument_list|(
 name|permissionName
 argument_list|,
+literal|false
+argument_list|,
 literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|doCanPerform (String permissionName, boolean blockOnly)
+DECL|method|doCanPerform (String permissionName, boolean isChangeOwner, boolean blockOnly)
 specifier|private
 name|boolean
 name|doCanPerform
 parameter_list|(
 name|String
 name|permissionName
+parameter_list|,
+name|boolean
+name|isChangeOwner
 parameter_list|,
 name|boolean
 name|blockOnly
@@ -2654,6 +2686,8 @@ init|=
 name|access
 argument_list|(
 name|permissionName
+argument_list|,
+name|isChangeOwner
 argument_list|)
 decl_stmt|;
 name|List

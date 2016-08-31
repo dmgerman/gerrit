@@ -1536,7 +1536,10 @@ name|getRefControl
 argument_list|()
 operator|.
 name|canSubmit
+argument_list|(
+name|isOwner
 argument_list|()
+argument_list|)
 operator|||
 name|getRefControl
 argument_list|()
@@ -2310,7 +2313,10 @@ name|getRefControl
 argument_list|()
 operator|.
 name|canSubmit
+argument_list|(
+name|isOwner
 argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|canSubmitAs ()
