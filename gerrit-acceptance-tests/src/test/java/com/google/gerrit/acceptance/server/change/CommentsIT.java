@@ -4531,6 +4531,8 @@ operator|+
 literal|"typo: content\n"
 operator|+
 literal|"\n"
+operator|+
+literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}

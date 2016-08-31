@@ -298,9 +298,9 @@ name|EmailException
 block|{
 name|appendText
 argument_list|(
-name|velocifyFile
+name|textTemplate
 argument_list|(
-literal|"DeleteVote.vm"
+literal|"DeleteVote"
 argument_list|)
 argument_list|)
 expr_stmt|;

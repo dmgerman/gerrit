@@ -298,9 +298,9 @@ name|EmailException
 block|{
 name|appendText
 argument_list|(
-name|velocifyFile
+name|textTemplate
 argument_list|(
-literal|"Restored.vm"
+literal|"Restored"
 argument_list|)
 argument_list|)
 expr_stmt|;

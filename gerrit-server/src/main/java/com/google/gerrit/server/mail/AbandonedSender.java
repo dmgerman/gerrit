@@ -305,9 +305,9 @@ name|EmailException
 block|{
 name|appendText
 argument_list|(
-name|velocifyFile
+name|textTemplate
 argument_list|(
-literal|"Abandoned.vm"
+literal|"Abandoned"
 argument_list|)
 argument_list|)
 expr_stmt|;
