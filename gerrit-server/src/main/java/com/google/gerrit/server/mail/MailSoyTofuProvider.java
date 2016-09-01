@@ -275,6 +275,8 @@ literal|"Abandoned.soy"
 block|,
 literal|"AddKey.soy"
 block|,
+literal|"AddKeyHtml.soy"
+block|,
 literal|"ChangeSubject.soy"
 block|,
 literal|"ChangeFooter.soy"
