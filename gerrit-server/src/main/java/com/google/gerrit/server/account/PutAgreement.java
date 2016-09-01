@@ -202,6 +202,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -557,7 +573,10 @@ annotation|@
 name|Override
 DECL|method|apply (AccountResource resource, AgreementInput input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|AccountResource
@@ -763,7 +782,12 @@ name|agreementName
 argument_list|)
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|agreementName
+argument_list|)
 return|;
 block|}
 block|}

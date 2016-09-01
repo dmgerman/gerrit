@@ -80,6 +80,24 @@ name|api
 operator|.
 name|projects
 operator|.
+name|TagInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|projects
+operator|.
 name|TagInput
 import|;
 end_import
@@ -133,7 +151,7 @@ annotation|@
 name|Override
 DECL|method|apply (TagResource resource, TagInput input)
 specifier|public
-name|Object
+name|TagInfo
 name|apply
 parameter_list|(
 name|TagResource
