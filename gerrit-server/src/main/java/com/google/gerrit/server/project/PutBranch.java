@@ -80,6 +80,24 @@ name|api
 operator|.
 name|projects
 operator|.
+name|BranchInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|projects
+operator|.
 name|BranchInput
 import|;
 end_import
@@ -147,7 +165,7 @@ annotation|@
 name|Override
 DECL|method|apply (BranchResource rsrc, BranchInput input)
 specifier|public
-name|Object
+name|BranchInfo
 name|apply
 parameter_list|(
 name|BranchResource
