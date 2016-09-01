@@ -289,6 +289,8 @@ literal|"DeleteVote.soy"
 block|,
 literal|"Footer.soy"
 block|,
+literal|"FooterHtml.soy"
+block|,
 literal|"Merged.soy"
 block|,
 literal|"NewChange.soy"
