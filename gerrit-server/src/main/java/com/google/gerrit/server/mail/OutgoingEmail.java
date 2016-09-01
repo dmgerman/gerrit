@@ -2831,15 +2831,12 @@ name|velocityName
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 name|soyTextTemplate
 argument_list|(
 name|name
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|joinStrings (Iterable<Object> in, String joiner)
 specifier|public
