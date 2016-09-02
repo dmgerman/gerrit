@@ -1446,12 +1446,12 @@ name|KEY_CAN_OVERRIDE
 init|=
 literal|"canOverride"
 decl_stmt|;
-DECL|field|KEY_Branch
+DECL|field|KEY_BRANCH
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|KEY_Branch
+name|KEY_BRANCH
 init|=
 literal|"branch"
 decl_stmt|;
@@ -5285,7 +5285,7 @@ name|LABEL
 argument_list|,
 name|name
 argument_list|,
-name|KEY_Branch
+name|KEY_BRANCH
 argument_list|)
 argument_list|)
 expr_stmt|;
