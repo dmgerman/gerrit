@@ -305,6 +305,23 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|getActive ()
+name|boolean
+name|getActive
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|setActive (boolean active)
+name|void
+name|setActive
+parameter_list|(
+name|boolean
+name|active
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|getAvatarUrl (int size)
 name|String
 name|getAvatarUrl
@@ -581,6 +598,41 @@ specifier|public
 name|AccountInfo
 name|get
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getActive ()
+specifier|public
+name|boolean
+name|getActive
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setActive (boolean active)
+specifier|public
+name|void
+name|setActive
+parameter_list|(
+name|boolean
+name|active
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
