@@ -478,6 +478,14 @@ literal|"ReplacePatchSet"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|appendHtml
+argument_list|(
+name|soyHtmlTemplate
+argument_list|(
+literal|"ReplacePatchSetHtml"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getReviewerNames ()
 specifier|public
@@ -571,6 +579,18 @@ name|getReviewerNames
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|useHtml ()
+specifier|protected
+name|boolean
+name|useHtml
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
 block|}
 block|}
 end_class

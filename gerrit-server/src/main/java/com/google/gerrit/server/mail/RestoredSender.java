@@ -304,6 +304,26 @@ literal|"Restored"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|appendHtml
+argument_list|(
+name|soyHtmlTemplate
+argument_list|(
+literal|"RestoredHtml"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|useHtml ()
+specifier|protected
+name|boolean
+name|useHtml
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
 block|}
 block|}
 end_class
