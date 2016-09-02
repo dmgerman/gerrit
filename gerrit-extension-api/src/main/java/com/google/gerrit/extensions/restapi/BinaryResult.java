@@ -378,30 +378,6 @@ name|characterEncoding
 return|;
 block|}
 comment|/** Set the character set used to encode text data and return {@code this}. */
-annotation|@
-name|Deprecated
-DECL|method|setCharacterEncoding (String encoding)
-specifier|public
-name|BinaryResult
-name|setCharacterEncoding
-parameter_list|(
-name|String
-name|encoding
-parameter_list|)
-block|{
-return|return
-name|setCharacterEncoding
-argument_list|(
-name|Charset
-operator|.
-name|forName
-argument_list|(
-name|encoding
-argument_list|)
-argument_list|)
-return|;
-block|}
-comment|/** Set the character set used to encode text data and return {@code this}. */
 DECL|method|setCharacterEncoding (Charset encoding)
 specifier|public
 name|BinaryResult
@@ -894,9 +870,6 @@ expr_stmt|;
 name|setCharacterEncoding
 argument_list|(
 name|UTF_8
-operator|.
-name|name
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
