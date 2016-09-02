@@ -1865,6 +1865,46 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|deactivateSelf ()
+specifier|public
+name|void
+name|deactivateSelf
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"cannot deactivate own account"
+argument_list|)
+expr_stmt|;
+name|gApi
+operator|.
+name|accounts
+argument_list|()
+operator|.
+name|self
+argument_list|()
+operator|.
+name|setActive
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|starUnstarChange ()
 specifier|public
 name|void
