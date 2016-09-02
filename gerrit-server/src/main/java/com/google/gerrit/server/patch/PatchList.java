@@ -250,22 +250,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|NoSuchFileException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -797,18 +781,18 @@ return|return
 name|r
 return|;
 block|}
-comment|/** Find an entry by name. */
-DECL|method|get (String fileName)
+comment|/** Find an entry by name, returning an empty entry if not present. */
+DECL|method|get (final String fileName)
 specifier|public
 name|PatchListEntry
 name|get
 parameter_list|(
+specifier|final
 name|String
 name|fileName
 parameter_list|)
-throws|throws
-name|NoSuchFileException
 block|{
+specifier|final
 name|int
 name|index
 init|=
@@ -817,27 +801,23 @@ argument_list|(
 name|fileName
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+return|return
 literal|0
 operator|<=
 name|index
-condition|)
-block|{
-return|return
+condition|?
 name|patches
 index|[
 name|index
 index|]
-return|;
-block|}
-throw|throw
-operator|new
-name|NoSuchFileException
+else|:
+name|PatchListEntry
+operator|.
+name|empty
 argument_list|(
 name|fileName
 argument_list|)
-throw|;
+return|;
 block|}
 DECL|method|search (final String fileName)
 specifier|private

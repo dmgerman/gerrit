@@ -100,22 +100,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|NoSuchFileException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -358,8 +342,6 @@ throws|,
 name|IncorrectObjectTypeException
 throws|,
 name|IOException
-throws|,
-name|NoSuchFileException
 block|{
 name|this
 operator|.
