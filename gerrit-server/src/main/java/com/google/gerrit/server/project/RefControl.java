@@ -1357,23 +1357,8 @@ return|return
 literal|false
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-name|canUpdate
-argument_list|()
-condition|)
-block|{
-comment|// If the user has push permissions, they can create the ref regardless
-comment|// of whether they are pushing any new objects along with the create.
 return|return
-literal|true
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|isMergedIntoBranchOrTag
+name|canCreateCommit
 argument_list|(
 name|db
 argument_list|,
@@ -1383,19 +1368,11 @@ operator|(
 name|RevCommit
 operator|)
 name|object
+argument_list|,
+name|admin
+argument_list|,
+name|owner
 argument_list|)
-condition|)
-block|{
-comment|// If the user has no push permissions, check whether the object is
-comment|// merged into a branch or tag readable by this user. If so, they are
-comment|// not effectively "pushing" more objects, so they can create the ref
-comment|// even if they don't have push permission.
-return|return
-literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 elseif|else
@@ -1523,6 +1500,66 @@ literal|false
 return|;
 block|}
 block|}
+name|RevObject
+name|tagObject
+init|=
+name|tag
+operator|.
+name|getObject
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|tagObject
+operator|instanceof
+name|RevCommit
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|canCreateCommit
+argument_list|(
+name|db
+argument_list|,
+name|repo
+argument_list|,
+operator|(
+name|RevCommit
+operator|)
+name|tagObject
+argument_list|,
+name|admin
+argument_list|,
+name|owner
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+else|else
+block|{
+if|if
+condition|(
+operator|!
+name|canCreate
+argument_list|(
+name|db
+argument_list|,
+name|repo
+argument_list|,
+name|tagObject
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
 comment|// If the tag has a PGP signature, allow a lower level of permission
 comment|// than if it doesn't have a PGP signature.
 comment|//
@@ -1567,6 +1604,87 @@ return|return
 literal|false
 return|;
 block|}
+block|}
+DECL|method|canCreateCommit (ReviewDb db, Repository repo, RevCommit commit, boolean admin, boolean owner)
+specifier|private
+name|boolean
+name|canCreateCommit
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Repository
+name|repo
+parameter_list|,
+name|RevCommit
+name|commit
+parameter_list|,
+name|boolean
+name|admin
+parameter_list|,
+name|boolean
+name|owner
+parameter_list|)
+block|{
+if|if
+condition|(
+name|admin
+operator|||
+operator|(
+name|owner
+operator|&&
+operator|!
+name|isBlocked
+argument_list|(
+name|Permission
+operator|.
+name|CREATE
+argument_list|)
+operator|)
+condition|)
+block|{
+comment|// Admin or project owner; bypass visibility check.
+return|return
+literal|true
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|canUpdate
+argument_list|()
+condition|)
+block|{
+comment|// If the user has push permissions, they can create the ref regardless
+comment|// of whether they are pushing any new objects along with the create.
+return|return
+literal|true
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|isMergedIntoBranchOrTag
+argument_list|(
+name|db
+argument_list|,
+name|repo
+argument_list|,
+name|commit
+argument_list|)
+condition|)
+block|{
+comment|// If the user has no push permissions, check whether the object is
+comment|// merged into a branch or tag readable by this user. If so, they are
+comment|// not effectively "pushing" more objects, so they can create the ref
+comment|// even if they don't have push permission.
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|isMergedIntoBranchOrTag (ReviewDb db, Repository repo, RevCommit commit)
 specifier|private
