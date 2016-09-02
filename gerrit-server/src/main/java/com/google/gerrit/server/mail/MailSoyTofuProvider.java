@@ -300,7 +300,7 @@ block|,
 literal|"Restored.soy"
 block|,
 literal|"Reverted.soy"
-block|}
+block|,   }
 decl_stmt|;
 DECL|field|site
 specifier|private
