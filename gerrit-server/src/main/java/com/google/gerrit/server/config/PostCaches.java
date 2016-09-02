@@ -447,7 +447,10 @@ annotation|@
 name|Override
 DECL|method|apply (ConfigResource rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|ConfigResource
