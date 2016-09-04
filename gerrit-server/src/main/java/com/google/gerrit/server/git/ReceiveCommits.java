@@ -12183,10 +12183,6 @@ argument_list|>
 name|mergedParents
 parameter_list|)
 throws|throws
-name|MissingObjectException
-throws|,
-name|IncorrectObjectTypeException
-throws|,
 name|IOException
 block|{
 if|if
