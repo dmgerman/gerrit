@@ -1971,7 +1971,7 @@ name|block
 argument_list|(
 name|Permission
 operator|.
-name|PUSH_TAG
+name|CREATE_TAG
 argument_list|,
 name|REGISTERED_USERS
 argument_list|,
@@ -2515,7 +2515,7 @@ name|grant
 argument_list|(
 name|Permission
 operator|.
-name|PUSH_TAG
+name|CREATE_TAG
 argument_list|,
 name|project
 argument_list|,
@@ -2528,7 +2528,7 @@ name|grant
 argument_list|(
 name|Permission
 operator|.
-name|PUSH_SIGNED_TAG
+name|CREATE_SIGNED_TAG
 argument_list|,
 name|project
 argument_list|,

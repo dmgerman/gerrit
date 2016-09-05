@@ -1408,7 +1408,7 @@ name|tags
 argument_list|,
 name|Permission
 operator|.
-name|PUSH_TAG
+name|CREATE_TAG
 argument_list|,
 name|admin
 argument_list|,
@@ -1423,7 +1423,7 @@ name|tags
 argument_list|,
 name|Permission
 operator|.
-name|PUSH_SIGNED_TAG
+name|CREATE_SIGNED_TAG
 argument_list|,
 name|admin
 argument_list|,
