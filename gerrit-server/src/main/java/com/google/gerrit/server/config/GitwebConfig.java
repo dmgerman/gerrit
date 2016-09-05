@@ -1075,9 +1075,6 @@ argument_list|)
 condition|)
 block|{
 case|case
-literal|""
-case|:
-case|case
 literal|"gitweb"
 case|:
 name|type
@@ -1237,6 +1234,9 @@ literal|""
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+literal|""
+case|:
 case|case
 literal|"disabled"
 case|:
