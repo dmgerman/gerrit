@@ -912,6 +912,10 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+comment|// Bind servlets for REST root collections.
+comment|// The '/plugins/' root collection is already handled by HttpPluginServlet
+comment|// which is bound in HttpPluginModule. We cannot bind it here again although
+comment|// this means that plugins can't add REST views on PLUGIN_KIND.
 name|serveRegex
 argument_list|(
 literal|"^/(?:a/)?access/(.*)$"
