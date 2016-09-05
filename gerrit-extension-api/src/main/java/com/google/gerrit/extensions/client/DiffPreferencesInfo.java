@@ -241,6 +241,11 @@ specifier|public
 name|Boolean
 name|matchBrackets
 decl_stmt|;
+DECL|field|lineWrapping
+specifier|public
+name|Boolean
+name|lineWrapping
+decl_stmt|;
 DECL|field|theme
 specifier|public
 name|Theme
@@ -413,6 +418,12 @@ expr_stmt|;
 name|i
 operator|.
 name|matchBrackets
+operator|=
+literal|false
+expr_stmt|;
+name|i
+operator|.
+name|lineWrapping
 operator|=
 literal|false
 expr_stmt|;
