@@ -475,8 +475,10 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ResourceNotFoundException
-argument_list|()
+name|ResourceConflictException
+argument_list|(
+literal|"account not active"
+argument_list|)
 throw|;
 block|}
 if|if
