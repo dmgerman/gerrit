@@ -690,6 +690,17 @@ argument_list|,
 literal|"refs/for/refs/heads/master"
 argument_list|)
 expr_stmt|;
+name|grant
+argument_list|(
+name|Permission
+operator|.
+name|PUSH
+argument_list|,
+name|project
+argument_list|,
+literal|"refs/tags/*"
+argument_list|)
+expr_stmt|;
 name|PushOneCommit
 operator|.
 name|AnnotatedTag

@@ -438,10 +438,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|createBranchByAdminCreateReferenceBlocked ()
+DECL|method|createBranchByAdminCreateReferenceBlocked_Forbidden ()
 specifier|public
 name|void
-name|createBranchByAdminCreateReferenceBlocked
+name|createBranchByAdminCreateReferenceBlocked_Forbidden
 parameter_list|()
 throws|throws
 name|Exception
@@ -449,8 +449,12 @@ block|{
 name|blockCreateReference
 argument_list|()
 expr_stmt|;
-name|assertCreateSucceeds
-argument_list|()
+name|assertCreateFails
+argument_list|(
+name|AuthException
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

@@ -103,24 +103,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|Permission
-operator|.
-name|PUSH_TAG
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -1106,13 +1088,6 @@ name|boolean
 name|canForce
 init|=
 name|PUSH
-operator|.
-name|equals
-argument_list|(
-name|name
-argument_list|)
-operator|||
-name|PUSH_TAG
 operator|.
 name|equals
 argument_list|(
