@@ -3531,6 +3531,11 @@ condition|(
 name|mergeResultRev
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|args
+operator|.
+name|dryrun
 condition|)
 block|{
 name|args

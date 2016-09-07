@@ -2002,7 +2002,7 @@ return|return
 name|p
 return|;
 block|}
-DECL|method|execute (Collection<BatchUpdate> updates, Listener listener, @Nullable RequestId requestId)
+DECL|method|execute (Collection<BatchUpdate> updates, Listener listener, @Nullable RequestId requestId, boolean dryrun)
 specifier|static
 name|void
 name|execute
@@ -2020,6 +2020,9 @@ annotation|@
 name|Nullable
 name|RequestId
 name|requestId
+parameter_list|,
+name|boolean
+name|dryrun
 parameter_list|)
 throws|throws
 name|UpdateException
@@ -2139,7 +2142,9 @@ block|{
 name|u
 operator|.
 name|executeRefUpdates
-argument_list|()
+argument_list|(
+name|dryrun
+argument_list|)
 expr_stmt|;
 block|}
 name|listener
@@ -2160,6 +2165,8 @@ operator|.
 name|executeChangeOps
 argument_list|(
 name|updateChangesInParallel
+argument_list|,
+name|dryrun
 argument_list|)
 expr_stmt|;
 block|}
@@ -2185,6 +2192,8 @@ operator|.
 name|executeChangeOps
 argument_list|(
 name|updateChangesInParallel
+argument_list|,
+name|dryrun
 argument_list|)
 expr_stmt|;
 block|}
@@ -2223,7 +2232,9 @@ block|{
 name|u
 operator|.
 name|executeRefUpdates
-argument_list|()
+argument_list|(
+name|dryrun
+argument_list|)
 expr_stmt|;
 block|}
 name|listener
@@ -2343,6 +2354,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|dryrun
+condition|)
+block|{
 for|for
 control|(
 name|BatchUpdate
@@ -2356,6 +2373,7 @@ operator|.
 name|executePostOps
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
@@ -3322,6 +3340,25 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|getRefUpdates ()
+specifier|public
+name|Collection
+argument_list|<
+name|ReceiveCommand
+argument_list|>
+name|getRefUpdates
+parameter_list|()
+block|{
+return|return
+name|commands
+operator|.
+name|getCommands
+argument_list|()
+operator|.
+name|values
+argument_list|()
+return|;
+block|}
 DECL|method|execute ()
 specifier|public
 name|void
@@ -3365,6 +3402,8 @@ argument_list|,
 name|listener
 argument_list|,
 name|requestId
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -3505,11 +3544,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|executeRefUpdates ()
+DECL|method|executeRefUpdates (boolean dryrun)
 specifier|private
 name|void
 name|executeRefUpdates
-parameter_list|()
+parameter_list|(
+name|boolean
+name|dryrun
+parameter_list|)
 throws|throws
 name|IOException
 throws|,
@@ -3568,6 +3610,13 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dryrun
+condition|)
+block|{
+return|return;
+block|}
 name|batchRefUpdate
 operator|.
 name|execute
@@ -3633,13 +3682,16 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|executeChangeOps (boolean parallel)
+DECL|method|executeChangeOps (boolean parallel, boolean dryrun)
 specifier|private
 name|void
 name|executeChangeOps
 parameter_list|(
 name|boolean
 name|parallel
+parameter_list|,
+name|boolean
+name|dryrun
 parameter_list|)
 throws|throws
 name|UpdateException
@@ -3810,6 +3862,8 @@ name|Thread
 operator|.
 name|currentThread
 argument_list|()
+argument_list|,
+name|dryrun
 argument_list|)
 decl_stmt|;
 name|tasks
@@ -3911,11 +3965,18 @@ operator|.
 name|nanoTime
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|dryrun
+condition|)
+block|{
 name|executeNoteDbUpdates
 argument_list|(
 name|tasks
 argument_list|)
 expr_stmt|;
+block|}
 name|maybeLogSlowUpdate
 argument_list|(
 name|startNanos
@@ -4639,6 +4700,12 @@ specifier|final
 name|Thread
 name|mainThread
 decl_stmt|;
+DECL|field|dryrun
+specifier|private
+specifier|final
+name|boolean
+name|dryrun
+decl_stmt|;
 DECL|field|noteDbResult
 name|NoteDbUpdateManager
 operator|.
@@ -4658,7 +4725,7 @@ specifier|private
 name|String
 name|taskId
 decl_stmt|;
-DECL|method|ChangeTask (Change.Id id, Collection<Op> changeOps, Thread mainThread)
+DECL|method|ChangeTask (Change.Id id, Collection<Op> changeOps, Thread mainThread, boolean dryrun)
 specifier|private
 name|ChangeTask
 parameter_list|(
@@ -4675,6 +4742,9 @@ name|changeOps
 parameter_list|,
 name|Thread
 name|mainThread
+parameter_list|,
+name|boolean
+name|dryrun
 parameter_list|)
 block|{
 name|this
@@ -4694,6 +4764,12 @@ operator|.
 name|mainThread
 operator|=
 name|mainThread
+expr_stmt|;
+name|this
+operator|.
+name|dryrun
+operator|=
+name|dryrun
 expr_stmt|;
 block|}
 annotation|@
@@ -5034,11 +5110,18 @@ name|cs
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|dryrun
+condition|)
+block|{
 name|db
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{

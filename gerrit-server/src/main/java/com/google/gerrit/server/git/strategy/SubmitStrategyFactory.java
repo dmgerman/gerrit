@@ -416,7 +416,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commits, RequestId submissionId, NotifyHandling notifyHandling, SubmoduleOp submoduleOp)
+DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commits, RequestId submissionId, NotifyHandling notifyHandling, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -467,6 +467,9 @@ name|notifyHandling
 parameter_list|,
 name|SubmoduleOp
 name|submoduleOp
+parameter_list|,
+name|boolean
+name|dryrun
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -507,6 +510,8 @@ argument_list|,
 name|notifyHandling
 argument_list|,
 name|submoduleOp
+argument_list|,
+name|dryrun
 argument_list|)
 decl_stmt|;
 switch|switch

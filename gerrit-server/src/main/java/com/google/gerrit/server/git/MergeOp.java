@@ -1916,6 +1916,21 @@ specifier|private
 name|SubmitInput
 name|submitInput
 decl_stmt|;
+DECL|field|allProjects
+specifier|private
+name|Set
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|>
+name|allProjects
+decl_stmt|;
+DECL|field|dryrun
+specifier|private
+name|boolean
+name|dryrun
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|MergeOp (ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, MergeOpRepoManager orm)
@@ -2798,7 +2813,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|merge (ReviewDb db, Change change, IdentifiedUser caller, boolean checkSubmitRules, SubmitInput submitInput)
+comment|/**    * Merges the given change.    *    * Depending on the server configuration, more changes may be affected, e.g.    * by submission of a topic or via superproject subscriptions. All affected    * changes are integrated using the projects integration strategy.    *    * @param db the review database.    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws OrmException an error occurred reading or writing the database.    * @throws RestApiException if an error occurred.    */
+DECL|method|merge (ReviewDb db, Change change, IdentifiedUser caller, boolean checkSubmitRules, SubmitInput submitInput, boolean dryrun)
 specifier|public
 name|void
 name|merge
@@ -2817,6 +2833,9 @@ name|checkSubmitRules
 parameter_list|,
 name|SubmitInput
 name|submitInput
+parameter_list|,
+name|boolean
+name|dryrun
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2828,6 +2847,12 @@ operator|.
 name|submitInput
 operator|=
 name|submitInput
+expr_stmt|;
+name|this
+operator|.
+name|dryrun
+operator|=
+name|dryrun
 expr_stmt|;
 name|this
 operator|.
@@ -3263,6 +3288,8 @@ argument_list|(
 name|toSubmit
 argument_list|,
 name|submoduleOp
+argument_list|,
+name|dryrun
 argument_list|)
 decl_stmt|;
 name|Set
@@ -3291,6 +3318,12 @@ operator|=
 name|projects
 expr_stmt|;
 block|}
+name|this
+operator|.
+name|allProjects
+operator|=
+name|allProjects
+expr_stmt|;
 name|BatchUpdate
 operator|.
 name|execute
@@ -3313,6 +3346,8 @@ name|commits
 argument_list|)
 argument_list|,
 name|submissionId
+argument_list|,
+name|dryrun
 argument_list|)
 expr_stmt|;
 block|}
@@ -3393,7 +3428,32 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getSubmitStrategies ( Map<Branch.NameKey, BranchBatch> toSubmit, SubmoduleOp submoduleOp)
+DECL|method|getAllProjects ()
+specifier|public
+name|Set
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|>
+name|getAllProjects
+parameter_list|()
+block|{
+return|return
+name|allProjects
+return|;
+block|}
+DECL|method|getMergeOpRepoManager ()
+specifier|public
+name|MergeOpRepoManager
+name|getMergeOpRepoManager
+parameter_list|()
+block|{
+return|return
+name|orm
+return|;
+block|}
+DECL|method|getSubmitStrategies ( Map<Branch.NameKey, BranchBatch> toSubmit, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|private
 name|List
 argument_list|<
@@ -3413,6 +3473,9 @@ name|toSubmit
 parameter_list|,
 name|SubmoduleOp
 name|submoduleOp
+parameter_list|,
+name|boolean
+name|dryrun
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -3573,6 +3636,8 @@ operator|.
 name|oldTip
 argument_list|,
 name|submoduleOp
+argument_list|,
+name|dryrun
 argument_list|)
 decl_stmt|;
 name|strategies
@@ -3695,7 +3760,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|createStrategy (OpenRepo or, MergeTip mergeTip, Branch.NameKey destBranch, SubmitType submitType, CodeReviewCommit branchTip, SubmoduleOp submoduleOp)
+DECL|method|createStrategy (OpenRepo or, MergeTip mergeTip, Branch.NameKey destBranch, SubmitType submitType, CodeReviewCommit branchTip, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|private
 name|SubmitStrategy
 name|createStrategy
@@ -3719,6 +3784,9 @@ name|branchTip
 parameter_list|,
 name|SubmoduleOp
 name|submoduleOp
+parameter_list|,
+name|boolean
+name|dryrun
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -3770,6 +3838,8 @@ operator|.
 name|notify
 argument_list|,
 name|submoduleOp
+argument_list|,
+name|dryrun
 argument_list|)
 return|;
 block|}
