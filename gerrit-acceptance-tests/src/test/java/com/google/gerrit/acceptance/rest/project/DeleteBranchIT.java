@@ -431,6 +431,28 @@ name|assertDeleteSucceeds
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|deleteBranchByUserWithDeletePermission ()
+specifier|public
+name|void
+name|deleteBranchByUserWithDeletePermission
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|grantDelete
+argument_list|()
+expr_stmt|;
+name|setApiUser
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
+name|assertDeleteSucceeds
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|blockForcePush ()
 specifier|private
 name|void
@@ -477,6 +499,26 @@ argument_list|,
 literal|true
 argument_list|,
 name|ANONYMOUS_USERS
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|grantDelete ()
+specifier|private
+name|void
+name|grantDelete
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|allow
+argument_list|(
+name|Permission
+operator|.
+name|DELETE
+argument_list|,
+name|ANONYMOUS_USERS
+argument_list|,
+literal|"refs/*"
 argument_list|)
 expr_stmt|;
 block|}
