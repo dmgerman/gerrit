@@ -5652,9 +5652,11 @@ argument_list|(
 literal|false
 argument_list|)
 operator|.
-name|setSendMail
+name|setNotify
 argument_list|(
-literal|false
+name|NotifyHandling
+operator|.
+name|NONE
 argument_list|)
 expr_stmt|;
 name|bu
