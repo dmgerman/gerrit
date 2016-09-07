@@ -1538,13 +1538,41 @@ name|state
 argument_list|)
 return|;
 block|}
+if|if
+condition|(
+name|member
+operator|.
+name|isActive
+argument_list|()
+condition|)
+block|{
 throw|throw
 operator|new
 name|UnprocessableEntityException
 argument_list|(
-literal|"Change not visible to "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Change not visible to %s"
+argument_list|,
 name|reviewer
+argument_list|)
+argument_list|)
+throw|;
+block|}
+throw|throw
+operator|new
+name|UnprocessableEntityException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Account of %s is inactive."
+argument_list|,
+name|reviewer
+argument_list|)
 argument_list|)
 throw|;
 block|}
