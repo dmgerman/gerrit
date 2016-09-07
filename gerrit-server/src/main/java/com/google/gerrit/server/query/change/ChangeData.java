@@ -4795,6 +4795,11 @@ name|legacyId
 argument_list|)
 throw|;
 block|}
+name|setPatchSets
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 return|return
 name|change
 return|;
