@@ -1204,6 +1204,17 @@ literal|15
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|defaultBaseForMerges
+operator|=
+name|GeneralPreferencesInfo
+operator|.
+name|defaults
+argument_list|()
+operator|.
+name|defaultBaseForMerges
+expr_stmt|;
 name|imports
 operator|.
 name|put
