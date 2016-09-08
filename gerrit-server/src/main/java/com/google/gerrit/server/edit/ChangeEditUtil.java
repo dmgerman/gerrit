@@ -120,6 +120,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|client
 operator|.
 name|ChangeKind
@@ -1145,7 +1163,7 @@ block|}
 block|}
 block|}
 comment|/**    * Promote change edit to patch set, by squashing the edit into    * its parent.    *    * @param edit change edit to publish    * @throws NoSuchChangeException    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
-DECL|method|publish (final ChangeEdit edit)
+DECL|method|publish (final ChangeEdit edit, NotifyHandling notify)
 specifier|public
 name|void
 name|publish
@@ -1153,6 +1171,9 @@ parameter_list|(
 specifier|final
 name|ChangeEdit
 name|edit
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -1305,6 +1326,11 @@ argument_list|,
 name|psId
 argument_list|,
 name|squashed
+argument_list|)
+operator|.
+name|setNotify
+argument_list|(
+name|notify
 argument_list|)
 decl_stmt|;
 name|StringBuilder
