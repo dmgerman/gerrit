@@ -7307,6 +7307,13 @@ name|rev
 operator|.
 name|isEdit
 argument_list|()
+operator|||
+name|rev
+operator|.
+name|commit
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 return|return;
