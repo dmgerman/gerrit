@@ -6648,7 +6648,7 @@ operator|.
 name|webLinks
 argument_list|)
 operator|.
-name|isNotNull
+name|isNull
 argument_list|()
 expr_stmt|;
 name|assertThat
