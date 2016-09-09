@@ -109,7 +109,7 @@ name|LifecycleModule
 extends|extends
 name|FactoryModule
 block|{
-comment|/**    * Create a unique listener binding.    *<p>    * To create a listener binding use:    *    *<pre>    * listener().to(MyListener.class);    *</pre>    *    * where {@code MyListener} is a {@link Singleton} implementing the    * {@link LifecycleListener} interface.    */
+comment|/**    * @return a unique listener binding.    *<p>    * To create a listener binding use:    *    *<pre>    * listener().to(MyListener.class);    *</pre>    *    * where {@code MyListener} is a {@link Singleton} implementing the    * {@link LifecycleListener} interface.    */
 DECL|method|listener ()
 specifier|protected
 name|LinkedBindingBuilder

@@ -93,7 +93,7 @@ name|Histogram0
 implements|implements
 name|RegistrationHandle
 block|{
-comment|/** Record a sample of a specified amount. */
+comment|/**    * Record a sample of a specified amount.    *    * @param value to record    */
 DECL|method|record (long value)
 specifier|public
 specifier|abstract

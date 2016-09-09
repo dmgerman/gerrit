@@ -319,7 +319,7 @@ name|helpText
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Unit used to describe the value, e.g. "requests", "seconds", etc. */
+comment|/** Set unit used to describe the value.    *    * @param unitName name of the unit, e.g. "requests", "seconds", etc.    * @return this    */
 DECL|method|setUnit (String unitName)
 specifier|public
 name|Description
@@ -342,7 +342,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Mark the value as constant for the life of this process. Typically used for    * software versions, command line arguments, etc. that cannot change without    * a process restart.    */
+comment|/**    * Mark the value as constant for the life of this process. Typically used for    * software versions, command line arguments, etc. that cannot change without    * a process restart.    *    * @return this    */
 DECL|method|setConstant ()
 specifier|public
 name|Description
@@ -362,7 +362,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Indicates the metric may be usefully interpreted as a count over short    * periods of time, such as request arrival rate. May only be applied to a    * {@link Counter0}.    */
+comment|/**    * Indicates the metric may be usefully interpreted as a count over short    * periods of time, such as request arrival rate. May only be applied to a    * {@link Counter0}.    *    * @return this    */
 DECL|method|setRate ()
 specifier|public
 name|Description
@@ -382,7 +382,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Instantaneously sampled value that may increase or decrease at a later    * time. Memory allocated or open network connections are examples of gauges.    */
+comment|/**    * Instantaneously sampled value that may increase or decrease at a later    * time. Memory allocated or open network connections are examples of gauges.    *    * @return this    */
 DECL|method|setGauge ()
 specifier|public
 name|Description
@@ -402,7 +402,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Indicates the metric accumulates over the lifespan of the process. A    * {@link Counter0} like total requests handled accumulates over the process    * and should be {@code setCumulative()}.    */
+comment|/**    * Indicates the metric accumulates over the lifespan of the process. A    * {@link Counter0} like total requests handled accumulates over the process    * and should be {@code setCumulative()}.    *    * @return this    */
 DECL|method|setCumulative ()
 specifier|public
 name|Description
@@ -422,7 +422,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** Configure how fields are ordered into submetric names. */
+comment|/**    * Configure how fields are ordered into submetric names.    *    * @param ordering field ordering    * @return this    */
 DECL|method|setFieldOrdering (FieldOrdering ordering)
 specifier|public
 name|Description
@@ -448,7 +448,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** True if the metric value never changes after startup. */
+comment|/** @return true if the metric value never changes after startup. */
 DECL|method|isConstant ()
 specifier|public
 name|boolean
@@ -469,7 +469,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** True if the metric may be interpreted as a rate over time. */
+comment|/** @return true if the metric may be interpreted as a rate over time. */
 DECL|method|isRate ()
 specifier|public
 name|boolean
@@ -490,7 +490,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** True if the metric is an instantaneous sample. */
+comment|/** @return true if the metric is an instantaneous sample. */
 DECL|method|isGauge ()
 specifier|public
 name|boolean
@@ -511,7 +511,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** True if the metric accumulates over the lifespan of the process. */
+comment|/** @return true if the metric accumulates over the lifespan of the process. */
 DECL|method|isCumulative ()
 specifier|public
 name|boolean
@@ -532,7 +532,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** Get the suggested field ordering. */
+comment|/** @return the suggested field ordering. */
 DECL|method|getFieldOrdering ()
 specifier|public
 name|FieldOrdering
@@ -698,7 +698,7 @@ return|return
 name|u
 return|;
 block|}
-comment|/** Immutable copy of all annotations (configurable properties). */
+comment|/** @return immutable copy of all annotations (configurable properties). */
 DECL|method|getAnnotations ()
 specifier|public
 name|ImmutableMap

@@ -96,7 +96,7 @@ parameter_list|>
 implements|implements
 name|RegistrationHandle
 block|{
-comment|/** Record a sample of a specified amount. */
+comment|/**    * Record a sample of a specified amount.    *    * @param field1 bucket to record sample    * @param value value to record    */
 DECL|method|record (F1 field1, long value)
 specifier|public
 specifier|abstract

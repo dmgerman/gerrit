@@ -263,7 +263,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Begin a timer for the current block, value will be recorded when closed. */
+comment|/**    * Begin a timer for the current block, value will be recorded when closed.    *    * @param field1 bucket to record the timer    * @param field2 bucket to record the timer    * @param field3 bucket to record the timer    * @return timer context    */
 DECL|method|start (F1 field1, F2 field2, F3 field3)
 specifier|public
 name|Context
@@ -293,7 +293,7 @@ name|field3
 argument_list|)
 return|;
 block|}
-comment|/** Record a value in the distribution. */
+comment|/**    * Record a value in the distribution.    *    * @param field1 bucket to record the timer    * @param field2 bucket to record the timer    * @param field3 bucket to record the timer    * @param value value to record    * @param unit time unit of the value    */
 DECL|method|record (F1 field1, F2 field2, F3 field3, long value, TimeUnit unit)
 specifier|public
 specifier|abstract

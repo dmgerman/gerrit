@@ -129,7 +129,7 @@ specifier|abstract
 class|class
 name|MetricMaker
 block|{
-comment|/** Metric whose value increments during the life of the process. */
+comment|/**    * Metric whose value increments during the life of the process.    *    * @param name field name    * @param desc field description    * @return counter    */
 DECL|method|newCounter (String name, Description desc)
 specifier|public
 specifier|abstract
@@ -248,7 +248,7 @@ argument_list|>
 name|field3
 parameter_list|)
 function_decl|;
-comment|/** Metric recording time spent on an operation. */
+comment|/**    * Metric recording time spent on an operation.    *    * @param name field name    * @param desc field description    * @return timer    */
 DECL|method|newTimer (String name, Description desc)
 specifier|public
 specifier|abstract
@@ -367,7 +367,7 @@ argument_list|>
 name|field3
 parameter_list|)
 function_decl|;
-comment|/** Metric recording statistical distribution of values. */
+comment|/**    * Metric recording statistical distribution of values.    *    * @param name field name    * @param desc field description    * @return histogram    */
 DECL|method|newHistogram (String name, Description desc)
 specifier|public
 specifier|abstract
@@ -651,7 +651,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Instantaneous reading of a single value. */
+comment|/**    *  Instantaneous reading of a single value.    *    * @param name field name    * @param valueClass field type    * @param desc field description    * @return callback    */
 DECL|method|newCallbackMetric ( String name, Class<V> valueClass, Description desc)
 specifier|public
 specifier|abstract
@@ -712,7 +712,7 @@ argument_list|>
 name|field1
 parameter_list|)
 function_decl|;
-comment|/** Connect logic to populate a previously created {@link CallbackMetric}. */
+comment|/**    * Connect logic to populate a previously created {@link CallbackMetric}.    *    * @param metric1 previously created callback    * @param trigger trigger to connect    * @return registration handle    */
 DECL|method|newTrigger (CallbackMetric<?> metric1, Runnable trigger)
 specifier|public
 name|RegistrationHandle
