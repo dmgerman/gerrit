@@ -760,6 +760,21 @@ name|String
 name|emailFieldLabel
 parameter_list|()
 function_decl|;
+DECL|method|defaultBaseForMerges ()
+name|String
+name|defaultBaseForMerges
+parameter_list|()
+function_decl|;
+DECL|method|autoMerge ()
+name|String
+name|autoMerge
+parameter_list|()
+function_decl|;
+DECL|method|firstParent ()
+name|String
+name|firstParent
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

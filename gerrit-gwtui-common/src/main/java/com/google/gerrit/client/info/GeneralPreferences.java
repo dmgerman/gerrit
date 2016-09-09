@@ -162,6 +162,24 @@ name|client
 operator|.
 name|GeneralPreferencesInfo
 operator|.
+name|DefaultBase
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|GeneralPreferencesInfo
+operator|.
 name|DiffView
 import|;
 end_import
@@ -484,6 +502,15 @@ argument_list|(
 name|d
 operator|.
 name|emailStrategy
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|defaultBaseForMerges
+argument_list|(
+name|d
+operator|.
+name|defaultBaseForMerges
 argument_list|)
 expr_stmt|;
 return|return
@@ -825,6 +852,42 @@ name|emailStrategyRaw
 parameter_list|()
 comment|/*-{ return this.email_strategy }-*/
 function_decl|;
+DECL|method|defaultBaseForMerges ()
+specifier|public
+specifier|final
+name|DefaultBase
+name|defaultBaseForMerges
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|defaultBaseForMergesRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|DefaultBase
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+literal|null
+return|;
+block|}
+DECL|method|defaultBaseForMergesRaw ()
+specifier|private
+specifier|native
+name|String
+name|defaultBaseForMergesRaw
+parameter_list|()
+comment|/*-{ return this.default_base_for_merges }-*/
+function_decl|;
 DECL|method|my ()
 specifier|public
 specifier|final
@@ -1161,6 +1224,42 @@ name|String
 name|s
 parameter_list|)
 comment|/*-{ this.email_strategy = s }-*/
+function_decl|;
+DECL|method|defaultBaseForMerges (DefaultBase b)
+specifier|public
+specifier|final
+name|void
+name|defaultBaseForMerges
+parameter_list|(
+name|DefaultBase
+name|b
+parameter_list|)
+block|{
+name|defaultBaseForMergesRaw
+argument_list|(
+name|b
+operator|!=
+literal|null
+condition|?
+name|b
+operator|.
+name|toString
+argument_list|()
+else|:
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|defaultBaseForMergesRaw (String b)
+specifier|private
+specifier|native
+name|void
+name|defaultBaseForMergesRaw
+parameter_list|(
+name|String
+name|b
+parameter_list|)
+comment|/*-{ this.default_base_for_merges = b }-*/
 function_decl|;
 DECL|method|setMyMenus (List<TopMenuItem> myMenus)
 specifier|public
