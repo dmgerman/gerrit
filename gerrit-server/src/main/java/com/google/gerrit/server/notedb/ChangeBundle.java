@@ -1957,8 +1957,6 @@ literal|17
 argument_list|,
 literal|18
 argument_list|,
-comment|// TODO(dborowitz): It's potentially possible to compare noteDbState in
-comment|// the Change with the state implied by a ChangeNotes.
 literal|101
 argument_list|)
 expr_stmt|;
