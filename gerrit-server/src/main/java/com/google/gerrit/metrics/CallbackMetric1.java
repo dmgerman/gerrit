@@ -99,7 +99,7 @@ name|V
 name|value
 parameter_list|)
 function_decl|;
-comment|/** Ensure a zeroed metric is created for the field value. */
+comment|/**    * Ensure a zeroed metric is created for the field value.    *    * @param field1 bucket to create.    */
 DECL|method|forceCreate (F1 field1)
 specifier|public
 specifier|abstract

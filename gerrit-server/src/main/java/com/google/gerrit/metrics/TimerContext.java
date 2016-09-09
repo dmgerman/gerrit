@@ -108,7 +108,7 @@ name|long
 name|elapsed
 parameter_list|)
 function_decl|;
-comment|/** Get the start time in system time nanoseconds. */
+comment|/** @return the start time in system time nanoseconds. */
 DECL|method|getStartTime ()
 specifier|public
 name|long

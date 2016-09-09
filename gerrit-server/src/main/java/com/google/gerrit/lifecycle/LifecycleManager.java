@@ -252,7 +252,7 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-comment|/** Add a handle that must be cleared during stop. */
+comment|/** Add a handle that must be cleared during stop.    *    * @param handle the handle to add.    **/
 DECL|method|add (RegistrationHandle handle)
 specifier|public
 name|void
@@ -270,7 +270,7 @@ name|handle
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Add a single listener. */
+comment|/** Add a single listener.    *    * @param listener the listener to add.    **/
 DECL|method|add (LifecycleListener listener)
 specifier|public
 name|void
@@ -293,7 +293,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Add a single listener. */
+comment|/** Add a single listener.    *    * @param listener the listener to add.    **/
 DECL|method|add (Provider<LifecycleListener> listener)
 specifier|public
 name|void
@@ -314,7 +314,7 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Add all {@link LifecycleListener}s registered in the Injector. */
+comment|/** Add all {@link LifecycleListener}s registered in the Injector.    *    * @param injector the injector to add.    **/
 DECL|method|add (Injector injector)
 specifier|public
 name|void
@@ -359,7 +359,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Add all {@link LifecycleListener}s registered in the Injectors. */
+comment|/** Add all {@link LifecycleListener}s registered in the Injectors.    *    * @param injectors the injectors to add.    **/
 DECL|method|add (Injector... injectors)
 specifier|public
 name|void
