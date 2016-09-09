@@ -211,6 +211,21 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|isPostSubmitApproval ()
+specifier|protected
+name|boolean
+name|isPostSubmitApproval
+parameter_list|()
+block|{
+return|return
+name|psa
+operator|.
+name|isPostSubmit
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

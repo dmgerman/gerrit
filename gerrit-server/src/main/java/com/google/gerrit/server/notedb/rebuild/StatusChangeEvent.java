@@ -391,6 +391,14 @@ name|empty
 argument_list|()
 return|;
 block|}
+DECL|field|status
+specifier|private
+specifier|final
+name|Change
+operator|.
+name|Status
+name|status
+decl_stmt|;
 DECL|field|change
 specifier|private
 specifier|final
@@ -402,14 +410,6 @@ specifier|private
 specifier|final
 name|Change
 name|noteDbChange
-decl_stmt|;
-DECL|field|status
-specifier|private
-specifier|final
-name|Change
-operator|.
-name|Status
-name|status
 decl_stmt|;
 DECL|method|StatusChangeEvent (ChangeMessage message, Change change, Change noteDbChange, Change.Status status)
 specifier|private
@@ -608,6 +608,24 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|isSubmit ()
+specifier|protected
+name|boolean
+name|isSubmit
+parameter_list|()
+block|{
+return|return
+name|status
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|MERGED
+return|;
 block|}
 block|}
 end_class

@@ -362,6 +362,27 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|isSubmit ()
+specifier|protected
+name|boolean
+name|isSubmit
+parameter_list|()
+block|{
+return|return
+name|change
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|MERGED
+return|;
+block|}
 block|}
 end_class
 

@@ -542,6 +542,26 @@ name|OrmException
 throws|,
 name|IOException
 function_decl|;
+DECL|method|isPostSubmitApproval ()
+specifier|protected
+name|boolean
+name|isPostSubmitApproval
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+DECL|method|isSubmit ()
+specifier|protected
+name|boolean
+name|isSubmit
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|toString ()

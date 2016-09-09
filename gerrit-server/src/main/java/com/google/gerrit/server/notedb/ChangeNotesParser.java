@@ -1378,6 +1378,15 @@ name|PatchSetApproval
 argument_list|>
 name|approvals
 decl_stmt|;
+DECL|field|bufferedApprovals
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|PatchSetApproval
+argument_list|>
+name|bufferedApprovals
+decl_stmt|;
 DECL|field|allChangeMessages
 specifier|private
 specifier|final
@@ -1558,6 +1567,13 @@ name|approvals
 operator|=
 operator|new
 name|LinkedHashMap
+argument_list|<>
+argument_list|()
+expr_stmt|;
+name|bufferedApprovals
+operator|=
+operator|new
+name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
@@ -2219,21 +2235,6 @@ name|commit
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|status
-operator|==
-literal|null
-condition|)
-block|{
-name|status
-operator|=
-name|parseStatus
-argument_list|(
-name|commit
-argument_list|)
-expr_stmt|;
-block|}
 name|PatchSet
 operator|.
 name|Id
@@ -2509,6 +2510,23 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|status
+operator|==
+literal|null
+condition|)
+block|{
+name|status
+operator|=
+name|parseStatus
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Parse approvals after status to treat approvals in the same commit as
+comment|// "Status: merged" as non-post-submit.
 for|for
 control|(
 name|String
@@ -3661,6 +3679,42 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+comment|// All approvals after MERGED and before the next status change get the
+comment|// postSubmit bit. (Currently the state can't change from MERGED to
+comment|// something else, but just in case.)
+if|if
+condition|(
+name|status
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|MERGED
+condition|)
+block|{
+for|for
+control|(
+name|PatchSetApproval
+name|psa
+range|:
+name|bufferedApprovals
+control|)
+block|{
+name|psa
+operator|.
+name|setPostSubmit
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|bufferedApprovals
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 return|return
 name|status
 return|;
@@ -4409,6 +4463,9 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+name|PatchSetApproval
+name|psa
+decl_stmt|;
 if|if
 condition|(
 name|line
@@ -4419,6 +4476,8 @@ literal|"-"
 argument_list|)
 condition|)
 block|{
+name|psa
+operator|=
 name|parseRemoveApproval
 argument_list|(
 name|psId
@@ -4435,6 +4494,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|psa
+operator|=
 name|parseAddApproval
 argument_list|(
 name|psId
@@ -4449,10 +4510,17 @@ name|line
 argument_list|)
 expr_stmt|;
 block|}
+name|bufferedApprovals
+operator|.
+name|add
+argument_list|(
+name|psa
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|parseAddApproval (PatchSet.Id psId, Account.Id committerId, Account.Id realAccountId, Timestamp ts, String line)
 specifier|private
-name|void
+name|PatchSetApproval
 name|parseAddApproval
 parameter_list|(
 name|PatchSet
@@ -4723,10 +4791,13 @@ name|psa
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|psa
+return|;
 block|}
 DECL|method|parseRemoveApproval (PatchSet.Id psId, Account.Id committerId, Account.Id realAccountId, Timestamp ts, String line)
 specifier|private
-name|void
+name|PatchSetApproval
 name|parseRemoveApproval
 parameter_list|(
 name|PatchSet
@@ -4979,6 +5050,9 @@ name|remove
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|remove
+return|;
 block|}
 DECL|method|parseSubmitRecords (List<String> lines)
 specifier|private

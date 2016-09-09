@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.common
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -60,61 +60,59 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|common
+name|schema
 package|;
 end_package
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|sql
+name|google
 operator|.
-name|Timestamp
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
 begin_class
-DECL|class|ApprovalInfo
+DECL|class|Schema_134
 specifier|public
 class|class
-name|ApprovalInfo
+name|Schema_134
 extends|extends
-name|AccountInfo
+name|SchemaVersion
 block|{
-DECL|field|tag
-specifier|public
-name|String
-name|tag
-decl_stmt|;
-DECL|field|value
-specifier|public
-name|Integer
-name|value
-decl_stmt|;
-DECL|field|date
-specifier|public
-name|Timestamp
-name|date
-decl_stmt|;
-DECL|field|postSubmit
-specifier|public
-name|Boolean
-name|postSubmit
-decl_stmt|;
-DECL|method|ApprovalInfo (Integer id)
-specifier|public
-name|ApprovalInfo
+annotation|@
+name|Inject
+DECL|method|Schema_134 (Provider<Schema_133> prior)
+name|Schema_134
 parameter_list|(
-name|Integer
-name|id
+name|Provider
+argument_list|<
+name|Schema_133
+argument_list|>
+name|prior
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|id
+name|prior
 argument_list|)
 expr_stmt|;
 block|}

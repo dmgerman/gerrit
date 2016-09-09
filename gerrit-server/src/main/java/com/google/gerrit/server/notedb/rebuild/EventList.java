@@ -217,6 +217,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|isSubmit
+specifier|private
+name|boolean
+name|isSubmit
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|iterator ()
@@ -250,6 +255,19 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|e
+operator|.
+name|isSubmit
+argument_list|()
+condition|)
+block|{
+name|isSubmit
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 DECL|method|clear ()
 name|void
@@ -260,6 +278,10 @@ name|list
 operator|.
 name|clear
 argument_list|()
+expr_stmt|;
+name|isSubmit
+operator|=
+literal|false
 expr_stmt|;
 block|}
 DECL|method|isEmpty ()
@@ -371,6 +393,21 @@ return|return
 literal|false
 return|;
 comment|// Different patch set, author, or tag.
+block|}
+if|if
+condition|(
+name|e
+operator|.
+name|isPostSubmitApproval
+argument_list|()
+operator|&&
+name|isSubmit
+condition|)
+block|{
+comment|// Post-submit approvals must come after the update that submits.
+return|return
+literal|false
+return|;
 block|}
 name|long
 name|t

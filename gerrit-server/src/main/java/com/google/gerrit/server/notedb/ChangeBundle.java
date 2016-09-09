@@ -1978,6 +1978,8 @@ argument_list|,
 literal|6
 argument_list|,
 literal|7
+argument_list|,
+literal|8
 argument_list|)
 expr_stmt|;
 name|checkColumns
@@ -4739,6 +4741,11 @@ argument_list|)
 decl_stmt|;
 comment|// ReviewDb allows timestamps before patch set was created, but NoteDb
 comment|// truncates this to the patch set creation timestamp.
+comment|//
+comment|// ChangeRebuilder ensures all post-submit approvals happen after the
+comment|// actual submit, so the timestamps may not line up. This shouldn't really
+comment|// happen, because postSubmit shouldn't be set in ReviewDb until after the
+comment|// change is submitted in ReviewDb, but you never know.
 name|Timestamp
 name|ta
 init|=
@@ -4826,6 +4833,7 @@ condition|)
 block|{
 name|excludeGranted
 operator|=
+operator|(
 name|ta
 operator|.
 name|before
@@ -4845,6 +4853,16 @@ operator|.
 name|getCreatedOn
 argument_list|()
 argument_list|)
+operator|)
+operator|||
+name|ta
+operator|.
+name|compareTo
+argument_list|(
+name|tb
+argument_list|)
+operator|<
+literal|0
 expr_stmt|;
 block|}
 elseif|else
@@ -4884,6 +4902,15 @@ operator|.
 name|getCreatedOn
 argument_list|()
 argument_list|)
+operator|||
+name|tb
+operator|.
+name|compareTo
+argument_list|(
+name|ta
+argument_list|)
+operator|<
+literal|0
 expr_stmt|;
 block|}
 if|if

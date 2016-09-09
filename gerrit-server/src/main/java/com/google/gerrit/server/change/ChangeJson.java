@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -5582,6 +5598,31 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|Change
+operator|.
+name|Status
+name|status
+init|=
+name|cd
+operator|.
+name|change
+argument_list|()
+operator|.
+name|getStatus
+argument_list|()
+decl_stmt|;
+name|checkState
+argument_list|(
+name|status
+operator|.
+name|isOpen
+argument_list|()
+argument_list|,
+literal|"should not call setAllApprovals on %s change"
+argument_list|,
+name|status
+argument_list|)
+expr_stmt|;
 comment|// Include a user in the output for this label if either:
 comment|//  - They are an explicit reviewer.
 comment|//  - They ever voted on this change.
@@ -5866,6 +5907,24 @@ operator|.
 name|getGranted
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|psa
+operator|.
+name|isPostSubmit
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"unexpected post-submit approval on open change: {}"
+argument_list|,
+name|psa
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -6383,6 +6442,21 @@ operator|.
 name|getTag
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|psa
+operator|.
+name|isPostSubmit
+argument_list|()
+condition|)
+block|{
+name|info
+operator|.
+name|postSubmit
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
