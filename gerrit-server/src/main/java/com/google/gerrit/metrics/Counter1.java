@@ -96,7 +96,7 @@ parameter_list|>
 implements|implements
 name|RegistrationHandle
 block|{
-comment|/** Increment the counter by one event. */
+comment|/**    * Increment the counter by one event.    *    * @param field1 bucket to increment.    */
 DECL|method|increment (F1 field1)
 specifier|public
 name|void

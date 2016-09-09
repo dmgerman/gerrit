@@ -109,7 +109,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Describes a bucketing field used by a metric. */
+comment|/**  * Describes a bucketing field used by a metric.  *  * @param<T> type of field  */
 end_comment
 
 begin_class
@@ -121,7 +121,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-comment|/** Break down metrics by boolean true/false. */
+comment|/**    * Break down metrics by boolean true/false.    *    * @param name field name    * @return boolean field    */
 DECL|method|ofBoolean (String name)
 specifier|public
 specifier|static
@@ -144,7 +144,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/** Break down metrics by boolean true/false. */
+comment|/**    * Break down metrics by boolean true/false.    *    * @param name field name    * @param description field description    * @return boolean field    */
 DECL|method|ofBoolean (String name, String description)
 specifier|public
 specifier|static
@@ -176,7 +176,7 @@ name|description
 argument_list|)
 return|;
 block|}
-comment|/** Break down metrics by cases of an enum. */
+comment|/**    * Break down metrics by cases of an enum.    *    * @param enumType type of enum    * @param name field name    * @return enum field    */
 DECL|method|ofEnum (Class<E> enumType, String name)
 specifier|public
 specifier|static
@@ -215,7 +215,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/** Break down metrics by cases of an enum. */
+comment|/**    * Break down metrics by cases of an enum.    *    * @param enumType type of enum    * @param name field name    * @param description field description    * @return enum field    */
 DECL|method|ofEnum (Class<E> enumType, String name, String description)
 specifier|public
 specifier|static
@@ -259,7 +259,7 @@ name|description
 argument_list|)
 return|;
 block|}
-comment|/**    * Break down metrics by string.    *<p>    * Each unique string will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    */
+comment|/**    * Break down metrics by string.    *<p>    * Each unique string will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    *    * @param name field name    * @return string field    */
 DECL|method|ofString (String name)
 specifier|public
 specifier|static
@@ -282,7 +282,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Break down metrics by string.    *<p>    * Each unique string will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    */
+comment|/**    * Break down metrics by string.    *<p>    * Each unique string will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    *    * @param name field name    * @param description field description    * @return string field    */
 DECL|method|ofString (String name, String description)
 specifier|public
 specifier|static
@@ -314,7 +314,7 @@ name|description
 argument_list|)
 return|;
 block|}
-comment|/**    * Break down metrics by integer.    *<p>    * Each unique integer will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    */
+comment|/**    * Break down metrics by integer.    *<p>    * Each unique integer will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    *    * @param name field name    * @return integer field    */
 DECL|method|ofInteger (String name)
 specifier|public
 specifier|static
@@ -337,7 +337,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Break down metrics by integer.    *<p>    * Each unique integer will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    */
+comment|/**    * Break down metrics by integer.    *<p>    * Each unique integer will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    *    * @param name field name    * @param description field description    * @return integer field    */
 DECL|method|ofInteger (String name, String description)
 specifier|public
 specifier|static
@@ -458,7 +458,7 @@ operator|=
 name|description
 expr_stmt|;
 block|}
-comment|/** Name of this field within the metric. */
+comment|/** @return name of this field within the metric. */
 DECL|method|getName ()
 specifier|public
 name|String
@@ -469,7 +469,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/** Type of value used within the field. */
+comment|/** @return type of value used within the field. */
 DECL|method|getType ()
 specifier|public
 name|Class
@@ -483,7 +483,7 @@ return|return
 name|keyType
 return|;
 block|}
-comment|/** Description text for the field explaining its range of values. */
+comment|/** @return description text for the field explaining its range of values. */
 DECL|method|getDescription ()
 specifier|public
 name|String

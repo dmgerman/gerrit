@@ -169,7 +169,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Begin a timer for the current block, value will be recorded when closed. */
+comment|/**    * Begin a timer for the current block, value will be recorded when closed.    *    * @return timer context    */
 DECL|method|start ()
 specifier|public
 name|Context
@@ -184,7 +184,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/** Record a value in the distribution. */
+comment|/** Record a value in the distribution.    *    * @param value value to record    * @param unit time unit of the value    */
 DECL|method|record (long value, TimeUnit unit)
 specifier|public
 specifier|abstract
