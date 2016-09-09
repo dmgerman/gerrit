@@ -413,7 +413,7 @@ name|CREATE
 parameter_list|)
 operator|,
 DECL|enumConstant|ANNOTATED
-constructor|ANNOTATED(Permission.PUSH_TAG
+constructor|ANNOTATED(Permission.CREATE_TAG
 block|)
 enum|;
 DECL|field|createPermission

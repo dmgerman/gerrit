@@ -2019,7 +2019,7 @@ name|canPerformOnAnyRef
 argument_list|(
 name|Permission
 operator|.
-name|PUSH_TAG
+name|CREATE_TAG
 argument_list|)
 condition|)
 block|{

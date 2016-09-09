@@ -1551,7 +1551,7 @@ name|canPerform
 argument_list|(
 name|Permission
 operator|.
-name|PUSH_SIGNED_TAG
+name|CREATE_SIGNED_TAG
 argument_list|)
 return|;
 block|}
@@ -1560,7 +1560,7 @@ name|canPerform
 argument_list|(
 name|Permission
 operator|.
-name|PUSH_TAG
+name|CREATE_TAG
 argument_list|)
 return|;
 block|}
