@@ -275,6 +275,8 @@ literal|"Abandoned.soy"
 block|,
 literal|"AddKey.soy"
 block|,
+literal|"AddKeyHtml.soy"
+block|,
 literal|"ChangeSubject.soy"
 block|,
 literal|"ChangeFooter.soy"
@@ -288,6 +290,8 @@ block|,
 literal|"DeleteVote.soy"
 block|,
 literal|"Footer.soy"
+block|,
+literal|"FooterHtml.soy"
 block|,
 literal|"Merged.soy"
 block|,
