@@ -185,7 +185,7 @@ name|RestResource
 argument_list|>
 name|view
 decl_stmt|;
-comment|/**    * Creates a new audit event with results    *    * @param sessionId session id the event belongs to    * @param who principal that has generated the event    * @param httpRequest the HttpServletRequest    * @param when time-stamp of when the event started    * @param params parameters of the event    * @param result result of the event    * @param resource REST resource data    * @param view view rendering object    */
+comment|/**    * Creates a new audit event with results    *    * @param sessionId session id the event belongs to    * @param who principal that has generated the event    * @param httpRequest the HttpServletRequest    * @param when time-stamp of when the event started    * @param params parameters of the event    * @param input input    * @param status HTTP status    * @param result result of the event    * @param resource REST resource data    * @param view view rendering object    */
 DECL|method|ExtendedHttpAuditEvent (String sessionId, CurrentUser who, HttpServletRequest httpRequest, long when, Multimap<String, ?> params, Object input, int status, Object result, RestResource resource, RestView<RestResource> view)
 specifier|public
 name|ExtendedHttpAuditEvent

@@ -100,7 +100,7 @@ name|RpcAuditEvent
 extends|extends
 name|HttpAuditEvent
 block|{
-comment|/**    * Creates a new audit event with results    *    * @param sessionId session id the event belongs to    * @param who principal that has generated the event    * @param what object of the event    * @param when time-stamp of when the event started    * @param params parameters of the event    * @param result result of the event    */
+comment|/**    * Creates a new audit event with results    *    * @param sessionId session id the event belongs to    * @param who principal that has generated the event    * @param what object of the event    * @param when time-stamp of when the event started    * @param params parameters of the event    * @param httpMethod HTTP method    * @param input input    * @param status HTTP status    * @param result result of the event    */
 DECL|method|RpcAuditEvent (String sessionId, CurrentUser who, String what, long when, Multimap<String, ?> params, String httpMethod, Object input, int status, Object result)
 specifier|public
 name|RpcAuditEvent
