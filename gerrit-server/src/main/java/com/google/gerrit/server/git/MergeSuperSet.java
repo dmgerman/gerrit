@@ -706,6 +706,13 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|cd
+operator|.
+name|setMergeable
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|field|changeDataFactory
@@ -1999,10 +2006,11 @@ name|InternalChangeQuery
 name|query
 parameter_list|()
 block|{
-comment|// Request fields required for completing the ChangeSet without having to
-comment|// touch the database. This provides reasonable performance when loading the
-comment|// change screen; callers that care about reading the latest value of these
-comment|// fields should clear them explicitly using reloadChanges().
+comment|// Request fields required for completing the ChangeSet and converting to
+comment|// ChangeInfo without having to touch the database or opening the repository
+comment|// more than necessary. This provides reasonable performance when loading
+comment|// the change screen; callers that care about reading the latest value of
+comment|// these fields should clear them explicitly using reloadChanges().
 name|Set
 argument_list|<
 name|String
@@ -2023,6 +2031,13 @@ argument_list|,
 name|ChangeField
 operator|.
 name|PATCH_SET
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|ChangeField
+operator|.
+name|MERGEABLE
 operator|.
 name|getName
 argument_list|()
