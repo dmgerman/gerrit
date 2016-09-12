@@ -2886,6 +2886,11 @@ name|cs
 init|=
 name|mergeSuperSet
 operator|.
+name|setMergeOpRepoManager
+argument_list|(
+name|orm
+argument_list|)
+operator|.
 name|completeChangeSet
 argument_list|(
 name|db
