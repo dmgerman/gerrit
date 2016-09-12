@@ -424,7 +424,10 @@ if|if
 condition|(
 name|patchList
 operator|.
-name|isAgainstParent
+name|getComparisonType
+argument_list|()
+operator|.
+name|isAgainstParentOrAutoMerge
 argument_list|()
 condition|)
 block|{

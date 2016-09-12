@@ -299,7 +299,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|22L
+literal|23L
 decl_stmt|;
 DECL|field|WHITESPACE_TYPES
 specifier|public

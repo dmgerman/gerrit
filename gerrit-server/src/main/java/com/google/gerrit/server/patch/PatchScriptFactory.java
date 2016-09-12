@@ -1797,7 +1797,7 @@ name|setTrees
 argument_list|(
 name|list
 operator|.
-name|isAgainstParent
+name|getComparisonType
 argument_list|()
 argument_list|,
 name|list

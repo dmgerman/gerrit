@@ -610,10 +610,10 @@ specifier|private
 name|DiffPreferencesInfo
 name|diffPrefs
 decl_stmt|;
-DECL|field|againstParent
+DECL|field|comparisonType
 specifier|private
-name|boolean
-name|againstParent
+name|ComparisonType
+name|comparisonType
 decl_stmt|;
 DECL|field|aId
 specifier|private
@@ -786,13 +786,13 @@ name|MAX_CONTEXT
 expr_stmt|;
 block|}
 block|}
-DECL|method|setTrees (final boolean ap, final ObjectId a, final ObjectId b)
+DECL|method|setTrees (final ComparisonType ct, final ObjectId a, final ObjectId b)
 name|void
 name|setTrees
 parameter_list|(
 specifier|final
-name|boolean
-name|ap
+name|ComparisonType
+name|ct
 parameter_list|,
 specifier|final
 name|ObjectId
@@ -803,9 +803,9 @@ name|ObjectId
 name|b
 parameter_list|)
 block|{
-name|againstParent
+name|comparisonType
 operator|=
-name|ap
+name|ct
 expr_stmt|;
 name|aId
 operator|=
@@ -2462,7 +2462,10 @@ condition|)
 block|{
 if|if
 condition|(
-name|againstParent
+name|comparisonType
+operator|.
+name|isAgainstParentOrAutoMerge
+argument_list|()
 operator|&&
 operator|(
 name|aId

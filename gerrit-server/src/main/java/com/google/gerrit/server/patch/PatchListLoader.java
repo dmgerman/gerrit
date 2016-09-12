@@ -1232,7 +1232,10 @@ literal|null
 condition|)
 block|{
 comment|// TODO(sop) Remove this case.
-comment|// This is a merge commit, compared to its ancestor.
+comment|// This is an octopus merge commit which should be compared against the
+comment|// auto-merge. However since we don't support computing the auto-merge
+comment|// for octopus merge commits, we fall back to diffing against the first
+comment|// parent, even though this wasn't what was requested.
 comment|//
 name|PatchListEntry
 index|[]
@@ -1268,16 +1271,21 @@ name|a
 argument_list|,
 name|b
 argument_list|,
-literal|true
+name|ComparisonType
+operator|.
+name|againstParent
+argument_list|(
+literal|1
+argument_list|)
 argument_list|,
 name|entries
 argument_list|)
 return|;
 block|}
-name|boolean
-name|againstParent
+name|ComparisonType
+name|comparisonType
 init|=
-name|isAgainstParent
+name|getComparisonType
 argument_list|(
 name|a
 argument_list|,
@@ -1498,7 +1506,10 @@ name|cmp
 argument_list|,
 name|reader
 argument_list|,
-name|againstParent
+name|comparisonType
+operator|.
+name|isAgainstParentOrAutoMerge
+argument_list|()
 condition|?
 literal|null
 else|:
@@ -1640,7 +1651,7 @@ name|a
 argument_list|,
 name|b
 argument_list|,
-name|againstParent
+name|comparisonType
 argument_list|,
 name|entries
 operator|.
@@ -1659,10 +1670,10 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|isAgainstParent (RevObject a, RevCommit b)
+DECL|method|getComparisonType (RevObject a, RevCommit b)
 specifier|private
-name|boolean
-name|isAgainstParent
+name|ComparisonType
+name|getComparisonType
 parameter_list|(
 name|RevObject
 name|a
@@ -1705,12 +1716,46 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|true
+name|ComparisonType
+operator|.
+name|againstParent
+argument_list|(
+name|i
+operator|+
+literal|1
+argument_list|)
 return|;
 block|}
 block|}
+if|if
+condition|(
+name|key
+operator|.
+name|getOldId
+argument_list|()
+operator|==
+literal|null
+operator|&&
+name|b
+operator|.
+name|getParentCount
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 return|return
-literal|false
+name|ComparisonType
+operator|.
+name|againstAutoMerge
+argument_list|()
+return|;
+block|}
+return|return
+name|ComparisonType
+operator|.
+name|againstOtherPatchSet
+argument_list|()
 return|;
 block|}
 DECL|method|getFileSize (ObjectReader reader, FileMode mode, String path, RevTree t)
