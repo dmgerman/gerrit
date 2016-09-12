@@ -4781,8 +4781,6 @@ operator|.
 name|openRepo
 argument_list|(
 name|project
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
