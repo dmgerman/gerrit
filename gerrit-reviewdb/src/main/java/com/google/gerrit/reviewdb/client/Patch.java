@@ -115,6 +115,26 @@ name|COMMIT_MSG
 init|=
 literal|"/COMMIT_MSG"
 decl_stmt|;
+comment|/**    * Checks if the given path represents a magic file. A magic file is a    * generated file that is automatically included into changes. It does not    * exist in the commit of the patch set.    *    * @param path the file path    * @return {@code true} if the path represents a magic file, otherwise    *         {@code false}.    */
+DECL|method|isMagic (String path)
+specifier|public
+specifier|static
+name|boolean
+name|isMagic
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+block|{
+return|return
+name|COMMIT_MSG
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+return|;
+block|}
 DECL|class|Key
 specifier|public
 specifier|static

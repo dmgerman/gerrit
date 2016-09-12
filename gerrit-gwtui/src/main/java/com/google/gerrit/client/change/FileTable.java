@@ -3538,9 +3538,7 @@ condition|(
 operator|!
 name|Patch
 operator|.
-name|COMMIT_MSG
-operator|.
-name|equals
+name|isMagic
 argument_list|(
 name|info
 operator|.
@@ -4145,9 +4143,7 @@ condition|(
 operator|!
 name|Patch
 operator|.
-name|COMMIT_MSG
-operator|.
-name|equals
+name|isMagic
 argument_list|(
 name|info
 operator|.
@@ -4366,9 +4362,7 @@ condition|(
 operator|!
 name|Patch
 operator|.
-name|COMMIT_MSG
-operator|.
-name|equals
+name|isMagic
 argument_list|(
 name|info
 operator|.
@@ -5247,9 +5241,7 @@ condition|(
 operator|!
 name|Patch
 operator|.
-name|COMMIT_MSG
-operator|.
-name|equals
+name|isMagic
 argument_list|(
 name|info
 operator|.
@@ -5476,9 +5468,7 @@ operator|&&
 operator|!
 name|Patch
 operator|.
-name|COMMIT_MSG
-operator|.
-name|equals
+name|isMagic
 argument_list|(
 name|info
 operator|.

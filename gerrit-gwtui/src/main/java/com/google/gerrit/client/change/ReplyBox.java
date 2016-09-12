@@ -3363,13 +3363,11 @@ block|{
 if|if
 condition|(
 operator|!
-name|path
-operator|.
-name|equals
-argument_list|(
 name|Patch
 operator|.
-name|COMMIT_MSG
+name|isMagic
+argument_list|(
+name|path
 argument_list|)
 condition|)
 block|{
