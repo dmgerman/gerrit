@@ -296,6 +296,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -446,7 +458,10 @@ annotation|@
 name|Inject
 DECL|field|mergeSuperSet
 specifier|private
+name|Provider
+argument_list|<
 name|MergeSuperSet
+argument_list|>
 name|mergeSuperSet
 decl_stmt|;
 annotation|@
@@ -1929,6 +1944,9 @@ name|ChangeSet
 name|cs
 init|=
 name|mergeSuperSet
+operator|.
+name|get
+argument_list|()
 operator|.
 name|completeChangeSet
 argument_list|(

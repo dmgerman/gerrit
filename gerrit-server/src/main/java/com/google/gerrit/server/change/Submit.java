@@ -1206,7 +1206,10 @@ decl_stmt|;
 DECL|field|mergeSuperSet
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MergeSuperSet
+argument_list|>
 name|mergeSuperSet
 decl_stmt|;
 DECL|field|accounts
@@ -1280,7 +1283,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Submit (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, ChangeData.Factory changeDataFactory, ChangeMessagesUtil cmUtil, ChangeNotes.Factory changeNotesFactory, Provider<MergeOp> mergeOpProvider, MergeSuperSet mergeSuperSet, AccountsCollection accounts, ChangesCollection changes, @GerritServerConfig Config cfg, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil)
+DECL|method|Submit (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, ChangeData.Factory changeDataFactory, ChangeMessagesUtil cmUtil, ChangeNotes.Factory changeNotesFactory, Provider<MergeOp> mergeOpProvider, Provider<MergeSuperSet> mergeSuperSet, AccountsCollection accounts, ChangesCollection changes, @GerritServerConfig Config cfg, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil)
 name|Submit
 parameter_list|(
 name|Provider
@@ -1311,7 +1314,10 @@ name|MergeOp
 argument_list|>
 name|mergeOpProvider
 parameter_list|,
+name|Provider
+argument_list|<
 name|MergeSuperSet
+argument_list|>
 name|mergeSuperSet
 parameter_list|,
 name|AccountsCollection
@@ -2415,6 +2421,9 @@ block|{
 name|cs
 operator|=
 name|mergeSuperSet
+operator|.
+name|get
+argument_list|()
 operator|.
 name|completeChangeSet
 argument_list|(
