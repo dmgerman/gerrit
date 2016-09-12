@@ -455,6 +455,8 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|ImmutableSet
 operator|.
 expr|<
@@ -550,7 +552,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|create ( Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Change.Status status, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, Multimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, Multimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, Multimap<RevId, PatchLineComment> publishedComments)
+DECL|method|create ( Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Change.Status status, @Nullable Account.Id assignee, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, Multimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, Multimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, Multimap<RevId, PatchLineComment> publishedComments)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -610,6 +612,13 @@ name|Change
 operator|.
 name|Status
 name|status
+parameter_list|,
+annotation|@
+name|Nullable
+name|Account
+operator|.
+name|Id
+name|assignee
 parameter_list|,
 annotation|@
 name|Nullable
@@ -733,6 +742,8 @@ name|submissionId
 argument_list|,
 name|status
 argument_list|)
+argument_list|,
+name|assignee
 argument_list|,
 name|ImmutableSet
 operator|.
@@ -919,6 +930,16 @@ name|columns
 parameter_list|()
 function_decl|;
 comment|// Other related to this Change.
+DECL|method|assignee ()
+annotation|@
+name|Nullable
+specifier|abstract
+name|Account
+operator|.
+name|Id
+name|assignee
+parameter_list|()
+function_decl|;
 DECL|method|hashtags ()
 specifier|abstract
 name|ImmutableSet

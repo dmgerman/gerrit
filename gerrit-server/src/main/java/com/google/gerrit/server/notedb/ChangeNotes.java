@@ -2843,6 +2843,22 @@ name|reviewerUpdates
 argument_list|()
 return|;
 block|}
+comment|/**    * @return an Account.Id of the user assigned to this change.    */
+DECL|method|getAssignee ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getAssignee
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|assignee
+argument_list|()
+return|;
+block|}
 comment|/**    *    * @return a ImmutableSet of all hashtags for this change sorted in alphabetical order.    */
 DECL|method|getHashtags ()
 specifier|public
