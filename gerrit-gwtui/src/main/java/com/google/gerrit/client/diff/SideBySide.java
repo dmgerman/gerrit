@@ -1774,13 +1774,6 @@ argument_list|)
 operator|.
 name|set
 argument_list|(
-literal|"lineWrapping"
-argument_list|,
-literal|false
-argument_list|)
-operator|.
-name|set
-argument_list|(
 literal|"matchBrackets"
 argument_list|,
 name|prefs
