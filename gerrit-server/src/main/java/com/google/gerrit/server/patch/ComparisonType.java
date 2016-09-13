@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -152,6 +168,7 @@ name|boolean
 name|autoMerge
 decl_stmt|;
 DECL|method|againstOtherPatchSet ()
+specifier|public
 specifier|static
 name|ComparisonType
 name|againstOtherPatchSet
@@ -168,6 +185,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|againstParent (int parentNum)
+specifier|public
 specifier|static
 name|ComparisonType
 name|againstParent
@@ -187,6 +205,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|againstAutoMerge ()
+specifier|public
 specifier|static
 name|ComparisonType
 name|againstAutoMerge
@@ -260,6 +279,21 @@ parameter_list|()
 block|{
 return|return
 name|autoMerge
+return|;
+block|}
+DECL|method|getParentNum ()
+specifier|public
+name|int
+name|getParentNum
+parameter_list|()
+block|{
+name|checkNotNull
+argument_list|(
+name|parentNum
+argument_list|)
+expr_stmt|;
+return|return
+name|parentNum
 return|;
 block|}
 DECL|method|writeTo (OutputStream out)

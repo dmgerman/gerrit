@@ -115,6 +115,16 @@ name|COMMIT_MSG
 init|=
 literal|"/COMMIT_MSG"
 decl_stmt|;
+comment|/** Magical file name which represents the merge list of a merge commit. */
+DECL|field|MERGE_LIST
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MERGE_LIST
+init|=
+literal|"/MERGE_LIST"
+decl_stmt|;
 comment|/**    * Checks if the given path represents a magic file. A magic file is a    * generated file that is automatically included into changes. It does not    * exist in the commit of the patch set.    *    * @param path the file path    * @return {@code true} if the path represents a magic file, otherwise    *         {@code false}.    */
 DECL|method|isMagic (String path)
 specifier|public
@@ -128,6 +138,13 @@ parameter_list|)
 block|{
 return|return
 name|COMMIT_MSG
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+operator|||
+name|MERGE_LIST
 operator|.
 name|equals
 argument_list|(
