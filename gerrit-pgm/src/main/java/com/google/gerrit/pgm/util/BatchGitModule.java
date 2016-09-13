@@ -148,24 +148,6 @@ name|CommitValidationListener
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|validators
-operator|.
-name|CommitValidators
-import|;
-end_import
-
 begin_comment
 comment|/** Module for batch programs that need git access. */
 end_comment
@@ -206,15 +188,6 @@ name|binder
 argument_list|()
 argument_list|,
 name|CommitValidationListener
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|CommitValidators
-operator|.
-name|Factory
 operator|.
 name|class
 argument_list|)

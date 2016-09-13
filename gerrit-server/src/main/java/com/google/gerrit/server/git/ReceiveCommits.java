@@ -16323,6 +16323,12 @@ name|commitValidatorsFactory
 operator|.
 name|create
 argument_list|(
+name|CommitValidators
+operator|.
+name|Policy
+operator|.
+name|RECEIVE_COMMITS
+argument_list|,
 name|ctl
 argument_list|,
 name|sshInfo
@@ -16338,11 +16344,9 @@ name|addAll
 argument_list|(
 name|commitValidators
 operator|.
-name|validateForReceiveCommits
+name|validate
 argument_list|(
 name|receiveEvent
-argument_list|,
-name|rejectCommits
 argument_list|)
 argument_list|)
 expr_stmt|;
