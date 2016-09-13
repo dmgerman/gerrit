@@ -249,6 +249,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|lineWrapping
+argument_list|(
+name|in
+operator|.
+name|lineWrapping
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|autoCloseBrackets
 argument_list|(
 name|in
@@ -365,6 +374,13 @@ operator|.
 name|matchBrackets
 operator|=
 name|matchBrackets
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|lineWrapping
+operator|=
+name|lineWrapping
 argument_list|()
 expr_stmt|;
 name|p
@@ -601,6 +617,18 @@ name|m
 parameter_list|)
 comment|/*-{ this.match_brackets = m }-*/
 function_decl|;
+DECL|method|lineWrapping (boolean w)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|lineWrapping
+parameter_list|(
+name|boolean
+name|w
+parameter_list|)
+comment|/*-{ this.line_wrapping = w }-*/
+function_decl|;
 DECL|method|autoCloseBrackets (boolean c)
 specifier|public
 specifier|final
@@ -818,6 +846,15 @@ name|boolean
 name|matchBrackets
 parameter_list|()
 comment|/*-{ return this.match_brackets || false }-*/
+function_decl|;
+DECL|method|lineWrapping ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|lineWrapping
+parameter_list|()
+comment|/*-{ return this.line_wrapping || false }-*/
 function_decl|;
 DECL|method|autoCloseBrackets ()
 specifier|public

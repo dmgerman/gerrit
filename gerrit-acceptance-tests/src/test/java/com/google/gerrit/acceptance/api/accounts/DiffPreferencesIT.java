@@ -700,6 +700,12 @@ name|matchBrackets
 operator|^=
 literal|true
 expr_stmt|;
+name|i
+operator|.
+name|lineWrapping
+operator|^=
+literal|true
+expr_stmt|;
 name|DiffPreferencesInfo
 name|o
 init|=
