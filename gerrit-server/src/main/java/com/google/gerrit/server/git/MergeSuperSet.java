@@ -436,18 +436,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -647,8 +635,6 @@ comment|/**  * Calculates the minimal superset of changes required to be merged.
 end_comment
 
 begin_class
-annotation|@
-name|Singleton
 DECL|class|MergeSuperSet
 specifier|public
 class|class

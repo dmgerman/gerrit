@@ -524,7 +524,10 @@ decl_stmt|;
 DECL|field|mergeSuperSet
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MergeSuperSet
+argument_list|>
 name|mergeSuperSet
 decl_stmt|;
 DECL|field|sorter
@@ -565,7 +568,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|SubmittedTogether (ChangeJson.Factory json, Provider<ReviewDb> dbProvider, Provider<InternalChangeQuery> queryProvider, MergeSuperSet mergeSuperSet, Provider<WalkSorter> sorter)
+DECL|method|SubmittedTogether (ChangeJson.Factory json, Provider<ReviewDb> dbProvider, Provider<InternalChangeQuery> queryProvider, Provider<MergeSuperSet> mergeSuperSet, Provider<WalkSorter> sorter)
 name|SubmittedTogether
 parameter_list|(
 name|ChangeJson
@@ -585,7 +588,10 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
+name|Provider
+argument_list|<
 name|MergeSuperSet
+argument_list|>
 name|mergeSuperSet
 parameter_list|,
 name|Provider
@@ -730,6 +736,9 @@ name|ChangeSet
 name|cs
 init|=
 name|mergeSuperSet
+operator|.
+name|get
+argument_list|()
 operator|.
 name|completeChangeSet
 argument_list|(
