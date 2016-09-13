@@ -126,6 +126,11 @@ specifier|public
 name|Boolean
 name|matchBrackets
 decl_stmt|;
+DECL|field|lineWrapping
+specifier|public
+name|Boolean
+name|lineWrapping
+decl_stmt|;
 DECL|field|autoCloseBrackets
 specifier|public
 name|Boolean
@@ -219,6 +224,12 @@ operator|.
 name|matchBrackets
 operator|=
 literal|true
+expr_stmt|;
+name|i
+operator|.
+name|lineWrapping
+operator|=
+literal|false
 expr_stmt|;
 name|i
 operator|.

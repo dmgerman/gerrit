@@ -1791,6 +1791,16 @@ argument_list|)
 operator|.
 name|set
 argument_list|(
+literal|"lineWrapping"
+argument_list|,
+name|prefs
+operator|.
+name|lineWrapping
+argument_list|()
+argument_list|)
+operator|.
+name|set
+argument_list|(
 literal|"mode"
 argument_list|,
 name|getFileSize
