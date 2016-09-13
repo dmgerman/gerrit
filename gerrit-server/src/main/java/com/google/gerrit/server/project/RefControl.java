@@ -2048,6 +2048,21 @@ name|EDIT_HASHTAGS
 argument_list|)
 return|;
 block|}
+DECL|method|canEditAssignee ()
+specifier|public
+name|boolean
+name|canEditAssignee
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|EDIT_ASSIGNEE
+argument_list|)
+return|;
+block|}
 comment|/** @return true if this user can force edit topic names. */
 DECL|method|canForceEditTopicName ()
 specifier|public
