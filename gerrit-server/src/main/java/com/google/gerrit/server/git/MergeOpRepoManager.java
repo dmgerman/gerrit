@@ -1115,7 +1115,7 @@ return|return
 name|or
 return|;
 block|}
-DECL|method|openRepo (Project.NameKey project, boolean abortIfOpen)
+DECL|method|openRepo (Project.NameKey project)
 specifier|public
 name|OpenRepo
 name|openRepo
@@ -1124,36 +1124,12 @@ name|Project
 operator|.
 name|NameKey
 name|project
-parameter_list|,
-name|boolean
-name|abortIfOpen
 parameter_list|)
 throws|throws
 name|NoSuchProjectException
 throws|,
 name|IOException
 block|{
-if|if
-condition|(
-name|abortIfOpen
-condition|)
-block|{
-name|checkState
-argument_list|(
-operator|!
-name|openRepos
-operator|.
-name|containsKey
-argument_list|(
-name|project
-argument_list|)
-argument_list|,
-literal|"repo already opened: %s"
-argument_list|,
-name|project
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|openRepos
