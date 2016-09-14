@@ -2535,6 +2535,26 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|isMerge ()
+specifier|public
+specifier|final
+name|boolean
+name|isMerge
+parameter_list|()
+block|{
+return|return
+name|commit
+argument_list|()
+operator|.
+name|parents
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|1
+return|;
+block|}
 DECL|method|RevisionInfo ()
 specifier|protected
 name|RevisionInfo

@@ -76,6 +76,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|DiffObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|account
 operator|.
 name|DiffPreferences
@@ -455,20 +469,16 @@ DECL|field|scrollbar
 name|Scrollbar
 name|scrollbar
 decl_stmt|;
-DECL|method|DiffTable (DiffScreen parent, PatchSet.Id base, PatchSet.Id revision, String path)
+DECL|method|DiffTable (DiffScreen parent, DiffObject base, DiffObject revision, String path)
 name|DiffTable
 parameter_list|(
 name|DiffScreen
 name|parent
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|base
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|revision
 parameter_list|,
 name|String
@@ -487,6 +497,9 @@ operator|.
 name|A
 argument_list|,
 name|revision
+operator|.
+name|asPatchSetId
+argument_list|()
 operator|.
 name|getParentKey
 argument_list|()
@@ -508,6 +521,9 @@ operator|.
 name|B
 argument_list|,
 name|revision
+operator|.
+name|asPatchSetId
+argument_list|()
 operator|.
 name|getParentKey
 argument_list|()

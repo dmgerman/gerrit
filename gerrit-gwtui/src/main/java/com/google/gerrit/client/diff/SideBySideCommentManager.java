@@ -76,6 +76,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|DiffObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|Gerrit
 import|;
 end_import
@@ -195,15 +209,13 @@ name|SideBySideCommentManager
 extends|extends
 name|CommentManager
 block|{
-DECL|method|SideBySideCommentManager (SideBySide host, PatchSet.Id base, PatchSet.Id revision, String path, CommentLinkProcessor clp, boolean open)
+DECL|method|SideBySideCommentManager (SideBySide host, DiffObject base, PatchSet.Id revision, String path, CommentLinkProcessor clp, boolean open)
 name|SideBySideCommentManager
 parameter_list|(
 name|SideBySide
 name|host
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|base
 parameter_list|,
 name|PatchSet

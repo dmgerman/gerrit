@@ -74,13 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|client
 operator|.
-name|Patch
-operator|.
-name|ChangeType
+name|DiffObject
 import|;
 end_import
 
@@ -96,7 +92,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
+name|Patch
+operator|.
+name|ChangeType
 import|;
 end_import
 
@@ -297,20 +295,16 @@ specifier|private
 name|boolean
 name|visibleA
 decl_stmt|;
-DECL|method|SideBySideTable (SideBySide parent, PatchSet.Id base, PatchSet.Id revision, String path)
+DECL|method|SideBySideTable (SideBySide parent, DiffObject base, DiffObject revision, String path)
 name|SideBySideTable
 parameter_list|(
 name|SideBySide
 name|parent
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|base
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|revision
 parameter_list|,
 name|String

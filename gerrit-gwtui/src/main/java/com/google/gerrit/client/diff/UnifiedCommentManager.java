@@ -76,6 +76,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|DiffObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|Gerrit
 import|;
 end_import
@@ -306,15 +320,13 @@ name|CommentGroup
 argument_list|>
 name|duplicates
 decl_stmt|;
-DECL|method|UnifiedCommentManager (Unified host, PatchSet.Id base, PatchSet.Id revision, String path, CommentLinkProcessor clp, boolean open)
+DECL|method|UnifiedCommentManager (Unified host, DiffObject base, PatchSet.Id revision, String path, CommentLinkProcessor clp, boolean open)
 name|UnifiedCommentManager
 parameter_list|(
 name|Unified
 name|host
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|base
 parameter_list|,
 name|PatchSet

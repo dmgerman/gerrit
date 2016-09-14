@@ -1524,15 +1524,13 @@ specifier|public
 class|class
 name|Dispatcher
 block|{
-DECL|method|toPatch (PatchSet.Id diffBase, PatchSet.Id revision, String fileName)
+DECL|method|toPatch (DiffObject diffBase, PatchSet.Id revision, String fileName)
 specifier|public
 specifier|static
 name|String
 name|toPatch
 parameter_list|(
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|diffBase
 parameter_list|,
 name|PatchSet
@@ -1561,15 +1559,13 @@ literal|0
 argument_list|)
 return|;
 block|}
-DECL|method|toPatch (PatchSet.Id diffBase, PatchSet.Id revision, String fileName, DisplaySide side, int line)
+DECL|method|toPatch (DiffObject diffBase, PatchSet.Id revision, String fileName, DisplaySide side, int line)
 specifier|public
 specifier|static
 name|String
 name|toPatch
 parameter_list|(
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|diffBase
 parameter_list|,
 name|PatchSet
@@ -1604,15 +1600,13 @@ name|line
 argument_list|)
 return|;
 block|}
-DECL|method|toSideBySide (PatchSet.Id diffBase, Patch.Key id)
+DECL|method|toSideBySide (DiffObject diffBase, Patch.Key id)
 specifier|public
 specifier|static
 name|String
 name|toSideBySide
 parameter_list|(
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|diffBase
 parameter_list|,
 name|Patch
@@ -1632,15 +1626,13 @@ name|id
 argument_list|)
 return|;
 block|}
-DECL|method|toSideBySide (PatchSet.Id diffBase, PatchSet.Id revision, String fileName)
+DECL|method|toSideBySide (DiffObject diffBase, PatchSet.Id revision, String fileName)
 specifier|public
 specifier|static
 name|String
 name|toSideBySide
 parameter_list|(
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|diffBase
 parameter_list|,
 name|PatchSet
@@ -1669,15 +1661,13 @@ literal|0
 argument_list|)
 return|;
 block|}
-DECL|method|toUnified (PatchSet.Id diffBase, PatchSet.Id revision, String fileName)
+DECL|method|toUnified (DiffObject diffBase, PatchSet.Id revision, String fileName)
 specifier|public
 specifier|static
 name|String
 name|toUnified
 parameter_list|(
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|diffBase
 parameter_list|,
 name|PatchSet
@@ -1706,15 +1696,13 @@ literal|0
 argument_list|)
 return|;
 block|}
-DECL|method|toUnified (PatchSet.Id diffBase, Patch.Key id)
+DECL|method|toUnified (DiffObject diffBase, Patch.Key id)
 specifier|public
 specifier|static
 name|String
 name|toUnified
 parameter_list|(
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|diffBase
 parameter_list|,
 name|Patch
@@ -1734,7 +1722,7 @@ name|id
 argument_list|)
 return|;
 block|}
-DECL|method|toPatch (String type, PatchSet.Id diffBase, Patch.Key id)
+DECL|method|toPatch (String type, DiffObject diffBase, Patch.Key id)
 specifier|public
 specifier|static
 name|String
@@ -1743,9 +1731,7 @@ parameter_list|(
 name|String
 name|type
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|diffBase
 parameter_list|,
 name|Patch
@@ -1826,7 +1812,10 @@ name|toPatch
 argument_list|(
 literal|"edit"
 argument_list|,
-literal|null
+name|DiffObject
+operator|.
+name|base
+argument_list|()
 argument_list|,
 name|revision
 argument_list|,
@@ -1838,7 +1827,7 @@ name|line
 argument_list|)
 return|;
 block|}
-DECL|method|toPatch (String type, PatchSet.Id diffBase, PatchSet.Id revision, String fileName, DisplaySide side, int line)
+DECL|method|toPatch (String type, DiffObject diffBase, PatchSet.Id revision, String fileName, DisplaySide side, int line)
 specifier|private
 specifier|static
 name|String
@@ -1847,9 +1836,7 @@ parameter_list|(
 name|String
 name|type
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|diffBase
 parameter_list|,
 name|PatchSet
@@ -1906,6 +1893,12 @@ condition|(
 name|diffBase
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|diffBase
+operator|.
+name|isBaseOrAutoMerge
+argument_list|()
 condition|)
 block|{
 name|p
@@ -1914,7 +1907,7 @@ name|append
 argument_list|(
 name|diffBase
 operator|.
-name|get
+name|asString
 argument_list|()
 argument_list|)
 operator|.
@@ -3513,7 +3506,10 @@ name|ChangeScreen
 argument_list|(
 name|id
 argument_list|,
-literal|null
+name|DiffObject
+operator|.
+name|base
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,
@@ -3582,12 +3578,13 @@ operator|=
 literal|""
 expr_stmt|;
 block|}
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|base
 init|=
-literal|null
+name|DiffObject
+operator|.
+name|base
+argument_list|()
 decl_stmt|;
 name|PatchSet
 operator|.
@@ -3613,17 +3610,12 @@ condition|)
 block|{
 name|base
 operator|=
-operator|new
-name|PatchSet
+name|DiffObject
 operator|.
-name|Id
+name|parse
 argument_list|(
 name|id
 argument_list|,
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
 name|psIdStr
 operator|.
 name|substring
@@ -3633,8 +3625,26 @@ argument_list|,
 name|dotdot
 argument_list|)
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|base
+operator|==
+literal|null
+condition|)
+block|{
+name|Gerrit
+operator|.
+name|display
+argument_list|(
+name|token
+argument_list|,
+operator|new
+name|NotFoundScreen
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|psIdStr
 operator|=
 name|psIdStr
@@ -3810,20 +3820,6 @@ argument_list|(
 name|id
 argument_list|,
 name|base
-operator|!=
-literal|null
-condition|?
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|base
-operator|.
-name|get
-argument_list|()
-argument_list|)
-else|:
-literal|null
 argument_list|,
 name|String
 operator|.
@@ -3961,7 +3957,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|patch (String token, PatchSet.Id baseId, Patch.Key id, DisplaySide side, int line, String panelType)
+DECL|method|patch (String token, DiffObject base, Patch.Key id, DisplaySide side, int line, String panelType)
 specifier|private
 specifier|static
 name|void
@@ -3970,10 +3966,8 @@ parameter_list|(
 name|String
 name|token
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
-name|baseId
+name|DiffObject
+name|base
 parameter_list|,
 name|Patch
 operator|.
@@ -4058,7 +4052,7 @@ name|unified
 argument_list|(
 name|token
 argument_list|,
-name|baseId
+name|base
 argument_list|,
 name|id
 argument_list|,
@@ -4074,7 +4068,7 @@ name|codemirror
 argument_list|(
 name|token
 argument_list|,
-name|baseId
+name|base
 argument_list|,
 name|id
 argument_list|,
@@ -4100,7 +4094,7 @@ name|codemirror
 argument_list|(
 name|token
 argument_list|,
-name|baseId
+name|base
 argument_list|,
 name|id
 argument_list|,
@@ -4125,7 +4119,7 @@ name|unified
 argument_list|(
 name|token
 argument_list|,
-name|baseId
+name|base
 argument_list|,
 name|id
 argument_list|,
@@ -4248,7 +4242,7 @@ argument_list|()
 operator|)
 return|;
 block|}
-DECL|method|unified (final String token, final PatchSet.Id baseId, final Patch.Key id, final DisplaySide side, final int line)
+DECL|method|unified (final String token, final DiffObject base, final Patch.Key id, final DisplaySide side, final int line)
 specifier|private
 specifier|static
 name|void
@@ -4259,10 +4253,8 @@ name|String
 name|token
 parameter_list|,
 specifier|final
-name|PatchSet
-operator|.
-name|Id
-name|baseId
+name|DiffObject
+name|base
 parameter_list|,
 specifier|final
 name|Patch
@@ -4305,12 +4297,17 @@ argument_list|,
 operator|new
 name|Unified
 argument_list|(
-name|baseId
+name|base
 argument_list|,
+name|DiffObject
+operator|.
+name|patchSet
+argument_list|(
 name|id
 operator|.
 name|getParentKey
 argument_list|()
+argument_list|)
 argument_list|,
 name|id
 operator|.
@@ -4328,7 +4325,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|codemirror (final String token, final PatchSet.Id baseId, final Patch.Key id, final DisplaySide side, final int line)
+DECL|method|codemirror (final String token, final DiffObject base, final Patch.Key id, final DisplaySide side, final int line)
 specifier|private
 specifier|static
 name|void
@@ -4339,10 +4336,8 @@ name|String
 name|token
 parameter_list|,
 specifier|final
-name|PatchSet
-operator|.
-name|Id
-name|baseId
+name|DiffObject
+name|base
 parameter_list|,
 specifier|final
 name|Patch
@@ -4385,12 +4380,17 @@ argument_list|,
 operator|new
 name|SideBySide
 argument_list|(
-name|baseId
+name|base
 argument_list|,
+name|DiffObject
+operator|.
+name|patchSet
+argument_list|(
 name|id
 operator|.
 name|getParentKey
 argument_list|()
+argument_list|)
 argument_list|,
 name|id
 operator|.
