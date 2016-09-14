@@ -1235,14 +1235,6 @@ name|hideBase
 parameter_list|()
 function_decl|;
 block|}
-DECL|field|base
-specifier|private
-specifier|final
-name|PatchSet
-operator|.
-name|Id
-name|base
-decl_stmt|;
 DECL|field|revision
 specifier|private
 specifier|final
@@ -1404,15 +1396,10 @@ specifier|private
 name|int
 name|generation
 decl_stmt|;
-DECL|method|EditScreen (PatchSet.Id base, Patch.Key patch, int startLine)
+DECL|method|EditScreen (Patch.Key patch, int startLine)
 specifier|public
 name|EditScreen
 parameter_list|(
-name|PatchSet
-operator|.
-name|Id
-name|base
-parameter_list|,
 name|Patch
 operator|.
 name|Key
@@ -1422,12 +1409,6 @@ name|int
 name|startLine
 parameter_list|)
 block|{
-name|this
-operator|.
-name|base
-operator|=
-name|base
-expr_stmt|;
 name|this
 operator|.
 name|revision
@@ -1919,11 +1900,6 @@ argument_list|(
 name|revision
 argument_list|,
 name|path
-argument_list|)
-operator|.
-name|base
-argument_list|(
-name|base
 argument_list|)
 operator|.
 name|webLinksOnly
@@ -3981,7 +3957,7 @@ name|toPatch
 argument_list|(
 literal|"sidebyside"
 argument_list|,
-name|base
+literal|null
 argument_list|,
 operator|new
 name|Patch
@@ -4050,7 +4026,7 @@ name|toPatch
 argument_list|(
 literal|"unified"
 argument_list|,
-name|base
+literal|null
 argument_list|,
 operator|new
 name|Patch
