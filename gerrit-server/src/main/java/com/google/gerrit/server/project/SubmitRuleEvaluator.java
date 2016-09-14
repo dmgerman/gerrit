@@ -989,6 +989,8 @@ argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 return|;
 block|}
@@ -1907,6 +1909,8 @@ argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 return|;
 block|}
