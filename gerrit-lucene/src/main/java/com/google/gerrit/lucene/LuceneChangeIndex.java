@@ -2929,12 +2929,7 @@ name|QuerySource
 argument_list|(
 name|indexes
 argument_list|,
-name|queryBuilder
-operator|.
-name|toQuery
-argument_list|(
 name|p
-argument_list|)
 argument_list|,
 name|opts
 argument_list|,
@@ -3102,6 +3097,15 @@ name|SubIndex
 argument_list|>
 name|indexes
 decl_stmt|;
+DECL|field|predicate
+specifier|private
+specifier|final
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|predicate
+decl_stmt|;
 DECL|field|query
 specifier|private
 specifier|final
@@ -3120,7 +3124,7 @@ specifier|final
 name|Sort
 name|sort
 decl_stmt|;
-DECL|method|QuerySource (List<SubIndex> indexes, Query query, QueryOptions opts, Sort sort)
+DECL|method|QuerySource (List<SubIndex> indexes, Predicate<ChangeData> predicate, QueryOptions opts, Sort sort)
 specifier|private
 name|QuerySource
 parameter_list|(
@@ -3130,8 +3134,11 @@ name|SubIndex
 argument_list|>
 name|indexes
 parameter_list|,
-name|Query
-name|query
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|predicate
 parameter_list|,
 name|QueryOptions
 name|opts
@@ -3139,6 +3146,8 @@ parameter_list|,
 name|Sort
 name|sort
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
 name|this
 operator|.
@@ -3148,11 +3157,22 @@ name|indexes
 expr_stmt|;
 name|this
 operator|.
+name|predicate
+operator|=
+name|predicate
+expr_stmt|;
+name|this
+operator|.
 name|query
 operator|=
 name|checkNotNull
 argument_list|(
-name|query
+name|queryBuilder
+operator|.
+name|toQuery
+argument_list|(
+name|predicate
+argument_list|)
 argument_list|,
 literal|"null query from Lucene"
 argument_list|)
@@ -3204,7 +3224,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|query
+name|predicate
 operator|.
 name|toString
 argument_list|()
@@ -3279,6 +3299,20 @@ name|OrmException
 block|{
 return|return
 name|doRead
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|predicate
+operator|.
+name|toString
 argument_list|()
 return|;
 block|}
