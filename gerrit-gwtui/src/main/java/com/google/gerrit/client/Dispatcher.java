@@ -1894,11 +1894,12 @@ name|diffBase
 operator|!=
 literal|null
 operator|&&
-operator|!
 name|diffBase
 operator|.
-name|isBaseOrAutoMerge
+name|asString
 argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|p

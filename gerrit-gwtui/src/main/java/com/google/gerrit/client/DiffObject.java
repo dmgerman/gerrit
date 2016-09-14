@@ -72,6 +72,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|GeneralPreferencesInfo
+operator|.
+name|DefaultBase
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -106,7 +124,16 @@ specifier|public
 class|class
 name|DiffObject
 block|{
-comment|/**    * Parses a string that represents a diff object.    *<p>    * The following string representations are supported:    *<ul>    *<li>a positive integer: represents a patch set    *<li>a negative integer: represents a parent of a merge patch set    *<li>'0': represents the edit patch set    *<li>empty string or null: represents the parent of a 1-parent patch set,    * also called base    *</ul>    *    * @param changeId the ID of the change to which the diff object belongs    * @param str the string representation of the diff object    * @return the parsed diff object, {@code null} if str cannot be parsed as    *         diff object    */
+DECL|field|AUTO_MERGE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AUTO_MERGE
+init|=
+literal|"AutoMerge"
+decl_stmt|;
+comment|/**    * Parses a string that represents a diff object.    *<p>    * The following string representations are supported:    *<ul>    *<li>a positive integer: represents a patch set    *<li>a negative integer: represents a parent of a merge patch set    *<li>'0': represents the edit patch set    *<li>empty string or null: represents the parent of a 1-parent patch set,    * also called base    *<li>'AutoMerge': represents the auto-merge of a merge patch set    *</ul>    *    * @param changeId the ID of the change to which the diff object belongs    * @param str the string representation of the diff object    * @return the parsed diff object, {@code null} if str cannot be parsed as    *         diff object    */
 DECL|method|parse (Change.Id changeId, String str)
 specifier|public
 specifier|static
@@ -138,7 +165,25 @@ return|return
 operator|new
 name|DiffObject
 argument_list|(
-literal|null
+literal|false
+argument_list|)
+return|;
+block|}
+if|if
+condition|(
+name|AUTO_MERGE
+operator|.
+name|equals
+argument_list|(
+name|str
+argument_list|)
+condition|)
+block|{
+return|return
+operator|new
+name|DiffObject
+argument_list|(
+literal|true
 argument_list|)
 return|;
 block|}
@@ -188,7 +233,7 @@ return|return
 operator|new
 name|DiffObject
 argument_list|(
-literal|null
+literal|false
 argument_list|)
 return|;
 block|}
@@ -204,7 +249,7 @@ return|return
 operator|new
 name|DiffObject
 argument_list|(
-literal|null
+literal|true
 argument_list|)
 return|;
 block|}
@@ -237,6 +282,12 @@ operator|.
 name|Id
 name|psId
 decl_stmt|;
+DECL|field|autoMerge
+specifier|private
+specifier|final
+name|boolean
+name|autoMerge
+decl_stmt|;
 DECL|method|DiffObject (PatchSet.Id psId)
 specifier|private
 name|DiffObject
@@ -253,6 +304,62 @@ name|psId
 operator|=
 name|psId
 expr_stmt|;
+name|this
+operator|.
+name|autoMerge
+operator|=
+literal|false
+expr_stmt|;
+block|}
+DECL|method|DiffObject (boolean autoMerge)
+specifier|private
+name|DiffObject
+parameter_list|(
+name|boolean
+name|autoMerge
+parameter_list|)
+block|{
+name|this
+operator|.
+name|psId
+operator|=
+literal|null
+expr_stmt|;
+name|this
+operator|.
+name|autoMerge
+operator|=
+name|autoMerge
+expr_stmt|;
+block|}
+DECL|method|isBase ()
+specifier|public
+name|boolean
+name|isBase
+parameter_list|()
+block|{
+return|return
+name|psId
+operator|==
+literal|null
+operator|&&
+operator|!
+name|autoMerge
+return|;
+block|}
+DECL|method|isAutoMerge ()
+specifier|public
+name|boolean
+name|isAutoMerge
+parameter_list|()
+block|{
+return|return
+name|psId
+operator|==
+literal|null
+operator|&&
+name|autoMerge
+return|;
 block|}
 DECL|method|isBaseOrAutoMerge ()
 specifier|public
@@ -362,13 +469,41 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns a string representation of this DiffObject that can be used in    * URLs.    *<p>    * The following string representations are returned:    *<ul>    *<li>a positive integer for a patch set    *<li>a negative integer for a parent of a merge patch set    *<li>'0' for the edit patch set    *<li>{@code null} for the parent of a 1-parent patch set, also called base    *<li>{@code null} for the auto-merge of a merge patch set    *</ul>    *    * @return string representation of this DiffObject    */
+comment|/**    * Returns a string representation of this DiffObject that can be used in    * URLs.    *<p>    * The following string representations are returned:    *<ul>    *<li>a positive integer for a patch set    *<li>a negative integer for a parent of a merge patch set    *<li>'0' for the edit patch set    *<li>{@code null} for the parent of a 1-parent patch set, also called base    *<li>'AutoMerge' for the auto-merge of a merge patch set    *</ul>    *    * @return string representation of this DiffObject    */
 DECL|method|asString ()
 specifier|public
 name|String
 name|asString
 parameter_list|()
 block|{
+if|if
+condition|(
+name|autoMerge
+condition|)
+block|{
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|getUserPreferences
+argument_list|()
+operator|.
+name|defaultBaseForMerges
+argument_list|()
+operator|!=
+name|DefaultBase
+operator|.
+name|AUTO_MERGE
+condition|)
+block|{
+return|return
+name|AUTO_MERGE
+return|;
+block|}
+return|return
+literal|null
+return|;
+block|}
 if|if
 condition|(
 name|psId
@@ -435,8 +570,18 @@ return|return
 literal|"Edit Patch Set"
 return|;
 block|}
+if|if
+condition|(
+name|isAutoMerge
+argument_list|()
+condition|)
+block|{
 return|return
-literal|"Base or Auto-Merge"
+literal|"Auto Merge"
+return|;
+block|}
+return|return
+literal|"Base"
 return|;
 block|}
 block|}

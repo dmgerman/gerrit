@@ -2436,12 +2436,12 @@ operator|(
 operator|!
 name|base
 operator|.
-name|isBaseOrAutoMerge
+name|isBase
 argument_list|()
 condition|?
 name|base
 operator|.
-name|toString
+name|asString
 argument_list|()
 operator|+
 literal|".."
