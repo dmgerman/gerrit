@@ -122,7 +122,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ArchiveFormat
+name|AllowedFormats
 import|;
 end_import
 
@@ -138,7 +138,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|GetArchive
+name|ArchiveFormat
 import|;
 end_import
 
@@ -644,8 +644,6 @@ annotation|@
 name|Inject
 DECL|field|allowedFormats
 specifier|private
-name|GetArchive
-operator|.
 name|AllowedFormats
 name|allowedFormats
 decl_stmt|;
