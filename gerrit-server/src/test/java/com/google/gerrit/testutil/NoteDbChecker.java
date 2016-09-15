@@ -246,6 +246,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|ChangeBundleReader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|ChangeNotes
 import|;
 end_import
@@ -426,6 +442,12 @@ specifier|final
 name|TestNotesMigration
 name|notesMigration
 decl_stmt|;
+DECL|field|bundleReader
+specifier|private
+specifier|final
+name|ChangeBundleReader
+name|bundleReader
+decl_stmt|;
 DECL|field|notesFactory
 specifier|private
 specifier|final
@@ -448,7 +470,7 @@ name|plcUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NoteDbChecker (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, TestNotesMigration notesMigration, ChangeNotes.Factory notesFactory, ChangeRebuilder changeRebuilder, PatchLineCommentsUtil plcUtil)
+DECL|method|NoteDbChecker (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, TestNotesMigration notesMigration, ChangeBundleReader bundleReader, ChangeNotes.Factory notesFactory, ChangeRebuilder changeRebuilder, PatchLineCommentsUtil plcUtil)
 name|NoteDbChecker
 parameter_list|(
 name|Provider
@@ -462,6 +484,9 @@ name|repoManager
 parameter_list|,
 name|TestNotesMigration
 name|notesMigration
+parameter_list|,
+name|ChangeBundleReader
+name|bundleReader
 parameter_list|,
 name|ChangeNotes
 operator|.
@@ -486,6 +511,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|bundleReader
+operator|=
+name|bundleReader
 expr_stmt|;
 name|this
 operator|.
@@ -916,7 +947,7 @@ name|expected
 operator|.
 name|add
 argument_list|(
-name|ChangeBundle
+name|bundleReader
 operator|.
 name|fromReviewDb
 argument_list|(
