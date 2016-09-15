@@ -779,6 +779,13 @@ name|equals
 argument_list|(
 literal|"0"
 argument_list|)
+operator|||
+name|id
+operator|.
+name|equals
+argument_list|(
+literal|"edit"
+argument_list|)
 condition|)
 block|{
 return|return
