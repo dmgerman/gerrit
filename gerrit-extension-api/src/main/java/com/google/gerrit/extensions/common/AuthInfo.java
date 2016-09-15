@@ -100,6 +100,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|GitBasicAuthPolicy
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -179,6 +195,11 @@ DECL|field|isGitBasicAuth
 specifier|public
 name|Boolean
 name|isGitBasicAuth
+decl_stmt|;
+DECL|field|gitBasicAuthPolicy
+specifier|public
+name|GitBasicAuthPolicy
+name|gitBasicAuthPolicy
 decl_stmt|;
 block|}
 end_class

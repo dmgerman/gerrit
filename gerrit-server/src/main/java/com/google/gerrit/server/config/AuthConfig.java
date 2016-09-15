@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|GitBasicAuthPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -433,6 +449,11 @@ specifier|final
 name|boolean
 name|allowRegisterNewEmail
 decl_stmt|;
+DECL|field|gitBasicAuthPolicy
+specifier|private
+name|GitBasicAuthPolicy
+name|gitBasicAuthPolicy
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|AuthConfig (@erritServerConfig final Config cfg)
@@ -752,6 +773,13 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+name|gitBasicAuthPolicy
+operator|=
+name|getBasicAuthPolicy
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
 name|useContributorAgreements
 operator|=
 name|cfg
@@ -994,6 +1022,44 @@ name|OPENID
 argument_list|)
 return|;
 block|}
+DECL|method|getBasicAuthPolicy (Config cfg)
+specifier|private
+name|GitBasicAuthPolicy
+name|getBasicAuthPolicy
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|)
+block|{
+name|GitBasicAuthPolicy
+name|defaultAuthPolicy
+init|=
+name|isLdapAuthType
+argument_list|()
+condition|?
+name|GitBasicAuthPolicy
+operator|.
+name|LDAP
+else|:
+name|GitBasicAuthPolicy
+operator|.
+name|HTTP
+decl_stmt|;
+return|return
+name|cfg
+operator|.
+name|getEnum
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|null
+argument_list|,
+literal|"gitBasicAuthPolicy"
+argument_list|,
+name|defaultAuthPolicy
+argument_list|)
+return|;
+block|}
 comment|/** Type of user authentication used by this Gerrit server. */
 DECL|method|getAuthType ()
 specifier|public
@@ -1224,6 +1290,16 @@ parameter_list|()
 block|{
 return|return
 name|gitBasicAuth
+return|;
+block|}
+DECL|method|getGitBasicAuthPolicy ()
+specifier|public
+name|GitBasicAuthPolicy
+name|getGitBasicAuthPolicy
+parameter_list|()
+block|{
+return|return
+name|gitBasicAuthPolicy
 return|;
 block|}
 comment|/** Whether contributor agreements are used. */
