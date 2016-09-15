@@ -528,7 +528,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ArchiveFormat
+name|AllowedFormats
 import|;
 end_import
 
@@ -544,7 +544,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|GetArchive
+name|ArchiveFormat
 import|;
 end_import
 
@@ -795,8 +795,6 @@ decl_stmt|;
 DECL|field|archiveFormats
 specifier|private
 specifier|final
-name|GetArchive
-operator|.
 name|AllowedFormats
 name|archiveFormats
 decl_stmt|;
@@ -859,7 +857,7 @@ name|agreementJson
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetServerInfo ( @erritServerConfig Config config, AuthConfig authConfig, Realm realm, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, DynamicSet<WebUiPlugin> webUiPlugins, GetArchive.AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, DynamicItem<AvatarProvider> avatar, @EnableSignedPush boolean enableSignedPush, QueryDocumentationExecutor docSearcher, NotesMigration migration, ProjectCache projectCache, AgreementJson agreementJson)
+DECL|method|GetServerInfo ( @erritServerConfig Config config, AuthConfig authConfig, Realm realm, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, DynamicSet<WebUiPlugin> webUiPlugins, AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, DynamicItem<AvatarProvider> avatar, @EnableSignedPush boolean enableSignedPush, QueryDocumentationExecutor docSearcher, NotesMigration migration, ProjectCache projectCache, AgreementJson agreementJson)
 specifier|public
 name|GetServerInfo
 parameter_list|(
@@ -898,8 +896,6 @@ name|WebUiPlugin
 argument_list|>
 name|webUiPlugins
 parameter_list|,
-name|GetArchive
-operator|.
 name|AllowedFormats
 name|archiveFormats
 parameter_list|,
@@ -1629,7 +1625,7 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getDownloadInfo ( DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, GetArchive.AllowedFormats archiveFormats)
+DECL|method|getDownloadInfo ( DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, AllowedFormats archiveFormats)
 specifier|private
 name|DownloadInfo
 name|getDownloadInfo
@@ -1652,8 +1648,6 @@ name|CloneCommand
 argument_list|>
 name|cloneCommands
 parameter_list|,
-name|GetArchive
-operator|.
 name|AllowedFormats
 name|archiveFormats
 parameter_list|)
