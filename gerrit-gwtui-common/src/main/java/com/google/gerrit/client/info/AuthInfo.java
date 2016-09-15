@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|GitBasicAuthPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -435,11 +451,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|isLdap
-argument_list|()
-operator|&&
 name|isGitBasicAuth
 argument_list|()
+operator|&&
+name|gitBasicAuthPolicy
+argument_list|()
+operator|==
+name|GitBasicAuthPolicy
+operator|.
+name|LDAP
 condition|)
 block|{
 return|return
@@ -448,6 +468,23 @@ return|;
 block|}
 return|return
 literal|true
+return|;
+block|}
+DECL|method|gitBasicAuthPolicy ()
+specifier|public
+specifier|final
+name|GitBasicAuthPolicy
+name|gitBasicAuthPolicy
+parameter_list|()
+block|{
+return|return
+name|GitBasicAuthPolicy
+operator|.
+name|valueOf
+argument_list|(
+name|gitBasicAuthPolicyRaw
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|useContributorAgreements ()
@@ -530,6 +567,14 @@ name|boolean
 name|isGitBasicAuth
 parameter_list|()
 comment|/*-{ return this.is_git_basic_auth || false; }-*/
+function_decl|;
+DECL|method|gitBasicAuthPolicyRaw ()
+specifier|private
+specifier|native
+name|String
+name|gitBasicAuthPolicyRaw
+parameter_list|()
+comment|/*-{ return this.git_basic_auth_policy; }-*/
 function_decl|;
 DECL|method|authTypeRaw ()
 specifier|private
