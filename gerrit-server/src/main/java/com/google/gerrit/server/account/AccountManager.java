@@ -2703,7 +2703,14 @@ throw|throw
 operator|new
 name|AccountException
 argument_list|(
-literal|"Identity in use by another account"
+literal|"Identity '"
+operator|+
+name|key
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"' in use by another account"
 argument_list|)
 throw|;
 block|}
@@ -2816,7 +2823,14 @@ throw|throw
 operator|new
 name|AccountException
 argument_list|(
-literal|"Identity not found"
+literal|"Identity '"
+operator|+
+name|key
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"' not found"
 argument_list|)
 throw|;
 block|}
