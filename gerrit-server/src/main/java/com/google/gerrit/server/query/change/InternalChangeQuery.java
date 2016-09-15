@@ -1097,7 +1097,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged (Repository repo, ReviewDb db, Branch.NameKey branch, List<String> hashes)
+DECL|method|byCommitsOnBranchNotMerged (Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes)
 specifier|public
 name|Iterable
 argument_list|<
@@ -1116,7 +1116,7 @@ operator|.
 name|NameKey
 name|branch
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -1150,7 +1150,7 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|byCommitsOnBranchNotMerged (Repository repo, ReviewDb db, Branch.NameKey branch, List<String> hashes, int indexLimit)
+DECL|method|byCommitsOnBranchNotMerged (Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes, int indexLimit)
 name|Iterable
 argument_list|<
 name|ChangeData
@@ -1168,7 +1168,7 @@ operator|.
 name|NameKey
 name|branch
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -1214,7 +1214,7 @@ name|hashes
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMergedFromDatabase ( Repository repo, final ReviewDb db, final Branch.NameKey branch, List<String> hashes)
+DECL|method|byCommitsOnBranchNotMergedFromDatabase ( Repository repo, final ReviewDb db, final Branch.NameKey branch, Collection<String> hashes)
 specifier|private
 name|Iterable
 argument_list|<
@@ -1235,7 +1235,7 @@ operator|.
 name|NameKey
 name|branch
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -1492,7 +1492,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMergedFromIndex ( Branch.NameKey branch, List<String> hashes)
+DECL|method|byCommitsOnBranchNotMergedFromIndex ( Branch.NameKey branch, Collection<String> hashes)
 specifier|private
 name|Iterable
 argument_list|<
@@ -1505,7 +1505,7 @@ operator|.
 name|NameKey
 name|branch
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
@@ -1555,7 +1555,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|commits (List<String> hashes)
+DECL|method|commits (Collection<String> hashes)
 specifier|private
 specifier|static
 name|List
@@ -1567,7 +1567,7 @@ argument_list|>
 argument_list|>
 name|commits
 parameter_list|(
-name|List
+name|Collection
 argument_list|<
 name|String
 argument_list|>
