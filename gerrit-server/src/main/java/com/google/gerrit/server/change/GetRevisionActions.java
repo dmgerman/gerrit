@@ -373,7 +373,10 @@ decl_stmt|;
 DECL|field|mergeSuperSet
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MergeSuperSet
+argument_list|>
 name|mergeSuperSet
 decl_stmt|;
 DECL|field|changeResourceFactory
@@ -386,7 +389,7 @@ name|changeResourceFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetRevisionActions ( ActionJson delegate, Provider<ReviewDb> dbProvider, MergeSuperSet mergeSuperSet, ChangeResource.Factory changeResourceFactory, @GerritServerConfig Config config)
+DECL|method|GetRevisionActions ( ActionJson delegate, Provider<ReviewDb> dbProvider, Provider<MergeSuperSet> mergeSuperSet, ChangeResource.Factory changeResourceFactory, @GerritServerConfig Config config)
 name|GetRevisionActions
 parameter_list|(
 name|ActionJson
@@ -398,7 +401,10 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 parameter_list|,
+name|Provider
+argument_list|<
 name|MergeSuperSet
+argument_list|>
 name|mergeSuperSet
 parameter_list|,
 name|ChangeResource
@@ -547,6 +553,9 @@ name|ChangeSet
 name|cs
 init|=
 name|mergeSuperSet
+operator|.
+name|get
+argument_list|()
 operator|.
 name|completeChangeSet
 argument_list|(
