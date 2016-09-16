@@ -302,9 +302,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|config
 operator|.
-name|OutgoingEmailValidator
+name|AuthConfig
 import|;
 end_import
 
@@ -318,9 +318,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
+name|mail
 operator|.
-name|AuthConfig
+name|OutgoingEmailValidator
 import|;
 end_import
 
