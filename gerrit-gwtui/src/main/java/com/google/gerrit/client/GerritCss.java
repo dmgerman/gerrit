@@ -163,6 +163,16 @@ name|String
 name|cAPPROVAL
 parameter_list|()
 function_decl|;
+DECL|method|cASSIGNEE ()
+name|String
+name|cASSIGNEE
+parameter_list|()
+function_decl|;
+DECL|method|cASSIGNEDTOME ()
+name|String
+name|cASSIGNEDTOME
+parameter_list|()
+function_decl|;
 DECL|method|cLastUpdate ()
 name|String
 name|cLastUpdate
