@@ -439,6 +439,12 @@ name|name
 operator|=
 literal|"--batch"
 argument_list|,
+name|aliases
+operator|=
+block|{
+literal|"-b"
+block|}
+argument_list|,
 name|usage
 operator|=
 literal|"Batch mode; skip interactive prompting"
