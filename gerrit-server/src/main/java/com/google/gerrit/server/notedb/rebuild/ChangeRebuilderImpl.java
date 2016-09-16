@@ -3131,15 +3131,6 @@ name|Integer
 name|minPsNum
 parameter_list|)
 block|{
-operator|new
-name|EventSorter
-argument_list|(
-name|events
-argument_list|)
-operator|.
-name|sort
-argument_list|()
-expr_stmt|;
 name|events
 operator|.
 name|add
@@ -3152,6 +3143,15 @@ argument_list|,
 name|noteDbChange
 argument_list|)
 argument_list|)
+expr_stmt|;
+operator|new
+name|EventSorter
+argument_list|(
+name|events
+argument_list|)
+operator|.
+name|sort
+argument_list|()
 expr_stmt|;
 comment|// Ensure the first event in the list creates the change, setting the author
 comment|// and any required footers.
