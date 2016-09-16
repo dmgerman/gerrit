@@ -2035,6 +2035,7 @@ name|commitSubject
 expr_stmt|;
 block|}
 DECL|method|setSubject (String subject)
+specifier|public
 name|void
 name|setSubject
 parameter_list|(

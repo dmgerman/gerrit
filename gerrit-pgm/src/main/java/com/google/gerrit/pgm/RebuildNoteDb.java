@@ -578,7 +578,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ChangeRebuilder
+name|NotesMigration
 import|;
 end_import
 
@@ -594,7 +594,9 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NotesMigration
+name|rebuild
+operator|.
+name|ChangeRebuilder
 import|;
 end_import
 

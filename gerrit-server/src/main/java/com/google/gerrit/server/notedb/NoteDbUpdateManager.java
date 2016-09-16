@@ -955,6 +955,7 @@ parameter_list|()
 function_decl|;
 block|}
 DECL|class|OpenRepo
+specifier|public
 specifier|static
 class|class
 name|OpenRepo
@@ -962,16 +963,19 @@ implements|implements
 name|AutoCloseable
 block|{
 DECL|field|repo
+specifier|public
 specifier|final
 name|Repository
 name|repo
 decl_stmt|;
 DECL|field|rw
+specifier|public
 specifier|final
 name|RevWalk
 name|rw
 decl_stmt|;
 DECL|field|cmds
+specifier|public
 specifier|final
 name|ChainedReceiveCommands
 name|cmds
@@ -1107,6 +1111,7 @@ name|close
 expr_stmt|;
 block|}
 DECL|method|getObjectId (String refName)
+specifier|public
 name|Optional
 argument_list|<
 name|ObjectId
@@ -1574,6 +1579,7 @@ name|this
 return|;
 block|}
 DECL|method|setCheckExpectedState (boolean checkExpectedState)
+specifier|public
 name|NoteDbUpdateManager
 name|setCheckExpectedState
 parameter_list|(
@@ -1592,6 +1598,7 @@ name|this
 return|;
 block|}
 DECL|method|getChangeRepo ()
+specifier|public
 name|OpenRepo
 name|getChangeRepo
 parameter_list|()
@@ -1606,6 +1613,7 @@ name|changeRepo
 return|;
 block|}
 DECL|method|getAllUsersRepo ()
+specifier|public
 name|OpenRepo
 name|getAllUsersRepo
 parameter_list|()
