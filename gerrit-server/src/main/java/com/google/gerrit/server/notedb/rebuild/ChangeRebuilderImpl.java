@@ -2671,12 +2671,9 @@ name|parseChangeMessage
 argument_list|(
 name|msg
 argument_list|,
-name|noteDbChange
-argument_list|,
 name|change
-operator|.
-name|getCreatedOn
-argument_list|()
+argument_list|,
+name|noteDbChange
 argument_list|)
 decl_stmt|;
 if|if
@@ -2908,7 +2905,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseChangeMessage (ChangeMessage msg, Change noteDbChange, Timestamp changeCreatedOn)
+DECL|method|parseChangeMessage (ChangeMessage msg, Change change, Change noteDbChange)
 specifier|private
 name|List
 argument_list|<
@@ -2920,10 +2917,10 @@ name|ChangeMessage
 name|msg
 parameter_list|,
 name|Change
-name|noteDbChange
+name|change
 parameter_list|,
-name|Timestamp
-name|changeCreatedOn
+name|Change
+name|noteDbChange
 parameter_list|)
 block|{
 name|List
@@ -2950,7 +2947,10 @@ name|msg
 argument_list|,
 name|noteDbChange
 argument_list|,
-name|changeCreatedOn
+name|change
+operator|.
+name|getCreatedOn
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2966,9 +2966,9 @@ name|parseFromMessage
 argument_list|(
 name|msg
 argument_list|,
-name|noteDbChange
+name|change
 argument_list|,
-name|changeCreatedOn
+name|noteDbChange
 argument_list|)
 decl_stmt|;
 if|if
