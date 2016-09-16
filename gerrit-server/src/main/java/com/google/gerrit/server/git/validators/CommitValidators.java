@@ -763,6 +763,10 @@ comment|/** Use {@link Factory#forReceiveCommits}. */
 DECL|enumConstant|RECEIVE_COMMITS
 name|RECEIVE_COMMITS
 block|,
+comment|/** Use {@link Factory#forMergedCommits}. */
+DECL|enumConstant|MERGED
+name|MERGED
+block|,
 comment|/** Do not validate commits. */
 DECL|enumConstant|NONE
 name|NONE
@@ -935,6 +939,15 @@ argument_list|,
 name|sshInfo
 argument_list|,
 name|repo
+argument_list|)
+return|;
+case|case
+name|MERGED
+case|:
+return|return
+name|forMergedCommits
+argument_list|(
+name|refControl
 argument_list|)
 return|;
 case|case
@@ -1156,6 +1169,61 @@ operator|new
 name|PluginCommitValidationListener
 argument_list|(
 name|pluginValidators
+argument_list|)
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|forMergedCommits (RefControl refControl)
+specifier|private
+name|CommitValidators
+name|forMergedCommits
+parameter_list|(
+name|RefControl
+name|refControl
+parameter_list|)
+block|{
+comment|// Generally only include validators that are based on permissions of the
+comment|// user creating a change for a merged commit; generally exclude
+comment|// validators that would require amending the change in order to correct.
+comment|//
+comment|// Examples:
+comment|//  - Change-Id and Signed-off-by can't be added to an already-merged
+comment|//    commit.
+comment|//  - If the commit is banned, we can't ban it here. In fact, creating a
+comment|//    review of a previously merged and recently-banned commit is a use
+comment|//    case for post-commit code review: so reviewers have a place to
+comment|//    discuss what to do about it.
+comment|//  - Plugin validators may do things like require certain commit message
+comment|//    formats, so we play it safe and exclude them.
+return|return
+operator|new
+name|CommitValidators
+argument_list|(
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+operator|new
+name|UploadMergesPermissionValidator
+argument_list|(
+name|refControl
+argument_list|)
+argument_list|,
+operator|new
+name|AuthorUploaderValidator
+argument_list|(
+name|refControl
+argument_list|,
+name|canonicalWebUrl
+argument_list|)
+argument_list|,
+operator|new
+name|CommitterUploaderValidator
+argument_list|(
+name|refControl
+argument_list|,
+name|canonicalWebUrl
 argument_list|)
 argument_list|)
 argument_list|)
