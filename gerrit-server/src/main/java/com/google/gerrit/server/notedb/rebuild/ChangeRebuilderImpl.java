@@ -2990,12 +2990,14 @@ name|Integer
 name|minPsNum
 parameter_list|)
 block|{
-name|Collections
-operator|.
-name|sort
+operator|new
+name|EventSorter
 argument_list|(
 name|events
 argument_list|)
+operator|.
+name|sort
+argument_list|()
 expr_stmt|;
 name|events
 operator|.
@@ -3071,16 +3073,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Fill in any missing patch set IDs using the latest patch set of the
-comment|// change at the time of the event, because NoteDb can't represent actions
-comment|// with no associated patch set ID. This workaround is as if a user added a
-comment|// ChangeMessage on the change by replying from the latest patch set.
+comment|// Final pass to correct some inconsistencies.
+comment|//
+comment|// First, fill in any missing patch set IDs using the latest patch set of
+comment|// the change at the time of the event, because NoteDb can't represent
+comment|// actions with no associated patch set ID. This workaround is as if a user
+comment|// added a ChangeMessage on the change by replying from the latest patch
+comment|// set.
 comment|//
 comment|// Start with the first patch set that actually exists. If there are no
 comment|// patch sets at all, minPsNum will be null, so just bail and use 1 as the
 comment|// patch set ID. The corresponding patch set won't exist, but this change is
 comment|// probably corrupt anyway, as deleting the last draft patch set should have
 comment|// deleted the whole change.
+comment|//
+comment|// Second, ensure timestamps are nondecreasing, by copying the previous
+comment|// timestamp if this happens. This assumes that the only way this can happen
+comment|// is due to dependency constraints, and it is ok to give an event the same
+comment|// timestamp as one of its dependencies.
 name|int
 name|ps
 init|=
@@ -3093,12 +3103,32 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Event
-name|e
-range|:
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
 name|events
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
 control|)
 block|{
+name|Event
+name|e
+init|=
+name|events
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|e
@@ -3144,6 +3174,49 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|i
+operator|>
+literal|0
+condition|)
+block|{
+name|Event
+name|p
+init|=
+name|events
+operator|.
+name|get
+argument_list|(
+name|i
+operator|-
+literal|1
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|e
+operator|.
+name|when
+operator|.
+name|before
+argument_list|(
+name|p
+operator|.
+name|when
+argument_list|)
+condition|)
+block|{
+name|e
+operator|.
+name|when
+operator|=
+name|p
+operator|.
+name|when
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
