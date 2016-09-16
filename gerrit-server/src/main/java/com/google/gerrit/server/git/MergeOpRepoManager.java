@@ -661,6 +661,16 @@ return|return
 name|ob
 return|;
 block|}
+DECL|method|getRepo ()
+specifier|public
+name|Repository
+name|getRepo
+parameter_list|()
+block|{
+return|return
+name|repo
+return|;
+block|}
 DECL|method|getProjectName ()
 name|Project
 operator|.
@@ -678,7 +688,18 @@ name|getNameKey
 argument_list|()
 return|;
 block|}
+DECL|method|getCodeReviewRevWalk ()
+specifier|public
+name|CodeReviewRevWalk
+name|getCodeReviewRevWalk
+parameter_list|()
+block|{
+return|return
+name|rw
+return|;
+block|}
 DECL|method|getUpdate ()
+specifier|public
 name|BatchUpdate
 name|getUpdate
 parameter_list|()
