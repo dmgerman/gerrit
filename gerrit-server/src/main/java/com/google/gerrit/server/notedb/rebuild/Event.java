@@ -480,7 +480,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|addDep (Event e)
-name|void
+name|Event
 name|addDep
 parameter_list|(
 name|Event
@@ -494,6 +494,9 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 comment|/**    * @return whether this event type must be unique per {@link ChangeUpdate},    *     i.e. there may be at most one of this type.    */
 DECL|method|uniquePerUpdate ()
