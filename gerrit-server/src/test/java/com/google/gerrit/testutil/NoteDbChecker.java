@@ -262,6 +262,8 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|rebuild
+operator|.
 name|ChangeRebuilder
 import|;
 end_import

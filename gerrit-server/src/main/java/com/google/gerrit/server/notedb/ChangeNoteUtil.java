@@ -651,6 +651,7 @@ class|class
 name|ChangeNoteUtil
 block|{
 DECL|field|FOOTER_BRANCH
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -663,6 +664,7 @@ literal|"Branch"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_CHANGE_ID
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -675,6 +677,7 @@ literal|"Change-id"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_COMMIT
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -687,6 +690,7 @@ literal|"Commit"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_GROUPS
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -699,6 +703,7 @@ literal|"Groups"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_HASHTAGS
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -711,6 +716,7 @@ literal|"Hashtags"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_LABEL
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -723,6 +729,7 @@ literal|"Label"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_PATCH_SET
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -735,6 +742,7 @@ literal|"Patch-set"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_STATUS
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -747,6 +755,7 @@ literal|"Status"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_SUBJECT
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -759,6 +768,7 @@ literal|"Subject"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_SUBMISSION_ID
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -771,6 +781,7 @@ literal|"Submission-id"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_SUBMITTED_WITH
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -783,6 +794,7 @@ literal|"Submitted-with"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_TOPIC
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey
@@ -795,6 +807,7 @@ literal|"Topic"
 argument_list|)
 decl_stmt|;
 DECL|field|FOOTER_TAG
+specifier|public
 specifier|static
 specifier|final
 name|FooterKey

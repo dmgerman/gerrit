@@ -525,6 +525,7 @@ block|}
 annotation|@
 name|VisibleForTesting
 DECL|method|parse (Change.Id id, String str)
+specifier|public
 specifier|static
 name|NoteDbChangeState
 name|parse
@@ -1448,6 +1449,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isUpToDate (RefCache changeRepoRefs, RefCache draftsRepoRefs)
+specifier|public
 name|boolean
 name|isUpToDate
 parameter_list|(

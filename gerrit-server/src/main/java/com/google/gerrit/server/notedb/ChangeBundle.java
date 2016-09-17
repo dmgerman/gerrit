@@ -646,6 +646,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|rebuild
+operator|.
+name|ChangeRebuilderImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -1957,8 +1975,6 @@ literal|17
 argument_list|,
 literal|18
 argument_list|,
-comment|// TODO(dborowitz): It's potentially possible to compare noteDbState in
-comment|// the Change with the state implied by a ChangeNotes.
 literal|101
 argument_list|)
 expr_stmt|;

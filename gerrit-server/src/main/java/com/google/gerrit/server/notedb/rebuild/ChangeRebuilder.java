@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.notedb
+DECL|package|com.google.gerrit.server.notedb.rebuild
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|notedb
+operator|.
+name|rebuild
 package|;
 end_package
 
@@ -157,6 +159,38 @@ operator|.
 name|server
 operator|.
 name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeBundle
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbUpdateManager
 import|;
 end_import
 
