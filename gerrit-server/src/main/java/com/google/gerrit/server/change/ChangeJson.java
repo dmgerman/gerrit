@@ -2065,6 +2065,11 @@ specifier|private
 name|AccountLoader
 name|accountLoader
 decl_stmt|;
+DECL|field|includeSubmittable
+specifier|private
+name|boolean
+name|includeSubmittable
+decl_stmt|;
 DECL|field|submitRecords
 specifier|private
 name|Map
@@ -2340,6 +2345,23 @@ argument_list|(
 name|options
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|includeSubmittable (boolean include)
+specifier|public
+name|ChangeJson
+name|includeSubmittable
+parameter_list|(
+name|boolean
+name|include
+parameter_list|)
+block|{
+name|includeSubmittable
+operator|=
+name|include
+expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 DECL|method|fix (FixInput fix)
 specifier|public
@@ -3771,12 +3793,9 @@ name|in
 operator|.
 name|getStatus
 argument_list|()
-operator|!=
-name|Change
 operator|.
-name|Status
-operator|.
-name|MERGED
+name|isOpen
+argument_list|()
 condition|)
 block|{
 name|SubmitTypeRecord
@@ -3813,7 +3832,11 @@ operator|.
 name|isMergeable
 argument_list|()
 expr_stmt|;
-block|}
+if|if
+condition|(
+name|includeSubmittable
+condition|)
+block|{
 name|out
 operator|.
 name|submittable
@@ -3825,6 +3848,8 @@ argument_list|(
 name|cd
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 name|Optional
 argument_list|<
 name|ChangedLines
