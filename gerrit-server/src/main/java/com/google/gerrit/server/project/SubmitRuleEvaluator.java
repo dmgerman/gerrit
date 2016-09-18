@@ -759,7 +759,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * @param fast if true, infer label information from rules rather than reading    *     from project config.    * @return this    */
+comment|/**    * @param fast if true assume reviewers are permitted to use label values    *        currently stored on the change. Fast mode bypasses some reviewer    *        permission checks.    * @return this    */
 DECL|method|setFastEvalLabels (boolean fast)
 specifier|public
 name|SubmitRuleEvaluator
