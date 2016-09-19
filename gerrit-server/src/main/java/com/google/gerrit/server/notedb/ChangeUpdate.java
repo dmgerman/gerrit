@@ -2946,7 +2946,11 @@ argument_list|()
 argument_list|,
 name|noteMap
 argument_list|,
-literal|false
+name|PatchLineComment
+operator|.
+name|Status
+operator|.
+name|PUBLISHED
 argument_list|)
 return|;
 block|}

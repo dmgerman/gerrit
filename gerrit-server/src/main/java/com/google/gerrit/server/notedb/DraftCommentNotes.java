@@ -958,7 +958,11 @@ argument_list|,
 name|tipCommit
 argument_list|)
 argument_list|,
-literal|true
+name|PatchLineComment
+operator|.
+name|Status
+operator|.
+name|DRAFT
 argument_list|)
 expr_stmt|;
 name|Multimap

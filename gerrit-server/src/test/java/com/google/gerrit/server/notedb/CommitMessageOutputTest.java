@@ -204,6 +204,20 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
+name|ConfigSuite
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
 name|TestChanges
 import|;
 end_import
@@ -276,6 +290,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|runner
+operator|.
+name|RunWith
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -295,6 +321,13 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|RunWith
+argument_list|(
+name|ConfigSuite
+operator|.
+name|class
+argument_list|)
 DECL|class|CommitMessageOutputTest
 specifier|public
 class|class

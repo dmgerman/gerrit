@@ -108,6 +108,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|PatchLineComment
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RevId
 import|;
 end_import
@@ -218,7 +234,7 @@ name|RevisionNote
 argument_list|>
 name|revisionNotes
 decl_stmt|;
-DECL|method|parse (ChangeNoteUtil noteUtil, Change.Id changeId, ObjectReader reader, NoteMap noteMap, boolean draftsOnly)
+DECL|method|parse (ChangeNoteUtil noteUtil, Change.Id changeId, ObjectReader reader, NoteMap noteMap, PatchLineComment.Status status)
 specifier|static
 name|RevisionNoteMap
 name|parse
@@ -237,8 +253,10 @@ parameter_list|,
 name|NoteMap
 name|noteMap
 parameter_list|,
-name|boolean
-name|draftsOnly
+name|PatchLineComment
+operator|.
+name|Status
+name|status
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -283,7 +301,7 @@ operator|.
 name|getData
 argument_list|()
 argument_list|,
-name|draftsOnly
+name|status
 argument_list|)
 decl_stmt|;
 name|result
