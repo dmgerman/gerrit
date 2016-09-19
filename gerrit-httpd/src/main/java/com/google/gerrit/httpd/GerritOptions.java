@@ -102,11 +102,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|base
+name|extensions
 operator|.
-name|Enums
+name|client
+operator|.
+name|UiType
 import|;
 end_import
 
@@ -130,20 +132,6 @@ specifier|public
 class|class
 name|GerritOptions
 block|{
-DECL|enum|UiPreference
-specifier|public
-enum|enum
-name|UiPreference
-block|{
-DECL|enumConstant|NONE
-name|NONE
-block|,
-DECL|enumConstant|GWT
-name|GWT
-block|,
-DECL|enumConstant|POLYGERRIT
-name|POLYGERRIT
-block|;   }
 DECL|field|headless
 specifier|private
 specifier|final
@@ -177,7 +165,7 @@ decl_stmt|;
 DECL|field|defaultUi
 specifier|private
 specifier|final
-name|UiPreference
+name|UiType
 name|defaultUi
 decl_stmt|;
 DECL|method|GerritOptions (Config cfg, boolean headless, boolean slave, boolean forcePolyGerritDev)
@@ -259,7 +247,7 @@ operator|!
 name|enablePolyGerrit
 operator|)
 expr_stmt|;
-name|UiPreference
+name|UiType
 name|defaultUi
 init|=
 name|enablePolyGerrit
@@ -267,11 +255,11 @@ operator|&&
 operator|!
 name|enableGwtUi
 condition|?
-name|UiPreference
+name|UiType
 operator|.
 name|POLYGERRIT
 else|:
-name|UiPreference
+name|UiType
 operator|.
 name|GWT
 decl_stmt|;
@@ -295,42 +283,25 @@ name|defaultUi
 operator|.
 name|name
 argument_list|()
-operator|.
-name|toUpperCase
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|this
 operator|.
 name|defaultUi
 operator|=
-name|Enums
-operator|.
-name|getIfPresent
+name|firstNonNull
 argument_list|(
-name|UiPreference
+name|UiType
 operator|.
-name|class
-argument_list|,
+name|parse
+argument_list|(
 name|uiStr
 argument_list|)
-operator|.
-name|or
-argument_list|(
-name|UiPreference
+argument_list|,
+name|UiType
 operator|.
 name|NONE
 argument_list|)
-expr_stmt|;
-name|uiStr
-operator|=
-name|defaultUi
-operator|.
-name|name
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
 expr_stmt|;
 switch|switch
 condition|(
@@ -346,7 +317,7 @@ name|enableGwtUi
 argument_list|,
 literal|"gerrit.ui = %s but GWT UI is disabled"
 argument_list|,
-name|uiStr
+name|defaultUi
 argument_list|)
 expr_stmt|;
 break|break;
@@ -359,7 +330,7 @@ name|enablePolyGerrit
 argument_list|,
 literal|"gerrit.ui = %s but PolyGerrit is disabled"
 argument_list|,
-name|uiStr
+name|defaultUi
 argument_list|)
 expr_stmt|;
 break|break;
@@ -440,7 +411,7 @@ return|;
 block|}
 DECL|method|defaultUi ()
 specifier|public
-name|UiPreference
+name|UiType
 name|defaultUi
 parameter_list|()
 block|{
