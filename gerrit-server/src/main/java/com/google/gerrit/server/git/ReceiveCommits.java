@@ -9724,7 +9724,9 @@ name|projectControl
 operator|.
 name|controlForRef
 argument_list|(
-literal|"refs/drafts/"
+name|MagicBranch
+operator|.
+name|NEW_DRAFT_CHANGE
 operator|+
 name|ref
 argument_list|)
