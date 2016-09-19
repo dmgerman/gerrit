@@ -522,11 +522,23 @@ name|GerritConfig
 argument_list|(
 name|name
 operator|=
-literal|"gerrit.reportBugUrl"
+literal|"gerrit.enableGwtUi"
 argument_list|,
 name|value
 operator|=
-literal|"https://example.com/report"
+literal|"true"
+argument_list|)
+block|,
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"gerrit.enablePolyGerrit"
+argument_list|,
+name|value
+operator|=
+literal|"true"
 argument_list|)
 block|,
 annotation|@
@@ -539,6 +551,18 @@ argument_list|,
 name|value
 operator|=
 literal|"REPORT BUG"
+argument_list|)
+block|,
+annotation|@
+name|GerritConfig
+argument_list|(
+name|name
+operator|=
+literal|"gerrit.reportBugUrl"
+argument_list|,
+name|value
+operator|=
+literal|"https://example.com/report"
 argument_list|)
 block|,
 comment|// suggest
@@ -900,6 +924,19 @@ name|isEqualTo
 argument_list|(
 literal|"REPORT BUG"
 argument_list|)
+expr_stmt|;
+comment|// Acceptance tests force --headless even when UIs are specified in config.
+name|assertThat
+argument_list|(
+name|i
+operator|.
+name|gerrit
+operator|.
+name|webUis
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 expr_stmt|;
 comment|// plugin
 name|assertThat
