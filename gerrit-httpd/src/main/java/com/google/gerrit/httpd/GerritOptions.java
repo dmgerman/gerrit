@@ -388,16 +388,6 @@ return|return
 name|headless
 return|;
 block|}
-DECL|method|headless ()
-specifier|public
-name|boolean
-name|headless
-parameter_list|()
-block|{
-return|return
-name|headless
-return|;
-block|}
 DECL|method|enableGwtUi ()
 specifier|public
 name|boolean
