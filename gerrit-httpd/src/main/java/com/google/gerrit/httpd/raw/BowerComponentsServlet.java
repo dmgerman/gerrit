@@ -220,7 +220,7 @@ argument_list|)
 operator|.
 name|getPath
 argument_list|(
-literal|"bower_components/"
+literal|"/"
 argument_list|)
 expr_stmt|;
 block|}

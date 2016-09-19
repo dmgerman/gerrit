@@ -576,7 +576,7 @@ if|if
 condition|(
 name|options
 operator|.
-name|enableDefaultUi
+name|enableGwtUi
 argument_list|()
 condition|)
 block|{
