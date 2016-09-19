@@ -523,6 +523,11 @@ name|String
 name|searchDropdownDoc
 parameter_list|()
 function_decl|;
+DECL|method|polyGerrit ()
+name|String
+name|polyGerrit
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
