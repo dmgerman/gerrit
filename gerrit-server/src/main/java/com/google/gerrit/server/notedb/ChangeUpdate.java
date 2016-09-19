@@ -600,6 +600,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Comment
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchLineComment
 import|;
 end_import
@@ -1164,7 +1180,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|comments
 init|=
@@ -2135,12 +2151,17 @@ operator|=
 name|tag
 expr_stmt|;
 block|}
-DECL|method|putComment (PatchLineComment c)
+DECL|method|putComment (PatchLineComment.Status status, Comment c)
 specifier|public
 name|void
 name|putComment
 parameter_list|(
 name|PatchLineComment
+operator|.
+name|Status
+name|status
+parameter_list|,
+name|Comment
 name|c
 parameter_list|)
 block|{
@@ -2154,10 +2175,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|c
-operator|.
-name|getStatus
-argument_list|()
+name|status
 operator|==
 name|PatchLineComment
 operator|.
@@ -2196,12 +2214,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|deleteComment (PatchLineComment c)
+DECL|method|deleteComment (Comment c)
 specifier|public
 name|void
 name|deleteComment
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 block|{
@@ -2210,20 +2228,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|c
-operator|.
-name|getStatus
-argument_list|()
-operator|==
-name|PatchLineComment
-operator|.
-name|Status
-operator|.
-name|DRAFT
-condition|)
-block|{
 name|createDraftUpdateIfNull
 argument_list|()
 operator|.
@@ -2232,19 +2236,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Cannot delete published comment "
-operator|+
-name|c
-argument_list|)
-throw|;
-block|}
 block|}
 annotation|@
 name|VisibleForTesting
@@ -2313,12 +2304,12 @@ return|return
 name|draftUpdate
 return|;
 block|}
-DECL|method|verifyComment (PatchLineComment c)
+DECL|method|verifyComment (Comment c)
 specifier|private
 name|void
 name|verifyComment
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 block|{
@@ -2326,8 +2317,7 @@ name|checkArgument
 argument_list|(
 name|c
 operator|.
-name|getRevId
-argument_list|()
+name|revId
 operator|!=
 literal|null
 argument_list|,
@@ -2340,7 +2330,9 @@ name|checkArgument
 argument_list|(
 name|c
 operator|.
-name|getAuthor
+name|author
+operator|.
+name|getId
 argument_list|()
 operator|.
 name|equals
@@ -2703,7 +2695,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|comments
@@ -2711,19 +2703,21 @@ control|)
 block|{
 name|c
 operator|.
-name|setTag
-argument_list|(
 name|tag
-argument_list|)
+operator|=
+name|tag
 expr_stmt|;
 name|cache
 operator|.
 name|get
 argument_list|(
+operator|new
+name|RevId
+argument_list|(
 name|c
 operator|.
-name|getRevId
-argument_list|()
+name|revId
+argument_list|)
 argument_list|)
 operator|.
 name|putComment
@@ -3036,7 +3030,7 @@ block|{
 comment|// Prohibit various kinds of illegal operations on comments.
 name|Set
 argument_list|<
-name|PatchLineComment
+name|Comment
 operator|.
 name|Key
 argument_list|>
@@ -3060,7 +3054,7 @@ control|)
 block|{
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|rn
@@ -3074,8 +3068,7 @@ name|add
 argument_list|(
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 argument_list|)
 expr_stmt|;
 if|if
@@ -3106,13 +3099,11 @@ name|deleteComment
 argument_list|(
 name|c
 operator|.
-name|getRevId
-argument_list|()
+name|revId
 argument_list|,
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 argument_list|)
 expr_stmt|;
 block|}
@@ -3131,7 +3122,7 @@ control|)
 block|{
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|b
@@ -3150,8 +3141,7 @@ name|contains
 argument_list|(
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 argument_list|)
 condition|)
 block|{

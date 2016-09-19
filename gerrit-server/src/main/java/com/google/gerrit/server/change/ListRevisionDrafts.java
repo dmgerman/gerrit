@@ -110,7 +110,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -140,7 +140,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -245,15 +245,15 @@ name|CommentJson
 argument_list|>
 name|commentJson
 decl_stmt|;
-DECL|field|plcUtil
+DECL|field|commentsUtil
 specifier|protected
 specifier|final
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListRevisionDrafts (Provider<ReviewDb> db, Provider<CommentJson> commentJson, PatchLineCommentsUtil plcUtil)
+DECL|method|ListRevisionDrafts (Provider<ReviewDb> db, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
 name|ListRevisionDrafts
 parameter_list|(
 name|Provider
@@ -268,8 +268,8 @@ name|CommentJson
 argument_list|>
 name|commentJson
 parameter_list|,
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 parameter_list|)
 block|{
 name|this
@@ -286,16 +286,16 @@ name|commentJson
 expr_stmt|;
 name|this
 operator|.
-name|plcUtil
+name|commentsUtil
 operator|=
-name|plcUtil
+name|commentsUtil
 expr_stmt|;
 block|}
 DECL|method|listComments (RevisionResource rsrc)
 specifier|protected
 name|Iterable
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|listComments
 parameter_list|(
@@ -306,7 +306,7 @@ throws|throws
 name|OrmException
 block|{
 return|return
-name|plcUtil
+name|commentsUtil
 operator|.
 name|draftByPatchSetAuthor
 argument_list|(

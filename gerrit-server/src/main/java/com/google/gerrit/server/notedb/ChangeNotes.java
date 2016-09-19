@@ -434,7 +434,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -2900,7 +2900,7 @@ name|ImmutableListMultimap
 argument_list|<
 name|RevId
 argument_list|,
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|getComments
 parameter_list|()
@@ -2918,7 +2918,7 @@ name|ImmutableListMultimap
 argument_list|<
 name|RevId
 argument_list|,
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|getDraftComments
 parameter_list|(
@@ -2940,7 +2940,7 @@ name|Multimap
 argument_list|<
 name|RevId
 argument_list|,
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|published
 init|=
@@ -2956,7 +2956,7 @@ name|Multimap
 argument_list|<
 name|RevId
 argument_list|,
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|filtered
 init|=
@@ -2976,7 +2976,7 @@ name|Entry
 argument_list|<
 name|RevId
 argument_list|,
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|e
 parameter_list|)
@@ -2984,7 +2984,7 @@ lambda|->
 block|{
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|published
@@ -3002,8 +3002,7 @@ if|if
 condition|(
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
 name|equals
 argument_list|(
@@ -3012,8 +3011,7 @@ operator|.
 name|getValue
 argument_list|()
 operator|.
-name|getKey
-argument_list|()
+name|key
 argument_list|)
 condition|)
 block|{
@@ -3103,12 +3101,12 @@ return|return
 name|draftCommentNotes
 return|;
 block|}
-DECL|method|containsComment (PatchLineComment c)
+DECL|method|containsComment (Comment c)
 specifier|public
 name|boolean
 name|containsComment
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 throws|throws
@@ -3130,7 +3128,9 @@ name|loadDraftComments
 argument_list|(
 name|c
 operator|.
-name|getAuthor
+name|author
+operator|.
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3143,18 +3143,18 @@ name|c
 argument_list|)
 return|;
 block|}
-DECL|method|containsCommentPublished (PatchLineComment c)
+DECL|method|containsCommentPublished (Comment c)
 specifier|public
 name|boolean
 name|containsCommentPublished
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 block|{
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|l
 range|:
 name|getComments
@@ -3168,15 +3168,13 @@ if|if
 condition|(
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
 name|equals
 argument_list|(
 name|l
 operator|.
-name|getKey
-argument_list|()
+name|key
 argument_list|)
 condition|)
 block|{

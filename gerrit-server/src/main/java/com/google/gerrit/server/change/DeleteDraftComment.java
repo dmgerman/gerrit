@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 operator|.
 name|setCommentRevId
 import|;
@@ -202,7 +202,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -248,7 +248,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -439,11 +439,11 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|plcUtil
+DECL|field|commentsUtil
 specifier|private
 specifier|final
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 decl_stmt|;
 DECL|field|psUtil
 specifier|private
@@ -467,7 +467,7 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftComment (Provider<ReviewDb> db, PatchLineCommentsUtil plcUtil, PatchSetUtil psUtil, BatchUpdate.Factory updateFactory, PatchListCache patchListCache)
+DECL|method|DeleteDraftComment (Provider<ReviewDb> db, CommentsUtil commentsUtil, PatchSetUtil psUtil, BatchUpdate.Factory updateFactory, PatchListCache patchListCache)
 name|DeleteDraftComment
 parameter_list|(
 name|Provider
@@ -476,8 +476,8 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
@@ -499,9 +499,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|plcUtil
+name|commentsUtil
 operator|=
-name|plcUtil
+name|commentsUtil
 expr_stmt|;
 name|this
 operator|.
@@ -591,8 +591,7 @@ operator|.
 name|getComment
 argument_list|()
 operator|.
-name|getKey
-argument_list|()
+name|key
 argument_list|)
 decl_stmt|;
 name|bu
@@ -635,16 +634,16 @@ block|{
 DECL|field|key
 specifier|private
 specifier|final
-name|PatchLineComment
+name|Comment
 operator|.
 name|Key
 name|key
 decl_stmt|;
-DECL|method|Op (PatchLineComment.Key key)
+DECL|method|Op (Comment.Key key)
 specifier|private
 name|Op
 parameter_list|(
-name|PatchLineComment
+name|Comment
 operator|.
 name|Key
 name|key
@@ -674,11 +673,11 @@ name|OrmException
 block|{
 name|Optional
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|maybeComment
 init|=
-name|plcUtil
+name|commentsUtil
 operator|.
 name|get
 argument_list|(
@@ -714,13 +713,23 @@ operator|.
 name|Id
 name|psId
 init|=
+operator|new
+name|PatchSet
+operator|.
+name|Id
+argument_list|(
+name|ctx
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+argument_list|,
 name|key
 operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|getParentKey
-argument_list|()
+name|patchSetId
+argument_list|)
 decl_stmt|;
 name|PatchSet
 name|ps
@@ -759,7 +768,7 @@ name|psId
 argument_list|)
 throw|;
 block|}
-name|PatchLineComment
+name|Comment
 name|c
 init|=
 name|maybeComment
@@ -781,7 +790,7 @@ argument_list|,
 name|ps
 argument_list|)
 expr_stmt|;
-name|plcUtil
+name|commentsUtil
 operator|.
 name|deleteComments
 argument_list|(

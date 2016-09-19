@@ -562,7 +562,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -1176,10 +1176,10 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|plcUtil
+DECL|field|commentsUtil
 specifier|private
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
@@ -3043,7 +3043,7 @@ name|ChangeBundle
 operator|.
 name|fromNotes
 argument_list|(
-name|plcUtil
+name|commentsUtil
 argument_list|,
 name|notesFactory
 operator|.
@@ -3382,7 +3382,7 @@ name|ChangeBundle
 operator|.
 name|fromNotes
 argument_list|(
-name|plcUtil
+name|commentsUtil
 argument_list|,
 name|notes
 argument_list|)
@@ -3580,7 +3580,7 @@ name|ChangeBundle
 operator|.
 name|fromNotes
 argument_list|(
-name|plcUtil
+name|commentsUtil
 argument_list|,
 name|notesFactory
 operator|.
@@ -3804,7 +3804,7 @@ name|ChangeBundle
 operator|.
 name|fromNotes
 argument_list|(
-name|plcUtil
+name|commentsUtil
 argument_list|,
 name|notes
 argument_list|)
@@ -4093,7 +4093,7 @@ name|ChangeBundle
 operator|.
 name|fromNotes
 argument_list|(
-name|plcUtil
+name|commentsUtil
 argument_list|,
 name|notes
 argument_list|)
@@ -4479,7 +4479,7 @@ name|ChangeBundle
 operator|.
 name|fromNotes
 argument_list|(
-name|plcUtil
+name|commentsUtil
 argument_list|,
 name|notes
 argument_list|)

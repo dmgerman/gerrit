@@ -210,7 +210,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Patch
+name|Comment
 import|;
 end_import
 
@@ -226,7 +226,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Patch
 import|;
 end_import
 
@@ -1580,8 +1580,8 @@ literal|1
 expr_stmt|;
 for|for
 control|(
-name|PatchLineComment
-name|plc
+name|Comment
+name|c
 range|:
 name|comments
 operator|.
@@ -1593,10 +1593,9 @@ specifier|final
 name|int
 name|a
 init|=
-name|plc
+name|c
 operator|.
-name|getLine
-argument_list|()
+name|lineNbr
 decl_stmt|;
 if|if
 condition|(
@@ -1652,8 +1651,8 @@ literal|1
 expr_stmt|;
 for|for
 control|(
-name|PatchLineComment
-name|plc
+name|Comment
+name|c
 range|:
 name|comments
 operator|.
@@ -1661,14 +1660,12 @@ name|getCommentsB
 argument_list|()
 control|)
 block|{
-specifier|final
 name|int
 name|b
 init|=
-name|plc
+name|c
 operator|.
-name|getLine
-argument_list|()
+name|lineNbr
 decl_stmt|;
 if|if
 condition|(

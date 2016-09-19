@@ -78,7 +78,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 operator|.
 name|setCommentRevId
 import|;
@@ -97,6 +97,22 @@ operator|.
 name|client
 operator|.
 name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Comment
 import|;
 end_import
 
@@ -142,7 +158,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -202,7 +218,7 @@ block|{
 DECL|field|c
 specifier|public
 specifier|final
-name|PatchLineComment
+name|Comment
 name|c
 decl_stmt|;
 DECL|field|change
@@ -223,10 +239,10 @@ specifier|final
 name|PatchListCache
 name|cache
 decl_stmt|;
-DECL|method|CommentEvent (PatchLineComment c, Change change, PatchSet ps, PatchListCache cache)
+DECL|method|CommentEvent (Comment c, Change change, PatchSet ps, PatchListCache cache)
 name|CommentEvent
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|,
 name|Change
@@ -241,22 +257,28 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|PatchLineCommentsUtil
+name|CommentsUtil
 operator|.
 name|getCommentPsId
 argument_list|(
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|,
 name|c
 argument_list|)
 argument_list|,
 name|c
 operator|.
-name|getAuthor
+name|author
+operator|.
+name|getId
 argument_list|()
 argument_list|,
 name|c
 operator|.
-name|getWrittenOn
-argument_list|()
+name|writtenOn
 argument_list|,
 name|change
 operator|.
@@ -265,8 +287,7 @@ argument_list|()
 argument_list|,
 name|c
 operator|.
-name|getTag
-argument_list|()
+name|tag
 argument_list|)
 expr_stmt|;
 name|this
@@ -326,8 +347,7 @@ if|if
 condition|(
 name|c
 operator|.
-name|getRevId
-argument_list|()
+name|revId
 operator|==
 literal|null
 condition|)
@@ -348,6 +368,12 @@ name|update
 operator|.
 name|putComment
 argument_list|(
+name|PatchLineComment
+operator|.
+name|Status
+operator|.
+name|PUBLISHED
+argument_list|,
 name|c
 argument_list|)
 expr_stmt|;

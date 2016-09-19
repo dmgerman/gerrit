@@ -210,7 +210,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -528,15 +528,15 @@ specifier|final
 name|ChangeRebuilder
 name|changeRebuilder
 decl_stmt|;
-DECL|field|plcUtil
+DECL|field|commentsUtil
 specifier|private
 specifier|final
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NoteDbChecker (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, TestNotesMigration notesMigration, ChangeBundleReader bundleReader, ChangeNotes.Factory notesFactory, ChangeRebuilder changeRebuilder, PatchLineCommentsUtil plcUtil)
+DECL|method|NoteDbChecker (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, TestNotesMigration notesMigration, ChangeBundleReader bundleReader, ChangeNotes.Factory notesFactory, ChangeRebuilder changeRebuilder, CommentsUtil commentsUtil)
 name|NoteDbChecker
 parameter_list|(
 name|Provider
@@ -562,8 +562,8 @@ parameter_list|,
 name|ChangeRebuilder
 name|changeRebuilder
 parameter_list|,
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 parameter_list|)
 block|{
 name|this
@@ -604,9 +604,9 @@ name|changeRebuilder
 expr_stmt|;
 name|this
 operator|.
-name|plcUtil
+name|commentsUtil
 operator|=
-name|plcUtil
+name|commentsUtil
 expr_stmt|;
 block|}
 DECL|method|rebuildAndCheckAllChanges ()
@@ -1101,7 +1101,7 @@ name|ChangeBundle
 operator|.
 name|fromNotes
 argument_list|(
-name|plcUtil
+name|commentsUtil
 argument_list|,
 name|notesFactory
 operator|.

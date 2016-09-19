@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 operator|.
-name|PLC_ORDER
+name|COMMENT_ORDER
 import|;
 end_import
 
@@ -128,7 +128,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -438,7 +438,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( NotifyHandling notify, ChangeNotes notes, PatchSet patchSet, IdentifiedUser user, ChangeMessage message, List<PatchLineComment> comments)
+DECL|method|create ( NotifyHandling notify, ChangeNotes notes, PatchSet patchSet, IdentifiedUser user, ChangeMessage message, List<Comment> comments)
 name|EmailReviewComments
 name|create
 parameter_list|(
@@ -459,7 +459,7 @@ name|message
 parameter_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|comments
 parameter_list|)
@@ -532,9 +532,10 @@ name|message
 decl_stmt|;
 DECL|field|comments
 specifier|private
+specifier|final
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|comments
 decl_stmt|;
@@ -545,7 +546,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailReviewComments ( @endEmailExecutor ExecutorService executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted ChangeNotes notes, @Assisted PatchSet patchSet, @Assisted IdentifiedUser user, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
+DECL|method|EmailReviewComments ( @endEmailExecutor ExecutorService executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted ChangeNotes notes, @Assisted PatchSet patchSet, @Assisted IdentifiedUser user, @Assisted ChangeMessage message, @Assisted List<Comment> comments)
 name|EmailReviewComments
 parameter_list|(
 annotation|@
@@ -599,7 +600,7 @@ annotation|@
 name|Assisted
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|comments
 parameter_list|)
@@ -668,7 +669,7 @@ name|this
 operator|.
 name|comments
 operator|=
-name|PLC_ORDER
+name|COMMENT_ORDER
 operator|.
 name|sortedCopy
 argument_list|(

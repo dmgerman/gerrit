@@ -78,7 +78,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -108,7 +108,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -190,7 +190,7 @@ name|ListRevisionDrafts
 block|{
 annotation|@
 name|Inject
-DECL|method|ListRevisionComments (Provider<ReviewDb> db, Provider<CommentJson> commentJson, PatchLineCommentsUtil plcUtil)
+DECL|method|ListRevisionComments (Provider<ReviewDb> db, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
 name|ListRevisionComments
 parameter_list|(
 name|Provider
@@ -205,8 +205,8 @@ name|CommentJson
 argument_list|>
 name|commentJson
 parameter_list|,
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 parameter_list|)
 block|{
 name|super
@@ -215,7 +215,7 @@ name|db
 argument_list|,
 name|commentJson
 argument_list|,
-name|plcUtil
+name|commentsUtil
 argument_list|)
 expr_stmt|;
 block|}
@@ -237,7 +237,7 @@ DECL|method|listComments (RevisionResource rsrc)
 specifier|protected
 name|Iterable
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|listComments
 parameter_list|(
@@ -256,7 +256,7 @@ name|getNotes
 argument_list|()
 decl_stmt|;
 return|return
-name|plcUtil
+name|commentsUtil
 operator|.
 name|publishedByPatchSet
 argument_list|(

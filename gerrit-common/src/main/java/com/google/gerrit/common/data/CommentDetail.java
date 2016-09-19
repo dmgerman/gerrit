@@ -78,7 +78,23 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Comment
 import|;
 end_import
 
@@ -158,7 +174,7 @@ DECL|field|a
 specifier|protected
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|a
 decl_stmt|;
@@ -166,7 +182,7 @@ DECL|field|b
 specifier|protected
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|b
 decl_stmt|;
@@ -200,7 +216,7 @@ name|Integer
 argument_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 argument_list|>
 name|forA
@@ -214,7 +230,7 @@ name|Integer
 argument_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 argument_list|>
 name|forB
@@ -270,39 +286,44 @@ specifier|protected
 name|CommentDetail
 parameter_list|()
 block|{   }
-DECL|method|include (final PatchLineComment p)
+DECL|method|include (Change.Id changeId, Comment p)
 specifier|public
 name|boolean
 name|include
 parameter_list|(
-specifier|final
-name|PatchLineComment
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|,
+name|Comment
 name|p
 parameter_list|)
 block|{
-specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|psId
 init|=
+operator|new
+name|PatchSet
+operator|.
+name|Id
+argument_list|(
+name|changeId
+argument_list|,
 name|p
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|getParentKey
-argument_list|()
+name|patchSetId
+argument_list|)
 decl_stmt|;
 switch|switch
 condition|(
 name|p
 operator|.
-name|getSide
-argument_list|()
+name|side
 condition|)
 block|{
 case|case
@@ -418,7 +439,7 @@ DECL|method|getCommentsA ()
 specifier|public
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|getCommentsA
 parameter_list|()
@@ -431,7 +452,7 @@ DECL|method|getCommentsB ()
 specifier|public
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|getCommentsB
 parameter_list|()
@@ -458,15 +479,14 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-DECL|method|getForA (final int lineNbr)
+DECL|method|getForA (int lineNbr)
 specifier|public
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|getForA
 parameter_list|(
-specifier|final
 name|int
 name|lineNbr
 parameter_list|)
@@ -495,15 +515,14 @@ name|lineNbr
 argument_list|)
 return|;
 block|}
-DECL|method|getForB (final int lineNbr)
+DECL|method|getForB (int lineNbr)
 specifier|public
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|getForB
 parameter_list|(
-specifier|final
 name|int
 name|lineNbr
 parameter_list|)
@@ -532,36 +551,33 @@ name|lineNbr
 argument_list|)
 return|;
 block|}
-DECL|method|get ( final Map<Integer, List<PatchLineComment>> m, final int i)
+DECL|method|get (Map<Integer, List<Comment>> m, int i)
 specifier|private
 specifier|static
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|get
 parameter_list|(
-specifier|final
 name|Map
 argument_list|<
 name|Integer
 argument_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 argument_list|>
 name|m
 parameter_list|,
-specifier|final
 name|int
 name|i
 parameter_list|)
 block|{
-specifier|final
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|r
 init|=
@@ -585,25 +601,25 @@ else|:
 name|Collections
 operator|.
 expr|<
-name|PatchLineComment
+name|Comment
 operator|>
 name|emptyList
 argument_list|()
 return|;
 block|}
 comment|/**    * Order the comments based on their parent_uuid parent.  It is possible to do this by    * iterating over the list only once but it's probably overkill since the number of comments    * on a given line will be small most of the time.    *    * @param comments The list of comments for a given line.    * @return The comments sorted as they should appear in the UI    */
-DECL|method|orderComments (List<PatchLineComment> comments)
+DECL|method|orderComments (List<Comment> comments)
 specifier|private
 specifier|static
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|orderComments
 parameter_list|(
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|comments
 parameter_list|)
@@ -618,7 +634,7 @@ name|String
 argument_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 argument_list|>
 name|parentMap
@@ -632,7 +648,7 @@ comment|// It's possible to have more than one root comment if two reviewers cre
 comment|// same line at the same time
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|rootComments
 init|=
@@ -644,7 +660,7 @@ decl_stmt|;
 comment|// Store all the comments in parentMap, keyed by their parent
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|comments
@@ -655,12 +671,11 @@ name|parentUuid
 init|=
 name|c
 operator|.
-name|getParentUuid
-argument_list|()
+name|parentUuid
 decl_stmt|;
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|l
 init|=
@@ -722,7 +737,7 @@ comment|// Add the comments in the list, starting with the head and then going t
 comment|// comments that have it as a parent, and so on
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|result
 init|=
@@ -745,7 +760,7 @@ name|result
 return|;
 block|}
 comment|/**    * Add the comments to {@code outResult}, depth first    */
-DECL|method|addChildren (Map<String, List<PatchLineComment>> parentMap, List<PatchLineComment> children, List<PatchLineComment> outResult)
+DECL|method|addChildren (Map<String, List<Comment>> parentMap, List<Comment> children, List<Comment> outResult)
 specifier|private
 specifier|static
 name|void
@@ -757,20 +772,20 @@ name|String
 argument_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 argument_list|>
 name|parentMap
 parameter_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|children
 parameter_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|outResult
 parameter_list|)
@@ -784,7 +799,7 @@ condition|)
 block|{
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|children
@@ -807,11 +822,9 @@ name|get
 argument_list|(
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
-name|get
-argument_list|()
+name|uuid
 argument_list|)
 argument_list|,
 name|outResult
@@ -820,7 +833,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|index ( List<PatchLineComment> in)
+DECL|method|index (List<Comment> in)
 specifier|private
 name|Map
 argument_list|<
@@ -828,14 +841,14 @@ name|Integer
 argument_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 argument_list|>
 name|index
 parameter_list|(
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|in
 parameter_list|)
@@ -846,7 +859,7 @@ name|Integer
 argument_list|,
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 argument_list|>
 name|r
@@ -858,8 +871,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
-name|PatchLineComment
+name|Comment
 name|p
 range|:
 name|in
@@ -867,7 +879,7 @@ control|)
 block|{
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|l
 init|=
@@ -877,8 +889,7 @@ name|get
 argument_list|(
 name|p
 operator|.
-name|getLine
-argument_list|()
+name|lineNbr
 argument_list|)
 decl_stmt|;
 if|if
@@ -901,8 +912,7 @@ name|put
 argument_list|(
 name|p
 operator|.
-name|getLine
-argument_list|()
+name|lineNbr
 argument_list|,
 name|l
 argument_list|)

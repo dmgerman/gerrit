@@ -174,7 +174,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -218,7 +218,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -323,15 +323,15 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
-DECL|field|plcUtil
+DECL|field|commentsUtil
 specifier|private
 specifier|final
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DraftComments (DynamicMap<RestView<DraftCommentResource>> views, Provider<CurrentUser> user, ListRevisionDrafts list, Provider<ReviewDb> dbProvider, PatchLineCommentsUtil plcUtil)
+DECL|method|DraftComments (DynamicMap<RestView<DraftCommentResource>> views, Provider<CurrentUser> user, ListRevisionDrafts list, Provider<ReviewDb> dbProvider, CommentsUtil commentsUtil)
 name|DraftComments
 parameter_list|(
 name|DynamicMap
@@ -358,8 +358,8 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 parameter_list|,
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 parameter_list|)
 block|{
 name|this
@@ -388,9 +388,9 @@ name|dbProvider
 expr_stmt|;
 name|this
 operator|.
-name|plcUtil
+name|commentsUtil
 operator|=
-name|plcUtil
+name|commentsUtil
 expr_stmt|;
 block|}
 annotation|@
@@ -461,10 +461,10 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
-name|plcUtil
+name|commentsUtil
 operator|.
 name|draftByPatchSetAuthor
 argument_list|(
@@ -501,11 +501,9 @@ name|equals
 argument_list|(
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
-name|get
-argument_list|()
+name|uuid
 argument_list|)
 condition|)
 block|{

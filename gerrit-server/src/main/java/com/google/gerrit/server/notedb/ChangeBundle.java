@@ -606,7 +606,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -833,14 +833,14 @@ name|REVIEW_DB
 block|,
 name|NOTE_DB
 block|;   }
-DECL|method|fromNotes (PatchLineCommentsUtil plcUtil, ChangeNotes notes)
+DECL|method|fromNotes (CommentsUtil commentsUtil, ChangeNotes notes)
 specifier|public
 specifier|static
 name|ChangeBundle
 name|fromNotes
 parameter_list|(
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 parameter_list|,
 name|ChangeNotes
 name|notes
@@ -882,7 +882,22 @@ name|Iterables
 operator|.
 name|concat
 argument_list|(
-name|plcUtil
+name|CommentsUtil
+operator|.
+name|toPatchLineComments
+argument_list|(
+name|notes
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|PatchLineComment
+operator|.
+name|Status
+operator|.
+name|DRAFT
+argument_list|,
+name|commentsUtil
 operator|.
 name|draftByChange
 argument_list|(
@@ -890,14 +905,31 @@ literal|null
 argument_list|,
 name|notes
 argument_list|)
+argument_list|)
 argument_list|,
-name|plcUtil
+name|CommentsUtil
+operator|.
+name|toPatchLineComments
+argument_list|(
+name|notes
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|PatchLineComment
+operator|.
+name|Status
+operator|.
+name|PUBLISHED
+argument_list|,
+name|commentsUtil
 operator|.
 name|publishedByChange
 argument_list|(
 literal|null
 argument_list|,
 name|notes
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|,
