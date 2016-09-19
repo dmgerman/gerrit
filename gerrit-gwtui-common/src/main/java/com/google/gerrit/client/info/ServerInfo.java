@@ -406,6 +406,15 @@ name|replyTooltip
 parameter_list|()
 comment|/*-{ return this.reply_tooltip; }-*/
 function_decl|;
+DECL|method|showAssignee ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|showAssignee
+parameter_list|()
+comment|/*-{ return this.show_assignee || false; }-*/
+function_decl|;
 DECL|method|updateDelay ()
 specifier|public
 specifier|final

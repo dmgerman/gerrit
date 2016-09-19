@@ -77,6 +77,11 @@ specifier|public
 name|Boolean
 name|allowBlame
 decl_stmt|;
+DECL|field|showAssignee
+specifier|public
+name|Boolean
+name|showAssignee
+decl_stmt|;
 DECL|field|allowDrafts
 specifier|public
 name|Boolean
