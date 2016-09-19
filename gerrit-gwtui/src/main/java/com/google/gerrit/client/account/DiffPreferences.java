@@ -837,218 +837,218 @@ name|r
 parameter_list|)
 comment|/*-{ this.cursor_blink_rate = r }-*/
 function_decl|;
-DECL|method|intralineDifference (boolean i)
+DECL|method|intralineDifference (Boolean i)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|intralineDifference
 parameter_list|(
-name|boolean
+name|Boolean
 name|i
 parameter_list|)
 comment|/*-{ this.intraline_difference = i }-*/
 function_decl|;
-DECL|method|showLineEndings (boolean s)
+DECL|method|showLineEndings (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|showLineEndings
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.show_line_endings = s }-*/
 function_decl|;
-DECL|method|showTabs (boolean s)
+DECL|method|showTabs (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|showTabs
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.show_tabs = s }-*/
 function_decl|;
-DECL|method|showWhitespaceErrors (boolean s)
+DECL|method|showWhitespaceErrors (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|showWhitespaceErrors
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.show_whitespace_errors = s }-*/
 function_decl|;
-DECL|method|syntaxHighlighting (boolean s)
+DECL|method|syntaxHighlighting (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|syntaxHighlighting
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.syntax_highlighting = s }-*/
 function_decl|;
-DECL|method|hideTopMenu (boolean s)
+DECL|method|hideTopMenu (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|hideTopMenu
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.hide_top_menu = s }-*/
 function_decl|;
-DECL|method|autoHideDiffTableHeader (boolean s)
+DECL|method|autoHideDiffTableHeader (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|autoHideDiffTableHeader
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.auto_hide_diff_table_header = s }-*/
 function_decl|;
-DECL|method|hideLineNumbers (boolean s)
+DECL|method|hideLineNumbers (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|hideLineNumbers
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.hide_line_numbers = s }-*/
 function_decl|;
-DECL|method|expandAllComments (boolean e)
+DECL|method|expandAllComments (Boolean e)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|expandAllComments
 parameter_list|(
-name|boolean
+name|Boolean
 name|e
 parameter_list|)
 comment|/*-{ this.expand_all_comments = e }-*/
 function_decl|;
-DECL|method|manualReview (boolean r)
+DECL|method|manualReview (Boolean r)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|manualReview
 parameter_list|(
-name|boolean
+name|Boolean
 name|r
 parameter_list|)
 comment|/*-{ this.manual_review = r }-*/
 function_decl|;
-DECL|method|renderEntireFile (boolean r)
+DECL|method|renderEntireFile (Boolean r)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|renderEntireFile
 parameter_list|(
-name|boolean
+name|Boolean
 name|r
 parameter_list|)
 comment|/*-{ this.render_entire_file = r }-*/
 function_decl|;
-DECL|method|retainHeader (boolean r)
+DECL|method|retainHeader (Boolean r)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|retainHeader
 parameter_list|(
-name|boolean
+name|Boolean
 name|r
 parameter_list|)
 comment|/*-{ this.retain_header = r }-*/
 function_decl|;
-DECL|method|hideEmptyPane (boolean s)
+DECL|method|hideEmptyPane (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|hideEmptyPane
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.hide_empty_pane = s }-*/
 function_decl|;
-DECL|method|skipUnchanged (boolean s)
+DECL|method|skipUnchanged (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|skipUnchanged
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.skip_unchanged = s }-*/
 function_decl|;
-DECL|method|skipUncommented (boolean s)
+DECL|method|skipUncommented (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|skipUncommented
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.skip_uncommented = s }-*/
 function_decl|;
-DECL|method|skipDeleted (boolean s)
+DECL|method|skipDeleted (Boolean s)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|skipDeleted
 parameter_list|(
-name|boolean
+name|Boolean
 name|s
 parameter_list|)
 comment|/*-{ this.skip_deleted = s }-*/
 function_decl|;
-DECL|method|matchBrackets (boolean m)
+DECL|method|matchBrackets (Boolean m)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|matchBrackets
 parameter_list|(
-name|boolean
+name|Boolean
 name|m
 parameter_list|)
 comment|/*-{ this.match_brackets = m }-*/
 function_decl|;
-DECL|method|lineWrapping (boolean w)
+DECL|method|lineWrapping (Boolean w)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|lineWrapping
 parameter_list|(
-name|boolean
+name|Boolean
 name|w
 parameter_list|)
 comment|/*-{ this.line_wrapping = w }-*/
