@@ -1484,6 +1484,9 @@ decl_stmt|;
 DECL|field|revisionNoteMap
 specifier|private
 name|RevisionNoteMap
+argument_list|<
+name|ChangeRevisionNote
+argument_list|>
 name|revisionNoteMap
 decl_stmt|;
 DECL|method|ChangeNotesParser (Change.Id changeId, ObjectId tip, ChangeNotesRevWalk walk, ChangeNoteUtil noteUtil, NoteDbMetrics metrics)
@@ -1725,6 +1728,9 @@ return|;
 block|}
 DECL|method|getRevisionNoteMap ()
 name|RevisionNoteMap
+argument_list|<
+name|ChangeRevisionNote
+argument_list|>
 name|getRevisionNoteMap
 parameter_list|()
 block|{
@@ -4155,7 +4161,7 @@ name|Map
 argument_list|<
 name|RevId
 argument_list|,
-name|RevisionNote
+name|ChangeRevisionNote
 argument_list|>
 name|rns
 init|=
@@ -4171,7 +4177,7 @@ name|Entry
 argument_list|<
 name|RevId
 argument_list|,
-name|RevisionNote
+name|ChangeRevisionNote
 argument_list|>
 name|e
 range|:
@@ -4191,7 +4197,8 @@ operator|.
 name|getValue
 argument_list|()
 operator|.
-name|comments
+name|getComments
+argument_list|()
 control|)
 block|{
 name|comments
@@ -4219,7 +4226,7 @@ name|values
 argument_list|()
 control|)
 block|{
-name|RevisionNote
+name|ChangeRevisionNote
 name|rn
 init|=
 name|rns
@@ -4240,7 +4247,8 @@ literal|null
 operator|&&
 name|rn
 operator|.
-name|pushCert
+name|getPushCert
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -4251,7 +4259,8 @@ name|setPushCertificate
 argument_list|(
 name|rn
 operator|.
-name|pushCert
+name|getPushCert
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

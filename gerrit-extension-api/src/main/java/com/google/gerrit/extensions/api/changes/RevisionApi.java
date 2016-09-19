@@ -176,6 +176,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|RobotCommentInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|TestSubmitRuleInput
 import|;
 end_import
@@ -448,6 +464,21 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|robotComments ()
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|RobotCommentInfo
+argument_list|>
+argument_list|>
+name|robotComments
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|drafts ()
 name|Map
 argument_list|<
@@ -483,6 +514,16 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|robotCommentsAsList ()
+name|List
+argument_list|<
+name|RobotCommentInfo
+argument_list|>
+name|robotCommentsAsList
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|createDraft (DraftInput in)
 name|DraftApi
 name|createDraft
@@ -506,6 +547,16 @@ function_decl|;
 DECL|method|comment (String id)
 name|CommentApi
 name|comment
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|robotComment (String id)
+name|RobotCommentApi
+name|robotComment
 parameter_list|(
 name|String
 name|id
@@ -988,6 +1039,30 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|robotComments ()
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|RobotCommentInfo
+argument_list|>
+argument_list|>
+name|robotComments
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|commentsAsList ()
 specifier|public
 name|List
@@ -1014,6 +1089,25 @@ argument_list|<
 name|CommentInfo
 argument_list|>
 name|draftsAsList
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|robotCommentsAsList ()
+specifier|public
+name|List
+argument_list|<
+name|RobotCommentInfo
+argument_list|>
+name|robotCommentsAsList
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -1092,6 +1186,25 @@ DECL|method|comment (String id)
 specifier|public
 name|CommentApi
 name|comment
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|robotComment (String id)
+specifier|public
+name|RobotCommentApi
+name|robotComment
 parameter_list|(
 name|String
 name|id

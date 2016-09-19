@@ -660,6 +660,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RobotComment
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|GerritPersonIdent
@@ -1131,6 +1147,14 @@ operator|.
 name|Factory
 name|draftUpdateFactory
 decl_stmt|;
+DECL|field|robotCommentUpdateFactory
+specifier|private
+specifier|final
+name|RobotCommentUpdate
+operator|.
+name|Factory
+name|robotCommentUpdateFactory
+decl_stmt|;
 DECL|field|updateManagerFactory
 specifier|private
 specifier|final
@@ -1295,9 +1319,14 @@ specifier|private
 name|ChangeDraftUpdate
 name|draftUpdate
 decl_stmt|;
+DECL|field|robotCommentUpdate
+specifier|private
+name|RobotCommentUpdate
+name|robotCommentUpdate
+decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1326,6 +1355,11 @@ name|ChangeDraftUpdate
 operator|.
 name|Factory
 name|draftUpdateFactory
+parameter_list|,
+name|RobotCommentUpdate
+operator|.
+name|Factory
+name|robotCommentUpdateFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -1353,6 +1387,8 @@ name|updateManagerFactory
 argument_list|,
 name|draftUpdateFactory
 argument_list|,
+name|robotCommentUpdateFactory
+argument_list|,
 name|projectCache
 argument_list|,
 name|ctl
@@ -1368,7 +1404,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1397,6 +1433,11 @@ name|ChangeDraftUpdate
 operator|.
 name|Factory
 name|draftUpdateFactory
+parameter_list|,
+name|RobotCommentUpdate
+operator|.
+name|Factory
+name|robotCommentUpdateFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -1428,6 +1469,8 @@ argument_list|,
 name|updateManagerFactory
 argument_list|,
 name|draftUpdateFactory
+argument_list|,
+name|robotCommentUpdateFactory
 argument_list|,
 name|ctl
 argument_list|,
@@ -1518,7 +1561,7 @@ return|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1547,6 +1590,11 @@ name|ChangeDraftUpdate
 operator|.
 name|Factory
 name|draftUpdateFactory
+parameter_list|,
+name|RobotCommentUpdate
+operator|.
+name|Factory
+name|robotCommentUpdateFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1599,6 +1647,12 @@ name|draftUpdateFactory
 expr_stmt|;
 name|this
 operator|.
+name|robotCommentUpdateFactory
+operator|=
+name|robotCommentUpdateFactory
+expr_stmt|;
+name|this
+operator|.
 name|updateManagerFactory
 operator|=
 name|updateManagerFactory
@@ -1615,7 +1669,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted @Nullable Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted @Nullable Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1644,6 +1698,11 @@ name|ChangeDraftUpdate
 operator|.
 name|Factory
 name|draftUpdateFactory
+parameter_list|,
+name|RobotCommentUpdate
+operator|.
+name|Factory
+name|robotCommentUpdateFactory
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
@@ -1713,6 +1772,12 @@ operator|.
 name|draftUpdateFactory
 operator|=
 name|draftUpdateFactory
+expr_stmt|;
+name|this
+operator|.
+name|robotCommentUpdateFactory
+operator|=
+name|robotCommentUpdateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2217,6 +2282,31 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|putRobotComment (RobotComment c)
+specifier|public
+name|void
+name|putRobotComment
+parameter_list|(
+name|RobotComment
+name|c
+parameter_list|)
+block|{
+name|verifyComment
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+name|createRobotCommentUpdateIfNull
+argument_list|()
+expr_stmt|;
+name|robotCommentUpdate
+operator|.
+name|putComment
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|deleteComment (Comment c)
 specifier|public
 name|void
@@ -2305,6 +2395,73 @@ block|}
 block|}
 return|return
 name|draftUpdate
+return|;
+block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|createRobotCommentUpdateIfNull ()
+name|RobotCommentUpdate
+name|createRobotCommentUpdateIfNull
+parameter_list|()
+block|{
+if|if
+condition|(
+name|robotCommentUpdate
+operator|==
+literal|null
+condition|)
+block|{
+name|ChangeNotes
+name|notes
+init|=
+name|getNotes
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|notes
+operator|!=
+literal|null
+condition|)
+block|{
+name|robotCommentUpdate
+operator|=
+name|robotCommentUpdateFactory
+operator|.
+name|create
+argument_list|(
+name|notes
+argument_list|,
+name|accountId
+argument_list|,
+name|authorIdent
+argument_list|,
+name|when
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|robotCommentUpdate
+operator|=
+name|robotCommentUpdateFactory
+operator|.
+name|create
+argument_list|(
+name|getChange
+argument_list|()
+argument_list|,
+name|accountId
+argument_list|,
+name|authorIdent
+argument_list|,
+name|when
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|return
+name|robotCommentUpdate
 return|;
 block|}
 DECL|method|verifyComment (Comment c)
@@ -2704,6 +2861,9 @@ literal|null
 return|;
 block|}
 name|RevisionNoteMap
+argument_list|<
+name|ChangeRevisionNote
+argument_list|>
 name|rnm
 init|=
 name|getRevisionNoteMap
@@ -2847,6 +3007,11 @@ operator|.
 name|build
 argument_list|(
 name|noteUtil
+argument_list|,
+name|noteUtil
+operator|.
+name|getWriteJson
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2887,6 +3052,9 @@ block|}
 DECL|method|getRevisionNoteMap (RevWalk rw, ObjectId curr)
 specifier|private
 name|RevisionNoteMap
+argument_list|<
+name|ChangeRevisionNote
+argument_list|>
 name|getRevisionNoteMap
 parameter_list|(
 name|RevWalk
@@ -3036,7 +3204,7 @@ name|PUBLISHED
 argument_list|)
 return|;
 block|}
-DECL|method|checkComments (Map<RevId, RevisionNote> existingNotes, Map<RevId, RevisionNoteBuilder> toUpdate)
+DECL|method|checkComments (Map<RevId, ChangeRevisionNote> existingNotes, Map<RevId, RevisionNoteBuilder> toUpdate)
 specifier|private
 name|void
 name|checkComments
@@ -3045,7 +3213,7 @@ name|Map
 argument_list|<
 name|RevId
 argument_list|,
-name|RevisionNote
+name|ChangeRevisionNote
 argument_list|>
 name|existingNotes
 parameter_list|,
@@ -3076,7 +3244,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|RevisionNote
+name|ChangeRevisionNote
 name|rn
 range|:
 name|existingNotes
@@ -3092,7 +3260,8 @@ name|c
 range|:
 name|rn
 operator|.
-name|comments
+name|getComments
+argument_list|()
 control|)
 block|{
 name|existing
@@ -4171,6 +4340,15 @@ parameter_list|()
 block|{
 return|return
 name|draftUpdate
+return|;
+block|}
+DECL|method|getRobotCommentUpdate ()
+name|RobotCommentUpdate
+name|getRobotCommentUpdate
+parameter_list|()
+block|{
+return|return
+name|robotCommentUpdate
 return|;
 block|}
 DECL|method|setAllowWriteToNewRef (boolean allow)

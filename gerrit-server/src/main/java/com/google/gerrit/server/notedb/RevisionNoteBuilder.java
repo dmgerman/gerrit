@@ -296,10 +296,20 @@ specifier|static
 class|class
 name|Cache
 block|{
-DECL|field|revisionNoteMap
 specifier|private
 specifier|final
 name|RevisionNoteMap
+argument_list|<
+name|?
+DECL|field|revisionNoteMap
+extends|extends
+name|RevisionNote
+argument_list|<
+name|?
+extends|extends
+name|Comment
+argument_list|>
+argument_list|>
 name|revisionNoteMap
 decl_stmt|;
 DECL|field|builders
@@ -313,10 +323,20 @@ name|RevisionNoteBuilder
 argument_list|>
 name|builders
 decl_stmt|;
-DECL|method|Cache (RevisionNoteMap revisionNoteMap)
+DECL|method|Cache (RevisionNoteMap<? extends RevisionNote<? extends Comment>> revisionNoteMap)
 name|Cache
 parameter_list|(
 name|RevisionNoteMap
+argument_list|<
+name|?
+extends|extends
+name|RevisionNote
+argument_list|<
+name|?
+extends|extends
+name|Comment
+argument_list|>
+argument_list|>
 name|revisionNoteMap
 parameter_list|)
 block|{
@@ -420,6 +440,8 @@ DECL|field|baseComments
 specifier|final
 name|List
 argument_list|<
+name|?
+extends|extends
 name|Comment
 argument_list|>
 name|baseComments
@@ -451,10 +473,15 @@ specifier|private
 name|String
 name|pushCert
 decl_stmt|;
-DECL|method|RevisionNoteBuilder (RevisionNote base)
+DECL|method|RevisionNoteBuilder (RevisionNote<? extends Comment> base)
 name|RevisionNoteBuilder
 parameter_list|(
 name|RevisionNote
+argument_list|<
+name|?
+extends|extends
+name|Comment
+argument_list|>
 name|base
 parameter_list|)
 block|{
@@ -469,13 +496,15 @@ name|baseRaw
 operator|=
 name|base
 operator|.
-name|raw
+name|getRaw
+argument_list|()
 expr_stmt|;
 name|baseComments
 operator|=
 name|base
 operator|.
-name|comments
+name|getComments
+argument_list|()
 expr_stmt|;
 name|put
 operator|=
@@ -483,20 +512,32 @@ name|Maps
 operator|.
 name|newHashMapWithExpectedSize
 argument_list|(
-name|base
-operator|.
-name|comments
+name|baseComments
 operator|.
 name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|base
+operator|instanceof
+name|ChangeRevisionNote
+condition|)
+block|{
 name|pushCert
 operator|=
+operator|(
+operator|(
+name|ChangeRevisionNote
+operator|)
 name|base
+operator|)
 operator|.
-name|pushCert
+name|getPushCert
+argument_list|()
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -535,7 +576,7 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|build (ChangeNoteUtil noteUtil)
+DECL|method|build (ChangeNoteUtil noteUtil, boolean writeJson)
 specifier|public
 name|byte
 index|[]
@@ -543,6 +584,9 @@ name|build
 parameter_list|(
 name|ChangeNoteUtil
 name|noteUtil
+parameter_list|,
+name|boolean
+name|writeJson
 parameter_list|)
 throws|throws
 name|IOException
@@ -556,10 +600,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|noteUtil
-operator|.
-name|getWriteJson
-argument_list|()
+name|writeJson
 condition|)
 block|{
 name|buildNoteJson
@@ -787,12 +828,11 @@ return|return
 name|all
 return|;
 block|}
-DECL|method|buildNoteJson (final ChangeNoteUtil noteUtil, OutputStream out)
+DECL|method|buildNoteJson (ChangeNoteUtil noteUtil, OutputStream out)
 specifier|private
 name|void
 name|buildNoteJson
 parameter_list|(
-specifier|final
 name|ChangeNoteUtil
 name|noteUtil
 parameter_list|,

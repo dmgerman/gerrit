@@ -378,6 +378,9 @@ name|includeAuthorInfo
 argument_list|()
 argument_list|)
 operator|.
+name|newCommentFormatter
+argument_list|()
+operator|.
 name|format
 argument_list|(
 name|listComments
@@ -412,6 +415,9 @@ argument_list|(
 name|includeAuthorInfo
 argument_list|()
 argument_list|)
+operator|.
+name|newCommentFormatter
+argument_list|()
 operator|.
 name|formatAsList
 argument_list|(
