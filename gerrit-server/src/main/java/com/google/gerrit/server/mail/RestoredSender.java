@@ -304,6 +304,12 @@ literal|"Restored"
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|useHtml
+argument_list|()
+condition|)
+block|{
 name|appendHtml
 argument_list|(
 name|soyHtmlTemplate
@@ -313,12 +319,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 annotation|@
 name|Override
-DECL|method|useHtml ()
+DECL|method|supportsHtml ()
 specifier|protected
 name|boolean
-name|useHtml
+name|supportsHtml
 parameter_list|()
 block|{
 return|return
