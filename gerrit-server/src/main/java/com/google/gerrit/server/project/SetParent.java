@@ -106,20 +106,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Predicate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Strings
 import|;
 end_import
@@ -919,25 +905,11 @@ operator|.
 name|tree
 argument_list|()
 argument_list|,
-operator|new
-name|Predicate
-argument_list|<
-name|ProjectState
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|apply
-parameter_list|(
-name|ProjectState
-name|input
-parameter_list|)
+name|p
+lambda|->
 block|{
 return|return
-name|input
+name|p
 operator|.
 name|getProject
 argument_list|()
@@ -957,12 +929,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-block|}
-block|)
+argument_list|)
 operator|.
 name|isPresent
 argument_list|()
-block|)
+condition|)
 block|{
 throw|throw
 operator|new
@@ -991,8 +962,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
+block|}
 end_class
 
-unit|} }
 end_unit
 
