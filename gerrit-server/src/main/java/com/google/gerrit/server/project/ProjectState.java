@@ -110,6 +110,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|FluentIterable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|ImmutableList
 import|;
 end_import
@@ -2113,7 +2127,7 @@ block|}
 comment|/**    * @return an iterable that walks through the parents of this project. Starts    *         from the immediate parent of this project and progresses up the    *         hierarchy to All-Projects.    */
 DECL|method|parents ()
 specifier|public
-name|Iterable
+name|FluentIterable
 argument_list|<
 name|ProjectState
 argument_list|>
@@ -2121,13 +2135,16 @@ name|parents
 parameter_list|()
 block|{
 return|return
-name|Iterables
+name|FluentIterable
 operator|.
-name|skip
+name|from
 argument_list|(
 name|tree
 argument_list|()
-argument_list|,
+argument_list|)
+operator|.
+name|skip
+argument_list|(
 literal|1
 argument_list|)
 return|;
