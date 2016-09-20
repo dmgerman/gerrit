@@ -101,16 +101,14 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|Comparator
 operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
+name|comparing
 import|;
 end_import
 
@@ -122,9 +120,9 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
+name|annotations
 operator|.
-name|Function
+name|VisibleForTesting
 import|;
 end_import
 
@@ -590,16 +588,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -726,38 +714,14 @@ name|SORT_APPROVALS
 init|=
 name|Ordering
 operator|.
-name|natural
-argument_list|()
-operator|.
-name|onResultOf
+name|from
 argument_list|(
-operator|new
-name|Function
-argument_list|<
+name|comparing
+argument_list|(
 name|PatchSetApproval
-argument_list|,
-name|Timestamp
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Timestamp
-name|apply
-parameter_list|(
-name|PatchSetApproval
-name|a
-parameter_list|)
-block|{
-return|return
-name|a
-operator|.
+operator|::
 name|getGranted
-argument_list|()
-return|;
-block|}
-block|}
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|method|sortApprovals ( Iterable<PatchSetApproval> approvals)

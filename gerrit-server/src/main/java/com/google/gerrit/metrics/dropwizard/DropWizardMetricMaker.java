@@ -126,20 +126,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Function
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|FluentIterable
@@ -2342,7 +2328,6 @@ name|Runnable
 name|trigger
 parameter_list|)
 block|{
-specifier|final
 name|ImmutableSet
 argument_list|<
 name|CallbackMetricGlue
@@ -2358,43 +2343,17 @@ argument_list|)
 operator|.
 name|transform
 argument_list|(
-operator|new
-name|Function
-argument_list|<
-name|CallbackMetric
-argument_list|<
-name|?
-argument_list|>
-argument_list|,
-name|CallbackMetricGlue
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|CallbackMetricGlue
-name|apply
-parameter_list|(
-name|CallbackMetric
-argument_list|<
-name|?
-argument_list|>
-name|input
-parameter_list|)
-block|{
-return|return
+name|m
+lambda|->
 operator|(
 name|CallbackMetricGlue
 operator|)
-name|input
-return|;
-block|}
-block|}
-block|)
-function|.toSet
-parameter_list|()
-function|;
+name|m
+argument_list|)
+operator|.
+name|toSet
+argument_list|()
+decl_stmt|;
 name|trigger
 operator|=
 operator|new
@@ -2424,8 +2383,8 @@ block|}
 name|trigger
 operator|.
 name|run
-parameter_list|()
-constructor_decl|;
+argument_list|()
+expr_stmt|;
 return|return
 operator|new
 name|RegistrationHandle
@@ -2456,9 +2415,6 @@ block|}
 block|}
 return|;
 block|}
-end_class
-
-begin_function
 DECL|method|remove (String name)
 specifier|synchronized
 name|void
@@ -2483,9 +2439,6 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|define (String name, Description desc)
 specifier|private
 specifier|synchronized
@@ -2537,9 +2490,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_decl_stmt
 DECL|field|METRIC_NAME_PATTERN
 specifier|private
 specifier|static
@@ -2554,9 +2504,6 @@ argument_list|(
 literal|"[a-zA-Z0-9_-]+(/[a-zA-Z0-9_-]+)*"
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_function
 DECL|method|checkMetricName (String name)
 specifier|private
 specifier|static
@@ -2588,9 +2535,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|name (Description.FieldOrdering ordering, String codeName, String fieldValues)
 specifier|static
 name|String
@@ -2679,9 +2623,6 @@ operator|+
 name|fieldValues
 return|;
 block|}
-end_function
-
-begin_class
 DECL|class|CounterImpl
 specifier|abstract
 class|class
@@ -2747,9 +2688,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|TimerImpl
 class|class
 name|TimerImpl
@@ -2860,9 +2798,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|HistogramImpl
 class|class
 name|HistogramImpl
@@ -2959,8 +2894,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 end_class
 
-unit|}
 end_unit
 

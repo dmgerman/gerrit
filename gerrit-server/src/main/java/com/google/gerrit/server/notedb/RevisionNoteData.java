@@ -67,16 +67,16 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|stream
 operator|.
-name|base
+name|Collectors
 operator|.
-name|Function
+name|toList
 import|;
 end_import
 
@@ -91,20 +91,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
 import|;
 end_import
 
@@ -788,14 +774,13 @@ name|Comment
 argument_list|>
 name|comments
 decl_stmt|;
-DECL|method|exportComments ( final PatchLineComment.Status status)
+DECL|method|exportComments ( PatchLineComment.Status status)
 name|ImmutableList
 argument_list|<
 name|PatchLineComment
 argument_list|>
 name|exportComments
 parameter_list|(
-specifier|final
 name|PatchLineComment
 operator|.
 name|Status
@@ -807,30 +792,15 @@ name|ImmutableList
 operator|.
 name|copyOf
 argument_list|(
-name|Lists
-operator|.
-name|transform
-argument_list|(
 name|comments
-argument_list|,
-operator|new
-name|Function
-argument_list|<
-name|Comment
-argument_list|,
-name|PatchLineComment
-argument_list|>
+operator|.
+name|stream
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|PatchLineComment
-name|apply
-parameter_list|(
-name|Comment
+operator|.
+name|map
+argument_list|(
 name|c
-parameter_list|)
+lambda|->
 block|{
 name|PatchLineComment
 name|plc
@@ -851,7 +821,12 @@ return|return
 name|plc
 return|;
 block|}
-block|}
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
 argument_list|)
 argument_list|)
 return|;

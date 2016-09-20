@@ -67,30 +67,16 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|stream
 operator|.
-name|base
+name|Collectors
 operator|.
-name|Function
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Lists
+name|toList
 import|;
 end_import
 
@@ -996,125 +982,97 @@ name|ProjectConfigEntryType
 operator|.
 name|LIST
 argument_list|,
-name|Lists
-operator|.
-name|transform
-argument_list|(
 name|Arrays
 operator|.
-name|asList
+name|stream
 argument_list|(
 name|permittedValues
 operator|.
 name|getEnumConstants
 argument_list|()
 argument_list|)
-argument_list|,
-operator|new
-name|Function
-argument_list|<
-name|Enum
-argument_list|<
-name|?
-argument_list|>
-argument_list|,
-name|String
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|String
-name|apply
-parameter_list|(
-name|Enum
-argument_list|<
-name|?
-argument_list|>
-name|e
-parameter_list|)
-block|{
-return|return
-name|e
 operator|.
-name|name
-argument_list|()
-return|;
-block|}
-block|}
-block|)
-operator|,
-constructor|inheritable
-operator|,
-constructor|description
-block|)
-class|;
-end_class
-
-begin_expr_stmt
-unit|}    public
-DECL|method|ProjectConfigEntry (String displayName, String defaultValue, ProjectConfigEntryType type, List<String> permittedValues, boolean inheritable, String description)
-name|ProjectConfigEntry
+name|map
 argument_list|(
+name|Enum
+operator|::
+name|name
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
+argument_list|)
+argument_list|,
+name|inheritable
+argument_list|,
+name|description
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ProjectConfigEntry (String displayName, String defaultValue, ProjectConfigEntryType type, List<String> permittedValues, boolean inheritable, String description)
+specifier|public
+name|ProjectConfigEntry
+parameter_list|(
 name|String
 name|displayName
-argument_list|,
+parameter_list|,
 name|String
 name|defaultValue
-argument_list|,
+parameter_list|,
 name|ProjectConfigEntryType
 name|type
-argument_list|,
+parameter_list|,
 name|List
 argument_list|<
 name|String
 argument_list|>
 name|permittedValues
-argument_list|,
+parameter_list|,
 name|boolean
 name|inheritable
-argument_list|,
+parameter_list|,
 name|String
 name|description
-argument_list|)
+parameter_list|)
 block|{
 name|this
 operator|.
 name|displayName
 operator|=
 name|displayName
-block|;
+expr_stmt|;
 name|this
 operator|.
 name|defaultValue
 operator|=
 name|defaultValue
-block|;
+expr_stmt|;
 name|this
 operator|.
 name|type
 operator|=
 name|type
-block|;
+expr_stmt|;
 name|this
 operator|.
 name|permittedValues
 operator|=
 name|permittedValues
-block|;
+expr_stmt|;
 name|this
 operator|.
 name|inheritable
 operator|=
 name|inheritable
-block|;
+expr_stmt|;
 name|this
 operator|.
 name|description
 operator|=
 name|description
-block|;
+expr_stmt|;
 if|if
 condition|(
 name|type
@@ -1134,11 +1092,9 @@ literal|"ARRAY doesn't support inheritable values"
 argument_list|)
 throw|;
 block|}
-end_expr_stmt
-
-begin_function
-unit|}    public
+block|}
 DECL|method|getDisplayName ()
+specifier|public
 name|String
 name|getDisplayName
 parameter_list|()
@@ -1147,9 +1103,6 @@ return|return
 name|displayName
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -1160,9 +1113,6 @@ return|return
 name|description
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|isInheritable ()
 specifier|public
 name|boolean
@@ -1173,9 +1123,6 @@ return|return
 name|inheritable
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getDefaultValue ()
 specifier|public
 name|String
@@ -1186,9 +1133,6 @@ return|return
 name|defaultValue
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getType ()
 specifier|public
 name|ProjectConfigEntryType
@@ -1199,9 +1143,6 @@ return|return
 name|type
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getPermittedValues ()
 specifier|public
 name|List
@@ -1215,13 +1156,7 @@ return|return
 name|permittedValues
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**    * @param project project state.    * @return whether the project is editable.    */
-end_comment
-
-begin_function
 DECL|method|isEditable (ProjectState project)
 specifier|public
 name|boolean
@@ -1235,13 +1170,7 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**    * @param project project state.    * @return any warning associated with the project.    */
-end_comment
-
-begin_function
 DECL|method|getWarning (ProjectState project)
 specifier|public
 name|String
@@ -1255,13 +1184,7 @@ return|return
 literal|null
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**    * Called before the project config is updated. To modify the value before the    * project config is updated, override this method and return the modified    * value. Default implementation returns the same value.    *    * @param configValue the original configValue that was entered.    * @return the modified configValue.    */
-end_comment
-
-begin_function
 DECL|method|preUpdate (ConfigValue configValue)
 specifier|public
 name|ConfigValue
@@ -1275,13 +1198,7 @@ return|return
 name|configValue
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**    * Called after reading the project config value. To modify the value before    * returning it to the client, override this method and return the modified    * value. Default implementation returns the same value.    *    * @param project the project.    * @param value the actual value of the config entry (computed out of the    *        configured value, the inherited value and the default value).    * @return the modified value.    */
-end_comment
-
-begin_function
 DECL|method|onRead (ProjectState project, String value)
 specifier|public
 name|String
@@ -1298,13 +1215,7 @@ return|return
 name|value
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**    * Called after reading the project config value of type ARRAY. To modify the    * values before returning it to the client, override this method and return    * the modified values. Default implementation returns the same values.    *    * @param project the project.    * @param values the actual values of the config entry (computed out of the    *        configured value, the inherited value and the default value).    * @return the modified values.    */
-end_comment
-
-begin_function
 DECL|method|onRead (ProjectState project, List<String> values)
 specifier|public
 name|List
@@ -1327,13 +1238,7 @@ return|return
 name|values
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**    * Called after a project config is updated.    *    * @param project project name.    * @param oldValue old entry value.    * @param newValue new entry value.    */
-end_comment
-
-begin_function
 DECL|method|onUpdate (Project.NameKey project, String oldValue, String newValue)
 specifier|public
 name|void
@@ -1351,13 +1256,7 @@ name|String
 name|newValue
 parameter_list|)
 block|{   }
-end_function
-
-begin_comment
 comment|/**    * Called after a project config is updated.    *    * @param project project name.    * @param oldValue old entry value.    * @param newValue new entry value.    */
-end_comment
-
-begin_function
 DECL|method|onUpdate (Project.NameKey project, Boolean oldValue, Boolean newValue)
 specifier|public
 name|void
@@ -1375,13 +1274,7 @@ name|Boolean
 name|newValue
 parameter_list|)
 block|{   }
-end_function
-
-begin_comment
 comment|/**    * Called after a project config is updated.    *    * @param project project name.    * @param oldValue old entry value.    * @param newValue new entry value.    */
-end_comment
-
-begin_function
 DECL|method|onUpdate (Project.NameKey project, Integer oldValue, Integer newValue)
 specifier|public
 name|void
@@ -1399,13 +1292,7 @@ name|Integer
 name|newValue
 parameter_list|)
 block|{   }
-end_function
-
-begin_comment
 comment|/**    * Called after a project config is updated.    *    * @param project project name.    * @param oldValue old entry value.    * @param newValue new entry value.    */
-end_comment
-
-begin_function
 DECL|method|onUpdate (Project.NameKey project, Long oldValue, Long newValue)
 specifier|public
 name|void
@@ -1423,9 +1310,6 @@ name|Long
 name|newValue
 parameter_list|)
 block|{   }
-end_function
-
-begin_class
 DECL|class|UpdateChecker
 specifier|public
 specifier|static
@@ -1918,9 +1802,6 @@ name|value
 return|;
 block|}
 block|}
-end_class
-
-begin_function
 DECL|method|toBoolean (String value)
 specifier|private
 specifier|static
@@ -1946,9 +1827,6 @@ else|:
 literal|null
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|toInt (String value)
 specifier|private
 specifier|static
@@ -1974,9 +1852,6 @@ else|:
 literal|null
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|toLong (String value)
 specifier|private
 specifier|static
@@ -2002,8 +1877,8 @@ else|:
 literal|null
 return|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
