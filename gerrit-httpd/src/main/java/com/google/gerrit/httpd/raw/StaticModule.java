@@ -2514,12 +2514,22 @@ name|response
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|isPolyGerritEnabled
+name|handlePolyGerritParam
 argument_list|(
 name|req
 argument_list|,
 name|res
+argument_list|)
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
+operator|!
+name|isPolyGerritEnabled
+argument_list|(
+name|req
 argument_list|)
 condition|)
 block|{
@@ -2704,10 +2714,10 @@ else|:
 name|uri
 return|;
 block|}
-DECL|method|isPolyGerritEnabled (HttpServletRequest req, HttpServletResponse res)
+DECL|method|handlePolyGerritParam (HttpServletRequest req, HttpServletResponse res)
 specifier|private
 name|boolean
-name|isPolyGerritEnabled
+name|handlePolyGerritParam
 parameter_list|(
 name|HttpServletRequest
 name|req
@@ -2715,6 +2725,8 @@ parameter_list|,
 name|HttpServletResponse
 name|res
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -2726,9 +2738,14 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|true
+literal|false
 return|;
 block|}
+name|boolean
+name|redirect
+init|=
+literal|false
+decl_stmt|;
 name|String
 name|param
 init|=
@@ -2749,7 +2766,6 @@ name|param
 argument_list|)
 condition|)
 block|{
-return|return
 name|setPolyGerritCookie
 argument_list|(
 name|req
@@ -2760,7 +2776,11 @@ name|UiType
 operator|.
 name|POLYGERRIT
 argument_list|)
-return|;
+expr_stmt|;
+name|redirect
+operator|=
+literal|true
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -2773,7 +2793,6 @@ name|param
 argument_list|)
 condition|)
 block|{
-return|return
 name|setPolyGerritCookie
 argument_list|(
 name|req
@@ -2784,17 +2803,61 @@ name|UiType
 operator|.
 name|GWT
 argument_list|)
+expr_stmt|;
+name|redirect
+operator|=
+literal|true
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|redirect
+condition|)
+block|{
+comment|// Strip polygerrit param from URL. This actually strips all params,
+comment|// which is a similar behavior to the JS PolyGerrit redirector code.
+comment|// Stripping just one param is frustratingly difficult without the use
+comment|// of Apache httpclient, which is a dep we don't want here:
+comment|// https://gerrit-review.googlesource.com/#/c/57570/57/gerrit-httpd/BUCK@32
+name|res
+operator|.
+name|sendRedirect
+argument_list|(
+name|req
+operator|.
+name|getRequestURL
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|redirect
 return|;
 block|}
-else|else
+DECL|method|isPolyGerritEnabled (HttpServletRequest req)
+specifier|private
+name|boolean
+name|isPolyGerritEnabled
+parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|)
 block|{
 return|return
+operator|!
+name|options
+operator|.
+name|enableGwtUi
+argument_list|()
+operator|||
 name|isPolyGerritCookie
 argument_list|(
 name|req
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|isPolyGerritCookie (HttpServletRequest req)
 specifier|private
@@ -2889,7 +2952,7 @@ return|;
 block|}
 DECL|method|setPolyGerritCookie (HttpServletRequest req, HttpServletResponse res, UiType pref)
 specifier|private
-name|boolean
+name|void
 name|setPolyGerritCookie
 parameter_list|(
 name|HttpServletRequest
@@ -2980,13 +3043,6 @@ argument_list|(
 name|cookie
 argument_list|)
 expr_stmt|;
-return|return
-name|pref
-operator|==
-name|UiType
-operator|.
-name|POLYGERRIT
-return|;
 block|}
 DECL|method|isSecure (HttpServletRequest req)
 specifier|private
