@@ -185,6 +185,11 @@ name|String
 name|buttonSaveChanges
 parameter_list|()
 function_decl|;
+DECL|method|highlightAssigneeInChangeTable ()
+name|String
+name|highlightAssigneeInChangeTable
+parameter_list|()
+function_decl|;
 DECL|method|showRelativeDateInChangeTable ()
 name|String
 name|showRelativeDateInChangeTable

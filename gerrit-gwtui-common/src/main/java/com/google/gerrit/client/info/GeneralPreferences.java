@@ -432,6 +432,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|highlightAssigneeInChangeTable
+argument_list|(
+name|d
+operator|.
+name|highlightAssigneeInChangeTable
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|relativeDateInChangeTable
 argument_list|(
 name|d
@@ -696,6 +705,15 @@ name|String
 name|timeFormatRaw
 parameter_list|()
 comment|/*-{ return this.time_format }-*/
+function_decl|;
+DECL|method|highlightAssigneeInChangeTable ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|highlightAssigneeInChangeTable
+parameter_list|()
+comment|/*-{ return this.highlight_assignee_in_change_table || false }-*/
 function_decl|;
 DECL|method|relativeDateInChangeTable ()
 specifier|public
@@ -1056,6 +1074,18 @@ name|String
 name|f
 parameter_list|)
 comment|/*-{ this.time_format = f }-*/
+function_decl|;
+DECL|method|highlightAssigneeInChangeTable (boolean d)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|highlightAssigneeInChangeTable
+parameter_list|(
+name|boolean
+name|d
+parameter_list|)
+comment|/*-{ this.highlight_assignee_in_change_table = d }-*/
 function_decl|;
 DECL|method|relativeDateInChangeTable (boolean d)
 specifier|public
