@@ -101,44 +101,16 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|stream
 operator|.
-name|base
+name|Collectors
 operator|.
-name|Function
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|FluentIterable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Ordering
+name|toSet
 import|;
 end_import
 
@@ -1008,66 +980,27 @@ name|String
 argument_list|>
 name|valid
 init|=
-name|FluentIterable
-operator|.
-name|from
-argument_list|(
 name|indexDefs
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|IndexDefinition
+operator|::
+name|getName
 argument_list|)
 operator|.
-name|transform
-argument_list|(
-operator|new
-name|Function
-argument_list|<
-name|IndexDefinition
-argument_list|<
-name|?
-argument_list|,
-name|?
-argument_list|,
-name|?
-argument_list|>
-argument_list|,
-name|String
-argument_list|>
+name|sorted
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|String
-name|apply
-parameter_list|(
-name|IndexDefinition
-argument_list|<
-name|?
-argument_list|,
-name|?
-argument_list|,
-name|?
-argument_list|>
-name|input
-parameter_list|)
-block|{
-return|return
-name|input
 operator|.
-name|getName
+name|collect
+argument_list|(
+name|toSet
 argument_list|()
-return|;
-block|}
-block|}
-block|)
-function|.toSortedSet
-parameter_list|(
-function|Ordering.natural
-parameter_list|()
-block|)
-class|;
-end_class
-
-begin_decl_stmt
+argument_list|)
+decl_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -1088,9 +1021,6 @@ argument_list|,
 name|valid
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_if
 if|if
 condition|(
 name|invalid
@@ -1101,9 +1031,6 @@ condition|)
 block|{
 return|return;
 block|}
-end_if
-
-begin_throw
 throw|throw
 name|die
 argument_list|(
@@ -1121,11 +1048,9 @@ operator|+
 name|valid
 argument_list|)
 throw|;
-end_throw
-
-begin_function
-unit|}    private
+block|}
 DECL|method|checkNotSlaveMode ()
+specifier|private
 name|void
 name|checkNotSlaveMode
 parameter_list|()
@@ -1154,9 +1079,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|createSysInjector ()
 specifier|private
 name|Injector
@@ -1304,9 +1226,6 @@ name|modules
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|disableLuceneAutomaticCommit ()
 specifier|private
 name|void
@@ -1357,9 +1276,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|disableChangeCache ()
 specifier|private
 name|void
@@ -1380,9 +1296,6 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|reindex ( IndexDefinition<K, V, I> def)
 specifier|private
 parameter_list|<
@@ -1573,8 +1486,8 @@ name|success
 argument_list|()
 return|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
