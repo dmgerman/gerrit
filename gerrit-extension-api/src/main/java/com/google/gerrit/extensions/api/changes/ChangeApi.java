@@ -368,6 +368,25 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|submittedTogether ( EnumSet<ListChangesOption> listOptions, EnumSet<SubmittedTogetherOption> submitOptions)
+name|SubmittedTogetherInfo
+name|submittedTogether
+parameter_list|(
+name|EnumSet
+argument_list|<
+name|ListChangesOption
+argument_list|>
+name|listOptions
+parameter_list|,
+name|EnumSet
+argument_list|<
+name|SubmittedTogetherOption
+argument_list|>
+name|submitOptions
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Publishes a draft change.    */
 DECL|method|publish ()
 name|void
@@ -1254,6 +1273,34 @@ argument_list|<
 name|SubmittedTogetherOption
 argument_list|>
 name|options
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|submittedTogether ( EnumSet<ListChangesOption> a, EnumSet<SubmittedTogetherOption> b)
+specifier|public
+name|SubmittedTogetherInfo
+name|submittedTogether
+parameter_list|(
+name|EnumSet
+argument_list|<
+name|ListChangesOption
+argument_list|>
+name|a
+parameter_list|,
+name|EnumSet
+argument_list|<
+name|SubmittedTogetherOption
+argument_list|>
+name|b
 parameter_list|)
 throws|throws
 name|RestApiException
