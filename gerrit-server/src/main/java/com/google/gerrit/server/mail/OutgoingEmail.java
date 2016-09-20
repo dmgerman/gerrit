@@ -3503,11 +3503,29 @@ else|:
 literal|""
 return|;
 block|}
-comment|/** Override this method to enable HTML in a subclass. */
 DECL|method|useHtml ()
 specifier|protected
+specifier|final
 name|boolean
 name|useHtml
+parameter_list|()
+block|{
+return|return
+name|args
+operator|.
+name|settings
+operator|.
+name|html
+operator|&&
+name|supportsHtml
+argument_list|()
+return|;
+block|}
+comment|/** Override this method to enable HTML in a subclass. */
+DECL|method|supportsHtml ()
+specifier|protected
+name|boolean
+name|supportsHtml
 parameter_list|()
 block|{
 return|return
