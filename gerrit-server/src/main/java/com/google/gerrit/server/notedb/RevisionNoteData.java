@@ -559,7 +559,6 @@ name|String
 name|serverId
 decl_stmt|;
 DECL|method|Comment (PatchLineComment plc, String serverId)
-specifier|public
 name|Comment
 parameter_list|(
 name|PatchLineComment
