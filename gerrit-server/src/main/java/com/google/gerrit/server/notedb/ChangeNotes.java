@@ -702,6 +702,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -2784,17 +2798,25 @@ block|}
 comment|/**    * @return an Account.Id of the user assigned to this change.    */
 DECL|method|getAssignee ()
 specifier|public
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|getAssignee
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|fromNullable
+argument_list|(
 name|state
 operator|.
 name|assignee
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**    *    * @return a ImmutableSet of all hashtags for this change sorted in alphabetical order.    */
