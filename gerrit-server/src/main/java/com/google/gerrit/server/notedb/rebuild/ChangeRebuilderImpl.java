@@ -662,6 +662,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|ChangeBundleReader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|ChangeDraftUpdate
 import|;
 end_import
@@ -1223,6 +1239,12 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|bundleReader
+specifier|private
+specifier|final
+name|ChangeBundleReader
+name|bundleReader
+decl_stmt|;
 DECL|field|draftUpdateFactory
 specifier|private
 specifier|final
@@ -1285,7 +1307,7 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeRebuilderImpl (SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeUpdate.Factory updateFactory, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration migration, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @AnonymousCowardName String anonymousCowardName)
+DECL|method|ChangeRebuilderImpl (SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeBundleReader bundleReader, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeUpdate.Factory updateFactory, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration migration, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @AnonymousCowardName String anonymousCowardName)
 name|ChangeRebuilderImpl
 parameter_list|(
 name|SchemaFactory
@@ -1296,6 +1318,9 @@ name|schemaFactory
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|ChangeBundleReader
+name|bundleReader
 parameter_list|,
 name|ChangeDraftUpdate
 operator|.
@@ -1347,6 +1372,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|bundleReader
+operator|=
+name|bundleReader
 expr_stmt|;
 name|this
 operator|.
@@ -1484,7 +1515,7 @@ name|buildUpdates
 argument_list|(
 name|manager
 argument_list|,
-name|ChangeBundle
+name|bundleReader
 operator|.
 name|fromReviewDb
 argument_list|(
@@ -1632,7 +1663,7 @@ name|buildUpdates
 argument_list|(
 name|manager
 argument_list|,
-name|ChangeBundle
+name|bundleReader
 operator|.
 name|fromReviewDb
 argument_list|(
@@ -2106,7 +2137,7 @@ name|buildUpdates
 argument_list|(
 name|manager
 argument_list|,
-name|ChangeBundle
+name|bundleReader
 operator|.
 name|fromReviewDb
 argument_list|(
