@@ -402,6 +402,18 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+operator|.
+name|comparing
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -632,22 +644,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDbUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|GerritPersonIdent
@@ -747,6 +743,20 @@ operator|.
 name|util
 operator|.
 name|RequestId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|IntKey
 import|;
 end_import
 
@@ -1478,10 +1488,12 @@ name|create
 argument_list|(
 name|nameComparator
 argument_list|,
-name|ReviewDbUtil
-operator|.
-name|intKeyOrdering
-argument_list|()
+name|comparing
+argument_list|(
+name|IntKey
+operator|::
+name|get
+argument_list|)
 argument_list|)
 return|;
 block|}

@@ -83,6 +83,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+operator|.
+name|comparing
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -335,22 +347,6 @@ operator|.
 name|client
 operator|.
 name|RevId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDbUtil
 import|;
 end_import
 
@@ -758,10 +754,14 @@ name|copyOf
 argument_list|(
 name|patchSets
 argument_list|,
-name|ReviewDbUtil
+name|comparing
+argument_list|(
+name|PatchSet
 operator|.
-name|intKeyOrdering
-argument_list|()
+name|Id
+operator|::
+name|get
+argument_list|)
 argument_list|)
 argument_list|,
 name|ImmutableListMultimap
