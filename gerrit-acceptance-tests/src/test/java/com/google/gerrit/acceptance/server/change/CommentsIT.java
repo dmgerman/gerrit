@@ -4382,7 +4382,7 @@ argument_list|(
 literal|"typo: content"
 argument_list|)
 expr_stmt|;
-name|ImmutableList
+name|List
 argument_list|<
 name|Message
 argument_list|>
