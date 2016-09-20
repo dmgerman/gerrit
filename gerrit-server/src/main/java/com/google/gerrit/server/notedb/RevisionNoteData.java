@@ -282,10 +282,6 @@ DECL|field|patchSetId
 name|int
 name|patchSetId
 decl_stmt|;
-DECL|field|changeId
-name|int
-name|changeId
-decl_stmt|;
 DECL|method|CommentKey (PatchLineComment.Key k)
 name|CommentKey
 parameter_list|(
@@ -325,29 +321,18 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-name|changeId
-operator|=
-name|k
-operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|get
-argument_list|()
-expr_stmt|;
 block|}
-DECL|method|export ()
+DECL|method|export (Change.Id changeId)
 name|PatchLineComment
 operator|.
 name|Key
 name|export
-parameter_list|()
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|)
 block|{
 return|return
 operator|new
@@ -365,13 +350,7 @@ name|PatchSet
 operator|.
 name|Id
 argument_list|(
-operator|new
-name|Change
-operator|.
-name|Id
-argument_list|(
 name|changeId
-argument_list|)
 argument_list|,
 name|patchSetId
 argument_list|)
@@ -651,10 +630,15 @@ operator|=
 name|serverId
 expr_stmt|;
 block|}
-DECL|method|export (PatchLineComment.Status status)
+DECL|method|export (Change.Id changeId, PatchLineComment.Status status)
 name|PatchLineComment
 name|export
 parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|,
 name|PatchLineComment
 operator|.
 name|Status
@@ -670,7 +654,9 @@ argument_list|(
 name|key
 operator|.
 name|export
-argument_list|()
+argument_list|(
+name|changeId
+argument_list|)
 argument_list|,
 name|lineNbr
 argument_list|,
@@ -757,13 +743,18 @@ name|Comment
 argument_list|>
 name|comments
 decl_stmt|;
-DECL|method|exportComments ( PatchLineComment.Status status)
+DECL|method|exportComments (Change.Id changeId, PatchLineComment.Status status)
 name|ImmutableList
 argument_list|<
 name|PatchLineComment
 argument_list|>
 name|exportComments
 parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|,
 name|PatchLineComment
 operator|.
 name|Status
@@ -788,6 +779,8 @@ name|c
 operator|.
 name|export
 argument_list|(
+name|changeId
+argument_list|,
 name|status
 argument_list|)
 argument_list|)
