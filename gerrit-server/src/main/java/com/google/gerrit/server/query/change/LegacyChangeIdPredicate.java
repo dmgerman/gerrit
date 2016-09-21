@@ -125,6 +125,7 @@ name|Id
 name|id
 decl_stmt|;
 DECL|method|LegacyChangeIdPredicate (Change.Id id)
+specifier|public
 name|LegacyChangeIdPredicate
 parameter_list|(
 name|Change
