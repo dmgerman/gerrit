@@ -2819,7 +2819,26 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    *    * @return a ImmutableSet of all hashtags for this change sorted in alphabetical order.    */
+comment|/**    * @return an ImmutableSet of Account.Ids of all users that have been assigned    *         to this change.    */
+DECL|method|getPastAssignees ()
+specifier|public
+name|ImmutableSet
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|getPastAssignees
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|pastAssignees
+argument_list|()
+return|;
+block|}
+comment|/**    * @return a ImmutableSet of all hashtags for this change sorted in    *         alphabetical order.    */
 DECL|method|getHashtags ()
 specifier|public
 name|ImmutableSet

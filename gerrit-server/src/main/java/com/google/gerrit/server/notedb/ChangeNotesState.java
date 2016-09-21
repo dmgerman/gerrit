@@ -456,6 +456,16 @@ argument_list|,
 name|ImmutableSet
 operator|.
 expr|<
+name|Account
+operator|.
+name|Id
+operator|>
+name|of
+argument_list|()
+argument_list|,
+name|ImmutableSet
+operator|.
+expr|<
 name|String
 operator|>
 name|of
@@ -548,7 +558,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|create ( Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Change.Status status, @Nullable Account.Id assignee, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, Multimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, Multimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, Multimap<RevId, Comment> publishedComments)
+DECL|method|create ( Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Change.Status status, @Nullable Account.Id assignee, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, Multimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, Multimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, Multimap<RevId, Comment> publishedComments)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -615,6 +625,16 @@ name|Account
 operator|.
 name|Id
 name|assignee
+parameter_list|,
+annotation|@
+name|Nullable
+name|Set
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|pastAssignees
 parameter_list|,
 annotation|@
 name|Nullable
@@ -740,6 +760,13 @@ name|status
 argument_list|)
 argument_list|,
 name|assignee
+argument_list|,
+name|ImmutableSet
+operator|.
+name|copyOf
+argument_list|(
+name|pastAssignees
+argument_list|)
 argument_list|,
 name|ImmutableSet
 operator|.
@@ -938,6 +965,17 @@ name|Account
 operator|.
 name|Id
 name|assignee
+parameter_list|()
+function_decl|;
+DECL|method|pastAssignees ()
+specifier|abstract
+name|ImmutableSet
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|pastAssignees
 parameter_list|()
 function_decl|;
 DECL|method|hashtags ()
