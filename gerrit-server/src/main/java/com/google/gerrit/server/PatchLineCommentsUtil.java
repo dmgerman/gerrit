@@ -148,6 +148,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|FluentIterable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Iterables
 import|;
 end_import
@@ -419,22 +433,6 @@ operator|.
 name|notedb
 operator|.
 name|ChangeUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|DraftCommentNotes
 import|;
 end_import
 
@@ -1032,14 +1030,6 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
-DECL|field|draftFactory
-specifier|private
-specifier|final
-name|DraftCommentNotes
-operator|.
-name|Factory
-name|draftFactory
-decl_stmt|;
 DECL|field|migration
 specifier|private
 specifier|final
@@ -1048,7 +1038,7 @@ name|migration
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchLineCommentsUtil (GitRepositoryManager repoManager, AllUsersName allUsers, DraftCommentNotes.Factory draftFactory, NotesMigration migration)
+DECL|method|PatchLineCommentsUtil (GitRepositoryManager repoManager, AllUsersName allUsers, NotesMigration migration)
 name|PatchLineCommentsUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -1056,11 +1046,6 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsers
-parameter_list|,
-name|DraftCommentNotes
-operator|.
-name|Factory
-name|draftFactory
 parameter_list|,
 name|NotesMigration
 name|migration
@@ -1077,12 +1062,6 @@ operator|.
 name|allUsers
 operator|=
 name|allUsers
-expr_stmt|;
-name|this
-operator|.
-name|draftFactory
-operator|=
-name|draftFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2099,13 +2078,15 @@ block|}
 annotation|@
 name|Deprecated
 comment|// To be used only by HasDraftByLegacyPredicate.
-DECL|method|draftByAuthor (ReviewDb db, Account.Id author)
+DECL|method|changesWithDraftsByAuthor (ReviewDb db, Account.Id author)
 specifier|public
 name|List
 argument_list|<
-name|PatchLineComment
+name|Change
+operator|.
+name|Id
 argument_list|>
-name|draftByAuthor
+name|changesWithDraftsByAuthor
 parameter_list|(
 name|ReviewDb
 name|db
@@ -2128,7 +2109,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|sort
+name|FluentIterable
+operator|.
+name|from
 argument_list|(
 name|db
 operator|.
@@ -2139,17 +2122,32 @@ name|draftByAuthor
 argument_list|(
 name|author
 argument_list|)
+argument_list|)
+operator|.
+name|transform
+argument_list|(
+name|plc
+lambda|->
+name|plc
+operator|.
+name|getPatchSetId
+argument_list|()
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|)
 operator|.
 name|toList
 argument_list|()
-argument_list|)
 return|;
 block|}
 name|List
 argument_list|<
-name|PatchLineComment
+name|Change
+operator|.
+name|Id
 argument_list|>
-name|comments
+name|changes
 init|=
 operator|new
 name|ArrayList
@@ -2231,35 +2229,11 @@ condition|)
 block|{
 continue|continue;
 block|}
-comment|// Avoid loading notes for all affected changes just to be able to auto-
-comment|// rebuild. This is only used in a corner case in the search codepath,
-comment|// so returning slightly stale values is ok.
-name|DraftCommentNotes
-name|notes
-init|=
-name|draftFactory
+name|changes
 operator|.
-name|createWithAutoRebuildingDisabled
+name|add
 argument_list|(
 name|changeId
-argument_list|,
-name|author
-argument_list|)
-decl_stmt|;
-name|comments
-operator|.
-name|addAll
-argument_list|(
-name|notes
-operator|.
-name|load
-argument_list|()
-operator|.
-name|getComments
-argument_list|()
-operator|.
-name|values
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2279,10 +2253,7 @@ argument_list|)
 throw|;
 block|}
 return|return
-name|sort
-argument_list|(
-name|comments
-argument_list|)
+name|changes
 return|;
 block|}
 DECL|method|putComments (ReviewDb db, ChangeUpdate update, Iterable<PatchLineComment> comments)
