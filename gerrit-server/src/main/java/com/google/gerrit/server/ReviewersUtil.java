@@ -783,6 +783,9 @@ name|ORDERING
 init|=
 name|Ordering
 operator|.
+expr|<
+name|SuggestedReviewerInfo
+operator|>
 name|from
 argument_list|(
 name|comparing
