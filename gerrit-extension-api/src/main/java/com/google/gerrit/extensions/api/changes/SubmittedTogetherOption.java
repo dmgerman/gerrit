@@ -80,39 +80,7 @@ name|SubmittedTogetherOption
 block|{
 DECL|enumConstant|NON_VISIBLE_CHANGES
 name|NON_VISIBLE_CHANGES
-argument_list|(
-literal|0
-argument_list|)
-block|;
-DECL|field|value
-specifier|private
-specifier|final
-name|int
-name|value
-decl_stmt|;
-DECL|method|SubmittedTogetherOption (int v)
-name|SubmittedTogetherOption
-parameter_list|(
-name|int
-name|v
-parameter_list|)
-block|{
-name|value
-operator|=
-name|v
-expr_stmt|;
-block|}
-DECL|method|getValue ()
-specifier|public
-name|int
-name|getValue
-parameter_list|()
-block|{
-return|return
-name|value
-return|;
-block|}
-block|}
+block|; }
 end_enum
 
 end_unit
