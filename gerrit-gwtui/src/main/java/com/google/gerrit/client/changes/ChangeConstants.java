@@ -300,6 +300,11 @@ name|String
 name|commitMessage
 parameter_list|()
 function_decl|;
+DECL|method|mergeList ()
+name|String
+name|mergeList
+parameter_list|()
+function_decl|;
 DECL|method|patchTablePrev ()
 name|String
 name|patchTablePrev

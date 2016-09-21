@@ -648,9 +648,7 @@ condition|(
 operator|!
 name|Patch
 operator|.
-name|COMMIT_MSG
-operator|.
-name|equals
+name|isMagic
 argument_list|(
 name|p
 operator|.
@@ -967,6 +965,30 @@ operator|.
 name|append
 argument_list|(
 literal|"Commit Message:\n\n"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|Patch
+operator|.
+name|MERGE_LIST
+operator|.
+name|equals
+argument_list|(
+name|pk
+operator|.
+name|get
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|cmts
+operator|.
+name|append
+argument_list|(
+literal|"Merge List:\n\n"
 argument_list|)
 expr_stmt|;
 block|}

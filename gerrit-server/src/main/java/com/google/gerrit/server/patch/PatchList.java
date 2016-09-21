@@ -492,11 +492,17 @@ specifier|transient
 name|ObjectId
 name|newId
 decl_stmt|;
-DECL|field|againstParent
+DECL|field|isMerge
 specifier|private
 specifier|transient
 name|boolean
-name|againstParent
+name|isMerge
+decl_stmt|;
+DECL|field|comparisonType
+specifier|private
+specifier|transient
+name|ComparisonType
+name|comparisonType
 decl_stmt|;
 DECL|field|insertions
 specifier|private
@@ -517,25 +523,24 @@ name|PatchListEntry
 index|[]
 name|patches
 decl_stmt|;
-DECL|method|PatchList (@ullable final AnyObjectId oldId, final AnyObjectId newId, final boolean againstParent, final PatchListEntry[] patches)
+DECL|method|PatchList (@ullable AnyObjectId oldId, AnyObjectId newId, boolean isMerge, ComparisonType comparisonType, PatchListEntry[] patches)
 specifier|public
 name|PatchList
 parameter_list|(
 annotation|@
 name|Nullable
-specifier|final
 name|AnyObjectId
 name|oldId
 parameter_list|,
-specifier|final
 name|AnyObjectId
 name|newId
 parameter_list|,
-specifier|final
 name|boolean
-name|againstParent
+name|isMerge
 parameter_list|,
-specifier|final
+name|ComparisonType
+name|comparisonType
+parameter_list|,
 name|PatchListEntry
 index|[]
 name|patches
@@ -567,9 +572,15 @@ argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|againstParent
+name|isMerge
 operator|=
-name|againstParent
+name|isMerge
+expr_stmt|;
+name|this
+operator|.
+name|comparisonType
+operator|=
+name|comparisonType
 expr_stmt|;
 comment|// We assume index 0 contains the magic commit message entry.
 if|if
@@ -690,15 +701,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** @return true if {@link #getOldId} is {@link #getNewId}'s ancestor. */
-DECL|method|isAgainstParent ()
+comment|/** @return the comparison type */
+DECL|method|getComparisonType ()
 specifier|public
-name|boolean
-name|isAgainstParent
+name|ComparisonType
+name|getComparisonType
 parameter_list|()
 block|{
 return|return
-name|againstParent
+name|comparisonType
 return|;
 block|}
 comment|/** @return total number of new lines added. */
@@ -845,6 +856,24 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+name|isMerge
+operator|&&
+name|Patch
+operator|.
+name|MERGE_LIST
+operator|.
+name|equals
+argument_list|(
+name|fileName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|1
+return|;
+block|}
 name|int
 name|high
 init|=
@@ -855,6 +884,10 @@ decl_stmt|;
 name|int
 name|low
 init|=
+name|isMerge
+condition|?
+literal|2
+else|:
 literal|1
 decl_stmt|;
 while|while
@@ -986,11 +1019,18 @@ name|writeVarInt32
 argument_list|(
 name|out
 argument_list|,
-name|againstParent
+name|isMerge
 condition|?
 literal|1
 else|:
 literal|0
+argument_list|)
+expr_stmt|;
+name|comparisonType
+operator|.
+name|writeTo
+argument_list|(
+name|out
 argument_list|)
 expr_stmt|;
 name|writeVarInt32
@@ -1095,7 +1135,7 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
-name|againstParent
+name|isMerge
 operator|=
 name|readVarInt32
 argument_list|(
@@ -1103,6 +1143,15 @@ name|in
 argument_list|)
 operator|!=
 literal|0
+expr_stmt|;
+name|comparisonType
+operator|=
+name|ComparisonType
+operator|.
+name|readFrom
+argument_list|(
+name|in
+argument_list|)
 expr_stmt|;
 name|insertions
 operator|=

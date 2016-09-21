@@ -8076,6 +8076,17 @@ operator|.
 name|COMMIT_MSG
 argument_list|)
 expr_stmt|;
+name|out
+operator|.
+name|files
+operator|.
+name|remove
+argument_list|(
+name|Patch
+operator|.
+name|MERGE_LIST
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
