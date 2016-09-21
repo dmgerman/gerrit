@@ -120,6 +120,18 @@ name|java
 operator|.
 name|util
 operator|.
+name|Comparator
+operator|.
+name|comparing
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|TimeUnit
@@ -1510,10 +1522,14 @@ operator|new
 name|TreeMap
 argument_list|<>
 argument_list|(
-name|ReviewDbUtil
+name|comparing
+argument_list|(
+name|PatchSet
 operator|.
-name|intKeyOrdering
-argument_list|()
+name|Id
+operator|::
+name|get
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
