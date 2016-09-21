@@ -292,6 +292,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -323,6 +335,27 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 block|{
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--exclude-groups"
+argument_list|,
+name|aliases
+operator|=
+block|{
+literal|"-e"
+block|}
+argument_list|,
+name|usage
+operator|=
+literal|"exclude groups from query"
+argument_list|)
+DECL|field|excludeGroups
+name|boolean
+name|excludeGroups
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|SuggestChangeReviewers (AccountVisibility av, GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil)
@@ -402,6 +435,8 @@ name|getVisibility
 argument_list|(
 name|rsrc
 argument_list|)
+argument_list|,
+name|excludeGroups
 argument_list|)
 return|;
 block|}

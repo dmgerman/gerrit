@@ -135,6 +135,16 @@ name|ImageResource
 name|addUser
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"user_edit.png"
+argument_list|)
+DECL|method|editUser ()
+name|ImageResource
+name|editUser
+parameter_list|()
+function_decl|;
 comment|// derived from resultset_next.png
 annotation|@
 name|Source
