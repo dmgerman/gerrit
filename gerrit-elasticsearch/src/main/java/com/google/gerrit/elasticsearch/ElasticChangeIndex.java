@@ -212,9 +212,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lucene
+name|index
 operator|.
-name|LuceneChangeIndex
+name|IndexUtils
 import|;
 end_import
 
@@ -1872,7 +1872,7 @@ argument_list|)
 decl_stmt|;
 name|fields
 operator|=
-name|LuceneChangeIndex
+name|IndexUtils
 operator|.
 name|fields
 argument_list|(

@@ -102,9 +102,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lucene
+name|index
 operator|.
-name|AbstractLuceneIndex
+name|IndexUtils
 import|;
 end_import
 
@@ -568,7 +568,7 @@ operator|.
 name|ALL_SCHEMA_DEFS
 control|)
 block|{
-name|AbstractLuceneIndex
+name|IndexUtils
 operator|.
 name|setReady
 argument_list|(

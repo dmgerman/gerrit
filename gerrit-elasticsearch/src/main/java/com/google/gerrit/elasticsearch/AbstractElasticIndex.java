@@ -98,22 +98,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|lucene
-operator|.
-name|AbstractLuceneIndex
-operator|.
-name|setReady
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|elasticsearch
@@ -153,6 +137,20 @@ operator|.
 name|collect
 operator|.
 name|Iterables
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|IndexUtils
 import|;
 end_import
 
@@ -758,6 +756,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|IndexUtils
+operator|.
 name|setReady
 argument_list|(
 name|sitePaths

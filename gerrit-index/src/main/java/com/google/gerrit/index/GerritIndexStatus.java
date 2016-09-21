@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.lucene
+DECL|package|com.google.gerrit.index
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lucene
+name|index
 package|;
 end_package
 
@@ -168,6 +168,7 @@ end_import
 
 begin_class
 DECL|class|GerritIndexStatus
+specifier|public
 class|class
 name|GerritIndexStatus
 block|{
@@ -196,6 +197,7 @@ name|FileBasedConfig
 name|cfg
 decl_stmt|;
 DECL|method|GerritIndexStatus (SitePaths sitePaths)
+specifier|public
 name|GerritIndexStatus
 parameter_list|(
 name|SitePaths
@@ -239,6 +241,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setReady (String indexName, int version, boolean ready)
+specifier|public
 name|void
 name|setReady
 parameter_list|(
@@ -272,6 +275,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getReady (String indexName, int version)
+specifier|public
 name|boolean
 name|getReady
 parameter_list|(
@@ -303,6 +307,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|save ()
+specifier|public
 name|void
 name|save
 parameter_list|()
