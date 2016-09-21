@@ -769,8 +769,9 @@ argument_list|()
 operator|!=
 literal|null
 condition|?
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|e
 operator|.
