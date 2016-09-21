@@ -83,24 +83,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|PutDraftComment
-operator|.
-name|side
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -1035,10 +1017,10 @@ name|comment
 operator|.
 name|setSide
 argument_list|(
-name|side
-argument_list|(
 name|in
-argument_list|)
+operator|.
+name|side
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|comment
