@@ -929,7 +929,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|byBranchOpen
+name|byBranchNew
 argument_list|(
 operator|new
 name|Branch
