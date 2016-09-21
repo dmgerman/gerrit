@@ -66,20 +66,6 @@ end_package
 
 begin_import
 import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
-operator|.
-name|toList
-import|;
-end_import
-
-begin_import
-import|import static
 name|com
 operator|.
 name|google
