@@ -307,7 +307,6 @@ comment|/*-{ return this.report_bug_text; }-*/
 function_decl|;
 DECL|method|_webUis ()
 specifier|private
-specifier|final
 specifier|native
 name|JsArrayString
 name|_webUis
