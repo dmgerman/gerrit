@@ -435,18 +435,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Override
-DECL|method|isPatchSet ()
-specifier|protected
-name|boolean
-name|isPatchSet
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
 DECL|method|setRevision (ChangeUpdate update, PatchSet ps)
 specifier|private
 name|void

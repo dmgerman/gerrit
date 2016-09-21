@@ -480,7 +480,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|addDep (Event e)
-name|void
+name|Event
 name|addDep
 parameter_list|(
 name|Event
@@ -494,6 +494,9 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 comment|/**    * @return whether this event type must be unique per {@link ChangeUpdate},    *     i.e. there may be at most one of this type.    */
 DECL|method|uniquePerUpdate ()
@@ -515,16 +518,6 @@ name|OrmException
 throws|,
 name|IOException
 function_decl|;
-DECL|method|isPatchSet ()
-specifier|protected
-name|boolean
-name|isPatchSet
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -582,6 +575,19 @@ name|ComparisonChain
 operator|.
 name|start
 argument_list|()
+operator|.
+name|compareFalseFirst
+argument_list|(
+name|this
+operator|.
+name|isFinalUpdates
+argument_list|()
+argument_list|,
+name|other
+operator|.
+name|isFinalUpdates
+argument_list|()
+argument_list|)
 operator|.
 name|compare
 argument_list|(
@@ -651,6 +657,30 @@ argument_list|)
 operator|.
 name|result
 argument_list|()
+return|;
+block|}
+DECL|method|isPatchSet ()
+specifier|private
+name|boolean
+name|isPatchSet
+parameter_list|()
+block|{
+return|return
+name|this
+operator|instanceof
+name|PatchSetEvent
+return|;
+block|}
+DECL|method|isFinalUpdates ()
+specifier|private
+name|boolean
+name|isFinalUpdates
+parameter_list|()
+block|{
+return|return
+name|this
+operator|instanceof
+name|FinalUpdatesEvent
 return|;
 block|}
 block|}
