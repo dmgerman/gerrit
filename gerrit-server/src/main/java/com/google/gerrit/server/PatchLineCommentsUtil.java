@@ -2622,7 +2622,7 @@ block|}
 DECL|method|setCommentRevId (PatchLineComment c, PatchListCache cache, Change change, PatchSet ps)
 specifier|public
 specifier|static
-name|RevId
+name|void
 name|setCommentRevId
 parameter_list|(
 name|PatchLineComment
@@ -2792,12 +2792,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-return|return
-name|c
-operator|.
-name|getRevId
-argument_list|()
-return|;
 block|}
 DECL|method|getDraftRefs (Change.Id changeId)
 specifier|public
