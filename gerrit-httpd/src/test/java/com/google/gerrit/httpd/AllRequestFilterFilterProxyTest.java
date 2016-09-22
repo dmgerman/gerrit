@@ -740,6 +740,7 @@ name|capturedChain
 init|=
 operator|new
 name|Capture
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|AllRequestFilter
@@ -1110,6 +1111,7 @@ name|capturedChainA
 init|=
 operator|new
 name|Capture
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1120,6 +1122,7 @@ name|capturedChainB
 init|=
 operator|new
 name|Capture
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|AllRequestFilter
@@ -1382,6 +1385,7 @@ name|capturedChainA1
 init|=
 operator|new
 name|Capture
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1392,6 +1396,7 @@ name|capturedChainA2
 init|=
 operator|new
 name|Capture
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1402,6 +1407,7 @@ name|capturedChainB
 init|=
 operator|new
 name|Capture
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|AllRequestFilter
@@ -1749,6 +1755,7 @@ name|capturedChainA1
 init|=
 operator|new
 name|Capture
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1759,6 +1766,7 @@ name|capturedChainB1
 init|=
 operator|new
 name|Capture
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1769,6 +1777,7 @@ name|capturedChainB2
 init|=
 operator|new
 name|Capture
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|AllRequestFilter
