@@ -260,7 +260,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Patch
+name|Comment
 import|;
 end_import
 
@@ -276,7 +276,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Patch
 import|;
 end_import
 
@@ -2810,7 +2810,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|addPatchSetComments (PatchSetAttribute patchSetAttribute, Collection<PatchLineComment> patchLineComments)
+DECL|method|addPatchSetComments (PatchSetAttribute patchSetAttribute, Collection<Comment> comments)
 specifier|public
 name|void
 name|addPatchSetComments
@@ -2820,34 +2820,26 @@ name|patchSetAttribute
 parameter_list|,
 name|Collection
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
-name|patchLineComments
+name|comments
 parameter_list|)
 block|{
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|comment
 range|:
-name|patchLineComments
+name|comments
 control|)
 block|{
 if|if
 condition|(
 name|comment
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|get
-argument_list|()
+name|patchSetId
 operator|==
 name|Integer
 operator|.
@@ -4093,12 +4085,12 @@ return|return
 name|a
 return|;
 block|}
-DECL|method|asPatchSetLineAttribute (PatchLineComment c)
+DECL|method|asPatchSetLineAttribute (Comment c)
 specifier|public
 name|PatchSetCommentAttribute
 name|asPatchSetLineAttribute
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 block|{
@@ -4117,7 +4109,9 @@ name|asAccountAttribute
 argument_list|(
 name|c
 operator|.
-name|getAuthor
+name|author
+operator|.
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4127,14 +4121,9 @@ name|file
 operator|=
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|get
-argument_list|()
+name|filename
 expr_stmt|;
 name|a
 operator|.
@@ -4142,8 +4131,7 @@ name|line
 operator|=
 name|c
 operator|.
-name|getLine
-argument_list|()
+name|lineNbr
 expr_stmt|;
 name|a
 operator|.
@@ -4151,8 +4139,7 @@ name|message
 operator|=
 name|c
 operator|.
-name|getMessage
-argument_list|()
+name|message
 expr_stmt|;
 return|return
 name|a

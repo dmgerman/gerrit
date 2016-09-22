@@ -269,6 +269,30 @@ operator|=
 name|ec
 expr_stmt|;
 block|}
+DECL|method|asCommentRange ()
+specifier|public
+name|Comment
+operator|.
+name|Range
+name|asCommentRange
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Comment
+operator|.
+name|Range
+argument_list|(
+name|startLine
+argument_list|,
+name|startCharacter
+argument_list|,
+name|endLine
+argument_list|,
+name|endCharacter
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|equals (Object obj)

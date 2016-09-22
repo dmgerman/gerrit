@@ -112,7 +112,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -258,7 +258,7 @@ block|}
 block|}
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|cd
@@ -275,7 +275,9 @@ name|equals
 argument_list|(
 name|c
 operator|.
-name|getAuthor
+name|author
+operator|.
+name|getId
 argument_list|()
 argument_list|,
 name|id

@@ -186,6 +186,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Comment
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchLineComment
 import|;
 end_import
@@ -570,26 +586,26 @@ name|Key
 block|{
 DECL|method|revId ()
 specifier|abstract
-name|RevId
+name|String
 name|revId
 parameter_list|()
 function_decl|;
 DECL|method|key ()
 specifier|abstract
-name|PatchLineComment
+name|Comment
 operator|.
 name|Key
 name|key
 parameter_list|()
 function_decl|;
 block|}
-DECL|method|key (PatchLineComment c)
+DECL|method|key (Comment c)
 specifier|private
 specifier|static
 name|Key
 name|key
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 block|{
@@ -599,13 +615,11 @@ name|AutoValue_ChangeDraftUpdate_Key
 argument_list|(
 name|c
 operator|.
-name|getRevId
-argument_list|()
+name|revId
 argument_list|,
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 argument_list|)
 return|;
 block|}
@@ -619,7 +633,7 @@ DECL|field|put
 specifier|private
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|put
 init|=
@@ -793,34 +807,18 @@ operator|=
 name|allUsers
 expr_stmt|;
 block|}
-DECL|method|putComment (PatchLineComment c)
+DECL|method|putComment (Comment c)
 specifier|public
 name|void
 name|putComment
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 block|{
 name|verifyComment
 argument_list|(
 name|c
-argument_list|)
-expr_stmt|;
-name|checkArgument
-argument_list|(
-name|c
-operator|.
-name|getStatus
-argument_list|()
-operator|==
-name|PatchLineComment
-operator|.
-name|Status
-operator|.
-name|DRAFT
-argument_list|,
-literal|"Cannot insert a published comment into a ChangeDraftUpdate"
 argument_list|)
 expr_stmt|;
 name|put
@@ -831,12 +829,12 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteComment (PatchLineComment c)
+DECL|method|deleteComment (Comment c)
 specifier|public
 name|void
 name|deleteComment
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 block|{
@@ -856,15 +854,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteComment (RevId revId, PatchLineComment.Key key)
+DECL|method|deleteComment (String revId, Comment.Key key)
 specifier|public
 name|void
 name|deleteComment
 parameter_list|(
-name|RevId
+name|String
 name|revId
 parameter_list|,
-name|PatchLineComment
+name|Comment
 operator|.
 name|Key
 name|key
@@ -884,12 +882,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|verifyComment (PatchLineComment comment)
+DECL|method|verifyComment (Comment comment)
 specifier|private
 name|void
 name|verifyComment
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|comment
 parameter_list|)
 block|{
@@ -897,7 +895,9 @@ name|checkArgument
 argument_list|(
 name|comment
 operator|.
-name|getAuthor
+name|author
+operator|.
+name|getId
 argument_list|()
 operator|.
 name|equals
@@ -982,7 +982,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|put
@@ -1006,10 +1006,13 @@ name|cache
 operator|.
 name|get
 argument_list|(
+operator|new
+name|RevId
+argument_list|(
 name|c
 operator|.
-name|getRevId
-argument_list|()
+name|revId
+argument_list|)
 argument_list|)
 operator|.
 name|putComment
@@ -1031,10 +1034,14 @@ name|cache
 operator|.
 name|get
 argument_list|(
+operator|new
+name|RevId
+argument_list|(
 name|k
 operator|.
 name|revId
 argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|deleteComment

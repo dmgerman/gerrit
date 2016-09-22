@@ -364,7 +364,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -1274,7 +1274,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|cd
@@ -1287,8 +1287,9 @@ name|assertThat
 argument_list|(
 name|c
 operator|.
-name|getPatchSetId
-argument_list|()
+name|key
+operator|.
+name|patchSetId
 argument_list|)
 operator|.
 name|named
@@ -1302,6 +1303,9 @@ operator|.
 name|isNotEqualTo
 argument_list|(
 name|delPsId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1546,7 +1550,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|cd
@@ -1559,8 +1563,9 @@ name|assertThat
 argument_list|(
 name|c
 operator|.
-name|getPatchSetId
-argument_list|()
+name|key
+operator|.
+name|patchSetId
 argument_list|)
 operator|.
 name|named
@@ -1574,6 +1579,9 @@ operator|.
 name|isNotEqualTo
 argument_list|(
 name|delPsId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

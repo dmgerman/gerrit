@@ -140,7 +140,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -271,15 +271,15 @@ name|CommentJson
 argument_list|>
 name|commentJson
 decl_stmt|;
-DECL|field|plcUtil
+DECL|field|commentsUtil
 specifier|private
 specifier|final
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListChangeComments (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, Provider<CommentJson> commentJson, PatchLineCommentsUtil plcUtil)
+DECL|method|ListChangeComments (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
 name|ListChangeComments
 parameter_list|(
 name|Provider
@@ -299,8 +299,8 @@ name|CommentJson
 argument_list|>
 name|commentJson
 parameter_list|,
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 parameter_list|)
 block|{
 name|this
@@ -323,9 +323,9 @@ name|commentJson
 expr_stmt|;
 name|this
 operator|.
-name|plcUtil
+name|commentsUtil
 operator|=
-name|plcUtil
+name|commentsUtil
 expr_stmt|;
 block|}
 annotation|@
@@ -387,7 +387,7 @@ argument_list|)
 operator|.
 name|format
 argument_list|(
-name|plcUtil
+name|commentsUtil
 operator|.
 name|publishedByChange
 argument_list|(

@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 operator|.
 name|COMMENT_INFO_ORDER
 import|;
@@ -188,23 +188,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|CommentRange
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -379,11 +363,11 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|format (PatchLineComment c)
+DECL|method|format (Comment c)
 name|CommentInfo
 name|format
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 throws|throws
@@ -434,7 +418,7 @@ return|return
 name|commentInfo
 return|;
 block|}
-DECL|method|format (Iterable<PatchLineComment> l)
+DECL|method|format (Iterable<Comment> l)
 name|Map
 argument_list|<
 name|String
@@ -448,7 +432,7 @@ name|format
 parameter_list|(
 name|Iterable
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|l
 parameter_list|)
@@ -487,7 +471,7 @@ literal|null
 decl_stmt|;
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|l
@@ -599,7 +583,7 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|formatAsList (Iterable<PatchLineComment> l)
+DECL|method|formatAsList (Iterable<Comment> l)
 name|List
 argument_list|<
 name|CommentInfo
@@ -608,7 +592,7 @@ name|formatAsList
 parameter_list|(
 name|Iterable
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|l
 parameter_list|)
@@ -676,12 +660,12 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|toCommentInfo (PatchLineComment c, AccountLoader loader)
+DECL|method|toCommentInfo (Comment c, AccountLoader loader)
 specifier|private
 name|CommentInfo
 name|toCommentInfo
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|,
 name|AccountLoader
@@ -706,17 +690,9 @@ name|patchSet
 operator|=
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|get
-argument_list|()
+name|patchSetId
 expr_stmt|;
 block|}
 name|r
@@ -729,11 +705,9 @@ name|encode
 argument_list|(
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
-name|get
-argument_list|()
+name|uuid
 argument_list|)
 expr_stmt|;
 name|r
@@ -742,21 +716,15 @@ name|path
 operator|=
 name|c
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|getFileName
-argument_list|()
+name|filename
 expr_stmt|;
 if|if
 condition|(
 name|c
 operator|.
-name|getSide
-argument_list|()
+name|side
 operator|<=
 literal|0
 condition|)
@@ -773,8 +741,7 @@ if|if
 condition|(
 name|c
 operator|.
-name|getSide
-argument_list|()
+name|side
 operator|<
 literal|0
 condition|)
@@ -786,8 +753,7 @@ operator|=
 operator|-
 name|c
 operator|.
-name|getSide
-argument_list|()
+name|side
 expr_stmt|;
 block|}
 block|}
@@ -795,8 +761,7 @@ if|if
 condition|(
 name|c
 operator|.
-name|getLine
-argument_list|()
+name|lineNbr
 operator|>
 literal|0
 condition|)
@@ -807,8 +772,7 @@ name|line
 operator|=
 name|c
 operator|.
-name|getLine
-argument_list|()
+name|lineNbr
 expr_stmt|;
 block|}
 name|r
@@ -821,8 +785,7 @@ name|encode
 argument_list|(
 name|c
 operator|.
-name|getParentUuid
-argument_list|()
+name|parentUuid
 argument_list|)
 expr_stmt|;
 name|r
@@ -835,8 +798,7 @@ name|emptyToNull
 argument_list|(
 name|c
 operator|.
-name|getMessage
-argument_list|()
+name|message
 argument_list|)
 expr_stmt|;
 name|r
@@ -845,8 +807,7 @@ name|updated
 operator|=
 name|c
 operator|.
-name|getWrittenOn
-argument_list|()
+name|writtenOn
 expr_stmt|;
 name|r
 operator|.
@@ -856,8 +817,7 @@ name|toRange
 argument_list|(
 name|c
 operator|.
-name|getRange
-argument_list|()
+name|range
 argument_list|)
 expr_stmt|;
 name|r
@@ -866,8 +826,7 @@ name|tag
 operator|=
 name|c
 operator|.
-name|getTag
-argument_list|()
+name|tag
 expr_stmt|;
 if|if
 condition|(
@@ -886,7 +845,9 @@ name|get
 argument_list|(
 name|c
 operator|.
-name|getAuthor
+name|author
+operator|.
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -895,12 +856,14 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|toRange (CommentRange commentRange)
+DECL|method|toRange (Comment.Range commentRange)
 specifier|private
 name|Range
 name|toRange
 parameter_list|(
-name|CommentRange
+name|Comment
+operator|.
+name|Range
 name|commentRange
 parameter_list|)
 block|{
@@ -928,8 +891,7 @@ name|startLine
 operator|=
 name|commentRange
 operator|.
-name|getStartLine
-argument_list|()
+name|startLine
 expr_stmt|;
 name|range
 operator|.
@@ -937,8 +899,7 @@ name|startCharacter
 operator|=
 name|commentRange
 operator|.
-name|getStartCharacter
-argument_list|()
+name|startChar
 expr_stmt|;
 name|range
 operator|.
@@ -946,8 +907,7 @@ name|endLine
 operator|=
 name|commentRange
 operator|.
-name|getEndLine
-argument_list|()
+name|endLine
 expr_stmt|;
 name|range
 operator|.
@@ -955,8 +915,7 @@ name|endCharacter
 operator|=
 name|commentRange
 operator|.
-name|getEndCharacter
-argument_list|()
+name|endChar
 expr_stmt|;
 block|}
 return|return

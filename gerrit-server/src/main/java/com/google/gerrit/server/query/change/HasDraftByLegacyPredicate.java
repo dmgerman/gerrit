@@ -282,7 +282,7 @@ return|return
 operator|!
 name|args
 operator|.
-name|plcUtil
+name|commentsUtil
 operator|.
 name|draftByChangeAuthor
 argument_list|(
@@ -340,7 +340,7 @@ name|changeId
 range|:
 name|args
 operator|.
-name|plcUtil
+name|commentsUtil
 operator|.
 name|changesWithDraftsByAuthor
 argument_list|(

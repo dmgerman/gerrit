@@ -142,7 +142,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -231,17 +231,17 @@ decl_stmt|;
 DECL|field|comment
 specifier|private
 specifier|final
-name|PatchLineComment
+name|Comment
 name|comment
 decl_stmt|;
-DECL|method|DraftCommentResource (RevisionResource rev, PatchLineComment c)
+DECL|method|DraftCommentResource (RevisionResource rev, Comment c)
 specifier|public
 name|DraftCommentResource
 parameter_list|(
 name|RevisionResource
 name|rev
 parameter_list|,
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|)
 block|{
@@ -299,7 +299,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getComment ()
-name|PatchLineComment
+name|Comment
 name|getComment
 parameter_list|()
 block|{
@@ -315,11 +315,9 @@ block|{
 return|return
 name|comment
 operator|.
-name|getKey
-argument_list|()
+name|key
 operator|.
-name|get
-argument_list|()
+name|uuid
 return|;
 block|}
 DECL|method|getAuthorId ()

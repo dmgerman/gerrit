@@ -312,7 +312,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -3583,7 +3583,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|input
@@ -3598,8 +3598,7 @@ name|add
 argument_list|(
 name|c
 operator|.
-name|getMessage
-argument_list|()
+name|message
 argument_list|)
 expr_stmt|;
 block|}
@@ -4044,7 +4043,7 @@ block|}
 block|}
 for|for
 control|(
-name|PatchLineComment
+name|Comment
 name|c
 range|:
 name|input
@@ -4059,7 +4058,9 @@ name|add
 argument_list|(
 name|c
 operator|.
-name|getAuthor
+name|author
+operator|.
+name|getId
 argument_list|()
 operator|.
 name|get

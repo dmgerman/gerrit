@@ -126,7 +126,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -156,7 +156,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -287,15 +287,15 @@ name|CommentJson
 argument_list|>
 name|commentJson
 decl_stmt|;
-DECL|field|plcUtil
+DECL|field|commentsUtil
 specifier|private
 specifier|final
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListChangeDrafts (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, Provider<CommentJson> commentJson, PatchLineCommentsUtil plcUtil)
+DECL|method|ListChangeDrafts (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
 name|ListChangeDrafts
 parameter_list|(
 name|Provider
@@ -315,8 +315,8 @@ name|CommentJson
 argument_list|>
 name|commentJson
 parameter_list|,
-name|PatchLineCommentsUtil
-name|plcUtil
+name|CommentsUtil
+name|commentsUtil
 parameter_list|)
 block|{
 name|this
@@ -339,9 +339,9 @@ name|commentJson
 expr_stmt|;
 name|this
 operator|.
-name|plcUtil
+name|commentsUtil
 operator|=
-name|plcUtil
+name|commentsUtil
 expr_stmt|;
 block|}
 annotation|@
@@ -410,11 +410,11 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|drafts
 init|=
-name|plcUtil
+name|commentsUtil
 operator|.
 name|draftByChangeAuthor
 argument_list|(

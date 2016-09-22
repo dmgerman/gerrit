@@ -298,7 +298,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -541,14 +541,14 @@ operator|.
 expr|<
 name|RevId
 argument_list|,
-name|PatchLineComment
+name|Comment
 operator|>
 name|of
 argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|create ( Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Change.Status status, @Nullable Account.Id assignee, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, Multimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, Multimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, Multimap<RevId, PatchLineComment> publishedComments)
+DECL|method|create ( Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Change.Status status, @Nullable Account.Id assignee, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, Multimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, Multimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, Multimap<RevId, Comment> publishedComments)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -687,7 +687,7 @@ name|Multimap
 argument_list|<
 name|RevId
 argument_list|,
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|publishedComments
 parameter_list|)
@@ -1038,7 +1038,7 @@ name|ImmutableListMultimap
 argument_list|<
 name|RevId
 argument_list|,
-name|PatchLineComment
+name|Comment
 argument_list|>
 name|publishedComments
 parameter_list|()

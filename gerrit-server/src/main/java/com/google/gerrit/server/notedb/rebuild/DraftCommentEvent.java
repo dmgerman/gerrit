@@ -78,7 +78,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 operator|.
 name|setCommentRevId
 import|;
@@ -112,7 +112,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|Comment
 import|;
 end_import
 
@@ -142,7 +142,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
+name|CommentsUtil
 import|;
 end_import
 
@@ -218,7 +218,7 @@ block|{
 DECL|field|c
 specifier|public
 specifier|final
-name|PatchLineComment
+name|Comment
 name|c
 decl_stmt|;
 DECL|field|change
@@ -239,10 +239,10 @@ specifier|final
 name|PatchListCache
 name|cache
 decl_stmt|;
-DECL|method|DraftCommentEvent (PatchLineComment c, Change change, PatchSet ps, PatchListCache cache)
+DECL|method|DraftCommentEvent (Comment c, Change change, PatchSet ps, PatchListCache cache)
 name|DraftCommentEvent
 parameter_list|(
-name|PatchLineComment
+name|Comment
 name|c
 parameter_list|,
 name|Change
@@ -257,22 +257,28 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|PatchLineCommentsUtil
+name|CommentsUtil
 operator|.
 name|getCommentPsId
 argument_list|(
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|,
 name|c
 argument_list|)
 argument_list|,
 name|c
 operator|.
-name|getAuthor
+name|author
+operator|.
+name|getId
 argument_list|()
 argument_list|,
 name|c
 operator|.
-name|getWrittenOn
-argument_list|()
+name|writtenOn
 argument_list|,
 name|change
 operator|.
@@ -281,8 +287,7 @@ argument_list|()
 argument_list|,
 name|c
 operator|.
-name|getTag
-argument_list|()
+name|tag
 argument_list|)
 expr_stmt|;
 name|this
@@ -351,8 +356,7 @@ if|if
 condition|(
 name|c
 operator|.
-name|getRevId
-argument_list|()
+name|revId
 operator|==
 literal|null
 condition|)
