@@ -296,10 +296,10 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
-name|Input
+name|MessageInput
 name|input
 init|=
-name|Input
+name|MessageInput
 operator|.
 name|create
 argument_list|()
@@ -479,10 +479,10 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
-name|Input
+name|MessageInput
 name|input
 init|=
-name|Input
+name|MessageInput
 operator|.
 name|create
 argument_list|()
@@ -532,10 +532,10 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
-name|Input
+name|MessageInput
 name|input
 init|=
-name|Input
+name|MessageInput
 operator|.
 name|create
 argument_list|()
@@ -609,10 +609,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Input
+name|TopicInput
 name|input
 init|=
-name|Input
+name|TopicInput
 operator|.
 name|create
 argument_list|()
@@ -1711,11 +1711,50 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|Input
+DECL|class|MessageInput
 specifier|private
 specifier|static
 class|class
-name|Input
+name|MessageInput
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|message (String m)
+specifier|final
+specifier|native
+name|void
+name|message
+parameter_list|(
+name|String
+name|m
+parameter_list|)
+comment|/*-{ if(m)this.message=m; }-*/
+function_decl|;
+DECL|method|create ()
+specifier|static
+name|MessageInput
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|MessageInput
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
+DECL|method|MessageInput ()
+specifier|protected
+name|MessageInput
+parameter_list|()
+block|{     }
+block|}
+DECL|class|TopicInput
+specifier|private
+specifier|static
+class|class
+name|TopicInput
 extends|extends
 name|JavaScriptObject
 block|{
@@ -1730,34 +1769,23 @@ name|t
 parameter_list|)
 comment|/*-{ if(t)this.topic=t; }-*/
 function_decl|;
-DECL|method|message (String m)
-specifier|final
-specifier|native
-name|void
-name|message
-parameter_list|(
-name|String
-name|m
-parameter_list|)
-comment|/*-{ if(m)this.message=m; }-*/
-function_decl|;
 DECL|method|create ()
 specifier|static
-name|Input
+name|TopicInput
 name|create
 parameter_list|()
 block|{
 return|return
 operator|(
-name|Input
+name|TopicInput
 operator|)
 name|createObject
 argument_list|()
 return|;
 block|}
-DECL|method|Input ()
+DECL|method|TopicInput ()
 specifier|protected
-name|Input
+name|TopicInput
 parameter_list|()
 block|{     }
 block|}
