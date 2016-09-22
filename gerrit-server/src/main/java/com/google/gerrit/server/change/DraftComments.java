@@ -204,7 +204,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
+name|CommentsUtil
 import|;
 end_import
 
@@ -218,7 +218,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CommentsUtil
+name|CurrentUser
 import|;
 end_import
 
