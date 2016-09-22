@@ -104,6 +104,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -585,7 +601,10 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|AccountInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ChangeResource
