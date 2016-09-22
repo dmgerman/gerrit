@@ -2783,7 +2783,6 @@ comment|/*-{ return this.tag; }-*/
 function_decl|;
 DECL|method|dateRaw ()
 specifier|private
-specifier|final
 specifier|native
 name|String
 name|dateRaw
