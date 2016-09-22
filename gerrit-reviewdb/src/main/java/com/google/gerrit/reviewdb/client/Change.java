@@ -1805,6 +1805,31 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/**    * Allows assigning a change to a user.    */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|19
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|assignee
+specifier|protected
+name|Account
+operator|.
+name|Id
+name|assignee
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** @see com.google.gerrit.server.notedb.NoteDbChangeState */
 end_comment
 
@@ -1913,6 +1938,12 @@ name|Change
 name|other
 parameter_list|)
 block|{
+name|assignee
+operator|=
+name|other
+operator|.
+name|assignee
+expr_stmt|;
 name|changeId
 operator|=
 name|other
@@ -2074,6 +2105,40 @@ block|{
 name|changeKey
 operator|=
 name|k
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|getAssignee ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getAssignee
+parameter_list|()
+block|{
+return|return
+name|assignee
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setAssignee (Account.Id a)
+specifier|public
+name|void
+name|setAssignee
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|a
+parameter_list|)
+block|{
+name|assignee
+operator|=
+name|a
 expr_stmt|;
 block|}
 end_function
