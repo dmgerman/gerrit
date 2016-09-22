@@ -279,6 +279,7 @@ argument_list|>
 block|{
 DECL|field|assigneeFactory
 specifier|private
+specifier|final
 name|SetAssigneeOp
 operator|.
 name|Factory
@@ -286,6 +287,7 @@ name|assigneeFactory
 decl_stmt|;
 DECL|field|batchUpdateFactory
 specifier|private
+specifier|final
 name|BatchUpdate
 operator|.
 name|Factory
@@ -293,6 +295,7 @@ name|batchUpdateFactory
 decl_stmt|;
 DECL|field|db
 specifier|private
+specifier|final
 name|Provider
 argument_list|<
 name|ReviewDb
