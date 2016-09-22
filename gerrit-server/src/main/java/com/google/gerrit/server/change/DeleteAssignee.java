@@ -754,7 +754,7 @@ throw|throw
 operator|new
 name|BadRequestException
 argument_list|(
-literal|"Cannot add Assignee; NoteDb is disabled"
+literal|"Cannot delete Assignee; NoteDb is disabled"
 argument_list|)
 throw|;
 block|}
