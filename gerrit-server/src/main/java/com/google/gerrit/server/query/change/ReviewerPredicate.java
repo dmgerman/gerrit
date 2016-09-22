@@ -211,11 +211,6 @@ name|ReviewerPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|create (Arguments args, Account.Id id)
 specifier|static
 name|Predicate
@@ -249,21 +244,6 @@ argument_list|(
 literal|2
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|args
-operator|.
-name|getSchema
-argument_list|()
-operator|.
-name|hasField
-argument_list|(
-name|ChangeField
-operator|.
-name|REVIEWER
-argument_list|)
-condition|)
-block|{
 name|ReviewerStateInternal
 index|[]
 name|states
@@ -337,21 +317,6 @@ name|or
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|and
-operator|.
-name|add
-argument_list|(
-operator|new
-name|LegacyReviewerPredicate
-argument_list|(
-name|id
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 comment|// TODO(dborowitz): This really belongs much higher up e.g. QueryProcessor.
 if|if
 condition|(
