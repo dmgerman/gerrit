@@ -2343,7 +2343,7 @@ argument_list|)
 argument_list|,
 literal|"The author for the following comment does not match the author of"
 operator|+
-literal|" this ChangeDraftUpdate (%s): %s"
+literal|" this ChangeUpdate (%s): %s"
 argument_list|,
 name|getAccountId
 argument_list|()
