@@ -1075,7 +1075,7 @@ throws|throws
 name|OrmException
 function_decl|;
 block|}
-DECL|method|suggestReviewers ( SuggestReviewers suggestReviewers, ProjectControl projectControl, VisibilityControl visibilityControl)
+DECL|method|suggestReviewers ( SuggestReviewers suggestReviewers, ProjectControl projectControl, VisibilityControl visibilityControl, boolean excludeGroups)
 specifier|public
 name|List
 argument_list|<
@@ -1091,6 +1091,9 @@ name|projectControl
 parameter_list|,
 name|VisibilityControl
 name|visibilityControl
+parameter_list|,
+name|boolean
+name|excludeGroups
 parameter_list|)
 throws|throws
 name|IOException
@@ -1228,6 +1231,12 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|excludeGroups
+condition|)
+block|{
 for|for
 control|(
 name|GroupReference
@@ -1344,6 +1353,7 @@ argument_list|(
 name|suggestedReviewerInfo
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|reviewer

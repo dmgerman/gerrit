@@ -320,6 +320,11 @@ name|String
 name|patchTableOpenDiff
 parameter_list|()
 function_decl|;
+DECL|method|approvalTableEditAssigneeHint ()
+name|String
+name|approvalTableEditAssigneeHint
+parameter_list|()
+function_decl|;
 DECL|method|approvalTableAddReviewerHint ()
 name|String
 name|approvalTableAddReviewerHint

@@ -1885,6 +1885,12 @@ name|UiField
 name|Anchor
 name|permalink
 decl_stmt|;
+DECL|field|assignee
+annotation|@
+name|UiField
+name|Assignee
+name|assignee
+decl_stmt|;
 DECL|field|ccText
 annotation|@
 name|UiField
@@ -8661,6 +8667,13 @@ argument_list|(
 name|info
 argument_list|,
 name|revision
+argument_list|)
+expr_stmt|;
+name|assignee
+operator|.
+name|set
+argument_list|(
+name|info
 argument_list|)
 expr_stmt|;
 name|reviewers

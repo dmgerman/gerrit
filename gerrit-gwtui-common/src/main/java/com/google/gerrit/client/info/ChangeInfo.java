@@ -828,6 +828,15 @@ name|owner
 parameter_list|()
 comment|/*-{ return this.owner; }-*/
 function_decl|;
+DECL|method|assignee ()
+specifier|public
+specifier|final
+specifier|native
+name|AccountInfo
+name|assignee
+parameter_list|()
+comment|/*-{ return this.assignee; }-*/
+function_decl|;
 DECL|method|createdRaw ()
 specifier|private
 specifier|native
