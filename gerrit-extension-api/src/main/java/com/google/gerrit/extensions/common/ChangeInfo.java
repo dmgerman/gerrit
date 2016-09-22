@@ -180,6 +180,11 @@ specifier|public
 name|String
 name|topic
 decl_stmt|;
+DECL|field|assignee
+specifier|public
+name|AccountInfo
+name|assignee
+decl_stmt|;
 DECL|field|hashtags
 specifier|public
 name|Collection
