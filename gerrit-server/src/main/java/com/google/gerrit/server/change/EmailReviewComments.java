@@ -774,7 +774,7 @@ argument_list|)
 expr_stmt|;
 name|cm
 operator|.
-name|setPatchLineComments
+name|setComments
 argument_list|(
 name|comments
 argument_list|)

@@ -544,23 +544,23 @@ operator|=
 name|commentsUtil
 expr_stmt|;
 block|}
-DECL|method|setPatchLineComments (List<Comment> plc)
+DECL|method|setComments (List<Comment> comments)
 specifier|public
 name|void
-name|setPatchLineComments
+name|setComments
 parameter_list|(
 name|List
 argument_list|<
 name|Comment
 argument_list|>
-name|plc
+name|comments
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
 name|inlineComments
 operator|=
-name|plc
+name|comments
 expr_stmt|;
 name|Set
 argument_list|<
@@ -578,7 +578,7 @@ control|(
 name|Comment
 name|c
 range|:
-name|plc
+name|comments
 control|)
 block|{
 if|if
