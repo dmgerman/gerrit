@@ -3000,7 +3000,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Used to compare PatchLineComments with CommentInput comments.    */
+comment|/**    * Used to compare Comments with CommentInput comments.    */
 annotation|@
 name|AutoValue
 DECL|class|CommentSetEntry
