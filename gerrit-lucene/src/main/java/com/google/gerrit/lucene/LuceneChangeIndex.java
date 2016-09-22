@@ -3045,7 +3045,9 @@ name|QueryOptions
 name|opts
 parameter_list|)
 block|{
-comment|// Ensure we request enough fields to construct a ChangeData.
+comment|// Ensure we request enough fields to construct a ChangeData. We need both
+comment|// change ID and project, which can either come via the Change field or
+comment|// separate fields.
 name|Set
 argument_list|<
 name|String
@@ -3075,56 +3077,6 @@ return|return
 name|fs
 return|;
 block|}
-if|if
-condition|(
-operator|!
-name|schema
-operator|.
-name|hasField
-argument_list|(
-name|PROJECT
-argument_list|)
-condition|)
-block|{
-comment|// Schema is not new enough to have project field. Ensure we have ID
-comment|// field, and call createOnlyWhenNoteDbDisabled from toChangeData below.
-if|if
-condition|(
-name|fs
-operator|.
-name|contains
-argument_list|(
-name|LEGACY_ID
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-condition|)
-block|{
-return|return
-name|fs
-return|;
-block|}
-return|return
-name|Sets
-operator|.
-name|union
-argument_list|(
-name|fs
-argument_list|,
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|LEGACY_ID
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|)
-return|;
-block|}
-comment|// New enough schema to have project field, so ensure that is requested.
 if|if
 condition|(
 name|fs
