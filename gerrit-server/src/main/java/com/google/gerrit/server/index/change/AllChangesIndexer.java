@@ -1902,6 +1902,10 @@ argument_list|(
 name|ALL
 argument_list|)
 decl_stmt|;
+comment|// TODO(dborowitz): Pre-loading all notes is almost certainly a
+comment|// terrible idea for performance. If we can get rid of walking by
+comment|// commit (see note below), then all we need to discover here is the
+comment|// change IDs.
 for|for
 control|(
 name|ChangeNotes
@@ -2268,6 +2272,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// TODO(dborowitz): This is basically pointless; it computes
+comment|// currentFilePaths faster than going through PatchListCache, but we
+comment|// still need to go through PatchListCache for changedLines.
 name|RevCommit
 name|bCommit
 decl_stmt|;
