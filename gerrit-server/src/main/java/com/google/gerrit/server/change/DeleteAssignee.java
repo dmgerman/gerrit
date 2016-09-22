@@ -487,6 +487,7 @@ name|Input
 block|{    }
 DECL|field|batchUpdateFactory
 specifier|private
+specifier|final
 name|BatchUpdate
 operator|.
 name|Factory
