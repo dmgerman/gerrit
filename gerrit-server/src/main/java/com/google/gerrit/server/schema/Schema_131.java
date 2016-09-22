@@ -458,6 +458,10 @@ throw|throw
 operator|new
 name|OrmException
 argument_list|(
+literal|"Cannot migrate project "
+operator|+
+name|projectName
+argument_list|,
 name|ex
 argument_list|)
 throw|;
