@@ -101,18 +101,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|easymock
-operator|.
-name|EasyMock
-operator|.
-name|newCapture
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -750,7 +738,8 @@ name|FilterChain
 argument_list|>
 name|capturedChain
 init|=
-name|newCapture
+operator|new
+name|Capture
 argument_list|()
 decl_stmt|;
 name|AllRequestFilter
@@ -1119,7 +1108,8 @@ name|FilterChain
 argument_list|>
 name|capturedChainA
 init|=
-name|newCapture
+operator|new
+name|Capture
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1128,7 +1118,8 @@ name|FilterChain
 argument_list|>
 name|capturedChainB
 init|=
-name|newCapture
+operator|new
+name|Capture
 argument_list|()
 decl_stmt|;
 name|AllRequestFilter
@@ -1389,7 +1380,8 @@ name|FilterChain
 argument_list|>
 name|capturedChainA1
 init|=
-name|newCapture
+operator|new
+name|Capture
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1398,7 +1390,8 @@ name|FilterChain
 argument_list|>
 name|capturedChainA2
 init|=
-name|newCapture
+operator|new
+name|Capture
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1407,7 +1400,8 @@ name|FilterChain
 argument_list|>
 name|capturedChainB
 init|=
-name|newCapture
+operator|new
+name|Capture
 argument_list|()
 decl_stmt|;
 name|AllRequestFilter
@@ -1753,7 +1747,8 @@ name|FilterChain
 argument_list|>
 name|capturedChainA1
 init|=
-name|newCapture
+operator|new
+name|Capture
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1762,7 +1757,8 @@ name|FilterChain
 argument_list|>
 name|capturedChainB1
 init|=
-name|newCapture
+operator|new
+name|Capture
 argument_list|()
 decl_stmt|;
 name|Capture
@@ -1771,7 +1767,8 @@ name|FilterChain
 argument_list|>
 name|capturedChainB2
 init|=
-name|newCapture
+operator|new
+name|Capture
 argument_list|()
 decl_stmt|;
 name|AllRequestFilter
