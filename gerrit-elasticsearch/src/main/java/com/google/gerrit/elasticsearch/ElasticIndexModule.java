@@ -86,20 +86,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lucene
-operator|.
-name|LuceneAccountIndex
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|config
@@ -393,8 +379,6 @@ argument_list|(
 operator|new
 name|FactoryModuleBuilder
 argument_list|()
-comment|// until we implement Elasticsearch index for accounts we need to
-comment|// use Lucene to make all tests green and Gerrit server to work
 operator|.
 name|implement
 argument_list|(
@@ -402,7 +386,7 @@ name|AccountIndex
 operator|.
 name|class
 argument_list|,
-name|LuceneAccountIndex
+name|ElasticAccountIndex
 operator|.
 name|class
 argument_list|)
