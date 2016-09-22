@@ -2770,9 +2770,12 @@ name|mergeable
 decl_stmt|;
 DECL|field|assignee
 specifier|private
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|assignee
 decl_stmt|;
 DECL|field|hashtags
@@ -6758,9 +6761,12 @@ expr_stmt|;
 block|}
 DECL|method|assignee ()
 specifier|public
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|assignee
 parameter_list|()
 throws|throws
@@ -6780,7 +6786,10 @@ name|lazyLoad
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|absent
+argument_list|()
 return|;
 block|}
 name|assignee
@@ -6795,6 +6804,27 @@ block|}
 return|return
 name|assignee
 return|;
+block|}
+DECL|method|setAssignee (Optional<Account.Id> assignee)
+specifier|public
+name|void
+name|setAssignee
+parameter_list|(
+name|Optional
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|assignee
+parameter_list|)
+block|{
+name|this
+operator|.
+name|assignee
+operator|=
+name|assignee
+expr_stmt|;
 block|}
 DECL|method|hashtags ()
 specifier|public
