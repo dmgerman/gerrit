@@ -2763,8 +2763,18 @@ name|_revisionNumber
 parameter_list|()
 comment|/*-{ return this._revision_number || 0; }-*/
 function_decl|;
+DECL|method|tag ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|tag
+parameter_list|()
+comment|/*-{ return this.tag; }-*/
+function_decl|;
 DECL|method|dateRaw ()
 specifier|private
+specifier|final
 specifier|native
 name|String
 name|dateRaw
