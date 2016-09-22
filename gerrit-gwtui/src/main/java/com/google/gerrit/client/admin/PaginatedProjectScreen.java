@@ -145,6 +145,8 @@ DECL|field|match
 specifier|protected
 name|String
 name|match
+init|=
+literal|""
 decl_stmt|;
 DECL|field|start
 specifier|protected
