@@ -324,14 +324,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|fields (QueryOptions opts)
+DECL|method|changeFields (QueryOptions opts)
 specifier|public
 specifier|static
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|fields
+name|changeFields
 parameter_list|(
 name|QueryOptions
 name|opts

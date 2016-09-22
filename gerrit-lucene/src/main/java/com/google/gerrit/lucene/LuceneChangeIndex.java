@@ -2516,7 +2516,7 @@ name|fields
 init|=
 name|IndexUtils
 operator|.
-name|fields
+name|changeFields
 argument_list|(
 name|opts
 argument_list|)
