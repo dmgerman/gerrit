@@ -161,6 +161,20 @@ name|long
 name|weight
 parameter_list|)
 function_decl|;
+comment|/** Set the total on-disk limit of the cache */
+DECL|method|diskLimit (long limit)
+name|CacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|diskLimit
+parameter_list|(
+name|long
+name|limit
+parameter_list|)
+function_decl|;
 comment|/** Set the time an element lives before being expired. */
 DECL|method|expireAfterWrite (long duration, TimeUnit durationUnits)
 name|CacheBinding
@@ -250,6 +264,11 @@ function_decl|;
 DECL|method|maximumWeight ()
 name|long
 name|maximumWeight
+parameter_list|()
+function_decl|;
+DECL|method|diskLimit ()
+name|long
+name|diskLimit
 parameter_list|()
 function_decl|;
 DECL|method|expireAfterWrite (TimeUnit unit)

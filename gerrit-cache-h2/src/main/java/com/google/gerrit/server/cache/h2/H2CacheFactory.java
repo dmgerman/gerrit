@@ -1284,9 +1284,10 @@ argument_list|()
 argument_list|,
 literal|"diskLimit"
 argument_list|,
-literal|128
-operator|<<
-literal|20
+name|def
+operator|.
+name|diskLimit
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
