@@ -480,11 +480,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|field|V33
 specifier|static
 specifier|final
