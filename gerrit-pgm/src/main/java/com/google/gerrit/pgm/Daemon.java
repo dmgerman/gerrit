@@ -2637,7 +2637,9 @@ operator|new
 name|SearchingChangeCacheImpl
 operator|.
 name|Module
-argument_list|()
+argument_list|(
+name|slave
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|modules
