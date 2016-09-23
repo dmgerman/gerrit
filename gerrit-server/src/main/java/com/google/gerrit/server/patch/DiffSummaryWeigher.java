@@ -92,19 +92,19 @@ name|DiffSummaryWeigher
 implements|implements
 name|Weigher
 argument_list|<
-name|PatchListKey
+name|DiffSummaryKey
 argument_list|,
 name|DiffSummary
 argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|weigh (PatchListKey key, DiffSummary value)
+DECL|method|weigh (DiffSummaryKey key, DiffSummary value)
 specifier|public
 name|int
 name|weigh
 parameter_list|(
-name|PatchListKey
+name|DiffSummaryKey
 name|key
 parameter_list|,
 name|DiffSummary
@@ -124,7 +124,7 @@ literal|2
 operator|*
 literal|36
 decl_stmt|;
-comment|// Size of PatchListKey, 64 bit JVM
+comment|// Size of DiffSummaryKey, 64 bit JVM
 comment|// Size of the list of paths ...
 for|for
 control|(

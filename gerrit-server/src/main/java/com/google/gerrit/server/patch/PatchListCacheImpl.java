@@ -462,7 +462,7 @@ name|persist
 argument_list|(
 name|DIFF_SUMMARY
 argument_list|,
-name|PatchListKey
+name|DiffSummaryKey
 operator|.
 name|class
 argument_list|,
@@ -544,7 +544,7 @@ specifier|private
 specifier|final
 name|Cache
 argument_list|<
-name|PatchListKey
+name|DiffSummaryKey
 argument_list|,
 name|DiffSummary
 argument_list|>
@@ -582,7 +582,7 @@ name|computeIntraline
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchListCacheImpl ( @amedFILE_NAME) Cache<PatchListKey, PatchList> fileCache, @Named(INTRA_NAME) Cache<IntraLineDiffKey, IntraLineDiff> intraCache, @Named(DIFF_SUMMARY) Cache<PatchListKey, DiffSummary> diffSummaryCache, PatchListLoader.Factory fileLoaderFactory, IntraLineLoader.Factory intraLoaderFactory, DiffSummaryLoader.Factory diffSummaryLoaderFactory, @GerritServerConfig Config cfg)
+DECL|method|PatchListCacheImpl ( @amedFILE_NAME) Cache<PatchListKey, PatchList> fileCache, @Named(INTRA_NAME) Cache<IntraLineDiffKey, IntraLineDiff> intraCache, @Named(DIFF_SUMMARY) Cache<DiffSummaryKey, DiffSummary> diffSummaryCache, PatchListLoader.Factory fileLoaderFactory, IntraLineLoader.Factory intraLoaderFactory, DiffSummaryLoader.Factory diffSummaryLoaderFactory, @GerritServerConfig Config cfg)
 name|PatchListCacheImpl
 parameter_list|(
 annotation|@
@@ -618,7 +618,7 @@ name|DIFF_SUMMARY
 argument_list|)
 name|Cache
 argument_list|<
-name|PatchListKey
+name|DiffSummaryKey
 argument_list|,
 name|DiffSummary
 argument_list|>
@@ -753,7 +753,12 @@ name|diffSummaryCache
 operator|.
 name|put
 argument_list|(
+name|DiffSummaryKey
+operator|.
+name|fromPatchListKey
+argument_list|(
 name|key
+argument_list|)
 argument_list|,
 name|toDiffSummary
 argument_list|(
@@ -1145,6 +1150,10 @@ decl_stmt|;
 return|return
 name|getDiffSummary
 argument_list|(
+name|DiffSummaryKey
+operator|.
+name|fromPatchListKey
+argument_list|(
 name|PatchListKey
 operator|.
 name|againstDefaultBase
@@ -1153,17 +1162,18 @@ name|b
 argument_list|,
 name|ws
 argument_list|)
+argument_list|)
 argument_list|,
 name|project
 argument_list|)
 return|;
 block|}
-DECL|method|getDiffSummary (PatchListKey key, Project.NameKey project)
+DECL|method|getDiffSummary (DiffSummaryKey key, Project.NameKey project)
 specifier|private
 name|DiffSummary
 name|getDiffSummary
 parameter_list|(
-name|PatchListKey
+name|DiffSummaryKey
 name|key
 parameter_list|,
 name|Project

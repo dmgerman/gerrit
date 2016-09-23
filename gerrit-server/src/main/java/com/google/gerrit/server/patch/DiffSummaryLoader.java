@@ -219,11 +219,11 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (PatchListKey key, Project.NameKey project)
+DECL|method|create (DiffSummaryKey key, Project.NameKey project)
 name|DiffSummaryLoader
 name|create
 parameter_list|(
-name|PatchListKey
+name|DiffSummaryKey
 name|key
 parameter_list|,
 name|Project
@@ -242,7 +242,7 @@ decl_stmt|;
 DECL|field|key
 specifier|private
 specifier|final
-name|PatchListKey
+name|DiffSummaryKey
 name|key
 decl_stmt|;
 DECL|field|project
@@ -255,7 +255,7 @@ name|project
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|DiffSummaryLoader (PatchListCache plc, @Assisted PatchListKey k, @Assisted Project.NameKey p)
+DECL|method|DiffSummaryLoader (PatchListCache plc, @Assisted DiffSummaryKey k, @Assisted Project.NameKey p)
 name|DiffSummaryLoader
 parameter_list|(
 name|PatchListCache
@@ -263,7 +263,7 @@ name|plc
 parameter_list|,
 annotation|@
 name|Assisted
-name|PatchListKey
+name|DiffSummaryKey
 name|k
 parameter_list|,
 annotation|@
@@ -305,6 +305,9 @@ operator|.
 name|get
 argument_list|(
 name|key
+operator|.
+name|toPatchListKey
+argument_list|()
 argument_list|,
 name|project
 argument_list|)

@@ -247,7 +247,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-name|PatchListKey
+name|DiffSummaryKey
 operator|.
 name|serialVersionUID
 decl_stmt|;
