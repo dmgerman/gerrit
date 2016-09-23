@@ -1610,9 +1610,6 @@ argument_list|,
 literal|true
 argument_list|)
 operator|&&
-name|isNoteDbEnabled
-argument_list|()
-operator|&&
 name|indexes
 operator|.
 name|getSearchIndex
