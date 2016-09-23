@@ -96,6 +96,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|ChangeInfo
 import|;
 end_import
@@ -512,6 +528,44 @@ argument_list|<
 name|String
 argument_list|>
 name|getHashtags
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set the assignee of a change.    */
+DECL|method|setAssignee (AssigneeInput input)
+name|AccountInfo
+name|setAssignee
+parameter_list|(
+name|AssigneeInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Get the assignee of a change.    */
+DECL|method|getAssignee ()
+name|AccountInfo
+name|getAssignee
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Get all past assignees.   */
+DECL|method|getPastAssignees ()
+name|Set
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|getPastAssignees
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Delete the assignee of a change.    */
+DECL|method|deleteAssignee ()
+name|AccountInfo
+name|deleteAssignee
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -1133,6 +1187,76 @@ argument_list|<
 name|String
 argument_list|>
 name|getHashtags
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setAssignee (AssigneeInput input)
+specifier|public
+name|AccountInfo
+name|setAssignee
+parameter_list|(
+name|AssigneeInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getAssignee ()
+specifier|public
+name|AccountInfo
+name|getAssignee
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getPastAssignees ()
+specifier|public
+name|Set
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|getPastAssignees
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|deleteAssignee ()
+specifier|public
+name|AccountInfo
+name|deleteAssignee
 parameter_list|()
 throws|throws
 name|RestApiException
