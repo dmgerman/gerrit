@@ -1771,8 +1771,6 @@ name|originalSubject
 argument_list|,
 name|submissionId
 argument_list|,
-name|status
-argument_list|,
 name|assignee
 operator|!=
 literal|null
@@ -1783,6 +1781,8 @@ name|orNull
 argument_list|()
 else|:
 literal|null
+argument_list|,
+name|status
 argument_list|,
 name|Sets
 operator|.
