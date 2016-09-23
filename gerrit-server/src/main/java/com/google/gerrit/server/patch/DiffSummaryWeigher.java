@@ -128,6 +128,10 @@ operator|+
 literal|16
 operator|+
 literal|8
+operator|+
+literal|2
+operator|*
+literal|4
 comment|// Size of DiffSummary
 operator|+
 literal|16

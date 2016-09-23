@@ -457,6 +457,16 @@ name|size
 argument_list|()
 index|]
 argument_list|)
+argument_list|,
+name|patchList
+operator|.
+name|getInsertions
+argument_list|()
+argument_list|,
+name|patchList
+operator|.
+name|getDeletions
+argument_list|()
 argument_list|)
 return|;
 block|}
