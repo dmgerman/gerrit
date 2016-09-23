@@ -446,12 +446,6 @@ name|input
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|input
-specifier|private
-specifier|final
-name|AssigneeInput
-name|input
-decl_stmt|;
 DECL|field|accounts
 specifier|private
 specifier|final
@@ -472,12 +466,6 @@ operator|.
 name|Factory
 name|accountInfosFactory
 decl_stmt|;
-DECL|field|anonymousCowardName
-specifier|private
-specifier|final
-name|String
-name|anonymousCowardName
-decl_stmt|;
 DECL|field|validationListeners
 specifier|private
 specifier|final
@@ -487,6 +475,18 @@ name|AssigneeValidationListener
 argument_list|>
 name|validationListeners
 decl_stmt|;
+DECL|field|input
+specifier|private
+specifier|final
+name|AssigneeInput
+name|input
+decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|private
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 DECL|field|newAssignee
 specifier|private
 name|Account
@@ -494,7 +494,7 @@ name|newAssignee
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|SetAssigneeOp (AccountsCollection accounts, ChangeMessagesUtil cmUtil, AccountInfoCacheFactory.Factory accountInfosFactory, @AnonymousCowardName String anonymousCowardName, @Assisted AssigneeInput input, DynamicSet<AssigneeValidationListener> validationListeners)
+DECL|method|SetAssigneeOp (AccountsCollection accounts, ChangeMessagesUtil cmUtil, AccountInfoCacheFactory.Factory accountInfosFactory, DynamicSet<AssigneeValidationListener> validationListeners, @AnonymousCowardName String anonymousCowardName, @Assisted AssigneeInput input)
 name|SetAssigneeOp
 parameter_list|(
 name|AccountsCollection
@@ -508,6 +508,12 @@ operator|.
 name|Factory
 name|accountInfosFactory
 parameter_list|,
+name|DynamicSet
+argument_list|<
+name|AssigneeValidationListener
+argument_list|>
+name|validationListeners
+parameter_list|,
 annotation|@
 name|AnonymousCowardName
 name|String
@@ -517,12 +523,6 @@ annotation|@
 name|Assisted
 name|AssigneeInput
 name|input
-parameter_list|,
-name|DynamicSet
-argument_list|<
-name|AssigneeValidationListener
-argument_list|>
-name|validationListeners
 parameter_list|)
 block|{
 name|this
@@ -545,6 +545,12 @@ name|accountInfosFactory
 expr_stmt|;
 name|this
 operator|.
+name|validationListeners
+operator|=
+name|validationListeners
+expr_stmt|;
+name|this
+operator|.
 name|anonymousCowardName
 operator|=
 name|anonymousCowardName
@@ -554,12 +560,6 @@ operator|.
 name|input
 operator|=
 name|input
-expr_stmt|;
-name|this
-operator|.
-name|validationListeners
-operator|=
-name|validationListeners
 expr_stmt|;
 block|}
 annotation|@
