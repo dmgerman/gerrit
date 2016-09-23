@@ -708,6 +708,12 @@ name|AUTO_MERGE
 expr_stmt|;
 name|i
 operator|.
+name|highlightAssigneeInChangeTable
+operator|^=
+literal|true
+expr_stmt|;
+name|i
+operator|.
 name|relativeDateInChangeTable
 operator|^=
 literal|true

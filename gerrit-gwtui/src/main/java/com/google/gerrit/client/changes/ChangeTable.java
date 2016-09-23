@@ -2234,6 +2234,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|Gerrit
+operator|.
+name|getUserPreferences
+argument_list|()
+operator|.
+name|highlightAssigneeInChangeTable
+argument_list|()
+operator|&&
 name|Objects
 operator|.
 name|equals
