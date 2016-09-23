@@ -582,8 +582,24 @@ literal|true
 argument_list|,
 comment|// @UseLocalDisk is only valid on methods.
 operator|!
-name|hasNoHttpd
+name|has
 argument_list|(
+name|NoHttpd
+operator|.
+name|class
+argument_list|,
+name|testDesc
+operator|.
+name|getTestClass
+argument_list|()
+argument_list|)
+argument_list|,
+name|has
+argument_list|(
+name|Sandboxed
+operator|.
+name|class
+argument_list|,
 name|testDesc
 operator|.
 name|getTestClass
@@ -645,8 +661,35 @@ operator|==
 literal|null
 operator|&&
 operator|!
-name|hasNoHttpd
+name|has
 argument_list|(
+name|NoHttpd
+operator|.
+name|class
+argument_list|,
+name|testDesc
+operator|.
+name|getTestClass
+argument_list|()
+argument_list|)
+argument_list|,
+name|testDesc
+operator|.
+name|getAnnotation
+argument_list|(
+name|Sandboxed
+operator|.
+name|class
+argument_list|)
+operator|!=
+literal|null
+operator|||
+name|has
+argument_list|(
+name|Sandboxed
+operator|.
+name|class
+argument_list|,
 name|testDesc
 operator|.
 name|getTestClass
@@ -673,12 +716,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|hasNoHttpd (Class<?> clazz)
+DECL|method|has (Class annotation, Class<?> clazz)
 specifier|private
 specifier|static
 name|boolean
-name|hasNoHttpd
+name|has
 parameter_list|(
+name|Class
+name|annotation
+parameter_list|,
 name|Class
 argument_list|<
 name|?
@@ -707,9 +753,7 @@ name|clazz
 operator|.
 name|getAnnotation
 argument_list|(
-name|NoHttpd
-operator|.
-name|class
+name|annotation
 argument_list|)
 operator|!=
 literal|null
@@ -742,6 +786,12 @@ DECL|method|httpd ()
 specifier|abstract
 name|boolean
 name|httpd
+parameter_list|()
+function_decl|;
+DECL|method|sandboxed ()
+specifier|abstract
+name|boolean
+name|sandboxed
 parameter_list|()
 function_decl|;
 DECL|method|config ()
