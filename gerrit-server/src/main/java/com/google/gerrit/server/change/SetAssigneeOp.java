@@ -818,10 +818,9 @@ name|format
 argument_list|(
 literal|"Account of %s is not active"
 argument_list|,
-name|newAssigneeUser
+name|input
 operator|.
-name|getUserName
-argument_list|()
+name|assignee
 argument_list|)
 argument_list|)
 throw|;
@@ -858,10 +857,9 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-name|newAssigneeUser
+name|input
 operator|.
-name|getUserName
-argument_list|()
+name|assignee
 argument_list|)
 argument_list|)
 throw|;
