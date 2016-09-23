@@ -432,6 +432,18 @@ name|java
 operator|.
 name|lang
 operator|.
+name|annotation
+operator|.
+name|Annotation
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
 name|reflect
 operator|.
 name|Field
@@ -716,13 +728,18 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|has (Class annotation, Class<?> clazz)
+DECL|method|has ( Class<? extends Annotation> annotation, Class<?> clazz)
 specifier|private
 specifier|static
 name|boolean
 name|has
 parameter_list|(
 name|Class
+argument_list|<
+name|?
+extends|extends
+name|Annotation
+argument_list|>
 name|annotation
 parameter_list|,
 name|Class
