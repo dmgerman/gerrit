@@ -15077,8 +15077,6 @@ name|replaceOpFactory
 operator|.
 name|create
 argument_list|(
-name|requestScopePropagator
-argument_list|,
 name|projectControl
 argument_list|,
 name|notes
@@ -15109,6 +15107,16 @@ name|rp
 operator|.
 name|getPushCertificate
 argument_list|()
+argument_list|)
+operator|.
+name|setRequestScopePropagator
+argument_list|(
+name|requestScopePropagator
+argument_list|)
+operator|.
+name|setUpdateRef
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|bu
