@@ -774,15 +774,10 @@ name|update
 operator|.
 name|setAssignee
 argument_list|(
-name|Optional
-operator|.
-name|fromNullable
-argument_list|(
 name|newAssigneeUser
 operator|.
 name|getAccountId
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
