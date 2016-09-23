@@ -521,6 +521,10 @@ argument_list|,
 name|ListChangesOption
 operator|.
 name|CURRENT_COMMIT
+argument_list|,
+name|ListChangesOption
+operator|.
+name|SUBMITTABLE
 argument_list|)
 decl_stmt|;
 DECL|field|json
@@ -1038,11 +1042,6 @@ operator|.
 name|create
 argument_list|(
 name|jsonOpt
-argument_list|)
-operator|.
-name|includeSubmittable
-argument_list|(
-literal|true
 argument_list|)
 operator|.
 name|formatChangeDatas

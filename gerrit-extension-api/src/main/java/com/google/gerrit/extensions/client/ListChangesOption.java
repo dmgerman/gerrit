@@ -233,6 +233,13 @@ name|REVIEWER_UPDATES
 argument_list|(
 literal|19
 argument_list|)
+block|,
+comment|/** Set the submittable boolean. */
+DECL|enumConstant|SUBMITTABLE
+name|SUBMITTABLE
+argument_list|(
+literal|20
+argument_list|)
 block|;
 DECL|field|value
 specifier|private

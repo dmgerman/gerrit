@@ -404,6 +404,24 @@ name|client
 operator|.
 name|ListChangesOption
 operator|.
+name|SUBMITTABLE
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|ListChangesOption
+operator|.
 name|WEB_LINKS
 import|;
 end_import
@@ -2147,11 +2165,6 @@ specifier|private
 name|AccountLoader
 name|accountLoader
 decl_stmt|;
-DECL|field|includeSubmittable
-specifier|private
-name|boolean
-name|includeSubmittable
-decl_stmt|;
 DECL|field|submitRecords
 specifier|private
 name|Map
@@ -2436,23 +2449,6 @@ argument_list|(
 name|options
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|includeSubmittable (boolean include)
-specifier|public
-name|ChangeJson
-name|includeSubmittable
-parameter_list|(
-name|boolean
-name|include
-parameter_list|)
-block|{
-name|includeSubmittable
-operator|=
-name|include
-expr_stmt|;
-return|return
-name|this
-return|;
 block|}
 DECL|method|lazyLoad (boolean load)
 specifier|public
@@ -3975,7 +3971,10 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|includeSubmittable
+name|has
+argument_list|(
+name|SUBMITTABLE
+argument_list|)
 condition|)
 block|{
 name|out
