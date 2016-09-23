@@ -65,6 +65,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+operator|.
+name|nullToEmpty
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -433,7 +449,7 @@ operator|.
 name|getXGerritAuth
 argument_list|()
 else|:
-literal|""
+literal|null
 decl_stmt|;
 name|Cookie
 name|c
@@ -445,7 +461,10 @@ name|HostPageData
 operator|.
 name|XSRF_COOKIE_NAME
 argument_list|,
+name|nullToEmpty
+argument_list|(
 name|v
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|c
@@ -474,7 +493,7 @@ name|c
 operator|.
 name|setMaxAge
 argument_list|(
-name|session
+name|v
 operator|!=
 literal|null
 condition|?

@@ -72,6 +72,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -152,6 +166,8 @@ name|isSignedIn
 parameter_list|()
 function_decl|;
 DECL|method|getXGerritAuth ()
+annotation|@
+name|Nullable
 name|String
 name|getXGerritAuth
 parameter_list|()

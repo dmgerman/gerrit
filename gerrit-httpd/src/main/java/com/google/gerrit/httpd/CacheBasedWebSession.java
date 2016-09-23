@@ -116,6 +116,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|WebSessionManager
@@ -745,6 +759,8 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Nullable
 DECL|method|getXGerritAuth ()
 specifier|public
 name|String

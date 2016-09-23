@@ -546,6 +546,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|PageLinks
 import|;
 end_import
@@ -2202,6 +2216,8 @@ name|myAccount
 return|;
 block|}
 comment|/** @return access token to prove user identity during REST API calls. */
+annotation|@
+name|Nullable
 DECL|method|getXGerritAuth ()
 specifier|public
 specifier|static
