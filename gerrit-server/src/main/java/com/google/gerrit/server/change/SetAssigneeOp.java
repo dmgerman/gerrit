@@ -664,7 +664,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|AuthException
+name|BadRequestException
 argument_list|(
 literal|"Cannot set Assignee to empty"
 argument_list|)
