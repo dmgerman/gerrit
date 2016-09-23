@@ -120,6 +120,17 @@ static|static
 block|{
 name|register
 argument_list|(
+name|AssigneeChangedEvent
+operator|.
+name|TYPE
+argument_list|,
+name|AssigneeChangedEvent
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|register
+argument_list|(
 name|ChangeAbandonedEvent
 operator|.
 name|TYPE

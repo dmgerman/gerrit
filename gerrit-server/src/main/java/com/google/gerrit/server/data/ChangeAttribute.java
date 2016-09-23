@@ -133,6 +133,11 @@ specifier|public
 name|AccountAttribute
 name|owner
 decl_stmt|;
+DECL|field|assignee
+specifier|public
+name|AccountAttribute
+name|assignee
+decl_stmt|;
 DECL|field|url
 specifier|public
 name|String
