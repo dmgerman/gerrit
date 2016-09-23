@@ -102,9 +102,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|data
-operator|.
-name|HostPageData
+name|Nullable
 import|;
 end_import
 
@@ -118,7 +116,9 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|Nullable
+name|data
+operator|.
+name|HostPageData
 import|;
 end_import
 
