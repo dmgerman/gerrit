@@ -1340,6 +1340,15 @@ name|isGitBasicAuth
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|gitBasicAuthPolicy
+operator|=
+name|cfg
+operator|.
+name|getGitBasicAuthPolicy
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|info
