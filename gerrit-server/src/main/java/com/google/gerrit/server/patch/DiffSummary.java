@@ -281,10 +281,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|FileList
+DECL|class|DiffSummary
 specifier|public
 class|class
-name|FileList
+name|DiffSummary
 implements|implements
 name|Serializable
 block|{
@@ -306,9 +306,9 @@ name|String
 index|[]
 name|paths
 decl_stmt|;
-DECL|method|FileList (String[] paths)
+DECL|method|DiffSummary (String[] paths)
 specifier|public
-name|FileList
+name|DiffSummary
 parameter_list|(
 name|String
 index|[]

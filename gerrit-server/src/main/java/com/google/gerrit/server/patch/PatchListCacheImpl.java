@@ -82,9 +82,9 @@ name|server
 operator|.
 name|patch
 operator|.
-name|FileListLoader
+name|DiffSummaryLoader
 operator|.
-name|toFileList
+name|toDiffSummary
 import|;
 end_import
 
@@ -350,13 +350,13 @@ name|INTRA_NAME
 init|=
 literal|"diff_intraline"
 decl_stmt|;
-DECL|field|FILE_LIST
+DECL|field|DIFF_SUMMARY
 specifier|static
 specifier|final
 name|String
-name|FILE_LIST
+name|DIFF_SUMMARY
 init|=
-literal|"diff_file_list"
+literal|"diff_summary"
 decl_stmt|;
 DECL|method|module ()
 specifier|public
@@ -451,7 +451,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|FileListLoader
+name|DiffSummaryLoader
 operator|.
 name|Factory
 operator|.
@@ -460,13 +460,13 @@ argument_list|)
 expr_stmt|;
 name|persist
 argument_list|(
-name|FILE_LIST
+name|DIFF_SUMMARY
 argument_list|,
 name|PatchListKey
 operator|.
 name|class
 argument_list|,
-name|FileList
+name|DiffSummary
 operator|.
 name|class
 argument_list|)
@@ -480,7 +480,7 @@ argument_list|)
 operator|.
 name|weigher
 argument_list|(
-name|FileListWeigher
+name|DiffSummaryWeigher
 operator|.
 name|class
 argument_list|)
@@ -539,16 +539,16 @@ name|IntraLineDiff
 argument_list|>
 name|intraCache
 decl_stmt|;
-DECL|field|fileListCache
+DECL|field|diffSummaryCache
 specifier|private
 specifier|final
 name|Cache
 argument_list|<
 name|PatchListKey
 argument_list|,
-name|FileList
+name|DiffSummary
 argument_list|>
-name|fileListCache
+name|diffSummaryCache
 decl_stmt|;
 DECL|field|fileLoaderFactory
 specifier|private
@@ -566,13 +566,13 @@ operator|.
 name|Factory
 name|intraLoaderFactory
 decl_stmt|;
-DECL|field|fileListLoaderFactory
+DECL|field|diffSummaryLoaderFactory
 specifier|private
 specifier|final
-name|FileListLoader
+name|DiffSummaryLoader
 operator|.
 name|Factory
-name|fileListLoaderFactory
+name|diffSummaryLoaderFactory
 decl_stmt|;
 DECL|field|computeIntraline
 specifier|private
@@ -582,7 +582,7 @@ name|computeIntraline
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchListCacheImpl ( @amedFILE_NAME) Cache<PatchListKey, PatchList> fileCache, @Named(INTRA_NAME) Cache<IntraLineDiffKey, IntraLineDiff> intraCache, @Named(FILE_LIST) Cache<PatchListKey, FileList> fileListCache, PatchListLoader.Factory fileLoaderFactory, IntraLineLoader.Factory intraLoaderFactory, FileListLoader.Factory fileListLoaderFactory, @GerritServerConfig Config cfg)
+DECL|method|PatchListCacheImpl ( @amedFILE_NAME) Cache<PatchListKey, PatchList> fileCache, @Named(INTRA_NAME) Cache<IntraLineDiffKey, IntraLineDiff> intraCache, @Named(DIFF_SUMMARY) Cache<PatchListKey, DiffSummary> diffSummaryCache, PatchListLoader.Factory fileLoaderFactory, IntraLineLoader.Factory intraLoaderFactory, DiffSummaryLoader.Factory diffSummaryLoaderFactory, @GerritServerConfig Config cfg)
 name|PatchListCacheImpl
 parameter_list|(
 annotation|@
@@ -614,15 +614,15 @@ parameter_list|,
 annotation|@
 name|Named
 argument_list|(
-name|FILE_LIST
+name|DIFF_SUMMARY
 argument_list|)
 name|Cache
 argument_list|<
 name|PatchListKey
 argument_list|,
-name|FileList
+name|DiffSummary
 argument_list|>
-name|fileListCache
+name|diffSummaryCache
 parameter_list|,
 name|PatchListLoader
 operator|.
@@ -634,10 +634,10 @@ operator|.
 name|Factory
 name|intraLoaderFactory
 parameter_list|,
-name|FileListLoader
+name|DiffSummaryLoader
 operator|.
 name|Factory
-name|fileListLoaderFactory
+name|diffSummaryLoaderFactory
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -659,9 +659,9 @@ name|intraCache
 expr_stmt|;
 name|this
 operator|.
-name|fileListCache
+name|diffSummaryCache
 operator|=
-name|fileListCache
+name|diffSummaryCache
 expr_stmt|;
 name|this
 operator|.
@@ -677,9 +677,9 @@ name|intraLoaderFactory
 expr_stmt|;
 name|this
 operator|.
-name|fileListLoaderFactory
+name|diffSummaryLoaderFactory
 operator|=
-name|fileListLoaderFactory
+name|diffSummaryLoaderFactory
 expr_stmt|;
 name|this
 operator|.
@@ -749,13 +749,13 @@ name|project
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|fileListCache
+name|diffSummaryCache
 operator|.
 name|put
 argument_list|(
 name|key
 argument_list|,
-name|toFileList
+name|toDiffSummary
 argument_list|(
 name|pl
 argument_list|)
@@ -1095,10 +1095,10 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getFileList (Change change, PatchSet patchSet)
+DECL|method|getDiffSummary (Change change, PatchSet patchSet)
 specifier|public
-name|FileList
-name|getFileList
+name|DiffSummary
+name|getDiffSummary
 parameter_list|(
 name|Change
 name|change
@@ -1143,7 +1143,7 @@ operator|.
 name|IGNORE_NONE
 decl_stmt|;
 return|return
-name|getFileList
+name|getDiffSummary
 argument_list|(
 name|PatchListKey
 operator|.
@@ -1158,10 +1158,10 @@ name|project
 argument_list|)
 return|;
 block|}
-DECL|method|getFileList (PatchListKey key, Project.NameKey project)
+DECL|method|getDiffSummary (PatchListKey key, Project.NameKey project)
 specifier|private
-name|FileList
-name|getFileList
+name|DiffSummary
+name|getDiffSummary
 parameter_list|(
 name|PatchListKey
 name|key
@@ -1177,13 +1177,13 @@ block|{
 try|try
 block|{
 return|return
-name|fileListCache
+name|diffSummaryCache
 operator|.
 name|get
 argument_list|(
 name|key
 argument_list|,
-name|fileListLoaderFactory
+name|diffSummaryLoaderFactory
 operator|.
 name|create
 argument_list|(

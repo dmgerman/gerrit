@@ -81,25 +81,25 @@ import|;
 end_import
 
 begin_comment
-comment|/** Computes memory usage for FileList in bytes of memory used */
+comment|/** Computes memory usage for {@link DiffSummary} in bytes of memory used. */
 end_comment
 
 begin_class
-DECL|class|FileListWeigher
+DECL|class|DiffSummaryWeigher
 specifier|public
 class|class
-name|FileListWeigher
+name|DiffSummaryWeigher
 implements|implements
 name|Weigher
 argument_list|<
 name|PatchListKey
 argument_list|,
-name|FileList
+name|DiffSummary
 argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|weigh (PatchListKey key, FileList value)
+DECL|method|weigh (PatchListKey key, DiffSummary value)
 specifier|public
 name|int
 name|weigh
@@ -107,7 +107,7 @@ parameter_list|(
 name|PatchListKey
 name|key
 parameter_list|,
-name|FileList
+name|DiffSummary
 name|value
 parameter_list|)
 block|{

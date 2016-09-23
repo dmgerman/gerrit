@@ -720,7 +720,7 @@ name|server
 operator|.
 name|patch
 operator|.
-name|FileList
+name|DiffSummary
 import|;
 end_import
 
@@ -2700,7 +2700,7 @@ argument_list|>
 argument_list|>
 name|patchLists
 decl_stmt|;
-DECL|field|fileLists
+DECL|field|diffSummaries
 specifier|private
 name|Map
 argument_list|<
@@ -2708,10 +2708,10 @@ name|Integer
 argument_list|,
 name|Optional
 argument_list|<
-name|FileList
+name|DiffSummary
 argument_list|>
 argument_list|>
-name|fileLists
+name|diffSummaries
 decl_stmt|;
 DECL|field|publishedComments
 specifier|private
@@ -3970,11 +3970,11 @@ return|;
 block|}
 name|Optional
 argument_list|<
-name|FileList
+name|DiffSummary
 argument_list|>
 name|p
 init|=
-name|getFileList
+name|getDiffSummary
 argument_list|(
 name|c
 argument_list|,
@@ -4168,13 +4168,13 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|getFileList (Change c, PatchSet ps)
+DECL|method|getDiffSummary (Change c, PatchSet ps)
 specifier|private
 name|Optional
 argument_list|<
-name|FileList
+name|DiffSummary
 argument_list|>
-name|getFileList
+name|getDiffSummary
 parameter_list|(
 name|Change
 name|c
@@ -4196,12 +4196,12 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|fileLists
+name|diffSummaries
 operator|==
 literal|null
 condition|)
 block|{
-name|fileLists
+name|diffSummaries
 operator|=
 operator|new
 name|HashMap
@@ -4211,11 +4211,11 @@ expr_stmt|;
 block|}
 name|Optional
 argument_list|<
-name|FileList
+name|DiffSummary
 argument_list|>
 name|r
 init|=
-name|fileLists
+name|diffSummaries
 operator|.
 name|get
 argument_list|(
@@ -4252,7 +4252,7 @@ name|of
 argument_list|(
 name|patchListCache
 operator|.
-name|getFileList
+name|getDiffSummary
 argument_list|(
 name|c
 argument_list|,
@@ -4275,7 +4275,7 @@ name|absent
 argument_list|()
 expr_stmt|;
 block|}
-name|fileLists
+name|diffSummaries
 operator|.
 name|put
 argument_list|(
