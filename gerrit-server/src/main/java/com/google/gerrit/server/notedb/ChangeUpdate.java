@@ -2500,25 +2500,52 @@ operator|=
 name|hashtags
 expr_stmt|;
 block|}
-DECL|method|setAssignee (Optional<Account.Id> assignee)
+DECL|method|setAssignee (Account.Id assignee)
 specifier|public
 name|void
 name|setAssignee
 parameter_list|(
-name|Optional
-argument_list|<
 name|Account
 operator|.
 name|Id
-argument_list|>
 name|assignee
 parameter_list|)
+block|{
+name|checkArgument
+argument_list|(
+name|assignee
+operator|!=
+literal|null
+argument_list|,
+literal|"use removeAssignee"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|assignee
+operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|assignee
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|removeAssignee ()
+specifier|public
+name|void
+name|removeAssignee
+parameter_list|()
 block|{
 name|this
 operator|.
 name|assignee
 operator|=
-name|assignee
+name|Optional
+operator|.
+name|absent
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getReviewers ()

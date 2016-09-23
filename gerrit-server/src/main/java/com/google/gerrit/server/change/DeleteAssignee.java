@@ -841,13 +841,8 @@ argument_list|)
 decl_stmt|;
 name|update
 operator|.
-name|setAssignee
-argument_list|(
-name|Optional
-operator|.
-name|absent
+name|removeAssignee
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|addMessage
 argument_list|(
