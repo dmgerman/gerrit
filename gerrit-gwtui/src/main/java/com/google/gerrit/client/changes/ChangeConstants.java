@@ -180,6 +180,11 @@ name|String
 name|changeTableColumnOwner
 parameter_list|()
 function_decl|;
+DECL|method|changeTableColumnAssignee ()
+name|String
+name|changeTableColumnAssignee
+parameter_list|()
+function_decl|;
 DECL|method|changeTableColumnProject ()
 name|String
 name|changeTableColumnProject

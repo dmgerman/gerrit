@@ -2036,8 +2036,9 @@ name|row
 argument_list|,
 literal|2
 argument_list|,
-operator|new
 name|AccountLinkPanel
+operator|.
+name|create
 argument_list|(
 name|i
 argument_list|)

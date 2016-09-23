@@ -677,6 +677,28 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|toAssigneeQuery (String fullname)
+specifier|public
+specifier|static
+name|String
+name|toAssigneeQuery
+parameter_list|(
+name|String
+name|fullname
+parameter_list|)
+block|{
+return|return
+name|toChangeQuery
+argument_list|(
+name|op
+argument_list|(
+literal|"assignee"
+argument_list|,
+name|fullname
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|toCustomDashboard (final String params)
 specifier|public
 specifier|static
