@@ -123,9 +123,18 @@ operator|+
 literal|2
 operator|*
 literal|36
-decl_stmt|;
 comment|// Size of DiffSummaryKey, 64 bit JVM
-comment|// Size of the list of paths ...
+operator|+
+literal|16
+operator|+
+literal|8
+comment|// Size of DiffSummary
+operator|+
+literal|16
+operator|+
+literal|8
+decl_stmt|;
+comment|// String[]
 for|for
 control|(
 name|String
@@ -139,25 +148,28 @@ control|)
 block|{
 name|size
 operator|+=
+literal|16
+operator|+
+literal|8
+operator|+
+literal|4
+operator|*
+literal|4
+comment|// String
+operator|+
+literal|16
+operator|+
+literal|8
+operator|+
 name|p
 operator|.
 name|length
 argument_list|()
+operator|*
+literal|2
 expr_stmt|;
+comment|// char[]
 block|}
-comment|// ... plus new-line separators between paths
-name|size
-operator|+=
-name|value
-operator|.
-name|getPaths
-argument_list|()
-operator|.
-name|size
-argument_list|()
-operator|-
-literal|1
-expr_stmt|;
 return|return
 name|size
 return|;
