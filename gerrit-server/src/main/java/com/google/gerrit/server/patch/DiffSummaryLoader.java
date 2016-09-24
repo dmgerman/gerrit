@@ -189,14 +189,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|FileListLoader
+DECL|class|DiffSummaryLoader
 specifier|public
 class|class
-name|FileListLoader
+name|DiffSummaryLoader
 implements|implements
 name|Callable
 argument_list|<
-name|FileList
+name|DiffSummary
 argument_list|>
 block|{
 DECL|field|log
@@ -209,7 +209,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|FileListLoader
+name|DiffSummaryLoader
 operator|.
 name|class
 argument_list|)
@@ -219,11 +219,11 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (PatchListKey key, Project.NameKey project)
-name|FileListLoader
+DECL|method|create (DiffSummaryKey key, Project.NameKey project)
+name|DiffSummaryLoader
 name|create
 parameter_list|(
-name|PatchListKey
+name|DiffSummaryKey
 name|key
 parameter_list|,
 name|Project
@@ -242,7 +242,7 @@ decl_stmt|;
 DECL|field|key
 specifier|private
 specifier|final
-name|PatchListKey
+name|DiffSummaryKey
 name|key
 decl_stmt|;
 DECL|field|project
@@ -255,15 +255,15 @@ name|project
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|FileListLoader (PatchListCache plc, @Assisted PatchListKey k, @Assisted Project.NameKey p)
-name|FileListLoader
+DECL|method|DiffSummaryLoader (PatchListCache plc, @Assisted DiffSummaryKey k, @Assisted Project.NameKey p)
+name|DiffSummaryLoader
 parameter_list|(
 name|PatchListCache
 name|plc
 parameter_list|,
 annotation|@
 name|Assisted
-name|PatchListKey
+name|DiffSummaryKey
 name|k
 parameter_list|,
 annotation|@
@@ -291,7 +291,7 @@ annotation|@
 name|Override
 DECL|method|call ()
 specifier|public
-name|FileList
+name|DiffSummary
 name|call
 parameter_list|()
 throws|throws
@@ -305,21 +305,24 @@ operator|.
 name|get
 argument_list|(
 name|key
+operator|.
+name|toPatchListKey
+argument_list|()
 argument_list|,
 name|project
 argument_list|)
 decl_stmt|;
 return|return
-name|toFileList
+name|toDiffSummary
 argument_list|(
 name|patchList
 argument_list|)
 return|;
 block|}
-DECL|method|toFileList (PatchList patchList)
+DECL|method|toDiffSummary (PatchList patchList)
 specifier|static
-name|FileList
-name|toFileList
+name|DiffSummary
+name|toDiffSummary
 parameter_list|(
 name|PatchList
 name|patchList
@@ -439,7 +442,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
-name|FileList
+name|DiffSummary
 argument_list|(
 name|r
 operator|.

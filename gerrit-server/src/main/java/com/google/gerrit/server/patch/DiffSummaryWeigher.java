@@ -81,33 +81,33 @@ import|;
 end_import
 
 begin_comment
-comment|/** Computes memory usage for FileList in bytes of memory used */
+comment|/** Computes memory usage for {@link DiffSummary} in bytes of memory used. */
 end_comment
 
 begin_class
-DECL|class|FileListWeigher
+DECL|class|DiffSummaryWeigher
 specifier|public
 class|class
-name|FileListWeigher
+name|DiffSummaryWeigher
 implements|implements
 name|Weigher
 argument_list|<
-name|PatchListKey
+name|DiffSummaryKey
 argument_list|,
-name|FileList
+name|DiffSummary
 argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|weigh (PatchListKey key, FileList value)
+DECL|method|weigh (DiffSummaryKey key, DiffSummary value)
 specifier|public
 name|int
 name|weigh
 parameter_list|(
-name|PatchListKey
+name|DiffSummaryKey
 name|key
 parameter_list|,
-name|FileList
+name|DiffSummary
 name|value
 parameter_list|)
 block|{
@@ -123,9 +123,18 @@ operator|+
 literal|2
 operator|*
 literal|36
+comment|// Size of DiffSummaryKey, 64 bit JVM
+operator|+
+literal|16
+operator|+
+literal|8
+comment|// Size of DiffSummary
+operator|+
+literal|16
+operator|+
+literal|8
 decl_stmt|;
-comment|// Size of PatchListKey, 64 bit JVM
-comment|// Size of the list of paths ...
+comment|// String[]
 for|for
 control|(
 name|String
@@ -139,25 +148,28 @@ control|)
 block|{
 name|size
 operator|+=
+literal|16
+operator|+
+literal|8
+operator|+
+literal|4
+operator|*
+literal|4
+comment|// String
+operator|+
+literal|16
+operator|+
+literal|8
+operator|+
 name|p
 operator|.
 name|length
 argument_list|()
+operator|*
+literal|2
 expr_stmt|;
+comment|// char[]
 block|}
-comment|// ... plus new-line separators between paths
-name|size
-operator|+=
-name|value
-operator|.
-name|getPaths
-argument_list|()
-operator|.
-name|size
-argument_list|()
-operator|-
-literal|1
-expr_stmt|;
 return|return
 name|size
 return|;

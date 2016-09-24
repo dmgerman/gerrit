@@ -193,9 +193,9 @@ name|IntraLineDiffArgs
 name|args
 parameter_list|)
 function_decl|;
-DECL|method|getFileList (Change change, PatchSet patchSet)
-name|FileList
-name|getFileList
+DECL|method|getDiffSummary (Change change, PatchSet patchSet)
+name|DiffSummary
+name|getDiffSummary
 parameter_list|(
 name|Change
 name|change
