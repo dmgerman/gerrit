@@ -2055,6 +2055,7 @@ name|addition
 return|;
 block|}
 DECL|class|Addition
+specifier|public
 class|class
 name|Addition
 block|{
@@ -2365,6 +2366,7 @@ block|}
 block|}
 block|}
 DECL|class|Op
+specifier|public
 class|class
 name|Op
 extends|extends
