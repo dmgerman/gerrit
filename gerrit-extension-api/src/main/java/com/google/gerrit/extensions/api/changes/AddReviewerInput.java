@@ -141,6 +141,11 @@ specifier|public
 name|ReviewerState
 name|state
 decl_stmt|;
+DECL|field|notify
+specifier|public
+name|NotifyHandling
+name|notify
+decl_stmt|;
 DECL|method|confirmed ()
 specifier|public
 name|boolean
