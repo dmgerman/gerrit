@@ -144,11 +144,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|auth
+name|registration
 operator|.
-name|oauth
-operator|.
-name|OAuthUserInfo
+name|DynamicItem
 import|;
 end_import
 
@@ -160,11 +158,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|reviewdb
 operator|.
-name|registration
+name|client
 operator|.
-name|DynamicItem
+name|Account
 import|;
 end_import
 
@@ -283,7 +281,9 @@ name|persist
 argument_list|(
 name|OAUTH_TOKENS
 argument_list|,
-name|String
+name|Account
+operator|.
+name|Id
 operator|.
 name|class
 argument_list|,
@@ -301,7 +301,9 @@ specifier|private
 specifier|final
 name|Cache
 argument_list|<
-name|String
+name|Account
+operator|.
+name|Id
 argument_list|,
 name|OAuthToken
 argument_list|>
@@ -309,7 +311,7 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OAuthTokenCache (@amedOAUTH_TOKENS) Cache<String, OAuthToken> cache, DynamicItem<OAuthTokenEncrypter> encrypter)
+DECL|method|OAuthTokenCache (@amedOAUTH_TOKENS) Cache<Account.Id, OAuthToken> cache, DynamicItem<OAuthTokenEncrypter> encrypter)
 name|OAuthTokenCache
 parameter_list|(
 annotation|@
@@ -319,7 +321,9 @@ name|OAUTH_TOKENS
 argument_list|)
 name|Cache
 argument_list|<
-name|String
+name|Account
+operator|.
+name|Id
 argument_list|,
 name|OAuthToken
 argument_list|>
@@ -345,67 +349,15 @@ operator|=
 name|encrypter
 expr_stmt|;
 block|}
-DECL|method|has (OAuthUserInfo user)
-specifier|public
-name|boolean
-name|has
-parameter_list|(
-name|OAuthUserInfo
-name|user
-parameter_list|)
-block|{
-return|return
-name|user
-operator|!=
-literal|null
-condition|?
-name|cache
-operator|.
-name|getIfPresent
-argument_list|(
-name|user
-operator|.
-name|getUserName
-argument_list|()
-argument_list|)
-operator|!=
-literal|null
-else|:
-literal|false
-return|;
-block|}
-DECL|method|get (OAuthUserInfo user)
+DECL|method|get (Account.Id id)
 specifier|public
 name|OAuthToken
 name|get
 parameter_list|(
-name|OAuthUserInfo
-name|user
-parameter_list|)
-block|{
-return|return
-name|user
-operator|!=
-literal|null
-condition|?
-name|get
-argument_list|(
-name|user
+name|Account
 operator|.
-name|getUserName
-argument_list|()
-argument_list|)
-else|:
-literal|null
-return|;
-block|}
-DECL|method|get (String userName)
-specifier|public
-name|OAuthToken
-name|get
-parameter_list|(
-name|String
-name|userName
+name|Id
+name|id
 parameter_list|)
 block|{
 name|OAuthToken
@@ -415,7 +367,7 @@ name|cache
 operator|.
 name|getIfPresent
 argument_list|(
-name|userName
+name|id
 argument_list|)
 decl_stmt|;
 if|if
@@ -448,7 +400,7 @@ name|cache
 operator|.
 name|invalidate
 argument_list|(
-name|userName
+name|id
 argument_list|)
 expr_stmt|;
 return|return
@@ -459,13 +411,15 @@ return|return
 name|accessToken
 return|;
 block|}
-DECL|method|put (OAuthUserInfo user, OAuthToken accessToken)
+DECL|method|put (Account.Id id, OAuthToken accessToken)
 specifier|public
 name|void
 name|put
 parameter_list|(
-name|OAuthUserInfo
-name|user
+name|Account
+operator|.
+name|Id
+name|id
 parameter_list|,
 name|OAuthToken
 name|accessToken
@@ -475,13 +429,7 @@ name|cache
 operator|.
 name|put
 argument_list|(
-name|checkNotNull
-argument_list|(
-name|user
-operator|.
-name|getUserName
-argument_list|()
-argument_list|)
+name|id
 argument_list|,
 name|encrypt
 argument_list|(
@@ -493,33 +441,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|remove (OAuthUserInfo user)
+DECL|method|remove (Account.Id id)
 specifier|public
 name|void
 name|remove
 parameter_list|(
-name|OAuthUserInfo
-name|user
+name|Account
+operator|.
+name|Id
+name|id
 parameter_list|)
-block|{
-if|if
-condition|(
-name|user
-operator|!=
-literal|null
-condition|)
 block|{
 name|cache
 operator|.
 name|invalidate
 argument_list|(
-name|user
-operator|.
-name|getUserName
-argument_list|()
+name|id
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|encrypt (OAuthToken token)
 specifier|private
