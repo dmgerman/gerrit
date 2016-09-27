@@ -12871,13 +12871,6 @@ name|toRefName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ins
-operator|.
-name|setUpdateRefCommand
-argument_list|(
-name|cmd
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|rp
@@ -13161,7 +13154,7 @@ argument_list|)
 operator|.
 name|setUpdateRef
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
