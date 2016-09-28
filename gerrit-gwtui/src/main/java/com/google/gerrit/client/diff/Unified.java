@@ -88,6 +88,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|DiffObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|Dispatcher
 import|;
 end_import
@@ -219,22 +233,6 @@ operator|.
 name|client
 operator|.
 name|Patch
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|PatchSet
 import|;
 end_import
 
@@ -690,18 +688,14 @@ specifier|private
 name|boolean
 name|autoHideDiffTableHeader
 decl_stmt|;
-DECL|method|Unified ( PatchSet.Id base, PatchSet.Id revision, String path, DisplaySide startSide, int startLine)
+DECL|method|Unified ( DiffObject base, DiffObject revision, String path, DisplaySide startSide, int startLine)
 specifier|public
 name|Unified
 parameter_list|(
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|base
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|revision
 parameter_list|,
 name|String

@@ -74,11 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|client
 operator|.
-name|PatchSet
+name|DiffObject
 import|;
 end_import
 
@@ -283,20 +281,16 @@ specifier|static
 name|DiffTableStyle
 name|style
 decl_stmt|;
-DECL|method|UnifiedTable (Unified parent, PatchSet.Id base, PatchSet.Id revision, String path)
+DECL|method|UnifiedTable (Unified parent, DiffObject base, DiffObject revision, String path)
 name|UnifiedTable
 parameter_list|(
 name|Unified
 name|parent
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|base
 parameter_list|,
-name|PatchSet
-operator|.
-name|Id
+name|DiffObject
 name|revision
 parameter_list|,
 name|String
