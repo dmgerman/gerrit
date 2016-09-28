@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -93,6 +93,22 @@ operator|.
 name|collect
 operator|.
 name|Ordering
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|FilenameComparator
 import|;
 end_import
 
@@ -421,6 +437,16 @@ operator|.
 name|util
 operator|.
 name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
 import|;
 end_import
 
@@ -1366,6 +1392,28 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|groups
+argument_list|,
+name|Comparator
+operator|.
+name|comparing
+argument_list|(
+name|g
+lambda|->
+name|g
+operator|.
+name|filename
+argument_list|,
+name|FilenameComparator
+operator|.
+name|INSTANCE
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|groups
 return|;
