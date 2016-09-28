@@ -308,7 +308,7 @@ specifier|final
 name|String
 name|SINGLE_VERSIONS
 init|=
-literal|"LuceneIndexModule/SingleVersions"
+literal|"IndexModule/SingleVersions"
 decl_stmt|;
 DECL|field|singleVersions
 specifier|private
