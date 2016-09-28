@@ -128,11 +128,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|elasticsearch
 operator|.
-name|client
-operator|.
-name|AuthType
+name|ElasticIndexModule
 import|;
 end_import
 
@@ -144,9 +142,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|elasticsearch
+name|extensions
 operator|.
-name|ElasticIndexModule
+name|client
+operator|.
+name|AuthType
 import|;
 end_import
 
