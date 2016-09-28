@@ -536,7 +536,10 @@ enum|enum
 name|IndexType
 block|{
 DECL|enumConstant|LUCENE
+DECL|enumConstant|ELASTICSEARCH
 name|LUCENE
+block|,
+name|ELASTICSEARCH
 block|}
 DECL|field|ALL_SCHEMA_DEFS
 specifier|public
