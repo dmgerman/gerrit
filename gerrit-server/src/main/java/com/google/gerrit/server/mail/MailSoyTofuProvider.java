@@ -287,7 +287,11 @@ literal|"ChangeSubject.soy"
 block|,
 literal|"Comment.soy"
 block|,
+literal|"CommentHtml.soy"
+block|,
 literal|"CommentFooter.soy"
+block|,
+literal|"CommentFooterHtml.soy"
 block|,
 literal|"DeleteReviewer.soy"
 block|,
