@@ -219,6 +219,19 @@ argument_list|>
 argument_list|>
 name|comments
 decl_stmt|;
+DECL|field|robotComments
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|RobotCommentInput
+argument_list|>
+argument_list|>
+name|robotComments
+decl_stmt|;
 comment|/**    * If true require all labels to be within the user's permitted ranges based    * on access controls, attempting to use a label not granted to the user    * will fail the entire modify operation early. If false the operation will    * execute anyway, but the proposed labels given by the user will be    * modified to be the "best" value allowed by the access controls, or    * ignored if the label does not exist.    */
 DECL|field|strictLabels
 specifier|public
@@ -297,6 +310,30 @@ name|CommentInput
 extends|extends
 name|Comment
 block|{   }
+DECL|class|RobotCommentInput
+specifier|public
+specifier|static
+class|class
+name|RobotCommentInput
+extends|extends
+name|CommentInput
+block|{
+DECL|field|robotId
+specifier|public
+name|String
+name|robotId
+decl_stmt|;
+DECL|field|robotRunId
+specifier|public
+name|String
+name|robotRunId
+decl_stmt|;
+DECL|field|url
+specifier|public
+name|String
+name|url
+decl_stmt|;
+block|}
 DECL|method|message (String msg)
 specifier|public
 name|ReviewInput

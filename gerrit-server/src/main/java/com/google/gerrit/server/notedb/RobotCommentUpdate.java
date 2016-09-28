@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -100,6 +100,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|robotCommentsRef
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -111,20 +129,6 @@ operator|.
 name|Constants
 operator|.
 name|OBJ_BLOB
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|auto
-operator|.
-name|value
-operator|.
-name|AutoValue
 import|;
 end_import
 
@@ -186,55 +190,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Comment
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|PatchLineComment
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|RefNames
 import|;
 end_import
 
@@ -262,9 +218,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|GerritPersonIdent
+name|client
+operator|.
+name|RobotComment
 import|;
 end_import
 
@@ -278,9 +236,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AllUsersName
+name|GerritPersonIdent
 import|;
 end_import
 
@@ -486,16 +442,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -521,14 +467,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A single delta to apply atomically to a change.  *<p>  * This delta contains only draft comments on a single patch set of a change by  * a single author. This delta will become a single commit in the All-Users  * repository.  *<p>  * This class is not thread safe.  */
+comment|/**  * A single delta to apply atomically to a change.  *<p>  * This delta contains only robot comments on a single patch set of a change by  * a single author. This delta will become a single commit in the repository.  *<p>  * This class is not thread safe.  */
 end_comment
 
 begin_class
-DECL|class|ChangeDraftUpdate
+DECL|class|RobotCommentUpdate
 specifier|public
 class|class
-name|ChangeDraftUpdate
+name|RobotCommentUpdate
 extends|extends
 name|AbstractChangeUpdate
 block|{
@@ -538,7 +484,7 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (ChangeNotes notes, Account.Id accountId, PersonIdent authorIdent, Date when)
-name|ChangeDraftUpdate
+name|RobotCommentUpdate
 name|create
 parameter_list|(
 name|ChangeNotes
@@ -557,7 +503,7 @@ name|when
 parameter_list|)
 function_decl|;
 DECL|method|create (Change change, Account.Id accountId, PersonIdent authorIdent, Date when)
-name|ChangeDraftUpdate
+name|RobotCommentUpdate
 name|create
 parameter_list|(
 name|Change
@@ -576,64 +522,11 @@ name|when
 parameter_list|)
 function_decl|;
 block|}
-annotation|@
-name|AutoValue
-DECL|class|Key
-specifier|abstract
-specifier|static
-class|class
-name|Key
-block|{
-DECL|method|revId ()
-specifier|abstract
-name|String
-name|revId
-parameter_list|()
-function_decl|;
-DECL|method|key ()
-specifier|abstract
-name|Comment
-operator|.
-name|Key
-name|key
-parameter_list|()
-function_decl|;
-block|}
-DECL|method|key (Comment c)
-specifier|private
-specifier|static
-name|Key
-name|key
-parameter_list|(
-name|Comment
-name|c
-parameter_list|)
-block|{
-return|return
-operator|new
-name|AutoValue_ChangeDraftUpdate_Key
-argument_list|(
-name|c
-operator|.
-name|revId
-argument_list|,
-name|c
-operator|.
-name|key
-argument_list|)
-return|;
-block|}
-DECL|field|draftsProject
-specifier|private
-specifier|final
-name|AllUsersName
-name|draftsProject
-decl_stmt|;
 DECL|field|put
 specifier|private
 name|List
 argument_list|<
-name|Comment
+name|RobotComment
 argument_list|>
 name|put
 init|=
@@ -642,24 +535,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|delete
-specifier|private
-name|Set
-argument_list|<
-name|Key
-argument_list|>
-name|delete
-init|=
-operator|new
-name|HashSet
-argument_list|<>
-argument_list|()
-decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|RobotCommentUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
-name|ChangeDraftUpdate
+name|RobotCommentUpdate
 parameter_list|(
 annotation|@
 name|GerritPersonIdent
@@ -673,9 +553,6 @@ name|anonymousCowardName
 parameter_list|,
 name|NotesMigration
 name|migration
-parameter_list|,
-name|AllUsersName
-name|allUsers
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
@@ -724,18 +601,12 @@ argument_list|,
 name|when
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|draftsProject
-operator|=
-name|allUsers
-expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|RobotCommentUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
-name|ChangeDraftUpdate
+name|RobotCommentUpdate
 parameter_list|(
 annotation|@
 name|GerritPersonIdent
@@ -749,9 +620,6 @@ name|anonymousCowardName
 parameter_list|,
 name|NotesMigration
 name|migration
-parameter_list|,
-name|AllUsersName
-name|allUsers
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
@@ -800,19 +668,13 @@ argument_list|,
 name|when
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|draftsProject
-operator|=
-name|allUsers
-expr_stmt|;
 block|}
-DECL|method|putComment (Comment c)
+DECL|method|putComment (RobotComment c)
 specifier|public
 name|void
 name|putComment
 parameter_list|(
-name|Comment
+name|RobotComment
 name|c
 parameter_list|)
 block|{
@@ -829,65 +691,12 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteComment (Comment c)
-specifier|public
-name|void
-name|deleteComment
-parameter_list|(
-name|Comment
-name|c
-parameter_list|)
-block|{
-name|verifyComment
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
-name|delete
-operator|.
-name|add
-argument_list|(
-name|key
-argument_list|(
-name|c
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|deleteComment (String revId, Comment.Key key)
-specifier|public
-name|void
-name|deleteComment
-parameter_list|(
-name|String
-name|revId
-parameter_list|,
-name|Comment
-operator|.
-name|Key
-name|key
-parameter_list|)
-block|{
-name|delete
-operator|.
-name|add
-argument_list|(
-operator|new
-name|AutoValue_ChangeDraftUpdate_Key
-argument_list|(
-name|revId
-argument_list|,
-name|key
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|verifyComment (Comment comment)
+DECL|method|verifyComment (RobotComment comment)
 specifier|private
 name|void
 name|verifyComment
 parameter_list|(
-name|Comment
+name|RobotComment
 name|comment
 parameter_list|)
 block|{
@@ -907,7 +716,7 @@ argument_list|)
 argument_list|,
 literal|"The author for the following comment does not match the author of"
 operator|+
-literal|" this ChangeDraftUpdate (%s): %s"
+literal|" this RobotCommentUpdate (%s): %s"
 argument_list|,
 name|accountId
 argument_list|,
@@ -941,7 +750,7 @@ name|IOException
 block|{
 name|RevisionNoteMap
 argument_list|<
-name|ChangeRevisionNote
+name|RobotCommentsRevisionNote
 argument_list|>
 name|rnm
 init|=
@@ -985,25 +794,11 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Comment
+name|RobotComment
 name|c
 range|:
 name|put
 control|)
-block|{
-if|if
-condition|(
-operator|!
-name|delete
-operator|.
-name|contains
-argument_list|(
-name|key
-argument_list|(
-name|c
-argument_list|)
-argument_list|)
-condition|)
 block|{
 name|cache
 operator|.
@@ -1021,38 +816,6 @@ operator|.
 name|putComment
 argument_list|(
 name|c
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-for|for
-control|(
-name|Key
-name|k
-range|:
-name|delete
-control|)
-block|{
-name|cache
-operator|.
-name|get
-argument_list|(
-operator|new
-name|RevId
-argument_list|(
-name|k
-operator|.
-name|revId
-argument_list|()
-argument_list|)
-argument_list|)
-operator|.
-name|deleteComment
-argument_list|(
-name|k
-operator|.
-name|key
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1136,10 +899,7 @@ name|build
 argument_list|(
 name|noteUtil
 argument_list|,
-name|noteUtil
-operator|.
-name|getWriteJson
-argument_list|()
+literal|true
 argument_list|)
 decl_stmt|;
 if|if
@@ -1275,11 +1035,11 @@ return|return
 name|cb
 return|;
 block|}
-DECL|method|getRevisionNoteMap (RevWalk rw, ObjectId curr)
+DECL|method|getRevisionNoteMap ( RevWalk rw, ObjectId curr)
 specifier|private
 name|RevisionNoteMap
 argument_list|<
-name|ChangeRevisionNote
+name|RobotCommentsRevisionNote
 argument_list|>
 name|getRevisionNoteMap
 parameter_list|(
@@ -1298,13 +1058,33 @@ name|IOException
 block|{
 if|if
 condition|(
+name|curr
+operator|.
+name|equals
+argument_list|(
+name|ObjectId
+operator|.
+name|zeroId
+argument_list|()
+argument_list|)
+condition|)
+block|{
+return|return
+name|RevisionNoteMap
+operator|.
+name|emptyMap
+argument_list|()
+return|;
+block|}
+if|if
+condition|(
 name|migration
 operator|.
 name|readChanges
 argument_list|()
 condition|)
 block|{
-comment|// If reading from changes is enabled, then the old DraftCommentNotes
+comment|// If reading from changes is enabled, then the old RobotCommentNotes
 comment|// already parsed the revision notes. We can reuse them as long as the ref
 comment|// hasn't advanced.
 name|ChangeNotes
@@ -1320,20 +1100,20 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|DraftCommentNotes
-name|draftNotes
+name|RobotCommentNotes
+name|robotCommentNotes
 init|=
 name|changeNotes
 operator|.
 name|load
 argument_list|()
 operator|.
-name|getDraftCommentNotes
+name|getRobotCommentNotes
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|draftNotes
+name|robotCommentNotes
 operator|!=
 literal|null
 condition|)
@@ -1343,7 +1123,7 @@ name|idFromNotes
 init|=
 name|firstNonNull
 argument_list|(
-name|draftNotes
+name|robotCommentNotes
 operator|.
 name|getRevision
 argument_list|()
@@ -1356,11 +1136,11 @@ argument_list|)
 decl_stmt|;
 name|RevisionNoteMap
 argument_list|<
-name|ChangeRevisionNote
+name|RobotCommentsRevisionNote
 argument_list|>
 name|rnm
 init|=
-name|draftNotes
+name|robotCommentNotes
 operator|.
 name|getRevisionNoteMap
 argument_list|()
@@ -1438,12 +1218,9 @@ comment|// parse any existing revision notes so we can merge them.
 return|return
 name|RevisionNoteMap
 operator|.
-name|parse
+name|parseRobotComments
 argument_list|(
 name|noteUtil
-argument_list|,
-name|getId
-argument_list|()
 argument_list|,
 name|rw
 operator|.
@@ -1451,12 +1228,6 @@ name|getObjectReader
 argument_list|()
 argument_list|,
 name|noteMap
-argument_list|,
-name|PatchLineComment
-operator|.
-name|Status
-operator|.
-name|DRAFT
 argument_list|)
 return|;
 block|}
@@ -1492,7 +1263,7 @@ name|cb
 operator|.
 name|setMessage
 argument_list|(
-literal|"Update draft comments"
+literal|"Update robot comments"
 argument_list|)
 expr_stmt|;
 try|try
@@ -1536,7 +1307,11 @@ name|getProjectName
 parameter_list|()
 block|{
 return|return
-name|draftsProject
+name|getNotes
+argument_list|()
+operator|.
+name|getProjectName
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -1548,14 +1323,10 @@ name|getRefName
 parameter_list|()
 block|{
 return|return
-name|RefNames
-operator|.
-name|refsDraftComments
+name|robotCommentsRef
 argument_list|(
 name|getId
 argument_list|()
-argument_list|,
-name|accountId
 argument_list|)
 return|;
 block|}
@@ -1568,11 +1339,6 @@ name|isEmpty
 parameter_list|()
 block|{
 return|return
-name|delete
-operator|.
-name|isEmpty
-argument_list|()
-operator|&&
 name|put
 operator|.
 name|isEmpty

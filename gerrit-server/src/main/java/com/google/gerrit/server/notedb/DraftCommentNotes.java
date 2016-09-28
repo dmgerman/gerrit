@@ -648,6 +648,9 @@ decl_stmt|;
 DECL|field|revisionNoteMap
 specifier|private
 name|RevisionNoteMap
+argument_list|<
+name|ChangeRevisionNote
+argument_list|>
 name|revisionNoteMap
 decl_stmt|;
 annotation|@
@@ -792,6 +795,9 @@ expr_stmt|;
 block|}
 DECL|method|getRevisionNoteMap ()
 name|RevisionNoteMap
+argument_list|<
+name|ChangeRevisionNote
+argument_list|>
 name|getRevisionNoteMap
 parameter_list|()
 block|{
@@ -994,7 +1000,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|RevisionNote
+name|ChangeRevisionNote
 name|rn
 range|:
 name|revisionNoteMap
@@ -1012,7 +1018,8 @@ name|c
 range|:
 name|rn
 operator|.
-name|comments
+name|getComments
+argument_list|()
 control|)
 block|{
 name|cs

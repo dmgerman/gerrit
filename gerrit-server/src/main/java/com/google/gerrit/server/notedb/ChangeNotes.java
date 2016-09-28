@@ -528,6 +528,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|RobotComment
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -2552,6 +2568,9 @@ comment|// Parsed note map state, used by ChangeUpdate to make in-place editing 
 comment|// notes easier.
 DECL|field|revisionNoteMap
 name|RevisionNoteMap
+argument_list|<
+name|ChangeRevisionNote
+argument_list|>
 name|revisionNoteMap
 decl_stmt|;
 DECL|field|rebuildResult
@@ -2565,6 +2584,11 @@ DECL|field|draftCommentNotes
 specifier|private
 name|DraftCommentNotes
 name|draftCommentNotes
+decl_stmt|;
+DECL|field|robotCommentNotes
+specifier|private
+name|RobotCommentNotes
+name|robotCommentNotes
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
@@ -2975,6 +2999,29 @@ name|filtered
 argument_list|)
 return|;
 block|}
+DECL|method|getRobotComments ()
+specifier|public
+name|ImmutableListMultimap
+argument_list|<
+name|RevId
+argument_list|,
+name|RobotComment
+argument_list|>
+name|getRobotComments
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+name|loadRobotComments
+argument_list|()
+expr_stmt|;
+return|return
+name|robotCommentNotes
+operator|.
+name|getComments
+argument_list|()
+return|;
+block|}
 comment|/**    * If draft comments have already been loaded for this author, then they will    * not be reloaded. However, this method will load the comments if no draft    * comments have been loaded or if the caller would like the drafts for    * another author.    */
 DECL|method|loadDraftComments (Account.Id author)
 specifier|private
@@ -3030,6 +3077,38 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|method|loadRobotComments ()
+specifier|private
+name|void
+name|loadRobotComments
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+if|if
+condition|(
+name|robotCommentNotes
+operator|==
+literal|null
+condition|)
+block|{
+name|robotCommentNotes
+operator|=
+operator|new
+name|RobotCommentNotes
+argument_list|(
+name|args
+argument_list|,
+name|change
+argument_list|)
+expr_stmt|;
+name|robotCommentNotes
+operator|.
+name|load
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|VisibleForTesting
 DECL|method|getDraftCommentNotes ()
@@ -3039,6 +3118,15 @@ parameter_list|()
 block|{
 return|return
 name|draftCommentNotes
+return|;
+block|}
+DECL|method|getRobotCommentNotes ()
+name|RobotCommentNotes
+name|getRobotCommentNotes
+parameter_list|()
+block|{
+return|return
+name|robotCommentNotes
 return|;
 block|}
 DECL|method|containsComment (Comment c)

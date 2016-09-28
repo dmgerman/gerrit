@@ -452,6 +452,9 @@ annotation|@
 name|Nullable
 specifier|abstract
 name|RevisionNoteMap
+argument_list|<
+name|ChangeRevisionNote
+argument_list|>
 name|revisionNoteMap
 parameter_list|()
 function_decl|;
@@ -481,6 +484,9 @@ decl_stmt|;
 DECL|field|revisionNoteMap
 specifier|private
 name|RevisionNoteMap
+argument_list|<
+name|ChangeRevisionNote
+argument_list|>
 name|revisionNoteMap
 decl_stmt|;
 DECL|method|Loader (Key key, ChangeNotesRevWalk rw)

@@ -456,6 +456,9 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
+name|newCommentFormatter
+argument_list|()
+operator|.
 name|format
 argument_list|(
 name|drafts
