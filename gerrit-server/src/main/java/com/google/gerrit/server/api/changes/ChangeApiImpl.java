@@ -2810,7 +2810,7 @@ annotation|@
 name|Override
 DECL|method|getPastAssignees ()
 specifier|public
-name|Set
+name|List
 argument_list|<
 name|AccountInfo
 argument_list|>

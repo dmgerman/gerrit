@@ -553,7 +553,7 @@ name|RestApiException
 function_decl|;
 comment|/**    * Get all past assignees.   */
 DECL|method|getPastAssignees ()
-name|Set
+name|List
 argument_list|<
 name|AccountInfo
 argument_list|>
@@ -1236,7 +1236,7 @@ annotation|@
 name|Override
 DECL|method|getPastAssignees ()
 specifier|public
-name|Set
+name|List
 argument_list|<
 name|AccountInfo
 argument_list|>

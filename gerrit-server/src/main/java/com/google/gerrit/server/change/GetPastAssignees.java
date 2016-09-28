@@ -76,7 +76,7 @@ name|stream
 operator|.
 name|Collectors
 operator|.
-name|toSet
+name|toList
 import|;
 end_import
 
@@ -218,6 +218,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -265,7 +275,7 @@ DECL|method|apply (ChangeResource rsrc)
 specifier|public
 name|Response
 argument_list|<
-name|Set
+name|List
 argument_list|<
 name|AccountInfo
 argument_list|>
@@ -314,7 +324,7 @@ name|ok
 argument_list|(
 name|Collections
 operator|.
-name|emptySet
+name|emptyList
 argument_list|()
 argument_list|)
 return|;
@@ -353,7 +363,7 @@ argument_list|)
 operator|.
 name|collect
 argument_list|(
-name|toSet
+name|toList
 argument_list|()
 argument_list|)
 argument_list|)
