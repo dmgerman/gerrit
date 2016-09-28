@@ -524,7 +524,7 @@ literal|null
 argument_list|,
 literal|"readProjectWatchesFromGit"
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
