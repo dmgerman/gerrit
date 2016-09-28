@@ -333,6 +333,16 @@ specifier|public
 name|String
 name|url
 decl_stmt|;
+DECL|field|properties
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|properties
+decl_stmt|;
 block|}
 DECL|method|message (String msg)
 specifier|public

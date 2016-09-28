@@ -1106,6 +1106,14 @@ name|c
 operator|.
 name|url
 expr_stmt|;
+name|rci
+operator|.
+name|properties
+operator|=
+name|c
+operator|.
+name|properties
+expr_stmt|;
 name|fillCommentInfo
 argument_list|(
 name|c
