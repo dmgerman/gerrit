@@ -648,6 +648,7 @@ return|;
 block|}
 DECL|method|addKey (Account.Id accountId, String pub)
 specifier|public
+specifier|synchronized
 name|AccountSshKey
 name|addKey
 parameter_list|(
@@ -695,6 +696,7 @@ return|;
 block|}
 DECL|method|deleteKey (Account.Id accountId, int seq)
 specifier|public
+specifier|synchronized
 name|void
 name|deleteKey
 parameter_list|(
@@ -738,6 +740,7 @@ block|}
 block|}
 DECL|method|markKeyInvalid (Account.Id accountId, int seq)
 specifier|public
+specifier|synchronized
 name|void
 name|markKeyInvalid
 parameter_list|(

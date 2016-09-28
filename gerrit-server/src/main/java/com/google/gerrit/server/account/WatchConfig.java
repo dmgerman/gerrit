@@ -795,6 +795,7 @@ block|}
 block|}
 DECL|method|upsertProjectWatches (Account.Id accountId, Map<ProjectWatchKey, Set<NotifyType>> newProjectWatches)
 specifier|public
+specifier|synchronized
 name|void
 name|upsertProjectWatches
 parameter_list|(
@@ -858,6 +859,7 @@ expr_stmt|;
 block|}
 DECL|method|deleteProjectWatches (Account.Id accountId, Collection<ProjectWatchKey> projectWatchKeys)
 specifier|public
+specifier|synchronized
 name|void
 name|deleteProjectWatches
 parameter_list|(
