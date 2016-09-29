@@ -182,7 +182,7 @@ name|common
 operator|.
 name|keyprovider
 operator|.
-name|AbstractFileKeyPairProvider
+name|FileKeyPairProvider
 import|;
 end_import
 
@@ -213,6 +213,8 @@ operator|.
 name|common
 operator|.
 name|util
+operator|.
+name|security
 operator|.
 name|SecurityUtils
 import|;
@@ -466,12 +468,11 @@ literal|""
 argument_list|)
 throw|;
 block|}
-name|AbstractFileKeyPairProvider
+name|FileKeyPairProvider
 name|kp
 init|=
-name|SecurityUtils
-operator|.
-name|createFileKeyPairProvider
+operator|new
+name|FileKeyPairProvider
 argument_list|()
 decl_stmt|;
 name|kp
