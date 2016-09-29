@@ -240,6 +240,24 @@ name|api
 operator|.
 name|changes
 operator|.
+name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
 name|ReviewerInfo
 import|;
 end_import
@@ -1448,10 +1466,14 @@ name|input
 operator|.
 name|state
 argument_list|()
+argument_list|,
+name|input
+operator|.
+name|notify
 argument_list|)
 return|;
 block|}
-DECL|method|putAccount (String reviewer, ReviewerResource rsrc, ReviewerState state)
+DECL|method|putAccount (String reviewer, ReviewerResource rsrc, ReviewerState state, NotifyHandling notify)
 specifier|private
 name|Addition
 name|putAccount
@@ -1464,6 +1486,9 @@ name|rsrc
 parameter_list|,
 name|ReviewerState
 name|state
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 throws|throws
 name|UnprocessableEntityException
@@ -1521,6 +1546,8 @@ name|control
 argument_list|)
 argument_list|,
 name|state
+argument_list|,
+name|notify
 argument_list|)
 return|;
 block|}
@@ -1898,6 +1925,10 @@ name|input
 operator|.
 name|state
 argument_list|()
+argument_list|,
+name|input
+operator|.
+name|notify
 argument_list|)
 return|;
 block|}
@@ -2024,6 +2055,7 @@ name|addition
 return|;
 block|}
 DECL|class|Addition
+specifier|public
 class|class
 name|Addition
 block|{
@@ -2067,10 +2099,12 @@ argument_list|,
 literal|null
 argument_list|,
 name|REVIEWER
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Addition (String reviewer, ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state)
+DECL|method|Addition (String reviewer, ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify)
 specifier|protected
 name|Addition
 parameter_list|(
@@ -2092,6 +2126,9 @@ name|reviewers
 parameter_list|,
 name|ReviewerState
 name|state
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 block|{
 name|result
@@ -2140,6 +2177,8 @@ argument_list|,
 name|reviewers
 argument_list|,
 name|state
+argument_list|,
+name|notify
 argument_list|)
 expr_stmt|;
 block|}
@@ -2327,6 +2366,7 @@ block|}
 block|}
 block|}
 DECL|class|Op
+specifier|public
 class|class
 name|Op
 extends|extends
@@ -2350,6 +2390,11 @@ DECL|field|state
 specifier|final
 name|ReviewerState
 name|state
+decl_stmt|;
+DECL|field|notify
+specifier|final
+name|NotifyHandling
+name|notify
 decl_stmt|;
 DECL|field|addedReviewers
 name|List
@@ -2378,7 +2423,7 @@ specifier|private
 name|PatchSet
 name|patchSet
 decl_stmt|;
-DECL|method|Op (ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state)
+DECL|method|Op (ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify)
 name|Op
 parameter_list|(
 name|ChangeResource
@@ -2396,6 +2441,9 @@ name|reviewers
 parameter_list|,
 name|ReviewerState
 name|state
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 block|{
 name|this
@@ -2415,6 +2463,12 @@ operator|.
 name|state
 operator|=
 name|state
+expr_stmt|;
+name|this
+operator|.
+name|notify
+operator|=
+name|notify
 expr_stmt|;
 block|}
 annotation|@
@@ -2637,6 +2691,8 @@ argument_list|,
 name|addedReviewers
 argument_list|,
 name|addedCCs
+argument_list|,
+name|notify
 argument_list|)
 expr_stmt|;
 if|if
@@ -2695,7 +2751,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|emailReviewers (Change change, List<PatchSetApproval> added, Collection<Account.Id> copied)
+DECL|method|emailReviewers (Change change, List<PatchSetApproval> added, Collection<Account.Id> copied, NotifyHandling notify)
 specifier|private
 name|void
 name|emailReviewers
@@ -2716,6 +2772,9 @@ operator|.
 name|Id
 argument_list|>
 name|copied
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 block|{
 if|if
@@ -2882,6 +2941,8 @@ name|change
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|notify
 argument_list|)
 decl_stmt|;
 name|cm
