@@ -250,7 +250,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|List
 import|;
 end_import
 
@@ -496,7 +496,7 @@ operator|.
 name|email
 argument_list|)
 expr_stmt|;
-name|Set
+name|List
 argument_list|<
 name|AccountInfo
 argument_list|>
@@ -769,7 +769,7 @@ return|;
 block|}
 DECL|method|getPastAssignees (PushOneCommit.Result r)
 specifier|private
-name|Set
+name|List
 argument_list|<
 name|AccountInfo
 argument_list|>
