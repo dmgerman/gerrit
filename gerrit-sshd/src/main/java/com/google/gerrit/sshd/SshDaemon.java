@@ -816,22 +816,6 @@ name|common
 operator|.
 name|util
 operator|.
-name|SecurityUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|common
-operator|.
-name|util
-operator|.
 name|buffer
 operator|.
 name|Buffer
@@ -871,6 +855,24 @@ operator|.
 name|net
 operator|.
 name|SshdSocketAddress
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|security
+operator|.
+name|SecurityUtils
 import|;
 end_import
 
@@ -4604,6 +4606,9 @@ name|canForwardAgent
 parameter_list|(
 name|Session
 name|session
+parameter_list|,
+name|String
+name|requestType
 parameter_list|)
 block|{
 return|return
@@ -4618,6 +4623,9 @@ name|canForwardX11
 parameter_list|(
 name|Session
 name|session
+parameter_list|,
+name|String
+name|requestType
 parameter_list|)
 block|{
 return|return
@@ -4709,7 +4717,7 @@ name|close
 parameter_list|()
 throws|throws
 name|IOException
-block|{           }
+block|{ 	  }
 annotation|@
 name|Override
 specifier|public
