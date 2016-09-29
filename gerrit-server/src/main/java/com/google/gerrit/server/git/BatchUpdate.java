@@ -3516,7 +3516,7 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|UpdateException
+name|RestApiException
 block|{
 if|if
 condition|(
@@ -3627,7 +3627,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|UpdateException
+name|RestApiException
 argument_list|(
 literal|"BatchRefUpdate failed: "
 operator|+
