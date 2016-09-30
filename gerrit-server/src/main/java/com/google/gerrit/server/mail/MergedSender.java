@@ -426,6 +426,21 @@ literal|"Merged"
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|useHtml
+argument_list|()
+condition|)
+block|{
+name|appendHtml
+argument_list|(
+name|soyHtmlTemplate
+argument_list|(
+literal|"MergedHtml"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|getApprovals ()
 specifier|public
@@ -865,6 +880,18 @@ name|getApprovals
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|supportsHtml ()
+specifier|protected
+name|boolean
+name|supportsHtml
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
 block|}
 block|}
 end_class

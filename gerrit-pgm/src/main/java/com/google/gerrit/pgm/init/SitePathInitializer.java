@@ -842,6 +842,11 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"MergedHtml.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"NewChange.soy"
 argument_list|)
 expr_stmt|;

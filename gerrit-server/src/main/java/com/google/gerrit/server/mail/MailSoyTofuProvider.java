@@ -305,6 +305,8 @@ literal|"HeaderHtml.soy"
 block|,
 literal|"Merged.soy"
 block|,
+literal|"MergedHtml.soy"
+block|,
 literal|"NewChange.soy"
 block|,
 literal|"NewChangeHtml.soy"
