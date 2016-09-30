@@ -784,6 +784,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|input
+operator|.
+name|selectAll
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 annotation|@
