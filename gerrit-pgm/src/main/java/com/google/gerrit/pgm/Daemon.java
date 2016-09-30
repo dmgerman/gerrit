@@ -1756,14 +1756,22 @@ parameter_list|()
 block|{   }
 annotation|@
 name|VisibleForTesting
-DECL|method|Daemon (Runnable serverStarted)
+DECL|method|Daemon (Runnable serverStarted, Path sitePath)
 specifier|public
 name|Daemon
 parameter_list|(
 name|Runnable
 name|serverStarted
+parameter_list|,
+name|Path
+name|sitePath
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|sitePath
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|serverStarted
