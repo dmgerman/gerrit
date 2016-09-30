@@ -2463,6 +2463,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|currentEmail
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|newEmail
 operator|.
