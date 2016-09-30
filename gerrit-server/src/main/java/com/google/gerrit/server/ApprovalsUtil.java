@@ -1520,7 +1520,7 @@ operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
-name|insert
+name|upsert
 argument_list|(
 name|cells
 argument_list|)
