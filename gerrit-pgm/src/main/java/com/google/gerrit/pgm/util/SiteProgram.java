@@ -760,6 +760,21 @@ specifier|protected
 name|SiteProgram
 parameter_list|()
 block|{   }
+DECL|method|SiteProgram (Path sitePath)
+specifier|protected
+name|SiteProgram
+parameter_list|(
+name|Path
+name|sitePath
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sitePath
+operator|=
+name|sitePath
+expr_stmt|;
+block|}
 DECL|method|SiteProgram (Path sitePath, final Provider<DataSource> dsProvider)
 specifier|protected
 name|SiteProgram
