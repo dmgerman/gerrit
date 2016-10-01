@@ -880,6 +880,21 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|selectAll ()
+specifier|public
+name|void
+name|selectAll
+parameter_list|()
+block|{
+name|suggestBox
+operator|.
+name|getValueBox
+argument_list|()
+operator|.
+name|selectAll
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
