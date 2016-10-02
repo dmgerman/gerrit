@@ -7421,10 +7421,13 @@ block|{
 name|GroupReference
 name|group
 init|=
+name|resolve
+argument_list|(
 name|rule
 operator|.
 name|getGroup
 argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -7745,10 +7748,13 @@ block|{
 name|GroupReference
 name|group
 init|=
+name|resolve
+argument_list|(
 name|rule
 operator|.
 name|getGroup
 argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
