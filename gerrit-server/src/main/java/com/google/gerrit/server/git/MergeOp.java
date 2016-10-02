@@ -3667,6 +3667,10 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|inserter
+operator|=
+literal|null
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -3680,6 +3684,10 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|rw
+operator|=
+literal|null
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -3692,6 +3700,10 @@ name|repo
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+name|repo
+operator|=
+literal|null
 expr_stmt|;
 block|}
 block|}
