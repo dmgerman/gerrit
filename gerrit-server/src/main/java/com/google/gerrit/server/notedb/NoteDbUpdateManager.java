@@ -677,6 +677,7 @@ block|{
 DECL|field|CHANGES_READ_ONLY
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|CHANGES_READ_ONLY
 init|=
