@@ -903,6 +903,8 @@ operator|new
 name|OutputStreamWriter
 argument_list|(
 name|out
+argument_list|,
+name|UTF_8
 argument_list|)
 init|)
 block|{

@@ -620,6 +620,8 @@ operator|new
 name|InputStreamReader
 argument_list|(
 name|is
+argument_list|,
+name|UTF_8
 argument_list|)
 init|)
 block|{
@@ -741,6 +743,8 @@ argument_list|,
 name|p
 operator|.
 name|value
+argument_list|,
+name|UTF_8
 argument_list|)
 return|;
 block|}
