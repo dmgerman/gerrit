@@ -339,8 +339,6 @@ DECL|field|pushCert
 specifier|private
 name|String
 name|pushCert
-init|=
-literal|null
 decl_stmt|;
 DECL|method|ChangeRevisionNote (ChangeNoteUtil noteUtil, Change.Id changeId, ObjectReader reader, ObjectId noteId, PatchLineComment.Status status)
 name|ChangeRevisionNote
