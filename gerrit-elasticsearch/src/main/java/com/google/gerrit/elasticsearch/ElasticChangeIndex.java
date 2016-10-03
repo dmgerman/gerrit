@@ -1784,7 +1784,6 @@ argument_list|>
 name|fields
 decl_stmt|;
 DECL|method|QuerySource (List<String> types, Predicate<ChangeData> p, QueryOptions opts)
-specifier|public
 name|QuerySource
 parameter_list|(
 name|List
