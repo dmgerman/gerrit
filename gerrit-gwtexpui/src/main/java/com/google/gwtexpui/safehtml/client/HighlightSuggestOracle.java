@@ -402,6 +402,13 @@ name|ds
 argument_list|)
 expr_stmt|;
 block|}
+name|StringBuilder
+name|pattern
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -415,14 +422,10 @@ control|)
 block|{
 name|qterm
 operator|=
-literal|"("
-operator|+
 name|escape
 argument_list|(
 name|qterm
 argument_list|)
-operator|+
-literal|")"
 expr_stmt|;
 comment|// We now surround qstr by<strong>. But the chosen approach is not too
 comment|// smooth, if qstr is small (e.g.: "t") and this small qstr may occur in
@@ -430,18 +433,50 @@ comment|// escapes (e.g.: "Tim&lt;email@example.org&gt;"). Those escapes will
 comment|// get<strong>-ed as well (e.g.: "&lt;" -> "&<strong>l</strong>t;"). But
 comment|// as repairing those mangled escapes is easier than not mangling them in
 comment|// the first place, we repair them afterwards.
+if|if
+condition|(
+name|pattern
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|pattern
+operator|.
+name|append
+argument_list|(
+literal|"|"
+argument_list|)
+expr_stmt|;
+block|}
+name|pattern
+operator|.
+name|append
+argument_list|(
+name|qterm
+argument_list|)
+expr_stmt|;
+block|}
 name|ds
 operator|=
 name|sgi
 argument_list|(
 name|ds
 argument_list|,
-name|qterm
+literal|"("
+operator|+
+name|pattern
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|")"
 argument_list|,
 literal|"<strong>$1</strong>"
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Repairing<strong>-ed escapes.
 name|ds
 operator|=
