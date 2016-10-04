@@ -354,38 +354,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ProjectCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ProjectState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|change
@@ -803,12 +771,6 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
-DECL|field|projectCache
-specifier|private
-specifier|final
-name|ProjectCache
-name|projectCache
-decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -817,7 +779,7 @@ name|repoManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NoCache ( @erritServerConfig Config serverConfig, ChangeData.Factory changeDataFactory, ProjectCache projectCache, GitRepositoryManager repoManager)
+DECL|method|NoCache ( @erritServerConfig Config serverConfig, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager)
 name|NoCache
 parameter_list|(
 annotation|@
@@ -829,9 +791,6 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
-parameter_list|,
-name|ProjectCache
-name|projectCache
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -856,12 +815,6 @@ name|changeDataFactory
 expr_stmt|;
 name|this
 operator|.
-name|projectCache
-operator|=
-name|projectCache
-expr_stmt|;
-name|this
-operator|.
 name|repoManager
 operator|=
 name|repoManager
@@ -869,12 +822,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ProjectState project, @Nullable Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind (Project.NameKey project, @Nullable Repository repo, ObjectId prior, ObjectId next)
 specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
-name|ProjectState
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|,
 annotation|@
@@ -913,12 +868,6 @@ argument_list|,
 name|repoManager
 argument_list|,
 name|project
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
-argument_list|()
 argument_list|,
 name|repo
 argument_list|)
@@ -947,12 +896,6 @@ operator|+
 literal|" in "
 operator|+
 name|project
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|e
 argument_list|)
@@ -994,8 +937,6 @@ name|patch
 argument_list|,
 name|changeDataFactory
 argument_list|,
-name|projectCache
-argument_list|,
 name|repoManager
 argument_list|)
 return|;
@@ -1029,8 +970,6 @@ argument_list|,
 name|cd
 argument_list|,
 name|patch
-argument_list|,
-name|projectCache
 argument_list|)
 return|;
 block|}
@@ -2119,12 +2058,6 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
-DECL|field|projectCache
-specifier|private
-specifier|final
-name|ProjectCache
-name|projectCache
-decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -2133,7 +2066,7 @@ name|repoManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeKindCacheImpl ( @erritServerConfig Config serverConfig, @Named(ID_CACHE) Cache<Key, ChangeKind> cache, ChangeData.Factory changeDataFactory, ProjectCache projectCache, GitRepositoryManager repoManager)
+DECL|method|ChangeKindCacheImpl ( @erritServerConfig Config serverConfig, @Named(ID_CACHE) Cache<Key, ChangeKind> cache, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager)
 name|ChangeKindCacheImpl
 parameter_list|(
 annotation|@
@@ -2158,9 +2091,6 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
-parameter_list|,
-name|ProjectCache
-name|projectCache
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -2191,12 +2121,6 @@ name|changeDataFactory
 expr_stmt|;
 name|this
 operator|.
-name|projectCache
-operator|=
-name|projectCache
-expr_stmt|;
-name|this
-operator|.
 name|repoManager
 operator|=
 name|repoManager
@@ -2204,12 +2128,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (ProjectState project, @Nullable Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind (Project.NameKey project, @Nullable Repository repo, ObjectId prior, ObjectId next)
 specifier|public
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
-name|ProjectState
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|,
 annotation|@
@@ -2254,12 +2180,6 @@ argument_list|,
 name|repoManager
 argument_list|,
 name|project
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
-argument_list|()
 argument_list|,
 name|repo
 argument_list|)
@@ -2286,12 +2206,6 @@ operator|+
 literal|" in "
 operator|+
 name|project
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|e
 argument_list|)
@@ -2333,8 +2247,6 @@ name|patch
 argument_list|,
 name|changeDataFactory
 argument_list|,
-name|projectCache
-argument_list|,
 name|repoManager
 argument_list|)
 return|;
@@ -2368,12 +2280,10 @@ argument_list|,
 name|cd
 argument_list|,
 name|patch
-argument_list|,
-name|projectCache
 argument_list|)
 return|;
 block|}
-DECL|method|getChangeKindInternal ( ChangeKindCache cache, @Nullable Repository repo, ChangeData change, PatchSet patch, ProjectCache projectCache)
+DECL|method|getChangeKindInternal ( ChangeKindCache cache, @Nullable Repository repo, ChangeData change, PatchSet patch)
 specifier|private
 specifier|static
 name|ChangeKind
@@ -2392,9 +2302,6 @@ name|change
 parameter_list|,
 name|PatchSet
 name|patch
-parameter_list|,
-name|ProjectCache
-name|projectCache
 parameter_list|)
 block|{
 name|ChangeKind
@@ -2421,19 +2328,6 @@ condition|)
 block|{
 try|try
 block|{
-name|ProjectState
-name|projectState
-init|=
-name|projectCache
-operator|.
-name|checkedGet
-argument_list|(
-name|change
-operator|.
-name|project
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|Collection
 argument_list|<
 name|PatchSet
@@ -2523,7 +2417,10 @@ name|cache
 operator|.
 name|getChangeKind
 argument_list|(
-name|projectState
+name|change
+operator|.
+name|project
+argument_list|()
 argument_list|,
 name|repo
 argument_list|,
@@ -2558,8 +2455,6 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
 name|OrmException
 name|e
 parameter_list|)
@@ -2592,7 +2487,7 @@ return|return
 name|kind
 return|;
 block|}
-DECL|method|getChangeKindInternal ( ChangeKindCache cache, ReviewDb db, Change change, PatchSet patch, ChangeData.Factory changeDataFactory, ProjectCache projectCache, GitRepositoryManager repoManager)
+DECL|method|getChangeKindInternal ( ChangeKindCache cache, ReviewDb db, Change change, PatchSet patch, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager)
 specifier|private
 specifier|static
 name|ChangeKind
@@ -2614,9 +2509,6 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
-parameter_list|,
-name|ProjectCache
-name|projectCache
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -2679,8 +2571,6 @@ name|change
 argument_list|)
 argument_list|,
 name|patch
-argument_list|,
-name|projectCache
 argument_list|)
 expr_stmt|;
 block|}

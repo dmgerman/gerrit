@@ -1072,6 +1072,12 @@ operator|.
 name|getChangeKind
 argument_list|(
 name|project
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|,
 name|repo
 argument_list|,

@@ -138,9 +138,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|server
+name|client
 operator|.
-name|ReviewDb
+name|Project
 import|;
 end_import
 
@@ -152,11 +152,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ProjectState
+name|ReviewDb
 import|;
 end_import
 
@@ -216,11 +216,13 @@ specifier|public
 interface|interface
 name|ChangeKindCache
 block|{
-DECL|method|getChangeKind (ProjectState project, @Nullable Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind (Project.NameKey project, @Nullable Repository repo, ObjectId prior, ObjectId next)
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
-name|ProjectState
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|,
 annotation|@
