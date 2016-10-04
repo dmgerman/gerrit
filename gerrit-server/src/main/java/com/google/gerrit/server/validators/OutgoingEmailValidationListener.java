@@ -171,11 +171,6 @@ specifier|public
 name|String
 name|messageClass
 decl_stmt|;
-DECL|field|textBody
-specifier|public
-name|String
-name|textBody
-decl_stmt|;
 DECL|field|htmlBody
 annotation|@
 name|Nullable
@@ -202,6 +197,7 @@ specifier|public
 name|String
 name|body
 decl_stmt|;
+comment|// The text body of the email.
 DECL|field|headers
 specifier|public
 name|Map
