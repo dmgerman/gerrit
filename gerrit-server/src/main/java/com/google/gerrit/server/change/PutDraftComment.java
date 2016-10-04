@@ -1005,6 +1005,20 @@ argument_list|(
 name|origComment
 argument_list|)
 expr_stmt|;
+comment|// Copy constructor preserved old real author; replace with current real
+comment|// user.
+name|ctx
+operator|.
+name|getUser
+argument_list|()
+operator|.
+name|updateRealAccountId
+argument_list|(
+name|comment
+operator|::
+name|setRealAuthor
+argument_list|)
+expr_stmt|;
 name|PatchSet
 operator|.
 name|Id

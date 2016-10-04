@@ -1910,6 +1910,8 @@ argument_list|,
 literal|5
 argument_list|,
 literal|6
+argument_list|,
+literal|7
 argument_list|)
 expr_stmt|;
 name|checkColumns
@@ -1974,6 +1976,8 @@ argument_list|,
 literal|3
 argument_list|,
 literal|6
+argument_list|,
+literal|7
 argument_list|)
 expr_stmt|;
 name|checkColumns
@@ -2014,6 +2018,8 @@ argument_list|,
 literal|9
 argument_list|,
 literal|10
+argument_list|,
+literal|11
 argument_list|)
 expr_stmt|;
 block|}

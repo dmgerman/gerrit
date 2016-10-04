@@ -301,6 +301,14 @@ argument_list|(
 literal|1000
 argument_list|)
 argument_list|,
+operator|new
+name|Account
+operator|.
+name|Id
+argument_list|(
+literal|1000
+argument_list|)
+argument_list|,
 name|when
 argument_list|,
 name|changeCreatedOn

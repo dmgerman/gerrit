@@ -1154,7 +1154,9 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-return|return
+name|Comment
+name|c
+init|=
 operator|new
 name|Comment
 argument_list|(
@@ -1200,6 +1202,21 @@ name|message
 argument_list|,
 name|serverId
 argument_list|)
+decl_stmt|;
+name|ctx
+operator|.
+name|getUser
+argument_list|()
+operator|.
+name|updateRealAccountId
+argument_list|(
+name|c
+operator|::
+name|setRealAuthor
+argument_list|)
+expr_stmt|;
+return|return
+name|c
 return|;
 block|}
 DECL|method|newRobotComment (ChangeContext ctx, String path, PatchSet.Id psId, short side, String message, String robotId, String robotRunId)
@@ -1233,7 +1250,9 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-return|return
+name|RobotComment
+name|c
+init|=
 operator|new
 name|RobotComment
 argument_list|(
@@ -1283,6 +1302,21 @@ name|robotId
 argument_list|,
 name|robotRunId
 argument_list|)
+decl_stmt|;
+name|ctx
+operator|.
+name|getUser
+argument_list|()
+operator|.
+name|updateRealAccountId
+argument_list|(
+name|c
+operator|::
+name|setRealAuthor
+argument_list|)
+expr_stmt|;
+return|return
+name|c
 return|;
 block|}
 DECL|method|get (ReviewDb db, ChangeNotes notes, Comment.Key key)

@@ -224,6 +224,24 @@ name|notedb
 operator|.
 name|ChangeNoteUtil
 operator|.
+name|FOOTER_REAL_USER
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNoteUtil
+operator|.
 name|FOOTER_STATUS
 import|;
 end_import
@@ -2326,6 +2344,18 @@ operator|=
 name|accountId
 expr_stmt|;
 block|}
+name|Account
+operator|.
+name|Id
+name|realAccountId
+init|=
+name|parseRealAccountId
+argument_list|(
+name|commit
+argument_list|,
+name|accountId
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|changeId
@@ -2378,6 +2408,8 @@ argument_list|(
 name|psId
 argument_list|,
 name|accountId
+argument_list|,
+name|realAccountId
 argument_list|,
 name|commit
 argument_list|,
@@ -2497,6 +2529,8 @@ argument_list|(
 name|psId
 argument_list|,
 name|accountId
+argument_list|,
+name|realAccountId
 argument_list|,
 name|ts
 argument_list|,
@@ -2657,6 +2691,66 @@ argument_list|(
 name|commit
 argument_list|,
 name|FOOTER_SUBJECT
+argument_list|)
+return|;
+block|}
+DECL|method|parseRealAccountId (ChangeNotesCommit commit, Account.Id effectiveAccountId)
+specifier|private
+name|Account
+operator|.
+name|Id
+name|parseRealAccountId
+parameter_list|(
+name|ChangeNotesCommit
+name|commit
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|effectiveAccountId
+parameter_list|)
+throws|throws
+name|ConfigInvalidException
+block|{
+name|String
+name|realUser
+init|=
+name|parseOneFooter
+argument_list|(
+name|commit
+argument_list|,
+name|FOOTER_REAL_USER
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|realUser
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|effectiveAccountId
+return|;
+block|}
+name|PersonIdent
+name|ident
+init|=
+name|RawParseUtils
+operator|.
+name|parsePersonIdent
+argument_list|(
+name|realUser
+argument_list|)
+decl_stmt|;
+return|return
+name|noteUtil
+operator|.
+name|parseIdent
+argument_list|(
+name|ident
+argument_list|,
+name|id
 argument_list|)
 return|;
 block|}
@@ -3795,7 +3889,7 @@ name|psIdLine
 argument_list|)
 throw|;
 block|}
-DECL|method|parseChangeMessage (PatchSet.Id psId, Account.Id accountId, ChangeNotesCommit commit, Timestamp ts)
+DECL|method|parseChangeMessage (PatchSet.Id psId, Account.Id accountId, Account.Id realAccountId, ChangeNotesCommit commit, Timestamp ts)
 specifier|private
 name|void
 name|parseChangeMessage
@@ -3809,6 +3903,11 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 name|ChangeNotesCommit
 name|commit
@@ -4084,6 +4183,13 @@ argument_list|(
 name|tag
 argument_list|)
 expr_stmt|;
+name|changeMessage
+operator|.
+name|setRealAuthor
+argument_list|(
+name|realAccountId
+argument_list|)
+expr_stmt|;
 name|changeMessagesByPatchSet
 operator|.
 name|put
@@ -4266,7 +4372,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|parseApproval (PatchSet.Id psId, Account.Id accountId, Timestamp ts, String line)
+DECL|method|parseApproval (PatchSet.Id psId, Account.Id accountId, Account.Id realAccountId, Timestamp ts, String line)
 specifier|private
 name|void
 name|parseApproval
@@ -4280,6 +4386,11 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 name|Timestamp
 name|ts
@@ -4325,6 +4436,8 @@ name|psId
 argument_list|,
 name|accountId
 argument_list|,
+name|realAccountId
+argument_list|,
 name|ts
 argument_list|,
 name|line
@@ -4339,6 +4452,8 @@ name|psId
 argument_list|,
 name|accountId
 argument_list|,
+name|realAccountId
+argument_list|,
 name|ts
 argument_list|,
 name|line
@@ -4346,7 +4461,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseAddApproval (PatchSet.Id psId, Account.Id committerId, Timestamp ts, String line)
+DECL|method|parseAddApproval (PatchSet.Id psId, Account.Id committerId, Account.Id realAccountId, Timestamp ts, String line)
 specifier|private
 name|void
 name|parseAddApproval
@@ -4361,6 +4476,11 @@ operator|.
 name|Id
 name|committerId
 parameter_list|,
+name|Account
+operator|.
+name|Id
+name|realAccountId
+parameter_list|,
 name|Timestamp
 name|ts
 parameter_list|,
@@ -4370,10 +4490,18 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 block|{
+comment|// There are potentially 3 accounts involved here:
+comment|//  1. The account from the commit, which is the effective IdentifiedUser
+comment|//     that produced the update.
+comment|//  2. The account in the label footer itself, which is used during submit
+comment|//     to copy other users' labels to a new patch set.
+comment|//  3. The account in the Real-user footer, indicating that the whole
+comment|//     update operation was executed by this user on behalf of the effective
+comment|//     user.
 name|Account
 operator|.
 name|Id
-name|accountId
+name|effectiveAccountId
 decl_stmt|;
 name|String
 name|labelVoteStr
@@ -4395,6 +4523,10 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|// Account in the label line (2) becomes the effective ID of the
+comment|// approval. If there is a real user (3) different from the commit user
+comment|// (2), we actually don't store that anywhere in this case; it's more
+comment|// important to record that the real user (3) actually initiated submit.
 name|labelVoteStr
 operator|=
 name|line
@@ -4434,7 +4566,7 @@ argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
-name|accountId
+name|effectiveAccountId
 operator|=
 name|noteUtil
 operator|.
@@ -4452,7 +4584,7 @@ name|labelVoteStr
 operator|=
 name|line
 expr_stmt|;
-name|accountId
+name|effectiveAccountId
 operator|=
 name|committerId
 expr_stmt|;
@@ -4514,7 +4646,7 @@ name|Key
 argument_list|(
 name|psId
 argument_list|,
-name|accountId
+name|effectiveAccountId
 argument_list|,
 operator|new
 name|LabelId
@@ -4541,6 +4673,27 @@ argument_list|(
 name|tag
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|realAccountId
+argument_list|,
+name|committerId
+argument_list|)
+condition|)
+block|{
+name|psa
+operator|.
+name|setRealAccountId
+argument_list|(
+name|realAccountId
+argument_list|)
+expr_stmt|;
+block|}
 name|ApprovalKey
 name|k
 init|=
@@ -4550,7 +4703,7 @@ name|create
 argument_list|(
 name|psId
 argument_list|,
-name|accountId
+name|effectiveAccountId
 argument_list|,
 name|l
 operator|.
@@ -4582,7 +4735,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseRemoveApproval (PatchSet.Id psId, Account.Id committerId, Timestamp ts, String line)
+DECL|method|parseRemoveApproval (PatchSet.Id psId, Account.Id committerId, Account.Id realAccountId, Timestamp ts, String line)
 specifier|private
 name|void
 name|parseRemoveApproval
@@ -4597,6 +4750,11 @@ operator|.
 name|Id
 name|committerId
 parameter_list|,
+name|Account
+operator|.
+name|Id
+name|realAccountId
+parameter_list|,
 name|Timestamp
 name|ts
 parameter_list|,
@@ -4606,10 +4764,11 @@ parameter_list|)
 throws|throws
 name|ConfigInvalidException
 block|{
+comment|// See comments in parseAddApproval about the various users involved.
 name|Account
 operator|.
 name|Id
-name|accountId
+name|effectiveAccountId
 decl_stmt|;
 name|String
 name|label
@@ -4670,7 +4829,7 @@ argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
-name|accountId
+name|effectiveAccountId
 operator|=
 name|noteUtil
 operator|.
@@ -4693,7 +4852,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-name|accountId
+name|effectiveAccountId
 operator|=
 name|committerId
 expr_stmt|;
@@ -4756,7 +4915,7 @@ name|Key
 argument_list|(
 name|psId
 argument_list|,
-name|accountId
+name|effectiveAccountId
 argument_list|,
 operator|new
 name|LabelId
@@ -4773,6 +4932,27 @@ argument_list|,
 name|ts
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|realAccountId
+argument_list|,
+name|committerId
+argument_list|)
+condition|)
+block|{
+name|remove
+operator|.
+name|setRealAccountId
+argument_list|(
+name|realAccountId
+argument_list|)
+expr_stmt|;
+block|}
 name|ApprovalKey
 name|k
 init|=
@@ -4782,7 +4962,7 @@ name|create
 argument_list|(
 name|psId
 argument_list|,
-name|accountId
+name|effectiveAccountId
 argument_list|,
 name|label
 argument_list|,

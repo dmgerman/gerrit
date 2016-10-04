@@ -467,17 +467,32 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ChangeNotes notes, Account.Id accountId, PersonIdent authorIdent, Date when)
+DECL|method|create ( ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, PersonIdent authorIdent, Date when)
 name|RobotCommentUpdate
 name|create
 parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"effective"
+argument_list|)
 name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"real"
+argument_list|)
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 name|PersonIdent
 name|authorIdent
@@ -486,17 +501,32 @@ name|Date
 name|when
 parameter_list|)
 function_decl|;
-DECL|method|create (Change change, Account.Id accountId, PersonIdent authorIdent, Date when)
+DECL|method|create ( Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, PersonIdent authorIdent, Date when)
 name|RobotCommentUpdate
 name|create
 parameter_list|(
 name|Change
 name|change
 parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"effective"
+argument_list|)
 name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"real"
+argument_list|)
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 name|PersonIdent
 name|authorIdent
@@ -521,7 +551,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|RobotCommentUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|RobotCommentUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|RobotCommentUpdate
 parameter_list|(
@@ -548,10 +578,23 @@ name|notes
 parameter_list|,
 annotation|@
 name|Assisted
+argument_list|(
+literal|"effective"
+argument_list|)
 name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"real"
+argument_list|)
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -580,6 +623,8 @@ literal|null
 argument_list|,
 name|accountId
 argument_list|,
+name|realAccountId
+argument_list|,
 name|authorIdent
 argument_list|,
 name|when
@@ -588,7 +633,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|RobotCommentUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|RobotCommentUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|RobotCommentUpdate
 parameter_list|(
@@ -615,10 +660,23 @@ name|change
 parameter_list|,
 annotation|@
 name|Assisted
+argument_list|(
+literal|"effective"
+argument_list|)
 name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"real"
+argument_list|)
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -646,6 +704,8 @@ argument_list|,
 name|change
 argument_list|,
 name|accountId
+argument_list|,
+name|realAccountId
 argument_list|,
 name|authorIdent
 argument_list|,

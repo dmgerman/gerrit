@@ -461,6 +461,15 @@ argument_list|(
 name|body
 argument_list|)
 expr_stmt|;
+name|user
+operator|.
+name|updateRealAccountId
+argument_list|(
+name|m
+operator|::
+name|setRealAuthor
+argument_list|)
+expr_stmt|;
 return|return
 name|m
 return|;

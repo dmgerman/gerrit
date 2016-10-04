@@ -104,6 +104,16 @@ name|Timestamp
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_comment
 comment|/** A message attached to a {@link Change}. */
 end_comment
@@ -365,6 +375,25 @@ specifier|protected
 name|String
 name|tag
 decl_stmt|;
+comment|/**    * Real user that added this message on behalf of the user recorded in {@link    * #author}.    */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|realAuthor
+specifier|protected
+name|Account
+operator|.
+name|Id
+name|realAuthor
+decl_stmt|;
 DECL|method|ChangeMessage ()
 specifier|protected
 name|ChangeMessage
@@ -469,6 +498,54 @@ block|}
 name|author
 operator|=
 name|accountId
+expr_stmt|;
+block|}
+DECL|method|getRealAuthor ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getRealAuthor
+parameter_list|()
+block|{
+return|return
+name|realAuthor
+operator|!=
+literal|null
+condition|?
+name|realAuthor
+else|:
+name|getAuthor
+argument_list|()
+return|;
+block|}
+DECL|method|setRealAuthor (Account.Id id)
+specifier|public
+name|void
+name|setRealAuthor
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+comment|// Use null for same real author, as before the column was added.
+name|realAuthor
+operator|=
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|getAuthor
+argument_list|()
+argument_list|,
+name|id
+argument_list|)
+condition|?
+literal|null
+else|:
+name|id
 expr_stmt|;
 block|}
 DECL|method|getWrittenOn ()
@@ -592,6 +669,10 @@ operator|+
 literal|", author="
 operator|+
 name|author
+operator|+
+literal|", realAuthor="
+operator|+
+name|realAuthor
 operator|+
 literal|", writtenOn="
 operator|+

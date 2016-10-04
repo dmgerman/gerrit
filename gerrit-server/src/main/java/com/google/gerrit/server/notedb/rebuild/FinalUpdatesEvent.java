@@ -167,6 +167,11 @@ argument_list|()
 argument_list|,
 name|change
 operator|.
+name|getOwner
+argument_list|()
+argument_list|,
+name|change
+operator|.
 name|getLastUpdatedOn
 argument_list|()
 argument_list|,

@@ -1479,6 +1479,9 @@ name|ChangeContext
 name|ctx
 parameter_list|)
 block|{
+comment|// Set the effective user to the account we're trying to remove, and don't
+comment|// set the real user; this preserves the calling user as the NoteDb
+comment|// committer.
 return|return
 operator|new
 name|PatchSetApproval

@@ -4847,6 +4847,21 @@ name|in
 operator|.
 name|tag
 expr_stmt|;
+comment|// Draft may have been created by a different real user; copy the current
+comment|// real user. (Only applies to X-Gerrit-RunAs, since modifying drafts via
+comment|// on_behalf_of is not allowed.)
+name|ctx
+operator|.
+name|getUser
+argument_list|()
+operator|.
+name|updateRealAccountId
+argument_list|(
+name|c
+operator|::
+name|setRealAuthor
+argument_list|)
+expr_stmt|;
 name|setCommentRevId
 argument_list|(
 name|c
@@ -5759,6 +5774,18 @@ argument_list|(
 name|in
 operator|.
 name|tag
+argument_list|)
+expr_stmt|;
+name|ctx
+operator|.
+name|getUser
+argument_list|()
+operator|.
+name|updateRealAccountId
+argument_list|(
+name|c
+operator|::
+name|setRealAccountId
 argument_list|)
 expr_stmt|;
 name|ups
