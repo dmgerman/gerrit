@@ -290,6 +290,22 @@ name|server
 operator|.
 name|query
 operator|.
+name|QueryParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
 name|change
 operator|.
 name|ChangeQueryBuilder
@@ -500,6 +516,16 @@ argument_list|<
 name|ChangeData
 argument_list|>
 block|{
+comment|// UI code may depend on this string, so use caution when changing.
+DECL|field|TOO_MANY_FILES
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|TOO_MANY_FILES
+init|=
+literal|"too many files to find conflicts"
+decl_stmt|;
 DECL|field|value
 specifier|private
 specifier|final
@@ -522,6 +548,8 @@ argument_list|>
 name|changes
 parameter_list|)
 throws|throws
+name|QueryParseException
+throws|,
 name|OrmException
 block|{
 name|super
@@ -569,8 +597,15 @@ argument_list|>
 name|changes
 parameter_list|)
 throws|throws
+name|QueryParseException
+throws|,
 name|OrmException
 block|{
+name|int
+name|indexTerms
+init|=
+literal|0
+decl_stmt|;
 name|List
 argument_list|<
 name|Predicate
@@ -645,6 +680,40 @@ argument_list|,
 name|changeDataCache
 argument_list|)
 decl_stmt|;
+name|indexTerms
+operator|+=
+literal|3
+operator|+
+name|files
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|indexTerms
+operator|>
+name|args
+operator|.
+name|indexConfig
+operator|.
+name|maxTerms
+argument_list|()
+condition|)
+block|{
+comment|// Short-circuit with a nice error message if we exceed the index
+comment|// backend's term limit. This assumes that "conflicts:foo" is the entire
+comment|// query; if there are more terms in the input, we might not
+comment|// short-circuit here, which will result in a more generic error message
+comment|// later on in the query parsing.
+throw|throw
+operator|new
+name|QueryParseException
+argument_list|(
+name|TOO_MANY_FILES
+argument_list|)
+throw|;
+block|}
 name|List
 argument_list|<
 name|Predicate
