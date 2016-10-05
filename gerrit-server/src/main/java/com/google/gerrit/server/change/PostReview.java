@@ -2424,8 +2424,13 @@ name|forUser
 argument_list|(
 name|accounts
 operator|.
-name|parse
+name|parseOnBehalfOf
 argument_list|(
+name|caller
+operator|.
+name|getUser
+argument_list|()
+argument_list|,
 name|in
 operator|.
 name|onBehalfOf
