@@ -651,6 +651,30 @@ condition|(
 name|f
 operator|==
 literal|null
+operator|&&
+name|format
+operator|.
+name|equals
+argument_list|(
+literal|"tgz"
+argument_list|)
+condition|)
+block|{
+comment|// Always allow tgz, even when the allowedFormats doesn't contain it.
+comment|// Then we allow at least one format even if the list of allowed
+comment|// formats is empty.
+name|f
+operator|=
+name|ArchiveFormat
+operator|.
+name|TGZ
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|f
+operator|==
+literal|null
 condition|)
 block|{
 throw|throw
