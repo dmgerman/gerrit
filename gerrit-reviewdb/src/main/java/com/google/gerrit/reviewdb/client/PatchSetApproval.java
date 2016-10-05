@@ -495,6 +495,12 @@ name|src
 operator|.
 name|granted
 expr_stmt|;
+name|tag
+operator|=
+name|src
+operator|.
+name|tag
+expr_stmt|;
 block|}
 DECL|method|getKey ()
 specifier|public
