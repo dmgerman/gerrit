@@ -135,7 +135,7 @@ name|msie
 init|=
 name|compile
 argument_list|(
-literal|".*msie ([0-9]+)\\.([0-9]+).*"
+literal|".*msie ([0-11]+)\\.([0-11]+).*"
 argument_list|)
 decl_stmt|;
 DECL|field|gecko
@@ -276,6 +276,17 @@ if|if
 condition|(
 name|v
 operator|>=
+literal|11000
+condition|)
+block|{
+return|return
+literal|"ie11"
+return|;
+block|}
+if|if
+condition|(
+name|v
+operator|>=
 literal|10000
 condition|)
 block|{
@@ -308,6 +319,21 @@ block|}
 block|}
 return|return
 literal|null
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|ua
+operator|.
+name|contains
+argument_list|(
+literal|"edge"
+argument_list|)
+condition|)
+block|{
+return|return
+literal|"edge"
 return|;
 block|}
 elseif|else
