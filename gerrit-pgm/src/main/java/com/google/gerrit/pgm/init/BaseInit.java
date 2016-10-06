@@ -1096,6 +1096,15 @@ operator|=
 name|skipPlugins
 argument_list|()
 expr_stmt|;
+name|init
+operator|.
+name|flags
+operator|.
+name|deleteCaches
+operator|=
+name|getDeleteCaches
+argument_list|()
+expr_stmt|;
 specifier|final
 name|SiteRun
 name|run
@@ -2933,6 +2942,19 @@ DECL|method|isDev ()
 specifier|protected
 name|boolean
 name|isDev
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|getDeleteCaches ()
+specifier|protected
+name|boolean
+name|getDeleteCaches
 parameter_list|()
 block|{
 return|return

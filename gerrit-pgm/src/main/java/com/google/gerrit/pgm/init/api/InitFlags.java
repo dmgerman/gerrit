@@ -232,6 +232,12 @@ specifier|public
 name|boolean
 name|skipPlugins
 decl_stmt|;
+comment|/** Delete all cache files */
+DECL|field|deleteCaches
+specifier|public
+name|boolean
+name|deleteCaches
+decl_stmt|;
 comment|/** Dev mode */
 DECL|field|dev
 specifier|public
