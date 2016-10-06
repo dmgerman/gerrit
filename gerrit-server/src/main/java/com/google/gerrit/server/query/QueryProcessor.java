@@ -1053,7 +1053,7 @@ operator|.
 name|maxPages
 argument_list|()
 operator|+
-literal|"of results"
+literal|" of results"
 argument_list|)
 throw|;
 block|}

@@ -175,18 +175,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -281,6 +269,20 @@ operator|.
 name|collect
 operator|.
 name|Lists
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|ThrowableSubject
 import|;
 end_import
 
@@ -2133,9 +2135,14 @@ argument_list|(
 literal|"foo~bar"
 argument_list|)
 expr_stmt|;
-name|assertBadQuery
+name|assertThatQueryException
 argument_list|(
 literal|"change:foo~bar"
+argument_list|)
+operator|.
+name|hasMessage
+argument_list|(
+literal|"Invalid change format"
 argument_list|)
 expr_stmt|;
 name|assertQuery
@@ -2845,14 +2852,24 @@ argument_list|,
 name|change1
 argument_list|)
 expr_stmt|;
-name|assertBadQuery
+name|assertThatQueryException
 argument_list|(
 literal|"status:nx"
 argument_list|)
+operator|.
+name|hasMessage
+argument_list|(
+literal|"invalid change status: nx"
+argument_list|)
 expr_stmt|;
-name|assertBadQuery
+name|assertThatQueryException
 argument_list|(
 literal|"status:newx"
+argument_list|)
+operator|.
+name|hasMessage
+argument_list|(
+literal|"invalid change status: newx"
 argument_list|)
 expr_stmt|;
 block|}
@@ -5843,7 +5860,7 @@ literal|99
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertBadQuery
+name|assertThatQueryException
 argument_list|(
 name|query
 operator|.
@@ -5851,6 +5868,11 @@ name|withStart
 argument_list|(
 literal|100
 argument_list|)
+argument_list|)
+operator|.
+name|hasMessage
+argument_list|(
+literal|"Cannot go beyond page 10 of results"
 argument_list|)
 expr_stmt|;
 name|assertQuery
@@ -11865,10 +11887,10 @@ name|getChange
 argument_list|()
 return|;
 block|}
-DECL|method|assertBadQuery (Object query)
+DECL|method|assertThatQueryException (Object query)
 specifier|protected
-name|void
-name|assertBadQuery
+name|ThrowableSubject
+name|assertThatQueryException
 parameter_list|(
 name|Object
 name|query
@@ -11876,19 +11898,20 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|assertBadQuery
+return|return
+name|assertThatQueryException
 argument_list|(
 name|newQuery
 argument_list|(
 name|query
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
-DECL|method|assertBadQuery (QueryRequest query)
+DECL|method|assertThatQueryException (QueryRequest query)
 specifier|protected
-name|void
-name|assertBadQuery
+name|ThrowableSubject
+name|assertThatQueryException
 parameter_list|(
 name|QueryRequest
 name|query
@@ -11903,13 +11926,15 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-name|fail
+throw|throw
+operator|new
+name|AssertionError
 argument_list|(
 literal|"expected BadRequestException for query: "
 operator|+
 name|query
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 catch|catch
 parameter_list|(
@@ -11917,7 +11942,12 @@ name|BadRequestException
 name|e
 parameter_list|)
 block|{
-comment|// Expected.
+return|return
+name|assertThat
+argument_list|(
+name|e
+argument_list|)
+return|;
 block|}
 block|}
 DECL|method|createProject (String name)
