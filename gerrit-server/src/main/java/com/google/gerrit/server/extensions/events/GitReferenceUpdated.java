@@ -438,7 +438,7 @@ decl_stmt|;
 DECL|field|listeners
 specifier|private
 specifier|final
-name|Iterable
+name|DynamicSet
 argument_list|<
 name|GitReferenceUpdatedListener
 argument_list|>
