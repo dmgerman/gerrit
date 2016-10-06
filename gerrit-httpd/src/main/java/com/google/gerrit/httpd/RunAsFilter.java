@@ -629,6 +629,14 @@ argument_list|()
 operator|.
 name|canRunAs
 argument_list|()
+comment|// Always disallow for anonymous users, even if permitted by the ACL,
+comment|// because that would be crazy.
+operator|||
+operator|!
+name|self
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 name|replyError
