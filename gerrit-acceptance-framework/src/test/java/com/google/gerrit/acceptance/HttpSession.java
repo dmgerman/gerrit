@@ -80,6 +80,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -148,6 +162,11 @@ specifier|public
 class|class
 name|HttpSession
 block|{
+DECL|field|account
+specifier|protected
+name|TestAccount
+name|account
+decl_stmt|;
 DECL|field|url
 specifier|protected
 specifier|final
@@ -160,13 +179,15 @@ specifier|final
 name|Executor
 name|executor
 decl_stmt|;
-DECL|method|HttpSession (GerritServer server, TestAccount account)
+DECL|method|HttpSession (GerritServer server, @Nullable TestAccount account)
 specifier|public
 name|HttpSession
 parameter_list|(
 name|GerritServer
 name|server
 parameter_list|,
+annotation|@
+name|Nullable
 name|TestAccount
 name|account
 parameter_list|)
@@ -208,6 +229,21 @@ name|Executor
 operator|.
 name|newInstance
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|account
+operator|=
+name|account
+expr_stmt|;
+if|if
+condition|(
+name|account
+operator|!=
+literal|null
+condition|)
+block|{
+name|executor
 operator|.
 name|auth
 argument_list|(
@@ -234,6 +270,7 @@ operator|.
 name|httpPassword
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|url ()
 specifier|public
