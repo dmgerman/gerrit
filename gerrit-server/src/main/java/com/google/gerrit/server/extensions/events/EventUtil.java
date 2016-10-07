@@ -358,6 +358,16 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -412,6 +422,22 @@ specifier|public
 class|class
 name|EventUtil
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|EventUtil
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -785,13 +811,16 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|logEventListenerError (Logger log, Exception error)
+DECL|method|logEventListenerError (Object event, Object listener, Exception error)
 specifier|public
 name|void
 name|logEventListenerError
 parameter_list|(
-name|Logger
-name|log
+name|Object
+name|event
+parameter_list|,
+name|Object
+name|listener
 parameter_list|,
 name|Exception
 name|error
@@ -809,7 +838,28 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Error in event listener"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Error in event listener %s for event %s"
+argument_list|,
+name|listener
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|event
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 argument_list|,
 name|error
 argument_list|)
@@ -821,7 +871,23 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Error in event listener: {}"
+literal|"Error in listener {} for event {}: {}"
+argument_list|,
+name|listener
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|event
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|error
 operator|.
