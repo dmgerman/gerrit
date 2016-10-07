@@ -916,6 +916,17 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+comment|// Must be after RequireIdentifiedUserFilter so auth happens before checking
+comment|// for RunAs capability.
+name|install
+argument_list|(
+operator|new
+name|RunAsFilter
+operator|.
+name|Module
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|serveRegex
 argument_list|(
 literal|"^/(?:a/)?tools/(.*)$"

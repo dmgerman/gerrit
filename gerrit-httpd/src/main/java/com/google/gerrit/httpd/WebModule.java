@@ -463,15 +463,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|install
-argument_list|(
-operator|new
-name|RunAsFilter
-operator|.
-name|Module
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|installAuthModule
 argument_list|()
 expr_stmt|;
