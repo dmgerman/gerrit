@@ -1751,14 +1751,14 @@ return|return
 name|need
 return|;
 block|}
-comment|/**    * Adds approvals to ChangeUpdate and writes to ReviewDb.    *    * @param db review database.    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param changeCtl change control for user adding approvals.    * @param approvals approvals to add.    * @throws OrmException    */
-DECL|method|addApprovals (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, ChangeControl changeCtl, Map<String, Short> approvals)
+comment|/**    * Adds approvals to ChangeUpdate for a new patch set, and writes to ReviewDb.    *    * @param db review database.    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param changeCtl change control for user adding approvals.    * @param approvals approvals to add.    * @throws OrmException    */
+DECL|method|addApprovalsForNewPatchSet (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, ChangeControl changeCtl, Map<String, Short> approvals)
 specifier|public
 name|Iterable
 argument_list|<
 name|PatchSetApproval
 argument_list|>
-name|addApprovals
+name|addApprovalsForNewPatchSet
 parameter_list|(
 name|ReviewDb
 name|db

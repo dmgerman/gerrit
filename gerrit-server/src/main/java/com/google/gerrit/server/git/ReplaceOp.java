@@ -2036,7 +2036,7 @@ name|newApprovals
 init|=
 name|approvalsUtil
 operator|.
-name|addApprovals
+name|addApprovalsForNewPatchSet
 argument_list|(
 name|ctx
 operator|.

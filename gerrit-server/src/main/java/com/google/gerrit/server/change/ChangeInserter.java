@@ -2457,7 +2457,7 @@ argument_list|)
 expr_stmt|;
 name|approvalsUtil
 operator|.
-name|addApprovals
+name|addApprovalsForNewPatchSet
 argument_list|(
 name|db
 argument_list|,
