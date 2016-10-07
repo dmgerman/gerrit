@@ -520,7 +520,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
+name|GerritPersonIdent
 import|;
 end_import
 
@@ -534,7 +534,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|GerritPersonIdent
+name|IdentifiedUser
 import|;
 end_import
 
@@ -1156,14 +1156,14 @@ specifier|final
 name|PersonIdent
 name|serverIdent
 decl_stmt|;
-DECL|field|currentUser
+DECL|field|identifiedUser
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|CurrentUser
+name|IdentifiedUser
 argument_list|>
-name|currentUser
+name|identifiedUser
 decl_stmt|;
 DECL|field|putConfig
 specifier|private
@@ -1188,7 +1188,7 @@ name|name
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateProject (Provider<ProjectsCollection> projectsCollection, Provider<GroupsCollection> groupsCollection, ProjectJson json, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, ProjectControl.GenericFactory projectControlFactory, GitRepositoryManager repoManager, DynamicSet<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent PersonIdent serverIdent, Provider<CurrentUser> currentUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, @Assisted String name)
+DECL|method|CreateProject (Provider<ProjectsCollection> projectsCollection, Provider<GroupsCollection> groupsCollection, ProjectJson json, DynamicSet<ProjectCreationValidationListener> projectCreationValidationListeners, ProjectControl.GenericFactory projectControlFactory, GitRepositoryManager repoManager, DynamicSet<NewProjectCreatedListener> createdListeners, ProjectCache projectCache, GroupBackend groupBackend, ProjectOwnerGroupsProvider.Factory projectOwnerGroups, MetaDataUpdate.User metaDataUpdateFactory, GitReferenceUpdated referenceUpdated, RepositoryConfig repositoryCfg, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser, Provider<PutConfig> putConfig, AllProjectsName allProjects, @Assisted String name)
 name|CreateProject
 parameter_list|(
 name|Provider
@@ -1255,9 +1255,9 @@ name|serverIdent
 parameter_list|,
 name|Provider
 argument_list|<
-name|CurrentUser
+name|IdentifiedUser
 argument_list|>
-name|currentUser
+name|identifiedUser
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1360,9 +1360,9 @@ name|serverIdent
 expr_stmt|;
 name|this
 operator|.
-name|currentUser
+name|identifiedUser
 operator|=
-name|currentUser
+name|identifiedUser
 expr_stmt|;
 name|this
 operator|.
@@ -1847,7 +1847,7 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|,
-name|currentUser
+name|identifiedUser
 operator|.
 name|get
 argument_list|()
@@ -2751,7 +2751,7 @@ name|Type
 operator|.
 name|CREATE
 argument_list|,
-name|currentUser
+name|identifiedUser
 operator|.
 name|get
 argument_list|()
