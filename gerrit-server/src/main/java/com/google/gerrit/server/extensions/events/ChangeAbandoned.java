@@ -376,7 +376,7 @@ name|util
 expr_stmt|;
 block|}
 DECL|method|fire (ChangeInfo change, RevisionInfo revision, AccountInfo abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
-specifier|public
+specifier|private
 name|void
 name|fire
 parameter_list|(
@@ -399,20 +399,6 @@ name|NotifyHandling
 name|notifyHandling
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
-name|listeners
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-return|return;
-block|}
 name|Event
 name|event
 init|=
