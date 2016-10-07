@@ -451,11 +451,13 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|util
 operator|.
-name|warn
+name|logEventListenerError
 argument_list|(
-literal|"Error in event listener, e"
+name|log
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
