@@ -288,6 +288,13 @@ name|getSubmissionId
 argument_list|()
 operator|!=
 literal|null
+operator|&&
+name|noteDbChange
+operator|.
+name|getSubmissionId
+argument_list|()
+operator|==
+literal|null
 condition|)
 block|{
 name|update

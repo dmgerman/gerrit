@@ -518,16 +518,6 @@ name|OrmException
 throws|,
 name|IOException
 function_decl|;
-DECL|method|isPatchSet ()
-specifier|protected
-name|boolean
-name|isPatchSet
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -585,6 +575,19 @@ name|ComparisonChain
 operator|.
 name|start
 argument_list|()
+operator|.
+name|compareFalseFirst
+argument_list|(
+name|this
+operator|.
+name|isFinalUpdates
+argument_list|()
+argument_list|,
+name|other
+operator|.
+name|isFinalUpdates
+argument_list|()
+argument_list|)
 operator|.
 name|compare
 argument_list|(
@@ -654,6 +657,30 @@ argument_list|)
 operator|.
 name|result
 argument_list|()
+return|;
+block|}
+DECL|method|isPatchSet ()
+specifier|private
+name|boolean
+name|isPatchSet
+parameter_list|()
+block|{
+return|return
+name|this
+operator|instanceof
+name|PatchSetEvent
+return|;
+block|}
+DECL|method|isFinalUpdates ()
+specifier|private
+name|boolean
+name|isFinalUpdates
+parameter_list|()
+block|{
+return|return
+name|this
+operator|instanceof
+name|FinalUpdatesEvent
 return|;
 block|}
 block|}
