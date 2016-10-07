@@ -240,15 +240,11 @@ name|strictLabels
 init|=
 literal|true
 decl_stmt|;
-comment|/**    * How to process draft comments already in the database that were not also    * described in this input request.    */
+comment|/**    * How to process draft comments already in the database that were not also    * described in this input request.    *<p>    * Defaults to DELETE, unless {@link #onBehalfOf} is set, in which case it    * defaults to KEEP and any other value is disallowed.    */
 DECL|field|drafts
 specifier|public
 name|DraftHandling
 name|drafts
-init|=
-name|DraftHandling
-operator|.
-name|DELETE
 decl_stmt|;
 comment|/** Who to send email notifications to after review is stored. */
 DECL|field|notify
