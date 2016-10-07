@@ -459,6 +459,22 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--delete-caches"
+argument_list|,
+name|usage
+operator|=
+literal|"Delete all persistent caches without asking"
+argument_list|)
+DECL|field|deleteCaches
+specifier|private
+name|boolean
+name|deleteCaches
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
 literal|"--no-auto-start"
 argument_list|,
 name|usage
@@ -980,6 +996,18 @@ block|{
 return|return
 operator|!
 name|noAutoStart
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDeleteCaches ()
+specifier|protected
+name|boolean
+name|getDeleteCaches
+parameter_list|()
+block|{
+return|return
+name|deleteCaches
 return|;
 block|}
 annotation|@
