@@ -1506,7 +1506,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|updateReviewerList ()
-specifier|private
 name|void
 name|updateReviewerList
 parameter_list|()
