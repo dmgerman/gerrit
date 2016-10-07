@@ -177,8 +177,6 @@ operator|.
 name|client
 operator|.
 name|Account
-operator|.
-name|Id
 import|;
 end_import
 
@@ -428,7 +426,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, Id accountId, ImmutableSortedSet<String> hashtags, Set<String> added, Set<String> removed, Timestamp when)
+DECL|method|fire (Change change, Account account, ImmutableSortedSet<String> hashtags, Set<String> added, Set<String> removed, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -436,8 +434,8 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|Id
-name|accountId
+name|Account
+name|account
 parameter_list|,
 name|ImmutableSortedSet
 argument_list|<
@@ -490,7 +488,7 @@ name|util
 operator|.
 name|accountInfo
 argument_list|(
-name|accountId
+name|account
 argument_list|)
 argument_list|,
 name|hashtags

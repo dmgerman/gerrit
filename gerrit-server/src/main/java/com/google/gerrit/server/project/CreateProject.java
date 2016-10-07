@@ -2756,7 +2756,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccountId
+name|getAccount
 argument_list|()
 argument_list|)
 expr_stmt|;

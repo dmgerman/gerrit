@@ -445,7 +445,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Change change, PatchSet patchSet, Account.Id accountId, Timestamp when)
+DECL|method|fire (Change change, PatchSet patchSet, Account accountId, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -457,8 +457,6 @@ name|PatchSet
 name|patchSet
 parameter_list|,
 name|Account
-operator|.
-name|Id
 name|accountId
 parameter_list|,
 name|Timestamp

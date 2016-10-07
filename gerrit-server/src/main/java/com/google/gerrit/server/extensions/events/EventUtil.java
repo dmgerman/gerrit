@@ -252,22 +252,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|AccountCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|change
 operator|.
 name|ChangeJson
@@ -451,15 +435,9 @@ specifier|final
 name|ChangeJson
 name|changeJson
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventUtil (ChangeJson.Factory changeJsonFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db, AccountCache accountCache)
+DECL|method|EventUtil (ChangeJson.Factory changeJsonFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db)
 name|EventUtil
 parameter_list|(
 name|ChangeJson
@@ -477,9 +455,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|)
 block|{
 name|this
@@ -511,12 +486,6 @@ operator|.
 name|class
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 block|}
 DECL|method|changeInfo (Change change)
@@ -706,32 +675,6 @@ argument_list|()
 expr_stmt|;
 return|return
 name|ai
-return|;
-block|}
-DECL|method|accountInfo (Account.Id accountId)
-specifier|public
-name|AccountInfo
-name|accountInfo
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|accountId
-parameter_list|)
-block|{
-return|return
-name|accountInfo
-argument_list|(
-name|accountCache
-operator|.
-name|get
-argument_list|(
-name|accountId
-argument_list|)
-operator|.
-name|getAccount
-argument_list|()
-argument_list|)
 return|;
 block|}
 DECL|method|approvals (Account a, Map<String, Short> approvals, Timestamp ts)
