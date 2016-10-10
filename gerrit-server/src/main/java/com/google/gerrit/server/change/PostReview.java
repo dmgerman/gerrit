@@ -4496,6 +4496,14 @@ name|url
 expr_stmt|;
 name|e
 operator|.
+name|properties
+operator|=
+name|c
+operator|.
+name|properties
+expr_stmt|;
+name|e
+operator|.
 name|setLineNbrAndRange
 argument_list|(
 name|c
