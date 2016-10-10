@@ -220,6 +220,14 @@ operator|.
 name|getColumnKey
 argument_list|()
 argument_list|,
+comment|// TODO(dborowitz): Real account ID shouldn't really matter for
+comment|// reviewers, but we might have to deal with this to avoid ChangeBundle
+comment|// diffs when run against real data.
+name|reviewer
+operator|.
+name|getColumnKey
+argument_list|()
+argument_list|,
 name|reviewer
 operator|.
 name|getValue

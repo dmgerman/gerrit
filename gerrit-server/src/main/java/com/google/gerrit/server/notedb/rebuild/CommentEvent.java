@@ -278,6 +278,14 @@ argument_list|()
 argument_list|,
 name|c
 operator|.
+name|getRealAuthor
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|c
+operator|.
 name|writtenOn
 argument_list|,
 name|change

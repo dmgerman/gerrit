@@ -252,6 +252,11 @@ argument_list|()
 argument_list|,
 name|message
 operator|.
+name|getRealAuthor
+argument_list|()
+argument_list|,
+name|message
+operator|.
 name|getWrittenOn
 argument_list|()
 argument_list|,

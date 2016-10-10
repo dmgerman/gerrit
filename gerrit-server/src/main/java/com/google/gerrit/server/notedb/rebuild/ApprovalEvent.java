@@ -146,6 +146,11 @@ argument_list|()
 argument_list|,
 name|psa
 operator|.
+name|getRealAccountId
+argument_list|()
+argument_list|,
+name|psa
+operator|.
 name|getGranted
 argument_list|()
 argument_list|,

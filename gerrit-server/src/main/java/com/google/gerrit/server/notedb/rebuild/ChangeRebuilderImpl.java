@@ -3282,7 +3282,7 @@ name|equals
 argument_list|(
 name|first
 operator|.
-name|who
+name|user
 argument_list|)
 condition|)
 block|{
@@ -3553,6 +3553,11 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
+name|events
+operator|.
+name|getRealAccountId
+argument_list|()
+argument_list|,
 name|newAuthorIdent
 argument_list|(
 name|events
@@ -3664,6 +3669,11 @@ argument_list|,
 name|events
 operator|.
 name|getAccountId
+argument_list|()
+argument_list|,
+name|events
+operator|.
+name|getRealAccountId
 argument_list|()
 argument_list|,
 name|newAuthorIdent

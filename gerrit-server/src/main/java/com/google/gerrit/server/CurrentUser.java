@@ -140,6 +140,18 @@ name|RequestScoped
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Consumer
+import|;
+end_import
+
 begin_comment
 comment|/**  * Information about the currently logged in user.  *<p>  * This is a {@link RequestScoped} property managed by Guice.  *  * @see AnonymousUser  * @see IdentifiedUser  */
 end_comment
@@ -263,6 +275,43 @@ block|{
 return|return
 name|this
 return|;
+block|}
+comment|/**    * If the {@link #getRealUser()} has an account ID associated with it, call    * the given setter with that ID.    */
+DECL|method|updateRealAccountId (Consumer<Account.Id> setter)
+specifier|public
+name|void
+name|updateRealAccountId
+parameter_list|(
+name|Consumer
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|setter
+parameter_list|)
+block|{
+if|if
+condition|(
+name|getRealUser
+argument_list|()
+operator|.
+name|isIdentifiedUser
+argument_list|()
+condition|)
+block|{
+name|setter
+operator|.
+name|accept
+argument_list|(
+name|getRealUser
+argument_list|()
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**    * Get the set of groups the user is currently a member of.    *<p>    * The returned set may be a subset of the user's actual groups; if the user's    * account is currently deemed to be untrusted then the effective group set is    * only the anonymous and registered user groups. To enable additional groups    * (and gain their granted permissions) the user must update their account to    * use only trusted authentication providers.    *    * @return active groups for this user.    */
 DECL|method|getEffectiveGroups ()

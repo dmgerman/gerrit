@@ -233,6 +233,11 @@ argument_list|()
 argument_list|,
 name|change
 operator|.
+name|getOwner
+argument_list|()
+argument_list|,
+name|change
+operator|.
 name|getCreatedOn
 argument_list|()
 argument_list|,

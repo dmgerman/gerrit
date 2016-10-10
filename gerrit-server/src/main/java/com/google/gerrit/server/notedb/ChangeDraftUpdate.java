@@ -84,22 +84,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|eclipse
@@ -537,17 +521,32 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ChangeNotes notes, Account.Id accountId, PersonIdent authorIdent, Date when)
+DECL|method|create ( ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, PersonIdent authorIdent, Date when)
 name|ChangeDraftUpdate
 name|create
 parameter_list|(
 name|ChangeNotes
 name|notes
 parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"effective"
+argument_list|)
 name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"real"
+argument_list|)
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 name|PersonIdent
 name|authorIdent
@@ -556,17 +555,32 @@ name|Date
 name|when
 parameter_list|)
 function_decl|;
-DECL|method|create (Change change, Account.Id accountId, PersonIdent authorIdent, Date when)
+DECL|method|create ( Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, PersonIdent authorIdent, Date when)
 name|ChangeDraftUpdate
 name|create
 parameter_list|(
 name|Change
 name|change
 parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"effective"
+argument_list|)
 name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"real"
+argument_list|)
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 name|PersonIdent
 name|authorIdent
@@ -657,7 +671,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|ChangeDraftUpdate
 parameter_list|(
@@ -687,10 +701,23 @@ name|notes
 parameter_list|,
 annotation|@
 name|Assisted
+argument_list|(
+literal|"effective"
+argument_list|)
 name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"real"
+argument_list|)
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -719,6 +746,8 @@ literal|null
 argument_list|,
 name|accountId
 argument_list|,
+name|realAccountId
+argument_list|,
 name|authorIdent
 argument_list|,
 name|when
@@ -733,7 +762,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted Account.Id accountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AllUsersName allUsers, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|ChangeDraftUpdate
 parameter_list|(
@@ -763,10 +792,23 @@ name|change
 parameter_list|,
 annotation|@
 name|Assisted
+argument_list|(
+literal|"effective"
+argument_list|)
 name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"real"
+argument_list|)
+name|Account
+operator|.
+name|Id
+name|realAccountId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -794,6 +836,8 @@ argument_list|,
 name|change
 argument_list|,
 name|accountId
+argument_list|,
+name|realAccountId
 argument_list|,
 name|authorIdent
 argument_list|,
@@ -879,39 +923,6 @@ name|revId
 argument_list|,
 name|key
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|verifyComment (Comment comment)
-specifier|private
-name|void
-name|verifyComment
-parameter_list|(
-name|Comment
-name|comment
-parameter_list|)
-block|{
-name|checkArgument
-argument_list|(
-name|comment
-operator|.
-name|author
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|accountId
-argument_list|)
-argument_list|,
-literal|"The author for the following comment does not match the author of"
-operator|+
-literal|" this ChangeDraftUpdate (%s): %s"
-argument_list|,
-name|accountId
-argument_list|,
-name|comment
 argument_list|)
 expr_stmt|;
 block|}
