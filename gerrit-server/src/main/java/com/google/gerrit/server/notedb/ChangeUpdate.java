@@ -2464,54 +2464,6 @@ return|return
 name|robotCommentUpdate
 return|;
 block|}
-DECL|method|verifyComment (Comment c)
-specifier|private
-name|void
-name|verifyComment
-parameter_list|(
-name|Comment
-name|c
-parameter_list|)
-block|{
-name|checkArgument
-argument_list|(
-name|c
-operator|.
-name|revId
-operator|!=
-literal|null
-argument_list|,
-literal|"RevId required for comment: %s"
-argument_list|,
-name|c
-argument_list|)
-expr_stmt|;
-name|checkArgument
-argument_list|(
-name|c
-operator|.
-name|author
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|getAccountId
-argument_list|()
-argument_list|)
-argument_list|,
-literal|"The author for the following comment does not match the author of"
-operator|+
-literal|" this ChangeUpdate (%s): %s"
-argument_list|,
-name|getAccountId
-argument_list|()
-argument_list|,
-name|c
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|setTopic (String topic)
 specifier|public
 name|void

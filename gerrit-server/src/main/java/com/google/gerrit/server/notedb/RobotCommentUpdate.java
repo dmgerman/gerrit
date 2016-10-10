@@ -88,22 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -688,39 +672,6 @@ operator|.
 name|add
 argument_list|(
 name|c
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|verifyComment (RobotComment comment)
-specifier|private
-name|void
-name|verifyComment
-parameter_list|(
-name|RobotComment
-name|comment
-parameter_list|)
-block|{
-name|checkArgument
-argument_list|(
-name|comment
-operator|.
-name|author
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|accountId
-argument_list|)
-argument_list|,
-literal|"The author for the following comment does not match the author of"
-operator|+
-literal|" this RobotCommentUpdate (%s): %s"
-argument_list|,
-name|accountId
-argument_list|,
-name|comment
 argument_list|)
 expr_stmt|;
 block|}
