@@ -1827,6 +1827,15 @@ name|action
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|pri
+operator|.
+name|force
+operator|!=
+literal|null
+condition|)
+block|{
 name|r
 operator|.
 name|setForce
@@ -1836,6 +1845,7 @@ operator|.
 name|force
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|p
 operator|.
