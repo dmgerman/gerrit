@@ -692,7 +692,7 @@ argument_list|)
 operator|+
 name|P
 operator|+
-name|map
+name|list
 argument_list|(
 name|state
 operator|.
@@ -700,6 +700,19 @@ name|patchSets
 argument_list|()
 argument_list|,
 name|patchSet
+argument_list|()
+argument_list|)
+operator|+
+name|P
+operator|+
+name|list
+argument_list|(
+name|state
+operator|.
+name|allPastReviewers
+argument_list|()
+argument_list|,
+name|approval
 argument_list|()
 argument_list|)
 operator|+
@@ -1116,6 +1129,49 @@ operator|+
 name|P
 return|;
 comment|// pushCertificate
+block|}
+DECL|method|approval ()
+specifier|private
+specifier|static
+name|int
+name|approval
+parameter_list|()
+block|{
+return|return
+name|O
+operator|+
+name|P
+operator|+
+name|patchSetId
+argument_list|()
+operator|+
+name|P
+operator|+
+name|K
+operator|+
+name|P
+operator|+
+name|O
+operator|+
+name|str
+argument_list|(
+literal|10
+argument_list|)
+operator|+
+literal|2
+comment|// value
+operator|+
+name|P
+operator|+
+name|T
+comment|// granted
+operator|+
+name|P
+comment|// tag
+operator|+
+name|P
+return|;
+comment|// realAccountId
 block|}
 DECL|method|changeMessage ()
 specifier|private
