@@ -3056,6 +3056,8 @@ parameter_list|(
 name|String
 name|statusName
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
 if|if
 condition|(

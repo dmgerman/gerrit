@@ -142,6 +142,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|QueryParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -418,6 +434,8 @@ parameter_list|(
 name|String
 name|value
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
 name|String
 name|lower
@@ -504,7 +522,7 @@ block|}
 block|}
 throw|throw
 operator|new
-name|IllegalArgumentException
+name|QueryParseException
 argument_list|(
 literal|"invalid change status: "
 operator|+
