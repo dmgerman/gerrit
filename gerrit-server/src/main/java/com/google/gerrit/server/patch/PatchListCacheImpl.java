@@ -1168,8 +1168,10 @@ name|project
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDiffSummary (DiffSummaryKey key, Project.NameKey project)
-specifier|private
+specifier|public
 name|DiffSummary
 name|getDiffSummary
 parameter_list|(
