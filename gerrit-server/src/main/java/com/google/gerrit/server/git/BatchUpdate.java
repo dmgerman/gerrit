@@ -2362,7 +2362,10 @@ operator|.
 name|getUser
 argument_list|()
 operator|.
-name|getAccountId
+name|asIdentifiedUser
+argument_list|()
+operator|.
+name|getAccount
 argument_list|()
 else|:
 literal|null

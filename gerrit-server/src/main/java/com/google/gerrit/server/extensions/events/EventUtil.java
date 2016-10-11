@@ -254,22 +254,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|AccountJson
 import|;
 end_import
@@ -380,6 +364,16 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -457,15 +451,9 @@ specifier|final
 name|ChangeJson
 name|changeJson
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventUtil (ChangeJson.Factory changeJsonFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db, AccountCache accountCache)
+DECL|method|EventUtil (ChangeJson.Factory changeJsonFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db)
 name|EventUtil
 parameter_list|(
 name|ChangeJson
@@ -483,9 +471,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|)
 block|{
 name|this
@@ -517,12 +502,6 @@ operator|.
 name|class
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 block|}
 DECL|method|changeInfo (Change change)
@@ -677,32 +656,6 @@ name|a
 argument_list|)
 return|;
 block|}
-DECL|method|accountInfo (Account.Id accountId)
-specifier|public
-name|AccountInfo
-name|accountInfo
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|accountId
-parameter_list|)
-block|{
-return|return
-name|accountInfo
-argument_list|(
-name|accountCache
-operator|.
-name|get
-argument_list|(
-name|accountId
-argument_list|)
-operator|.
-name|getAccount
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|approvals (Account a, Map<String, Short> approvals, Timestamp ts)
 specifier|public
 name|Map
@@ -811,6 +764,52 @@ block|}
 return|return
 name|result
 return|;
+block|}
+DECL|method|logEventListenerError (Logger log, Exception error)
+specifier|public
+name|void
+name|logEventListenerError
+parameter_list|(
+name|Logger
+name|log
+parameter_list|,
+name|Exception
+name|error
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Error in event listener"
+argument_list|,
+name|error
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Error in event listener: {}"
+argument_list|,
+name|error
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

@@ -1168,7 +1168,7 @@ name|change
 argument_list|,
 name|ctx
 operator|.
-name|getAccountId
+name|getAccount
 argument_list|()
 argument_list|,
 name|updatedHashtags
