@@ -227,12 +227,6 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|actual
 argument_list|)
 operator|.
