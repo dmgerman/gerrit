@@ -3264,9 +3264,21 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
 name|SubmoduleException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IntegrationException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|UpdateException
 name|e
 parameter_list|)
 block|{
@@ -3319,13 +3331,6 @@ literal|"s"
 else|:
 literal|""
 operator|)
-operator|+
-literal|": \n"
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
 expr_stmt|;
 block|}
 throw|throw
