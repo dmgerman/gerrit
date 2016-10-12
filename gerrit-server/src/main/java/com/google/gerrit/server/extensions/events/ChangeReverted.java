@@ -353,7 +353,9 @@ name|util
 operator|.
 name|logEventListenerError
 argument_list|(
-name|log
+name|this
+argument_list|,
+name|l
 argument_list|,
 name|e
 argument_list|)
