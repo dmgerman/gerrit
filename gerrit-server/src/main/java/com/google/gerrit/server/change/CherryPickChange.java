@@ -1086,7 +1086,7 @@ operator|=
 name|batchUpdateFactory
 expr_stmt|;
 block|}
-DECL|method|cherryPick (Change change, PatchSet patch, final String message, final String ref, final RefControl refControl)
+DECL|method|cherryPick (Change change, PatchSet patch, final String message, final String ref, final RefControl refControl, int parent)
 specifier|public
 name|Change
 operator|.
@@ -1110,6 +1110,9 @@ parameter_list|,
 specifier|final
 name|RefControl
 name|refControl
+parameter_list|,
+name|int
+name|parent
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -1282,6 +1285,42 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|parent
+operator|<=
+literal|0
+operator|||
+name|parent
+operator|>
+name|commitToCherryPick
+operator|.
+name|getParentCount
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidChangeOperationException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cherry Pick: Parent %s does not exist. Please specify a parent in"
+operator|+
+literal|" range [1, %s]."
+argument_list|,
+name|parent
+argument_list|,
+name|commitToCherryPick
+operator|.
+name|getParentCount
+argument_list|()
+argument_list|)
+argument_list|)
+throw|;
+block|}
 name|Timestamp
 name|now
 init|=
@@ -1384,6 +1423,10 @@ argument_list|,
 name|commitMessage
 argument_list|,
 name|revWalk
+argument_list|,
+name|parent
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 name|Change
