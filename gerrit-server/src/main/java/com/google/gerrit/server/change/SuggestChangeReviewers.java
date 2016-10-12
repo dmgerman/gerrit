@@ -421,6 +421,11 @@ name|reviewersUtil
 operator|.
 name|suggestReviewers
 argument_list|(
+name|rsrc
+operator|.
+name|getNotes
+argument_list|()
+argument_list|,
 name|this
 argument_list|,
 name|rsrc

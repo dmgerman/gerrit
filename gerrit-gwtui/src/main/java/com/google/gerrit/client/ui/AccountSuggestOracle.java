@@ -414,6 +414,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|query
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|containsQuery
 argument_list|(
