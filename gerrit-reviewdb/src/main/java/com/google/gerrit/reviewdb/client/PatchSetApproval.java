@@ -527,6 +527,25 @@ operator|.
 name|tag
 expr_stmt|;
 block|}
+DECL|method|PatchSetApproval (PatchSetApproval src)
+specifier|public
+name|PatchSetApproval
+parameter_list|(
+name|PatchSetApproval
+name|src
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|src
+operator|.
+name|getPatchSetId
+argument_list|()
+argument_list|,
+name|src
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getKey ()
 specifier|public
 name|PatchSetApproval

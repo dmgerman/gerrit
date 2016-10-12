@@ -1499,31 +1499,9 @@ literal|"Hashtag added: MyHashtag"
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|assertThatGet (PushOneCommit.Result r)
 specifier|private
 name|IterableSubject
-argument_list|<
-name|?
-extends|extends
-name|IterableSubject
-argument_list|<
-name|?
-argument_list|,
-name|String
-argument_list|,
-name|Iterable
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
-argument_list|,
-name|String
-argument_list|,
-name|Iterable
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
-DECL|method|assertThatGet (PushOneCommit.Result r)
 name|assertThatGet
 parameter_list|(
 name|PushOneCommit

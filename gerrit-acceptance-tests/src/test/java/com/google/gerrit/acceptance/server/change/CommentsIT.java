@@ -3473,12 +3473,6 @@ argument_list|()
 decl_stmt|;
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|actual
 operator|.
 name|keySet
