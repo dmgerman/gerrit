@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -77,24 +93,6 @@ operator|.
 name|base
 operator|.
 name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|api
-operator|.
-name|changes
-operator|.
-name|AssigneeInput
 import|;
 end_import
 
@@ -459,12 +457,12 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (AssigneeInput input)
+DECL|method|create (String assignee)
 name|SetAssigneeOp
 name|create
 parameter_list|(
-name|AssigneeInput
-name|input
+name|String
+name|assignee
 parameter_list|)
 function_decl|;
 block|}
@@ -497,11 +495,11 @@ name|AssigneeValidationListener
 argument_list|>
 name|validationListeners
 decl_stmt|;
-DECL|field|input
+DECL|field|assignee
 specifier|private
 specifier|final
-name|AssigneeInput
-name|input
+name|String
+name|assignee
 decl_stmt|;
 DECL|field|anonymousCowardName
 specifier|private
@@ -532,7 +530,7 @@ name|oldAssignee
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|SetAssigneeOp (AccountsCollection accounts, ChangeMessagesUtil cmUtil, AccountInfoCacheFactory.Factory accountInfosFactory, DynamicSet<AssigneeValidationListener> validationListeners, AssigneeChanged assigneeChanged, @AnonymousCowardName String anonymousCowardName, @Assisted AssigneeInput input)
+DECL|method|SetAssigneeOp (AccountsCollection accounts, ChangeMessagesUtil cmUtil, AccountInfoCacheFactory.Factory accountInfosFactory, DynamicSet<AssigneeValidationListener> validationListeners, AssigneeChanged assigneeChanged, @AnonymousCowardName String anonymousCowardName, @Assisted String assignee)
 name|SetAssigneeOp
 parameter_list|(
 name|AccountsCollection
@@ -562,8 +560,8 @@ name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|Assisted
-name|AssigneeInput
-name|input
+name|String
+name|assignee
 parameter_list|)
 block|{
 name|this
@@ -604,9 +602,12 @@ name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
-name|input
+name|assignee
 operator|=
-name|input
+name|checkNotNull
+argument_list|(
+name|assignee
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -626,26 +627,6 @@ name|OrmException
 throws|,
 name|RestApiException
 block|{
-if|if
-condition|(
-operator|!
-name|ctx
-operator|.
-name|getControl
-argument_list|()
-operator|.
-name|canEditAssignee
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|AuthException
-argument_list|(
-literal|"Changing Assignee not permitted"
-argument_list|)
-throw|;
-block|}
 name|change
 operator|=
 name|ctx
@@ -684,35 +665,6 @@ name|getAssignee
 argument_list|()
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|input
-operator|.
-name|assignee
-operator|==
-literal|null
-condition|)
-block|{
-if|if
-condition|(
-name|oldAssigneeId
-operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|BadRequestException
-argument_list|(
-literal|"Cannot set Assignee to empty"
-argument_list|)
-throw|;
-block|}
-return|return
-literal|false
-return|;
-block|}
 name|oldAssignee
 operator|=
 literal|null
@@ -748,8 +700,6 @@ name|accounts
 operator|.
 name|parse
 argument_list|(
-name|input
-operator|.
 name|assignee
 argument_list|)
 decl_stmt|;
@@ -804,8 +754,6 @@ name|format
 argument_list|(
 literal|"Account of %s is not active"
 argument_list|,
-name|input
-operator|.
 name|assignee
 argument_list|)
 argument_list|)
@@ -843,8 +791,6 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|,
-name|input
-operator|.
 name|assignee
 argument_list|)
 argument_list|)
