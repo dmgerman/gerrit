@@ -84,6 +84,11 @@ specifier|public
 name|String
 name|destination
 decl_stmt|;
+DECL|field|parent
+specifier|public
+name|Integer
+name|parent
+decl_stmt|;
 block|}
 end_class
 

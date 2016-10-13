@@ -1525,7 +1525,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, CodeReviewRevWalk rw)
+DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, CodeReviewRevWalk rw, int parentIndex)
 specifier|public
 name|CodeReviewCommit
 name|createCherryPickFromCommit
@@ -1550,6 +1550,9 @@ name|commitMsg
 parameter_list|,
 name|CodeReviewRevWalk
 name|rw
+parameter_list|,
+name|int
+name|parentIndex
 parameter_list|)
 throws|throws
 name|MissingObjectException
@@ -1581,7 +1584,7 @@ name|originalCommit
 operator|.
 name|getParent
 argument_list|(
-literal|0
+name|parentIndex
 argument_list|)
 argument_list|)
 expr_stmt|;
