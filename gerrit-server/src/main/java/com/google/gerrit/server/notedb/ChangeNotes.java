@@ -3586,8 +3586,10 @@ name|getRefName
 argument_list|()
 argument_list|)
 operator|.
-name|orNull
-argument_list|()
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 else|:
 name|super
 operator|.
