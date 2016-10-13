@@ -590,11 +590,6 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
-name|reviewersAddition
-operator|.
-name|gatherResults
-argument_list|()
-expr_stmt|;
 return|return
 name|Response
 operator|.
