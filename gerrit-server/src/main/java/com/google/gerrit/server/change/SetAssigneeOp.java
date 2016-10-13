@@ -140,7 +140,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BadRequestException
+name|ResourceConflictException
 import|;
 end_import
 
@@ -828,7 +828,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|BadRequestException
+name|ResourceConflictException
 argument_list|(
 name|e
 operator|.
