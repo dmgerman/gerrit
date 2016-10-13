@@ -1046,6 +1046,14 @@ argument_list|()
 operator|.
 name|suggestReviewers
 argument_list|(
+name|projectControl
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
 name|changeNotes
 operator|.
 name|getChangeId
@@ -1305,6 +1313,13 @@ argument_list|()
 return|;
 block|}
 comment|// Remove change owner
+if|if
+condition|(
+name|changeNotes
+operator|!=
+literal|null
+condition|)
+block|{
 name|reviewerScores
 operator|.
 name|remove
@@ -1318,6 +1333,7 @@ name|getOwner
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Sort results
 name|Stream
 argument_list|<

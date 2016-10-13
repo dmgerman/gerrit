@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|annotations
@@ -116,6 +130,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -136,19 +166,28 @@ specifier|public
 interface|interface
 name|ReviewerSuggestion
 block|{
-comment|/**    * Reviewer suggestion.    *    * @param changeId The changeId that the suggestion is for.    * @param query The query as typed by the user. Can be an empty string.    * @param candidates A set of candidates for the ranking.    * @return Set of suggested reviewers as a tuple of account id and score.    *         The account ids listed here don't have to be a part of candidates.    */
-DECL|method|suggestReviewers ( Change.Id changeId, String query, Set<Account.Id> candidates)
+comment|/**    * Reviewer suggestion.    *    * @param project The name key of the project the suggestion is for.    * @param changeId The changeId that the suggestion is for. Can be an {@code null}.    * @param query The query as typed by the user. Can be an {@code null}.    * @param candidates A set of candidates for the ranking. Can be empty.    * @return Set of suggested reviewers as a tuple of account id and score.    *         The account ids listed here don't have to be a part of candidates.    */
+DECL|method|suggestReviewers (Project.NameKey project, @Nullable Change.Id changeId, @Nullable String query, Set<Account.Id> candidates)
 name|Set
 argument_list|<
 name|SuggestedReviewer
 argument_list|>
 name|suggestReviewers
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+annotation|@
+name|Nullable
 name|Change
 operator|.
 name|Id
 name|changeId
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|query
 parameter_list|,
