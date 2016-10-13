@@ -230,6 +230,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|MethodNotAllowedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -686,6 +702,8 @@ name|AuthException
 throws|,
 name|BadRequestException
 throws|,
+name|MethodNotAllowedException
+throws|,
 name|OrmException
 throws|,
 name|IOException
@@ -701,7 +719,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|BadRequestException
+name|MethodNotAllowedException
 argument_list|(
 literal|"Cannot add hashtags; NoteDb is disabled"
 argument_list|)
