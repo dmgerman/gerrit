@@ -621,10 +621,10 @@ end_import
 begin_class
 annotation|@
 name|NoHttpd
-DECL|class|VisibleRefFilterIT
+DECL|class|RefAdvertisementIT
 specifier|public
 class|class
-name|VisibleRefFilterIT
+name|RefAdvertisementIT
 extends|extends
 name|AbstractDaemonTest
 block|{
@@ -1106,10 +1106,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|allRefsVisibleNoRefsMetaConfig ()
+DECL|method|uploadPackAllRefsVisibleNoRefsMetaConfig ()
 specifier|public
 name|void
-name|allRefsVisibleNoRefsMetaConfig
+name|uploadPackAllRefsVisibleNoRefsMetaConfig
 parameter_list|()
 throws|throws
 name|Exception
@@ -1186,7 +1186,7 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
-name|assertRefs
+name|assertUploadPackRefs
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -1218,10 +1218,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|allRefsVisibleWithRefsMetaConfig ()
+DECL|method|uploadPackAllRefsVisibleWithRefsMetaConfig ()
 specifier|public
 name|void
-name|allRefsVisibleWithRefsMetaConfig
+name|uploadPackAllRefsVisibleWithRefsMetaConfig
 parameter_list|()
 throws|throws
 name|Exception
@@ -1250,7 +1250,7 @@ operator|.
 name|REFS_CONFIG
 argument_list|)
 expr_stmt|;
-name|assertRefs
+name|assertUploadPackRefs
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -1286,10 +1286,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|subsetOfBranchesVisibleIncludingHead ()
+DECL|method|uploadPackSubsetOfBranchesVisibleIncludingHead ()
 specifier|public
 name|void
-name|subsetOfBranchesVisibleIncludingHead
+name|uploadPackSubsetOfBranchesVisibleIncludingHead
 parameter_list|()
 throws|throws
 name|Exception
@@ -1321,7 +1321,7 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
-name|assertRefs
+name|assertUploadPackRefs
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -1341,10 +1341,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|subsetOfBranchesVisibleNotIncludingHead ()
+DECL|method|uploadPackSubsetOfBranchesVisibleNotIncludingHead ()
 specifier|public
 name|void
-name|subsetOfBranchesVisibleNotIncludingHead
+name|uploadPackSubsetOfBranchesVisibleNotIncludingHead
 parameter_list|()
 throws|throws
 name|Exception
@@ -1376,7 +1376,7 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
-name|assertRefs
+name|assertUploadPackRefs
 argument_list|(
 name|r2
 operator|+
@@ -1398,10 +1398,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|subsetOfBranchesVisibleWithEdit ()
+DECL|method|uploadPackSubsetOfBranchesVisibleWithEdit ()
 specifier|public
 name|void
-name|subsetOfBranchesVisibleWithEdit
+name|uploadPackSubsetOfBranchesVisibleWithEdit
 parameter_list|()
 throws|throws
 name|Exception
@@ -1491,7 +1491,7 @@ argument_list|,
 name|ps1
 argument_list|)
 expr_stmt|;
-name|assertRefs
+name|assertUploadPackRefs
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -1520,10 +1520,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|subsetOfRefsVisibleWithAccessDatabase ()
+DECL|method|uploadPackSubsetOfRefsVisibleWithAccessDatabase ()
 specifier|public
 name|void
-name|subsetOfRefsVisibleWithAccessDatabase
+name|uploadPackSubsetOfRefsVisibleWithAccessDatabase
 parameter_list|()
 throws|throws
 name|Exception
@@ -1613,7 +1613,7 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
-name|assertRefs
+name|assertUploadPackRefs
 argument_list|(
 comment|// Change 1 is visible due to accessDatabase capability, even though
 comment|// refs/heads/master is not.
@@ -1667,10 +1667,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|draftRefs ()
+DECL|method|uploadPackDraftRefs ()
 specifier|public
 name|void
-name|draftRefs
+name|uploadPackDraftRefs
 parameter_list|()
 throws|throws
 name|Exception
@@ -1742,7 +1742,7 @@ argument_list|(
 name|admin
 argument_list|)
 expr_stmt|;
-name|assertRefs
+name|assertUploadPackRefs
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -1789,7 +1789,7 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
-name|assertRefs
+name|assertUploadPackRefs
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -1821,10 +1821,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|noSearchingChangeCacheImpl ()
+DECL|method|uploadPackNoSearchingChangeCacheImpl ()
 specifier|public
 name|void
-name|noSearchingChangeCacheImpl
+name|uploadPackNoSearchingChangeCacheImpl
 parameter_list|()
 throws|throws
 name|Exception
@@ -1915,10 +1915,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|sequencesWithAccessDatabase ()
+DECL|method|uploadPackSequencesWithAccessDatabase ()
 specifier|public
 name|void
-name|sequencesWithAccessDatabase
+name|uploadPackSequencesWithAccessDatabase
 parameter_list|()
 throws|throws
 name|Exception
@@ -2021,10 +2021,10 @@ block|}
 block|}
 block|}
 comment|/**    * Assert that refs seen by a non-admin user match expected.    *    * @param expectedWithMeta expected refs, in order. If NoteDb is disabled by    *     the configuration, any NoteDb refs (i.e. ending in "/meta") are removed    *     from the expected list before comparing to the actual results.    * @throws Exception    */
-DECL|method|assertRefs (String... expectedWithMeta)
+DECL|method|assertUploadPackRefs (String... expectedWithMeta)
 specifier|private
 name|void
-name|assertRefs
+name|assertUploadPackRefs
 parameter_list|(
 name|String
 modifier|...
