@@ -346,6 +346,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|RunnableScheduledFuture
 import|;
 end_import
@@ -1819,6 +1831,37 @@ name|setCanceledWhileRunning
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|runnable
+operator|instanceof
+name|Future
+argument_list|<
+name|?
+argument_list|>
+condition|)
+block|{
+comment|// Creating new futures eventually passes through
+comment|// AbstractExecutorService#schedule, which will convert the Guava
+comment|// Future to a Runnable, thereby making it impossible for the
+comment|// cancellation to propagate from ScheduledThreadPool's task back to
+comment|// the Guava future, so kludge it here.
+operator|(
+operator|(
+name|Future
+argument_list|<
+name|?
+argument_list|>
+operator|)
+name|runnable
+operator|)
+operator|.
+name|cancel
+argument_list|(
+name|mayInterruptIfRunning
+argument_list|)
+expr_stmt|;
 block|}
 name|executor
 operator|.
