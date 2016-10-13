@@ -65,7 +65,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -74,7 +74,9 @@ name|common
 operator|.
 name|base
 operator|.
-name|Enums
+name|Preconditions
+operator|.
+name|checkArgument
 import|;
 end_import
 
@@ -88,7 +90,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Optional
+name|Enums
 import|;
 end_import
 
@@ -209,10 +211,7 @@ argument_list|,
 literal|"_"
 argument_list|)
 expr_stmt|;
-name|Optional
-argument_list|<
 name|NoteDbMode
-argument_list|>
 name|mode
 init|=
 name|Enums
@@ -225,26 +224,20 @@ name|class
 argument_list|,
 name|value
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|mode
 operator|.
-name|isPresent
+name|orNull
 argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
+decl_stmt|;
+name|checkArgument
 argument_list|(
-literal|"Invalid value for "
-operator|+
+name|mode
+operator|!=
+literal|null
+argument_list|,
+literal|"Invalid value for %s: %s"
+argument_list|,
 name|VAR
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|System
 operator|.
 name|getenv
@@ -252,13 +245,9 @@ argument_list|(
 name|VAR
 argument_list|)
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 return|return
 name|mode
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 DECL|method|readWrite ()
