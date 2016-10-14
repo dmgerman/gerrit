@@ -1001,6 +1001,8 @@ argument_list|(
 name|PLUGIN
 argument_list|,
 name|pluginName
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
