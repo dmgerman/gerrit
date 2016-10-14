@@ -170,20 +170,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Splitter
 import|;
 end_import
@@ -815,6 +801,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -4215,7 +4211,7 @@ block|}
 return|return
 name|Optional
 operator|.
-name|absent
+name|empty
 argument_list|()
 return|;
 block|}

@@ -88,20 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -442,6 +428,16 @@ name|AssistedInject
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_class
 DECL|class|SetAssigneeOp
 specifier|public
@@ -657,7 +653,7 @@ name|oldAssigneeId
 init|=
 name|Optional
 operator|.
-name|fromNullable
+name|ofNullable
 argument_list|(
 name|change
 operator|.
