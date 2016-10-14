@@ -566,7 +566,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|LinkedHashMap
 import|;
 end_import
 
@@ -576,7 +576,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedHashMap
+name|List
 import|;
 end_import
 
