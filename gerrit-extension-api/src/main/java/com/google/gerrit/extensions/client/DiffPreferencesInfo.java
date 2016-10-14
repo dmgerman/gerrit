@@ -92,6 +92,16 @@ name|DEFAULT_TAB_SIZE
 init|=
 literal|8
 decl_stmt|;
+comment|/** Default font size. */
+DECL|field|DEFAULT_FONT_SIZE
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_FONT_SIZE
+init|=
+literal|12
+decl_stmt|;
 comment|/** Default line length. */
 DECL|field|DEFAULT_LINE_LENGTH
 specifier|public
@@ -164,6 +174,11 @@ DECL|field|tabSize
 specifier|public
 name|Integer
 name|tabSize
+decl_stmt|;
+DECL|field|fontSize
+specifier|public
+name|Integer
+name|fontSize
 decl_stmt|;
 DECL|field|lineLength
 specifier|public
@@ -300,6 +315,12 @@ operator|.
 name|tabSize
 operator|=
 name|DEFAULT_TAB_SIZE
+expr_stmt|;
+name|i
+operator|.
+name|fontSize
+operator|=
+name|DEFAULT_FONT_SIZE
 expr_stmt|;
 name|i
 operator|.
