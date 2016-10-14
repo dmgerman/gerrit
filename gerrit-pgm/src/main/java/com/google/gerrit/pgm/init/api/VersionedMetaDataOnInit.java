@@ -329,6 +329,12 @@ name|VersionedMetaDataOnInit
 extends|extends
 name|VersionedMetaData
 block|{
+DECL|field|project
+specifier|protected
+specifier|final
+name|String
+name|project
+decl_stmt|;
 DECL|field|flags
 specifier|private
 specifier|final
@@ -340,12 +346,6 @@ specifier|private
 specifier|final
 name|SitePaths
 name|site
-decl_stmt|;
-DECL|field|project
-specifier|private
-specifier|final
-name|String
-name|project
 decl_stmt|;
 DECL|field|ref
 specifier|private
