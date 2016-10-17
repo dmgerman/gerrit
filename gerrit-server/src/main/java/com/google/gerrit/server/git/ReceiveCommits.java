@@ -11761,15 +11761,12 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-else|else
-block|{
 name|itr
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
 continue|continue;
-block|}
 block|}
 name|newChangeIds
 operator|.
@@ -12135,8 +12132,6 @@ name|existingRefs
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|IOException
 block|{
 for|for
 control|(
