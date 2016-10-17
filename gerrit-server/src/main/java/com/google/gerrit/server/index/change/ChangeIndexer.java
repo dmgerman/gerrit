@@ -69,6 +69,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|EventUtil
+operator|.
+name|logEventListenerError
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -803,18 +823,18 @@ specifier|final
 name|ListeningExecutorService
 name|executor
 decl_stmt|;
-DECL|field|indexedListener
+DECL|field|indexedListeners
 specifier|private
 specifier|final
 name|DynamicSet
 argument_list|<
 name|ChangeIndexedListener
 argument_list|>
-name|indexedListener
+name|indexedListeners
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListener, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
+DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
 name|ChangeIndexer
 parameter_list|(
 name|SchemaFactory
@@ -843,7 +863,7 @@ name|DynamicSet
 argument_list|<
 name|ChangeIndexedListener
 argument_list|>
-name|indexedListener
+name|indexedListeners
 parameter_list|,
 annotation|@
 name|Assisted
@@ -894,6 +914,12 @@ name|context
 expr_stmt|;
 name|this
 operator|.
+name|indexedListeners
+operator|=
+name|indexedListeners
+expr_stmt|;
+name|this
+operator|.
 name|index
 operator|=
 name|index
@@ -904,16 +930,10 @@ name|indexes
 operator|=
 literal|null
 expr_stmt|;
-name|this
-operator|.
-name|indexedListener
-operator|=
-name|indexedListener
-expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListener, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
+DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
 name|ChangeIndexer
 parameter_list|(
 name|SchemaFactory
@@ -942,7 +962,7 @@ name|DynamicSet
 argument_list|<
 name|ChangeIndexedListener
 argument_list|>
-name|indexedListener
+name|indexedListeners
 parameter_list|,
 annotation|@
 name|Assisted
@@ -993,6 +1013,12 @@ name|context
 expr_stmt|;
 name|this
 operator|.
+name|indexedListeners
+operator|=
+name|indexedListeners
+expr_stmt|;
+name|this
+operator|.
 name|index
 operator|=
 literal|null
@@ -1002,12 +1028,6 @@ operator|.
 name|indexes
 operator|=
 name|indexes
-expr_stmt|;
-name|this
-operator|.
-name|indexedListener
-operator|=
-name|indexedListener
 expr_stmt|;
 block|}
 comment|/**    * Start indexing a change.    *    * @param id change to index.    * @return future for the indexing task.    */
@@ -1195,8 +1215,10 @@ control|(
 name|ChangeIndexedListener
 name|listener
 range|:
-name|indexedListener
+name|indexedListeners
 control|)
+block|{
+try|try
 block|{
 name|listener
 operator|.
@@ -1205,6 +1227,21 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|logEventListenerError
+argument_list|(
+name|listener
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|fireChangeDeletedFromIndexEvent (int id)
@@ -1221,8 +1258,10 @@ control|(
 name|ChangeIndexedListener
 name|listener
 range|:
-name|indexedListener
+name|indexedListeners
 control|)
+block|{
+try|try
 block|{
 name|listener
 operator|.
@@ -1231,6 +1270,21 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|logEventListenerError
+argument_list|(
+name|listener
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param change change to index.    */
