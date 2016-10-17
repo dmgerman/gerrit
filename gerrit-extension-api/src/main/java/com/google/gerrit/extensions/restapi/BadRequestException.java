@@ -102,6 +102,26 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * @param msg error text for client describing how request is bad.    * @param cause cause of this exception.    */
+DECL|method|BadRequestException (String msg, Throwable cause)
+specifier|public
+name|BadRequestException
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|msg
+argument_list|,
+name|cause
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
