@@ -3419,20 +3419,11 @@ name|ctx
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|repoOnlyOps
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
 name|logDebug
 argument_list|(
 literal|"Executing updateRepo on {} RepoOnlyOps"
 argument_list|,
-name|ops
+name|repoOnlyOps
 operator|.
 name|size
 argument_list|()
@@ -3453,7 +3444,6 @@ argument_list|(
 name|ctx
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
