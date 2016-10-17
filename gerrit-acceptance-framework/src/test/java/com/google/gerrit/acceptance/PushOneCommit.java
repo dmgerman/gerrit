@@ -531,6 +531,29 @@ name|FILE_CONTENT
 init|=
 literal|"some content"
 decl_stmt|;
+DECL|field|PATCH_FILE_ONLY
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PATCH_FILE_ONLY
+init|=
+literal|"diff --git a/a.txt b/a.txt\n"
+operator|+
+literal|"new file mode 100644\n"
+operator|+
+literal|"index 0000000..f0eec86\n"
+operator|+
+literal|"--- /dev/null\n"
+operator|+
+literal|"+++ b/a.txt\n"
+operator|+
+literal|"@@ -0,0 +1 @@\n"
+operator|+
+literal|"+some content\n"
+operator|+
+literal|"\\ No newline at end of file\n"
+decl_stmt|;
 DECL|field|PATCH
 specifier|public
 specifier|static
@@ -554,21 +577,7 @@ literal|"---\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"diff --git a/a.txt b/a.txt\n"
-operator|+
-literal|"new file mode 100644\n"
-operator|+
-literal|"index 0000000..f0eec86\n"
-operator|+
-literal|"--- /dev/null\n"
-operator|+
-literal|"+++ b/a.txt\n"
-operator|+
-literal|"@@ -0,0 +1 @@\n"
-operator|+
-literal|"+some content\n"
-operator|+
-literal|"\\ No newline at end of file\n"
+name|PATCH_FILE_ONLY
 decl_stmt|;
 DECL|interface|Factory
 specifier|public
