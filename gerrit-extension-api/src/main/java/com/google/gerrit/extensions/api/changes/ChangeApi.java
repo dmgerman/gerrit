@@ -128,6 +128,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|MergePatchSetInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|CommentInfo
 import|;
 end_import
@@ -356,6 +372,17 @@ name|ChangeApi
 name|revert
 parameter_list|(
 name|RevertInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** Create a merge patch set for the change. */
+DECL|method|createMergePatchSet (MergePatchSetInput in)
+name|ChangeInfo
+name|createMergePatchSet
+parameter_list|(
+name|MergePatchSetInput
 name|in
 parameter_list|)
 throws|throws
@@ -1425,6 +1452,25 @@ argument_list|<
 name|SubmittedTogetherOption
 argument_list|>
 name|b
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|createMergePatchSet (MergePatchSetInput in)
+specifier|public
+name|ChangeInfo
+name|createMergePatchSet
+parameter_list|(
+name|MergePatchSetInput
+name|in
 parameter_list|)
 throws|throws
 name|RestApiException
