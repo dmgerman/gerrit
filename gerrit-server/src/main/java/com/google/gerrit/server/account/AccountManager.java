@@ -2027,6 +2027,16 @@ name|getPreferredEmail
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|byIdCache
+operator|.
+name|evict
+argument_list|(
+name|account
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|realm
 operator|.
 name|onCreateAccount
