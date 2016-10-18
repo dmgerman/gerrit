@@ -88,6 +88,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -102,6 +112,16 @@ name|Objects
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * Describes the state required to submit a change.  */
 end_comment
@@ -112,11 +132,66 @@ specifier|public
 class|class
 name|SubmitRecord
 block|{
+DECL|method|findOkRecord ( Collection<SubmitRecord> in)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|SubmitRecord
+argument_list|>
+name|findOkRecord
+parameter_list|(
+name|Collection
+argument_list|<
+name|SubmitRecord
+argument_list|>
+name|in
+parameter_list|)
+block|{
+if|if
+condition|(
+name|in
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+return|return
+name|in
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|r
+lambda|->
+name|r
+operator|.
+name|status
+operator|==
+name|Status
+operator|.
+name|OK
+argument_list|)
+operator|.
+name|findFirst
+argument_list|()
+return|;
+block|}
 DECL|enum|Status
 specifier|public
 enum|enum
 name|Status
 block|{
+comment|// NOTE: These values are persisted in the index, so deleting or changing
+comment|// the name of any values requires a schema upgrade.
 comment|/** The change is ready for submission. */
 DECL|enumConstant|OK
 name|OK
@@ -166,6 +241,8 @@ specifier|public
 enum|enum
 name|Status
 block|{
+comment|// NOTE: These values are persisted in the index, so deleting or changing
+comment|// the name of any values requires a schema upgrade.
 comment|/**        * This label provides what is necessary for submission.        *<p>        * If provided, {@link Label#appliedBy} describes the user account        * that applied this label to the change.        */
 DECL|enumConstant|OK
 name|OK
