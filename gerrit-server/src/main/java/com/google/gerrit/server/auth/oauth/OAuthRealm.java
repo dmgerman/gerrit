@@ -69,6 +69,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
+operator|.
+name|FieldName
+operator|.
+name|USER_NAME
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -441,6 +461,10 @@ name|field
 parameter_list|)
 block|{
 return|return
+name|field
+operator|==
+name|USER_NAME
+operator|||
 name|editableAccountFields
 operator|.
 name|contains
