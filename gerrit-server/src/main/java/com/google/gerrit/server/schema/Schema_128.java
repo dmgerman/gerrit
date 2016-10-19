@@ -405,12 +405,12 @@ name|serverUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_128 (Provider<Schema_126> prior, GitRepositoryManager repoManager, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser)
+DECL|method|Schema_128 (Provider<Schema_127> prior, GitRepositoryManager repoManager, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser)
 name|Schema_128
 parameter_list|(
 name|Provider
 argument_list|<
-name|Schema_126
+name|Schema_127
 argument_list|>
 name|prior
 parameter_list|,
