@@ -4249,7 +4249,7 @@ comment|// Delete dangling key references.
 name|ReviewDb
 name|db
 init|=
-name|DeleteDraftChangeOp
+name|DeleteChangeOp
 operator|.
 name|unwrap
 argument_list|(

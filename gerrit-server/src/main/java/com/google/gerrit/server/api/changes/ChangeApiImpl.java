@@ -604,7 +604,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|DeleteDraftChange
+name|DeleteChange
 import|;
 end_import
 
@@ -1169,11 +1169,11 @@ name|CurrentRevision
 DECL|field|publishDraftChange
 name|publishDraftChange
 decl_stmt|;
-DECL|field|deleteDraftChange
+DECL|field|deleteChange
 specifier|private
 specifier|final
-name|DeleteDraftChange
-name|deleteDraftChange
+name|DeleteChange
+name|deleteChange
 decl_stmt|;
 DECL|field|getTopic
 specifier|private
@@ -1277,7 +1277,7 @@ name|move
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeApiImpl (Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, SuggestChangeReviewers suggestReviewers, Abandon abandon, Revert revert, Restore restore, CreateMergePatchSet updateByMerge, Provider<SubmittedTogether> submittedTogether, PublishDraftPatchSet.CurrentRevision publishDraftChange, DeleteDraftChange deleteDraftChange, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, PutAssignee putAssignee, GetAssignee getAssignee, GetPastAssignees getPastAssignees, DeleteAssignee deleteAssignee, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, Index index, ChangeEdits.Detail editDetail, Move move, @Assisted ChangeResource change)
+DECL|method|ChangeApiImpl (Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, SuggestChangeReviewers suggestReviewers, Abandon abandon, Revert revert, Restore restore, CreateMergePatchSet updateByMerge, Provider<SubmittedTogether> submittedTogether, PublishDraftPatchSet.CurrentRevision publishDraftChange, DeleteChange deleteChange, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, PutAssignee putAssignee, GetAssignee getAssignee, GetPastAssignees getPastAssignees, DeleteAssignee deleteAssignee, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, Index index, ChangeEdits.Detail editDetail, Move move, @Assisted ChangeResource change)
 name|ChangeApiImpl
 parameter_list|(
 name|Changes
@@ -1325,8 +1325,8 @@ operator|.
 name|CurrentRevision
 name|publishDraftChange
 parameter_list|,
-name|DeleteDraftChange
-name|deleteDraftChange
+name|DeleteChange
+name|deleteChange
 parameter_list|,
 name|GetTopic
 name|getTopic
@@ -1460,9 +1460,9 @@ name|publishDraftChange
 expr_stmt|;
 name|this
 operator|.
-name|deleteDraftChange
+name|deleteChange
 operator|=
-name|deleteDraftChange
+name|deleteChange
 expr_stmt|;
 name|this
 operator|.
@@ -2260,7 +2260,7 @@ name|RestApiException
 block|{
 try|try
 block|{
-name|deleteDraftChange
+name|deleteChange
 operator|.
 name|apply
 argument_list|(

@@ -1484,19 +1484,44 @@ name|db
 argument_list|)
 return|;
 block|}
-comment|/** Can this user delete this draft change or any draft patch set of this change? */
-DECL|method|canDeleteDraft (final ReviewDb db)
+comment|/** Can this user delete this change or any patch set of this change? */
+DECL|method|canDelete (ReviewDb db, Change.Status status)
 specifier|public
 name|boolean
-name|canDeleteDraft
+name|canDelete
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
+parameter_list|,
+name|Change
+operator|.
+name|Status
+name|status
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
+if|if
+condition|(
+operator|!
+name|isVisible
+argument_list|(
+name|db
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+switch|switch
+condition|(
+name|status
+condition|)
+block|{
+case|case
+name|DRAFT
+case|:
 return|return
 operator|(
 name|isOwner
@@ -1508,12 +1533,25 @@ operator|.
 name|canDeleteDrafts
 argument_list|()
 operator|)
-operator|&&
-name|isVisible
-argument_list|(
-name|db
-argument_list|)
 return|;
+case|case
+name|NEW
+case|:
+case|case
+name|ABANDONED
+case|:
+return|return
+name|isAdmin
+argument_list|()
+return|;
+case|case
+name|MERGED
+case|:
+default|default:
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|/** Can this user rebase this change? */
 DECL|method|canRebase (ReviewDb db)
@@ -2110,6 +2148,23 @@ return|;
 block|}
 return|return
 literal|false
+return|;
+block|}
+DECL|method|isAdmin ()
+specifier|public
+name|boolean
+name|isAdmin
+parameter_list|()
+block|{
+return|return
+name|getUser
+argument_list|()
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
+argument_list|()
 return|;
 block|}
 comment|/** @return true if the user is allowed to remove this reviewer. */

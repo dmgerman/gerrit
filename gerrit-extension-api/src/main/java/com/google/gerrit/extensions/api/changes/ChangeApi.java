@@ -438,7 +438,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Deletes a draft change.    */
+comment|/**    * Deletes a change.    */
 DECL|method|delete ()
 name|void
 name|delete

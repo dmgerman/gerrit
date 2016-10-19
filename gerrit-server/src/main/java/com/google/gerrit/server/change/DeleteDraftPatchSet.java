@@ -608,7 +608,7 @@ specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|DeleteDraftChangeOp
+name|DeleteChangeOp
 argument_list|>
 name|deleteChangeOpProvider
 decl_stmt|;
@@ -629,7 +629,7 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftPatchSet (Provider<ReviewDb> db, BatchUpdate.Factory updateFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, Provider<DeleteDraftChangeOp> deleteChangeOpProvider, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, @GerritServerConfig Config cfg)
+DECL|method|DeleteDraftPatchSet (Provider<ReviewDb> db, BatchUpdate.Factory updateFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, Provider<DeleteChangeOp> deleteChangeOpProvider, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, @GerritServerConfig Config cfg)
 specifier|public
 name|DeleteDraftPatchSet
 parameter_list|(
@@ -652,7 +652,7 @@ name|psUtil
 parameter_list|,
 name|Provider
 argument_list|<
-name|DeleteDraftChangeOp
+name|DeleteChangeOp
 argument_list|>
 name|deleteChangeOpProvider
 parameter_list|,
@@ -853,7 +853,7 @@ name|patchSet
 decl_stmt|;
 DECL|field|deleteChangeOp
 specifier|private
-name|DeleteDraftChangeOp
+name|DeleteChangeOp
 name|deleteChangeOp
 decl_stmt|;
 DECL|method|Op (PatchSet.Id psId)
@@ -962,12 +962,18 @@ operator|.
 name|getControl
 argument_list|()
 operator|.
-name|canDeleteDraft
+name|canDelete
 argument_list|(
 name|ctx
 operator|.
 name|getDb
 argument_list|()
+argument_list|,
+name|Change
+operator|.
+name|Status
+operator|.
+name|DRAFT
 argument_list|)
 condition|)
 block|{
@@ -1122,11 +1128,11 @@ argument_list|(
 name|psId
 argument_list|)
 expr_stmt|;
-comment|// Use the unwrap from DeleteDraftChangeOp to handle BatchUpdateReviewDb.
+comment|// Use the unwrap from DeleteChangeOp to handle BatchUpdateReviewDb.
 name|ReviewDb
 name|db
 init|=
-name|DeleteDraftChangeOp
+name|DeleteChangeOp
 operator|.
 name|unwrap
 argument_list|(
@@ -1443,12 +1449,18 @@ operator|.
 name|getControl
 argument_list|()
 operator|.
-name|canDeleteDraft
+name|canDelete
 argument_list|(
 name|db
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|Change
+operator|.
+name|Status
+operator|.
+name|DRAFT
 argument_list|)
 operator|&&
 name|psCount
