@@ -479,6 +479,13 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|includedIn ()
+name|IncludedInInfo
+name|includedIn
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|addReviewer (AddReviewerInput in)
 name|void
 name|addReviewer
@@ -1046,6 +1053,20 @@ parameter_list|(
 name|String
 name|topic
 parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|includedIn ()
+specifier|public
+name|IncludedInInfo
+name|includedIn
+parameter_list|()
 block|{
 throw|throw
 operator|new
