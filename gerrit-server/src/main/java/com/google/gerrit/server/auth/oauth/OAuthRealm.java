@@ -69,26 +69,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-operator|.
-name|FieldName
-operator|.
-name|USER_NAME
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -396,6 +376,17 @@ name|HashSet
 argument_list|<>
 argument_list|()
 expr_stmt|;
+comment|// User name should be always editable, because not all OAuth providers
+comment|// expose them
+name|editableAccountFields
+operator|.
+name|add
+argument_list|(
+name|FieldName
+operator|.
+name|USER_NAME
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|config
@@ -461,10 +452,6 @@ name|field
 parameter_list|)
 block|{
 return|return
-name|field
-operator|==
-name|USER_NAME
-operator|||
 name|editableAccountFields
 operator|.
 name|contains
