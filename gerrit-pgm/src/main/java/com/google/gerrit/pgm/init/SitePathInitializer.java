@@ -797,7 +797,17 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"CommentHtml.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"CommentFooter.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
+literal|"CommentFooterHtml.soy"
 argument_list|)
 expr_stmt|;
 name|extractMailExample
