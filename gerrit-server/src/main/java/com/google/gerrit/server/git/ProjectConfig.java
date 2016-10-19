@@ -4643,13 +4643,10 @@ comment|// all rules in the same file share the same GroupReference.
 comment|//
 name|ref
 operator|=
-name|resolve
-argument_list|(
 name|rule
 operator|.
 name|getGroup
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|groupsByName
 operator|.

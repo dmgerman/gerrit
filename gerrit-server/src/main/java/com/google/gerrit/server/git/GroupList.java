@@ -237,14 +237,6 @@ name|FILE_NAME
 init|=
 literal|"groups"
 decl_stmt|;
-DECL|field|project
-specifier|private
-specifier|final
-name|Project
-operator|.
-name|NameKey
-name|project
-decl_stmt|;
 DECL|field|byUUID
 specifier|private
 specifier|final
@@ -258,15 +250,10 @@ name|GroupReference
 argument_list|>
 name|byUUID
 decl_stmt|;
-DECL|method|GroupList (Project.NameKey project, Map<AccountGroup.UUID, GroupReference> byUUID)
+DECL|method|GroupList (Map<AccountGroup.UUID, GroupReference> byUUID)
 specifier|private
 name|GroupList
 parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
 name|Map
 argument_list|<
 name|AccountGroup
@@ -278,12 +265,6 @@ argument_list|>
 name|byUUID
 parameter_list|)
 block|{
-name|this
-operator|.
-name|project
-operator|=
-name|project
-expr_stmt|;
 name|this
 operator|.
 name|byUUID
@@ -429,8 +410,6 @@ return|return
 operator|new
 name|GroupList
 argument_list|(
-name|project
-argument_list|,
 name|groupsByUUID
 argument_list|)
 return|;
@@ -491,17 +470,10 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"attempting to resolve null group in {}: {}"
-argument_list|,
-name|project
-argument_list|,
-name|group
-argument_list|)
-expr_stmt|;
+comment|// A GroupReference from ProjectConfig that refers to a group not found
+comment|// in this file will have a null UUID. Since there may be multiple
+comment|// different missing references, it's not appropriate to cache the
+comment|// results, nor return null the set from #uuids.
 return|return
 name|group
 return|;
@@ -609,18 +581,8 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"attempting to put null group in {}: {}"
-argument_list|,
-name|project
-argument_list|,
-name|reference
-argument_list|)
-expr_stmt|;
 return|return;
+comment|// See note in #resolve above.
 block|}
 name|byUUID
 operator|.
