@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -800,6 +814,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|getLatestSchemaVersion ()
+specifier|public
+name|SchemaVersion
+name|getLatestSchemaVersion
+parameter_list|()
+block|{
+return|return
+name|updater
+operator|.
+name|get
+argument_list|()
+return|;
 block|}
 DECL|method|getSchemaVersion (final ReviewDb db)
 specifier|private
