@@ -374,6 +374,17 @@ name|HashSet
 argument_list|<>
 argument_list|()
 expr_stmt|;
+comment|// User name should be always editable, because not all OAuth providers
+comment|// expose them
+name|editableAccountFields
+operator|.
+name|add
+argument_list|(
+name|AccountFieldName
+operator|.
+name|USER_NAME
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|config
