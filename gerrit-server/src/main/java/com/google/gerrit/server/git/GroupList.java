@@ -100,24 +100,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGroup
-operator|.
-name|UUID
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -389,6 +371,34 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|group
+operator|.
+name|getUUID
+argument_list|()
+operator|==
+literal|null
+operator|||
+name|group
+operator|.
+name|getUUID
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+comment|// A GroupReference from ProjectConfig that refers to a group not found
+comment|// in this file will have a null UUID. Since there may be multiple
+comment|// different missing references, it's not appropriate to cache the
+comment|// results, nor return null the set from #uuids.
+return|return
+name|group
+return|;
+block|}
 name|GroupReference
 name|ref
 init|=
@@ -464,11 +474,13 @@ name|keySet
 argument_list|()
 return|;
 block|}
-DECL|method|put (UUID uuid, GroupReference reference)
+DECL|method|put (AccountGroup.UUID uuid, GroupReference reference)
 specifier|public
 name|void
 name|put
 parameter_list|(
+name|AccountGroup
+operator|.
 name|UUID
 name|uuid
 parameter_list|,
@@ -476,6 +488,23 @@ name|GroupReference
 name|reference
 parameter_list|)
 block|{
+if|if
+condition|(
+name|uuid
+operator|==
+literal|null
+operator|||
+name|uuid
+operator|.
+name|get
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+comment|// See note in #resolve above.
+block|}
 name|byUUID
 operator|.
 name|put
