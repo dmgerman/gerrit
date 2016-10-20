@@ -1449,8 +1449,6 @@ name|appendRangedComment
 argument_list|(
 name|out
 argument_list|,
-name|contextLines
-argument_list|,
 name|currentFileData
 argument_list|,
 name|comment
@@ -1475,16 +1473,13 @@ block|}
 comment|/**    * No longer used except for Velocity. Remove this method when VTL support is    * removed.    */
 annotation|@
 name|Deprecated
-DECL|method|appendRangedComment (StringBuilder out, int contextLines, PatchFile fileData, Comment comment)
+DECL|method|appendRangedComment (StringBuilder out, PatchFile fileData, Comment comment)
 specifier|private
 name|void
 name|appendRangedComment
 parameter_list|(
 name|StringBuilder
 name|out
-parameter_list|,
-name|int
-name|contextLines
 parameter_list|,
 name|PatchFile
 name|fileData
@@ -2202,12 +2197,6 @@ name|empty
 argument_list|()
 return|;
 block|}
-name|Optional
-argument_list|<
-name|Comment
-argument_list|>
-name|parent
-decl_stmt|;
 name|Comment
 operator|.
 name|Key
