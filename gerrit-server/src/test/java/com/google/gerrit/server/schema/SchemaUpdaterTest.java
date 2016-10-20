@@ -68,13 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -952,7 +956,14 @@ operator|.
 name|getSystemConfig
 argument_list|()
 decl_stmt|;
-name|assertEquals
+name|assertThat
+argument_list|(
+name|sc
+operator|.
+name|sitePath
+argument_list|)
+operator|.
+name|isEqualTo
 argument_list|(
 name|paths
 operator|.
@@ -963,10 +974,6 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-argument_list|,
-name|sc
-operator|.
-name|sitePath
 argument_list|)
 expr_stmt|;
 block|}
