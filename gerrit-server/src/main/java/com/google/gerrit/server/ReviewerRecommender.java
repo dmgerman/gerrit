@@ -65,6 +65,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ReviewerStateInternal
+operator|.
+name|REVIEWER
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -181,6 +199,22 @@ operator|.
 name|client
 operator|.
 name|PatchSetApproval
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDb
 import|;
 end_import
 
@@ -457,6 +491,18 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
@@ -795,9 +841,24 @@ specifier|final
 name|WorkQueue
 name|workQueue
 decl_stmt|;
+DECL|field|dbProvider
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|dbProvider
+decl_stmt|;
+DECL|field|approvalsUtil
+specifier|private
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerRecommender (ChangeQueryBuilder changeQueryBuilder, DynamicMap<ReviewerSuggestion> reviewerSuggestionPluginMap, InternalChangeQuery internalChangeQuery, WorkQueue workQueue, @GerritServerConfig Config config)
+DECL|method|ReviewerRecommender (ChangeQueryBuilder changeQueryBuilder, DynamicMap<ReviewerSuggestion> reviewerSuggestionPluginMap, InternalChangeQuery internalChangeQuery, WorkQueue workQueue, Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, @GerritServerConfig Config config)
 name|ReviewerRecommender
 parameter_list|(
 name|ChangeQueryBuilder
@@ -814,6 +875,15 @@ name|internalChangeQuery
 parameter_list|,
 name|WorkQueue
 name|workQueue
+parameter_list|,
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|dbProvider
+parameter_list|,
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -874,6 +944,18 @@ operator|.
 name|workQueue
 operator|=
 name|workQueue
+expr_stmt|;
+name|this
+operator|.
+name|dbProvider
+operator|=
+name|dbProvider
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 block|}
 DECL|method|suggestReviewers ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectControl projectControl, List<Account.Id> candidateList)
@@ -1312,7 +1394,6 @@ name|of
 argument_list|()
 return|;
 block|}
-comment|// Remove change owner
 if|if
 condition|(
 name|changeNotes
@@ -1320,6 +1401,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Remove change owner
 name|reviewerScores
 operator|.
 name|remove
@@ -1331,6 +1413,32 @@ argument_list|()
 operator|.
 name|getOwner
 argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Remove existing reviewers
+name|reviewerScores
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|removeAll
+argument_list|(
+name|approvalsUtil
+operator|.
+name|getReviewers
+argument_list|(
+name|dbProvider
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|changeNotes
+argument_list|)
+operator|.
+name|byState
+argument_list|(
+name|REVIEWER
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
