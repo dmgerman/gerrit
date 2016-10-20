@@ -890,6 +890,10 @@ argument_list|(
 name|ctx
 argument_list|,
 name|summary
+argument_list|,
+name|ChangeMessagesUtil
+operator|.
+name|TAG_SET_TOPIC
 argument_list|)
 decl_stmt|;
 name|cmUtil

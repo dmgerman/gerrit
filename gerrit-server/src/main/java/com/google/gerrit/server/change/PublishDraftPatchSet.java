@@ -1934,6 +1934,10 @@ name|get
 argument_list|()
 operator|+
 literal|"."
+argument_list|,
+name|ChangeMessagesUtil
+operator|.
+name|TAG_UPLOADED_PATCH_SET
 argument_list|)
 decl_stmt|;
 name|ReplacePatchSetSender
