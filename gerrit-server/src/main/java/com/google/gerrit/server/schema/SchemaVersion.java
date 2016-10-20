@@ -74,6 +74,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Lists
@@ -404,6 +418,22 @@ parameter_list|()
 block|{
 return|return
 name|versionNbr
+return|;
+block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|getPrior ()
+specifier|public
+specifier|final
+name|SchemaVersion
+name|getPrior
+parameter_list|()
+block|{
+return|return
+name|prior
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 DECL|method|check (UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db)
