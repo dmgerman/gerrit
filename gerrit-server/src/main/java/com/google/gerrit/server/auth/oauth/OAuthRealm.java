@@ -458,7 +458,7 @@ name|field
 argument_list|)
 return|;
 block|}
-comment|/**    * Authenticates with the {@link OAuthLoginProvider} specified    * in the authentication request.    *    * {@link AccountManager} calls this method without password    * if authenticity of the user has already been established.    * In that case the {@link AuthRequest} is supposed to contain    * a resolved email address and we can skip the authentication    * request to the {@code OAuthLoginService}.    *    * @param who the authentication request.    *    * @return the authentication request with resolved email address    * and display name in case the authenticity of the user could    * be established; otherwise {@code who} is returned unchanged.    *    * @throws AccountException if the authentication request with    * the OAuth2 server failed or no {@code OAuthLoginProvider} was    * available to handle the request.    */
+comment|/**    * Authenticates with the {@link OAuthLoginProvider} specified    * in the authentication request.    *    * {@link AccountManager} calls this method without password    * if authenticity of the user has already been established.    * In that case we can skip the authentication request to the    * {@code OAuthLoginService}.    *    * @param who the authentication request.    *    * @return the authentication request with resolved email address    * and display name in case the authenticity of the user could    * be established; otherwise {@code who} is returned unchanged.    *    * @throws AccountException if the authentication request with    * the OAuth2 server failed or no {@code OAuthLoginProvider} was    * available to handle the request.    */
 annotation|@
 name|Override
 DECL|method|authenticate (AuthRequest who)
@@ -481,17 +481,6 @@ argument_list|(
 name|who
 operator|.
 name|getPassword
-argument_list|()
-argument_list|)
-operator|&&
-operator|!
-name|Strings
-operator|.
-name|isNullOrEmpty
-argument_list|(
-name|who
-operator|.
-name|getEmailAddress
 argument_list|()
 argument_list|)
 condition|)
