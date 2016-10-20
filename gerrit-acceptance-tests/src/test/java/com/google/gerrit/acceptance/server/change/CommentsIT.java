@@ -4809,6 +4809,10 @@ literal|"File a.txt:\n"
 operator|+
 literal|"\n"
 operator|+
+name|url
+operator|+
+literal|"#/c/12/1/a.txt@a2\n"
+operator|+
 literal|"PS1, Line 2: \n"
 operator|+
 literal|"what happened to this?\n"
@@ -4816,6 +4820,10 @@ operator|+
 literal|"\n"
 operator|+
 literal|"\n"
+operator|+
+name|url
+operator|+
+literal|"#/c/12/1/a.txt@1\n"
 operator|+
 literal|"PS1, Line 1: ew\n"
 operator|+
@@ -4837,6 +4845,10 @@ literal|"File a.txt:\n"
 operator|+
 literal|"\n"
 operator|+
+name|url
+operator|+
+literal|"#/c/12/2/a.txt@a1\n"
+operator|+
 literal|"PS2, Line 1: \n"
 operator|+
 literal|"comment 1 on base\n"
@@ -4844,6 +4856,10 @@ operator|+
 literal|"\n"
 operator|+
 literal|"\n"
+operator|+
+name|url
+operator|+
+literal|"#/c/12/2/a.txt@a2\n"
 operator|+
 literal|"PS2, Line 2: \n"
 operator|+
@@ -4853,6 +4869,10 @@ literal|"\n"
 operator|+
 literal|"\n"
 operator|+
+name|url
+operator|+
+literal|"#/c/12/2/a.txt@1\n"
+operator|+
 literal|"PS2, Line 1: ew\n"
 operator|+
 literal|"join lines\n"
@@ -4860,6 +4880,10 @@ operator|+
 literal|"\n"
 operator|+
 literal|"\n"
+operator|+
+name|url
+operator|+
+literal|"#/c/12/2/a.txt@2\n"
 operator|+
 literal|"PS2, Line 2: nten\n"
 operator|+
