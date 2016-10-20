@@ -170,7 +170,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|MergePatchSetInput
+name|MergeInput
 import|;
 end_import
 
@@ -186,7 +186,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|MergeInput
+name|MergePatchSetInput
 import|;
 end_import
 
