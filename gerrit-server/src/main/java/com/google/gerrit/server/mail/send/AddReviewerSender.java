@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2011 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,8 +63,24 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
 
 begin_import
 import|import
@@ -90,13 +106,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|AccountProjectWatch
+name|changes
 operator|.
-name|NotifyType
+name|NotifyHandling
 import|;
 end_import
 
@@ -173,33 +189,24 @@ import|;
 end_import
 
 begin_comment
-comment|/** Send notice about a change being restored by its owner. */
+comment|/** Asks a user to review a change. */
 end_comment
 
 begin_class
-DECL|class|RestoredSender
+DECL|class|AddReviewerSender
 specifier|public
 class|class
-name|RestoredSender
+name|AddReviewerSender
 extends|extends
-name|ReplyToChangeSender
+name|NewChangeSender
 block|{
 DECL|interface|Factory
 specifier|public
 interface|interface
 name|Factory
-extends|extends
-name|ReplyToChangeSender
-operator|.
-name|Factory
-argument_list|<
-name|RestoredSender
-argument_list|>
 block|{
-annotation|@
-name|Override
-DECL|method|create (Project.NameKey project, Change.Id id)
-name|RestoredSender
+DECL|method|create (Project.NameKey project, Change.Id id, NotifyHandling notify)
+name|AddReviewerSender
 name|create
 parameter_list|(
 name|Project
@@ -211,14 +218,17 @@ name|Change
 operator|.
 name|Id
 name|id
+parameter_list|,
+name|NotifyHandling
+name|notify
 parameter_list|)
 function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|RestoredSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|AddReviewerSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable NotifyHandling notify)
 specifier|public
-name|RestoredSender
+name|AddReviewerSender
 parameter_list|(
 name|EmailArguments
 name|ea
@@ -236,6 +246,13 @@ name|Change
 operator|.
 name|Id
 name|id
+parameter_list|,
+annotation|@
+name|Assisted
+annotation|@
+name|Nullable
+name|NotifyHandling
+name|notify
 parameter_list|)
 throws|throws
 name|OrmException
@@ -243,8 +260,6 @@ block|{
 name|super
 argument_list|(
 name|ea
-argument_list|,
-literal|"restore"
 argument_list|,
 name|newChangeData
 argument_list|(
@@ -256,6 +271,19 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|notify
+operator|!=
+literal|null
+condition|)
+block|{
+name|setNotify
+argument_list|(
+name|notify
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -272,65 +300,9 @@ operator|.
 name|init
 argument_list|()
 expr_stmt|;
-name|ccAllApprovals
+name|ccExistingReviewers
 argument_list|()
 expr_stmt|;
-name|bccStarredBy
-argument_list|()
-expr_stmt|;
-name|includeWatchers
-argument_list|(
-name|NotifyType
-operator|.
-name|ALL_COMMENTS
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|formatChange ()
-specifier|protected
-name|void
-name|formatChange
-parameter_list|()
-throws|throws
-name|EmailException
-block|{
-name|appendText
-argument_list|(
-name|textTemplate
-argument_list|(
-literal|"Restored"
-argument_list|)
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|useHtml
-argument_list|()
-condition|)
-block|{
-name|appendHtml
-argument_list|(
-name|soyHtmlTemplate
-argument_list|(
-literal|"RestoredHtml"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Override
-DECL|method|supportsHtml ()
-specifier|protected
-name|boolean
-name|supportsHtml
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
 block|}
 block|}
 end_class

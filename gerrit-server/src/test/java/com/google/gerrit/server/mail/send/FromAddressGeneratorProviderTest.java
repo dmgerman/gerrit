@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
 
@@ -269,6 +271,22 @@ operator|.
 name|WatchConfig
 operator|.
 name|ProjectWatchKey
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|Address
 import|;
 end_import
 
@@ -664,7 +682,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -676,7 +695,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -751,7 +771,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isNull
@@ -761,7 +782,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -836,7 +858,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -850,7 +873,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -909,7 +933,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -924,7 +949,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1018,7 +1044,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1030,7 +1057,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1121,7 +1149,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1135,7 +1164,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1239,7 +1269,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1251,7 +1282,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1352,7 +1384,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1366,7 +1399,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1462,7 +1496,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1474,7 +1509,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1624,7 +1660,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1639,7 +1676,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1698,7 +1736,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1713,7 +1752,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1866,7 +1906,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1880,7 +1921,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1958,7 +2000,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -1970,7 +2013,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2048,7 +2092,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2062,7 +2107,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2121,7 +2167,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2136,7 +2183,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2220,7 +2268,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2236,7 +2285,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2311,7 +2361,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2323,7 +2374,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2379,7 +2431,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
@@ -2394,7 +2447,8 @@ name|assertThat
 argument_list|(
 name|r
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo

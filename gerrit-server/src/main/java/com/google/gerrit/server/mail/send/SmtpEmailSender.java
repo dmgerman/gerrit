@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
 
@@ -195,6 +197,22 @@ operator|.
 name|config
 operator|.
 name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|Address
 import|;
 end_import
 
@@ -1231,7 +1249,8 @@ name|setSender
 argument_list|(
 name|from
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1247,7 +1266,8 @@ literal|" rejected from address "
 operator|+
 name|from
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1269,7 +1289,8 @@ name|addRecipient
 argument_list|(
 name|addr
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 condition|)
 block|{

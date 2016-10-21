@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
 
@@ -229,6 +231,40 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|Address
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|RecipientType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|send
 operator|.
 name|EmailHeader
 operator|.
@@ -1262,13 +1298,15 @@ operator|&&
 operator|!
 name|smtpFromAddress
 operator|.
-name|email
+name|getEmail
+argument_list|()
 operator|.
 name|equals
 argument_list|(
 name|a
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1278,7 +1316,8 @@ literal|"Reply-To"
 argument_list|,
 name|a
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2309,13 +2348,15 @@ literal|null
 operator|&&
 name|addr
 operator|.
-name|email
+name|getEmail
+argument_list|()
 operator|!=
 literal|null
 operator|&&
 name|addr
 operator|.
-name|email
+name|getEmail
+argument_list|()
 operator|.
 name|length
 argument_list|()
@@ -2332,7 +2373,8 @@ name|isValid
 argument_list|(
 name|addr
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2344,7 +2386,8 @@ literal|"Not emailing "
 operator|+
 name|addr
 operator|.
-name|email
+name|getEmail
+argument_list|()
 operator|+
 literal|" (invalid email address)"
 argument_list|)
@@ -2362,7 +2405,8 @@ name|canEmail
 argument_list|(
 name|addr
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2374,7 +2418,8 @@ literal|"Not emailing "
 operator|+
 name|addr
 operator|.
-name|email
+name|getEmail
+argument_list|()
 operator|+
 literal|" (prohibited by allowrcpt)"
 argument_list|)
@@ -3158,7 +3203,8 @@ operator|.
 name|next
 argument_list|()
 operator|.
-name|email
+name|getEmail
+argument_list|()
 operator|.
 name|equals
 argument_list|(

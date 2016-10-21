@@ -416,6 +416,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|ReplyToChangeSender
 import|;
 end_import
@@ -431,6 +433,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 operator|.
 name|RestoredSender
 import|;

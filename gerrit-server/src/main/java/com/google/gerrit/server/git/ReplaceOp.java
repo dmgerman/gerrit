@@ -566,6 +566,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|ReplacePatchSetSender
 import|;
 end_import

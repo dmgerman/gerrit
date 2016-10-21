@@ -320,6 +320,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|OutgoingEmailValidator
 import|;
 end_import
@@ -335,6 +337,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 operator|.
 name|RegisterNewEmailSender
 import|;

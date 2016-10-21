@@ -188,6 +188,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|SmtpEmailSender
 operator|.
 name|Encryption

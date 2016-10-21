@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
 
@@ -171,6 +173,38 @@ operator|.
 name|config
 operator|.
 name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|Address
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|MailUtil
 import|;
 end_import
 
@@ -399,7 +433,8 @@ name|name
 argument_list|,
 name|srvAddr
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -504,7 +539,8 @@ name|name
 init|=
 name|a
 operator|.
-name|name
+name|getName
+argument_list|()
 operator|!=
 literal|null
 condition|?
@@ -513,7 +549,8 @@ name|ParameterizedString
 argument_list|(
 name|a
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 else|:
 literal|null
@@ -559,7 +596,8 @@ name|name
 argument_list|,
 name|a
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -824,7 +862,8 @@ name|senderName
 operator|=
 name|serverAddress
 operator|.
-name|name
+name|getName
+argument_list|()
 expr_stmt|;
 block|}
 name|String
@@ -838,7 +877,8 @@ name|ParameterizedString
 argument_list|(
 name|serverAddress
 operator|.
-name|email
+name|getEmail
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1223,7 +1263,8 @@ name|senderName
 operator|=
 name|serverAddress
 operator|.
-name|name
+name|getName
+argument_list|()
 expr_stmt|;
 block|}
 name|String

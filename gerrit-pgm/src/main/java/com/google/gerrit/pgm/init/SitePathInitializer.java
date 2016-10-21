@@ -330,6 +330,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|OutgoingEmail
 import|;
 end_import

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
 
@@ -145,6 +147,22 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|RecipientType
 import|;
 end_import
 
@@ -239,17 +257,38 @@ import|;
 end_import
 
 begin_comment
-comment|/** Let users know that a reviewer and possibly her review have  * been removed. */
+comment|/** Send notice of new patch sets for reviewers. */
 end_comment
 
 begin_class
-DECL|class|DeleteReviewerSender
+DECL|class|ReplacePatchSetSender
 specifier|public
 class|class
-name|DeleteReviewerSender
+name|ReplacePatchSetSender
 extends|extends
 name|ReplyToChangeSender
 block|{
+DECL|interface|Factory
+specifier|public
+interface|interface
+name|Factory
+block|{
+DECL|method|create (Project.NameKey project, Change.Id id)
+name|ReplacePatchSetSender
+name|create
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+function_decl|;
+block|}
 DECL|field|reviewers
 specifier|private
 specifier|final
@@ -266,41 +305,27 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-extends|extends
-name|ReplyToChangeSender
-operator|.
-name|Factory
+DECL|field|extraCC
+specifier|private
+specifier|final
+name|Set
 argument_list|<
-name|DeleteReviewerSender
-argument_list|>
-block|{
-annotation|@
-name|Override
-DECL|method|create (Project.NameKey project, Change.Id change)
-name|DeleteReviewerSender
-name|create
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-name|Change
+name|Account
 operator|.
 name|Id
-name|change
-parameter_list|)
-function_decl|;
-block|}
+argument_list|>
+name|extraCC
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteReviewerSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|ReplacePatchSetSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
-name|DeleteReviewerSender
+name|ReplacePatchSetSender
 parameter_list|(
 name|EmailArguments
 name|ea
@@ -326,7 +351,7 @@ name|super
 argument_list|(
 name|ea
 argument_list|,
-literal|"deleteReviewer"
+literal|"newpatchset"
 argument_list|,
 name|newChangeData
 argument_list|(
@@ -339,11 +364,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addReviewers (Collection<Account.Id> cc)
+DECL|method|addReviewers (final Collection<Account.Id> cc)
 specifier|public
 name|void
 name|addReviewers
 parameter_list|(
+specifier|final
 name|Collection
 argument_list|<
 name|Account
@@ -354,6 +380,29 @@ name|cc
 parameter_list|)
 block|{
 name|reviewers
+operator|.
+name|addAll
+argument_list|(
+name|cc
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|addExtraCC (final Collection<Account.Id> cc)
+specifier|public
+name|void
+name|addExtraCC
+parameter_list|(
+specifier|final
+name|Collection
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|cc
+parameter_list|)
+block|{
+name|extraCC
 operator|.
 name|addAll
 argument_list|(
@@ -376,22 +425,23 @@ operator|.
 name|init
 argument_list|()
 expr_stmt|;
-name|ccAllApprovals
-argument_list|()
-expr_stmt|;
-name|bccStarredBy
-argument_list|()
-expr_stmt|;
-name|ccExistingReviewers
-argument_list|()
-expr_stmt|;
-name|includeWatchers
-argument_list|(
-name|NotifyType
+if|if
+condition|(
+name|fromId
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// Don't call yourself a reviewer of your own patch set.
+comment|//
+name|reviewers
 operator|.
-name|ALL_COMMENTS
+name|remove
+argument_list|(
+name|fromId
 argument_list|)
 expr_stmt|;
+block|}
 name|add
 argument_list|(
 name|RecipientType
@@ -399,6 +449,32 @@ operator|.
 name|TO
 argument_list|,
 name|reviewers
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|RecipientType
+operator|.
+name|CC
+argument_list|,
+name|extraCC
+argument_list|)
+expr_stmt|;
+name|rcptToAuthors
+argument_list|(
+name|RecipientType
+operator|.
+name|CC
+argument_list|)
+expr_stmt|;
+name|bccStarredBy
+argument_list|()
+expr_stmt|;
+name|includeWatchers
+argument_list|(
+name|NotifyType
+operator|.
+name|NEW_PATCHSETS
 argument_list|)
 expr_stmt|;
 block|}
@@ -416,7 +492,7 @@ name|appendText
 argument_list|(
 name|textTemplate
 argument_list|(
-literal|"DeleteReviewer"
+literal|"ReplacePatchSet"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -430,7 +506,7 @@ name|appendHtml
 argument_list|(
 name|soyHtmlTemplate
 argument_list|(
-literal|"DeleteReviewerHtml"
+literal|"ReplacePatchSetHtml"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -445,18 +521,6 @@ argument_list|>
 name|getReviewerNames
 parameter_list|()
 block|{
-if|if
-condition|(
-name|reviewers
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 name|List
 argument_list|<
 name|String
@@ -478,6 +542,18 @@ range|:
 name|reviewers
 control|)
 block|{
+if|if
+condition|(
+name|id
+operator|.
+name|equals
+argument_list|(
+name|fromId
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 name|names
 operator|.
 name|add
@@ -488,6 +564,18 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|names
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|null
+return|;
 block|}
 return|return
 name|names

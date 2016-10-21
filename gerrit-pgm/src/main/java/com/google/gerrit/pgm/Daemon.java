@@ -906,6 +906,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|SmtpEmailSender
 import|;
 end_import
