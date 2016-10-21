@@ -569,6 +569,16 @@ argument_list|(
 name|args
 argument_list|)
 return|;
+case|case
+name|REBASE_ALWAYS
+case|:
+return|return
+operator|new
+name|RebaseAlways
+argument_list|(
+name|args
+argument_list|)
+return|;
 default|default:
 name|String
 name|errorMsg

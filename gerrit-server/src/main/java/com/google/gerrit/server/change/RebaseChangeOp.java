@@ -640,6 +640,13 @@ name|copyApprovals
 init|=
 literal|true
 decl_stmt|;
+DECL|field|postMessage
+specifier|private
+name|boolean
+name|postMessage
+init|=
+literal|true
+decl_stmt|;
 DECL|field|rebasedCommit
 specifier|private
 name|RevCommit
@@ -838,6 +845,25 @@ operator|.
 name|copyApprovals
 operator|=
 name|copyApprovals
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setPostMessage (boolean postMessage)
+specifier|public
+name|RebaseChangeOp
+name|setPostMessage
+parameter_list|(
+name|boolean
+name|postMessage
+parameter_list|)
+block|{
+name|this
+operator|.
+name|postMessage
+operator|=
+name|postMessage
 expr_stmt|;
 return|return
 name|this
@@ -1091,6 +1117,13 @@ name|setCopyApprovals
 argument_list|(
 name|copyApprovals
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|postMessage
+condition|)
+block|{
+name|patchSetInserter
 operator|.
 name|setMessage
 argument_list|(
@@ -1114,6 +1147,7 @@ operator|+
 literal|" was rebased"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|base

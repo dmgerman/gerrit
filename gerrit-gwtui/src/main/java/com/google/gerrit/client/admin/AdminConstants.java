@@ -375,6 +375,11 @@ name|String
 name|projectSubmitType_REBASE_IF_NECESSARY
 parameter_list|()
 function_decl|;
+DECL|method|projectSubmitType_REBASE_ALWAYS ()
+name|String
+name|projectSubmitType_REBASE_ALWAYS
+parameter_list|()
+function_decl|;
 DECL|method|projectSubmitType_CHERRY_PICK ()
 name|String
 name|projectSubmitType_CHERRY_PICK

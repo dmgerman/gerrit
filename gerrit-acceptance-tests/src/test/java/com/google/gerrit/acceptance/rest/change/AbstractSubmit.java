@@ -1327,12 +1327,23 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|getSubmitType
 argument_list|()
 operator|==
 name|SubmitType
 operator|.
 name|CHERRY_PICK
+operator|)
+operator|||
+operator|(
+name|getSubmitType
+argument_list|()
+operator|==
+name|SubmitType
+operator|.
+name|REBASE_ALWAYS
+operator|)
 condition|)
 block|{
 comment|// The change is updated as well:
@@ -1661,12 +1672,23 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|getSubmitType
 argument_list|()
 operator|==
 name|SubmitType
 operator|.
 name|REBASE_IF_NECESSARY
+operator|)
+operator|||
+operator|(
+name|getSubmitType
+argument_list|()
+operator|==
+name|SubmitType
+operator|.
+name|REBASE_ALWAYS
+operator|)
 condition|)
 block|{
 name|String
@@ -2012,6 +2034,8 @@ operator|.
 name|CHERRY_PICK
 condition|)
 block|{
+comment|// CherryPick ignores dependencies, thus only change and destination
+comment|// branch refs are modified.
 name|assertThat
 argument_list|(
 name|actual
@@ -2020,6 +2044,30 @@ operator|.
 name|hasSize
 argument_list|(
 literal|2
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|getSubmitType
+argument_list|()
+operator|==
+name|SubmitType
+operator|.
+name|REBASE_ALWAYS
+condition|)
+block|{
+comment|// RebaseAlways takes care of dependencies, therefore Change{2,3,4} and
+comment|// destination branch will be modified.
+name|assertThat
+argument_list|(
+name|actual
+argument_list|)
+operator|.
+name|hasSize
+argument_list|(
+literal|4
 argument_list|)
 expr_stmt|;
 block|}
@@ -3113,6 +3161,28 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"Change has been successfully cherry-picked as "
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|getSubmitType
+argument_list|()
+operator|==
+name|SubmitType
+operator|.
+name|REBASE_ALWAYS
+condition|)
+block|{
+name|assertThat
+argument_list|(
+name|last
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"Change has been successfully rebased as"
 argument_list|)
 expr_stmt|;
 block|}

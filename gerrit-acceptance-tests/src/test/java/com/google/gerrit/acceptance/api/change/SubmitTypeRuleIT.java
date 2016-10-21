@@ -176,6 +176,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|SubmitType
+operator|.
+name|REBASE_ALWAYS
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -886,6 +904,14 @@ literal|"regex_matches('.*REBASE_IF_NECESSARY.*', M),"
 operator|+
 literal|"!.\n"
 operator|+
+literal|"submit_type(rebase_always) :-"
+operator|+
+literal|"gerrit:commit_message(M),"
+operator|+
+literal|"regex_matches('.*REBASE_ALWAYS.*', M),"
+operator|+
+literal|"!.\n"
+operator|+
 literal|"submit_type(merge_always) :-"
 operator|+
 literal|"gerrit:commit_message(M),"
@@ -1084,7 +1110,7 @@ name|createChange
 argument_list|(
 literal|"master"
 argument_list|,
-literal|"MERGE_ALWAYS 5"
+literal|"REBASE_ALWAYS 5"
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -1096,7 +1122,19 @@ name|createChange
 argument_list|(
 literal|"master"
 argument_list|,
-literal|"CHERRY_PICK 6"
+literal|"MERGE_ALWAYS 6"
+argument_list|)
+decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|r7
+init|=
+name|createChange
+argument_list|(
+literal|"master"
+argument_list|,
+literal|"CHERRY_PICK 7"
 argument_list|)
 decl_stmt|;
 name|assertSubmitType
@@ -1154,6 +1192,16 @@ argument_list|(
 name|MERGE_IF_NECESSARY
 argument_list|,
 name|r6
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertSubmitType
+argument_list|(
+name|MERGE_IF_NECESSARY
+argument_list|,
+name|r7
 operator|.
 name|getChangeId
 argument_list|()
@@ -1206,7 +1254,7 @@ argument_list|)
 expr_stmt|;
 name|assertSubmitType
 argument_list|(
-name|MERGE_ALWAYS
+name|REBASE_ALWAYS
 argument_list|,
 name|r5
 operator|.
@@ -1216,9 +1264,19 @@ argument_list|)
 expr_stmt|;
 name|assertSubmitType
 argument_list|(
-name|CHERRY_PICK
+name|MERGE_ALWAYS
 argument_list|,
 name|r6
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertSubmitType
+argument_list|(
+name|CHERRY_PICK
+argument_list|,
+name|r7
 operator|.
 name|getChangeId
 argument_list|()

@@ -3034,6 +3034,9 @@ return|;
 case|case
 name|REBASE_IF_NECESSARY
 case|:
+case|case
+name|REBASE_ALWAYS
+case|:
 return|return
 name|message
 argument_list|(
