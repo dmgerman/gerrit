@@ -2752,6 +2752,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|getArgs ()
+specifier|public
+name|Arguments
+name|getArgs
+parameter_list|()
+block|{
+return|return
+name|args
+return|;
+block|}
 DECL|method|asUser (CurrentUser user)
 specifier|public
 name|ChangeQueryBuilder
