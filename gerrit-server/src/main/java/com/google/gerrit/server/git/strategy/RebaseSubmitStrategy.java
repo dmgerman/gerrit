@@ -1025,6 +1025,8 @@ argument_list|,
 name|args
 operator|.
 name|rw
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
