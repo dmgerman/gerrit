@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -69,15 +69,15 @@ package|;
 end_package
 
 begin_class
-DECL|class|RebaseIfNecessary
+DECL|class|RebaseAlways
 specifier|public
 class|class
-name|RebaseIfNecessary
+name|RebaseAlways
 extends|extends
 name|RebaseSubmitStrategy
 block|{
-DECL|method|RebaseIfNecessary (SubmitStrategy.Arguments args)
-name|RebaseIfNecessary
+DECL|method|RebaseAlways (SubmitStrategy.Arguments args)
+name|RebaseAlways
 parameter_list|(
 name|SubmitStrategy
 operator|.
@@ -89,7 +89,7 @@ name|super
 argument_list|(
 name|args
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

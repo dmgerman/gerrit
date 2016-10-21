@@ -398,7 +398,7 @@ name|cherryPick
 parameter_list|()
 block|{
 return|return
-name|submitByCherryPickConifg
+name|submitByCherryPickConfig
 argument_list|()
 return|;
 block|}
@@ -406,15 +406,31 @@ annotation|@
 name|ConfigSuite
 operator|.
 name|Config
-DECL|method|rebase ()
+DECL|method|rebaseAlways ()
 specifier|public
 specifier|static
 name|Config
-name|rebase
+name|rebaseAlways
 parameter_list|()
 block|{
 return|return
-name|submitByRebaseConifg
+name|submitByRebaseAlwaysConfig
+argument_list|()
+return|;
+block|}
+annotation|@
+name|ConfigSuite
+operator|.
+name|Config
+DECL|method|rebaseIfNecessary ()
+specifier|public
+specifier|static
+name|Config
+name|rebaseIfNecessary
+parameter_list|()
+block|{
+return|return
+name|submitByRebaseIfNecessaryConfig
 argument_list|()
 return|;
 block|}
@@ -967,12 +983,23 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|getSubmitType
 argument_list|()
 operator|==
 name|SubmitType
 operator|.
 name|CHERRY_PICK
+operator|)
+operator|||
+operator|(
+name|getSubmitType
+argument_list|()
+operator|==
+name|SubmitType
+operator|.
+name|REBASE_ALWAYS
+operator|)
 condition|)
 block|{
 comment|// each change is updated and the respective target branch is updated:
@@ -990,12 +1017,14 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|getSubmitType
 argument_list|()
 operator|==
 name|SubmitType
 operator|.
 name|REBASE_IF_NECESSARY
+operator|)
 condition|)
 block|{
 comment|// Either the first is used first as is, then the second and third need
