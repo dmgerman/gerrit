@@ -1449,11 +1449,6 @@ return|return
 literal|false
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getSignaturesForId (PGPPublicKey key, String userId)
 specifier|private
 name|Iterator

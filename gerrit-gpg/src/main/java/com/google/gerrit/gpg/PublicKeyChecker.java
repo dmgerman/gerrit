@@ -1594,6 +1594,11 @@ argument_list|()
 argument_list|,
 name|sub
 operator|.
+name|isLongLength
+argument_list|()
+argument_list|,
+name|sub
+operator|.
 name|getData
 argument_list|()
 argument_list|)
@@ -1880,6 +1885,11 @@ argument_list|(
 name|sub
 operator|.
 name|isCritical
+argument_list|()
+argument_list|,
+name|sub
+operator|.
+name|isLongLength
 argument_list|()
 argument_list|,
 name|sub
@@ -2227,11 +2237,6 @@ decl_stmt|;
 comment|// Don't check the timestamp of these certifications. This allows admins
 comment|// to correct untrusted keys by signing them with a trusted key, such that
 comment|// older signatures created by those keys retroactively appear valid.
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 name|Iterator
 argument_list|<
 name|PGPSignature
