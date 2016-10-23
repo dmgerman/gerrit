@@ -815,6 +815,37 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|field|OPEN_CHANGES_FIELDS
+specifier|private
+specifier|static
+specifier|final
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|OPEN_CHANGES_FIELDS
+init|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+comment|// Required for ChangeIsVisibleToPrdicate.
+name|ChangeField
+operator|.
+name|CHANGE
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+comment|// Required during advertiseOpenChanges.
+name|ChangeField
+operator|.
+name|PATCH_SET
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 DECL|method|advertiseOpenChanges (Set<ObjectId> allPatchSets)
 specifier|private
 name|Set
@@ -863,17 +894,7 @@ argument_list|()
 operator|.
 name|setRequestedFields
 argument_list|(
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|ChangeField
-operator|.
-name|PATCH_SET
-operator|.
-name|getName
-argument_list|()
-argument_list|)
+name|OPEN_CHANGES_FIELDS
 argument_list|)
 operator|.
 name|enforceVisibility
