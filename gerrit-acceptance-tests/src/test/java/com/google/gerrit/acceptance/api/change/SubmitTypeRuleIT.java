@@ -170,7 +170,7 @@ name|client
 operator|.
 name|SubmitType
 operator|.
-name|REBASE_IF_NECESSARY
+name|REBASE_ALWAYS
 import|;
 end_import
 
@@ -188,7 +188,7 @@ name|client
 operator|.
 name|SubmitType
 operator|.
-name|REBASE_ALWAYS
+name|REBASE_IF_NECESSARY
 import|;
 end_import
 
