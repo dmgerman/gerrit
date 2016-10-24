@@ -169,20 +169,6 @@ name|DirectoryException
 extends|extends
 name|Exception
 block|{
-DECL|method|DirectoryException (String message)
-specifier|public
-name|DirectoryException
-parameter_list|(
-name|String
-name|message
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|message
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|DirectoryException (String message, Throwable why)
 specifier|public
 name|DirectoryException
