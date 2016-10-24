@@ -286,6 +286,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|MergedSender
 import|;
 end_import

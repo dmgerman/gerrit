@@ -152,6 +152,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|EmailSender
 import|;
 end_import

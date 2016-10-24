@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
 
@@ -91,6 +93,22 @@ operator|.
 name|base
 operator|.
 name|MoreObjects
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|Address
 import|;
 end_import
 
@@ -406,6 +424,7 @@ return|;
 block|}
 block|}
 DECL|method|needsQuotedPrintable (java.lang.String value)
+specifier|public
 specifier|static
 name|boolean
 name|needsQuotedPrintable
@@ -549,6 +568,7 @@ return|;
 block|}
 block|}
 DECL|method|quotedPrintable (java.lang.String value)
+specifier|public
 specifier|static
 name|java
 operator|.
@@ -1045,7 +1065,8 @@ operator|.
 name|next
 argument_list|()
 operator|.
-name|email
+name|getEmail
+argument_list|()
 operator|.
 name|equals
 argument_list|(

@@ -124,6 +124,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|EmailHeader
 import|;
 end_import

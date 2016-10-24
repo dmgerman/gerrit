@@ -220,6 +220,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|CommentSender
 import|;
 end_import

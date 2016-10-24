@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,57 +63,114 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|org
 operator|.
-name|google
+name|apache
 operator|.
-name|gerrit
+name|commons
 operator|.
-name|reviewdb
+name|validator
 operator|.
-name|client
+name|routines
 operator|.
-name|Account
+name|DomainValidator
+operator|.
+name|ArrayType
+operator|.
+name|GENERIC_PLUS
 import|;
 end_import
 
-begin_comment
-comment|/** Constructs an address to send email from. */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|validator
+operator|.
+name|routines
+operator|.
+name|DomainValidator
+import|;
+end_import
 
-begin_interface
-DECL|interface|FromAddressGenerator
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|validator
+operator|.
+name|routines
+operator|.
+name|EmailValidator
+import|;
+end_import
+
+begin_class
+DECL|class|OutgoingEmailValidator
 specifier|public
-interface|interface
-name|FromAddressGenerator
+class|class
+name|OutgoingEmailValidator
 block|{
-DECL|method|isGenericAddress (Account.Id fromId)
-name|boolean
-name|isGenericAddress
-parameter_list|(
-name|Account
+static|static
+block|{
+name|DomainValidator
 operator|.
-name|Id
-name|fromId
-parameter_list|)
-function_decl|;
-DECL|method|from (Account.Id fromId)
-name|Address
-name|from
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|fromId
-parameter_list|)
-function_decl|;
+name|updateTLDOverride
+argument_list|(
+name|GENERIC_PLUS
+argument_list|,
+operator|new
+name|String
+index|[]
+block|{
+literal|"local"
 block|}
-end_interface
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|isValid (String addr)
+specifier|public
+specifier|static
+name|boolean
+name|isValid
+parameter_list|(
+name|String
+name|addr
+parameter_list|)
+block|{
+return|return
+name|EmailValidator
+operator|.
+name|getInstance
+argument_list|(
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+operator|.
+name|isValid
+argument_list|(
+name|addr
+argument_list|)
+return|;
+block|}
+block|}
+end_class
 
 end_unit
 

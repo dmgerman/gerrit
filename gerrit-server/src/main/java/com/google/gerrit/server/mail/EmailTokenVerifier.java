@@ -98,6 +98,24 @@ name|AuthRequest
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|send
+operator|.
+name|RegisterNewEmailSender
+import|;
+end_import
+
 begin_comment
 comment|/** Verifies the token sent by {@link RegisterNewEmailSender}. */
 end_comment

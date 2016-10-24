@@ -66,6 +66,24 @@ name|mail
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|send
+operator|.
+name|EmailHeader
+import|;
+end_import
+
 begin_class
 DECL|class|Address
 specifier|public

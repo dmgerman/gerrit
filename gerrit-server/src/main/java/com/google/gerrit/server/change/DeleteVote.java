@@ -510,6 +510,8 @@ name|server
 operator|.
 name|mail
 operator|.
+name|send
+operator|.
 name|DeleteVoteSender
 import|;
 end_import
@@ -525,6 +527,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 operator|.
 name|ReplyToChangeSender
 import|;

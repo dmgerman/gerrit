@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
 
@@ -357,6 +359,22 @@ operator|.
 name|account
 operator|.
 name|AccountIndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|EmailSettings
 import|;
 end_import
 

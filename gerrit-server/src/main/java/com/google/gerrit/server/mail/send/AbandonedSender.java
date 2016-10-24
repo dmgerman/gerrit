@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.mail.send
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|mail
+operator|.
+name|send
 package|;
 end_package
 
@@ -173,14 +175,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Send notice about a vote that was removed from a change. */
+comment|/** Send notice about a change being abandoned by its owner. */
 end_comment
 
 begin_class
-DECL|class|DeleteVoteSender
+DECL|class|AbandonedSender
 specifier|public
 class|class
-name|DeleteVoteSender
+name|AbandonedSender
 extends|extends
 name|ReplyToChangeSender
 block|{
@@ -193,13 +195,13 @@ name|ReplyToChangeSender
 operator|.
 name|Factory
 argument_list|<
-name|DeleteVoteSender
+name|AbandonedSender
 argument_list|>
 block|{
 annotation|@
 name|Override
 DECL|method|create (Project.NameKey project, Change.Id change)
-name|DeleteVoteSender
+name|AbandonedSender
 name|create
 parameter_list|(
 name|Project
@@ -216,9 +218,9 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|DeleteVoteSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
-specifier|protected
-name|DeleteVoteSender
+DECL|method|AbandonedSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+specifier|public
+name|AbandonedSender
 parameter_list|(
 name|EmailArguments
 name|ea
@@ -244,8 +246,10 @@ name|super
 argument_list|(
 name|ea
 argument_list|,
-literal|"deleteVote"
+literal|"abandon"
 argument_list|,
+name|ChangeEmail
+operator|.
 name|newChangeData
 argument_list|(
 name|ea
@@ -282,6 +286,13 @@ name|includeWatchers
 argument_list|(
 name|NotifyType
 operator|.
+name|ABANDONED_CHANGES
+argument_list|)
+expr_stmt|;
+name|includeWatchers
+argument_list|(
+name|NotifyType
+operator|.
 name|ALL_COMMENTS
 argument_list|)
 expr_stmt|;
@@ -300,7 +311,7 @@ name|appendText
 argument_list|(
 name|textTemplate
 argument_list|(
-literal|"DeleteVote"
+literal|"Abandoned"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -314,7 +325,7 @@ name|appendHtml
 argument_list|(
 name|soyHtmlTemplate
 argument_list|(
-literal|"DeleteVoteHtml"
+literal|"AbandonedHtml"
 argument_list|)
 argument_list|)
 expr_stmt|;
