@@ -138,7 +138,7 @@ comment|/**    * handleEmails will open a connection to the mail server, remove 
 annotation|@
 name|Override
 DECL|method|handleEmails ()
-specifier|protected
+specifier|public
 specifier|synchronized
 name|void
 name|handleEmails

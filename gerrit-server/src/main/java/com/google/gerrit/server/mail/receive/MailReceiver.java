@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -451,8 +465,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * handleEmails will open a connection to the mail server, remove emails    * where deletion is pending, read new email and close the connection.    */
+annotation|@
+name|VisibleForTesting
 DECL|method|handleEmails ()
-specifier|protected
+specifier|public
 specifier|abstract
 name|void
 name|handleEmails
