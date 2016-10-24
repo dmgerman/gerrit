@@ -701,6 +701,13 @@ name|toAbsolutePath
 argument_list|()
 argument_list|)
 operator|.
+name|put
+argument_list|(
+literal|"transport.tcp.connect_timeout"
+argument_list|,
+literal|"60s"
+argument_list|)
+operator|.
 name|build
 argument_list|()
 decl_stmt|;
