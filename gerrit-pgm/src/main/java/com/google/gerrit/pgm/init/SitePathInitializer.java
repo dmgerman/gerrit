@@ -330,9 +330,7 @@ name|server
 operator|.
 name|mail
 operator|.
-name|send
-operator|.
-name|OutgoingEmail
+name|EmailModule
 import|;
 end_import
 
@@ -1063,7 +1061,7 @@ name|extract
 argument_list|(
 name|ex
 argument_list|,
-name|OutgoingEmail
+name|EmailModule
 operator|.
 name|class
 argument_list|,
