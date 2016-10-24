@@ -86,6 +86,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toList
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -93,20 +107,6 @@ operator|.
 name|Assert
 operator|.
 name|fail
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|FluentIterable
 import|;
 end_import
 
@@ -3185,7 +3185,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|ids (Iterable<AccountInfo> accounts)
+DECL|method|ids (List<AccountInfo> accounts)
 specifier|protected
 specifier|static
 name|Iterable
@@ -3194,7 +3194,7 @@ name|Integer
 argument_list|>
 name|ids
 parameter_list|(
-name|Iterable
+name|List
 argument_list|<
 name|AccountInfo
 argument_list|>
@@ -3202,20 +3202,24 @@ name|accounts
 parameter_list|)
 block|{
 return|return
-name|FluentIterable
-operator|.
-name|from
-argument_list|(
 name|accounts
-argument_list|)
 operator|.
-name|transform
+name|stream
+argument_list|()
+operator|.
+name|map
 argument_list|(
 name|a
 lambda|->
 name|a
 operator|.
 name|_accountId
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
 argument_list|)
 return|;
 block|}
