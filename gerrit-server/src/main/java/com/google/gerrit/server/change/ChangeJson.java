@@ -2807,7 +2807,7 @@ condition|)
 block|{
 name|Throwables
 operator|.
-name|propagateIfPossible
+name|throwIfInstanceOf
 argument_list|(
 name|e
 argument_list|,

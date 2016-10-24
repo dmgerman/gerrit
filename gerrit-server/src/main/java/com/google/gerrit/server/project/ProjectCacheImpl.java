@@ -1043,7 +1043,7 @@ argument_list|)
 expr_stmt|;
 name|Throwables
 operator|.
-name|propagateIfInstanceOf
+name|throwIfInstanceOf
 argument_list|(
 name|e
 operator|.
