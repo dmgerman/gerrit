@@ -3817,11 +3817,15 @@ argument_list|(
 name|expectedMembers
 argument_list|)
 operator|.
+name|stream
+argument_list|()
+operator|.
 name|toArray
 argument_list|(
 name|String
-operator|.
-name|class
+index|[]
+operator|::
+operator|new
 argument_list|)
 argument_list|)
 expr_stmt|;

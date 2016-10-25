@@ -65,16 +65,16 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
+name|stream
 operator|.
-name|collect
+name|Collectors
 operator|.
-name|FluentIterable
+name|toList
 import|;
 end_import
 
@@ -156,16 +156,26 @@ name|Arrays
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|TestAccount
 specifier|public
 class|class
 name|TestAccount
 block|{
-DECL|method|ids ( Iterable<TestAccount> accounts)
+DECL|method|ids (List<TestAccount> accounts)
 specifier|public
 specifier|static
-name|FluentIterable
+name|List
 argument_list|<
 name|Account
 operator|.
@@ -173,7 +183,7 @@ name|Id
 argument_list|>
 name|ids
 parameter_list|(
-name|Iterable
+name|List
 argument_list|<
 name|TestAccount
 argument_list|>
@@ -181,14 +191,12 @@ name|accounts
 parameter_list|)
 block|{
 return|return
-name|FluentIterable
-operator|.
-name|from
-argument_list|(
 name|accounts
-argument_list|)
 operator|.
-name|transform
+name|stream
+argument_list|()
+operator|.
+name|map
 argument_list|(
 name|a
 lambda|->
@@ -196,12 +204,18 @@ name|a
 operator|.
 name|id
 argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|ids (TestAccount... accounts)
 specifier|public
 specifier|static
-name|FluentIterable
+name|List
 argument_list|<
 name|Account
 operator|.
@@ -226,16 +240,16 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|names (Iterable<TestAccount> accounts)
+DECL|method|names (List<TestAccount> accounts)
 specifier|public
 specifier|static
-name|FluentIterable
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|names
 parameter_list|(
-name|Iterable
+name|List
 argument_list|<
 name|TestAccount
 argument_list|>
@@ -243,14 +257,12 @@ name|accounts
 parameter_list|)
 block|{
 return|return
-name|FluentIterable
-operator|.
-name|from
-argument_list|(
 name|accounts
-argument_list|)
 operator|.
-name|transform
+name|stream
+argument_list|()
+operator|.
+name|map
 argument_list|(
 name|a
 lambda|->
@@ -258,12 +270,18 @@ name|a
 operator|.
 name|fullName
 argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|names (TestAccount... accounts)
 specifier|public
 specifier|static
-name|FluentIterable
+name|List
 argument_list|<
 name|String
 argument_list|>
