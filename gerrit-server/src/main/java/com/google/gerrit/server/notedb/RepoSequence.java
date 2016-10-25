@@ -689,6 +689,7 @@ block|}
 DECL|field|RETRYER
 specifier|private
 specifier|static
+specifier|final
 name|Retryer
 argument_list|<
 name|RefUpdate
