@@ -1946,6 +1946,8 @@ argument_list|,
 literal|6
 argument_list|,
 literal|8
+argument_list|,
+literal|9
 argument_list|)
 expr_stmt|;
 name|checkColumns

@@ -1124,6 +1124,11 @@ specifier|private
 name|String
 name|message
 decl_stmt|;
+DECL|field|patchSetDescription
+specifier|private
+name|String
+name|patchSetDescription
+decl_stmt|;
 DECL|field|groups
 specifier|private
 name|List
@@ -1757,6 +1762,25 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|setPatchSetDescription (String patchSetDescription)
+specifier|public
+name|ChangeInserter
+name|setPatchSetDescription
+parameter_list|(
+name|String
+name|patchSetDescription
+parameter_list|)
+block|{
+name|this
+operator|.
+name|patchSetDescription
+operator|=
+name|patchSetDescription
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|setValidatePolicy (CommitValidators.Policy validate)
 specifier|public
 name|ChangeInserter
@@ -2316,6 +2340,13 @@ name|getTopic
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|update
+operator|.
+name|setPsDescription
+argument_list|(
+name|patchSetDescription
+argument_list|)
+expr_stmt|;
 name|boolean
 name|draft
 init|=
@@ -2380,6 +2411,8 @@ argument_list|,
 name|newGroups
 argument_list|,
 name|pushCert
+argument_list|,
+name|patchSetDescription
 argument_list|)
 expr_stmt|;
 comment|/* TODO: fixStatus is used here because the tests      * (byStatusClosed() in AbstractQueryChangesTest)      * insert changes that are already merged,      * and setStatus may not be used to set the Status to merged      *      * is it possible to make the tests use the merge code path,      * instead of setting the status directly?      */

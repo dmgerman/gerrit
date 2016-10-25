@@ -390,6 +390,16 @@ argument_list|,
 name|ps
 argument_list|)
 expr_stmt|;
+name|update
+operator|.
+name|setPsDescription
+argument_list|(
+name|ps
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|String

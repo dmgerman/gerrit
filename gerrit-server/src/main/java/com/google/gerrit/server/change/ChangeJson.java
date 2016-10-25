@@ -8069,6 +8069,15 @@ argument_list|,
 name|in
 argument_list|)
 expr_stmt|;
+name|out
+operator|.
+name|description
+operator|=
+name|in
+operator|.
+name|getDescription
+argument_list|()
+expr_stmt|;
 name|boolean
 name|setCommit
 init|=

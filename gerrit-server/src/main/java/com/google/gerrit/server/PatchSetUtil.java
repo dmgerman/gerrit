@@ -716,7 +716,7 @@ name|getPatchSets
 argument_list|()
 return|;
 block|}
-DECL|method|insert (ReviewDb db, RevWalk rw, ChangeUpdate update, PatchSet.Id psId, ObjectId commit, boolean draft, List<String> groups, String pushCertificate)
+DECL|method|insert (ReviewDb db, RevWalk rw, ChangeUpdate update, PatchSet.Id psId, ObjectId commit, boolean draft, List<String> groups, String pushCertificate, String description)
 specifier|public
 name|PatchSet
 name|insert
@@ -749,6 +749,9 @@ name|groups
 parameter_list|,
 name|String
 name|pushCertificate
+parameter_list|,
+name|String
+name|description
 parameter_list|)
 throws|throws
 name|OrmException
@@ -840,6 +843,13 @@ argument_list|(
 name|pushCertificate
 argument_list|)
 expr_stmt|;
+name|ps
+operator|.
+name|setDescription
+argument_list|(
+name|description
+argument_list|)
+expr_stmt|;
 name|db
 operator|.
 name|patchSets
@@ -864,6 +874,13 @@ argument_list|,
 name|commit
 argument_list|,
 name|pushCertificate
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setPsDescription
+argument_list|(
+name|description
 argument_list|)
 expr_stmt|;
 name|update
