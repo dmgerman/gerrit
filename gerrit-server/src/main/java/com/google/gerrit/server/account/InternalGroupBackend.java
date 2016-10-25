@@ -222,18 +222,6 @@ name|Collection
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|StreamSupport
-import|;
-end_import
-
 begin_comment
 comment|/** Implementation of GroupBackend for the internal group system. */
 end_comment
@@ -413,20 +401,13 @@ name|project
 parameter_list|)
 block|{
 return|return
-name|StreamSupport
-operator|.
-name|stream
-argument_list|(
 name|groupCache
 operator|.
 name|all
 argument_list|()
 operator|.
-name|spliterator
+name|stream
 argument_list|()
-argument_list|,
-literal|false
-argument_list|)
 operator|.
 name|filter
 argument_list|(

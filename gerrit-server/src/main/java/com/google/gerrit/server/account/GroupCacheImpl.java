@@ -100,6 +100,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -279,16 +293,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
 import|;
 end_import
 
@@ -1008,7 +1012,7 @@ annotation|@
 name|Override
 DECL|method|all ()
 specifier|public
-name|Iterable
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 argument_list|>
@@ -1027,9 +1031,9 @@ argument_list|()
 init|)
 block|{
 return|return
-name|Collections
+name|ImmutableList
 operator|.
-name|unmodifiableList
+name|copyOf
 argument_list|(
 name|db
 operator|.
@@ -1037,9 +1041,6 @@ name|accountGroups
 argument_list|()
 operator|.
 name|all
-argument_list|()
-operator|.
-name|toList
 argument_list|()
 argument_list|)
 return|;
@@ -1060,9 +1061,9 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-name|Collections
+name|ImmutableList
 operator|.
-name|emptyList
+name|of
 argument_list|()
 return|;
 block|}

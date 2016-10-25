@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -139,9 +153,9 @@ name|UUID
 name|uuid
 parameter_list|)
 function_decl|;
-comment|/** @return sorted iteration of groups. */
+comment|/** @return sorted list of groups. */
 DECL|method|all ()
-name|Iterable
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 argument_list|>
