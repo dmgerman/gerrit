@@ -506,6 +506,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -2031,7 +2041,7 @@ return|return
 name|groups
 return|;
 block|}
-DECL|method|filterGroups (final Iterable<AccountGroup> groups)
+DECL|method|filterGroups (Collection<AccountGroup> groups)
 specifier|private
 name|List
 argument_list|<
@@ -2039,15 +2049,13 @@ name|AccountGroup
 argument_list|>
 name|filterGroups
 parameter_list|(
-specifier|final
-name|Iterable
+name|Collection
 argument_list|<
 name|AccountGroup
 argument_list|>
 name|groups
 parameter_list|)
 block|{
-specifier|final
 name|List
 argument_list|<
 name|AccountGroup
@@ -2057,9 +2065,13 @@ init|=
 operator|new
 name|ArrayList
 argument_list|<>
+argument_list|(
+name|groups
+operator|.
+name|size
 argument_list|()
+argument_list|)
 decl_stmt|;
-specifier|final
 name|boolean
 name|isAdmin
 init|=
@@ -2076,7 +2088,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|AccountGroup
 name|group
 range|:
@@ -2131,7 +2142,6 @@ operator|!
 name|isAdmin
 condition|)
 block|{
-specifier|final
 name|GroupControl
 name|c
 init|=
