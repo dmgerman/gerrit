@@ -240,9 +240,9 @@ name|String
 name|deleteChangeEdit
 parameter_list|()
 function_decl|;
-DECL|method|deleteDraftChange ()
+DECL|method|deleteChange ()
 name|String
-name|deleteDraftChange
+name|deleteChange
 parameter_list|()
 function_decl|;
 DECL|method|deleteDraftRevision ()

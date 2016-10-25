@@ -703,7 +703,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|DeleteDraftChange
+name|DeleteChange
 operator|.
 name|class
 argument_list|)

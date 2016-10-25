@@ -457,9 +457,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|DeleteDraftChangeOp
+DECL|class|DeleteChangeOp
 class|class
-name|DeleteDraftChangeOp
+name|DeleteChangeOp
 extends|extends
 name|BatchUpdate
 operator|.
@@ -564,8 +564,8 @@ name|id
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftChangeOp (PatchSetUtil psUtil, StarredChangesUtil starredChangesUtil, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, @GerritServerConfig Config cfg)
-name|DeleteDraftChangeOp
+DECL|method|DeleteChangeOp (PatchSetUtil psUtil, StarredChangesUtil starredChangesUtil, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, @GerritServerConfig Config cfg)
+name|DeleteChangeOp
 parameter_list|(
 name|PatchSetUtil
 name|psUtil
@@ -645,7 +645,7 @@ name|Order
 operator|.
 name|DB_BEFORE_REPO
 argument_list|,
-literal|"must use DeleteDraftChangeOp with DB_BEFORE_REPO"
+literal|"must use DeleteChangeOp with DB_BEFORE_REPO"
 argument_list|)
 expr_stmt|;
 name|checkState
@@ -654,7 +654,7 @@ name|id
 operator|==
 literal|null
 argument_list|,
-literal|"cannot reuse DeleteDraftChangeOp"
+literal|"cannot reuse DeleteChangeOp"
 argument_list|)
 expr_stmt|;
 name|id
@@ -697,13 +697,8 @@ argument_list|,
 name|patchSets
 argument_list|)
 expr_stmt|;
-name|deleteChangeElementsFromDb
-argument_list|(
-name|ctx
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
+comment|// Cleaning up is only possible as long as the change and its elements are
+comment|// still part of the database.
 name|cleanUpReferences
 argument_list|(
 name|ctx
@@ -711,6 +706,13 @@ argument_list|,
 name|id
 argument_list|,
 name|patchSets
+argument_list|)
+expr_stmt|;
+name|deleteChangeElementsFromDb
+argument_list|(
+name|ctx
+argument_list|,
+name|id
 argument_list|)
 expr_stmt|;
 name|ctx
@@ -750,8 +752,11 @@ name|OrmException
 throws|,
 name|AuthException
 block|{
-if|if
-condition|(
+name|Change
+operator|.
+name|Status
+name|status
+init|=
 name|ctx
 operator|.
 name|getChange
@@ -759,35 +764,27 @@ argument_list|()
 operator|.
 name|getStatus
 argument_list|()
-operator|!=
+decl_stmt|;
+if|if
+condition|(
+name|status
+operator|==
 name|Change
 operator|.
 name|Status
 operator|.
-name|DRAFT
-condition|)
-block|{
-throw|throw
-operator|new
-name|ResourceConflictException
-argument_list|(
-literal|"Change is not a draft: "
-operator|+
-name|id
-argument_list|)
-throw|;
-block|}
-if|if
-condition|(
-operator|!
-name|allowDrafts
+name|MERGED
 condition|)
 block|{
 throw|throw
 operator|new
 name|MethodNotAllowedException
 argument_list|(
-literal|"Draft workflow is disabled"
+literal|"Deleting merged change "
+operator|+
+name|id
+operator|+
+literal|" is not allowed"
 argument_list|)
 throw|;
 block|}
@@ -799,12 +796,14 @@ operator|.
 name|getControl
 argument_list|()
 operator|.
-name|canDeleteDraft
+name|canDelete
 argument_list|(
 name|ctx
 operator|.
 name|getDb
 argument_list|()
+argument_list|,
+name|status
 argument_list|)
 condition|)
 block|{
@@ -812,7 +811,45 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"Not permitted to delete this draft change"
+literal|"Deleting change "
+operator|+
+name|id
+operator|+
+literal|" is not permitted"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|status
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|DRAFT
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|allowDrafts
+operator|&&
+operator|!
+name|ctx
+operator|.
+name|getControl
+argument_list|()
+operator|.
+name|isAdmin
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|MethodNotAllowedException
+argument_list|(
+literal|"Draft workflow is disabled"
 argument_list|)
 throw|;
 block|}
@@ -851,6 +888,7 @@ operator|+
 literal|" is not a draft"
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 block|}

@@ -3757,18 +3757,6 @@ name|ChangeInfo
 name|info
 parameter_list|)
 block|{
-if|if
-condition|(
-name|info
-operator|.
-name|status
-argument_list|()
-operator|==
-name|Status
-operator|.
-name|DRAFT
-condition|)
-block|{
 name|NativeMap
 argument_list|<
 name|ActionInfo
@@ -3787,9 +3775,6 @@ argument_list|()
 else|:
 name|NativeMap
 operator|.
-expr|<
-name|ActionInfo
-operator|>
 name|create
 argument_list|()
 decl_stmt|;
@@ -3832,7 +3817,6 @@ name|title
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|updatePatchSetsTextStyle (boolean isPatchSetCurrent)
@@ -4956,7 +4940,7 @@ name|Resources
 operator|.
 name|C
 operator|.
-name|deleteDraftChange
+name|deleteChange
 argument_list|()
 argument_list|)
 condition|)
