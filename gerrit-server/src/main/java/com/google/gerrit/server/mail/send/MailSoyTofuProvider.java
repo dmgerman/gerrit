@@ -317,6 +317,8 @@ literal|"NewChange.soy"
 block|,
 literal|"NewChangeHtml.soy"
 block|,
+literal|"Private.soy"
+block|,
 literal|"RegisterNewEmail.soy"
 block|,
 literal|"ReplacePatchSet.soy"
@@ -330,8 +332,6 @@ block|,
 literal|"Reverted.soy"
 block|,
 literal|"RevertedHtml.soy"
-block|,
-literal|"ViewChangeButton.soy"
 block|,   }
 decl_stmt|;
 DECL|field|site
