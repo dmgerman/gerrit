@@ -4319,9 +4319,12 @@ argument_list|()
 operator|.
 name|getStatus
 argument_list|()
+operator|!=
+name|Change
 operator|.
-name|isOpen
-argument_list|()
+name|Status
+operator|.
+name|ABANDONED
 condition|?
 name|permittedLabels
 argument_list|(
@@ -6125,7 +6128,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Don't use Maps.newTreeMap(Comparator) due to OpenJDK bug 100167.
 name|Map
 argument_list|<
 name|String
@@ -6133,7 +6135,29 @@ argument_list|,
 name|LabelWithStatus
 argument_list|>
 name|labels
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|cd
+operator|.
+name|change
+argument_list|()
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|ABANDONED
+condition|)
+block|{
+comment|// For abandoned changes return only labels for which an approval exists.
+comment|// Other labels are not needed since voting on abandoned changes is not
+comment|// allowed.
+name|labels
+operator|=
 operator|new
 name|TreeMap
 argument_list|<>
@@ -6143,7 +6167,7 @@ operator|.
 name|nameComparator
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 for|for
 control|(
 name|String
@@ -6152,19 +6176,20 @@ range|:
 name|labelNames
 control|)
 block|{
-name|LabelType
-name|type
-init|=
+name|labels
+operator|.
+name|put
+argument_list|(
 name|labelTypes
 operator|.
 name|byLabel
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
-name|LabelWithStatus
-name|l
-init|=
+operator|.
+name|getName
+argument_list|()
+argument_list|,
 name|LabelWithStatus
 operator|.
 name|create
@@ -6175,30 +6200,65 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|// Since voting on merged changes is allowed all labels which apply to
+comment|// the change must be returned. All applying labels can be retrieved from
+comment|// the submit records, which is what initLabels does.
+comment|// It's not possible to compute the labels based on the approvals since
+comment|// merged changes may not have approvals for all labels (e.g. if not all
+comment|// labels are required for submit or if the change was auto-closed due to
+comment|// direct push or if new labels were defined after the change was merged).
+name|labels
+operator|=
+name|initLabels
+argument_list|(
+name|cd
+argument_list|,
+name|labelTypes
+argument_list|,
+name|standard
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|detailed
 condition|)
 block|{
-name|setLabelValues
-argument_list|(
-name|type
-argument_list|,
-name|l
-argument_list|)
-expr_stmt|;
-block|}
 name|labels
 operator|.
-name|put
-argument_list|(
-name|type
-operator|.
-name|getName
+name|entrySet
 argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|forEach
+argument_list|(
+name|e
+lambda|->
+name|setLabelValues
+argument_list|(
+name|labelTypes
+operator|.
+name|byLabel
+argument_list|(
+name|e
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
 argument_list|,
-name|l
+name|e
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
