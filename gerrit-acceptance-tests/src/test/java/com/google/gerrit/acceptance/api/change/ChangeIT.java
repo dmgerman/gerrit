@@ -414,20 +414,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GerritConfigs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|GitUtil
 import|;
 end_import
@@ -12366,10 +12352,6 @@ block|}
 annotation|@
 name|Test
 annotation|@
-name|GerritConfigs
-argument_list|(
-block|{
-annotation|@
 name|GerritConfig
 argument_list|(
 name|name
@@ -12380,7 +12362,6 @@ name|value
 operator|=
 literal|"true"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -12391,9 +12372,6 @@ argument_list|,
 name|value
 operator|=
 literal|"true"
-argument_list|)
-block|,
-block|}
 argument_list|)
 DECL|method|pushCertificates ()
 specifier|public

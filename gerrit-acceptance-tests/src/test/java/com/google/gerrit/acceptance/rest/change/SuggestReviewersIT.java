@@ -136,20 +136,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GerritConfigs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|Sandboxed
 import|;
 end_import
@@ -657,10 +643,6 @@ block|}
 annotation|@
 name|Test
 annotation|@
-name|GerritConfigs
-argument_list|(
-block|{
-annotation|@
 name|GerritConfig
 argument_list|(
 name|name
@@ -671,7 +653,6 @@ name|value
 operator|=
 literal|"1"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -682,8 +663,6 @@ argument_list|,
 name|value
 operator|=
 literal|"NONE"
-argument_list|)
-block|}
 argument_list|)
 DECL|method|suggestReviewersNoResult2 ()
 specifier|public
@@ -1656,10 +1635,6 @@ block|}
 annotation|@
 name|Test
 annotation|@
-name|GerritConfigs
-argument_list|(
-block|{
-annotation|@
 name|GerritConfig
 argument_list|(
 name|name
@@ -1670,7 +1645,6 @@ name|value
 operator|=
 literal|"2"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -1681,9 +1655,6 @@ argument_list|,
 name|value
 operator|=
 literal|"1"
-argument_list|)
-block|,
-block|}
 argument_list|)
 DECL|method|suggestReviewersGroupSizeConsiderations ()
 specifier|public

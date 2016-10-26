@@ -190,10 +190,6 @@ block|}
 annotation|@
 name|Test
 annotation|@
-name|GerritConfigs
-argument_list|(
-block|{
-annotation|@
 name|GerritConfig
 argument_list|(
 name|name
@@ -204,7 +200,6 @@ name|value
 operator|=
 literal|"z"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -215,8 +210,6 @@ argument_list|,
 name|value
 operator|=
 literal|"c"
-argument_list|)
-block|}
 argument_list|)
 DECL|method|testMultiple ()
 specifier|public

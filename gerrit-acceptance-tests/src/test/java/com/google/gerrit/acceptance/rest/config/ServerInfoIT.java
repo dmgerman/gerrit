@@ -136,20 +136,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GerritConfigs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|NoHttpd
 import|;
 end_import
@@ -296,10 +282,6 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Test
-annotation|@
-name|GerritConfigs
-argument_list|(
-block|{
 comment|// auth
 annotation|@
 name|GerritConfig
@@ -312,7 +294,6 @@ name|value
 operator|=
 literal|"HTTP"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -324,7 +305,6 @@ name|value
 operator|=
 literal|"true"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -336,7 +316,6 @@ name|value
 operator|=
 literal|"https://example.com/login"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -348,7 +327,6 @@ name|value
 operator|=
 literal|"LOGIN"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -360,7 +338,6 @@ name|value
 operator|=
 literal|"https://example.com/switch"
 argument_list|)
-block|,
 comment|// auth fields ignored when auth == HTTP
 annotation|@
 name|GerritConfig
@@ -373,7 +350,6 @@ name|value
 operator|=
 literal|"https://example.com/register"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -385,7 +361,6 @@ name|value
 operator|=
 literal|"REGISTER"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -397,7 +372,6 @@ name|value
 operator|=
 literal|"https://example.com/editname"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -409,7 +383,6 @@ name|value
 operator|=
 literal|"https://example.com/password"
 argument_list|)
-block|,
 comment|// change
 annotation|@
 name|GerritConfig
@@ -422,7 +395,6 @@ name|value
 operator|=
 literal|"false"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -434,7 +406,6 @@ name|value
 operator|=
 literal|"300"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -446,7 +417,6 @@ name|value
 operator|=
 literal|"Publish votes and draft comments"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -458,7 +428,6 @@ name|value
 operator|=
 literal|"Vote"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -470,7 +439,6 @@ name|value
 operator|=
 literal|"50s"
 argument_list|)
-block|,
 comment|// download
 annotation|@
 name|GerritConfig
@@ -491,7 +459,6 @@ block|,
 literal|"txz"
 block|}
 argument_list|)
-block|,
 comment|// gerrit
 annotation|@
 name|GerritConfig
@@ -504,7 +471,6 @@ name|value
 operator|=
 literal|"Root"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -516,7 +482,6 @@ name|value
 operator|=
 literal|"Users"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -528,7 +493,6 @@ name|value
 operator|=
 literal|"true"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -540,7 +504,6 @@ name|value
 operator|=
 literal|"REPORT BUG"
 argument_list|)
-block|,
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -552,7 +515,6 @@ name|value
 operator|=
 literal|"https://example.com/report"
 argument_list|)
-block|,
 comment|// suggest
 annotation|@
 name|GerritConfig
@@ -565,7 +527,6 @@ name|value
 operator|=
 literal|"3"
 argument_list|)
-block|,
 comment|// user
 annotation|@
 name|GerritConfig
@@ -577,9 +538,6 @@ argument_list|,
 name|value
 operator|=
 literal|"Unnamed User"
-argument_list|)
-block|,
-block|}
 argument_list|)
 DECL|method|serverConfig ()
 specifier|public
