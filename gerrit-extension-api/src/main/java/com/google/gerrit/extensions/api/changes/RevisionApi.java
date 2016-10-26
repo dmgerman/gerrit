@@ -572,6 +572,16 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|patch (String path)
+name|BinaryResult
+name|patch
+parameter_list|(
+name|String
+name|path
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|actions ()
 name|Map
 argument_list|<
@@ -1225,6 +1235,25 @@ specifier|public
 name|BinaryResult
 name|patch
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|patch (String path)
+specifier|public
+name|BinaryResult
+name|patch
+parameter_list|(
+name|String
+name|path
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
