@@ -1119,10 +1119,7 @@ return|return
 literal|null
 return|;
 block|}
-specifier|final
-name|LabelValue
-name|v
-init|=
+return|return
 name|values
 operator|.
 name|get
@@ -1134,18 +1131,6 @@ argument_list|()
 operator|-
 literal|1
 argument_list|)
-decl_stmt|;
-return|return
-name|v
-operator|.
-name|getValue
-argument_list|()
-operator|>
-literal|0
-condition|?
-name|v
-else|:
-literal|null
 return|;
 block|}
 DECL|method|getDefaultValue ()
