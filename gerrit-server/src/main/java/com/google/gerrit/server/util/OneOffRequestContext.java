@@ -76,9 +76,39 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|IdentifiedUser
 import|;
 end_import
 
@@ -149,7 +179,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper to create one-off request contexts.  *<p>  * Each call to {@link #open()} opens a new {@link ReviewDb}, so this class  * should only be used in a bounded try/finally block.  *<p>  * The user in the request context is {@link InternalUser}.  */
+comment|/**  * Helper to create one-off request contexts.  *<p>  * Each call to {@link #open()} opens a new {@link ReviewDb}, so this class  * should only be used in a bounded try/finally block.  *<p>  * The user in the request context is {@link InternalUser} or the  * {@link IdentifiedUser} associated to the userId passed as parameter.  */
 end_comment
 
 begin_class
@@ -183,9 +213,17 @@ specifier|final
 name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
+DECL|field|identifiedUserFactory
+specifier|private
+specifier|final
+name|IdentifiedUser
+operator|.
+name|GenericFactory
+name|identifiedUserFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OneOffRequestContext (InternalUser.Factory userFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext)
+DECL|method|OneOffRequestContext (InternalUser.Factory userFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, IdentifiedUser.GenericFactory identifiedUserFactory)
 name|OneOffRequestContext
 parameter_list|(
 name|InternalUser
@@ -201,6 +239,11 @@ name|schemaFactory
 parameter_list|,
 name|ThreadLocalRequestContext
 name|requestContext
+parameter_list|,
+name|IdentifiedUser
+operator|.
+name|GenericFactory
+name|identifiedUserFactory
 parameter_list|)
 block|{
 name|this
@@ -221,6 +264,12 @@ name|requestContext
 operator|=
 name|requestContext
 expr_stmt|;
+name|this
+operator|.
+name|identifiedUserFactory
+operator|=
+name|identifiedUserFactory
+expr_stmt|;
 block|}
 DECL|method|open ()
 specifier|public
@@ -238,6 +287,36 @@ name|userFactory
 operator|.
 name|create
 argument_list|()
+argument_list|,
+name|schemaFactory
+argument_list|,
+name|requestContext
+argument_list|)
+return|;
+block|}
+DECL|method|openAs (Account.Id userId)
+specifier|public
+name|ManualRequestContext
+name|openAs
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|userId
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+operator|new
+name|ManualRequestContext
+argument_list|(
+name|identifiedUserFactory
+operator|.
+name|create
+argument_list|(
+name|userId
+argument_list|)
 argument_list|,
 name|schemaFactory
 argument_list|,
