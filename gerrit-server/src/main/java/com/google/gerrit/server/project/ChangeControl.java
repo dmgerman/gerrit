@@ -2055,9 +2055,6 @@ operator|.
 name|equals
 argument_list|(
 name|currentAssignee
-operator|.
-name|get
-argument_list|()
 argument_list|)
 return|;
 block|}
