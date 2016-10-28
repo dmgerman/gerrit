@@ -305,9 +305,9 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"INSERT INTO ACCOUNT_PATCH_REVIEWS "
+literal|"INSERT INTO account_patch_reviews "
 operator|+
-literal|"(ACCOUNT_ID, CHANGE_ID, PATCH_SET_ID, FILE_NAME) VALUES "
+literal|"(account_id, change_id, patch_set_id, file_name) VALUES "
 operator|+
 literal|"(?, ?, ?, ?)"
 argument_list|)
@@ -335,7 +335,7 @@ name|s
 operator|.
 name|executeQuery
 argument_list|(
-literal|"SELECT * from ACCOUNT_PATCH_REVIEWS"
+literal|"SELECT * from account_patch_reviews"
 argument_list|)
 init|)
 block|{
@@ -357,7 +357,7 @@ name|rs
 operator|.
 name|getInt
 argument_list|(
-literal|"ACCOUNT_ID"
+literal|"account_id"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -371,7 +371,7 @@ name|rs
 operator|.
 name|getInt
 argument_list|(
-literal|"CHANGE_ID"
+literal|"change_id"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -385,7 +385,7 @@ name|rs
 operator|.
 name|getInt
 argument_list|(
-literal|"PATCH_SET_ID"
+literal|"patch_set_id"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -399,7 +399,7 @@ name|rs
 operator|.
 name|getString
 argument_list|(
-literal|"FILE_NAME"
+literal|"file_name"
 argument_list|)
 argument_list|)
 expr_stmt|;
