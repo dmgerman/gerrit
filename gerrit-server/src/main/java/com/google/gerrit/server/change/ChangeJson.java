@@ -6033,8 +6033,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// We can only approximately reconstruct what the submit rule evaluator
-comment|// would have done. These should really come from a stored submit record.
 name|Set
 argument_list|<
 name|String
@@ -6150,10 +6148,74 @@ name|Change
 operator|.
 name|Status
 operator|.
-name|ABANDONED
+name|MERGED
 condition|)
 block|{
-comment|// For abandoned changes return only labels for which an approval exists.
+comment|// Since voting on merged changes is allowed all labels which apply to
+comment|// the change must be returned. All applying labels can be retrieved from
+comment|// the submit records, which is what initLabels does.
+comment|// It's not possible to only compute the labels based on the approvals
+comment|// since merged changes may not have approvals for all labels (e.g. if not
+comment|// all labels are required for submit or if the change was auto-closed due
+comment|// to direct push or if new labels were defined after the change was
+comment|// merged).
+name|labels
+operator|=
+name|initLabels
+argument_list|(
+name|cd
+argument_list|,
+name|labelTypes
+argument_list|,
+name|standard
+argument_list|)
+expr_stmt|;
+comment|// Also include all labels for which approvals exists. E.g. there can be
+comment|// approvals for labels that are ignored by a Prolog submit rule and hence
+comment|// it wouldn't be included in the submit records.
+for|for
+control|(
+name|String
+name|name
+range|:
+name|labelNames
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|labels
+operator|.
+name|containsKey
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+name|labels
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+name|LabelWithStatus
+operator|.
+name|create
+argument_list|(
+operator|new
+name|LabelInfo
+argument_list|()
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+else|else
+block|{
+comment|// For abandoned changes return only labels for which approvals exist.
 comment|// Other labels are not needed since voting on abandoned changes is not
 comment|// allowed.
 name|labels
@@ -6180,15 +6242,7 @@ name|labels
 operator|.
 name|put
 argument_list|(
-name|labelTypes
-operator|.
-name|byLabel
-argument_list|(
 name|name
-argument_list|)
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|LabelWithStatus
 operator|.
@@ -6203,27 +6257,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-comment|// Since voting on merged changes is allowed all labels which apply to
-comment|// the change must be returned. All applying labels can be retrieved from
-comment|// the submit records, which is what initLabels does.
-comment|// It's not possible to compute the labels based on the approvals since
-comment|// merged changes may not have approvals for all labels (e.g. if not all
-comment|// labels are required for submit or if the change was auto-closed due to
-comment|// direct push or if new labels were defined after the change was merged).
-name|labels
-operator|=
-name|initLabels
-argument_list|(
-name|cd
-argument_list|,
-name|labelTypes
-argument_list|,
-name|standard
-argument_list|)
-expr_stmt|;
 block|}
 if|if
 condition|(
