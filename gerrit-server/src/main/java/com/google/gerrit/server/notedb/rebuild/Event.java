@@ -313,6 +313,7 @@ specifier|final
 name|boolean
 name|predatesChange
 decl_stmt|;
+comment|/**    * Dependencies of this event; other events that must happen before this    * one.    */
 DECL|field|deps
 specifier|final
 name|List

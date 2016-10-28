@@ -186,6 +186,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|PriorityQueue
+import|;
+end_import
+
 begin_comment
 comment|/**  * Helper to sort a list of events.  *<p>  * Events are sorted in two passes:  *<ol>  *<li>Sort by natural order (timestamp, patch set, author, etc.)</li>  *<li>Postpone any events with dependencies to occur only after all of their  *   dependencies, where this violates natural order.</li>  *</ol>  *  * {@link #sort()} modifies the event list in place (similar to {@link  * Collections#sort(List)}), but does not modify any event. In particular,  * events might end up out of order with respect to timestamp; callers are  * responsible for adjusting timestamps later if they prefer monotonicity.  */
 end_comment
@@ -313,13 +323,19 @@ name|sort
 parameter_list|()
 block|{
 comment|// First pass: sort by natural order.
-name|Collections
-operator|.
-name|sort
+name|PriorityQueue
+argument_list|<
+name|Event
+argument_list|>
+name|todo
+init|=
+operator|new
+name|PriorityQueue
+argument_list|<>
 argument_list|(
 name|out
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Populate waiting map after initial sort to preserve natural order.
 name|waiting
 operator|=
@@ -340,7 +356,7 @@ control|(
 name|Event
 name|e
 range|:
-name|out
+name|todo
 control|)
 block|{
 for|for
@@ -382,17 +398,23 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-name|Event
-name|e
-range|:
-name|out
-control|)
+while|while
+condition|(
+operator|!
+name|todo
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
 block|{
 name|process
 argument_list|(
-name|e
+name|todo
+operator|.
+name|remove
+argument_list|()
+argument_list|,
+name|todo
 argument_list|)
 expr_stmt|;
 block|}
@@ -429,12 +451,18 @@ name|sorted
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|process (Event e)
+DECL|method|process (Event e, PriorityQueue<Event> todo)
 name|void
 name|process
 parameter_list|(
 name|Event
 name|e
+parameter_list|,
+name|PriorityQueue
+argument_list|<
+name|Event
+argument_list|>
+name|todo
 parameter_list|)
 block|{
 if|if
@@ -448,13 +476,11 @@ argument_list|)
 condition|)
 block|{
 return|return;
+comment|// Already emitted.
 block|}
-comment|// If all events that e depends on have been emitted:
-comment|//  - e can be emitted.
-comment|//  - remove e from the dependency set of all events waiting on e, and then
-comment|//    re-process those events in case they can now be emitted.
 if|if
 condition|(
+operator|!
 name|deps
 operator|.
 name|get
@@ -466,6 +492,12 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// Not all events that e depends on have been emitted yet. Ignore e for
+comment|// now; it will get added back to the queue in the block below once its
+comment|// last dependency is processed.
+return|return;
+block|}
+comment|// All events that e depends on have been emitted, so e can be emitted.
 name|sorted
 operator|.
 name|add
@@ -473,6 +505,9 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+comment|// Remove e from the dependency set of all events waiting on e, and add
+comment|// those events back to the queue in the original priority order for
+comment|// reconsideration.
 for|for
 control|(
 name|Event
@@ -498,12 +533,13 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-name|process
+name|todo
+operator|.
+name|add
 argument_list|(
 name|w
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
