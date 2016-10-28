@@ -148,6 +148,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -312,6 +322,75 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Set the clock to a specific timestamp.    *    * @param ts time to set    */
+DECL|method|setClock (Timestamp ts)
+specifier|public
+specifier|static
+specifier|synchronized
+name|void
+name|setClock
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
+block|{
+name|checkState
+argument_list|(
+name|clockMs
+operator|!=
+literal|null
+argument_list|,
+literal|"call resetWithClockStep first"
+argument_list|)
+expr_stmt|;
+name|clockMs
+operator|.
+name|set
+argument_list|(
+name|ts
+operator|.
+name|getTime
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Increment the clock once by a given amount.    *    * @param clockStep amount to increment clock by.    * @param clockStepUnit time unit for {@code clockStep}.    */
+DECL|method|incrementClock ( long clockStep, TimeUnit clockStepUnit)
+specifier|public
+specifier|static
+specifier|synchronized
+name|void
+name|incrementClock
+parameter_list|(
+name|long
+name|clockStep
+parameter_list|,
+name|TimeUnit
+name|clockStepUnit
+parameter_list|)
+block|{
+name|checkState
+argument_list|(
+name|clockMs
+operator|!=
+literal|null
+argument_list|,
+literal|"call resetWithClockStep first"
+argument_list|)
+expr_stmt|;
+name|clockMs
+operator|.
+name|addAndGet
+argument_list|(
+name|clockStepUnit
+operator|.
+name|toMillis
+argument_list|(
+name|clockStep
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Reset the clock to use the actual system clock. */
 DECL|method|useSystemTime ()
 specifier|public
@@ -321,6 +400,10 @@ name|void
 name|useSystemTime
 parameter_list|()
 block|{
+name|clockMs
+operator|=
+literal|null
+expr_stmt|;
 name|DateTimeUtils
 operator|.
 name|setCurrentMillisSystem
