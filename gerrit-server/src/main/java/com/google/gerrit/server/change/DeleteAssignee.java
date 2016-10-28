@@ -884,6 +884,10 @@ name|getName
 argument_list|(
 name|anonymousCowardName
 argument_list|)
+argument_list|,
+name|ChangeMessagesUtil
+operator|.
+name|TAG_DELETE_ASSIGNEE
 argument_list|)
 decl_stmt|;
 name|cmUtil

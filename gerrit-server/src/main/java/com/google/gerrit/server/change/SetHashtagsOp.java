@@ -1022,6 +1022,10 @@ name|msg
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|ChangeMessagesUtil
+operator|.
+name|TAG_SET_HASHTAGS
 argument_list|)
 decl_stmt|;
 name|cmUtil

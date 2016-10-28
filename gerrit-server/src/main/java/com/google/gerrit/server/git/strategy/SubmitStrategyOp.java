@@ -3143,6 +3143,10 @@ name|getWhen
 argument_list|()
 argument_list|,
 name|body
+argument_list|,
+name|ChangeMessagesUtil
+operator|.
+name|TAG_MERGED
 argument_list|)
 return|;
 block|}

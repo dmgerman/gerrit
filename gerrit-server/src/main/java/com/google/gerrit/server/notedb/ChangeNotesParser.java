@@ -1192,15 +1192,7 @@ name|String
 name|label
 parameter_list|()
 function_decl|;
-DECL|method|tag ()
-annotation|@
-name|Nullable
-specifier|abstract
-name|String
-name|tag
-parameter_list|()
-function_decl|;
-DECL|method|create (PatchSet.Id psId, Account.Id accountId, String label, @Nullable String tag)
+DECL|method|create (PatchSet.Id psId, Account.Id accountId, String label)
 specifier|private
 specifier|static
 name|ApprovalKey
@@ -1218,11 +1210,6 @@ name|accountId
 parameter_list|,
 name|String
 name|label
-parameter_list|,
-annotation|@
-name|Nullable
-name|String
-name|tag
 parameter_list|)
 block|{
 return|return
@@ -1234,8 +1221,6 @@ argument_list|,
 name|accountId
 argument_list|,
 name|label
-argument_list|,
-name|tag
 argument_list|)
 return|;
 block|}
@@ -4766,8 +4751,6 @@ name|l
 operator|.
 name|label
 argument_list|()
-argument_list|,
-name|tag
 argument_list|)
 decl_stmt|;
 if|if
@@ -5025,8 +5008,6 @@ argument_list|,
 name|effectiveAccountId
 argument_list|,
 name|label
-argument_list|,
-name|tag
 argument_list|)
 decl_stmt|;
 if|if

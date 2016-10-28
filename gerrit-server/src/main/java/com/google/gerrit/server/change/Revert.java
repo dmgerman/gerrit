@@ -2227,6 +2227,10 @@ name|computedChangeId
 operator|.
 name|name
 argument_list|()
+argument_list|,
+name|ChangeMessagesUtil
+operator|.
+name|TAG_REVERT
 argument_list|)
 decl_stmt|;
 name|cmUtil

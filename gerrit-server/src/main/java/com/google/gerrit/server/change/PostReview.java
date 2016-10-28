@@ -7119,12 +7119,7 @@ operator|+
 literal|":"
 operator|+
 name|buf
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|setTag
-argument_list|(
+argument_list|,
 name|in
 operator|.
 name|tag
