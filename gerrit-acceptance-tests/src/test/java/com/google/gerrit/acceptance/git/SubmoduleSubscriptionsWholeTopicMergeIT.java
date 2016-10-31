@@ -4004,16 +4004,13 @@ literal|"project-b"
 argument_list|)
 decl_stmt|;
 comment|// bootstrap the dev branch
-name|ObjectId
-name|a0
-init|=
 name|pushChangeTo
 argument_list|(
 name|repoA
 argument_list|,
 literal|"dev"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// bootstrap the dev branch
 name|ObjectId
 name|b0
