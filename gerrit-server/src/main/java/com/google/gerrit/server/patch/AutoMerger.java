@@ -575,6 +575,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|method|cacheAutomerge (Config cfg)
+specifier|public
 specifier|static
 name|boolean
 name|cacheAutomerge
