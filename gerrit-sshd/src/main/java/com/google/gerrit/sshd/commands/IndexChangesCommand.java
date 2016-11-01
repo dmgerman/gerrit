@@ -313,6 +313,10 @@ argument_list|(
 name|token
 argument_list|,
 name|changes
+argument_list|,
+literal|null
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
