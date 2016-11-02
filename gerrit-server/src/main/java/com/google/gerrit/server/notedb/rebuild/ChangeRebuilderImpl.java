@@ -2423,10 +2423,13 @@ decl_stmt|;
 if|if
 condition|(
 name|pse
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+continue|continue;
+comment|// Ignore events for missing patch sets.
+block|}
 for|for
 control|(
 name|Event
@@ -2442,7 +2445,6 @@ argument_list|(
 name|pse
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|events
