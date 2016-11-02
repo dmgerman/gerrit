@@ -96,6 +96,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -146,6 +166,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|LOCATION_HEADER
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|LOCATION_HEADER
+init|=
+literal|"Location"
+decl_stmt|;
 DECL|field|status
 specifier|private
 name|int
@@ -157,6 +186,21 @@ name|String
 name|statusMsg
 init|=
 literal|""
+decl_stmt|;
+DECL|field|headers
+specifier|private
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|headers
+init|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
 decl_stmt|;
 comment|/**    * Constructs a response recorder wrapping the given response.    *    * @param response the response to be wrapped    */
 DECL|method|HttpServletResponseRecorder (HttpServletResponse response)
@@ -241,11 +285,9 @@ name|status
 operator|=
 name|SC_MOVED_TEMPORARILY
 expr_stmt|;
-name|super
-operator|.
 name|setHeader
 argument_list|(
-literal|"Location"
+name|LOCATION_HEADER
 argument_list|,
 name|location
 argument_list|)
@@ -253,6 +295,45 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|setHeader (String name, String value)
+specifier|public
+name|void
+name|setHeader
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+name|super
+operator|.
+name|setHeader
+argument_list|(
+name|name
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+name|headers
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"all"
+argument_list|)
+comment|// @Override is omitted for backwards compatibility with servlet-api 2.5
+comment|// TODO: Remove @SuppressWarnings and add @Override when Google upgrades
+comment|//       to servlet-api 3.1
 DECL|method|getStatus ()
 specifier|public
 name|int
@@ -299,9 +380,11 @@ name|super
 operator|.
 name|sendRedirect
 argument_list|(
-name|getHeader
+name|headers
+operator|.
+name|get
 argument_list|(
-literal|"Location"
+name|LOCATION_HEADER
 argument_list|)
 argument_list|)
 expr_stmt|;
