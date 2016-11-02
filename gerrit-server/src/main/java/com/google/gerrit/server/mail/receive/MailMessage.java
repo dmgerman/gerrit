@@ -98,6 +98,36 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|Address
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|joda
@@ -109,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * MailMessage is a simplified representation of an RFC 2045-2047 mime email  * message used for representing received emails inside Gerrit. It is populated  * by the MailParser after MailReceiver has received a message. Transformations  * done by the parser include stitching mime parts together, transforming all  * content to UTF-16 and removing attachments.  */
+comment|/**  * MailMessage is a simplified representation of an RFC 2045-2047 mime email  * message used for representing received emails inside Gerrit. It is populated  * by the MailParser after MailReceiver has received a message. Transformations  * done by the parser include stitching mime parts together, transforming all  * content to UTF-16 and removing attachments.  *  * A valid MailMessage contains at least the following fields: id, from, to,  * subject and dateReceived.  */
 end_comment
 
 begin_class
@@ -129,11 +159,11 @@ name|String
 name|id
 parameter_list|()
 function_decl|;
-comment|// Envelope Information
+comment|// Envelop Information
 DECL|method|from ()
 specifier|public
 specifier|abstract
-name|String
+name|Address
 name|from
 parameter_list|()
 function_decl|;
@@ -142,17 +172,19 @@ specifier|public
 specifier|abstract
 name|ImmutableList
 argument_list|<
-name|String
+name|Address
 argument_list|>
 name|to
 parameter_list|()
 function_decl|;
+annotation|@
+name|Nullable
 DECL|method|cc ()
 specifier|public
 specifier|abstract
 name|ImmutableList
 argument_list|<
-name|String
+name|Address
 argument_list|>
 name|cc
 parameter_list|()
@@ -183,6 +215,8 @@ name|String
 name|subject
 parameter_list|()
 function_decl|;
+annotation|@
+name|Nullable
 DECL|method|textContent ()
 specifier|public
 specifier|abstract
@@ -190,6 +224,8 @@ name|String
 name|textContent
 parameter_list|()
 function_decl|;
+annotation|@
+name|Nullable
 DECL|method|htmlContent ()
 specifier|public
 specifier|abstract
@@ -198,6 +234,7 @@ name|htmlContent
 parameter_list|()
 function_decl|;
 DECL|method|builder ()
+specifier|public
 specifier|static
 name|Builder
 name|builder
@@ -216,12 +253,14 @@ name|AutoValue
 operator|.
 name|Builder
 DECL|class|Builder
+specifier|public
 specifier|abstract
 specifier|static
 class|class
 name|Builder
 block|{
 DECL|method|id (String val)
+specifier|public
 specifier|abstract
 name|Builder
 name|id
@@ -230,32 +269,34 @@ name|String
 name|val
 parameter_list|)
 function_decl|;
-DECL|method|from (String val)
+DECL|method|from (Address val)
+specifier|public
 specifier|abstract
 name|Builder
 name|from
 parameter_list|(
-name|String
+name|Address
 name|val
 parameter_list|)
 function_decl|;
 DECL|method|toBuilder ()
+specifier|public
 specifier|abstract
 name|ImmutableList
 operator|.
 name|Builder
 argument_list|<
-name|String
+name|Address
 argument_list|>
 name|toBuilder
 parameter_list|()
 function_decl|;
-DECL|method|addTo (String val)
+DECL|method|addTo (Address val)
 specifier|public
 name|Builder
 name|addTo
 parameter_list|(
-name|String
+name|Address
 name|val
 parameter_list|)
 block|{
@@ -272,22 +313,23 @@ name|this
 return|;
 block|}
 DECL|method|ccBuilder ()
+specifier|public
 specifier|abstract
 name|ImmutableList
 operator|.
 name|Builder
 argument_list|<
-name|String
+name|Address
 argument_list|>
 name|ccBuilder
 parameter_list|()
 function_decl|;
-DECL|method|addCc (String val)
+DECL|method|addCc (Address val)
 specifier|public
 name|Builder
 name|addCc
 parameter_list|(
-name|String
+name|Address
 name|val
 parameter_list|)
 block|{
@@ -304,6 +346,7 @@ name|this
 return|;
 block|}
 DECL|method|dateReceived (DateTime val)
+specifier|public
 specifier|abstract
 name|Builder
 name|dateReceived
@@ -313,6 +356,7 @@ name|val
 parameter_list|)
 function_decl|;
 DECL|method|additionalHeadersBuilder ()
+specifier|public
 specifier|abstract
 name|ImmutableList
 operator|.
@@ -345,6 +389,7 @@ name|this
 return|;
 block|}
 DECL|method|subject (String val)
+specifier|public
 specifier|abstract
 name|Builder
 name|subject
@@ -354,6 +399,7 @@ name|val
 parameter_list|)
 function_decl|;
 DECL|method|textContent (String val)
+specifier|public
 specifier|abstract
 name|Builder
 name|textContent
@@ -363,6 +409,7 @@ name|val
 parameter_list|)
 function_decl|;
 DECL|method|htmlContent (String val)
+specifier|public
 specifier|abstract
 name|Builder
 name|htmlContent
@@ -372,6 +419,7 @@ name|val
 parameter_list|)
 function_decl|;
 DECL|method|build ()
+specifier|public
 specifier|abstract
 name|MailMessage
 name|build

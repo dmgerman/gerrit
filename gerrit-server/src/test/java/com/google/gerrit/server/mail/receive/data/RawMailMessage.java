@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail.receive
+DECL|package|com.google.gerrit.server.mail.receive.data
 package|package
 name|com
 operator|.
@@ -65,63 +65,64 @@ operator|.
 name|mail
 operator|.
 name|receive
+operator|.
+name|data
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|receive
+operator|.
+name|MailMessage
+import|;
+end_import
+
 begin_comment
-comment|/** MailParsingException indicates that an email could not be parsed. */
+comment|/**  * Base class for all email parsing tests.  */
 end_comment
 
 begin_class
-DECL|class|MailParsingException
+DECL|class|RawMailMessage
 specifier|public
+specifier|abstract
 class|class
-name|MailParsingException
-extends|extends
-name|Exception
+name|RawMailMessage
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-DECL|method|MailParsingException (String msg)
+comment|// Raw content to feed the parser
+DECL|method|raw ()
 specifier|public
-name|MailParsingException
-parameter_list|(
+specifier|abstract
 name|String
-name|msg
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|MailParsingException (String msg, Throwable cause)
+name|raw
+parameter_list|()
+function_decl|;
+DECL|method|rawChars ()
 specifier|public
-name|MailParsingException
-parameter_list|(
-name|String
-name|msg
-parameter_list|,
-name|Throwable
-name|cause
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|msg
-argument_list|,
-name|cause
-argument_list|)
-expr_stmt|;
-block|}
+specifier|abstract
+name|int
+index|[]
+name|rawChars
+parameter_list|()
+function_decl|;
+comment|// Parsed representation for asserting the expected parser output
+DECL|method|expectedMailMessage ()
+specifier|public
+specifier|abstract
+name|MailMessage
+name|expectedMailMessage
+parameter_list|()
+function_decl|;
 block|}
 end_class
 
