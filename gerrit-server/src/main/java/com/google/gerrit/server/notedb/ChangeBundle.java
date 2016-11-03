@@ -2584,7 +2584,7 @@ control|(
 name|ChangeMessage
 name|cm
 range|:
-name|getChangeMessages
+name|filterChangeMessages
 argument_list|()
 control|)
 block|{
@@ -2632,7 +2632,10 @@ control|(
 name|PatchSetApproval
 name|psa
 range|:
-name|getPatchSetApprovals
+name|filterPatchSetApprovals
+argument_list|()
+operator|.
+name|values
 argument_list|()
 control|)
 block|{
@@ -2656,7 +2659,10 @@ control|(
 name|PatchLineComment
 name|plc
 range|:
-name|getPatchLineComments
+name|filterPatchLineComments
+argument_list|()
+operator|.
+name|values
 argument_list|()
 control|)
 block|{
