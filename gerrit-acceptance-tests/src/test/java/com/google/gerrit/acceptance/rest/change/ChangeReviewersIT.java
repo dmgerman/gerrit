@@ -2325,7 +2325,7 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-comment|// Verify user is not added as reviewer.
+comment|// Verify user is added to CC list.
 name|ChangeInfo
 name|c
 init|=
@@ -2345,6 +2345,14 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|notesMigration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
+block|{
 name|assertReviewers
 argument_list|(
 name|c
@@ -2357,8 +2365,32 @@ argument_list|(
 name|c
 argument_list|,
 name|CC
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// If we aren't reading from NoteDb, the user will appear as a
+comment|// reviewer.
+name|assertReviewers
+argument_list|(
+name|c
+argument_list|,
+name|REVIEWER
+argument_list|,
+name|user
+argument_list|)
+expr_stmt|;
+name|assertReviewers
+argument_list|(
+name|c
+argument_list|,
+name|CC
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
