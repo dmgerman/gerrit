@@ -370,6 +370,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Injector
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -766,18 +778,6 @@ operator|.
 name|Context
 name|context
 decl_stmt|;
-DECL|field|dynamicBeans
-annotation|@
-name|Inject
-specifier|private
-name|DynamicMap
-argument_list|<
-name|DynamicOptions
-operator|.
-name|DynamicBean
-argument_list|>
-name|dynamicBeans
-decl_stmt|;
 comment|/** Commands declared by a plugin can be scoped by the plugin name. */
 annotation|@
 name|Inject
@@ -792,6 +792,27 @@ DECL|field|pluginName
 specifier|private
 name|String
 name|pluginName
+decl_stmt|;
+DECL|field|injector
+annotation|@
+name|Inject
+specifier|private
+name|Injector
+name|injector
+decl_stmt|;
+DECL|field|dynamicBeans
+annotation|@
+name|Inject
+specifier|private
+name|DynamicMap
+argument_list|<
+name|DynamicOptions
+operator|.
+name|DynamicBean
+argument_list|>
+name|dynamicBeans
+init|=
+literal|null
 decl_stmt|;
 comment|/** The task, as scheduled on a worker thread. */
 DECL|field|task
@@ -1103,6 +1124,8 @@ operator|new
 name|DynamicOptions
 argument_list|(
 name|options
+argument_list|,
+name|injector
 argument_list|,
 name|dynamicBeans
 argument_list|)

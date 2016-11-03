@@ -370,6 +370,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Injector
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -504,6 +516,12 @@ operator|.
 name|Factory
 name|parserFactory
 decl_stmt|;
+DECL|field|injector
+specifier|private
+specifier|final
+name|Injector
+name|injector
+decl_stmt|;
 DECL|field|dynamicBeans
 specifier|private
 specifier|final
@@ -517,13 +535,16 @@ name|dynamicBeans
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ParameterParser (CmdLineParser.Factory pf, DynamicMap<DynamicOptions.DynamicBean> dynamicBeans)
+DECL|method|ParameterParser ( CmdLineParser.Factory pf, Injector injector, DynamicMap<DynamicOptions.DynamicBean> dynamicBeans)
 name|ParameterParser
 parameter_list|(
 name|CmdLineParser
 operator|.
 name|Factory
 name|pf
+parameter_list|,
+name|Injector
+name|injector
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -539,6 +560,12 @@ operator|.
 name|parserFactory
 operator|=
 name|pf
+expr_stmt|;
+name|this
+operator|.
+name|injector
+operator|=
+name|injector
 expr_stmt|;
 name|this
 operator|.
@@ -591,6 +618,8 @@ operator|new
 name|DynamicOptions
 argument_list|(
 name|param
+argument_list|,
+name|injector
 argument_list|,
 name|dynamicBeans
 argument_list|)
