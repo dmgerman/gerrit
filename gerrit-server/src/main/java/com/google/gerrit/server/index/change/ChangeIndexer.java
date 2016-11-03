@@ -1861,6 +1861,18 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Deleted change {} from index."
+argument_list|,
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|fireChangeDeletedFromIndexEvent
 argument_list|(
 name|id
