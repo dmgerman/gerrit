@@ -149,6 +149,13 @@ name|req
 operator|.
 name|getQuery
 argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|req
+operator|.
+name|getQuery
+argument_list|()
 operator|.
 name|length
 argument_list|()
