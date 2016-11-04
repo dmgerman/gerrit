@@ -932,6 +932,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|currentAssignee
+operator|!=
+literal|null
+condition|)
+block|{
 name|suggestBox
 operator|.
 name|setText
@@ -949,6 +956,7 @@ operator|.
 name|selectAll
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|onCloseForm ()
 name|void
