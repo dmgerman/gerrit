@@ -228,20 +228,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -418,8 +404,6 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
-throws|,
-name|ConfigInvalidException
 function_decl|;
 DECL|method|rebuild (NoteDbUpdateManager manager, ChangeBundle bundle)
 specifier|public
@@ -439,8 +423,6 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
-throws|,
-name|ConfigInvalidException
 function_decl|;
 DECL|method|buildUpdates (NoteDbUpdateManager manager, ChangeBundle bundle)
 specifier|public
