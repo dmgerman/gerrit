@@ -857,13 +857,6 @@ name|assignee
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assigneeSuggestOracle
-operator|.
-name|setChange
-argument_list|(
-name|changeId
-argument_list|)
-expr_stmt|;
 name|editAssigneeIcon
 operator|.
 name|setVisible

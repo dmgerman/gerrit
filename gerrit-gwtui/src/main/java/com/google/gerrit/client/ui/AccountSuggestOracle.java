@@ -344,6 +344,7 @@ name|String
 name|suggestion
 decl_stmt|;
 DECL|method|AccountSuggestion (AccountInfo info, String query)
+specifier|public
 name|AccountSuggestion
 parameter_list|(
 name|AccountInfo
