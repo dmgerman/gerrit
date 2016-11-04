@@ -126,6 +126,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -368,6 +384,31 @@ block|}
 argument_list|)
 return|;
 block|}
+comment|/**    * Rebuild ReviewDb contents by copying from NoteDb.    *    *<p>Requires NoteDb to be the primary storage for the change.    */
+DECL|method|rebuildReviewDb (ReviewDb db, Project.NameKey project, Change.Id changeId)
+specifier|public
+specifier|abstract
+name|void
+name|rebuildReviewDb
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+comment|// In the following methods "rebuilding" always refers to copying the state
+comment|// from ReviewDb to NoteDb, i.e. assuming ReviewDb is the primary storage.
 DECL|method|rebuild (ReviewDb db, Change.Id changeId)
 specifier|public
 specifier|abstract
