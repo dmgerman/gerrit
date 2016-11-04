@@ -217,6 +217,8 @@ name|asList
 argument_list|(
 literal|"project:"
 argument_list|,
+literal|"p:"
+argument_list|,
 literal|"parentproject:"
 argument_list|)
 argument_list|,
@@ -234,7 +236,11 @@ name|asList
 argument_list|(
 literal|"owner:"
 argument_list|,
+literal|"o:"
+argument_list|,
 literal|"reviewer:"
+argument_list|,
+literal|"r:"
 argument_list|,
 literal|"commentby:"
 argument_list|,
