@@ -412,6 +412,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbChangeState
+operator|.
+name|PrimaryStorage
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -2961,6 +2979,60 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|class|MismatchedStateException
+specifier|public
+specifier|static
+class|class
+name|MismatchedStateException
+extends|extends
+name|OrmException
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|method|MismatchedStateException (Change.Id id, NoteDbChangeState expectedState)
+specifier|private
+name|MismatchedStateException
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|NoteDbChangeState
+name|expectedState
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"cannot apply NoteDb updates for change %s;"
+operator|+
+literal|" change meta ref does not match %s"
+argument_list|,
+name|id
+argument_list|,
+name|expectedState
+operator|.
+name|getChangeMetaId
+argument_list|()
+operator|.
+name|name
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|checkExpectedState ()
 specifier|private
 name|void
@@ -3041,7 +3113,22 @@ comment|//  - The change is new, and we'll be creating its ref.
 comment|//  - We short-circuited before adding any commands that update this
 comment|//    ref, and we won't stage a delta for this change either.
 comment|// Either way, it is safe to proceed here rather than throwing
-comment|// OrmConcurrencyException.
+comment|// MismatchedStateException.
+continue|continue;
+block|}
+if|if
+condition|(
+name|expectedState
+operator|.
+name|getPrimaryStorage
+argument_list|()
+operator|==
+name|PrimaryStorage
+operator|.
+name|NOTE_DB
+condition|)
+block|{
+comment|// NoteDb is primary, no need to compare state to ReviewDb.
 continue|continue;
 block|}
 if|if
@@ -3062,29 +3149,14 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmConcurrencyException
+name|MismatchedStateException
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"cannot apply NoteDb updates for change %s;"
-operator|+
-literal|" change meta ref does not match %s"
-argument_list|,
 name|u
 operator|.
 name|getId
 argument_list|()
 argument_list|,
 name|expectedState
-operator|.
-name|getChangeMetaId
-argument_list|()
-operator|.
-name|name
-argument_list|()
-argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -3135,6 +3207,15 @@ condition|(
 name|expectedState
 operator|==
 literal|null
+operator|||
+name|expectedState
+operator|.
+name|getPrimaryStorage
+argument_list|()
+operator|==
+name|PrimaryStorage
+operator|.
+name|NOTE_DB
 condition|)
 block|{
 continue|continue;
