@@ -128,11 +128,23 @@ name|DateTimeZone
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests a message containing mime/alternative (text + html) content.  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 DECL|class|HtmlMimeMessage
 specifier|public
 class|class

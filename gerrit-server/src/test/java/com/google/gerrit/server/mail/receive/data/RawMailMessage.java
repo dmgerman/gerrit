@@ -88,11 +88,23 @@ name|MailMessage
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_comment
 comment|/**  * Base class for all email parsing tests.  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 DECL|class|RawMailMessage
 specifier|public
 specifier|abstract
