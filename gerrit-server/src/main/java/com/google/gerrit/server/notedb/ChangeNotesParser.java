@@ -1824,6 +1824,11 @@ name|ChangeNotesState
 operator|.
 name|create
 argument_list|(
+name|tip
+operator|.
+name|copy
+argument_list|()
+argument_list|,
 name|id
 argument_list|,
 operator|new

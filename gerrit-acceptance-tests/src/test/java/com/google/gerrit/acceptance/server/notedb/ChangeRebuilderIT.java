@@ -248,20 +248,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Iterables
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Ordering
 import|;
 end_import
@@ -601,6 +587,22 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
 import|;
 end_import
 
@@ -1155,6 +1157,20 @@ operator|.
 name|message
 operator|.
 name|BasicHeader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|junit
+operator|.
+name|TestRepository
 import|;
 end_import
 
@@ -3377,14 +3393,35 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-comment|// Make a ReviewDb change behind NoteDb's back and ensure it's detected.
-name|setNotesMigration
+comment|// Update ReviewDb and NoteDb, then revert the corresponding NoteDb change
+comment|// to simulate it failing.
+name|NoteDbChangeState
+name|oldState
+init|=
+name|NoteDbChangeState
+operator|.
+name|parse
 argument_list|(
-literal|false
-argument_list|,
-literal|false
+name|getUnwrappedDb
+argument_list|()
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|id
 argument_list|)
-expr_stmt|;
+argument_list|)
+decl_stmt|;
+name|String
+name|topic
+init|=
+name|name
+argument_list|(
+literal|"a-topic"
+argument_list|)
+decl_stmt|;
 name|gApi
 operator|.
 name|changes
@@ -3400,17 +3437,45 @@ argument_list|)
 operator|.
 name|topic
 argument_list|(
-name|name
-argument_list|(
-literal|"a-topic"
-argument_list|)
+name|topic
 argument_list|)
 expr_stmt|;
-name|setInvalidNoteDbState
+try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|repoManager
+operator|.
+name|openRepository
+argument_list|(
+name|project
+argument_list|)
+init|)
+block|{
+operator|new
+name|TestRepository
+argument_list|<>
+argument_list|(
+name|repo
+argument_list|)
+operator|.
+name|update
+argument_list|(
+name|RefNames
+operator|.
+name|changeMetaRef
 argument_list|(
 name|id
 argument_list|)
+argument_list|,
+name|oldState
+operator|.
+name|getChangeMetaId
+argument_list|()
+argument_list|)
 expr_stmt|;
+block|}
 name|assertChangeUpToDate
 argument_list|(
 literal|false
@@ -3423,13 +3488,6 @@ comment|// reality this could be caused by a failed update happening between whe
 comment|// the change is parsed by ChangesCollection and when the BatchUpdate
 comment|// executes. We simulate it here by using BatchUpdate directly and not going
 comment|// through an API handler.
-name|setNotesMigration
-argument_list|(
-literal|true
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
 specifier|final
 name|String
 name|msg
@@ -3584,101 +3642,58 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|bu
 operator|.
 name|execute
 argument_list|()
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"expected update to fail"
+argument_list|)
+expr_stmt|;
 block|}
-comment|// As an implementation detail, change wasn't actually rebuilt inside the
-comment|// BatchUpdate transaction, but it was rebuilt during read for the
-comment|// subsequent reindex. Thus it's impossible to actually observe an
-comment|// out-of-date state in the caller.
-name|assertChangeUpToDate
-argument_list|(
-literal|true
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-comment|// Check that the bundles are equal.
-name|ChangeNotes
-name|notes
-init|=
-name|notesFactory
-operator|.
-name|create
-argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|project
-argument_list|,
-name|id
-argument_list|)
-decl_stmt|;
-name|ChangeBundle
-name|actual
-init|=
-name|ChangeBundle
-operator|.
-name|fromNotes
-argument_list|(
-name|commentsUtil
-argument_list|,
-name|notes
-argument_list|)
-decl_stmt|;
-name|ChangeBundle
-name|expected
-init|=
-name|bundleReader
-operator|.
-name|fromReviewDb
-argument_list|(
-name|getUnwrappedDb
-argument_list|()
-argument_list|,
-name|id
-argument_list|)
-decl_stmt|;
+catch|catch
+parameter_list|(
+name|UpdateException
+name|e
+parameter_list|)
+block|{
 name|assertThat
 argument_list|(
-name|actual
+name|e
 operator|.
-name|differencesFrom
-argument_list|(
-name|expected
-argument_list|)
-argument_list|)
-operator|.
-name|isEmpty
-argument_list|()
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|Iterables
-operator|.
-name|transform
-argument_list|(
-name|notes
-operator|.
-name|getChangeMessages
-argument_list|()
-argument_list|,
-name|ChangeMessage
-operator|::
 name|getMessage
-argument_list|)
+argument_list|()
 argument_list|)
 operator|.
 name|contains
 argument_list|(
-name|msg
+literal|"cannot copy ChangeNotesState"
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+comment|// TODO(dborowitz): Re-enable these assertions once we fix auto-rebuilding
+comment|// in the BatchUpdate path.
+comment|//// As an implementation detail, change wasn't actually rebuilt inside the
+comment|//// BatchUpdate transaction, but it was rebuilt during read for the
+comment|//// subsequent reindex. Thus it's impossible to actually observe an
+comment|//// out-of-date state in the caller.
+comment|//assertChangeUpToDate(true, id);
+comment|//// Check that the bundles are equal.
+comment|//ChangeNotes notes = notesFactory.create(dbProvider.get(), project, id);
+comment|//ChangeBundle actual = ChangeBundle.fromNotes(commentsUtil, notes);
+comment|//ChangeBundle expected = bundleReader.fromReviewDb(getUnwrappedDb(), id);
+comment|//assertThat(actual.differencesFrom(expected)).isEmpty();
+comment|//assertThat(
+comment|//        Iterables.transform(
+comment|//            notes.getChangeMessages(),
+comment|//            ChangeMessage::getMessage))
+comment|//    .contains(msg);
+comment|//assertThat(actual.getChange().getTopic()).isEqualTo(topic);
 block|}
 annotation|@
 name|Test

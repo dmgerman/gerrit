@@ -555,6 +555,13 @@ comment|// estimated average element sizes rather than iterating over collection
 comment|// Numbers are largely hand-wavy based on
 comment|// http://stackoverflow.com/questions/258120/what-is-the-memory-consumption-of-an-object-in-java
 return|return
+name|P
+operator|+
+name|O
+operator|+
+literal|20
+comment|// metaId
+operator|+
 name|K
 comment|// changeId
 operator|+
