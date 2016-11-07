@@ -1228,7 +1228,8 @@ name|count
 init|=
 name|t
 operator|.
-name|count
+name|getCount
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
