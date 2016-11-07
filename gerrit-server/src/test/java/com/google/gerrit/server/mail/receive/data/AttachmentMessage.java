@@ -128,11 +128,23 @@ name|DateTimeZone
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests that all mime parts that are neither text/plain, nor text/html are  * dropped.  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 DECL|class|AttachmentMessage
 specifier|public
 class|class

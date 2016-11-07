@@ -128,11 +128,23 @@ name|DateTimeZone
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests parsing a simple text message with different headers.  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 DECL|class|SimpleTextMessage
 specifier|public
 class|class

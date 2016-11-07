@@ -128,11 +128,23 @@ name|DateTimeZone
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests parsing a Base64 encoded subject.  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 DECL|class|Base64HeaderMessage
 specifier|public
 class|class

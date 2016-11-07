@@ -128,11 +128,23 @@ name|DateTimeZone
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests parsing a quoted printable encoded subject  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 DECL|class|QuotedPrintableHeaderMessage
 specifier|public
 class|class

@@ -128,11 +128,23 @@ name|DateTimeZone
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests that non-UTF8 encodings are handled correctly.  */
 end_comment
 
 begin_class
+annotation|@
+name|Ignore
 DECL|class|NonUTF8Message
 specifier|public
 class|class
