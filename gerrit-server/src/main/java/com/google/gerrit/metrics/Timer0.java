@@ -107,7 +107,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Records elapsed time for an operation or span.  *<p>  * Typical usage in a try-with-resources block:  *  *<pre>  * try (Timer.Context ctx = timer.start()) {  * }  *</pre>  */
+comment|/**  * Records elapsed time for an operation or span.  *<p>  * Typical usage in a try-with-resources block:  *  *<pre>  * try (Timer0.Context ctx = timer.start()) {  * }  *</pre>  */
 end_comment
 
 begin_class
