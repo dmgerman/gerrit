@@ -242,9 +242,6 @@ name|i
 operator|++
 index|]
 operator|=
-operator|(
-name|int
-operator|)
 name|c
 expr_stmt|;
 block|}
