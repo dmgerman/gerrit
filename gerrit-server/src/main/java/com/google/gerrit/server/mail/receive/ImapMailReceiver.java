@@ -232,12 +232,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|inboxFolder
+DECL|field|INBOX_FOLDER
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|inboxFolder
+name|INBOX_FOLDER
 init|=
 literal|"INBOX"
 decl_stmt|;
@@ -383,7 +383,7 @@ name|imap
 operator|.
 name|select
 argument_list|(
-name|inboxFolder
+name|INBOX_FOLDER
 argument_list|)
 condition|)
 block|{
@@ -393,7 +393,7 @@ name|error
 argument_list|(
 literal|"Could not select IMAP folder "
 operator|+
-name|inboxFolder
+name|INBOX_FOLDER
 argument_list|)
 expr_stmt|;
 return|return;
