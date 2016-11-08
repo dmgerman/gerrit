@@ -416,7 +416,7 @@ expr_stmt|;
 block|}
 block|}
 argument_list|,
-literal|0l
+literal|0L
 argument_list|,
 name|mailSettings
 operator|.
