@@ -332,6 +332,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -421,6 +435,13 @@ init|=
 name|sort
 argument_list|(
 name|toMerge
+argument_list|,
+name|args
+operator|.
+name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|List
@@ -1353,7 +1374,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sort (Collection<CodeReviewCommit> toSort)
+DECL|method|sort (Collection<CodeReviewCommit> toSort, RevCommit initialTip)
 specifier|private
 name|List
 argument_list|<
@@ -1366,6 +1387,9 @@ argument_list|<
 name|CodeReviewCommit
 argument_list|>
 name|toSort
+parameter_list|,
+name|RevCommit
+name|initialTip
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -1380,9 +1404,7 @@ name|args
 operator|.
 name|rw
 argument_list|,
-name|args
-operator|.
-name|alreadyAccepted
+name|initialTip
 argument_list|,
 name|args
 operator|.

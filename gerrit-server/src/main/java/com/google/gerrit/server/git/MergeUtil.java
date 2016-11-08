@@ -4414,6 +4414,14 @@ range|:
 name|alreadyAccepted
 control|)
 block|{
+comment|// If branch was not created by this submit.
+if|if
+condition|(
+name|c
+operator|!=
+name|mergeTip
+condition|)
+block|{
 name|rw
 operator|.
 name|markUninteresting
@@ -4421,6 +4429,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|CodeReviewCommit
 name|c
