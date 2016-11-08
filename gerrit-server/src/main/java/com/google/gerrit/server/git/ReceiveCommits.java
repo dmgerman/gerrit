@@ -13344,6 +13344,13 @@ name|setUpdateRef
 argument_list|(
 literal|false
 argument_list|)
+operator|.
+name|setPatchSetDescription
+argument_list|(
+name|magicBranch
+operator|.
+name|message
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

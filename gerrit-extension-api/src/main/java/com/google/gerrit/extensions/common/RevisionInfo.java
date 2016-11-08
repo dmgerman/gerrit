@@ -189,6 +189,11 @@ specifier|public
 name|PushCertificateInfo
 name|pushCertificate
 decl_stmt|;
+DECL|field|description
+specifier|public
+name|String
+name|description
+decl_stmt|;
 block|}
 end_class
 

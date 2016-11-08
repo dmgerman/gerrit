@@ -181,6 +181,12 @@ specifier|protected
 name|String
 name|revId
 decl_stmt|;
+comment|/** Optional user-supplied description for the patch set. */
+DECL|field|description
+specifier|protected
+name|String
+name|description
+decl_stmt|;
 DECL|method|PatchSetInfo ()
 specifier|protected
 name|PatchSetInfo
@@ -397,6 +403,32 @@ parameter_list|()
 block|{
 return|return
 name|revId
+return|;
+block|}
+DECL|method|setDescription (String description)
+specifier|public
+name|void
+name|setDescription
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+block|{
+name|this
+operator|.
+name|description
+operator|=
+name|description
+expr_stmt|;
+block|}
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|description
 return|;
 block|}
 block|}

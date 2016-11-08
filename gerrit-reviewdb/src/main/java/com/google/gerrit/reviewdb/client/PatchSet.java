@@ -936,6 +936,29 @@ specifier|protected
 name|String
 name|pushCertificate
 decl_stmt|;
+comment|/**    * Optional user-supplied description for this patch set.    *<p>    * When this field is null, the description was never set on the patch set.    * When this field is an empty string, the description was set and later    * cleared.    */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|9
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|,
+name|length
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+DECL|field|description
+specifier|protected
+name|String
+name|description
+decl_stmt|;
 DECL|method|PatchSet ()
 specifier|protected
 name|PatchSet
@@ -1020,6 +1043,14 @@ operator|=
 name|src
 operator|.
 name|pushCertificate
+expr_stmt|;
+name|this
+operator|.
+name|description
+operator|=
+name|src
+operator|.
+name|description
 expr_stmt|;
 block|}
 DECL|method|getId ()
@@ -1252,6 +1283,32 @@ block|{
 name|pushCertificate
 operator|=
 name|cert
+expr_stmt|;
+block|}
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|description
+return|;
+block|}
+DECL|method|setDescription (String description)
+specifier|public
+name|void
+name|setDescription
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+block|{
+name|this
+operator|.
+name|description
+operator|=
+name|description
 expr_stmt|;
 block|}
 annotation|@
