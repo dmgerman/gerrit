@@ -332,8 +332,6 @@ default|default:
 block|}
 block|}
 block|}
-annotation|@
-name|Inject
 DECL|method|MailReceiver (EmailSettings mailSettings)
 specifier|public
 name|MailReceiver
