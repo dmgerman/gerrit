@@ -134,6 +134,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|TestAccount
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -885,7 +899,7 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
-comment|// watch file in project
+comment|// watch file in project as user
 name|watch
 argument_list|(
 name|watchedProject
@@ -893,7 +907,7 @@ argument_list|,
 literal|"file:a.txt"
 argument_list|)
 expr_stmt|;
-comment|// watch other project
+comment|// watch other project as user
 name|watch
 argument_list|(
 name|otherWatchedProject
@@ -901,7 +915,8 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// push a change to watched file -> should trigger email notification
+comment|// push a change to watched file -> should trigger email notification for
+comment|// user
 name|setApiUser
 argument_list|(
 name|admin
@@ -961,41 +976,7 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
-comment|// push a change to non-watched file -> should not trigger email
-comment|// notification
-name|r
-operator|=
-name|pushFactory
-operator|.
-name|create
-argument_list|(
-name|db
-argument_list|,
-name|admin
-operator|.
-name|getIdent
-argument_list|()
-argument_list|,
-name|watchedRepo
-argument_list|,
-literal|"DONT_TRIGGER"
-argument_list|,
-literal|"b.txt"
-argument_list|,
-literal|"b1"
-argument_list|)
-operator|.
-name|to
-argument_list|(
-literal|"refs/for/master"
-argument_list|)
-expr_stmt|;
-name|r
-operator|.
-name|assertOkStatus
-argument_list|()
-expr_stmt|;
-comment|// assert email notification
+comment|// assert email notification for user
 name|List
 argument_list|<
 name|Message
@@ -1053,6 +1034,140 @@ operator|.
 name|contains
 argument_list|(
 literal|"Change subject: TRIGGER\n"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|m
+operator|.
+name|body
+argument_list|()
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"Gerrit-PatchSet: 1\n"
+argument_list|)
+expr_stmt|;
+name|sender
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+comment|// watch project as user2
+name|TestAccount
+name|user2
+init|=
+name|accounts
+operator|.
+name|create
+argument_list|(
+literal|"user2"
+argument_list|,
+literal|"user2@test.com"
+argument_list|,
+literal|"User2"
+argument_list|)
+decl_stmt|;
+name|setApiUser
+argument_list|(
+name|user2
+argument_list|)
+expr_stmt|;
+name|watch
+argument_list|(
+name|watchedProject
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+comment|// push a change to non-watched file -> should not trigger email
+comment|// notification for user, only for user2
+name|r
+operator|=
+name|pushFactory
+operator|.
+name|create
+argument_list|(
+name|db
+argument_list|,
+name|admin
+operator|.
+name|getIdent
+argument_list|()
+argument_list|,
+name|watchedRepo
+argument_list|,
+literal|"TRIGGER_USER2"
+argument_list|,
+literal|"b.txt"
+argument_list|,
+literal|"b1"
+argument_list|)
+operator|.
+name|to
+argument_list|(
+literal|"refs/for/master"
+argument_list|)
+expr_stmt|;
+name|r
+operator|.
+name|assertOkStatus
+argument_list|()
+expr_stmt|;
+comment|// assert email notification
+name|messages
+operator|=
+name|sender
+operator|.
+name|getMessages
+argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|messages
+argument_list|)
+operator|.
+name|hasSize
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|m
+operator|=
+name|messages
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|m
+operator|.
+name|rcpt
+argument_list|()
+argument_list|)
+operator|.
+name|containsExactly
+argument_list|(
+name|user2
+operator|.
+name|emailAddress
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|m
+operator|.
+name|body
+argument_list|()
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"Change subject: TRIGGER_USER2\n"
 argument_list|)
 expr_stmt|;
 name|assertThat
