@@ -957,7 +957,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|testRepo
+name|watchedRepo
 argument_list|,
 literal|"DONT_TRIGGER"
 argument_list|,
