@@ -162,6 +162,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -1697,7 +1711,7 @@ name|Provides
 annotation|@
 name|Singleton
 DECL|method|getBowerComponentsServlet ( @amedCACHE) Cache<Path, Resource> cache)
-name|BowerComponentsServlet
+name|BowerComponentsDevServlet
 name|getBowerComponentsServlet
 parameter_list|(
 annotation|@
@@ -1717,8 +1731,14 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|getPaths
+argument_list|()
+operator|.
+name|isDev
+argument_list|()
+condition|?
 operator|new
-name|BowerComponentsServlet
+name|BowerComponentsDevServlet
 argument_list|(
 name|cache
 argument_list|,
@@ -1727,6 +1747,8 @@ argument_list|()
 operator|.
 name|buckOut
 argument_list|)
+else|:
+literal|null
 return|;
 block|}
 annotation|@
@@ -1734,7 +1756,7 @@ name|Provides
 annotation|@
 name|Singleton
 DECL|method|getFontsServlet ( @amedCACHE) Cache<Path, Resource> cache)
-name|FontsServlet
+name|FontsDevServlet
 name|getFontsServlet
 parameter_list|(
 annotation|@
@@ -1754,8 +1776,14 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|getPaths
+argument_list|()
+operator|.
+name|isDev
+argument_list|()
+condition|?
 operator|new
-name|FontsServlet
+name|FontsDevServlet
 argument_list|(
 name|cache
 argument_list|,
@@ -1764,6 +1792,8 @@ argument_list|()
 operator|.
 name|buckOut
 argument_list|)
+else|:
+literal|null
 return|;
 block|}
 DECL|method|polyGerritBasePath ()
@@ -2369,18 +2399,18 @@ decl_stmt|;
 DECL|field|bowerComponentServlet
 specifier|private
 specifier|final
-name|BowerComponentsServlet
+name|BowerComponentsDevServlet
 name|bowerComponentServlet
 decl_stmt|;
 DECL|field|fontServlet
 specifier|private
 specifier|final
-name|FontsServlet
+name|FontsDevServlet
 name|fontServlet
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PolyGerritFilter (GerritOptions options, Paths paths, @Named(POLYGERRIT_INDEX_SERVLET) HttpServlet polyGerritIndex, PolyGerritUiServlet polygerritUI, BowerComponentsServlet bowerComponentServlet, FontsServlet fontServlet)
+DECL|method|PolyGerritFilter (GerritOptions options, Paths paths, @Named(POLYGERRIT_INDEX_SERVLET) HttpServlet polyGerritIndex, PolyGerritUiServlet polygerritUI, @Nullable BowerComponentsDevServlet bowerComponentServlet, @Nullable FontsDevServlet fontServlet)
 name|PolyGerritFilter
 parameter_list|(
 name|GerritOptions
@@ -2400,10 +2430,14 @@ parameter_list|,
 name|PolyGerritUiServlet
 name|polygerritUI
 parameter_list|,
-name|BowerComponentsServlet
+annotation|@
+name|Nullable
+name|BowerComponentsDevServlet
 name|bowerComponentServlet
 parameter_list|,
-name|FontsServlet
+annotation|@
+name|Nullable
+name|FontsDevServlet
 name|fontServlet
 parameter_list|)
 block|{
