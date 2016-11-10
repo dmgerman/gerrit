@@ -858,7 +858,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// watch file in project
 name|String
 name|watchedProject
 init|=
@@ -870,16 +869,36 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|String
+name|otherWatchedProject
+init|=
+name|createProject
+argument_list|(
+literal|"otherWatchedProject"
+argument_list|)
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|setApiUser
 argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
+comment|// watch file in project
 name|watch
 argument_list|(
 name|watchedProject
 argument_list|,
 literal|"file:a.txt"
+argument_list|)
+expr_stmt|;
+comment|// watch other project
+name|watch
+argument_list|(
+name|otherWatchedProject
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a change to watched file -> should trigger email notification
