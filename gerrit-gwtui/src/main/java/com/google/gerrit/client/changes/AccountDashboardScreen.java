@@ -708,7 +708,7 @@ name|who
 parameter_list|)
 block|{
 return|return
-literal|"is:open reviewer:"
+literal|"is:open ((reviewer:"
 operator|+
 name|who
 operator|+
@@ -716,7 +716,11 @@ literal|" -owner:"
 operator|+
 name|who
 operator|+
-literal|" -star:ignore"
+literal|" -star:ignore) OR assignee:"
+operator|+
+name|who
+operator|+
+literal|")"
 return|;
 block|}
 DECL|method|queryClosed (String who)
@@ -735,6 +739,10 @@ operator|+
 name|who
 operator|+
 literal|" OR reviewer:"
+operator|+
+name|who
+operator|+
+literal|" OR assignee:"
 operator|+
 name|who
 operator|+
