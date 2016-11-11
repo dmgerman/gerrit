@@ -259,16 +259,6 @@ name|to
 argument_list|(
 name|MultiBaseLocalDiskRepositoryManager
 operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|listener
-argument_list|()
-operator|.
-name|to
-argument_list|(
-name|MultiBaseLocalDiskRepositoryManager
-operator|.
 name|Lifecycle
 operator|.
 name|class

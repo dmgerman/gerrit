@@ -453,11 +453,6 @@ argument_list|,
 name|cfg
 argument_list|)
 expr_stmt|;
-name|repoManager
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1211,11 +1206,6 @@ argument_list|)
 decl_stmt|;
 name|newRepoManager
 operator|.
-name|start
-argument_list|()
-expr_stmt|;
-name|newRepoManager
-operator|.
 name|createRepository
 argument_list|(
 operator|new
@@ -1509,11 +1499,6 @@ argument_list|,
 name|cfg
 argument_list|)
 decl_stmt|;
-name|newRepoManager
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
 name|newRepoManager
 operator|.
 name|createRepository

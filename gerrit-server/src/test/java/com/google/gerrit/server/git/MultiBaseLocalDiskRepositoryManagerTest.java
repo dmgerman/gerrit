@@ -583,6 +583,8 @@ throws|throws
 name|RepositoryCaseMismatchException
 throws|,
 name|RepositoryNotFoundException
+throws|,
+name|IOException
 block|{
 name|Project
 operator|.
