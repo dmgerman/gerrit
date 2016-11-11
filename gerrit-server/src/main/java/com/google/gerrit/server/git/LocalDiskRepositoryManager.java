@@ -2233,7 +2233,9 @@ parameter_list|()
 block|{
 comment|// The results of this method are cached by ProjectCacheImpl. Control only
 comment|// enters here if the cache was flushed by the administrator to force
-comment|// scanning the filesystem. Don't rely on the cached names collection.
+comment|// scanning the filesystem.
+comment|// Don't rely on the cached names collection but update it to contain
+comment|// the set of found project names
 name|ProjectVisitor
 name|visitor
 init|=
@@ -2248,7 +2250,15 @@ argument_list|(
 name|visitor
 argument_list|)
 expr_stmt|;
-return|return
+name|namesUpdateLock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+try|try
+block|{
+name|names
+operator|=
 name|Collections
 operator|.
 name|unmodifiableSortedSet
@@ -2257,6 +2267,18 @@ name|visitor
 operator|.
 name|found
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|namesUpdateLock
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|names
 return|;
 block|}
 DECL|method|scanProjects (ProjectVisitor visitor)
