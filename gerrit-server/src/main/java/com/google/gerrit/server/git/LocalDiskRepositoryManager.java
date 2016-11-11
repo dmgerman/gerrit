@@ -2243,13 +2243,6 @@ block|{
 comment|// The results of this method are cached by ProjectCacheImpl. Control only
 comment|// enters here if the cache was flushed by the administrator to force
 comment|// scanning the filesystem. Don't rely on the cached names collection.
-name|namesUpdateLock
-operator|.
-name|lock
-argument_list|()
-expr_stmt|;
-try|try
-block|{
 name|ProjectVisitor
 name|visitor
 init|=
@@ -2274,15 +2267,6 @@ operator|.
 name|found
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|namesUpdateLock
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|scanProjects (ProjectVisitor visitor)
 specifier|protected
