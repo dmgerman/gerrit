@@ -3544,7 +3544,7 @@ name|gerrithome
 return|;
 block|}
 block|}
-comment|/**    * Locate the path of the {@code eclipse-out} directory in a source tree.    *    * @throws FileNotFoundException if the directory cannot be found.    */
+comment|/**    * Locate the path of the {@code eclipse-out} directory in a source tree.    *    * @return local path of the {@code eclipse-out} directory in a source tree.    * @throws FileNotFoundException if the directory cannot be found.    */
 DECL|method|getDeveloperEclipseOut ()
 specifier|public
 specifier|static
@@ -3561,7 +3561,7 @@ literal|"eclipse-out"
 argument_list|)
 return|;
 block|}
-comment|/**    * Locate the path of the {@code buck-out} directory in a source tree.    *    * @throws FileNotFoundException if the directory cannot be found.    */
+comment|/**    * Locate the path of the {@code buck-out} directory in a source tree.    *    * @return local path of the {@code buck-out} directory in a source tree.    * @throws FileNotFoundException if the directory cannot be found.    */
 DECL|method|getDeveloperBuckOut ()
 specifier|public
 specifier|static
