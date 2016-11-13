@@ -713,8 +713,6 @@ parameter_list|)
 throws|throws
 name|ResourceNotFoundException
 throws|,
-name|ConfigInvalidException
-throws|,
 name|OrmException
 throws|,
 name|IOException

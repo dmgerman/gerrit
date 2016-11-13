@@ -236,20 +236,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -394,8 +380,6 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
-throws|,
-name|ConfigInvalidException
 block|{
 if|if
 condition|(
@@ -468,8 +452,6 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
-throws|,
-name|ConfigInvalidException
 block|{
 comment|// stealNextUpdate doesn't really apply in this case because the IOException
 comment|// would normally come from the manager.execute() method, which isn't called

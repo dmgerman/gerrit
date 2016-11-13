@@ -1432,8 +1432,6 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
-throws|,
-name|ConfigInvalidException
 block|{
 name|db
 operator|=
@@ -1535,8 +1533,6 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
-throws|,
-name|ConfigInvalidException
 block|{
 name|Change
 name|change
