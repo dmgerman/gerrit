@@ -452,6 +452,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -467,16 +477,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -772,7 +772,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|abandon (ChangeControl control, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|abandon ( ChangeControl control, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|Change
 name|abandon
@@ -900,8 +900,8 @@ name|getChange
 argument_list|()
 return|;
 block|}
-comment|/**    * If an extension has more than one changes to abandon that belong to the    * same project, they should use the batch instead of abandoning one by one.    *<p>    * It's the caller's responsibility to ensure that all jobs inside the same    * batch have the matching project from its ChangeControl. Violations will    * result in a ResourceConflictException.    */
-DECL|method|batchAbandon (Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+comment|/**    * If an extension has more than one changes to abandon that belong to the same project, they    * should use the batch instead of abandoning one by one.    *    *<p>It's the caller's responsibility to ensure that all jobs inside the same batch have the    * matching project from its ChangeControl. Violations will result in a ResourceConflictException.    */
+DECL|method|batchAbandon ( Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|batchAbandon
@@ -1079,7 +1079,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|batchAbandon (Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt)
+DECL|method|batchAbandon ( Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt)
 specifier|public
 name|void
 name|batchAbandon
@@ -1127,7 +1127,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|batchAbandon (Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls)
+DECL|method|batchAbandon ( Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls)
 specifier|public
 name|void
 name|batchAbandon

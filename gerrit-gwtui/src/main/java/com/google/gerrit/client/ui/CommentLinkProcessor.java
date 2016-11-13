@@ -415,7 +415,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{               }
+block|{}
 annotation|@
 name|Override
 specifier|public
@@ -425,7 +425,7 @@ parameter_list|(
 name|VoidResult
 name|result
 parameter_list|)
-block|{               }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;

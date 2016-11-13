@@ -644,6 +644,86 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -743,86 +823,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
 import|;
 end_import
 
@@ -2480,7 +2480,7 @@ return|return
 name|normalized
 return|;
 block|}
-DECL|method|saveApprovals (LabelNormalizer.Result normalized, ChangeContext ctx, ChangeUpdate update, boolean includeUnchanged)
+DECL|method|saveApprovals ( LabelNormalizer.Result normalized, ChangeContext ctx, ChangeUpdate update, boolean includeUnchanged)
 specifier|private
 name|void
 name|saveApprovals
@@ -2669,6 +2669,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|convertPatchSet ( final PatchSet.Id psId)
 specifier|private
 specifier|static
 name|Function
@@ -2677,7 +2678,6 @@ name|PatchSetApproval
 argument_list|,
 name|PatchSetApproval
 argument_list|>
-DECL|method|convertPatchSet (final PatchSet.Id psId)
 name|convertPatchSet
 parameter_list|(
 specifier|final
@@ -2755,7 +2755,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|zero ( Iterable<PatchSetApproval> approvals)
+DECL|method|zero (Iterable<PatchSetApproval> approvals)
 specifier|private
 specifier|static
 name|Iterable
@@ -3524,8 +3524,8 @@ name|ctx
 parameter_list|)
 throws|throws
 name|Exception
-block|{   }
-comment|/**    * @see #updateChange(ChangeContext)    * @param ctx    * @return a new patch set if one was created by the submit strategy, or null    *     if not.    */
+block|{}
+comment|/**    * @see #updateChange(ChangeContext)    * @param ctx    * @return a new patch set if one was created by the submit strategy, or null if not.    */
 DECL|method|updateChangeImpl (ChangeContext ctx)
 specifier|protected
 name|PatchSet
@@ -3552,8 +3552,8 @@ name|ctx
 parameter_list|)
 throws|throws
 name|Exception
-block|{   }
-comment|/**    * Amend the commit with gitlink update    * @param commit    */
+block|{}
+comment|/**    * Amend the commit with gitlink update    *    * @param commit    */
 DECL|method|amendGitlink (CodeReviewCommit commit)
 specifier|protected
 name|CodeReviewCommit

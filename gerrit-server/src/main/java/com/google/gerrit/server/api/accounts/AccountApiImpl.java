@@ -960,20 +960,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -1009,6 +995,20 @@ operator|.
 name|util
 operator|.
 name|SortedSet
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
 import|;
 end_import
 
@@ -1245,7 +1245,7 @@ name|putStatus
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountApiImpl (AccountLoader.Factory ailf, ChangesCollection changes, GetAvatar getAvatar, GetPreferences getPreferences, SetPreferences setPreferences, GetDiffPreferences getDiffPreferences, SetDiffPreferences setDiffPreferences, GetEditPreferences getEditPreferences, SetEditPreferences setEditPreferences, GetWatchedProjects getWatchedProjects, PostWatchedProjects postWatchedProjects, DeleteWatchedProjects deleteWatchedProjects, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, Stars stars, Stars.Get starsGet, Stars.Post starsPost, CreateEmail.Factory createEmailFactory, GpgApiAdapter gpgApiAdapter, GetSshKeys getSshKeys, AddSshKey addSshKey, DeleteSshKey deleteSshKey, SshKeys sshKeys, GetAgreements getAgreements, PutAgreement putAgreement, GetActive getActive, PutActive putActive, DeleteActive deleteActive, Index index, GetExternalIds getExternalIds, DeleteExternalIds deleteExternalIds, PutStatus putStatus, @Assisted AccountResource account)
+DECL|method|AccountApiImpl ( AccountLoader.Factory ailf, ChangesCollection changes, GetAvatar getAvatar, GetPreferences getPreferences, SetPreferences setPreferences, GetDiffPreferences getDiffPreferences, SetDiffPreferences setDiffPreferences, GetEditPreferences getEditPreferences, SetEditPreferences setEditPreferences, GetWatchedProjects getWatchedProjects, PostWatchedProjects postWatchedProjects, DeleteWatchedProjects deleteWatchedProjects, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, Stars stars, Stars.Get starsGet, Stars.Post starsPost, CreateEmail.Factory createEmailFactory, GpgApiAdapter gpgApiAdapter, GetSshKeys getSshKeys, AddSshKey addSshKey, DeleteSshKey deleteSshKey, SshKeys sshKeys, GetAgreements getAgreements, PutAgreement putAgreement, GetActive getActive, PutActive putActive, DeleteActive deleteActive, Index index, GetExternalIds getExternalIds, DeleteExternalIds deleteExternalIds, PutStatus putStatus, @Assisted AccountResource account)
 name|AccountApiImpl
 parameter_list|(
 name|AccountLoader
@@ -2060,7 +2060,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|setWatchedProjects ( List<ProjectWatchInfo> in)
+DECL|method|setWatchedProjects (List<ProjectWatchInfo> in)
 specifier|public
 name|List
 argument_list|<

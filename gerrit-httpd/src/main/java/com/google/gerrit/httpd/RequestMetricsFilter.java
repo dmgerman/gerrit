@@ -282,7 +282,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
@@ -340,7 +340,7 @@ name|cfg
 parameter_list|)
 throws|throws
 name|ServletException
-block|{   }
+block|{}
 DECL|class|Response
 specifier|private
 specifier|static

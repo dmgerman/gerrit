@@ -242,7 +242,7 @@ name|ProjectEvent
 name|event
 parameter_list|)
 function_decl|;
-comment|/**    * Post a stream event generically.    *<p>    * If you are creating a RefEvent or ChangeEvent from scratch,    * it is more efficient to use the specific postEvent methods    * for those use cases.    *    * @param event The event to post.    * @throws OrmException on failure to post the event due to DB error    */
+comment|/**    * Post a stream event generically.    *    *<p>If you are creating a RefEvent or ChangeEvent from scratch, it is more efficient to use the    * specific postEvent methods for those use cases.    *    * @param event The event to post.    * @throws OrmException on failure to post the event due to DB error    */
 DECL|method|postEvent (Event event)
 name|void
 name|postEvent

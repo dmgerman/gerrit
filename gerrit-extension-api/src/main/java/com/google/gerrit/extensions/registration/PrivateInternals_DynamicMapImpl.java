@@ -127,9 +127,9 @@ block|{
 DECL|method|PrivateInternals_DynamicMapImpl ()
 name|PrivateInternals_DynamicMapImpl
 parameter_list|()
-block|{   }
+block|{}
 comment|/**    * Store one new element into the map.    *    * @param pluginName unique name of the plugin providing the export.    * @param exportName name the plugin has exported the item as.    * @param item the item to add to the collection. Must not be null.    * @return handle to remove the item at a later point in time.    */
-DECL|method|put ( String pluginName, String exportName, final Provider<T> item)
+DECL|method|put (String pluginName, String exportName, final Provider<T> item)
 specifier|public
 name|RegistrationHandle
 name|put
@@ -194,8 +194,8 @@ block|}
 block|}
 return|;
 block|}
-comment|/**    * Store one new element that may be hot-replaceable in the future.    *    * @param pluginName unique name of the plugin providing the export.    * @param key unique description from the item's Guice binding. This can be    *        later obtained from the registration handle to facilitate matching    *        with the new equivalent instance during a hot reload. The key must    *        use an {@link Export} annotation.    * @param item the item to add to the collection right now. Must not be null.    * @return a handle that can remove this item later, or hot-swap the item    *         without it ever leaving the collection.    */
-DECL|method|put ( String pluginName, Key<T> key, Provider<T> item)
+comment|/**    * Store one new element that may be hot-replaceable in the future.    *    * @param pluginName unique name of the plugin providing the export.    * @param key unique description from the item's Guice binding. This can be later obtained from    *     the registration handle to facilitate matching with the new equivalent instance during a    *     hot reload. The key must use an {@link Export} annotation.    * @param item the item to add to the collection right now. Must not be null.    * @return a handle that can remove this item later, or hot-swap the item without it ever leaving    *     the collection.    */
+DECL|method|put (String pluginName, Key<T> key, Provider<T> item)
 specifier|public
 name|ReloadableRegistrationHandle
 argument_list|<

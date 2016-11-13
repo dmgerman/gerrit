@@ -458,7 +458,7 @@ specifier|public
 name|void
 name|stop
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|getSchemaVersion (final ReviewDb db)
 specifier|private
 name|CurrentSchemaVersion

@@ -168,7 +168,7 @@ specifier|public
 interface|interface
 name|Accounts
 block|{
-comment|/**    * Look up an account by ID.    *<p>    *<strong>Note:</strong> This method eagerly reads the account. Methods that    * mutate the account do not necessarily re-read the account. Therefore, calling    * a getter method on an instance after calling a mutation method on that same    * instance is not guaranteed to reflect the mutation. It is not recommended    * to store references to {@code AccountApi} instances.    *    * @param id any identifier supported by the REST API, including numeric ID,    *     email, or username.    * @return API for accessing the account.    * @throws RestApiException if an error occurred.    */
+comment|/**    * Look up an account by ID.    *    *<p><strong>Note:</strong> This method eagerly reads the account. Methods that mutate the    * account do not necessarily re-read the account. Therefore, calling a getter method on an    * instance after calling a mutation method on that same instance is not guaranteed to reflect the    * mutation. It is not recommended to store references to {@code AccountApi} instances.    *    * @param id any identifier supported by the REST API, including numeric ID, email, or username.    * @return API for accessing the account.    * @throws RestApiException if an error occurred.    */
 DECL|method|id (String id)
 name|AccountApi
 name|id
@@ -179,7 +179,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * @see #id(String)    */
+comment|/** @see #id(String) */
 DECL|method|id (int id)
 name|AccountApi
 name|id
@@ -220,7 +220,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Suggest users for a given query.    *<p>    * Example code:    * {@code suggestAccounts().withQuery("Reviewer").withLimit(5).get()}    *    * @return API for setting parameters and getting result.    */
+comment|/**    * Suggest users for a given query.    *    *<p>Example code: {@code suggestAccounts().withQuery("Reviewer").withLimit(5).get()}    *    * @return API for setting parameters and getting result.    */
 DECL|method|suggestAccounts ()
 name|SuggestAccountsRequest
 name|suggestAccounts
@@ -228,7 +228,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Suggest users for a given query.    *<p>    * Shortcut API for {@code suggestAccounts().withQuery(String)}.    *    * @see #suggestAccounts()    */
+comment|/**    * Suggest users for a given query.    *    *<p>Shortcut API for {@code suggestAccounts().withQuery(String)}.    *    * @see #suggestAccounts()    */
 DECL|method|suggestAccounts (String query)
 name|SuggestAccountsRequest
 name|suggestAccounts
@@ -239,7 +239,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Query users.    *<p>    * Example code:    * {@code query().withQuery("name:John email:example.com").withLimit(5).get()}    *    * @return API for setting parameters and getting result.    */
+comment|/**    * Query users.    *    *<p>Example code: {@code query().withQuery("name:John email:example.com").withLimit(5).get()}    *    * @return API for setting parameters and getting result.    */
 DECL|method|query ()
 name|QueryRequest
 name|query
@@ -247,7 +247,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Query users.    *<p>    * Shortcut API for {@code query().withQuery(String)}.    *    * @see #query()    */
+comment|/**    * Query users.    *    *<p>Shortcut API for {@code query().withQuery(String)}.    *    * @see #query()    */
 DECL|method|query (String query)
 name|QueryRequest
 name|query
@@ -258,7 +258,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * API for setting parameters and getting result.    * Used for {@code suggestAccounts()}.    *    * @see #suggestAccounts()    */
+comment|/**    * API for setting parameters and getting result. Used for {@code suggestAccounts()}.    *    * @see #suggestAccounts()    */
 DECL|class|SuggestAccountsRequest
 specifier|abstract
 class|class
@@ -274,7 +274,7 @@ specifier|private
 name|int
 name|limit
 decl_stmt|;
-comment|/**      * Execute query and return a list of accounts.      */
+comment|/** Execute query and return a list of accounts. */
 DECL|method|get ()
 specifier|public
 specifier|abstract
@@ -307,7 +307,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Set limit for returned list of accounts.      * Optional; server-default is used when not provided.      */
+comment|/**      * Set limit for returned list of accounts. Optional; server-default is used when not provided.      */
 DECL|method|withLimit (int limit)
 specifier|public
 name|SuggestAccountsRequest
@@ -348,7 +348,7 @@ name|limit
 return|;
 block|}
 block|}
-comment|/**    * API for setting parameters and getting result.    * Used for {@code query()}.    *    * @see #query()    */
+comment|/**    * API for setting parameters and getting result. Used for {@code query()}.    *    * @see #query()    */
 DECL|class|QueryRequest
 specifier|abstract
 class|class
@@ -386,7 +386,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Execute query and return a list of accounts.      */
+comment|/** Execute query and return a list of accounts. */
 DECL|method|get ()
 specifier|public
 specifier|abstract
@@ -419,7 +419,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Set limit for returned list of accounts.      * Optional; server-default is used when not provided.      */
+comment|/**      * Set limit for returned list of accounts. Optional; server-default is used when not provided.      */
 DECL|method|withLimit (int limit)
 specifier|public
 name|QueryRequest
@@ -439,7 +439,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Set number of accounts to skip.      * Optional; no accounts are skipped when not provided.      */
+comment|/** Set number of accounts to skip. Optional; no accounts are skipped when not provided. */
 DECL|method|withStart (int start)
 specifier|public
 name|QueryRequest
@@ -575,7 +575,7 @@ name|options
 return|;
 block|}
 block|}
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

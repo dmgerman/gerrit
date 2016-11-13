@@ -79,7 +79,7 @@ DECL|method|TagInfo ()
 specifier|protected
 name|TagInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -299,7 +299,7 @@ DECL|class|Input
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|self
 specifier|private
 specifier|final

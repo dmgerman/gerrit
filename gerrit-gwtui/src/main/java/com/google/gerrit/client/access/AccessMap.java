@@ -321,7 +321,7 @@ DECL|method|AccessMap ()
 specifier|protected
 name|AccessMap
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -374,26 +374,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -534,8 +514,28 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Base class for serving static resources.  *<p>  * Supports caching, ETags, basic content type detection, and limited gzip  * compression.  */
+comment|/**  * Base class for serving static resources.  *  *<p>Supports caching, ETags, basic content type detection, and limited gzip compression.  */
 end_comment
 
 begin_class
@@ -891,7 +891,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|ResourceServlet (Cache<Path, Resource> cache, boolean refresh, boolean cacheOnClient, int cacheFileSizeLimitBytes)
+DECL|method|ResourceServlet ( Cache<Path, Resource> cache, boolean refresh, boolean cacheOnClient, int cacheFileSizeLimitBytes)
 name|ResourceServlet
 parameter_list|(
 name|Cache
@@ -942,7 +942,7 @@ operator|=
 name|cacheFileSizeLimitBytes
 expr_stmt|;
 block|}
-comment|/**    * Get the resource path on the filesystem that should be served for this    * request.    *    * @param pathInfo result of {@link HttpServletRequest#getPathInfo()}.    * @return path where static content can be found.    * @throws IOException if an error occurred resolving the resource.    */
+comment|/**    * Get the resource path on the filesystem that should be served for this request.    *    * @param pathInfo result of {@link HttpServletRequest#getPathInfo()}.    * @return path where static content can be found.    * @throws IOException if an error occurred resolving the resource.    */
 DECL|method|getResourcePath (String pathInfo)
 specifier|protected
 specifier|abstract
@@ -1586,7 +1586,7 @@ name|rsp
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Maybe stream a path to the response, depending on the properties of the    * file and cache headers in the request.    *    * @param p path to stream    * @param req HTTP request.    * @param rsp HTTP response.    * @return true if the response was written (either the file contents or an    *     error); false if the path is too small to stream and should be cached.    */
+comment|/**    * Maybe stream a path to the response, depending on the properties of the file and cache headers    * in the request.    *    * @param p path to stream    * @param req HTTP request.    * @param rsp HTTP response.    * @return true if the response was written (either the file contents or an error); false if the    *     path is too small to stream and should be cached.    */
 DECL|method|maybeStream (Path p, HttpServletRequest req, HttpServletResponse rsp)
 specifier|private
 name|boolean

@@ -266,36 +266,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|storage
-operator|.
-name|file
-operator|.
-name|FileBasedConfig
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -410,6 +380,36 @@ name|Properties
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|storage
+operator|.
+name|file
+operator|.
+name|FileBasedConfig
+import|;
+end_import
+
 begin_comment
 comment|/** Upgrade from a 2.0.x site to a 2.1 site. */
 end_comment
@@ -515,7 +515,7 @@ name|sections
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UpgradeFrom2_0_x (final SitePaths site, final InitFlags flags, final ConsoleUI ui, final Section.Factory sections)
+DECL|method|UpgradeFrom2_0_x ( final SitePaths site, final InitFlags flags, final ConsoleUI ui, final Section.Factory sections)
 name|UpgradeFrom2_0_x
 parameter_list|(
 specifier|final

@@ -200,18 +200,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Argument
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -240,6 +228,18 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Argument
+import|;
+end_import
+
 begin_class
 annotation|@
 name|CommandMetaData
@@ -259,16 +259,16 @@ name|IndexChangesCommand
 extends|extends
 name|SshCommand
 block|{
+DECL|field|index
 annotation|@
 name|Inject
-DECL|field|index
 specifier|private
 name|Index
 name|index
 decl_stmt|;
+DECL|field|changeArgumentParser
 annotation|@
 name|Inject
-DECL|field|changeArgumentParser
 specifier|private
 name|ChangeArgumentParser
 name|changeArgumentParser

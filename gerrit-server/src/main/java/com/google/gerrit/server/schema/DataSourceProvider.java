@@ -324,34 +324,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|dbcp
-operator|.
-name|BasicDataSource
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -401,6 +373,34 @@ operator|.
 name|sql
 operator|.
 name|DataSource
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|dbcp
+operator|.
+name|BasicDataSource
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -460,7 +460,7 @@ name|ds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DataSourceProvider (@erritServerConfig Config cfg, MetricMaker metrics, ThreadSettingsConfig threadSettingsConfig, Context ctx, DataSourceType dst)
+DECL|method|DataSourceProvider ( @erritServerConfig Config cfg, MetricMaker metrics, ThreadSettingsConfig threadSettingsConfig, Context ctx, DataSourceType dst)
 specifier|protected
 name|DataSourceProvider
 parameter_list|(
@@ -552,7 +552,7 @@ specifier|public
 name|void
 name|start
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|stop ()
@@ -598,9 +598,9 @@ enum|enum
 name|Context
 block|{
 DECL|enumConstant|SINGLE_USER
-DECL|enumConstant|MULTI_USER
 name|SINGLE_USER
 block|,
+DECL|enumConstant|MULTI_USER
 name|MULTI_USER
 block|}
 DECL|method|open (final Config cfg, final Context context, final DataSourceType dst)

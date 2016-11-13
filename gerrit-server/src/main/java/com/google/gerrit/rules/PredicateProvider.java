@@ -109,7 +109,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides additional packages that contain Prolog predicates that should be  * made available in the Prolog environment. The predicates can e.g. be used in  * the project submit rules.  *  * Each Java class defining a Prolog predicate must be in one of the provided  * packages and its name must apply to the 'PRED_[functor]_[arity]' format. In  * addition it must extend {@link Predicate}.  */
+comment|/**  * Provides additional packages that contain Prolog predicates that should be made available in the  * Prolog environment. The predicates can e.g. be used in the project submit rules.  *  *<p>Each Java class defining a Prolog predicate must be in one of the provided packages and its  * name must apply to the 'PRED_[functor]_[arity]' format. In addition it must extend {@link  * Predicate}.  */
 end_comment
 
 begin_interface

@@ -193,7 +193,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Execute a single query over a secondary index, for use by Gerrit internals.  *<p>  * By default, visibility of returned entities is not enforced (unlike in {@link  * QueryProcessor}). The methods in this class are not typically used by  * user-facing paths, but rather by internal callers that need to process all  * matching results.  */
+comment|/**  * Execute a single query over a secondary index, for use by Gerrit internals.  *  *<p>By default, visibility of returned entities is not enforced (unlike in {@link  * QueryProcessor}). The methods in this class are not typically used by user-facing paths, but  * rather by internal callers that need to process all matching results.  */
 end_comment
 
 begin_class
@@ -240,7 +240,7 @@ specifier|final
 name|IndexConfig
 name|indexConfig
 decl_stmt|;
-DECL|method|InternalQuery (QueryProcessor<T> queryProcessor, IndexCollection<?, T, ? extends Index<?, T>> indexes, IndexConfig indexConfig)
+DECL|method|InternalQuery ( QueryProcessor<T> queryProcessor, IndexCollection<?, T, ? extends Index<?, T>> indexes, IndexConfig indexConfig)
 specifier|protected
 name|InternalQuery
 parameter_list|(
@@ -439,7 +439,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Run multiple queries in parallel.    *<p>    * If a limit was specified using {@link #setLimit(int)}, that limit is    * applied to each query independently.    *    * @param queries list of queries.    * @return results of the queries, one list of results per input query, in the    *     same order as the input.    */
+comment|/**    * Run multiple queries in parallel.    *    *<p>If a limit was specified using {@link #setLimit(int)}, that limit is applied to each query    * independently.    *    * @param queries list of queries.    * @return results of the queries, one list of results per input query, in the same order as the    *     input.    */
 DECL|method|query (List<Predicate<T>> queries)
 specifier|public
 name|List

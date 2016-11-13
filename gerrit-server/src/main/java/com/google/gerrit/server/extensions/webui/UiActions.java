@@ -252,6 +252,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -267,16 +277,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
 import|;
 end_import
 
@@ -322,6 +322,7 @@ operator|::
 name|isEnabled
 return|;
 block|}
+DECL|method|from ( RestCollection<?, R> collection, R resource, Provider<CurrentUser> userProvider)
 specifier|public
 specifier|static
 parameter_list|<
@@ -335,7 +336,6 @@ name|UiAction
 operator|.
 name|Description
 argument_list|>
-DECL|method|from ( RestCollection<?, R> collection, R resource, Provider<CurrentUser> userProvider)
 name|from
 parameter_list|(
 name|RestCollection
@@ -370,6 +370,7 @@ name|userProvider
 argument_list|)
 return|;
 block|}
+DECL|method|from ( DynamicMap<RestView<R>> views, R resource, Provider<CurrentUser> userProvider)
 specifier|public
 specifier|static
 parameter_list|<
@@ -383,7 +384,6 @@ name|UiAction
 operator|.
 name|Description
 argument_list|>
-DECL|method|from ( DynamicMap<RestView<R>> views, R resource, Provider<CurrentUser> userProvider)
 name|from
 parameter_list|(
 name|DynamicMap
@@ -667,7 +667,7 @@ DECL|method|UiActions ()
 specifier|private
 name|UiActions
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

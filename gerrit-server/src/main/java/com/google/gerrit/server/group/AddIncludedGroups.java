@@ -475,9 +475,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|_oneGroup
 annotation|@
 name|DefaultInput
-DECL|field|_oneGroup
 name|String
 name|_oneGroup
 decl_stmt|;
@@ -628,7 +628,7 @@ name|auditService
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddIncludedGroups (GroupsCollection groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, GroupJson json, AuditService auditService)
+DECL|method|AddIncludedGroups ( GroupsCollection groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, GroupJson json, AuditService auditService)
 specifier|public
 name|AddIncludedGroups
 parameter_list|(
@@ -1018,7 +1018,7 @@ DECL|class|Input
 specifier|static
 class|class
 name|Input
-block|{     }
+block|{}
 DECL|field|put
 specifier|private
 specifier|final

@@ -94,14 +94,14 @@ enum|enum
 name|Filters
 block|{
 DECL|enumConstant|RUN
-DECL|enumConstant|SKIP
 name|RUN
 block|,
+DECL|enumConstant|SKIP
 name|SKIP
 block|}
+DECL|field|rule
 annotation|@
 name|DefaultInput
-DECL|field|rule
 specifier|public
 name|String
 name|rule

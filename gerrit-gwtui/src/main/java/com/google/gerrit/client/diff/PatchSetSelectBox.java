@@ -558,6 +558,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|codemirror
@@ -565,16 +575,6 @@ operator|.
 name|lib
 operator|.
 name|CodeMirror
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -690,7 +690,7 @@ specifier|private
 name|PatchSetSelectBox
 name|other
 decl_stmt|;
-DECL|method|PatchSetSelectBox (DiffScreen parent, DisplaySide side, Change.Id changeId, DiffObject diffObject, String path)
+DECL|method|PatchSetSelectBox ( DiffScreen parent, DisplaySide side, Change.Id changeId, DiffObject diffObject, String path)
 name|PatchSetSelectBox
 parameter_list|(
 name|DiffScreen
@@ -798,7 +798,7 @@ operator|=
 name|path
 expr_stmt|;
 block|}
-DECL|method|setUpPatchSetNav (JsArray<RevisionInfo> list, int parents, DiffInfo.FileMeta meta, boolean editExists, boolean current, boolean open, boolean binary)
+DECL|method|setUpPatchSetNav ( JsArray<RevisionInfo> list, int parents, DiffInfo.FileMeta meta, boolean editExists, boolean current, boolean open, boolean binary)
 name|void
 name|setUpPatchSetNav
 parameter_list|(
@@ -1226,7 +1226,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setUpBlame (final CodeMirror cm, final boolean isBase, final PatchSet.Id rev, final String path)
+DECL|method|setUpBlame ( final CodeMirror cm, final boolean isBase, final PatchSet.Id rev, final String path)
 name|void
 name|setUpBlame
 parameter_list|(

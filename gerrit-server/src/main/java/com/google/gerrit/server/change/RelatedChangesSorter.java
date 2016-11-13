@@ -334,62 +334,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -505,6 +449,62 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevWalk
 import|;
 end_import
 
@@ -1101,7 +1101,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|walkAncestors (ProjectControl ctl, ListMultimap<PatchSetData, PatchSetData> parents, PatchSetData start)
+DECL|method|walkAncestors ( ProjectControl ctl, ListMultimap<PatchSetData, PatchSetData> parents, PatchSetData start)
 specifier|private
 specifier|static
 name|Collection
@@ -1222,7 +1222,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|walkDescendants (ProjectControl ctl, ListMultimap<PatchSetData, PatchSetData> children, PatchSetData start, List<PatchSetData> otherPatchSetsOfStart, Iterable<PatchSetData> ancestors)
+DECL|method|walkDescendants ( ProjectControl ctl, ListMultimap<PatchSetData, PatchSetData> children, PatchSetData start, List<PatchSetData> otherPatchSetsOfStart, Iterable<PatchSetData> ancestors)
 specifier|private
 specifier|static
 name|List
@@ -1333,7 +1333,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|addAllChangeIds (Collection<Change.Id> changeIds, Iterable<PatchSetData> psds)
+DECL|method|addAllChangeIds ( Collection<Change.Id> changeIds, Iterable<PatchSetData> psds)
 specifier|private
 specifier|static
 name|void
@@ -1374,7 +1374,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|walkDescendentsImpl (ProjectControl ctl, Set<Change.Id> alreadyEmittedChanges, ListMultimap<PatchSetData, PatchSetData> children, List<PatchSetData> start)
+DECL|method|walkDescendentsImpl ( ProjectControl ctl, Set<Change.Id> alreadyEmittedChanges, ListMultimap<PatchSetData, PatchSetData> children, List<PatchSetData> start)
 specifier|private
 specifier|static
 name|List

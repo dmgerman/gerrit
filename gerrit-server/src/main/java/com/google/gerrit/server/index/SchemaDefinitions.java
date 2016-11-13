@@ -113,7 +113,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Definitions of the various schema versions over a given Gerrit data type.  *<p>  * A<em>schema</em> is a description of the fields that are indexed over the  * given data type. This class contains all the versions of a schema defined  * over its data type, exposed as a map of version number to schema definition.  * If you are interested in the classes responsible for backend-specific runtime  * implementations, see the implementations of {@link IndexDefinition}.  */
+comment|/**  * Definitions of the various schema versions over a given Gerrit data type.  *  *<p>A<em>schema</em> is a description of the fields that are indexed over the given data type.  * This class contains all the versions of a schema defined over its data type, exposed as a map of  * version number to schema definition. If you are interested in the classes responsible for  * backend-specific runtime implementations, see the implementations of {@link IndexDefinition}.  */
 end_comment
 
 begin_class

@@ -82,20 +82,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|NB
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -131,6 +117,20 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|NB
 import|;
 end_import
 
@@ -376,7 +376,7 @@ return|return
 name|fp
 return|;
 block|}
-comment|/**    * Wrap a fingerprint byte array.    *<p>    * The newly created Fingerprint object takes ownership of the byte array,    * which must not be subsequently modified. (Most callers, such as hex    * decoders and {@code    * org.bouncycastle.openpgp.PGPPublicKey#getFingerprint()}, already produce    * fresh byte arrays).    *    * @param fp 20-byte fingerprint byte array to wrap.    */
+comment|/**    * Wrap a fingerprint byte array.    *    *<p>The newly created Fingerprint object takes ownership of the byte array, which must not be    * subsequently modified. (Most callers, such as hex decoders and {@code    * org.bouncycastle.openpgp.PGPPublicKey#getFingerprint()}, already produce fresh byte arrays).    *    * @param fp 20-byte fingerprint byte array to wrap.    */
 DECL|method|Fingerprint (byte[] fp)
 specifier|public
 name|Fingerprint
@@ -396,7 +396,7 @@ name|fp
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Wrap a portion of a fingerprint byte array.    *<p>    * Unlike {@link #Fingerprint(byte[])}, creates a new copy of the byte array.    *    * @param buf byte array to wrap; must have at least {@code off + 20} bytes.    * @param off offset in buf.    */
+comment|/**    * Wrap a portion of a fingerprint byte array.    *    *<p>Unlike {@link #Fingerprint(byte[])}, creates a new copy of the byte array.    *    * @param buf byte array to wrap; must have at least {@code off + 20} bytes.    * @param off offset in buf.    */
 DECL|method|Fingerprint (byte[] buf, int off)
 specifier|public
 name|Fingerprint

@@ -480,7 +480,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|addSelectionHandler ( SelectionHandler<GroupReference> handler)
+DECL|method|addSelectionHandler (SelectionHandler<GroupReference> handler)
 specifier|public
 name|HandlerRegistration
 name|addSelectionHandler
@@ -506,7 +506,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addCloseHandler ( CloseHandler<GroupReferenceBox> handler)
+DECL|method|addCloseHandler (CloseHandler<GroupReferenceBox> handler)
 specifier|public
 name|HandlerRegistration
 name|addCloseHandler

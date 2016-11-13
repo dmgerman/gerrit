@@ -195,9 +195,9 @@ name|T
 argument_list|>
 name|type
 decl_stmt|;
+DECL|field|injector
 annotation|@
 name|Inject
-DECL|field|injector
 specifier|private
 name|Injector
 name|injector
@@ -244,7 +244,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|find ( Injector src, TypeLiteral<T> type)
+DECL|method|find (Injector src, TypeLiteral<T> type)
 specifier|private
 specifier|static
 parameter_list|<

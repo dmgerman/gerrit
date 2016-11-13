@@ -238,7 +238,7 @@ name|operationType
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RefValidationHelper (RefOperationValidators.Factory refValidatorsFactory, @Assisted Type operationType)
+DECL|method|RefValidationHelper ( RefOperationValidators.Factory refValidatorsFactory, @Assisted Type operationType)
 name|RefValidationHelper
 parameter_list|(
 name|RefOperationValidators

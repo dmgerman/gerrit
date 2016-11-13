@@ -824,7 +824,7 @@ name|HTMLPanel
 argument_list|,
 name|PermissionEditor
 argument_list|>
-block|{   }
+block|{}
 DECL|field|uiBinder
 specifier|private
 specifier|static
@@ -879,15 +879,15 @@ name|String
 argument_list|>
 name|deletedName
 decl_stmt|;
+DECL|field|exclusiveGroup
 annotation|@
 name|UiField
-DECL|field|exclusiveGroup
 name|CheckBox
 name|exclusiveGroup
 decl_stmt|;
+DECL|field|ruleContainer
 annotation|@
 name|UiField
-DECL|field|ruleContainer
 name|FlowPanel
 name|ruleContainer
 decl_stmt|;
@@ -900,61 +900,61 @@ name|PermissionRuleEditor
 argument_list|>
 name|rules
 decl_stmt|;
+DECL|field|addContainer
 annotation|@
 name|UiField
-DECL|field|addContainer
 name|DivElement
 name|addContainer
 decl_stmt|;
+DECL|field|addStage1
 annotation|@
 name|UiField
-DECL|field|addStage1
 name|DivElement
 name|addStage1
 decl_stmt|;
+DECL|field|addStage2
 annotation|@
 name|UiField
-DECL|field|addStage2
 name|DivElement
 name|addStage2
 decl_stmt|;
+DECL|field|beginAddRule
 annotation|@
 name|UiField
-DECL|field|beginAddRule
 name|Anchor
 name|beginAddRule
 decl_stmt|;
+DECL|field|groupToAdd
 annotation|@
 name|UiField
 annotation|@
 name|Editor
 operator|.
 name|Ignore
-DECL|field|groupToAdd
 name|GroupReferenceBox
 name|groupToAdd
 decl_stmt|;
+DECL|field|addRule
 annotation|@
 name|UiField
-DECL|field|addRule
 name|Button
 name|addRule
 decl_stmt|;
+DECL|field|deletePermission
 annotation|@
 name|UiField
-DECL|field|deletePermission
 name|Anchor
 name|deletePermission
 decl_stmt|;
+DECL|field|normal
 annotation|@
 name|UiField
-DECL|field|normal
 name|DivElement
 name|normal
 decl_stmt|;
+DECL|field|deleted
 annotation|@
 name|UiField
-DECL|field|deleted
 name|DivElement
 name|deleted
 decl_stmt|;
@@ -1014,7 +1014,7 @@ specifier|private
 name|boolean
 name|isDeleted
 decl_stmt|;
-DECL|method|PermissionEditor (ProjectAccess projectAccess, boolean readOnly, AccessSection section, LabelTypes labelTypes)
+DECL|method|PermissionEditor ( ProjectAccess projectAccess, boolean readOnly, AccessSection section, LabelTypes labelTypes)
 specifier|public
 name|PermissionEditor
 parameter_list|(
@@ -1505,7 +1505,7 @@ name|UiHandler
 argument_list|(
 literal|"groupToAdd"
 argument_list|)
-DECL|method|onAbortAddGroup ( @uppressWarningsR) CloseEvent<GroupReferenceBox> event)
+DECL|method|onAbortAddGroup (@uppressWarningsR) CloseEvent<GroupReferenceBox> event)
 name|void
 name|onAbortAddGroup
 parameter_list|(
@@ -2150,7 +2150,7 @@ name|String
 modifier|...
 name|paths
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|setDelegate (EditorDelegate<Permission> delegate)
@@ -2164,7 +2164,7 @@ name|Permission
 argument_list|>
 name|delegate
 parameter_list|)
-block|{   }
+block|{}
 DECL|class|RuleEditorSource
 specifier|private
 class|class

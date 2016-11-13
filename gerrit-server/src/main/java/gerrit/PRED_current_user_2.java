@@ -325,7 +325,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Loads a CurrentUser object for a user identity.  *<p>  * Values are cached in the hash {@code current_user}, avoiding recreation  * during a single evaluation.  *  *<pre>  *   current_user(user(+AccountId), -CurrentUser).  *</pre>  */
+comment|/**  * Loads a CurrentUser object for a user identity.  *  *<p>Values are cached in the hash {@code current_user}, avoiding recreation during a single  * evaluation.  *  *<pre>  *   current_user(user(+AccountId), -CurrentUser).  *</pre>  */
 end_comment
 
 begin_class

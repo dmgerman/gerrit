@@ -84,7 +84,7 @@ specifier|public
 name|Boolean
 name|showOnUnifiedDiffView
 decl_stmt|;
-DECL|method|forSideBySideDiffView (String name, String imageUrl, String url, String target)
+DECL|method|forSideBySideDiffView ( String name, String imageUrl, String url, String target)
 specifier|public
 specifier|static
 name|DiffWebLinkInfo
@@ -121,7 +121,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|forUnifiedDiffView (String name, String imageUrl, String url, String target)
+DECL|method|forUnifiedDiffView ( String name, String imageUrl, String url, String target)
 specifier|public
 specifier|static
 name|DiffWebLinkInfo
@@ -158,7 +158,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|forSideBySideAndUnifiedDiffView (String name, String imageUrl, String url, String target)
+DECL|method|forSideBySideAndUnifiedDiffView ( String name, String imageUrl, String url, String target)
 specifier|public
 specifier|static
 name|DiffWebLinkInfo
@@ -195,7 +195,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|DiffWebLinkInfo (String name, String imageUrl, String url, String target, boolean showOnSideBySideDiffView, boolean showOnUnifiedDiffView)
+DECL|method|DiffWebLinkInfo ( String name, String imageUrl, String url, String target, boolean showOnSideBySideDiffView, boolean showOnUnifiedDiffView)
 specifier|private
 name|DiffWebLinkInfo
 parameter_list|(

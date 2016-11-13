@@ -312,7 +312,7 @@ name|ssoProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OAuthWebFilterOverOpenID (DynamicMap<OAuthServiceProvider> oauthServiceProviders, Provider<OAuthSessionOverOpenID> oauthSessionProvider)
+DECL|method|OAuthWebFilterOverOpenID ( DynamicMap<OAuthServiceProvider> oauthServiceProviders, Provider<OAuthSessionOverOpenID> oauthSessionProvider)
 name|OAuthWebFilterOverOpenID
 parameter_list|(
 name|DynamicMap
@@ -365,7 +365,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)

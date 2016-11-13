@@ -142,34 +142,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|Environment
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -212,6 +184,34 @@ name|AtomicReference
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|Command
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|Environment
+import|;
+end_import
+
 begin_comment
 comment|/** Command that executes some other command. */
 end_comment
@@ -251,7 +251,7 @@ name|Command
 argument_list|>
 name|atomicCmd
 decl_stmt|;
-DECL|method|AliasCommand (@ommandNameCommands.ROOT) DispatchCommandProvider root, CurrentUser currentUser, CommandName command)
+DECL|method|AliasCommand ( @ommandNameCommands.ROOT) DispatchCommandProvider root, CurrentUser currentUser, CommandName command)
 name|AliasCommand
 parameter_list|(
 annotation|@

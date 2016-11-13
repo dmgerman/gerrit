@@ -222,24 +222,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|internal
-operator|.
-name|storage
-operator|.
-name|file
-operator|.
-name|FileSnapshot
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -301,6 +283,24 @@ operator|.
 name|jar
 operator|.
 name|Manifest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|internal
+operator|.
+name|storage
+operator|.
+name|file
+operator|.
+name|FileSnapshot
 import|;
 end_import
 
@@ -409,7 +409,7 @@ argument_list|>
 argument_list|>
 name|reloadableHandles
 decl_stmt|;
-DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, Path srcJar, FileSnapshot snapshot, PluginContentScanner scanner, Path dataDir, ClassLoader classLoader, String metricsPrefix)
+DECL|method|ServerPlugin ( String name, String pluginCanonicalWebUrl, PluginUser pluginUser, Path srcJar, FileSnapshot snapshot, PluginContentScanner scanner, Path dataDir, ClassLoader classLoader, String metricsPrefix)
 specifier|public
 name|ServerPlugin
 parameter_list|(
@@ -533,7 +533,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, Path srcJar, FileSnapshot snapshot, PluginContentScanner scanner, Path dataDir, ClassLoader classLoader)
+DECL|method|ServerPlugin ( String name, String pluginCanonicalWebUrl, PluginUser pluginUser, Path srcJar, FileSnapshot snapshot, PluginContentScanner scanner, Path dataDir, ClassLoader classLoader)
 specifier|public
 name|ServerPlugin
 parameter_list|(

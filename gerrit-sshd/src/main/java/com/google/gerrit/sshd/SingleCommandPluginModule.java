@@ -135,7 +135,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Binds one SSH command to the plugin name itself.  *<p>  * Cannot be combined with {@link PluginCommandModule}.  */
+comment|/**  * Binds one SSH command to the plugin name itself.  *  *<p>Cannot be combined with {@link PluginCommandModule}.  */
 end_comment
 
 begin_class

@@ -207,13 +207,13 @@ return|;
 block|}
 block|}
 decl_stmt|;
+DECL|method|assertThatList ( List<RobotCommentInfo> robotCommentInfos)
 specifier|public
 specifier|static
 name|ListSubject
 argument_list|<
 name|RobotCommentInfoSubject
 argument_list|,
-DECL|method|assertThatList ( List<RobotCommentInfo> robotCommentInfos)
 name|RobotCommentInfo
 argument_list|>
 name|assertThatList
@@ -243,7 +243,7 @@ literal|"robotCommentInfos"
 argument_list|)
 return|;
 block|}
-DECL|method|assertThat ( RobotCommentInfo robotCommentInfo)
+DECL|method|assertThat (RobotCommentInfo robotCommentInfo)
 specifier|public
 specifier|static
 name|RobotCommentInfoSubject
@@ -265,7 +265,7 @@ name|robotCommentInfo
 argument_list|)
 return|;
 block|}
-DECL|method|RobotCommentInfoSubject (FailureStrategy failureStrategy, RobotCommentInfo robotCommentInfo)
+DECL|method|RobotCommentInfoSubject ( FailureStrategy failureStrategy, RobotCommentInfo robotCommentInfo)
 specifier|private
 name|RobotCommentInfoSubject
 parameter_list|(
@@ -284,12 +284,12 @@ name|robotCommentInfo
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|fixSuggestions ()
 specifier|public
 name|ListSubject
 argument_list|<
 name|FixSuggestionInfoSubject
 argument_list|,
-DECL|method|fixSuggestions ()
 name|FixSuggestionInfo
 argument_list|>
 name|fixSuggestions

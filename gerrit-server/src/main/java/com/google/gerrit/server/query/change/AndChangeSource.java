@@ -197,7 +197,7 @@ name|that
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AndChangeSource (Predicate<ChangeData> that, IsVisibleToPredicate<ChangeData> isVisibleToPredicate, int start)
+DECL|method|AndChangeSource ( Predicate<ChangeData> that, IsVisibleToPredicate<ChangeData> isVisibleToPredicate, int start)
 specifier|public
 name|AndChangeSource
 parameter_list|(

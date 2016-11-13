@@ -460,9 +460,9 @@ name|CustomLabelIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|source
 annotation|@
 name|Inject
-DECL|field|source
 specifier|private
 name|DynamicSet
 argument_list|<

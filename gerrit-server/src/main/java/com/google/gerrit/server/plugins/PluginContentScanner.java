@@ -163,7 +163,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Scans the plugin returning classes and resources.  *  * Gerrit uses the scanner to automatically discover the classes  * and resources exported by the plugin for auto discovery  * of exported SSH commands, Servlets and listeners.  */
+comment|/**  * Scans the plugin returning classes and resources.  *  *<p>Gerrit uses the scanner to automatically discover the classes and resources exported by the  * plugin for auto discovery of exported SSH commands, Servlets and listeners.  */
 end_comment
 
 begin_interface
@@ -172,7 +172,7 @@ specifier|public
 interface|interface
 name|PluginContentScanner
 block|{
-comment|/**    * Scanner without resources.    */
+comment|/** Scanner without resources. */
 DECL|field|EMPTY
 name|PluginContentScanner
 name|EMPTY
@@ -298,7 +298,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * Plugin class extension meta-data    *    * Class name and annotation value of the class    * provided by a plugin to extend an existing    * extension point in Gerrit.    */
+comment|/**    * Plugin class extension meta-data    *    *<p>Class name and annotation value of the class provided by a plugin to extend an existing    * extension point in Gerrit.    */
 DECL|class|ExtensionMetaData
 class|class
 name|ExtensionMetaData

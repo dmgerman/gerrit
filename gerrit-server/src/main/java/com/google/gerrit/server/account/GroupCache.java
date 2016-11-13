@@ -150,7 +150,7 @@ name|NameKey
 name|name
 parameter_list|)
 function_decl|;
-comment|/**    * Lookup a group definition by its UUID. The returned definition may be null    * if the group has been deleted and the UUID reference is stale, or was    * copied from another server.    */
+comment|/**    * Lookup a group definition by its UUID. The returned definition may be null if the group has    * been deleted and the UUID reference is stale, or was copied from another server.    */
 annotation|@
 name|Nullable
 DECL|method|get (AccountGroup.UUID uuid)

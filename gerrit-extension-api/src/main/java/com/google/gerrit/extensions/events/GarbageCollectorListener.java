@@ -93,7 +93,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Notified whenever the garbage collector has run successfully on a project.  */
+comment|/** Notified whenever the garbage collector has run successfully on a project. */
 end_comment
 
 begin_interface
@@ -110,7 +110,7 @@ name|Event
 extends|extends
 name|ProjectEvent
 block|{
-comment|/**      * @return Properties describing the result of the garbage collection      *         performed by JGit.      * @see org.eclipse.jgit.api.GarbageCollectCommand#call()      */
+comment|/**      * @return Properties describing the result of the garbage collection performed by JGit.      * @see org.eclipse.jgit.api.GarbageCollectCommand#call()      */
 DECL|method|getStatistics ()
 name|Properties
 name|getStatistics

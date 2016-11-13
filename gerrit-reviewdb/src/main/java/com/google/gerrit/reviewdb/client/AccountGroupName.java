@@ -122,7 +122,7 @@ DECL|method|AccountGroupName ()
 specifier|protected
 name|AccountGroupName
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|AccountGroupName (AccountGroup.NameKey name, AccountGroup.Id groupId)
 specifier|public
 name|AccountGroupName

@@ -500,7 +500,7 @@ name|queryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangesImpl (ChangesCollection changes, ChangeApiImpl.Factory api, CreateChange createChange, Provider<QueryChanges> queryProvider)
+DECL|method|ChangesImpl ( ChangesCollection changes, ChangeApiImpl.Factory api, CreateChange createChange, Provider<QueryChanges> queryProvider)
 name|ChangesImpl
 parameter_list|(
 name|ChangesCollection

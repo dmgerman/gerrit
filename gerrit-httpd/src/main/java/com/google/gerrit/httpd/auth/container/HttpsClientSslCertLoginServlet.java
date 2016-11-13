@@ -209,7 +209,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Servlet bound to {@code /login/*} to redirect after client SSL certificate  * login.  *<p>  * When using client SSL certificate one should normally never see the sign in  * dialog. However, this will happen if users session gets invalidated in some  * way. Like in other authentication types, we need to force page to fully  * reload in order to initialize a new session and create a valid xsrfKey.  */
+comment|/**  * Servlet bound to {@code /login/*} to redirect after client SSL certificate login.  *  *<p>When using client SSL certificate one should normally never see the sign in dialog. However,  * this will happen if users session gets invalidated in some way. Like in other authentication  * types, we need to force page to fully reload in order to initialize a new session and create a  * valid xsrfKey.  */
 end_comment
 
 begin_class
@@ -242,7 +242,7 @@ name|urlProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpsClientSslCertLoginServlet (@anonicalWebUrl @ullable final Provider<String> urlProvider)
+DECL|method|HttpsClientSslCertLoginServlet ( @anonicalWebUrl @ullable final Provider<String> urlProvider)
 specifier|public
 name|HttpsClientSslCertLoginServlet
 parameter_list|(

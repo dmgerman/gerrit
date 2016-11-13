@@ -538,6 +538,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -603,16 +613,6 @@ operator|.
 name|revwalk
 operator|.
 name|RevWalk
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -685,7 +685,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Move (Provider<ReviewDb> dbProvider, ChangeJson.Factory json, GitRepositoryManager repoManager, Provider<InternalChangeQuery> queryProvider, ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, PatchSetUtil psUtil)
+DECL|method|Move ( Provider<ReviewDb> dbProvider, ChangeJson.Factory json, GitRepositoryManager repoManager, Provider<InternalChangeQuery> queryProvider, ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, PatchSetUtil psUtil)
 name|Move
 parameter_list|(
 name|Provider

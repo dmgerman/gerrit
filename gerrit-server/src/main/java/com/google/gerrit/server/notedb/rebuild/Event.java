@@ -313,7 +313,7 @@ specifier|final
 name|boolean
 name|predatesChange
 decl_stmt|;
-comment|/**    * Dependencies of this event; other events that must happen before this    * one.    */
+comment|/** Dependencies of this event; other events that must happen before this one. */
 DECL|field|deps
 specifier|final
 name|List
@@ -523,7 +523,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * @return whether this event type must be unique per {@link ChangeUpdate},    *     i.e. there may be at most one of this type.    */
+comment|/**    * @return whether this event type must be unique per {@link ChangeUpdate}, i.e. there may be at    *     most one of this type.    */
 DECL|method|uniquePerUpdate ()
 specifier|abstract
 name|boolean

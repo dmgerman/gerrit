@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represent an object that can be diffed. This can be either a regular patch  * set, the base of a patch set, the parent of a merge, the auto-merge of a  * merge or an edit patch set.  */
+comment|/**  * Represent an object that can be diffed. This can be either a regular patch set, the base of a  * patch set, the parent of a merge, the auto-merge of a merge or an edit patch set.  */
 end_comment
 
 begin_class
@@ -133,7 +133,7 @@ name|AUTO_MERGE
 init|=
 literal|"AutoMerge"
 decl_stmt|;
-comment|/**    * Parses a string that represents a diff object.    *<p>    * The following string representations are supported:    *<ul>    *<li>a positive integer: represents a patch set    *<li>a negative integer: represents a parent of a merge patch set    *<li>'0': represents the edit patch set    *<li>empty string or null: represents the parent of a 1-parent patch set,    * also called base    *<li>'AutoMerge': represents the auto-merge of a merge patch set    *</ul>    *    * @param changeId the ID of the change to which the diff object belongs    * @param str the string representation of the diff object    * @return the parsed diff object, {@code null} if str cannot be parsed as    *         diff object    */
+comment|/**    * Parses a string that represents a diff object.    *    *<p>The following string representations are supported:    *    *<ul>    *<li>a positive integer: represents a patch set    *<li>a negative integer: represents a parent of a merge patch set    *<li>'0': represents the edit patch set    *<li>empty string or null: represents the parent of a 1-parent patch set, also called base    *<li>'AutoMerge': represents the auto-merge of a merge patch set    *</ul>    *    * @param changeId the ID of the change to which the diff object belongs    * @param str the string representation of the diff object    * @return the parsed diff object, {@code null} if str cannot be parsed as diff object    */
 DECL|method|parse (Change.Id changeId, String str)
 specifier|public
 specifier|static
@@ -221,7 +221,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**    * Create a DiffObject that represents the parent of a 1-parent patch set.    */
+comment|/** Create a DiffObject that represents the parent of a 1-parent patch set. */
 DECL|method|base ()
 specifier|public
 specifier|static
@@ -237,7 +237,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**    * Create a DiffObject that represents the auto-merge for a merge patch set.    */
+comment|/** Create a DiffObject that represents the auto-merge for a merge patch set. */
 DECL|method|autoMerge ()
 specifier|public
 specifier|static
@@ -253,7 +253,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**    * Create a DiffObject that represents a patch set.    */
+comment|/** Create a DiffObject that represents a patch set. */
 DECL|method|patchSet (PatchSet.Id psId)
 specifier|public
 specifier|static
@@ -430,7 +430,7 @@ operator|==
 literal|0
 return|;
 block|}
-comment|/**    * Returns the DiffObject as PatchSet.Id.    *    * @return PatchSet.Id with an id> 0 for a regular patch set; PatchSet.Id    *         with an id< 0 for a parent of a merge; PatchSet.Id with id == 0    *         for an edit patch set; {@code null} for the base of a 1-parent    *         patch set and for the auto-merge of a merge patch set    */
+comment|/**    * Returns the DiffObject as PatchSet.Id.    *    * @return PatchSet.Id with an id> 0 for a regular patch set; PatchSet.Id with an id< 0 for a    *     parent of a merge; PatchSet.Id with id == 0 for an edit patch set; {@code null} for the    *     base of a 1-parent patch set and for the auto-merge of a merge patch set    */
 DECL|method|asPatchSetId ()
 specifier|public
 name|PatchSet
@@ -443,7 +443,7 @@ return|return
 name|psId
 return|;
 block|}
-comment|/**    * Returns the parent number for a parent of a merge.    *    * @return 1-based parent number, 0 if this DiffObject is not a parent of a    *         merge    */
+comment|/**    * Returns the parent number for a parent of a merge.    *    * @return 1-based parent number, 0 if this DiffObject is not a parent of a merge    */
 DECL|method|getParentNum ()
 specifier|public
 name|int
@@ -469,7 +469,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns a string representation of this DiffObject that can be used in    * URLs.    *<p>    * The following string representations are returned:    *<ul>    *<li>a positive integer for a patch set    *<li>a negative integer for a parent of a merge patch set    *<li>'0' for the edit patch set    *<li>{@code null} for the parent of a 1-parent patch set, also called base    *<li>'AutoMerge' for the auto-merge of a merge patch set    *</ul>    *    * @return string representation of this DiffObject    */
+comment|/**    * Returns a string representation of this DiffObject that can be used in URLs.    *    *<p>The following string representations are returned:    *    *<ul>    *<li>a positive integer for a patch set    *<li>a negative integer for a parent of a merge patch set    *<li>'0' for the edit patch set    *<li>{@code null} for the parent of a 1-parent patch set, also called base    *<li>'AutoMerge' for the auto-merge of a merge patch set    *</ul>    *    * @return string representation of this DiffObject    */
 DECL|method|asString ()
 specifier|public
 name|String

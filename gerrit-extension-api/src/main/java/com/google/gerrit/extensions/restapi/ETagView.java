@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A view which may change, although the underlying resource did not change  */
+comment|/** A view which may change, although the underlying resource did not change */
 end_comment
 
 begin_interface

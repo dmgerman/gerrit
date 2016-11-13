@@ -132,7 +132,7 @@ specifier|public
 class|class
 name|RefAssert
 block|{
-DECL|method|assertRefs (List<? extends RefInfo> expectedRefs, List<? extends RefInfo> actualRefs)
+DECL|method|assertRefs ( List<? extends RefInfo> expectedRefs, List<? extends RefInfo> actualRefs)
 specifier|public
 specifier|static
 name|void
@@ -202,7 +202,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|assertRefNames (Iterable<String> expectedRefs, Iterable<? extends RefInfo> actualRefs)
+DECL|method|assertRefNames ( Iterable<String> expectedRefs, Iterable<? extends RefInfo> actualRefs)
 specifier|public
 specifier|static
 name|void

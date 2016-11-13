@@ -136,7 +136,7 @@ DECL|method|EditFileInfo ()
 specifier|protected
 name|EditFileInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

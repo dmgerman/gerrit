@@ -268,7 +268,7 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChildProjectsCollection (Provider<ListChildProjects> list, ProjectsCollection projectsCollection, DynamicMap<RestView<ChildProjectResource>> views)
+DECL|method|ChildProjectsCollection ( Provider<ListChildProjects> list, ProjectsCollection projectsCollection, DynamicMap<RestView<ChildProjectResource>> views)
 name|ChildProjectsCollection
 parameter_list|(
 name|Provider

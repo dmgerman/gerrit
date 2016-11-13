@@ -1146,7 +1146,7 @@ DECL|method|CommentFormatter ()
 specifier|private
 name|CommentFormatter
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|RobotCommentFormatter
 class|class
@@ -1353,7 +1353,7 @@ return|return
 name|fixSuggestionInfo
 return|;
 block|}
-DECL|method|toFixReplacementInfo ( FixReplacement fixReplacement)
+DECL|method|toFixReplacementInfo (FixReplacement fixReplacement)
 specifier|private
 name|FixReplacementInfo
 name|toFixReplacementInfo
@@ -1404,7 +1404,7 @@ DECL|method|RobotCommentFormatter ()
 specifier|private
 name|RobotCommentFormatter
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

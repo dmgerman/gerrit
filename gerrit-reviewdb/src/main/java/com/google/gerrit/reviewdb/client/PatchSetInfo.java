@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Additional data about a {@link PatchSet} not normally loaded.  */
+comment|/** Additional data about a {@link PatchSet} not normally loaded. */
 end_comment
 
 begin_class
@@ -133,7 +133,7 @@ DECL|method|ParentInfo ()
 specifier|protected
 name|ParentInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|field|key
 specifier|protected
@@ -191,7 +191,7 @@ DECL|method|PatchSetInfo ()
 specifier|protected
 name|PatchSetInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|PatchSetInfo (final PatchSet.Id k)
 specifier|public
 name|PatchSetInfo

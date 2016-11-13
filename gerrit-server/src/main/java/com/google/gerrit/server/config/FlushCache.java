@@ -263,7 +263,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|WEB_SESSIONS
 specifier|public
 specifier|static

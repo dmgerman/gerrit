@@ -561,7 +561,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*       * There seems to be a strange bug (at least on firefox 3.5.9 ubuntu) with       * the textbox under the following circumstances:       *  1) The field is not focused with BText in it.       *  2) The field receives focus and a focus listener changes the text to FText       *  3) The ESC key is pressed and the value of the field has not changed       *     (ever) from FText       *  4) BUG: The text value gets reset to BText!       *       *  A counter to this bug seems to be to force setFocus(false) on ESC.       */
+comment|/*        * There seems to be a strange bug (at least on firefox 3.5.9 ubuntu) with        * the textbox under the following circumstances:        *  1) The field is not focused with BText in it.        *  2) The field receives focus and a focus listener changes the text to FText        *  3) The ESC key is pressed and the value of the field has not changed        *     (ever) from FText        *  4) BUG: The text value gets reset to BText!        *        *  A counter to this bug seems to be to force setFocus(false) on ESC.        */
 comment|/* Chrome does not create a KeyPressEvent on ESC, so use KeyDownEvents */
 name|keyDownHandler
 operator|=

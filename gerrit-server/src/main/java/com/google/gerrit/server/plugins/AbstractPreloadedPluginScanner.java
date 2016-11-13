@@ -229,7 +229,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base plugin scanner for a set of pre-loaded classes.  *  * Utility base class for simplifying the development of Server plugin scanner  * based on a set of externally pre-loaded classes.  *  * Extending this class you can implement very easily a PluginContentScanner  * from a set of pre-loaded Java Classes and an API Type.  * The convention used by this class is:  * - there is at most one Guice module per Gerrit module type (SysModule, HttpModule, SshModule)  * - plugin is set to be restartable in Gerrit Plugin MANIFEST  * - only Export and Listen annotated classes can be self-discovered  */
+comment|/**  * Base plugin scanner for a set of pre-loaded classes.  *  *<p>Utility base class for simplifying the development of Server plugin scanner based on a set of  * externally pre-loaded classes.  *  *<p>Extending this class you can implement very easily a PluginContentScanner from a set of  * pre-loaded Java Classes and an API Type. The convention used by this class is: - there is at most  * one Guice module per Gerrit module type (SysModule, HttpModule, SshModule) - plugin is set to be  * restartable in Gerrit Plugin MANIFEST - only Export and Listen annotated classes can be  * self-discovered  */
 end_comment
 
 begin_class
@@ -295,7 +295,7 @@ name|?
 argument_list|>
 name|sysModuleClass
 decl_stmt|;
-DECL|method|AbstractPreloadedPluginScanner (String pluginName, String pluginVersion, Set<Class<?>> preloadedClasses, Plugin.ApiType apiType)
+DECL|method|AbstractPreloadedPluginScanner ( String pluginName, String pluginVersion, Set<Class<?>> preloadedClasses, Plugin.ApiType apiType)
 specifier|public
 name|AbstractPreloadedPluginScanner
 parameter_list|(
@@ -816,7 +816,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getUniqueGuiceModule (Class<?> guiceModuleBaseClass, Class<?> existingGuiceModuleName, Class<?> newGuiceModuleClass)
+DECL|method|getUniqueGuiceModule ( Class<?> guiceModuleBaseClass, Class<?> existingGuiceModuleName, Class<?> newGuiceModuleClass)
 specifier|private
 name|Class
 argument_list|<
@@ -862,7 +862,7 @@ return|return
 name|newGuiceModuleClass
 return|;
 block|}
-DECL|method|getExportAnnotationValue (Class<?> scriptClass, Class<? extends Annotation> annotation)
+DECL|method|getExportAnnotationValue ( Class<?> scriptClass, Class<? extends Annotation> annotation)
 specifier|private
 name|String
 name|getExportAnnotationValue

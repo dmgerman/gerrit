@@ -155,7 +155,7 @@ DECL|method|GroupDetail ()
 specifier|public
 name|GroupDetail
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|setGroup (AccountGroup g)
 specifier|public
 name|void

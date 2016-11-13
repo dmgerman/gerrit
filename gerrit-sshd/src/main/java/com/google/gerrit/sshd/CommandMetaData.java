@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation tagged on a concrete Command to describe what it is doing and  * whether it can be run on slaves.  */
+comment|/**  * Annotation tagged on a concrete Command to describe what it is doing and whether it can be run on  * slaves.  */
 end_comment
 
 begin_annotation_defn
@@ -143,9 +143,9 @@ enum|enum
 name|Mode
 block|{
 DECL|enumConstant|MASTER
-DECL|enumConstant|MASTER_OR_SLAVE
 name|MASTER
 block|,
+DECL|enumConstant|MASTER_OR_SLAVE
 name|MASTER_OR_SLAVE
 block|;
 DECL|method|isSupported (boolean slaveMode)

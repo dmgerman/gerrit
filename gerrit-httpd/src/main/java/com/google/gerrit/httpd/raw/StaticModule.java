@@ -398,40 +398,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -604,6 +570,40 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 DECL|class|StaticModule
 specifier|public
@@ -646,7 +646,7 @@ name|GERRIT_UI_COOKIE
 init|=
 literal|"GERRIT_UI"
 decl_stmt|;
-comment|/**    * Paths at which we should serve the main PolyGerrit application {@code    * index.html}.    *<p>    * Supports {@code "/*"} as a trailing wildcard.    */
+comment|/**    * Paths at which we should serve the main PolyGerrit application {@code index.html}.    *    *<p>Supports {@code "/*"} as a trailing wildcard.    */
 DECL|field|POLYGERRIT_INDEX_PATHS
 specifier|public
 specifier|static
@@ -681,7 +681,7 @@ comment|// namespace, so they will need to use a different path.
 comment|//"/groups/*",
 comment|//"/projects/*");
 comment|//
-comment|/**    * Paths that should be treated as static assets when serving PolyGerrit.    *<p>    * Supports {@code "/*"} as a trailing wildcard.    */
+comment|/**    * Paths that should be treated as static assets when serving PolyGerrit.    *    *<p>Supports {@code "/*"} as a trailing wildcard.    */
 DECL|field|POLYGERRIT_ASSET_PATHS
 specifier|private
 specifier|static
@@ -1133,7 +1133,7 @@ name|Named
 argument_list|(
 name|ROBOTS_TXT_SERVLET
 argument_list|)
-DECL|method|getRobotsTxtServlet (@erritServerConfig Config cfg, SitePaths sitePaths, @Named(CACHE) Cache<Path, Resource> cache)
+DECL|method|getRobotsTxtServlet ( @erritServerConfig Config cfg, SitePaths sitePaths, @Named(CACHE) Cache<Path, Resource> cache)
 name|HttpServlet
 name|getRobotsTxtServlet
 parameter_list|(
@@ -1613,7 +1613,7 @@ name|Named
 argument_list|(
 name|POLYGERRIT_INDEX_SERVLET
 argument_list|)
-DECL|method|getPolyGerritUiIndexServlet ( @amedCACHE) Cache<Path, Resource> cache)
+DECL|method|getPolyGerritUiIndexServlet (@amedCACHE) Cache<Path, Resource> cache)
 name|HttpServlet
 name|getPolyGerritUiIndexServlet
 parameter_list|(
@@ -1659,7 +1659,7 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getPolyGerritUiServlet ( @amedCACHE) Cache<Path, Resource> cache)
+DECL|method|getPolyGerritUiServlet (@amedCACHE) Cache<Path, Resource> cache)
 name|PolyGerritUiServlet
 name|getPolyGerritUiServlet
 parameter_list|(
@@ -1692,7 +1692,7 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getBowerComponentsServlet ( @amedCACHE) Cache<Path, Resource> cache)
+DECL|method|getBowerComponentsServlet (@amedCACHE) Cache<Path, Resource> cache)
 name|BowerComponentsDevServlet
 name|getBowerComponentsServlet
 parameter_list|(
@@ -1737,7 +1737,7 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getFontsServlet ( @amedCACHE) Cache<Path, Resource> cache)
+DECL|method|getFontsServlet (@amedCACHE) Cache<Path, Resource> cache)
 name|FontsDevServlet
 name|getFontsServlet
 parameter_list|(
@@ -2410,7 +2410,7 @@ name|fontServlet
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PolyGerritFilter (GerritOptions options, Paths paths, @Named(POLYGERRIT_INDEX_SERVLET) HttpServlet polyGerritIndex, PolyGerritUiServlet polygerritUI, @Nullable BowerComponentsDevServlet bowerComponentServlet, @Nullable FontsDevServlet fontServlet)
+DECL|method|PolyGerritFilter ( GerritOptions options, Paths paths, @Named(POLYGERRIT_INDEX_SERVLET) HttpServlet polyGerritIndex, PolyGerritUiServlet polygerritUI, @Nullable BowerComponentsDevServlet bowerComponentServlet, @Nullable FontsDevServlet fontServlet)
 name|PolyGerritFilter
 parameter_list|(
 name|GerritOptions
@@ -2500,7 +2500,7 @@ name|filterConfig
 parameter_list|)
 throws|throws
 name|ServletException
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -2508,7 +2508,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)

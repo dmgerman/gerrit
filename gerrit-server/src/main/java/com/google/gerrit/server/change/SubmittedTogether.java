@@ -376,38 +376,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -453,6 +421,38 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -670,7 +670,7 @@ throw|;
 block|}
 annotation|@
 name|Inject
-DECL|method|SubmittedTogether (ChangeJson.Factory json, Provider<ReviewDb> dbProvider, Provider<InternalChangeQuery> queryProvider, Provider<MergeSuperSet> mergeSuperSet, Provider<WalkSorter> sorter)
+DECL|method|SubmittedTogether ( ChangeJson.Factory json, Provider<ReviewDb> dbProvider, Provider<InternalChangeQuery> queryProvider, Provider<MergeSuperSet> mergeSuperSet, Provider<WalkSorter> sorter)
 name|SubmittedTogether
 parameter_list|(
 name|ChangeJson
@@ -757,7 +757,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|addSubmittedTogetherOption ( EnumSet<SubmittedTogetherOption> o)
+DECL|method|addSubmittedTogetherOption (EnumSet<SubmittedTogetherOption> o)
 specifier|public
 name|SubmittedTogether
 name|addSubmittedTogetherOption

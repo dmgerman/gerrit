@@ -931,22 +931,22 @@ DECL|method|DiffInfo ()
 specifier|protected
 name|DiffInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|enum|IntraLineStatus
 specifier|public
 enum|enum
 name|IntraLineStatus
 block|{
 DECL|enumConstant|OFF
-DECL|enumConstant|OK
-DECL|enumConstant|TIMEOUT
-DECL|enumConstant|FAILURE
 name|OFF
 block|,
+DECL|enumConstant|OK
 name|OK
 block|,
+DECL|enumConstant|TIMEOUT
 name|TIMEOUT
 block|,
+DECL|enumConstant|FAILURE
 name|FAILURE
 block|}
 DECL|class|FileMeta
@@ -1000,7 +1000,7 @@ DECL|method|FileMeta ()
 specifier|protected
 name|FileMeta
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|Region
 specifier|public
@@ -1083,7 +1083,7 @@ DECL|method|Region ()
 specifier|protected
 name|Region
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|Span
 specifier|public
@@ -1115,7 +1115,7 @@ DECL|method|Span ()
 specifier|protected
 name|Span
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

@@ -631,7 +631,7 @@ name|changeRestored
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Restore (RestoredSender.Factory restoredSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson.Factory json, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, BatchUpdate.Factory batchUpdateFactory, ChangeRestored changeRestored)
+DECL|method|Restore ( RestoredSender.Factory restoredSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson.Factory json, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, BatchUpdate.Factory batchUpdateFactory, ChangeRestored changeRestored)
 name|Restore
 parameter_list|(
 name|RestoredSender

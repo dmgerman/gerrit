@@ -402,30 +402,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|Document
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|Element
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -530,6 +506,30 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|w3c
+operator|.
+name|dom
+operator|.
+name|Document
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|w3c
+operator|.
+name|dom
+operator|.
+name|Element
+import|;
+end_import
+
 begin_class
 annotation|@
 name|SuppressWarnings
@@ -582,7 +582,7 @@ name|accountQuery
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BecomeAnyAccountLoginServlet (DynamicItem<WebSession> ws, SchemaFactory<ReviewDb> sf, AccountManager am, SiteHeaderFooter shf, InternalAccountQuery aq)
+DECL|method|BecomeAnyAccountLoginServlet ( DynamicItem<WebSession> ws, SchemaFactory<ReviewDb> sf, AccountManager am, SiteHeaderFooter shf, InternalAccountQuery aq)
 name|BecomeAnyAccountLoginServlet
 parameter_list|(
 name|DynamicItem

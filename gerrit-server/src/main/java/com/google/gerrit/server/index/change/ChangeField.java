@@ -746,20 +746,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|FooterLine
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -848,8 +834,22 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|FooterLine
+import|;
+end_import
+
 begin_comment
-comment|/**  * Fields indexed on change documents.  *<p>  * Each field corresponds to both a field name supported by  * {@link ChangeQueryBuilder} for querying that field, and a method on  * {@link ChangeData} used for populating the corresponding document fields in  * the secondary index.  *<p>  * Field names are all lowercase alphanumeric plus underscore; index  * implementations may create unambiguous derived field names containing other  * characters.  */
+comment|/**  * Fields indexed on change documents.  *  *<p>Each field corresponds to both a field name supported by {@link ChangeQueryBuilder} for  * querying that field, and a method on {@link ChangeData} used for populating the corresponding  * document fields in the secondary index.  *  *<p>Field names are all lowercase alphanumeric plus underscore; index implementations may create  * unambiguous derived field names containing other characters.  */
 end_comment
 
 begin_class
@@ -3210,7 +3210,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * The exact email address, or any part of the author name or email address,    * in the current patch set.    */
+comment|/**    * The exact email address, or any part of the author name or email address, in the current patch    * set.    */
 DECL|field|AUTHOR
 specifier|public
 specifier|static
@@ -3274,7 +3274,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * The exact email address, or any part of the committer name or email address,    * in the current patch set.    */
+comment|/**    * The exact email address, or any part of the committer name or email address, in the current    * patch set.    */
 DECL|field|COMMITTER
 specifier|public
 specifier|static
@@ -3535,7 +3535,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Serialized approvals for the current patch set, used for pre-populating    * results.    */
+comment|/** Serialized approvals for the current patch set, used for pre-populating results. */
 DECL|field|APPROVAL
 specifier|public
 specifier|static
@@ -4290,7 +4290,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * Star labels on this change in the format:&lt;account-id&gt;:&lt;label&gt;    */
+comment|/** Star labels on this change in the format:&lt;account-id&gt;:&lt;label&gt; */
 DECL|field|STAR
 specifier|public
 specifier|static
@@ -4837,7 +4837,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * Users the change was reviewed by since the last author update.    *<p>    * A change is considered reviewed by a user if the latest update by that user    * is newer than the latest update by the change author. Both top-level change    * messages and new patch sets are considered to be updates.    *<p>    * If the latest update is by the change owner, then the special value {@link    * #NOT_REVIEWED} is emitted.    */
+comment|/**    * Users the change was reviewed by since the last author update.    *    *<p>A change is considered reviewed by a user if the latest update by that user is newer than    * the latest update by the change author. Both top-level change messages and new patch sets are    * considered to be updates.    *    *<p>If the latest update is by the change owner, then the special value {@link #NOT_REVIEWED} is    * emitted.    */
 DECL|field|REVIEWEDBY
 specifier|public
 specifier|static
@@ -5007,7 +5007,7 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-comment|/**    * JSON type for storing SubmitRecords.    *<p>    * Stored fields need to use a stable format over a long period; this type    * insulates the index from implementation changes in SubmitRecord itself.    */
+comment|/**    * JSON type for storing SubmitRecords.    *    *<p>Stored fields need to use a stable format over a long period; this type insulates the index    * from implementation changes in SubmitRecord itself.    */
 DECL|class|StoredSubmitRecord
 specifier|static
 class|class
@@ -5346,6 +5346,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
+DECL|field|STORED_SUBMIT_RECORD_STRICT
 specifier|public
 specifier|static
 specifier|final
@@ -5359,7 +5360,6 @@ name|byte
 index|[]
 argument_list|>
 argument_list|>
-DECL|field|STORED_SUBMIT_RECORD_STRICT
 name|STORED_SUBMIT_RECORD_STRICT
 init|=
 operator|new
@@ -5412,6 +5412,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
+DECL|field|STORED_SUBMIT_RECORD_LENIENT
 specifier|public
 specifier|static
 specifier|final
@@ -5425,7 +5426,6 @@ name|byte
 index|[]
 argument_list|>
 argument_list|>
-DECL|field|STORED_SUBMIT_RECORD_LENIENT
 name|STORED_SUBMIT_RECORD_LENIENT
 init|=
 operator|new
@@ -5655,7 +5655,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|storedSubmitRecords ( ChangeData cd, SubmitRuleOptions opts)
+DECL|method|storedSubmitRecords (ChangeData cd, SubmitRuleOptions opts)
 specifier|private
 specifier|static
 name|Iterable
@@ -5887,7 +5887,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * All values of all refs that were used in the course of indexing this    * document.    *<p>    * Emitted as UTF-8 encoded strings of the form    * {@code project:ref/name:[hex sha]}.    */
+comment|/**    * All values of all refs that were used in the course of indexing this document.    *    *<p>Emitted as UTF-8 encoded strings of the form {@code project:ref/name:[hex sha]}.    */
 DECL|field|REF_STATE
 specifier|public
 specifier|static
@@ -6161,7 +6161,8 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * All ref wildcard patterns that were used in the course of indexing this    * document.    *<p>    * Emitted as UTF-8 encoded strings of the form {@code project:ref/name/*}.    * See {@link RefStatePattern} for the pattern format.    */
+comment|/**    * All ref wildcard patterns that were used in the course of indexing this document.    *    *<p>Emitted as UTF-8 encoded strings of the form {@code project:ref/name/*}. See {@link    * RefStatePattern} for the pattern format.    */
+DECL|field|REF_STATE_PATTERN
 specifier|public
 specifier|static
 specifier|final
@@ -6175,7 +6176,6 @@ name|byte
 index|[]
 argument_list|>
 argument_list|>
-DECL|field|REF_STATE_PATTERN
 name|REF_STATE_PATTERN
 init|=
 operator|new

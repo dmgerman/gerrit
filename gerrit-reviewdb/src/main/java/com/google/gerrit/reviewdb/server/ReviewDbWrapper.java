@@ -1212,7 +1212,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|toMap ( Iterable<PatchSetApproval> c)
+DECL|method|toMap (Iterable<PatchSetApproval> c)
 specifier|public
 name|Map
 argument_list|<
@@ -1242,7 +1242,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getAsync ( PatchSetApproval.Key key)
+DECL|method|getAsync (PatchSetApproval.Key key)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -1444,7 +1444,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|atomicUpdate (PatchSetApproval.Key key, AtomicUpdate<PatchSetApproval> update)
+DECL|method|atomicUpdate ( PatchSetApproval.Key key, AtomicUpdate<PatchSetApproval> update)
 specifier|public
 name|PatchSetApproval
 name|atomicUpdate
@@ -1710,7 +1710,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|toMap ( Iterable<ChangeMessage> c)
+DECL|method|toMap (Iterable<ChangeMessage> c)
 specifier|public
 name|Map
 argument_list|<
@@ -1740,7 +1740,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getAsync ( ChangeMessage.Key key)
+DECL|method|getAsync (ChangeMessage.Key key)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -2610,7 +2610,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|toMap ( Iterable<PatchLineComment> c)
+DECL|method|toMap (Iterable<PatchLineComment> c)
 specifier|public
 name|Map
 argument_list|<
@@ -2640,7 +2640,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getAsync ( PatchLineComment.Key key)
+DECL|method|getAsync (PatchLineComment.Key key)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -2842,7 +2842,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|atomicUpdate (PatchLineComment.Key key, AtomicUpdate<PatchLineComment> update)
+DECL|method|atomicUpdate ( PatchLineComment.Key key, AtomicUpdate<PatchLineComment> update)
 specifier|public
 name|PatchLineComment
 name|atomicUpdate
@@ -3045,7 +3045,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|draftByChangeFileAuthor (Change.Id id, String file, Account.Id author)
+DECL|method|draftByChangeFileAuthor ( Change.Id id, String file, Account.Id author)
 specifier|public
 name|ResultSet
 argument_list|<

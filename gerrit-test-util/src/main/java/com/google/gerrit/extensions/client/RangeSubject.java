@@ -167,6 +167,7 @@ operator|.
 name|Range
 argument_list|>
 block|{
+DECL|field|RANGE_SUBJECT_FACTORY
 specifier|private
 specifier|static
 specifier|final
@@ -178,7 +179,6 @@ name|Comment
 operator|.
 name|Range
 argument_list|>
-DECL|field|RANGE_SUBJECT_FACTORY
 name|RANGE_SUBJECT_FACTORY
 init|=
 operator|new

@@ -408,7 +408,6 @@ name|noExpand
 parameter_list|()
 function_decl|;
 block|}
-DECL|field|skipNum
 annotation|@
 name|UiField
 argument_list|(
@@ -416,10 +415,10 @@ name|provided
 operator|=
 literal|true
 argument_list|)
+DECL|field|skipNum
 name|Anchor
 name|skipNum
 decl_stmt|;
-DECL|field|upArrow
 annotation|@
 name|UiField
 argument_list|(
@@ -427,10 +426,10 @@ name|provided
 operator|=
 literal|true
 argument_list|)
+DECL|field|upArrow
 name|Anchor
 name|upArrow
 decl_stmt|;
-DECL|field|downArrow
 annotation|@
 name|UiField
 argument_list|(
@@ -438,6 +437,7 @@ name|provided
 operator|=
 literal|true
 argument_list|)
+DECL|field|downArrow
 name|Anchor
 name|downArrow
 decl_stmt|;

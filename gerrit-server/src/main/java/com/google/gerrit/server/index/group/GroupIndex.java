@@ -182,7 +182,7 @@ name|AccountGroup
 argument_list|,
 name|GroupIndex
 argument_list|>
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|keyPredicate (AccountGroup.UUID uuid)

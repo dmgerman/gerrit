@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on a string holding a unique identifier for the server.  *<p>  * This value is generated on first use and stored in {@code  * $site_path/etc/uuid}.  */
+comment|/**  * Marker on a string holding a unique identifier for the server.  *  *<p>This value is generated on first use and stored in {@code $site_path/etc/uuid}.  */
 end_comment
 
 begin_annotation_defn
@@ -120,7 +120,7 @@ DECL|annotation|GerritServerId
 specifier|public
 annotation_defn|@interface
 name|GerritServerId
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

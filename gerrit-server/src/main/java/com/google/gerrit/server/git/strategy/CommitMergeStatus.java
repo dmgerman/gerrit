@@ -69,7 +69,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Status codes set on {@link com.google.gerrit.server.git.CodeReviewCommit}s by  * {@link SubmitStrategy} implementations.  */
+comment|/**  * Status codes set on {@link com.google.gerrit.server.git.CodeReviewCommit}s by {@link  * SubmitStrategy} implementations.  */
 end_comment
 
 begin_enum

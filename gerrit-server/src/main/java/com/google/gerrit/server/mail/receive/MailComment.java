@@ -127,7 +127,7 @@ DECL|method|MailComment ()
 specifier|public
 name|MailComment
 parameter_list|()
-block|{ }
+block|{}
 DECL|method|MailComment (String message, String fileName, Comment inReplyTo, CommentType type)
 specifier|public
 name|MailComment

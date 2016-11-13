@@ -398,6 +398,126 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStreamWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|text
+operator|.
+name|ParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -535,126 +655,6 @@ operator|.
 name|util
 operator|.
 name|RawParseUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|OutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|OutputStreamWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|PrintWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|text
-operator|.
-name|ParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Date
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -1098,7 +1098,7 @@ name|writeJson
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeNoteUtil (AccountCache accountCache, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, @GerritServerId String serverId, @GerritServerConfig Config config)
+DECL|method|ChangeNoteUtil ( AccountCache accountCache, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, @GerritServerId String serverId, @GerritServerConfig Config config)
 specifier|public
 name|ChangeNoteUtil
 parameter_list|(
@@ -1168,7 +1168,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|newIdent (Account author, Date when, PersonIdent serverIdent, String anonymousCowardName)
+DECL|method|newIdent ( Account author, Date when, PersonIdent serverIdent, String anonymousCowardName)
 specifier|public
 name|PersonIdent
 name|newIdent
@@ -1757,7 +1757,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|parseComment (byte[] note, MutableInteger curr, String currentFileName, PatchSet.Id psId, RevId revId, boolean isForBase, Integer parentNumber)
+DECL|method|parseComment ( byte[] note, MutableInteger curr, String currentFileName, PatchSet.Id psId, RevId revId, boolean isForBase, Integer parentNumber)
 specifier|private
 name|Comment
 name|parseComment
@@ -2329,7 +2329,7 @@ return|return
 name|c
 return|;
 block|}
-DECL|method|parseStringField (byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
+DECL|method|parseStringField ( byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
 specifier|private
 specifier|static
 name|String
@@ -2417,7 +2417,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**    * @return a comment range. If the comment range line in the note only has    *    one number, we return a CommentRange with that one number as the end    *    line and the other fields as -1. If the comment range line in the note    *    contains a whole comment range, then we return a CommentRange with all    *    fields set. If the line is not correctly formatted, return null.    */
+comment|/**    * @return a comment range. If the comment range line in the note only has one number, we return a    *     CommentRange with that one number as the end line and the other fields as -1. If the    *     comment range line in the note contains a whole comment range, then we return a    *     CommentRange with all fields set. If the line is not correctly formatted, return null.    */
 DECL|method|parseCommentRange (byte[] note, MutableInteger ptr)
 specifier|private
 specifier|static
@@ -2758,7 +2758,7 @@ return|return
 name|range
 return|;
 block|}
-DECL|method|parsePsId (byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
+DECL|method|parsePsId ( byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
 specifier|private
 specifier|static
 name|PatchSet
@@ -3247,7 +3247,7 @@ name|changeId
 argument_list|)
 return|;
 block|}
-DECL|method|parseAuthor (byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
+DECL|method|parseAuthor ( byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
 specifier|private
 name|Account
 operator|.
@@ -3497,7 +3497,7 @@ name|changeId
 argument_list|)
 return|;
 block|}
-DECL|method|parseBooleanField (byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
+DECL|method|parseBooleanField ( byte[] note, MutableInteger curr, Change.Id changeId, String fieldName)
 specifier|private
 name|boolean
 name|parseBooleanField
@@ -3707,7 +3707,7 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|checkHeaderLineFormat (byte[] note, MutableInteger curr, String fieldName, Change.Id changeId)
+DECL|method|checkHeaderLineFormat ( byte[] note, MutableInteger curr, String fieldName, Change.Id changeId)
 specifier|private
 specifier|static
 name|void
@@ -3822,7 +3822,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Build a note that contains the metadata for and the contents of all of the    * comments in the given comments.    *    * @param comments Comments to be written to the output stream, keyed by patch    *     set ID; multiple patch sets are allowed since base revisions may be    *     shared across patch sets. All of the comments must share the same    *     RevId, and all the comments for a given patch set must have the same    *     side.    * @param out output stream to write to.    */
+comment|/**    * Build a note that contains the metadata for and the contents of all of the comments in the    * given comments.    *    * @param comments Comments to be written to the output stream, keyed by patch set ID; multiple    *     patch sets are allowed since base revisions may be shared across patch sets. All of the    *     comments must share the same RevId, and all the comments for a given patch set must have    *     the same side.    * @param out output stream to write to.    */
 DECL|method|buildNote (ListMultimap<Integer, Comment> comments, OutputStream out)
 name|void
 name|buildNote

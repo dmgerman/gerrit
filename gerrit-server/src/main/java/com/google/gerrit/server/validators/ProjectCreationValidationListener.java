@@ -99,7 +99,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to provide validation on project creation.  */
+comment|/** Listener to provide validation on project creation. */
 end_comment
 
 begin_interface
@@ -110,7 +110,7 @@ specifier|public
 interface|interface
 name|ProjectCreationValidationListener
 block|{
-comment|/**    * Project creation validation.    *    * Invoked by Gerrit just before a new project is going to be created.    *    * @param args arguments for the project creation    * @throws ValidationException if validation fails    */
+comment|/**    * Project creation validation.    *    *<p>Invoked by Gerrit just before a new project is going to be created.    *    * @param args arguments for the project creation    * @throws ValidationException if validation fails    */
 DECL|method|validateNewProject (CreateProjectArgs args)
 name|void
 name|validateNewProject

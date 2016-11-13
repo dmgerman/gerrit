@@ -308,6 +308,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -404,46 +444,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 annotation|@
 name|NoHttpd
@@ -454,9 +454,9 @@ name|SubmitResolvingMergeCommitIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|mergeSuperSet
 annotation|@
 name|Inject
-DECL|field|mergeSuperSet
 specifier|private
 name|Provider
 argument_list|<
@@ -464,9 +464,9 @@ name|MergeSuperSet
 argument_list|>
 name|mergeSuperSet
 decl_stmt|;
+DECL|field|submit
 annotation|@
 name|Inject
-DECL|field|submit
 specifier|private
 name|Submit
 name|submit
@@ -2079,7 +2079,7 @@ name|MERGED
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createChange (TestRepository<?> repo, String subject, String fileName, String content, List<RevCommit> parents, String ref)
+DECL|method|createChange ( TestRepository<?> repo, String subject, String fileName, String content, List<RevCommit> parents, String ref)
 specifier|private
 name|PushOneCommit
 operator|.
@@ -2238,7 +2238,7 @@ literal|"refs/for/master"
 argument_list|)
 return|;
 block|}
-DECL|method|createChange (TestRepository<?> repo, String subject, String fileName, String content, List<RevCommit> parents)
+DECL|method|createChange ( TestRepository<?> repo, String subject, String fileName, String content, List<RevCommit> parents)
 specifier|private
 name|PushOneCommit
 operator|.
@@ -2360,7 +2360,7 @@ literal|"refs/for/master"
 argument_list|)
 return|;
 block|}
-DECL|method|createChange (String subject, String fileName, String content, List<RevCommit> parents)
+DECL|method|createChange ( String subject, String fileName, String content, List<RevCommit> parents)
 specifier|private
 name|PushOneCommit
 operator|.

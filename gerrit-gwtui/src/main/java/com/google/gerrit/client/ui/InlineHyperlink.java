@@ -181,7 +181,7 @@ DECL|method|InlineHyperlink ()
 specifier|public
 name|InlineHyperlink
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|onBrowserEvent (final Event event)

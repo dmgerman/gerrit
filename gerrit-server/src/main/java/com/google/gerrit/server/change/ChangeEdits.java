@@ -672,6 +672,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -735,36 +765,6 @@ operator|.
 name|args4j
 operator|.
 name|Option
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
 import|;
 end_import
 
@@ -849,7 +849,7 @@ name|post
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEdits (DynamicMap<RestView<ChangeEditResource>> views, Create.Factory createFactory, Provider<Detail> detail, ChangeEditUtil editUtil, Post post, DeleteFile.Factory deleteFileFactory)
+DECL|method|ChangeEdits ( DynamicMap<RestView<ChangeEditResource>> views, Create.Factory createFactory, Provider<Detail> detail, ChangeEditUtil editUtil, Post post, DeleteFile.Factory deleteFileFactory)
 name|ChangeEdits
 parameter_list|(
 name|DynamicMap
@@ -1085,7 +1085,7 @@ return|return
 name|post
 return|;
 block|}
-comment|/**   * Create handler that is activated when collection element is accessed   * but doesn't exist, e. g. PUT request with a path was called but   * change edit wasn't created yet. Change edit is created and PUT   * handler is called.   */
+comment|/**    * Create handler that is activated when collection element is accessed but doesn't exist, e. g.    * PUT request with a path was called but change edit wasn't created yet. Change edit is created    * and PUT handler is called.    */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1260,7 +1260,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{     }
+block|{}
 DECL|interface|Factory
 interface|interface
 name|Factory
@@ -1431,7 +1431,7 @@ name|downloadCommands
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Detail (ChangeEditUtil editUtil, ChangeEditJson editJson, FileInfoJson fileInfoJson, Revisions revisions)
+DECL|method|Detail ( ChangeEditUtil editUtil, ChangeEditJson editJson, FileInfoJson fileInfoJson, Revisions revisions)
 name|Detail
 parameter_list|(
 name|ChangeEditUtil
@@ -1638,7 +1638,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Post to edit collection resource. Two different operations are    * supported:    *<ul>    *<li>Create non existing change edit</li>    *<li>Restore path in existing change edit</li>    *</ul>    * The combination of two operations in one request is supported.    */
+comment|/**    * Post to edit collection resource. Two different operations are supported:    *    *<ul>    *<li>Create non existing change edit    *<li>Restore path in existing change edit    *</ul>    *    * The combination of two operations in one request is supported.    */
 annotation|@
 name|Singleton
 DECL|class|Post
@@ -1922,7 +1922,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**   * Put handler that is activated when PUT request is called on   * collection element.   */
+comment|/** Put handler that is activated when PUT request is called on collection element. */
 annotation|@
 name|Singleton
 DECL|class|Put
@@ -1946,9 +1946,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|content
 annotation|@
 name|DefaultInput
-DECL|field|content
 specifier|public
 name|RawInput
 name|content
@@ -2155,7 +2155,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Handler to delete a file.    *<p>    * This deletes the file from the repository completely. This is not the same    * as reverting or restoring a file to its previous contents.    */
+comment|/**    * Handler to delete a file.    *    *<p>This deletes the file from the repository completely. This is not the same as reverting or    * restoring a file to its previous contents.    */
 annotation|@
 name|Singleton
 DECL|class|DeleteContent
@@ -2178,7 +2178,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{     }
+block|{}
 DECL|field|editModifier
 specifier|private
 specifier|final
@@ -2683,9 +2683,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|message
 annotation|@
 name|DefaultInput
-DECL|field|message
 specifier|public
 name|String
 name|message

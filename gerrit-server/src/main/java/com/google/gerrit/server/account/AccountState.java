@@ -397,7 +397,7 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|AccountState (Account account, Set<AccountGroup.UUID> actualGroups, Collection<AccountExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
+DECL|method|AccountState ( Account account, Set<AccountGroup.UUID> actualGroups, Collection<AccountExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
 specifier|public
 name|AccountState
 parameter_list|(
@@ -478,7 +478,7 @@ return|return
 name|account
 return|;
 block|}
-comment|/**    * Get the username, if one has been declared for this user.    *<p>    * The username is the {@link AccountExternalId} using the scheme    * {@link AccountExternalId#SCHEME_USERNAME}.    */
+comment|/**    * Get the username, if one has been declared for this user.    *    *<p>The username is the {@link AccountExternalId} using the scheme {@link    * AccountExternalId#SCHEME_USERNAME}.    */
 DECL|method|getUserName ()
 specifier|public
 name|String
@@ -698,7 +698,7 @@ return|return
 name|emails
 return|;
 block|}
-comment|/**    * Lookup a previously stored property.    *<p>    * All properties are automatically cleared when the account cache invalidates    * the {@code AccountState}. This method is thread-safe.    *    * @param key unique property key.    * @return previously stored value, or {@code null}.    */
+comment|/**    * Lookup a previously stored property.    *    *<p>All properties are automatically cleared when the account cache invalidates the {@code    * AccountState}. This method is thread-safe.    *    * @param key unique property key.    * @return previously stored value, or {@code null}.    */
 annotation|@
 name|Nullable
 DECL|method|get (PropertyKey<T> key)
@@ -765,7 +765,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Store a property for later retrieval.    *<p>    * This method is thread-safe.    *    * @param key unique property key.    * @param value value to store; or {@code null} to clear the value.    */
+comment|/**    * Store a property for later retrieval.    *    *<p>This method is thread-safe.    *    * @param key unique property key.    * @param value value to store; or {@code null} to clear the value.    */
 DECL|method|put (PropertyKey<T> key, @Nullable T value)
 specifier|public
 parameter_list|<
@@ -859,7 +859,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|properties ( boolean allocate)
+DECL|method|properties (boolean allocate)
 specifier|private
 specifier|synchronized
 name|Cache

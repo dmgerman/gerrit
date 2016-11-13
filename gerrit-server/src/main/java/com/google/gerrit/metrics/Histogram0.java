@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Measures the statistical distribution of values in a stream of data.  *<p>  * Suitable uses are "response size in bytes", etc.  */
+comment|/**  * Measures the statistical distribution of values in a stream of data.  *  *<p>Suitable uses are "response size in bytes", etc.  */
 end_comment
 
 begin_class

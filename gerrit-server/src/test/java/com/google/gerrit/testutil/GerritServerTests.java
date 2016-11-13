@@ -153,20 +153,20 @@ name|GerritServerTests
 extends|extends
 name|GerritBaseTests
 block|{
+DECL|field|config
 annotation|@
 name|ConfigSuite
 operator|.
 name|Parameter
-DECL|field|config
 specifier|public
 name|Config
 name|config
 decl_stmt|;
+DECL|field|configName
 annotation|@
 name|ConfigSuite
 operator|.
 name|Name
-DECL|field|configName
 specifier|private
 name|String
 name|configName
@@ -262,7 +262,7 @@ specifier|public
 name|void
 name|afterTest
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

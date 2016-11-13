@@ -92,6 +92,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|Annotation
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -101,18 +113,6 @@ operator|.
 name|server
 operator|.
 name|Command
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|Annotation
 import|;
 end_import
 
@@ -718,7 +718,7 @@ DECL|method|Commands ()
 specifier|private
 name|Commands
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

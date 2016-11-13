@@ -487,7 +487,7 @@ name|action
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ActionButton (Project.NameKey project, BranchInfo branch, ChangeInfo change, EditInfo edit, RevisionInfo revision, ActionInfo action)
+DECL|method|ActionButton ( Project.NameKey project, BranchInfo branch, ChangeInfo change, EditInfo edit, RevisionInfo revision, ActionInfo action)
 specifier|private
 name|ActionButton
 parameter_list|(

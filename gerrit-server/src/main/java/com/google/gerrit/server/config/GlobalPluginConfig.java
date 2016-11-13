@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Plugin configuration in etc/$PLUGIN.config and etc/$PLUGIN.secure.config.  */
+comment|/** Plugin configuration in etc/$PLUGIN.config and etc/$PLUGIN.secure.config. */
 end_comment
 
 begin_class

@@ -111,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class for building GroupDescription objects.  */
+comment|/** Utility class for building GroupDescription objects. */
 end_comment
 
 begin_class
@@ -263,7 +263,7 @@ DECL|method|GroupDescriptions ()
 specifier|private
 name|GroupDescriptions
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

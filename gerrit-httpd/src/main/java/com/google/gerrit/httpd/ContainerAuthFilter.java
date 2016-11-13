@@ -276,20 +276,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -392,8 +378,22 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_comment
-comment|/**  * Trust the authentication which is done by the container.  *<p>  * Check whether the container has already authenticated the user. If yes, then  * lookup the account and set the account ID in our current session.  *<p>  * This filter should only be configured to run, when authentication is  * configured to trust container authentication. This filter is intended to  * protect the {@link GitOverHttpServlet} and its handled URLs, which provide remote  * repository access over HTTP. It also protects {@link RestApiServlet}.  */
+comment|/**  * Trust the authentication which is done by the container.  *  *<p>Check whether the container has already authenticated the user. If yes, then lookup the  * account and set the account ID in our current session.  *  *<p>This filter should only be configured to run, when authentication is configured to trust  * container authentication. This filter is intended to protect the {@link GitOverHttpServlet} and  * its handled URLs, which provide remote repository access over HTTP. It also protects {@link  * RestApiServlet}.  */
 end_comment
 
 begin_class
@@ -434,7 +434,7 @@ name|loginHttpHeader
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ContainerAuthFilter (DynamicItem<WebSession> session, AccountCache accountCache, AuthConfig authConfig, @GerritServerConfig Config config)
+DECL|method|ContainerAuthFilter ( DynamicItem<WebSession> session, AccountCache accountCache, AuthConfig authConfig, @GerritServerConfig Config config)
 name|ContainerAuthFilter
 parameter_list|(
 name|DynamicItem
@@ -499,7 +499,7 @@ parameter_list|(
 name|FilterConfig
 name|config
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -507,7 +507,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)

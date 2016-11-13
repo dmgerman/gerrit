@@ -511,7 +511,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newCounter ( String name, Description desc, Field<F1> field1)
+DECL|method|newCounter (String name, Description desc, Field<F1> field1)
 specifier|public
 parameter_list|<
 name|F1
@@ -760,7 +760,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newTimer ( String name, Description desc, Field<F1> field1)
+DECL|method|newTimer (String name, Description desc, Field<F1> field1)
 specifier|public
 parameter_list|<
 name|F1
@@ -1009,7 +1009,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newHistogram ( String name, Description desc, Field<F1> field1)
+DECL|method|newHistogram (String name, Description desc, Field<F1> field1)
 specifier|public
 parameter_list|<
 name|F1
@@ -1275,7 +1275,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newCallbackMetric (String name, Class<V> valueClass, Description desc, Field<F1> field1)
+DECL|method|newCallbackMetric ( String name, Class<V> valueClass, Description desc, Field<F1> field1)
 specifier|public
 parameter_list|<
 name|F1
@@ -1418,7 +1418,7 @@ specifier|public
 name|void
 name|start
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|stop ()

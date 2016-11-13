@@ -184,7 +184,7 @@ name|NameKey
 name|p
 parameter_list|)
 function_decl|;
-comment|/**    * Remove information about the given project from the cache. It will no    * longer be returned from {@link #all()}.    */
+comment|/**    * Remove information about the given project from the cache. It will no longer be returned from    * {@link #all()}.    */
 DECL|method|remove (Project p)
 name|void
 name|remove
@@ -204,7 +204,7 @@ argument_list|>
 name|all
 parameter_list|()
 function_decl|;
-comment|/**    * @return estimated set of relevant groups extracted from hot project access    *         rules. If the cache is cold or too small for the entire project set    *         of the server, this set may be incomplete.    */
+comment|/**    * @return estimated set of relevant groups extracted from hot project access rules. If the cache    *     is cold or too small for the entire project set of the server, this set may be incomplete.    */
 DECL|method|guessRelevantGroupUUIDs ()
 name|Set
 argument_list|<

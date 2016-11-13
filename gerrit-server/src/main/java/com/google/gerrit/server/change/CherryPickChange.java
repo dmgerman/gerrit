@@ -688,6 +688,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -812,46 +852,6 @@ name|ChangeIdUtil
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TimeZone
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -951,7 +951,7 @@ name|batchUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickChange (Provider<ReviewDb> db, Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, PatchSetUtil psUtil, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|CherryPickChange ( Provider<ReviewDb> db, Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, PatchSetUtil psUtil, BatchUpdate.Factory batchUpdateFactory)
 name|CherryPickChange
 parameter_list|(
 name|Provider
@@ -1086,7 +1086,7 @@ operator|=
 name|batchUpdateFactory
 expr_stmt|;
 block|}
-DECL|method|cherryPick (Change change, PatchSet patch, final String message, final String ref, final RefControl refControl, int parent)
+DECL|method|cherryPick ( Change change, PatchSet patch, final String message, final String ref, final RefControl refControl, int parent)
 specifier|public
 name|Change
 operator|.
@@ -1805,7 +1805,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|insertPatchSet (BatchUpdate bu, Repository git, ChangeControl destCtl, CodeReviewCommit cherryPickCommit)
+DECL|method|insertPatchSet ( BatchUpdate bu, Repository git, ChangeControl destCtl, CodeReviewCommit cherryPickCommit)
 specifier|private
 name|Change
 operator|.
@@ -1942,7 +1942,7 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|createNewChange (BatchUpdate bu, CodeReviewCommit cherryPickCommit, String refName, String topic, Branch.NameKey sourceBranch)
+DECL|method|createNewChange ( BatchUpdate bu, CodeReviewCommit cherryPickCommit, String refName, String topic, Branch.NameKey sourceBranch)
 specifier|private
 name|Change
 operator|.
@@ -2075,7 +2075,7 @@ specifier|final
 name|ObjectId
 name|cherryPickCommit
 decl_stmt|;
-DECL|method|AddMessageToSourceChangeOp (ChangeMessagesUtil cmUtil, PatchSet.Id psId, String destBranch, ObjectId cherryPickCommit)
+DECL|method|AddMessageToSourceChangeOp ( ChangeMessagesUtil cmUtil, PatchSet.Id psId, String destBranch, ObjectId cherryPickCommit)
 specifier|private
 name|AddMessageToSourceChangeOp
 parameter_list|(

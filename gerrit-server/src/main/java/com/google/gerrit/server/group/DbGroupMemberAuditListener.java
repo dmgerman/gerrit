@@ -310,16 +310,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|text
@@ -355,6 +345,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
 import|;
 end_import
 
@@ -414,7 +414,7 @@ name|groupBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DbGroupMemberAuditListener (SchemaFactory<ReviewDb> schema, AccountCache accountCache, GroupCache groupCache, UniversalGroupBackend groupBackend)
+DECL|method|DbGroupMemberAuditListener ( SchemaFactory<ReviewDb> schema, AccountCache accountCache, GroupCache groupCache, UniversalGroupBackend groupBackend)
 name|DbGroupMemberAuditListener
 parameter_list|(
 name|SchemaFactory
@@ -1019,7 +1019,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|logOrmExceptionForAccounts (String header, Account.Id me, Collection<AccountGroupMember> values, OrmException e)
+DECL|method|logOrmExceptionForAccounts ( String header, Account.Id me, Collection<AccountGroupMember> values, OrmException e)
 specifier|private
 name|void
 name|logOrmExceptionForAccounts
@@ -1140,7 +1140,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|logOrmExceptionForGroups (String header, Account.Id me, Collection<AccountGroupById> values, OrmException e)
+DECL|method|logOrmExceptionForGroups ( String header, Account.Id me, Collection<AccountGroupById> values, OrmException e)
 specifier|private
 name|void
 name|logOrmExceptionForGroups

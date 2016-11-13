@@ -210,7 +210,7 @@ operator|.
 name|Module
 name|lfsPluginAuthModule
 decl_stmt|;
-DECL|method|DefaultCommandModule (boolean slave, DownloadConfig downloadCfg, LfsPluginAuthCommand.Module module)
+DECL|method|DefaultCommandModule ( boolean slave, DownloadConfig downloadCfg, LfsPluginAuthCommand.Module module)
 specifier|public
 name|DefaultCommandModule
 parameter_list|(

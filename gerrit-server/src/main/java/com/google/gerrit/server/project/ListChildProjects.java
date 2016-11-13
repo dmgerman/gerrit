@@ -158,18 +158,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -215,6 +203,18 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
 import|;
 end_import
 
@@ -273,7 +273,7 @@ name|projectNodeFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListChildProjects (ProjectCache projectCache, AllProjectsName allProjectsName, ProjectJson json, ProjectNode.Factory projectNodeFactory)
+DECL|method|ListChildProjects ( ProjectCache projectCache, AllProjectsName allProjectsName, ProjectJson json, ProjectNode.Factory projectNodeFactory)
 name|ListChildProjects
 parameter_list|(
 name|ProjectCache

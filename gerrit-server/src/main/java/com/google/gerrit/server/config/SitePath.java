@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on a {@link java.io.File} pointing to the site path.  *<p>  * The site path is where Gerrit Code Review stores most of its configuration.  */
+comment|/**  * Marker on a {@link java.io.File} pointing to the site path.  *  *<p>The site path is where Gerrit Code Review stores most of its configuration.  */
 end_comment
 
 begin_annotation_defn
@@ -120,7 +120,7 @@ DECL|annotation|SitePath
 specifier|public
 annotation_defn|@interface
 name|SitePath
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

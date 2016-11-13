@@ -313,9 +313,9 @@ operator|.
 name|REVIEWER
 argument_list|)
 decl_stmt|;
+DECL|field|V33
 annotation|@
 name|Deprecated
-DECL|field|V33
 specifier|static
 specifier|final
 name|Schema

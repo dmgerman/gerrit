@@ -191,7 +191,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AddReviewerSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|AddReviewerSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|AddReviewerSender
 parameter_list|(

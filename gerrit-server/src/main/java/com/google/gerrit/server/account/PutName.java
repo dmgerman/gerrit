@@ -361,9 +361,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|name
 annotation|@
 name|DefaultInput
-DECL|field|name
 specifier|public
 name|String
 name|name
@@ -401,7 +401,7 @@ name|byIdCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutName (Provider<CurrentUser> self, Realm realm, Provider<ReviewDb> dbProvider, AccountCache byIdCache)
+DECL|method|PutName ( Provider<CurrentUser> self, Realm realm, Provider<ReviewDb> dbProvider, AccountCache byIdCache)
 name|PutName
 parameter_list|(
 name|Provider

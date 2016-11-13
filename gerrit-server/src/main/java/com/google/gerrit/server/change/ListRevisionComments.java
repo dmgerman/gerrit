@@ -190,7 +190,7 @@ name|ListRevisionDrafts
 block|{
 annotation|@
 name|Inject
-DECL|method|ListRevisionComments (Provider<ReviewDb> db, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
+DECL|method|ListRevisionComments ( Provider<ReviewDb> db, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
 name|ListRevisionComments
 parameter_list|(
 name|Provider

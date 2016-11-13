@@ -784,82 +784,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Ref
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -952,6 +876,82 @@ name|Predicate
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Ref
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/** View of a single {@link Change} based on the log of its notes branch. */
 end_comment
@@ -1026,7 +1026,7 @@ name|getWrittenOn
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|parseException (Change.Id changeId, String fmt, Object... args)
+DECL|method|parseException ( Change.Id changeId, String fmt, Object... args)
 specifier|public
 specifier|static
 name|ConfigInvalidException
@@ -1133,7 +1133,7 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|Factory (Args args, Provider<InternalChangeQuery> queryProvider, ProjectCache projectCache)
+DECL|method|Factory ( Args args, Provider<InternalChangeQuery> queryProvider, ProjectCache projectCache)
 specifier|public
 name|Factory
 parameter_list|(
@@ -1405,7 +1405,7 @@ name|notes
 argument_list|()
 return|;
 block|}
-DECL|method|newNoteDbOnlyChange ( Project.NameKey project, Change.Id changeId)
+DECL|method|newNoteDbOnlyChange (Project.NameKey project, Change.Id changeId)
 specifier|public
 specifier|static
 name|Change
@@ -1611,7 +1611,7 @@ name|load
 argument_list|()
 return|;
 block|}
-DECL|method|createWithAutoRebuildingDisabled (ReviewDb db, Project.NameKey project, Change.Id changeId)
+DECL|method|createWithAutoRebuildingDisabled ( ReviewDb db, Project.NameKey project, Change.Id changeId)
 specifier|public
 name|ChangeNotes
 name|createWithAutoRebuildingDisabled
@@ -1658,7 +1658,7 @@ name|load
 argument_list|()
 return|;
 block|}
-comment|/**      * Create change notes for a change that was loaded from index. This method      * should only be used when database access is harmful and potentially stale      * data from the index is acceptable.      *      * @param change change loaded from secondary index      * @return change notes      */
+comment|/**      * Create change notes for a change that was loaded from index. This method should only be used      * when database access is harmful and potentially stale data from the index is acceptable.      *      * @param change change loaded from secondary index      * @return change notes      */
 DECL|method|createFromIndexedChange (Change change)
 specifier|public
 name|ChangeNotes
@@ -1745,7 +1745,7 @@ argument_list|()
 return|;
 block|}
 comment|// TODO(ekempin): Remove when database backend is deleted
-comment|/**      * Instantiate ChangeNotes for a change that has been loaded by a batch read      * from the database.      */
+comment|/**      * Instantiate ChangeNotes for a change that has been loaded by a batch read from the database.      */
 DECL|method|createFromChangeOnlyWhenNoteDbDisabled (Change change)
 specifier|private
 name|ChangeNotes
@@ -1900,7 +1900,7 @@ return|return
 name|notes
 return|;
 block|}
-DECL|method|create (ReviewDb db, Project.NameKey project, Collection<Change.Id> changeIds, Predicate<ChangeNotes> predicate)
+DECL|method|create ( ReviewDb db, Project.NameKey project, Collection<Change.Id> changeIds, Predicate<ChangeNotes> predicate)
 specifier|public
 name|List
 argument_list|<
@@ -2079,7 +2079,7 @@ return|return
 name|notes
 return|;
 block|}
-DECL|method|create (ReviewDb db, Predicate<ChangeNotes> predicate)
+DECL|method|create ( ReviewDb db, Predicate<ChangeNotes> predicate)
 specifier|public
 name|ListMultimap
 argument_list|<
@@ -2843,7 +2843,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ChangeNotes (Args args, Change change, boolean shouldExist, boolean autoRebuild, @Nullable RefCache refs)
+DECL|method|ChangeNotes ( Args args, Change change, boolean shouldExist, boolean autoRebuild, @Nullable RefCache refs)
 specifier|private
 name|ChangeNotes
 parameter_list|(
@@ -3146,7 +3146,7 @@ name|reviewerUpdates
 argument_list|()
 return|;
 block|}
-comment|/**    * @return an ImmutableSet of Account.Ids of all users that have been assigned    *         to this change.    */
+comment|/** @return an ImmutableSet of Account.Ids of all users that have been assigned to this change. */
 DECL|method|getPastAssignees ()
 specifier|public
 name|ImmutableSet
@@ -3165,7 +3165,7 @@ name|pastAssignees
 argument_list|()
 return|;
 block|}
-comment|/**    * @return a ImmutableSet of all hashtags for this change sorted in    *         alphabetical order.    */
+comment|/** @return a ImmutableSet of all hashtags for this change sorted in alphabetical order. */
 DECL|method|getHashtags ()
 specifier|public
 name|ImmutableSet
@@ -3187,7 +3187,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * @return a list of all users who have ever been a reviewer on this change.    */
+comment|/** @return a list of all users who have ever been a reviewer on this change. */
 DECL|method|getAllPastReviewers ()
 specifier|public
 name|ImmutableList
@@ -3206,7 +3206,7 @@ name|allPastReviewers
 argument_list|()
 return|;
 block|}
-comment|/**    * @return submit records stored during the most recent submit; only for    *     changes that were actually submitted.    */
+comment|/**    * @return submit records stored during the most recent submit; only for changes that were    *     actually submitted.    */
 DECL|method|getSubmitRecords ()
 specifier|public
 name|ImmutableList
@@ -3240,7 +3240,8 @@ name|allChangeMessages
 argument_list|()
 return|;
 block|}
-comment|/**    * @return change messages by patch set, in chronological order, oldest    *     first.    */
+comment|/** @return change messages by patch set, in chronological order, oldest first. */
+DECL|method|getChangeMessagesByPatchSet ()
 specifier|public
 name|ImmutableListMultimap
 argument_list|<
@@ -3250,7 +3251,6 @@ name|Id
 argument_list|,
 name|ChangeMessage
 argument_list|>
-DECL|method|getChangeMessagesByPatchSet ()
 name|getChangeMessagesByPatchSet
 parameter_list|()
 block|{
@@ -3353,7 +3353,7 @@ return|return
 name|commentKeys
 return|;
 block|}
-DECL|method|getDraftComments ( Account.Id author)
+DECL|method|getDraftComments (Account.Id author)
 specifier|public
 name|ImmutableListMultimap
 argument_list|<
@@ -3469,7 +3469,7 @@ name|getComments
 argument_list|()
 return|;
 block|}
-comment|/**    * If draft comments have already been loaded for this author, then they will    * not be reloaded. However, this method will load the comments if no draft    * comments have been loaded or if the caller would like the drafts for    * another author.    */
+comment|/**    * If draft comments have already been loaded for this author, then they will not be reloaded.    * However, this method will load the comments if no draft comments have been loaded or if the    * caller would like the drafts for another author.    */
 DECL|method|loadDraftComments (Account.Id author, @Nullable Ref ref)
 specifier|private
 name|void

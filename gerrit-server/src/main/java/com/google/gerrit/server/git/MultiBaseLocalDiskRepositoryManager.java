@@ -176,6 +176,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -185,18 +197,6 @@ operator|.
 name|lib
 operator|.
 name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
 import|;
 end_import
 
@@ -260,7 +260,7 @@ name|config
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MultiBaseLocalDiskRepositoryManager (SitePaths site, @GerritServerConfig Config cfg, RepositoryConfig config)
+DECL|method|MultiBaseLocalDiskRepositoryManager ( SitePaths site, @GerritServerConfig Config cfg, RepositoryConfig config)
 name|MultiBaseLocalDiskRepositoryManager
 parameter_list|(
 name|SitePaths

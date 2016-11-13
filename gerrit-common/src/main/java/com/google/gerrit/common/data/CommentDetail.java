@@ -280,7 +280,7 @@ DECL|method|CommentDetail ()
 specifier|protected
 name|CommentDetail
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|include (Change.Id changeId, Comment p)
 specifier|public
 name|void
@@ -571,7 +571,7 @@ name|emptyList
 argument_list|()
 return|;
 block|}
-comment|/**    * Order the comments based on their parent_uuid parent.  It is possible to do this by    * iterating over the list only once but it's probably overkill since the number of comments    * on a given line will be small most of the time.    *    * @param comments The list of comments for a given line.    * @return The comments sorted as they should appear in the UI    */
+comment|/**    * Order the comments based on their parent_uuid parent. It is possible to do this by iterating    * over the list only once but it's probably overkill since the number of comments on a given line    * will be small most of the time.    *    * @param comments The list of comments for a given line.    * @return The comments sorted as they should appear in the UI    */
 DECL|method|orderComments (List<Comment> comments)
 specifier|private
 specifier|static
@@ -723,8 +723,8 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Add the comments to {@code outResult}, depth first    */
-DECL|method|addChildren (Map<String, List<Comment>> parentMap, List<Comment> children, List<Comment> outResult)
+comment|/** Add the comments to {@code outResult}, depth first */
+DECL|method|addChildren ( Map<String, List<Comment>> parentMap, List<Comment> children, List<Comment> outResult)
 specifier|private
 specifier|static
 name|void

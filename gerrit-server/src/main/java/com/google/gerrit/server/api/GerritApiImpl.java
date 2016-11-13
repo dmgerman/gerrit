@@ -237,7 +237,7 @@ name|projects
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritApiImpl (Accounts accounts, Changes changes, Config config, Groups groups, Projects projects)
+DECL|method|GerritApiImpl ( Accounts accounts, Changes changes, Config config, Groups groups, Projects projects)
 name|GerritApiImpl
 parameter_list|(
 name|Accounts

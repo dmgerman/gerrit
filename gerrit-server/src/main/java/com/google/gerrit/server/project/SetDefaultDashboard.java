@@ -316,6 +316,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -351,16 +361,6 @@ operator|.
 name|args4j
 operator|.
 name|Option
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -423,7 +423,7 @@ name|inherited
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetDefaultDashboard (ProjectCache cache, MetaDataUpdate.Server updateFactory, DashboardsCollection dashboards, Provider<GetDashboard> get)
+DECL|method|SetDefaultDashboard ( ProjectCache cache, MetaDataUpdate.Server updateFactory, DashboardsCollection dashboards, Provider<GetDashboard> get)
 name|SetDefaultDashboard
 parameter_list|(
 name|ProjectCache

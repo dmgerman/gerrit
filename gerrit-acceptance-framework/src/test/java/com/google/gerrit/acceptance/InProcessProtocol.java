@@ -672,6 +672,56 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|SocketAddress
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -827,56 +877,6 @@ operator|.
 name|resolver
 operator|.
 name|UploadPackFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|SocketAddress
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -1098,7 +1098,7 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|Propagator (ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
+DECL|method|Propagator ( ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
 name|Propagator
 parameter_list|(
 name|ThreadLocalRequestContext
@@ -1158,7 +1158,7 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// TODO(dborowitz): Merge this with AcceptanceTestRequestScope.
-comment|/**    * Multi-purpose session/context object.    *<p>    * Confusingly, Gerrit has two ideas of what a "context" object is:    * one for Guice {@link RequestScoped}, and one for its own simplified    * version of request scoping using {@link ThreadLocalRequestContext}.    * This class provides both, in essence just delegating the {@code    * ThreadLocalRequestContext} scoping to the Guice scoping mechanism.    *<p>    * It is also used as the session type for {@code UploadPackFactory} and    * {@code ReceivePackFactory}, since, after all, it encapsulates all the    * information about a single request.    */
+comment|/**    * Multi-purpose session/context object.    *    *<p>Confusingly, Gerrit has two ideas of what a "context" object is: one for Guice {@link    * RequestScoped}, and one for its own simplified version of request scoping using {@link    * ThreadLocalRequestContext}. This class provides both, in essence just delegating the {@code    * ThreadLocalRequestContext} scoping to the Guice scoping mechanism.    *    *<p>It is also used as the session type for {@code UploadPackFactory} and {@code    * ReceivePackFactory}, since, after all, it encapsulates all the information about a single    * request.    */
 DECL|class|Context
 specifier|static
 class|class
@@ -1276,7 +1276,7 @@ name|Object
 argument_list|>
 name|map
 decl_stmt|;
-DECL|method|Context (SchemaFactory<ReviewDb> schemaFactory, IdentifiedUser.GenericFactory userFactory, Account.Id accountId, Project.NameKey project)
+DECL|method|Context ( SchemaFactory<ReviewDb> schemaFactory, IdentifiedUser.GenericFactory userFactory, Account.Id accountId, Project.NameKey project)
 name|Context
 parameter_list|(
 name|SchemaFactory

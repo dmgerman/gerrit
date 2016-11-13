@@ -104,7 +104,7 @@ specifier|final
 name|String
 name|fileName
 decl_stmt|;
-comment|/**    * @param fileName of JavaScript source file under {@code static/}    *        subdirectory within the plugin's JAR.    */
+comment|/**    * @param fileName of JavaScript source file under {@code static/} subdirectory within the    *     plugin's JAR.    */
 DECL|method|JavaScriptPlugin (String fileName)
 specifier|public
 name|JavaScriptPlugin

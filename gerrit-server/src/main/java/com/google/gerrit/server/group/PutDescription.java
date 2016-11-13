@@ -333,9 +333,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|description
 annotation|@
 name|DefaultInput
-DECL|field|description
 specifier|public
 name|String
 name|description

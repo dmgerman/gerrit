@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Test keys specific to web-of-trust checks.  *<p>  * In the following diagrams, the notation<code>M---N</code> indicates N trusts  * M, and an 'x' indicates the key is expired.  *<p>  *  *<pre>  *  A---Bx  *   \  *    \---C---D  *         \  *          \---Ex  *  *  D and E trust C to be a valid introducer of depth 2.  *  * F---G---F, in a cycle.  *  * H---I---J, but J is only trusted to length 1.  *</pre>  */
+comment|/**  * Test keys specific to web-of-trust checks.  *  *<p>In the following diagrams, the notation<code>M---N</code> indicates N trusts M, and an 'x'  * indicates the key is expired.  *  *<p>  *  *<pre>  *  A---Bx  *   \  *    \---C---D  *         \  *          \---Ex  *  *  D and E trust C to be a valid introducer of depth 2.  *  * F---G---F, in a cycle.  *  * H---I---J, but J is only trusted to length 1.  *</pre>  */
 end_comment
 
 begin_class
@@ -76,7 +76,7 @@ specifier|public
 class|class
 name|TestTrustKeys
 block|{
-comment|/**    * pub   2048R/9FD0D396 2010-08-29    *       Key fingerprint = E401 17FC 4BF4 17BD 8F93  DEB1 D25A D07A 9FD0 D396    * uid                  Testuser A&lt;testa@example.com&gt;    * sub   2048R/F5C099DB 2010-08-29    */
+comment|/**    * pub 2048R/9FD0D396 2010-08-29 Key fingerprint = E401 17FC 4BF4 17BD 8F93 DEB1 D25A D07A 9FD0    * D396 uid Testuser A&lt;testa@example.com&gt; sub 2048R/F5C099DB 2010-08-29    */
 DECL|method|keyA ()
 specifier|public
 specifier|static
@@ -290,7 +290,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * pub   2048R/B007D490 2010-08-29 [expired: 2011-08-29]    *       Key fingerprint = 355D 5B98 FECE 6199 83CD  C91D 5760 6987 B007 D490    * uid                  Testuser B&lt;testb@example.com&gt;    */
+comment|/**    * pub 2048R/B007D490 2010-08-29 [expired: 2011-08-29] Key fingerprint = 355D 5B98 FECE 6199 83CD    * C91D 5760 6987 B007 D490 uid Testuser B&lt;testb@example.com&gt;    */
 DECL|method|keyB ()
 specifier|public
 specifier|static
@@ -480,7 +480,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * pub   2048R/D24FE467 2010-08-29    *       Key fingerprint = 6C21 10AC F4FC 1C7B F270  C00E 641F 1193 D24F E467    * uid                  Testuser C&lt;testc@example.com&gt;    * sub   2048R/DBECD4FA 2010-08-29    */
+comment|/**    * pub 2048R/D24FE467 2010-08-29 Key fingerprint = 6C21 10AC F4FC 1C7B F270 C00E 641F 1193 D24F    * E467 uid Testuser C&lt;testc@example.com&gt; sub 2048R/DBECD4FA 2010-08-29    */
 DECL|method|keyC ()
 specifier|public
 specifier|static
@@ -694,7 +694,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * pub   2048R/0FDD3677 2010-08-29    *       Key fingerprint = C96C 5E9D 669C 448A D1B9  BEB5 A991 E2D5 0FDD 3677    * uid                  Testuser D&lt;testd@example.com&gt;    * sub   2048R/CAB81AE0 2010-08-29    */
+comment|/**    * pub 2048R/0FDD3677 2010-08-29 Key fingerprint = C96C 5E9D 669C 448A D1B9 BEB5 A991 E2D5 0FDD    * 3677 uid Testuser D&lt;testd@example.com&gt; sub 2048R/CAB81AE0 2010-08-29    */
 DECL|method|keyD ()
 specifier|public
 specifier|static
@@ -884,7 +884,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * pub   2048R/4B4387EE 2010-08-29 [expired: 2011-08-29]    *       Key fingerprint = F01D 677C 8BDB 854E 1054  406E 3B09 B97F 4B43 87EE    * uid                  Testuser E&lt;teste@example.com&gt;    */
+comment|/**    * pub 2048R/4B4387EE 2010-08-29 [expired: 2011-08-29] Key fingerprint = F01D 677C 8BDB 854E 1054    * 406E 3B09 B97F 4B43 87EE uid Testuser E&lt;teste@example.com&gt;    */
 DECL|method|keyE ()
 specifier|public
 specifier|static
@@ -1074,7 +1074,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * pub   2048R/31FA48C4 2010-09-01    *       Key fingerprint = 85CE F045 8113 42DA 14A4  42AA 4A9F AC70 31FA 48C4    * uid                  Testuser F&lt;testf@example.com&gt;    * sub   2048R/50FF7D5C 2010-09-01    */
+comment|/**    * pub 2048R/31FA48C4 2010-09-01 Key fingerprint = 85CE F045 8113 42DA 14A4 42AA 4A9F AC70 31FA    * 48C4 uid Testuser F&lt;testf@example.com&gt; sub 2048R/50FF7D5C 2010-09-01    */
 DECL|method|keyF ()
 specifier|public
 specifier|static
@@ -1276,7 +1276,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * pub   2048R/E2D32BA5 2010-09-01    *       Key fingerprint = CB2B 665B 88DA D56A 7009  C15D 8A9B 5293 E2D3 2BA5    * uid                  Testuser G&lt;testg@example.com&gt;    * sub   2048R/829DAE8D 2010-09-01    */
+comment|/**    * pub 2048R/E2D32BA5 2010-09-01 Key fingerprint = CB2B 665B 88DA D56A 7009 C15D 8A9B 5293 E2D3    * 2BA5 uid Testuser G&lt;testg@example.com&gt; sub 2048R/829DAE8D 2010-09-01    */
 DECL|method|keyG ()
 specifier|public
 specifier|static
@@ -1478,7 +1478,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * pub   2048R/080E5723 2010-09-01    *       Key fingerprint = 2957 ABE4 937D A84A 2E5D  31DB 65C4 33C4 080E 5723    * uid                  Testuser H&lt;testh@example.com&gt;    * sub   2048R/68C7C262 2010-09-01    */
+comment|/**    * pub 2048R/080E5723 2010-09-01 Key fingerprint = 2957 ABE4 937D A84A 2E5D 31DB 65C4 33C4 080E    * 5723 uid Testuser H&lt;testh@example.com&gt; sub 2048R/68C7C262 2010-09-01    */
 DECL|method|keyH ()
 specifier|public
 specifier|static
@@ -1680,7 +1680,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * pub   2048R/5E9AEDD0 2010-09-01    *       Key fingerprint = 818D 5D0B 4AE2 A4FE A4C3  C44D D022 DA3A 5E9A EDD0    * uid                  Testuser I&lt;testi@example.com&gt;    * sub   2048R/0884E452 2010-09-01    */
+comment|/**    * pub 2048R/5E9AEDD0 2010-09-01 Key fingerprint = 818D 5D0B 4AE2 A4FE A4C3 C44D D022 DA3A 5E9A    * EDD0 uid Testuser I&lt;testi@example.com&gt; sub 2048R/0884E452 2010-09-01    */
 DECL|method|keyI ()
 specifier|public
 specifier|static
@@ -1882,7 +1882,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * pub   2048R/C2E6A198 2010-09-01    *       Key fingerprint = 83AB CE4D 6845 D6DA F7FB  AA47 A139 3C46 C2E6 A198    * uid                  Testuser J&lt;testj@example.com&gt;    * sub   2048R/863E8ABF 2010-09-01    */
+comment|/**    * pub 2048R/C2E6A198 2010-09-01 Key fingerprint = 83AB CE4D 6845 D6DA F7FB AA47 A139 3C46 C2E6    * A198 uid Testuser J&lt;testj@example.com&gt; sub 2048R/863E8ABF 2010-09-01    */
 DECL|method|keyJ ()
 specifier|public
 specifier|static
@@ -2076,7 +2076,7 @@ DECL|method|TestTrustKeys ()
 specifier|private
 name|TestTrustKeys
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

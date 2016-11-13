@@ -383,7 +383,7 @@ name|idSection
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitDatabase (final ConsoleUI ui, final SitePaths site, final Libraries libraries, final Section.Factory sections)
+DECL|method|InitDatabase ( final ConsoleUI ui, final SitePaths site, final Libraries libraries, final Section.Factory sections)
 name|InitDatabase
 parameter_list|(
 specifier|final

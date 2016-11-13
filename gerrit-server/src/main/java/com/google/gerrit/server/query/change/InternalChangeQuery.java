@@ -404,48 +404,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Ref
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -501,6 +459,48 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Ref
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
 import|;
 end_import
 
@@ -655,7 +655,7 @@ name|notesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalChangeQuery (ChangeQueryProcessor queryProcessor, ChangeIndexCollection indexes, IndexConfig indexConfig, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory)
+DECL|method|InternalChangeQuery ( ChangeQueryProcessor queryProcessor, ChangeIndexCollection indexes, IndexConfig indexConfig, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory)
 name|InternalChangeQuery
 parameter_list|(
 name|ChangeQueryProcessor
@@ -1093,7 +1093,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMerged (Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes)
+DECL|method|byCommitsOnBranchNotMerged ( Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes)
 specifier|public
 name|Iterable
 argument_list|<
@@ -1146,7 +1146,7 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|byCommitsOnBranchNotMerged (Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes, int indexLimit)
+DECL|method|byCommitsOnBranchNotMerged ( Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes, int indexLimit)
 name|Iterable
 argument_list|<
 name|ChangeData

@@ -109,7 +109,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Account and approval details for an added reviewer.  */
+comment|/** Account and approval details for an added reviewer. */
 end_comment
 
 begin_class
@@ -120,10 +120,10 @@ name|ReviewerInfo
 extends|extends
 name|AccountInfo
 block|{
-comment|/**    * {@link Map} of label name to initial value for each approval the reviewer    * is responsible for.    */
+comment|/**    * {@link Map} of label name to initial value for each approval the reviewer is responsible for.    */
+DECL|field|approvals
 annotation|@
 name|Nullable
-DECL|field|approvals
 specifier|public
 name|Map
 argument_list|<

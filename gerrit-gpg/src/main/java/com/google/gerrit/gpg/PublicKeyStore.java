@@ -98,6 +98,126 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ByteArrayOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|bouncycastle
@@ -392,128 +512,8 @@ name|NB
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
-comment|/**  * Store of GPG public keys in git notes.  *<p>  * Keys are stored in filenames based on their hex key ID, padded out to 40  * characters to match the length of a SHA-1. (This is to easily reuse existing  * fanout code in {@link NoteMap}, and may be changed later after an appropriate  * transition.)  *<p>  * The contents of each file is an ASCII armored stream containing one or more  * public key rings matching the ID. Multiple keys are supported because forging  * a key ID is possible, but such a key cannot be used to verify signatures  * produced with the correct key.  *<p>  * No additional checks are performed on the key after reading; callers should  * only trust keys after checking with a {@link PublicKeyChecker}.  */
+comment|/**  * Store of GPG public keys in git notes.  *  *<p>Keys are stored in filenames based on their hex key ID, padded out to 40 characters to match  * the length of a SHA-1. (This is to easily reuse existing fanout code in {@link NoteMap}, and may  * be changed later after an appropriate transition.)  *  *<p>The contents of each file is an ASCII armored stream containing one or more public key rings  * matching the ID. Multiple keys are supported because forging a key ID is possible, but such a key  * cannot be used to verify signatures produced with the correct key.  *  *<p>No additional checks are performed on the key after reading; callers should only trust keys  * after checking with a {@link PublicKeyChecker}.  */
 end_comment
 
 begin_class
@@ -548,8 +548,8 @@ name|REFS_GPG_KEYS
 init|=
 literal|"refs/meta/gpg-keys"
 decl_stmt|;
-comment|/**    * Choose the public key that produced a signature.    *<p>    * @param keyRings candidate keys.    * @param sig signature object.    * @param data signed payload.    * @return the key chosen from {@code keyRings} that was able to verify the    *     signature, or {@code null} if none was found.    * @throws PGPException if an error occurred verifying the signature.    */
-DECL|method|getSigner (Iterable<PGPPublicKeyRing> keyRings, PGPSignature sig, byte[] data)
+comment|/**    * Choose the public key that produced a signature.    *    *<p>    *    * @param keyRings candidate keys.    * @param sig signature object.    * @param data signed payload.    * @return the key chosen from {@code keyRings} that was able to verify the signature, or {@code    *     null} if none was found.    * @throws PGPException if an error occurred verifying the signature.    */
+DECL|method|getSigner ( Iterable<PGPPublicKeyRing> keyRings, PGPSignature sig, byte[] data)
 specifier|public
 specifier|static
 name|PGPPublicKey
@@ -622,8 +622,8 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Choose the public key that produced a certification.    *<p>    * @param keyRings candidate keys.    * @param sig signature object.    * @param userId user ID being certified.    * @param key key being certified.    * @return the key chosen from {@code keyRings} that was able to verify the    *     certification, or {@code null} if none was found.    * @throws PGPException if an error occurred verifying the certification.    */
-DECL|method|getSigner (Iterable<PGPPublicKeyRing> keyRings, PGPSignature sig, String userId, PGPPublicKey key)
+comment|/**    * Choose the public key that produced a certification.    *    *<p>    *    * @param keyRings candidate keys.    * @param sig signature object.    * @param userId user ID being certified.    * @param key key being certified.    * @return the key chosen from {@code keyRings} that was able to verify the certification, or    *     {@code null} if none was found.    * @throws PGPException if an error occurred verifying the certification.    */
+DECL|method|getSigner ( Iterable<PGPPublicKeyRing> keyRings, PGPSignature sig, String userId, PGPPublicKey key)
 specifier|public
 specifier|static
 name|PGPPublicKey
@@ -881,7 +881,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Read public keys with the given key ID.    *<p>    * Keys should not be trusted unless checked with {@link PublicKeyChecker}.    *<p>    * Multiple calls to this method use the same state of the key ref; to reread    * the ref, call {@link #close()} first.    *    * @param keyId key ID.    * @return any keys found that could be successfully parsed.    * @throws PGPException if an error occurred parsing the key data.    * @throws IOException if an error occurred reading the repository data.    */
+comment|/**    * Read public keys with the given key ID.    *    *<p>Keys should not be trusted unless checked with {@link PublicKeyChecker}.    *    *<p>Multiple calls to this method use the same state of the key ref; to reread the ref, call    * {@link #close()} first.    *    * @param keyId key ID.    * @return any keys found that could be successfully parsed.    * @throws PGPException if an error occurred parsing the key data.    * @throws IOException if an error occurred reading the repository data.    */
 DECL|method|get (long keyId)
 specifier|public
 name|PGPPublicKeyRingCollection
@@ -908,7 +908,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Read public key with the given fingerprint.    *<p>    * Keys should not be trusted unless checked with {@link PublicKeyChecker}.    *<p>    * Multiple calls to this method use the same state of the key ref; to reread    * the ref, call {@link #close()} first.    *    * @param fingerprint key fingerprint.    * @return the key if found, or {@code null}.    * @throws PGPException if an error occurred parsing the key data.    * @throws IOException if an error occurred reading the repository data.    */
+comment|/**    * Read public key with the given fingerprint.    *    *<p>Keys should not be trusted unless checked with {@link PublicKeyChecker}.    *    *<p>Multiple calls to this method use the same state of the key ref; to reread the ref, call    * {@link #close()} first.    *    * @param fingerprint key fingerprint.    * @return the key if found, or {@code null}.    * @throws PGPException if an error occurred parsing the key data.    * @throws IOException if an error occurred reading the repository data.    */
 DECL|method|get (byte[] fingerprint)
 specifier|public
 name|PGPPublicKeyRing
@@ -1171,7 +1171,7 @@ name|keys
 return|;
 block|}
 block|}
-comment|/**    * Add a public key to the store.    *<p>    * Multiple calls may be made to buffer keys in memory, and they are not saved    * until {@link #save(CommitBuilder)} is called.    *    * @param keyRing a key ring containing exactly one public master key.    */
+comment|/**    * Add a public key to the store.    *    *<p>Multiple calls may be made to buffer keys in memory, and they are not saved until {@link    * #save(CommitBuilder)} is called.    *    * @param keyRing a key ring containing exactly one public master key.    */
 DECL|method|add (PGPPublicKeyRing keyRing)
 specifier|public
 name|void
@@ -1259,7 +1259,7 @@ name|fp
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Remove a public key from the store.    *<p>    * Multiple calls may be made to buffer deletes in memory, and they are not    * saved until {@link #save(CommitBuilder)} is called.    *    * @param fingerprint the fingerprint of the key to remove.    */
+comment|/**    * Remove a public key from the store.    *    *<p>Multiple calls may be made to buffer deletes in memory, and they are not saved until {@link    * #save(CommitBuilder)} is called.    *    * @param fingerprint the fingerprint of the key to remove.    */
 DECL|method|remove (byte[] fingerprint)
 specifier|public
 name|void
@@ -1294,7 +1294,7 @@ name|fp
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Save pending keys to the store.    *<p>    * One commit is created and the ref updated. The pending list is cleared if    * and only if the ref update succeeds, which allows for easy retries in case    * of lock failure.    *    * @param cb commit builder with at least author and identity populated; tree    *     and parent are ignored.    * @return result of the ref update.    */
+comment|/**    * Save pending keys to the store.    *    *<p>One commit is created and the ref updated. The pending list is cleared if and only if the    * ref update succeeds, which allows for easy retries in case of lock failure.    *    * @param cb commit builder with at least author and identity populated; tree and parent are    *     ignored.    * @return result of the ref update.    */
 DECL|method|save (CommitBuilder cb)
 specifier|public
 name|RefUpdate

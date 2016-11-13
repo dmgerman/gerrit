@@ -286,6 +286,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|codemirror
@@ -343,36 +373,6 @@ operator|.
 name|lib
 operator|.
 name|Pos
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -1557,7 +1557,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Insert a new padding div below the given line.    *    * @param cm parent CodeMirror to add extra space into.    * @param line line to put the padding below.    * @param len number of lines to pad. Padding is inserted only if    *        {@code len>= 1}.    */
+comment|/**    * Insert a new padding div below the given line.    *    * @param cm parent CodeMirror to add extra space into.    * @param line line to put the padding below.    * @param len number of lines to pad. Padding is inserted only if {@code len>= 1}.    */
 DECL|method|addPadding (CodeMirror cm, int line, final int len)
 specifier|private
 name|void

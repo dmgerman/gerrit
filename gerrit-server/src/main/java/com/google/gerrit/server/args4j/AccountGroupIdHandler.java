@@ -223,7 +223,7 @@ name|groupCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountGroupIdHandler (final GroupCache groupCache, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<AccountGroup.Id> setter)
+DECL|method|AccountGroupIdHandler ( final GroupCache groupCache, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<AccountGroup.Id> setter)
 specifier|public
 name|AccountGroupIdHandler
 parameter_list|(

@@ -120,7 +120,7 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|MultipleProvidersForPluginException (Path pluginSrcPath, Iterable<ServerPluginProvider> providersHandlers)
+DECL|method|MultipleProvidersForPluginException ( Path pluginSrcPath, Iterable<ServerPluginProvider> providersHandlers)
 name|MultipleProvidersForPluginException
 parameter_list|(
 name|Path
@@ -149,7 +149,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|providersListToString ( Iterable<ServerPluginProvider> providersHandlers)
+DECL|method|providersListToString (Iterable<ServerPluginProvider> providersHandlers)
 specifier|private
 specifier|static
 name|String

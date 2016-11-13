@@ -118,7 +118,7 @@ specifier|public
 name|void
 name|prune
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -258,7 +258,7 @@ name|threads
 argument_list|)
 return|;
 block|}
-DECL|method|limitThreads (Config cfg, DataSourceType dst, ThreadSettingsConfig threadSettingsConfig, int threads)
+DECL|method|limitThreads ( Config cfg, DataSourceType dst, ThreadSettingsConfig threadSettingsConfig, int threads)
 specifier|private
 specifier|static
 name|int
@@ -334,7 +334,7 @@ DECL|method|ThreadLimiter ()
 specifier|private
 name|ThreadLimiter
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

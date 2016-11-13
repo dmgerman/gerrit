@@ -93,7 +93,7 @@ DECL|method|VoidResult ()
 specifier|protected
 name|VoidResult
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|create ()
 specifier|public
 specifier|static

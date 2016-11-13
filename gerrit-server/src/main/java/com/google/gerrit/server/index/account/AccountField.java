@@ -931,7 +931,7 @@ DECL|method|AccountField ()
 specifier|private
 name|AccountField
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

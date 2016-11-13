@@ -248,20 +248,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|antlr
-operator|.
-name|runtime
-operator|.
-name|tree
-operator|.
-name|Tree
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -384,8 +370,22 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|antlr
+operator|.
+name|runtime
+operator|.
+name|tree
+operator|.
+name|Tree
+import|;
+end_import
+
 begin_comment
-comment|/**  * Base class to support writing parsers for query languages.  *<p>  * Subclasses may document their supported query operators by declaring public  * methods that perform the query conversion into a {@link Predicate}. For  * example, to support "is:starred", "is:unread", and nothing else, a subclass  * may write:  *  *<pre>  *&#064;Operator  * public Predicate is(final String value) {  *   if (&quot;starred&quot;.equals(value)) {  *     return new StarredPredicate();  *   }  *   if (&quot;unread&quot;.equals(value)) {  *     return new UnreadPredicate();  *   }  *   throw new IllegalArgumentException();  * }  *</pre>  *<p>  * The available operator methods are discovered at runtime via reflection.  * Method names (after being converted to lowercase), correspond to operators in  * the query language, method string values correspond to the operator argument.  * Methods must be declared {@code public}, returning {@link Predicate},  * accepting one {@link String}, and annotated with the {@link Operator}  * annotation.  *<p>  * Subclasses may also declare a handler for values which appear without  * operator by overriding {@link #defaultField(String)}.  *  * @param<T> type of object the predicates can evaluate in memory.  */
+comment|/**  * Base class to support writing parsers for query languages.  *  *<p>Subclasses may document their supported query operators by declaring public methods that  * perform the query conversion into a {@link Predicate}. For example, to support "is:starred",  * "is:unread", and nothing else, a subclass may write:  *  *<pre>  *&#064;Operator  * public Predicate is(final String value) {  *   if (&quot;starred&quot;.equals(value)) {  *     return new StarredPredicate();  *   }  *   if (&quot;unread&quot;.equals(value)) {  *     return new UnreadPredicate();  *   }  *   throw new IllegalArgumentException();  * }  *</pre>  *  *<p>The available operator methods are discovered at runtime via reflection. Method names (after  * being converted to lowercase), correspond to operators in the query language, method string  * values correspond to the operator argument. Methods must be declared {@code public}, returning  * {@link Predicate}, accepting one {@link String}, and annotated with the {@link Operator}  * annotation.  *  *<p>Subclasses may also declare a handler for values which appear without operator by overriding  * {@link #defaultField(String)}.  *  * @param<T> type of object the predicates can evaluate in memory.  */
 end_comment
 
 begin_class
@@ -431,7 +431,7 @@ throws|throws
 name|QueryParseException
 function_decl|;
 block|}
-comment|/**    * Defines the operators known by a QueryBuilder.    *    * This class is thread-safe and may be reused or cached.    *    * @param<T> type of object the predicates can evaluate in memory.    * @param<Q> type of the query builder subclass.    */
+comment|/**    * Defines the operators known by a QueryBuilder.    *    *<p>This class is thread-safe and may be reused or cached.    *    * @param<T> type of object the predicates can evaluate in memory.    * @param<Q> type of the query builder subclass.    */
 DECL|class|Definition
 specifier|public
 specifier|static
@@ -737,13 +737,13 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Locate a predicate in the predicate tree.    *    * @param p the predicate to find.    * @param clazz type of the predicate instance.    * @param name name of the operator.    * @return the first instance of a predicate having the given type, as found    *     by a depth-first search.    */
+comment|/**    * Locate a predicate in the predicate tree.    *    * @param p the predicate to find.    * @param clazz type of the predicate instance.    * @param name name of the operator.    * @return the first instance of a predicate having the given type, as found by a depth-first    *     search.    */
 annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|find (Predicate<T> p, Class<P> clazz, String name)
+DECL|method|find ( Predicate<T> p, Class<P> clazz, String name)
 specifier|public
 specifier|static
 parameter_list|<
@@ -932,7 +932,7 @@ operator|.
 name|opFactories
 expr_stmt|;
 block|}
-comment|/**    * Parse a user-supplied query string into a predicate.    *    * @param query the query string.    * @return predicate representing the user query.    * @throws QueryParseException the query string is invalid and cannot be    *         parsed by this parser. This may be due to a syntax error, may be    *         due to an operator not being supported, or due to an invalid value    *         being passed to a recognized operator.    */
+comment|/**    * Parse a user-supplied query string into a predicate.    *    * @param query the query string.    * @return predicate representing the user query.    * @throws QueryParseException the query string is invalid and cannot be parsed by this parser.    *     This may be due to a syntax error, may be due to an operator not being supported, or due to    *     an invalid value being passed to a recognized operator.    */
 DECL|method|parse (final String query)
 specifier|public
 name|Predicate
@@ -960,7 +960,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Parse multiple user-supplied query strings into a list of predicates.    *    * @param queries the query strings.    * @return predicates representing the user query, in the same order as the    *         input.    * @throws QueryParseException one of the query strings is invalid and cannot    *         be parsed by this parser. This may be due to a syntax error, may be    *         due to an operator not being supported, or due to an invalid value    *         being passed to a recognized operator.    *    */
+comment|/**    * Parse multiple user-supplied query strings into a list of predicates.    *    * @param queries the query strings.    * @return predicates representing the user query, in the same order as the input.    * @throws QueryParseException one of the query strings is invalid and cannot be parsed by this    *     parser. This may be due to a syntax error, may be due to an operator not being supported,    *     or due to an invalid value being passed to a recognized operator.    */
 DECL|method|parse (final List<String> queries)
 specifier|public
 name|List
@@ -1456,7 +1456,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Handle a value present outside of an operator.    *<p>    * This default implementation always throws an "Unsupported query: " message    * containing the input text. Subclasses may override this method to perform    * do-what-i-mean guesses based on the input string.    *    * @param value the value supplied by itself in the query.    * @return predicate representing this value.    * @throws QueryParseException the parser does not recognize this value.    */
+comment|/**    * Handle a value present outside of an operator.    *    *<p>This default implementation always throws an "Unsupported query: " message containing the    * input text. Subclasses may override this method to perform do-what-i-mean guesses based on the    * input string.    *    * @param value the value supplied by itself in the query.    * @return predicate representing this value.    * @throws QueryParseException the parser does not recognize this value.    */
 DECL|method|defaultField (final String value)
 specifier|protected
 name|Predicate
@@ -1658,7 +1658,7 @@ DECL|annotation|Operator
 specifier|protected
 annotation_defn|@interface
 name|Operator
-block|{   }
+block|{}
 DECL|class|ReflectionFactory
 specifier|private
 specifier|static

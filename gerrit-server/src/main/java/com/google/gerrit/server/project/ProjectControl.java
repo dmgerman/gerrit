@@ -596,82 +596,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Ref
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -757,6 +681,82 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Ref
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -1300,7 +1300,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, ChangeNotes.Factory changeNotesFactory, ChangeControl.Factory changeControlFactory, TagCache tagCache, Provider<InternalChangeQuery> queryProvider, @Nullable SearchingChangeCacheImpl changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl ( @itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, ChangeNotes.Factory changeNotesFactory, ChangeControl.Factory changeControlFactory, TagCache tagCache, Provider<InternalChangeQuery> queryProvider, @Nullable SearchingChangeCacheImpl changeCache, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -1522,7 +1522,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Create a change control for a change that was loaded from index. This    * method should only be used when database access is harmful and potentially    * stale data from the index is acceptable.    *    * @param change change loaded from secondary index    * @return change control    */
+comment|/**    * Create a change control for a change that was loaded from index. This method should only be    * used when database access is harmful and potentially stale data from the index is acceptable.    *    * @param change change loaded from secondary index    * @return change control    */
 DECL|method|controlForIndexedChange (Change change)
 specifier|public
 name|ChangeControl
@@ -1771,7 +1771,7 @@ name|HIDDEN
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns whether the project is readable to the current user. Note    * that the project could still be hidden.    */
+comment|/**    * Returns whether the project is readable to the current user. Note that the project could still    * be hidden.    */
 DECL|method|isReadable ()
 specifier|public
 name|boolean
@@ -1794,7 +1794,7 @@ argument_list|)
 operator|)
 return|;
 block|}
-comment|/**    * Returns whether the project is accessible to the current user, i.e.    * readable and not hidden.    */
+comment|/**    * Returns whether the project is accessible to the current user, i.e. readable and not hidden.    */
 DECL|method|isVisible ()
 specifier|public
 name|boolean
@@ -2156,7 +2156,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getGroups ( final List<SectionMatcher> sectionMatcherList)
+DECL|method|getGroups (final List<SectionMatcher> sectionMatcherList)
 specifier|private
 specifier|static
 name|Set
@@ -3219,7 +3219,7 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|isMergedIntoVisibleRef (Repository repo, ReviewDb db, RevWalk rw, RevCommit commit, Collection<Ref> unfilteredRefs)
+DECL|method|isMergedIntoVisibleRef ( Repository repo, ReviewDb db, RevWalk rw, RevCommit commit, Collection<Ref> unfilteredRefs)
 name|boolean
 name|isMergedIntoVisibleRef
 parameter_list|(

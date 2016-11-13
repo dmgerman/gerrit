@@ -294,7 +294,7 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetConfig (@nableSignedPush boolean serverEnableSignedPush, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|GetConfig ( @nableSignedPush boolean serverEnableSignedPush, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|GetConfig
 parameter_list|(

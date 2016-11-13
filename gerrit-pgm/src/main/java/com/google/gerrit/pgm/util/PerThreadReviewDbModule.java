@@ -207,7 +207,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Module to bind a single {@link ReviewDb} instance per thread.  *<p>  * New instances are opened on demand, but are closed only at shutdown.  */
+comment|/**  * Module to bind a single {@link ReviewDb} instance per thread.  *  *<p>New instances are opened on demand, but are closed only at shutdown.  */
 end_comment
 
 begin_class

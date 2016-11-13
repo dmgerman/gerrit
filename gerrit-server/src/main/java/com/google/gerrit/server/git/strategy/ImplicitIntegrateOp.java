@@ -85,7 +85,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Operation for a change that is implicitly integrated by integrating another  * commit.  *<p>  * Updates the change status and message based on {@link  * CodeReviewCommit#getStatusCode()}, but does not touch the repository.  */
+comment|/**  * Operation for a change that is implicitly integrated by integrating another commit.  *  *<p>Updates the change status and message based on {@link CodeReviewCommit#getStatusCode()}, but  * does not touch the repository.  */
 end_comment
 
 begin_class

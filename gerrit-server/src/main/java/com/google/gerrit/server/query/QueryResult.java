@@ -120,7 +120,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-DECL|method|create (@ullable String query, Predicate<T> predicate, int limit, List<T> entites)
+DECL|method|create ( @ullable String query, Predicate<T> predicate, int limit, List<T> entites)
 specifier|static
 parameter_list|<
 name|T
@@ -203,17 +203,17 @@ name|more
 argument_list|)
 return|;
 block|}
-comment|/**    * @return the original query string, or null if the query was created    *     programmatically.    */
-DECL|method|query ()
+comment|/** @return the original query string, or null if the query was created programmatically. */
 annotation|@
 name|Nullable
+DECL|method|query ()
 specifier|public
 specifier|abstract
 name|String
 name|query
 parameter_list|()
 function_decl|;
-comment|/**    * @return the predicate after all rewriting and other modification by the    *     query subsystem.    */
+comment|/** @return the predicate after all rewriting and other modification by the query subsystem. */
 DECL|method|predicate ()
 specifier|public
 specifier|abstract
@@ -235,7 +235,7 @@ argument_list|>
 name|entities
 parameter_list|()
 function_decl|;
-comment|/**    * @return whether the query could be retried with    *     {@link QueryProcessor#setStart(int)} to produce more results. Never    *     true if {@link #entities()} is empty.    */
+comment|/**    * @return whether the query could be retried with {@link QueryProcessor#setStart(int)} to produce    *     more results. Never true if {@link #entities()} is empty.    */
 DECL|method|more ()
 specifier|public
 specifier|abstract

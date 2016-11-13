@@ -245,7 +245,7 @@ specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|ChangeIsVisibleToPredicate (Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, ChangeControl.GenericFactory changeControlFactory, CurrentUser user)
+DECL|method|ChangeIsVisibleToPredicate ( Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, ChangeControl.GenericFactory changeControlFactory, CurrentUser user)
 name|ChangeIsVisibleToPredicate
 parameter_list|(
 name|Provider

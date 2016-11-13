@@ -306,7 +306,7 @@ name|UiField
 name|Image
 name|icon
 decl_stmt|;
-DECL|method|InsertCommentBubble ( final CommentManager commentManager, final CodeMirror cm)
+DECL|method|InsertCommentBubble (final CommentManager commentManager, final CodeMirror cm)
 name|InsertCommentBubble
 parameter_list|(
 specifier|final

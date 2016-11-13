@@ -82,6 +82,38 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|text
+operator|.
+name|MessageFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -201,38 +233,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|text
-operator|.
-name|MessageFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
 import|;
 end_import
 
@@ -388,7 +388,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ScheduleConfig (Config rc, String section, String subsection, String keyInterval, String keyStartTime)
+DECL|method|ScheduleConfig ( Config rc, String section, String subsection, String keyInterval, String keyStartTime)
 specifier|public
 name|ScheduleConfig
 parameter_list|(
@@ -463,7 +463,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|ScheduleConfig (Config rc, String section, String subsection, String keyInterval, String keyStartTime, DateTime now)
+DECL|method|ScheduleConfig ( Config rc, String section, String subsection, String keyInterval, String keyStartTime, DateTime now)
 name|ScheduleConfig
 parameter_list|(
 name|Config
@@ -567,7 +567,7 @@ name|interval
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Milliseconds between constructor invocation and first event time.    *<p>    * If there is any lag between the constructor invocation and queuing the    * object into an executor the event will run later, as there is no method    * to adjust for the scheduling delay.    */
+comment|/**    * Milliseconds between constructor invocation and first event time.    *    *<p>If there is any lag between the constructor invocation and queuing the object into an    * executor the event will run later, as there is no method to adjust for the scheduling delay.    */
 DECL|method|getInitialDelay ()
 specifier|public
 name|long
@@ -695,7 +695,7 @@ return|return
 name|interval
 return|;
 block|}
-DECL|method|initialDelay (Config rc, String section, String subsection, String keyStartTime, DateTime now, long interval)
+DECL|method|initialDelay ( Config rc, String section, String subsection, String keyStartTime, DateTime now, long interval)
 specifier|private
 specifier|static
 name|long

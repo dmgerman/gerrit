@@ -200,7 +200,7 @@ argument_list|<
 name|AccountGroup
 argument_list|>
 block|{
-DECL|method|IndexedGroupQuery (Index<AccountGroup.UUID, AccountGroup> index, Predicate<AccountGroup> pred, QueryOptions opts)
+DECL|method|IndexedGroupQuery ( Index<AccountGroup.UUID, AccountGroup> index, Predicate<AccountGroup> pred, QueryOptions opts)
 specifier|public
 name|IndexedGroupQuery
 parameter_list|(

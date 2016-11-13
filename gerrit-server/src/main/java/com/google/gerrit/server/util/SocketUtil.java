@@ -690,7 +690,7 @@ DECL|method|SocketUtil ()
 specifier|private
 name|SocketUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

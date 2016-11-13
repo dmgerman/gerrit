@@ -71,7 +71,7 @@ DECL|class|SshdInfo
 specifier|public
 class|class
 name|SshdInfo
-block|{ }
+block|{}
 end_class
 
 end_unit

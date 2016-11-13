@@ -198,7 +198,7 @@ specifier|public
 interface|interface
 name|Groups
 block|{
-comment|/**    * Look up a group by ID.    *<p>    *<strong>Note:</strong> This method eagerly reads the group. Methods that    * mutate the group do not necessarily re-read the group. Therefore, calling a    * getter method on an instance after calling a mutation method on that same    * instance is not guaranteed to reflect the mutation. It is not recommended    * to store references to {@code groupApi} instances.    *    * @param id any identifier supported by the REST API, including group name or    *     UUID.    * @return API for accessing the group.    * @throws RestApiException if an error occurred.    */
+comment|/**    * Look up a group by ID.    *    *<p><strong>Note:</strong> This method eagerly reads the group. Methods that mutate the group do    * not necessarily re-read the group. Therefore, calling a getter method on an instance after    * calling a mutation method on that same instance is not guaranteed to reflect the mutation. It    * is not recommended to store references to {@code groupApi} instances.    *    * @param id any identifier supported by the REST API, including group name or UUID.    * @return API for accessing the group.    * @throws RestApiException if an error occurred.    */
 DECL|method|id (String id)
 name|GroupApi
 name|id
@@ -237,13 +237,13 @@ name|ListRequest
 name|list
 parameter_list|()
 function_decl|;
-comment|/**    * Query groups.    *<p>    * Example code:    * {@code query().withQuery("inname:test").withLimit(10).get()}    *    * @return API for setting parameters and getting result.    */
+comment|/**    * Query groups.    *    *<p>Example code: {@code query().withQuery("inname:test").withLimit(10).get()}    *    * @return API for setting parameters and getting result.    */
 DECL|method|query ()
 name|QueryRequest
 name|query
 parameter_list|()
 function_decl|;
-comment|/**    * Query groups.    *<p>    * Shortcut API for {@code query().withQuery(String)}.    *    * @see #query()    */
+comment|/**    * Query groups.    *    *<p>Shortcut API for {@code query().withQuery(String)}.    *    * @see #query()    */
 DECL|method|query (String query)
 name|QueryRequest
 name|query
@@ -808,7 +808,7 @@ name|suggest
 return|;
 block|}
 block|}
-comment|/**    * API for setting parameters and getting result.    * Used for {@code query()}.    *    * @see #query()    */
+comment|/**    * API for setting parameters and getting result. Used for {@code query()}.    *    * @see #query()    */
 DECL|class|QueryRequest
 specifier|abstract
 class|class
@@ -846,7 +846,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Execute query and returns the matched groups as list.      */
+comment|/** Execute query and returns the matched groups as list. */
 DECL|method|get ()
 specifier|public
 specifier|abstract
@@ -879,7 +879,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Set limit for returned list of groups.      * Optional; server-default is used when not provided.      */
+comment|/**      * Set limit for returned list of groups. Optional; server-default is used when not provided.      */
 DECL|method|withLimit (int limit)
 specifier|public
 name|QueryRequest
@@ -899,7 +899,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Set number of groups to skip.      * Optional; no groups are skipped when not provided.      */
+comment|/** Set number of groups to skip. Optional; no groups are skipped when not provided. */
 DECL|method|withStart (int start)
 specifier|public
 name|QueryRequest
@@ -1035,7 +1035,7 @@ name|options
 return|;
 block|}
 block|}
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

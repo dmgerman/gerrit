@@ -107,7 +107,7 @@ operator|=
 name|anonymousCowardName
 expr_stmt|;
 block|}
-comment|/**    * Formats an account as a name and an email address.    *<p>    * Example output:    *<ul>    *<li>{@code A U. Thor&lt;author@example.com&gt;}: full populated</li>    *<li>{@code A U. Thor (12)}: missing email address</li>    *<li>{@code Anonymous Coward&lt;author@example.com&gt;}: missing name</li>    *<li>{@code Anonymous Coward (12)}: missing name and email address</li>    *</ul>    */
+comment|/**    * Formats an account as a name and an email address.    *    *<p>Example output:    *    *<ul>    *<li>{@code A U. Thor&lt;author@example.com&gt;}: full populated    *<li>{@code A U. Thor (12)}: missing email address    *<li>{@code Anonymous Coward&lt;author@example.com&gt;}: missing name    *<li>{@code Anonymous Coward (12)}: missing name and email address    *</ul>    */
 DECL|method|nameEmail (AccountInfo info)
 specifier|public
 name|String
@@ -227,7 +227,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**    * Formats an account name.    *<p>    * If the account has a full name, it returns only the full name. Otherwise it    * returns a longer form that includes the email address.    */
+comment|/**    * Formats an account name.    *    *<p>If the account has a full name, it returns only the full name. Otherwise it returns a longer    * form that includes the email address.    */
 DECL|method|name (AccountInfo ai)
 specifier|public
 name|String

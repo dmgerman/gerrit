@@ -159,7 +159,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** A TabPanel which allows entries to be hidden.  This class is not yet  *  designed to handle removes or any other add methods than the one  *  overridden here.  It is also not designed to handle anything other  *  than text for the tab.  */
+comment|/**  * A TabPanel which allows entries to be hidden. This class is not yet designed to handle removes or  * any other add methods than the one overridden here. It is also not designed to handle anything  * other than text for the tab.  */
 end_comment
 
 begin_class
@@ -411,7 +411,7 @@ argument_list|(
 name|w
 argument_list|)
 decl_stmt|;
-comment|/* Re-insert the widget right after the first visible widget found            when scanning backwards from the current widget */
+comment|/* Re-insert the widget right after the first visible widget found         when scanning backwards from the current widget */
 for|for
 control|(
 name|int

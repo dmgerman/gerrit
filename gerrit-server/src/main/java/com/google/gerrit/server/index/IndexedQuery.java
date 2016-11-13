@@ -207,7 +207,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Wrapper combining an {@link IndexPredicate} together with a  * {@link DataSource} that returns matching results from the index.  *<p>  * Appropriate to return as the rootmost predicate that can be processed using  * the secondary index; such predicates must also implement {@link DataSource}  * to be chosen by the query processor.  *  * @param<I> The type of the IDs by which the entities are stored in the index.  * @param<T> The type of the entities that are stored in the index.  */
+comment|/**  * Wrapper combining an {@link IndexPredicate} together with a {@link DataSource} that returns  * matching results from the index.  *  *<p>Appropriate to return as the rootmost predicate that can be processed using the secondary  * index; such predicates must also implement {@link DataSource} to be chosen by the query  * processor.  *  * @param<I> The type of the IDs by which the entities are stored in the index.  * @param<T> The type of the entities that are stored in the index.  */
 end_comment
 
 begin_class

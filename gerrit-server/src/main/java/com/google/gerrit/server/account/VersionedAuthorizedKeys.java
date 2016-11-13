@@ -364,48 +364,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|CommitBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -464,8 +422,50 @@ name|Optional
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|CommitBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
 begin_comment
-comment|/**  * 'authorized_keys' file in the refs/users/CD/ABCD branches of the All-Users  * repository.  *  * The `authorized_keys' files stores the public SSH keys of the user. The file  * format matches the standard SSH file format, which means that each key is  * stored on a separate line (see  * https://en.wikibooks.org/wiki/OpenSSH/Client_Configuration_Files#.7E.2F.ssh.2Fauthorized_keys).  *  * The order of the keys in the file determines the sequence numbers of the  * keys. The first line corresponds to sequence number 1.  *  * Invalid keys are marked with the prefix<code># INVALID</code>.  *  * To keep the sequence numbers intact when a key is deleted, a  *<code># DELETED</code> line is inserted at the position where the key was  * deleted.  *  * Other comment lines are ignored on read, and are not written back when the  * file is modified.  */
+comment|/**  * 'authorized_keys' file in the refs/users/CD/ABCD branches of the All-Users repository.  *  *<p>The `authorized_keys' files stores the public SSH keys of the user. The file format matches  * the standard SSH file format, which means that each key is stored on a separate line (see  * https://en.wikibooks.org/wiki/OpenSSH/Client_Configuration_Files#.7E.2F.ssh.2Fauthorized_keys).  *  *<p>The order of the keys in the file determines the sequence numbers of the keys. The first line  * corresponds to sequence number 1.  *  *<p>Invalid keys are marked with the prefix<code># INVALID</code>.  *  *<p>To keep the sequence numbers intact when a key is deleted, a<code># DELETED</code> line is  * inserted at the position where the key was deleted.  *  *<p>Other comment lines are ignored on read, and are not written back when the file is modified.  */
 end_comment
 
 begin_class
@@ -956,7 +956,7 @@ name|keys
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|VersionedAuthorizedKeys ( SshKeyCreator sshKeyCreator, @Assisted Account.Id accountId)
+DECL|method|VersionedAuthorizedKeys (SshKeyCreator sshKeyCreator, @Assisted Account.Id accountId)
 specifier|public
 name|VersionedAuthorizedKeys
 parameter_list|(
@@ -1126,7 +1126,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the SSH key with the given sequence number.    *    * @param seq sequence number    * @return the SSH key,<code>null</code> if there is no SSH key with this    *         sequence number, or if the SSH key with this sequence number has    *         been deleted    */
+comment|/**    * Returns the SSH key with the given sequence number.    *    * @param seq sequence number    * @return the SSH key,<code>null</code> if there is no SSH key with this sequence number, or if    *     the SSH key with this sequence number has been deleted    */
 DECL|method|getKey (int seq)
 specifier|private
 name|AccountSshKey
@@ -1155,7 +1155,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Adds a new public SSH key.    *    * If the specified public key exists already, the existing key is returned.    *    * @param pub the public SSH key to be added    * @return the new SSH key    * @throws InvalidSshKeyException    */
+comment|/**    * Adds a new public SSH key.    *    *<p>If the specified public key exists already, the existing key is returned.    *    * @param pub the public SSH key to be added    * @return the new SSH key    * @throws InvalidSshKeyException    */
 DECL|method|addKey (String pub)
 specifier|private
 name|AccountSshKey
@@ -1269,7 +1269,7 @@ return|return
 name|key
 return|;
 block|}
-comment|/**    * Deletes the SSH key with the given sequence number.    *    * @param seq the sequence number    * @return<code>true</code> if a key with this sequence number was found and    *         deleted,<code>false</code> if no key with the given sequence    *         number exists    */
+comment|/**    * Deletes the SSH key with the given sequence number.    *    * @param seq the sequence number    * @return<code>true</code> if a key with this sequence number was found and deleted,<code>false    *</code> if no key with the given sequence number exists    */
 DECL|method|deleteKey (int seq)
 specifier|private
 name|boolean
@@ -1326,7 +1326,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**    * Marks the SSH key with the given sequence number as invalid.    *    * @param seq the sequence number    * @return<code>true</code> if a key with this sequence number was found and    *         marked as invalid,<code>false</code> if no key with the given    *         sequence number exists or if the key was already marked as invalid    */
+comment|/**    * Marks the SSH key with the given sequence number as invalid.    *    * @param seq the sequence number    * @return<code>true</code> if a key with this sequence number was found and marked as invalid,    *<code>false</code> if no key with the given sequence number exists or if the key was    *     already marked as invalid    */
 DECL|method|markKeyInvalid (int seq)
 specifier|private
 name|boolean
@@ -1372,7 +1372,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**    * Sets new SSH keys.    *    * The existing SSH keys are overwritten.    *    * @param newKeys the new public SSH keys    */
+comment|/**    * Sets new SSH keys.    *    *<p>The existing SSH keys are overwritten.    *    * @param newKeys the new public SSH keys    */
 DECL|method|setKeys (Collection<AccountSshKey> newKeys)
 specifier|public
 name|void

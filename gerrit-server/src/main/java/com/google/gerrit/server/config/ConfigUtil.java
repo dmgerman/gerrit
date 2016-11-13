@@ -82,34 +82,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -220,6 +192,34 @@ name|Pattern
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_class
 DECL|class|ConfigUtil
 specifier|public
@@ -294,8 +294,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Parse a Java enumeration from the configuration.    *    * @param<T> type of the enumeration object.    * @param section section the key is in.    * @param subsection subsection the key is in, or null if not in a subsection.    * @param setting name of the setting to read.    * @param valueString string value from git Config    * @param all all possible values in the enumeration which should be    *        recognized. This should be {@code EnumType.values()}.    * @return the selected enumeration value, or {@code defaultValue}.    */
-DECL|method|getEnum (final String section, final String subsection, final String setting, String valueString, final T[] all)
+comment|/**    * Parse a Java enumeration from the configuration.    *    * @param<T> type of the enumeration object.    * @param section section the key is in.    * @param subsection subsection the key is in, or null if not in a subsection.    * @param setting name of the setting to read.    * @param valueString string value from git Config    * @param all all possible values in the enumeration which should be recognized. This should be    *     {@code EnumType.values()}.    * @return the selected enumeration value, or {@code defaultValue}.    */
+DECL|method|getEnum ( final String section, final String subsection, final String setting, String valueString, final T[] all)
 specifier|private
 specifier|static
 parameter_list|<
@@ -496,8 +496,8 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-comment|/**    * Parse a Java enumeration list from the configuration.    *    * @param<T> type of the enumeration object.    * @param config the configuration file to read.    * @param section section the key is in.    * @param subsection subsection the key is in, or null if not in a subsection.    * @param setting name of the setting to read.    * @param defaultValue default value to return if the setting was not set.    *        Must not be null as the enumeration values are derived from this.    * @return the selected enumeration values list, or {@code defaultValue}.    */
-DECL|method|getEnumList (final Config config, final String section, final String subsection, final String setting, final T defaultValue)
+comment|/**    * Parse a Java enumeration list from the configuration.    *    * @param<T> type of the enumeration object.    * @param config the configuration file to read.    * @param section section the key is in.    * @param subsection subsection the key is in, or null if not in a subsection.    * @param setting name of the setting to read.    * @param defaultValue default value to return if the setting was not set. Must not be null as the    *     enumeration values are derived from this.    * @return the selected enumeration values list, or {@code defaultValue}.    */
+DECL|method|getEnumList ( final Config config, final String section, final String subsection, final String setting, final T defaultValue)
 specifier|public
 specifier|static
 parameter_list|<
@@ -562,8 +562,8 @@ name|defaultValue
 argument_list|)
 return|;
 block|}
-comment|/**    * Parse a Java enumeration list from the configuration.    *    * @param<T> type of the enumeration object.    * @param config the configuration file to read.    * @param section section the key is in.    * @param subsection subsection the key is in, or null if not in a subsection.    * @param setting name of the setting to read.    * @param all all possible values in the enumeration which should be    *        recognized. This should be {@code EnumType.values()}.    * @param defaultValue default value to return if the setting was not set.    *        This value may be null.    * @return the selected enumeration values list, or {@code defaultValue}.    */
-DECL|method|getEnumList (final Config config, final String section, final String subsection, final String setting, final T[] all, final T defaultValue)
+comment|/**    * Parse a Java enumeration list from the configuration.    *    * @param<T> type of the enumeration object.    * @param config the configuration file to read.    * @param section section the key is in.    * @param subsection subsection the key is in, or null if not in a subsection.    * @param setting name of the setting to read.    * @param all all possible values in the enumeration which should be recognized. This should be    *     {@code EnumType.values()}.    * @param defaultValue default value to return if the setting was not set. This value may be null.    * @return the selected enumeration values list, or {@code defaultValue}.    */
+DECL|method|getEnumList ( final Config config, final String section, final String subsection, final String setting, final T[] all, final T defaultValue)
 specifier|public
 specifier|static
 parameter_list|<
@@ -693,8 +693,8 @@ return|return
 name|list
 return|;
 block|}
-comment|/**    * Parse a numerical time unit, such as "1 minute", from the configuration.    *    * @param config the configuration file to read.    * @param section section the key is in.    * @param subsection subsection the key is in, or null if not in a subsection.    * @param setting name of the setting to read.    * @param defaultValue default value to return if no value was set in the    *        configuration file.    * @param wantUnit the units of {@code defaultValue} and the return value, as    *        well as the units to assume if the value does not contain an    *        indication of the units.    * @return the setting, or {@code defaultValue} if not set, expressed in    *         {@code units}.    */
-DECL|method|getTimeUnit (final Config config, final String section, final String subsection, final String setting, final long defaultValue, final TimeUnit wantUnit)
+comment|/**    * Parse a numerical time unit, such as "1 minute", from the configuration.    *    * @param config the configuration file to read.    * @param section section the key is in.    * @param subsection subsection the key is in, or null if not in a subsection.    * @param setting name of the setting to read.    * @param defaultValue default value to return if no value was set in the configuration file.    * @param wantUnit the units of {@code defaultValue} and the return value, as well as the units to    *     assume if the value does not contain an indication of the units.    * @return the setting, or {@code defaultValue} if not set, expressed in {@code units}.    */
+DECL|method|getTimeUnit ( final Config config, final String section, final String subsection, final String setting, final long defaultValue, final TimeUnit wantUnit)
 specifier|public
 specifier|static
 name|long
@@ -830,7 +830,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Parse a numerical time unit, such as "1 minute", from a string.    *    * @param valueString the string to parse.    * @param defaultValue default value to return if no value was set in the    *        configuration file.    * @param wantUnit the units of {@code defaultValue} and the return value, as    *        well as the units to assume if the value does not contain an    *        indication of the units.    * @return the setting, or {@code defaultValue} if not set, expressed in    *         {@code units}.    */
+comment|/**    * Parse a numerical time unit, such as "1 minute", from a string.    *    * @param valueString the string to parse.    * @param defaultValue default value to return if no value was set in the configuration file.    * @param wantUnit the units of {@code defaultValue} and the return value, as well as the units to    *     assume if the value does not contain an indication of the units.    * @return the setting, or {@code defaultValue} if not set, expressed in {@code units}.    */
 DECL|method|getTimeUnit (final String valueString, long defaultValue, TimeUnit wantUnit)
 specifier|public
 specifier|static
@@ -1244,7 +1244,7 @@ return|return
 name|v
 return|;
 block|}
-comment|/**    * Store section by inspecting Java class attributes.    *<p>    * Optimize the storage by unsetting a variable if it is    * being set to default value by the server.    *<p>    * Fields marked with final or transient modifiers are skipped.    *    * @param cfg config in which the values should be stored    * @param section section    * @param sub subsection    * @param s instance of class with config values    * @param defaults instance of class with default values    * @throws ConfigInvalidException    */
+comment|/**    * Store section by inspecting Java class attributes.    *    *<p>Optimize the storage by unsetting a variable if it is being set to default value by the    * server.    *    *<p>Fields marked with final or transient modifiers are skipped.    *    * @param cfg config in which the values should be stored    * @param section section    * @param sub subsection    * @param s instance of class with config values    * @param defaults instance of class with default values    * @throws ConfigInvalidException    */
 DECL|method|storeSection (Config cfg, String section, String sub, T s, T defaults)
 specifier|public
 specifier|static
@@ -1582,7 +1582,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Load section by inspecting Java class attributes.    *<p>    * Config values are stored optimized: no default values are stored.    * The loading is performed eagerly: all values are set.    *<p>    * Fields marked with final or transient modifiers are skipped.    *    * @param cfg config from which the values are loaded    * @param section section    * @param sub subsection    * @param s instance of class in which the values are set    * @param defaults instance of class with default values    * @param i instance to merge during the load. When present, the    * boolean fields are not nullified when their values are false    * @return loaded instance    * @throws ConfigInvalidException    */
+comment|/**    * Load section by inspecting Java class attributes.    *    *<p>Config values are stored optimized: no default values are stored. The loading is performed    * eagerly: all values are set.    *    *<p>Fields marked with final or transient modifiers are skipped.    *    * @param cfg config from which the values are loaded    * @param section section    * @param sub subsection    * @param s instance of class in which the values are set    * @param defaults instance of class with default values    * @param i instance to merge during the load. When present, the boolean fields are not nullified    *     when their values are false    * @return loaded instance    * @throws ConfigInvalidException    */
 DECL|method|loadSection (Config cfg, String section, String sub, T s, T defaults, T i)
 specifier|public
 specifier|static
@@ -2204,7 +2204,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|notTimeUnit (final String section, final String subsection, final String setting, final String valueString)
+DECL|method|notTimeUnit ( final String section, final String subsection, final String setting, final String valueString)
 specifier|private
 specifier|static
 name|IllegalArgumentException
@@ -2282,7 +2282,7 @@ DECL|method|ConfigUtil ()
 specifier|private
 name|ConfigUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

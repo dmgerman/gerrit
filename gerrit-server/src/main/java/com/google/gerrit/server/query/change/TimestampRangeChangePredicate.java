@@ -143,7 +143,7 @@ argument_list|<
 name|ChangeData
 argument_list|>
 block|{
-DECL|method|TimestampRangeChangePredicate (FieldDef<ChangeData, Timestamp> def, String name, String value)
+DECL|method|TimestampRangeChangePredicate ( FieldDef<ChangeData, Timestamp> def, String name, String value)
 specifier|protected
 name|TimestampRangeChangePredicate
 parameter_list|(

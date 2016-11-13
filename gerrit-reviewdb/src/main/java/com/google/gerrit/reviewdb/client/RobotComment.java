@@ -147,7 +147,7 @@ name|FixSuggestion
 argument_list|>
 name|fixSuggestions
 decl_stmt|;
-DECL|method|RobotComment (Key key, Account.Id author, Timestamp writtenOn, short side, String message, String serverId, String robotId, String robotRunId)
+DECL|method|RobotComment ( Key key, Account.Id author, Timestamp writtenOn, short side, String message, String serverId, String robotId, String robotRunId)
 specifier|public
 name|RobotComment
 parameter_list|(

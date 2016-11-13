@@ -476,20 +476,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -555,6 +541,20 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
 import|;
 end_import
 
@@ -647,7 +647,7 @@ name|webLinks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAccessFactory (final GroupBackend groupBackend, final ProjectCache projectCache, final ProjectControl.Factory projectControlFactory, final GroupControl.Factory groupControlFactory, final MetaDataUpdate.Server metaDataUpdateFactory, final AllProjectsName allProjectsName, final WebLinks webLinks, @Assisted final Project.NameKey name)
+DECL|method|ProjectAccessFactory ( final GroupBackend groupBackend, final ProjectCache projectCache, final ProjectControl.Factory projectControlFactory, final GroupControl.Factory groupControlFactory, final MetaDataUpdate.Server metaDataUpdateFactory, final AllProjectsName allProjectsName, final WebLinks webLinks, @Assisted final Project.NameKey name)
 name|ProjectAccessFactory
 parameter_list|(
 specifier|final

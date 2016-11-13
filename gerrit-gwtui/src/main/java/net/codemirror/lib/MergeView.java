@@ -211,7 +211,7 @@ DECL|method|MergeView ()
 specifier|protected
 name|MergeView
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

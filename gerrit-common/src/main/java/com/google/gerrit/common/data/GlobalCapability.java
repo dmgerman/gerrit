@@ -126,7 +126,7 @@ name|ACCESS_DATABASE
 init|=
 literal|"accessDatabase"
 decl_stmt|;
-comment|/**    * Denotes the server's administrators.    *<p>    * This is similar to UNIX root, or Windows SYSTEM account. Any user that    * has this capability can perform almost any other action, or can grant    * themselves the power to perform any other action on the site. Most of    * the other capabilities and permissions fall-back to the predicate    * "OR user has capability ADMINISTRATE_SERVER".    */
+comment|/**    * Denotes the server's administrators.    *    *<p>This is similar to UNIX root, or Windows SYSTEM account. Any user that has this capability    * can perform almost any other action, or can grant themselves the power to perform any other    * action on the site. Most of the other capabilities and permissions fall-back to the predicate    * "OR user has capability ADMINISTRATE_SERVER".    */
 DECL|field|ADMINISTRATE_SERVER
 specifier|public
 specifier|static
@@ -146,7 +146,7 @@ name|BATCH_CHANGES_LIMIT
 init|=
 literal|"batchChangesLimit"
 decl_stmt|;
-comment|/**    * Default maximum number of changes that may be pushed in a batch, 0 means no    * limit. This is just used as a suggestion for prepopulating the field in the    * access UI.    */
+comment|/**    * Default maximum number of changes that may be pushed in a batch, 0 means no limit. This is just    * used as a suggestion for prepopulating the field in the access UI.    */
 DECL|field|DEFAULT_MAX_BATCH_CHANGES_LIMIT
 specifier|public
 specifier|static
@@ -186,7 +186,7 @@ name|CREATE_PROJECT
 init|=
 literal|"createProject"
 decl_stmt|;
-comment|/**    * Denotes who may email change reviewers and watchers.    *<p>    * This can be used to deny build bots from emailing reviewers and people who    * watch the change. Instead, only the authors of the change and those who    * starred it will be emailed. The allow rules are evaluated before deny    * rules, however the default is to allow emailing, if no explicit rule is    * matched.    */
+comment|/**    * Denotes who may email change reviewers and watchers.    *    *<p>This can be used to deny build bots from emailing reviewers and people who watch the change.    * Instead, only the authors of the change and those who starred it will be emailed. The allow    * rules are evaluated before deny rules, however the default is to allow emailing, if no explicit    * rule is matched.    */
 DECL|field|EMAIL_REVIEWERS
 specifier|public
 specifier|static
@@ -216,7 +216,7 @@ name|KILL_TASK
 init|=
 literal|"killTask"
 decl_stmt|;
-comment|/**    * Can perform limited server maintenance.    *<p>    * Includes tasks such as reindexing changes and flushing caches that may need    * to be performed regularly. Does<strong>not</strong> grant arbitrary    * read/write/ACL management permissions as does {@link    * #ADMINISTRATE_SERVER}.    */
+comment|/**    * Can perform limited server maintenance.    *    *<p>Includes tasks such as reindexing changes and flushing caches that may need to be performed    * regularly. Does<strong>not</strong> grant arbitrary read/write/ACL management permissions as    * does {@link #ADMINISTRATE_SERVER}.    */
 DECL|field|MAINTAIN_SERVER
 specifier|public
 specifier|static

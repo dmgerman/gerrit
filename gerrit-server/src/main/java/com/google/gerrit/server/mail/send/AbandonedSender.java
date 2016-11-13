@@ -218,7 +218,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AbandonedSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|AbandonedSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|AbandonedSender
 parameter_list|(

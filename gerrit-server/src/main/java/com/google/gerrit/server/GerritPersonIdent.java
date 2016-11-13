@@ -118,7 +118,7 @@ DECL|annotation|GerritPersonIdent
 specifier|public
 annotation_defn|@interface
 name|GerritPersonIdent
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

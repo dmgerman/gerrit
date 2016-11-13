@@ -120,9 +120,9 @@ specifier|public
 class|class
 name|SafeHtmlBuilderTest
 block|{
+DECL|field|exception
 annotation|@
 name|Rule
-DECL|field|exception
 specifier|public
 name|ExpectedException
 name|exception

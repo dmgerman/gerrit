@@ -2463,7 +2463,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setListBox (final ListBox f, final T defaultValue, final T currentValue)
+DECL|method|setListBox ( final ListBox f, final T defaultValue, final T currentValue)
 specifier|private
 parameter_list|<
 name|T

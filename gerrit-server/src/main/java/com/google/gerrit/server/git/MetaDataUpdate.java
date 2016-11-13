@@ -196,6 +196,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -278,16 +288,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/** Helps with the updating of a {@link VersionedMetaData}. */
 end_comment
@@ -335,7 +335,7 @@ name|identifiedUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|User (InternalFactory factory, GitRepositoryManager mgr, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser)
+DECL|method|User ( InternalFactory factory, GitRepositoryManager mgr, @GerritPersonIdent PersonIdent serverIdent, Provider<IdentifiedUser> identifiedUser)
 name|User
 parameter_list|(
 name|InternalFactory
@@ -453,7 +453,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Create an update using an existing batch ref update.    *<p>    * This allows batching together updates to multiple metadata refs. For making    * multiple commits to a single metadata ref, see    * {@link VersionedMetaData#openUpdate(MetaDataUpdate)}.    *    * @param name project name.    * @param user user for the update.    * @param batch batch update to use; the caller is responsible for committing    *     the update.    */
+comment|/**      * Create an update using an existing batch ref update.      *      *<p>This allows batching together updates to multiple metadata refs. For making multiple      * commits to a single metadata ref, see {@link VersionedMetaData#openUpdate(MetaDataUpdate)}.      *      * @param name project name.      * @param user user for the update.      * @param batch batch update to use; the caller is responsible for committing the update.      */
 DECL|method|create (Project.NameKey name, IdentifiedUser user, BatchRefUpdate batch)
 specifier|public
 name|MetaDataUpdate
@@ -510,8 +510,8 @@ return|return
 name|md
 return|;
 block|}
-comment|/**      * Create an update using an existing batch ref update.      *<p>      * This allows batching together updates to multiple metadata refs. For making      * multiple commits to a single metadata ref, see      * {@link VersionedMetaData#openUpdate(MetaDataUpdate)}.      *      * Important: Create a new MetaDataUpdate instance for each update:      *<pre>      *<code>      *   try (Repository repo = repoMgr.openRepository(allUsersName);      *       RevWalk rw = new RevWalk(repo) {      *     BatchRefUpdate batchUpdate = repo.getRefDatabase().newBatchUpdate();      *     // WRONG: create the MetaDataUpdate instance here and reuse it for      *     //        all updates in the loop      *     for{@code (Map.Entry<Account.Id, DiffPreferencesInfo> e : diffPrefsFromDb)} {      *       // CORRECT: create a new MetaDataUpdate instance for each update      *       try (MetaDataUpdate md =      *           metaDataUpdateFactory.create(allUsersName, batchUpdate)) {      *         md.setMessage("Import diff preferences from reviewdb\n");      *         VersionedAccountPreferences vPrefs =      *             VersionedAccountPreferences.forUser(e.getKey());      *         storeSection(vPrefs.getConfig(), UserConfigSections.DIFF, null,      *             e.getValue(), DiffPreferencesInfo.defaults());      *         vPrefs.commit(md);      *       } catch (ConfigInvalidException e) {      *         // TODO handle exception      *       }      *     }      *     batchUpdate.execute(rw, NullProgressMonitor.INSTANCE);      *   }      *</code>      *</pre>      *      * @param name project name.      * @param repository the repository to update; the caller is responsible for      *     closing the repository.      * @param user user for the update.      * @param batch batch update to use; the caller is responsible for committing      *     the update.      */
-DECL|method|create (Project.NameKey name, Repository repository, IdentifiedUser user, BatchRefUpdate batch)
+comment|/**      * Create an update using an existing batch ref update.      *      *<p>This allows batching together updates to multiple metadata refs. For making multiple      * commits to a single metadata ref, see {@link VersionedMetaData#openUpdate(MetaDataUpdate)}.      *      *<p>Important: Create a new MetaDataUpdate instance for each update:      *      *<pre>      *<code>      *   try (Repository repo = repoMgr.openRepository(allUsersName);      *       RevWalk rw = new RevWalk(repo) {      *     BatchRefUpdate batchUpdate = repo.getRefDatabase().newBatchUpdate();      *     // WRONG: create the MetaDataUpdate instance here and reuse it for      *     //        all updates in the loop      *     for{@code (Map.Entry<Account.Id, DiffPreferencesInfo> e : diffPrefsFromDb)} {      *       // CORRECT: create a new MetaDataUpdate instance for each update      *       try (MetaDataUpdate md =      *           metaDataUpdateFactory.create(allUsersName, batchUpdate)) {      *         md.setMessage("Import diff preferences from reviewdb\n");      *         VersionedAccountPreferences vPrefs =      *             VersionedAccountPreferences.forUser(e.getKey());      *         storeSection(vPrefs.getConfig(), UserConfigSections.DIFF, null,      *             e.getValue(), DiffPreferencesInfo.defaults());      *         vPrefs.commit(md);      *       } catch (ConfigInvalidException e) {      *         // TODO handle exception      *       }      *     }      *     batchUpdate.execute(rw, NullProgressMonitor.INSTANCE);      *   }      *</code>      *</pre>      *      * @param name project name.      * @param repository the repository to update; the caller is responsible for closing the      *     repository.      * @param user user for the update.      * @param batch batch update to use; the caller is responsible for committing the update.      */
+DECL|method|create ( Project.NameKey name, Repository repository, IdentifiedUser user, BatchRefUpdate batch)
 specifier|public
 name|MetaDataUpdate
 name|create
@@ -619,7 +619,7 @@ name|serverIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Server (InternalFactory factory, GitRepositoryManager mgr, @GerritPersonIdent PersonIdent serverIdent)
+DECL|method|Server ( InternalFactory factory, GitRepositoryManager mgr, @GerritPersonIdent PersonIdent serverIdent)
 name|Server
 parameter_list|(
 name|InternalFactory
@@ -756,7 +756,7 @@ DECL|interface|InternalFactory
 interface|interface
 name|InternalFactory
 block|{
-DECL|method|create (@ssisted Project.NameKey projectName, @Assisted Repository repository, @Assisted @Nullable BatchRefUpdate batch)
+DECL|method|create ( @ssisted Project.NameKey projectName, @Assisted Repository repository, @Assisted @Nullable BatchRefUpdate batch)
 name|MetaDataUpdate
 name|create
 parameter_list|(
@@ -835,7 +835,7 @@ name|author
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|MetaDataUpdate (GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey projectName, @Assisted Repository repository, @Assisted @Nullable BatchRefUpdate batch)
+DECL|method|MetaDataUpdate ( GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey projectName, @Assisted Repository repository, @Assisted @Nullable BatchRefUpdate batch)
 specifier|public
 name|MetaDataUpdate
 parameter_list|(
@@ -895,7 +895,7 @@ name|CommitBuilder
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MetaDataUpdate (GitReferenceUpdated gitRefUpdated, Project.NameKey projectName, Repository repository)
+DECL|method|MetaDataUpdate ( GitReferenceUpdated gitRefUpdated, Project.NameKey projectName, Repository repository)
 specifier|public
 name|MetaDataUpdate
 parameter_list|(

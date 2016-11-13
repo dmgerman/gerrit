@@ -976,7 +976,7 @@ DECL|method|AddressList ()
 specifier|public
 name|AddressList
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|AddressList (Address addr)
 specifier|public
 name|AddressList

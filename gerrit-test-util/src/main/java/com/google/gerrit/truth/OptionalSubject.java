@@ -222,6 +222,7 @@ name|S
 argument_list|>
 name|valueAssertThatFunction
 decl_stmt|;
+DECL|method|assertThat ( Optional<T> optional, Function<? super T, ? extends S> elementAssertThatFunction)
 specifier|public
 specifier|static
 parameter_list|<
@@ -244,7 +245,6 @@ name|S
 argument_list|,
 name|T
 argument_list|>
-DECL|method|assertThat (Optional<T> optional, Function<? super T, ? extends S> elementAssertThatFunction)
 name|assertThat
 parameter_list|(
 name|Optional
@@ -293,7 +293,7 @@ name|optional
 argument_list|)
 return|;
 block|}
-DECL|method|assertThat ( Optional<?> optional)
+DECL|method|assertThat (Optional<?> optional)
 specifier|public
 specifier|static
 name|OptionalSubject
@@ -344,7 +344,7 @@ name|valueAssertThatFunction
 argument_list|)
 return|;
 block|}
-DECL|method|OptionalSubject (FailureStrategy failureStrategy, Optional<T> optional, Function<? super T, ? extends S> valueAssertThatFunction)
+DECL|method|OptionalSubject ( FailureStrategy failureStrategy, Optional<T> optional, Function<? super T, ? extends S> valueAssertThatFunction)
 specifier|private
 name|OptionalSubject
 parameter_list|(
@@ -543,7 +543,7 @@ name|S
 argument_list|>
 name|valueAssertThatFunction
 decl_stmt|;
-DECL|method|OptionalSubjectFactory ( Function<? super T, ? extends S> valueAssertThatFunction)
+DECL|method|OptionalSubjectFactory (Function<? super T, ? extends S> valueAssertThatFunction)
 name|OptionalSubjectFactory
 parameter_list|(
 name|Function

@@ -316,34 +316,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -374,6 +346,34 @@ name|Collections
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|PersonIdent
+import|;
+end_import
+
 begin_comment
 comment|/** Creates the current database schema and populates initial code rows. */
 end_comment
@@ -384,11 +384,11 @@ specifier|public
 class|class
 name|SchemaCreator
 block|{
+DECL|field|site_path
 annotation|@
 name|SitePath
 specifier|private
 specifier|final
-DECL|field|site_path
 name|Path
 name|site_path
 decl_stmt|;
@@ -434,7 +434,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaCreator (SitePaths site, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic)
+DECL|method|SchemaCreator ( SitePaths site, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic)
 specifier|public
 name|SchemaCreator
 parameter_list|(
@@ -477,7 +477,7 @@ name|ic
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SchemaCreator (@itePath Path site, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic)
+DECL|method|SchemaCreator ( @itePath Path site, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst, GroupIndexCollection ic)
 specifier|public
 name|SchemaCreator
 parameter_list|(

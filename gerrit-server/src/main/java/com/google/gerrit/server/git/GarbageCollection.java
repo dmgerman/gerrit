@@ -192,6 +192,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -338,46 +378,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|PrintWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Properties
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_class
 DECL|class|GarbageCollection
 specifier|public
@@ -463,7 +463,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|GarbageCollection (GitRepositoryManager repoManager, GarbageCollectionQueue gcQueue, GcConfig config, DynamicSet<GarbageCollectorListener> listeners)
+DECL|method|GarbageCollection ( GitRepositoryManager repoManager, GarbageCollectionQueue gcQueue, GcConfig config, DynamicSet<GarbageCollectorListener> listeners)
 name|GarbageCollection
 parameter_list|(
 name|GitRepositoryManager
@@ -561,7 +561,7 @@ name|writer
 argument_list|)
 return|;
 block|}
-DECL|method|run (List<Project.NameKey> projectNames, boolean aggressive, PrintWriter writer)
+DECL|method|run ( List<Project.NameKey> projectNames, boolean aggressive, PrintWriter writer)
 specifier|public
 name|GarbageCollectionResult
 name|run
@@ -1091,7 +1091,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|logGcConfiguration (Project.NameKey projectName, Repository repo, boolean aggressive)
+DECL|method|logGcConfiguration ( Project.NameKey projectName, Repository repo, boolean aggressive)
 specifier|private
 specifier|static
 name|void

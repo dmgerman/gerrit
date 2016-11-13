@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Indicates that the commit is already contained in destination branch.  * Either the commit itself is in the source tree, or the content is merged  */
+comment|/**  * Indicates that the commit is already contained in destination branch. Either the commit itself is  * in the source tree, or the content is merged  */
 end_comment
 
 begin_class

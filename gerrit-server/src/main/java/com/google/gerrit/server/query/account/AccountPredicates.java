@@ -684,7 +684,7 @@ DECL|method|AccountPredicates ()
 specifier|private
 name|AccountPredicates
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

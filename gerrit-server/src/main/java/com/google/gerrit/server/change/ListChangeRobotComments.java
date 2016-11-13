@@ -265,7 +265,7 @@ name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListChangeRobotComments (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
+DECL|method|ListChangeRobotComments ( Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
 name|ListChangeRobotComments
 parameter_list|(
 name|Provider
@@ -316,7 +316,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply ( ChangeResource rsrc)
+DECL|method|apply (ChangeResource rsrc)
 specifier|public
 name|Map
 argument_list|<

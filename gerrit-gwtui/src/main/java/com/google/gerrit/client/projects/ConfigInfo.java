@@ -697,7 +697,7 @@ DECL|method|ConfigInfo ()
 specifier|protected
 name|ConfigInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|CommentLinkInfo
 specifier|static
 class|class
@@ -741,7 +741,7 @@ DECL|method|CommentLinkInfo ()
 specifier|protected
 name|CommentLinkInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|InheritedBooleanInfo
 specifier|public
@@ -844,7 +844,7 @@ DECL|method|InheritedBooleanInfo ()
 specifier|protected
 name|InheritedBooleanInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|MaxObjectSizeLimitInfo
 specifier|public
@@ -885,7 +885,7 @@ DECL|method|MaxObjectSizeLimitInfo ()
 specifier|protected
 name|MaxObjectSizeLimitInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|ConfigParameterInfo
 specifier|public
@@ -1007,7 +1007,7 @@ DECL|method|ConfigParameterInfo ()
 specifier|protected
 name|ConfigParameterInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|ConfigParameterValue
 specifier|public
@@ -1122,7 +1122,7 @@ DECL|method|ConfigParameterValue ()
 specifier|protected
 name|ConfigParameterValue
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

@@ -80,26 +80,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -189,6 +169,26 @@ operator|.
 name|util
 operator|.
 name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -540,7 +540,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|runMethod0 (Class<?> klazz, Object instance, String name, Class<?>[] sig, Object[] args)
+DECL|method|runMethod0 ( Class<?> klazz, Object instance, String name, Class<?>[] sig, Object[] args)
 specifier|protected
 name|Object
 name|runMethod0
@@ -618,7 +618,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|runMethod (Class<?> klazz, Object instance, String name, Class<?>[] sig, Object[] args)
+DECL|method|runMethod ( Class<?> klazz, Object instance, String name, Class<?>[] sig, Object[] args)
 specifier|protected
 name|Object
 name|runMethod
@@ -730,12 +730,12 @@ argument_list|,
 operator|new
 name|Class
 index|[]
-block|{ }
+block|{}
 argument_list|,
 operator|new
 name|Object
 index|[]
-block|{ }
+block|{}
 argument_list|)
 return|;
 block|}
@@ -839,7 +839,7 @@ name|getVersion
 argument_list|()
 block|,
 literal|null
-block|, }
+block|,         }
 argument_list|)
 expr_stmt|;
 block|}

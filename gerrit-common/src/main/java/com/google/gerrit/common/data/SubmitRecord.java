@@ -123,7 +123,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Describes the state required to submit a change.  */
+comment|/** Describes the state required to submit a change. */
 end_comment
 
 begin_class
@@ -132,7 +132,7 @@ specifier|public
 class|class
 name|SubmitRecord
 block|{
-DECL|method|findOkRecord ( Collection<SubmitRecord> in)
+DECL|method|findOkRecord (Collection<SubmitRecord> in)
 specifier|public
 specifier|static
 name|Optional
@@ -208,7 +208,7 @@ comment|/** The change was submitted bypassing submit rules. */
 DECL|enumConstant|FORCED
 name|FORCED
 block|,
-comment|/**      * An internal server error occurred preventing computation.      *<p>      * Additional detail may be available in {@link SubmitRecord#errorMessage}.      */
+comment|/**      * An internal server error occurred preventing computation.      *      *<p>Additional detail may be available in {@link SubmitRecord#errorMessage}.      */
 DECL|enumConstant|RULE_ERROR
 name|RULE_ERROR
 block|}
@@ -243,23 +243,23 @@ name|Status
 block|{
 comment|// NOTE: These values are persisted in the index, so deleting or changing
 comment|// the name of any values requires a schema upgrade.
-comment|/**        * This label provides what is necessary for submission.        *<p>        * If provided, {@link Label#appliedBy} describes the user account        * that applied this label to the change.        */
+comment|/**        * This label provides what is necessary for submission.        *        *<p>If provided, {@link Label#appliedBy} describes the user account that applied this label        * to the change.        */
 DECL|enumConstant|OK
 name|OK
 block|,
-comment|/**        * This label prevents the change from being submitted.        *<p>        * If provided, {@link Label#appliedBy} describes the user account        * that applied this label to the change.        */
+comment|/**        * This label prevents the change from being submitted.        *        *<p>If provided, {@link Label#appliedBy} describes the user account that applied this label        * to the change.        */
 DECL|enumConstant|REJECT
 name|REJECT
 block|,
-comment|/**        * The label is required for submission, but has not been satisfied.        */
+comment|/** The label is required for submission, but has not been satisfied. */
 DECL|enumConstant|NEED
 name|NEED
 block|,
-comment|/**        * The label may be set, but it's neither necessary for submission        * nor does it block submission if set.        */
+comment|/**        * The label may be set, but it's neither necessary for submission nor does it block        * submission if set.        */
 DECL|enumConstant|MAY
 name|MAY
 block|,
-comment|/**        * The label is required for submission, but is impossible to complete.        * The likely cause is access has not been granted correctly by the        * project owner or site administrator.        */
+comment|/**        * The label is required for submission, but is impossible to complete. The likely cause is        * access has not been granted correctly by the project owner or site administrator.        */
 DECL|enumConstant|IMPOSSIBLE
 name|IMPOSSIBLE
 block|}

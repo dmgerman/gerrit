@@ -383,7 +383,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Effective permissions applied to a reference in a project.  *<p>  * A collection may be user specific if a matching {@link AccessSection} uses  * "${username}" in its name. The permissions granted in that section may only  * be granted to the username that appears in the reference name, and also only  * if the user is a member of the relevant group.  */
+comment|/**  * Effective permissions applied to a reference in a project.  *  *<p>A collection may be user specific if a matching {@link AccessSection} uses "${username}" in  * its name. The permissions granted in that section may only be granted to the username that  * appears in the reference name, and also only if the user is a member of the relevant group.  */
 end_comment
 
 begin_class
@@ -422,8 +422,8 @@ operator|=
 name|sorter
 expr_stmt|;
 block|}
-comment|/**      * Get all permissions that apply to a reference.      *      * @param matcherList collection of sections that should be considered, in      *        priority order (project specific definitions must appear before      *        inherited ones).      * @param ref reference being accessed.      * @param user if the reference is a per-user reference, e.g. access      *        sections using the parameter variable "${username}" will have      *        each username inserted into them to see if they apply to the      *        reference named by {@code ref}.      * @return map of permissions that apply to this reference, keyed by      *         permission name.      */
-DECL|method|filter (Iterable<SectionMatcher> matcherList, String ref, CurrentUser user)
+comment|/**      * Get all permissions that apply to a reference.      *      * @param matcherList collection of sections that should be considered, in priority order      *     (project specific definitions must appear before inherited ones).      * @param ref reference being accessed.      * @param user if the reference is a per-user reference, e.g. access sections using the      *     parameter variable "${username}" will have each username inserted into them to see if      *     they apply to the reference named by {@code ref}.      * @return map of permissions that apply to this reference, keyed by permission name.      */
+DECL|method|filter ( Iterable<SectionMatcher> matcherList, String ref, CurrentUser user)
 name|PermissionCollection
 name|filter
 parameter_list|(
@@ -1063,7 +1063,7 @@ specifier|final
 name|boolean
 name|perUser
 decl_stmt|;
-DECL|method|PermissionCollection (Map<String, List<PermissionRule>> rules, Map<String, List<PermissionRule>> overridden, Map<PermissionRule, ProjectRef> ruleProps, boolean perUser)
+DECL|method|PermissionCollection ( Map<String, List<PermissionRule>> rules, Map<String, List<PermissionRule>> overridden, Map<PermissionRule, ProjectRef> ruleProps, boolean perUser)
 specifier|private
 name|PermissionCollection
 parameter_list|(
@@ -1126,7 +1126,7 @@ operator|=
 name|perUser
 expr_stmt|;
 block|}
-comment|/**    * @return true if a "${username}" pattern might need to be expanded to build    *         this collection, making the results user specific.    */
+comment|/**    * @return true if a "${username}" pattern might need to be expanded to build this collection,    *     making the results user specific.    */
 DECL|method|isUserSpecific ()
 specifier|public
 name|boolean
@@ -1137,7 +1137,7 @@ return|return
 name|perUser
 return|;
 block|}
-comment|/**    * Obtain all permission rules for a given type of permission.    *    * @param permissionName type of permission.    * @return all rules that apply to this reference, for any group. Never null;    *         the empty list is returned when there are no rules for the requested    *         permission name.    */
+comment|/**    * Obtain all permission rules for a given type of permission.    *    * @param permissionName type of permission.    * @return all rules that apply to this reference, for any group. Never null; the empty list is    *     returned when there are no rules for the requested permission name.    */
 DECL|method|getPermission (String permissionName)
 specifier|public
 name|List
@@ -1227,7 +1227,7 @@ name|rule
 argument_list|)
 return|;
 block|}
-comment|/**    * Obtain all declared permission rules that match the reference.    *    * @return all rules. The collection will iterate a permission if it was    *         declared in the project configuration, either directly or    *         inherited. If the project owner did not use a known permission (for    *         example {@link Permission#FORGE_SERVER}, then it will not be    *         represented in the result even if {@link #getPermission(String)}    *         returns an empty list for the same permission.    */
+comment|/**    * Obtain all declared permission rules that match the reference.    *    * @return all rules. The collection will iterate a permission if it was declared in the project    *     configuration, either directly or inherited. If the project owner did not use a known    *     permission (for example {@link Permission#FORGE_SERVER}, then it will not be represented in    *     the result even if {@link #getPermission(String)} returns an empty list for the same    *     permission.    */
 DECL|method|getDeclaredPermissions ()
 specifier|public
 name|Iterable
@@ -1277,9 +1277,9 @@ name|String
 name|permissionName
 parameter_list|()
 function_decl|;
-DECL|method|group ()
 annotation|@
 name|Nullable
+DECL|method|group ()
 specifier|public
 specifier|abstract
 name|AccountGroup
@@ -1288,7 +1288,7 @@ name|UUID
 name|group
 parameter_list|()
 function_decl|;
-DECL|method|create (AccessSection section, Permission permission, @Nullable PermissionRule rule)
+DECL|method|create ( AccessSection section, Permission permission, @Nullable PermissionRule rule)
 specifier|static
 name|SeenRule
 name|create

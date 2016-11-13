@@ -298,7 +298,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|onAction ( ChangeInfo change, ActionInfo action, ActionButton button)
+DECL|method|onAction (ChangeInfo change, ActionInfo action, ActionButton button)
 specifier|public
 specifier|static
 name|void
@@ -446,7 +446,7 @@ DECL|method|ChangeGlue ()
 specifier|private
 name|ChangeGlue
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

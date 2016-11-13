@@ -282,18 +282,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Argument
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -312,8 +300,20 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Argument
+import|;
+end_import
+
 begin_comment
-comment|/**  * Implements a command that allows the user to see the members of a group.  */
+comment|/** Implements a command that allows the user to see the members of a group. */
 end_comment
 
 begin_class
@@ -339,9 +339,9 @@ name|ListMembersCommand
 extends|extends
 name|SshCommand
 block|{
+DECL|field|impl
 annotation|@
 name|Inject
-DECL|field|impl
 name|ListMembersCommandImpl
 name|impl
 decl_stmt|;
@@ -415,7 +415,7 @@ name|groupCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListMembersCommandImpl (GroupCache groupCache, Factory groupDetailFactory, AccountLoader.Factory accountLoaderFactory)
+DECL|method|ListMembersCommandImpl ( GroupCache groupCache, Factory groupDetailFactory, AccountLoader.Factory accountLoaderFactory)
 specifier|protected
 name|ListMembersCommandImpl
 parameter_list|(

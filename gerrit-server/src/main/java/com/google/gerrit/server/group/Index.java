@@ -250,7 +250,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|groupCache
 specifier|private
 specifier|final

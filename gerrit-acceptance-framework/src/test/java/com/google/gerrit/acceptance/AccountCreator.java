@@ -508,7 +508,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator (SchemaFactory<ReviewDb> schema, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountIndexer indexer)
+DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountIndexer indexer)
 name|AccountCreator
 parameter_list|(
 name|SchemaFactory
@@ -586,7 +586,7 @@ operator|=
 name|indexer
 expr_stmt|;
 block|}
-DECL|method|create (String username, String email, String fullName, String... groups)
+DECL|method|create ( String username, String email, String fullName, String... groups)
 specifier|public
 specifier|synchronized
 name|TestAccount

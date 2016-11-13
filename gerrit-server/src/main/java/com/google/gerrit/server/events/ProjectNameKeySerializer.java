@@ -157,7 +157,7 @@ argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|serialize (Project.NameKey project, Type typeOfSrc, JsonSerializationContext context)
+DECL|method|serialize ( Project.NameKey project, Type typeOfSrc, JsonSerializationContext context)
 specifier|public
 name|JsonElement
 name|serialize

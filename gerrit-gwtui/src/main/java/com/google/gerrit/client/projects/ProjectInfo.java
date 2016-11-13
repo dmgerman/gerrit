@@ -303,7 +303,7 @@ DECL|method|ProjectInfo ()
 specifier|protected
 name|ProjectInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

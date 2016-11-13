@@ -70,6 +70,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|codahale
+operator|.
+name|metrics
+operator|.
+name|Metric
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|google
 operator|.
 name|gerrit
@@ -107,18 +119,6 @@ operator|.
 name|inject
 operator|.
 name|TypeLiteral
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|codahale
-operator|.
-name|metrics
-operator|.
-name|Metric
 import|;
 end_import
 

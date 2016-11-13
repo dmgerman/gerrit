@@ -119,7 +119,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-DECL|method|create (org.kohsuke.args4j.CmdLineParser cmdLineParser, OptionDef optionDef, Setter<T> setter)
+DECL|method|create ( org.kohsuke.args4j.CmdLineParser cmdLineParser, OptionDef optionDef, Setter<T> setter)
 name|OptionHandler
 argument_list|<
 name|T

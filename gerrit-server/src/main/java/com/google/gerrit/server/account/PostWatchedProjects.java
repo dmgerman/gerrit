@@ -296,20 +296,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -368,6 +354,20 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -423,7 +423,7 @@ name|watchConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostWatchedProjects (Provider<IdentifiedUser> self, GetWatchedProjects getWatchedProjects, ProjectsCollection projectsCollection, AccountCache accountCache, WatchConfig.Accessor watchConfig)
+DECL|method|PostWatchedProjects ( Provider<IdentifiedUser> self, GetWatchedProjects getWatchedProjects, ProjectsCollection projectsCollection, AccountCache accountCache, WatchConfig.Accessor watchConfig)
 specifier|public
 name|PostWatchedProjects
 parameter_list|(
@@ -581,7 +581,7 @@ name|rsrc
 argument_list|)
 return|;
 block|}
-DECL|method|asMap ( List<ProjectWatchInfo> input)
+DECL|method|asMap (List<ProjectWatchInfo> input)
 specifier|private
 name|Map
 argument_list|<

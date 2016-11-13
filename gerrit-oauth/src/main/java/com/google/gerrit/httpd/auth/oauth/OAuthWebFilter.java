@@ -270,30 +270,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|Document
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|Element
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -436,6 +412,30 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|w3c
+operator|.
+name|dom
+operator|.
+name|Document
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|w3c
+operator|.
+name|dom
+operator|.
+name|Element
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -494,7 +494,7 @@ name|ssoProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OAuthWebFilter (@anonicalWebUrl @ullable Provider<String> urlProvider, DynamicMap<OAuthServiceProvider> oauthServiceProviders, Provider<OAuthSession> oauthSessionProvider, SiteHeaderFooter header)
+DECL|method|OAuthWebFilter ( @anonicalWebUrl @ullable Provider<String> urlProvider, DynamicMap<OAuthServiceProvider> oauthServiceProviders, Provider<OAuthSession> oauthSessionProvider, SiteHeaderFooter header)
 name|OAuthWebFilter
 parameter_list|(
 annotation|@
@@ -572,7 +572,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
@@ -869,7 +869,7 @@ name|providerId
 argument_list|)
 throw|;
 block|}
-DECL|method|selectProvider (HttpServletRequest req, HttpServletResponse res, @Nullable String errorMessage)
+DECL|method|selectProvider ( HttpServletRequest req, HttpServletResponse res, @Nullable String errorMessage)
 specifier|private
 name|void
 name|selectProvider

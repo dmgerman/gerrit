@@ -103,7 +103,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on a boolean indicating whether signed push is enabled on the server.  */
+comment|/** Marker on a boolean indicating whether signed push is enabled on the server. */
 end_comment
 
 begin_annotation_defn
@@ -118,7 +118,7 @@ DECL|annotation|EnableSignedPush
 specifier|public
 annotation_defn|@interface
 name|EnableSignedPush
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

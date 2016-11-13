@@ -158,6 +158,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -167,16 +177,6 @@ operator|.
 name|lib
 operator|.
 name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
 import|;
 end_import
 
@@ -190,7 +190,7 @@ name|GroupSetProvider
 block|{
 annotation|@
 name|Inject
-DECL|method|GitReceivePackGroupsProvider (GroupBackend gb, @GerritServerConfig Config config, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx)
+DECL|method|GitReceivePackGroupsProvider ( GroupBackend gb, @GerritServerConfig Config config, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx)
 specifier|public
 name|GitReceivePackGroupsProvider
 parameter_list|(

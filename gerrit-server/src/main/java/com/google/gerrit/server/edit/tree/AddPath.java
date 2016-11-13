@@ -125,7 +125,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@code PathEdit} which adds a file path to the index. This operation is the  * counterpart to {@link org.eclipse.jgit.dircache.DirCacheEditor.DeletePath}.  */
+comment|/**  * A {@code PathEdit} which adds a file path to the index. This operation is the counterpart to  * {@link org.eclipse.jgit.dircache.DirCacheEditor.DeletePath}.  */
 end_comment
 
 begin_class

@@ -144,7 +144,7 @@ parameter_list|(
 name|KeyPressEvent
 name|event
 parameter_list|)
-block|{   }
+block|{}
 block|}
 end_class
 

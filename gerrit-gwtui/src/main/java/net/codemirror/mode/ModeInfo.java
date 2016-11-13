@@ -1102,7 +1102,7 @@ name|I
 operator|.
 name|z80
 argument_list|()
-block|,     }
+block|,         }
 argument_list|)
 expr_stmt|;
 name|alias
@@ -1708,7 +1708,7 @@ DECL|method|ModeInfo ()
 specifier|protected
 name|ModeInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|gerrit_commit ()
 specifier|private
 specifier|static

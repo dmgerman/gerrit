@@ -184,6 +184,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -193,16 +203,6 @@ operator|.
 name|diff
 operator|.
 name|Edit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -218,12 +218,12 @@ enum|enum
 name|DisplayMethod
 block|{
 DECL|enumConstant|NONE
-DECL|enumConstant|DIFF
-DECL|enumConstant|IMG
 name|NONE
 block|,
+DECL|enumConstant|DIFF
 name|DIFF
 block|,
+DECL|enumConstant|IMG
 name|IMG
 block|}
 DECL|enum|FileMode
@@ -232,12 +232,12 @@ enum|enum
 name|FileMode
 block|{
 DECL|enumConstant|FILE
-DECL|enumConstant|SYMLINK
-DECL|enumConstant|GITLINK
 name|FILE
 block|,
+DECL|enumConstant|SYMLINK
 name|SYMLINK
 block|,
+DECL|enumConstant|GITLINK
 name|GITLINK
 block|}
 DECL|field|changeId
@@ -375,7 +375,7 @@ specifier|transient
 name|String
 name|commitIdB
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final DiffPreferencesInfo dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final String mta, final String mtb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt, boolean bin, final String cma, final String cmb)
+DECL|method|PatchScript ( final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final DiffPreferencesInfo dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final String mta, final String mtb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt, boolean bin, final String cma, final String cmb)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -587,7 +587,7 @@ DECL|method|PatchScript ()
 specifier|protected
 name|PatchScript
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|getChangeId ()
 specifier|public
 name|Change

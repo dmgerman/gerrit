@@ -296,7 +296,7 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupDetailFactory (ReviewDb db, GroupControl.Factory groupControl, GroupCache groupCache, @Assisted AccountGroup.Id groupId)
+DECL|method|GroupDetailFactory ( ReviewDb db, GroupControl.Factory groupControl, GroupCache groupCache, @Assisted AccountGroup.Id groupId)
 name|GroupDetailFactory
 parameter_list|(
 name|ReviewDb

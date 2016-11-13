@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on {@link com.google.gwtorm.server.SchemaFactory} implementation  * that talks to the underlying traditional {@link  * com.google.gerrit.reviewdb.server.ReviewDb} database.  *<p>  * During the migration to NoteDb, the actual {@code ReviewDb} will be a wrapper  * with certain tables enabled/disabled; this marker goes on the low-level  * implementation that has all tables.  */
+comment|/**  * Marker on {@link com.google.gwtorm.server.SchemaFactory} implementation that talks to the  * underlying traditional {@link com.google.gerrit.reviewdb.server.ReviewDb} database.  *  *<p>During the migration to NoteDb, the actual {@code ReviewDb} will be a wrapper with certain  * tables enabled/disabled; this marker goes on the low-level implementation that has all tables.  */
 end_comment
 
 begin_annotation_defn
@@ -120,7 +120,7 @@ DECL|annotation|ReviewDbFactory
 specifier|public
 annotation_defn|@interface
 name|ReviewDbFactory
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

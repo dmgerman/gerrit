@@ -352,7 +352,7 @@ specifier|final
 name|MonitorImpl
 name|impl
 decl_stmt|;
-comment|/**    * @return true if there has been keyboard and/or mouse activity in recent    *         enough history to believe a user is still controlling this session.    */
+comment|/**    * @return true if there has been keyboard and/or mouse activity in recent enough history to    *     believe a user is still controlling this session.    */
 DECL|method|isActive ()
 specifier|public
 specifier|static
@@ -370,7 +370,7 @@ operator|.
 name|recent
 return|;
 block|}
-DECL|method|addValueChangeHandler ( ValueChangeHandler<Boolean> handler)
+DECL|method|addValueChangeHandler (ValueChangeHandler<Boolean> handler)
 specifier|public
 specifier|static
 name|HandlerRegistration
@@ -446,7 +446,7 @@ DECL|method|UserActivityMonitor ()
 specifier|private
 name|UserActivityMonitor
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|MonitorImpl
 specifier|private
 specifier|static
@@ -638,7 +638,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addValueChangeHandler ( ValueChangeHandler<Boolean> handler)
+DECL|method|addValueChangeHandler (ValueChangeHandler<Boolean> handler)
 specifier|public
 name|HandlerRegistration
 name|addValueChangeHandler

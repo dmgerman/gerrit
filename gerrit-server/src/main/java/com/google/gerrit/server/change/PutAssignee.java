@@ -465,7 +465,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutAssignee (SetAssigneeOp.Factory assigneeFactory, BatchUpdate.Factory batchUpdateFactory, Provider<ReviewDb> db, PostReviewers postReviewers, AccountLoader.Factory accountLoaderFactory)
+DECL|method|PutAssignee ( SetAssigneeOp.Factory assigneeFactory, BatchUpdate.Factory batchUpdateFactory, Provider<ReviewDb> db, PostReviewers postReviewers, AccountLoader.Factory accountLoaderFactory)
 name|PutAssignee
 parameter_list|(
 name|SetAssigneeOp

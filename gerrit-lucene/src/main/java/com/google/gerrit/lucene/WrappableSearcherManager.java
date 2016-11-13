@@ -18,6 +18,16 @@ end_comment
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -142,18 +152,8 @@ name|Directory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
-comment|/**  * Utility class to safely share {@link IndexSearcher} instances across multiple  * threads, while periodically reopening. This class ensures each searcher is  * closed only once all threads have finished using it.  *  *<p>  * Use {@link #acquire} to obtain the current searcher, and {@link #release} to  * release it, like this:  *  *<pre class="prettyprint">  * IndexSearcher s = manager.acquire();  * try {  *   // Do searching, doc retrieval, etc. with s  * } finally {  *   manager.release(s);  * }  * // Do not use s after this!  * s = null;  *</pre>  *  *<p>  * In addition you should periodically call {@link #maybeRefresh}. While it's  * possible to call this just before running each query, this is discouraged  * since it penalizes the unlucky queries that need to refresh. It's better to use  * a separate background thread, that periodically calls {@link #maybeRefresh}. Finally,  * be sure to call {@link #close} once you are done.  *  * @see SearcherFactory  *  * @lucene.experimental  */
+comment|/**  * Utility class to safely share {@link IndexSearcher} instances across multiple threads, while  * periodically reopening. This class ensures each searcher is closed only once all threads have  * finished using it.  *  *<p>Use {@link #acquire} to obtain the current searcher, and {@link #release} to release it, like  * this:  *  *<pre class="prettyprint">  * IndexSearcher s = manager.acquire();  * try {  *   // Do searching, doc retrieval, etc. with s  * } finally {  *   manager.release(s);  * }  * // Do not use s after this!  * s = null;  *</pre>  *  *<p>In addition you should periodically call {@link #maybeRefresh}. While it's possible to call  * this just before running each query, this is discouraged since it penalizes the unlucky queries  * that need to refresh. It's better to use a separate background thread, that periodically calls  * {@link #maybeRefresh}. Finally, be sure to call {@link #close} once you are done.  *  * @see SearcherFactory  * @lucene.experimental  */
 end_comment
 
 begin_comment
@@ -193,8 +193,8 @@ specifier|final
 name|SearcherFactory
 name|searcherFactory
 decl_stmt|;
-comment|/**    * Creates and returns a new SearcherManager from the given    * {@link IndexWriter}.    *    * @param writer    *          the IndexWriter to open the IndexReader from.    * @param applyAllDeletes    *          If<code>true</code>, all buffered deletes will be applied (made    *          visible) in the {@link IndexSearcher} / {@link DirectoryReader}.    *          If<code>false</code>, the deletes may or may not be applied, but    *          remain buffered (in IndexWriter) so that they will be applied in    *          the future. Applying deletes can be costly, so if your app can    *          tolerate deleted documents being returned you might gain some    *          performance by passing<code>false</code>. See    *          {@link DirectoryReader#openIfChanged(DirectoryReader, IndexWriter, boolean)}.    * @param searcherFactory    *          An optional {@link SearcherFactory}. Pass<code>null</code> if you    *          don't require the searcher to be warmed before going live or other    *          custom behavior.    *    * @throws IOException if there is a low-level I/O error    */
-DECL|method|WrappableSearcherManager (IndexWriter writer, boolean applyAllDeletes, SearcherFactory searcherFactory)
+comment|/**    * Creates and returns a new SearcherManager from the given {@link IndexWriter}.    *    * @param writer the IndexWriter to open the IndexReader from.    * @param applyAllDeletes If<code>true</code>, all buffered deletes will be applied (made    *     visible) in the {@link IndexSearcher} / {@link DirectoryReader}. If<code>false</code>, the    *     deletes may or may not be applied, but remain buffered (in IndexWriter) so that they will    *     be applied in the future. Applying deletes can be costly, so if your app can tolerate    *     deleted documents being returned you might gain some performance by passing<code>false    *</code>. See {@link DirectoryReader#openIfChanged(DirectoryReader, IndexWriter, boolean)}.    * @param searcherFactory An optional {@link SearcherFactory}. Pass<code>null</code> if you don't    *     require the searcher to be warmed before going live or other custom behavior.    * @throws IOException if there is a low-level I/O error    */
+DECL|method|WrappableSearcherManager ( IndexWriter writer, boolean applyAllDeletes, SearcherFactory searcherFactory)
 name|WrappableSearcherManager
 parameter_list|(
 name|IndexWriter
@@ -246,7 +246,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Creates and returns a new SearcherManager from the given {@link Directory}.    * @param dir the directory to open the DirectoryReader on.    * @param searcherFactory An optional {@link SearcherFactory}. Pass    *<code>null</code> if you don't require the searcher to be warmed    *        before going live or other custom behavior.    *    * @throws IOException if there is a low-level I/O error    */
+comment|/**    * Creates and returns a new SearcherManager from the given {@link Directory}.    *    * @param dir the directory to open the DirectoryReader on.    * @param searcherFactory An optional {@link SearcherFactory}. Pass<code>null</code> if you don't    *     require the searcher to be warmed before going live or other custom behavior.    * @throws IOException if there is a low-level I/O error    */
 DECL|method|WrappableSearcherManager (Directory dir, SearcherFactory searcherFactory)
 name|WrappableSearcherManager
 parameter_list|(
@@ -294,7 +294,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Creates and returns a new SearcherManager from an existing {@link DirectoryReader}.  Note that    * this steals the incoming reference.    *    * @param reader the DirectoryReader.    * @param searcherFactory An optional {@link SearcherFactory}. Pass    *<code>null</code> if you don't require the searcher to be warmed    *        before going live or other custom behavior.    *    * @throws IOException if there is a low-level I/O error    */
+comment|/**    * Creates and returns a new SearcherManager from an existing {@link DirectoryReader}. Note that    * this steals the incoming reference.    *    * @param reader the DirectoryReader.    * @param searcherFactory An optional {@link SearcherFactory}. Pass<code>null</code> if you don't    *     require the searcher to be warmed before going live or other custom behavior.    * @throws IOException if there is a low-level I/O error    */
 DECL|method|WrappableSearcherManager (DirectoryReader reader, SearcherFactory searcherFactory)
 name|WrappableSearcherManager
 parameter_list|(
@@ -468,7 +468,7 @@ name|getRefCount
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns<code>true</code> if no changes have occured since this searcher    * ie. reader was opened, otherwise<code>false</code>.    * @see DirectoryReader#isCurrent()    */
+comment|/**    * Returns<code>true</code> if no changes have occured since this searcher ie. reader was opened,    * otherwise<code>false</code>.    *    * @see DirectoryReader#isCurrent()    */
 DECL|method|isSearcherCurrent ()
 specifier|public
 name|boolean
@@ -525,7 +525,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Expert: creates a searcher from the provided {@link    *  IndexReader} using the provided {@link    *  SearcherFactory}.  NOTE: this decRefs incoming reader    * on throwing an exception. */
+comment|/**    * Expert: creates a searcher from the provided {@link IndexReader} using the provided {@link    * SearcherFactory}. NOTE: this decRefs incoming reader on throwing an exception.    */
 annotation|@
 name|SuppressWarnings
 argument_list|(

@@ -589,7 +589,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getWatches ( ChangeQueryBuilder.Arguments args)
+DECL|method|getWatches (ChangeQueryBuilder.Arguments args)
 specifier|private
 specifier|static
 name|Collection

@@ -100,6 +100,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -112,18 +122,8 @@ name|StringUtils
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
 begin_comment
-comment|/**  * Order the Ref Pattern by the most specific. This sort is done by:  *<ul>  *<li>1 - The minor value of Levenshtein string distance between the branch  * name and the regex string shortest example. A shorter distance is a more  * specific match.  *<li>2 - Finites first, infinities after.  *<li>3 - Number of transitions.  More transitions is more specific.  *<li>4 - Length of the expression text.  *</ul>  *  * Levenshtein distance is a measure of the similarity between two strings.  * The distance is the number of deletions, insertions, or substitutions  * required to transform one string into another.  *  * For example, if given refs/heads/m* and refs/heads/*, the distances are 5  * and 6. It means that refs/heads/m* is more specific because it's closer to  * refs/heads/master than refs/heads/*.  *  * Another example could be refs/heads/* and refs/heads/[a-zA-Z]*, the  * distances are both 6. Both are infinite, but refs/heads/[a-zA-Z]* has more  * transitions, which after all turns it more specific.  */
+comment|/**  * Order the Ref Pattern by the most specific. This sort is done by:  *  *<ul>  *<li>1 - The minor value of Levenshtein string distance between the branch name and the regex  *       string shortest example. A shorter distance is a more specific match.  *<li>2 - Finites first, infinities after.  *<li>3 - Number of transitions. More transitions is more specific.  *<li>4 - Length of the expression text.  *</ul>  *  * Levenshtein distance is a measure of the similarity between two strings. The distance is the  * number of deletions, insertions, or substitutions required to transform one string into another.  *  *<p>For example, if given refs/heads/m* and refs/heads/*, the distances are 5 and 6. It means that  * refs/heads/m* is more specific because it's closer to refs/heads/master than refs/heads/*.  *  *<p>Another example could be refs/heads/* and refs/heads/[a-zA-Z]*, the distances are both 6. Both  * are infinite, but refs/heads/[a-zA-Z]* has more transitions, which after all turns it more  * specific.  */
 end_comment
 
 begin_class

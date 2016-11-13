@@ -73,12 +73,12 @@ enum|enum
 name|AccountFieldName
 block|{
 DECL|enumConstant|FULL_NAME
-DECL|enumConstant|USER_NAME
-DECL|enumConstant|REGISTER_NEW_EMAIL
 name|FULL_NAME
 block|,
+DECL|enumConstant|USER_NAME
 name|USER_NAME
 block|,
+DECL|enumConstant|REGISTER_NEW_EMAIL
 name|REGISTER_NEW_EMAIL
 block|}
 end_enum

@@ -403,7 +403,7 @@ name|put
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IncludedGroupsCollection (DynamicMap<RestView<IncludedGroupResource>> views, ListIncludedGroups list, GroupsCollection groupsCollection, Provider<ReviewDb> dbProvider, AddIncludedGroups put)
+DECL|method|IncludedGroupsCollection ( DynamicMap<RestView<IncludedGroupResource>> views, ListIncludedGroups list, GroupsCollection groupsCollection, Provider<ReviewDb> dbProvider, AddIncludedGroups put)
 name|IncludedGroupsCollection
 parameter_list|(
 name|DynamicMap

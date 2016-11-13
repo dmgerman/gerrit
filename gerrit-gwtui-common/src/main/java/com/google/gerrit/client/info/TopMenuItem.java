@@ -194,7 +194,7 @@ DECL|method|TopMenuItem ()
 specifier|protected
 name|TopMenuItem
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

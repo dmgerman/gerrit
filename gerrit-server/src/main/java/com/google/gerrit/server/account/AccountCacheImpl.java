@@ -410,40 +410,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -521,6 +487,40 @@ operator|.
 name|concurrent
 operator|.
 name|ExecutionException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -707,7 +707,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCacheImpl (@amedBYID_NAME) LoadingCache<Account.Id, AccountState> byId, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<AccountIndexer> indexer)
+DECL|method|AccountCacheImpl ( @amedBYID_NAME) LoadingCache<Account.Id, AccountState> byId, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<AccountIndexer> indexer)
 name|AccountCacheImpl
 parameter_list|(
 annotation|@
@@ -1169,7 +1169,7 @@ name|watchConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByIdLoader (SchemaFactory<ReviewDb> sf, GroupCache groupCache, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig)
+DECL|method|ByIdLoader ( SchemaFactory<ReviewDb> sf, GroupCache groupCache, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig)
 name|ByIdLoader
 parameter_list|(
 name|SchemaFactory

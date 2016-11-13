@@ -64,7 +64,7 @@ DECL|annotation|SecureStoreClassName
 specifier|public
 annotation_defn|@interface
 name|SecureStoreClassName
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

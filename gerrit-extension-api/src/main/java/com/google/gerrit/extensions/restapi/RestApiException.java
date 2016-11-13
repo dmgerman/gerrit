@@ -100,7 +100,7 @@ DECL|method|RestApiException ()
 specifier|public
 name|RestApiException
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|RestApiException (String msg)
 specifier|public
 name|RestApiException

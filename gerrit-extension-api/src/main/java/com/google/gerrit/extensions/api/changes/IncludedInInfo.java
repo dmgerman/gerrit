@@ -133,7 +133,7 @@ argument_list|>
 argument_list|>
 name|external
 decl_stmt|;
-DECL|method|IncludedInInfo (List<String> branches, List<String> tags, Map<String, Collection<String>> external)
+DECL|method|IncludedInInfo ( List<String> branches, List<String> tags, Map<String, Collection<String>> external)
 specifier|public
 name|IncludedInInfo
 parameter_list|(

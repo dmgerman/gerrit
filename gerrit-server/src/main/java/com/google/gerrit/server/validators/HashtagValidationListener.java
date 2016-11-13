@@ -109,7 +109,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to provide validation of hashtag changes.  */
+comment|/** Listener to provide validation of hashtag changes. */
 end_comment
 
 begin_interface

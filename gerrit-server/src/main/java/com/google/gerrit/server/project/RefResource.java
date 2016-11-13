@@ -89,7 +89,7 @@ name|control
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * @return the ref's name    */
+comment|/** @return the ref's name */
 DECL|method|getRef ()
 specifier|public
 specifier|abstract
@@ -97,7 +97,7 @@ name|String
 name|getRef
 parameter_list|()
 function_decl|;
-comment|/**    * @return the ref's revision    */
+comment|/** @return the ref's revision */
 DECL|method|getRevision ()
 specifier|public
 specifier|abstract

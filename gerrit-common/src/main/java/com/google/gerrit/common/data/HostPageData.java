@@ -112,7 +112,7 @@ specifier|public
 class|class
 name|HostPageData
 block|{
-comment|/**    * Name of the cookie in which the XSRF token is sent from the server to the    * client during host page bootstrapping.    */
+comment|/**    * Name of the cookie in which the XSRF token is sent from the server to the client during host    * page bootstrapping.    */
 DECL|field|XSRF_COOKIE_NAME
 specifier|public
 specifier|static
@@ -122,7 +122,7 @@ name|XSRF_COOKIE_NAME
 init|=
 literal|"XSRF_TOKEN"
 decl_stmt|;
-comment|/**    * Name of the HTTP header in which the client must send the XSRF token to the    * server on each request.    */
+comment|/**    * Name of the HTTP header in which the client must send the XSRF token to the server on each    * request.    */
 DECL|field|XSRF_HEADER_NAME
 specifier|public
 specifier|static

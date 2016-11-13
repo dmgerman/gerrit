@@ -1360,7 +1360,7 @@ name|isTrue
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertUnMergeable (String targetBranch, String source, String strategy, String... conflicts)
+DECL|method|assertUnMergeable ( String targetBranch, String source, String strategy, String... conflicts)
 specifier|private
 name|void
 name|assertUnMergeable

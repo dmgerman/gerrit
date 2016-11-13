@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Verbosity level of the commit message for submodule subscriptions.  */
+comment|/** Verbosity level of the commit message for submodule subscriptions. */
 end_comment
 
 begin_enum

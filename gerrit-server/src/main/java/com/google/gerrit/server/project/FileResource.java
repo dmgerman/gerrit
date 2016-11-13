@@ -160,6 +160,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -228,16 +238,6 @@ name|TreeWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|FileResource
 specifier|public
@@ -270,7 +270,7 @@ argument_list|>
 argument_list|()
 block|{}
 decl_stmt|;
-DECL|method|create (GitRepositoryManager repoManager, ProjectControl project, ObjectId rev, String path)
+DECL|method|create ( GitRepositoryManager repoManager, ProjectControl project, ObjectId rev, String path)
 specifier|public
 specifier|static
 name|FileResource

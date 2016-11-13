@@ -296,6 +296,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -305,18 +317,6 @@ operator|.
 name|lib
 operator|.
 name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
 import|;
 end_import
 
@@ -416,7 +416,7 @@ name|forwardingRemovalListenerFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DefaultCacheFactory (@erritServerConfig Config config, ForwardingRemovalListener.Factory forwardingRemovalListenerFactory)
+DECL|method|DefaultCacheFactory ( @erritServerConfig Config config, ForwardingRemovalListener.Factory forwardingRemovalListenerFactory)
 specifier|public
 name|DefaultCacheFactory
 parameter_list|(
@@ -484,7 +484,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|build ( CacheBinding<K, V> def, CacheLoader<K, V> loader)
+DECL|method|build (CacheBinding<K, V> def, CacheLoader<K, V> loader)
 specifier|public
 parameter_list|<
 name|K
@@ -535,7 +535,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|create ( CacheBinding<K, V> def, boolean unwrapValueHolder)
+DECL|method|create (CacheBinding<K, V> def, boolean unwrapValueHolder)
 parameter_list|<
 name|K
 parameter_list|,

@@ -191,7 +191,7 @@ DECL|method|Id ()
 specifier|protected
 name|Id
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|Id (final String id)
 specifier|public
 name|Id
@@ -291,7 +291,7 @@ DECL|method|System ()
 specifier|protected
 name|System
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|System (final String s)
 specifier|public
 name|System
@@ -558,7 +558,7 @@ DECL|method|TrackingId ()
 specifier|protected
 name|TrackingId
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|TrackingId (final Change.Id ch, final TrackingId.Id id, final TrackingId.System s)
 specifier|public
 name|TrackingId

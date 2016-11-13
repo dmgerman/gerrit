@@ -818,7 +818,7 @@ name|sshScope
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Propagator (SshScope sshScope, ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
+DECL|method|Propagator ( SshScope sshScope, ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
 name|Propagator
 parameter_list|(
 name|SshScope

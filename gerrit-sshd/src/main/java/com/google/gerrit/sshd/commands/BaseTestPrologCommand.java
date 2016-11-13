@@ -238,6 +238,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|ByteBuffer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -288,16 +298,6 @@ name|Option
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
-import|;
-end_import
-
 begin_class
 DECL|class|BaseTestPrologCommand
 specifier|abstract
@@ -315,16 +315,16 @@ operator|new
 name|TestSubmitRuleInput
 argument_list|()
 decl_stmt|;
+DECL|field|changes
 annotation|@
 name|Inject
-DECL|field|changes
 specifier|private
 name|ChangesCollection
 name|changes
 decl_stmt|;
+DECL|field|revisions
 annotation|@
 name|Inject
-DECL|field|revisions
 specifier|private
 name|Revisions
 name|revisions

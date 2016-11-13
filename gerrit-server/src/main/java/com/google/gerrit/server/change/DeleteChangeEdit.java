@@ -258,7 +258,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|editUtil
 specifier|private
 specifier|final

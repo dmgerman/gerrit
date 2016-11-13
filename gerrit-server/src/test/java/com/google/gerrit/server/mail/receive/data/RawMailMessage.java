@@ -99,7 +99,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for all email parsing tests.  */
+comment|/** Base class for all email parsing tests. */
 end_comment
 
 begin_class

@@ -224,9 +224,9 @@ return|return
 name|cfg
 return|;
 block|}
+DECL|field|emailTokenVerifier
 annotation|@
 name|Inject
-DECL|field|emailTokenVerifier
 specifier|private
 name|EmailTokenVerifier
 name|emailTokenVerifier

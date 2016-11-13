@@ -582,32 +582,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -704,6 +678,32 @@ name|DataSource
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
+import|;
+end_import
+
 begin_class
 DECL|class|SiteProgram
 specifier|public
@@ -773,7 +773,7 @@ DECL|method|SiteProgram ()
 specifier|protected
 name|SiteProgram
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|SiteProgram (Path sitePath)
 specifier|protected
 name|SiteProgram
@@ -895,7 +895,7 @@ argument_list|)
 return|;
 block|}
 comment|/** @return provides database connectivity and site path. */
-DECL|method|createDbInjector (final boolean enableMetrics, final DataSourceProvider.Context context)
+DECL|method|createDbInjector ( final boolean enableMetrics, final DataSourceProvider.Context context)
 specifier|protected
 name|Injector
 name|createDbInjector

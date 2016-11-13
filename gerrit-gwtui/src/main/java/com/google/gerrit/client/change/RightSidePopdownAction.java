@@ -251,7 +251,7 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|RightSidePopdownAction ( ChangeScreen.Style style, UIObject relativeTo, Widget button)
+DECL|method|RightSidePopdownAction (ChangeScreen.Style style, UIObject relativeTo, Widget button)
 name|RightSidePopdownAction
 parameter_list|(
 name|ChangeScreen

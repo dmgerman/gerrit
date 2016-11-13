@@ -80,6 +80,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|joda
@@ -87,16 +97,6 @@ operator|.
 name|time
 operator|.
 name|DateTimeUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
 import|;
 end_import
 
@@ -176,7 +176,7 @@ DECL|method|TimeUtil ()
 specifier|private
 name|TimeUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

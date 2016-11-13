@@ -578,7 +578,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Set the inner HTML of a table cell. */
-DECL|method|set (final T t, final int row, final int col, final SafeHtml str)
+DECL|method|set ( final T t, final int row, final int col, final SafeHtml str)
 specifier|public
 specifier|static
 parameter_list|<
@@ -707,7 +707,7 @@ literal|"<a href=\"$1\" target=\"_blank\" rel=\"nofollow\">$1</a>"
 argument_list|)
 return|;
 block|}
-comment|/**    * Apply {@link #linkify()}, and "\n\n" to&lt;p&gt;.    *<p>    * Lines that start with whitespace are assumed to be preformatted, and are    * formatted by the {@link SafeHtmlCss#wikiPreFormat()} CSS class.    */
+comment|/**    * Apply {@link #linkify()}, and "\n\n" to&lt;p&gt;.    *    *<p>Lines that start with whitespace are assumed to be preformatted, and are formatted by the    * {@link SafeHtmlCss#wikiPreFormat()} CSS class.    */
 DECL|method|wikify ()
 specifier|public
 name|SafeHtml
@@ -1357,7 +1357,7 @@ literal|"* "
 argument_list|)
 return|;
 block|}
-comment|/**    * Replace first occurrence of {@code regex} with {@code repl} .    *<p>    *<b>WARNING:</b> This replacement is being performed against an otherwise    * safe HTML string. The caller must ensure that the replacement does not    * introduce cross-site scripting attack entry points.    *    * @param regex regular expression pattern to match the substring with.    * @param repl replacement expression. Capture groups within    *        {@code regex} can be referenced with {@code $<i>n</i>}.    * @return a new string, after the replacement has been made.    */
+comment|/**    * Replace first occurrence of {@code regex} with {@code repl} .    *    *<p><b>WARNING:</b> This replacement is being performed against an otherwise safe HTML string.    * The caller must ensure that the replacement does not introduce cross-site scripting attack    * entry points.    *    * @param regex regular expression pattern to match the substring with.    * @param repl replacement expression. Capture groups within {@code regex} can be referenced with    *     {@code $<i>n</i>}.    * @return a new string, after the replacement has been made.    */
 DECL|method|replaceFirst (final String regex, final String repl)
 specifier|public
 name|SafeHtml
@@ -1388,7 +1388,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Replace each occurrence of {@code regex} with {@code repl} .    *<p>    *<b>WARNING:</b> This replacement is being performed against an otherwise    * safe HTML string. The caller must ensure that the replacement does not    * introduce cross-site scripting attack entry points.    *    * @param regex regular expression pattern to match substrings with.    * @param repl replacement expression. Capture groups within    *        {@code regex} can be referenced with {@code $<i>n</i>}.    * @return a new string, after the replacements have been made.    */
+comment|/**    * Replace each occurrence of {@code regex} with {@code repl} .    *    *<p><b>WARNING:</b> This replacement is being performed against an otherwise safe HTML string.    * The caller must ensure that the replacement does not introduce cross-site scripting attack    * entry points.    *    * @param regex regular expression pattern to match substrings with.    * @param repl replacement expression. Capture groups within {@code regex} can be referenced with    *     {@code $<i>n</i>}.    * @return a new string, after the replacements have been made.    */
 DECL|method|replaceAll (final String regex, final String repl)
 specifier|public
 name|SafeHtml

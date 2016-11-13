@@ -585,7 +585,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"deprecation"
 argument_list|)
-DECL|method|LabelPredicate (ChangeQueryBuilder.Arguments a, String value, Set<Account.Id> accounts, AccountGroup.UUID group)
+DECL|method|LabelPredicate ( ChangeQueryBuilder.Arguments a, String value, Set<Account.Id> accounts, AccountGroup.UUID group)
 name|LabelPredicate
 parameter_list|(
 name|ChangeQueryBuilder

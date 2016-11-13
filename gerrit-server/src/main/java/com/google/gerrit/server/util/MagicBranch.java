@@ -100,6 +100,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -143,26 +163,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -366,7 +366,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Checks if a (magic branch)/branch_name reference exists in the    * destination repository and only returns Capable.OK if it does not match any.    *    * These block the client from being able to even send us a pack file, as it    * is very unlikely the user passed the --force flag and the new commit is    * probably not going to fast-forward the branch.    */
+comment|/**    * Checks if a (magic branch)/branch_name reference exists in the destination repository and only    * returns Capable.OK if it does not match any.    *    *<p>These block the client from being able to even send us a pack file, as it is very unlikely    * the user passed the --force flag and the new commit is probably not going to fast-forward the    * branch.    */
 DECL|method|checkMagicBranchRefs (Repository repo, Project project)
 specifier|public
 specifier|static
@@ -592,7 +592,7 @@ DECL|method|MagicBranch ()
 specifier|private
 name|MagicBranch
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

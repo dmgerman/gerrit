@@ -201,7 +201,7 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|PatchSetIdHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<PatchSet.Id> setter)
+DECL|method|PatchSetIdHandler ( @ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<PatchSet.Id> setter)
 specifier|public
 name|PatchSetIdHandler
 parameter_list|(

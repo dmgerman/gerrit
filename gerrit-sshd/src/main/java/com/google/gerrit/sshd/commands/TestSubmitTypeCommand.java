@@ -179,9 +179,9 @@ name|TestSubmitTypeCommand
 extends|extends
 name|BaseTestPrologCommand
 block|{
+DECL|field|view
 annotation|@
 name|Inject
-DECL|field|view
 specifier|private
 name|TestSubmitType
 name|view

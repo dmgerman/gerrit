@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Selects the value for the {@code user.agent} property.  *<p>  * Examines the {@code User-Agent} HTTP request header, and tries to match it to  * known {@code user.agent} values.  *<p>  * Ported from JavaScript in {@code com.google.gwt.user.UserAgent.gwt.xml}.  */
+comment|/**  * Selects the value for the {@code user.agent} property.  *  *<p>Examines the {@code User-Agent} HTTP request header, and tries to match it to known {@code  * user.agent} values.  *  *<p>Ported from JavaScript in {@code com.google.gwt.user.UserAgent.gwt.xml}.  */
 end_comment
 
 begin_class

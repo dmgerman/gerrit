@@ -380,8 +380,8 @@ DECL|method|AccountGroupByIdAud ()
 specifier|protected
 name|AccountGroupByIdAud
 parameter_list|()
-block|{   }
-DECL|method|AccountGroupByIdAud (final AccountGroupById m, final Account.Id adder, final Timestamp when)
+block|{}
+DECL|method|AccountGroupByIdAud ( final AccountGroupById m, final Account.Id adder, final Timestamp when)
 specifier|public
 name|AccountGroupByIdAud
 parameter_list|(

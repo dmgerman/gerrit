@@ -507,7 +507,7 @@ name|group
 argument_list|)
 return|;
 block|}
-DECL|method|allow (ProjectConfig project, String permissionName, int min, int max, AccountGroup.UUID group, String ref)
+DECL|method|allow ( ProjectConfig project, String permissionName, int min, int max, AccountGroup.UUID group, String ref)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -571,7 +571,7 @@ name|ref
 argument_list|)
 return|;
 block|}
-DECL|method|block (ProjectConfig project, String permissionName, int min, int max, AccountGroup.UUID group, String ref)
+DECL|method|block ( ProjectConfig project, String permissionName, int min, int max, AccountGroup.UUID group, String ref)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -645,7 +645,7 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|allow (ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
+DECL|method|allow ( ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -684,7 +684,7 @@ name|ref
 argument_list|)
 return|;
 block|}
-DECL|method|allow (ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref, boolean exclusive)
+DECL|method|allow ( ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref, boolean exclusive)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -728,7 +728,7 @@ name|exclusive
 argument_list|)
 return|;
 block|}
-DECL|method|allow (ProjectConfig project, String capabilityName, AccountGroup.UUID group)
+DECL|method|allow ( ProjectConfig project, String capabilityName, AccountGroup.UUID group)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -829,7 +829,7 @@ return|return
 name|rule
 return|;
 block|}
-DECL|method|remove (ProjectConfig project, String capabilityName, AccountGroup.UUID group)
+DECL|method|remove ( ProjectConfig project, String capabilityName, AccountGroup.UUID group)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -884,7 +884,7 @@ return|return
 name|rule
 return|;
 block|}
-DECL|method|remove (ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
+DECL|method|remove ( ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -940,7 +940,7 @@ return|return
 name|rule
 return|;
 block|}
-DECL|method|block (ProjectConfig project, String capabilityName, AccountGroup.UUID group)
+DECL|method|block ( ProjectConfig project, String capabilityName, AccountGroup.UUID group)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -995,7 +995,7 @@ return|return
 name|rule
 return|;
 block|}
-DECL|method|block (ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
+DECL|method|block ( ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -1044,7 +1044,7 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|blockLabel (ProjectConfig project, String labelName, AccountGroup.UUID group, String ref)
+DECL|method|blockLabel ( ProjectConfig project, String labelName, AccountGroup.UUID group, String ref)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -1107,7 +1107,7 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|deny (ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
+DECL|method|deny ( ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
 specifier|public
 specifier|static
 name|PermissionRule
@@ -1196,7 +1196,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|grant (ProjectConfig project, String permissionName, PermissionRule rule, String ref)
+DECL|method|grant ( ProjectConfig project, String permissionName, PermissionRule rule, String ref)
 specifier|private
 specifier|static
 name|PermissionRule
@@ -1230,7 +1230,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|grant (ProjectConfig project, String permissionName, PermissionRule rule, String ref, boolean exclusive)
+DECL|method|grant ( ProjectConfig project, String permissionName, PermissionRule rule, String ref, boolean exclusive)
 specifier|private
 specifier|static
 name|PermissionRule
@@ -1299,7 +1299,7 @@ DECL|method|Util ()
 specifier|private
 name|Util
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -460,6 +460,28 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -590,30 +612,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_comment
-comment|/**  * View of the draft comments for a single {@link Change} based on the log of  * its drafts branch.  */
+comment|/** View of the draft comments for a single {@link Change} based on the log of its drafts branch. */
 end_comment
 
 begin_class
@@ -661,7 +661,7 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
-DECL|method|createWithAutoRebuildingDisabled ( Change.Id changeId, Account.Id accountId)
+DECL|method|createWithAutoRebuildingDisabled (Change.Id changeId, Account.Id accountId)
 name|DraftCommentNotes
 name|createWithAutoRebuildingDisabled
 parameter_list|(
@@ -725,7 +725,7 @@ name|revisionNoteMap
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|DraftCommentNotes ( Args args, @Assisted Change change, @Assisted Account.Id author)
+DECL|method|DraftCommentNotes (Args args, @Assisted Change change, @Assisted Account.Id author)
 name|DraftCommentNotes
 parameter_list|(
 name|Args
@@ -762,7 +762,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|DraftCommentNotes ( Args args, @Assisted Change.Id changeId, @Assisted Account.Id author)
+DECL|method|DraftCommentNotes (Args args, @Assisted Change.Id changeId, @Assisted Account.Id author)
 name|DraftCommentNotes
 parameter_list|(
 name|Args
@@ -1381,7 +1381,7 @@ name|repo
 argument_list|)
 return|;
 block|}
-DECL|method|findNewId ( Iterable<ReceiveCommand> cmds, String refName)
+DECL|method|findNewId (Iterable<ReceiveCommand> cmds, String refName)
 specifier|private
 specifier|static
 name|ObjectId

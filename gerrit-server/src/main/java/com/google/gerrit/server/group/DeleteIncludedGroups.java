@@ -461,7 +461,7 @@ name|auditService
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteIncludedGroups (GroupsCollection groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, Provider<CurrentUser> self, AuditService auditService)
+DECL|method|DeleteIncludedGroups ( GroupsCollection groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, Provider<CurrentUser> self, AuditService auditService)
 name|DeleteIncludedGroups
 parameter_list|(
 name|GroupsCollection
@@ -756,7 +756,7 @@ name|none
 argument_list|()
 return|;
 block|}
-DECL|method|getIncludedGroups ( final AccountGroup.Id groupId)
+DECL|method|getIncludedGroups (final AccountGroup.Id groupId)
 specifier|private
 name|Map
 argument_list|<
@@ -886,7 +886,7 @@ DECL|class|Input
 specifier|static
 class|class
 name|Input
-block|{     }
+block|{}
 DECL|field|delete
 specifier|private
 specifier|final

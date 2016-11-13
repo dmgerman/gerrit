@@ -2450,7 +2450,7 @@ parameter_list|(
 name|int
 name|row
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|getRowItemKey (List<String> item)

@@ -380,7 +380,7 @@ name|list
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RevisionReviewers (Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, AccountsCollection accounts, ReviewerResource.Factory resourceFactory, DynamicMap<RestView<ReviewerResource>> views, ListRevisionReviewers list)
+DECL|method|RevisionReviewers ( Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, AccountsCollection accounts, ReviewerResource.Factory resourceFactory, DynamicMap<RestView<ReviewerResource>> views, ListRevisionReviewers list)
 name|RevisionReviewers
 parameter_list|(
 name|Provider

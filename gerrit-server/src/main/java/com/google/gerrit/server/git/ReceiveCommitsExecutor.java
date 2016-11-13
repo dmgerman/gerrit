@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on the global {@link WorkQueue.Executor} used by  * {@link ReceiveCommits}.  */
+comment|/** Marker on the global {@link WorkQueue.Executor} used by {@link ReceiveCommits}. */
 end_comment
 
 begin_annotation_defn
@@ -120,7 +120,7 @@ DECL|annotation|ReceiveCommitsExecutor
 specifier|public
 annotation_defn|@interface
 name|ReceiveCommitsExecutor
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

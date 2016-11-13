@@ -107,7 +107,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Records elapsed time for an operation or span.  *<p>  * Typical usage in a try-with-resources block:  *  *<pre>  * try (Timer0.Context ctx = timer.start()) {  * }  *</pre>  */
+comment|/**  * Records elapsed time for an operation or span.  *  *<p>Typical usage in a try-with-resources block:  *  *<pre>  * try (Timer0.Context ctx = timer.start()) {  * }  *</pre>  */
 end_comment
 
 begin_class
@@ -184,7 +184,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/** Record a value in the distribution.    *    * @param value value to record    * @param unit time unit of the value    */
+comment|/**    * Record a value in the distribution.    *    * @param value value to record    * @param unit time unit of the value    */
 DECL|method|record (long value, TimeUnit unit)
 specifier|public
 specifier|abstract

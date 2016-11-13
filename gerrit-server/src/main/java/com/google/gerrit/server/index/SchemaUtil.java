@@ -168,20 +168,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -283,6 +269,20 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|PersonIdent
 import|;
 end_import
 
@@ -929,7 +929,7 @@ DECL|method|SchemaUtil ()
 specifier|private
 name|SchemaUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

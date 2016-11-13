@@ -265,7 +265,7 @@ DECL|class|CherryPickAction
 class|class
 name|CherryPickAction
 block|{
-DECL|method|call (final Button b, final ChangeInfo info, final String revision, String project, final String commitMessage)
+DECL|method|call ( final Button b, final ChangeInfo info, final String revision, String project, final String commitMessage)
 specifier|static
 name|void
 name|call

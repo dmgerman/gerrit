@@ -189,7 +189,7 @@ DECL|method|UserConfigSections ()
 specifier|private
 name|UserConfigSections
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

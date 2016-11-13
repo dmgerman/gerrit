@@ -188,20 +188,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|RawParseUtils
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -306,6 +292,20 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|RawParseUtils
+import|;
+end_import
+
 begin_comment
 comment|/** Simple fake implementation of {@link HttpServletResponse}. */
 end_comment
@@ -370,7 +370,7 @@ DECL|method|FakeHttpServletResponse ()
 specifier|public
 name|FakeHttpServletResponse
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|flushBuffer ()

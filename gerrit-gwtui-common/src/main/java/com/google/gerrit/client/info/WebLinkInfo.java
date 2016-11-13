@@ -166,7 +166,7 @@ DECL|method|WebLinkInfo ()
 specifier|protected
 name|WebLinkInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|toAnchor ()
 specifier|public
 specifier|final

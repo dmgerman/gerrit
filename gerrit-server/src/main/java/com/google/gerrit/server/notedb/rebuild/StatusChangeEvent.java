@@ -285,7 +285,7 @@ literal|"^Restored(\n.*)*$"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|parseFromMessage (ChangeMessage message, Change change, Change noteDbChange)
+DECL|method|parseFromMessage ( ChangeMessage message, Change change, Change noteDbChange)
 specifier|static
 name|Optional
 argument_list|<
@@ -411,7 +411,7 @@ specifier|final
 name|Change
 name|noteDbChange
 decl_stmt|;
-DECL|method|StatusChangeEvent (ChangeMessage message, Change change, Change noteDbChange, Change.Status status)
+DECL|method|StatusChangeEvent ( ChangeMessage message, Change change, Change noteDbChange, Change.Status status)
 specifier|private
 name|StatusChangeEvent
 parameter_list|(
@@ -460,7 +460,7 @@ name|status
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|StatusChangeEvent (PatchSet.Id psId, Account.Id author, Timestamp when, Change change, Change noteDbChange, String tag, Change.Status status)
+DECL|method|StatusChangeEvent ( PatchSet.Id psId, Account.Id author, Timestamp when, Change change, Change noteDbChange, String tag, Change.Status status)
 specifier|private
 name|StatusChangeEvent
 parameter_list|(

@@ -68,20 +68,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -100,8 +86,22 @@ name|Optional
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_comment
-comment|/**  * Simple short-lived cache of individual refs read from a repo.  *<p>  * Within a single request that is known to read a small bounded number of refs,  * this class can be used to ensure a consistent view of one ref, and avoid  * multiple system calls to read refs multiple times.  *<p>  *<strong>Note:</strong> Implementations of this class are only appropriate  * for short-term caching, and do not support invalidation. It is also not  * threadsafe.  */
+comment|/**  * Simple short-lived cache of individual refs read from a repo.  *  *<p>Within a single request that is known to read a small bounded number of refs, this class can  * be used to ensure a consistent view of one ref, and avoid multiple system calls to read refs  * multiple times.  *  *<p><strong>Note:</strong> Implementations of this class are only appropriate for short-term  * caching, and do not support invalidation. It is also not threadsafe.  */
 end_comment
 
 begin_interface
@@ -110,7 +110,7 @@ specifier|public
 interface|interface
 name|RefCache
 block|{
-comment|/**    * Get the possibly-cached value of a ref.    *    * @param refName name of the ref.    * @return value of the ref; absent if the ref does not exist in the repo.    *     Never null, and never present with a value of {@link    *     ObjectId#zeroId()}.    */
+comment|/**    * Get the possibly-cached value of a ref.    *    * @param refName name of the ref.    * @return value of the ref; absent if the ref does not exist in the repo. Never null, and never    *     present with a value of {@link ObjectId#zeroId()}.    */
 DECL|method|get (String refName)
 name|Optional
 argument_list|<

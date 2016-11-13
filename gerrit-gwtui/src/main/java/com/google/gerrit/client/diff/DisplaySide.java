@@ -77,9 +77,9 @@ enum|enum
 name|DisplaySide
 block|{
 DECL|enumConstant|A
-DECL|enumConstant|B
 name|A
 block|,
+DECL|enumConstant|B
 name|B
 block|;
 DECL|method|otherSide ()

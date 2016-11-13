@@ -218,7 +218,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|RestoredSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|RestoredSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|RestoredSender
 parameter_list|(

@@ -222,6 +222,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -237,18 +249,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
 import|;
 end_import
 
@@ -492,7 +492,7 @@ name|abandonUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeCleanupRunner ( OneOffRequestContext oneOffRequestContext, AbandonUtil abandonUtil)
+DECL|method|ChangeCleanupRunner (OneOffRequestContext oneOffRequestContext, AbandonUtil abandonUtil)
 name|ChangeCleanupRunner
 parameter_list|(
 name|OneOffRequestContext

@@ -1213,12 +1213,12 @@ name|SubmittedTogether
 argument_list|>
 name|submittedTogether
 decl_stmt|;
+DECL|field|publishDraftChange
 specifier|private
 specifier|final
 name|PublishDraftPatchSet
 operator|.
 name|CurrentRevision
-DECL|field|publishDraftChange
 name|publishDraftChange
 decl_stmt|;
 DECL|field|deleteChange
@@ -1341,7 +1341,7 @@ name|move
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeApiImpl (Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, SuggestChangeReviewers suggestReviewers, Abandon abandon, Revert revert, Restore restore, CreateMergePatchSet updateByMerge, Provider<SubmittedTogether> submittedTogether, PublishDraftPatchSet.CurrentRevision publishDraftChange, DeleteChange deleteChange, GetTopic getTopic, PutTopic putTopic, ChangeIncludedIn includedIn, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, PutAssignee putAssignee, GetAssignee getAssignee, GetPastAssignees getPastAssignees, DeleteAssignee deleteAssignee, ListChangeComments listComments, ListChangeRobotComments listChangeRobotComments, ListChangeDrafts listDrafts, ChangeEditApiImpl.Factory changeEditApi, Check check, Index index, Move move, @Assisted ChangeResource change)
+DECL|method|ChangeApiImpl ( Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, SuggestChangeReviewers suggestReviewers, Abandon abandon, Revert revert, Restore restore, CreateMergePatchSet updateByMerge, Provider<SubmittedTogether> submittedTogether, PublishDraftPatchSet.CurrentRevision publishDraftChange, DeleteChange deleteChange, GetTopic getTopic, PutTopic putTopic, ChangeIncludedIn includedIn, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, PutAssignee putAssignee, GetAssignee getAssignee, GetPastAssignees getPastAssignees, DeleteAssignee deleteAssignee, ListChangeComments listComments, ListChangeRobotComments listChangeRobotComments, ListChangeDrafts listDrafts, ChangeEditApiImpl.Factory changeEditApi, Check check, Index index, Move move, @Assisted ChangeResource change)
 name|ChangeApiImpl
 parameter_list|(
 name|Changes
@@ -2192,7 +2192,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|submittedTogether ( EnumSet<SubmittedTogetherOption> options)
+DECL|method|submittedTogether (EnumSet<SubmittedTogetherOption> options)
 specifier|public
 name|SubmittedTogetherInfo
 name|submittedTogether

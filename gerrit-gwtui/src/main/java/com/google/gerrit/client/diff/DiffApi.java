@@ -224,7 +224,7 @@ specifier|public
 class|class
 name|DiffApi
 block|{
-DECL|method|list (int id, String revision, RevisionInfo base, AsyncCallback<NativeMap<FileInfo>> cb)
+DECL|method|list ( int id, String revision, RevisionInfo base, AsyncCallback<NativeMap<FileInfo>> cb)
 specifier|public
 specifier|static
 name|void

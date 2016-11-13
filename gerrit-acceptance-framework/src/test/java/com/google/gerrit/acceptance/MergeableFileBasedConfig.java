@@ -80,6 +80,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -122,18 +132,8 @@ name|FS
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
 begin_comment
-comment|/**  * A file based Config that can merge another Config instance.  */
+comment|/** A file based Config that can merge another Config instance. */
 end_comment
 
 begin_class
@@ -163,7 +163,7 @@ name|fs
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Merge another Config into this Config.    *    * In case a configuration parameter exists both in this instance and in the    * merged instance then the value in this instance will simply replaced by    * the value from the merged instance.    *    * @param s Config to merge into this instance    */
+comment|/**    * Merge another Config into this Config.    *    *<p>In case a configuration parameter exists both in this instance and in the merged instance    * then the value in this instance will simply replaced by the value from the merged instance.    *    * @param s Config to merge into this instance    */
 DECL|method|merge (Config s)
 specifier|public
 name|void

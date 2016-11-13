@@ -88,7 +88,7 @@ comment|/** Accounts in a group that is visible to the given user. */
 DECL|enumConstant|VISIBLE_GROUP
 name|VISIBLE_GROUP
 block|,
-comment|/**    * Other accounts are not visible to the given user unless they are explicitly    * collaborating on a change.    */
+comment|/**    * Other accounts are not visible to the given user unless they are explicitly collaborating on a    * change.    */
 DECL|enumConstant|NONE
 name|NONE
 block|}

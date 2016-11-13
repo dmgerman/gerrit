@@ -98,6 +98,56 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -242,58 +292,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
-comment|/**  * Advertises part of history to git push clients.  *<p>  * This is a hack to work around the lack of negotiation in the  * send-pack/receive-pack wire protocol.  *<p>  * When the server is frequently advancing master by creating merge commits, the  * client may not be able to discover a common ancestor during push. Attempting  * to push will re-upload a very large amount of history. This hook hacks in a  * fake negotiation replacement by walking history and sending recent commits as  * {@code ".have"} lines in the wire protocol, allowing the client to find a  * common ancestor.  */
+comment|/**  * Advertises part of history to git push clients.  *  *<p>This is a hack to work around the lack of negotiation in the send-pack/receive-pack wire  * protocol.  *  *<p>When the server is frequently advancing master by creating merge commits, the client may not  * be able to discover a common ancestor during push. Attempting to push will re-upload a very large  * amount of history. This hook hacks in a fake negotiation replacement by walking history and  * sending recent commits as {@code ".have"} lines in the wire protocol, allowing the client to find  * a common ancestor.  */
 end_comment
 
 begin_class
@@ -340,7 +340,7 @@ literal|5
 operator|+
 literal|1
 decl_stmt|;
-comment|/**    * Maximum number of bytes to "waste" in the advertisement with a peek at this    * repository's current reachable history.    */
+comment|/**    * Maximum number of bytes to "waste" in the advertisement with a peek at this repository's    * current reachable history.    */
 DECL|field|MAX_EXTRA_BYTES
 specifier|private
 specifier|static
@@ -350,7 +350,7 @@ name|MAX_EXTRA_BYTES
 init|=
 literal|8192
 decl_stmt|;
-comment|/**    * Number of recent commits to advertise immediately, hoping to show a client    * a nearby merge base.    */
+comment|/**    * Number of recent commits to advertise immediately, hoping to show a client a nearby merge base.    */
 DECL|field|BASE_COMMITS
 specifier|private
 specifier|static

@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for writing Gerrit Web UI plugins  *  * Writing a plugin:  *<ol>  *<li>Declare subtype of Plugin</li>  *<li>Bind WebUiPlugin to GwtPlugin implementation in Gerrit-Module</li>  *</ol>  */
+comment|/**  * Base class for writing Gerrit Web UI plugins  *  *<p>Writing a plugin:  *  *<ol>  *<li>Declare subtype of Plugin  *<li>Bind WebUiPlugin to GwtPlugin implementation in Gerrit-Module  *</ol>  */
 end_comment
 
 begin_class
@@ -95,7 +95,7 @@ name|PluginEntryPoint
 implements|implements
 name|EntryPoint
 block|{
-comment|/**    * The plugin entry point method, called automatically by loading    * a module that declares an implementing class as an entry point.    */
+comment|/**    * The plugin entry point method, called automatically by loading a module that declares an    * implementing class as an entry point.    */
 DECL|method|onPluginLoad ()
 specifier|public
 specifier|abstract

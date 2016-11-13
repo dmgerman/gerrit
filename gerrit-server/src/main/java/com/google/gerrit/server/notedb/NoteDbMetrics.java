@@ -192,7 +192,7 @@ name|NoteDbTable
 argument_list|>
 name|updateLatency
 decl_stmt|;
-comment|/**    * The portion of {@link #updateLatency} due to preparing the sequence of    * updates.    *<p>    * May include some I/O (e.g. reading old refs), but excludes writes.    */
+comment|/**    * The portion of {@link #updateLatency} due to preparing the sequence of updates.    *    *<p>May include some I/O (e.g. reading old refs), but excludes writes.    */
 DECL|field|stageUpdateLatency
 specifier|final
 name|Timer1
@@ -201,7 +201,7 @@ name|NoteDbTable
 argument_list|>
 name|stageUpdateLatency
 decl_stmt|;
-comment|/**    * End-to-end latency for reading changes from NoteDb, including reading    * ref(s) and parsing.    */
+comment|/** End-to-end latency for reading changes from NoteDb, including reading ref(s) and parsing. */
 DECL|field|readLatency
 specifier|final
 name|Timer1
@@ -210,7 +210,7 @@ name|NoteDbTable
 argument_list|>
 name|readLatency
 decl_stmt|;
-comment|/**    * The portion of {@link #readLatency} due to parsing commits, but excluding    * I/O (to a best effort).    */
+comment|/**    * The portion of {@link #readLatency} due to parsing commits, but excluding I/O (to a best    * effort).    */
 DECL|field|parseLatency
 specifier|final
 name|Timer1
@@ -219,7 +219,7 @@ name|NoteDbTable
 argument_list|>
 name|parseLatency
 decl_stmt|;
-comment|/**    * Latency due to auto-rebuilding entities when out of date.    *<p>    * Excludes latency from reading ref to check whether the entity is up to    * date.    */
+comment|/**    * Latency due to auto-rebuilding entities when out of date.    *    *<p>Excludes latency from reading ref to check whether the entity is up to date.    */
 DECL|field|autoRebuildLatency
 specifier|final
 name|Timer1

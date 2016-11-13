@@ -187,9 +187,9 @@ operator|.
 name|USERNAME
 argument_list|)
 decl_stmt|;
+DECL|field|V2
 annotation|@
 name|Deprecated
-DECL|field|V2
 specifier|static
 specifier|final
 name|Schema
@@ -207,9 +207,9 @@ operator|.
 name|WATCHED_PROJECT
 argument_list|)
 decl_stmt|;
+DECL|field|V3
 annotation|@
 name|Deprecated
-DECL|field|V3
 specifier|static
 specifier|final
 name|Schema

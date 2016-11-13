@@ -1326,7 +1326,7 @@ specifier|private
 name|int
 name|selected
 decl_stmt|;
-DECL|method|DisplayCommand (String revision, JsArray<ChangeAndCommit> changes, NavigationList navList)
+DECL|method|DisplayCommand ( String revision, JsArray<ChangeAndCommit> changes, NavigationList navList)
 specifier|private
 name|DisplayCommand
 parameter_list|(

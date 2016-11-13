@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provide avatar URLs for specified user.  *  * Invoked by Gerrit when Avatar image requests are made.  */
+comment|/**  * Provide avatar URLs for specified user.  *  *<p>Invoked by Gerrit when Avatar image requests are made.  */
 end_comment
 
 begin_interface
@@ -108,7 +108,7 @@ specifier|public
 interface|interface
 name|AvatarProvider
 block|{
-comment|/**    * Get avatar URL.    *    * @param forUser The user for which to load an avatar image    * @param imageSize A requested image size, in pixels. An imageSize of 0    *        indicates to use whatever default size the provider determines.    *        AvatarProviders may ignore the requested image size. The web    *        interface will resize any image to match imageSize, so ideally the    *        provider should return an image sized correctly.    * @return a URL of an avatar image for the specified user. A return value of    *         {@code null} is acceptable, and results in the server responding    *         with a 404. This will hide the avatar image in the web UI.    */
+comment|/**    * Get avatar URL.    *    * @param forUser The user for which to load an avatar image    * @param imageSize A requested image size, in pixels. An imageSize of 0 indicates to use whatever    *     default size the provider determines. AvatarProviders may ignore the requested image size.    *     The web interface will resize any image to match imageSize, so ideally the provider should    *     return an image sized correctly.    * @return a URL of an avatar image for the specified user. A return value of {@code null} is    *     acceptable, and results in the server responding with a 404. This will hide the avatar    *     image in the web UI.    */
 DECL|method|getUrl (IdentifiedUser forUser, int imageSize)
 name|String
 name|getUrl
@@ -120,7 +120,7 @@ name|int
 name|imageSize
 parameter_list|)
 function_decl|;
-comment|/**    * Gets a URL for a user to modify their avatar image.    *    * @param forUser The user wishing to change their avatar image    * @return a URL the user should visit to modify their avatar, or null if    *         modification is not possible.    */
+comment|/**    * Gets a URL for a user to modify their avatar image.    *    * @param forUser The user wishing to change their avatar image    * @return a URL the user should visit to modify their avatar, or null if modification is not    *     possible.    */
 DECL|method|getChangeAvatarUrl (IdentifiedUser forUser)
 name|String
 name|getChangeAvatarUrl

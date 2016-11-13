@@ -380,6 +380,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -526,26 +546,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TimeZone
-import|;
-end_import
-
 begin_class
 DECL|class|CreateTag
 specifier|public
@@ -623,7 +623,7 @@ name|ref
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateTag (Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, TagCache tagCache, GitReferenceUpdated referenceUpdated, @Assisted String ref)
+DECL|method|CreateTag ( Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, TagCache tagCache, GitReferenceUpdated referenceUpdated, @Assisted String ref)
 name|CreateTag
 parameter_list|(
 name|Provider

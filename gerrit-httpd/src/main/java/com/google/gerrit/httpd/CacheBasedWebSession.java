@@ -302,22 +302,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|http
-operator|.
-name|server
-operator|.
-name|GitSmartHttpTools
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -359,6 +343,22 @@ operator|.
 name|http
 operator|.
 name|HttpServletResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|http
+operator|.
+name|server
+operator|.
+name|GitSmartHttpTools
 import|;
 end_import
 
@@ -475,7 +475,7 @@ specifier|private
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|CacheBasedWebSession (final HttpServletRequest request, final HttpServletResponse response, final WebSessionManager manager, final AuthConfig authConfig, final Provider<AnonymousUser> anonymousProvider, final IdentifiedUser.RequestFactory identified)
+DECL|method|CacheBasedWebSession ( final HttpServletRequest request, final HttpServletResponse response, final WebSessionManager manager, final AuthConfig authConfig, final Provider<AnonymousUser> anonymousProvider, final IdentifiedUser.RequestFactory identified)
 specifier|protected
 name|CacheBasedWebSession
 parameter_list|(

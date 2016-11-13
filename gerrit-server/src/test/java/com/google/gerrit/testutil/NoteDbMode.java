@@ -130,7 +130,7 @@ comment|/** Changes are created with their primary storage as NoteDb. */
 DECL|enumConstant|PRIMARY
 name|PRIMARY
 block|,
-comment|/**    * Run tests with NoteDb disabled, then convert ReviewDb to NoteDb and check    * that the results match.    */
+comment|/**    * Run tests with NoteDb disabled, then convert ReviewDb to NoteDb and check that the results    * match.    */
 DECL|enumConstant|CHECK
 name|CHECK
 block|;

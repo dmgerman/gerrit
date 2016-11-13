@@ -365,7 +365,7 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|Propagator (ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
+DECL|method|Propagator ( ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
 name|Propagator
 parameter_list|(
 name|ThreadLocalRequestContext

@@ -99,7 +99,7 @@ interface|interface
 name|Event
 extends|extends
 name|RevisionEvent
-block|{   }
+block|{}
 DECL|method|onDraftPublished (Event event)
 name|void
 name|onDraftPublished

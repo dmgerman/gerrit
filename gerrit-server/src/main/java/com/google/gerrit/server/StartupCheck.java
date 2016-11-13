@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Check executed on Gerrit startup.  */
+comment|/** Check executed on Gerrit startup. */
 end_comment
 
 begin_interface
@@ -90,7 +90,7 @@ specifier|public
 interface|interface
 name|StartupCheck
 block|{
-comment|/**    * Performs Gerrit startup check, can abort startup by throwing    * {@link StartupException}.    *<p>    * Called on Gerrit startup after all {@link LifecycleListener} have been    * invoked.    *    * @throws StartupException thrown if Gerrit startup should be aborted    */
+comment|/**    * Performs Gerrit startup check, can abort startup by throwing {@link StartupException}.    *    *<p>Called on Gerrit startup after all {@link LifecycleListener} have been invoked.    *    * @throws StartupException thrown if Gerrit startup should be aborted    */
 DECL|method|check ()
 name|void
 name|check

@@ -113,7 +113,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Matches an AccessSection against a reference name.  *<p>  * These matchers are "compiled" versions of the AccessSection name, supporting  * faster selection of which sections are relevant to any given input reference.  */
+comment|/**  * Matches an AccessSection against a reference name.  *  *<p>These matchers are "compiled" versions of the AccessSection name, supporting faster selection  * of which sections are relevant to any given input reference.  */
 end_comment
 
 begin_class

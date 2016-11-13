@@ -344,9 +344,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|url
 annotation|@
 name|DefaultInput
-DECL|field|url
 name|String
 name|url
 decl_stmt|;

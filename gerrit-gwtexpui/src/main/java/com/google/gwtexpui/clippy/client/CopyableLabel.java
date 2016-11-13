@@ -535,7 +535,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Label which permits the user to easily copy the complete content.  *<p>  * If the Flash plugin is available a "movie" is embedded that provides  * one-click copying of the content onto the system clipboard. The label (if  * visible) can also be clicked, switching from a label to an input box,  * allowing the user to copy the text with a keyboard shortcut.  */
+comment|/**  * Label which permits the user to easily copy the complete content.  *  *<p>If the Flash plugin is available a "movie" is embedded that provides one-click copying of the  * content onto the system clipboard. The label (if visible) can also be clicked, switching from a  * label to an input box, allowing the user to copy the text with a keyboard shortcut.  */
 end_comment
 
 begin_class
@@ -701,7 +701,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Create a new label    *    * @param str initial content    * @param showLabel if true, the content is shown, if false it is hidden from    *        view and only the copy icon is displayed.    */
+comment|/**    * Create a new label    *    * @param str initial content    * @param showLabel if true, the content is shown, if false it is hidden from view and only the    *     copy icon is displayed.    */
 DECL|method|CopyableLabel (final String str, final boolean showLabel)
 specifier|public
 name|CopyableLabel
@@ -995,7 +995,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Change the text which is displayed in the clickable label.    *    * @param text the new preview text, should be shorter than the original text    *        which would be copied to the clipboard.    */
+comment|/**    * Change the text which is displayed in the clickable label.    *    * @param text the new preview text, should be shorter than the original text which would be    *     copied to the clipboard.    */
 DECL|method|setPreviewText (final String text)
 specifier|public
 name|void

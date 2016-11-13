@@ -560,7 +560,7 @@ DECL|method|None ()
 specifier|private
 name|None
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|isNone ()

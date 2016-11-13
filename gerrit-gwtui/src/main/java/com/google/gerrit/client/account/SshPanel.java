@@ -1510,7 +1510,7 @@ DECL|method|display ()
 name|void
 name|display
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|showAddKeyBlock (final boolean show)
 specifier|private
 name|void

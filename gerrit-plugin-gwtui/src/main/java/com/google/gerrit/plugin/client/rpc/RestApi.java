@@ -548,13 +548,13 @@ name|toString
 argument_list|()
 return|;
 block|}
+DECL|method|get (AsyncCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
 extends|extends
 name|JavaScriptObject
 parameter_list|>
-DECL|method|get (AsyncCallback<T> cb)
 name|void
 name|get
 parameter_list|(
@@ -615,13 +615,13 @@ name|r
 parameter_list|)
 comment|/*-{ $wnd.Gerrit.get_raw(p, r) }-*/
 function_decl|;
+DECL|method|put (AsyncCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
 extends|extends
 name|JavaScriptObject
 parameter_list|>
-DECL|method|put (AsyncCallback<T> cb)
 name|void
 name|put
 parameter_list|(
@@ -659,13 +659,13 @@ name|r
 parameter_list|)
 comment|/*-{ $wnd.Gerrit.put_raw(p, r) }-*/
 function_decl|;
-specifier|public
-parameter_list|<
-name|T
-extends|extends
-name|JavaScriptObject
-parameter_list|>
 DECL|method|put (String content, AsyncCallback<T> cb)
+specifier|public
+parameter_list|<
+name|T
+extends|extends
+name|JavaScriptObject
+parameter_list|>
 name|void
 name|put
 parameter_list|(
@@ -693,10 +693,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
-specifier|static
-specifier|native
 DECL|method|put (String p, String c, JavaScriptObject r)
+specifier|private
+specifier|static
+specifier|native
 name|void
 name|put
 parameter_list|(
@@ -711,13 +711,13 @@ name|r
 parameter_list|)
 comment|/*-{ $wnd.Gerrit.put_raw(p, c, r) }-*/
 function_decl|;
-specifier|public
-parameter_list|<
-name|T
-extends|extends
-name|JavaScriptObject
-parameter_list|>
 DECL|method|put (JavaScriptObject content, AsyncCallback<T> cb)
+specifier|public
+parameter_list|<
+name|T
+extends|extends
+name|JavaScriptObject
+parameter_list|>
 name|void
 name|put
 parameter_list|(
@@ -745,10 +745,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|put (String p, JavaScriptObject c, JavaScriptObject r)
 specifier|private
 specifier|static
 specifier|native
-DECL|method|put (String p, JavaScriptObject c, JavaScriptObject r)
 name|void
 name|put
 parameter_list|(
@@ -763,13 +763,13 @@ name|r
 parameter_list|)
 comment|/*-{ $wnd.Gerrit.put_raw(p, c, r) }-*/
 function_decl|;
+DECL|method|post (String content, AsyncCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
 extends|extends
 name|JavaScriptObject
 parameter_list|>
-DECL|method|post (String content, AsyncCallback<T> cb)
 name|void
 name|post
 parameter_list|(
@@ -797,10 +797,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|post (String p, String c, JavaScriptObject r)
 specifier|private
 specifier|static
 specifier|native
-DECL|method|post (String p, String c, JavaScriptObject r)
 name|void
 name|post
 parameter_list|(
@@ -815,13 +815,13 @@ name|r
 parameter_list|)
 comment|/*-{ $wnd.Gerrit.post_raw(p, c, r) }-*/
 function_decl|;
+DECL|method|post (JavaScriptObject content, AsyncCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
 extends|extends
 name|JavaScriptObject
 parameter_list|>
-DECL|method|post (JavaScriptObject content, AsyncCallback<T> cb)
 name|void
 name|post
 parameter_list|(
@@ -849,10 +849,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|post (String p, JavaScriptObject c, JavaScriptObject r)
 specifier|private
 specifier|static
 specifier|native
-DECL|method|post (String p, JavaScriptObject c, JavaScriptObject r)
 name|void
 name|post
 parameter_list|(
@@ -906,6 +906,7 @@ name|r
 parameter_list|)
 comment|/*-{ $wnd.Gerrit.del_raw(p, r) }-*/
 function_decl|;
+DECL|method|wrap ( AsyncCallback<T> b)
 specifier|private
 specifier|static
 specifier|native
@@ -914,7 +915,6 @@ name|T
 extends|extends
 name|JavaScriptObject
 parameter_list|>
-DECL|method|wrap (AsyncCallback<T> b)
 name|JavaScriptObject
 name|wrap
 parameter_list|(

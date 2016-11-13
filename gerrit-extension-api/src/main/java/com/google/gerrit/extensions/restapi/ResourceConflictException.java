@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Resource state does not permit requested operation (HTTP 409 Conflict).  *<p>  * {@link RestModifyView} implementations may fail with this exception when the  * named resource does not permit the modification to take place at this time.  * An example use is trying to abandon a change that is already merged. The  * change cannot be abandoned once merged so an operation would throw.  */
+comment|/**  * Resource state does not permit requested operation (HTTP 409 Conflict).  *  *<p>{@link RestModifyView} implementations may fail with this exception when the named resource  * does not permit the modification to take place at this time. An example use is trying to abandon  * a change that is already merged. The change cannot be abandoned once merged so an operation would  * throw.  */
 end_comment
 
 begin_class

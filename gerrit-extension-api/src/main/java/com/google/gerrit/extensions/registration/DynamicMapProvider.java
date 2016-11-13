@@ -161,9 +161,9 @@ name|T
 argument_list|>
 name|type
 decl_stmt|;
+DECL|field|injector
 annotation|@
 name|Inject
-DECL|field|injector
 specifier|private
 name|Injector
 name|injector

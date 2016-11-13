@@ -118,7 +118,7 @@ DECL|annotation|InstallAllPlugins
 specifier|public
 annotation_defn|@interface
 name|InstallAllPlugins
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

@@ -162,6 +162,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -320,26 +340,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
 begin_class
 DECL|class|RefUtil
 specifier|public
@@ -362,7 +362,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|parseBaseRevision (Repository repo, Project.NameKey projectName, String baseRevision)
+DECL|method|parseBaseRevision ( Repository repo, Project.NameKey projectName, String baseRevision)
 specifier|public
 specifier|static
 name|ObjectId

@@ -79,7 +79,7 @@ specifier|private
 name|String
 name|toHighlight
 decl_stmt|;
-DECL|method|HighlightingInlineHyperlink (final String text, final String token, final String toHighlight)
+DECL|method|HighlightingInlineHyperlink ( final String text, final String token, final String toHighlight)
 specifier|public
 name|HighlightingInlineHyperlink
 parameter_list|(

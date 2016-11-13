@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Resource identifier split out from a URL.  *<p>  * Identifiers are URL encoded and usually need to be decoded.  */
+comment|/**  * Resource identifier split out from a URL.  *  *<p>Identifiers are URL encoded and usually need to be decoded.  */
 end_comment
 
 begin_class

@@ -594,20 +594,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -626,8 +612,22 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_comment
-comment|/**  * Module for non-indexer-specific secondary index setup.  *<p>  * This module should not be used directly except by specific secondary indexer  * implementations (e.g. Lucene).  */
+comment|/**  * Module for non-indexer-specific secondary index setup.  *  *<p>This module should not be used directly except by specific secondary indexer implementations  * (e.g. Lucene).  */
 end_comment
 
 begin_class
@@ -644,9 +644,9 @@ enum|enum
 name|IndexType
 block|{
 DECL|enumConstant|LUCENE
-DECL|enumConstant|ELASTICSEARCH
 name|LUCENE
 block|,
+DECL|enumConstant|ELASTICSEARCH
 name|ELASTICSEARCH
 block|}
 DECL|field|ALL_SCHEMA_DEFS
@@ -779,7 +779,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-DECL|method|IndexModule (ListeningExecutorService interactiveExecutor, ListeningExecutorService batchExecutor)
+DECL|method|IndexModule ( ListeningExecutorService interactiveExecutor, ListeningExecutorService batchExecutor)
 specifier|public
 name|IndexModule
 parameter_list|(
@@ -1057,7 +1057,7 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getAccountIndexer (AccountIndexerImpl.Factory factory, AccountIndexCollection indexes)
+DECL|method|getAccountIndexer ( AccountIndexerImpl.Factory factory, AccountIndexCollection indexes)
 name|AccountIndexer
 name|getAccountIndexer
 parameter_list|(

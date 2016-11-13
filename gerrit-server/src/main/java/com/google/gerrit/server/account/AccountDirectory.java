@@ -93,7 +93,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Directory of user account information.  *  * Implementations supply data to Gerrit about user accounts.  */
+comment|/**  * Directory of user account information.  *  *<p>Implementations supply data to Gerrit about user accounts.  */
 end_comment
 
 begin_class
@@ -137,7 +137,7 @@ comment|/** The user-settable status of this account (e.g. busy, OOO, available)
 DECL|enumConstant|STATUS
 name|STATUS
 block|}
-DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, Set<FillOptions> options)
+DECL|method|fillAccountInfo (Iterable<? extends AccountInfo> in, Set<FillOptions> options)
 specifier|public
 specifier|abstract
 name|void

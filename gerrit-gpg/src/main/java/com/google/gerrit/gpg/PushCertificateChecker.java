@@ -190,6 +190,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|bouncycastle
@@ -361,46 +401,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -910,7 +910,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Get the repository that this checker should operate on.    *<p>    * This method is called once per call to {@link #check(PushCertificate)}.    *    * @return the repository.    * @throws IOException if an error occurred reading the repository.    */
+comment|/**    * Get the repository that this checker should operate on.    *    *<p>This method is called once per call to {@link #check(PushCertificate)}.    *    * @return the repository.    * @throws IOException if an error occurred reading the repository.    */
 DECL|method|getRepository ()
 specifier|protected
 specifier|abstract
@@ -920,7 +920,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * @param repo a repository previously returned by {@link #getRepository()}.    * @return whether this repository should be closed before returning from    *     {@link #check(PushCertificate)}.    */
+comment|/**    * @param repo a repository previously returned by {@link #getRepository()}.    * @return whether this repository should be closed before returning from {@link    *     #check(PushCertificate)}.    */
 DECL|method|shouldClose (Repository repo)
 specifier|protected
 specifier|abstract
@@ -931,7 +931,7 @@ name|Repository
 name|repo
 parameter_list|)
 function_decl|;
-comment|/**    * Perform custom checks.    *<p>    * Default implementation reports no problems, but may be overridden by    * subclasses.    *    * @param repo a repository previously returned by {@link #getRepository()}.    * @return the result of the custom check.    */
+comment|/**    * Perform custom checks.    *    *<p>Default implementation reports no problems, but may be overridden by subclasses.    *    * @param repo a repository previously returned by {@link #getRepository()}.    * @return the result of the custom check.    */
 DECL|method|checkCustom (Repository repo)
 specifier|protected
 name|CheckResult

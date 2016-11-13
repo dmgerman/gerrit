@@ -91,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines an abstract request for user authentication to Gerrit.  */
+comment|/** Defines an abstract request for user authentication to Gerrit. */
 end_comment
 
 begin_class

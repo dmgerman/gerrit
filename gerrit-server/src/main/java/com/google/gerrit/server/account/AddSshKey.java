@@ -370,6 +370,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -399,26 +419,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
 import|;
 end_import
 
@@ -498,7 +498,7 @@ name|addKeyFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddSshKey (Provider<CurrentUser> self, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AddKeySender.Factory addKeyFactory)
+DECL|method|AddSshKey ( Provider<CurrentUser> self, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AddKeySender.Factory addKeyFactory)
 name|AddSshKey
 parameter_list|(
 name|Provider

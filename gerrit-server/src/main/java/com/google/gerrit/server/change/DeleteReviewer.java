@@ -648,26 +648,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -713,6 +693,26 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -827,7 +827,7 @@ name|notifyUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteReviewer (Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, IdentifiedUser.GenericFactory userFactory, ReviewerDeleted reviewerDeleted, Provider<IdentifiedUser> user, DeleteReviewerSender.Factory deleteReviewerSenderFactory, NotesMigration migration, NotifyUtil notifyUtil)
+DECL|method|DeleteReviewer ( Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, IdentifiedUser.GenericFactory userFactory, ReviewerDeleted reviewerDeleted, Provider<IdentifiedUser> user, DeleteReviewerSender.Factory deleteReviewerSenderFactory, NotesMigration migration, NotifyUtil notifyUtil)
 name|DeleteReviewer
 parameter_list|(
 name|Provider
@@ -1833,7 +1833,7 @@ name|value
 argument_list|)
 return|;
 block|}
-DECL|method|emailReviewers (Project.NameKey projectName, Change change, ChangeMessage changeMessage)
+DECL|method|emailReviewers ( Project.NameKey projectName, Change change, ChangeMessage changeMessage)
 specifier|private
 name|void
 name|emailReviewers

@@ -229,7 +229,7 @@ name|root
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshPluginStarterCallback ( @ommandNameCommands.ROOT) DispatchCommandProvider root)
+DECL|method|SshPluginStarterCallback (@ommandNameCommands.ROOT) DispatchCommandProvider root)
 name|SshPluginStarterCallback
 parameter_list|(
 annotation|@

@@ -244,20 +244,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -283,6 +269,20 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
 import|;
 end_import
 
@@ -323,7 +323,7 @@ name|userProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditJson (DynamicMap<DownloadCommand> downloadCommand, DynamicMap<DownloadScheme> downloadSchemes, Provider<CurrentUser> userProvider)
+DECL|method|ChangeEditJson ( DynamicMap<DownloadCommand> downloadCommand, DynamicMap<DownloadScheme> downloadSchemes, Provider<CurrentUser> userProvider)
 name|ChangeEditJson
 parameter_list|(
 name|DynamicMap

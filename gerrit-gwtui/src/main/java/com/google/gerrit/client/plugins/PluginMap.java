@@ -170,7 +170,7 @@ DECL|method|PluginMap ()
 specifier|protected
 name|PluginMap
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

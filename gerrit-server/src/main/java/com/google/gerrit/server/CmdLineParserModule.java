@@ -354,6 +354,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|SocketAddress
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -380,26 +400,6 @@ name|OptionHandler
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|SocketAddress
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
 begin_class
 DECL|class|CmdLineParserModule
 specifier|public
@@ -412,7 +412,7 @@ DECL|method|CmdLineParserModule ()
 specifier|public
 name|CmdLineParserModule
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|configure ()

@@ -98,6 +98,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -124,16 +134,6 @@ name|ObjectId
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 annotation|@
 name|AutoValue
@@ -143,7 +143,7 @@ specifier|abstract
 class|class
 name|IntraLineDiffArgs
 block|{
-DECL|method|create (Text aText, Text bText, List<Edit> edits, Project.NameKey project, ObjectId commit, String path)
+DECL|method|create ( Text aText, Text bText, List<Edit> edits, Project.NameKey project, ObjectId commit, String path)
 specifier|public
 specifier|static
 name|IntraLineDiffArgs

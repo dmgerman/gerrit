@@ -292,40 +292,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|joda
-operator|.
-name|time
-operator|.
-name|format
-operator|.
-name|ISODateTimeFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -417,6 +383,40 @@ operator|.
 name|zip
 operator|.
 name|GZIPInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|joda
+operator|.
+name|time
+operator|.
+name|format
+operator|.
+name|ISODateTimeFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -515,7 +515,7 @@ operator|=
 name|fs
 expr_stmt|;
 block|}
-DECL|method|Servlet (FileSystem fs, Cache<Path, Resource> cache, boolean refresh, boolean cacheOnClient)
+DECL|method|Servlet ( FileSystem fs, Cache<Path, Resource> cache, boolean refresh, boolean cacheOnClient)
 specifier|private
 name|Servlet
 parameter_list|(
@@ -553,7 +553,7 @@ operator|=
 name|fs
 expr_stmt|;
 block|}
-DECL|method|Servlet (FileSystem fs, Cache<Path, Resource> cache, boolean refresh, int cacheFileSizeLimitBytes)
+DECL|method|Servlet ( FileSystem fs, Cache<Path, Resource> cache, boolean refresh, int cacheFileSizeLimitBytes)
 specifier|private
 name|Servlet
 parameter_list|(
@@ -593,7 +593,7 @@ operator|=
 name|fs
 expr_stmt|;
 block|}
-DECL|method|Servlet (FileSystem fs, Cache<Path, Resource> cache, boolean refresh, boolean cacheOnClient, int cacheFileSizeLimitBytes)
+DECL|method|Servlet ( FileSystem fs, Cache<Path, Resource> cache, boolean refresh, boolean cacheOnClient, int cacheFileSizeLimitBytes)
 specifier|private
 name|Servlet
 parameter_list|(

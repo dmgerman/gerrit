@@ -309,7 +309,7 @@ name|accountVisibility
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory (final ProjectCache projectCache, final GroupControl.Factory groupControlFactory, final Provider<CurrentUser> user, final IdentifiedUser.GenericFactory userFactory, final AccountVisibility accountVisibility)
+DECL|method|Factory ( final ProjectCache projectCache, final GroupControl.Factory groupControlFactory, final Provider<CurrentUser> user, final IdentifiedUser.GenericFactory userFactory, final AccountVisibility accountVisibility)
 name|Factory
 parameter_list|(
 specifier|final
@@ -431,7 +431,7 @@ specifier|final
 name|AccountVisibility
 name|accountVisibility
 decl_stmt|;
-DECL|method|AccountControl (final ProjectCache projectCache, final GroupControl.Factory groupControlFactory, final CurrentUser user, final IdentifiedUser.GenericFactory userFactory, final AccountVisibility accountVisibility)
+DECL|method|AccountControl ( final ProjectCache projectCache, final GroupControl.Factory groupControlFactory, final CurrentUser user, final IdentifiedUser.GenericFactory userFactory, final AccountVisibility accountVisibility)
 name|AccountControl
 parameter_list|(
 specifier|final
@@ -509,7 +509,7 @@ return|return
 name|user
 return|;
 block|}
-comment|/**    * Returns true if the current user is allowed to see the otherUser, based    * on the account visibility policy. Depending on the group membership    * realms supported, this may not be able to determine SAME_GROUP or    * VISIBLE_GROUP correctly (defaulting to not being visible). This is because    * {@link GroupMembership#getKnownGroups()} may only return a subset of the    * effective groups.    */
+comment|/**    * Returns true if the current user is allowed to see the otherUser, based on the account    * visibility policy. Depending on the group membership realms supported, this may not be able to    * determine SAME_GROUP or VISIBLE_GROUP correctly (defaulting to not being visible). This is    * because {@link GroupMembership#getKnownGroups()} may only return a subset of the effective    * groups.    */
 DECL|method|canSee (Account otherUser)
 specifier|public
 name|boolean
@@ -529,7 +529,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns true if the current user is allowed to see the otherUser, based    * on the account visibility policy. Depending on the group membership    * realms supported, this may not be able to determine SAME_GROUP or    * VISIBLE_GROUP correctly (defaulting to not being visible). This is because    * {@link GroupMembership#getKnownGroups()} may only return a subset of the    * effective groups.    */
+comment|/**    * Returns true if the current user is allowed to see the otherUser, based on the account    * visibility policy. Depending on the group membership realms supported, this may not be able to    * determine SAME_GROUP or VISIBLE_GROUP correctly (defaulting to not being visible). This is    * because {@link GroupMembership#getKnownGroups()} may only return a subset of the effective    * groups.    */
 DECL|method|canSee (final Account.Id otherUser)
 specifier|public
 name|boolean
@@ -580,7 +580,7 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns true if the current user is allowed to see the otherUser, based    * on the account visibility policy. Depending on the group membership    * realms supported, this may not be able to determine SAME_GROUP or    * VISIBLE_GROUP correctly (defaulting to not being visible). This is because    * {@link GroupMembership#getKnownGroups()} may only return a subset of the    * effective groups.    */
+comment|/**    * Returns true if the current user is allowed to see the otherUser, based on the account    * visibility policy. Depending on the group membership realms supported, this may not be able to    * determine SAME_GROUP or VISIBLE_GROUP correctly (defaulting to not being visible). This is    * because {@link GroupMembership#getKnownGroups()} may only return a subset of the effective    * groups.    */
 DECL|method|canSee (final AccountState otherUser)
 specifier|public
 name|boolean

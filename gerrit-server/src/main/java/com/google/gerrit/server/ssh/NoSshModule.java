@@ -79,7 +79,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Disables the SSH support by stubbing out relevant objects.  */
+comment|/** Disables the SSH support by stubbing out relevant objects. */
 end_comment
 
 begin_class

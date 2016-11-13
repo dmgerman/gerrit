@@ -317,7 +317,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|onAction ( Project.NameKey project, ActionInfo action, ActionButton button)
+DECL|method|onAction (Project.NameKey project, ActionInfo action, ActionButton button)
 specifier|public
 specifier|static
 name|void
@@ -455,7 +455,7 @@ DECL|method|ProjectGlue ()
 specifier|private
 name|ProjectGlue
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

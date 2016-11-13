@@ -119,7 +119,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Loads the classes for Prolog predicates.  */
+comment|/** Loads the classes for Prolog predicates. */
 end_comment
 
 begin_class

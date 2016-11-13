@@ -292,7 +292,7 @@ name|session
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExternalIdDetailFactory (final ReviewDb db, final IdentifiedUser user, final AuthConfig authConfig, final DynamicItem<WebSession> session)
+DECL|method|ExternalIdDetailFactory ( final ReviewDb db, final IdentifiedUser user, final AuthConfig authConfig, final DynamicItem<WebSession> session)
 name|ExternalIdDetailFactory
 parameter_list|(
 specifier|final

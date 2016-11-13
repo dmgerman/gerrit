@@ -765,7 +765,7 @@ name|config
 parameter_list|)
 throws|throws
 name|ServletException
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -773,7 +773,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

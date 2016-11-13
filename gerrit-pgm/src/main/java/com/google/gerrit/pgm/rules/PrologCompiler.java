@@ -198,62 +198,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|MissingObjectException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -506,8 +450,64 @@ name|ToolProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|MissingObjectException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
 begin_comment
-comment|/**  * Helper class for Rulec: does the actual prolog -> java src -> class -> jar work  * Finds rules.pl in refs/meta/config branch  * Creates rules-(sha1 of rules.pl).jar in (site-path)/cache/rules  */
+comment|/**  * Helper class for Rulec: does the actual prolog -> java src -> class -> jar work Finds rules.pl in  * refs/meta/config branch Creates rules-(sha1 of rules.pl).jar in (site-path)/cache/rules  */
 end_comment
 
 begin_class
@@ -543,9 +543,9 @@ enum|enum
 name|Status
 block|{
 DECL|enumConstant|NO_RULES
-DECL|enumConstant|COMPILED
 name|NO_RULES
 block|,
+DECL|enumConstant|COMPILED
 name|COMPILED
 block|}
 DECL|field|ruleDir
@@ -562,7 +562,7 @@ name|git
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PrologCompiler (@erritServerConfig Config config, SitePaths site, @Assisted Repository gitRepository)
+DECL|method|PrologCompiler ( @erritServerConfig Config config, SitePaths site, @Assisted Repository gitRepository)
 name|PrologCompiler
 parameter_list|(
 annotation|@
@@ -1419,7 +1419,7 @@ block|}
 block|}
 block|}
 comment|/** Takes compiled prolog .class files, puts them into the jar file. */
-DECL|method|createJar (Path archiveFile, List<String> toBeJared, File tempDir, ObjectId metaConfig, ObjectId rulesId)
+DECL|method|createJar ( Path archiveFile, List<String> toBeJared, File tempDir, ObjectId metaConfig, ObjectId rulesId)
 specifier|private
 name|void
 name|createJar
@@ -1904,7 +1904,7 @@ return|return
 name|pathList
 return|;
 block|}
-DECL|method|getRelativePaths (File dir, String extension, String path, List<String> pathList)
+DECL|method|getRelativePaths ( File dir, String extension, String path, List<String> pathList)
 specifier|private
 specifier|static
 name|void

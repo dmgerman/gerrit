@@ -134,18 +134,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|codemirror
-operator|.
-name|lib
-operator|.
-name|CodeMirror
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -184,8 +172,20 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|codemirror
+operator|.
+name|lib
+operator|.
+name|CodeMirror
+import|;
+end_import
+
 begin_comment
-comment|/** Collapses common regions with {@link SkipBar} for {@link SideBySide}  *  and {@link Unified}. */
+comment|/** Collapses common regions with {@link SkipBar} for {@link SideBySide} and {@link Unified}. */
 end_comment
 
 begin_class

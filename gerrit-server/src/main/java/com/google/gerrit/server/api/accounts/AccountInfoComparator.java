@@ -172,7 +172,7 @@ DECL|method|AccountInfoComparator ()
 specifier|private
 name|AccountInfoComparator
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|setNullsLast ()
 specifier|private
 name|AccountInfoComparator

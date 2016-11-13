@@ -340,118 +340,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|common
-operator|.
-name|SshException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|Environment
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|ExitCallback
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Argument
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|CmdLineException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -565,6 +453,118 @@ operator|.
 name|atomic
 operator|.
 name|AtomicReference
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|common
+operator|.
+name|SshException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|Command
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|Environment
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|ExitCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Argument
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|CmdLineException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -686,50 +686,50 @@ specifier|private
 name|ExitCallback
 name|exit
 decl_stmt|;
+DECL|field|sshScope
 annotation|@
 name|Inject
-DECL|field|sshScope
 specifier|private
 name|SshScope
 name|sshScope
 decl_stmt|;
+DECL|field|cmdLineParserFactory
 annotation|@
 name|Inject
-DECL|field|cmdLineParserFactory
 specifier|private
 name|CmdLineParser
 operator|.
 name|Factory
 name|cmdLineParserFactory
 decl_stmt|;
+DECL|field|cleanup
 annotation|@
 name|Inject
-DECL|field|cleanup
 specifier|private
 name|RequestCleanup
 name|cleanup
 decl_stmt|;
+DECL|field|executor
 annotation|@
 name|Inject
 annotation|@
 name|CommandExecutor
-DECL|field|executor
 specifier|private
 name|WorkQueue
 operator|.
 name|Executor
 name|executor
 decl_stmt|;
+DECL|field|user
 annotation|@
 name|Inject
-DECL|field|user
 specifier|private
 name|CurrentUser
 name|user
 decl_stmt|;
+DECL|field|context
 annotation|@
 name|Inject
-DECL|field|context
 specifier|private
 name|SshScope
 operator|.
@@ -978,7 +978,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Pass all state into the command, then run its start method.    *<p>    * This method copies all critical state, like the input and output streams,    * into the supplied command. The caller must still invoke {@code cmd.start()}    * if wants to pass control to the command.    *    * @param cmd the command that will receive the current state.    */
+comment|/**    * Pass all state into the command, then run its start method.    *    *<p>This method copies all critical state, like the input and output streams, into the supplied    * command. The caller must still invoke {@code cmd.start()} if wants to pass control to the    * command.    *    * @param cmd the command that will receive the current state.    */
 DECL|method|provideStateTo (final Command cmd)
 specifier|protected
 name|void
@@ -1018,7 +1018,7 @@ name|exit
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Parses the command line argument, injecting parsed values into fields.    *<p>    * This method must be explicitly invoked to cause a parse.    *    * @throws UnloggedFailure if the command line arguments were invalid.    * @see Option    * @see Argument    */
+comment|/**    * Parses the command line argument, injecting parsed values into fields.    *    *<p>This method must be explicitly invoked to cause a parse.    *    * @throws UnloggedFailure if the command line arguments were invalid.    * @see Option    * @see Argument    */
 DECL|method|parseCommandLine ()
 specifier|protected
 name|void
@@ -1033,7 +1033,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Parses the command line argument, injecting parsed values into fields.    *<p>    * This method must be explicitly invoked to cause a parse.    *    * @param options object whose fields declare Option and Argument annotations    *        to describe the parameters of the command. Usually {@code this}.    * @throws UnloggedFailure if the command line arguments were invalid.    * @see Option    * @see Argument    */
+comment|/**    * Parses the command line argument, injecting parsed values into fields.    *    *<p>This method must be explicitly invoked to cause a parse.    *    * @param options object whose fields declare Option and Argument annotations to describe the    *     parameters of the command. Usually {@code this}.    * @throws UnloggedFailure if the command line arguments were invalid.    * @see Option    * @see Argument    */
 DECL|method|parseCommandLine (Object options)
 specifier|protected
 name|void
@@ -1172,7 +1172,7 @@ name|options
 argument_list|)
 return|;
 block|}
-comment|/**    * Spawn a function into its own thread.    *<p>    * Typically this should be invoked within {@link Command#start(Environment)},    * such as:    *    *<pre>    * startThread(new Runnable() {    *   public void run() {    *     runImp();    *   }    * });    *</pre>    *    * @param thunk the runnable to execute on the thread, performing the    *        command's logic.    */
+comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new Runnable() {    *   public void run() {    *     runImp();    *   }    * });    *</pre>    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    */
 DECL|method|startThread (final Runnable thunk)
 specifier|protected
 name|void
@@ -1208,7 +1208,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Spawn a function into its own thread.    *<p>    * Typically this should be invoked within {@link Command#start(Environment)},    * such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *<p>    * If the function throws an exception, it is translated to a simple message    * for the client, a non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the    *        command's logic.    */
+comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *    *<p>If the function throws an exception, it is translated to a simple message for the client, a    * non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    */
 DECL|method|startThread (final CommandRunnable thunk)
 specifier|protected
 name|void
@@ -1298,7 +1298,7 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**    * Terminate this command and return a result code to the remote client.    *<p>    * Commands should invoke this at most once. Once invoked, the command may    * lose access to request based resources as any callbacks previously    * registered with {@link RequestCleanup} will fire.    *    * @param rc exit code for the remote client.    */
+comment|/**    * Terminate this command and return a result code to the remote client.    *    *<p>Commands should invoke this at most once. Once invoked, the command may lose access to    * request based resources as any callbacks previously registered with {@link RequestCleanup} will    * fire.    *    * @param rc exit code for the remote client.    */
 DECL|method|onExit (final int rc)
 specifier|protected
 name|void
@@ -2263,7 +2263,7 @@ specifier|final
 name|int
 name|exitCode
 decl_stmt|;
-comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the      *        failure status of this command. Should be between 1 and 255,      *        inclusive.      * @param msg message to also send to the client's stderr.      */
+comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the failure status of this      *     command. Should be between 1 and 255, inclusive.      * @param msg message to also send to the client's stderr.      */
 DECL|method|Failure (final int exitCode, final String msg)
 specifier|public
 name|Failure
@@ -2287,7 +2287,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the      *        failure status of this command. Should be between 1 and 255,      *        inclusive.      * @param msg message to also send to the client's stderr.      * @param why stack trace to include in the server's log, but is not sent to      *        the client's stderr.      */
+comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the failure status of this      *     command. Should be between 1 and 255, inclusive.      * @param msg message to also send to the client's stderr.      * @param why stack trace to include in the server's log, but is not sent to the client's      *     stderr.      */
 DECL|method|Failure (final int exitCode, final String msg, final Throwable why)
 specifier|public
 name|Failure
@@ -2356,7 +2356,7 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the      *        failure status of this command. Should be between 1 and 255,      *        inclusive.      * @param msg message to also send to the client's stderr.      */
+comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the failure status of this      *     command. Should be between 1 and 255, inclusive.      * @param msg message to also send to the client's stderr.      */
 DECL|method|UnloggedFailure (final int exitCode, final String msg)
 specifier|public
 name|UnloggedFailure
@@ -2380,7 +2380,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the      *        failure status of this command. Should be between 1 and 255,      *        inclusive.      * @param msg message to also send to the client's stderr.      * @param why stack trace to include in the server's log, but is not sent to      *        the client's stderr.      */
+comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the failure status of this      *     command. Should be between 1 and 255, inclusive.      * @param msg message to also send to the client's stderr.      * @param why stack trace to include in the server's log, but is not sent to the client's      *     stderr.      */
 DECL|method|UnloggedFailure (final int exitCode, final String msg, final Throwable why)
 specifier|public
 name|UnloggedFailure

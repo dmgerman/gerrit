@@ -418,6 +418,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -427,16 +437,6 @@ operator|.
 name|lib
 operator|.
 name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -496,7 +496,7 @@ name|agreementsEnabled
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutAgreement (ProjectCache projectCache, GroupCache groupCache, Provider<IdentifiedUser> self, AgreementSignup agreementSignup, AddMembers addMembers, @GerritServerConfig Config config)
+DECL|method|PutAgreement ( ProjectCache projectCache, GroupCache groupCache, Provider<IdentifiedUser> self, AgreementSignup agreementSignup, AddMembers addMembers, @GerritServerConfig Config config)
 name|PutAgreement
 parameter_list|(
 name|ProjectCache

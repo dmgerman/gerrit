@@ -208,7 +208,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 annotation|@
 name|Inject
 DECL|method|DeleteTag (DeleteRef.Factory deleteRefFactory)

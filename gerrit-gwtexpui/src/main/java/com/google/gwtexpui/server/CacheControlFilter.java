@@ -171,7 +171,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Forces GWT resources to cache for a very long time.  *<p>  * GWT compiled JavaScript and ImageBundles can be cached indefinitely by a  * browser and/or an edge proxy, as they never contain user-specific data and  * are named by a unique checksum. If their content is ever modified then the  * URL changes, so user agents would request a different resource. We force  * these resources to have very long expiration times.  *<p>  * To use, add the following block to your {@code web.xml}:  *  *<pre>  *&lt;filter&gt;  *&lt;filter-name&gt;CacheControl&lt;/filter-name&gt;  *&lt;filter-class&gt;com.google.gwtexpui.server.CacheControlFilter&lt;/filter-class&gt;  *&lt;/filter&gt;  *&lt;filter-mapping&gt;  *&lt;filter-name&gt;CacheControl&lt;/filter-name&gt;  *&lt;url-pattern&gt;/*&lt;/url-pattern&gt;  *&lt;/filter-mapping&gt;  *</pre>  */
+comment|/**  * Forces GWT resources to cache for a very long time.  *  *<p>GWT compiled JavaScript and ImageBundles can be cached indefinitely by a browser and/or an  * edge proxy, as they never contain user-specific data and are named by a unique checksum. If their  * content is ever modified then the URL changes, so user agents would request a different resource.  * We force these resources to have very long expiration times.  *  *<p>To use, add the following block to your {@code web.xml}:  *  *<pre>  *&lt;filter&gt;  *&lt;filter-name&gt;CacheControl&lt;/filter-name&gt;  *&lt;filter-class&gt;com.google.gwtexpui.server.CacheControlFilter&lt;/filter-class&gt;  *&lt;/filter&gt;  *&lt;filter-mapping&gt;  *&lt;filter-name&gt;CacheControl&lt;/filter-name&gt;  *&lt;url-pattern&gt;/*&lt;/url-pattern&gt;  *&lt;/filter-mapping&gt;  *</pre>  */
 end_comment
 
 begin_class
@@ -193,7 +193,7 @@ specifier|final
 name|FilterConfig
 name|config
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -201,10 +201,10 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
-DECL|method|doFilter (final ServletRequest sreq, final ServletResponse srsp, final FilterChain chain)
+DECL|method|doFilter ( final ServletRequest sreq, final ServletResponse srsp, final FilterChain chain)
 specifier|public
 name|void
 name|doFilter

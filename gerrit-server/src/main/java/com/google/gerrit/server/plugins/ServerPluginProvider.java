@@ -98,6 +98,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -114,20 +126,8 @@ name|FileSnapshot
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
-import|;
-end_import
-
 begin_comment
-comment|/**  * Provider of one Server plugin from one external file  *  * Allows to load one plugin from one external file or  * one directory by declaring the ability to handle it.  *  * In order to load multiple files into a single plugin,  * group them into a directory tree and then load the directory  * root as a single plugin.  */
+comment|/**  * Provider of one Server plugin from one external file  *  *<p>Allows to load one plugin from one external file or one directory by declaring the ability to  * handle it.  *  *<p>In order to load multiple files into a single plugin, group them into a directory tree and  * then load the directory root as a single plugin.  */
 end_comment
 
 begin_interface
@@ -138,7 +138,7 @@ specifier|public
 interface|interface
 name|ServerPluginProvider
 block|{
-comment|/**    * Descriptor of the Plugin that ServerPluginProvider has to load.    */
+comment|/** Descriptor of the Plugin that ServerPluginProvider has to load. */
 DECL|class|PluginDescription
 class|class
 name|PluginDescription
@@ -205,7 +205,7 @@ name|Path
 name|srcPath
 parameter_list|)
 function_decl|;
-comment|/**    * Returns the plugin name of an external file or directory    *    * Should be called only if {@link #handles(Path) handles(srcFile)}    * returns true and thus srcFile is a supported plugin format.    * An IllegalArgumentException is thrown otherwise as srcFile    * is not a valid file format for extracting its plugin name.    *    * @param srcPath external file or directory    * @return plugin name    */
+comment|/**    * Returns the plugin name of an external file or directory    *    *<p>Should be called only if {@link #handles(Path) handles(srcFile)} returns true and thus    * srcFile is a supported plugin format. An IllegalArgumentException is thrown otherwise as    * srcFile is not a valid file format for extracting its plugin name.    *    * @param srcPath external file or directory    * @return plugin name    */
 DECL|method|getPluginName (Path srcPath)
 name|String
 name|getPluginName
@@ -214,7 +214,7 @@ name|Path
 name|srcPath
 parameter_list|)
 function_decl|;
-comment|/**    * Loads an external file or directory into a Server plugin.    *    * Should be called only if {@link #handles(Path) handles(srcFile)}    * returns true and thus srcFile is a supported plugin format.    * An IllegalArgumentException is thrown otherwise as srcFile    * is not a valid file format for extracting its plugin name.    *    * @param srcPath external file or directory    * @param snapshot snapshot of the external file    * @param pluginDescriptor descriptor of the ServerPlugin to load    * @throws InvalidPluginException if plugin is supposed to be handled    *         but cannot be loaded for any other reason    */
+comment|/**    * Loads an external file or directory into a Server plugin.    *    *<p>Should be called only if {@link #handles(Path) handles(srcFile)} returns true and thus    * srcFile is a supported plugin format. An IllegalArgumentException is thrown otherwise as    * srcFile is not a valid file format for extracting its plugin name.    *    * @param srcPath external file or directory    * @param snapshot snapshot of the external file    * @param pluginDescriptor descriptor of the ServerPlugin to load    * @throws InvalidPluginException if plugin is supposed to be handled but cannot be loaded for any    *     other reason    */
 DECL|method|get (Path srcPath, FileSnapshot snapshot, PluginDescription pluginDescriptor)
 name|ServerPlugin
 name|get
@@ -231,7 +231,7 @@ parameter_list|)
 throws|throws
 name|InvalidPluginException
 function_decl|;
-comment|/**    * Returns the plugin name of this provider.    *    * Allows to identify which plugin provided the current ServerPluginProvider    * by returning the plugin name. Helpful for troubleshooting plugin loading    * problems.    *    * @return plugin name of this provider    */
+comment|/**    * Returns the plugin name of this provider.    *    *<p>Allows to identify which plugin provided the current ServerPluginProvider by returning the    * plugin name. Helpful for troubleshooting plugin loading problems.    *    * @return plugin name of this provider    */
 DECL|method|getProviderPluginName ()
 name|String
 name|getProviderPluginName

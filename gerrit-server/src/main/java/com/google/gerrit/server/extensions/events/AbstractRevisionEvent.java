@@ -177,7 +177,7 @@ specifier|final
 name|RevisionInfo
 name|revisionInfo
 decl_stmt|;
-DECL|method|AbstractRevisionEvent (ChangeInfo change, RevisionInfo revision, AccountInfo who, Timestamp when, NotifyHandling notify)
+DECL|method|AbstractRevisionEvent ( ChangeInfo change, RevisionInfo revision, AccountInfo who, Timestamp when, NotifyHandling notify)
 specifier|protected
 name|AbstractRevisionEvent
 parameter_list|(

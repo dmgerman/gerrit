@@ -149,7 +149,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|merge_bundled ()
 annotation|@
 name|Source
 argument_list|(
@@ -157,6 +156,7 @@ literal|"merge_bundled.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
+DECL|method|merge_bundled ()
 name|DataResource
 name|merge_bundled
 parameter_list|()

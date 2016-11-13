@@ -616,6 +616,96 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedHashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1000,98 +1090,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedHashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
-comment|/**  * Utility methods used during the merge process.  *<p>  *<strong>Note:</strong> Unless otherwise specified, the methods in this class  *<strong>do not</strong> flush {@link ObjectInserter}s. Callers that want to  * read back objects before flushing should use {@link  * ObjectInserter#newReader()}. This is already the default behavior of {@code  * BatchUpdate}.  */
+comment|/**  * Utility methods used during the merge process.  *  *<p><strong>Note:</strong> Unless otherwise specified, the methods in this class<strong>do  * not</strong> flush {@link ObjectInserter}s. Callers that want to read back objects before  * flushing should use {@link ObjectInserter#newReader()}. This is already the default behavior of  * {@code BatchUpdate}.  */
 end_comment
 
 begin_class
@@ -1132,7 +1132,7 @@ name|changeMessageModifiers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluggableCommitMessageGenerator ( DynamicSet<ChangeMessageModifier> changeMessageModifiers)
+DECL|method|PluggableCommitMessageGenerator (DynamicSet<ChangeMessageModifier> changeMessageModifiers)
 name|PluggableCommitMessageGenerator
 parameter_list|(
 name|DynamicSet
@@ -1149,7 +1149,7 @@ operator|=
 name|changeMessageModifiers
 expr_stmt|;
 block|}
-DECL|method|generate (RevCommit original, RevCommit mergeTip, ChangeControl ctl, String current)
+DECL|method|generate ( RevCommit original, RevCommit mergeTip, ChangeControl ctl, String current)
 specifier|public
 name|String
 name|generate
@@ -1389,7 +1389,7 @@ name|commitMessageGenerator
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|MergeUtil (@erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, ApprovalsUtil approvalsUtil, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted ProjectState project)
+DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, ApprovalsUtil approvalsUtil, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted ProjectState project)
 name|MergeUtil
 parameter_list|(
 annotation|@
@@ -1455,7 +1455,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|MergeUtil (@erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, ApprovalsUtil approvalsUtil, @Assisted ProjectState project, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted boolean useContentMerge)
+DECL|method|MergeUtil ( @erritServerConfig Config serverConfig, Provider<ReviewDb> db, IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, ApprovalsUtil approvalsUtil, @Assisted ProjectState project, PluggableCommitMessageGenerator commitMessageGenerator, @Assisted boolean useContentMerge)
 name|MergeUtil
 parameter_list|(
 annotation|@
@@ -1655,7 +1655,7 @@ return|return
 name|mergeTip
 return|;
 block|}
-DECL|method|reduceToMinimalMerge (MergeSorter mergeSorter, Collection<CodeReviewCommit> toSort, Set<CodeReviewCommit> incoming)
+DECL|method|reduceToMinimalMerge ( MergeSorter mergeSorter, Collection<CodeReviewCommit> toSort, Set<CodeReviewCommit> incoming)
 specifier|public
 name|List
 argument_list|<
@@ -1740,7 +1740,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, CodeReviewRevWalk rw, int parentIndex, boolean ignoreIdenticalTree)
+DECL|method|createCherryPickFromCommit ( Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, CodeReviewRevWalk rw, int parentIndex, boolean ignoreIdenticalTree)
 specifier|public
 name|CodeReviewCommit
 name|createCherryPickFromCommit
@@ -1917,7 +1917,7 @@ literal|"merge conflict"
 argument_list|)
 throw|;
 block|}
-DECL|method|createMergeCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, String mergeStrategy, PersonIdent committerIndent, String commitMsg, RevWalk rw)
+DECL|method|createMergeCommit ( Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, String mergeStrategy, PersonIdent committerIndent, String commitMsg, RevWalk rw)
 specifier|public
 specifier|static
 name|RevCommit
@@ -2175,7 +2175,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**    * Adds footers to existing commit message based on the state of the change.    *    * This adds the following footers if they are missing:    *    *<ul>    *<li> Reviewed-on:<i>url</i></li>    *<li> Reviewed-by | Tested-by |<i>Other-Label-Name</i>:<i>reviewer</i>    *</li>    *<li> Change-Id</li>    *</ul>    *    * @param n    * @param ctl    * @param psId    * @return new message    */
+comment|/**    * Adds footers to existing commit message based on the state of the change.    *    *<p>This adds the following footers if they are missing:    *    *<ul>    *<li> Reviewed-on:<i>url</i>    *<li> Reviewed-by | Tested-by |<i>Other-Label-Name</i>:<i>reviewer</i>    *<li> Change-Id    *</ul>    *    * @param n    * @param ctl    * @param psId    * @return new message    */
 DECL|method|createDetailedCommitMessage (RevCommit n, ChangeControl ctl, PatchSet.Id psId)
 specifier|private
 name|String
@@ -2833,8 +2833,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Creates a commit message for a change, which can be customized by plugins.    *    * By default, adds footers to existing commit message based on the state of    * the change. Plugins implementing {@link ChangeMessageModifier} can modify    * the resulting commit message arbitrarily.    *    * @param n    * @param mergeTip    * @param ctl    * @param id    * @return new message    */
-DECL|method|createCommitMessageOnSubmit (RevCommit n, RevCommit mergeTip, ChangeControl ctl, Id id)
+comment|/**    * Creates a commit message for a change, which can be customized by plugins.    *    *<p>By default, adds footers to existing commit message based on the state of the change.    * Plugins implementing {@link ChangeMessageModifier} can modify the resulting commit message    * arbitrarily.    *    * @param n    * @param mergeTip    * @param ctl    * @param id    * @return new message    */
+DECL|method|createCommitMessageOnSubmit ( RevCommit n, RevCommit mergeTip, ChangeControl ctl, Id id)
 specifier|public
 name|String
 name|createCommitMessageOnSubmit
@@ -2918,7 +2918,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|safeGetApprovals ( ChangeControl ctl, PatchSet.Id psId)
+DECL|method|safeGetApprovals (ChangeControl ctl, PatchSet.Id psId)
 specifier|private
 name|Iterable
 argument_list|<
@@ -3091,7 +3091,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|canMerge (final MergeSorter mergeSorter, final Repository repo, final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
+DECL|method|canMerge ( final MergeSorter mergeSorter, final Repository repo, final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|canMerge
@@ -3216,7 +3216,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|canFastForward (MergeSorter mergeSorter, CodeReviewCommit mergeTip, CodeReviewRevWalk rw, CodeReviewCommit toMerge)
+DECL|method|canFastForward ( MergeSorter mergeSorter, CodeReviewCommit mergeTip, CodeReviewRevWalk rw, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|canFastForward
@@ -3293,7 +3293,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|canCherryPick (MergeSorter mergeSorter, Repository repo, CodeReviewCommit mergeTip, CodeReviewRevWalk rw, CodeReviewCommit toMerge)
+DECL|method|canCherryPick ( MergeSorter mergeSorter, Repository repo, CodeReviewCommit mergeTip, CodeReviewRevWalk rw, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|canCherryPick
@@ -3467,7 +3467,7 @@ name|toMerge
 argument_list|)
 return|;
 block|}
-DECL|method|hasMissingDependencies (final MergeSorter mergeSorter, final CodeReviewCommit toMerge)
+DECL|method|hasMissingDependencies ( final MergeSorter mergeSorter, final CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|hasMissingDependencies
@@ -3522,7 +3522,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|mergeOneCommit (PersonIdent author, PersonIdent committer, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
+DECL|method|mergeOneCommit ( PersonIdent author, PersonIdent committer, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|mergeOneCommit
@@ -3709,7 +3709,7 @@ end_return
 
 begin_function
 unit|}    private
-DECL|method|getCommitMergeStatus ( MergeBaseFailureReason reason)
+DECL|method|getCommitMergeStatus (MergeBaseFailureReason reason)
 specifier|static
 name|CommitMergeStatus
 name|getCommitMergeStatus
@@ -3748,7 +3748,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|failed (CodeReviewRevWalk rw, CodeReviewCommit mergeTip, CodeReviewCommit n, CommitMergeStatus failure)
+DECL|method|failed ( CodeReviewRevWalk rw, CodeReviewCommit mergeTip, CodeReviewCommit n, CommitMergeStatus failure)
 specifier|private
 specifier|static
 name|CodeReviewCommit
@@ -3824,7 +3824,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|writeMergeCommit (PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
+DECL|method|writeMergeCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, ObjectId treeId, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|writeMergeCommit
@@ -4457,7 +4457,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|newThreeWayMerger (Repository repo, final ObjectInserter inserter, String strategyName)
+DECL|method|newThreeWayMerger ( Repository repo, final ObjectInserter inserter, String strategyName)
 specifier|public
 specifier|static
 name|ThreeWayMerger
@@ -4507,7 +4507,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|newMerger (Repository repo, final ObjectInserter inserter, String strategyName)
+DECL|method|newMerger ( Repository repo, final ObjectInserter inserter, String strategyName)
 specifier|public
 specifier|static
 name|Merger
@@ -4584,14 +4584,14 @@ specifier|public
 name|void
 name|flush
 parameter_list|()
-block|{       }
+block|{}
 annotation|@
 name|Override
 specifier|public
 name|void
 name|close
 parameter_list|()
-block|{       }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;
@@ -4602,7 +4602,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|markCleanMerges (final RevWalk rw, final RevFlag canMergeFlag, final CodeReviewCommit mergeTip, final Set<RevCommit> alreadyAccepted)
+DECL|method|markCleanMerges ( final RevWalk rw, final RevFlag canMergeFlag, final CodeReviewCommit mergeTip, final Set<RevCommit> alreadyAccepted)
 specifier|public
 name|void
 name|markCleanMerges
@@ -4778,7 +4778,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|findUnmergedChanges (Set<Change.Id> expected, CodeReviewRevWalk rw, RevFlag canMergeFlag, CodeReviewCommit oldTip, CodeReviewCommit mergeTip, Iterable<Change.Id> alreadyMerged)
+DECL|method|findUnmergedChanges ( Set<Change.Id> expected, CodeReviewRevWalk rw, RevFlag canMergeFlag, CodeReviewCommit oldTip, CodeReviewCommit mergeTip, Iterable<Change.Id> alreadyMerged)
 specifier|public
 name|Set
 argument_list|<
@@ -5011,7 +5011,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|findAnyMergedInto (CodeReviewRevWalk rw, Iterable<CodeReviewCommit> commits, CodeReviewCommit tip)
+DECL|method|findAnyMergedInto ( CodeReviewRevWalk rw, Iterable<CodeReviewCommit> commits, CodeReviewCommit tip)
 specifier|public
 specifier|static
 name|CodeReviewCommit

@@ -870,9 +870,9 @@ enum|enum
 name|ReviewedState
 block|{
 DECL|enumConstant|AUTO_REVIEW
-DECL|enumConstant|LOADED
 name|AUTO_REVIEW
 block|,
+DECL|enumConstant|LOADED
 name|LOADED
 block|}
 DECL|field|reviewed
@@ -1012,7 +1012,7 @@ specifier|private
 name|ReviewedState
 name|reviewedState
 decl_stmt|;
-DECL|method|Header (KeyCommandSet keys, DiffObject base, DiffObject patchSetId, String path, DiffView diffSreenType, DiffPreferences prefs)
+DECL|method|Header ( KeyCommandSet keys, DiffObject base, DiffObject patchSetId, String path, DiffView diffSreenType, DiffPreferences prefs)
 name|Header
 parameter_list|(
 name|KeyCommandSet
@@ -1546,7 +1546,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{             }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;
@@ -1779,7 +1779,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{         }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;
@@ -2423,7 +2423,7 @@ specifier|public
 name|void
 name|run
 parameter_list|()
-block|{           }
+block|{}
 block|}
 return|;
 block|}

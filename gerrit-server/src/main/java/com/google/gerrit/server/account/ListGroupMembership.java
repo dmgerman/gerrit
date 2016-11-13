@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GroupMembership over an explicit list.  */
+comment|/** GroupMembership over an explicit list. */
 end_comment
 
 begin_class

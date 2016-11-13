@@ -813,7 +813,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A bundle of all entities rooted at a single {@link Change} entity.  *<p>  * See the {@link Change} Javadoc for a depiction of this tree. Bundles may be  * compared using {@link #differencesFrom(ChangeBundle)}, which normalizes out  * the minor implementation differences between ReviewDb and NoteDb.  */
+comment|/**  * A bundle of all entities rooted at a single {@link Change} entity.  *  *<p>See the {@link Change} Javadoc for a depiction of this tree. Bundles may be compared using  * {@link #differencesFrom(ChangeBundle)}, which normalizes out the minor implementation differences  * between ReviewDb and NoteDb.  */
 end_comment
 
 begin_class
@@ -828,9 +828,9 @@ enum|enum
 name|Source
 block|{
 DECL|enumConstant|REVIEW_DB
-DECL|enumConstant|NOTE_DB
 name|REVIEW_DB
 block|,
+DECL|enumConstant|NOTE_DB
 name|NOTE_DB
 block|;   }
 DECL|method|fromNotes (CommentsUtil commentsUtil, ChangeNotes notes)
@@ -1247,7 +1247,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-DECL|method|changeMessageList ( Iterable<ChangeMessage> in)
+DECL|method|changeMessageList (Iterable<ChangeMessage> in)
 specifier|private
 specifier|static
 name|ImmutableList
@@ -1372,6 +1372,7 @@ return|return
 name|out
 return|;
 block|}
+DECL|method|patchSetApprovalMap ( Iterable<PatchSetApproval> in)
 specifier|private
 specifier|static
 name|Map
@@ -1382,7 +1383,6 @@ name|Key
 argument_list|,
 name|PatchSetApproval
 argument_list|>
-DECL|method|patchSetApprovalMap (Iterable<PatchSetApproval> in)
 name|patchSetApprovalMap
 parameter_list|(
 name|Iterable
@@ -1510,6 +1510,7 @@ return|return
 name|out
 return|;
 block|}
+DECL|method|patchLineCommentMap ( Iterable<PatchLineComment> in)
 specifier|private
 specifier|static
 name|Map
@@ -1520,7 +1521,6 @@ name|Key
 argument_list|,
 name|PatchLineComment
 argument_list|>
-DECL|method|patchLineCommentMap (Iterable<PatchLineComment> in)
 name|patchLineCommentMap
 parameter_list|(
 name|Iterable
@@ -2057,6 +2057,7 @@ name|PatchSet
 argument_list|>
 name|patchSets
 decl_stmt|;
+DECL|field|patchSetApprovals
 specifier|private
 specifier|final
 name|ImmutableMap
@@ -2067,9 +2068,9 @@ name|Key
 argument_list|,
 name|PatchSetApproval
 argument_list|>
-DECL|field|patchSetApprovals
 name|patchSetApprovals
 decl_stmt|;
+DECL|field|patchLineComments
 specifier|private
 specifier|final
 name|ImmutableMap
@@ -2080,7 +2081,6 @@ name|Key
 argument_list|,
 name|PatchLineComment
 argument_list|>
-DECL|field|patchLineComments
 name|patchLineComments
 decl_stmt|;
 DECL|field|reviewers
@@ -2713,6 +2713,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|filterPatchSetApprovals ()
 specifier|private
 name|Map
 argument_list|<
@@ -2722,7 +2723,6 @@ name|Key
 argument_list|,
 name|PatchSetApproval
 argument_list|>
-DECL|method|filterPatchSetApprovals ()
 name|filterPatchSetApprovals
 parameter_list|()
 block|{
@@ -2739,6 +2739,7 @@ name|getParentKey
 argument_list|)
 return|;
 block|}
+DECL|method|filterPatchLineComments ()
 specifier|private
 name|Map
 argument_list|<
@@ -2748,7 +2749,6 @@ name|Key
 argument_list|,
 name|PatchLineComment
 argument_list|>
-DECL|method|filterPatchLineComments ()
 name|filterPatchLineComments
 parameter_list|()
 block|{
@@ -3563,7 +3563,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**    * Set of fields that must always exactly match between ReviewDb and NoteDb.    *<p>    * Used to limit the worst-case quadratic search when pairing off matching    * messages below.    */
+comment|/**    * Set of fields that must always exactly match between ReviewDb and NoteDb.    *    *<p>Used to limit the worst-case quadratic search when pairing off matching messages below.    */
 annotation|@
 name|AutoValue
 DECL|class|ChangeMessageCandidate
@@ -3602,9 +3602,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|author ()
 annotation|@
 name|Nullable
+DECL|method|author ()
 specifier|abstract
 name|Account
 operator|.
@@ -3612,17 +3612,17 @@ name|Id
 name|author
 parameter_list|()
 function_decl|;
-DECL|method|message ()
 annotation|@
 name|Nullable
+DECL|method|message ()
 specifier|abstract
 name|String
 name|message
 parameter_list|()
 function_decl|;
-DECL|method|tag ()
 annotation|@
 name|Nullable
+DECL|method|tag ()
 specifier|abstract
 name|String
 name|tag
@@ -3633,7 +3633,7 @@ comment|//  - patch set, which may be null on ReviewDb side but not NoteDb
 comment|//  - UUID, which is always different between ReviewDb and NoteDb
 comment|//  - writtenOn, which is fuzzy
 block|}
-DECL|method|diffChangeMessages (List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
+DECL|method|diffChangeMessages ( List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
 specifier|private
 specifier|static
 name|void
@@ -4371,7 +4371,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-DECL|method|diffPatchSets (List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
+DECL|method|diffPatchSets ( List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
 specifier|private
 specifier|static
 name|void
@@ -4551,7 +4551,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|diffPatchSetApprovals (List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
+DECL|method|diffPatchSetApprovals ( List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
 specifier|private
 specifier|static
 name|void
@@ -4855,7 +4855,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|diffReviewers (List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
+DECL|method|diffReviewers ( List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
 specifier|private
 specifier|static
 name|void
@@ -4896,7 +4896,7 @@ literal|"reviewer"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|diffPatchLineComments (List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
+DECL|method|diffPatchLineComments ( List<String> diffs, ChangeBundle bundleA, ChangeBundle bundleB)
 specifier|private
 specifier|static
 name|void
@@ -5241,7 +5241,7 @@ name|bs
 argument_list|)
 return|;
 block|}
-DECL|method|diffColumns (List<String> diffs, Class<T> clazz, String desc, ChangeBundle bundleA, T a, ChangeBundle bundleB, T b)
+DECL|method|diffColumns ( List<String> diffs, Class<T> clazz, String desc, ChangeBundle bundleA, T a, ChangeBundle bundleB, T b)
 specifier|private
 specifier|static
 parameter_list|<
@@ -5296,7 +5296,7 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|diffColumnsExcluding (List<String> diffs, Class<T> clazz, String desc, ChangeBundle bundleA, T a, ChangeBundle bundleB, T b, String... exclude)
+DECL|method|diffColumnsExcluding ( List<String> diffs, Class<T> clazz, String desc, ChangeBundle bundleA, T a, ChangeBundle bundleB, T b, String... exclude)
 specifier|private
 specifier|static
 parameter_list|<
@@ -5362,7 +5362,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|diffColumnsExcluding (List<String> diffs, Class<T> clazz, String desc, ChangeBundle bundleA, T a, ChangeBundle bundleB, T b, Iterable<String> exclude)
+DECL|method|diffColumnsExcluding ( List<String> diffs, Class<T> clazz, String desc, ChangeBundle bundleA, T a, ChangeBundle bundleB, T b, Iterable<String> exclude)
 specifier|private
 specifier|static
 parameter_list|<
@@ -5574,7 +5574,7 @@ name|toExclude
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|diffTimestamps (List<String> diffs, String desc, ChangeBundle bundleA, Object a, ChangeBundle bundleB, Object b, String field)
+DECL|method|diffTimestamps ( List<String> diffs, String desc, ChangeBundle bundleA, Object a, ChangeBundle bundleB, Object b, String field)
 specifier|private
 specifier|static
 name|void
@@ -5729,7 +5729,7 @@ name|field
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|diffTimestamps (List<String> diffs, String desc, ChangeBundle bundleA, Timestamp ta, ChangeBundle bundleB, Timestamp tb, String fieldDesc)
+DECL|method|diffTimestamps ( List<String> diffs, String desc, ChangeBundle bundleA, Timestamp ta, ChangeBundle bundleB, Timestamp tb, String fieldDesc)
 specifier|private
 specifier|static
 name|void
@@ -5854,7 +5854,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|timestampsDiffer (ChangeBundle bundleA, Timestamp ta, ChangeBundle bundleB, Timestamp tb)
+DECL|method|timestampsDiffer ( ChangeBundle bundleA, Timestamp ta, ChangeBundle bundleB, Timestamp tb)
 specifier|private
 specifier|static
 name|boolean
@@ -5911,7 +5911,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-DECL|method|diffTimestamps (List<String> diffs, String desc, Change changeFromNoteDb, Timestamp tsFromNoteDb, Change changeFromReviewDb, Timestamp tsFromReviewDb, String field)
+DECL|method|diffTimestamps ( List<String> diffs, String desc, Change changeFromNoteDb, Timestamp tsFromNoteDb, Change changeFromReviewDb, Timestamp tsFromReviewDb, String field)
 specifier|private
 specifier|static
 name|void
@@ -6050,7 +6050,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|diffValues (List<String> diffs, String desc, Object va, Object vb, String name)
+DECL|method|diffValues ( List<String> diffs, String desc, Object va, Object vb, String name)
 specifier|private
 specifier|static
 name|void

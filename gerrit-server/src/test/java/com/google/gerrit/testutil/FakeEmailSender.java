@@ -242,26 +242,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -322,8 +302,28 @@ name|ExecutionException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Email sender implementation that records messages in memory.  *<p>  * This class is mostly threadsafe. The only exception is that not all {@link  * EmailHeader} subclasses are immutable. In particular, if a caller holds a  * reference to an {@code AddressList} and mutates it after sending, the message  * returned by {@link #getMessages()} may or may not reflect mutations.  */
+comment|/**  * Email sender implementation that records messages in memory.  *  *<p>This class is mostly threadsafe. The only exception is that not all {@link EmailHeader}  * subclasses are immutable. In particular, if a caller holds a reference to an {@code AddressList}  * and mutates it after sending, the message returned by {@link #getMessages()} may or may not  * reflect mutations.  */
 end_comment
 
 begin_class
@@ -393,7 +393,7 @@ specifier|static
 class|class
 name|Message
 block|{
-DECL|method|create (Address from, Collection<Address> rcpt, Map<String, EmailHeader> headers, String body)
+DECL|method|create ( Address from, Collection<Address> rcpt, Map<String, EmailHeader> headers, String body)
 specifier|private
 specifier|static
 name|Message
@@ -555,7 +555,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|send (Address from, Collection<Address> rcpt, Map<String, EmailHeader> headers, String body)
+DECL|method|send ( Address from, Collection<Address> rcpt, Map<String, EmailHeader> headers, String body)
 specifier|public
 name|void
 name|send

@@ -265,7 +265,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|avatar
 annotation|@
 name|UiField
 argument_list|(
@@ -273,6 +272,7 @@ name|provided
 operator|=
 literal|true
 argument_list|)
+DECL|field|avatar
 name|AvatarImage
 name|avatar
 decl_stmt|;

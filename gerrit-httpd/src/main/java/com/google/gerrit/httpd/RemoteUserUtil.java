@@ -112,6 +112,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletRequest
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -124,25 +136,13 @@ name|Base64
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|http
-operator|.
-name|HttpServletRequest
-import|;
-end_import
-
 begin_class
 DECL|class|RemoteUserUtil
 specifier|public
 class|class
 name|RemoteUserUtil
 block|{
-comment|/**    * Tries to get username from a request with following strategies:    *<ul>    *<li>ServletRequest#getRemoteUser</li>    *<li>HTTP 'Authorization' header</li>    *<li>Custom HTTP header</li>    *</ul>    *    * @param req request to extract username from.    * @param loginHeader name of header which is used for extracting    *    username.    * @return the extracted username or null.    */
+comment|/**    * Tries to get username from a request with following strategies:    *    *<ul>    *<li>ServletRequest#getRemoteUser    *<li>HTTP 'Authorization' header    *<li>Custom HTTP header    *</ul>    *    * @param req request to extract username from.    * @param loginHeader name of header which is used for extracting username.    * @return the extracted username or null.    */
 DECL|method|getRemoteUser (HttpServletRequest req, String loginHeader)
 specifier|public
 specifier|static
@@ -225,7 +225,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Extracts username from an HTTP Basic or Digest authentication    * header.    *    * @param auth header value which is used for extracting.    * @return username if available or null.    */
+comment|/**    * Extracts username from an HTTP Basic or Digest authentication header.    *    * @param auth header value which is used for extracting.    * @return username if available or null.    */
 DECL|method|extractUsername (String auth)
 specifier|public
 specifier|static

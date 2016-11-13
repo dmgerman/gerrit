@@ -279,7 +279,7 @@ name|String
 index|[]
 name|returnAttributes
 decl_stmt|;
-DECL|method|LdapQuery (final String base, final SearchScope searchScope, final ParameterizedString pattern, final Set<String> returnAttributes)
+DECL|method|LdapQuery ( final String base, final SearchScope searchScope, final ParameterizedString pattern, final Set<String> returnAttributes)
 name|LdapQuery
 parameter_list|(
 specifier|final

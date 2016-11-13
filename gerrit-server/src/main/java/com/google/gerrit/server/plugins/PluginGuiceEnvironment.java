@@ -705,7 +705,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tracks Guice bindings that should be exposed to loaded plugins.  *<p>  * This is an internal implementation detail of how the main server is able to  * export its explicit Guice bindings to tightly coupled plugins, giving them  * access to singletons and request scoped resources just like any core code.  */
+comment|/**  * Tracks Guice bindings that should be exposed to loaded plugins.  *  *<p>This is an internal implementation detail of how the main server is able to export its  * explicit Guice bindings to tightly coupled plugins, giving them access to singletons and request  * scoped resources just like any core code.  */
 end_comment
 
 begin_class
@@ -1921,7 +1921,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|attachItem (Map<TypeLiteral<?>, DynamicItem<?>> items, @Nullable Injector src, Plugin plugin)
+DECL|method|attachItem ( Map<TypeLiteral<?>, DynamicItem<?>> items, @Nullable Injector src, Plugin plugin)
 specifier|private
 name|void
 name|attachItem
@@ -1978,7 +1978,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|attachSet (Map<TypeLiteral<?>, DynamicSet<?>> sets, @Nullable Injector src, Plugin plugin)
+DECL|method|attachSet ( Map<TypeLiteral<?>, DynamicSet<?>> sets, @Nullable Injector src, Plugin plugin)
 specifier|private
 name|void
 name|attachSet
@@ -2030,7 +2030,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|attachMap (Map<TypeLiteral<?>, DynamicMap<?>> maps, @Nullable Injector src, Plugin plugin)
+DECL|method|attachMap ( Map<TypeLiteral<?>, DynamicMap<?>> maps, @Nullable Injector src, Plugin plugin)
 specifier|private
 name|void
 name|attachMap
@@ -3360,7 +3360,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|replace (Plugin newPlugin, ReloadableRegistrationHandle<T> h, Binding<T> b)
+DECL|method|replace ( Plugin newPlugin, ReloadableRegistrationHandle<T> h, Binding<T> b)
 specifier|private
 specifier|static
 parameter_list|<

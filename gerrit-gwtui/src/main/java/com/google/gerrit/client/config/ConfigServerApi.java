@@ -195,7 +195,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A collection of static methods which work on the Gerrit REST API for server  * configuration.  */
+comment|/** A collection of static methods which work on the Gerrit REST API for server configuration. */
 end_comment
 
 begin_class
@@ -390,7 +390,7 @@ DECL|method|EmailConfirmationInput ()
 specifier|protected
 name|EmailConfirmationInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

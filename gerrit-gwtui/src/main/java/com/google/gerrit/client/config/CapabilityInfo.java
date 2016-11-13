@@ -112,7 +112,7 @@ DECL|method|CapabilityInfo ()
 specifier|protected
 name|CapabilityInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

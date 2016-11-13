@@ -70,6 +70,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|codahale
+operator|.
+name|metrics
+operator|.
+name|Metric
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|google
 operator|.
 name|common
@@ -137,18 +149,6 @@ operator|.
 name|DropWizardMetricMaker
 operator|.
 name|CounterImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|codahale
-operator|.
-name|metrics
-operator|.
-name|Metric
 import|;
 end_import
 
@@ -249,7 +249,7 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
-DECL|method|BucketedCounter (DropWizardMetricMaker metrics, String name, Description desc, Field<?>... fields)
+DECL|method|BucketedCounter ( DropWizardMetricMaker metrics, String name, Description desc, Field<?>... fields)
 name|BucketedCounter
 parameter_list|(
 name|DropWizardMetricMaker

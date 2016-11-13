@@ -789,7 +789,7 @@ DECL|method|LabelType ()
 specifier|protected
 name|LabelType
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|LabelType (String name, List<LabelValue> valueList)
 specifier|public
 name|LabelType

@@ -99,7 +99,7 @@ interface|interface
 name|Event
 extends|extends
 name|ProjectEvent
-block|{   }
+block|{}
 DECL|method|onProjectDeleted (Event event)
 name|void
 name|onProjectDeleted

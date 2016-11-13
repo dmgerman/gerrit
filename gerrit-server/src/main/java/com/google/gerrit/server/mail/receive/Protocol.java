@@ -75,12 +75,12 @@ enum|enum
 name|Protocol
 block|{
 DECL|enumConstant|NONE
-DECL|enumConstant|POP3
-DECL|enumConstant|IMAP
 name|NONE
 block|,
+DECL|enumConstant|POP3
 name|POP3
 block|,
+DECL|enumConstant|IMAP
 name|IMAP
 block|}
 end_enum

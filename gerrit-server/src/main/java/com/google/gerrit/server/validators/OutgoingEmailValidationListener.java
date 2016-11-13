@@ -151,7 +151,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to provide validation on outgoing email notification.  */
+comment|/** Listener to provide validation on outgoing email notification. */
 end_comment
 
 begin_interface
@@ -162,7 +162,7 @@ specifier|public
 interface|interface
 name|OutgoingEmailValidationListener
 block|{
-comment|/**    * Arguments supplied to validateOutgoingEmail.    */
+comment|/** Arguments supplied to validateOutgoingEmail. */
 DECL|class|Args
 class|class
 name|Args
@@ -211,7 +211,7 @@ argument_list|>
 name|headers
 decl_stmt|;
 block|}
-comment|/**    * Outgoing e-mail validation.    *    * Invoked by Gerrit just before an e-mail is sent, after all e-mail templates    * have been applied.    *    * Plugins may modify the following fields in args:    * - smtpFromAddress    * - smtpRcptTo    * - body    * - headers    *    * @param args E-mail properties. Some are mutable.    * @throws ValidationException if validation fails.    */
+comment|/**    * Outgoing e-mail validation.    *    *<p>Invoked by Gerrit just before an e-mail is sent, after all e-mail templates have been    * applied.    *    *<p>Plugins may modify the following fields in args: - smtpFromAddress - smtpRcptTo - body -    * headers    *    * @param args E-mail properties. Some are mutable.    * @throws ValidationException if validation fails.    */
 DECL|method|validateOutgoingEmail (OutgoingEmailValidationListener.Args args)
 name|void
 name|validateOutgoingEmail

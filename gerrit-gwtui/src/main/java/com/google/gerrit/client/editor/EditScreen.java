@@ -1022,6 +1022,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|codemirror
@@ -1165,16 +1175,6 @@ operator|.
 name|theme
 operator|.
 name|ThemeLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -1630,7 +1630,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{           }
+block|{}
 annotation|@
 name|Override
 specifier|public
@@ -1677,7 +1677,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -1749,7 +1749,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{           }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -1807,7 +1807,7 @@ parameter_list|(
 name|Throwable
 name|e
 parameter_list|)
-block|{             }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -1874,7 +1874,7 @@ parameter_list|(
 name|Throwable
 name|e
 parameter_list|)
-block|{               }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -1945,7 +1945,7 @@ parameter_list|(
 name|Throwable
 name|e
 parameter_list|)
-block|{           }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -2850,7 +2850,7 @@ parameter_list|(
 name|Throwable
 name|e
 parameter_list|)
-block|{               }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;

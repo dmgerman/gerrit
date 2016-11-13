@@ -319,7 +319,7 @@ name|groupJson
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AgreementJson (Provider<CurrentUser> self, IdentifiedUser.GenericFactory identifiedUserFactory, GroupControl.GenericFactory genericGroupControlFactory, GroupJson groupJson)
+DECL|method|AgreementJson ( Provider<CurrentUser> self, IdentifiedUser.GenericFactory identifiedUserFactory, GroupControl.GenericFactory genericGroupControlFactory, GroupJson groupJson)
 name|AgreementJson
 parameter_list|(
 name|Provider

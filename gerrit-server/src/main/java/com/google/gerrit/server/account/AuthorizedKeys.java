@@ -167,9 +167,9 @@ name|FILE_NAME
 init|=
 literal|"authorized_keys"
 decl_stmt|;
+DECL|field|INVALID_KEY_COMMENT_PREFIX
 annotation|@
 name|VisibleForTesting
-DECL|field|INVALID_KEY_COMMENT_PREFIX
 specifier|public
 specifier|static
 specifier|final
@@ -178,9 +178,9 @@ name|INVALID_KEY_COMMENT_PREFIX
 init|=
 literal|"# INVALID "
 decl_stmt|;
+DECL|field|DELETED_KEY_COMMENT
 annotation|@
 name|VisibleForTesting
-DECL|field|DELETED_KEY_COMMENT
 specifier|public
 specifier|static
 specifier|final
@@ -189,7 +189,7 @@ name|DELETED_KEY_COMMENT
 init|=
 literal|"# DELETED"
 decl_stmt|;
-DECL|method|parse ( Account.Id accountId, String s)
+DECL|method|parse (Account.Id accountId, String s)
 specifier|public
 specifier|static
 name|List

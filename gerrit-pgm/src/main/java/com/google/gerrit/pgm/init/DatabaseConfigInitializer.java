@@ -93,7 +93,7 @@ DECL|interface|DatabaseConfigInitializer
 interface|interface
 name|DatabaseConfigInitializer
 block|{
-comment|/**    * Performs database platform specific configuration steps and writes    * configuration parameters into the given database section    */
+comment|/**    * Performs database platform specific configuration steps and writes configuration parameters    * into the given database section    */
 DECL|method|initConfig (Section databaseSection)
 name|void
 name|initConfig

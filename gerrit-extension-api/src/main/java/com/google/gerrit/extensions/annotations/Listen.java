@@ -129,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation for auto-registered extension point implementations.  *<p>  * Plugins or extensions using auto-registration should apply this annotation to  * any non-abstract class that implements an unnamed extension point, such as a  * notification listener. Gerrit will automatically determine which extension  * points to apply based on the interfaces the type implements.  *  * @see Export  */
+comment|/**  * Annotation for auto-registered extension point implementations.  *  *<p>Plugins or extensions using auto-registration should apply this annotation to any non-abstract  * class that implements an unnamed extension point, such as a notification listener. Gerrit will  * automatically determine which extension points to apply based on the interfaces the type  * implements.  *  * @see Export  */
 end_comment
 
 begin_annotation_defn
@@ -153,7 +153,7 @@ DECL|annotation|Listen
 specifier|public
 annotation_defn|@interface
 name|Listen
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

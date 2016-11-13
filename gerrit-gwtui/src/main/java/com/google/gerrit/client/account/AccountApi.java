@@ -295,7 +295,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A collection of static methods which work on the Gerrit REST API for specific  * accounts.  */
+comment|/** A collection of static methods which work on the Gerrit REST API for specific accounts. */
 end_comment
 
 begin_class
@@ -772,7 +772,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Set preferred email address */
-DECL|method|setPreferredEmail (String account, String email, AsyncCallback<NativeString> cb)
+DECL|method|setPreferredEmail ( String account, String email, AsyncCallback<NativeString> cb)
 specifier|public
 specifier|static
 name|void
@@ -910,7 +910,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Retrieve Watched Projects */
-DECL|method|getWatchedProjects (String account, AsyncCallback<JsArray<ProjectWatchInfo>> cb)
+DECL|method|getWatchedProjects ( String account, AsyncCallback<JsArray<ProjectWatchInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -1159,8 +1159,8 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Delete SSH keys. For each key to be deleted a separate DELETE request is    * fired to the server. The {@code onSuccess} method of the provided callback    * is invoked once after all requests succeeded. If any request fails the    * callbacks' {@code onFailure} method is invoked. In a failure case it can be    * that still some of the keys were successfully deleted.    */
-DECL|method|deleteSshKeys (String account, Set<Integer> sequenceNumbers, AsyncCallback<VoidResult> cb)
+comment|/**    * Delete SSH keys. For each key to be deleted a separate DELETE request is fired to the server.    * The {@code onSuccess} method of the provided callback is invoked once after all requests    * succeeded. If any request fails the callbacks' {@code onFailure} method is invoked. In a    * failure case it can be that still some of the keys were successfully deleted.    */
+DECL|method|deleteSshKeys ( String account, Set<Integer> sequenceNumbers, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -1435,7 +1435,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|projectWatchArrayFromSet ( Set<ProjectWatchInfo> set)
+DECL|method|projectWatchArrayFromSet (Set<ProjectWatchInfo> set)
 specifier|private
 specifier|static
 name|JsArray
@@ -1522,7 +1522,7 @@ DECL|method|AgreementInput ()
 specifier|protected
 name|AgreementInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|HttpPasswordInput
 specifier|private
@@ -1561,7 +1561,7 @@ DECL|method|HttpPasswordInput ()
 specifier|protected
 name|HttpPasswordInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|UsernameInput
 specifier|private
@@ -1600,7 +1600,7 @@ DECL|method|UsernameInput ()
 specifier|protected
 name|UsernameInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|AccountNameInput
 specifier|private
@@ -1639,9 +1639,9 @@ DECL|method|AccountNameInput ()
 specifier|protected
 name|AccountNameInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
-DECL|method|addGpgKey (String account, String armored, AsyncCallback<NativeMap<GpgKeyInfo>> cb)
+DECL|method|addGpgKey ( String account, String armored, AsyncCallback<NativeMap<GpgKeyInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -1692,7 +1692,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteGpgKeys (String account, Iterable<String> fingerprints, AsyncCallback<NativeMap<GpgKeyInfo>> cb)
+DECL|method|deleteGpgKeys ( String account, Iterable<String> fingerprints, AsyncCallback<NativeMap<GpgKeyInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -1853,7 +1853,7 @@ name|keys
 parameter_list|)
 comment|/*-{       return {'add': keys};     }-*/
 function_decl|;
-DECL|method|createWithDelete ( JsArrayString fingerprints)
+DECL|method|createWithDelete (JsArrayString fingerprints)
 specifier|private
 specifier|static
 specifier|native
@@ -1869,7 +1869,7 @@ DECL|method|GpgKeysInput ()
 specifier|protected
 name|GpgKeysInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

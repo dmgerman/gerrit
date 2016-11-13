@@ -250,34 +250,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|AnyObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -410,6 +382,34 @@ name|InflaterInputStream
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|AnyObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_class
 DECL|class|PatchList
 specifier|public
@@ -478,9 +478,9 @@ return|;
 block|}
 block|}
 decl_stmt|;
+DECL|field|oldId
 annotation|@
 name|Nullable
-DECL|field|oldId
 specifier|private
 specifier|transient
 name|ObjectId
@@ -523,7 +523,7 @@ name|PatchListEntry
 index|[]
 name|patches
 decl_stmt|;
-DECL|method|PatchList (@ullable AnyObjectId oldId, AnyObjectId newId, boolean isMerge, ComparisonType comparisonType, PatchListEntry[] patches)
+DECL|method|PatchList ( @ullable AnyObjectId oldId, AnyObjectId newId, boolean isMerge, ComparisonType comparisonType, PatchListEntry[] patches)
 specifier|public
 name|PatchList
 parameter_list|(
@@ -734,7 +734,7 @@ return|return
 name|deletions
 return|;
 block|}
-comment|/**    * Get a sorted, modifiable list of all files in this list.    *<p>    * The returned list items do not populate:    *<ul>    *<li>{@link Patch#getCommentCount()}    *<li>{@link Patch#getDraftCount()}    *<li>{@link Patch#isReviewedByCurrentUser()}    *</ul>    *    * @param setId the patch set identity these patches belong to. This really    *        should not need to be specified, but is a current legacy artifact of    *        how the cache is keyed versus how the database is keyed.    */
+comment|/**    * Get a sorted, modifiable list of all files in this list.    *    *<p>The returned list items do not populate:    *    *<ul>    *<li>{@link Patch#getCommentCount()}    *<li>{@link Patch#getDraftCount()}    *<li>{@link Patch#isReviewedByCurrentUser()}    *</ul>    *    * @param setId the patch set identity these patches belong to. This really should not need to be    *     specified, but is a current legacy artifact of how the cache is keyed versus how the    *     database is keyed.    */
 DECL|method|toPatchList (final PatchSet.Id setId)
 specifier|public
 name|List

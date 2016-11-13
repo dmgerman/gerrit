@@ -723,7 +723,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createExtensionPoint ( GerritUiExtensionPoint extensionPoint)
+DECL|method|createExtensionPoint (GerritUiExtensionPoint extensionPoint)
 specifier|protected
 name|ExtensionPanel
 name|createExtensionPoint

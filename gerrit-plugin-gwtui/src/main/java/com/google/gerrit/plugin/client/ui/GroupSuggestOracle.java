@@ -218,7 +218,7 @@ specifier|final
 name|int
 name|chars
 decl_stmt|;
-comment|/**    * @param chars minimum chars to start suggesting.    */
+comment|/** @param chars minimum chars to start suggesting. */
 DECL|method|GroupSuggestOracle (int chars)
 specifier|public
 name|GroupSuggestOracle

@@ -109,7 +109,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The RequestContext is an interface exposing the fields that are needed  * by the GerritGlobalModule scope.  */
+comment|/**  * The RequestContext is an interface exposing the fields that are needed by the GerritGlobalModule  * scope.  */
 end_comment
 
 begin_interface

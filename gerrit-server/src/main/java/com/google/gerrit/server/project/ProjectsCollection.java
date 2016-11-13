@@ -276,6 +276,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -285,16 +295,6 @@ operator|.
 name|lib
 operator|.
 name|Constants
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -366,7 +366,7 @@ name|createProjectFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectsCollection (DynamicMap<RestView<ProjectResource>> views, Provider<ListProjects> list, ProjectControl.GenericFactory controlFactory, CreateProject.Factory factory, Provider<CurrentUser> user)
+DECL|method|ProjectsCollection ( DynamicMap<RestView<ProjectResource>> views, Provider<ListProjects> list, ProjectControl.GenericFactory controlFactory, CreateProject.Factory factory, Provider<CurrentUser> user)
 name|ProjectsCollection
 parameter_list|(
 name|DynamicMap
@@ -507,7 +507,7 @@ return|return
 name|rsrc
 return|;
 block|}
-comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @return the project    * @throws UnprocessableEntityException thrown if the project ID cannot be    *         resolved or if the project is not visible to the calling user    * @throws IOException thrown when there is an error.    */
+comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @return the project    * @throws UnprocessableEntityException thrown if the project ID cannot be resolved or if the    *     project is not visible to the calling user    * @throws IOException thrown when there is an error.    */
 DECL|method|parse (String id)
 specifier|public
 name|ProjectResource
@@ -530,7 +530,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @param checkVisibility Whether to check or not that project is visible to    *        the calling user    * @return the project    * @throws UnprocessableEntityException thrown if the project ID cannot be    *         resolved or if the project is not visible to the calling user and    *         checkVisibility is true.    * @throws IOException thrown when there is an error.    */
+comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @param checkVisibility Whether to check or not that project is visible to the calling user    * @return the project    * @throws UnprocessableEntityException thrown if the project ID cannot be resolved or if the    *     project is not visible to the calling user and checkVisibility is true.    * @throws IOException thrown when there is an error.    */
 DECL|method|parse (String id, boolean checkVisibility)
 specifier|public
 name|ProjectResource

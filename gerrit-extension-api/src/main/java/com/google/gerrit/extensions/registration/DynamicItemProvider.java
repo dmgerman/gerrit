@@ -197,9 +197,9 @@ argument_list|>
 argument_list|>
 name|key
 decl_stmt|;
+DECL|field|injector
 annotation|@
 name|Inject
-DECL|field|injector
 specifier|private
 name|Injector
 name|injector

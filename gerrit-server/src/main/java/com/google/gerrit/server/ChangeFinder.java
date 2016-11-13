@@ -304,7 +304,7 @@ operator|=
 name|queryProvider
 expr_stmt|;
 block|}
-comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier, either a numeric ID, a Change-Id, or    *     project~branch~id triplet.    * @param user user to wrap in controls.    * @return possibly-empty list of controls for all matching changes,    *     corresponding to the given user; may or may not be visible.    * @throws OrmException if an error occurred querying the database.    */
+comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier, either a numeric ID, a Change-Id, or project~branch~id triplet.    * @param user user to wrap in controls.    * @return possibly-empty list of controls for all matching changes, corresponding to the given    *     user; may or may not be visible.    * @throws OrmException if an error occurred querying the database.    */
 DECL|method|find (String id, CurrentUser user)
 specifier|public
 name|List

@@ -112,26 +112,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -258,6 +238,26 @@ name|ServletContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 DECL|class|PluginServletContext
 class|class
@@ -333,7 +333,7 @@ DECL|method|PluginServletContext ()
 specifier|private
 name|PluginServletContext
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|Handler
 specifier|private
 specifier|static

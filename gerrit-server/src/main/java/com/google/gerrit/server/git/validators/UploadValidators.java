@@ -144,6 +144,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -209,16 +219,6 @@ operator|.
 name|transport
 operator|.
 name|UploadPack
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -331,7 +331,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onSendPack (UploadPack up, Collection<? extends ObjectId> wants, Collection<? extends ObjectId> haves)
+DECL|method|onSendPack ( UploadPack up, Collection<? extends ObjectId> wants, Collection<? extends ObjectId> haves)
 specifier|public
 name|void
 name|onSendPack
@@ -407,7 +407,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onBeginNegotiateRound (UploadPack up, Collection<? extends ObjectId> wants, int cntOffered)
+DECL|method|onBeginNegotiateRound ( UploadPack up, Collection<? extends ObjectId> wants, int cntOffered)
 specifier|public
 name|void
 name|onBeginNegotiateRound
@@ -428,10 +428,10 @@ name|cntOffered
 parameter_list|)
 throws|throws
 name|ServiceMayNotContinueException
-block|{   }
+block|{}
 annotation|@
 name|Override
-DECL|method|onEndNegotiateRound (UploadPack up, Collection<? extends ObjectId> wants, int cntCommon, int cntNotFound, boolean ready)
+DECL|method|onEndNegotiateRound ( UploadPack up, Collection<? extends ObjectId> wants, int cntCommon, int cntNotFound, boolean ready)
 specifier|public
 name|void
 name|onEndNegotiateRound
@@ -458,7 +458,7 @@ name|ready
 parameter_list|)
 throws|throws
 name|ServiceMayNotContinueException
-block|{   }
+block|{}
 block|}
 end_class
 

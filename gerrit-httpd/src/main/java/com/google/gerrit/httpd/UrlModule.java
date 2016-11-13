@@ -448,20 +448,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -503,6 +489,20 @@ operator|.
 name|http
 operator|.
 name|HttpServletResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
 import|;
 end_import
 
@@ -1788,7 +1788,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|toGerrit (final String target, final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|toGerrit ( final String target, final HttpServletRequest req, final HttpServletResponse rsp)
 specifier|static
 name|void
 name|toGerrit

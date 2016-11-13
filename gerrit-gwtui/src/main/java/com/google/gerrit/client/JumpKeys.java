@@ -713,7 +713,7 @@ DECL|method|JumpKeys ()
 specifier|private
 name|JumpKeys
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

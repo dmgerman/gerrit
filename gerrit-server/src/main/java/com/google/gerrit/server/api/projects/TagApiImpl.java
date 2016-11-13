@@ -364,7 +364,7 @@ name|project
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TagApiImpl (ListTags listTags, CreateTag.Factory createTagFactory, DeleteTag deleteTag, TagsCollection tags, @Assisted ProjectResource project, @Assisted String ref)
+DECL|method|TagApiImpl ( ListTags listTags, CreateTag.Factory createTagFactory, DeleteTag deleteTag, TagsCollection tags, @Assisted ProjectResource project, @Assisted String ref)
 name|TagApiImpl
 parameter_list|(
 name|ListTags

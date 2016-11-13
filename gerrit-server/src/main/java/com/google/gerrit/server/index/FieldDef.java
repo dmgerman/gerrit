@@ -199,7 +199,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Definition of a field stored in the secondary index.  *  * @param<I> input type from which documents are created and search results are  *     returned.  * @param<T> type that should be extracted from the input object when converting  *     to an index document.  */
+comment|/**  * Definition of a field stored in the secondary index.  *  * @param<I> input type from which documents are created and search results are returned.  * @param<T> type that should be extracted from the input object when converting to an index  *     document.  */
 end_comment
 
 begin_class
@@ -379,7 +379,7 @@ name|allUsers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FillArgs (TrackingFooters trackingFooters, @GerritServerConfig Config cfg, AllUsersName allUsers)
+DECL|method|FillArgs ( TrackingFooters trackingFooters, @GerritServerConfig Config cfg, AllUsersName allUsers)
 name|FillArgs
 parameter_list|(
 name|TrackingFooters
@@ -539,7 +539,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**    * @return type of the field; for repeatable fields, the inner type, not the    *     iterable type.    */
+comment|/** @return type of the field; for repeatable fields, the inner type, not the iterable type. */
 DECL|method|getType ()
 specifier|public
 specifier|final
@@ -566,7 +566,7 @@ return|return
 name|stored
 return|;
 block|}
-comment|/**    * Get the field contents from the input object.    *    * @param input input object.    * @param args arbitrary arguments needed to fill in indexable fields of the    *     input object.    * @return the field value(s) to index.    *    * @throws OrmException    */
+comment|/**    * Get the field contents from the input object.    *    * @param input input object.    * @param args arbitrary arguments needed to fill in indexable fields of the input object.    * @return the field value(s) to index.    * @throws OrmException    */
 DECL|method|get (I input, FillArgs args)
 specifier|public
 specifier|abstract

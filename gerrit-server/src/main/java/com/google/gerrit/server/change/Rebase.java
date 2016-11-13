@@ -476,6 +476,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|EnumSet
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -561,26 +581,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|EnumSet
 import|;
 end_import
 
@@ -690,7 +690,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Rebase (BatchUpdate.Factory updateFactory, GitRepositoryManager repoManager, RebaseChangeOp.Factory rebaseFactory, RebaseUtil rebaseUtil, ChangeJson.Factory json, Provider<ReviewDb> dbProvider)
+DECL|method|Rebase ( BatchUpdate.Factory updateFactory, GitRepositoryManager repoManager, RebaseChangeOp.Factory rebaseFactory, RebaseUtil rebaseUtil, ChangeJson.Factory json, Provider<ReviewDb> dbProvider)
 specifier|public
 name|Rebase
 parameter_list|(

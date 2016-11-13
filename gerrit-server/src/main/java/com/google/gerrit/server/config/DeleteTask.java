@@ -241,7 +241,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|apply (TaskResource rsrc, Input input)

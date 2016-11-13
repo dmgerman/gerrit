@@ -237,7 +237,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A collection of static methods which work on the Gerrit REST API for specific  * groups.  */
+comment|/** A collection of static methods which work on the Gerrit REST API for specific groups. */
 end_comment
 
 begin_class
@@ -436,7 +436,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Rename a group */
-DECL|method|renameGroup (AccountGroup.UUID group, String newName, AsyncCallback<VoidResult> cb)
+DECL|method|renameGroup ( AccountGroup.UUID group, String newName, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -491,7 +491,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Set description for a group */
-DECL|method|setGroupDescription (AccountGroup.UUID group, String description, AsyncCallback<VoidResult> cb)
+DECL|method|setGroupDescription ( AccountGroup.UUID group, String description, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -575,7 +575,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Set owner for a group */
-DECL|method|setGroupOwner (AccountGroup.UUID group, String owner, AsyncCallback<GroupInfo> cb)
+DECL|method|setGroupOwner ( AccountGroup.UUID group, String owner, AsyncCallback<GroupInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -630,7 +630,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Set the options for a group */
-DECL|method|setGroupOptions (AccountGroup.UUID group, boolean isVisibleToAll, AsyncCallback<VoidResult> cb)
+DECL|method|setGroupOptions ( AccountGroup.UUID group, boolean isVisibleToAll, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -685,7 +685,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Add member to a group. */
-DECL|method|addMember (AccountGroup.UUID group, String member, AsyncCallback<AccountInfo> cb)
+DECL|method|addMember ( AccountGroup.UUID group, String member, AsyncCallback<AccountInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -723,7 +723,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Add members to a group. */
-DECL|method|addMembers (AccountGroup.UUID group, Set<String> members, final AsyncCallback<JsArray<AccountInfo>> cb)
+DECL|method|addMembers ( AccountGroup.UUID group, Set<String> members, final AsyncCallback<JsArray<AccountInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -866,7 +866,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Remove members from a group. */
-DECL|method|removeMembers (AccountGroup.UUID group, Set<Integer> ids, final AsyncCallback<VoidResult> cb)
+DECL|method|removeMembers ( AccountGroup.UUID group, Set<Integer> ids, final AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -975,7 +975,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Include a group into a group. */
-DECL|method|addIncludedGroup (AccountGroup.UUID group, String include, AsyncCallback<GroupInfo> cb)
+DECL|method|addIncludedGroup ( AccountGroup.UUID group, String include, AsyncCallback<GroupInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -1013,7 +1013,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Include groups into a group. */
-DECL|method|addIncludedGroups (AccountGroup.UUID group, Set<String> includedGroups, final AsyncCallback<JsArray<GroupInfo>> cb)
+DECL|method|addIncludedGroups ( AccountGroup.UUID group, Set<String> includedGroups, final AsyncCallback<JsArray<GroupInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -1156,7 +1156,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Remove included groups from a group. */
-DECL|method|removeIncludedGroups (AccountGroup.UUID group, Set<AccountGroup.UUID> ids, final AsyncCallback<VoidResult> cb)
+DECL|method|removeIncludedGroups ( AccountGroup.UUID group, Set<AccountGroup.UUID> ids, final AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -1276,7 +1276,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Get audit log of a group. */
-DECL|method|getAuditLog (AccountGroup.UUID group, AsyncCallback<JsArray<GroupAuditEventInfo>> cb)
+DECL|method|getAuditLog ( AccountGroup.UUID group, AsyncCallback<JsArray<GroupAuditEventInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -1465,7 +1465,7 @@ DECL|method|GroupInput ()
 specifier|protected
 name|GroupInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|GroupOptionsInput
 specifier|private
@@ -1504,7 +1504,7 @@ DECL|method|GroupOptionsInput ()
 specifier|protected
 name|GroupOptionsInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|MemberInput
 specifier|private
@@ -1561,7 +1561,7 @@ DECL|method|MemberInput ()
 specifier|protected
 name|MemberInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|IncludedGroupInput
 specifier|private
@@ -1618,7 +1618,7 @@ DECL|method|IncludedGroupInput ()
 specifier|protected
 name|IncludedGroupInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

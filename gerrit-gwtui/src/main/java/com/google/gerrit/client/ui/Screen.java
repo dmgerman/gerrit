@@ -203,7 +203,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**   *  A Screen layout with a header and a body.   *   * The header is mainly a text title, but it can be decorated   * in the West, the East, and the FarEast by any Widget.  The   * West and East decorations will surround the text on the   * left and right respectively, and the FarEast will be right   * justified to the right edge of the screen.  The East   * decoration will expand to take up any extra space.   */
+comment|/**  * A Screen layout with a header and a body.  *  *<p>The header is mainly a text title, but it can be decorated in the West, the East, and the  * FarEast by any Widget. The West and East decorations will surround the text on the left and right  * respectively, and the FarEast will be right justified to the right edge of the screen. The East  * decoration will expand to take up any extra space.  */
 end_comment
 
 begin_class
@@ -349,22 +349,22 @@ specifier|public
 name|void
 name|registerKeys
 parameter_list|()
-block|{   }
+block|{}
 DECL|enum|Cols
 specifier|private
 enum|enum
 name|Cols
 block|{
 DECL|enumConstant|West
-DECL|enumConstant|Title
-DECL|enumConstant|East
-DECL|enumConstant|FarEast
 name|West
 block|,
+DECL|enumConstant|Title
 name|Title
 block|,
+DECL|enumConstant|East
 name|East
 block|,
+DECL|enumConstant|FarEast
 name|FarEast
 block|}
 DECL|method|onInitUI ()

@@ -262,7 +262,7 @@ specifier|public
 class|class
 name|ProjectAssert
 block|{
-DECL|method|assertThatNameList ( Iterable<ProjectInfo> actualIt)
+DECL|method|assertThatNameList (Iterable<ProjectInfo> actualIt)
 specifier|public
 specifier|static
 name|IterableSubject
@@ -494,7 +494,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertProjectOwners (Set<AccountGroup.UUID> expectedOwners, ProjectState state)
+DECL|method|assertProjectOwners ( Set<AccountGroup.UUID> expectedOwners, ProjectState state)
 specifier|public
 specifier|static
 name|void

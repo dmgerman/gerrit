@@ -174,21 +174,21 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -198,7 +198,7 @@ specifier|public
 class|class
 name|CommentFormatterTest
 block|{
-DECL|method|assertBlock (List<CommentFormatter.Block> list, int index, CommentFormatter.BlockType type, String text)
+DECL|method|assertBlock ( List<CommentFormatter.Block> list, int index, CommentFormatter.BlockType type, String text)
 specifier|private
 name|void
 name|assertBlock
@@ -280,7 +280,7 @@ name|isNull
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertListBlock (List<CommentFormatter.Block> list, int index, int itemIndex, String text)
+DECL|method|assertListBlock ( List<CommentFormatter.Block> list, int index, int itemIndex, String text)
 specifier|private
 name|void
 name|assertListBlock

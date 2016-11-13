@@ -514,7 +514,7 @@ name|HTMLPanel
 argument_list|,
 name|ProjectAccessEditor
 argument_list|>
-block|{   }
+block|{}
 DECL|field|uiBinder
 specifier|private
 specifier|static
@@ -531,43 +531,43 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|inheritsFrom
 annotation|@
 name|UiField
-DECL|field|inheritsFrom
 name|DivElement
 name|inheritsFrom
 decl_stmt|;
+DECL|field|parentProject
 annotation|@
 name|UiField
-DECL|field|parentProject
 name|Hyperlink
 name|parentProject
 decl_stmt|;
+DECL|field|parentProjectBox
 annotation|@
 name|UiField
 annotation|@
 name|Editor
 operator|.
 name|Ignore
-DECL|field|parentProjectBox
 name|ParentProjectBox
 name|parentProjectBox
 decl_stmt|;
+DECL|field|history
 annotation|@
 name|UiField
-DECL|field|history
 name|DivElement
 name|history
 decl_stmt|;
+DECL|field|webLinkPanel
 annotation|@
 name|UiField
-DECL|field|webLinkPanel
 name|FlowPanel
 name|webLinkPanel
 decl_stmt|;
+DECL|field|localContainer
 annotation|@
 name|UiField
-DECL|field|localContainer
 name|FlowPanel
 name|localContainer
 decl_stmt|;
@@ -580,9 +580,9 @@ name|AccessSectionEditor
 argument_list|>
 name|local
 decl_stmt|;
+DECL|field|addSection
 annotation|@
 name|UiField
-DECL|field|addSection
 name|Anchor
 name|addSection
 decl_stmt|;
@@ -1025,7 +1025,7 @@ name|String
 modifier|...
 name|paths
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|setDelegate (EditorDelegate<ProjectAccess> delegate)
@@ -1039,7 +1039,7 @@ name|ProjectAccess
 argument_list|>
 name|delegate
 parameter_list|)
-block|{   }
+block|{}
 DECL|method|setEditing (final boolean editing)
 name|void
 name|setEditing

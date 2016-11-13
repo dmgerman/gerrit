@@ -75,12 +75,12 @@ enum|enum
 name|RecipientType
 block|{
 DECL|enumConstant|TO
-DECL|enumConstant|CC
-DECL|enumConstant|BCC
 name|TO
 block|,
+DECL|enumConstant|CC
 name|CC
 block|,
+DECL|enumConstant|BCC
 name|BCC
 block|}
 end_enum

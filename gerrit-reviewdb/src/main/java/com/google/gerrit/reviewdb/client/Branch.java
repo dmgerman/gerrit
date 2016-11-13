@@ -302,7 +302,7 @@ DECL|method|Branch ()
 specifier|protected
 name|Branch
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|Branch (final Branch.NameKey newName)
 specifier|public
 name|Branch

@@ -85,7 +85,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds the current state of the NoteDb migration.  *<p>  * The migration will proceed one root entity type at a time. A<em>root  * entity</em> is an entity stored in ReviewDb whose key's  * {@code getParentKey()} method returns null. For an example of the entity  * hierarchy rooted at Change, see the diagram in  * {@code com.google.gerrit.reviewdb.client.Change}.  *<p>  * During a transitional period, each root entity group from ReviewDb may be  * either<em>written to</em> or<em>both written to and read from</em> NoteDb.  *<p>  * This class controls the state of the migration according to options in  * {@code gerrit.config}. In general, any changes to these options should only  * be made by adventurous administrators, who know what they're doing, on  * non-production data, for the purposes of testing the NoteDb implementation.  * Changing options quite likely requires re-running {@code RebuildNoteDb}. For  * these reasons, the options remain undocumented.  */
+comment|/**  * Holds the current state of the NoteDb migration.  *  *<p>The migration will proceed one root entity type at a time. A<em>root entity</em> is an entity  * stored in ReviewDb whose key's {@code getParentKey()} method returns null. For an example of the  * entity hierarchy rooted at Change, see the diagram in {@code  * com.google.gerrit.reviewdb.client.Change}.  *  *<p>During a transitional period, each root entity group from ReviewDb may be either<em>written  * to</em> or<em>both written to and read from</em> NoteDb.  *  *<p>This class controls the state of the migration according to options in {@code gerrit.config}.  * In general, any changes to these options should only be made by adventurous administrators, who  * know what they're doing, on non-production data, for the purposes of testing the NoteDb  * implementation. Changing options quite likely requires re-running {@code RebuildNoteDb}. For  * these reasons, the options remain undocumented.  */
 end_comment
 
 begin_class
@@ -95,7 +95,7 @@ specifier|abstract
 class|class
 name|NotesMigration
 block|{
-comment|/**    * Read changes from NoteDb.    *<p>    * Change data is read from NoteDb refs, but ReviewDb is still the source of    * truth. If the loader determines NoteDb is out of date, the change data in    * NoteDb will be transparently rebuilt. This means that some code paths that    * look read-only may in fact attempt to write.    *<p>    * If true and {@code writeChanges() = false}, changes can still be read from    * NoteDb, but any attempts to write will generate an error.    */
+comment|/**    * Read changes from NoteDb.    *    *<p>Change data is read from NoteDb refs, but ReviewDb is still the source of truth. If the    * loader determines NoteDb is out of date, the change data in NoteDb will be transparently    * rebuilt. This means that some code paths that look read-only may in fact attempt to write.    *    *<p>If true and {@code writeChanges() = false}, changes can still be read from NoteDb, but any    * attempts to write will generate an error.    */
 DECL|method|readChanges ()
 specifier|public
 specifier|abstract
@@ -103,7 +103,7 @@ name|boolean
 name|readChanges
 parameter_list|()
 function_decl|;
-comment|/**    * Write changes to NoteDb.    *<p>    * Updates to change data are written to NoteDb refs, but ReviewDb is still    * the source of truth. Change data will not be written unless the NoteDb refs    * are already up to date, and the write path will attempt to rebuild the    * change if not.    *<p>    * If false, the behavior when attempting to write depends on    * {@code readChanges()}. If {@code readChanges() = false}, writes to NoteDb    * are simply ignored; if {@code true}, any attempts to write will generate an    * error.    */
+comment|/**    * Write changes to NoteDb.    *    *<p>Updates to change data are written to NoteDb refs, but ReviewDb is still the source of    * truth. Change data will not be written unless the NoteDb refs are already up to date, and the    * write path will attempt to rebuild the change if not.    *    *<p>If false, the behavior when attempting to write depends on {@code readChanges()}. If {@code    * readChanges() = false}, writes to NoteDb are simply ignored; if {@code true}, any attempts to    * write will generate an error.    */
 DECL|method|writeChanges ()
 specifier|protected
 specifier|abstract
@@ -111,7 +111,7 @@ name|boolean
 name|writeChanges
 parameter_list|()
 function_decl|;
-comment|/**    * Read sequential change ID numbers from NoteDb.    *<p>    * If true, change IDs are read from {@code refs/sequences/changes} in    * All-Projects. If false, change IDs are read from ReviewDb's native    * sequences.    */
+comment|/**    * Read sequential change ID numbers from NoteDb.    *    *<p>If true, change IDs are read from {@code refs/sequences/changes} in All-Projects. If false,    * change IDs are read from ReviewDb's native sequences.    */
 DECL|method|readChangeSequence ()
 specifier|public
 specifier|abstract
@@ -141,7 +141,7 @@ name|boolean
 name|writeAccounts
 parameter_list|()
 function_decl|;
-comment|/**    * Whether to fail when reading any data from NoteDb.    *<p>    * Used in conjunction with {@link #readChanges()} for tests.    */
+comment|/**    * Whether to fail when reading any data from NoteDb.    *    *<p>Used in conjunction with {@link #readChanges()} for tests.    */
 DECL|method|failOnLoad ()
 specifier|public
 name|boolean

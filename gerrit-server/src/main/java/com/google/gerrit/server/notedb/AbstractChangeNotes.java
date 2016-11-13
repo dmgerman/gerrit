@@ -358,6 +358,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -412,18 +422,8 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
-comment|/** View of contents at a single ref related to some change. **/
+comment|/** View of contents at a single ref related to some change. * */
 end_comment
 
 begin_class
@@ -675,18 +675,18 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|walk ()
 annotation|@
 name|Nullable
+DECL|method|walk ()
 specifier|public
 specifier|abstract
 name|ChangeNotesRevWalk
 name|walk
 parameter_list|()
 function_decl|;
-DECL|method|id ()
 annotation|@
 name|Nullable
+DECL|method|id ()
 specifier|public
 specifier|abstract
 name|ObjectId
@@ -754,7 +754,7 @@ specifier|private
 name|boolean
 name|loaded
 decl_stmt|;
-DECL|method|AbstractChangeNotes (Args args, Change.Id changeId, @Nullable PrimaryStorage primaryStorage, boolean autoRebuild)
+DECL|method|AbstractChangeNotes ( Args args, Change.Id changeId, @Nullable PrimaryStorage primaryStorage, boolean autoRebuild)
 name|AbstractChangeNotes
 parameter_list|(
 name|Args
@@ -1061,7 +1061,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * Open a handle for reading this entity from a repository.    *<p>    * Implementations may override this method to provide auto-rebuilding    * behavior.    *    * @param repo open repository.    * @return handle for reading the entity.    *    * @throws NoSuchChangeException change does not exist.    * @throws IOException a repo-level error occurred.    */
+comment|/**    * Open a handle for reading this entity from a repository.    *    *<p>Implementations may override this method to provide auto-rebuilding behavior.    *    * @param repo open repository.    * @return handle for reading the entity.    * @throws NoSuchChangeException change does not exist.    * @throws IOException a repo-level error occurred.    */
 DECL|method|openHandle (Repository repo)
 specifier|protected
 name|LoadHandle
@@ -1234,7 +1234,7 @@ name|void
 name|loadDefaults
 parameter_list|()
 function_decl|;
-comment|/**    * @return the NameKey for the project where the notes should be stored,    *    which is not necessarily the same as the change's project.    */
+comment|/**    * @return the NameKey for the project where the notes should be stored, which is not necessarily    *     the same as the change's project.    */
 DECL|method|getProjectName ()
 specifier|public
 specifier|abstract

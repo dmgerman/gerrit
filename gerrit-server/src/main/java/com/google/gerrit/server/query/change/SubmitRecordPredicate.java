@@ -179,7 +179,7 @@ name|SubmitRecordPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
-DECL|method|create (String label, SubmitRecord.Label.Status status, Set<Account.Id> accounts)
+DECL|method|create ( String label, SubmitRecord.Label.Status status, Set<Account.Id> accounts)
 specifier|static
 name|Predicate
 argument_list|<

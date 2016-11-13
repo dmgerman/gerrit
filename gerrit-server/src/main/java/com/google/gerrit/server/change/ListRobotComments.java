@@ -253,7 +253,7 @@ name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListRobotComments (Provider<ReviewDb> db, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
+DECL|method|ListRobotComments ( Provider<ReviewDb> db, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
 name|ListRobotComments
 parameter_list|(
 name|Provider

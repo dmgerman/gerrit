@@ -114,6 +114,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -133,16 +143,6 @@ operator|.
 name|args4j
 operator|.
 name|Option
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringWriter
 import|;
 end_import
 
@@ -556,7 +556,7 @@ literal|0
 return|;
 block|}
 block|}
-comment|/**    * Run this program's logic, returning the command exit status.    *<p>    * When this method completes, the JVM is terminated. To keep the JVM running,    * use {@code return never()}.    */
+comment|/**    * Run this program's logic, returning the command exit status.    *    *<p>When this method completes, the JVM is terminated. To keep the JVM running, use {@code    * return never()}.    */
 DECL|method|run ()
 specifier|public
 specifier|abstract

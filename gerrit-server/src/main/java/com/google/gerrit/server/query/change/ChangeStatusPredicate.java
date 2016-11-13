@@ -217,7 +217,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Predicate for a {@link Status}.  *<p>  * The actual name of this operator can differ, it usually comes as {@code  * status:} but may also be {@code is:} to help do-what-i-meanery for end-users  * searching for changes. Either operator name has the same meaning.  *<p>  * Status names are looked up by prefix case-insensitively.  */
+comment|/**  * Predicate for a {@link Status}.  *  *<p>The actual name of this operator can differ, it usually comes as {@code status:} but may also  * be {@code is:} to help do-what-i-meanery for end-users searching for changes. Either operator  * name has the same meaning.  *  *<p>Status names are looked up by prefix case-insensitively.  */
 end_comment
 
 begin_class

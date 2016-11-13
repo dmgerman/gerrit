@@ -410,6 +410,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -520,36 +550,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -609,7 +609,7 @@ name|createDefault
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DashboardsCollection (GitRepositoryManager gitManager, DynamicMap<RestView<DashboardResource>> views, Provider<ListDashboards> list, Provider<SetDefaultDashboard.CreateDefault> createDefault)
+DECL|method|DashboardsCollection ( GitRepositoryManager gitManager, DynamicMap<RestView<DashboardResource>> views, Provider<ListDashboards> list, Provider<SetDefaultDashboard.CreateDefault> createDefault)
 name|DashboardsCollection
 parameter_list|(
 name|GitRepositoryManager
@@ -1129,7 +1129,7 @@ return|return
 name|views
 return|;
 block|}
-DECL|method|parse (Project definingProject, String refName, String path, Config config, String project, boolean setDefault)
+DECL|method|parse ( Project definingProject, String refName, String path, Config config, String project, boolean setDefault)
 specifier|static
 name|DashboardInfo
 name|parse

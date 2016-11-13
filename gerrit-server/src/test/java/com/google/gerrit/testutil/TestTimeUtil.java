@@ -96,6 +96,42 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicLong
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|joda
@@ -141,42 +177,6 @@ operator|.
 name|time
 operator|.
 name|DateTimeZone
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicLong
 import|;
 end_import
 
@@ -233,8 +233,8 @@ specifier|static
 name|AtomicLong
 name|clockMs
 decl_stmt|;
-comment|/**    * Reset the clock to a known start point, then set the clock step.    *<p>    * The clock is initially set to 2009/09/30 17:00:00 -0400.    *    * @param clockStep amount to increment clock by on each lookup.    * @param clockStepUnit time unit for {@code clockStep}.    */
-DECL|method|resetWithClockStep ( long clockStep, TimeUnit clockStepUnit)
+comment|/**    * Reset the clock to a known start point, then set the clock step.    *    *<p>The clock is initially set to 2009/09/30 17:00:00 -0400.    *    * @param clockStep amount to increment clock by on each lookup.    * @param clockStepUnit time unit for {@code clockStep}.    */
+DECL|method|resetWithClockStep (long clockStep, TimeUnit clockStepUnit)
 specifier|public
 specifier|static
 specifier|synchronized
@@ -269,7 +269,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Set the clock step used by {@link com.google.gerrit.common.TimeUtil}.    *    * @param clockStep amount to increment clock by on each lookup.    * @param clockStepUnit time unit for {@code clockStep}.    */
-DECL|method|setClockStep ( long clockStep, TimeUnit clockStepUnit)
+DECL|method|setClockStep (long clockStep, TimeUnit clockStepUnit)
 specifier|public
 specifier|static
 specifier|synchronized
@@ -364,7 +364,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Increment the clock once by a given amount.    *    * @param clockStep amount to increment clock by.    * @param clockStepUnit time unit for {@code clockStep}.    */
-DECL|method|incrementClock ( long clockStep, TimeUnit clockStepUnit)
+DECL|method|incrementClock (long clockStep, TimeUnit clockStepUnit)
 specifier|public
 specifier|static
 specifier|synchronized
@@ -423,7 +423,7 @@ DECL|method|TestTimeUtil ()
 specifier|private
 name|TestTimeUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

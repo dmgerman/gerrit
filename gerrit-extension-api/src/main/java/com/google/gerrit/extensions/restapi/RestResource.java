@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Generic resource handle defining arguments to views.  *<p>  * Resource handle returned by {@link RestCollection} and passed to a  * {@link RestView} such as {@link RestReadView} or {@link RestModifyView}.  */
+comment|/**  * Generic resource handle defining arguments to views.  *  *<p>Resource handle returned by {@link RestCollection} and passed to a {@link RestView} such as  * {@link RestReadView} or {@link RestModifyView}.  */
 end_comment
 
 begin_interface
@@ -92,7 +92,7 @@ specifier|public
 interface|interface
 name|HasLastModified
 block|{
-comment|/**      * @return time for the Last-Modified header. HTTP truncates the header      *         value to seconds.      */
+comment|/** @return time for the Last-Modified header. HTTP truncates the header value to seconds. */
 DECL|method|getLastModified ()
 name|Timestamp
 name|getLastModified

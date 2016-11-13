@@ -96,7 +96,7 @@ DECL|method|NoContent ()
 specifier|protected
 name|NoContent
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -967,7 +967,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * @return an ordered collection of KeyCommandSet, combining sets which share    *         the same name, so that each set name appears at most once.    */
+comment|/**    * @return an ordered collection of KeyCommandSet, combining sets which share the same name, so    *     that each set name appears at most once.    */
 DECL|method|combinedSetsByName ()
 specifier|private
 specifier|static
@@ -1179,7 +1179,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|formatKeys (final Grid lists, int row, final int col, final KeyCommandSet set, final SafeHtml prefix)
+DECL|method|formatKeys ( final Grid lists, int row, final int col, final KeyCommandSet set, final SafeHtml prefix)
 specifier|private
 name|int
 name|formatKeys

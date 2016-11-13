@@ -130,9 +130,9 @@ name|Event
 extends|extends
 name|ChangeEvent
 block|{
-DECL|method|getOldAssignee ()
 annotation|@
 name|Nullable
+DECL|method|getOldAssignee ()
 name|AccountInfo
 name|getOldAssignee
 parameter_list|()

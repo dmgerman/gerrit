@@ -640,7 +640,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented
@@ -821,7 +821,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|setWatchedProjects ( List<ProjectWatchInfo> in)
+DECL|method|setWatchedProjects (List<ProjectWatchInfo> in)
 specifier|public
 name|List
 argument_list|<

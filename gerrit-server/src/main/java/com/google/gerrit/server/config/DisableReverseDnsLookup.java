@@ -116,7 +116,7 @@ DECL|annotation|DisableReverseDnsLookup
 specifier|public
 annotation_defn|@interface
 name|DisableReverseDnsLookup
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

@@ -186,40 +186,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -275,6 +241,40 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -1006,7 +1006,7 @@ literal|"* [ALL]"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertParseNotifyValue (String notifyValue, String expectedFilter, Set<NotifyType> expectedNotifyTypes)
+DECL|method|assertParseNotifyValue ( String notifyValue, String expectedFilter, Set<NotifyType> expectedNotifyTypes)
 specifier|private
 name|void
 name|assertParseNotifyValue
@@ -1059,7 +1059,7 @@ name|expectedNotifyTypes
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertToNotifyValue (String filter, Set<NotifyType> notifyTypes, String expectedNotifyValue)
+DECL|method|assertToNotifyValue ( String filter, Set<NotifyType> notifyTypes, String expectedNotifyValue)
 specifier|private
 specifier|static
 name|void

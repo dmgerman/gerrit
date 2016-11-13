@@ -737,7 +737,7 @@ name|atrScope
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Propagator (AcceptanceTestRequestScope atrScope, ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
+DECL|method|Propagator ( AcceptanceTestRequestScope atrScope, ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
 name|Propagator
 parameter_list|(
 name|AcceptanceTestRequestScope

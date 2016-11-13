@@ -202,7 +202,7 @@ name|allProject
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuggestParentCandidates (final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final AllProjectsName allProject)
+DECL|method|SuggestParentCandidates ( final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final AllProjectsName allProject)
 name|SuggestParentCandidates
 parameter_list|(
 specifier|final

@@ -418,7 +418,7 @@ name|project
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BranchApiImpl (BranchesCollection branches, CreateBranch.Factory createBranchFactory, DeleteBranch deleteBranch, FilesCollection filesCollection, GetContent getContent, @Assisted ProjectResource project, @Assisted String ref)
+DECL|method|BranchApiImpl ( BranchesCollection branches, CreateBranch.Factory createBranchFactory, DeleteBranch deleteBranch, FilesCollection filesCollection, GetContent getContent, @Assisted ProjectResource project, @Assisted String ref)
 name|BranchApiImpl
 parameter_list|(
 name|BranchesCollection

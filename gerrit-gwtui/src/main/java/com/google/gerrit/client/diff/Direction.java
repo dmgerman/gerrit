@@ -77,9 +77,9 @@ enum|enum
 name|Direction
 block|{
 DECL|enumConstant|PREV
-DECL|enumConstant|NEXT
 name|PREV
 block|,
+DECL|enumConstant|NEXT
 name|NEXT
 block|}
 end_enum

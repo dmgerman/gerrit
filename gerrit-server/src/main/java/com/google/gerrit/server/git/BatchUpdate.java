@@ -942,6 +942,130 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Callable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ExecutionException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1086,132 +1210,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TimeZone
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Callable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ExecutionException
-import|;
-end_import
-
 begin_comment
-comment|/**  * Context for a set of updates that should be applied for a site.  *<p>  * An update operation can be divided into three phases:  *<ol>  *<li>Git reference updates</li>  *<li>Database updates</li>  *<li>Post-update steps<li>  *</ol>  * A single conceptual operation, such as a REST API call or a merge operation,  * may make multiple changes at each step, which all need to be serialized  * relative to each other. Moreover, for consistency,<em>all</em> git ref  * updates must be performed before<em>any</em> database updates, since  * database updates might refer to newly-created patch set refs. And all  * post-update steps, such as hooks, should run only after all storage  * mutations have completed.  *<p>  * Depending on the backend used, each step might support batching, for example  * in a {@code BatchRefUpdate} or one or more database transactions. All  * operations in one phase must complete successfully before proceeding to the  * next phase.  */
+comment|/**  * Context for a set of updates that should be applied for a site.  *  *<p>An update operation can be divided into three phases:  *  *<ol>  *<li>Git reference updates  *<li>Database updates  *<li>Post-update steps  *<li>  *</ol>  *  * A single conceptual operation, such as a REST API call or a merge operation, may make multiple  * changes at each step, which all need to be serialized relative to each other. Moreover, for  * consistency,<em>all</em> git ref updates must be performed before<em>any</em> database updates,  * since database updates might refer to newly-created patch set refs. And all post-update steps,  * such as hooks, should run only after all storage mutations have completed.  *  *<p>Depending on the backend used, each step might support batching, for example in a {@code  * BatchRefUpdate} or one or more database transactions. All operations in one phase must complete  * successfully before proceeding to the next phase.  */
 end_comment
 
 begin_class
@@ -1269,11 +1269,11 @@ specifier|public
 enum|enum
 name|Order
 block|{
-comment|/**      * Update the repository and execute all ref updates before touching the      * database.      *<p>      * The default and most common, as Gerrit does not behave well when a patch      * set has no corresponding ref in the repo.      */
+comment|/**      * Update the repository and execute all ref updates before touching the database.      *      *<p>The default and most common, as Gerrit does not behave well when a patch set has no      * corresponding ref in the repo.      */
 DECL|enumConstant|REPO_BEFORE_DB
 name|REPO_BEFORE_DB
 block|,
-comment|/**      * Update the database before touching the repository.      *<p>      * Generally only used when deleting patch sets, which should be deleted      * first from the database (for the same reason as above.)      */
+comment|/**      * Update the database before touching the repository.      *      *<p>Generally only used when deleting patch sets, which should be deleted first from the      * database (for the same reason as above.)      */
 DECL|enumConstant|DB_BEFORE_REPO
 name|DB_BEFORE_REPO
 block|;   }
@@ -1581,7 +1581,7 @@ name|bumpLastUpdatedOn
 init|=
 literal|true
 decl_stmt|;
-DECL|method|ChangeContext (ChangeControl ctl, ReviewDbWrapper dbWrapper, Repository repo, RevWalk rw)
+DECL|method|ChangeContext ( ChangeControl ctl, ReviewDbWrapper dbWrapper, Repository repo, RevWalk rw)
 specifier|protected
 name|ChangeContext
 parameter_list|(
@@ -1865,8 +1865,8 @@ name|ctx
 parameter_list|)
 throws|throws
 name|Exception
-block|{     }
-comment|/**      * Override this method to do something after the update      * e.g. send email or run hooks      *      * @param ctx context      */
+block|{}
+comment|/**      * Override this method to do something after the update e.g. send email or run hooks      *      * @param ctx context      */
 comment|//TODO(dborowitz): Support async operations?
 DECL|method|postUpdate (Context ctx)
 specifier|public
@@ -1878,7 +1878,7 @@ name|ctx
 parameter_list|)
 throws|throws
 name|Exception
-block|{     }
+block|{}
 block|}
 DECL|class|Op
 specifier|public
@@ -1888,7 +1888,7 @@ name|Op
 extends|extends
 name|RepoOnlyOp
 block|{
-comment|/**      * Override this method to modify a change.      *      * @param ctx context      * @return whether anything was changed that might require a write to      * the metadata storage.      */
+comment|/**      * Override this method to modify a change.      *      * @param ctx context      * @return whether anything was changed that might require a write to the metadata storage.      */
 DECL|method|updateChange (ChangeContext ctx)
 specifier|public
 name|boolean
@@ -1925,7 +1925,7 @@ name|ctx
 parameter_list|)
 function_decl|;
 block|}
-comment|/**    * Interface for listening during batch update execution.    *<p>    * When used during execution of multiple batch updates, the {@code after*}    * methods are called after that phase has been completed for<em>all</em> updates.    */
+comment|/**    * Interface for listening during batch update execution.    *    *<p>When used during execution of multiple batch updates, the {@code after*} methods are called    * after that phase has been completed for<em>all</em> updates.    */
 DECL|class|Listener
 specifier|public
 specifier|static
@@ -1943,7 +1943,7 @@ operator|new
 name|Listener
 argument_list|()
 decl_stmt|;
-comment|/**      * Called after updating all repositories and flushing objects but before      * updating any refs.      */
+comment|/** Called after updating all repositories and flushing objects but before updating any refs. */
 DECL|method|afterUpdateRepos ()
 specifier|public
 name|void
@@ -1951,7 +1951,7 @@ name|afterUpdateRepos
 parameter_list|()
 throws|throws
 name|Exception
-block|{     }
+block|{}
 comment|/** Called after updating all refs. */
 DECL|method|afterRefUpdates ()
 specifier|public
@@ -1960,7 +1960,7 @@ name|afterRefUpdates
 parameter_list|()
 throws|throws
 name|Exception
-block|{     }
+block|{}
 comment|/** Called after updating all changes. */
 DECL|method|afterUpdateChanges ()
 specifier|public
@@ -1969,7 +1969,7 @@ name|afterUpdateChanges
 parameter_list|()
 throws|throws
 name|Exception
-block|{     }
+block|{}
 block|}
 annotation|@
 name|Singleton
@@ -2093,7 +2093,7 @@ return|return
 name|o
 return|;
 block|}
-DECL|method|getUpdateChangesInParallel ( Collection<BatchUpdate> updates)
+DECL|method|getUpdateChangesInParallel (Collection<BatchUpdate> updates)
 specifier|private
 specifier|static
 name|boolean
@@ -2183,7 +2183,7 @@ return|return
 name|p
 return|;
 block|}
-DECL|method|execute (Collection<BatchUpdate> updates, Listener listener, @Nullable RequestId requestId, boolean dryrun)
+DECL|method|execute ( Collection<BatchUpdate> updates, Listener listener, @Nullable RequestId requestId, boolean dryrun)
 specifier|static
 name|void
 name|execute
@@ -3246,7 +3246,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Add a validation step for intended ref operations, which will be performed    * at the end of {@link RepoOnlyOp#updateRepo(RepoContext)} step.    */
+comment|/**    * Add a validation step for intended ref operations, which will be performed at the end of {@link    * RepoOnlyOp#updateRepo(RepoContext)} step.    */
 DECL|method|setOnSubmitValidators (OnSubmitValidators onSubmitValidators)
 name|BatchUpdate
 name|setOnSubmitValidators
@@ -3265,7 +3265,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Execute {@link Op#updateChange(ChangeContext)} in parallel for each change.    */
+comment|/** Execute {@link Op#updateChange(ChangeContext)} in parallel for each change. */
 DECL|method|updateChangesInParallel ()
 specifier|public
 name|BatchUpdate

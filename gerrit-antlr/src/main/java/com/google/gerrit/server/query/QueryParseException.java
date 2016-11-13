@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Exception thrown when a search query is invalid.  *<p>  *<b>NOTE:</b> the message is visible to end users.  */
+comment|/**  * Exception thrown when a search query is invalid.  *  *<p><b>NOTE:</b> the message is visible to end users.  */
 end_comment
 
 begin_class

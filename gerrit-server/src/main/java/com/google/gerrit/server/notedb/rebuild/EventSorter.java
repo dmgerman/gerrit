@@ -183,7 +183,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper to sort a list of events.  *<p>  * Events are sorted in two passes:  *<ol>  *<li>Sort by natural order (timestamp, patch set, author, etc.)</li>  *<li>Postpone any events with dependencies to occur only after all of their  *   dependencies, where this violates natural order.</li>  *</ol>  *  * {@link #sort()} modifies the event list in place (similar to {@link  * Collections#sort(List)}), but does not modify any event. In particular,  * events might end up out of order with respect to timestamp; callers are  * responsible for adjusting timestamps later if they prefer monotonicity.  */
+comment|/**  * Helper to sort a list of events.  *  *<p>Events are sorted in two passes:  *  *<ol>  *<li>Sort by natural order (timestamp, patch set, author, etc.)  *<li>Postpone any events with dependencies to occur only after all of their dependencies, where  *       this violates natural order.  *</ol>  *  * {@link #sort()} modifies the event list in place (similar to {@link Collections#sort(List)}), but  * does not modify any event. In particular, events might end up out of order with respect to  * timestamp; callers are responsible for adjusting timestamps later if they prefer monotonicity.  */
 end_comment
 
 begin_class

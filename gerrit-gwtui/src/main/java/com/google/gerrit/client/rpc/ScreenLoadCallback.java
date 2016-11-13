@@ -230,7 +230,7 @@ specifier|protected
 name|void
 name|postDisplay
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|onFailure (final Throwable caught)

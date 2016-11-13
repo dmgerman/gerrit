@@ -103,7 +103,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementations of GroupMembership provide methods to test  * the presence of a user in a particular group.  */
+comment|/**  * Implementations of GroupMembership provide methods to test the presence of a user in a particular  * group.  */
 end_comment
 
 begin_interface
@@ -130,7 +130,7 @@ name|emptySet
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**    * Returns {@code true} when the user this object was created for is a member    * of the specified group.    */
+comment|/**    * Returns {@code true} when the user this object was created for is a member of the specified    * group.    */
 DECL|method|contains (AccountGroup.UUID groupId)
 name|boolean
 name|contains
@@ -141,7 +141,7 @@ name|UUID
 name|groupId
 parameter_list|)
 function_decl|;
-comment|/**    * Returns {@code true} when the user this object was created for is a member    * of any of the specified group.    */
+comment|/**    * Returns {@code true} when the user this object was created for is a member of any of the    * specified group.    */
 DECL|method|containsAnyOf (Iterable<AccountGroup.UUID> groupIds)
 name|boolean
 name|containsAnyOf
@@ -155,7 +155,7 @@ argument_list|>
 name|groupIds
 parameter_list|)
 function_decl|;
-comment|/**    * Returns a set containing an input member of {@code contains(id)} is true.    *<p>    * This is batch form of contains that returns specific group information.    * Implementors may implement the method as:    *    *<pre>    * Set&lt;AccountGroup.UUID&gt; r = new HashSet&lt;&gt;();    * for (AccountGroup.UUID id : groupIds)    *   if (contains(id)) r.add(id);    *</pre>    */
+comment|/**    * Returns a set containing an input member of {@code contains(id)} is true.    *    *<p>This is batch form of contains that returns specific group information. Implementors may    * implement the method as:    *    *<pre>    * Set&lt;AccountGroup.UUID&gt; r = new HashSet&lt;&gt;();    * for (AccountGroup.UUID id : groupIds)    *   if (contains(id)) r.add(id);    *</pre>    */
 DECL|method|intersection (Iterable<AccountGroup.UUID> groupIds)
 name|Set
 argument_list|<
@@ -174,7 +174,7 @@ argument_list|>
 name|groupIds
 parameter_list|)
 function_decl|;
-comment|/**    * Returns the set of groups that can be determined by the implementation.    * This may not return all groups the {@link #contains(AccountGroup.UUID)}    * would return {@code true} for, but will at least contain all top level    * groups. This restriction stems from the API of some group systems, which    * make it expensive to enumerate the members of a group.    */
+comment|/**    * Returns the set of groups that can be determined by the implementation. This may not return all    * groups the {@link #contains(AccountGroup.UUID)} would return {@code true} for, but will at    * least contain all top level groups. This restriction stems from the API of some group systems,    * which make it expensive to enumerate the members of a group.    */
 DECL|method|getKnownGroups ()
 name|Set
 argument_list|<

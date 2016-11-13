@@ -130,7 +130,7 @@ DECL|method|Rect ()
 specifier|protected
 name|Rect
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

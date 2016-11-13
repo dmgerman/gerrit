@@ -288,26 +288,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -333,6 +313,26 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -401,7 +401,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (Change change, PatchSet patchSet, Account reviewer, Account remover, String message, Map<String, Short> newApprovals, Map<String, Short> oldApprovals, NotifyHandling notify, Timestamp when)
+DECL|method|fire ( Change change, PatchSet patchSet, Account reviewer, Account remover, String message, Map<String, Short> newApprovals, Map<String, Short> oldApprovals, NotifyHandling notify, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -635,7 +635,7 @@ name|ApprovalInfo
 argument_list|>
 name|oldApprovals
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo reviewer, AccountInfo remover, String comment, Map<String, ApprovalInfo> newApprovals, Map<String, ApprovalInfo> oldApprovals, NotifyHandling notify, Timestamp when)
+DECL|method|Event ( ChangeInfo change, RevisionInfo revision, AccountInfo reviewer, AccountInfo remover, String comment, Map<String, ApprovalInfo> newApprovals, Map<String, ApprovalInfo> oldApprovals, NotifyHandling notify, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo

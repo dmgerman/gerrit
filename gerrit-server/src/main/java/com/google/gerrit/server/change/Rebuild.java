@@ -358,20 +358,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -387,6 +373,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
 import|;
 end_import
 
@@ -410,7 +410,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|db
 specifier|private
 specifier|final
@@ -454,7 +454,7 @@ name|notesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Rebuild (Provider<ReviewDb> db, NotesMigration migration, ChangeRebuilder rebuilder, ChangeBundleReader bundleReader, CommentsUtil commentsUtil, ChangeNotes.Factory notesFactory)
+DECL|method|Rebuild ( Provider<ReviewDb> db, NotesMigration migration, ChangeRebuilder rebuilder, ChangeBundleReader bundleReader, CommentsUtil commentsUtil, ChangeNotes.Factory notesFactory)
 name|Rebuild
 parameter_list|(
 name|Provider

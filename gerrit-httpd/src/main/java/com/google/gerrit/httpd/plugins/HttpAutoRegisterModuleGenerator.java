@@ -468,7 +468,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|SuppressWarnings
 argument_list|(

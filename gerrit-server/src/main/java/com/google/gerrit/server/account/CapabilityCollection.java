@@ -786,7 +786,7 @@ name|QUERY_LIMIT
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|mergeAdmin (Set<GroupReference> admins, List<PermissionRule> rules)
+DECL|method|mergeAdmin ( Set<GroupReference> admins, List<PermissionRule> rules)
 specifier|private
 specifier|static
 name|List
@@ -978,7 +978,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|configureDefault (Map<String, List<PermissionRule>> out, AccessSection section, String capName, GroupReference group)
+DECL|method|configureDefault ( Map<String, List<PermissionRule>> out, AccessSection section, String capName, GroupReference group)
 specifier|private
 specifier|static
 name|void

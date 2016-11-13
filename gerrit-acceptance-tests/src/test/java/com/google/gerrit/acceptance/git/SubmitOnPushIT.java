@@ -472,9 +472,9 @@ name|SubmitOnPushIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|approvalsUtil
 annotation|@
 name|Inject
-DECL|field|approvalsUtil
 specifier|private
 name|ApprovalsUtil
 name|approvalsUtil
@@ -3106,7 +3106,7 @@ name|ref
 argument_list|)
 return|;
 block|}
-DECL|method|push (String ref, String subject, String fileName, String content, String changeId)
+DECL|method|push ( String ref, String subject, String fileName, String content, String changeId)
 specifier|private
 name|PushOneCommit
 operator|.

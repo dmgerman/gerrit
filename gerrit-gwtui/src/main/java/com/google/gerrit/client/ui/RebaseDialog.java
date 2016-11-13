@@ -411,7 +411,7 @@ specifier|final
 name|boolean
 name|sendEnabled
 decl_stmt|;
-DECL|method|RebaseDialog (final String project, final String branch, final Change.Id changeId, final boolean sendEnabled)
+DECL|method|RebaseDialog ( final String project, final String branch, final Change.Id changeId, final boolean sendEnabled)
 specifier|public
 name|RebaseDialog
 parameter_list|(

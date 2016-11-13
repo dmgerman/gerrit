@@ -311,7 +311,7 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OAuthTokenCache (@amedOAUTH_TOKENS) Cache<Account.Id, OAuthToken> cache, DynamicItem<OAuthTokenEncrypter> encrypter)
+DECL|method|OAuthTokenCache ( @amedOAUTH_TOKENS) Cache<Account.Id, OAuthToken> cache, DynamicItem<OAuthTokenEncrypter> encrypter)
 name|OAuthTokenCache
 parameter_list|(
 annotation|@

@@ -423,7 +423,7 @@ DECL|method|FileInfo ()
 specifier|protected
 name|FileInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

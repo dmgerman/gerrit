@@ -271,7 +271,7 @@ name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RobotComments (DynamicMap<RestView<RobotCommentResource>> views, ListRobotComments list, CommentsUtil commentsUtil)
+DECL|method|RobotComments ( DynamicMap<RestView<RobotCommentResource>> views, ListRobotComments list, CommentsUtil commentsUtil)
 name|RobotComments
 parameter_list|(
 name|DynamicMap

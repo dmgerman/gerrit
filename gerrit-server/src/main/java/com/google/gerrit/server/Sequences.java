@@ -256,20 +256,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -285,6 +271,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -324,7 +324,7 @@ name|changeSeq
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Sequences (@erritServerConfig Config cfg, final Provider<ReviewDb> db, NotesMigration migration, GitRepositoryManager repoManager, AllProjectsName allProjects)
+DECL|method|Sequences ( @erritServerConfig Config cfg, final Provider<ReviewDb> db, NotesMigration migration, GitRepositoryManager repoManager, AllProjectsName allProjects)
 name|Sequences
 parameter_list|(
 annotation|@

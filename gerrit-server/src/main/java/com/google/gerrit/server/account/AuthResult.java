@@ -130,7 +130,7 @@ specifier|final
 name|boolean
 name|isNew
 decl_stmt|;
-DECL|method|AuthResult (final Account.Id accountId, final AccountExternalId.Key externalId, final boolean isNew)
+DECL|method|AuthResult ( final Account.Id accountId, final AccountExternalId.Key externalId, final boolean isNew)
 specifier|public
 name|AuthResult
 parameter_list|(
@@ -196,7 +196,7 @@ return|return
 name|externalId
 return|;
 block|}
-comment|/**    * True if this account was recently created for the user.    *<p>    * New users should be redirected to the registration screen, so they can    * configure their new user account.    */
+comment|/**    * True if this account was recently created for the user.    *    *<p>New users should be redirected to the registration screen, so they can configure their new    * user account.    */
 DECL|method|isNew ()
 specifier|public
 name|boolean

@@ -264,38 +264,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|SecurityUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|keyprovider
-operator|.
-name|SimpleGeneratorHostKeyProvider
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -350,6 +318,38 @@ name|Path
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|SecurityUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|keyprovider
+operator|.
+name|SimpleGeneratorHostKeyProvider
+import|;
+end_import
+
 begin_comment
 comment|/** Initialize the {@code sshd} configuration section. */
 end_comment
@@ -389,7 +389,7 @@ name|sshd
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitSshd (final ConsoleUI ui, final SitePaths site, final Libraries libraries, final Section.Factory sections)
+DECL|method|InitSshd ( final ConsoleUI ui, final SitePaths site, final Libraries libraries, final Section.Factory sections)
 name|InitSshd
 parameter_list|(
 specifier|final

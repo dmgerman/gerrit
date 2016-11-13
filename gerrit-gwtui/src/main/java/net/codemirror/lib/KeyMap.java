@@ -150,7 +150,7 @@ DECL|method|KeyMap ()
 specifier|protected
 name|KeyMap
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

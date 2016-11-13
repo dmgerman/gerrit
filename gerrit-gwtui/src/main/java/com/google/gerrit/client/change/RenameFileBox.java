@@ -689,7 +689,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{           }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;

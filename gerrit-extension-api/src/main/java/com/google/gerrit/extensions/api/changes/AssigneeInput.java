@@ -90,9 +90,9 @@ specifier|public
 class|class
 name|AssigneeInput
 block|{
+DECL|field|assignee
 annotation|@
 name|DefaultInput
-DECL|field|assignee
 specifier|public
 name|String
 name|assignee

@@ -650,20 +650,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|net
@@ -741,6 +727,20 @@ operator|.
 name|concurrent
 operator|.
 name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -1877,7 +1877,7 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getDownloadSchemeInfo (DownloadScheme scheme, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands)
+DECL|method|getDownloadSchemeInfo ( DownloadScheme scheme, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands)
 specifier|private
 name|DownloadSchemeInfo
 name|getDownloadSchemeInfo
@@ -2103,7 +2103,7 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getGerritInfo (Config cfg, AllProjectsName allProjectsName, AllUsersName allUsersName)
+DECL|method|getGerritInfo ( Config cfg, AllProjectsName allProjectsName, AllUsersName allUsersName)
 specifier|private
 name|GerritInfo
 name|getGerritInfo

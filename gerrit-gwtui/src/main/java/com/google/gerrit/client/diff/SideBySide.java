@@ -510,6 +510,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|codemirror
@@ -567,26 +587,6 @@ operator|.
 name|lib
 operator|.
 name|Pos
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -1699,7 +1699,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newCm ( DiffInfo.FileMeta meta, String contents, Element parent)
+DECL|method|newCm (DiffInfo.FileMeta meta, String contents, Element parent)
 name|CodeMirror
 name|newCm
 parameter_list|(
@@ -2345,7 +2345,7 @@ specifier|public
 name|void
 name|run
 parameter_list|()
-block|{         }
+block|{}
 block|}
 return|;
 block|}

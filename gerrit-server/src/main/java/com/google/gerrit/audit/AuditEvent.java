@@ -303,7 +303,7 @@ parameter_list|()
 function_decl|;
 block|}
 comment|/**    * Creates a new audit event with results    *    * @param sessionId session id the event belongs to    * @param who principal that has generated the event    * @param what object of the event    * @param when time-stamp of when the event started    * @param params parameters of the event    * @param result result of the event    */
-DECL|method|AuditEvent (String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, Object result)
+DECL|method|AuditEvent ( String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, Object result)
 specifier|public
 name|AuditEvent
 parameter_list|(

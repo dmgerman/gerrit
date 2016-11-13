@@ -230,7 +230,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectNode (final AllProjectsName allProjectsName, @Assisted final Project project, @Assisted final boolean isVisible)
+DECL|method|ProjectNode ( final AllProjectsName allProjectsName, @Assisted final Project project, @Assisted final boolean isVisible)
 specifier|protected
 name|ProjectNode
 parameter_list|(
@@ -270,7 +270,7 @@ operator|=
 name|isVisible
 expr_stmt|;
 block|}
-comment|/**    * Returns the project parent name.    *    * @return Project parent name, {@code null} for the 'All-Projects' root    *         project    */
+comment|/**    * Returns the project parent name.    *    * @return Project parent name, {@code null} for the 'All-Projects' root project    */
 DECL|method|getParentName ()
 specifier|public
 name|Project

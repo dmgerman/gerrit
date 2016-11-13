@@ -131,7 +131,7 @@ specifier|final
 name|ByteArrayOutputStream
 name|buffer
 decl_stmt|;
-comment|/**    * Constructs a LimitedByteArrayOutputStream, which stores output    * in memory up to a certain specified size. When the output exceeds    * the specified size a LimitExceededException is thrown.    *    * @param max the maximum size in bytes which may be stored.    * @param initial the initial size. It must be smaller than the max size.    */
+comment|/**    * Constructs a LimitedByteArrayOutputStream, which stores output in memory up to a certain    * specified size. When the output exceeds the specified size a LimitExceededException is thrown.    *    * @param max the maximum size in bytes which may be stored.    * @param initial the initial size. It must be smaller than the max size.    */
 DECL|method|LimitedByteArrayOutputStream (int max, int initial)
 name|LimitedByteArrayOutputStream
 parameter_list|(
@@ -255,7 +255,7 @@ name|len
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * @return a newly allocated byte array with contents of the buffer.    */
+comment|/** @return a newly allocated byte array with contents of the buffer. */
 DECL|method|toByteArray ()
 specifier|public
 name|byte

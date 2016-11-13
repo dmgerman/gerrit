@@ -566,26 +566,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -643,6 +623,26 @@ operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -755,7 +755,7 @@ name|canonicalUrl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MailProcessor (AccountByEmailCache accountByEmailCache, BatchUpdate.Factory buf, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, Provider<ReviewDb> reviewDb, DynamicMap<MailFilter> mailFilters, @CanonicalWebUrl Provider<String> canonicalUrl)
+DECL|method|MailProcessor ( AccountByEmailCache accountByEmailCache, BatchUpdate.Factory buf, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, Provider<ReviewDb> reviewDb, DynamicMap<MailFilter> mailFilters, @CanonicalWebUrl Provider<String> canonicalUrl)
 specifier|public
 name|MailProcessor
 parameter_list|(
@@ -876,7 +876,7 @@ operator|=
 name|canonicalUrl
 expr_stmt|;
 block|}
-comment|/**    * Parse comments from MailMessage and persist them on the change.    * @param message MailMessage to process.    * @throws OrmException    */
+comment|/**    * Parse comments from MailMessage and persist them on the change.    *    * @param message MailMessage to process.    * @throws OrmException    */
 DECL|method|process (MailMessage message)
 specifier|public
 name|void

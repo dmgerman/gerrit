@@ -368,7 +368,7 @@ specifier|protected
 name|Key
 name|key
 decl_stmt|;
-comment|/**    * Value assigned by the user.    *<p>    * The precise meaning of "value" is up to each category.    *<p>    * In general:    *<ul>    *<li><b>&lt; 0:</b> The approval is rejected/revoked.</li>    *<li><b>= 0:</b> No indication either way is provided.</li>    *<li><b>&gt; 0:</b> The approval is approved/positive.</li>    *</ul>    * and in the negative and positive direction a magnitude can be assumed.The    * further from 0 the more assertive the approval.    */
+comment|/**    * Value assigned by the user.    *    *<p>The precise meaning of "value" is up to each category.    *    *<p>In general:    *    *<ul>    *<li><b>&lt; 0:</b> The approval is rejected/revoked.    *<li><b>= 0:</b> No indication either way is provided.    *<li><b>&gt; 0:</b> The approval is approved/positive.    *</ul>    *    * and in the negative and positive direction a magnitude can be assumed.The further from 0 the    * more assertive the approval.    */
 annotation|@
 name|Column
 argument_list|(
@@ -409,7 +409,7 @@ specifier|protected
 name|String
 name|tag
 decl_stmt|;
-comment|/**    * Real user that made this approval on behalf of the user recorded in {@link    * Key#accountId}.    */
+comment|/** Real user that made this approval on behalf of the user recorded in {@link Key#accountId}. */
 annotation|@
 name|Column
 argument_list|(
@@ -446,7 +446,7 @@ DECL|method|PatchSetApproval ()
 specifier|protected
 name|PatchSetApproval
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|PatchSetApproval (PatchSetApproval.Key k, short v, Date ts)
 specifier|public
 name|PatchSetApproval

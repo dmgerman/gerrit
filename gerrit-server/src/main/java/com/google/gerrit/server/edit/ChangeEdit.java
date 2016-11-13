@@ -203,7 +203,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A single user's edit for a change.  *<p>  * There is max. one edit per user per change. Edits are stored on refs:  * refs/users/UU/UUUU/edit-CCCC/P where UU/UUUU is sharded representation  * of user account, CCCC is change number and P is the patch set number it  * is based on.  */
+comment|/**  * A single user's edit for a change.  *  *<p>There is max. one edit per user per change. Edits are stored on refs:  * refs/users/UU/UUUU/edit-CCCC/P where UU/UUUU is sharded representation of user account, CCCC is  * change number and P is the patch set number it is based on.  */
 end_comment
 
 begin_class
@@ -242,7 +242,7 @@ specifier|final
 name|PatchSet
 name|basePatchSet
 decl_stmt|;
-DECL|method|ChangeEdit (IdentifiedUser user, Change change, Ref ref, RevCommit editCommit, PatchSet basePatchSet)
+DECL|method|ChangeEdit ( IdentifiedUser user, Change change, Ref ref, RevCommit editCommit, PatchSet basePatchSet)
 specifier|public
 name|ChangeEdit
 parameter_list|(

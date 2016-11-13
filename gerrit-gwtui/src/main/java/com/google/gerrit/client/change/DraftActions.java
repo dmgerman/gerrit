@@ -432,7 +432,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|mine ( final Button... draftButtons)
+DECL|method|mine (final Button... draftButtons)
 specifier|private
 specifier|static
 name|AsyncCallback

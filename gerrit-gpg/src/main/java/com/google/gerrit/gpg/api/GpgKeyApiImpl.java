@@ -208,6 +208,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|bouncycastle
@@ -215,16 +225,6 @@ operator|.
 name|openpgp
 operator|.
 name|PGPException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -272,7 +272,7 @@ name|rsrc
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|GpgKeyApiImpl ( GpgKeys.Get get, DeleteGpgKey delete, @Assisted GpgKey rsrc)
+DECL|method|GpgKeyApiImpl (GpgKeys.Get get, DeleteGpgKey delete, @Assisted GpgKey rsrc)
 name|GpgKeyApiImpl
 parameter_list|(
 name|GpgKeys

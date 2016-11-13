@@ -184,7 +184,7 @@ DECL|method|DashboardInfo ()
 specifier|protected
 name|DashboardInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

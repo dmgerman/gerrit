@@ -1540,7 +1540,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -1677,7 +1677,7 @@ DECL|method|display ()
 name|void
 name|display
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|row (final Grid info, final int row, final String name, final Widget field)
 specifier|protected
 name|void
@@ -2504,7 +2504,7 @@ parameter_list|(
 name|NativeString
 name|result
 parameter_list|)
-block|{         }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -2538,7 +2538,7 @@ parameter_list|(
 name|NativeString
 name|result
 parameter_list|)
-block|{       }
+block|{}
 annotation|@
 name|Override
 specifier|public

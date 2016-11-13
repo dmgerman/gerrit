@@ -440,26 +440,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -490,6 +470,26 @@ name|Collectors
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Sandboxed
@@ -500,18 +500,18 @@ name|SuggestReviewersIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|createGroupFactory
 annotation|@
 name|Inject
-DECL|field|createGroupFactory
 specifier|private
 name|CreateGroup
 operator|.
 name|Factory
 name|createGroupFactory
 decl_stmt|;
+DECL|field|groups
 annotation|@
 name|Inject
-DECL|field|groups
 specifier|private
 name|GroupsCollection
 name|groups
@@ -3200,7 +3200,7 @@ operator|.
 name|changeId
 return|;
 block|}
-DECL|method|assertReviewers (List<SuggestedReviewerInfo> actual, List<TestAccount> expectedUsers, List<AccountGroup> expectedGroups)
+DECL|method|assertReviewers ( List<SuggestedReviewerInfo> actual, List<TestAccount> expectedUsers, List<AccountGroup> expectedGroups)
 specifier|private
 name|void
 name|assertReviewers

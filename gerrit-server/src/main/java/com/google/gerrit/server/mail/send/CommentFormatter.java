@@ -186,7 +186,7 @@ name|quotedBlocks
 decl_stmt|;
 comment|// For the contents of quote blocks.
 block|}
-comment|/**    * Take a string of comment text that was written using the wiki-Like format    * and emit a list of blocks that can be rendered to block-level HTML. This    * method does not escape HTML.    *    * Adapted from the {@code wikify} method found in:    *   com.google.gwtexpui.safehtml.client.SafeHtml    *    * @param source The raw, unescaped comment in the Gerrit wiki-like format.    * @return List of block objects, each with unescaped comment content.    */
+comment|/**    * Take a string of comment text that was written using the wiki-Like format and emit a list of    * blocks that can be rendered to block-level HTML. This method does not escape HTML.    *    *<p>Adapted from the {@code wikify} method found in:    * com.google.gwtexpui.safehtml.client.SafeHtml    *    * @param source The raw, unescaped comment in the Gerrit wiki-like format.    * @return List of block objects, each with unescaped comment content.    */
 DECL|method|parse (@ullable String source)
 specifier|public
 specifier|static
@@ -323,7 +323,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Take a block of comment text that contains a list and potentially    * paragraphs (but does not contain blank lines), generate appropriate block    * elements and append them to the output list.    *    * In simple cases, this will generate a single list block. For example, on    * the following input.    *    *    * Item one.    *    * Item two.    *    * item three.    *    * However, if the list is adjacent to a paragraph, it will need to also    * generate that paragraph. Consider the following input.    *    *    A bit of text describing the context of the list:    *    * List item one.    *    * List item two.    *    * Et cetera.    *    * In this case, {@code makeList} generates a paragraph block object    * containing the non-bullet-prefixed text, followed by a list block.    *    * Adapted from the {@code wikifyList} method found in:    *   com.google.gwtexpui.safehtml.client.SafeHtml    *    * @param p The block containing the list (as well as potential paragraphs).    * @param out The list of blocks to append to.    */
+comment|/**    * Take a block of comment text that contains a list and potentially paragraphs (but does not    * contain blank lines), generate appropriate block elements and append them to the output list.    *    *<p>In simple cases, this will generate a single list block. For example, on the following    * input.    *    *<p>* Item one. * Item two. * item three.    *    *<p>However, if the list is adjacent to a paragraph, it will need to also generate that    * paragraph. Consider the following input.    *    *<p>A bit of text describing the context of the list: * List item one. * List item two. * Et    * cetera.    *    *<p>In this case, {@code makeList} generates a paragraph block object containing the    * non-bullet-prefixed text, followed by a list block.    *    *<p>Adapted from the {@code wikifyList} method found in:    * com.google.gwtexpui.safehtml.client.SafeHtml    *    * @param p The block containing the list (as well as potential paragraphs).    * @param out The list of blocks to append to.    */
 DECL|method|makeList (String p, List<Block> out)
 specifier|private
 specifier|static

@@ -524,6 +524,76 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -662,78 +732,8 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
-comment|/**  * Object to manage a single sequence of updates to NoteDb.  *<p>  * Instances are one-time-use. Handles updating both the change repo and the  * All-Users repo for any affected changes, with proper ordering.  *<p>  * To see the state that would be applied prior to executing the full sequence  * of updates, use {@link #stage()}.  */
+comment|/**  * Object to manage a single sequence of updates to NoteDb.  *  *<p>Instances are one-time-use. Handles updating both the change repo and the All-Users repo for  * any affected changes, with proper ordering.  *  *<p>To see the state that would be applied prior to executing the full sequence of updates, use  * {@link #stage()}.  */
 end_comment
 
 begin_class
@@ -778,7 +778,7 @@ specifier|static
 class|class
 name|StagedResult
 block|{
-DECL|method|create (Change.Id id, NoteDbChangeState.Delta delta, OpenRepo changeRepo, OpenRepo allUsersRepo)
+DECL|method|create ( Change.Id id, NoteDbChangeState.Delta delta, OpenRepo changeRepo, OpenRepo allUsersRepo)
 specifier|private
 specifier|static
 name|StagedResult
@@ -920,9 +920,9 @@ name|Id
 name|id
 parameter_list|()
 function_decl|;
-DECL|method|delta ()
 annotation|@
 name|Nullable
+DECL|method|delta ()
 specifier|public
 specifier|abstract
 name|NoteDbChangeState
@@ -1005,18 +1005,18 @@ name|staged
 argument_list|)
 return|;
 block|}
-DECL|method|newState ()
 annotation|@
 name|Nullable
+DECL|method|newState ()
 specifier|public
 specifier|abstract
 name|NoteDbChangeState
 name|newState
 parameter_list|()
 function_decl|;
-DECL|method|staged ()
 annotation|@
 name|Nullable
+DECL|method|staged ()
 specifier|abstract
 name|NoteDbUpdateManager
 operator|.
@@ -1071,7 +1071,7 @@ specifier|final
 name|boolean
 name|close
 decl_stmt|;
-DECL|method|OpenRepo (Repository repo, RevWalk rw, @Nullable ObjectInserter ins, ChainedReceiveCommands cmds, boolean close)
+DECL|method|OpenRepo ( Repository repo, RevWalk rw, @Nullable ObjectInserter ins, ChainedReceiveCommands cmds, boolean close)
 specifier|private
 name|OpenRepo
 parameter_list|(
@@ -1447,7 +1447,7 @@ name|refLogIdent
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|NoteDbUpdateManager (@erritPersonIdent Provider<PersonIdent> serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsersName, NoteDbMetrics metrics, @Assisted Project.NameKey projectName)
+DECL|method|NoteDbUpdateManager ( @erritPersonIdent Provider<PersonIdent> serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsersName, NoteDbMetrics metrics, @Assisted Project.NameKey projectName)
 name|NoteDbUpdateManager
 parameter_list|(
 annotation|@
@@ -1620,7 +1620,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setChangeRepo (Repository repo, RevWalk rw, @Nullable ObjectInserter ins, ChainedReceiveCommands cmds)
+DECL|method|setChangeRepo ( Repository repo, RevWalk rw, @Nullable ObjectInserter ins, ChainedReceiveCommands cmds)
 specifier|public
 name|NoteDbUpdateManager
 name|setChangeRepo
@@ -1669,7 +1669,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setAllUsersRepo (Repository repo, RevWalk rw, @Nullable ObjectInserter ins, ChainedReceiveCommands cmds)
+DECL|method|setAllUsersRepo ( Repository repo, RevWalk rw, @Nullable ObjectInserter ins, ChainedReceiveCommands cmds)
 specifier|public
 name|NoteDbUpdateManager
 name|setAllUsersRepo
@@ -1952,7 +1952,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**    * Add an update to the list of updates to execute.    *<p>    * Updates should only be added to the manager after all mutations have been    * made, as this method may eagerly access the update.    *    * @param update the update to add.    */
+comment|/**    * Add an update to the list of updates to execute.    *    *<p>Updates should only be added to the manager after all mutations have been made, as this    * method may eagerly access the update.    *    * @param update the update to add.    */
 DECL|method|add (ChangeUpdate update)
 specifier|public
 name|void
@@ -2121,7 +2121,7 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Stage updates in the manager's internal list of commands.    *    * @return map of the state that would get written to the applicable repo(s)    *     for each affected change.    * @throws OrmException if a database layer error occurs.    * @throws IOException if a storage layer error occurs.    */
+comment|/**    * Stage updates in the manager's internal list of commands.    *    * @return map of the state that would get written to the applicable repo(s) for each affected    *     change.    * @throws OrmException if a database layer error occurs.    * @throws IOException if a storage layer error occurs.    */
 DECL|method|stage ()
 specifier|public
 name|Map

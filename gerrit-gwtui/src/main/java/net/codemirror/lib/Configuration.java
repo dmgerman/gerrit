@@ -184,7 +184,7 @@ DECL|method|Configuration ()
 specifier|protected
 name|Configuration
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -145,7 +145,7 @@ name|AdminCss
 name|css
 parameter_list|()
 function_decl|;
-comment|/**    * unknown origin    * TODO replace icons    */
+comment|/** unknown origin TODO replace icons */
 annotation|@
 name|Source
 argument_list|(
@@ -166,7 +166,7 @@ name|ImageResource
 name|deleteHover
 parameter_list|()
 function_decl|;
-comment|/**    * silk icons (CC-BY3.0): http://famfamfam.com/lab/icons/silk/    */
+comment|/** silk icons (CC-BY3.0): http://famfamfam.com/lab/icons/silk/ */
 annotation|@
 name|Source
 argument_list|(

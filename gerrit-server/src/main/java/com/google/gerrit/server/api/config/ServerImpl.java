@@ -286,6 +286,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -295,16 +305,6 @@ operator|.
 name|errors
 operator|.
 name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -350,7 +350,7 @@ name|getServerInfo
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ServerImpl (GetPreferences getPreferences, SetPreferences setPreferences, GetDiffPreferences getDiffPreferences, SetDiffPreferences setDiffPreferences, GetServerInfo getServerInfo)
+DECL|method|ServerImpl ( GetPreferences getPreferences, SetPreferences setPreferences, GetDiffPreferences getDiffPreferences, SetDiffPreferences setDiffPreferences, GetServerInfo getServerInfo)
 name|ServerImpl
 parameter_list|(
 name|GetPreferences
@@ -501,7 +501,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|setDefaultPreferences ( GeneralPreferencesInfo in)
+DECL|method|setDefaultPreferences (GeneralPreferencesInfo in)
 specifier|public
 name|GeneralPreferencesInfo
 name|setDefaultPreferences

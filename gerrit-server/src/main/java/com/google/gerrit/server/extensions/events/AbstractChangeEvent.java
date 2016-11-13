@@ -177,7 +177,7 @@ specifier|final
 name|NotifyHandling
 name|notify
 decl_stmt|;
-DECL|method|AbstractChangeEvent (ChangeInfo change, AccountInfo who, Timestamp when, NotifyHandling notify)
+DECL|method|AbstractChangeEvent ( ChangeInfo change, AccountInfo who, Timestamp when, NotifyHandling notify)
 specifier|protected
 name|AbstractChangeEvent
 parameter_list|(

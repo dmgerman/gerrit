@@ -476,58 +476,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|internal
-operator|.
-name|storage
-operator|.
-name|file
-operator|.
-name|FileSnapshot
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -760,6 +708,58 @@ name|TimeUnit
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|internal
+operator|.
+name|storage
+operator|.
+name|file
+operator|.
+name|FileSnapshot
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -940,7 +940,7 @@ name|serverPluginFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginLoader (SitePaths sitePaths, PluginGuiceEnvironment pe, ServerInformationImpl sii, PluginUser.Factory puf, Provider<PluginCleanerTask> pct, @GerritServerConfig Config cfg, @CanonicalWebUrl Provider<String> provider, PersistentCacheFactory cacheFactory, UniversalServerPluginProvider pluginFactory)
+DECL|method|PluginLoader ( SitePaths sitePaths, PluginGuiceEnvironment pe, ServerInformationImpl sii, PluginUser.Factory puf, Provider<PluginCleanerTask> pct, @GerritServerConfig Config cfg, @CanonicalWebUrl Provider<String> provider, PersistentCacheFactory cacheFactory, UniversalServerPluginProvider pluginFactory)
 specifier|public
 name|PluginLoader
 parameter_list|(
@@ -3036,7 +3036,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|jarsFirstSortedPluginsSet ( Map<String, Path> activePlugins)
+DECL|method|jarsFirstSortedPluginsSet (Map<String, Path> activePlugins)
 specifier|private
 name|TreeSet
 argument_list|<
@@ -4199,7 +4199,7 @@ block|}
 block|}
 comment|// Only one active plugin per plugin name can exist for each plugin name.
 comment|// Filter out disabled plugins and transform the multimap to a map
-DECL|method|filterDisabled ( SetMultimap<String, Path> pluginPaths)
+DECL|method|filterDisabled (SetMultimap<String, Path> pluginPaths)
 specifier|private
 specifier|static
 name|Map
@@ -4638,7 +4638,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|filterDisabledPlugins ( Collection<Path> paths)
+DECL|method|filterDisabledPlugins (Collection<Path> paths)
 specifier|private
 specifier|static
 name|Iterable

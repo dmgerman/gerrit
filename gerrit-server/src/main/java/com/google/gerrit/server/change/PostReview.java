@@ -1406,26 +1406,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -1553,6 +1533,26 @@ operator|.
 name|stream
 operator|.
 name|Collectors
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -1688,7 +1688,7 @@ name|notifyUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview (Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, ChangesCollection changes, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, NotesMigration migration, NotifyUtil notifyUtil)
+DECL|method|PostReview ( Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, ChangesCollection changes, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, NotesMigration migration, NotifyUtil notifyUtil)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -2641,7 +2641,7 @@ name|output
 argument_list|)
 return|;
 block|}
-DECL|method|emailReviewers (Change change, List<PostReviewers.Addition> reviewerAdditions, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|emailReviewers ( Change change, List<PostReviewers.Addition> reviewerAdditions, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|private
 name|void
 name|emailReviewers
@@ -3482,7 +3482,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|checkComments (RevisionResource revision, Map<String, List<T>> commentsPerPath)
+DECL|method|checkComments ( RevisionResource revision, Map<String, List<T>> commentsPerPath)
 specifier|private
 parameter_list|<
 name|T
@@ -3524,7 +3524,7 @@ name|commentsPerPath
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cleanUpComments ( Map<String, List<T>> commentsPerPath)
+DECL|method|cleanUpComments (Map<String, List<T>> commentsPerPath)
 specifier|private
 parameter_list|<
 name|T
@@ -3887,7 +3887,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|ensurePathRefersToAvailableOrMagicFile (String path, Set<String> availableFilePaths, PatchSet.Id patchSetId)
+DECL|method|ensurePathRefersToAvailableOrMagicFile ( String path, Set<String> availableFilePaths, PatchSet.Id patchSetId)
 specifier|private
 name|void
 name|ensurePathRefersToAvailableOrMagicFile
@@ -4048,7 +4048,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|checkRobotComments (RevisionResource revision, Map<String, List<RobotCommentInput>> in)
+DECL|method|checkRobotComments ( RevisionResource revision, Map<String, List<RobotCommentInput>> in)
 specifier|private
 name|void
 name|checkRobotComments
@@ -4316,7 +4316,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureFixReplacementsAreAddable (String commentPath, List<FixReplacementInfo> fixReplacementInfos)
+DECL|method|ensureFixReplacementsAreAddable ( String commentPath, List<FixReplacementInfo> fixReplacementInfos)
 specifier|private
 name|void
 name|ensureFixReplacementsAreAddable
@@ -4395,7 +4395,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|ensureReplacementsArePresent (String commentPath, List<FixReplacementInfo> fixReplacementInfos)
+DECL|method|ensureReplacementsArePresent ( String commentPath, List<FixReplacementInfo> fixReplacementInfos)
 specifier|private
 name|void
 name|ensureReplacementsArePresent
@@ -4481,7 +4481,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureReplacementPathRefersToFileOfComment (String commentPath, String replacementPath)
+DECL|method|ensureReplacementPathRefersToFileOfComment ( String commentPath, String replacementPath)
 specifier|private
 name|void
 name|ensureReplacementPathRefersToFileOfComment
@@ -4526,7 +4526,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureRangeIsSet (String commentPath, com.google.gerrit.extensions.client.Comment.Range range)
+DECL|method|ensureRangeIsSet ( String commentPath, com.google.gerrit.extensions.client.Comment.Range range)
 specifier|private
 name|void
 name|ensureRangeIsSet
@@ -4577,7 +4577,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureRangeIsValid (String commentPath, com.google.gerrit.extensions.client.Comment.Range range)
+DECL|method|ensureRangeIsValid ( String commentPath, com.google.gerrit.extensions.client.Comment.Range range)
 specifier|private
 name|void
 name|ensureRangeIsValid
@@ -4694,7 +4694,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Used to compare Comments with CommentInput comments.    */
+comment|/** Used to compare Comments with CommentInput comments. */
 annotation|@
 name|AutoValue
 DECL|class|CommentSetEntry
@@ -4703,7 +4703,7 @@ specifier|static
 class|class
 name|CommentSetEntry
 block|{
-DECL|method|create (String filename, int patchSetId, Integer line, Side side, HashCode message, Comment.Range range)
+DECL|method|create ( String filename, int patchSetId, Integer line, Side side, HashCode message, Comment.Range range)
 specifier|private
 specifier|static
 name|CommentSetEntry
@@ -4818,9 +4818,9 @@ name|int
 name|patchSetId
 parameter_list|()
 function_decl|;
-DECL|method|line ()
 annotation|@
 name|Nullable
+DECL|method|line ()
 specifier|abstract
 name|Integer
 name|line
@@ -4838,9 +4838,9 @@ name|HashCode
 name|message
 parameter_list|()
 function_decl|;
-DECL|method|range ()
 annotation|@
 name|Nullable
+DECL|method|range ()
 specifier|abstract
 name|Comment
 operator|.
@@ -4972,7 +4972,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|Op (PatchSet.Id psId, ReviewInput in, ListMultimap<RecipientType, Account.Id> accountsToNotify, List<PostReviewers.Addition> reviewerResults)
+DECL|method|Op ( PatchSet.Id psId, ReviewInput in, ListMultimap<RecipientType, Account.Id> accountsToNotify, List<PostReviewers.Addition> reviewerResults)
 specifier|private
 name|Op
 parameter_list|(
@@ -5898,7 +5898,7 @@ return|return
 name|toAdd
 return|;
 block|}
-DECL|method|createRobotCommentFromInput (ChangeContext ctx, String path, RobotCommentInput robotCommentInput)
+DECL|method|createRobotCommentFromInput ( ChangeContext ctx, String path, RobotCommentInput robotCommentInput)
 specifier|private
 name|RobotComment
 name|createRobotCommentFromInput
@@ -6093,7 +6093,7 @@ return|return
 name|fixSuggestions
 return|;
 block|}
-DECL|method|createFixSuggestionFromInput ( FixSuggestionInfo fixSuggestionInfo)
+DECL|method|createFixSuggestionFromInput (FixSuggestionInfo fixSuggestionInfo)
 specifier|private
 name|FixSuggestion
 name|createFixSuggestionFromInput
@@ -6137,7 +6137,7 @@ name|fixReplacements
 argument_list|)
 return|;
 block|}
-DECL|method|toFixReplacements ( List<FixReplacementInfo> fixReplacementInfos)
+DECL|method|toFixReplacements (List<FixReplacementInfo> fixReplacementInfos)
 specifier|private
 name|List
 argument_list|<
@@ -6174,7 +6174,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|toFixReplacement ( FixReplacementInfo fixReplacementInfo)
+DECL|method|toFixReplacement (FixReplacementInfo fixReplacementInfo)
 specifier|private
 name|FixReplacement
 name|toFixReplacement
@@ -6459,7 +6459,7 @@ return|return
 name|drafts
 return|;
 block|}
-DECL|method|approvalsByKey ( Collection<PatchSetApproval> patchsetApprovals)
+DECL|method|approvalsByKey (Collection<PatchSetApproval> patchsetApprovals)
 specifier|private
 name|Map
 argument_list|<
@@ -6587,7 +6587,7 @@ return|return
 name|c
 return|;
 block|}
-DECL|method|publishAllRevisions (ChangeContext ctx, Map<String, Comment> drafts, List<Comment> ups)
+DECL|method|publishAllRevisions ( ChangeContext ctx, Map<String, Comment> drafts, List<Comment> ups)
 specifier|private
 name|void
 name|publishAllRevisions
@@ -6735,7 +6735,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getAllApprovals (LabelTypes labelTypes, Map<String, Short> current, Map<String, Short> input)
+DECL|method|getAllApprovals ( LabelTypes labelTypes, Map<String, Short> current, Map<String, Short> input)
 specifier|private
 name|Map
 argument_list|<
@@ -7813,7 +7813,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-DECL|method|validatePostSubmitLabels (ChangeContext ctx, LabelTypes labelTypes, Map<String, Short> previous, List<PatchSetApproval> ups, List<PatchSetApproval> del)
+DECL|method|validatePostSubmitLabels ( ChangeContext ctx, LabelTypes labelTypes, Map<String, Short> previous, List<PatchSetApproval> ups, List<PatchSetApproval> del)
 specifier|private
 name|void
 name|validatePostSubmitLabels
@@ -8223,7 +8223,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|forceCallerAsReviewer (ChangeContext ctx, Map<String, PatchSetApproval> current, List<PatchSetApproval> ups, List<PatchSetApproval> del)
+DECL|method|forceCallerAsReviewer ( ChangeContext ctx, Map<String, PatchSetApproval> current, List<PatchSetApproval> ups, List<PatchSetApproval> del)
 specifier|private
 name|void
 name|forceCallerAsReviewer

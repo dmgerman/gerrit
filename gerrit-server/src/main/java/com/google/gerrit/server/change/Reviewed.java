@@ -163,7 +163,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 annotation|@
 name|Singleton
 DECL|class|PutReviewed
@@ -303,7 +303,7 @@ name|accountPatchReviewStore
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteReviewed ( DynamicItem<AccountPatchReviewStore> accountPatchReviewStore)
+DECL|method|DeleteReviewed (DynamicItem<AccountPatchReviewStore> accountPatchReviewStore)
 name|DeleteReviewed
 parameter_list|(
 name|DynamicItem
@@ -380,7 +380,7 @@ DECL|method|Reviewed ()
 specifier|private
 name|Reviewed
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

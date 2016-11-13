@@ -768,26 +768,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -930,6 +910,26 @@ name|DataSource
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/** Initialize a new Gerrit installation. */
 end_comment
@@ -1029,7 +1029,7 @@ operator|=
 name|pluginsToInstall
 expr_stmt|;
 block|}
-DECL|method|BaseInit (Path sitePath, boolean standalone, boolean initDb, PluginsDistribution pluginsDistribution, List<String> pluginsToInstall)
+DECL|method|BaseInit ( Path sitePath, boolean standalone, boolean initDb, PluginsDistribution pluginsDistribution, List<String> pluginsToInstall)
 specifier|public
 name|BaseInit
 parameter_list|(
@@ -1068,7 +1068,7 @@ name|pluginsToInstall
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BaseInit (Path sitePath, final Provider<DataSource> dsProvider, boolean standalone, boolean initDb, PluginsDistribution pluginsDistribution, List<String> pluginsToInstall)
+DECL|method|BaseInit ( Path sitePath, final Provider<DataSource> dsProvider, boolean standalone, boolean initDb, PluginsDistribution pluginsDistribution, List<String> pluginsToInstall)
 specifier|public
 name|BaseInit
 parameter_list|(
@@ -1414,7 +1414,7 @@ name|run
 parameter_list|)
 throws|throws
 name|Exception
-block|{   }
+block|{}
 DECL|method|getInstallPlugins ()
 specifier|protected
 name|List
@@ -1583,7 +1583,7 @@ name|initializer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SiteInit (final SitePaths site, final InitFlags flags, final ConsoleUI ui, final SitePathInitializer initializer)
+DECL|method|SiteInit ( final SitePaths site, final InitFlags flags, final ConsoleUI ui, final SitePathInitializer initializer)
 name|SiteInit
 parameter_list|(
 specifier|final
@@ -2430,7 +2430,7 @@ name|repositoryManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SiteRun (ConsoleUI ui, SitePaths site, InitFlags flags, SchemaUpdater schemaUpdater, SchemaFactory<ReviewDb> schema, GitRepositoryManager repositoryManager)
+DECL|method|SiteRun ( ConsoleUI ui, SitePaths site, InitFlags flags, SchemaUpdater schemaUpdater, SchemaFactory<ReviewDb> schema, GitRepositoryManager repositoryManager)
 name|SiteRun
 parameter_list|(
 name|ConsoleUI

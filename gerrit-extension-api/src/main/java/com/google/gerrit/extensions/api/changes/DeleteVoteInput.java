@@ -104,9 +104,9 @@ specifier|public
 class|class
 name|DeleteVoteInput
 block|{
+DECL|field|label
 annotation|@
 name|DefaultInput
-DECL|field|label
 specifier|public
 name|String
 name|label

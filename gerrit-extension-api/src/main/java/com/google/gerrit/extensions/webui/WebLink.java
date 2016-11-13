@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Marks that the implementor has a method that provides  * a weblinkInfo  *  */
+comment|/** Marks that the implementor has a method that provides a weblinkInfo */
 end_comment
 
 begin_interface
@@ -76,12 +76,12 @@ specifier|public
 interface|interface
 name|WebLink
 block|{
-comment|/**    * Class that holds target defaults for WebLink anchors.    */
+comment|/** Class that holds target defaults for WebLink anchors. */
 DECL|class|Target
 class|class
 name|Target
 block|{
-comment|/**      * Opens the link in a new window or tab      */
+comment|/** Opens the link in a new window or tab */
 DECL|field|BLANK
 specifier|public
 specifier|static
@@ -91,7 +91,7 @@ name|BLANK
 init|=
 literal|"_blank"
 decl_stmt|;
-comment|/**      * Opens the link in the frame it was clicked.      */
+comment|/** Opens the link in the frame it was clicked. */
 DECL|field|SELF
 specifier|public
 specifier|static
@@ -101,7 +101,7 @@ name|SELF
 init|=
 literal|"_self"
 decl_stmt|;
-comment|/**      * Opens link in parent frame.      */
+comment|/** Opens link in parent frame. */
 DECL|field|PARENT
 specifier|public
 specifier|static
@@ -111,7 +111,7 @@ name|PARENT
 init|=
 literal|"_parent"
 decl_stmt|;
-comment|/**      * Opens link in the full body of the window.      */
+comment|/** Opens link in the full body of the window. */
 DECL|field|TOP
 specifier|public
 specifier|static

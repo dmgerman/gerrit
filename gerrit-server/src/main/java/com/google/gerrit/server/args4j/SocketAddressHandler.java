@@ -110,6 +110,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|SocketAddress
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -186,16 +196,6 @@ name|Setter
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|SocketAddress
-import|;
-end_import
-
 begin_class
 DECL|class|SocketAddressHandler
 specifier|public
@@ -209,7 +209,7 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|SocketAddressHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<SocketAddress> setter)
+DECL|method|SocketAddressHandler ( @ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<SocketAddress> setter)
 specifier|public
 name|SocketAddressHandler
 parameter_list|(

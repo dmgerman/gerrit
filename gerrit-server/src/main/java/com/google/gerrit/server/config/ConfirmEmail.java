@@ -323,9 +323,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|token
 annotation|@
 name|DefaultInput
-DECL|field|token
 specifier|public
 name|String
 name|token
@@ -354,7 +354,7 @@ name|accountManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConfirmEmail (Provider<CurrentUser> self, EmailTokenVerifier emailTokenVerifier, AccountManager accountManager)
+DECL|method|ConfirmEmail ( Provider<CurrentUser> self, EmailTokenVerifier emailTokenVerifier, AccountManager accountManager)
 specifier|public
 name|ConfirmEmail
 parameter_list|(

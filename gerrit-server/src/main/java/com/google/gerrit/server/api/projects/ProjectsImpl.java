@@ -326,7 +326,7 @@ name|listProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectsImpl (ProjectsCollection projects, ProjectApiImpl.Factory api, Provider<ListProjects> listProvider)
+DECL|method|ProjectsImpl ( ProjectsCollection projects, ProjectApiImpl.Factory api, Provider<ListProjects> listProvider)
 name|ProjectsImpl
 parameter_list|(
 name|ProjectsCollection

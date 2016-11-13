@@ -140,11 +140,11 @@ name|UseGerritConfigAnnotationTest
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|serverConfig
 annotation|@
 name|Inject
 annotation|@
 name|GerritServerConfig
-DECL|field|serverConfig
 name|Config
 name|serverConfig
 decl_stmt|;

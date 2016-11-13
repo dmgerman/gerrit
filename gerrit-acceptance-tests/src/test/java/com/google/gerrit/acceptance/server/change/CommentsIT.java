@@ -538,26 +538,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -642,6 +622,26 @@ name|Pattern
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 annotation|@
 name|NoHttpd
@@ -652,9 +652,9 @@ name|CommentsIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|changes
 annotation|@
 name|Inject
-DECL|field|changes
 specifier|private
 name|Provider
 argument_list|<
@@ -662,9 +662,9 @@ name|ChangesCollection
 argument_list|>
 name|changes
 decl_stmt|;
+DECL|field|postReview
 annotation|@
 name|Inject
-DECL|field|postReview
 specifier|private
 name|Provider
 argument_list|<
@@ -672,9 +672,9 @@ name|PostReview
 argument_list|>
 name|postReview
 decl_stmt|;
+DECL|field|email
 annotation|@
 name|Inject
-DECL|field|email
 specifier|private
 name|FakeEmailSender
 name|email
@@ -6231,7 +6231,7 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|newComment (String path, Side side, int line, String message, Boolean unresolved)
+DECL|method|newComment ( String path, Side side, int line, String message, Boolean unresolved)
 specifier|private
 specifier|static
 name|CommentInput
@@ -6279,7 +6279,7 @@ name|unresolved
 argument_list|)
 return|;
 block|}
-DECL|method|newCommentOnParent (String path, int parent, int line, String message)
+DECL|method|newCommentOnParent ( String path, int parent, int line, String message)
 specifier|private
 specifier|static
 name|CommentInput
@@ -6426,7 +6426,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|populate (C c, String path, Side side, Integer parent, int line, String message, Boolean unresolved)
+DECL|method|populate ( C c, String path, Side side, Integer parent, int line, String message, Boolean unresolved)
 specifier|private
 specifier|static
 parameter_list|<

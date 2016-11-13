@@ -268,7 +268,7 @@ name|gpgKeys
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|AddKeySender (EmailArguments ea, IdentifiedUser callingUser, @Assisted IdentifiedUser user, @Assisted AccountSshKey sshKey)
+DECL|method|AddKeySender ( EmailArguments ea, IdentifiedUser callingUser, @Assisted IdentifiedUser user, @Assisted AccountSshKey sshKey)
 specifier|public
 name|AddKeySender
 parameter_list|(
@@ -323,7 +323,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|AddKeySender (EmailArguments ea, IdentifiedUser callingUser, @Assisted IdentifiedUser user, @Assisted List<String> gpgKeys)
+DECL|method|AddKeySender ( EmailArguments ea, IdentifiedUser callingUser, @Assisted IdentifiedUser user, @Assisted List<String> gpgKeys)
 specifier|public
 name|AddKeySender
 parameter_list|(

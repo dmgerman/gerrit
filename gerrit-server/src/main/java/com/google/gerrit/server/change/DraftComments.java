@@ -331,7 +331,7 @@ name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DraftComments (DynamicMap<RestView<DraftCommentResource>> views, Provider<CurrentUser> user, ListRevisionDrafts list, Provider<ReviewDb> dbProvider, CommentsUtil commentsUtil)
+DECL|method|DraftComments ( DynamicMap<RestView<DraftCommentResource>> views, Provider<CurrentUser> user, ListRevisionDrafts list, Provider<ReviewDb> dbProvider, CommentsUtil commentsUtil)
 name|DraftComments
 parameter_list|(
 name|DynamicMap

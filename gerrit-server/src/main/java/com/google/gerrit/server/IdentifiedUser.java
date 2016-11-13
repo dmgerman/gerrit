@@ -404,34 +404,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|SystemReader
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|net
@@ -527,6 +499,34 @@ operator|.
 name|util
 operator|.
 name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|PersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|SystemReader
 import|;
 end_import
 
@@ -790,7 +790,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|runAs (SocketAddress remotePeer, Account.Id id, @Nullable CurrentUser caller)
+DECL|method|runAs ( SocketAddress remotePeer, Account.Id id, @Nullable CurrentUser caller)
 specifier|public
 name|IdentifiedUser
 name|runAs
@@ -843,7 +843,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Create an IdentifiedUser, relying on current request state.    *<p>    * Can only be used from within a module that has defined request scoped    * {@code @RemotePeer SocketAddress} and {@code ReviewDb} providers.    */
+comment|/**    * Create an IdentifiedUser, relying on current request state.    *    *<p>Can only be used from within a module that has defined request scoped {@code @RemotePeer    * SocketAddress} and {@code ReviewDb} providers.    */
 annotation|@
 name|Singleton
 DECL|class|RequestFactory
@@ -2305,7 +2305,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Returns a materialized copy of the user with all dependencies.    *    * Invoke all providers and factories of dependent objects and store the    * references to a copy of the current identified user.    *    * @return copy of the identified user    */
+comment|/**    * Returns a materialized copy of the user with all dependencies.    *    *<p>Invoke all providers and factories of dependent objects and store the references to a copy    * of the current identified user.    *    * @return copy of the identified user    */
 DECL|method|materializedCopy ()
 specifier|public
 name|IdentifiedUser

@@ -354,7 +354,7 @@ name|asString
 argument_list|()
 return|;
 block|}
-DECL|method|parseHtml ( String html, IdMap ids, ReplacementMap opts, boolean wantElements)
+DECL|method|parseHtml (String html, IdMap ids, ReplacementMap opts, boolean wantElements)
 specifier|private
 specifier|static
 name|Node
@@ -609,7 +609,7 @@ DECL|method|ReplacementMap ()
 specifier|protected
 name|ReplacementMap
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|IdMap
 specifier|private
@@ -681,13 +681,13 @@ DECL|method|IdMap ()
 specifier|protected
 name|IdMap
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|method|HtmlTemplate ()
 specifier|private
 name|HtmlTemplate
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

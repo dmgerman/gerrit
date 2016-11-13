@@ -1383,6 +1383,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|byPath (List<CommentInfo> list)
 specifier|private
 specifier|static
 name|TreeMap
@@ -1394,7 +1395,6 @@ argument_list|<
 name|CommentInfo
 argument_list|>
 argument_list|>
-DECL|method|byPath (List<CommentInfo> list)
 name|byPath
 parameter_list|(
 name|List

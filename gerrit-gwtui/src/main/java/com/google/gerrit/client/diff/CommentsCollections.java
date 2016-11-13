@@ -629,7 +629,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{}
 block|}
 return|;
 block|}
@@ -733,7 +733,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{}
 block|}
 return|;
 block|}
@@ -921,7 +921,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{}
 block|}
 return|;
 block|}
@@ -1021,7 +1021,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{}
 block|}
 return|;
 block|}

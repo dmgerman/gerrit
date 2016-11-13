@@ -318,18 +318,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -375,6 +363,18 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
 import|;
 end_import
 
@@ -427,7 +427,7 @@ name|recursive
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListMembers (GroupCache groupCache, GroupDetailFactory.Factory groupDetailFactory, AccountLoader.Factory accountLoaderFactory)
+DECL|method|ListMembers ( GroupCache groupCache, GroupDetailFactory.Factory groupDetailFactory, AccountLoader.Factory accountLoaderFactory)
 specifier|protected
 name|ListMembers
 parameter_list|(

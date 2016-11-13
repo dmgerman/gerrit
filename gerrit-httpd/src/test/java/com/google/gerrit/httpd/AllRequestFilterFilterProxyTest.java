@@ -212,6 +212,50 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|FilterChain
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|FilterConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletRequest
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|easymock
@@ -260,57 +304,13 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|FilterChain
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|FilterConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|http
-operator|.
-name|HttpServletRequest
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|http
-operator|.
-name|HttpServletResponse
-import|;
-end_import
-
 begin_class
 DECL|class|AllRequestFilterFilterProxyTest
 specifier|public
 class|class
 name|AllRequestFilterFilterProxyTest
 block|{
-comment|/**    * Set of filters for FilterProxy    *<p/>    * This set is used to as set of filters when fetching an    * {@link AllRequestFilter.FilterProxy} instance through    * {@link #getFilterProxy()}.    */
+comment|/**    * Set of filters for FilterProxy    *    *<p>This set is used to as set of filters when fetching an {@link AllRequestFilter.FilterProxy}    * instance through {@link #getFilterProxy()}.    */
 DECL|field|filters
 specifier|private
 name|DynamicSet
@@ -345,7 +345,7 @@ comment|// overengineered at this point. However, if in the future we decide to 
 comment|// test the inner class directly, but rather test from the outside using
 comment|// Guice Injectors, it is now sufficient to change only those two methods,
 comment|// and we need not mess with the individual tests.
-comment|/**    * Obtain a FilterProxy with a known DynamicSet of filters    *<p/>    * The returned {@link AllRequestFilter.FilterProxy} can have new filters    * added dynamically by calling {@link #addFilter(AllRequestFilter)}.    */
+comment|/**    * Obtain a FilterProxy with a known DynamicSet of filters    *    *<p>The returned {@link AllRequestFilter.FilterProxy} can have new filters added dynamically by    * calling {@link #addFilter(AllRequestFilter)}.    */
 DECL|method|getFilterProxy ()
 specifier|private
 name|AllRequestFilter
@@ -364,8 +364,8 @@ name|filters
 argument_list|)
 return|;
 block|}
-comment|/**    * Add a filter to created FilterProxy instances    *<p/>    * This method adds the given filter to all    * {@link AllRequestFilter.FilterProxy} instances created by    * {@link #getFilterProxy()}.    */
-DECL|method|addFilter ( final AllRequestFilter filter)
+comment|/**    * Add a filter to created FilterProxy instances    *    *<p>This method adds the given filter to all {@link AllRequestFilter.FilterProxy} instances    * created by {@link #getFilterProxy()}.    */
+DECL|method|addFilter (final AllRequestFilter filter)
 specifier|private
 name|ReloadableRegistrationHandle
 argument_list|<

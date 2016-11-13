@@ -108,11 +108,11 @@ name|isPreferred
 parameter_list|()
 comment|/*-{ return this['preferred'] ? true : false; }-*/
 function_decl|;
-DECL|method|isConfirmationPending ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|isConfirmationPending ()
 name|isConfirmationPending
 parameter_list|()
 comment|/*-{ return this['pending_confirmation'] ? true : false; }-*/
@@ -121,7 +121,7 @@ DECL|method|EmailInfo ()
 specifier|protected
 name|EmailInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -190,6 +190,72 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Properties
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -494,72 +560,6 @@ name|FS
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Properties
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicInteger
-import|;
-end_import
-
 begin_class
 DECL|class|GitUtil
 specifier|public
@@ -701,8 +701,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Create a new {@link TestRepository} with a distinct commit clock.    *<p>    * It is very easy for tests to create commits with identical subjects and    * trees; if such commits also have identical authors/committers, then the    * computed Change-Id is identical as well. Tests may generally assume that    * Change-Ids are unique, so to ensure this, we provision TestRepository    * instances with non-overlapping commit clock times.    *<p>    * Space test repos 1 day apart, which allows for about 86k ticks per repo    * before overlapping, and about 8k instances per process before hitting    * JGit's year 2038 limit.    *    * @param repo repository to wrap.    * @return wrapped test repository with distinct commit time space.    */
-DECL|method|newTestRepository ( R repo)
+comment|/**    * Create a new {@link TestRepository} with a distinct commit clock.    *    *<p>It is very easy for tests to create commits with identical subjects and trees; if such    * commits also have identical authors/committers, then the computed Change-Id is identical as    * well. Tests may generally assume that Change-Ids are unique, so to ensure this, we provision    * TestRepository instances with non-overlapping commit clock times.    *    *<p>Space test repos 1 day apart, which allows for about 86k ticks per repo before overlapping,    * and about 8k instances per process before hitting JGit's year 2038 limit.    *    * @param repo repository to wrap.    * @return wrapped test repository with distinct commit time space.    */
+DECL|method|newTestRepository (R repo)
 specifier|public
 specifier|static
 parameter_list|<
@@ -767,7 +767,7 @@ return|return
 name|tr
 return|;
 block|}
-DECL|method|cloneProject ( Project.NameKey project, String uri)
+DECL|method|cloneProject (Project.NameKey project, String uri)
 specifier|public
 specifier|static
 name|TestRepository
@@ -1206,7 +1206,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|pushHead (TestRepository<?> testRepo, String ref, boolean pushTags, boolean force)
+DECL|method|pushHead ( TestRepository<?> testRepo, String ref, boolean pushTags, boolean force)
 specifier|public
 specifier|static
 name|PushResult
@@ -1247,7 +1247,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|pushHead (TestRepository<?> testRepo, String ref, boolean pushTags, boolean force, List<String> pushOptions)
+DECL|method|pushHead ( TestRepository<?> testRepo, String ref, boolean pushTags, boolean force, List<String> pushOptions)
 specifier|public
 specifier|static
 name|PushResult
@@ -1329,7 +1329,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|pushOne (TestRepository<?> testRepo, String source, String target, boolean pushTags, boolean force, List<String> pushOptions)
+DECL|method|pushOne ( TestRepository<?> testRepo, String source, String target, boolean pushTags, boolean force, List<String> pushOptions)
 specifier|public
 specifier|static
 name|PushResult

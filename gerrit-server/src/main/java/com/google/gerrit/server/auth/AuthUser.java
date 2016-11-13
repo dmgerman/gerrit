@@ -111,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An authenticated user as specified by the AuthBackend.  */
+comment|/** An authenticated user as specified by the AuthBackend. */
 end_comment
 
 begin_class
@@ -120,7 +120,7 @@ specifier|public
 class|class
 name|AuthUser
 block|{
-comment|/**    * Globally unique identifier for the user.    */
+comment|/** Globally unique identifier for the user. */
 annotation|@
 name|AutoValue
 DECL|class|UUID

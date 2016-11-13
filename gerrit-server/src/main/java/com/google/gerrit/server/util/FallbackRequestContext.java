@@ -159,7 +159,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The default RequestContext to use when not in a request scope e.g.  * ThreadLocalRequestContext is not set.  */
+comment|/**  * The default RequestContext to use when not in a request scope e.g. ThreadLocalRequestContext is  * not set.  */
 end_comment
 
 begin_class

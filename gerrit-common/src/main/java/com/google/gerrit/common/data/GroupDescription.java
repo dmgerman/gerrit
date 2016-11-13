@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Group methods exposed by the GroupBackend.  */
+comment|/** Group methods exposed by the GroupBackend. */
 end_comment
 
 begin_class
@@ -106,7 +106,7 @@ specifier|public
 class|class
 name|GroupDescription
 block|{
-comment|/**    * The Basic information required to be exposed by any Group.    */
+comment|/** The Basic information required to be exposed by any Group. */
 DECL|interface|Basic
 specifier|public
 interface|interface
@@ -126,7 +126,7 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * @return optional email address to send to the group's members. If      *         provided, Gerrit will use this email address to send      *         change notifications to the group.      */
+comment|/**      * @return optional email address to send to the group's members. If provided, Gerrit will use      *     this email address to send change notifications to the group.      */
 annotation|@
 name|Nullable
 DECL|method|getEmailAddress ()
@@ -134,7 +134,7 @@ name|String
 name|getEmailAddress
 parameter_list|()
 function_decl|;
-comment|/**      * @return optional URL to information about the group. Typically a URL to a      *         web page that permits users to apply to join the group, or manage      *         their membership.      */
+comment|/**      * @return optional URL to information about the group. Typically a URL to a web page that      *     permits users to apply to join the group, or manage their membership.      */
 annotation|@
 name|Nullable
 DECL|method|getUrl ()
@@ -143,7 +143,7 @@ name|getUrl
 parameter_list|()
 function_decl|;
 block|}
-comment|/**    * The extended information exposed by internal groups backed by an    * AccountGroup.    */
+comment|/** The extended information exposed by internal groups backed by an AccountGroup. */
 DECL|interface|Internal
 specifier|public
 interface|interface
@@ -162,7 +162,7 @@ DECL|method|GroupDescription ()
 specifier|private
 name|GroupDescription
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

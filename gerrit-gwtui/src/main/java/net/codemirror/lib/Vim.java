@@ -79,7 +79,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Glue around the Vim emulation for {@link CodeMirror}.  *  * As an instance {@code this} is actually the {@link CodeMirror} object. Class  * Vim is providing a new namespace for Vim related methods that are associated  * with an editor.  */
+comment|/**  * Glue around the Vim emulation for {@link CodeMirror}.  *  *<p>As an instance {@code this} is actually the {@link CodeMirror} object. Class Vim is providing  * a new namespace for Vim related methods that are associated with an editor.  */
 end_comment
 
 begin_class
@@ -171,7 +171,7 @@ block|,
 literal|"Ctrl-B"
 block|,
 literal|"Ctrl-R"
-block|,}
+block|,         }
 control|)
 block|{
 name|km
@@ -324,7 +324,7 @@ DECL|method|Vim ()
 specifier|protected
 name|Vim
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

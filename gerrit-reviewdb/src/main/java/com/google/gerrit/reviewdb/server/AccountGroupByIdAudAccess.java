@@ -207,7 +207,7 @@ name|Query
 argument_list|(
 literal|"WHERE key.groupId = ? AND key.includeUUID = ?"
 argument_list|)
-DECL|method|byGroupInclude (AccountGroup.Id groupId, AccountGroup.UUID incGroupUUID)
+DECL|method|byGroupInclude ( AccountGroup.Id groupId, AccountGroup.UUID incGroupUUID)
 name|ResultSet
 argument_list|<
 name|AccountGroupByIdAud

@@ -109,7 +109,7 @@ specifier|private
 name|String
 name|sshName
 decl_stmt|;
-DECL|method|TestServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser user, ClassLoader classloader, String sysName, String httpName, String sshName)
+DECL|method|TestServerPlugin ( String name, String pluginCanonicalWebUrl, PluginUser user, ClassLoader classloader, String sysName, String httpName, String sshName)
 specifier|public
 name|TestServerPlugin
 parameter_list|(

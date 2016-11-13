@@ -287,7 +287,7 @@ DECL|method|CommentRange ()
 specifier|protected
 name|CommentRange
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

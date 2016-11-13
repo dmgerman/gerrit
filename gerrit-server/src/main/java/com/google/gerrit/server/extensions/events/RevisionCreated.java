@@ -272,26 +272,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -307,6 +287,26 @@ operator|.
 name|sql
 operator|.
 name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -375,7 +375,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (Change change, PatchSet patchSet, Account uploader, Timestamp when, NotifyHandling notify)
+DECL|method|fire ( Change change, PatchSet patchSet, Account uploader, Timestamp when, NotifyHandling notify)
 specifier|public
 name|void
 name|fire
@@ -522,7 +522,7 @@ name|RevisionCreatedListener
 operator|.
 name|Event
 block|{
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo uploader, Timestamp when, NotifyHandling notify)
+DECL|method|Event ( ChangeInfo change, RevisionInfo revision, AccountInfo uploader, Timestamp when, NotifyHandling notify)
 name|Event
 parameter_list|(
 name|ChangeInfo

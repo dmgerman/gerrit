@@ -107,7 +107,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Formatter to format timestamps relative to the current time using time units  * in the format defined by {@code git log --relative-date}.  */
+comment|/**  * Formatter to format timestamps relative to the current time using time units in the format  * defined by {@code git log --relative-date}.  */
 end_comment
 
 begin_class
@@ -184,7 +184,7 @@ literal|365
 operator|*
 name|DAY_IN_MILLIS
 decl_stmt|;
-comment|/**    * @param when {@link Date} to format    * @return age of given {@link Date} compared to now formatted in the same    *         relative format as returned by {@code git log --relative-date}    */
+comment|/**    * @param when {@link Date} to format    * @return age of given {@link Date} compared to now formatted in the same relative format as    *     returned by {@code git log --relative-date}    */
 annotation|@
 name|SuppressWarnings
 argument_list|(

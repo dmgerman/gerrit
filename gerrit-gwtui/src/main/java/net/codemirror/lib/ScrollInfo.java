@@ -108,7 +108,7 @@ name|top
 parameter_list|()
 comment|/*-{ return this.top }-*/
 function_decl|;
-comment|/**    * Pixel height of the full content being scrolled. This may only be an    * estimate given by CodeMirror. Line widgets further down in the document may    * not be measured, so line heights can be incorrect until drawn.    */
+comment|/**    * Pixel height of the full content being scrolled. This may only be an estimate given by    * CodeMirror. Line widgets further down in the document may not be measured, so line heights can    * be incorrect until drawn.    */
 DECL|method|height ()
 specifier|public
 specifier|final
@@ -150,7 +150,7 @@ DECL|method|ScrollInfo ()
 specifier|protected
 name|ScrollInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -339,7 +339,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * An avatar image for the given account using the requested size.    *    * @param account The account in which we are interested    * @param size A requested size. Note that the size can be ignored depending    *        on the avatar provider. A size<= 0 indicates to let the provider    *        decide a default size.    * @param addPopup show avatar popup with user info on hovering over the    *        avatar image    */
+comment|/**    * An avatar image for the given account using the requested size.    *    * @param account The account in which we are interested    * @param size A requested size. Note that the size can be ignored depending on the avatar    *     provider. A size<= 0 indicates to let the provider decide a default size.    * @param addPopup show avatar popup with user info on hovering over the avatar image    */
 DECL|method|AvatarImage (AccountInfo account, int size, boolean addPopup)
 specifier|public
 name|AvatarImage

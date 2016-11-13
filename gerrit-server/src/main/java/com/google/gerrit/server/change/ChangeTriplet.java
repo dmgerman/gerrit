@@ -229,7 +229,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Parse a triplet out of a string.    *    * @param triplet string of the form "project~branch~id".    * @return the triplet if the input string has the proper format, or absent if    *     not.    */
+comment|/**    * Parse a triplet out of a string.    *    * @param triplet string of the form "project~branch~id".    * @return the triplet if the input string has the proper format, or absent if not.    */
 DECL|method|parse (String triplet)
 specifier|public
 specifier|static

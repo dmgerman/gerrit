@@ -218,7 +218,7 @@ DECL|method|ProjectAccess ()
 specifier|public
 name|ProjectAccess
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|getProjectName ()
 specifier|public
 name|Project

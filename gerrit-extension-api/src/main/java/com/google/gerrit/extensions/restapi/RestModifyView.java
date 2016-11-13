@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * RestView that supports accepting input and changing a resource.  *<p>  * The input must be supplied as JSON as the body of the HTTP request. Modify  * views can be invoked by any HTTP method that is not {@code GET}, which  * includes {@code POST}, {@code PUT}, {@code DELETE}.  *  * @param<R> type of the resource the view modifies.  * @param<I> type of input the JSON parser will parse the input into.  */
+comment|/**  * RestView that supports accepting input and changing a resource.  *  *<p>The input must be supplied as JSON as the body of the HTTP request. Modify views can be  * invoked by any HTTP method that is not {@code GET}, which includes {@code POST}, {@code PUT},  * {@code DELETE}.  *  * @param<R> type of the resource the view modifies.  * @param<I> type of input the JSON parser will parse the input into.  */
 end_comment
 
 begin_interface
@@ -88,7 +88,7 @@ argument_list|<
 name|R
 argument_list|>
 block|{
-comment|/**    * Process the view operation by altering the resource.    *    * @param resource resource to modify.    * @param input input after parsing from request.    * @return result to return to the client. Use {@link BinaryResult} to avoid    *         automatic conversion to JSON.    * @throws AuthException the client is not permitted to access this view.    * @throws BadRequestException the request was incorrectly specified and    *         cannot be handled by this view.    * @throws ResourceConflictException the resource state does not permit this    *         view to make the changes at this time.    * @throws Exception the implementation of the view failed. The exception will    *         be logged and HTTP 500 Internal Server Error will be returned to    *         the client.    */
+comment|/**    * Process the view operation by altering the resource.    *    * @param resource resource to modify.    * @param input input after parsing from request.    * @return result to return to the client. Use {@link BinaryResult} to avoid automatic conversion    *     to JSON.    * @throws AuthException the client is not permitted to access this view.    * @throws BadRequestException the request was incorrectly specified and cannot be handled by this    *     view.    * @throws ResourceConflictException the resource state does not permit this view to make the    *     changes at this time.    * @throws Exception the implementation of the view failed. The exception will be logged and HTTP    *     500 Internal Server Error will be returned to the client.    */
 DECL|method|apply (R resource, I input)
 name|Object
 name|apply

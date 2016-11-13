@@ -760,6 +760,58 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+operator|.
+name|Entry
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -817,58 +869,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-operator|.
-name|Entry
 import|;
 end_import
 
@@ -1239,7 +1239,7 @@ name|changeNotesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StreamEventsApiListener (DynamicItem<EventDispatcher> dispatcher, Provider<ReviewDb> db, EventFactory eventFactory, ProjectCache projectCache, GitRepositoryManager repoManager, PatchSetUtil psUtil, ChangeNotes.Factory changeNotesFactory)
+DECL|method|StreamEventsApiListener ( DynamicItem<EventDispatcher> dispatcher, Provider<ReviewDb> db, EventFactory eventFactory, ProjectCache projectCache, GitRepositoryManager repoManager, PatchSetUtil psUtil, ChangeNotes.Factory changeNotesFactory)
 name|StreamEventsApiListener
 parameter_list|(
 name|DynamicItem
@@ -1420,7 +1420,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|changeAttributeSupplier ( final Change change)
+DECL|method|changeAttributeSupplier (final Change change)
 specifier|private
 name|Supplier
 argument_list|<
@@ -1465,7 +1465,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|accountAttributeSupplier ( final AccountInfo account)
+DECL|method|accountAttributeSupplier (final AccountInfo account)
 specifier|private
 name|Supplier
 argument_list|<
@@ -1617,7 +1617,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|convertApprovalsMap ( Map<String, ApprovalInfo> approvals)
+DECL|method|convertApprovalsMap (Map<String, ApprovalInfo> approvals)
 specifier|private
 specifier|static
 name|Map
@@ -1707,7 +1707,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getApprovalAttribute (LabelTypes labelTypes, Entry<String, Short> approval, Map<String, Short> oldApprovals)
+DECL|method|getApprovalAttribute ( LabelTypes labelTypes, Entry<String, Short> approval, Map<String, Short> oldApprovals)
 specifier|private
 name|ApprovalAttribute
 name|getApprovalAttribute

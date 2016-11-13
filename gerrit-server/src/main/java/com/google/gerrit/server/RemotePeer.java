@@ -128,7 +128,7 @@ DECL|annotation|RemotePeer
 specifier|public
 annotation_defn|@interface
 name|RemotePeer
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

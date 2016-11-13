@@ -308,22 +308,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|codec
-operator|.
-name|binary
-operator|.
-name|Base64
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -359,6 +343,22 @@ operator|.
 name|util
 operator|.
 name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|codec
+operator|.
+name|binary
+operator|.
+name|Base64
 import|;
 end_import
 
@@ -467,7 +467,7 @@ name|accountCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutHttpPassword (Provider<CurrentUser> self, Provider<ReviewDb> dbProvider, AccountCache accountCache)
+DECL|method|PutHttpPassword ( Provider<CurrentUser> self, Provider<ReviewDb> dbProvider, AccountCache accountCache)
 name|PutHttpPassword
 parameter_list|(
 name|Provider

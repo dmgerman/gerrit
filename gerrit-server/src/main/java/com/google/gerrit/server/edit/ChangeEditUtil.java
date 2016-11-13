@@ -564,6 +564,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -674,28 +694,8 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
 begin_comment
-comment|/**  * Utility functions to manipulate change edits.  *<p>  * This class contains methods to retrieve, publish and delete edits.  * For changing edits see {@link ChangeEditModifier}.  */
+comment|/**  * Utility functions to manipulate change edits.  *  *<p>This class contains methods to retrieve, publish and delete edits. For changing edits see  * {@link ChangeEditModifier}.  */
 end_comment
 
 begin_class
@@ -774,7 +774,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditUtil (GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeControl.GenericFactory changeControlFactory, ChangeIndexer indexer, Provider<ReviewDb> db, Provider<CurrentUser> user, ChangeKindCache changeKindCache, BatchUpdate.Factory updateFactory, PatchSetUtil psUtil)
+DECL|method|ChangeEditUtil ( GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeControl.GenericFactory changeControlFactory, ChangeIndexer indexer, Provider<ReviewDb> db, Provider<CurrentUser> user, ChangeKindCache changeKindCache, BatchUpdate.Factory updateFactory, PatchSetUtil psUtil)
 name|ChangeEditUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -872,7 +872,7 @@ operator|=
 name|psUtil
 expr_stmt|;
 block|}
-comment|/**    * Retrieve edit for a change and the user from the request scope.    *<p>    * At most one change edit can exist per user and change.    *    * @param change    * @return edit for this change for this user, if present.    * @throws AuthException    * @throws IOException    * @throws OrmException    */
+comment|/**    * Retrieve edit for a change and the user from the request scope.    *    *<p>At most one change edit can exist per user and change.    *    * @param change    * @return edit for this change for this user, if present.    * @throws AuthException    * @throws IOException    * @throws OrmException    */
 DECL|method|byChange (Change change)
 specifier|public
 name|Optional
@@ -930,7 +930,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Retrieve edit for a change and the given user.    *<p>    * At most one change edit can exist per user and change.    *    * @param ctl control with user to retrieve change edits for.    * @return edit for this change for this user, if present.    * @throws AuthException if this is not a logged-in user.    * @throws IOException if an error occurs.    */
+comment|/**    * Retrieve edit for a change and the given user.    *    *<p>At most one change edit can exist per user and change.    *    * @param ctl control with user to retrieve change edits for.    * @return edit for this change for this user, if present.    * @throws AuthException if this is not a logged-in user.    * @throws IOException if an error occurs.    */
 DECL|method|byChange (ChangeControl ctl)
 specifier|public
 name|Optional
@@ -1159,8 +1159,8 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications    *        should be sent after the change edit is published.    * @param accountsToNotify Accounts that should be notified after the change    *        edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
-DECL|method|publish (final ChangeEdit edit, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications should be sent after the    *     change edit is published.    * @param accountsToNotify Accounts that should be notified after the change edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
+DECL|method|publish ( final ChangeEdit edit, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|publish
@@ -1824,7 +1824,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|squashEdit (RevWalk rw, ObjectInserter inserter, RevCommit edit, PatchSet basePatchSet)
+DECL|method|squashEdit ( RevWalk rw, ObjectInserter inserter, RevCommit edit, PatchSet basePatchSet)
 specifier|private
 name|RevCommit
 name|squashEdit
@@ -2037,7 +2037,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|writeSquashedCommit (RevWalk rw, ObjectInserter inserter, RevCommit parent, RevCommit edit)
+DECL|method|writeSquashedCommit ( RevWalk rw, ObjectInserter inserter, RevCommit parent, RevCommit edit)
 specifier|private
 specifier|static
 name|RevCommit

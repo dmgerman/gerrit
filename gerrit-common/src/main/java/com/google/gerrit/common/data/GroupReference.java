@@ -246,7 +246,7 @@ DECL|method|GroupReference ()
 specifier|protected
 name|GroupReference
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|GroupReference (AccountGroup.UUID uuid, String name)
 specifier|public
 name|GroupReference

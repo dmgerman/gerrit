@@ -337,7 +337,7 @@ DECL|method|Input ()
 specifier|public
 name|Input
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|Input (Operation op)
 specifier|public
 name|Input
@@ -384,9 +384,9 @@ enum|enum
 name|Operation
 block|{
 DECL|enumConstant|FLUSH_ALL
-DECL|enumConstant|FLUSH
 name|FLUSH_ALL
 block|,
+DECL|enumConstant|FLUSH
 name|FLUSH
 block|}
 DECL|field|cacheMap

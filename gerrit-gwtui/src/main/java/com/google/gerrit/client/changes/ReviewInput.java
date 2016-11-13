@@ -128,15 +128,15 @@ enum|enum
 name|NotifyHandling
 block|{
 DECL|enumConstant|NONE
-DECL|enumConstant|OWNER
-DECL|enumConstant|OWNER_REVIEWERS
-DECL|enumConstant|ALL
 name|NONE
 block|,
+DECL|enumConstant|OWNER
 name|OWNER
 block|,
+DECL|enumConstant|OWNER_REVIEWERS
 name|OWNER_REVIEWERS
 block|,
+DECL|enumConstant|ALL
 name|ALL
 block|}
 DECL|enum|DraftHandling
@@ -145,15 +145,15 @@ enum|enum
 name|DraftHandling
 block|{
 DECL|enumConstant|DELETE
-DECL|enumConstant|PUBLISH
-DECL|enumConstant|KEEP
-DECL|enumConstant|PUBLISH_ALL_REVISIONS
 name|DELETE
 block|,
+DECL|enumConstant|PUBLISH
 name|PUBLISH
 block|,
+DECL|enumConstant|KEEP
 name|KEEP
 block|,
+DECL|enumConstant|PUBLISH_ALL_REVISIONS
 name|PUBLISH_ALL_REVISIONS
 block|}
 DECL|method|create ()
@@ -328,7 +328,7 @@ DECL|method|ReviewInput ()
 specifier|protected
 name|ReviewInput
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

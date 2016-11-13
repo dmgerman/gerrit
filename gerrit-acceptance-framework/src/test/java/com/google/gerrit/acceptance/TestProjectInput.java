@@ -202,10 +202,10 @@ operator|.
 name|MERGE_IF_NECESSARY
 function_decl|;
 DECL|method|useContributorAgreements ()
+DECL|field|InheritableBoolean.INHERIT
 name|InheritableBoolean
 name|useContributorAgreements
 parameter_list|()
-DECL|field|InheritableBoolean.INHERIT
 default|default
 name|InheritableBoolean
 operator|.

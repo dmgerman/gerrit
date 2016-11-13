@@ -269,7 +269,7 @@ name|resourceFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListReviewers (Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, ReviewerResource.Factory resourceFactory, ReviewerJson json)
+DECL|method|ListReviewers ( Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, ReviewerResource.Factory resourceFactory, ReviewerJson json)
 name|ListReviewers
 parameter_list|(
 name|Provider

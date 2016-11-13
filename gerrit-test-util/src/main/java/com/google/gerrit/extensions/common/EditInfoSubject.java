@@ -189,6 +189,7 @@ argument_list|,
 name|EditInfo
 argument_list|>
 block|{
+DECL|field|EDIT_INFO_SUBJECT_FACTORY
 specifier|private
 specifier|static
 specifier|final
@@ -198,7 +199,6 @@ name|EditInfoSubject
 argument_list|,
 name|EditInfo
 argument_list|>
-DECL|field|EDIT_INFO_SUBJECT_FACTORY
 name|EDIT_INFO_SUBJECT_FACTORY
 init|=
 operator|new

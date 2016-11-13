@@ -142,6 +142,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -424,18 +434,8 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
-comment|/**  * A utility class for updating a notes branch with automatic merge of note  * trees.  */
+comment|/** A utility class for updating a notes branch with automatic merge of note trees. */
 end_comment
 
 begin_class
@@ -558,7 +558,7 @@ name|noteMerger
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NotesBranchUtil (@erritPersonIdent final PersonIdent gerritIdent, final GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey project, @Assisted Repository db, @Assisted ObjectInserter inserter)
+DECL|method|NotesBranchUtil ( @erritPersonIdent final PersonIdent gerritIdent, final GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey project, @Assisted Repository db, @Assisted ObjectInserter inserter)
 specifier|public
 name|NotesBranchUtil
 parameter_list|(
@@ -621,8 +621,8 @@ operator|=
 name|inserter
 expr_stmt|;
 block|}
-comment|/**    * Create a new commit in the {@code notesBranch} by updating existing    * or creating new notes from the {@code notes} map.    *    * @param notes map of notes    * @param notesBranch notes branch to update    * @param commitAuthor author of the commit in the notes branch    * @param commitMessage for the commit in the notes branch    * @throws IOException    * @throws ConcurrentRefUpdateException    */
-DECL|method|commitAllNotes (NoteMap notes, String notesBranch, PersonIdent commitAuthor, String commitMessage)
+comment|/**    * Create a new commit in the {@code notesBranch} by updating existing or creating new notes from    * the {@code notes} map.    *    * @param notes map of notes    * @param notesBranch notes branch to update    * @param commitAuthor author of the commit in the notes branch    * @param commitMessage for the commit in the notes branch    * @throws IOException    * @throws ConcurrentRefUpdateException    */
+DECL|method|commitAllNotes ( NoteMap notes, String notesBranch, PersonIdent commitAuthor, String commitMessage)
 specifier|public
 specifier|final
 name|void
@@ -663,8 +663,8 @@ name|commitMessage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Create a new commit in the {@code notesBranch} by creating not yet    * existing notes from the {@code notes} map. The notes from the    * {@code notes} map which already exist in the note-tree of the    * tip of the {@code notesBranch} will not be updated.    *    * @param notes map of notes    * @param notesBranch notes branch to update    * @param commitAuthor author of the commit in the notes branch    * @param commitMessage for the commit in the notes branch    * @return map with those notes from the {@code notes} that were newly    *         created    * @throws IOException    * @throws ConcurrentRefUpdateException    */
-DECL|method|commitNewNotes (NoteMap notes, String notesBranch, PersonIdent commitAuthor, String commitMessage)
+comment|/**    * Create a new commit in the {@code notesBranch} by creating not yet existing notes from the    * {@code notes} map. The notes from the {@code notes} map which already exist in the note-tree of    * the tip of the {@code notesBranch} will not be updated.    *    * @param notes map of notes    * @param notesBranch notes branch to update    * @param commitAuthor author of the commit in the notes branch    * @param commitMessage for the commit in the notes branch    * @return map with those notes from the {@code notes} that were newly created    * @throws IOException    * @throws ConcurrentRefUpdateException    */
+DECL|method|commitNewNotes ( NoteMap notes, String notesBranch, PersonIdent commitAuthor, String commitMessage)
 specifier|public
 specifier|final
 name|NoteMap
@@ -753,7 +753,7 @@ return|return
 name|newlyCreated
 return|;
 block|}
-DECL|method|commitNotes (NoteMap notes, String notesBranch, PersonIdent commitAuthor, String commitMessage)
+DECL|method|commitNotes ( NoteMap notes, String notesBranch, PersonIdent commitAuthor, String commitMessage)
 specifier|private
 name|void
 name|commitNotes
@@ -1117,7 +1117,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|createCommit (NoteMap map, PersonIdent author, String message, RevCommit... parents)
+DECL|method|createCommit ( NoteMap map, PersonIdent author, String message, RevCommit... parents)
 specifier|private
 name|RevCommit
 name|createCommit
@@ -1499,7 +1499,7 @@ break|break;
 block|}
 block|}
 block|}
-DECL|method|createRefUpdate (String notesBranch, ObjectId newObjectId, ObjectId expectedOldObjectId)
+DECL|method|createRefUpdate ( String notesBranch, ObjectId newObjectId, ObjectId expectedOldObjectId)
 specifier|private
 name|RefUpdate
 name|createRefUpdate

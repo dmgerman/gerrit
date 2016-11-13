@@ -920,7 +920,7 @@ DECL|method|Permission ()
 specifier|protected
 name|Permission
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|Permission (String name)
 specifier|public
 name|Permission

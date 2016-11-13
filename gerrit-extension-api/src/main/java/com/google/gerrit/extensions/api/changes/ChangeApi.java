@@ -279,7 +279,7 @@ name|String
 name|id
 parameter_list|()
 function_decl|;
-comment|/**    * Look up the current revision for the change.    *<p>    *<strong>Note:</strong> This method eagerly reads the revision. Methods that    * mutate the revision do not necessarily re-read the revision. Therefore,    * calling a getter method on an instance after calling a mutation method on    * that same instance is not guaranteed to reflect the mutation. It is not    * recommended to store references to {@code RevisionApi} instances.    *    * @return API for accessing the revision.    * @throws RestApiException if an error occurred.    */
+comment|/**    * Look up the current revision for the change.    *    *<p><strong>Note:</strong> This method eagerly reads the revision. Methods that mutate the    * revision do not necessarily re-read the revision. Therefore, calling a getter method on an    * instance after calling a mutation method on that same instance is not guaranteed to reflect the    * mutation. It is not recommended to store references to {@code RevisionApi} instances.    *    * @return API for accessing the revision.    * @throws RestApiException if an error occurred.    */
 DECL|method|current ()
 name|RevisionApi
 name|current
@@ -309,7 +309,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Look up the reviewer of the change.    *<p>    * @param id ID of the account, can be a string of the format    *     "Full Name&lt;mail@example.com&gt;", just the email address, a full name    *     if it is unique, an account ID, a user name or 'self' for the    *     calling user.    * @return API for accessing the reviewer.    * @throws RestApiException if id is not account ID or is a user that isn't    *     known to be a reviewer for this change.    */
+comment|/**    * Look up the reviewer of the change.    *    *<p>    *    * @param id ID of the account, can be a string of the format "Full Name    *&lt;mail@example.com&gt;", just the email address, a full name if it is unique, an account    *     ID, a user name or 'self' for the calling user.    * @return API for accessing the reviewer.    * @throws RestApiException if id is not account ID or is a user that isn't known to be a reviewer    *     for this change.    */
 DECL|method|reviewer (String id)
 name|ReviewerApi
 name|reviewer
@@ -414,7 +414,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|submittedTogether ( EnumSet<SubmittedTogetherOption> options)
+DECL|method|submittedTogether (EnumSet<SubmittedTogetherOption> options)
 name|SubmittedTogetherInfo
 name|submittedTogether
 parameter_list|(
@@ -446,7 +446,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Publishes a draft change.    */
+comment|/** Publishes a draft change. */
 DECL|method|publish ()
 name|void
 name|publish
@@ -454,7 +454,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Deletes a change.    */
+comment|/** Deletes a change. */
 DECL|method|delete ()
 name|void
 name|delete
@@ -552,7 +552,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Retrieve change edit when exists.    *    * @deprecated Replaced by {@link ChangeApi#edit()} in combination with    * {@link ChangeEditApi#get()}.    */
+comment|/**    * Retrieve change edit when exists.    *    * @deprecated Replaced by {@link ChangeApi#edit()} in combination with {@link    *     ChangeEditApi#get()}.    */
 annotation|@
 name|Deprecated
 DECL|method|getEdit ()
@@ -570,7 +570,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Set hashtags on a change    **/
+comment|/** Set hashtags on a change */
 DECL|method|setHashtags (HashtagsInput input)
 name|void
 name|setHashtags
@@ -581,7 +581,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Get hashtags on a change.    * @return hashtags    * @throws RestApiException    */
+comment|/**    * Get hashtags on a change.    *    * @return hashtags    * @throws RestApiException    */
 DECL|method|getHashtags ()
 name|Set
 argument_list|<
@@ -592,7 +592,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Set the assignee of a change.    */
+comment|/** Set the assignee of a change. */
 DECL|method|setAssignee (AssigneeInput input)
 name|AccountInfo
 name|setAssignee
@@ -603,7 +603,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Get the assignee of a change.    */
+comment|/** Get the assignee of a change. */
 DECL|method|getAssignee ()
 name|AccountInfo
 name|getAssignee
@@ -611,7 +611,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Get all past assignees.   */
+comment|/** Get all past assignees. */
 DECL|method|getPastAssignees ()
 name|List
 argument_list|<
@@ -630,7 +630,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Get all published comments on a change.    *    * @return comments in a map keyed by path; comments have the {@code revision}    *     field set to indicate their patch set.    * @throws RestApiException    */
+comment|/**    * Get all published comments on a change.    *    * @return comments in a map keyed by path; comments have the {@code revision} field set to    *     indicate their patch set.    * @throws RestApiException    */
 DECL|method|comments ()
 name|Map
 argument_list|<
@@ -646,7 +646,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Get all robot comments on a change.    *    * @return robot comments in a map keyed by path; robot comments have the    *     {@code revision} field set to indicate their patch set.    *    * @throws RestApiException    */
+comment|/**    * Get all robot comments on a change.    *    * @return robot comments in a map keyed by path; robot comments have the {@code revision} field    *     set to indicate their patch set.    * @throws RestApiException    */
 DECL|method|robotComments ()
 name|Map
 argument_list|<
@@ -662,7 +662,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Get all draft comments for the current user on a change.    *    * @return drafts in a map keyed by path; comments have the {@code revision}    *     field set to indicate their patch set.    * @throws RestApiException    */
+comment|/**    * Get all draft comments for the current user on a change.    *    * @return drafts in a map keyed by path; comments have the {@code revision} field set to indicate    *     their patch set.    * @throws RestApiException    */
 DECL|method|drafts ()
 name|Map
 argument_list|<
@@ -788,7 +788,7 @@ name|limit
 return|;
 block|}
 block|}
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented
@@ -1441,7 +1441,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|submittedTogether ( EnumSet<SubmittedTogetherOption> options)
+DECL|method|submittedTogether (EnumSet<SubmittedTogetherOption> options)
 specifier|public
 name|SubmittedTogetherInfo
 name|submittedTogether

@@ -96,54 +96,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ProgressMonitor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -244,8 +196,56 @@ name|TimeoutException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ProgressMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Progress reporting interface that multiplexes multiple sub-tasks.  *<p>  * Output is of the format:  *<pre>  *   Task: subA: 1, subB: 75% (3/4) (-)\r  *   Task: subA: 2, subB: 75% (3/4), subC: 1 (\)\r  *   Task: subA: 2, subB: 100% (4/4), subC: 1 (|)\r  *   Task: subA: 4, subB: 100% (4/4), subC: 4, done    \n  *</pre>  *<p>  * Callers should try to keep task and sub-task descriptions short, since the  * output should fit on one terminal line. (Note that git clients do not accept  * terminal control characters, so true multi-line progress messages would be  * impossible.)  */
+comment|/**  * Progress reporting interface that multiplexes multiple sub-tasks.  *  *<p>Output is of the format:  *  *<pre>  *   Task: subA: 1, subB: 75% (3/4) (-)\r  *   Task: subA: 2, subB: 75% (3/4), subC: 1 (\)\r  *   Task: subA: 2, subB: 100% (4/4), subC: 1 (|)\r  *   Task: subA: 4, subB: 100% (4/4), subC: 4, done    \n  *</pre>  *  *<p>Callers should try to keep task and sub-task descriptions short, since the output should fit  * on one terminal line. (Note that git clients do not accept terminal control characters, so true  * multi-line progress messages would be impossible.)  */
 end_comment
 
 begin_class
@@ -365,7 +365,7 @@ operator|=
 name|totalWork
 expr_stmt|;
 block|}
-comment|/**      * Indicate that work has been completed on this sub-task.      *<p>      * Must be called from a worker thread.      *      * @param completed number of work units completed.      */
+comment|/**      * Indicate that work has been completed on this sub-task.      *      *<p>Must be called from a worker thread.      *      * @param completed number of work units completed.      */
 annotation|@
 name|Override
 DECL|method|update (final int completed)
@@ -438,7 +438,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Indicate that this sub-task is finished.      *<p>      * Must be called from a worker thread.      */
+comment|/**      * Indicate that this sub-task is finished.      *      *<p>Must be called from a worker thread.      */
 DECL|method|end ()
 specifier|public
 name|void
@@ -472,7 +472,7 @@ parameter_list|(
 name|int
 name|totalTasks
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|beginTask (String title, int totalWork)
@@ -486,7 +486,7 @@ parameter_list|,
 name|int
 name|totalWork
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|endTask ()
@@ -494,7 +494,7 @@ specifier|public
 name|void
 name|endTask
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|isCancelled ()
@@ -611,7 +611,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Create a new progress monitor for multiple sub-tasks.    *    * @param out stream for writing progress messages.    * @param taskName name of the overall task.    * @param maxIntervalTime maximum interval between progress messages.    * @param maxIntervalUnit time unit for progress interval.    */
-DECL|method|MultiProgressMonitor (final OutputStream out, final String taskName, long maxIntervalTime, TimeUnit maxIntervalUnit)
+DECL|method|MultiProgressMonitor ( final OutputStream out, final String taskName, long maxIntervalTime, TimeUnit maxIntervalUnit)
 specifier|public
 name|MultiProgressMonitor
 parameter_list|(
@@ -680,8 +680,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Wait for a task managed by a {@link Future}.    *<p>    * Must be called from the main thread,<em>not</em> a worker thread. Once a    * worker thread calls {@link #end()}, the future has an additional    * {@code maxInterval} to finish before it is forcefully cancelled and    * {@link ExecutionException} is thrown.    *    * @param workerFuture a future that returns when worker threads are finished.    * @param timeoutTime overall timeout for the task; the future is forcefully    *     cancelled if the task exceeds the timeout. Non-positive values indicate    *     no timeout.    * @param timeoutUnit unit for overall task timeout.    * @throws ExecutionException if this thread or a worker thread was    *     interrupted, the worker was cancelled, or timed out waiting for a    *     worker to call {@link #end()}.    */
-DECL|method|waitFor (final Future<?> workerFuture, final long timeoutTime, final TimeUnit timeoutUnit)
+comment|/**    * Wait for a task managed by a {@link Future}.    *    *<p>Must be called from the main thread,<em>not</em> a worker thread. Once a worker thread    * calls {@link #end()}, the future has an additional {@code maxInterval} to finish before it is    * forcefully cancelled and {@link ExecutionException} is thrown.    *    * @param workerFuture a future that returns when worker threads are finished.    * @param timeoutTime overall timeout for the task; the future is forcefully cancelled if the task    *     exceeds the timeout. Non-positive values indicate no timeout.    * @param timeoutUnit unit for overall task timeout.    * @throws ExecutionException if this thread or a worker thread was interrupted, the worker was    *     cancelled, or timed out waiting for a worker to call {@link #end()}.    */
+DECL|method|waitFor ( final Future<?> workerFuture, final long timeoutTime, final TimeUnit timeoutUnit)
 specifier|public
 name|void
 name|waitFor
@@ -1056,7 +1056,7 @@ return|return
 name|task
 return|;
 block|}
-comment|/**    * End the overall task.    *<p>    * Must be called from a worker thread.    */
+comment|/**    * End the overall task.    *    *<p>Must be called from a worker thread.    */
 DECL|method|end ()
 specifier|public
 specifier|synchronized

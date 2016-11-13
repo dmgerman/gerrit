@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Optional interface for {@link RestCollection}.  *<p>  * Collections that implement this interface can accept a {@code DELETE} directly  * on the collection itself.  */
+comment|/**  * Optional interface for {@link RestCollection}.  *  *<p>Collections that implement this interface can accept a {@code DELETE} directly on the  * collection itself.  */
 end_comment
 
 begin_interface

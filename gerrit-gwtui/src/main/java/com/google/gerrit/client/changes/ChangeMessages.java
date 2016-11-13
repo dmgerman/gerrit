@@ -158,7 +158,7 @@ name|String
 name|bytesDeleted
 parameter_list|)
 function_decl|;
-DECL|method|patchTableSize_ModifyBinaryFilesWithPercentages (String bytesInserted, String percentageInserted, String bytesDeleted, String percentageDeleted)
+DECL|method|patchTableSize_ModifyBinaryFilesWithPercentages ( String bytesInserted, String percentageInserted, String bytesDeleted, String percentageDeleted)
 name|String
 name|patchTableSize_ModifyBinaryFilesWithPercentages
 parameter_list|(

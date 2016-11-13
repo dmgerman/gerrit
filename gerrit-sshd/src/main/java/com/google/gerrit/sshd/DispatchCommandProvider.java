@@ -156,20 +156,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -202,8 +188,22 @@ name|ConcurrentMap
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|Command
+import|;
+end_import
+
 begin_comment
-comment|/**  * Creates DispatchCommand using commands registered by {@link CommandModule}.  */
+comment|/** Creates DispatchCommand using commands registered by {@link CommandModule}. */
 end_comment
 
 begin_class
@@ -217,16 +217,16 @@ argument_list|<
 name|DispatchCommand
 argument_list|>
 block|{
+DECL|field|injector
 annotation|@
 name|Inject
-DECL|field|injector
 specifier|private
 name|Injector
 name|injector
 decl_stmt|;
+DECL|field|factory
 annotation|@
 name|Inject
-DECL|field|factory
 specifier|private
 name|DispatchCommand
 operator|.

@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Internal implementation helper for Gerrit Code Review server.  *<p>  * Extensions and plugins should not invoke this class.  */
+comment|/**  * Internal implementation helper for Gerrit Code Review server.  *  *<p>Extensions and plugins should not invoke this class.  */
 end_comment
 
 begin_class
@@ -126,7 +126,7 @@ DECL|method|PrivateInternals_UiActionDescription ()
 specifier|private
 name|PrivateInternals_UiActionDescription
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

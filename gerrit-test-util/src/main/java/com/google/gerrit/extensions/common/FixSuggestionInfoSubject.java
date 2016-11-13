@@ -186,9 +186,9 @@ name|SubjectFactory
 argument_list|<
 name|FixSuggestionInfoSubject
 argument_list|,
-DECL|field|FIX_SUGGESTION_INFO_SUBJECT_FACTORY
 name|FixSuggestionInfo
 argument_list|>
+DECL|field|FIX_SUGGESTION_INFO_SUBJECT_FACTORY
 name|FIX_SUGGESTION_INFO_SUBJECT_FACTORY
 init|=
 operator|new
@@ -225,7 +225,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-DECL|method|assertThat ( FixSuggestionInfo fixSuggestionInfo)
+DECL|method|assertThat (FixSuggestionInfo fixSuggestionInfo)
 specifier|public
 specifier|static
 name|FixSuggestionInfoSubject
@@ -247,7 +247,7 @@ name|fixSuggestionInfo
 argument_list|)
 return|;
 block|}
-DECL|method|FixSuggestionInfoSubject (FailureStrategy failureStrategy, FixSuggestionInfo fixSuggestionInfo)
+DECL|method|FixSuggestionInfoSubject ( FailureStrategy failureStrategy, FixSuggestionInfo fixSuggestionInfo)
 specifier|private
 name|FixSuggestionInfoSubject
 parameter_list|(
@@ -289,12 +289,12 @@ literal|"fixId"
 argument_list|)
 return|;
 block|}
+DECL|method|replacements ()
 specifier|public
 name|ListSubject
 argument_list|<
 name|FixReplacementInfoSubject
 argument_list|,
-DECL|method|replacements ()
 name|FixReplacementInfo
 argument_list|>
 name|replacements

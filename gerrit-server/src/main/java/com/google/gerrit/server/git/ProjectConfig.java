@@ -692,90 +692,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|CommitBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|RefSpec
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|StringUtils
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -927,6 +843,90 @@ operator|.
 name|regex
 operator|.
 name|PatternSyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|CommitBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|transport
+operator|.
+name|RefSpec
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|StringUtils
 import|;
 end_import
 
@@ -2136,7 +2136,7 @@ return|return
 name|subscribeSections
 return|;
 block|}
-DECL|method|getSubscribeSections ( Branch.NameKey branch)
+DECL|method|getSubscribeSections (Branch.NameKey branch)
 specifier|public
 name|Collection
 argument_list|<
@@ -2881,7 +2881,7 @@ name|uuids
 argument_list|()
 return|;
 block|}
-comment|/**    * @return the project's rules.pl ObjectId, if present in the branch.    *    Null if it doesn't exist.    */
+comment|/**    * @return the project's rules.pl ObjectId, if present in the branch. Null if it doesn't exist.    */
 DECL|method|getRulesId ()
 specifier|public
 name|ObjectId
@@ -2892,7 +2892,7 @@ return|return
 name|rulesId
 return|;
 block|}
-comment|/**    * @return the maxObjectSizeLimit for this project, if set. Zero if this    *         project doesn't define own maxObjectSizeLimit.    */
+comment|/**    * @return the maxObjectSizeLimit for this project, if set. Zero if this project doesn't define    *     own maxObjectSizeLimit.    */
 DECL|method|getMaxObjectSizeLimit ()
 specifier|public
 name|long
@@ -2903,7 +2903,7 @@ return|return
 name|maxObjectSizeLimit
 return|;
 block|}
-comment|/**    * @return the checkReceivedObjects for this project, default is true.    */
+comment|/** @return the checkReceivedObjects for this project, default is true. */
 DECL|method|getCheckReceivedObjects ()
 specifier|public
 name|boolean
@@ -3495,7 +3495,7 @@ name|rc
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|loadAccountsSection ( Config rc, Map<String, GroupReference> groupsByName)
+DECL|method|loadAccountsSection (Config rc, Map<String, GroupReference> groupsByName)
 specifier|private
 name|void
 name|loadAccountsSection
@@ -3539,7 +3539,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|loadContributorAgreements ( Config rc, Map<String, GroupReference> groupsByName)
+DECL|method|loadContributorAgreements (Config rc, Map<String, GroupReference> groupsByName)
 specifier|private
 name|void
 name|loadContributorAgreements
@@ -3773,7 +3773,7 @@ block|}
 block|}
 block|}
 comment|/**    * Parses the [notify] sections out of the configuration file.    *    *<pre>    *   [notify "reviewers"]    *     email = group Reviewers    *     type = new_changes    *    *   [notify "dev-team"]    *     email = dev-team@example.com    *     filter = branch:master    *    *   [notify "qa"]    *     email = qa@example.com    *     filter = branch:\"^(maint|stable)-.*\"    *     type = submitted_changes    *</pre>    */
-DECL|method|loadNotifySections ( Config rc, Map<String, GroupReference> groupsByName)
+DECL|method|loadNotifySections (Config rc, Map<String, GroupReference> groupsByName)
 specifier|private
 name|void
 name|loadNotifySections
@@ -4111,7 +4111,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|loadAccessSections ( Config rc, Map<String, GroupReference> groupsByName)
+DECL|method|loadAccessSections (Config rc, Map<String, GroupReference> groupsByName)
 specifier|private
 name|void
 name|loadAccessSections
@@ -4497,7 +4497,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|loadPermissionRules (Config rc, String section, String subsection, String varName, Map<String, GroupReference> groupsByName, boolean useRange)
+DECL|method|loadPermissionRules ( Config rc, String section, String subsection, String varName, Map<String, GroupReference> groupsByName, boolean useRange)
 specifier|private
 name|List
 argument_list|<
@@ -4562,7 +4562,7 @@ name|getRules
 argument_list|()
 return|;
 block|}
-DECL|method|loadPermissionRules (Config rc, String section, String subsection, String varName, Map<String, GroupReference> groupsByName, Permission perm, boolean useRange)
+DECL|method|loadPermissionRules ( Config rc, String section, String subsection, String varName, Map<String, GroupReference> groupsByName, Permission perm, boolean useRange)
 specifier|private
 name|void
 name|loadPermissionRules
@@ -5458,7 +5458,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|getStringListOrNull (Config rc, String section, String subSection, String name)
+DECL|method|getStringListOrNull ( Config rc, String section, String subSection, String name)
 specifier|private
 name|List
 argument_list|<
@@ -6811,7 +6811,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|saveContributorAgreements ( Config rc, Set<AccountGroup.UUID> keepGroups)
+DECL|method|saveContributorAgreements (Config rc, Set<AccountGroup.UUID> keepGroups)
 specifier|private
 name|void
 name|saveContributorAgreements
@@ -6994,7 +6994,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|saveNotifySections ( Config rc, Set<AccountGroup.UUID> keepGroups)
+DECL|method|saveNotifySections (Config rc, Set<AccountGroup.UUID> keepGroups)
 specifier|private
 name|void
 name|saveNotifySections
@@ -7421,7 +7421,7 @@ return|return
 name|rules
 return|;
 block|}
-DECL|method|saveAccessSections ( Config rc, Set<AccountGroup.UUID> keepGroups)
+DECL|method|saveAccessSections (Config rc, Set<AccountGroup.UUID> keepGroups)
 specifier|private
 name|void
 name|saveAccessSections
@@ -8802,7 +8802,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getEnum (Config rc, String section, String subsection, String name, E defaultValue)
+DECL|method|getEnum ( Config rc, String section, String subsection, String name, E defaultValue)
 specifier|private
 parameter_list|<
 name|E

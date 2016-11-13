@@ -128,6 +128,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jsoup
@@ -160,36 +190,6 @@ name|Element
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
 comment|/** HTMLParser provides parsing functionality for html email. */
 end_comment
@@ -200,8 +200,8 @@ specifier|public
 class|class
 name|HtmlParser
 block|{
-comment|/**    * Parses comments from html email.    *    * @param email MailMessage as received from the email service.    * @param comments A specific set of comments as sent out in the original    *                 notification email. Comments are expected to be in the same    *                 order as they were sent out to in the email    * @param changeUrl Canonical change URL that points to the change on this    *                  Gerrit instance.    *                  Example: https://go-review.googlesource.com/#/c/91570    * @return List of MailComments parsed from the html part of the email.    */
-DECL|method|parse (MailMessage email, Collection<Comment> comments, String changeUrl)
+comment|/**    * Parses comments from html email.    *    * @param email MailMessage as received from the email service.    * @param comments A specific set of comments as sent out in the original notification email.    *     Comments are expected to be in the same order as they were sent out to in the email    * @param changeUrl Canonical change URL that points to the change on this Gerrit instance.    *     Example: https://go-review.googlesource.com/#/c/91570    * @return List of MailComments parsed from the html part of the email.    */
+DECL|method|parse ( MailMessage email, Collection<Comment> comments, String changeUrl)
 specifier|public
 specifier|static
 name|List

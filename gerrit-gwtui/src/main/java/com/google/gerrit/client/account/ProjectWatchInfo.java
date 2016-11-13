@@ -371,47 +371,47 @@ name|b
 argument_list|)
 return|;
 block|}
-DECL|method|notifyNewChanges ()
 specifier|private
 specifier|native
 name|boolean
+DECL|method|notifyNewChanges ()
 name|notifyNewChanges
 parameter_list|()
 comment|/*-{ return this['notify_new_changes'] ? true : false; }-*/
 function_decl|;
-DECL|method|notifyNewPatchSets ()
 specifier|private
 specifier|native
 name|boolean
+DECL|method|notifyNewPatchSets ()
 name|notifyNewPatchSets
 parameter_list|()
 comment|/*-{ return this['notify_new_patch_sets'] ? true : false; }-*/
 function_decl|;
-DECL|method|notifyAllComments ()
 specifier|private
 specifier|native
 name|boolean
+DECL|method|notifyAllComments ()
 name|notifyAllComments
 parameter_list|()
 comment|/*-{ return this['notify_all_comments'] ? true : false; }-*/
 function_decl|;
-DECL|method|notifySubmittedChanges ()
 specifier|private
 specifier|native
 name|boolean
+DECL|method|notifySubmittedChanges ()
 name|notifySubmittedChanges
 parameter_list|()
 comment|/*-{ return this['notify_submitted_changes'] ? true : false; }-*/
 function_decl|;
-DECL|method|notifyAbandonedChanges ()
 specifier|private
 specifier|native
 name|boolean
+DECL|method|notifyAbandonedChanges ()
 name|notifyAbandonedChanges
 parameter_list|()
 comment|/*-{ return this['notify_abandoned_changes'] ? true : false; }-*/
 function_decl|;
-DECL|method|notifyNewChanges (boolean b)
+DECL|method|notifyNewChanges ( boolean b)
 specifier|private
 specifier|native
 name|void
@@ -422,7 +422,7 @@ name|b
 parameter_list|)
 comment|/*-{ this['notify_new_changes'] = b ? true : null; }-*/
 function_decl|;
-DECL|method|notifyNewPatchSets (boolean b)
+DECL|method|notifyNewPatchSets ( boolean b)
 specifier|private
 specifier|native
 name|void
@@ -433,7 +433,7 @@ name|b
 parameter_list|)
 comment|/*-{ this['notify_new_patch_sets'] = b ? true : null; }-*/
 function_decl|;
-DECL|method|notifyAllComments (boolean b)
+DECL|method|notifyAllComments ( boolean b)
 specifier|private
 specifier|native
 name|void
@@ -444,7 +444,7 @@ name|b
 parameter_list|)
 comment|/*-{ this['notify_all_comments'] = b ? true : null; }-*/
 function_decl|;
-DECL|method|notifySubmittedChanges (boolean b)
+DECL|method|notifySubmittedChanges ( boolean b)
 specifier|private
 specifier|native
 name|void
@@ -455,7 +455,7 @@ name|b
 parameter_list|)
 comment|/*-{ this['notify_submitted_changes'] = b ? true : null; }-*/
 function_decl|;
-DECL|method|notifyAbandonedChanges (boolean b)
+DECL|method|notifyAbandonedChanges ( boolean b)
 specifier|private
 specifier|native
 name|void
@@ -470,7 +470,7 @@ DECL|method|ProjectWatchInfo ()
 specifier|protected
 name|ProjectWatchInfo
 parameter_list|()
-block|{    }
+block|{}
 block|}
 end_class
 

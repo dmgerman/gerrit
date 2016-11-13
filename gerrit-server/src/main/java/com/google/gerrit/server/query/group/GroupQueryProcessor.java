@@ -350,7 +350,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|GroupQueryProcessor (Provider<CurrentUser> userProvider, Metrics metrics, IndexConfig indexConfig, GroupIndexCollection indexes, GroupIndexRewriter rewriter, GroupControl.GenericFactory groupControlFactory)
+DECL|method|GroupQueryProcessor ( Provider<CurrentUser> userProvider, Metrics metrics, IndexConfig indexConfig, GroupIndexCollection indexes, GroupIndexRewriter rewriter, GroupControl.GenericFactory groupControlFactory)
 specifier|protected
 name|GroupQueryProcessor
 parameter_list|(
@@ -406,7 +406,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|enforceVisibility ( Predicate<AccountGroup> pred)
+DECL|method|enforceVisibility (Predicate<AccountGroup> pred)
 specifier|protected
 name|Predicate
 argument_list|<

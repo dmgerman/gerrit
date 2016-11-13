@@ -366,7 +366,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TasksCollection (DynamicMap<RestView<TaskResource>> views, ListTasks list, WorkQueue workQueue, Provider<IdentifiedUser> self, ProjectCache projectCache)
+DECL|method|TasksCollection ( DynamicMap<RestView<TaskResource>> views, ListTasks list, WorkQueue workQueue, Provider<IdentifiedUser> self, ProjectCache projectCache)
 name|TasksCollection
 parameter_list|(
 name|DynamicMap

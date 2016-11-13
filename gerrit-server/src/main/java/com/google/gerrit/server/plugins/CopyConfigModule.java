@@ -286,6 +286,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -312,20 +324,8 @@ name|PersonIdent
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
-import|;
-end_import
-
 begin_comment
-comment|/**  * Copies critical objects from the {@code dbInjector} into a plugin.  *<p>  * Most explicit bindings are copied automatically from the cfgInjector and  * sysInjector to be made available to a plugin's private world. This module is  * necessary to get things bound in the dbInjector that are not otherwise easily  * available, but that a plugin author might expect to exist.  */
+comment|/**  * Copies critical objects from the {@code dbInjector} into a plugin.  *  *<p>Most explicit bindings are copied automatically from the cfgInjector and sysInjector to be  * made available to a plugin's private world. This module is necessary to get things bound in the  * dbInjector that are not otherwise easily available, but that a plugin author might expect to  * exist.  */
 end_comment
 
 begin_class
@@ -337,11 +337,11 @@ name|CopyConfigModule
 extends|extends
 name|AbstractModule
 block|{
+DECL|field|sitePath
 annotation|@
 name|Inject
 annotation|@
 name|SitePath
-DECL|field|sitePath
 specifier|private
 name|Path
 name|sitePath
@@ -359,9 +359,9 @@ return|return
 name|sitePath
 return|;
 block|}
+DECL|field|sitePaths
 annotation|@
 name|Inject
-DECL|field|sitePaths
 specifier|private
 name|SitePaths
 name|sitePaths
@@ -377,9 +377,9 @@ return|return
 name|sitePaths
 return|;
 block|}
+DECL|field|trackingFooters
 annotation|@
 name|Inject
-DECL|field|trackingFooters
 specifier|private
 name|TrackingFooters
 name|trackingFooters
@@ -395,11 +395,11 @@ return|return
 name|trackingFooters
 return|;
 block|}
+DECL|field|gerritServerConfig
 annotation|@
 name|Inject
 annotation|@
 name|GerritServerConfig
-DECL|field|gerritServerConfig
 specifier|private
 name|Config
 name|gerritServerConfig
@@ -417,9 +417,9 @@ return|return
 name|gerritServerConfig
 return|;
 block|}
+DECL|field|schemaFactory
 annotation|@
 name|Inject
-DECL|field|schemaFactory
 specifier|private
 name|SchemaFactory
 argument_list|<
@@ -441,9 +441,9 @@ return|return
 name|schemaFactory
 return|;
 block|}
+DECL|field|gitRepositoryManager
 annotation|@
 name|Inject
-DECL|field|gitRepositoryManager
 specifier|private
 name|GitRepositoryManager
 name|gitRepositoryManager
@@ -459,11 +459,11 @@ return|return
 name|gitRepositoryManager
 return|;
 block|}
+DECL|field|anonymousCowardName
 annotation|@
 name|Inject
 annotation|@
 name|AnonymousCowardName
-DECL|field|anonymousCowardName
 specifier|private
 name|String
 name|anonymousCowardName
@@ -481,9 +481,9 @@ return|return
 name|anonymousCowardName
 return|;
 block|}
+DECL|field|serverIdentProvider
 annotation|@
 name|Inject
-DECL|field|serverIdentProvider
 specifier|private
 name|GerritPersonIdentProvider
 name|serverIdentProvider
@@ -504,9 +504,9 @@ name|get
 argument_list|()
 return|;
 block|}
+DECL|field|secureStore
 annotation|@
 name|Inject
-DECL|field|secureStore
 specifier|private
 name|SecureStore
 name|secureStore
@@ -527,7 +527,7 @@ name|Inject
 DECL|method|CopyConfigModule ()
 name|CopyConfigModule
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|configure ()
@@ -535,7 +535,7 @@ specifier|protected
 name|void
 name|configure
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

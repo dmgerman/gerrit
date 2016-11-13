@@ -610,68 +610,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Ref
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -823,6 +761,68 @@ operator|.
 name|function
 operator|.
 name|Function
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Ref
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -1457,7 +1457,7 @@ literal|true
 return|;
 block|}
 block|}
-comment|/**    * @return cached computation of all global capabilities. This should only be    *         invoked on the state from {@link ProjectCache#getAllProjects()}.    *         Null on any other project.    */
+comment|/**    * @return cached computation of all global capabilities. This should only be invoked on the state    *     from {@link ProjectCache#getAllProjects()}. Null on any other project.    */
 DECL|method|getCapabilityCollection ()
 specifier|public
 name|CapabilityCollection
@@ -1521,7 +1521,7 @@ name|pmc
 argument_list|)
 return|;
 block|}
-comment|/**    * Like {@link #newPrologEnvironment()} but instead of reading the rules.pl    * read the provided input stream.    *    * @param name a name of the input stream. Could be any name.    * @param in stream to read prolog rules from    * @throws CompileException    */
+comment|/**    * Like {@link #newPrologEnvironment()} but instead of reading the rules.pl read the provided    * input stream.    *    * @param name a name of the input stream. Could be any name.    * @param in stream to read prolog rules from    * @throws CompileException    */
 DECL|method|newPrologEnvironment (String name, Reader in)
 specifier|public
 name|PrologEnvironment
@@ -1875,7 +1875,7 @@ return|return
 name|sm
 return|;
 block|}
-comment|/**    * Obtain all local and inherited sections. This collection is looked up    * dynamically and is not cached. Callers should try to cache this result    * per-request as much as possible.    */
+comment|/**    * Obtain all local and inherited sections. This collection is looked up dynamically and is not    * cached. Callers should try to cache this result per-request as much as possible.    */
 DECL|method|getAllSections ()
 name|List
 argument_list|<
@@ -1929,7 +1929,7 @@ return|return
 name|all
 return|;
 block|}
-comment|/**    * @return all {@link AccountGroup}'s to which the owner privilege for    *         'refs/*' is assigned for this project (the local owners), if there    *         are no local owners the local owners of the nearest parent project    *         that has local owners are returned    */
+comment|/**    * @return all {@link AccountGroup}'s to which the owner privilege for 'refs/*' is assigned for    *     this project (the local owners), if there are no local owners the local owners of the    *     nearest parent project that has local owners are returned    */
 DECL|method|getOwners ()
 specifier|public
 name|Set
@@ -1975,7 +1975,7 @@ name|emptySet
 argument_list|()
 return|;
 block|}
-comment|/**    * @return all {@link AccountGroup}'s that are allowed to administrate the    *         complete project. This includes all groups to which the owner    *         privilege for 'refs/*' is assigned for this project (the local    *         owners) and all groups to which the owner privilege for 'refs/*' is    *         assigned for one of the parent projects (the inherited owners).    */
+comment|/**    * @return all {@link AccountGroup}'s that are allowed to administrate the complete project. This    *     includes all groups to which the owner privilege for 'refs/*' is assigned for this project    *     (the local owners) and all groups to which the owner privilege for 'refs/*' is assigned for    *     one of the parent projects (the inherited owners).    */
 DECL|method|getAllOwners ()
 specifier|public
 name|Set
@@ -2044,7 +2044,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**    * @return an iterable that walks through this project and then the parents of    *         this project. Starts from this project and progresses up the    *         hierarchy to All-Projects.    */
+comment|/**    * @return an iterable that walks through this project and then the parents of this project.    *     Starts from this project and progresses up the hierarchy to All-Projects.    */
 DECL|method|tree ()
 specifier|public
 name|Iterable
@@ -2089,7 +2089,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**    * @return an iterable that walks in-order from All-Projects through the    *     project hierarchy to this project.    */
+comment|/**    * @return an iterable that walks in-order from All-Projects through the project hierarchy to this    *     project.    */
 DECL|method|treeInOrder ()
 specifier|public
 name|Iterable
@@ -2124,7 +2124,7 @@ return|return
 name|projects
 return|;
 block|}
-comment|/**    * @return an iterable that walks through the parents of this project. Starts    *         from the immediate parent of this project and progresses up the    *         hierarchy to All-Projects.    */
+comment|/**    * @return an iterable that walks through the parents of this project. Starts from the immediate    *     parent of this project and progresses up the hierarchy to All-Projects.    */
 DECL|method|parents ()
 specifier|public
 name|FluentIterable
@@ -2629,7 +2629,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getSubscribeSections ( Branch.NameKey branch)
+DECL|method|getSubscribeSections (Branch.NameKey branch)
 specifier|public
 name|Collection
 argument_list|<
@@ -2951,7 +2951,7 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|getInheritableBoolean ( Function<Project, InheritableBoolean> func)
+DECL|method|getInheritableBoolean (Function<Project, InheritableBoolean> func)
 specifier|private
 name|boolean
 name|getInheritableBoolean

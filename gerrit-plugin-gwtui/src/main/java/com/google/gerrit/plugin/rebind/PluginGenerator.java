@@ -229,7 +229,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Write the top layer in the Gadget bootstrap sandwich and generate a stub  * manifest that will be completed by the linker.  *  * Based on gwt-gadgets GadgetGenerator class  */
+comment|/**  * Write the top layer in the Gadget bootstrap sandwich and generate a stub manifest that will be  * completed by the linker.  *  *<p>Based on gwt-gadgets GadgetGenerator class  */
 end_comment
 
 begin_class

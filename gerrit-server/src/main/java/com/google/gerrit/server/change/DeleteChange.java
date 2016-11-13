@@ -365,7 +365,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|db
 specifier|private
 specifier|final
@@ -400,7 +400,7 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteChange (Provider<ReviewDb> db, BatchUpdate.Factory updateFactory, Provider<DeleteChangeOp> opProvider, @GerritServerConfig Config cfg)
+DECL|method|DeleteChange ( Provider<ReviewDb> db, BatchUpdate.Factory updateFactory, Provider<DeleteChangeOp> opProvider, @GerritServerConfig Config cfg)
 specifier|public
 name|DeleteChange
 parameter_list|(

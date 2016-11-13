@@ -86,20 +86,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -115,6 +101,20 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -159,7 +159,7 @@ specifier|final
 name|boolean
 name|contentMerge
 decl_stmt|;
-DECL|method|ConflictKey (ObjectId commit, ObjectId otherCommit, SubmitType submitType, boolean contentMerge)
+DECL|method|ConflictKey ( ObjectId commit, ObjectId otherCommit, SubmitType submitType, boolean contentMerge)
 specifier|public
 name|ConflictKey
 parameter_list|(

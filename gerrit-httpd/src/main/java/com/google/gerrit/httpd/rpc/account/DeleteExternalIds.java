@@ -348,7 +348,7 @@ name|keys
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteExternalIds (final ReviewDb db, final IdentifiedUser user, final ExternalIdDetailFactory detailFactory, final AccountByEmailCache byEmailCache, final AccountCache accountCache, @Assisted final Set<AccountExternalId.Key> keys)
+DECL|method|DeleteExternalIds ( final ReviewDb db, final IdentifiedUser user, final ExternalIdDetailFactory detailFactory, final AccountByEmailCache byEmailCache, final AccountCache accountCache, @Assisted final Set<AccountExternalId.Key> keys)
 name|DeleteExternalIds
 parameter_list|(
 specifier|final

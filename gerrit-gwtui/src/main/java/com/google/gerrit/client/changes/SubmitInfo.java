@@ -138,7 +138,7 @@ DECL|method|SubmitInfo ()
 specifier|protected
 name|SubmitInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

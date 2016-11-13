@@ -434,7 +434,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Revisions (DynamicMap<RestView<RevisionResource>> views, Provider<ReviewDb> dbProvider, ChangeEditUtil editUtil, PatchSetUtil psUtil)
+DECL|method|Revisions ( DynamicMap<RestView<RevisionResource>> views, Provider<ReviewDb> dbProvider, ChangeEditUtil editUtil, PatchSetUtil psUtil)
 name|Revisions
 parameter_list|(
 name|DynamicMap

@@ -252,6 +252,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -374,18 +384,8 @@ name|Option
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
-comment|/**  * Check the mergeability at current branch for a git object references expression.  */
+comment|/** Check the mergeability at current branch for a git object references expression. */
 end_comment
 
 begin_class
@@ -503,7 +503,7 @@ name|gitManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CheckMergeability (GitRepositoryManager gitManager, @GerritServerConfig Config cfg, Provider<ReviewDb> db)
+DECL|method|CheckMergeability ( GitRepositoryManager gitManager, @GerritServerConfig Config cfg, Provider<ReviewDb> db)
 name|CheckMergeability
 parameter_list|(
 name|GitRepositoryManager

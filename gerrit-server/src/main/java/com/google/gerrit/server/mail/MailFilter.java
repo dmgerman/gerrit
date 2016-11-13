@@ -101,7 +101,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to filter incoming email.  *<p>  * Invoked by Gerrit for each incoming email.  */
+comment|/**  * Listener to filter incoming email.  *  *<p>Invoked by Gerrit for each incoming email.  */
 end_comment
 
 begin_interface
@@ -112,7 +112,7 @@ specifier|public
 interface|interface
 name|MailFilter
 block|{
-comment|/**    * Determine if Gerrit should discard or further process the message.    *    * @param message MailMessage parsed by Gerrit.    * @return {@code true}, if Gerrit should process the message, {@code false}    * otherwise.    */
+comment|/**    * Determine if Gerrit should discard or further process the message.    *    * @param message MailMessage parsed by Gerrit.    * @return {@code true}, if Gerrit should process the message, {@code false} otherwise.    */
 DECL|method|shouldProcessMessage (MailMessage message)
 name|boolean
 name|shouldProcessMessage

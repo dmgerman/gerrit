@@ -498,6 +498,78 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -656,78 +728,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
 begin_class
 DECL|class|CommitValidators
 specifier|public
@@ -814,7 +814,7 @@ name|installCommitMsgHookCommand
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory (@erritPersonIdent PersonIdent gerritIdent, @CanonicalWebUrl @Nullable String canonicalWebUrl, @GerritServerConfig Config cfg, DynamicSet<CommitValidationListener> pluginValidators, AllUsersName allUsers)
+DECL|method|Factory ( @erritPersonIdent PersonIdent gerritIdent, @CanonicalWebUrl @Nullable String canonicalWebUrl, @GerritServerConfig Config cfg, DynamicSet<CommitValidationListener> pluginValidators, AllUsersName allUsers)
 name|Factory
 parameter_list|(
 annotation|@
@@ -890,7 +890,7 @@ else|:
 literal|null
 expr_stmt|;
 block|}
-DECL|method|create (Policy policy, RefControl refControl, SshInfo sshInfo, Repository repo)
+DECL|method|create ( Policy policy, RefControl refControl, SshInfo sshInfo, Repository repo)
 specifier|public
 name|CommitValidators
 name|create
@@ -969,7 +969,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|forReceiveCommits (RefControl refControl, SshInfo sshInfo, Repository repo)
+DECL|method|forReceiveCommits ( RefControl refControl, SshInfo sshInfo, Repository repo)
 specifier|private
 name|CommitValidators
 name|forReceiveCommits
@@ -1092,7 +1092,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|forGerritCommits (RefControl refControl, SshInfo sshInfo, Repository repo)
+DECL|method|forGerritCommits ( RefControl refControl, SshInfo sshInfo, Repository repo)
 specifier|private
 name|CommitValidators
 name|forGerritCommits
@@ -1276,7 +1276,7 @@ operator|=
 name|validators
 expr_stmt|;
 block|}
-DECL|method|validate ( CommitReceivedEvent receiveEvent)
+DECL|method|validate (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -1508,7 +1508,7 @@ specifier|final
 name|IdentifiedUser
 name|user
 decl_stmt|;
-DECL|method|ChangeIdValidator (RefControl refControl, String canonicalWebUrl, String installCommitMsgHookCommand, SshInfo sshInfo)
+DECL|method|ChangeIdValidator ( RefControl refControl, String canonicalWebUrl, String installCommitMsgHookCommand, SshInfo sshInfo)
 specifier|public
 name|ChangeIdValidator
 parameter_list|(
@@ -1567,7 +1567,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCommitReceived ( CommitReceivedEvent receiveEvent)
+DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -2322,7 +2322,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * If this is the special project configuration branch, validate the config.    */
+comment|/** If this is the special project configuration branch, validate the config. */
 DECL|class|ConfigValidator
 specifier|public
 specifier|static
@@ -2384,7 +2384,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCommitReceived ( CommitReceivedEvent receiveEvent)
+DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -2803,7 +2803,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCommitReceived ( CommitReceivedEvent receiveEvent)
+DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -2890,7 +2890,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCommitReceived ( CommitReceivedEvent receiveEvent)
+DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -3004,7 +3004,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCommitReceived ( CommitReceivedEvent receiveEvent)
+DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -3246,7 +3246,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCommitReceived ( CommitReceivedEvent receiveEvent)
+DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -3398,7 +3398,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCommitReceived ( CommitReceivedEvent receiveEvent)
+DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -3503,7 +3503,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Don't allow the user to amend a merge created by Gerrit Code Review. This    * seems to happen all too often, due to users not paying any attention to    * what they are doing.    */
+comment|/**    * Don't allow the user to amend a merge created by Gerrit Code Review. This seems to happen all    * too often, due to users not paying any attention to what they are doing.    */
 DECL|class|AmendedGerritMergeCommitValidationListener
 specifier|public
 specifier|static
@@ -3552,7 +3552,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCommitReceived ( CommitReceivedEvent receiveEvent)
+DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -3669,7 +3669,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCommitReceived ( CommitReceivedEvent receiveEvent)
+DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
@@ -3751,7 +3751,7 @@ throw|;
 block|}
 block|}
 block|}
-DECL|method|getInvalidEmailError (RevCommit c, String type, PersonIdent who, IdentifiedUser currentUser, String canonicalWebUrl)
+DECL|method|getInvalidEmailError ( RevCommit c, String type, PersonIdent who, IdentifiedUser currentUser, String canonicalWebUrl)
 specifier|private
 specifier|static
 name|CommitValidationMessage
@@ -3980,7 +3980,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**    * Get the Gerrit URL.    *    * @return the canonical URL (with any trailing slash removed) if it is    *         configured, otherwise fall back to "http://hostname" where hostname    *         is the value returned by {@link #getGerritHost(String)}.    */
+comment|/**    * Get the Gerrit URL.    *    * @return the canonical URL (with any trailing slash removed) if it is configured, otherwise fall    *     back to "http://hostname" where hostname is the value returned by {@link    *     #getGerritHost(String)}.    */
 DECL|method|getGerritUrl (String canonicalWebUrl)
 specifier|private
 specifier|static
@@ -4021,7 +4021,7 @@ name|canonicalWebUrl
 argument_list|)
 return|;
 block|}
-comment|/**    * Get the Gerrit hostname.    *    * @return the hostname from the canonical URL if it is configured, otherwise    *         whatever the OS says the hostname is.    */
+comment|/**    * Get the Gerrit hostname.    *    * @return the hostname from the canonical URL if it is configured, otherwise whatever the OS says    *     the hostname is.    */
 DECL|method|getGerritHost (String canonicalWebUrl)
 specifier|private
 specifier|static

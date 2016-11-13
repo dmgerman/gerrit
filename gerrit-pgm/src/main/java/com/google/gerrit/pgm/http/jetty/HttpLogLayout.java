@@ -70,32 +70,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|log4j
-operator|.
-name|Layout
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|log4j
-operator|.
-name|spi
-operator|.
-name|LoggingEvent
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|text
@@ -121,6 +95,32 @@ operator|.
 name|util
 operator|.
 name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|log4j
+operator|.
+name|Layout
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|log4j
+operator|.
+name|spi
+operator|.
+name|LoggingEvent
 import|;
 end_import
 
@@ -680,7 +680,7 @@ specifier|public
 name|void
 name|activateOptions
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

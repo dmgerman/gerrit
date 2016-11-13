@@ -255,7 +255,7 @@ name|groupBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountGroupUUIDHandler (final GroupBackend groupBackend, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<AccountGroup.UUID> setter)
+DECL|method|AccountGroupUUIDHandler ( final GroupBackend groupBackend, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<AccountGroup.UUID> setter)
 specifier|public
 name|AccountGroupUUIDHandler
 parameter_list|(

@@ -329,9 +329,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|status
 annotation|@
 name|DefaultInput
-DECL|field|status
 name|String
 name|status
 decl_stmt|;
@@ -354,7 +354,7 @@ DECL|method|Input ()
 specifier|public
 name|Input
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|field|self
 specifier|private

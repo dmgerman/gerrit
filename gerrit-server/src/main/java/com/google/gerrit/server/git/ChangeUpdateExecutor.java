@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on the global {@link ListeningExecutorService} used by  * {@link ReceiveCommits} to create or replace changes.  */
+comment|/**  * Marker on the global {@link ListeningExecutorService} used by {@link ReceiveCommits} to create or  * replace changes.  */
 end_comment
 
 begin_annotation_defn
@@ -136,7 +136,7 @@ DECL|annotation|ChangeUpdateExecutor
 specifier|public
 annotation_defn|@interface
 name|ChangeUpdateExecutor
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

@@ -70,6 +70,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|codahale
+operator|.
+name|metrics
+operator|.
+name|MetricRegistry
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|google
 operator|.
 name|common
@@ -122,18 +134,6 @@ name|Field
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|codahale
-operator|.
-name|metrics
-operator|.
-name|MetricRegistry
-import|;
-end_import
-
 begin_comment
 comment|/** Optimized version of {@link BucketedCallback} for single dimension. */
 end_comment
@@ -153,7 +153,7 @@ argument_list|<
 name|V
 argument_list|>
 block|{
-DECL|method|CallbackMetricImpl1 (DropWizardMetricMaker metrics, MetricRegistry registry, String name, Class<V> valueClass, Description desc, Field<F1> field1)
+DECL|method|CallbackMetricImpl1 ( DropWizardMetricMaker metrics, MetricRegistry registry, String name, Class<V> valueClass, Description desc, Field<F1> field1)
 name|CallbackMetricImpl1
 parameter_list|(
 name|DropWizardMetricMaker

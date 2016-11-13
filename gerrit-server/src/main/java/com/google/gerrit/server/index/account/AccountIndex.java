@@ -198,7 +198,7 @@ name|AccountState
 argument_list|,
 name|AccountIndex
 argument_list|>
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|keyPredicate (Account.Id id)

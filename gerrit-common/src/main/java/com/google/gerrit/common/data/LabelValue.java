@@ -162,7 +162,7 @@ DECL|method|LabelValue ()
 specifier|protected
 name|LabelValue
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|getValue ()
 specifier|public
 name|short

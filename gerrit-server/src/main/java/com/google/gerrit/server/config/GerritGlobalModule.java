@@ -2756,6 +2756,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -2824,16 +2834,6 @@ name|PreUploadHook
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
 comment|/** Starts global state with standard dependencies. */
 end_comment
@@ -2860,7 +2860,7 @@ name|authModule
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritGlobalModule ( @erritServerConfig Config cfg, AuthModule authModule)
+DECL|method|GerritGlobalModule (@erritServerConfig Config cfg, AuthModule authModule)
 name|GerritGlobalModule
 parameter_list|(
 annotation|@

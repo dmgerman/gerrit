@@ -234,7 +234,7 @@ name|assignee
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetAssigneeSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted Account.Id assignee)
+DECL|method|SetAssigneeSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted Account.Id assignee)
 specifier|public
 name|SetAssigneeSender
 parameter_list|(

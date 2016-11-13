@@ -294,7 +294,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setChangePrimaryStorage ( PrimaryStorage changePrimaryStorage)
+DECL|method|setChangePrimaryStorage (PrimaryStorage changePrimaryStorage)
 specifier|public
 name|TestNotesMigration
 name|setChangePrimaryStorage

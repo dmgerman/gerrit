@@ -488,6 +488,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -682,48 +722,8 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TimeZone
-import|;
-end_import
-
 begin_comment
-comment|/**  * Utility functions to manipulate change edits.  *<p>  * This class contains methods to modify edit's content.  * For retrieving, publishing and deleting edit see  * {@link ChangeEditUtil}.  *<p>  */
+comment|/**  * Utility functions to manipulate change edits.  *  *<p>This class contains methods to modify edit's content. For retrieving, publishing and deleting  * edit see {@link ChangeEditUtil}.  *  *<p>  */
 end_comment
 
 begin_class
@@ -778,7 +778,7 @@ name|patchSetUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditModifier (@erritPersonIdent PersonIdent gerritIdent, ChangeIndexer indexer, Provider<ReviewDb> reviewDb, Provider<CurrentUser> currentUser, ChangeEditUtil changeEditUtil, PatchSetUtil patchSetUtil)
+DECL|method|ChangeEditModifier ( @erritPersonIdent PersonIdent gerritIdent, ChangeIndexer indexer, Provider<ReviewDb> reviewDb, Provider<CurrentUser> currentUser, ChangeEditUtil changeEditUtil, PatchSetUtil patchSetUtil)
 name|ChangeEditModifier
 parameter_list|(
 annotation|@
@@ -848,7 +848,7 @@ operator|=
 name|patchSetUtil
 expr_stmt|;
 block|}
-comment|/**    * Creates a new change edit.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change for which    * the change edit should be created    * @throws AuthException if the user isn't authenticated or not allowed to    * use change edits    * @throws InvalidChangeOperationException if a change edit already existed    * for the change    */
+comment|/**    * Creates a new change edit.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change for which the change edit should    *     be created    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if a change edit already existed for the change    */
 DECL|method|createEdit (Repository repository, ChangeControl changeControl)
 specifier|public
 name|void
@@ -946,7 +946,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Rebase change edit on latest patch set    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change    * edit should be rebased    * @throws AuthException if the user isn't authenticated or not allowed to    * use change edits    * @throws InvalidChangeOperationException if a change edit doesn't exist    * for the specified change, the change edit is already based on the latest    * patch set, or the change represents the root commit    * @throws MergeConflictException if rebase fails due to merge conflicts    */
+comment|/**    * Rebase change edit on latest patch set    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     rebased    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if a change edit doesn't exist for the specified    *     change, the change edit is already based on the latest patch set, or the change represents    *     the root commit    * @throws MergeConflictException if rebase fails due to merge conflicts    */
 DECL|method|rebaseEdit (Repository repository, ChangeControl changeControl)
 specifier|public
 name|void
@@ -1224,8 +1224,8 @@ name|change
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Modifies the commit message of a change edit. If the change edit doesn't    * exist, a new one will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change    * edit's message should be modified    * @param newCommitMessage the new commit message    * @throws AuthException if the user isn't authenticated or not allowed to    * use change edits    * @throws UnchangedCommitMessageException if the commit message is the same    * as before    */
-DECL|method|modifyMessage (Repository repository, ChangeControl changeControl, String newCommitMessage)
+comment|/**    * Modifies the commit message of a change edit. If the change edit doesn't exist, a new one will    * be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit's message should    *     be modified    * @param newCommitMessage the new commit message    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws UnchangedCommitMessageException if the commit message is the same as before    */
+DECL|method|modifyMessage ( Repository repository, ChangeControl changeControl, String newCommitMessage)
 specifier|public
 name|void
 name|modifyMessage
@@ -1404,8 +1404,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Modifies the contents of a file of a change edit. If the change edit    * doesn't exist, a new one will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change    * edit should be modified    * @param filePath the path of the file whose contents should be modified    * @param newContent the new file content    * @throws AuthException if the user isn't authenticated or not allowed to    * use change edits    * @throws InvalidChangeOperationException if the file already had the    * specified content    */
-DECL|method|modifyFile (Repository repository, ChangeControl changeControl, String filePath, RawInput newContent)
+comment|/**    * Modifies the contents of a file of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     modified    * @param filePath the path of the file whose contents should be modified    * @param newContent the new file content    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file already had the specified content    */
+DECL|method|modifyFile ( Repository repository, ChangeControl changeControl, String filePath, RawInput newContent)
 specifier|public
 name|void
 name|modifyFile
@@ -1447,7 +1447,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Deletes a file from the Git tree of a change edit. If the change edit    * doesn't exist, a new one will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change    * edit should be modified    * @param file path of the file which should be deleted    * @throws AuthException if the user isn't authenticated or not allowed to    * use change edits    * @throws InvalidChangeOperationException if the file does not exist    */
+comment|/**    * Deletes a file from the Git tree of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     modified    * @param file path of the file which should be deleted    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file does not exist    */
 DECL|method|deleteFile (Repository repository, ChangeControl changeControl, String file)
 specifier|public
 name|void
@@ -1485,8 +1485,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Renames a file of a change edit or moves it to another directory. If the    * change edit doesn't exist, a new one will be created based on the current    * patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change    * edit should be modified    * @param currentFilePath the current path/name of the file    * @param newFilePath the desired path/name of the file    * @throws AuthException if the user isn't authenticated or not allowed to    * use change edits    * @throws InvalidChangeOperationException if the file was already renamed    * to the specified new name    */
-DECL|method|renameFile (Repository repository, ChangeControl changeControl, String currentFilePath, String newFilePath)
+comment|/**    * Renames a file of a change edit or moves it to another directory. If the change edit doesn't    * exist, a new one will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     modified    * @param currentFilePath the current path/name of the file    * @param newFilePath the desired path/name of the file    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file was already renamed to the specified new    *     name    */
+DECL|method|renameFile ( Repository repository, ChangeControl changeControl, String currentFilePath, String newFilePath)
 specifier|public
 name|void
 name|renameFile
@@ -1528,7 +1528,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Restores a file of a change edit to the state it was in before the patch    * set on which the change edit is based. If the change edit doesn't exist, a    * new one will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change    * edit should be modified    * @param file the path of the file which should be restored    * @throws AuthException if the user isn't authenticated or not allowed to    * use change edits    * @throws InvalidChangeOperationException if the file was already restored    */
+comment|/**    * Restores a file of a change edit to the state it was in before the patch set on which the    * change edit is based. If the change edit doesn't exist, a new one will be created based on the    * current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     modified    * @param file the path of the file which should be restored    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file was already restored    */
 DECL|method|restoreFile (Repository repository, ChangeControl changeControl, String file)
 specifier|public
 name|void
@@ -1566,7 +1566,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|modifyTree (Repository repository, ChangeControl changeControl, TreeModification treeModification)
+DECL|method|modifyTree ( Repository repository, ChangeControl changeControl, TreeModification treeModification)
 specifier|private
 name|void
 name|modifyTree
@@ -1881,7 +1881,7 @@ name|changeControl
 argument_list|)
 return|;
 block|}
-DECL|method|getBasePatchSet (Optional<ChangeEdit> optionalChangeEdit, ChangeControl changeControl)
+DECL|method|getBasePatchSet ( Optional<ChangeEdit> optionalChangeEdit, ChangeControl changeControl)
 specifier|private
 name|PatchSet
 name|getBasePatchSet
@@ -2039,7 +2039,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|createNewTree (Repository repository, RevCommit baseCommit, TreeModification treeModification)
+DECL|method|createNewTree ( Repository repository, RevCommit baseCommit, TreeModification treeModification)
 specifier|private
 specifier|static
 name|ObjectId
@@ -2209,7 +2209,7 @@ name|getResultTreeId
 argument_list|()
 return|;
 block|}
-DECL|method|createCommit (Repository repository, RevCommit basePatchSetCommit, ObjectId tree, String commitMessage, Timestamp timestamp)
+DECL|method|createCommit ( Repository repository, RevCommit basePatchSetCommit, ObjectId tree, String commitMessage, Timestamp timestamp)
 specifier|private
 name|ObjectId
 name|createCommit
@@ -2370,7 +2370,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|createEditReference (Repository repository, ChangeControl changeControl, PatchSet basePatchSet, ObjectId newEditCommit, Timestamp timestamp)
+DECL|method|createEditReference ( Repository repository, ChangeControl changeControl, PatchSet basePatchSet, ObjectId newEditCommit, Timestamp timestamp)
 specifier|private
 name|void
 name|createEditReference
@@ -2480,7 +2480,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|updateEditReference (Repository repository, ChangeEdit changeEdit, ObjectId newEditCommit, Timestamp timestamp)
+DECL|method|updateEditReference ( Repository repository, ChangeEdit changeEdit, ObjectId newEditCommit, Timestamp timestamp)
 specifier|private
 name|void
 name|updateEditReference
@@ -2540,7 +2540,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateReference (Repository repository, String refName, ObjectId currentObjectId, ObjectId targetObjectId, Timestamp timestamp)
+DECL|method|updateReference ( Repository repository, String refName, ObjectId currentObjectId, ObjectId targetObjectId, Timestamp timestamp)
 specifier|private
 name|void
 name|updateReference
@@ -2668,7 +2668,7 @@ throw|;
 block|}
 block|}
 block|}
-DECL|method|updateReferenceWithNameChange (Repository repository, String currentRefName, ObjectId currentObjectId, String newRefName, ObjectId targetObjectId, Timestamp timestamp)
+DECL|method|updateReferenceWithNameChange ( Repository repository, String currentRefName, ObjectId currentObjectId, String newRefName, ObjectId targetObjectId, Timestamp timestamp)
 specifier|private
 name|void
 name|updateReferenceWithNameChange

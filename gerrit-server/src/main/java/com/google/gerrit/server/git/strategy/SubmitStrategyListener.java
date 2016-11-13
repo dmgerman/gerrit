@@ -232,20 +232,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -284,6 +270,20 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
 begin_class
 DECL|class|SubmitStrategyListener
 specifier|public
@@ -315,7 +315,7 @@ specifier|final
 name|boolean
 name|failAfterRefUpdates
 decl_stmt|;
-DECL|method|SubmitStrategyListener (SubmitInput input, Collection<SubmitStrategy> strategies, CommitStatus commitStatus)
+DECL|method|SubmitStrategyListener ( SubmitInput input, Collection<SubmitStrategy> strategies, CommitStatus commitStatus)
 specifier|public
 name|SubmitStrategyListener
 parameter_list|(

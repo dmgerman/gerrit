@@ -278,6 +278,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|bouncycastle
@@ -342,26 +362,6 @@ name|RefUpdate
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
 begin_class
 DECL|class|DeleteGpgKey
 specifier|public
@@ -380,7 +380,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|serverIdent
 specifier|private
 specifier|final
@@ -416,7 +416,7 @@ name|accountCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteGpgKey (@erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<PublicKeyStore> storeProvider, AccountCache accountCache)
+DECL|method|DeleteGpgKey ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<PublicKeyStore> storeProvider, AccountCache accountCache)
 name|DeleteGpgKey
 parameter_list|(
 annotation|@

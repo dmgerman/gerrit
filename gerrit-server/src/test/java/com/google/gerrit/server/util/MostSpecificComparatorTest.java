@@ -151,7 +151,7 @@ literal|"^refs/heads/master.*"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Assuming two patterns have the same Levenshtein distance,    * the pattern which represents a finite language wins over a pattern    * which represents an infinite language.    */
+comment|/**    * Assuming two patterns have the same Levenshtein distance, the pattern which represents a finite    * language wins over a pattern which represents an infinite language.    */
 annotation|@
 name|Test
 DECL|method|finiteWinsOverInfinite ()
@@ -183,7 +183,7 @@ literal|"^refs/heads/maste.*"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Assuming two patterns have the same Levenshtein distance    * and are both either finite or infinite the one with the higher    * number of state transitions (in an equivalent automaton) wins    */
+comment|/**    * Assuming two patterns have the same Levenshtein distance and are both either finite or infinite    * the one with the higher number of state transitions (in an equivalent automaton) wins    */
 annotation|@
 name|Test
 DECL|method|higherNumberOfTransitionsWins ()
@@ -243,7 +243,7 @@ literal|"refs/heads/abc/*"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Assuming the same Levenshtein distance, (in)finity and the number    * of transitions, the longer pattern wins    */
+comment|/**    * Assuming the same Levenshtein distance, (in)finity and the number of transitions, the longer    * pattern wins    */
 annotation|@
 name|Test
 DECL|method|longerPatternWins ()

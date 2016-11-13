@@ -68,20 +68,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|diff
-operator|.
-name|Edit
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -97,6 +83,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|diff
+operator|.
+name|Edit
 import|;
 end_import
 
@@ -133,7 +133,7 @@ specifier|final
 name|int
 name|bSize
 decl_stmt|;
-DECL|method|EditList (final List<Edit> edits, final int contextLines, final int aSize, final int bSize)
+DECL|method|EditList ( final List<Edit> edits, final int contextLines, final int aSize, final int bSize)
 specifier|public
 name|EditList
 parameter_list|(

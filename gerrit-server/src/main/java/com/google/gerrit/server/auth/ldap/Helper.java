@@ -278,20 +278,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|security
@@ -540,10 +526,24 @@ name|LoginException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_class
-DECL|class|Helper
 annotation|@
 name|Singleton
+DECL|class|Helper
 class|class
 name|Helper
 block|{
@@ -643,7 +643,7 @@ name|groupsVisibleToAll
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Helper (@erritServerConfig final Config config, @Named(LdapModule.PARENT_GROUPS_CACHE) Cache<String, ImmutableSet<String>> parentGroups)
+DECL|method|Helper ( @erritServerConfig final Config config, @Named(LdapModule.PARENT_GROUPS_CACHE) Cache<String, ImmutableSet<String>> parentGroups)
 name|Helper
 parameter_list|(
 annotation|@
@@ -1383,7 +1383,7 @@ return|return
 name|ldapSchema
 return|;
 block|}
-DECL|method|findAccount (Helper.LdapSchema schema, DirContext ctx, String username, boolean fetchMemberOf)
+DECL|method|findAccount ( Helper.LdapSchema schema, DirContext ctx, String username, boolean fetchMemberOf)
 name|LdapQuery
 operator|.
 name|Result
@@ -1543,7 +1543,7 @@ name|username
 argument_list|)
 throw|;
 block|}
-DECL|method|queryForGroups (final DirContext ctx, final String username, LdapQuery.Result account)
+DECL|method|queryForGroups ( final DirContext ctx, final String username, LdapQuery.Result account)
 name|Set
 argument_list|<
 name|AccountGroup
@@ -1935,7 +1935,7 @@ name|actual
 argument_list|)
 return|;
 block|}
-DECL|method|recursivelyExpandGroups (final Set<String> groupDNs, final LdapSchema schema, final DirContext ctx, final String groupDN)
+DECL|method|recursivelyExpandGroups ( final Set<String> groupDNs, final LdapSchema schema, final DirContext ctx, final String groupDN)
 specifier|private
 name|void
 name|recursivelyExpandGroups

@@ -111,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to provide validation on received commits.  *  * Invoked by Gerrit when a new commit is received, has passed basic Gerrit  * validation and can be then subject to extra validation checks.  */
+comment|/**  * Listener to provide validation on received commits.  *  *<p>Invoked by Gerrit when a new commit is received, has passed basic Gerrit validation and can be  * then subject to extra validation checks.  */
 end_comment
 
 begin_interface

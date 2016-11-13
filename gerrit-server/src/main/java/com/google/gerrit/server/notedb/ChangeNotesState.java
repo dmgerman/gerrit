@@ -404,20 +404,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -466,8 +452,22 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_comment
-comment|/**  * Immutable state associated with a change meta ref at a given commit.  *<p>  * One instance is the output of a single {@link ChangeNotesParser}, and  * contains types required to support public methods on {@link ChangeNotes}. It  * is intended to be cached in-process.  *<p>  * Note that {@link ChangeNotes} contains more than just a single {@code  * ChangeNoteState}, such as per-draft information, so that class is not cached  * directly.  */
+comment|/**  * Immutable state associated with a change meta ref at a given commit.  *  *<p>One instance is the output of a single {@link ChangeNotesParser}, and contains types required  * to support public methods on {@link ChangeNotes}. It is intended to be cached in-process.  *  *<p>Note that {@link ChangeNotes} contains more than just a single {@code ChangeNoteState}, such  * as per-draft information, so that class is not cached directly.  */
 end_comment
 
 begin_class
@@ -848,7 +848,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Subset of Change columns that can be represented in NoteDb.    *<p>    * Notable exceptions include rowVersion and noteDbState, which are only make    * sense when read from NoteDb, so they cannot be cached.    *<p>    * Fields are in listed column order.    */
+comment|/**    * Subset of Change columns that can be represented in NoteDb.    *    *<p>Notable exceptions include rowVersion and noteDbState, which are only make sense when read    * from NoteDb, so they cannot be cached.    *    *<p>Fields are in listed column order.    */
 annotation|@
 name|AutoValue
 DECL|class|ChangeColumns
@@ -892,9 +892,9 @@ name|String
 name|branch
 parameter_list|()
 function_decl|;
-DECL|method|currentPatchSetId ()
 annotation|@
 name|Nullable
+DECL|method|currentPatchSetId ()
 specifier|abstract
 name|PatchSet
 operator|.
@@ -908,33 +908,33 @@ name|String
 name|subject
 parameter_list|()
 function_decl|;
-DECL|method|topic ()
 annotation|@
 name|Nullable
+DECL|method|topic ()
 specifier|abstract
 name|String
 name|topic
 parameter_list|()
 function_decl|;
-DECL|method|originalSubject ()
 annotation|@
 name|Nullable
+DECL|method|originalSubject ()
 specifier|abstract
 name|String
 name|originalSubject
 parameter_list|()
 function_decl|;
-DECL|method|submissionId ()
 annotation|@
 name|Nullable
+DECL|method|submissionId ()
 specifier|abstract
 name|String
 name|submissionId
 parameter_list|()
 function_decl|;
-DECL|method|assignee ()
 annotation|@
 name|Nullable
+DECL|method|assignee ()
 specifier|abstract
 name|Account
 operator|.
@@ -943,9 +943,9 @@ name|assignee
 parameter_list|()
 function_decl|;
 comment|// TODO(dborowitz): Use a sensible default other than null
-DECL|method|status ()
 annotation|@
 name|Nullable
+DECL|method|status ()
 specifier|abstract
 name|Change
 operator|.
@@ -955,9 +955,9 @@ parameter_list|()
 function_decl|;
 block|}
 comment|// Only null if NoteDb is disabled.
-DECL|method|metaId ()
 annotation|@
 name|Nullable
+DECL|method|metaId ()
 specifier|abstract
 name|ObjectId
 name|metaId
@@ -972,9 +972,9 @@ name|changeId
 parameter_list|()
 function_decl|;
 comment|// Only null if NoteDb is disabled.
-DECL|method|columns ()
 annotation|@
 name|Nullable
+DECL|method|columns ()
 specifier|abstract
 name|ChangeColumns
 name|columns
@@ -1081,6 +1081,7 @@ argument_list|>
 name|allChangeMessages
 parameter_list|()
 function_decl|;
+DECL|method|changeMessagesByPatchSet ()
 specifier|abstract
 name|ImmutableListMultimap
 argument_list|<
@@ -1090,7 +1091,6 @@ name|Id
 argument_list|,
 name|ChangeMessage
 argument_list|>
-DECL|method|changeMessagesByPatchSet ()
 name|changeMessagesByPatchSet
 parameter_list|()
 function_decl|;

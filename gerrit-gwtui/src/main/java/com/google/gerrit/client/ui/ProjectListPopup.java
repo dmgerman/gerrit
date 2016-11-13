@@ -736,7 +736,7 @@ parameter_list|(
 name|String
 name|projectName
 parameter_list|)
-block|{   }
+block|{}
 comment|/**    * Invoked after opening a project row.    *    * @param projectName project name.    */
 DECL|method|openRow (String projectName)
 specifier|protected
@@ -746,7 +746,7 @@ parameter_list|(
 name|String
 name|projectName
 parameter_list|)
-block|{   }
+block|{}
 DECL|method|isPoppingUp ()
 specifier|public
 name|boolean

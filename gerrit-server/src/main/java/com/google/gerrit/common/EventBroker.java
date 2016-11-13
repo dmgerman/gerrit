@@ -445,7 +445,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Listeners to receive changes as they happen (limited by visibility of    * user).    */
+comment|/** Listeners to receive changes as they happen (limited by visibility of user). */
 DECL|field|listeners
 specifier|protected
 specifier|final
@@ -490,7 +490,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventBroker (DynamicSet<UserScopedEventListener> listeners, DynamicSet<EventListener> unrestrictedListeners, ProjectCache projectCache, ChangeNotes.Factory notesFactory, Provider<ReviewDb> dbProvider)
+DECL|method|EventBroker ( DynamicSet<UserScopedEventListener> listeners, DynamicSet<EventListener> unrestrictedListeners, ProjectCache projectCache, ChangeNotes.Factory notesFactory, Provider<ReviewDb> dbProvider)
 specifier|public
 name|EventBroker
 parameter_list|(

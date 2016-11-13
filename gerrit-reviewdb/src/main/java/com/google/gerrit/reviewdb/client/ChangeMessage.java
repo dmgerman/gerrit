@@ -375,7 +375,7 @@ specifier|protected
 name|String
 name|tag
 decl_stmt|;
-comment|/**    * Real user that added this message on behalf of the user recorded in {@link    * #author}.    */
+comment|/** Real user that added this message on behalf of the user recorded in {@link #author}. */
 annotation|@
 name|Column
 argument_list|(
@@ -398,8 +398,8 @@ DECL|method|ChangeMessage ()
 specifier|protected
 name|ChangeMessage
 parameter_list|()
-block|{   }
-DECL|method|ChangeMessage (final ChangeMessage.Key k, final Account.Id a, final Timestamp wo, final PatchSet.Id psid)
+block|{}
+DECL|method|ChangeMessage ( final ChangeMessage.Key k, final Account.Id a, final Timestamp wo, final PatchSet.Id psid)
 specifier|public
 name|ChangeMessage
 parameter_list|(

@@ -196,7 +196,7 @@ name|cast
 argument_list|()
 return|;
 block|}
-comment|/**    * Loop through the result map's entries and copy the key strings into the    * "name" property of the corresponding child object. This only runs on the    * top level map of the result, and requires the children to be JSON objects    * and not a JSON primitive (e.g. boolean or string).    */
+comment|/**    * Loop through the result map's entries and copy the key strings into the "name" property of the    * corresponding child object. This only runs on the top level map of the result, and requires the    * children to be JSON objects and not a JSON primitive (e.g. boolean or string).    */
 specifier|public
 specifier|static
 parameter_list|<
@@ -204,7 +204,6 @@ name|T
 extends|extends
 name|JavaScriptObject
 parameter_list|,
-DECL|method|copyKeysIntoChildren ( AsyncCallback<M> callback)
 name|M
 extends|extends
 name|NativeMap
@@ -212,6 +211,7 @@ argument_list|<
 name|T
 argument_list|>
 parameter_list|>
+DECL|method|copyKeysIntoChildren (AsyncCallback<M> callback)
 name|AsyncCallback
 argument_list|<
 name|M
@@ -242,7 +242,6 @@ name|T
 extends|extends
 name|JavaScriptObject
 parameter_list|,
-DECL|method|copyKeysIntoChildren ( final String asProperty, AsyncCallback<M> callback)
 name|M
 extends|extends
 name|NativeMap
@@ -250,6 +249,7 @@ argument_list|<
 name|T
 argument_list|>
 parameter_list|>
+DECL|method|copyKeysIntoChildren (final String asProperty, AsyncCallback<M> callback)
 name|AsyncCallback
 argument_list|<
 name|M
@@ -307,7 +307,7 @@ DECL|method|NativeMap ()
 specifier|protected
 name|NativeMap
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|keySet ()
 specifier|public
 specifier|final

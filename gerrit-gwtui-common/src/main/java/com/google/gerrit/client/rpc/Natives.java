@@ -176,7 +176,7 @@ specifier|public
 class|class
 name|Natives
 block|{
-comment|/**    * Get the names of defined properties on the object. The returned set    * iterates in the native iteration order, which may match the source order.    */
+comment|/**    * Get the names of defined properties on the object. The returned set iterates in the native    * iteration order, which may match the source order.    */
 DECL|method|keys (JavaScriptObject obj)
 specifier|public
 specifier|static
@@ -320,7 +320,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|asList ( final JsArray<T> arr)
+DECL|method|asList (final JsArray<T> arr)
 specifier|public
 specifier|static
 parameter_list|<
@@ -556,7 +556,7 @@ DECL|method|Natives ()
 specifier|private
 name|Natives
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

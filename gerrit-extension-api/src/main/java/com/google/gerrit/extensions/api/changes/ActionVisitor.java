@@ -133,7 +133,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extension point called during population of {@link ActionInfo} maps.  *<p>  * Each visitor may mutate the input {@link ActionInfo}, or filter it out of the  * map entirely. When multiple extensions are registered, the order in which  * they are executed is undefined.  */
+comment|/**  * Extension point called during population of {@link ActionInfo} maps.  *  *<p>Each visitor may mutate the input {@link ActionInfo}, or filter it out of the map entirely.  * When multiple extensions are registered, the order in which they are executed is undefined.  */
 end_comment
 
 begin_interface
@@ -144,7 +144,7 @@ specifier|public
 interface|interface
 name|ActionVisitor
 block|{
-comment|/**    * Visit a change-level action.    *<p>    * Callers may mutate the input {@link ActionInfo}, or return false to omit    * the action from the map entirely. Inputs other than the {@link ActionInfo}    * should be considered immutable.    *    * @param name name of the action, as a key into the {@link ActionInfo} map    *     returned by the REST API.    * @param actionInfo action being visited; caller may mutate.    * @param changeInfo information about the change to which this action    *     belongs; caller should treat as immutable.    * @return true if the action should remain in the map, or false to omit it.    */
+comment|/**    * Visit a change-level action.    *    *<p>Callers may mutate the input {@link ActionInfo}, or return false to omit the action from the    * map entirely. Inputs other than the {@link ActionInfo} should be considered immutable.    *    * @param name name of the action, as a key into the {@link ActionInfo} map returned by the REST    *     API.    * @param actionInfo action being visited; caller may mutate.    * @param changeInfo information about the change to which this action belongs; caller should    *     treat as immutable.    * @return true if the action should remain in the map, or false to omit it.    */
 DECL|method|visit (String name, ActionInfo actionInfo, ChangeInfo changeInfo)
 name|boolean
 name|visit
@@ -159,8 +159,8 @@ name|ChangeInfo
 name|changeInfo
 parameter_list|)
 function_decl|;
-comment|/**    * Visit a revision-level action.    *<p>    * Callers may mutate the input {@link ActionInfo}, or return false to omit    * the action from the map entirely. Inputs other than the {@link ActionInfo}    * should be considered immutable.    *    * @param name name of the action, as a key into the {@link ActionInfo} map    *     returned by the REST API.    * @param actionInfo action being visited; caller may mutate.    * @param changeInfo information about the change to which this action    *     belongs; caller should treat as immutable.    * @param revisionInfo information about the revision to which this action    *     belongs; caller should treat as immutable.    * @return true if the action should remain in the map, or false to omit it.    */
-DECL|method|visit (String name, ActionInfo actionInfo, ChangeInfo changeInfo, RevisionInfo revisionInfo)
+comment|/**    * Visit a revision-level action.    *    *<p>Callers may mutate the input {@link ActionInfo}, or return false to omit the action from the    * map entirely. Inputs other than the {@link ActionInfo} should be considered immutable.    *    * @param name name of the action, as a key into the {@link ActionInfo} map returned by the REST    *     API.    * @param actionInfo action being visited; caller may mutate.    * @param changeInfo information about the change to which this action belongs; caller should    *     treat as immutable.    * @param revisionInfo information about the revision to which this action belongs; caller should    *     treat as immutable.    * @return true if the action should remain in the map, or false to omit it.    */
+DECL|method|visit ( String name, ActionInfo actionInfo, ChangeInfo changeInfo, RevisionInfo revisionInfo)
 name|boolean
 name|visit
 parameter_list|(

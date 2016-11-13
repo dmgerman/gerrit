@@ -163,7 +163,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Diff against the revision's parent version of the file.    */
+comment|/** Diff against the revision's parent version of the file. */
 DECL|method|diff ()
 name|DiffInfo
 name|diff
@@ -171,7 +171,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * @param base revision id of the revision to be used as the    * diff base    */
+comment|/** @param base revision id of the revision to be used as the diff base */
 DECL|method|diff (String base)
 name|DiffInfo
 name|diff
@@ -182,7 +182,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * @param parent 1-based parent number to diff against    */
+comment|/** @param parent 1-based parent number to diff against */
 DECL|method|diff (int parent)
 name|DiffInfo
 name|diff
@@ -193,7 +193,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Creates a request to retrieve the diff. On the returned request formatting    * options for the diff can be set.    */
+comment|/**    * Creates a request to retrieve the diff. On the returned request formatting options for the diff    * can be set.    */
 DECL|method|diffRequest ()
 name|DiffRequest
 name|diffRequest
@@ -352,7 +352,7 @@ name|whitespace
 return|;
 block|}
 block|}
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

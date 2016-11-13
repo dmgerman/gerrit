@@ -233,7 +233,7 @@ DECL|class|RebaseAction
 class|class
 name|RebaseAction
 block|{
-DECL|method|call (final Button b, final String project, final String branch, final Change.Id id, final String revision, final boolean enabled)
+DECL|method|call ( final Button b, final String project, final String branch, final Change.Id id, final String revision, final boolean enabled)
 specifier|static
 name|void
 name|call

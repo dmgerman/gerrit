@@ -397,7 +397,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Normalizes votes on labels according to project config and permissions.  *<p>  * Votes are recorded in the database for a user based on the state of the  * project at that time: what labels are defined for the project, and what the  * user is allowed to vote on. Both of those can change between the time a vote  * is originally made and a later point, for example when a change is submitted.  * This class normalizes old votes against current project configuration.  */
+comment|/**  * Normalizes votes on labels according to project config and permissions.  *  *<p>Votes are recorded in the database for a user based on the state of the project at that time:  * what labels are defined for the project, and what the user is allowed to vote on. Both of those  * can change between the time a vote is originally made and a later point, for example when a  * change is submitted. This class normalizes old votes against current project configuration.  */
 end_comment
 
 begin_class
@@ -589,7 +589,7 @@ operator|=
 name|userFactory
 expr_stmt|;
 block|}
-comment|/**    * @param change change containing the given approvals.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label    *     type and permissions for the user. Approvals for unknown labels are not    *     included in the output, nor are approvals where the user has no    *     permissions for that label.    * @throws OrmException    */
+comment|/**    * @param change change containing the given approvals.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label type and permissions    *     for the user. Approvals for unknown labels are not included in the output, nor are    *     approvals where the user has no permissions for that label.    * @throws OrmException    */
 DECL|method|normalize (Change change, Collection<PatchSetApproval> approvals)
 specifier|public
 name|Result
@@ -641,7 +641,7 @@ name|approvals
 argument_list|)
 return|;
 block|}
-comment|/**    * @param ctl change control containing the given approvals.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label    *     type and permissions for the user. Approvals for unknown labels are not    *     included in the output, nor are approvals where the user has no    *     permissions for that label.    */
+comment|/**    * @param ctl change control containing the given approvals.    * @param approvals list of approvals.    * @return copies of approvals normalized to the defined ranges for the label type and permissions    *     for the user. Approvals for unknown labels are not included in the output, nor are    *     approvals where the user has no permissions for that label.    */
 DECL|method|normalize (ChangeControl ctl, Collection<PatchSetApproval> approvals)
 specifier|public
 name|Result
@@ -893,7 +893,7 @@ name|deleted
 argument_list|)
 return|;
 block|}
-comment|/**    * @param ctl change control (for any user).    * @param lt label type.    * @param id account ID.    * @return whether the given account ID has any permissions to vote on this    *     label for this change.    */
+comment|/**    * @param ctl change control (for any user).    * @param lt label type.    * @param id account ID.    * @return whether the given account ID has any permissions to vote on this label for this change.    */
 DECL|method|canVote (ChangeControl ctl, LabelType lt, Account.Id id)
 specifier|public
 name|boolean

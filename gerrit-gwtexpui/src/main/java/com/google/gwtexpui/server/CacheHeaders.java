@@ -208,7 +208,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Permit caching the response for up to the age specified.    *<p>    * If the request is on a secure connection (e.g. SSL) private caching is    * used. This allows the user-agent to cache the response, but requests    * intermediate proxies to not cache. This may offer better protection for    * Set-Cookie headers.    *<p>    * If the request is on plaintext (insecure), public caching is used. This may    * allow an intermediate proxy to cache the response, including any Set-Cookie    * header that may have also been included.    *    * @param req current request.    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    */
+comment|/**    * Permit caching the response for up to the age specified.    *    *<p>If the request is on a secure connection (e.g. SSL) private caching is used. This allows the    * user-agent to cache the response, but requests intermediate proxies to not cache. This may    * offer better protection for Set-Cookie headers.    *    *<p>If the request is on plaintext (insecure), public caching is used. This may allow an    * intermediate proxy to cache the response, including any Set-Cookie header that may have also    * been included.    *    * @param req current request.    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    */
 DECL|method|setCacheable ( HttpServletRequest req, HttpServletResponse res, long age, TimeUnit unit)
 specifier|public
 specifier|static
@@ -242,7 +242,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Permit caching the response for up to the age specified.    *<p>    * If the request is on a secure connection (e.g. SSL) private caching is    * used. This allows the user-agent to cache the response, but requests    * intermediate proxies to not cache. This may offer better protection for    * Set-Cookie headers.    *<p>    * If the request is on plaintext (insecure), public caching is used. This may    * allow an intermediate proxy to cache the response, including any Set-Cookie    * header that may have also been included.    *    * @param req current request.    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    * @param mustRevalidate true if the client must validate the cached entity.    */
+comment|/**    * Permit caching the response for up to the age specified.    *    *<p>If the request is on a secure connection (e.g. SSL) private caching is used. This allows the    * user-agent to cache the response, but requests intermediate proxies to not cache. This may    * offer better protection for Set-Cookie headers.    *    *<p>If the request is on plaintext (insecure), public caching is used. This may allow an    * intermediate proxy to cache the response, including any Set-Cookie header that may have also    * been included.    *    * @param req current request.    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    * @param mustRevalidate true if the client must validate the cached entity.    */
 DECL|method|setCacheable ( HttpServletRequest req, HttpServletResponse res, long age, TimeUnit unit, boolean mustRevalidate)
 specifier|public
 specifier|static
@@ -300,8 +300,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Allow the response to be cached by proxies and user-agents.    *<p>    * If the response includes a Set-Cookie header the cookie may be cached by a    * proxy and returned to multiple browsers behind the same proxy. This is    * insecure for authenticated connections.    *    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    * @param mustRevalidate true if the client must validate the cached entity.    */
-DECL|method|setCacheablePublic (HttpServletResponse res, long age, TimeUnit unit, boolean mustRevalidate)
+comment|/**    * Allow the response to be cached by proxies and user-agents.    *    *<p>If the response includes a Set-Cookie header the cookie may be cached by a proxy and    * returned to multiple browsers behind the same proxy. This is insecure for authenticated    * connections.    *    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    * @param mustRevalidate true if the client must validate the cached entity.    */
+DECL|method|setCacheablePublic ( HttpServletResponse res, long age, TimeUnit unit, boolean mustRevalidate)
 specifier|public
 specifier|static
 name|void
@@ -378,7 +378,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Allow the response to be cached only by the user-agent.    *    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    * @param mustRevalidate true if the client must validate the cached entity.    */
-DECL|method|setCacheablePrivate (HttpServletResponse res, long age, TimeUnit unit, boolean mustRevalidate)
+DECL|method|setCacheablePrivate ( HttpServletResponse res, long age, TimeUnit unit, boolean mustRevalidate)
 specifier|public
 specifier|static
 name|void
@@ -463,7 +463,7 @@ literal|"Expires"
 argument_list|)
 return|;
 block|}
-DECL|method|cache (HttpServletResponse res, String type, long age, TimeUnit unit, boolean revalidate)
+DECL|method|cache ( HttpServletResponse res, String type, long age, TimeUnit unit, boolean revalidate)
 specifier|private
 specifier|static
 name|void
@@ -548,7 +548,7 @@ DECL|method|CacheHeaders ()
 specifier|private
 name|CacheHeaders
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

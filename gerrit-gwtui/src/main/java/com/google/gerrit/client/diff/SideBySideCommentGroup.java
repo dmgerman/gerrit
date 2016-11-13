@@ -134,6 +134,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|PriorityQueue
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|codemirror
@@ -144,18 +154,8 @@ name|CodeMirror
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|PriorityQueue
-import|;
-end_import
-
 begin_comment
-comment|/**  * LineWidget attached to a CodeMirror container.  *  * When a comment is placed on a line a CommentWidget is created on both sides.  * The group tracks all comment boxes on that same line, and also includes an  * empty padding element to keep subsequent lines vertically aligned.  */
+comment|/**  * LineWidget attached to a CodeMirror container.  *  *<p>When a comment is placed on a line a CommentWidget is created on both sides. The group tracks  * all comment boxes on that same line, and also includes an empty padding element to keep  * subsequent lines vertically aligned.  */
 end_comment
 
 begin_class
@@ -216,7 +216,7 @@ name|SideBySideCommentGroup
 argument_list|>
 name|peers
 decl_stmt|;
-DECL|method|SideBySideCommentGroup (SideBySideCommentManager manager, CodeMirror cm, DisplaySide side, int line)
+DECL|method|SideBySideCommentGroup ( SideBySideCommentManager manager, CodeMirror cm, DisplaySide side, int line)
 name|SideBySideCommentGroup
 parameter_list|(
 name|SideBySideCommentManager

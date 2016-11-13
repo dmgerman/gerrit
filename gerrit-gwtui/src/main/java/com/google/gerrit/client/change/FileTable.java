@@ -1575,7 +1575,7 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|set (DiffObject base, PatchSet.Id curr, ChangeScreen.Style style, Widget replyButton, Mode mode, boolean editExists)
+DECL|method|set ( DiffObject base, PatchSet.Id curr, ChangeScreen.Style style, Widget replyButton, Mode mode, boolean editExists)
 specifier|public
 name|void
 name|set
@@ -1640,7 +1640,7 @@ operator|=
 name|editExists
 expr_stmt|;
 block|}
-DECL|method|setValue (NativeMap<FileInfo> fileMap, Timestamp myLastReply, @Nullable NativeMap<JsArray<CommentInfo>> comments, @Nullable NativeMap<JsArray<CommentInfo>> drafts)
+DECL|method|setValue ( NativeMap<FileInfo> fileMap, Timestamp myLastReply, @Nullable NativeMap<JsArray<CommentInfo>> comments, @Nullable NativeMap<JsArray<CommentInfo>> drafts)
 name|void
 name|setValue
 parameter_list|(
@@ -2533,7 +2533,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{             }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;
@@ -2615,7 +2615,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{             }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;
@@ -3308,7 +3308,7 @@ specifier|private
 name|long
 name|bytesDeleted
 decl_stmt|;
-DECL|method|DisplayCommand (NativeMap<FileInfo> map, JsArray<FileInfo> list, Timestamp myLastReply, @Nullable NativeMap<JsArray<CommentInfo>> comments, @Nullable NativeMap<JsArray<CommentInfo>> drafts)
+DECL|method|DisplayCommand ( NativeMap<FileInfo> map, JsArray<FileInfo> list, Timestamp myLastReply, @Nullable NativeMap<JsArray<CommentInfo>> comments, @Nullable NativeMap<JsArray<CommentInfo>> drafts)
 specifier|private
 name|DisplayCommand
 parameter_list|(

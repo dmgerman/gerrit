@@ -210,7 +210,7 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|replace (ChangeData cd)
@@ -223,7 +223,7 @@ name|cd
 parameter_list|)
 throws|throws
 name|IOException
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|delete (Change.Id id)
@@ -238,7 +238,7 @@ name|id
 parameter_list|)
 throws|throws
 name|IOException
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|deleteAll ()
@@ -248,7 +248,7 @@ name|deleteAll
 parameter_list|()
 throws|throws
 name|IOException
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|getSource (Predicate<ChangeData> p, QueryOptions opts)
@@ -284,7 +284,7 @@ name|ready
 parameter_list|)
 throws|throws
 name|IOException
-block|{   }
+block|{}
 DECL|method|getMaxLimit ()
 specifier|public
 name|int

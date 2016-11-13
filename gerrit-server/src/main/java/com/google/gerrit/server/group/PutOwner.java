@@ -381,9 +381,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|owner
 annotation|@
 name|DefaultInput
-DECL|field|owner
 specifier|public
 name|String
 name|owner
@@ -418,7 +418,7 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutOwner (GroupsCollection groupsCollection, GroupCache groupCache, Provider<ReviewDb> db, GroupJson json)
+DECL|method|PutOwner ( GroupsCollection groupsCollection, GroupCache groupCache, Provider<ReviewDb> db, GroupJson json)
 name|PutOwner
 parameter_list|(
 name|GroupsCollection

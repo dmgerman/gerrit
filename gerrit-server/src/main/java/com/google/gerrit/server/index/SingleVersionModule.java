@@ -204,20 +204,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -243,6 +229,20 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -490,7 +490,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|start ( IndexDefinition<K, V, I> def)
+DECL|method|start (IndexDefinition<K, V, I> def)
 specifier|private
 parameter_list|<
 name|K

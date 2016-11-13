@@ -652,6 +652,38 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -777,38 +809,6 @@ operator|.
 name|spi
 operator|.
 name|Setter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
 import|;
 end_import
 
@@ -1061,7 +1061,7 @@ name|webLinksOnly
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetDiff (ProjectCache projectCache, PatchScriptFactory.Factory patchScriptFactoryFactory, Revisions revisions, WebLinks webLinks)
+DECL|method|GetDiff ( ProjectCache projectCache, PatchScriptFactory.Factory patchScriptFactoryFactory, Revisions revisions, WebLinks webLinks)
 name|GetDiff
 parameter_list|(
 name|ProjectCache
@@ -3131,7 +3131,7 @@ argument_list|<
 name|Short
 argument_list|>
 block|{
-DECL|method|ContextOptionHandler ( CmdLineParser parser, OptionDef option, Setter<Short> setter)
+DECL|method|ContextOptionHandler (CmdLineParser parser, OptionDef option, Setter<Short> setter)
 specifier|public
 name|ContextOptionHandler
 parameter_list|(

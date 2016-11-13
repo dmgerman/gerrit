@@ -106,7 +106,7 @@ name|boolean
 name|usePool
 parameter_list|()
 function_decl|;
-comment|/**    * Return a ScriptRunner that runs the index script. Must not return    * {@code null}, but may return a ScriptRunner that does nothing.    *    * @throws IOException    */
+comment|/**    * Return a ScriptRunner that runs the index script. Must not return {@code null}, but may return    * a ScriptRunner that does nothing.    *    * @throws IOException    */
 DECL|method|getIndexScript ()
 name|ScriptRunner
 name|getIndexScript

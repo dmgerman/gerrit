@@ -185,7 +185,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Create a new branch. **/
+comment|/** Create a new branch. * */
 end_comment
 
 begin_class
@@ -280,9 +280,9 @@ specifier|private
 name|String
 name|revision
 decl_stmt|;
+DECL|field|gApi
 annotation|@
 name|Inject
-DECL|field|gApi
 name|GerritApi
 name|gApi
 decl_stmt|;

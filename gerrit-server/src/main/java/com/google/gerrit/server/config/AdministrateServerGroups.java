@@ -120,7 +120,7 @@ DECL|annotation|AdministrateServerGroups
 specifier|public
 annotation_defn|@interface
 name|AdministrateServerGroups
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

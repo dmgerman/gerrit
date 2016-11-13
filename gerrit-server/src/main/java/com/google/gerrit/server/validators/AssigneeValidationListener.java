@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to provide validation of assignees.  */
+comment|/** Listener to provide validation of assignees. */
 end_comment
 
 begin_interface

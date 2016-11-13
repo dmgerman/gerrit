@@ -415,7 +415,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-DECL|method|fire (Project.NameKey project, RefUpdate refUpdate, ReceiveCommand.Type type, Account updater)
+DECL|method|fire ( Project.NameKey project, RefUpdate refUpdate, ReceiveCommand.Type type, Account updater)
 specifier|public
 name|void
 name|fire
@@ -518,7 +518,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fire (Project.NameKey project, String ref, ObjectId oldObjectId, ObjectId newObjectId, Account updater)
+DECL|method|fire ( Project.NameKey project, String ref, ObjectId oldObjectId, ObjectId newObjectId, Account updater)
 specifier|public
 name|void
 name|fire
@@ -707,7 +707,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|fire (Project.NameKey project, String ref, ObjectId oldObjectId, ObjectId newObjectId, ReceiveCommand.Type type, AccountInfo updater)
+DECL|method|fire ( Project.NameKey project, String ref, ObjectId oldObjectId, ObjectId newObjectId, ReceiveCommand.Type type, AccountInfo updater)
 specifier|private
 name|void
 name|fire
@@ -888,7 +888,7 @@ specifier|final
 name|AccountInfo
 name|updater
 decl_stmt|;
-DECL|method|Event (Project.NameKey project, String ref, String oldObjectId, String newObjectId, ReceiveCommand.Type type, AccountInfo updater)
+DECL|method|Event ( Project.NameKey project, String ref, String oldObjectId, String newObjectId, ReceiveCommand.Type type, AccountInfo updater)
 name|Event
 parameter_list|(
 name|Project

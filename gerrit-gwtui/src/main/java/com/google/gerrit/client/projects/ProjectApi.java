@@ -299,7 +299,7 @@ class|class
 name|ProjectApi
 block|{
 comment|/** Create a new project */
-DECL|method|createProject (String projectName, String parent, Boolean createEmptyCcommit, Boolean permissionsOnly, AsyncCallback<VoidResult> cb)
+DECL|method|createProject ( String projectName, String parent, Boolean createEmptyCcommit, Boolean permissionsOnly, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -382,7 +382,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getRestApi (Project.NameKey name, String viewName, int limit, int start, String match)
+DECL|method|getRestApi ( Project.NameKey name, String viewName, int limit, int start, String match)
 specifier|private
 specifier|static
 name|RestApi
@@ -519,7 +519,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getTags (Project.NameKey name, int limit, int start, String match, AsyncCallback<JsArray<TagInfo>> cb)
+DECL|method|getTags ( Project.NameKey name, int limit, int start, String match, AsyncCallback<JsArray<TagInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -569,7 +569,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Create a new branch */
-DECL|method|createBranch (Project.NameKey name, String ref, String revision, AsyncCallback<BranchInfo> cb)
+DECL|method|createBranch ( Project.NameKey name, String ref, String revision, AsyncCallback<BranchInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -672,7 +672,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getBranches (Project.NameKey name, int limit, int start, String match, AsyncCallback<JsArray<BranchInfo>> cb)
+DECL|method|getBranches ( Project.NameKey name, int limit, int start, String match, AsyncCallback<JsArray<BranchInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -721,8 +721,8 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Delete branches. One call is fired to the server to delete all the    * branches.    */
-DECL|method|deleteBranches (Project.NameKey name, Set<String> refs, AsyncCallback<VoidResult> cb)
+comment|/** Delete branches. One call is fired to the server to delete all the branches. */
+DECL|method|deleteBranches ( Project.NameKey name, Set<String> refs, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -862,7 +862,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, InheritableBoolean enableSignedPush, InheritableBoolean requireSignedPush, InheritableBoolean rejectImplicitMerges, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
+DECL|method|setConfig ( Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, InheritableBoolean enableSignedPush, InheritableBoolean requireSignedPush, InheritableBoolean rejectImplicitMerges, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -1151,7 +1151,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getChildren (Project.NameKey name, boolean recursive, AsyncCallback<JsArray<ProjectInfo>> cb)
+DECL|method|getChildren ( Project.NameKey name, boolean recursive, AsyncCallback<JsArray<ProjectInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -1243,7 +1243,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setDescription (Project.NameKey name, String description, AsyncCallback<NativeString> cb)
+DECL|method|setDescription ( Project.NameKey name, String description, AsyncCallback<NativeString> cb)
 specifier|public
 specifier|static
 name|void
@@ -1439,7 +1439,7 @@ DECL|method|ProjectInput ()
 specifier|protected
 name|ProjectInput
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|setName (String n)
 specifier|final
 specifier|native
@@ -1511,7 +1511,7 @@ DECL|method|ConfigInput ()
 specifier|protected
 name|ConfigInput
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|setDescription (String d)
 specifier|final
 specifier|native
@@ -1824,7 +1824,7 @@ name|s
 parameter_list|)
 comment|/*-{ if(s)this.state=s; }-*/
 function_decl|;
-DECL|method|setPluginConfigValues (Map<String, Map<String, ConfigParameterValue>> pluginConfigValues)
+DECL|method|setPluginConfigValues ( Map<String, Map<String, ConfigParameterValue>> pluginConfigValues)
 specifier|final
 name|void
 name|setPluginConfigValues
@@ -1991,7 +1991,7 @@ DECL|method|ConfigParameterValueMap ()
 specifier|protected
 name|ConfigParameterValueMap
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|put (String n, ConfigParameterValue v)
 specifier|public
 specifier|final
@@ -2034,7 +2034,7 @@ DECL|method|BranchInput ()
 specifier|protected
 name|BranchInput
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|setRevision (String r)
 specifier|final
 specifier|native
@@ -2073,7 +2073,7 @@ DECL|method|DescriptionInput ()
 specifier|protected
 name|DescriptionInput
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|setDescription (String d)
 specifier|final
 specifier|native
@@ -2112,7 +2112,7 @@ DECL|method|HeadInput ()
 specifier|protected
 name|HeadInput
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|setRef (String r)
 specifier|final
 specifier|native
@@ -2161,7 +2161,7 @@ DECL|method|DeleteBranchesInput ()
 specifier|protected
 name|DeleteBranchesInput
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|init ()
 specifier|final
 specifier|native

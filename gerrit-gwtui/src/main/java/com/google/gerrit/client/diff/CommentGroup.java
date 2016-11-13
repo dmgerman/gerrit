@@ -187,7 +187,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * LineWidget attached to a CodeMirror container.  *  * When a comment is placed on a line a CommentWidget is created.  */
+comment|/**  * LineWidget attached to a CodeMirror container.  *  *<p>When a comment is placed on a line a CommentWidget is created.  */
 end_comment
 
 begin_class

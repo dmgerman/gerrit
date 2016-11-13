@@ -470,16 +470,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -535,6 +525,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -5588,7 +5588,7 @@ name|SC_OK
 argument_list|)
 return|;
 block|}
-DECL|method|addReviewer ( String changeId, String reviewer, int expectedStatus)
+DECL|method|addReviewer (String changeId, String reviewer, int expectedStatus)
 specifier|private
 name|AddReviewerResult
 name|addReviewer
@@ -5735,7 +5735,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|review ( String changeId, String revisionId, ReviewInput in)
+DECL|method|review (String changeId, String revisionId, ReviewInput in)
 specifier|private
 name|ReviewResult
 name|review
@@ -5818,7 +5818,7 @@ name|class
 argument_list|)
 return|;
 block|}
-DECL|method|readContentFromJson ( RestResponse r, int expectedStatus, Class<T> clazz)
+DECL|method|readContentFromJson (RestResponse r, int expectedStatus, Class<T> clazz)
 specifier|private
 specifier|static
 parameter_list|<
@@ -5880,7 +5880,7 @@ name|clazz
 argument_list|)
 return|;
 block|}
-DECL|method|assertReviewers (ChangeInfo c, ReviewerState reviewerState, TestAccount... accounts)
+DECL|method|assertReviewers ( ChangeInfo c, ReviewerState reviewerState, TestAccount... accounts)
 specifier|private
 specifier|static
 name|void
@@ -5940,7 +5940,7 @@ name|accountList
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertReviewers (ChangeInfo c, ReviewerState reviewerState, Iterable<TestAccount> accounts)
+DECL|method|assertReviewers ( ChangeInfo c, ReviewerState reviewerState, Iterable<TestAccount> accounts)
 specifier|private
 specifier|static
 name|void

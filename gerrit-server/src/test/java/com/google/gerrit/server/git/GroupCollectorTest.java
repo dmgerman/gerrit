@@ -2803,6 +2803,7 @@ return|;
 block|}
 comment|// Helper methods for constructing various map arguments, to avoid lots of
 comment|// type specifications.
+DECL|method|patchSets ()
 specifier|private
 specifier|static
 name|ImmutableListMultimap
@@ -2815,7 +2816,6 @@ name|PatchSet
 operator|.
 name|Id
 argument_list|>
-DECL|method|patchSets ()
 name|patchSets
 parameter_list|()
 block|{

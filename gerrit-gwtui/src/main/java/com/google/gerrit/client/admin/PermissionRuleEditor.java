@@ -664,7 +664,7 @@ name|HTMLPanel
 argument_list|,
 name|PermissionRuleEditor
 argument_list|>
-block|{   }
+block|{}
 DECL|field|uiBinder
 specifier|private
 specifier|static
@@ -719,51 +719,51 @@ DECL|field|max
 name|RangeBox
 name|max
 decl_stmt|;
+DECL|field|force
 annotation|@
 name|UiField
-DECL|field|force
 name|CheckBox
 name|force
 decl_stmt|;
+DECL|field|groupNameLink
 annotation|@
 name|UiField
-DECL|field|groupNameLink
 name|Anchor
 name|groupNameLink
 decl_stmt|;
+DECL|field|groupNameSpan
 annotation|@
 name|UiField
-DECL|field|groupNameSpan
 name|SpanElement
 name|groupNameSpan
 decl_stmt|;
+DECL|field|deletedGroupName
 annotation|@
 name|UiField
-DECL|field|deletedGroupName
 name|SpanElement
 name|deletedGroupName
 decl_stmt|;
+DECL|field|deleteRule
 annotation|@
 name|UiField
-DECL|field|deleteRule
 name|Anchor
 name|deleteRule
 decl_stmt|;
+DECL|field|normal
 annotation|@
 name|UiField
-DECL|field|normal
 name|DivElement
 name|normal
 decl_stmt|;
+DECL|field|deleted
 annotation|@
 name|UiField
-DECL|field|deleted
 name|DivElement
 name|deleted
 decl_stmt|;
+DECL|field|rangeEditor
 annotation|@
 name|UiField
-DECL|field|rangeEditor
 name|SpanElement
 name|rangeEditor
 decl_stmt|;
@@ -789,7 +789,7 @@ specifier|private
 name|HandlerRegistration
 name|clickHandler
 decl_stmt|;
-DECL|method|PermissionRuleEditor (boolean readOnly, Map<AccountGroup.UUID, GroupInfo> groupInfo, AccessSection section, Permission permission, PermissionRange.WithDefaults validRange)
+DECL|method|PermissionRuleEditor ( boolean readOnly, Map<AccountGroup.UUID, GroupInfo> groupInfo, AccessSection section, Permission permission, PermissionRange.WithDefaults validRange)
 specifier|public
 name|PermissionRuleEditor
 parameter_list|(
@@ -1700,7 +1700,7 @@ name|PermissionRule
 argument_list|>
 name|delegate
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|flush ()
@@ -1708,7 +1708,7 @@ specifier|public
 name|void
 name|flush
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|onPropertyChange (String... paths)
@@ -1720,7 +1720,7 @@ name|String
 modifier|...
 name|paths
 parameter_list|)
-block|{   }
+block|{}
 DECL|class|ActionRenderer
 specifier|private
 specifier|static

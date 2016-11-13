@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on {@link ExecutorService} used by  * {@link IntraLineLoader} and {@link PatchListLoader}.  */
+comment|/**  * Marker on {@link ExecutorService} used by {@link IntraLineLoader} and {@link PatchListLoader}.  */
 end_comment
 
 begin_annotation_defn
@@ -132,7 +132,7 @@ DECL|annotation|DiffExecutor
 specifier|public
 annotation_defn|@interface
 name|DiffExecutor
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

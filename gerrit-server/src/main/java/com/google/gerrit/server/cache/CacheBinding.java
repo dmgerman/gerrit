@@ -271,9 +271,9 @@ name|long
 name|diskLimit
 parameter_list|()
 function_decl|;
-DECL|method|expireAfterWrite (TimeUnit unit)
 annotation|@
 name|Nullable
+DECL|method|expireAfterWrite (TimeUnit unit)
 name|Long
 name|expireAfterWrite
 parameter_list|(
@@ -281,9 +281,9 @@ name|TimeUnit
 name|unit
 parameter_list|)
 function_decl|;
-DECL|method|weigher ()
 annotation|@
 name|Nullable
+DECL|method|weigher ()
 name|Weigher
 argument_list|<
 name|K
@@ -293,9 +293,9 @@ argument_list|>
 name|weigher
 parameter_list|()
 function_decl|;
-DECL|method|loader ()
 annotation|@
 name|Nullable
+DECL|method|loader ()
 name|CacheLoader
 argument_list|<
 name|K

@@ -158,7 +158,7 @@ name|MergeabilityCache
 block|{
 annotation|@
 name|Override
-DECL|method|get (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo)
+DECL|method|get ( ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo)
 specifier|public
 name|boolean
 name|get
@@ -194,7 +194,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|getIfPresent (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy)
+DECL|method|getIfPresent ( ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy)
 specifier|public
 name|Boolean
 name|getIfPresent
@@ -221,7 +221,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|get (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo)
+DECL|method|get ( ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy, Branch.NameKey dest, Repository repo)
 name|boolean
 name|get
 parameter_list|(

@@ -121,7 +121,7 @@ specifier|final
 class|class
 name|Url
 block|{
-comment|/**    * Encode a path segment, escaping characters not valid for a URL.    *<p>    * The following characters are not escaped:    *<ul>    *<li>{@code a..z, A..Z, 0..9}    *<li>{@code . - * _}    *</ul>    *<p>    * ' ' (space) is encoded as '+'.    *<p>    * All other characters (including '/') are converted to the triplet "%xy"    * where "xy" is the hex representation of the character in UTF-8.    *    * @param component a string containing text to encode.    * @return a string with all invalid URL characters escaped.    */
+comment|/**    * Encode a path segment, escaping characters not valid for a URL.    *    *<p>The following characters are not escaped:    *    *<ul>    *<li>{@code a..z, A..Z, 0..9}    *<li>{@code . - * _}    *</ul>    *    *<p>' ' (space) is encoded as '+'.    *    *<p>All other characters (including '/') are converted to the triplet "%xy" where "xy" is the    * hex representation of the character in UTF-8.    *    * @param component a string containing text to encode.    * @return a string with all invalid URL characters escaped.    */
 DECL|method|encode (String component)
 specifier|public
 specifier|static
@@ -235,7 +235,7 @@ DECL|method|Url ()
 specifier|private
 name|Url
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

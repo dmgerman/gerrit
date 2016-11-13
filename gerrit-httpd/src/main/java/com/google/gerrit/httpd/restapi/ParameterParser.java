@@ -340,18 +340,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|CmdLineException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -434,6 +422,18 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|CmdLineException
+import|;
+end_import
+
 begin_class
 DECL|class|ParameterParser
 class|class
@@ -492,7 +492,7 @@ operator|=
 name|pf
 expr_stmt|;
 block|}
-DECL|method|parse (T param, ListMultimap<String, String> in, HttpServletRequest req, HttpServletResponse res)
+DECL|method|parse ( T param, ListMultimap<String, String> in, HttpServletRequest req, HttpServletResponse res)
 parameter_list|<
 name|T
 parameter_list|>
@@ -671,7 +671,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|splitQueryString (String queryString, ListMultimap<String, String> config, ListMultimap<String, String> params)
+DECL|method|splitQueryString ( String queryString, ListMultimap<String, String> config, ListMultimap<String, String> params)
 specifier|static
 name|void
 name|splitQueryString
@@ -913,7 +913,7 @@ return|return
 name|params
 return|;
 block|}
-comment|/**    * Convert a standard URL encoded form input into a parsed JSON tree.    *<p>    * Given an input such as:    *    *<pre>    * message=Does+not+compile.&labels.Verified=-1    *</pre>    *    * which is easily created using the curl command line tool:    *    *<pre>    * curl --data 'message=Does not compile.' --data labels.Verified=-1    *</pre>    *    * converts to a JSON object structure that is normally expected:    *    *<pre>    * {    *   "message": "Does not compile.",    *   "labels": {    *     "Verified": "-1"    *   }    * }    *</pre>    *    * This input can then be further processed into the Java input type expected    * by a view using Gson. Here we rely on Gson to perform implicit conversion    * of a string {@code "-1"} to a number type when the Java input type expects    * a number.    *<p>    * Conversion assumes any field name that does not contain {@code "."} will be    * a property of the top level input object. Any field with a dot will use the    * first segment as the top level property name naming an object, and the rest    * of the field name as a property in the nested object.    *    * @param req request to parse form input from and create JSON tree.    * @return the converted JSON object tree.    * @throws BadRequestException the request cannot be cast, as there are    *         conflicting definitions for a nested object.    */
+comment|/**    * Convert a standard URL encoded form input into a parsed JSON tree.    *    *<p>Given an input such as:    *    *<pre>    * message=Does+not+compile.&labels.Verified=-1    *</pre>    *    * which is easily created using the curl command line tool:    *    *<pre>    * curl --data 'message=Does not compile.' --data labels.Verified=-1    *</pre>    *    * converts to a JSON object structure that is normally expected:    *    *<pre>    * {    *   "message": "Does not compile.",    *   "labels": {    *     "Verified": "-1"    *   }    * }    *</pre>    *    * This input can then be further processed into the Java input type expected by a view using    * Gson. Here we rely on Gson to perform implicit conversion of a string {@code "-1"} to a number    * type when the Java input type expects a number.    *    *<p>Conversion assumes any field name that does not contain {@code "."} will be a property of    * the top level input object. Any field with a dot will use the first segment as the top level    * property name naming an object, and the rest of the field name as a property in the nested    * object.    *    * @param req request to parse form input from and create JSON tree.    * @return the converted JSON object tree.    * @throws BadRequestException the request cannot be cast, as there are conflicting definitions    *     for a nested object.    */
 DECL|method|formToJson (HttpServletRequest req)
 specifier|static
 name|JsonObject

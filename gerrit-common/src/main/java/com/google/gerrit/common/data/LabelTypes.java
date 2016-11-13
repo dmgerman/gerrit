@@ -184,7 +184,7 @@ DECL|method|LabelTypes ()
 specifier|protected
 name|LabelTypes
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|LabelTypes (final List<? extends LabelType> approvals)
 specifier|public
 name|LabelTypes

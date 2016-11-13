@@ -488,7 +488,7 @@ name|canonicalUrl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GarbageCollect (GitRepositoryManager repoManager, GarbageCollection.Factory garbageCollectionFactory, WorkQueue workQueue, @CanonicalWebUrl Provider<String> canonicalUrl)
+DECL|method|GarbageCollect ( GitRepositoryManager repoManager, GarbageCollection.Factory garbageCollectionFactory, WorkQueue workQueue, @CanonicalWebUrl Provider<String> canonicalUrl)
 name|GarbageCollect
 parameter_list|(
 name|GitRepositoryManager

@@ -475,7 +475,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerJson (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, AccountLoader.Factory accountLoaderFactory)
+DECL|method|ReviewerJson ( Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, AccountLoader.Factory accountLoaderFactory)
 name|ReviewerJson
 parameter_list|(
 name|Provider
@@ -713,7 +713,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|format (ReviewerInfo out, ChangeControl ctl, Iterable<PatchSetApproval> approvals)
+DECL|method|format ( ReviewerInfo out, ChangeControl ctl, Iterable<PatchSetApproval> approvals)
 specifier|public
 name|ReviewerInfo
 name|format

@@ -302,7 +302,7 @@ name|draft
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DraftApiImpl (DeleteDraftComment deleteDraft, GetDraftComment getDraft, PutDraftComment putDraft, @Assisted DraftCommentResource draft)
+DECL|method|DraftApiImpl ( DeleteDraftComment deleteDraft, GetDraftComment getDraft, PutDraftComment putDraft, @Assisted DraftCommentResource draft)
 name|DraftApiImpl
 parameter_list|(
 name|DeleteDraftComment

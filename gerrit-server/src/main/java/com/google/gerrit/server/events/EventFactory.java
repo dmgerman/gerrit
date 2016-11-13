@@ -810,82 +810,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -961,6 +885,82 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|PersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -1061,7 +1061,7 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AccountByEmailCache byEmailCache, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema)
+DECL|method|EventFactory ( AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AccountByEmailCache byEmailCache, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -1173,7 +1173,7 @@ operator|=
 name|schema
 expr_stmt|;
 block|}
-comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to    * JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
+comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
 DECL|method|asChangeAttribute (Change change)
 specifier|public
 name|ChangeAttribute
@@ -1225,7 +1225,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to    * JSON.    *    * @param db Review database    * @param change    * @return object suitable for serialization to JSON    */
+comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to JSON.    *    * @param db Review database    * @param change    * @return object suitable for serialization to JSON    */
 DECL|method|asChangeAttribute (ReviewDb db, Change change)
 specifier|public
 name|ChangeAttribute
@@ -1396,8 +1396,8 @@ return|return
 name|a
 return|;
 block|}
-comment|/**    * Create a RefUpdateAttribute for the given old ObjectId, new ObjectId, and    * branch that is suitable for serialization to JSON.    *    * @param oldId    * @param newId    * @param refName    * @return object suitable for serialization to JSON    */
-DECL|method|asRefUpdateAttribute (ObjectId oldId, ObjectId newId, Branch.NameKey refName)
+comment|/**    * Create a RefUpdateAttribute for the given old ObjectId, new ObjectId, and branch that is    * suitable for serialization to JSON.    *    * @param oldId    * @param newId    * @param refName    * @return object suitable for serialization to JSON    */
+DECL|method|asRefUpdateAttribute ( ObjectId oldId, ObjectId newId, Branch.NameKey refName)
 specifier|public
 name|RefUpdateAttribute
 name|asRefUpdateAttribute
@@ -2628,7 +2628,7 @@ operator|=
 name|commitMessage
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, LabelTypes labelTypes)
+DECL|method|addPatchSets ( ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
@@ -2685,7 +2685,7 @@ name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
+DECL|method|addPatchSets ( ReviewDb db, RevWalk revWalk, ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
@@ -2822,7 +2822,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|addPatchSetComments (PatchSetAttribute patchSetAttribute, Collection<Comment> comments)
+DECL|method|addPatchSetComments ( PatchSetAttribute patchSetAttribute, Collection<Comment> comments)
 specifier|public
 name|void
 name|addPatchSetComments
@@ -2892,7 +2892,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addPatchSetFileNames (PatchSetAttribute patchSetAttribute, Change change, PatchSet patchSet)
+DECL|method|addPatchSetFileNames ( PatchSetAttribute patchSetAttribute, Change change, PatchSet patchSet)
 specifier|public
 name|void
 name|addPatchSetFileNames
@@ -3087,7 +3087,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param revWalk    * @param patchSet    * @return object suitable for serialization to JSON    */
+comment|/**    * Create a PatchSetAttribute for the given patchset suitable for serialization to JSON.    *    * @param revWalk    * @param patchSet    * @return object suitable for serialization to JSON    */
 DECL|method|asPatchSetAttribute (RevWalk revWalk, Change change, PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute
@@ -3149,8 +3149,8 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Create a PatchSetAttribute for the given patchset suitable for    * serialization to JSON.    *    * @param db Review database    * @param patchSet    * @return object suitable for serialization to JSON    */
-DECL|method|asPatchSetAttribute (ReviewDb db, RevWalk revWalk, Change change, PatchSet patchSet)
+comment|/**    * Create a PatchSetAttribute for the given patchset suitable for serialization to JSON.    *    * @param db Review database    * @param patchSet    * @return object suitable for serialization to JSON    */
+DECL|method|asPatchSetAttribute ( ReviewDb db, RevWalk revWalk, Change change, PatchSet patchSet)
 specifier|public
 name|PatchSetAttribute
 name|asPatchSetAttribute
@@ -3617,7 +3617,7 @@ return|return
 name|u
 return|;
 block|}
-DECL|method|addApprovals (PatchSetAttribute p, PatchSet.Id id, Map<PatchSet.Id, Collection<PatchSetApproval>> all, LabelTypes labelTypes)
+DECL|method|addApprovals ( PatchSetAttribute p, PatchSet.Id id, Map<PatchSet.Id, Collection<PatchSetApproval>> all, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addApprovals
@@ -3678,7 +3678,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addApprovals (PatchSetAttribute p, Collection<PatchSetApproval> list, LabelTypes labelTypes)
+DECL|method|addApprovals ( PatchSetAttribute p, Collection<PatchSetApproval> list, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addApprovals
@@ -3772,7 +3772,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Create an AuthorAttribute for the given account suitable for serialization    * to JSON.    *    * @param id    * @return object suitable for serialization to JSON    */
+comment|/**    * Create an AuthorAttribute for the given account suitable for serialization to JSON.    *    * @param id    * @return object suitable for serialization to JSON    */
 DECL|method|asAccountAttribute (Account.Id id)
 specifier|public
 name|AccountAttribute
@@ -3810,7 +3810,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Create an AuthorAttribute for the given account suitable for serialization    * to JSON.    *    * @param account    * @return object suitable for serialization to JSON    */
+comment|/**    * Create an AuthorAttribute for the given account suitable for serialization to JSON.    *    * @param account    * @return object suitable for serialization to JSON    */
 DECL|method|asAccountAttribute (Account account)
 specifier|public
 name|AccountAttribute
@@ -3869,7 +3869,7 @@ return|return
 name|who
 return|;
 block|}
-comment|/**    * Create an AuthorAttribute for the given person ident suitable for    * serialization to JSON.    *    * @param ident    * @return object suitable for serialization to JSON    */
+comment|/**    * Create an AuthorAttribute for the given person ident suitable for serialization to JSON.    *    * @param ident    * @return object suitable for serialization to JSON    */
 DECL|method|asAccountAttribute (PersonIdent ident)
 specifier|public
 name|AccountAttribute
@@ -3908,7 +3908,7 @@ return|return
 name|who
 return|;
 block|}
-comment|/**    * Create an ApprovalAttribute for the given approval suitable for    * serialization to JSON.    *    * @param approval    * @param labelTypes label types for the containing project    * @return object suitable for serialization to JSON    */
+comment|/**    * Create an ApprovalAttribute for the given approval suitable for serialization to JSON.    *    * @param approval    * @param labelTypes label types for the containing project    * @return object suitable for serialization to JSON    */
 DECL|method|asApprovalAttribute (PatchSetApproval approval, LabelTypes labelTypes)
 specifier|public
 name|ApprovalAttribute

@@ -342,6 +342,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -368,16 +378,6 @@ name|RepositoryNotFoundException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -399,9 +399,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|parent
 annotation|@
 name|DefaultInput
-DECL|field|parent
 specifier|public
 name|String
 name|parent

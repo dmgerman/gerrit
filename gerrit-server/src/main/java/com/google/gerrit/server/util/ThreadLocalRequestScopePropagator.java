@@ -131,7 +131,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link RequestScopePropagator} implementation for request scopes based on  * a {@link ThreadLocal} context.  *  * @param<C> "context" type stored in the {@link ThreadLocal}.  */
+comment|/**  * {@link RequestScopePropagator} implementation for request scopes based on a {@link ThreadLocal}  * context.  *  * @param<C> "context" type stored in the {@link ThreadLocal}.  */
 end_comment
 
 begin_class
@@ -155,7 +155,7 @@ name|C
 argument_list|>
 name|threadLocal
 decl_stmt|;
-DECL|method|ThreadLocalRequestScopePropagator (Scope scope, ThreadLocal<C> threadLocal, ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
+DECL|method|ThreadLocalRequestScopePropagator ( Scope scope, ThreadLocal<C> threadLocal, ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
 specifier|protected
 name|ThreadLocalRequestScopePropagator
 parameter_list|(
@@ -194,7 +194,7 @@ operator|=
 name|threadLocal
 expr_stmt|;
 block|}
-comment|/**    * @see RequestScopePropagator#wrap(Callable)    */
+comment|/** @see RequestScopePropagator#wrap(Callable) */
 annotation|@
 name|Override
 DECL|method|wrapImpl (final Callable<T> callable)
@@ -331,7 +331,7 @@ return|return
 name|context
 return|;
 block|}
-comment|/**    * Returns a new context object based on the passed in context that has no    * request scoped objects initialized.    *<p>    * Note that some code paths expect request-scoped objects like    * {@code CurrentUser} to be constructible starting from just the context    * object returned by this method. For example, in the SSH scope, the context    * includes the {@code SshSession}, which is used by    * {@code SshCurrentUserProvider} to construct a new {@code CurrentUser} in    * the new thread.    *    * @param ctx the context to continue.    * @return a new context.    */
+comment|/**    * Returns a new context object based on the passed in context that has no request scoped objects    * initialized.    *    *<p>Note that some code paths expect request-scoped objects like {@code CurrentUser} to be    * constructible starting from just the context object returned by this method. For example, in    * the SSH scope, the context includes the {@code SshSession}, which is used by {@code    * SshCurrentUserProvider} to construct a new {@code CurrentUser} in the new thread.    *    * @param ctx the context to continue.    * @return a new context.    */
 DECL|method|continuingContext (C ctx)
 specifier|protected
 specifier|abstract

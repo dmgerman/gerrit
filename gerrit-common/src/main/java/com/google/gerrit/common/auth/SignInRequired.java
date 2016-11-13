@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation indicating a service method requires a current user.  *<p>  * If there is no current user then  * {@code com.google.gerrit.common.errors.NotSignedInException} will be given to  * the callback's onFailure method.  */
+comment|/**  * Annotation indicating a service method requires a current user.  *  *<p>If there is no current user then {@code com.google.gerrit.common.errors.NotSignedInException}  * will be given to the callback's onFailure method.  */
 end_comment
 
 begin_annotation_defn
@@ -137,7 +137,7 @@ DECL|annotation|SignInRequired
 specifier|public
 annotation_defn|@interface
 name|SignInRequired
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

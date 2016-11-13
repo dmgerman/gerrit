@@ -212,7 +212,7 @@ DECL|method|Error ()
 specifier|protected
 name|Error
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|Error (Type type, Project.NameKey projectName)
 specifier|public
 name|Error

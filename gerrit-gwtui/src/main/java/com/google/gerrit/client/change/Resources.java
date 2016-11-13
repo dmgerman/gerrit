@@ -161,12 +161,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|style ()
 annotation|@
 name|Source
 argument_list|(
 literal|"common.css"
 argument_list|)
+DECL|method|style ()
 name|Style
 name|style
 parameter_list|()

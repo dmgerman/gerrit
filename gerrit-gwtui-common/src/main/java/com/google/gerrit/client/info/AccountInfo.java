@@ -298,7 +298,7 @@ name|ts
 parameter_list|)
 comment|/*-{ this._cts = ts; }-*/
 function_decl|;
-comment|/**    * @return true if the server supplied avatar information about this account.    *         The information may be an empty list, indicating no avatars are    *         available, such as when no plugin is installed. This method returns    *         false if the server did not check on avatars for the account.    */
+comment|/**    * @return true if the server supplied avatar information about this account. The information may    *     be an empty list, indicating no avatars are available, such as when no plugin is installed.    *     This method returns false if the server did not check on avatars for the account.    */
 DECL|method|hasAvatarInfo ()
 specifier|public
 specifier|final
@@ -450,7 +450,7 @@ DECL|method|AccountInfo ()
 specifier|protected
 name|AccountInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|AvatarInfo
 specifier|public
 specifier|static
@@ -499,7 +499,7 @@ DECL|method|AvatarInfo ()
 specifier|protected
 name|AvatarInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

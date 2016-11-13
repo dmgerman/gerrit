@@ -179,7 +179,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A table with one row and one column to hold a unified CodeMirror displaying  * the files to be compared.  */
+comment|/**  * A table with one row and one column to hold a unified CodeMirror displaying the files to be  * compared.  */
 end_comment
 
 begin_class
@@ -334,7 +334,7 @@ parameter_list|(
 name|boolean
 name|hide
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|isVisibleA ()

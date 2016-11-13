@@ -954,6 +954,106 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1064,106 +1164,6 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_class
 DECL|class|ChangeRebuilderImpl
 specifier|public
@@ -1172,7 +1172,7 @@ name|ChangeRebuilderImpl
 extends|extends
 name|ChangeRebuilder
 block|{
-comment|/**    * The maximum amount of time between the ReviewDb timestamp of the first and    * last events batched together into a single NoteDb update.    *<p>    * Used to account for the fact that different records with their own    * timestamps (e.g. {@link PatchSetApproval} and {@link ChangeMessage})    * historically didn't necessarily use the same timestamp, and tended to call    * {@code System.currentTimeMillis()} independently.    */
+comment|/**    * The maximum amount of time between the ReviewDb timestamp of the first and last events batched    * together into a single NoteDb update.    *    *<p>Used to account for the fact that different records with their own timestamps (e.g. {@link    * PatchSetApproval} and {@link ChangeMessage}) historically didn't necessarily use the same    * timestamp, and tended to call {@code System.currentTimeMillis()} independently.    */
 DECL|field|MAX_WINDOW_MS
 specifier|public
 specifier|static
@@ -1187,7 +1187,7 @@ argument_list|(
 literal|3
 argument_list|)
 decl_stmt|;
-comment|/**    * The maximum amount of time between two consecutive events to consider them    * to be in the same batch.    */
+comment|/**    * The maximum amount of time between two consecutive events to consider them to be in the same    * batch.    */
 DECL|field|MAX_DELTA_MS
 specifier|static
 specifier|final
@@ -1287,7 +1287,7 @@ name|skewMs
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeRebuilderImpl (@erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeBundleReader bundleReader, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeUpdate.Factory updateFactory, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration migration, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @AnonymousCowardName String anonymousCowardName, @GerritServerId String serverId)
+DECL|method|ChangeRebuilderImpl ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, AccountCache accountCache, ChangeBundleReader bundleReader, ChangeDraftUpdate.Factory draftUpdateFactory, ChangeNoteUtil changeNoteUtil, ChangeUpdate.Factory updateFactory, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration migration, PatchListCache patchListCache, @GerritPersonIdent PersonIdent serverIdent, @Nullable ProjectCache projectCache, @AnonymousCowardName String anonymousCowardName, @GerritServerId String serverId)
 name|ChangeRebuilderImpl
 parameter_list|(
 annotation|@
@@ -1786,7 +1786,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|execute (ReviewDb db, Change.Id changeId, NoteDbUpdateManager manager, boolean checkReadOnly)
+DECL|method|execute ( ReviewDb db, Change.Id changeId, NoteDbUpdateManager manager, boolean checkReadOnly)
 specifier|public
 name|Result
 name|execute
@@ -2989,7 +2989,7 @@ return|return
 name|minPsNum
 return|;
 block|}
-DECL|method|getComments (ChangeBundle bundle, String serverId, PatchLineComment.Status status, PatchSet ps)
+DECL|method|getComments ( ChangeBundle bundle, String serverId, PatchLineComment.Status status, PatchSet ps)
 specifier|private
 specifier|static
 name|List
@@ -3073,7 +3073,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|sortAndFillEvents (Change change, Change noteDbChange, ImmutableCollection<PatchSet> patchSets, List<Event> events, Integer minPsNum)
+DECL|method|sortAndFillEvents ( Change change, Change noteDbChange, ImmutableCollection<PatchSet> patchSets, List<Event> events, Integer minPsNum)
 specifier|private
 name|void
 name|sortAndFillEvents
@@ -3417,7 +3417,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|flushEventsToUpdate (NoteDbUpdateManager manager, EventList<Event> events, Change change)
+DECL|method|flushEventsToUpdate ( NoteDbUpdateManager manager, EventList<Event> events, Change change)
 specifier|private
 name|void
 name|flushEventsToUpdate
@@ -3581,7 +3581,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|flushEventsToDraftUpdate (NoteDbUpdateManager manager, EventList<DraftCommentEvent> events, Change change)
+DECL|method|flushEventsToDraftUpdate ( NoteDbUpdateManager manager, EventList<DraftCommentEvent> events, Change change)
 specifier|private
 name|void
 name|flushEventsToDraftUpdate

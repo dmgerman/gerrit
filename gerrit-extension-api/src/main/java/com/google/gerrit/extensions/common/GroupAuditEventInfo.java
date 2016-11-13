@@ -89,15 +89,15 @@ enum|enum
 name|Type
 block|{
 DECL|enumConstant|ADD_USER
-DECL|enumConstant|REMOVE_USER
-DECL|enumConstant|ADD_GROUP
-DECL|enumConstant|REMOVE_GROUP
 name|ADD_USER
 block|,
+DECL|enumConstant|REMOVE_USER
 name|REMOVE_USER
 block|,
+DECL|enumConstant|ADD_GROUP
 name|ADD_GROUP
 block|,
+DECL|enumConstant|REMOVE_GROUP
 name|REMOVE_GROUP
 block|}
 DECL|field|type
@@ -115,7 +115,7 @@ specifier|public
 name|Timestamp
 name|date
 decl_stmt|;
-DECL|method|createAddUserEvent (AccountInfo user, Timestamp date, AccountInfo member)
+DECL|method|createAddUserEvent ( AccountInfo user, Timestamp date, AccountInfo member)
 specifier|public
 specifier|static
 name|UserMemberAuditEventInfo
@@ -179,7 +179,7 @@ name|member
 argument_list|)
 return|;
 block|}
-DECL|method|createAddGroupEvent (AccountInfo user, Timestamp date, GroupInfo member)
+DECL|method|createAddGroupEvent ( AccountInfo user, Timestamp date, GroupInfo member)
 specifier|public
 specifier|static
 name|GroupMemberAuditEventInfo
@@ -289,7 +289,7 @@ specifier|public
 name|AccountInfo
 name|member
 decl_stmt|;
-DECL|method|UserMemberAuditEventInfo (Type type, AccountInfo user, Timestamp date, AccountInfo member)
+DECL|method|UserMemberAuditEventInfo ( Type type, AccountInfo user, Timestamp date, AccountInfo member)
 specifier|public
 name|UserMemberAuditEventInfo
 parameter_list|(
@@ -336,7 +336,7 @@ specifier|public
 name|GroupInfo
 name|member
 decl_stmt|;
-DECL|method|GroupMemberAuditEventInfo (Type type, AccountInfo user, Timestamp date, GroupInfo member)
+DECL|method|GroupMemberAuditEventInfo ( Type type, AccountInfo user, Timestamp date, GroupInfo member)
 specifier|public
 name|GroupMemberAuditEventInfo
 parameter_list|(

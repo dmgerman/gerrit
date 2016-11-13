@@ -110,7 +110,7 @@ DECL|method|DiffWebLinkInfo ()
 specifier|protected
 name|DiffWebLinkInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

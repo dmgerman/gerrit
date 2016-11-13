@@ -274,40 +274,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -393,6 +359,40 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -586,7 +586,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Creates an in-memory H2 database to store the reviewed flags.    * This should be used for tests only.    */
+comment|/**    * Creates an in-memory H2 database to store the reviewed flags. This should be used for tests    * only.    */
 annotation|@
 name|VisibleForTesting
 DECL|method|H2AccountPatchReviewStore ()
@@ -772,7 +772,7 @@ specifier|public
 name|void
 name|stop
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|markReviewed (PatchSet.Id psId, Account.Id accountId, String path)

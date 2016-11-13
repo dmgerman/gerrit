@@ -178,7 +178,7 @@ name|peer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PeerDaemonUser (CapabilityControl.Factory capabilityControlFactory, @Assisted SocketAddress peer)
+DECL|method|PeerDaemonUser ( CapabilityControl.Factory capabilityControlFactory, @Assisted SocketAddress peer)
 specifier|protected
 name|PeerDaemonUser
 parameter_list|(

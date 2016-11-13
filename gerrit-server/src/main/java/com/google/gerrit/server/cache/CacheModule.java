@@ -253,7 +253,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Miniature DSL to support binding {@link Cache} instances in Guice.  */
+comment|/** Miniature DSL to support binding {@link Cache} instances in Guice. */
 end_comment
 
 begin_class
@@ -294,7 +294,7 @@ argument_list|()
 block|{}
 empty_stmt|;
 comment|/**    * Declare a named in-memory cache.    *    * @param<K> type of key used to lookup entries.    * @param<V> type of value stored by the cache.    * @return binding to describe the cache.    */
-DECL|method|cache ( String name, Class<K> keyType, Class<V> valType)
+DECL|method|cache (String name, Class<K> keyType, Class<V> valType)
 specifier|protected
 parameter_list|<
 name|K
@@ -347,7 +347,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Declare a named in-memory cache.    *    * @param<K> type of key used to lookup entries.    * @param<V> type of value stored by the cache.    * @return binding to describe the cache.    */
-DECL|method|cache ( String name, Class<K> keyType, TypeLiteral<V> valType)
+DECL|method|cache (String name, Class<K> keyType, TypeLiteral<V> valType)
 specifier|protected
 parameter_list|<
 name|K
@@ -552,7 +552,7 @@ literal|1024
 argument_list|)
 return|;
 block|}
-DECL|method|bindCacheLoader ( CacheProvider<K, V> m, Class<? extends CacheLoader<K,V>> impl)
+DECL|method|bindCacheLoader ( CacheProvider<K, V> m, Class<? extends CacheLoader<K, V>> impl)
 parameter_list|<
 name|K
 parameter_list|,
@@ -838,7 +838,7 @@ name|loaderKey
 argument_list|)
 return|;
 block|}
-DECL|method|bindWeigher ( CacheProvider<K, V> m, Class<? extends Weigher<K,V>> impl)
+DECL|method|bindWeigher ( CacheProvider<K, V> m, Class<? extends Weigher<K, V>> impl)
 parameter_list|<
 name|K
 parameter_list|,

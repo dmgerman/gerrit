@@ -139,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests a message containing mime/alternative (text + html) content.  */
+comment|/** Tests a message containing mime/alternative (text + html) content. */
 end_comment
 
 begin_class

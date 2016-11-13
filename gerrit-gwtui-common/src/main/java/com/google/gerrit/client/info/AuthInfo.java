@@ -644,7 +644,7 @@ DECL|method|AuthInfo ()
 specifier|protected
 name|AuthInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

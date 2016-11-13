@@ -304,6 +304,60 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Random
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|ZipEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|ZipOutputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -453,60 +507,6 @@ operator|.
 name|util
 operator|.
 name|NB
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|OutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Random
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|zip
-operator|.
-name|ZipEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|zip
-operator|.
-name|ZipOutputStream
 import|;
 end_import
 
@@ -962,7 +962,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|downloadContent (ProjectState project, ObjectId revstr, String path, @Nullable Integer parent)
+DECL|method|downloadContent ( ProjectState project, ObjectId revstr, String path, @Nullable Integer parent)
 specifier|public
 name|BinaryResult
 name|downloadContent
@@ -1234,7 +1234,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|wrapBlob (String path, final ObjectLoader obj, byte[] raw, MimeType contentType, @Nullable String suffix)
+DECL|method|wrapBlob ( String path, final ObjectLoader obj, byte[] raw, MimeType contentType, @Nullable String suffix)
 specifier|private
 name|BinaryResult
 name|wrapBlob
@@ -1291,7 +1291,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"resource"
 argument_list|)
-DECL|method|zipBlob (final String path, final ObjectLoader obj, RevCommit commit, @Nullable final String suffix)
+DECL|method|zipBlob ( final String path, final ObjectLoader obj, RevCommit commit, @Nullable final String suffix)
 specifier|private
 name|BinaryResult
 name|zipBlob
@@ -1836,7 +1836,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|resolveContentType (ProjectState project, String path, FileMode fileMode, String mimeType)
+DECL|method|resolveContentType ( ProjectState project, String path, FileMode fileMode, String mimeType)
 specifier|public
 specifier|static
 name|String

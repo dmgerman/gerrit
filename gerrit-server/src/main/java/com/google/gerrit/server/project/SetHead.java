@@ -344,6 +344,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -432,26 +452,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -489,9 +489,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|ref
 annotation|@
 name|DefaultInput
-DECL|field|ref
 specifier|public
 name|String
 name|ref
@@ -523,7 +523,7 @@ name|headUpdatedListeners
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetHead (GitRepositoryManager repoManager, Provider<IdentifiedUser> identifiedUser, DynamicSet<HeadUpdatedListener> headUpdatedListeners)
+DECL|method|SetHead ( GitRepositoryManager repoManager, Provider<IdentifiedUser> identifiedUser, DynamicSet<HeadUpdatedListener> headUpdatedListeners)
 name|SetHead
 parameter_list|(
 name|GitRepositoryManager

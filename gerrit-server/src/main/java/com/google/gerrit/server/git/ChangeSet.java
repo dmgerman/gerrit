@@ -245,7 +245,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A set of changes grouped together to be submitted atomically.  *<p>  * MergeSuperSet constructs ChangeSets to accumulate intermediate  * results toward the ChangeSet it returns when done.  *<p>  * This class is not thread safe.  */
+comment|/**  * A set of changes grouped together to be submitted atomically.  *  *<p>MergeSuperSet constructs ChangeSets to accumulate intermediate results toward the ChangeSet it  * returns when done.  *  *<p>This class is not thread safe.  */
 end_comment
 
 begin_class
@@ -267,7 +267,7 @@ name|ChangeData
 argument_list|>
 name|changeData
 decl_stmt|;
-comment|/**    * Additional changes not included in changeData because their    * connection to the original change is not visible to the    * current user.  That is, this map includes both    * - changes that are not visible to the current user, and    * - changes whose only relationship to the set is via a change    *   that is not visible to the current user    */
+comment|/**    * Additional changes not included in changeData because their connection to the original change    * is not visible to the current user. That is, this map includes both - changes that are not    * visible to the current user, and - changes whose only relationship to the set is via a change    * that is not visible to the current user    */
 DECL|field|nonVisibleChanges
 specifier|private
 specifier|final
@@ -381,7 +381,7 @@ name|ret
 argument_list|)
 return|;
 block|}
-DECL|method|ChangeSet ( Iterable<ChangeData> changes, Iterable<ChangeData> hiddenChanges)
+DECL|method|ChangeSet (Iterable<ChangeData> changes, Iterable<ChangeData> hiddenChanges)
 specifier|public
 name|ChangeSet
 parameter_list|(

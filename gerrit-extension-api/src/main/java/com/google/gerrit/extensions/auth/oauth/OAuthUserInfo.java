@@ -104,7 +104,7 @@ specifier|final
 name|String
 name|claimedIdentity
 decl_stmt|;
-DECL|method|OAuthUserInfo (String externalId, String userName, String emailAddress, String displayName, String claimedIdentity)
+DECL|method|OAuthUserInfo ( String externalId, String userName, String emailAddress, String displayName, String claimedIdentity)
 specifier|public
 name|OAuthUserInfo
 parameter_list|(

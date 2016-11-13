@@ -276,20 +276,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -305,6 +291,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
 import|;
 end_import
 
@@ -351,7 +351,7 @@ name|watchConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteWatchedProjects (Provider<IdentifiedUser> self, AccountCache accountCache, WatchConfig.Accessor watchConfig)
+DECL|method|DeleteWatchedProjects ( Provider<IdentifiedUser> self, AccountCache accountCache, WatchConfig.Accessor watchConfig)
 name|DeleteWatchedProjects
 parameter_list|(
 name|Provider

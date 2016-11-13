@@ -398,72 +398,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|log4j
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|log4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|RepositoryCache
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|FS
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -607,6 +541,72 @@ operator|.
 name|concurrent
 operator|.
 name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|log4j
+operator|.
+name|Level
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|log4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|RepositoryCache
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|FS
 import|;
 end_import
 
@@ -825,7 +825,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|has ( Class<? extends Annotation> annotation, Class<?> clazz)
+DECL|method|has (Class<? extends Annotation> annotation, Class<?> clazz)
 specifier|private
 specifier|static
 name|boolean
@@ -894,9 +894,9 @@ name|Description
 name|testDescription
 parameter_list|()
 function_decl|;
-DECL|method|configName ()
 annotation|@
 name|Nullable
+DECL|method|configName ()
 specifier|abstract
 name|String
 name|configName
@@ -926,17 +926,17 @@ name|boolean
 name|useSsh
 parameter_list|()
 function_decl|;
-DECL|method|config ()
 annotation|@
 name|Nullable
+DECL|method|config ()
 specifier|abstract
 name|GerritConfig
 name|config
 parameter_list|()
 function_decl|;
-DECL|method|configs ()
 annotation|@
 name|Nullable
+DECL|method|configs ()
 specifier|abstract
 name|GerritConfigs
 name|configs
@@ -1350,7 +1350,7 @@ block|,
 literal|"--console-log"
 block|,
 literal|"--show-stack-trace"
-block|,}
+block|,                       }
 argument_list|)
 decl_stmt|;
 if|if
@@ -1469,7 +1469,7 @@ block|,
 literal|"--no-auto-start"
 block|,
 literal|"--skip-plugins"
-block|,}
+block|,             }
 argument_list|)
 decl_stmt|;
 if|if
@@ -1953,7 +1953,7 @@ specifier|private
 name|InetSocketAddress
 name|httpAddress
 decl_stmt|;
-DECL|method|GerritServer (Description desc, Injector testInjector, Daemon daemon, ExecutorService daemonService)
+DECL|method|GerritServer ( Description desc, Injector testInjector, Daemon daemon, ExecutorService daemonService)
 specifier|private
 name|GerritServer
 parameter_list|(

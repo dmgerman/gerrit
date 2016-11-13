@@ -274,34 +274,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -364,6 +336,34 @@ name|ExecutionException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -372,9 +372,9 @@ specifier|public
 class|class
 name|ChangeNotesCache
 block|{
+DECL|field|CACHE_NAME
 annotation|@
 name|VisibleForTesting
-DECL|field|CACHE_NAME
 specifier|static
 specifier|final
 name|String
@@ -1356,10 +1356,10 @@ name|ChangeNotesState
 name|state
 parameter_list|()
 function_decl|;
-comment|/**      * The {@link RevisionNoteMap} produced while parsing this change.      *<p>      * These instances are mutable and non-threadsafe, so it is only safe to      * return it to the caller that actually incurred the cache miss. It is only      * used as an optimization; {@link ChangeNotes} is capable of lazily loading      * it as necessary.      */
-DECL|method|revisionNoteMap ()
+comment|/**      * The {@link RevisionNoteMap} produced while parsing this change.      *      *<p>These instances are mutable and non-threadsafe, so it is only safe to return it to the      * caller that actually incurred the cache miss. It is only used as an optimization; {@link      * ChangeNotes} is capable of lazily loading it as necessary.      */
 annotation|@
 name|Nullable
+DECL|method|revisionNoteMap ()
 specifier|abstract
 name|RevisionNoteMap
 argument_list|<
@@ -1503,7 +1503,7 @@ name|args
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeNotesCache ( @amedCACHE_NAME) Cache<Key, ChangeNotesState> cache, Args args)
+DECL|method|ChangeNotesCache (@amedCACHE_NAME) Cache<Key, ChangeNotesState> cache, Args args)
 name|ChangeNotesCache
 parameter_list|(
 annotation|@

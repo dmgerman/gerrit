@@ -363,7 +363,7 @@ name|get
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * @see RequestScopePropagator#wrap(Callable)    */
+comment|/** @see RequestScopePropagator#wrap(Callable) */
 comment|// ServletScopes#continueRequest is deprecated, but it's not obvious their
 comment|// recommended replacement is an appropriate drop-in solution; see
 comment|// https://gerrit-review.googlesource.com/83971

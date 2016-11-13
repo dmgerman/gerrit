@@ -138,20 +138,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|nio
@@ -191,6 +177,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -449,7 +449,7 @@ return|return
 name|basePaths
 return|;
 block|}
-comment|/**    * Find the subSection to get repository configuration from.    *<p>    * SubSection can use the * pattern so if project name matches more than one    * section, return the more precise one. E.g if the following subSections are    * defined:    *    *<pre>    * [repository "somePath/*"]    *   name = value    * [repository "somePath/somePath/*"]    *   name = value    *</pre>    *    * and this method is called with "somePath/somePath/someProject" as project    * name, it will return the subSection "somePath/somePath/*"    *    * @param project Name of the project    * @return the name of the subSection, null if none is found    */
+comment|/**    * Find the subSection to get repository configuration from.    *    *<p>SubSection can use the * pattern so if project name matches more than one section, return    * the more precise one. E.g if the following subSections are defined:    *    *<pre>    * [repository "somePath/*"]    *   name = value    * [repository "somePath/somePath/*"]    *   name = value    *</pre>    *    * and this method is called with "somePath/somePath/someProject" as project name, it will return    * the subSection "somePath/somePath/*"    *    * @param project Name of the project    * @return the name of the subSection, null if none is found    */
 DECL|method|findSubSection (String project)
 specifier|private
 name|String
