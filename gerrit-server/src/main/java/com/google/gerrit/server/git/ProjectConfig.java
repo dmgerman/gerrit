@@ -3122,6 +3122,38 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|rc
+operator|.
+name|getStringList
+argument_list|(
+name|ACCESS
+argument_list|,
+literal|null
+argument_list|,
+name|KEY_INHERIT_FROM
+argument_list|)
+operator|.
+name|length
+operator|>
+literal|1
+condition|)
+block|{
+comment|// The config must not contain more than one parent to inherit from
+comment|// as there is no guarantee which of the parents would be used then.
+name|error
+argument_list|(
+operator|new
+name|ValidationError
+argument_list|(
+name|PROJECT_CONFIG
+argument_list|,
+literal|"Cannot inherit from multiple projects"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|p
 operator|.
 name|setParentName
