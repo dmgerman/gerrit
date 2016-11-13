@@ -1884,6 +1884,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|c
+operator|.
+name|plugins
+operator|=
+name|queryProcessor
+operator|.
+name|create
+argument_list|(
+name|d
+argument_list|)
+expr_stmt|;
 return|return
 name|c
 return|;

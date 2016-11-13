@@ -384,6 +384,14 @@ name|ProblemInfo
 argument_list|>
 name|problems
 decl_stmt|;
+DECL|field|plugins
+specifier|public
+name|List
+argument_list|<
+name|PluginDefinedInfo
+argument_list|>
+name|plugins
+decl_stmt|;
 block|}
 end_class
 
