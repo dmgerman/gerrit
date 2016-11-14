@@ -211,7 +211,7 @@ throws|,
 name|IOException
 function_decl|;
 comment|/**    * Set the {@code GIT_DIR/description} file for gitweb.    *<p>    * NB: This code should really be in JGit, as a member of the Repository    * object. Until it moves there, its here.    *    * @param name the repository name, relative to the base directory.    * @param description new description text for the repository.    */
-DECL|method|setProjectDescription (Project.NameKey name, final String description)
+DECL|method|setProjectDescription (Project.NameKey name, String description)
 name|void
 name|setProjectDescription
 parameter_list|(
@@ -220,7 +220,6 @@ operator|.
 name|NameKey
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|description
 parameter_list|)
