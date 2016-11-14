@@ -195,35 +195,6 @@ argument_list|>
 name|list
 parameter_list|()
 function_decl|;
-comment|/**    * Read the {@code GIT_DIR/description} file for gitweb.    *<p>    * NB: This code should really be in JGit, as a member of the Repository    * object. Until it moves there, its here.    *    * @param name the repository name, relative to the base directory.    * @return description text; null if no description has been configured.    * @throws RepositoryNotFoundException the named repository does not exist.    * @throws IOException the description file exists, but is not readable by    *         this process.    */
-DECL|method|getProjectDescription (Project.NameKey name)
-name|String
-name|getProjectDescription
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|name
-parameter_list|)
-throws|throws
-name|RepositoryNotFoundException
-throws|,
-name|IOException
-function_decl|;
-comment|/**    * Set the {@code GIT_DIR/description} file for gitweb.    *<p>    * NB: This code should really be in JGit, as a member of the Repository    * object. Until it moves there, its here.    *    * @param name the repository name, relative to the base directory.    * @param description new description text for the repository.    */
-DECL|method|setProjectDescription (Project.NameKey name, String description)
-name|void
-name|setProjectDescription
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|name
-parameter_list|,
-name|String
-name|description
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 

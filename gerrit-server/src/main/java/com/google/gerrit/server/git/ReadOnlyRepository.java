@@ -577,6 +577,23 @@ name|refName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getGitwebDescription ()
+specifier|public
+name|String
+name|getGitwebDescription
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|delegate
+operator|.
+name|getGitwebDescription
+argument_list|()
+return|;
+block|}
 DECL|class|RefDb
 specifier|private
 specifier|static

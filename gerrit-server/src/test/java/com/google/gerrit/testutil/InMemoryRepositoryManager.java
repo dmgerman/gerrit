@@ -286,11 +286,6 @@ operator|.
 name|NameKey
 name|name
 decl_stmt|;
-DECL|field|desc
-specifier|private
-name|String
-name|desc
-decl_stmt|;
 DECL|method|Description (Project.NameKey name)
 specifier|private
 name|Description
@@ -315,15 +310,6 @@ name|name
 operator|=
 name|name
 expr_stmt|;
-name|desc
-operator|=
-literal|"In-memory repository "
-operator|+
-name|name
-operator|.
-name|get
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|getProject ()
 specifier|public
@@ -346,6 +332,11 @@ name|Repo
 extends|extends
 name|InMemoryRepository
 block|{
+DECL|field|description
+specifier|private
+name|String
+name|description
+decl_stmt|;
 DECL|method|Repo (Project.NameKey name)
 specifier|private
 name|Repo
@@ -390,6 +381,34 @@ operator|.
 name|getDescription
 argument_list|()
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getGitwebDescription ()
+specifier|public
+name|String
+name|getGitwebDescription
+parameter_list|()
+block|{
+return|return
+name|description
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|setGitwebDescription (String d)
+specifier|public
+name|void
+name|setGitwebDescription
+parameter_list|(
+name|String
+name|d
+parameter_list|)
+block|{
+name|description
+operator|=
+name|d
+expr_stmt|;
 block|}
 block|}
 DECL|field|repos
@@ -586,75 +605,6 @@ argument_list|(
 name|names
 argument_list|)
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getProjectDescription (Project.NameKey name)
-specifier|public
-specifier|synchronized
-name|String
-name|getProjectDescription
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|name
-parameter_list|)
-throws|throws
-name|RepositoryNotFoundException
-block|{
-return|return
-name|get
-argument_list|(
-name|name
-argument_list|)
-operator|.
-name|getDescription
-argument_list|()
-operator|.
-name|desc
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|setProjectDescription (Project.NameKey name, String description)
-specifier|public
-specifier|synchronized
-name|void
-name|setProjectDescription
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|name
-parameter_list|,
-name|String
-name|description
-parameter_list|)
-block|{
-try|try
-block|{
-name|get
-argument_list|(
-name|name
-argument_list|)
-operator|.
-name|getDescription
-argument_list|()
-operator|.
-name|desc
-operator|=
-name|description
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RepositoryNotFoundException
-name|e
-parameter_list|)
-block|{
-comment|// Ignore.
-block|}
 block|}
 DECL|method|deleteRepository (Project.NameKey name)
 specifier|public
