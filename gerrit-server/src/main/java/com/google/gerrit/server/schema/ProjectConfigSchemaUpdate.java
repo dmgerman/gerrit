@@ -636,6 +636,16 @@ argument_list|)
 throw|;
 block|}
 block|}
+DECL|method|isUpdated ()
+specifier|public
+name|boolean
+name|isUpdated
+parameter_list|()
+block|{
+return|return
+name|updated
+return|;
+block|}
 block|}
 end_class
 
