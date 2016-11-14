@@ -334,6 +334,20 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|Sandboxed
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
 name|TestProjectInput
 import|;
 end_import
@@ -1041,6 +1055,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Sandboxed
 DECL|class|AbstractSubmit
 specifier|public
 specifier|abstract
@@ -1600,6 +1616,11 @@ init|=
 literal|"test-topic"
 decl_stmt|;
 comment|// Create test project
+name|String
+name|projectName
+init|=
+literal|"project-a"
+decl_stmt|;
 name|TestRepository
 argument_list|<
 name|?
@@ -1608,12 +1629,31 @@ name|repoA
 init|=
 name|createProjectWithPush
 argument_list|(
-literal|"project-a"
+name|projectName
 argument_list|,
 literal|null
 argument_list|,
 name|getSubmitType
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|RevCommit
+name|initialHead
+init|=
+name|getRemoteHead
+argument_list|(
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
+name|name
+argument_list|(
+name|projectName
+argument_list|)
+argument_list|)
+argument_list|,
+literal|"master"
 argument_list|)
 decl_stmt|;
 comment|// Create the dev branch on the test project
@@ -1624,6 +1664,15 @@ operator|new
 name|BranchInput
 argument_list|()
 decl_stmt|;
+name|in
+operator|.
+name|revision
+operator|=
+name|initialHead
+operator|.
+name|name
+argument_list|()
+expr_stmt|;
 name|gApi
 operator|.
 name|projects
@@ -1633,7 +1682,7 @@ name|name
 argument_list|(
 name|name
 argument_list|(
-literal|"project-a"
+name|projectName
 argument_list|)
 argument_list|)
 operator|.
@@ -1647,16 +1696,6 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
-name|RevCommit
-name|initialHead
-init|=
-name|getRemoteHead
-argument_list|(
-name|project
-argument_list|,
-literal|"master"
-argument_list|)
-decl_stmt|;
 comment|// Create changes on master
 name|PushOneCommit
 operator|.
