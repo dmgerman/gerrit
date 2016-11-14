@@ -4528,6 +4528,8 @@ argument_list|(
 name|out
 argument_list|)
 expr_stmt|;
+comment|// This block must come after the ChangeInfo is mostly populated, since
+comment|// it will be passed to ActionVisitors as-is.
 if|if
 condition|(
 name|needRevisions
@@ -4544,6 +4546,8 @@ argument_list|,
 name|cd
 argument_list|,
 name|src
+argument_list|,
+name|out
 argument_list|)
 expr_stmt|;
 if|if
@@ -7519,7 +7523,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|revisions (ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map)
+DECL|method|revisions (ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map, ChangeInfo changeInfo)
 specifier|private
 name|Map
 argument_list|<
@@ -7544,6 +7548,9 @@ argument_list|,
 name|PatchSet
 argument_list|>
 name|map
+parameter_list|,
+name|ChangeInfo
+name|changeInfo
 parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
@@ -7650,6 +7657,8 @@ argument_list|,
 name|repo
 argument_list|,
 literal|false
+argument_list|,
+name|changeInfo
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7911,6 +7920,8 @@ argument_list|,
 name|repo
 argument_list|,
 literal|true
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|accountLoader
@@ -7923,7 +7934,7 @@ name|rev
 return|;
 block|}
 block|}
-DECL|method|toRevisionInfo (ChangeControl ctl, ChangeData cd, PatchSet in, @Nullable Repository repo, boolean fillCommit)
+DECL|method|toRevisionInfo (ChangeControl ctl, ChangeData cd, PatchSet in, @Nullable Repository repo, boolean fillCommit, @Nullable ChangeInfo changeInfo)
 specifier|private
 name|RevisionInfo
 name|toRevisionInfo
@@ -7944,6 +7955,11 @@ name|repo
 parameter_list|,
 name|boolean
 name|fillCommit
+parameter_list|,
+annotation|@
+name|Nullable
+name|ChangeInfo
+name|changeInfo
 parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
@@ -8326,6 +8342,8 @@ name|actionJson
 operator|.
 name|addRevisionActions
 argument_list|(
+name|changeInfo
+argument_list|,
 name|out
 argument_list|,
 operator|new

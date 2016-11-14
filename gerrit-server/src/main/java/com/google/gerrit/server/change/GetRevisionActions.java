@@ -467,6 +467,8 @@ parameter_list|(
 name|RevisionResource
 name|rsrc
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 name|Response

@@ -3143,6 +3143,8 @@ parameter_list|()
 throws|throws
 name|RestApiException
 block|{
+try|try
+block|{
 return|return
 name|revisionActions
 operator|.
@@ -3154,6 +3156,23 @@ operator|.
 name|value
 argument_list|()
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RestApiException
+argument_list|(
+literal|"Cannot get actions"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override

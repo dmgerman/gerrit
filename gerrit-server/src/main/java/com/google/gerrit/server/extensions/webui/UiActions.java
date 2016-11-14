@@ -322,7 +322,6 @@ operator|::
 name|isEnabled
 return|;
 block|}
-DECL|method|from ( RestCollection<?, R> collection, R resource, Provider<CurrentUser> userProvider)
 specifier|public
 specifier|static
 parameter_list|<
@@ -330,12 +329,13 @@ name|R
 extends|extends
 name|RestResource
 parameter_list|>
-name|Iterable
+name|FluentIterable
 argument_list|<
 name|UiAction
 operator|.
 name|Description
 argument_list|>
+DECL|method|from ( RestCollection<?, R> collection, R resource, Provider<CurrentUser> userProvider)
 name|from
 parameter_list|(
 name|RestCollection
@@ -370,7 +370,6 @@ name|userProvider
 argument_list|)
 return|;
 block|}
-DECL|method|from ( DynamicMap<RestView<R>> views, final R resource, final Provider<CurrentUser> userProvider)
 specifier|public
 specifier|static
 parameter_list|<
@@ -378,12 +377,13 @@ name|R
 extends|extends
 name|RestResource
 parameter_list|>
-name|Iterable
+name|FluentIterable
 argument_list|<
 name|UiAction
 operator|.
 name|Description
 argument_list|>
+DECL|method|from ( DynamicMap<RestView<R>> views, R resource, Provider<CurrentUser> userProvider)
 name|from
 parameter_list|(
 name|DynamicMap
@@ -395,11 +395,9 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-specifier|final
 name|R
 name|resource
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|CurrentUser
