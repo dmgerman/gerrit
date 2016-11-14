@@ -478,14 +478,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|CHANGES_PREFIX
-specifier|static
-specifier|final
-name|String
-name|CHANGES_PREFIX
-init|=
-literal|"changes_"
-decl_stmt|;
 DECL|class|Version
 specifier|private
 specifier|static
