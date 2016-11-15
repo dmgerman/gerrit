@@ -100,8 +100,22 @@ specifier|final
 name|boolean
 name|win32
 init|=
-name|computeWin32
-argument_list|()
+name|compute
+argument_list|(
+literal|"windows"
+argument_list|)
+decl_stmt|;
+DECL|field|mac
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+name|mac
+init|=
+name|compute
+argument_list|(
+literal|"mac"
+argument_list|)
 decl_stmt|;
 comment|/** @return true if this JVM is running on a Windows platform. */
 DECL|method|isWin32 ()
@@ -115,12 +129,26 @@ return|return
 name|win32
 return|;
 block|}
-DECL|method|computeWin32 ()
+DECL|method|isMac ()
+specifier|public
+specifier|static
+name|boolean
+name|isMac
+parameter_list|()
+block|{
+return|return
+name|mac
+return|;
+block|}
+DECL|method|compute (String platform)
 specifier|private
 specifier|static
 name|boolean
-name|computeWin32
-parameter_list|()
+name|compute
+parameter_list|(
+name|String
+name|platform
+parameter_list|)
 block|{
 specifier|final
 name|String
@@ -168,7 +196,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-literal|"windows"
+name|platform
 argument_list|)
 return|;
 block|}
