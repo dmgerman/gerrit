@@ -90,6 +90,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|ImplementedBy
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -147,6 +159,15 @@ comment|/**  * Manages Git repositories for the Gerrit server process.  *<p>  * 
 end_comment
 
 begin_interface
+annotation|@
+name|ImplementedBy
+argument_list|(
+name|value
+operator|=
+name|LocalDiskRepositoryManager
+operator|.
+name|class
+argument_list|)
 DECL|interface|GitRepositoryManager
 specifier|public
 interface|interface
