@@ -258,32 +258,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -530,9 +504,7 @@ specifier|final
 name|JestHttpClient
 name|client
 decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|AbstractElasticIndex (@erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, @Assisted Schema<V> schema)
+DECL|method|AbstractElasticIndex (@erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Schema<V> schema)
 name|AbstractElasticIndex
 parameter_list|(
 annotation|@
@@ -546,8 +518,6 @@ parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
-annotation|@
-name|Assisted
 name|Schema
 argument_list|<
 name|V
