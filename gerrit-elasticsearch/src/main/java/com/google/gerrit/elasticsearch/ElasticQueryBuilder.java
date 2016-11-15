@@ -316,13 +316,11 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|joda
+name|java
 operator|.
 name|time
 operator|.
-name|DateTime
+name|Instant
 import|;
 end_import
 
@@ -1012,8 +1010,9 @@ argument_list|)
 operator|.
 name|gt
 argument_list|(
-operator|new
-name|DateTime
+name|Instant
+operator|.
+name|ofEpochMilli
 argument_list|(
 name|r
 operator|.
@@ -1097,8 +1096,9 @@ argument_list|)
 operator|.
 name|gte
 argument_list|(
-operator|new
-name|DateTime
+name|Instant
+operator|.
+name|ofEpochMilli
 argument_list|(
 name|r
 operator|.
@@ -1127,8 +1127,9 @@ argument_list|)
 operator|.
 name|gte
 argument_list|(
-operator|new
-name|DateTime
+name|Instant
+operator|.
+name|ofEpochMilli
 argument_list|(
 name|r
 operator|.
@@ -1142,8 +1143,9 @@ argument_list|)
 operator|.
 name|lte
 argument_list|(
-operator|new
-name|DateTime
+name|Instant
+operator|.
+name|ofEpochMilli
 argument_list|(
 name|r
 operator|.
