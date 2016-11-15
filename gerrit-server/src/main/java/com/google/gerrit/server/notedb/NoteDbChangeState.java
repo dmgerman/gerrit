@@ -475,7 +475,6 @@ name|char
 name|code
 decl_stmt|;
 DECL|method|PrimaryStorage (char code)
-specifier|private
 name|PrimaryStorage
 parameter_list|(
 name|char
