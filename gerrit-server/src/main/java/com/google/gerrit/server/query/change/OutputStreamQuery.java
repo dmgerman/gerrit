@@ -612,6 +612,15 @@ specifier|public
 class|class
 name|OutputStreamQuery
 block|{
+DECL|field|TIMESTAMP_FORMAT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TIMESTAMP_FORMAT
+init|=
+literal|"yyyy-MM-dd HH:mm:ss zzz"
+decl_stmt|;
 DECL|field|log
 specifier|private
 specifier|static
@@ -639,7 +648,7 @@ name|DateTimeFormat
 operator|.
 name|forPattern
 argument_list|(
-literal|"yyyy-MM-dd HH:mm:ss zzz"
+name|TIMESTAMP_FORMAT
 argument_list|)
 decl_stmt|;
 DECL|enum|OutputFormat
