@@ -2400,6 +2400,20 @@ if|if
 condition|(
 name|comment
 operator|.
+name|lineNbr
+operator|==
+literal|0
+condition|)
+block|{
+comment|// file level comment has no line
+return|return
+name|lines
+return|;
+block|}
+if|if
+condition|(
+name|comment
+operator|.
 name|range
 operator|==
 literal|null
