@@ -2370,6 +2370,59 @@ name|canForceEditTopicName
 argument_list|()
 return|;
 block|}
+comment|/** Can this user edit the description? */
+DECL|method|canEditDescription ()
+specifier|public
+name|boolean
+name|canEditDescription
+parameter_list|()
+block|{
+if|if
+condition|(
+name|getChange
+argument_list|()
+operator|.
+name|getStatus
+argument_list|()
+operator|.
+name|isOpen
+argument_list|()
+condition|)
+block|{
+return|return
+name|isOwner
+argument_list|()
+comment|// owner (aka creator) of the change can edit desc
+operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+comment|// branch owner can edit desc
+operator|||
+name|getProjectControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+comment|// project owner can edit desc
+operator|||
+name|getUser
+argument_list|()
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
+argument_list|()
+comment|// site administers are god
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
 DECL|method|canEditAssignee ()
 specifier|public
 name|boolean
