@@ -314,6 +314,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|LocalDiskRepositoryManager
 import|;
 end_import
@@ -401,6 +417,18 @@ operator|.
 name|inject
 operator|.
 name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|ProvisionException
 import|;
 end_import
 
@@ -810,10 +838,10 @@ name|_env
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitwebServlet (LocalDiskRepositoryManager repoManager, ProjectControl.Factory projectControl, Provider<AnonymousUser> anonymousUserProvider, Provider<CurrentUser> userProvider, SitePaths site, @GerritServerConfig Config cfg, SshInfo sshInfo, GitwebConfig gitwebConfig, GitwebCgiConfig gitwebCgiConfig)
+DECL|method|GitwebServlet (GitRepositoryManager repoManager, ProjectControl.Factory projectControl, Provider<AnonymousUser> anonymousUserProvider, Provider<CurrentUser> userProvider, SitePaths site, @GerritServerConfig Config cfg, SshInfo sshInfo, GitwebConfig gitwebConfig, GitwebCgiConfig gitwebCgiConfig)
 name|GitwebServlet
 parameter_list|(
-name|LocalDiskRepositoryManager
+name|GitRepositoryManager
 name|repoManager
 parameter_list|,
 name|ProjectControl
@@ -853,10 +881,31 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+operator|!
+operator|(
+name|repoManager
+operator|instanceof
+name|LocalDiskRepositoryManager
+operator|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|ProvisionException
+argument_list|(
+literal|"Gitweb can only be used with LocalDiskRepositoryManager"
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|repoManager
 operator|=
+operator|(
+name|LocalDiskRepositoryManager
+operator|)
 name|repoManager
 expr_stmt|;
 name|this
