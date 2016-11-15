@@ -396,22 +396,6 @@ name|server
 operator|.
 name|git
 operator|.
-name|GitRepositoryManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|MetaDataUpdate
 import|;
 end_import
@@ -638,12 +622,6 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|gitMgr
-specifier|private
-specifier|final
-name|GitRepositoryManager
-name|gitMgr
-decl_stmt|;
 DECL|field|projectStateFactory
 specifier|private
 specifier|final
@@ -702,7 +680,7 @@ name|user
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutConfig (@nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GitRepositoryManager gitMgr, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> user)
+DECL|method|PutConfig (@nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> user)
 name|PutConfig
 parameter_list|(
 annotation|@
@@ -720,9 +698,6 @@ name|metaDataUpdateFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|GitRepositoryManager
-name|gitMgr
 parameter_list|,
 name|ProjectState
 operator|.
@@ -777,12 +752,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|gitMgr
-operator|=
-name|gitMgr
 expr_stmt|;
 name|this
 operator|.
@@ -1241,12 +1210,13 @@ name|getProject
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|gitMgr
+name|md
 operator|.
-name|setProjectDescription
+name|getRepository
+argument_list|()
+operator|.
+name|setGitwebDescription
 argument_list|(
-name|projectName
-argument_list|,
 name|p
 operator|.
 name|getDescription

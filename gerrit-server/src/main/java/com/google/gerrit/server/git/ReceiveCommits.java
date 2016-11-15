@@ -2928,12 +2928,6 @@ specifier|final
 name|PatchSetUtil
 name|psUtil
 decl_stmt|;
-DECL|field|repoManager
-specifier|private
-specifier|final
-name|GitRepositoryManager
-name|repoManager
-decl_stmt|;
 DECL|field|projectCache
 specifier|private
 specifier|final
@@ -3320,7 +3314,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, AccountResolver accountResolver, CmdLineParser.Factory optionParserFactory, GitReferenceUpdated gitRefUpdated, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ProjectCache projectCache, GitRepositoryManager repoManager, TagCache tagCache, AccountCache accountCache, @Nullable SearchingChangeCacheImpl changeCache, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, RefOperationValidators.Factory refValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, SubmoduleOp.Factory subOpFactory, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, ChangeIndexer indexer, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory, MergedByPushOp.Factory mergedByPushOpFactory)
+DECL|method|ReceiveCommits (ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, AccountResolver accountResolver, CmdLineParser.Factory optionParserFactory, GitReferenceUpdated gitRefUpdated, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ProjectCache projectCache, TagCache tagCache, AccountCache accountCache, @Nullable SearchingChangeCacheImpl changeCache, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, RefOperationValidators.Factory refValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, SubmoduleOp.Factory subOpFactory, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, ChangeIndexer indexer, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory, MergedByPushOp.Factory mergedByPushOpFactory)
 name|ReceiveCommits
 parameter_list|(
 name|ReviewDb
@@ -3359,9 +3353,6 @@ name|psUtil
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|GitRepositoryManager
-name|repoManager
 parameter_list|,
 name|TagCache
 name|tagCache
@@ -3557,12 +3548,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|repoManager
-operator|=
-name|repoManager
 expr_stmt|;
 name|this
 operator|.
@@ -5026,16 +5011,12 @@ name|getNameKey
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|repoManager
+try|try
+block|{
+name|repo
 operator|.
-name|setProjectDescription
+name|setGitwebDescription
 argument_list|(
-name|project
-operator|.
-name|getNameKey
-argument_list|()
-argument_list|,
-comment|//
 name|ps
 operator|.
 name|getProject
@@ -5045,6 +5026,28 @@ name|getDescription
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"cannot update description of "
+operator|+
+name|project
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
