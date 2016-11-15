@@ -385,6 +385,8 @@ literal|false
 decl_stmt|;
 synchronized|synchronized
 init|(
+name|MultiProgressMonitor
+operator|.
 name|this
 init|)
 block|{
@@ -507,14 +509,21 @@ return|;
 block|}
 DECL|method|getCount ()
 specifier|public
-specifier|synchronized
 name|int
 name|getCount
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|MultiProgressMonitor
+operator|.
+name|this
+init|)
+block|{
 return|return
 name|count
 return|;
+block|}
 block|}
 block|}
 DECL|field|out

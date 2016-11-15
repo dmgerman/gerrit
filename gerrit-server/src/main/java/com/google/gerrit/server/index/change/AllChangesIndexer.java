@@ -1709,14 +1709,22 @@ end_decl_stmt
 
 begin_decl_stmt
 name|int
-name|nTotal
+name|nDone
 init|=
-name|nFailed
-operator|+
 name|doneTask
 operator|.
 name|getCount
 argument_list|()
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+name|int
+name|nTotal
+init|=
+name|nFailed
+operator|+
+name|nDone
 decl_stmt|;
 end_decl_stmt
 
@@ -1785,15 +1793,9 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|doneTask
-operator|.
-name|getCount
-argument_list|()
+name|nDone
 argument_list|,
-name|failedTask
-operator|.
-name|getCount
-argument_list|()
+name|nFailed
 argument_list|)
 return|;
 end_return
