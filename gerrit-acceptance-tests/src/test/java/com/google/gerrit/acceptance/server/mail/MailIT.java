@@ -303,8 +303,8 @@ name|AbstractDaemonTest
 block|{
 DECL|field|RECEIVEEMAIL
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|RECEIVEEMAIL
 init|=
@@ -312,8 +312,8 @@ literal|"receiveemail"
 decl_stmt|;
 DECL|field|HOST
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|HOST
 init|=
@@ -321,8 +321,8 @@ literal|"localhost"
 decl_stmt|;
 DECL|field|USERNAME
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|USERNAME
 init|=
@@ -330,8 +330,8 @@ literal|"user@domain.com"
 decl_stmt|;
 DECL|field|PASSWORD
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PASSWORD
 init|=
