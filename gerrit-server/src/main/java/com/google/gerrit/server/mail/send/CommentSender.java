@@ -1042,6 +1042,15 @@ name|int
 name|lines
 parameter_list|)
 block|{
+try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|getRepository
+argument_list|()
+init|)
+block|{
 name|StringBuilder
 name|cmts
 init|=
@@ -1055,7 +1064,9 @@ name|FileCommentGroup
 name|group
 range|:
 name|getGroupedInlineComments
-argument_list|()
+argument_list|(
+name|repo
+argument_list|)
 control|)
 block|{
 name|String
@@ -1140,8 +1151,9 @@ name|toString
 argument_list|()
 return|;
 block|}
+block|}
 comment|/**    * @return a list of FileCommentGroup objects representing the inline comments    * grouped by the file.    */
-DECL|method|getGroupedInlineComments ()
+DECL|method|getGroupedInlineComments ( Repository repo)
 specifier|private
 name|List
 argument_list|<
@@ -1150,7 +1162,10 @@ operator|.
 name|FileCommentGroup
 argument_list|>
 name|getGroupedInlineComments
-parameter_list|()
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|)
 block|{
 name|List
 argument_list|<
@@ -1165,15 +1180,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|Repository
-name|repo
-init|=
-name|getRepository
-argument_list|()
-init|)
-block|{
 comment|// Get the patch list:
 name|PatchList
 name|patchList
@@ -1389,7 +1395,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|Collections
@@ -2520,7 +2525,7 @@ name|msg
 return|;
 block|}
 comment|/**    * @return grouped inline comment data mapped to data structures that are    * suitable for passing into Soy.    */
-DECL|method|getCommentGroupsTemplateData ()
+DECL|method|getCommentGroupsTemplateData ( Repository repo)
 specifier|private
 name|List
 argument_list|<
@@ -2532,7 +2537,10 @@ name|Object
 argument_list|>
 argument_list|>
 name|getCommentGroupsTemplateData
-parameter_list|()
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|)
 block|{
 name|List
 argument_list|<
@@ -2558,7 +2566,9 @@ name|FileCommentGroup
 name|group
 range|:
 name|getGroupedInlineComments
-argument_list|()
+argument_list|(
+name|repo
+argument_list|)
 control|)
 block|{
 name|Map
@@ -3024,6 +3034,15 @@ operator|.
 name|setupSoyContext
 argument_list|()
 expr_stmt|;
+try|try
+init|(
+name|Repository
+name|repo
+init|=
+name|getRepository
+argument_list|()
+init|)
+block|{
 name|soyContext
 operator|.
 name|put
@@ -3031,9 +3050,12 @@ argument_list|(
 literal|"commentFiles"
 argument_list|,
 name|getCommentGroupsTemplateData
-argument_list|()
+argument_list|(
+name|repo
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getLine (PatchFile fileInfo, short side, int lineNbr)
 specifier|private
