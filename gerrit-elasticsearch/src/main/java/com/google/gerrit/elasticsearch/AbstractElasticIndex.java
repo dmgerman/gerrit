@@ -74,22 +74,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|MoreObjects
-operator|.
-name|firstNonNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Preconditions
 operator|.
 name|checkState
@@ -456,15 +440,6 @@ argument_list|,
 name|V
 argument_list|>
 block|{
-DECL|field|DEFAULT_INDEX_NAME
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|DEFAULT_INDEX_NAME
-init|=
-literal|"gerrit"
-decl_stmt|;
 DECL|field|schema
 specifier|private
 specifier|final
@@ -504,7 +479,7 @@ specifier|final
 name|JestHttpClient
 name|client
 decl_stmt|;
-DECL|method|AbstractElasticIndex (@erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Schema<V> schema)
+DECL|method|AbstractElasticIndex (@erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Schema<V> schema, String indexName)
 name|AbstractElasticIndex
 parameter_list|(
 annotation|@
@@ -523,6 +498,9 @@ argument_list|<
 name|V
 argument_list|>
 name|schema
+parameter_list|,
+name|String
+name|indexName
 parameter_list|)
 block|{
 name|this
@@ -577,7 +555,15 @@ name|this
 operator|.
 name|indexName
 operator|=
-name|firstNonNull
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s%s%04d"
+argument_list|,
+name|Strings
+operator|.
+name|nullToEmpty
 argument_list|(
 name|cfg
 operator|.
@@ -587,10 +573,16 @@ literal|"index"
 argument_list|,
 literal|null
 argument_list|,
-literal|"name"
+literal|"prefix"
+argument_list|)
 argument_list|)
 argument_list|,
-name|DEFAULT_INDEX_NAME
+name|indexName
+argument_list|,
+name|schema
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// By default Elasticsearch has a 1s delay before changes are available in
