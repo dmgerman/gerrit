@@ -163,7 +163,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
-name|buck
+name|bazel
 init|=
 name|firstNonNull
 argument_list|(
@@ -183,7 +183,7 @@ init|=
 operator|new
 name|ProcessBuilder
 argument_list|(
-name|buck
+name|bazel
 argument_list|,
 literal|"build"
 argument_list|,
