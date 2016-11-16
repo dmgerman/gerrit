@@ -82,7 +82,7 @@ name|mail
 operator|.
 name|MetadataName
 operator|.
-name|toHeaderWithDelimiter
+name|toFooterWithDelimiter
 import|;
 end_import
 
@@ -100,7 +100,7 @@ name|mail
 operator|.
 name|MetadataName
 operator|.
-name|toFooterWithDelimiter
+name|toHeaderWithDelimiter
 import|;
 end_import
 
