@@ -276,6 +276,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -1165,6 +1181,33 @@ argument_list|,
 name|ChangeQueryBuilder
 argument_list|>
 block|{   }
+comment|/**    * Converts a operand (operator value) passed to an operator into a    *  {@link Predicate}.    *    * Register a ChangeOperandFactory in a config Module like this (note, for    * an example we are using the has predicate, when other predicate plugin    * operands are created they can be registered in a similar manner):    *    *   bind(ChangeHasOperandFactory.class)    *      .annotatedWith(Exports.named("your has operand"))    *      .to(YourClass.class);    *    */
+DECL|interface|ChangeOperandFactory
+specifier|private
+interface|interface
+name|ChangeOperandFactory
+block|{
+DECL|method|create (ChangeQueryBuilder builder)
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|create
+parameter_list|(
+name|ChangeQueryBuilder
+name|builder
+parameter_list|)
+throws|throws
+name|QueryParseException
+function_decl|;
+block|}
+DECL|interface|ChangeHasOperandFactory
+specifier|public
+interface|interface
+name|ChangeHasOperandFactory
+extends|extends
+name|ChangeOperandFactory
+block|{   }
 DECL|field|PAT_LEGACY_ID
 specifier|private
 specifier|static
@@ -1720,6 +1763,14 @@ name|ChangeOperatorFactory
 argument_list|>
 name|opFactories
 decl_stmt|;
+DECL|field|hasOperands
+specifier|final
+name|DynamicMap
+argument_list|<
+name|ChangeHasOperandFactory
+argument_list|>
+name|hasOperands
+decl_stmt|;
 DECL|field|userFactory
 specifier|final
 name|IdentifiedUser
@@ -1871,7 +1922,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg)
+DECL|method|Arguments (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -1895,6 +1946,12 @@ argument_list|<
 name|ChangeOperatorFactory
 argument_list|>
 name|opFactories
+parameter_list|,
+name|DynamicMap
+argument_list|<
+name|ChangeHasOperandFactory
+argument_list|>
+name|hasOperands
 parameter_list|,
 name|IdentifiedUser
 operator|.
@@ -2005,6 +2062,8 @@ name|rewriter
 argument_list|,
 name|opFactories
 argument_list|,
+name|hasOperands
+argument_list|,
 name|userFactory
 argument_list|,
 name|self
@@ -2081,7 +2140,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2105,6 +2164,12 @@ argument_list|<
 name|ChangeOperatorFactory
 argument_list|>
 name|opFactories
+parameter_list|,
+name|DynamicMap
+argument_list|<
+name|ChangeHasOperandFactory
+argument_list|>
+name|hasOperands
 parameter_list|,
 name|IdentifiedUser
 operator|.
@@ -2377,6 +2442,12 @@ name|allowsDrafts
 operator|=
 name|allowsDrafts
 expr_stmt|;
+name|this
+operator|.
+name|hasOperands
+operator|=
+name|hasOperands
+expr_stmt|;
 block|}
 DECL|method|asUser (CurrentUser otherUser)
 name|Arguments
@@ -2397,6 +2468,8 @@ argument_list|,
 name|rewriter
 argument_list|,
 name|opFactories
+argument_list|,
+name|hasOperands
 argument_list|,
 name|userFactory
 argument_list|,
@@ -3226,6 +3299,64 @@ name|self
 argument_list|()
 argument_list|)
 return|;
+block|}
+comment|// for plugins the value will be operandName_pluginName
+name|String
+index|[]
+name|names
+init|=
+name|value
+operator|.
+name|split
+argument_list|(
+literal|"_"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|names
+operator|.
+name|length
+operator|==
+literal|2
+condition|)
+block|{
+name|ChangeHasOperandFactory
+name|op
+init|=
+name|args
+operator|.
+name|hasOperands
+operator|.
+name|get
+argument_list|(
+name|names
+index|[
+literal|1
+index|]
+argument_list|,
+name|names
+index|[
+literal|0
+index|]
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|op
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|op
+operator|.
+name|create
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
 block|}
 throw|throw
 operator|new
