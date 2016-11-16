@@ -698,10 +698,6 @@ name|baseDir
 argument_list|(
 name|base
 argument_list|)
-comment|// XXX(fishywang): ideally we should just output to a string and add the
-comment|// content into zip. But asciidoctor will actually ignore all attributes
-comment|// if not output to a file. So we *have* to output to a file then read
-comment|// the content of the file into zip.
 operator|.
 name|toFile
 argument_list|(
