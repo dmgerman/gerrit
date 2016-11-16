@@ -1251,6 +1251,14 @@ name|mapping
 expr_stmt|;
 block|}
 block|}
+DECL|field|CHANGES_PREFIX
+specifier|static
+specifier|final
+name|String
+name|CHANGES_PREFIX
+init|=
+literal|"changes_"
+decl_stmt|;
 DECL|field|OPEN_CHANGES
 specifier|static
 specifier|final
@@ -1347,6 +1355,8 @@ argument_list|,
 name|sitePaths
 argument_list|,
 name|schema
+argument_list|,
+name|CHANGES_PREFIX
 argument_list|)
 expr_stmt|;
 name|this
