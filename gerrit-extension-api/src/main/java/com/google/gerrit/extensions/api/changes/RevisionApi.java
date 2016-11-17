@@ -287,6 +287,23 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|description ()
+name|String
+name|description
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|description (String description)
+name|void
+name|description
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|review (ReviewInput in)
 name|void
 name|review
@@ -1341,6 +1358,41 @@ DECL|method|getMergeList ()
 specifier|public
 name|MergeListRequest
 name|getMergeList
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|description (String description)
+specifier|public
+name|void
+name|description
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|description ()
+specifier|public
+name|String
+name|description
 parameter_list|()
 throws|throws
 name|RestApiException
