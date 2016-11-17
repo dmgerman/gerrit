@@ -665,11 +665,6 @@ name|String
 name|clippy
 parameter_list|()
 function_decl|;
-DECL|method|parentWebLink ()
-name|String
-name|parentWebLink
-parameter_list|()
-function_decl|;
 block|}
 DECL|field|style
 annotation|@
@@ -718,12 +713,6 @@ annotation|@
 name|UiField
 name|FlowPanel
 name|parentCommits
-decl_stmt|;
-DECL|field|parentWebLinks
-annotation|@
-name|UiField
-name|FlowPanel
-name|parentWebLinks
 decl_stmt|;
 DECL|field|authorNameEmail
 annotation|@
