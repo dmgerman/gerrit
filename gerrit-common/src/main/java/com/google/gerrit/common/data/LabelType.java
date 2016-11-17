@@ -164,6 +164,15 @@ specifier|public
 class|class
 name|LabelType
 block|{
+DECL|field|DEF_ALLOW_POST_SUBMIT
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|DEF_ALLOW_POST_SUBMIT
+init|=
+literal|true
+decl_stmt|;
 DECL|field|DEF_CAN_OVERRIDE
 specifier|public
 specifier|static
@@ -713,6 +722,11 @@ specifier|protected
 name|boolean
 name|copyAllScoresIfNoChange
 decl_stmt|;
+DECL|field|allowPostSubmit
+specifier|protected
+name|boolean
+name|allowPostSubmit
+decl_stmt|;
 DECL|field|defaultValue
 specifier|protected
 name|short
@@ -942,6 +956,11 @@ argument_list|(
 name|DEF_COPY_MIN_SCORE
 argument_list|)
 expr_stmt|;
+name|setAllowPostSubmit
+argument_list|(
+name|DEF_ALLOW_POST_SUBMIT
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getName ()
 specifier|public
@@ -1040,6 +1059,32 @@ operator|.
 name|canOverride
 operator|=
 name|canOverride
+expr_stmt|;
+block|}
+DECL|method|allowPostSubmit ()
+specifier|public
+name|boolean
+name|allowPostSubmit
+parameter_list|()
+block|{
+return|return
+name|allowPostSubmit
+return|;
+block|}
+DECL|method|setAllowPostSubmit (boolean allowPostSubmit)
+specifier|public
+name|void
+name|setAllowPostSubmit
+parameter_list|(
+name|boolean
+name|allowPostSubmit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|allowPostSubmit
+operator|=
+name|allowPostSubmit
 expr_stmt|;
 block|}
 DECL|method|setRefPatterns (List<String> refPatterns)
