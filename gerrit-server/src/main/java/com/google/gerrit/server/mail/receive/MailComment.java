@@ -123,6 +123,53 @@ DECL|field|message
 name|String
 name|message
 decl_stmt|;
+DECL|method|MailComment ()
+specifier|public
+name|MailComment
+parameter_list|()
+block|{ }
+DECL|method|MailComment (String message, String fileName, Comment inReplyTo, CommentType type)
+specifier|public
+name|MailComment
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|String
+name|fileName
+parameter_list|,
+name|Comment
+name|inReplyTo
+parameter_list|,
+name|CommentType
+name|type
+parameter_list|)
+block|{
+name|this
+operator|.
+name|message
+operator|=
+name|message
+expr_stmt|;
+name|this
+operator|.
+name|fileName
+operator|=
+name|fileName
+expr_stmt|;
+name|this
+operator|.
+name|inReplyTo
+operator|=
+name|inReplyTo
+expr_stmt|;
+name|this
+operator|.
+name|type
+operator|=
+name|type
+expr_stmt|;
+block|}
 block|}
 end_class
 

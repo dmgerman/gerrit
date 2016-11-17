@@ -76,6 +76,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Iterators
@@ -114,6 +128,40 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|jsoup
+operator|.
+name|Jsoup
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jsoup
+operator|.
+name|nodes
+operator|.
+name|Document
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|jsoup
+operator|.
+name|nodes
+operator|.
+name|Element
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -143,17 +191,17 @@ import|;
 end_import
 
 begin_comment
-comment|/** TextParser provides parsing functionality for plaintext email.  */
+comment|/** HTMLParser provides parsing functionality for html email. */
 end_comment
 
 begin_class
-DECL|class|TextParser
+DECL|class|HtmlParser
 specifier|public
 class|class
-name|TextParser
+name|HtmlParser
 block|{
-comment|/**    * Parses comments from plaintext email.    *    * @param email MailMessage as received from the email service.    * @param comments Comments previously persisted on the change that caused the    *                 original notification email to be sent out. Ordering must    *                 be the same as in the outbound email    * @param changeUrl Canonical change url that points to the change on this    *                  Gerrit instance.    *                  Example: https://go-review.googlesource.com/#/c/91570    * @return List of MailComments parsed from the plaintext part of the email.    */
-DECL|method|parse ( MailMessage email, Collection<Comment> comments, String changeUrl)
+comment|/**    * Parses comments from html email.    *    * @param email MailMessage as received from the email service.    * @param comments A specific set of comments as sent out in the original    *                 notification email. Comments are expected to be in the same    *                 order as they were sent out to in the email    * @param changeUrl Canonical change URL that points to the change on this    *                  Gerrit instance.    *                  Example: https://go-review.googlesource.com/#/c/91570    * @return List of MailComments parsed from the html part of the email.    */
+DECL|method|parse (MailMessage email, Collection<Comment> comments, String changeUrl)
 specifier|public
 specifier|static
 name|List
@@ -175,26 +223,13 @@ name|String
 name|changeUrl
 parameter_list|)
 block|{
-name|String
-name|body
-init|=
-name|email
-operator|.
-name|textContent
-argument_list|()
-decl_stmt|;
-comment|// Replace CR-LF by \n
-name|body
-operator|=
-name|body
-operator|.
-name|replace
-argument_list|(
-literal|"\r\n"
-argument_list|,
-literal|"\n"
-argument_list|)
-expr_stmt|;
+comment|// TODO(hiesel) Add support for Gmail Mobile
+comment|// TODO(hiesel) Add tests for other popular email clients
+comment|// This parser goes though all html elements in the email and checks for
+comment|// matching patterns. It keeps track of the last file and comments it
+comment|// encountered to know in which context a parsed comment belongs.
+comment|// It uses the href attributes of<a> tags to identify comments sent out by
+comment|// Gerrit as these are generally more reliable then the text captions.
 name|List
 argument_list|<
 name|MailComment
@@ -206,55 +241,19 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// Some email clients (like GMail) use>> for enquoting text when there are
-comment|// inline comments that the users typed. These will then be enquoted by a
-comment|// single>. We sanitize this by unifying it into>. Inline comments typed
-comment|// by the user will not be enquoted.
-comment|//
-comment|// Example:
-comment|// Some comment
-comment|//>> Quoted Text
-comment|//>> Quoted Text
-comment|//> A comment typed in the email directly
-name|String
-name|singleQuotePattern
+name|Document
+name|d
 init|=
-literal|"\n> "
-decl_stmt|;
-name|String
-name|doubleQuotePattern
-init|=
-literal|"\n>> "
-decl_stmt|;
-if|if
-condition|(
-name|countOccurrences
-argument_list|(
-name|body
-argument_list|,
-name|doubleQuotePattern
-argument_list|)
-operator|>
-name|countOccurrences
-argument_list|(
-name|body
-argument_list|,
-name|singleQuotePattern
-argument_list|)
-condition|)
-block|{
-name|body
-operator|=
-name|body
+name|Jsoup
 operator|.
-name|replace
+name|parse
 argument_list|(
-name|doubleQuotePattern
-argument_list|,
-name|singleQuotePattern
+name|email
+operator|.
+name|htmlContent
+argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|PeekingIterator
 argument_list|<
 name|Comment
@@ -272,22 +271,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|String
-index|[]
-name|lines
-init|=
-name|body
-operator|.
-name|split
-argument_list|(
-literal|"\n"
-argument_list|)
-decl_stmt|;
-name|MailComment
-name|currentComment
-init|=
-literal|null
-decl_stmt|;
-name|String
 name|lastEncounteredFileName
 init|=
 literal|null
@@ -299,58 +282,80 @@ literal|null
 decl_stmt|;
 for|for
 control|(
-name|String
-name|line
+name|Element
+name|e
 range|:
-name|lines
+name|d
+operator|.
+name|body
+argument_list|()
+operator|.
+name|getAllElements
+argument_list|()
 control|)
 block|{
+name|String
+name|elementName
+init|=
+name|e
+operator|.
+name|tagName
+argument_list|()
+decl_stmt|;
+name|boolean
+name|isInBlockQuote
+init|=
+name|e
+operator|.
+name|parents
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|p
+lambda|->
+name|p
+operator|.
+name|tagName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"blockquote"
+argument_list|)
+argument_list|)
+operator|.
+name|findAny
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|line
+name|elementName
 operator|.
-name|startsWith
+name|equals
 argument_list|(
-literal|"> "
+literal|"a"
 argument_list|)
 condition|)
 block|{
-name|line
-operator|=
-name|line
+name|String
+name|href
+init|=
+name|e
 operator|.
-name|substring
+name|attr
 argument_list|(
-literal|"> "
-operator|.
-name|length
-argument_list|()
+literal|"href"
 argument_list|)
-operator|.
-name|trim
-argument_list|()
-expr_stmt|;
-comment|// This is not a comment, try to advance the file/comment pointers and
-comment|// add previous comment to list if applicable
-if|if
-condition|(
-name|currentComment
-operator|!=
-literal|null
-condition|)
-block|{
-name|parsedComments
-operator|.
-name|add
-argument_list|(
-name|currentComment
-argument_list|)
-expr_stmt|;
-name|currentComment
-operator|=
-literal|null
-expr_stmt|;
-block|}
+decl_stmt|;
+comment|// Check if there is still a next comment that could be contained in
+comment|// this<a> tag
 if|if
 condition|(
 operator|!
@@ -372,7 +377,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|line
+name|href
 operator|.
 name|equals
 argument_list|(
@@ -406,7 +411,11 @@ name|filename
 argument_list|)
 condition|)
 block|{
-comment|// This is the annotation of a file
+comment|// Not a file-level comment, but users could have typed a comment
+comment|// right after this file annotation to create a new file-level
+comment|// comment. If this file has a file-level comment, we have already
+comment|// set lastEncounteredComment to that file-level comment when we
+comment|// encountered the file link and should not reset it now.
 name|lastEncounteredFileName
 operator|=
 name|perspectiveComment
@@ -449,7 +458,7 @@ name|ParserUtil
 operator|.
 name|isCommentUrl
 argument_list|(
-name|line
+name|href
 argument_list|,
 name|changeUrl
 argument_list|,
@@ -457,6 +466,7 @@ name|perspectiveComment
 argument_list|)
 condition|)
 block|{
+comment|// This is a regular inline comment
 name|lastEncounteredComment
 operator|=
 name|perspectiveComment
@@ -468,158 +478,170 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-else|else
-block|{
-comment|// This is a comment. Try to append to previous comment if applicable or
-comment|// create a new comment.
+elseif|else
 if|if
 condition|(
-name|currentComment
-operator|==
-literal|null
+operator|!
+name|isInBlockQuote
+operator|&&
+name|elementName
+operator|.
+name|equals
+argument_list|(
+literal|"div"
+argument_list|)
+operator|&&
+operator|!
+name|e
+operator|.
+name|className
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"gmail"
+argument_list|)
 condition|)
 block|{
-comment|// Start new comment
-name|currentComment
-operator|=
-operator|new
-name|MailComment
-argument_list|()
-expr_stmt|;
-name|currentComment
+comment|// This is a comment typed by the user
+name|String
+name|content
+init|=
+name|e
 operator|.
-name|message
-operator|=
-name|line
-expr_stmt|;
+name|ownText
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|content
+argument_list|)
+condition|)
+block|{
 if|if
 condition|(
 name|lastEncounteredComment
 operator|==
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|lastEncounteredFileName
 operator|==
 literal|null
 condition|)
 block|{
-comment|// Change message
-name|currentComment
-operator|.
-name|type
+comment|// Remove quotation line, email signature and
+comment|// "Sent from my xyz device"
+name|content
 operator|=
+name|ParserUtil
+operator|.
+name|trimQuotationLine
+argument_list|(
+name|content
+argument_list|)
+expr_stmt|;
+comment|// TODO(hiesel) Add more sanitizer
+if|if
+condition|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|content
+argument_list|)
+condition|)
+block|{
+name|parsedComments
+operator|.
+name|add
+argument_list|(
+operator|new
+name|MailComment
+argument_list|(
+name|content
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|,
 name|MailComment
 operator|.
 name|CommentType
 operator|.
 name|CHANGE_MESSAGE
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
-else|else
+block|}
+elseif|else
+if|if
+condition|(
+name|lastEncounteredComment
+operator|==
+literal|null
+condition|)
 block|{
-comment|// File comment not sent in reply to another comment
-name|currentComment
+name|parsedComments
 operator|.
-name|type
-operator|=
+name|add
+argument_list|(
+operator|new
+name|MailComment
+argument_list|(
+name|content
+argument_list|,
+name|lastEncounteredFileName
+argument_list|,
+literal|null
+argument_list|,
 name|MailComment
 operator|.
 name|CommentType
 operator|.
 name|FILE_COMMENT
+argument_list|)
+argument_list|)
 expr_stmt|;
-name|currentComment
-operator|.
-name|fileName
-operator|=
-name|lastEncounteredFileName
-expr_stmt|;
-block|}
 block|}
 else|else
 block|{
-comment|// Comment sent in reply to another comment
-name|currentComment
+name|parsedComments
 operator|.
-name|inReplyTo
-operator|=
+name|add
+argument_list|(
+operator|new
+name|MailComment
+argument_list|(
+name|content
+argument_list|,
+literal|null
+argument_list|,
 name|lastEncounteredComment
-expr_stmt|;
-name|currentComment
-operator|.
-name|type
-operator|=
+argument_list|,
 name|MailComment
 operator|.
 name|CommentType
 operator|.
 name|INLINE_COMMENT
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-comment|// Attach to previous comment
-name|currentComment
-operator|.
-name|message
-operator|+=
-literal|"\n"
-operator|+
-name|line
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-comment|// There is no need to attach the currentComment after this loop as all
-comment|// emails have footers and other enquoted text after the last comment
-comment|// appeared and the last comment will have already been added to the list
-comment|// at this point.
+block|}
 return|return
 name|parsedComments
-return|;
-block|}
-comment|/** Counts the occurrences of pattern in s */
-DECL|method|countOccurrences (String s, String pattern)
-specifier|private
-specifier|static
-name|int
-name|countOccurrences
-parameter_list|(
-name|String
-name|s
-parameter_list|,
-name|String
-name|pattern
-parameter_list|)
-block|{
-return|return
-operator|(
-name|s
-operator|.
-name|length
-argument_list|()
-operator|-
-name|s
-operator|.
-name|replace
-argument_list|(
-name|pattern
-argument_list|,
-literal|""
-argument_list|)
-operator|.
-name|length
-argument_list|()
-operator|)
-operator|/
-name|pattern
-operator|.
-name|length
-argument_list|()
 return|;
 block|}
 block|}
