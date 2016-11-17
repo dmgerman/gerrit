@@ -1600,13 +1600,39 @@ argument_list|)
 expr_stmt|;
 return|return;
 case|case
+name|LOCK_FAILURE
+case|:
+throw|throw
+operator|new
+name|LockFailureException
+argument_list|(
+literal|"Cannot delete "
+operator|+
+name|ru
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" in "
+operator|+
+name|db
+operator|.
+name|getDirectory
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|ru
+operator|.
+name|getResult
+argument_list|()
+argument_list|)
+throw|;
+case|case
 name|FAST_FORWARD
 case|:
 case|case
 name|IO_FAILURE
-case|:
-case|case
-name|LOCK_FAILURE
 case|:
 case|case
 name|NEW
@@ -1983,13 +2009,39 @@ return|return
 name|revision
 return|;
 case|case
+name|LOCK_FAILURE
+case|:
+throw|throw
+operator|new
+name|LockFailureException
+argument_list|(
+literal|"Cannot update "
+operator|+
+name|ru
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" in "
+operator|+
+name|db
+operator|.
+name|getDirectory
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|ru
+operator|.
+name|getResult
+argument_list|()
+argument_list|)
+throw|;
+case|case
 name|FORCED
 case|:
 case|case
 name|IO_FAILURE
-case|:
-case|case
-name|LOCK_FAILURE
 case|:
 case|case
 name|NOT_ATTEMPTED
