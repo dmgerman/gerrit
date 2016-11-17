@@ -581,6 +581,13 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|etag ()
+name|String
+name|etag
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Returns patch of revision.    */
 DECL|method|patch ()
 name|BinaryResult
@@ -1393,6 +1400,22 @@ DECL|method|description ()
 specifier|public
 name|String
 name|description
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|etag ()
+specifier|public
+name|String
+name|etag
 parameter_list|()
 throws|throws
 name|RestApiException
