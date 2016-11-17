@@ -5351,7 +5351,9 @@ name|Id
 name|id
 parameter_list|)
 throws|throws
-name|Exception
+name|OrmException
+throws|,
+name|NoSuchChangeException
 block|{
 name|Change
 name|c
@@ -5381,6 +5383,28 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|c
+operator|==
+literal|null
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"Failed to get change {} from unwrapped db"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|NoSuchChangeException
+argument_list|(
+name|id
+argument_list|)
+throw|;
+block|}
 block|}
 comment|// Pass in preloaded change to controlFor, to avoid:
 comment|//  - reading from a db that does not belong to this update
