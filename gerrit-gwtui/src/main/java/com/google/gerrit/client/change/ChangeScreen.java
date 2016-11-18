@@ -3557,6 +3557,13 @@ name|changeInfo
 operator|.
 name|currentRevision
 argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|changeInfo
+operator|.
+name|currentRevision
+argument_list|()
 operator|.
 name|equals
 argument_list|(
