@@ -1687,6 +1687,37 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|byProjectCommit (Project.NameKey project, ObjectId id)
+specifier|public
+name|List
+argument_list|<
+name|ChangeData
+argument_list|>
+name|byProjectCommit
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|ObjectId
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|byProjectCommit
+argument_list|(
+name|project
+argument_list|,
+name|id
+operator|.
+name|name
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|byProjectCommit (Project.NameKey project, String hash)
 specifier|public
 name|List
