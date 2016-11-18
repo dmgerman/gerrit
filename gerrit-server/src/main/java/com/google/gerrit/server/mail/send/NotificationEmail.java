@@ -719,6 +719,33 @@ argument_list|,
 name|branchData
 argument_list|)
 expr_stmt|;
+name|footers
+operator|.
+name|add
+argument_list|(
+literal|"Gerrit-Project: "
+operator|+
+name|branch
+operator|.
+name|getParentKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|footers
+operator|.
+name|add
+argument_list|(
+literal|"Gerrit-Branch: "
+operator|+
+name|branch
+operator|.
+name|getShortName
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

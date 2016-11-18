@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -2837,35 +2837,121 @@ argument_list|,
 name|patchSetData
 argument_list|)
 expr_stmt|;
-name|soyContext
+comment|// TODO(wyatta): patchSetInfo
+name|footers
 operator|.
-name|put
+name|add
 argument_list|(
-literal|"reviewerEmails"
-argument_list|,
+literal|"Gerrit-MessageType: "
+operator|+
+name|messageClass
+argument_list|)
+expr_stmt|;
+name|footers
+operator|.
+name|add
+argument_list|(
+literal|"Gerrit-Change-Id: "
+operator|+
+name|change
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|footers
+operator|.
+name|add
+argument_list|(
+literal|"Gerrit-Change-Number: "
+operator|+
+name|Integer
+operator|.
+name|toString
+argument_list|(
+name|change
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|footers
+operator|.
+name|add
+argument_list|(
+literal|"Gerrit-PatchSet: "
+operator|+
+name|patchSet
+operator|.
+name|getPatchSetId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|footers
+operator|.
+name|add
+argument_list|(
+literal|"Gerrit-Owner: "
+operator|+
+name|getNameEmailFor
+argument_list|(
+name|change
+operator|.
+name|getOwner
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|String
+name|reviewer
+range|:
 name|getEmailsByState
 argument_list|(
 name|ReviewerStateInternal
 operator|.
 name|REVIEWER
 argument_list|)
+control|)
+block|{
+name|footers
+operator|.
+name|add
+argument_list|(
+literal|"Gerrit-Reviewer: "
+operator|+
+name|reviewer
 argument_list|)
 expr_stmt|;
-name|soyContext
-operator|.
-name|put
-argument_list|(
-literal|"ccEmails"
-argument_list|,
+block|}
+for|for
+control|(
+name|String
+name|reviewer
+range|:
 name|getEmailsByState
 argument_list|(
 name|ReviewerStateInternal
 operator|.
 name|CC
 argument_list|)
+control|)
+block|{
+name|footers
+operator|.
+name|add
+argument_list|(
+literal|"Gerrit-CC: "
+operator|+
+name|reviewer
 argument_list|)
 expr_stmt|;
-comment|// TODO(wyatta): patchSetInfo
+block|}
 block|}
 DECL|method|getEmailsByState (ReviewerStateInternal state)
 specifier|private
