@@ -6142,6 +6142,35 @@ name|actions
 argument_list|()
 return|;
 block|}
+DECL|method|getETag (String id)
+specifier|protected
+name|String
+name|getETag
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|id
+argument_list|)
+operator|.
+name|current
+argument_list|()
+operator|.
+name|etag
+argument_list|()
+return|;
+block|}
 DECL|method|changeIds (Iterable<ChangeInfo> changes)
 specifier|private
 specifier|static

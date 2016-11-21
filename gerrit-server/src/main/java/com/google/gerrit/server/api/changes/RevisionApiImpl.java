@@ -3480,6 +3480,25 @@ name|revision
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|etag ()
+specifier|public
+name|String
+name|etag
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+return|return
+name|revisionActions
+operator|.
+name|getETag
+argument_list|(
+name|revision
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
