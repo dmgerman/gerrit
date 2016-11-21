@@ -289,6 +289,18 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getValidationQuery ()
+specifier|public
+name|String
+name|getValidationQuery
+parameter_list|()
+block|{
+return|return
+literal|"select 1 from dual"
+return|;
+block|}
 block|}
 end_class
 

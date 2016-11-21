@@ -230,6 +230,18 @@ operator|+
 literal|";create=true"
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getValidationQuery ()
+specifier|public
+name|String
+name|getValidationQuery
+parameter_list|()
+block|{
+return|return
+literal|"values 1"
+return|;
+block|}
 block|}
 end_class
 

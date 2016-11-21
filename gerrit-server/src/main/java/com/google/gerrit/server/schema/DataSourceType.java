@@ -98,6 +98,12 @@ name|String
 name|getUrl
 parameter_list|()
 function_decl|;
+DECL|method|getValidationQuery ()
+specifier|public
+name|String
+name|getValidationQuery
+parameter_list|()
+function_decl|;
 DECL|method|usePool ()
 specifier|public
 name|boolean
