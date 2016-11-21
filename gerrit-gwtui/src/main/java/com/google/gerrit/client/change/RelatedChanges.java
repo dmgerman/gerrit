@@ -1475,6 +1475,13 @@ name|info
 operator|.
 name|currentRevision
 argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|info
+operator|.
+name|currentRevision
+argument_list|()
 operator|.
 name|equals
 argument_list|(
