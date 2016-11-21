@@ -1862,10 +1862,10 @@ name|byWatchedProject
 argument_list|(
 name|p
 argument_list|)
+argument_list|)
 operator|.
 name|isEmpty
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|watch
 argument_list|(
