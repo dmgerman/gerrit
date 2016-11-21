@@ -919,6 +919,25 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/** True if this comment requires further action. */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|12
+argument_list|)
+DECL|field|unresolved
+specifier|protected
+name|boolean
+name|unresolved
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/**    * The RevId for the commit to which this comment is referring.    *    * Note that this field is not stored in the database. It is just provided    * for users of this class to avoid a lookup when they don't have easy access    * to a ReviewDb.    */
 end_comment
 
@@ -1579,6 +1598,8 @@ argument_list|,
 name|message
 argument_list|,
 name|serverId
+argument_list|,
+name|unresolved
 argument_list|)
 decl_stmt|;
 name|c
@@ -2064,6 +2085,11 @@ argument_list|()
 else|:
 literal|""
 argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|','
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
@@ -2082,6 +2108,23 @@ name|tag
 argument_list|,
 literal|""
 argument_list|)
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|','
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+literal|"unresolved="
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|unresolved
 argument_list|)
 expr_stmt|;
 name|builder

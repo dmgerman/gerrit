@@ -456,6 +456,8 @@ argument_list|,
 name|message
 argument_list|,
 literal|""
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|c

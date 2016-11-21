@@ -971,6 +971,15 @@ name|UUID
 init|=
 literal|"UUID"
 decl_stmt|;
+DECL|field|UNRESOLVED
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|UNRESOLVED
+init|=
+literal|"Unresolved"
+decl_stmt|;
 DECL|field|TAG
 specifier|private
 specifier|static
@@ -2155,6 +2164,8 @@ argument_list|,
 name|message
 argument_list|,
 name|serverId
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|c
