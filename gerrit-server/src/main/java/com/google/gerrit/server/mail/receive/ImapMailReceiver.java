@@ -78,6 +78,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|WorkQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|EmailSettings
@@ -243,29 +259,41 @@ literal|"INBOX"
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ImapMailReceiver (EmailSettings mailSettings)
-specifier|public
+DECL|method|ImapMailReceiver (EmailSettings mailSettings, MailProcessor mailProcessor, WorkQueue workQueue)
 name|ImapMailReceiver
 parameter_list|(
 name|EmailSettings
 name|mailSettings
+parameter_list|,
+name|MailProcessor
+name|mailProcessor
+parameter_list|,
+name|WorkQueue
+name|workQueue
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|mailSettings
+argument_list|,
+name|mailProcessor
+argument_list|,
+name|workQueue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * handleEmails will open a connection to the mail server, remove emails    * where deletion is pending, read new email and close the connection.    */
+comment|/**    * handleEmails will open a connection to the mail server, remove emails    * where deletion is pending, read new email and close the connection.    * @param async Determines if processing messages should happen asynchronous.    */
 annotation|@
 name|Override
-DECL|method|handleEmails ()
+DECL|method|handleEmails (boolean async)
 specifier|public
 specifier|synchronized
 name|void
 name|handleEmails
-parameter_list|()
+parameter_list|(
+name|boolean
+name|async
+parameter_list|)
 block|{
 name|IMAPClient
 name|imap
@@ -722,7 +750,13 @@ literal|"Could not expunge IMAP emails"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO(hiesel) Call email handling logic with mailMessages
+name|dispatchMailProcessor
+argument_list|(
+name|mailMessages
+argument_list|,
+name|async
+argument_list|)
+expr_stmt|;
 block|}
 finally|finally
 block|{

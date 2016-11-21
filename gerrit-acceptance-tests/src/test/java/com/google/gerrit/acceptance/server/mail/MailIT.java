@@ -618,7 +618,9 @@ comment|// Let Gerrit handle emails
 name|mailReceiver
 operator|.
 name|handleEmails
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 comment|// Check that the message is still present
 name|assertThat
@@ -657,7 +659,9 @@ comment|// Let Gerrit handle emails
 name|mailReceiver
 operator|.
 name|handleEmails
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 comment|// Check that the message was deleted
 name|assertThat

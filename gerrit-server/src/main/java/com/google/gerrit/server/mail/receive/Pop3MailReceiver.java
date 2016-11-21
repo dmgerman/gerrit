@@ -92,6 +92,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|WorkQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|EmailSettings
@@ -274,29 +290,41 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Pop3MailReceiver (EmailSettings mailSettings)
-specifier|public
+DECL|method|Pop3MailReceiver (EmailSettings mailSettings, MailProcessor mailProcessor, WorkQueue workQueue)
 name|Pop3MailReceiver
 parameter_list|(
 name|EmailSettings
 name|mailSettings
+parameter_list|,
+name|MailProcessor
+name|mailProcessor
+parameter_list|,
+name|WorkQueue
+name|workQueue
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|mailSettings
+argument_list|,
+name|mailProcessor
+argument_list|,
+name|workQueue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * handleEmails will open a connection to the mail server, remove emails    * where deletion is pending, read new email and close the connection.    */
+comment|/**    * handleEmails will open a connection to the mail server, remove emails    * where deletion is pending, read new email and close the connection.    * @param async Determines if processing messages should happen asynchronous.    */
 annotation|@
 name|Override
-DECL|method|handleEmails ()
+DECL|method|handleEmails (boolean async)
 specifier|public
 specifier|synchronized
 name|void
 name|handleEmails
-parameter_list|()
+parameter_list|(
+name|boolean
+name|async
+parameter_list|)
 block|{
 name|POP3Client
 name|pop3
@@ -628,7 +656,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// TODO(hiesel) Call processing logic with mailMessages
+name|dispatchMailProcessor
+argument_list|(
+name|mailMessages
+argument_list|,
+name|async
+argument_list|)
+expr_stmt|;
 block|}
 finally|finally
 block|{
