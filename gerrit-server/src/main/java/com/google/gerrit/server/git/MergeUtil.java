@@ -928,6 +928,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -4168,9 +4178,15 @@ block|{
 comment|// If branch was not created by this submit.
 if|if
 condition|(
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|c
-operator|!=
+argument_list|,
 name|mergeTip
+argument_list|)
 condition|)
 block|{
 name|rw
