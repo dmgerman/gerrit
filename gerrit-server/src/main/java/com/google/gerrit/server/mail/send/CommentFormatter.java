@@ -69,6 +69,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+operator|.
+name|isNullOrEmpty
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -178,14 +194,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|isNullOrEmpty
+argument_list|(
 name|source
-operator|==
-literal|null
-operator|||
-name|source
-operator|.
-name|isEmpty
-argument_list|()
+argument_list|)
 condition|)
 block|{
 return|return
