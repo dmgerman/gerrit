@@ -2730,6 +2730,19 @@ return|return
 name|change
 return|;
 block|}
+DECL|method|getMetaId ()
+specifier|public
+name|ObjectId
+name|getMetaId
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|metaId
+argument_list|()
+return|;
+block|}
 DECL|method|getPatchSets ()
 specifier|public
 name|ImmutableSortedMap
@@ -3325,6 +3338,7 @@ name|draftCommentNotes
 return|;
 block|}
 DECL|method|getRobotCommentNotes ()
+specifier|public
 name|RobotCommentNotes
 name|getRobotCommentNotes
 parameter_list|()
@@ -3422,7 +3436,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getRefName ()
-specifier|protected
+specifier|public
 name|String
 name|getRefName
 parameter_list|()

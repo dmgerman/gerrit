@@ -116,6 +116,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -363,6 +377,11 @@ name|RobotCommentsRevisionNote
 argument_list|>
 name|revisionNoteMap
 decl_stmt|;
+DECL|field|metaId
+specifier|private
+name|ObjectId
+name|metaId
+decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|RobotCommentNotes ( Args args, @Assisted Change change)
@@ -476,7 +495,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getRefName ()
-specifier|protected
+specifier|public
 name|String
 name|getRefName
 parameter_list|()
@@ -489,6 +508,18 @@ argument_list|(
 name|getChangeId
 argument_list|()
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Nullable
+DECL|method|getMetaId ()
+specifier|public
+name|ObjectId
+name|getMetaId
+parameter_list|()
+block|{
+return|return
+name|metaId
 return|;
 block|}
 annotation|@
@@ -506,17 +537,16 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-name|ObjectId
-name|rev
-init|=
+name|metaId
+operator|=
 name|handle
 operator|.
 name|id
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
-name|rev
+name|metaId
 operator|==
 literal|null
 condition|)
@@ -526,6 +556,13 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+name|metaId
+operator|=
+name|metaId
+operator|.
+name|copy
+argument_list|()
+expr_stmt|;
 name|RevCommit
 name|tipCommit
 init|=
@@ -536,7 +573,7 @@ argument_list|()
 operator|.
 name|parseCommit
 argument_list|(
-name|rev
+name|metaId
 argument_list|)
 decl_stmt|;
 name|ObjectReader
