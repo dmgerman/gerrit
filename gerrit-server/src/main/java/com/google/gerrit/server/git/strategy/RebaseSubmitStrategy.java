@@ -999,7 +999,7 @@ name|args
 operator|.
 name|mergeUtil
 operator|.
-name|createCherryPickCommitMessage
+name|createDetailedCommitMessage
 argument_list|(
 name|toMerge
 argument_list|)
@@ -1204,6 +1204,13 @@ operator|.
 name|Policy
 operator|.
 name|NONE
+argument_list|)
+comment|// RebaseAlways should set always modify commit message like
+comment|// Cherry-Pick strategy.
+operator|.
+name|setDetailedCommitMessage
+argument_list|(
+name|rebaseAlways
 argument_list|)
 comment|// Do not post message after inserting new patchset because there
 comment|// will be one about change being merged already.
