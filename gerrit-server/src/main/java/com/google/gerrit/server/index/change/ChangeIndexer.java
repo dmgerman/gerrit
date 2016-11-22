@@ -78,13 +78,13 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|extensions
 operator|.
-name|QueueProvider
+name|events
 operator|.
-name|QueueType
+name|EventUtil
 operator|.
-name|BATCH
+name|logEventListenerError
 import|;
 end_import
 
@@ -98,13 +98,13 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|extensions
+name|git
 operator|.
-name|events
+name|QueueProvider
 operator|.
-name|EventUtil
+name|QueueType
 operator|.
-name|logEventListenerError
+name|BATCH
 import|;
 end_import
 
@@ -293,6 +293,22 @@ operator|.
 name|server
 operator|.
 name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|GerritServerConfig
 import|;
 end_import
 
@@ -513,6 +529,20 @@ operator|.
 name|util
 operator|.
 name|Providers
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -880,11 +910,22 @@ specifier|final
 name|StalenessChecker
 name|stalenessChecker
 decl_stmt|;
+DECL|field|reindexAfterIndexUpdate
+specifier|private
+specifier|final
+name|boolean
+name|reindexAfterIndexUpdate
+decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
+DECL|method|ChangeIndexer ( @erritServerConfig Config cfg, SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
 name|ChangeIndexer
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
+parameter_list|,
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -991,6 +1032,15 @@ name|batchExecutor
 expr_stmt|;
 name|this
 operator|.
+name|reindexAfterIndexUpdate
+operator|=
+name|reindexAfterIndexUpdate
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|index
 operator|=
 name|index
@@ -1004,7 +1054,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
+DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, @GerritServerConfig Config cfg, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
 name|ChangeIndexer
 parameter_list|(
 name|SchemaFactory
@@ -1012,6 +1062,11 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schemaFactory
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
 parameter_list|,
 name|NotesMigration
 name|notesMigration
@@ -1113,6 +1168,15 @@ name|batchExecutor
 expr_stmt|;
 name|this
 operator|.
+name|reindexAfterIndexUpdate
+operator|=
+name|reindexAfterIndexUpdate
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|index
 operator|=
 literal|null
@@ -1123,6 +1187,31 @@ name|indexes
 operator|=
 name|indexes
 expr_stmt|;
+block|}
+DECL|method|reindexAfterIndexUpdate (Config cfg)
+specifier|private
+specifier|static
+name|boolean
+name|reindexAfterIndexUpdate
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|)
+block|{
+return|return
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"index"
+argument_list|,
+literal|null
+argument_list|,
+literal|"testReindexAfterUpdate"
+argument_list|,
+literal|true
+argument_list|)
+return|;
 block|}
 comment|/**    * Start indexing a change.    *    * @param id change to index.    * @return future for the indexing task.    */
 DECL|method|indexAsync (Project.NameKey project, Change.Id id)
@@ -1278,6 +1367,29 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Always double-check whether the change might be stale immediately after
+comment|// interactively indexing it. This fixes up the case where two writers write
+comment|// to the primary storage in one order, and the corresponding index writes
+comment|// happen in the opposite order:
+comment|//  1. Writer A writes to primary storage.
+comment|//  2. Writer B writes to primary storage.
+comment|//  3. Writer B updates index.
+comment|//  4. Writer A updates index.
+comment|//
+comment|// Without the extra reindexIfStale step, A has no way of knowing that it's
+comment|// about to overwrite the index document with stale data. It doesn't work to
+comment|// have A check for staleness before attempting its index update, because
+comment|// B's index update might not have happened when it does the check.
+comment|//
+comment|// With the extra reindexIfStale step after (3)/(4), we are able to detect
+comment|// and fix the staleness. It doesn't matter which order the two
+comment|// reindexIfStale calls actually execute in; we are guaranteed that at least
+comment|// one of them will execute after the second index write, (4).
+name|reindexAfterIndexUpdate
+argument_list|(
+name|cd
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|fireChangeIndexedEvent (int id)
 specifier|private
@@ -1392,6 +1504,20 @@ name|change
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// See comment in #index(ChangeData).
+name|reindexAfterIndexUpdate
+argument_list|(
+name|change
+operator|.
+name|getProject
+argument_list|()
+argument_list|,
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * Synchronously index a change.    *    * @param db review database.    * @param project the project to which the change belongs.    * @param changeId ID of the change to index.    */
 DECL|method|index (ReviewDb db, Project.NameKey project, Change.Id changeId)
@@ -1417,8 +1543,9 @@ name|IOException
 throws|,
 name|OrmException
 block|{
-name|index
-argument_list|(
+name|ChangeData
+name|cd
+init|=
 name|newChangeData
 argument_list|(
 name|db
@@ -1427,6 +1554,16 @@ name|project
 argument_list|,
 name|changeId
 argument_list|)
+decl_stmt|;
+name|index
+argument_list|(
+name|cd
+argument_list|)
+expr_stmt|;
+comment|// See comment in #index(ChangeData).
+name|reindexAfterIndexUpdate
+argument_list|(
+name|cd
 argument_list|)
 expr_stmt|;
 block|}
@@ -1518,6 +1655,78 @@ argument_list|,
 name|batchExecutor
 argument_list|)
 return|;
+block|}
+DECL|method|reindexAfterIndexUpdate (ChangeData cd)
+specifier|private
+name|void
+name|reindexAfterIndexUpdate
+parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+try|try
+block|{
+name|reindexAfterIndexUpdate
+argument_list|(
+name|cd
+operator|.
+name|project
+argument_list|()
+argument_list|,
+name|cd
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+DECL|method|reindexAfterIndexUpdate (Project.NameKey project, Change.Id id)
+specifier|private
+name|void
+name|reindexAfterIndexUpdate
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+if|if
+condition|(
+name|reindexAfterIndexUpdate
+condition|)
+block|{
+name|reindexIfStale
+argument_list|(
+name|project
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|getWriteIndexes ()
 specifier|private
