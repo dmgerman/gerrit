@@ -1412,7 +1412,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Rebase a commit.    *    * @param ctx repo context.    * @param original the commit to rebase.    * @param base base to rebase against.    * @return the rebased commit.    * @throws MergeConflictException the rebase failed due to a merge conflict.    * @throws IOException the merge failed for another reason.    */
-DECL|method|rebaseCommit (RepoContext ctx, RevCommit original, ObjectId base, String commitMessage)
+DECL|method|rebaseCommit ( RepoContext ctx, RevCommit original, ObjectId base, String commitMessage)
 specifier|private
 name|RevCommit
 name|rebaseCommit
@@ -1431,8 +1431,6 @@ name|commitMessage
 parameter_list|)
 throws|throws
 name|ResourceConflictException
-throws|,
-name|MergeConflictException
 throws|,
 name|IOException
 block|{
