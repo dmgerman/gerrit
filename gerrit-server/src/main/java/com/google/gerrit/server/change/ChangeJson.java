@@ -8445,7 +8445,7 @@ name|project
 argument_list|)
 argument_list|)
 operator|.
-name|createCherryPickCommitMessage
+name|createDetailedCommitMessage
 argument_list|(
 name|commit
 argument_list|,

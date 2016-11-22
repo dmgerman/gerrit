@@ -640,6 +640,13 @@ name|copyApprovals
 init|=
 literal|true
 decl_stmt|;
+DECL|field|detailedCommitMessage
+specifier|private
+name|boolean
+name|detailedCommitMessage
+init|=
+literal|false
+decl_stmt|;
 DECL|field|postMessage
 specifier|private
 name|boolean
@@ -850,6 +857,25 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|setDetailedCommitMessage ( boolean detailedCommitMessage)
+specifier|public
+name|RebaseChangeOp
+name|setDetailedCommitMessage
+parameter_list|(
+name|boolean
+name|detailedCommitMessage
+parameter_list|)
+block|{
+name|this
+operator|.
+name|detailedCommitMessage
+operator|=
+name|detailedCommitMessage
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|setPostMessage (boolean postMessage)
 specifier|public
 name|RebaseChangeOp
@@ -935,6 +961,42 @@ argument_list|(
 name|original
 argument_list|)
 expr_stmt|;
+name|String
+name|newCommitMessage
+decl_stmt|;
+if|if
+condition|(
+name|detailedCommitMessage
+condition|)
+block|{
+name|newCommitMessage
+operator|=
+name|newMergeUtil
+argument_list|()
+operator|.
+name|createDetailedCommitMessage
+argument_list|(
+name|original
+argument_list|,
+name|ctl
+argument_list|,
+name|originalPatchSet
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|newCommitMessage
+operator|=
+name|original
+operator|.
+name|getFullMessage
+argument_list|()
+expr_stmt|;
+block|}
 name|RevCommit
 name|baseCommit
 decl_stmt|;
@@ -1007,6 +1069,8 @@ argument_list|,
 name|original
 argument_list|,
 name|baseCommit
+argument_list|,
+name|newCommitMessage
 argument_list|)
 expr_stmt|;
 name|RevId
@@ -1348,7 +1412,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Rebase a commit.    *    * @param ctx repo context.    * @param original the commit to rebase.    * @param base base to rebase against.    * @return the rebased commit.    * @throws MergeConflictException the rebase failed due to a merge conflict.    * @throws IOException the merge failed for another reason.    */
-DECL|method|rebaseCommit (RepoContext ctx, RevCommit original, ObjectId base)
+DECL|method|rebaseCommit (RepoContext ctx, RevCommit original, ObjectId base, String commitMessage)
 specifier|private
 name|RevCommit
 name|rebaseCommit
@@ -1361,6 +1425,9 @@ name|original
 parameter_list|,
 name|ObjectId
 name|base
+parameter_list|,
+name|String
+name|commitMessage
 parameter_list|)
 throws|throws
 name|ResourceConflictException
@@ -1488,10 +1555,7 @@ name|cb
 operator|.
 name|setMessage
 argument_list|(
-name|original
-operator|.
-name|getFullMessage
-argument_list|()
+name|commitMessage
 argument_list|)
 expr_stmt|;
 if|if

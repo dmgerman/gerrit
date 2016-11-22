@@ -734,7 +734,7 @@ name|args
 operator|.
 name|mergeUtil
 operator|.
-name|createCherryPickCommitMessage
+name|createDetailedCommitMessage
 argument_list|(
 name|toMerge
 argument_list|)

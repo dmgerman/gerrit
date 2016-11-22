@@ -1954,10 +1954,11 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|createCherryPickCommitMessage (RevCommit n, ChangeControl ctl, PatchSet.Id psId)
+comment|/**    * Adds footers to existing commit message based on the state of the change.    *    * This adds the following footers if they are missing:    *    *<ul>    *<li> Reviewed-on:<i>url</i></li>    *<li> Reviewed-by | Tested-by |<i>Other-Label-Name</i>:<i>reviewer</i>    *</li>    *<li> Change-Id</li>    *</ul>    *    * @param n    * @param ctl    * @param psId    * @return new message    */
+DECL|method|createDetailedCommitMessage (RevCommit n, ChangeControl ctl, PatchSet.Id psId)
 specifier|public
 name|String
-name|createCherryPickCommitMessage
+name|createDetailedCommitMessage
 parameter_list|(
 name|RevCommit
 name|n
@@ -2580,10 +2581,10 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|createCherryPickCommitMessage (final CodeReviewCommit n)
+DECL|method|createDetailedCommitMessage (final CodeReviewCommit n)
 specifier|public
 name|String
-name|createCherryPickCommitMessage
+name|createDetailedCommitMessage
 parameter_list|(
 specifier|final
 name|CodeReviewCommit
@@ -2591,7 +2592,7 @@ name|n
 parameter_list|)
 block|{
 return|return
-name|createCherryPickCommitMessage
+name|createDetailedCommitMessage
 argument_list|(
 name|n
 argument_list|,
