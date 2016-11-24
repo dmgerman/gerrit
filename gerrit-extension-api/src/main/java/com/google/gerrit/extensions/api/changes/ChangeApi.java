@@ -589,7 +589,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Delete the assignee of a change.    */
+comment|/**    * Delete the assignee of a change.    *    * @return the assignee that was deleted, or null if there was no assignee.    */
 DECL|method|deleteAssignee ()
 name|AccountInfo
 name|deleteAssignee
