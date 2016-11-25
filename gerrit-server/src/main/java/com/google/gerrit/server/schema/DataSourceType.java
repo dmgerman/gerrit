@@ -96,6 +96,11 @@ name|String
 name|getUrl
 parameter_list|()
 function_decl|;
+DECL|method|getValidationQuery ()
+name|String
+name|getValidationQuery
+parameter_list|()
+function_decl|;
 DECL|method|usePool ()
 name|boolean
 name|usePool
