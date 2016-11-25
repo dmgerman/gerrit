@@ -1223,7 +1223,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Unsupported filed type "
+literal|"Unsupported field type "
 operator|+
 name|fieldType
 operator|.
