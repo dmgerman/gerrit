@@ -144,6 +144,11 @@ name|String
 name|defaultBranchName
 parameter_list|()
 function_decl|;
+DECL|method|defaultTagName ()
+name|String
+name|defaultTagName
+parameter_list|()
+function_decl|;
 DECL|method|defaultRevisionSpec ()
 name|String
 name|defaultRevisionSpec
@@ -504,6 +509,16 @@ name|String
 name|columnBranchRevision
 parameter_list|()
 function_decl|;
+DECL|method|columnTagName ()
+name|String
+name|columnTagName
+parameter_list|()
+function_decl|;
+DECL|method|columnTagRevision ()
+name|String
+name|columnTagRevision
+parameter_list|()
+function_decl|;
 DECL|method|initialRevision ()
 name|String
 name|initialRevision
@@ -519,6 +534,11 @@ name|String
 name|buttonDeleteBranch
 parameter_list|()
 function_decl|;
+DECL|method|buttonAddTag ()
+name|String
+name|buttonAddTag
+parameter_list|()
+function_decl|;
 DECL|method|saveHeadButton ()
 name|String
 name|saveHeadButton
@@ -527,11 +547,6 @@ function_decl|;
 DECL|method|cancelHeadButton ()
 name|String
 name|cancelHeadButton
-parameter_list|()
-function_decl|;
-DECL|method|columnTagName ()
-name|String
-name|columnTagName
 parameter_list|()
 function_decl|;
 DECL|method|groupItemHelp ()

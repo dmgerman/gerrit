@@ -168,6 +168,16 @@ name|String
 name|branchCreationConfirmationMessage
 parameter_list|()
 function_decl|;
+DECL|method|tagCreationDialogTitle ()
+name|String
+name|tagCreationDialogTitle
+parameter_list|()
+function_decl|;
+DECL|method|tagCreationConfirmationMessage ()
+name|String
+name|tagCreationConfirmationMessage
+parameter_list|()
+function_decl|;
 DECL|method|branchDeletionDialogTitle ()
 name|String
 name|branchDeletionDialogTitle
