@@ -111,6 +111,15 @@ name|BaseDataSourceType
 implements|implements
 name|DataSourceType
 block|{
+DECL|field|DEFAULT_VALIDATION_QUERY
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_VALIDATION_QUERY
+init|=
+literal|"select 1"
+decl_stmt|;
 DECL|field|driver
 specifier|private
 specifier|final
@@ -155,6 +164,18 @@ parameter_list|()
 block|{
 return|return
 literal|true
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getValidationQuery ()
+specifier|public
+name|String
+name|getValidationQuery
+parameter_list|()
+block|{
+return|return
+name|DEFAULT_VALIDATION_QUERY
 return|;
 block|}
 annotation|@
