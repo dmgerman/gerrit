@@ -1315,6 +1315,13 @@ condition|(
 operator|!
 name|excludeGroups
 operator|&&
+name|suggestedReviewer
+operator|.
+name|size
+argument_list|()
+operator|<
+name|limit
+operator|&&
 operator|!
 name|Strings
 operator|.
@@ -1337,6 +1344,13 @@ argument_list|,
 name|projectControl
 argument_list|,
 name|visibilityControl
+argument_list|,
+name|limit
+operator|-
+name|suggestedReviewer
+operator|.
+name|size
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2050,7 +2064,7 @@ name|reviewer
 return|;
 block|}
 block|}
-DECL|method|suggestAccountGroups ( SuggestReviewers suggestReviewers, ProjectControl projectControl, VisibilityControl visibilityControl)
+DECL|method|suggestAccountGroups ( SuggestReviewers suggestReviewers, ProjectControl projectControl, VisibilityControl visibilityControl, int limit)
 specifier|private
 name|List
 argument_list|<
@@ -2066,6 +2080,9 @@ name|projectControl
 parameter_list|,
 name|VisibilityControl
 name|visibilityControl
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2214,6 +2231,18 @@ argument_list|(
 name|suggestedReviewerInfo
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|groups
+operator|.
+name|size
+argument_list|()
+operator|>=
+name|limit
+condition|)
+block|{
+break|break;
+block|}
 block|}
 block|}
 return|return
