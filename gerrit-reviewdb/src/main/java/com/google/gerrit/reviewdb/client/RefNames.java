@@ -121,6 +121,15 @@ name|REFS_CHANGES
 init|=
 literal|"refs/changes/"
 decl_stmt|;
+DECL|field|REFS_META
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_META
+init|=
+literal|"refs/meta/"
+decl_stmt|;
 comment|/** Note tree listing commits we refuse {@code refs/meta/reject-commits} */
 DECL|field|REFS_REJECT_COMMITS
 specifier|public
