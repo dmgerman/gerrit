@@ -502,6 +502,14 @@ name|MenuItem
 argument_list|>
 name|my
 decl_stmt|;
+DECL|field|changeTable
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|changeTable
+decl_stmt|;
 DECL|field|urlAliases
 specifier|public
 name|Map

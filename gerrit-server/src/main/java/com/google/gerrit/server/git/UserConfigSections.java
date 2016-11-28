@@ -146,6 +146,25 @@ name|KEY_TOKEN
 init|=
 literal|"token"
 decl_stmt|;
+comment|/** The table column user preferences. */
+DECL|field|CHANGE_TABLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CHANGE_TABLE
+init|=
+literal|"changeTable"
+decl_stmt|;
+DECL|field|CHANGE_TABLE_COLUMN
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CHANGE_TABLE_COLUMN
+init|=
+literal|"column"
+decl_stmt|;
 comment|/** The edit user preferences. */
 DECL|field|EDIT
 specifier|public
