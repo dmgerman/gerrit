@@ -645,6 +645,16 @@ name|String
 name|errorDialogTitleRegisterNewEmail
 parameter_list|()
 function_decl|;
+DECL|method|emailFilterHelpTitle ()
+name|String
+name|emailFilterHelpTitle
+parameter_list|()
+function_decl|;
+DECL|method|emailFilterHelp ()
+name|String
+name|emailFilterHelp
+parameter_list|()
+function_decl|;
 DECL|method|newAgreement ()
 name|String
 name|newAgreement
