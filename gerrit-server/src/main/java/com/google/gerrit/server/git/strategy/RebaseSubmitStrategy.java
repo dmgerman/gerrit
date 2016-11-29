@@ -991,7 +991,25 @@ name|currentPatchSetId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO(tandrii): add extension point to customize this commit message.
+name|RevCommit
+name|mergeTip
+init|=
+name|args
+operator|.
+name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
+decl_stmt|;
+name|args
+operator|.
+name|rw
+operator|.
+name|parseBody
+argument_list|(
+name|mergeTip
+argument_list|)
+expr_stmt|;
 name|String
 name|cherryPickCmtMsg
 init|=
@@ -999,9 +1017,11 @@ name|args
 operator|.
 name|mergeUtil
 operator|.
-name|createDetailedCommitMessage
+name|createCommitMessageOnSubmit
 argument_list|(
 name|toMerge
+argument_list|,
+name|mergeTip
 argument_list|)
 decl_stmt|;
 name|PersonIdent
@@ -1157,8 +1177,6 @@ name|getPatchsetId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// TODO(tandrii): add extension point to customize commit message while
-comment|// rebasing.
 name|rebaseOp
 operator|=
 name|args
