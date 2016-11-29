@@ -1399,6 +1399,23 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// Disable async reindex-if-stale check after index update. This avoids
+comment|// unintentional auto-rebuilding of the change in NoteDb during the read
+comment|// path of the reindex-if-stale check. For the purposes of this test, we
+comment|// want precise control over when auto-rebuilding happens.
+name|cfg
+operator|.
+name|setBoolean
+argument_list|(
+literal|"index"
+argument_list|,
+literal|null
+argument_list|,
+literal|"testReindexAfterUpdate"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 return|return
 name|cfg
 return|;

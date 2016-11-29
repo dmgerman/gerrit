@@ -122,6 +122,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -355,9 +371,15 @@ specifier|final
 name|boolean
 name|allowsDrafts
 decl_stmt|;
+DECL|field|allUsers
+specifier|public
+specifier|final
+name|AllUsersName
+name|allUsers
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FillArgs (TrackingFooters trackingFooters, @GerritServerConfig Config cfg)
+DECL|method|FillArgs (TrackingFooters trackingFooters, @GerritServerConfig Config cfg, AllUsersName allUsers)
 name|FillArgs
 parameter_list|(
 name|TrackingFooters
@@ -367,6 +389,9 @@ annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
+parameter_list|,
+name|AllUsersName
+name|allUsers
 parameter_list|)
 block|{
 name|this
@@ -395,6 +420,12 @@ literal|"allowDrafts"
 argument_list|,
 literal|true
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|allUsers
+operator|=
+name|allUsers
 expr_stmt|;
 block|}
 block|}

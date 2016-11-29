@@ -372,6 +372,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|id (Account.Id accountId)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
