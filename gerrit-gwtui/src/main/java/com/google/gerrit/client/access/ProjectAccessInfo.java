@@ -108,6 +108,15 @@ name|isOwner
 parameter_list|()
 comment|/*-{ return this.is_owner ? true : false; }-*/
 function_decl|;
+DECL|method|configVisible ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|configVisible
+parameter_list|()
+comment|/*-{ return this.config_visible ? true : false; }-*/
+function_decl|;
 DECL|method|ProjectAccessInfo ()
 specifier|protected
 name|ProjectAccessInfo

@@ -947,6 +947,11 @@ specifier|private
 name|boolean
 name|isOwner
 decl_stmt|;
+DECL|field|configVisible
+specifier|private
+name|boolean
+name|configVisible
+decl_stmt|;
 DECL|field|grid
 specifier|private
 name|LabeledWidgetsGrid
@@ -1328,6 +1333,13 @@ operator|=
 name|result
 operator|.
 name|isOwner
+argument_list|()
+expr_stmt|;
+name|configVisible
+operator|=
+name|result
+operator|.
+name|configVisible
 argument_list|()
 expr_stmt|;
 name|enableForm
@@ -4288,6 +4300,8 @@ block|}
 if|if
 condition|(
 name|isOwner
+operator|&&
+name|configVisible
 condition|)
 block|{
 name|actionsPanel
