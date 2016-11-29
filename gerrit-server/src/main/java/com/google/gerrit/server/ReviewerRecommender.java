@@ -1528,7 +1528,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-comment|// Get the user's last 50 changes, check approvals
+comment|// Get the user's last 25 changes, check approvals
 try|try
 block|{
 name|List
@@ -1541,7 +1541,7 @@ name|internalChangeQuery
 operator|.
 name|setLimit
 argument_list|(
-literal|50
+literal|25
 argument_list|)
 operator|.
 name|setRequestedFields
@@ -1982,12 +1982,7 @@ name|internalChangeQuery
 operator|.
 name|setLimit
 argument_list|(
-literal|100
-operator|*
-name|predicates
-operator|.
-name|size
-argument_list|()
+literal|25
 argument_list|)
 operator|.
 name|setRequestedFields
