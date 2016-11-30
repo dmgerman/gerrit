@@ -13256,8 +13256,10 @@ parameter_list|,
 name|RevCommit
 name|mergeTip
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|Branch
+operator|.
+name|NameKey
+name|destination
 parameter_list|)
 block|{
 return|return
@@ -13265,13 +13267,7 @@ name|newCommitMessage
 operator|+
 literal|"Custom: "
 operator|+
-name|ctl
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getDest
-argument_list|()
+name|destination
 operator|.
 name|get
 argument_list|()

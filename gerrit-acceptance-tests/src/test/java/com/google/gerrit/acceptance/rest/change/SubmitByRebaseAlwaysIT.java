@@ -214,11 +214,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|git
+name|client
 operator|.
-name|ChangeMessageModifier
+name|Branch
 import|;
 end_import
 
@@ -232,9 +232,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|git
 operator|.
-name|ChangeControl
+name|ChangeMessageModifier
 import|;
 end_import
 
@@ -657,8 +657,10 @@ parameter_list|,
 name|RevCommit
 name|mergeTip
 parameter_list|,
-name|ChangeControl
-name|ctl
+name|Branch
+operator|.
+name|NameKey
+name|destination
 parameter_list|)
 block|{
 name|List
@@ -702,13 +704,7 @@ name|newCommitMessage
 operator|+
 literal|"Custom: "
 operator|+
-name|ctl
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getDest
-argument_list|()
+name|destination
 operator|.
 name|get
 argument_list|()

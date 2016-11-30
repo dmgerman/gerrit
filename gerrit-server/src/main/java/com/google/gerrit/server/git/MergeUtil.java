@@ -1213,6 +1213,12 @@ argument_list|,
 name|mergeTip
 argument_list|,
 name|ctl
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|checkNotNull
