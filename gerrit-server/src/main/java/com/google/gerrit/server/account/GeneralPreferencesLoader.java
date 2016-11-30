@@ -1304,14 +1304,6 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
-name|Config
-name|cfg
-init|=
-name|v
-operator|.
-name|getConfig
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|r
