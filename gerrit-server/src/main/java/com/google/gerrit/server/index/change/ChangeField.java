@@ -6026,7 +6026,9 @@ argument_list|)
 operator|.
 name|toByteArray
 argument_list|(
-name|project
+name|args
+operator|.
+name|allUsers
 argument_list|)
 argument_list|)
 argument_list|)

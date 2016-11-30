@@ -629,7 +629,8 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|FIELDS
-specifier|private
+specifier|public
+specifier|static
 specifier|final
 name|ImmutableSet
 argument_list|<
