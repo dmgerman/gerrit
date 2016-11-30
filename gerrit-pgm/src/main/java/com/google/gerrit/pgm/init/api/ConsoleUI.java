@@ -470,6 +470,44 @@ modifier|...
 name|args
 parameter_list|)
 function_decl|;
+comment|/** Display an error message on the system stderr. */
+DECL|method|error (String format, Object... args)
+specifier|public
+name|void
+name|error
+parameter_list|(
+name|String
+name|format
+parameter_list|,
+name|Object
+modifier|...
+name|args
+parameter_list|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+name|format
+argument_list|,
+name|args
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+block|}
 comment|/** Prompt the user to make a choice from an enumeration's values. */
 DECL|method|readEnum (T def, String fmt, Object... args)
 specifier|public
