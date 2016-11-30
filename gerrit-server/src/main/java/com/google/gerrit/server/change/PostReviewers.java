@@ -1318,6 +1318,8 @@ argument_list|(
 name|rsrc
 argument_list|,
 name|input
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 if|if
@@ -1407,7 +1409,7 @@ operator|.
 name|result
 return|;
 block|}
-DECL|method|prepareApplication (ChangeResource rsrc, AddReviewerInput input)
+DECL|method|prepareApplication (ChangeResource rsrc, AddReviewerInput input, boolean allowGroup)
 specifier|public
 name|Addition
 name|prepareApplication
@@ -1417,6 +1419,9 @@ name|rsrc
 parameter_list|,
 name|AddReviewerInput
 name|input
+parameter_list|,
+name|boolean
+name|allowGroup
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1453,6 +1458,11 @@ name|UnprocessableEntityException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|allowGroup
+condition|)
+block|{
 try|try
 block|{
 return|return
@@ -1483,7 +1493,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|reviewerNotFound
+name|reviewerNotFoundUserOrGroup
 argument_list|,
 name|input
 operator|.
@@ -1492,6 +1502,28 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+block|}
+throw|throw
+operator|new
+name|UnprocessableEntityException
+argument_list|(
+name|MessageFormat
+operator|.
+name|format
+argument_list|(
+name|ChangeMessages
+operator|.
+name|get
+argument_list|()
+operator|.
+name|reviewerNotFoundUser
+argument_list|,
+name|input
+operator|.
+name|reviewer
+argument_list|)
+argument_list|)
+throw|;
 block|}
 return|return
 name|putAccount
