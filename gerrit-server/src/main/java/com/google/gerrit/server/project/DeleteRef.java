@@ -86,6 +86,22 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|lib
+operator|.
+name|Constants
+operator|.
+name|R_TAGS
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|transport
 operator|.
 name|ReceiveCommand
@@ -1285,7 +1301,17 @@ literal|"it doesn't exist or you do not have permission to delete it"
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO: this check should not be done when deletion of tags is added
+if|if
+condition|(
+operator|!
+name|refName
+operator|.
+name|startsWith
+argument_list|(
+name|R_TAGS
+argument_list|)
+condition|)
+block|{
 name|Branch
 operator|.
 name|NameKey
@@ -1340,6 +1366,7 @@ argument_list|,
 literal|"it has open changes"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|RefUpdate
 name|u
