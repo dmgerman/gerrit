@@ -885,7 +885,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-name|user
+name|input
 argument_list|,
 name|cb
 argument_list|)
