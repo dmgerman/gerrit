@@ -1471,6 +1471,8 @@ operator|.
 name|parse
 argument_list|(
 name|parentName
+argument_list|,
+literal|false
 argument_list|)
 operator|.
 name|getControl

@@ -484,6 +484,8 @@ name|id
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 if|if
@@ -519,12 +521,40 @@ name|UnprocessableEntityException
 throws|,
 name|IOException
 block|{
+return|return
+name|parse
+argument_list|(
+name|id
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @param checkVisibility Whether to check or not that project is visible to    *        the calling user    * @return the project    * @throws UnprocessableEntityException thrown if the project ID cannot be    *         resolved or if the project is not visible to the calling user and    *         checkVisibility is true.    * @throws IOException thrown when there is an error.    */
+DECL|method|parse (String id, boolean checkVisibility)
+specifier|public
+name|ProjectResource
+name|parse
+parameter_list|(
+name|String
+name|id
+parameter_list|,
+name|boolean
+name|checkVisibility
+parameter_list|)
+throws|throws
+name|UnprocessableEntityException
+throws|,
+name|IOException
+block|{
 name|ProjectResource
 name|rsrc
 init|=
 name|_parse
 argument_list|(
 name|id
+argument_list|,
+name|checkVisibility
 argument_list|)
 decl_stmt|;
 if|if
@@ -553,13 +583,16 @@ return|return
 name|rsrc
 return|;
 block|}
-DECL|method|_parse (String id)
+DECL|method|_parse (String id, boolean checkVisibility)
 specifier|private
 name|ProjectResource
 name|_parse
 parameter_list|(
 name|String
 name|id
+parameter_list|,
+name|boolean
+name|checkVisibility
 parameter_list|)
 throws|throws
 name|IOException
@@ -636,6 +669,8 @@ return|;
 block|}
 if|if
 condition|(
+name|checkVisibility
+operator|&&
 operator|!
 name|ctl
 operator|.
