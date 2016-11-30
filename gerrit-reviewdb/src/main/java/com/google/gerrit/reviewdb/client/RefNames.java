@@ -919,6 +919,10 @@ parameter_list|)
 block|{
 return|return
 name|ref
+operator|!=
+literal|null
+operator|&&
+name|ref
 operator|.
 name|startsWith
 argument_list|(
