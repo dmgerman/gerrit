@@ -125,10 +125,15 @@ specifier|public
 name|String
 name|revertChangeDefaultMessage
 decl_stmt|;
-DECL|field|reviewerNotFound
+DECL|field|reviewerNotFoundUser
 specifier|public
 name|String
-name|reviewerNotFound
+name|reviewerNotFoundUser
+decl_stmt|;
+DECL|field|reviewerNotFoundUserOrGroup
+specifier|public
+name|String
+name|reviewerNotFoundUserOrGroup
 decl_stmt|;
 DECL|field|groupIsNotAllowed
 specifier|public

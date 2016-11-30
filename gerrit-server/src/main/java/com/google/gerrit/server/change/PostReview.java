@@ -2071,6 +2071,8 @@ name|getChangeResource
 argument_list|()
 argument_list|,
 name|reviewerInput
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|reviewerJsonResults
