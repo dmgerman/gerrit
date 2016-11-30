@@ -950,6 +950,16 @@ name|selectAll
 argument_list|()
 expr_stmt|;
 block|}
+else|else
+block|{
+name|suggestBox
+operator|.
+name|setText
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|onCloseForm ()
 name|void
@@ -1066,6 +1076,9 @@ block|{
 if|if
 condition|(
 name|assignee
+operator|.
+name|trim
+argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
