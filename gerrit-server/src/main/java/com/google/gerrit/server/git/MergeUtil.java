@@ -1133,7 +1133,6 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|PluggableCommitMessageGenerator ( DynamicSet<ChangeMessageModifier> changeMessageModifiers)
-specifier|public
 name|PluggableCommitMessageGenerator
 parameter_list|(
 name|DynamicSet
