@@ -376,7 +376,11 @@ init|=
 block|{
 literal|"abandon"
 block|,
+literal|"assignee"
+block|,
 literal|"cherrypick"
+block|,
+literal|"description"
 block|,
 literal|"followup"
 block|,
@@ -395,7 +399,7 @@ block|,
 literal|"topic"
 block|,
 literal|"/"
-block|,}
+block|,   }
 decl_stmt|;
 DECL|interface|Binder
 interface|interface
