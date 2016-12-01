@@ -175,6 +175,16 @@ name|String
 argument_list|>
 name|items
 decl_stmt|;
+comment|// For the items of list blocks.
+DECL|field|quotedBlocks
+specifier|public
+name|List
+argument_list|<
+name|Block
+argument_list|>
+name|quotedBlocks
+decl_stmt|;
+comment|// For the contents of quote blocks.
 block|}
 comment|/**    * Take a string of comment text that was written using the wiki-Like format    * and emit a list of blocks that can be rendered to block-level HTML. This    * method does not escape HTML.    *    * Adapted from the {@code wikify} method found in:    *   com.google.gwtexpui.safehtml.client.SafeHtml    *    * @param source The raw, unescaped comment in the Gerrit wiki-like format.    * @return List of block objects, each with unescaped comment content.    */
 DECL|method|parse (@ullable String source)
@@ -552,9 +562,21 @@ name|String
 name|p
 parameter_list|)
 block|{
+name|String
+name|quote
+init|=
+name|p
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\n\\s?>\\s?"
+argument_list|,
+literal|"\n"
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
-name|p
+name|quote
 operator|.
 name|startsWith
 argument_list|(
@@ -562,9 +584,9 @@ literal|"> "
 argument_list|)
 condition|)
 block|{
-name|p
+name|quote
 operator|=
-name|p
+name|quote
 operator|.
 name|substring
 argument_list|(
@@ -575,7 +597,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|p
+name|quote
 operator|.
 name|startsWith
 argument_list|(
@@ -583,9 +605,9 @@ literal|"> "
 argument_list|)
 condition|)
 block|{
-name|p
+name|quote
 operator|=
-name|p
+name|quote
 operator|.
 name|substring
 argument_list|(
@@ -610,19 +632,14 @@ name|QUOTE
 expr_stmt|;
 name|block
 operator|.
-name|text
+name|quotedBlocks
 operator|=
-name|p
+name|CommentFormatter
 operator|.
-name|replaceAll
+name|parse
 argument_list|(
-literal|"\n\\s?>\\s"
-argument_list|,
-literal|"\n"
+name|quote
 argument_list|)
-operator|.
-name|trim
-argument_list|()
 expr_stmt|;
 return|return
 name|block
