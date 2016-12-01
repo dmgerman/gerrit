@@ -88,6 +88,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Multimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -111,6 +125,24 @@ operator|.
 name|changes
 operator|.
 name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|RecipientType
 import|;
 end_import
 
@@ -175,6 +207,22 @@ operator|.
 name|restapi
 operator|.
 name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
 import|;
 end_import
 
@@ -1111,8 +1159,8 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into    * its parent.    *    * @param edit change edit to publish    * @throws NoSuchChangeException    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
-DECL|method|publish (final ChangeEdit edit, NotifyHandling notify)
+comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications    *        should be sent after the change edit is published.    * @param accountsToNotify Accounts that should be notified after the change    *        edit is published.    * @throws NoSuchChangeException    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
+DECL|method|publish (final ChangeEdit edit, NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|publish
@@ -1123,6 +1171,16 @@ name|edit
 parameter_list|,
 name|NotifyHandling
 name|notify
+parameter_list|,
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -1280,6 +1338,11 @@ operator|.
 name|setNotify
 argument_list|(
 name|notify
+argument_list|)
+operator|.
+name|setAccountsToNotify
+argument_list|(
+name|accountsToNotify
 argument_list|)
 decl_stmt|;
 name|StringBuilder

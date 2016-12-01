@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -68,71 +68,22 @@ name|changes
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|DefaultInput
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_comment
-comment|/** Input passed to {@code DELETE /changes/[id]/reviewers/[id]/votes/[label]}. */
-end_comment
-
-begin_class
-DECL|class|DeleteVoteInput
+begin_enum
+DECL|enum|RecipientType
 specifier|public
-class|class
-name|DeleteVoteInput
-block|{
-annotation|@
-name|DefaultInput
-DECL|field|label
-specifier|public
-name|String
-name|label
-decl_stmt|;
-comment|/** Who to send email notifications to after vote is deleted. */
-DECL|field|notify
-specifier|public
-name|NotifyHandling
-name|notify
-init|=
-name|NotifyHandling
-operator|.
-name|ALL
-decl_stmt|;
-DECL|field|notifyDetails
-specifier|public
-name|Map
-argument_list|<
+enum|enum
 name|RecipientType
-argument_list|,
-name|NotifyInfo
-argument_list|>
-name|notifyDetails
-decl_stmt|;
+block|{
+DECL|enumConstant|TO
+DECL|enumConstant|CC
+DECL|enumConstant|BCC
+name|TO
+block|,
+name|CC
+block|,
+name|BCC
 block|}
-end_class
+end_enum
 
 end_unit
 

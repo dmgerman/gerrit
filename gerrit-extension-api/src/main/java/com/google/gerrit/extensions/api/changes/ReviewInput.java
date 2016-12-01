@@ -256,6 +256,16 @@ name|NotifyHandling
 operator|.
 name|ALL
 decl_stmt|;
+DECL|field|notifyDetails
+specifier|public
+name|Map
+argument_list|<
+name|RecipientType
+argument_list|,
+name|NotifyInfo
+argument_list|>
+name|notifyDetails
+decl_stmt|;
 comment|/**    * If true check to make sure that the comments being posted aren't already    * present.    */
 DECL|field|omitDuplicateComments
 specifier|public

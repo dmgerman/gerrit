@@ -72,6 +72,34 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Multimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -113,6 +141,24 @@ operator|.
 name|changes
 operator|.
 name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|RecipientType
 import|;
 end_import
 
@@ -503,9 +549,15 @@ operator|.
 name|Factory
 name|abandonOpFactory
 decl_stmt|;
+DECL|field|notifyUtil
+specifier|private
+specifier|final
+name|NotifyUtil
+name|notifyUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Abandon ( Provider<ReviewDb> dbProvider, ChangeJson.Factory json, BatchUpdate.Factory batchUpdateFactory, AbandonOp.Factory abandonOpFactory)
+DECL|method|Abandon ( Provider<ReviewDb> dbProvider, ChangeJson.Factory json, BatchUpdate.Factory batchUpdateFactory, AbandonOp.Factory abandonOpFactory, NotifyUtil notifyUtil)
 name|Abandon
 parameter_list|(
 name|Provider
@@ -528,6 +580,9 @@ name|AbandonOp
 operator|.
 name|Factory
 name|abandonOpFactory
+parameter_list|,
+name|NotifyUtil
+name|notifyUtil
 parameter_list|)
 block|{
 name|this
@@ -553,6 +608,12 @@ operator|.
 name|abandonOpFactory
 operator|=
 name|abandonOpFactory
+expr_stmt|;
+name|this
+operator|.
+name|notifyUtil
+operator|=
+name|notifyUtil
 expr_stmt|;
 block|}
 annotation|@
@@ -619,6 +680,15 @@ argument_list|,
 name|input
 operator|.
 name|notify
+argument_list|,
+name|notifyUtil
+operator|.
+name|resolveAccounts
+argument_list|(
+name|input
+operator|.
+name|notifyDetails
+argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
@@ -660,6 +730,11 @@ argument_list|,
 name|NotifyHandling
 operator|.
 name|ALL
+argument_list|,
+name|ImmutableListMultimap
+operator|.
+name|of
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -689,10 +764,15 @@ argument_list|,
 name|NotifyHandling
 operator|.
 name|ALL
+argument_list|,
+name|ImmutableListMultimap
+operator|.
+name|of
+argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|abandon (ChangeControl control, String msgTxt, NotifyHandling notifyHandling)
+DECL|method|abandon (ChangeControl control, String msgTxt, NotifyHandling notifyHandling, Multimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|Change
 name|abandon
@@ -705,6 +785,16 @@ name|msgTxt
 parameter_list|,
 name|NotifyHandling
 name|notifyHandling
+parameter_list|,
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -749,6 +839,8 @@ argument_list|,
 name|msgTxt
 argument_list|,
 name|notifyHandling
+argument_list|,
+name|accountsToNotify
 argument_list|)
 decl_stmt|;
 try|try
@@ -809,7 +901,7 @@ argument_list|()
 return|;
 block|}
 comment|/**    * If an extension has more than one changes to abandon that belong to the    * same project, they should use the batch instead of abandoning one by one.    *<p>    * It's the caller's responsibility to ensure that all jobs inside the same    * batch have the matching project from its ChangeControl. Violations will    * result in a ResourceConflictException.    */
-DECL|method|batchAbandon (Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt, NotifyHandling notifyHandling)
+DECL|method|batchAbandon (Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt, NotifyHandling notifyHandling, Multimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|batchAbandon
@@ -833,6 +925,16 @@ name|msgTxt
 parameter_list|,
 name|NotifyHandling
 name|notifyHandling
+parameter_list|,
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -964,6 +1066,8 @@ argument_list|,
 name|msgTxt
 argument_list|,
 name|notifyHandling
+argument_list|,
+name|accountsToNotify
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1015,6 +1119,11 @@ argument_list|,
 name|NotifyHandling
 operator|.
 name|ALL
+argument_list|,
+name|ImmutableListMultimap
+operator|.
+name|of
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1055,6 +1164,11 @@ argument_list|,
 name|NotifyHandling
 operator|.
 name|ALL
+argument_list|,
+name|ImmutableListMultimap
+operator|.
+name|of
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

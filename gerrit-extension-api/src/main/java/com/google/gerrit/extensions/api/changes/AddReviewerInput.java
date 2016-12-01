@@ -118,6 +118,16 @@ name|DefaultInput
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_class
 DECL|class|AddReviewerInput
 specifier|public
@@ -145,6 +155,16 @@ DECL|field|notify
 specifier|public
 name|NotifyHandling
 name|notify
+decl_stmt|;
+DECL|field|notifyDetails
+specifier|public
+name|Map
+argument_list|<
+name|RecipientType
+argument_list|,
+name|NotifyInfo
+argument_list|>
+name|notifyDetails
 decl_stmt|;
 DECL|method|confirmed ()
 specifier|public

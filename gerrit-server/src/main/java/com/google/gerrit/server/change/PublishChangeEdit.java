@@ -540,13 +540,22 @@ specifier|final
 name|ChangeEditUtil
 name|editUtil
 decl_stmt|;
+DECL|field|notifyUtil
+specifier|private
+specifier|final
+name|NotifyUtil
+name|notifyUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Publish (ChangeEditUtil editUtil)
+DECL|method|Publish (ChangeEditUtil editUtil, NotifyUtil notifyUtil)
 name|Publish
 parameter_list|(
 name|ChangeEditUtil
 name|editUtil
+parameter_list|,
+name|NotifyUtil
+name|notifyUtil
 parameter_list|)
 block|{
 name|this
@@ -554,6 +563,12 @@ operator|.
 name|editUtil
 operator|=
 name|editUtil
+expr_stmt|;
+name|this
+operator|.
+name|notifyUtil
+operator|=
+name|notifyUtil
 expr_stmt|;
 block|}
 annotation|@
@@ -689,6 +704,15 @@ argument_list|,
 name|in
 operator|.
 name|notify
+argument_list|,
+name|notifyUtil
+operator|.
+name|resolveAccounts
+argument_list|(
+name|in
+operator|.
+name|notifyDetails
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
