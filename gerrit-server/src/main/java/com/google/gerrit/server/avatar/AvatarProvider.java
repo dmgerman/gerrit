@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|NotImplementedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -129,6 +145,41 @@ name|IdentifiedUser
 name|forUser
 parameter_list|)
 function_decl|;
+comment|/**    * Set the avatar image URL for specified user and specified size.    *    *<p>It is the default method (not interface method declaration) for back compatibility with old    * code.    *    * @param forUser The user for which need to change the avatar image.    * @param url The avatar image URL for the specified user.    * @param imageSize The avatar image size in pixels. If imageSize have a zero value this indicates    *     to set URL for default size that provider determines.    * @throws Exception if an error occurred.    */
+DECL|method|setUrl (IdentifiedUser forUser, String url, int imageSize)
+specifier|default
+name|void
+name|setUrl
+parameter_list|(
+name|IdentifiedUser
+name|forUser
+parameter_list|,
+name|String
+name|url
+parameter_list|,
+name|int
+name|imageSize
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+comment|/**    * Indicates whether or not the provider allows to set the image URL.    *    *<p>It is the default method (not interface method declaration) for back compatibility with old    * code.    *    * @return    *<ul>    *<li>true - avatar image URL could be set.    *<li>false - avatar image URL could not be set (for example not Implemented).    *</ul>    */
+DECL|method|canSetUrl ()
+specifier|default
+name|boolean
+name|canSetUrl
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_interface
 
