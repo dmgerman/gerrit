@@ -644,8 +644,6 @@ DECL|field|detailedCommitMessage
 specifier|private
 name|boolean
 name|detailedCommitMessage
-init|=
-literal|false
 decl_stmt|;
 DECL|field|postMessage
 specifier|private
