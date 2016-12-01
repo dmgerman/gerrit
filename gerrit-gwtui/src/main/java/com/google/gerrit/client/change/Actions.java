@@ -376,6 +376,8 @@ init|=
 block|{
 literal|"abandon"
 block|,
+literal|"assignee"
+block|,
 literal|"cherrypick"
 block|,
 literal|"description"
