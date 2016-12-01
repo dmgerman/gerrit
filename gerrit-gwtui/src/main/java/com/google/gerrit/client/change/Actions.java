@@ -378,6 +378,8 @@ literal|"abandon"
 block|,
 literal|"cherrypick"
 block|,
+literal|"description"
+block|,
 literal|"followup"
 block|,
 literal|"hashtags"
@@ -395,7 +397,7 @@ block|,
 literal|"topic"
 block|,
 literal|"/"
-block|,}
+block|,   }
 decl_stmt|;
 DECL|interface|Binder
 interface|interface
