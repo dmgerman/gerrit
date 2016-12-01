@@ -116,7 +116,7 @@ name|change
 operator|.
 name|StalenessChecker
 operator|.
-name|isStale
+name|refsAreStale
 import|;
 end_import
 
@@ -1408,7 +1408,7 @@ decl_stmt|;
 comment|// Not stale.
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1460,7 +1460,7 @@ expr_stmt|;
 comment|// Wrong ref value.
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1509,7 +1509,7 @@ expr_stmt|;
 comment|// Swapped repos.
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1595,7 +1595,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1647,7 +1647,7 @@ expr_stmt|;
 comment|// Ignore ref not mentioned.
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1685,7 +1685,7 @@ expr_stmt|;
 comment|// One ref wrong.
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1770,7 +1770,7 @@ decl_stmt|;
 comment|// ref1 is only ref matching pattern.
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1842,7 +1842,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -1888,7 +1888,7 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -2002,7 +2002,7 @@ expr_stmt|;
 comment|// ref1 is only ref matching pattern.
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -2074,7 +2074,7 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
@@ -2120,7 +2120,7 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|isStale
+name|refsAreStale
 argument_list|(
 name|repoManager
 argument_list|,
