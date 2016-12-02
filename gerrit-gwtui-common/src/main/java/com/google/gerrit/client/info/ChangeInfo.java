@@ -1886,9 +1886,50 @@ name|value
 parameter_list|()
 comment|/*-{ return this.value || 0; }-*/
 function_decl|;
+DECL|method|permittedVotingRange ()
+specifier|public
+specifier|final
+specifier|native
+name|VotingRangeInfo
+name|permittedVotingRange
+parameter_list|()
+comment|/*-{ return this.permitted_voting_range; }-*/
+function_decl|;
 DECL|method|ApprovalInfo ()
 specifier|protected
 name|ApprovalInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|VotingRangeInfo
+specifier|public
+specifier|static
+class|class
+name|VotingRangeInfo
+extends|extends
+name|AccountInfo
+block|{
+DECL|method|min ()
+specifier|public
+specifier|final
+specifier|native
+name|short
+name|min
+parameter_list|()
+comment|/*-{ return this.min || 0; }-*/
+function_decl|;
+DECL|method|max ()
+specifier|public
+specifier|final
+specifier|native
+name|short
+name|max
+parameter_list|()
+comment|/*-{ return this.max || 0; }-*/
+function_decl|;
+DECL|method|VotingRangeInfo ()
+specifier|protected
+name|VotingRangeInfo
 parameter_list|()
 block|{     }
 block|}
