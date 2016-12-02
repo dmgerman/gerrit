@@ -156,20 +156,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|account
 operator|.
 name|GroupBackend
@@ -619,13 +605,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateProjectConfig (CurrentUser user, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
+DECL|method|updateProjectConfig (ProjectControl projectControl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 name|ProjectAccess
 name|updateProjectConfig
 parameter_list|(
-name|CurrentUser
-name|user
+name|ProjectControl
+name|projectControl
 parameter_list|,
 name|ProjectConfig
 name|config
@@ -676,7 +662,10 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|user
+name|projectControl
+operator|.
+name|getUser
+argument_list|()
 operator|.
 name|asIdentifiedUser
 argument_list|()

@@ -332,20 +332,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|account
 operator|.
 name|GroupBackend
@@ -1248,9 +1234,6 @@ return|return
 name|updateProjectConfig
 argument_list|(
 name|projectControl
-operator|.
-name|getUser
-argument_list|()
 argument_list|,
 name|config
 argument_list|,
@@ -1275,14 +1258,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|updateProjectConfig (CurrentUser user, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
+DECL|method|updateProjectConfig (ProjectControl projectControl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 specifier|abstract
 name|T
 name|updateProjectConfig
 parameter_list|(
-name|CurrentUser
-name|user
+name|ProjectControl
+name|projectControl
 parameter_list|,
 name|ProjectConfig
 name|config
@@ -1301,6 +1284,8 @@ throws|,
 name|ConfigInvalidException
 throws|,
 name|OrmException
+throws|,
+name|PermissionDeniedException
 function_decl|;
 DECL|method|replace (ProjectConfig config, Set<String> toDelete, AccessSection section)
 specifier|private
