@@ -269,6 +269,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|deleteTags (DeleteTagsInput in)
+name|void
+name|deleteTags
+parameter_list|(
+name|DeleteTagsInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|class|ListRefsRequest
 specifier|abstract
 class|class
@@ -796,6 +806,25 @@ name|void
 name|deleteBranches
 parameter_list|(
 name|DeleteBranchesInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|deleteTags (DeleteTagsInput in)
+specifier|public
+name|void
+name|deleteTags
+parameter_list|(
+name|DeleteTagsInput
 name|in
 parameter_list|)
 throws|throws

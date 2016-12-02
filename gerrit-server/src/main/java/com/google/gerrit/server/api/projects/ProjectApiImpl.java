@@ -244,6 +244,24 @@ name|api
 operator|.
 name|projects
 operator|.
+name|DeleteTagsInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|projects
+operator|.
 name|DescriptionInput
 import|;
 end_import
@@ -491,6 +509,22 @@ operator|.
 name|project
 operator|.
 name|DeleteBranches
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|DeleteTags
 import|;
 end_import
 
@@ -921,9 +955,15 @@ specifier|final
 name|DeleteBranches
 name|deleteBranches
 decl_stmt|;
+DECL|field|deleteTags
+specifier|private
+specifier|final
+name|DeleteTags
+name|deleteTags
+decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|CurrentUser
@@ -989,6 +1029,9 @@ name|listTags
 parameter_list|,
 name|DeleteBranches
 name|deleteBranches
+parameter_list|,
+name|DeleteTags
+name|deleteTags
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1034,6 +1077,8 @@ name|listTags
 argument_list|,
 name|deleteBranches
 argument_list|,
+name|deleteTags
+argument_list|,
 name|project
 argument_list|,
 literal|null
@@ -1042,7 +1087,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, @Assisted String name)
+DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|CurrentUser
@@ -1109,6 +1154,9 @@ parameter_list|,
 name|DeleteBranches
 name|deleteBranches
 parameter_list|,
+name|DeleteTags
+name|deleteTags
+parameter_list|,
 annotation|@
 name|Assisted
 name|String
@@ -1153,13 +1201,15 @@ name|listTags
 argument_list|,
 name|deleteBranches
 argument_list|,
+name|deleteTags
+argument_list|,
 literal|null
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, ProjectResource project, String name)
+DECL|method|ProjectApiImpl (CurrentUser user, CreateProject.Factory createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, TagApiImpl.Factory tagApiFactory, GetAccess getAccess, SetAccess setAccess, GetConfig getConfig, PutConfig putConfig, ListBranches listBranches, ListTags listTags, DeleteBranches deleteBranches, DeleteTags deleteTags, ProjectResource project, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -1226,6 +1276,9 @@ name|listTags
 parameter_list|,
 name|DeleteBranches
 name|deleteBranches
+parameter_list|,
+name|DeleteTags
+name|deleteTags
 parameter_list|,
 name|ProjectResource
 name|project
@@ -1353,6 +1406,12 @@ operator|.
 name|deleteBranches
 operator|=
 name|deleteBranches
+expr_stmt|;
+name|this
+operator|.
+name|deleteTags
+operator|=
+name|deleteTags
 expr_stmt|;
 block|}
 annotation|@
@@ -2179,6 +2238,51 @@ operator|new
 name|RestApiException
 argument_list|(
 literal|"Cannot delete branches"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|deleteTags (DeleteTagsInput in)
+specifier|public
+name|void
+name|deleteTags
+parameter_list|(
+name|DeleteTagsInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+try|try
+block|{
+name|deleteTags
+operator|.
+name|apply
+argument_list|(
+name|checkExists
+argument_list|()
+argument_list|,
+name|in
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+decl||
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RestApiException
+argument_list|(
+literal|"Cannot delete tags"
 argument_list|,
 name|e
 argument_list|)
