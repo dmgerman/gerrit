@@ -128,11 +128,6 @@ name|BranchInfo
 extends|extends
 name|RefInfo
 block|{
-DECL|field|canDelete
-specifier|public
-name|Boolean
-name|canDelete
-decl_stmt|;
 DECL|field|actions
 specifier|public
 name|Map

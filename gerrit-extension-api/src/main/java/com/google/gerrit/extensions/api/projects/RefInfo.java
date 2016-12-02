@@ -84,6 +84,11 @@ specifier|public
 name|String
 name|revision
 decl_stmt|;
+DECL|field|canDelete
+specifier|public
+name|Boolean
+name|canDelete
+decl_stmt|;
 block|}
 end_class
 
