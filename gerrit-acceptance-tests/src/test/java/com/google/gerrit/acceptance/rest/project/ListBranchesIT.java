@@ -82,9 +82,9 @@ name|rest
 operator|.
 name|project
 operator|.
-name|BranchAssert
+name|RefAssert
 operator|.
-name|assertBranches
+name|assertRefs
 import|;
 end_import
 
@@ -102,7 +102,7 @@ name|rest
 operator|.
 name|project
 operator|.
-name|BranchAssert
+name|RefAssert
 operator|.
 name|assertRefNames
 import|;
@@ -356,7 +356,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assertBranches
+name|assertRefs
 argument_list|(
 name|ImmutableList
 operator|.
@@ -429,7 +429,7 @@ operator|.
 name|name
 argument_list|()
 decl_stmt|;
-name|assertBranches
+name|assertRefs
 argument_list|(
 name|ImmutableList
 operator|.
@@ -522,7 +522,7 @@ name|user
 argument_list|)
 expr_stmt|;
 comment|// refs/meta/config is hidden since user is no project owner
-name|assertBranches
+name|assertRefs
 argument_list|(
 name|ImmutableList
 operator|.
@@ -595,7 +595,7 @@ name|user
 argument_list|)
 expr_stmt|;
 comment|// refs/meta/config is hidden since user is no project owner
-name|assertBranches
+name|assertRefs
 argument_list|(
 name|ImmutableList
 operator|.

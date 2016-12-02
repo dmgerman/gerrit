@@ -112,7 +112,7 @@ name|api
 operator|.
 name|projects
 operator|.
-name|BranchInfo
+name|RefInfo
 import|;
 end_import
 
@@ -127,38 +127,42 @@ import|;
 end_import
 
 begin_class
-DECL|class|BranchAssert
+DECL|class|RefAssert
 specifier|public
 class|class
-name|BranchAssert
+name|RefAssert
 block|{
-DECL|method|assertBranches (List<BranchInfo> expectedBranches, List<BranchInfo> actualBranches)
+DECL|method|assertRefs (List<? extends RefInfo> expectedRefs, List<? extends RefInfo> actualRefs)
 specifier|public
 specifier|static
 name|void
-name|assertBranches
+name|assertRefs
 parameter_list|(
 name|List
 argument_list|<
-name|BranchInfo
+name|?
+extends|extends
+name|RefInfo
 argument_list|>
-name|expectedBranches
+name|expectedRefs
 parameter_list|,
 name|List
 argument_list|<
-name|BranchInfo
+name|?
+extends|extends
+name|RefInfo
 argument_list|>
-name|actualBranches
+name|actualRefs
 parameter_list|)
 block|{
 name|assertRefNames
 argument_list|(
 name|refs
 argument_list|(
-name|expectedBranches
+name|expectedRefs
 argument_list|)
 argument_list|,
-name|actualBranches
+name|actualRefs
 argument_list|)
 expr_stmt|;
 for|for
@@ -170,7 +174,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|expectedBranches
+name|expectedRefs
 operator|.
 name|size
 argument_list|()
@@ -179,16 +183,16 @@ name|i
 operator|++
 control|)
 block|{
-name|assertBranchInfo
+name|assertRefInfo
 argument_list|(
-name|expectedBranches
+name|expectedRefs
 operator|.
 name|get
 argument_list|(
 name|i
 argument_list|)
 argument_list|,
-name|actualBranches
+name|actualRefs
 operator|.
 name|get
 argument_list|(
@@ -198,7 +202,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|assertRefNames (Iterable<String> expectedRefs, Iterable<BranchInfo> actualBranches)
+DECL|method|assertRefNames (Iterable<String> expectedRefs, Iterable<? extends RefInfo> actualRefs)
 specifier|public
 specifier|static
 name|void
@@ -212,9 +216,11 @@ name|expectedRefs
 parameter_list|,
 name|Iterable
 argument_list|<
-name|BranchInfo
+name|?
+extends|extends
+name|RefInfo
 argument_list|>
-name|actualBranches
+name|actualRefs
 parameter_list|)
 block|{
 name|Iterable
@@ -225,7 +231,7 @@ name|actualNames
 init|=
 name|refs
 argument_list|(
-name|actualBranches
+name|actualRefs
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -242,16 +248,16 @@ name|inOrder
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertBranchInfo (BranchInfo expected, BranchInfo actual)
+DECL|method|assertRefInfo (RefInfo expected, RefInfo actual)
 specifier|public
 specifier|static
 name|void
-name|assertBranchInfo
+name|assertRefInfo
 parameter_list|(
-name|BranchInfo
+name|RefInfo
 name|expected
 parameter_list|,
-name|BranchInfo
+name|RefInfo
 name|actual
 parameter_list|)
 block|{
@@ -332,7 +338,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|refs (Iterable<BranchInfo> infos)
+DECL|method|refs (Iterable<? extends RefInfo> infos)
 specifier|private
 specifier|static
 name|Iterable
@@ -343,7 +349,9 @@ name|refs
 parameter_list|(
 name|Iterable
 argument_list|<
-name|BranchInfo
+name|?
+extends|extends
+name|RefInfo
 argument_list|>
 name|infos
 parameter_list|)

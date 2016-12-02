@@ -98,7 +98,7 @@ name|rest
 operator|.
 name|project
 operator|.
-name|BranchAssert
+name|RefAssert
 operator|.
 name|assertRefNames
 import|;
