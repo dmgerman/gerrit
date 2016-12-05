@@ -421,6 +421,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|this
+operator|.
 name|motd
 operator|.
 name|size
@@ -437,6 +439,8 @@ name|SafeHtml
 operator|.
 name|asis
 argument_list|(
+name|this
+operator|.
 name|motd
 operator|.
 name|get
@@ -458,6 +462,8 @@ operator|.
 name|Message
 name|m
 range|:
+name|this
+operator|.
 name|motd
 control|)
 block|{
