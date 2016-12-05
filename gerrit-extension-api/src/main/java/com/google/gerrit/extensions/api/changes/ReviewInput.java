@@ -128,6 +128,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|FixSuggestionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|DefaultInput
@@ -338,6 +354,14 @@ argument_list|,
 name|String
 argument_list|>
 name|properties
+decl_stmt|;
+DECL|field|fixSuggestions
+specifier|public
+name|List
+argument_list|<
+name|FixSuggestionInfo
+argument_list|>
+name|fixSuggestions
 decl_stmt|;
 block|}
 DECL|method|message (String msg)
