@@ -106,20 +106,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|FluentIterable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|ImmutableList
 import|;
 end_import
@@ -1664,7 +1650,7 @@ operator|.
 name|getRefName
 argument_list|()
 decl_stmt|;
-name|FluentIterable
+name|List
 argument_list|<
 name|DiffWebLinkInfo
 argument_list|>
@@ -1758,9 +1744,6 @@ condition|?
 literal|null
 else|:
 name|links
-operator|.
-name|toList
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2226,7 +2209,7 @@ name|String
 name|file
 parameter_list|)
 block|{
-name|FluentIterable
+name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -2255,9 +2238,6 @@ condition|?
 literal|null
 else|:
 name|links
-operator|.
-name|toList
-argument_list|()
 return|;
 block|}
 DECL|method|setBase (String base)

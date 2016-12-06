@@ -9206,7 +9206,7 @@ condition|(
 name|addLinks
 condition|)
 block|{
-name|FluentIterable
+name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -9236,9 +9236,6 @@ condition|?
 literal|null
 else|:
 name|links
-operator|.
-name|toList
-argument_list|()
 expr_stmt|;
 block|}
 for|for

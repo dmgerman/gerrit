@@ -78,20 +78,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|FluentIterable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Maps
 import|;
 end_import
@@ -1469,7 +1455,7 @@ name|String
 name|projectName
 parameter_list|)
 block|{
-name|FluentIterable
+name|List
 argument_list|<
 name|WebLinkInfoCommon
 argument_list|>
@@ -1499,9 +1485,6 @@ condition|?
 literal|null
 else|:
 name|links
-operator|.
-name|toList
-argument_list|()
 return|;
 block|}
 DECL|method|buildGroupInfo (List<AccessSection> local)

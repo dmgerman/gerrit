@@ -356,6 +356,16 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -667,7 +677,7 @@ block|}
 comment|/**    *    * @param project Project name.    * @param commit SHA1 of commit.    * @return Links for patch sets.    */
 DECL|method|getPatchSetLinks (Project.NameKey project, String commit)
 specifier|public
-name|FluentIterable
+name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -706,7 +716,7 @@ block|}
 comment|/**    *    * @param project Project name.    * @param revision SHA1 of revision.    * @param file File name.    * @return Links for files.    */
 DECL|method|getFileLinks (String project, String revision, String file)
 specifier|public
-name|FluentIterable
+name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -745,7 +755,7 @@ block|}
 comment|/**    *    * @param project Project name.    * @param revision SHA1 of revision.    * @param file File name.    * @return Links for file history    */
 DECL|method|getFileHistoryLinks ( String project, String revision, String file)
 specifier|public
-name|FluentIterable
+name|List
 argument_list|<
 name|WebLinkInfoCommon
 argument_list|>
@@ -848,12 +858,15 @@ name|filter
 argument_list|(
 name|INVALID_WEBLINK_COMMON
 argument_list|)
+operator|.
+name|toList
+argument_list|()
 return|;
 block|}
 comment|/**    *    * @param project Project name.    * @param patchSetIdA Patch set ID of side A,<code>null</code> if no base    *        patch set was selected.    * @param revisionA SHA1 of revision of side A.    * @param fileA File name of side A.    * @param patchSetIdB Patch set ID of side B.    * @param revisionB SHA1 of revision of side B.    * @param fileB File name of side B.    * @return Links for file diffs.    */
 DECL|method|getDiffLinks (final String project, final int changeId, final Integer patchSetIdA, final String revisionA, final String fileA, final int patchSetIdB, final String revisionB, final String fileB)
 specifier|public
-name|FluentIterable
+name|List
 argument_list|<
 name|DiffWebLinkInfo
 argument_list|>
@@ -930,12 +943,15 @@ name|filter
 argument_list|(
 name|INVALID_WEBLINK
 argument_list|)
+operator|.
+name|toList
+argument_list|()
 return|;
 block|}
 comment|/**    *    * @param project Project name.    * @return Links for projects.    */
 DECL|method|getProjectLinks (final String project)
 specifier|public
-name|FluentIterable
+name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -965,7 +981,7 @@ block|}
 comment|/**    *    * @param project Project name    * @param branch Branch name    * @return Links for branches.    */
 DECL|method|getBranchLinks (final String project, final String branch)
 specifier|public
-name|FluentIterable
+name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -1005,7 +1021,7 @@ name|T
 extends|extends
 name|WebLink
 parameter_list|>
-name|FluentIterable
+name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -1043,6 +1059,9 @@ name|filter
 argument_list|(
 name|INVALID_WEBLINK
 argument_list|)
+operator|.
+name|toList
+argument_list|()
 return|;
 block|}
 block|}
