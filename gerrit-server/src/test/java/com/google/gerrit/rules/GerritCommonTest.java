@@ -481,10 +481,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGerritCommon ()
+DECL|method|gerritCommon ()
 specifier|public
 name|void
-name|testGerritCommon
+name|gerritCommon
 parameter_list|()
 block|{
 name|runPrologBasedTests
@@ -493,10 +493,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReductionLimit ()
+DECL|method|reductionLimit ()
 specifier|public
 name|void
-name|testReductionLimit
+name|reductionLimit
 parameter_list|()
 throws|throws
 name|CompileException

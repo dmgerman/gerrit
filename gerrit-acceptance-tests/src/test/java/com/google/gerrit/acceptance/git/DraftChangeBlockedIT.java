@@ -196,10 +196,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushDraftChange_Blocked ()
+DECL|method|pushDraftChange_Blocked ()
 specifier|public
 name|void
-name|testPushDraftChange_Blocked
+name|pushDraftChange_Blocked
 parameter_list|()
 throws|throws
 name|Exception
@@ -225,10 +225,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPushDraftChangeMagic_Blocked ()
+DECL|method|pushDraftChangeMagic_Blocked ()
 specifier|public
 name|void
-name|testPushDraftChangeMagic_Blocked
+name|pushDraftChangeMagic_Blocked
 parameter_list|()
 throws|throws
 name|Exception

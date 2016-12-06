@@ -118,10 +118,10 @@ name|LineMapperTest
 block|{
 annotation|@
 name|Test
-DECL|method|testAppendCommon ()
+DECL|method|appendCommon ()
 specifier|public
 name|void
-name|testAppendCommon
+name|appendCommon
 parameter_list|()
 block|{
 name|LineMapper
@@ -161,10 +161,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppendInsert ()
+DECL|method|appendInsert ()
 specifier|public
 name|void
-name|testAppendInsert
+name|appendInsert
 parameter_list|()
 block|{
 name|LineMapper
@@ -204,10 +204,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppendDelete ()
+DECL|method|appendDelete ()
 specifier|public
 name|void
-name|testAppendDelete
+name|appendDelete
 parameter_list|()
 block|{
 name|LineMapper
@@ -247,10 +247,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFindInCommon ()
+DECL|method|findInCommon ()
 specifier|public
 name|void
-name|testFindInCommon
+name|findInCommon
 parameter_list|()
 block|{
 name|LineMapper
@@ -314,10 +314,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFindAfterCommon ()
+DECL|method|findAfterCommon ()
 specifier|public
 name|void
-name|testFindAfterCommon
+name|findAfterCommon
 parameter_list|()
 block|{
 name|LineMapper
@@ -381,10 +381,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFindInInsertGap ()
+DECL|method|findInInsertGap ()
 specifier|public
 name|void
-name|testFindInInsertGap
+name|findInInsertGap
 parameter_list|()
 block|{
 name|LineMapper
@@ -427,10 +427,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFindAfterInsertGap ()
+DECL|method|findAfterInsertGap ()
 specifier|public
 name|void
-name|testFindAfterInsertGap
+name|findAfterInsertGap
 parameter_list|()
 block|{
 name|LineMapper
@@ -494,10 +494,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFindInDeleteGap ()
+DECL|method|findInDeleteGap ()
 specifier|public
 name|void
-name|testFindInDeleteGap
+name|findInDeleteGap
 parameter_list|()
 block|{
 name|LineMapper
@@ -540,10 +540,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFindAfterDeleteGap ()
+DECL|method|findAfterDeleteGap ()
 specifier|public
 name|void
-name|testFindAfterDeleteGap
+name|findAfterDeleteGap
 parameter_list|()
 block|{
 name|LineMapper
@@ -607,10 +607,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceWithInsertInB ()
+DECL|method|replaceWithInsertInB ()
 specifier|public
 name|void
-name|testReplaceWithInsertInB
+name|replaceWithInsertInB
 parameter_list|()
 block|{
 comment|// 0 c c

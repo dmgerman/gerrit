@@ -188,10 +188,10 @@ block|}
 comment|/**    * Test that only lines with at least one column of text emit output.    */
 annotation|@
 name|Test
-DECL|method|testEmptyLine ()
+DECL|method|emptyLine ()
 specifier|public
 name|void
-name|testEmptyLine
+name|emptyLine
 parameter_list|()
 block|{
 specifier|final
@@ -276,10 +276,10 @@ block|}
 comment|/**    * Test that there is no output if no columns are ever added.    */
 annotation|@
 name|Test
-DECL|method|testEmptyOutput ()
+DECL|method|emptyOutput ()
 specifier|public
 name|void
-name|testEmptyOutput
+name|emptyOutput
 parameter_list|()
 block|{
 specifier|final
@@ -331,10 +331,10 @@ block|}
 comment|/**    * Test that there is no output (nor any exceptions) if we finalize    * the output immediately after the creation of the {@link ColumnFormatter}.    */
 annotation|@
 name|Test
-DECL|method|testNoNextLine ()
+DECL|method|noNextLine ()
 specifier|public
 name|void
-name|testNoNextLine
+name|noNextLine
 parameter_list|()
 block|{
 specifier|final
@@ -376,10 +376,10 @@ block|}
 comment|/**    * Test that the text in added columns is escaped while the column separator    * (which of course shouldn't be escaped) is left alone.    */
 annotation|@
 name|Test
-DECL|method|testEscapingTakesPlace ()
+DECL|method|escapingTakesPlace ()
 specifier|public
 name|void
-name|testEscapingTakesPlace
+name|escapingTakesPlace
 parameter_list|()
 block|{
 specifier|final
@@ -440,10 +440,10 @@ block|}
 comment|/**    * Test that we get the correct output with multi-line input where the number    * of columns in each line varies.    */
 annotation|@
 name|Test
-DECL|method|testMultiLineDifferentColumnCount ()
+DECL|method|multiLineDifferentColumnCount ()
 specifier|public
 name|void
-name|testMultiLineDifferentColumnCount
+name|multiLineDifferentColumnCount
 parameter_list|()
 block|{
 specifier|final
@@ -530,10 +530,10 @@ block|}
 comment|/**    * Test that we get the correct output with a single column of input.    */
 annotation|@
 name|Test
-DECL|method|testOneColumn ()
+DECL|method|oneColumn ()
 specifier|public
 name|void
-name|testOneColumn
+name|oneColumn
 parameter_list|()
 block|{
 specifier|final

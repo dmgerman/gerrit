@@ -444,10 +444,10 @@ name|InitTestCase
 block|{
 annotation|@
 name|Test
-DECL|method|testUpgrade ()
+DECL|method|upgrade ()
 specifier|public
 name|void
-name|testUpgrade
+name|upgrade
 parameter_list|()
 throws|throws
 name|IOException

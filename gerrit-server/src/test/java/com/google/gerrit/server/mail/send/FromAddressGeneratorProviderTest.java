@@ -524,10 +524,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDefaultIsMIXED ()
+DECL|method|defaultIsMIXED ()
 specifier|public
 name|void
-name|testDefaultIsMIXED
+name|defaultIsMIXED
 parameter_list|()
 block|{
 name|assertThat
@@ -548,10 +548,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSelectUSER ()
+DECL|method|selectUSER ()
 specifier|public
 name|void
-name|testSelectUSER
+name|selectUSER
 parameter_list|()
 block|{
 name|setFrom
@@ -617,10 +617,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUSER_FullyConfiguredUser ()
+DECL|method|USER_FullyConfiguredUser ()
 specifier|public
 name|void
-name|testUSER_FullyConfiguredUser
+name|USER_FullyConfiguredUser
 parameter_list|()
 block|{
 name|setFrom
@@ -712,10 +712,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUSER_NoFullNameUser ()
+DECL|method|USER_NoFullNameUser ()
 specifier|public
 name|void
-name|testUSER_NoFullNameUser
+name|USER_NoFullNameUser
 parameter_list|()
 block|{
 name|setFrom
@@ -799,10 +799,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUSER_NoPreferredEmailUser ()
+DECL|method|USER_NoPreferredEmailUser ()
 specifier|public
 name|void
-name|testUSER_NoPreferredEmailUser
+name|USER_NoPreferredEmailUser
 parameter_list|()
 block|{
 name|setFrom
@@ -893,10 +893,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUSER_NullUser ()
+DECL|method|USER_NullUser ()
 specifier|public
 name|void
-name|testUSER_NullUser
+name|USER_NullUser
 parameter_list|()
 block|{
 name|setFrom
@@ -969,10 +969,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUSERAllowDomain ()
+DECL|method|USERAllowDomain ()
 specifier|public
 name|void
-name|testUSERAllowDomain
+name|USERAllowDomain
 parameter_list|()
 block|{
 name|setFrom
@@ -1074,10 +1074,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUSERNoAllowDomain ()
+DECL|method|USERNoAllowDomain ()
 specifier|public
 name|void
-name|testUSERNoAllowDomain
+name|USERNoAllowDomain
 parameter_list|()
 block|{
 name|setFrom
@@ -1184,10 +1184,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUSERAllowDomainTwice ()
+DECL|method|USERAllowDomainTwice ()
 specifier|public
 name|void
-name|testUSERAllowDomainTwice
+name|USERAllowDomainTwice
 parameter_list|()
 block|{
 name|setFrom
@@ -1299,10 +1299,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUSERAllowDomainTwiceReverse ()
+DECL|method|USERAllowDomainTwiceReverse ()
 specifier|public
 name|void
-name|testUSERAllowDomainTwiceReverse
+name|USERAllowDomainTwiceReverse
 parameter_list|()
 block|{
 name|setFrom
@@ -1419,10 +1419,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUSERAllowTwoDomains ()
+DECL|method|USERAllowTwoDomains ()
 specifier|public
 name|void
-name|testUSERAllowTwoDomains
+name|USERAllowTwoDomains
 parameter_list|()
 block|{
 name|setFrom
@@ -1526,10 +1526,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSelectSERVER ()
+DECL|method|selectSERVER ()
 specifier|public
 name|void
-name|testSelectSERVER
+name|selectSERVER
 parameter_list|()
 block|{
 name|setFrom
@@ -1595,10 +1595,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSERVER_FullyConfiguredUser ()
+DECL|method|SERVER_FullyConfiguredUser ()
 specifier|public
 name|void
-name|testSERVER_FullyConfiguredUser
+name|SERVER_FullyConfiguredUser
 parameter_list|()
 block|{
 name|setFrom
@@ -1696,10 +1696,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSERVER_NullUser ()
+DECL|method|SERVER_NullUser ()
 specifier|public
 name|void
-name|testSERVER_NullUser
+name|SERVER_NullUser
 parameter_list|()
 block|{
 name|setFrom
@@ -1772,10 +1772,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSelectMIXED ()
+DECL|method|selectMIXED ()
 specifier|public
 name|void
-name|testSelectMIXED
+name|selectMIXED
 parameter_list|()
 block|{
 name|setFrom
@@ -1841,10 +1841,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testMIXED_FullyConfiguredUser ()
+DECL|method|MIXED_FullyConfiguredUser ()
 specifier|public
 name|void
-name|testMIXED_FullyConfiguredUser
+name|MIXED_FullyConfiguredUser
 parameter_list|()
 block|{
 name|setFrom
@@ -1941,10 +1941,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testMIXED_NoFullNameUser ()
+DECL|method|MIXED_NoFullNameUser ()
 specifier|public
 name|void
-name|testMIXED_NoFullNameUser
+name|MIXED_NoFullNameUser
 parameter_list|()
 block|{
 name|setFrom
@@ -2033,10 +2033,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testMIXED_NoPreferredEmailUser ()
+DECL|method|MIXED_NoPreferredEmailUser ()
 specifier|public
 name|void
-name|testMIXED_NoPreferredEmailUser
+name|MIXED_NoPreferredEmailUser
 parameter_list|()
 block|{
 name|setFrom
@@ -2127,10 +2127,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testMIXED_NullUser ()
+DECL|method|MIXED_NullUser ()
 specifier|public
 name|void
-name|testMIXED_NullUser
+name|MIXED_NullUser
 parameter_list|()
 block|{
 name|setFrom
@@ -2203,10 +2203,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCUSTOM_FullyConfiguredUser ()
+DECL|method|CUSTOM_FullyConfiguredUser ()
 specifier|public
 name|void
-name|testCUSTOM_FullyConfiguredUser
+name|CUSTOM_FullyConfiguredUser
 parameter_list|()
 block|{
 name|setFrom
@@ -2302,10 +2302,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCUSTOM_NoFullNameUser ()
+DECL|method|CUSTOM_NoFullNameUser ()
 specifier|public
 name|void
-name|testCUSTOM_NoFullNameUser
+name|CUSTOM_NoFullNameUser
 parameter_list|()
 block|{
 name|setFrom
@@ -2391,10 +2391,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCUSTOM_NullUser ()
+DECL|method|CUSTOM_NullUser ()
 specifier|public
 name|void
-name|testCUSTOM_NullUser
+name|CUSTOM_NullUser
 parameter_list|()
 block|{
 name|setFrom

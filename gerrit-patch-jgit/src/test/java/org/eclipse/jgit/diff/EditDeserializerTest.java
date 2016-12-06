@@ -94,10 +94,10 @@ name|EditDeserializerTest
 block|{
 annotation|@
 name|Test
-DECL|method|testDiffDeserializer ()
+DECL|method|diffDeserializer ()
 specifier|public
 name|void
-name|testDiffDeserializer
+name|diffDeserializer
 parameter_list|()
 block|{
 name|assertNotNull

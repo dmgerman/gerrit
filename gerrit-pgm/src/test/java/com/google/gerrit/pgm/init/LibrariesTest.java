@@ -200,10 +200,10 @@ name|LibrariesTest
 block|{
 annotation|@
 name|Test
-DECL|method|testCreate ()
+DECL|method|create ()
 specifier|public
 name|void
-name|testCreate
+name|create
 parameter_list|()
 throws|throws
 name|Exception

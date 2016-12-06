@@ -262,10 +262,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormat ()
+DECL|method|format ()
 specifier|public
 name|void
-name|testFormat
+name|format
 parameter_list|()
 block|{
 name|assertEquals

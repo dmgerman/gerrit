@@ -96,10 +96,10 @@ name|EncodePathSeparatorTest
 block|{
 annotation|@
 name|Test
-DECL|method|testDefaultBehaviour ()
+DECL|method|defaultBehaviour ()
 specifier|public
 name|void
-name|testDefaultBehaviour
+name|defaultBehaviour
 parameter_list|()
 block|{
 name|assertEquals
@@ -119,10 +119,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testExclamationMark ()
+DECL|method|exclamationMark ()
 specifier|public
 name|void
-name|testExclamationMark
+name|exclamationMark
 parameter_list|()
 block|{
 name|GitwebType

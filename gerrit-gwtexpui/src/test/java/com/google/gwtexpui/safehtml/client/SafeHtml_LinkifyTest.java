@@ -100,10 +100,10 @@ name|SafeHtml_LinkifyTest
 block|{
 annotation|@
 name|Test
-DECL|method|testLinkify_SimpleHttp1 ()
+DECL|method|linkify_SimpleHttp1 ()
 specifier|public
 name|void
-name|testLinkify_SimpleHttp1
+name|linkify_SimpleHttp1
 parameter_list|()
 block|{
 specifier|final
@@ -152,10 +152,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_SimpleHttps2 ()
+DECL|method|linkify_SimpleHttps2 ()
 specifier|public
 name|void
-name|testLinkify_SimpleHttps2
+name|linkify_SimpleHttps2
 parameter_list|()
 block|{
 specifier|final
@@ -204,10 +204,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_Parens1 ()
+DECL|method|linkify_Parens1 ()
 specifier|public
 name|void
-name|testLinkify_Parens1
+name|linkify_Parens1
 parameter_list|()
 block|{
 specifier|final
@@ -256,10 +256,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_Parens ()
+DECL|method|linkify_Parens ()
 specifier|public
 name|void
-name|testLinkify_Parens
+name|linkify_Parens
 parameter_list|()
 block|{
 specifier|final
@@ -308,10 +308,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_AngleBrackets1 ()
+DECL|method|linkify_AngleBrackets1 ()
 specifier|public
 name|void
-name|testLinkify_AngleBrackets1
+name|linkify_AngleBrackets1
 parameter_list|()
 block|{
 specifier|final
@@ -360,10 +360,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_TrailingPlainLetter ()
+DECL|method|linkify_TrailingPlainLetter ()
 specifier|public
 name|void
-name|testLinkify_TrailingPlainLetter
+name|linkify_TrailingPlainLetter
 parameter_list|()
 block|{
 specifier|final
@@ -412,10 +412,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_TrailingDot ()
+DECL|method|linkify_TrailingDot ()
 specifier|public
 name|void
-name|testLinkify_TrailingDot
+name|linkify_TrailingDot
 parameter_list|()
 block|{
 specifier|final
@@ -464,10 +464,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_TrailingComma ()
+DECL|method|linkify_TrailingComma ()
 specifier|public
 name|void
-name|testLinkify_TrailingComma
+name|linkify_TrailingComma
 parameter_list|()
 block|{
 specifier|final
@@ -516,10 +516,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_TrailingDotDot ()
+DECL|method|linkify_TrailingDotDot ()
 specifier|public
 name|void
-name|testLinkify_TrailingDotDot
+name|linkify_TrailingDotDot
 parameter_list|()
 block|{
 specifier|final

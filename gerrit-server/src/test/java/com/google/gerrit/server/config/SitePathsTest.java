@@ -234,10 +234,10 @@ name|GerritBaseTests
 block|{
 annotation|@
 name|Test
-DECL|method|testCreate_NotExisting ()
+DECL|method|create_NotExisting ()
 specifier|public
 name|void
-name|testCreate_NotExisting
+name|create_NotExisting
 parameter_list|()
 throws|throws
 name|IOException
@@ -292,10 +292,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreate_Empty ()
+DECL|method|create_Empty ()
 specifier|public
 name|void
-name|testCreate_Empty
+name|create_Empty
 parameter_list|()
 throws|throws
 name|IOException
@@ -356,10 +356,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testCreate_NonEmpty ()
+DECL|method|create_NonEmpty ()
 specifier|public
 name|void
-name|testCreate_NonEmpty
+name|create_NonEmpty
 parameter_list|()
 throws|throws
 name|IOException
@@ -445,10 +445,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testCreate_NotDirectory ()
+DECL|method|create_NotDirectory ()
 specifier|public
 name|void
-name|testCreate_NotDirectory
+name|create_NotDirectory
 parameter_list|()
 throws|throws
 name|IOException
@@ -498,10 +498,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testResolve ()
+DECL|method|resolve ()
 specifier|public
 name|void
-name|testResolve
+name|resolve
 parameter_list|()
 throws|throws
 name|IOException

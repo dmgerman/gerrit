@@ -146,10 +146,10 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testValidity ()
+DECL|method|validity ()
 specifier|public
 name|void
-name|testValidity
+name|validity
 parameter_list|()
 throws|throws
 name|Exception
@@ -246,10 +246,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetters ()
+DECL|method|getters ()
 specifier|public
 name|void
-name|testGetters
+name|getters
 parameter_list|()
 throws|throws
 name|Exception
@@ -352,10 +352,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testKeyWithNewLines ()
+DECL|method|keyWithNewLines ()
 specifier|public
 name|void
-name|testKeyWithNewLines
+name|keyWithNewLines
 parameter_list|()
 throws|throws
 name|Exception

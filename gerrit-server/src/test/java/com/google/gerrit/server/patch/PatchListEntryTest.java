@@ -148,10 +148,10 @@ name|PatchListEntryTest
 block|{
 annotation|@
 name|Test
-DECL|method|testEmpty1 ()
+DECL|method|empty1 ()
 specifier|public
 name|void
-name|testEmpty1
+name|empty1
 parameter_list|()
 block|{
 specifier|final

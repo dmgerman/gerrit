@@ -437,10 +437,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseWindowsLineEndings ()
+DECL|method|parseWindowsLineEndings ()
 specifier|public
 name|void
-name|testParseWindowsLineEndings
+name|parseWindowsLineEndings
 parameter_list|()
 throws|throws
 name|Exception

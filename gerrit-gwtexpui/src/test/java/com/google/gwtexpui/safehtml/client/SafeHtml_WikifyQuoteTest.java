@@ -136,10 +136,10 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|testQuote1 ()
+DECL|method|quote1 ()
 specifier|public
 name|void
-name|testQuote1
+name|quote1
 parameter_list|()
 block|{
 specifier|final
@@ -191,10 +191,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testQuote2 ()
+DECL|method|quote2 ()
 specifier|public
 name|void
-name|testQuote2
+name|quote2
 parameter_list|()
 block|{
 specifier|final
@@ -248,10 +248,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNestedQuotes1 ()
+DECL|method|nestedQuotes1 ()
 specifier|public
 name|void
-name|testNestedQuotes1
+name|nestedQuotes1
 parameter_list|()
 block|{
 specifier|final

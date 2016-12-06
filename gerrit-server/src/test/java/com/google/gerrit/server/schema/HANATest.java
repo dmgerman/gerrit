@@ -166,10 +166,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetUrl ()
+DECL|method|getUrl ()
 specifier|public
 name|void
-name|testGetUrl
+name|getUrl
 parameter_list|()
 throws|throws
 name|Exception
@@ -229,10 +229,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetIndexScript ()
+DECL|method|getIndexScript ()
 specifier|public
 name|void
-name|testGetIndexScript
+name|getIndexScript
 parameter_list|()
 throws|throws
 name|Exception

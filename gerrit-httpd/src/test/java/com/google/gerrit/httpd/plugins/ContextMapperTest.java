@@ -157,10 +157,10 @@ literal|"my-resource"
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testUnauthorized ()
+DECL|method|unauthorized ()
 specifier|public
 name|void
-name|testUnauthorized
+name|unauthorized
 parameter_list|()
 throws|throws
 name|Exception
@@ -269,10 +269,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAuthorized ()
+DECL|method|authorized ()
 specifier|public
 name|void
-name|testAuthorized
+name|authorized
 parameter_list|()
 throws|throws
 name|Exception

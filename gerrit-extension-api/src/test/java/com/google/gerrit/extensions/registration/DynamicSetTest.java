@@ -135,10 +135,10 @@ comment|// {@code assertThat(ds.contains(...)).isTrue() @} and
 comment|// {@code assertThat(ds.contains(...)).isFalse() @} instead.
 annotation|@
 name|Test
-DECL|method|testContainsWithEmpty ()
+DECL|method|containsWithEmpty ()
 specifier|public
 name|void
-name|testContainsWithEmpty
+name|containsWithEmpty
 parameter_list|()
 throws|throws
 name|Exception
@@ -171,10 +171,10 @@ comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
-DECL|method|testContainsTrueWithSingleElement ()
+DECL|method|containsTrueWithSingleElement ()
 specifier|public
 name|void
-name|testContainsTrueWithSingleElement
+name|containsTrueWithSingleElement
 parameter_list|()
 throws|throws
 name|Exception
@@ -214,10 +214,10 @@ comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
-DECL|method|testContainsFalseWithSingleElement ()
+DECL|method|containsFalseWithSingleElement ()
 specifier|public
 name|void
-name|testContainsFalseWithSingleElement
+name|containsFalseWithSingleElement
 parameter_list|()
 throws|throws
 name|Exception
@@ -257,10 +257,10 @@ comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
-DECL|method|testContainsTrueWithTwoElements ()
+DECL|method|containsTrueWithTwoElements ()
 specifier|public
 name|void
-name|testContainsTrueWithTwoElements
+name|containsTrueWithTwoElements
 parameter_list|()
 throws|throws
 name|Exception
@@ -307,10 +307,10 @@ comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
-DECL|method|testContainsFalseWithTwoElements ()
+DECL|method|containsFalseWithTwoElements ()
 specifier|public
 name|void
-name|testContainsFalseWithTwoElements
+name|containsFalseWithTwoElements
 parameter_list|()
 throws|throws
 name|Exception
@@ -357,10 +357,10 @@ comment|//See above comment about ds.contains
 block|}
 annotation|@
 name|Test
-DECL|method|testContainsDynamic ()
+DECL|method|containsDynamic ()
 specifier|public
 name|void
-name|testContainsDynamic
+name|containsDynamic
 parameter_list|()
 throws|throws
 name|Exception

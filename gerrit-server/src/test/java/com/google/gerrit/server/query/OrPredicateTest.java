@@ -202,10 +202,10 @@ name|PredicateTest
 block|{
 annotation|@
 name|Test
-DECL|method|testChildren ()
+DECL|method|children ()
 specifier|public
 name|void
-name|testChildren
+name|children
 parameter_list|()
 block|{
 specifier|final
@@ -281,10 +281,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testChildrenUnmodifiable ()
+DECL|method|childrenUnmodifiable ()
 specifier|public
 name|void
-name|testChildrenUnmodifiable
+name|childrenUnmodifiable
 parameter_list|()
 block|{
 specifier|final

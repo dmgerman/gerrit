@@ -130,10 +130,10 @@ name|SafeHtml_ReplaceTest
 block|{
 annotation|@
 name|Test
-DECL|method|testReplaceEmpty ()
+DECL|method|replaceEmpty ()
 specifier|public
 name|void
-name|testReplaceEmpty
+name|replaceEmpty
 parameter_list|()
 block|{
 name|SafeHtml
@@ -183,10 +183,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceOneLink ()
+DECL|method|replaceOneLink ()
 specifier|public
 name|void
-name|testReplaceOneLink
+name|replaceOneLink
 parameter_list|()
 block|{
 name|SafeHtml
@@ -242,10 +242,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceNoLeadingOrTrailingText ()
+DECL|method|replaceNoLeadingOrTrailingText ()
 specifier|public
 name|void
-name|testReplaceNoLeadingOrTrailingText
+name|replaceNoLeadingOrTrailingText
 parameter_list|()
 block|{
 name|SafeHtml
@@ -301,10 +301,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceTwoLinks ()
+DECL|method|replaceTwoLinks ()
 specifier|public
 name|void
-name|testReplaceTwoLinks
+name|replaceTwoLinks
 parameter_list|()
 block|{
 name|SafeHtml
@@ -366,10 +366,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceInOrder ()
+DECL|method|replaceInOrder ()
 specifier|public
 name|void
-name|testReplaceInOrder
+name|replaceInOrder
 parameter_list|()
 block|{
 name|SafeHtml
@@ -439,10 +439,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceOverlappingAfterFirstChar ()
+DECL|method|replaceOverlappingAfterFirstChar ()
 specifier|public
 name|void
-name|testReplaceOverlappingAfterFirstChar
+name|replaceOverlappingAfterFirstChar
 parameter_list|()
 block|{
 name|SafeHtml
@@ -560,10 +560,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceOverlappingAtFirstCharLongestMatch ()
+DECL|method|replaceOverlappingAtFirstCharLongestMatch ()
 specifier|public
 name|void
-name|testReplaceOverlappingAtFirstCharLongestMatch
+name|replaceOverlappingAtFirstCharLongestMatch
 parameter_list|()
 block|{
 name|SafeHtml
@@ -645,10 +645,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceOverlappingAtFirstCharFirstMatch ()
+DECL|method|replaceOverlappingAtFirstCharFirstMatch ()
 specifier|public
 name|void
-name|testReplaceOverlappingAtFirstCharFirstMatch
+name|replaceOverlappingAtFirstCharFirstMatch
 parameter_list|()
 block|{
 name|SafeHtml
@@ -730,10 +730,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFailedSanitization ()
+DECL|method|failedSanitization ()
 specifier|public
 name|void
-name|testFailedSanitization
+name|failedSanitization
 parameter_list|()
 block|{
 name|SafeHtml

@@ -258,10 +258,10 @@ name|GerritBaseTests
 block|{
 annotation|@
 name|Test
-DECL|method|testParseEmail ()
+DECL|method|parseEmail ()
 specifier|public
 name|void
-name|testParseEmail
+name|parseEmail
 parameter_list|()
 throws|throws
 name|Exception

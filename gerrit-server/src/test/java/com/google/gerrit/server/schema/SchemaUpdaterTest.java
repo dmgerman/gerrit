@@ -606,10 +606,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUpdate ()
+DECL|method|update ()
 specifier|public
 name|void
-name|testUpdate
+name|update
 parameter_list|()
 throws|throws
 name|OrmException

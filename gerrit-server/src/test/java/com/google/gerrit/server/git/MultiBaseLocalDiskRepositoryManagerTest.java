@@ -550,10 +550,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDefaultRepositoryLocation ()
+DECL|method|defaultRepositoryLocation ()
 specifier|public
 name|void
-name|testDefaultRepositoryLocation
+name|defaultRepositoryLocation
 parameter_list|()
 throws|throws
 name|RepositoryCaseMismatchException
@@ -790,10 +790,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAlternateRepositoryLocation ()
+DECL|method|alternateRepositoryLocation ()
 specifier|public
 name|void
-name|testAlternateRepositoryLocation
+name|alternateRepositoryLocation
 parameter_list|()
 throws|throws
 name|IOException
@@ -1062,10 +1062,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testListReturnRepoFromProperLocation ()
+DECL|method|listReturnRepoFromProperLocation ()
 specifier|public
 name|void
-name|testListReturnRepoFromProperLocation
+name|listReturnRepoFromProperLocation
 parameter_list|()
 throws|throws
 name|IOException

@@ -95,10 +95,10 @@ block|{
 comment|/**    * Test the boundary condition that the first character of a string    * should be escaped.    */
 annotation|@
 name|Test
-DECL|method|testEscapeFirstChar ()
+DECL|method|escapeFirstChar ()
 specifier|public
 name|void
-name|testEscapeFirstChar
+name|escapeFirstChar
 parameter_list|()
 block|{
 name|assertEquals
@@ -117,10 +117,10 @@ block|}
 comment|/**    * Test the boundary condition that the last character of a string    * should be escaped.    */
 annotation|@
 name|Test
-DECL|method|testEscapeLastChar ()
+DECL|method|escapeLastChar ()
 specifier|public
 name|void
-name|testEscapeLastChar
+name|escapeLastChar
 parameter_list|()
 block|{
 name|assertEquals
@@ -139,10 +139,10 @@ block|}
 comment|/**    * Test that various forms of input strings are escaped (or left as-is)    * in the expected way.    */
 annotation|@
 name|Test
-DECL|method|testEscapeString ()
+DECL|method|escapeString ()
 specifier|public
 name|void
-name|testEscapeString
+name|escapeString
 parameter_list|()
 block|{
 specifier|final

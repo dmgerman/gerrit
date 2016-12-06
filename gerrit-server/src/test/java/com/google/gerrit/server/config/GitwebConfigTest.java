@@ -126,10 +126,10 @@ literal|"09AZaz$-_.+!',"
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testValidPathSeparator ()
+DECL|method|validPathSeparator ()
 specifier|public
 name|void
-name|testValidPathSeparator
+name|validPathSeparator
 parameter_list|()
 block|{
 for|for
@@ -161,10 +161,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testInalidPathSeparator ()
+DECL|method|inalidPathSeparator ()
 specifier|public
 name|void
-name|testInalidPathSeparator
+name|inalidPathSeparator
 parameter_list|()
 block|{
 for|for

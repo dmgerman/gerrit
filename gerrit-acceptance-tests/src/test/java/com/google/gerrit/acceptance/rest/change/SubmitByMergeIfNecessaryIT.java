@@ -2718,10 +2718,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGerritWorkflow ()
+DECL|method|gerritWorkflow ()
 specifier|public
 name|void
-name|testGerritWorkflow
+name|gerritWorkflow
 parameter_list|()
 throws|throws
 name|Exception

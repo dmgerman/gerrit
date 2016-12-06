@@ -558,10 +558,10 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Test
-DECL|method|testCreateProjectHttp ()
+DECL|method|createProjectHttp ()
 specifier|public
 name|void
-name|testCreateProjectHttp
+name|createProjectHttp
 parameter_list|()
 throws|throws
 name|Exception
@@ -665,10 +665,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectHttpWhenProjectAlreadyExists_Conflict ()
+DECL|method|createProjectHttpWhenProjectAlreadyExists_Conflict ()
 specifier|public
 name|void
-name|testCreateProjectHttpWhenProjectAlreadyExists_Conflict
+name|createProjectHttpWhenProjectAlreadyExists_Conflict
 parameter_list|()
 throws|throws
 name|Exception
@@ -691,10 +691,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectHttpWhenProjectAlreadyExists_PreconditionFailed ()
+DECL|method|createProjectHttpWhenProjectAlreadyExists_PreconditionFailed ()
 specifier|public
 name|void
-name|testCreateProjectHttpWhenProjectAlreadyExists_PreconditionFailed
+name|createProjectHttpWhenProjectAlreadyExists_PreconditionFailed
 parameter_list|()
 throws|throws
 name|Exception
@@ -760,10 +760,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectHttpWithNameMismatch_BadRequest ()
+DECL|method|createProjectHttpWithNameMismatch_BadRequest ()
 specifier|public
 name|void
-name|testCreateProjectHttpWithNameMismatch_BadRequest
+name|createProjectHttpWithNameMismatch_BadRequest
 parameter_list|()
 throws|throws
 name|Exception
@@ -804,10 +804,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectHttpWithInvalidRefName_BadRequest ()
+DECL|method|createProjectHttpWithInvalidRefName_BadRequest ()
 specifier|public
 name|void
-name|testCreateProjectHttpWithInvalidRefName_BadRequest
+name|createProjectHttpWithInvalidRefName_BadRequest
 parameter_list|()
 throws|throws
 name|Exception
@@ -853,10 +853,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProject ()
+DECL|method|createProject ()
 specifier|public
 name|void
-name|testCreateProject
+name|createProject
 parameter_list|()
 throws|throws
 name|Exception
@@ -941,10 +941,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectWithGitSuffix ()
+DECL|method|createProjectWithGitSuffix ()
 specifier|public
 name|void
-name|testCreateProjectWithGitSuffix
+name|createProjectWithGitSuffix
 parameter_list|()
 throws|throws
 name|Exception
@@ -1031,10 +1031,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectWithProperties ()
+DECL|method|createProjectWithProperties ()
 specifier|public
 name|void
-name|testCreateProjectWithProperties
+name|createProjectWithProperties
 parameter_list|()
 throws|throws
 name|Exception
@@ -1253,10 +1253,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateChildProject ()
+DECL|method|createChildProject ()
 specifier|public
 name|void
-name|testCreateChildProject
+name|createChildProject
 parameter_list|()
 throws|throws
 name|Exception
@@ -1365,10 +1365,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateChildProjectUnderNonExistingParent_UnprocessableEntity ()
+DECL|method|createChildProjectUnderNonExistingParent_UnprocessableEntity ()
 specifier|public
 name|void
-name|testCreateChildProjectUnderNonExistingParent_UnprocessableEntity
+name|createChildProjectUnderNonExistingParent_UnprocessableEntity
 parameter_list|()
 throws|throws
 name|Exception
@@ -1407,10 +1407,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectWithOwner ()
+DECL|method|createProjectWithOwner ()
 specifier|public
 name|void
-name|testCreateProjectWithOwner
+name|createProjectWithOwner
 parameter_list|()
 throws|throws
 name|Exception
@@ -1583,10 +1583,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectWithNonExistingOwner_UnprocessableEntity ()
+DECL|method|createProjectWithNonExistingOwner_UnprocessableEntity ()
 specifier|public
 name|void
-name|testCreateProjectWithNonExistingOwner_UnprocessableEntity
+name|createProjectWithNonExistingOwner_UnprocessableEntity
 parameter_list|()
 throws|throws
 name|Exception
@@ -1630,10 +1630,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreatePermissionOnlyProject ()
+DECL|method|createPermissionOnlyProject ()
 specifier|public
 name|void
-name|testCreatePermissionOnlyProject
+name|createPermissionOnlyProject
 parameter_list|()
 throws|throws
 name|Exception
@@ -1687,10 +1687,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectWithEmptyCommit ()
+DECL|method|createProjectWithEmptyCommit ()
 specifier|public
 name|void
-name|testCreateProjectWithEmptyCommit
+name|createProjectWithEmptyCommit
 parameter_list|()
 throws|throws
 name|Exception
@@ -1742,10 +1742,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectWithBranches ()
+DECL|method|createProjectWithBranches ()
 specifier|public
 name|void
-name|testCreateProjectWithBranches
+name|createProjectWithBranches
 parameter_list|()
 throws|throws
 name|Exception
@@ -1847,10 +1847,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectWithoutCapability_Forbidden ()
+DECL|method|createProjectWithoutCapability_Forbidden ()
 specifier|public
 name|void
-name|testCreateProjectWithoutCapability_Forbidden
+name|createProjectWithoutCapability_Forbidden
 parameter_list|()
 throws|throws
 name|Exception
@@ -1888,10 +1888,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateProjectWhenProjectAlreadyExists_Conflict ()
+DECL|method|createProjectWhenProjectAlreadyExists_Conflict ()
 specifier|public
 name|void
-name|testCreateProjectWhenProjectAlreadyExists_Conflict
+name|createProjectWhenProjectAlreadyExists_Conflict
 parameter_list|()
 throws|throws
 name|Exception

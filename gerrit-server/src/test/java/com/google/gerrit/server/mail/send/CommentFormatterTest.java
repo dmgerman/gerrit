@@ -444,10 +444,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseNullAsEmpty ()
+DECL|method|parseNullAsEmpty ()
 specifier|public
 name|void
-name|testParseNullAsEmpty
+name|parseNullAsEmpty
 parameter_list|()
 block|{
 name|assertThat
@@ -466,10 +466,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseEmpty ()
+DECL|method|parseEmpty ()
 specifier|public
 name|void
-name|testParseEmpty
+name|parseEmpty
 parameter_list|()
 block|{
 name|assertThat
@@ -488,10 +488,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseSimple ()
+DECL|method|parseSimple ()
 specifier|public
 name|void
-name|testParseSimple
+name|parseSimple
 parameter_list|()
 block|{
 name|String
@@ -538,10 +538,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseMultilinePara ()
+DECL|method|parseMultilinePara ()
 specifier|public
 name|void
-name|testParseMultilinePara
+name|parseMultilinePara
 parameter_list|()
 block|{
 name|String
@@ -588,10 +588,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseParaBreak ()
+DECL|method|parseParaBreak ()
 specifier|public
 name|void
-name|testParseParaBreak
+name|parseParaBreak
 parameter_list|()
 block|{
 name|String
@@ -660,10 +660,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseQuote ()
+DECL|method|parseQuote ()
 specifier|public
 name|void
-name|testParseQuote
+name|parseQuote
 parameter_list|()
 block|{
 name|String
@@ -726,10 +726,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseExcludesEmpty ()
+DECL|method|parseExcludesEmpty ()
 specifier|public
 name|void
-name|testParseExcludesEmpty
+name|parseExcludesEmpty
 parameter_list|()
 block|{
 name|String
@@ -787,10 +787,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseQuoteLeadSpace ()
+DECL|method|parseQuoteLeadSpace ()
 specifier|public
 name|void
-name|testParseQuoteLeadSpace
+name|parseQuoteLeadSpace
 parameter_list|()
 block|{
 name|String
@@ -853,10 +853,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseMultiLineQuote ()
+DECL|method|parseMultiLineQuote ()
 specifier|public
 name|void
-name|testParseMultiLineQuote
+name|parseMultiLineQuote
 parameter_list|()
 block|{
 name|String
@@ -919,10 +919,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParsePre ()
+DECL|method|parsePre ()
 specifier|public
 name|void
-name|testParsePre
+name|parsePre
 parameter_list|()
 block|{
 name|String
@@ -969,10 +969,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseOneSpacePre ()
+DECL|method|parseOneSpacePre ()
 specifier|public
 name|void
-name|testParseOneSpacePre
+name|parseOneSpacePre
 parameter_list|()
 block|{
 name|String
@@ -1019,10 +1019,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseTabPre ()
+DECL|method|parseTabPre ()
 specifier|public
 name|void
-name|testParseTabPre
+name|parseTabPre
 parameter_list|()
 block|{
 name|String
@@ -1069,10 +1069,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseIntermediateLeadingWhitespacePre ()
+DECL|method|parseIntermediateLeadingWhitespacePre ()
 specifier|public
 name|void
-name|testParseIntermediateLeadingWhitespacePre
+name|parseIntermediateLeadingWhitespacePre
 parameter_list|()
 block|{
 name|String
@@ -1119,10 +1119,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseStarList ()
+DECL|method|parseStarList ()
 specifier|public
 name|void
-name|testParseStarList
+name|parseStarList
 parameter_list|()
 block|{
 name|String
@@ -1191,10 +1191,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseDashList ()
+DECL|method|parseDashList ()
 specifier|public
 name|void
-name|testParseDashList
+name|parseDashList
 parameter_list|()
 block|{
 name|String
@@ -1263,10 +1263,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseMixedList ()
+DECL|method|parseMixedList ()
 specifier|public
 name|void
-name|testParseMixedList
+name|parseMixedList
 parameter_list|()
 block|{
 name|String
@@ -1346,10 +1346,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseMixedBlockTypes ()
+DECL|method|parseMixedBlockTypes ()
 specifier|public
 name|void
-name|testParseMixedBlockTypes
+name|parseMixedBlockTypes
 parameter_list|()
 block|{
 name|String
@@ -1535,10 +1535,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList1 ()
+DECL|method|bulletList1 ()
 specifier|public
 name|void
-name|testBulletList1
+name|bulletList1
 parameter_list|()
 block|{
 name|String
@@ -1607,10 +1607,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList2 ()
+DECL|method|bulletList2 ()
 specifier|public
 name|void
-name|testBulletList2
+name|bulletList2
 parameter_list|()
 block|{
 name|String
@@ -1690,10 +1690,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList3 ()
+DECL|method|bulletList3 ()
 specifier|public
 name|void
-name|testBulletList3
+name|bulletList3
 parameter_list|()
 block|{
 name|String
@@ -1762,10 +1762,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList4 ()
+DECL|method|bulletList4 ()
 specifier|public
 name|void
-name|testBulletList4
+name|bulletList4
 parameter_list|()
 block|{
 name|String
@@ -1840,10 +1840,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList5 ()
+DECL|method|bulletList5 ()
 specifier|public
 name|void
-name|testBulletList5
+name|bulletList5
 parameter_list|()
 block|{
 name|String
@@ -1921,10 +1921,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDashList1 ()
+DECL|method|dashList1 ()
 specifier|public
 name|void
-name|testDashList1
+name|dashList1
 parameter_list|()
 block|{
 name|String
@@ -1993,10 +1993,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDashList2 ()
+DECL|method|dashList2 ()
 specifier|public
 name|void
-name|testDashList2
+name|dashList2
 parameter_list|()
 block|{
 name|String
@@ -2076,10 +2076,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDashList3 ()
+DECL|method|dashList3 ()
 specifier|public
 name|void
-name|testDashList3
+name|dashList3
 parameter_list|()
 block|{
 name|String
@@ -2148,10 +2148,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPreformat1 ()
+DECL|method|preformat1 ()
 specifier|public
 name|void
-name|testPreformat1
+name|preformat1
 parameter_list|()
 block|{
 name|String
@@ -2209,10 +2209,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPreformat2 ()
+DECL|method|preformat2 ()
 specifier|public
 name|void
-name|testPreformat2
+name|preformat2
 parameter_list|()
 block|{
 name|String
@@ -2281,10 +2281,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPreformat3 ()
+DECL|method|preformat3 ()
 specifier|public
 name|void
-name|testPreformat3
+name|preformat3
 parameter_list|()
 block|{
 name|String
@@ -2353,10 +2353,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPreformat4 ()
+DECL|method|preformat4 ()
 specifier|public
 name|void
-name|testPreformat4
+name|preformat4
 parameter_list|()
 block|{
 name|String
@@ -2414,10 +2414,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testQuote1 ()
+DECL|method|quote1 ()
 specifier|public
 name|void
-name|testQuote1
+name|quote1
 parameter_list|()
 block|{
 name|String
@@ -2491,10 +2491,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testQuote2 ()
+DECL|method|quote2 ()
 specifier|public
 name|void
-name|testQuote2
+name|quote2
 parameter_list|()
 block|{
 name|String
@@ -2579,10 +2579,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNestedQuotes1 ()
+DECL|method|nestedQuotes1 ()
 specifier|public
 name|void
-name|testNestedQuotes1
+name|nestedQuotes1
 parameter_list|()
 block|{
 name|String

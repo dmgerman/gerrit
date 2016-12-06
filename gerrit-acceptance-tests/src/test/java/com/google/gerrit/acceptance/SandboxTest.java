@@ -133,10 +133,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUserNotPresent1 ()
+DECL|method|userNotPresent1 ()
 specifier|public
 name|void
-name|testUserNotPresent1
+name|userNotPresent1
 parameter_list|()
 throws|throws
 name|Exception
@@ -163,10 +163,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUserNotPresent2 ()
+DECL|method|userNotPresent2 ()
 specifier|public
 name|void
-name|testUserNotPresent2
+name|userNotPresent2
 parameter_list|()
 throws|throws
 name|Exception

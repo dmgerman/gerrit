@@ -184,10 +184,10 @@ name|EventDeserializerTest
 block|{
 annotation|@
 name|Test
-DECL|method|testRefUpdatedEvent ()
+DECL|method|refUpdatedEvent ()
 specifier|public
 name|void
-name|testRefUpdatedEvent
+name|refUpdatedEvent
 parameter_list|()
 block|{
 name|RefUpdatedEvent

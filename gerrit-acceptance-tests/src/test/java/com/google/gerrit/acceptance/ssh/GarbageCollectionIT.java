@@ -489,10 +489,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGcWithoutCapability_Error ()
+DECL|method|gcWithoutCapability_Error ()
 specifier|public
 name|void
-name|testGcWithoutCapability_Error
+name|gcWithoutCapability_Error
 parameter_list|()
 throws|throws
 name|Exception

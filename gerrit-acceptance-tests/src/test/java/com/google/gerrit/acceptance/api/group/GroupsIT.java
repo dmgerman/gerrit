@@ -1062,10 +1062,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateGroup ()
+DECL|method|createGroup ()
 specifier|public
 name|void
-name|testCreateGroup
+name|createGroup
 parameter_list|()
 throws|throws
 name|Exception
@@ -1107,10 +1107,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateDuplicateInternalGroupCaseSensitiveName_Conflict ()
+DECL|method|createDuplicateInternalGroupCaseSensitiveName_Conflict ()
 specifier|public
 name|void
-name|testCreateDuplicateInternalGroupCaseSensitiveName_Conflict
+name|createDuplicateInternalGroupCaseSensitiveName_Conflict
 parameter_list|()
 throws|throws
 name|Exception
@@ -1166,10 +1166,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateDuplicateInternalGroupCaseInsensitiveName ()
+DECL|method|createDuplicateInternalGroupCaseInsensitiveName ()
 specifier|public
 name|void
-name|testCreateDuplicateInternalGroupCaseInsensitiveName
+name|createDuplicateInternalGroupCaseInsensitiveName
 parameter_list|()
 throws|throws
 name|Exception
@@ -1260,10 +1260,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateDuplicateSystemGroupCaseSensitiveName_Conflict ()
+DECL|method|createDuplicateSystemGroupCaseSensitiveName_Conflict ()
 specifier|public
 name|void
-name|testCreateDuplicateSystemGroupCaseSensitiveName_Conflict
+name|createDuplicateSystemGroupCaseSensitiveName_Conflict
 parameter_list|()
 throws|throws
 name|Exception
@@ -1302,10 +1302,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateDuplicateSystemGroupCaseInsensitiveName_Conflict ()
+DECL|method|createDuplicateSystemGroupCaseInsensitiveName_Conflict ()
 specifier|public
 name|void
-name|testCreateDuplicateSystemGroupCaseInsensitiveName_Conflict
+name|createDuplicateSystemGroupCaseInsensitiveName_Conflict
 parameter_list|()
 throws|throws
 name|Exception
@@ -1344,10 +1344,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateGroupWithProperties ()
+DECL|method|createGroupWithProperties ()
 specifier|public
 name|void
-name|testCreateGroupWithProperties
+name|createGroupWithProperties
 parameter_list|()
 throws|throws
 name|Exception
@@ -1458,10 +1458,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateGroupWithoutCapability_Forbidden ()
+DECL|method|createGroupWithoutCapability_Forbidden ()
 specifier|public
 name|void
-name|testCreateGroupWithoutCapability_Forbidden
+name|createGroupWithoutCapability_Forbidden
 parameter_list|()
 throws|throws
 name|Exception
@@ -1496,10 +1496,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetGroup ()
+DECL|method|getGroup ()
 specifier|public
 name|void
-name|testGetGroup
+name|getGroup
 parameter_list|()
 throws|throws
 name|Exception
@@ -1600,10 +1600,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGroupName ()
+DECL|method|groupName ()
 specifier|public
 name|void
-name|testGroupName
+name|groupName
 parameter_list|()
 throws|throws
 name|Exception
@@ -1731,10 +1731,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGroupRename ()
+DECL|method|groupRename ()
 specifier|public
 name|void
-name|testGroupRename
+name|groupRename
 parameter_list|()
 throws|throws
 name|Exception
@@ -1848,10 +1848,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGroupDescription ()
+DECL|method|groupDescription ()
 specifier|public
 name|void
-name|testGroupDescription
+name|groupDescription
 parameter_list|()
 throws|throws
 name|Exception
@@ -2009,10 +2009,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGroupOptions ()
+DECL|method|groupOptions ()
 specifier|public
 name|void
-name|testGroupOptions
+name|groupOptions
 parameter_list|()
 throws|throws
 name|Exception
@@ -2110,10 +2110,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGroupOwner ()
+DECL|method|groupOwner ()
 specifier|public
 name|void
-name|testGroupOwner
+name|groupOwner
 parameter_list|()
 throws|throws
 name|Exception
@@ -2932,10 +2932,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testListAllGroups ()
+DECL|method|listAllGroups ()
 specifier|public
 name|void
-name|testListAllGroups
+name|listAllGroups
 parameter_list|()
 throws|throws
 name|Exception
@@ -3014,10 +3014,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOnlyVisibleGroupsReturned ()
+DECL|method|onlyVisibleGroupsReturned ()
 specifier|public
 name|void
-name|testOnlyVisibleGroupsReturned
+name|onlyVisibleGroupsReturned
 parameter_list|()
 throws|throws
 name|Exception
@@ -3153,10 +3153,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSuggestGroup ()
+DECL|method|suggestGroup ()
 specifier|public
 name|void
-name|testSuggestGroup
+name|suggestGroup
 parameter_list|()
 throws|throws
 name|Exception
@@ -3208,10 +3208,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAllGroupInfoFieldsSetCorrectly ()
+DECL|method|allGroupInfoFieldsSetCorrectly ()
 specifier|public
 name|void
-name|testAllGroupInfoFieldsSetCorrectly
+name|allGroupInfoFieldsSetCorrectly
 parameter_list|()
 throws|throws
 name|Exception

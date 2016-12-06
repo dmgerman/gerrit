@@ -158,10 +158,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testEventTypeRegistration ()
+DECL|method|eventTypeRegistration ()
 specifier|public
 name|void
-name|testEventTypeRegistration
+name|eventTypeRegistration
 parameter_list|()
 block|{
 name|EventTypes
@@ -231,10 +231,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetClassForNonExistingType ()
+DECL|method|getClassForNonExistingType ()
 specifier|public
 name|void
-name|testGetClassForNonExistingType
+name|getClassForNonExistingType
 parameter_list|()
 block|{
 name|Class

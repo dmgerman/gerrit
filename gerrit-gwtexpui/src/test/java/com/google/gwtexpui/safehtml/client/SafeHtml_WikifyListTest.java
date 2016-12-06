@@ -136,10 +136,10 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList1 ()
+DECL|method|bulletList1 ()
 specifier|public
 name|void
-name|testBulletList1
+name|bulletList1
 parameter_list|()
 block|{
 specifier|final
@@ -200,10 +200,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList2 ()
+DECL|method|bulletList2 ()
 specifier|public
 name|void
-name|testBulletList2
+name|bulletList2
 parameter_list|()
 block|{
 specifier|final
@@ -266,10 +266,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList3 ()
+DECL|method|bulletList3 ()
 specifier|public
 name|void
-name|testBulletList3
+name|bulletList3
 parameter_list|()
 block|{
 specifier|final
@@ -330,10 +330,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList4 ()
+DECL|method|bulletList4 ()
 specifier|public
 name|void
-name|testBulletList4
+name|bulletList4
 parameter_list|()
 block|{
 specifier|final
@@ -400,10 +400,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBulletList5 ()
+DECL|method|bulletList5 ()
 specifier|public
 name|void
-name|testBulletList5
+name|bulletList5
 parameter_list|()
 block|{
 specifier|final
@@ -473,10 +473,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDashList1 ()
+DECL|method|dashList1 ()
 specifier|public
 name|void
-name|testDashList1
+name|dashList1
 parameter_list|()
 block|{
 specifier|final
@@ -537,10 +537,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDashList2 ()
+DECL|method|dashList2 ()
 specifier|public
 name|void
-name|testDashList2
+name|dashList2
 parameter_list|()
 block|{
 specifier|final
@@ -603,10 +603,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDashList3 ()
+DECL|method|dashList3 ()
 specifier|public
 name|void
-name|testDashList3
+name|dashList3
 parameter_list|()
 block|{
 specifier|final

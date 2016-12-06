@@ -471,10 +471,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testStoreLoadSection ()
+DECL|method|storeLoadSection ()
 specifier|public
 name|void
-name|testStoreLoadSection
+name|storeLoadSection
 parameter_list|()
 throws|throws
 name|Exception
@@ -1136,10 +1136,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTimeUnit ()
+DECL|method|timeUnit ()
 specifier|public
 name|void
-name|testTimeUnit
+name|timeUnit
 parameter_list|()
 block|{
 name|assertEquals

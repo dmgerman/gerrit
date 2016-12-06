@@ -136,10 +136,10 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPreformat1 ()
+DECL|method|preformat1 ()
 specifier|public
 name|void
-name|testPreformat1
+name|preformat1
 parameter_list|()
 block|{
 specifier|final
@@ -200,10 +200,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPreformat2 ()
+DECL|method|preformat2 ()
 specifier|public
 name|void
-name|testPreformat2
+name|preformat2
 parameter_list|()
 block|{
 specifier|final
@@ -266,10 +266,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPreformat3 ()
+DECL|method|preformat3 ()
 specifier|public
 name|void
-name|testPreformat3
+name|preformat3
 parameter_list|()
 block|{
 specifier|final
@@ -337,10 +337,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPreformat4 ()
+DECL|method|preformat4 ()
 specifier|public
 name|void
-name|testPreformat4
+name|preformat4
 parameter_list|()
 block|{
 specifier|final

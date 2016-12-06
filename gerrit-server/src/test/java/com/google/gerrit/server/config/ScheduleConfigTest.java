@@ -205,10 +205,10 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testInitialDelay ()
+DECL|method|initialDelay ()
 specifier|public
 name|void
-name|testInitialDelay
+name|initialDelay
 parameter_list|()
 throws|throws
 name|Exception
@@ -499,10 +499,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCustomKeys ()
+DECL|method|customKeys ()
 specifier|public
 name|void
-name|testCustomKeys
+name|customKeys
 parameter_list|()
 block|{
 name|Config

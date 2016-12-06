@@ -482,10 +482,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testEmptyMessages ()
+DECL|method|emptyMessages ()
 specifier|public
 name|void
-name|testEmptyMessages
+name|emptyMessages
 parameter_list|()
 throws|throws
 name|Exception
@@ -553,10 +553,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testChangeIdAlreadySet ()
+DECL|method|changeIdAlreadySet ()
 specifier|public
 name|void
-name|testChangeIdAlreadySet
+name|changeIdAlreadySet
 parameter_list|()
 throws|throws
 name|Exception
@@ -622,10 +622,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTimeAltersId ()
+DECL|method|timeAltersId ()
 specifier|public
 name|void
-name|testTimeAltersId
+name|timeAltersId
 parameter_list|()
 throws|throws
 name|Exception
@@ -690,10 +690,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFirstParentAltersId ()
+DECL|method|firstParentAltersId ()
 specifier|public
 name|void
-name|testFirstParentAltersId
+name|firstParentAltersId
 parameter_list|()
 throws|throws
 name|Exception
@@ -738,10 +738,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDirCacheAltersId ()
+DECL|method|dirCacheAltersId ()
 specifier|public
 name|void
-name|testDirCacheAltersId
+name|dirCacheAltersId
 parameter_list|()
 throws|throws
 name|Exception
@@ -813,10 +813,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSingleLineMessages ()
+DECL|method|singleLineMessages ()
 specifier|public
 name|void
-name|testSingleLineMessages
+name|singleLineMessages
 parameter_list|()
 throws|throws
 name|Exception
@@ -909,10 +909,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testMultiLineMessagesWithoutFooter ()
+DECL|method|multiLineMessagesWithoutFooter ()
 specifier|public
 name|void
-name|testMultiLineMessagesWithoutFooter
+name|multiLineMessagesWithoutFooter
 parameter_list|()
 throws|throws
 name|Exception
@@ -1011,10 +1011,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSingleLineMessagesWithSignedOffBy ()
+DECL|method|singleLineMessagesWithSignedOffBy ()
 specifier|public
 name|void
-name|testSingleLineMessagesWithSignedOffBy
+name|singleLineMessagesWithSignedOffBy
 parameter_list|()
 throws|throws
 name|Exception
@@ -1075,10 +1075,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testMultiLineMessagesWithSignedOffBy ()
+DECL|method|multiLineMessagesWithSignedOffBy ()
 specifier|public
 name|void
-name|testMultiLineMessagesWithSignedOffBy
+name|multiLineMessagesWithSignedOffBy
 parameter_list|()
 throws|throws
 name|Exception
@@ -1242,10 +1242,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNoteInMiddle ()
+DECL|method|noteInMiddle ()
 specifier|public
 name|void
-name|testNoteInMiddle
+name|noteInMiddle
 parameter_list|()
 throws|throws
 name|Exception
@@ -1288,10 +1288,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testKernelStyleFooter ()
+DECL|method|kernelStyleFooter ()
 specifier|public
 name|void
-name|testKernelStyleFooter
+name|kernelStyleFooter
 parameter_list|()
 throws|throws
 name|Exception
@@ -1343,10 +1343,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testChangeIdAfterBugOrIssue ()
+DECL|method|changeIdAfterBugOrIssue ()
 specifier|public
 name|void
-name|testChangeIdAfterBugOrIssue
+name|changeIdAfterBugOrIssue
 parameter_list|()
 throws|throws
 name|Exception
@@ -1418,10 +1418,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCommitDashV ()
+DECL|method|commitDashV ()
 specifier|public
 name|void
-name|testCommitDashV
+name|commitDashV
 parameter_list|()
 throws|throws
 name|Exception
@@ -1476,10 +1476,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithEndingURL ()
+DECL|method|withEndingURL ()
 specifier|public
 name|void
-name|testWithEndingURL
+name|withEndingURL
 parameter_list|()
 throws|throws
 name|Exception
@@ -1603,10 +1603,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithFalseTags ()
+DECL|method|withFalseTags ()
 specifier|public
 name|void
-name|testWithFalseTags
+name|withFalseTags
 parameter_list|()
 throws|throws
 name|Exception

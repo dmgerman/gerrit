@@ -687,10 +687,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGet ()
+DECL|method|get ()
 specifier|public
 name|void
-name|testGet
+name|get
 parameter_list|()
 throws|throws
 name|Exception
@@ -794,10 +794,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetMultiple ()
+DECL|method|getMultiple ()
 specifier|public
 name|void
-name|testGetMultiple
+name|getMultiple
 parameter_list|()
 throws|throws
 name|Exception

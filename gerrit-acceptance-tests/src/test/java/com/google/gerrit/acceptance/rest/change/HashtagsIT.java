@@ -371,10 +371,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetNoHashtags ()
+DECL|method|getNoHashtags ()
 specifier|public
 name|void
-name|testGetNoHashtags
+name|getNoHashtags
 parameter_list|()
 throws|throws
 name|Exception
@@ -399,10 +399,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddSingleHashtag ()
+DECL|method|addSingleHashtag ()
 specifier|public
 name|void
-name|testAddSingleHashtag
+name|addSingleHashtag
 parameter_list|()
 throws|throws
 name|Exception
@@ -474,10 +474,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddMultipleHashtags ()
+DECL|method|addMultipleHashtags ()
 specifier|public
 name|void
-name|testAddMultipleHashtags
+name|addMultipleHashtags
 parameter_list|()
 throws|throws
 name|Exception
@@ -562,10 +562,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddAlreadyExistingHashtag ()
+DECL|method|addAlreadyExistingHashtag ()
 specifier|public
 name|void
-name|testAddAlreadyExistingHashtag
+name|addAlreadyExistingHashtag
 parameter_list|()
 throws|throws
 name|Exception
@@ -670,10 +670,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHashtagsWithPrefix ()
+DECL|method|hashtagsWithPrefix ()
 specifier|public
 name|void
-name|testHashtagsWithPrefix
+name|hashtagsWithPrefix
 parameter_list|()
 throws|throws
 name|Exception
@@ -890,10 +890,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRemoveSingleHashtag ()
+DECL|method|removeSingleHashtag ()
 specifier|public
 name|void
-name|testRemoveSingleHashtag
+name|removeSingleHashtag
 parameter_list|()
 throws|throws
 name|Exception
@@ -992,10 +992,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRemoveMultipleHashtags ()
+DECL|method|removeMultipleHashtags ()
 specifier|public
 name|void
-name|testRemoveMultipleHashtags
+name|removeMultipleHashtags
 parameter_list|()
 throws|throws
 name|Exception
@@ -1126,10 +1126,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRemoveNotExistingHashtag ()
+DECL|method|removeNotExistingHashtag ()
 specifier|public
 name|void
-name|testRemoveNotExistingHashtag
+name|removeNotExistingHashtag
 parameter_list|()
 throws|throws
 name|Exception
@@ -1268,10 +1268,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddAndRemove ()
+DECL|method|addAndRemove ()
 specifier|public
 name|void
-name|testAddAndRemove
+name|addAndRemove
 parameter_list|()
 throws|throws
 name|Exception
@@ -1458,10 +1458,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHashtagWithMixedCase ()
+DECL|method|hashtagWithMixedCase ()
 specifier|public
 name|void
-name|testHashtagWithMixedCase
+name|hashtagWithMixedCase
 parameter_list|()
 throws|throws
 name|Exception
