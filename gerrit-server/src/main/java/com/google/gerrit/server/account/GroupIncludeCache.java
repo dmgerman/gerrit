@@ -88,7 +88,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Collection
 import|;
 end_import
 
@@ -104,7 +104,7 @@ name|GroupIncludeCache
 block|{
 comment|/** @return groups directly a member of the passed group. */
 DECL|method|subgroupsOf (AccountGroup.UUID group)
-name|Set
+name|Collection
 argument_list|<
 name|AccountGroup
 operator|.
@@ -120,7 +120,7 @@ parameter_list|)
 function_decl|;
 comment|/** @return any groups the passed group belongs to. */
 DECL|method|parentGroupsOf (AccountGroup.UUID groupId)
-name|Set
+name|Collection
 argument_list|<
 name|AccountGroup
 operator|.
@@ -136,7 +136,7 @@ parameter_list|)
 function_decl|;
 comment|/** @return set of any UUIDs that are not internal groups. */
 DECL|method|allExternalMembers ()
-name|Set
+name|Collection
 argument_list|<
 name|AccountGroup
 operator|.

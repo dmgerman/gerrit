@@ -104,7 +104,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableSet
+name|ImmutableList
 import|;
 end_import
 
@@ -169,6 +169,20 @@ operator|.
 name|cache
 operator|.
 name|CacheModule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
 import|;
 end_import
 
@@ -265,6 +279,16 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
 import|;
 end_import
 
@@ -409,7 +433,7 @@ argument_list|,
 operator|new
 name|TypeLiteral
 argument_list|<
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -440,7 +464,7 @@ argument_list|,
 operator|new
 name|TypeLiteral
 argument_list|<
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -469,7 +493,7 @@ argument_list|,
 operator|new
 name|TypeLiteral
 argument_list|<
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -512,7 +536,6 @@ block|}
 block|}
 return|;
 block|}
-DECL|field|subgroups
 specifier|private
 specifier|final
 name|LoadingCache
@@ -521,16 +544,16 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
 argument_list|>
+DECL|field|subgroups
 name|subgroups
 decl_stmt|;
-DECL|field|parentGroups
 specifier|private
 specifier|final
 name|LoadingCache
@@ -539,13 +562,14 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
 argument_list|>
+DECL|field|parentGroups
 name|parentGroups
 decl_stmt|;
 DECL|field|external
@@ -555,7 +579,7 @@ name|LoadingCache
 argument_list|<
 name|String
 argument_list|,
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -566,7 +590,7 @@ name|external
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupIncludeCacheImpl ( @amedSUBGROUPS_NAME) LoadingCache<AccountGroup.UUID, Set<AccountGroup.UUID>> subgroups, @Named(PARENT_GROUPS_NAME) LoadingCache<AccountGroup.UUID, Set<AccountGroup.UUID>> parentGroups, @Named(EXTERNAL_NAME) LoadingCache<String, Set<AccountGroup.UUID>> external)
+DECL|method|GroupIncludeCacheImpl ( @amedSUBGROUPS_NAME) LoadingCache<AccountGroup.UUID, ImmutableList<AccountGroup.UUID>> subgroups, @Named(PARENT_GROUPS_NAME) LoadingCache<AccountGroup.UUID, ImmutableList<AccountGroup.UUID>> parentGroups, @Named(EXTERNAL_NAME) LoadingCache<String, ImmutableList<AccountGroup.UUID>> external)
 name|GroupIncludeCacheImpl
 parameter_list|(
 annotation|@
@@ -580,7 +604,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -600,7 +624,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -618,7 +642,7 @@ name|LoadingCache
 argument_list|<
 name|String
 argument_list|,
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -651,7 +675,7 @@ annotation|@
 name|Override
 DECL|method|subgroupsOf (AccountGroup.UUID groupId)
 specifier|public
-name|Set
+name|Collection
 argument_list|<
 name|AccountGroup
 operator|.
@@ -701,9 +725,9 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|parentGroupsOf (AccountGroup.UUID groupId)
+DECL|method|parentGroupsOf ( AccountGroup.UUID groupId)
 specifier|public
-name|Set
+name|Collection
 argument_list|<
 name|AccountGroup
 operator|.
@@ -832,7 +856,7 @@ annotation|@
 name|Override
 DECL|method|allExternalMembers ()
 specifier|public
-name|Set
+name|Collection
 argument_list|<
 name|AccountGroup
 operator|.
@@ -868,9 +892,9 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-name|Collections
+name|ImmutableList
 operator|.
-name|emptySet
+name|of
 argument_list|()
 return|;
 block|}
@@ -886,7 +910,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -923,9 +947,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|load (AccountGroup.UUID key)
+DECL|method|load ( AccountGroup.UUID key)
 specifier|public
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -939,7 +963,7 @@ name|UUID
 name|key
 parameter_list|)
 throws|throws
-name|Exception
+name|OrmException
 block|{
 try|try
 init|(
@@ -982,9 +1006,9 @@ literal|1
 condition|)
 block|{
 return|return
-name|Collections
+name|ImmutableList
 operator|.
-name|emptySet
+name|of
 argument_list|()
 return|;
 block|}
@@ -1037,7 +1061,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|ImmutableSet
+name|ImmutableList
 operator|.
 name|copyOf
 argument_list|(
@@ -1058,7 +1082,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -1097,7 +1121,7 @@ annotation|@
 name|Override
 DECL|method|load (AccountGroup.UUID key)
 specifier|public
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -1111,7 +1135,7 @@ name|UUID
 name|key
 parameter_list|)
 throws|throws
-name|Exception
+name|OrmException
 block|{
 try|try
 init|(
@@ -1205,7 +1229,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|ImmutableSet
+name|ImmutableList
 operator|.
 name|copyOf
 argument_list|(
@@ -1224,7 +1248,7 @@ name|CacheLoader
 argument_list|<
 name|String
 argument_list|,
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -1263,7 +1287,7 @@ annotation|@
 name|Override
 DECL|method|load (String key)
 specifier|public
-name|Set
+name|ImmutableList
 argument_list|<
 name|AccountGroup
 operator|.
@@ -1342,7 +1366,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|ImmutableSet
+name|ImmutableList
 operator|.
 name|copyOf
 argument_list|(

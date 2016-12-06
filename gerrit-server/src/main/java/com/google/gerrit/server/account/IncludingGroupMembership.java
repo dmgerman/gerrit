@@ -603,12 +603,12 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|search (Set<AccountGroup.UUID> ids)
+DECL|method|search (Iterable<AccountGroup.UUID> ids)
 specifier|private
 name|boolean
 name|search
 parameter_list|(
-name|Set
+name|Iterable
 argument_list|<
 name|AccountGroup
 operator|.
