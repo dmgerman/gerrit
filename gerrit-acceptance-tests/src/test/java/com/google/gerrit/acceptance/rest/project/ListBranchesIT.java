@@ -84,7 +84,7 @@ name|project
 operator|.
 name|RefAssert
 operator|.
-name|assertRefs
+name|assertRefNames
 import|;
 end_import
 
@@ -104,7 +104,7 @@ name|project
 operator|.
 name|RefAssert
 operator|.
-name|assertRefNames
+name|assertRefs
 import|;
 end_import
 
