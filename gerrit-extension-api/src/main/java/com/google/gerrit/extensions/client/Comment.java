@@ -170,6 +170,44 @@ specifier|public
 name|int
 name|endCharacter
 decl_stmt|;
+DECL|method|isValid ()
+specifier|public
+name|boolean
+name|isValid
+parameter_list|()
+block|{
+return|return
+name|startLine
+operator|>=
+literal|0
+operator|&&
+name|startCharacter
+operator|>=
+literal|0
+operator|&&
+name|endLine
+operator|>=
+literal|0
+operator|&&
+name|endCharacter
+operator|>=
+literal|0
+operator|&&
+name|startLine
+operator|<=
+name|endLine
+operator|&&
+operator|(
+name|startLine
+operator|!=
+name|endLine
+operator|||
+name|startCharacter
+operator|<=
+name|endCharacter
+operator|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|equals (Object o)
@@ -267,6 +305,36 @@ name|endLine
 argument_list|,
 name|endCharacter
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Range{"
+operator|+
+literal|"startLine="
+operator|+
+name|startLine
+operator|+
+literal|", startCharacter="
+operator|+
+name|startCharacter
+operator|+
+literal|", endLine="
+operator|+
+name|endLine
+operator|+
+literal|", endCharacter="
+operator|+
+name|endCharacter
+operator|+
+literal|'}'
 return|;
 block|}
 block|}
