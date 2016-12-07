@@ -575,6 +575,10 @@ operator|.
 name|disabled
 operator|=
 name|srcPath
+operator|!=
+literal|null
+operator|&&
+name|srcPath
 operator|.
 name|getFileName
 argument_list|()
