@@ -69,6 +69,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -118,26 +134,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|joda
@@ -145,6 +141,16 @@ operator|.
 name|time
 operator|.
 name|DateTime
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
 import|;
 end_import
 
@@ -160,27 +166,21 @@ end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|junit
+name|util
 operator|.
-name|Ignore
+name|ArrayList
 import|;
 end_import
 
 begin_import
-import|import static
-name|com
+import|import
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth
-operator|.
-name|assertThat
+name|List
 import|;
 end_import
 
