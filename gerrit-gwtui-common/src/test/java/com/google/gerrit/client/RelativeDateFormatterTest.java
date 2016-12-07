@@ -248,10 +248,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFuture ()
+DECL|method|future ()
 specifier|public
 name|void
-name|testFuture
+name|future
 parameter_list|()
 block|{
 name|assertFormat
@@ -277,10 +277,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatSeconds ()
+DECL|method|formatSeconds ()
 specifier|public
 name|void
-name|testFormatSeconds
+name|formatSeconds
 parameter_list|()
 block|{
 name|assertFormat
@@ -304,10 +304,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatMinutes ()
+DECL|method|formatMinutes ()
 specifier|public
 name|void
-name|testFormatMinutes
+name|formatMinutes
 parameter_list|()
 block|{
 name|assertFormat
@@ -349,10 +349,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatHours ()
+DECL|method|formatHours ()
 specifier|public
 name|void
-name|testFormatHours
+name|formatHours
 parameter_list|()
 block|{
 name|assertFormat
@@ -385,10 +385,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatDays ()
+DECL|method|formatDays ()
 specifier|public
 name|void
-name|testFormatDays
+name|formatDays
 parameter_list|()
 block|{
 name|assertFormat
@@ -412,10 +412,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatWeeks ()
+DECL|method|formatWeeks ()
 specifier|public
 name|void
-name|testFormatWeeks
+name|formatWeeks
 parameter_list|()
 block|{
 name|assertFormat
@@ -439,10 +439,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatMonths ()
+DECL|method|formatMonths ()
 specifier|public
 name|void
-name|testFormatMonths
+name|formatMonths
 parameter_list|()
 block|{
 name|assertFormat
@@ -475,10 +475,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatYearsMonths ()
+DECL|method|formatYearsMonths ()
 specifier|public
 name|void
-name|testFormatYearsMonths
+name|formatYearsMonths
 parameter_list|()
 block|{
 name|assertFormat
@@ -529,10 +529,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatYears ()
+DECL|method|formatYears ()
 specifier|public
 name|void
-name|testFormatYears
+name|formatYears
 parameter_list|()
 block|{
 name|assertFormat

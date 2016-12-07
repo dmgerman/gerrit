@@ -227,10 +227,10 @@ literal|"http://localhost/"
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testFollowMasterBranch ()
+DECL|method|followMasterBranch ()
 specifier|public
 name|void
-name|testFollowMasterBranch
+name|followMasterBranch
 parameter_list|()
 throws|throws
 name|Exception
@@ -356,10 +356,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFollowMatchingBranch ()
+DECL|method|followMatchingBranch ()
 specifier|public
 name|void
-name|testFollowMatchingBranch
+name|followMatchingBranch
 parameter_list|()
 throws|throws
 name|Exception
@@ -564,10 +564,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFollowAnotherBranch ()
+DECL|method|followAnotherBranch ()
 specifier|public
 name|void
-name|testFollowAnotherBranch
+name|followAnotherBranch
 parameter_list|()
 throws|throws
 name|Exception
@@ -693,10 +693,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithAnotherURI ()
+DECL|method|withAnotherURI ()
 specifier|public
 name|void
-name|testWithAnotherURI
+name|withAnotherURI
 parameter_list|()
 throws|throws
 name|Exception
@@ -822,10 +822,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithSlashesInProjectName ()
+DECL|method|withSlashesInProjectName ()
 specifier|public
 name|void
-name|testWithSlashesInProjectName
+name|withSlashesInProjectName
 parameter_list|()
 throws|throws
 name|Exception
@@ -951,10 +951,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithSlashesInPath ()
+DECL|method|withSlashesInPath ()
 specifier|public
 name|void
-name|testWithSlashesInPath
+name|withSlashesInPath
 parameter_list|()
 throws|throws
 name|Exception
@@ -1080,10 +1080,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithMoreSections ()
+DECL|method|withMoreSections ()
 specifier|public
 name|void
-name|testWithMoreSections
+name|withMoreSections
 parameter_list|()
 throws|throws
 name|Exception
@@ -1252,10 +1252,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithSubProjectFound ()
+DECL|method|withSubProjectFound ()
 specifier|public
 name|void
-name|testWithSubProjectFound
+name|withSubProjectFound
 parameter_list|()
 throws|throws
 name|Exception
@@ -1424,10 +1424,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithAnInvalidSection ()
+DECL|method|withAnInvalidSection ()
 specifier|public
 name|void
-name|testWithAnInvalidSection
+name|withAnInvalidSection
 parameter_list|()
 throws|throws
 name|Exception
@@ -1651,10 +1651,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithSectionOfNonexistingProject ()
+DECL|method|withSectionOfNonexistingProject ()
 specifier|public
 name|void
-name|testWithSectionOfNonexistingProject
+name|withSectionOfNonexistingProject
 parameter_list|()
 throws|throws
 name|Exception
@@ -1733,10 +1733,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithSectionToOtherServer ()
+DECL|method|withSectionToOtherServer ()
 specifier|public
 name|void
-name|testWithSectionToOtherServer
+name|withSectionToOtherServer
 parameter_list|()
 throws|throws
 name|Exception
@@ -1831,10 +1831,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithRelativeURI ()
+DECL|method|withRelativeURI ()
 specifier|public
 name|void
-name|testWithRelativeURI
+name|withRelativeURI
 parameter_list|()
 throws|throws
 name|Exception
@@ -1960,10 +1960,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithDeepRelativeURI ()
+DECL|method|withDeepRelativeURI ()
 specifier|public
 name|void
-name|testWithDeepRelativeURI
+name|withDeepRelativeURI
 parameter_list|()
 throws|throws
 name|Exception
@@ -2089,10 +2089,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWithOverlyDeepRelativeURI ()
+DECL|method|withOverlyDeepRelativeURI ()
 specifier|public
 name|void
-name|testWithOverlyDeepRelativeURI
+name|withOverlyDeepRelativeURI
 parameter_list|()
 throws|throws
 name|Exception

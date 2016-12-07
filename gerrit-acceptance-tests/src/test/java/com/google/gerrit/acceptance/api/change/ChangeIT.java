@@ -15892,10 +15892,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateMergePatchSet ()
+DECL|method|createMergePatchSet ()
 specifier|public
 name|void
-name|testCreateMergePatchSet
+name|createMergePatchSet
 parameter_list|()
 throws|throws
 name|Exception
@@ -16164,10 +16164,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateMergePatchSetInheritParent ()
+DECL|method|createMergePatchSetInheritParent ()
 specifier|public
 name|void
-name|testCreateMergePatchSetInheritParent
+name|createMergePatchSetInheritParent
 parameter_list|()
 throws|throws
 name|Exception

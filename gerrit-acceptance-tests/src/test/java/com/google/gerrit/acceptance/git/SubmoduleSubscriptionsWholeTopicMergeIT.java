@@ -436,10 +436,10 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionUpdateOfManyChanges ()
+DECL|method|subscriptionUpdateOfManyChanges ()
 specifier|public
 name|void
-name|testSubscriptionUpdateOfManyChanges
+name|subscriptionUpdateOfManyChanges
 parameter_list|()
 throws|throws
 name|Exception
@@ -1062,10 +1062,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionUpdateIncludingChangeInSuperproject ()
+DECL|method|subscriptionUpdateIncludingChangeInSuperproject ()
 specifier|public
 name|void
-name|testSubscriptionUpdateIncludingChangeInSuperproject
+name|subscriptionUpdateIncludingChangeInSuperproject
 parameter_list|()
 throws|throws
 name|Exception
@@ -1600,10 +1600,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUpdateManySubmodules ()
+DECL|method|updateManySubmodules ()
 specifier|public
 name|void
-name|testUpdateManySubmodules
+name|updateManySubmodules
 parameter_list|()
 throws|throws
 name|Exception
@@ -1934,10 +1934,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDoNotUseFastForward ()
+DECL|method|doNotUseFastForward ()
 specifier|public
 name|void
-name|testDoNotUseFastForward
+name|doNotUseFastForward
 parameter_list|()
 throws|throws
 name|Exception
@@ -2120,10 +2120,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUseFastForwardWhenNoSubmodule ()
+DECL|method|useFastForwardWhenNoSubmodule ()
 specifier|public
 name|void
-name|testUseFastForwardWhenNoSubmodule
+name|useFastForwardWhenNoSubmodule
 parameter_list|()
 throws|throws
 name|Exception
@@ -2271,10 +2271,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSameProjectSameBranchDifferentPaths ()
+DECL|method|sameProjectSameBranchDifferentPaths ()
 specifier|public
 name|void
-name|testSameProjectSameBranchDifferentPaths
+name|sameProjectSameBranchDifferentPaths
 parameter_list|()
 throws|throws
 name|Exception
@@ -2487,10 +2487,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSameProjectDifferentBranchDifferentPaths ()
+DECL|method|sameProjectDifferentBranchDifferentPaths ()
 specifier|public
 name|void
-name|testSameProjectDifferentBranchDifferentPaths
+name|sameProjectDifferentBranchDifferentPaths
 parameter_list|()
 throws|throws
 name|Exception
@@ -2768,10 +2768,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNonSubmoduleInSameTopic ()
+DECL|method|nonSubmoduleInSameTopic ()
 specifier|public
 name|void
-name|testNonSubmoduleInSameTopic
+name|nonSubmoduleInSameTopic
 parameter_list|()
 throws|throws
 name|Exception
@@ -3016,10 +3016,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRecursiveSubmodules ()
+DECL|method|recursiveSubmodules ()
 specifier|public
 name|void
-name|testRecursiveSubmodules
+name|recursiveSubmodules
 parameter_list|()
 throws|throws
 name|Exception
@@ -3242,10 +3242,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTriangleSubmodules ()
+DECL|method|triangleSubmodules ()
 specifier|public
 name|void
-name|testTriangleSubmodules
+name|triangleSubmodules
 parameter_list|()
 throws|throws
 name|Exception
@@ -3686,10 +3686,10 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBranchCircularSubscription ()
+DECL|method|branchCircularSubscription ()
 specifier|public
 name|void
-name|testBranchCircularSubscription
+name|branchCircularSubscription
 parameter_list|()
 throws|throws
 name|Exception
@@ -3719,10 +3719,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBranchCircularSubscriptionPreview ()
+DECL|method|branchCircularSubscriptionPreview ()
 specifier|public
 name|void
-name|testBranchCircularSubscriptionPreview
+name|branchCircularSubscriptionPreview
 parameter_list|()
 throws|throws
 name|Exception
@@ -3752,10 +3752,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testProjectCircularSubscriptionWholeTopic ()
+DECL|method|projectCircularSubscriptionWholeTopic ()
 specifier|public
 name|void
-name|testProjectCircularSubscriptionWholeTopic
+name|projectCircularSubscriptionWholeTopic
 parameter_list|()
 throws|throws
 name|Exception
@@ -3976,10 +3976,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testProjectNoSubscriptionWholeTopic ()
+DECL|method|projectNoSubscriptionWholeTopic ()
 specifier|public
 name|void
-name|testProjectNoSubscriptionWholeTopic
+name|projectNoSubscriptionWholeTopic
 parameter_list|()
 throws|throws
 name|Exception
@@ -4281,10 +4281,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTwoProjectsMultipleBranchesWholeTopic ()
+DECL|method|twoProjectsMultipleBranchesWholeTopic ()
 specifier|public
 name|void
-name|testTwoProjectsMultipleBranchesWholeTopic
+name|twoProjectsMultipleBranchesWholeTopic
 parameter_list|()
 throws|throws
 name|Exception

@@ -241,10 +241,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDefaultSubmitTypeWhenNotConfigured ()
+DECL|method|defaultSubmitTypeWhenNotConfigured ()
 specifier|public
 name|void
-name|testDefaultSubmitTypeWhenNotConfigured
+name|defaultSubmitTypeWhenNotConfigured
 parameter_list|()
 block|{
 name|assertThat
@@ -271,10 +271,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDefaultSubmitTypeForStarFilter ()
+DECL|method|defaultSubmitTypeForStarFilter ()
 specifier|public
 name|void
-name|testDefaultSubmitTypeForStarFilter
+name|defaultSubmitTypeForStarFilter
 parameter_list|()
 block|{
 name|configureDefaultSubmitType
@@ -400,10 +400,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDefaultSubmitTypeForSpecificFilter ()
+DECL|method|defaultSubmitTypeForSpecificFilter ()
 specifier|public
 name|void
-name|testDefaultSubmitTypeForSpecificFilter
+name|defaultSubmitTypeForSpecificFilter
 parameter_list|()
 block|{
 name|configureDefaultSubmitType
@@ -460,10 +460,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDefaultSubmitTypeForStartWithFilter ()
+DECL|method|defaultSubmitTypeForStartWithFilter ()
 specifier|public
 name|void
-name|testDefaultSubmitTypeForStartWithFilter
+name|defaultSubmitTypeForStartWithFilter
 parameter_list|()
 block|{
 name|configureDefaultSubmitType
@@ -592,10 +592,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOwnerGroupsWhenNotConfigured ()
+DECL|method|ownerGroupsWhenNotConfigured ()
 specifier|public
 name|void
-name|testOwnerGroupsWhenNotConfigured
+name|ownerGroupsWhenNotConfigured
 parameter_list|()
 block|{
 name|assertThat
@@ -618,10 +618,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOwnerGroupsForStarFilter ()
+DECL|method|ownerGroupsForStarFilter ()
 specifier|public
 name|void
-name|testOwnerGroupsForStarFilter
+name|ownerGroupsForStarFilter
 parameter_list|()
 block|{
 name|ImmutableList
@@ -668,10 +668,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOwnerGroupsForSpecificFilter ()
+DECL|method|ownerGroupsForSpecificFilter ()
 specifier|public
 name|void
-name|testOwnerGroupsForSpecificFilter
+name|ownerGroupsForSpecificFilter
 parameter_list|()
 block|{
 name|ImmutableList
@@ -735,10 +735,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOwnerGroupsForStartWithFilter ()
+DECL|method|ownerGroupsForStartWithFilter ()
 specifier|public
 name|void
-name|testOwnerGroupsForStartWithFilter
+name|ownerGroupsForStartWithFilter
 parameter_list|()
 block|{
 name|ImmutableList
@@ -894,10 +894,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBasePathWhenNotConfigured ()
+DECL|method|basePathWhenNotConfigured ()
 specifier|public
 name|void
-name|testBasePathWhenNotConfigured
+name|basePathWhenNotConfigured
 parameter_list|()
 block|{
 name|assertThat
@@ -923,10 +923,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBasePathForStarFilter ()
+DECL|method|basePathForStarFilter ()
 specifier|public
 name|void
-name|testBasePathForStarFilter
+name|basePathForStarFilter
 parameter_list|()
 block|{
 name|String
@@ -966,10 +966,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBasePathForSpecificFilter ()
+DECL|method|basePathForSpecificFilter ()
 specifier|public
 name|void
-name|testBasePathForSpecificFilter
+name|basePathForSpecificFilter
 parameter_list|()
 block|{
 name|String
@@ -1029,10 +1029,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBasePathForStartWithFilter ()
+DECL|method|basePathForStartWithFilter ()
 specifier|public
 name|void
-name|testBasePathForStartWithFilter
+name|basePathForStartWithFilter
 parameter_list|()
 block|{
 name|String
@@ -1174,10 +1174,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAllBasePath ()
+DECL|method|allBasePath ()
 specifier|public
 name|void
-name|testAllBasePath
+name|allBasePath
 parameter_list|()
 block|{
 name|ImmutableList

@@ -2178,10 +2178,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testTopicChaining ()
+DECL|method|topicChaining ()
 specifier|public
 name|void
-name|testTopicChaining
+name|topicChaining
 parameter_list|()
 throws|throws
 name|Exception
@@ -2390,10 +2390,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testNewBranchTwoChangesTogether ()
+DECL|method|newBranchTwoChangesTogether ()
 specifier|public
 name|void
-name|testNewBranchTwoChangesTogether
+name|newBranchTwoChangesTogether
 parameter_list|()
 throws|throws
 name|Exception
@@ -2648,10 +2648,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubmissionIdSavedOnMergeInOneProject ()
+DECL|method|submissionIdSavedOnMergeInOneProject ()
 specifier|public
 name|void
-name|testSubmissionIdSavedOnMergeInOneProject
+name|submissionIdSavedOnMergeInOneProject
 parameter_list|()
 throws|throws
 name|Exception

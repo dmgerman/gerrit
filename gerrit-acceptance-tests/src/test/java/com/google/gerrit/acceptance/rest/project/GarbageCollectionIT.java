@@ -214,10 +214,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGcNonExistingProject_NotFound ()
+DECL|method|gcNonExistingProject_NotFound ()
 specifier|public
 name|void
-name|testGcNonExistingProject_NotFound
+name|gcNonExistingProject_NotFound
 parameter_list|()
 throws|throws
 name|Exception
@@ -233,10 +233,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGcNotAllowed_Forbidden ()
+DECL|method|gcNotAllowed_Forbidden ()
 specifier|public
 name|void
-name|testGcNotAllowed_Forbidden
+name|gcNotAllowed_Forbidden
 parameter_list|()
 throws|throws
 name|Exception

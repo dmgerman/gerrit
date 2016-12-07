@@ -128,10 +128,10 @@ name|GerritBaseTests
 block|{
 annotation|@
 name|Test
-DECL|method|testParse_NameEmail1 ()
+DECL|method|parse_NameEmail1 ()
 specifier|public
 name|void
-name|testParse_NameEmail1
+name|parse_NameEmail1
 parameter_list|()
 block|{
 specifier|final
@@ -172,10 +172,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParse_NameEmail2 ()
+DECL|method|parse_NameEmail2 ()
 specifier|public
 name|void
-name|testParse_NameEmail2
+name|parse_NameEmail2
 parameter_list|()
 block|{
 specifier|final
@@ -216,10 +216,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParse_NameEmail3 ()
+DECL|method|parse_NameEmail3 ()
 specifier|public
 name|void
-name|testParse_NameEmail3
+name|parse_NameEmail3
 parameter_list|()
 block|{
 specifier|final
@@ -258,10 +258,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParse_NameEmail4 ()
+DECL|method|parse_NameEmail4 ()
 specifier|public
 name|void
-name|testParse_NameEmail4
+name|parse_NameEmail4
 parameter_list|()
 block|{
 specifier|final
@@ -302,10 +302,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParse_NameEmail5 ()
+DECL|method|parse_NameEmail5 ()
 specifier|public
 name|void
-name|testParse_NameEmail5
+name|parse_NameEmail5
 parameter_list|()
 block|{
 specifier|final
@@ -346,10 +346,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParse_Email1 ()
+DECL|method|parse_Email1 ()
 specifier|public
 name|void
-name|testParse_Email1
+name|parse_Email1
 parameter_list|()
 block|{
 specifier|final
@@ -388,10 +388,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParse_Email2 ()
+DECL|method|parse_Email2 ()
 specifier|public
 name|void
-name|testParse_Email2
+name|parse_Email2
 parameter_list|()
 block|{
 specifier|final
@@ -430,10 +430,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParse_NewTLD ()
+DECL|method|parse_NewTLD ()
 specifier|public
 name|void
-name|testParse_NewTLD
+name|parse_NewTLD
 parameter_list|()
 block|{
 name|Address
@@ -473,10 +473,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseInvalid ()
+DECL|method|parseInvalid ()
 specifier|public
 name|void
-name|testParseInvalid
+name|parseInvalid
 parameter_list|()
 block|{
 name|assertInvalid
@@ -602,10 +602,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testToHeaderString_NameEmail1 ()
+DECL|method|toHeaderString_NameEmail1 ()
 specifier|public
 name|void
-name|testToHeaderString_NameEmail1
+name|toHeaderString_NameEmail1
 parameter_list|()
 block|{
 name|assertThat
@@ -626,10 +626,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToHeaderString_NameEmail2 ()
+DECL|method|toHeaderString_NameEmail2 ()
 specifier|public
 name|void
-name|testToHeaderString_NameEmail2
+name|toHeaderString_NameEmail2
 parameter_list|()
 block|{
 name|assertThat
@@ -650,10 +650,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToHeaderString_NameEmail3 ()
+DECL|method|toHeaderString_NameEmail3 ()
 specifier|public
 name|void
-name|testToHeaderString_NameEmail3
+name|toHeaderString_NameEmail3
 parameter_list|()
 block|{
 name|assertThat
@@ -674,10 +674,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToHeaderString_NameEmail4 ()
+DECL|method|toHeaderString_NameEmail4 ()
 specifier|public
 name|void
-name|testToHeaderString_NameEmail4
+name|toHeaderString_NameEmail4
 parameter_list|()
 block|{
 name|assertThat
@@ -698,10 +698,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToHeaderString_NameEmail5 ()
+DECL|method|toHeaderString_NameEmail5 ()
 specifier|public
 name|void
-name|testToHeaderString_NameEmail5
+name|toHeaderString_NameEmail5
 parameter_list|()
 block|{
 name|assertThat
@@ -722,10 +722,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToHeaderString_NameEmail6 ()
+DECL|method|toHeaderString_NameEmail6 ()
 specifier|public
 name|void
-name|testToHeaderString_NameEmail6
+name|toHeaderString_NameEmail6
 parameter_list|()
 block|{
 name|assertThat
@@ -746,10 +746,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToHeaderString_NameEmail7 ()
+DECL|method|toHeaderString_NameEmail7 ()
 specifier|public
 name|void
-name|testToHeaderString_NameEmail7
+name|toHeaderString_NameEmail7
 parameter_list|()
 block|{
 name|assertThat
@@ -770,10 +770,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToHeaderString_Email1 ()
+DECL|method|toHeaderString_Email1 ()
 specifier|public
 name|void
-name|testToHeaderString_Email1
+name|toHeaderString_Email1
 parameter_list|()
 block|{
 name|assertThat
@@ -794,10 +794,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToHeaderString_Email2 ()
+DECL|method|toHeaderString_Email2 ()
 specifier|public
 name|void
-name|testToHeaderString_Email2
+name|toHeaderString_Email2
 parameter_list|()
 block|{
 name|assertThat

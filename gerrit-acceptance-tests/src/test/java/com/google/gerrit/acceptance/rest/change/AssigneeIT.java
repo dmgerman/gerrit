@@ -330,10 +330,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetNoAssignee ()
+DECL|method|getNoAssignee ()
 specifier|public
 name|void
-name|testGetNoAssignee
+name|getNoAssignee
 parameter_list|()
 throws|throws
 name|Exception
@@ -360,10 +360,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddGetAssignee ()
+DECL|method|addGetAssignee ()
 specifier|public
 name|void
-name|testAddGetAssignee
+name|addGetAssignee
 parameter_list|()
 throws|throws
 name|Exception
@@ -425,10 +425,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSetNewAssigneeWhenExists ()
+DECL|method|setNewAssigneeWhenExists ()
 specifier|public
 name|void
-name|testSetNewAssigneeWhenExists
+name|setNewAssigneeWhenExists
 parameter_list|()
 throws|throws
 name|Exception
@@ -478,10 +478,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetPastAssignees ()
+DECL|method|getPastAssignees ()
 specifier|public
 name|void
-name|testGetPastAssignees
+name|getPastAssignees
 parameter_list|()
 throws|throws
 name|Exception
@@ -603,10 +603,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAssigneeAddedAsReviewer ()
+DECL|method|assigneeAddedAsReviewer ()
 specifier|public
 name|void
-name|testAssigneeAddedAsReviewer
+name|assigneeAddedAsReviewer
 parameter_list|()
 throws|throws
 name|Exception
@@ -746,10 +746,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSetAlreadyExistingAssignee ()
+DECL|method|setAlreadyExistingAssignee ()
 specifier|public
 name|void
-name|testSetAlreadyExistingAssignee
+name|setAlreadyExistingAssignee
 parameter_list|()
 throws|throws
 name|Exception
@@ -799,10 +799,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDeleteAssignee ()
+DECL|method|deleteAssignee ()
 specifier|public
 name|void
-name|testDeleteAssignee
+name|deleteAssignee
 parameter_list|()
 throws|throws
 name|Exception
@@ -875,10 +875,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDeleteAssigneeWhenNoAssignee ()
+DECL|method|deleteAssigneeWhenNoAssignee ()
 specifier|public
 name|void
-name|testDeleteAssigneeWhenNoAssignee
+name|deleteAssigneeWhenNoAssignee
 parameter_list|()
 throws|throws
 name|Exception

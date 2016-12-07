@@ -176,10 +176,10 @@ name|ParameterParserTest
 block|{
 annotation|@
 name|Test
-DECL|method|testConvertFormToJson ()
+DECL|method|convertFormToJson ()
 specifier|public
 name|void
-name|testConvertFormToJson
+name|convertFormToJson
 parameter_list|()
 throws|throws
 name|BadRequestException

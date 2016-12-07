@@ -166,10 +166,10 @@ name|RegexPathPredicateTest
 block|{
 annotation|@
 name|Test
-DECL|method|testPrefixOnlyOptimization ()
+DECL|method|prefixOnlyOptimization ()
 specifier|public
 name|void
-name|testPrefixOnlyOptimization
+name|prefixOnlyOptimization
 parameter_list|()
 throws|throws
 name|OrmException
@@ -239,10 +239,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPrefixReducesSearchSpace ()
+DECL|method|prefixReducesSearchSpace ()
 specifier|public
 name|void
-name|testPrefixReducesSearchSpace
+name|prefixReducesSearchSpace
 parameter_list|()
 throws|throws
 name|OrmException
@@ -314,10 +314,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFileExtension_Constant ()
+DECL|method|fileExtension_Constant ()
 specifier|public
 name|void
-name|testFileExtension_Constant
+name|fileExtension_Constant
 parameter_list|()
 throws|throws
 name|OrmException
@@ -372,10 +372,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFileExtension_CharacterGroup ()
+DECL|method|fileExtension_CharacterGroup ()
 specifier|public
 name|void
-name|testFileExtension_CharacterGroup
+name|fileExtension_CharacterGroup
 parameter_list|()
 throws|throws
 name|OrmException
@@ -430,10 +430,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testEndOfString ()
+DECL|method|endOfString ()
 specifier|public
 name|void
-name|testEndOfString
+name|endOfString
 parameter_list|()
 throws|throws
 name|OrmException
@@ -505,10 +505,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testExactMatch ()
+DECL|method|exactMatch ()
 specifier|public
 name|void
-name|testExactMatch
+name|exactMatch
 parameter_list|()
 throws|throws
 name|OrmException

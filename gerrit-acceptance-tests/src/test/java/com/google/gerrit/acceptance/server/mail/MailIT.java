@@ -569,10 +569,10 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDelete ()
+DECL|method|delete ()
 specifier|public
 name|void
-name|testDelete
+name|delete
 parameter_list|()
 throws|throws
 name|Exception

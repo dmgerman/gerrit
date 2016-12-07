@@ -349,10 +349,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testList ()
+DECL|method|list ()
 specifier|public
 name|void
-name|testList
+name|list
 parameter_list|()
 throws|throws
 name|Exception

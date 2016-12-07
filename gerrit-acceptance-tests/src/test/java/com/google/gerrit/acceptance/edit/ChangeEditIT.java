@@ -7089,10 +7089,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHasEditPredicate ()
+DECL|method|hasEditPredicate ()
 specifier|public
 name|void
-name|testHasEditPredicate
+name|hasEditPredicate
 parameter_list|()
 throws|throws
 name|Exception

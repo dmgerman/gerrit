@@ -482,10 +482,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testProjectCreation ()
+DECL|method|projectCreation ()
 specifier|public
 name|void
-name|testProjectCreation
+name|projectCreation
 parameter_list|()
 throws|throws
 name|Exception
@@ -1220,10 +1220,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOpenRepositoryCreatedDirectlyOnDisk ()
+DECL|method|openRepositoryCreatedDirectlyOnDisk ()
 specifier|public
 name|void
-name|testOpenRepositoryCreatedDirectlyOnDisk
+name|openRepositoryCreatedDirectlyOnDisk
 parameter_list|()
 throws|throws
 name|Exception
@@ -1607,10 +1607,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testList ()
+DECL|method|list ()
 specifier|public
 name|void
-name|testList
+name|list
 parameter_list|()
 throws|throws
 name|Exception

@@ -382,10 +382,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testByUUID ()
+DECL|method|byUUID ()
 specifier|public
 name|void
-name|testByUUID
+name|byUUID
 parameter_list|()
 throws|throws
 name|Exception
@@ -436,10 +436,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPut ()
+DECL|method|put ()
 specifier|public
 name|void
-name|testPut
+name|put
 parameter_list|()
 block|{
 name|AccountGroup
@@ -508,10 +508,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReferences ()
+DECL|method|references ()
 specifier|public
 name|void
-name|testReferences
+name|references
 parameter_list|()
 throws|throws
 name|Exception
@@ -574,10 +574,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUUIDs ()
+DECL|method|uUIDs ()
 specifier|public
 name|void
-name|testUUIDs
+name|uUIDs
 parameter_list|()
 throws|throws
 name|Exception
@@ -631,10 +631,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testValidationError ()
+DECL|method|validationError ()
 specifier|public
 name|void
-name|testValidationError
+name|validationError
 parameter_list|()
 throws|throws
 name|Exception
@@ -706,10 +706,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRetainAll ()
+DECL|method|retainAll ()
 specifier|public
 name|void
-name|testRetainAll
+name|retainAll
 parameter_list|()
 throws|throws
 name|Exception
@@ -768,10 +768,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAsText ()
+DECL|method|asText ()
 specifier|public
 name|void
-name|testAsText
+name|asText
 parameter_list|()
 throws|throws
 name|Exception

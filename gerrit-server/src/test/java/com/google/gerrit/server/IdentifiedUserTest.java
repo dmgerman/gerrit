@@ -832,10 +832,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testEmailsExistence ()
+DECL|method|emailsExistence ()
 specifier|public
 name|void
-name|testEmailsExistence
+name|emailsExistence
 parameter_list|()
 block|{
 name|assertThat

@@ -366,10 +366,10 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Test
-DECL|method|testCapabilitiesUser ()
+DECL|method|capabilitiesUser ()
 specifier|public
 name|void
-name|testCapabilitiesUser
+name|capabilitiesUser
 parameter_list|()
 throws|throws
 name|Exception
@@ -662,10 +662,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testCapabilitiesAdmin ()
+DECL|method|capabilitiesAdmin ()
 specifier|public
 name|void
-name|testCapabilitiesAdmin
+name|capabilitiesAdmin
 parameter_list|()
 throws|throws
 name|Exception

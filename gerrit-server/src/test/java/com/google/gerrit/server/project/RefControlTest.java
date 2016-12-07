@@ -2568,10 +2568,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOwnerProject ()
+DECL|method|ownerProject ()
 specifier|public
 name|void
-name|testOwnerProject
+name|ownerProject
 parameter_list|()
 block|{
 name|allow
@@ -2591,10 +2591,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDenyOwnerProject ()
+DECL|method|denyOwnerProject ()
 specifier|public
 name|void
-name|testDenyOwnerProject
+name|denyOwnerProject
 parameter_list|()
 block|{
 name|allow
@@ -2625,10 +2625,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBlockOwnerProject ()
+DECL|method|blockOwnerProject ()
 specifier|public
 name|void
-name|testBlockOwnerProject
+name|blockOwnerProject
 parameter_list|()
 block|{
 name|allow
@@ -2659,10 +2659,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBranchDelegation1 ()
+DECL|method|branchDelegation1 ()
 specifier|public
 name|void
-name|testBranchDelegation1
+name|branchDelegation1
 parameter_list|()
 block|{
 name|allow
@@ -2745,10 +2745,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBranchDelegation2 ()
+DECL|method|branchDelegation2 ()
 specifier|public
 name|void
-name|testBranchDelegation2
+name|branchDelegation2
 parameter_list|()
 block|{
 name|allow
@@ -2913,10 +2913,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInheritRead_SingleBranchDeniesUpload ()
+DECL|method|inheritRead_SingleBranchDeniesUpload ()
 specifier|public
 name|void
-name|testInheritRead_SingleBranchDeniesUpload
+name|inheritRead_SingleBranchDeniesUpload
 parameter_list|()
 block|{
 name|allow
@@ -3000,10 +3000,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBlockPushDrafts ()
+DECL|method|blockPushDrafts ()
 specifier|public
 name|void
-name|testBlockPushDrafts
+name|blockPushDrafts
 parameter_list|()
 block|{
 name|allow
@@ -3055,10 +3055,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBlockPushDraftsUnblockAdmin ()
+DECL|method|blockPushDraftsUnblockAdmin ()
 specifier|public
 name|void
-name|testBlockPushDraftsUnblockAdmin
+name|blockPushDraftsUnblockAdmin
 parameter_list|()
 block|{
 name|block
@@ -3124,10 +3124,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInheritRead_SingleBranchDoesNotOverrideInherited ()
+DECL|method|inheritRead_SingleBranchDoesNotOverrideInherited ()
 specifier|public
 name|void
-name|testInheritRead_SingleBranchDoesNotOverrideInherited
+name|inheritRead_SingleBranchDoesNotOverrideInherited
 parameter_list|()
 block|{
 name|allow
@@ -3193,10 +3193,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInheritDuplicateSections ()
+DECL|method|inheritDuplicateSections ()
 specifier|public
 name|void
-name|testInheritDuplicateSections
+name|inheritDuplicateSections
 parameter_list|()
 throws|throws
 name|Exception
@@ -3289,10 +3289,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInheritRead_OverrideWithDeny ()
+DECL|method|inheritRead_OverrideWithDeny ()
 specifier|public
 name|void
-name|testInheritRead_OverrideWithDeny
+name|inheritRead_OverrideWithDeny
 parameter_list|()
 block|{
 name|allow
@@ -3328,10 +3328,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInheritRead_AppendWithDenyOfRef ()
+DECL|method|inheritRead_AppendWithDenyOfRef ()
 specifier|public
 name|void
-name|testInheritRead_AppendWithDenyOfRef
+name|inheritRead_AppendWithDenyOfRef
 parameter_list|()
 block|{
 name|allow
@@ -3393,10 +3393,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInheritRead_OverridesAndDeniesOfRef ()
+DECL|method|inheritRead_OverridesAndDeniesOfRef ()
 specifier|public
 name|void
-name|testInheritRead_OverridesAndDeniesOfRef
+name|inheritRead_OverridesAndDeniesOfRef
 parameter_list|()
 block|{
 name|allow
@@ -3469,10 +3469,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInheritSubmit_OverridesAndDeniesOfRef ()
+DECL|method|inheritSubmit_OverridesAndDeniesOfRef ()
 specifier|public
 name|void
-name|testInheritSubmit_OverridesAndDeniesOfRef
+name|inheritSubmit_OverridesAndDeniesOfRef
 parameter_list|()
 block|{
 name|allow
@@ -3540,10 +3540,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCannotUploadToAnyRef ()
+DECL|method|cannotUploadToAnyRef ()
 specifier|public
 name|void
-name|testCannotUploadToAnyRef
+name|cannotUploadToAnyRef
 parameter_list|()
 block|{
 name|allow
@@ -3602,10 +3602,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUsernamePatternCanUploadToAnyRef ()
+DECL|method|usernamePatternCanUploadToAnyRef ()
 specifier|public
 name|void
-name|testUsernamePatternCanUploadToAnyRef
+name|usernamePatternCanUploadToAnyRef
 parameter_list|()
 block|{
 name|allow
@@ -3637,10 +3637,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUsernamePatternNonRegex ()
+DECL|method|usernamePatternNonRegex ()
 specifier|public
 name|void
-name|testUsernamePatternNonRegex
+name|usernamePatternNonRegex
 parameter_list|()
 block|{
 name|allow
@@ -3695,10 +3695,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUsernamePatternWithRegex ()
+DECL|method|usernamePatternWithRegex ()
 specifier|public
 name|void
-name|testUsernamePatternWithRegex
+name|usernamePatternWithRegex
 parameter_list|()
 block|{
 name|allow
@@ -3753,10 +3753,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUsernameEmailPatternWithRegex ()
+DECL|method|usernameEmailPatternWithRegex ()
 specifier|public
 name|void
-name|testUsernameEmailPatternWithRegex
+name|usernameEmailPatternWithRegex
 parameter_list|()
 block|{
 name|allow
@@ -3811,10 +3811,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSortWithRegex ()
+DECL|method|sortWithRegex ()
 specifier|public
 name|void
-name|testSortWithRegex
+name|sortWithRegex
 parameter_list|()
 block|{
 name|allow
@@ -3876,10 +3876,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBlockRule_ParentBlocksChild ()
+DECL|method|blockRule_ParentBlocksChild ()
 specifier|public
 name|void
-name|testBlockRule_ParentBlocksChild
+name|blockRule_ParentBlocksChild
 parameter_list|()
 block|{
 name|allow
@@ -3924,10 +3924,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBlockRule_ParentBlocksChildEvenIfAlreadyBlockedInChild ()
+DECL|method|blockRule_ParentBlocksChildEvenIfAlreadyBlockedInChild ()
 specifier|public
 name|void
-name|testBlockRule_ParentBlocksChildEvenIfAlreadyBlockedInChild
+name|blockRule_ParentBlocksChildEvenIfAlreadyBlockedInChild
 parameter_list|()
 block|{
 name|allow
@@ -3983,10 +3983,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBlockLabelRange_ParentBlocksChild ()
+DECL|method|blockLabelRange_ParentBlocksChild ()
 specifier|public
 name|void
-name|testBlockLabelRange_ParentBlocksChild
+name|blockLabelRange_ParentBlocksChild
 parameter_list|()
 block|{
 name|allow
@@ -4087,10 +4087,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBlockLabelRange_ParentBlocksChildEvenIfAlreadyBlockedInChild ()
+DECL|method|blockLabelRange_ParentBlocksChildEvenIfAlreadyBlockedInChild ()
 specifier|public
 name|void
-name|testBlockLabelRange_ParentBlocksChildEvenIfAlreadyBlockedInChild
+name|blockLabelRange_ParentBlocksChildEvenIfAlreadyBlockedInChild
 parameter_list|()
 block|{
 name|allow
@@ -4210,10 +4210,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInheritSubmit_AllowInChildDoesntAffectUnblockInParent ()
+DECL|method|inheritSubmit_AllowInChildDoesntAffectUnblockInParent ()
 specifier|public
 name|void
-name|testInheritSubmit_AllowInChildDoesntAffectUnblockInParent
+name|inheritSubmit_AllowInChildDoesntAffectUnblockInParent
 parameter_list|()
 block|{
 name|block
@@ -4269,10 +4269,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockNoForce ()
+DECL|method|unblockNoForce ()
 specifier|public
 name|void
-name|testUnblockNoForce
+name|unblockNoForce
 parameter_list|()
 block|{
 name|block
@@ -4317,10 +4317,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockForce ()
+DECL|method|unblockForce ()
 specifier|public
 name|void
-name|testUnblockForce
+name|unblockForce
 parameter_list|()
 block|{
 name|PermissionRule
@@ -4380,10 +4380,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockForceWithAllowNoForce_NotPossible ()
+DECL|method|unblockForceWithAllowNoForce_NotPossible ()
 specifier|public
 name|void
-name|testUnblockForceWithAllowNoForce_NotPossible
+name|unblockForceWithAllowNoForce_NotPossible
 parameter_list|()
 block|{
 name|PermissionRule
@@ -4438,10 +4438,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockMoreSpecificRef_Fails ()
+DECL|method|unblockMoreSpecificRef_Fails ()
 specifier|public
 name|void
-name|testUnblockMoreSpecificRef_Fails
+name|unblockMoreSpecificRef_Fails
 parameter_list|()
 block|{
 name|block
@@ -4486,10 +4486,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockMoreSpecificRefInLocal_Fails ()
+DECL|method|unblockMoreSpecificRefInLocal_Fails ()
 specifier|public
 name|void
-name|testUnblockMoreSpecificRefInLocal_Fails
+name|unblockMoreSpecificRefInLocal_Fails
 parameter_list|()
 block|{
 name|block
@@ -4534,10 +4534,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockMoreSpecificRefWithExclusiveFlag ()
+DECL|method|unblockMoreSpecificRefWithExclusiveFlag ()
 specifier|public
 name|void
-name|testUnblockMoreSpecificRefWithExclusiveFlag
+name|unblockMoreSpecificRefWithExclusiveFlag
 parameter_list|()
 block|{
 name|block
@@ -4584,10 +4584,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockMoreSpecificRefInLocalWithExclusiveFlag_Fails ()
+DECL|method|unblockMoreSpecificRefInLocalWithExclusiveFlag_Fails ()
 specifier|public
 name|void
-name|testUnblockMoreSpecificRefInLocalWithExclusiveFlag_Fails
+name|unblockMoreSpecificRefInLocalWithExclusiveFlag_Fails
 parameter_list|()
 block|{
 name|block
@@ -4634,10 +4634,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockOtherPermissionWithMoreSpecificRefAndExclusiveFlag_Fails ()
+DECL|method|unblockOtherPermissionWithMoreSpecificRefAndExclusiveFlag_Fails ()
 specifier|public
 name|void
-name|testUnblockOtherPermissionWithMoreSpecificRefAndExclusiveFlag_Fails
+name|unblockOtherPermissionWithMoreSpecificRefAndExclusiveFlag_Fails
 parameter_list|()
 block|{
 name|block
@@ -4695,10 +4695,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockLargerScope_Fails ()
+DECL|method|unblockLargerScope_Fails ()
 specifier|public
 name|void
-name|testUnblockLargerScope_Fails
+name|unblockLargerScope_Fails
 parameter_list|()
 block|{
 name|block
@@ -4743,10 +4743,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockInLocal_Fails ()
+DECL|method|unblockInLocal_Fails ()
 specifier|public
 name|void
-name|testUnblockInLocal_Fails
+name|unblockInLocal_Fails
 parameter_list|()
 block|{
 name|block
@@ -4791,10 +4791,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockInParentBlockInLocal ()
+DECL|method|unblockInParentBlockInLocal ()
 specifier|public
 name|void
-name|testUnblockInParentBlockInLocal
+name|unblockInParentBlockInLocal
 parameter_list|()
 block|{
 name|block
@@ -4850,10 +4850,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockVisibilityByRegisteredUsers ()
+DECL|method|unblockVisibilityByRegisteredUsers ()
 specifier|public
 name|void
-name|testUnblockVisibilityByRegisteredUsers
+name|unblockVisibilityByRegisteredUsers
 parameter_list|()
 block|{
 name|block
@@ -4912,10 +4912,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockInLocalVisibilityByRegisteredUsers_Fails ()
+DECL|method|unblockInLocalVisibilityByRegisteredUsers_Fails ()
 specifier|public
 name|void
-name|testUnblockInLocalVisibilityByRegisteredUsers_Fails
+name|unblockInLocalVisibilityByRegisteredUsers_Fails
 parameter_list|()
 block|{
 name|block
@@ -4974,10 +4974,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockForceEditTopicName ()
+DECL|method|unblockForceEditTopicName ()
 specifier|public
 name|void
-name|testUnblockForceEditTopicName
+name|unblockForceEditTopicName
 parameter_list|()
 block|{
 name|block
@@ -5041,10 +5041,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockInLocalForceEditTopicName_Fails ()
+DECL|method|unblockInLocalForceEditTopicName_Fails ()
 specifier|public
 name|void
-name|testUnblockInLocalForceEditTopicName_Fails
+name|unblockInLocalForceEditTopicName_Fails
 parameter_list|()
 block|{
 name|block
@@ -5108,10 +5108,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockRange ()
+DECL|method|unblockRange ()
 specifier|public
 name|void
-name|testUnblockRange
+name|unblockRange
 parameter_list|()
 block|{
 name|block
@@ -5197,10 +5197,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockRangeOnMoreSpecificRef_Fails ()
+DECL|method|unblockRangeOnMoreSpecificRef_Fails ()
 specifier|public
 name|void
-name|testUnblockRangeOnMoreSpecificRef_Fails
+name|unblockRangeOnMoreSpecificRef_Fails
 parameter_list|()
 block|{
 name|block
@@ -5286,10 +5286,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockRangeOnLargerScope_Fails ()
+DECL|method|unblockRangeOnLargerScope_Fails ()
 specifier|public
 name|void
-name|testUnblockRangeOnLargerScope_Fails
+name|unblockRangeOnLargerScope_Fails
 parameter_list|()
 block|{
 name|block
@@ -5375,10 +5375,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockInLocalRange_Fails ()
+DECL|method|unblockInLocalRange_Fails ()
 specifier|public
 name|void
-name|testUnblockInLocalRange_Fails
+name|unblockInLocalRange_Fails
 parameter_list|()
 block|{
 name|block
@@ -5463,10 +5463,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockRangeForChangeOwner ()
+DECL|method|unblockRangeForChangeOwner ()
 specifier|public
 name|void
-name|testUnblockRangeForChangeOwner
+name|unblockRangeForChangeOwner
 parameter_list|()
 block|{
 name|allow
@@ -5535,10 +5535,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockRangeForNotChangeOwner ()
+DECL|method|unblockRangeForNotChangeOwner ()
 specifier|public
 name|void
-name|testUnblockRangeForNotChangeOwner
+name|unblockRangeForNotChangeOwner
 parameter_list|()
 block|{
 name|allow
@@ -5605,10 +5605,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBlockOwner ()
+DECL|method|blockOwner ()
 specifier|public
 name|void
-name|testBlockOwner
+name|blockOwner
 parameter_list|()
 block|{
 name|block
@@ -5652,10 +5652,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testValidateRefPatternsOK ()
+DECL|method|validateRefPatternsOK ()
 specifier|public
 name|void
-name|testValidateRefPatternsOK
+name|validateRefPatternsOK
 parameter_list|()
 throws|throws
 name|Exception
@@ -5741,10 +5741,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testValidateRefPatternNoDanglingCharacter ()
+DECL|method|validateRefPatternNoDanglingCharacter ()
 specifier|public
 name|void
-name|testValidateRefPatternNoDanglingCharacter
+name|validateRefPatternNoDanglingCharacter
 parameter_list|()
 throws|throws
 name|Exception

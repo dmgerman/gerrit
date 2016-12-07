@@ -487,10 +487,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToRefName ()
+DECL|method|toRefName ()
 specifier|public
 name|void
-name|testToRefName
+name|toRefName
 parameter_list|()
 block|{
 name|assertThat

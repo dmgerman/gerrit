@@ -337,10 +337,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNameValue ()
+DECL|method|nameValue ()
 specifier|public
 name|void
-name|testNameValue
+name|nameValue
 parameter_list|()
 block|{
 specifier|final

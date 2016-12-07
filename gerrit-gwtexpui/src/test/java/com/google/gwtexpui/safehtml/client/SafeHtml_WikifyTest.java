@@ -100,10 +100,10 @@ name|SafeHtml_WikifyTest
 block|{
 annotation|@
 name|Test
-DECL|method|testWikify_OneLine1 ()
+DECL|method|wikify_OneLine1 ()
 specifier|public
 name|void
-name|testWikify_OneLine1
+name|wikify_OneLine1
 parameter_list|()
 block|{
 specifier|final
@@ -150,10 +150,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWikify_OneLine2 ()
+DECL|method|wikify_OneLine2 ()
 specifier|public
 name|void
-name|testWikify_OneLine2
+name|wikify_OneLine2
 parameter_list|()
 block|{
 specifier|final
@@ -200,10 +200,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWikify_OneParagraph1 ()
+DECL|method|wikify_OneParagraph1 ()
 specifier|public
 name|void
-name|testWikify_OneParagraph1
+name|wikify_OneParagraph1
 parameter_list|()
 block|{
 specifier|final
@@ -250,10 +250,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWikify_OneParagraph2 ()
+DECL|method|wikify_OneParagraph2 ()
 specifier|public
 name|void
-name|testWikify_OneParagraph2
+name|wikify_OneParagraph2
 parameter_list|()
 block|{
 specifier|final
@@ -300,10 +300,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testWikify_TwoParagraphs ()
+DECL|method|wikify_TwoParagraphs ()
 specifier|public
 name|void
-name|testWikify_TwoParagraphs
+name|wikify_TwoParagraphs
 parameter_list|()
 block|{
 specifier|final
@@ -350,10 +350,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_SimpleHttp1 ()
+DECL|method|linkify_SimpleHttp1 ()
 specifier|public
 name|void
-name|testLinkify_SimpleHttp1
+name|linkify_SimpleHttp1
 parameter_list|()
 block|{
 specifier|final
@@ -402,10 +402,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_SimpleHttps2 ()
+DECL|method|linkify_SimpleHttps2 ()
 specifier|public
 name|void
-name|testLinkify_SimpleHttps2
+name|linkify_SimpleHttps2
 parameter_list|()
 block|{
 specifier|final
@@ -454,10 +454,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_Parens1 ()
+DECL|method|linkify_Parens1 ()
 specifier|public
 name|void
-name|testLinkify_Parens1
+name|linkify_Parens1
 parameter_list|()
 block|{
 specifier|final
@@ -506,10 +506,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_Parens ()
+DECL|method|linkify_Parens ()
 specifier|public
 name|void
-name|testLinkify_Parens
+name|linkify_Parens
 parameter_list|()
 block|{
 specifier|final
@@ -558,10 +558,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testLinkify_AngleBrackets1 ()
+DECL|method|linkify_AngleBrackets1 ()
 specifier|public
 name|void
-name|testLinkify_AngleBrackets1
+name|linkify_AngleBrackets1
 parameter_list|()
 block|{
 specifier|final

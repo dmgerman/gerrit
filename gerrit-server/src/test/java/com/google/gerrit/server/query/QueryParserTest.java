@@ -110,10 +110,10 @@ name|QueryParserTest
 block|{
 annotation|@
 name|Test
-DECL|method|testProjectBare ()
+DECL|method|projectBare ()
 specifier|public
 name|void
-name|testProjectBare
+name|projectBare
 parameter_list|()
 throws|throws
 name|QueryParseException

@@ -498,10 +498,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetCauses_CreateSchema ()
+DECL|method|getCauses_CreateSchema ()
 specifier|public
 name|void
-name|testGetCauses_CreateSchema
+name|getCauses_CreateSchema
 parameter_list|()
 throws|throws
 name|OrmException
@@ -699,10 +699,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateSchema_LabelTypes ()
+DECL|method|createSchema_LabelTypes ()
 specifier|public
 name|void
-name|testCreateSchema_LabelTypes
+name|createSchema_LabelTypes
 parameter_list|()
 throws|throws
 name|Exception
@@ -754,10 +754,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateSchema_Label_CodeReview ()
+DECL|method|createSchema_Label_CodeReview ()
 specifier|public
 name|void
-name|testCreateSchema_Label_CodeReview
+name|createSchema_Label_CodeReview
 parameter_list|()
 throws|throws
 name|Exception

@@ -410,10 +410,10 @@ name|registry
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testConstantBuildLabel ()
+DECL|method|constantBuildLabel ()
 specifier|public
 name|void
-name|testConstantBuildLabel
+name|constantBuildLabel
 parameter_list|()
 block|{
 name|Gauge
@@ -446,10 +446,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testProcUptime ()
+DECL|method|procUptime ()
 specifier|public
 name|void
-name|testProcUptime
+name|procUptime
 parameter_list|()
 block|{
 name|Gauge
@@ -513,10 +513,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCounter0 ()
+DECL|method|counter0 ()
 specifier|public
 name|void
-name|testCounter0
+name|counter0
 parameter_list|()
 block|{
 name|Counter0
@@ -604,10 +604,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCounter1 ()
+DECL|method|counter1 ()
 specifier|public
 name|void
-name|testCounter1
+name|counter1
 parameter_list|()
 block|{
 name|Counter1
@@ -772,10 +772,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCounterPrefixFields ()
+DECL|method|counterPrefixFields ()
 specifier|public
 name|void
-name|testCounterPrefixFields
+name|counterPrefixFields
 parameter_list|()
 block|{
 name|Counter1
@@ -947,10 +947,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCallbackMetric0 ()
+DECL|method|callbackMetric0 ()
 specifier|public
 name|void
-name|testCallbackMetric0
+name|callbackMetric0
 parameter_list|()
 block|{
 specifier|final
@@ -1078,10 +1078,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInvalidName1 ()
+DECL|method|invalidName1 ()
 specifier|public
 name|void
-name|testInvalidName1
+name|invalidName1
 parameter_list|()
 block|{
 name|exception
@@ -1109,10 +1109,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInvalidName2 ()
+DECL|method|invalidName2 ()
 specifier|public
 name|void
-name|testInvalidName2
+name|invalidName2
 parameter_list|()
 block|{
 name|exception

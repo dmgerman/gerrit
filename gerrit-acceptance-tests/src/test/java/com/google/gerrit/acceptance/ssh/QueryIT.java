@@ -326,10 +326,10 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testBasicQueryJSON ()
+DECL|method|basicQueryJSON ()
 specifier|public
 name|void
-name|testBasicQueryJSON
+name|basicQueryJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -597,10 +597,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAllApprovalsOptionJSON ()
+DECL|method|allApprovalsOptionJSON ()
 specifier|public
 name|void
-name|testAllApprovalsOptionJSON
+name|allApprovalsOptionJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -763,10 +763,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAllReviewersOptionJSON ()
+DECL|method|allReviewersOptionJSON ()
 specifier|public
 name|void
-name|testAllReviewersOptionJSON
+name|allReviewersOptionJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -909,10 +909,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCommitMessageOptionJSON ()
+DECL|method|commitMessageOptionJSON ()
 specifier|public
 name|void
-name|testCommitMessageOptionJSON
+name|commitMessageOptionJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -989,10 +989,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCurrentPatchSetOptionJSON ()
+DECL|method|currentPatchSetOptionJSON ()
 specifier|public
 name|void
-name|testCurrentPatchSetOptionJSON
+name|currentPatchSetOptionJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -1206,10 +1206,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPatchSetsOptionJSON ()
+DECL|method|patchSetsOptionJSON ()
 specifier|public
 name|void
-name|testPatchSetsOptionJSON
+name|patchSetsOptionJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -1385,10 +1385,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFileOptionJSON ()
+DECL|method|fileOptionJSON ()
 specifier|public
 name|void
-name|testFileOptionJSON
+name|fileOptionJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -1682,10 +1682,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCommentOptionJSON ()
+DECL|method|commentOptionJSON ()
 specifier|public
 name|void
-name|testCommentOptionJSON
+name|commentOptionJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -1798,10 +1798,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCommentOptionsInCurrentPatchSetJSON ()
+DECL|method|commentOptionsInCurrentPatchSetJSON ()
 specifier|public
 name|void
-name|testCommentOptionsInCurrentPatchSetJSON
+name|commentOptionsInCurrentPatchSetJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -2007,10 +2007,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCommentOptionInPatchSetsJSON ()
+DECL|method|commentOptionInPatchSetsJSON ()
 specifier|public
 name|void
-name|testCommentOptionInPatchSetsJSON
+name|commentOptionInPatchSetsJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -2541,10 +2541,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDependenciesOptionJSON ()
+DECL|method|dependenciesOptionJSON ()
 specifier|public
 name|void
-name|testDependenciesOptionJSON
+name|dependenciesOptionJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -2738,10 +2738,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubmitRecordsOptionJSON ()
+DECL|method|submitRecordsOptionJSON ()
 specifier|public
 name|void
-name|testSubmitRecordsOptionJSON
+name|submitRecordsOptionJSON
 parameter_list|()
 throws|throws
 name|Exception
@@ -2854,10 +2854,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testQueryWithNonVisibleCurrentPatchSet ()
+DECL|method|queryWithNonVisibleCurrentPatchSet ()
 specifier|public
 name|void
-name|testQueryWithNonVisibleCurrentPatchSet
+name|queryWithNonVisibleCurrentPatchSet
 parameter_list|()
 throws|throws
 name|Exception

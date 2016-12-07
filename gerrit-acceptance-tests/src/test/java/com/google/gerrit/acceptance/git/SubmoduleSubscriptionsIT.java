@@ -392,10 +392,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionWithoutSpecificSubscription ()
+DECL|method|subscriptionWithoutSpecificSubscription ()
 specifier|public
 name|void
-name|testSubscriptionWithoutSpecificSubscription
+name|subscriptionWithoutSpecificSubscription
 parameter_list|()
 throws|throws
 name|Exception
@@ -458,10 +458,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionToEmptyRepo ()
+DECL|method|subscriptionToEmptyRepo ()
 specifier|public
 name|void
-name|testSubscriptionToEmptyRepo
+name|subscriptionToEmptyRepo
 parameter_list|()
 throws|throws
 name|Exception
@@ -556,10 +556,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionToExistingRepo ()
+DECL|method|subscriptionToExistingRepo ()
 specifier|public
 name|void
-name|testSubscriptionToExistingRepo
+name|subscriptionToExistingRepo
 parameter_list|()
 throws|throws
 name|Exception
@@ -654,10 +654,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionWildcardACLForSingleBranch ()
+DECL|method|subscriptionWildcardACLForSingleBranch ()
 specifier|public
 name|void
-name|testSubscriptionWildcardACLForSingleBranch
+name|subscriptionWildcardACLForSingleBranch
 parameter_list|()
 throws|throws
 name|Exception
@@ -772,10 +772,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionWildcardACLForMissingProject ()
+DECL|method|subscriptionWildcardACLForMissingProject ()
 specifier|public
 name|void
-name|testSubscriptionWildcardACLForMissingProject
+name|subscriptionWildcardACLForMissingProject
 parameter_list|()
 throws|throws
 name|Exception
@@ -812,10 +812,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionWildcardACLForMissingBranch ()
+DECL|method|subscriptionWildcardACLForMissingBranch ()
 specifier|public
 name|void
-name|testSubscriptionWildcardACLForMissingBranch
+name|subscriptionWildcardACLForMissingBranch
 parameter_list|()
 throws|throws
 name|Exception
@@ -857,10 +857,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionWildcardACLForMissingGitmodules ()
+DECL|method|subscriptionWildcardACLForMissingGitmodules ()
 specifier|public
 name|void
-name|testSubscriptionWildcardACLForMissingGitmodules
+name|subscriptionWildcardACLForMissingGitmodules
 parameter_list|()
 throws|throws
 name|Exception
@@ -915,10 +915,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionWildcardACLOneOnOneMapping ()
+DECL|method|subscriptionWildcardACLOneOnOneMapping ()
 specifier|public
 name|void
-name|testSubscriptionWildcardACLOneOnOneMapping
+name|subscriptionWildcardACLOneOnOneMapping
 parameter_list|()
 throws|throws
 name|Exception
@@ -1090,10 +1090,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionWildcardACLForManyBranches ()
+DECL|method|subscriptionWildcardACLForManyBranches ()
 specifier|public
 name|void
-name|testSubscriptionWildcardACLForManyBranches
+name|subscriptionWildcardACLForManyBranches
 parameter_list|()
 throws|throws
 name|Exception
@@ -1183,10 +1183,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionWildcardACLOneToManyBranches ()
+DECL|method|subscriptionWildcardACLOneToManyBranches ()
 specifier|public
 name|void
-name|testSubscriptionWildcardACLOneToManyBranches
+name|subscriptionWildcardACLOneToManyBranches
 parameter_list|()
 throws|throws
 name|Exception
@@ -1589,10 +1589,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubmoduleCommitMessage ()
+DECL|method|submoduleCommitMessage ()
 specifier|public
 name|void
-name|testSubmoduleCommitMessage
+name|submoduleCommitMessage
 parameter_list|()
 throws|throws
 name|Exception
@@ -1741,10 +1741,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionUnsubscribe ()
+DECL|method|subscriptionUnsubscribe ()
 specifier|public
 name|void
-name|testSubscriptionUnsubscribe
+name|subscriptionUnsubscribe
 parameter_list|()
 throws|throws
 name|Exception
@@ -1871,10 +1871,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionUnsubscribeByDeletingGitModules ()
+DECL|method|subscriptionUnsubscribeByDeletingGitModules ()
 specifier|public
 name|void
-name|testSubscriptionUnsubscribeByDeletingGitModules
+name|subscriptionUnsubscribeByDeletingGitModules
 parameter_list|()
 throws|throws
 name|Exception
@@ -2001,10 +2001,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionToDifferentBranches ()
+DECL|method|subscriptionToDifferentBranches ()
 specifier|public
 name|void
-name|testSubscriptionToDifferentBranches
+name|subscriptionToDifferentBranches
 parameter_list|()
 throws|throws
 name|Exception
@@ -2084,10 +2084,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBranchCircularSubscription ()
+DECL|method|branchCircularSubscription ()
 specifier|public
 name|void
-name|testBranchCircularSubscription
+name|branchCircularSubscription
 parameter_list|()
 throws|throws
 name|Exception
@@ -2219,10 +2219,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testProjectCircularSubscription ()
+DECL|method|projectCircularSubscription ()
 specifier|public
 name|void
-name|testProjectCircularSubscription
+name|projectCircularSubscription
 parameter_list|()
 throws|throws
 name|Exception
@@ -2396,10 +2396,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionFailOnMissingACL ()
+DECL|method|subscriptionFailOnMissingACL ()
 specifier|public
 name|void
-name|testSubscriptionFailOnMissingACL
+name|subscriptionFailOnMissingACL
 parameter_list|()
 throws|throws
 name|Exception
@@ -2469,10 +2469,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionFailOnWrongProjectACL ()
+DECL|method|subscriptionFailOnWrongProjectACL ()
 specifier|public
 name|void
-name|testSubscriptionFailOnWrongProjectACL
+name|subscriptionFailOnWrongProjectACL
 parameter_list|()
 throws|throws
 name|Exception
@@ -2553,10 +2553,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionFailOnWrongBranchACL ()
+DECL|method|subscriptionFailOnWrongBranchACL ()
 specifier|public
 name|void
-name|testSubscriptionFailOnWrongBranchACL
+name|subscriptionFailOnWrongBranchACL
 parameter_list|()
 throws|throws
 name|Exception
@@ -2637,10 +2637,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionInheritACL ()
+DECL|method|subscriptionInheritACL ()
 specifier|public
 name|void
-name|testSubscriptionInheritACL
+name|subscriptionInheritACL
 parameter_list|()
 throws|throws
 name|Exception
@@ -2752,10 +2752,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAllowedButNotSubscribed ()
+DECL|method|allowedButNotSubscribed ()
 specifier|public
 name|void
-name|testAllowedButNotSubscribed
+name|allowedButNotSubscribed
 parameter_list|()
 throws|throws
 name|Exception
@@ -2919,10 +2919,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSubscriptionDeepRelative ()
+DECL|method|subscriptionDeepRelative ()
 specifier|public
 name|void
-name|testSubscriptionDeepRelative
+name|subscriptionDeepRelative
 parameter_list|()
 throws|throws
 name|Exception

@@ -490,10 +490,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHandles ()
+DECL|method|handles ()
 specifier|public
 name|void
-name|testHandles
+name|handles
 parameter_list|()
 block|{
 name|assertTrue
@@ -529,10 +529,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGet ()
+DECL|method|get ()
 specifier|public
 name|void
-name|testGet
+name|get
 parameter_list|()
 block|{
 name|assertEquals
@@ -578,10 +578,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSuggest ()
+DECL|method|suggest ()
 specifier|public
 name|void
-name|testSuggest
+name|suggest
 parameter_list|()
 block|{
 name|assertTrue
@@ -636,10 +636,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSytemGroupMemberships ()
+DECL|method|sytemGroupMemberships ()
 specifier|public
 name|void
-name|testSytemGroupMemberships
+name|sytemGroupMemberships
 parameter_list|()
 block|{
 name|GroupMembership
@@ -685,10 +685,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testKnownGroups ()
+DECL|method|knownGroups ()
 specifier|public
 name|void
-name|testKnownGroups
+name|knownGroups
 parameter_list|()
 block|{
 name|GroupMembership
@@ -745,10 +745,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOtherMemberships ()
+DECL|method|otherMemberships ()
 specifier|public
 name|void
-name|testOtherMemberships
+name|otherMemberships
 parameter_list|()
 block|{
 specifier|final

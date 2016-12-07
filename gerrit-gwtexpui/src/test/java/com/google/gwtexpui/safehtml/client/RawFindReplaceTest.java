@@ -100,10 +100,10 @@ name|RawFindReplaceTest
 block|{
 annotation|@
 name|Test
-DECL|method|testFindReplace ()
+DECL|method|findReplace ()
 specifier|public
 name|void
-name|testFindReplace
+name|findReplace
 parameter_list|()
 block|{
 specifier|final

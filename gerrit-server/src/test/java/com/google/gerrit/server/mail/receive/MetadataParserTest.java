@@ -194,10 +194,10 @@ name|MetadataParserTest
 block|{
 annotation|@
 name|Test
-DECL|method|testParseMetadataFromHeader ()
+DECL|method|parseMetadataFromHeader ()
 specifier|public
 name|void
-name|testParseMetadataFromHeader
+name|parseMetadataFromHeader
 parameter_list|()
 block|{
 comment|// This tests if the metadata parser is able to parse metadata from the
@@ -414,10 +414,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseMetadataFromText ()
+DECL|method|parseMetadataFromText ()
 specifier|public
 name|void
-name|testParseMetadataFromText
+name|parseMetadataFromText
 parameter_list|()
 block|{
 comment|// This tests if the metadata parser is able to parse metadata from the
@@ -659,10 +659,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testParseMetadataFromHTML ()
+DECL|method|parseMetadataFromHTML ()
 specifier|public
 name|void
-name|testParseMetadataFromHTML
+name|parseMetadataFromHTML
 parameter_list|()
 block|{
 comment|// This tests if the metadata parser is able to parse metadata from the

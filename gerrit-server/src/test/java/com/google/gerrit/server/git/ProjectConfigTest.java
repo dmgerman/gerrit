@@ -655,10 +655,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReadConfig ()
+DECL|method|readConfig ()
 specifier|public
 name|void
-name|testReadConfig
+name|readConfig
 parameter_list|()
 throws|throws
 name|Exception
@@ -1025,10 +1025,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReadConfigLabelDefaultValue ()
+DECL|method|readConfigLabelDefaultValue ()
 specifier|public
 name|void
-name|testReadConfigLabelDefaultValue
+name|readConfigLabelDefaultValue
 parameter_list|()
 throws|throws
 name|Exception
@@ -1149,10 +1149,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReadConfigLabelDefaultValueInRange ()
+DECL|method|readConfigLabelDefaultValueInRange ()
 specifier|public
 name|void
-name|testReadConfigLabelDefaultValueInRange
+name|readConfigLabelDefaultValueInRange
 parameter_list|()
 throws|throws
 name|Exception
@@ -1277,10 +1277,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReadConfigLabelDefaultValueNotInRange ()
+DECL|method|readConfigLabelDefaultValueNotInRange ()
 specifier|public
 name|void
-name|testReadConfigLabelDefaultValueNotInRange
+name|readConfigLabelDefaultValueNotInRange
 parameter_list|()
 throws|throws
 name|Exception
@@ -1394,10 +1394,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReadConfigLabelScores ()
+DECL|method|readConfigLabelScores ()
 specifier|public
 name|void
-name|testReadConfigLabelScores
+name|readConfigLabelScores
 parameter_list|()
 throws|throws
 name|Exception
@@ -1586,10 +1586,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testEditConfig ()
+DECL|method|editConfig ()
 specifier|public
 name|void
-name|testEditConfig
+name|editConfig
 parameter_list|()
 throws|throws
 name|Exception
@@ -1878,10 +1878,10 @@ comment|//  label gets this value when it is created
 block|}
 annotation|@
 name|Test
-DECL|method|testEditConfigMissingGroupTableEntry ()
+DECL|method|editConfigMissingGroupTableEntry ()
 specifier|public
 name|void
-name|testEditConfigMissingGroupTableEntry
+name|editConfigMissingGroupTableEntry
 parameter_list|()
 throws|throws
 name|Exception

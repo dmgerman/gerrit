@@ -154,10 +154,10 @@ name|ParameterizedStringTest
 block|{
 annotation|@
 name|Test
-DECL|method|testEmptyString ()
+DECL|method|emptyString ()
 specifier|public
 name|void
-name|testEmptyString
+name|emptyString
 parameter_list|()
 block|{
 specifier|final
@@ -254,10 +254,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAsis1 ()
+DECL|method|asis1 ()
 specifier|public
 name|void
-name|testAsis1
+name|asis1
 parameter_list|()
 block|{
 specifier|final
@@ -364,10 +364,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplace1 ()
+DECL|method|replace1 ()
 specifier|public
 name|void
-name|testReplace1
+name|replace1
 parameter_list|()
 block|{
 specifier|final
@@ -503,10 +503,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplace2 ()
+DECL|method|replace2 ()
 specifier|public
 name|void
-name|testReplace2
+name|replace2
 parameter_list|()
 block|{
 specifier|final
@@ -642,10 +642,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplace3 ()
+DECL|method|replace3 ()
 specifier|public
 name|void
-name|testReplace3
+name|replace3
 parameter_list|()
 block|{
 specifier|final
@@ -781,10 +781,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplace4 ()
+DECL|method|replace4 ()
 specifier|public
 name|void
-name|testReplace4
+name|replace4
 parameter_list|()
 block|{
 specifier|final
@@ -911,10 +911,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceToLowerCase ()
+DECL|method|replaceToLowerCase ()
 specifier|public
 name|void
-name|testReplaceToLowerCase
+name|replaceToLowerCase
 parameter_list|()
 block|{
 specifier|final
@@ -1090,10 +1090,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceToUpperCase ()
+DECL|method|replaceToUpperCase ()
 specifier|public
 name|void
-name|testReplaceToUpperCase
+name|replaceToUpperCase
 parameter_list|()
 block|{
 specifier|final
@@ -1269,10 +1269,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceLocalName ()
+DECL|method|replaceLocalName ()
 specifier|public
 name|void
-name|testReplaceLocalName
+name|replaceLocalName
 parameter_list|()
 block|{
 specifier|final
@@ -1448,10 +1448,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUndefinedFunctionName ()
+DECL|method|undefinedFunctionName ()
 specifier|public
 name|void
-name|testUndefinedFunctionName
+name|undefinedFunctionName
 parameter_list|()
 block|{
 name|ParameterizedString
@@ -1603,10 +1603,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceToUpperCaseToLowerCase ()
+DECL|method|replaceToUpperCaseToLowerCase ()
 specifier|public
 name|void
-name|testReplaceToUpperCaseToLowerCase
+name|replaceToUpperCaseToLowerCase
 parameter_list|()
 block|{
 specifier|final
@@ -1782,10 +1782,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceToUpperCaseLocalName ()
+DECL|method|replaceToUpperCaseLocalName ()
 specifier|public
 name|void
-name|testReplaceToUpperCaseLocalName
+name|replaceToUpperCaseLocalName
 parameter_list|()
 block|{
 specifier|final
@@ -1961,10 +1961,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceToUpperCaseAnUndefinedMethod ()
+DECL|method|replaceToUpperCaseAnUndefinedMethod ()
 specifier|public
 name|void
-name|testReplaceToUpperCaseAnUndefinedMethod
+name|replaceToUpperCaseAnUndefinedMethod
 parameter_list|()
 block|{
 specifier|final
@@ -2140,10 +2140,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceLocalNameToUpperCase ()
+DECL|method|replaceLocalNameToUpperCase ()
 specifier|public
 name|void
-name|testReplaceLocalNameToUpperCase
+name|replaceLocalNameToUpperCase
 parameter_list|()
 block|{
 specifier|final
@@ -2319,10 +2319,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceLocalNameToLowerCase ()
+DECL|method|replaceLocalNameToLowerCase ()
 specifier|public
 name|void
-name|testReplaceLocalNameToLowerCase
+name|replaceLocalNameToLowerCase
 parameter_list|()
 block|{
 specifier|final
@@ -2498,10 +2498,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceLocalNameAnUndefinedMethod ()
+DECL|method|replaceLocalNameAnUndefinedMethod ()
 specifier|public
 name|void
-name|testReplaceLocalNameAnUndefinedMethod
+name|replaceLocalNameAnUndefinedMethod
 parameter_list|()
 block|{
 specifier|final
@@ -2677,10 +2677,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceToLowerCaseToUpperCase ()
+DECL|method|replaceToLowerCaseToUpperCase ()
 specifier|public
 name|void
-name|testReplaceToLowerCaseToUpperCase
+name|replaceToLowerCaseToUpperCase
 parameter_list|()
 block|{
 specifier|final
@@ -2856,10 +2856,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceToLowerCaseLocalName ()
+DECL|method|replaceToLowerCaseLocalName ()
 specifier|public
 name|void
-name|testReplaceToLowerCaseLocalName
+name|replaceToLowerCaseLocalName
 parameter_list|()
 block|{
 specifier|final
@@ -3035,10 +3035,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceToLowerCaseAnUndefinedMethod ()
+DECL|method|replaceToLowerCaseAnUndefinedMethod ()
 specifier|public
 name|void
-name|testReplaceToLowerCaseAnUndefinedMethod
+name|replaceToLowerCaseAnUndefinedMethod
 parameter_list|()
 block|{
 specifier|final
@@ -3214,10 +3214,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceSubmitTooltipWithVariables ()
+DECL|method|replaceSubmitTooltipWithVariables ()
 specifier|public
 name|void
-name|testReplaceSubmitTooltipWithVariables
+name|replaceSubmitTooltipWithVariables
 parameter_list|()
 block|{
 name|ParameterizedString
@@ -3345,10 +3345,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceSubmitTooltipWithoutVariables ()
+DECL|method|replaceSubmitTooltipWithoutVariables ()
 specifier|public
 name|void
-name|testReplaceSubmitTooltipWithoutVariables
+name|replaceSubmitTooltipWithoutVariables
 parameter_list|()
 block|{
 name|ParameterizedString

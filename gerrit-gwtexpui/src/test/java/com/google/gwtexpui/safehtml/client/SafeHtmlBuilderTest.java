@@ -134,10 +134,10 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testEmpty ()
+DECL|method|empty ()
 specifier|public
 name|void
-name|testEmpty
+name|empty
 parameter_list|()
 block|{
 specifier|final
@@ -215,10 +215,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testToSafeHtml ()
+DECL|method|toSafeHtml ()
 specifier|public
 name|void
-name|testToSafeHtml
+name|toSafeHtml
 parameter_list|()
 block|{
 specifier|final
@@ -291,10 +291,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_boolean ()
+DECL|method|append_boolean ()
 specifier|public
 name|void
-name|testAppend_boolean
+name|append_boolean
 parameter_list|()
 block|{
 specifier|final
@@ -351,10 +351,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_char ()
+DECL|method|append_char ()
 specifier|public
 name|void
-name|testAppend_char
+name|append_char
 parameter_list|()
 block|{
 specifier|final
@@ -411,10 +411,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_int ()
+DECL|method|append_int ()
 specifier|public
 name|void
-name|testAppend_int
+name|append_int
 parameter_list|()
 block|{
 specifier|final
@@ -487,10 +487,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_long ()
+DECL|method|append_long ()
 specifier|public
 name|void
-name|testAppend_long
+name|append_long
 parameter_list|()
 block|{
 specifier|final
@@ -547,10 +547,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_float ()
+DECL|method|append_float ()
 specifier|public
 name|void
-name|testAppend_float
+name|append_float
 parameter_list|()
 block|{
 specifier|final
@@ -592,10 +592,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_double ()
+DECL|method|append_double ()
 specifier|public
 name|void
-name|testAppend_double
+name|append_double
 parameter_list|()
 block|{
 specifier|final
@@ -637,10 +637,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_String ()
+DECL|method|append_String ()
 specifier|public
 name|void
-name|testAppend_String
+name|append_String
 parameter_list|()
 block|{
 specifier|final
@@ -726,10 +726,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_StringBuilder ()
+DECL|method|append_StringBuilder ()
 specifier|public
 name|void
-name|testAppend_StringBuilder
+name|append_StringBuilder
 parameter_list|()
 block|{
 specifier|final
@@ -823,10 +823,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_StringBuffer ()
+DECL|method|append_StringBuffer ()
 specifier|public
 name|void
-name|testAppend_StringBuffer
+name|append_StringBuffer
 parameter_list|()
 block|{
 specifier|final
@@ -920,10 +920,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_Object ()
+DECL|method|append_Object ()
 specifier|public
 name|void
-name|testAppend_Object
+name|append_Object
 parameter_list|()
 block|{
 specifier|final
@@ -1009,10 +1009,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_CharSequence ()
+DECL|method|append_CharSequence ()
 specifier|public
 name|void
-name|testAppend_CharSequence
+name|append_CharSequence
 parameter_list|()
 block|{
 specifier|final
@@ -1104,10 +1104,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAppend_SafeHtml ()
+DECL|method|append_SafeHtml ()
 specifier|public
 name|void
-name|testAppend_SafeHtml
+name|append_SafeHtml
 parameter_list|()
 block|{
 specifier|final
@@ -1204,10 +1204,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHtmlSpecialCharacters ()
+DECL|method|htmlSpecialCharacters ()
 specifier|public
 name|void
-name|testHtmlSpecialCharacters
+name|htmlSpecialCharacters
 parameter_list|()
 block|{
 name|assertThat
@@ -1369,10 +1369,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testEntityNbsp ()
+DECL|method|entityNbsp ()
 specifier|public
 name|void
-name|testEntityNbsp
+name|entityNbsp
 parameter_list|()
 block|{
 specifier|final
@@ -1412,10 +1412,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTagBr ()
+DECL|method|tagBr ()
 specifier|public
 name|void
-name|testTagBr
+name|tagBr
 parameter_list|()
 block|{
 specifier|final
@@ -1455,10 +1455,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTagTableTrTd ()
+DECL|method|tagTableTrTd ()
 specifier|public
 name|void
-name|testTagTableTrTd
+name|tagTableTrTd
 parameter_list|()
 block|{
 specifier|final
@@ -1582,10 +1582,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTagDiv ()
+DECL|method|tagDiv ()
 specifier|public
 name|void
-name|testTagDiv
+name|tagDiv
 parameter_list|()
 block|{
 specifier|final
@@ -1653,10 +1653,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTagAnchor ()
+DECL|method|tagAnchor ()
 specifier|public
 name|void
-name|testTagAnchor
+name|tagAnchor
 parameter_list|()
 block|{
 specifier|final
@@ -1844,10 +1844,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTagHeightWidth ()
+DECL|method|tagHeightWidth ()
 specifier|public
 name|void
-name|testTagHeightWidth
+name|tagHeightWidth
 parameter_list|()
 block|{
 specifier|final
@@ -1932,10 +1932,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testStyleName ()
+DECL|method|styleName ()
 specifier|public
 name|void
-name|testStyleName
+name|styleName
 parameter_list|()
 block|{
 specifier|final
@@ -2033,10 +2033,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRejectJavaScript_AnchorHref ()
+DECL|method|rejectJavaScript_AnchorHref ()
 specifier|public
 name|void
-name|testRejectJavaScript_AnchorHref
+name|rejectJavaScript_AnchorHref
 parameter_list|()
 block|{
 specifier|final
@@ -2080,10 +2080,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRejectJavaScript_ImgSrc ()
+DECL|method|rejectJavaScript_ImgSrc ()
 specifier|public
 name|void
-name|testRejectJavaScript_ImgSrc
+name|rejectJavaScript_ImgSrc
 parameter_list|()
 block|{
 specifier|final
@@ -2129,10 +2129,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testRejectJavaScript_FormAction ()
+DECL|method|rejectJavaScript_FormAction ()
 specifier|public
 name|void
-name|testRejectJavaScript_FormAction
+name|rejectJavaScript_FormAction
 parameter_list|()
 block|{
 specifier|final

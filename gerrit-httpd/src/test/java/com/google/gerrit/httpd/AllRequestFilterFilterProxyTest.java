@@ -411,10 +411,10 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNoFilters ()
+DECL|method|noFilters ()
 specifier|public
 name|void
-name|testNoFilters
+name|noFilters
 parameter_list|()
 throws|throws
 name|Exception
@@ -517,10 +517,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSingleFilterNoBubbling ()
+DECL|method|singleFilterNoBubbling ()
 specifier|public
 name|void
-name|testSingleFilterNoBubbling
+name|singleFilterNoBubbling
 parameter_list|()
 throws|throws
 name|Exception
@@ -671,10 +671,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testSingleFilterBubbling ()
+DECL|method|singleFilterBubbling ()
 specifier|public
 name|void
-name|testSingleFilterBubbling
+name|singleFilterBubbling
 parameter_list|()
 throws|throws
 name|Exception
@@ -857,10 +857,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTwoFiltersNoBubbling ()
+DECL|method|twoFiltersNoBubbling ()
 specifier|public
 name|void
-name|testTwoFiltersNoBubbling
+name|twoFiltersNoBubbling
 parameter_list|()
 throws|throws
 name|Exception
@@ -1042,10 +1042,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTwoFiltersBubbling ()
+DECL|method|twoFiltersBubbling ()
 specifier|public
 name|void
-name|testTwoFiltersBubbling
+name|twoFiltersBubbling
 parameter_list|()
 throws|throws
 name|Exception
@@ -1300,10 +1300,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testPostponedLoading ()
+DECL|method|postponedLoading ()
 specifier|public
 name|void
-name|testPostponedLoading
+name|postponedLoading
 parameter_list|()
 throws|throws
 name|Exception
@@ -1644,10 +1644,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDynamicUnloading ()
+DECL|method|dynamicUnloading ()
 specifier|public
 name|void
-name|testDynamicUnloading
+name|dynamicUnloading
 parameter_list|()
 throws|throws
 name|Exception

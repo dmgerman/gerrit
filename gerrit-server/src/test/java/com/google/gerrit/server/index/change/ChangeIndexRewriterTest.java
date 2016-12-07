@@ -617,10 +617,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testIndexPredicate ()
+DECL|method|indexPredicate ()
 specifier|public
 name|void
-name|testIndexPredicate
+name|indexPredicate
 parameter_list|()
 throws|throws
 name|Exception
@@ -655,10 +655,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNonIndexPredicate ()
+DECL|method|nonIndexPredicate ()
 specifier|public
 name|void
-name|testNonIndexPredicate
+name|nonIndexPredicate
 parameter_list|()
 throws|throws
 name|Exception
@@ -727,10 +727,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testIndexPredicates ()
+DECL|method|indexPredicates ()
 specifier|public
 name|void
-name|testIndexPredicates
+name|indexPredicates
 parameter_list|()
 throws|throws
 name|Exception
@@ -765,10 +765,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNonIndexPredicates ()
+DECL|method|nonIndexPredicates ()
 specifier|public
 name|void
-name|testNonIndexPredicates
+name|nonIndexPredicates
 parameter_list|()
 throws|throws
 name|Exception
@@ -837,10 +837,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOneIndexPredicate ()
+DECL|method|oneIndexPredicate ()
 specifier|public
 name|void
-name|testOneIndexPredicate
+name|oneIndexPredicate
 parameter_list|()
 throws|throws
 name|Exception
@@ -916,10 +916,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testThreeLevelTreeWithAllIndexPredicates ()
+DECL|method|threeLevelTreeWithAllIndexPredicates ()
 specifier|public
 name|void
-name|testThreeLevelTreeWithAllIndexPredicates
+name|threeLevelTreeWithAllIndexPredicates
 parameter_list|()
 throws|throws
 name|Exception
@@ -963,10 +963,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testThreeLevelTreeWithSomeIndexPredicates ()
+DECL|method|threeLevelTreeWithSomeIndexPredicates ()
 specifier|public
 name|void
-name|testThreeLevelTreeWithSomeIndexPredicates
+name|threeLevelTreeWithSomeIndexPredicates
 parameter_list|()
 throws|throws
 name|Exception
@@ -1042,10 +1042,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testMultipleIndexPredicates ()
+DECL|method|multipleIndexPredicates ()
 specifier|public
 name|void
-name|testMultipleIndexPredicates
+name|multipleIndexPredicates
 parameter_list|()
 throws|throws
 name|Exception
@@ -1138,10 +1138,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testIndexAndNonIndexPredicates ()
+DECL|method|indexAndNonIndexPredicates ()
 specifier|public
 name|void
-name|testIndexAndNonIndexPredicates
+name|indexAndNonIndexPredicates
 parameter_list|()
 throws|throws
 name|Exception
@@ -1227,10 +1227,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDuplicateCompoundNonIndexOnlyPredicates ()
+DECL|method|duplicateCompoundNonIndexOnlyPredicates ()
 specifier|public
 name|void
-name|testDuplicateCompoundNonIndexOnlyPredicates
+name|duplicateCompoundNonIndexOnlyPredicates
 parameter_list|()
 throws|throws
 name|Exception
@@ -1316,10 +1316,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testDuplicateCompoundIndexOnlyPredicates ()
+DECL|method|duplicateCompoundIndexOnlyPredicates ()
 specifier|public
 name|void
-name|testDuplicateCompoundIndexOnlyPredicates
+name|duplicateCompoundIndexOnlyPredicates
 parameter_list|()
 throws|throws
 name|Exception
@@ -1405,10 +1405,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testOptionsArgumentOverridesAllLimitPredicates ()
+DECL|method|optionsArgumentOverridesAllLimitPredicates ()
 specifier|public
 name|void
-name|testOptionsArgumentOverridesAllLimitPredicates
+name|optionsArgumentOverridesAllLimitPredicates
 parameter_list|()
 throws|throws
 name|Exception
@@ -1496,10 +1496,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testStartIncreasesLimitInQueryButNotPredicate ()
+DECL|method|startIncreasesLimitInQueryButNotPredicate ()
 specifier|public
 name|void
-name|testStartIncreasesLimitInQueryButNotPredicate
+name|startIncreasesLimitInQueryButNotPredicate
 parameter_list|()
 throws|throws
 name|Exception
@@ -1645,10 +1645,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetPossibleStatus ()
+DECL|method|getPossibleStatus ()
 specifier|public
 name|void
-name|testGetPossibleStatus
+name|getPossibleStatus
 parameter_list|()
 throws|throws
 name|Exception
@@ -1769,10 +1769,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnsupportedIndexOperator ()
+DECL|method|unsupportedIndexOperator ()
 specifier|public
 name|void
-name|testUnsupportedIndexOperator
+name|unsupportedIndexOperator
 parameter_list|()
 throws|throws
 name|Exception
@@ -1874,10 +1874,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testTooManyTerms ()
+DECL|method|tooManyTerms ()
 specifier|public
 name|void
-name|testTooManyTerms
+name|tooManyTerms
 parameter_list|()
 throws|throws
 name|Exception
@@ -2011,10 +2011,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAddingStartToLimitDoesNotExceedBackendLimit ()
+DECL|method|addingStartToLimitDoesNotExceedBackendLimit ()
 specifier|public
 name|void
-name|testAddingStartToLimitDoesNotExceedBackendLimit
+name|addingStartToLimitDoesNotExceedBackendLimit
 parameter_list|()
 throws|throws
 name|Exception

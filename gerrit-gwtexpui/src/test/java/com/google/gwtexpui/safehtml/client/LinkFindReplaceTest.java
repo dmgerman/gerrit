@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|com
 operator|.
 name|google
@@ -95,8 +95,6 @@ operator|.
 name|client
 operator|.
 name|LinkFindReplace
-operator|.
-name|hasValidScheme
 import|;
 end_import
 
@@ -152,10 +150,10 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testNoEscaping ()
+DECL|method|noEscaping ()
 specifier|public
 name|void
-name|testNoEscaping
+name|noEscaping
 parameter_list|()
 block|{
 name|String
@@ -232,10 +230,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testBackreference ()
+DECL|method|backreference ()
 specifier|public
 name|void
-name|testBackreference
+name|backreference
 parameter_list|()
 block|{
 name|LinkFindReplace
@@ -267,14 +265,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHasValidScheme ()
+DECL|method|hasValidScheme ()
 specifier|public
 name|void
-name|testHasValidScheme
+name|hasValidScheme
 parameter_list|()
 block|{
 name|assertThat
 argument_list|(
+name|LinkFindReplace
+operator|.
 name|hasValidScheme
 argument_list|(
 literal|"/absolute/path"
@@ -286,6 +286,8 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|LinkFindReplace
+operator|.
 name|hasValidScheme
 argument_list|(
 literal|"relative/path"
@@ -297,6 +299,8 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|LinkFindReplace
+operator|.
 name|hasValidScheme
 argument_list|(
 literal|"http://url/"
@@ -308,6 +312,8 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|LinkFindReplace
+operator|.
 name|hasValidScheme
 argument_list|(
 literal|"HTTP://url/"
@@ -319,6 +325,8 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|LinkFindReplace
+operator|.
 name|hasValidScheme
 argument_list|(
 literal|"https://url/"
@@ -330,6 +338,8 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|LinkFindReplace
+operator|.
 name|hasValidScheme
 argument_list|(
 literal|"mailto://url/"
@@ -341,6 +351,8 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|LinkFindReplace
+operator|.
 name|hasValidScheme
 argument_list|(
 literal|"ftp://url/"
@@ -352,6 +364,8 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|LinkFindReplace
+operator|.
 name|hasValidScheme
 argument_list|(
 literal|"data:evil"
@@ -363,6 +377,8 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
+name|LinkFindReplace
+operator|.
 name|hasValidScheme
 argument_list|(
 literal|"javascript:alert(1)"
@@ -375,10 +391,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInvalidSchemeInReplace ()
+DECL|method|invalidSchemeInReplace ()
 specifier|public
 name|void
-name|testInvalidSchemeInReplace
+name|invalidSchemeInReplace
 parameter_list|()
 block|{
 name|exception
@@ -406,10 +422,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInvalidSchemeWithBackreference ()
+DECL|method|invalidSchemeWithBackreference ()
 specifier|public
 name|void
-name|testInvalidSchemeWithBackreference
+name|invalidSchemeWithBackreference
 parameter_list|()
 block|{
 name|exception
@@ -437,10 +453,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testReplaceEscaping ()
+DECL|method|replaceEscaping ()
 specifier|public
 name|void
-name|testReplaceEscaping
+name|replaceEscaping
 parameter_list|()
 block|{
 name|assertThat
@@ -467,10 +483,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHtmlInFind ()
+DECL|method|htmlInFind ()
 specifier|public
 name|void
-name|testHtmlInFind
+name|htmlInFind
 parameter_list|()
 block|{
 name|String
