@@ -900,6 +900,16 @@ argument_list|(
 literal|"RevertedHtml.soy"
 argument_list|)
 expr_stmt|;
+name|extractMailExample
+argument_list|(
+literal|"SetAssignee.soy"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
+literal|"SetAssigneeHtml.soy"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
