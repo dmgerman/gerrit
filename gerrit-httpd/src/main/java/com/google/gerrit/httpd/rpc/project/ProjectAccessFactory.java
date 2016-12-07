@@ -1477,7 +1477,7 @@ name|links
 init|=
 name|webLinks
 operator|.
-name|getFileHistoryLinksCommon
+name|getFileHistoryLinks
 argument_list|(
 name|projectName
 argument_list|,

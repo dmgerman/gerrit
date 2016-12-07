@@ -743,51 +743,13 @@ argument_list|)
 return|;
 block|}
 comment|/**    *    * @param project Project name.    * @param revision SHA1 of revision.    * @param file File name.    * @return Links for file history    */
-DECL|method|getFileHistoryLinks (String project, String revision, String file)
-specifier|public
-name|FluentIterable
-argument_list|<
-name|WebLinkInfo
-argument_list|>
-name|getFileHistoryLinks
-parameter_list|(
-name|String
-name|project
-parameter_list|,
-name|String
-name|revision
-parameter_list|,
-name|String
-name|file
-parameter_list|)
-block|{
-return|return
-name|filterLinks
-argument_list|(
-name|fileHistoryLinks
-argument_list|,
-name|webLink
-lambda|->
-name|webLink
-operator|.
-name|getFileHistoryWebLink
-argument_list|(
-name|project
-argument_list|,
-name|revision
-argument_list|,
-name|file
-argument_list|)
-argument_list|)
-return|;
-block|}
-DECL|method|getFileHistoryLinksCommon ( String project, String revision, String file)
+DECL|method|getFileHistoryLinks ( String project, String revision, String file)
 specifier|public
 name|FluentIterable
 argument_list|<
 name|WebLinkInfoCommon
 argument_list|>
-name|getFileHistoryLinksCommon
+name|getFileHistoryLinks
 parameter_list|(
 name|String
 name|project
