@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance
+DECL|package|com.google.gerrit.extensions.client
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|extensions
+operator|.
+name|client
 package|;
 end_package
 
@@ -147,22 +149,6 @@ operator|.
 name|truth
 operator|.
 name|Truth
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|client
-operator|.
-name|Comment
 import|;
 end_import
 
@@ -369,6 +355,57 @@ argument_list|(
 literal|"endCharacter"
 argument_list|)
 return|;
+block|}
+DECL|method|isValid ()
+specifier|public
+name|void
+name|isValid
+parameter_list|()
+block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|actual
+argument_list|()
+operator|.
+name|isValid
+argument_list|()
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"is valid"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|isInvalid ()
+specifier|public
+name|void
+name|isInvalid
+parameter_list|()
+block|{
+name|isNotNull
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|actual
+argument_list|()
+operator|.
+name|isValid
+argument_list|()
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"is invalid"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

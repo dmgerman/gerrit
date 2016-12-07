@@ -162,7 +162,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|extensions
+operator|.
+name|client
 operator|.
 name|RangeSubject
 import|;
