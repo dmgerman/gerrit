@@ -84,22 +84,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtexpui
-operator|.
-name|safehtml
-operator|.
-name|client
-operator|.
-name|LinkFindReplace
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
