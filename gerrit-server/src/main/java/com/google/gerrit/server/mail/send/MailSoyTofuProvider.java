@@ -332,6 +332,10 @@ block|,
 literal|"Reverted.soy"
 block|,
 literal|"RevertedHtml.soy"
+block|,
+literal|"SetAssignee.soy"
+block|,
+literal|"SetAssigneeHtml.soy"
 block|,   }
 decl_stmt|;
 DECL|field|site
