@@ -134,7 +134,7 @@ specifier|public
 class|class
 name|BranchResource
 extends|extends
-name|ProjectResource
+name|RefResource
 block|{
 DECL|field|BRANCH_KIND
 specifier|public
@@ -222,6 +222,8 @@ name|ref
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRef ()
 specifier|public
 name|String
@@ -234,6 +236,8 @@ operator|.
 name|ref
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRevision ()
 specifier|public
 name|String
