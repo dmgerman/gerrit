@@ -1645,7 +1645,7 @@ block|{
 return|return
 name|link
 argument_list|(
-name|revision
+name|fileHistory
 operator|.
 name|replace
 argument_list|(
