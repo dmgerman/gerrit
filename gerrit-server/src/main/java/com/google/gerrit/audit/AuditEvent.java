@@ -116,7 +116,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|HashMultimap
+name|Multimap
 import|;
 end_import
 
@@ -130,7 +130,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|MultimapBuilder
 import|;
 end_import
 
@@ -189,9 +189,15 @@ name|?
 argument_list|>
 name|EMPTY_PARAMS
 init|=
-name|HashMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|hashSetValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 DECL|field|sessionId

@@ -76,7 +76,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ArrayListMultimap
+name|ListMultimap
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ListMultimap
+name|MultimapBuilder
 import|;
 end_import
 
@@ -1072,9 +1072,15 @@ name|RangeInfo
 argument_list|>
 name|ranges
 init|=
-name|ArrayListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 name|List

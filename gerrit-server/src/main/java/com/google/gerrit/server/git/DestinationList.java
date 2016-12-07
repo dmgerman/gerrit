@@ -76,7 +76,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|HashMultimap
+name|Lists
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
+name|MultimapBuilder
 import|;
 end_import
 
@@ -213,9 +213,15 @@ name|NameKey
 argument_list|>
 name|destinations
 init|=
-name|HashMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|hashSetValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 DECL|method|getDestinations (String label)

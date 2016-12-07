@@ -76,7 +76,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ArrayListMultimap
+name|Multimap
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|MultimapBuilder
 import|;
 end_import
 
@@ -694,9 +694,15 @@ name|String
 argument_list|>
 name|external
 init|=
-name|ArrayListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 for|for
