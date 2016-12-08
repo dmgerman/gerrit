@@ -68,6 +68,16 @@ name|changes
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_class
 DECL|class|SubmitInput
 specifier|public
@@ -95,6 +105,16 @@ init|=
 name|NotifyHandling
 operator|.
 name|ALL
+decl_stmt|;
+DECL|field|notifyDetails
+specifier|public
+name|Map
+argument_list|<
+name|RecipientType
+argument_list|,
+name|NotifyInfo
+argument_list|>
+name|notifyDetails
 decl_stmt|;
 block|}
 end_class

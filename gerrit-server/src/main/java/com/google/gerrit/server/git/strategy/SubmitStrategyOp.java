@@ -3436,6 +3436,10 @@ argument_list|,
 name|args
 operator|.
 name|notifyHandling
+argument_list|,
+name|args
+operator|.
+name|accountsToNotify
 argument_list|)
 operator|.
 name|sendAsync

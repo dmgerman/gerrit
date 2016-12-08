@@ -92,11 +92,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|Account
+name|changes
+operator|.
+name|RecipientType
 import|;
 end_import
 
@@ -108,11 +110,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|mail
+name|client
 operator|.
-name|RecipientType
+name|Account
 import|;
 end_import
 

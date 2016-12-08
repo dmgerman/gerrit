@@ -78,41 +78,9 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
 name|errors
 operator|.
 name|EmailException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|api
-operator|.
-name|changes
-operator|.
-name|NotifyHandling
 import|;
 end_import
 
@@ -205,7 +173,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.NameKey project, Change.Id id, NotifyHandling notify)
+DECL|method|create (Project.NameKey project, Change.Id id)
 name|AddReviewerSender
 name|create
 parameter_list|(
@@ -218,15 +186,12 @@ name|Change
 operator|.
 name|Id
 name|id
-parameter_list|,
-name|NotifyHandling
-name|notify
 parameter_list|)
 function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AddReviewerSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable NotifyHandling notify)
+DECL|method|AddReviewerSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|AddReviewerSender
 parameter_list|(
@@ -246,13 +211,6 @@ name|Change
 operator|.
 name|Id
 name|id
-parameter_list|,
-annotation|@
-name|Assisted
-annotation|@
-name|Nullable
-name|NotifyHandling
-name|notify
 parameter_list|)
 throws|throws
 name|OrmException
@@ -271,19 +229,6 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|notify
-operator|!=
-literal|null
-condition|)
-block|{
-name|setNotify
-argument_list|(
-name|notify
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override

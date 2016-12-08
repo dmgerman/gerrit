@@ -302,6 +302,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|Multimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Ordering
 import|;
 end_import
@@ -477,6 +491,24 @@ operator|.
 name|changes
 operator|.
 name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|RecipientType
 import|;
 end_import
 
@@ -1686,9 +1718,15 @@ specifier|final
 name|NotesMigration
 name|migration
 decl_stmt|;
+DECL|field|notifyUtil
+specifier|private
+specifier|final
+name|NotifyUtil
+name|notifyUtil
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview (Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, ChangesCollection changes, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, NotesMigration migration)
+DECL|method|PostReview (Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, ChangesCollection changes, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, AccountsCollection accounts, EmailReviewComments.Factory email, CommentAdded commentAdded, PostReviewers postReviewers, NotesMigration migration, NotifyUtil notifyUtil)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -1741,6 +1779,9 @@ name|postReviewers
 parameter_list|,
 name|NotesMigration
 name|migration
+parameter_list|,
+name|NotifyUtil
+name|notifyUtil
 parameter_list|)
 block|{
 name|this
@@ -1826,6 +1867,12 @@ operator|.
 name|migration
 operator|=
 name|migration
+expr_stmt|;
+name|this
+operator|.
+name|notifyUtil
+operator|=
+name|notifyUtil
 expr_stmt|;
 block|}
 annotation|@
@@ -2074,6 +2121,25 @@ operator|.
 name|NONE
 expr_stmt|;
 block|}
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
+init|=
+name|notifyUtil
+operator|.
+name|resolveAccounts
+argument_list|(
+name|input
+operator|.
+name|notifyDetails
+argument_list|)
+decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -2552,6 +2618,8 @@ argument_list|()
 argument_list|,
 name|input
 argument_list|,
+name|accountsToNotify
+argument_list|,
 name|reviewerResults
 argument_list|)
 argument_list|)
@@ -2589,6 +2657,8 @@ argument_list|,
 name|input
 operator|.
 name|notify
+argument_list|,
+name|accountsToNotify
 argument_list|)
 expr_stmt|;
 block|}
@@ -2601,7 +2671,7 @@ name|output
 argument_list|)
 return|;
 block|}
-DECL|method|emailReviewers (Change change, List<PostReviewers.Addition> reviewerAdditions, NotifyHandling notify)
+DECL|method|emailReviewers (Change change, List<PostReviewers.Addition> reviewerAdditions, NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify)
 specifier|private
 name|void
 name|emailReviewers
@@ -2619,6 +2689,16 @@ name|reviewerAdditions
 parameter_list|,
 name|NotifyHandling
 name|notify
+parameter_list|,
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
 parameter_list|)
 block|{
 name|List
@@ -2726,6 +2806,8 @@ argument_list|,
 name|cc
 argument_list|,
 name|notify
+argument_list|,
+name|accountsToNotify
 argument_list|)
 expr_stmt|;
 block|}
@@ -4718,6 +4800,19 @@ specifier|final
 name|ReviewInput
 name|in
 decl_stmt|;
+DECL|field|accountsToNotify
+specifier|private
+specifier|final
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
+decl_stmt|;
 DECL|field|reviewerResults
 specifier|private
 specifier|final
@@ -4805,7 +4900,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|Op (PatchSet.Id psId, ReviewInput in, List<PostReviewers.Addition> reviewerResults)
+DECL|method|Op (PatchSet.Id psId, ReviewInput in, Multimap<RecipientType, Account.Id> accountsToNotify, List<PostReviewers.Addition> reviewerResults)
 specifier|private
 name|Op
 parameter_list|(
@@ -4816,6 +4911,16 @@ name|psId
 parameter_list|,
 name|ReviewInput
 name|in
+parameter_list|,
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
 parameter_list|,
 name|List
 argument_list|<
@@ -4837,6 +4942,15 @@ operator|.
 name|in
 operator|=
 name|in
+expr_stmt|;
+name|this
+operator|.
+name|accountsToNotify
+operator|=
+name|checkNotNull
+argument_list|(
+name|accountsToNotify
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -4940,6 +5054,8 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 if|if
 condition|(
@@ -4964,6 +5080,12 @@ name|NONE
 argument_list|)
 operator|>
 literal|0
+operator|||
+operator|!
+name|accountsToNotify
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|email
@@ -4973,6 +5095,8 @@ argument_list|(
 name|in
 operator|.
 name|notify
+argument_list|,
+name|accountsToNotify
 argument_list|,
 name|notes
 argument_list|,

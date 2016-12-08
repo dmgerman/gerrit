@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.extensions.api.changes
 package|package
 name|com
 operator|.
@@ -60,28 +60,62 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|mail
+name|api
+operator|.
+name|changes
 package|;
 end_package
 
-begin_enum
-DECL|enum|RecipientType
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_comment
+comment|/** Detailed information about who should be notified about an update. */
+end_comment
+
+begin_class
+DECL|class|NotifyInfo
 specifier|public
-enum|enum
-name|RecipientType
+class|class
+name|NotifyInfo
 block|{
-DECL|enumConstant|TO
-DECL|enumConstant|CC
-DECL|enumConstant|BCC
-name|TO
-block|,
-name|CC
-block|,
-name|BCC
+DECL|field|accounts
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|accounts
+decl_stmt|;
+DECL|method|NotifyInfo (List<String> accounts)
+specifier|public
+name|NotifyInfo
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|accounts
+parameter_list|)
+block|{
+name|this
+operator|.
+name|accounts
+operator|=
+name|accounts
+expr_stmt|;
 block|}
-end_enum
+block|}
+end_class
 
 end_unit
 

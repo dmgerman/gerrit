@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Multimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -95,6 +109,24 @@ operator|.
 name|changes
 operator|.
 name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|RecipientType
 import|;
 end_import
 
@@ -393,7 +425,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.NameKey project, Change.Id changeId, Account.Id submitter, NotifyHandling notifyHandling)
+DECL|method|create (Project.NameKey project, Change.Id changeId, Account.Id submitter, NotifyHandling notifyHandling, Multimap<RecipientType, Account.Id> accountsToNotify)
 name|EmailMerge
 name|create
 parameter_list|(
@@ -414,6 +446,16 @@ name|submitter
 parameter_list|,
 name|NotifyHandling
 name|notifyHandling
+parameter_list|,
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
 parameter_list|)
 function_decl|;
 block|}
@@ -484,6 +526,19 @@ specifier|final
 name|NotifyHandling
 name|notifyHandling
 decl_stmt|;
+DECL|field|accountsToNotify
+specifier|private
+specifier|final
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
+decl_stmt|;
 DECL|field|db
 specifier|private
 name|ReviewDb
@@ -491,7 +546,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailMerge (@endEmailExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, IdentifiedUser.GenericFactory identifiedUserFactory, @Assisted Project.NameKey project, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter, @Assisted NotifyHandling notifyHandling)
+DECL|method|EmailMerge (@endEmailExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, IdentifiedUser.GenericFactory identifiedUserFactory, @Assisted Project.NameKey project, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter, @Assisted NotifyHandling notifyHandling, @Assisted Multimap<RecipientType, Account.Id> accountsToNotify)
 name|EmailMerge
 parameter_list|(
 annotation|@
@@ -545,6 +600,18 @@ annotation|@
 name|Assisted
 name|NotifyHandling
 name|notifyHandling
+parameter_list|,
+annotation|@
+name|Assisted
+name|Multimap
+argument_list|<
+name|RecipientType
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|accountsToNotify
 parameter_list|)
 block|{
 name|this
@@ -600,6 +667,12 @@ operator|.
 name|notifyHandling
 operator|=
 name|notifyHandling
+expr_stmt|;
+name|this
+operator|.
+name|accountsToNotify
+operator|=
+name|accountsToNotify
 expr_stmt|;
 block|}
 DECL|method|sendAsync ()
@@ -668,6 +741,13 @@ operator|.
 name|setNotify
 argument_list|(
 name|notifyHandling
+argument_list|)
+expr_stmt|;
+name|cm
+operator|.
+name|setAccountsToNotify
+argument_list|(
+name|accountsToNotify
 argument_list|)
 expr_stmt|;
 name|cm
