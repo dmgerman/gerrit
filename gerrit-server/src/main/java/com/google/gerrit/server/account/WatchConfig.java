@@ -1430,6 +1430,30 @@ return|return
 name|projectWatches
 return|;
 block|}
+DECL|method|setProjectWatches ( Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
+specifier|public
+name|void
+name|setProjectWatches
+parameter_list|(
+name|Map
+argument_list|<
+name|ProjectWatchKey
+argument_list|,
+name|Set
+argument_list|<
+name|NotifyType
+argument_list|>
+argument_list|>
+name|projectWatches
+parameter_list|)
+block|{
+name|this
+operator|.
+name|projectWatches
+operator|=
+name|projectWatches
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|onSave (CommitBuilder commit)
