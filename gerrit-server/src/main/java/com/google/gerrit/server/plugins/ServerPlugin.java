@@ -353,7 +353,7 @@ name|ClassLoader
 name|classLoader
 decl_stmt|;
 DECL|field|sysModule
-specifier|private
+specifier|protected
 name|Class
 argument_list|<
 name|?
@@ -363,7 +363,7 @@ argument_list|>
 name|sysModule
 decl_stmt|;
 DECL|field|sshModule
-specifier|private
+specifier|protected
 name|Class
 argument_list|<
 name|?
@@ -373,7 +373,7 @@ argument_list|>
 name|sshModule
 decl_stmt|;
 DECL|field|httpModule
-specifier|private
+specifier|protected
 name|Class
 argument_list|<
 name|?
@@ -454,6 +454,14 @@ name|pluginUser
 argument_list|,
 name|snapshot
 argument_list|,
+name|scanner
+operator|==
+literal|null
+condition|?
+name|ApiType
+operator|.
+name|PLUGIN
+else|:
 name|Plugin
 operator|.
 name|getApiType
@@ -493,11 +501,24 @@ name|this
 operator|.
 name|manifest
 operator|=
+name|scanner
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
 name|getPluginManifest
 argument_list|(
 name|scanner
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|manifest
+operator|!=
+literal|null
+condition|)
+block|{
 name|loadGuiceModules
 argument_list|(
 name|manifest
@@ -505,6 +526,7 @@ argument_list|,
 name|classLoader
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|loadGuiceModules (Manifest manifest, ClassLoader classLoader)
 specifier|private
@@ -656,7 +678,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 DECL|method|load (String name, ClassLoader pluginLoader)
-specifier|private
+specifier|protected
 specifier|static
 name|Class
 argument_list|<

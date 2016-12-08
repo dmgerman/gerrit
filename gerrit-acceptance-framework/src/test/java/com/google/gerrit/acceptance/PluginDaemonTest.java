@@ -678,6 +678,13 @@ name|endsWith
 argument_list|(
 name|BAZELOUT
 argument_list|)
+operator|||
+name|subPath
+operator|.
+name|endsWith
+argument_list|(
+name|ECLIPSE
+argument_list|)
 condition|)
 block|{
 name|bazel
@@ -689,7 +696,6 @@ operator|=
 name|idx
 expr_stmt|;
 block|}
-comment|// TODO(davido): Fix Bazel plugin test from Eclipse
 if|if
 condition|(
 name|subPath
@@ -697,13 +703,6 @@ operator|.
 name|endsWith
 argument_list|(
 name|BUCKOUT
-argument_list|)
-operator|||
-name|subPath
-operator|.
-name|endsWith
-argument_list|(
-name|ECLIPSE
 argument_list|)
 condition|)
 block|{
