@@ -323,6 +323,8 @@ block|}
 catch|catch
 parameter_list|(
 name|UnloggedFailure
+decl||
+name|OrmException
 name|e
 parameter_list|)
 block|{
@@ -336,22 +338,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"database is down"
-argument_list|,
-name|e
-argument_list|)
-throw|;
 block|}
 block|}
 DECL|field|changes
