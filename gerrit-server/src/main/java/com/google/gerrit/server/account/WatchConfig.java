@@ -1492,13 +1492,11 @@ control|)
 block|{
 name|cfg
 operator|.
-name|unset
+name|unsetSection
 argument_list|(
 name|PROJECT
 argument_list|,
 name|projectName
-argument_list|,
-name|KEY_NOTIFY
 argument_list|)
 expr_stmt|;
 block|}
