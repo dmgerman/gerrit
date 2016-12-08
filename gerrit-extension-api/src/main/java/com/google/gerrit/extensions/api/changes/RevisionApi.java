@@ -338,6 +338,16 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|submitPreview (String format)
+name|BinaryResult
+name|submitPreview
+parameter_list|(
+name|String
+name|format
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|publish ()
 name|void
 name|publish
@@ -1331,6 +1341,25 @@ specifier|public
 name|BinaryResult
 name|submitPreview
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|submitPreview (String format)
+specifier|public
+name|BinaryResult
+name|submitPreview
+parameter_list|(
+name|String
+name|format
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
