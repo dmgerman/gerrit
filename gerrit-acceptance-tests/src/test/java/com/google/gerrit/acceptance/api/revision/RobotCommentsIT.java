@@ -124,11 +124,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|extensions
 operator|.
-name|api
-operator|.
-name|revision
+name|common
 operator|.
 name|RobotCommentInfoSubject
 operator|.

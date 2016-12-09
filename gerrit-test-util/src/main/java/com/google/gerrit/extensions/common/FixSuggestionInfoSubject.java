@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.api.revision
+DECL|package|com.google.gerrit.extensions.common
 package|package
 name|com
 operator|.
@@ -60,11 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|extensions
 operator|.
-name|api
-operator|.
-name|revision
+name|common
 package|;
 end_package
 
@@ -162,41 +160,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|truth
 operator|.
 name|ListSubject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|FixReplacementInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|FixSuggestionInfo
 import|;
 end_import
 
