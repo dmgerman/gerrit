@@ -188,6 +188,16 @@ name|String
 name|branchDeletionConfirmationMessage
 parameter_list|()
 function_decl|;
+DECL|method|tagDeletionDialogTitle ()
+name|String
+name|tagDeletionDialogTitle
+parameter_list|()
+function_decl|;
+DECL|method|tagDeletionConfirmationMessage ()
+name|String
+name|tagDeletionConfirmationMessage
+parameter_list|()
+function_decl|;
 DECL|method|newUi ()
 name|String
 name|newUi

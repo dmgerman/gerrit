@@ -539,6 +539,11 @@ name|String
 name|buttonAddTag
 parameter_list|()
 function_decl|;
+DECL|method|buttonDeleteTag ()
+name|String
+name|buttonDeleteTag
+parameter_list|()
+function_decl|;
 DECL|method|saveHeadButton ()
 name|String
 name|saveHeadButton

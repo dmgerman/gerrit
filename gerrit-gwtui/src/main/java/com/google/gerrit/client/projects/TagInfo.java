@@ -74,6 +74,15 @@ name|TagInfo
 extends|extends
 name|RefInfo
 block|{
+DECL|method|canDelete ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|canDelete
+parameter_list|()
+comment|/*-{ return this['can_delete'] ? true : false; }-*/
+function_decl|;
 comment|// TODO(dpursehouse) add extra tag-related fields (message, tagger, etc)
 DECL|method|TagInfo ()
 specifier|protected
