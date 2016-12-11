@@ -270,7 +270,7 @@ name|extensions
 operator|.
 name|webui
 operator|.
-name|PatchSetWebLink
+name|ParentWebLink
 import|;
 end_import
 
@@ -286,7 +286,7 @@ name|extensions
 operator|.
 name|webui
 operator|.
-name|ParentWebLink
+name|PatchSetWebLink
 import|;
 end_import
 
