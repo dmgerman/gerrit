@@ -97,6 +97,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -274,6 +288,8 @@ name|decode
 argument_list|(
 name|auth
 argument_list|)
+argument_list|,
+name|UTF_8
 argument_list|)
 expr_stmt|;
 specifier|final
