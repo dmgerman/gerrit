@@ -1437,6 +1437,61 @@ literal|"subject: This is a test change\n"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|currentPatchSet ()
+specifier|public
+name|void
+name|currentPatchSet
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Current: true"
+argument_list|)
+expr_stmt|;
+name|assertParseSucceeds
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Current: tRUe"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Current: false"
+argument_list|)
+expr_stmt|;
+name|assertParseFails
+argument_list|(
+literal|"Update change\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Current: blah"
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|writeCommit (String body)
 specifier|private
 name|RevCommit

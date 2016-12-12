@@ -937,6 +937,11 @@ operator|.
 name|MERGED
 argument_list|)
 expr_stmt|;
+name|update
+operator|.
+name|setCurrentPatchSet
+argument_list|()
+expr_stmt|;
 block|}
 name|StringBuilder
 name|msgBuf

@@ -234,6 +234,24 @@ name|notedb
 operator|.
 name|ChangeNoteUtil
 operator|.
+name|FOOTER_CURRENT
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNoteUtil
+operator|.
 name|FOOTER_GROUPS
 import|;
 end_import
@@ -1377,6 +1395,11 @@ DECL|field|psDescription
 specifier|private
 name|String
 name|psDescription
+decl_stmt|;
+DECL|field|currentPatchSet
+specifier|private
+name|boolean
+name|currentPatchSet
 decl_stmt|;
 DECL|field|draftUpdate
 specifier|private
@@ -2850,6 +2873,19 @@ operator|=
 name|psState
 expr_stmt|;
 block|}
+DECL|method|setCurrentPatchSet ()
+specifier|public
+name|void
+name|setCurrentPatchSet
+parameter_list|()
+block|{
+name|this
+operator|.
+name|currentPatchSet
+operator|=
+literal|true
+expr_stmt|;
+block|}
 DECL|method|setGroups (List<String> groups)
 specifier|public
 name|void
@@ -3552,6 +3588,23 @@ argument_list|,
 name|ps
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|currentPatchSet
+condition|)
+block|{
+name|addFooter
+argument_list|(
+name|msg
+argument_list|,
+name|FOOTER_CURRENT
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|psDescription
@@ -4402,6 +4455,9 @@ operator|&&
 name|psDescription
 operator|==
 literal|null
+operator|&&
+operator|!
+name|currentPatchSet
 return|;
 block|}
 DECL|method|getDraftUpdate ()

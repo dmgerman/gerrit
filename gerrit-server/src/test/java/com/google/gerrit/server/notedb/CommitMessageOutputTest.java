@@ -2123,6 +2123,59 @@ name|commit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|currentPatchSet ()
+specifier|public
+name|void
+name|currentPatchSet
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Change
+name|c
+init|=
+name|newChange
+argument_list|()
+decl_stmt|;
+name|ChangeUpdate
+name|update
+init|=
+name|newUpdate
+argument_list|(
+name|c
+argument_list|,
+name|changeOwner
+argument_list|)
+decl_stmt|;
+name|update
+operator|.
+name|setCurrentPatchSet
+argument_list|()
+expr_stmt|;
+name|update
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+name|assertBodyEquals
+argument_list|(
+literal|"Update patch set 1\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Patch-set: 1\n"
+operator|+
+literal|"Current: true\n"
+argument_list|,
+name|update
+operator|.
+name|getResult
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|parseCommit (ObjectId id)
 specifier|private
 name|RevCommit
