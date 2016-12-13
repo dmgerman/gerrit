@@ -4861,7 +4861,7 @@ DECL|field|labelDelta
 specifier|private
 name|List
 argument_list|<
-name|String
+name|LabelVote
 argument_list|>
 name|labelDelta
 init|=
@@ -5107,6 +5107,12 @@ argument_list|,
 name|message
 argument_list|,
 name|comments
+argument_list|,
+name|in
+operator|.
+name|message
+argument_list|,
+name|labelDelta
 argument_list|)
 operator|.
 name|sendAsync
@@ -8551,7 +8557,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|String
+name|LabelVote
 name|d
 range|:
 name|labelDelta
@@ -8567,6 +8573,9 @@ operator|.
 name|append
 argument_list|(
 name|d
+operator|.
+name|format
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -8736,9 +8745,6 @@ name|name
 argument_list|,
 name|value
 argument_list|)
-operator|.
-name|format
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
