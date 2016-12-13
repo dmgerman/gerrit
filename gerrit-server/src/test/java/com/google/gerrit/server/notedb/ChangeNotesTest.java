@@ -1190,6 +1190,8 @@ name|commit
 operator|.
 name|name
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1569,6 +1571,8 @@ name|commit
 operator|.
 name|name
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8333,6 +8337,8 @@ name|commit
 operator|.
 name|name
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9080,6 +9086,8 @@ name|commit
 operator|.
 name|name
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9197,6 +9205,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Author: Change Owner<1@gerrit>\n"
+operator|+
+literal|"Unresolved: false\n"
 operator|+
 literal|"UUID: uuid1\n"
 operator|+
@@ -9623,6 +9633,8 @@ operator|)
 literal|0
 argument_list|,
 literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update1
@@ -11310,6 +11322,8 @@ name|revId
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -11462,6 +11476,8 @@ name|revId
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -11614,6 +11630,8 @@ name|revId
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -11766,6 +11784,8 @@ name|revId
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -11957,6 +11977,8 @@ operator|)
 literal|1
 argument_list|,
 literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -12038,6 +12060,8 @@ operator|)
 literal|1
 argument_list|,
 literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -12119,6 +12143,8 @@ operator|)
 literal|1
 argument_list|,
 literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -12266,6 +12292,8 @@ literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
 operator|+
+literal|"Unresolved: false\n"
+operator|+
 literal|"UUID: uuid1\n"
 operator|+
 literal|"Bytes: 9\n"
@@ -12288,6 +12316,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
+operator|+
+literal|"Unresolved: false\n"
 operator|+
 literal|"UUID: uuid2\n"
 operator|+
@@ -12315,6 +12345,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
+operator|+
+literal|"Unresolved: false\n"
 operator|+
 literal|"UUID: uuid3\n"
 operator|+
@@ -12447,6 +12479,8 @@ operator|)
 literal|0
 argument_list|,
 literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -12528,6 +12562,8 @@ operator|)
 literal|0
 argument_list|,
 literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -12675,6 +12711,8 @@ literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
 operator|+
+literal|"Unresolved: false\n"
+operator|+
 literal|"UUID: uuid1\n"
 operator|+
 literal|"Bytes: 9\n"
@@ -12697,6 +12735,385 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
+operator|+
+literal|"Unresolved: false\n"
+operator|+
+literal|"UUID: uuid2\n"
+operator|+
+literal|"Bytes: 9\n"
+operator|+
+literal|"comment 2\n"
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+annotation|@
+name|Test
+DECL|method|patchLineCommentNotesResolvedChangesValue ()
+specifier|public
+name|void
+name|patchLineCommentNotesResolvedChangesValue
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Change
+name|c
+init|=
+name|newChange
+argument_list|()
+decl_stmt|;
+name|ChangeUpdate
+name|update
+init|=
+name|newUpdate
+argument_list|(
+name|c
+argument_list|,
+name|otherUser
+argument_list|)
+decl_stmt|;
+name|String
+name|uuid1
+init|=
+literal|"uuid1"
+decl_stmt|;
+name|String
+name|uuid2
+init|=
+literal|"uuid2"
+decl_stmt|;
+name|String
+name|message1
+init|=
+literal|"comment 1"
+decl_stmt|;
+name|String
+name|message2
+init|=
+literal|"comment 2"
+decl_stmt|;
+name|CommentRange
+name|range1
+init|=
+operator|new
+name|CommentRange
+argument_list|(
+literal|1
+argument_list|,
+literal|1
+argument_list|,
+literal|2
+argument_list|,
+literal|1
+argument_list|)
+decl_stmt|;
+name|Timestamp
+name|time1
+init|=
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+decl_stmt|;
+name|Timestamp
+name|time2
+init|=
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+decl_stmt|;
+name|PatchSet
+operator|.
+name|Id
+name|psId
+init|=
+name|c
+operator|.
+name|currentPatchSetId
+argument_list|()
+decl_stmt|;
+name|Comment
+name|comment1
+init|=
+name|newComment
+argument_list|(
+name|psId
+argument_list|,
+literal|"file1"
+argument_list|,
+name|uuid1
+argument_list|,
+name|range1
+argument_list|,
+name|range1
+operator|.
+name|getEndLine
+argument_list|()
+argument_list|,
+name|otherUser
+argument_list|,
+literal|null
+argument_list|,
+name|time1
+argument_list|,
+name|message1
+argument_list|,
+operator|(
+name|short
+operator|)
+literal|0
+argument_list|,
+literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
+name|update
+operator|.
+name|setPatchSetId
+argument_list|(
+name|psId
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|putComment
+argument_list|(
+name|Status
+operator|.
+name|PUBLISHED
+argument_list|,
+name|comment1
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+name|update
+operator|=
+name|newUpdate
+argument_list|(
+name|c
+argument_list|,
+name|otherUser
+argument_list|)
+expr_stmt|;
+name|Comment
+name|comment2
+init|=
+name|newComment
+argument_list|(
+name|psId
+argument_list|,
+literal|"file1"
+argument_list|,
+name|uuid2
+argument_list|,
+name|range1
+argument_list|,
+name|range1
+operator|.
+name|getEndLine
+argument_list|()
+argument_list|,
+name|otherUser
+argument_list|,
+name|uuid1
+argument_list|,
+name|time2
+argument_list|,
+name|message2
+argument_list|,
+operator|(
+name|short
+operator|)
+literal|0
+argument_list|,
+literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|update
+operator|.
+name|setPatchSetId
+argument_list|(
+name|psId
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|putComment
+argument_list|(
+name|Status
+operator|.
+name|PUBLISHED
+argument_list|,
+name|comment2
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+name|ChangeNotes
+name|notes
+init|=
+name|newNotes
+argument_list|(
+name|c
+argument_list|)
+decl_stmt|;
+try|try
+init|(
+name|RevWalk
+name|walk
+init|=
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
+init|)
+block|{
+name|ArrayList
+argument_list|<
+name|Note
+argument_list|>
+name|notesInTree
+init|=
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
+name|notes
+operator|.
+name|revisionNoteMap
+operator|.
+name|noteMap
+operator|.
+name|iterator
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|Note
+name|note
+init|=
+name|Iterables
+operator|.
+name|getOnlyElement
+argument_list|(
+name|notesInTree
+argument_list|)
+decl_stmt|;
+name|byte
+index|[]
+name|bytes
+init|=
+name|walk
+operator|.
+name|getObjectReader
+argument_list|()
+operator|.
+name|open
+argument_list|(
+name|note
+operator|.
+name|getData
+argument_list|()
+argument_list|,
+name|Constants
+operator|.
+name|OBJ_BLOB
+argument_list|)
+operator|.
+name|getBytes
+argument_list|()
+decl_stmt|;
+name|String
+name|noteString
+init|=
+operator|new
+name|String
+argument_list|(
+name|bytes
+argument_list|,
+name|UTF_8
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|testJson
+argument_list|()
+condition|)
+block|{
+name|assertThat
+argument_list|(
+name|noteString
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Revision: abcd1234abcd1234abcd1234abcd1234abcd1234\n"
+operator|+
+literal|"Base-for-patch-set: 1\n"
+operator|+
+literal|"File: file1\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"1:1-2:1\n"
+operator|+
+name|ChangeNoteUtil
+operator|.
+name|formatTime
+argument_list|(
+name|serverIdent
+argument_list|,
+name|time1
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+literal|"Author: Other Account<2@gerrit>\n"
+operator|+
+literal|"Unresolved: false\n"
+operator|+
+literal|"UUID: uuid1\n"
+operator|+
+literal|"Bytes: 9\n"
+operator|+
+literal|"comment 1\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"1:1-2:1\n"
+operator|+
+name|ChangeNoteUtil
+operator|.
+name|formatTime
+argument_list|(
+name|serverIdent
+argument_list|,
+name|time2
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+literal|"Author: Other Account<2@gerrit>\n"
+operator|+
+literal|"Parent: uuid1\n"
+operator|+
+literal|"Unresolved: true\n"
 operator|+
 literal|"UUID: uuid2\n"
 operator|+
@@ -12863,6 +13280,8 @@ name|revId
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|Comment
@@ -12900,6 +13319,8 @@ name|revId
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|Comment
@@ -12937,6 +13358,8 @@ name|revId
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|ChangeUpdate
@@ -13121,6 +13544,8 @@ literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
 operator|+
+literal|"Unresolved: false\n"
+operator|+
 literal|"UUID: uuid1\n"
 operator|+
 literal|"Bytes: 9\n"
@@ -13136,6 +13561,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
+operator|+
+literal|"Unresolved: false\n"
 operator|+
 literal|"UUID: uuid2\n"
 operator|+
@@ -13158,6 +13585,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
+operator|+
+literal|"Unresolved: false\n"
 operator|+
 literal|"UUID: uuid3\n"
 operator|+
@@ -13326,6 +13755,8 @@ name|revId
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|comment
@@ -13484,6 +13915,8 @@ operator|+
 literal|"Author: Other Account<2@gerrit>\n"
 operator|+
 literal|"Real-author: Change Owner<1@gerrit>\n"
+operator|+
+literal|"Unresolved: false\n"
 operator|+
 literal|"UUID: uuid\n"
 operator|+
@@ -13667,6 +14100,8 @@ operator|)
 literal|1
 argument_list|,
 literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -13818,6 +14253,8 @@ operator|+
 literal|"\n"
 operator|+
 literal|"Author: Weird\u0002User<3@gerrit>\n"
+operator|+
+literal|"Unresolved: false\n"
 operator|+
 literal|"UUID: uuid\n"
 operator|+
@@ -13978,6 +14415,8 @@ operator|)
 literal|0
 argument_list|,
 name|rev1
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -14044,6 +14483,8 @@ operator|)
 literal|1
 argument_list|,
 name|rev2
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -14229,6 +14670,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -14292,6 +14735,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -14472,6 +14917,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -14535,6 +14982,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -14715,6 +15164,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev1
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -14800,6 +15251,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev2
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -14972,6 +15425,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -15258,6 +15713,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|Comment
@@ -15289,6 +15746,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -15604,6 +16063,8 @@ operator|)
 literal|0
 argument_list|,
 name|rev1
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|Comment
@@ -15638,6 +16099,8 @@ operator|)
 literal|1
 argument_list|,
 name|rev2
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -15938,6 +16401,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -16211,6 +16676,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev1
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -16296,6 +16763,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev2
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -16550,6 +17019,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -16721,6 +17192,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -16809,6 +17282,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -16929,6 +17404,8 @@ operator|)
 literal|0
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -17070,6 +17547,8 @@ operator|)
 literal|0
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -17261,6 +17740,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev1
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|Comment
@@ -17292,6 +17773,8 @@ argument_list|,
 name|side
 argument_list|,
 name|rev2
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -17547,6 +18030,8 @@ name|rev1
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|Comment
@@ -17581,6 +18066,8 @@ name|rev1
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -17946,6 +18433,8 @@ name|rev1
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|Comment
@@ -17980,6 +18469,8 @@ name|rev1
 operator|.
 name|get
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update
@@ -18357,6 +18848,8 @@ operator|)
 literal|1
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update1
@@ -18425,6 +18918,8 @@ operator|)
 literal|1
 argument_list|,
 name|rev
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update2
@@ -18838,6 +19333,8 @@ operator|)
 literal|1
 argument_list|,
 literal|"abcd1234abcd1234abcd1234abcd1234abcd1234"
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|update

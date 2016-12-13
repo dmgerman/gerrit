@@ -166,7 +166,7 @@ name|CommentInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create (String path, Side side, int line, CommentRange range)
+DECL|method|create (String path, Side side, int line, CommentRange range, Boolean unresolved)
 specifier|public
 specifier|static
 name|CommentInfo
@@ -183,6 +183,9 @@ name|line
 parameter_list|,
 name|CommentRange
 name|range
+parameter_list|,
+name|Boolean
+name|unresolved
 parameter_list|)
 block|{
 return|return
@@ -197,10 +200,12 @@ argument_list|,
 name|line
 argument_list|,
 name|range
+argument_list|,
+name|unresolved
 argument_list|)
 return|;
 block|}
-DECL|method|create (String path, Side side, int parent, int line, CommentRange range)
+DECL|method|create (String path, Side side, int parent, int line, CommentRange range, boolean unresolved)
 specifier|public
 specifier|static
 name|CommentInfo
@@ -220,6 +225,9 @@ name|line
 parameter_list|,
 name|CommentRange
 name|range
+parameter_list|,
+name|boolean
+name|unresolved
 parameter_list|)
 block|{
 name|CommentInfo
@@ -293,6 +301,13 @@ name|line
 argument_list|)
 expr_stmt|;
 block|}
+name|n
+operator|.
+name|unresolved
+argument_list|(
+name|unresolved
+argument_list|)
+expr_stmt|;
 return|return
 name|n
 return|;
@@ -408,6 +423,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|n
+operator|.
+name|unresolved
+argument_list|(
+name|r
+operator|.
+name|unresolved
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|n
 return|;
@@ -543,6 +568,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|n
+operator|.
+name|unresolved
+argument_list|(
+name|s
+operator|.
+name|unresolved
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|n
 return|;
@@ -618,6 +653,18 @@ name|String
 name|m
 parameter_list|)
 comment|/*-{ this.message = m }-*/
+function_decl|;
+DECL|method|unresolved (boolean b)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|unresolved
+parameter_list|(
+name|boolean
+name|b
+parameter_list|)
+comment|/*-{ this.unresolved = b }-*/
 function_decl|;
 DECL|method|side (Side side)
 specifier|public
@@ -705,6 +752,15 @@ name|int
 name|patchSet
 parameter_list|()
 comment|/*-{ return this.patch_set }-*/
+function_decl|;
+DECL|method|unresolved ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|unresolved
+parameter_list|()
+comment|/*-{ return this.unresolved }-*/
 function_decl|;
 DECL|method|side ()
 specifier|public
