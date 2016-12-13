@@ -849,6 +849,11 @@ specifier|public
 name|String
 name|serverId
 decl_stmt|;
+DECL|field|unresolved
+specifier|public
+name|boolean
+name|unresolved
+decl_stmt|;
 DECL|method|Comment (Comment c)
 specifier|public
 name|Comment
@@ -896,6 +901,10 @@ argument_list|,
 name|c
 operator|.
 name|serverId
+argument_list|,
+name|c
+operator|.
+name|unresolved
 argument_list|)
 expr_stmt|;
 name|this
@@ -950,8 +959,16 @@ name|c
 operator|.
 name|revId
 expr_stmt|;
+name|this
+operator|.
+name|unresolved
+operator|=
+name|c
+operator|.
+name|unresolved
+expr_stmt|;
 block|}
-DECL|method|Comment (Key key, Account.Id author, Timestamp writtenOn, short side, String message, String serverId)
+DECL|method|Comment (Key key, Account.Id author, Timestamp writtenOn, short side, String message, String serverId, boolean unresolved)
 specifier|public
 name|Comment
 parameter_list|(
@@ -974,6 +991,9 @@ name|message
 parameter_list|,
 name|String
 name|serverId
+parameter_list|,
+name|boolean
+name|unresolved
 parameter_list|)
 block|{
 name|this
@@ -1025,6 +1045,12 @@ operator|.
 name|serverId
 operator|=
 name|serverId
+expr_stmt|;
+name|this
+operator|.
+name|unresolved
+operator|=
+name|unresolved
 expr_stmt|;
 block|}
 DECL|method|setLineNbrAndRange (Integer lineNbr, com.google.gerrit.extensions.client.Comment.Range range)
@@ -1463,6 +1489,11 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
+literal|','
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"tag="
 argument_list|)
 operator|.
@@ -1476,6 +1507,21 @@ name|tag
 argument_list|,
 literal|""
 argument_list|)
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|','
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"unresolved="
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|unresolved
 argument_list|)
 operator|.
 name|append
