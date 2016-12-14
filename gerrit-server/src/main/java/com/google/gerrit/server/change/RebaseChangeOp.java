@@ -1164,6 +1164,11 @@ argument_list|,
 name|rebasedCommit
 argument_list|)
 operator|.
+name|setDescription
+argument_list|(
+literal|"Rebase"
+argument_list|)
+operator|.
 name|setDraft
 argument_list|(
 name|originalPatchSet

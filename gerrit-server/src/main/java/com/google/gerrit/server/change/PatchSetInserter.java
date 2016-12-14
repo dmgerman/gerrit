@@ -883,6 +883,11 @@ specifier|private
 name|String
 name|message
 decl_stmt|;
+DECL|field|description
+specifier|private
+name|String
+name|description
+decl_stmt|;
 DECL|field|validatePolicy
 specifier|private
 name|CommitValidators
@@ -1130,6 +1135,25 @@ operator|.
 name|message
 operator|=
 name|message
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setDescription (String description)
+specifier|public
+name|PatchSetInserter
+name|setDescription
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+block|{
+name|this
+operator|.
+name|description
+operator|=
+name|description
 expr_stmt|;
 return|return
 name|this
@@ -1586,7 +1610,7 @@ name|newGroups
 argument_list|,
 literal|null
 argument_list|,
-literal|null
+name|description
 argument_list|)
 expr_stmt|;
 if|if
