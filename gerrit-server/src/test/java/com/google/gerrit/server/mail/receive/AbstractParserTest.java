@@ -445,7 +445,7 @@ argument_list|,
 operator|new
 name|Timestamp
 argument_list|(
-literal|0l
+literal|0L
 argument_list|)
 argument_list|,
 operator|(
