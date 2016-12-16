@@ -454,6 +454,11 @@ specifier|public
 name|TimeFormat
 name|timeFormat
 decl_stmt|;
+DECL|field|expandInlineDiffs
+specifier|public
+name|Boolean
+name|expandInlineDiffs
+decl_stmt|;
 DECL|field|highlightAssigneeInChangeTable
 specifier|public
 name|Boolean
@@ -737,6 +742,12 @@ operator|=
 name|TimeFormat
 operator|.
 name|HHMM_12
+expr_stmt|;
+name|p
+operator|.
+name|expandInlineDiffs
+operator|=
+literal|false
 expr_stmt|;
 name|p
 operator|.

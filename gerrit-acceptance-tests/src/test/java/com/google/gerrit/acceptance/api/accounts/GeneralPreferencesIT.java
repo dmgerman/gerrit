@@ -720,6 +720,12 @@ name|AUTO_MERGE
 expr_stmt|;
 name|i
 operator|.
+name|expandInlineDiffs
+operator|^=
+literal|true
+expr_stmt|;
+name|i
+operator|.
 name|highlightAssigneeInChangeTable
 operator|^=
 literal|true
