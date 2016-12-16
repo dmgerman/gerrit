@@ -894,6 +894,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|client
+operator|.
+name|ReviewerState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|common
 operator|.
 name|AccountInfo
@@ -4428,22 +4444,6 @@ expr_stmt|;
 block|}
 name|out
 operator|.
-name|removableReviewers
-operator|=
-name|removableReviewers
-argument_list|(
-name|ctl
-argument_list|,
-name|out
-operator|.
-name|labels
-operator|.
-name|values
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
 name|reviewers
 operator|=
 operator|new
@@ -4512,6 +4512,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|out
+operator|.
+name|removableReviewers
+operator|=
+name|removableReviewers
+argument_list|(
+name|ctl
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -7856,7 +7867,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|removableReviewers (ChangeControl ctl, Collection<LabelInfo> labels)
+DECL|method|removableReviewers (ChangeControl ctl, ChangeInfo out)
 specifier|private
 name|Collection
 argument_list|<
@@ -7867,13 +7878,33 @@ parameter_list|(
 name|ChangeControl
 name|ctl
 parameter_list|,
+name|ChangeInfo
+name|out
+parameter_list|)
+block|{
+comment|// Although this is called removableReviewers, this method also determines
+comment|// which CCs are removable.
+comment|//
+comment|// For reviewers, we need to look at each approval, because the reviewer
+comment|// should only be considered removable if *all* of their approvals can be
+comment|// removed. First, add all reviewers with *any* removable approval to the
+comment|// "removable" set. Along the way, if we encounter a non-removable approval,
+comment|// add the reviewer to the "fixed" set. Before we return, remove all members
+comment|// of "fixed" from "removable", because not all of their approvals can be
+comment|// removed.
 name|Collection
 argument_list|<
 name|LabelInfo
 argument_list|>
 name|labels
-parameter_list|)
-block|{
+init|=
+name|out
+operator|.
+name|labels
+operator|.
+name|values
+argument_list|()
+decl_stmt|;
 name|Set
 argument_list|<
 name|Account
@@ -7995,6 +8026,82 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|// CCs are simpler than reviewers. They are removable if the ChangeControl
+comment|// would permit a non-negative approval by that account to be removed, in
+comment|// which case add them to removable. We don't need to add unremovable CCs to
+comment|// "fixed" because we only visit each CC once here.
+name|Collection
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|ccs
+init|=
+name|out
+operator|.
+name|reviewers
+operator|.
+name|get
+argument_list|(
+name|ReviewerState
+operator|.
+name|CC
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ccs
+operator|!=
+literal|null
+condition|)
+block|{
+for|for
+control|(
+name|AccountInfo
+name|ai
+range|:
+name|ccs
+control|)
+block|{
+name|Account
+operator|.
+name|Id
+name|id
+init|=
+operator|new
+name|Account
+operator|.
+name|Id
+argument_list|(
+name|ai
+operator|.
+name|_accountId
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ctl
+operator|.
+name|canRemoveReviewer
+argument_list|(
+name|id
+argument_list|,
+literal|0
+argument_list|)
+condition|)
+block|{
+name|removable
+operator|.
+name|add
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+comment|// Subtract any reviewers with non-removable approvals from the "removable"
+comment|// set. This also subtracts any CCs that for some reason also hold
+comment|// unremovable approvals.
 name|removable
 operator|.
 name|removeAll
