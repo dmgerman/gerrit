@@ -1334,6 +1334,8 @@ argument_list|,
 name|line
 argument_list|,
 name|range
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|info

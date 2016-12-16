@@ -2047,7 +2047,7 @@ return|return
 name|label
 return|;
 block|}
-DECL|method|newComment (PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, String commitSHA1)
+DECL|method|newComment (PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, String commitSHA1, boolean unresolved)
 specifier|protected
 name|Comment
 name|newComment
@@ -2086,6 +2086,9 @@ name|side
 parameter_list|,
 name|String
 name|commitSHA1
+parameter_list|,
+name|boolean
+name|unresolved
 parameter_list|)
 block|{
 name|Comment
@@ -2122,7 +2125,7 @@ name|message
 argument_list|,
 name|serverId
 argument_list|,
-literal|false
+name|unresolved
 argument_list|)
 decl_stmt|;
 name|c

@@ -983,6 +983,14 @@ name|c
 operator|.
 name|tag
 expr_stmt|;
+name|r
+operator|.
+name|unresolved
+operator|=
+name|c
+operator|.
+name|unresolved
+expr_stmt|;
 if|if
 condition|(
 name|loader
