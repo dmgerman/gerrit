@@ -118,6 +118,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -1222,7 +1236,7 @@ return|return
 name|rci
 return|;
 block|}
-DECL|method|toFixSuggestionInfos ( List<FixSuggestion> fixSuggestions)
+DECL|method|toFixSuggestionInfos ( @ullable List<FixSuggestion> fixSuggestions)
 specifier|private
 name|List
 argument_list|<
@@ -1230,6 +1244,8 @@ name|FixSuggestionInfo
 argument_list|>
 name|toFixSuggestionInfos
 parameter_list|(
+annotation|@
+name|Nullable
 name|List
 argument_list|<
 name|FixSuggestion
@@ -1239,6 +1255,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|fixSuggestions
+operator|==
+literal|null
+operator|||
 name|fixSuggestions
 operator|.
 name|isEmpty
