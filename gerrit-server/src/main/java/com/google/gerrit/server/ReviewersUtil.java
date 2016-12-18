@@ -1450,6 +1450,8 @@ return|return
 name|suggestAccountsFromIndex
 argument_list|(
 name|suggestReviewers
+argument_list|,
+name|visibilityControl
 argument_list|)
 return|;
 block|}
@@ -1462,7 +1464,7 @@ name|visibilityControl
 argument_list|)
 return|;
 block|}
-DECL|method|suggestAccountsFromIndex ( SuggestReviewers suggestReviewers)
+DECL|method|suggestAccountsFromIndex ( SuggestReviewers suggestReviewers, VisibilityControl visibilityControl)
 specifier|private
 name|Collection
 argument_list|<
@@ -1472,6 +1474,9 @@ name|suggestAccountsFromIndex
 parameter_list|(
 name|SuggestReviewers
 name|suggestReviewers
+parameter_list|,
+name|VisibilityControl
+name|visibilityControl
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1546,6 +1551,16 @@ operator|.
 name|getId
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|visibilityControl
+operator|.
+name|isVisibleTo
+argument_list|(
+name|id
+argument_list|)
+condition|)
+block|{
 name|matches
 operator|.
 name|put
@@ -1560,6 +1575,7 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|accountLoader
 operator|.
