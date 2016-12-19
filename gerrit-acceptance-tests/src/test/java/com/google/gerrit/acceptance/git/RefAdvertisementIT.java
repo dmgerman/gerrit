@@ -516,6 +516,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NoteDbChangeState
+operator|.
+name|PrimaryStorage
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectControl
@@ -2608,8 +2626,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Use the tactic from ConsistencyCheckerIT to insert a new patch set with a
-comment|// missing object.
 name|String
 name|rev
 init|=
@@ -2690,6 +2706,18 @@ name|getOriginalSubject
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|notesMigration
+operator|.
+name|changePrimaryStorage
+argument_list|()
+operator|==
+name|PrimaryStorage
+operator|.
+name|REVIEW_DB
+condition|)
+block|{
 name|PatchSet
 name|ps
 init|=
@@ -2737,6 +2765,7 @@ name|c
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|notesMigration

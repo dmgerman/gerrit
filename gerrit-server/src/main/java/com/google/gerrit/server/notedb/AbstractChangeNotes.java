@@ -296,6 +296,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|NoSuchChangeException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -1045,6 +1061,7 @@ else|:
 literal|null
 return|;
 block|}
+comment|/**    * Open a handle for reading this entity from a repository.    *<p>    * Implementations may override this method to provide auto-rebuilding    * behavior.    *    * @param repo open repository.    * @return handle for reading the entity.    *    * @throws NoSuchChangeException change does not exist.    * @throws IOException a repo-level error occurred.    */
 DECL|method|openHandle (Repository repo)
 specifier|protected
 name|LoadHandle
@@ -1054,6 +1071,8 @@ name|Repository
 name|repo
 parameter_list|)
 throws|throws
+name|NoSuchChangeException
+throws|,
 name|IOException
 block|{
 return|return
@@ -1102,6 +1121,8 @@ name|T
 name|reload
 parameter_list|()
 throws|throws
+name|NoSuchChangeException
+throws|,
 name|OrmException
 block|{
 name|loaded
@@ -1242,6 +1263,8 @@ name|LoadHandle
 name|handle
 parameter_list|)
 throws|throws
+name|NoSuchChangeException
+throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
