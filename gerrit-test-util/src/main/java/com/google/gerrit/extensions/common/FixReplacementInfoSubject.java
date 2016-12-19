@@ -268,6 +268,29 @@ name|fixReplacementInfo
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|path ()
+specifier|public
+name|StringSubject
+name|path
+parameter_list|()
+block|{
+return|return
+name|Truth
+operator|.
+name|assertThat
+argument_list|(
+name|actual
+argument_list|()
+operator|.
+name|path
+argument_list|)
+operator|.
+name|named
+argument_list|(
+literal|"path"
+argument_list|)
+return|;
+block|}
 DECL|method|range ()
 specifier|public
 name|RangeSubject
