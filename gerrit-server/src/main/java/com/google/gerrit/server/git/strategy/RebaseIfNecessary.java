@@ -867,6 +867,11 @@ name|Policy
 operator|.
 name|NONE
 argument_list|)
+operator|.
+name|setCheckAddPatchSetPermission
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 try|try
 block|{
