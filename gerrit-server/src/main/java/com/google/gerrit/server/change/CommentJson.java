@@ -1371,6 +1371,14 @@ argument_list|()
 decl_stmt|;
 name|fixReplacementInfo
 operator|.
+name|path
+operator|=
+name|fixReplacement
+operator|.
+name|path
+expr_stmt|;
+name|fixReplacementInfo
+operator|.
 name|range
 operator|=
 name|toRange

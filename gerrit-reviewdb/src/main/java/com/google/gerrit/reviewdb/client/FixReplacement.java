@@ -72,6 +72,11 @@ specifier|public
 class|class
 name|FixReplacement
 block|{
+DECL|field|path
+specifier|public
+name|String
+name|path
+decl_stmt|;
 DECL|field|range
 specifier|public
 name|Comment
@@ -84,10 +89,13 @@ specifier|public
 name|String
 name|replacement
 decl_stmt|;
-DECL|method|FixReplacement (Comment.Range range, String replacement)
+DECL|method|FixReplacement (String path, Comment.Range range, String replacement)
 specifier|public
 name|FixReplacement
 parameter_list|(
+name|String
+name|path
+parameter_list|,
 name|Comment
 operator|.
 name|Range
@@ -97,6 +105,12 @@ name|String
 name|replacement
 parameter_list|)
 block|{
+name|this
+operator|.
+name|path
+operator|=
+name|path
+expr_stmt|;
 name|this
 operator|.
 name|range
@@ -121,7 +135,13 @@ block|{
 return|return
 literal|"FixReplacement{"
 operator|+
-literal|"range="
+literal|"path='"
+operator|+
+name|path
+operator|+
+literal|'\''
+operator|+
+literal|", range="
 operator|+
 name|range
 operator|+

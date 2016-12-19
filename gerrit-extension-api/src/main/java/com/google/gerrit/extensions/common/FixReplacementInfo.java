@@ -88,6 +88,11 @@ specifier|public
 class|class
 name|FixReplacementInfo
 block|{
+DECL|field|path
+specifier|public
+name|String
+name|path
+decl_stmt|;
 DECL|field|range
 specifier|public
 name|Comment

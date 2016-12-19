@@ -4124,7 +4124,7 @@ argument_list|()
 control|)
 block|{
 name|String
-name|path
+name|commentPath
 init|=
 name|e
 operator|.
@@ -4148,7 +4148,7 @@ name|c
 operator|.
 name|robotId
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 expr_stmt|;
 name|ensureRobotRunIdIsSet
@@ -4157,7 +4157,7 @@ name|c
 operator|.
 name|robotRunId
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 expr_stmt|;
 name|ensureFixSuggestionsAreAddable
@@ -4166,7 +4166,7 @@ name|c
 operator|.
 name|fixSuggestions
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 expr_stmt|;
 block|}
@@ -4179,7 +4179,7 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ensureRobotIdIsSet (String robotId, String path)
+DECL|method|ensureRobotIdIsSet (String robotId, String commentPath)
 specifier|private
 name|void
 name|ensureRobotIdIsSet
@@ -4188,7 +4188,7 @@ name|String
 name|robotId
 parameter_list|,
 name|String
-name|path
+name|commentPath
 parameter_list|)
 throws|throws
 name|BadRequestException
@@ -4210,13 +4210,13 @@ name|format
 argument_list|(
 literal|"robotId is missing for robot comment on %s"
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureRobotRunIdIsSet (String robotRunId, String path)
+DECL|method|ensureRobotRunIdIsSet (String robotRunId, String commentPath)
 specifier|private
 name|void
 name|ensureRobotRunIdIsSet
@@ -4225,7 +4225,7 @@ name|String
 name|robotRunId
 parameter_list|,
 name|String
-name|path
+name|commentPath
 parameter_list|)
 throws|throws
 name|BadRequestException
@@ -4247,13 +4247,13 @@ name|format
 argument_list|(
 literal|"robotRunId is missing for robot comment on %s"
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureFixSuggestionsAreAddable ( List<FixSuggestionInfo> fixSuggestionInfos, String path)
+DECL|method|ensureFixSuggestionsAreAddable ( List<FixSuggestionInfo> fixSuggestionInfos, String commentPath)
 specifier|private
 name|void
 name|ensureFixSuggestionsAreAddable
@@ -4265,7 +4265,7 @@ argument_list|>
 name|fixSuggestionInfos
 parameter_list|,
 name|String
-name|path
+name|commentPath
 parameter_list|)
 throws|throws
 name|BadRequestException
@@ -4289,7 +4289,7 @@ control|)
 block|{
 name|ensureDescriptionIsSet
 argument_list|(
-name|path
+name|commentPath
 argument_list|,
 name|fixSuggestionInfo
 operator|.
@@ -4298,7 +4298,7 @@ argument_list|)
 expr_stmt|;
 name|ensureFixReplacementsAreAddable
 argument_list|(
-name|path
+name|commentPath
 argument_list|,
 name|fixSuggestionInfo
 operator|.
@@ -4307,13 +4307,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|ensureDescriptionIsSet (String path, String description)
+DECL|method|ensureDescriptionIsSet (String commentPath, String description)
 specifier|private
 name|void
 name|ensureDescriptionIsSet
 parameter_list|(
 name|String
-name|path
+name|commentPath
 parameter_list|,
 name|String
 name|description
@@ -4340,19 +4340,19 @@ literal|"A description is required "
 operator|+
 literal|"for the suggested fix of the robot comment on %s"
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureFixReplacementsAreAddable (String path, List<FixReplacementInfo> fixReplacementInfos)
+DECL|method|ensureFixReplacementsAreAddable (String commentPath, List<FixReplacementInfo> fixReplacementInfos)
 specifier|private
 name|void
 name|ensureFixReplacementsAreAddable
 parameter_list|(
 name|String
-name|path
+name|commentPath
 parameter_list|,
 name|List
 argument_list|<
@@ -4365,7 +4365,7 @@ name|BadRequestException
 block|{
 name|ensureReplacementsArePresent
 argument_list|(
-name|path
+name|commentPath
 argument_list|,
 name|fixReplacementInfos
 argument_list|)
@@ -4378,9 +4378,27 @@ range|:
 name|fixReplacementInfos
 control|)
 block|{
+name|ensureReplacementPathIsSet
+argument_list|(
+name|commentPath
+argument_list|,
+name|fixReplacementInfo
+operator|.
+name|path
+argument_list|)
+expr_stmt|;
+name|ensureReplacementPathRefersToFileOfComment
+argument_list|(
+name|commentPath
+argument_list|,
+name|fixReplacementInfo
+operator|.
+name|path
+argument_list|)
+expr_stmt|;
 name|ensureRangeIsSet
 argument_list|(
-name|path
+name|commentPath
 argument_list|,
 name|fixReplacementInfo
 operator|.
@@ -4389,7 +4407,7 @@ argument_list|)
 expr_stmt|;
 name|ensureRangeIsValid
 argument_list|(
-name|path
+name|commentPath
 argument_list|,
 name|fixReplacementInfo
 operator|.
@@ -4398,7 +4416,7 @@ argument_list|)
 expr_stmt|;
 name|ensureReplacementStringIsSet
 argument_list|(
-name|path
+name|commentPath
 argument_list|,
 name|fixReplacementInfo
 operator|.
@@ -4407,13 +4425,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|ensureReplacementsArePresent (String path, List<FixReplacementInfo> fixReplacementInfos)
+DECL|method|ensureReplacementsArePresent (String commentPath, List<FixReplacementInfo> fixReplacementInfos)
 specifier|private
 name|void
 name|ensureReplacementsArePresent
 parameter_list|(
 name|String
-name|path
+name|commentPath
 parameter_list|,
 name|List
 argument_list|<
@@ -4448,19 +4466,103 @@ literal|"At least one replacement is "
 operator|+
 literal|"required for the suggested fix of the robot comment on %s"
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureRangeIsSet (String path, com.google.gerrit.extensions.client.Comment.Range range)
+DECL|method|ensureReplacementPathIsSet (String commentPath, String replacementPath)
+specifier|private
+name|void
+name|ensureReplacementPathIsSet
+parameter_list|(
+name|String
+name|commentPath
+parameter_list|,
+name|String
+name|replacementPath
+parameter_list|)
+throws|throws
+name|BadRequestException
+block|{
+if|if
+condition|(
+name|replacementPath
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"A file path must be given "
+operator|+
+literal|"for the replacement of the robot comment on %s"
+argument_list|,
+name|commentPath
+argument_list|)
+argument_list|)
+throw|;
+block|}
+block|}
+DECL|method|ensureReplacementPathRefersToFileOfComment (String commentPath, String replacementPath)
+specifier|private
+name|void
+name|ensureReplacementPathRefersToFileOfComment
+parameter_list|(
+name|String
+name|commentPath
+parameter_list|,
+name|String
+name|replacementPath
+parameter_list|)
+throws|throws
+name|BadRequestException
+block|{
+if|if
+condition|(
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|commentPath
+argument_list|,
+name|replacementPath
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Replacements may only be "
+operator|+
+literal|"specified for the file %s on which the robot comment was added"
+argument_list|,
+name|commentPath
+argument_list|)
+argument_list|)
+throw|;
+block|}
+block|}
+DECL|method|ensureRangeIsSet (String commentPath, com.google.gerrit.extensions.client.Comment.Range range)
 specifier|private
 name|void
 name|ensureRangeIsSet
 parameter_list|(
 name|String
-name|path
+name|commentPath
 parameter_list|,
 name|com
 operator|.
@@ -4499,19 +4601,19 @@ literal|"A range must be given "
 operator|+
 literal|"for the replacement of the robot comment on %s"
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureRangeIsValid (String path, com.google.gerrit.extensions.client.Comment.Range range)
+DECL|method|ensureRangeIsValid (String commentPath, com.google.gerrit.extensions.client.Comment.Range range)
 specifier|private
 name|void
 name|ensureRangeIsValid
 parameter_list|(
 name|String
-name|path
+name|commentPath
 parameter_list|,
 name|com
 operator|.
@@ -4577,19 +4679,19 @@ name|range
 operator|.
 name|endCharacter
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureReplacementStringIsSet (String path, String replacement)
+DECL|method|ensureReplacementStringIsSet (String commentPath, String replacement)
 specifier|private
 name|void
 name|ensureReplacementStringIsSet
 parameter_list|(
 name|String
-name|path
+name|commentPath
 parameter_list|,
 name|String
 name|replacement
@@ -4616,7 +4718,7 @@ literal|"A content for replacement "
 operator|+
 literal|"must be indicated for the replacement of the robot comment on %s"
 argument_list|,
-name|path
+name|commentPath
 argument_list|)
 argument_list|)
 throw|;
@@ -6153,6 +6255,10 @@ return|return
 operator|new
 name|FixReplacement
 argument_list|(
+name|fixReplacementInfo
+operator|.
+name|path
+argument_list|,
 name|range
 argument_list|,
 name|fixReplacementInfo
