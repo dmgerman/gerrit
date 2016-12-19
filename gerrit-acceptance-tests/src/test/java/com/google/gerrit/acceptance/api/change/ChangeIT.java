@@ -3587,7 +3587,7 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
-comment|// ...and the committer should be correct
+comment|// ...and the committer and description should be correct
 name|ChangeInfo
 name|info
 init|=
@@ -3661,6 +3661,32 @@ argument_list|(
 name|admin
 operator|.
 name|email
+argument_list|)
+expr_stmt|;
+name|String
+name|description
+init|=
+name|info
+operator|.
+name|revisions
+operator|.
+name|get
+argument_list|(
+name|info
+operator|.
+name|currentRevision
+argument_list|)
+operator|.
+name|description
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|description
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Rebase"
 argument_list|)
 expr_stmt|;
 comment|// Rebasing the second change again should fail
