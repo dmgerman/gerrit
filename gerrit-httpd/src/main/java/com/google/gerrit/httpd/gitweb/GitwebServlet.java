@@ -1591,7 +1591,28 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"  $http_url .= qq{$ENV{'GERRIT_CONTEXT_PATH'}p};\n"
+literal|"  $http_url .= qq{$ENV{'GERRIT_CONTEXT_PATH'}};\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  $http_url .= qq{/a}\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"    unless $ENV{'GERRIT_ANONYMOUS_READ'};\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  \n"
 argument_list|)
 expr_stmt|;
 name|p
@@ -3467,8 +3488,6 @@ name|req
 operator|.
 name|getContextPath
 argument_list|()
-operator|+
-literal|"/"
 argument_list|)
 expr_stmt|;
 name|env
