@@ -82,6 +82,20 @@ name|Change
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
 begin_comment
 comment|/** Indicates the change does not exist. */
 end_comment
@@ -92,7 +106,7 @@ specifier|public
 class|class
 name|NoSuchChangeException
 extends|extends
-name|Exception
+name|OrmException
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -103,11 +117,10 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|NoSuchChangeException (final Change.Id key)
+DECL|method|NoSuchChangeException (Change.Id key)
 specifier|public
 name|NoSuchChangeException
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
@@ -122,17 +135,15 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchChangeException (final Change.Id key, final Throwable why)
+DECL|method|NoSuchChangeException (Change.Id key, Throwable why)
 specifier|public
 name|NoSuchChangeException
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
 name|key
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

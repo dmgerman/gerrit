@@ -5352,8 +5352,6 @@ name|id
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|NoSuchChangeException
 block|{
 name|Change
 name|c

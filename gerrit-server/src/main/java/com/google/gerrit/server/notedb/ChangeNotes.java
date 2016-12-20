@@ -1180,8 +1180,6 @@ name|c
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|NoSuchChangeException
 block|{
 return|return
 name|createChecked
@@ -1220,8 +1218,6 @@ name|changeId
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|NoSuchChangeException
 block|{
 name|Change
 name|change
@@ -1284,8 +1280,6 @@ name|changeId
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|NoSuchChangeException
 block|{
 name|InternalChangeQuery
 name|query

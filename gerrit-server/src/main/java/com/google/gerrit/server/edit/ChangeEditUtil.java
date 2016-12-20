@@ -1159,7 +1159,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications    *        should be sent after the change edit is published.    * @param accountsToNotify Accounts that should be notified after the change    *        edit is published.    * @throws NoSuchChangeException    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
+comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications    *        should be sent after the change edit is published.    * @param accountsToNotify Accounts that should be notified after the change    *        edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
 DECL|method|publish (final ChangeEdit edit, NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
@@ -1183,8 +1183,6 @@ argument_list|>
 name|accountsToNotify
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|IOException
 throws|,
 name|OrmException

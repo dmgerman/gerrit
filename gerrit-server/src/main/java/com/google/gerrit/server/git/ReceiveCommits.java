@@ -10784,30 +10784,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-name|logError
-argument_list|(
-literal|"Cannot lookup existing change "
-operator|+
-name|changeId
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-name|reject
-argument_list|(
-name|cmd
-argument_list|,
-literal|"database error"
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-catch|catch
-parameter_list|(
 name|NoSuchChangeException
 name|e
 parameter_list|)
@@ -10830,6 +10806,30 @@ operator|+
 name|changeId
 operator|+
 literal|" not found"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+name|logError
+argument_list|(
+literal|"Cannot lookup existing change "
+operator|+
+name|changeId
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"database error"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -12273,8 +12273,6 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
-decl||
-name|NoSuchChangeException
 name|e
 parameter_list|)
 block|{

@@ -1299,8 +1299,6 @@ parameter_list|()
 throws|throws
 name|OrmException
 throws|,
-name|NoSuchChangeException
-throws|,
 name|LargeObjectException
 throws|,
 name|AuthException

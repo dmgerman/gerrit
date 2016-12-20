@@ -616,22 +616,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|NoSuchChangeException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|ProjectControl
 import|;
 end_import
@@ -3010,18 +2994,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fireCommentAddedEvent (final Context ctx)
+DECL|method|fireCommentAddedEvent (Context ctx)
 specifier|private
 name|void
 name|fireCommentAddedEvent
 parameter_list|(
-specifier|final
 name|Context
 name|ctx
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|OrmException
 block|{
 if|if
