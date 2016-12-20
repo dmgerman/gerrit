@@ -671,6 +671,15 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|plc
+operator|.
+name|setUnresolved
+argument_list|(
+name|c
+operator|.
+name|unresolved
+argument_list|)
+expr_stmt|;
 return|return
 name|plc
 return|;
@@ -1569,6 +1578,38 @@ block|}
 end_function
 
 begin_function
+DECL|method|setUnresolved (Boolean unresolved)
+specifier|public
+name|void
+name|setUnresolved
+parameter_list|(
+name|Boolean
+name|unresolved
+parameter_list|)
+block|{
+name|this
+operator|.
+name|unresolved
+operator|=
+name|unresolved
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|getUnresolved ()
+specifier|public
+name|Boolean
+name|getUnresolved
+parameter_list|()
+block|{
+return|return
+name|unresolved
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|asComment (String serverId)
 specifier|public
 name|Comment
@@ -1808,6 +1849,18 @@ argument_list|,
 name|c
 operator|.
 name|getTag
+argument_list|()
+argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|unresolved
+argument_list|,
+name|c
+operator|.
+name|getUnresolved
 argument_list|()
 argument_list|)
 return|;
