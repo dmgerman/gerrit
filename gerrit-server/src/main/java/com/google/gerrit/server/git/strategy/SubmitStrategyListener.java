@@ -480,7 +480,9 @@ operator|instanceof
 name|CherryPick
 condition|)
 block|{
-comment|// Might have picked a subset of changes, can't do this sanity check.
+comment|// Can't do this sanity check for CherryPick since:
+comment|// * CherryPick might have picked a subset of changes
+comment|// * CherryPick might have status SKIPPED_IDENTICAL_TREE
 continue|continue;
 block|}
 name|SubmitStrategy

@@ -1082,6 +1082,8 @@ operator|.
 name|rw
 argument_list|,
 literal|0
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1115,6 +1117,7 @@ name|MergeIdenticalTreeException
 name|mie
 parameter_list|)
 block|{
+comment|// this should not happen
 name|toMerge
 operator|.
 name|setStatusCode
@@ -1406,7 +1409,7 @@ argument_list|,
 literal|"RebaseAlways must never fast forward"
 argument_list|)
 expr_stmt|;
-comment|// Took the fast-forward option, nothing to do.
+comment|// otherwise, took the fast-forward option, nothing to do.
 return|return
 literal|null
 return|;

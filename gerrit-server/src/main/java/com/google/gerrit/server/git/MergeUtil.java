@@ -1732,7 +1732,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, CodeReviewRevWalk rw, int parentIndex)
+DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, CodeReviewRevWalk rw, int parentIndex, boolean ignoreIdenticalTree)
 specifier|public
 name|CodeReviewCommit
 name|createCherryPickFromCommit
@@ -1760,6 +1760,9 @@ name|rw
 parameter_list|,
 name|int
 name|parentIndex
+parameter_list|,
+name|boolean
+name|ignoreIdenticalTree
 parameter_list|)
 throws|throws
 name|MissingObjectException
@@ -1826,6 +1829,9 @@ operator|.
 name|getTree
 argument_list|()
 argument_list|)
+operator|&&
+operator|!
+name|ignoreIdenticalTree
 condition|)
 block|{
 throw|throw
