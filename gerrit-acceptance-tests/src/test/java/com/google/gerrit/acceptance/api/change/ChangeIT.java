@@ -6119,7 +6119,7 @@ name|admin
 operator|.
 name|fullName
 operator|+
-literal|" has uploaded a new change for review"
+literal|" has uploaded this change for review"
 argument_list|)
 expr_stmt|;
 name|assertThat
