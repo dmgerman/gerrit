@@ -178,6 +178,20 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|Sandboxed
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
 name|TestAccount
 import|;
 end_import
@@ -395,6 +409,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Sandboxed
 DECL|class|SuggestReviewersIT
 specifier|public
 class|class
@@ -1244,8 +1260,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"first"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1265,8 +1279,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"first1"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1286,8 +1298,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"last"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1307,8 +1317,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"last1"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1328,8 +1336,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"fi la"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1349,8 +1355,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"la fi"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1370,8 +1374,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"first1 la"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1391,8 +1393,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"fi last1"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1412,8 +1412,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"first1 last2"
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1436,8 +1434,6 @@ name|name
 argument_list|(
 literal|"user"
 argument_list|)
-argument_list|,
-literal|7
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1459,8 +1455,6 @@ argument_list|,
 name|user1
 operator|.
 name|username
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1480,8 +1474,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"example.com"
-argument_list|,
-literal|7
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1503,8 +1495,6 @@ argument_list|,
 name|user1
 operator|.
 name|email
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1528,8 +1518,6 @@ operator|.
 name|username
 operator|+
 literal|" example"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1554,8 +1542,6 @@ name|email
 operator|.
 name|toLowerCase
 argument_list|()
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1897,6 +1883,43 @@ operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|suggestReviewers (String changeId, String query)
+specifier|private
+name|List
+argument_list|<
+name|SuggestedReviewerInfo
+argument_list|>
+name|suggestReviewers
+parameter_list|(
+name|String
+name|changeId
+parameter_list|,
+name|String
+name|query
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|changeId
+argument_list|)
+operator|.
+name|suggestReviewers
+argument_list|(
+name|query
+argument_list|)
+operator|.
+name|get
+argument_list|()
+return|;
 block|}
 DECL|method|suggestReviewers (String changeId, String query, int n)
 specifier|private
