@@ -86,6 +86,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|SystemGroupBackend
+operator|.
+name|ANONYMOUS_USERS
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -1174,6 +1192,79 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|suggestReviewsPrivateProjectVisibility ()
+specifier|public
+name|void
+name|suggestReviewsPrivateProjectVisibility
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|changeId
+init|=
+name|createChange
+argument_list|()
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|SuggestedReviewerInfo
+argument_list|>
+name|reviewers
+decl_stmt|;
+name|setApiUser
+argument_list|(
+name|user3
+argument_list|)
+expr_stmt|;
+name|block
+argument_list|(
+literal|"read"
+argument_list|,
+name|ANONYMOUS_USERS
+argument_list|,
+literal|"refs/*"
+argument_list|)
+expr_stmt|;
+name|allow
+argument_list|(
+literal|"read"
+argument_list|,
+name|group1
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|,
+literal|"refs/*"
+argument_list|)
+expr_stmt|;
+name|reviewers
+operator|=
+name|suggestReviewers
+argument_list|(
+name|changeId
+argument_list|,
+name|user2
+operator|.
+name|username
+argument_list|,
+literal|2
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|reviewers
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 annotation|@
 name|GerritConfig
 argument_list|(
@@ -1388,8 +1479,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"first"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1409,8 +1498,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"first1"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1430,8 +1517,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"last"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1451,8 +1536,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"last1"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1472,8 +1555,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"fi la"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1493,8 +1574,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"la fi"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1514,8 +1593,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"first1 la"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1535,8 +1612,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"fi last1"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1556,8 +1631,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"first1 last2"
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1580,8 +1653,6 @@ name|name
 argument_list|(
 literal|"user"
 argument_list|)
-argument_list|,
-literal|7
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1603,8 +1674,6 @@ argument_list|,
 name|user1
 operator|.
 name|username
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1624,8 +1693,6 @@ argument_list|(
 name|changeId
 argument_list|,
 literal|"example.com"
-argument_list|,
-literal|7
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1647,8 +1714,6 @@ argument_list|,
 name|user1
 operator|.
 name|email
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1672,8 +1737,6 @@ operator|.
 name|username
 operator|+
 literal|" example"
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1698,8 +1761,6 @@ name|email
 operator|.
 name|toLowerCase
 argument_list|()
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -2772,6 +2833,43 @@ operator|.
 name|inOrder
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|suggestReviewers (String changeId, String query)
+specifier|private
+name|List
+argument_list|<
+name|SuggestedReviewerInfo
+argument_list|>
+name|suggestReviewers
+parameter_list|(
+name|String
+name|changeId
+parameter_list|,
+name|String
+name|query
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|changeId
+argument_list|)
+operator|.
+name|suggestReviewers
+argument_list|(
+name|query
+argument_list|)
+operator|.
+name|get
+argument_list|()
+return|;
 block|}
 DECL|method|suggestReviewers (String changeId, String query, int n)
 specifier|private
