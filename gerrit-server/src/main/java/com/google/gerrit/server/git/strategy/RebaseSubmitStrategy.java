@@ -1226,6 +1226,11 @@ name|Policy
 operator|.
 name|NONE
 argument_list|)
+operator|.
+name|setCheckAddPatchSetPermission
+argument_list|(
+literal|false
+argument_list|)
 comment|// RebaseAlways should set always modify commit message like
 comment|// Cherry-Pick strategy.
 operator|.
