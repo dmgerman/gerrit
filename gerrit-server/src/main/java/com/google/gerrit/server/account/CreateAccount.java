@@ -734,6 +734,12 @@ specifier|final
 name|AuditService
 name|auditService
 decl_stmt|;
+DECL|field|externalIdCache
+specifier|private
+specifier|final
+name|ExternalIdCache
+name|externalIdCache
+decl_stmt|;
 DECL|field|username
 specifier|private
 specifier|final
@@ -742,7 +748,7 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount (ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountIndexer indexer, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, @Assisted String username)
+DECL|method|CreateAccount (ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountIndexer indexer, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIdCache externalIdCache, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -787,6 +793,9 @@ name|externalIdCreators
 parameter_list|,
 name|AuditService
 name|auditService
+parameter_list|,
+name|ExternalIdCache
+name|externalIdCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -859,6 +868,12 @@ operator|.
 name|auditService
 operator|=
 name|auditService
+expr_stmt|;
+name|this
+operator|.
+name|externalIdCache
+operator|=
+name|externalIdCache
 expr_stmt|;
 name|this
 operator|.
@@ -1187,6 +1202,13 @@ argument_list|(
 name|externalIds
 argument_list|)
 expr_stmt|;
+name|externalIdCache
+operator|.
+name|onCreate
+argument_list|(
+name|externalIds
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1257,6 +1279,13 @@ name|extMailto
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|externalIdCache
+operator|.
+name|onCreate
+argument_list|(
+name|extMailto
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1279,6 +1308,13 @@ name|singleton
 argument_list|(
 name|extUser
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|externalIdCache
+operator|.
+name|onRemove
+argument_list|(
+name|extUser
 argument_list|)
 expr_stmt|;
 block|}

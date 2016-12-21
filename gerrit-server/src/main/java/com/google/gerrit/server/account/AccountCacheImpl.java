@@ -1167,9 +1167,15 @@ name|Accessor
 argument_list|>
 name|watchConfig
 decl_stmt|;
+DECL|field|externalIdCache
+specifier|private
+specifier|final
+name|ExternalIdCache
+name|externalIdCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByIdLoader (SchemaFactory<ReviewDb> sf, GroupCache groupCache, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig)
+DECL|method|ByIdLoader (SchemaFactory<ReviewDb> sf, GroupCache groupCache, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig, ExternalIdCache externalIdCache)
 name|ByIdLoader
 parameter_list|(
 name|SchemaFactory
@@ -1209,6 +1215,9 @@ operator|.
 name|Accessor
 argument_list|>
 name|watchConfig
+parameter_list|,
+name|ExternalIdCache
+name|externalIdCache
 parameter_list|)
 block|{
 name|this
@@ -1240,6 +1249,12 @@ operator|.
 name|watchConfig
 operator|=
 name|watchConfig
+expr_stmt|;
+name|this
+operator|.
+name|externalIdCache
+operator|=
+name|externalIdCache
 expr_stmt|;
 block|}
 annotation|@
@@ -1376,22 +1391,11 @@ name|AccountExternalId
 argument_list|>
 name|externalIds
 init|=
-name|Collections
-operator|.
-name|unmodifiableCollection
-argument_list|(
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
+name|externalIdCache
 operator|.
 name|byAccount
 argument_list|(
 name|who
-argument_list|)
-operator|.
-name|toList
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|Set

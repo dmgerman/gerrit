@@ -340,20 +340,6 @@ name|gwtorm
 operator|.
 name|server
 operator|.
-name|ResultSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
 name|SchemaFactory
 import|;
 end_import
@@ -431,6 +417,16 @@ operator|.
 name|util
 operator|.
 name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
 import|;
 end_import
 
@@ -576,9 +572,15 @@ name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
 decl_stmt|;
+DECL|field|externalIdCache
+specifier|private
+specifier|final
+name|ExternalIdCache
+name|externalIdCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountManager (SchemaFactory<ReviewDb> schema, AccountCache byIdCache, AccountByEmailCache byEmailCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, AuditService auditService, Provider<InternalAccountQuery> accountQueryProvider)
+DECL|method|AccountManager (SchemaFactory<ReviewDb> schema, AccountCache byIdCache, AccountByEmailCache byEmailCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, AuditService auditService, Provider<InternalAccountQuery> accountQueryProvider, ExternalIdCache externalIdCache)
 name|AccountManager
 parameter_list|(
 name|SchemaFactory
@@ -617,6 +619,9 @@ argument_list|<
 name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
+parameter_list|,
+name|ExternalIdCache
+name|externalIdCache
 parameter_list|)
 block|{
 name|this
@@ -682,6 +687,12 @@ operator|.
 name|accountQueryProvider
 operator|=
 name|accountQueryProvider
+expr_stmt|;
+name|this
+operator|.
+name|externalIdCache
+operator|=
+name|externalIdCache
 expr_stmt|;
 block|}
 comment|/**    * @return user identified by this external identity string    */
@@ -1111,6 +1122,13 @@ name|singleton
 argument_list|(
 name|extId
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|externalIdCache
+operator|.
+name|onUpdate
+argument_list|(
+name|extId
 argument_list|)
 expr_stmt|;
 block|}
@@ -1625,6 +1643,13 @@ name|extId
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|externalIdCache
+operator|.
+name|onUpdate
+argument_list|(
+name|extId
+argument_list|)
+expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -2065,6 +2090,13 @@ name|extId
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|externalIdCache
+operator|.
+name|onRemove
+argument_list|(
+name|extId
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|AccountUserNameException
@@ -2240,6 +2272,13 @@ name|extId
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|externalIdCache
+operator|.
+name|onCreate
+argument_list|(
+name|extId
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|who
@@ -2399,10 +2438,7 @@ operator|.
 name|getScheme
 argument_list|()
 argument_list|,
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
+name|externalIdCache
 operator|.
 name|byAccount
 argument_list|(
@@ -2446,6 +2482,15 @@ argument_list|(
 name|filteredKeysByScheme
 argument_list|)
 expr_stmt|;
+name|externalIdCache
+operator|.
+name|onRemove
+argument_list|(
+name|to
+argument_list|,
+name|filteredKeysByScheme
+argument_list|)
+expr_stmt|;
 block|}
 name|byIdCache
 operator|.
@@ -2464,7 +2509,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|filterKeysByScheme ( String keyScheme, ResultSet<AccountExternalId> externalIds)
+DECL|method|filterKeysByScheme ( String keyScheme, Collection<AccountExternalId> externalIds)
 specifier|private
 name|List
 argument_list|<
@@ -2477,7 +2522,7 @@ parameter_list|(
 name|String
 name|keyScheme
 parameter_list|,
-name|ResultSet
+name|Collection
 argument_list|<
 name|AccountExternalId
 argument_list|>
@@ -2630,6 +2675,13 @@ name|singleton
 argument_list|(
 name|extId
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|externalIdCache
+operator|.
+name|onRemove
+argument_list|(
+name|extId
 argument_list|)
 expr_stmt|;
 if|if
