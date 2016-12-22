@@ -83,26 +83,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NoteDbChangeState
-operator|.
-name|PrimaryStorage
-operator|.
-name|REVIEW_DB
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -551,24 +531,6 @@ operator|.
 name|send
 operator|.
 name|ReplyToChangeSender
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NoteDbChangeState
-operator|.
-name|PrimaryStorage
 import|;
 end_import
 
@@ -1411,22 +1373,6 @@ argument_list|,
 name|label
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|PrimaryStorage
-operator|.
-name|of
-argument_list|(
-name|ctx
-operator|.
-name|getChange
-argument_list|()
-argument_list|)
-operator|==
-name|REVIEW_DB
-condition|)
-block|{
-comment|// Avoid OrmConcurrencyException trying to update non-existent entities.
 name|ctx
 operator|.
 name|getDb
@@ -1448,7 +1394,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|StringBuilder
 name|msg
 init|=
