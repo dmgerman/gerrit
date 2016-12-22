@@ -162,6 +162,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|UseSsh
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -211,6 +225,8 @@ end_import
 begin_class
 annotation|@
 name|NoHttpd
+annotation|@
+name|UseSsh
 DECL|class|BanCommitIT
 specifier|public
 class|class

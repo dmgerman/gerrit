@@ -630,6 +630,18 @@ name|getTestClass
 argument_list|()
 argument_list|)
 argument_list|,
+name|has
+argument_list|(
+name|UseSsh
+operator|.
+name|class
+argument_list|,
+name|testDesc
+operator|.
+name|getTestClass
+argument_list|()
+argument_list|)
+argument_list|,
 literal|null
 argument_list|,
 comment|// @GerritConfig is only valid on methods.
@@ -711,6 +723,29 @@ operator|||
 name|has
 argument_list|(
 name|Sandboxed
+operator|.
+name|class
+argument_list|,
+name|testDesc
+operator|.
+name|getTestClass
+argument_list|()
+argument_list|)
+argument_list|,
+name|testDesc
+operator|.
+name|getAnnotation
+argument_list|(
+name|UseSsh
+operator|.
+name|class
+argument_list|)
+operator|!=
+literal|null
+operator|||
+name|has
+argument_list|(
+name|UseSsh
 operator|.
 name|class
 argument_list|,
@@ -821,6 +856,12 @@ DECL|method|sandboxed ()
 specifier|abstract
 name|boolean
 name|sandboxed
+parameter_list|()
+function_decl|;
+DECL|method|useSsh ()
+specifier|abstract
+name|boolean
+name|useSsh
 parameter_list|()
 function_decl|;
 DECL|method|config ()

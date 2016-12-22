@@ -266,6 +266,17 @@ name|void
 name|tearDown
 parameter_list|()
 block|{
+if|if
+condition|(
+name|plugin
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// plugin will be null if the plugin test requires ssh, but the command
+comment|// line flag says we are running tests without ssh as the assume()
+comment|// statement in AbstractDaemonTest will prevent the execution of setUp()
+comment|// in this class
 name|plugin
 operator|.
 name|stop
@@ -280,6 +291,7 @@ argument_list|(
 name|plugin
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getTestPlugin (Class<?> clazz)
 specifier|private

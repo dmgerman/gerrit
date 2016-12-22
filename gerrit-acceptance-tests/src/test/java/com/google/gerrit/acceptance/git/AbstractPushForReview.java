@@ -989,11 +989,6 @@ name|SSH
 block|,
 name|HTTP
 block|}
-DECL|field|sshUrl
-specifier|private
-name|String
-name|sshUrl
-decl_stmt|;
 DECL|field|patchSetLock
 specifier|private
 name|LabelType
@@ -1043,13 +1038,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|sshUrl
-operator|=
-name|adminSshSession
-operator|.
-name|getUrl
-argument_list|()
-expr_stmt|;
 name|ProjectConfig
 name|cfg
 init|=
@@ -1168,7 +1156,10 @@ name|SSH
 case|:
 name|url
 operator|=
-name|sshUrl
+name|adminSshSession
+operator|.
+name|getUrl
+argument_list|()
 expr_stmt|;
 break|break;
 case|case

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.git
+DECL|package|com.google.gerrit.acceptance
 package|package
 name|com
 operator|.
@@ -61,81 +61,96 @@ operator|.
 name|gerrit
 operator|.
 name|acceptance
-operator|.
-name|git
 package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|lang
 operator|.
-name|gerrit
+name|annotation
 operator|.
-name|acceptance
+name|ElementType
 operator|.
-name|NoHttpd
+name|METHOD
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|ElementType
+operator|.
+name|TYPE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|RetentionPolicy
+operator|.
+name|RUNTIME
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|lang
 operator|.
-name|gerrit
+name|annotation
 operator|.
-name|acceptance
-operator|.
-name|UseSsh
+name|Retention
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|junit
+name|lang
 operator|.
-name|Before
+name|annotation
+operator|.
+name|Target
 import|;
 end_import
 
-begin_class
+begin_annotation_defn
 annotation|@
-name|NoHttpd
-annotation|@
-name|UseSsh
-DECL|class|SshPushForReviewIT
-specifier|public
-class|class
-name|SshPushForReviewIT
-extends|extends
-name|AbstractPushForReview
-block|{
-annotation|@
-name|Before
-DECL|method|selectSshUrl ()
-specifier|public
-name|void
-name|selectSshUrl
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|selectProtocol
+name|Target
 argument_list|(
-name|Protocol
-operator|.
-name|SSH
+block|{
+name|TYPE
+block|,
+name|METHOD
+block|}
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
+annotation|@
+name|Retention
+argument_list|(
+name|RUNTIME
+argument_list|)
+DECL|annotation|UseSsh
+specifier|public
+annotation_defn|@interface
+name|UseSsh
+block|{ }
+end_annotation_defn
 
 end_unit
 
