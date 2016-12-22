@@ -450,6 +450,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|UseSsh
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|data
@@ -1334,6 +1348,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|savedExternalIds
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// savedExternalIds is null when we don't run SSH tests and the assume in
+comment|// @Before in AbstractDaemonTest prevents this class' @Before method from
+comment|// being executed.
 name|db
 operator|.
 name|accountExternalIds
@@ -1370,6 +1394,7 @@ argument_list|(
 name|savedExternalIds
 argument_list|)
 expr_stmt|;
+block|}
 name|accountCache
 operator|.
 name|evict
@@ -5189,6 +5214,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|UseSsh
 DECL|method|sshKeys ()
 specifier|public
 name|void
@@ -5197,6 +5224,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|//
 comment|// The test account should initially have exactly one ssh key
 name|List
 argument_list|<
