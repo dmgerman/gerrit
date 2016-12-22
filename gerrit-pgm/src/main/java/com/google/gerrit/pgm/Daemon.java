@@ -1799,6 +1799,22 @@ operator|=
 name|serverStarted
 expr_stmt|;
 block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|setEnableSshd (boolean enable)
+specifier|public
+name|void
+name|setEnableSshd
+parameter_list|(
+name|boolean
+name|enable
+parameter_list|)
+block|{
+name|sshd
+operator|=
+name|enable
+expr_stmt|;
+block|}
 DECL|method|setEnableHttpd (boolean enable)
 specifier|public
 name|void
