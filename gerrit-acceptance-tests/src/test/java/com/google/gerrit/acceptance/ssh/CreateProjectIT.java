@@ -120,6 +120,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|UseSsh
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -155,6 +169,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|UseSsh
 DECL|class|CreateProjectIT
 specifier|public
 class|class
