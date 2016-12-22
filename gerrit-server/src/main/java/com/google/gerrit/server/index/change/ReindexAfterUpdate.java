@@ -1025,8 +1025,6 @@ throws|throws
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|NoSuchChangeException
 block|{
 comment|// Reload change, as some time may have passed since GetChanges.
 name|ReviewDb

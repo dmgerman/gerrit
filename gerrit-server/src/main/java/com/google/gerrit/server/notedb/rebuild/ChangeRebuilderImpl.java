@@ -1405,8 +1405,6 @@ name|Id
 name|changeId
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|IOException
 throws|,
 name|OrmException
@@ -1556,8 +1554,6 @@ name|Id
 name|changeId
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|IOException
 throws|,
 name|OrmException
@@ -1656,8 +1652,6 @@ name|NoteDbUpdateManager
 name|manager
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|OrmException
 throws|,
 name|IOException

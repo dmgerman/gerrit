@@ -1662,8 +1662,6 @@ name|changeId
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|NoSuchChangeException
 block|{
 try|try
 init|(
@@ -2394,8 +2392,6 @@ name|changeId
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|NoSuchChangeException
 block|{
 name|Set
 argument_list|<

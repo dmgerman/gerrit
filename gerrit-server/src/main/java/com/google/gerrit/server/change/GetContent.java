@@ -667,8 +667,6 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|OrmException
 throws|,
 name|IOException
@@ -793,8 +791,6 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|OrmException
 throws|,
 name|IOException

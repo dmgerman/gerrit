@@ -798,8 +798,6 @@ throws|throws
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|NoSuchChangeException
 block|{
 comment|// Match sorting in ReceiveCommits.
 name|rw
@@ -1121,8 +1119,6 @@ name|patchSetsBySha
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|NoSuchChangeException
 block|{
 name|Map
 argument_list|<

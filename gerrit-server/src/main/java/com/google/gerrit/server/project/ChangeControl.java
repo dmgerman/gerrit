@@ -495,8 +495,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|OrmException
 block|{
 return|return
@@ -532,8 +530,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|OrmException
 block|{
 specifier|final
@@ -681,8 +677,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|OrmException
 block|{
 return|return
@@ -716,8 +710,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|OrmException
 block|{
 name|ChangeControl
