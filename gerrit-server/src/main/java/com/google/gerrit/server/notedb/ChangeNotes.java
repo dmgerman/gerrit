@@ -3855,6 +3855,13 @@ argument_list|)
 return|;
 comment|// May be null in tests.
 block|}
+name|manager
+operator|.
+name|setRefLogMessage
+argument_list|(
+literal|"Auto-rebuilding change"
+argument_list|)
+expr_stmt|;
 name|r
 operator|=
 name|manager

@@ -2010,6 +2010,11 @@ name|setCheckExpectedState
 argument_list|(
 literal|false
 argument_list|)
+operator|.
+name|setRefLogMessage
+argument_list|(
+literal|"Rebuilding change"
+argument_list|)
 expr_stmt|;
 name|Change
 name|change
