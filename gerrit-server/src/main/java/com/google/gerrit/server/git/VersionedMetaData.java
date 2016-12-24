@@ -2431,6 +2431,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|TreeWalk
 name|tw
 init|=
@@ -2439,7 +2441,8 @@ name|TreeWalk
 argument_list|(
 name|reader
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|tw
 operator|.
 name|addTree
@@ -2491,6 +2494,7 @@ block|}
 return|return
 name|paths
 return|;
+block|}
 block|}
 DECL|method|set (Config rc, String section, String subsection, String name, String value)
 specifier|protected
