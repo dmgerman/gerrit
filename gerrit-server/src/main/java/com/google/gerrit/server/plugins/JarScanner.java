@@ -491,6 +491,8 @@ class|class
 name|JarScanner
 implements|implements
 name|PluginContentScanner
+implements|,
+name|AutoCloseable
 block|{
 DECL|field|SKIP_ALL
 specifier|private
@@ -994,6 +996,22 @@ name|getName
 argument_list|()
 argument_list|)
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|close ()
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|jarFile
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|findSubClassesOf (String superClass)
 specifier|private

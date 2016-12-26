@@ -1092,6 +1092,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|JarScanner
 name|scanner
 init|=
@@ -1100,7 +1102,8 @@ name|JarScanner
 argument_list|(
 name|secureStore
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|List
 argument_list|<
 name|String
@@ -1190,6 +1193,7 @@ argument_list|(
 name|newSecureStores
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|getCurrentSecureStoreClassName (SitePaths sitePaths)
 specifier|private

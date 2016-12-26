@@ -2068,8 +2068,6 @@ return|return
 literal|null
 return|;
 block|}
-try|try
-block|{
 name|Path
 name|secureStoreLib
 init|=
@@ -2106,6 +2104,8 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+try|try
+init|(
 name|JarScanner
 name|scanner
 init|=
@@ -2114,7 +2114,8 @@ name|JarScanner
 argument_list|(
 name|secureStoreLib
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|List
 argument_list|<
 name|String
