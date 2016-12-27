@@ -79,6 +79,9 @@ block|,
 DECL|enumConstant|DAY_3024
 name|DAY_3024
 block|,
+DECL|enumConstant|DUOTONE_LIGHT
+name|DUOTONE_LIGHT
+block|,
 DECL|enumConstant|BASE16_LIGHT
 name|BASE16_LIGHT
 block|,
@@ -139,6 +142,9 @@ name|COLORFORTH
 block|,
 DECL|enumConstant|DRACULA
 name|DRACULA
+block|,
+DECL|enumConstant|DUOTONE_DARK
+name|DUOTONE_DARK
 block|,
 DECL|enumConstant|ERLANG_DARK
 name|ERLANG_DARK
@@ -221,9 +227,6 @@ name|this
 condition|)
 block|{
 case|case
-name|NIGHT_3024
-case|:
-case|case
 name|ABCDEF
 case|:
 case|case
@@ -246,6 +249,9 @@ name|COLORFORTH
 case|:
 case|case
 name|DRACULA
+case|:
+case|case
+name|DUOTONE_DARK
 case|:
 case|case
 name|ERLANG_DARK
@@ -279,6 +285,9 @@ name|MONOKAI
 case|:
 case|case
 name|NIGHT
+case|:
+case|case
+name|NIGHT_3024
 case|:
 case|case
 name|PARAISO_DARK
@@ -320,13 +329,16 @@ return|return
 literal|true
 return|;
 case|case
+name|BASE16_LIGHT
+case|:
+case|case
 name|DEFAULT
 case|:
 case|case
 name|DAY_3024
 case|:
 case|case
-name|BASE16_LIGHT
+name|DUOTONE_LIGHT
 case|:
 case|case
 name|ECLIPSE

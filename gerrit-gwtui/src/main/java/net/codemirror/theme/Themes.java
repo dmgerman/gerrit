@@ -241,6 +241,26 @@ name|ExternalTextResource
 name|dracula
 parameter_list|()
 function_decl|;
+DECL|method|duotone_dark ()
+annotation|@
+name|Source
+argument_list|(
+literal|"duotone-dark.css"
+argument_list|)
+name|ExternalTextResource
+name|duotone_dark
+parameter_list|()
+function_decl|;
+DECL|method|duotone_light ()
+annotation|@
+name|Source
+argument_list|(
+literal|"duotone-light.css"
+argument_list|)
+name|ExternalTextResource
+name|duotone_light
+parameter_list|()
+function_decl|;
 DECL|method|eclipse ()
 annotation|@
 name|Source
