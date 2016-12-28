@@ -6132,6 +6132,9 @@ name|getParentKey
 argument_list|()
 argument_list|,
 name|user
+operator|.
+name|materializedCopy
+argument_list|()
 argument_list|,
 name|TimeUtil
 operator|.
