@@ -478,6 +478,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|atomic
@@ -707,12 +717,15 @@ operator|=
 name|accountQueryProvider
 expr_stmt|;
 block|}
-comment|/**    * @return user identified by this external identity string, or null.    */
+comment|/**    * @return user identified by this external identity string    */
 DECL|method|lookup (String externalId)
 specifier|public
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|lookup
 parameter_list|(
 name|String
@@ -751,6 +764,10 @@ name|accountState
 operator|!=
 literal|null
 condition|?
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|accountState
 operator|.
 name|getAccount
@@ -758,8 +775,12 @@ argument_list|()
 operator|.
 name|getId
 argument_list|()
+argument_list|)
 else|:
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 try|try
@@ -797,12 +818,20 @@ name|ext
 operator|!=
 literal|null
 condition|?
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|ext
 operator|.
 name|getAccountId
 argument_list|()
+argument_list|)
 else|:
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}

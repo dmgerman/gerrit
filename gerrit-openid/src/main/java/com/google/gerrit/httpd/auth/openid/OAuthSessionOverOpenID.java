@@ -440,6 +440,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -898,9 +908,12 @@ operator|.
 name|getClaimedIdentity
 argument_list|()
 decl_stmt|;
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|actualId
 init|=
 name|accountManager
@@ -913,12 +926,18 @@ name|getExternalId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|claimedId
 init|=
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
 comment|// We try to retrieve claimed identity.
 comment|// For some reason, for example staging instance
@@ -948,9 +967,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|claimedId
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|log
@@ -967,8 +988,9 @@ comment|// and user account exists for this identity
 if|if
 condition|(
 name|claimedId
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|log
@@ -981,17 +1003,24 @@ expr_stmt|;
 if|if
 condition|(
 name|actualId
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 if|if
 condition|(
 name|claimedId
 operator|.
+name|get
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 name|actualId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1018,6 +1047,9 @@ operator|+
 literal|"  Claimed ID: "
 operator|+
 name|claimedId
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" is "
 operator|+
@@ -1028,6 +1060,9 @@ operator|+
 literal|"  Delgate ID: "
 operator|+
 name|actualId
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" is "
 operator|+
@@ -1066,6 +1101,9 @@ operator|.
 name|link
 argument_list|(
 name|claimedId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|areq
 argument_list|)
@@ -1093,6 +1131,9 @@ operator|+
 literal|"  Claimed ID: "
 operator|+
 name|claimedId
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" is "
 operator|+
