@@ -263,7 +263,7 @@ name|r
 init|=
 name|adminRestSession
 operator|.
-name|get
+name|getOK
 argument_list|(
 literal|"/config/server/caches/project_list"
 argument_list|)
@@ -307,7 +307,7 @@ name|r
 operator|=
 name|adminRestSession
 operator|.
-name|post
+name|postOK
 argument_list|(
 literal|"/config/server/caches/"
 argument_list|,
@@ -322,11 +322,6 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|.
-name|assertOK
-argument_list|()
-expr_stmt|;
-name|r
-operator|.
 name|consume
 argument_list|()
 expr_stmt|;
@@ -334,7 +329,7 @@ name|r
 operator|=
 name|adminRestSession
 operator|.
-name|get
+name|getOK
 argument_list|(
 literal|"/config/server/caches/project_list"
 argument_list|)
@@ -449,7 +444,7 @@ name|r
 init|=
 name|adminRestSession
 operator|.
-name|get
+name|getOK
 argument_list|(
 literal|"/config/server/caches/project_list"
 argument_list|)
@@ -493,7 +488,7 @@ name|r
 operator|=
 name|adminRestSession
 operator|.
-name|get
+name|getOK
 argument_list|(
 literal|"/config/server/caches/projects"
 argument_list|)
@@ -536,7 +531,7 @@ name|r
 operator|=
 name|adminRestSession
 operator|.
-name|post
+name|postOK
 argument_list|(
 literal|"/config/server/caches/"
 argument_list|,
@@ -560,11 +555,6 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|.
-name|assertOK
-argument_list|()
-expr_stmt|;
-name|r
-operator|.
 name|consume
 argument_list|()
 expr_stmt|;
@@ -572,7 +562,7 @@ name|r
 operator|=
 name|adminRestSession
 operator|.
-name|get
+name|getOK
 argument_list|(
 literal|"/config/server/caches/project_list"
 argument_list|)
@@ -610,7 +600,7 @@ name|r
 operator|=
 name|adminRestSession
 operator|.
-name|get
+name|getOK
 argument_list|(
 literal|"/config/server/caches/projects"
 argument_list|)
@@ -730,7 +720,7 @@ name|r
 init|=
 name|adminRestSession
 operator|.
-name|get
+name|getOK
 argument_list|(
 literal|"/config/server/caches/projects"
 argument_list|)
@@ -810,7 +800,7 @@ name|r
 operator|=
 name|adminRestSession
 operator|.
-name|get
+name|getOK
 argument_list|(
 literal|"/config/server/caches/projects"
 argument_list|)
@@ -880,7 +870,7 @@ name|r
 init|=
 name|userRestSession
 operator|.
-name|post
+name|postOK
 argument_list|(
 literal|"/config/server/caches/"
 argument_list|,
@@ -900,11 +890,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|r
-operator|.
-name|assertOK
-argument_list|()
-expr_stmt|;
 name|r
 operator|.
 name|consume
