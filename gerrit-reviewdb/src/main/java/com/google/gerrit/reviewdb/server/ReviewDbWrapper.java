@@ -537,21 +537,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|accountProjectWatches ()
-specifier|public
-name|AccountProjectWatchAccess
-name|accountProjectWatches
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|accountProjectWatches
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|changes ()
 specifier|public
 name|ChangeAccess
