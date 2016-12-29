@@ -205,34 +205,6 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key>= ? AND key<= ? ORDER BY key LIMIT ?"
-argument_list|)
-DECL|method|suggestByKey (AccountExternalId.Key keyA, AccountExternalId.Key keyB, int limit)
-name|ResultSet
-argument_list|<
-name|AccountExternalId
-argument_list|>
-name|suggestByKey
-parameter_list|(
-name|AccountExternalId
-operator|.
-name|Key
-name|keyA
-parameter_list|,
-name|AccountExternalId
-operator|.
-name|Key
-name|keyB
-parameter_list|,
-name|int
-name|limit
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
 literal|"WHERE accountId = ?"
 argument_list|)
 DECL|method|byAccount (Account.Id id)
@@ -246,48 +218,6 @@ name|Account
 operator|.
 name|Id
 name|id
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE emailAddress = ?"
-argument_list|)
-DECL|method|byEmailAddress (String email)
-name|ResultSet
-argument_list|<
-name|AccountExternalId
-argument_list|>
-name|byEmailAddress
-parameter_list|(
-name|String
-name|email
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE emailAddress>= ? AND emailAddress<= ? ORDER BY emailAddress LIMIT ?"
-argument_list|)
-DECL|method|suggestByEmailAddress (String emailA, String emailB, int limit)
-name|ResultSet
-argument_list|<
-name|AccountExternalId
-argument_list|>
-name|suggestByEmailAddress
-parameter_list|(
-name|String
-name|emailA
-parameter_list|,
-name|String
-name|emailB
-parameter_list|,
-name|int
-name|limit
 parameter_list|)
 throws|throws
 name|OrmException
