@@ -694,6 +694,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|TimeUnit
@@ -2404,9 +2414,12 @@ comment|// The user used a claimed identity which has delegated to the verified
 comment|// identity we have in our AuthRequest above. We still should have a
 comment|// link between the two, so set one up if not present.
 comment|//
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|claimedId
 init|=
 name|accountManager
@@ -2416,9 +2429,12 @@ argument_list|(
 name|claimedIdentifier
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|actualId
 init|=
 name|accountManager
@@ -2434,21 +2450,29 @@ decl_stmt|;
 if|if
 condition|(
 name|claimedId
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
 name|actualId
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 if|if
 condition|(
 name|claimedId
 operator|.
+name|get
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 name|actualId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2468,6 +2492,9 @@ operator|+
 literal|"  Claimed ID: "
 operator|+
 name|claimedId
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" is "
 operator|+
@@ -2478,6 +2505,9 @@ operator|+
 literal|"  Delgate ID: "
 operator|+
 name|actualId
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" is "
 operator|+
@@ -2502,13 +2532,16 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|!
 name|claimedId
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
 name|actualId
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// Older account, the actual was already created but the claimed
@@ -2569,6 +2602,9 @@ operator|.
 name|link
 argument_list|(
 name|actualId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|linkReq
 argument_list|)
@@ -2578,12 +2614,15 @@ elseif|else
 if|if
 condition|(
 name|claimedId
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
+operator|!
 name|actualId
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// Claimed account already exists, but it smells like the user has
@@ -2595,6 +2634,9 @@ operator|.
 name|link
 argument_list|(
 name|claimedId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|areq
 argument_list|)

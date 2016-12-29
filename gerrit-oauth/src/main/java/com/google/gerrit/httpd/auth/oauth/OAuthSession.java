@@ -460,6 +460,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -1140,9 +1150,12 @@ name|AccountException
 throws|,
 name|IOException
 block|{
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|claimedId
 init|=
 name|accountManager
@@ -1152,9 +1165,12 @@ argument_list|(
 name|claimedIdentifier
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|Account
 operator|.
 name|Id
+argument_list|>
 name|actualId
 init|=
 name|accountManager
@@ -1170,21 +1186,29 @@ decl_stmt|;
 if|if
 condition|(
 name|claimedId
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
 name|actualId
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 if|if
 condition|(
 name|claimedId
 operator|.
+name|get
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 name|actualId
+operator|.
+name|get
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1211,6 +1235,9 @@ operator|+
 literal|"  Claimed ID: "
 operator|+
 name|claimedId
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" is "
 operator|+
@@ -1221,6 +1248,9 @@ operator|+
 literal|"  Delgate ID: "
 operator|+
 name|actualId
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" is "
 operator|+
@@ -1248,12 +1278,15 @@ elseif|else
 if|if
 condition|(
 name|claimedId
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
+operator|!
 name|actualId
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// Claimed account already exists: link to it.
@@ -1266,6 +1299,9 @@ literal|"OAuth2: linking claimed identity to {}"
 argument_list|,
 name|claimedId
 operator|.
+name|get
+argument_list|()
+operator|.
 name|toString
 argument_list|()
 argument_list|)
@@ -1277,6 +1313,9 @@ operator|.
 name|link
 argument_list|(
 name|claimedId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|req
 argument_list|)
@@ -1304,6 +1343,9 @@ operator|+
 literal|"  Claimed ID: "
 operator|+
 name|claimedId
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|" is "
 operator|+
