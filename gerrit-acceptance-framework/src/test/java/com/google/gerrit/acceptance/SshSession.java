@@ -294,6 +294,14 @@ operator|.
 name|getInputStream
 argument_list|()
 decl_stmt|;
+name|InputStream
+name|err
+init|=
+name|channel
+operator|.
+name|getErrStream
+argument_list|()
+decl_stmt|;
 name|channel
 operator|.
 name|connect
@@ -305,10 +313,7 @@ init|=
 operator|new
 name|Scanner
 argument_list|(
-name|channel
-operator|.
-name|getErrStream
-argument_list|()
+name|err
 argument_list|)
 operator|.
 name|useDelimiter
