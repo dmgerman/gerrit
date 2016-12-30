@@ -881,6 +881,13 @@ argument_list|(
 literal|"assignee"
 argument_list|)
 expr_stmt|;
+name|assigneeSuggestOracle
+operator|.
+name|setChange
+argument_list|(
+name|info
+argument_list|)
+expr_stmt|;
 name|setAssignee
 argument_list|(
 name|info
