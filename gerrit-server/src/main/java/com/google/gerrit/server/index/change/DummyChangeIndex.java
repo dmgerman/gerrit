@@ -297,6 +297,14 @@ operator|.
 name|MAX_VALUE
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|stop ()
+specifier|public
+name|void
+name|stop
+parameter_list|()
+block|{   }
 block|}
 end_class
 
