@@ -715,7 +715,7 @@ argument_list|()
 return|;
 block|}
 return|return
-name|getPersonParts
+name|getNameParts
 argument_list|(
 name|person
 operator|.
@@ -734,14 +734,39 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getPersonParts (String name, Iterable<String> emails)
+DECL|method|getNameParts (String name)
 specifier|public
 specifier|static
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|getPersonParts
+name|getNameParts
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|getNameParts
+argument_list|(
+name|name
+argument_list|,
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|getNameParts (String name, Iterable<String> emails)
+specifier|public
+specifier|static
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getNameParts
 parameter_list|(
 name|String
 name|name
