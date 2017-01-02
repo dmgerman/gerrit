@@ -389,6 +389,16 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|reviewer (String id)
+name|RevisionReviewerApi
+name|reviewer
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|setReviewed (String path, boolean reviewed)
 name|void
 name|setReviewed
@@ -891,6 +901,25 @@ specifier|public
 name|boolean
 name|canRebase
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|reviewer (String id)
+specifier|public
+name|RevisionReviewerApi
+name|reviewer
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
