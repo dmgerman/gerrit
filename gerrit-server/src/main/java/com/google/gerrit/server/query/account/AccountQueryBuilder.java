@@ -301,18 +301,6 @@ argument_list|<
 name|AccountState
 argument_list|>
 block|{
-DECL|interface|ChangeOperatorFactory
-specifier|public
-interface|interface
-name|ChangeOperatorFactory
-extends|extends
-name|OperatorFactory
-argument_list|<
-name|AccountState
-argument_list|,
-name|AccountQueryBuilder
-argument_list|>
-block|{   }
 DECL|field|FIELD_ACCOUNT
 specifier|public
 specifier|static
