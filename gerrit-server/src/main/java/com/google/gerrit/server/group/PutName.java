@@ -390,6 +390,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -584,6 +594,8 @@ throws|,
 name|OrmException
 throws|,
 name|NoSuchGroupException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -727,6 +739,8 @@ throws|,
 name|OrmException
 throws|,
 name|NoSuchGroupException
+throws|,
+name|IOException
 block|{
 name|AccountGroup
 operator|.

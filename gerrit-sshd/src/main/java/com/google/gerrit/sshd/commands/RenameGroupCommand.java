@@ -244,6 +244,16 @@ name|Argument
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|CommandMetaData
@@ -388,6 +398,8 @@ parameter_list|(
 name|RestApiException
 decl||
 name|OrmException
+decl||
+name|IOException
 decl||
 name|NoSuchGroupException
 name|e
