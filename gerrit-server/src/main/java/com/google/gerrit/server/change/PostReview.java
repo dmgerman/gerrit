@@ -2336,6 +2336,14 @@ operator|.
 name|labels
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|input
+operator|.
+name|labels
+operator|.
+name|isEmpty
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
