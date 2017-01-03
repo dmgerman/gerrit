@@ -281,14 +281,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|stop ()
-specifier|public
-name|void
-name|stop
-parameter_list|()
-block|{   }
-annotation|@
-name|Override
 DECL|method|replace (ChangeData obj)
 specifier|public
 name|void

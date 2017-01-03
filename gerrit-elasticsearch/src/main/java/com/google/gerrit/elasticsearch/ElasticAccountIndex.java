@@ -1004,14 +1004,6 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|stop ()
-specifier|public
-name|void
-name|stop
-parameter_list|()
-block|{   }
-annotation|@
-name|Override
 DECL|method|getSource (Predicate<AccountState> p, QueryOptions opts)
 specifier|public
 name|DataSource
