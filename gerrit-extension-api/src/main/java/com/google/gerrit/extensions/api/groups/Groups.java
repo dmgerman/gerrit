@@ -237,7 +237,7 @@ name|ListRequest
 name|list
 parameter_list|()
 function_decl|;
-comment|/**    * Query groups.    *<p>    * Example code:    * {@code query().withQuery("uuid:085178e5de6302324675715ca22f4027538253ba").get()}    *    * @return API for setting parameters and getting result.    */
+comment|/**    * Query groups.    *<p>    * Example code:    * {@code query().withQuery("inname:test").withLimit(10).get()}    *    * @return API for setting parameters and getting result.    */
 DECL|method|query ()
 name|QueryRequest
 name|query
