@@ -754,6 +754,7 @@ name|DisplaySide
 operator|.
 name|A
 operator|&&
+operator|(
 name|base
 operator|.
 name|isBaseOrAutoMerge
@@ -763,6 +764,7 @@ name|base
 operator|.
 name|isParent
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
