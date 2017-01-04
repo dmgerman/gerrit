@@ -519,8 +519,6 @@ specifier|public
 name|ProjectApi
 name|create
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -538,8 +536,6 @@ parameter_list|(
 name|ProjectInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -554,8 +550,6 @@ specifier|public
 name|ProjectInfo
 name|get
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -570,8 +564,6 @@ specifier|public
 name|String
 name|description
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -586,8 +578,6 @@ specifier|public
 name|ProjectAccessInfo
 name|access
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -602,8 +592,6 @@ specifier|public
 name|ConfigInfo
 name|config
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -621,8 +609,6 @@ parameter_list|(
 name|ConfigInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -640,8 +626,6 @@ parameter_list|(
 name|ProjectAccessInput
 name|p
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -659,8 +643,6 @@ parameter_list|(
 name|DescriptionInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -732,8 +714,6 @@ parameter_list|(
 name|boolean
 name|recursive
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -751,8 +731,6 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -770,8 +748,6 @@ parameter_list|(
 name|String
 name|ref
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -789,8 +765,6 @@ parameter_list|(
 name|String
 name|ref
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -808,8 +782,6 @@ parameter_list|(
 name|DeleteBranchesInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -827,8 +799,6 @@ parameter_list|(
 name|DeleteTagsInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

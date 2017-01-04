@@ -799,8 +799,6 @@ specifier|public
 name|RevisionApi
 name|current
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -818,8 +816,6 @@ parameter_list|(
 name|int
 name|id
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -837,8 +833,6 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -856,8 +850,6 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -872,8 +864,6 @@ specifier|public
 name|void
 name|abandon
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -891,8 +881,6 @@ parameter_list|(
 name|AbandonInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -907,8 +895,6 @@ specifier|public
 name|void
 name|restore
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -926,8 +912,6 @@ parameter_list|(
 name|RestoreInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -945,8 +929,6 @@ parameter_list|(
 name|String
 name|destination
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -964,8 +946,6 @@ parameter_list|(
 name|MoveInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -980,8 +960,6 @@ specifier|public
 name|ChangeApi
 name|revert
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -999,8 +977,6 @@ parameter_list|(
 name|RevertInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1015,8 +991,6 @@ specifier|public
 name|void
 name|publish
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1031,8 +1005,6 @@ specifier|public
 name|void
 name|delete
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1047,8 +1019,6 @@ specifier|public
 name|String
 name|topic
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1066,8 +1036,6 @@ parameter_list|(
 name|String
 name|topic
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1085,8 +1053,6 @@ parameter_list|(
 name|AddReviewerInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1104,8 +1070,6 @@ parameter_list|(
 name|String
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1120,8 +1084,6 @@ specifier|public
 name|SuggestedReviewersRequest
 name|suggestReviewers
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1139,8 +1101,6 @@ parameter_list|(
 name|String
 name|query
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1161,8 +1121,6 @@ name|ListChangesOption
 argument_list|>
 name|options
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1177,8 +1135,6 @@ specifier|public
 name|ChangeInfo
 name|get
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1193,8 +1149,6 @@ specifier|public
 name|ChangeInfo
 name|info
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1209,8 +1163,6 @@ specifier|public
 name|EditInfo
 name|getEdit
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1228,8 +1180,6 @@ parameter_list|(
 name|HashtagsInput
 name|input
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1247,8 +1197,6 @@ name|String
 argument_list|>
 name|getHashtags
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1266,8 +1214,6 @@ parameter_list|(
 name|AssigneeInput
 name|input
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1282,8 +1228,6 @@ specifier|public
 name|AccountInfo
 name|getAssignee
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1301,8 +1245,6 @@ name|AccountInfo
 argument_list|>
 name|getPastAssignees
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1317,8 +1259,6 @@ specifier|public
 name|AccountInfo
 name|deleteAssignee
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1341,8 +1281,6 @@ argument_list|>
 argument_list|>
 name|comments
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1365,8 +1303,6 @@ argument_list|>
 argument_list|>
 name|robotComments
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1389,8 +1325,6 @@ argument_list|>
 argument_list|>
 name|drafts
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1405,8 +1339,6 @@ specifier|public
 name|ChangeInfo
 name|check
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1424,8 +1356,6 @@ parameter_list|(
 name|FixInput
 name|fix
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1440,8 +1370,6 @@ specifier|public
 name|void
 name|index
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1459,8 +1387,6 @@ name|ChangeInfo
 argument_list|>
 name|submittedTogether
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1481,8 +1407,6 @@ name|SubmittedTogetherOption
 argument_list|>
 name|options
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1509,8 +1433,6 @@ name|SubmittedTogetherOption
 argument_list|>
 name|b
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1528,8 +1450,6 @@ parameter_list|(
 name|MergePatchSetInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

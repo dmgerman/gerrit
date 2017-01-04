@@ -366,8 +366,6 @@ specifier|public
 name|BinaryResult
 name|content
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -382,8 +380,6 @@ specifier|public
 name|DiffInfo
 name|diff
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -401,8 +397,6 @@ parameter_list|(
 name|String
 name|base
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -420,8 +414,6 @@ parameter_list|(
 name|int
 name|parent
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -436,8 +428,6 @@ specifier|public
 name|DiffRequest
 name|diffRequest
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

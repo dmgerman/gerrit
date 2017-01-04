@@ -147,8 +147,6 @@ parameter_list|(
 name|TagInput
 name|input
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -163,8 +161,6 @@ specifier|public
 name|TagInfo
 name|get
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -179,8 +175,6 @@ specifier|public
 name|void
 name|delete
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

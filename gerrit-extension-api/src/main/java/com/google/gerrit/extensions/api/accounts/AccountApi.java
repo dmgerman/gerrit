@@ -605,8 +605,6 @@ specifier|public
 name|AccountInfo
 name|get
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -621,8 +619,6 @@ specifier|public
 name|boolean
 name|getActive
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -640,8 +636,6 @@ parameter_list|(
 name|boolean
 name|active
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -659,8 +653,6 @@ parameter_list|(
 name|int
 name|size
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -675,8 +667,6 @@ specifier|public
 name|GeneralPreferencesInfo
 name|getPreferences
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -694,8 +684,6 @@ parameter_list|(
 name|GeneralPreferencesInfo
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -710,8 +698,6 @@ specifier|public
 name|DiffPreferencesInfo
 name|getDiffPreferences
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -729,8 +715,6 @@ parameter_list|(
 name|DiffPreferencesInfo
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -745,8 +729,6 @@ specifier|public
 name|EditPreferencesInfo
 name|getEditPreferences
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -764,8 +746,6 @@ parameter_list|(
 name|EditPreferencesInfo
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -783,8 +763,6 @@ name|ProjectWatchInfo
 argument_list|>
 name|getWatchedProjects
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -808,8 +786,6 @@ name|ProjectWatchInfo
 argument_list|>
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -830,8 +806,6 @@ name|ProjectWatchInfo
 argument_list|>
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -849,8 +823,6 @@ parameter_list|(
 name|String
 name|changeId
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -868,8 +840,6 @@ parameter_list|(
 name|String
 name|changeId
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -890,8 +860,6 @@ parameter_list|,
 name|StarsInput
 name|input
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -912,8 +880,6 @@ parameter_list|(
 name|String
 name|changeId
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -931,8 +897,6 @@ name|ChangeInfo
 argument_list|>
 name|getStarredChanges
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -950,8 +914,6 @@ parameter_list|(
 name|EmailInput
 name|input
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -969,8 +931,6 @@ name|SshKeyInfo
 argument_list|>
 name|listSshKeys
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -988,8 +948,6 @@ parameter_list|(
 name|String
 name|key
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1007,8 +965,6 @@ parameter_list|(
 name|int
 name|seq
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1040,8 +996,6 @@ name|String
 argument_list|>
 name|remove
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1059,8 +1013,6 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1080,8 +1032,6 @@ name|GpgKeyInfo
 argument_list|>
 name|listGpgKeys
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1099,8 +1049,6 @@ name|AgreementInfo
 argument_list|>
 name|listAgreements
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1118,8 +1066,6 @@ parameter_list|(
 name|String
 name|agreementName
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1134,8 +1080,6 @@ specifier|public
 name|void
 name|index
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

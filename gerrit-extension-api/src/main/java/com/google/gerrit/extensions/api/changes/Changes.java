@@ -590,8 +590,6 @@ parameter_list|(
 name|int
 name|id
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -609,8 +607,6 @@ parameter_list|(
 name|String
 name|triplet
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -634,8 +630,6 @@ parameter_list|,
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -653,8 +647,6 @@ parameter_list|(
 name|ChangeInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

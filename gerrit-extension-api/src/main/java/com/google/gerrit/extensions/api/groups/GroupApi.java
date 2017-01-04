@@ -383,8 +383,6 @@ specifier|public
 name|GroupInfo
 name|get
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -399,8 +397,6 @@ specifier|public
 name|GroupInfo
 name|detail
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -415,8 +411,6 @@ specifier|public
 name|String
 name|name
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -434,8 +428,6 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -450,8 +442,6 @@ specifier|public
 name|GroupInfo
 name|owner
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -469,8 +459,6 @@ parameter_list|(
 name|String
 name|owner
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -485,8 +473,6 @@ specifier|public
 name|String
 name|description
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -504,8 +490,6 @@ parameter_list|(
 name|String
 name|description
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -520,8 +504,6 @@ specifier|public
 name|GroupOptionsInfo
 name|options
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -539,8 +521,6 @@ parameter_list|(
 name|GroupOptionsInfo
 name|options
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -558,8 +538,6 @@ name|AccountInfo
 argument_list|>
 name|members
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -600,8 +578,6 @@ name|String
 modifier|...
 name|members
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -620,8 +596,6 @@ name|String
 modifier|...
 name|members
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -639,8 +613,6 @@ name|GroupInfo
 argument_list|>
 name|includedGroups
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -659,8 +631,6 @@ name|String
 modifier|...
 name|groups
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -679,8 +649,6 @@ name|String
 modifier|...
 name|groups
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
