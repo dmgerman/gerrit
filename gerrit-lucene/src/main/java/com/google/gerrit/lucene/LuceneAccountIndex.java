@@ -1400,7 +1400,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Use the AccountCache rather than depending on any stored fields in the
-comment|// document (of which there shouldn't be any. The most expensive part to
+comment|// document (of which there shouldn't be any). The most expensive part to
 comment|// compute anyway is the effective group IDs, and we don't have a good way
 comment|// to reindex when those change.
 return|return
