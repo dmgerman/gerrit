@@ -180,24 +180,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|account
@@ -1036,7 +1018,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addActions (Builder builder, Id c)
+DECL|method|addActions (Builder builder, Account.Id c)
 specifier|protected
 name|Builder
 name|addActions
@@ -1044,6 +1026,8 @@ parameter_list|(
 name|Builder
 name|builder
 parameter_list|,
+name|Account
+operator|.
 name|Id
 name|c
 parameter_list|)
@@ -1402,7 +1386,7 @@ name|results
 operator|.
 name|add
 argument_list|(
-name|toChangeData
+name|toAccountState
 argument_list|(
 name|json
 operator|.
@@ -1524,10 +1508,10 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|toChangeData (JsonElement json)
+DECL|method|toAccountState (JsonElement json)
 specifier|private
 name|AccountState
-name|toChangeData
+name|toAccountState
 parameter_list|(
 name|JsonElement
 name|json
@@ -1566,22 +1550,6 @@ literal|"fields"
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-name|toAccountState
-argument_list|(
-name|source
-argument_list|)
-return|;
-block|}
-DECL|method|toAccountState (JsonElement element)
-specifier|private
-name|AccountState
-name|toAccountState
-parameter_list|(
-name|JsonElement
-name|element
-parameter_list|)
-block|{
 name|Account
 operator|.
 name|Id
@@ -1592,7 +1560,7 @@ name|Account
 operator|.
 name|Id
 argument_list|(
-name|element
+name|source
 operator|.
 name|getAsJsonObject
 argument_list|()
@@ -1610,7 +1578,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Use the AccountCache rather than depending on any stored fields in the
-comment|// document (of which there shouldn't be any. The most expensive part to
+comment|// document (of which there shouldn't be any). The most expensive part to
 comment|// compute anyway is the effective group IDs, and we don't have a good way
 comment|// to reindex when those change.
 return|return
