@@ -200,6 +200,35 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|description (String description)
+specifier|public
+specifier|static
+name|Predicate
+argument_list|<
+name|AccountGroup
+argument_list|>
+name|description
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+block|{
+return|return
+operator|new
+name|GroupPredicate
+argument_list|(
+name|GroupField
+operator|.
+name|DESCRIPTION
+argument_list|,
+name|GroupQueryBuilder
+operator|.
+name|FIELD_DESCRIPTION
+argument_list|,
+name|description
+argument_list|)
+return|;
+block|}
 DECL|method|inname (String name)
 specifier|public
 specifier|static
