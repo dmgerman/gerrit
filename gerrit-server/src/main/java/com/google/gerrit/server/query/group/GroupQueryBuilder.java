@@ -490,6 +490,29 @@ argument_list|)
 throw|;
 block|}
 annotation|@
+name|Override
+DECL|method|defaultField (String query)
+specifier|protected
+name|Predicate
+argument_list|<
+name|AccountGroup
+argument_list|>
+name|defaultField
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+return|return
+name|GroupPredicates
+operator|.
+name|defaultPredicate
+argument_list|(
+name|query
+argument_list|)
+return|;
+block|}
+annotation|@
 name|Operator
 DECL|method|limit (String query)
 specifier|public
