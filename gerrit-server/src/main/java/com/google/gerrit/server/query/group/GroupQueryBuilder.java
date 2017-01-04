@@ -451,6 +451,46 @@ return|;
 block|}
 annotation|@
 name|Operator
+DECL|method|is (String value)
+specifier|public
+name|Predicate
+argument_list|<
+name|AccountGroup
+argument_list|>
+name|is
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+throws|throws
+name|QueryParseException
+block|{
+if|if
+condition|(
+literal|"visibleToAll"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|value
+argument_list|)
+condition|)
+block|{
+return|return
+name|GroupPredicates
+operator|.
+name|isVisibleToAll
+argument_list|()
+return|;
+block|}
+throw|throw
+name|error
+argument_list|(
+literal|"Invalid query"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Operator
 DECL|method|limit (String query)
 specifier|public
 name|Predicate
