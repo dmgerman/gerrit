@@ -316,7 +316,13 @@ name|Pattern
 import|;
 end_import
 
+begin_comment
+comment|/**  * @deprecated use {@link LightweightPluginDaemonTest} instead.  */
+end_comment
+
 begin_class
+annotation|@
+name|Deprecated
 DECL|class|PluginDaemonTest
 specifier|public
 specifier|abstract
