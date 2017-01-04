@@ -2544,13 +2544,6 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|verboseWriter
-operator|!=
-literal|null
-condition|)
-block|{
 name|verboseWriter
 operator|.
 name|println
@@ -2563,7 +2556,6 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2930,13 +2922,6 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|verboseWriter
-operator|!=
-literal|null
-condition|)
-block|{
 name|verboseWriter
 operator|.
 name|println
@@ -2944,7 +2929,6 @@ argument_list|(
 name|error
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class

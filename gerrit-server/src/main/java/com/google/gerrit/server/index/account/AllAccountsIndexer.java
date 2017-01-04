@@ -779,13 +779,6 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|verboseWriter
-operator|!=
-literal|null
-condition|)
-block|{
 name|verboseWriter
 operator|.
 name|println
@@ -795,7 +788,6 @@ operator|+
 name|desc
 argument_list|)
 expr_stmt|;
-block|}
 name|done
 operator|.
 name|incrementAndGet
