@@ -440,6 +440,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|CommentInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|ResourceNotFoundException
@@ -1998,6 +2014,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"comment"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|checker
@@ -2048,6 +2066,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"draft comment"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|putComment
@@ -2109,6 +2129,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"draft comment"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|publishDrafts
@@ -2960,6 +2982,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"comment by user"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|ObjectId
@@ -3028,6 +3052,8 @@ argument_list|,
 literal|2
 argument_list|,
 literal|"comment by admin"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|ObjectId
@@ -3132,6 +3158,8 @@ argument_list|,
 literal|2
 argument_list|,
 literal|"revised comment by admin"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|adminDraftsId
@@ -4229,6 +4257,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"comment by user"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|assertChangeUpToDate
@@ -4273,6 +4303,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"second comment by user"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|setInvalidNoteDbState
@@ -4525,6 +4557,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"comment by user"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|assertChangeUpToDate
@@ -4569,6 +4603,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"second comment by user"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|ReviewDb
@@ -4938,6 +4974,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"comment"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|assertDraftsUpToDate
@@ -4966,6 +5004,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"comment"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|setInvalidNoteDbState
@@ -6560,6 +6600,8 @@ argument_list|,
 literal|1
 argument_list|,
 literal|"comment"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|Account
@@ -8681,6 +8723,130 @@ name|psId1
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|resolveCommentsInheritsValueFromParentWhenUnspecified ()
+specifier|public
+name|void
+name|resolveCommentsInheritsValueFromParentWhenUnspecified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|PushOneCommit
+operator|.
+name|Result
+name|r
+init|=
+name|createChange
+argument_list|()
+decl_stmt|;
+name|Change
+operator|.
+name|Id
+name|id
+init|=
+name|r
+operator|.
+name|getPatchSetId
+argument_list|()
+operator|.
+name|getParentKey
+argument_list|()
+decl_stmt|;
+name|putDraft
+argument_list|(
+name|user
+argument_list|,
+name|id
+argument_list|,
+literal|1
+argument_list|,
+literal|"comment"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|putDraft
+argument_list|(
+name|user
+argument_list|,
+name|id
+argument_list|,
+literal|1
+argument_list|,
+literal|"newComment"
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+argument_list|>
+name|comments
+init|=
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|)
+operator|.
+name|current
+argument_list|()
+operator|.
+name|drafts
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+name|cList
+range|:
+name|comments
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
+for|for
+control|(
+name|CommentInfo
+name|ci
+range|:
+name|cList
+control|)
+block|{
+name|assertThat
+argument_list|(
+name|ci
+operator|.
+name|unresolved
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 DECL|method|assertChangesReadOnly (RestApiException e)
 specifier|private
 name|void
@@ -9044,7 +9210,7 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|putDraft (TestAccount account, Change.Id id, int line, String msg)
+DECL|method|putDraft (TestAccount account, Change.Id id, int line, String msg, Boolean unresolved)
 specifier|private
 name|void
 name|putDraft
@@ -9062,6 +9228,9 @@ name|line
 parameter_list|,
 name|String
 name|msg
+parameter_list|,
+name|Boolean
+name|unresolved
 parameter_list|)
 throws|throws
 name|Exception
@@ -9092,6 +9261,12 @@ operator|=
 name|PushOneCommit
 operator|.
 name|FILE_NAME
+expr_stmt|;
+name|in
+operator|.
+name|unresolved
+operator|=
+name|unresolved
 expr_stmt|;
 name|AcceptanceTestRequestScope
 operator|.

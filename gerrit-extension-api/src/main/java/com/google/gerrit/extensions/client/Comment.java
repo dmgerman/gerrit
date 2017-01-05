@@ -146,7 +146,7 @@ name|message
 decl_stmt|;
 DECL|field|unresolved
 specifier|public
-name|boolean
+name|Boolean
 name|unresolved
 decl_stmt|;
 DECL|class|Range

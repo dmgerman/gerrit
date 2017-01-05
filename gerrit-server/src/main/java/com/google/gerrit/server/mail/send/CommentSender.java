@@ -2497,7 +2497,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Retrieve the file lines refered to by a comment.    * @param comment The comment that refers to some file contents. The comment    *     may be a line comment or a ranged comment.    * @param fileData The file on which the comment appears.    * @return file contents referred to by the comment. If the comment is a line    *     comment, the result will be a list of one string. Otherwise it will be    *     a list of one or more strings.    */
+comment|/**    * Retrieve the file lines referred to by a comment.    * @param comment The comment that refers to some file contents. The comment    *     may be a line comment or a ranged comment.    * @param fileData The file on which the comment appears.    * @return file contents referred to by the comment. If the comment is a line    *     comment, the result will be a list of one string. Otherwise it will be    *     a list of one or more strings.    */
 DECL|method|getLinesOfComment (Comment comment, PatchFile fileData)
 specifier|private
 name|List
