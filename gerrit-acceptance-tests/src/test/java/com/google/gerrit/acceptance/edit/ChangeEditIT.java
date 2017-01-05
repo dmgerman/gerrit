@@ -3592,6 +3592,27 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|info
+operator|.
+name|revisions
+operator|.
+name|get
+argument_list|(
+name|info
+operator|.
+name|currentRevision
+argument_list|)
+operator|.
+name|description
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Edit commit message"
+argument_list|)
+expr_stmt|;
 name|assertChangeMessages
 argument_list|(
 name|change
