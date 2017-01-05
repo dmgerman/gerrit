@@ -543,7 +543,10 @@ specifier|static
 class|class
 name|Delta
 block|{
+annotation|@
+name|VisibleForTesting
 DECL|method|create (Change.Id changeId, Optional<ObjectId> newChangeMetaId, Map<Account.Id, ObjectId> newDraftIds)
+specifier|public
 specifier|static
 name|Delta
 name|create

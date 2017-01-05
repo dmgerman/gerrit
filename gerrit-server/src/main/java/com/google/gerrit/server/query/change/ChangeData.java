@@ -6751,6 +6751,26 @@ condition|(
 name|account
 operator|!=
 literal|null
+comment|// Double-check that any drafts exist for this user after
+comment|// filtering out zombies. If some but not all drafts in the ref
+comment|// were zombies, the returned Ref still includes those zombies;
+comment|// this is suboptimal, but is ok for the purposes of
+comment|// draftsByUser(), and easier than trying to rebuild the change at
+comment|// this point.
+operator|&&
+operator|!
+name|notes
+argument_list|()
+operator|.
+name|getDraftComments
+argument_list|(
+name|account
+argument_list|,
+name|ref
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|draftsByUser
