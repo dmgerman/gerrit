@@ -168,6 +168,22 @@ name|SuExec
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|plugin
+operator|.
+name|LfsPluginAuthCommand
+import|;
+end_import
+
 begin_comment
 comment|/** Register the commands a Gerrit server supports. */
 end_comment
@@ -979,6 +995,15 @@ argument_list|,
 name|SetLoggingLevelCommand
 operator|.
 name|class
+argument_list|)
+expr_stmt|;
+name|install
+argument_list|(
+operator|new
+name|LfsPluginAuthCommand
+operator|.
+name|Module
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
