@@ -48,11 +48,11 @@ comment|// See the License for the specific language governing permissions and
 end_comment
 
 begin_comment
-comment|// limitations under the License
+comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.index.group
+DECL|package|com.google.gerrit.pgm.init.index.elasticsearch
 package|package
 name|com
 operator|.
@@ -60,11 +60,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|pgm
+operator|.
+name|init
 operator|.
 name|index
 operator|.
-name|group
+name|elasticsearch
 package|;
 end_package
 
@@ -76,9 +78,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|elasticsearch
 operator|.
-name|Nullable
+name|ElasticGroupIndex
 import|;
 end_import
 
@@ -90,11 +92,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|pgm
 operator|.
-name|client
+name|init
 operator|.
-name|AccountGroup
+name|index
+operator|.
+name|IndexModuleOnInit
 import|;
 end_import
 
@@ -110,7 +114,9 @@ name|server
 operator|.
 name|index
 operator|.
-name|IndexDefinition
+name|group
+operator|.
+name|GroupIndex
 import|;
 end_import
 
@@ -122,7 +128,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Inject
+name|AbstractModule
 import|;
 end_import
 
@@ -134,64 +140,60 @@ name|google
 operator|.
 name|inject
 operator|.
-name|util
+name|assistedinject
 operator|.
-name|Providers
+name|FactoryModuleBuilder
 import|;
 end_import
 
 begin_class
-DECL|class|GroupIndexDefinition
+DECL|class|ElasticIndexModuleOnInit
 specifier|public
 class|class
-name|GroupIndexDefinition
+name|ElasticIndexModuleOnInit
 extends|extends
-name|IndexDefinition
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|,
-name|AccountGroup
-argument_list|,
-name|GroupIndex
-argument_list|>
+name|AbstractModule
 block|{
 annotation|@
-name|Inject
-DECL|method|GroupIndexDefinition (GroupIndexCollection indexCollection, GroupIndex.Factory indexFactory, @Nullable AllGroupsIndexer allGroupsIndexer)
-name|GroupIndexDefinition
-parameter_list|(
-name|GroupIndexCollection
-name|indexCollection
-parameter_list|,
+name|Override
+DECL|method|configure ()
+specifier|protected
+name|void
+name|configure
+parameter_list|()
+block|{
+name|install
+argument_list|(
+operator|new
+name|FactoryModuleBuilder
+argument_list|()
+operator|.
+name|implement
+argument_list|(
+name|GroupIndex
+operator|.
+name|class
+argument_list|,
+name|ElasticGroupIndex
+operator|.
+name|class
+argument_list|)
+operator|.
+name|build
+argument_list|(
 name|GroupIndex
 operator|.
 name|Factory
-name|indexFactory
-parameter_list|,
-annotation|@
-name|Nullable
-name|AllGroupsIndexer
-name|allGroupsIndexer
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|GroupSchemaDefinitions
 operator|.
-name|INSTANCE
-argument_list|,
-name|indexCollection
-argument_list|,
-name|indexFactory
-argument_list|,
-name|Providers
-operator|.
-name|of
-argument_list|(
-name|allGroupsIndexer
+name|class
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|install
+argument_list|(
+operator|new
+name|IndexModuleOnInit
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

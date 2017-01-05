@@ -152,6 +152,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|group
+operator|.
+name|GroupIndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|schema
 operator|.
 name|SchemaCreator
@@ -227,6 +245,18 @@ operator|.
 name|server
 operator|.
 name|SchemaFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|AbstractModule
 import|;
 end_import
 
@@ -503,6 +533,60 @@ name|created
 decl_stmt|;
 annotation|@
 name|Inject
+DECL|method|InMemoryDatabase (Injector injector)
+name|InMemoryDatabase
+parameter_list|(
+name|Injector
+name|injector
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+comment|// Don't inject SchemaCreator directly.
+comment|// SchemaCreator needs to get GroupIndexCollection injected, but
+comment|// GroupIndexCollection was not bound yet. Creating a child injector with a
+comment|// binding for GroupIndexCollection to create an instance of SchemaCreator
+comment|// prevents that Guice creates a just-in-time binding for
+comment|// GroupIndexCollection in the root injector. If a binding for
+comment|// GroupIndexCollection is created in the root injector then IndexModule
+comment|// fails to create this binding later, because it already exists.
+name|this
+argument_list|(
+name|injector
+operator|.
+name|createChildInjector
+argument_list|(
+operator|new
+name|AbstractModule
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|configure
+parameter_list|()
+block|{
+name|bind
+argument_list|(
+name|GroupIndexCollection
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+operator|.
+name|getInstance
+argument_list|(
+name|SchemaCreator
+operator|.
+name|class
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|InMemoryDatabase (SchemaCreator schemaCreator)
 name|InMemoryDatabase
 parameter_list|(

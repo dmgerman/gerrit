@@ -446,6 +446,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -760,7 +772,10 @@ decl_stmt|;
 DECL|field|groupCache
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|GroupCache
+argument_list|>
 name|groupCache
 decl_stmt|;
 DECL|field|queryBuilder
@@ -771,7 +786,7 @@ name|queryBuilder
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, GroupCache groupCache, @Assisted Schema<AccountGroup> schema)
+DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Provider<GroupCache> groupCache, @Assisted Schema<AccountGroup> schema)
 name|ElasticGroupIndex
 parameter_list|(
 annotation|@
@@ -785,7 +800,10 @@ parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
+name|Provider
+argument_list|<
 name|GroupCache
+argument_list|>
 name|groupCache
 parameter_list|,
 annotation|@
@@ -1545,6 +1563,9 @@ comment|// Use the GroupCache rather than depending on any stored fields in the
 comment|// document (of which there shouldn't be any).
 return|return
 name|groupCache
+operator|.
+name|get
+argument_list|()
 operator|.
 name|get
 argument_list|(
