@@ -1801,8 +1801,6 @@ block|}
 catch|catch
 parameter_list|(
 name|EmailException
-decl||
-name|OrmException
 name|e
 parameter_list|)
 block|{
@@ -1903,8 +1901,6 @@ name|ctx
 parameter_list|)
 throws|throws
 name|EmailException
-throws|,
-name|OrmException
 block|{
 name|ChangeMessage
 name|msg
@@ -1913,11 +1909,6 @@ name|ChangeMessagesUtil
 operator|.
 name|newMessage
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|psId
 argument_list|,
 name|ctx

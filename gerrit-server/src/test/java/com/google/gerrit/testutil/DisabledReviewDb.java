@@ -733,20 +733,6 @@ name|Disabled
 argument_list|()
 throw|;
 block|}
-annotation|@
-name|Override
-DECL|method|nextChangeMessageId ()
-specifier|public
-name|int
-name|nextChangeMessageId
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|Disabled
-argument_list|()
-throw|;
-block|}
 block|}
 end_class
 
