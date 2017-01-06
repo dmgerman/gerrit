@@ -184,6 +184,22 @@ name|template
 operator|.
 name|soy
 operator|.
+name|shared
+operator|.
+name|SoyAstCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|template
+operator|.
+name|soy
+operator|.
 name|tofu
 operator|.
 name|SoyTofu
@@ -344,13 +360,22 @@ specifier|final
 name|SitePaths
 name|site
 decl_stmt|;
+DECL|field|cache
+specifier|private
+specifier|final
+name|SoyAstCache
+name|cache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MailSoyTofuProvider (SitePaths site)
+DECL|method|MailSoyTofuProvider (SitePaths site, SoyAstCache cache)
 name|MailSoyTofuProvider
 parameter_list|(
 name|SitePaths
 name|site
+parameter_list|,
+name|SoyAstCache
+name|cache
 parameter_list|)
 block|{
 name|this
@@ -358,6 +383,12 @@ operator|.
 name|site
 operator|=
 name|site
+expr_stmt|;
+name|this
+operator|.
+name|cache
+operator|=
+name|cache
 expr_stmt|;
 block|}
 annotation|@
@@ -380,6 +411,13 @@ operator|.
 name|builder
 argument_list|()
 decl_stmt|;
+name|builder
+operator|.
+name|setSoyAstCache
+argument_list|(
+name|cache
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|String
@@ -448,6 +486,8 @@ block|{
 name|String
 name|content
 decl_stmt|;
+comment|// TODO(davido): Consider using JGit's FileSnapshot to cache based on
+comment|// mtime.
 try|try
 init|(
 name|Reader
