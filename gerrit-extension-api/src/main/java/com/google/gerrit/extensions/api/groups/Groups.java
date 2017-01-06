@@ -810,8 +810,6 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -829,8 +827,6 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -848,8 +844,6 @@ parameter_list|(
 name|GroupInput
 name|input
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

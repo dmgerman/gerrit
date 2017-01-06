@@ -174,8 +174,6 @@ parameter_list|(
 name|BranchInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -190,8 +188,6 @@ specifier|public
 name|BranchInfo
 name|get
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -206,8 +202,6 @@ specifier|public
 name|void
 name|delete
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -225,8 +219,6 @@ parameter_list|(
 name|String
 name|path
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

@@ -153,8 +153,6 @@ specifier|public
 name|ProjectInfo
 name|get
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -172,8 +170,6 @@ parameter_list|(
 name|boolean
 name|recursive
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

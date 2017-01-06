@@ -184,8 +184,6 @@ name|Short
 argument_list|>
 name|votes
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -203,8 +201,6 @@ parameter_list|(
 name|String
 name|label
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -222,8 +218,6 @@ parameter_list|(
 name|DeleteVoteInput
 name|input
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -238,8 +232,6 @@ specifier|public
 name|void
 name|remove
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -257,8 +249,6 @@ parameter_list|(
 name|DeleteReviewerInput
 name|input
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

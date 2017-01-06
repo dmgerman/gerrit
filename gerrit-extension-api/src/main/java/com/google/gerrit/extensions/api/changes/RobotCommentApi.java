@@ -143,8 +143,6 @@ specifier|public
 name|RobotCommentInfo
 name|get
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
