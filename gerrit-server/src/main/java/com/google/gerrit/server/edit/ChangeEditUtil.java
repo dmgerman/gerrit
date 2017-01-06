@@ -1420,6 +1420,13 @@ argument_list|(
 literal|"Commit message was updated."
 argument_list|)
 expr_stmt|;
+name|inserter
+operator|.
+name|setDescription
+argument_list|(
+literal|"Edit commit message"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
