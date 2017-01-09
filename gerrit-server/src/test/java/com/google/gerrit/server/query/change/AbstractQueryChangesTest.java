@@ -1708,6 +1708,11 @@ specifier|protected
 name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
+DECL|field|injector
+specifier|protected
+name|Injector
+name|injector
+decl_stmt|;
 DECL|field|lifecycle
 specifier|protected
 name|LifecycleManager
@@ -1758,12 +1763,11 @@ operator|new
 name|LifecycleManager
 argument_list|()
 expr_stmt|;
-name|Injector
 name|injector
-init|=
+operator|=
 name|createInjector
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|lifecycle
 operator|.
 name|add
@@ -1783,6 +1787,18 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|setUpDatabase
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|setUpDatabase ()
+specifier|protected
+name|void
+name|setUpDatabase
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|db
 operator|=
 name|schemaFactory
