@@ -162,6 +162,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|AccountExternalIdInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|AccountInfo
 import|;
 end_import
@@ -587,6 +603,16 @@ function_decl|;
 DECL|method|index ()
 name|void
 name|index
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|getExternalIds ()
+name|List
+argument_list|<
+name|AccountExternalIdInfo
+argument_list|>
+name|getExternalIds
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -1079,6 +1105,23 @@ DECL|method|index ()
 specifier|public
 name|void
 name|index
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getExternalIds ()
+specifier|public
+name|List
+argument_list|<
+name|AccountExternalIdInfo
+argument_list|>
+name|getExternalIds
 parameter_list|()
 block|{
 throw|throw
