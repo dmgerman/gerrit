@@ -178,6 +178,11 @@ name|String
 name|branchDeletionConfirmationMessage
 parameter_list|()
 function_decl|;
+DECL|method|newUi ()
+name|String
+name|newUi
+parameter_list|()
+function_decl|;
 DECL|method|notSignedInTitle ()
 name|String
 name|notSignedInTitle
@@ -521,11 +526,6 @@ function_decl|;
 DECL|method|searchDropdownDoc ()
 name|String
 name|searchDropdownDoc
-parameter_list|()
-function_decl|;
-DECL|method|polyGerrit ()
-name|String
-name|polyGerrit
 parameter_list|()
 function_decl|;
 block|}
