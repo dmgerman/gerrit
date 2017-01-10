@@ -3482,7 +3482,7 @@ name|Anchor
 argument_list|(
 name|C
 operator|.
-name|polyGerrit
+name|newUi
 argument_list|()
 argument_list|,
 name|GWT
