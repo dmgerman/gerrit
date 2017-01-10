@@ -3644,13 +3644,8 @@ name|id
 argument_list|,
 name|ChangeUtil
 operator|.
-name|messageUUID
-argument_list|(
-name|ctx
-operator|.
-name|getDb
+name|messageUuid
 argument_list|()
-argument_list|)
 argument_list|)
 argument_list|,
 name|ctx
@@ -9565,10 +9560,8 @@ name|id
 argument_list|,
 name|ChangeUtil
 operator|.
-name|messageUUID
-argument_list|(
-name|db
-argument_list|)
+name|messageUuid
+argument_list|()
 argument_list|)
 argument_list|,
 name|author

@@ -126,22 +126,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|ChangeMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|SystemConfig
 import|;
 end_import
@@ -448,16 +432,6 @@ name|Deprecated
 DECL|method|nextChangeId ()
 name|int
 name|nextChangeId
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
-comment|/**    * Next id for a block of {@link ChangeMessage} records.    *    * @see com.google.gerrit.server.ChangeUtil#messageUUID(ReviewDb)    */
-annotation|@
-name|Sequence
-DECL|method|nextChangeMessageId ()
-name|int
-name|nextChangeMessageId
 parameter_list|()
 throws|throws
 name|OrmException

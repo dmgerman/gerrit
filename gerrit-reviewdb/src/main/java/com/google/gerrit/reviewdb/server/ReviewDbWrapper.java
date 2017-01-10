@@ -696,23 +696,6 @@ name|nextChangeId
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|nextChangeMessageId ()
-specifier|public
-name|int
-name|nextChangeMessageId
-parameter_list|()
-throws|throws
-name|OrmException
-block|{
-return|return
-name|delegate
-operator|.
-name|nextChangeMessageId
-argument_list|()
-return|;
-block|}
 DECL|class|ChangeAccessWrapper
 specifier|public
 specifier|static

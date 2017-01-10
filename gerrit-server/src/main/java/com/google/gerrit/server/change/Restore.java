@@ -1032,8 +1032,6 @@ parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|StringBuilder
 name|msg

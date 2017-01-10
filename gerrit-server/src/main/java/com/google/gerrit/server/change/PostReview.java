@@ -6016,8 +6016,6 @@ name|fixSuggestions
 operator|=
 name|createFixSuggestionsFromInput
 argument_list|(
-name|ctx
-argument_list|,
 name|robotCommentInput
 operator|.
 name|fixSuggestions
@@ -6027,7 +6025,7 @@ return|return
 name|robotComment
 return|;
 block|}
-DECL|method|createFixSuggestionsFromInput (ChangeContext ctx, List<FixSuggestionInfo> fixSuggestionInfos)
+DECL|method|createFixSuggestionsFromInput ( List<FixSuggestionInfo> fixSuggestionInfos)
 specifier|private
 name|List
 argument_list|<
@@ -6035,17 +6033,12 @@ name|FixSuggestion
 argument_list|>
 name|createFixSuggestionsFromInput
 parameter_list|(
-name|ChangeContext
-name|ctx
-parameter_list|,
 name|List
 argument_list|<
 name|FixSuggestionInfo
 argument_list|>
 name|fixSuggestionInfos
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -6091,8 +6084,6 @@ name|add
 argument_list|(
 name|createFixSuggestionFromInput
 argument_list|(
-name|ctx
-argument_list|,
 name|fixSuggestionInfo
 argument_list|)
 argument_list|)
@@ -6102,19 +6093,14 @@ return|return
 name|fixSuggestions
 return|;
 block|}
-DECL|method|createFixSuggestionFromInput (ChangeContext ctx, FixSuggestionInfo fixSuggestionInfo)
+DECL|method|createFixSuggestionFromInput ( FixSuggestionInfo fixSuggestionInfo)
 specifier|private
 name|FixSuggestion
 name|createFixSuggestionFromInput
 parameter_list|(
-name|ChangeContext
-name|ctx
-parameter_list|,
 name|FixSuggestionInfo
 name|fixSuggestionInfo
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -6134,13 +6120,8 @@ name|fixId
 init|=
 name|ChangeUtil
 operator|.
-name|messageUUID
-argument_list|(
-name|ctx
-operator|.
-name|getDb
+name|messageUuid
 argument_list|()
-argument_list|)
 decl_stmt|;
 return|return
 operator|new
@@ -8723,11 +8704,6 @@ name|ChangeMessagesUtil
 operator|.
 name|newMessage
 argument_list|(
-name|ctx
-operator|.
-name|getDb
-argument_list|()
-argument_list|,
 name|psId
 argument_list|,
 name|user

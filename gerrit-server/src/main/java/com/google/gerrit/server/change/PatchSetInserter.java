@@ -1676,8 +1676,6 @@ name|ChangeMessagesUtil
 operator|.
 name|newMessage
 argument_list|(
-name|db
-argument_list|,
 name|patchSet
 operator|.
 name|getId
