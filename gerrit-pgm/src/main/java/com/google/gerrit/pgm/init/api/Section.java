@@ -1152,16 +1152,16 @@ return|return
 name|nv
 return|;
 block|}
-DECL|method|passwordForKey (String key, String password)
+DECL|method|passwordForKey (String prompt, String passwordKey)
 specifier|public
 name|String
 name|passwordForKey
 parameter_list|(
 name|String
-name|key
+name|prompt
 parameter_list|,
 name|String
-name|password
+name|passwordKey
 parameter_list|)
 block|{
 name|String
@@ -1169,7 +1169,7 @@ name|ov
 init|=
 name|getSecure
 argument_list|(
-name|password
+name|passwordKey
 argument_list|)
 decl_stmt|;
 if|if
@@ -1198,7 +1198,7 @@ literal|false
 argument_list|,
 literal|"Change %s"
 argument_list|,
-name|key
+name|passwordKey
 argument_list|)
 condition|)
 block|{
@@ -1217,7 +1217,7 @@ name|password
 argument_list|(
 literal|"%s"
 argument_list|,
-name|key
+name|prompt
 argument_list|)
 decl_stmt|;
 if|if
@@ -1233,7 +1233,7 @@ condition|)
 block|{
 name|setSecure
 argument_list|(
-name|password
+name|passwordKey
 argument_list|,
 name|nv
 argument_list|)
