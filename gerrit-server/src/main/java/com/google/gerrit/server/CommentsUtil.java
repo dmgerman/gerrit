@@ -3484,6 +3484,7 @@ throw|;
 block|}
 block|}
 block|}
+comment|/**    * Get NoteDb draft refs for a change.    *<p>    * Works if NoteDb is not enabled, but the results are not meaningful.    *<p>    * This is just a simple ref scan, so the results may potentially include refs    * for zombie draft comments. A zombie draft is one which has been published    * but the write to delete the draft ref from All-Users failed.    *    * @param changeId change ID.    * @return raw refs from All-Users repo.    */
 DECL|method|getDraftRefs (Change.Id changeId)
 specifier|public
 name|Collection
