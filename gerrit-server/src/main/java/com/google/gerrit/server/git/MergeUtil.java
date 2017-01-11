@@ -3257,6 +3257,15 @@ name|mergeTip
 argument_list|,
 name|toMerge
 argument_list|)
+operator|||
+name|rw
+operator|.
+name|isMergedInto
+argument_list|(
+name|toMerge
+argument_list|,
+name|mergeTip
+argument_list|)
 return|;
 block|}
 catch|catch
