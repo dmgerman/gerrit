@@ -644,6 +644,15 @@ operator|.
 name|err
 operator|.
 name|println
+argument_list|(
+literal|"  passwd          Set or change password in secure.config"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
 argument_list|()
 expr_stmt|;
 name|System
