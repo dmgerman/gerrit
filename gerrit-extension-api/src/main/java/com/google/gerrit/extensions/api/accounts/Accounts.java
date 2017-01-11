@@ -239,7 +239,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Queries users.    *<p>    * Example code:    * {@code query().withQuery("name:John email:example.com").withLimit(5).get()}    *    * @return API for setting parameters and getting result.    */
+comment|/**    * Query users.    *<p>    * Example code:    * {@code query().withQuery("name:John email:example.com").withLimit(5).get()}    *    * @return API for setting parameters and getting result.    */
 DECL|method|query ()
 name|QueryRequest
 name|query
@@ -247,7 +247,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Queries users.    *<p>    * Shortcut API for {@code query().withQuery(String)}.    *    * @see #query()    */
+comment|/**    * Query users.    *<p>    * Shortcut API for {@code query().withQuery(String)}.    *    * @see #query()    */
 DECL|method|query (String query)
 name|QueryRequest
 name|query
@@ -274,7 +274,7 @@ specifier|private
 name|int
 name|limit
 decl_stmt|;
-comment|/**      * Executes query and returns a list of accounts.      */
+comment|/**      * Execute query and return a list of accounts.      */
 DECL|method|get ()
 specifier|public
 specifier|abstract
@@ -386,7 +386,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Executes query and returns a list of accounts.      */
+comment|/**      * Execute query and return a list of accounts.      */
 DECL|method|get ()
 specifier|public
 specifier|abstract
