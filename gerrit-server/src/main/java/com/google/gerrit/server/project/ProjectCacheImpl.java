@@ -1214,7 +1214,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Cannot list avaliable projects"
+literal|"Cannot list available projects"
 argument_list|,
 name|e
 argument_list|)
@@ -1310,7 +1310,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Cannot list avaliable projects"
+literal|"Cannot list available projects"
 argument_list|,
 name|e
 argument_list|)
