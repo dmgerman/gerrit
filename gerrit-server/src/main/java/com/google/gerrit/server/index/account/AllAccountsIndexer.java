@@ -603,6 +603,8 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
+name|SiteIndexer
+operator|.
 name|Result
 argument_list|(
 name|sw
@@ -867,6 +869,8 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
+name|SiteIndexer
+operator|.
 name|Result
 argument_list|(
 name|sw
@@ -886,6 +890,8 @@ argument_list|()
 expr_stmt|;
 return|return
 operator|new
+name|SiteIndexer
+operator|.
 name|Result
 argument_list|(
 name|sw
