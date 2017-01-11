@@ -916,7 +916,7 @@ argument_list|)
 expr_stmt|;
 name|args
 operator|.
-name|commits
+name|commitStatus
 operator|.
 name|put
 argument_list|(

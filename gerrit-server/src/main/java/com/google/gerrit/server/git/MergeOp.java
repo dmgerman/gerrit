@@ -1871,10 +1871,10 @@ specifier|private
 name|IdentifiedUser
 name|caller
 decl_stmt|;
-DECL|field|commits
+DECL|field|commitStatus
 specifier|private
 name|CommitStatus
-name|commits
+name|commitStatus
 decl_stmt|;
 DECL|field|db
 specifier|private
@@ -2477,7 +2477,7 @@ operator|.
 name|NEW
 condition|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -2526,7 +2526,7 @@ name|ResourceConflictException
 name|e
 parameter_list|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -2569,7 +2569,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -2583,7 +2583,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|commits
+name|commitStatus
 operator|.
 name|maybeFailVerbose
 argument_list|()
@@ -2881,7 +2881,7 @@ throw|;
 block|}
 name|this
 operator|.
-name|commits
+name|commitStatus
 operator|=
 operator|new
 name|CommitStatus
@@ -3128,7 +3128,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// Done checks that don't involve running submit strategies.
-name|commits
+name|commitStatus
 operator|.
 name|maybeFailVerbose
 argument_list|()
@@ -3189,7 +3189,7 @@ name|submitInput
 argument_list|,
 name|strategies
 argument_list|,
-name|commits
+name|commitStatus
 argument_list|)
 argument_list|,
 name|submissionId
@@ -3595,7 +3595,7 @@ block|{
 name|CodeReviewCommit
 name|commit
 init|=
-name|commits
+name|commitStatus
 operator|.
 name|get
 argument_list|(
@@ -3700,7 +3700,7 @@ name|caller
 argument_list|,
 name|mergeTip
 argument_list|,
-name|commits
+name|commitStatus
 argument_list|,
 name|submissionId
 argument_list|,
@@ -3804,7 +3804,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|commits
+name|commitStatus
 operator|.
 name|commits
 operator|.
@@ -4009,7 +4009,7 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|logProblem
 argument_list|(
@@ -4035,7 +4035,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|logProblem
 argument_list|(
@@ -4070,7 +4070,7 @@ operator|!=
 name|submitType
 condition|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -4121,7 +4121,7 @@ operator|+
 name|changeId
 argument_list|)
 expr_stmt|;
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -4161,7 +4161,7 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|logProblem
 argument_list|(
@@ -4196,7 +4196,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|logProblem
 argument_list|(
@@ -4239,7 +4239,7 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|logProblem
 argument_list|(
@@ -4270,7 +4270,7 @@ comment|// TODO this is actually an error, the branch is gone but we
 comment|// want to merge the issue. We can't safely do that if the
 comment|// tip is not reachable.
 comment|//
-name|commits
+name|commitStatus
 operator|.
 name|logProblem
 argument_list|(
@@ -4325,7 +4325,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|logProblem
 argument_list|(
@@ -4354,7 +4354,7 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|commits
+name|commitStatus
 operator|.
 name|put
 argument_list|(
@@ -4402,7 +4402,7 @@ name|MergeValidationException
 name|mve
 parameter_list|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(

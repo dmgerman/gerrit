@@ -1557,7 +1557,7 @@ argument_list|)
 expr_stmt|;
 name|args
 operator|.
-name|commits
+name|commitStatus
 operator|.
 name|put
 argument_list|(
@@ -1810,7 +1810,7 @@ name|commit
 init|=
 name|args
 operator|.
-name|commits
+name|commitStatus
 operator|.
 name|get
 argument_list|(
@@ -1937,7 +1937,7 @@ argument_list|)
 expr_stmt|;
 name|args
 operator|.
-name|commits
+name|commitStatus
 operator|.
 name|logProblem
 argument_list|(
@@ -2176,7 +2176,7 @@ name|records
 init|=
 name|args
 operator|.
-name|commits
+name|commitStatus
 operator|.
 name|getSubmitRecords
 argument_list|(

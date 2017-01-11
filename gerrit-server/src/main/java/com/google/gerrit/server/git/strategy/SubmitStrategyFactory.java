@@ -464,7 +464,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commits, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -505,7 +505,7 @@ name|MergeTip
 name|mergeTip
 parameter_list|,
 name|CommitStatus
-name|commits
+name|commitStatus
 parameter_list|,
 name|RequestId
 name|submissionId
@@ -545,7 +545,7 @@ name|submitType
 argument_list|,
 name|destBranch
 argument_list|,
-name|commits
+name|commitStatus
 argument_list|,
 name|rw
 argument_list|,
