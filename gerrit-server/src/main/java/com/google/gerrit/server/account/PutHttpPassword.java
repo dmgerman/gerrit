@@ -465,9 +465,15 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|externalIdCache
+specifier|private
+specifier|final
+name|ExternalIdCache
+name|externalIdCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutHttpPassword (Provider<CurrentUser> self, Provider<ReviewDb> dbProvider, AccountCache accountCache)
+DECL|method|PutHttpPassword (Provider<CurrentUser> self, Provider<ReviewDb> dbProvider, AccountCache accountCache, ExternalIdCache externalIdCache)
 name|PutHttpPassword
 parameter_list|(
 name|Provider
@@ -484,6 +490,9 @@ name|dbProvider
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|ExternalIdCache
+name|externalIdCache
 parameter_list|)
 block|{
 name|this
@@ -503,6 +512,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|externalIdCache
+operator|=
+name|externalIdCache
 expr_stmt|;
 block|}
 annotation|@
@@ -806,6 +821,13 @@ name|singleton
 argument_list|(
 name|id
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|externalIdCache
+operator|.
+name|onUpdate
+argument_list|(
+name|id
 argument_list|)
 expr_stmt|;
 name|accountCache
