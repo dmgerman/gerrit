@@ -191,22 +191,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-operator|.
-name|zeroId
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -689,6 +673,8 @@ argument_list|,
 name|id
 lambda|->
 operator|!
+name|ObjectId
+operator|.
 name|zeroId
 argument_list|()
 operator|.
