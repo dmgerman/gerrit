@@ -257,6 +257,7 @@ extends|extends
 name|LifecycleModule
 block|{
 DECL|field|SINGLE_VERSIONS
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -348,6 +349,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|SingleVersionListener
+specifier|public
 specifier|static
 class|class
 name|SingleVersionListener

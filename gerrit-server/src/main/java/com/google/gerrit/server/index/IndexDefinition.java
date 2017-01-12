@@ -80,6 +80,18 @@ name|ImmutableSortedMap
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
 begin_comment
 comment|/**  * Definition of an index over a Gerrit data type.  *<p>  * An<em>index</em> includes a set of schema definitions along with the  * specific implementations used to query the secondary index implementation in  * a running server. If you are just interested in the static definition of one  * or more schemas, see the implementations of {@link SchemaDefinitions}.  */
 end_comment
@@ -174,6 +186,8 @@ decl_stmt|;
 DECL|field|siteIndexer
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|SiteIndexer
 argument_list|<
 name|K
@@ -182,9 +196,10 @@ name|V
 argument_list|,
 name|I
 argument_list|>
+argument_list|>
 name|siteIndexer
 decl_stmt|;
-DECL|method|IndexDefinition ( SchemaDefinitions<V> schemaDefs, IndexCollection<K, V, I> indexCollection, IndexFactory<K, V, I> indexFactory, SiteIndexer<K, V, I> siteIndexer)
+DECL|method|IndexDefinition ( SchemaDefinitions<V> schemaDefs, IndexCollection<K, V, I> indexCollection, IndexFactory<K, V, I> indexFactory, Provider<SiteIndexer<K, V, I>> siteIndexer)
 specifier|protected
 name|IndexDefinition
 parameter_list|(
@@ -214,6 +229,8 @@ name|I
 argument_list|>
 name|indexFactory
 parameter_list|,
+name|Provider
+argument_list|<
 name|SiteIndexer
 argument_list|<
 name|K
@@ -221,6 +238,7 @@ argument_list|,
 name|V
 argument_list|,
 name|I
+argument_list|>
 argument_list|>
 name|siteIndexer
 parameter_list|)
@@ -355,6 +373,9 @@ parameter_list|()
 block|{
 return|return
 name|siteIndexer
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 block|}

@@ -447,7 +447,7 @@ name|parts
 init|=
 name|SchemaUtil
 operator|.
-name|getPersonParts
+name|getNameParts
 argument_list|(
 name|fullName
 argument_list|,

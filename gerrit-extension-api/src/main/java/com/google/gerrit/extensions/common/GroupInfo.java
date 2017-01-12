@@ -115,6 +115,11 @@ specifier|public
 name|String
 name|ownerId
 decl_stmt|;
+DECL|field|_moreGroups
+specifier|public
+name|Boolean
+name|_moreGroups
+decl_stmt|;
 comment|// These fields are only supplied for internal groups, and only if requested.
 DECL|field|members
 specifier|public

@@ -896,7 +896,13 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--query"
+argument_list|,
+name|aliases
+operator|=
+block|{
 literal|"-q"
+block|}
 argument_list|,
 name|usage
 operator|=

@@ -110,6 +110,16 @@ name|AccountGroup
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/** Tracks group objects in memory for efficient access. */
 end_comment
@@ -172,6 +182,8 @@ operator|.
 name|NameKey
 name|newGroupName
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 DECL|method|evict (AccountGroup group)
 name|void
@@ -180,23 +192,25 @@ parameter_list|(
 name|AccountGroup
 name|group
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
-DECL|method|evictAfterRename (final AccountGroup.NameKey oldName, final AccountGroup.NameKey newName)
+DECL|method|evictAfterRename (AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
 name|void
 name|evictAfterRename
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|NameKey
 name|oldName
 parameter_list|,
-specifier|final
 name|AccountGroup
 operator|.
 name|NameKey
 name|newName
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface
