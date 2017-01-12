@@ -433,6 +433,13 @@ name|MethodNotAllowedException
 block|{
 if|if
 condition|(
+name|reviewer
+operator|.
+name|getRevisionResource
+argument_list|()
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|reviewer
 operator|.
