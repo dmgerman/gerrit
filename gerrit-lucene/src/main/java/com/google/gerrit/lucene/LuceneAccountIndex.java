@@ -326,6 +326,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -732,7 +744,10 @@ decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|AccountCache
+argument_list|>
 name|accountCache
 decl_stmt|;
 DECL|method|dir (Schema<AccountState> schema, Config cfg, SitePaths sitePaths)
@@ -799,7 +814,7 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|LuceneAccountIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, AccountCache accountCache, @Assisted Schema<AccountState> schema)
+DECL|method|LuceneAccountIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<AccountCache> accountCache, @Assisted Schema<AccountState> schema)
 name|LuceneAccountIndex
 parameter_list|(
 annotation|@
@@ -810,7 +825,10 @@ parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
+name|Provider
+argument_list|<
 name|AccountCache
+argument_list|>
 name|accountCache
 parameter_list|,
 annotation|@
@@ -1405,6 +1423,9 @@ comment|// compute anyway is the effective group IDs, and we don't have a good w
 comment|// to reindex when those change.
 return|return
 name|accountCache
+operator|.
+name|get
+argument_list|()
 operator|.
 name|get
 argument_list|(

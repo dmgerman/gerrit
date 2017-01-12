@@ -482,6 +482,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -700,6 +712,7 @@ end_import
 
 begin_class
 DECL|class|ElasticAccountIndex
+specifier|public
 class|class
 name|ElasticAccountIndex
 extends|extends
@@ -795,7 +808,10 @@ decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|AccountCache
+argument_list|>
 name|accountCache
 decl_stmt|;
 DECL|field|queryBuilder
@@ -806,7 +822,7 @@ name|queryBuilder
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ElasticAccountIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, AccountCache accountCache, @Assisted Schema<AccountState> schema)
+DECL|method|ElasticAccountIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Provider<AccountCache> accountCache, @Assisted Schema<AccountState> schema)
 name|ElasticAccountIndex
 parameter_list|(
 annotation|@
@@ -820,7 +836,10 @@ parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
+name|Provider
+argument_list|<
 name|AccountCache
+argument_list|>
 name|accountCache
 parameter_list|,
 annotation|@
@@ -1583,6 +1602,9 @@ comment|// compute anyway is the effective group IDs, and we don't have a good w
 comment|// to reindex when those change.
 return|return
 name|accountCache
+operator|.
+name|get
+argument_list|()
 operator|.
 name|get
 argument_list|(

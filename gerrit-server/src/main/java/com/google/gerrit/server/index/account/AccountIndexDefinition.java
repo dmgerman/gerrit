@@ -76,6 +76,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -161,7 +175,7 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|AccountIndexDefinition ( AccountIndexCollection indexCollection, AccountIndex.Factory indexFactory, AllAccountsIndexer allAccountsIndexer)
+DECL|method|AccountIndexDefinition ( AccountIndexCollection indexCollection, AccountIndex.Factory indexFactory, @Nullable AllAccountsIndexer allAccountsIndexer)
 name|AccountIndexDefinition
 parameter_list|(
 name|AccountIndexCollection
@@ -172,6 +186,8 @@ operator|.
 name|Factory
 name|indexFactory
 parameter_list|,
+annotation|@
+name|Nullable
 name|AllAccountsIndexer
 name|allAccountsIndexer
 parameter_list|)
