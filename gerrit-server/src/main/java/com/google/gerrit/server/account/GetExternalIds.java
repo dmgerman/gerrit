@@ -483,6 +483,8 @@ name|info
 operator|.
 name|trusted
 operator|=
+name|toBoolean
+argument_list|(
 name|authConfig
 operator|.
 name|isIdentityTrustable
@@ -494,12 +496,14 @@ argument_list|(
 name|id
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
 comment|// The identity can be deleted only if its not the one used to
 comment|// establish this web session, and if only if an identity was
 comment|// actually used to establish this web session.
 if|if
 condition|(
+operator|!
 name|id
 operator|.
 name|isScheme
@@ -507,15 +511,6 @@ argument_list|(
 name|SCHEME_USERNAME
 argument_list|)
 condition|)
-block|{
-name|info
-operator|.
-name|canDelete
-operator|=
-literal|false
-expr_stmt|;
-block|}
-else|else
 block|{
 name|CurrentUser
 operator|.
@@ -553,13 +548,12 @@ name|info
 operator|.
 name|canDelete
 operator|=
-operator|(
+name|toBoolean
+argument_list|(
 name|last
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|last
 operator|.
@@ -572,7 +566,7 @@ name|info
 operator|.
 name|identity
 argument_list|)
-operator|)
+argument_list|)
 expr_stmt|;
 block|}
 name|result
@@ -585,6 +579,24 @@ expr_stmt|;
 block|}
 return|return
 name|result
+return|;
+block|}
+DECL|method|toBoolean (boolean v)
+specifier|private
+specifier|static
+name|Boolean
+name|toBoolean
+parameter_list|(
+name|boolean
+name|v
+parameter_list|)
+block|{
+return|return
+name|v
+condition|?
+name|v
+else|:
+literal|null
 return|;
 block|}
 block|}

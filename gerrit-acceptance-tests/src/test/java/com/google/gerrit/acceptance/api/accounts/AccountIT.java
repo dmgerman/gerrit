@@ -5821,8 +5821,8 @@ name|getType
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// 'canDelete' field will be all false. It will be better if we can find
-comment|// a way to test it. But it looks a little difficult.
+comment|// 'canDelete' field will be all null (false). It will be better if we can
+comment|// find a way to test it. But it looks a little difficult.
 name|externalIdInfoList
 operator|.
 name|stream
