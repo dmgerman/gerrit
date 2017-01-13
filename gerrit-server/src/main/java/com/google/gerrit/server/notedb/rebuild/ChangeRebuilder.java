@@ -387,6 +387,25 @@ name|IOException
 throws|,
 name|OrmException
 function_decl|;
+DECL|method|rebuildEvenIfReadOnly (ReviewDb db, Change.Id changeId)
+specifier|public
+specifier|abstract
+name|Result
+name|rebuildEvenIfReadOnly
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|OrmException
+function_decl|;
 DECL|method|rebuild (NoteDbUpdateManager manager, ChangeBundle bundle)
 specifier|public
 specifier|abstract
