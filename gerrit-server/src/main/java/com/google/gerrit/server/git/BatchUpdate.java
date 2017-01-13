@@ -4306,6 +4306,8 @@ name|ChangeTask
 argument_list|>
 name|tasks
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 comment|// Aggregate together all NoteDb ref updates from the ops we executed,
 comment|// possibly in parallel. Each task had its own NoteDbUpdateManager instance
@@ -4633,9 +4635,30 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|tasks
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|allMatch
+argument_list|(
+name|t
+lambda|->
+name|t
+operator|.
+name|storage
+operator|==
+name|PrimaryStorage
+operator|.
+name|REVIEW_DB
+argument_list|)
+condition|)
+block|{
 comment|// Ignore all errors trying to update NoteDb at this point. We've
-comment|// already written the NoteDbChangeState to ReviewDb, which means
-comment|// if the state is out of date it will be rebuilt the next time it
+comment|// already written the NoteDbChangeStates to ReviewDb, which means
+comment|// if any state is out of date it will be rebuilt the next time it
 comment|// is needed.
 comment|// Always log even without RequestId.
 name|log
@@ -4646,7 +4669,16 @@ literal|"Ignoring NoteDb update error after ReviewDb write"
 argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
+block|;       }
+else|else
+block|{
+comment|// We can't prove it's safe to ignore the error, either because some
+comment|// change had NOTE_DB primary, or a task failed before determining the
+comment|// primary storage.
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 block|}
 DECL|method|executeNoteDbUpdate (RevWalk rw, ObjectInserter ins, BatchRefUpdate bru)
@@ -4718,6 +4750,7 @@ name|getCommands
 argument_list|()
 control|)
 block|{
+comment|// TODO(dborowitz): LOCK_FAILURE for NoteDb primary should be retried.
 if|if
 condition|(
 name|cmd
@@ -4781,6 +4814,10 @@ specifier|private
 specifier|final
 name|boolean
 name|dryrun
+decl_stmt|;
+DECL|field|storage
+name|PrimaryStorage
+name|storage
 decl_stmt|;
 DECL|field|noteDbResult
 name|NoteDbUpdateManager
@@ -5001,9 +5038,6 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|PrimaryStorage
-name|storage
-decl_stmt|;
 name|db
 operator|.
 name|changes
