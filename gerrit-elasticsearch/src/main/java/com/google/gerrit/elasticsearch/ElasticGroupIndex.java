@@ -212,24 +212,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|FieldDef
-operator|.
-name|FillArgs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|IndexUtils
 import|;
 end_import
@@ -786,16 +768,13 @@ name|queryBuilder
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Provider<GroupCache> groupCache, @Assisted Schema<AccountGroup> schema)
+DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, @Assisted Schema<AccountGroup> schema)
 name|ElasticGroupIndex
 parameter_list|(
 annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
-parameter_list|,
-name|FillArgs
-name|fillArgs
 parameter_list|,
 name|SitePaths
 name|sitePaths
@@ -815,11 +794,12 @@ argument_list|>
 name|schema
 parameter_list|)
 block|{
+comment|// No parts of FillArgs are currently required, just use null.
 name|super
 argument_list|(
 name|cfg
 argument_list|,
-name|fillArgs
+literal|null
 argument_list|,
 name|sitePaths
 argument_list|,
