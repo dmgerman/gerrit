@@ -82,6 +82,20 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gson
+operator|.
+name|FieldNamingPolicy
+operator|.
+name|LOWER_CASE_WITH_UNDERSCORES
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -269,6 +283,30 @@ operator|.
 name|Schema
 operator|.
 name|Values
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gson
+operator|.
+name|Gson
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gson
+operator|.
+name|GsonBuilder
 import|;
 end_import
 
@@ -635,6 +673,12 @@ specifier|final
 name|JestHttpClient
 name|client
 decl_stmt|;
+DECL|field|gson
+specifier|protected
+specifier|final
+name|Gson
+name|gson
+decl_stmt|;
 DECL|method|AbstractElasticIndex (@erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Schema<V> schema, String indexName)
 name|AbstractElasticIndex
 parameter_list|(
@@ -676,6 +720,22 @@ operator|.
 name|schema
 operator|=
 name|schema
+expr_stmt|;
+name|this
+operator|.
+name|gson
+operator|=
+operator|new
+name|GsonBuilder
+argument_list|()
+operator|.
+name|setFieldNamingPolicy
+argument_list|(
+name|LOWER_CASE_WITH_UNDERSCORES
+argument_list|)
+operator|.
+name|create
+argument_list|()
 expr_stmt|;
 name|String
 name|protocol
