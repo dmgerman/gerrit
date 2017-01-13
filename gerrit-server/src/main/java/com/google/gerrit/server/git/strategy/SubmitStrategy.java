@@ -872,7 +872,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( SubmitType submitType, Branch.NameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, ObjectInserter inserter, Repository repo, RevFlag canMergeFlag, ReviewDb db, Set<RevCommit> alreadyAccepted, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, Branch.NameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, ObjectInserter inserter, Repository repo, RevFlag canMergeFlag, ReviewDb db, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
 name|Arguments
 name|create
 parameter_list|(
@@ -913,6 +913,12 @@ argument_list|<
 name|RevCommit
 argument_list|>
 name|alreadyAccepted
+parameter_list|,
+name|Set
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|incoming
 parameter_list|,
 name|RequestId
 name|submissionId
@@ -1083,6 +1089,14 @@ name|RevCommit
 argument_list|>
 name|alreadyAccepted
 decl_stmt|;
+DECL|field|incoming
+specifier|final
+name|Set
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|incoming
+decl_stmt|;
 DECL|field|submissionId
 specifier|final
 name|RequestId
@@ -1137,7 +1151,7 @@ name|dryrun
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1259,6 +1273,14 @@ argument_list|<
 name|RevCommit
 argument_list|>
 name|alreadyAccepted
+parameter_list|,
+annotation|@
+name|Assisted
+name|Set
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|incoming
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1447,6 +1469,12 @@ operator|.
 name|alreadyAccepted
 operator|=
 name|alreadyAccepted
+expr_stmt|;
+name|this
+operator|.
+name|incoming
+operator|=
+name|incoming
 expr_stmt|;
 name|this
 operator|.
