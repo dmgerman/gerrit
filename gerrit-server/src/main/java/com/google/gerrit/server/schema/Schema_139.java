@@ -104,7 +104,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -642,7 +642,7 @@ name|OrmException
 throws|,
 name|SQLException
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Account
 operator|.

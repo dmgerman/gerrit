@@ -76,7 +76,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -91,11 +91,11 @@ interface|interface
 name|NeedsParams
 block|{
 comment|/**    * Sets the request parameter.    *    * @param params the request parameter    */
-DECL|method|setParams (Multimap<String, String> params)
+DECL|method|setParams (ListMultimap<String, String> params)
 name|void
 name|setParams
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

@@ -248,20 +248,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|ImmutableSet
 import|;
 end_import
@@ -3157,7 +3143,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -3342,7 +3328,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -11367,7 +11353,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -11521,7 +11507,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -11675,7 +11661,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -11829,7 +11815,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -13609,7 +13595,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -13939,7 +13925,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -14277,7 +14263,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -14523,7 +14509,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -14775,7 +14761,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -15022,7 +15008,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -15291,7 +15277,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -15472,7 +15458,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -15559,7 +15545,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -15797,7 +15783,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -15885,7 +15871,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -15909,7 +15895,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -16150,7 +16136,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -16257,7 +16243,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -17444,7 +17430,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -17587,7 +17573,7 @@ argument_list|)
 operator|.
 name|containsExactlyEntriesIn
 argument_list|(
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(

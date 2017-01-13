@@ -88,7 +88,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -989,7 +989,7 @@ expr_stmt|;
 block|}
 DECL|method|extractParameters (DispatchCommand dcmd)
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -1038,7 +1038,7 @@ name|argPos
 init|=
 literal|0
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -1564,7 +1564,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|audit (Context ctx, Object result, String cmd, Multimap<String, ?> params)
+DECL|method|audit (Context ctx, Object result, String cmd, ListMultimap<String, ?> params)
 specifier|private
 name|void
 name|audit
@@ -1578,7 +1578,7 @@ parameter_list|,
 name|String
 name|cmd
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

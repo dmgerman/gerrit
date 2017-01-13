@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -189,7 +189,7 @@ return|;
 block|}
 DECL|method|extract (List<FooterLine> lines)
 specifier|public
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -204,7 +204,7 @@ argument_list|>
 name|lines
 parameter_list|)
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

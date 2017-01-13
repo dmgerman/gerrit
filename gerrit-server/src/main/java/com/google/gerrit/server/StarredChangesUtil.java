@@ -188,7 +188,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMap
+name|ImmutableListMultimap
 import|;
 end_import
 
@@ -202,7 +202,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMultimap
+name|ImmutableMap
 import|;
 end_import
 
@@ -2375,7 +2375,7 @@ block|}
 block|}
 DECL|method|byChangeFromIndex ( Change.Id changeId)
 specifier|public
-name|ImmutableMultimap
+name|ImmutableListMultimap
 argument_list|<
 name|Account
 operator|.

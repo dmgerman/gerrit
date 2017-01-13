@@ -148,7 +148,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -710,7 +710,7 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Project
 operator|.
@@ -893,7 +893,7 @@ argument_list|(
 name|retainBody
 argument_list|)
 expr_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevCommit
 argument_list|,
@@ -979,7 +979,7 @@ operator|.
 name|keySet
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevCommit
 argument_list|,
@@ -992,7 +992,7 @@ argument_list|(
 name|commits
 argument_list|)
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevCommit
 argument_list|,
@@ -1247,7 +1247,7 @@ block|}
 DECL|method|collectChildren ( Set<RevCommit> commits)
 specifier|private
 specifier|static
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevCommit
 argument_list|,
@@ -1262,7 +1262,7 @@ argument_list|>
 name|commits
 parameter_list|)
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevCommit
 argument_list|,
@@ -1326,7 +1326,7 @@ return|return
 name|children
 return|;
 block|}
-DECL|method|emit (RevCommit c, Multimap<RevCommit, PatchSetData> byCommit, List<PatchSetData> result, RevFlag done)
+DECL|method|emit (RevCommit c, ListMultimap<RevCommit, PatchSetData> byCommit, List<PatchSetData> result, RevFlag done)
 specifier|private
 specifier|static
 name|int
@@ -1335,7 +1335,7 @@ parameter_list|(
 name|RevCommit
 name|c
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevCommit
 argument_list|,
@@ -1413,7 +1413,7 @@ return|;
 block|}
 DECL|method|byCommit (RevWalk rw, Collection<ChangeData> in)
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevCommit
 argument_list|,
@@ -1435,7 +1435,7 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevCommit
 argument_list|,

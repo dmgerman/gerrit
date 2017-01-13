@@ -76,7 +76,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -425,7 +425,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.NameKey project, Change.Id changeId, Account.Id submitter, NotifyHandling notifyHandling, Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|create (Project.NameKey project, Change.Id changeId, Account.Id submitter, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|EmailMerge
 name|create
 parameter_list|(
@@ -447,7 +447,7 @@ parameter_list|,
 name|NotifyHandling
 name|notifyHandling
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -529,7 +529,7 @@ decl_stmt|;
 DECL|field|accountsToNotify
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -546,7 +546,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailMerge (@endEmailExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, IdentifiedUser.GenericFactory identifiedUserFactory, @Assisted Project.NameKey project, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter, @Assisted NotifyHandling notifyHandling, @Assisted Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|EmailMerge (@endEmailExecutor ExecutorService executor, MergedSender.Factory mergedSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, IdentifiedUser.GenericFactory identifiedUserFactory, @Assisted Project.NameKey project, @Assisted Change.Id changeId, @Assisted @Nullable Account.Id submitter, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|EmailMerge
 parameter_list|(
 annotation|@
@@ -603,7 +603,7 @@ name|notifyHandling
 parameter_list|,
 annotation|@
 name|Assisted
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,

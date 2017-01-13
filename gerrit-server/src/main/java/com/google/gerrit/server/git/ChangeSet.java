@@ -146,20 +146,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|MultimapBuilder
 import|;
 end_import
@@ -518,7 +504,7 @@ return|;
 block|}
 DECL|method|changesByBranch ()
 specifier|public
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Branch
 operator|.

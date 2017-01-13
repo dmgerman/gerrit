@@ -164,7 +164,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMap
+name|ImmutableListMultimap
 import|;
 end_import
 
@@ -178,7 +178,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMultimap
+name|ImmutableMap
 import|;
 end_import
 
@@ -220,7 +220,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -235,6 +235,20 @@ operator|.
 name|collect
 operator|.
 name|MultimapBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|SetMultimap
 import|;
 end_import
 
@@ -1135,7 +1149,7 @@ decl_stmt|;
 DECL|field|problems
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Change
 operator|.
@@ -1465,7 +1479,7 @@ return|;
 block|}
 DECL|method|getProblems ()
 specifier|public
-name|ImmutableMultimap
+name|ImmutableListMultimap
 argument_list|<
 name|Change
 operator|.
@@ -1477,7 +1491,7 @@ name|getProblems
 parameter_list|()
 block|{
 return|return
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|copyOf
 argument_list|(
@@ -1874,7 +1888,7 @@ name|submitInput
 decl_stmt|;
 DECL|field|accountsToNotify
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -3015,7 +3029,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Branch
 operator|.
@@ -3921,7 +3935,7 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -4438,7 +4452,7 @@ return|;
 block|}
 DECL|method|getRevisions (OpenRepo or, Collection<ChangeData> cds)
 specifier|private
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -4516,7 +4530,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,

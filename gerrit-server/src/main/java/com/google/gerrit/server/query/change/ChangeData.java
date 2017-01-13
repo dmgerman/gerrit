@@ -210,20 +210,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Iterables
 import|;
 end_import
@@ -267,20 +253,6 @@ operator|.
 name|collect
 operator|.
 name|Maps
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Multimap
 import|;
 end_import
 
@@ -2854,7 +2826,7 @@ name|starredByUser
 decl_stmt|;
 DECL|field|stars
 specifier|private
-name|ImmutableMultimap
+name|ImmutableListMultimap
 argument_list|<
 name|Account
 operator|.
@@ -7151,7 +7123,7 @@ expr_stmt|;
 block|}
 DECL|method|stars ()
 specifier|public
-name|ImmutableMultimap
+name|ImmutableListMultimap
 argument_list|<
 name|Account
 operator|.
@@ -7178,13 +7150,13 @@ name|lazyLoad
 condition|)
 block|{
 return|return
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|()
 return|;
 block|}
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|Builder
 argument_list|<
@@ -7196,7 +7168,7 @@ name|String
 argument_list|>
 name|b
 init|=
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|builder
 argument_list|()
@@ -7252,12 +7224,12 @@ return|return
 name|stars
 return|;
 block|}
-DECL|method|setStars (Multimap<Account.Id, String> stars)
+DECL|method|setStars (ListMultimap<Account.Id, String> stars)
 specifier|public
 name|void
 name|setStars
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Account
 operator|.
@@ -7272,7 +7244,7 @@ name|this
 operator|.
 name|stars
 operator|=
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|copyOf
 argument_list|(

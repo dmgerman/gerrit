@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
+name|ListMultimap
 import|;
 end_import
 
@@ -104,7 +104,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|Lists
 import|;
 end_import
 
@@ -532,7 +532,7 @@ name|containsTarget
 decl_stmt|;
 DECL|field|commitToRef
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevCommit
 argument_list|,

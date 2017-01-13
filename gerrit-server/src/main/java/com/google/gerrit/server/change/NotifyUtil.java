@@ -118,7 +118,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -532,7 +532,7 @@ return|;
 block|}
 DECL|method|resolveAccounts ( @ullable Map<RecipientType, NotifyInfo> notifyDetails)
 specifier|public
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -572,7 +572,7 @@ name|of
 argument_list|()
 return|;
 block|}
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,

@@ -104,7 +104,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -882,7 +882,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -901,7 +901,7 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -1095,7 +1095,7 @@ name|patchSetsBySha
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateGroups (ReviewDb db, GroupCollector collector, Multimap<ObjectId, PatchSet.Id> patchSetsBySha)
+DECL|method|updateGroups (ReviewDb db, GroupCollector collector, ListMultimap<ObjectId, PatchSet.Id> patchSetsBySha)
 specifier|private
 specifier|static
 name|void
@@ -1107,7 +1107,7 @@ parameter_list|,
 name|GroupCollector
 name|collector
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,

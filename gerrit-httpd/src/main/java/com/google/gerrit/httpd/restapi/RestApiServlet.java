@@ -512,6 +512,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ArrayListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|ImmutableList
 import|;
 end_import
@@ -526,7 +540,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMultimap
+name|ImmutableListMultimap
 import|;
 end_import
 
@@ -568,7 +582,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|LinkedHashMultimap
+name|ListMultimap
 import|;
 end_import
 
@@ -583,20 +597,6 @@ operator|.
 name|collect
 operator|.
 name|Lists
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Multimap
 import|;
 end_import
 
@@ -2394,7 +2394,7 @@ name|result
 init|=
 literal|null
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -2402,12 +2402,12 @@ name|String
 argument_list|>
 name|params
 init|=
-name|LinkedHashMultimap
+name|ArrayListMultimap
 operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -2415,7 +2415,7 @@ name|String
 argument_list|>
 name|config
 init|=
-name|LinkedHashMultimap
+name|ArrayListMultimap
 operator|.
 name|create
 argument_list|()
@@ -6122,7 +6122,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|replyJson (@ullable HttpServletRequest req, HttpServletResponse res, Multimap<String, String> config, Object result)
+DECL|method|replyJson (@ullable HttpServletRequest req, HttpServletResponse res, ListMultimap<String, String> config, Object result)
 specifier|public
 specifier|static
 name|long
@@ -6136,7 +6136,7 @@ parameter_list|,
 name|HttpServletResponse
 name|res
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -6267,13 +6267,13 @@ block|}
 end_function
 
 begin_function
-DECL|method|newGson (Multimap<String, String> config, @Nullable HttpServletRequest req)
+DECL|method|newGson (ListMultimap<String, String> config, @Nullable HttpServletRequest req)
 specifier|private
 specifier|static
 name|Gson
 name|newGson
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -6323,7 +6323,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|enablePrettyPrint (GsonBuilder gb, Multimap<String, String> config, @Nullable HttpServletRequest req)
+DECL|method|enablePrettyPrint (GsonBuilder gb, ListMultimap<String, String> config, @Nullable HttpServletRequest req)
 specifier|private
 specifier|static
 name|void
@@ -6332,7 +6332,7 @@ parameter_list|(
 name|GsonBuilder
 name|gb
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -6437,7 +6437,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|enablePartialGetFields (GsonBuilder gb, Multimap<String, String> config)
+DECL|method|enablePartialGetFields (GsonBuilder gb, ListMultimap<String, String> config)
 specifier|private
 specifier|static
 name|void
@@ -6446,7 +6446,7 @@ parameter_list|(
 name|GsonBuilder
 name|gb
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -8568,7 +8568,7 @@ name|req
 argument_list|,
 name|res
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(

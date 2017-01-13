@@ -104,7 +104,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
+name|ListMultimap
 import|;
 end_import
 
@@ -118,7 +118,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|Lists
 import|;
 end_import
 
@@ -2499,7 +2499,7 @@ return|return
 name|d
 return|;
 block|}
-DECL|method|addTrackingIds (ChangeAttribute a, Multimap<String, String> set)
+DECL|method|addTrackingIds (ChangeAttribute a, ListMultimap<String, String> set)
 specifier|public
 name|void
 name|addTrackingIds
@@ -2507,7 +2507,7 @@ parameter_list|(
 name|ChangeAttribute
 name|a
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

@@ -526,35 +526,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|MultimapBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|SetMultimap
 import|;
 end_import
 
@@ -3200,7 +3172,7 @@ name|refsByChange
 decl_stmt|;
 DECL|field|refsById
 specifier|private
-name|SetMultimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -9032,7 +9004,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getAccountsToNotify ()
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -9043,7 +9015,7 @@ argument_list|>
 name|getAccountsToNotify
 parameter_list|()
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -11017,7 +10989,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
-name|SetMultimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -15923,7 +15895,7 @@ operator|.
 name|hashKeys
 argument_list|()
 operator|.
-name|hashSetValues
+name|arrayListValues
 argument_list|()
 operator|.
 name|build
@@ -16049,7 +16021,7 @@ return|;
 block|}
 DECL|method|changeRefsById ()
 specifier|private
-name|SetMultimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -16522,7 +16494,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|SetMultimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -17158,7 +17130,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|SetMultimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,

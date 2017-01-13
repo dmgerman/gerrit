@@ -170,7 +170,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
+name|ListMultimap
 import|;
 end_import
 
@@ -184,7 +184,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|Lists
 import|;
 end_import
 
@@ -1691,7 +1691,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|putAccount (String reviewer, ReviewerResource rsrc, ReviewerState state, NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|putAccount (String reviewer, ReviewerResource rsrc, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|private
 name|Addition
 name|putAccount
@@ -1708,7 +1708,7 @@ parameter_list|,
 name|NotifyHandling
 name|notify
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -2348,7 +2348,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Addition (String reviewer, ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|Addition (String reviewer, ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|protected
 name|Addition
 parameter_list|(
@@ -2374,7 +2374,7 @@ parameter_list|,
 name|NotifyHandling
 name|notify
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -2654,7 +2654,7 @@ name|notify
 decl_stmt|;
 DECL|field|accountsToNotify
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -2691,7 +2691,7 @@ specifier|private
 name|PatchSet
 name|patchSet
 decl_stmt|;
-DECL|method|Op (ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|Op (ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|Op
 parameter_list|(
 name|ChangeResource
@@ -2713,7 +2713,7 @@ parameter_list|,
 name|NotifyHandling
 name|notify
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -3061,7 +3061,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|emailReviewers (Change change, Collection<Account.Id> added, Collection<Account.Id> copied, NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|emailReviewers (Change change, Collection<Account.Id> added, Collection<Account.Id> copied, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|emailReviewers
@@ -3088,7 +3088,7 @@ parameter_list|,
 name|NotifyHandling
 name|notify
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,

@@ -210,7 +210,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
+name|ListMultimap
 import|;
 end_import
 
@@ -224,7 +224,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|Lists
 import|;
 end_import
 
@@ -1807,7 +1807,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -2032,7 +2032,7 @@ decl_stmt|;
 DECL|field|byId
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -2064,7 +2064,7 @@ specifier|final
 name|Repository
 name|repo
 decl_stmt|;
-DECL|method|ProjectIndexer (ChangeIndexer indexer, ThreeWayMergeStrategy mergeStrategy, AutoMerger autoMerger, Multimap<ObjectId, ChangeData> changesByCommitId, Repository repo, ProgressMonitor done, ProgressMonitor failed, PrintWriter verboseWriter)
+DECL|method|ProjectIndexer (ChangeIndexer indexer, ThreeWayMergeStrategy mergeStrategy, AutoMerger autoMerger, ListMultimap<ObjectId, ChangeData> changesByCommitId, Repository repo, ProgressMonitor done, ProgressMonitor failed, PrintWriter verboseWriter)
 specifier|private
 name|ProjectIndexer
 parameter_list|(
@@ -2077,7 +2077,7 @@ parameter_list|,
 name|AutoMerger
 name|autoMerger
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
