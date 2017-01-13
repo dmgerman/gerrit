@@ -74,7 +74,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ArrayListMultimap
+name|ListMultimap
 import|;
 end_import
 
@@ -88,7 +88,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ListMultimap
+name|MultimapBuilder
 import|;
 end_import
 
@@ -1009,14 +1009,20 @@ literal|null
 condition|)
 block|{
 return|return
-name|ArrayListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
 argument_list|(
 literal|0
-argument_list|,
+argument_list|)
+operator|.
+name|arrayListValues
+argument_list|(
 literal|0
 argument_list|)
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 name|String
@@ -1046,9 +1052,15 @@ name|String
 argument_list|>
 name|parms
 init|=
-name|ArrayListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 for|for
