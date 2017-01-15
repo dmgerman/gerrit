@@ -716,12 +716,6 @@ name|GroupCache
 argument_list|>
 name|groupCache
 decl_stmt|;
-DECL|field|queryBuilder
-specifier|private
-specifier|final
-name|ElasticQueryBuilder
-name|queryBuilder
-decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, @Assisted Schema<AccountGroup> schema)
@@ -779,14 +773,6 @@ name|GroupMapping
 argument_list|(
 name|schema
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|queryBuilder
-operator|=
-operator|new
-name|ElasticQueryBuilder
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@

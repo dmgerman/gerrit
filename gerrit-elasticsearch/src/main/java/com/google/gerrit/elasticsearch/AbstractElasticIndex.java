@@ -679,6 +679,12 @@ specifier|final
 name|Gson
 name|gson
 decl_stmt|;
+DECL|field|queryBuilder
+specifier|protected
+specifier|final
+name|ElasticQueryBuilder
+name|queryBuilder
+decl_stmt|;
 DECL|method|AbstractElasticIndex (@erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Schema<V> schema, String indexName)
 name|AbstractElasticIndex
 parameter_list|(
@@ -735,6 +741,14 @@ name|LOWER_CASE_WITH_UNDERSCORES
 argument_list|)
 operator|.
 name|create
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|queryBuilder
+operator|=
+operator|new
+name|ElasticQueryBuilder
 argument_list|()
 expr_stmt|;
 name|String

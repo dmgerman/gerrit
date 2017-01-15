@@ -1066,12 +1066,6 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|queryBuilder
-specifier|private
-specifier|final
-name|ElasticQueryBuilder
-name|queryBuilder
-decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -1148,14 +1142,6 @@ name|ChangeMapping
 argument_list|(
 name|schema
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|queryBuilder
-operator|=
-operator|new
-name|ElasticQueryBuilder
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@

@@ -752,12 +752,6 @@ name|AccountCache
 argument_list|>
 name|accountCache
 decl_stmt|;
-DECL|field|queryBuilder
-specifier|private
-specifier|final
-name|ElasticQueryBuilder
-name|queryBuilder
-decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|ElasticAccountIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<AccountCache> accountCache, @Assisted Schema<AccountState> schema)
@@ -815,14 +809,6 @@ name|AccountMapping
 argument_list|(
 name|schema
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|queryBuilder
-operator|=
-operator|new
-name|ElasticQueryBuilder
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
