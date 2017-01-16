@@ -532,9 +532,9 @@ operator|=
 name|toBoolean
 argument_list|(
 name|last
-operator|!=
+operator|==
 literal|null
-operator|&&
+operator|||
 operator|!
 name|last
 operator|.
