@@ -202,7 +202,15 @@ specifier|final
 name|DownloadConfig
 name|downloadConfig
 decl_stmt|;
-DECL|method|DefaultCommandModule (boolean slave, DownloadConfig downloadCfg)
+DECL|field|lfsPluginAuthModule
+specifier|private
+specifier|final
+name|LfsPluginAuthCommand
+operator|.
+name|Module
+name|lfsPluginAuthModule
+decl_stmt|;
+DECL|method|DefaultCommandModule (boolean slave, DownloadConfig downloadCfg, LfsPluginAuthCommand.Module module)
 specifier|public
 name|DefaultCommandModule
 parameter_list|(
@@ -211,6 +219,11 @@ name|slave
 parameter_list|,
 name|DownloadConfig
 name|downloadCfg
+parameter_list|,
+name|LfsPluginAuthCommand
+operator|.
+name|Module
+name|module
 parameter_list|)
 block|{
 name|slaveMode
@@ -220,6 +233,10 @@ expr_stmt|;
 name|downloadConfig
 operator|=
 name|downloadCfg
+expr_stmt|;
+name|lfsPluginAuthModule
+operator|=
+name|module
 expr_stmt|;
 block|}
 annotation|@
@@ -999,11 +1016,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-operator|new
-name|LfsPluginAuthCommand
-operator|.
-name|Module
-argument_list|()
+name|lfsPluginAuthModule
 argument_list|)
 expr_stmt|;
 block|}
