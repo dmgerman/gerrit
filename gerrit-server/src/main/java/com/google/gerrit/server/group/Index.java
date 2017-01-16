@@ -357,7 +357,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-comment|// evicting the group from the cache, reindexes the account
+comment|// evicting the group from the cache, reindexes the group
 name|groupCache
 operator|.
 name|evict

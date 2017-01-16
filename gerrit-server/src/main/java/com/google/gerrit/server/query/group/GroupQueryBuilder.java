@@ -467,7 +467,7 @@ name|QueryParseException
 block|{
 if|if
 condition|(
-literal|"visibleToAll"
+literal|"visibletoall"
 operator|.
 name|equalsIgnoreCase
 argument_list|(

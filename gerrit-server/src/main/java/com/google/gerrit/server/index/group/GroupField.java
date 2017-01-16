@@ -381,7 +381,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/** Fuzzy prefix match on group name parts. */
+comment|/** Prefix match on group name parts. */
 DECL|field|NAME_PART
 specifier|public
 specifier|static

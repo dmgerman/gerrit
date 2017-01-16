@@ -1576,7 +1576,7 @@ name|Exception
 block|{
 name|assertQuery
 argument_list|(
-literal|"is:visibleToAll"
+literal|"is:visibletoall"
 argument_list|)
 expr_stmt|;
 name|GroupInfo
@@ -1600,7 +1600,7 @@ argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
-literal|"is:visibleToAll"
+literal|"is:visibletoall"
 argument_list|,
 name|groupThatIsVisibleToAll
 argument_list|)
