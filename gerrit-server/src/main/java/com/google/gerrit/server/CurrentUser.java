@@ -102,6 +102,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountExternalId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|account
@@ -221,6 +237,21 @@ DECL|field|capabilities
 specifier|private
 name|CapabilityControl
 name|capabilities
+decl_stmt|;
+DECL|field|lastLoginExternalIdPropertyKey
+specifier|private
+name|PropertyKey
+argument_list|<
+name|AccountExternalId
+operator|.
+name|Key
+argument_list|>
+name|lastLoginExternalIdPropertyKey
+init|=
+name|PropertyKey
+operator|.
+name|create
+argument_list|()
 decl_stmt|;
 DECL|method|CurrentUser (CapabilityControl.Factory capabilityControlFactory)
 specifier|protected
@@ -469,6 +500,40 @@ name|T
 name|value
 parameter_list|)
 block|{   }
+DECL|method|setLastLoginExternalIdKey (AccountExternalId.Key externalIdKey)
+specifier|public
+name|void
+name|setLastLoginExternalIdKey
+parameter_list|(
+name|AccountExternalId
+operator|.
+name|Key
+name|externalIdKey
+parameter_list|)
+block|{
+name|put
+argument_list|(
+name|lastLoginExternalIdPropertyKey
+argument_list|,
+name|externalIdKey
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getLastLoginExternalIdKey ()
+specifier|public
+name|AccountExternalId
+operator|.
+name|Key
+name|getLastLoginExternalIdKey
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+name|lastLoginExternalIdPropertyKey
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
