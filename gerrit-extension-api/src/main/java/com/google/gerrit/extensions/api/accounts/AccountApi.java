@@ -617,6 +617,19 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|deleteExternalIds (List<String> externalIds)
+name|void
+name|deleteExternalIds
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|externalIds
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
 class|class
@@ -1123,6 +1136,26 @@ name|AccountExternalIdInfo
 argument_list|>
 name|getExternalIds
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|deleteExternalIds (List<String> externalIds)
+specifier|public
+name|void
+name|deleteExternalIds
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|externalIds
+parameter_list|)
 block|{
 throw|throw
 operator|new
