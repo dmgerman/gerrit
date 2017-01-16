@@ -891,6 +891,9 @@ operator|=
 name|owned
 expr_stmt|;
 block|}
+comment|/**    * Add a group to inspect.    *    * @param uuid UUID of the group    * @deprecated use {@link #addGroup(AccountGroup.UUID)}.    */
+annotation|@
+name|Deprecated
 annotation|@
 name|Option
 argument_list|(
@@ -906,9 +909,42 @@ block|}
 argument_list|,
 name|usage
 operator|=
+literal|"group to inspect (deprecated: use --group/-g instead)"
+argument_list|)
+DECL|method|addGroup_Deprecated (AccountGroup.UUID uuid)
+name|void
+name|addGroup_Deprecated
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+name|addGroup
+argument_list|(
+name|uuid
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--group"
+argument_list|,
+name|aliases
+operator|=
+block|{
+literal|"-g"
+block|}
+argument_list|,
+name|usage
+operator|=
 literal|"group to inspect"
 argument_list|)
-DECL|method|addGroup (AccountGroup.UUID id)
+DECL|method|addGroup (AccountGroup.UUID uuid)
 specifier|public
 name|void
 name|addGroup
@@ -916,14 +952,14 @@ parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|id
+name|uuid
 parameter_list|)
 block|{
 name|groupsToInspect
 operator|.
 name|add
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 expr_stmt|;
 block|}
