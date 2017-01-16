@@ -2657,7 +2657,7 @@ DECL|method|apply (ChangeEditResource rsrc)
 specifier|public
 name|Response
 argument_list|<
-name|?
+name|BinaryResult
 argument_list|>
 name|apply
 parameter_list|(

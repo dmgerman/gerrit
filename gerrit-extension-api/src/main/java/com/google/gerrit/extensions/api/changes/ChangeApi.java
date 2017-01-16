@@ -545,10 +545,20 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/** Retrieve change edit when exists. */
+comment|/**    * Retrieve change edit when exists.    *    * @deprecated Replaced by {@link ChangeApi#edit()} in combination with    * {@link ChangeEditApi#get()}.    */
+annotation|@
+name|Deprecated
 DECL|method|getEdit ()
 name|EditInfo
 name|getEdit
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Provides access to an API regarding the change edit of this change.    *    * @return a {@code ChangeEditApi} for the change edit of this change    * @throws RestApiException if the API isn't accessible    */
+DECL|method|edit ()
+name|ChangeEditApi
+name|edit
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -1162,6 +1172,20 @@ DECL|method|getEdit ()
 specifier|public
 name|EditInfo
 name|getEdit
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|edit ()
+specifier|public
+name|ChangeEditApi
+name|edit
 parameter_list|()
 block|{
 throw|throw

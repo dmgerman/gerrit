@@ -4789,7 +4789,10 @@ return|;
 block|}
 DECL|method|getEdit (String id)
 specifier|protected
+name|Optional
+argument_list|<
 name|EditInfo
+argument_list|>
 name|getEdit
 parameter_list|(
 name|String
@@ -4809,7 +4812,10 @@ argument_list|(
 name|id
 argument_list|)
 operator|.
-name|getEdit
+name|edit
+argument_list|()
+operator|.
+name|get
 argument_list|()
 return|;
 block|}

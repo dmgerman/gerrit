@@ -170,6 +170,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|EditInfoSubject
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|group
@@ -941,6 +959,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -2801,7 +2829,10 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
+name|Optional
+argument_list|<
 name|EditInfo
+argument_list|>
 name|edit
 init|=
 name|getEdit
@@ -2817,7 +2848,7 @@ argument_list|(
 name|edit
 argument_list|)
 operator|.
-name|isNull
+name|isAbsent
 argument_list|()
 expr_stmt|;
 comment|// specify edit as option
@@ -2853,9 +2884,22 @@ argument_list|(
 name|edit
 argument_list|)
 operator|.
-name|isNotNull
+name|isPresent
 argument_list|()
 expr_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"OptionalGetWithoutIsPresent"
+argument_list|)
+name|EditInfo
+name|editInfo
+init|=
+name|edit
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|r
 operator|.
 name|assertMessage
@@ -2877,7 +2921,7 @@ argument_list|()
 operator|+
 literal|" "
 operator|+
-name|edit
+name|editInfo
 operator|.
 name|commit
 operator|.
