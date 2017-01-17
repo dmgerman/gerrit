@@ -244,6 +244,29 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|Objects
+operator|.
+name|hash
+argument_list|(
+name|identity
+argument_list|,
+name|emailAddress
+argument_list|,
+name|trusted
+argument_list|,
+name|canDelete
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
