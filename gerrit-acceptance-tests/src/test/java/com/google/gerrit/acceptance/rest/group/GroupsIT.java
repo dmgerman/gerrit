@@ -48,11 +48,11 @@ comment|// See the License for the specific language governing permissions and
 end_comment
 
 begin_comment
-comment|// limitations under the License.
+comment|// limitations under the License
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.restapi
+DECL|package|com.google.gerrit.acceptance.rest.group
 package|package
 name|com
 operator|.
@@ -60,11 +60,29 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|acceptance
 operator|.
-name|restapi
+name|rest
+operator|.
+name|group
 package|;
 end_package
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
+import|;
+end_import
 
 begin_import
 import|import
@@ -72,42 +90,87 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|collect
+name|acceptance
 operator|.
-name|Multimap
+name|AbstractDaemonTest
 import|;
 end_import
 
-begin_comment
-comment|/**  * Optional interface for {@link RestCollection}.  *<p>  * Collections that implement this interface can get to know about the request  * parameters.  */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|RestResponse
+import|;
+end_import
 
-begin_interface
-DECL|interface|NeedsParams
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_class
+DECL|class|GroupsIT
 specifier|public
-interface|interface
-name|NeedsParams
+class|class
+name|GroupsIT
+extends|extends
+name|AbstractDaemonTest
 block|{
-comment|/**    * Sets the request parameter.    *    * @param params the request parameter    */
-DECL|method|setParams (Multimap<String, String> params)
+annotation|@
+name|Test
+DECL|method|invalidQueryOptions ()
+specifier|public
 name|void
-name|setParams
-parameter_list|(
-name|Multimap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|params
-parameter_list|)
+name|invalidQueryOptions
+parameter_list|()
 throws|throws
-name|RestApiException
-function_decl|;
+name|Exception
+block|{
+name|RestResponse
+name|r
+init|=
+name|adminRestSession
+operator|.
+name|put
+argument_list|(
+literal|"/groups/?query=foo&query2=bar"
+argument_list|)
+decl_stmt|;
+name|r
+operator|.
+name|assertBadRequest
+argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|r
+operator|.
+name|getEntityContent
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"\"query\" and \"query2\" options are mutually exclusive"
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 
