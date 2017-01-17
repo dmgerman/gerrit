@@ -901,9 +901,31 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
 name|ConfigInvalidException
+name|e
+parameter_list|)
+block|{
+comment|// This is an error in user input, don't spam logs with a stack trace.
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to load "
+operator|+
+name|pluginConfigFile
+operator|.
+name|toAbsolutePath
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
 name|e
 parameter_list|)
 block|{
