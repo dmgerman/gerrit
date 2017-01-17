@@ -145,6 +145,8 @@ argument_list|<
 name|AccountState
 argument_list|>
 block|{
+annotation|@
+name|Deprecated
 DECL|field|V1
 specifier|static
 specifier|final
@@ -185,6 +187,8 @@ operator|.
 name|USERNAME
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Deprecated
 DECL|field|V2
 specifier|static
 specifier|final
