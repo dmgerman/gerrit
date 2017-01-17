@@ -262,6 +262,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -799,7 +809,7 @@ name|CharMatcher
 operator|.
 name|anyOf
 argument_list|(
-literal|"@.- "
+literal|"@.- /_"
 argument_list|)
 argument_list|)
 operator|.
@@ -840,7 +850,11 @@ init|=
 name|email
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|US
+argument_list|)
 decl_stmt|;
 name|parts
 operator|.
@@ -898,7 +912,11 @@ argument_list|(
 name|name
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|US
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
