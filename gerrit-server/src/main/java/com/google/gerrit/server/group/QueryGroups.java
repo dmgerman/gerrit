@@ -461,6 +461,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// TODO(ekempin): --query in ListGroups is marked as deprecated, once it is
+comment|// removed we want to rename --query2 to --query here.
 comment|/** --query (-q) is already used by {@link ListGroups} */
 annotation|@
 name|Option

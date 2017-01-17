@@ -406,7 +406,7 @@ argument_list|()
 operator|.
 name|addParameter
 argument_list|(
-literal|"q"
+literal|"g"
 argument_list|,
 name|groupName
 argument_list|)
