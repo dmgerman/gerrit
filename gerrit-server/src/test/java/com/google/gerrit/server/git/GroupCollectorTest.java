@@ -106,20 +106,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|ImmutableSet
 import|;
 end_import
@@ -134,7 +120,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|SortedSetMultimap
 import|;
 end_import
 
@@ -375,7 +361,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -468,7 +454,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -581,7 +567,7 @@ name|group
 init|=
 literal|"deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -707,7 +693,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -848,7 +834,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -997,7 +983,7 @@ name|group
 init|=
 literal|"deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -1167,7 +1153,7 @@ name|group2
 init|=
 literal|"1234567812345678123456781234567812345678"
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -1376,7 +1362,7 @@ name|group2b
 init|=
 literal|"ef123456ef123456ef123456ef123456ef123456"
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -1583,7 +1569,7 @@ name|group
 init|=
 literal|"deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -1714,7 +1700,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -1880,7 +1866,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -2081,7 +2067,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -2236,7 +2222,7 @@ name|group2
 init|=
 literal|"1234567812345678123456781234567812345678"
 decl_stmt|;
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -2476,7 +2462,7 @@ argument_list|)
 expr_stmt|;
 comment|// Schema upgrade case: all commits are existing patch sets, but none have
 comment|// groups assigned yet.
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -2725,10 +2711,10 @@ return|return
 name|rw
 return|;
 block|}
-DECL|method|collectGroups ( RevWalk rw, ImmutableMultimap.Builder<ObjectId, PatchSet.Id> patchSetsBySha, ImmutableListMultimap.Builder<PatchSet.Id, String> groupLookup)
+DECL|method|collectGroups ( RevWalk rw, ImmutableListMultimap.Builder<ObjectId, PatchSet.Id> patchSetsBySha, ImmutableListMultimap.Builder<PatchSet.Id, String> groupLookup)
 specifier|private
 specifier|static
-name|Multimap
+name|SortedSetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -2739,7 +2725,7 @@ parameter_list|(
 name|RevWalk
 name|rw
 parameter_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|Builder
 argument_list|<
@@ -2817,10 +2803,9 @@ return|;
 block|}
 comment|// Helper methods for constructing various map arguments, to avoid lots of
 comment|// type specifications.
-DECL|method|patchSets ()
 specifier|private
 specifier|static
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|Builder
 argument_list|<
@@ -2830,11 +2815,12 @@ name|PatchSet
 operator|.
 name|Id
 argument_list|>
+DECL|method|patchSets ()
 name|patchSets
 parameter_list|()
 block|{
 return|return
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|builder
 argument_list|()

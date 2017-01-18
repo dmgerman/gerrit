@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -487,7 +487,7 @@ decl_stmt|;
 DECL|field|accountsToNotify
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -523,7 +523,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( @ssisted @ullable Account account, @Assisted @Nullable String msgTxt, @Assisted NotifyHandling notifyHandling, @Assisted Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|create ( @ssisted @ullable Account account, @Assisted @Nullable String msgTxt, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|AbandonOp
 name|create
 parameter_list|(
@@ -548,7 +548,7 @@ name|notifyHandling
 parameter_list|,
 annotation|@
 name|Assisted
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -562,7 +562,7 @@ function_decl|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|AbandonOp ( AbandonedSender.Factory abandonedSenderFactory, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ChangeAbandoned changeAbandoned, @Assisted @Nullable Account account, @Assisted @Nullable String msgTxt, @Assisted NotifyHandling notifyHandling, @Assisted Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|AbandonOp ( AbandonedSender.Factory abandonedSenderFactory, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ChangeAbandoned changeAbandoned, @Assisted @Nullable Account account, @Assisted @Nullable String msgTxt, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|AbandonOp
 parameter_list|(
 name|AbandonedSender
@@ -600,7 +600,7 @@ name|notifyHandling
 parameter_list|,
 annotation|@
 name|Assisted
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,

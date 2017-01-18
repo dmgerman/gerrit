@@ -76,7 +76,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ArrayListMultimap
+name|ListMultimap
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|MultimapBuilder
 import|;
 end_import
 
@@ -833,7 +833,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-specifier|final
 name|String
 name|sid
 init|=
@@ -845,7 +844,6 @@ operator|.
 name|getSessionId
 argument_list|()
 decl_stmt|;
-specifier|final
 name|CurrentUser
 name|username
 init|=
@@ -857,8 +855,7 @@ operator|.
 name|getUser
 argument_list|()
 decl_stmt|;
-specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -873,7 +870,6 @@ argument_list|,
 name|call
 argument_list|)
 decl_stmt|;
-specifier|final
 name|String
 name|what
 init|=
@@ -884,7 +880,6 @@ argument_list|,
 name|call
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Object
 name|result
 init|=
@@ -967,9 +962,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|extractParams (final Audit note, final GerritCall call)
+DECL|method|extractParams (Audit note, GerritCall call)
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -977,16 +972,14 @@ name|?
 argument_list|>
 name|extractParams
 parameter_list|(
-specifier|final
 name|Audit
 name|note
 parameter_list|,
-specifier|final
 name|GerritCall
 name|call
 parameter_list|)
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -994,9 +987,15 @@ name|Object
 argument_list|>
 name|args
 init|=
-name|ArrayListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 name|Object

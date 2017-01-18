@@ -76,7 +76,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMultimap
+name|ImmutableListMultimap
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -514,7 +514,7 @@ operator|.
 name|entities
 argument_list|()
 decl_stmt|;
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|Builder
 argument_list|<
@@ -526,7 +526,7 @@ name|ChangeControl
 argument_list|>
 name|builder
 init|=
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|builder
 argument_list|()
@@ -570,7 +570,7 @@ name|count
 init|=
 literal|0
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Project
 operator|.

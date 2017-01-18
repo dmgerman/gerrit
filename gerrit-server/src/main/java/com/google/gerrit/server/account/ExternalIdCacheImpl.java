@@ -118,7 +118,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -560,7 +560,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Account
 operator|.
@@ -674,7 +674,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Account
 operator|.
@@ -795,7 +795,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Account
 operator|.
@@ -932,7 +932,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Account
 operator|.
@@ -1217,7 +1217,7 @@ name|open
 argument_list|()
 init|)
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Account
 operator|.

@@ -168,7 +168,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -3823,11 +3823,11 @@ throw|;
 block|}
 block|}
 comment|/**    * Build a note that contains the metadata for and the contents of all of the    * comments in the given comments.    *    * @param comments Comments to be written to the output stream, keyed by patch    *     set ID; multiple patch sets are allowed since base revisions may be    *     shared across patch sets. All of the comments must share the same    *     RevId, and all the comments for a given patch set must have the same    *     side.    * @param out output stream to write to.    */
-DECL|method|buildNote (Multimap<Integer, Comment> comments, OutputStream out)
+DECL|method|buildNote (ListMultimap<Integer, Comment> comments, OutputStream out)
 name|void
 name|buildNote
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Integer
 argument_list|,

@@ -122,7 +122,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -828,7 +828,7 @@ argument_list|>
 name|uuids
 parameter_list|)
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|GroupMembership
 argument_list|,
@@ -1022,7 +1022,7 @@ argument_list|>
 name|uuids
 parameter_list|)
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|GroupMembership
 argument_list|,

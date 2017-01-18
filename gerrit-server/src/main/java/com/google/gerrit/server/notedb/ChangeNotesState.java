@@ -178,7 +178,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -558,7 +558,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, Multimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, Multimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, Multimap<RevId, Comment> publishedComments)
+DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -659,7 +659,7 @@ name|PatchSet
 argument_list|>
 name|patchSets
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|PatchSet
 operator|.
@@ -698,7 +698,7 @@ name|ChangeMessage
 argument_list|>
 name|allChangeMessages
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|PatchSet
 operator|.
@@ -708,7 +708,7 @@ name|ChangeMessage
 argument_list|>
 name|changeMessagesByPatchSet
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevId
 argument_list|,

@@ -92,7 +92,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -518,14 +518,14 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify, ChangeNotes notes, PatchSet patchSet, IdentifiedUser user, ChangeMessage message, List<Comment> comments, String patchSetComment, List<LabelVote> labels)
+DECL|method|create ( NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, ChangeNotes notes, PatchSet patchSet, IdentifiedUser user, ChangeMessage message, List<Comment> comments, String patchSetComment, List<LabelVote> labels)
 name|EmailReviewComments
 name|create
 parameter_list|(
 name|NotifyHandling
 name|notify
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -608,7 +608,7 @@ decl_stmt|;
 DECL|field|accountsToNotify
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -673,7 +673,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailReviewComments ( @endEmailExecutor ExecutorService executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted Multimap<RecipientType, Account.Id> accountsToNotify, @Assisted ChangeNotes notes, @Assisted PatchSet patchSet, @Assisted IdentifiedUser user, @Assisted ChangeMessage message, @Assisted List<Comment> comments, @Nullable @Assisted String patchSetComment, @Assisted List<LabelVote> labels)
+DECL|method|EmailReviewComments ( @endEmailExecutor ExecutorService executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted ChangeNotes notes, @Assisted PatchSet patchSet, @Assisted IdentifiedUser user, @Assisted ChangeMessage message, @Assisted List<Comment> comments, @Nullable @Assisted String patchSetComment, @Assisted List<LabelVote> labels)
 name|EmailReviewComments
 parameter_list|(
 annotation|@
@@ -705,7 +705,7 @@ name|notify
 parameter_list|,
 annotation|@
 name|Assisted
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,

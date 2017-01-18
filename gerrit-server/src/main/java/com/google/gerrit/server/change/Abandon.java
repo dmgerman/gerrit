@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -772,7 +772,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|abandon (ChangeControl control, String msgTxt, NotifyHandling notifyHandling, Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|abandon (ChangeControl control, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|Change
 name|abandon
@@ -786,7 +786,7 @@ parameter_list|,
 name|NotifyHandling
 name|notifyHandling
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -901,7 +901,7 @@ argument_list|()
 return|;
 block|}
 comment|/**    * If an extension has more than one changes to abandon that belong to the    * same project, they should use the batch instead of abandoning one by one.    *<p>    * It's the caller's responsibility to ensure that all jobs inside the same    * batch have the matching project from its ChangeControl. Violations will    * result in a ResourceConflictException.    */
-DECL|method|batchAbandon (Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt, NotifyHandling notifyHandling, Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|batchAbandon (Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|batchAbandon
@@ -926,7 +926,7 @@ parameter_list|,
 name|NotifyHandling
 name|notifyHandling
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,

@@ -172,7 +172,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -1155,7 +1155,7 @@ operator|.
 name|DRAFT
 argument_list|)
 expr_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevId
 argument_list|,

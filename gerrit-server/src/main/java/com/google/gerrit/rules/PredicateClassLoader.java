@@ -88,7 +88,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|SetMultimap
 import|;
 end_import
 
@@ -133,7 +133,7 @@ block|{
 DECL|field|packageClassLoaderMap
 specifier|private
 specifier|final
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,

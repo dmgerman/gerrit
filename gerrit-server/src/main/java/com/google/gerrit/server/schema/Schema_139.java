@@ -90,7 +90,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ArrayListMultimap
+name|ListMultimap
 import|;
 end_import
 
@@ -104,7 +104,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|MultimapBuilder
 import|;
 end_import
 
@@ -642,7 +642,7 @@ name|OrmException
 throws|,
 name|SQLException
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Account
 operator|.
@@ -652,9 +652,15 @@ name|ProjectWatch
 argument_list|>
 name|imports
 init|=
-name|ArrayListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 try|try

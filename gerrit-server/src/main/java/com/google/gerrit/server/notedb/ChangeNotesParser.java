@@ -498,7 +498,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
+name|ListMultimap
 import|;
 end_import
 
@@ -512,7 +512,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|Lists
 import|;
 end_import
 
@@ -1357,7 +1357,7 @@ decl_stmt|;
 DECL|field|comments
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RevId
 argument_list|,
@@ -1442,10 +1442,9 @@ name|ChangeMessage
 argument_list|>
 name|allChangeMessages
 decl_stmt|;
-DECL|field|changeMessagesByPatchSet
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|PatchSet
 operator|.
@@ -1453,6 +1452,7 @@ name|Id
 argument_list|,
 name|ChangeMessage
 argument_list|>
+DECL|field|changeMessagesByPatchSet
 name|changeMessagesByPatchSet
 decl_stmt|;
 comment|// Non-final private members filled in during the parsing process.
@@ -1960,7 +1960,7 @@ return|;
 block|}
 DECL|method|buildApprovals ()
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|PatchSet
 operator|.
@@ -1971,7 +1971,7 @@ argument_list|>
 name|buildApprovals
 parameter_list|()
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|PatchSet
 operator|.
@@ -2227,7 +2227,7 @@ return|;
 block|}
 DECL|method|buildMessagesByPatchSet ()
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|PatchSet
 operator|.

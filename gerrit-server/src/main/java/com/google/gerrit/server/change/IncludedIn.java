@@ -76,7 +76,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -686,7 +686,7 @@ argument_list|,
 name|rev
 argument_list|)
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -713,7 +713,7 @@ range|:
 name|includedIn
 control|)
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

@@ -254,6 +254,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Lists
 import|;
 end_import
@@ -269,20 +283,6 @@ operator|.
 name|collect
 operator|.
 name|Maps
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Multimap
 import|;
 end_import
 
@@ -2083,7 +2083,7 @@ operator|.
 name|NONE
 expr_stmt|;
 block|}
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -2641,7 +2641,7 @@ name|output
 argument_list|)
 return|;
 block|}
-DECL|method|emailReviewers (Change change, List<PostReviewers.Addition> reviewerAdditions, NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|emailReviewers (Change change, List<PostReviewers.Addition> reviewerAdditions, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|private
 name|void
 name|emailReviewers
@@ -2660,7 +2660,7 @@ parameter_list|,
 name|NotifyHandling
 name|notify
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -4875,7 +4875,7 @@ decl_stmt|;
 DECL|field|accountsToNotify
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -4972,7 +4972,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|Op (PatchSet.Id psId, ReviewInput in, Multimap<RecipientType, Account.Id> accountsToNotify, List<PostReviewers.Addition> reviewerResults)
+DECL|method|Op (PatchSet.Id psId, ReviewInput in, ListMultimap<RecipientType, Account.Id> accountsToNotify, List<PostReviewers.Addition> reviewerResults)
 specifier|private
 name|Op
 parameter_list|(
@@ -4984,7 +4984,7 @@ parameter_list|,
 name|ReviewInput
 name|in
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,

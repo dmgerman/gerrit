@@ -76,7 +76,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -613,12 +613,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setParams (Multimap<String, String> params)
+DECL|method|setParams (ListMultimap<String, String> params)
 specifier|public
 name|void
 name|setParams
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

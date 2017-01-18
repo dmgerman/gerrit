@@ -202,7 +202,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|MultimapBuilder
 import|;
 end_import
 
@@ -216,7 +216,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|MultimapBuilder
+name|SetMultimap
 import|;
 end_import
 
@@ -1199,7 +1199,7 @@ name|tip
 decl_stmt|;
 DECL|field|patchSetsBySha
 specifier|private
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|ObjectId
 argument_list|,

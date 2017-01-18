@@ -156,21 +156,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ArrayListMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableMultimap
+name|ImmutableListMultimap
 import|;
 end_import
 
@@ -198,7 +184,21 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|MultimapBuilder
 import|;
 end_import
 
@@ -1310,8 +1310,7 @@ argument_list|(
 literal|"Rebuilding the NoteDb"
 argument_list|)
 expr_stmt|;
-specifier|final
-name|ImmutableMultimap
+name|ImmutableListMultimap
 argument_list|<
 name|Project
 operator|.
@@ -1886,7 +1885,7 @@ return|;
 block|}
 DECL|method|getChangesByProject ()
 specifier|private
-name|ImmutableMultimap
+name|ImmutableListMultimap
 argument_list|<
 name|Project
 operator|.
@@ -1903,7 +1902,7 @@ name|OrmException
 block|{
 comment|// Memorize all changes so we can close the db connection and allow
 comment|// rebuilder threads to use the full connection pool.
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Project
 operator|.
@@ -1915,9 +1914,15 @@ name|Id
 argument_list|>
 name|changesByProject
 init|=
-name|ArrayListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 try|try
@@ -2122,7 +2127,7 @@ block|}
 block|}
 block|}
 return|return
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|copyOf
 argument_list|(
@@ -2131,7 +2136,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|rebuildProject (ReviewDb db, ImmutableMultimap<Project.NameKey, Change.Id> allChanges, Project.NameKey project, Repository allUsersRepo)
+DECL|method|rebuildProject (ReviewDb db, ImmutableListMultimap<Project.NameKey, Change.Id> allChanges, Project.NameKey project, Repository allUsersRepo)
 specifier|private
 name|boolean
 name|rebuildProject
@@ -2139,7 +2144,7 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 argument_list|<
 name|Project
 operator|.

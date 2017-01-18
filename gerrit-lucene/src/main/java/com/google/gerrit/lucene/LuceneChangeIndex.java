@@ -234,20 +234,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ArrayListMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Collections2
 import|;
 end_import
@@ -290,7 +276,21 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|MultimapBuilder
 import|;
 end_import
 
@@ -3094,7 +3094,7 @@ block|}
 DECL|method|fields (Document doc, Set<String> fields)
 specifier|private
 specifier|static
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3112,7 +3112,7 @@ argument_list|>
 name|fields
 parameter_list|)
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3120,17 +3120,23 @@ name|IndexableField
 argument_list|>
 name|stored
 init|=
-name|ArrayListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
 argument_list|(
 name|fields
 operator|.
 name|size
 argument_list|()
-argument_list|,
+argument_list|)
+operator|.
+name|arrayListValues
+argument_list|(
 literal|4
 argument_list|)
+operator|.
+name|build
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -3173,12 +3179,12 @@ return|return
 name|stored
 return|;
 block|}
-DECL|method|toChangeData (Multimap<String, IndexableField> doc, Set<String> fields, String idFieldName)
+DECL|method|toChangeData (ListMultimap<String, IndexableField> doc, Set<String> fields, String idFieldName)
 specifier|private
 name|ChangeData
 name|toChangeData
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3593,12 +3599,12 @@ return|return
 name|cd
 return|;
 block|}
-DECL|method|decodePatchSets (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodePatchSets (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodePatchSets
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3647,12 +3653,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|decodeApprovals (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodeApprovals (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodeApprovals
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3681,12 +3687,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|decodeChangedLines (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodeChangedLines (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodeChangedLines
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3778,12 +3784,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|decodeMergeable (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodeMergeable (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodeMergeable
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3866,12 +3872,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|decodeReviewedBy (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodeReviewedBy (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodeReviewedBy
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3984,12 +3990,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|decodeHashtags (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodeHashtags (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodeHashtags
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4060,12 +4066,12 @@ name|hashtags
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|decodeStar (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodeStar (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodeStar
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4090,7 +4096,7 @@ argument_list|(
 name|STAR_FIELD
 argument_list|)
 decl_stmt|;
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Account
 operator|.
@@ -4100,9 +4106,15 @@ name|String
 argument_list|>
 name|stars
 init|=
-name|ArrayListMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 for|for
@@ -4162,12 +4174,12 @@ name|stars
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|decodeReviewers (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodeReviewers (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodeReviewers
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4209,12 +4221,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|decodeSubmitRecords (Multimap<String, IndexableField> doc, String field, SubmitRuleOptions opts, ChangeData cd)
+DECL|method|decodeSubmitRecords (ListMultimap<String, IndexableField> doc, String field, SubmitRuleOptions opts, ChangeData cd)
 specifier|private
 name|void
 name|decodeSubmitRecords
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4264,12 +4276,12 @@ name|cd
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|decodeRefStates (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodeRefStates (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodeRefStates
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4297,12 +4309,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|decodeRefStatePatterns (Multimap<String, IndexableField> doc, ChangeData cd)
+DECL|method|decodeRefStatePatterns (ListMultimap<String, IndexableField> doc, ChangeData cd)
 specifier|private
 name|void
 name|decodeRefStatePatterns
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4330,7 +4342,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|decodeProtos (Multimap<String, IndexableField> doc, String fieldName, ProtobufCodec<T> codec)
+DECL|method|decodeProtos ( ListMultimap<String, IndexableField> doc, String fieldName, ProtobufCodec<T> codec)
 specifier|private
 specifier|static
 parameter_list|<
@@ -4342,7 +4354,7 @@ name|T
 argument_list|>
 name|decodeProtos
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

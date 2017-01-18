@@ -92,7 +92,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -1160,7 +1160,7 @@ block|}
 block|}
 block|}
 comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications    *        should be sent after the change edit is published.    * @param accountsToNotify Accounts that should be notified after the change    *        edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
-DECL|method|publish (final ChangeEdit edit, NotifyHandling notify, Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|publish (final ChangeEdit edit, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|publish
@@ -1172,7 +1172,7 @@ parameter_list|,
 name|NotifyHandling
 name|notify
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,

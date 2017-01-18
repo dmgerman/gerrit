@@ -174,7 +174,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMultimap
+name|ImmutableListMultimap
 import|;
 end_import
 
@@ -1447,7 +1447,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|()
@@ -1496,7 +1496,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|()
@@ -1548,7 +1548,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|()
@@ -1634,7 +1634,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|()
@@ -1672,7 +1672,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|()
@@ -1721,7 +1721,7 @@ name|SHA1
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|()
@@ -1795,7 +1795,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -1867,7 +1867,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -1927,7 +1927,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -2027,7 +2027,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -2099,7 +2099,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(
@@ -2159,7 +2159,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|ImmutableMultimap
+name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|(

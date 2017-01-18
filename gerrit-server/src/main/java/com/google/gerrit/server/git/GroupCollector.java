@@ -178,20 +178,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|MultimapBuilder
 import|;
 end_import
@@ -647,7 +633,7 @@ block|}
 DECL|field|patchSetsBySha
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -660,7 +646,7 @@ decl_stmt|;
 DECL|field|groups
 specifier|private
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -690,13 +676,13 @@ specifier|private
 name|boolean
 name|done
 decl_stmt|;
-DECL|method|create (Multimap<ObjectId, Ref> changeRefsById, final ReviewDb db, final PatchSetUtil psUtil, final ChangeNotes.Factory notesFactory, final Project.NameKey project)
+DECL|method|create (ListMultimap<ObjectId, Ref> changeRefsById, ReviewDb db, PatchSetUtil psUtil, ChangeNotes.Factory notesFactory, Project.NameKey project)
 specifier|public
 specifier|static
 name|GroupCollector
 name|create
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -704,21 +690,17 @@ name|Ref
 argument_list|>
 name|changeRefsById
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|PatchSetUtil
 name|psUtil
 parameter_list|,
-specifier|final
 name|ChangeNotes
 operator|.
 name|Factory
 name|notesFactory
 parameter_list|,
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -804,13 +786,13 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|createForSchemaUpgradeOnly ( Multimap<ObjectId, Ref> changeRefsById, final ReviewDb db)
+DECL|method|createForSchemaUpgradeOnly ( ListMultimap<ObjectId, Ref> changeRefsById, ReviewDb db)
 specifier|public
 specifier|static
 name|GroupCollector
 name|createForSchemaUpgradeOnly
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -818,7 +800,6 @@ name|Ref
 argument_list|>
 name|changeRefsById
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
@@ -883,11 +864,11 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|GroupCollector ( Multimap<ObjectId, PatchSet.Id> patchSetsBySha, Lookup groupLookup)
+DECL|method|GroupCollector ( ListMultimap<ObjectId, PatchSet.Id> patchSetsBySha, Lookup groupLookup)
 specifier|private
 name|GroupCollector
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -940,10 +921,10 @@ name|build
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|transformRefs ( Multimap<ObjectId, Ref> refs)
+DECL|method|transformRefs ( ListMultimap<ObjectId, Ref> refs)
 specifier|private
 specifier|static
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -953,7 +934,7 @@ name|Id
 argument_list|>
 name|transformRefs
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -987,10 +968,10 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|GroupCollector ( Multimap<ObjectId, PatchSet.Id> patchSetsBySha, final ListMultimap<PatchSet.Id, String> groupLookup)
+DECL|method|GroupCollector ( ListMultimap<ObjectId, PatchSet.Id> patchSetsBySha, ListMultimap<PatchSet.Id, String> groupLookup)
 name|GroupCollector
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|ObjectId
 argument_list|,
@@ -1000,7 +981,6 @@ name|Id
 argument_list|>
 name|patchSetsBySha
 parameter_list|,
-specifier|final
 name|ListMultimap
 argument_list|<
 name|PatchSet

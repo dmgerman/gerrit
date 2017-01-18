@@ -220,7 +220,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -1523,7 +1523,7 @@ name|projectName
 argument_list|)
 expr_stmt|;
 block|}
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

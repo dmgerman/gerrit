@@ -122,7 +122,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Maps
+name|ListMultimap
 import|;
 end_import
 
@@ -136,7 +136,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|Maps
 import|;
 end_import
 
@@ -717,7 +717,7 @@ expr_stmt|;
 block|}
 DECL|method|buildCommentMap ()
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Integer
 argument_list|,
@@ -726,7 +726,7 @@ argument_list|>
 name|buildCommentMap
 parameter_list|()
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Integer
 argument_list|,
@@ -848,7 +848,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Integer
 argument_list|,

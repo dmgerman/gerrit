@@ -74,7 +74,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -100,7 +100,7 @@ name|SshAuditEvent
 extends|extends
 name|AuditEvent
 block|{
-DECL|method|SshAuditEvent (String sessionId, CurrentUser who, String what, long when, Multimap<String, ?> params, Object result)
+DECL|method|SshAuditEvent (String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, Object result)
 specifier|public
 name|SshAuditEvent
 parameter_list|(
@@ -116,7 +116,7 @@ parameter_list|,
 name|long
 name|when
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

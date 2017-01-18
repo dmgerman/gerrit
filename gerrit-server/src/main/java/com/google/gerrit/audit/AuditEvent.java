@@ -116,7 +116,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ImmutableListMultimap
 import|;
 end_import
 
@@ -130,7 +130,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|MultimapBuilder
+name|ListMultimap
 import|;
 end_import
 
@@ -181,7 +181,7 @@ DECL|field|EMPTY_PARAMS
 specifier|protected
 specifier|static
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -189,15 +189,9 @@ name|?
 argument_list|>
 name|EMPTY_PARAMS
 init|=
-name|MultimapBuilder
+name|ImmutableListMultimap
 operator|.
-name|hashKeys
-argument_list|()
-operator|.
-name|hashSetValues
-argument_list|()
-operator|.
-name|build
+name|of
 argument_list|()
 decl_stmt|;
 DECL|field|sessionId
@@ -227,7 +221,7 @@ decl_stmt|;
 DECL|field|params
 specifier|public
 specifier|final
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -309,7 +303,7 @@ parameter_list|()
 function_decl|;
 block|}
 comment|/**    * Creates a new audit event with results    *    * @param sessionId session id the event belongs to    * @param who principal that has generated the event    * @param what object of the event    * @param when time-stamp of when the event started    * @param params parameters of the event    * @param result result of the event    */
-DECL|method|AuditEvent (String sessionId, CurrentUser who, String what, long when, Multimap<String, ?> params, Object result)
+DECL|method|AuditEvent (String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, Object result)
 specifier|public
 name|AuditEvent
 parameter_list|(
@@ -325,7 +319,7 @@ parameter_list|,
 name|long
 name|when
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

@@ -216,7 +216,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|Ordering
 import|;
 end_import
 
@@ -230,7 +230,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Ordering
+name|SetMultimap
 import|;
 end_import
 
@@ -2665,7 +2665,7 @@ name|void
 name|rescan
 parameter_list|()
 block|{
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3194,12 +3194,12 @@ return|return
 name|sortedPlugins
 return|;
 block|}
-DECL|method|syncDisabledPlugins (Multimap<String, Path> jars)
+DECL|method|syncDisabledPlugins (SetMultimap<String, Path> jars)
 specifier|private
 name|void
 name|syncDisabledPlugins
 parameter_list|(
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3448,12 +3448,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|stopRemovedPlugins (Multimap<String, Path> jars)
+DECL|method|stopRemovedPlugins (SetMultimap<String, Path> jars)
 specifier|private
 name|void
 name|stopRemovedPlugins
 parameter_list|(
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -3563,12 +3563,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|dropRemovedDisabledPlugins (Multimap<String, Path> jars)
+DECL|method|dropRemovedDisabledPlugins (SetMultimap<String, Path> jars)
 specifier|private
 name|void
 name|dropRemovedDisabledPlugins
 parameter_list|(
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4199,7 +4199,7 @@ block|}
 block|}
 comment|// Only one active plugin per plugin name can exist for each plugin name.
 comment|// Filter out disabled plugins and transform the multimap to a map
-DECL|method|filterDisabled ( Multimap<String, Path> pluginPaths)
+DECL|method|filterDisabled ( SetMultimap<String, Path> pluginPaths)
 specifier|private
 specifier|static
 name|Map
@@ -4210,7 +4210,7 @@ name|Path
 argument_list|>
 name|filterDisabled
 parameter_list|(
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4320,7 +4320,7 @@ comment|// NOTE: Bear in mind that the plugin name can be reassigned after load 
 comment|//       Server plugin provider.
 DECL|method|prunePlugins (Path pluginsDir)
 specifier|public
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4343,7 +4343,7 @@ argument_list|(
 name|pluginsDir
 argument_list|)
 decl_stmt|;
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4748,7 +4748,7 @@ return|;
 block|}
 DECL|method|asMultimap (List<Path> plugins)
 specifier|private
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4763,7 +4763,7 @@ argument_list|>
 name|plugins
 parameter_list|)
 block|{
-name|Multimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,

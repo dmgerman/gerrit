@@ -42,7 +42,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|LinkedHashMultimap
+name|ListMultimap
 import|;
 end_import
 
@@ -70,7 +70,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|MultimapBuilder
 import|;
 end_import
 
@@ -1220,7 +1220,7 @@ parameter_list|)
 throws|throws
 name|CmdLineException
 block|{
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -1228,9 +1228,15 @@ name|String
 argument_list|>
 name|map
 init|=
-name|LinkedHashMultimap
+name|MultimapBuilder
 operator|.
-name|create
+name|hashKeys
+argument_list|()
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 for|for
@@ -1283,12 +1289,12 @@ name|map
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseOptionMap (Multimap<String, String> params)
+DECL|method|parseOptionMap (ListMultimap<String, String> params)
 specifier|public
 name|void
 name|parseOptionMap
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,

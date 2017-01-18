@@ -158,7 +158,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -944,7 +944,7 @@ name|ALL
 decl_stmt|;
 DECL|field|accountsToNotify
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
@@ -1295,12 +1295,12 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setAccountsToNotify ( Multimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|setAccountsToNotify ( ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|PatchSetInserter
 name|setAccountsToNotify
 parameter_list|(
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,

@@ -208,20 +208,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|MultimapBuilder
 import|;
 end_import
@@ -876,7 +862,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|isStale ( GitRepositoryManager repoManager, Change.Id id, Change indexChange, @Nullable Change reviewDbChange, SetMultimap<Project.NameKey, RefState> states, Multimap<Project.NameKey, RefStatePattern> patterns)
+DECL|method|isStale ( GitRepositoryManager repoManager, Change.Id id, Change indexChange, @Nullable Change reviewDbChange, SetMultimap<Project.NameKey, RefState> states, ListMultimap<Project.NameKey, RefStatePattern> patterns)
 specifier|public
 specifier|static
 name|boolean
@@ -908,7 +894,7 @@ name|RefState
 argument_list|>
 name|states
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Project
 operator|.
@@ -941,7 +927,7 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|refsAreStale (GitRepositoryManager repoManager, Change.Id id, SetMultimap<Project.NameKey, RefState> states, Multimap<Project.NameKey, RefStatePattern> patterns)
+DECL|method|refsAreStale (GitRepositoryManager repoManager, Change.Id id, SetMultimap<Project.NameKey, RefState> states, ListMultimap<Project.NameKey, RefStatePattern> patterns)
 specifier|static
 name|boolean
 name|refsAreStale
@@ -964,7 +950,7 @@ name|RefState
 argument_list|>
 name|states
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Project
 operator|.
@@ -1328,7 +1314,7 @@ return|;
 block|}
 DECL|method|parsePatterns ( ChangeData cd)
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Project
 operator|.
@@ -1503,7 +1489,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|refsAreStale (GitRepositoryManager repoManager, Change.Id id, Project.NameKey project, SetMultimap<Project.NameKey, RefState> allStates, Multimap<Project.NameKey, RefStatePattern> allPatterns)
+DECL|method|refsAreStale (GitRepositoryManager repoManager, Change.Id id, Project.NameKey project, SetMultimap<Project.NameKey, RefState> allStates, ListMultimap<Project.NameKey, RefStatePattern> allPatterns)
 specifier|private
 specifier|static
 name|boolean
@@ -1532,7 +1518,7 @@ name|RefState
 argument_list|>
 name|allStates
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|Project
 operator|.

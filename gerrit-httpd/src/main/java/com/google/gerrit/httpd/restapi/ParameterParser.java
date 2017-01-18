@@ -196,7 +196,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|ListMultimap
 import|;
 end_import
 
@@ -492,7 +492,7 @@ operator|=
 name|pf
 expr_stmt|;
 block|}
-DECL|method|parse (T param, Multimap<String, String> in, HttpServletRequest req, HttpServletResponse res)
+DECL|method|parse (T param, ListMultimap<String, String> in, HttpServletRequest req, HttpServletResponse res)
 parameter_list|<
 name|T
 parameter_list|>
@@ -502,7 +502,7 @@ parameter_list|(
 name|T
 name|param
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -671,7 +671,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|splitQueryString (String queryString, Multimap<String, String> config, Multimap<String, String> params)
+DECL|method|splitQueryString (String queryString, ListMultimap<String, String> config, ListMultimap<String, String> params)
 specifier|static
 name|void
 name|splitQueryString
@@ -679,7 +679,7 @@ parameter_list|(
 name|String
 name|queryString
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -687,7 +687,7 @@ name|String
 argument_list|>
 name|config
 parameter_list|,
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|String
 argument_list|,
