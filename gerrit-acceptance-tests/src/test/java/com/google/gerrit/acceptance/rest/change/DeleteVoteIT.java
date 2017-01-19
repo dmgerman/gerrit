@@ -136,7 +136,7 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gson
 operator|.
 name|reflect
 operator|.
