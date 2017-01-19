@@ -1119,6 +1119,7 @@ return|;
 block|}
 block|}
 DECL|class|AllKey
+specifier|public
 specifier|static
 class|class
 name|AllKey
