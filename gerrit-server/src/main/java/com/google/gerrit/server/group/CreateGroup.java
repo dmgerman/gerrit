@@ -768,6 +768,12 @@ specifier|final
 name|AddMembers
 name|addMembers
 decl_stmt|;
+DECL|field|systemGroupBackend
+specifier|private
+specifier|final
+name|SystemGroupBackend
+name|systemGroupBackend
+decl_stmt|;
 DECL|field|defaultVisibleToAll
 specifier|private
 specifier|final
@@ -782,7 +788,7 @@ name|name
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateGroup ( Provider<IdentifiedUser> self, @GerritPersonIdent PersonIdent serverIdent, ReviewDb db, GroupCache groupCache, GroupsCollection groups, GroupJson json, DynamicSet<GroupCreationValidationListener> groupCreationValidationListeners, AddMembers addMembers, @GerritServerConfig Config cfg, @Assisted String name)
+DECL|method|CreateGroup ( Provider<IdentifiedUser> self, @GerritPersonIdent PersonIdent serverIdent, ReviewDb db, GroupCache groupCache, GroupsCollection groups, GroupJson json, DynamicSet<GroupCreationValidationListener> groupCreationValidationListeners, AddMembers addMembers, SystemGroupBackend systemGroupBackend, @GerritServerConfig Config cfg, @Assisted String name)
 name|CreateGroup
 parameter_list|(
 name|Provider
@@ -816,6 +822,9 @@ name|groupCreationValidationListeners
 parameter_list|,
 name|AddMembers
 name|addMembers
+parameter_list|,
+name|SystemGroupBackend
+name|systemGroupBackend
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -875,6 +884,12 @@ operator|.
 name|addMembers
 operator|=
 name|addMembers
+expr_stmt|;
+name|this
+operator|.
+name|systemGroupBackend
+operator|=
+name|systemGroupBackend
 expr_stmt|;
 name|this
 operator|.
@@ -1325,7 +1340,7 @@ control|(
 name|String
 name|name
 range|:
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getNames
 argument_list|()

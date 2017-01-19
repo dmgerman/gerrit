@@ -668,7 +668,7 @@ name|owners
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AllProjectsCreator ( GitRepositoryManager mgr, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser)
+DECL|method|AllProjectsCreator ( GitRepositoryManager mgr, AllProjectsName allProjectsName, SystemGroupBackend systemGroupBackend, @GerritPersonIdent PersonIdent serverUser)
 name|AllProjectsCreator
 parameter_list|(
 name|GitRepositoryManager
@@ -676,6 +676,9 @@ name|mgr
 parameter_list|,
 name|AllProjectsName
 name|allProjectsName
+parameter_list|,
+name|SystemGroupBackend
+name|systemGroupBackend
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -705,7 +708,7 @@ name|this
 operator|.
 name|anonymous
 operator|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(
@@ -716,7 +719,7 @@ name|this
 operator|.
 name|registered
 operator|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(
@@ -727,7 +730,7 @@ name|this
 operator|.
 name|owners
 operator|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(
