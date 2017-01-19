@@ -570,6 +570,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|validators
+operator|.
+name|OnSubmitValidators
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
@@ -998,6 +1016,13 @@ operator|.
 name|Factory
 name|rebaseFactory
 decl_stmt|;
+DECL|field|onSubmitValidatorsFactory
+specifier|final
+name|OnSubmitValidators
+operator|.
+name|Factory
+name|onSubmitValidatorsFactory
+decl_stmt|;
 DECL|field|tagCache
 specifier|final
 name|TagCache
@@ -1112,7 +1137,7 @@ name|dryrun
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, TagCache tagCache, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commits, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commits, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted ObjectInserter inserter, @Assisted Repository repo, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1171,6 +1196,11 @@ name|RebaseChangeOp
 operator|.
 name|Factory
 name|rebaseFactory
+parameter_list|,
+name|OnSubmitValidators
+operator|.
+name|Factory
+name|onSubmitValidatorsFactory
 parameter_list|,
 name|TagCache
 name|tagCache
@@ -1502,6 +1532,12 @@ name|create
 argument_list|(
 name|project
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|onSubmitValidatorsFactory
+operator|=
+name|onSubmitValidatorsFactory
 expr_stmt|;
 block|}
 block|}
