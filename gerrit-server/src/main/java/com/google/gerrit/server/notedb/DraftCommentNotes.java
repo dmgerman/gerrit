@@ -1268,6 +1268,8 @@ name|Repository
 name|repo
 parameter_list|)
 throws|throws
+name|NoSuchChangeException
+throws|,
 name|IOException
 block|{
 if|if
@@ -1437,6 +1439,8 @@ name|Repository
 name|repo
 parameter_list|)
 throws|throws
+name|NoSuchChangeException
+throws|,
 name|IOException
 block|{
 name|Timer1

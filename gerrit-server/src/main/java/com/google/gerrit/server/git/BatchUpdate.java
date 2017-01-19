@@ -5482,13 +5482,62 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+name|boolean
+name|isNew
+init|=
+name|c
+operator|!=
+literal|null
+decl_stmt|;
+name|PrimaryStorage
+name|defaultStorage
+init|=
+name|notesMigration
+operator|.
+name|changePrimaryStorage
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|c
-operator|==
-literal|null
+name|isNew
 condition|)
 block|{
+comment|// New change: populate noteDbState.
+name|checkState
+argument_list|(
+name|c
+operator|.
+name|getNoteDbState
+argument_list|()
+operator|==
+literal|null
+argument_list|,
+literal|"noteDbState should not be filled in by callers"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|defaultStorage
+operator|==
+name|PrimaryStorage
+operator|.
+name|NOTE_DB
+condition|)
+block|{
+name|c
+operator|.
+name|setNoteDbState
+argument_list|(
+name|NoteDbChangeState
+operator|.
+name|NOTE_DB_PRIMARY_STATE
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|// Existing change.
 name|c
 operator|=
 name|ChangeNotes
@@ -5507,6 +5556,15 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|defaultStorage
+operator|==
+name|PrimaryStorage
+operator|.
+name|REVIEW_DB
+condition|)
+block|{
 name|logDebug
 argument_list|(
 literal|"Failed to get change {} from unwrapped db"
@@ -5522,6 +5580,37 @@ name|id
 argument_list|)
 throw|;
 block|}
+comment|// Not in ReviewDb, but new changes are created with default primary
+comment|// storage as NOTE_DB, so we can assume that a missing change is
+comment|// NoteDb primary. Pass a synthetic change into ChangeNotes.Factory,
+comment|// which lets ChangeNotes take care of the existence check.
+comment|//
+comment|// TODO(dborowitz): This assumption is potentially risky, because
+comment|// it means once we turn this option on and start creating changes
+comment|// without writing anything to ReviewDb, we can't turn this option
+comment|// back off without making those changes inaccessible. The problem
+comment|// is we have no way of distinguishing a change that only exists in
+comment|// NoteDb because it only ever existed in NoteDb, from a change that
+comment|// only exists in NoteDb because it used to exist in ReviewDb and
+comment|// deleting from ReviewDb succeeded but deleting from NoteDb failed.
+comment|//
+comment|// TODO(dborowitz): We actually still have that problem anyway. Maybe
+comment|// we need a cutoff timestamp? Or maybe we need to start leaving
+comment|// tombstones in ReviewDb?
+name|c
+operator|=
+name|ChangeNotes
+operator|.
+name|Factory
+operator|.
+name|newNoteDbOnlyChange
+argument_list|(
+name|project
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 name|NoteDbChangeState
 operator|.
 name|checkNotReadOnly
@@ -5532,9 +5621,6 @@ name|skewMs
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Pass in preloaded change to controlFor, to avoid:
-comment|//  - reading from a db that does not belong to this update
-comment|//  - attempting to read a change that doesn't exist yet
 name|ChangeNotes
 name|notes
 init|=
@@ -5543,6 +5629,9 @@ operator|.
 name|createForBatchUpdate
 argument_list|(
 name|c
+argument_list|,
+operator|!
+name|isNew
 argument_list|)
 decl_stmt|;
 name|ChangeControl

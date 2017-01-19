@@ -126,6 +126,10 @@ comment|/** Reading and writing all data to NoteDb is enabled. */
 DECL|enumConstant|READ_WRITE
 name|READ_WRITE
 block|,
+comment|/** Changes are created with their primary storage as NoteDb. */
+DECL|enumConstant|PRIMARY
+name|PRIMARY
+block|,
 comment|/**    * Run tests with NoteDb disabled, then convert ReviewDb to NoteDb and check    * that the results match.    */
 DECL|enumConstant|CHECK
 name|CHECK
@@ -302,6 +306,11 @@ name|get
 argument_list|()
 operator|==
 name|READ_WRITE
+operator|||
+name|get
+argument_list|()
+operator|==
+name|PRIMARY
 return|;
 block|}
 block|}

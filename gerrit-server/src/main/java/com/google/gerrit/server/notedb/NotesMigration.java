@@ -66,6 +66,24 @@ name|notedb
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NoteDbChangeState
+operator|.
+name|PrimaryStorage
+import|;
+end_import
+
 begin_comment
 comment|/**  * Holds the current state of the NoteDb migration.  *<p>  * The migration will proceed one root entity type at a time. A<em>root  * entity</em> is an entity stored in ReviewDb whose key's  * {@code getParentKey()} method returns null. For an example of the entity  * hierarchy rooted at Change, see the diagram in  * {@code com.google.gerrit.reviewdb.client.Change}.  *<p>  * During a transitional period, each root entity group from ReviewDb may be  * either<em>written to</em> or<em>both written to and read from</em> NoteDb.  *<p>  * This class controls the state of the migration according to options in  * {@code gerrit.config}. In general, any changes to these options should only  * be made by adventurous administrators, who know what they're doing, on  * non-production data, for the purposes of testing the NoteDb implementation.  * Changing options quite likely requires re-running {@code RebuildNoteDb}. For  * these reasons, the options remain undocumented.  */
 end_comment
@@ -99,6 +117,14 @@ specifier|public
 specifier|abstract
 name|boolean
 name|readChangeSequence
+parameter_list|()
+function_decl|;
+comment|/** @return default primary storage for new changes. */
+DECL|method|changePrimaryStorage ()
+specifier|public
+specifier|abstract
+name|PrimaryStorage
+name|changePrimaryStorage
 parameter_list|()
 function_decl|;
 DECL|method|readAccounts ()
