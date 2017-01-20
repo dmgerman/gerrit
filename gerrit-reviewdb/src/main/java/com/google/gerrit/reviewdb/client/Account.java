@@ -195,7 +195,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_REST
 init|=
-literal|"[a-zA-Z0-9._-]"
+literal|"[a-zA-Z0-9._@-]"
 decl_stmt|;
 DECL|field|USER_NAME_PATTERN_LAST
 specifier|public
