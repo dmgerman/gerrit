@@ -233,6 +233,28 @@ name|String
 name|htmlContent
 parameter_list|()
 function_decl|;
+comment|// Raw content as received over the wire
+annotation|@
+name|Nullable
+DECL|method|rawContent ()
+specifier|public
+specifier|abstract
+name|ImmutableList
+argument_list|<
+name|Integer
+argument_list|>
+name|rawContent
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|rawContentUTF ()
+specifier|public
+specifier|abstract
+name|String
+name|rawContentUTF
+parameter_list|()
+function_decl|;
 DECL|method|builder ()
 specifier|public
 specifier|static
@@ -248,6 +270,13 @@ name|Builder
 argument_list|()
 return|;
 block|}
+DECL|method|toBuilder ()
+specifier|public
+specifier|abstract
+name|Builder
+name|toBuilder
+parameter_list|()
+function_decl|;
 annotation|@
 name|AutoValue
 operator|.
@@ -413,6 +442,29 @@ specifier|public
 specifier|abstract
 name|Builder
 name|htmlContent
+parameter_list|(
+name|String
+name|val
+parameter_list|)
+function_decl|;
+DECL|method|rawContent (ImmutableList<Integer> val)
+specifier|public
+specifier|abstract
+name|Builder
+name|rawContent
+parameter_list|(
+name|ImmutableList
+argument_list|<
+name|Integer
+argument_list|>
+name|val
+parameter_list|)
+function_decl|;
+DECL|method|rawContentUTF (String val)
+specifier|public
+specifier|abstract
+name|Builder
+name|rawContentUTF
 parameter_list|(
 name|String
 name|val
