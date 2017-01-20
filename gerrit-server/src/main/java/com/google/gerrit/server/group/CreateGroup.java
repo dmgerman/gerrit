@@ -1320,23 +1320,15 @@ throws|,
 name|IOException
 block|{
 comment|// Do not allow creating groups with the same name as system groups
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|sysGroupNames
-init|=
-name|SystemGroupBackend
-operator|.
-name|getNames
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|String
 name|name
 range|:
-name|sysGroupNames
+name|SystemGroupBackend
+operator|.
+name|getNames
+argument_list|()
 control|)
 block|{
 if|if
