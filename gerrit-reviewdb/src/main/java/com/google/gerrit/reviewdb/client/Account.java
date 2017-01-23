@@ -548,6 +548,23 @@ specifier|protected
 name|boolean
 name|inactive
 decl_stmt|;
+comment|/** The user-settable status of this account (e.g. busy, OOO, available) */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|8
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|status
+specifier|protected
+name|String
+name|status
+decl_stmt|;
 comment|/**<i>computed</i> the username selected from the identities. */
 DECL|field|userName
 specifier|protected
@@ -886,6 +903,32 @@ name|inactive
 operator|=
 operator|!
 name|active
+expr_stmt|;
+block|}
+DECL|method|getStatus ()
+specifier|public
+name|String
+name|getStatus
+parameter_list|()
+block|{
+return|return
+name|status
+return|;
+block|}
+DECL|method|setStatus (String status)
+specifier|public
+name|void
+name|setStatus
+parameter_list|(
+name|String
+name|status
+parameter_list|)
+block|{
+name|this
+operator|.
+name|status
+operator|=
+name|status
 expr_stmt|;
 block|}
 comment|/** @return the computed user name for this account */
