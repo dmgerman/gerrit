@@ -291,6 +291,7 @@ name|NOTE_DB
 init|=
 literal|"noteDb"
 decl_stmt|;
+comment|// All of these names must be reflected in the allowed set in checkConfig.
 DECL|field|PRIMARY_STORAGE
 specifier|private
 specifier|static
@@ -367,6 +368,9 @@ name|t
 operator|.
 name|key
 argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -380,11 +384,25 @@ name|ImmutableSet
 operator|.
 name|of
 argument_list|(
+name|PRIMARY_STORAGE
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|,
 name|READ
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 name|WRITE
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 name|SEQUENCE
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 decl_stmt|;
 for|for
