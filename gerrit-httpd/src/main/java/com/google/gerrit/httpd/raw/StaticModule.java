@@ -2061,7 +2061,7 @@ throw|;
 block|}
 name|sourceRoot
 operator|=
-name|getSourseRootOrNull
+name|getSourceRootOrNull
 argument_list|()
 expr_stmt|;
 name|builder
@@ -2073,11 +2073,11 @@ name|sourceRoot
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getSourseRootOrNull ()
+DECL|method|getSourceRootOrNull ()
 specifier|private
 specifier|static
 name|Path
-name|getSourseRootOrNull
+name|getSourceRootOrNull
 parameter_list|()
 block|{
 try|try
