@@ -1299,7 +1299,7 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|toString
+name|get
 argument_list|()
 expr_stmt|;
 name|a
@@ -2459,7 +2459,7 @@ operator|.
 name|getId
 argument_list|()
 operator|.
-name|toString
+name|get
 argument_list|()
 expr_stmt|;
 name|d

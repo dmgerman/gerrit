@@ -79,7 +79,7 @@ name|id
 decl_stmt|;
 DECL|field|number
 specifier|public
-name|String
+name|int
 name|number
 decl_stmt|;
 DECL|field|revision
