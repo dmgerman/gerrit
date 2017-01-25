@@ -98,6 +98,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -126,8 +140,8 @@ specifier|public
 interface|interface
 name|TreeModification
 block|{
-comment|/**    * Returns a list of {@code PathEdit}s which are necessary in order to    * achieve the desired modification of the Git tree. The order of the    * {@code PathEdit}s can be crucial and hence shouldn't be changed.    *    * @param repository the affected Git repository    * @return an ordered list of necessary {@code PathEdit}s    * @throws IOException if problems arise when accessing the repository    */
-DECL|method|getPathEdits (Repository repository)
+comment|/**    * Returns a list of {@code PathEdit}s which are necessary in order to    * achieve the desired modification of the Git tree. The order of the    * {@code PathEdit}s can be crucial and hence shouldn't be changed.    *    * @param repository the affected Git repository    * @param baseCommit the commit to whose tree this modification is applied    * @return an ordered list of necessary {@code PathEdit}s    * @throws IOException if problems arise when accessing the repository    */
+DECL|method|getPathEdits (Repository repository, RevCommit baseCommit)
 name|List
 argument_list|<
 name|DirCacheEditor
@@ -138,6 +152,9 @@ name|getPathEdits
 parameter_list|(
 name|Repository
 name|repository
+parameter_list|,
+name|RevCommit
+name|baseCommit
 parameter_list|)
 throws|throws
 name|IOException

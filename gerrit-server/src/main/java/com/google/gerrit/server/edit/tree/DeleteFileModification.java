@@ -98,6 +98,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -151,7 +165,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getPathEdits (Repository repository)
+DECL|method|getPathEdits (Repository repository, RevCommit baseCommit)
 specifier|public
 name|List
 argument_list|<
@@ -163,6 +177,9 @@ name|getPathEdits
 parameter_list|(
 name|Repository
 name|repository
+parameter_list|,
+name|RevCommit
+name|baseCommit
 parameter_list|)
 block|{
 name|DirCacheEditor
