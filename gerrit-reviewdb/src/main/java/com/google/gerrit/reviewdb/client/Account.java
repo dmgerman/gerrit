@@ -277,11 +277,10 @@ specifier|protected
 name|Id
 parameter_list|()
 block|{     }
-DECL|method|Id (final int id)
+DECL|method|Id (int id)
 specifier|public
 name|Id
 parameter_list|(
-specifier|final
 name|int
 name|id
 parameter_list|)
@@ -322,18 +321,16 @@ name|newValue
 expr_stmt|;
 block|}
 comment|/** Parse an Account.Id out of a string representation. */
-DECL|method|parse (final String str)
+DECL|method|parse (String str)
 specifier|public
 specifier|static
 name|Id
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)
 block|{
-specifier|final
 name|Id
 name|r
 init|=
@@ -538,7 +535,7 @@ name|preferredEmail
 decl_stmt|;
 comment|// DELETED: id = 5 (contactFiledOn)
 comment|// DELETED: id = 6 (generalPreferences)
-comment|/** Is this user active */
+comment|/** Is this user inactive? */
 annotation|@
 name|Column
 argument_list|(
@@ -620,12 +617,11 @@ name|fullName
 return|;
 block|}
 comment|/** Set the full name of the user ("Given-name Surname" style). */
-DECL|method|setFullName (final String name)
+DECL|method|setFullName (String name)
 specifier|public
 name|void
 name|setFullName
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -674,12 +670,11 @@ name|preferredEmail
 return|;
 block|}
 comment|/** Set the email address the user prefers to be contacted through. */
-DECL|method|setPreferredEmail (final String addr)
+DECL|method|setPreferredEmail (String addr)
 specifier|public
 name|void
 name|setPreferredEmail
 parameter_list|(
-specifier|final
 name|String
 name|addr
 parameter_list|)
@@ -905,12 +900,11 @@ name|userName
 return|;
 block|}
 comment|/** Update the computed user name property. */
-DECL|method|setUserName (final String userName)
+DECL|method|setUserName (String userName)
 specifier|public
 name|void
 name|setUserName
 parameter_list|(
-specifier|final
 name|String
 name|userName
 parameter_list|)
