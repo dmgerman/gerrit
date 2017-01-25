@@ -506,6 +506,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|AuthException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|BinaryResult
 import|;
 end_import
@@ -5526,6 +5542,15 @@ name|assertOkStatus
 argument_list|()
 expr_stmt|;
 comment|// Try to create edit as admin
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|AuthException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|createEmptyEditFor
 argument_list|(
 name|r1
@@ -5533,17 +5558,6 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|getEdit
-argument_list|(
-name|changeId
-argument_list|)
-argument_list|)
-operator|.
-name|isAbsent
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|createArbitraryEditFor (String changeId)
