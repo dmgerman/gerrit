@@ -180,35 +180,20 @@ name|RestoreFileModification
 implements|implements
 name|TreeModification
 block|{
-DECL|field|currentCommit
-specifier|private
-specifier|final
-name|RevCommit
-name|currentCommit
-decl_stmt|;
 DECL|field|filePath
 specifier|private
 specifier|final
 name|String
 name|filePath
 decl_stmt|;
-DECL|method|RestoreFileModification (RevCommit currentCommit, String filePath)
+DECL|method|RestoreFileModification (String filePath)
 specifier|public
 name|RestoreFileModification
 parameter_list|(
-name|RevCommit
-name|currentCommit
-parameter_list|,
 name|String
 name|filePath
 parameter_list|)
 block|{
-name|this
-operator|.
-name|currentCommit
-operator|=
-name|currentCommit
-expr_stmt|;
 name|this
 operator|.
 name|filePath
@@ -218,7 +203,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getPathEdits (Repository repository)
+DECL|method|getPathEdits (Repository repository, RevCommit baseCommit)
 specifier|public
 name|List
 argument_list|<
@@ -230,13 +215,16 @@ name|getPathEdits
 parameter_list|(
 name|Repository
 name|repository
+parameter_list|,
+name|RevCommit
+name|baseCommit
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 if|if
 condition|(
-name|currentCommit
+name|baseCommit
 operator|.
 name|getParentCount
 argument_list|()
@@ -269,7 +257,7 @@ block|}
 name|RevCommit
 name|base
 init|=
-name|currentCommit
+name|baseCommit
 operator|.
 name|getParent
 argument_list|(

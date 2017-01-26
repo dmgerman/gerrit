@@ -190,12 +190,6 @@ name|RenameFileModification
 implements|implements
 name|TreeModification
 block|{
-DECL|field|currentCommit
-specifier|private
-specifier|final
-name|RevCommit
-name|currentCommit
-decl_stmt|;
 DECL|field|currentFilePath
 specifier|private
 specifier|final
@@ -208,13 +202,10 @@ specifier|final
 name|String
 name|newFilePath
 decl_stmt|;
-DECL|method|RenameFileModification (RevCommit currentCommit, String currentFilePath, String newFilePath)
+DECL|method|RenameFileModification (String currentFilePath, String newFilePath)
 specifier|public
 name|RenameFileModification
 parameter_list|(
-name|RevCommit
-name|currentCommit
-parameter_list|,
 name|String
 name|currentFilePath
 parameter_list|,
@@ -222,12 +213,6 @@ name|String
 name|newFilePath
 parameter_list|)
 block|{
-name|this
-operator|.
-name|currentCommit
-operator|=
-name|currentCommit
-expr_stmt|;
 name|this
 operator|.
 name|currentFilePath
@@ -243,7 +228,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getPathEdits (Repository repository)
+DECL|method|getPathEdits (Repository repository, RevCommit baseCommit)
 specifier|public
 name|List
 argument_list|<
@@ -255,6 +240,9 @@ name|getPathEdits
 parameter_list|(
 name|Repository
 name|repository
+parameter_list|,
+name|RevCommit
+name|baseCommit
 parameter_list|)
 throws|throws
 name|IOException
@@ -275,7 +263,7 @@ name|revWalk
 operator|.
 name|parseHeaders
 argument_list|(
-name|currentCommit
+name|baseCommit
 argument_list|)
 expr_stmt|;
 try|try
@@ -294,7 +282,7 @@ argument_list|()
 argument_list|,
 name|currentFilePath
 argument_list|,
-name|currentCommit
+name|baseCommit
 operator|.
 name|getTree
 argument_list|()

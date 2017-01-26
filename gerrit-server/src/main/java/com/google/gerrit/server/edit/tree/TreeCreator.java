@@ -206,7 +206,7 @@ name|jgit
 operator|.
 name|revwalk
 operator|.
-name|RevTree
+name|RevCommit
 import|;
 end_import
 
@@ -241,7 +241,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A creator for a new Git tree. To create the new tree, another tree is taken  * as a basis and modified.  */
+comment|/**  * A creator for a new Git tree. To create the new tree, the tree of another  * commit is taken as a basis and modified.  */
 end_comment
 
 begin_class
@@ -250,11 +250,11 @@ specifier|public
 class|class
 name|TreeCreator
 block|{
-DECL|field|baseTree
+DECL|field|baseCommit
 specifier|private
 specifier|final
-name|RevTree
-name|baseTree
+name|RevCommit
+name|baseCommit
 decl_stmt|;
 comment|// At the moment, a list wouldn't be necessary as only one modification is
 comment|// applied per created tree. This is going to change in the near future.
@@ -272,23 +272,23 @@ name|LinkedList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|TreeCreator (RevTree baseTree)
+DECL|method|TreeCreator (RevCommit baseCommit)
 specifier|public
 name|TreeCreator
 parameter_list|(
-name|RevTree
-name|baseTree
+name|RevCommit
+name|baseCommit
 parameter_list|)
 block|{
 name|this
 operator|.
-name|baseTree
+name|baseCommit
 operator|=
 name|checkNotNull
 argument_list|(
-name|baseTree
+name|baseCommit
 argument_list|,
-literal|"baseTree is required"
+literal|"baseCommit is required"
 argument_list|)
 expr_stmt|;
 block|}
@@ -443,7 +443,10 @@ name|STAGE_0
 argument_list|,
 name|objectReader
 argument_list|,
-name|baseTree
+name|baseCommit
+operator|.
+name|getTree
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|dirCacheBuilder
@@ -502,6 +505,8 @@ operator|.
 name|getPathEdits
 argument_list|(
 name|repository
+argument_list|,
+name|baseCommit
 argument_list|)
 argument_list|)
 expr_stmt|;
