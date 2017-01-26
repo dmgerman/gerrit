@@ -692,7 +692,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|ArrayList
 import|;
 end_import
 
@@ -702,7 +702,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|Collections
 import|;
 end_import
 
@@ -1297,7 +1297,7 @@ argument_list|>
 name|messages
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1611,7 +1611,7 @@ argument_list|>
 name|messages
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2420,7 +2420,7 @@ argument_list|>
 name|messages
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2596,7 +2596,7 @@ argument_list|>
 name|messages
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2902,7 +2902,7 @@ argument_list|>
 name|messages
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3300,7 +3300,7 @@ argument_list|>
 name|messages
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3452,7 +3452,7 @@ argument_list|>
 name|messages
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;

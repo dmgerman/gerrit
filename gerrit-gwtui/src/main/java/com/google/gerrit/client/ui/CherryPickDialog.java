@@ -286,7 +286,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|ArrayList
 import|;
 end_import
 
@@ -413,14 +413,14 @@ name|Callback
 name|done
 parameter_list|)
 block|{
-name|LinkedList
+name|List
 argument_list|<
 name|BranchSuggestion
 argument_list|>
 name|suggestions
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
