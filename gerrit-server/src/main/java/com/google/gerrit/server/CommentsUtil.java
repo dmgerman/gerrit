@@ -1408,6 +1408,12 @@ argument_list|,
 name|unresolved
 argument_list|)
 decl_stmt|;
+name|c
+operator|.
+name|parentUuid
+operator|=
+name|parentUuid
+expr_stmt|;
 name|ctx
 operator|.
 name|getUser
