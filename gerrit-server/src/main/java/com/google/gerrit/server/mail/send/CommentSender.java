@@ -3638,7 +3638,7 @@ comment|// Default to the empty string if the given line number does not appear
 comment|// in the file.
 name|log
 operator|.
-name|warn
+name|debug
 argument_list|(
 name|String
 operator|.
