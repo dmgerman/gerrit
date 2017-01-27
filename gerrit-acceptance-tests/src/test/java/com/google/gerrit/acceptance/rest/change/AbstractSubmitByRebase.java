@@ -3030,6 +3030,185 @@ name|MERGED
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|TestProjectInput
+argument_list|(
+name|useContentMerge
+operator|=
+name|InheritableBoolean
+operator|.
+name|TRUE
+argument_list|)
+DECL|method|submitChainOneByOne ()
+specifier|public
+name|void
+name|submitChainOneByOne
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|PushOneCommit
+operator|.
+name|Result
+name|change1
+init|=
+name|createChange
+argument_list|(
+literal|"subject 1"
+argument_list|,
+literal|"fileName 1"
+argument_list|,
+literal|"content 1"
+argument_list|)
+decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|change2
+init|=
+name|createChange
+argument_list|(
+literal|"subject 2"
+argument_list|,
+literal|"fileName 2"
+argument_list|,
+literal|"content 2"
+argument_list|)
+decl_stmt|;
+name|submit
+argument_list|(
+name|change1
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|submit
+argument_list|(
+name|change2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|TestProjectInput
+argument_list|(
+name|useContentMerge
+operator|=
+name|InheritableBoolean
+operator|.
+name|TRUE
+argument_list|)
+DECL|method|submitChainOneByOneManualRebase ()
+specifier|public
+name|void
+name|submitChainOneByOneManualRebase
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|RevCommit
+name|initialHead
+init|=
+name|getRemoteHead
+argument_list|()
+decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|change1
+init|=
+name|createChange
+argument_list|(
+literal|"subject 1"
+argument_list|,
+literal|"fileName 1"
+argument_list|,
+literal|"content 1"
+argument_list|)
+decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|change2
+init|=
+name|createChange
+argument_list|(
+literal|"subject 2"
+argument_list|,
+literal|"fileName 2"
+argument_list|,
+literal|"content 2"
+argument_list|)
+decl_stmt|;
+comment|// for rebase if necessary, otherwise, the manual rebase of change2 will
+comment|// fail since change1 would be merged as fast forward
+name|testRepo
+operator|.
+name|reset
+argument_list|(
+name|initialHead
+argument_list|)
+expr_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|change
+init|=
+name|createChange
+argument_list|()
+decl_stmt|;
+name|submit
+argument_list|(
+name|change
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|submit
+argument_list|(
+name|change1
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Do manual rebase first.
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|change2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+operator|.
+name|current
+argument_list|()
+operator|.
+name|rebase
+argument_list|()
+expr_stmt|;
+name|submit
+argument_list|(
+name|change2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
