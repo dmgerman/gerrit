@@ -799,16 +799,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-name|indexCollection
-operator|.
-name|getSearchIndex
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
 name|indexCollection
 operator|.
 name|getSearchIndex
@@ -819,7 +809,6 @@ argument_list|(
 name|group
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|newGroup (ReviewDb c, String name, AccountGroup.UUID uuid)
 specifier|private
