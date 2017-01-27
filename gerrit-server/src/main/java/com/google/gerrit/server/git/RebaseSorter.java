@@ -660,15 +660,6 @@ block|{
 comment|// We cannot merge n as it would bring something we
 comment|// aren't permitted to merge at this time. Drop n.
 comment|//
-if|if
-condition|(
-name|n
-operator|.
-name|missing
-operator|==
-literal|null
-condition|)
-block|{
 name|n
 operator|.
 name|setStatusCode
@@ -676,25 +667,6 @@ argument_list|(
 name|CommitMergeStatus
 operator|.
 name|MISSING_DEPENDENCY
-argument_list|)
-expr_stmt|;
-name|n
-operator|.
-name|missing
-operator|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-expr_stmt|;
-block|}
-name|n
-operator|.
-name|missing
-operator|.
-name|add
-argument_list|(
-name|c
 argument_list|)
 expr_stmt|;
 block|}

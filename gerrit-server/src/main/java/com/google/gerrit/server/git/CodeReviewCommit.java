@@ -608,14 +608,6 @@ specifier|private
 name|CommitMergeStatus
 name|statusCode
 decl_stmt|;
-comment|/** Commits which are missing ancestors of this commit. */
-DECL|field|missing
-name|List
-argument_list|<
-name|CodeReviewCommit
-argument_list|>
-name|missing
-decl_stmt|;
 DECL|method|CodeReviewCommit (final AnyObjectId id)
 specifier|public
 name|CodeReviewCommit
@@ -728,12 +720,6 @@ operator|=
 name|src
 operator|.
 name|statusCode
-expr_stmt|;
-name|missing
-operator|=
-name|src
-operator|.
-name|missing
 expr_stmt|;
 block|}
 DECL|method|change ()
