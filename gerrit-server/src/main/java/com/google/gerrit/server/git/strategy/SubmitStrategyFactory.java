@@ -209,6 +209,22 @@ operator|.
 name|git
 operator|.
 name|CodeReviewCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|CodeReviewCommit
 operator|.
 name|CodeReviewRevWalk
 import|;
@@ -464,7 +480,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commits, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create (SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -493,6 +509,12 @@ name|RevCommit
 argument_list|>
 name|alreadyAccepted
 parameter_list|,
+name|Set
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|incoming
+parameter_list|,
 name|Branch
 operator|.
 name|NameKey
@@ -505,7 +527,7 @@ name|MergeTip
 name|mergeTip
 parameter_list|,
 name|CommitStatus
-name|commits
+name|commitStatus
 parameter_list|,
 name|RequestId
 name|submissionId
@@ -545,7 +567,7 @@ name|submitType
 argument_list|,
 name|destBranch
 argument_list|,
-name|commits
+name|commitStatus
 argument_list|,
 name|rw
 argument_list|,
@@ -562,6 +584,8 @@ argument_list|,
 name|db
 argument_list|,
 name|alreadyAccepted
+argument_list|,
+name|incoming
 argument_list|,
 name|submissionId
 argument_list|,

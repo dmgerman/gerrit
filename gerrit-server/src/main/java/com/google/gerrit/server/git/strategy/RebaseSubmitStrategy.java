@@ -655,6 +655,10 @@ operator|.
 name|mergeSorter
 argument_list|,
 name|sorted
+argument_list|,
+name|args
+operator|.
+name|incoming
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1360,7 +1364,7 @@ argument_list|)
 expr_stmt|;
 name|args
 operator|.
-name|commits
+name|commitStatus
 operator|.
 name|put
 argument_list|(

@@ -1655,7 +1655,7 @@ return|return
 name|mergeTip
 return|;
 block|}
-DECL|method|reduceToMinimalMerge (MergeSorter mergeSorter, Collection<CodeReviewCommit> toSort)
+DECL|method|reduceToMinimalMerge (MergeSorter mergeSorter, Collection<CodeReviewCommit> toSort, Set<CodeReviewCommit> incoming)
 specifier|public
 name|List
 argument_list|<
@@ -1671,6 +1671,12 @@ argument_list|<
 name|CodeReviewCommit
 argument_list|>
 name|toSort
+parameter_list|,
+name|Set
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|incoming
 parameter_list|)
 throws|throws
 name|IntegrationException
@@ -1697,6 +1703,8 @@ operator|.
 name|sort
 argument_list|(
 name|toSort
+argument_list|,
+name|incoming
 argument_list|)
 argument_list|)
 expr_stmt|;

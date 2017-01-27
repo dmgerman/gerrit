@@ -303,11 +303,11 @@ name|SubmitStrategy
 argument_list|>
 name|strategies
 decl_stmt|;
-DECL|field|commits
+DECL|field|commitStatus
 specifier|private
 specifier|final
 name|CommitStatus
-name|commits
+name|commitStatus
 decl_stmt|;
 DECL|field|failAfterRefUpdates
 specifier|private
@@ -315,7 +315,7 @@ specifier|final
 name|boolean
 name|failAfterRefUpdates
 decl_stmt|;
-DECL|method|SubmitStrategyListener (SubmitInput input, Collection<SubmitStrategy> strategies, CommitStatus commits)
+DECL|method|SubmitStrategyListener (SubmitInput input, Collection<SubmitStrategy> strategies, CommitStatus commitStatus)
 specifier|public
 name|SubmitStrategyListener
 parameter_list|(
@@ -329,7 +329,7 @@ argument_list|>
 name|strategies
 parameter_list|,
 name|CommitStatus
-name|commits
+name|commitStatus
 parameter_list|)
 block|{
 name|this
@@ -340,9 +340,9 @@ name|strategies
 expr_stmt|;
 name|this
 operator|.
-name|commits
+name|commitStatus
 operator|=
-name|commits
+name|commitStatus
 expr_stmt|;
 if|if
 condition|(
@@ -510,7 +510,7 @@ name|findUnmergedChanges
 argument_list|(
 name|args
 operator|.
-name|commits
+name|commitStatus
 operator|.
 name|getChangeIds
 argument_list|(
@@ -554,7 +554,7 @@ range|:
 name|unmerged
 control|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -565,7 +565,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|commits
+name|commitStatus
 operator|.
 name|maybeFailVerbose
 argument_list|()
@@ -674,7 +674,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|commits
+name|commitStatus
 operator|.
 name|getChangeIds
 argument_list|()
@@ -690,7 +690,7 @@ operator|.
 name|Id
 name|id
 range|:
-name|commits
+name|commitStatus
 operator|.
 name|getChangeIds
 argument_list|()
@@ -699,7 +699,7 @@ block|{
 name|CodeReviewCommit
 name|commit
 init|=
-name|commits
+name|commitStatus
 operator|.
 name|get
 argument_list|(
@@ -727,7 +727,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -795,7 +795,7 @@ name|NOT_FAST_FORWARD
 case|:
 comment|// TODO(dborowitz): Reformat these messages to be more appropriate for
 comment|// short problem descriptions.
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -823,7 +823,7 @@ break|break;
 case|case
 name|MISSING_DEPENDENCY
 case|:
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -834,7 +834,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 default|default:
-name|commits
+name|commitStatus
 operator|.
 name|problem
 argument_list|(
@@ -848,7 +848,7 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-name|commits
+name|commitStatus
 operator|.
 name|maybeFailVerbose
 argument_list|()
@@ -867,7 +867,7 @@ parameter_list|()
 throws|throws
 name|ResourceConflictException
 block|{
-name|commits
+name|commitStatus
 operator|.
 name|maybeFail
 argument_list|(

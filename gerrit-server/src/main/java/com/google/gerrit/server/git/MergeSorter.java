@@ -267,13 +267,46 @@ operator|=
 name|alreadyAccepted
 expr_stmt|;
 block|}
-DECL|method|sort (final Collection<CodeReviewCommit> incoming)
+DECL|method|sort (final Collection<CodeReviewCommit> toMerge)
 name|Collection
 argument_list|<
 name|CodeReviewCommit
 argument_list|>
 name|sort
 parameter_list|(
+specifier|final
+name|Collection
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|toMerge
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|sort
+argument_list|(
+name|toMerge
+argument_list|,
+name|toMerge
+argument_list|)
+return|;
+block|}
+DECL|method|sort (final Collection<CodeReviewCommit> toMerge, final Collection<CodeReviewCommit> incoming)
+name|Collection
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|sort
+parameter_list|(
+specifier|final
+name|Collection
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|toMerge
+parameter_list|,
 specifier|final
 name|Collection
 argument_list|<
@@ -307,7 +340,7 @@ operator|new
 name|HashSet
 argument_list|<>
 argument_list|(
-name|incoming
+name|toMerge
 argument_list|)
 decl_stmt|;
 while|while
