@@ -374,7 +374,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|ArrayList
 import|;
 end_import
 
@@ -384,7 +384,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|HashMap
 import|;
 end_import
 
@@ -608,7 +608,7 @@ argument_list|>
 name|toRemove
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
