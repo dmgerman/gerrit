@@ -2315,6 +2315,8 @@ operator|new
 name|String
 argument_list|(
 name|CONTENT_NEW2
+argument_list|,
+name|UTF_8
 argument_list|)
 argument_list|,
 name|changeId2
@@ -4226,7 +4228,9 @@ argument_list|,
 literal|""
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|UTF_8
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
