@@ -132,6 +132,10 @@ block|,
 comment|/** Numeric account ID, may be deprecated. */
 DECL|enumConstant|ID
 name|ID
+block|,
+comment|/** The user-settable status of this account (e.g. busy, OOO, available) */
+DECL|enumConstant|STATUS
+name|STATUS
 block|}
 DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, Set<FillOptions> options)
 specifier|public

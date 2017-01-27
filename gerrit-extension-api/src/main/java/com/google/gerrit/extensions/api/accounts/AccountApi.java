@@ -504,6 +504,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|setStatus (String status)
+name|void
+name|setStatus
+parameter_list|(
+name|String
+name|status
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|listSshKeys ()
 name|List
 argument_list|<
@@ -952,6 +962,23 @@ name|addEmail
 parameter_list|(
 name|EmailInput
 name|input
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setStatus (String status)
+specifier|public
+name|void
+name|setStatus
+parameter_list|(
+name|String
+name|status
 parameter_list|)
 block|{
 throw|throw

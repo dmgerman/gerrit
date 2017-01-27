@@ -342,6 +342,10 @@ name|USERNAME
 argument_list|,
 name|FillOptions
 operator|.
+name|STATUS
+argument_list|,
+name|FillOptions
+operator|.
 name|AVATARS
 argument_list|)
 argument_list|)
