@@ -341,11 +341,6 @@ expr_stmt|;
 comment|// We shouldn't close the BinaryResult within this method as it might still
 comment|// be used afterwards. Besides, closing it doesn't have an effect for most
 comment|// implementations of a BinaryResult.
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
 name|BinaryResult
 name|binaryResult
 init|=
