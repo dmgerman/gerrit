@@ -173,11 +173,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"OptionalUsedAsFieldOrParameterType"
-argument_list|)
 DECL|class|OptionalSubject
 specifier|public
 class|class
@@ -466,11 +461,6 @@ name|isAbsent
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"OptionalGetWithoutIsPresent"
-argument_list|)
 DECL|method|value ()
 specifier|public
 name|S

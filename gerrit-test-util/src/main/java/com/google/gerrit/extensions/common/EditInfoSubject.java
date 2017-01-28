@@ -257,11 +257,6 @@ name|editInfo
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"OptionalUsedAsFieldOrParameterType"
-argument_list|)
 DECL|method|assertThat ( Optional<EditInfo> editInfoOptional)
 specifier|public
 specifier|static

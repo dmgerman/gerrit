@@ -1880,12 +1880,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// The previous check ensures that a value is present in the Optional.
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"OptionalGetWithoutIsPresent"
-argument_list|)
 name|Timestamp
 name|beforeRebase
 init|=
@@ -2095,12 +2089,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// The previous check ensures that a value is present in the Optional.
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"OptionalGetWithoutIsPresent"
-argument_list|)
 name|Timestamp
 name|beforeRebase
 init|=
@@ -5185,11 +5173,6 @@ operator|.
 name|isPresent
 argument_list|()
 expr_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"OptionalGetWithoutIsPresent"
-argument_list|)
 name|String
 name|editCommitId
 init|=
@@ -5355,11 +5338,6 @@ operator|.
 name|isPresent
 argument_list|()
 expr_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"OptionalGetWithoutIsPresent"
-argument_list|)
 name|String
 name|editCommitId
 init|=
@@ -5900,11 +5878,6 @@ name|currentPatchSet
 argument_list|()
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"OptionalUsedAsFieldOrParameterType"
-argument_list|)
 DECL|method|ensureSameBytes (Optional<BinaryResult> fileContent, byte[] expectedFileBytes)
 specifier|private
 name|void

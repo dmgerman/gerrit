@@ -2887,11 +2887,6 @@ operator|.
 name|isPresent
 argument_list|()
 expr_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"OptionalGetWithoutIsPresent"
-argument_list|)
 name|EditInfo
 name|editInfo
 init|=
