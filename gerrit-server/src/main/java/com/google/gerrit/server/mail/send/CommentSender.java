@@ -799,8 +799,6 @@ DECL|field|patchSetComment
 specifier|private
 name|String
 name|patchSetComment
-init|=
-literal|null
 decl_stmt|;
 DECL|field|labels
 specifier|private
