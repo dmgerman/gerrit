@@ -3351,6 +3351,9 @@ argument_list|(
 literal|"new.email@example.com"
 argument_list|,
 literal|"new.email@example.systems"
+argument_list|,
+comment|// Not in the list of TLDs but added to override in OutgoingEmailValidator
+literal|"new.email@example.local"
 argument_list|)
 decl_stmt|;
 for|for
@@ -3405,6 +3408,37 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|emails
+init|=
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+comment|// Missing domain part
+literal|"new.email"
+argument_list|,
+comment|// Missing domain part
+literal|"new.email@"
+argument_list|,
+comment|// Missing user part
+literal|"@example.com"
+argument_list|,
+comment|// Non-supported TLD  (see tlds-alpha-by-domain.txt)
+literal|"new.email@example.blog"
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|String
+name|email
+range|:
+name|emails
+control|)
+block|{
 name|EmailInput
 name|input
 init|=
@@ -3416,7 +3450,7 @@ name|input
 operator|.
 name|email
 operator|=
-literal|"invalid@"
+name|email
 expr_stmt|;
 name|input
 operator|.
@@ -3424,22 +3458,8 @@ name|noConfirmation
 operator|=
 literal|true
 expr_stmt|;
-name|exception
-operator|.
-name|expect
-argument_list|(
-name|BadRequestException
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|exception
-operator|.
-name|expectMessage
-argument_list|(
-literal|"invalid email address"
-argument_list|)
-expr_stmt|;
+try|try
+block|{
 name|gApi
 operator|.
 name|accounts
@@ -3453,6 +3473,32 @@ argument_list|(
 name|input
 argument_list|)
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected BadRequestException for invalid email address: "
+operator|+
+name|email
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|BadRequestException
+name|e
+parameter_list|)
+block|{
+name|assertThat
+argument_list|(
+name|e
+argument_list|)
+operator|.
+name|hasMessage
+argument_list|(
+literal|"invalid email address"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 annotation|@
 name|Test
