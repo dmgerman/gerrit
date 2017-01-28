@@ -674,8 +674,6 @@ comment|// Stop RevWalk because c is either a merged commit or a missing
 comment|// dependency. Not need to walk further.
 break|break;
 block|}
-else|else
-block|{
 name|contents
 operator|.
 name|add
@@ -683,7 +681,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(

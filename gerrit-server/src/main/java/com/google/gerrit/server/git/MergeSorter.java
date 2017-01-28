@@ -442,8 +442,6 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
-else|else
-block|{
 name|contents
 operator|.
 name|add
@@ -451,7 +449,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
