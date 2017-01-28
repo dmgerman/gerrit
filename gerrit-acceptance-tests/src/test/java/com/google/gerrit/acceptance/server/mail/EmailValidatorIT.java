@@ -134,6 +134,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -189,6 +201,13 @@ name|UNSUPPORTED_PREFIX
 init|=
 literal|"#! "
 decl_stmt|;
+DECL|field|validator
+annotation|@
+name|Inject
+specifier|private
+name|OutgoingEmailValidator
+name|validator
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|validateLocalDomain ()
@@ -201,7 +220,7 @@ name|Exception
 block|{
 name|assertThat
 argument_list|(
-name|OutgoingEmailValidator
+name|validator
 operator|.
 name|isValid
 argument_list|(
@@ -346,7 +365,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|OutgoingEmailValidator
+name|validator
 operator|.
 name|isValid
 argument_list|(
@@ -384,7 +403,7 @@ argument_list|)
 operator|.
 name|that
 argument_list|(
-name|OutgoingEmailValidator
+name|validator
 operator|.
 name|isValid
 argument_list|(

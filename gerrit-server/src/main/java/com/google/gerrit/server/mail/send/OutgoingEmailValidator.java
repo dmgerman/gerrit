@@ -90,6 +90,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -120,13 +132,55 @@ name|EmailValidator
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
+annotation|@
+name|Singleton
 DECL|class|OutgoingEmailValidator
 specifier|public
 class|class
 name|OutgoingEmailValidator
 block|{
-static|static
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|OutgoingEmailValidator
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|method|OutgoingEmailValidator ()
+name|OutgoingEmailValidator
+parameter_list|()
+block|{
+try|try
 block|{
 name|DomainValidator
 operator|.
@@ -143,9 +197,30 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|IllegalStateException
+name|e
+parameter_list|)
+block|{
+comment|// Should only happen in tests, where the OutgoingEmailValidator
+comment|// is instantiated repeatedly.
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to update TLD override: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|isValid (String addr)
 specifier|public
-specifier|static
 name|boolean
 name|isValid
 parameter_list|(

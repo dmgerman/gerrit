@@ -814,6 +814,12 @@ operator|.
 name|User
 name|externalIdsUpdateFactory
 decl_stmt|;
+DECL|field|validator
+specifier|private
+specifier|final
+name|OutgoingEmailValidator
+name|validator
+decl_stmt|;
 DECL|field|username
 specifier|private
 specifier|final
@@ -822,7 +828,7 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountIndexer indexer, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @Assisted String username)
+DECL|method|CreateAccount ( ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountIndexer indexer, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, OutgoingEmailValidator validator, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -880,6 +886,9 @@ name|ExternalIdsUpdate
 operator|.
 name|User
 name|externalIdsUpdateFactory
+parameter_list|,
+name|OutgoingEmailValidator
+name|validator
 parameter_list|,
 annotation|@
 name|Assisted
@@ -970,6 +979,12 @@ operator|.
 name|externalIdsUpdateFactory
 operator|=
 name|externalIdsUpdateFactory
+expr_stmt|;
+name|this
+operator|.
+name|validator
+operator|=
+name|validator
 expr_stmt|;
 name|this
 operator|.
@@ -1200,7 +1215,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|OutgoingEmailValidator
+name|validator
 operator|.
 name|isValid
 argument_list|(

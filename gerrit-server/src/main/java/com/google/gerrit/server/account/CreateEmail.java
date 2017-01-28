@@ -570,6 +570,12 @@ specifier|final
 name|PutPreferred
 name|putPreferred
 decl_stmt|;
+DECL|field|validator
+specifier|private
+specifier|final
+name|OutgoingEmailValidator
+name|validator
+decl_stmt|;
 DECL|field|email
 specifier|private
 specifier|final
@@ -584,7 +590,7 @@ name|isDevMode
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateEmail ( Provider<CurrentUser> self, Realm realm, PermissionBackend permissionBackend, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, PutPreferred putPreferred, @Assisted String email)
+DECL|method|CreateEmail ( Provider<CurrentUser> self, Realm realm, PermissionBackend permissionBackend, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, PutPreferred putPreferred, OutgoingEmailValidator validator, @Assisted String email)
 name|CreateEmail
 parameter_list|(
 name|Provider
@@ -612,6 +618,9 @@ name|registerNewEmailFactory
 parameter_list|,
 name|PutPreferred
 name|putPreferred
+parameter_list|,
+name|OutgoingEmailValidator
+name|validator
 parameter_list|,
 annotation|@
 name|Assisted
@@ -654,6 +663,12 @@ operator|.
 name|putPreferred
 operator|=
 name|putPreferred
+expr_stmt|;
+name|this
+operator|.
+name|validator
+operator|=
+name|validator
 expr_stmt|;
 name|this
 operator|.
@@ -759,7 +774,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|OutgoingEmailValidator
+name|validator
 operator|.
 name|isValid
 argument_list|(
