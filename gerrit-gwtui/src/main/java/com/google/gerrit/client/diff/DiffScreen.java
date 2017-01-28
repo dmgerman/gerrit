@@ -4610,12 +4610,11 @@ operator|=
 name|prefsAction
 expr_stmt|;
 block|}
-DECL|method|operation (final Runnable apply)
+DECL|method|operation (Runnable apply)
 specifier|abstract
 name|void
 name|operation
 parameter_list|(
-specifier|final
 name|Runnable
 name|apply
 parameter_list|)

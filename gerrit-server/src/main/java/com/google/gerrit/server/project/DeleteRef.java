@@ -570,7 +570,6 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (ProjectResource r)
-specifier|public
 name|DeleteRef
 name|create
 parameter_list|(

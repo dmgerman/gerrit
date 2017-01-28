@@ -666,7 +666,7 @@ block|}
 return|;
 block|}
 comment|/**    * @see #wrap(Callable)    */
-DECL|method|wrapImpl (final Callable<T> callable)
+DECL|method|wrapImpl (Callable<T> callable)
 specifier|protected
 specifier|abstract
 parameter_list|<
@@ -678,7 +678,6 @@ name|T
 argument_list|>
 name|wrapImpl
 parameter_list|(
-specifier|final
 name|Callable
 argument_list|<
 name|T

@@ -2075,7 +2075,6 @@ name|OrmException
 block|{
 try|try
 init|(
-specifier|final
 name|Repository
 name|repo
 init|=

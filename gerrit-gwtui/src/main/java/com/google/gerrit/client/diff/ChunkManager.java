@@ -497,16 +497,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|diffChunkNav (final CodeMirror cm, final Direction dir)
+DECL|method|diffChunkNav (CodeMirror cm, Direction dir)
 specifier|abstract
 name|Runnable
 name|diffChunkNav
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|,
-specifier|final
 name|Direction
 name|dir
 parameter_list|)

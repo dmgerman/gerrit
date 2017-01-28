@@ -464,17 +464,15 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final GroupInfo group, final boolean canModify)
+DECL|method|display (GroupInfo group, boolean canModify)
 specifier|protected
 specifier|abstract
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|group
 parameter_list|,
-specifier|final
 name|boolean
 name|canModify
 parameter_list|)

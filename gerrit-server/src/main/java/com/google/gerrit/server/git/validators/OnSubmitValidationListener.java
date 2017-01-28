@@ -213,7 +213,6 @@ interface|interface
 name|OnSubmitValidationListener
 block|{
 DECL|class|Arguments
-specifier|public
 class|class
 name|Arguments
 block|{

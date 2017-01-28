@@ -184,15 +184,13 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (final Project project, final boolean isVisible)
+DECL|method|create (Project project, boolean isVisible)
 name|ProjectNode
 name|create
 parameter_list|(
-specifier|final
 name|Project
 name|project
 parameter_list|,
-specifier|final
 name|boolean
 name|isVisible
 parameter_list|)
