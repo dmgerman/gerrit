@@ -170,6 +170,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|common
@@ -1392,6 +1406,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|/** @return GitwebType for gitweb viewer. */
+annotation|@
+name|Nullable
+DECL|method|getGitwebType ()
+specifier|public
+name|GitwebType
+name|getGitwebType
+parameter_list|()
+block|{
+return|return
+name|type
+return|;
 block|}
 comment|/**    * @return URL of the entry point into gitweb. This URL may be relative to our    *         context if gitweb is hosted by ourselves; or absolute if its hosted    *         elsewhere; or null if gitweb has not been configured.    */
 DECL|method|getUrl ()
