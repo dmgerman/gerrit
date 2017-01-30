@@ -271,6 +271,7 @@ argument_list|()
 return|;
 block|}
 DECL|class|LimitExceededException
+specifier|static
 class|class
 name|LimitExceededException
 extends|extends
