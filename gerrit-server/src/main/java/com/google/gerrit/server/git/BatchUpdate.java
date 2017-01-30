@@ -5581,14 +5581,6 @@ name|c
 operator|!=
 literal|null
 decl_stmt|;
-name|PrimaryStorage
-name|defaultStorage
-init|=
-name|notesMigration
-operator|.
-name|changePrimaryStorage
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|isNew
@@ -5609,7 +5601,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|defaultStorage
+name|notesMigration
+operator|.
+name|changePrimaryStorage
+argument_list|()
 operator|==
 name|PrimaryStorage
 operator|.
@@ -5648,30 +5643,6 @@ operator|==
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|defaultStorage
-operator|==
-name|PrimaryStorage
-operator|.
-name|REVIEW_DB
-condition|)
-block|{
-name|logDebug
-argument_list|(
-literal|"Failed to get change {} from unwrapped db"
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-throw|throw
-operator|new
-name|NoSuchChangeException
-argument_list|(
-name|id
-argument_list|)
-throw|;
-block|}
 comment|// Not in ReviewDb, but new changes are created with default primary
 comment|// storage as NOTE_DB, so we can assume that a missing change is
 comment|// NoteDb primary. Pass a synthetic change into ChangeNotes.Factory,
