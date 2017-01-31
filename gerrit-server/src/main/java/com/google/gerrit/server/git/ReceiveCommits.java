@@ -11648,7 +11648,11 @@ condition|)
 block|{
 name|logDebug
 argument_list|(
-literal|"Multiple changes in project with Change-Id {}: {}"
+literal|"Multiple changes in branch {} with Change-Id {}: {}"
+argument_list|,
+name|magicBranch
+operator|.
+name|dest
 argument_list|,
 name|p
 operator|.
@@ -11679,10 +11683,10 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// WTF, multiple changes in this project have the same key?
+comment|// WTF, multiple changes in this branch have the same key?
 comment|// Since the commit is new, the user should recreate it with
 comment|// a different Change-Id. In practice, we should never see
-comment|// this error message as Change-Id should be unique.
+comment|// this error message as Change-Id should be unique per branch.
 comment|//
 name|reject
 argument_list|(
