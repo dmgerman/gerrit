@@ -595,7 +595,7 @@ name|config
 operator|.
 name|resolve
 argument_list|(
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(

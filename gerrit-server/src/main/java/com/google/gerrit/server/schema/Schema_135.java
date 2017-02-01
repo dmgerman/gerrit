@@ -463,6 +463,12 @@ specifier|final
 name|AllProjectsName
 name|allProjectsName
 decl_stmt|;
+DECL|field|systemGroupBackend
+specifier|private
+specifier|final
+name|SystemGroupBackend
+name|systemGroupBackend
+decl_stmt|;
 DECL|field|serverUser
 specifier|private
 specifier|final
@@ -471,7 +477,7 @@ name|serverUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_135 (Provider<Schema_134> prior, GitRepositoryManager repoManager, AllProjectsName allProjectsName, @GerritPersonIdent PersonIdent serverUser)
+DECL|method|Schema_135 (Provider<Schema_134> prior, GitRepositoryManager repoManager, AllProjectsName allProjectsName, SystemGroupBackend systemGroupBackend, @GerritPersonIdent PersonIdent serverUser)
 name|Schema_135
 parameter_list|(
 name|Provider
@@ -485,6 +491,9 @@ name|repoManager
 parameter_list|,
 name|AllProjectsName
 name|allProjectsName
+parameter_list|,
+name|SystemGroupBackend
+name|systemGroupBackend
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -508,6 +517,12 @@ operator|.
 name|allProjectsName
 operator|=
 name|allProjectsName
+expr_stmt|;
+name|this
+operator|.
+name|systemGroupBackend
+operator|=
+name|systemGroupBackend
 expr_stmt|;
 name|this
 operator|.
@@ -645,7 +660,7 @@ name|Stream
 operator|.
 name|of
 argument_list|(
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(

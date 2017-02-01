@@ -1406,22 +1406,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
-operator|.
-name|SystemGroupBackend
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|notedb
 operator|.
 name|NoteDbChangeState
@@ -9195,7 +9179,7 @@ operator|.
 name|UUID
 name|registeredUsers
 init|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(
@@ -11144,7 +11128,7 @@ operator|.
 name|UUID
 name|owners
 init|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(
@@ -11159,7 +11143,7 @@ operator|.
 name|UUID
 name|registered
 init|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(
@@ -13246,7 +13230,7 @@ operator|.
 name|UUID
 name|anon
 init|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(
@@ -17022,7 +17006,7 @@ operator|.
 name|UUID
 name|registeredUsers
 init|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(
@@ -17490,7 +17474,7 @@ operator|.
 name|UUID
 name|registeredUsers
 init|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(
@@ -18037,7 +18021,7 @@ operator|.
 name|UUID
 name|registeredUsers
 init|=
-name|SystemGroupBackend
+name|systemGroupBackend
 operator|.
 name|getGroup
 argument_list|(

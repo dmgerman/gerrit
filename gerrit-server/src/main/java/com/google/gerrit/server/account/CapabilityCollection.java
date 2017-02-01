@@ -362,6 +362,12 @@ name|section
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|systemGroupBackend
+specifier|private
+specifier|final
+name|SystemGroupBackend
+name|systemGroupBackend
+decl_stmt|;
 DECL|field|permissions
 specifier|private
 specifier|final
@@ -423,9 +429,12 @@ name|queryLimit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CapabilityCollection ( @dministrateServerGroups ImmutableSet<GroupReference> admins, @Assisted @Nullable AccessSection section)
+DECL|method|CapabilityCollection ( SystemGroupBackend systemGroupBackend, @AdministrateServerGroups ImmutableSet<GroupReference> admins, @Assisted @Nullable AccessSection section)
 name|CapabilityCollection
 parameter_list|(
+name|SystemGroupBackend
+name|systemGroupBackend
+parameter_list|,
 annotation|@
 name|AdministrateServerGroups
 name|ImmutableSet
@@ -442,6 +451,12 @@ name|AccessSection
 name|section
 parameter_list|)
 block|{
+name|this
+operator|.
+name|systemGroupBackend
+operator|=
+name|systemGroupBackend
+expr_stmt|;
 if|if
 condition|(
 name|section
@@ -922,25 +937,8 @@ name|of
 argument_list|()
 return|;
 block|}
-DECL|field|anonymous
-specifier|private
-specifier|static
-specifier|final
-name|GroupReference
-name|anonymous
-init|=
-name|SystemGroupBackend
-operator|.
-name|getGroup
-argument_list|(
-name|SystemGroupBackend
-operator|.
-name|ANONYMOUS_USERS
-argument_list|)
-decl_stmt|;
 DECL|method|configureDefaults (Map<String, List<PermissionRule>> out, AccessSection section)
 specifier|private
-specifier|static
 name|void
 name|configureDefaults
 parameter_list|(
@@ -969,7 +967,14 @@ name|GlobalCapability
 operator|.
 name|QUERY_LIMIT
 argument_list|,
-name|anonymous
+name|systemGroupBackend
+operator|.
+name|getGroup
+argument_list|(
+name|SystemGroupBackend
+operator|.
+name|ANONYMOUS_USERS
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
