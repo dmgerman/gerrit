@@ -5048,14 +5048,6 @@ name|isMagicBranch
 argument_list|(
 name|refName
 argument_list|)
-operator|&&
-operator|!
-name|refName
-operator|.
-name|startsWith
-argument_list|(
-name|REFS_CHANGES
-argument_list|)
 condition|)
 block|{
 name|logDebug
@@ -5068,9 +5060,6 @@ name|getRefName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// We only fire gitRefUpdated for direct refs updates.
-comment|// Events for change refs are fired when they are created.
-comment|//
 name|gitRefUpdated
 operator|.
 name|fire
