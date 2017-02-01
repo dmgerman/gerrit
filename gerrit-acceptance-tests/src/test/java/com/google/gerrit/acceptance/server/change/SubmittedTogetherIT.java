@@ -1532,10 +1532,8 @@ operator|.
 name|changes
 argument_list|)
 operator|.
-name|hasSize
-argument_list|(
-literal|0
-argument_list|)
+name|isEmpty
+argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -1716,10 +1714,8 @@ argument_list|(
 name|result
 argument_list|)
 operator|.
-name|hasSize
-argument_list|(
-literal|0
-argument_list|)
+name|isEmpty
+argument_list|()
 expr_stmt|;
 block|}
 block|}

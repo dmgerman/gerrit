@@ -1638,10 +1638,8 @@ argument_list|(
 name|reviewers
 argument_list|)
 operator|.
-name|hasSize
-argument_list|(
-literal|0
-argument_list|)
+name|isEmpty
+argument_list|()
 expr_stmt|;
 name|reviewers
 operator|=
