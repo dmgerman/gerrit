@@ -1119,7 +1119,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"2"
+literal|2
 argument_list|)
 expr_stmt|;
 name|gApi
