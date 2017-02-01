@@ -298,6 +298,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -349,6 +361,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|DeleteExternalIds
 specifier|public
 class|class
