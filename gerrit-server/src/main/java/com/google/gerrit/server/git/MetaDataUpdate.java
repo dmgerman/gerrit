@@ -475,25 +475,42 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 block|{
-return|return
-name|create
-argument_list|(
-name|name
-argument_list|,
+name|Repository
+name|repo
+init|=
 name|mgr
 operator|.
 name|openRepository
 argument_list|(
 name|name
 argument_list|)
+decl_stmt|;
+name|MetaDataUpdate
+name|md
+init|=
+name|create
+argument_list|(
+name|name
+argument_list|,
+name|repo
 argument_list|,
 name|user
 argument_list|,
 name|batch
 argument_list|)
+decl_stmt|;
+name|md
+operator|.
+name|setCloseRepository
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|md
 return|;
 block|}
-comment|/**      * Create an update using an existing batch ref update.      *<p>      * This allows batching together updates to multiple metadata refs. For making      * multiple commits to a single metadata ref, see      * {@link VersionedMetaData#openUpdate(MetaDataUpdate)}.      *      * Important: Create a new MetaDataUpdate instance for each update:      *<pre>      *<code>      *   try (Repository repo = repoMgr.openRepository(allUsersName);      *       RevWalk rw = new RevWalk(repo) {      *     BatchRefUpdate batchUpdate = repo.getRefDatabase().newBatchUpdate();      *     // WRONG: create the MetaDataUpdate instance here and reuse it for      *     //        all updates in the loop      *     for{@code (Map.Entry<Account.Id, DiffPreferencesInfo> e : diffPrefsFromDb)} {      *       // CORRECT: create a new MetaDataUpdate instance for each update      *       try (MetaDataUpdate md =      *           metaDataUpdateFactory.create(allUsersName, batchUpdate)) {      *         md.setMessage("Import diff preferences from reviewdb\n");      *         VersionedAccountPreferences vPrefs =      *             VersionedAccountPreferences.forUser(e.getKey());      *         storeSection(vPrefs.getConfig(), UserConfigSections.DIFF, null,      *             e.getValue(), DiffPreferencesInfo.defaults());      *         vPrefs.commit(md);      *       } catch (ConfigInvalidException e) {      *         // TODO handle exception      *       }      *     }      *     batchUpdate.execute(rw, NullProgressMonitor.INSTANCE);      *   }      *</code>      *</pre>      *      * @param name project name.      * @param repository GIT respository      * @param user user for the update.      * @param batch batch update to use; the caller is responsible for committing      *     the update.      */
+comment|/**      * Create an update using an existing batch ref update.      *<p>      * This allows batching together updates to multiple metadata refs. For making      * multiple commits to a single metadata ref, see      * {@link VersionedMetaData#openUpdate(MetaDataUpdate)}.      *      * Important: Create a new MetaDataUpdate instance for each update:      *<pre>      *<code>      *   try (Repository repo = repoMgr.openRepository(allUsersName);      *       RevWalk rw = new RevWalk(repo) {      *     BatchRefUpdate batchUpdate = repo.getRefDatabase().newBatchUpdate();      *     // WRONG: create the MetaDataUpdate instance here and reuse it for      *     //        all updates in the loop      *     for{@code (Map.Entry<Account.Id, DiffPreferencesInfo> e : diffPrefsFromDb)} {      *       // CORRECT: create a new MetaDataUpdate instance for each update      *       try (MetaDataUpdate md =      *           metaDataUpdateFactory.create(allUsersName, batchUpdate)) {      *         md.setMessage("Import diff preferences from reviewdb\n");      *         VersionedAccountPreferences vPrefs =      *             VersionedAccountPreferences.forUser(e.getKey());      *         storeSection(vPrefs.getConfig(), UserConfigSections.DIFF, null,      *             e.getValue(), DiffPreferencesInfo.defaults());      *         vPrefs.commit(md);      *       } catch (ConfigInvalidException e) {      *         // TODO handle exception      *       }      *     }      *     batchUpdate.execute(rw, NullProgressMonitor.INSTANCE);      *   }      *</code>      *</pre>      *      * @param name project name.      * @param repository the repository to update; the caller is responsible for      *     closing the repository.      * @param user user for the update.      * @param batch batch update to use; the caller is responsible for committing      *     the update.      */
 DECL|method|create (Project.NameKey name, Repository repository, IdentifiedUser user, BatchRefUpdate batch)
 specifier|public
 name|MetaDataUpdate
@@ -679,6 +696,16 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 block|{
+name|Repository
+name|repo
+init|=
+name|mgr
+operator|.
+name|openRepository
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
 name|MetaDataUpdate
 name|md
 init|=
@@ -688,16 +715,18 @@ name|create
 argument_list|(
 name|name
 argument_list|,
-name|mgr
-operator|.
-name|openRepository
-argument_list|(
-name|name
-argument_list|)
+name|repo
 argument_list|,
 name|batch
 argument_list|)
 decl_stmt|;
+name|md
+operator|.
+name|setCloseRepository
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|md
 operator|.
 name|getCommitBuilder
@@ -727,7 +756,7 @@ DECL|interface|InternalFactory
 interface|interface
 name|InternalFactory
 block|{
-DECL|method|create (@ssisted Project.NameKey projectName, @Assisted Repository db, @Assisted @Nullable BatchRefUpdate batch)
+DECL|method|create (@ssisted Project.NameKey projectName, @Assisted Repository repository, @Assisted @Nullable BatchRefUpdate batch)
 name|MetaDataUpdate
 name|create
 parameter_list|(
@@ -741,7 +770,7 @@ parameter_list|,
 annotation|@
 name|Assisted
 name|Repository
-name|db
+name|repository
 parameter_list|,
 annotation|@
 name|Assisted
@@ -766,11 +795,11 @@ operator|.
 name|NameKey
 name|projectName
 decl_stmt|;
-DECL|field|db
+DECL|field|repository
 specifier|private
 specifier|final
 name|Repository
-name|db
+name|repository
 decl_stmt|;
 DECL|field|batch
 specifier|private
@@ -794,6 +823,11 @@ specifier|private
 name|boolean
 name|insertChangeId
 decl_stmt|;
+DECL|field|closeRepository
+specifier|private
+name|boolean
+name|closeRepository
+decl_stmt|;
 DECL|field|author
 specifier|private
 name|IdentifiedUser
@@ -801,7 +835,7 @@ name|author
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|MetaDataUpdate (GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey projectName, @Assisted Repository db, @Assisted @Nullable BatchRefUpdate batch)
+DECL|method|MetaDataUpdate (GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey projectName, @Assisted Repository repository, @Assisted @Nullable BatchRefUpdate batch)
 specifier|public
 name|MetaDataUpdate
 parameter_list|(
@@ -818,7 +852,7 @@ parameter_list|,
 annotation|@
 name|Assisted
 name|Repository
-name|db
+name|repository
 parameter_list|,
 annotation|@
 name|Assisted
@@ -842,9 +876,9 @@ name|projectName
 expr_stmt|;
 name|this
 operator|.
-name|db
+name|repository
 operator|=
-name|db
+name|repository
 expr_stmt|;
 name|this
 operator|.
@@ -861,7 +895,7 @@ name|CommitBuilder
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MetaDataUpdate (GitReferenceUpdated gitRefUpdated, Project.NameKey projectName, Repository db)
+DECL|method|MetaDataUpdate (GitReferenceUpdated gitRefUpdated, Project.NameKey projectName, Repository repository)
 specifier|public
 name|MetaDataUpdate
 parameter_list|(
@@ -874,7 +908,7 @@ name|NameKey
 name|projectName
 parameter_list|,
 name|Repository
-name|db
+name|repository
 parameter_list|)
 block|{
 name|this
@@ -883,7 +917,7 @@ name|gitRefUpdated
 argument_list|,
 name|projectName
 argument_list|,
-name|db
+name|repository
 argument_list|,
 literal|null
 argument_list|)
@@ -985,6 +1019,22 @@ operator|=
 name|insertChangeId
 expr_stmt|;
 block|}
+DECL|method|setCloseRepository (boolean closeRepository)
+specifier|public
+name|void
+name|setCloseRepository
+parameter_list|(
+name|boolean
+name|closeRepository
+parameter_list|)
+block|{
+name|this
+operator|.
+name|closeRepository
+operator|=
+name|closeRepository
+expr_stmt|;
+block|}
 comment|/** @return batch in which to run the update, or {@code null} for no batch. */
 DECL|method|getBatch ()
 name|BatchRefUpdate
@@ -1004,12 +1054,18 @@ name|void
 name|close
 parameter_list|()
 block|{
+if|if
+condition|(
+name|closeRepository
+condition|)
+block|{
 name|getRepository
 argument_list|()
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|getProjectName ()
 name|Project
@@ -1029,7 +1085,7 @@ name|getRepository
 parameter_list|()
 block|{
 return|return
-name|db
+name|repository
 return|;
 block|}
 DECL|method|allowEmpty ()
