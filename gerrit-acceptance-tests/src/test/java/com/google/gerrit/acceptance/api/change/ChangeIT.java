@@ -9932,10 +9932,8 @@ name|getMessages
 argument_list|()
 argument_list|)
 operator|.
-name|hasSize
-argument_list|(
-literal|0
-argument_list|)
+name|isEmpty
+argument_list|()
 expr_stmt|;
 block|}
 name|reviewers
@@ -10590,10 +10588,8 @@ name|getMessages
 argument_list|()
 argument_list|)
 operator|.
-name|hasSize
-argument_list|(
-literal|0
-argument_list|)
+name|isEmpty
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
