@@ -1061,6 +1061,7 @@ name|commit
 return|;
 block|}
 DECL|method|fireGitRefUpdatedEvent (RefUpdate ru)
+specifier|protected
 name|void
 name|fireGitRefUpdatedEvent
 parameter_list|(
