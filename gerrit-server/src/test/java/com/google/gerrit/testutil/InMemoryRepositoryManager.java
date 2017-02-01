@@ -713,6 +713,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|repo
+operator|.
+name|incrementOpen
+argument_list|()
+expr_stmt|;
 return|return
 name|repo
 return|;
