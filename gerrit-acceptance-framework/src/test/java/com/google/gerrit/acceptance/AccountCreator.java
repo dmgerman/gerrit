@@ -248,22 +248,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|ExternalIdCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|GroupCache
 import|;
 end_import
@@ -522,15 +506,9 @@ specifier|final
 name|AccountIndexer
 name|indexer
 decl_stmt|;
-DECL|field|externalIdCache
-specifier|private
-specifier|final
-name|ExternalIdCache
-name|externalIdCache
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator (SchemaFactory<ReviewDb> schema, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountIndexer indexer, ExternalIdCache externalIdCache)
+DECL|method|AccountCreator (SchemaFactory<ReviewDb> schema, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountIndexer indexer)
 name|AccountCreator
 parameter_list|(
 name|SchemaFactory
@@ -558,9 +536,6 @@ name|byEmailCache
 parameter_list|,
 name|AccountIndexer
 name|indexer
-parameter_list|,
-name|ExternalIdCache
-name|externalIdCache
 parameter_list|)
 block|{
 name|accounts
@@ -609,12 +584,6 @@ operator|.
 name|indexer
 operator|=
 name|indexer
-expr_stmt|;
-name|this
-operator|.
-name|externalIdCache
-operator|=
-name|externalIdCache
 expr_stmt|;
 block|}
 DECL|method|create (String username, String email, String fullName, String... groups)
@@ -735,13 +704,6 @@ name|extUser
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|externalIdCache
-operator|.
-name|onCreate
-argument_list|(
-name|extUser
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|email
@@ -783,13 +745,6 @@ name|singleton
 argument_list|(
 name|extMailto
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|externalIdCache
-operator|.
-name|onCreate
-argument_list|(
-name|extMailto
 argument_list|)
 expr_stmt|;
 block|}
