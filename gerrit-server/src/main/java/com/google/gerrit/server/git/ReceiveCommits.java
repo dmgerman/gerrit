@@ -1944,6 +1944,18 @@ name|java
 operator|.
 name|util
 operator|.
+name|concurrent
+operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -12316,7 +12328,18 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// reindex the change asynchronously
+comment|// Reindex the change asynchronously, ignoring errors.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|possiblyIgnoredError
+init|=
 name|indexer
 operator|.
 name|indexAsync
@@ -12331,7 +12354,7 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 return|return
 literal|true
 return|;

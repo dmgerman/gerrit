@@ -194,6 +194,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|TimeUnit
 import|;
 end_import
@@ -620,8 +632,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// If one or more projects did not update, wait 5 minutes
-comment|// and give it another attempt.
+comment|// If one or more projects did not update, wait 5 minutes and give it
+comment|// another attempt. If it doesn't update after that, give up.
 if|if
 condition|(
 operator|!
@@ -638,6 +650,17 @@ name|tryingAgain
 operator|=
 literal|true
 expr_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|possiblyIgnoredError
+init|=
 name|start
 argument_list|(
 literal|5
@@ -646,7 +669,7 @@ name|TimeUnit
 operator|.
 name|MINUTES
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 block|}
 DECL|method|rename (MetaDataUpdate md)

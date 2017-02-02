@@ -540,6 +540,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|TimeUnit
 import|;
 end_import
@@ -1307,6 +1319,17 @@ operator|.
 name|newSingleThreadExecutor
 argument_list|()
 expr_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|possiblyIgnoredError
+init|=
 name|daemonService
 operator|.
 name|submit
@@ -1350,7 +1373,7 @@ block|,
 literal|"--console-log"
 block|,
 literal|"--show-stack-trace"
-block|,                       }
+block|,                           }
 argument_list|)
 decl_stmt|;
 if|if
@@ -1381,7 +1404,7 @@ return|;
 block|}
 block|}
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|serverStarted
 operator|.
 name|await

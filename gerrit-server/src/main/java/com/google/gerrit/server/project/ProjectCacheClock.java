@@ -158,6 +158,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ScheduledExecutorService
 import|;
 end_import
@@ -298,30 +310,33 @@ name|build
 argument_list|()
 argument_list|)
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+comment|// Runnable already handles errors
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|possiblyIgnoredError
+init|=
 name|executor
 operator|.
 name|scheduleAtFixedRate
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
-comment|// This is not exactly thread-safe, but is OK for our use.
-comment|// The only thread that writes the volatile is this task.
+comment|// This is not exactly thread-safe, but is OK for our use. The only
+comment|// thread that writes the volatile is this task.
 name|generation
 operator|=
 name|generation
 operator|+
 literal|1
 expr_stmt|;
-block|}
 block|}
 argument_list|,
 name|checkFrequencyMillis
@@ -332,7 +347,7 @@ name|TimeUnit
 operator|.
 name|MILLISECONDS
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 else|else
 block|{

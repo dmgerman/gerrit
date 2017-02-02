@@ -436,6 +436,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ScheduledThreadPoolExecutor
 import|;
 end_import
@@ -1052,6 +1064,18 @@ name|build
 argument_list|()
 argument_list|)
 expr_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+comment|// Error handling within Runnable.
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|possiblyIgnoredError
+init|=
 name|autoCommitExecutor
 operator|.
 name|scheduleAtFixedRate
@@ -1150,7 +1174,9 @@ literal|"SEVERE: Error closing "
 operator|+
 name|index
 operator|+
-literal|" Lucene index  after OOM; index may be corrupted."
+literal|" Lucene index after OOM;"
+operator|+
+literal|" index may be corrupted."
 argument_list|,
 name|e
 argument_list|)
@@ -1166,7 +1192,7 @@ name|commitPeriod
 argument_list|,
 name|MILLISECONDS
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 name|writer
 operator|=
