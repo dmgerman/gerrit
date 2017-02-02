@@ -11412,35 +11412,6 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|idStr
-operator|.
-name|matches
-argument_list|(
-literal|"^I00*$"
-argument_list|)
-condition|)
-block|{
-comment|// Reject this invalid line from EGit.
-name|reject
-argument_list|(
-name|magicBranch
-operator|.
-name|cmd
-argument_list|,
-literal|"invalid Change-Id"
-argument_list|)
-expr_stmt|;
-name|newChanges
-operator|=
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-expr_stmt|;
-return|return;
-block|}
 name|pending
 operator|.
 name|add

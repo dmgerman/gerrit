@@ -347,7 +347,7 @@ argument_list|,
 operator|new
 name|Description
 argument_list|(
-literal|"REST API calls by view"
+literal|"REST API errors by view"
 argument_list|)
 operator|.
 name|setRate
