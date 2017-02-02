@@ -968,6 +968,35 @@ name|call
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|pushHead (TestRepository<?> testRepo, String ref)
+specifier|public
+specifier|static
+name|PushResult
+name|pushHead
+parameter_list|(
+name|TestRepository
+argument_list|<
+name|?
+argument_list|>
+name|testRepo
+parameter_list|,
+name|String
+name|ref
+parameter_list|)
+throws|throws
+name|GitAPIException
+block|{
+return|return
+name|pushHead
+argument_list|(
+name|testRepo
+argument_list|,
+name|ref
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
 DECL|method|pushHead (TestRepository<?> testRepo, String ref, boolean pushTags)
 specifier|public
 specifier|static

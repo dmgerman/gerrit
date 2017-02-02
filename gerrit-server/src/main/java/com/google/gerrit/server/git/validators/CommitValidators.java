@@ -1796,6 +1796,8 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
+comment|// Reject Change-Ids with wrong format and invalid placeholder ID from
+comment|// Egit (I0000000000000000000000000000000000000000).
 if|if
 condition|(
 operator|!
@@ -1808,6 +1810,13 @@ argument_list|)
 operator|.
 name|matches
 argument_list|()
+operator|||
+name|v
+operator|.
+name|matches
+argument_list|(
+literal|"^I00*$"
+argument_list|)
 condition|)
 block|{
 name|String
