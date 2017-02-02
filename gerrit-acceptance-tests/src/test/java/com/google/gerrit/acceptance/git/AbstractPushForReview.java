@@ -5034,7 +5034,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"invalid Change-Id"
+literal|"invalid Change-Id line format in commit message footer"
 argument_list|)
 expr_stmt|;
 name|ProjectConfig
@@ -5073,7 +5073,7 @@ name|pushForReviewRejected
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"invalid Change-Id"
+literal|"invalid Change-Id line format in commit message footer"
 argument_list|)
 expr_stmt|;
 block|}
