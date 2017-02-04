@@ -177,8 +177,6 @@ argument_list|>
 name|to
 parameter_list|()
 function_decl|;
-annotation|@
-name|Nullable
 DECL|method|cc ()
 specifier|public
 specifier|abstract
