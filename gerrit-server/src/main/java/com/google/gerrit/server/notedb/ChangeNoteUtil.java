@@ -152,6 +152,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|CharMatcher
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|ImmutableList
@@ -4526,6 +4540,47 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|field|INVALID_FOOTER_CHARS
+specifier|private
+specifier|static
+specifier|final
+name|CharMatcher
+name|INVALID_FOOTER_CHARS
+init|=
+name|CharMatcher
+operator|.
+name|anyOf
+argument_list|(
+literal|"\r\n\0"
+argument_list|)
+decl_stmt|;
+DECL|method|sanitizeFooter (String value)
+specifier|static
+name|String
+name|sanitizeFooter
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+block|{
+comment|// Remove characters that would confuse JGit's footer parser if they were
+comment|// included in footer values, for example by splitting the footer block into
+comment|// multiple paragraphs.
+comment|//
+comment|// One painful example: RevCommit#getShorMessage() might return a message
+comment|// containing "\r\r", which RevCommit#getFooterLines() will treat as an
+comment|// empty paragraph for the purposes of footer parsing.
+return|return
+name|INVALID_FOOTER_CHARS
+operator|.
+name|trimAndCollapseFrom
+argument_list|(
+name|value
+argument_list|,
+literal|' '
+argument_list|)
+return|;
 block|}
 block|}
 end_class

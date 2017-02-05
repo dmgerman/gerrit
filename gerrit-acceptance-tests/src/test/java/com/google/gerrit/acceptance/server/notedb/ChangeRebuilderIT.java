@@ -9221,6 +9221,74 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|commitWithCrLineEndings ()
+specifier|public
+name|void
+name|commitWithCrLineEndings
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|PushOneCommit
+operator|.
+name|Result
+name|r
+init|=
+name|createChange
+argument_list|(
+literal|"Subject\r\rBody\r"
+argument_list|,
+name|PushOneCommit
+operator|.
+name|FILE_NAME
+argument_list|,
+name|PushOneCommit
+operator|.
+name|FILE_CONTENT
+argument_list|)
+decl_stmt|;
+name|Change
+name|c
+init|=
+name|r
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|change
+argument_list|()
+decl_stmt|;
+comment|// This assertion demonstrates an arguable bug in JGit's commit subject
+comment|// parsing, and shows how this kind of data might have gotten into
+comment|// ReviewDb. If that bug ever gets fixed upstream, this assert may start
+comment|// failing. If that happens, this test can be rewritten to directly set the
+comment|// subject field in ReviewDb.
+name|assertThat
+argument_list|(
+name|c
+operator|.
+name|getSubject
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Subject\r\rBody"
+argument_list|)
+expr_stmt|;
+name|checker
+operator|.
+name|rebuildAndCheckChanges
+argument_list|(
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|assertChangesReadOnly (RestApiException e)
 specifier|private
 name|void
