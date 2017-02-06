@@ -580,16 +580,6 @@ argument_list|)
 expr_stmt|;
 name|detail
 operator|.
-name|setAccounts
-argument_list|(
-name|aic
-operator|.
-name|create
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|detail
-operator|.
 name|setCanModify
 argument_list|(
 name|control

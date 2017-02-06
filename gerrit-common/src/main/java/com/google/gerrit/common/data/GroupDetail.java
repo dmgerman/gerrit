@@ -130,11 +130,6 @@ specifier|public
 class|class
 name|GroupDetail
 block|{
-DECL|field|accounts
-specifier|public
-name|AccountInfoCache
-name|accounts
-decl_stmt|;
 DECL|field|group
 specifier|public
 name|AccountGroup
@@ -171,20 +166,6 @@ specifier|public
 name|GroupDetail
 parameter_list|()
 block|{   }
-DECL|method|setAccounts (AccountInfoCache c)
-specifier|public
-name|void
-name|setAccounts
-parameter_list|(
-name|AccountInfoCache
-name|c
-parameter_list|)
-block|{
-name|accounts
-operator|=
-name|c
-expr_stmt|;
-block|}
 DECL|method|setGroup (AccountGroup g)
 specifier|public
 name|void
