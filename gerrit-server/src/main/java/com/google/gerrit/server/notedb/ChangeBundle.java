@@ -5011,6 +5011,10 @@ comment|// ChangeRebuilder ensures all post-submit approvals happen after the
 comment|// actual submit, so the timestamps may not line up. This shouldn't really
 comment|// happen, because postSubmit shouldn't be set in ReviewDb until after the
 comment|// change is submitted in ReviewDb, but you never know.
+comment|//
+comment|// Due to a quirk of PostReview, post-submit 0 votes might not have the
+comment|// postSubmit bit set in ReviewDb. As these are only used for tombstone
+comment|// purposes, ignore the postSubmit bit in NoteDb in this case.
 name|Timestamp
 name|ta
 init|=
@@ -5065,6 +5069,11 @@ argument_list|)
 decl_stmt|;
 name|boolean
 name|excludeGranted
+init|=
+literal|false
+decl_stmt|;
+name|boolean
+name|excludePostSubmit
 init|=
 literal|false
 decl_stmt|;
@@ -5129,6 +5138,20 @@ argument_list|)
 operator|<
 literal|0
 expr_stmt|;
+name|excludePostSubmit
+operator|=
+name|a
+operator|.
+name|getValue
+argument_list|()
+operator|==
+literal|0
+operator|&&
+name|b
+operator|.
+name|isPostSubmit
+argument_list|()
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -5177,6 +5200,20 @@ argument_list|)
 operator|<
 literal|0
 expr_stmt|;
+name|excludePostSubmit
+operator|=
+name|b
+operator|.
+name|getValue
+argument_list|()
+operator|==
+literal|0
+operator|&&
+name|a
+operator|.
+name|isPostSubmit
+argument_list|()
+expr_stmt|;
 block|}
 comment|// Legacy submit approvals may or may not have tags associated with them,
 comment|// depending on whether ChangeRebuilder happened to group them with the
@@ -5212,6 +5249,19 @@ operator|.
 name|add
 argument_list|(
 literal|"granted"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|excludePostSubmit
+condition|)
+block|{
+name|exclude
+operator|.
+name|add
+argument_list|(
+literal|"postSubmit"
 argument_list|)
 expr_stmt|;
 block|}
