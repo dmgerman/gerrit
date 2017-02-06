@@ -5178,6 +5178,30 @@ operator|<
 literal|0
 expr_stmt|;
 block|}
+comment|// Legacy submit approvals may or may not have tags associated with them,
+comment|// depending on whether ChangeRebuilder happened to group them with the
+comment|// status change.
+name|boolean
+name|excludeTag
+init|=
+name|bundleA
+operator|.
+name|source
+operator|!=
+name|bundleB
+operator|.
+name|source
+operator|&&
+name|a
+operator|.
+name|isLegacySubmit
+argument_list|()
+operator|&&
+name|b
+operator|.
+name|isLegacySubmit
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|excludeGranted
@@ -5188,6 +5212,19 @@ operator|.
 name|add
 argument_list|(
 literal|"granted"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|excludeTag
+condition|)
+block|{
+name|exclude
+operator|.
+name|add
+argument_list|(
+literal|"tag"
 argument_list|)
 expr_stmt|;
 block|}

@@ -645,6 +645,19 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|canHaveTag ()
+specifier|protected
+name|boolean
+name|canHaveTag
+parameter_list|()
+block|{
+return|return
+name|isSubmit
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|addToString (ToStringHelper helper)
 specifier|protected
 name|void

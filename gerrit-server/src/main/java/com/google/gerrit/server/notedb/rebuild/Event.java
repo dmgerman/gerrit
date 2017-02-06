@@ -579,6 +579,16 @@ return|return
 literal|false
 return|;
 block|}
+DECL|method|canHaveTag ()
+specifier|protected
+name|boolean
+name|canHaveTag
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|toString ()

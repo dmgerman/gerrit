@@ -310,6 +310,18 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|canHaveTag ()
+specifier|protected
+name|boolean
+name|canHaveTag
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|apply (ChangeUpdate update)
 name|void
 name|apply
