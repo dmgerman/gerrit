@@ -186,11 +186,6 @@ name|Comment
 argument_list|>
 name|b
 decl_stmt|;
-DECL|field|accounts
-specifier|protected
-name|AccountInfoCache
-name|accounts
-decl_stmt|;
 DECL|field|idA
 specifier|private
 specifier|transient
@@ -288,7 +283,7 @@ parameter_list|()
 block|{   }
 DECL|method|include (Change.Id changeId, Comment p)
 specifier|public
-name|boolean
+name|void
 name|include
 parameter_list|(
 name|Change
@@ -350,9 +345,6 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
-return|return
-literal|true
-return|;
 block|}
 break|break;
 case|case
@@ -379,10 +371,8 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
-return|return
-literal|true
-return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|idB
@@ -400,40 +390,9 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
-return|return
-literal|true
-return|;
 block|}
 break|break;
 block|}
-return|return
-literal|false
-return|;
-block|}
-DECL|method|setAccountInfoCache (final AccountInfoCache a)
-specifier|public
-name|void
-name|setAccountInfoCache
-parameter_list|(
-specifier|final
-name|AccountInfoCache
-name|a
-parameter_list|)
-block|{
-name|accounts
-operator|=
-name|a
-expr_stmt|;
-block|}
-DECL|method|getAccounts ()
-specifier|public
-name|AccountInfoCache
-name|getAccounts
-parameter_list|()
-block|{
-return|return
-name|accounts
-return|;
 block|}
 DECL|method|getCommentsA ()
 specifier|public

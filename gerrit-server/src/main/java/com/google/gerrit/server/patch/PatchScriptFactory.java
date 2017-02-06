@@ -360,22 +360,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|AccountInfoCacheFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|edit
 operator|.
 name|ChangeEdit
@@ -804,14 +788,6 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
-DECL|field|aicFactory
-specifier|private
-specifier|final
-name|AccountInfoCacheFactory
-operator|.
-name|Factory
-name|aicFactory
-decl_stmt|;
 DECL|field|commentsUtil
 specifier|private
 specifier|final
@@ -932,7 +908,7 @@ name|comments
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PatchScriptFactory (GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, AccountInfoCacheFactory.Factory aicFactory, CommentsUtil commentsUtil, ChangeEditUtil editReader, @Assisted ChangeControl control, @Assisted final String fileName, @Assisted(R) @Nullable final PatchSet.Id patchSetA, @Assisted(R) final PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
+DECL|method|PatchScriptFactory (GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, @Assisted ChangeControl control, @Assisted final String fileName, @Assisted(R) @Nullable final PatchSet.Id patchSetA, @Assisted(R) final PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
 name|PatchScriptFactory
 parameter_list|(
 name|GitRepositoryManager
@@ -952,11 +928,6 @@ name|patchListCache
 parameter_list|,
 name|ReviewDb
 name|db
-parameter_list|,
-name|AccountInfoCacheFactory
-operator|.
-name|Factory
-name|aicFactory
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
@@ -1043,12 +1014,6 @@ name|control
 expr_stmt|;
 name|this
 operator|.
-name|aicFactory
-operator|=
-name|aicFactory
-expr_stmt|;
-name|this
-operator|.
 name|commentsUtil
 operator|=
 name|commentsUtil
@@ -1100,7 +1065,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PatchScriptFactory (GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, AccountInfoCacheFactory.Factory aicFactory, CommentsUtil commentsUtil, ChangeEditUtil editReader, @Assisted ChangeControl control, @Assisted String fileName, @Assisted int parentNum, @Assisted PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
+DECL|method|PatchScriptFactory (GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, @Assisted ChangeControl control, @Assisted String fileName, @Assisted int parentNum, @Assisted PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
 name|PatchScriptFactory
 parameter_list|(
 name|GitRepositoryManager
@@ -1120,11 +1085,6 @@ name|patchListCache
 parameter_list|,
 name|ReviewDb
 name|db
-parameter_list|,
-name|AccountInfoCacheFactory
-operator|.
-name|Factory
-name|aicFactory
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
@@ -1195,12 +1155,6 @@ operator|.
 name|control
 operator|=
 name|control
-expr_stmt|;
-name|this
-operator|.
-name|aicFactory
-operator|=
-name|aicFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2276,14 +2230,6 @@ operator|==
 literal|null
 condition|)
 block|{
-name|AccountInfoCacheFactory
-name|aic
-init|=
-name|aicFactory
-operator|.
-name|create
-argument_list|()
-decl_stmt|;
 name|comments
 operator|=
 operator|new
@@ -2309,8 +2255,6 @@ name|loadPublished
 argument_list|(
 name|byKey
 argument_list|,
-name|aic
-argument_list|,
 name|newName
 argument_list|)
 expr_stmt|;
@@ -2321,8 +2265,6 @@ case|:
 name|loadPublished
 argument_list|(
 name|byKey
-argument_list|,
-name|aic
 argument_list|,
 name|newName
 argument_list|)
@@ -2345,8 +2287,6 @@ name|loadPublished
 argument_list|(
 name|byKey
 argument_list|,
-name|aic
-argument_list|,
 name|oldName
 argument_list|)
 expr_stmt|;
@@ -2354,8 +2294,6 @@ block|}
 name|loadPublished
 argument_list|(
 name|byKey
-argument_list|,
-name|aic
 argument_list|,
 name|newName
 argument_list|)
@@ -2407,8 +2345,6 @@ name|loadDrafts
 argument_list|(
 name|byKey
 argument_list|,
-name|aic
-argument_list|,
 name|me
 argument_list|,
 name|newName
@@ -2421,8 +2357,6 @@ case|:
 name|loadDrafts
 argument_list|(
 name|byKey
-argument_list|,
-name|aic
 argument_list|,
 name|me
 argument_list|,
@@ -2447,8 +2381,6 @@ name|loadDrafts
 argument_list|(
 name|byKey
 argument_list|,
-name|aic
-argument_list|,
 name|me
 argument_list|,
 name|oldName
@@ -2458,8 +2390,6 @@ block|}
 name|loadDrafts
 argument_list|(
 name|byKey
-argument_list|,
-name|aic
 argument_list|,
 name|me
 argument_list|,
@@ -2473,24 +2403,13 @@ case|:
 break|break;
 block|}
 block|}
-name|comments
-operator|.
-name|setAccountInfoCache
-argument_list|(
-name|aic
-operator|.
-name|create
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
-DECL|method|loadPublished (final Map<Patch.Key, Patch> byKey, final AccountInfoCacheFactory aic, final String file)
+DECL|method|loadPublished (Map<Patch.Key, Patch> byKey, String file)
 specifier|private
 name|void
 name|loadPublished
 parameter_list|(
-specifier|final
 name|Map
 argument_list|<
 name|Patch
@@ -2501,11 +2420,6 @@ name|Patch
 argument_list|>
 name|byKey
 parameter_list|,
-specifier|final
-name|AccountInfoCacheFactory
-name|aic
-parameter_list|,
-specifier|final
 name|String
 name|file
 parameter_list|)
@@ -2539,8 +2453,6 @@ name|file
 argument_list|)
 control|)
 block|{
-if|if
-condition|(
 name|comments
 operator|.
 name|include
@@ -2552,21 +2464,7 @@ argument_list|()
 argument_list|,
 name|c
 argument_list|)
-condition|)
-block|{
-name|aic
-operator|.
-name|want
-argument_list|(
-name|c
-operator|.
-name|author
-operator|.
-name|getId
-argument_list|()
-argument_list|)
 expr_stmt|;
-block|}
 name|PatchSet
 operator|.
 name|Id
@@ -2640,12 +2538,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|loadDrafts (final Map<Patch.Key, Patch> byKey, final AccountInfoCacheFactory aic, final Account.Id me, final String file)
+DECL|method|loadDrafts (Map<Patch.Key, Patch> byKey, Account.Id me, String file)
 specifier|private
 name|void
 name|loadDrafts
 parameter_list|(
-specifier|final
 name|Map
 argument_list|<
 name|Patch
@@ -2656,17 +2553,11 @@ name|Patch
 argument_list|>
 name|byKey
 parameter_list|,
-specifier|final
-name|AccountInfoCacheFactory
-name|aic
-parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
 name|me
 parameter_list|,
-specifier|final
 name|String
 name|file
 parameter_list|)
@@ -2695,8 +2586,6 @@ name|me
 argument_list|)
 control|)
 block|{
-if|if
-condition|(
 name|comments
 operator|.
 name|include
@@ -2708,16 +2597,7 @@ argument_list|()
 argument_list|,
 name|c
 argument_list|)
-condition|)
-block|{
-name|aic
-operator|.
-name|want
-argument_list|(
-name|me
-argument_list|)
 expr_stmt|;
-block|}
 name|PatchSet
 operator|.
 name|Id
