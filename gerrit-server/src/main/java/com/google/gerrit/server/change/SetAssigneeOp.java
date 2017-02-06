@@ -1125,11 +1125,22 @@ block|}
 DECL|method|getNewAssignee ()
 specifier|public
 name|Account
+operator|.
+name|Id
 name|getNewAssignee
 parameter_list|()
 block|{
 return|return
 name|newAssignee
+operator|!=
+literal|null
+condition|?
+name|newAssignee
+operator|.
+name|getId
+argument_list|()
+else|:
+literal|null
 return|;
 block|}
 block|}

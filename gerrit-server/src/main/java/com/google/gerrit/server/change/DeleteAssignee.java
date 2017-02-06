@@ -264,7 +264,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountJson
+name|AccountLoader
 import|;
 end_import
 
@@ -496,9 +496,17 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
+DECL|field|accountLoaderFactory
+specifier|private
+specifier|final
+name|AccountLoader
+operator|.
+name|Factory
+name|accountLoaderFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteAssignee (BatchUpdate.Factory batchUpdateFactory, ChangeMessagesUtil cmUtil, Provider<ReviewDb> db, AssigneeChanged assigneeChanged, IdentifiedUser.GenericFactory userFactory)
+DECL|method|DeleteAssignee (BatchUpdate.Factory batchUpdateFactory, ChangeMessagesUtil cmUtil, Provider<ReviewDb> db, AssigneeChanged assigneeChanged, IdentifiedUser.GenericFactory userFactory, AccountLoader.Factory accountLoaderFactory)
 name|DeleteAssignee
 parameter_list|(
 name|BatchUpdate
@@ -522,6 +530,11 @@ name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|userFactory
+parameter_list|,
+name|AccountLoader
+operator|.
+name|Factory
+name|accountLoaderFactory
 parameter_list|)
 block|{
 name|this
@@ -554,6 +567,12 @@ name|userFactory
 operator|=
 name|userFactory
 expr_stmt|;
+name|this
+operator|.
+name|accountLoaderFactory
+operator|=
+name|accountLoaderFactory
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -575,6 +594,8 @@ throws|throws
 name|RestApiException
 throws|,
 name|UpdateException
+throws|,
+name|OrmException
 block|{
 try|try
 init|(
@@ -635,6 +656,8 @@ name|execute
 argument_list|()
 expr_stmt|;
 name|Account
+operator|.
+name|Id
 name|deletedAssignee
 init|=
 name|op
@@ -656,9 +679,14 @@ name|Response
 operator|.
 name|ok
 argument_list|(
-name|AccountJson
+name|accountLoaderFactory
 operator|.
-name|toAccountInfo
+name|create
+argument_list|(
+literal|true
+argument_list|)
+operator|.
+name|fillOne
 argument_list|(
 name|deletedAssignee
 argument_list|)
@@ -808,11 +836,22 @@ block|}
 DECL|method|getDeletedAssignee ()
 specifier|public
 name|Account
+operator|.
+name|Id
 name|getDeletedAssignee
 parameter_list|()
 block|{
 return|return
 name|deletedAssignee
+operator|!=
+literal|null
+condition|?
+name|deletedAssignee
+operator|.
+name|getId
+argument_list|()
+else|:
+literal|null
 return|;
 block|}
 DECL|method|addMessage (BatchUpdate.ChangeContext ctx, ChangeUpdate update, IdentifiedUser deletedAssignee)

@@ -669,6 +669,34 @@ name|fill
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|fillOne (Account.Id id)
+specifier|public
+name|AccountInfo
+name|fillOne
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+name|AccountInfo
+name|info
+init|=
+name|get
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+name|fill
+argument_list|()
+expr_stmt|;
+return|return
+name|info
+return|;
+block|}
 block|}
 end_class
 
