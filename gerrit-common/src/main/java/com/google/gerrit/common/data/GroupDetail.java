@@ -151,16 +151,6 @@ name|AccountGroupById
 argument_list|>
 name|includes
 decl_stmt|;
-DECL|field|ownerGroup
-specifier|public
-name|GroupReference
-name|ownerGroup
-decl_stmt|;
-DECL|field|canModify
-specifier|public
-name|boolean
-name|canModify
-decl_stmt|;
 DECL|method|GroupDetail ()
 specifier|public
 name|GroupDetail
@@ -212,37 +202,6 @@ block|{
 name|includes
 operator|=
 name|i
-expr_stmt|;
-block|}
-DECL|method|setOwnerGroup (GroupReference g)
-specifier|public
-name|void
-name|setOwnerGroup
-parameter_list|(
-name|GroupReference
-name|g
-parameter_list|)
-block|{
-name|ownerGroup
-operator|=
-name|g
-expr_stmt|;
-block|}
-DECL|method|setCanModify (final boolean canModify)
-specifier|public
-name|void
-name|setCanModify
-parameter_list|(
-specifier|final
-name|boolean
-name|canModify
-parameter_list|)
-block|{
-name|this
-operator|.
-name|canModify
-operator|=
-name|canModify
 expr_stmt|;
 block|}
 block|}
