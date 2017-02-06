@@ -290,7 +290,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountJson
+name|AccountLoader
 import|;
 end_import
 
@@ -455,9 +455,17 @@ specifier|final
 name|PostReviewers
 name|postReviewers
 decl_stmt|;
+DECL|field|accountLoaderFactory
+specifier|private
+specifier|final
+name|AccountLoader
+operator|.
+name|Factory
+name|accountLoaderFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutAssignee (SetAssigneeOp.Factory assigneeFactory, BatchUpdate.Factory batchUpdateFactory, Provider<ReviewDb> db, PostReviewers postReviewers)
+DECL|method|PutAssignee (SetAssigneeOp.Factory assigneeFactory, BatchUpdate.Factory batchUpdateFactory, Provider<ReviewDb> db, PostReviewers postReviewers, AccountLoader.Factory accountLoaderFactory)
 name|PutAssignee
 parameter_list|(
 name|SetAssigneeOp
@@ -478,6 +486,11 @@ name|db
 parameter_list|,
 name|PostReviewers
 name|postReviewers
+parameter_list|,
+name|AccountLoader
+operator|.
+name|Factory
+name|accountLoaderFactory
 parameter_list|)
 block|{
 name|this
@@ -503,6 +516,12 @@ operator|.
 name|postReviewers
 operator|=
 name|postReviewers
+expr_stmt|;
+name|this
+operator|.
+name|accountLoaderFactory
+operator|=
+name|accountLoaderFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -676,9 +695,14 @@ name|Response
 operator|.
 name|ok
 argument_list|(
-name|AccountJson
+name|accountLoaderFactory
 operator|.
-name|toAccountInfo
+name|create
+argument_list|(
+literal|true
+argument_list|)
+operator|.
+name|fillOne
 argument_list|(
 name|op
 operator|.
