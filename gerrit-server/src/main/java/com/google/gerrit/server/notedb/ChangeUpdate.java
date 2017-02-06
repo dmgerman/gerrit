@@ -3670,10 +3670,7 @@ name|msg
 argument_list|,
 name|FOOTER_SUBJECT
 argument_list|,
-name|sanitizeFooter
-argument_list|(
 name|subject
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3957,6 +3954,7 @@ argument_list|,
 name|FOOTER_LABEL
 argument_list|)
 expr_stmt|;
+comment|// Label names/values are safe to append without sanitizing.
 if|if
 condition|(
 operator|!
@@ -4158,6 +4156,7 @@ operator|.
 name|labels
 control|)
 block|{
+comment|// Label names/values are safe to append without sanitizing.
 name|addFooter
 argument_list|(
 name|msg
@@ -4591,7 +4590,15 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|sanitizeFooter
+argument_list|(
+name|Objects
+operator|.
+name|toString
+argument_list|(
 name|value
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
