@@ -421,7 +421,7 @@ name|RegistrationHandle
 argument_list|>
 name|cleanup
 decl_stmt|;
-DECL|method|PluginMetricMaker (MetricMaker root, String pluginName)
+DECL|method|PluginMetricMaker (MetricMaker root, String prefix)
 specifier|public
 name|PluginMetricMaker
 parameter_list|(
@@ -429,7 +429,7 @@ name|MetricMaker
 name|root
 parameter_list|,
 name|String
-name|pluginName
+name|prefix
 parameter_list|)
 block|{
 name|this
@@ -442,14 +442,18 @@ name|this
 operator|.
 name|prefix
 operator|=
-name|String
+name|prefix
 operator|.
-name|format
+name|endsWith
 argument_list|(
-literal|"plugins/%s/"
-argument_list|,
-name|pluginName
+literal|"/"
 argument_list|)
+condition|?
+name|prefix
+else|:
+name|prefix
+operator|+
+literal|"/"
 expr_stmt|;
 name|cleanup
 operator|=

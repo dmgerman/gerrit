@@ -342,6 +342,12 @@ specifier|final
 name|ClassLoader
 name|classLoader
 decl_stmt|;
+DECL|field|metricsPrefix
+specifier|private
+specifier|final
+name|String
+name|metricsPrefix
+decl_stmt|;
 DECL|field|sysModule
 specifier|protected
 name|Class
@@ -403,7 +409,7 @@ argument_list|>
 argument_list|>
 name|reloadableHandles
 decl_stmt|;
-DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, Path srcJar, FileSnapshot snapshot, PluginContentScanner scanner, Path dataDir, ClassLoader classLoader)
+DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, Path srcJar, FileSnapshot snapshot, PluginContentScanner scanner, Path dataDir, ClassLoader classLoader, String metricsPrefix)
 specifier|public
 name|ServerPlugin
 parameter_list|(
@@ -430,6 +436,9 @@ name|dataDir
 parameter_list|,
 name|ClassLoader
 name|classLoader
+parameter_list|,
+name|String
+name|metricsPrefix
 parameter_list|)
 throws|throws
 name|InvalidPluginException
@@ -502,6 +511,12 @@ argument_list|(
 name|scanner
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|metricsPrefix
+operator|=
+name|metricsPrefix
+expr_stmt|;
 if|if
 condition|(
 name|manifest
@@ -517,6 +532,59 @@ name|classLoader
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, Path srcJar, FileSnapshot snapshot, PluginContentScanner scanner, Path dataDir, ClassLoader classLoader)
+specifier|public
+name|ServerPlugin
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|pluginCanonicalWebUrl
+parameter_list|,
+name|PluginUser
+name|pluginUser
+parameter_list|,
+name|Path
+name|srcJar
+parameter_list|,
+name|FileSnapshot
+name|snapshot
+parameter_list|,
+name|PluginContentScanner
+name|scanner
+parameter_list|,
+name|Path
+name|dataDir
+parameter_list|,
+name|ClassLoader
+name|classLoader
+parameter_list|)
+throws|throws
+name|InvalidPluginException
+block|{
+name|this
+argument_list|(
+name|name
+argument_list|,
+name|pluginCanonicalWebUrl
+argument_list|,
+name|pluginUser
+argument_list|,
+name|srcJar
+argument_list|,
+name|snapshot
+argument_list|,
+name|scanner
+argument_list|,
+name|dataDir
+argument_list|,
+name|classLoader
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|loadGuiceModules (Manifest manifest, ClassLoader classLoader)
 specifier|private
@@ -781,6 +849,15 @@ parameter_list|()
 block|{
 return|return
 name|pluginCanonicalWebUrl
+return|;
+block|}
+DECL|method|getMetricsPrefix ()
+name|String
+name|getMetricsPrefix
+parameter_list|()
+block|{
+return|return
+name|metricsPrefix
 return|;
 block|}
 DECL|method|getPluginManifest (PluginContentScanner scanner)
