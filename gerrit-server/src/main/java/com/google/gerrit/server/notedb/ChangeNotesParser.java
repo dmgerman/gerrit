@@ -3868,9 +3868,10 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-comment|// All approvals after MERGED and before the next status change get the
-comment|// postSubmit bit. (Currently the state can't change from MERGED to
-comment|// something else, but just in case.)
+comment|// All approvals after MERGED and before the next status change get the postSubmit
+comment|// bit. (Currently the state can't change from MERGED to something else, but just in case.) The
+comment|// exception is the legacy SUBM approval, which is never considered post-submit, but might end
+comment|// up sorted after the submit during rebuilding.
 if|if
 condition|(
 name|status
@@ -3890,6 +3891,15 @@ range|:
 name|bufferedApprovals
 control|)
 block|{
+if|if
+condition|(
+operator|!
+name|psa
+operator|.
+name|isLegacySubmit
+argument_list|()
+condition|)
+block|{
 name|psa
 operator|.
 name|setPostSubmit
@@ -3897,6 +3907,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|bufferedApprovals
