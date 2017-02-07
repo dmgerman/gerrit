@@ -74,6 +74,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|MoreObjects
+operator|.
+name|ToStringHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -182,6 +198,25 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|canHaveTag ()
+specifier|protected
+name|boolean
+name|canHaveTag
+parameter_list|()
+block|{
+comment|// Legacy SUBM approvals don't have a tag field set, but the corresponding
+comment|// ChangeMessage for merging the change does. We need to let these be in the
+comment|// same meta commit so the SUBM approval isn't counted as post-submit.
+return|return
+operator|!
+name|psa
+operator|.
+name|isLegacySubmit
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|apply (ChangeUpdate update)
 name|void
 name|apply
@@ -225,6 +260,27 @@ operator|.
 name|isPostSubmit
 argument_list|()
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|addToString (ToStringHelper helper)
+specifier|protected
+name|void
+name|addToString
+parameter_list|(
+name|ToStringHelper
+name|helper
+parameter_list|)
+block|{
+name|helper
+operator|.
+name|add
+argument_list|(
+literal|"approval"
+argument_list|,
+name|psa
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

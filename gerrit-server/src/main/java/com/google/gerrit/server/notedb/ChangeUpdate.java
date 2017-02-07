@@ -456,6 +456,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNoteUtil
+operator|.
+name|sanitizeFooter
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -3936,6 +3954,7 @@ argument_list|,
 name|FOOTER_LABEL
 argument_list|)
 expr_stmt|;
+comment|// Label names/values are safe to append without sanitizing.
 if|if
 condition|(
 operator|!
@@ -4137,6 +4156,7 @@ operator|.
 name|labels
 control|)
 block|{
+comment|// Label names/values are safe to append without sanitizing.
 name|addFooter
 argument_list|(
 name|msg
@@ -4570,7 +4590,15 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|sanitizeFooter
+argument_list|(
+name|Objects
+operator|.
+name|toString
+argument_list|(
 name|value
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4659,34 +4687,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|sb
-return|;
-block|}
-DECL|method|sanitizeFooter (String value)
-specifier|private
-specifier|static
-name|String
-name|sanitizeFooter
-parameter_list|(
-name|String
-name|value
-parameter_list|)
-block|{
-return|return
-name|value
-operator|.
-name|replace
-argument_list|(
-literal|'\n'
-argument_list|,
-literal|' '
-argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|'\0'
-argument_list|,
-literal|' '
-argument_list|)
 return|;
 block|}
 block|}
