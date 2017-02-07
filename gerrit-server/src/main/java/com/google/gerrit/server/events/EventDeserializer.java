@@ -127,7 +127,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * JSON deserializer for {@link Event}s.  *<p>  * Deserialized objects are of an appropriate subclass based on the value of the  * top-level "type" element.  */
+comment|/**  * JSON deserializer for {@link Event}s.  *  *<p>Deserialized objects are of an appropriate subclass based on the value of the top-level "type"  * element.  */
 end_comment
 
 begin_class

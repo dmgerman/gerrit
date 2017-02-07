@@ -65,7 +65,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Interface that a caller must implement to react on the result of a  * {@link ConfirmationDialog}.  */
+comment|/**  * Interface that a caller must implement to react on the result of a {@link ConfirmationDialog}.  */
 end_comment
 
 begin_class
@@ -75,7 +75,7 @@ specifier|abstract
 class|class
 name|ConfirmationCallback
 block|{
-comment|/**    * Called when the {@link ConfirmationDialog} is finished with OK.    * To be overwritten by subclasses.    */
+comment|/**    * Called when the {@link ConfirmationDialog} is finished with OK. To be overwritten by    * subclasses.    */
 DECL|method|onOk ()
 specifier|public
 specifier|abstract
@@ -83,13 +83,13 @@ name|void
 name|onOk
 parameter_list|()
 function_decl|;
-comment|/**    * Called when the {@link ConfirmationDialog} is finished with Cancel.    * To be overwritten by subclasses.    */
+comment|/**    * Called when the {@link ConfirmationDialog} is finished with Cancel. To be overwritten by    * subclasses.    */
 DECL|method|onCancel ()
 specifier|public
 name|void
 name|onCancel
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

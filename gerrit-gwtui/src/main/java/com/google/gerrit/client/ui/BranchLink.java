@@ -219,7 +219,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BranchLink (String text, Project.NameKey project, Change.Status status, String branch, String topic)
+DECL|method|BranchLink ( String text, Project.NameKey project, Change.Status status, String branch, String topic)
 specifier|public
 name|BranchLink
 parameter_list|(
@@ -365,7 +365,7 @@ return|return
 name|branch
 return|;
 block|}
-DECL|method|query (Project.NameKey project, Change.Status status, String branch, String topic)
+DECL|method|query ( Project.NameKey project, Change.Status status, String branch, String topic)
 specifier|public
 specifier|static
 name|String

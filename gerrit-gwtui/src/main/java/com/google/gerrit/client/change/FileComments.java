@@ -302,7 +302,7 @@ name|UiField
 name|FlowPanel
 name|comments
 decl_stmt|;
-DECL|method|FileComments (CommentLinkProcessor clp, PatchSet.Id defaultPs, String title, List<CommentInfo> list)
+DECL|method|FileComments ( CommentLinkProcessor clp, PatchSet.Id defaultPs, String title, List<CommentInfo> list)
 name|FileComments
 parameter_list|(
 name|CommentLinkProcessor

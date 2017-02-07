@@ -354,6 +354,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -369,16 +379,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -621,7 +621,7 @@ name|branchLinks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WebLinks (DynamicSet<PatchSetWebLink> patchSetLinks, DynamicSet<ParentWebLink> parentLinks, DynamicSet<FileWebLink> fileLinks, DynamicSet<FileHistoryWebLink> fileLogLinks, DynamicSet<DiffWebLink> diffLinks, DynamicSet<ProjectWebLink> projectLinks, DynamicSet<BranchWebLink> branchLinks)
+DECL|method|WebLinks ( DynamicSet<PatchSetWebLink> patchSetLinks, DynamicSet<ParentWebLink> parentLinks, DynamicSet<FileWebLink> fileLinks, DynamicSet<FileHistoryWebLink> fileLogLinks, DynamicSet<DiffWebLink> diffLinks, DynamicSet<ProjectWebLink> projectLinks, DynamicSet<BranchWebLink> branchLinks)
 specifier|public
 name|WebLinks
 parameter_list|(
@@ -711,7 +711,7 @@ operator|=
 name|branchLinks
 expr_stmt|;
 block|}
-comment|/**    *    * @param project Project name.    * @param commit SHA1 of commit.    * @return Links for patch sets.    */
+comment|/**    * @param project Project name.    * @param commit SHA1 of commit.    * @return Links for patch sets.    */
 DECL|method|getPatchSetLinks (Project.NameKey project, String commit)
 specifier|public
 name|List
@@ -750,7 +750,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    *    * @param project Project name.    * @param revision SHA1 of the parent revision.    * @return Links for patch sets.    */
+comment|/**    * @param project Project name.    * @param revision SHA1 of the parent revision.    * @return Links for patch sets.    */
 DECL|method|getParentLinks (Project.NameKey project, String revision)
 specifier|public
 name|List
@@ -789,7 +789,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    *    * @param project Project name.    * @param revision SHA1 of revision.    * @param file File name.    * @return Links for files.    */
+comment|/**    * @param project Project name.    * @param revision SHA1 of revision.    * @param file File name.    * @return Links for files.    */
 DECL|method|getFileLinks (String project, String revision, String file)
 specifier|public
 name|List
@@ -828,8 +828,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    *    * @param project Project name.    * @param revision SHA1 of revision.    * @param file File name.    * @return Links for file history    */
-DECL|method|getFileHistoryLinks ( String project, String revision, String file)
+comment|/**    * @param project Project name.    * @param revision SHA1 of revision.    * @param file File name.    * @return Links for file history    */
+DECL|method|getFileHistoryLinks (String project, String revision, String file)
 specifier|public
 name|List
 argument_list|<
@@ -939,8 +939,8 @@ name|toList
 argument_list|()
 return|;
 block|}
-comment|/**    *    * @param project Project name.    * @param patchSetIdA Patch set ID of side A,<code>null</code> if no base    *        patch set was selected.    * @param revisionA SHA1 of revision of side A.    * @param fileA File name of side A.    * @param patchSetIdB Patch set ID of side B.    * @param revisionB SHA1 of revision of side B.    * @param fileB File name of side B.    * @return Links for file diffs.    */
-DECL|method|getDiffLinks (final String project, final int changeId, final Integer patchSetIdA, final String revisionA, final String fileA, final int patchSetIdB, final String revisionB, final String fileB)
+comment|/**    * @param project Project name.    * @param patchSetIdA Patch set ID of side A,<code>null</code> if no base patch set was selected.    * @param revisionA SHA1 of revision of side A.    * @param fileA File name of side A.    * @param patchSetIdB Patch set ID of side B.    * @param revisionB SHA1 of revision of side B.    * @param fileB File name of side B.    * @return Links for file diffs.    */
+DECL|method|getDiffLinks ( final String project, final int changeId, final Integer patchSetIdA, final String revisionA, final String fileA, final int patchSetIdB, final String revisionB, final String fileB)
 specifier|public
 name|List
 argument_list|<
@@ -1024,7 +1024,7 @@ name|toList
 argument_list|()
 return|;
 block|}
-comment|/**    *    * @param project Project name.    * @return Links for projects.    */
+comment|/**    * @param project Project name.    * @return Links for projects.    */
 DECL|method|getProjectLinks (final String project)
 specifier|public
 name|List
@@ -1054,7 +1054,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    *    * @param project Project name    * @param branch Branch name    * @return Links for branches.    */
+comment|/**    * @param project Project name    * @param branch Branch name    * @return Links for branches.    */
 DECL|method|getBranchLinks (final String project, final String branch)
 specifier|public
 name|List
@@ -1090,7 +1090,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|filterLinks (DynamicSet<T> links, Function<T, WebLinkInfo> transformer)
+DECL|method|filterLinks ( DynamicSet<T> links, Function<T, WebLinkInfo> transformer)
 specifier|private
 parameter_list|<
 name|T

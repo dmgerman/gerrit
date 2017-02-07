@@ -526,16 +526,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -591,6 +581,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -4170,7 +4170,7 @@ name|index
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertAuditEvent (GroupAuditEventInfo info, Type expectedType, Account.Id expectedUser, Account.Id expectedMember)
+DECL|method|assertAuditEvent ( GroupAuditEventInfo info, Type expectedType, Account.Id expectedUser, Account.Id expectedMember)
 specifier|private
 name|void
 name|assertAuditEvent
@@ -4256,7 +4256,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertAuditEvent (GroupAuditEventInfo info, Type expectedType, Account.Id expectedUser, String expectedMemberGroupName)
+DECL|method|assertAuditEvent ( GroupAuditEventInfo info, Type expectedType, Account.Id expectedUser, String expectedMemberGroupName)
 specifier|private
 name|void
 name|assertAuditEvent
@@ -4521,7 +4521,7 @@ name|expectedNames
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertIncludes ( Iterable<GroupInfo> includes, String... expectedNames)
+DECL|method|assertIncludes (Iterable<GroupInfo> includes, String... expectedNames)
 specifier|private
 specifier|static
 name|void

@@ -312,18 +312,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -349,6 +337,18 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
 import|;
 end_import
 
@@ -418,7 +418,7 @@ name|RUN
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TestSubmitRule (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RulesCache rules, AccountLoader.Factory infoFactory)
+DECL|method|TestSubmitRule ( Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RulesCache rules, AccountLoader.Factory infoFactory)
 name|TestSubmitRule
 parameter_list|(
 name|Provider
@@ -1011,7 +1011,7 @@ DECL|class|None
 specifier|static
 class|class
 name|None
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -283,7 +283,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Given a regular expression, checks it against the file list in the most  * recent patchset of a change. For all files that match the regex, returns the  * (new) path of the file, the change type, and the old path of the file if  * applicable (if the file was copied or renamed).  *  *<pre>  *   'commit_delta'(+Regex, -ChangeType, -NewPath, -OldPath)  *</pre>  */
+comment|/**  * Given a regular expression, checks it against the file list in the most recent patchset of a  * change. For all files that match the regex, returns the (new) path of the file, the change type,  * and the old path of the file if applicable (if the file was copied or renamed).  *  *<pre>  *   'commit_delta'(+Regex, -ChangeType, -NewPath, -OldPath)  *</pre>  */
 end_comment
 
 begin_class

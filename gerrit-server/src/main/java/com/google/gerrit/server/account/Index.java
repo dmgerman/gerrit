@@ -212,7 +212,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|accountCache
 specifier|private
 specifier|final

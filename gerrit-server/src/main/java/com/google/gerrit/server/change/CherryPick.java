@@ -477,7 +477,7 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPick (Provider<ReviewDb> dbProvider, CherryPickChange cherryPickChange, ChangeJson.Factory json)
+DECL|method|CherryPick ( Provider<ReviewDb> dbProvider, CherryPickChange cherryPickChange, ChangeJson.Factory json)
 name|CherryPick
 parameter_list|(
 name|Provider

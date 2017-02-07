@@ -354,56 +354,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|codec
-operator|.
-name|binary
-operator|.
-name|Base64
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -560,6 +510,56 @@ name|HttpServletResponseWrapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|codec
+operator|.
+name|binary
+operator|.
+name|Base64
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Authenticates the current user with an OAuth2 server.  *  * @see<a href="https://tools.ietf.org/rfc/rfc6750.txt">RFC 6750</a>  */
 end_comment
@@ -679,7 +679,7 @@ name|defaultAuthProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectOAuthFilter (DynamicItem<WebSession> session, DynamicMap<OAuthLoginProvider> pluginsProvider, AccountCache accountCache, AccountManager accountManager, @GerritServerConfig Config gerritConfig)
+DECL|method|ProjectOAuthFilter ( DynamicItem<WebSession> session, DynamicMap<OAuthLoginProvider> pluginsProvider, AccountCache accountCache, AccountManager accountManager, @GerritServerConfig Config gerritConfig)
 name|ProjectOAuthFilter
 parameter_list|(
 name|DynamicItem
@@ -804,7 +804,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
@@ -1224,7 +1224,7 @@ literal|false
 return|;
 block|}
 block|}
-comment|/**    * Picks the only installed OAuth provider. If there is a multiude    * of providers available, the actual provider must be determined    * from the authentication request.    *    * @throws ServletException if there is no {@code OAuthLoginProvider}    * installed at all.    */
+comment|/**    * Picks the only installed OAuth provider. If there is a multiude of providers available, the    * actual provider must be determined from the authentication request.    *    * @throws ServletException if there is no {@code OAuthLoginProvider} installed at all.    */
 DECL|method|pickOnlyProvider ()
 specifier|private
 name|void
@@ -1286,7 +1286,7 @@ block|{
 comment|// multiple providers found => do not pick any
 block|}
 block|}
-comment|/**    * Picks the {@code OAuthLoginProvider} configured with    *<tt>auth.gitOAuthProvider</tt>.    *    * @throws ServletException if the configured provider was not found.    */
+comment|/**    * Picks the {@code OAuthLoginProvider} configured with<tt>auth.gitOAuthProvider</tt>.    *    * @throws ServletException if the configured provider was not found.    */
 DECL|method|pickConfiguredProvider ()
 specifier|private
 name|void

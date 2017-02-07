@@ -249,7 +249,7 @@ DECL|method|AccountSshKey ()
 specifier|protected
 name|AccountSshKey
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|AccountSshKey (final AccountSshKey.Id i, final String pub)
 specifier|public
 name|AccountSshKey

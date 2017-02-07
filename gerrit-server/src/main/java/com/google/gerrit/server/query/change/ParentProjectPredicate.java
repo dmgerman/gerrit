@@ -268,7 +268,7 @@ specifier|final
 name|String
 name|value
 decl_stmt|;
-DECL|method|ParentProjectPredicate (ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
+DECL|method|ParentProjectPredicate ( ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
 name|ParentProjectPredicate
 parameter_list|(
 name|ProjectCache

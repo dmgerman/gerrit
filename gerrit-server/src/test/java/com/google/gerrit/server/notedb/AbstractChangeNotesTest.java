@@ -804,6 +804,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -918,26 +938,6 @@ name|RunWith
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TimeZone
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Ignore
@@ -1026,11 +1026,11 @@ return|return
 name|cfg
 return|;
 block|}
+DECL|field|testConfig
 annotation|@
 name|ConfigSuite
 operator|.
 name|Parameter
-DECL|field|testConfig
 specifier|public
 name|Config
 name|testConfig
@@ -1127,45 +1127,45 @@ name|InMemoryRepository
 argument_list|>
 name|tr
 decl_stmt|;
+DECL|field|userFactory
 annotation|@
 name|Inject
-DECL|field|userFactory
 specifier|protected
 name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
+DECL|field|updateManagerFactory
 annotation|@
 name|Inject
-DECL|field|updateManagerFactory
 specifier|protected
 name|NoteDbUpdateManager
 operator|.
 name|Factory
 name|updateManagerFactory
 decl_stmt|;
+DECL|field|allUsers
 annotation|@
 name|Inject
-DECL|field|allUsers
 specifier|protected
 name|AllUsersName
 name|allUsers
 decl_stmt|;
+DECL|field|args
 annotation|@
 name|Inject
-DECL|field|args
 specifier|protected
 name|AbstractChangeNotes
 operator|.
 name|Args
 name|args
 decl_stmt|;
+DECL|field|serverId
 annotation|@
 name|Inject
 annotation|@
 name|GerritServerId
-DECL|field|serverId
 specifier|private
 name|String
 name|serverId
@@ -1915,7 +1915,7 @@ name|load
 argument_list|()
 return|;
 block|}
-DECL|method|submitRecord (String status, String errorMessage, SubmitRecord.Label... labels)
+DECL|method|submitRecord ( String status, String errorMessage, SubmitRecord.Label... labels)
 specifier|protected
 specifier|static
 name|SubmitRecord
@@ -1985,7 +1985,7 @@ return|return
 name|rec
 return|;
 block|}
-DECL|method|submitLabel (String name, String status, Account.Id appliedBy)
+DECL|method|submitLabel ( String name, String status, Account.Id appliedBy)
 specifier|protected
 specifier|static
 name|SubmitRecord
@@ -2047,7 +2047,7 @@ return|return
 name|label
 return|;
 block|}
-DECL|method|newComment (PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, String commitSHA1, boolean unresolved)
+DECL|method|newComment ( PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, String commitSHA1, boolean unresolved)
 specifier|protected
 name|Comment
 name|newComment

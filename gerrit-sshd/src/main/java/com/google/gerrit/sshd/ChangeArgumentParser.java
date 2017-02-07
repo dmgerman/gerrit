@@ -390,7 +390,7 @@ name|changeControlFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeArgumentParser (CurrentUser currentUser, ChangesCollection changesCollection, ChangeFinder changeFinder, ReviewDb db, ChangeNotes.Factory changeNotesFactory, ChangeControl.GenericFactory changeControlFactory)
+DECL|method|ChangeArgumentParser ( CurrentUser currentUser, ChangesCollection changesCollection, ChangeFinder changeFinder, ReviewDb db, ChangeNotes.Factory changeNotesFactory, ChangeControl.GenericFactory changeControlFactory)
 name|ChangeArgumentParser
 parameter_list|(
 name|CurrentUser
@@ -486,7 +486,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addChange (String id, Map<Change.Id, ChangeResource> changes, ProjectControl projectControl)
+DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, ProjectControl projectControl)
 specifier|public
 name|void
 name|addChange
@@ -524,7 +524,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addChange (String id, Map<Change.Id, ChangeResource> changes, ProjectControl projectControl, boolean useIndex)
+DECL|method|addChange ( String id, Map<Change.Id, ChangeResource> changes, ProjectControl projectControl, boolean useIndex)
 specifier|public
 name|void
 name|addChange

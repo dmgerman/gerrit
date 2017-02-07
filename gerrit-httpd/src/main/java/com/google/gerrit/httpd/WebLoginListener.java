@@ -129,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows to listen and override the reponse to login/logout web actions.  *  * Allows to intercept and act when a Gerrit user logs in or logs out of  * the Web interface to perform actions or to override the output response  * status code.  *  * Typical use can be multi-factor authentication (on login) or global sign-out  * from SSO systems (on logout).  *  */
+comment|/**  * Allows to listen and override the reponse to login/logout web actions.  *  *<p>Allows to intercept and act when a Gerrit user logs in or logs out of the Web interface to  * perform actions or to override the output response status code.  *  *<p>Typical use can be multi-factor authentication (on login) or global sign-out from SSO systems  * (on logout).  */
 end_comment
 
 begin_interface

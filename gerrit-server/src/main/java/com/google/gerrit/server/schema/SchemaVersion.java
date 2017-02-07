@@ -845,8 +845,8 @@ throws|throws
 name|OrmException
 throws|,
 name|SQLException
-block|{   }
-DECL|method|migrateData (List<SchemaVersion> pending, UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db)
+block|{}
+DECL|method|migrateData ( List<SchemaVersion> pending, UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db)
 specifier|private
 name|void
 name|migrateData
@@ -947,7 +947,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Invoked between updateSchema (adds new columns/tables) and pruneSchema    * (removes deleted columns/tables).    *    * @param db open database handle.    * @param ui interface for interacting with the user.    * @throws OrmException if a Gerrit-specific exception occurred.    * @throws SQLException if an underlying SQL exception occurred.    */
+comment|/**    * Invoked between updateSchema (adds new columns/tables) and pruneSchema (removes deleted    * columns/tables).    *    * @param db open database handle.    * @param ui interface for interacting with the user.    * @throws OrmException if a Gerrit-specific exception occurred.    * @throws SQLException if an underlying SQL exception occurred.    */
 DECL|method|migrateData (ReviewDb db, UpdateUI ui)
 specifier|protected
 name|void
@@ -963,7 +963,7 @@ throws|throws
 name|OrmException
 throws|,
 name|SQLException
-block|{   }
+block|{}
 comment|/** Mark the current schema version. */
 DECL|method|finish (CurrentSchemaVersion curr, ReviewDb db)
 specifier|protected

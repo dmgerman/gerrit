@@ -207,7 +207,7 @@ parameter_list|(
 name|String
 name|username
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|create (AccountSshKey.Id id, String encoded)

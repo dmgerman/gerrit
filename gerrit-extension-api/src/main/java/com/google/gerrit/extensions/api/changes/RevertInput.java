@@ -90,9 +90,9 @@ specifier|public
 class|class
 name|RevertInput
 block|{
+DECL|field|message
 annotation|@
 name|DefaultInput
-DECL|field|message
 specifier|public
 name|String
 name|message

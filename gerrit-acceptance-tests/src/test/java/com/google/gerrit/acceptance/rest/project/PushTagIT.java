@@ -1112,7 +1112,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|fastForwardTagToExistingCommit (TagType tagType, String tagName, Status expectedStatus)
+DECL|method|fastForwardTagToExistingCommit ( TagType tagType, String tagName, Status expectedStatus)
 specifier|private
 name|void
 name|fastForwardTagToExistingCommit
@@ -1180,7 +1180,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|forceUpdateTagToExistingCommit (TagType tagType, String tagName, Status expectedStatus)
+DECL|method|forceUpdateTagToExistingCommit ( TagType tagType, String tagName, Status expectedStatus)
 specifier|private
 name|void
 name|forceUpdateTagToExistingCommit
@@ -1248,7 +1248,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|pushTag (TagType tagType, String tagName, boolean newCommit, boolean force, Status expectedStatus)
+DECL|method|pushTag ( TagType tagType, String tagName, boolean newCommit, boolean force, Status expectedStatus)
 specifier|private
 name|String
 name|pushTag

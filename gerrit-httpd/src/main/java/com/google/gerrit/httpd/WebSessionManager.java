@@ -384,40 +384,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -485,6 +451,40 @@ operator|.
 name|concurrent
 operator|.
 name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -834,7 +834,7 @@ name|auth
 argument_list|)
 return|;
 block|}
-DECL|method|createVal (final Key key, final Account.Id who, final boolean remember, final AccountExternalId.Key lastLogin, String sid, String auth)
+DECL|method|createVal ( final Key key, final Account.Id who, final boolean remember, final AccountExternalId.Key lastLogin, String sid, String auth)
 name|Val
 name|createVal
 parameter_list|(
@@ -1250,7 +1250,7 @@ specifier|transient
 name|String
 name|auth
 decl_stmt|;
-DECL|method|Val (final Account.Id accountId, final long refreshCookieAt, final boolean persistentCookie, final AccountExternalId.Key externalId, final long expiresAt, final String sessionId, final String auth)
+DECL|method|Val ( final Account.Id accountId, final long refreshCookieAt, final boolean persistentCookie, final AccountExternalId.Key externalId, final long expiresAt, final String sessionId, final String auth)
 name|Val
 parameter_list|(
 specifier|final

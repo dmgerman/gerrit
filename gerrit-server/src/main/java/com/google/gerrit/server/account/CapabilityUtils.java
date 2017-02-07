@@ -158,26 +158,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -195,6 +175,26 @@ operator|.
 name|util
 operator|.
 name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -220,7 +220,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|checkRequiresCapability (Provider<CurrentUser> userProvider, String pluginName, Class<?> clazz)
+DECL|method|checkRequiresCapability ( Provider<CurrentUser> userProvider, String pluginName, Class<?> clazz)
 specifier|public
 specifier|static
 name|void
@@ -393,7 +393,7 @@ name|rac
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|checkRequiresCapability (CapabilityControl ctl, String pluginName, Class<?> clazz, RequiresCapability rc)
+DECL|method|checkRequiresCapability ( CapabilityControl ctl, String pluginName, Class<?> clazz, RequiresCapability rc)
 specifier|private
 specifier|static
 name|void
@@ -473,7 +473,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|checkRequiresAnyCapability (CapabilityControl ctl, String pluginName, Class<?> clazz, RequiresAnyCapability rac)
+DECL|method|checkRequiresAnyCapability ( CapabilityControl ctl, String pluginName, Class<?> clazz, RequiresAnyCapability rac)
 specifier|private
 specifier|static
 name|void
@@ -610,7 +610,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-DECL|method|resolveCapability (String pluginName, String capability, CapabilityScope scope, Class<?> clazz)
+DECL|method|resolveCapability ( String pluginName, String capability, CapabilityScope scope, Class<?> clazz)
 specifier|private
 specifier|static
 name|String
@@ -730,8 +730,8 @@ return|return
 name|capability
 return|;
 block|}
-comment|/**    * Find an instance of the specified annotation, walking up the inheritance    * tree if necessary.    *    * @param<T> Annotation type to search for    * @param clazz root class to search, may be null    * @param annotationClass class object of Annotation subclass to search for    * @return the requested annotation or null if none    */
-DECL|method|getClassAnnotation (Class<?> clazz, Class<T> annotationClass)
+comment|/**    * Find an instance of the specified annotation, walking up the inheritance tree if necessary.    *    * @param<T> Annotation type to search for    * @param clazz root class to search, may be null    * @param annotationClass class object of Annotation subclass to search for    * @return the requested annotation or null if none    */
+DECL|method|getClassAnnotation ( Class<?> clazz, Class<T> annotationClass)
 specifier|private
 specifier|static
 parameter_list|<

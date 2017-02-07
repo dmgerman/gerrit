@@ -139,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests parsing a Base64 encoded subject.  */
+comment|/** Tests parsing a Base64 encoded subject. */
 end_comment
 
 begin_class

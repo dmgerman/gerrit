@@ -169,7 +169,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Information about the currently logged in user.  *<p>  * This is a {@link RequestScoped} property managed by Guice.  *  * @see AnonymousUser  * @see IdentifiedUser  */
+comment|/**  * Information about the currently logged in user.  *  *<p>This is a {@link RequestScoped} property managed by Guice.  *  * @see AnonymousUser  * @see IdentifiedUser  */
 end_comment
 
 begin_class
@@ -214,7 +214,7 @@ DECL|method|PropertyKey ()
 specifier|private
 name|PropertyKey
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|field|capabilityControlFactory
 specifier|private
@@ -296,7 +296,7 @@ operator|=
 name|path
 expr_stmt|;
 block|}
-comment|/**    * Identity of the authenticated user.    *<p>    * In the normal case where a user authenticates as themselves    * {@code getRealUser() == this}.    *<p>    * If {@code X-Gerrit-RunAs} or {@code suexec} was used this method returns    * the identity of the account that has permission to act on behalf of this    * user.    */
+comment|/**    * Identity of the authenticated user.    *    *<p>In the normal case where a user authenticates as themselves {@code getRealUser() == this}.    *    *<p>If {@code X-Gerrit-RunAs} or {@code suexec} was used this method returns the identity of the    * account that has permission to act on behalf of this user.    */
 DECL|method|getRealUser ()
 specifier|public
 name|CurrentUser
@@ -307,7 +307,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * If the {@link #getRealUser()} has an account ID associated with it, call    * the given setter with that ID.    */
+comment|/**    * If the {@link #getRealUser()} has an account ID associated with it, call the given setter with    * that ID.    */
 DECL|method|updateRealAccountId (Consumer<Account.Id> setter)
 specifier|public
 name|void
@@ -344,7 +344,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Get the set of groups the user is currently a member of.    *<p>    * The returned set may be a subset of the user's actual groups; if the user's    * account is currently deemed to be untrusted then the effective group set is    * only the anonymous and registered user groups. To enable additional groups    * (and gain their granted permissions) the user must update their account to    * use only trusted authentication providers.    *    * @return active groups for this user.    */
+comment|/**    * Get the set of groups the user is currently a member of.    *    *<p>The returned set may be a subset of the user's actual groups; if the user's account is    * currently deemed to be untrusted then the effective group set is only the anonymous and    * registered user groups. To enable additional groups (and gain their granted permissions) the    * user must update their account to use only trusted authentication providers.    *    * @return active groups for this user.    */
 DECL|method|getEffectiveGroups ()
 specifier|public
 specifier|abstract
@@ -499,7 +499,7 @@ name|Nullable
 name|T
 name|value
 parameter_list|)
-block|{   }
+block|{}
 DECL|method|setLastLoginExternalIdKey (AccountExternalId.Key externalIdKey)
 specifier|public
 name|void

@@ -231,7 +231,7 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|RenameFileAction (Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget renameButton)
+DECL|method|RenameFileAction ( Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget renameButton)
 name|RenameFileAction
 parameter_list|(
 name|Change

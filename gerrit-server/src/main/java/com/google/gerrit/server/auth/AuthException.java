@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Base type for authentication exceptions.  */
+comment|/** Base type for authentication exceptions. */
 end_comment
 
 begin_class
@@ -92,7 +92,7 @@ DECL|method|AuthException ()
 specifier|public
 name|AuthException
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|AuthException (String msg)
 specifier|public
 name|AuthException

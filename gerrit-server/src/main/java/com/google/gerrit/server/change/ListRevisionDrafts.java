@@ -253,7 +253,7 @@ name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListRevisionDrafts (Provider<ReviewDb> db, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
+DECL|method|ListRevisionDrafts ( Provider<ReviewDb> db, Provider<CommentJson> commentJson, CommentsUtil commentsUtil)
 name|ListRevisionDrafts
 parameter_list|(
 name|Provider

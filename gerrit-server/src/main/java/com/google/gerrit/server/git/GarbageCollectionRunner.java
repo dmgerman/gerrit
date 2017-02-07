@@ -176,6 +176,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -191,18 +203,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
 import|;
 end_import
 
@@ -420,7 +420,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GarbageCollectionRunner (GarbageCollection.Factory garbageCollectionFactory, ProjectCache projectCache)
+DECL|method|GarbageCollectionRunner ( GarbageCollection.Factory garbageCollectionFactory, ProjectCache projectCache)
 name|GarbageCollectionRunner
 parameter_list|(
 name|GarbageCollection

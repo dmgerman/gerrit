@@ -194,6 +194,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -201,16 +211,6 @@ operator|.
 name|args4j
 operator|.
 name|Argument
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -237,16 +237,16 @@ name|AproposCommand
 extends|extends
 name|SshCommand
 block|{
+DECL|field|searcher
 annotation|@
 name|Inject
-DECL|field|searcher
 specifier|private
 name|QueryDocumentationExecutor
 name|searcher
 decl_stmt|;
+DECL|field|url
 annotation|@
 name|Inject
-DECL|field|url
 annotation|@
 name|CanonicalWebUrl
 name|String

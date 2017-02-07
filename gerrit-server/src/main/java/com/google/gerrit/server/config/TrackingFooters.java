@@ -96,20 +96,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|FooterLine
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -127,6 +113,20 @@ operator|.
 name|regex
 operator|.
 name|Matcher
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|FooterLine
 import|;
 end_import
 

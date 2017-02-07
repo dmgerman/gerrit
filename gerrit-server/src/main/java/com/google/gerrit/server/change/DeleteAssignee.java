@@ -458,7 +458,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{    }
+block|{}
 DECL|field|batchUpdateFactory
 specifier|private
 specifier|final
@@ -506,7 +506,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteAssignee (BatchUpdate.Factory batchUpdateFactory, ChangeMessagesUtil cmUtil, Provider<ReviewDb> db, AssigneeChanged assigneeChanged, IdentifiedUser.GenericFactory userFactory, AccountLoader.Factory accountLoaderFactory)
+DECL|method|DeleteAssignee ( BatchUpdate.Factory batchUpdateFactory, ChangeMessagesUtil cmUtil, Provider<ReviewDb> db, AssigneeChanged assigneeChanged, IdentifiedUser.GenericFactory userFactory, AccountLoader.Factory accountLoaderFactory)
 name|DeleteAssignee
 parameter_list|(
 name|BatchUpdate
@@ -854,7 +854,7 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|addMessage (BatchUpdate.ChangeContext ctx, ChangeUpdate update, IdentifiedUser deletedAssignee)
+DECL|method|addMessage ( BatchUpdate.ChangeContext ctx, ChangeUpdate update, IdentifiedUser deletedAssignee)
 specifier|private
 name|void
 name|addMessage

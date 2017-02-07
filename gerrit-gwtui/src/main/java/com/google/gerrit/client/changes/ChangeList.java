@@ -372,7 +372,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|query (String query, Set<ListChangesOption> options, AsyncCallback<ChangeList> callback)
+DECL|method|query ( String query, Set<ListChangesOption> options, AsyncCallback<ChangeList> callback)
 specifier|public
 specifier|static
 name|void
@@ -408,7 +408,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|query (String query, Set<ListChangesOption> options, AsyncCallback<ChangeList> callback, int start, int limit)
+DECL|method|query ( String query, Set<ListChangesOption> options, AsyncCallback<ChangeList> callback, int start, int limit)
 specifier|public
 specifier|static
 name|void
@@ -591,7 +591,7 @@ DECL|method|ChangeList ()
 specifier|protected
 name|ChangeList
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

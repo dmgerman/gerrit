@@ -220,7 +220,7 @@ specifier|private
 name|Button
 name|okButton
 decl_stmt|;
-DECL|method|ConfirmationDialog (final String dialogTitle, final SafeHtml message, final ConfirmationCallback callback)
+DECL|method|ConfirmationDialog ( final String dialogTitle, final SafeHtml message, final ConfirmationCallback callback)
 specifier|public
 name|ConfirmationDialog
 parameter_list|(

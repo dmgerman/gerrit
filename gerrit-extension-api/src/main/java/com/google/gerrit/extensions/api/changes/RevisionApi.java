@@ -608,7 +608,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Returns patch of revision.    */
+comment|/** Returns patch of revision. */
 DECL|method|patch ()
 name|BinaryResult
 name|patch
@@ -747,7 +747,7 @@ name|uninterestingParent
 return|;
 block|}
 block|}
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

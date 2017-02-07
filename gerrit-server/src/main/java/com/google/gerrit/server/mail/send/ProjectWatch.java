@@ -440,26 +440,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -505,6 +485,26 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -556,7 +556,7 @@ specifier|final
 name|ChangeData
 name|changeData
 decl_stmt|;
-DECL|method|ProjectWatch (EmailArguments args, Project.NameKey project, ProjectState projectState, ChangeData changeData)
+DECL|method|ProjectWatch ( EmailArguments args, Project.NameKey project, ProjectState projectState, ChangeData changeData)
 specifier|public
 name|ProjectWatch
 parameter_list|(
@@ -1165,7 +1165,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|deliverToMembers ( Watchers.List matching, AccountGroup.UUID startUUID)
+DECL|method|deliverToMembers (Watchers.List matching, AccountGroup.UUID startUUID)
 specifier|private
 name|void
 name|deliverToMembers
@@ -1396,7 +1396,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|add (Watchers matching, Account.Id accountId, ProjectWatchKey key, Set<NotifyType> watchedTypes, NotifyType type)
+DECL|method|add ( Watchers matching, Account.Id accountId, ProjectWatchKey key, Set<NotifyType> watchedTypes, NotifyType type)
 specifier|private
 name|boolean
 name|add

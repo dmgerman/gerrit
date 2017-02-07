@@ -978,20 +978,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -1020,8 +1006,22 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_comment
-comment|/**  * Module for programs that perform batch operations on a site.  *<p>  * Any program that requires this module likely also requires using  * {@link ThreadLimiter} to limit the number of threads accessing the database  * concurrently.  */
+comment|/**  * Module for programs that perform batch operations on a site.  *  *<p>Any program that requires this module likely also requires using {@link ThreadLimiter} to  * limit the number of threads accessing the database concurrently.  */
 end_comment
 
 begin_class
@@ -1160,7 +1160,7 @@ function|.toInstance
 parameter_list|(
 function|DynamicMap.<Cache<?
 operator|,
-function|?>> emptyMap
+function|?>>emptyMap
 parameter_list|()
 block|)
 class|;

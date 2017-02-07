@@ -168,7 +168,7 @@ specifier|public
 class|class
 name|AclUtil
 block|{
-DECL|method|grant (ProjectConfig config, AccessSection section, String permission, GroupReference... groupList)
+DECL|method|grant ( ProjectConfig config, AccessSection section, String permission, GroupReference... groupList)
 specifier|public
 specifier|static
 name|void
@@ -202,7 +202,7 @@ name|groupList
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|grant (ProjectConfig config, AccessSection section, String permission, boolean force, GroupReference... groupList)
+DECL|method|grant ( ProjectConfig config, AccessSection section, String permission, boolean force, GroupReference... groupList)
 specifier|public
 specifier|static
 name|void
@@ -241,7 +241,7 @@ name|groupList
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|grant (ProjectConfig config, AccessSection section, String permission, boolean force, Boolean exclusive, GroupReference... groupList)
+DECL|method|grant ( ProjectConfig config, AccessSection section, String permission, boolean force, Boolean exclusive, GroupReference... groupList)
 specifier|public
 specifier|static
 name|void
@@ -336,7 +336,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|grant (ProjectConfig config, AccessSection section, LabelType type, int min, int max, GroupReference... groupList)
+DECL|method|grant ( ProjectConfig config, AccessSection section, LabelType type, int min, int max, GroupReference... groupList)
 specifier|public
 specifier|static
 name|void

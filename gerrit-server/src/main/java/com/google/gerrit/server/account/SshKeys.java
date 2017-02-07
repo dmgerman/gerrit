@@ -242,6 +242,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -251,16 +261,6 @@ operator|.
 name|errors
 operator|.
 name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -320,7 +320,7 @@ name|authorizedKeys
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshKeys (DynamicMap<RestView<AccountResource.SshKey>> views, GetSshKeys list, Provider<CurrentUser> self, VersionedAuthorizedKeys.Accessor authorizedKeys)
+DECL|method|SshKeys ( DynamicMap<RestView<AccountResource.SshKey>> views, GetSshKeys list, Provider<CurrentUser> self, VersionedAuthorizedKeys.Accessor authorizedKeys)
 name|SshKeys
 parameter_list|(
 name|DynamicMap

@@ -450,7 +450,7 @@ name|notesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory ( ProjectControl.GenericFactory p, ChangeNotes.Factory n)
+DECL|method|GenericFactory (ProjectControl.GenericFactory p, ChangeNotes.Factory n)
 name|GenericFactory
 parameter_list|(
 name|ProjectControl
@@ -473,7 +473,7 @@ operator|=
 name|n
 expr_stmt|;
 block|}
-DECL|method|controlFor (ReviewDb db, Project.NameKey project, Change.Id changeId, CurrentUser user)
+DECL|method|controlFor ( ReviewDb db, Project.NameKey project, Change.Id changeId, CurrentUser user)
 specifier|public
 name|ChangeControl
 name|controlFor
@@ -787,7 +787,7 @@ name|patchSetUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory (ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, PatchSetUtil patchSetUtil)
+DECL|method|Factory ( ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, PatchSetUtil patchSetUtil)
 name|Factory
 parameter_list|(
 name|ChangeData
@@ -832,7 +832,7 @@ operator|=
 name|patchSetUtil
 expr_stmt|;
 block|}
-DECL|method|create (RefControl refControl, ReviewDb db, Project.NameKey project, Change.Id changeId)
+DECL|method|create ( RefControl refControl, ReviewDb db, Project.NameKey project, Change.Id changeId)
 name|ChangeControl
 name|create
 parameter_list|(
@@ -873,7 +873,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a change control for a change that was loaded from index. This      * method should only be used when database access is harmful and potentially      * stale data from the index is acceptable.      *      * @param refControl ref control      * @param change change loaded from secondary index      * @return change control      */
+comment|/**      * Create a change control for a change that was loaded from index. This method should only be      * used when database access is harmful and potentially stale data from the index is acceptable.      *      * @param refControl ref control      * @param change change loaded from secondary index      * @return change control      */
 DECL|method|createForIndexedChange (RefControl refControl, Change change)
 name|ChangeControl
 name|createForIndexedChange
@@ -1412,7 +1412,7 @@ name|db
 argument_list|)
 return|;
 block|}
-comment|/** Can this user change the destination branch of this change       to the new ref? */
+comment|/** Can this user change the destination branch of this change to the new ref? */
 DECL|method|canMoveTo (String ref, ReviewDb db)
 specifier|public
 name|boolean

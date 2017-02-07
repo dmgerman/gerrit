@@ -354,18 +354,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -391,6 +379,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
 import|;
 end_import
 
@@ -641,7 +641,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryGroups (GroupIndexCollection indexes, GroupQueryBuilder queryBuilder, GroupQueryProcessor queryProcessor, GroupJson json)
+DECL|method|QueryGroups ( GroupIndexCollection indexes, GroupQueryBuilder queryBuilder, GroupQueryProcessor queryProcessor, GroupJson json)
 specifier|protected
 name|QueryGroups
 parameter_list|(

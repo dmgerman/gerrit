@@ -561,7 +561,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Edit assignee using auto-completion.  */
+comment|/** Edit assignee using auto-completion. */
 end_comment
 
 begin_class
@@ -582,7 +582,7 @@ name|HTMLPanel
 argument_list|,
 name|Assignee
 argument_list|>
-block|{   }
+block|{}
 DECL|field|uiBinder
 specifier|private
 specifier|static

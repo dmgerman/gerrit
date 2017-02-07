@@ -376,7 +376,7 @@ name|currentUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupMembers (final GroupCache groupCache, final GroupDetailFactory.Factory groupDetailFactory, final AccountCache accountCache, final ProjectControl.GenericFactory projectControl, @Assisted final CurrentUser currentUser)
+DECL|method|GroupMembers ( final GroupCache groupCache, final GroupDetailFactory.Factory groupDetailFactory, final AccountCache accountCache, final ProjectControl.GenericFactory projectControl, @Assisted final CurrentUser currentUser)
 name|GroupMembers
 parameter_list|(
 specifier|final
@@ -484,7 +484,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|listAccounts (final AccountGroup.UUID groupUUID, final Project.NameKey project, final Set<AccountGroup.UUID> seen)
+DECL|method|listAccounts ( final AccountGroup.UUID groupUUID, final Project.NameKey project, final Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -578,7 +578,7 @@ name|emptySet
 argument_list|()
 return|;
 block|}
-DECL|method|getProjectOwners (final Project.NameKey project, final Set<AccountGroup.UUID> seen)
+DECL|method|getProjectOwners ( final Project.NameKey project, final Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -711,7 +711,7 @@ return|return
 name|projectOwners
 return|;
 block|}
-DECL|method|getGroupMembers (final AccountGroup group, final Project.NameKey project, final Set<AccountGroup.UUID> seen)
+DECL|method|getGroupMembers ( final AccountGroup group, final Project.NameKey project, final Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<

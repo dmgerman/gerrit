@@ -465,9 +465,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|description
 annotation|@
 name|DefaultInput
-DECL|field|description
 specifier|public
 name|String
 name|description
@@ -475,7 +475,7 @@ decl_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|PutDescription (Provider<ReviewDb> dbProvider, ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, PatchSetUtil psUtil)
+DECL|method|PutDescription ( Provider<ReviewDb> dbProvider, ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, PatchSetUtil psUtil)
 name|PutDescription
 parameter_list|(
 name|Provider

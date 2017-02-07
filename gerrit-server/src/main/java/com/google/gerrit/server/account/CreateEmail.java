@@ -398,6 +398,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -413,16 +423,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -518,7 +518,7 @@ name|isDevMode
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateEmail (Provider<CurrentUser> self, Realm realm, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, PutPreferred putPreferred, @Assisted String email)
+DECL|method|CreateEmail ( Provider<CurrentUser> self, Realm realm, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, PutPreferred putPreferred, @Assisted String email)
 name|CreateEmail
 parameter_list|(
 name|Provider

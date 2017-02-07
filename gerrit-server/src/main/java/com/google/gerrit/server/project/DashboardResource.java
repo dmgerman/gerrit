@@ -212,7 +212,7 @@ specifier|final
 name|boolean
 name|projectDefault
 decl_stmt|;
-DECL|method|DashboardResource (ProjectControl control, String refName, String pathName, Config config, boolean projectDefault)
+DECL|method|DashboardResource ( ProjectControl control, String refName, String pathName, Config config, boolean projectDefault)
 specifier|public
 name|DashboardResource
 parameter_list|(

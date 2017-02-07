@@ -1398,7 +1398,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addNotifyButton (final ProjectWatchInfo.Type type, final ProjectWatchInfo info, final int row, final int col)
+DECL|method|addNotifyButton ( final ProjectWatchInfo.Type type, final ProjectWatchInfo info, final int row, final int col)
 specifier|protected
 name|void
 name|addNotifyButton

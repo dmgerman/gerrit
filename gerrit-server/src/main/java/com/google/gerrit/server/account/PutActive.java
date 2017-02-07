@@ -293,7 +293,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|dbProvider
 specifier|private
 specifier|final

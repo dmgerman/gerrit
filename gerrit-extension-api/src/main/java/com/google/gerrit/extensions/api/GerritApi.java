@@ -203,7 +203,7 @@ name|Projects
 name|projects
 parameter_list|()
 function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

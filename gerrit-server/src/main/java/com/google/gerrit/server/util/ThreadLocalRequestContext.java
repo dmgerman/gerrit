@@ -243,7 +243,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ThreadLocalRequestContext manages the current RequestContext using a  * ThreadLocal. When the context is set, the fields exposed by the context  * are considered in scope. Otherwise, the FallbackRequestContext is used.  */
+comment|/**  * ThreadLocalRequestContext manages the current RequestContext using a ThreadLocal. When the  * context is set, the fields exposed by the context are considered in scope. Otherwise, the  * FallbackRequestContext is used.  */
 end_comment
 
 begin_class
@@ -436,7 +436,7 @@ name|Inject
 DECL|method|ThreadLocalRequestContext ()
 name|ThreadLocalRequestContext
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|setContext (@ullable RequestContext ctx)
 specifier|public
 name|RequestContext

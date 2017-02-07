@@ -144,6 +144,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -268,28 +288,8 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
-comment|/**  * Commit implementation with some optimizations for change notes parsing.  *<p>  *<ul>  *<li>Caches the result of {@link #getFooterLines()}, which is  *     otherwise very wasteful with allocations.</li>  *</ul>  */
+comment|/**  * Commit implementation with some optimizations for change notes parsing.  *  *<p>  *  *<ul>  *<li>Caches the result of {@link #getFooterLines()}, which is otherwise very wasteful with  *       allocations.  *</ul>  */
 end_comment
 
 begin_class
@@ -318,7 +318,7 @@ name|repo
 argument_list|)
 return|;
 block|}
-DECL|method|newStagedRevWalk (Repository repo, Iterable<InsertedObject> stagedObjs)
+DECL|method|newStagedRevWalk ( Repository repo, Iterable<InsertedObject> stagedObjs)
 specifier|public
 specifier|static
 name|ChangeNotesRevWalk

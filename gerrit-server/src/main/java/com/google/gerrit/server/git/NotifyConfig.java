@@ -177,12 +177,12 @@ enum|enum
 name|Header
 block|{
 DECL|enumConstant|TO
-DECL|enumConstant|CC
-DECL|enumConstant|BCC
 name|TO
 block|,
+DECL|enumConstant|CC
 name|CC
 block|,
+DECL|enumConstant|BCC
 name|BCC
 block|}
 DECL|field|name

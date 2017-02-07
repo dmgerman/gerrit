@@ -120,7 +120,7 @@ decl_stmt|;
 DECL|method|DiscoveryResult ()
 name|DiscoveryResult
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|DiscoveryResult (String redirect, Map<String, String> args)
 name|DiscoveryResult
 parameter_list|(

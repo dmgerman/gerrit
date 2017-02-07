@@ -95,9 +95,9 @@ class|class
 name|EmailInput
 block|{
 comment|/* The email address. If provided, must match the email address from the URL. */
+DECL|field|email
 annotation|@
 name|DefaultInput
-DECL|field|email
 specifier|public
 name|String
 name|email

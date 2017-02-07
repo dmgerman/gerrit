@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Find/Replace pair whose replacement string is a link.  *<p>  * It is safe to pass arbitrary user-provided links to this class. Links are  * sanitized as follows:  *<ul>  *<li>Only http(s) and mailto links are supported; any other scheme results in  * an {@link IllegalArgumentException} from {@link #replace(String)}.  *<li>Special characters in the link after regex replacement are escaped with  * {@link SafeHtmlBuilder}.</li>  *</ul>  */
+comment|/**  * A Find/Replace pair whose replacement string is a link.  *  *<p>It is safe to pass arbitrary user-provided links to this class. Links are sanitized as  * follows:  *  *<ul>  *<li>Only http(s) and mailto links are supported; any other scheme results in an {@link  *       IllegalArgumentException} from {@link #replace(String)}.  *<li>Special characters in the link after regex replacement are escaped with {@link  *       SafeHtmlBuilder}.  *</ul>  */
 end_comment
 
 begin_class
@@ -174,8 +174,8 @@ DECL|method|LinkFindReplace ()
 specifier|protected
 name|LinkFindReplace
 parameter_list|()
-block|{   }
-comment|/**    * @param find regular expression pattern to match substrings with.    * @param link replacement link href. Capture groups within    *        {@code find} can be referenced with {@code $<i>n</i>}.    */
+block|{}
+comment|/**    * @param find regular expression pattern to match substrings with.    * @param link replacement link href. Capture groups within {@code find} can be referenced with    *     {@code $<i>n</i>}.    */
 DECL|method|LinkFindReplace (String find, String link)
 specifier|public
 name|LinkFindReplace

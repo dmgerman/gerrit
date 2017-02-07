@@ -231,7 +231,7 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|DeleteFileAction (Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget deleteButton)
+DECL|method|DeleteFileAction ( Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget deleteButton)
 name|DeleteFileAction
 parameter_list|(
 name|Change

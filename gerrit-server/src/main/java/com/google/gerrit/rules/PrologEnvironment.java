@@ -294,40 +294,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -386,8 +352,42 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Per-thread Prolog interpreter.  *<p>  * This class is not thread safe.  *<p>  * A single copy of the Prolog interpreter, for the current thread.  */
+comment|/**  * Per-thread Prolog interpreter.  *  *<p>This class is not thread safe.  *  *<p>A single copy of the Prolog interpreter, for the current thread.  */
 end_comment
 
 begin_class
@@ -623,7 +623,7 @@ name|obj
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Copy the stored values from another interpreter to this one.    * Also gets the cleanup from the child interpreter    */
+comment|/**    * Copy the stored values from another interpreter to this one. Also gets the cleanup from the    * child interpreter    */
 DECL|method|copyStoredValues (PrologEnvironment child)
 specifier|public
 name|void
@@ -650,7 +650,7 @@ name|cleanup
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Assign the environment a cleanup list (in order to use a centralized list)    * If this enivronment's list is non-empty, append its cleanup tasks to the    * assigning list.    */
+comment|/**    * Assign the environment a cleanup list (in order to use a centralized list) If this    * enivronment's list is non-empty, append its cleanup tasks to the assigning list.    */
 DECL|method|setCleanup (List<Runnable> newCleanupList)
 specifier|public
 name|void
@@ -675,7 +675,7 @@ operator|=
 name|newCleanupList
 expr_stmt|;
 block|}
-comment|/**    * Adds cleanup task to run when close() is called    * @param task is run when close() is called    */
+comment|/**    * Adds cleanup task to run when close() is called    *    * @param task is run when close() is called    */
 DECL|method|addToCleanup (Runnable task)
 specifier|public
 name|void
@@ -693,7 +693,7 @@ name|task
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Release resources stored in interpreter's hash manager.    */
+comment|/** Release resources stored in interpreter's hash manager. */
 DECL|method|close ()
 specifier|public
 name|void
@@ -898,7 +898,7 @@ name|compileLimit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args (ProjectCache projectCache, GitRepositoryManager repositoryManager, PatchListCache patchListCache, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser.GenericFactory userFactory, Provider<AnonymousUser> anonymousUser, @GerritServerConfig Config config)
+DECL|method|Args ( ProjectCache projectCache, GitRepositoryManager repositoryManager, PatchListCache patchListCache, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser.GenericFactory userFactory, Provider<AnonymousUser> anonymousUser, @GerritServerConfig Config config)
 name|Args
 parameter_list|(
 name|ProjectCache

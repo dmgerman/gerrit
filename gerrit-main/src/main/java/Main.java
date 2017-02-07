@@ -267,7 +267,7 @@ DECL|method|Main ()
 specifier|private
 name|Main
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

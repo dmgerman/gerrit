@@ -111,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation-specific configuration for secondary indexes.  *<p>  * Contains configuration that is tied to a specific index implementation but is  * otherwise global, i.e. not tied to a specific {@link Index} and schema  * version.  */
+comment|/**  * Implementation-specific configuration for secondary indexes.  *  *<p>Contains configuration that is tied to a specific index implementation but is otherwise  * global, i.e. not tied to a specific {@link Index} and schema version.  */
 end_comment
 
 begin_class
@@ -301,7 +301,7 @@ return|return
 name|limit
 return|;
 block|}
-comment|/**    * @return maximum limit supported by the underlying index, or limited for    * performance reasons.    */
+comment|/**    * @return maximum limit supported by the underlying index, or limited for performance reasons.    */
 DECL|method|maxLimit ()
 specifier|public
 specifier|abstract
@@ -309,7 +309,7 @@ name|int
 name|maxLimit
 parameter_list|()
 function_decl|;
-comment|/**    * @return maximum number of pages (limit / start) supported by the    *     underlying index, or limited for performance reasons.    */
+comment|/**    * @return maximum number of pages (limit / start) supported by the underlying index, or limited    *     for performance reasons.    */
 DECL|method|maxPages ()
 specifier|public
 specifier|abstract
@@ -317,7 +317,7 @@ name|int
 name|maxPages
 parameter_list|()
 function_decl|;
-comment|/**    * @return maximum number of total index query terms supported by the    *     underlying index, or limited for performance reasons.    */
+comment|/**    * @return maximum number of total index query terms supported by the underlying index, or limited    *     for performance reasons.    */
 DECL|method|maxTerms ()
 specifier|public
 specifier|abstract

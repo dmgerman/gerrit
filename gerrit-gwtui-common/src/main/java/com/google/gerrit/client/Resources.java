@@ -104,7 +104,7 @@ name|Resources
 extends|extends
 name|ClientBundle
 block|{
-comment|/**    * silk icons (CC-BY3.0): http://famfamfam.com/lab/icons/silk/    */
+comment|/** silk icons (CC-BY3.0): http://famfamfam.com/lab/icons/silk/ */
 annotation|@
 name|Source
 argument_list|(
@@ -350,7 +350,7 @@ name|ImageResource
 name|question
 parameter_list|()
 function_decl|;
-comment|/**    * tango icon library (public domain):    * http://tango.freedesktop.org/Tango_Icon_Library    */
+comment|/** tango icon library (public domain): http://tango.freedesktop.org/Tango_Icon_Library */
 annotation|@
 name|Source
 argument_list|(
@@ -402,7 +402,7 @@ name|ImageResource
 name|merge
 parameter_list|()
 function_decl|;
-comment|/**    * contributed by the artist under Apache2.0    */
+comment|/** contributed by the artist under Apache2.0 */
 annotation|@
 name|Source
 argument_list|(
@@ -423,7 +423,7 @@ name|ImageResource
 name|unifiedDiff
 parameter_list|()
 function_decl|;
-comment|/**    * contributed by the artist under CC-BY3.0    */
+comment|/** contributed by the artist under CC-BY3.0 */
 annotation|@
 name|Source
 argument_list|(

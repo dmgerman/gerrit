@@ -95,7 +95,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * LineWidget attached to a CodeMirror container.  *  * When a comment is placed on a line a CommentWidget is created.  * The group tracks all comment boxes on a line in unified diff view.  */
+comment|/**  * LineWidget attached to a CodeMirror container.  *  *<p>When a comment is placed on a line a CommentWidget is created. The group tracks all comment  * boxes on a line in unified diff view.  */
 end_comment
 
 begin_class

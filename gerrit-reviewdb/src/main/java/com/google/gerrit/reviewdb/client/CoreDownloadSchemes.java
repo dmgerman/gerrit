@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Download scheme string constants supported by the download-commands core  * plugin.  */
+comment|/** Download scheme string constants supported by the download-commands core plugin. */
 end_comment
 
 begin_class
@@ -125,7 +125,7 @@ DECL|method|CoreDownloadSchemes ()
 specifier|private
 name|CoreDownloadSchemes
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

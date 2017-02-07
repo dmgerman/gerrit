@@ -120,6 +120,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|Type
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -129,18 +141,6 @@ operator|.
 name|spi
 operator|.
 name|OptionHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|Type
 import|;
 end_import
 
@@ -334,7 +334,7 @@ DECL|method|OptionHandlerUtil ()
 specifier|private
 name|OptionHandlerUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

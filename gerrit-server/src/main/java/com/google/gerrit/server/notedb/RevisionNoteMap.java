@@ -146,6 +146,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -200,36 +230,6 @@ name|NoteMap
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_class
 DECL|class|RevisionNoteMap
 class|class
@@ -260,7 +260,7 @@ name|T
 argument_list|>
 name|revisionNotes
 decl_stmt|;
-DECL|method|parse (ChangeNoteUtil noteUtil, Change.Id changeId, ObjectReader reader, NoteMap noteMap, PatchLineComment.Status status)
+DECL|method|parse ( ChangeNoteUtil noteUtil, Change.Id changeId, ObjectReader reader, NoteMap noteMap, PatchLineComment.Status status)
 specifier|static
 name|RevisionNoteMap
 argument_list|<
@@ -468,6 +468,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|emptyMap ()
 specifier|static
 parameter_list|<
 name|T
@@ -483,7 +484,6 @@ name|RevisionNoteMap
 argument_list|<
 name|T
 argument_list|>
-DECL|method|emptyMap ()
 name|emptyMap
 parameter_list|()
 block|{

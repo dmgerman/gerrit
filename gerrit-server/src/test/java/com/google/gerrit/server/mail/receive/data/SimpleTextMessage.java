@@ -139,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests parsing a simple text message with different headers.  */
+comment|/** Tests parsing a simple text message with different headers. */
 end_comment
 
 begin_class

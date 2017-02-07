@@ -139,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on {@link ListeningExecutorService} used by secondary indexing  * threads.  */
+comment|/** Marker on {@link ListeningExecutorService} used by secondary indexing threads. */
 end_comment
 
 begin_annotation_defn

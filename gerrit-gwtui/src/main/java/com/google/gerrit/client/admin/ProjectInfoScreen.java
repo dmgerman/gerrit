@@ -2072,7 +2072,7 @@ return|return
 name|box
 return|;
 block|}
-comment|/**    * Enables the {@link #contentMerge} checkbox if the selected submit type    * allows the usage of content merge.    * If the submit type (currently only 'Fast Forward Only') does not allow    * content merge the useContentMerge checkbox gets disabled.    */
+comment|/**    * Enables the {@link #contentMerge} checkbox if the selected submit type allows the usage of    * content merge. If the submit type (currently only 'Fast Forward Only') does not allow content    * merge the useContentMerge checkbox gets disabled.    */
 DECL|method|setEnabledForUseContentMerge ()
 specifier|private
 name|void

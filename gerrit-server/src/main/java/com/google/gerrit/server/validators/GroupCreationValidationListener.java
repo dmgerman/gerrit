@@ -99,7 +99,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to provide validation on group creation.  */
+comment|/** Listener to provide validation on group creation. */
 end_comment
 
 begin_interface
@@ -110,7 +110,7 @@ specifier|public
 interface|interface
 name|GroupCreationValidationListener
 block|{
-comment|/**    * Group creation validation.    *    * Invoked by Gerrit just before a new group is going to be created.    *    * @param args arguments for the group creation    * @throws ValidationException if validation fails    */
+comment|/**    * Group creation validation.    *    *<p>Invoked by Gerrit just before a new group is going to be created.    *    * @param args arguments for the group creation    * @throws ValidationException if validation fails    */
 DECL|method|validateNewGroup (CreateGroupArgs args)
 name|void
 name|validateNewGroup

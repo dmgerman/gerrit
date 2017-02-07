@@ -488,34 +488,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|RepositoryNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -554,6 +526,34 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|RepositoryNotFoundException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -567,6 +567,7 @@ argument_list|<
 name|ProjectResource
 argument_list|>
 block|{
+DECL|field|ACTION_TYPE
 specifier|public
 specifier|static
 specifier|final
@@ -576,7 +577,6 @@ name|PermissionRule
 operator|.
 name|Action
 argument_list|,
-DECL|field|ACTION_TYPE
 name|PermissionRuleInfo
 operator|.
 name|Action
@@ -707,7 +707,7 @@ name|groupBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetAccess (Provider<CurrentUser> self, GroupControl.Factory groupControlFactory, AllProjectsName allProjectsName, ProjectCache projectCache, MetaDataUpdate.Server metaDataUpdateFactory, ProjectJson projectJson, ProjectControl.GenericFactory projectControlFactory, GroupBackend groupBackend)
+DECL|method|GetAccess ( Provider<CurrentUser> self, GroupControl.Factory groupControlFactory, AllProjectsName allProjectsName, ProjectCache projectCache, MetaDataUpdate.Server metaDataUpdateFactory, ProjectJson projectJson, ProjectControl.GenericFactory projectControlFactory, GroupBackend groupBackend)
 specifier|public
 name|GetAccess
 parameter_list|(

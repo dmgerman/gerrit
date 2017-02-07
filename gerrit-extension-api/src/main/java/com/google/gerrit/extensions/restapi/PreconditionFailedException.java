@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Resource state does not match request state (HTTP 412 Precondition failed).  */
+comment|/** Resource state does not match request state (HTTP 412 Precondition failed). */
 end_comment
 
 begin_class
@@ -91,7 +91,7 @@ DECL|method|PreconditionFailedException ()
 specifier|public
 name|PreconditionFailedException
 parameter_list|()
-block|{   }
+block|{}
 comment|/** @param msg message to return to the client describing the error. */
 DECL|method|PreconditionFailedException (String msg)
 specifier|public

@@ -197,7 +197,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A table with one row and two columns to hold the two CodeMirrors displaying  * the files to be compared.  */
+comment|/**  * A table with one row and two columns to hold the two CodeMirrors displaying the files to be  * compared.  */
 end_comment
 
 begin_class

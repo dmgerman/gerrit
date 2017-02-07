@@ -228,6 +228,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|mail
+operator|.
+name|internet
+operator|.
+name|MimeMessage
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -269,18 +281,6 @@ operator|.
 name|runner
 operator|.
 name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|mail
-operator|.
-name|internet
-operator|.
-name|MimeMessage
 import|;
 end_import
 
@@ -337,16 +337,16 @@ name|PASSWORD
 init|=
 literal|"password"
 decl_stmt|;
+DECL|field|mailReceiver
 annotation|@
 name|Inject
-DECL|field|mailReceiver
 specifier|private
 name|MailReceiver
 name|mailReceiver
 decl_stmt|;
+DECL|field|greenMail
 annotation|@
 name|Inject
-DECL|field|greenMail
 specifier|private
 name|GreenMail
 name|greenMail

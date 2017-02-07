@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Capabilities the caller has from {@code /accounts/self/capabilities}.  */
+comment|/** Capabilities the caller has from {@code /accounts/self/capabilities}. */
 end_comment
 
 begin_class
@@ -168,7 +168,7 @@ DECL|method|AccountCapabilities ()
 specifier|protected
 name|AccountCapabilities
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|canPerform (String name)
 specifier|public
 specifier|final

@@ -154,7 +154,7 @@ specifier|public
 interface|interface
 name|Server
 block|{
-comment|/**    * @return Version of server.    */
+comment|/** @return Version of server. */
 DECL|method|getVersion ()
 name|String
 name|getVersion
@@ -203,7 +203,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented
@@ -254,7 +254,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|setDefaultPreferences ( GeneralPreferencesInfo in)
+DECL|method|setDefaultPreferences (GeneralPreferencesInfo in)
 specifier|public
 name|GeneralPreferencesInfo
 name|setDefaultPreferences
@@ -285,7 +285,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|setDefaultDiffPreferences ( DiffPreferencesInfo in)
+DECL|method|setDefaultDiffPreferences (DiffPreferencesInfo in)
 specifier|public
 name|DiffPreferencesInfo
 name|setDefaultDiffPreferences

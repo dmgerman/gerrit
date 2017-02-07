@@ -1287,7 +1287,7 @@ name|_submittable
 parameter_list|()
 comment|/*-{ return this.submittable ? true : false; }-*/
 function_decl|;
-comment|/**    * @return the index of the missing label or -1    *         if no label is missing, or if more than one label is missing.    */
+comment|/**    * @return the index of the missing label or -1 if no label is missing, or if more than one label    *     is missing.    */
 DECL|method|getMissingLabelIndex ()
 specifier|public
 specifier|final
@@ -1437,7 +1437,7 @@ DECL|method|ChangeInfo ()
 specifier|protected
 name|ChangeInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|LabelInfo
 specifier|public
 specifier|static
@@ -1858,7 +1858,7 @@ DECL|method|LabelInfo ()
 specifier|protected
 name|LabelInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|ApprovalInfo
 specifier|public
@@ -1886,11 +1886,11 @@ name|value
 parameter_list|()
 comment|/*-{ return this.value || 0; }-*/
 function_decl|;
-DECL|method|permittedVotingRange ()
 specifier|public
 specifier|final
 specifier|native
 name|VotingRangeInfo
+DECL|method|permittedVotingRange ()
 name|permittedVotingRange
 parameter_list|()
 comment|/*-{ return this.permitted_voting_range; }-*/
@@ -1899,7 +1899,7 @@ DECL|method|ApprovalInfo ()
 specifier|protected
 name|ApprovalInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|VotingRangeInfo
 specifier|public
@@ -1931,7 +1931,7 @@ DECL|method|VotingRangeInfo ()
 specifier|protected
 name|VotingRangeInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|EditInfo
 specifier|public
@@ -2047,7 +2047,7 @@ DECL|method|EditInfo ()
 specifier|protected
 name|EditInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|RevisionInfo
 specifier|public
@@ -2285,20 +2285,20 @@ name|fetch
 parameter_list|()
 comment|/*-{ return this.fetch; }-*/
 function_decl|;
-DECL|method|hasPushCertificate ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|hasPushCertificate ()
 name|hasPushCertificate
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('push_certificate'); }-*/
 function_decl|;
-DECL|method|pushCertificate ()
 specifier|public
 specifier|final
 specifier|native
 name|PushCertificateInfo
+DECL|method|pushCertificate ()
 name|pushCertificate
 parameter_list|()
 comment|/*-{ return this.push_certificate; }-*/
@@ -2440,7 +2440,7 @@ name|_number
 argument_list|()
 return|;
 block|}
-DECL|method|findEditParentRevision ( JsArray<RevisionInfo> list)
+DECL|method|findEditParentRevision (JsArray<RevisionInfo> list)
 specifier|public
 specifier|static
 name|RevisionInfo
@@ -2600,7 +2600,7 @@ DECL|method|RevisionInfo ()
 specifier|protected
 name|RevisionInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|FetchInfo
 specifier|public
@@ -2656,7 +2656,7 @@ DECL|method|FetchInfo ()
 specifier|protected
 name|FetchInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|CommitInfo
 specifier|public
@@ -2739,7 +2739,7 @@ DECL|method|CommitInfo ()
 specifier|protected
 name|CommitInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|GitPerson
 specifier|public
@@ -2796,7 +2796,7 @@ DECL|method|GitPerson ()
 specifier|protected
 name|GitPerson
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|MessageInfo
 specifier|public
@@ -2871,7 +2871,7 @@ DECL|method|MessageInfo ()
 specifier|protected
 name|MessageInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|MergeableInfo
 specifier|public
@@ -2903,7 +2903,7 @@ DECL|method|MergeableInfo ()
 specifier|protected
 name|MergeableInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|IncludedInInfo
 specifier|public
@@ -2978,7 +2978,7 @@ DECL|method|IncludedInInfo ()
 specifier|protected
 name|IncludedInInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

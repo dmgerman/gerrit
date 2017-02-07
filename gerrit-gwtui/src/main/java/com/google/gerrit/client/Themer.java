@@ -130,7 +130,7 @@ DECL|method|ThemerIE ()
 specifier|protected
 name|ThemerIE
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|getCssText (StyleElement el)
@@ -206,7 +206,7 @@ DECL|method|Themer ()
 specifier|protected
 name|Themer
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|set (ThemeInfo theme)
 specifier|public
 name|void

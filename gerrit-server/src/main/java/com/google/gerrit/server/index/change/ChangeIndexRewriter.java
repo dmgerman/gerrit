@@ -444,20 +444,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|MutableInteger
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -493,6 +479,20 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|MutableInteger
 import|;
 end_import
 
@@ -640,7 +640,7 @@ name|closed
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Get the set of statuses that changes matching the given predicate may have.    *    * @param in predicate    * @return the maximal set of statuses that any changes matching the input    *     predicates may have, based on examining boolean and    *     {@link ChangeStatusPredicate}s.    */
+comment|/**    * Get the set of statuses that changes matching the given predicate may have.    *    * @param in predicate    * @return the maximal set of statuses that any changes matching the input predicates may have,    *     based on examining boolean and {@link ChangeStatusPredicate}s.    */
 DECL|method|getPossibleStatus (Predicate<ChangeData> in)
 specifier|public
 specifier|static
@@ -1226,8 +1226,8 @@ name|out
 return|;
 block|}
 block|}
-comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @param opts other query options.    * @param leafTerms number of leaf index query terms encountered so far.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    * @throws QueryParseException if the underlying index implementation does not    *     support this predicate.    */
-DECL|method|rewriteImpl (Predicate<ChangeData> in, ChangeIndex index, QueryOptions opts, MutableInteger leafTerms)
+comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @param opts other query options.    * @param leafTerms number of leaf index query terms encountered so far.    * @return {@code null} if no part of this subtree can be queried in the index directly. {@code    *     in} if this subtree and all its children can be queried directly in the index. Otherwise, a    *     predicate that is semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    * @throws QueryParseException if the underlying index implementation does not support this    *     predicate.    */
+DECL|method|rewriteImpl ( Predicate<ChangeData> in, ChangeIndex index, QueryOptions opts, MutableInteger leafTerms)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1838,7 +1838,7 @@ name|all
 argument_list|)
 return|;
 block|}
-DECL|method|copy ( Predicate<ChangeData> in, List<Predicate<ChangeData>> all)
+DECL|method|copy (Predicate<ChangeData> in, List<Predicate<ChangeData>> all)
 specifier|private
 name|Predicate
 argument_list|<

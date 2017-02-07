@@ -229,7 +229,7 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|deleteExternalIds (Set<AccountExternalId.Key> keys, AsyncCallback<Set<AccountExternalId.Key>> callback)
+DECL|method|deleteExternalIds ( Set<AccountExternalId.Key> keys, AsyncCallback<Set<AccountExternalId.Key>> callback)
 name|void
 name|deleteExternalIds
 parameter_list|(

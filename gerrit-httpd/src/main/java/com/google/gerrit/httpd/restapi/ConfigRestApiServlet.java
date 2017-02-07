@@ -139,7 +139,7 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConfigRestApiServlet (RestApiServlet.Globals globals, Provider<ConfigCollection> configCollection)
+DECL|method|ConfigRestApiServlet ( RestApiServlet.Globals globals, Provider<ConfigCollection> configCollection)
 name|ConfigRestApiServlet
 parameter_list|(
 name|RestApiServlet

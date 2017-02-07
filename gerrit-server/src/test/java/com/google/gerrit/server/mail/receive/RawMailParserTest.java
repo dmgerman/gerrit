@@ -297,7 +297,7 @@ block|,
 operator|new
 name|NonUTF8Message
 argument_list|()
-block|,     }
+block|,         }
 decl_stmt|;
 for|for
 control|(
@@ -379,7 +379,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    *  This method makes it easier to debug failing tests by checking each    *  property individual instead of calling equals as it will immediately    *  reveal the property that diverges between the two objects.    * @param have MailMessage retrieved from the parser    * @param want MailMessage that would be expected    */
+comment|/**    * This method makes it easier to debug failing tests by checking each property individual instead    * of calling equals as it will immediately reveal the property that diverges between the two    * objects.    *    * @param have MailMessage retrieved from the parser    * @param want MailMessage that would be expected    */
 DECL|method|assertMail (MailMessage have, MailMessage want)
 specifier|private
 name|void

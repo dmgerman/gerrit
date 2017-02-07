@@ -74,12 +74,12 @@ enum|enum
 name|SignInMode
 block|{
 DECL|enumConstant|SIGN_IN
-DECL|enumConstant|LINK_IDENTIY
-DECL|enumConstant|REGISTER
 name|SIGN_IN
 block|,
+DECL|enumConstant|LINK_IDENTIY
 name|LINK_IDENTIY
 block|,
+DECL|enumConstant|REGISTER
 name|REGISTER
 block|}
 end_enum

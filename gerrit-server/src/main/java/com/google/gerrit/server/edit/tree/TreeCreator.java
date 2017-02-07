@@ -86,6 +86,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -210,38 +240,8 @@ name|RevCommit
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
-comment|/**  * A creator for a new Git tree. To create the new tree, the tree of another  * commit is taken as a basis and modified.  */
+comment|/**  * A creator for a new Git tree. To create the new tree, the tree of another commit is taken as a  * basis and modified.  */
 end_comment
 
 begin_class
@@ -292,7 +292,7 @@ literal|"baseCommit is required"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Apply a modification to the tree which is taken as a basis. If this    * method is called multiple times, the modifications are applied    * subsequently in exactly the order they were provided.    *    * @param treeModification a modification which should be applied to the    * base tree    */
+comment|/**    * Apply a modification to the tree which is taken as a basis. If this method is called multiple    * times, the modifications are applied subsequently in exactly the order they were provided.    *    * @param treeModification a modification which should be applied to the base tree    */
 DECL|method|addTreeModification (TreeModification treeModification)
 specifier|public
 name|void
@@ -317,7 +317,7 @@ name|treeModification
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Creates the new tree. When this method is called, the specified base tree    * is read from the repository, the specified modifications are applied, and    * the resulting tree is written to the object store of the repository.    *    * @param repository the affected Git repository    * @return the {@code ObjectId} of the created tree    * @throws IOException if problems arise when accessing the repository    */
+comment|/**    * Creates the new tree. When this method is called, the specified base tree is read from the    * repository, the specified modifications are applied, and the resulting tree is written to the    * object store of the repository.    *    * @param repository the affected Git repository    * @return the {@code ObjectId} of the created tree    * @throws IOException if problems arise when accessing the repository    */
 DECL|method|createNewTreeAndGetId (Repository repository)
 specifier|public
 name|ObjectId

@@ -210,34 +210,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|FooterKey
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|FooterLine
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|time
@@ -297,6 +269,34 @@ operator|.
 name|regex
 operator|.
 name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|FooterKey
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|FooterLine
 import|;
 end_import
 
@@ -448,7 +448,7 @@ return|return
 name|recipients
 return|;
 block|}
-DECL|method|getRecipientsFromReviewers ( ReviewerSet reviewers)
+DECL|method|getRecipientsFromReviewers (ReviewerSet reviewers)
 specifier|public
 specifier|static
 name|MailRecipients
@@ -497,7 +497,7 @@ return|return
 name|recipients
 return|;
 block|}
-DECL|method|toAccountId (ReviewDb db, AccountResolver accountResolver, String nameOrEmail)
+DECL|method|toAccountId ( ReviewDb db, AccountResolver accountResolver, String nameOrEmail)
 specifier|private
 specifier|static
 name|Account

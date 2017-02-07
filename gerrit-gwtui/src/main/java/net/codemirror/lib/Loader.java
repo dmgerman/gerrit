@@ -356,7 +356,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -598,7 +598,7 @@ DECL|method|Loader ()
 specifier|private
 name|Loader
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

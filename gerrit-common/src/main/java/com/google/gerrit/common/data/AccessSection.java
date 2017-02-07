@@ -171,7 +171,7 @@ DECL|method|AccessSection ()
 specifier|protected
 name|AccessSection
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|AccessSection (String refPattern)
 specifier|public
 name|AccessSection

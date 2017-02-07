@@ -133,7 +133,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A comment left by a user on a specific line of a {@link Patch}.  *  * This class represents an inline comment in ReviewDb. It should only be used  * for writing/reading inline comments to/from ReviewDb. For all other purposes  * inline comments should be represented by {@link Comment}.  *  * @see Comment  */
+comment|/**  * A comment left by a user on a specific line of a {@link Patch}.  *  *<p>This class represents an inline comment in ReviewDb. It should only be used for  * writing/reading inline comments to/from ReviewDb. For all other purposes inline comments should  * be represented by {@link Comment}.  *  * @see Comment  */
 end_comment
 
 begin_class
@@ -476,7 +476,7 @@ block|}
 end_class
 
 begin_function
-DECL|method|from (Change.Id changeId, PatchLineComment.Status status, Comment c)
+DECL|method|from ( Change.Id changeId, PatchLineComment.Status status, Comment c)
 specifier|public
 specifier|static
 name|PatchLineComment
@@ -838,7 +838,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/**    * The parent of this comment, or null if this is the first comment on this    * line    */
+comment|/** The parent of this comment, or null if this is the first comment on this line */
 end_comment
 
 begin_decl_stmt
@@ -903,7 +903,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/**    * Real user that added this comment on behalf of the user recorded in {@link    * #author}.    */
+comment|/** Real user that added this comment on behalf of the user recorded in {@link #author}. */
 end_comment
 
 begin_decl_stmt
@@ -947,7 +947,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/**    * The RevId for the commit to which this comment is referring.    *    * Note that this field is not stored in the database. It is just provided    * for users of this class to avoid a lookup when they don't have easy access    * to a ReviewDb.    */
+comment|/**    * The RevId for the commit to which this comment is referring.    *    *<p>Note that this field is not stored in the database. It is just provided for users of this    * class to avoid a lookup when they don't have easy access to a ReviewDb.    */
 end_comment
 
 begin_decl_stmt
@@ -963,11 +963,11 @@ DECL|method|PatchLineComment ()
 specifier|protected
 name|PatchLineComment
 parameter_list|()
-block|{   }
+block|{}
 end_constructor
 
 begin_constructor
-DECL|method|PatchLineComment (PatchLineComment.Key id, int line, Account.Id a, String parentUuid, Timestamp when)
+DECL|method|PatchLineComment ( PatchLineComment.Key id, int line, Account.Id a, String parentUuid, Timestamp when)
 specifier|public
 name|PatchLineComment
 parameter_list|(

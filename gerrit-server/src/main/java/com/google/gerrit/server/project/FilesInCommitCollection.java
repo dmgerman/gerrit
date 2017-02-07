@@ -247,7 +247,7 @@ name|repoManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FilesInCommitCollection (DynamicMap<RestView<FileResource>> views, GitRepositoryManager repoManager)
+DECL|method|FilesInCommitCollection ( DynamicMap<RestView<FileResource>> views, GitRepositoryManager repoManager)
 name|FilesInCommitCollection
 parameter_list|(
 name|DynamicMap

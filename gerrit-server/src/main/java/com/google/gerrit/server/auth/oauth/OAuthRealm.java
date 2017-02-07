@@ -272,20 +272,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -311,6 +297,20 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -458,7 +458,7 @@ name|field
 argument_list|)
 return|;
 block|}
-comment|/**    * Authenticates with the {@link OAuthLoginProvider} specified    * in the authentication request.    *    * {@link AccountManager} calls this method without password    * if authenticity of the user has already been established.    * In that case we can skip the authentication request to the    * {@code OAuthLoginService}.    *    * @param who the authentication request.    *    * @return the authentication request with resolved email address    * and display name in case the authenticity of the user could    * be established; otherwise {@code who} is returned unchanged.    *    * @throws AccountException if the authentication request with    * the OAuth2 server failed or no {@code OAuthLoginProvider} was    * available to handle the request.    */
+comment|/**    * Authenticates with the {@link OAuthLoginProvider} specified in the authentication request.    *    *<p>{@link AccountManager} calls this method without password if authenticity of the user has    * already been established. In that case we can skip the authentication request to the {@code    * OAuthLoginService}.    *    * @param who the authentication request.    * @return the authentication request with resolved email address and display name in case the    *     authenticity of the user could be established; otherwise {@code who} is returned unchanged.    * @throws AccountException if the authentication request with the OAuth2 server failed or no    *     {@code OAuthLoginProvider} was available to handle the request.    */
 annotation|@
 name|Override
 DECL|method|authenticate (AuthRequest who)
@@ -714,7 +714,7 @@ parameter_list|,
 name|Account
 name|account
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|lookup (String accountName)

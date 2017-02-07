@@ -149,7 +149,7 @@ DECL|annotation|NoHttpd
 specifier|public
 annotation_defn|@interface
 name|NoHttpd
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

@@ -316,6 +316,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -339,16 +349,6 @@ operator|.
 name|errors
 operator|.
 name|RepositoryNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -401,7 +401,7 @@ name|allUsersName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetEditPreferences (Provider<CurrentUser> self, Provider<MetaDataUpdate.User> metaDataUpdateFactory, GitRepositoryManager gitMgr, AllUsersName allUsersName)
+DECL|method|SetEditPreferences ( Provider<CurrentUser> self, Provider<MetaDataUpdate.User> metaDataUpdateFactory, GitRepositoryManager gitMgr, AllUsersName allUsersName)
 name|SetEditPreferences
 parameter_list|(
 name|Provider

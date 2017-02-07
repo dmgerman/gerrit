@@ -396,34 +396,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -504,8 +476,36 @@ name|TimeUnit
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_comment
-comment|/**  * The state of all relevant NoteDb refs across all repos corresponding to a  * given Change entity.  *<p>  * Stored serialized in the {@code Change#noteDbState} field, and used to  * determine whether the state in NoteDb is out of date.  *<p>  * Serialized in one of the forms:  *<ul>  *<li>[meta-sha],[account1]=[drafts-sha],[account2]=[drafts-sha]...  *<li>R,[meta-sha],[account1]=[drafts-sha],[account2]=[drafts-sha]...  *<li>R=[read-only-until],[meta-sha],[account1]=[drafts-sha],[account2]=[drafts-sha]...  *<li>N  *<li>N=[read-only-until]  *</ul>  *  * in numeric account ID order, with hex SHA-1s for human readability.  */
+comment|/**  * The state of all relevant NoteDb refs across all repos corresponding to a given Change entity.  *  *<p>Stored serialized in the {@code Change#noteDbState} field, and used to determine whether the  * state in NoteDb is out of date.  *  *<p>Serialized in one of the forms:  *  *<ul>  *<li>[meta-sha],[account1]=[drafts-sha],[account2]=[drafts-sha]...  *<li>R,[meta-sha],[account1]=[drafts-sha],[account2]=[drafts-sha]...  *<li>R=[read-only-until],[meta-sha],[account1]=[drafts-sha],[account2]=[drafts-sha]...  *<li>N  *<li>N=[read-only-until]  *</ul>  *  * in numeric account ID order, with hex SHA-1s for human readability.  */
 end_comment
 
 begin_class
@@ -617,7 +617,7 @@ name|Delta
 block|{
 annotation|@
 name|VisibleForTesting
-DECL|method|create (Change.Id changeId, Optional<ObjectId> newChangeMetaId, Map<Account.Id, ObjectId> newDraftIds)
+DECL|method|create ( Change.Id changeId, Optional<ObjectId> newChangeMetaId, Map<Account.Id, ObjectId> newDraftIds)
 specifier|public
 specifier|static
 name|Delta
@@ -1316,7 +1316,7 @@ name|str
 argument_list|)
 throw|;
 block|}
-DECL|method|parseReadOnlyUntil (Change.Id id, String fullStr, String first)
+DECL|method|parseReadOnlyUntil ( Change.Id id, String fullStr, String first)
 specifier|private
 specifier|static
 name|Optional
@@ -1436,7 +1436,7 @@ name|str
 argument_list|)
 return|;
 block|}
-comment|/**    * Apply a delta to the state stored in a change entity.    *<p>    * This method does not check whether the old state was read-only; it is up to    * the caller to not violate read-only semantics when storing the change back    * in ReviewDb.    *    * @param change change entity. The delta is applied against this entity's    *     {@code noteDbState} and the new state is stored back in the entity as a    *     side effect.    * @param delta delta to apply.    * @return new state, equivalent to what is stored in {@code change} as a side    *     effect.    */
+comment|/**    * Apply a delta to the state stored in a change entity.    *    *<p>This method does not check whether the old state was read-only; it is up to the caller to    * not violate read-only semantics when storing the change back in ReviewDb.    *    * @param change change entity. The delta is applied against this entity's {@code noteDbState} and    *     the new state is stored back in the entity as a side effect.    * @param delta delta to apply.    * @return new state, equivalent to what is stored in {@code change} as a side effect.    */
 DECL|method|applyDelta (Change change, Delta delta)
 specifier|public
 specifier|static
@@ -1759,7 +1759,7 @@ comment|//  - need to inject Config but don't want a whole Factory
 comment|//  - can't be methods on NoteDbChangeState because state is nullable (though
 comment|//    we could also solve this by inventing an empty-but-non-null state)
 comment|// Also we should clean up duplicated code between static/non-static methods.
-DECL|method|isChangeUpToDate (@ullable NoteDbChangeState state, RefCache changeRepoRefs, Change.Id changeId)
+DECL|method|isChangeUpToDate ( @ullable NoteDbChangeState state, RefCache changeRepoRefs, Change.Id changeId)
 specifier|public
 specifier|static
 name|boolean
@@ -1830,7 +1830,7 @@ name|changeRepoRefs
 argument_list|)
 return|;
 block|}
-DECL|method|areDraftsUpToDate (@ullable NoteDbChangeState state, RefCache draftsRepoRefs, Change.Id changeId, Account.Id accountId)
+DECL|method|areDraftsUpToDate ( @ullable NoteDbChangeState state, RefCache draftsRepoRefs, Change.Id changeId, Account.Id accountId)
 specifier|public
 specifier|static
 name|boolean

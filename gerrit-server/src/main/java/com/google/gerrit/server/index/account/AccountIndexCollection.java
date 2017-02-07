@@ -181,7 +181,7 @@ DECL|method|AccountIndexCollection ()
 specifier|public
 name|AccountIndexCollection
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

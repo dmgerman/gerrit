@@ -809,7 +809,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**    * Perform multiple queries in parallel.    *    * @param queries list of queries.    * @return results of the queries, one QueryResult per input query, in the    *     same order as the input.    */
+comment|/**    * Perform multiple queries in parallel.    *    * @param queries list of queries.    * @return results of the queries, one QueryResult per input query, in the same order as the    *     input.    */
 DECL|method|query (List<Predicate<T>> queries)
 specifier|public
 name|List
@@ -1296,7 +1296,7 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|createOptions (IndexConfig indexConfig, int start, int limit, Set<String> requestedFields)
+DECL|method|createOptions ( IndexConfig indexConfig, int start, int limit, Set<String> requestedFields)
 specifier|protected
 name|QueryOptions
 name|createOptions
@@ -1332,7 +1332,7 @@ name|requestedFields
 argument_list|)
 return|;
 block|}
-comment|/**    * Invoked after the query was rewritten. Subclasses must overwrite this    * method to filter out results that are not visible to the calling user.    *    * @param pred the query    * @return the modified query    */
+comment|/**    * Invoked after the query was rewritten. Subclasses must overwrite this method to filter out    * results that are not visible to the calling user.    *    * @param pred the query    * @return the modified query    */
 DECL|method|enforceVisibility (Predicate<T> pred)
 specifier|protected
 specifier|abstract

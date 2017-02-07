@@ -262,7 +262,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|db
 specifier|private
 specifier|final

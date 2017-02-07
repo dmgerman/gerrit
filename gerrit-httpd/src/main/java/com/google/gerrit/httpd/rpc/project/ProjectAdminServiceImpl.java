@@ -176,6 +176,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -185,16 +195,6 @@ operator|.
 name|lib
 operator|.
 name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -231,7 +231,7 @@ name|projectAccessFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAdminServiceImpl (final ChangeProjectAccess.Factory changeProjectAccessFactory, final ReviewProjectAccess.Factory reviewProjectAccessFactory, final ProjectAccessFactory.Factory projectAccessFactory)
+DECL|method|ProjectAdminServiceImpl ( final ChangeProjectAccess.Factory changeProjectAccessFactory, final ReviewProjectAccess.Factory reviewProjectAccessFactory, final ProjectAccessFactory.Factory projectAccessFactory)
 name|ProjectAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -274,7 +274,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|projectAccess (final Project.NameKey projectName, final AsyncCallback<ProjectAccess> callback)
+DECL|method|projectAccess ( final Project.NameKey projectName, final AsyncCallback<ProjectAccess> callback)
 specifier|public
 name|void
 name|projectAccess
@@ -345,7 +345,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|changeProjectAccess (Project.NameKey projectName, String baseRevision, String msg, List<AccessSection> sections, Project.NameKey parentProjectName, AsyncCallback<ProjectAccess> cb)
+DECL|method|changeProjectAccess ( Project.NameKey projectName, String baseRevision, String msg, List<AccessSection> sections, Project.NameKey parentProjectName, AsyncCallback<ProjectAccess> cb)
 specifier|public
 name|void
 name|changeProjectAccess
@@ -405,7 +405,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|reviewProjectAccess (Project.NameKey projectName, String baseRevision, String msg, List<AccessSection> sections, Project.NameKey parentProjectName, AsyncCallback<Change.Id> cb)
+DECL|method|reviewProjectAccess ( Project.NameKey projectName, String baseRevision, String msg, List<AccessSection> sections, Project.NameKey parentProjectName, AsyncCallback<Change.Id> cb)
 specifier|public
 name|void
 name|reviewProjectAccess

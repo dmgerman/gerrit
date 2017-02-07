@@ -125,7 +125,7 @@ name|MERGE_LIST
 init|=
 literal|"/MERGE_LIST"
 decl_stmt|;
-comment|/**    * Checks if the given path represents a magic file. A magic file is a    * generated file that is automatically included into changes. It does not    * exist in the commit of the patch set.    *    * @param path the file path    * @return {@code true} if the path represents a magic file, otherwise    *         {@code false}.    */
+comment|/**    * Checks if the given path represents a magic file. A magic file is a generated file that is    * automatically included into changes. It does not exist in the commit of the patch set.    *    * @param path the file path    * @return {@code true} if the path represents a magic file, otherwise {@code false}.    */
 DECL|method|isMagic (String path)
 specifier|public
 specifier|static
@@ -495,14 +495,14 @@ name|PatchType
 implements|implements
 name|CodedEnum
 block|{
-comment|/**      * A textual difference between two versions.      *      *<p>      * A UNIFIED patch can be rendered in multiple ways. Most commonly, it is      * rendered as a side by side display using two columns, left column for the      * old version, right column for the new version. A UNIFIED patch can also      * be formatted in a number of standard "patch script" styles, but typically      * is formatted in the POSIX standard unified diff format.      *      *<p>      * Usually Gerrit renders a UNIFIED patch in a PatchScreen.SideBySide view,      * presenting the file in two columns. If the user chooses, a      * PatchScreen.Unified is also a valid display method.      * */
+comment|/**      * A textual difference between two versions.      *      *<p>A UNIFIED patch can be rendered in multiple ways. Most commonly, it is rendered as a side      * by side display using two columns, left column for the old version, right column for the new      * version. A UNIFIED patch can also be formatted in a number of standard "patch script" styles,      * but typically is formatted in the POSIX standard unified diff format.      *      *<p>Usually Gerrit renders a UNIFIED patch in a PatchScreen.SideBySide view, presenting the      * file in two columns. If the user chooses, a PatchScreen.Unified is also a valid display      * method.      */
 DECL|enumConstant|UNIFIED
 name|UNIFIED
 argument_list|(
 literal|'U'
 argument_list|)
 block|,
-comment|/**      * Difference of two (or more) binary contents.      *      *<p>      * A BINARY patch cannot be viewed in a text display, as it represents a      * change in binary content at the associated path, for example, an image      * file has been replaced with a different image.      *      *<p>      * Gerrit can only render a BINARY file in a PatchScreen.Unified view, as      * the only information it can display is the old and new file content      * hashes.      */
+comment|/**      * Difference of two (or more) binary contents.      *      *<p>A BINARY patch cannot be viewed in a text display, as it represents a change in binary      * content at the associated path, for example, an image file has been replaced with a different      * image.      *      *<p>Gerrit can only render a BINARY file in a PatchScreen.Unified view, as the only      * information it can display is the old and new file content hashes.      */
 DECL|enumConstant|BINARY
 name|BINARY
 argument_list|(
@@ -623,7 +623,7 @@ specifier|protected
 name|int
 name|deletions
 decl_stmt|;
-comment|/**    * Original if {@link #changeType} is {@link ChangeType#COPIED} or    * {@link ChangeType#RENAMED}.    */
+comment|/** Original if {@link #changeType} is {@link ChangeType#COPIED} or {@link ChangeType#RENAMED}. */
 DECL|field|sourceFileName
 specifier|protected
 name|String
@@ -639,7 +639,7 @@ DECL|method|Patch ()
 specifier|protected
 name|Patch
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|Patch (final Patch.Key newId)
 specifier|public
 name|Patch

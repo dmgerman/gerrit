@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation tagged on a concrete Command that requires  * high priority thread creation whenever called by administrators users.  *<p>  */
+comment|/**  * Annotation tagged on a concrete Command that requires high priority thread creation whenever  * called by administrators users.  *  *<p>  */
 end_comment
 
 begin_annotation_defn
@@ -137,7 +137,7 @@ DECL|annotation|AdminHighPriorityCommand
 specifier|public
 annotation_defn|@interface
 name|AdminHighPriorityCommand
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

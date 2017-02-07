@@ -134,15 +134,15 @@ specifier|public
 enum|enum
 name|OutputFormat
 block|{
-comment|/**    * The output is a human readable text format. It may also be regular enough    * to be machine readable. Whether or not the text format is machine readable    * and will be committed to as a long term format that tools can build upon is    * specific to each API call.    */
+comment|/**    * The output is a human readable text format. It may also be regular enough to be machine    * readable. Whether or not the text format is machine readable and will be committed to as a long    * term format that tools can build upon is specific to each API call.    */
 DECL|enumConstant|TEXT
 name|TEXT
 block|,
-comment|/**    * Pretty-printed JSON format. This format uses whitespace to make the output    * readable by a human, but is also machine readable with a JSON library. The    * structure of the output is a long term format that tools can rely upon.    */
+comment|/**    * Pretty-printed JSON format. This format uses whitespace to make the output readable by a human,    * but is also machine readable with a JSON library. The structure of the output is a long term    * format that tools can rely upon.    */
 DECL|enumConstant|JSON
 name|JSON
 block|,
-comment|/**    * Same as {@link #JSON}, but with unnecessary whitespace removed to save    * generation time and copy costs. Typically JSON_COMPACT format is used by a    * browser based HTML client running over the network.    */
+comment|/**    * Same as {@link #JSON}, but with unnecessary whitespace removed to save generation time and copy    * costs. Typically JSON_COMPACT format is used by a browser based HTML client running over the    * network.    */
 DECL|enumConstant|JSON_COMPACT
 name|JSON_COMPACT
 block|;

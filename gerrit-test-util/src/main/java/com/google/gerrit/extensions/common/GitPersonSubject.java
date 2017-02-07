@@ -175,6 +175,7 @@ argument_list|,
 name|GitPerson
 argument_list|>
 block|{
+DECL|field|GIT_PERSON_SUBJECT_FACTORY
 specifier|private
 specifier|static
 specifier|final
@@ -184,7 +185,6 @@ name|GitPersonSubject
 argument_list|,
 name|GitPerson
 argument_list|>
-DECL|field|GIT_PERSON_SUBJECT_FACTORY
 name|GIT_PERSON_SUBJECT_FACTORY
 init|=
 operator|new

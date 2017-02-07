@@ -292,7 +292,7 @@ DECL|method|AccountGroupMember ()
 specifier|protected
 name|AccountGroupMember
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|AccountGroupMember (final AccountGroupMember.Key k)
 specifier|public
 name|AccountGroupMember

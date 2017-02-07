@@ -166,7 +166,7 @@ name|String
 argument_list|>
 name|hashtags
 decl_stmt|;
-DECL|method|HashtagsEvent (PatchSet.Id psId, Account.Id who, Timestamp when, Set<String> hashtags, Timestamp changeCreatdOn)
+DECL|method|HashtagsEvent ( PatchSet.Id psId, Account.Id who, Timestamp when, Set<String> hashtags, Timestamp changeCreatdOn)
 name|HashtagsEvent
 parameter_list|(
 name|PatchSet

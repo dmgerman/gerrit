@@ -418,7 +418,7 @@ specifier|final
 name|Account
 name|account
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|lookup (final String accountName)

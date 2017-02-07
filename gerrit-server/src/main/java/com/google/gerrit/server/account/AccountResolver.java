@@ -281,7 +281,7 @@ name|accountQueryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountResolver (Realm realm, AccountByEmailCache byEmail, AccountCache byId, Provider<InternalAccountQuery> accountQueryProvider)
+DECL|method|AccountResolver ( Realm realm, AccountByEmailCache byEmail, AccountCache byId, Provider<InternalAccountQuery> accountQueryProvider)
 name|AccountResolver
 parameter_list|(
 name|Realm
@@ -325,7 +325,7 @@ operator|=
 name|accountQueryProvider
 expr_stmt|;
 block|}
-comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name"), an account id    *        ("18419") or an user name ("username").    * @return the single account that matches; null if no account matches or    *         there are multiple candidates.    */
+comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format "Full Name&lt;email@example&gt;", just the email    *     address ("email@example"), a full name ("Full Name"), an account id ("18419") or an user    *     name ("username").    * @return the single account that matches; null if no account matches or there are multiple    *     candidates.    */
 DECL|method|find (ReviewDb db, String nameOrEmail)
 specifier|public
 name|Account
@@ -442,7 +442,7 @@ return|return
 name|match
 return|;
 block|}
-comment|/**    * Find all accounts matching the name or name/email string.    *    * @param db open database handle.    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name"), an account id    *        ("18419") or an user name ("username").    * @return the accounts that match, empty collection if none.  Never null.    */
+comment|/**    * Find all accounts matching the name or name/email string.    *    * @param db open database handle.    * @param nameOrEmail a string of the format "Full Name&lt;email@example&gt;", just the email    *     address ("email@example"), a full name ("Full Name"), an account id ("18419") or an user    *     name ("username").    * @return the accounts that match, empty collection if none. Never null.    */
 DECL|method|findAll (ReviewDb db, String nameOrEmail)
 specifier|public
 name|Set
@@ -664,7 +664,7 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param db open database handle.    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name").    * @return the single account that matches; null if no account matches or    *         there are multiple candidates.    */
+comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param db open database handle.    * @param nameOrEmail a string of the format "Full Name&lt;email@example&gt;", just the email    *     address ("email@example"), a full name ("Full Name").    * @return the single account that matches; null if no account matches or there are multiple    *     candidates.    */
 DECL|method|findByNameOrEmail (ReviewDb db, String nameOrEmail)
 specifier|public
 name|Account
@@ -721,7 +721,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param db open database handle.    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name").    * @return the accounts that match, empty collection if none. Never null.    */
+comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param db open database handle.    * @param nameOrEmail a string of the format "Full Name&lt;email@example&gt;", just the email    *     address ("email@example"), a full name ("Full Name").    * @return the accounts that match, empty collection if none. Never null.    */
 DECL|method|findAllByNameOrEmail (ReviewDb db, String nameOrEmail)
 specifier|public
 name|Set

@@ -188,26 +188,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -312,6 +292,26 @@ name|ServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -368,7 +368,7 @@ name|accountManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpsClientSslCertAuthFilter (final DynamicItem<WebSession> webSession, final AccountManager accountManager)
+DECL|method|HttpsClientSslCertAuthFilter ( final DynamicItem<WebSession> webSession, final AccountManager accountManager)
 name|HttpsClientSslCertAuthFilter
 parameter_list|(
 specifier|final
@@ -403,7 +403,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest req, ServletResponse rsp, FilterChain chain)
@@ -611,7 +611,7 @@ name|arg0
 parameter_list|)
 throws|throws
 name|ServletException
-block|{   }
+block|{}
 block|}
 end_class
 

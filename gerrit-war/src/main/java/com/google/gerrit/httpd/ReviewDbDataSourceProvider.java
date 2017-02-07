@@ -203,7 +203,7 @@ specifier|public
 name|void
 name|start
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|stop ()

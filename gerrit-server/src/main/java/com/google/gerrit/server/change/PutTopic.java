@@ -493,9 +493,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|topic
 annotation|@
 name|DefaultInput
-DECL|field|topic
 specifier|public
 name|String
 name|topic
@@ -503,7 +503,7 @@ decl_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|PutTopic (Provider<ReviewDb> dbProvider, ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, TopicEdited topicEdited)
+DECL|method|PutTopic ( Provider<ReviewDb> dbProvider, ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, TopicEdited topicEdited)
 name|PutTopic
 parameter_list|(
 name|Provider

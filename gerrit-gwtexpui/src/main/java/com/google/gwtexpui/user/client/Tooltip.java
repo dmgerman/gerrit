@@ -319,7 +319,7 @@ DECL|method|Tooltip ()
 specifier|private
 name|Tooltip
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

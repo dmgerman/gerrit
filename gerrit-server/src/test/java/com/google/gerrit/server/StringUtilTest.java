@@ -92,7 +92,7 @@ specifier|public
 class|class
 name|StringUtilTest
 block|{
-comment|/**    * Test the boundary condition that the first character of a string    * should be escaped.    */
+comment|/** Test the boundary condition that the first character of a string should be escaped. */
 annotation|@
 name|Test
 DECL|method|escapeFirstChar ()
@@ -114,7 +114,7 @@ literal|"\\tLeading tab"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Test the boundary condition that the last character of a string    * should be escaped.    */
+comment|/** Test the boundary condition that the last character of a string should be escaped. */
 annotation|@
 name|Test
 DECL|method|escapeLastChar ()
@@ -136,7 +136,7 @@ literal|"Trailing tab\\t"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Test that various forms of input strings are escaped (or left as-is)    * in the expected way.    */
+comment|/** Test that various forms of input strings are escaped (or left as-is) in the expected way. */
 annotation|@
 name|Test
 DECL|method|escapeString ()
@@ -182,7 +182,7 @@ block|,
 literal|"string\twith\ttabs"
 block|,
 literal|"string\\twith\\ttabs"
-block|, }
+block|,     }
 decl_stmt|;
 for|for
 control|(

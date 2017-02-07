@@ -284,7 +284,7 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Register an event type and associated class.    *    * @param eventType The event type to register.    * @param eventClass The event class to register.    **/
+comment|/**    * Register an event type and associated class.    *    * @param eventType The event type to register.    * @param eventClass The event class to register.    */
 DECL|method|register (String eventType, Class<? extends Event> eventClass)
 specifier|public
 specifier|static
@@ -313,7 +313,7 @@ name|eventClass
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Get the class for an event type.    *    * @param type The type.    * @return The event class, or null if no class is registered with the    * given type    **/
+comment|/**    * Get the class for an event type.    *    * @param type The type.    * @return The event class, or null if no class is registered with the given type    */
 DECL|method|getClass (String type)
 specifier|public
 specifier|static

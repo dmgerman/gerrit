@@ -96,7 +96,7 @@ name|P
 argument_list|,
 name|C
 argument_list|>
-block|{ }
+block|{}
 end_interface
 
 end_unit

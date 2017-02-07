@@ -90,13 +90,13 @@ specifier|public
 interface|interface
 name|Config
 block|{
-comment|/**    * @return An API for getting server related configurations.    */
+comment|/** @return An API for getting server related configurations. */
 DECL|method|server ()
 name|Server
 name|server
 parameter_list|()
 function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

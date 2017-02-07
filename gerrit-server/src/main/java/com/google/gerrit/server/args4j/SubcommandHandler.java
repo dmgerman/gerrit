@@ -183,7 +183,7 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|SubcommandHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<String> setter)
+DECL|method|SubcommandHandler ( @ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<String> setter)
 specifier|public
 name|SubcommandHandler
 parameter_list|(

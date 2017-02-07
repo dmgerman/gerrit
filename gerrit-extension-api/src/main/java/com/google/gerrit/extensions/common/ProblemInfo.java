@@ -88,9 +88,9 @@ enum|enum
 name|Status
 block|{
 DECL|enumConstant|FIXED
-DECL|enumConstant|FIX_FAILED
 name|FIXED
 block|,
+DECL|enumConstant|FIX_FAILED
 name|FIX_FAILED
 block|}
 DECL|field|message

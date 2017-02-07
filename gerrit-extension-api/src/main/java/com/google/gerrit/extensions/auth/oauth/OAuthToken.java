@@ -117,14 +117,14 @@ specifier|final
 name|String
 name|raw
 decl_stmt|;
-comment|/**    * Time of expiration of this token, or {@code Long#MAX_VALUE} if this    * token never expires, or time of expiration is unknown.    */
+comment|/**    * Time of expiration of this token, or {@code Long#MAX_VALUE} if this token never expires, or    * time of expiration is unknown.    */
 DECL|field|expiresAt
 specifier|private
 specifier|final
 name|long
 name|expiresAt
 decl_stmt|;
-comment|/**    * The identifier of the OAuth provider that issued this token    * in the form<tt>"plugin-name:provider-name"</tt>, or {@code null}.    */
+comment|/**    * The identifier of the OAuth provider that issued this token in the form    *<tt>"plugin-name:provider-name"</tt>, or {@code null}.    */
 DECL|field|providerId
 specifier|private
 specifier|final

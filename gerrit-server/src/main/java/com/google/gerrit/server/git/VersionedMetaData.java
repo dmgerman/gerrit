@@ -82,6 +82,66 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -490,68 +550,8 @@ name|RawParseUtils
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|BufferedReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
-import|;
-end_import
-
 begin_comment
-comment|/**  * Support for metadata stored within a version controlled branch.  *<p>  * Implementors are responsible for supplying implementations of the onLoad and  * onSave methods to read from the repository, or format an update that can  * later be written back to the repository.  */
+comment|/**  * Support for metadata stored within a version controlled branch.  *  *<p>Implementors are responsible for supplying implementations of the onLoad and onSave methods to  * read from the repository, or format an update that can later be written back to the repository.  */
 end_comment
 
 begin_class
@@ -561,7 +561,7 @@ specifier|abstract
 class|class
 name|VersionedMetaData
 block|{
-comment|/**    * Path information that does not hold references to any repository    * data structures, allowing the application to retain this object    * for long periods of time.    */
+comment|/**    * Path information that does not hold references to any repository data structures, allowing the    * application to retain this object for long periods of time.    */
 DECL|class|PathInfo
 specifier|public
 specifier|static
@@ -696,7 +696,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * Load the current version from the branch.    *<p>    * The repository is not held after the call completes, allowing the    * application to retain this object for long periods of time.    *    * @param db repository to access.    * @throws IOException    * @throws ConfigInvalidException    */
+comment|/**    * Load the current version from the branch.    *    *<p>The repository is not held after the call completes, allowing the application to retain this    * object for long periods of time.    *    * @param db repository to access.    * @throws IOException    * @throws ConfigInvalidException    */
 DECL|method|load (Repository db)
 specifier|public
 name|void
@@ -741,7 +741,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Load a specific version from the repository.    *<p>    * This method is primarily useful for applying updates to a specific revision    * that was shown to an end-user in the user interface. If there are conflicts    * with another user's concurrent changes, these will be automatically    * detected at commit time.    *<p>    * The repository is not held after the call completes, allowing the    * application to retain this object for long periods of time.    *    * @param db repository to access.    * @param id revision to load.    * @throws IOException    * @throws ConfigInvalidException    */
+comment|/**    * Load a specific version from the repository.    *    *<p>This method is primarily useful for applying updates to a specific revision that was shown    * to an end-user in the user interface. If there are conflicts with another user's concurrent    * changes, these will be automatically detected at commit time.    *    *<p>The repository is not held after the call completes, allowing the application to retain this    * object for long periods of time.    *    * @param db repository to access.    * @param id revision to load.    * @throws IOException    * @throws ConfigInvalidException    */
 DECL|method|load (Repository db, ObjectId id)
 specifier|public
 name|void
@@ -779,7 +779,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Load a specific version from an open walk.    *<p>    * This method is primarily useful for applying updates to a specific revision    * that was shown to an end-user in the user interface. If there are conflicts    * with another user's concurrent changes, these will be automatically    * detected at commit time.    *<p>    * The caller retains ownership of the walk and is responsible for closing    * it. However, this instance does not hold a reference to the walk or the    * repository after the call completes, allowing the application to retain    * this object for long periods of time.    *    * @param walk open walk to access to access.    * @param id revision to load.    * @throws IOException    * @throws ConfigInvalidException    */
+comment|/**    * Load a specific version from an open walk.    *    *<p>This method is primarily useful for applying updates to a specific revision that was shown    * to an end-user in the user interface. If there are conflicts with another user's concurrent    * changes, these will be automatically detected at commit time.    *    *<p>The caller retains ownership of the walk and is responsible for closing it. However, this    * instance does not hold a reference to the walk or the repository after the call completes,    * allowing the application to retain this object for long periods of time.    *    * @param walk open walk to access to access.    * @param id revision to load.    * @throws IOException    * @throws ConfigInvalidException    */
 DECL|method|load (RevWalk walk, ObjectId id)
 specifier|public
 name|void
@@ -887,7 +887,7 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Update this metadata branch, recording a new commit on its reference.    *    * @param update helper information to define the update that will occur.    * @return the commit that was created    * @throws IOException if there is a storage problem and the update cannot be    *         executed as requested or if it failed because of a concurrent    *         update to the same reference    */
+comment|/**    * Update this metadata branch, recording a new commit on its reference.    *    * @param update helper information to define the update that will occur.    * @return the commit that was created    * @throws IOException if there is a storage problem and the update cannot be executed as    *     requested or if it failed because of a concurrent update to the same reference    */
 DECL|method|commit (MetaDataUpdate update)
 specifier|public
 name|RevCommit
@@ -935,7 +935,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Creates a new commit and a new ref based on this commit.    *    * @param update helper information to define the update that will occur.    * @param refName name of the ref that should be created    * @return the commit that was created    * @throws IOException if there is a storage problem and the update cannot be    *         executed as requested or if it failed because of a concurrent    *         update to the same reference    */
+comment|/**    * Creates a new commit and a new ref based on this commit.    *    * @param update helper information to define the update that will occur.    * @param refName name of the ref that should be created    * @return the commit that was created    * @throws IOException if there is a storage problem and the update cannot be executed as    *     requested or if it failed because of a concurrent update to the same reference    */
 DECL|method|commitToNewRef (MetaDataUpdate update, String refName)
 specifier|public
 name|RevCommit
@@ -1059,7 +1059,7 @@ name|close
 parameter_list|()
 function_decl|;
 block|}
-comment|/**    * Open a batch of updates to the same metadata ref.    *<p>    * This allows making multiple commits to a single metadata ref, at the end of    * which is a single ref update. For batching together updates to multiple    * refs (each consisting of one or more commits against their respective    * refs), create the {@link MetaDataUpdate} with a {@link BatchRefUpdate}.    *<p>    * A ref update produced by this {@link BatchMetaDataUpdate} is only committed    * if there is no associated {@link BatchRefUpdate}. As a result, the    * configured ref updated event is not fired if there is an associated batch.    *    * @param update helper info about the update.    * @throws IOException if the update failed.    */
+comment|/**    * Open a batch of updates to the same metadata ref.    *    *<p>This allows making multiple commits to a single metadata ref, at the end of which is a    * single ref update. For batching together updates to multiple refs (each consisting of one or    * more commits against their respective refs), create the {@link MetaDataUpdate} with a {@link    * BatchRefUpdate}.    *    *<p>A ref update produced by this {@link BatchMetaDataUpdate} is only committed if there is no    * associated {@link BatchRefUpdate}. As a result, the configured ref updated event is not fired    * if there is an associated batch.    *    * @param update helper info about the update.    * @throws IOException if the update failed.    */
 DECL|method|openUpdate (final MetaDataUpdate update)
 specifier|public
 name|BatchMetaDataUpdate
@@ -2543,7 +2543,7 @@ name|paths
 return|;
 block|}
 block|}
-DECL|method|set (Config rc, String section, String subsection, String name, String value)
+DECL|method|set ( Config rc, String section, String subsection, String name, String value)
 specifier|protected
 specifier|static
 name|void
@@ -2601,7 +2601,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|set (Config rc, String section, String subsection, String name, boolean value)
+DECL|method|set ( Config rc, String section, String subsection, String name, boolean value)
 specifier|protected
 specifier|static
 name|void
@@ -2657,7 +2657,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|set (Config rc, String section, String subsection, String name, E value, E defaultValue)
+DECL|method|set ( Config rc, String section, String subsection, String name, E value, E defaultValue)
 specifier|protected
 specifier|static
 parameter_list|<

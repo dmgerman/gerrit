@@ -173,7 +173,7 @@ specifier|protected
 name|void
 name|configure
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Provides
 annotation|@

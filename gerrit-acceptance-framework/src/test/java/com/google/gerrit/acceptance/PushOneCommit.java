@@ -364,6 +364,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -462,26 +482,6 @@ name|Status
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_class
 DECL|class|PushOneCommit
 specifier|public
@@ -568,7 +568,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ReviewDb db, PersonIdent i, TestRepository<?> testRepo)
+DECL|method|create (ReviewDb db, PersonIdent i, TestRepository<?> testRepo)
 name|PushOneCommit
 name|create
 parameter_list|(
@@ -901,7 +901,7 @@ name|commitBuilder
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -963,7 +963,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1035,7 +1035,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1123,7 +1123,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1200,7 +1200,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1301,7 +1301,7 @@ name|changeId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, ReviewDb db, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, ReviewDb db, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
 specifier|private
 name|PushOneCommit
 parameter_list|(
@@ -2014,7 +2014,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertChange (Change.Status expectedStatus, String expectedTopic, TestAccount... expectedReviewers)
+DECL|method|assertChange ( Change.Status expectedStatus, String expectedTopic, TestAccount... expectedReviewers)
 specifier|public
 name|void
 name|assertChange

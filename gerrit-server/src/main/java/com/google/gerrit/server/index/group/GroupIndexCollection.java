@@ -165,7 +165,7 @@ DECL|method|GroupIndexCollection ()
 specifier|public
 name|GroupIndexCollection
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

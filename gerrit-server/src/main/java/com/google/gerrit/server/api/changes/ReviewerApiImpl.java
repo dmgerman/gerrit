@@ -333,7 +333,7 @@ name|deleteReviewer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerApiImpl (Votes.List listVotes, DeleteVote deleteVote, DeleteReviewer deleteReviewer, @Assisted ReviewerResource reviewer)
+DECL|method|ReviewerApiImpl ( Votes.List listVotes, DeleteVote deleteVote, DeleteReviewer deleteReviewer, @Assisted ReviewerResource reviewer)
 name|ReviewerApiImpl
 parameter_list|(
 name|Votes

@@ -322,54 +322,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -451,6 +403,54 @@ operator|.
 name|util
 operator|.
 name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -1287,7 +1287,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**    * Start the online reindexer if the current index is not already the latest.    *    * @param  force start re-index    * @return true if started, otherwise false.    * @throws ReindexerAlreadyRunningException    */
+comment|/**    * Start the online reindexer if the current index is not already the latest.    *    * @param force start re-index    * @return true if started, otherwise false.    * @throws ReindexerAlreadyRunningException    */
 DECL|method|startReindexer (String name, boolean force)
 specifier|public
 specifier|synchronized
@@ -1410,7 +1410,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|isCurrentIndexVersionLatest ( String name, OnlineReindexer<?, ?, ?> reindexer)
+DECL|method|isCurrentIndexVersionLatest (String name, OnlineReindexer<?, ?, ?> reindexer)
 specifier|private
 name|boolean
 name|isCurrentIndexVersionLatest
@@ -1464,7 +1464,7 @@ operator|==
 name|readVersion
 return|;
 block|}
-DECL|method|validateReindexerNotRunning ( OnlineReindexer<?, ?, ?> reindexer)
+DECL|method|validateReindexerNotRunning (OnlineReindexer<?, ?, ?> reindexer)
 specifier|private
 specifier|static
 name|void
@@ -1502,6 +1502,7 @@ argument_list|()
 throw|;
 block|}
 block|}
+DECL|method|scanVersions ( IndexDefinition<K, V, I> def, GerritIndexStatus cfg)
 specifier|private
 parameter_list|<
 name|K
@@ -1526,7 +1527,6 @@ argument_list|<
 name|V
 argument_list|>
 argument_list|>
-DECL|method|scanVersions (IndexDefinition<K, V, I> def, GerritIndexStatus cfg)
 name|scanVersions
 parameter_list|(
 name|IndexDefinition
@@ -1848,7 +1848,7 @@ return|return
 name|versions
 return|;
 block|}
-DECL|method|markNotReady (GerritIndexStatus cfg, String name, Iterable<Version<V>> versions, Collection<Version<V>> inUse)
+DECL|method|markNotReady ( GerritIndexStatus cfg, String name, Iterable<Version<V>> versions, Collection<Version<V>> inUse)
 specifier|private
 parameter_list|<
 name|V

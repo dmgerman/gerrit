@@ -128,6 +128,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -159,18 +171,6 @@ operator|.
 name|log4j
 operator|.
 name|PatternLayout
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
 import|;
 end_import
 
@@ -216,7 +216,7 @@ specifier|public
 name|void
 name|start
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|stop ()

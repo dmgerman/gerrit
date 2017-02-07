@@ -815,7 +815,7 @@ DECL|method|Input ()
 specifier|protected
 name|Input
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

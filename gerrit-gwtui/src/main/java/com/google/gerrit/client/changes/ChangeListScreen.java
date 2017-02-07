@@ -71,7 +71,7 @@ DECL|interface|ChangeListScreen
 specifier|public
 interface|interface
 name|ChangeListScreen
-block|{ }
+block|{}
 end_interface
 
 end_unit

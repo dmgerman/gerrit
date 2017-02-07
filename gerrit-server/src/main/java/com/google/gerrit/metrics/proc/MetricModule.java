@@ -187,7 +187,7 @@ specifier|public
 name|void
 name|stop
 parameter_list|()
-block|{       }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;

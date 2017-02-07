@@ -172,7 +172,7 @@ DECL|method|BlameInfo ()
 specifier|protected
 name|BlameInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

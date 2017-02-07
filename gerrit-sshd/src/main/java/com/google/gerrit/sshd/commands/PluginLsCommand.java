@@ -202,9 +202,9 @@ name|PluginLsCommand
 extends|extends
 name|SshCommand
 block|{
+DECL|field|impl
 annotation|@
 name|Inject
-DECL|field|impl
 specifier|private
 name|ListPlugins
 name|impl

@@ -393,7 +393,7 @@ specifier|final
 name|String
 name|schemeName
 decl_stmt|;
-DECL|method|DownloadUrlLink (DownloadPanel downloadPanel, DownloadSchemeInfo schemeInfo, String schemeName)
+DECL|method|DownloadUrlLink ( DownloadPanel downloadPanel, DownloadSchemeInfo schemeInfo, String schemeName)
 specifier|public
 name|DownloadUrlLink
 parameter_list|(
@@ -573,7 +573,7 @@ parameter_list|(
 name|JavaScriptObject
 name|result
 parameter_list|)
-block|{             }
+block|{}
 annotation|@
 name|Override
 specifier|public
@@ -583,7 +583,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{             }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;

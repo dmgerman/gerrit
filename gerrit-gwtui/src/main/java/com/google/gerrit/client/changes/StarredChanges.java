@@ -453,7 +453,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Create a star icon for the given change, and current status. Returns null    * if the user is not signed in and cannot support starred changes.    */
+comment|/**    * Create a star icon for the given change, and current status. Returns null if the user is not    * signed in and cannot support starred changes.    */
 DECL|method|createIcon (Change.Id source, boolean starred)
 specifier|public
 specifier|static
@@ -534,7 +534,7 @@ block|}
 return|;
 block|}
 comment|/** Add a handler to listen for starred status to change. */
-DECL|method|addHandler ( Change.Id source, ChangeStarHandler handler)
+DECL|method|addHandler (Change.Id source, ChangeStarHandler handler)
 specifier|public
 specifier|static
 name|HandlerRegistration
@@ -564,7 +564,7 @@ name|handler
 argument_list|)
 return|;
 block|}
-comment|/**    * Broadcast the current starred value of a change to UI widgets. This does    * not RPC to the server and does not alter the starred status of a change.    */
+comment|/**    * Broadcast the current starred value of a change to UI widgets. This does not RPC to the server    * and does not alter the starred status of a change.    */
 DECL|method|fireChangeStarEvent (Change.Id id, boolean starred)
 specifier|public
 specifier|static
@@ -598,8 +598,8 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Set the starred status of a change. This method broadcasts to all    * interested UI widgets and sends an RPC to the server to record the    * updated status.    */
-DECL|method|toggleStar ( final Change.Id changeId, final boolean newValue)
+comment|/**    * Set the starred status of a change. This method broadcasts to all interested UI widgets and    * sends an RPC to the server to record the updated status.    */
+DECL|method|toggleStar (final Change.Id changeId, final boolean newValue)
 specifier|public
 specifier|static
 name|void
@@ -952,7 +952,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Toggles the state of the star, as if the user clicked on the image. This      * will broadcast the new star status to all interested UI widgets, and RPC      * to the server to store the changed value.      */
+comment|/**      * Toggles the state of the star, as if the user clicked on the image. This will broadcast the      * new star status to all interested UI widgets, and RPC to the server to store the changed      * value.      */
 DECL|method|toggleStar ()
 specifier|public
 name|void
@@ -1086,7 +1086,7 @@ DECL|method|StarredChanges ()
 specifier|private
 name|StarredChanges
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

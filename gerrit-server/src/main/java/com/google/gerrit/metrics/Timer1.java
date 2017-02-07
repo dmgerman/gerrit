@@ -107,7 +107,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Records elapsed time for an operation or span.  *<p>  * Typical usage in a try-with-resources block:  *  *<pre>  * try (Timer1.Context ctx = timer.start(field)) {  * }  *</pre>  *  * @param<F1> type of the field.  */
+comment|/**  * Records elapsed time for an operation or span.  *  *<p>Typical usage in a try-with-resources block:  *  *<pre>  * try (Timer1.Context ctx = timer.start(field)) {  * }  *</pre>  *  * @param<F1> type of the field.  */
 end_comment
 
 begin_class

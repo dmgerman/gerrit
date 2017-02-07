@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to populate the groups of users that are allowed to run  * receive-pack on the server.  *  * Gerrit.config example:  *  *<pre>  * [receive]  *     allowGroup = RECEIVE_GROUP_ALLOWED  *</pre>  */
+comment|/**  * Used to populate the groups of users that are allowed to run receive-pack on the server.  *  *<p>Gerrit.config example:  *  *<pre>  * [receive]  *     allowGroup = RECEIVE_GROUP_ALLOWED  *</pre>  */
 end_comment
 
 begin_annotation_defn
@@ -120,7 +120,7 @@ DECL|annotation|GitReceivePackGroups
 specifier|public
 annotation_defn|@interface
 name|GitReceivePackGroups
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

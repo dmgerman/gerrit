@@ -70,7 +70,7 @@ specifier|public
 class|class
 name|StringUtil
 block|{
-comment|/**    * An array of the string representations that should be used in place    * of the non-printable characters in the beginning of the ASCII table    * when escaping a string. The index of each element in the array    * corresponds to its ASCII value, i.e. the string representation of    * ASCII 0 is found in the first element of this array.    */
+comment|/**    * An array of the string representations that should be used in place of the non-printable    * characters in the beginning of the ASCII table when escaping a string. The index of each    * element in the array corresponds to its ASCII value, i.e. the string representation of ASCII 0    * is found in the first element of this array.    */
 DECL|field|NON_PRINTABLE_CHARS
 specifier|private
 specifier|static
@@ -143,9 +143,9 @@ block|,
 literal|"\\x1e"
 block|,
 literal|"\\x1f"
-block|, }
+block|,   }
 decl_stmt|;
-comment|/**    * Escapes the input string so that all non-printable characters    * (0x00-0x1f) are represented as a hex escape (\x00, \x01, ...)    * or as a C-style escape sequence (\a, \b, \t, \n, \v, \f, or \r).    * Backslashes in the input string are doubled (\\).    */
+comment|/**    * Escapes the input string so that all non-printable characters (0x00-0x1f) are represented as a    * hex escape (\x00, \x01, ...) or as a C-style escape sequence (\a, \b, \t, \n, \v, \f, or \r).    * Backslashes in the input string are doubled (\\).    */
 DECL|method|escapeString (final String str)
 specifier|public
 specifier|static

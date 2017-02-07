@@ -249,7 +249,7 @@ DECL|class|RevertAction
 class|class
 name|RevertAction
 block|{
-DECL|method|call (final Button b, final Change.Id id, final String revision, final String commitSubject)
+DECL|method|call ( final Button b, final Change.Id id, final String revision, final String commitSubject)
 specifier|static
 name|void
 name|call

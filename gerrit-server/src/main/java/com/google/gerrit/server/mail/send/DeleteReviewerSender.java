@@ -259,7 +259,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Let users know that a reviewer and possibly her review have  * been removed. */
+comment|/** Let users know that a reviewer and possibly her review have been removed. */
 end_comment
 
 begin_class
@@ -318,7 +318,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|DeleteReviewerSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|DeleteReviewerSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|DeleteReviewerSender
 parameter_list|(

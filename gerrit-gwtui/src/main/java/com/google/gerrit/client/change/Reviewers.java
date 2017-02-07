@@ -2149,7 +2149,7 @@ DECL|method|PostInput ()
 specifier|protected
 name|PostInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|ReviewerInfo
 specifier|public
@@ -2204,7 +2204,7 @@ DECL|method|ReviewerInfo ()
 specifier|protected
 name|ReviewerInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|PostResult
 specifier|public
@@ -2248,7 +2248,7 @@ DECL|method|PostResult ()
 specifier|protected
 name|PostResult
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

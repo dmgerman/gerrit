@@ -339,7 +339,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|dbProvider
 specifier|private
 specifier|final
@@ -366,7 +366,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteActive (Provider<ReviewDb> dbProvider, AccountCache byIdCache, Provider<IdentifiedUser> self)
+DECL|method|DeleteActive ( Provider<ReviewDb> dbProvider, AccountCache byIdCache, Provider<IdentifiedUser> self)
 name|DeleteActive
 parameter_list|(
 name|Provider

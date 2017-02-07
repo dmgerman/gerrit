@@ -398,20 +398,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -427,6 +413,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
 import|;
 end_import
 
@@ -482,7 +482,7 @@ name|queryAccountsProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountsImpl (AccountsCollection accounts, AccountApiImpl.Factory api, Provider<CurrentUser> self, CreateAccount.Factory createAccount, Provider<QueryAccounts> queryAccountsProvider)
+DECL|method|AccountsImpl ( AccountsCollection accounts, AccountApiImpl.Factory api, Provider<CurrentUser> self, CreateAccount.Factory createAccount, Provider<QueryAccounts> queryAccountsProvider)
 name|AccountsImpl
 parameter_list|(
 name|AccountsCollection

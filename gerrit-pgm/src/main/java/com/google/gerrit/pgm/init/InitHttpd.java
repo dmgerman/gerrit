@@ -387,7 +387,7 @@ name|gerrit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitHttpd (final ConsoleUI ui, final SitePaths site, final InitFlags flags, final Section.Factory sections)
+DECL|method|InitHttpd ( final ConsoleUI ui, final SitePaths site, final InitFlags flags, final Section.Factory sections)
 name|InitHttpd
 parameter_list|(
 specifier|final

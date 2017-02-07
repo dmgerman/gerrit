@@ -247,7 +247,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A map of members that can be modified as plugins reload.  *<p>  * Maps index their members by plugin name and export name.  *<p>  * DynamicMaps are always mapped as singletons in Guice. Maps store Providers  * internally, and resolve the provider to an instance on demand. This enables  * registrations to decide between singleton and non-singleton members.  */
+comment|/**  * A map of members that can be modified as plugins reload.  *  *<p>Maps index their members by plugin name and export name.  *  *<p>DynamicMaps are always mapped as singletons in Guice. Maps store Providers internally, and  * resolve the provider to an instance on demand. This enables registrations to decide between  * singleton and non-singleton members.  */
 end_comment
 
 begin_class
@@ -270,7 +270,7 @@ name|T
 argument_list|>
 argument_list|>
 block|{
-comment|/**    * Declare a singleton {@code DynamicMap<T>} with a binder.    *<p>    * Maps must be defined in a Guice module before they can be bound:    *    *<pre>    * DynamicMap.mapOf(binder(), Interface.class);    * bind(Interface.class)    *   .annotatedWith(Exports.named(&quot;foo&quot;))    *   .to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of value in the map.    */
+comment|/**    * Declare a singleton {@code DynamicMap<T>} with a binder.    *    *<p>Maps must be defined in a Guice module before they can be bound:    *    *<pre>    * DynamicMap.mapOf(binder(), Interface.class);    * bind(Interface.class)    *   .annotatedWith(Exports.named(&quot;foo&quot;))    *   .to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of value in the map.    */
 DECL|method|mapOf (Binder binder, Class<T> member)
 specifier|public
 specifier|static
@@ -303,7 +303,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Declare a singleton {@code DynamicMap<T>} with a binder.    *<p>    * Maps must be defined in a Guice module before they can be bound:    *    *<pre>    * DynamicMap.mapOf(binder(), new TypeLiteral&lt;Thing&lt;Bar&gt;&gt;(){});    * bind(new TypeLiteral&lt;Thing&lt;Bar&gt;&gt;() {})    *   .annotatedWith(Exports.named(&quot;foo&quot;))    *   .to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of value in the map.    */
+comment|/**    * Declare a singleton {@code DynamicMap<T>} with a binder.    *    *<p>Maps must be defined in a Guice module before they can be bound:    *    *<pre>    * DynamicMap.mapOf(binder(), new TypeLiteral&lt;Thing&lt;Bar&gt;&gt;(){});    * bind(new TypeLiteral&lt;Thing&lt;Bar&gt;&gt;() {})    *   .annotatedWith(Exports.named(&quot;foo&quot;))    *   .to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of value in the map.    */
 DECL|method|mapOf (Binder binder, TypeLiteral<T> member)
 specifier|public
 specifier|static
@@ -424,7 +424,7 @@ comment|/* concurrency level of 1, load/unload is single threaded */
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Lookup an implementation by name.    *    * @param pluginName local name of the plugin providing the item.    * @param exportName name the plugin exports the item as.    * @return the implementation. Null if the plugin is not running, or if the    *         plugin does not export this name.    * @throws ProvisionException if the registered provider is unable to obtain    *         an instance of the requested implementation.    */
+comment|/**    * Lookup an implementation by name.    *    * @param pluginName local name of the plugin providing the item.    * @param exportName name the plugin exports the item as.    * @return the implementation. Null if the plugin is not running, or if the plugin does not export    *     this name.    * @throws ProvisionException if the registered provider is unable to obtain an instance of the    *     requested implementation.    */
 DECL|method|get (String pluginName, String exportName)
 specifier|public
 name|T

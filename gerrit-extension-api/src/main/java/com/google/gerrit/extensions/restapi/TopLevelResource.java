@@ -93,7 +93,7 @@ DECL|method|TopLevelResource ()
 specifier|private
 name|TopLevelResource
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

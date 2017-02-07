@@ -209,7 +209,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|RevertedSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|RevertedSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|RevertedSender
 parameter_list|(

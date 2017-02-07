@@ -362,6 +362,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -450,16 +460,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/** Utility methods related to rebasing changes. */
 end_comment
@@ -520,7 +520,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseUtil (Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, Provider<ReviewDb> dbProvider, PatchSetUtil psUtil)
+DECL|method|RebaseUtil ( Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, Provider<ReviewDb> dbProvider, PatchSetUtil psUtil)
 name|RebaseUtil
 parameter_list|(
 name|Provider
@@ -1056,8 +1056,8 @@ name|notes
 argument_list|)
 return|;
 block|}
-comment|/**    * Find the commit onto which a patch set should be rebased.    *<p>    * This is defined as the latest patch set of the change corresponding to    * this commit's parent, or the destination branch tip in the case where the    * parent's change is merged.    *    * @param patchSet patch set for which the new base commit should be found.    * @param destBranch the destination branch.    * @param git the repository.    * @param rw the RevWalk.    * @return the commit onto which the patch set should be rebased.    * @throws RestApiException if rebase is not possible.    * @throws IOException if accessing the repository fails.    * @throws OrmException if accessing the database fails.    */
-DECL|method|findBaseRevision (PatchSet patchSet, Branch.NameKey destBranch, Repository git, RevWalk rw)
+comment|/**    * Find the commit onto which a patch set should be rebased.    *    *<p>This is defined as the latest patch set of the change corresponding to this commit's parent,    * or the destination branch tip in the case where the parent's change is merged.    *    * @param patchSet patch set for which the new base commit should be found.    * @param destBranch the destination branch.    * @param git the repository.    * @param rw the RevWalk.    * @return the commit onto which the patch set should be rebased.    * @throws RestApiException if rebase is not possible.    * @throws IOException if accessing the repository fails.    * @throws OrmException if accessing the database fails.    */
+DECL|method|findBaseRevision ( PatchSet patchSet, Branch.NameKey destBranch, Repository git, RevWalk rw)
 name|ObjectId
 name|findBaseRevision
 parameter_list|(

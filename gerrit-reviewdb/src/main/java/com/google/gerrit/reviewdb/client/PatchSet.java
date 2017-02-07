@@ -167,7 +167,7 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**    * Is the reference name a change reference?    *    * @deprecated use isChangeRef instead.    **/
+comment|/**    * Is the reference name a change reference?    *    * @deprecated use isChangeRef instead.    */
 annotation|@
 name|Deprecated
 DECL|method|isRef (String name)
@@ -889,7 +889,7 @@ specifier|protected
 name|boolean
 name|draft
 decl_stmt|;
-comment|/**    * Opaque group identifier, usually assigned during creation.    *<p>    * This field is actually a comma-separated list of values, as in rare cases    * involving merge commits a patch set may belong to multiple groups.    *<p>    * Changes on the same branch having patch sets with intersecting groups are    * considered related, as in the "Related Changes" tab.    */
+comment|/**    * Opaque group identifier, usually assigned during creation.    *    *<p>This field is actually a comma-separated list of values, as in rare cases involving merge    * commits a patch set may belong to multiple groups.    *    *<p>Changes on the same branch having patch sets with intersecting groups are considered    * related, as in the "Related Changes" tab.    */
 annotation|@
 name|Column
 argument_list|(
@@ -936,7 +936,7 @@ specifier|protected
 name|String
 name|pushCertificate
 decl_stmt|;
-comment|/**    * Optional user-supplied description for this patch set.    *<p>    * When this field is null, the description was never set on the patch set.    * When this field is an empty string, the description was set and later    * cleared.    */
+comment|/**    * Optional user-supplied description for this patch set.    *    *<p>When this field is null, the description was never set on the patch set. When this field is    * an empty string, the description was set and later cleared.    */
 annotation|@
 name|Column
 argument_list|(
@@ -963,7 +963,7 @@ DECL|method|PatchSet ()
 specifier|protected
 name|PatchSet
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|PatchSet (final PatchSet.Id k)
 specifier|public
 name|PatchSet

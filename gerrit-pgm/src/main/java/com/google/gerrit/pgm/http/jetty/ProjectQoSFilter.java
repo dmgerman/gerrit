@@ -274,62 +274,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jetty
-operator|.
-name|continuation
-operator|.
-name|Continuation
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jetty
-operator|.
-name|continuation
-operator|.
-name|ContinuationListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jetty
-operator|.
-name|continuation
-operator|.
-name|ContinuationSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -456,8 +400,64 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jetty
+operator|.
+name|continuation
+operator|.
+name|Continuation
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jetty
+operator|.
+name|continuation
+operator|.
+name|ContinuationListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jetty
+operator|.
+name|continuation
+operator|.
+name|ContinuationSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_comment
-comment|/**  * Use Jetty continuations to defer execution until threads are available.  *<p>  * We actually schedule a task into the same execution queue as the SSH daemon  * uses for command execution, and then park the web request in a continuation  * until an execution thread is available. This ensures that the overall JVM  * process doesn't exceed the configured limit on concurrent Git requests.  *<p>  * During Git request execution however we have to use the Jetty service thread,  * not the thread from the SSH execution queue. Trying to complete the request  * on the SSH execution queue caused Jetty's HTTP parser to crash, so we instead  * block the SSH execution queue thread and ask Jetty to resume processing on  * the web service thread.  */
+comment|/**  * Use Jetty continuations to defer execution until threads are available.  *  *<p>We actually schedule a task into the same execution queue as the SSH daemon uses for command  * execution, and then park the web request in a continuation until an execution thread is  * available. This ensures that the overall JVM process doesn't exceed the configured limit on  * concurrent Git requests.  *  *<p>During Git request execution however we have to use the Jetty service thread, not the thread  * from the SSH execution queue. Trying to complete the request on the SSH execution queue caused  * Jetty's HTTP parser to crash, so we instead block the SSH execution queue thread and ask Jetty to  * resume processing on the web service thread.  */
 end_comment
 
 begin_class
@@ -607,7 +607,7 @@ name|maxWait
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectQoSFilter (final Provider<CurrentUser> user, QueueProvider queue, final ServletContext context, @GerritServerConfig final Config cfg)
+DECL|method|ProjectQoSFilter ( final Provider<CurrentUser> user, QueueProvider queue, final ServletContext context, @GerritServerConfig final Config cfg)
 name|ProjectQoSFilter
 parameter_list|(
 specifier|final
@@ -956,7 +956,7 @@ parameter_list|(
 name|FilterConfig
 name|config
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -964,7 +964,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|TaskThunk
 specifier|private
 specifier|final
@@ -1020,7 +1020,7 @@ specifier|private
 name|String
 name|fullName
 decl_stmt|;
-DECL|method|TaskThunk (final WorkQueue.Executor executor, final Continuation cont, final HttpServletRequest req)
+DECL|method|TaskThunk ( final WorkQueue.Executor executor, final Continuation cont, final HttpServletRequest req)
 name|TaskThunk
 parameter_list|(
 specifier|final
@@ -1198,7 +1198,7 @@ parameter_list|(
 name|Continuation
 name|self
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|onTimeout (Continuation self)

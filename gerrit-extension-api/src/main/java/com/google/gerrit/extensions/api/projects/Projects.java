@@ -172,7 +172,7 @@ specifier|public
 interface|interface
 name|Projects
 block|{
-comment|/**    * Look up a project by name.    *<p>    *<strong>Note:</strong> This method eagerly reads the project. Methods that    * mutate the project do not necessarily re-read the project. Therefore,    * calling a getter method on an instance after calling a mutation method on    * that same instance is not guaranteed to reflect the mutation. It is not    * recommended to store references to {@code ProjectApi} instances.    *    * @param name project name.    * @return API for accessing the project.    * @throws RestApiException if an error occurred.    */
+comment|/**    * Look up a project by name.    *    *<p><strong>Note:</strong> This method eagerly reads the project. Methods that mutate the    * project do not necessarily re-read the project. Therefore, calling a getter method on an    * instance after calling a mutation method on that same instance is not guaranteed to reflect the    * mutation. It is not recommended to store references to {@code ProjectApi} instances.    *    * @param name project name.    * @return API for accessing the project.    * @throws RestApiException if an error occurred.    */
 DECL|method|name (String name)
 name|ProjectApi
 name|name
@@ -221,15 +221,15 @@ enum|enum
 name|FilterType
 block|{
 DECL|enumConstant|CODE
-DECL|enumConstant|PARENT_CANDIDATES
-DECL|enumConstant|PERMISSIONS
-DECL|enumConstant|ALL
 name|CODE
 block|,
+DECL|enumConstant|PARENT_CANDIDATES
 name|PARENT_CANDIDATES
 block|,
+DECL|enumConstant|PERMISSIONS
 name|PERMISSIONS
 block|,
+DECL|enumConstant|ALL
 name|ALL
 block|}
 DECL|field|branches
@@ -670,7 +670,7 @@ name|type
 return|;
 block|}
 block|}
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

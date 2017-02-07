@@ -243,7 +243,7 @@ DECL|method|LintLine ()
 specifier|protected
 name|LintLine
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

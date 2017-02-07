@@ -318,7 +318,7 @@ specifier|public
 name|void
 name|stop
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

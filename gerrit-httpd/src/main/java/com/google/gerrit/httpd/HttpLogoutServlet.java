@@ -329,7 +329,7 @@ name|audit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpLogoutServlet (final AuthConfig authConfig, final DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AuditService audit)
+DECL|method|HttpLogoutServlet ( final AuthConfig authConfig, final DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AuditService audit)
 specifier|protected
 name|HttpLogoutServlet
 parameter_list|(

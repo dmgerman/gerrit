@@ -284,7 +284,7 @@ name|user
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ReviewerResource (IdentifiedUser.GenericFactory userFactory, @Assisted ChangeResource change, @Assisted Account.Id id)
+DECL|method|ReviewerResource ( IdentifiedUser.GenericFactory userFactory, @Assisted ChangeResource change, @Assisted Account.Id id)
 name|ReviewerResource
 parameter_list|(
 name|IdentifiedUser
@@ -331,7 +331,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ReviewerResource (IdentifiedUser.GenericFactory userFactory, @Assisted RevisionResource revision, @Assisted Account.Id id)
+DECL|method|ReviewerResource ( IdentifiedUser.GenericFactory userFactory, @Assisted RevisionResource revision, @Assisted Account.Id id)
 name|ReviewerResource
 parameter_list|(
 name|IdentifiedUser
@@ -437,7 +437,7 @@ return|return
 name|user
 return|;
 block|}
-comment|/**    * @return the control for the caller's user (as opposed to the reviewer's    *     user as returned by {@link #getReviewerControl()}).    */
+comment|/**    * @return the control for the caller's user (as opposed to the reviewer's user as returned by    *     {@link #getReviewerControl()}).    */
 DECL|method|getControl ()
 specifier|public
 name|ChangeControl
@@ -451,7 +451,7 @@ name|getControl
 argument_list|()
 return|;
 block|}
-comment|/**    * @return the control for the reviewer's user (as opposed to the caller's    *     user as returned by {@link #getControl()}).    */
+comment|/**    * @return the control for the reviewer's user (as opposed to the caller's user as returned by    *     {@link #getControl()}).    */
 DECL|method|getReviewerControl ()
 specifier|public
 name|ChangeControl

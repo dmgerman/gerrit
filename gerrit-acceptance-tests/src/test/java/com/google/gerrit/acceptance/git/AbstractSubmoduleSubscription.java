@@ -222,6 +222,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -387,20 +401,6 @@ operator|.
 name|RemoteRefUpdate
 operator|.
 name|Status
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicInteger
 import|;
 end_import
 
@@ -666,7 +666,7 @@ return|return
 name|cfg
 return|;
 block|}
-DECL|method|createProjectWithPush (String name, @Nullable Project.NameKey parent, boolean createEmptyCommit, SubmitType submitType)
+DECL|method|createProjectWithPush ( String name, @Nullable Project.NameKey parent, boolean createEmptyCommit, SubmitType submitType)
 specifier|protected
 name|TestRepository
 argument_list|<
@@ -844,7 +844,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-DECL|method|pushChangeTo (TestRepository<?> repo, String ref, String file, String content, String message, String topic)
+DECL|method|pushChangeTo ( TestRepository<?> repo, String ref, String file, String content, String message, String topic)
 specifier|protected
 name|ObjectId
 name|pushChangeTo
@@ -1098,7 +1098,7 @@ literal|""
 argument_list|)
 return|;
 block|}
-DECL|method|allowSubmoduleSubscription (String submodule, String subBranch, String superproject, String superBranch, boolean match)
+DECL|method|allowSubmoduleSubscription ( String submodule, String subBranch, String superproject, String superBranch, boolean match)
 specifier|protected
 name|void
 name|allowSubmoduleSubscription
@@ -1319,7 +1319,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|allowMatchingSubmoduleSubscription (String submodule, String subBranch, String superproject, String superBranch)
+DECL|method|allowMatchingSubmoduleSubscription ( String submodule, String subBranch, String superproject, String superBranch)
 specifier|protected
 name|void
 name|allowMatchingSubmoduleSubscription
@@ -1353,7 +1353,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createSubmoduleSubscription (TestRepository<?> repo, String branch, String subscribeToRepo, String subscribeToBranch)
+DECL|method|createSubmoduleSubscription ( TestRepository<?> repo, String branch, String subscribeToRepo, String subscribeToBranch)
 specifier|protected
 name|void
 name|createSubmoduleSubscription
@@ -1402,7 +1402,7 @@ name|config
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createRelativeSubmoduleSubscription (TestRepository<?> repo, String branch, String subscribeToRepoPrefix, String subscribeToRepo, String subscribeToBranch)
+DECL|method|createRelativeSubmoduleSubscription ( TestRepository<?> repo, String branch, String subscribeToRepoPrefix, String subscribeToRepo, String subscribeToBranch)
 specifier|protected
 name|void
 name|createRelativeSubmoduleSubscription
@@ -1456,7 +1456,7 @@ name|config
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|prepareRelativeSubmoduleConfigEntry (Config config, String subscribeToRepoPrefix, String subscribeToRepo, String subscribeToBranch)
+DECL|method|prepareRelativeSubmoduleConfigEntry ( Config config, String subscribeToRepoPrefix, String subscribeToRepo, String subscribeToBranch)
 specifier|protected
 name|void
 name|prepareRelativeSubmoduleConfigEntry
@@ -1536,7 +1536,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|prepareSubmoduleConfigEntry (Config config, String subscribeToRepo, String subscribeToBranch)
+DECL|method|prepareSubmoduleConfigEntry ( Config config, String subscribeToRepo, String subscribeToBranch)
 specifier|protected
 name|void
 name|prepareSubmoduleConfigEntry
@@ -1566,7 +1566,7 @@ name|subscribeToBranch
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|prepareSubmoduleConfigEntry (Config config, String subscribeToRepo, String subscribeToRepoPath, String subscribeToBranch)
+DECL|method|prepareSubmoduleConfigEntry ( Config config, String subscribeToRepo, String subscribeToRepoPath, String subscribeToBranch)
 specifier|protected
 name|void
 name|prepareSubmoduleConfigEntry
@@ -1749,7 +1749,7 @@ name|call
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|expectToHaveSubmoduleState (TestRepository<?> repo, String branch, String submodule, TestRepository<?> subRepo, String subBranch)
+DECL|method|expectToHaveSubmoduleState ( TestRepository<?> repo, String branch, String submodule, TestRepository<?> subRepo, String subBranch)
 specifier|protected
 name|void
 name|expectToHaveSubmoduleState
@@ -1902,7 +1902,7 @@ name|subHead
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|expectToHaveSubmoduleState (TestRepository<?> repo, String branch, String submodule, ObjectId expectedId)
+DECL|method|expectToHaveSubmoduleState ( TestRepository<?> repo, String branch, String submodule, ObjectId expectedId)
 specifier|protected
 name|void
 name|expectToHaveSubmoduleState
@@ -2429,7 +2429,7 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|expectToHaveCommitMessage (TestRepository<?> repo, String branch, String expectedMessage)
+DECL|method|expectToHaveCommitMessage ( TestRepository<?> repo, String branch, String expectedMessage)
 specifier|protected
 name|void
 name|expectToHaveCommitMessage

@@ -169,7 +169,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Predicate to match changes that contains specified text in commit messages  * body.  */
+comment|/** Predicate to match changes that contains specified text in commit messages body. */
 end_comment
 
 begin_class

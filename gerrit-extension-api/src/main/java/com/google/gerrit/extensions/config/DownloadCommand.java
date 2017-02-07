@@ -91,7 +91,7 @@ specifier|abstract
 class|class
 name|DownloadCommand
 block|{
-comment|/**    * Returns the download command for the given download scheme, project and    * ref.    *    * @param scheme the download scheme for which the command should be returned    * @param project the name of the project for which the download command    *        should be returned    * @param ref the change ref    * @return the download command    */
+comment|/**    * Returns the download command for the given download scheme, project and ref.    *    * @param scheme the download scheme for which the command should be returned    * @param project the name of the project for which the download command should be returned    * @param ref the change ref    * @return the download command    */
 DECL|method|getCommand (DownloadScheme scheme, String project, String ref)
 specifier|public
 specifier|abstract

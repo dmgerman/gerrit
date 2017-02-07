@@ -872,40 +872,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -981,6 +947,40 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -1161,7 +1161,7 @@ name|notifyUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewers (AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, AddReviewerSender.Factory addReviewerSenderFactory, GroupsCollection groupsCollection, GroupMembers.Factory groupMembersFactory, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, Provider<IdentifiedUser> user, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ReviewerJson json, ReviewerAdded reviewerAdded, NotesMigration migration, AccountCache accountCache, NotifyUtil notifyUtil)
+DECL|method|PostReviewers ( AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, AddReviewerSender.Factory addReviewerSenderFactory, GroupsCollection groupsCollection, GroupMembers.Factory groupMembersFactory, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, Provider<IdentifiedUser> user, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ReviewerJson json, ReviewerAdded reviewerAdded, NotesMigration migration, AccountCache accountCache, NotifyUtil notifyUtil)
 name|PostReviewers
 parameter_list|(
 name|AccountsCollection
@@ -1486,7 +1486,7 @@ operator|.
 name|result
 return|;
 block|}
-DECL|method|prepareApplication (ChangeResource rsrc, AddReviewerInput input, boolean allowGroup)
+DECL|method|prepareApplication ( ChangeResource rsrc, AddReviewerInput input, boolean allowGroup)
 specifier|public
 name|Addition
 name|prepareApplication
@@ -1691,7 +1691,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|putAccount (String reviewer, ReviewerResource rsrc, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|putAccount ( String reviewer, ReviewerResource rsrc, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|private
 name|Addition
 name|putAccount
@@ -2348,7 +2348,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Addition (String reviewer, ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|Addition ( String reviewer, ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|protected
 name|Addition
 parameter_list|(
@@ -2691,7 +2691,7 @@ specifier|private
 name|PatchSet
 name|patchSet
 decl_stmt|;
-DECL|method|Op (ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|Op ( ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, ReviewerState state, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|Op
 parameter_list|(
 name|ChangeResource
@@ -3061,7 +3061,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|emailReviewers (Change change, Collection<Account.Id> added, Collection<Account.Id> copied, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|emailReviewers ( Change change, Collection<Account.Id> added, Collection<Account.Id> copied, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|emailReviewers

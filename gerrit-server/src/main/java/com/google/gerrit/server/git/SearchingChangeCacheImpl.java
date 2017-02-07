@@ -410,26 +410,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -467,6 +447,26 @@ operator|.
 name|concurrent
 operator|.
 name|ExecutionException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -660,9 +660,9 @@ name|Change
 name|change
 parameter_list|()
 function_decl|;
-DECL|method|reviewers ()
 annotation|@
 name|Nullable
+DECL|method|reviewers ()
 specifier|abstract
 name|ReviewerSet
 name|reviewers
@@ -735,7 +735,7 @@ operator|=
 name|changeDataFactory
 expr_stmt|;
 block|}
-comment|/**    * Read changes for the project from the secondary index.    *<p>    * Returned changes only include the {@code Change} object (with id, branch)    * and the reviewers. Additional stored fields are not loaded from the index.    *    * @param db database handle to populate missing change data (probably    *        unused).    * @param project project to read.    * @return list of known changes; empty if no changes.    */
+comment|/**    * Read changes for the project from the secondary index.    *    *<p>Returned changes only include the {@code Change} object (with id, branch) and the reviewers.    * Additional stored fields are not loaded from the index.    *    * @param db database handle to populate missing change data (probably unused).    * @param project project to read.    * @return list of known changes; empty if no changes.    */
 DECL|method|getChangeData (ReviewDb db, Project.NameKey project)
 specifier|public
 name|List

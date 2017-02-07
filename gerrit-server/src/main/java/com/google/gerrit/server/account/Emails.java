@@ -305,7 +305,7 @@ name|createEmailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Emails (DynamicMap<RestView<AccountResource.Email>> views, GetEmails list, Provider<CurrentUser> self, CreateEmail.Factory createEmailFactory)
+DECL|method|Emails ( DynamicMap<RestView<AccountResource.Email>> views, GetEmails list, Provider<CurrentUser> self, CreateEmail.Factory createEmailFactory)
 name|Emails
 parameter_list|(
 name|DynamicMap

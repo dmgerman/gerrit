@@ -222,7 +222,7 @@ argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|deserialize (final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+DECL|method|deserialize ( final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
 specifier|public
 name|Edit
 name|deserialize
@@ -561,7 +561,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|serialize (final Edit src, final Type typeOfSrc, final JsonSerializationContext context)
+DECL|method|serialize ( final Edit src, final Type typeOfSrc, final JsonSerializationContext context)
 specifier|public
 name|JsonElement
 name|serialize

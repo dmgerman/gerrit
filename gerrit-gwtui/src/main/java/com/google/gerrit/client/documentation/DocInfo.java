@@ -143,7 +143,7 @@ DECL|method|DocInfo ()
 specifier|protected
 name|DocInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|getFullUrl ()
 specifier|public
 specifier|final

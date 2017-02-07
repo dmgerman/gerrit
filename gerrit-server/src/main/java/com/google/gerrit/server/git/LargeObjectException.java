@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Wrapper for {@link org.eclipse.jgit.errors.LargeObjectException}. Since  * org.eclipse.jgit.errors.LargeObjectException is a {@link RuntimeException}  * the GerritJsonServlet would treat it as internal failure and as result the  * web ui would just show 'Internal Server Error'. Wrapping  * org.eclipse.jgit.errors.LargeObjectException into a normal {@link Exception}  * allows to display a proper error message.  */
+comment|/**  * Wrapper for {@link org.eclipse.jgit.errors.LargeObjectException}. Since  * org.eclipse.jgit.errors.LargeObjectException is a {@link RuntimeException} the GerritJsonServlet  * would treat it as internal failure and as result the web ui would just show 'Internal Server  * Error'. Wrapping org.eclipse.jgit.errors.LargeObjectException into a normal {@link Exception}  * allows to display a proper error message.  */
 end_comment
 
 begin_class
@@ -87,7 +87,7 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|LargeObjectException (final String message, final org.eclipse.jgit.errors.LargeObjectException cause)
+DECL|method|LargeObjectException ( final String message, final org.eclipse.jgit.errors.LargeObjectException cause)
 specifier|public
 name|LargeObjectException
 parameter_list|(

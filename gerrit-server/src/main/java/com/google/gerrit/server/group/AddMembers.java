@@ -627,9 +627,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|_oneMember
 annotation|@
 name|DefaultInput
-DECL|field|_oneMember
 name|String
 name|_oneMember
 decl_stmt|;
@@ -808,7 +808,7 @@ name|auditService
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddMembers (Provider<IdentifiedUser> self, AccountManager accountManager, AuthConfig authConfig, AccountsCollection accounts, AccountResolver accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, Provider<ReviewDb> db, AuditService auditService)
+DECL|method|AddMembers ( Provider<IdentifiedUser> self, AccountManager accountManager, AuthConfig authConfig, AccountsCollection accounts, AccountResolver accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, Provider<ReviewDb> db, AuditService auditService)
 name|AddMembers
 parameter_list|(
 name|Provider
@@ -1551,7 +1551,7 @@ DECL|class|Input
 specifier|static
 class|class
 name|Input
-block|{     }
+block|{}
 DECL|field|put
 specifier|private
 specifier|final

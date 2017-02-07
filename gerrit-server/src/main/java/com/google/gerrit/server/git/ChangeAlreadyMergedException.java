@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Indicates that the change or commit is already in the source tree.  */
+comment|/** Indicates that the change or commit is already in the source tree. */
 end_comment
 
 begin_class

@@ -140,6 +140,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -179,26 +199,6 @@ operator|.
 name|util
 operator|.
 name|FS
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -275,7 +275,7 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|InitFlags (final SitePaths site, final SecureStore secureStore, @InstallPlugins final List<String> installPlugins, @InstallAllPlugins final Boolean installAllPlugins)
+DECL|method|InitFlags ( final SitePaths site, final SecureStore secureStore, @InstallPlugins final List<String> installPlugins, @InstallAllPlugins final Boolean installAllPlugins)
 specifier|public
 name|InitFlags
 parameter_list|(

@@ -265,7 +265,7 @@ DECL|method|Units ()
 specifier|private
 name|Units
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|enum|FieldOrdering
 specifier|public
@@ -276,7 +276,7 @@ comment|/** Default ordering places fields at end of the parent metric name. */
 DECL|enumConstant|AT_END
 name|AT_END
 block|,
-comment|/**      * Splits the metric name by inserting field values before the last '/' in      * the metric name. For example {@code "plugins/replication/push_latency"}      * with a {@code Field.ofString("remote")} will create submetrics named      * {@code "plugins/replication/some-server/push_latency"}.      */
+comment|/**      * Splits the metric name by inserting field values before the last '/' in the metric name. For      * example {@code "plugins/replication/push_latency"} with a {@code Field.ofString("remote")}      * will create submetrics named {@code "plugins/replication/some-server/push_latency"}.      */
 DECL|enumConstant|PREFIX_FIELDS_BASENAME
 name|PREFIX_FIELDS_BASENAME
 block|;   }
@@ -291,7 +291,7 @@ name|String
 argument_list|>
 name|annotations
 decl_stmt|;
-comment|/**    * Describe a metric.    *    * @param helpText a short one-sentence string explaining the values captured    *        by the metric. This may be made available to administrators as    *        documentation in the reporting tools.    */
+comment|/**    * Describe a metric.    *    * @param helpText a short one-sentence string explaining the values captured by the metric. This    *     may be made available to administrators as documentation in the reporting tools.    */
 DECL|method|Description (String helpText)
 specifier|public
 name|Description
@@ -319,7 +319,7 @@ name|helpText
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Set unit used to describe the value.    *    * @param unitName name of the unit, e.g. "requests", "seconds", etc.    * @return this    */
+comment|/**    * Set unit used to describe the value.    *    * @param unitName name of the unit, e.g. "requests", "seconds", etc.    * @return this    */
 DECL|method|setUnit (String unitName)
 specifier|public
 name|Description
@@ -342,7 +342,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Mark the value as constant for the life of this process. Typically used for    * software versions, command line arguments, etc. that cannot change without    * a process restart.    *    * @return this    */
+comment|/**    * Mark the value as constant for the life of this process. Typically used for software versions,    * command line arguments, etc. that cannot change without a process restart.    *    * @return this    */
 DECL|method|setConstant ()
 specifier|public
 name|Description
@@ -362,7 +362,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Indicates the metric may be usefully interpreted as a count over short    * periods of time, such as request arrival rate. May only be applied to a    * {@link Counter0}.    *    * @return this    */
+comment|/**    * Indicates the metric may be usefully interpreted as a count over short periods of time, such as    * request arrival rate. May only be applied to a {@link Counter0}.    *    * @return this    */
 DECL|method|setRate ()
 specifier|public
 name|Description
@@ -382,7 +382,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Instantaneously sampled value that may increase or decrease at a later    * time. Memory allocated or open network connections are examples of gauges.    *    * @return this    */
+comment|/**    * Instantaneously sampled value that may increase or decrease at a later time. Memory allocated    * or open network connections are examples of gauges.    *    * @return this    */
 DECL|method|setGauge ()
 specifier|public
 name|Description
@@ -402,7 +402,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Indicates the metric accumulates over the lifespan of the process. A    * {@link Counter0} like total requests handled accumulates over the process    * and should be {@code setCumulative()}.    *    * @return this    */
+comment|/**    * Indicates the metric accumulates over the lifespan of the process. A {@link Counter0} like    * total requests handled accumulates over the process and should be {@code setCumulative()}.    *    * @return this    */
 DECL|method|setCumulative ()
 specifier|public
 name|Description

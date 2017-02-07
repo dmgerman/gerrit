@@ -308,6 +308,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -329,26 +349,6 @@ operator|.
 name|args4j
 operator|.
 name|Option
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -397,7 +397,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuggestChangeReviewers (AccountVisibility av, GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, Provider<CurrentUser> self, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil)
+DECL|method|SuggestChangeReviewers ( AccountVisibility av, GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, Provider<CurrentUser> self, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil)
 name|SuggestChangeReviewers
 parameter_list|(
 name|AccountVisibility

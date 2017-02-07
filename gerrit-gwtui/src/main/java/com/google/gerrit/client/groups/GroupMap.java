@@ -266,7 +266,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|suggestAccountGroupForProject (String project, String query, int limit, AsyncCallback<GroupMap> cb)
+DECL|method|suggestAccountGroupForProject ( String project, String query, int limit, AsyncCallback<GroupMap> cb)
 specifier|public
 specifier|static
 name|void
@@ -458,7 +458,7 @@ DECL|method|GroupMap ()
 specifier|protected
 name|GroupMap
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

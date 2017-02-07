@@ -425,7 +425,7 @@ name|select
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getCommands ( DownloadSchemeInfo schemeInfo)
+DECL|method|getCommands (DownloadSchemeInfo schemeInfo)
 specifier|protected
 specifier|abstract
 name|List

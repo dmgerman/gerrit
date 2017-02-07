@@ -85,7 +85,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Exception that occurs during a validation step before merging changes.  *<p>  * Used by {@link MergeValidationListener}s provided by plugins. Messages should  * be considered human-readable.  */
+comment|/**  * Exception that occurs during a validation step before merging changes.  *  *<p>Used by {@link MergeValidationListener}s provided by plugins. Messages should be considered  * human-readable.  */
 end_comment
 
 begin_class

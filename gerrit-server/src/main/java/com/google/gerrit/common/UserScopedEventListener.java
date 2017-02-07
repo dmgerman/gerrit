@@ -95,7 +95,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Allows to listen to events visible to the specified user. To listen to events  * without user visibility restrictions, use {@link EventListener}.  */
+comment|/**  * Allows to listen to events visible to the specified user. To listen to events without user  * visibility restrictions, use {@link EventListener}.  */
 end_comment
 
 begin_interface

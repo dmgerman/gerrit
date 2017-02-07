@@ -260,6 +260,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|time
+operator|.
+name|Instant
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -311,16 +321,6 @@ operator|.
 name|query
 operator|.
 name|QueryBuilders
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|time
-operator|.
-name|Instant
 import|;
 end_import
 

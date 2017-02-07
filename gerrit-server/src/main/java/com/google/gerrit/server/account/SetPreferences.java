@@ -452,48 +452,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|RepositoryNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -531,6 +489,48 @@ operator|.
 name|Map
 operator|.
 name|Entry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|RepositoryNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -598,7 +598,7 @@ name|downloadSchemes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetPreferences (Provider<CurrentUser> self, AccountCache cache, GeneralPreferencesLoader loader, Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllUsersName allUsersName, DynamicMap<DownloadScheme> downloadSchemes)
+DECL|method|SetPreferences ( Provider<CurrentUser> self, AccountCache cache, GeneralPreferencesLoader loader, Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllUsersName allUsersName, DynamicMap<DownloadScheme> downloadSchemes)
 name|SetPreferences
 parameter_list|(
 name|Provider
@@ -1016,7 +1016,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|storeMyChangeTableColumns (VersionedAccountPreferences prefs, List<String> changeTable)
+DECL|method|storeMyChangeTableColumns ( VersionedAccountPreferences prefs, List<String> changeTable)
 specifier|public
 specifier|static
 name|void
@@ -1181,7 +1181,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|storeUrlAliases (VersionedAccountPreferences prefs, Map<String, String> urlAliases)
+DECL|method|storeUrlAliases ( VersionedAccountPreferences prefs, Map<String, String> urlAliases)
 specifier|public
 specifier|static
 name|void

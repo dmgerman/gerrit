@@ -66,6 +66,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Reader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -124,28 +144,8 @@ name|NormalizeCharMap
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_comment
-comment|/**  * This analyzer can be used to provide custom char mappings.  *  *<p>Example usage:  *  *<pre class="prettyprint">  * {@code  * Map<String,String> customMapping = new HashMap<>();  * customMapping.put("_", " ");  * customMapping.put(".", " ");  *  * CustomMappingAnalyzer analyzer =  *   new CustomMappingAnalyzer(new StandardAnalyzer(version), customMapping);  * }  *</pre>  */
+comment|/**  * This analyzer can be used to provide custom char mappings.  *  *<p>Example usage:  *  *<pre class="prettyprint">{@code  * Map<String,String> customMapping = new HashMap<>();  * customMapping.put("_", " ");  * customMapping.put(".", " ");  *  * CustomMappingAnalyzer analyzer =  *   new CustomMappingAnalyzer(new StandardAnalyzer(version), customMapping);  * }</pre>  */
 end_comment
 
 begin_class

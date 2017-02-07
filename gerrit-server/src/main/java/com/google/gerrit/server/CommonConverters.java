@@ -82,6 +82,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -94,18 +104,8 @@ name|PersonIdent
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
 begin_comment
-comment|/**  * Converters to classes in {@code com.google.gerrit.extensions.common}.  *<p>  * The server frequently needs to convert internal types to types exposed in the  * extension API, but the converters themselves are not part of this API. This  * class contains such converters as static utility methods.  */
+comment|/**  * Converters to classes in {@code com.google.gerrit.extensions.common}.  *  *<p>The server frequently needs to convert internal types to types exposed in the extension API,  * but the converters themselves are not part of this API. This class contains such converters as  * static utility methods.  */
 end_comment
 
 begin_class
@@ -182,7 +182,7 @@ DECL|method|CommonConverters ()
 specifier|private
 name|CommonConverters
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Describes the submit type for a change.  */
+comment|/** Describes the submit type for a change. */
 end_comment
 
 begin_class
@@ -101,7 +101,7 @@ comment|/** The type was computed successfully */
 DECL|enumConstant|OK
 name|OK
 block|,
-comment|/** An internal server error occurred preventing computation.      *<p>      * Additional detail may be available in {@link SubmitTypeRecord#errorMessage}      */
+comment|/**      * An internal server error occurred preventing computation.      *      *<p>Additional detail may be available in {@link SubmitTypeRecord#errorMessage}      */
 DECL|enumConstant|RULE_ERROR
 name|RULE_ERROR
 block|}
@@ -169,7 +169,7 @@ specifier|final
 name|SubmitType
 name|type
 decl_stmt|;
-comment|/**    * Submit type of the record; always null if {@link #status} is {@code OK}.    */
+comment|/** Submit type of the record; always null if {@link #status} is {@code OK}. */
 DECL|field|errorMessage
 specifier|public
 specifier|final

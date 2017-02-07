@@ -132,6 +132,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -186,18 +196,8 @@ name|ReceivePack
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
 begin_comment
-comment|/**  * Pre-receive hook to check signed pushes.  *<p>  * If configured, prior to processing any push using  * {@link com.google.gerrit.server.git.ReceiveCommits}, requires that any push  * certificate present must be valid.  */
+comment|/**  * Pre-receive hook to check signed pushes.  *  *<p>If configured, prior to processing any push using {@link  * com.google.gerrit.server.git.ReceiveCommits}, requires that any push certificate present must be  * valid.  */
 end_comment
 
 begin_class
@@ -276,7 +276,7 @@ DECL|method|Required ()
 specifier|private
 name|Required
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|field|user
 specifier|private

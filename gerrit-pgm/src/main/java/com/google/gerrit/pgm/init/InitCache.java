@@ -297,7 +297,7 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitCache (final ConsoleUI ui, final InitFlags flags, final SitePaths site, final Section.Factory sections)
+DECL|method|InitCache ( final ConsoleUI ui, final InitFlags flags, final SitePaths site, final Section.Factory sections)
 name|InitCache
 parameter_list|(
 specifier|final

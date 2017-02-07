@@ -612,54 +612,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|IO
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|RawParseUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -967,6 +919,54 @@ operator|.
 name|http
 operator|.
 name|HttpServletResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|IO
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|RawParseUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -2671,7 +2671,7 @@ name|lastUpdateTime
 argument_list|)
 return|;
 block|}
-DECL|method|appendEntriesSection (PluginContentScanner scanner, List<PluginEntry> entries, String sectionTitle, StringBuilder md, String prefix, int nameOffset)
+DECL|method|appendEntriesSection ( PluginContentScanner scanner, List<PluginEntry> entries, String sectionTitle, StringBuilder md, String prefix, int nameOffset)
 specifier|private
 name|void
 name|appendEntriesSection
@@ -2887,7 +2887,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|sendAutoIndex (PluginContentScanner scanner, final String prefix, final String pluginName, PluginResourceKey cacheKey, HttpServletResponse res,long lastModifiedTime)
+DECL|method|sendAutoIndex ( PluginContentScanner scanner, final String prefix, final String pluginName, PluginResourceKey cacheKey, HttpServletResponse res, long lastModifiedTime)
 specifier|private
 name|void
 name|sendAutoIndex
@@ -3547,7 +3547,7 @@ name|lastModifiedTime
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sendMarkdownAsHtml (String md, String pluginName, PluginResourceKey cacheKey, HttpServletResponse res, long lastModifiedTime)
+DECL|method|sendMarkdownAsHtml ( String md, String pluginName, PluginResourceKey cacheKey, HttpServletResponse res, long lastModifiedTime)
 specifier|private
 name|void
 name|sendMarkdownAsHtml
@@ -4154,7 +4154,7 @@ name|charEnc
 argument_list|)
 return|;
 block|}
-DECL|method|findSource ( PluginContentScanner scanner, String file)
+DECL|method|findSource (PluginContentScanner scanner, String file)
 specifier|private
 specifier|static
 name|Optional
@@ -4217,7 +4217,7 @@ name|empty
 argument_list|()
 return|;
 block|}
-DECL|method|sendMarkdownAsHtml (PluginContentScanner scanner, PluginEntry entry, String pluginName, PluginResourceKey key, HttpServletResponse res)
+DECL|method|sendMarkdownAsHtml ( PluginContentScanner scanner, PluginEntry entry, String pluginName, PluginResourceKey key, HttpServletResponse res)
 specifier|private
 name|void
 name|sendMarkdownAsHtml
@@ -4356,7 +4356,7 @@ name|time
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sendResource (PluginContentScanner scanner, PluginEntry entry, PluginResourceKey key, HttpServletResponse res)
+DECL|method|sendResource ( PluginContentScanner scanner, PluginEntry entry, PluginResourceKey key, HttpServletResponse res)
 specifier|private
 name|void
 name|sendResource
@@ -4686,7 +4686,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|sendJsPlugin (Plugin plugin, PluginResourceKey key, HttpServletRequest req, HttpServletResponse res)
+DECL|method|sendJsPlugin ( Plugin plugin, PluginResourceKey key, HttpServletRequest req, HttpServletResponse res)
 specifier|private
 name|void
 name|sendJsPlugin

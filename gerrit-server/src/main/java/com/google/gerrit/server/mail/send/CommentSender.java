@@ -410,40 +410,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -574,8 +540,42 @@ name|Collectors
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/** Send comments, after the author of them hit used Publish Comments in the UI.  */
+comment|/** Send comments, after the author of them hit used Publish Comments in the UI. */
 end_comment
 
 begin_class
@@ -656,7 +656,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/**      * @return a web link to the given patch set and file.      */
+comment|/** @return a web link to the given patch set and file. */
 DECL|method|getLink ()
 specifier|public
 name|String
@@ -732,7 +732,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * @return A title for the group, i.e. "Commit Message", "Merge List", or      * "File [[filename]]".      */
+comment|/**      * @return A title for the group, i.e. "Commit Message", "Merge List", or "File [[filename]]".      */
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -821,7 +821,7 @@ name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommentSender (EmailArguments ea, CommentsUtil commentsUtil, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|CommentSender ( EmailArguments ea, CommentsUtil commentsUtil, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|CommentSender
 parameter_list|(
@@ -1123,7 +1123,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * No longer used outside Velocity. Remove this method when VTL support is    * removed.    */
+comment|/** No longer used outside Velocity. Remove this method when VTL support is removed. */
 annotation|@
 name|Deprecated
 DECL|method|hasInlineComments ()
@@ -1140,7 +1140,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**    * No longer used outside Velocity. Remove this method when VTL support is    * removed.    */
+comment|/** No longer used outside Velocity. Remove this method when VTL support is removed. */
 annotation|@
 name|Deprecated
 DECL|method|getInlineComments ()
@@ -1156,7 +1156,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**    * No longer used outside Velocity. Remove this method when VTL support is    * removed.    */
+comment|/** No longer used outside Velocity. Remove this method when VTL support is removed. */
 annotation|@
 name|Deprecated
 DECL|method|getInlineComments (int lines)
@@ -1278,8 +1278,8 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * @return a list of FileCommentGroup objects representing the inline comments    * grouped by the file.    */
-DECL|method|getGroupedInlineComments ( Repository repo)
+comment|/**    * @return a list of FileCommentGroup objects representing the inline comments grouped by the    *     file.    */
+DECL|method|getGroupedInlineComments (Repository repo)
 specifier|private
 name|List
 argument_list|<
@@ -1549,10 +1549,10 @@ return|return
 name|groups
 return|;
 block|}
-comment|/**    * No longer used except for Velocity. Remove this method when VTL support is    * removed.    */
+comment|/** No longer used except for Velocity. Remove this method when VTL support is removed. */
 annotation|@
 name|Deprecated
-DECL|method|appendComment (StringBuilder out, int contextLines, PatchFile currentFileData, Comment comment)
+DECL|method|appendComment ( StringBuilder out, int contextLines, PatchFile currentFileData, Comment comment)
 specifier|private
 name|void
 name|appendComment
@@ -1651,7 +1651,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * No longer used except for Velocity. Remove this method when VTL support is    * removed.    */
+comment|/** No longer used except for Velocity. Remove this method when VTL support is removed. */
 annotation|@
 name|Deprecated
 DECL|method|appendRangedComment (StringBuilder out, PatchFile fileData, Comment comment)
@@ -1854,7 +1854,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**    * @return the lines of file content in fileData that are encompassed by range    * on the given side.    */
+comment|/**    * @return the lines of file content in fileData that are encompassed by range on the given side.    */
 DECL|method|getLinesByRange (Comment.Range range, PatchFile fileData, short side)
 specifier|private
 name|List
@@ -2046,10 +2046,10 @@ return|return
 name|lines
 return|;
 block|}
-comment|/**    * No longer used except for Velocity. Remove this method when VTL support is    * removed.    */
+comment|/** No longer used except for Velocity. Remove this method when VTL support is removed. */
 annotation|@
 name|Deprecated
-DECL|method|appendLineComment (StringBuilder out, int contextLines, PatchFile currentFileData, Comment comment)
+DECL|method|appendLineComment ( StringBuilder out, int contextLines, PatchFile currentFileData, Comment comment)
 specifier|private
 name|void
 name|appendLineComment
@@ -2270,7 +2270,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * No longer used except for Velocity. Remove this method when VTL support is    * removed.    */
+comment|/** No longer used except for Velocity. Remove this method when VTL support is removed. */
 annotation|@
 name|Deprecated
 DECL|method|appendFileLine (StringBuilder cmts, PatchFile fileData, short side, int line)
@@ -2331,7 +2331,7 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * No longer used except for Velocity. Remove this method when VTL support is    * removed.    */
+comment|/** No longer used except for Velocity. Remove this method when VTL support is removed. */
 annotation|@
 name|Deprecated
 DECL|method|appendQuotedParent (StringBuilder out, Comment child)
@@ -2390,7 +2390,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Get the parent comment of a given comment.    * @param child the comment with a potential parent comment.    * @return an optional comment that will be  present if the given comment has    * a parent, and is empty if it does not.    */
+comment|/**    * Get the parent comment of a given comment.    *    * @param child the comment with a potential parent comment.    * @return an optional comment that will be present if the given comment has a parent, and is    *     empty if it does not.    */
 DECL|method|getParent (Comment child)
 specifier|private
 name|Optional
@@ -2495,7 +2495,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Retrieve the file lines referred to by a comment.    * @param comment The comment that refers to some file contents. The comment    *     may be a line comment or a ranged comment.    * @param fileData The file on which the comment appears.    * @return file contents referred to by the comment. If the comment is a line    *     comment, the result will be a list of one string. Otherwise it will be    *     a list of one or more strings.    */
+comment|/**    * Retrieve the file lines referred to by a comment.    *    * @param comment The comment that refers to some file contents. The comment may be a line comment    *     or a ranged comment.    * @param fileData The file on which the comment appears.    * @return file contents referred to by the comment. If the comment is a line comment, the result    *     will be a list of one string. Otherwise it will be a list of one or more strings.    */
 DECL|method|getLinesOfComment (Comment comment, PatchFile fileData)
 specifier|private
 name|List
@@ -2589,7 +2589,7 @@ return|return
 name|lines
 return|;
 block|}
-comment|/**    * @return a shortened version of the given comment's message. Will be    * shortened to 75 characters or the first line, whichever is shorter.    */
+comment|/**    * @return a shortened version of the given comment's message. Will be shortened to 75 characters    *     or the first line, whichever is shorter.    */
 DECL|method|getShortenedCommentMessage (Comment comment)
 specifier|private
 name|String
@@ -2664,8 +2664,8 @@ return|return
 name|msg
 return|;
 block|}
-comment|/**    * @return grouped inline comment data mapped to data structures that are    * suitable for passing into Soy.    */
-DECL|method|getCommentGroupsTemplateData ( Repository repo)
+comment|/**    * @return grouped inline comment data mapped to data structures that are suitable for passing    *     into Soy.    */
+DECL|method|getCommentGroupsTemplateData (Repository repo)
 specifier|private
 name|List
 argument_list|<
@@ -3165,7 +3165,7 @@ return|return
 name|commentGroups
 return|;
 block|}
-DECL|method|commentBlocksToSoyData ( List<CommentFormatter.Block> blocks)
+DECL|method|commentBlocksToSoyData (List<CommentFormatter.Block> blocks)
 specifier|private
 name|List
 argument_list|<

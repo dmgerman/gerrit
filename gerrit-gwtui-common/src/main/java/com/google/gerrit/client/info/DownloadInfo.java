@@ -294,7 +294,7 @@ DECL|method|DownloadInfo ()
 specifier|protected
 name|DownloadInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|DownloadSchemeInfo
 specifier|public
 specifier|static
@@ -662,7 +662,7 @@ DECL|method|DownloadSchemeInfo ()
 specifier|protected
 name|DownloadSchemeInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|DownloadCommandInfo
 specifier|public

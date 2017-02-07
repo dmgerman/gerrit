@@ -534,7 +534,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|putGpgKeys (AccountResource account, List<String> add, List<String> delete)
+DECL|method|putGpgKeys ( AccountResource account, List<String> add, List<String> delete)
 specifier|public
 name|Map
 argument_list|<

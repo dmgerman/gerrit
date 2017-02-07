@@ -73,12 +73,12 @@ enum|enum
 name|Encryption
 block|{
 DECL|enumConstant|NONE
-DECL|enumConstant|SSL
-DECL|enumConstant|TLS
 name|NONE
 block|,
+DECL|enumConstant|SSL
 name|SSL
 block|,
+DECL|enumConstant|TLS
 name|TLS
 block|}
 end_enum

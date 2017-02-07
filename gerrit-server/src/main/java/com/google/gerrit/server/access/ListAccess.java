@@ -194,18 +194,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -251,6 +239,18 @@ operator|.
 name|util
 operator|.
 name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
 import|;
 end_import
 

@@ -201,7 +201,7 @@ DECL|method|NameKey ()
 specifier|protected
 name|NameKey
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|NameKey (final String n)
 specifier|public
 name|NameKey
@@ -421,7 +421,7 @@ DECL|method|Project ()
 specifier|protected
 name|Project
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|Project (Project.NameKey nameKey)
 specifier|public
 name|Project
@@ -677,7 +677,7 @@ return|return
 name|createNewChangeForAllNotInTarget
 return|;
 block|}
-DECL|method|setCreateNewChangeForAllNotInTarget ( InheritableBoolean useAllNotInTarget)
+DECL|method|setCreateNewChangeForAllNotInTarget (InheritableBoolean useAllNotInTarget)
 specifier|public
 name|void
 name|setCreateNewChangeForAllNotInTarget
@@ -966,7 +966,7 @@ operator|.
 name|createNewChangeForAllNotInTarget
 expr_stmt|;
 block|}
-comment|/**    * Returns the name key of the parent project.    *    * @return name key of the parent project, {@code null} if this project    *         is the wild project, {@code null} or the name key of the wild    *         project if this project is a direct child of the wild project    */
+comment|/**    * Returns the name key of the parent project.    *    * @return name key of the parent project, {@code null} if this project is the wild project,    *     {@code null} or the name key of the wild project if this project is a direct child of the    *     wild project    */
 DECL|method|getParent ()
 specifier|public
 name|Project
@@ -979,7 +979,7 @@ return|return
 name|parent
 return|;
 block|}
-comment|/**    * Returns the name key of the parent project.    *    * @param allProjectsName name key of the wild project    * @return name key of the parent project, {@code null} if this project    *         is the wild project    */
+comment|/**    * Returns the name key of the parent project.    *    * @param allProjectsName name key of the wild project    * @return name key of the parent project, {@code null} if this project is the wild project    */
 DECL|method|getParent (final Project.NameKey allProjectsName)
 specifier|public
 name|Project

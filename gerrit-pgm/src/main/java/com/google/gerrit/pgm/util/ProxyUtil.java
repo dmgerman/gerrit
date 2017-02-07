@@ -174,20 +174,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|CachedAuthenticator
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|net
@@ -206,13 +192,27 @@ name|URL
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|CachedAuthenticator
+import|;
+end_import
+
 begin_class
 DECL|class|ProxyUtil
 specifier|final
 class|class
 name|ProxyUtil
 block|{
-comment|/**    * Configure the JRE's standard HTTP based on {@code http_proxy}.    *<p>    * The popular libcurl library honors the {@code http_proxy} environment    * variable as a means of specifying an HTTP proxy for requests made behind a    * firewall. This is not natively recognized by the JRE, so this method can be    * used by command line utilities to configure the JRE before the first    * request is sent.    *    * @throws MalformedURLException the value in {@code http_proxy} is    *         unsupportable.    */
+comment|/**    * Configure the JRE's standard HTTP based on {@code http_proxy}.    *    *<p>The popular libcurl library honors the {@code http_proxy} environment variable as a means of    * specifying an HTTP proxy for requests made behind a firewall. This is not natively recognized    * by the JRE, so this method can be used by command line utilities to configure the JRE before    * the first request is sent.    *    * @throws MalformedURLException the value in {@code http_proxy} is unsupportable.    */
 DECL|method|configureHttpProxy ()
 specifier|static
 name|void
@@ -427,7 +427,7 @@ block|}
 DECL|method|ProxyUtil ()
 name|ProxyUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

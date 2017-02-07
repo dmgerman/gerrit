@@ -66,32 +66,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|bouncycastle
-operator|.
-name|jce
-operator|.
-name|provider
-operator|.
-name|BouncyCastleProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|bouncycastle
-operator|.
-name|openpgp
-operator|.
-name|PGPPublicKey
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -124,6 +98,32 @@ name|Security
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|bouncycastle
+operator|.
+name|jce
+operator|.
+name|provider
+operator|.
+name|BouncyCastleProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|bouncycastle
+operator|.
+name|openpgp
+operator|.
+name|PGPPublicKey
+import|;
+end_import
+
 begin_comment
 comment|/** Utility methods for Bouncy Castle. */
 end_comment
@@ -134,7 +134,7 @@ specifier|public
 class|class
 name|BouncyCastleUtil
 block|{
-comment|/**    * Check for Bouncy Castle PGP support.    *<p>    * As a side effect, adds {@link BouncyCastleProvider} as a security provider.    *    * @return whether Bouncy Castle PGP support is enabled.    */
+comment|/**    * Check for Bouncy Castle PGP support.    *    *<p>As a side effect, adds {@link BouncyCastleProvider} as a security provider.    *    * @return whether Bouncy Castle PGP support is enabled.    */
 DECL|method|havePGP ()
 specifier|public
 specifier|static
@@ -258,7 +258,7 @@ DECL|method|BouncyCastleUtil ()
 specifier|private
 name|BouncyCastleUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

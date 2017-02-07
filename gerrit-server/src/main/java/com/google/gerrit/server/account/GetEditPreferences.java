@@ -248,6 +248,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -288,16 +298,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -334,7 +334,7 @@ name|gitMgr
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetEditPreferences (Provider<CurrentUser> self, AllUsersName allUsersName, GitRepositoryManager gitMgr)
+DECL|method|GetEditPreferences ( Provider<CurrentUser> self, AllUsersName allUsersName, GitRepositoryManager gitMgr)
 name|GetEditPreferences
 parameter_list|(
 name|Provider
@@ -438,7 +438,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|readFromGit (Account.Id id, GitRepositoryManager gitMgr, AllUsersName allUsersName, EditPreferencesInfo in)
+DECL|method|readFromGit ( Account.Id id, GitRepositoryManager gitMgr, AllUsersName allUsersName, EditPreferencesInfo in)
 specifier|static
 name|EditPreferencesInfo
 name|readFromGit

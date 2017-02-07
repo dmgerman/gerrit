@@ -106,9 +106,9 @@ name|PROFILE_SCREEN_BOTTOM
 block|,
 comment|/* ProjectInfoScreen */
 DECL|enumConstant|PROJECT_INFO_SCREEN_TOP
-DECL|enumConstant|PROJECT_INFO_SCREEN_BOTTOM
 name|PROJECT_INFO_SCREEN_TOP
 block|,
+DECL|enumConstant|PROJECT_INFO_SCREEN_BOTTOM
 name|PROJECT_INFO_SCREEN_BOTTOM
 block|;
 DECL|enum|Key
@@ -117,15 +117,15 @@ enum|enum
 name|Key
 block|{
 DECL|enumConstant|ACCOUNT_INFO
-DECL|enumConstant|CHANGE_INFO
-DECL|enumConstant|PROJECT_NAME
-DECL|enumConstant|REVISION_INFO
 name|ACCOUNT_INFO
 block|,
+DECL|enumConstant|CHANGE_INFO
 name|CHANGE_INFO
 block|,
+DECL|enumConstant|PROJECT_NAME
 name|PROJECT_NAME
 block|,
+DECL|enumConstant|REVISION_INFO
 name|REVISION_INFO
 block|}
 block|}

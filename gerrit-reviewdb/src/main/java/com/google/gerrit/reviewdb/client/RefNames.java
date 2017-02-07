@@ -224,7 +224,7 @@ name|REFS_SEQUENCES
 init|=
 literal|"refs/sequences/"
 decl_stmt|;
-comment|/**    * Prefix applied to merge commit base nodes.    *<p>    * References in this directory should take the form    * {@code refs/cache-automerge/xx/yyyy...} where xx is    * the first two digits of the merge commit's object    * name, and yyyyy... is the remaining 38. The reference    * should point to a treeish that is the automatic merge    * result of the merge commit's parents.    */
+comment|/**    * Prefix applied to merge commit base nodes.    *    *<p>References in this directory should take the form {@code refs/cache-automerge/xx/yyyy...}    * where xx is the first two digits of the merge commit's object name, and yyyyy... is the    * remaining 38. The reference should point to a treeish that is the automatic merge result of the    * merge commit's parents.    */
 DECL|field|REFS_CACHE_AUTOMERGE
 specifier|public
 specifier|static
@@ -852,7 +852,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns reference prefix for this change edit with sharded user and    * change number: refs/users/UU/UUUU/edit-CCCC/.    *    * @param accountId account id    * @param changeId change number    * @return reference prefix for this change edit    */
+comment|/**    * Returns reference prefix for this change edit with sharded user and change number:    * refs/users/UU/UUUU/edit-CCCC/.    *    * @param accountId account id    * @param changeId change number    * @return reference prefix for this change edit    */
 DECL|method|refsEditPrefix (Account.Id accountId, Change.Id changeId)
 specifier|public
 specifier|static
@@ -1281,7 +1281,7 @@ DECL|method|RefNames ()
 specifier|private
 name|RefNames
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

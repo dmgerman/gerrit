@@ -350,7 +350,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AccountQueryProcessor (Provider<CurrentUser> userProvider, Metrics metrics, IndexConfig indexConfig, AccountIndexCollection indexes, AccountIndexRewriter rewriter, AccountControl.Factory accountControlFactory)
+DECL|method|AccountQueryProcessor ( Provider<CurrentUser> userProvider, Metrics metrics, IndexConfig indexConfig, AccountIndexCollection indexes, AccountIndexRewriter rewriter, AccountControl.Factory accountControlFactory)
 specifier|protected
 name|AccountQueryProcessor
 parameter_list|(
@@ -406,7 +406,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|enforceVisibility ( Predicate<AccountState> pred)
+DECL|method|enforceVisibility (Predicate<AccountState> pred)
 specifier|protected
 name|Predicate
 argument_list|<

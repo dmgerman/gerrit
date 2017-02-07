@@ -272,18 +272,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Argument
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -299,6 +287,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Argument
 import|;
 end_import
 
@@ -325,16 +325,16 @@ name|KillCommand
 extends|extends
 name|SshCommand
 block|{
+DECL|field|tasksCollection
 annotation|@
 name|Inject
-DECL|field|tasksCollection
 specifier|private
 name|TasksCollection
 name|tasksCollection
 decl_stmt|;
+DECL|field|deleteTask
 annotation|@
 name|Inject
-DECL|field|deleteTask
 specifier|private
 name|DeleteTask
 name|deleteTask

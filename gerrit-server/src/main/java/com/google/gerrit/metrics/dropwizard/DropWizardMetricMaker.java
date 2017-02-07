@@ -122,6 +122,30 @@ begin_import
 import|import
 name|com
 operator|.
+name|codahale
+operator|.
+name|metrics
+operator|.
+name|Metric
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|codahale
+operator|.
+name|metrics
+operator|.
+name|MetricRegistry
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|google
 operator|.
 name|common
@@ -557,30 +581,6 @@ operator|.
 name|inject
 operator|.
 name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|codahale
-operator|.
-name|metrics
-operator|.
-name|Metric
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|codahale
-operator|.
-name|metrics
-operator|.
-name|MetricRegistry
 import|;
 end_import
 
@@ -1513,7 +1513,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newTimer (String name, Description desc, Field<F1> field1, Field<F2> field2)
+DECL|method|newTimer ( String name, Description desc, Field<F1> field1, Field<F2> field2)
 specifier|public
 specifier|synchronized
 parameter_list|<
@@ -1826,7 +1826,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newHistogram (String name, Description desc, Field<F1> field1)
+DECL|method|newHistogram ( String name, Description desc, Field<F1> field1)
 specifier|public
 specifier|synchronized
 parameter_list|<
@@ -1902,7 +1902,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newHistogram (String name, Description desc, Field<F1> field1, Field<F2> field2)
+DECL|method|newHistogram ( String name, Description desc, Field<F1> field1, Field<F2> field2)
 specifier|public
 specifier|synchronized
 parameter_list|<

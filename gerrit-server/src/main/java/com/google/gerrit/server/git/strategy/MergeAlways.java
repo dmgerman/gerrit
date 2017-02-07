@@ -155,7 +155,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|buildOps ( Collection<CodeReviewCommit> toMerge)
+DECL|method|buildOps (Collection<CodeReviewCommit> toMerge)
 specifier|public
 name|List
 argument_list|<
@@ -292,7 +292,7 @@ return|return
 name|ops
 return|;
 block|}
-DECL|method|dryRun (SubmitDryRun.Arguments args, CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
+DECL|method|dryRun ( SubmitDryRun.Arguments args, CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|static
 name|boolean
 name|dryRun

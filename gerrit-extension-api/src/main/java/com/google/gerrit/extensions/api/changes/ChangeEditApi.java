@@ -159,7 +159,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An API for the change edit of a change. A change edit is similar to a patch  * set and will become one if it is published  * (by {@link #publish(PublishChangeEditInput)}). Whenever the descriptions  * below refer to files of a change edit, they actually refer to the files of  * the Git tree which is represented by the change edit. A change can have at  * most one change edit at each point in time.  */
+comment|/**  * An API for the change edit of a change. A change edit is similar to a patch set and will become  * one if it is published (by {@link #publish(PublishChangeEditInput)}). Whenever the descriptions  * below refer to files of a change edit, they actually refer to the files of the Git tree which is  * represented by the change edit. A change can have at most one change edit at each point in time.  */
 end_comment
 
 begin_interface
@@ -168,7 +168,7 @@ specifier|public
 interface|interface
 name|ChangeEditApi
 block|{
-comment|/**    * Retrieves details regarding the change edit.    *    * @return an {@code Optional} containing details about the change edit if it    * exists, or {@code Optional.empty()}    * @throws RestApiException if the change edit couldn't be retrieved    */
+comment|/**    * Retrieves details regarding the change edit.    *    * @return an {@code Optional} containing details about the change edit if it exists, or {@code    *     Optional.empty()}    * @throws RestApiException if the change edit couldn't be retrieved    */
 DECL|method|get ()
 name|Optional
 argument_list|<
@@ -179,7 +179,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Creates a new change edit. It has exactly the same Git tree as the current    * patch set of the change.    *    * @throws RestApiException if the change edit couldn't be created or a change    * edit already exists    */
+comment|/**    * Creates a new change edit. It has exactly the same Git tree as the current patch set of the    * change.    *    * @throws RestApiException if the change edit couldn't be created or a change edit already exists    */
 DECL|method|create ()
 name|void
 name|create
@@ -187,7 +187,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Deletes the change edit.    *    * @throws RestApiException if the change edit couldn't be deleted or a change    * edit wasn't present    */
+comment|/**    * Deletes the change edit.    *    * @throws RestApiException if the change edit couldn't be deleted or a change edit wasn't present    */
 DECL|method|delete ()
 name|void
 name|delete
@@ -195,7 +195,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Rebases the change edit on top of the latest patch set of this change.    *    * @throws RestApiException if the change edit couldn't be rebased or a change    * edit wasn't present    */
+comment|/**    * Rebases the change edit on top of the latest patch set of this change.    *    * @throws RestApiException if the change edit couldn't be rebased or a change edit wasn't present    */
 DECL|method|rebase ()
 name|void
 name|rebase
@@ -203,7 +203,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Publishes the change edit using default settings. See    * {@link #publish(PublishChangeEditInput)} for more details.    *    * @throws RestApiException if the change edit couldn't be published or a    * change edit wasn't present    */
+comment|/**    * Publishes the change edit using default settings. See {@link #publish(PublishChangeEditInput)}    * for more details.    *    * @throws RestApiException if the change edit couldn't be published or a change edit wasn't    *     present    */
 DECL|method|publish ()
 name|void
 name|publish
@@ -211,7 +211,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Publishes the change edit. Publishing means that the change edit is turned    * into a regular patch set of the change.    *    * @param publishChangeEditInput a {@code PublishChangeEditInput} specifying    * the options which should be applied    * @throws RestApiException if the change edit couldn't be published or a    * change edit wasn't present    */
+comment|/**    * Publishes the change edit. Publishing means that the change edit is turned into a regular patch    * set of the change.    *    * @param publishChangeEditInput a {@code PublishChangeEditInput} specifying the options which    *     should be applied    * @throws RestApiException if the change edit couldn't be published or a change edit wasn't    *     present    */
 DECL|method|publish (PublishChangeEditInput publishChangeEditInput)
 name|void
 name|publish
@@ -222,7 +222,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Retrieves the contents of the specified file from the change edit.    *    * @param filePath the path of the file    * @return an {@code Optional} containing the contents of the file as a    * {@code BinaryResult} if the file exists within the change edit, or    * {@code Optional.empty()}    * @throws RestApiException if the contents of the file couldn't be retrieved    * or a change edit wasn't present    */
+comment|/**    * Retrieves the contents of the specified file from the change edit.    *    * @param filePath the path of the file    * @return an {@code Optional} containing the contents of the file as a {@code BinaryResult} if    *     the file exists within the change edit, or {@code Optional.empty()}    * @throws RestApiException if the contents of the file couldn't be retrieved or a change edit    *     wasn't present    */
 DECL|method|getFile (String filePath)
 name|Optional
 argument_list|<
@@ -236,7 +236,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Renames a file of the change edit or moves the file to another directory.    * If the change edit doesn't exist, it will be created based on the current    * patch set of the change.    *    * @param oldFilePath the current file path    * @param newFilePath the desired file path    * @throws RestApiException if the file couldn't be renamed    */
+comment|/**    * Renames a file of the change edit or moves the file to another directory. If the change edit    * doesn't exist, it will be created based on the current patch set of the change.    *    * @param oldFilePath the current file path    * @param newFilePath the desired file path    * @throws RestApiException if the file couldn't be renamed    */
 DECL|method|renameFile (String oldFilePath, String newFilePath)
 name|void
 name|renameFile
@@ -250,7 +250,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Restores a file of the change edit to the state in which it was before the    * patch set on which the change edit is based. This includes the file content    * as well as the existence or non-existence of the file. If the change edit    * doesn't exist, it will be created based on the current patch set of the    * change.    *    * @param filePath the path of the file    * @throws RestApiException if the file couldn't be restored to its previous    * state    */
+comment|/**    * Restores a file of the change edit to the state in which it was before the patch set on which    * the change edit is based. This includes the file content as well as the existence or    * non-existence of the file. If the change edit doesn't exist, it will be created based on the    * current patch set of the change.    *    * @param filePath the path of the file    * @throws RestApiException if the file couldn't be restored to its previous state    */
 DECL|method|restoreFile (String filePath)
 name|void
 name|restoreFile
@@ -261,7 +261,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Modify the contents of the specified file of the change edit. If no content    * is provided, the content of the file is erased but the file isn't deleted.    * If the change edit doesn't exist, it will be created based on the current    * patch set of the change.    *    * @param filePath the path of the file which should be modified    * @param newContent the desired content of the file    * @throws RestApiException if the content of the file couldn't be modified    */
+comment|/**    * Modify the contents of the specified file of the change edit. If no content is provided, the    * content of the file is erased but the file isn't deleted. If the change edit doesn't exist, it    * will be created based on the current patch set of the change.    *    * @param filePath the path of the file which should be modified    * @param newContent the desired content of the file    * @throws RestApiException if the content of the file couldn't be modified    */
 DECL|method|modifyFile (String filePath, RawInput newContent)
 name|void
 name|modifyFile
@@ -275,7 +275,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Deletes the specified file from the change edit. If the change edit doesn't    * exist, it will be created based on the current patch set of the change.    *    * @param filePath the path fo the file which should be deleted    * @throws RestApiException if the file couldn't be deleted    */
+comment|/**    * Deletes the specified file from the change edit. If the change edit doesn't exist, it will be    * created based on the current patch set of the change.    *    * @param filePath the path fo the file which should be deleted    * @throws RestApiException if the file couldn't be deleted    */
 DECL|method|deleteFile (String filePath)
 name|void
 name|deleteFile
@@ -286,7 +286,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Retrieves the commit message of the change edit.    *    * @return the commit message of the change edit    * @throws RestApiException  if the commit message couldn't be retrieved or a    * change edit wasn't present    */
+comment|/**    * Retrieves the commit message of the change edit.    *    * @return the commit message of the change edit    * @throws RestApiException if the commit message couldn't be retrieved or a change edit wasn't    *     present    */
 DECL|method|getCommitMessage ()
 name|String
 name|getCommitMessage
@@ -294,7 +294,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Modifies the commit message of the change edit. If the change edit doesn't    * exist, it will be created based on the current patch set of the change.    *    * @param newCommitMessage the desired commit message    * @throws RestApiException if the commit message couldn't be modified    */
+comment|/**    * Modifies the commit message of the change edit. If the change edit doesn't exist, it will be    * created based on the current patch set of the change.    *    * @param newCommitMessage the desired commit message    * @throws RestApiException if the commit message couldn't be modified    */
 DECL|method|modifyCommitMessage (String newCommitMessage)
 name|void
 name|modifyCommitMessage
@@ -305,7 +305,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

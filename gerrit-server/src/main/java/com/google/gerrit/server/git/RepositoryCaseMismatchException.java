@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This exception is thrown if a project cannot be created because a project  * with the same name in a different case already exists. This can only happen  * if the OS has a case insensitive file system (e.g. Windows), because in this  * case the name for the git repository in the file system is already occupied  * by the existing project.  */
+comment|/**  * This exception is thrown if a project cannot be created because a project with the same name in a  * different case already exists. This can only happen if the OS has a case insensitive file system  * (e.g. Windows), because in this case the name for the git repository in the file system is  * already occupied by the existing project.  */
 end_comment
 
 begin_class
@@ -117,7 +117,7 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-comment|/**    * @param projectName name of the project that cannot be created    */
+comment|/** @param projectName name of the project that cannot be created */
 DECL|method|RepositoryCaseMismatchException (final Project.NameKey projectName)
 specifier|public
 name|RepositoryCaseMismatchException

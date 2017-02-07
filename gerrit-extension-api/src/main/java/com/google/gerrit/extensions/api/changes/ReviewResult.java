@@ -93,7 +93,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Result object representing the outcome of a review request.  */
+comment|/** Result object representing the outcome of a review request. */
 end_comment
 
 begin_class
@@ -102,10 +102,10 @@ specifier|public
 class|class
 name|ReviewResult
 block|{
-comment|/**    * Map of labels to values after the review was posted. Null if any    * reviewer additions were rejected.    */
+comment|/**    * Map of labels to values after the review was posted. Null if any reviewer additions were    * rejected.    */
+DECL|field|labels
 annotation|@
 name|Nullable
-DECL|field|labels
 specifier|public
 name|Map
 argument_list|<
@@ -115,10 +115,10 @@ name|Short
 argument_list|>
 name|labels
 decl_stmt|;
-comment|/**    * Map of account or group identifier to outcome of adding as a reviewer.    * Null if no reviewer additions were requested.    */
+comment|/**    * Map of account or group identifier to outcome of adding as a reviewer. Null if no reviewer    * additions were requested.    */
+DECL|field|reviewers
 annotation|@
 name|Nullable
-DECL|field|reviewers
 specifier|public
 name|Map
 argument_list|<

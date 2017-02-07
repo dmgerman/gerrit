@@ -145,7 +145,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation for interfaces that accept auto-registered implementations.  *<p>  * Interfaces that accept automatically registered implementations into their  * {@link DynamicSet} must be tagged with this annotation.  *<p>  * Plugins or extensions that implement an {@code @ExtensionPoint} interface  * should use the {@link Listen} annotation to automatically register.  *  * @see Listen  */
+comment|/**  * Annotation for interfaces that accept auto-registered implementations.  *  *<p>Interfaces that accept automatically registered implementations into their {@link DynamicSet}  * must be tagged with this annotation.  *  *<p>Plugins or extensions that implement an {@code @ExtensionPoint} interface should use the  * {@link Listen} annotation to automatically register.  *  * @see Listen  */
 end_comment
 
 begin_annotation_defn
@@ -169,7 +169,7 @@ DECL|annotation|ExtensionPoint
 specifier|public
 annotation_defn|@interface
 name|ExtensionPoint
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

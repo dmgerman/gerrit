@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * An authentication exception that is thrown when credentials are presented for  * an unknown user.  */
+comment|/**  * An authentication exception that is thrown when credentials are presented for an unknown user.  */
 end_comment
 
 begin_class
@@ -91,7 +91,7 @@ DECL|method|UnknownUserException ()
 specifier|public
 name|UnknownUserException
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|UnknownUserException (String msg)
 specifier|public
 name|UnknownUserException

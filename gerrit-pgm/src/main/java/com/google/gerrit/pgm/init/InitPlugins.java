@@ -364,7 +364,7 @@ name|JAR
 init|=
 literal|".jar"
 decl_stmt|;
-DECL|method|listPlugins (SitePaths site, PluginsDistribution pluginsDistribution)
+DECL|method|listPlugins ( SitePaths site, PluginsDistribution pluginsDistribution)
 specifier|public
 specifier|static
 name|List
@@ -393,7 +393,7 @@ name|pluginsDistribution
 argument_list|)
 return|;
 block|}
-DECL|method|listPluginsAndRemoveTempFiles (SitePaths site, PluginsDistribution pluginsDistribution)
+DECL|method|listPluginsAndRemoveTempFiles ( SitePaths site, PluginsDistribution pluginsDistribution)
 specifier|public
 specifier|static
 name|List
@@ -422,7 +422,7 @@ name|pluginsDistribution
 argument_list|)
 return|;
 block|}
-DECL|method|listPlugins (final SitePaths site, final boolean deleteTempPluginFile, PluginsDistribution pluginsDistribution)
+DECL|method|listPlugins ( final SitePaths site, final boolean deleteTempPluginFile, PluginsDistribution pluginsDistribution)
 specifier|private
 specifier|static
 name|List
@@ -620,7 +620,7 @@ name|postRunInjector
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitPlugins (final ConsoleUI ui, final SitePaths site, InitFlags initFlags, InitPluginStepsLoader pluginLoader, PluginsDistribution pluginsDistribution)
+DECL|method|InitPlugins ( final ConsoleUI ui, final SitePaths site, InitFlags initFlags, InitPluginStepsLoader pluginLoader, PluginsDistribution pluginsDistribution)
 name|InitPlugins
 parameter_list|(
 specifier|final

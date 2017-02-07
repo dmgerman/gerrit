@@ -215,13 +215,13 @@ name|POST
 init|=
 literal|"POST"
 decl_stmt|;
-specifier|protected
-parameter_list|<
-name|R
-extends|extends
-name|RestResource
-parameter_list|>
 DECL|method|get (TypeLiteral<RestView<R>> viewType)
+specifier|protected
+parameter_list|<
+name|R
+extends|extends
+name|RestResource
+parameter_list|>
 name|ReadViewBinder
 argument_list|<
 name|R
@@ -254,13 +254,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-specifier|protected
-parameter_list|<
-name|R
-extends|extends
-name|RestResource
-parameter_list|>
 DECL|method|put (TypeLiteral<RestView<R>> viewType)
+specifier|protected
+parameter_list|<
+name|R
+extends|extends
+name|RestResource
+parameter_list|>
 name|ModifyViewBinder
 argument_list|<
 name|R
@@ -293,13 +293,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|post (TypeLiteral<RestView<R>> viewType)
 specifier|protected
 parameter_list|<
 name|R
 extends|extends
 name|RestResource
 parameter_list|>
-DECL|method|post (TypeLiteral<RestView<R>> viewType)
 name|ModifyViewBinder
 argument_list|<
 name|R
@@ -332,13 +332,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|delete (TypeLiteral<RestView<R>> viewType)
 specifier|protected
 parameter_list|<
 name|R
 extends|extends
 name|RestResource
 parameter_list|>
-DECL|method|delete (TypeLiteral<RestView<R>> viewType)
 name|ModifyViewBinder
 argument_list|<
 name|R
@@ -371,13 +371,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|get ( TypeLiteral<RestView<R>> viewType, String name)
 specifier|protected
 parameter_list|<
 name|R
 extends|extends
 name|RestResource
 parameter_list|>
-DECL|method|get (TypeLiteral<RestView<R>> viewType, String name)
 name|ReadViewBinder
 argument_list|<
 name|R
@@ -413,13 +413,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|put ( TypeLiteral<RestView<R>> viewType, String name)
 specifier|protected
 parameter_list|<
 name|R
 extends|extends
 name|RestResource
 parameter_list|>
-DECL|method|put (TypeLiteral<RestView<R>> viewType, String name)
 name|ModifyViewBinder
 argument_list|<
 name|R
@@ -455,13 +455,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|post ( TypeLiteral<RestView<R>> viewType, String name)
 specifier|protected
 parameter_list|<
 name|R
 extends|extends
 name|RestResource
 parameter_list|>
-DECL|method|post (TypeLiteral<RestView<R>> viewType, String name)
 name|ModifyViewBinder
 argument_list|<
 name|R
@@ -497,13 +497,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|delete ( TypeLiteral<RestView<R>> viewType, String name)
 specifier|protected
 parameter_list|<
 name|R
 extends|extends
 name|RestResource
 parameter_list|>
-DECL|method|delete (TypeLiteral<RestView<R>> viewType, String name)
 name|ModifyViewBinder
 argument_list|<
 name|R
@@ -539,13 +539,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|child ( TypeLiteral<RestView<P>> type, String name)
 specifier|protected
 parameter_list|<
 name|P
 extends|extends
 name|RestResource
 parameter_list|>
-DECL|method|child (TypeLiteral<RestView<P>> type, String name)
 name|ChildCollectionBinder
 argument_list|<
 name|P
@@ -581,13 +581,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|view ( TypeLiteral<RestView<R>> viewType, String method, String name)
 specifier|protected
 parameter_list|<
 name|R
 extends|extends
 name|RestResource
 parameter_list|>
-DECL|method|view ( TypeLiteral<RestView<R>> viewType, String method, String name)
 name|LinkedBindingBuilder
 argument_list|<
 name|RestView
@@ -730,6 +730,7 @@ operator|=
 name|binder
 expr_stmt|;
 block|}
+DECL|method|to (Class<T> impl)
 specifier|public
 parameter_list|<
 name|T
@@ -739,7 +740,6 @@ argument_list|<
 name|P
 argument_list|>
 parameter_list|>
-DECL|method|to (Class<T> impl)
 name|ScopedBindingBuilder
 name|to
 parameter_list|(
@@ -759,6 +759,7 @@ name|impl
 argument_list|)
 return|;
 block|}
+DECL|method|toInstance (T impl)
 specifier|public
 parameter_list|<
 name|T
@@ -768,7 +769,6 @@ argument_list|<
 name|P
 argument_list|>
 parameter_list|>
-DECL|method|toInstance (T impl)
 name|void
 name|toInstance
 parameter_list|(
@@ -784,6 +784,7 @@ name|impl
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|toProvider ( Class<? extends Provider<? extends T>> providerType)
 specifier|public
 parameter_list|<
 name|T
@@ -793,7 +794,6 @@ argument_list|<
 name|P
 argument_list|>
 parameter_list|>
-DECL|method|toProvider (Class<? extends Provider<? extends T>> providerType)
 name|ScopedBindingBuilder
 name|toProvider
 parameter_list|(
@@ -820,6 +820,7 @@ name|providerType
 argument_list|)
 return|;
 block|}
+DECL|method|toProvider ( Provider<? extends T> provider)
 specifier|public
 parameter_list|<
 name|T
@@ -829,7 +830,6 @@ argument_list|<
 name|P
 argument_list|>
 parameter_list|>
-DECL|method|toProvider (Provider<? extends T> provider)
 name|ScopedBindingBuilder
 name|toProvider
 parameter_list|(
@@ -896,6 +896,7 @@ operator|=
 name|binder
 expr_stmt|;
 block|}
+DECL|method|to (Class<T> impl)
 specifier|public
 parameter_list|<
 name|T
@@ -907,7 +908,6 @@ argument_list|,
 name|?
 argument_list|>
 parameter_list|>
-DECL|method|to (Class<T> impl)
 name|ScopedBindingBuilder
 name|to
 parameter_list|(
@@ -927,6 +927,7 @@ name|impl
 argument_list|)
 return|;
 block|}
+DECL|method|toInstance (T impl)
 specifier|public
 parameter_list|<
 name|T
@@ -938,7 +939,6 @@ argument_list|,
 name|?
 argument_list|>
 parameter_list|>
-DECL|method|toInstance (T impl)
 name|void
 name|toInstance
 parameter_list|(
@@ -954,6 +954,7 @@ name|impl
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|toProvider ( Class<? extends Provider<? extends T>> providerType)
 specifier|public
 parameter_list|<
 name|T
@@ -965,7 +966,6 @@ argument_list|,
 name|?
 argument_list|>
 parameter_list|>
-DECL|method|toProvider (Class<? extends Provider<? extends T>> providerType)
 name|ScopedBindingBuilder
 name|toProvider
 parameter_list|(
@@ -992,6 +992,7 @@ name|providerType
 argument_list|)
 return|;
 block|}
+DECL|method|toProvider ( Provider<? extends T> provider)
 specifier|public
 parameter_list|<
 name|T
@@ -1003,7 +1004,6 @@ argument_list|,
 name|?
 argument_list|>
 parameter_list|>
-DECL|method|toProvider (Provider<? extends T> provider)
 name|ScopedBindingBuilder
 name|toProvider
 parameter_list|(
@@ -1070,6 +1070,7 @@ operator|=
 name|binder
 expr_stmt|;
 block|}
+DECL|method|to ( Class<T> impl)
 specifier|public
 parameter_list|<
 name|C
@@ -1085,7 +1086,6 @@ argument_list|,
 name|C
 argument_list|>
 parameter_list|>
-DECL|method|to (Class<T> impl)
 name|ScopedBindingBuilder
 name|to
 parameter_list|(
@@ -1105,6 +1105,7 @@ name|impl
 argument_list|)
 return|;
 block|}
+DECL|method|toInstance (T impl)
 specifier|public
 parameter_list|<
 name|C
@@ -1120,7 +1121,6 @@ argument_list|,
 name|C
 argument_list|>
 parameter_list|>
-DECL|method|toInstance (T impl)
 name|void
 name|toInstance
 parameter_list|(

@@ -232,6 +232,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|codemirror
@@ -277,46 +317,6 @@ operator|.
 name|lib
 operator|.
 name|Pos
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -1591,7 +1591,7 @@ name|diffInsert
 argument_list|()
 return|;
 block|}
-DECL|method|addDiffChunk (DisplaySide side, int chunkEnd, int chunkSize, int cmLine, boolean edit)
+DECL|method|addDiffChunk ( DisplaySide side, int chunkEnd, int chunkSize, int cmLine, boolean edit)
 specifier|private
 name|void
 name|addDiffChunk
@@ -2224,12 +2224,12 @@ enum|enum
 name|RegionType
 block|{
 DECL|enumConstant|INSERT
-DECL|enumConstant|DELETE
-DECL|enumConstant|COMMON
 name|INSERT
 block|,
+DECL|enumConstant|DELETE
 name|DELETE
 block|,
+DECL|enumConstant|COMMON
 name|COMMON
 block|,   }
 DECL|method|displaySideToRegionType (DisplaySide side)
@@ -2258,7 +2258,7 @@ operator|.
 name|INSERT
 return|;
 block|}
-comment|/**    * Helper class to associate a line in the original file with the type of the    * region it belongs to.    *    * @field line The 0-based line number in the original file. Note that this    *     might be different from the line number shown in CodeMirror.    * @field type The type of the region the line belongs to. Can be INSERT,    *     DELETE or COMMON.    */
+comment|/**    * Helper class to associate a line in the original file with the type of the region it belongs    * to.    *    * @field line The 0-based line number in the original file. Note that this might be different    *     from the line number shown in CodeMirror.    * @field type The type of the region the line belongs to. Can be INSERT, DELETE or COMMON.    */
 DECL|class|LineRegionInfo
 specifier|static
 class|class

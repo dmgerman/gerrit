@@ -268,6 +268,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -335,16 +345,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -850,18 +850,18 @@ specifier|private
 name|String
 name|maxObjectSizeLimit
 decl_stmt|;
+DECL|field|metaDataUpdateFactory
 annotation|@
 name|Inject
-DECL|field|metaDataUpdateFactory
 specifier|private
 name|MetaDataUpdate
 operator|.
 name|User
 name|metaDataUpdateFactory
 decl_stmt|;
+DECL|field|projectCache
 annotation|@
 name|Inject
-DECL|field|projectCache
 specifier|private
 name|ProjectCache
 name|projectCache

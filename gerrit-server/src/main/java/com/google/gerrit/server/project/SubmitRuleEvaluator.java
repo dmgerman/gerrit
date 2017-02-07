@@ -410,26 +410,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -468,8 +448,28 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Evaluates a submit-like Prolog rule found in the rules.pl file of the current  * project and filters the results through rules found in the parent projects,  * all the way up to All-Projects.  */
+comment|/**  * Evaluates a submit-like Prolog rule found in the rules.pl file of the current project and filters  * the results through rules found in the parent projects, all the way up to All-Projects.  */
 end_comment
 
 begin_class
@@ -581,7 +581,7 @@ name|DEFAULT_MSG
 argument_list|)
 return|;
 block|}
-comment|/**    * Exception thrown when the label term of a submit record    * unexpectedly didn't contain a user term.    */
+comment|/**    * Exception thrown when the label term of a submit record unexpectedly didn't contain a user    * term.    */
 DECL|class|UserTermExpected
 specifier|private
 specifier|static
@@ -702,7 +702,7 @@ name|changeControl
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * @return immutable snapshot of options configured so far. If neither {@link    *     #getSubmitRule()} nor {@link #getSubmitType()} have been called yet,    *     state within this instance is still mutable, so may change before    *     evaluation. The instance's options are frozen at evaluation time.    */
+comment|/**    * @return immutable snapshot of options configured so far. If neither {@link #getSubmitRule()}    *     nor {@link #getSubmitType()} have been called yet, state within this instance is still    *     mutable, so may change before evaluation. The instance's options are frozen at evaluation    *     time.    */
 DECL|method|getOptions ()
 specifier|public
 name|SubmitRuleOptions
@@ -768,7 +768,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * @param ps patch set of the change to evaluate. If not set, the current    * patch set will be loaded from {@link #evaluate()} or {@link    * #getSubmitType}.    * @return this    */
+comment|/**    * @param ps patch set of the change to evaluate. If not set, the current patch set will be loaded    *     from {@link #evaluate()} or {@link #getSubmitType}.    * @return this    */
 DECL|method|setPatchSet (PatchSet ps)
 specifier|public
 name|SubmitRuleEvaluator
@@ -817,7 +817,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * @param fast if true assume reviewers are permitted to use label values    *        currently stored on the change. Fast mode bypasses some reviewer    *        permission checks.    * @return this    */
+comment|/**    * @param fast if true assume reviewers are permitted to use label values currently stored on the    *     change. Fast mode bypasses some reviewer permission checks.    * @return this    */
 DECL|method|setFastEvalLabels (boolean fast)
 specifier|public
 name|SubmitRuleEvaluator
@@ -939,7 +939,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * @param log whether to log error messages in addition to returning error    *     records. If true, error record messages will be less descriptive.    */
+comment|/**    * @param log whether to log error messages in addition to returning error records. If true, error    *     record messages will be less descriptive.    */
 DECL|method|setLogErrors (boolean log)
 specifier|public
 name|SubmitRuleEvaluator
@@ -968,7 +968,7 @@ return|return
 name|reductionsConsumed
 return|;
 block|}
-comment|/**    * Evaluate the submit rules.    *    * @return List of {@link SubmitRecord} objects returned from the evaluated    *     rules, including any errors.    */
+comment|/**    * Evaluate the submit rules.    *    * @return List of {@link SubmitRecord} objects returned from the evaluated rules, including any    *     errors.    */
 DECL|method|evaluate ()
 specifier|public
 name|List
@@ -1302,8 +1302,8 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Convert the results from Prolog Cafe's format to Gerrit's common format.    *    * can_submit/1 terminates when an ok(P) record is found. Therefore walk    * the results backwards, using only that ok(P) record if it exists. This    * skips partial results that occur early in the output. Later after the loop    * the out collection is reversed to restore it to the original ordering.    */
-DECL|method|resultsToSubmitRecord ( Term submitRule, List<Term> results)
+comment|/**    * Convert the results from Prolog Cafe's format to Gerrit's common format.    *    *<p>can_submit/1 terminates when an ok(P) record is found. Therefore walk the results backwards,    * using only that ok(P) record if it exists. This skips partial results that occur early in the    * output. Later after the loop the out collection is reversed to restore it to the original    * ordering.    */
+DECL|method|resultsToSubmitRecord (Term submitRule, List<Term> results)
 specifier|private
 name|List
 argument_list|<
@@ -2938,7 +2938,7 @@ return|return
 name|env
 return|;
 block|}
-DECL|method|runSubmitFilters (Term results, PrologEnvironment env, String filterRuleLocatorName, String filterRuleWrapperName)
+DECL|method|runSubmitFilters ( Term results, PrologEnvironment env, String filterRuleLocatorName, String filterRuleWrapperName)
 specifier|private
 name|Term
 name|runSubmitFilters

@@ -152,7 +152,7 @@ DECL|method|TextMarker ()
 specifier|protected
 name|TextMarker
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|FromTo
 specifier|public
 specifier|static
@@ -272,7 +272,7 @@ DECL|method|FromTo ()
 specifier|protected
 name|FromTo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

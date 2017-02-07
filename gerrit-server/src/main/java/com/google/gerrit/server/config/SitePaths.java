@@ -675,7 +675,7 @@ operator|=
 name|isNew
 expr_stmt|;
 block|}
-comment|/**    * Resolve an absolute or relative path.    *<p>    * Relative paths are resolved relative to the {@link #site_path}.    *    * @param path the path string to resolve. May be null.    * @return the resolved path; null if {@code path} was null or empty.    */
+comment|/**    * Resolve an absolute or relative path.    *    *<p>Relative paths are resolved relative to the {@link #site_path}.    *    * @param path the path string to resolve. May be null.    * @return the resolved path; null if {@code path} was null or empty.    */
 DECL|method|resolve (String path)
 specifier|public
 name|Path

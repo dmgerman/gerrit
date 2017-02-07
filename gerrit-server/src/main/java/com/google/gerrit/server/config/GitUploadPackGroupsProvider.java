@@ -194,7 +194,7 @@ name|GroupSetProvider
 block|{
 annotation|@
 name|Inject
-DECL|method|GitUploadPackGroupsProvider (GroupBackend gb, @GerritServerConfig Config config, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx)
+DECL|method|GitUploadPackGroupsProvider ( GroupBackend gb, @GerritServerConfig Config config, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx)
 specifier|public
 name|GitUploadPackGroupsProvider
 parameter_list|(

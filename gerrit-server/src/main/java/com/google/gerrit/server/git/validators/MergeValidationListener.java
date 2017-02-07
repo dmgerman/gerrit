@@ -177,7 +177,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to provide validation of commits before merging.  *  * Invoked by Gerrit before a commit is merged.  */
+comment|/**  * Listener to provide validation of commits before merging.  *  *<p>Invoked by Gerrit before a commit is merged.  */
 end_comment
 
 begin_interface
@@ -189,7 +189,7 @@ interface|interface
 name|MergeValidationListener
 block|{
 comment|/**    * Validate a commit before it is merged.    *    * @param repo the repository    * @param commit commit details    * @param destProject the destination project    * @param destBranch the destination branch    * @param patchSetId the patch set ID    * @param caller the user who initiated the merge request    * @throws MergeValidationException if the commit fails to validate    */
-DECL|method|onPreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 name|void
 name|onPreMerge
 parameter_list|(

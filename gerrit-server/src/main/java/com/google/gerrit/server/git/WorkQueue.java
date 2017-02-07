@@ -170,40 +170,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -438,6 +404,40 @@ name|AtomicInteger
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/** Delayed execution of tasks using a background thread pool. */
 end_comment
@@ -488,7 +488,7 @@ specifier|public
 name|void
 name|start
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|stop ()
@@ -1471,7 +1471,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Runnable needing to know it was canceled.    * Note that cancel is called only in case the task is not in    * progress already.    */
+comment|/**    * Runnable needing to know it was canceled. Note that cancel is called only in case the task is    * not in progress already.    */
 DECL|interface|CancelableRunnable
 specifier|public
 interface|interface
@@ -1486,7 +1486,7 @@ name|cancel
 parameter_list|()
 function_decl|;
 block|}
-comment|/**    * Base interface handles the case when task was canceled before    * actual execution and in case it was started cancel method is    * not called yet the task itself will be destroyed anyway (it    * will result in resource opening errors).    * This interface gives a chance to implementing classes for    * handling such scenario and act accordingly.    */
+comment|/**    * Base interface handles the case when task was canceled before actual execution and in case it    * was started cancel method is not called yet the task itself will be destroyed anyway (it will    * result in resource opening errors). This interface gives a chance to implementing classes for    * handling such scenario and act accordingly.    */
 DECL|interface|CanceledWhileRunning
 specifier|public
 interface|interface
@@ -1494,7 +1494,7 @@ name|CanceledWhileRunning
 extends|extends
 name|CancelableRunnable
 block|{
-comment|/** Notifies the runnable it was canceled during execution. **/
+comment|/** Notifies the runnable it was canceled during execution. * */
 DECL|method|setCanceledWhileRunning ()
 name|void
 name|setCanceledWhileRunning
@@ -1516,7 +1516,7 @@ argument_list|<
 name|V
 argument_list|>
 block|{
-comment|/**      * Summarized status of a single task.      *<p>      * Tasks have the following state flow:      *<ol>      *<li>{@link #SLEEPING}: if scheduled with a non-zero delay.</li>      *<li>{@link #READY}: waiting for an available worker thread.</li>      *<li>{@link #RUNNING}: actively executing on a worker thread.</li>      *<li>{@link #DONE}: finished executing, if not periodic.</li>      *</ol>      */
+comment|/**      * Summarized status of a single task.      *      *<p>Tasks have the following state flow:      *      *<ol>      *<li>{@link #SLEEPING}: if scheduled with a non-zero delay.      *<li>{@link #READY}: waiting for an available worker thread.      *<li>{@link #RUNNING}: actively executing on a worker thread.      *<li>{@link #DONE}: finished executing, if not periodic.      *</ol>      */
 DECL|enum|State
 specifier|public
 enum|enum
@@ -1527,21 +1527,21 @@ comment|// prefer to see tasks sorted in: done before running,
 comment|// running before ready, ready before sleeping.
 comment|//
 DECL|enumConstant|DONE
-DECL|enumConstant|CANCELLED
-DECL|enumConstant|RUNNING
-DECL|enumConstant|READY
-DECL|enumConstant|SLEEPING
-DECL|enumConstant|OTHER
 name|DONE
 block|,
+DECL|enumConstant|CANCELLED
 name|CANCELLED
 block|,
+DECL|enumConstant|RUNNING
 name|RUNNING
 block|,
+DECL|enumConstant|READY
 name|READY
 block|,
+DECL|enumConstant|SLEEPING
 name|SLEEPING
 block|,
+DECL|enumConstant|OTHER
 name|OTHER
 block|}
 DECL|field|runnable
@@ -2262,7 +2262,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**    * Same as Task class, but with a reference to ProjectRunnable, used to    * retrieve the project name from the operation queued    **/
+comment|/**    * Same as Task class, but with a reference to ProjectRunnable, used to retrieve the project name    * from the operation queued    */
 DECL|class|ProjectTask
 specifier|public
 specifier|static
@@ -2285,7 +2285,7 @@ specifier|final
 name|ProjectRunnable
 name|runnable
 decl_stmt|;
-DECL|method|ProjectTask (ProjectRunnable runnable, RunnableScheduledFuture<V> task, Executor executor, int taskId)
+DECL|method|ProjectTask ( ProjectRunnable runnable, RunnableScheduledFuture<V> task, Executor executor, int taskId)
 name|ProjectTask
 parameter_list|(
 name|ProjectRunnable

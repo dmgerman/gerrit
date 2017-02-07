@@ -352,6 +352,28 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -395,28 +417,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|Field
 import|;
 end_import
 
@@ -495,7 +495,7 @@ name|accountCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetPreferences (GeneralPreferencesLoader loader, GitRepositoryManager gitManager, Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllUsersName allUsersName, AccountCache accountCache)
+DECL|method|SetPreferences ( GeneralPreferencesLoader loader, GitRepositoryManager gitManager, Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllUsersName allUsersName, AccountCache accountCache)
 name|SetPreferences
 parameter_list|(
 name|GeneralPreferencesLoader

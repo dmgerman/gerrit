@@ -184,20 +184,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -229,6 +215,20 @@ operator|.
 name|regex
 operator|.
 name|PatternSyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
 import|;
 end_import
 

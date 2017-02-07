@@ -120,7 +120,7 @@ DECL|method|RevId ()
 specifier|protected
 name|RevId
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|RevId (final String str)
 specifier|public
 name|RevId
@@ -163,7 +163,7 @@ operator|==
 name|LEN
 return|;
 block|}
-comment|/**    * @return if {@link #isComplete()}, {@code this}; otherwise a new RevId    *         with 'z' appended on the end.    */
+comment|/**    * @return if {@link #isComplete()}, {@code this}; otherwise a new RevId with 'z' appended on the    *     end.    */
 DECL|method|max ()
 specifier|public
 name|RevId

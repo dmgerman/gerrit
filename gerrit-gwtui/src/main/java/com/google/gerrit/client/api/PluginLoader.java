@@ -300,7 +300,7 @@ specifier|static
 name|PluginLoader
 name|self
 decl_stmt|;
-DECL|method|load (List<String> plugins, int loadTimeout, AsyncCallback<VoidResult> callback)
+DECL|method|load ( List<String> plugins, int loadTimeout, AsyncCallback<VoidResult> callback)
 specifier|public
 specifier|static
 name|void
@@ -1016,7 +1016,7 @@ parameter_list|(
 name|Void
 name|result
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|onFailure (Exception reason)

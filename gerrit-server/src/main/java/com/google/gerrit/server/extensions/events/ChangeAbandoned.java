@@ -272,26 +272,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -307,6 +287,26 @@ operator|.
 name|sql
 operator|.
 name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -375,7 +375,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (Change change, PatchSet ps, Account abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
+DECL|method|fire ( Change change, PatchSet ps, Account abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
 specifier|public
 name|void
 name|fire
@@ -533,7 +533,7 @@ specifier|final
 name|String
 name|reason
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
+DECL|method|Event ( ChangeInfo change, RevisionInfo revision, AccountInfo abandoner, String reason, Timestamp when, NotifyHandling notifyHandling)
 name|Event
 parameter_list|(
 name|ChangeInfo

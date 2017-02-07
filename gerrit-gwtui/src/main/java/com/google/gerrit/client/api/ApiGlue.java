@@ -568,7 +568,7 @@ name|a
 parameter_list|)
 comment|/*-{ f(a); }-*/
 function_decl|;
-DECL|method|invoke (JavaScriptObject f, JavaScriptObject a, JavaScriptObject b)
+DECL|method|invoke ( JavaScriptObject f, JavaScriptObject a, JavaScriptObject b)
 specifier|static
 specifier|final
 specifier|native
@@ -795,7 +795,7 @@ DECL|method|ApiGlue ()
 specifier|private
 name|ApiGlue
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -151,7 +151,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This listener dispatches removal events to all other RemovalListeners  * attached via the DynamicSet API.  *  * @param<K>  * @param<V>  */
+comment|/**  * This listener dispatches removal events to all other RemovalListeners attached via the DynamicSet  * API.  *  * @param<K>  * @param<V>  */
 end_comment
 
 begin_class
@@ -215,7 +215,7 @@ literal|"gerrit"
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ForwardingRemovalListener (DynamicSet<CacheRemovalListener> listeners, @Assisted String cacheName)
+DECL|method|ForwardingRemovalListener ( DynamicSet<CacheRemovalListener> listeners, @Assisted String cacheName)
 name|ForwardingRemovalListener
 parameter_list|(
 name|DynamicSet

@@ -150,7 +150,7 @@ name|ATTRIBUTE_ERROR_TRACE
 argument_list|)
 return|;
 block|}
-comment|/**    * @return the same value as {@link HttpServletRequest#getPathInfo()}, but    *     without decoding URL-encoded characters.    */
+comment|/**    * @return the same value as {@link HttpServletRequest#getPathInfo()}, but without decoding    *     URL-encoded characters.    */
 DECL|method|getEncodedPathInfo (HttpServletRequest req)
 specifier|public
 specifier|static
@@ -265,7 +265,7 @@ DECL|method|RequestUtil ()
 specifier|private
 name|RequestUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

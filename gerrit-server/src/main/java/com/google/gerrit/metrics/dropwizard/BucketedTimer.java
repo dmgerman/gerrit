@@ -70,6 +70,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|codahale
+operator|.
+name|metrics
+operator|.
+name|Metric
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|google
 operator|.
 name|common
@@ -137,18 +149,6 @@ operator|.
 name|DropWizardMetricMaker
 operator|.
 name|TimerImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|codahale
-operator|.
-name|metrics
-operator|.
-name|Metric
 import|;
 end_import
 

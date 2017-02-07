@@ -445,7 +445,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetParser (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, PatchSetUtil psUtil, ChangeFinder changeFinder, Provider<CurrentUser> self)
+DECL|method|PatchSetParser ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, PatchSetUtil psUtil, ChangeFinder changeFinder, Provider<CurrentUser> self)
 name|PatchSetParser
 parameter_list|(
 name|Provider

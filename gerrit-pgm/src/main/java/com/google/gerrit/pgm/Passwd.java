@@ -280,18 +280,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Argument
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|nio
@@ -319,6 +307,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Argument
 import|;
 end_import
 

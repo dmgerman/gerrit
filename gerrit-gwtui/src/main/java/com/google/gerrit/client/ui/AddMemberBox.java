@@ -250,7 +250,7 @@ specifier|final
 name|RemoteSuggestBox
 name|suggestBox
 decl_stmt|;
-DECL|method|AddMemberBox (final String buttonLabel, final String hint, final SuggestOracle suggestOracle)
+DECL|method|AddMemberBox ( final String buttonLabel, final String hint, final SuggestOracle suggestOracle)
 specifier|public
 name|AddMemberBox
 parameter_list|(

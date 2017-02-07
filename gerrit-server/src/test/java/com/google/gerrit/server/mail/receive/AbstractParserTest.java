@@ -134,28 +134,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|joda
-operator|.
-name|time
-operator|.
-name|DateTime
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -181,6 +159,28 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|joda
+operator|.
+name|time
+operator|.
+name|DateTime
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
 import|;
 end_import
 
@@ -263,7 +263,7 @@ name|CHANGE_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertInlineComment (String message, MailComment comment, Comment inReplyTo)
+DECL|method|assertInlineComment ( String message, MailComment comment, Comment inReplyTo)
 specifier|protected
 specifier|static
 name|void

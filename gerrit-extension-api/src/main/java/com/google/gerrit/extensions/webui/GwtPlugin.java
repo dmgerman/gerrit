@@ -84,7 +84,7 @@ specifier|final
 name|String
 name|moduleName
 decl_stmt|;
-comment|/**    * @param moduleName name of GWT module. The resource    *        {@code static/$MODULE/$MODULE.nocache.js} will be used.    */
+comment|/**    * @param moduleName name of GWT module. The resource {@code static/$MODULE/$MODULE.nocache.js}    *     will be used.    */
 DECL|method|GwtPlugin (String moduleName)
 specifier|public
 name|GwtPlugin

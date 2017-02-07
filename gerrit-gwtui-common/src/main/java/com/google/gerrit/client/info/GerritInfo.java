@@ -402,7 +402,7 @@ DECL|method|GerritInfo ()
 specifier|protected
 name|GerritInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

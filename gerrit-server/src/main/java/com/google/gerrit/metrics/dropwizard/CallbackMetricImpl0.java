@@ -70,13 +70,11 @@ begin_import
 import|import
 name|com
 operator|.
-name|google
-operator|.
-name|gerrit
+name|codahale
 operator|.
 name|metrics
 operator|.
-name|CallbackMetric0
+name|MetricRegistry
 import|;
 end_import
 
@@ -84,11 +82,13 @@ begin_import
 import|import
 name|com
 operator|.
-name|codahale
+name|google
+operator|.
+name|gerrit
 operator|.
 name|metrics
 operator|.
-name|MetricRegistry
+name|CallbackMetric0
 import|;
 end_import
 
@@ -290,7 +290,7 @@ specifier|volatile
 name|V
 name|value
 decl_stmt|;
-DECL|method|CallbackMetricImpl0 (DropWizardMetricMaker metrics, MetricRegistry registry, String name, Class<V> valueType)
+DECL|method|CallbackMetricImpl0 ( DropWizardMetricMaker metrics, MetricRegistry registry, String name, Class<V> valueType)
 name|CallbackMetricImpl0
 parameter_list|(
 name|DropWizardMetricMaker
@@ -344,7 +344,7 @@ specifier|public
 name|void
 name|beginSet
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|endSet ()
@@ -352,7 +352,7 @@ specifier|public
 name|void
 name|endSet
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|set (V value)

@@ -66,6 +66,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -162,16 +172,6 @@ name|Directory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/** Writer that optionally flushes/commits after every write. */
 end_comment
@@ -239,7 +239,7 @@ name|autoCommit
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * This method will override Gerrit configuration index.name.commitWithin    * until next Gerrit restart (or reconfiguration through this method).    *    * @param enable auto commit    */
+comment|/**    * This method will override Gerrit configuration index.name.commitWithin until next Gerrit    * restart (or reconfiguration through this method).    *    * @param enable auto commit    */
 DECL|method|setAutoCommit (boolean enable)
 specifier|public
 name|void
@@ -287,7 +287,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|addDocuments ( Iterable<? extends Iterable<? extends IndexableField>> docs)
+DECL|method|addDocuments (Iterable<? extends Iterable<? extends IndexableField>> docs)
 specifier|public
 name|void
 name|addDocuments
@@ -321,7 +321,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateDocuments (Term delTerm, Iterable<? extends Iterable<? extends IndexableField>> docs)
+DECL|method|updateDocuments ( Term delTerm, Iterable<? extends Iterable<? extends IndexableField>> docs)
 specifier|public
 name|void
 name|updateDocuments

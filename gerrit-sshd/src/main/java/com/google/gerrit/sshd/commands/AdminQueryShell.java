@@ -226,18 +226,18 @@ name|AdminQueryShell
 extends|extends
 name|SshCommand
 block|{
+DECL|field|factory
 annotation|@
 name|Inject
-DECL|field|factory
 specifier|private
 name|QueryShell
 operator|.
 name|Factory
 name|factory
 decl_stmt|;
+DECL|field|currentUser
 annotation|@
 name|Inject
-DECL|field|currentUser
 specifier|private
 name|IdentifiedUser
 name|currentUser
@@ -361,7 +361,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Assert that the current user is permitted to perform raw queries.    *<p>    * As the @RequireCapability guards at various entry points of internal    * commands implicitly add administrators (which we want to avoid), we also    * check permissions within QueryShell and grant access only to those who    * can access the database, regardless of whether they are administrators or    * not.    *    * @throws PermissionDeniedException    */
+comment|/**    * Assert that the current user is permitted to perform raw queries.    *    *<p>As the @RequireCapability guards at various entry points of internal commands implicitly add    * administrators (which we want to avoid), we also check permissions within QueryShell and grant    * access only to those who can access the database, regardless of whether they are administrators    * or not.    *    * @throws PermissionDeniedException    */
 DECL|method|checkPermission ()
 specifier|private
 name|void

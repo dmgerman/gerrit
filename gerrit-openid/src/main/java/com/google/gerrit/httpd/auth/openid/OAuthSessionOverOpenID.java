@@ -374,42 +374,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|codec
-operator|.
-name|binary
-operator|.
-name|Base64
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -479,6 +443,42 @@ operator|.
 name|http
 operator|.
 name|HttpServletResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|codec
+operator|.
+name|binary
+operator|.
+name|Base64
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -590,7 +590,7 @@ name|linkMode
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OAuthSessionOverOpenID (DynamicItem<WebSession> webSession, Provider<IdentifiedUser> identifiedUser, AccountManager accountManager, CanonicalWebUrl urlProvider)
+DECL|method|OAuthSessionOverOpenID ( DynamicItem<WebSession> webSession, Provider<IdentifiedUser> identifiedUser, AccountManager accountManager, CanonicalWebUrl urlProvider)
 name|OAuthSessionOverOpenID
 parameter_list|(
 name|DynamicItem
@@ -683,7 +683,7 @@ operator|!=
 literal|null
 return|;
 block|}
-DECL|method|login (HttpServletRequest request, HttpServletResponse response, OAuthServiceProvider oauth)
+DECL|method|login ( HttpServletRequest request, HttpServletResponse response, OAuthServiceProvider oauth)
 name|boolean
 name|login
 parameter_list|(

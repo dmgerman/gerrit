@@ -68,16 +68,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -163,6 +153,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
 import|;
 end_import
 
@@ -256,7 +256,7 @@ name|right
 expr_stmt|;
 block|}
 block|}
-DECL|method|parse (String text, String filename, Parser left, Parser right, ValidationError.Sink errors)
+DECL|method|parse ( String text, String filename, Parser left, Parser right, ValidationError.Sink errors)
 specifier|protected
 specifier|static
 name|List

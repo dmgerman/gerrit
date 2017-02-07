@@ -446,62 +446,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|CommitBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -580,8 +524,64 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|CommitBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
 begin_comment
-comment|/**  * âwatch.configâ file in the user branch in the All-Users repository that  * contains the watch configuration of the user.  *<p>  * The 'watch.config' file is a git config file that has one 'project' section  * for all project watches of a project.  *<p>  * The project name is used as subsection name and the filters with the notify  * types that decide for which events email notifications should be sent are  * represented as 'notify' values in the subsection. A 'notify' value is  * formatted as {@code<filter> [<comma-separated-list-of-notify-types>]}:  *  *<pre>  *   [project "foo"]  *     notify = * [ALL_COMMENTS]  *     notify = branch:master [ALL_COMMENTS, NEW_PATCHSETS]  *     notify = branch:master owner:self [SUBMITTED_CHANGES]  *</pre>  *<p>  * If two notify values in the same subsection have the same filter they are  * merged on the next save, taking the union of the notify types.  *<p>  * For watch configurations that notify on no event the list of notify types is  * empty:  *  *<pre>  *   [project "foo"]  *     notify = branch:master []  *</pre>  *<p>  * Unknown notify types are ignored and removed on save.  */
+comment|/**  * âwatch.configâ file in the user branch in the All-Users repository that contains the watch  * configuration of the user.  *  *<p>The 'watch.config' file is a git config file that has one 'project' section for all project  * watches of a project.  *  *<p>The project name is used as subsection name and the filters with the notify types that decide  * for which events email notifications should be sent are represented as 'notify' values in the  * subsection. A 'notify' value is formatted as {@code<filter>  * [<comma-separated-list-of-notify-types>]}:  *  *<pre>  *   [project "foo"]  *     notify = * [ALL_COMMENTS]  *     notify = branch:master [ALL_COMMENTS, NEW_PATCHSETS]  *     notify = branch:master owner:self [SUBMITTED_CHANGES]  *</pre>  *  *<p>If two notify values in the same subsection have the same filter they are merged on the next  * save, taking the union of the notify types.  *  *<p>For watch configurations that notify on no event the list of notify types is empty:  *  *<pre>  *   [project "foo"]  *     notify = branch:master []  *</pre>  *  *<p>Unknown notify types are ignored and removed on save.  */
 end_comment
 
 begin_class
@@ -685,7 +685,7 @@ operator|=
 name|userFactory
 expr_stmt|;
 block|}
-DECL|method|getProjectWatches ( Account.Id accountId)
+DECL|method|getProjectWatches (Account.Id accountId)
 specifier|public
 name|Map
 argument_list|<
@@ -745,7 +745,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|upsertProjectWatches (Account.Id accountId, Map<ProjectWatchKey, Set<NotifyType>> newProjectWatches)
+DECL|method|upsertProjectWatches ( Account.Id accountId, Map<ProjectWatchKey, Set<NotifyType>> newProjectWatches)
 specifier|public
 specifier|synchronized
 name|void
@@ -809,7 +809,7 @@ name|watchConfig
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteProjectWatches (Account.Id accountId, Collection<ProjectWatchKey> projectWatchKeys)
+DECL|method|deleteProjectWatches ( Account.Id accountId, Collection<ProjectWatchKey> projectWatchKeys)
 specifier|public
 specifier|synchronized
 name|void
@@ -1495,7 +1495,7 @@ return|return
 name|projectWatches
 return|;
 block|}
-DECL|method|setProjectWatches ( Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
+DECL|method|setProjectWatches (Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
 specifier|public
 name|void
 name|setProjectWatches
@@ -1826,7 +1826,7 @@ specifier|static
 class|class
 name|NotifyValue
 block|{
-DECL|method|parse (Account.Id accountId, String project, String notifyValue, ValidationError.Sink validationErrorSink)
+DECL|method|parse ( Account.Id accountId, String project, String notifyValue, ValidationError.Sink validationErrorSink)
 specifier|public
 specifier|static
 name|NotifyValue

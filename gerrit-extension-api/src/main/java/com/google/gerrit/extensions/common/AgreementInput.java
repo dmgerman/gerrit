@@ -93,9 +93,9 @@ class|class
 name|AgreementInput
 block|{
 comment|/* The agreement name. */
+DECL|field|name
 annotation|@
 name|DefaultInput
-DECL|field|name
 specifier|public
 name|String
 name|name

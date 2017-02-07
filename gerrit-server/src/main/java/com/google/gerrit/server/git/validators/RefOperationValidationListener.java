@@ -127,7 +127,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to provide validation on operation that is going to be performed on  * given ref  */
+comment|/** Listener to provide validation on operation that is going to be performed on given ref */
 end_comment
 
 begin_interface

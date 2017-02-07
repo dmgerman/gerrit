@@ -386,6 +386,30 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|easymock
@@ -464,32 +488,8 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TimeZone
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicInteger
-import|;
-end_import
-
 begin_comment
-comment|/**  * Utility functions to create and manipulate Change, ChangeUpdate, and  * ChangeControl objects for testing.  */
+comment|/**  * Utility functions to create and manipulate Change, ChangeUpdate, and ChangeControl objects for  * testing.  */
 end_comment
 
 begin_class

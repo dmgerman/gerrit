@@ -154,6 +154,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -169,16 +179,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -226,7 +226,7 @@ name|groupMemberAuditListeners
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AuditService (DynamicSet<AuditListener> auditListeners, DynamicSet<GroupMemberAuditListener> groupMemberAuditListeners)
+DECL|method|AuditService ( DynamicSet<AuditListener> auditListeners, DynamicSet<GroupMemberAuditListener> groupMemberAuditListeners)
 specifier|public
 name|AuditService
 parameter_list|(
@@ -337,7 +337,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|dispatchDeleteAccountsFromGroup (Account.Id actor, Collection<AccountGroupMember> removed)
+DECL|method|dispatchDeleteAccountsFromGroup ( Account.Id actor, Collection<AccountGroupMember> removed)
 specifier|public
 name|void
 name|dispatchDeleteAccountsFromGroup
@@ -447,7 +447,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|dispatchDeleteGroupsFromGroup (Account.Id actor, Collection<AccountGroupById> removed)
+DECL|method|dispatchDeleteGroupsFromGroup ( Account.Id actor, Collection<AccountGroupById> removed)
 specifier|public
 name|void
 name|dispatchDeleteGroupsFromGroup

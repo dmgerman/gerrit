@@ -91,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Gerrit's own replacement for the javax.annotations.Nullable  */
+comment|/** Gerrit's own replacement for the javax.annotations.Nullable */
 end_comment
 
 begin_annotation_defn
@@ -104,7 +104,7 @@ DECL|annotation|Nullable
 specifier|public
 annotation_defn|@interface
 name|Nullable
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

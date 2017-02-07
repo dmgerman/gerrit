@@ -184,6 +184,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -230,18 +240,8 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Locale
-import|;
-end_import
-
 begin_comment
-comment|/**  * Authenticates users with kerberos (gssapi-with-mic).  */
+comment|/** Authenticates users with kerberos (gssapi-with-mic). */
 end_comment
 
 begin_class
@@ -285,7 +285,7 @@ name|config
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritGSSAuthenticator (AccountCache accounts, SshScope sshScope, SshLog sshLog, IdentifiedUser.GenericFactory userFactory, @GerritServerConfig Config config)
+DECL|method|GerritGSSAuthenticator ( AccountCache accounts, SshScope sshScope, SshLog sshLog, IdentifiedUser.GenericFactory userFactory, @GerritServerConfig Config config)
 name|GerritGSSAuthenticator
 parameter_list|(
 name|AccountCache

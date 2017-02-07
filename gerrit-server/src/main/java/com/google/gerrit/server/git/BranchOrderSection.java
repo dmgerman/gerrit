@@ -112,7 +112,7 @@ specifier|public
 class|class
 name|BranchOrderSection
 block|{
-comment|/**    * Branch names ordered from least to the most stable.    *    * Typically the order will be like: master, stable-M.N, stable-M.N-1, ...    */
+comment|/**    * Branch names ordered from least to the most stable.    *    *<p>Typically the order will be like: master, stable-M.N, stable-M.N-1, ...    */
 DECL|field|order
 specifier|private
 specifier|final

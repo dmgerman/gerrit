@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * An authentication exception that is thrown when the user credentials are  * valid, but not allowed to authenticate for other reasons i.e. account  * disabled.  */
+comment|/**  * An authentication exception that is thrown when the user credentials are valid, but not allowed  * to authenticate for other reasons i.e. account disabled.  */
 end_comment
 
 begin_class
@@ -92,7 +92,7 @@ DECL|method|UserNotAllowedException ()
 specifier|public
 name|UserNotAllowedException
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|UserNotAllowedException (String msg)
 specifier|public
 name|UserNotAllowedException

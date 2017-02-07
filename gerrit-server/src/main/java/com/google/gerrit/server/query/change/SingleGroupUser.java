@@ -181,7 +181,7 @@ specifier|final
 name|GroupMembership
 name|groups
 decl_stmt|;
-DECL|method|SingleGroupUser (CapabilityControl.Factory capabilityControlFactory, AccountGroup.UUID groupId)
+DECL|method|SingleGroupUser ( CapabilityControl.Factory capabilityControlFactory, AccountGroup.UUID groupId)
 specifier|public
 name|SingleGroupUser
 parameter_list|(
@@ -209,7 +209,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SingleGroupUser (CapabilityControl.Factory capabilityControlFactory, Set<AccountGroup.UUID> groups)
+DECL|method|SingleGroupUser ( CapabilityControl.Factory capabilityControlFactory, Set<AccountGroup.UUID> groups)
 specifier|public
 name|SingleGroupUser
 parameter_list|(

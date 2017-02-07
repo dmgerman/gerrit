@@ -250,7 +250,7 @@ parameter_list|,
 name|String
 name|authType
 parameter_list|)
-block|{       }
+block|{}
 annotation|@
 name|Override
 specifier|public
@@ -264,7 +264,7 @@ parameter_list|,
 name|String
 name|authType
 parameter_list|)
-block|{       }
+block|{}
 block|}
 decl_stmt|;
 try|try

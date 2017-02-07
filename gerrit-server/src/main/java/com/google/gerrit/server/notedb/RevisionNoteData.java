@@ -93,7 +93,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holds the raw data of a RevisionNote.  *<p>It is intended for (de)serialization to JSON only.  */
+comment|/**  * Holds the raw data of a RevisionNote.  *  *<p>It is intended for (de)serialization to JSON only.  */
 end_comment
 
 begin_class

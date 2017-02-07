@@ -200,7 +200,7 @@ name|ChangeData
 argument_list|,
 name|ChangeIndex
 argument_list|>
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|keyPredicate (Change.Id id)

@@ -95,7 +95,7 @@ DECL|method|SshHostKey ()
 specifier|protected
 name|SshHostKey
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|SshHostKey (final String hi, final String hk, final String fp)
 specifier|public
 name|SshHostKey

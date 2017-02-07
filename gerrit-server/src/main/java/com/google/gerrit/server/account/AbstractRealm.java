@@ -201,7 +201,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Basic implementation of {@link Realm}.  */
+comment|/** Basic implementation of {@link Realm}. */
 end_comment
 
 begin_class

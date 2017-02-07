@@ -68,20 +68,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|diff
-operator|.
-name|Edit
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -97,6 +83,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|diff
+operator|.
+name|Edit
 import|;
 end_import
 
@@ -1353,7 +1353,7 @@ DECL|method|Range ()
 specifier|protected
 name|Range
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|get (final int i)
 specifier|private
 name|String

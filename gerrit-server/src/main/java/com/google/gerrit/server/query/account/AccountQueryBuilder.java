@@ -287,7 +287,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parses a query string meant to be applied to account objects.  */
+comment|/** Parses a query string meant to be applied to account objects. */
 end_comment
 
 begin_class

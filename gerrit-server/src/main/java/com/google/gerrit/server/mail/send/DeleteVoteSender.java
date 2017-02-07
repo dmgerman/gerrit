@@ -218,7 +218,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|DeleteVoteSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|DeleteVoteSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|protected
 name|DeleteVoteSender
 parameter_list|(

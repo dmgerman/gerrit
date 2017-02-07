@@ -404,7 +404,7 @@ name|put
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MembersCollection (DynamicMap<RestView<MemberResource>> views, Provider<ListMembers> list, AccountsCollection accounts, Provider<ReviewDb> db, AddMembers put)
+DECL|method|MembersCollection ( DynamicMap<RestView<MemberResource>> views, Provider<ListMembers> list, AccountsCollection accounts, Provider<ReviewDb> db, AddMembers put)
 name|MembersCollection
 parameter_list|(
 name|DynamicMap

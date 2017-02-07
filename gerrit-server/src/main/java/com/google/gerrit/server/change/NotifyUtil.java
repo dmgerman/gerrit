@@ -397,7 +397,7 @@ operator|=
 name|accountResolver
 expr_stmt|;
 block|}
-DECL|method|shouldNotify (NotifyHandling notify, @Nullable Map<RecipientType, NotifyInfo> notifyDetails)
+DECL|method|shouldNotify ( NotifyHandling notify, @Nullable Map<RecipientType, NotifyInfo> notifyDetails)
 specifier|public
 specifier|static
 name|boolean
@@ -443,7 +443,7 @@ operator|>
 literal|0
 return|;
 block|}
-DECL|method|isNullOrEmpty ( @ullable Map<RecipientType, NotifyInfo> notifyDetails)
+DECL|method|isNullOrEmpty (@ullable Map<RecipientType, NotifyInfo> notifyDetails)
 specifier|private
 specifier|static
 name|boolean

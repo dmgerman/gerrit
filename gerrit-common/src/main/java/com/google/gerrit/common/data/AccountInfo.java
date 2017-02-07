@@ -118,8 +118,8 @@ DECL|method|AccountInfo ()
 specifier|protected
 name|AccountInfo
 parameter_list|()
-block|{   }
-comment|/**    * Create an 'Anonymous Coward' account info, when only the id is known.    *<p>    * This constructor should only be a last-ditch effort, when the usual account    * lookup has failed and a stale account id has been discovered in the data    * store.    */
+block|{}
+comment|/**    * Create an 'Anonymous Coward' account info, when only the id is known.    *    *<p>This constructor should only be a last-ditch effort, when the usual account lookup has    * failed and a stale account id has been discovered in the data store.    */
 DECL|method|AccountInfo (final Account.Id id)
 specifier|public
 name|AccountInfo

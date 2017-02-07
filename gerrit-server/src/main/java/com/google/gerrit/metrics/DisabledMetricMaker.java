@@ -212,7 +212,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newCounter (String name, Description desc, Field<F1> field1, Field<F2> field2)
+DECL|method|newCounter ( String name, Description desc, Field<F1> field1, Field<F2> field2)
 specifier|public
 parameter_list|<
 name|F1
@@ -284,7 +284,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newCounter (String name, Description desc, Field<F1> field1, Field<F2> field2, Field<F3> field3)
+DECL|method|newCounter ( String name, Description desc, Field<F1> field1, Field<F2> field2, Field<F3> field3)
 specifier|public
 parameter_list|<
 name|F1
@@ -473,7 +473,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newTimer (String name, Description desc, Field<F1> field1, Field<F2> field2)
+DECL|method|newTimer ( String name, Description desc, Field<F1> field1, Field<F2> field2)
 specifier|public
 parameter_list|<
 name|F1
@@ -548,7 +548,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newTimer (String name, Description desc, Field<F1> field1, Field<F2> field2, Field<F3> field3)
+DECL|method|newTimer ( String name, Description desc, Field<F1> field1, Field<F2> field2, Field<F3> field3)
 specifier|public
 parameter_list|<
 name|F1
@@ -734,7 +734,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newHistogram (String name, Description desc, Field<F1> field1, Field<F2> field2)
+DECL|method|newHistogram ( String name, Description desc, Field<F1> field1, Field<F2> field2)
 specifier|public
 parameter_list|<
 name|F1
@@ -806,7 +806,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newHistogram (String name, Description desc, Field<F1> field1, Field<F2> field2, Field<F3> field3)
+DECL|method|newHistogram ( String name, Description desc, Field<F1> field1, Field<F2> field2, Field<F3> field3)
 specifier|public
 parameter_list|<
 name|F1
@@ -893,7 +893,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newCallbackMetric (String name, Class<V> valueClass, Description desc)
+DECL|method|newCallbackMetric ( String name, Class<V> valueClass, Description desc)
 specifier|public
 parameter_list|<
 name|V
@@ -947,7 +947,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|newCallbackMetric (String name, Class<V> valueClass, Description desc, Field<F1> field1)
+DECL|method|newCallbackMetric ( String name, Class<V> valueClass, Description desc, Field<F1> field1)
 specifier|public
 parameter_list|<
 name|F1

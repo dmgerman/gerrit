@@ -605,7 +605,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addCloseHandler ( final CloseHandler<DisclosurePanel> h)
+DECL|method|addCloseHandler (final CloseHandler<DisclosurePanel> h)
 specifier|public
 name|HandlerRegistration
 name|addCloseHandler

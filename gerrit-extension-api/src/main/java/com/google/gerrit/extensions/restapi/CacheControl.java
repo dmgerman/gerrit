@@ -96,12 +96,12 @@ argument_list|(
 literal|"hiding"
 argument_list|)
 DECL|enumConstant|NONE
-DECL|enumConstant|PUBLIC
-DECL|enumConstant|PRIVATE
 name|NONE
 block|,
+DECL|enumConstant|PUBLIC
 name|PUBLIC
 block|,
+DECL|enumConstant|PRIVATE
 name|PRIVATE
 block|}
 DECL|field|NONE

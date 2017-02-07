@@ -137,7 +137,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class starts/stops the indexes from the init program so that init can  * write updates the indexes.  */
+comment|/**  * This class starts/stops the indexes from the init program so that init can write updates the  * indexes.  */
 end_comment
 
 begin_class

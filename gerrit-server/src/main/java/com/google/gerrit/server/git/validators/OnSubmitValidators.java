@@ -166,6 +166,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -203,16 +213,6 @@ operator|.
 name|transport
 operator|.
 name|ReceiveCommand
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -261,7 +261,7 @@ operator|=
 name|listeners
 expr_stmt|;
 block|}
-DECL|method|validate (Project.NameKey project, Repository repo, ObjectReader objectReader, Map<String, ReceiveCommand> commands)
+DECL|method|validate ( Project.NameKey project, Repository repo, ObjectReader objectReader, Map<String, ReceiveCommand> commands)
 specifier|public
 name|void
 name|validate

@@ -1512,70 +1512,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|TemporaryBuffer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|TemporaryBuffer
-operator|.
-name|Heap
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -1898,6 +1834,70 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|TemporaryBuffer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|TemporaryBuffer
+operator|.
+name|Heap
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 DECL|class|RestApiServlet
 specifier|public
@@ -2001,7 +2001,7 @@ operator|*
 literal|1024
 decl_stmt|;
 comment|// Presize 10 blocks.
-comment|/**    * Garbage prefix inserted before JSON output to prevent XSSI.    *<p>    * This prefix is ")]}'\n" and is designed to prevent a web browser from    * executing the response body if the resource URI were to be referenced using    * a&lt;script src="...&gt; HTML tag from another web site. Clients using the    * HTTP interface will need to always strip the first line of response data to    * remove this magic header.    */
+comment|/**    * Garbage prefix inserted before JSON output to prevent XSSI.    *    *<p>This prefix is ")]}'\n" and is designed to prevent a web browser from executing the response    * body if the resource URI were to be referenced using a&lt;script src="...&gt; HTML tag from    * another web site. Clients using the HTTP interface will need to always strip the first line of    * response data to remove this magic header.    */
 DECL|field|JSON_MAGIC
 specifier|public
 specifier|static
@@ -2069,7 +2069,7 @@ name|allowOrigin
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Globals (Provider<CurrentUser> currentUser, DynamicItem<WebSession> webSession, Provider<ParameterParser> paramParser, AuditService auditService, RestApiMetrics metrics, @GerritServerConfig Config cfg)
+DECL|method|Globals ( Provider<CurrentUser> currentUser, DynamicItem<WebSession> webSession, Provider<ParameterParser> paramParser, AuditService auditService, RestApiMetrics metrics, @GerritServerConfig Config cfg)
 name|Globals
 parameter_list|(
 name|Provider
@@ -2218,7 +2218,7 @@ argument_list|>
 argument_list|>
 name|members
 decl_stmt|;
-DECL|method|RestApiServlet (Globals globals, RestCollection<? extends RestResource, ? extends RestResource> members)
+DECL|method|RestApiServlet ( Globals globals, RestCollection<? extends RestResource, ? extends RestResource> members)
 specifier|public
 name|RestApiServlet
 parameter_list|(
@@ -2251,7 +2251,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|RestApiServlet (Globals globals, Provider<? extends RestCollection<? extends RestResource, ? extends RestResource>> members)
+DECL|method|RestApiServlet ( Globals globals, Provider<? extends RestCollection<? extends RestResource, ? extends RestResource>> members)
 specifier|public
 name|RestApiServlet
 parameter_list|(
@@ -4633,7 +4633,7 @@ block|,
 literal|"rawtypes"
 block|}
 argument_list|)
-DECL|method|notModified (HttpServletRequest req, RestResource rsrc, RestView<RestResource> view)
+DECL|method|notModified ( HttpServletRequest req, RestResource rsrc, RestView<RestResource> view)
 specifier|private
 specifier|static
 name|boolean
@@ -6134,7 +6134,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|replyJson (@ullable HttpServletRequest req, HttpServletResponse res, ListMultimap<String, String> config, Object result)
+DECL|method|replyJson ( @ullable HttpServletRequest req, HttpServletResponse res, ListMultimap<String, String> config, Object result)
 specifier|public
 specifier|static
 name|long
@@ -6279,7 +6279,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|newGson (ListMultimap<String, String> config, @Nullable HttpServletRequest req)
+DECL|method|newGson ( ListMultimap<String, String> config, @Nullable HttpServletRequest req)
 specifier|private
 specifier|static
 name|Gson
@@ -6335,7 +6335,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|enablePrettyPrint (GsonBuilder gb, ListMultimap<String, String> config, @Nullable HttpServletRequest req)
+DECL|method|enablePrettyPrint ( GsonBuilder gb, ListMultimap<String, String> config, @Nullable HttpServletRequest req)
 specifier|private
 specifier|static
 name|void
@@ -7162,7 +7162,7 @@ block|}
 argument_list|,
 name|ISO_8859_1
 argument_list|)
-init|;               OutputStream e = BaseEncoding.base64()
+init|;                   OutputStream e = BaseEncoding.base64()
 operator|.
 name|encodingStream
 argument_list|(
@@ -8300,7 +8300,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|handleException (Throwable err, HttpServletRequest req, HttpServletResponse res)
+DECL|method|handleException ( Throwable err, HttpServletRequest req, HttpServletResponse res)
 specifier|private
 specifier|static
 name|long
@@ -8407,7 +8407,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, @Nullable Throwable err)
+DECL|method|replyError ( HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, @Nullable Throwable err)
 specifier|public
 specifier|static
 name|long
@@ -8455,7 +8455,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, CacheControl c, @Nullable Throwable err)
+DECL|method|replyError ( HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, CacheControl c, @Nullable Throwable err)
 specifier|public
 specifier|static
 name|long

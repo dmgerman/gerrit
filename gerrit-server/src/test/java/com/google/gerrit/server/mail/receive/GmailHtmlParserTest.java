@@ -78,7 +78,7 @@ name|HtmlParserTest
 block|{
 annotation|@
 name|Override
-DECL|method|newHtmlBody (String changeMessage, String c1, String c2, String c3, String f1, String f2, String fc1)
+DECL|method|newHtmlBody ( String changeMessage, String c1, String c2, String c3, String f1, String f2, String fc1)
 specifier|protected
 name|String
 name|newHtmlBody

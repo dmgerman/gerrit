@@ -159,7 +159,7 @@ name|getStatusCode
 argument_list|()
 return|;
 block|}
-comment|/**    * Content type supplied by the server.    *    * This helper simplifies the common {@code getHeader("Content-Type")} case.    */
+comment|/**    * Content type supplied by the server.    *    *<p>This helper simplifies the common {@code getHeader("Content-Type")} case.    */
 DECL|method|getContentType ()
 specifier|public
 name|String

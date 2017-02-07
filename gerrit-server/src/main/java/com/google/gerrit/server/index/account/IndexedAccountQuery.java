@@ -216,7 +216,7 @@ argument_list|<
 name|AccountState
 argument_list|>
 block|{
-DECL|method|IndexedAccountQuery (Index<Account.Id, AccountState> index, Predicate<AccountState> pred, QueryOptions opts)
+DECL|method|IndexedAccountQuery ( Index<Account.Id, AccountState> index, Predicate<AccountState> pred, QueryOptions opts)
 specifier|public
 name|IndexedAccountQuery
 parameter_list|(

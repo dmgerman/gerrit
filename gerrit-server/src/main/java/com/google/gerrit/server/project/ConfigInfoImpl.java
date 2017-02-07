@@ -406,7 +406,7 @@ name|ConfigInfoImpl
 extends|extends
 name|ConfigInfo
 block|{
-DECL|method|ConfigInfoImpl (boolean serverEnableSignedPush, ProjectControl control, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|ConfigInfoImpl ( boolean serverEnableSignedPush, ProjectControl control, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|ConfigInfoImpl
 parameter_list|(
@@ -1398,7 +1398,7 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|getInheritedValue (ProjectState project, PluginConfigFactory cfgFactory, Entry<ProjectConfigEntry> e)
+DECL|method|getInheritedValue ( ProjectState project, PluginConfigFactory cfgFactory, Entry<ProjectConfigEntry> e)
 specifier|private
 name|String
 name|getInheritedValue

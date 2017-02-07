@@ -159,7 +159,7 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|GroupIndexDefinition (GroupIndexCollection indexCollection, GroupIndex.Factory indexFactory, @Nullable AllGroupsIndexer allGroupsIndexer)
+DECL|method|GroupIndexDefinition ( GroupIndexCollection indexCollection, GroupIndex.Factory indexFactory, @Nullable AllGroupsIndexer allGroupsIndexer)
 name|GroupIndexDefinition
 parameter_list|(
 name|GroupIndexCollection

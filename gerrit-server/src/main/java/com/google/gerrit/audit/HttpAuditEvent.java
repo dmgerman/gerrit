@@ -119,7 +119,7 @@ name|Object
 name|input
 decl_stmt|;
 comment|/**    * Creates a new audit event with results    *    * @param sessionId session id the event belongs to    * @param who principal that has generated the event    * @param what object of the event    * @param when time-stamp of when the event started    * @param params parameters of the event    * @param httpMethod HTTP method    * @param input input    * @param status HTTP status    * @param result result of the event    */
-DECL|method|HttpAuditEvent (String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, String httpMethod, Object input, int status, Object result)
+DECL|method|HttpAuditEvent ( String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, String httpMethod, Object input, int status, Object result)
 specifier|public
 name|HttpAuditEvent
 parameter_list|(

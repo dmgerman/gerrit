@@ -873,7 +873,7 @@ name|s
 parameter_list|)
 comment|/*-{ this.show_tabs = s }-*/
 function_decl|;
-DECL|method|showWhitespaceErrors (Boolean s)
+DECL|method|showWhitespaceErrors ( Boolean s)
 specifier|public
 specifier|final
 specifier|native
@@ -909,7 +909,7 @@ name|s
 parameter_list|)
 comment|/*-{ this.hide_top_menu = s }-*/
 function_decl|;
-DECL|method|autoHideDiffTableHeader (Boolean s)
+DECL|method|autoHideDiffTableHeader ( Boolean s)
 specifier|public
 specifier|final
 specifier|native
@@ -1053,11 +1053,11 @@ name|w
 parameter_list|)
 comment|/*-{ this.line_wrapping = w }-*/
 function_decl|;
-DECL|method|intralineDifference ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|intralineDifference ()
 name|intralineDifference
 parameter_list|()
 comment|/*-{ return this.intraline_difference || false }-*/
@@ -1080,20 +1080,20 @@ name|showTabs
 parameter_list|()
 comment|/*-{ return this.show_tabs || false }-*/
 function_decl|;
-DECL|method|showWhitespaceErrors ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|showWhitespaceErrors ()
 name|showWhitespaceErrors
 parameter_list|()
 comment|/*-{ return this.show_whitespace_errors || false }-*/
 function_decl|;
-DECL|method|syntaxHighlighting ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|syntaxHighlighting ()
 name|syntaxHighlighting
 parameter_list|()
 comment|/*-{ return this.syntax_highlighting || false }-*/
@@ -1107,11 +1107,11 @@ name|hideTopMenu
 parameter_list|()
 comment|/*-{ return this.hide_top_menu || false }-*/
 function_decl|;
-DECL|method|autoHideDiffTableHeader ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|autoHideDiffTableHeader ()
 name|autoHideDiffTableHeader
 parameter_list|()
 comment|/*-{ return this.auto_hide_diff_table_header || false }-*/
@@ -1125,11 +1125,11 @@ name|hideLineNumbers
 parameter_list|()
 comment|/*-{ return this.hide_line_numbers || false }-*/
 function_decl|;
-DECL|method|expandAllComments ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|expandAllComments ()
 name|expandAllComments
 parameter_list|()
 comment|/*-{ return this.expand_all_comments || false }-*/
@@ -1271,7 +1271,7 @@ DECL|method|DiffPreferences ()
 specifier|protected
 name|DiffPreferences
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

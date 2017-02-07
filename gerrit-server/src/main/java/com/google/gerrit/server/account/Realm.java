@@ -191,7 +191,7 @@ name|IdentifiedUser
 name|who
 parameter_list|)
 function_decl|;
-comment|/**    * Locate an account whose local username is the given account name.    *<p>    * Generally this only works for local realms, such as one backed by an LDAP    * directory, or where there is an {@link EmailExpander} configured that knows    * how to convert the accountName into an email address, and then locate the    * user by that email address.    */
+comment|/**    * Locate an account whose local username is the given account name.    *    *<p>Generally this only works for local realms, such as one backed by an LDAP directory, or    * where there is an {@link EmailExpander} configured that knows how to convert the accountName    * into an email address, and then locate the user by that email address.    */
 DECL|method|lookup (String accountName)
 name|Account
 operator|.

@@ -99,7 +99,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * User agent feature tests we don't create permutations for.  *<p>  * Some features aren't worth creating full permutations in GWT for, as each new  * boolean permutation (only two settings) doubles the compile time required. If  * the setting only affects a couple of lines of JavaScript code, the slightly  * larger cache files for user agents that lack the functionality requested is  * trivial compared to the time developers lose building their application.  */
+comment|/**  * User agent feature tests we don't create permutations for.  *  *<p>Some features aren't worth creating full permutations in GWT for, as each new boolean  * permutation (only two settings) doubles the compile time required. If the setting only affects a  * couple of lines of JavaScript code, the slightly larger cache files for user agents that lack the  * functionality requested is trivial compared to the time developers lose building their  * application.  */
 end_comment
 
 begin_class
@@ -379,7 +379,7 @@ specifier|static
 name|boolean
 name|installed
 decl_stmt|;
-comment|/**      * Does the browser have ShockwaveFlash plugin installed?      *<p>      * This method may still return true if the user has disabled Flash or set      * the plugin to "click to run".      */
+comment|/**      * Does the browser have ShockwaveFlash plugin installed?      *      *<p>This method may still return true if the user has disabled Flash or set the plugin to      * "click to run".      */
 DECL|method|isInstalled ()
 specifier|public
 specifier|static
@@ -417,7 +417,7 @@ parameter_list|()
 comment|/*-{       if (navigator.plugins&& navigator.plugins.length) {         if (navigator.plugins['Shockwave Flash'])     return true;         if (navigator.plugins['Shockwave Flash 2.0']) return true;        } else if (navigator.mimeTypes&& navigator.mimeTypes.length) {         var mimeType = navigator.mimeTypes['application/x-shockwave-flash'];         if (mimeType&& mimeType.enabledPlugin) return true;        } else {         try { new ActiveXObject('ShockwaveFlash.ShockwaveFlash.7'); return true; } catch (e) {}         try { new ActiveXObject('ShockwaveFlash.ShockwaveFlash.6'); return true; } catch (e) {}         try { new ActiveXObject('ShockwaveFlash.ShockwaveFlash');   return true; } catch (e) {}       }       return false;     }-*/
 function_decl|;
 block|}
-comment|/**    * Test for and disallow running this application in an&lt;iframe&gt;.    *<p>    * If the application is running within an iframe this method requests a    * browser generated redirect to pop the application out of the iframe into    * the top level window, and then aborts execution by throwing an exception.    * This is call should be placed early within the module's onLoad() method,    * before any real UI can be initialized that an attacking site could try to    * snip out and present in a confusing context.    *<p>    * If the break out works, execution will restart automatically in a proper    * top level window, where the script has full control over the display. If    * the break out fails, execution will abort and stop immediately, preventing    * UI widgets from being created, leaving the user with an empty frame.    */
+comment|/**    * Test for and disallow running this application in an&lt;iframe&gt;.    *    *<p>If the application is running within an iframe this method requests a browser generated    * redirect to pop the application out of the iframe into the top level window, and then aborts    * execution by throwing an exception. This is call should be placed early within the module's    * onLoad() method, before any real UI can be initialized that an attacking site could try to snip    * out and present in a confusing context.    *    *<p>If the break out works, execution will restart automatically in a proper top level window,    * where the script has full control over the display. If the break out fails, execution will    * abort and stop immediately, preventing UI widgets from being created, leaving the user with an    * empty frame.    */
 DECL|method|assertNotInIFrame ()
 specifier|public
 specifier|static
@@ -474,7 +474,7 @@ name|newloc
 parameter_list|)
 comment|/*-{ top.location.href = newloc }-*/
 function_decl|;
-comment|/**    * Test if Gerrit is running on a mobile browser. This check could be    * incomplete, but should cover most cases. Regexes shamelessly borrowed from    * CodeMirror.    */
+comment|/**    * Test if Gerrit is running on a mobile browser. This check could be incomplete, but should cover    * most cases. Regexes shamelessly borrowed from CodeMirror.    */
 DECL|method|isMobile ()
 specifier|public
 specifier|static
@@ -484,7 +484,7 @@ name|isMobile
 parameter_list|()
 comment|/*-{     var ua = $wnd.navigator.userAgent;     var ios = /AppleWebKit/.test(ua)&& /Mobile\/\w+/.test(ua);     return ios         || /Android|webOS|BlackBerry|Opera Mini|Opera Mobi|IEMobile/i.test(ua);   }-*/
 function_decl|;
-comment|/**    * Check if the height of the browser view is greater than its width.    */
+comment|/** Check if the height of the browser view is greater than its width. */
 DECL|method|isPortrait ()
 specifier|public
 specifier|static
@@ -508,7 +508,7 @@ DECL|method|UserAgent ()
 specifier|private
 name|UserAgent
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -90,9 +90,9 @@ specifier|public
 class|class
 name|TagInput
 block|{
+DECL|field|ref
 annotation|@
 name|DefaultInput
-DECL|field|ref
 specifier|public
 name|String
 name|ref

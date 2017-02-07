@@ -346,6 +346,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -355,16 +365,6 @@ operator|.
 name|lib
 operator|.
 name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -511,7 +511,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{     }
+block|{}
 DECL|field|repositoryManager
 specifier|private
 specifier|final

@@ -270,26 +270,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -379,6 +359,26 @@ operator|.
 name|http
 operator|.
 name|HttpServletResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -481,7 +481,7 @@ name|accountResolver
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RunAsFilter (Provider<ReviewDb> db, AuthConfig config, DynamicItem<WebSession> session, AccountResolver accountResolver)
+DECL|method|RunAsFilter ( Provider<ReviewDb> db, AuthConfig config, DynamicItem<WebSession> session, AccountResolver accountResolver)
 name|RunAsFilter
 parameter_list|(
 name|Provider
@@ -768,7 +768,7 @@ parameter_list|(
 name|FilterConfig
 name|filterConfig
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -776,7 +776,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

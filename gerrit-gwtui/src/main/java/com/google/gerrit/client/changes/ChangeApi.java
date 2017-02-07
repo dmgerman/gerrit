@@ -283,7 +283,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A collection of static methods which work on the Gerrit REST API for specific  * changes.  */
+comment|/** A collection of static methods which work on the Gerrit REST API for specific changes. */
 end_comment
 
 begin_class
@@ -345,8 +345,8 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Create a new change.    *    * The new change is created as DRAFT unless the draft workflow is disabled by    * `change.allowDrafts = false` in the configuration, in which case the new    * change is created as NEW.    *    */
-DECL|method|createChange (String project, String branch, String topic, String subject, String base, AsyncCallback<ChangeInfo> cb)
+comment|/**    * Create a new change.    *    *<p>The new change is created as DRAFT unless the draft workflow is disabled by    * `change.allowDrafts = false` in the configuration, in which case the new change is created as    * NEW.    */
+DECL|method|createChange ( String project, String branch, String topic, String subject, String base, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -1397,7 +1397,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Submit a specific revision of a change. */
-DECL|method|cherrypick (int id, String commit, String destination, String message, AsyncCallback<ChangeInfo> cb)
+DECL|method|cherrypick ( int id, String commit, String destination, String message, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -1462,7 +1462,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Edit commit message for specific revision of a change. */
-DECL|method|message (int id, String commit, String message, AsyncCallback<JavaScriptObject> cb)
+DECL|method|message ( int id, String commit, String message, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
@@ -1873,7 +1873,7 @@ DECL|method|MessageInput ()
 specifier|protected
 name|MessageInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|AssigneeInput
 specifier|private
@@ -1912,7 +1912,7 @@ DECL|method|AssigneeInput ()
 specifier|protected
 name|AssigneeInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|TopicInput
 specifier|private
@@ -1951,7 +1951,7 @@ DECL|method|TopicInput ()
 specifier|protected
 name|TopicInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|CreateChangeInput
 specifier|private
@@ -2035,7 +2035,7 @@ name|s
 parameter_list|)
 comment|/*-{ if(s)this.status=s; }-*/
 function_decl|;
-DECL|method|baseChange ( String b)
+DECL|method|baseChange (String b)
 specifier|public
 specifier|final
 specifier|native
@@ -2051,7 +2051,7 @@ DECL|method|CreateChangeInput ()
 specifier|protected
 name|CreateChangeInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|CherryPickInput
 specifier|private
@@ -2101,7 +2101,7 @@ DECL|method|CherryPickInput ()
 specifier|protected
 name|CherryPickInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|RebaseInput
 specifier|private
@@ -2140,7 +2140,7 @@ DECL|method|RebaseInput ()
 specifier|protected
 name|RebaseInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|method|call (int id, String action)
 specifier|private

@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Used to retrieve the project name from an operation **/
+comment|/** Used to retrieve the project name from an operation * */
 end_comment
 
 begin_interface

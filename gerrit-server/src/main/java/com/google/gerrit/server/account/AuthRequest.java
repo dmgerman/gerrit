@@ -137,7 +137,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Information for {@link AccountManager#authenticate(AuthRequest)}.  *<p>  * Callers should populate this object with as much information as possible  * about the user account. For example, OpenID authentication might return  * registration information including a display name for the user, and an email  * address for them. These fields however are optional, as not all OpenID  * providers return them, and not all non-OpenID systems can use them.  */
+comment|/**  * Information for {@link AccountManager#authenticate(AuthRequest)}.  *  *<p>Callers should populate this object with as much information as possible about the user  * account. For example, OpenID authentication might return registration information including a  * display name for the user, and an email address for them. These fields however are optional, as  * not all OpenID providers return them, and not all non-OpenID systems can use them.  */
 end_comment
 
 begin_class
@@ -247,7 +247,7 @@ return|return
 name|r
 return|;
 block|}
-comment|/**    * Create a request for an email address registration.    *<p>    * This type of request should be used only to attach a new email address to    * an existing user account.    */
+comment|/**    * Create a request for an email address registration.    *    *<p>This type of request should be used only to attach a new email address to an existing user    * account.    */
 DECL|method|forEmail (final String email)
 specifier|public
 specifier|static

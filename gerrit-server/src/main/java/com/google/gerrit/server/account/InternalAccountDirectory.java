@@ -390,7 +390,7 @@ name|userFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalAccountDirectory (AccountCache accountCache, DynamicItem<AvatarProvider> avatar, IdentifiedUser.GenericFactory userFactory)
+DECL|method|InternalAccountDirectory ( AccountCache accountCache, DynamicItem<AvatarProvider> avatar, IdentifiedUser.GenericFactory userFactory)
 name|InternalAccountDirectory
 parameter_list|(
 name|AccountCache
@@ -429,7 +429,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, Set<FillOptions> options)
+DECL|method|fillAccountInfo (Iterable<? extends AccountInfo> in, Set<FillOptions> options)
 specifier|public
 name|void
 name|fillAccountInfo
@@ -515,7 +515,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fill (AccountInfo info, Account account, @Nullable Collection<AccountExternalId> externalIds, Set<FillOptions> options)
+DECL|method|fill ( AccountInfo info, Account account, @Nullable Collection<AccountExternalId> externalIds, Set<FillOptions> options)
 specifier|private
 name|void
 name|fill
@@ -849,7 +849,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|getSecondaryEmails (Account account, Collection<AccountExternalId> externalIds)
+DECL|method|getSecondaryEmails ( Account account, Collection<AccountExternalId> externalIds)
 specifier|public
 name|List
 argument_list|<

@@ -174,13 +174,13 @@ name|asString
 parameter_list|()
 comment|/*-{ return this.s; }-*/
 function_decl|;
+DECL|method|unwrap (final AsyncCallback<String> cb)
 specifier|public
 specifier|static
 name|AsyncCallback
 argument_list|<
 name|NativeString
 argument_list|>
-DECL|method|unwrap (final AsyncCallback<String> cb)
 name|unwrap
 parameter_list|(
 specifier|final
@@ -285,7 +285,7 @@ DECL|method|NativeString ()
 specifier|protected
 name|NativeString
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

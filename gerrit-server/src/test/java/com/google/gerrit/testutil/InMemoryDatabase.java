@@ -354,20 +354,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -416,8 +402,22 @@ name|DataSource
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
 begin_comment
-comment|/**  * An in-memory test instance of {@link ReviewDb} database.  *<p>  * Test classes should create one instance of this class for each unique test  * database they want to use. When the tests needing this instance are complete,  * ensure that {@link #drop(InMemoryDatabase)} is called to free the resources so  * the JVM running the unit tests doesn't run out of heap space.  */
+comment|/**  * An in-memory test instance of {@link ReviewDb} database.  *  *<p>Test classes should create one instance of this class for each unique test database they want  * to use. When the tests needing this instance are complete, ensure that {@link  * #drop(InMemoryDatabase)} is called to free the resources so the JVM running the unit tests  * doesn't run out of heap space.  */
 end_comment
 
 begin_class

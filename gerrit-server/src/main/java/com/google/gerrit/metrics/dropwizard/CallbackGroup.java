@@ -107,7 +107,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Run a user specified trigger only once every 2 seconds.  *<p>  * This allows the same Runnable trigger to be applied to several metrics. When  * a recorder is sampling the related metrics only the first access will perform  * recomputation. Reading other related metrics will rely on the already set  * values for the next several seconds.  */
+comment|/**  * Run a user specified trigger only once every 2 seconds.  *  *<p>This allows the same Runnable trigger to be applied to several metrics. When a recorder is  * sampling the related metrics only the first access will perform recomputation. Reading other  * related metrics will rely on the already set values for the next several seconds.  */
 end_comment
 
 begin_class

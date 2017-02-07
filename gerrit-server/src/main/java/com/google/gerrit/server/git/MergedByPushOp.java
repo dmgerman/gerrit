@@ -396,6 +396,38 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ExecutorService
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -484,38 +516,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ExecutorService
-import|;
-end_import
-
 begin_class
 DECL|class|MergedByPushOp
 specifier|public
@@ -547,7 +547,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (RequestScopePropagator requestScopePropagator, PatchSet.Id psId, String refName)
+DECL|method|create ( RequestScopePropagator requestScopePropagator, PatchSet.Id psId, String refName)
 name|MergedByPushOp
 name|create
 parameter_list|(
@@ -760,7 +760,7 @@ return|return
 name|refName
 return|;
 block|}
-DECL|method|setPatchSetProvider ( Provider<PatchSet> patchSetProvider)
+DECL|method|setPatchSetProvider (Provider<PatchSet> patchSetProvider)
 specifier|public
 name|MergedByPushOp
 name|setPatchSetProvider

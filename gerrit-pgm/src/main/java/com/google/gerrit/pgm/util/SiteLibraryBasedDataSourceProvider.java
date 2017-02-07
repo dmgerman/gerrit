@@ -200,20 +200,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|nio
@@ -231,6 +217,20 @@ operator|.
 name|sql
 operator|.
 name|DataSource
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -261,7 +261,7 @@ name|init
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SiteLibraryBasedDataSourceProvider (SitePaths site, @GerritServerConfig Config cfg, MetricMaker metrics, ThreadSettingsConfig tsc, DataSourceProvider.Context ctx, DataSourceType dst)
+DECL|method|SiteLibraryBasedDataSourceProvider ( SitePaths site, @GerritServerConfig Config cfg, MetricMaker metrics, ThreadSettingsConfig tsc, DataSourceProvider.Context ctx, DataSourceType dst)
 name|SiteLibraryBasedDataSourceProvider
 parameter_list|(
 name|SitePaths

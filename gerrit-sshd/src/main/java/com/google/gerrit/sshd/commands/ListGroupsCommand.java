@@ -370,6 +370,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -377,16 +387,6 @@ operator|.
 name|args4j
 operator|.
 name|Option
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|PrintWriter
 import|;
 end_import
 
@@ -413,9 +413,9 @@ name|ListGroupsCommand
 extends|extends
 name|SshCommand
 block|{
+DECL|field|impl
 annotation|@
 name|Inject
-DECL|field|impl
 specifier|private
 name|MyListGroups
 name|impl
@@ -516,7 +516,7 @@ name|verboseOutput
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MyListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final GetGroups accountGetGroups, final GroupJson json, GroupBackend groupBackend)
+DECL|method|MyListGroups ( final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final GetGroups accountGetGroups, final GroupJson json, GroupBackend groupBackend)
 name|MyListGroups
 parameter_list|(
 specifier|final

@@ -124,20 +124,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -163,6 +149,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|PersonIdent
 import|;
 end_import
 
@@ -353,7 +353,7 @@ specifier|public
 name|String
 name|status
 decl_stmt|;
-DECL|method|TestAccount (Account.Id id, String username, String email, String fullName, KeyPair sshKey, String httpPassword)
+DECL|method|TestAccount ( Account.Id id, String username, String email, String fullName, KeyPair sshKey, String httpPassword)
 name|TestAccount
 parameter_list|(
 name|Account

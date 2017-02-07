@@ -167,7 +167,7 @@ DECL|method|NameKey ()
 specifier|protected
 name|NameKey
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|NameKey (final String n)
 specifier|public
 name|NameKey
@@ -259,7 +259,7 @@ DECL|method|UUID ()
 specifier|protected
 name|UUID
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|UUID (final String n)
 specifier|public
 name|UUID
@@ -407,7 +407,7 @@ DECL|method|Id ()
 specifier|protected
 name|Id
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|Id (final int id)
 specifier|public
 name|Id
@@ -562,7 +562,7 @@ specifier|protected
 name|UUID
 name|groupUUID
 decl_stmt|;
-comment|/**    * Identity of the group whose members can manage this group.    *<p>    * This can be a self-reference to indicate the group's members manage itself.    */
+comment|/**    * Identity of the group whose members can manage this group.    *    *<p>This can be a self-reference to indicate the group's members manage itself.    */
 annotation|@
 name|Column
 argument_list|(
@@ -579,8 +579,8 @@ DECL|method|AccountGroup ()
 specifier|protected
 name|AccountGroup
 parameter_list|()
-block|{   }
-DECL|method|AccountGroup (final AccountGroup.NameKey newName, final AccountGroup.Id newId, final AccountGroup.UUID uuid)
+block|{}
+DECL|method|AccountGroup ( final AccountGroup.NameKey newName, final AccountGroup.Id newId, final AccountGroup.UUID uuid)
 specifier|public
 name|AccountGroup
 parameter_list|(

@@ -526,7 +526,7 @@ argument_list|<
 name|?
 argument_list|>
 argument_list|>
-block|{   }
+block|{}
 DECL|field|uiBinder
 specifier|static
 specifier|final
@@ -542,9 +542,9 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|textPanel
 annotation|@
 name|UiField
-DECL|field|textPanel
 name|SimplePanel
 name|textPanel
 decl_stmt|;
@@ -558,21 +558,21 @@ specifier|private
 name|StartEditHandlers
 name|startHandlers
 decl_stmt|;
+DECL|field|editIcon
 annotation|@
 name|UiField
-DECL|field|editIcon
 name|Image
 name|editIcon
 decl_stmt|;
+DECL|field|editPanel
 annotation|@
 name|UiField
-DECL|field|editPanel
 name|SimplePanel
 name|editPanel
 decl_stmt|;
+DECL|field|errorLabel
 annotation|@
 name|UiField
-DECL|field|errorLabel
 name|DivElement
 name|errorLabel
 decl_stmt|;

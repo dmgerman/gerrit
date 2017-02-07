@@ -296,6 +296,106 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|bouncycastle
@@ -442,106 +542,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Date
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
 comment|/** Checker for GPG public keys for use in a push certificate. */
 end_comment
@@ -607,7 +607,7 @@ operator|new
 name|Date
 argument_list|()
 decl_stmt|;
-comment|/**    * Enable web-of-trust checks.    *<p>    * If enabled, a store must be set with {@link #setStore(PublicKeyStore)}.    * (These methods are separate since the store is a closeable resource that    * may not be available when reading trusted keys from a config.)    *    * @param maxTrustDepth maximum depth to search while looking for a trusted    *     key.    * @param trusted ultimately trusted key fingerprints, keyed by fingerprint;    *     may not be empty. To construct a map, see {@link    *     Fingerprint#byId(Iterable)}.    * @return a reference to this object.    */
+comment|/**    * Enable web-of-trust checks.    *    *<p>If enabled, a store must be set with {@link #setStore(PublicKeyStore)}. (These methods are    * separate since the store is a closeable resource that may not be available when reading trusted    * keys from a config.)    *    * @param maxTrustDepth maximum depth to search while looking for a trusted key.    * @param trusted ultimately trusted key fingerprints, keyed by fingerprint; may not be empty. To    *     construct a map, see {@link Fingerprint#byId(Iterable)}.    * @return a reference to this object.    */
 DECL|method|enableTrust (int maxTrustDepth, Map<Long, Fingerprint> trusted)
 specifier|public
 name|PublicKeyChecker
@@ -728,7 +728,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Set the effective time for checking the key.    *<p>    * If set, check whether the key should be considered valid (e.g. unexpired)    * as of this time.    *    * @param effectiveTime effective time.    * @return a reference to this object.    */
+comment|/**    * Set the effective time for checking the key.    *    *<p>If set, check whether the key should be considered valid (e.g. unexpired) as of this time.    *    * @param effectiveTime effective time.    * @return a reference to this object.    */
 DECL|method|setEffectiveTime (Date effectiveTime)
 specifier|public
 name|PublicKeyChecker
@@ -808,7 +808,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Perform custom checks.    *<p>    * Default implementation reports no problems, but may be overridden by    * subclasses.    *    * @param key the public key.    * @param depth the depth from the initial key passed to {@link #check(    *     PGPPublicKey)}: 0 if this was the initial key, up to a maximum of    *     {@code maxTrustDepth}.    * @return the result of the custom check.    */
+comment|/**    * Perform custom checks.    *    *<p>Default implementation reports no problems, but may be overridden by subclasses.    *    * @param key the public key.    * @param depth the depth from the initial key passed to {@link #check( PGPPublicKey)}: 0 if this    *     was the initial key, up to a maximum of {@code maxTrustDepth}.    * @return the result of the custom check.    */
 DECL|method|checkCustom (PGPPublicKey key, int depth)
 specifier|public
 name|CheckResult
@@ -1268,7 +1268,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isRevocationValid (PGPSignature revocation, RevocationReason reason, Date now)
+DECL|method|isRevocationValid ( PGPSignature revocation, RevocationReason reason, Date now)
 specifier|private
 specifier|static
 name|boolean
@@ -1311,7 +1311,7 @@ name|now
 argument_list|)
 return|;
 block|}
-DECL|method|scanRevocations (PGPPublicKey key, Date now, List<PGPSignature> revocations, Map<Long, RevocationKey> revokers)
+DECL|method|scanRevocations ( PGPPublicKey key, Date now, List<PGPSignature> revocations, Map<Long, RevocationKey> revokers)
 specifier|private
 name|PGPSignature
 name|scanRevocations
@@ -1604,7 +1604,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|checkRevocations (PGPPublicKey key, List<PGPSignature> revocations, Map<Long, RevocationKey> revokers, List<String> problems)
+DECL|method|checkRevocations ( PGPPublicKey key, List<PGPSignature> revocations, Map<Long, RevocationKey> revokers, List<String> problems)
 specifier|private
 name|void
 name|checkRevocations
@@ -2061,7 +2061,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|checkWebOfTrust (PGPPublicKey key, PublicKeyStore store, int depth, Set<Fingerprint> seen)
+DECL|method|checkWebOfTrust ( PGPPublicKey key, PublicKeyStore store, int depth, Set<Fingerprint> seen)
 specifier|private
 name|CheckResult
 name|checkWebOfTrust
@@ -2450,7 +2450,7 @@ name|problems
 argument_list|)
 return|;
 block|}
-DECL|method|getSigner (PublicKeyStore store, PGPSignature sig, String userId, PGPPublicKey key, List<CheckResult> results)
+DECL|method|getSigner ( PublicKeyStore store, PGPSignature sig, String userId, PGPPublicKey key, List<CheckResult> results)
 specifier|private
 specifier|static
 name|PGPPublicKey

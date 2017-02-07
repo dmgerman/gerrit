@@ -259,7 +259,7 @@ name|createTagFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TagsCollection (DynamicMap<RestView<TagResource>> views, Provider<ListTags> list, CreateTag.Factory createTagFactory)
+DECL|method|TagsCollection ( DynamicMap<RestView<TagResource>> views, Provider<ListTags> list, CreateTag.Factory createTagFactory)
 specifier|public
 name|TagsCollection
 parameter_list|(

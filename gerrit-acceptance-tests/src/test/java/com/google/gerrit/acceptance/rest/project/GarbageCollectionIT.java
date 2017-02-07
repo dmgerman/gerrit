@@ -180,9 +180,9 @@ name|GarbageCollectionIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|gcAssert
 annotation|@
 name|Inject
-DECL|field|gcAssert
 specifier|private
 name|GcAssert
 name|gcAssert

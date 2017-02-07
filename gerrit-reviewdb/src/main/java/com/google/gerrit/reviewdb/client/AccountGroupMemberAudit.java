@@ -380,8 +380,8 @@ DECL|method|AccountGroupMemberAudit ()
 specifier|protected
 name|AccountGroupMemberAudit
 parameter_list|()
-block|{   }
-DECL|method|AccountGroupMemberAudit (final AccountGroupMember m, final Account.Id adder, Timestamp addedOn)
+block|{}
+DECL|method|AccountGroupMemberAudit ( final AccountGroupMember m, final Account.Id adder, Timestamp addedOn)
 specifier|public
 name|AccountGroupMemberAudit
 parameter_list|(

@@ -1717,7 +1717,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|formatUserList (ChangeScreen.Style style, Collection<? extends AccountInfo> in, Set<Integer> removable, String label, Map<Integer, VotableInfo> votable)
+DECL|method|formatUserList ( ChangeScreen.Style style, Collection<? extends AccountInfo> in, Set<Integer> removable, String label, Map<Integer, VotableInfo> votable)
 specifier|static
 name|SafeHtml
 name|formatUserList

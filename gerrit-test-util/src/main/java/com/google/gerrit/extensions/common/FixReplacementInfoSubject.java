@@ -188,9 +188,9 @@ name|SubjectFactory
 argument_list|<
 name|FixReplacementInfoSubject
 argument_list|,
-DECL|field|FIX_REPLACEMENT_INFO_SUBJECT_FACTORY
 name|FixReplacementInfo
 argument_list|>
+DECL|field|FIX_REPLACEMENT_INFO_SUBJECT_FACTORY
 name|FIX_REPLACEMENT_INFO_SUBJECT_FACTORY
 init|=
 operator|new
@@ -227,7 +227,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-DECL|method|assertThat ( FixReplacementInfo fixReplacementInfo)
+DECL|method|assertThat (FixReplacementInfo fixReplacementInfo)
 specifier|public
 specifier|static
 name|FixReplacementInfoSubject
@@ -249,7 +249,7 @@ name|fixReplacementInfo
 argument_list|)
 return|;
 block|}
-DECL|method|FixReplacementInfoSubject (FailureStrategy failureStrategy, FixReplacementInfo fixReplacementInfo)
+DECL|method|FixReplacementInfoSubject ( FailureStrategy failureStrategy, FixReplacementInfo fixReplacementInfo)
 specifier|private
 name|FixReplacementInfoSubject
 parameter_list|(

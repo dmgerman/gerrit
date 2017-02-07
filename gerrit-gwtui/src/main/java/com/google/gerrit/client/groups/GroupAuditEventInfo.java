@@ -156,15 +156,15 @@ enum|enum
 name|Type
 block|{
 DECL|enumConstant|ADD_USER
-DECL|enumConstant|REMOVE_USER
-DECL|enumConstant|ADD_GROUP
-DECL|enumConstant|REMOVE_GROUP
 name|ADD_USER
 block|,
+DECL|enumConstant|REMOVE_USER
 name|REMOVE_USER
 block|,
+DECL|enumConstant|ADD_GROUP
 name|ADD_GROUP
 block|,
+DECL|enumConstant|REMOVE_GROUP
 name|REMOVE_GROUP
 block|}
 DECL|method|date ()
@@ -248,7 +248,7 @@ DECL|method|GroupAuditEventInfo ()
 specifier|protected
 name|GroupAuditEventInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

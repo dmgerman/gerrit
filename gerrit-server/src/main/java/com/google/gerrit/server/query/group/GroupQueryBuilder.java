@@ -189,7 +189,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parses a query string meant to be applied to group objects.  */
+comment|/** Parses a query string meant to be applied to group objects. */
 end_comment
 
 begin_class

@@ -398,7 +398,7 @@ DECL|method|HashtagsUtil ()
 specifier|private
 name|HashtagsUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -108,7 +108,7 @@ name|ParentWebLink
 extends|extends
 name|WebLink
 block|{
-comment|/**    * {@link com.google.gerrit.extensions.common.WebLinkInfo}    * describing a link from a parent revision to an external service.    *    *<p>In order for the web link to be visible    * {@link com.google.gerrit.extensions.common.WebLinkInfo#url}    * and {@link com.google.gerrit.extensions.common.WebLinkInfo#name}    * must be set.<p>    *    * @param projectName Name of the project    * @param commit Commit sha1 of the parent revision    * @return WebLinkInfo that links to parent commit in external service,    * null if there should be no link.    */
+comment|/**    * {@link com.google.gerrit.extensions.common.WebLinkInfo} describing a link from a parent    * revision to an external service.    *    *<p>In order for the web link to be visible {@link    * com.google.gerrit.extensions.common.WebLinkInfo#url} and {@link    * com.google.gerrit.extensions.common.WebLinkInfo#name} must be set.    *    *<p>    *    * @param projectName Name of the project    * @param commit Commit sha1 of the parent revision    * @return WebLinkInfo that links to parent commit in external service, null if there should be no    *     link.    */
 DECL|method|getParentWebLink (String projectName, String commit)
 name|WebLinkInfo
 name|getParentWebLink

@@ -766,7 +766,7 @@ return|return
 name|to
 return|;
 block|}
-DECL|method|addRevisionActions (@ullable ChangeInfo changeInfo, RevisionInfo to, RevisionResource rsrc)
+DECL|method|addRevisionActions ( @ullable ChangeInfo changeInfo, RevisionInfo to, RevisionResource rsrc)
 specifier|public
 name|RevisionInfo
 name|addRevisionActions
@@ -1401,7 +1401,7 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|toActionMap (RevisionResource rsrc, List<ActionVisitor> visitors, ChangeInfo changeInfo, RevisionInfo revisionInfo)
+DECL|method|toActionMap ( RevisionResource rsrc, List<ActionVisitor> visitors, ChangeInfo changeInfo, RevisionInfo revisionInfo)
 specifier|private
 name|Map
 argument_list|<

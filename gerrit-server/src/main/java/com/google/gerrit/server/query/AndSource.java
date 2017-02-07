@@ -389,7 +389,7 @@ name|start
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AndSource (Collection<? extends Predicate<T>> that, IsVisibleToPredicate<T> isVisibleToPredicate, int start)
+DECL|method|AndSource ( Collection<? extends Predicate<T>> that, IsVisibleToPredicate<T> isVisibleToPredicate, int start)
 specifier|public
 name|AndSource
 parameter_list|(

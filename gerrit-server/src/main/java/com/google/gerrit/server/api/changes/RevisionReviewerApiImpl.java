@@ -293,7 +293,7 @@ name|deleteVote
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RevisionReviewerApiImpl (Votes.List listVotes, DeleteVote deleteVote, @Assisted ReviewerResource reviewer)
+DECL|method|RevisionReviewerApiImpl ( Votes.List listVotes, DeleteVote deleteVote, @Assisted ReviewerResource reviewer)
 name|RevisionReviewerApiImpl
 parameter_list|(
 name|Votes

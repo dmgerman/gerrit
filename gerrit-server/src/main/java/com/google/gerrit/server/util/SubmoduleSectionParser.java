@@ -116,34 +116,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|net
@@ -182,8 +154,36 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+import|;
+end_import
+
 begin_comment
-comment|/**  * It parses from a configuration file submodule sections.  *<p>  * Example of submodule sections:  *  *<pre>  * [submodule "project-a"]  *     url = http://localhost/a  *     path = a  *     branch = .  *  * [submodule "project-b"]  *     url = http://localhost/b  *     path = b  *     branch = refs/heads/test  *</pre>  */
+comment|/**  * It parses from a configuration file submodule sections.  *  *<p>Example of submodule sections:  *  *<pre>  * [submodule "project-a"]  *     url = http://localhost/a  *     path = a  *     branch = .  *  * [submodule "project-b"]  *     url = http://localhost/b  *     path = b  *     branch = refs/heads/test  *</pre>  */
 end_comment
 
 begin_class
@@ -212,7 +212,7 @@ operator|.
 name|NameKey
 name|superProjectBranch
 decl_stmt|;
-DECL|method|SubmoduleSectionParser (Config bbc, String canonicalWebUrl, Branch.NameKey superProjectBranch)
+DECL|method|SubmoduleSectionParser ( Config bbc, String canonicalWebUrl, Branch.NameKey superProjectBranch)
 specifier|public
 name|SubmoduleSectionParser
 parameter_list|(

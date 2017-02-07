@@ -159,7 +159,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Secondary index implementation for arbitrary documents.  *<p>  * Documents are inserted into the index and are queried by converting special  * {@link com.google.gerrit.server.query.Predicate} instances into index-aware  * predicates that use the index search results as a source.  *<p>  * Implementations must be thread-safe and should batch inserts/updates where  * appropriate.  */
+comment|/**  * Secondary index implementation for arbitrary documents.  *  *<p>Documents are inserted into the index and are queried by converting special {@link  * com.google.gerrit.server.query.Predicate} instances into index-aware predicates that use the  * index search results as a source.  *  *<p>Implementations must be thread-safe and should batch inserts/updates where appropriate.  */
 end_comment
 
 begin_interface
@@ -195,7 +195,7 @@ name|void
 name|close
 parameter_list|()
 function_decl|;
-comment|/**    * Update a document in the index.    *<p>    * Semantically equivalent to deleting the document and reinserting it with    * new field values. A document that does not already exist is created. Results    * may not be immediately visible to searchers, but should be visible within a    * reasonable amount of time.    *    * @param obj document object    *    * @throws IOException    */
+comment|/**    * Update a document in the index.    *    *<p>Semantically equivalent to deleting the document and reinserting it with new field values. A    * document that does not already exist is created. Results may not be immediately visible to    * searchers, but should be visible within a reasonable amount of time.    *    * @param obj document object    * @throws IOException    */
 DECL|method|replace (V obj)
 name|void
 name|replace
@@ -206,7 +206,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Delete a document from the index by key.    *    * @param key document key    *    * @throws IOException    */
+comment|/**    * Delete a document from the index by key.    *    * @param key document key    * @throws IOException    */
 DECL|method|delete (K key)
 name|void
 name|delete
@@ -225,7 +225,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *<p>    * This method may be called multiple times for variations on the same    * predicate or multiple predicate subtrees in the course of processing a    * single query, so it should not have any side effects (e.g. starting a    * search in the background).    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @param opts query options not implied by the predicate, such as start and    *     limit.    * @return a source of documents matching the predicate, returned in a    *     defined order depending on the type of documents.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
+comment|/**    * Convert the given operator predicate into a source searching the index and returning only the    * documents matching that predicate.    *    *<p>This method may be called multiple times for variations on the same predicate or multiple    * predicate subtrees in the course of processing a single query, so it should not have any side    * effects (e.g. starting a search in the background).    *    * @param p the predicate to match. Must be a tree containing only AND, OR, or NOT predicates as    *     internal nodes, and {@link IndexPredicate}s as leaves.    * @param opts query options not implied by the predicate, such as start and limit.    * @return a source of documents matching the predicate, returned in a defined order depending on    *     the type of documents.    * @throws QueryParseException if the predicate could not be converted to an indexed data source.    */
 DECL|method|getSource (Predicate<V> p, QueryOptions opts)
 name|DataSource
 argument_list|<
@@ -245,7 +245,7 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 function_decl|;
-comment|/**    * Get a single document from the index.    *    * @param key document key.    * @param opts query options. Options that do not make sense in the context of    *     a single document, such as start, will be ignored.    * @return a single document if present.    * @throws IOException    */
+comment|/**    * Get a single document from the index.    *    * @param key document key.    * @param opts query options. Options that do not make sense in the context of a single document,    *     such as start, will be ignored.    * @return a single document if present.    * @throws IOException    */
 DECL|method|get (K key, QueryOptions opts)
 specifier|default
 name|Optional

@@ -246,6 +246,38 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|security
+operator|.
+name|MessageDigest
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|NoSuchAlgorithmException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -288,38 +320,6 @@ name|PersonIdent
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|security
-operator|.
-name|MessageDigest
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|security
-operator|.
-name|NoSuchAlgorithmException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
 begin_comment
 comment|/** Creates a {@link FromAddressGenerator} from the {@link GerritServerConfig} */
 end_comment
@@ -345,7 +345,7 @@ name|generator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FromAddressGeneratorProvider (@erritServerConfig final Config cfg, @AnonymousCowardName final String anonymousCowardName, @GerritPersonIdent final PersonIdent myIdent, final AccountCache accountCache)
+DECL|method|FromAddressGeneratorProvider ( @erritServerConfig final Config cfg, @AnonymousCowardName final String anonymousCowardName, @GerritPersonIdent final PersonIdent myIdent, final AccountCache accountCache)
 name|FromAddressGeneratorProvider
 parameter_list|(
 annotation|@
@@ -680,8 +680,8 @@ specifier|final
 name|Address
 name|serverAddress
 decl_stmt|;
-comment|/**      * From address generator for USER mode      *      * @param accountCache get user account from id      * @param domainPattern allowed user domain pattern that Gerrit can send as      *        the user      * @param anonymousCowardName name used when user's full name is missing      * @param nameRewriteTmpl name template used for rewriting the sender's name      *        when Gerrit can not send as the user      * @param serverAddress serverAddress.name is used when fromId is null and      *        serverAddress.email is used when Gerrit can not send as the user      */
-DECL|method|UserGen (AccountCache accountCache, Pattern domainPattern, String anonymousCowardName, ParameterizedString nameRewriteTmpl, Address serverAddress)
+comment|/**      * From address generator for USER mode      *      * @param accountCache get user account from id      * @param domainPattern allowed user domain pattern that Gerrit can send as the user      * @param anonymousCowardName name used when user's full name is missing      * @param nameRewriteTmpl name template used for rewriting the sender's name when Gerrit can not      *     send as the user      * @param serverAddress serverAddress.name is used when fromId is null and serverAddress.email      *     is used when Gerrit can not send as the user      */
+DECL|method|UserGen ( AccountCache accountCache, Pattern domainPattern, String anonymousCowardName, ParameterizedString nameRewriteTmpl, Address serverAddress)
 name|UserGen
 parameter_list|(
 name|AccountCache
@@ -1100,7 +1100,7 @@ specifier|final
 name|ParameterizedString
 name|namePattern
 decl_stmt|;
-DECL|method|PatternGen (final Address serverAddress, final AccountCache accountCache, final String anonymousCowardName, final ParameterizedString namePattern, final String senderEmail)
+DECL|method|PatternGen ( final Address serverAddress, final AccountCache accountCache, final String anonymousCowardName, final ParameterizedString namePattern, final String senderEmail)
 name|PatternGen
 parameter_list|(
 specifier|final

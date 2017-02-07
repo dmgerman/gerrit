@@ -328,7 +328,7 @@ DECL|method|GroupInfo ()
 specifier|protected
 name|GroupInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|GroupOptionsInfo
 specifier|public
 specifier|static
@@ -337,11 +337,11 @@ name|GroupOptionsInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|isVisibleToAll ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|isVisibleToAll ()
 name|isVisibleToAll
 parameter_list|()
 comment|/*-{ return this['visible_to_all'] ? true : false; }-*/
@@ -350,7 +350,7 @@ DECL|method|GroupOptionsInfo ()
 specifier|protected
 name|GroupOptionsInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

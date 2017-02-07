@@ -517,7 +517,7 @@ name|changeResource
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditApiImpl (ChangeEdits.Detail editDetail, ChangeEdits.Post changeEditsPost, DeleteChangeEdit deleteChangeEdit, RebaseChangeEdit.Rebase rebaseChangeEdit, PublishChangeEdit.Publish publishChangeEdit, ChangeEdits.Get changeEditsGet, ChangeEdits.Put changeEditsPut, ChangeEdits.DeleteContent changeEditDeleteContent, ChangeEdits.GetMessage getChangeEditCommitMessage, ChangeEdits.EditMessage modifyChangeEditCommitMessage, ChangeEdits changeEdits, @Assisted ChangeResource changeResource)
+DECL|method|ChangeEditApiImpl ( ChangeEdits.Detail editDetail, ChangeEdits.Post changeEditsPost, DeleteChangeEdit deleteChangeEdit, RebaseChangeEdit.Rebase rebaseChangeEdit, PublishChangeEdit.Publish publishChangeEdit, ChangeEdits.Get changeEditsGet, ChangeEdits.Put changeEditsPut, ChangeEdits.DeleteContent changeEditDeleteContent, ChangeEdits.GetMessage getChangeEditCommitMessage, ChangeEdits.EditMessage modifyChangeEditCommitMessage, ChangeEdits changeEdits, @Assisted ChangeResource changeResource)
 specifier|public
 name|ChangeEditApiImpl
 parameter_list|(

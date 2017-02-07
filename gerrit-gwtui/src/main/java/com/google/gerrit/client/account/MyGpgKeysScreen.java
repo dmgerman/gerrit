@@ -565,7 +565,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|keys
 annotation|@
 name|UiField
 argument_list|(
@@ -573,6 +572,7 @@ name|provided
 operator|=
 literal|true
 argument_list|)
+DECL|field|keys
 name|GpgKeyTable
 name|keys
 decl_stmt|;

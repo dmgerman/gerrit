@@ -95,7 +95,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An entity that keeps track of what user reviewed what patches.  */
+comment|/** An entity that keeps track of what user reviewed what patches. */
 end_comment
 
 begin_class
@@ -300,7 +300,7 @@ DECL|method|AccountPatchReview ()
 specifier|protected
 name|AccountPatchReview
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|AccountPatchReview (final Patch.Key k, final Account.Id a)
 specifier|public
 name|AccountPatchReview

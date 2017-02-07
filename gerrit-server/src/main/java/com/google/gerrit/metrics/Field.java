@@ -216,7 +216,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Break down metrics by cases of an enum.    *    * @param enumType type of enum    * @param name field name    * @param description field description    * @return enum field    */
-DECL|method|ofEnum (Class<E> enumType, String name, String description)
+DECL|method|ofEnum ( Class<E> enumType, String name, String description)
 specifier|public
 specifier|static
 parameter_list|<
@@ -259,7 +259,7 @@ name|description
 argument_list|)
 return|;
 block|}
-comment|/**    * Break down metrics by string.    *<p>    * Each unique string will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    *    * @param name field name    * @return string field    */
+comment|/**    * Break down metrics by string.    *    *<p>Each unique string will allocate a new submetric.<b>Do not use user content as a field    * value</b> as field values are never reclaimed.    *    * @param name field name    * @return string field    */
 DECL|method|ofString (String name)
 specifier|public
 specifier|static
@@ -282,7 +282,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Break down metrics by string.    *<p>    * Each unique string will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    *    * @param name field name    * @param description field description    * @return string field    */
+comment|/**    * Break down metrics by string.    *    *<p>Each unique string will allocate a new submetric.<b>Do not use user content as a field    * value</b> as field values are never reclaimed.    *    * @param name field name    * @param description field description    * @return string field    */
 DECL|method|ofString (String name, String description)
 specifier|public
 specifier|static
@@ -314,7 +314,7 @@ name|description
 argument_list|)
 return|;
 block|}
-comment|/**    * Break down metrics by integer.    *<p>    * Each unique integer will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    *    * @param name field name    * @return integer field    */
+comment|/**    * Break down metrics by integer.    *    *<p>Each unique integer will allocate a new submetric.<b>Do not use user content as a field    * value</b> as field values are never reclaimed.    *    * @param name field name    * @return integer field    */
 DECL|method|ofInteger (String name)
 specifier|public
 specifier|static
@@ -337,7 +337,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Break down metrics by integer.    *<p>    * Each unique integer will allocate a new submetric.<b>Do not use user    * content as a field value</b> as field values are never reclaimed.    *    * @param name field name    * @param description field description    * @return integer field    */
+comment|/**    * Break down metrics by integer.    *    *<p>Each unique integer will allocate a new submetric.<b>Do not use user content as a field    * value</b> as field values are never reclaimed.    *    * @param name field name    * @param description field description    * @return integer field    */
 DECL|method|ofInteger (String name, String description)
 specifier|public
 specifier|static

@@ -237,7 +237,7 @@ name|emailToken
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RegisterNewEmailSender (EmailArguments ea, EmailTokenVerifier etv, IdentifiedUser callingUser, @Assisted final String address)
+DECL|method|RegisterNewEmailSender ( EmailArguments ea, EmailTokenVerifier etv, IdentifiedUser callingUser, @Assisted final String address)
 specifier|public
 name|RegisterNewEmailSender
 parameter_list|(

@@ -150,7 +150,7 @@ operator|=
 name|path
 expr_stmt|;
 block|}
-DECL|method|SingleFileServlet (Cache<Path, Resource> cache, Path path, boolean refresh, boolean cacheOnClient)
+DECL|method|SingleFileServlet ( Cache<Path, Resource> cache, Path path, boolean refresh, boolean cacheOnClient)
 name|SingleFileServlet
 parameter_list|(
 name|Cache

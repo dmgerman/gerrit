@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Optional interface for {@link RestCollection}.  *<p>  * Collections that implement this interface can accept a {@code PUT} or  * {@code POST} when the parse method throws {@link ResourceNotFoundException}.  */
+comment|/**  * Optional interface for {@link RestCollection}.  *  *<p>Collections that implement this interface can accept a {@code PUT} or {@code POST} when the  * parse method throws {@link ResourceNotFoundException}.  */
 end_comment
 
 begin_interface
@@ -81,7 +81,7 @@ extends|extends
 name|RestResource
 parameter_list|>
 block|{
-comment|/**    * Handle creation of a child resource.    *    * @param parent parent collection handle.    * @param id id of the resource being created.    * @return a view to perform the creation. The create method must embed the id    *         into the newly returned view object, as it will not be passed.    * @throws RestApiException the view cannot be constructed.    */
+comment|/**    * Handle creation of a child resource.    *    * @param parent parent collection handle.    * @param id id of the resource being created.    * @return a view to perform the creation. The create method must embed the id into the newly    *     returned view object, as it will not be passed.    * @throws RestApiException the view cannot be constructed.    */
 DECL|method|create (P parent, IdString id)
 parameter_list|<
 name|I

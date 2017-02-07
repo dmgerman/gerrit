@@ -668,7 +668,7 @@ parameter_list|(
 name|PrologEnvironment
 name|env
 parameter_list|)
-block|{   }
+block|{}
 DECL|method|newMachine ()
 specifier|private
 name|PrologMachineCopy

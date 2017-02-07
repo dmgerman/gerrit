@@ -353,7 +353,7 @@ name|args
 parameter_list|)
 function_decl|;
 comment|/** Prompt the user to make a choice from an allowed list of values. */
-DECL|method|readString (String def, Set<String> allowedValues, String fmt, Object... args)
+DECL|method|readString ( String def, Set<String> allowedValues, String fmt, Object... args)
 specifier|public
 specifier|abstract
 name|String
@@ -1481,7 +1481,7 @@ specifier|public
 name|void
 name|waitForUser
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|password (String fmt, Object... args)
@@ -1545,7 +1545,7 @@ name|Object
 modifier|...
 name|args
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|message (String fmt, Object... args)
@@ -1560,7 +1560,7 @@ name|Object
 modifier|...
 name|args
 parameter_list|)
-block|{     }
+block|{}
 block|}
 block|}
 end_class

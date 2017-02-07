@@ -318,6 +318,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -448,16 +458,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|CreateBranch
 specifier|public
@@ -544,7 +544,7 @@ name|ref
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateBranch (Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, Provider<ReviewDb> db, GitReferenceUpdated referenceUpdated, RefValidationHelper.Factory refHelperFactory, @Assisted String ref)
+DECL|method|CreateBranch ( Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, Provider<ReviewDb> db, GitReferenceUpdated referenceUpdated, RefValidationHelper.Factory refHelperFactory, @Assisted String ref)
 name|CreateBranch
 parameter_list|(
 name|Provider

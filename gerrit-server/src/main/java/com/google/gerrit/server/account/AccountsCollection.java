@@ -439,7 +439,7 @@ name|createAccountFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountsCollection (Provider<ReviewDb> db, Provider<CurrentUser> self, AccountResolver resolver, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<QueryAccounts> list, DynamicMap<RestView<AccountResource>> views, CreateAccount.Factory createAccountFactory)
+DECL|method|AccountsCollection ( Provider<ReviewDb> db, Provider<CurrentUser> self, AccountResolver resolver, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<QueryAccounts> list, DynamicMap<RestView<AccountResource>> views, CreateAccount.Factory createAccountFactory)
 name|AccountsCollection
 parameter_list|(
 name|Provider
@@ -617,7 +617,7 @@ name|user
 argument_list|)
 return|;
 block|}
-comment|/**    * Parses a account ID from a request body and returns the user.    *    * @param id ID of the account, can be a string of the format    *        "{@code Full Name<email@example.com>}", just the email address,    *        a full name if it is unique, an account ID, a user name or    *        "{@code self}" for the calling user    * @return the user, never null.    * @throws UnprocessableEntityException thrown if the account ID cannot be    *         resolved or if the account is not visible to the calling user    */
+comment|/**    * Parses a account ID from a request body and returns the user.    *    * @param id ID of the account, can be a string of the format "{@code Full Name    *<email@example.com>}", just the email address, a full name if it is unique, an account ID,    *     a user name or "{@code self}" for the calling user    * @return the user, never null.    * @throws UnprocessableEntityException thrown if the account ID cannot be resolved or if the    *     account is not visible to the calling user    */
 DECL|method|parse (String id)
 specifier|public
 name|IdentifiedUser
@@ -642,7 +642,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**    * Parses an account ID and returns the user without making any permission    * check whether the current user can see the account.    *    * @param id ID of the account, can be a string of the format    *        "{@code Full Name<email@example.com>}", just the email address,    *        a full name if it is unique, an account ID, a user name or    *        "{@code self}" for the calling user    * @return the user, null if no user is found for the given account ID    * @throws AuthException thrown if 'self' is used as account ID and the    *         current user is not authenticated    * @throws OrmException    */
+comment|/**    * Parses an account ID and returns the user without making any permission check whether the    * current user can see the account.    *    * @param id ID of the account, can be a string of the format "{@code Full Name    *<email@example.com>}", just the email address, a full name if it is unique, an account ID,    *     a user name or "{@code self}" for the calling user    * @return the user, null if no user is found for the given account ID    * @throws AuthException thrown if 'self' is used as account ID and the current user is not    *     authenticated    * @throws OrmException    */
 DECL|method|parseId (String id)
 specifier|public
 name|IdentifiedUser
@@ -665,7 +665,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**    * Like {@link #parse(String)}, but also sets the {@link    * CurrentUser#getRealUser()} on the result.    */
+comment|/**    * Like {@link #parse(String)}, but also sets the {@link CurrentUser#getRealUser()} on the result.    */
 DECL|method|parseOnBehalfOf (@ullable CurrentUser caller, String id)
 specifier|public
 name|IdentifiedUser

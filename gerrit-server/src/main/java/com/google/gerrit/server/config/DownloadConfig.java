@@ -156,20 +156,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -222,8 +208,22 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_comment
-comment|/**  * Download protocol from {@code gerrit.config}.  *<p>  * Only used to configure the built-in set of schemes and commands in the core  * download-commands plugin; not used by other plugins.  */
+comment|/**  * Download protocol from {@code gerrit.config}.  *  *<p>Only used to configure the built-in set of schemes and commands in the core download-commands  * plugin; not used by other plugins.  */
 end_comment
 
 begin_class

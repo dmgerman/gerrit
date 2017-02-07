@@ -544,6 +544,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -667,16 +677,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -2123,7 +2123,7 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|assertCreateFails (ChangeInput in, Class<? extends RestApiException> errType, String errSubstring)
+DECL|method|assertCreateFails ( ChangeInput in, Class<? extends RestApiException> errType, String errSubstring)
 specifier|private
 name|void
 name|assertCreateFails

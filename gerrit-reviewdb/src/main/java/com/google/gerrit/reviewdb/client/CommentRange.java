@@ -138,7 +138,7 @@ DECL|method|CommentRange ()
 specifier|protected
 name|CommentRange
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|CommentRange (int sl, int sc, int el, int ec)
 specifier|public
 name|CommentRange

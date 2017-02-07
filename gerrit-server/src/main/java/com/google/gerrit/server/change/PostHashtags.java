@@ -307,7 +307,7 @@ name|hashtagsFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostHashtags (Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory)
+DECL|method|PostHashtags ( Provider<ReviewDb> db, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory)
 name|PostHashtags
 parameter_list|(
 name|Provider

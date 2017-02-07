@@ -366,7 +366,7 @@ parameter_list|(
 name|FilterConfig
 name|filterConfig
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -374,10 +374,10 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
-DECL|method|doFilter (final ServletRequest request, final ServletResponse response, final FilterChain chain)
+DECL|method|doFilter ( final ServletRequest request, final ServletResponse response, final FilterChain chain)
 specifier|public
 name|void
 name|doFilter

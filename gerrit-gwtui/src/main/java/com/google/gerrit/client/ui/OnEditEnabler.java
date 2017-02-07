@@ -443,7 +443,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Enables a FocusWidget (e.g. a Button) if an edit is detected from any  *  registered input widget.  */
+comment|/**  * Enables a FocusWidget (e.g. a Button) if an edit is detected from any registered input widget.  */
 end_comment
 
 begin_class

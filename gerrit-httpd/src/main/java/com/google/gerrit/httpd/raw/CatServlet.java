@@ -361,7 +361,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Exports a single version of a patch as a normal file download.  *<p>  * This can be relatively unsafe with Microsoft Internet Explorer 6.0 as the  * browser will (rather incorrectly) treat an HTML or JavaScript file its  * supposed to download as though it was served by this site, and will execute  * it with the site's own protection domain. This opens a massive security hole  * so we package the content into a zip file.  */
+comment|/**  * Exports a single version of a patch as a normal file download.  *  *<p>This can be relatively unsafe with Microsoft Internet Explorer 6.0 as the browser will (rather  * incorrectly) treat an HTML or JavaScript file its supposed to download as though it was served by  * this site, and will execute it with the site's own protection domain. This opens a massive  * security hole so we package the content into a zip file.  */
 end_comment
 
 begin_class
@@ -419,7 +419,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CatServlet (Provider<ReviewDb> sf, ChangeControl.GenericFactory ccf, Provider<CurrentUser> usrprv, ChangeEditUtil ceu, PatchSetUtil psu)
+DECL|method|CatServlet ( Provider<ReviewDb> sf, ChangeControl.GenericFactory ccf, Provider<CurrentUser> usrprv, ChangeEditUtil ceu, PatchSetUtil psu)
 name|CatServlet
 parameter_list|(
 name|Provider

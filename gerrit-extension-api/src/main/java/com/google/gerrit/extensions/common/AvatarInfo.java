@@ -72,7 +72,7 @@ specifier|public
 class|class
 name|AvatarInfo
 block|{
-comment|/**    * Size in pixels the UI prefers an avatar image to be.    *    * The web UI prefers avatar images to be square, both    * the height and width of the image should be this size.    * The height is the more important dimension to match    * than the width.    */
+comment|/**    * Size in pixels the UI prefers an avatar image to be.    *    *<p>The web UI prefers avatar images to be square, both the height and width of the image should    * be this size. The height is the more important dimension to match than the width.    */
 DECL|field|DEFAULT_SIZE
 specifier|public
 specifier|static

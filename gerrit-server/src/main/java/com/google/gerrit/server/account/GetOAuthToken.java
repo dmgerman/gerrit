@@ -296,7 +296,7 @@ name|hostName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetOAuthToken (Provider<CurrentUser> self, OAuthTokenCache tokenCache, @CanonicalWebUrl Provider<String> urlProvider)
+DECL|method|GetOAuthToken ( Provider<CurrentUser> self, OAuthTokenCache tokenCache, @CanonicalWebUrl Provider<String> urlProvider)
 name|GetOAuthToken
 parameter_list|(
 name|Provider

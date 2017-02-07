@@ -1793,7 +1793,7 @@ return|return
 name|lastViewToken
 return|;
 block|}
-comment|/**    * Load the screen at the given location, displaying when ready.    *<p>    * If the URL is not already pointing at this location, a new item will be    * added to the browser's history when the screen is fully loaded and    * displayed on the UI.    *    * @param token location to parse, load, and render.    */
+comment|/**    * Load the screen at the given location, displaying when ready.    *    *<p>If the URL is not already pointing at this location, a new item will be added to the    * browser's history when the screen is fully loaded and displayed on the UI.    *    * @param token location to parse, load, and render.    */
 DECL|method|display (final String token)
 specifier|public
 specifier|static
@@ -1840,7 +1840,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Load the screen passed, assuming token can be used to locate it.    *<p>    * The screen is loaded in the background. When it is ready to be visible a    * new item will be added to the browser's history, the screen will be made    * visible, and the window title may be updated.    *<p>    * If {@link Screen#isRequiresSignIn()} is true and the user is not signed in    * yet the screen instance will be discarded, sign-in will take place, and    * will redirect to this location upon success.    *    * @param token location that refers to {@code view}.    * @param view the view to load.    */
+comment|/**    * Load the screen passed, assuming token can be used to locate it.    *    *<p>The screen is loaded in the background. When it is ready to be visible a new item will be    * added to the browser's history, the screen will be made visible, and the window title may be    * updated.    *    *<p>If {@link Screen#isRequiresSignIn()} is true and the user is not signed in yet the screen    * instance will be discarded, sign-in will take place, and will redirect to this location upon    * success.    *    * @param token location that refers to {@code view}.    * @param view the view to load.    */
 DECL|method|display (final String token, final Screen view)
 specifier|public
 specifier|static
@@ -1932,7 +1932,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Update the current history token after a screen change.    *<p>    * The caller has already updated the UI, but wants to publish a different    * history token for the current browser state. This really only makes sense    * if the caller is a {@code TabPanel} and is firing an event when the tab    * changed to a different part.    *    * @param token new location that is already visible.    */
+comment|/**    * Update the current history token after a screen change.    *    *<p>The caller has already updated the UI, but wants to publish a different history token for    * the current browser state. This really only makes sense if the caller is a {@code TabPanel} and    * is firing an event when the tab changed to a different part.    *    * @param token new location that is already visible.    */
 DECL|method|updateImpl (final String token)
 specifier|public
 specifier|static
@@ -2245,7 +2245,7 @@ return|return
 name|xGerritAuth
 return|;
 block|}
-comment|/** @return the preferences of the currently signed in user, the default preferences if not signed in */
+comment|/**    * @return the preferences of the currently signed in user, the default preferences if not signed    *     in    */
 DECL|method|getUserPreferences ()
 specifier|public
 specifier|static
@@ -6340,7 +6340,7 @@ return|return
 name|a
 return|;
 block|}
-DECL|method|addLink (final LinkMenuBar m, final String text, final String historyToken)
+DECL|method|addLink ( final LinkMenuBar m, final String text, final String historyToken)
 specifier|private
 specifier|static
 name|LinkMenuItem
@@ -6381,7 +6381,7 @@ return|return
 name|i
 return|;
 block|}
-DECL|method|insertLink (final LinkMenuBar m, final String text, final String historyToken, final int beforeIndex)
+DECL|method|insertLink ( final LinkMenuBar m, final String text, final String historyToken, final int beforeIndex)
 specifier|private
 specifier|static
 name|void

@@ -207,7 +207,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Cache of {@link ChangeKind} per commit.  *<p>  * This is immutable conditioned on the merge strategy (unless the JGit strategy  * implementation changes, which might invalidate old entries).  */
+comment|/**  * Cache of {@link ChangeKind} per commit.  *  *<p>This is immutable conditioned on the merge strategy (unless the JGit strategy implementation  * changes, which might invalidate old entries).  */
 end_comment
 
 begin_interface
@@ -216,7 +216,7 @@ specifier|public
 interface|interface
 name|ChangeKindCache
 block|{
-DECL|method|getChangeKind (Project.NameKey project, @Nullable Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind ( Project.NameKey project, @Nullable Repository repo, ObjectId prior, ObjectId next)
 name|ChangeKind
 name|getChangeKind
 parameter_list|(

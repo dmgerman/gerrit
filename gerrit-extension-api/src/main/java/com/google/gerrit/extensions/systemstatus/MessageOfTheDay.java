@@ -133,7 +133,7 @@ name|String
 name|getHtmlMessage
 parameter_list|()
 function_decl|;
-comment|/**    * Unique identifier for this message.    *<p>    * Messages with the same identifier will be hidden from the user until    * redisplay has occurred.    *</p>    *    * @return unique message identifier. This identifier should be unique within    *         the server.    */
+comment|/**    * Unique identifier for this message.    *    *<p>Messages with the same identifier will be hidden from the user until redisplay has occurred.    *    * @return unique message identifier. This identifier should be unique within the server.    */
 DECL|method|getMessageId ()
 specifier|public
 specifier|abstract
@@ -141,7 +141,7 @@ name|String
 name|getMessageId
 parameter_list|()
 function_decl|;
-comment|/**    * When should the message be displayed?    *    *<p>    * Default implementation returns {@code tomorrow at 00:00:00 GMT}.    *</p>    *    * @return a future date after which the message should be redisplayed.    */
+comment|/**    * When should the message be displayed?    *    *<p>Default implementation returns {@code tomorrow at 00:00:00 GMT}.    *    * @return a future date after which the message should be redisplayed.    */
 DECL|method|getRedisplay ()
 specifier|public
 name|Date

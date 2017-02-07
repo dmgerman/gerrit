@@ -151,7 +151,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Closeable version of a {@link RequestContext} with manually-specified  * providers.  */
+comment|/** Closeable version of a {@link RequestContext} with manually-specified providers. */
 end_comment
 
 begin_class
@@ -194,7 +194,7 @@ specifier|final
 name|RequestContext
 name|old
 decl_stmt|;
-DECL|method|ManualRequestContext (CurrentUser user, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext)
+DECL|method|ManualRequestContext ( CurrentUser user, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext)
 specifier|public
 name|ManualRequestContext
 parameter_list|(
@@ -228,7 +228,7 @@ name|requestContext
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ManualRequestContext (Provider<CurrentUser> userProvider, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext)
+DECL|method|ManualRequestContext ( Provider<CurrentUser> userProvider, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext)
 specifier|public
 name|ManualRequestContext
 parameter_list|(

@@ -100,9 +100,9 @@ specifier|public
 class|class
 name|AccountInput
 block|{
+DECL|field|username
 annotation|@
 name|DefaultInput
-DECL|field|username
 specifier|public
 name|String
 name|username

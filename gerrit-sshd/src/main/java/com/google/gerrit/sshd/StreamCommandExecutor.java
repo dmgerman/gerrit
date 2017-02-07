@@ -136,7 +136,7 @@ DECL|annotation|StreamCommandExecutor
 specifier|public
 annotation_defn|@interface
 name|StreamCommandExecutor
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

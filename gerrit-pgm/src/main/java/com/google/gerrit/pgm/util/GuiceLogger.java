@@ -215,7 +215,7 @@ DECL|method|GuiceLogger ()
 specifier|private
 name|GuiceLogger
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|getLogger ()
 specifier|public
 specifier|static

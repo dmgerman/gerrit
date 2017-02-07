@@ -139,7 +139,7 @@ DECL|method|RefConfigSection ()
 specifier|public
 name|RefConfigSection
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|RefConfigSection (String name)
 specifier|public
 name|RefConfigSection

@@ -97,7 +97,7 @@ DECL|method|TopMenuList ()
 specifier|protected
 name|TopMenuList
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

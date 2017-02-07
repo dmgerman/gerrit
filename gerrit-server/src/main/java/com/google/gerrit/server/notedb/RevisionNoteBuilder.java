@@ -296,12 +296,12 @@ specifier|static
 class|class
 name|Cache
 block|{
+DECL|field|revisionNoteMap
 specifier|private
 specifier|final
 name|RevisionNoteMap
 argument_list|<
 name|?
-DECL|field|revisionNoteMap
 extends|extends
 name|RevisionNote
 argument_list|<

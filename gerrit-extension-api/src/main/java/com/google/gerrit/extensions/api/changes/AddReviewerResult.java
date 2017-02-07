@@ -109,7 +109,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Result object representing the outcome of a request to add a reviewer.  */
+comment|/** Result object representing the outcome of a request to add a reviewer. */
 end_comment
 
 begin_class
@@ -118,32 +118,32 @@ specifier|public
 class|class
 name|AddReviewerResult
 block|{
-comment|/**    * The identifier of an account or group that was to be added as a reviewer.    */
+comment|/** The identifier of an account or group that was to be added as a reviewer. */
 DECL|field|input
 specifier|public
 name|String
 name|input
 decl_stmt|;
-comment|/**    * If non-null, a string describing why the reviewer could not be added.    */
+comment|/** If non-null, a string describing why the reviewer could not be added. */
+DECL|field|error
 annotation|@
 name|Nullable
-DECL|field|error
 specifier|public
 name|String
 name|error
 decl_stmt|;
-comment|/**    * Non-null and true if the reviewer cannot be added without explicit    * confirmation. This may be the case for groups of a certain size.    */
+comment|/**    * Non-null and true if the reviewer cannot be added without explicit confirmation. This may be    * the case for groups of a certain size.    */
+DECL|field|confirm
 annotation|@
 name|Nullable
-DECL|field|confirm
 specifier|public
 name|Boolean
 name|confirm
 decl_stmt|;
-comment|/**    * List of individual reviewers added to the change. The size of this    * list may be greater than one (e.g. when a group is added). Null if no    * reviewers were added.    */
+comment|/**    * List of individual reviewers added to the change. The size of this list may be greater than one    * (e.g. when a group is added). Null if no reviewers were added.    */
+DECL|field|reviewers
 annotation|@
 name|Nullable
-DECL|field|reviewers
 specifier|public
 name|List
 argument_list|<
@@ -151,10 +151,10 @@ name|ReviewerInfo
 argument_list|>
 name|reviewers
 decl_stmt|;
-comment|/**    * List of accounts CCed on the change. The size of this list may be    * greater than one (e.g. when a group is CCed). Null if no accounts were CCed    * or if reviewers is non-null.    */
+comment|/**    * List of accounts CCed on the change. The size of this list may be greater than one (e.g. when a    * group is CCed). Null if no accounts were CCed or if reviewers is non-null.    */
+DECL|field|ccs
 annotation|@
 name|Nullable
-DECL|field|ccs
 specifier|public
 name|List
 argument_list|<

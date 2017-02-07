@@ -179,7 +179,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper to create one-off request contexts.  *<p>  * Each call to {@link #open()} opens a new {@link ReviewDb}, so this class  * should only be used in a bounded try/finally block.  *<p>  * The user in the request context is {@link InternalUser} or the  * {@link IdentifiedUser} associated to the userId passed as parameter.  */
+comment|/**  * Helper to create one-off request contexts.  *  *<p>Each call to {@link #open()} opens a new {@link ReviewDb}, so this class should only be used  * in a bounded try/finally block.  *  *<p>The user in the request context is {@link InternalUser} or the {@link IdentifiedUser}  * associated to the userId passed as parameter.  */
 end_comment
 
 begin_class
@@ -223,7 +223,7 @@ name|identifiedUserFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OneOffRequestContext (InternalUser.Factory userFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, IdentifiedUser.GenericFactory identifiedUserFactory)
+DECL|method|OneOffRequestContext ( InternalUser.Factory userFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, IdentifiedUser.GenericFactory identifiedUserFactory)
 name|OneOffRequestContext
 parameter_list|(
 name|InternalUser

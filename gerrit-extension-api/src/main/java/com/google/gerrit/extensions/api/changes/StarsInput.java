@@ -104,7 +104,7 @@ DECL|method|StarsInput ()
 specifier|public
 name|StarsInput
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|StarsInput (Set<String> add)
 specifier|public
 name|StarsInput

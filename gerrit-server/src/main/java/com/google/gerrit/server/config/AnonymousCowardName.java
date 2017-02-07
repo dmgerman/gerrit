@@ -120,7 +120,7 @@ DECL|annotation|AnonymousCowardName
 specifier|public
 annotation_defn|@interface
 name|AnonymousCowardName
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

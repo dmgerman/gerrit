@@ -662,7 +662,7 @@ DECL|method|Definition ()
 specifier|protected
 name|Definition
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|Context
 specifier|static
@@ -671,7 +671,7 @@ name|Context
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create ( Definition def, SimplePanel panel)
+DECL|method|create (Definition def, SimplePanel panel)
 specifier|static
 specifier|final
 name|Context
@@ -781,7 +781,7 @@ name|v
 parameter_list|)
 comment|/*-{ this.p[k] = v; }-*/
 function_decl|;
-DECL|method|create ( JavaScriptObject T, Definition d, Element e)
+DECL|method|create (JavaScriptObject T, Definition d, Element e)
 specifier|private
 specifier|static
 specifier|native
@@ -822,7 +822,7 @@ DECL|method|Context ()
 specifier|protected
 name|Context
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

@@ -401,7 +401,7 @@ name|isInvalid
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|createRange (int startLine, int startCharacter, int endLine, int endCharacter)
+DECL|method|createRange ( int startLine, int startCharacter, int endLine, int endCharacter)
 specifier|private
 name|Comment
 operator|.

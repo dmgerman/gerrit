@@ -108,7 +108,7 @@ name|FileWebLink
 extends|extends
 name|WebLink
 block|{
-comment|/**    * {@link com.google.gerrit.extensions.common.WebLinkInfo}    * describing a link from a file to an external service.    *    *<p>In order for the web link to be visible    * {@link com.google.gerrit.extensions.common.WebLinkInfo#url}    * and {@link com.google.gerrit.extensions.common.WebLinkInfo#name}    * must be set.<p>    *    * @param projectName Name of the project    * @param revision Name of the revision (e.g. branch or commit ID)    * @param fileName Name of the file    * @return WebLinkInfo that links to project in external service,    * null if there should be no link.    */
+comment|/**    * {@link com.google.gerrit.extensions.common.WebLinkInfo} describing a link from a file to an    * external service.    *    *<p>In order for the web link to be visible {@link    * com.google.gerrit.extensions.common.WebLinkInfo#url} and {@link    * com.google.gerrit.extensions.common.WebLinkInfo#name} must be set.    *    *<p>    *    * @param projectName Name of the project    * @param revision Name of the revision (e.g. branch or commit ID)    * @param fileName Name of the file    * @return WebLinkInfo that links to project in external service, null if there should be no link.    */
 DECL|method|getFileWebLink (String projectName, String revision, String fileName)
 name|WebLinkInfo
 name|getFileWebLink

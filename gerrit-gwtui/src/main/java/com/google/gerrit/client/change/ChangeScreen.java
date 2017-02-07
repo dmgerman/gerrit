@@ -1492,18 +1492,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|codemirror
-operator|.
-name|lib
-operator|.
-name|CodeMirror
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -1573,6 +1561,18 @@ operator|.
 name|logging
 operator|.
 name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|codemirror
+operator|.
+name|lib
+operator|.
+name|CodeMirror
 import|;
 end_import
 
@@ -2278,7 +2278,7 @@ specifier|private
 name|RenameFileAction
 name|renameFileAction
 decl_stmt|;
-DECL|method|ChangeScreen (Change.Id changeId, DiffObject base, String revision, boolean openReplyBox, FileTable.Mode mode)
+DECL|method|ChangeScreen ( Change.Id changeId, DiffObject base, String revision, boolean openReplyBox, FileTable.Mode mode)
 specifier|public
 name|ChangeScreen
 parameter_list|(
@@ -2478,7 +2478,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{             }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -2527,7 +2527,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{             }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -3070,7 +3070,7 @@ name|rev
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addExtensionPoint (GerritUiExtensionPoint extensionPoint, Panel p, ChangeInfo change, RevisionInfo rev)
+DECL|method|addExtensionPoint ( GerritUiExtensionPoint extensionPoint, Panel p, ChangeInfo change, RevisionInfo rev)
 specifier|private
 name|void
 name|addExtensionPoint
@@ -3865,7 +3865,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|initRevisionsAction (ChangeInfo info, String revision, NativeMap<ActionInfo> actions)
+DECL|method|initRevisionsAction ( ChangeInfo info, String revision, NativeMap<ActionInfo> actions)
 specifier|private
 name|void
 name|initRevisionsAction
@@ -7234,7 +7234,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|loadDiff (DiffObject base, RevisionInfo baseRev, RevisionInfo rev, Timestamp myLastReply, CallbackGroup group)
+DECL|method|loadDiff ( DiffObject base, RevisionInfo baseRev, RevisionInfo rev, Timestamp myLastReply, CallbackGroup group)
 specifier|private
 name|void
 name|loadDiff
@@ -7391,14 +7391,14 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{             }
+block|{}
 block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|loadFileList (final DiffObject base, final RevisionInfo baseRev, final RevisionInfo rev, final Timestamp myLastReply, CallbackGroup group, final List<NativeMap<JsArray<CommentInfo>>> comments, final List<NativeMap<JsArray<CommentInfo>>> drafts)
+DECL|method|loadFileList ( final DiffObject base, final RevisionInfo baseRev, final RevisionInfo rev, final Timestamp myLastReply, CallbackGroup group, final List<NativeMap<JsArray<CommentInfo>>> comments, final List<NativeMap<JsArray<CommentInfo>>> drafts)
 specifier|private
 name|void
 name|loadFileList
@@ -7705,7 +7705,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{         }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -7852,7 +7852,7 @@ return|return
 name|filtered
 return|;
 block|}
-DECL|method|loadDrafts ( RevisionInfo rev, CallbackGroup group)
+DECL|method|loadDrafts (RevisionInfo rev, CallbackGroup group)
 specifier|private
 name|List
 argument_list|<
@@ -7973,7 +7973,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{           }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -8084,7 +8084,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{           }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -8310,8 +8310,8 @@ literal|"no revision, cannot proceed"
 argument_list|)
 throw|;
 block|}
-comment|/**    * Resolve a revision or patch set id string to RevisionInfo.    * When this view is created from the changes table, revision    * is passed as a real revision.    * When this view is created from side by side (by closing it with 'u')    * patch set id is passed.    *    * @param info change info    * @param revOrId revision or patch set id    * @param defaultValue value returned when revOrId is null    * @return resolved revision or default value    */
-DECL|method|resolveRevisionOrPatchSetId (ChangeInfo info, String revOrId, String defaultValue)
+comment|/**    * Resolve a revision or patch set id string to RevisionInfo. When this view is created from the    * changes table, revision is passed as a real revision. When this view is created from side by    * side (by closing it with 'u') patch set id is passed.    *    * @param info change info    * @param revOrId revision or patch set id    * @param defaultValue value returned when revOrId is null    * @return resolved revision or default value    */
+DECL|method|resolveRevisionOrPatchSetId ( ChangeInfo info, String revOrId, String defaultValue)
 specifier|private
 name|RevisionInfo
 name|resolveRevisionOrPatchSetId
@@ -10617,7 +10617,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * @param parentToken    * @return 1-based parentNum if parentToken is a String which can be parsed as    *     a negative integer i.e. "-1", "-2", etc. If parentToken cannot be    *     parsed as a negative integer, return zero.    */
+comment|/**    * @param parentToken    * @return 1-based parentNum if parentToken is a String which can be parsed as a negative integer    *     i.e. "-1", "-2", etc. If parentToken cannot be parsed as a negative integer, return zero.    */
 DECL|method|toParentNum (String parentToken)
 specifier|private
 specifier|static

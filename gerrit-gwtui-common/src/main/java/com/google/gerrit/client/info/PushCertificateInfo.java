@@ -112,7 +112,7 @@ DECL|method|PushCertificateInfo ()
 specifier|protected
 name|PushCertificateInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

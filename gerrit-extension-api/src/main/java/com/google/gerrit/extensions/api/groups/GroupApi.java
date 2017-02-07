@@ -297,7 +297,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Add members to a group.    *    * @param members list of member identifiers, in any format accepted by    *     {@link com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
+comment|/**    * Add members to a group.    *    * @param members list of member identifiers, in any format accepted by {@link    *     com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
 DECL|method|addMembers (String... members)
 name|void
 name|addMembers
@@ -309,7 +309,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Remove members from a group.    *    * @param members list of member identifiers, in any format accepted by    *     {@link com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
+comment|/**    * Remove members from a group.    *    * @param members list of member identifiers, in any format accepted by {@link    *     com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
 DECL|method|removeMembers (String... members)
 name|void
 name|removeMembers
@@ -332,7 +332,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Add groups to be included in this one.    *    * @param groups list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
+comment|/**    * Add groups to be included in this one.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
 DECL|method|addGroups (String... groups)
 name|void
 name|addGroups
@@ -344,7 +344,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Remove included groups from this one.    *    * @param groups list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
+comment|/**    * Remove included groups from this one.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
 DECL|method|removeGroups (String... groups)
 name|void
 name|removeGroups
@@ -369,7 +369,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Reindexes the group.    *    * Only supported for internal groups.    *    * @throws RestApiException    */
+comment|/**    * Reindexes the group.    *    *<p>Only supported for internal groups.    *    * @throws RestApiException    */
 DECL|method|index ()
 name|void
 name|index
@@ -377,7 +377,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

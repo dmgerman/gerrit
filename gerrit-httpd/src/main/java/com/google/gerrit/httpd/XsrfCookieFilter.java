@@ -422,7 +422,7 @@ name|rsp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setXsrfTokenCookie (HttpServletRequest req, HttpServletResponse rsp, WebSession session)
+DECL|method|setXsrfTokenCookie ( HttpServletRequest req, HttpServletResponse rsp, WebSession session)
 specifier|private
 name|void
 name|setXsrfTokenCookie
@@ -549,7 +549,7 @@ parameter_list|(
 name|FilterConfig
 name|config
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -557,7 +557,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

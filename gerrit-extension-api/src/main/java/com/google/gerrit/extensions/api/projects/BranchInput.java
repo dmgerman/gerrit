@@ -90,9 +90,9 @@ specifier|public
 class|class
 name|BranchInput
 block|{
+DECL|field|revision
 annotation|@
 name|DefaultInput
-DECL|field|revision
 specifier|public
 name|String
 name|revision

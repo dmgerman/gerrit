@@ -138,69 +138,69 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|style ()
 annotation|@
 name|Source
 argument_list|(
 literal|"CommentBox.css"
 argument_list|)
+DECL|method|style ()
 name|CommentBox
 operator|.
 name|Style
 name|style
 parameter_list|()
 function_decl|;
-DECL|method|scrollbarStyle ()
 annotation|@
 name|Source
 argument_list|(
 literal|"Scrollbar.css"
 argument_list|)
+DECL|method|scrollbarStyle ()
 name|Scrollbar
 operator|.
 name|Style
 name|scrollbarStyle
 parameter_list|()
 function_decl|;
-DECL|method|diffTableStyle ()
 annotation|@
 name|Source
 argument_list|(
 literal|"DiffTable.css"
 argument_list|)
+DECL|method|diffTableStyle ()
 name|DiffTable
 operator|.
 name|Style
 name|diffTableStyle
 parameter_list|()
 function_decl|;
-comment|/**    * tango icon library (public domain):    * http://tango.freedesktop.org/Tango_Icon_Library    */
-DECL|method|goPrev ()
+comment|/** tango icon library (public domain): http://tango.freedesktop.org/Tango_Icon_Library */
 annotation|@
 name|Source
 argument_list|(
 literal|"goPrev.png"
 argument_list|)
+DECL|method|goPrev ()
 name|ImageResource
 name|goPrev
 parameter_list|()
 function_decl|;
-DECL|method|goNext ()
 annotation|@
 name|Source
 argument_list|(
 literal|"goNext.png"
 argument_list|)
+DECL|method|goNext ()
 name|ImageResource
 name|goNext
 parameter_list|()
 function_decl|;
-DECL|method|goUp ()
 annotation|@
 name|Source
 argument_list|(
 literal|"goUp.png"
 argument_list|)
+DECL|method|goUp ()
 name|ImageResource
 name|goUp
 parameter_list|()

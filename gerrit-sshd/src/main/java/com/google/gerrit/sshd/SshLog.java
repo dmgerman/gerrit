@@ -485,7 +485,7 @@ name|auditService
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshLog (final Provider<SshSession> session, final Provider<Context> context, SystemLog systemLog, @GerritServerConfig Config config, AuditService auditService)
+DECL|method|SshLog ( final Provider<SshSession> session, final Provider<Context> context, SystemLog systemLog, @GerritServerConfig Config config, AuditService auditService)
 name|SshLog
 parameter_list|(
 specifier|final
@@ -574,7 +574,7 @@ specifier|public
 name|void
 name|start
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|stop ()

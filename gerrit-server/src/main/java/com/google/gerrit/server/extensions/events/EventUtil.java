@@ -348,26 +348,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -413,6 +393,26 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -463,7 +463,7 @@ name|changeJson
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventUtil (ChangeJson.Factory changeJsonFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db)
+DECL|method|EventUtil ( ChangeJson.Factory changeJsonFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db)
 name|EventUtil
 parameter_list|(
 name|ChangeJson
@@ -720,7 +720,7 @@ return|return
 name|accountInfo
 return|;
 block|}
-DECL|method|approvals (Account a, Map<String, Short> approvals, Timestamp ts)
+DECL|method|approvals ( Account a, Map<String, Short> approvals, Timestamp ts)
 specifier|public
 name|Map
 argument_list|<

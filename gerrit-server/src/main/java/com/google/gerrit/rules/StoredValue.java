@@ -161,7 +161,7 @@ specifier|final
 name|Object
 name|key
 decl_stmt|;
-comment|/**    * Initialize a stored value key using any Java Object.    *    * @param key unique identity of the stored value. This will be the hash key    *        in the Prolog Environments's hash map.    */
+comment|/**    * Initialize a stored value key using any Java Object.    *    * @param key unique identity of the stored value. This will be the hash key in the Prolog    *     Environments's hash map.    */
 DECL|method|StoredValue (Object key)
 specifier|public
 name|StoredValue
@@ -177,7 +177,7 @@ operator|=
 name|key
 expr_stmt|;
 block|}
-comment|/**    * Initializes a stored value key with a new unique key.    */
+comment|/** Initializes a stored value key with a new unique key. */
 DECL|method|StoredValue ()
 specifier|public
 name|StoredValue

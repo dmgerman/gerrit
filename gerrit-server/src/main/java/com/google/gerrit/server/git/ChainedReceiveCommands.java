@@ -100,6 +100,56 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -154,58 +204,8 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedHashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
 begin_comment
-comment|/**  * Collection of {@link ReceiveCommand}s that supports multiple updates per ref.  *<p>  * The underlying behavior of {@link BatchRefUpdate} is undefined (an  * implementations vary) when more than one command per ref is added. This class  * works around that limitation by allowing multiple updates per ref, as long as  * the previous new SHA-1 matches the next old SHA-1.  */
+comment|/**  * Collection of {@link ReceiveCommand}s that supports multiple updates per ref.  *  *<p>The underlying behavior of {@link BatchRefUpdate} is undefined (an implementations vary) when  * more than one command per ref is added. This class works around that limitation by allowing  * multiple updates per ref, as long as the previous new SHA-1 matches the next old SHA-1.  */
 end_comment
 
 begin_class
@@ -297,7 +297,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**    * Add a command.    *    * @param cmd command to add. If a command has been previously added for the    *     same ref, the new SHA-1 of the most recent previous command must match    *     the old SHA-1 of this command.    */
+comment|/**    * Add a command.    *    * @param cmd command to add. If a command has been previously added for the same ref, the new    *     SHA-1 of the most recent previous command must match the old SHA-1 of this command.    */
 DECL|method|add (ReceiveCommand cmd)
 specifier|public
 name|void
@@ -439,7 +439,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Get the latest value of a ref according to this sequence of commands.    *<p>    * After the value for a ref is read from the repo once, it is cached as in    * {@link RepoRefCache}.    *    * @see RefCache#get(String)    */
+comment|/**    * Get the latest value of a ref according to this sequence of commands.    *    *<p>After the value for a ref is read from the repo once, it is cached as in {@link    * RepoRefCache}.    *    * @see RefCache#get(String)    */
 annotation|@
 name|Override
 DECL|method|get (String refName)
@@ -513,7 +513,7 @@ name|refName
 argument_list|)
 return|;
 block|}
-comment|/**    * Add commands from this instance to a native JGit batch update.    *<p>    * Exactly one command per ref will be added to the update. The old SHA-1 will    * be the old SHA-1 of the first command added to this instance for that ref;    * the new SHA-1 will be the new SHA-1 of the last command.    *    * @param bru batch update    */
+comment|/**    * Add commands from this instance to a native JGit batch update.    *    *<p>Exactly one command per ref will be added to the update. The old SHA-1 will be the old SHA-1    * of the first command added to this instance for that ref; the new SHA-1 will be the new SHA-1    * of the last command.    *    * @param bru batch update    */
 DECL|method|addTo (BatchRefUpdate bru)
 specifier|public
 name|void

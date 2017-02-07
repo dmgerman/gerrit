@@ -149,7 +149,7 @@ DECL|annotation|UseSsh
 specifier|public
 annotation_defn|@interface
 name|UseSsh
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

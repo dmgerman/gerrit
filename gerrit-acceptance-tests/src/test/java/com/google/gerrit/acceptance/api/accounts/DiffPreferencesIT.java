@@ -346,9 +346,9 @@ name|DiffPreferencesIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|allUsers
 annotation|@
 name|Inject
-DECL|field|allUsers
 specifier|private
 name|AllUsersName
 name|allUsers

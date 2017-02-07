@@ -248,7 +248,7 @@ specifier|final
 name|VoidResult
 name|result
 parameter_list|)
-block|{           }
+block|{}
 annotation|@
 name|Override
 specifier|protected

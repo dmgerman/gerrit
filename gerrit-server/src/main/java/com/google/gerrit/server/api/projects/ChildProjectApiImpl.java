@@ -213,7 +213,7 @@ name|rsrc
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChildProjectApiImpl ( GetChildProject getChildProject, @Assisted ChildProjectResource rsrc)
+DECL|method|ChildProjectApiImpl (GetChildProject getChildProject, @Assisted ChildProjectResource rsrc)
 name|ChildProjectApiImpl
 parameter_list|(
 name|GetChildProject

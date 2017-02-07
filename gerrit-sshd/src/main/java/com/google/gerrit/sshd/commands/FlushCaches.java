@@ -300,18 +300,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -327,6 +315,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
 import|;
 end_import
 
@@ -426,16 +426,16 @@ specifier|private
 name|boolean
 name|list
 decl_stmt|;
+DECL|field|listCaches
 annotation|@
 name|Inject
-DECL|field|listCaches
 specifier|private
 name|ListCaches
 name|listCaches
 decl_stmt|;
+DECL|field|postCaches
 annotation|@
 name|Inject
-DECL|field|postCaches
 specifier|private
 name|PostCaches
 name|postCaches

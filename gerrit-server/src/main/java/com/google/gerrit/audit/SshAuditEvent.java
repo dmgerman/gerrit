@@ -100,7 +100,7 @@ name|SshAuditEvent
 extends|extends
 name|AuditEvent
 block|{
-DECL|method|SshAuditEvent (String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, Object result)
+DECL|method|SshAuditEvent ( String sessionId, CurrentUser who, String what, long when, ListMultimap<String, ?> params, Object result)
 specifier|public
 name|SshAuditEvent
 parameter_list|(

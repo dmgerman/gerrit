@@ -435,7 +435,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Wrapper combining an {@link IndexPredicate} together with a  * {@link ChangeDataSource} that returns matching results from the index.  *<p>  * Appropriate to return as the rootmost predicate that can be processed using  * the secondary index; such predicates must also implement  * {@link ChangeDataSource} to be chosen by the query processor.  */
+comment|/**  * Wrapper combining an {@link IndexPredicate} together with a {@link ChangeDataSource} that returns  * matching results from the index.  *  *<p>Appropriate to return as the rootmost predicate that can be processed using the secondary  * index; such predicates must also implement {@link ChangeDataSource} to be chosen by the query  * processor.  */
 end_comment
 
 begin_class
@@ -489,7 +489,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|createOptions (IndexConfig config, int start, int limit, Set<String> fields)
+DECL|method|createOptions ( IndexConfig config, int start, int limit, Set<String> fields)
 specifier|public
 specifier|static
 name|QueryOptions

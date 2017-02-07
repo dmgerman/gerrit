@@ -250,20 +250,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -279,6 +265,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
 import|;
 end_import
 
@@ -333,7 +333,7 @@ name|createBranchFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BranchesCollection (DynamicMap<RestView<BranchResource>> views, Provider<ListBranches> list, CreateBranch.Factory createBranchFactory)
+DECL|method|BranchesCollection ( DynamicMap<RestView<BranchResource>> views, Provider<ListBranches> list, CreateBranch.Factory createBranchFactory)
 name|BranchesCollection
 parameter_list|(
 name|DynamicMap

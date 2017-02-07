@@ -237,7 +237,7 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|AddFileAction (Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget addButton, FileTable files)
+DECL|method|AddFileAction ( Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget addButton, FileTable files)
 name|AddFileAction
 parameter_list|(
 name|Change

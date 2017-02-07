@@ -734,6 +734,56 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -802,58 +852,8 @@ name|RevFlag
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
-comment|/**  * Base class that submit strategies must extend.  *<p>  * A submit strategy for a certain {@link SubmitType} defines how the submitted  * commits should be merged.  */
+comment|/**  * Base class that submit strategies must extend.  *  *<p>A submit strategy for a certain {@link SubmitType} defines how the submitted commits should be  * merged.  */
 end_comment
 
 begin_class
@@ -1653,7 +1653,7 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Add operations to a batch update that execute this submit strategy.    *<p>    * Guarantees exactly one op is added to the update for each change in the    * input set.    *    * @param bu batch update to add operations to.    * @param toMerge the set of submitted commits that should be merged using    *     this submit strategy. Implementations are responsible for ordering of    *     commits, and will not modify the input in place.    * @throws IntegrationException if an error occurred initializing the    *     operations (as opposed to an error during execution, which will be    *     reported only when the batch update executes the operations).    */
+comment|/**    * Add operations to a batch update that execute this submit strategy.    *    *<p>Guarantees exactly one op is added to the update for each change in the input set.    *    * @param bu batch update to add operations to.    * @param toMerge the set of submitted commits that should be merged using this submit strategy.    *     Implementations are responsible for ordering of commits, and will not modify the input in    *     place.    * @throws IntegrationException if an error occurred initializing the operations (as opposed to an    *     error during execution, which will be reported only when the batch update executes the    *     operations).    */
 DECL|method|addOps (BatchUpdate bu, Set<CodeReviewCommit> toMerge)
 specifier|public
 specifier|final
@@ -1799,7 +1799,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|buildOps ( Collection<CodeReviewCommit> toMerge)
+DECL|method|buildOps (Collection<CodeReviewCommit> toMerge)
 specifier|protected
 specifier|abstract
 name|List

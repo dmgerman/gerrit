@@ -566,26 +566,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -674,8 +654,28 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Utility functions to manipulate patchset approvals.  *<p>  * Approvals are overloaded, they represent both approvals and reviewers  * which should be CCed on a change.  To ensure that reviewers are not lost  * there must always be an approval on each patchset for each reviewer,  * even if the reviewer hasn't actually given a score to the change.  To  * mark the "no score" case, a dummy approval, which may live in any of  * the available categories, with a score of 0 is used.  *<p>  * The methods in this class only modify the gwtorm database.  */
+comment|/**  * Utility functions to manipulate patchset approvals.  *  *<p>Approvals are overloaded, they represent both approvals and reviewers which should be CCed on  * a change. To ensure that reviewers are not lost there must always be an approval on each patchset  * for each reviewer, even if the reviewer hasn't actually given a score to the change. To mark the  * "no score" case, a dummy approval, which may live in any of the available categories, with a  * score of 0 is used.  *  *<p>The methods in this class only modify the gwtorm database.  */
 end_comment
 
 begin_class
@@ -724,7 +724,7 @@ name|getGranted
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|sortApprovals ( Iterable<PatchSetApproval> approvals)
+DECL|method|sortApprovals (Iterable<PatchSetApproval> approvals)
 specifier|public
 specifier|static
 name|List
@@ -749,7 +749,7 @@ name|approvals
 argument_list|)
 return|;
 block|}
-DECL|method|newApproval (PatchSet.Id psId, CurrentUser user, LabelId labelId, int value, Date when)
+DECL|method|newApproval ( PatchSet.Id psId, CurrentUser user, LabelId labelId, int value, Date when)
 specifier|public
 specifier|static
 name|PatchSetApproval
@@ -894,7 +894,7 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|ApprovalsUtil (NotesMigration migration, IdentifiedUser.GenericFactory userFactory, ChangeControl.GenericFactory changeControlFactory, ApprovalCopier copier)
+DECL|method|ApprovalsUtil ( NotesMigration migration, IdentifiedUser.GenericFactory userFactory, ChangeControl.GenericFactory changeControlFactory, ApprovalCopier copier)
 specifier|public
 name|ApprovalsUtil
 parameter_list|(
@@ -994,7 +994,7 @@ name|getReviewers
 argument_list|()
 return|;
 block|}
-comment|/**    * Get all reviewers and CCed accounts for a change.    *    * @param allApprovals all approvals to consider; must all belong to the same    *     change.    * @return reviewers for the change.    * @throws OrmException if reviewers for the change could not be read.    */
+comment|/**    * Get all reviewers and CCed accounts for a change.    *    * @param allApprovals all approvals to consider; must all belong to the same change.    * @return reviewers for the change.    * @throws OrmException if reviewers for the change could not be read.    */
 DECL|method|getReviewers (ChangeNotes notes, Iterable<PatchSetApproval> allApprovals)
 specifier|public
 name|ReviewerSet
@@ -1040,7 +1040,7 @@ name|getReviewers
 argument_list|()
 return|;
 block|}
-comment|/**    * Get updates to reviewer set.    * Always returns empty list for ReviewDb.    *    * @param notes change notes.    * @return reviewer updates for the change.    * @throws OrmException if reviewer updates for the change could not be read.    */
+comment|/**    * Get updates to reviewer set. Always returns empty list for ReviewDb.    *    * @param notes change notes.    * @return reviewer updates for the change.    * @throws OrmException if reviewer updates for the change could not be read.    */
 DECL|method|getReviewerUpdates (ChangeNotes notes)
 specifier|public
 name|List
@@ -1081,7 +1081,7 @@ name|getReviewerUpdates
 argument_list|()
 return|;
 block|}
-DECL|method|addReviewers (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, Change change, PatchSet ps, PatchSetInfo info, Iterable<Account.Id> wantReviewers, Collection<Account.Id> existingReviewers)
+DECL|method|addReviewers ( ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, Change change, PatchSet ps, PatchSetInfo info, Iterable<Account.Id> wantReviewers, Collection<Account.Id> existingReviewers)
 specifier|public
 name|List
 argument_list|<
@@ -1164,7 +1164,7 @@ name|existingReviewers
 argument_list|)
 return|;
 block|}
-DECL|method|addReviewers (ReviewDb db, ChangeNotes notes, ChangeUpdate update, LabelTypes labelTypes, Change change, Iterable<Account.Id> wantReviewers)
+DECL|method|addReviewers ( ReviewDb db, ChangeNotes notes, ChangeUpdate update, LabelTypes labelTypes, Change change, Iterable<Account.Id> wantReviewers)
 specifier|public
 name|List
 argument_list|<
@@ -1336,7 +1336,7 @@ name|existingReviewers
 argument_list|)
 return|;
 block|}
-DECL|method|addReviewers (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, Change change, PatchSet.Id psId, Account.Id authorId, Account.Id committerId, Iterable<Account.Id> wantReviewers, Collection<Account.Id> existingReviewers)
+DECL|method|addReviewers ( ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, Change change, PatchSet.Id psId, Account.Id authorId, Account.Id committerId, Iterable<Account.Id> wantReviewers, Collection<Account.Id> existingReviewers)
 specifier|private
 name|List
 argument_list|<
@@ -1700,7 +1700,7 @@ return|;
 block|}
 block|}
 comment|/**    * Adds accounts to a change as reviewers in the CC state.    *    * @param notes change notes.    * @param update change update.    * @param wantCCs accounts to CC.    * @return whether a change was made.    * @throws OrmException    */
-DECL|method|addCcs (ChangeNotes notes, ChangeUpdate update, Collection<Account.Id> wantCCs)
+DECL|method|addCcs ( ChangeNotes notes, ChangeUpdate update, Collection<Account.Id> wantCCs)
 specifier|public
 name|Collection
 argument_list|<
@@ -1744,7 +1744,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|addCcs (ChangeUpdate update, Collection<Account.Id> wantCCs, ReviewerSet existingReviewers)
+DECL|method|addCcs ( ChangeUpdate update, Collection<Account.Id> wantCCs, ReviewerSet existingReviewers)
 specifier|private
 name|Collection
 argument_list|<
@@ -1832,7 +1832,7 @@ name|need
 return|;
 block|}
 comment|/**    * Adds approvals to ChangeUpdate for a new patch set, and writes to ReviewDb.    *    * @param db review database.    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param changeCtl change control for user adding approvals.    * @param approvals approvals to add.    * @throws OrmException    */
-DECL|method|addApprovalsForNewPatchSet (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, ChangeControl changeCtl, Map<String, Short> approvals)
+DECL|method|addApprovalsForNewPatchSet ( ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, ChangeControl changeCtl, Map<String, Short> approvals)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2381,7 +2381,7 @@ name|psId
 argument_list|)
 return|;
 block|}
-DECL|method|byPatchSetUser (ReviewDb db, ChangeControl ctl, PatchSet.Id psId, Account.Id accountId)
+DECL|method|byPatchSetUser ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, Account.Id accountId)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2611,7 +2611,7 @@ return|return
 name|submitter
 return|;
 block|}
-DECL|method|renderMessageWithApprovals (int patchSetId, Map<String, Short> n, Map<String, PatchSetApproval> c)
+DECL|method|renderMessageWithApprovals ( int patchSetId, Map<String, Short> n, Map<String, PatchSetApproval> c)
 specifier|public
 specifier|static
 name|String

@@ -258,6 +258,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -291,16 +301,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -370,9 +370,9 @@ name|FILE_D
 init|=
 literal|"d.txt"
 decl_stmt|;
+DECL|field|patchListCache
 annotation|@
 name|Inject
-DECL|field|patchListCache
 specifier|private
 name|PatchListCache
 name|patchListCache

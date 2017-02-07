@@ -111,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Specifies JavaScript to dynamically load into the web UI.  *<p>  * To automatically register (instead of writing a Guice module), declare the  * intention with {@code @Listen}, extend the correct class and define a  * constructor to configure the correct resource:  *  *<pre>  *&#064;Listen  * class MyJs extends JavaScriptPlugin {  *   MyJs() {  *     super(&quot;hello.js&quot;);  *   }  * }  *</pre>  *  * @see GwtPlugin  * @see JavaScriptPlugin  */
+comment|/**  * Specifies JavaScript to dynamically load into the web UI.  *  *<p>To automatically register (instead of writing a Guice module), declare the intention with  * {@code @Listen}, extend the correct class and define a constructor to configure the correct  * resource:  *  *<pre>  *&#064;Listen  * class MyJs extends JavaScriptPlugin {  *   MyJs() {  *     super(&quot;hello.js&quot;);  *   }  * }  *</pre>  *  * @see GwtPlugin  * @see JavaScriptPlugin  */
 end_comment
 
 begin_class
@@ -166,7 +166,7 @@ specifier|private
 name|String
 name|pluginName
 decl_stmt|;
-comment|/** @return installed name of the plugin that provides this UI feature.  */
+comment|/** @return installed name of the plugin that provides this UI feature. */
 DECL|method|getPluginName ()
 specifier|public
 specifier|final

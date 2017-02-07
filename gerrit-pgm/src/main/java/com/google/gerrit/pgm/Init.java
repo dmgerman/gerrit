@@ -344,18 +344,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -413,6 +401,18 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
 import|;
 end_import
 
@@ -616,9 +616,9 @@ name|String
 argument_list|>
 name|skippedDownloads
 decl_stmt|;
+DECL|field|browser
 annotation|@
 name|Inject
-DECL|field|browser
 name|Browser
 name|browser
 decl_stmt|;

@@ -505,7 +505,7 @@ name|TEXT_TYPE
 operator|+
 literal|"; charset=utf-8"
 decl_stmt|;
-comment|/**    * Expected JSON content body prefix that prevents XSSI.    *<p>    * The server always includes this line as the first line of the response    * content body when the response body is formatted as JSON. It gets inserted    * by the server to prevent the resource from being imported into another    * domain's page using a&lt;script&gt; tag. This line must be removed before    * the JSON can be parsed.    */
+comment|/**    * Expected JSON content body prefix that prevents XSSI.    *    *<p>The server always includes this line as the first line of the response content body when the    * response body is formatted as JSON. It gets inserted by the server to prevent the resource from    * being imported into another domain's page using a&lt;script&gt; tag. This line must be removed    * before the JSON can be parsed.    */
 DECL|field|JSON_MAGIC
 specifier|private
 specifier|static
@@ -1409,7 +1409,7 @@ specifier|private
 name|String
 name|ifNoneMatch
 decl_stmt|;
-comment|/**    * Initialize a new API call.    *<p>    * By default the JSON format will be selected by including an HTTP Accept    * header in the request.    *    * @param name URL of the REST resource to access, e.g. {@code "/projects/"}    *        to list accessible projects from the server.    */
+comment|/**    * Initialize a new API call.    *    *<p>By default the JSON format will be selected by including an HTTP Accept header in the    * request.    *    * @param name URL of the REST resource to access, e.g. {@code "/projects/"} to list accessible    *     projects from the server.    */
 DECL|method|RestApi (String name)
 specifier|public
 name|RestApi
@@ -2041,7 +2041,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|post ( JavaScriptObject content, AsyncCallback<T> cb)
+DECL|method|post (JavaScriptObject content, AsyncCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
@@ -2072,7 +2072,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|post ( JavaScriptObject content, HttpCallback<T> cb)
+DECL|method|post (JavaScriptObject content, HttpCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
@@ -2275,7 +2275,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|put ( JavaScriptObject content, AsyncCallback<T> cb)
+DECL|method|put (JavaScriptObject content, AsyncCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
@@ -2306,7 +2306,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|put ( JavaScriptObject content, HttpCallback<T> cb)
+DECL|method|put (JavaScriptObject content, HttpCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
@@ -2449,7 +2449,7 @@ name|jso
 parameter_list|)
 comment|/*-{ return JSON.stringify(jso) }-*/
 function_decl|;
-DECL|method|sendText (Method method, String body, HttpCallback<T> cb)
+DECL|method|sendText ( Method method, String body, HttpCallback<T> cb)
 specifier|private
 parameter_list|<
 name|T
@@ -2976,7 +2976,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|wrap ( final AsyncCallback<T> cb)
+DECL|method|wrap (final AsyncCallback<T> cb)
 specifier|private
 specifier|static
 parameter_list|<

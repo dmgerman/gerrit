@@ -1754,96 +1754,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Ref
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevWalk
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -1979,6 +1889,96 @@ operator|.
 name|util
 operator|.
 name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Ref
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -2782,7 +2782,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|format (ChangeData cd, Optional<PatchSet.Id> limitToPsId, boolean fillAccountLoader)
+DECL|method|format ( ChangeData cd, Optional<PatchSet.Id> limitToPsId, boolean fillAccountLoader)
 specifier|private
 name|ChangeInfo
 name|format
@@ -2952,7 +2952,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|formatQueryResults ( List<QueryResult<ChangeData>> in)
+DECL|method|formatQueryResults (List<QueryResult<ChangeData>> in)
 specifier|public
 name|List
 argument_list|<
@@ -4862,7 +4862,7 @@ name|SUBMIT_RULE_OPTIONS_LENIENT
 argument_list|)
 return|;
 block|}
-DECL|method|labelsFor (ChangeControl ctl, ChangeData cd, boolean standard, boolean detailed)
+DECL|method|labelsFor ( ChangeControl ctl, ChangeData cd, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -4982,7 +4982,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|labelsForOpenChange (ChangeControl ctl, ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
+DECL|method|labelsForOpenChange ( ChangeControl ctl, ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -5164,7 +5164,7 @@ return|return
 name|labels
 return|;
 block|}
-DECL|method|initLabels (ChangeData cd, LabelTypes labelTypes, boolean standard)
+DECL|method|initLabels ( ChangeData cd, LabelTypes labelTypes, boolean standard)
 specifier|private
 name|Map
 argument_list|<
@@ -5391,7 +5391,7 @@ return|return
 name|labels
 return|;
 block|}
-DECL|method|setLabelScores (LabelType type, LabelWithStatus l, short score, Account.Id accountId)
+DECL|method|setLabelScores ( LabelType type, LabelWithStatus l, short score, Account.Id accountId)
 specifier|private
 name|void
 name|setLabelScores
@@ -5593,7 +5593,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setAllApprovals (ChangeControl baseCtrl, ChangeData cd, Map<String, LabelWithStatus> labels)
+DECL|method|setAllApprovals ( ChangeControl baseCtrl, ChangeData cd, Map<String, LabelWithStatus> labels)
 specifier|private
 name|void
 name|setAllApprovals
@@ -6929,7 +6929,7 @@ return|return
 name|labels
 return|;
 block|}
-DECL|method|approvalInfo (Account.Id id, Integer value, VotingRangeInfo permittedVotingRange, String tag, Timestamp date)
+DECL|method|approvalInfo ( Account.Id id, Integer value, VotingRangeInfo permittedVotingRange, String tag, Timestamp date)
 specifier|private
 name|ApprovalInfo
 name|approvalInfo
@@ -6979,7 +6979,7 @@ return|return
 name|ai
 return|;
 block|}
-DECL|method|getApprovalInfo (Account.Id id, Integer value, VotingRangeInfo permittedVotingRange, String tag, Timestamp date)
+DECL|method|getApprovalInfo ( Account.Id id, Integer value, VotingRangeInfo permittedVotingRange, String tag, Timestamp date)
 specifier|public
 specifier|static
 name|ApprovalInfo
@@ -7613,7 +7613,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|messages (ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map)
+DECL|method|messages ( ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map)
 specifier|private
 name|Collection
 argument_list|<
@@ -8118,7 +8118,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|toAccountInfo ( Collection<Account.Id> accounts)
+DECL|method|toAccountInfo (Collection<Account.Id> accounts)
 specifier|private
 name|Collection
 argument_list|<
@@ -8212,7 +8212,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|revisions (ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map, ChangeInfo changeInfo)
+DECL|method|revisions ( ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map, ChangeInfo changeInfo)
 specifier|private
 name|Map
 argument_list|<
@@ -8623,7 +8623,7 @@ name|rev
 return|;
 block|}
 block|}
-DECL|method|toRevisionInfo (ChangeControl ctl, ChangeData cd, PatchSet in, @Nullable Repository repo, boolean fillCommit, @Nullable ChangeInfo changeInfo)
+DECL|method|toRevisionInfo ( ChangeControl ctl, ChangeData cd, PatchSet in, @Nullable Repository repo, boolean fillCommit, @Nullable ChangeInfo changeInfo)
 specifier|private
 name|RevisionInfo
 name|toRevisionInfo
@@ -9167,7 +9167,7 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|toCommit (ChangeControl ctl, RevWalk rw, RevCommit commit, boolean addLinks, boolean fillCommit)
+DECL|method|toCommit ( ChangeControl ctl, RevWalk rw, RevCommit commit, boolean addLinks, boolean fillCommit)
 name|CommitInfo
 name|toCommit
 parameter_list|(
@@ -9610,7 +9610,7 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|populateFetchMap (DownloadScheme scheme, DynamicMap<DownloadCommand> commands, String projectName, String refName, FetchInfo fetchInfo)
+DECL|method|populateFetchMap ( DownloadScheme scheme, DynamicMap<DownloadCommand> commands, String projectName, String refName, FetchInfo fetchInfo)
 specifier|public
 specifier|static
 name|void
@@ -9881,9 +9881,9 @@ name|LabelInfo
 name|label
 parameter_list|()
 function_decl|;
-DECL|method|status ()
 annotation|@
 name|Nullable
+DECL|method|status ()
 specifier|abstract
 name|SubmitRecord
 operator|.

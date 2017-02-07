@@ -332,6 +332,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -369,26 +389,6 @@ operator|.
 name|revwalk
 operator|.
 name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -478,7 +478,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectAccess (ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 parameter_list|(
 name|ProjectAccessFactory
@@ -605,7 +605,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateProjectConfig (ProjectControl projectControl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
+DECL|method|updateProjectConfig ( ProjectControl projectControl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 name|ProjectAccess
 name|updateProjectConfig

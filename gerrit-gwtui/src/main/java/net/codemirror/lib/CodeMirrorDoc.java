@@ -127,7 +127,7 @@ DECL|method|CodeMirrorDoc ()
 specifier|protected
 name|CodeMirrorDoc
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

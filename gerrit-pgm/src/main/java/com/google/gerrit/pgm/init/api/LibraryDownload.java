@@ -118,7 +118,7 @@ DECL|annotation|LibraryDownload
 specifier|public
 annotation_defn|@interface
 name|LibraryDownload
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

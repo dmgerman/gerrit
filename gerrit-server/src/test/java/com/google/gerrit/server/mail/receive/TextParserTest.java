@@ -102,21 +102,21 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -953,7 +953,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Create a plaintext message body with the specified comments.    *    * @param changeMessage    * @param c1 Comment in reply to first inline comment.    * @param c2 Comment in reply to second inline comment.    * @param c3 Comment in reply to third inline comment.    * @param f1 Comment on file one.    * @param f2 Comment on file two.    * @param fc1 Comment in reply to a comment of file 1.    * @return A string with all inline comments and the original quoted email.    */
-DECL|method|newPlaintextBody (String changeMessage, String c1, String c2, String c3, String f1, String f2, String fc1)
+DECL|method|newPlaintextBody ( String changeMessage, String c1, String c2, String c3, String f1, String f2, String fc1)
 specifier|private
 specifier|static
 name|String

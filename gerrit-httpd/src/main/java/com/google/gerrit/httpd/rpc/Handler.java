@@ -185,7 +185,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for RPC service implementations.  *<p>  * Typically an RPC service implementation will extend this class and use Guice  * injection to manage its state. For example:  *  *<pre>  *   class Foo extends Handler&lt;Result&gt; {  *     interface Factory {  *       Foo create(... args ...);  *     }  *&#064;Inject  *     Foo(state, @Assisted args) { ... }  *     Result get() throws Exception { ... }  *   }  *</pre>  *  * @param<T> type of result for {@link AsyncCallback#onSuccess(Object)} if the  *        operation completed successfully.  */
+comment|/**  * Base class for RPC service implementations.  *  *<p>Typically an RPC service implementation will extend this class and use Guice injection to  * manage its state. For example:  *  *<pre>  *   class Foo extends Handler&lt;Result&gt; {  *     interface Factory {  *       Foo create(... args ...);  *     }  *&#064;Inject  *     Foo(state, @Assisted args) { ... }  *     Result get() throws Exception { ... }  *   }  *</pre>  *  * @param<T> type of result for {@link AsyncCallback#onSuccess(Object)} if the operation completed  *     successfully.  */
 end_comment
 
 begin_class
@@ -409,7 +409,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Compute the operation result.    *    * @return the result of the operation. Return {@link VoidResult#INSTANCE} if    *         there is no meaningful return value for the operation.    * @throws Exception the operation failed. The caller will log the exception    *         and the stack trace, if it is worth logging on the server side.    */
+comment|/**    * Compute the operation result.    *    * @return the result of the operation. Return {@link VoidResult#INSTANCE} if there is no    *     meaningful return value for the operation.    * @throws Exception the operation failed. The caller will log the exception and the stack trace,    *     if it is worth logging on the server side.    */
 annotation|@
 name|Override
 DECL|method|call ()

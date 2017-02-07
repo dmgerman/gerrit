@@ -168,20 +168,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -228,6 +214,20 @@ name|TimeUnit
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_comment
 comment|/** Module providing the {@link ReceiveCommitsExecutor}. */
 end_comment
@@ -247,7 +247,7 @@ specifier|protected
 name|void
 name|configure
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Provides
 annotation|@

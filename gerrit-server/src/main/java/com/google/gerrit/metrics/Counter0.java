@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Metric whose value increments during the life of the process.  *<p>  * Suitable uses are "total requests handled", "bytes sent", etc.  * Use {@link Description#setRate()} to suggest the monitoring system  * should also track the rate of increments if this is of interest.  *<p>  * For an instantaneous read of a value that can change over time  * (e.g. "memory in use") use a {@link CallbackMetric}.  */
+comment|/**  * Metric whose value increments during the life of the process.  *  *<p>Suitable uses are "total requests handled", "bytes sent", etc. Use {@link  * Description#setRate()} to suggest the monitoring system should also track the rate of increments  * if this is of interest.  *  *<p>For an instantaneous read of a value that can change over time (e.g. "memory in use") use a  * {@link CallbackMetric}.  */
 end_comment
 
 begin_class

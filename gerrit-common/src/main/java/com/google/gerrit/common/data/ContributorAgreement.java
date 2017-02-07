@@ -159,7 +159,7 @@ DECL|method|ContributorAgreement ()
 specifier|protected
 name|ContributorAgreement
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|ContributorAgreement (String name)
 specifier|public
 name|ContributorAgreement

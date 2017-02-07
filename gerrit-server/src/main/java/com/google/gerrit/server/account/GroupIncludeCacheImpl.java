@@ -264,26 +264,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -341,6 +321,26 @@ operator|.
 name|concurrent
 operator|.
 name|ExecutionException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -536,6 +536,7 @@ block|}
 block|}
 return|;
 block|}
+DECL|field|subgroups
 specifier|private
 specifier|final
 name|LoadingCache
@@ -551,9 +552,9 @@ operator|.
 name|UUID
 argument_list|>
 argument_list|>
-DECL|field|subgroups
 name|subgroups
 decl_stmt|;
+DECL|field|parentGroups
 specifier|private
 specifier|final
 name|LoadingCache
@@ -569,7 +570,6 @@ operator|.
 name|UUID
 argument_list|>
 argument_list|>
-DECL|field|parentGroups
 name|parentGroups
 decl_stmt|;
 DECL|field|external
@@ -725,7 +725,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|parentGroupsOf ( AccountGroup.UUID groupId)
+DECL|method|parentGroupsOf (AccountGroup.UUID groupId)
 specifier|public
 name|Collection
 argument_list|<
@@ -947,7 +947,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|load ( AccountGroup.UUID key)
+DECL|method|load (AccountGroup.UUID key)
 specifier|public
 name|ImmutableList
 argument_list|<

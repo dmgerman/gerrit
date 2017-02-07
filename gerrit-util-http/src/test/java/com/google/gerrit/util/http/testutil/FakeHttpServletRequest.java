@@ -2105,7 +2105,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|upgrade ( Class<T> httpUpgradeHandlerClass)
+DECL|method|upgrade (Class<T> httpUpgradeHandlerClass)
 specifier|public
 parameter_list|<
 name|T

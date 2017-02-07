@@ -280,26 +280,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -337,6 +317,26 @@ operator|.
 name|concurrent
 operator|.
 name|ExecutionException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -470,7 +470,7 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountByEmailCacheImpl ( @amedCACHE_NAME) LoadingCache<String, Set<Account.Id>> cache)
+DECL|method|AccountByEmailCacheImpl (@amedCACHE_NAME) LoadingCache<String, Set<Account.Id>> cache)
 name|AccountByEmailCacheImpl
 parameter_list|(
 annotation|@

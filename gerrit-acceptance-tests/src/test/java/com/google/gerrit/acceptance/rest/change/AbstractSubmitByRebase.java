@@ -1335,7 +1335,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|/*         *  (HEAD, origin/master, origin/HEAD) Merge changes X,Y         |\         | *   Merge branch 'master' into origin/master         | |\         | | * SHA Added a         | |/         * | Before         |/         * Initial empty repository      */
+comment|/*        *  (HEAD, origin/master, origin/HEAD) Merge changes X,Y        |\        | *   Merge branch 'master' into origin/master        | |\        | | * SHA Added a        | |/        * | Before        |/        * Initial empty repository     */
 name|RevCommit
 name|initialHead
 init|=

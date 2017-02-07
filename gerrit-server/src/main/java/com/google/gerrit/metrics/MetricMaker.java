@@ -143,7 +143,7 @@ name|Description
 name|desc
 parameter_list|)
 function_decl|;
-DECL|method|newCounter ( String name, Description desc, Field<F1> field1)
+DECL|method|newCounter (String name, Description desc, Field<F1> field1)
 specifier|public
 specifier|abstract
 parameter_list|<
@@ -262,7 +262,7 @@ name|Description
 name|desc
 parameter_list|)
 function_decl|;
-DECL|method|newTimer ( String name, Description desc, Field<F1> field1)
+DECL|method|newTimer (String name, Description desc, Field<F1> field1)
 specifier|public
 specifier|abstract
 parameter_list|<
@@ -381,7 +381,7 @@ name|Description
 name|desc
 parameter_list|)
 function_decl|;
-DECL|method|newHistogram ( String name, Description desc, Field<F1> field1)
+DECL|method|newHistogram (String name, Description desc, Field<F1> field1)
 specifier|public
 specifier|abstract
 parameter_list|<
@@ -577,7 +577,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Instantaneous reading of a value.    *    *<pre>    * metricMaker.newCallbackMetric(&quot;memory&quot;,    *     new Description(&quot;Total bytes of memory used&quot;)    *        .setGauge()    *        .setUnit(Units.BYTES),    *     new Supplier&lt;Long&gt;() {    *       public Long get() {    *         return Runtime.getRuntime().totalMemory();    *       }    *     });    *</pre>    *    * @param name unique name of the metric.    * @param valueClass type of value recorded by the metric.    * @param desc description of the metric.    * @param trigger function to compute the value of the metric.    */
-DECL|method|newCallbackMetric (String name, Class<V> valueClass, Description desc, final Supplier<V> trigger)
+DECL|method|newCallbackMetric ( String name, Class<V> valueClass, Description desc, final Supplier<V> trigger)
 specifier|public
 parameter_list|<
 name|V
@@ -651,7 +651,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    *  Instantaneous reading of a single value.    *    * @param name field name    * @param valueClass field type    * @param desc field description    * @return callback    */
+comment|/**    * Instantaneous reading of a single value.    *    * @param name field name    * @param valueClass field type    * @param desc field description    * @return callback    */
 DECL|method|newCallbackMetric ( String name, Class<V> valueClass, Description desc)
 specifier|public
 specifier|abstract
@@ -748,7 +748,7 @@ name|trigger
 argument_list|)
 return|;
 block|}
-DECL|method|newTrigger (CallbackMetric<?> metric1, CallbackMetric<?> metric2, Runnable trigger)
+DECL|method|newTrigger ( CallbackMetric<?> metric1, CallbackMetric<?> metric2, Runnable trigger)
 specifier|public
 name|RegistrationHandle
 name|newTrigger
@@ -785,7 +785,7 @@ name|trigger
 argument_list|)
 return|;
 block|}
-DECL|method|newTrigger (CallbackMetric<?> metric1, CallbackMetric<?> metric2, CallbackMetric<?> metric3, Runnable trigger)
+DECL|method|newTrigger ( CallbackMetric<?> metric1, CallbackMetric<?> metric2, CallbackMetric<?> metric3, Runnable trigger)
 specifier|public
 name|RegistrationHandle
 name|newTrigger

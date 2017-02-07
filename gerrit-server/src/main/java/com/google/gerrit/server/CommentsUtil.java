@@ -618,6 +618,90 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|StreamSupport
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -714,92 +798,8 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|function
-operator|.
-name|Predicate
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|StreamSupport
-import|;
-end_import
-
 begin_comment
-comment|/**  * Utility functions to manipulate Comments.  *<p>  * These methods either query for and update Comments in the NoteDb or  * ReviewDb, depending on the state of the NotesMigration.  */
+comment|/**  * Utility functions to manipulate Comments.  *  *<p>These methods either query for and update Comments in the NoteDb or ReviewDb, depending on the  * state of the NotesMigration.  */
 end_comment
 
 begin_class
@@ -1191,7 +1191,7 @@ name|serverId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommentsUtil (GitRepositoryManager repoManager, AllUsersName allUsers, NotesMigration migration, @GerritServerId String serverId)
+DECL|method|CommentsUtil ( GitRepositoryManager repoManager, AllUsersName allUsers, NotesMigration migration, @GerritServerId String serverId)
 name|CommentsUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -1234,7 +1234,7 @@ operator|=
 name|serverId
 expr_stmt|;
 block|}
-DECL|method|newComment (ChangeContext ctx, String path, PatchSet.Id psId, short side, String message, @Nullable Boolean unresolved, @Nullable String parentUuid)
+DECL|method|newComment ( ChangeContext ctx, String path, PatchSet.Id psId, short side, String message, @Nullable Boolean unresolved, @Nullable String parentUuid)
 specifier|public
 name|Comment
 name|newComment
@@ -1430,7 +1430,7 @@ return|return
 name|c
 return|;
 block|}
-DECL|method|newRobotComment (ChangeContext ctx, String path, PatchSet.Id psId, short side, String message, String robotId, String robotRunId)
+DECL|method|newRobotComment ( ChangeContext ctx, String path, PatchSet.Id psId, short side, String message, String robotId, String robotRunId)
 specifier|public
 name|RobotComment
 name|newRobotComment
@@ -1918,7 +1918,7 @@ name|comments
 argument_list|)
 return|;
 block|}
-DECL|method|byCommentStatus (ResultSet<PatchLineComment> comments, final PatchLineComment.Status status)
+DECL|method|byCommentStatus ( ResultSet<PatchLineComment> comments, final PatchLineComment.Status status)
 specifier|private
 name|List
 argument_list|<
@@ -2109,7 +2109,7 @@ name|comments
 argument_list|)
 return|;
 block|}
-DECL|method|publishedByChangeFile (ReviewDb db, ChangeNotes notes, Change.Id changeId, String file)
+DECL|method|publishedByChangeFile ( ReviewDb db, ChangeNotes notes, Change.Id changeId, String file)
 specifier|public
 name|List
 argument_list|<
@@ -2317,8 +2317,8 @@ name|psId
 argument_list|)
 return|;
 block|}
-comment|/**    * For the commit message the A side in a diff view is always empty when a    * comparison against an ancestor is done, so there can't be any comments on    * this ancestor. However earlier we showed the auto-merge commit message on    * side A when for a merge commit a comparison against the auto-merge was    * done. From that time there may still be comments on the auto-merge commit    * message and those we want to filter out.    */
-DECL|method|removeCommentsOnAncestorOfCommitMessage ( List<Comment> list)
+comment|/**    * For the commit message the A side in a diff view is always empty when a comparison against an    * ancestor is done, so there can't be any comments on this ancestor. However earlier we showed    * the auto-merge commit message on side A when for a merge commit a comparison against the    * auto-merge was done. From that time there may still be comments on the auto-merge commit    * message and those we want to filter out.    */
+DECL|method|removeCommentsOnAncestorOfCommitMessage (List<Comment> list)
 specifier|private
 name|List
 argument_list|<
@@ -2371,7 +2371,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|draftByPatchSetAuthor (ReviewDb db, PatchSet.Id psId, Account.Id author, ChangeNotes notes)
+DECL|method|draftByPatchSetAuthor ( ReviewDb db, PatchSet.Id psId, Account.Id author, ChangeNotes notes)
 specifier|public
 name|List
 argument_list|<
@@ -2452,7 +2452,7 @@ name|psId
 argument_list|)
 return|;
 block|}
-DECL|method|draftByChangeFileAuthor (ReviewDb db, ChangeNotes notes, String file, Account.Id author)
+DECL|method|draftByChangeFileAuthor ( ReviewDb db, ChangeNotes notes, String file, Account.Id author)
 specifier|public
 name|List
 argument_list|<
@@ -2847,7 +2847,7 @@ return|return
 name|changes
 return|;
 block|}
-DECL|method|putComments (ReviewDb db, ChangeUpdate update, PatchLineComment.Status status, Iterable<Comment> comments)
+DECL|method|putComments ( ReviewDb db, ChangeUpdate update, PatchLineComment.Status status, Iterable<Comment> comments)
 specifier|public
 name|void
 name|putComments
@@ -3490,7 +3490,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**    * Get NoteDb draft refs for a change.    *<p>    * Works if NoteDb is not enabled, but the results are not meaningful.    *<p>    * This is just a simple ref scan, so the results may potentially include refs    * for zombie draft comments. A zombie draft is one which has been published    * but the write to delete the draft ref from All-Users failed.    *    * @param changeId change ID.    * @return raw refs from All-Users repo.    */
+comment|/**    * Get NoteDb draft refs for a change.    *    *<p>Works if NoteDb is not enabled, but the results are not meaningful.    *    *<p>This is just a simple ref scan, so the results may potentially include refs for zombie draft    * comments. A zombie draft is one which has been published but the write to delete the draft ref    * from All-Users failed.    *    * @param changeId change ID.    * @return raw refs from All-Users repo.    */
 DECL|method|getDraftRefs (Change.Id changeId)
 specifier|public
 name|Collection
@@ -3668,7 +3668,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|toComments (final String serverId, Iterable<PatchLineComment> comments)
+DECL|method|toComments ( final String serverId, Iterable<PatchLineComment> comments)
 specifier|public
 specifier|static
 name|List

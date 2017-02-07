@@ -114,20 +114,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|RefSpec
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -163,6 +149,20 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|transport
+operator|.
+name|RefSpec
 import|;
 end_import
 
@@ -323,7 +323,7 @@ return|return
 name|project
 return|;
 block|}
-comment|/**    * Determines if the<code>branch</code> could trigger a    * superproject update as allowed via this subscribe section.    *    * @param branch the branch to check    * @return if the branch could trigger a superproject update    */
+comment|/**    * Determines if the<code>branch</code> could trigger a superproject update as allowed via this    * subscribe section.    *    * @param branch the branch to check    * @return if the branch could trigger a superproject update    */
 DECL|method|appliesTo (Branch.NameKey branch)
 specifier|public
 name|boolean

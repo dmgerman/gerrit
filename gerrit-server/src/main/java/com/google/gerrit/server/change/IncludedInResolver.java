@@ -110,6 +110,86 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -254,88 +334,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
-comment|/**  * Resolve in which tags and branches a commit is included.  */
+comment|/** Resolve in which tags and branches a commit is included. */
 end_comment
 
 begin_class
@@ -419,7 +419,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|includedInOne (final Repository repo, final RevWalk rw, final RevCommit commit, final Collection<Ref> refs)
+DECL|method|includedInOne ( final Repository repo, final RevWalk rw, final RevCommit commit, final Collection<Ref> refs)
 specifier|public
 specifier|static
 name|boolean
@@ -548,7 +548,7 @@ name|RevCommit
 argument_list|>
 name|tipsByCommitTime
 decl_stmt|;
-DECL|method|IncludedInResolver (Repository repo, RevWalk rw, RevCommit target, RevFlag containsTarget)
+DECL|method|IncludedInResolver ( Repository repo, RevWalk rw, RevCommit target, RevFlag containsTarget)
 specifier|private
 name|IncludedInResolver
 parameter_list|(
@@ -810,7 +810,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**    * Resolves which tip refs include the target commit.    */
+comment|/** Resolves which tip refs include the target commit. */
 DECL|method|includedIn (final Collection<RevCommit> tips, int limit)
 specifier|private
 name|Set
@@ -965,7 +965,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Partition the reference tips into two sets:    *<ul>    *<li> before = commits with time<  target.getCommitTime()    *<li> after  = commits with time>= target.getCommitTime()    *</ul>    *    * Each of the before/after lists is sorted by the the commit time.    *    * @param before    * @param after    */
+comment|/**    * Partition the reference tips into two sets:    *    *<ul>    *<li> before = commits with time< target.getCommitTime()    *<li> after = commits with time>= target.getCommitTime()    *</ul>    *    * Each of the before/after lists is sorted by the the commit time.    *    * @param before    * @param after    */
 DECL|method|partition (final List<RevCommit> before, final List<RevCommit> after)
 specifier|private
 name|void
@@ -1100,8 +1100,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Returns the short names of refs which are as well in the matchingRefs list    * as well as in the allRef list.    */
-DECL|method|getMatchingRefNames (Set<String> matchingRefs, Collection<Ref> allRefs)
+comment|/**    * Returns the short names of refs which are as well in the matchingRefs list as well as in the    * allRef list.    */
+DECL|method|getMatchingRefNames ( Set<String> matchingRefs, Collection<Ref> allRefs)
 specifier|private
 specifier|static
 name|List
@@ -1181,7 +1181,7 @@ return|return
 name|refNames
 return|;
 block|}
-comment|/**    * Parse commit of ref and store the relation between ref and commit.    */
+comment|/** Parse commit of ref and store the relation between ref and commit. */
 DECL|method|parseCommits (final Collection<Ref> refs)
 specifier|private
 name|void
@@ -1399,7 +1399,7 @@ DECL|method|Result ()
 specifier|public
 name|Result
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|setBranches (final List<String> b)
 specifier|public
 name|void

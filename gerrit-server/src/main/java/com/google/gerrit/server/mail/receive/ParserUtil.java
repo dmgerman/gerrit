@@ -118,7 +118,7 @@ operator|+
 literal|"(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})"
 argument_list|)
 decl_stmt|;
-comment|/**    * Trims the quotation line that email clients add    * Example: On Sun, Nov 20, 2016 at 10:33 PM,<gerrit@hiesel.it> wrote:    * @param comment Comment parsed from an email.    * @return Trimmed comment.    */
+comment|/**    * Trims the quotation line that email clients add Example: On Sun, Nov 20, 2016 at 10:33 PM,    *<gerrit@hiesel.it> wrote:    *    * @param comment Comment parsed from an email.    * @return Trimmed comment.    */
 DECL|method|trimQuotationLine (String comment)
 specifier|public
 specifier|static

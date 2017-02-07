@@ -403,7 +403,7 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|SuggestReviewers (AccountVisibility av, IdentifiedUser.GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil)
+DECL|method|SuggestReviewers ( AccountVisibility av, IdentifiedUser.GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil)
 specifier|public
 name|SuggestReviewers
 parameter_list|(

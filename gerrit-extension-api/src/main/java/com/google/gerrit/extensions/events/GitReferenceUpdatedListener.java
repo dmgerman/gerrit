@@ -160,10 +160,10 @@ name|boolean
 name|isNonFastForward
 parameter_list|()
 function_decl|;
-comment|/**      * The updater, could be null if it's the server.      */
-DECL|method|getUpdater ()
+comment|/** The updater, could be null if it's the server. */
 annotation|@
 name|Nullable
+DECL|method|getUpdater ()
 name|AccountInfo
 name|getUpdater
 parameter_list|()

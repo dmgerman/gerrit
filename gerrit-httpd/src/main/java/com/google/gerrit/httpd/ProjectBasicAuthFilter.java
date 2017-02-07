@@ -352,42 +352,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|codec
-operator|.
-name|binary
-operator|.
-name|Base64
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -502,8 +466,44 @@ name|HttpServletResponseWrapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|codec
+operator|.
+name|binary
+operator|.
+name|Base64
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Authenticates the current user by HTTP basic authentication.  *<p>  * The current HTTP request is authenticated by looking up the username and  * password from the Base64 encoded Authorization header and validating them  * against any username/password configured authentication system in Gerrit.  * This filter is intended only to protect the {@link GitOverHttpServlet} and  * its handled URLs, which provide remote repository access over HTTP.  *  * @see<a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617</a>  */
+comment|/**  * Authenticates the current user by HTTP basic authentication.  *  *<p>The current HTTP request is authenticated by looking up the username and password from the  * Base64 encoded Authorization header and validating them against any username/password configured  * authentication system in Gerrit. This filter is intended only to protect the {@link  * GitOverHttpServlet} and its handled URLs, which provide remote repository access over HTTP.  *  * @see<a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617</a>  */
 end_comment
 
 begin_class
@@ -587,7 +587,7 @@ name|authConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectBasicAuthFilter (DynamicItem<WebSession> session, AccountCache accountCache, AccountManager accountManager, AuthConfig authConfig)
+DECL|method|ProjectBasicAuthFilter ( DynamicItem<WebSession> session, AccountCache accountCache, AccountManager accountManager, AuthConfig authConfig)
 name|ProjectBasicAuthFilter
 parameter_list|(
 name|DynamicItem
@@ -641,7 +641,7 @@ parameter_list|(
 name|FilterConfig
 name|config
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -649,7 +649,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
@@ -1261,7 +1261,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|passwordMatchesTheUserGeneratedOne (AccountState who, String username, String password)
+DECL|method|passwordMatchesTheUserGeneratedOne ( AccountState who, String username, String password)
 specifier|private
 name|boolean
 name|passwordMatchesTheUserGeneratedOne

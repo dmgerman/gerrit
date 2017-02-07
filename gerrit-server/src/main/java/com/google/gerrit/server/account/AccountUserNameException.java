@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Thrown by {@link AccountManager} if the user name for a newly created account  * could not be set and the realm does not allow the user to set a user name  * manually.  */
+comment|/**  * Thrown by {@link AccountManager} if the user name for a newly created account could not be set  * and the realm does not allow the user to set a user name manually.  */
 end_comment
 
 begin_class

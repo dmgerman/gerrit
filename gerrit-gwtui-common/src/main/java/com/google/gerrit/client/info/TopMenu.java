@@ -110,7 +110,7 @@ DECL|method|TopMenu ()
 specifier|protected
 name|TopMenu
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|getName ()
 specifier|public
 specifier|final

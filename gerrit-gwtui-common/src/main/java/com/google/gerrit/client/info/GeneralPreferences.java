@@ -1496,7 +1496,7 @@ DECL|method|GeneralPreferences ()
 specifier|protected
 name|GeneralPreferences
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

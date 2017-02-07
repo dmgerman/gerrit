@@ -168,24 +168,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|internal
-operator|.
-name|storage
-operator|.
-name|file
-operator|.
-name|FileSnapshot
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|nio
@@ -250,6 +232,24 @@ name|Manifest
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|internal
+operator|.
+name|storage
+operator|.
+name|file
+operator|.
+name|FileSnapshot
+import|;
+end_import
+
 begin_class
 DECL|class|Plugin
 specifier|public
@@ -263,12 +263,12 @@ enum|enum
 name|ApiType
 block|{
 DECL|enumConstant|EXTENSION
-DECL|enumConstant|PLUGIN
-DECL|enumConstant|JS
 name|EXTENSION
 block|,
+DECL|enumConstant|PLUGIN
 name|PLUGIN
 block|,
+DECL|enumConstant|JS
 name|JS
 block|}
 comment|/** Unique key that changes whenever a plugin reloads. */
@@ -508,7 +508,7 @@ argument_list|>
 argument_list|>
 name|reloadableHandles
 decl_stmt|;
-DECL|method|Plugin (String name, Path srcPath, PluginUser pluginUser, FileSnapshot snapshot, ApiType apiType)
+DECL|method|Plugin ( String name, Path srcPath, PluginUser pluginUser, FileSnapshot snapshot, ApiType apiType)
 specifier|public
 name|Plugin
 parameter_list|(

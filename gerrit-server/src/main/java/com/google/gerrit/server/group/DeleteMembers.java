@@ -457,7 +457,7 @@ name|auditService
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteMembers (AccountsCollection accounts, AccountCache accountCache, Provider<ReviewDb> db, Provider<CurrentUser> self, AuditService auditService)
+DECL|method|DeleteMembers ( AccountsCollection accounts, AccountCache accountCache, Provider<ReviewDb> db, Provider<CurrentUser> self, AuditService auditService)
 name|DeleteMembers
 parameter_list|(
 name|AccountsCollection
@@ -768,7 +768,7 @@ name|toRemove
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getMembers ( final AccountGroup.Id groupId)
+DECL|method|getMembers (final AccountGroup.Id groupId)
 specifier|private
 name|Map
 argument_list|<
@@ -862,7 +862,7 @@ DECL|class|Input
 specifier|static
 class|class
 name|Input
-block|{     }
+block|{}
 DECL|field|delete
 specifier|private
 specifier|final

@@ -246,16 +246,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -291,6 +281,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
 import|;
 end_import
 
@@ -352,7 +352,7 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListIncludedGroups (GroupControl.Factory controlFactory, Provider<ReviewDb> dbProvider, GroupJson json)
+DECL|method|ListIncludedGroups ( GroupControl.Factory controlFactory, Provider<ReviewDb> dbProvider, GroupJson json)
 name|ListIncludedGroups
 parameter_list|(
 name|GroupControl

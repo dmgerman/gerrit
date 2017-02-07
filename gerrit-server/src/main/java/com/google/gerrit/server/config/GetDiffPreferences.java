@@ -222,6 +222,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -259,16 +269,6 @@ operator|.
 name|lib
 operator|.
 name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -352,7 +352,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|readFromGit (GitRepositoryManager gitMgr, AllUsersName allUsersName, DiffPreferencesInfo in)
+DECL|method|readFromGit ( GitRepositoryManager gitMgr, AllUsersName allUsersName, DiffPreferencesInfo in)
 specifier|static
 name|DiffPreferencesInfo
 name|readFromGit

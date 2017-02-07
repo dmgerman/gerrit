@@ -95,7 +95,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Stable identifier for options passed to a particular submit rule evaluator.  *<p>  * Used to test whether it is ok to reuse a cached list of submit records. Does  * not include a change or patch set ID; callers are responsible for checking  * those on their own.  */
+comment|/**  * Stable identifier for options passed to a particular submit rule evaluator.  *  *<p>Used to test whether it is ok to reuse a cached list of submit records. Does not include a  * change or patch set ID; callers are responsible for checking those on their own.  */
 end_comment
 
 begin_class
@@ -187,9 +187,9 @@ name|boolean
 name|skipFilters
 parameter_list|()
 function_decl|;
-DECL|method|rule ()
 annotation|@
 name|Nullable
+DECL|method|rule ()
 specifier|public
 specifier|abstract
 name|String

@@ -158,20 +158,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|IO
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -207,6 +193,20 @@ operator|.
 name|io
 operator|.
 name|OutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|IO
 import|;
 end_import
 
@@ -732,7 +732,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Write a byte array prefixed by its length in a varint. */
-DECL|method|writeBytes (final OutputStream output, final byte[] data, final int offset, final int len)
+DECL|method|writeBytes ( final OutputStream output, final byte[] data, final int offset, final int len)
 specifier|public
 specifier|static
 name|void
@@ -993,7 +993,7 @@ DECL|method|BasicSerialization ()
 specifier|private
 name|BasicSerialization
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

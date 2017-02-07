@@ -160,20 +160,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -242,8 +228,22 @@ name|ServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_comment
-comment|/**  * Stores user as a request attribute, so servlets can access it outside of the  * request scope.  */
+comment|/** Stores user as a request attribute, so servlets can access it outside of the request scope. */
 end_comment
 
 begin_class
@@ -364,7 +364,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doFilter ( ServletRequest req, ServletResponse resp, FilterChain chain)
+DECL|method|doFilter (ServletRequest req, ServletResponse resp, FilterChain chain)
 specifier|public
 name|void
 name|doFilter
@@ -478,7 +478,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|init (FilterConfig arg0)
@@ -489,7 +489,7 @@ parameter_list|(
 name|FilterConfig
 name|arg0
 parameter_list|)
-block|{   }
+block|{}
 block|}
 end_class
 

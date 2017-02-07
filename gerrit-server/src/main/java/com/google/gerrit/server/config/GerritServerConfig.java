@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on {@link org.eclipse.jgit.lib.Config} holding {@code gerrit.config} .  *<p>  * The {@code gerrit.config} file contains almost all site-wide configuration  * settings for the Gerrit Code Review server.  */
+comment|/**  * Marker on {@link org.eclipse.jgit.lib.Config} holding {@code gerrit.config} .  *  *<p>The {@code gerrit.config} file contains almost all site-wide configuration settings for the  * Gerrit Code Review server.  */
 end_comment
 
 begin_annotation_defn
@@ -120,7 +120,7 @@ DECL|annotation|GerritServerConfig
 specifier|public
 annotation_defn|@interface
 name|GerritServerConfig
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

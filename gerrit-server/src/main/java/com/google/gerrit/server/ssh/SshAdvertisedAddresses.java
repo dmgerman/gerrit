@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on the list of {@link java.net.SocketAddress}es configured to be  * advertised by the server.  */
+comment|/**  * Marker on the list of {@link java.net.SocketAddress}es configured to be advertised by the server.  */
 end_comment
 
 begin_annotation_defn
@@ -120,7 +120,7 @@ DECL|annotation|SshAdvertisedAddresses
 specifier|public
 annotation_defn|@interface
 name|SshAdvertisedAddresses
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

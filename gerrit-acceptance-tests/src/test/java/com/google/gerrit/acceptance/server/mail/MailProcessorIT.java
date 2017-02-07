@@ -340,28 +340,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|joda
-operator|.
-name|time
-operator|.
-name|DateTime
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|time
@@ -410,6 +388,28 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|joda
+operator|.
+name|time
+operator|.
+name|DateTime
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 DECL|class|MailProcessorIT
 specifier|public
@@ -418,9 +418,9 @@ name|MailProcessorIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|mailProcessor
 annotation|@
 name|Inject
-DECL|field|mailProcessor
 specifier|private
 name|MailProcessor
 name|mailProcessor
@@ -1797,7 +1797,7 @@ name|c
 return|;
 block|}
 comment|/**    * Create a plaintext message body with the specified comments.    *    * @param changeMessage    * @param c1 Comment in reply to first inline comment.    * @param f1 Comment on file one.    * @param fc1 Comment in reply to a comment of file 1.    * @return A string with all inline comments and the original quoted email.    */
-DECL|method|newPlaintextBody (String changeURL, String changeMessage, String c1, String f1, String fc1)
+DECL|method|newPlaintextBody ( String changeURL, String changeMessage, String c1, String f1, String fc1)
 specifier|private
 specifier|static
 name|String

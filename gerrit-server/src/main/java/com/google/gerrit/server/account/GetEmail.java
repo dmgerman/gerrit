@@ -145,7 +145,7 @@ DECL|method|GetEmail ()
 specifier|public
 name|GetEmail
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|apply (AccountResource.Email rsrc)

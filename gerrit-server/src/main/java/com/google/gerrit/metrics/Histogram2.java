@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Measures the statistical distribution of values in a stream of data.  *<p>  * Suitable uses are "response size in bytes", etc.  *  * @param<F1> type of the field.  * @param<F2> type of the field.  */
+comment|/**  * Measures the statistical distribution of values in a stream of data.  *  *<p>Suitable uses are "response size in bytes", etc.  *  * @param<F1> type of the field.  * @param<F2> type of the field.  */
 end_comment
 
 begin_class

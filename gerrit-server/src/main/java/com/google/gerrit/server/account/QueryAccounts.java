@@ -370,32 +370,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -451,6 +425,32 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
 import|;
 end_import
 
@@ -792,7 +792,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryAccounts (AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder queryBuilder, AccountQueryProcessor queryProcessor, @GerritServerConfig Config cfg)
+DECL|method|QueryAccounts ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder queryBuilder, AccountQueryProcessor queryProcessor, @GerritServerConfig Config cfg)
 name|QueryAccounts
 parameter_list|(
 name|AccountLoader

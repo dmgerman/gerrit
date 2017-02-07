@@ -370,22 +370,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|validator
-operator|.
-name|routines
-operator|.
-name|EmailValidator
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -467,6 +451,22 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|validator
+operator|.
+name|routines
+operator|.
+name|EmailValidator
 import|;
 end_import
 
@@ -554,7 +554,7 @@ specifier|public
 name|void
 name|run
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Inject
 argument_list|(

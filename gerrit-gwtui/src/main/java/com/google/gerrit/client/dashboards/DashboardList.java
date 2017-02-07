@@ -239,7 +239,7 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|get (Project.NameKey project, String id, AsyncCallback<DashboardInfo> callback)
+DECL|method|get ( Project.NameKey project, String id, AsyncCallback<DashboardInfo> callback)
 specifier|public
 specifier|static
 name|void
@@ -394,7 +394,7 @@ DECL|method|DashboardList ()
 specifier|protected
 name|DashboardList
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

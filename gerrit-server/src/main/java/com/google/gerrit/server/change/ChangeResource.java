@@ -388,7 +388,7 @@ name|RestResource
 implements|,
 name|HasETag
 block|{
-comment|/**    * JSON format version number for ETag computations.    *<p>    * Should be bumped on any JSON format change (new fields, etc.) so that    * otherwise unmodified changes get new ETags.    */
+comment|/**    * JSON format version number for ETag computations.    *    *<p>Should be bumped on any JSON format change (new fields, etc.) so that otherwise unmodified    * changes get new ETags.    */
 DECL|field|JSON_FORMAT_VERSION
 specifier|public
 specifier|static

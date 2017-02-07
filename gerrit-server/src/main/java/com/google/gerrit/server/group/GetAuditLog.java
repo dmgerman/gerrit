@@ -478,7 +478,7 @@ name|groupBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetAuditLog (Provider<ReviewDb> db, AccountLoader.Factory accountLoaderFactory, GroupCache groupCache, GroupJson groupJson, GroupBackend groupBackend)
+DECL|method|GetAuditLog ( Provider<ReviewDb> db, AccountLoader.Factory accountLoaderFactory, GroupCache groupCache, GroupJson groupJson, GroupBackend groupBackend)
 specifier|public
 name|GetAuditLog
 parameter_list|(

@@ -90,9 +90,9 @@ specifier|public
 class|class
 name|DescriptionInput
 block|{
+DECL|field|description
 annotation|@
 name|DefaultInput
-DECL|field|description
 specifier|public
 name|String
 name|description

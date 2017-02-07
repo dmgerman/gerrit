@@ -206,26 +206,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -241,6 +221,26 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -275,7 +275,7 @@ name|UUID
 argument_list|>
 name|groupIds
 decl_stmt|;
-DECL|method|GroupSetProvider (GroupBackend groupBackend, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx, List<String> groupNames)
+DECL|method|GroupSetProvider ( GroupBackend groupBackend, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx, List<String> groupNames)
 specifier|protected
 name|GroupSetProvider
 parameter_list|(

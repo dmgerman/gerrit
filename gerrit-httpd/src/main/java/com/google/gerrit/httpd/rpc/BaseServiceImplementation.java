@@ -286,7 +286,7 @@ name|CurrentUser
 argument_list|>
 name|currentUser
 decl_stmt|;
-DECL|method|BaseServiceImplementation (final Provider<ReviewDb> schema, final Provider<? extends CurrentUser> currentUser)
+DECL|method|BaseServiceImplementation ( final Provider<ReviewDb> schema, final Provider<? extends CurrentUser> currentUser)
 specifier|protected
 name|BaseServiceImplementation
 parameter_list|(
@@ -376,7 +376,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Executes {@code action.run} with an active ReviewDb connection.    *<p>    * A database handle is automatically opened and closed around the action's    * {@link Action#run(ReviewDb)} method. OrmExceptions are caught and passed    * into the onFailure method of the callback.    *    * @param<T> type of result the callback expects.    * @param callback the callback that will receive the result.    * @param action the action logic to perform.    */
+comment|/**    * Executes {@code action.run} with an active ReviewDb connection.    *    *<p>A database handle is automatically opened and closed around the action's {@link    * Action#run(ReviewDb)} method. OrmExceptions are caught and passed into the onFailure method of    * the callback.    *    * @param<T> type of result the callback expects.    * @param callback the callback that will receive the result.    * @param action the action logic to perform.    */
 DECL|method|run (final AsyncCallback<T> callback, final Action<T> action)
 specifier|protected
 parameter_list|<
@@ -622,7 +622,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|handleOrmException ( final AsyncCallback<T> callback, Exception e)
+DECL|method|handleOrmException (final AsyncCallback<T> callback, Exception e)
 specifier|private
 specifier|static
 parameter_list|<
@@ -742,7 +742,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-comment|/**      * Perform this action, returning the onSuccess value.      *      * @param db an open database handle to be used by this connection.      * @return he value to pass to {@link AsyncCallback#onSuccess(Object)}.      * @throws OrmException any schema based action failed.      * @throws Failure cause is given to      *         {@link AsyncCallback#onFailure(Throwable)}.      * @throws NoSuchProjectException      * @throws NoSuchGroupException      * @throws InvalidQueryException      */
+comment|/**      * Perform this action, returning the onSuccess value.      *      * @param db an open database handle to be used by this connection.      * @return he value to pass to {@link AsyncCallback#onSuccess(Object)}.      * @throws OrmException any schema based action failed.      * @throws Failure cause is given to {@link AsyncCallback#onFailure(Throwable)}.      * @throws NoSuchProjectException      * @throws NoSuchGroupException      * @throws InvalidQueryException      */
 DECL|method|run (ReviewDb db)
 name|T
 name|run

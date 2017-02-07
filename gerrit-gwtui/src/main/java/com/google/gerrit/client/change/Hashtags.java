@@ -1772,7 +1772,7 @@ DECL|method|PostInput ()
 specifier|protected
 name|PostInput
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

@@ -483,7 +483,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Look up a branch by refname.    *<p>    *<strong>Note:</strong> This method eagerly reads the branch. Methods that    * mutate the branch do not necessarily re-read the branch. Therefore, calling    * a getter method on an instance after calling a mutation method on that same    * instance is not guaranteed to reflect the mutation. It is not recommended    * to store references to {@code BranchApi} instances.    *    * @param ref branch name, with or without "refs/heads/" prefix.    * @throws RestApiException if a problem occurred reading the project.    * @return API for accessing the branch.    */
+comment|/**    * Look up a branch by refname.    *    *<p><strong>Note:</strong> This method eagerly reads the branch. Methods that mutate the branch    * do not necessarily re-read the branch. Therefore, calling a getter method on an instance after    * calling a mutation method on that same instance is not guaranteed to reflect the mutation. It    * is not recommended to store references to {@code BranchApi} instances.    *    * @param ref branch name, with or without "refs/heads/" prefix.    * @throws RestApiException if a problem occurred reading the project.    * @return API for accessing the branch.    */
 DECL|method|branch (String ref)
 name|BranchApi
 name|branch
@@ -494,7 +494,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Look up a tag by refname.    *<p>    * @param ref tag name, with or without "refs/tags/" prefix.    * @throws RestApiException if a problem occurred reading the project.    * @return API for accessing the tag.    */
+comment|/**    * Look up a tag by refname.    *    *<p>    *    * @param ref tag name, with or without "refs/tags/" prefix.    * @throws RestApiException if a problem occurred reading the project.    * @return API for accessing the tag.    */
 DECL|method|tag (String ref)
 name|TagApi
 name|tag
@@ -505,7 +505,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
 name|NotImplemented

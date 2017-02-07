@@ -143,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Universal implementation of the AuthBackend that works with the injected  * set of AuthBackends.  */
+comment|/** Universal implementation of the AuthBackend that works with the injected set of AuthBackends. */
 end_comment
 
 begin_class

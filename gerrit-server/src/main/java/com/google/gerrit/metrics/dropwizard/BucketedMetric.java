@@ -70,6 +70,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|codahale
+operator|.
+name|metrics
+operator|.
+name|Metric
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|google
 operator|.
 name|gerrit
@@ -96,18 +108,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|codahale
-operator|.
-name|metrics
-operator|.
-name|Metric
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -127,9 +127,9 @@ name|BucketedMetric
 extends|extends
 name|Metric
 block|{
-DECL|method|getTotal ()
 annotation|@
 name|Nullable
+DECL|method|getTotal ()
 name|Metric
 name|getTotal
 parameter_list|()

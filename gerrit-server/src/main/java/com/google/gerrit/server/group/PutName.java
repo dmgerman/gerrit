@@ -459,9 +459,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|name
 annotation|@
 name|DefaultInput
-DECL|field|name
 specifier|public
 name|String
 name|name
@@ -509,7 +509,7 @@ name|currentUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutName (Provider<ReviewDb> db, GroupCache groupCache, GroupDetailFactory.Factory groupDetailFactory, RenameGroupOp.Factory renameGroupOpFactory, Provider<IdentifiedUser> currentUser)
+DECL|method|PutName ( Provider<ReviewDb> db, GroupCache groupCache, GroupDetailFactory.Factory groupDetailFactory, RenameGroupOp.Factory renameGroupOpFactory, Provider<IdentifiedUser> currentUser)
 name|PutName
 parameter_list|(
 name|Provider

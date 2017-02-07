@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Any type of view, see {@link RestReadView} for reads, {@link RestModifyView}  * for updates, and {@link RestCollection} for nested collections.  */
+comment|/**  * Any type of view, see {@link RestReadView} for reads, {@link RestModifyView} for updates, and  * {@link RestCollection} for nested collections.  */
 end_comment
 
 begin_interface
@@ -80,7 +80,7 @@ name|R
 extends|extends
 name|RestResource
 parameter_list|>
-block|{ }
+block|{}
 end_interface
 
 end_unit

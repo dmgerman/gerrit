@@ -328,26 +328,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -393,6 +373,26 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -2168,7 +2168,7 @@ return|return
 name|in
 return|;
 block|}
-DECL|method|createRobotCommentInput ( FixSuggestionInfo... fixSuggestionInfos)
+DECL|method|createRobotCommentInput (FixSuggestionInfo... fixSuggestionInfos)
 specifier|private
 name|RobotCommentInput
 name|createRobotCommentInput
@@ -2236,7 +2236,7 @@ return|return
 name|in
 return|;
 block|}
-DECL|method|createFixSuggestionInfo ( FixReplacementInfo... fixReplacementInfos)
+DECL|method|createFixSuggestionInfo (FixReplacementInfo... fixReplacementInfos)
 specifier|private
 name|FixSuggestionInfo
 name|createFixSuggestionInfo
@@ -2324,7 +2324,7 @@ return|return
 name|newFixReplacementInfo
 return|;
 block|}
-DECL|method|createRange (int startLine, int startCharacter, int endLine, int endCharacter)
+DECL|method|createRange ( int startLine, int startCharacter, int endLine, int endCharacter)
 specifier|private
 name|Comment
 operator|.
@@ -2500,7 +2500,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertRobotComment (RobotCommentInfo c, RobotCommentInput expected, boolean expectPath)
+DECL|method|assertRobotComment ( RobotCommentInfo c, RobotCommentInput expected, boolean expectPath)
 specifier|private
 name|void
 name|assertRobotComment

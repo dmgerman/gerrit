@@ -180,6 +180,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -276,16 +286,6 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
 comment|/** Extended commit entity with code review specific metadata. */
 end_comment
@@ -298,7 +298,7 @@ name|CodeReviewCommit
 extends|extends
 name|RevCommit
 block|{
-comment|/**    * Default ordering when merging multiple topologically-equivalent commits.    *<p>    * Operates only on these commits and does not take ancestry into account.    *<p>    * Use this in preference to the default order, which comes from {@link    * AnyObjectId} and only orders on SHA-1.    */
+comment|/**    * Default ordering when merging multiple topologically-equivalent commits.    *    *<p>Operates only on these commits and does not take ancestry into account.    *    *<p>Use this in preference to the default order, which comes from {@link AnyObjectId} and only    * orders on SHA-1.    */
 DECL|field|ORDER
 specifier|public
 specifier|static
@@ -578,7 +578,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Unique key of the PatchSet entity from the code review system.    *<p>    * This value is only available on commits that have a PatchSet represented in    * the code review system.    */
+comment|/**    * Unique key of the PatchSet entity from the code review system.    *    *<p>This value is only available on commits that have a PatchSet represented in the code review    * system.    */
 DECL|field|patchsetId
 specifier|private
 name|PatchSet
@@ -592,7 +592,7 @@ specifier|private
 name|ChangeControl
 name|control
 decl_stmt|;
-comment|/**    * The result status for this commit.    *<p>    * Only valid if {@link #patchsetId} is not null.    */
+comment|/**    * The result status for this commit.    *    *<p>Only valid if {@link #patchsetId} is not null.    */
 DECL|field|statusCode
 specifier|private
 name|CommitMergeStatus

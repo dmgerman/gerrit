@@ -176,7 +176,7 @@ name|TYPE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CommitReceivedEvent (ReceiveCommand command, Project project, String refName, RevCommit commit, IdentifiedUser user)
+DECL|method|CommitReceivedEvent ( ReceiveCommand command, Project project, String refName, RevCommit commit, IdentifiedUser user)
 specifier|public
 name|CommitReceivedEvent
 parameter_list|(

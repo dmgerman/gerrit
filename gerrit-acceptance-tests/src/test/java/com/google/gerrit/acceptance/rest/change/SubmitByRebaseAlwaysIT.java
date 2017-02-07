@@ -252,6 +252,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -288,16 +298,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 DECL|class|SubmitByRebaseAlwaysIT
 specifier|public
@@ -306,9 +306,9 @@ name|SubmitByRebaseAlwaysIT
 extends|extends
 name|AbstractSubmitByRebase
 block|{
+DECL|field|changeMessageModifiers
 annotation|@
 name|Inject
-DECL|field|changeMessageModifiers
 specifier|private
 name|DynamicSet
 argument_list|<

@@ -136,7 +136,7 @@ DECL|annotation|CommandExecutor
 specifier|public
 annotation_defn|@interface
 name|CommandExecutor
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

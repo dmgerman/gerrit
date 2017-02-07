@@ -119,7 +119,7 @@ DECL|method|WithDefaults ()
 specifier|protected
 name|WithDefaults
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|WithDefaults (String name, int min, int max, int defMin, int defMax)
 specifier|public
 name|WithDefaults
@@ -282,7 +282,7 @@ DECL|method|PermissionRange ()
 specifier|protected
 name|PermissionRange
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|PermissionRange (String name, int min, int max)
 specifier|public
 name|PermissionRange

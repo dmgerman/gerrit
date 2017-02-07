@@ -91,7 +91,7 @@ specifier|abstract
 class|class
 name|CloneCommand
 block|{
-comment|/**    * Returns the clone command for the given download scheme and project.    *    * @param scheme the download scheme for which the command should be returned    * @param project the name of the project for which the clone command    *        should be returned    * @return the clone command    */
+comment|/**    * Returns the clone command for the given download scheme and project.    *    * @param scheme the download scheme for which the command should be returned    * @param project the name of the project for which the clone command should be returned    * @return the clone command    */
 DECL|method|getCommand (DownloadScheme scheme, String project)
 specifier|public
 specifier|abstract

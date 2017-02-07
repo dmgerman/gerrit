@@ -208,34 +208,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|AnyObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -281,6 +253,34 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|AnyObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -413,14 +413,14 @@ name|ws
 argument_list|)
 return|;
 block|}
-comment|/**    * Old patch-set ID    *<p>    * When null, it represents the Base of the newId for a non-merge commit.    *<p>    * When newId is a merge commit, null value of the oldId represents either    * the auto-merge commit of the newId or a parent commit of the newId.    * These two cases are distinguished by the parentNum.    */
+comment|/**    * Old patch-set ID    *    *<p>When null, it represents the Base of the newId for a non-merge commit.    *    *<p>When newId is a merge commit, null value of the oldId represents either the auto-merge    * commit of the newId or a parent commit of the newId. These two cases are distinguished by the    * parentNum.    */
 DECL|field|oldId
 specifier|private
 specifier|transient
 name|ObjectId
 name|oldId
 decl_stmt|;
-comment|/**    * 1-based parent number when newId is a merge commit    *<p>    * For the auto-merge case this field is null.    *<p>    * Used only when oldId is null and newId is a merge commit    */
+comment|/**    * 1-based parent number when newId is a merge commit    *    *<p>For the auto-merge case this field is null.    *    *<p>Used only when oldId is null and newId is a merge commit    */
 DECL|field|parentNum
 specifier|private
 specifier|transient

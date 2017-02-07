@@ -534,40 +534,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -654,8 +620,42 @@ name|AtomicReference
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Helper for (re)indexing a change document.  *<p>  * Indexing is run in the background, as it may require substantial work to  * compute some of the fields and/or update the index.  */
+comment|/**  * Helper for (re)indexing a change document.  *  *<p>Indexing is run in the background, as it may require substantial work to compute some of the  * fields and/or update the index.  */
 end_comment
 
 begin_class
@@ -1054,7 +1054,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, @GerritServerConfig Config cfg, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
+DECL|method|ChangeIndexer ( SchemaFactory<ReviewDb> schemaFactory, @GerritServerConfig Config cfg, NotesMigration notesMigration, ChangeNotes.Factory changeNotesFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, DynamicSet<ChangeIndexedListener> indexedListeners, StalenessChecker stalenessChecker, @IndexExecutor(BATCH) ListeningExecutorService batchExecutor, @Assisted ListeningExecutorService executor, @Assisted ChangeIndexCollection indexes)
 name|ChangeIndexer
 parameter_list|(
 name|SchemaFactory
@@ -1249,7 +1249,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Start indexing multiple changes in parallel.    *    * @param ids changes to index.    * @return future for completing indexing of all changes.    */
-DECL|method|indexAsync (Project.NameKey project, Collection<Change.Id> ids)
+DECL|method|indexAsync ( Project.NameKey project, Collection<Change.Id> ids)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -1619,8 +1619,8 @@ name|call
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Asynchronously check if a change is stale, and reindex if it is.    *<p>    * Always run on the batch executor, even if this indexer instance is    * configured to use a different executor.    *    * @param project the project to which the change belongs.    * @param id ID of the change to index.    * @return future for reindexing the change; returns true if the change was    *     stale.    */
-DECL|method|reindexIfStale ( Project.NameKey project, Change.Id id)
+comment|/**    * Asynchronously check if a change is stale, and reindex if it is.    *    *<p>Always run on the batch executor, even if this indexer instance is configured to use a    * different executor.    *    * @param project the project to which the change belongs.    * @param id ID of the change to index.    * @return future for reindexing the change; returns true if the change was stale.    */
+DECL|method|reindexIfStale (Project.NameKey project, Change.Id id)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -1784,7 +1784,7 @@ name|executor
 argument_list|)
 return|;
 block|}
-DECL|method|submit (Callable<T> task, ListeningExecutorService executor)
+DECL|method|submit ( Callable<T> task, ListeningExecutorService executor)
 specifier|private
 specifier|static
 parameter_list|<

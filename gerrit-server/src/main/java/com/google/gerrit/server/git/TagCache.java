@@ -164,20 +164,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -213,6 +199,20 @@ operator|.
 name|io
 operator|.
 name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -323,8 +323,8 @@ operator|=
 name|cache
 expr_stmt|;
 block|}
-comment|/**    * Advise the cache that a reference fast-forwarded.    *<p>    * This operation is not necessary, the cache will automatically detect changes    * made to references and update itself on demand. However, this method may    * allow the cache to update more quickly and reuse the caller's computation of    * the fast-forward status of a branch.    *    * @param name project the branch is contained in.    * @param refName the branch name.    * @param oldValue the old value, before the fast-forward. The cache    *        will only update itself if it is still using this old value.    * @param newValue the current value, after the fast-forward.    */
-DECL|method|updateFastForward (Project.NameKey name, String refName, ObjectId oldValue, ObjectId newValue)
+comment|/**    * Advise the cache that a reference fast-forwarded.    *    *<p>This operation is not necessary, the cache will automatically detect changes made to    * references and update itself on demand. However, this method may allow the cache to update more    * quickly and reuse the caller's computation of the fast-forward status of a branch.    *    * @param name project the branch is contained in.    * @param refName the branch name.    * @param oldValue the old value, before the fast-forward. The cache will only update itself if it    *     is still using this old value.    * @param newValue the current value, after the fast-forward.    */
+DECL|method|updateFastForward ( Project.NameKey name, String refName, ObjectId oldValue, ObjectId newValue)
 specifier|public
 name|void
 name|updateFastForward

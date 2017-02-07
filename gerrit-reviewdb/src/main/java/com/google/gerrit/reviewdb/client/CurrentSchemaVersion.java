@@ -168,7 +168,7 @@ DECL|method|Key ()
 specifier|public
 name|Key
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|get ()
@@ -264,7 +264,7 @@ DECL|method|CurrentSchemaVersion ()
 specifier|public
 name|CurrentSchemaVersion
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

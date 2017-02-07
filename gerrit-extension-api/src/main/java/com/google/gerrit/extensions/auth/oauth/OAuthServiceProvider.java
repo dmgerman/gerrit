@@ -106,7 +106,7 @@ specifier|public
 interface|interface
 name|OAuthServiceProvider
 block|{
-comment|/**    * Returns the URL where you should redirect your users to authenticate    * your application.    *    * @return the OAuth service URL to redirect your users for authentication    */
+comment|/**    * Returns the URL where you should redirect your users to authenticate your application.    *    * @return the OAuth service URL to redirect your users for authentication    */
 DECL|method|getAuthorizationUrl ()
 name|String
 name|getAuthorizationUrl
@@ -121,7 +121,7 @@ name|OAuthVerifier
 name|verifier
 parameter_list|)
 function_decl|;
-comment|/**    * After establishing of secure communication channel, this method supossed to    * access the protected resoure and retrieve the username.    *    * @param token    * @return OAuth user information    * @throws IOException    */
+comment|/**    * After establishing of secure communication channel, this method supossed to access the    * protected resoure and retrieve the username.    *    * @param token    * @return OAuth user information    * @throws IOException    */
 DECL|method|getUserInfo (OAuthToken token)
 name|OAuthUserInfo
 name|getUserInfo
@@ -138,7 +138,7 @@ name|String
 name|getVersion
 parameter_list|()
 function_decl|;
-comment|/**    * Returns the name of this service. This name is resented the user to choose    * between multiple service providers    *    * @return name of the service    */
+comment|/**    * Returns the name of this service. This name is resented the user to choose between multiple    * service providers    *    * @return name of the service    */
 DECL|method|getName ()
 name|String
 name|getName

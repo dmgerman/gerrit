@@ -228,6 +228,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -410,46 +450,6 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Date
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TimeZone
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -583,7 +583,7 @@ name|notesBranchUtilFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BanCommit (final Provider<IdentifiedUser> currentUser, final GitRepositoryManager repoManager, @GerritPersonIdent final PersonIdent gerritIdent, final NotesBranchUtil.Factory notesBranchUtilFactory)
+DECL|method|BanCommit ( final Provider<IdentifiedUser> currentUser, final GitRepositoryManager repoManager, @GerritPersonIdent final PersonIdent gerritIdent, final NotesBranchUtil.Factory notesBranchUtilFactory)
 name|BanCommit
 parameter_list|(
 specifier|final
@@ -638,7 +638,7 @@ name|getTimeZone
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|ban (final ProjectControl projectControl, final List<ObjectId> commitsToBan, final String reason)
+DECL|method|ban ( final ProjectControl projectControl, final List<ObjectId> commitsToBan, final String reason)
 specifier|public
 name|BanCommitResult
 name|ban
@@ -990,7 +990,7 @@ name|tz
 argument_list|)
 return|;
 block|}
-DECL|method|buildCommitMessage (final List<ObjectId> bannedCommits, final String reason)
+DECL|method|buildCommitMessage ( final List<ObjectId> bannedCommits, final String reason)
 specifier|private
 specifier|static
 name|String

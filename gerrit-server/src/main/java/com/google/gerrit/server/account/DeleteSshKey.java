@@ -214,6 +214,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -240,16 +250,6 @@ name|RepositoryNotFoundException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -272,7 +272,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|self
 specifier|private
 specifier|final
@@ -298,7 +298,7 @@ name|sshKeyCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteSshKey (Provider<CurrentUser> self, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache)
+DECL|method|DeleteSshKey ( Provider<CurrentUser> self, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache)
 name|DeleteSshKey
 parameter_list|(
 name|Provider

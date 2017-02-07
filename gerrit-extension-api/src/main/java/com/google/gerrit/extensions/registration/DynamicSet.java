@@ -263,7 +263,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A set of members that can be modified as plugins reload.  *<p>  * DynamicSets are always mapped as singletons in Guice. Sets store Providers  * internally, and resolve the provider to an instance on demand. This enables  * registrations to decide between singleton and non-singleton members.  */
+comment|/**  * A set of members that can be modified as plugins reload.  *  *<p>DynamicSets are always mapped as singletons in Guice. Sets store Providers internally, and  * resolve the provider to an instance on demand. This enables registrations to decide between  * singleton and non-singleton members.  */
 end_comment
 
 begin_class
@@ -280,7 +280,7 @@ argument_list|<
 name|T
 argument_list|>
 block|{
-comment|/**    * Declare a singleton {@code DynamicSet<T>} with a binder.    *<p>    * Sets must be defined in a Guice module before they can be bound:    *<pre>    *   DynamicSet.setOf(binder(), Interface.class);    *   DynamicSet.bind(binder(), Interface.class).to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry in the set.    */
+comment|/**    * Declare a singleton {@code DynamicSet<T>} with a binder.    *    *<p>Sets must be defined in a Guice module before they can be bound:    *    *<pre>    *   DynamicSet.setOf(binder(), Interface.class);    *   DynamicSet.bind(binder(), Interface.class).to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry in the set.    */
 DECL|method|setOf (Binder binder, Class<T> member)
 specifier|public
 specifier|static
@@ -318,7 +318,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Declare a singleton {@code DynamicSet<T>} with a binder.    *<p>    * Sets must be defined in a Guice module before they can be bound:    *<pre>    *   DynamicSet.setOf(binder(), new TypeLiteral&lt;Thing&lt;Foo&gt;&gt;() {});    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry in the set.    */
+comment|/**    * Declare a singleton {@code DynamicSet<T>} with a binder.    *    *<p>Sets must be defined in a Guice module before they can be bound:    *    *<pre>    *   DynamicSet.setOf(binder(), new TypeLiteral&lt;Thing&lt;Foo&gt;&gt;() {});    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry in the set.    */
 DECL|method|setOf (Binder binder, TypeLiteral<T> member)
 specifier|public
 specifier|static
@@ -497,7 +497,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Bind a named implementation into the set.    *    * @param binder a new binder created in the module.    * @param type type of entries in the set.    * @param name {@code @Named} annotation to apply instead of a unique    *        annotation.    * @return a binder to continue configuring the new set member.    */
+comment|/**    * Bind a named implementation into the set.    *    * @param binder a new binder created in the module.    * @param type type of entries in the set.    * @param name {@code @Named} annotation to apply instead of a unique annotation.    * @return a binder to continue configuring the new set member.    */
 DECL|method|bind (Binder binder, Class<T> type, Named name)
 specifier|public
 specifier|static
@@ -542,7 +542,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Bind a named implementation into the set.    *    * @param binder a new binder created in the module.    * @param type type of entries in the set.    * @param name {@code @Named} annotation to apply instead of a unique    *        annotation.    * @return a binder to continue configuring the new set member.    */
+comment|/**    * Bind a named implementation into the set.    *    * @param binder a new binder created in the module.    * @param type type of entries in the set.    * @param name {@code @Named} annotation to apply instead of a unique annotation.    * @return a binder to continue configuring the new set member.    */
 DECL|method|bind (Binder binder, TypeLiteral<T> type, Named name)
 specifier|public
 specifier|static
@@ -989,7 +989,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**    * Add one new element that may be hot-replaceable in the future.    *    * @param key unique description from the item's Guice binding. This can be    *        later obtained from the registration handle to facilitate matching    *        with the new equivalent instance during a hot reload.    * @param item the item to add to the collection right now. Must not be null.    * @return a handle that can remove this item later, or hot-swap the item    *         without it ever leaving the collection.    */
+comment|/**    * Add one new element that may be hot-replaceable in the future.    *    * @param key unique description from the item's Guice binding. This can be later obtained from    *     the registration handle to facilitate matching with the new equivalent instance during a    *     hot reload.    * @param item the item to add to the collection right now. Must not be null.    * @return a handle that can remove this item later, or hot-swap the item without it ever leaving    *     the collection.    */
 DECL|method|add (Key<T> key, Provider<T> item)
 specifier|public
 name|ReloadableRegistrationHandle

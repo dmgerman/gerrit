@@ -129,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation applied to a String containing the plugin canonical web URL.  *<p>  * A plugin or extension may receive this string by Guice injection to discover  * the canonical web URL under which the plugin is available:  *  *<pre>  *  {@literal @Inject}  *  MyType(@PluginCanonicalWebUrl String myUrl) {  *  ...  *  }  *</pre>  */
+comment|/**  * Annotation applied to a String containing the plugin canonical web URL.  *  *<p>A plugin or extension may receive this string by Guice injection to discover the canonical web  * URL under which the plugin is available:  *  *<pre>  *  {@literal @Inject}  *  MyType(@PluginCanonicalWebUrl String myUrl) {  *  ...  *  }  *</pre>  */
 end_comment
 
 begin_annotation_defn
@@ -157,7 +157,7 @@ DECL|annotation|PluginCanonicalWebUrl
 specifier|public
 annotation_defn|@interface
 name|PluginCanonicalWebUrl
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

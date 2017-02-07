@@ -323,9 +323,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|username
 annotation|@
 name|DefaultInput
-DECL|field|username
 specifier|public
 name|String
 name|username
@@ -365,7 +365,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutUsername (Provider<CurrentUser> self, ChangeUserName.Factory changeUserNameFactory, Realm realm, Provider<ReviewDb> db)
+DECL|method|PutUsername ( Provider<CurrentUser> self, ChangeUserName.Factory changeUserNameFactory, Realm realm, Provider<ReviewDb> db)
 name|PutUsername
 parameter_list|(
 name|Provider

@@ -627,7 +627,7 @@ DECL|method|DefaultActions ()
 specifier|private
 name|DefaultActions
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|UiResult
 specifier|private
 specifier|static
@@ -683,7 +683,7 @@ DECL|method|UiResult ()
 specifier|protected
 name|UiResult
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

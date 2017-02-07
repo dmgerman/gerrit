@@ -412,6 +412,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -466,48 +506,8 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
-comment|/**  * This strategy covers RebaseAlways and RebaseIfNecessary ones.  */
+comment|/** This strategy covers RebaseAlways and RebaseIfNecessary ones. */
 end_comment
 
 begin_class
@@ -550,7 +550,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|buildOps ( Collection<CodeReviewCommit> toMerge)
+DECL|method|buildOps (Collection<CodeReviewCommit> toMerge)
 specifier|public
 name|List
 argument_list|<
@@ -1859,7 +1859,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|dryRun (SubmitDryRun.Arguments args, CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
+DECL|method|dryRun ( SubmitDryRun.Arguments args, CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|static
 name|boolean
 name|dryRun

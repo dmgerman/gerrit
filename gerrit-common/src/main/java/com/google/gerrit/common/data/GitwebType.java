@@ -365,7 +365,7 @@ operator|=
 name|urlEncode
 expr_stmt|;
 block|}
-comment|/**    * Replace standard path separator with custom configured path separator.    *    * @param urlSegment URL segment (e.g. branch or project name) in which to    *     replace the path separator.    * @return the segment with the standard path separator replaced by the custom    *   {@link #getPathSeparator()}.    */
+comment|/**    * Replace standard path separator with custom configured path separator.    *    * @param urlSegment URL segment (e.g. branch or project name) in which to replace the path    *     separator.    * @return the segment with the standard path separator replaced by the custom {@link    *     #getPathSeparator()}.    */
 DECL|method|replacePathSeparator (String urlSegment)
 specifier|public
 name|String

@@ -66,20 +66,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|util
-operator|.
-name|IO
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -105,6 +91,20 @@ operator|.
 name|io
 operator|.
 name|OutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|IO
 import|;
 end_import
 
@@ -291,7 +291,7 @@ DECL|method|ObjectIdSerialization ()
 specifier|private
 name|ObjectIdSerialization
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

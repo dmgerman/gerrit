@@ -92,7 +92,7 @@ DECL|method|ResourceNotFoundException ()
 specifier|public
 name|ResourceNotFoundException
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|ResourceNotFoundException (String msg)
 specifier|public
 name|ResourceNotFoundException

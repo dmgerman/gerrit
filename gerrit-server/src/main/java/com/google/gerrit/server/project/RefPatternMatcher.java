@@ -962,7 +962,7 @@ return|return
 name|parameterizedRef
 return|;
 block|}
-DECL|method|expand (ParameterizedString parameterizedRef, String userName, Account.Id accountId)
+DECL|method|expand ( ParameterizedString parameterizedRef, String userName, Account.Id accountId)
 specifier|private
 name|String
 name|expand

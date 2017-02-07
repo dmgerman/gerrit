@@ -352,7 +352,7 @@ DECL|method|ServerInfo ()
 specifier|protected
 name|ServerInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|ChangeConfigInfo
 specifier|public
 specifier|static
@@ -437,7 +437,7 @@ DECL|method|ChangeConfigInfo ()
 specifier|protected
 name|ChangeConfigInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|PluginConfigInfo
 specifier|public
@@ -469,7 +469,7 @@ DECL|method|PluginConfigInfo ()
 specifier|protected
 name|PluginConfigInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|SshdInfo
 specifier|public
@@ -483,7 +483,7 @@ DECL|method|SshdInfo ()
 specifier|protected
 name|SshdInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|SuggestInfo
 specifier|public
@@ -506,7 +506,7 @@ DECL|method|SuggestInfo ()
 specifier|protected
 name|SuggestInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|UserConfigInfo
 specifier|public
@@ -529,7 +529,7 @@ DECL|method|UserConfigInfo ()
 specifier|protected
 name|UserConfigInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|ReceiveInfo
 specifier|public
@@ -552,7 +552,7 @@ DECL|method|ReceiveInfo ()
 specifier|protected
 name|ReceiveInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

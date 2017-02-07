@@ -118,8 +118,8 @@ DECL|method|GroupInfo ()
 specifier|protected
 name|GroupInfo
 parameter_list|()
-block|{   }
-comment|/**    * Create an anonymous group info, when only the id is known.    *<p>    * This constructor should only be a last-ditch effort, when the usual group    * lookup has failed and a stale group id has been discovered in the data    * store.    */
+block|{}
+comment|/**    * Create an anonymous group info, when only the id is known.    *    *<p>This constructor should only be a last-ditch effort, when the usual group lookup has failed    * and a stale group id has been discovered in the data store.    */
 DECL|method|GroupInfo (final AccountGroup.UUID uuid)
 specifier|public
 name|GroupInfo

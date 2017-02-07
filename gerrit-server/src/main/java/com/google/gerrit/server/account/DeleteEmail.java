@@ -338,7 +338,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|self
 specifier|private
 specifier|final
@@ -371,7 +371,7 @@ name|accountManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteEmail (Provider<CurrentUser> self, Realm realm, Provider<ReviewDb> dbProvider, AccountManager accountManager)
+DECL|method|DeleteEmail ( Provider<CurrentUser> self, Realm realm, Provider<ReviewDb> dbProvider, AccountManager accountManager)
 name|DeleteEmail
 parameter_list|(
 name|Provider

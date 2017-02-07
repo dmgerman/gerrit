@@ -235,7 +235,7 @@ name|conflictsCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ConflictsCacheImpl ( @amedNAME) Cache<ConflictKey, Boolean> conflictsCache)
+DECL|method|ConflictsCacheImpl (@amedNAME) Cache<ConflictKey, Boolean> conflictsCache)
 specifier|public
 name|ConflictsCacheImpl
 parameter_list|(

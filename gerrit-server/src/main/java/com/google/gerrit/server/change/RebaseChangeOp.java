@@ -438,6 +438,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -520,16 +530,6 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|RebaseChangeOp
 specifier|public
@@ -545,7 +545,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ChangeControl ctl, PatchSet originalPatchSet, @Nullable String baseCommitish)
+DECL|method|create ( ChangeControl ctl, PatchSet originalPatchSet, @Nullable String baseCommitish)
 name|RebaseChangeOp
 name|create
 parameter_list|(
@@ -805,7 +805,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setCheckAddPatchSetPermission ( boolean checkAddPatchSetPermission)
+DECL|method|setCheckAddPatchSetPermission (boolean checkAddPatchSetPermission)
 specifier|public
 name|RebaseChangeOp
 name|setCheckAddPatchSetPermission
@@ -881,7 +881,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setDetailedCommitMessage ( boolean detailedCommitMessage)
+DECL|method|setDetailedCommitMessage (boolean detailedCommitMessage)
 specifier|public
 name|RebaseChangeOp
 name|setDetailedCommitMessage

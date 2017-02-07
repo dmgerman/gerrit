@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Indicates that a commit cannot be merged without conflicts.  *<p>  * Messages should be viewable by end users.  */
+comment|/**  * Indicates that a commit cannot be merged without conflicts.  *  *<p>Messages should be viewable by end users.  */
 end_comment
 
 begin_class

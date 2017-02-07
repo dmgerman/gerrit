@@ -316,7 +316,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|encode3to4 (final StringBuilder out, final byte[] in, final int inOffset, final int numSigBytes)
+DECL|method|encode3to4 ( final StringBuilder out, final byte[] in, final int inOffset, final int numSigBytes)
 specifier|private
 specifier|static
 name|void
@@ -582,7 +582,7 @@ DECL|method|CookieBase64 ()
 specifier|private
 name|CookieBase64
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

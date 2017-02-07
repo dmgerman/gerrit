@@ -102,7 +102,7 @@ specifier|public
 interface|interface
 name|OAuthLoginProvider
 block|{
-comment|/**    * Performs a login with an OAuth2 provider for Git over HTTP    * communication.    *    * An implementation of this interface must transmit the given    * user name and secret, which can be either an OAuth2 access token    * or a password, to the OAuth2 backend for verification.    *    * @param username the user's identifier.    * @param secret the secret to verify, e.g. a previously received    * access token or a password.    *    * @return information about the logged in user, at least    * external id, user name and email address.    *    * @throws IOException if the login failed.    */
+comment|/**    * Performs a login with an OAuth2 provider for Git over HTTP communication.    *    *<p>An implementation of this interface must transmit the given user name and secret, which can    * be either an OAuth2 access token or a password, to the OAuth2 backend for verification.    *    * @param username the user's identifier.    * @param secret the secret to verify, e.g. a previously received access token or a password.    * @return information about the logged in user, at least external id, user name and email    *     address.    * @throws IOException if the login failed.    */
 DECL|method|login (String username, String secret)
 name|OAuthUserInfo
 name|login

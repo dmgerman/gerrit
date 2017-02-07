@@ -348,7 +348,7 @@ name|isNull
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|fakeRequest (String contextPath, String servletPath, String pathInfo)
+DECL|method|fakeRequest ( String contextPath, String servletPath, String pathInfo)
 specifier|private
 name|FakeHttpServletRequest
 name|fakeRequest

@@ -231,7 +231,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Set of reviewers on a change.  *<p>  * A given account may appear in multiple states and at different timestamps. No  * reviewers with state {@link ReviewerStateInternal#REMOVED} are ever exposed  * by this interface.  */
+comment|/**  * Set of reviewers on a change.  *  *<p>A given account may appear in multiple states and at different timestamps. No reviewers with  * state {@link ReviewerStateInternal#REMOVED} are ever exposed by this interface.  */
 end_comment
 
 begin_class
@@ -265,7 +265,7 @@ name|of
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|method|fromApprovals ( Iterable<PatchSetApproval> approvals)
+DECL|method|fromApprovals (Iterable<PatchSetApproval> approvals)
 specifier|public
 specifier|static
 name|ReviewerSet
@@ -416,7 +416,7 @@ name|reviewers
 argument_list|)
 return|;
 block|}
-DECL|method|fromTable ( Table<ReviewerStateInternal, Account.Id, Timestamp> table)
+DECL|method|fromTable (Table<ReviewerStateInternal, Account.Id, Timestamp> table)
 specifier|public
 specifier|static
 name|ReviewerSet
@@ -454,6 +454,7 @@ return|return
 name|EMPTY
 return|;
 block|}
+DECL|field|table
 specifier|private
 specifier|final
 name|ImmutableTable
@@ -466,7 +467,6 @@ name|Id
 argument_list|,
 name|Timestamp
 argument_list|>
-DECL|field|table
 name|table
 decl_stmt|;
 DECL|field|accounts
@@ -570,6 +570,7 @@ name|keySet
 argument_list|()
 return|;
 block|}
+DECL|method|asTable ()
 specifier|public
 name|ImmutableTable
 argument_list|<
@@ -581,7 +582,6 @@ name|Id
 argument_list|,
 name|Timestamp
 argument_list|>
-DECL|method|asTable ()
 name|asTable
 parameter_list|()
 block|{

@@ -870,6 +870,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|EnumSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|codemirror
@@ -979,36 +1009,6 @@ operator|.
 name|theme
 operator|.
 name|ThemeLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|EnumSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -1459,7 +1459,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -1654,7 +1654,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{             }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -1903,7 +1903,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{}
 block|}
 argument_list|)
 argument_list|)
@@ -3989,7 +3989,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|newCm ( DiffInfo.FileMeta meta, String contents, Element parent)
+DECL|method|newCm (DiffInfo.FileMeta meta, String contents, Element parent)
 specifier|abstract
 name|CodeMirror
 name|newCm
@@ -5364,7 +5364,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{           }
+block|{}
 block|}
 argument_list|)
 expr_stmt|;

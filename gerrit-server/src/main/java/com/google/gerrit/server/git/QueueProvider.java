@@ -77,9 +77,9 @@ enum|enum
 name|QueueType
 block|{
 DECL|enumConstant|INTERACTIVE
-DECL|enumConstant|BATCH
 name|INTERACTIVE
 block|,
+DECL|enumConstant|BATCH
 name|BATCH
 block|}
 DECL|method|getQueue (QueueType type)

@@ -540,20 +540,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -599,6 +585,20 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
 import|;
 end_import
 
@@ -678,7 +678,7 @@ name|identifiedUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetAccess (GroupBackend groupBackend, Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GroupsCollection groupsCollection, ProjectCache projectCache, GetAccess getAccess, Provider<IdentifiedUser> identifiedUser)
+DECL|method|SetAccess ( GroupBackend groupBackend, Provider<MetaDataUpdate.User> metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GroupsCollection groupsCollection, ProjectCache projectCache, GetAccess getAccess, Provider<IdentifiedUser> identifiedUser)
 specifier|private
 name|SetAccess
 parameter_list|(
@@ -1534,7 +1534,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getAccessSections ( Map<String, AccessSectionInfo> sectionInfos)
+DECL|method|getAccessSections (Map<String, AccessSectionInfo> sectionInfos)
 specifier|private
 name|List
 argument_list|<

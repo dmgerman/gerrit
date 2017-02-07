@@ -136,6 +136,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -190,18 +200,8 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_comment
-comment|/**  * Listener to validate ref updates performed during submit operation.  *  * As submit strategies may generate new commits (e.g. Cherry Pick), this  * listener allows validation of resulting new commit before destination branch  * is updated and new patchset ref is created.  *  * If you only care about validating the change being submitted and not the  * resulting new commit, consider using {@link MergeValidationListener} instead.  */
+comment|/**  * Listener to validate ref updates performed during submit operation.  *  *<p>As submit strategies may generate new commits (e.g. Cherry Pick), this listener allows  * validation of resulting new commit before destination branch is updated and new patchset ref is  * created.  *  *<p>If you only care about validating the change being submitted and not the resulting new commit,  * consider using {@link MergeValidationListener} instead.  */
 end_comment
 
 begin_interface
@@ -243,7 +243,7 @@ name|ReceiveCommand
 argument_list|>
 name|commands
 decl_stmt|;
-DECL|method|Arguments (NameKey project, Repository repository, ObjectReader objectReader, Map<String, ReceiveCommand> commands)
+DECL|method|Arguments ( NameKey project, Repository repository, ObjectReader objectReader, Map<String, ReceiveCommand> commands)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -302,7 +302,7 @@ return|return
 name|project
 return|;
 block|}
-comment|/**      * @return a read only repository      */
+comment|/** @return a read only repository */
 DECL|method|getRepository ()
 specifier|public
 name|Repository
@@ -327,7 +327,7 @@ name|objectReader
 argument_list|)
 return|;
 block|}
-comment|/**      * @return a map from ref to op on it covering all ref ops to be performed      *         on this repository as part of ongoing submit operation.      */
+comment|/**      * @return a map from ref to op on it covering all ref ops to be performed on this repository as      *     part of ongoing submit operation.      */
 DECL|method|getCommands ()
 specifier|public
 name|Map
@@ -344,7 +344,7 @@ name|commands
 return|;
 block|}
 block|}
-comment|/**    * Called right before branch is updated with new commit or commits as a    * result of submit.    *    * If ValidationException is thrown, submitting is aborted.    */
+comment|/**    * Called right before branch is updated with new commit or commits as a result of submit.    *    *<p>If ValidationException is thrown, submitting is aborted.    */
 DECL|method|preBranchUpdate (Arguments args)
 name|void
 name|preBranchUpdate

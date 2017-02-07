@@ -219,7 +219,7 @@ DECL|method|UiResult ()
 specifier|private
 name|UiResult
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

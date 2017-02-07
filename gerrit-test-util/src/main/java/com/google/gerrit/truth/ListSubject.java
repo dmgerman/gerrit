@@ -275,7 +275,7 @@ name|list
 argument_list|)
 return|;
 block|}
-DECL|method|ListSubject (FailureStrategy failureStrategy, List<E> list, Function<E, S> elementAssertThatFunction)
+DECL|method|ListSubject ( FailureStrategy failureStrategy, List<E> list, Function<E, S> elementAssertThatFunction)
 specifier|private
 name|ListSubject
 parameter_list|(

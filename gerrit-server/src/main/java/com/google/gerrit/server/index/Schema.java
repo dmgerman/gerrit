@@ -200,26 +200,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -265,6 +245,26 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -807,7 +807,7 @@ return|return
 name|version
 return|;
 block|}
-comment|/**    * Get all fields in this schema.    *<p>    * This is primarily useful for iteration. Most callers should prefer one    * of the helper methods {@link #getField(FieldDef, FieldDef...)} or {@link    * #hasField(FieldDef)} to looking up fields by name    *    * @return all fields in this schema indexed by name.    */
+comment|/**    * Get all fields in this schema.    *    *<p>This is primarily useful for iteration. Most callers should prefer one of the helper methods    * {@link #getField(FieldDef, FieldDef...)} or {@link #hasField(FieldDef)} to looking up fields by    * name    *    * @return all fields in this schema indexed by name.    */
 DECL|method|getFields ()
 specifier|public
 specifier|final
@@ -829,7 +829,7 @@ return|return
 name|fields
 return|;
 block|}
-comment|/**    * @return all fields in this schema where {@link FieldDef#isStored()} is    *     true.    */
+comment|/** @return all fields in this schema where {@link FieldDef#isStored()} is true. */
 DECL|method|getStoredFields ()
 specifier|public
 specifier|final
@@ -851,7 +851,7 @@ return|return
 name|storedFields
 return|;
 block|}
-comment|/**    * Look up fields in this schema.    *    * @param first the preferred field to look up.    * @param rest additional fields to look up.    * @return the first field in the schema matching {@code first} or {@code    *     rest}, in order, or absent if no field matches.    */
+comment|/**    * Look up fields in this schema.    *    * @param first the preferred field to look up.    * @param rest additional fields to look up.    * @return the first field in the schema matching {@code first} or {@code rest}, in order, or    *     absent if no field matches.    */
 annotation|@
 name|SafeVarargs
 DECL|method|getField (FieldDef<T, ?> first, FieldDef<T, ?>... rest)
@@ -1035,8 +1035,8 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * Build all fields in the schema from an input object.    *<p>    * Null values are omitted, as are fields which cause errors, which are    * logged.    *    * @param obj input object.    * @param fillArgs arguments for filling fields.    * @return all non-null field values from the object.    */
-DECL|method|buildFields ( final T obj, final FillArgs fillArgs)
+comment|/**    * Build all fields in the schema from an input object.    *    *<p>Null values are omitted, as are fields which cause errors, which are logged.    *    * @param obj input object.    * @param fillArgs arguments for filling fields.    * @return all non-null field values from the object.    */
+DECL|method|buildFields (final T obj, final FillArgs fillArgs)
 specifier|public
 specifier|final
 name|Iterable

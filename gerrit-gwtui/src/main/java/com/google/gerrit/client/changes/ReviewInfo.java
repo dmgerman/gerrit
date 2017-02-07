@@ -122,7 +122,7 @@ DECL|method|ReviewInfo ()
 specifier|protected
 name|ReviewInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

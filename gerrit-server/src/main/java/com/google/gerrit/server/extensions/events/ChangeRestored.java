@@ -272,26 +272,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -307,6 +287,26 @@ operator|.
 name|sql
 operator|.
 name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -527,7 +527,7 @@ specifier|private
 name|String
 name|reason
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, AccountInfo restorer, String reason, Timestamp when)
+DECL|method|Event ( ChangeInfo change, RevisionInfo revision, AccountInfo restorer, String reason, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo

@@ -166,6 +166,28 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -299,28 +321,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
 import|;
 end_import
 
@@ -812,7 +812,7 @@ specifier|public
 name|void
 name|activateOptions
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setAppender (Appender appender)
@@ -823,7 +823,7 @@ parameter_list|(
 name|Appender
 name|appender
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setBackupAppender (Appender appender)
@@ -834,7 +834,7 @@ parameter_list|(
 name|Appender
 name|appender
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setLogger (Logger logger)
@@ -845,7 +845,7 @@ parameter_list|(
 name|Logger
 name|logger
 parameter_list|)
-block|{     }
+block|{}
 block|}
 block|}
 end_class

@@ -331,7 +331,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for SideBySideTable2 and UnifiedTable2  */
+comment|/** Base class for SideBySideTable2 and UnifiedTable2 */
 end_comment
 
 begin_class
@@ -733,7 +733,7 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|set (DiffPreferences prefs, JsArray<RevisionInfo> list, int parents, DiffInfo info, boolean editExists, boolean current, boolean open, boolean binary)
+DECL|method|set ( DiffPreferences prefs, JsArray<RevisionInfo> list, int parents, DiffInfo info, boolean editExists, boolean current, boolean open, boolean binary)
 name|void
 name|set
 parameter_list|(

@@ -148,7 +148,7 @@ DECL|method|SshKeyInfo ()
 specifier|protected
 name|SshKeyInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -143,7 +143,7 @@ operator|.
 name|nullsFirst
 argument_list|()
 decl_stmt|;
-comment|/**    * Null-safe ordering over arbitrary subclass of {@code IntKey}.    *<p>    * In some cases, {@code Comparator.comparing(Change.Id::get)} may be shorter    * and cleaner. However, this method may be preferable in some cases:    *<ul>    *<li>This ordering is null-safe over both input and the result of {@link    *   IntKey#get()}; {@code comparing} is only a good idea if all inputs are    *   obviously non-null.</li>    *<li>{@code intKeyOrdering().sortedCopy(iterable)} is shorter than the    *   stream equivalent.</li>    *<li>Creating derived comparators may be more readable with {@link Ordering}    *   method chaining rather than static {@code Comparator} methods.    *</ul>    */
+comment|/**    * Null-safe ordering over arbitrary subclass of {@code IntKey}.    *    *<p>In some cases, {@code Comparator.comparing(Change.Id::get)} may be shorter and cleaner.    * However, this method may be preferable in some cases:    *    *<ul>    *<li>This ordering is null-safe over both input and the result of {@link IntKey#get()}; {@code    *       comparing} is only a good idea if all inputs are obviously non-null.    *<li>{@code intKeyOrdering().sortedCopy(iterable)} is shorter than the stream equivalent.    *<li>Creating derived comparators may be more readable with {@link Ordering} method chaining    *       rather than static {@code Comparator} methods.    *</ul>    */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -214,7 +214,7 @@ DECL|method|ReviewDbUtil ()
 specifier|private
 name|ReviewDbUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

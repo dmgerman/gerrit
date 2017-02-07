@@ -265,7 +265,7 @@ DECL|class|Input
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|loader
 specifier|private
 specifier|final

@@ -159,7 +159,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provider of the group(s) which should become owners of a newly created  * project. The only matching patterns supported are exact match or wildcard  * matching which can be specified by ending the name with a {@code *}.  *  *<pre>  * [repository&quot;*&quot;]  *     ownerGroup = Registered Users  *     ownerGroup = Administrators  * [repository&quot;project/*&quot;]  *     ownerGroup = Administrators  *</pre>  */
+comment|/**  * Provider of the group(s) which should become owners of a newly created project. The only matching  * patterns supported are exact match or wildcard matching which can be specified by ending the name  * with a {@code *}.  *  *<pre>  * [repository&quot;*&quot;]  *     ownerGroup = Registered Users  *     ownerGroup = Administrators  * [repository&quot;project/*&quot;]  *     ownerGroup = Administrators  *</pre>  */
 end_comment
 
 begin_class
@@ -188,7 +188,7 @@ function_decl|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectOwnerGroupsProvider (GroupBackend gb, ThreadLocalRequestContext context, ServerRequestContext serverCtx, RepositoryConfig repositoryCfg, @Assisted Project.NameKey project)
+DECL|method|ProjectOwnerGroupsProvider ( GroupBackend gb, ThreadLocalRequestContext context, ServerRequestContext serverCtx, RepositoryConfig repositoryCfg, @Assisted Project.NameKey project)
 specifier|public
 name|ProjectOwnerGroupsProvider
 parameter_list|(

@@ -241,7 +241,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Obtain a list of label types from the server configuration.  *<p>  * Unifies to a Prolog list of: {@code label_type(Label, Fun, Min, Max)}  * where:  *<ul>  *<li>{@code Label} - the newer style label name</li>  *<li>{@code Fun} - legacy function name</li>  *<li>{@code Min, Max} - the smallest and largest configured values.</li>  *</ul>  */
+comment|/**  * Obtain a list of label types from the server configuration.  *  *<p>Unifies to a Prolog list of: {@code label_type(Label, Fun, Min, Max)} where:  *  *<ul>  *<li>{@code Label} - the newer style label name  *<li>{@code Fun} - legacy function name  *<li>{@code Min, Max} - the smallest and largest configured values.  *</ul>  */
 end_comment
 
 begin_class

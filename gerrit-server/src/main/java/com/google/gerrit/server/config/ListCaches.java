@@ -270,18 +270,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -330,6 +318,18 @@ name|TreeMap
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
+import|;
+end_import
+
 begin_class
 annotation|@
 name|RequiresAnyCapability
@@ -370,9 +370,9 @@ enum|enum
 name|OutputFormat
 block|{
 DECL|enumConstant|LIST
-DECL|enumConstant|TEXT_LIST
 name|LIST
 block|,
+DECL|enumConstant|TEXT_LIST
 name|TEXT_LIST
 block|}
 annotation|@
@@ -644,9 +644,9 @@ enum|enum
 name|CacheType
 block|{
 DECL|enumConstant|MEM
-DECL|enumConstant|DISK
 name|MEM
 block|,
+DECL|enumConstant|DISK
 name|DISK
 block|}
 DECL|class|CacheInfo
@@ -680,7 +680,7 @@ specifier|public
 name|HitRatioInfo
 name|hitRatio
 decl_stmt|;
-DECL|method|CacheInfo (Cache<?,?> cache)
+DECL|method|CacheInfo (Cache<?, ?> cache)
 specifier|public
 name|CacheInfo
 parameter_list|(
@@ -701,7 +701,7 @@ name|cache
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CacheInfo (String name, Cache<?,?> cache)
+DECL|method|CacheInfo (String name, Cache<?, ?> cache)
 specifier|public
 name|CacheInfo
 parameter_list|(

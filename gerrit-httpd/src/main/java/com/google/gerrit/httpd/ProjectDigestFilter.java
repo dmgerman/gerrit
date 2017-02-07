@@ -322,20 +322,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -510,8 +496,22 @@ name|HttpServletResponseWrapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_comment
-comment|/**  * Authenticates the current user by HTTP digest authentication.  *<p>  * The current HTTP request is authenticated by looking up the username from the  * Authorization header and checking the digest response against the stored  * password. This filter is intended only to protect the {@link GitOverHttpServlet}  * and its handled URLs, which provide remote repository access over HTTP.  *  * @see<a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617</a>  */
+comment|/**  * Authenticates the current user by HTTP digest authentication.  *  *<p>The current HTTP request is authenticated by looking up the username from the Authorization  * header and checking the digest response against the stored password. This filter is intended only  * to protect the {@link GitOverHttpServlet} and its handled URLs, which provide remote repository  * access over HTTP.  *  * @see<a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617</a>  */
 end_comment
 
 begin_class
@@ -584,7 +584,7 @@ name|context
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectDigestFilter (@anonicalWebUrl @ullable Provider<String> urlProvider, DynamicItem<WebSession> session, AccountCache accountCache, @GerritServerConfig Config config)
+DECL|method|ProjectDigestFilter ( @anonicalWebUrl @ullable Provider<String> urlProvider, DynamicItem<WebSession> session, AccountCache accountCache, @GerritServerConfig Config config)
 name|ProjectDigestFilter
 parameter_list|(
 annotation|@
@@ -685,7 +685,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
@@ -1436,7 +1436,7 @@ block|,
 literal|'e'
 block|,
 literal|'f'
-block|,}
+block|,   }
 decl_stmt|;
 DECL|method|LHEX (byte[] bin)
 specifier|private

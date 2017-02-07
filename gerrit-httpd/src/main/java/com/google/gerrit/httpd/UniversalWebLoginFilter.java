@@ -378,7 +378,7 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|UniversalWebLoginFilter (DynamicItem<WebSession> session, DynamicSet<WebLoginListener> webLoginListeners, Provider<CurrentUser> userProvider)
+DECL|method|UniversalWebLoginFilter ( DynamicItem<WebSession> session, DynamicSet<WebLoginListener> webLoginListeners, Provider<CurrentUser> userProvider)
 specifier|public
 name|UniversalWebLoginFilter
 parameter_list|(
@@ -432,7 +432,7 @@ name|filterConfig
 parameter_list|)
 throws|throws
 name|ServletException
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
@@ -628,7 +628,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

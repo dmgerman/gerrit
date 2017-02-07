@@ -112,12 +112,12 @@ enum|enum
 name|Status
 block|{
 DECL|enumConstant|BAD
-DECL|enumConstant|OK
-DECL|enumConstant|TRUSTED
 name|BAD
 block|,
+DECL|enumConstant|OK
 name|OK
 block|,
+DECL|enumConstant|TRUSTED
 name|TRUSTED
 block|;   }
 DECL|method|id ()
@@ -219,7 +219,7 @@ DECL|method|GpgKeyInfo ()
 specifier|protected
 name|GpgKeyInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -139,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests that non-UTF8 encodings are handled correctly.  */
+comment|/** Tests that non-UTF8 encodings are handled correctly. */
 end_comment
 
 begin_class

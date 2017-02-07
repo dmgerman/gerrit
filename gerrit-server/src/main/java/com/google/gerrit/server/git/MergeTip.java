@@ -114,20 +114,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -156,8 +142,22 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_comment
-comment|/**  * Class describing a merge tip during merge operation.  *<p>  * The current tip of a {@link MergeTip} may be null if the merge operation is  * against an unborn branch, and has not yet been attempted. This is distinct  * from a null {@link MergeTip} instance, which may be used to indicate that a  * merge failed or another error state.  */
+comment|/**  * Class describing a merge tip during merge operation.  *  *<p>The current tip of a {@link MergeTip} may be null if the merge operation is against an unborn  * branch, and has not yet been attempted. This is distinct from a null {@link MergeTip} instance,  * which may be used to indicate that a merge failed or another error state.  */
 end_comment
 
 begin_class
@@ -186,7 +186,7 @@ name|ObjectId
 argument_list|>
 name|mergeResults
 decl_stmt|;
-comment|/**    * @param initialTip tip before the merge operation; may be null, indicating    *     an unborn branch.    * @param toMerge list of commits to be merged in merge operation; may not be    *     null or empty.    */
+comment|/**    * @param initialTip tip before the merge operation; may be null, indicating an unborn branch.    * @param toMerge list of commits to be merged in merge operation; may not be null or empty.    */
 DECL|method|MergeTip (@ullable CodeReviewCommit initialTip, Collection<CodeReviewCommit> toMerge)
 specifier|public
 name|MergeTip
@@ -268,7 +268,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * @return the initial tip of the branch before the merge operation started;    *     may be null, indicating a previously unborn branch.    */
+comment|/**    * @return the initial tip of the branch before the merge operation started; may be null,    *     indicating a previously unborn branch.    */
 DECL|method|getInitialTip ()
 specifier|public
 name|CodeReviewCommit
@@ -316,7 +316,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * The merge results of all the merges of this merge operation.    *    * @return The merge results of the merge operation as a map of SHA-1 to be    *     merged to SHA-1 of the merge result.    */
+comment|/**    * The merge results of all the merges of this merge operation.    *    * @return The merge results of the merge operation as a map of SHA-1 to be merged to SHA-1 of the    *     merge result.    */
 DECL|method|getMergeResults ()
 specifier|public
 name|Map
@@ -332,7 +332,7 @@ return|return
 name|mergeResults
 return|;
 block|}
-comment|/**    * @return The current tip of the current merge operation; may be null,    *     indicating an unborn branch.    */
+comment|/**    * @return The current tip of the current merge operation; may be null, indicating an unborn    *     branch.    */
 annotation|@
 name|Nullable
 DECL|method|getCurrentTip ()

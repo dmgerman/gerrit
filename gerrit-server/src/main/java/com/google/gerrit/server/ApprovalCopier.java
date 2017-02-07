@@ -388,34 +388,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -464,8 +436,36 @@ name|TreeMap
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
 begin_comment
-comment|/**  * Copies approvals between patch sets.  *<p>  * The result of a copy may either be stored, as when stamping approvals in the  * database at submit time, or refreshed on demand, as when reading approvals  * from the NoteDb.  */
+comment|/**  * Copies approvals between patch sets.  *  *<p>The result of a copy may either be stored, as when stamping approvals in the database at  * submit time, or refreshed on demand, as when reading approvals from the NoteDb.  */
 end_comment
 
 begin_class
@@ -516,7 +516,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ApprovalCopier (GitRepositoryManager repoManager, ProjectCache projectCache, ChangeKindCache changeKindCache, LabelNormalizer labelNormalizer, ChangeData.Factory changeDataFactory, PatchSetUtil psUtil)
+DECL|method|ApprovalCopier ( GitRepositoryManager repoManager, ProjectCache projectCache, ChangeKindCache changeKindCache, LabelNormalizer labelNormalizer, ChangeData.Factory changeDataFactory, PatchSetUtil psUtil)
 name|ApprovalCopier
 parameter_list|(
 name|GitRepositoryManager
@@ -613,7 +613,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param ctl change control for user uploading PatchSet    * @param ps new PatchSet    * @param dontCopy PatchSetApprovals indicating which (account, label) pairs    *        should not be copied    * @throws OrmException    */
+comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param ctl change control for user uploading PatchSet    * @param ps new PatchSet    * @param dontCopy PatchSetApprovals indicating which (account, label) pairs should not be copied    * @throws OrmException    */
 DECL|method|copy (ReviewDb db, ChangeControl ctl, PatchSet ps, Iterable<PatchSetApproval> dontCopy)
 specifier|public
 name|void
@@ -697,7 +697,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getForPatchSet (ReviewDb db, ChangeControl ctl, PatchSet.Id psId, Iterable<PatchSetApproval> dontCopy)
+DECL|method|getForPatchSet ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, Iterable<PatchSetApproval> dontCopy)
 name|Iterable
 argument_list|<
 name|PatchSetApproval
@@ -768,7 +768,7 @@ name|dontCopy
 argument_list|)
 return|;
 block|}
-DECL|method|getForPatchSet (ReviewDb db, ChangeControl ctl, PatchSet ps, Iterable<PatchSetApproval> dontCopy)
+DECL|method|getForPatchSet ( ReviewDb db, ChangeControl ctl, PatchSet ps, Iterable<PatchSetApproval> dontCopy)
 specifier|private
 name|Iterable
 argument_list|<
@@ -1322,7 +1322,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|canCopy (ProjectState project, PatchSetApproval psa, PatchSet.Id psId, ChangeKind kind)
+DECL|method|canCopy ( ProjectState project, PatchSetApproval psa, PatchSet.Id psId, ChangeKind kind)
 specifier|private
 specifier|static
 name|boolean

@@ -648,7 +648,7 @@ DECL|method|SuggestReviewerInfo ()
 specifier|protected
 name|SuggestReviewerInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

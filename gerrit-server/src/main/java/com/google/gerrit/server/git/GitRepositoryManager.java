@@ -108,6 +108,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|SortedSet
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -134,28 +154,8 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|SortedSet
-import|;
-end_import
-
 begin_comment
-comment|/**  * Manages Git repositories for the Gerrit server process.  *<p>  * Implementations of this interface should be a {@link Singleton} and  * registered in Guice so they are globally available within the server  * environment.  */
+comment|/**  * Manages Git repositories for the Gerrit server process.  *  *<p>Implementations of this interface should be a {@link Singleton} and registered in Guice so  * they are globally available within the server environment.  */
 end_comment
 
 begin_interface
@@ -173,7 +173,7 @@ specifier|public
 interface|interface
 name|GitRepositoryManager
 block|{
-comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository.    * @throws IOException the name cannot be read as a repository.    */
+comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()} when done to decrement    *     the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing repository.    * @throws IOException the name cannot be read as a repository.    */
 DECL|method|openRepository (Project.NameKey name)
 name|Repository
 name|openRepository
@@ -188,7 +188,7 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 function_decl|;
-comment|/**    * Create (and open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryCaseMismatchException the name collides with an existing    *         repository name, but only in case of a character within the name.    * @throws RepositoryNotFoundException the name is invalid.    * @throws IOException the repository cannot be created.    */
+comment|/**    * Create (and open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()} when done to decrement    *     the resource handle.    * @throws RepositoryCaseMismatchException the name collides with an existing repository name, but    *     only in case of a character within the name.    * @throws RepositoryNotFoundException the name is invalid.    * @throws IOException the repository cannot be created.    */
 DECL|method|createRepository (Project.NameKey name)
 name|Repository
 name|createRepository

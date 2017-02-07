@@ -271,7 +271,7 @@ name|oauthSession
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OAuthOverOpenIDLogoutServlet (AuthConfig authConfig, DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AuditService audit, Provider<OAuthSessionOverOpenID> oauthSession)
+DECL|method|OAuthOverOpenIDLogoutServlet ( AuthConfig authConfig, DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AuditService audit, Provider<OAuthSessionOverOpenID> oauthSession)
 name|OAuthOverOpenIDLogoutServlet
 parameter_list|(
 name|AuthConfig

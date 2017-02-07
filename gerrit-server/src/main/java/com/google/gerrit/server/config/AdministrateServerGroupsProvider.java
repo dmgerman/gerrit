@@ -279,7 +279,7 @@ name|groups
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AdministrateServerGroupsProvider (GroupBackend groupBackend, @GerritServerConfig Config config, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx)
+DECL|method|AdministrateServerGroupsProvider ( GroupBackend groupBackend, @GerritServerConfig Config config, ThreadLocalRequestContext threadContext, ServerRequestContext serverCtx)
 specifier|public
 name|AdministrateServerGroupsProvider
 parameter_list|(

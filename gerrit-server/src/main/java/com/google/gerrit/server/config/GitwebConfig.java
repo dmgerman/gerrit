@@ -1420,7 +1420,7 @@ return|return
 name|type
 return|;
 block|}
-comment|/**    * @return URL of the entry point into gitweb. This URL may be relative to our    *         context if gitweb is hosted by ourselves; or absolute if its hosted    *         elsewhere; or null if gitweb has not been configured.    */
+comment|/**    * @return URL of the entry point into gitweb. This URL may be relative to our context if gitweb    *     is hosted by ourselves; or absolute if its hosted elsewhere; or null if gitweb has not been    *     configured.    */
 DECL|method|getUrl ()
 specifier|public
 name|String
@@ -1431,7 +1431,7 @@ return|return
 name|url
 return|;
 block|}
-comment|/**    * Determines if a given character can be used unencoded in an URL as a    * replacement for the path separator '/'.    *    * Reasoning: http://www.ietf.org/rfc/rfc1738.txt Â§ 2.2:    *    * ... only alphanumerics, the special characters "$-_.+!*'(),", and    *  reserved characters used for their reserved purposes may be used    * unencoded within a URL.    *    * The following characters might occur in file names, however:    *    * alphanumeric characters,    *    * "$-_.+!',"    */
+comment|/**    * Determines if a given character can be used unencoded in an URL as a replacement for the path    * separator '/'.    *    *<p>Reasoning: http://www.ietf.org/rfc/rfc1738.txt Â§ 2.2:    *    *<p>... only alphanumerics, the special characters "$-_.+!*'(),", and reserved characters used    * for their reserved purposes may be used unencoded within a URL.    *    *<p>The following characters might occur in file names, however:    *    *<p>alphanumeric characters,    *    *<p>"$-_.+!',"    */
 DECL|method|isValidPathSeparator (char c)
 specifier|static
 name|boolean

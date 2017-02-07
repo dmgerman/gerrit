@@ -118,6 +118,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -158,18 +168,8 @@ name|UploadPack
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
 begin_comment
-comment|/**  * Listener to provide validation for upload operations.  *  * Invoked by Gerrit before it begins to send a pack to the client.  *  * Implementors can block the upload operation by throwing a  * ValidationException. The exception's message text will be reported to  * the end-user over the client's protocol connection.  */
+comment|/**  * Listener to provide validation for upload operations.  *  *<p>Invoked by Gerrit before it begins to send a pack to the client.  *  *<p>Implementors can block the upload operation by throwing a ValidationException. The exception's  * message text will be reported to the end-user over the client's protocol connection.  */
 end_comment
 
 begin_interface
@@ -180,8 +180,8 @@ specifier|public
 interface|interface
 name|UploadValidationListener
 block|{
-comment|/**    * Validate an upload before it begins.    *    * @param repository The repository    * @param project The project    * @param remoteHost Remote address/hostname of the user    * @param wants The list of wanted objects. These may be RevObject or    *        RevCommit if the processor parsed them. Implementors should not rely    *        on the values being parsed.    * @param haves The list of common objects. Empty on an initial clone request.    *        These may be RevObject or RevCommit if the processor parsed them.    *        Implementors should not rely on the values being parsed.    * @throws ValidationException to block the upload and send a message    *         back to the end-user over the client's protocol connection.    */
-DECL|method|onPreUpload (Repository repository, Project project, String remoteHost, UploadPack up, Collection<? extends ObjectId> wants, Collection<? extends ObjectId> haves)
+comment|/**    * Validate an upload before it begins.    *    * @param repository The repository    * @param project The project    * @param remoteHost Remote address/hostname of the user    * @param wants The list of wanted objects. These may be RevObject or RevCommit if the processor    *     parsed them. Implementors should not rely on the values being parsed.    * @param haves The list of common objects. Empty on an initial clone request. These may be    *     RevObject or RevCommit if the processor parsed them. Implementors should not rely on the    *     values being parsed.    * @throws ValidationException to block the upload and send a message back to the end-user over    *     the client's protocol connection.    */
+DECL|method|onPreUpload ( Repository repository, Project project, String remoteHost, UploadPack up, Collection<? extends ObjectId> wants, Collection<? extends ObjectId> haves)
 name|void
 name|onPreUpload
 parameter_list|(

@@ -325,7 +325,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplacePatchSetSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|ReplacePatchSetSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|ReplacePatchSetSender
 parameter_list|(

@@ -211,8 +211,8 @@ DECL|method|Hyperlink ()
 specifier|public
 name|Hyperlink
 parameter_list|()
-block|{   }
-comment|/**    * Creates a hyperlink with its text and target history token specified.    *    * @param text the hyperlink's text    * @param token the history token to which it will link, which may not be null    *        (use {@link Anchor} instead if you don't need history processing)    */
+block|{}
+comment|/**    * Creates a hyperlink with its text and target history token specified.    *    * @param text the hyperlink's text    * @param token the history token to which it will link, which may not be null (use {@link Anchor}    *     instead if you don't need history processing)    */
 DECL|method|Hyperlink (final String text, final String token)
 specifier|public
 name|Hyperlink

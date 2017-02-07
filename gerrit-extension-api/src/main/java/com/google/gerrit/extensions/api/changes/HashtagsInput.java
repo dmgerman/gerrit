@@ -100,9 +100,9 @@ specifier|public
 class|class
 name|HashtagsInput
 block|{
+DECL|field|add
 annotation|@
 name|DefaultInput
-DECL|field|add
 specifier|public
 name|Set
 argument_list|<
@@ -122,7 +122,7 @@ DECL|method|HashtagsInput ()
 specifier|public
 name|HashtagsInput
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|HashtagsInput (Set<String> add)
 specifier|public
 name|HashtagsInput

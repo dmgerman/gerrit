@@ -155,7 +155,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Information about a single user.  *<p>  * A user may have multiple identities they can use to login to Gerrit (see  * {@link AccountExternalId}), but in such cases they always map back to a  * single Account entity.  *<p>  * Entities "owned" by an Account (that is, their primary key contains the  * {@link Account.Id} key as part of their key structure):  *<ul>  *  *<li>{@link AccountExternalId}: OpenID identities and email addresses known to  * be registered to this user. Multiple records can exist when the user has more  * than one public identity, such as a work and a personal email address.</li>  *  *<li>{@link AccountGroupMember}: membership of the user in a specific human  * managed {@link AccountGroup}. Multiple records can exist when the user is a  * member of more than one group.</li>  *  *<li>{@link AccountSshKey}: user's public SSH keys, for authentication through  * the internal SSH daemon. One record per SSH key uploaded by the user, keys  * are checked in random order until a match is found.</li>  *  *<li>{@link DiffPreferencesInfo}: user's preferences for rendering side-to-side  * and unified diff</li>  *  *</ul>  */
+comment|/**  * Information about a single user.  *  *<p>A user may have multiple identities they can use to login to Gerrit (see {@link  * AccountExternalId}), but in such cases they always map back to a single Account entity.  *  *<p>Entities "owned" by an Account (that is, their primary key contains the {@link Account.Id} key  * as part of their key structure):  *  *<ul>  *<li>{@link AccountExternalId}: OpenID identities and email addresses known to be registered to  *       this user. Multiple records can exist when the user has more than one public identity, such  *       as a work and a personal email address.  *<li>{@link AccountGroupMember}: membership of the user in a specific human managed {@link  *       AccountGroup}. Multiple records can exist when the user is a member of more than one group.  *<li>{@link AccountSshKey}: user's public SSH keys, for authentication through the internal SSH  *       daemon. One record per SSH key uploaded by the user, keys are checked in random order until  *       a match is found.  *<li>{@link DiffPreferencesInfo}: user's preferences for rendering side-to-side and unified diff  *</ul>  */
 end_comment
 
 begin_class
@@ -276,7 +276,7 @@ DECL|method|Id ()
 specifier|protected
 name|Id
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|Id (int id)
 specifier|public
 name|Id
@@ -399,7 +399,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Parse an Account.Id out of a part of a ref-name.      *      * @param name  a ref name with the following syntax: {@code "34/1234..."}.      *              We assume that the caller has trimmed any prefix.      */
+comment|/**      * Parse an Account.Id out of a part of a ref-name.      *      * @param name a ref name with the following syntax: {@code "34/1234..."}. We assume that the      *     caller has trimmed any prefix.      */
 DECL|method|fromRefPart (String name)
 specifier|public
 specifier|static
@@ -436,7 +436,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Parse an Account.Id out of the last part of a ref name.      *<p>      * The input is a ref name of the form {@code ".../1234"}, where the suffix      * is a non-sharded account ID. Ref names using a sharded ID should use      * {@link #fromRefPart(String)} instead for greater safety.      *      * @param name ref name      * @return account ID, or null if not numeric.      */
+comment|/**      * Parse an Account.Id out of the last part of a ref name.      *      *<p>The input is a ref name of the form {@code ".../1234"}, where the suffix is a non-sharded      * account ID. Ref names using a sharded ID should use {@link #fromRefPart(String)} instead for      * greater safety.      *      * @param name ref name      * @return account ID, or null if not numeric.      */
 DECL|method|fromRefSuffix (String name)
 specifier|public
 specifier|static
@@ -581,8 +581,8 @@ DECL|method|Account ()
 specifier|protected
 name|Account
 parameter_list|()
-block|{   }
-comment|/**    * Create a new account.    *    * @param newId unique id, see    *        {@link com.google.gerrit.reviewdb.server.ReviewDb#nextAccountId()}.    * @param registeredOn when the account was registered.    */
+block|{}
+comment|/**    * Create a new account.    *    * @param newId unique id, see {@link com.google.gerrit.reviewdb.server.ReviewDb#nextAccountId()}.    * @param registeredOn when the account was registered.    */
 DECL|method|Account (Account.Id newId, Timestamp registeredOn)
 specifier|public
 name|Account
@@ -701,7 +701,7 @@ operator|=
 name|addr
 expr_stmt|;
 block|}
-comment|/**    * Formats an account name.    *<p>    * If the account has a full name, it returns only the full name. Otherwise it    * returns a longer form that includes the email address.    */
+comment|/**    * Formats an account name.    *    *<p>If the account has a full name, it returns only the full name. Otherwise it returns a longer    * form that includes the email address.    */
 DECL|method|getName (String anonymousCowardName)
 specifier|public
 name|String
@@ -740,7 +740,7 @@ name|anonymousCowardName
 argument_list|)
 return|;
 block|}
-comment|/**    * Get the name and email address.    *<p>    * Example output:    *<ul>    *<li>{@code A U. Thor&lt;author@example.com&gt;}: full populated</li>    *<li>{@code A U. Thor (12)}: missing email address</li>    *<li>{@code Anonymous Coward&lt;author@example.com&gt;}: missing name</li>    *<li>{@code Anonymous Coward (12)}: missing name and email address</li>    *</ul>    */
+comment|/**    * Get the name and email address.    *    *<p>Example output:    *    *<ul>    *<li>{@code A U. Thor&lt;author@example.com&gt;}: full populated    *<li>{@code A U. Thor (12)}: missing email address    *<li>{@code Anonymous Coward&lt;author@example.com&gt;}: missing name    *<li>{@code Anonymous Coward (12)}: missing name and email address    *</ul>    */
 DECL|method|getNameEmail (String anonymousCowardName)
 specifier|public
 name|String

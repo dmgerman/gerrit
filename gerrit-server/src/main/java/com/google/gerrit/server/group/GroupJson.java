@@ -434,7 +434,7 @@ name|options
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupJson (GroupBackend groupBackend, GroupControl.Factory groupControlFactory, Provider<ListMembers> listMembers, Provider<ListIncludedGroups> listIncludes)
+DECL|method|GroupJson ( GroupBackend groupBackend, GroupControl.Factory groupControlFactory, Provider<ListMembers> listMembers, Provider<ListIncludedGroups> listIncludes)
 name|GroupJson
 parameter_list|(
 name|GroupBackend

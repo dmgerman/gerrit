@@ -197,7 +197,7 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|ObjectIdHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<ObjectId> setter)
+DECL|method|ObjectIdHandler ( @ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<ObjectId> setter)
 specifier|public
 name|ObjectIdHandler
 parameter_list|(

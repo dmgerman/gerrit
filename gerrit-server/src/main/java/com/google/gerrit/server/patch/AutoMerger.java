@@ -186,6 +186,46 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -512,46 +552,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_class
 DECL|class|AutoMerger
 specifier|public
@@ -613,7 +613,7 @@ name|save
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AutoMerger ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent gerritIdent)
+DECL|method|AutoMerger (@erritServerConfig Config cfg, @GerritPersonIdent PersonIdent gerritIdent)
 name|AutoMerger
 parameter_list|(
 annotation|@
@@ -641,8 +641,8 @@ operator|=
 name|gerritIdent
 expr_stmt|;
 block|}
-comment|/**    * Perform an auto-merge of the parents of the given merge commit.    *    * @return auto-merge commit or {@code null} if an auto-merge commit    *     couldn't be created. Headers of the returned RevCommit are parsed.    */
-DECL|method|merge (Repository repo, RevWalk rw, final ObjectInserter ins, RevCommit merge, ThreeWayMergeStrategy mergeStrategy)
+comment|/**    * Perform an auto-merge of the parents of the given merge commit.    *    * @return auto-merge commit or {@code null} if an auto-merge commit couldn't be created. Headers    *     of the returned RevCommit are parsed.    */
+DECL|method|merge ( Repository repo, RevWalk rw, final ObjectInserter ins, RevCommit merge, ThreeWayMergeStrategy mergeStrategy)
 specifier|public
 name|RevCommit
 name|merge
@@ -1768,7 +1768,7 @@ specifier|public
 name|void
 name|flush
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|close ()
@@ -1776,7 +1776,7 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-block|{     }
+block|{}
 block|}
 end_class
 

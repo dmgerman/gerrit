@@ -524,7 +524,7 @@ name|hasQuery2
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupsCollection (DynamicMap<RestView<GroupResource>> views, Provider<ListGroups> list, Provider<QueryGroups> queryGroups, CreateGroup.Factory createGroup, GroupControl.Factory groupControlFactory, GroupBackend groupBackend, Provider<CurrentUser> self)
+DECL|method|GroupsCollection ( DynamicMap<RestView<GroupResource>> views, Provider<ListGroups> list, Provider<QueryGroups> queryGroups, CreateGroup.Factory createGroup, GroupControl.Factory groupControlFactory, GroupBackend groupBackend, Provider<CurrentUser> self)
 name|GroupsCollection
 parameter_list|(
 name|DynamicMap
@@ -871,7 +871,7 @@ name|ctl
 argument_list|)
 return|;
 block|}
-comment|/**    * Parses a group ID from a request body and returns the group.    *    * @param id ID of the group, can be a group UUID, a group name or a legacy    *        group ID    * @return the group    * @throws UnprocessableEntityException thrown if the group ID cannot be    *         resolved or if the group is not visible to the calling user    */
+comment|/**    * Parses a group ID from a request body and returns the group.    *    * @param id ID of the group, can be a group UUID, a group name or a legacy group ID    * @return the group    * @throws UnprocessableEntityException thrown if the group ID cannot be resolved or if the group    *     is not visible to the calling user    */
 DECL|method|parse (String id)
 specifier|public
 name|GroupDescription
@@ -932,7 +932,7 @@ return|return
 name|group
 return|;
 block|}
-comment|/**    * Parses a group ID from a request body and returns the group if it is a    * Gerrit internal group.    *    * @param id ID of the group, can be a group UUID, a group name or a legacy    *        group ID    * @return the group    * @throws UnprocessableEntityException thrown if the group ID cannot be    *         resolved, if the group is not visible to the calling user or if    *         it's an external group    */
+comment|/**    * Parses a group ID from a request body and returns the group if it is a Gerrit internal group.    *    * @param id ID of the group, can be a group UUID, a group name or a legacy group ID    * @return the group    * @throws UnprocessableEntityException thrown if the group ID cannot be resolved, if the group is    *     not visible to the calling user or if it's an external group    */
 DECL|method|parseInternal (String id)
 specifier|public
 name|GroupDescription
@@ -987,7 +987,7 @@ return|return
 name|group
 return|;
 block|}
-comment|/**    * Parses a group ID and returns the group without making any permission    * check whether the current user can see the group.    *    * @param id ID of the group, can be a group UUID, a group name or a legacy    *        group ID    * @return the group, null if no group is found for the given group ID    */
+comment|/**    * Parses a group ID and returns the group without making any permission check whether the current    * user can see the group.    *    * @param id ID of the group, can be a group UUID, a group name or a legacy group ID    * @return the group, null if no group is found for the given group ID    */
 DECL|method|parseId (String id)
 specifier|public
 name|GroupDescription

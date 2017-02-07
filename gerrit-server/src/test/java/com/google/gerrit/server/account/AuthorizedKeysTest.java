@@ -116,16 +116,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -151,6 +141,16 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -618,7 +618,7 @@ literal|"\r\n"
 argument_list|)
 return|;
 block|}
-DECL|method|assertSerialization (List<Optional<AccountSshKey>> keys, StringBuilder expected)
+DECL|method|assertSerialization ( List<Optional<AccountSshKey>> keys, StringBuilder expected)
 specifier|private
 specifier|static
 name|void
@@ -656,7 +656,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertParse (StringBuilder authorizedKeys, List<Optional<AccountSshKey>> expectedKeys)
+DECL|method|assertParse ( StringBuilder authorizedKeys, List<Optional<AccountSshKey>> expectedKeys)
 specifier|private
 specifier|static
 name|void

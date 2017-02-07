@@ -101,7 +101,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Delegates to a slow SuggestOracle, such as a remote server API.  *<p>  * A response is only supplied to the UI if no requests were made after the  * oracle begin that request.  *<p>  * When a request is made while the delegate is still processing a prior request  * all intermediate requests are discarded and the most recent request is  * queued. The pending request's response is discarded and the most recent  * request is started.  */
+comment|/**  * Delegates to a slow SuggestOracle, such as a remote server API.  *  *<p>A response is only supplied to the UI if no requests were made after the oracle begin that  * request.  *  *<p>When a request is made while the delegate is still processing a prior request all intermediate  * requests are discarded and the most recent request is queued. The pending request's response is  * discarded and the most recent request is started.  */
 end_comment
 
 begin_class

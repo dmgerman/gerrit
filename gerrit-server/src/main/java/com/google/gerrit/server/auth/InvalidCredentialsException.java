@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * An authentication exception that is thrown when the credentials are present  * and are unable to be verified.  */
+comment|/**  * An authentication exception that is thrown when the credentials are present and are unable to be  * verified.  */
 end_comment
 
 begin_class
@@ -91,7 +91,7 @@ DECL|method|InvalidCredentialsException ()
 specifier|public
 name|InvalidCredentialsException
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|InvalidCredentialsException (String msg)
 specifier|public
 name|InvalidCredentialsException

@@ -166,7 +166,7 @@ name|CommentInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create (String path, Side side, int line, CommentRange range, Boolean unresolved)
+DECL|method|create ( String path, Side side, int line, CommentRange range, Boolean unresolved)
 specifier|public
 specifier|static
 name|CommentInfo
@@ -205,7 +205,7 @@ name|unresolved
 argument_list|)
 return|;
 block|}
-DECL|method|create (String path, Side side, int parent, int line, CommentRange range, boolean unresolved)
+DECL|method|create ( String path, Side side, int parent, int line, CommentRange range, boolean unresolved)
 specifier|public
 specifier|static
 name|CommentInfo
@@ -947,7 +947,7 @@ DECL|method|CommentInfo ()
 specifier|protected
 name|CommentInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

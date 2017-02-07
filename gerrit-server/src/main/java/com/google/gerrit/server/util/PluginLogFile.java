@@ -193,7 +193,7 @@ name|layout
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginLogFile (SystemLog systemLog, ServerInformation serverInfo, String logName, Layout layout)
+DECL|method|PluginLogFile ( SystemLog systemLog, ServerInformation serverInfo, String logName, Layout layout)
 specifier|public
 name|PluginLogFile
 parameter_list|(

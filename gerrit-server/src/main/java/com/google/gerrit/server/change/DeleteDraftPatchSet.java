@@ -488,6 +488,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -528,26 +548,6 @@ name|ReceiveCommand
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -573,7 +573,7 @@ specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|db
 specifier|private
 specifier|final
@@ -629,7 +629,7 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftPatchSet (Provider<ReviewDb> db, BatchUpdate.Factory updateFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, Provider<DeleteChangeOp> deleteChangeOpProvider, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, @GerritServerConfig Config cfg)
+DECL|method|DeleteDraftPatchSet ( Provider<ReviewDb> db, BatchUpdate.Factory updateFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, Provider<DeleteChangeOp> deleteChangeOpProvider, DynamicItem<AccountPatchReviewStore> accountPatchReviewStore, @GerritServerConfig Config cfg)
 specifier|public
 name|DeleteDraftPatchSet
 parameter_list|(

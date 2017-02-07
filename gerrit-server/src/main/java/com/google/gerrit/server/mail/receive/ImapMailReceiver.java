@@ -142,6 +142,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -189,36 +219,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -282,7 +282,7 @@ name|workQueue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * handleEmails will open a connection to the mail server, remove emails    * where deletion is pending, read new email and close the connection.    * @param async Determines if processing messages should happen asynchronous.    */
+comment|/**    * handleEmails will open a connection to the mail server, remove emails where deletion is    * pending, read new email and close the connection.    *    * @param async Determines if processing messages should happen asynchronous.    */
 annotation|@
 name|Override
 DECL|method|handleEmails (boolean async)

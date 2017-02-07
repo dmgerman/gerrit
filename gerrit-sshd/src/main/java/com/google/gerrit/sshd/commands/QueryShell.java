@@ -439,12 +439,12 @@ enum|enum
 name|OutputFormat
 block|{
 DECL|enumConstant|PRETTY
-DECL|enumConstant|JSON
-DECL|enumConstant|JSON_SINGLE
 name|PRETTY
 block|,
+DECL|enumConstant|JSON
 name|JSON
 block|,
+DECL|enumConstant|JSON_SINGLE
 name|JSON_SINGLE
 block|}
 DECL|field|in
@@ -494,7 +494,7 @@ name|statement
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryShell (final SchemaFactory<ReviewDb> dbFactory, @Assisted final InputStream in, @Assisted final OutputStream out)
+DECL|method|QueryShell ( final SchemaFactory<ReviewDb> dbFactory, @Assisted final InputStream in, @Assisted final OutputStream out)
 name|QueryShell
 parameter_list|(
 specifier|final
@@ -2096,7 +2096,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Outputs a result set to stdout.    *    * @param rs ResultSet to show.    * @param alreadyOnRow true if rs is already on the first row. false    *     otherwise.    * @param start Timestamp in milliseconds when executing the statement    *     started. This timestamp is used to compute statistics about the    *     statement. If no statistics should be shown, set it to 0.    * @param show Functions to map columns    * @throws SQLException    */
+comment|/**    * Outputs a result set to stdout.    *    * @param rs ResultSet to show.    * @param alreadyOnRow true if rs is already on the first row. false otherwise.    * @param start Timestamp in milliseconds when executing the statement started. This timestamp is    *     used to compute statistics about the statement. If no statistics should be shown, set it to    *     0.    * @param show Functions to map columns    * @throws SQLException    */
 DECL|method|showResultSet (final ResultSet rs, boolean alreadyOnRow, long start, Function... show)
 specifier|private
 name|void
@@ -2160,8 +2160,8 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-comment|/**    * Outputs a result set to stdout in Json format.    *    * @param rs ResultSet to show.    * @param alreadyOnRow true if rs is already on the first row. false    *     otherwise.    * @param start Timestamp in milliseconds when executing the statement    *     started. This timestamp is used to compute statistics about the    *     statement. If no statistics should be shown, set it to 0.    * @param show Functions to map columns    * @throws SQLException    */
-DECL|method|showResultSetJson (final ResultSet rs, boolean alreadyOnRow, long start, Function... show)
+comment|/**    * Outputs a result set to stdout in Json format.    *    * @param rs ResultSet to show.    * @param alreadyOnRow true if rs is already on the first row. false otherwise.    * @param start Timestamp in milliseconds when executing the statement started. This timestamp is    *     used to compute statistics about the statement. If no statistics should be shown, set it to    *     0.    * @param show Functions to map columns    * @throws SQLException    */
+DECL|method|showResultSetJson ( final ResultSet rs, boolean alreadyOnRow, long start, Function... show)
 specifier|private
 name|void
 name|showResultSetJson
@@ -2606,8 +2606,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Outputs a result set to stdout in plain text format.    *    * @param rs ResultSet to show.    * @param alreadyOnRow true if rs is already on the first row. false    *     otherwise.    * @param start Timestamp in milliseconds when executing the statement    *     started. This timestamp is used to compute statistics about the    *     statement. If no statistics should be shown, set it to 0.    * @param show Functions to map columns    * @throws SQLException    */
-DECL|method|showResultSetPretty (final ResultSet rs, boolean alreadyOnRow, long start, Function... show)
+comment|/**    * Outputs a result set to stdout in plain text format.    *    * @param rs ResultSet to show.    * @param alreadyOnRow true if rs is already on the first row. false otherwise.    * @param start Timestamp in milliseconds when executing the statement started. This timestamp is    *     used to compute statistics about the statement. If no statistics should be shown, set it to    *     0.    * @param show Functions to map columns    * @throws SQLException    */
+DECL|method|showResultSetPretty ( final ResultSet rs, boolean alreadyOnRow, long start, Function... show)
 specifier|private
 name|void
 name|showResultSetPretty

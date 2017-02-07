@@ -216,6 +216,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -298,16 +308,6 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -352,7 +352,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommitsCollection (DynamicMap<RestView<CommitResource>> views, GitRepositoryManager repoManager, Provider<ReviewDb> db)
+DECL|method|CommitsCollection ( DynamicMap<RestView<CommitResource>> views, GitRepositoryManager repoManager, Provider<ReviewDb> db)
 specifier|public
 name|CommitsCollection
 parameter_list|(

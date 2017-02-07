@@ -168,7 +168,7 @@ DECL|method|Key ()
 specifier|public
 name|Key
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|get ()
@@ -246,7 +246,7 @@ specifier|protected
 name|Key
 name|singleton
 decl_stmt|;
-comment|/**    * Local filesystem location of header/footer/CSS configuration files    */
+comment|/** Local filesystem location of header/footer/CSS configuration files */
 annotation|@
 name|Column
 argument_list|(
@@ -450,7 +450,7 @@ DECL|method|SystemConfig ()
 specifier|protected
 name|SystemConfig
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -101,18 +101,18 @@ enum|enum
 name|Action
 block|{
 DECL|enumConstant|ALLOW
-DECL|enumConstant|DENY
-DECL|enumConstant|BLOCK
 name|ALLOW
 block|,
+DECL|enumConstant|DENY
 name|DENY
 block|,
+DECL|enumConstant|BLOCK
 name|BLOCK
 block|,
 DECL|enumConstant|INTERACTIVE
-DECL|enumConstant|BATCH
 name|INTERACTIVE
 block|,
+DECL|enumConstant|BATCH
 name|BATCH
 block|}
 DECL|field|action
@@ -148,7 +148,7 @@ DECL|method|PermissionRule ()
 specifier|public
 name|PermissionRule
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|PermissionRule (GroupReference group)
 specifier|public
 name|PermissionRule

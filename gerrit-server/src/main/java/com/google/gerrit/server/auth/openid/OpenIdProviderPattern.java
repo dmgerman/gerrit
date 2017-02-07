@@ -149,7 +149,7 @@ DECL|method|OpenIdProviderPattern ()
 specifier|protected
 name|OpenIdProviderPattern
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|matches (String id)
 specifier|public
 name|boolean

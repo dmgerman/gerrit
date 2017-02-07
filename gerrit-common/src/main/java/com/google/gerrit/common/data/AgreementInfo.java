@@ -114,7 +114,7 @@ DECL|method|AgreementInfo ()
 specifier|public
 name|AgreementInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|setAccepted (List<String> a)
 specifier|public
 name|void

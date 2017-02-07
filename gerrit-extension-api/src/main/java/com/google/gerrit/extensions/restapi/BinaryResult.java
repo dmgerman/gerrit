@@ -189,7 +189,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Wrapper around a non-JSON result from a {@link RestView}.  *<p>  * Views may return this type to signal they want the server glue to write raw  * data to the client, instead of attempting automatic conversion to JSON. The  * create form is overloaded to handle plain text from a String, or binary data  * from a {@code byte[]} or {@code InputSteam}.  */
+comment|/**  * Wrapper around a non-JSON result from a {@link RestView}.  *  *<p>Views may return this type to signal they want the server glue to write raw data to the  * client, instead of attempting automatic conversion to JSON. The create form is overloaded to  * handle plain text from a String, or binary data from a {@code byte[]} or {@code InputSteam}.  */
 end_comment
 
 begin_class
@@ -249,7 +249,7 @@ name|data
 argument_list|)
 return|;
 block|}
-comment|/**    * Produce an {@code application/octet-stream} of unknown length by copying    * the InputStream until EOF. The server glue will automatically close this    * stream when copying is complete.    */
+comment|/**    * Produce an {@code application/octet-stream} of unknown length by copying the InputStream until    * EOF. The server glue will automatically close this stream when copying is complete.    */
 DECL|method|create (InputStream data)
 specifier|public
 specifier|static
@@ -511,7 +511,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Write or copy the result onto the specified output stream.    *    * @param os stream to write result data onto. This stream will be closed by    *        the caller after this method returns.    * @throws IOException if the data cannot be produced, or the OutputStream    *         {@code os} throws any IOException during a write or flush call.    */
+comment|/**    * Write or copy the result onto the specified output stream.    *    * @param os stream to write result data onto. This stream will be closed by the caller after this    *     method returns.    * @throws IOException if the data cannot be produced, or the OutputStream {@code os} throws any    *     IOException during a write or flush call.    */
 DECL|method|writeTo (OutputStream os)
 specifier|public
 specifier|abstract
@@ -524,7 +524,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Return a copy of the result as a String.    *<p>    * The default version of this method copies the result into a temporary byte    * array and then tries to decode it using the configured encoding.    *    * @return string version of the result.    * @throws IOException if the data cannot be produced or could not be    *         decoded to a String.    */
+comment|/**    * Return a copy of the result as a String.    *    *<p>The default version of this method copies the result into a temporary byte array and then    * tries to decode it using the configured encoding.    *    * @return string version of the result.    * @throws IOException if the data cannot be produced or could not be decoded to a String.    */
 DECL|method|asString ()
 specifier|public
 name|String
@@ -598,7 +598,7 @@ name|close
 parameter_list|()
 throws|throws
 name|IOException
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|toString ()

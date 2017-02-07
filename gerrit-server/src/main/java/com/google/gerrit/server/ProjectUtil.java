@@ -98,6 +98,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -124,24 +134,14 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|ProjectUtil
 specifier|public
 class|class
 name|ProjectUtil
 block|{
-comment|/**    * Checks whether the specified branch exists.    *    * @param repoManager Git repository manager to open the git repository    * @param branch the branch for which it should be checked if it exists    * @return {@code true} if the specified branch exists or if    *         {@code HEAD} points to this branch, otherwise    *         {@code false}    * @throws RepositoryNotFoundException the repository of the branch's project    *         does not exist.    * @throws IOException error while retrieving the branch from the repository.    */
-DECL|method|branchExists (final GitRepositoryManager repoManager, final Branch.NameKey branch)
+comment|/**    * Checks whether the specified branch exists.    *    * @param repoManager Git repository manager to open the git repository    * @param branch the branch for which it should be checked if it exists    * @return {@code true} if the specified branch exists or if {@code HEAD} points to this branch,    *     otherwise {@code false}    * @throws RepositoryNotFoundException the repository of the branch's project does not exist.    * @throws IOException error while retrieving the branch from the repository.    */
+DECL|method|branchExists ( final GitRepositoryManager repoManager, final Branch.NameKey branch)
 specifier|public
 specifier|static
 name|boolean

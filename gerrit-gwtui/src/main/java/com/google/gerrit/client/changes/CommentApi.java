@@ -322,7 +322,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createDraft (PatchSet.Id id, CommentInfo content, AsyncCallback<CommentInfo> cb)
+DECL|method|createDraft ( PatchSet.Id id, CommentInfo content, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -358,7 +358,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateDraft (PatchSet.Id id, String draftId, CommentInfo content, AsyncCallback<CommentInfo> cb)
+DECL|method|updateDraft ( PatchSet.Id id, String draftId, CommentInfo content, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -402,7 +402,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteDraft (PatchSet.Id id, String draftId, AsyncCallback<JavaScriptObject> cb)
+DECL|method|deleteDraft ( PatchSet.Id id, String draftId, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
@@ -474,7 +474,7 @@ DECL|method|CommentApi ()
 specifier|private
 name|CommentApi
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

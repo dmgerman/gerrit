@@ -630,7 +630,7 @@ parameter_list|,
 name|String
 name|value
 parameter_list|)
-block|{     }
+block|{}
 block|}
 DECL|class|AnchorTag
 specifier|private

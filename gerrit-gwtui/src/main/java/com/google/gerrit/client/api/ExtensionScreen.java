@@ -474,7 +474,7 @@ DECL|method|Definition ()
 specifier|protected
 name|Definition
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|Context
 specifier|static
@@ -483,7 +483,7 @@ name|Context
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create ( Definition def, ExtensionScreen view, JsArrayString match)
+DECL|method|create (Definition def, ExtensionScreen view, JsArrayString match)
 specifier|static
 specifier|final
 name|Context
@@ -586,7 +586,7 @@ DECL|method|Context ()
 specifier|protected
 name|Context
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

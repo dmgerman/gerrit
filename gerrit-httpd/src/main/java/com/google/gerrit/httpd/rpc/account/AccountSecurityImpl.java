@@ -231,7 +231,7 @@ name|externalIdDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory)
+DECL|method|AccountSecurityImpl ( final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -311,7 +311,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|deleteExternalIds (final Set<AccountExternalId.Key> keys, final AsyncCallback<Set<AccountExternalId.Key>> callback)
+DECL|method|deleteExternalIds ( final Set<AccountExternalId.Key> keys, final AsyncCallback<Set<AccountExternalId.Key>> callback)
 specifier|public
 name|void
 name|deleteExternalIds

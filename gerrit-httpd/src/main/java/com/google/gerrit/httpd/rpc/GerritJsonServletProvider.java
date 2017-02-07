@@ -142,9 +142,9 @@ argument_list|<
 name|GerritJsonServlet
 argument_list|>
 block|{
+DECL|field|injector
 annotation|@
 name|Inject
-DECL|field|injector
 specifier|private
 name|Injector
 name|injector

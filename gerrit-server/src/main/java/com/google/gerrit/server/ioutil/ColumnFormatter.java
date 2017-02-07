@@ -91,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple output formatter for column-oriented data, writing its output to  * a {@link java.io.PrintWriter} object. Handles escaping of the column  * data so that the resulting output is unambiguous and reasonably safe and  * machine parsable.  */
+comment|/**  * Simple output formatter for column-oriented data, writing its output to a {@link  * java.io.PrintWriter} object. Handles escaping of the column data so that the resulting output is  * unambiguous and reasonably safe and machine parsable.  */
 end_comment
 
 begin_class
@@ -116,7 +116,7 @@ specifier|final
 name|PrintWriter
 name|out
 decl_stmt|;
-comment|/**    * @param out The writer to which output should be sent.    * @param columnSeparator A character that should serve as the separator    *        token between columns of output. As only non-printable characters    *        in the column text are ever escaped, the column separator must be    *        a non-printable character if the output needs to be unambiguously    *        parsed.    */
+comment|/**    * @param out The writer to which output should be sent.    * @param columnSeparator A character that should serve as the separator token between columns of    *     output. As only non-printable characters in the column text are ever escaped, the column    *     separator must be a non-printable character if the output needs to be unambiguously parsed.    */
 DECL|method|ColumnFormatter (final PrintWriter out, final char columnSeparator)
 specifier|public
 name|ColumnFormatter
@@ -149,7 +149,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/**    * Adds a text string as a new column in the current line of output,    * taking care of escaping as necessary.    *    * @param content the string to add.    */
+comment|/**    * Adds a text string as a new column in the current line of output, taking care of escaping as    * necessary.    *    * @param content the string to add.    */
 DECL|method|addColumn (final String content)
 specifier|public
 name|void
@@ -191,7 +191,7 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-comment|/**    * Finishes the output by flushing the current line and takes care of any    * other cleanup action.    */
+comment|/**    * Finishes the output by flushing the current line and takes care of any other cleanup action.    */
 DECL|method|finish ()
 specifier|public
 name|void
@@ -207,7 +207,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Flushes the current line of output and makes the formatter ready to    * start receiving new column data for a new line (or end-of-file).    * If the current line is empty nothing is done, i.e. consecutive calls    * to this method without intervening calls to {@link #addColumn} will    * be squashed.    */
+comment|/**    * Flushes the current line of output and makes the formatter ready to start receiving new column    * data for a new line (or end-of-file). If the current line is empty nothing is done, i.e.    * consecutive calls to this method without intervening calls to {@link #addColumn} will be    * squashed.    */
 DECL|method|nextLine ()
 specifier|public
 name|void

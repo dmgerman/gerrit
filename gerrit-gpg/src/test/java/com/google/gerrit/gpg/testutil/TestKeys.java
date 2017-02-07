@@ -1089,7 +1089,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * A key revoked by a valid key, due to key compromise.    *<p>    * Revoked by {@link #validKeyWithoutExpiration()}.    *    *<pre>    * pub   2048R/3434B39F 2015-10-20 [revoked: 2015-10-20]    *       Key fingerprint = 931F 047D 7D01 DDEF 367A  8D90 8C4F D28E 3434 B39F    * uid                  Testuser Six&lt;test6@example.com&gt;    *</pre>    */
+comment|/**    * A key revoked by a valid key, due to key compromise.    *    *<p>Revoked by {@link #validKeyWithoutExpiration()}.    *    *<pre>    * pub   2048R/3434B39F 2015-10-20 [revoked: 2015-10-20]    *       Key fingerprint = 931F 047D 7D01 DDEF 367A  8D90 8C4F D28E 3434 B39F    * uid                  Testuser Six&lt;test6@example.com&gt;    *</pre>    */
 DECL|method|revokedCompromisedKey ()
 specifier|public
 specifier|static
@@ -1319,7 +1319,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * A key revoked by a valid key, due to no longer being used.    *<p>    * Revoked by {@link #validKeyWithoutExpiration()}.    *    *<pre>    * pub   2048R/3D6C52D0 2015-10-20 [revoked: 2015-10-20]    *       Key fingerprint = 32DB 6C31 2ED7 A98D 11B2  43EA FAD2 ABE2 3D6C 52D0    * uid                  Testuser Seven&lt;test7@example.com&gt;    *</pre>    */
+comment|/**    * A key revoked by a valid key, due to no longer being used.    *    *<p>Revoked by {@link #validKeyWithoutExpiration()}.    *    *<pre>    * pub   2048R/3D6C52D0 2015-10-20 [revoked: 2015-10-20]    *       Key fingerprint = 32DB 6C31 2ED7 A98D 11B2  43EA FAD2 ABE2 3D6C 52D0    * uid                  Testuser Seven&lt;test7@example.com&gt;    *</pre>    */
 DECL|method|revokedNoLongerUsedKey ()
 specifier|public
 specifier|static
@@ -1549,7 +1549,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * Key revoked by an expired key, after that key's expiration.    *<p>    * Revoked by {@link #expiredKey()}.    *    *<pre>    * pub   2048R/78BF7D7E 2005-08-01 [revoked: 2015-10-20]    *       Key fingerprint = 916F AB22 5BE7 7585 F59A  994C 001A DF8B 78BF 7D7E    * uid                  Testuser Eight&lt;test8@example.com&gt;    *</pre>    */
+comment|/**    * Key revoked by an expired key, after that key's expiration.    *    *<p>Revoked by {@link #expiredKey()}.    *    *<pre>    * pub   2048R/78BF7D7E 2005-08-01 [revoked: 2015-10-20]    *       Key fingerprint = 916F AB22 5BE7 7585 F59A  994C 001A DF8B 78BF 7D7E    * uid                  Testuser Eight&lt;test8@example.com&gt;    *</pre>    */
 DECL|method|keyRevokedByExpiredKeyAfterExpiration ()
 specifier|public
 specifier|static
@@ -1779,7 +1779,7 @@ literal|"-----END PGP PRIVATE KEY BLOCK-----\n"
 argument_list|)
 return|;
 block|}
-comment|/**    * Key revoked by an expired key, before that key's expiration.    *<p>    * Revoked by {@link #expiredKey()}.    *    *<pre>    * pub   2048R/C43BF2E1 2005-08-01 [revoked: 2005-08-01]    *       Key fingerprint = 916D 6AD6 36A5 CBA6 B5A6  7274 6040 8661 C43B F2E1    * uid                  Testuser Nine&lt;test9@example.com&gt;    *</pre>    */
+comment|/**    * Key revoked by an expired key, before that key's expiration.    *    *<p>Revoked by {@link #expiredKey()}.    *    *<pre>    * pub   2048R/C43BF2E1 2005-08-01 [revoked: 2005-08-01]    *       Key fingerprint = 916D 6AD6 36A5 CBA6 B5A6  7274 6040 8661 C43B F2E1    * uid                  Testuser Nine&lt;test9@example.com&gt;    *</pre>    */
 DECL|method|keyRevokedByExpiredKeyBeforeExpiration ()
 specifier|public
 specifier|static

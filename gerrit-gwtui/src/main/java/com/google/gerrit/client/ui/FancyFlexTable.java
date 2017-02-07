@@ -444,7 +444,7 @@ name|item
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Finds an item in the table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the item that should be found    * @return if the item is found the number of the row that contains the item;    *         if the item is not found {@code -1}    */
+comment|/**    * Finds an item in the table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the item that should be found    * @return if the item is found the number of the row that contains the item; if the item is not    *     found {@code -1}    */
 DECL|method|findRowItem (Comparator<RowItem> comparator, RowItem item)
 specifier|protected
 name|int
@@ -503,7 +503,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**    * Finds the number of the row where a new item should be inserted into the    * table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the new item that should be inserted    * @return if the item is not yet contained in the table, the number of the    *         row where the new item should be inserted; if the item is already    *         contained in the table {@code -1}    */
+comment|/**    * Finds the number of the row where a new item should be inserted into the table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the new item that should be inserted    * @return if the item is not yet contained in the table, the number of the row where the new item    *     should be inserted; if the item is already contained in the table {@code -1}    */
 DECL|method|getInsertRow (Comparator<RowItem> comparator, RowItem item)
 specifier|protected
 name|int
@@ -562,7 +562,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**    * Makes a binary search for the given row item over the table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the item that should be looked up    * @return if the item is found the number of the row that contains the item;    *         if the item is not found the number of the row where the item    *         should be inserted according to the given comparator.    */
+comment|/**    * Makes a binary search for the given row item over the table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the item that should be looked up    * @return if the item is found the number of the row that contains the item; if the item is not    *     found the number of the row where the item should be inserted according to the given    *     comparator.    */
 DECL|method|lookupRowItem (Comparator<RowItem> comparator, RowItem item)
 specifier|private
 name|int
@@ -979,7 +979,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Get the td element that contains another element.    *    * @param target the child element whose parent td is required.    * @return the td containing element {@code target}; null if {@code target} is    *         not a member of this table.    */
+comment|/**    * Get the td element that contains another element.    *    * @param target the child element whose parent td is required.    * @return the td containing element {@code target}; null if {@code target} is not a member of    *     this table.    */
 DECL|method|getParentCell (final Element target)
 specifier|protected
 name|Element
@@ -1199,7 +1199,7 @@ class|class
 name|MyFlexTable
 extends|extends
 name|FlexTable
-block|{   }
+block|{}
 DECL|method|setRowItem (Element td, ItemType c)
 specifier|private
 specifier|static

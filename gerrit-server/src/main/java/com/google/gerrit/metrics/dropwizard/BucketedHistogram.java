@@ -70,6 +70,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|codahale
+operator|.
+name|metrics
+operator|.
+name|Metric
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|google
 operator|.
 name|common
@@ -137,18 +149,6 @@ operator|.
 name|DropWizardMetricMaker
 operator|.
 name|HistogramImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|codahale
-operator|.
-name|metrics
-operator|.
-name|Metric
 import|;
 end_import
 
@@ -243,7 +243,7 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
-DECL|method|BucketedHistogram (DropWizardMetricMaker metrics, String name, Description desc, Field<?>... fields)
+DECL|method|BucketedHistogram ( DropWizardMetricMaker metrics, String name, Description desc, Field<?>... fields)
 name|BucketedHistogram
 parameter_list|(
 name|DropWizardMetricMaker

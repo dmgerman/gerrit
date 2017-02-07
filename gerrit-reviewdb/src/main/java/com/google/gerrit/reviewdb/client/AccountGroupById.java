@@ -304,7 +304,7 @@ DECL|method|AccountGroupById ()
 specifier|protected
 name|AccountGroupById
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|AccountGroupById (final AccountGroupById.Key k)
 specifier|public
 name|AccountGroupById

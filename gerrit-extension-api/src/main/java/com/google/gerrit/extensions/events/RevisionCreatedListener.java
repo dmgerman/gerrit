@@ -99,7 +99,7 @@ interface|interface
 name|Event
 extends|extends
 name|RevisionEvent
-block|{   }
+block|{}
 DECL|method|onRevisionCreated (Event event)
 name|void
 name|onRevisionCreated

@@ -266,38 +266,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|h2
-operator|.
-name|jdbc
-operator|.
-name|JdbcSQLException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -524,8 +492,40 @@ name|AtomicLong
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|h2
+operator|.
+name|jdbc
+operator|.
+name|JdbcSQLException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Hybrid in-memory and database backed cache built on H2.  *<p>  * This cache can be used as either a recall cache, or a loading cache if a  * CacheLoader was supplied to its constructor at build time. Before creating an  * entry the in-memory cache is checked for the item, then the database is  * checked, and finally the CacheLoader is used to construct the item. This is  * mostly useful for CacheLoaders that are computationally intensive, such as  * the PatchListCache.  *<p>  * Cache stores and invalidations are performed on a background thread, hiding  * the latency associated with serializing the key and value pairs and writing  * them to the database log.  *<p>  * A BloomFilter is used around the database to reduce the number of SELECTs  * issued against the database for new cache items that have not been seen  * before, a common operation for the PatchListCache. The BloomFilter is sized  * when the cache starts to be 64,000 entries or double the number of items  * currently in the database table.  *<p>  * This cache does not export its items as a ConcurrentMap.  *  * @see H2CacheFactory  */
+comment|/**  * Hybrid in-memory and database backed cache built on H2.  *  *<p>This cache can be used as either a recall cache, or a loading cache if a CacheLoader was  * supplied to its constructor at build time. Before creating an entry the in-memory cache is  * checked for the item, then the database is checked, and finally the CacheLoader is used to  * construct the item. This is mostly useful for CacheLoaders that are computationally intensive,  * such as the PatchListCache.  *  *<p>Cache stores and invalidations are performed on a background thread, hiding the latency  * associated with serializing the key and value pairs and writing them to the database log.  *  *<p>A BloomFilter is used around the database to reduce the number of SELECTs issued against the  * database for new cache items that have not been seen before, a common operation for the  * PatchListCache. The BloomFilter is sized when the cache starts to be 64,000 entries or double the  * number of items currently in the database table.  *  *<p>This cache does not export its items as a ConcurrentMap.  *  * @see H2CacheFactory  */
 end_comment
 
 begin_class
@@ -621,7 +621,7 @@ argument_list|>
 argument_list|>
 name|mem
 decl_stmt|;
-DECL|method|H2CacheImpl (Executor executor, SqlStore<K, V> store, TypeLiteral<K> keyType, Cache<K, ValueHolder<V>> mem)
+DECL|method|H2CacheImpl ( Executor executor, SqlStore<K, V> store, TypeLiteral<K> keyType, Cache<K, ValueHolder<V>> mem)
 name|H2CacheImpl
 parameter_list|(
 name|Executor

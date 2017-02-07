@@ -405,7 +405,7 @@ name|postCaches
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CachesCollection (DynamicMap<RestView<CacheResource>> views, Provider<ListCaches> list, Provider<CurrentUser> self, DynamicMap<Cache<?, ?>> cacheMap, PostCaches postCaches)
+DECL|method|CachesCollection ( DynamicMap<RestView<CacheResource>> views, Provider<ListCaches> list, Provider<CurrentUser> self, DynamicMap<Cache<?, ?>> cacheMap, PostCaches postCaches)
 name|CachesCollection
 parameter_list|(
 name|DynamicMap

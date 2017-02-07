@@ -208,26 +208,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -263,6 +243,26 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -696,7 +696,7 @@ index|]
 argument_list|)
 return|;
 block|}
-DECL|method|isIdentityTransform (List<AccessSection> sections, IdentityHashMap<AccessSection, Integer> srcMap)
+DECL|method|isIdentityTransform ( List<AccessSection> sections, IdentityHashMap<AccessSection, Integer> srcMap)
 specifier|private
 specifier|static
 name|boolean
@@ -904,7 +904,7 @@ specifier|final
 class|class
 name|EntryVal
 block|{
-comment|/**      * Maps the input index to the output index.      *<p>      * For {@code x == order[y]} the expression means move the item at      * source position {@code x} to the output position {@code y}.      */
+comment|/**      * Maps the input index to the output index.      *      *<p>For {@code x == order[y]} the expression means move the item at source position {@code x}      * to the output position {@code y}.      */
 DECL|field|order
 specifier|final
 name|int

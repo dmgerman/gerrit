@@ -206,6 +206,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -246,16 +256,6 @@ name|Repository
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -289,7 +289,7 @@ name|allUsersName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetPreferences (GeneralPreferencesLoader loader, GitRepositoryManager gitMgr, AllUsersName allUsersName)
+DECL|method|GetPreferences ( GeneralPreferencesLoader loader, GitRepositoryManager gitMgr, AllUsersName allUsersName)
 specifier|public
 name|GetPreferences
 parameter_list|(
@@ -350,7 +350,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|readFromGit (GitRepositoryManager gitMgr, GeneralPreferencesLoader loader, AllUsersName allUsersName, GeneralPreferencesInfo in)
+DECL|method|readFromGit ( GitRepositoryManager gitMgr, GeneralPreferencesLoader loader, AllUsersName allUsersName, GeneralPreferencesInfo in)
 specifier|static
 name|GeneralPreferencesInfo
 name|readFromGit

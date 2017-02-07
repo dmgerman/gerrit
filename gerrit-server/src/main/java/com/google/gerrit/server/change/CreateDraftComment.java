@@ -537,7 +537,7 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateDraftComment (Provider<ReviewDb> db, BatchUpdate.Factory updateFactory, Provider<CommentJson> commentJson, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache)
+DECL|method|CreateDraftComment ( Provider<ReviewDb> db, BatchUpdate.Factory updateFactory, Provider<CommentJson> commentJson, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache)
 name|CreateDraftComment
 parameter_list|(
 name|Provider

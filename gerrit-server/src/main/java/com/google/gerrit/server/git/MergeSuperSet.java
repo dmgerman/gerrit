@@ -500,96 +500,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Ref
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevSort
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -688,8 +598,98 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Ref
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevSort
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Calculates the minimal superset of changes required to be merged.  *<p>  * This includes all parents between a change and the tip of its target  * branch for the merging/rebasing submit strategies. For the cherry-pick  * strategy no additional changes are included.  *<p>  * If change.submitWholeTopic is enabled, also all changes of the topic  * and their parents are included.  */
+comment|/**  * Calculates the minimal superset of changes required to be merged.  *  *<p>This includes all parents between a change and the tip of its target branch for the  * merging/rebasing submit strategies. For the cherry-pick strategy no additional changes are  * included.  *  *<p>If change.submitWholeTopic is enabled, also all changes of the topic and their parents are  * included.  */
 end_comment
 
 begin_class
@@ -767,7 +767,7 @@ specifier|static
 class|class
 name|QueryKey
 block|{
-DECL|method|create ( Branch.NameKey branch, Iterable<String> hashes)
+DECL|method|create (Branch.NameKey branch, Iterable<String> hashes)
 specifier|private
 specifier|static
 name|QueryKey
@@ -892,7 +892,7 @@ name|closeOrm
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeSuperSet (@erritServerConfig Config cfg, ChangeData.Factory changeDataFactory, Provider<InternalChangeQuery> queryProvider, Provider<MergeOpRepoManager> repoManagerProvider)
+DECL|method|MergeSuperSet ( @erritServerConfig Config cfg, ChangeData.Factory changeDataFactory, Provider<InternalChangeQuery> queryProvider, Provider<MergeOpRepoManager> repoManagerProvider)
 name|MergeSuperSet
 parameter_list|(
 annotation|@
@@ -1223,6 +1223,7 @@ operator|.
 name|type
 return|;
 block|}
+DECL|method|byBranch ( Iterable<ChangeData> changes)
 specifier|private
 specifier|static
 name|ImmutableListMultimap
@@ -1233,7 +1234,6 @@ name|NameKey
 argument_list|,
 name|ChangeData
 argument_list|>
-DECL|method|byBranch (Iterable<ChangeData> changes)
 name|byBranch
 parameter_list|(
 name|Iterable
@@ -1293,7 +1293,7 @@ name|build
 argument_list|()
 return|;
 block|}
-DECL|method|walkChangesByHashes (Collection<RevCommit> sourceCommits, Set<String> ignoreHashes, OpenRepo or, Branch.NameKey b)
+DECL|method|walkChangesByHashes ( Collection<RevCommit> sourceCommits, Set<String> ignoreHashes, OpenRepo or, Branch.NameKey b)
 specifier|private
 name|Set
 argument_list|<
@@ -2093,7 +2093,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|byCommitsOnBranchNotMerged (OpenRepo or, ReviewDb db, CurrentUser user, Branch.NameKey branch, Set<String> hashes)
+DECL|method|byCommitsOnBranchNotMerged ( OpenRepo or, ReviewDb db, CurrentUser user, Branch.NameKey branch, Set<String> hashes)
 specifier|private
 name|List
 argument_list|<
@@ -2246,7 +2246,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Completes {@code cs} with any additional changes from its topics    *<p>    * {@link #completeChangeSetIncludingTopics} calls this repeatedly,    * alternating with {@link #completeChangeSetWithoutTopic}, to discover    * what additional changes should be submitted with a change until the    * set stops growing.    *<p>    * {@code topicsSeen} and {@code visibleTopicsSeen} keep track of topics    * already explored to avoid wasted work.    *    * @return the resulting larger {@link ChangeSet}    */
+comment|/**    * Completes {@code cs} with any additional changes from its topics    *    *<p>{@link #completeChangeSetIncludingTopics} calls this repeatedly, alternating with {@link    * #completeChangeSetWithoutTopic}, to discover what additional changes should be submitted with a    * change until the set stops growing.    *    *<p>{@code topicsSeen} and {@code visibleTopicsSeen} keep track of topics already explored to    * avoid wasted work.    *    * @return the resulting larger {@link ChangeSet}    */
 DECL|method|topicClosure ( ReviewDb db, ChangeSet cs, CurrentUser user, Set<String> topicsSeen, Set<String> visibleTopicsSeen)
 specifier|private
 name|ChangeSet

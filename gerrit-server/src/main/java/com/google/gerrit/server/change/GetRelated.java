@@ -338,34 +338,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|RepositoryNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -424,6 +396,34 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|RepositoryNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -469,7 +469,7 @@ name|sorter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetRelated (Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, RelatedChangesSorter sorter)
+DECL|method|GetRelated ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, PatchSetUtil psUtil, RelatedChangesSorter sorter)
 name|GetRelated
 parameter_list|(
 name|Provider
@@ -1075,7 +1075,7 @@ DECL|method|ChangeAndCommit ()
 specifier|public
 name|ChangeAndCommit
 parameter_list|()
-block|{     }
+block|{}
 DECL|method|ChangeAndCommit (@ullable Change change, @Nullable PatchSet ps, RevCommit c)
 name|ChangeAndCommit
 parameter_list|(

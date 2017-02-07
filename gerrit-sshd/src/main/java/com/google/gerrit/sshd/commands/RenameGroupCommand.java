@@ -234,6 +234,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -241,16 +251,6 @@ operator|.
 name|args4j
 operator|.
 name|Argument
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -321,16 +321,16 @@ specifier|private
 name|String
 name|newGroupName
 decl_stmt|;
+DECL|field|groups
 annotation|@
 name|Inject
-DECL|field|groups
 specifier|private
 name|GroupsCollection
 name|groups
 decl_stmt|;
+DECL|field|putName
 annotation|@
 name|Inject
-DECL|field|putName
 specifier|private
 name|PutName
 name|putName

@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Optional interface for {@link RestCollection}.  *<p>  * Collections that implement this interface can get to know about the request  * parameters.  */
+comment|/**  * Optional interface for {@link RestCollection}.  *  *<p>Collections that implement this interface can get to know about the request parameters.  */
 end_comment
 
 begin_interface

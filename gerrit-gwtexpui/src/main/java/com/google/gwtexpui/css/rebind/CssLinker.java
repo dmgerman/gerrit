@@ -331,7 +331,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|link (final TreeLogger logger, final LinkerContext context, final ArtifactSet artifacts)
+DECL|method|link ( final TreeLogger logger, final LinkerContext context, final ArtifactSet artifacts)
 specifier|public
 name|ArtifactSet
 name|link

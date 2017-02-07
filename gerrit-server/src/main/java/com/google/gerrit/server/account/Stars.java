@@ -527,7 +527,7 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Stars (ChangesCollection changes, ListStarredChanges listStarredChanges, StarredChangesUtil starredChangesUtil, DynamicMap<RestView<AccountResource.Star>> views)
+DECL|method|Stars ( ChangesCollection changes, ListStarredChanges listStarredChanges, StarredChangesUtil starredChangesUtil, DynamicMap<RestView<AccountResource.Star>> views)
 name|Stars
 parameter_list|(
 name|ChangesCollection

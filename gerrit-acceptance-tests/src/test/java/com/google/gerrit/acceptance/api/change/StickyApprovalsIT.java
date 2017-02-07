@@ -572,6 +572,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|EnumSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -643,36 +673,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|EnumSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -4204,7 +4204,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertVotes (ChangeInfo c, TestAccount user, int codeReviewVote, int verifiedVote, ChangeKind changeKind)
+DECL|method|assertVotes ( ChangeInfo c, TestAccount user, int codeReviewVote, int verifiedVote, ChangeKind changeKind)
 specifier|private
 name|void
 name|assertVotes
@@ -4252,7 +4252,7 @@ name|changeKind
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertVotes (ChangeInfo c, TestAccount user, String label, int expectedVote, ChangeKind changeKind)
+DECL|method|assertVotes ( ChangeInfo c, TestAccount user, String label, int expectedVote, ChangeKind changeKind)
 specifier|private
 name|void
 name|assertVotes

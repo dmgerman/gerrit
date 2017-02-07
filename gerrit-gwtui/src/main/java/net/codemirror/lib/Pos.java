@@ -199,7 +199,7 @@ DECL|method|Pos ()
 specifier|protected
 name|Pos
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

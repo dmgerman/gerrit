@@ -112,7 +112,9 @@ name|lib
 operator|.
 name|CodeMirror
 operator|.
-name|style
+name|LineClassWhere
+operator|.
+name|WRAP
 import|;
 end_import
 
@@ -126,9 +128,7 @@ name|lib
 operator|.
 name|CodeMirror
 operator|.
-name|LineClassWhere
-operator|.
-name|WRAP
+name|style
 import|;
 end_import
 
@@ -322,20 +322,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|codemirror
-operator|.
-name|lib
-operator|.
-name|CodeMirror
-operator|.
-name|LineHandle
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -351,6 +337,20 @@ operator|.
 name|util
 operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|codemirror
+operator|.
+name|lib
+operator|.
+name|CodeMirror
+operator|.
+name|LineHandle
 import|;
 end_import
 

@@ -313,7 +313,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|CreateChangeSender (EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|CreateChangeSender ( EmailArguments ea, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|public
 name|CreateChangeSender
 parameter_list|(

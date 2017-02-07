@@ -432,6 +432,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -447,16 +457,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -535,7 +535,7 @@ name|starredChangesUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StarredChanges (ChangesCollection changes, DynamicMap<RestView<AccountResource.StarredChange>> views, Provider<Create> createProvider, StarredChangesUtil starredChangesUtil)
+DECL|method|StarredChanges ( ChangesCollection changes, DynamicMap<RestView<AccountResource.StarredChange>> views, Provider<Create> createProvider, StarredChangesUtil starredChangesUtil)
 name|StarredChanges
 parameter_list|(
 name|ChangesCollection
@@ -778,7 +778,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|create ( AccountResource parent, IdString id)
+DECL|method|create (AccountResource parent, IdString id)
 specifier|public
 name|RestModifyView
 argument_list|<
@@ -1295,7 +1295,7 @@ specifier|public
 specifier|static
 class|class
 name|EmptyInput
-block|{   }
+block|{}
 block|}
 end_class
 

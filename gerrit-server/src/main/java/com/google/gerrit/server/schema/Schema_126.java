@@ -350,6 +350,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -387,16 +397,6 @@ operator|.
 name|lib
 operator|.
 name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -443,7 +443,7 @@ name|serverUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_126 (Provider<Schema_125> prior, GitRepositoryManager repoManager, AllUsersName allUsersName, SystemGroupBackend systemGroupBackend, @GerritPersonIdent PersonIdent serverUser)
+DECL|method|Schema_126 ( Provider<Schema_125> prior, GitRepositoryManager repoManager, AllUsersName allUsersName, SystemGroupBackend systemGroupBackend, @GerritPersonIdent PersonIdent serverUser)
 name|Schema_126
 parameter_list|(
 name|Provider

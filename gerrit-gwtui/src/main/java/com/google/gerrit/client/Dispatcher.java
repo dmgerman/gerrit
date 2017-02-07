@@ -1559,7 +1559,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-DECL|method|toPatch (DiffObject diffBase, PatchSet.Id revision, String fileName, DisplaySide side, int line)
+DECL|method|toPatch ( DiffObject diffBase, PatchSet.Id revision, String fileName, DisplaySide side, int line)
 specifier|public
 specifier|static
 name|String
@@ -1827,7 +1827,7 @@ name|line
 argument_list|)
 return|;
 block|}
-DECL|method|toPatch (String type, DiffObject diffBase, PatchSet.Id revision, String fileName, DisplaySide side, int line)
+DECL|method|toPatch ( String type, DiffObject diffBase, PatchSet.Id revision, String fileName, DisplaySide side, int line)
 specifier|private
 specifier|static
 name|String
@@ -3958,7 +3958,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|patch (String token, DiffObject base, Patch.Key id, DisplaySide side, int line, String panelType)
+DECL|method|patch ( String token, DiffObject base, Patch.Key id, DisplaySide side, int line, String panelType)
 specifier|private
 specifier|static
 name|void
@@ -4243,7 +4243,7 @@ argument_list|()
 operator|)
 return|;
 block|}
-DECL|method|unified (final String token, final DiffObject base, final Patch.Key id, final DisplaySide side, final int line)
+DECL|method|unified ( final String token, final DiffObject base, final Patch.Key id, final DisplaySide side, final int line)
 specifier|private
 specifier|static
 name|void
@@ -4326,7 +4326,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|codemirror (final String token, final DiffObject base, final Patch.Key id, final DisplaySide side, final int line)
+DECL|method|codemirror ( final String token, final DiffObject base, final Patch.Key id, final DisplaySide side, final int line)
 specifier|private
 specifier|static
 name|void

@@ -159,7 +159,7 @@ argument_list|<
 name|Boolean
 argument_list|>
 block|{
-DECL|method|EndOfOptionsHandler (CmdLineParser parser, OptionDef option, Setter<? super Boolean> setter)
+DECL|method|EndOfOptionsHandler ( CmdLineParser parser, OptionDef option, Setter<? super Boolean> setter)
 specifier|public
 name|EndOfOptionsHandler
 parameter_list|(

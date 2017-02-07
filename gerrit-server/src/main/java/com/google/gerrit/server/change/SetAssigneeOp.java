@@ -561,7 +561,7 @@ name|oldAssignee
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|SetAssigneeOp (AccountsCollection accounts, ChangeMessagesUtil cmUtil, DynamicSet<AssigneeValidationListener> validationListeners, AssigneeChanged assigneeChanged, SetAssigneeSender.Factory setAssigneeSenderFactory, Provider<IdentifiedUser> user, IdentifiedUser.GenericFactory userFactory, @Assisted String assignee)
+DECL|method|SetAssigneeOp ( AccountsCollection accounts, ChangeMessagesUtil cmUtil, DynamicSet<AssigneeValidationListener> validationListeners, AssigneeChanged assigneeChanged, SetAssigneeSender.Factory setAssigneeSenderFactory, Provider<IdentifiedUser> user, IdentifiedUser.GenericFactory userFactory, @Assisted String assignee)
 name|SetAssigneeOp
 parameter_list|(
 name|AccountsCollection
@@ -892,7 +892,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|addMessage (BatchUpdate.ChangeContext ctx, ChangeUpdate update, IdentifiedUser previousAssignee, IdentifiedUser newAssignee)
+DECL|method|addMessage ( BatchUpdate.ChangeContext ctx, ChangeUpdate update, IdentifiedUser previousAssignee, IdentifiedUser newAssignee)
 specifier|private
 name|void
 name|addMessage

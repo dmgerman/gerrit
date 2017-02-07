@@ -358,16 +358,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -386,6 +376,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 annotation|@
 name|NoHttpd
@@ -396,9 +396,9 @@ name|ListProjectsIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|allUsers
 annotation|@
 name|Inject
-DECL|field|allUsers
 specifier|private
 name|AllUsersName
 name|allUsers

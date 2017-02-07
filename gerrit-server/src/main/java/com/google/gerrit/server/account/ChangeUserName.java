@@ -417,7 +417,7 @@ name|newUsername
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeUserName (final AccountCache accountCache, final SshKeyCache sshKeyCache, @Assisted final ReviewDb db, @Assisted final IdentifiedUser user, @Nullable @Assisted final String newUsername)
+DECL|method|ChangeUserName ( final AccountCache accountCache, final SshKeyCache sshKeyCache, @Assisted final ReviewDb db, @Assisted final IdentifiedUser user, @Nullable @Assisted final String newUsername)
 name|ChangeUserName
 parameter_list|(
 specifier|final

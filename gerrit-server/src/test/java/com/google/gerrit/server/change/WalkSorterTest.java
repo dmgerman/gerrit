@@ -302,6 +302,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -373,26 +393,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -3145,7 +3145,7 @@ name|commit
 argument_list|)
 return|;
 block|}
-DECL|method|assertSorted (WalkSorter sorter, List<ChangeData> changes, List<PatchSetData> expected)
+DECL|method|assertSorted ( WalkSorter sorter, List<ChangeData> changes, List<PatchSetData> expected)
 specifier|private
 specifier|static
 name|void

@@ -250,6 +250,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -318,16 +328,6 @@ name|RevCommit
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|RobotCommentNotes
 specifier|public
@@ -384,7 +384,7 @@ name|metaId
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|RobotCommentNotes ( Args args, @Assisted Change change)
+DECL|method|RobotCommentNotes (Args args, @Assisted Change change)
 name|RobotCommentNotes
 parameter_list|(
 name|Args

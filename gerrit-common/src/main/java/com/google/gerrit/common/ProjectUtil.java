@@ -145,7 +145,7 @@ DECL|method|ProjectUtil ()
 specifier|private
 name|ProjectUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

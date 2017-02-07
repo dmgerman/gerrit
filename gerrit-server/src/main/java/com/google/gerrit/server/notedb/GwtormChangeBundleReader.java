@@ -209,7 +209,7 @@ name|Inject
 DECL|method|GwtormChangeBundleReader ()
 name|GwtormChangeBundleReader
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|fromReviewDb (ReviewDb db, Change.Id id)

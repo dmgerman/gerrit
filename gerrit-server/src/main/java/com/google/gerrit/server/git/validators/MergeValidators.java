@@ -354,6 +354,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -377,26 +397,6 @@ operator|.
 name|lib
 operator|.
 name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -436,7 +436,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|MergeValidators (DynamicSet<MergeValidationListener> mergeValidationListeners, ProjectConfigValidator.Factory projectConfigValidatorFactory)
+DECL|method|MergeValidators ( DynamicSet<MergeValidationListener> mergeValidationListeners, ProjectConfigValidator.Factory projectConfigValidatorFactory)
 name|MergeValidators
 parameter_list|(
 name|DynamicSet
@@ -464,7 +464,7 @@ operator|=
 name|projectConfigValidatorFactory
 expr_stmt|;
 block|}
-DECL|method|validatePreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|validatePreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|validatePreMerge
@@ -653,7 +653,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ProjectConfigValidator (AllProjectsName allProjectsName, ProjectCache projectCache, DynamicMap<ProjectConfigEntry> pluginConfigEntries)
+DECL|method|ProjectConfigValidator ( AllProjectsName allProjectsName, ProjectCache projectCache, DynamicMap<ProjectConfigEntry> pluginConfigEntries)
 specifier|public
 name|ProjectConfigValidator
 parameter_list|(
@@ -691,7 +691,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge (final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final Branch.NameKey destBranch, final PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( final Repository repo, final CodeReviewCommit commit, final ProjectState destProject, final Branch.NameKey destBranch, final PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge
@@ -1086,7 +1086,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreMerge (Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
+DECL|method|onPreMerge ( Repository repo, CodeReviewCommit commit, ProjectState destProject, Branch.NameKey destBranch, PatchSet.Id patchSetId, IdentifiedUser caller)
 specifier|public
 name|void
 name|onPreMerge

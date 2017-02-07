@@ -384,7 +384,7 @@ DECL|method|ActionContext ()
 specifier|protected
 name|ActionContext
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|get (RestApi api, JavaScriptObject cb)
 specifier|static
 specifier|final
@@ -409,7 +409,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * The same as {@link #get(RestApi, JavaScriptObject)} but without converting    * a {@link NativeString} result to String.    */
+comment|/**    * The same as {@link #get(RestApi, JavaScriptObject)} but without converting a {@link    * NativeString} result to String.    */
 DECL|method|getRaw (RestApi api, final JavaScriptObject cb)
 specifier|static
 specifier|final
@@ -495,7 +495,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * The same as {@link #post(RestApi, JavaScriptObject, JavaScriptObject)} but    * without converting a {@link NativeString} result to String.    */
+comment|/**    * The same as {@link #post(RestApi, JavaScriptObject, JavaScriptObject)} but without converting a    * {@link NativeString} result to String.    */
 DECL|method|postRaw (RestApi api, JavaScriptObject in, JavaScriptObject cb)
 specifier|static
 specifier|final
@@ -585,7 +585,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * The same as {@link #post(RestApi, String, JavaScriptObject)} but without    * converting a {@link NativeString} result to String.    */
+comment|/**    * The same as {@link #post(RestApi, String, JavaScriptObject)} but without converting a {@link    * NativeString} result to String.    */
 DECL|method|postRaw (RestApi api, String in, JavaScriptObject cb)
 specifier|static
 specifier|final
@@ -639,7 +639,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * The same as {@link #put(RestApi, JavaScriptObject)} but without converting    * a {@link NativeString} result to String.    */
+comment|/**    * The same as {@link #put(RestApi, JavaScriptObject)} but without converting a {@link    * NativeString} result to String.    */
 DECL|method|putRaw (RestApi api, JavaScriptObject cb)
 specifier|static
 specifier|final
@@ -724,7 +724,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * The same as {@link #put(RestApi, JavaScriptObject, JavaScriptObject)} but    * without converting a {@link NativeString} result to String.    */
+comment|/**    * The same as {@link #put(RestApi, JavaScriptObject, JavaScriptObject)} but without converting a    * {@link NativeString} result to String.    */
 DECL|method|putRaw (RestApi api, JavaScriptObject in, JavaScriptObject cb)
 specifier|static
 specifier|final
@@ -814,7 +814,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * The same as {@link #put(RestApi, String, JavaScriptObject)} but without    * converting a {@link NativeString} result to String.    */
+comment|/**    * The same as {@link #put(RestApi, String, JavaScriptObject)} but without converting a {@link    * NativeString} result to String.    */
 DECL|method|putRaw (RestApi api, String in, JavaScriptObject cb)
 specifier|static
 specifier|final
@@ -868,7 +868,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * The same as {@link #delete(RestApi, JavaScriptObject)} but without    * converting a {@link NativeString} result to String.    */
+comment|/**    * The same as {@link #delete(RestApi, JavaScriptObject)} but without converting a {@link    * NativeString} result to String.    */
 DECL|method|deleteRaw (RestApi api, JavaScriptObject cb)
 specifier|static
 specifier|final

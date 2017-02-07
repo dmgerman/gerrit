@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Expands user name to a local email address, usually by adding a domain.  */
+comment|/** Expands user name to a local email address, usually by adding a domain. */
 end_comment
 
 begin_interface
@@ -135,7 +135,7 @@ DECL|method|None ()
 specifier|private
 name|None
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|canExpand (String user)

@@ -94,7 +94,7 @@ DECL|method|OAuthTokenInfo ()
 specifier|protected
 name|OAuthTokenInfo
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|username ()
 specifier|public
 specifier|final

@@ -257,7 +257,7 @@ name|secureStore
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Section (final InitFlags flags, final SitePaths site, final SecureStore secureStore, final ConsoleUI ui, @Assisted(R) final String section, @Assisted(R) @Nullable final String subsection)
+DECL|method|Section ( final InitFlags flags, final SitePaths site, final SecureStore secureStore, final ConsoleUI ui, @Assisted(R) final String section, @Assisted(R) @Nullable final String subsection)
 specifier|public
 name|Section
 parameter_list|(
@@ -636,7 +636,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|string (final String title, final String name, final String dv, final boolean nullIfDefault)
+DECL|method|string ( final String title, final String name, final String dv, final boolean nullIfDefault)
 specifier|public
 name|String
 name|string
@@ -800,7 +800,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|select (final String title, final String name, final T defValue, final boolean nullIfDefault)
+DECL|method|select ( final String title, final String name, final T defValue, final boolean nullIfDefault)
 specifier|public
 parameter_list|<
 name|T
@@ -925,7 +925,7 @@ return|return
 name|newValue
 return|;
 block|}
-DECL|method|select (final String title, final String name, final String dv, Set<String> allowedValues)
+DECL|method|select ( final String title, final String name, final String dv, Set<String> allowedValues)
 specifier|public
 name|String
 name|select

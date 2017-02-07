@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Suggest oracle that only provides suggestions if the user has typed at least  * as many characters as configured by 'suggest.from'. If 'suggest.from' is set  * to 0, suggestions will always be provided.  */
+comment|/**  * Suggest oracle that only provides suggestions if the user has typed at least as many characters  * as configured by 'suggest.from'. If 'suggest.from' is set to 0, suggestions will always be  * provided.  */
 end_comment
 
 begin_class

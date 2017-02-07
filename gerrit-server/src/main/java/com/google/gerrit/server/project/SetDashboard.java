@@ -295,9 +295,9 @@ specifier|static
 class|class
 name|Input
 block|{
+DECL|field|id
 annotation|@
 name|DefaultInput
-DECL|field|id
 name|String
 name|id
 decl_stmt|;

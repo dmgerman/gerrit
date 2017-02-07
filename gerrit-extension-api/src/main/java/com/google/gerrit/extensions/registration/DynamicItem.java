@@ -195,7 +195,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A single item that can be modified as plugins reload.  *<p>  * DynamicItems are always mapped as singletons in Guice. Items store a Provider  * internally, and resolve the provider to an instance on demand. This enables  * registrations to decide between singleton and non-singleton members. If  * multiple plugins try to provide the same Provider, an exception is thrown.  */
+comment|/**  * A single item that can be modified as plugins reload.  *  *<p>DynamicItems are always mapped as singletons in Guice. Items store a Provider internally, and  * resolve the provider to an instance on demand. This enables registrations to decide between  * singleton and non-singleton members. If multiple plugins try to provide the same Provider, an  * exception is thrown.  */
 end_comment
 
 begin_class
@@ -256,7 +256,7 @@ name|pluginName
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Declare a singleton {@code DynamicItem<T>} with a binder.    *<p>    * Items must be defined in a Guice module before they can be bound:    *<pre>    *   DynamicItem.itemOf(binder(), Interface.class);    *   DynamicItem.bind(binder(), Interface.class).to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry to store.    */
+comment|/**    * Declare a singleton {@code DynamicItem<T>} with a binder.    *    *<p>Items must be defined in a Guice module before they can be bound:    *    *<pre>    *   DynamicItem.itemOf(binder(), Interface.class);    *   DynamicItem.bind(binder(), Interface.class).to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry to store.    */
 DECL|method|itemOf (Binder binder, Class<T> member)
 specifier|public
 specifier|static
@@ -289,7 +289,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Declare a singleton {@code DynamicItem<T>} with a binder.    *<p>    * Items must be defined in a Guice module before they can be bound:    *<pre>    *   DynamicSet.itemOf(binder(), new TypeLiteral&lt;Thing&lt;Foo&gt;&gt;() {});    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry to store.    */
+comment|/**    * Declare a singleton {@code DynamicItem<T>} with a binder.    *    *<p>Items must be defined in a Guice module before they can be bound:    *    *<pre>    *   DynamicSet.itemOf(binder(), new TypeLiteral&lt;Thing&lt;Foo&gt;&gt;() {});    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry to store.    */
 DECL|method|itemOf (Binder binder, TypeLiteral<T> member)
 specifier|public
 specifier|static
@@ -350,7 +350,7 @@ name|SINGLETON
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Construct a single {@code DynamicItem<T>} with a fixed value.    *<p>    * Primarily useful for passing {@code DynamicItem}s to constructors in tests.    *    * @param member type of item.    * @param item item to store.    */
+comment|/**    * Construct a single {@code DynamicItem<T>} with a fixed value.    *    *<p>Primarily useful for passing {@code DynamicItem}s to constructors in tests.    *    * @param member type of item.    * @param item item to store.    */
 DECL|method|itemOf (Class<T> member, T item)
 specifier|public
 specifier|static
@@ -616,7 +616,7 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Get the configured item, or null.    *    * @return the configured item instance; null if no implementation has been    *         bound to the item. This is common if no plugin registered an    *         implementation for the type.    */
+comment|/**    * Get the configured item, or null.    *    * @return the configured item instance; null if no implementation has been bound to the item.    *     This is common if no plugin registered an implementation for the type.    */
 DECL|method|get ()
 specifier|public
 name|T
@@ -812,7 +812,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**    * Set the element that may be hot-replaceable in the future.    *    * @param key unique description from the item's Guice binding. This can be    *        later obtained from the registration handle to facilitate matching    *        with the new equivalent instance during a hot reload.    * @param impl the item to set as our value right now. Must not be null.    * @param pluginName the name of the plugin providing the item.    * @return a handle that can remove this item later, or hot-swap the item.    */
+comment|/**    * Set the element that may be hot-replaceable in the future.    *    * @param key unique description from the item's Guice binding. This can be later obtained from    *     the registration handle to facilitate matching with the new equivalent instance during a    *     hot reload.    * @param impl the item to set as our value right now. Must not be null.    * @param pluginName the name of the plugin providing the item.    * @return a handle that can remove this item later, or hot-swap the item.    */
 DECL|method|set (Key<T> key, Provider<T> impl, String pluginName)
 specifier|public
 name|ReloadableRegistrationHandle

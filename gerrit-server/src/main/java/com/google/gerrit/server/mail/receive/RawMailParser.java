@@ -170,6 +170,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStreamReader
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -308,38 +338,8 @@ name|DateTime
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStreamReader
-import|;
-end_import
-
 begin_comment
-comment|/**  * RawMailParser parses raw email content received through POP3 or IMAP into  * an internal {@link MailMessage}.  */
+comment|/**  * RawMailParser parses raw email content received through POP3 or IMAP into an internal {@link  * MailMessage}.  */
 end_comment
 
 begin_class
@@ -377,7 +377,7 @@ argument_list|,
 literal|"content-type"
 argument_list|)
 decl_stmt|;
-comment|/**    * Parses a MailMessage from a string.    * @param raw String as received over the wire    * @return Parsed MailMessage    * @throws MailParsingException    */
+comment|/**    * Parses a MailMessage from a string.    *    * @param raw String as received over the wire    * @return Parsed MailMessage    * @throws MailParsingException    */
 DECL|method|parse (String raw)
 specifier|public
 specifier|static
@@ -790,7 +790,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Parses a MailMessage from an array of characters. Note that the character    * array is int-typed. This method is only used by POP3, which specifies that    * all transferred characters are US-ASCII (RFC 6856). When reading the input    * in Java, io.Reader yields ints. These can be safely converted to chars    * as all US-ASCII characters fit in a char. If emails contain non-ASCII    * characters, such as UTF runes, these will be encoded in ASCII using either    * Base64 or quoted-printable encoding.    * @param chars Array as received over the wire    * @return Parsed MailMessage    * @throws MailParsingException    */
+comment|/**    * Parses a MailMessage from an array of characters. Note that the character array is int-typed.    * This method is only used by POP3, which specifies that all transferred characters are US-ASCII    * (RFC 6856). When reading the input in Java, io.Reader yields ints. These can be safely    * converted to chars as all US-ASCII characters fit in a char. If emails contain non-ASCII    * characters, such as UTF runes, these will be encoded in ASCII using either Base64 or    * quoted-printable encoding.    *    * @param chars Array as received over the wire    * @return Parsed MailMessage    * @throws MailParsingException    */
 DECL|method|parse (int[] chars)
 specifier|public
 specifier|static
@@ -874,8 +874,8 @@ name|build
 argument_list|()
 return|;
 block|}
-comment|/**    * Traverses a mime tree and parses out text and html parts. All other parts    * will be dropped.    * @param part MimePart to parse    * @param textBuilder StringBuilder to append all plaintext parts    * @param htmlBuilder StringBuilder to append all html parts    * @throws IOException    */
-DECL|method|handleMimePart (Entity part, StringBuilder textBuilder, StringBuilder htmlBuilder)
+comment|/**    * Traverses a mime tree and parses out text and html parts. All other parts will be dropped.    *    * @param part MimePart to parse    * @param textBuilder StringBuilder to append all plaintext parts    * @param htmlBuilder StringBuilder to append all html parts    * @throws IOException    */
+DECL|method|handleMimePart ( Entity part, StringBuilder textBuilder, StringBuilder htmlBuilder)
 specifier|private
 specifier|static
 name|void

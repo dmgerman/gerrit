@@ -118,6 +118,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|codemirror
@@ -163,36 +193,6 @@ operator|.
 name|lib
 operator|.
 name|TextMarker
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -390,7 +390,7 @@ name|cnt
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|colorLines (final CodeMirror cm, final LineClassWhere where, final String className, final int start, final int end)
+DECL|method|colorLines ( final CodeMirror cm, final LineClassWhere where, final String className, final int start, final int end)
 name|void
 name|colorLines
 parameter_list|(
@@ -509,7 +509,7 @@ name|Direction
 name|dir
 parameter_list|)
 function_decl|;
-DECL|method|diffChunkNavHelper (List<? extends DiffChunkInfo> chunks, DiffScreen host, int res, Direction dir)
+DECL|method|diffChunkNavHelper ( List<? extends DiffChunkInfo> chunks, DiffScreen host, int res, Direction dir)
 name|void
 name|diffChunkNavHelper
 parameter_list|(

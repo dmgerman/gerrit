@@ -124,6 +124,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -198,18 +208,8 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_comment
-comment|/**  * Combination of Lucene {@link IndexWriterConfig} with additional  * Gerrit-specific options.  */
+comment|/** Combination of Lucene {@link IndexWriterConfig} with additional Gerrit-specific options. */
 end_comment
 
 begin_class

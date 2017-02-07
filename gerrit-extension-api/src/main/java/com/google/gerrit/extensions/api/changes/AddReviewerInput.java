@@ -134,9 +134,9 @@ specifier|public
 class|class
 name|AddReviewerInput
 block|{
+DECL|field|reviewer
 annotation|@
 name|DefaultInput
-DECL|field|reviewer
 specifier|public
 name|String
 name|reviewer

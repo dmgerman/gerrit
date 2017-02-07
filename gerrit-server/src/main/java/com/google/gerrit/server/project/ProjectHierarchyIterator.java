@@ -142,26 +142,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -200,8 +180,28 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Iterates from a project up through its parents to All-Projects.  *<p>  * If a cycle is detected the cycle is broken and All-Projects is visited.  */
+comment|/**  * Iterates from a project up through its parents to All-Projects.  *  *<p>If a cycle is detected the cycle is broken and All-Projects is visited.  */
 end_comment
 
 begin_class

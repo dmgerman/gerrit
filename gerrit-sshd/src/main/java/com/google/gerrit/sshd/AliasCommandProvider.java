@@ -151,9 +151,9 @@ specifier|private
 name|DispatchCommandProvider
 name|root
 decl_stmt|;
+DECL|field|currentUser
 annotation|@
 name|Inject
-DECL|field|currentUser
 specifier|private
 name|CurrentUser
 name|currentUser

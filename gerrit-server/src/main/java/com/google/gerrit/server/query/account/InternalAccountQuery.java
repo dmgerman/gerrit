@@ -206,26 +206,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -241,6 +221,26 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -273,7 +273,7 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalAccountQuery (AccountQueryProcessor queryProcessor, AccountIndexCollection indexes, IndexConfig indexConfig)
+DECL|method|InternalAccountQuery ( AccountQueryProcessor queryProcessor, AccountIndexCollection indexes, IndexConfig indexConfig)
 name|InternalAccountQuery
 parameter_list|(
 name|AccountQueryProcessor

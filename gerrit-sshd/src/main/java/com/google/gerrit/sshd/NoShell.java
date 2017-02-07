@@ -198,6 +198,56 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -310,58 +360,8 @@ name|SystemReader
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|OutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
 begin_comment
-comment|/**  * Dummy shell which prints a message and terminates.  *<p>  * This implementation is used to ensure clients who try to SSH directly to this  * server without supplying a command will get a reasonable error message, but  * cannot continue further.  */
+comment|/**  * Dummy shell which prints a message and terminates.  *  *<p>This implementation is used to ensure clients who try to SSH directly to this server without  * supplying a command will get a reasonable error message, but cannot continue further.  */
 end_comment
 
 begin_class
@@ -477,7 +477,7 @@ name|context
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SendMessage (Provider<MessageFactory> messageFactory, SchemaFactory<ReviewDb> sf, SshScope sshScope)
+DECL|method|SendMessage ( Provider<MessageFactory> messageFactory, SchemaFactory<ReviewDb> sf, SshScope sshScope)
 name|SendMessage
 parameter_list|(
 name|Provider
@@ -728,7 +728,7 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|MessageFactory
 specifier|static
@@ -758,7 +758,7 @@ name|urlProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MessageFactory (IdentifiedUser user, SshInfo sshInfo, @CanonicalWebUrl Provider<String> urlProvider)
+DECL|method|MessageFactory ( IdentifiedUser user, SshInfo sshInfo, @CanonicalWebUrl Provider<String> urlProvider)
 name|MessageFactory
 parameter_list|(
 name|IdentifiedUser

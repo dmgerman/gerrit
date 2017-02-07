@@ -95,7 +95,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defining a project/branch subscription to a project/branch project.  *<p>  * This means a class instance represents a repo/branch subscription to a  * project/branch (the subscriber).  *<p>  * A subscriber operates a submodule in defined path.  */
+comment|/**  * Defining a project/branch subscription to a project/branch project.  *  *<p>This means a class instance represents a repo/branch subscription to a project/branch (the  * subscriber).  *  *<p>A subscriber operates a submodule in defined path.  */
 end_comment
 
 begin_class
@@ -128,7 +128,7 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-comment|/**      * Indicates the super project, aka subscriber: the project owner of the      * gitlinks to the submodules.      */
+comment|/**      * Indicates the super project, aka subscriber: the project owner of the gitlinks to the      * submodules.      */
 annotation|@
 name|Column
 argument_list|(
@@ -276,7 +276,7 @@ DECL|method|SubmoduleSubscription ()
 specifier|protected
 name|SubmoduleSubscription
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|SubmoduleSubscription (Branch.NameKey superProject, Branch.NameKey submodule, String path)
 specifier|public
 name|SubmoduleSubscription

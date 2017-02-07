@@ -411,7 +411,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeQueryProcessor (Provider<CurrentUser> userProvider, Metrics metrics, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory)
+DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, Metrics metrics, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory)
 name|ChangeQueryProcessor
 parameter_list|(
 name|Provider
@@ -511,7 +511,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|createOptions (IndexConfig indexConfig, int start, int limit, Set<String> requestedFields)
+DECL|method|createOptions ( IndexConfig indexConfig, int start, int limit, Set<String> requestedFields)
 specifier|protected
 name|QueryOptions
 name|createOptions
@@ -549,7 +549,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|enforceVisibility ( Predicate<ChangeData> pred)
+DECL|method|enforceVisibility (Predicate<ChangeData> pred)
 specifier|protected
 name|Predicate
 argument_list|<

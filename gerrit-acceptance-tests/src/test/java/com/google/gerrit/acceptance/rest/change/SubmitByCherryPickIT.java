@@ -400,6 +400,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -464,16 +474,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 DECL|class|SubmitByCherryPickIT
 specifier|public
@@ -482,9 +482,9 @@ name|SubmitByCherryPickIT
 extends|extends
 name|AbstractSubmit
 block|{
+DECL|field|changeMessageModifiers
 annotation|@
 name|Inject
-DECL|field|changeMessageModifiers
 specifier|private
 name|DynamicSet
 argument_list|<

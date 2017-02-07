@@ -1525,7 +1525,7 @@ name|value
 parameter_list|)
 comment|/*-{     return this.setGutterMarker(line, gutterId, value);   }-*/
 function_decl|;
-DECL|method|setGutterMarker (LineHandle line, String gutterId, Element value)
+DECL|method|setGutterMarker ( LineHandle line, String gutterId, Element value)
 specifier|public
 specifier|final
 specifier|native
@@ -1556,7 +1556,7 @@ DECL|method|CodeMirror ()
 specifier|protected
 name|CodeMirror
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|Viewport
 specifier|public
 specifier|static
@@ -1609,7 +1609,7 @@ DECL|method|Viewport ()
 specifier|protected
 name|Viewport
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|LineHandle
 specifier|public
@@ -1623,7 +1623,7 @@ DECL|method|LineHandle ()
 specifier|protected
 name|LineHandle
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|RegisteredHandler
 specifier|public
@@ -1637,7 +1637,7 @@ DECL|method|RegisteredHandler ()
 specifier|protected
 name|RegisteredHandler
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|interface|EventHandler
 specifier|public

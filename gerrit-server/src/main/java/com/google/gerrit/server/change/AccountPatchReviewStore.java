@@ -123,7 +123,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Store for reviewed flags on changes.  *  * A reviewed flag is a tuple of (patch set ID, file, account ID) and records  * whether the user has reviewed a file in a patch set. Each user can easily  * have thousands of reviewed flags and the number of reviewed flags is growing  * without bound. The store must be able handle this data volume efficiently.  *  * For a multi-master setup the store must replicate the data between the  * masters.  */
+comment|/**  * Store for reviewed flags on changes.  *  *<p>A reviewed flag is a tuple of (patch set ID, file, account ID) and records whether the user  * has reviewed a file in a patch set. Each user can easily have thousands of reviewed flags and the  * number of reviewed flags is growing without bound. The store must be able handle this data volume  * efficiently.  *  *<p>For a multi-master setup the store must replicate the data between the masters.  */
 end_comment
 
 begin_interface
@@ -132,7 +132,7 @@ specifier|public
 interface|interface
 name|AccountPatchReviewStore
 block|{
-comment|/**    * Marks the given file in the given patch set as reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param path file path    * @return {@code true} if the reviewed flag was updated, {@code false} if the    *         reviewed flag was already set    * @throws OrmException thrown if updating the reviewed flag failed    */
+comment|/**    * Marks the given file in the given patch set as reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param path file path    * @return {@code true} if the reviewed flag was updated, {@code false} if the reviewed flag was    *     already set    * @throws OrmException thrown if updating the reviewed flag failed    */
 DECL|method|markReviewed (PatchSet.Id psId, Account.Id accountId, String path)
 name|boolean
 name|markReviewed
@@ -177,7 +177,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Clears the reviewed flag for the given file in the given patch set for the    * given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param path file path    * @throws OrmException thrown if clearing the reviewed flag failed    */
+comment|/**    * Clears the reviewed flag for the given file in the given patch set for the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param path file path    * @throws OrmException thrown if clearing the reviewed flag failed    */
 DECL|method|clearReviewed (PatchSet.Id psId, Account.Id accountId, String path)
 name|void
 name|clearReviewed
@@ -198,7 +198,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Clears the reviewed flags for all files in the given patch set for all    * users.    *    * @param psId patch set ID    * @throws OrmException thrown if clearing the reviewed flags failed    */
+comment|/**    * Clears the reviewed flags for all files in the given patch set for all users.    *    * @param psId patch set ID    * @throws OrmException thrown if clearing the reviewed flags failed    */
 DECL|method|clearReviewed (PatchSet.Id psId)
 name|void
 name|clearReviewed
@@ -211,7 +211,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Returns the paths of all files in the given patch set the have been    * reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @return the paths of all files in the given patch set the have been    *         reviewed by the given user    * @throws OrmException thrown if accessing the reviewed flags failed    */
+comment|/**    * Returns the paths of all files in the given patch set the have been reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @return the paths of all files in the given patch set the have been reviewed by the given user    * @throws OrmException thrown if accessing the reviewed flags failed    */
 DECL|method|findReviewed (PatchSet.Id psId, Account.Id accountId)
 name|Collection
 argument_list|<

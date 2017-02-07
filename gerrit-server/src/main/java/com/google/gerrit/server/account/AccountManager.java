@@ -396,26 +396,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -475,6 +455,26 @@ operator|.
 name|atomic
 operator|.
 name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -578,7 +578,7 @@ name|accountQueryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountManager (SchemaFactory<ReviewDb> schema, AccountCache byIdCache, AccountByEmailCache byEmailCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, AuditService auditService, Provider<InternalAccountQuery> accountQueryProvider)
+DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, AccountCache byIdCache, AccountByEmailCache byEmailCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, AuditService auditService, Provider<InternalAccountQuery> accountQueryProvider)
 name|AccountManager
 parameter_list|(
 name|SchemaFactory
@@ -684,7 +684,7 @@ operator|=
 name|accountQueryProvider
 expr_stmt|;
 block|}
-comment|/**    * @return user identified by this external identity string    */
+comment|/** @return user identified by this external identity string */
 DECL|method|lookup (String externalId)
 specifier|public
 name|Optional
@@ -759,7 +759,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Authenticate the user, potentially creating a new account if they are new.    *    * @param who identity of the user, with any details we received about them.    * @return the result of authenticating the user.    * @throws AccountException the account does not exist, and cannot be created,    *         or exists, but cannot be located, or is inactive.    */
+comment|/**    * Authenticate the user, potentially creating a new account if they are new.    *    * @param who identity of the user, with any details we received about them.    * @return the result of authenticating the user.    * @throws AccountException the account does not exist, and cannot be created, or exists, but    *     cannot be located, or is inactive.    */
 DECL|method|authenticate (AuthRequest who)
 specifier|public
 name|AuthResult
@@ -1960,8 +1960,8 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**    * This method handles an exception that occurred during the setting of the    * user name for a newly created account. If the realm does not allow the user    * to set a user name manually this method deletes the newly created account    * and throws an {@link AccountUserNameException}. In any case the error    * message is logged.    *    * @param db the database    * @param account the newly created account    * @param extId the newly created external id    * @param errorMessage the error message    * @param e the exception that occurred during the setting of the user name    *        for the new account    * @param logException flag that decides whether the exception should be    *        included into the log    * @throws AccountUserNameException thrown if the realm does not allow the    *         user to manually set the user name    * @throws OrmException thrown if cleaning the database failed    */
-DECL|method|handleSettingUserNameFailure (ReviewDb db, Account account, AccountExternalId extId, String errorMessage, Exception e, boolean logException)
+comment|/**    * This method handles an exception that occurred during the setting of the user name for a newly    * created account. If the realm does not allow the user to set a user name manually this method    * deletes the newly created account and throws an {@link AccountUserNameException}. In any case    * the error message is logged.    *    * @param db the database    * @param account the newly created account    * @param extId the newly created external id    * @param errorMessage the error message    * @param e the exception that occurred during the setting of the user name for the new account    * @param logException flag that decides whether the exception should be included into the log    * @throws AccountUserNameException thrown if the realm does not allow the user to manually set    *     the user name    * @throws OrmException thrown if cleaning the database failed    */
+DECL|method|handleSettingUserNameFailure ( ReviewDb db, Account account, AccountExternalId extId, String errorMessage, Exception e, boolean logException)
 specifier|private
 name|void
 name|handleSettingUserNameFailure
@@ -2115,7 +2115,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Link another authentication identity to an existing account.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws AccountException the identity belongs to a different account, or it    *         cannot be linked at this time.    */
+comment|/**    * Link another authentication identity to an existing account.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws AccountException the identity belongs to a different account, or it cannot be linked at    *     this time.    */
 DECL|method|link (Account.Id to, AuthRequest who)
 specifier|public
 name|AuthResult
@@ -2342,7 +2342,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Update the link to another unique authentication identity to an existing account.    *    * Existing external identities with the same scheme will be removed and replaced    * with the new one.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws OrmException    * @throws AccountException the identity belongs to a different account, or it    *         cannot be linked at this time.    */
+comment|/**    * Update the link to another unique authentication identity to an existing account.    *    *<p>Existing external identities with the same scheme will be removed and replaced with the new    * one.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws OrmException    * @throws AccountException the identity belongs to a different account, or it cannot be linked at    *     this time.    */
 DECL|method|updateLink (Account.Id to, AuthRequest who)
 specifier|public
 name|AuthResult
@@ -2531,7 +2531,7 @@ return|return
 name|filteredExternalIds
 return|;
 block|}
-comment|/**    * Unlink an authentication identity from an existing account.    *    * @param from account to unlink the identity from.    * @param who the identity to delete    * @return the result of unlinking the identity from the user.    * @throws AccountException the identity belongs to a different account, or it    *         cannot be unlinked at this time.    */
+comment|/**    * Unlink an authentication identity from an existing account.    *    * @param from account to unlink the identity from.    * @param who the identity to delete    * @return the result of unlinking the identity from the user.    * @throws AccountException the identity belongs to a different account, or it cannot be unlinked    *     at this time.    */
 DECL|method|unlink (Account.Id from, AuthRequest who)
 specifier|public
 name|AuthResult

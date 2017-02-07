@@ -408,7 +408,7 @@ name|userFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory (DynamicSet<UserScopedEventListener> eventListeners, IdentifiedUser.GenericFactory userFactory)
+DECL|method|Factory ( DynamicSet<UserScopedEventListener> eventListeners, IdentifiedUser.GenericFactory userFactory)
 name|Factory
 parameter_list|(
 name|DynamicSet
@@ -463,7 +463,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|EventRecorder (DynamicSet<UserScopedEventListener> eventListeners, final IdentifiedUser user)
+DECL|method|EventRecorder ( DynamicSet<UserScopedEventListener> eventListeners, final IdentifiedUser user)
 specifier|public
 name|EventRecorder
 parameter_list|(
@@ -624,7 +624,7 @@ name|ref
 argument_list|)
 return|;
 block|}
-DECL|method|getRefUpdatedEvents (String project, String refName, int expectedSize)
+DECL|method|getRefUpdatedEvents ( String project, String refName, int expectedSize)
 specifier|private
 name|ImmutableList
 argument_list|<
@@ -734,7 +734,7 @@ return|return
 name|events
 return|;
 block|}
-DECL|method|getChangeMergedEvents (String project, String branch, int expectedSize)
+DECL|method|getChangeMergedEvents ( String project, String branch, int expectedSize)
 specifier|private
 name|ImmutableList
 argument_list|<
@@ -844,7 +844,7 @@ return|return
 name|events
 return|;
 block|}
-DECL|method|getReviewerDeletedEvents ( int expectedSize)
+DECL|method|getReviewerDeletedEvents (int expectedSize)
 specifier|private
 name|ImmutableList
 argument_list|<

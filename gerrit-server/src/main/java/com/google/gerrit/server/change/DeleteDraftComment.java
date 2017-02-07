@@ -425,7 +425,7 @@ DECL|class|Input
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{}
 DECL|field|db
 specifier|private
 specifier|final
@@ -463,7 +463,7 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftComment (Provider<ReviewDb> db, CommentsUtil commentsUtil, PatchSetUtil psUtil, BatchUpdate.Factory updateFactory, PatchListCache patchListCache)
+DECL|method|DeleteDraftComment ( Provider<ReviewDb> db, CommentsUtil commentsUtil, PatchSetUtil psUtil, BatchUpdate.Factory updateFactory, PatchListCache patchListCache)
 name|DeleteDraftComment
 parameter_list|(
 name|Provider

@@ -200,6 +200,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -209,16 +219,6 @@ operator|.
 name|lib
 operator|.
 name|ObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -260,7 +260,7 @@ name|groupMembershipFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalGroupBackend (GroupControl.Factory groupControlFactory, GroupCache groupCache, IncludingGroupMembership.Factory groupMembershipFactory)
+DECL|method|InternalGroupBackend ( GroupControl.Factory groupControlFactory, GroupCache groupCache, IncludingGroupMembership.Factory groupMembershipFactory)
 name|InternalGroupBackend
 parameter_list|(
 name|GroupControl

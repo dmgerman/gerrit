@@ -165,9 +165,9 @@ name|boolean
 name|isSignedIn
 parameter_list|()
 function_decl|;
-DECL|method|getXGerritAuth ()
 annotation|@
 name|Nullable
+DECL|method|getXGerritAuth ()
 name|String
 name|getXGerritAuth
 parameter_list|()

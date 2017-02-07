@@ -438,6 +438,70 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|StreamSupport
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -509,70 +573,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|StreamSupport
 import|;
 end_import
 
@@ -927,7 +927,7 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|refsAreStale (GitRepositoryManager repoManager, Change.Id id, SetMultimap<Project.NameKey, RefState> states, ListMultimap<Project.NameKey, RefStatePattern> patterns)
+DECL|method|refsAreStale ( GitRepositoryManager repoManager, Change.Id id, SetMultimap<Project.NameKey, RefState> states, ListMultimap<Project.NameKey, RefStatePattern> patterns)
 specifier|static
 name|boolean
 name|refsAreStale
@@ -1021,7 +1021,7 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|reviewDbChangeIsStale ( Change indexChange, @Nullable Change reviewDbChange)
+DECL|method|reviewDbChangeIsStale (Change indexChange, @Nullable Change reviewDbChange)
 specifier|static
 name|boolean
 name|reviewDbChangeIsStale
@@ -1132,7 +1132,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|parseStates ( Iterable<byte[]> states)
+DECL|method|parseStates (Iterable<byte[]> states)
 specifier|public
 specifier|static
 name|SetMultimap
@@ -1312,7 +1312,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|parsePatterns ( ChangeData cd)
+DECL|method|parsePatterns (ChangeData cd)
 specifier|private
 name|ListMultimap
 argument_list|<
@@ -1489,7 +1489,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|refsAreStale (GitRepositoryManager repoManager, Change.Id id, Project.NameKey project, SetMultimap<Project.NameKey, RefState> allStates, ListMultimap<Project.NameKey, RefStatePattern> allPatterns)
+DECL|method|refsAreStale ( GitRepositoryManager repoManager, Change.Id id, Project.NameKey project, SetMultimap<Project.NameKey, RefState> allStates, ListMultimap<Project.NameKey, RefStatePattern> allPatterns)
 specifier|private
 specifier|static
 name|boolean
@@ -1904,7 +1904,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Pattern for matching refs.    *<p>    * Similar to '*' syntax for native Git refspecs, but slightly more powerful:    * the pattern may contain arbitrarily many asterisks. There must be at least    * one '*' and the first one must immediately follow a '/'.    */
+comment|/**    * Pattern for matching refs.    *    *<p>Similar to '*' syntax for native Git refspecs, but slightly more powerful: the pattern may    * contain arbitrarily many asterisks. There must be at least one '*' and the first one must    * immediately follow a '/'.    */
 annotation|@
 name|AutoValue
 DECL|class|RefStatePattern

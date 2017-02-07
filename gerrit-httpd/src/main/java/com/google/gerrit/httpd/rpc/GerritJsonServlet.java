@@ -338,26 +338,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -414,8 +394,28 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  * Base JSON servlet to ensure the current user is not forged.  */
+comment|/** Base JSON servlet to ensure the current user is not forged. */
 end_comment
 
 begin_class
@@ -505,7 +505,7 @@ name|audit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritJsonServlet (final DynamicItem<WebSession> w, final RemoteJsonService s, final AuditService a)
+DECL|method|GerritJsonServlet ( final DynamicItem<WebSession> w, final RemoteJsonService s, final AuditService a)
 name|GerritJsonServlet
 parameter_list|(
 specifier|final
@@ -539,7 +539,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|createActiveCall (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|createActiveCall ( final HttpServletRequest req, final HttpServletResponse rsp)
 specifier|protected
 name|GerritCall
 name|createActiveCall

@@ -821,7 +821,7 @@ DECL|method|GlobalKey ()
 specifier|private
 name|GlobalKey
 parameter_list|()
-block|{   }
+block|{}
 DECL|class|State
 specifier|static
 class|class

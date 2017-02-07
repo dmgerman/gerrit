@@ -331,7 +331,7 @@ DECL|method|RevisionGlue ()
 specifier|private
 name|RevisionGlue
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

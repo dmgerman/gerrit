@@ -286,26 +286,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -331,6 +311,26 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -399,7 +399,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire (Change change, PatchSet patchSet, List<Account> reviewers, Account adder, Timestamp when)
+DECL|method|fire ( Change change, PatchSet patchSet, List<Account> reviewers, Account adder, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -572,7 +572,7 @@ name|AccountInfo
 argument_list|>
 name|reviewers
 decl_stmt|;
-DECL|method|Event (ChangeInfo change, RevisionInfo revision, List<AccountInfo> reviewers, AccountInfo adder, Timestamp when)
+DECL|method|Event ( ChangeInfo change, RevisionInfo revision, List<AccountInfo> reviewers, AccountInfo adder, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo

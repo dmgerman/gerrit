@@ -334,7 +334,7 @@ DECL|method|TempFileUtil ()
 specifier|private
 name|TempFileUtil
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

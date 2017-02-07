@@ -630,7 +630,7 @@ name|HTMLPanel
 argument_list|,
 name|AccessSectionEditor
 argument_list|>
-block|{   }
+block|{}
 DECL|field|uiBinder
 specifier|private
 specifier|static
@@ -647,18 +647,18 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|name
 annotation|@
 name|UiField
-DECL|field|name
 name|ValueEditor
 argument_list|<
 name|String
 argument_list|>
 name|name
 decl_stmt|;
+DECL|field|permissionContainer
 annotation|@
 name|UiField
-DECL|field|permissionContainer
 name|FlowPanel
 name|permissionContainer
 decl_stmt|;
@@ -671,9 +671,9 @@ name|PermissionEditor
 argument_list|>
 name|permissions
 decl_stmt|;
+DECL|field|addContainer
 annotation|@
 name|UiField
-DECL|field|addContainer
 name|DivElement
 name|addContainer
 decl_stmt|;
@@ -695,39 +695,39 @@ name|String
 argument_list|>
 name|permissionSelector
 decl_stmt|;
+DECL|field|deletedName
 annotation|@
 name|UiField
-DECL|field|deletedName
 name|SpanElement
 name|deletedName
 decl_stmt|;
+DECL|field|deleteSection
 annotation|@
 name|UiField
-DECL|field|deleteSection
 name|Anchor
 name|deleteSection
 decl_stmt|;
+DECL|field|normal
 annotation|@
 name|UiField
-DECL|field|normal
 name|DivElement
 name|normal
 decl_stmt|;
+DECL|field|deleted
 annotation|@
 name|UiField
-DECL|field|deleted
 name|DivElement
 name|deleted
 decl_stmt|;
+DECL|field|sectionType
 annotation|@
 name|UiField
-DECL|field|sectionType
 name|SpanElement
 name|sectionType
 decl_stmt|;
+DECL|field|sectionName
 annotation|@
 name|UiField
-DECL|field|sectionName
 name|SpanElement
 name|sectionName
 decl_stmt|;
@@ -1894,7 +1894,7 @@ name|String
 modifier|...
 name|paths
 parameter_list|)
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|setDelegate (EditorDelegate<AccessSection> delegate)
@@ -1908,7 +1908,7 @@ name|AccessSection
 argument_list|>
 name|delegate
 parameter_list|)
-block|{   }
+block|{}
 DECL|class|PermissionEditorSource
 specifier|private
 class|class

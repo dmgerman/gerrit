@@ -131,7 +131,7 @@ DECL|method|UrlEncoded ()
 specifier|public
 name|UrlEncoded
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|UrlEncoded (final String url)
 specifier|public
 name|UrlEncoded

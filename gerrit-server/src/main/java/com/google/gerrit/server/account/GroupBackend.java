@@ -185,7 +185,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementations of GroupBackend provide lookup and membership accessors  * to a group system.  */
+comment|/** Implementations of GroupBackend provide lookup and membership accessors to a group system. */
 end_comment
 
 begin_interface
@@ -207,7 +207,7 @@ name|UUID
 name|uuid
 parameter_list|)
 function_decl|;
-comment|/**    * Looks up a group in the backend. If the group does not exist, null is    * returned.    *    * @param uuid the group identifier    * @return the group    */
+comment|/**    * Looks up a group in the backend. If the group does not exist, null is returned.    *    * @param uuid the group identifier    * @return the group    */
 annotation|@
 name|Nullable
 DECL|method|get (AccountGroup.UUID uuid)
@@ -223,7 +223,7 @@ name|uuid
 parameter_list|)
 function_decl|;
 comment|/** @return suggestions for the group name sorted by name. */
-DECL|method|suggest ( String name, @Nullable ProjectControl project)
+DECL|method|suggest (String name, @Nullable ProjectControl project)
 name|Collection
 argument_list|<
 name|GroupReference
@@ -248,7 +248,7 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 function_decl|;
-comment|/**    * @return {@code true} if the group with the given UUID is visible to all    *         registered users.    */
+comment|/** @return {@code true} if the group with the given UUID is visible to all registered users. */
 DECL|method|isVisibleToAll (AccountGroup.UUID uuid)
 name|boolean
 name|isVisibleToAll

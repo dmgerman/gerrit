@@ -121,7 +121,7 @@ DECL|method|ProjectAccessInfo ()
 specifier|protected
 name|ProjectAccessInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

@@ -569,7 +569,7 @@ name|s
 parameter_list|)
 comment|/*-{ this.show_tabs = s }-*/
 function_decl|;
-DECL|method|showWhitespaceErrors (boolean s)
+DECL|method|showWhitespaceErrors ( boolean s)
 specifier|public
 specifier|final
 specifier|native
@@ -811,20 +811,20 @@ name|showTabs
 parameter_list|()
 comment|/*-{ return this.show_tabs || false }-*/
 function_decl|;
-DECL|method|showWhitespaceErrors ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|showWhitespaceErrors ()
 name|showWhitespaceErrors
 parameter_list|()
 comment|/*-{ return this.show_whitespace_errors || false }-*/
 function_decl|;
-DECL|method|syntaxHighlighting ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|syntaxHighlighting ()
 name|syntaxHighlighting
 parameter_list|()
 comment|/*-{ return this.syntax_highlighting || false }-*/
@@ -856,11 +856,11 @@ name|lineWrapping
 parameter_list|()
 comment|/*-{ return this.line_wrapping || false }-*/
 function_decl|;
-DECL|method|autoCloseBrackets ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
+DECL|method|autoCloseBrackets ()
 name|autoCloseBrackets
 parameter_list|()
 comment|/*-{ return this.auto_close_brackets || false }-*/
@@ -892,7 +892,7 @@ DECL|method|EditPreferences ()
 specifier|protected
 name|EditPreferences
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

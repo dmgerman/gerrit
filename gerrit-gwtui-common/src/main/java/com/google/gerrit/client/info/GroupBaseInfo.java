@@ -169,7 +169,7 @@ DECL|method|GroupBaseInfo ()
 specifier|protected
 name|GroupBaseInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

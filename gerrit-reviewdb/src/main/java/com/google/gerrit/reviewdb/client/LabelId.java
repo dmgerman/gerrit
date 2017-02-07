@@ -164,7 +164,7 @@ DECL|method|LabelId ()
 specifier|public
 name|LabelId
 parameter_list|()
-block|{   }
+block|{}
 DECL|method|LabelId (final String n)
 specifier|public
 name|LabelId

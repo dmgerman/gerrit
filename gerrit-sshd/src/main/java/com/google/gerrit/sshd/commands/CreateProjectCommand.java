@@ -362,30 +362,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Argument
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|kohsuke
-operator|.
-name|args4j
-operator|.
-name|Option
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -414,8 +390,32 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Argument
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Option
+import|;
+end_import
+
 begin_comment
-comment|/** Create a new project. **/
+comment|/** Create a new project. * */
 end_comment
 
 begin_class
@@ -968,16 +968,16 @@ specifier|private
 name|String
 name|projectName
 decl_stmt|;
+DECL|field|gApi
 annotation|@
 name|Inject
-DECL|field|gApi
 specifier|private
 name|GerritApi
 name|gApi
 decl_stmt|;
+DECL|field|suggestParentCandidates
 annotation|@
 name|Inject
-DECL|field|suggestParentCandidates
 specifier|private
 name|SuggestParentCandidates
 name|suggestParentCandidates
@@ -1221,7 +1221,7 @@ block|}
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|parsePluginConfigValues ( List<String> pluginConfigValues)
+DECL|method|parsePluginConfigValues (List<String> pluginConfigValues)
 name|Map
 argument_list|<
 name|String

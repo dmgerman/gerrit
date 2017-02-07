@@ -548,7 +548,7 @@ specifier|public
 name|void
 name|close
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|markReady (boolean ready)

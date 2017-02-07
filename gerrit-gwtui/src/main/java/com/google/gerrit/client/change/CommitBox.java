@@ -1377,7 +1377,7 @@ return|return
 name|copyLabel
 return|;
 block|}
-DECL|method|formatLink (GitPerson person, FlowPanel p, InlineHyperlink name, Element date, ChangeInfo change)
+DECL|method|formatLink ( GitPerson person, FlowPanel p, InlineHyperlink name, Element date, ChangeInfo change)
 specifier|private
 specifier|static
 name|void
@@ -1603,7 +1603,7 @@ literal|""
 return|;
 block|}
 block|}
-DECL|method|sameEmail ( @ullable AccountInfo p1, @Nullable GitPerson p2)
+DECL|method|sameEmail (@ullable AccountInfo p1, @Nullable GitPerson p2)
 specifier|private
 specifier|static
 name|boolean

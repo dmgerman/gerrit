@@ -508,7 +508,7 @@ DECL|method|ProjectMap ()
 specifier|protected
 name|ProjectMap
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

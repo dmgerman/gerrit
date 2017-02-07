@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Safely constructs a {@link SafeHtml}, escaping user provided content.  */
+comment|/** Safely constructs a {@link SafeHtml}, escaping user provided content. */
 end_comment
 
 begin_class
@@ -614,7 +614,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Open an element, appending "{@code<tagName>}" to the buffer.    *<p>    * After the element is open the attributes may be manipulated until the next    * {@code append}, {@code openElement}, {@code closeSelf} or    * {@code closeElement} call.    *    * @param tagName name of the HTML element to open.    */
+comment|/**    * Open an element, appending "{@code<tagName>}" to the buffer.    *    *<p>After the element is open the attributes may be manipulated until the next {@code append},    * {@code openElement}, {@code closeSelf} or {@code closeElement} call.    *    * @param tagName name of the HTML element to open.    */
 DECL|method|openElement (final String tagName)
 specifier|public
 name|SafeHtmlBuilder
@@ -682,7 +682,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Get an attribute of the last opened element.    *    * @param name name of the attribute to read.    * @return the attribute value, as a string. The empty string if the attribute    *         has not been assigned a value. The returned string is the raw    *         (unescaped) value.    */
+comment|/**    * Get an attribute of the last opened element.    *    * @param name name of the attribute to read.    * @return the attribute value, as a string. The empty string if the attribute has not been    *     assigned a value. The returned string is the raw (unescaped) value.    */
 DECL|method|getAttribute (final String name)
 specifier|public
 name|String
@@ -713,7 +713,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**    * Set an attribute of the last opened element.    *    * @param name name of the attribute to set.    * @param value value to assign; any existing value is replaced. The value is    *        escaped (if necessary) during the assignment.    */
+comment|/**    * Set an attribute of the last opened element.    *    * @param name name of the attribute to set.    * @param value value to assign; any existing value is replaced. The value is escaped (if    *     necessary) during the assignment.    */
 DECL|method|setAttribute (final String name, final String value)
 specifier|public
 name|SafeHtmlBuilder
@@ -787,7 +787,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Append a new value into a whitespace delimited attribute.    *<p>    * If the attribute is not yet assigned, this method sets the attribute. If    * the attribute is already assigned, the new value is appended onto the end,    * after appending a single space to delimit the values.    *    * @param name name of the attribute to append onto.    * @param value additional value to append.    */
+comment|/**    * Append a new value into a whitespace delimited attribute.    *    *<p>If the attribute is not yet assigned, this method sets the attribute. If the attribute is    * already assigned, the new value is appended onto the end, after appending a single space to    * delimit the values.    *    * @param name name of the attribute to append onto.    * @param value additional value to append.    */
 DECL|method|appendAttribute (final String name, String value)
 specifier|public
 name|SafeHtmlBuilder
@@ -916,7 +916,7 @@ name|style
 argument_list|)
 return|;
 block|}
-comment|/**    * Add an additional CSS class name to this element.    *<p>    * If no CSS class name has been specified yet, this method initializes it to    * the single name.    */
+comment|/**    * Add an additional CSS class name to this element.    *    *<p>If no CSS class name has been specified yet, this method initializes it to the single name.    */
 DECL|method|addStyleName (final String style)
 specifier|public
 name|SafeHtmlBuilder

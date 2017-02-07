@@ -179,6 +179,7 @@ argument_list|,
 name|CommitInfo
 argument_list|>
 block|{
+DECL|field|COMMIT_INFO_SUBJECT_FACTORY
 specifier|private
 specifier|static
 specifier|final
@@ -188,7 +189,6 @@ name|CommitInfoSubject
 argument_list|,
 name|CommitInfo
 argument_list|>
-DECL|field|COMMIT_INFO_SUBJECT_FACTORY
 name|COMMIT_INFO_SUBJECT_FACTORY
 init|=
 operator|new

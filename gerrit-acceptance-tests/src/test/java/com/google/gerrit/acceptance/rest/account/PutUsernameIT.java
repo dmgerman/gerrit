@@ -202,21 +202,21 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
 operator|.
 name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -228,9 +228,9 @@ name|PutUsernameIT
 extends|extends
 name|AbstractDaemonTest
 block|{
+DECL|field|reviewDbProvider
 annotation|@
 name|Inject
-DECL|field|reviewDbProvider
 specifier|private
 name|SchemaFactory
 argument_list|<

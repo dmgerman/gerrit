@@ -1032,34 +1032,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -1135,6 +1107,34 @@ operator|.
 name|concurrent
 operator|.
 name|ExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|PersonIdent
 import|;
 end_import
 
@@ -1870,7 +1870,7 @@ specifier|protected
 name|void
 name|configure
 parameter_list|()
-block|{       }
+block|{}
 annotation|@
 name|Provides
 annotation|@
@@ -2089,7 +2089,7 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getInMemoryDatabase (SchemaCreator schemaCreator, SingleVersionListener singleVersionListener)
+DECL|method|getInMemoryDatabase ( SchemaCreator schemaCreator, SingleVersionListener singleVersionListener)
 name|InMemoryDatabase
 name|getInMemoryDatabase
 parameter_list|(

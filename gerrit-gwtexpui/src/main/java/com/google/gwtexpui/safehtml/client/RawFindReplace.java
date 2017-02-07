@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Find/Replace pair whose replacement string is arbitrary HTML.  *<p>  *<b>WARNING:</b> This class is not safe used with user-provided patterns.  */
+comment|/**  * A Find/Replace pair whose replacement string is arbitrary HTML.  *  *<p><b>WARNING:</b> This class is not safe used with user-provided patterns.  */
 end_comment
 
 begin_class
@@ -108,8 +108,8 @@ DECL|method|RawFindReplace ()
 specifier|protected
 name|RawFindReplace
 parameter_list|()
-block|{   }
-comment|/**    * @param find regular expression pattern to match substrings with.    * @param replace replacement expression. Capture groups within    *        {@code find} can be referenced with {@code $<i>n</i>}.    */
+block|{}
+comment|/**    * @param find regular expression pattern to match substrings with.    * @param replace replacement expression. Capture groups within {@code find} can be referenced    *     with {@code $<i>n</i>}.    */
 DECL|method|RawFindReplace (String find, String replace)
 specifier|public
 name|RawFindReplace

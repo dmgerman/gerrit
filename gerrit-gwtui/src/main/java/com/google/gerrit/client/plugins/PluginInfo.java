@@ -130,7 +130,7 @@ DECL|method|PluginInfo ()
 specifier|protected
 name|PluginInfo
 parameter_list|()
-block|{   }
+block|{}
 block|}
 end_class
 

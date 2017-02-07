@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on the global {@link WorkQueue.Executor} used to send email.  */
+comment|/** Marker on the global {@link WorkQueue.Executor} used to send email. */
 end_comment
 
 begin_annotation_defn
@@ -120,7 +120,7 @@ DECL|annotation|SendEmailExecutor
 specifier|public
 annotation_defn|@interface
 name|SendEmailExecutor
-block|{ }
+block|{}
 end_annotation_defn
 
 end_unit

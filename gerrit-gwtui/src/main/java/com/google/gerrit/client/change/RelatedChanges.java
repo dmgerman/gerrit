@@ -570,6 +570,8 @@ name|Tab
 block|{
 DECL|enumConstant|RELATED_CHANGES
 DECL|enumConstant|Resources.C.relatedChanges
+DECL|enumConstant|Resources.C.relatedChangesTooltip
+DECL|method|Resources.C.relatedChangesTooltip ()
 name|RELATED_CHANGES
 argument_list|(
 name|Resources
@@ -579,8 +581,6 @@ operator|.
 name|relatedChanges
 argument_list|()
 argument_list|,
-DECL|enumConstant|Resources.C.relatedChangesTooltip
-DECL|method|Resources.C.relatedChangesTooltip ()
 name|Resources
 operator|.
 name|C
@@ -633,6 +633,8 @@ block|}
 block|,
 DECL|enumConstant|SUBMITTED_TOGETHER
 DECL|enumConstant|Resources.C.submittedTogether
+DECL|enumConstant|Resources.C.submittedTogether
+DECL|method|Resources.C.submittedTogether ()
 name|SUBMITTED_TOGETHER
 argument_list|(
 name|Resources
@@ -642,8 +644,6 @@ operator|.
 name|submittedTogether
 argument_list|()
 argument_list|,
-DECL|enumConstant|Resources.C.submittedTogether
-DECL|method|Resources.C.submittedTogether ()
 name|Resources
 operator|.
 name|C
@@ -696,6 +696,8 @@ block|}
 block|,
 DECL|enumConstant|SAME_TOPIC
 DECL|enumConstant|Resources.C.sameTopic
+DECL|enumConstant|Resources.C.sameTopicTooltip
+DECL|method|Resources.C.sameTopicTooltip ()
 name|SAME_TOPIC
 argument_list|(
 name|Resources
@@ -705,8 +707,6 @@ operator|.
 name|sameTopic
 argument_list|()
 argument_list|,
-DECL|enumConstant|Resources.C.sameTopicTooltip
-DECL|method|Resources.C.sameTopicTooltip ()
 name|Resources
 operator|.
 name|C
@@ -759,6 +759,8 @@ block|}
 block|,
 DECL|enumConstant|CONFLICTING_CHANGES
 DECL|enumConstant|Resources.C.conflictingChanges
+DECL|enumConstant|Resources.C.conflictingChangesTooltip
+DECL|method|Resources.C.conflictingChangesTooltip ()
 name|CONFLICTING_CHANGES
 argument_list|(
 name|Resources
@@ -768,8 +770,6 @@ operator|.
 name|conflictingChanges
 argument_list|()
 argument_list|,
-DECL|enumConstant|Resources.C.conflictingChangesTooltip
-DECL|method|Resources.C.conflictingChangesTooltip ()
 name|Resources
 operator|.
 name|C
@@ -822,6 +822,8 @@ block|}
 block|,
 DECL|enumConstant|CHERRY_PICKS
 DECL|enumConstant|Resources.C.cherryPicks
+DECL|enumConstant|Resources.C.cherryPicksTooltip
+DECL|method|Resources.C.cherryPicksTooltip ()
 name|CHERRY_PICKS
 argument_list|(
 name|Resources
@@ -831,8 +833,6 @@ operator|.
 name|cherryPicks
 argument_list|()
 argument_list|,
-DECL|enumConstant|Resources.C.cherryPicksTooltip
-DECL|method|Resources.C.cherryPicksTooltip ()
 name|Resources
 operator|.
 name|C
@@ -2504,7 +2504,7 @@ DECL|method|RelatedInfo ()
 specifier|protected
 name|RelatedInfo
 parameter_list|()
-block|{     }
+block|{}
 block|}
 DECL|class|ChangeAndCommit
 specifier|public
@@ -2817,7 +2817,7 @@ DECL|method|ChangeAndCommit ()
 specifier|protected
 name|ChangeAndCommit
 parameter_list|()
-block|{     }
+block|{}
 block|}
 block|}
 end_class

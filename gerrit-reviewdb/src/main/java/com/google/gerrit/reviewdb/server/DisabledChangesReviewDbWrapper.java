@@ -573,7 +573,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|getAsync ( PatchSetApproval.Key key)
+DECL|method|getAsync (PatchSetApproval.Key key)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -599,7 +599,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|get ( Iterable<PatchSetApproval.Key> keys)
+DECL|method|get (Iterable<PatchSetApproval.Key> keys)
 specifier|public
 name|ResultSet
 argument_list|<
@@ -736,7 +736,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|getAsync ( ChangeMessage.Key key)
+DECL|method|getAsync (ChangeMessage.Key key)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -1057,7 +1057,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|getAsync ( PatchLineComment.Key key)
+DECL|method|getAsync (PatchLineComment.Key key)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -1083,7 +1083,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|get ( Iterable<PatchLineComment.Key> keys)
+DECL|method|get (Iterable<PatchLineComment.Key> keys)
 specifier|public
 name|ResultSet
 argument_list|<
@@ -1206,7 +1206,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|publishedByPatchSet ( PatchSet.Id patchset)
+DECL|method|publishedByPatchSet (PatchSet.Id patchset)
 specifier|public
 name|ResultSet
 argument_list|<
@@ -1259,7 +1259,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|draftByChangeFileAuthor (Change.Id id, String file, Account.Id author)
+DECL|method|draftByChangeFileAuthor ( Change.Id id, String file, Account.Id author)
 specifier|public
 name|ResultSet
 argument_list|<

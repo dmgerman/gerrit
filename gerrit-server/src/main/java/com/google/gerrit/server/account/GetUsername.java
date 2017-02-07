@@ -157,7 +157,7 @@ DECL|method|GetUsername ()
 specifier|public
 name|GetUsername
 parameter_list|()
-block|{   }
+block|{}
 annotation|@
 name|Override
 DECL|method|apply (AccountResource rsrc)

@@ -875,7 +875,7 @@ name|metrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewersUtil (AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, AccountQueryProcessor accountQueryProcessor, GroupBackend groupBackend, GroupMembers.Factory groupMembersFactory, Provider<CurrentUser> currentUser, ReviewerRecommender reviewerRecommender, Metrics metrics)
+DECL|method|ReviewersUtil ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, AccountQueryProcessor accountQueryProcessor, GroupBackend groupBackend, GroupMembers.Factory groupMembersFactory, Provider<CurrentUser> currentUser, ReviewerRecommender reviewerRecommender, Metrics metrics)
 name|ReviewersUtil
 parameter_list|(
 name|AccountLoader
@@ -1006,7 +1006,7 @@ throws|throws
 name|OrmException
 function_decl|;
 block|}
-DECL|method|suggestReviewers (ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectControl projectControl, VisibilityControl visibilityControl, boolean excludeGroups)
+DECL|method|suggestReviewers ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectControl projectControl, VisibilityControl visibilityControl, boolean excludeGroups)
 specifier|public
 name|List
 argument_list|<
@@ -1200,7 +1200,7 @@ name|limit
 argument_list|)
 return|;
 block|}
-DECL|method|suggestAccounts (SuggestReviewers suggestReviewers, VisibilityControl visibilityControl)
+DECL|method|suggestAccounts ( SuggestReviewers suggestReviewers, VisibilityControl visibilityControl)
 specifier|private
 name|List
 argument_list|<
@@ -1347,7 +1347,7 @@ return|;
 block|}
 block|}
 block|}
-DECL|method|recommendAccounts (ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectControl projectControl, List<Account.Id> candidateList)
+DECL|method|recommendAccounts ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectControl projectControl, List<Account.Id> candidateList)
 specifier|private
 name|List
 argument_list|<

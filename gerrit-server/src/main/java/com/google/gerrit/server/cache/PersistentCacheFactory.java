@@ -153,7 +153,7 @@ argument_list|>
 name|def
 parameter_list|)
 function_decl|;
-DECL|method|build ( CacheBinding<K, V> def, CacheLoader<K, V> loader)
+DECL|method|build (CacheBinding<K, V> def, CacheLoader<K, V> loader)
 parameter_list|<
 name|K
 parameter_list|,
