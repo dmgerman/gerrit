@@ -127,20 +127,6 @@ name|PrimaryStorage
 name|changePrimaryStorage
 parameter_list|()
 function_decl|;
-DECL|method|readAccounts ()
-specifier|public
-specifier|abstract
-name|boolean
-name|readAccounts
-parameter_list|()
-function_decl|;
-DECL|method|writeAccounts ()
-specifier|public
-specifier|abstract
-name|boolean
-name|writeAccounts
-parameter_list|()
-function_decl|;
 comment|/**    * Whether to fail when reading any data from NoteDb.    *    *<p>Used in conjunction with {@link #readChanges()} for tests.    */
 DECL|method|failOnLoad ()
 specifier|public
@@ -202,12 +188,6 @@ name|writeChanges
 argument_list|()
 operator|||
 name|readChanges
-argument_list|()
-operator|||
-name|writeAccounts
-argument_list|()
-operator|||
-name|readAccounts
 argument_list|()
 return|;
 block|}
