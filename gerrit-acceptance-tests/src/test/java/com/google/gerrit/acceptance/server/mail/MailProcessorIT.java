@@ -1967,7 +1967,7 @@ literal|"Gerrit-Comment-Date: "
 operator|+
 name|timestamp
 operator|+
-literal|"\n"
+literal|" \n"
 return|;
 block|}
 DECL|method|messageBuilderWithDefaultFields ()
