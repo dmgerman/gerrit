@@ -527,6 +527,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|interface|Factory
+specifier|public
 interface|interface
 name|Factory
 block|{
@@ -862,6 +863,7 @@ name|labels
 expr_stmt|;
 block|}
 DECL|method|sendAsync ()
+specifier|public
 name|void
 name|sendAsync
 parameter_list|()
