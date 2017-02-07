@@ -195,10 +195,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|DraftActions
+DECL|class|ChangeActions
 specifier|public
 class|class
-name|DraftActions
+name|ChangeActions
 block|{
 DECL|method|publish (Change.Id id, String revision, Button... draftButtons)
 specifier|static
