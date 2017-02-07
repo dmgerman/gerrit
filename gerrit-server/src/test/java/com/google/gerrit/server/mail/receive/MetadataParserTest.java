@@ -475,13 +475,15 @@ argument_list|)
 operator|+
 literal|"cid"
 operator|+
-literal|"\n"
+literal|"\r\n"
 argument_list|)
 expr_stmt|;
 name|stringBuilder
 operator|.
 name|append
 argument_list|(
+literal|"> "
+operator|+
 name|toFooterWithDelimiter
 argument_list|(
 name|MetadataName
@@ -523,7 +525,7 @@ argument_list|)
 operator|+
 literal|"Tue, 25 Oct 2016 02:11:35 -0700"
 operator|+
-literal|"\n"
+literal|"\r\n"
 argument_list|)
 expr_stmt|;
 name|b
@@ -711,7 +713,7 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
-literal|"<p>"
+literal|"<div id\"someid\">"
 operator|+
 name|toFooterWithDelimiter
 argument_list|(
@@ -722,14 +724,14 @@ argument_list|)
 operator|+
 literal|"cid"
 operator|+
-literal|"</p>"
+literal|"</div>"
 argument_list|)
 expr_stmt|;
 name|stringBuilder
 operator|.
 name|append
 argument_list|(
-literal|"<p>"
+literal|"<div>"
 operator|+
 name|toFooterWithDelimiter
 argument_list|(
@@ -740,14 +742,14 @@ argument_list|)
 operator|+
 literal|"1"
 operator|+
-literal|"</p>"
+literal|"</div>"
 argument_list|)
 expr_stmt|;
 name|stringBuilder
 operator|.
 name|append
 argument_list|(
-literal|"<p>"
+literal|"<div>"
 operator|+
 name|toFooterWithDelimiter
 argument_list|(
@@ -758,14 +760,14 @@ argument_list|)
 operator|+
 literal|"comment"
 operator|+
-literal|"</p>"
+literal|"</div>"
 argument_list|)
 expr_stmt|;
 name|stringBuilder
 operator|.
 name|append
 argument_list|(
-literal|"<p>"
+literal|"<div>"
 operator|+
 name|toFooterWithDelimiter
 argument_list|(
@@ -776,7 +778,7 @@ argument_list|)
 operator|+
 literal|"Tue, 25 Oct 2016 02:11:35 -0700"
 operator|+
-literal|"</p>"
+literal|"</div>"
 argument_list|)
 expr_stmt|;
 name|b

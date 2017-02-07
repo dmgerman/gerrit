@@ -184,6 +184,38 @@ name|Instant
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|time
+operator|.
+name|format
+operator|.
+name|DateTimeParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/** Parse metadata from inbound email */
 end_comment
@@ -194,6 +226,25 @@ specifier|public
 class|class
 name|MetadataParser
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MailProcessor
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 DECL|method|parse (MailMessage m)
 specifier|public
 specifier|static
@@ -350,7 +401,12 @@ operator|.
 name|length
 argument_list|()
 argument_list|)
+operator|.
+name|trim
+argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|metadata
 operator|.
 name|timestamp
@@ -373,6 +429,28 @@ name|from
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|DateTimeParseException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Mail: Error while parsing timestamp from header of message "
+operator|+
+name|m
+operator|.
+name|id
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -447,6 +525,13 @@ operator|.
 name|textContent
 argument_list|()
 operator|.
+name|replace
+argument_list|(
+literal|"\r\n"
+argument_list|,
+literal|"\n"
+argument_list|)
+operator|.
 name|split
 argument_list|(
 literal|"\n"
@@ -457,6 +542,8 @@ argument_list|(
 name|lines
 argument_list|,
 name|metadata
+argument_list|,
+name|m
 argument_list|)
 expr_stmt|;
 if|if
@@ -473,7 +560,7 @@ return|;
 block|}
 block|}
 comment|// If the required fields were not yet found, continue to parse the HTML
-comment|// HTML footer are contained inside a<p> tag
+comment|// HTML footer are contained inside a<div> tag
 if|if
 condition|(
 operator|!
@@ -497,9 +584,16 @@ operator|.
 name|htmlContent
 argument_list|()
 operator|.
+name|replace
+argument_list|(
+literal|"\r\n"
+argument_list|,
+literal|"\n"
+argument_list|)
+operator|.
 name|split
 argument_list|(
-literal|"</p>"
+literal|"</div>"
 argument_list|)
 decl_stmt|;
 name|extractFooters
@@ -507,6 +601,8 @@ argument_list|(
 name|lines
 argument_list|,
 name|metadata
+argument_list|,
+name|m
 argument_list|)
 expr_stmt|;
 if|if
@@ -526,7 +622,7 @@ return|return
 name|metadata
 return|;
 block|}
-DECL|method|extractFooters (String[] lines, MailMetadata metadata)
+DECL|method|extractFooters (String[] lines, MailMetadata metadata, MailMessage m)
 specifier|private
 specifier|static
 name|void
@@ -538,6 +634,9 @@ name|lines
 parameter_list|,
 name|MailMetadata
 name|metadata
+parameter_list|,
+name|MailMessage
+name|m
 parameter_list|)
 block|{
 for|for
@@ -658,6 +757,8 @@ argument_list|,
 name|line
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|metadata
 operator|.
 name|timestamp
@@ -680,6 +781,28 @@ name|from
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|DateTimeParseException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Mail: Error while parsing timestamp from footer of message "
+operator|+
+name|m
+operator|.
+name|id
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -754,6 +877,9 @@ operator|.
 name|length
 argument_list|()
 argument_list|)
+operator|.
+name|trim
+argument_list|()
 return|;
 block|}
 block|}
