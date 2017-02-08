@@ -93,7 +93,7 @@ block|,
 DECL|enumConstant|CLEAN_REBASE
 name|CLEAN_REBASE
 argument_list|(
-literal|"Change has been successfully rebased"
+literal|"Change has been successfully rebased and submitted"
 argument_list|)
 block|,
 DECL|enumConstant|ALREADY_MERGED

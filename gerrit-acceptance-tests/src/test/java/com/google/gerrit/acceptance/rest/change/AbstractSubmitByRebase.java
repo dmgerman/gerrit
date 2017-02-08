@@ -2312,7 +2312,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Change has been successfully rebased as "
+literal|"Change has been successfully rebased and submitted as "
 operator|+
 name|rev2
 operator|.

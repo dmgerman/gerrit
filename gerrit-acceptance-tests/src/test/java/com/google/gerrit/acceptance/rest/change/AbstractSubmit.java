@@ -5545,7 +5545,7 @@ argument_list|)
 operator|.
 name|startsWith
 argument_list|(
-literal|"Change has been successfully rebased as"
+literal|"Change has been successfully rebased and submitted as"
 argument_list|)
 expr_stmt|;
 block|}
