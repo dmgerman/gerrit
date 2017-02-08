@@ -1015,11 +1015,6 @@ specifier|private
 name|Thread
 name|worker
 decl_stmt|;
-DECL|field|fullName
-specifier|private
-name|String
-name|fullName
-decl_stmt|;
 DECL|method|TaskThunk ( final WorkQueue.Executor executor, final Continuation cont, final HttpServletRequest req)
 name|TaskThunk
 parameter_list|(
@@ -1226,17 +1221,24 @@ name|String
 name|toString
 parameter_list|()
 block|{
-if|if
-condition|(
-name|fullName
-operator|!=
-literal|null
-condition|)
-block|{
 return|return
-name|fullName
+name|name
 return|;
 block|}
+DECL|method|generateName (HttpServletRequest req)
+specifier|private
+name|String
+name|generateName
+parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+name|String
+name|userName
+init|=
+literal|""
+decl_stmt|;
 name|CurrentUser
 name|who
 init|=
@@ -1254,7 +1256,7 @@ argument_list|()
 condition|)
 block|{
 name|String
-name|username
+name|name
 init|=
 name|who
 operator|.
@@ -1266,45 +1268,27 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|username
+name|name
 operator|!=
 literal|null
 operator|&&
 operator|!
-name|username
+name|name
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|fullName
+name|userName
 operator|=
-name|name
-operator|+
 literal|" ("
 operator|+
-name|username
+name|name
 operator|+
 literal|")"
 expr_stmt|;
-return|return
-name|fullName
-return|;
 block|}
 block|}
-return|return
-name|name
-return|;
-block|}
-DECL|method|generateName (HttpServletRequest req)
-specifier|private
-name|String
-name|generateName
-parameter_list|(
-name|HttpServletRequest
-name|req
-parameter_list|)
-block|{
 name|String
 name|uri
 init|=
@@ -1357,6 +1341,8 @@ operator|+
 literal|" "
 operator|+
 name|path
+operator|+
+name|userName
 return|;
 block|}
 return|return
@@ -1368,6 +1354,8 @@ operator|+
 literal|" "
 operator|+
 name|uri
+operator|+
+name|userName
 return|;
 block|}
 block|}
