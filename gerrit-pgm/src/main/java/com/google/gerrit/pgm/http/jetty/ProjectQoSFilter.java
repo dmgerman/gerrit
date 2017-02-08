@@ -1345,8 +1345,6 @@ operator|+
 name|userName
 return|;
 block|}
-else|else
-block|{
 return|return
 name|req
 operator|.
@@ -1359,7 +1357,6 @@ name|uri
 operator|+
 name|userName
 return|;
-block|}
 block|}
 block|}
 block|}
