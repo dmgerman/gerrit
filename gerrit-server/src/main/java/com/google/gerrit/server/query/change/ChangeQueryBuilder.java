@@ -1623,6 +1623,15 @@ name|FIELD_TR
 init|=
 literal|"tr"
 decl_stmt|;
+DECL|field|FIELD_UNRESOLVED_COMMENT_COUNT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FIELD_UNRESOLVED_COMMENT_COUNT
+init|=
+literal|"unresolved"
+decl_stmt|;
 DECL|field|FIELD_VISIBLETO
 specifier|public
 specifier|static
@@ -3284,6 +3293,22 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+if|if
+condition|(
+literal|"unresolved"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|value
+argument_list|)
+condition|)
+block|{
+return|return
+operator|new
+name|IsUnresolvedPredicate
+argument_list|()
+return|;
+block|}
 comment|// for plugins the value will be operandName_pluginName
 name|String
 index|[]
@@ -4115,7 +4140,7 @@ comment|// label:CodeReview=1,user=jsmith or
 comment|// label:CodeReview=1,jsmith or
 comment|// label:CodeReview=1,group=android_approvers or
 comment|// label:CodeReview=1,android_approvers
-comment|//  user/groups without a label will first attempt to match user
+comment|// user/groups without a label will first attempt to match user
 comment|// Special case: votes by owners can be tracked with ",owner":
 comment|// label:Code-Review+2,owner
 comment|// label:Code-Review+2,user=owner
@@ -6536,6 +6561,30 @@ operator|new
 name|SubmittablePredicate
 argument_list|(
 name|status
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Operator
+DECL|method|unresolved (String value)
+specifier|public
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|unresolved
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+throws|throws
+name|QueryParseException
+block|{
+return|return
+operator|new
+name|IsUnresolvedPredicate
+argument_list|(
+name|value
 argument_list|)
 return|;
 block|}
