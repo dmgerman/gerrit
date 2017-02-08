@@ -464,7 +464,7 @@ name|asList
 argument_list|(
 name|c
 operator|.
-name|value
+name|values
 argument_list|()
 argument_list|)
 argument_list|)
