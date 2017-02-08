@@ -428,6 +428,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1161,6 +1173,18 @@ condition|)
 block|{
 return|return;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+comment|// Runnable already handles errors
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|possiblyIgnoredError
+init|=
 name|sendEmailExecutor
 operator|.
 name|submit
@@ -1258,7 +1282,7 @@ block|}
 block|}
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|changeMerged
 operator|.
 name|fire

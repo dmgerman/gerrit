@@ -614,6 +614,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|atomic
 operator|.
 name|AtomicReference
@@ -1719,13 +1731,25 @@ condition|(
 name|reindexAfterIndexUpdate
 condition|)
 block|{
+comment|// Don't retry indefinitely; if this fails the change will be stale.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|possiblyIgnoredError
+init|=
 name|reindexIfStale
 argument_list|(
 name|project
 argument_list|,
 name|id
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 block|}
 DECL|method|getWriteIndexes ()
