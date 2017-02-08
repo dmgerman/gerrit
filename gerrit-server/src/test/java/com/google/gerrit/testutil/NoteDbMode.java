@@ -117,22 +117,44 @@ block|{
 comment|/** NoteDb is disabled. */
 DECL|enumConstant|OFF
 name|OFF
+argument_list|(
+literal|false
+argument_list|)
 block|,
 comment|/** Writing data to NoteDb is enabled. */
 DECL|enumConstant|WRITE
 name|WRITE
+argument_list|(
+literal|false
+argument_list|)
 block|,
 comment|/** Reading and writing all data to NoteDb is enabled. */
 DECL|enumConstant|READ_WRITE
 name|READ_WRITE
+argument_list|(
+literal|true
+argument_list|)
 block|,
 comment|/** Changes are created with their primary storage as NoteDb. */
 DECL|enumConstant|PRIMARY
 name|PRIMARY
+argument_list|(
+literal|true
+argument_list|)
+block|,
+comment|/** All change tables are entirely disabled. */
+DECL|enumConstant|DISABLE_CHANGE_REVIEW_DB
+name|DISABLE_CHANGE_REVIEW_DB
+argument_list|(
+literal|true
+argument_list|)
 block|,
 comment|/**    * Run tests with NoteDb disabled, then convert ReviewDb to NoteDb and check that the results    * match.    */
 DECL|enumConstant|CHECK
 name|CHECK
+argument_list|(
+literal|false
+argument_list|)
 block|;
 DECL|field|ENV_VAR
 specifier|private
@@ -304,14 +326,30 @@ block|{
 return|return
 name|get
 argument_list|()
-operator|==
-name|READ_WRITE
-operator|||
-name|get
-argument_list|()
-operator|==
-name|PRIMARY
+operator|.
+name|readWrite
 return|;
+block|}
+DECL|field|readWrite
+specifier|private
+specifier|final
+name|boolean
+name|readWrite
+decl_stmt|;
+DECL|method|NoteDbMode (boolean readWrite)
+specifier|private
+name|NoteDbMode
+parameter_list|(
+name|boolean
+name|readWrite
+parameter_list|)
+block|{
+name|this
+operator|.
+name|readWrite
+operator|=
+name|readWrite
+expr_stmt|;
 block|}
 block|}
 end_enum

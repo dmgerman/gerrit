@@ -127,6 +127,14 @@ name|PrimaryStorage
 name|changePrimaryStorage
 parameter_list|()
 function_decl|;
+comment|/**    * Disable ReviewDb access for changes.    *    *<p>When set, ReviewDb operations involving the Changes table become no-ops. Lookups return no    * results; updates do nothing, as does opening, committing, or rolling back a transaction on the    * Changes table.    */
+DECL|method|disableChangeReviewDb ()
+specifier|public
+specifier|abstract
+name|boolean
+name|disableChangeReviewDb
+parameter_list|()
+function_decl|;
 comment|/**    * Whether to fail when reading any data from NoteDb.    *    *<p>Used in conjunction with {@link #readChanges()} for tests.    */
 DECL|method|failOnLoad ()
 specifier|public

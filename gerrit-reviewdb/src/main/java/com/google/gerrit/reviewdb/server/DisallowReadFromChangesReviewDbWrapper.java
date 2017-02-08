@@ -207,10 +207,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|DisabledChangesReviewDbWrapper
+DECL|class|DisallowReadFromChangesReviewDbWrapper
 specifier|public
 class|class
-name|DisabledChangesReviewDbWrapper
+name|DisallowReadFromChangesReviewDbWrapper
 extends|extends
 name|ReviewDbWrapper
 block|{
@@ -226,36 +226,36 @@ decl_stmt|;
 DECL|field|changes
 specifier|private
 specifier|final
-name|DisabledChangeAccess
+name|Changes
 name|changes
 decl_stmt|;
 DECL|field|patchSetApprovals
 specifier|private
 specifier|final
-name|DisabledPatchSetApprovalAccess
+name|PatchSetApprovals
 name|patchSetApprovals
 decl_stmt|;
 DECL|field|changeMessages
 specifier|private
 specifier|final
-name|DisabledChangeMessageAccess
+name|ChangeMessages
 name|changeMessages
 decl_stmt|;
 DECL|field|patchSets
 specifier|private
 specifier|final
-name|DisabledPatchSetAccess
+name|PatchSets
 name|patchSets
 decl_stmt|;
 DECL|field|patchComments
 specifier|private
 specifier|final
-name|DisabledPatchLineCommentAccess
+name|PatchLineComments
 name|patchComments
 decl_stmt|;
-DECL|method|DisabledChangesReviewDbWrapper (ReviewDb db)
+DECL|method|DisallowReadFromChangesReviewDbWrapper (ReviewDb db)
 specifier|public
-name|DisabledChangesReviewDbWrapper
+name|DisallowReadFromChangesReviewDbWrapper
 parameter_list|(
 name|ReviewDb
 name|db
@@ -269,7 +269,7 @@ expr_stmt|;
 name|changes
 operator|=
 operator|new
-name|DisabledChangeAccess
+name|Changes
 argument_list|(
 name|delegate
 operator|.
@@ -280,7 +280,7 @@ expr_stmt|;
 name|patchSetApprovals
 operator|=
 operator|new
-name|DisabledPatchSetApprovalAccess
+name|PatchSetApprovals
 argument_list|(
 name|delegate
 operator|.
@@ -291,7 +291,7 @@ expr_stmt|;
 name|changeMessages
 operator|=
 operator|new
-name|DisabledChangeMessageAccess
+name|ChangeMessages
 argument_list|(
 name|delegate
 operator|.
@@ -302,7 +302,7 @@ expr_stmt|;
 name|patchSets
 operator|=
 operator|new
-name|DisabledPatchSetAccess
+name|PatchSets
 argument_list|(
 name|delegate
 operator|.
@@ -313,7 +313,7 @@ expr_stmt|;
 name|patchComments
 operator|=
 operator|new
-name|DisabledPatchLineCommentAccess
+name|PatchLineComments
 argument_list|(
 name|delegate
 operator|.
@@ -392,17 +392,17 @@ return|return
 name|patchComments
 return|;
 block|}
-DECL|class|DisabledChangeAccess
+DECL|class|Changes
 specifier|private
 specifier|static
 class|class
-name|DisabledChangeAccess
+name|Changes
 extends|extends
 name|ChangeAccessWrapper
 block|{
-DECL|method|DisabledChangeAccess (ChangeAccess delegate)
+DECL|method|Changes (ChangeAccess delegate)
 specifier|protected
-name|DisabledChangeAccess
+name|Changes
 parameter_list|(
 name|ChangeAccess
 name|delegate
@@ -531,16 +531,16 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|class|DisabledPatchSetApprovalAccess
+DECL|class|PatchSetApprovals
 specifier|private
 specifier|static
 class|class
-name|DisabledPatchSetApprovalAccess
+name|PatchSetApprovals
 extends|extends
 name|PatchSetApprovalAccessWrapper
 block|{
-DECL|method|DisabledPatchSetApprovalAccess (PatchSetApprovalAccess delegate)
-name|DisabledPatchSetApprovalAccess
+DECL|method|PatchSetApprovals (PatchSetApprovalAccess delegate)
+name|PatchSetApprovals
 parameter_list|(
 name|PatchSetApprovalAccess
 name|delegate
@@ -694,16 +694,16 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|class|DisabledChangeMessageAccess
+DECL|class|ChangeMessages
 specifier|private
 specifier|static
 class|class
-name|DisabledChangeMessageAccess
+name|ChangeMessages
 extends|extends
 name|ChangeMessageAccessWrapper
 block|{
-DECL|method|DisabledChangeMessageAccess (ChangeMessageAccess delegate)
-name|DisabledChangeMessageAccess
+DECL|method|ChangeMessages (ChangeMessageAccess delegate)
+name|ChangeMessages
 parameter_list|(
 name|ChangeMessageAccess
 name|delegate
@@ -876,16 +876,16 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|class|DisabledPatchSetAccess
+DECL|class|PatchSets
 specifier|private
 specifier|static
 class|class
-name|DisabledPatchSetAccess
+name|PatchSets
 extends|extends
 name|PatchSetAccessWrapper
 block|{
-DECL|method|DisabledPatchSetAccess (PatchSetAccess delegate)
-name|DisabledPatchSetAccess
+DECL|method|PatchSets (PatchSetAccess delegate)
+name|PatchSets
 parameter_list|(
 name|PatchSetAccess
 name|delegate
@@ -1015,16 +1015,16 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|class|DisabledPatchLineCommentAccess
+DECL|class|PatchLineComments
 specifier|private
 specifier|static
 class|class
-name|DisabledPatchLineCommentAccess
+name|PatchLineComments
 extends|extends
 name|PatchLineCommentAccessWrapper
 block|{
-DECL|method|DisabledPatchLineCommentAccess (PatchLineCommentAccess delegate)
-name|DisabledPatchLineCommentAccess
+DECL|method|PatchLineComments (PatchLineCommentAccess delegate)
+name|PatchLineComments
 parameter_list|(
 name|PatchLineCommentAccess
 name|delegate

@@ -78,7 +78,7 @@ name|reviewdb
 operator|.
 name|server
 operator|.
-name|DisabledChangesReviewDbWrapper
+name|DisallowReadFromChangesReviewDbWrapper
 import|;
 end_import
 
@@ -255,9 +255,49 @@ return|return
 name|db
 return|;
 block|}
+comment|// There are two levels at which this class disables access to Changes and related tables,
+comment|// corresponding to two phases of the NoteDb migration:
+comment|//
+comment|// 1. When changes are read from NoteDb but some changes might still have their primary storage
+comment|//    in ReviewDb, it is generally programmer error to read changes from ReviewDb. However,
+comment|//    since ReviewDb is still the primary storage for most or all changes, we still need to
+comment|//    support writing to ReviewDb. This behavior is accomplished by wrapping in a
+comment|//    DisallowReadFromChangesReviewDbWrapper.
+comment|//
+comment|//    Some codepaths might need to be able to read from ReviewDb if they really need to, because
+comment|//    they need to operate on the underlying source of truth, for example when reading a change
+comment|//    to determine its primary storage. To support this, ReviewDbUtil#unwrapDb can detect and
+comment|//    unwrap databases of this type.
+comment|//
+comment|// 2. After all changes have their primary storage in NoteDb, we can completely shut off access
+comment|//    to the change tables. At this point in the migration, we are by definition not using the
+comment|//    ReviewDb tables at all; we could even delete the tables at this point, and Gerrit would
+comment|//    continue to function.
+comment|//
+comment|//    This is accomplished by setting the delegate ReviewDb *underneath* DisallowReadFromChanges
+comment|//    to be a complete no-op, with NoChangesReviewDbWrapper. With this wrapper, all read
+comment|//    operations return no results, and write operations silently do nothing. This wrapper is
+comment|//    not a public class and nobody should ever attempt to unwrap it.
+if|if
+condition|(
+name|migration
+operator|.
+name|disableChangeReviewDb
+argument_list|()
+condition|)
+block|{
+name|db
+operator|=
+operator|new
+name|NoChangesReviewDbWrapper
+argument_list|(
+name|db
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 operator|new
-name|DisabledChangesReviewDbWrapper
+name|DisallowReadFromChangesReviewDbWrapper
 argument_list|(
 name|db
 argument_list|)

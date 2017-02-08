@@ -191,13 +191,13 @@ if|if
 condition|(
 name|db
 operator|instanceof
-name|DisabledChangesReviewDbWrapper
+name|DisallowReadFromChangesReviewDbWrapper
 condition|)
 block|{
 return|return
 operator|(
 operator|(
-name|DisabledChangesReviewDbWrapper
+name|DisallowReadFromChangesReviewDbWrapper
 operator|)
 name|db
 operator|)
