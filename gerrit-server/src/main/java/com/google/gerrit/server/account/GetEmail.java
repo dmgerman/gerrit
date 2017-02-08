@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|common
 operator|.
-name|RestReadView
+name|EmailInfo
 import|;
 end_import
 
@@ -90,13 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|account
+name|restapi
 operator|.
-name|GetEmails
-operator|.
-name|EmailInfo
+name|RestReadView
 import|;
 end_import
 

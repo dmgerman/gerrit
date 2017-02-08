@@ -226,6 +226,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|EmailInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|GpgKeyInfo
 import|;
 end_import
@@ -494,12 +510,32 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|getEmails ()
+name|List
+argument_list|<
+name|EmailInfo
+argument_list|>
+name|getEmails
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|addEmail (EmailInput input)
 name|void
 name|addEmail
 parameter_list|(
 name|EmailInput
 name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|deleteEmail (String email)
+name|void
+name|deleteEmail
+parameter_list|(
+name|String
+name|email
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -955,6 +991,23 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|getEmails ()
+specifier|public
+name|List
+argument_list|<
+name|EmailInfo
+argument_list|>
+name|getEmails
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|addEmail (EmailInput input)
 specifier|public
 name|void
@@ -962,6 +1015,23 @@ name|addEmail
 parameter_list|(
 name|EmailInput
 name|input
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|deleteEmail (String email)
+specifier|public
+name|void
+name|deleteEmail
+parameter_list|(
+name|String
+name|email
 parameter_list|)
 block|{
 throw|throw
