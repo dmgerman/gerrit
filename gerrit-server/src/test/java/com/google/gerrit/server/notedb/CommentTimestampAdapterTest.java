@@ -241,6 +241,16 @@ argument_list|(
 name|NON_DST_STR
 argument_list|)
 decl_stmt|;
+comment|/** {@link #NON_DST_STR} truncated to seconds. */
+DECL|field|NON_DST_STR_TRUNC
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|NON_DST_STR_TRUNC
+init|=
+literal|"2017-02-07T10:20:30Z"
+decl_stmt|;
 comment|/** Arbitrary time outside of a DST transition, as an unreasonable Timestamp representation. */
 DECL|field|NON_DST_TS
 specifier|private
@@ -254,6 +264,29 @@ operator|.
 name|from
 argument_list|(
 name|NON_DST
+operator|.
+name|toInstant
+argument_list|()
+argument_list|)
+decl_stmt|;
+comment|/** {@link #NON_DST_TS} truncated to seconds. */
+DECL|field|NON_DST_TS_TRUNC
+specifier|private
+specifier|static
+specifier|final
+name|Timestamp
+name|NON_DST_TS_TRUNC
+init|=
+name|Timestamp
+operator|.
+name|from
+argument_list|(
+name|ZonedDateTime
+operator|.
+name|parse
+argument_list|(
+name|NON_DST_STR_TRUNC
+argument_list|)
 operator|.
 name|toInstant
 argument_list|()
@@ -591,13 +624,14 @@ name|isEqualTo
 argument_list|(
 literal|'"'
 operator|+
-name|NON_DST_STR
+name|NON_DST_STR_TRUNC
 operator|+
 literal|'"'
 argument_list|)
 expr_stmt|;
-name|assertThat
-argument_list|(
+name|Timestamp
+name|result
+init|=
 name|legacyGson
 operator|.
 name|fromJson
@@ -608,11 +642,15 @@ name|Timestamp
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|result
 argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|NON_DST_TS
+name|NON_DST_TS_TRUNC
 argument_list|)
 expr_stmt|;
 block|}
@@ -773,6 +811,7 @@ argument_list|(
 name|NON_DST_TS
 argument_list|)
 decl_stmt|;
+comment|// Round-trip lossily truncates ms, but that's ok.
 name|assertThat
 argument_list|(
 name|json
@@ -782,7 +821,7 @@ name|isEqualTo
 argument_list|(
 literal|'"'
 operator|+
-name|NON_DST_STR
+name|NON_DST_STR_TRUNC
 operator|+
 literal|'"'
 argument_list|)
@@ -803,7 +842,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|NON_DST_TS
+name|NON_DST_TS_TRUNC
 argument_list|)
 expr_stmt|;
 block|}
@@ -931,13 +970,14 @@ name|contains
 argument_list|(
 literal|"\"writtenOn\": \""
 operator|+
-name|NON_DST_STR
+name|NON_DST_STR_TRUNC
 operator|+
 literal|"\","
 argument_list|)
 expr_stmt|;
-name|assertThat
-argument_list|(
+name|Comment
+name|result
+init|=
 name|gson
 operator|.
 name|fromJson
@@ -948,6 +988,29 @@ name|Comment
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+comment|// Round-trip lossily truncates ms, but that's ok.
+name|assertThat
+argument_list|(
+name|result
+operator|.
+name|writtenOn
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|NON_DST_TS_TRUNC
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
+name|writtenOn
+operator|=
+name|NON_DST_TS
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|result
 argument_list|)
 operator|.
 name|isEqualTo
