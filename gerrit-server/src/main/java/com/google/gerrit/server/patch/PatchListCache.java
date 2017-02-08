@@ -206,6 +206,21 @@ parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
 function_decl|;
+DECL|method|getDiffSummary (DiffSummaryKey key, Project.NameKey project)
+name|DiffSummary
+name|getDiffSummary
+parameter_list|(
+name|DiffSummaryKey
+name|key
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|)
+throws|throws
+name|PatchListNotAvailableException
+function_decl|;
 block|}
 end_interface
 
