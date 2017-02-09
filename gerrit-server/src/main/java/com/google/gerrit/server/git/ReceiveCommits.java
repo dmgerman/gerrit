@@ -5106,6 +5106,15 @@ block|}
 block|}
 block|}
 comment|// Update superproject gitlinks if required.
+if|if
+condition|(
+operator|!
+name|branches
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 try|try
 init|(
 name|MergeOpRepoManager
@@ -5164,6 +5173,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|closeProgress
 operator|.
