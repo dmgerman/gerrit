@@ -1941,7 +1941,7 @@ name|or
 init|=
 name|orm
 operator|.
-name|openRepo
+name|getRepo
 argument_list|(
 name|project
 argument_list|)
