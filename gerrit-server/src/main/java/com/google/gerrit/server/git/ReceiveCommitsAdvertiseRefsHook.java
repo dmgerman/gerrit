@@ -837,6 +837,13 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
+name|ChangeField
+operator|.
+name|REVIEWER
+operator|.
+name|getName
+argument_list|()
+argument_list|,
 comment|// Required during advertiseOpenChanges.
 name|ChangeField
 operator|.
