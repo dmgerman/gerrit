@@ -793,6 +793,7 @@ literal|null
 expr_stmt|;
 block|}
 DECL|method|close ()
+specifier|private
 name|void
 name|close
 parameter_list|()
@@ -1372,6 +1373,11 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|openRepos
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
