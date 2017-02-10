@@ -255,7 +255,7 @@ name|newHtmlBody
 argument_list|(
 literal|"Looks good to me"
 argument_list|,
-literal|"I have a comment on this."
+literal|"I have a comment on this.&nbsp;"
 argument_list|,
 literal|null
 argument_list|,

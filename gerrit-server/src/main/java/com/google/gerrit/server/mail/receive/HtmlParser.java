@@ -504,6 +504,7 @@ argument_list|)
 condition|)
 block|{
 comment|// This is a comment typed by the user
+comment|// Replace non-breaking spaces and trim string
 name|String
 name|content
 init|=
@@ -511,6 +512,13 @@ name|e
 operator|.
 name|ownText
 argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|'\u00a0'
+argument_list|,
+literal|' '
+argument_list|)
 operator|.
 name|trim
 argument_list|()
