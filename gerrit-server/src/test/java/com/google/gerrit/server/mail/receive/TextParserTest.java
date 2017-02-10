@@ -994,6 +994,10 @@ operator|+
 literal|"\n"
 operator|)
 operator|+
+literal|"On Thu, Feb 9, 2017 at 8:21 AM, ekempin (Gerrit)\n"
+operator|+
+literal|"<noreply-gerritcodereview-qUgXfQecoDLHwp0MldAzig@google.com> wrote: \n"
+operator|+
 literal|"> Foo Bar has posted comments on this change. (  \n"
 operator|+
 literal|"> "
