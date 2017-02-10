@@ -323,6 +323,19 @@ if|if
 condition|(
 name|line
 operator|.
+name|equals
+argument_list|(
+literal|">"
+argument_list|)
+condition|)
+block|{
+comment|// Skip empty lines
+continue|continue;
+block|}
+if|if
+condition|(
+name|line
+operator|.
 name|startsWith
 argument_list|(
 literal|"> "
