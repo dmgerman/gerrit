@@ -4969,6 +4969,34 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Enforce a new request context for the current API user.    *    *<p>This recreates the IdentifiedUser, hence everything which is cached in the IdentifiedUser is    * reloaded (e.g. the email addresses of the user).    */
+DECL|method|resetCurrentApiUser ()
+specifier|protected
+name|Context
+name|resetCurrentApiUser
+parameter_list|()
+block|{
+return|return
+name|atrScope
+operator|.
+name|set
+argument_list|(
+name|newRequestContext
+argument_list|(
+name|atrScope
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getSession
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|setApiUser (TestAccount account)
 specifier|protected
 name|Context
