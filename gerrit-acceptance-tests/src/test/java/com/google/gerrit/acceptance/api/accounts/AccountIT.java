@@ -3396,12 +3396,8 @@ name|input
 argument_list|)
 expr_stmt|;
 block|}
-comment|// enforce a new request context so that emails that are cached in
-comment|// IdentifiedUser are reloaded
-name|setApiUser
-argument_list|(
-name|admin
-argument_list|)
+name|resetCurrentApiUser
+argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -3564,12 +3560,8 @@ argument_list|(
 name|input
 argument_list|)
 expr_stmt|;
-comment|// enforce a new request context so that emails that are cached in
-comment|// IdentifiedUser are reloaded
-name|setApiUser
-argument_list|(
-name|admin
-argument_list|)
+name|resetCurrentApiUser
+argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -3597,12 +3589,8 @@ operator|.
 name|email
 argument_list|)
 expr_stmt|;
-comment|// enforce a new request context so that emails that are cached in
-comment|// IdentifiedUser are reloaded
-name|setApiUser
-argument_list|(
-name|admin
-argument_list|)
+name|resetCurrentApiUser
+argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -3716,12 +3704,8 @@ argument_list|,
 name|extId2
 argument_list|)
 expr_stmt|;
-comment|// enforce a new request context so that emails that are cached in
-comment|// IdentifiedUser are reloaded
-name|setApiUser
-argument_list|(
-name|admin
-argument_list|)
+name|resetCurrentApiUser
+argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
@@ -3747,12 +3731,8 @@ argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
-comment|// enforce a new request context so that emails that are cached in
-comment|// IdentifiedUser are reloaded
-name|setApiUser
-argument_list|(
-name|admin
-argument_list|)
+name|resetCurrentApiUser
+argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(

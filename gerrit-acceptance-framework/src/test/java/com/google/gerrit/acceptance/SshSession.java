@@ -666,6 +666,16 @@ name|toString
 argument_list|()
 return|;
 block|}
+DECL|method|getAccount ()
+specifier|public
+name|TestAccount
+name|getAccount
+parameter_list|()
+block|{
+return|return
+name|account
+return|;
+block|}
 block|}
 end_class
 
