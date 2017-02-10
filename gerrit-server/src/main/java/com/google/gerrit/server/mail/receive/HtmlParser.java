@@ -543,7 +543,7 @@ name|content
 operator|=
 name|ParserUtil
 operator|.
-name|trimQuotationLine
+name|trimQuotation
 argument_list|(
 name|content
 argument_list|)
