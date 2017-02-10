@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.api.changes
+DECL|package|com.google.gerrit.server.notedb
 package|package
 name|com
 operator|.
@@ -60,11 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|api
-operator|.
-name|changes
+name|notedb
 package|;
 end_package
 
@@ -74,111 +72,113 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|extensions
+name|server
 operator|.
-name|common
-operator|.
-name|CommentInfo
+name|OrmException
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|io
 operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|NotImplementedException
+name|IOException
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|eclipse
 operator|.
-name|gerrit
+name|jgit
 operator|.
-name|extensions
+name|errors
 operator|.
-name|restapi
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|RestApiException
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectInserter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevWalk
 import|;
 end_import
 
 begin_interface
-DECL|interface|CommentApi
+DECL|interface|NoteDbRewriter
 specifier|public
 interface|interface
-name|CommentApi
+name|NoteDbRewriter
 block|{
-DECL|method|get ()
-name|CommentInfo
-name|get
+comment|/** Gets the name of the target ref which will be rewritten. */
+DECL|method|getRefName ()
+name|String
+name|getRefName
 parameter_list|()
-throws|throws
-name|RestApiException
 function_decl|;
-comment|/**    * Deletes a published comment of a revision. For NoteDb, it deletes the comment by rewriting the    * commit history.    *    *<p>Note instead of deleting the whole comment, this endpoint just replaces the comment's    * message.    *    * @return the comment with its message updated.    */
-DECL|method|delete (DeleteCommentInput input)
-name|CommentInfo
-name|delete
+comment|/**    * Rewrites the commit history.    *    * @param revWalk a {@code RevWalk} instance.    * @param inserter a {@code ObjectInserter} instance.    * @param currTip the {@code ObjectId} of the ref's tip commit.    * @return the {@code ObjectId} of the ref's new tip commit.    */
+DECL|method|rewriteCommitHistory (RevWalk revWalk, ObjectInserter inserter, ObjectId currTip)
+name|ObjectId
+name|rewriteCommitHistory
 parameter_list|(
-name|DeleteCommentInput
-name|input
+name|RevWalk
+name|revWalk
+parameter_list|,
+name|ObjectInserter
+name|inserter
+parameter_list|,
+name|ObjectId
+name|currTip
 parameter_list|)
 throws|throws
-name|RestApiException
+name|IOException
+throws|,
+name|ConfigInvalidException
+throws|,
+name|OrmException
 function_decl|;
-comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
-DECL|class|NotImplemented
-class|class
-name|NotImplemented
-implements|implements
-name|CommentApi
-block|{
-annotation|@
-name|Override
-DECL|method|get ()
-specifier|public
-name|CommentInfo
-name|get
-parameter_list|()
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|delete (DeleteCommentInput input)
-specifier|public
-name|CommentInfo
-name|delete
-parameter_list|(
-name|DeleteCommentInput
-name|input
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-block|}
 block|}
 end_interface
 
