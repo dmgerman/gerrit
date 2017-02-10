@@ -285,7 +285,7 @@ name|createEmail
 argument_list|(
 name|email
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"@"
 argument_list|,
@@ -429,7 +429,7 @@ literal|"/accounts/self/emails/"
 operator|+
 name|email
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"@"
 argument_list|,
