@@ -2175,7 +2175,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**    * Adds footers to existing commit message based on the state of the change.    *    *<p>This adds the following footers if they are missing:    *    *<ul>    *<li> Reviewed-on:<i>url</i>    *<li> Reviewed-by | Tested-by |<i>Other-Label-Name</i>:<i>reviewer</i>    *<li> Change-Id    *</ul>    *    * @param n    * @param ctl    * @param psId    * @return new message    */
+comment|/**    * Adds footers to existing commit message based on the state of the change.    *    *<p>This adds the following footers if they are missing:    *    *<ul>    *<li>Reviewed-on:<i>url</i>    *<li>Reviewed-by | Tested-by |<i>Other-Label-Name</i>:<i>reviewer</i>    *<li>Change-Id    *</ul>    *    * @param n    * @param ctl    * @param psId    * @return new message    */
 DECL|method|createDetailedCommitMessage (RevCommit n, ChangeControl ctl, PatchSet.Id psId)
 specifier|private
 name|String
