@@ -4215,9 +4215,6 @@ init|=
 name|cd
 operator|.
 name|stars
-argument_list|()
-operator|.
-name|get
 argument_list|(
 name|user
 operator|.
