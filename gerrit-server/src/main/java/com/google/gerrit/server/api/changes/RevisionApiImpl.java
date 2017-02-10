@@ -1878,6 +1878,8 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
+try|try
+block|{
 name|submitPreview
 operator|.
 name|setFormat
@@ -1893,6 +1895,23 @@ argument_list|(
 name|revision
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RestApiException
+argument_list|(
+literal|"Cannot get submit preview"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
