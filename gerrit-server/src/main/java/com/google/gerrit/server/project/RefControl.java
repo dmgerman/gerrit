@@ -1319,21 +1319,6 @@ name|REMOVE_REVIEWER
 argument_list|)
 return|;
 block|}
-comment|/** @return true if this user can view draft changes. */
-DECL|method|canViewDrafts ()
-name|boolean
-name|canViewDrafts
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|VIEW_DRAFTS
-argument_list|)
-return|;
-block|}
 comment|/** @return true if this user can view private changes. */
 DECL|method|canViewPrivateChanges ()
 name|boolean
@@ -1346,36 +1331,6 @@ argument_list|(
 name|Permission
 operator|.
 name|VIEW_PRIVATE_CHANGES
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can publish draft changes. */
-DECL|method|canPublishDrafts ()
-name|boolean
-name|canPublishDrafts
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|PUBLISH_DRAFTS
-argument_list|)
-return|;
-block|}
-comment|/** @return true if this user can delete draft changes. */
-DECL|method|canDeleteDrafts ()
-name|boolean
-name|canDeleteDrafts
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|DELETE_DRAFTS
 argument_list|)
 return|;
 block|}

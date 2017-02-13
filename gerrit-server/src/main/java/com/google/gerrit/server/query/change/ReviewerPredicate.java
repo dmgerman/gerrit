@@ -218,7 +218,7 @@ name|ReviewerPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
-DECL|method|forState ( Arguments args, Account.Id id, ReviewerStateInternal state)
+DECL|method|forState (Account.Id id, ReviewerStateInternal state)
 specifier|protected
 specifier|static
 name|Predicate
@@ -227,9 +227,6 @@ name|ChangeData
 argument_list|>
 name|forState
 parameter_list|(
-name|Arguments
-name|args
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -251,17 +248,12 @@ literal|"can't query by removed reviewer"
 argument_list|)
 expr_stmt|;
 return|return
-name|create
-argument_list|(
-name|args
-argument_list|,
 operator|new
 name|ReviewerPredicate
 argument_list|(
 name|state
 argument_list|,
 name|id
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -283,12 +275,6 @@ name|Id
 name|id
 parameter_list|)
 block|{
-name|Predicate
-argument_list|<
-name|ChangeData
-argument_list|>
-name|p
-decl_stmt|;
 if|if
 condition|(
 name|args
@@ -300,8 +286,7 @@ argument_list|()
 condition|)
 block|{
 comment|// With NoteDb, Reviewer/CC are clearly distinct states, so only choose reviewer.
-name|p
-operator|=
+return|return
 operator|new
 name|ReviewerPredicate
 argument_list|(
@@ -311,30 +296,18 @@ name|REVIEWER
 argument_list|,
 name|id
 argument_list|)
-expr_stmt|;
+return|;
 block|}
-else|else
-block|{
 comment|// Without NoteDb, Reviewer/CC are a bit unpredictable; maintain the old behavior of matching
 comment|// any reviewer state.
-name|p
-operator|=
+return|return
 name|anyReviewerState
 argument_list|(
 name|id
 argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|create
-argument_list|(
-name|args
-argument_list|,
-name|p
-argument_list|)
 return|;
 block|}
-DECL|method|cc (Arguments args, Account.Id id)
+DECL|method|cc (Account.Id id)
 specifier|protected
 specifier|static
 name|Predicate
@@ -343,9 +316,6 @@ name|ChangeData
 argument_list|>
 name|cc
 parameter_list|(
-name|Arguments
-name|args
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -356,10 +326,6 @@ comment|// As noted above, CC is nebulous without NoteDb, but it certainly doesn
 comment|// Reviewers for cc:foo. Most likely this will just not match anything, but let the index sort
 comment|// it out.
 return|return
-name|create
-argument_list|(
-name|args
-argument_list|,
 operator|new
 name|ReviewerPredicate
 argument_list|(
@@ -368,7 +334,6 @@ operator|.
 name|CC
 argument_list|,
 name|id
-argument_list|)
 argument_list|)
 return|;
 block|}

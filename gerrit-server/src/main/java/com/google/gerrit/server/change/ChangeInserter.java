@@ -2702,8 +2702,6 @@ name|psId
 argument_list|,
 name|commitId
 argument_list|,
-literal|false
-argument_list|,
 name|newGroups
 argument_list|,
 name|pushCert

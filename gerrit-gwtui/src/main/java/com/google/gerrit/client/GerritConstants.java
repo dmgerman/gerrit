@@ -273,11 +273,6 @@ name|String
 name|menuMyChanges
 parameter_list|()
 function_decl|;
-DECL|method|menuMyDrafts ()
-name|String
-name|menuMyDrafts
-parameter_list|()
-function_decl|;
 DECL|method|menuMyWatchedChanges ()
 name|String
 name|menuMyWatchedChanges
@@ -481,11 +476,6 @@ function_decl|;
 DECL|method|jumpMine ()
 name|String
 name|jumpMine
-parameter_list|()
-function_decl|;
-DECL|method|jumpMineDrafts ()
-name|String
-name|jumpMineDrafts
 parameter_list|()
 function_decl|;
 DECL|method|jumpMineWatched ()

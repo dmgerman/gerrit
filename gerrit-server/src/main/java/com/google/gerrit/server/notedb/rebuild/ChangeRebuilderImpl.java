@@ -3281,9 +3281,7 @@ comment|// workaround is as if a user added a ChangeMessage on the change by rep
 comment|// patch set.
 comment|//
 comment|// Start with the first patch set that actually exists. If there are no patch sets at all,
-comment|// minPsNum will be null, so just bail and use 1 as the patch set ID. The corresponding patch
-comment|// set won't exist, but this change is probably corrupt anyway, as deleting the last draft patch
-comment|// set should have deleted the whole change.
+comment|// minPsNum will be null, so just bail and use 1 as the patch set ID.
 comment|//
 comment|// Second, ensure timestamps are nondecreasing, by copying the previous timestamp if this
 comment|// happens. This assumes that the only way this can happen is due to dependency constraints, and

@@ -4745,7 +4745,7 @@ name|subjectEnd
 operator|+
 literal|2
 expr_stmt|;
-comment|//\n\n ends paragraph
+comment|// \n\n ends paragraph
 block|}
 elseif|else
 if|if
@@ -4764,7 +4764,7 @@ name|subjectEnd
 operator|+
 literal|4
 expr_stmt|;
-comment|//\r\n\r\n ends paragraph
+comment|// \r\n\r\n ends paragraph
 block|}
 else|else
 block|{
@@ -7006,38 +7006,6 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
-name|DRAFT
-case|:
-name|PatchSet
-name|ps
-init|=
-name|patchSets
-operator|.
-name|get
-argument_list|(
-name|e
-operator|.
-name|getKey
-argument_list|()
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|ps
-operator|!=
-literal|null
-condition|)
-block|{
-name|ps
-operator|.
-name|setDraft
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 break|break;
 block|}
 block|}

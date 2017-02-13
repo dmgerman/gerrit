@@ -114,11 +114,6 @@ specifier|transient
 name|boolean
 name|isCurrent
 decl_stmt|;
-DECL|field|draft
-specifier|public
-name|Boolean
-name|draft
-decl_stmt|;
 DECL|field|kind
 specifier|public
 name|ChangeKind

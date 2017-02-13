@@ -4088,58 +4088,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|submitDraftChange ()
-specifier|public
-name|void
-name|submitDraftChange
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|PushOneCommit
-operator|.
-name|Result
-name|draft
-init|=
-name|createDraftChange
-argument_list|()
-decl_stmt|;
-name|Change
-operator|.
-name|Id
-name|num
-init|=
-name|draft
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
-name|submitWithConflict
-argument_list|(
-name|draft
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|,
-literal|"Failed to submit 1 change due to the following problems:\n"
-operator|+
-literal|"Change "
-operator|+
-name|num
-operator|+
-literal|": Change "
-operator|+
-name|num
-operator|+
-literal|" is draft"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|submitWorkInProgressChange ()
 specifier|public
 name|void
@@ -4187,69 +4135,6 @@ operator|+
 name|num
 operator|+
 literal|" is work in progress"
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|submitDraftPatchSet ()
-specifier|public
-name|void
-name|submitDraftPatchSet
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|PushOneCommit
-operator|.
-name|Result
-name|change
-init|=
-name|createChange
-argument_list|()
-decl_stmt|;
-name|PushOneCommit
-operator|.
-name|Result
-name|draft
-init|=
-name|amendChangeAndMarkPatchSetAsDraft
-argument_list|(
-name|change
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|Change
-operator|.
-name|Id
-name|num
-init|=
-name|draft
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
-name|submitWithConflict
-argument_list|(
-name|draft
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|,
-literal|"Failed to submit 1 change due to the following problems:\n"
-operator|+
-literal|"Change "
-operator|+
-name|num
-operator|+
-literal|": submit rule error: "
-operator|+
-literal|"Cannot submit draft patch sets"
 argument_list|)
 expr_stmt|;
 block|}

@@ -329,7 +329,7 @@ argument_list|(
 literal|"EEE, dd MMM yyyy HH:mm:ss ZZZ"
 argument_list|)
 decl_stmt|;
-DECL|method|getRecipientsFromFooters ( ReviewDb db, AccountResolver accountResolver, boolean draftPatchSet, List<FooterLine> footerLines)
+DECL|method|getRecipientsFromFooters ( ReviewDb db, AccountResolver accountResolver, List<FooterLine> footerLines)
 specifier|public
 specifier|static
 name|MailRecipients
@@ -340,9 +340,6 @@ name|db
 parameter_list|,
 name|AccountResolver
 name|accountResolver
-parameter_list|,
-name|boolean
-name|draftPatchSet
 parameter_list|,
 name|List
 argument_list|<
@@ -362,12 +359,6 @@ operator|new
 name|MailRecipients
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|draftPatchSet
-condition|)
-block|{
 for|for
 control|(
 name|FooterLine
@@ -453,7 +444,6 @@ name|e
 parameter_list|)
 block|{
 continue|continue;
-block|}
 block|}
 block|}
 return|return

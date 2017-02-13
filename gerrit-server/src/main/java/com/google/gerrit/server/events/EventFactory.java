@@ -3229,15 +3229,6 @@ argument_list|()
 operator|/
 literal|1000L
 expr_stmt|;
-name|p
-operator|.
-name|isDraft
-operator|=
-name|patchSet
-operator|.
-name|isDraft
-argument_list|()
-expr_stmt|;
 name|PatchSet
 operator|.
 name|Id

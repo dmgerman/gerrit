@@ -1446,13 +1446,8 @@ condition|(
 operator|!
 name|baseCtl
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|base
-operator|.
-name|patchSet
-argument_list|()
-argument_list|,
 name|db
 argument_list|)
 condition|)
@@ -2124,10 +2119,8 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|ps
-argument_list|,
 name|rebase
 operator|.
 name|dbProvider

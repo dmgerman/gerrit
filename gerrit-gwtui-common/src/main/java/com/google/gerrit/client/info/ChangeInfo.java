@@ -2201,15 +2201,6 @@ name|name
 parameter_list|()
 comment|/*-{ return this.name; }-*/
 function_decl|;
-DECL|method|draft ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|draft
-parameter_list|()
-comment|/*-{ return this.draft || false; }-*/
-function_decl|;
 DECL|method|uploader ()
 specifier|public
 specifier|final

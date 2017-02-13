@@ -787,55 +787,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-if|if
-condition|(
-name|status
-operator|==
-name|Change
-operator|.
-name|Status
-operator|.
-name|DRAFT
-condition|)
-block|{
-for|for
-control|(
-name|PatchSet
-name|ps
-range|:
-name|patchSets
-control|)
-block|{
-if|if
-condition|(
-operator|!
-name|ps
-operator|.
-name|isDraft
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|ResourceConflictException
-argument_list|(
-literal|"Cannot delete draft change "
-operator|+
-name|id
-operator|+
-literal|": patch set "
-operator|+
-name|ps
-operator|.
-name|getPatchSetId
-argument_list|()
-operator|+
-literal|" is not a draft"
-argument_list|)
-throw|;
-block|}
-block|}
-block|}
 block|}
 DECL|method|isPatchSetMerged (ChangeContext ctx, PatchSet patchSet)
 specifier|private

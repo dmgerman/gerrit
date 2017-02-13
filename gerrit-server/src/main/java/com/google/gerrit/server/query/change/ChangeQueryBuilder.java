@@ -3691,8 +3691,6 @@ name|ReviewerPredicate
 operator|.
 name|cc
 argument_list|(
-name|args
-argument_list|,
 name|self
 argument_list|()
 argument_list|)
@@ -8267,8 +8265,6 @@ name|ReviewerByEmailPredicate
 operator|.
 name|forState
 argument_list|(
-name|args
-argument_list|,
 name|address
 argument_list|,
 name|state
@@ -8331,8 +8327,6 @@ name|ReviewerPredicate
 operator|.
 name|forState
 argument_list|(
-name|args
-argument_list|,
 name|id
 argument_list|,
 name|state

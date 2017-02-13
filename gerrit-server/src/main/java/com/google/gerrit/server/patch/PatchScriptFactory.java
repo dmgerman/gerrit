@@ -1383,10 +1383,8 @@ operator|&&
 operator|!
 name|ctl
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|psEntityA
-argument_list|,
 name|db
 argument_list|)
 operator|)
@@ -1399,10 +1397,8 @@ operator|&&
 operator|!
 name|ctl
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|psEntityB
-argument_list|,
 name|db
 argument_list|)
 operator|)
@@ -2083,10 +2079,8 @@ condition|(
 operator|!
 name|ctl
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|ps
-argument_list|,
 name|db
 argument_list|)
 condition|)

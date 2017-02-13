@@ -296,6 +296,8 @@ specifier|public
 interface|interface
 name|RevisionApi
 block|{
+annotation|@
+name|Deprecated
 DECL|method|delete ()
 name|void
 name|delete
@@ -364,6 +366,8 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+annotation|@
+name|Deprecated
 DECL|method|publish ()
 name|void
 name|publish
@@ -805,6 +809,8 @@ implements|implements
 name|RevisionApi
 block|{
 annotation|@
+name|Deprecated
+annotation|@
 name|Override
 DECL|method|delete ()
 specifier|public
@@ -874,6 +880,8 @@ name|NotImplementedException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Deprecated
 annotation|@
 name|Override
 DECL|method|publish ()

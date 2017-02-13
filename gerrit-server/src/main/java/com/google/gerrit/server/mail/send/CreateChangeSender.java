@@ -367,20 +367,6 @@ operator|.
 name|init
 argument_list|()
 expr_stmt|;
-name|boolean
-name|isDraft
-init|=
-name|change
-operator|.
-name|getStatus
-argument_list|()
-operator|==
-name|Change
-operator|.
-name|Status
-operator|.
-name|DRAFT
-decl_stmt|;
 try|try
 block|{
 comment|// Try to mark interested owners with TO and CC or BCC line.
@@ -393,9 +379,6 @@ name|NotifyType
 operator|.
 name|NEW_CHANGES
 argument_list|,
-operator|!
-name|isDraft
-operator|&&
 operator|!
 name|change
 operator|.
@@ -519,9 +502,6 @@ name|NotifyType
 operator|.
 name|NEW_PATCHSETS
 argument_list|,
-operator|!
-name|isDraft
-operator|&&
 operator|!
 name|change
 operator|.

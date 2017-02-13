@@ -154,46 +154,6 @@ name|Change
 operator|.
 name|Status
 operator|.
-name|ABANDONED
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-operator|.
-name|Status
-operator|.
-name|DRAFT
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-operator|.
-name|Status
-operator|.
 name|MERGED
 import|;
 end_import
@@ -1225,7 +1185,7 @@ name|in
 init|=
 name|parse
 argument_list|(
-literal|"(status:new OR status:draft) bar:p file:a"
+literal|"status:new bar:p file:a"
 argument_list|)
 decl_stmt|;
 name|Predicate
@@ -1674,23 +1634,6 @@ name|assertThat
 argument_list|(
 name|status
 argument_list|(
-literal|"-is:new"
-argument_list|)
-argument_list|)
-operator|.
-name|containsExactly
-argument_list|(
-name|DRAFT
-argument_list|,
-name|MERGED
-argument_list|,
-name|ABANDONED
-argument_list|)
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|status
-argument_list|(
 literal|"is:new OR is:merged"
 argument_list|)
 argument_list|)
@@ -1717,7 +1660,7 @@ name|assertThat
 argument_list|(
 name|status
 argument_list|(
-literal|"(is:new is:draft) (is:merged)"
+literal|"(is:new) (is:merged)"
 argument_list|)
 argument_list|)
 operator|.
@@ -1728,25 +1671,12 @@ name|assertThat
 argument_list|(
 name|status
 argument_list|(
-literal|"(is:new is:draft) (is:merged)"
+literal|"(is:new) (is:merged)"
 argument_list|)
 argument_list|)
 operator|.
 name|isEmpty
 argument_list|()
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|status
-argument_list|(
-literal|"(is:new is:draft) OR (is:merged)"
-argument_list|)
-argument_list|)
-operator|.
-name|containsExactly
-argument_list|(
-name|MERGED
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@

@@ -1058,22 +1058,6 @@ name|server
 operator|.
 name|change
 operator|.
-name|PublishDraftPatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
 name|PutAssignee
 import|;
 end_import
@@ -1509,14 +1493,6 @@ name|SubmittedTogether
 argument_list|>
 name|submittedTogether
 decl_stmt|;
-DECL|field|publishDraftChange
-specifier|private
-specifier|final
-name|PublishDraftPatchSet
-operator|.
-name|CurrentRevision
-name|publishDraftChange
-decl_stmt|;
 DECL|field|rebase
 specifier|private
 specifier|final
@@ -1711,7 +1687,7 @@ name|stars
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeApiImpl ( Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, SuggestChangeReviewers suggestReviewers, Abandon abandon, Revert revert, Restore restore, CreateMergePatchSet updateByMerge, Provider<SubmittedTogether> submittedTogether, PublishDraftPatchSet.CurrentRevision publishDraftChange, Rebase.CurrentRevision rebase, DeleteChange deleteChange, GetTopic getTopic, PutTopic putTopic, ChangeIncludedIn includedIn, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, PutAssignee putAssignee, GetAssignee getAssignee, GetPastAssignees getPastAssignees, DeleteAssignee deleteAssignee, ListChangeComments listComments, ListChangeRobotComments listChangeRobotComments, ListChangeDrafts listDrafts, ChangeEditApiImpl.Factory changeEditApi, Check check, Index index, Move move, PostPrivate postPrivate, DeletePrivate deletePrivate, Ignore ignore, Unignore unignore, Mute mute, Unmute unmute, SetWorkInProgress setWip, SetReadyForReview setReady, PutMessage putMessage, GetPureRevert getPureRevert, StarredChangesUtil stars, @Assisted ChangeResource change)
+DECL|method|ChangeApiImpl ( Changes changeApi, Reviewers reviewers, Revisions revisions, ReviewerApiImpl.Factory reviewerApi, RevisionApiImpl.Factory revisionApi, SuggestChangeReviewers suggestReviewers, Abandon abandon, Revert revert, Restore restore, CreateMergePatchSet updateByMerge, Provider<SubmittedTogether> submittedTogether, Rebase.CurrentRevision rebase, DeleteChange deleteChange, GetTopic getTopic, PutTopic putTopic, ChangeIncludedIn includedIn, PostReviewers postReviewers, ChangeJson.Factory changeJson, PostHashtags postHashtags, GetHashtags getHashtags, PutAssignee putAssignee, GetAssignee getAssignee, GetPastAssignees getPastAssignees, DeleteAssignee deleteAssignee, ListChangeComments listComments, ListChangeRobotComments listChangeRobotComments, ListChangeDrafts listDrafts, ChangeEditApiImpl.Factory changeEditApi, Check check, Index index, Move move, PostPrivate postPrivate, DeletePrivate deletePrivate, Ignore ignore, Unignore unignore, Mute mute, Unmute unmute, SetWorkInProgress setWip, SetReadyForReview setReady, PutMessage putMessage, GetPureRevert getPureRevert, StarredChangesUtil stars, @Assisted ChangeResource change)
 name|ChangeApiImpl
 parameter_list|(
 name|Changes
@@ -1753,11 +1729,6 @@ argument_list|<
 name|SubmittedTogether
 argument_list|>
 name|submittedTogether
-parameter_list|,
-name|PublishDraftPatchSet
-operator|.
-name|CurrentRevision
-name|publishDraftChange
 parameter_list|,
 name|Rebase
 operator|.
@@ -1929,12 +1900,6 @@ operator|.
 name|submittedTogether
 operator|=
 name|submittedTogether
-expr_stmt|;
-name|this
-operator|.
-name|publishDraftChange
-operator|=
-name|publishDraftChange
 expr_stmt|;
 name|this
 operator|.
@@ -2911,6 +2876,8 @@ throw|;
 block|}
 block|}
 annotation|@
+name|Deprecated
+annotation|@
 name|Override
 DECL|method|publish ()
 specifier|public
@@ -2920,33 +2887,13 @@ parameter_list|()
 throws|throws
 name|RestApiException
 block|{
-try|try
-block|{
-name|publishDraftChange
-operator|.
-name|apply
-argument_list|(
-name|change
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
 throw|throw
-name|asRestApiException
+operator|new
+name|UnsupportedOperationException
 argument_list|(
-literal|"Cannot publish change"
-argument_list|,
-name|e
+literal|"draft workflow is discontinued"
 argument_list|)
 throw|;
-block|}
 block|}
 annotation|@
 name|Override

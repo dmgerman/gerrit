@@ -132,20 +132,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
-operator|.
-name|TestProjectInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -3458,88 +3444,6 @@ name|getParentKey
 argument_list|()
 operator|.
 name|get
-argument_list|()
-operator|+
-literal|": depends on change that was not submitted"
-argument_list|)
-expr_stmt|;
-name|assertRefUpdatedEvents
-argument_list|()
-expr_stmt|;
-name|assertChangeMergedEvents
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-annotation|@
-name|TestProjectInput
-argument_list|(
-name|createEmptyCommit
-operator|=
-literal|false
-argument_list|)
-DECL|method|mergeWithMissingChange ()
-specifier|public
-name|void
-name|mergeWithMissingChange
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|// create a draft change
-name|PushOneCommit
-operator|.
-name|Result
-name|draftResult
-init|=
-name|createDraftChange
-argument_list|()
-decl_stmt|;
-comment|// create a new change based on the draft change
-name|PushOneCommit
-operator|.
-name|Result
-name|changeResult
-init|=
-name|createChange
-argument_list|()
-decl_stmt|;
-comment|// delete the draft change
-name|gApi
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|id
-argument_list|(
-name|draftResult
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|)
-operator|.
-name|delete
-argument_list|()
-expr_stmt|;
-comment|// approve and submit the change
-name|submitWithConflict
-argument_list|(
-name|changeResult
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|,
-literal|"Failed to submit 1 change due to the following problems:\n"
-operator|+
-literal|"Change "
-operator|+
-name|changeResult
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
 argument_list|()
 operator|+
 literal|": depends on change that was not submitted"

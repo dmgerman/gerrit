@@ -1354,17 +1354,6 @@ argument_list|()
 operator|.
 name|isOpen
 argument_list|()
-operator|&&
-name|change
-operator|.
-name|getStatus
-argument_list|()
-operator|!=
-name|Change
-operator|.
-name|Status
-operator|.
-name|DRAFT
 argument_list|,
 name|rsrc
 operator|.

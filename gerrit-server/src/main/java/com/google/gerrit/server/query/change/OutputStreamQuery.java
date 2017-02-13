@@ -1525,11 +1525,6 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
-name|setAllowDraft
-argument_list|(
-literal|true
-argument_list|)
-operator|.
 name|evaluate
 argument_list|()
 argument_list|)
@@ -1728,10 +1723,8 @@ literal|null
 operator|&&
 name|ctl
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|current
-argument_list|,
 name|d
 operator|.
 name|db

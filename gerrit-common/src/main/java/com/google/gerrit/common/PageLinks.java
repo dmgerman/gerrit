@@ -1011,9 +1011,6 @@ argument_list|)
 argument_list|)
 return|;
 case|case
-name|DRAFT
-case|:
-case|case
 name|MERGED
 case|:
 case|case
@@ -1161,9 +1158,6 @@ case|:
 return|return
 literal|"status:merged"
 return|;
-case|case
-name|DRAFT
-case|:
 case|case
 name|NEW
 case|:

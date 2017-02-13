@@ -2829,25 +2829,6 @@ argument_list|)
 operator|.
 name|on
 argument_list|(
-literal|"G D"
-argument_list|,
-parameter_list|()
-lambda|->
-name|Gerrit
-operator|.
-name|display
-argument_list|(
-name|PageLinks
-operator|.
-name|toChangeQuery
-argument_list|(
-literal|"owner:self is:draft"
-argument_list|)
-argument_list|)
-argument_list|)
-operator|.
-name|on
-argument_list|(
 literal|"G C"
 argument_list|,
 parameter_list|()

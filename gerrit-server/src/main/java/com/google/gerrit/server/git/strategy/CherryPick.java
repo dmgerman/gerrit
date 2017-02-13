@@ -1058,8 +1058,6 @@ name|psId
 argument_list|,
 name|newCommit
 argument_list|,
-literal|false
-argument_list|,
 name|prevPs
 operator|!=
 literal|null

@@ -1247,15 +1247,6 @@ operator|!=
 name|Status
 operator|.
 name|NEW
-operator|&&
-name|change
-operator|.
-name|getStatus
-argument_list|()
-operator|!=
-name|Status
-operator|.
-name|DRAFT
 condition|)
 block|{
 throw|throw

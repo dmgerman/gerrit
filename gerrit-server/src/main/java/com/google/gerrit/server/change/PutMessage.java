@@ -1012,10 +1012,8 @@ name|getUser
 argument_list|()
 argument_list|)
 operator|.
-name|isPatchVisible
+name|isVisible
 argument_list|(
-name|ps
-argument_list|,
 name|db
 operator|.
 name|get
