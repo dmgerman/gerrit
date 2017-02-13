@@ -4198,6 +4198,15 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
+name|out
+operator|.
+name|unresolvedCommentCount
+operator|=
+name|cd
+operator|.
+name|unresolvedCommentCount
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|user

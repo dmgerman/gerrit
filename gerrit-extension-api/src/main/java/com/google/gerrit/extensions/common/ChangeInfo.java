@@ -266,6 +266,11 @@ specifier|public
 name|Integer
 name|deletions
 decl_stmt|;
+DECL|field|unresolvedCommentCount
+specifier|public
+name|Integer
+name|unresolvedCommentCount
+decl_stmt|;
 DECL|field|_number
 specifier|public
 name|int

@@ -692,6 +692,13 @@ name|suggestions
 operator|.
 name|add
 argument_list|(
+literal|"has:unresolved"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
 literal|"star:"
 argument_list|)
 expr_stmt|;
@@ -868,6 +875,13 @@ operator|.
 name|add
 argument_list|(
 literal|"size:"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
+literal|"unresolved:"
 argument_list|)
 expr_stmt|;
 if|if
