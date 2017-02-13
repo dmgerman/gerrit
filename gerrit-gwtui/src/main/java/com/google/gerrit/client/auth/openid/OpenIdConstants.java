@@ -92,11 +92,6 @@ name|OpenIdConstants
 extends|extends
 name|Constants
 block|{
-DECL|method|nameGoogle ()
-name|String
-name|nameGoogle
-parameter_list|()
-function_decl|;
 DECL|method|nameLaunchpad ()
 name|String
 name|nameLaunchpad
