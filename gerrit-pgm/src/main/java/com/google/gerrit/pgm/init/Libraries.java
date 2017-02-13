@@ -290,21 +290,6 @@ specifier|final
 name|boolean
 name|skipAllDownloads
 decl_stmt|;
-DECL|field|bouncyCastlePGP
-comment|/* final */
-name|LibraryDownloader
-name|bouncyCastlePGP
-decl_stmt|;
-DECL|field|bouncyCastleProvider
-comment|/* final */
-name|LibraryDownloader
-name|bouncyCastleProvider
-decl_stmt|;
-DECL|field|bouncyCastleSSL
-comment|/* final */
-name|LibraryDownloader
-name|bouncyCastleSSL
-decl_stmt|;
 DECL|field|db2Driver
 comment|/* final */
 name|LibraryDownloader

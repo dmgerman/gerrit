@@ -286,13 +286,6 @@ name|assertNotNull
 argument_list|(
 name|lib
 operator|.
-name|bouncyCastleProvider
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-name|lib
-operator|.
 name|mysqlDriver
 argument_list|)
 expr_stmt|;
