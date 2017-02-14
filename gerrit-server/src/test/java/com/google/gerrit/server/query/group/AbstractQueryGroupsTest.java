@@ -1512,11 +1512,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assertQuery
-argument_list|(
-literal|"owner:non-existing"
-argument_list|)
-expr_stmt|;
 name|GroupInfo
 name|ownerGroup
 init|=
@@ -1549,6 +1544,15 @@ literal|"group2"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"owner:"
+operator|+
+name|group
+operator|.
+name|id
+argument_list|)
+expr_stmt|;
 comment|// ownerGroup owns itself
 name|assertQuery
 argument_list|(
@@ -1557,6 +1561,19 @@ operator|+
 name|ownerGroup
 operator|.
 name|id
+argument_list|,
+name|group
+argument_list|,
+name|ownerGroup
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
+literal|"owner:"
+operator|+
+name|ownerGroup
+operator|.
+name|name
 argument_list|,
 name|group
 argument_list|,
