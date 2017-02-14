@@ -5690,6 +5690,35 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|testPushAFewChanges
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|pushAFewChangesWithCreateNewChangeForAllNotInTarget ()
+specifier|public
+name|void
+name|pushAFewChangesWithCreateNewChangeForAllNotInTarget
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|enableCreateNewChangeForAllNotInTarget
+argument_list|()
+expr_stmt|;
+name|testPushAFewChanges
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|testPushAFewChanges ()
+specifier|private
+name|void
+name|testPushAFewChanges
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|int
 name|n
 init|=
