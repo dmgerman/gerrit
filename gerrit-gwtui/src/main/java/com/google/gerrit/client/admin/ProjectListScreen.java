@@ -570,9 +570,9 @@ argument_list|()
 expr_stmt|;
 name|setPageTitle
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|projectListTitle
 argument_list|()
@@ -637,9 +637,9 @@ name|ProjectsTable
 operator|.
 name|C_REPO_BROWSER
 argument_list|,
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|projectRepoBrowser
 argument_list|()
@@ -1150,9 +1150,9 @@ init|=
 operator|new
 name|Label
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|projectFilter
 argument_list|()

@@ -1341,9 +1341,9 @@ name|Window
 operator|.
 name|alert
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|errorsMustBeFixed
 argument_list|()
@@ -1808,9 +1808,9 @@ name|Window
 operator|.
 name|alert
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|errorsMustBeFixed
 argument_list|()

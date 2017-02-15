@@ -67,24 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|admin
-operator|.
-name|Util
-operator|.
-name|C
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -454,7 +436,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|C
+name|AdminConstants
+operator|.
+name|I
 operator|.
 name|groupItemHelp
 argument_list|()
@@ -473,7 +457,9 @@ literal|0
 argument_list|,
 literal|1
 argument_list|,
-name|C
+name|AdminConstants
+operator|.
+name|I
 operator|.
 name|columnGroupName
 argument_list|()
@@ -487,7 +473,9 @@ literal|0
 argument_list|,
 literal|2
 argument_list|,
-name|C
+name|AdminConstants
+operator|.
+name|I
 operator|.
 name|columnGroupDescription
 argument_list|()
@@ -501,7 +489,9 @@ literal|0
 argument_list|,
 literal|3
 argument_list|,
-name|C
+name|AdminConstants
+operator|.
+name|I
 operator|.
 name|columnGroupVisibleToAll
 argument_list|()

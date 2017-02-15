@@ -78,7 +78,7 @@ name|client
 operator|.
 name|admin
 operator|.
-name|Util
+name|AdminConstants
 import|;
 end_import
 
@@ -582,9 +582,9 @@ name|replacementString
 operator|+
 literal|" ("
 operator|+
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|suggestedGroupLabel
 argument_list|()

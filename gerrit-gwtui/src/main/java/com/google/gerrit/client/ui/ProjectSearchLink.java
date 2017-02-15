@@ -92,7 +92,7 @@ name|client
 operator|.
 name|admin
 operator|.
-name|Util
+name|AdminConstants
 import|;
 end_import
 
@@ -192,9 +192,9 @@ argument_list|)
 expr_stmt|;
 name|setTitle
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|projectListQueryLink
 argument_list|()

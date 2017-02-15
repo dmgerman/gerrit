@@ -578,9 +578,9 @@ argument_list|()
 expr_stmt|;
 name|setPageTitle
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|createGroupTitle
 argument_list|()
@@ -625,9 +625,9 @@ argument_list|(
 operator|new
 name|SmallHeading
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|headingCreateGroup
 argument_list|()
@@ -788,9 +788,9 @@ operator|=
 operator|new
 name|Button
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|buttonCreateGroup
 argument_list|()

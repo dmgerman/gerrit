@@ -276,9 +276,9 @@ argument_list|)
 expr_stmt|;
 name|link
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|groupTabGeneral
 argument_list|()
@@ -293,9 +293,9 @@ argument_list|)
 expr_stmt|;
 name|link
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|groupTabMembers
 argument_list|()
@@ -377,9 +377,9 @@ argument_list|()
 expr_stmt|;
 name|setPageTitle
 argument_list|(
-name|Util
+name|AdminMessages
 operator|.
-name|M
+name|I
 operator|.
 name|group
 argument_list|(
@@ -426,9 +426,9 @@ condition|)
 block|{
 name|link
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|groupTabAuditLog
 argument_list|()

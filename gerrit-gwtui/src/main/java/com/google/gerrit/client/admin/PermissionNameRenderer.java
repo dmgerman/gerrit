@@ -171,9 +171,9 @@ name|String
 argument_list|>
 name|e
 range|:
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|permissionNames
 argument_list|()
@@ -267,9 +267,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|Util
+name|AdminMessages
 operator|.
-name|M
+name|I
 operator|.
 name|labelAs
 argument_list|(
@@ -294,9 +294,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|Util
+name|AdminMessages
 operator|.
-name|M
+name|I
 operator|.
 name|label
 argument_list|(

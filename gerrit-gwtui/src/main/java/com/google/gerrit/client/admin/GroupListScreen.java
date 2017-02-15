@@ -675,9 +675,9 @@ argument_list|()
 expr_stmt|;
 name|setPageTitle
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|groupListTitle
 argument_list|()
@@ -808,9 +808,9 @@ init|=
 operator|new
 name|Label
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|projectFilter
 argument_list|()
