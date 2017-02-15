@@ -69,7 +69,7 @@ DECL|class|Dummy
 specifier|public
 class|class
 name|Dummy
-block|{ }
+block|{}
 end_class
 
 end_unit
