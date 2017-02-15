@@ -582,6 +582,24 @@ name|account
 operator|.
 name|externalids
 operator|.
+name|ExternalIds
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|externalids
+operator|.
 name|ExternalIdsUpdate
 import|;
 end_import
@@ -1009,6 +1027,12 @@ name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
 decl_stmt|;
+DECL|field|externalIds
+specifier|private
+specifier|final
+name|ExternalIds
+name|externalIds
+decl_stmt|;
 DECL|field|externalIdsUpdateFactory
 specifier|private
 specifier|final
@@ -1019,7 +1043,7 @@ name|externalIdsUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostGpgKeys ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<CurrentUser> self, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory, AccountCache accountCache, Provider<InternalAccountQuery> accountQueryProvider, ExternalIdsUpdate.User externalIdsUpdateFactory)
+DECL|method|PostGpgKeys ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<CurrentUser> self, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory, AccountCache accountCache, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory)
 name|PostGpgKeys
 parameter_list|(
 annotation|@
@@ -1066,6 +1090,9 @@ argument_list|<
 name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
+parameter_list|,
+name|ExternalIds
+name|externalIds
 parameter_list|,
 name|ExternalIdsUpdate
 operator|.
@@ -1120,6 +1147,12 @@ operator|.
 name|accountQueryProvider
 operator|=
 name|accountQueryProvider
+expr_stmt|;
+name|this
+operator|.
+name|externalIds
+operator|=
+name|externalIds
 expr_stmt|;
 name|this
 operator|.
@@ -1176,9 +1209,9 @@ name|ExternalId
 argument_list|>
 name|existingExtIds
 init|=
-name|GpgKeys
+name|externalIds
 operator|.
-name|getGpgExtIds
+name|byAccount
 argument_list|(
 name|db
 operator|.
@@ -1192,10 +1225,9 @@ argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
+argument_list|,
+name|SCHEME_GPGKEY
 argument_list|)
-operator|.
-name|toList
-argument_list|()
 decl_stmt|;
 try|try
 init|(

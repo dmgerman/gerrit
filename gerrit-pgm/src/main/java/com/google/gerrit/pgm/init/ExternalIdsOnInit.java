@@ -166,7 +166,7 @@ name|account
 operator|.
 name|externalids
 operator|.
-name|ExternalIds
+name|ExternalIdReader
 import|;
 end_import
 
@@ -555,7 +555,7 @@ block|{
 name|ObjectId
 name|rev
 init|=
-name|ExternalIds
+name|ExternalIdReader
 operator|.
 name|readRevision
 argument_list|(
@@ -565,7 +565,7 @@ decl_stmt|;
 name|NoteMap
 name|noteMap
 init|=
-name|ExternalIds
+name|ExternalIdReader
 operator|.
 name|readNoteMap
 argument_list|(

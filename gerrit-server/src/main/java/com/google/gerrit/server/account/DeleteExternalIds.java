@@ -290,6 +290,24 @@ name|account
 operator|.
 name|externalids
 operator|.
+name|ExternalIds
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|externalids
+operator|.
 name|ExternalIdsUpdate
 import|;
 end_import
@@ -414,6 +432,12 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|externalIds
+specifier|private
+specifier|final
+name|ExternalIds
+name|externalIds
+decl_stmt|;
 DECL|field|externalIdsUpdateFactory
 specifier|private
 specifier|final
@@ -442,7 +466,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteExternalIds ( AccountByEmailCache accountByEmailCache, AccountCache accountCache, ExternalIdsUpdate.User externalIdsUpdateFactory, Provider<CurrentUser> self, Provider<ReviewDb> dbProvider)
+DECL|method|DeleteExternalIds ( AccountByEmailCache accountByEmailCache, AccountCache accountCache, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, Provider<CurrentUser> self, Provider<ReviewDb> dbProvider)
 name|DeleteExternalIds
 parameter_list|(
 name|AccountByEmailCache
@@ -450,6 +474,9 @@ name|accountByEmailCache
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|ExternalIds
+name|externalIds
 parameter_list|,
 name|ExternalIdsUpdate
 operator|.
@@ -483,6 +510,12 @@ name|accountCache
 expr_stmt|;
 name|this
 operator|.
+name|externalIds
+operator|=
+name|externalIds
+expr_stmt|;
+name|this
+operator|.
 name|externalIdsUpdateFactory
 operator|=
 name|externalIdsUpdateFactory
@@ -502,7 +535,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (AccountResource resource, List<String> externalIds)
+DECL|method|apply (AccountResource resource, List<String> extIds)
 specifier|public
 name|Response
 argument_list|<
@@ -517,7 +550,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|externalIds
+name|extIds
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -551,11 +584,11 @@ throw|;
 block|}
 if|if
 condition|(
-name|externalIds
+name|extIds
 operator|==
 literal|null
 operator|||
-name|externalIds
+name|extIds
 operator|.
 name|size
 argument_list|()
@@ -594,16 +627,15 @@ name|ExternalId
 argument_list|>
 name|externalIdMap
 init|=
+name|externalIds
+operator|.
+name|byAccount
+argument_list|(
 name|dbProvider
 operator|.
 name|get
 argument_list|()
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|byAccount
-argument_list|(
+argument_list|,
 name|resource
 operator|.
 name|getUser
@@ -613,18 +645,8 @@ name|getAccountId
 argument_list|()
 argument_list|)
 operator|.
-name|toList
-argument_list|()
-operator|.
 name|stream
 argument_list|()
-operator|.
-name|map
-argument_list|(
-name|ExternalId
-operator|::
-name|from
-argument_list|)
 operator|.
 name|collect
 argument_list|(
@@ -672,7 +694,7 @@ control|(
 name|String
 name|externalIdStr
 range|:
-name|externalIds
+name|extIds
 control|)
 block|{
 name|ExternalId

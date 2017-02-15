@@ -272,7 +272,7 @@ name|account
 operator|.
 name|externalids
 operator|.
-name|ExternalId
+name|ExternalIds
 import|;
 end_import
 
@@ -1171,9 +1171,15 @@ name|Accessor
 argument_list|>
 name|watchConfig
 decl_stmt|;
+DECL|field|externalIds
+specifier|private
+specifier|final
+name|ExternalIds
+name|externalIds
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByIdLoader ( SchemaFactory<ReviewDb> sf, GroupCache groupCache, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig)
+DECL|method|ByIdLoader ( SchemaFactory<ReviewDb> sf, GroupCache groupCache, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig, ExternalIds externalIds)
 name|ByIdLoader
 parameter_list|(
 name|SchemaFactory
@@ -1213,6 +1219,9 @@ operator|.
 name|Accessor
 argument_list|>
 name|watchConfig
+parameter_list|,
+name|ExternalIds
+name|externalIds
 parameter_list|)
 block|{
 name|this
@@ -1244,6 +1253,12 @@ operator|.
 name|watchConfig
 operator|=
 name|watchConfig
+expr_stmt|;
+name|this
+operator|.
+name|externalIds
+operator|=
+name|externalIds
 expr_stmt|;
 block|}
 annotation|@
@@ -1374,30 +1389,6 @@ name|who
 argument_list|)
 return|;
 block|}
-name|Set
-argument_list|<
-name|ExternalId
-argument_list|>
-name|externalIds
-init|=
-name|ExternalId
-operator|.
-name|from
-argument_list|(
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|byAccount
-argument_list|(
-name|who
-argument_list|)
-operator|.
-name|toList
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|Set
 argument_list|<
 name|AccountGroup
@@ -1540,6 +1531,13 @@ argument_list|,
 name|internalGroups
 argument_list|,
 name|externalIds
+operator|.
+name|byAccount
+argument_list|(
+name|db
+argument_list|,
+name|who
+argument_list|)
 argument_list|,
 name|watchConfig
 operator|.
