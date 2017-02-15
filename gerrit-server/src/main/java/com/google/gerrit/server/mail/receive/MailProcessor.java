@@ -1750,6 +1750,7 @@ operator|.
 name|CHANGE_MESSAGE
 condition|)
 block|{
+comment|// Add a blank line after Patch Set to follow the default format
 if|if
 condition|(
 name|parsedComments
@@ -1762,7 +1763,7 @@ condition|)
 block|{
 name|changeMsg
 operator|+=
-literal|"\n"
+literal|"\n\n"
 operator|+
 name|numComments
 argument_list|(
@@ -1777,7 +1778,7 @@ expr_stmt|;
 block|}
 name|changeMsg
 operator|+=
-literal|"\n"
+literal|"\n\n"
 operator|+
 name|parsedComments
 operator|.
@@ -1793,7 +1794,7 @@ else|else
 block|{
 name|changeMsg
 operator|+=
-literal|"\n"
+literal|"\n\n"
 operator|+
 name|numComments
 argument_list|(
