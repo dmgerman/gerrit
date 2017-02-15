@@ -80,16 +80,6 @@ name|Nullable
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
-import|;
-end_import
-
 begin_comment
 comment|/** Defines an abstract request for user authentication to Gerrit. */
 end_comment
@@ -164,38 +154,6 @@ block|{
 return|return
 name|password
 return|;
-block|}
-DECL|method|checkPassword (String pwd)
-specifier|public
-name|void
-name|checkPassword
-parameter_list|(
-name|String
-name|pwd
-parameter_list|)
-throws|throws
-name|AuthException
-block|{
-if|if
-condition|(
-operator|!
-name|Objects
-operator|.
-name|equals
-argument_list|(
-name|getPassword
-argument_list|()
-argument_list|,
-name|pwd
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|InvalidCredentialsException
-argument_list|()
-throw|;
-block|}
 block|}
 block|}
 end_class

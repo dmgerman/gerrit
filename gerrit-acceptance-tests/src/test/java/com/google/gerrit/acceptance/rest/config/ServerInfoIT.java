@@ -714,18 +714,6 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|auth
-operator|.
-name|isGitBasicAuth
-argument_list|)
-operator|.
-name|isNull
-argument_list|()
-expr_stmt|;
 comment|// change
 name|assertThat
 argument_list|(
@@ -1259,18 +1247,6 @@ operator|.
 name|auth
 operator|.
 name|httpPasswordUrl
-argument_list|)
-operator|.
-name|isNull
-argument_list|()
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|i
-operator|.
-name|auth
-operator|.
-name|isGitBasicAuth
 argument_list|)
 operator|.
 name|isNull

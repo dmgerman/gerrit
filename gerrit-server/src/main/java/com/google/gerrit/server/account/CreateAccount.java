@@ -1027,9 +1027,17 @@ name|extUser
 operator|.
 name|setPassword
 argument_list|(
+name|HashedPassword
+operator|.
+name|fromPassword
+argument_list|(
 name|input
 operator|.
 name|httpPassword
+argument_list|)
+operator|.
+name|encode
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

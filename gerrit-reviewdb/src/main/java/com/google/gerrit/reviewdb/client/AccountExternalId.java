@@ -388,6 +388,8 @@ specifier|protected
 name|String
 name|emailAddress
 decl_stmt|;
+comment|// Encoded version of the hashed and salted password, to be interpreted by the
+comment|// {@link HashedPassword} class.
 annotation|@
 name|Column
 argument_list|(
@@ -575,6 +577,20 @@ else|:
 literal|null
 return|;
 block|}
+DECL|method|setPassword (String hashed)
+specifier|public
+name|void
+name|setPassword
+parameter_list|(
+name|String
+name|hashed
+parameter_list|)
+block|{
+name|password
+operator|=
+name|hashed
+expr_stmt|;
+block|}
 DECL|method|getPassword ()
 specifier|public
 name|String
@@ -584,20 +600,6 @@ block|{
 return|return
 name|password
 return|;
-block|}
-DECL|method|setPassword (String p)
-specifier|public
-name|void
-name|setPassword
-parameter_list|(
-name|String
-name|p
-parameter_list|)
-block|{
-name|password
-operator|=
-name|p
-expr_stmt|;
 block|}
 DECL|method|isTrusted ()
 specifier|public

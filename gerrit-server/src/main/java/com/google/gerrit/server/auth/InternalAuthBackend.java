@@ -221,6 +221,7 @@ return|return
 literal|"gerrit"
 return|;
 block|}
+comment|// TODO(gerritcodereview-team): This function has no coverage.
 annotation|@
 name|Override
 DECL|method|authenticate (AuthRequest req)
@@ -356,18 +357,28 @@ literal|": account inactive or not provisioned in Gerrit"
 argument_list|)
 throw|;
 block|}
-name|req
+if|if
+condition|(
+operator|!
+name|who
 operator|.
 name|checkPassword
 argument_list|(
-name|who
+name|req
 operator|.
 name|getPassword
-argument_list|(
+argument_list|()
+argument_list|,
 name|username
 argument_list|)
-argument_list|)
-expr_stmt|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidCredentialsException
+argument_list|()
+throw|;
+block|}
 return|return
 operator|new
 name|AuthUser

@@ -338,12 +338,6 @@ specifier|final
 name|boolean
 name|userNameToLowerCase
 decl_stmt|;
-DECL|field|gitBasicAuth
-specifier|private
-specifier|final
-name|boolean
-name|gitBasicAuth
-decl_stmt|;
 DECL|field|useContributorAgreements
 specifier|private
 specifier|final
@@ -758,19 +752,6 @@ argument_list|,
 literal|"enableRunAs"
 argument_list|,
 literal|true
-argument_list|)
-expr_stmt|;
-name|gitBasicAuth
-operator|=
-name|cfg
-operator|.
-name|getBoolean
-argument_list|(
-literal|"auth"
-argument_list|,
-literal|"gitBasicAuth"
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|gitBasicAuthPolicy
@@ -1279,17 +1260,6 @@ parameter_list|()
 block|{
 return|return
 name|userNameToLowerCase
-return|;
-block|}
-comment|/** Whether git-over-http should use Gerrit basic authentication scheme. */
-DECL|method|isGitBasicAuth ()
-specifier|public
-name|boolean
-name|isGitBasicAuth
-parameter_list|()
-block|{
-return|return
-name|gitBasicAuth
 return|;
 block|}
 DECL|method|getGitBasicAuthPolicy ()

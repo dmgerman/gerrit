@@ -787,7 +787,15 @@ name|id
 operator|.
 name|setPassword
 argument_list|(
+name|HashedPassword
+operator|.
+name|fromPassword
+argument_list|(
 name|newPassword
+argument_list|)
+operator|.
+name|encode
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|dbProvider
