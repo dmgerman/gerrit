@@ -618,7 +618,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Patch Set 1:\nTest Message"
+literal|"Patch Set 1:\n\nTest Message"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -833,7 +833,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Patch Set 1:\n(1 comment)"
+literal|"Patch Set 1:\n\n(1 comment)"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -1135,7 +1135,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Patch Set 1:\n(1 comment)"
+literal|"Patch Set 1:\n\n(1 comment)"
 argument_list|)
 expr_stmt|;
 name|assertThat
