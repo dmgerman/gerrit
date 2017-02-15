@@ -216,24 +216,6 @@ name|client
 operator|.
 name|GeneralPreferencesInfo
 operator|.
-name|EmailFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|client
-operator|.
-name|GeneralPreferencesInfo
-operator|.
 name|EmailStrategy
 import|;
 end_import
@@ -500,15 +482,6 @@ argument_list|(
 name|d
 operator|.
 name|signedOffBy
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|emailFormat
-argument_list|(
-name|d
-operator|.
-name|emailFormat
 argument_list|)
 expr_stmt|;
 name|p
@@ -897,42 +870,6 @@ name|emailStrategyRaw
 parameter_list|()
 comment|/*-{ return this.email_strategy }-*/
 function_decl|;
-DECL|method|emailFormat ()
-specifier|public
-specifier|final
-name|EmailFormat
-name|emailFormat
-parameter_list|()
-block|{
-name|String
-name|s
-init|=
-name|emailFormatRaw
-argument_list|()
-decl_stmt|;
-return|return
-name|s
-operator|!=
-literal|null
-condition|?
-name|EmailFormat
-operator|.
-name|valueOf
-argument_list|(
-name|s
-argument_list|)
-else|:
-literal|null
-return|;
-block|}
-DECL|method|emailFormatRaw ()
-specifier|private
-specifier|native
-name|String
-name|emailFormatRaw
-parameter_list|()
-comment|/*-{ return this.email_format }-*/
-function_decl|;
 DECL|method|defaultBaseForMerges ()
 specifier|public
 specifier|final
@@ -1317,42 +1254,6 @@ name|String
 name|s
 parameter_list|)
 comment|/*-{ this.email_strategy = s }-*/
-function_decl|;
-DECL|method|emailFormat (EmailFormat f)
-specifier|public
-specifier|final
-name|void
-name|emailFormat
-parameter_list|(
-name|EmailFormat
-name|f
-parameter_list|)
-block|{
-name|emailFormatRaw
-argument_list|(
-name|f
-operator|!=
-literal|null
-condition|?
-name|f
-operator|.
-name|toString
-argument_list|()
-else|:
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|emailFormatRaw (String s)
-specifier|private
-specifier|native
-name|void
-name|emailFormatRaw
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-comment|/*-{ this.email_format = s }-*/
 function_decl|;
 DECL|method|defaultBaseForMerges (DefaultBase b)
 specifier|public
