@@ -231,9 +231,9 @@ name|REFS_CONFIG
 argument_list|,
 literal|null
 argument_list|,
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|editConfigMessage
 argument_list|()

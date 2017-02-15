@@ -272,9 +272,9 @@ name|sendButton
 operator|.
 name|setText
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|buttonCreate
 argument_list|()
@@ -284,9 +284,9 @@ name|message
 operator|.
 name|setText
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|buttonCreateDescription
 argument_list|()

@@ -248,9 +248,9 @@ condition|)
 block|{
 name|setPageTitle
 argument_list|(
-name|Util
+name|AdminMessages
 operator|.
-name|M
+name|I
 operator|.
 name|project
 argument_list|(

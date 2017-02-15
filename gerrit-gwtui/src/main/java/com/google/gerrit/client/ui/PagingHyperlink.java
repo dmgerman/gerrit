@@ -92,7 +92,7 @@ name|client
 operator|.
 name|admin
 operator|.
-name|Util
+name|AdminConstants
 import|;
 end_import
 
@@ -115,9 +115,9 @@ return|return
 operator|new
 name|PagingHyperlink
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|pagedListPrev
 argument_list|()
@@ -135,9 +135,9 @@ return|return
 operator|new
 name|PagingHyperlink
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|pagedListNext
 argument_list|()

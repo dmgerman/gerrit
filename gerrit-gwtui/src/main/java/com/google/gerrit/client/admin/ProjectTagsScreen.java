@@ -627,9 +627,9 @@ init|=
 operator|new
 name|Label
 argument_list|(
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|projectFilter
 argument_list|()
@@ -784,9 +784,9 @@ literal|0
 argument_list|,
 literal|1
 argument_list|,
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|columnTagName
 argument_list|()
@@ -800,9 +800,9 @@ literal|0
 argument_list|,
 literal|2
 argument_list|,
-name|Util
+name|AdminConstants
 operator|.
-name|C
+name|I
 operator|.
 name|columnBranchRevision
 argument_list|()
