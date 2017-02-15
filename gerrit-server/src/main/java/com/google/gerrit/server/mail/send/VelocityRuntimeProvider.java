@@ -500,7 +500,9 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-literal|"velocity"
+name|Slf4jLogChute
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 annotation|@
