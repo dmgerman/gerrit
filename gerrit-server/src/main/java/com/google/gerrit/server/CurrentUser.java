@@ -102,11 +102,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|CapabilityControl
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
+name|ExternalId
 import|;
 end_import
 
@@ -242,7 +242,7 @@ DECL|field|lastLoginExternalIdPropertyKey
 specifier|private
 name|PropertyKey
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 argument_list|>
@@ -500,12 +500,12 @@ name|T
 name|value
 parameter_list|)
 block|{}
-DECL|method|setLastLoginExternalIdKey (AccountExternalId.Key externalIdKey)
+DECL|method|setLastLoginExternalIdKey (ExternalId.Key externalIdKey)
 specifier|public
 name|void
 name|setLastLoginExternalIdKey
 parameter_list|(
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|externalIdKey
@@ -521,7 +521,7 @@ expr_stmt|;
 block|}
 DECL|method|getLastLoginExternalIdKey ()
 specifier|public
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|getLastLoginExternalIdKey

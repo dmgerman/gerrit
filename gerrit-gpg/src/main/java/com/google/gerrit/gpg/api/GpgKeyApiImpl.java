@@ -228,6 +228,20 @@ name|PGPException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
 begin_class
 DECL|class|GpgKeyApiImpl
 specifier|public
@@ -379,6 +393,8 @@ decl||
 name|OrmException
 decl||
 name|IOException
+decl||
+name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{

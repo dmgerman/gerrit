@@ -118,22 +118,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountExternalId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -343,7 +327,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|AccountExternalId
+name|ExternalId
 name|ext
 range|:
 name|user
@@ -367,7 +351,7 @@ name|equalsIgnoreCase
 argument_list|(
 name|ext
 operator|.
-name|getEmailAddress
+name|email
 argument_list|()
 argument_list|)
 condition|)
@@ -397,7 +381,7 @@ parameter_list|)
 block|{
 name|Collection
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|ids
 init|=
@@ -427,7 +411,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|AccountExternalId
+name|ExternalId
 name|ext
 range|:
 name|ids
@@ -442,7 +426,7 @@ name|isNullOrEmpty
 argument_list|(
 name|ext
 operator|.
-name|getEmailAddress
+name|email
 argument_list|()
 argument_list|)
 condition|)
@@ -453,7 +437,7 @@ name|add
 argument_list|(
 name|ext
 operator|.
-name|getEmailAddress
+name|email
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|SCHEME_MAILTO
 import|;
@@ -92,11 +92,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|SCHEME_USERNAME
 import|;
@@ -185,22 +185,6 @@ operator|.
 name|client
 operator|.
 name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountExternalId
 import|;
 end_import
 
@@ -428,7 +412,7 @@ specifier|private
 specifier|final
 name|Collection
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|externalIds
 decl_stmt|;
@@ -461,7 +445,7 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|AccountState ( Account account, Set<AccountGroup.UUID> actualGroups, Collection<AccountExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
+DECL|method|AccountState ( Account account, Set<AccountGroup.UUID> actualGroups, Collection<ExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
 specifier|public
 name|AccountState
 parameter_list|(
@@ -478,7 +462,7 @@ name|actualGroups
 parameter_list|,
 name|Collection
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|externalIds
 parameter_list|,
@@ -542,7 +526,7 @@ return|return
 name|account
 return|;
 block|}
-comment|/**    * Get the username, if one has been declared for this user.    *    *<p>The username is the {@link AccountExternalId} using the scheme {@link    * AccountExternalId#SCHEME_USERNAME}.    */
+comment|/**    * Get the username, if one has been declared for this user.    *    *<p>The username is the {@link ExternalId} using the scheme {@link ExternalId#SCHEME_USERNAME}.    */
 DECL|method|getUserName ()
 specifier|public
 name|String
@@ -581,7 +565,7 @@ return|;
 block|}
 for|for
 control|(
-name|AccountExternalId
+name|ExternalId
 name|id
 range|:
 name|getExternalIds
@@ -596,8 +580,6 @@ name|id
 operator|.
 name|isScheme
 argument_list|(
-name|AccountExternalId
-operator|.
 name|SCHEME_USERNAME
 argument_list|)
 operator|||
@@ -608,7 +590,10 @@ name|equals
 argument_list|(
 name|id
 operator|.
-name|getSchemeRest
+name|key
+argument_list|()
+operator|.
+name|id
 argument_list|()
 argument_list|)
 condition|)
@@ -620,7 +605,7 @@ name|hashedStr
 init|=
 name|id
 operator|.
-name|getPassword
+name|password
 argument_list|()
 decl_stmt|;
 if|if
@@ -690,7 +675,7 @@ DECL|method|getExternalIds ()
 specifier|public
 name|Collection
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|getExternalIds
 parameter_list|()
@@ -734,7 +719,7 @@ return|return
 name|internalGroups
 return|;
 block|}
-DECL|method|getUserName (Collection<AccountExternalId> ids)
+DECL|method|getUserName (Collection<ExternalId> ids)
 specifier|public
 specifier|static
 name|String
@@ -742,22 +727,22 @@ name|getUserName
 parameter_list|(
 name|Collection
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|ids
 parameter_list|)
 block|{
 for|for
 control|(
-name|AccountExternalId
-name|id
+name|ExternalId
+name|extId
 range|:
 name|ids
 control|)
 block|{
 if|if
 condition|(
-name|id
+name|extId
 operator|.
 name|isScheme
 argument_list|(
@@ -766,9 +751,12 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|id
+name|extId
 operator|.
-name|getSchemeRest
+name|key
+argument_list|()
+operator|.
+name|id
 argument_list|()
 return|;
 block|}
@@ -777,7 +765,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getEmails (Collection<AccountExternalId> ids)
+DECL|method|getEmails (Collection<ExternalId> ids)
 specifier|public
 specifier|static
 name|Set
@@ -788,7 +776,7 @@ name|getEmails
 parameter_list|(
 name|Collection
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|ids
 parameter_list|)
@@ -806,15 +794,15 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|AccountExternalId
-name|id
+name|ExternalId
+name|extId
 range|:
 name|ids
 control|)
 block|{
 if|if
 condition|(
-name|id
+name|extId
 operator|.
 name|isScheme
 argument_list|(
@@ -826,9 +814,12 @@ name|emails
 operator|.
 name|add
 argument_list|(
-name|id
+name|extId
 operator|.
-name|getSchemeRest
+name|key
+argument_list|()
+operator|.
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;

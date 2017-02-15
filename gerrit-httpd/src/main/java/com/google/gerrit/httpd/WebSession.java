@@ -102,22 +102,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountExternalId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|AccessPath
@@ -154,6 +138,22 @@ name|AuthResult
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|ExternalId
+import|;
+end_import
+
 begin_interface
 DECL|interface|WebSession
 specifier|public
@@ -181,7 +181,7 @@ name|keyIn
 parameter_list|)
 function_decl|;
 DECL|method|getLastLoginExternalId ()
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|getLastLoginExternalId

@@ -132,11 +132,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|AccountState
 import|;
 end_import
 
@@ -152,7 +152,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountState
+name|ExternalId
 import|;
 end_import
 
@@ -377,7 +377,7 @@ name|id
 lambda|->
 name|id
 operator|.
-name|getKey
+name|key
 argument_list|()
 operator|.
 name|get
@@ -470,9 +470,9 @@ operator|.
 name|getExternalIds
 argument_list|()
 argument_list|,
-name|AccountExternalId
+name|ExternalId
 operator|::
-name|getEmailAddress
+name|email
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -685,9 +685,9 @@ argument_list|)
 operator|.
 name|transform
 argument_list|(
-name|AccountExternalId
+name|ExternalId
 operator|::
-name|getEmailAddress
+name|email
 argument_list|)
 operator|.
 name|append

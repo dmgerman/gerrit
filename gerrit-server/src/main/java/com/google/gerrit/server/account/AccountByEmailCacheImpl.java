@@ -733,7 +733,7 @@ name|equals
 argument_list|(
 name|e
 operator|.
-name|getEmailAddress
+name|email
 argument_list|()
 argument_list|)
 argument_list|)

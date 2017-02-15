@@ -124,11 +124,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|SCHEME_GERRIT
 import|;
@@ -244,11 +244,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|ExternalId
 import|;
 end_import
 
@@ -872,7 +872,7 @@ name|WebSession
 name|session
 parameter_list|)
 block|{
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|id
@@ -891,10 +891,11 @@ name|id
 operator|.
 name|equals
 argument_list|(
-operator|new
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
+operator|.
+name|create
 argument_list|(
 name|SCHEME_GERRIT
 argument_list|,

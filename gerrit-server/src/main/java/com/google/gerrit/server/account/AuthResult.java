@@ -82,22 +82,6 @@ name|Account
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountExternalId
-import|;
-end_import
-
 begin_comment
 comment|/** Result from {@link AccountManager#authenticate(AuthRequest)}. */
 end_comment
@@ -119,7 +103,7 @@ decl_stmt|;
 DECL|field|externalId
 specifier|private
 specifier|final
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|externalId
@@ -130,23 +114,20 @@ specifier|final
 name|boolean
 name|isNew
 decl_stmt|;
-DECL|method|AuthResult ( final Account.Id accountId, final AccountExternalId.Key externalId, final boolean isNew)
+DECL|method|AuthResult (Account.Id accountId, ExternalId.Key externalId, boolean isNew)
 specifier|public
 name|AuthResult
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|accountId
 parameter_list|,
-specifier|final
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|externalId
 parameter_list|,
-specifier|final
 name|boolean
 name|isNew
 parameter_list|)
@@ -186,7 +167,7 @@ block|}
 comment|/** External identity used to authenticate the user. */
 DECL|method|getExternalId ()
 specifier|public
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|getExternalId
