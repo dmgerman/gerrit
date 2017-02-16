@@ -3738,7 +3738,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|VisibleForTesting
 DECL|method|getReadOnlyUntil ()
+specifier|public
 name|Timestamp
 name|getReadOnlyUntil
 parameter_list|()
