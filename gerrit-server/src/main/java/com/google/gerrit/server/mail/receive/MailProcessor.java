@@ -780,9 +780,6 @@ argument_list|(
 name|MailProcessor
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|accountByEmailCache

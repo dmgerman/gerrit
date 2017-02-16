@@ -301,9 +301,6 @@ argument_list|(
 name|MailReceiver
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|mailSettings
