@@ -315,7 +315,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|OrmException
 argument_list|(
 name|e
 argument_list|)
