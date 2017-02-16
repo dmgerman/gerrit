@@ -420,9 +420,7 @@ argument_list|)
 operator|.
 name|subject
 argument_list|(
-literal|"Change in gerrit[master]: (Re)enable voting"
-operator|+
-literal|" buttons for merged changes"
+literal|"Change in gerrit[master]: (Re)enable voting buttons for merged changes"
 argument_list|)
 operator|.
 name|dateReceived
@@ -452,9 +450,7 @@ argument_list|)
 operator|.
 name|addAdditionalHeader
 argument_list|(
-literal|"Authentication-Results: mx.google.com; "
-operator|+
-literal|"dkim=pass header.i=@google.com;"
+literal|"Authentication-Results: mx.google.com; dkim=pass header.i=@google.com;"
 argument_list|)
 operator|.
 name|addAdditionalHeader

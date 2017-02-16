@@ -2616,9 +2616,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Expected merged commit %s is not merged into"
-operator|+
-literal|" destination ref %s (%s)"
+literal|"Expected merged commit %s is not merged into destination ref %s (%s)"
 argument_list|,
 name|commit
 operator|.
@@ -2855,9 +2853,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Expected merged commit %s has Change-Id: %s,"
-operator|+
-literal|" but expected %s"
+literal|"Expected merged commit %s has Change-Id: %s, but expected %s"
 argument_list|,
 name|commit
 operator|.

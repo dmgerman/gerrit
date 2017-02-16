@@ -601,9 +601,7 @@ literal|true
 argument_list|,
 name|usage
 operator|=
-literal|"The tree or commit to "
-operator|+
-literal|"produce an archive for."
+literal|"The tree or commit to produce an archive for."
 argument_list|)
 DECL|field|treeIsh
 specifier|private

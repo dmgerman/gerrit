@@ -885,9 +885,7 @@ literal|"BRANCH"
 argument_list|,
 name|usage
 operator|=
-literal|"initial branch name\n"
-operator|+
-literal|"(default: master)"
+literal|"initial branch name\n(default: master)"
 argument_list|)
 DECL|field|branch
 specifier|private

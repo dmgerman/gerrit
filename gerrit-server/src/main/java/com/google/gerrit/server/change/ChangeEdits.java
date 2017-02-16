@@ -2376,9 +2376,7 @@ block|}
 argument_list|,
 name|usage
 operator|=
-literal|"whether to load the content on the base revision instead of the"
-operator|+
-literal|" change edit"
+literal|"whether to load the content on the base revision instead of the change edit"
 argument_list|)
 DECL|field|base
 specifier|private
@@ -2884,9 +2882,7 @@ block|}
 argument_list|,
 name|usage
 operator|=
-literal|"whether to load the message on the base revision instead"
-operator|+
-literal|" of the change edit"
+literal|"whether to load the message on the base revision instead of the change edit"
 argument_list|)
 DECL|field|base
 specifier|private

@@ -3189,9 +3189,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"cannot apply NoteDb updates for change %s;"
-operator|+
-literal|" change meta ref does not match %s"
+literal|"cannot apply NoteDb updates for change %s; change meta ref does not match %s"
 argument_list|,
 name|id
 argument_list|,

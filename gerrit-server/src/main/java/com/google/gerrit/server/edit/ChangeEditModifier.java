@@ -901,9 +901,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"A change edit "
-operator|+
-literal|"already exists for change %s"
+literal|"A change edit already exists for change %s"
 argument_list|,
 name|changeControl
 operator|.

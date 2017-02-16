@@ -948,9 +948,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"You are not allowed to edit permissions"
-operator|+
-literal|"for ref: "
+literal|"You are not allowed to edit permissionsfor ref: "
 operator|+
 name|section
 operator|.
@@ -1042,9 +1040,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"You are not allowed to edit permissions"
-operator|+
-literal|"for ref: "
+literal|"You are not allowed to edit permissionsfor ref: "
 operator|+
 name|name
 argument_list|)
@@ -1926,9 +1922,7 @@ throw|throw
 operator|new
 name|BadRequestException
 argument_list|(
-literal|"Cannot edit global capabilities "
-operator|+
-literal|"for projects other than "
+literal|"Cannot edit global capabilities for projects other than "
 operator|+
 name|allProjects
 operator|.
@@ -1956,9 +1950,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"Editing global capabilities "
-operator|+
-literal|"requires "
+literal|"Editing global capabilities requires "
 operator|+
 name|GlobalCapability
 operator|.

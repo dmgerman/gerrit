@@ -1950,9 +1950,7 @@ argument_list|(
 literal|null
 comment|/* force an answer */
 argument_list|,
-literal|"error: SHA-1 checksum does not match\n"
-operator|+
-literal|"Use %s anyway"
+literal|"error: SHA-1 checksum does not match\nUse %s anyway"
 argument_list|,
 comment|//
 name|dst

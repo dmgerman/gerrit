@@ -1908,9 +1908,7 @@ argument_list|()
 expr_stmt|;
 name|assertWithMessage
 argument_list|(
-literal|"submodule subscription update "
-operator|+
-literal|"should have made one commit"
+literal|"submodule subscription update should have made one commit"
 argument_list|)
 operator|.
 name|that
@@ -2461,9 +2459,7 @@ argument_list|()
 expr_stmt|;
 name|assertWithMessage
 argument_list|(
-literal|"submodule subscription update "
-operator|+
-literal|"should have made one commit"
+literal|"submodule subscription update should have made one commit"
 argument_list|)
 operator|.
 name|that
@@ -2742,9 +2738,7 @@ argument_list|()
 expr_stmt|;
 name|assertWithMessage
 argument_list|(
-literal|"submodule subscription update "
-operator|+
-literal|"should have made one commit"
+literal|"submodule subscription update should have made one commit"
 argument_list|)
 operator|.
 name|that
@@ -2990,9 +2984,7 @@ argument_list|()
 expr_stmt|;
 name|assertWithMessage
 argument_list|(
-literal|"submodule subscription update "
-operator|+
-literal|"should have made one commit"
+literal|"submodule subscription update should have made one commit"
 argument_list|)
 operator|.
 name|that

@@ -512,13 +512,7 @@ name|stmt
 operator|.
 name|executeQuery
 argument_list|(
-literal|"SELECT "
-operator|+
-literal|"account_id, "
-operator|+
-literal|"change_id "
-operator|+
-literal|"FROM starred_changes"
+literal|"SELECT account_id, change_id FROM starred_changes"
 argument_list|)
 init|)
 block|{

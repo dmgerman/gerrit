@@ -1069,9 +1069,7 @@ name|id2
 operator|+
 literal|"}"
 argument_list|,
-literal|"createdOn differs for Changes:"
-operator|+
-literal|" {2009-09-30 17:00:00.0} != {2009-09-30 17:00:06.0}"
+literal|"createdOn differs for Changes: {2009-09-30 17:00:00.0} != {2009-09-30 17:00:06.0}"
 argument_list|,
 literal|"effective last updated time differs for Changes:"
 operator|+
@@ -2200,9 +2198,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" {} != {null}"
+literal|": {} != {null}"
 argument_list|)
 expr_stmt|;
 comment|// Topic ignored if ReviewDb is empty and NoteDb is null.
@@ -2327,9 +2323,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" {} != {null}"
+literal|": {} != {null}"
 argument_list|)
 expr_stmt|;
 comment|// Null is not equal to a non-empty string.
@@ -2411,9 +2405,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" {topic} != {null}"
+literal|": {topic} != {null}"
 argument_list|)
 expr_stmt|;
 comment|// Null is equal to a string that is all whitespace.
@@ -2619,9 +2611,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" { abc } != {abc}"
+literal|": { abc } != {abc}"
 argument_list|)
 expr_stmt|;
 comment|// Leading whitespace in ReviewDb topic is ignored.
@@ -2768,9 +2758,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" { abc } != {cba}"
+literal|": { abc } != {cba}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3467,9 +3455,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" {Change subject} != {Change sub}"
+literal|": {Change subject} != {Change sub}"
 argument_list|)
 expr_stmt|;
 comment|// ReviewDb has shorter subject, allowed.
@@ -3598,9 +3584,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" {Change subject} != {Change sub}"
+literal|": {Change subject} != {Change sub}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4376,9 +4360,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" {1} != {0}"
+literal|": {1} != {0}"
 argument_list|,
 literal|"subject differs for Change.Id "
 operator|+
@@ -5296,9 +5278,7 @@ literal|"ChangeMessages differ for Change.Id "
 operator|+
 name|id
 operator|+
-literal|"\n"
-operator|+
-literal|"Only in A:\n  "
+literal|"\nOnly in A:\n  "
 operator|+
 name|cm2
 argument_list|)
@@ -5313,9 +5293,7 @@ literal|"ChangeMessages differ for Change.Id "
 operator|+
 name|id
 operator|+
-literal|"\n"
-operator|+
-literal|"Only in B:\n  "
+literal|"\nOnly in B:\n  "
 operator|+
 name|cm2
 argument_list|)
@@ -6438,9 +6416,7 @@ name|b1
 argument_list|,
 name|b2
 argument_list|,
-literal|"PatchSet.Id sets differ:"
-operator|+
-literal|" [] only in A; ["
+literal|"PatchSet.Id sets differ: [] only in A; ["
 operator|+
 name|c
 operator|.
@@ -7545,9 +7521,7 @@ argument_list|()
 operator|+
 literal|"] only in B"
 argument_list|,
-literal|"PatchSet.Id sets differ:"
-operator|+
-literal|" [] only in A; ["
+literal|"PatchSet.Id sets differ: [] only in A; ["
 operator|+
 name|ps2
 operator|.
@@ -7556,9 +7530,7 @@ argument_list|()
 operator|+
 literal|"] only in B"
 argument_list|,
-literal|"PatchSetApproval.Key sets differ:"
-operator|+
-literal|" [] only in A; ["
+literal|"PatchSetApproval.Key sets differ: [] only in A; ["
 operator|+
 name|a2
 operator|.
@@ -7650,15 +7622,11 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|"\n"
-operator|+
-literal|"Only in B:\n  "
+literal|"\nOnly in B:\n  "
 operator|+
 name|cm2
 argument_list|,
-literal|"PatchSet.Id sets differ:"
-operator|+
-literal|" [] only in A; ["
+literal|"PatchSet.Id sets differ: [] only in A; ["
 operator|+
 name|ps2
 operator|.
@@ -7667,9 +7635,7 @@ argument_list|()
 operator|+
 literal|"] only in B"
 argument_list|,
-literal|"PatchSetApproval.Key sets differ:"
-operator|+
-literal|" [] only in A; ["
+literal|"PatchSetApproval.Key sets differ: [] only in A; ["
 operator|+
 name|a2
 operator|.
@@ -7761,15 +7727,11 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|"\n"
-operator|+
-literal|"Only in B:\n  "
+literal|"\nOnly in B:\n  "
 operator|+
 name|cm2
 argument_list|,
-literal|"PatchSet.Id sets differ:"
-operator|+
-literal|" [] only in A; ["
+literal|"PatchSet.Id sets differ: [] only in A; ["
 operator|+
 name|ps2
 operator|.
@@ -7778,9 +7740,7 @@ argument_list|()
 operator|+
 literal|"] only in B"
 argument_list|,
-literal|"PatchSetApproval.Key sets differ:"
-operator|+
-literal|" [] only in A; ["
+literal|"PatchSetApproval.Key sets differ: [] only in A; ["
 operator|+
 name|a2
 operator|.
@@ -7953,9 +7913,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" { abc } != {abc}"
+literal|": { abc } != {abc}"
 argument_list|)
 expr_stmt|;
 comment|// Whitespace in ReviewDb description is ignored.
@@ -8110,9 +8068,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|":"
-operator|+
-literal|" { abc } != {cba}"
+literal|": { abc } != {cba}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -9937,11 +9893,7 @@ name|b1
 argument_list|,
 name|b2
 argument_list|,
-literal|"reviewer sets differ:"
-operator|+
-literal|" [1] only in A;"
-operator|+
-literal|" [2] only in B"
+literal|"reviewer sets differ: [1] only in A; [2] only in B"
 argument_list|)
 expr_stmt|;
 block|}

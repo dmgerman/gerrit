@@ -278,9 +278,7 @@ name|expect
 operator|.
 name|id
 argument_list|(
-literal|"<CAM7sg=3meaAVUxW3KXeJEVs8sv_ADw1BnvpcHHiYVR2TQQi__w"
-operator|+
-literal|"@mail.gmail.com>"
+literal|"<CAM7sg=3meaAVUxW3KXeJEVs8sv_ADw1BnvpcHHiYVR2TQQi__w@mail.gmail.com>"
 argument_list|)
 operator|.
 name|from

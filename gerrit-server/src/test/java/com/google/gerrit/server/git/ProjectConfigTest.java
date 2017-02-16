@@ -1386,9 +1386,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"project.config: Invalid defaultValue \"-2\" "
-operator|+
-literal|"for label \"CustomLabel\""
+literal|"project.config: Invalid defaultValue \"-2\" for label \"CustomLabel\""
 argument_list|)
 expr_stmt|;
 block|}

@@ -2484,9 +2484,7 @@ block|,
 DECL|enumConstant|DELETE
 name|DELETE
 argument_list|(
-literal|"You need 'Push' rights with the 'Force Push'\n"
-operator|+
-literal|"flag set to delete references."
+literal|"You need 'Push' rights with the 'Force Push'\nflag set to delete references."
 argument_list|)
 block|,
 DECL|enumConstant|DELETE_CHANGES
@@ -5723,9 +5721,7 @@ operator|.
 name|matches
 argument_list|()
 argument_list|,
-literal|"expected a new patch set command as input when creating %s;"
-operator|+
-literal|" got %s"
+literal|"expected a new patch set command as input when creating %s; got %s"
 argument_list|,
 name|replace
 operator|.
@@ -17618,9 +17614,7 @@ expr_stmt|;
 block|}
 name|logDebug
 argument_list|(
-literal|"Auto-closing {} changes with existing patch sets and {} with"
-operator|+
-literal|" new patch sets"
+literal|"Auto-closing {} changes with existing patch sets and {} with new patch sets"
 argument_list|,
 name|existingPatchSets
 argument_list|,

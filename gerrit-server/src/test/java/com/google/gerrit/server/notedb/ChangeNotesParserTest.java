@@ -367,11 +367,7 @@ name|assertParseFails
 argument_list|(
 name|writeCommit
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
+literal|"Update change\n\nPatch-set: 1\n"
 argument_list|,
 operator|new
 name|PersonIdent
@@ -397,11 +393,7 @@ name|assertParseFails
 argument_list|(
 name|writeCommit
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
+literal|"Update change\n\nPatch-set: 1\n"
 argument_list|,
 operator|new
 name|PersonIdent
@@ -427,11 +419,7 @@ name|assertParseFails
 argument_list|(
 name|writeCommit
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
+literal|"Update change\n\nPatch-set: 1\n"
 argument_list|,
 operator|new
 name|PersonIdent
@@ -500,26 +488,12 @@ argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Status: OOPS\n"
+literal|"Update change\n\nPatch-set: 1\nStatus: OOPS\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Status: NEW\n"
-operator|+
-literal|"Status: NEW\n"
+literal|"Update change\n\nPatch-set: 1\nStatus: NEW\nStatus: NEW\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -550,20 +524,12 @@ argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
+literal|"Update change\n\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Patch-set: 1\n"
+literal|"Update change\n\nPatch-set: 1\nPatch-set: 1\n"
 argument_list|)
 expr_stmt|;
 name|assertParseSucceeds
@@ -583,11 +549,7 @@ argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: x\n"
+literal|"Update change\n\nPatch-set: x\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -645,68 +607,32 @@ argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Label: Label1=X\n"
+literal|"Update change\n\nPatch-set: 1\nLabel: Label1=X\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Label: Label1 = 1\n"
+literal|"Update change\n\nPatch-set: 1\nLabel: Label1 = 1\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Label: X+Y\n"
+literal|"Update change\n\nPatch-set: 1\nLabel: X+Y\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Label: Label1 Other Account<2@gerrit>\n"
+literal|"Update change\n\nPatch-set: 1\nLabel: Label1 Other Account<2@gerrit>\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Label: -Label!1\n"
+literal|"Update change\n\nPatch-set: 1\nLabel: -Label!1\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Label: -Label!1 Other Account<2@gerrit>\n"
+literal|"Update change\n\nPatch-set: 1\nLabel: -Label!1 Other Account<2@gerrit>\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -749,24 +675,12 @@ argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Submitted-with: OOPS\n"
+literal|"Update change\n\nPatch-set: 1\nSubmitted-with: OOPS\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Submitted-with: NEED: X+Y\n"
+literal|"Update change\n\nPatch-set: 1\nSubmitted-with: NEED: X+Y\n"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
@@ -864,13 +778,7 @@ argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Reviewer: 1@gerrit\n"
+literal|"Update change\n\nPatch-set: 1\nReviewer: 1@gerrit\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -920,15 +828,7 @@ argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Topic: Some Topic\n"
-operator|+
-literal|"Topic: Other Topic"
+literal|"Update change\n\nPatch-set: 1\nTopic: Some Topic\nTopic: Other Topic"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1449,46 +1349,22 @@ name|Exception
 block|{
 name|assertParseSucceeds
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Current: true"
+literal|"Update change\n\nPatch-set: 1\nCurrent: true"
 argument_list|)
 expr_stmt|;
 name|assertParseSucceeds
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Current: tRUe"
+literal|"Update change\n\nPatch-set: 1\nCurrent: tRUe"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Current: false"
+literal|"Update change\n\nPatch-set: 1\nCurrent: false"
 argument_list|)
 expr_stmt|;
 name|assertParseFails
 argument_list|(
-literal|"Update change\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Current: blah"
+literal|"Update change\n\nPatch-set: 1\nCurrent: blah"
 argument_list|)
 expr_stmt|;
 block|}

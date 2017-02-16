@@ -1097,9 +1097,7 @@ block|{
 throw|throw
 name|die
 argument_list|(
-literal|"--http-password and --clear-http-password options are "
-operator|+
-literal|"mutually exclusive."
+literal|"--http-password and --clear-http-password options are mutually exclusive."
 argument_list|)
 throw|;
 block|}

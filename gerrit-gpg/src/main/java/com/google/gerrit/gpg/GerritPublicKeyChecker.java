@@ -1546,9 +1546,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"Key must contain a valid"
-operator|+
-literal|" certification for one of the following identities:\n"
+literal|"Key must contain a valid certification for one of the following identities:\n"
 argument_list|)
 decl_stmt|;
 name|Iterator

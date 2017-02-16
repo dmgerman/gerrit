@@ -1010,9 +1010,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"ERROR: Failed to create reflog file for the"
-operator|+
-literal|" %s branch in repository %s"
+literal|"ERROR: Failed to create reflog file for the %s branch in repository %s"
 argument_list|,
 name|RefNames
 operator|.

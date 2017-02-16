@@ -2116,9 +2116,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"SubmitRuleEvaluator.evaluate for change %s "
-operator|+
-literal|"returned empty list for %s in %s"
+literal|"SubmitRuleEvaluator.evaluate for change %s returned empty list for %s in %s"
 argument_list|,
 name|cd
 operator|.
@@ -4646,9 +4644,7 @@ operator|.
 name|project
 argument_list|()
 operator|+
-literal|" no longer exists, "
-operator|+
-literal|"abandoning open changes"
+literal|" no longer exists, abandoning open changes"
 argument_list|)
 expr_stmt|;
 name|abandonAllOpenChangeForDeletedProject

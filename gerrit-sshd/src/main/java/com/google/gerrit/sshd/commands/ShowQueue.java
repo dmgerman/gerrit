@@ -610,9 +610,7 @@ name|stdout
 operator|.
 name|print
 argument_list|(
-literal|"----------------------------------------------"
-operator|+
-literal|"--------------------------------\n"
+literal|"------------------------------------------------------------------------------\n"
 argument_list|)
 expr_stmt|;
 name|List
@@ -1027,9 +1025,7 @@ name|stdout
 operator|.
 name|print
 argument_list|(
-literal|"----------------------------------------------"
-operator|+
-literal|"--------------------------------\n"
+literal|"------------------------------------------------------------------------------\n"
 argument_list|)
 expr_stmt|;
 name|stdout

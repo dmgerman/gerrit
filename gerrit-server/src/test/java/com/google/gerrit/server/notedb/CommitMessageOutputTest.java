@@ -702,9 +702,7 @@ name|update
 operator|.
 name|setChangeMessage
 argument_list|(
-literal|"Just a little code change.\n"
-operator|+
-literal|"How about a new line"
+literal|"Just a little code change.\nHow about a new line"
 argument_list|)
 expr_stmt|;
 name|update
@@ -945,13 +943,7 @@ argument_list|()
 expr_stmt|;
 name|assertBodyEquals
 argument_list|(
-literal|"Update patch set 1\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Label: -Code-Review\n"
+literal|"Update patch set 1\n\nPatch-set: 1\nLabel: -Code-Review\n"
 argument_list|,
 name|update
 operator|.
@@ -1351,15 +1343,7 @@ argument_list|)
 decl_stmt|;
 name|assertBodyEquals
 argument_list|(
-literal|"Update patch set 1\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Comment on the change.\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
+literal|"Update patch set 1\n\nComment on the change.\n\nPatch-set: 1\n"
 argument_list|,
 name|commit
 argument_list|)
@@ -1542,13 +1526,7 @@ argument_list|()
 expr_stmt|;
 name|assertBodyEquals
 argument_list|(
-literal|"Update patch set 1\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Reviewer: Change Owner<1@gerrit>\n"
+literal|"Update patch set 1\n\nPatch-set: 1\nReviewer: Change Owner<1@gerrit>\n"
 argument_list|,
 name|update
 operator|.
@@ -1587,9 +1565,7 @@ name|update
 operator|.
 name|setChangeMessage
 argument_list|(
-literal|"Testing trailing double newline\n"
-operator|+
-literal|"\n"
+literal|"Testing trailing double newline\n\n"
 argument_list|)
 expr_stmt|;
 name|update
@@ -1650,15 +1626,7 @@ name|update
 operator|.
 name|setChangeMessage
 argument_list|(
-literal|"Testing paragraph 1\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Testing paragraph 2\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Testing paragraph 3"
+literal|"Testing paragraph 1\n\nTesting paragraph 2\n\nTesting paragraph 3"
 argument_list|)
 expr_stmt|;
 name|update
@@ -2161,13 +2129,7 @@ argument_list|()
 expr_stmt|;
 name|assertBodyEquals
 argument_list|(
-literal|"Update patch set 1\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Patch-set: 1\n"
-operator|+
-literal|"Current: true\n"
+literal|"Update patch set 1\n\nPatch-set: 1\nCurrent: true\n"
 argument_list|,
 name|update
 operator|.

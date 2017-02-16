@@ -354,13 +354,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"A\n"
-operator|+
-literal|"<a href=\"?42\">issue 42</a>\n"
-operator|+
-literal|"<a href=\"?9918\">issue 9918</a>\n"
-operator|+
-literal|"B"
+literal|"A\n<a href=\"?42\">issue 42</a>\n<a href=\"?9918\">issue 9918</a>\nB"
 argument_list|)
 expr_stmt|;
 block|}

@@ -416,9 +416,7 @@ throw|throw
 operator|new
 name|UnsupportedOperationException
 argument_list|(
-literal|"do not call atomicUpdate; updateChange is always called within a"
-operator|+
-literal|" transaction"
+literal|"do not call atomicUpdate; updateChange is always called within a transaction"
 argument_list|)
 throw|;
 block|}

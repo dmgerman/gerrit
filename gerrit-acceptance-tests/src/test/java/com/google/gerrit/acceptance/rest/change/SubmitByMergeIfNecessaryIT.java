@@ -2687,9 +2687,7 @@ name|repo3
 argument_list|,
 literal|"master"
 argument_list|,
-literal|"some accompanying changes for change3a in another repo "
-operator|+
-literal|"tied together via topic"
+literal|"some accompanying changes for change3a in another repo tied together via topic"
 argument_list|,
 literal|"a.txt"
 argument_list|,

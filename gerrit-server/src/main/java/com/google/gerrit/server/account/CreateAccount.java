@@ -958,9 +958,7 @@ literal|"Username '"
 operator|+
 name|username
 operator|+
-literal|"'"
-operator|+
-literal|" must contain only letters, numbers, _, - or ."
+literal|"' must contain only letters, numbers, _, - or ."
 argument_list|)
 throw|;
 block|}

@@ -1356,9 +1356,7 @@ comment|// Append and push malformed project config
 name|String
 name|pattern
 init|=
-literal|"[access]\n"
-operator|+
-literal|"\tinheritFrom = "
+literal|"[access]\n\tinheritFrom = "
 operator|+
 name|allProjects
 operator|.

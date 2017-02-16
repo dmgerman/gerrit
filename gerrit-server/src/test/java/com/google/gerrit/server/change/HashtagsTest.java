@@ -463,9 +463,7 @@ block|{
 name|String
 name|commitMessage
 init|=
-literal|"Jag #mÃ¥ste #Ã¶va pÃ¥ min #Svenska!\n\n"
-operator|+
-literal|"Jag behÃ¶ver en #lÃ¤kare."
+literal|"Jag #mÃ¥ste #Ã¶va pÃ¥ min #Svenska!\n\nJag behÃ¶ver en #lÃ¤kare."
 decl_stmt|;
 name|assertThat
 argument_list|(

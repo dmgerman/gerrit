@@ -1486,9 +1486,7 @@ name|r1
 operator|.
 name|assertMessage
 argument_list|(
-literal|"New changes:\n"
-operator|+
-literal|"  "
+literal|"New changes:\n  "
 operator|+
 name|url
 operator|+
@@ -1923,9 +1921,7 @@ decl_stmt|;
 name|String
 name|pushSpec
 init|=
-literal|"refs/for/master"
-operator|+
-literal|"%reviewer="
+literal|"refs/for/master%reviewer="
 operator|+
 name|user
 operator|.
@@ -6327,11 +6323,7 @@ name|createCommit
 argument_list|(
 name|testRepo
 argument_list|,
-literal|"Message with invalid Change-Id\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Change-Id: X\n"
+literal|"Message with invalid Change-Id\n\nChange-Id: X\n"
 argument_list|)
 expr_stmt|;
 name|pushForReviewRejected

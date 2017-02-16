@@ -1549,9 +1549,7 @@ argument_list|(
 name|project
 argument_list|)
 argument_list|,
-literal|"passed project %s when creating ChangeNotes for %s, but actual"
-operator|+
-literal|" project is %s"
+literal|"passed project %s when creating ChangeNotes for %s, but actual project is %s"
 argument_list|,
 name|project
 argument_list|,
@@ -1767,9 +1765,7 @@ operator|.
 name|readChanges
 argument_list|()
 argument_list|,
-literal|"do not call"
-operator|+
-literal|" createFromChangeWhenNoteDbDisabled when NoteDb is enabled"
+literal|"do not call createFromChangeWhenNoteDbDisabled when NoteDb is enabled"
 argument_list|)
 expr_stmt|;
 return|return
@@ -2539,9 +2535,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"skipping change {} found in project {} "
-operator|+
-literal|"but not in ReviewDb"
+literal|"skipping change {} found in project {} but not in ReviewDb"
 argument_list|,
 name|id
 argument_list|,
@@ -2580,9 +2574,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"skipping change {} found in project {} "
-operator|+
-literal|"because ReviewDb change has project {}"
+literal|"skipping change {} found in project {} because ReviewDb change has project {}"
 argument_list|,
 name|id
 argument_list|,

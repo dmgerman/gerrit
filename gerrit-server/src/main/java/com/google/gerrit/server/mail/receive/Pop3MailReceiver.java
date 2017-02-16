@@ -436,9 +436,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Could not login to POP3 email server."
-operator|+
-literal|" Check username and password"
+literal|"Could not login to POP3 email server. Check username and password"
 argument_list|)
 expr_stmt|;
 return|return;

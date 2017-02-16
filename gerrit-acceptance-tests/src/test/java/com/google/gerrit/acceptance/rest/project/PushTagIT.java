@@ -1309,9 +1309,7 @@ name|firstNonNull
 argument_list|(
 name|tagName
 argument_list|,
-literal|"v1"
-operator|+
-literal|"_"
+literal|"v1_"
 operator|+
 name|System
 operator|.

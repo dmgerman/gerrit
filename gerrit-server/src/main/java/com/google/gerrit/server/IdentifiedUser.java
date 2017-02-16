@@ -1878,9 +1878,7 @@ name|user
 operator|=
 name|user
 operator|+
-literal|"|"
-operator|+
-literal|"account-"
+literal|"|account-"
 operator|+
 name|ua
 operator|.

@@ -435,9 +435,7 @@ name|Failure
 argument_list|(
 literal|1
 argument_list|,
-literal|"Server configuration error:"
-operator|+
-literal|" LFS auth over SSH is not properly configured."
+literal|"Server configuration error: LFS auth over SSH is not properly configured."
 argument_list|)
 throw|;
 block|}

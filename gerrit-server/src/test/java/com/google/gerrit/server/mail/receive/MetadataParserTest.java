@@ -473,9 +473,7 @@ operator|.
 name|CHANGE_ID
 argument_list|)
 operator|+
-literal|"cid"
-operator|+
-literal|"\r\n"
+literal|"cid\r\n"
 argument_list|)
 expr_stmt|;
 name|stringBuilder
@@ -491,9 +489,7 @@ operator|.
 name|PATCH_SET
 argument_list|)
 operator|+
-literal|"1"
-operator|+
-literal|"\n"
+literal|"1\n"
 argument_list|)
 expr_stmt|;
 name|stringBuilder
@@ -507,9 +503,7 @@ operator|.
 name|MESSAGE_TYPE
 argument_list|)
 operator|+
-literal|"comment"
-operator|+
-literal|"\n"
+literal|"comment\n"
 argument_list|)
 expr_stmt|;
 name|stringBuilder
@@ -523,9 +517,7 @@ operator|.
 name|TIMESTAMP
 argument_list|)
 operator|+
-literal|"Tue, 25 Oct 2016 02:11:35 -0700"
-operator|+
-literal|"\r\n"
+literal|"Tue, 25 Oct 2016 02:11:35 -0700\r\n"
 argument_list|)
 expr_stmt|;
 name|b
@@ -722,9 +714,7 @@ operator|.
 name|CHANGE_ID
 argument_list|)
 operator|+
-literal|"cid"
-operator|+
-literal|"</div>"
+literal|"cid</div>"
 argument_list|)
 expr_stmt|;
 name|stringBuilder
@@ -740,9 +730,7 @@ operator|.
 name|PATCH_SET
 argument_list|)
 operator|+
-literal|"1"
-operator|+
-literal|"</div>"
+literal|"1</div>"
 argument_list|)
 expr_stmt|;
 name|stringBuilder
@@ -758,9 +746,7 @@ operator|.
 name|MESSAGE_TYPE
 argument_list|)
 operator|+
-literal|"comment"
-operator|+
-literal|"</div>"
+literal|"comment</div>"
 argument_list|)
 expr_stmt|;
 name|stringBuilder

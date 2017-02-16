@@ -1159,9 +1159,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Submit rule '%s' for change %s of %s has "
-operator|+
-literal|"no solution."
+literal|"Submit rule '%s' for change %s of %s has no solution."
 argument_list|,
 name|getSubmitRuleName
 argument_list|()
@@ -1844,9 +1842,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Submit rule %s for change %s of %s output "
-operator|+
-literal|"invalid result: %s%s"
+literal|"Submit rule %s for change %s of %s output invalid result: %s%s"
 argument_list|,
 name|rule
 argument_list|,

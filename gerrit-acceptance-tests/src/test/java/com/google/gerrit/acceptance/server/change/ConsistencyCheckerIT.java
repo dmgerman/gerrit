@@ -1310,9 +1310,7 @@ literal|null
 argument_list|,
 name|problem
 argument_list|(
-literal|"Invalid revision on patch set 1:"
-operator|+
-literal|" fooooooooooooooooooooooooooooooooooooooo"
+literal|"Invalid revision on patch set 1: fooooooooooooooooooooooooooooooooooooooo"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1378,9 +1376,7 @@ argument_list|)
 argument_list|,
 name|problem
 argument_list|(
-literal|"Object missing: patch set 2:"
-operator|+
-literal|" deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+literal|"Object missing: patch set 2: deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5029,11 +5025,7 @@ operator|.
 name|getShortMessage
 argument_list|()
 operator|+
-literal|"\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Change-Id: "
+literal|"\n\nChange-Id: "
 operator|+
 name|badId
 operator|+

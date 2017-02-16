@@ -3355,9 +3355,7 @@ comment|// Push another new change (change 2)
 name|String
 name|subject
 init|=
-literal|"Test change\n\n"
-operator|+
-literal|"Change-Id: Ideadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+literal|"Test change\n\nChange-Id: Ideadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
 decl_stmt|;
 name|PushOneCommit
 name|push
@@ -4703,9 +4701,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Cherry Pick: Parent 0 does not exist. Please"
-operator|+
-literal|" specify a parent in range [1, 2]."
+literal|"Cherry Pick: Parent 0 does not exist. Please specify a parent in range [1, 2]."
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -4818,9 +4814,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Cherry Pick: Parent 3 does not exist. Please"
-operator|+
-literal|" specify a parent in range [1, 2]."
+literal|"Cherry Pick: Parent 3 does not exist. Please specify a parent in range [1, 2]."
 argument_list|)
 expr_stmt|;
 name|gApi

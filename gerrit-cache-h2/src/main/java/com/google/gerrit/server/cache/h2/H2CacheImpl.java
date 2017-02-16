@@ -3380,11 +3380,7 @@ name|s
 operator|.
 name|executeQuery
 argument_list|(
-literal|"SELECT"
-operator|+
-literal|" SUM(OCTET_LENGTH(k) + OCTET_LENGTH(v))"
-operator|+
-literal|" FROM data"
+literal|"SELECT SUM(OCTET_LENGTH(k) + OCTET_LENGTH(v)) FROM data"
 argument_list|)
 init|)
 block|{

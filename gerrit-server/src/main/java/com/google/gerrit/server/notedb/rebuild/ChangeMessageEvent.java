@@ -262,9 +262,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^Change has been successfully"
-operator|+
-literal|" (merged|cherry-picked|rebased|pushed).*$"
+literal|"^Change has been successfully (merged|cherry-picked|rebased|pushed).*$"
 argument_list|)
 argument_list|,
 name|Change

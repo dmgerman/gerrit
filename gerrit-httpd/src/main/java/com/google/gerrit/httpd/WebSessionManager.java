@@ -625,9 +625,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"cache.%s.maxAge is set to %d milliseconds;"
-operator|+
-literal|" it should be at least 5 minutes."
+literal|"cache.%s.maxAge is set to %d milliseconds; it should be at least 5 minutes."
 argument_list|,
 name|CACHE_NAME
 argument_list|,

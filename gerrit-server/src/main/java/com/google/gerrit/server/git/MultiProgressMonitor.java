@@ -928,9 +928,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"MultiProgressMonitor worker did not call end()"
-operator|+
-literal|" before returning"
+literal|"MultiProgressMonitor worker did not call end() before returning"
 argument_list|)
 expr_stmt|;
 name|end

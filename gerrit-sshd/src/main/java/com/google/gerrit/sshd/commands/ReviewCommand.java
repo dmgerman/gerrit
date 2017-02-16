@@ -1047,9 +1047,7 @@ literal|"--strict-labels"
 argument_list|,
 name|usage
 operator|=
-literal|"Strictly check if the labels "
-operator|+
-literal|"specified can be applied to the given patch set(s)"
+literal|"Strictly check if the labels specified can be applied to the given patch set(s)"
 argument_list|)
 DECL|field|strictLabels
 specifier|private

@@ -815,9 +815,7 @@ literal|"has "
 operator|+
 name|mediumGroupSize
 operator|+
-literal|" members. Do you want to add them"
-operator|+
-literal|" all as reviewers?"
+literal|" members. Do you want to add them all as reviewers?"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -4243,9 +4241,7 @@ literal|"has "
 operator|+
 name|mediumGroupSize
 operator|+
-literal|" members. Do you want to add them all"
-operator|+
-literal|" as reviewers?"
+literal|" members. Do you want to add them all as reviewers?"
 argument_list|)
 expr_stmt|;
 comment|// No labels should have changed, and no reviewers/CCs should have been added.

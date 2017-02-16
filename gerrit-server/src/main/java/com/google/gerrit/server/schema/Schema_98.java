@@ -172,9 +172,7 @@ name|ui
 operator|.
 name|message
 argument_list|(
-literal|"Migrate user preference showUserInReview to "
-operator|+
-literal|"reviewCategoryStrategy"
+literal|"Migrate user preference showUserInReview to reviewCategoryStrategy"
 argument_list|)
 expr_stmt|;
 try|try
