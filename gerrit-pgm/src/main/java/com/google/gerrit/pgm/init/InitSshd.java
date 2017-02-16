@@ -375,12 +375,6 @@ specifier|final
 name|SitePaths
 name|site
 decl_stmt|;
-DECL|field|libraries
-specifier|private
-specifier|final
-name|Libraries
-name|libraries
-decl_stmt|;
 DECL|field|sshd
 specifier|private
 specifier|final
@@ -389,7 +383,7 @@ name|sshd
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitSshd ( final ConsoleUI ui, final SitePaths site, final Libraries libraries, final Section.Factory sections)
+DECL|method|InitSshd (final ConsoleUI ui, final SitePaths site, final Section.Factory sections)
 name|InitSshd
 parameter_list|(
 specifier|final
@@ -399,10 +393,6 @@ parameter_list|,
 specifier|final
 name|SitePaths
 name|site
-parameter_list|,
-specifier|final
-name|Libraries
-name|libraries
 parameter_list|,
 specifier|final
 name|Section
@@ -422,12 +412,6 @@ operator|.
 name|site
 operator|=
 name|site
-expr_stmt|;
-name|this
-operator|.
-name|libraries
-operator|=
-name|libraries
 expr_stmt|;
 name|this
 operator|.

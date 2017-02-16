@@ -267,12 +267,6 @@ specifier|final
 name|Section
 name|receive
 decl_stmt|;
-DECL|field|libraries
-specifier|private
-specifier|final
-name|Libraries
-name|libraries
-decl_stmt|;
 DECL|field|flags
 specifier|private
 specifier|final
@@ -281,7 +275,7 @@ name|flags
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitAuth (InitFlags flags, ConsoleUI ui, Libraries libraries, Section.Factory sections)
+DECL|method|InitAuth (InitFlags flags, ConsoleUI ui, Section.Factory sections)
 name|InitAuth
 parameter_list|(
 name|InitFlags
@@ -289,9 +283,6 @@ name|flags
 parameter_list|,
 name|ConsoleUI
 name|ui
-parameter_list|,
-name|Libraries
-name|libraries
 parameter_list|,
 name|Section
 operator|.
@@ -349,12 +340,6 @@ name|RECEIVE
 argument_list|,
 literal|null
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|libraries
-operator|=
-name|libraries
 expr_stmt|;
 block|}
 annotation|@
