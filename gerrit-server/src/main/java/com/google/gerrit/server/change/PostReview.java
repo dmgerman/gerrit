@@ -2012,6 +2012,13 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|cleanUpComments
+argument_list|(
+name|input
+operator|.
+name|comments
+argument_list|)
+expr_stmt|;
 name|checkComments
 argument_list|(
 name|revision
@@ -3515,48 +3522,6 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|checkComments ( RevisionResource revision, Map<String, List<T>> commentsPerPath)
-specifier|private
-parameter_list|<
-name|T
-extends|extends
-name|CommentInput
-parameter_list|>
-name|void
-name|checkComments
-parameter_list|(
-name|RevisionResource
-name|revision
-parameter_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|T
-argument_list|>
-argument_list|>
-name|commentsPerPath
-parameter_list|)
-throws|throws
-name|BadRequestException
-throws|,
-name|OrmException
-block|{
-name|cleanUpComments
-argument_list|(
-name|commentsPerPath
-argument_list|)
-expr_stmt|;
-name|ensureCommentsAreAddable
-argument_list|(
-name|revision
-argument_list|,
-name|commentsPerPath
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|cleanUpComments (Map<String, List<T>> commentsPerPath)
 specifier|private
 parameter_list|<
@@ -3742,7 +3707,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|ensureCommentsAreAddable ( RevisionResource revision, Map<String, List<T>> commentsPerPath)
+DECL|method|checkComments ( RevisionResource revision, Map<String, List<T>> commentsPerPath)
 specifier|private
 parameter_list|<
 name|T
@@ -3750,7 +3715,7 @@ extends|extends
 name|CommentInput
 parameter_list|>
 name|void
-name|ensureCommentsAreAddable
+name|checkComments
 parameter_list|(
 name|RevisionResource
 name|revision
@@ -3866,6 +3831,15 @@ argument_list|(
 name|path
 argument_list|,
 name|comment
+argument_list|)
+expr_stmt|;
+name|ensureRangeIsValid
+argument_list|(
+name|path
+argument_list|,
+name|comment
+operator|.
+name|range
 argument_list|)
 expr_stmt|;
 block|}
@@ -4105,6 +4079,11 @@ name|BadRequestException
 throws|,
 name|OrmException
 block|{
+name|cleanUpComments
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Map
@@ -4656,9 +4635,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Range (%s:%s - %s:%s) is not"
-operator|+
-literal|" valid for the replacement of the robot comment on %s"
+literal|"Range (%s:%s - %s:%s) is not valid for the comment on %s"
 argument_list|,
 name|range
 operator|.

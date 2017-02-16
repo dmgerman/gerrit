@@ -426,6 +426,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|hamcrest
+operator|.
+name|core
+operator|.
+name|StringContains
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -1895,15 +1907,10 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-name|String
-operator|.
-name|format
+operator|new
+name|StringContains
 argument_list|(
-literal|"Range (13:9 - 5:10) is not valid for the replacement of the robot comment on %s"
-argument_list|,
-name|withFixRobotCommentInput
-operator|.
-name|path
+literal|"Range (13:9 - 5:10)"
 argument_list|)
 argument_list|)
 expr_stmt|;
