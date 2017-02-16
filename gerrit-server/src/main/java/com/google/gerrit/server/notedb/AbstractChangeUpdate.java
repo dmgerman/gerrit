@@ -278,6 +278,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Date
@@ -295,6 +305,20 @@ operator|.
 name|lib
 operator|.
 name|CommitBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -439,6 +463,12 @@ specifier|final
 name|Date
 name|when
 decl_stmt|;
+DECL|field|readOnlySkewMs
+specifier|private
+specifier|final
+name|long
+name|readOnlySkewMs
+decl_stmt|;
 DECL|field|notes
 annotation|@
 name|Nullable
@@ -454,7 +484,7 @@ name|Change
 name|change
 decl_stmt|;
 DECL|field|serverIdent
-specifier|private
+specifier|protected
 specifier|final
 name|PersonIdent
 name|serverIdent
@@ -471,10 +501,13 @@ specifier|private
 name|ObjectId
 name|result
 decl_stmt|;
-DECL|method|AbstractChangeUpdate ( NotesMigration migration, ChangeControl ctl, PersonIdent serverIdent, String anonymousCowardName, ChangeNoteUtil noteUtil, Date when)
+DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeControl ctl, PersonIdent serverIdent, String anonymousCowardName, ChangeNoteUtil noteUtil, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
+name|Config
+name|cfg
+parameter_list|,
 name|NotesMigration
 name|migration
 parameter_list|,
@@ -608,11 +641,25 @@ name|when
 operator|=
 name|when
 expr_stmt|;
+name|this
+operator|.
+name|readOnlySkewMs
+operator|=
+name|NoteDbChangeState
+operator|.
+name|getReadOnlySkew
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
 block|}
-DECL|method|AbstractChangeUpdate ( NotesMigration migration, ChangeNoteUtil noteUtil, PersonIdent serverIdent, String anonymousCowardName, @Nullable ChangeNotes notes, @Nullable Change change, Account.Id accountId, Account.Id realAccountId, PersonIdent authorIdent, Date when)
+DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeNoteUtil noteUtil, PersonIdent serverIdent, String anonymousCowardName, @Nullable ChangeNotes notes, @Nullable Change change, Account.Id accountId, Account.Id realAccountId, PersonIdent authorIdent, Date when)
 specifier|protected
 name|AbstractChangeUpdate
 parameter_list|(
+name|Config
+name|cfg
+parameter_list|,
 name|NotesMigration
 name|migration
 parameter_list|,
@@ -751,6 +798,17 @@ operator|.
 name|when
 operator|=
 name|when
+expr_stmt|;
+name|this
+operator|.
+name|readOnlySkewMs
+operator|=
+name|NoteDbChangeState
+operator|.
+name|getReadOnlySkew
+argument_list|(
+name|cfg
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|checkUserType (CurrentUser user)
@@ -1126,6 +1184,9 @@ operator|==
 name|ins
 argument_list|)
 expr_stmt|;
+name|checkNotReadOnly
+argument_list|()
+expr_stmt|;
 name|ObjectId
 name|z
 init|=
@@ -1292,6 +1353,75 @@ expr_stmt|;
 return|return
 name|result
 return|;
+block|}
+DECL|method|checkNotReadOnly ()
+specifier|protected
+name|void
+name|checkNotReadOnly
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+name|ChangeNotes
+name|notes
+init|=
+name|getNotes
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|notes
+operator|==
+literal|null
+condition|)
+block|{
+comment|// Can only happen during ChangeRebuilder, which will never include a read-only lease.
+return|return;
+block|}
+name|Timestamp
+name|until
+init|=
+name|notes
+operator|.
+name|getReadOnlyUntil
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|until
+operator|!=
+literal|null
+operator|&&
+name|NoteDbChangeState
+operator|.
+name|timeForReadOnlyCheck
+argument_list|(
+name|readOnlySkewMs
+argument_list|)
+operator|.
+name|before
+argument_list|(
+name|until
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"change "
+operator|+
+name|notes
+operator|.
+name|getChangeId
+argument_list|()
+operator|+
+literal|" is read-only until "
+operator|+
+name|until
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**    * Create a commit containing the contents of this update.    *    * @param ins inserter to write to; callers should not flush.    * @return a new commit builder representing this commit, or null to indicate the meta ref should    *     be deleted as a result of this update. The parent, author, and committer fields in the    *     return value are always overwritten. The tree ID may be unset by this method, which    *     indicates to the caller that it should be copied from the parent commit. To indicate that    *     this update is a no-op (but this could not be determined by {@link #isEmpty()}), return the    *     sentinel {@link #NO_OP_UPDATE}.    * @throws OrmException if a Gerrit-level error occurred.    * @throws IOException if a lower-level error occurred.    */
 DECL|method|applyImpl (RevWalk rw, ObjectInserter ins, ObjectId curr)

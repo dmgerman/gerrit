@@ -342,6 +342,24 @@ name|notedb
 operator|.
 name|ChangeNoteUtil
 operator|.
+name|FOOTER_READ_ONLY_UNTIL
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNoteUtil
+operator|.
 name|FOOTER_REAL_USER
 import|;
 end_import
@@ -782,6 +800,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -899,6 +933,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
 import|;
 end_import
 
@@ -1027,6 +1071,20 @@ operator|.
 name|lib
 operator|.
 name|CommitBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -1419,6 +1477,11 @@ specifier|private
 name|boolean
 name|currentPatchSet
 decl_stmt|;
+DECL|field|readOnlyUntil
+specifier|private
+name|Timestamp
+name|readOnlyUntil
+decl_stmt|;
 DECL|field|draftUpdate
 specifier|private
 name|ChangeDraftUpdate
@@ -1431,10 +1494,15 @@ name|robotCommentUpdate
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
+parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|PersonIdent
@@ -1480,6 +1548,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|cfg
+argument_list|,
 name|serverIdent
 argument_list|,
 name|anonymousCowardName
@@ -1509,10 +1579,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
+parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|PersonIdent
@@ -1563,6 +1638,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|cfg
+argument_list|,
 name|serverIdent
 argument_list|,
 name|anonymousCowardName
@@ -1666,10 +1743,15 @@ return|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
+parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|PersonIdent
@@ -1725,6 +1807,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|cfg
+argument_list|,
 name|migration
 argument_list|,
 name|ctl
@@ -1774,10 +1858,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) @Nullable Account.Id accountId, @Assisted(R) @Nullable Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) @Nullable Account.Id accountId, @Assisted(R) @Nullable Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
+parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|PersonIdent
@@ -1862,6 +1951,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|cfg
+argument_list|,
 name|migration
 argument_list|,
 name|noteUtil
@@ -4253,6 +4344,30 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|readOnlyUntil
+operator|!=
+literal|null
+condition|)
+block|{
+name|addFooter
+argument_list|(
+name|msg
+argument_list|,
+name|FOOTER_READ_ONLY_UNTIL
+argument_list|,
+name|ChangeNoteUtil
+operator|.
+name|formatTime
+argument_list|(
+name|serverIdent
+argument_list|,
+name|readOnlyUntil
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|cb
 operator|.
 name|setMessage
@@ -4478,6 +4593,10 @@ literal|null
 operator|&&
 operator|!
 name|currentPatchSet
+operator|&&
+name|readOnlyUntil
+operator|==
+literal|null
 return|;
 block|}
 DECL|method|getDraftUpdate ()
@@ -4523,6 +4642,21 @@ block|{
 return|return
 name|isAllowWriteToNewtRef
 return|;
+block|}
+DECL|method|setReadOnlyUntil (Timestamp readOnlyUntil)
+name|void
+name|setReadOnlyUntil
+parameter_list|(
+name|Timestamp
+name|readOnlyUntil
+parameter_list|)
+block|{
+name|this
+operator|.
+name|readOnlyUntil
+operator|=
+name|readOnlyUntil
+expr_stmt|;
 block|}
 DECL|method|addFooter (StringBuilder sb, FooterKey footer)
 specifier|private
@@ -4688,6 +4822,39 @@ expr_stmt|;
 return|return
 name|sb
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|checkNotReadOnly ()
+specifier|protected
+name|void
+name|checkNotReadOnly
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+comment|// Allow setting Read-only-until to 0 to release an existing lease.
+if|if
+condition|(
+name|readOnlyUntil
+operator|!=
+literal|null
+operator|&&
+name|readOnlyUntil
+operator|.
+name|getTime
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+return|return;
+block|}
+name|super
+operator|.
+name|checkNotReadOnly
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class

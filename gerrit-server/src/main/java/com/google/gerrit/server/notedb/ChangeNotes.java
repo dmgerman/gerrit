@@ -796,6 +796,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -3726,6 +3736,18 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
+return|;
+block|}
+DECL|method|getReadOnlyUntil ()
+name|Timestamp
+name|getReadOnlyUntil
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|readOnlyUntil
+argument_list|()
 return|;
 block|}
 annotation|@
