@@ -1125,6 +1125,38 @@ literal|"not used by tests"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
+DECL|method|isOutdated ()
+specifier|public
+name|boolean
+name|isOutdated
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not used by tests"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|reload ()
+specifier|public
+name|void
+name|reload
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not used by tests"
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class

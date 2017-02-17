@@ -401,6 +401,22 @@ argument_list|>
 name|list
 parameter_list|()
 function_decl|;
+comment|/** @return<code>true</code> if currently loaded values are outdated */
+DECL|method|isOutdated ()
+specifier|public
+specifier|abstract
+name|boolean
+name|isOutdated
+parameter_list|()
+function_decl|;
+comment|/** Reload the values */
+DECL|method|reload ()
+specifier|public
+specifier|abstract
+name|void
+name|reload
+parameter_list|()
+function_decl|;
 block|}
 end_class
 
