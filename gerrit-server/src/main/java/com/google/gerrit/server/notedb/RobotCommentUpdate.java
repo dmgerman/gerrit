@@ -246,6 +246,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -377,6 +393,20 @@ operator|.
 name|lib
 operator|.
 name|CommitBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -551,10 +581,15 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|RobotCommentUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|RobotCommentUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted ChangeNotes notes, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|RobotCommentUpdate
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
+parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|PersonIdent
@@ -609,6 +644,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|cfg
+argument_list|,
 name|migration
 argument_list|,
 name|noteUtil
@@ -633,10 +670,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|RobotCommentUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
+DECL|method|RobotCommentUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) Account.Id accountId, @Assisted(R) Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when)
 specifier|private
 name|RobotCommentUpdate
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
+parameter_list|,
 annotation|@
 name|GerritPersonIdent
 name|PersonIdent
@@ -691,6 +733,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|cfg
+argument_list|,
 name|migration
 argument_list|,
 name|noteUtil

@@ -1940,7 +1940,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|timeForReadOnlyCheck (long skewMs)
-specifier|private
 specifier|static
 name|Timestamp
 name|timeForReadOnlyCheck

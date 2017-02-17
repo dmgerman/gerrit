@@ -555,10 +555,12 @@ name|ImmutableListMultimap
 operator|.
 name|of
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments)
+DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -715,6 +717,11 @@ argument_list|,
 name|Comment
 argument_list|>
 name|publishedComments
+parameter_list|,
+annotation|@
+name|Nullable
+name|Timestamp
+name|readOnlyUntil
 parameter_list|)
 block|{
 if|if
@@ -845,6 +852,8 @@ name|copyOf
 argument_list|(
 name|publishedComments
 argument_list|)
+argument_list|,
+name|readOnlyUntil
 argument_list|)
 return|;
 block|}
@@ -1103,6 +1112,14 @@ argument_list|,
 name|Comment
 argument_list|>
 name|publishedComments
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|readOnlyUntil ()
+specifier|abstract
+name|Timestamp
+name|readOnlyUntil
 parameter_list|()
 function_decl|;
 DECL|method|newChange (Project.NameKey project)
