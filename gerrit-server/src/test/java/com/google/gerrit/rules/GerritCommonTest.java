@@ -519,11 +519,7 @@ expr_stmt|;
 name|String
 name|script
 init|=
-literal|"loopy :- b(5).\n"
-operator|+
-literal|"b(N) :- N> 0, !, S = N - 1, b(S).\n"
-operator|+
-literal|"b(_) :- true.\n"
+literal|"loopy :- b(5).\nb(N) :- N> 0, !, S = N - 1, b(S).\nb(_) :- true.\n"
 decl_stmt|;
 name|SymbolTerm
 name|nameTerm

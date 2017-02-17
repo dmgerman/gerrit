@@ -337,9 +337,7 @@ operator|new
 name|SqlStore
 argument_list|<>
 argument_list|(
-literal|"jdbc:h2:mem:"
-operator|+
-literal|"Test_"
+literal|"jdbc:h2:mem:Test_"
 operator|+
 operator|(
 operator|++

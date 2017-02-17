@@ -271,9 +271,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Bouncy Castle PGP not installed; signed push verification is"
-operator|+
-literal|" disabled"
+literal|"Bouncy Castle PGP not installed; signed push verification is disabled"
 argument_list|)
 expr_stmt|;
 block|}

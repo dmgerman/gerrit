@@ -567,9 +567,7 @@ specifier|final
 name|String
 name|PARENT_NOT_FOUND
 init|=
-literal|"Change contains an invalid project configuration:\n"
-operator|+
-literal|"Parent project does not exist."
+literal|"Change contains an invalid project configuration:\nParent project does not exist."
 decl_stmt|;
 DECL|field|PLUGIN_VALUE_NOT_EDITABLE
 specifier|private

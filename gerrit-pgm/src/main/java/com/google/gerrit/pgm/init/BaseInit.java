@@ -1524,9 +1524,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Couldn't find distribution archive location."
-operator|+
-literal|" No plugin will be installed"
+literal|"Couldn't find distribution archive location. No plugin will be installed"
 argument_list|)
 expr_stmt|;
 return|return

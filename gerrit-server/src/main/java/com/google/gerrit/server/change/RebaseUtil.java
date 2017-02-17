@@ -1141,9 +1141,7 @@ throw|throw
 operator|new
 name|UnprocessableEntityException
 argument_list|(
-literal|"Cannot rebase a change without any parents"
-operator|+
-literal|" (is this the initial commit?)."
+literal|"Cannot rebase a change without any parents (is this the initial commit?)."
 argument_list|)
 throw|;
 block|}
@@ -1278,9 +1276,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"Change is already based on the latest patch set of the"
-operator|+
-literal|" dependent change."
+literal|"Change is already based on the latest patch set of the dependent change."
 argument_list|)
 throw|;
 block|}

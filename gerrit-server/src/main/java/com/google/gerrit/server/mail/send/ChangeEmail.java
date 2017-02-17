@@ -1415,9 +1415,7 @@ block|{
 return|return
 name|velocify
 argument_list|(
-literal|"<gerrit.${change.createdOn.time}.$change.key.get()"
-operator|+
-literal|"@$email.gerritHost>"
+literal|"<gerrit.${change.createdOn.time}.$change.key.get()@$email.gerritHost>"
 argument_list|)
 return|;
 block|}

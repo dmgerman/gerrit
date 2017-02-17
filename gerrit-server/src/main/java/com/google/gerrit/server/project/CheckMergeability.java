@@ -475,9 +475,7 @@ literal|"STRATEGY"
 argument_list|,
 name|usage
 operator|=
-literal|"name of the merge strategy, refer to "
-operator|+
-literal|"org.eclipse.jgit.merge.MergeStrategy"
+literal|"name of the merge strategy, refer to org.eclipse.jgit.merge.MergeStrategy"
 argument_list|)
 DECL|method|setStrategy (String strategy)
 specifier|public

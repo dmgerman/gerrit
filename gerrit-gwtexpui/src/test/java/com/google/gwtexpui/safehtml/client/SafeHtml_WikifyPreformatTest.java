@@ -180,9 +180,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"<p>A</p>"
-operator|+
-literal|"<p>"
+literal|"<p>A</p><p>"
 operator|+
 name|pre
 argument_list|(
@@ -398,9 +396,7 @@ argument_list|(
 literal|"  S"
 argument_list|)
 operator|+
-literal|"</p>"
-operator|+
-literal|"<p>B</p>"
+literal|"</p><p>B</p>"
 argument_list|)
 expr_stmt|;
 block|}

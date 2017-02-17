@@ -866,9 +866,7 @@ operator|+
 name|getSitePath
 argument_list|()
 operator|+
-literal|"'\n"
-operator|+
-literal|"Perhaps you need to run init first?"
+literal|"'\nPerhaps you need to run init first?"
 argument_list|)
 throw|;
 block|}

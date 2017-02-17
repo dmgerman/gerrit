@@ -1201,15 +1201,11 @@ name|hdrs
 argument_list|,
 literal|"Content-Type"
 argument_list|,
-literal|"multipart/alternative; "
-operator|+
-literal|"boundary=\""
+literal|"multipart/alternative; boundary=\""
 operator|+
 name|boundary
 operator|+
-literal|"\"; "
-operator|+
-literal|"charset=UTF-8"
+literal|"\"; charset=UTF-8"
 argument_list|)
 expr_stmt|;
 name|encodedBody

@@ -2352,9 +2352,7 @@ throw|throw
 operator|new
 name|OrmRuntimeException
 argument_list|(
-literal|"Could not determine complete set of "
-operator|+
-literal|"changes to be submitted"
+literal|"Could not determine complete set of changes to be submitted"
 argument_list|,
 name|e
 argument_list|)

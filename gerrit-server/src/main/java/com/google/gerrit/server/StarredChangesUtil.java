@@ -1156,9 +1156,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"The labels %s and %s are mutually exclusive."
-operator|+
-literal|" Only one of them can be set."
+literal|"The labels %s and %s are mutually exclusive. Only one of them can be set."
 argument_list|,
 name|label1
 argument_list|,

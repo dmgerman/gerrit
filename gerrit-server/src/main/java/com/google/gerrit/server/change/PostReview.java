@@ -4339,9 +4339,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"A description is required "
-operator|+
-literal|"for the suggested fix of the robot comment on %s"
+literal|"A description is required for the suggested fix of the robot comment on %s"
 argument_list|,
 name|commentPath
 argument_list|)
@@ -4504,9 +4502,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"A file path must be given "
-operator|+
-literal|"for the replacement of the robot comment on %s"
+literal|"A file path must be given for the replacement of the robot comment on %s"
 argument_list|,
 name|commentPath
 argument_list|)
@@ -4600,9 +4596,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"A range must be given "
-operator|+
-literal|"for the replacement of the robot comment on %s"
+literal|"A range must be given for the replacement of the robot comment on %s"
 argument_list|,
 name|commentPath
 argument_list|)

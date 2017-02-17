@@ -488,9 +488,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"(type Ctrl-D or \"halt.\" to exit,"
-operator|+
-literal|" \"['path/to/file.pl'].\" to load a file)"
+literal|"(type Ctrl-D or \"halt.\" to exit, \"['path/to/file.pl'].\" to load a file)"
 argument_list|)
 expr_stmt|;
 name|System

@@ -3568,9 +3568,7 @@ throw|throw
 operator|new
 name|SubmoduleException
 argument_list|(
-literal|"Could not perform a revwalk to "
-operator|+
-literal|"create superproject commit message"
+literal|"Could not perform a revwalk to create superproject commit message"
 argument_list|,
 name|e
 argument_list|)

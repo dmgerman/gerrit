@@ -1408,9 +1408,7 @@ name|getAccountId
 argument_list|()
 argument_list|)
 argument_list|,
-literal|"The author for the following comment does not match the author of"
-operator|+
-literal|" this %s (%s): %s"
+literal|"The author for the following comment does not match the author of this %s (%s): %s"
 argument_list|,
 name|getClass
 argument_list|()

@@ -1194,9 +1194,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Authentication failed for {}: password does not match the one"
-operator|+
-literal|" stored in Gerrit"
+literal|"Authentication failed for {}: password does not match the one stored in Gerrit"
 argument_list|,
 name|username
 argument_list|)

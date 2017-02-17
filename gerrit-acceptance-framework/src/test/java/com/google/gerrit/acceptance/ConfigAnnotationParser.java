@@ -477,9 +477,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"GerritConfig.name must be of the format"
-operator|+
-literal|" section.subsection.name or section.name"
+literal|"GerritConfig.name must be of the format section.subsection.name or section.name"
 argument_list|)
 throw|;
 block|}

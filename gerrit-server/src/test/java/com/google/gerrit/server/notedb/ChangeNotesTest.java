@@ -10448,9 +10448,7 @@ name|update
 operator|.
 name|setChangeMessage
 argument_list|(
-literal|"Testing trailing double newline\n"
-operator|+
-literal|"\n"
+literal|"Testing trailing double newline\n\n"
 argument_list|)
 expr_stmt|;
 name|update
@@ -10526,9 +10524,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Testing trailing double newline\n"
-operator|+
-literal|"\n"
+literal|"Testing trailing double newline\n\n"
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -10581,15 +10577,7 @@ name|update
 operator|.
 name|setChangeMessage
 argument_list|(
-literal|"Testing paragraph 1\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Testing paragraph 2\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"Testing paragraph 3"
+literal|"Testing paragraph 1\n\nTesting paragraph 2\n\nTesting paragraph 3"
 argument_list|)
 expr_stmt|;
 name|update

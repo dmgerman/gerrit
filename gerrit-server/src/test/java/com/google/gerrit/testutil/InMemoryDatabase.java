@@ -519,9 +519,7 @@ name|setProperty
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"jdbc:h2:mem:"
-operator|+
-literal|"Test_"
+literal|"jdbc:h2:mem:Test_"
 operator|+
 operator|(
 operator|++

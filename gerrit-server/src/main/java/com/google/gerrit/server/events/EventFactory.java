@@ -1340,9 +1340,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Error while getting full commit message for"
-operator|+
-literal|" change "
+literal|"Error while getting full commit message for change "
 operator|+
 name|a
 operator|.

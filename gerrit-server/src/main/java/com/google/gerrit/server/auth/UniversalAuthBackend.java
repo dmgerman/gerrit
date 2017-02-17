@@ -342,9 +342,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Multiple AuthBackends attempted to handle request:"
-operator|+
-literal|" authUsers=%s authExs=%s"
+literal|"Multiple AuthBackends attempted to handle request: authUsers=%s authExs=%s"
 argument_list|,
 name|authUsers
 argument_list|,

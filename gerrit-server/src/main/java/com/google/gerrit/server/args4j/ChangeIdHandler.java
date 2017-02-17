@@ -408,9 +408,7 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
-literal|"change should be specified as "
-operator|+
-literal|"<project>,<branch>,<change-id>"
+literal|"change should be specified as<project>,<branch>,<change-id>"
 argument_list|)
 throw|;
 block|}

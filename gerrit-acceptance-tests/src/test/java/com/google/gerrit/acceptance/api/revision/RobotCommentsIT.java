@@ -1380,9 +1380,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"A description is required for the "
-operator|+
-literal|"suggested fix of the robot comment on %s"
+literal|"A description is required for the suggested fix of the robot comment on %s"
 argument_list|,
 name|withFixRobotCommentInput
 operator|.
@@ -1636,9 +1634,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"A file path must be given for the "
-operator|+
-literal|"replacement of the robot comment on %s"
+literal|"A file path must be given for the replacement of the robot comment on %s"
 argument_list|,
 name|withFixRobotCommentInput
 operator|.
@@ -1831,9 +1827,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"A range must be given for the "
-operator|+
-literal|"replacement of the robot comment on %s"
+literal|"A range must be given for the replacement of the robot comment on %s"
 argument_list|,
 name|withFixRobotCommentInput
 operator|.
@@ -1905,9 +1899,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Range (13:9 - 5:10) is not "
-operator|+
-literal|"valid for the replacement of the robot comment on %s"
+literal|"Range (13:9 - 5:10) is not valid for the replacement of the robot comment on %s"
 argument_list|,
 name|withFixRobotCommentInput
 operator|.

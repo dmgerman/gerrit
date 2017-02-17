@@ -454,9 +454,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"It is not allowed to list project watches "
-operator|+
-literal|"of other users"
+literal|"It is not allowed to list project watches of other users"
 argument_list|)
 throw|;
 block|}

@@ -1501,9 +1501,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Plugin provides its own name:<%s>,"
-operator|+
-literal|" use it instead of the input name:<%s>"
+literal|"Plugin provides its own name:<%s>, use it instead of the input name:<%s>"
 argument_list|,
 name|name
 argument_list|,
@@ -1894,9 +1892,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Remote plugin administration is disabled,"
-operator|+
-literal|" ignoring disablePlugins("
+literal|"Remote plugin administration is disabled, ignoring disablePlugins("
 operator|+
 name|names
 operator|+
@@ -2113,9 +2109,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Remote plugin administration is disabled,"
-operator|+
-literal|" ignoring enablePlugins("
+literal|"Remote plugin administration is disabled, ignoring enablePlugins("
 operator|+
 name|names
 operator|+

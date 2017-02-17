@@ -485,9 +485,7 @@ argument_list|,
 operator|new
 name|Description
 argument_list|(
-literal|"Successful query latency,"
-operator|+
-literal|" accumulated over the life of the process"
+literal|"Successful query latency, accumulated over the life of the process"
 argument_list|)
 operator|.
 name|setCumulative

@@ -336,9 +336,7 @@ throw|throw
 operator|new
 name|OrmException
 argument_list|(
-literal|"system_config must have exactly 1 row;"
-operator|+
-literal|" found "
+literal|"system_config must have exactly 1 row; found "
 operator|+
 name|all
 operator|.

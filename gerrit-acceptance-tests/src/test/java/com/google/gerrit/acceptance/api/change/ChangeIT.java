@@ -10537,9 +10537,7 @@ name|user
 operator|.
 name|email
 operator|+
-literal|">"
-operator|+
-literal|"\n"
+literal|">\n"
 argument_list|)
 expr_stmt|;
 name|Map
@@ -17874,9 +17872,7 @@ literal|"Ignore Verified"
 argument_list|,
 literal|"rules.pl"
 argument_list|,
-literal|"submit_rule(submit(CR)) :-\n"
-operator|+
-literal|"  gerrit:max_with_block(-2, 2, 'Code-Review', CR)."
+literal|"submit_rule(submit(CR)) :-\n  gerrit:max_with_block(-2, 2, 'Code-Review', CR)."
 argument_list|)
 decl_stmt|;
 name|push2

@@ -1231,9 +1231,7 @@ throw|throw
 operator|new
 name|NotImplementedException
 argument_list|(
-literal|"The bundle is too big to "
-operator|+
-literal|"generate at the server"
+literal|"The bundle is too big to generate at the server"
 argument_list|)
 throw|;
 block|}

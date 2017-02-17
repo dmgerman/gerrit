@@ -4454,9 +4454,7 @@ operator|.
 name|readChanges
 argument_list|()
 argument_list|,
-literal|"should not have created "
-operator|+
-literal|" ChangeData without a project when NoteDb is enabled"
+literal|"should not have created  ChangeData without a project when NoteDb is enabled"
 argument_list|)
 expr_stmt|;
 name|project

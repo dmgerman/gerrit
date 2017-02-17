@@ -183,9 +183,7 @@ name|stmt
 operator|.
 name|execute
 argument_list|(
-literal|"CREATE INDEX patch_sets_byRevision"
-operator|+
-literal|" ON patch_sets (revision)"
+literal|"CREATE INDEX patch_sets_byRevision ON patch_sets (revision)"
 argument_list|)
 expr_stmt|;
 block|}

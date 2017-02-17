@@ -863,9 +863,7 @@ operator|.
 name|isMatchable
 argument_list|()
 argument_list|,
-literal|"match invoked, but child predicate %s "
-operator|+
-literal|"doesn't implement %s"
+literal|"match invoked, but child predicate %s doesn't implement %s"
 argument_list|,
 name|pred
 argument_list|,

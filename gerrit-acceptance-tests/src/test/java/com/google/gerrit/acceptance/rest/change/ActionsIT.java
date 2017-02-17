@@ -848,9 +848,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"This change depends on other "
-operator|+
-literal|"changes which are not ready"
+literal|"This change depends on other changes which are not ready"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1958,9 +1956,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Submit patch set 1 and ancestors (%d changes "
-operator|+
-literal|"altogether) into master"
+literal|"Submit patch set 1 and ancestors (%d changes altogether) into master"
 argument_list|,
 name|nrChanges
 argument_list|)

@@ -358,9 +358,7 @@ argument_list|)
 operator|.
 name|subject
 argument_list|(
-literal|"Change in gerrit[master]: Implement "
-operator|+
-literal|"receiver class structure and bindings"
+literal|"Change in gerrit[master]: Implement receiver class structure and bindings"
 argument_list|)
 operator|.
 name|addAdditionalHeader

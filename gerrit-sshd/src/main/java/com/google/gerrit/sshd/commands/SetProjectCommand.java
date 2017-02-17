@@ -455,9 +455,7 @@ block|}
 argument_list|,
 name|usage
 operator|=
-literal|"project submit type\n"
-operator|+
-literal|"(default: MERGE_IF_NECESSARY)"
+literal|"project submit type\n(default: MERGE_IF_NECESSARY)"
 argument_list|)
 DECL|field|submitType
 specifier|private

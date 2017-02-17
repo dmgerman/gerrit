@@ -1335,9 +1335,7 @@ name|assertProblems
 argument_list|(
 name|k
 argument_list|,
-literal|"Key is revoked (key material has been compromised):"
-operator|+
-literal|" test6 compromised"
+literal|"Key is revoked (key material has been compromised): test6 compromised"
 argument_list|)
 expr_stmt|;
 name|PGPPublicKeyRing
@@ -1478,9 +1476,7 @@ name|assertProblems
 argument_list|(
 name|k
 argument_list|,
-literal|"Key is revoked (key material has been compromised):"
-operator|+
-literal|" test6 compromised"
+literal|"Key is revoked (key material has been compromised): test6 compromised"
 argument_list|)
 expr_stmt|;
 block|}
