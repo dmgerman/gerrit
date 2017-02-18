@@ -388,8 +388,11 @@ name|id
 argument_list|)
 else|:
 name|id
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|NOT_REVIEWED
+argument_list|)
 return|;
 block|}
 annotation|@
