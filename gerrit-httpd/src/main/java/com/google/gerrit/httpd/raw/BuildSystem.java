@@ -590,6 +590,7 @@ expr_stmt|;
 block|}
 comment|// Represents a label in either buck or bazel.
 DECL|class|Label
+specifier|static
 class|class
 name|Label
 block|{
@@ -724,6 +725,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|BuildFailureException
+specifier|static
 class|class
 name|BuildFailureException
 extends|extends

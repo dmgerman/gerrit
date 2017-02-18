@@ -486,6 +486,7 @@ expr_stmt|;
 block|}
 DECL|class|AuditEventTable
 specifier|private
+specifier|static
 class|class
 name|AuditEventTable
 extends|extends
