@@ -231,7 +231,7 @@ index|[]
 operator|)
 name|value
 operator|.
-name|getClass
+name|getDeclaringClass
 argument_list|()
 operator|.
 name|getMethod
