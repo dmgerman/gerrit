@@ -186,6 +186,14 @@ name|Permission
 operator|.
 name|SUBMIT
 argument_list|)
+operator|,
+DECL|enumConstant|SUBMIT_AS
+name|SUBMIT_AS
+argument_list|(
+name|Permission
+operator|.
+name|SUBMIT_AS
+argument_list|)
 enum|;
 end_enum
 

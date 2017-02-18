@@ -2703,37 +2703,6 @@ argument_list|()
 return|;
 comment|// user can edit hashtag on a specific ref
 block|}
-DECL|method|canSubmit ()
-specifier|public
-name|boolean
-name|canSubmit
-parameter_list|()
-block|{
-return|return
-name|getRefControl
-argument_list|()
-operator|.
-name|canSubmit
-argument_list|(
-name|isOwner
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|canSubmitAs ()
-specifier|public
-name|boolean
-name|canSubmitAs
-parameter_list|()
-block|{
-return|return
-name|getRefControl
-argument_list|()
-operator|.
-name|canSubmitAs
-argument_list|()
-return|;
-block|}
 DECL|method|match (String destBranch, String refPattern)
 specifier|private
 name|boolean
@@ -3372,13 +3341,22 @@ case|case
 name|SUBMIT
 case|:
 return|return
-name|canSubmit
+name|getRefControl
 argument_list|()
+operator|.
+name|canSubmit
+argument_list|(
+name|isOwner
+argument_list|()
+argument_list|)
 return|;
 case|case
 name|REMOVE_REVIEWER
 case|:
 comment|// TODO Honor specific removal filters?
+case|case
+name|SUBMIT_AS
+case|:
 return|return
 name|getRefControl
 argument_list|()

@@ -236,6 +236,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -394,6 +410,21 @@ parameter_list|()
 block|{
 return|return
 name|cacheable
+return|;
+block|}
+DECL|method|permissions ()
+specifier|public
+name|PermissionBackend
+operator|.
+name|ForChange
+name|permissions
+parameter_list|()
+block|{
+return|return
+name|change
+operator|.
+name|permissions
+argument_list|()
 return|;
 block|}
 DECL|method|getChangeResource ()
