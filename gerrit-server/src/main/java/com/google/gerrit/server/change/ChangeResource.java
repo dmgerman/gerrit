@@ -656,7 +656,9 @@ name|get
 argument_list|()
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|UTF_8
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
