@@ -188,6 +188,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicLong
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -214,9 +228,13 @@ name|ProjectCacheClock
 block|{
 DECL|field|generation
 specifier|private
-specifier|volatile
-name|long
+specifier|final
+name|AtomicLong
 name|generation
+init|=
+operator|new
+name|AtomicLong
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
@@ -259,8 +277,11 @@ block|{
 comment|// Start with generation 1 (to avoid magic 0 below).
 comment|// Do not begin background thread, disabling the clock.
 name|generation
-operator|=
+operator|.
+name|set
+argument_list|(
 literal|1
+argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -273,8 +294,11 @@ condition|)
 block|{
 comment|// Start with generation 1 (to avoid magic 0 below).
 name|generation
-operator|=
+operator|.
+name|set
+argument_list|(
 literal|1
+argument_list|)
 expr_stmt|;
 name|ScheduledExecutorService
 name|executor
@@ -329,13 +353,10 @@ argument_list|(
 parameter_list|()
 lambda|->
 block|{
-comment|// This is not exactly thread-safe, but is OK for our use. The only
-comment|// thread that writes the volatile is this task.
 name|generation
-operator|=
-name|generation
-operator|+
-literal|1
+operator|.
+name|incrementAndGet
+argument_list|()
 expr_stmt|;
 block|}
 argument_list|,
@@ -354,8 +375,11 @@ block|{
 comment|// Magic generation 0 triggers ProjectState to always
 comment|// check on each needsRefresh() request we make to it.
 name|generation
-operator|=
+operator|.
+name|set
+argument_list|(
 literal|0
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -366,6 +390,9 @@ parameter_list|()
 block|{
 return|return
 name|generation
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 DECL|method|checkFrequency (Config serverConfig)
