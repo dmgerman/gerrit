@@ -826,22 +826,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|CommentLinkProvider
 import|;
 end_import
@@ -858,7 +842,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectCacheImpl
+name|DefaultPermissionBackendModule
 import|;
 end_import
 
@@ -874,7 +858,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectCacheImpl
 import|;
 end_import
 
@@ -1539,25 +1523,11 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|bind
+name|install
 argument_list|(
-name|ChangeControl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
-name|factory
-argument_list|(
-name|ProjectControl
-operator|.
-name|AssistedFactory
-operator|.
-name|class
+operator|new
+name|BatchGitModule
+argument_list|()
 argument_list|)
 expr_stmt|;
 end_expr_stmt
@@ -1566,7 +1536,7 @@ begin_expr_stmt
 name|install
 argument_list|(
 operator|new
-name|BatchGitModule
+name|DefaultPermissionBackendModule
 argument_list|()
 argument_list|)
 expr_stmt|;
