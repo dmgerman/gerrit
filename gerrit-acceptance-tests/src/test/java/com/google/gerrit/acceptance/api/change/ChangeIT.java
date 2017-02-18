@@ -14786,7 +14786,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"changing topic not permitted"
+literal|"edit topic name not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi

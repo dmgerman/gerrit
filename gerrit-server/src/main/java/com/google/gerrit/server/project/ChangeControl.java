@@ -2518,7 +2518,7 @@ return|;
 block|}
 comment|/** Can this user edit the topic name? */
 DECL|method|canEditTopicName ()
-specifier|public
+specifier|private
 name|boolean
 name|canEditTopicName
 parameter_list|()

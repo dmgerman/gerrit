@@ -288,6 +288,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -434,6 +450,12 @@ name|ctl
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|permissionBackend
+specifier|private
+specifier|final
+name|PermissionBackend
+name|permissionBackend
+decl_stmt|;
 DECL|field|starredChangesUtil
 specifier|private
 specifier|final
@@ -448,9 +470,12 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeResource (StarredChangesUtil starredChangesUtil, @Assisted ChangeControl control)
+DECL|method|ChangeResource ( PermissionBackend permissionBackend, StarredChangesUtil starredChangesUtil, @Assisted ChangeControl control)
 name|ChangeResource
 parameter_list|(
+name|PermissionBackend
+name|permissionBackend
+parameter_list|,
 name|StarredChangesUtil
 name|starredChangesUtil
 parameter_list|,
@@ -462,6 +487,12 @@ parameter_list|)
 block|{
 name|this
 operator|.
+name|permissionBackend
+operator|=
+name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
 name|starredChangesUtil
 operator|=
 name|starredChangesUtil
@@ -472,6 +503,33 @@ name|control
 operator|=
 name|control
 expr_stmt|;
+block|}
+DECL|method|permissions ()
+specifier|public
+name|PermissionBackend
+operator|.
+name|ForChange
+name|permissions
+parameter_list|()
+block|{
+return|return
+name|permissionBackend
+operator|.
+name|user
+argument_list|(
+name|getControl
+argument_list|()
+operator|.
+name|getUser
+argument_list|()
+argument_list|)
+operator|.
+name|change
+argument_list|(
+name|getNotes
+argument_list|()
+argument_list|)
+return|;
 block|}
 DECL|method|getControl ()
 specifier|public

@@ -2249,7 +2249,6 @@ return|;
 block|}
 comment|/** @return true if this user can edit topic names. */
 DECL|method|canEditTopicName ()
-specifier|public
 name|boolean
 name|canEditTopicName
 parameter_list|()
