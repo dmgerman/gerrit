@@ -2122,7 +2122,6 @@ return|;
 block|}
 comment|/** @return true if this user can abandon a change for this ref */
 DECL|method|canAbandon ()
-specifier|public
 name|boolean
 name|canAbandon
 parameter_list|()

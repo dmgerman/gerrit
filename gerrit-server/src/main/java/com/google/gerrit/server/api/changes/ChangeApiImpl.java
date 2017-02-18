@@ -2017,6 +2017,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|UpdateException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2079,6 +2081,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|UpdateException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{

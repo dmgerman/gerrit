@@ -1562,7 +1562,7 @@ return|;
 block|}
 comment|/** Can this user abandon this change? */
 DECL|method|canAbandon (ReviewDb db)
-specifier|public
+specifier|private
 name|boolean
 name|canAbandon
 parameter_list|(
@@ -1805,7 +1805,7 @@ return|;
 block|}
 comment|/** Can this user restore this change? */
 DECL|method|canRestore (ReviewDb db)
-specifier|public
+specifier|private
 name|boolean
 name|canRestore
 parameter_list|(
