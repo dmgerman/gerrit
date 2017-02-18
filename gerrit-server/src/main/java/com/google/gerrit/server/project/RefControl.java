@@ -2279,7 +2279,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|canEditAssignee ()
-specifier|public
 name|boolean
 name|canEditAssignee
 parameter_list|()

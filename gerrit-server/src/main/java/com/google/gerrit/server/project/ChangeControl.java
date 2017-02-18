@@ -2634,7 +2634,7 @@ literal|false
 return|;
 block|}
 DECL|method|canEditAssignee ()
-specifier|public
+specifier|private
 name|boolean
 name|canEditAssignee
 parameter_list|()

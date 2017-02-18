@@ -3229,6 +3229,8 @@ decl||
 name|IOException
 decl||
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3389,6 +3391,8 @@ parameter_list|(
 name|UpdateException
 decl||
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
