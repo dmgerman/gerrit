@@ -1479,6 +1479,14 @@ name|invoke
 argument_list|(
 name|clazz
 operator|.
+name|getConstructor
+argument_list|(
+operator|new
+name|Class
+index|[]
+block|{}
+argument_list|)
+operator|.
 name|newInstance
 argument_list|()
 argument_list|,
