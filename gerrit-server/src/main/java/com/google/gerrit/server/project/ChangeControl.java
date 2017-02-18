@@ -1765,7 +1765,7 @@ block|}
 block|}
 comment|/** Can this user rebase this change? */
 DECL|method|canRebase (ReviewDb db)
-specifier|public
+specifier|private
 name|boolean
 name|canRebase
 parameter_list|(
