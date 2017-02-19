@@ -2828,6 +2828,8 @@ decl||
 name|IOException
 decl||
 name|UpdateException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{

@@ -893,39 +893,6 @@ name|deleted
 argument_list|)
 return|;
 block|}
-comment|/**    * @param ctl change control (for any user).    * @param lt label type.    * @param id account ID.    * @return whether the given account ID has any permissions to vote on this label for this change.    */
-DECL|method|canVote (ChangeControl ctl, LabelType lt, Account.Id id)
-specifier|public
-name|boolean
-name|canVote
-parameter_list|(
-name|ChangeControl
-name|ctl
-parameter_list|,
-name|LabelType
-name|lt
-parameter_list|,
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|)
-block|{
-return|return
-operator|!
-name|getRange
-argument_list|(
-name|ctl
-argument_list|,
-name|lt
-argument_list|,
-name|id
-argument_list|)
-operator|.
-name|isEmpty
-argument_list|()
-return|;
-block|}
 DECL|method|copy (PatchSetApproval src)
 specifier|private
 name|PatchSetApproval
