@@ -2264,7 +2264,6 @@ return|;
 block|}
 comment|/** @return true if this user can edit hashtag names. */
 DECL|method|canEditHashtags ()
-specifier|public
 name|boolean
 name|canEditHashtags
 parameter_list|()

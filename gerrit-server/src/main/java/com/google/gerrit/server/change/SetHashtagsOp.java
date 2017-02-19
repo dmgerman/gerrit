@@ -749,26 +749,6 @@ return|return
 literal|false
 return|;
 block|}
-if|if
-condition|(
-operator|!
-name|ctx
-operator|.
-name|getControl
-argument_list|()
-operator|.
-name|canEditHashtags
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|AuthException
-argument_list|(
-literal|"Editing hashtags not permitted"
-argument_list|)
-throw|;
-block|}
 name|change
 operator|=
 name|ctx
