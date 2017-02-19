@@ -2687,7 +2687,7 @@ name|user
 operator|.
 name|id
 operator|+
-literal|" cannot see destination ref"
+literal|" cannot see change"
 argument_list|)
 expr_stmt|;
 name|revision

@@ -1861,6 +1861,8 @@ decl||
 name|UpdateException
 decl||
 name|IOException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
