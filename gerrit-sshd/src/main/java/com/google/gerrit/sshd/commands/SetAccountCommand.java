@@ -1484,7 +1484,9 @@ argument_list|(
 name|sshKey
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|UTF_8
+argument_list|)
 argument_list|,
 literal|"plain/text"
 argument_list|)
