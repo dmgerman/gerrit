@@ -843,6 +843,14 @@ argument_list|<
 name|ForChange
 argument_list|>
 block|{
+comment|/** @return user this instance is scoped to. */
+DECL|method|user ()
+specifier|public
+specifier|abstract
+name|CurrentUser
+name|user
+parameter_list|()
+function_decl|;
 comment|/** @return new instance rescoped to same change, but different {@code user}. */
 DECL|method|user (CurrentUser user)
 specifier|public

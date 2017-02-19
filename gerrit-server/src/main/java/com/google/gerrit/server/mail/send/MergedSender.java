@@ -367,9 +367,6 @@ name|labelTypes
 operator|=
 name|changeData
 operator|.
-name|changeControl
-argument_list|()
-operator|.
 name|getLabelTypes
 argument_list|()
 expr_stmt|;

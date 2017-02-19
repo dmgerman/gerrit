@@ -4493,6 +4493,12 @@ comment|// If limited to specific patch sets but not the current patch set, don'
 comment|// list permitted labels, since users can't vote on those patch sets.
 if|if
 condition|(
+name|user
+operator|.
+name|isIdentifiedUser
+argument_list|()
+operator|&&
+operator|(
 operator|!
 name|limitToPsId
 operator|.
@@ -4511,6 +4517,7 @@ operator|.
 name|currentPatchSetId
 argument_list|()
 argument_list|)
+operator|)
 condition|)
 block|{
 name|out
@@ -4534,8 +4541,6 @@ condition|?
 name|permittedLabels
 argument_list|(
 name|perm
-argument_list|,
-name|ctl
 argument_list|,
 name|cd
 argument_list|)
@@ -5082,7 +5087,7 @@ block|}
 name|LabelTypes
 name|labelTypes
 init|=
-name|ctl
+name|cd
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -5110,8 +5115,6 @@ name|labelsForOpenChange
 argument_list|(
 name|perm
 argument_list|,
-name|ctl
-argument_list|,
 name|cd
 argument_list|,
 name|labelTypes
@@ -5124,8 +5127,6 @@ else|:
 name|labelsForClosedChange
 argument_list|(
 name|perm
-argument_list|,
-name|ctl
 argument_list|,
 name|cd
 argument_list|,
@@ -5154,7 +5155,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|labelsForOpenChange ( PermissionBackend.ForChange perm, ChangeControl ctl, ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
+DECL|method|labelsForOpenChange ( PermissionBackend.ForChange perm, ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -5168,9 +5169,6 @@ name|PermissionBackend
 operator|.
 name|ForChange
 name|perm
-parameter_list|,
-name|ChangeControl
-name|ctl
 parameter_list|,
 name|ChangeData
 name|cd
@@ -5214,8 +5212,6 @@ block|{
 name|setAllApprovals
 argument_list|(
 name|perm
-argument_list|,
-name|ctl
 argument_list|,
 name|cd
 argument_list|,
@@ -5774,7 +5770,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setAllApprovals ( PermissionBackend.ForChange basePerm, ChangeControl baseCtrl, ChangeData cd, Map<String, LabelWithStatus> labels)
+DECL|method|setAllApprovals ( PermissionBackend.ForChange basePerm, ChangeData cd, Map<String, LabelWithStatus> labels)
 specifier|private
 name|void
 name|setAllApprovals
@@ -5783,9 +5779,6 @@ name|PermissionBackend
 operator|.
 name|ForChange
 name|basePerm
-parameter_list|,
-name|ChangeControl
-name|baseCtrl
 parameter_list|,
 name|ChangeData
 name|cd
@@ -5907,7 +5900,7 @@ operator|.
 name|size
 argument_list|()
 argument_list|,
-name|baseCtrl
+name|cd
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -5951,7 +5944,7 @@ block|}
 name|LabelTypes
 name|labelTypes
 init|=
-name|baseCtrl
+name|cd
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -5966,16 +5959,6 @@ range|:
 name|allUsers
 control|)
 block|{
-name|IdentifiedUser
-name|user
-init|=
-name|userFactory
-operator|.
-name|create
-argument_list|(
-name|accountId
-argument_list|)
-decl_stmt|;
 name|PermissionBackend
 operator|.
 name|ForChange
@@ -5985,17 +5968,12 @@ name|basePerm
 operator|.
 name|user
 argument_list|(
-name|user
-argument_list|)
-decl_stmt|;
-name|ChangeControl
-name|ctl
-init|=
-name|baseCtrl
+name|userFactory
 operator|.
-name|forUser
+name|create
 argument_list|(
-name|user
+name|accountId
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Map
@@ -6011,8 +5989,6 @@ argument_list|(
 name|permittedLabels
 argument_list|(
 name|perm
-argument_list|,
-name|ctl
 argument_list|,
 name|cd
 argument_list|)
@@ -6484,7 +6460,7 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|labelsForClosedChange ( PermissionBackend.ForChange basePerm, ChangeControl baseCtrl, ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
+DECL|method|labelsForClosedChange ( PermissionBackend.ForChange basePerm, ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -6498,9 +6474,6 @@ name|PermissionBackend
 operator|.
 name|ForChange
 name|basePerm
-parameter_list|,
-name|ChangeControl
-name|baseCtrl
 parameter_list|,
 name|ChangeData
 name|cd
@@ -6898,16 +6871,6 @@ condition|(
 name|detailed
 condition|)
 block|{
-name|IdentifiedUser
-name|user
-init|=
-name|userFactory
-operator|.
-name|create
-argument_list|(
-name|accountId
-argument_list|)
-decl_stmt|;
 name|PermissionBackend
 operator|.
 name|ForChange
@@ -6917,17 +6880,12 @@ name|basePerm
 operator|.
 name|user
 argument_list|(
-name|user
-argument_list|)
-decl_stmt|;
-name|ChangeControl
-name|ctl
-init|=
-name|baseCtrl
+name|userFactory
 operator|.
-name|forUser
+name|create
 argument_list|(
-name|user
+name|accountId
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|pvr
@@ -6937,8 +6895,6 @@ argument_list|(
 name|permittedLabels
 argument_list|(
 name|perm
-argument_list|,
-name|ctl
 argument_list|,
 name|cd
 argument_list|)
@@ -7407,7 +7363,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-DECL|method|permittedLabels ( PermissionBackend.ForChange perm, ChangeControl ctl, ChangeData cd)
+DECL|method|permittedLabels ( PermissionBackend.ForChange perm, ChangeData cd)
 specifier|private
 name|Map
 argument_list|<
@@ -7425,9 +7381,6 @@ operator|.
 name|ForChange
 name|perm
 parameter_list|,
-name|ChangeControl
-name|ctl
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
@@ -7436,26 +7389,6 @@ name|OrmException
 throws|,
 name|PermissionBackendException
 block|{
-if|if
-condition|(
-name|ctl
-operator|==
-literal|null
-operator|||
-operator|!
-name|ctl
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|isIdentifiedUser
-argument_list|()
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 name|boolean
 name|isMerged
 init|=
@@ -7476,7 +7409,7 @@ decl_stmt|;
 name|LabelTypes
 name|labelTypes
 init|=
-name|ctl
+name|cd
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -7722,7 +7655,9 @@ name|labels
 operator|=
 name|currentLabels
 argument_list|(
-name|ctl
+name|perm
+argument_list|,
+name|cd
 argument_list|)
 expr_stmt|;
 block|}
@@ -7866,7 +7801,7 @@ name|asMap
 argument_list|()
 return|;
 block|}
-DECL|method|currentLabels (ChangeControl ctl)
+DECL|method|currentLabels (PermissionBackend.ForChange perm, ChangeData cd)
 specifier|private
 name|Map
 argument_list|<
@@ -7876,12 +7811,41 @@ name|Short
 argument_list|>
 name|currentLabels
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|PermissionBackend
+operator|.
+name|ForChange
+name|perm
+parameter_list|,
+name|ChangeData
+name|cd
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|IdentifiedUser
+name|user
+init|=
+name|perm
+operator|.
+name|user
+argument_list|()
+operator|.
+name|asIdentifiedUser
+argument_list|()
+decl_stmt|;
+name|ChangeControl
+name|ctl
+init|=
+name|cd
+operator|.
+name|changeControl
+argument_list|()
+operator|.
+name|forUser
+argument_list|(
+name|user
+argument_list|)
+decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -7911,18 +7875,15 @@ argument_list|()
 argument_list|,
 name|ctl
 argument_list|,
-name|ctl
+name|cd
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
 argument_list|,
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 operator|.
 name|getAccountId
 argument_list|()

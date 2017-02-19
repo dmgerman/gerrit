@@ -3029,6 +3029,19 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|user ()
+specifier|public
+name|CurrentUser
+name|user
+parameter_list|()
+block|{
+return|return
+name|getUser
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|user (CurrentUser user)
 specifier|public
 name|ForChange
@@ -3039,7 +3052,7 @@ name|user
 parameter_list|)
 block|{
 return|return
-name|getUser
+name|user
 argument_list|()
 operator|.
 name|equals
