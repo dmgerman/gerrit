@@ -886,6 +886,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -1818,6 +1834,11 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|permissionBackend
+specifier|final
+name|PermissionBackend
+name|permissionBackend
+decl_stmt|;
 DECL|field|capabilityControlFactory
 specifier|final
 name|CapabilityControl
@@ -1991,7 +2012,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -2032,6 +2053,9 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|self
+parameter_list|,
+name|PermissionBackend
+name|permissionBackend
 parameter_list|,
 name|CapabilityControl
 operator|.
@@ -2140,6 +2164,8 @@ name|userFactory
 argument_list|,
 name|self
 argument_list|,
+name|permissionBackend
+argument_list|,
 name|capabilityControlFactory
 argument_list|,
 name|changeControlGenericFactory
@@ -2214,7 +2240,7 @@ name|notesMigration
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2255,6 +2281,9 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|self
+parameter_list|,
+name|PermissionBackend
+name|permissionBackend
 parameter_list|,
 name|CapabilityControl
 operator|.
@@ -2380,6 +2409,12 @@ operator|.
 name|self
 operator|=
 name|self
+expr_stmt|;
+name|this
+operator|.
+name|permissionBackend
+operator|=
+name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
@@ -2562,6 +2597,8 @@ name|of
 argument_list|(
 name|otherUser
 argument_list|)
+argument_list|,
+name|permissionBackend
 argument_list|,
 name|capabilityControlFactory
 argument_list|,

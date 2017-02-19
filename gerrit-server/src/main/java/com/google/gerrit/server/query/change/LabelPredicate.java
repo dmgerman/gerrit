@@ -154,6 +154,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -330,6 +346,11 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|permissionBackend
+specifier|final
+name|PermissionBackend
+name|permissionBackend
+decl_stmt|;
 DECL|field|ccFactory
 specifier|final
 name|ChangeControl
@@ -374,12 +395,15 @@ operator|.
 name|UUID
 name|group
 decl_stmt|;
-DECL|method|Args ( ProjectCache projectCache, ChangeControl.GenericFactory ccFactory, IdentifiedUser.GenericFactory userFactory, Provider<ReviewDb> dbProvider, String value, Set<Account.Id> accounts, AccountGroup.UUID group)
+DECL|method|Args ( ProjectCache projectCache, PermissionBackend permissionBackend, ChangeControl.GenericFactory ccFactory, IdentifiedUser.GenericFactory userFactory, Provider<ReviewDb> dbProvider, String value, Set<Account.Id> accounts, AccountGroup.UUID group)
 specifier|private
 name|Args
 parameter_list|(
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|PermissionBackend
+name|permissionBackend
 parameter_list|,
 name|ChangeControl
 operator|.
@@ -419,6 +443,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|permissionBackend
+operator|=
+name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
@@ -557,6 +587,10 @@ argument_list|(
 name|a
 operator|.
 name|projectCache
+argument_list|,
+name|a
+operator|.
+name|permissionBackend
 argument_list|,
 name|a
 operator|.

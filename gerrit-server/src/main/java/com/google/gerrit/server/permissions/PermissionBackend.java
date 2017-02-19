@@ -1120,12 +1120,9 @@ block|{
 name|short
 name|s
 init|=
-name|nearest
-argument_list|(
-name|test
+name|squashByTest
 argument_list|(
 name|label
-argument_list|)
 argument_list|,
 name|val
 argument_list|)
@@ -1135,6 +1132,10 @@ condition|(
 name|s
 operator|==
 literal|0
+operator|||
+name|s
+operator|==
+name|val
 condition|)
 block|{
 return|return
@@ -1170,6 +1171,33 @@ return|return
 literal|0
 return|;
 block|}
+block|}
+comment|/**      * Squash a label value to the nearest allowed value using only test methods.      *      *<p>Tests all possible values and selects the closet available to {@code val} while matching      * the sign of {@code val}. Unlike {@code #squashThenCheck(LabelType, short)} this method only      * uses {@code test} methods and should not be used in contexts like a review handler without      * checking the resulting score.      *      * @param label definition of the label to test values of.      * @param val previously denied value the user attempted.      * @return nearest likely allowed value, or {@code 0} if no value was identified.      * @throws PermissionBackendException backend cannot run test.      */
+DECL|method|squashByTest (LabelType label, short val)
+specifier|public
+name|short
+name|squashByTest
+parameter_list|(
+name|LabelType
+name|label
+parameter_list|,
+name|short
+name|val
+parameter_list|)
+throws|throws
+name|PermissionBackendException
+block|{
+return|return
+name|nearest
+argument_list|(
+name|test
+argument_list|(
+name|label
+argument_list|)
+argument_list|,
+name|val
+argument_list|)
+return|;
 block|}
 DECL|method|nearest (Iterable<LabelPermission.WithValue> possible, short wanted)
 specifier|private
@@ -1219,7 +1247,7 @@ operator|<
 literal|0
 operator|&&
 name|wanted
-operator|<
+operator|<=
 name|v
 operator|.
 name|value
@@ -1246,7 +1274,7 @@ operator|>
 literal|0
 operator|&&
 name|wanted
-operator|>
+operator|>=
 name|v
 operator|.
 name|value
