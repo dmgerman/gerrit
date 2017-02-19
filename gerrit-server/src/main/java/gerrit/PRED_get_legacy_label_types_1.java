@@ -320,7 +320,7 @@ name|list
 init|=
 name|StoredValues
 operator|.
-name|CHANGE_CONTROL
+name|CHANGE_DATA
 operator|.
 name|get
 argument_list|(

@@ -338,6 +338,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|LabelTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|SubmitRecord
 import|;
 end_import
@@ -4900,6 +4916,19 @@ argument_list|)
 expr_stmt|;
 return|return
 name|change
+return|;
+block|}
+DECL|method|getLabelTypes ()
+specifier|public
+name|LabelTypes
+name|getLabelTypes
+parameter_list|()
+block|{
+return|return
+name|changeControl
+operator|.
+name|getLabelTypes
+argument_list|()
 return|;
 block|}
 DECL|method|notes ()

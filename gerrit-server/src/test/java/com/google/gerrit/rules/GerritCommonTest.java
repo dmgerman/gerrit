@@ -104,7 +104,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
+name|Util
 import|;
 end_import
 
@@ -118,9 +118,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|query
 operator|.
-name|Util
+name|change
+operator|.
+name|ChangeData
 import|;
 end_import
 
@@ -393,6 +395,8 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|cfg
 argument_list|)
 argument_list|)
@@ -435,21 +439,21 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|ChangeControl
-name|ctl
+name|ChangeData
+name|cd
 init|=
 name|EasyMock
 operator|.
 name|createMock
 argument_list|(
-name|ChangeControl
+name|ChangeData
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
 name|expect
 argument_list|(
-name|ctl
+name|cd
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -464,7 +468,7 @@ name|EasyMock
 operator|.
 name|replay
 argument_list|(
-name|ctl
+name|cd
 argument_list|)
 expr_stmt|;
 name|env
@@ -473,9 +477,9 @@ name|set
 argument_list|(
 name|StoredValues
 operator|.
-name|CHANGE_CONTROL
+name|CHANGE_DATA
 argument_list|,
-name|ctl
+name|cd
 argument_list|)
 expr_stmt|;
 block|}

@@ -166,6 +166,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -849,6 +865,12 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|permissionBackend
+specifier|private
+specifier|final
+name|PermissionBackend
+name|permissionBackend
+decl_stmt|;
 DECL|field|repositoryManager
 specifier|private
 specifier|final
@@ -898,11 +920,14 @@ name|compileLimit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Args ( ProjectCache projectCache, GitRepositoryManager repositoryManager, PatchListCache patchListCache, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser.GenericFactory userFactory, Provider<AnonymousUser> anonymousUser, @GerritServerConfig Config config)
+DECL|method|Args ( ProjectCache projectCache, PermissionBackend permissionBackend, GitRepositoryManager repositoryManager, PatchListCache patchListCache, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser.GenericFactory userFactory, Provider<AnonymousUser> anonymousUser, @GerritServerConfig Config config)
 name|Args
 parameter_list|(
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|PermissionBackend
+name|permissionBackend
 parameter_list|,
 name|GitRepositoryManager
 name|repositoryManager
@@ -935,6 +960,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|permissionBackend
+operator|=
+name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
@@ -1071,6 +1102,16 @@ parameter_list|()
 block|{
 return|return
 name|projectCache
+return|;
+block|}
+DECL|method|getPermissionBackend ()
+specifier|public
+name|PermissionBackend
+name|getPermissionBackend
+parameter_list|()
+block|{
+return|return
+name|permissionBackend
 return|;
 block|}
 DECL|method|getGitRepositoryManager ()

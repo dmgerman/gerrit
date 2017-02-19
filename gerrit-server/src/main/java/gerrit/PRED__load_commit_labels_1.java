@@ -374,14 +374,7 @@ decl_stmt|;
 name|LabelTypes
 name|types
 init|=
-name|StoredValues
-operator|.
-name|CHANGE_CONTROL
-operator|.
-name|get
-argument_list|(
-name|engine
-argument_list|)
+name|cd
 operator|.
 name|getLabelTypes
 argument_list|()
