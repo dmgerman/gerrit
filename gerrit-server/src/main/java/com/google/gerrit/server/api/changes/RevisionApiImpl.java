@@ -3607,6 +3607,8 @@ block|}
 catch|catch
 parameter_list|(
 name|UpdateException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{

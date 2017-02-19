@@ -6408,7 +6408,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"changing description not permitted"
+literal|"edit description not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi

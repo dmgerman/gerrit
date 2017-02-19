@@ -2582,7 +2582,7 @@ return|;
 block|}
 comment|/** Can this user edit the description? */
 DECL|method|canEditDescription ()
-specifier|public
+specifier|private
 name|boolean
 name|canEditDescription
 parameter_list|()
