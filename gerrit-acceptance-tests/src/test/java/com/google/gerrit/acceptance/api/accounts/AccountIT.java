@@ -4202,7 +4202,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"not allowed to delete email address"
+literal|"modify account not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -6912,7 +6912,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"not allowed to index account"
+literal|"modify account not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi

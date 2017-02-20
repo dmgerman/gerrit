@@ -972,6 +972,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -1867,6 +1883,8 @@ parameter_list|()
 throws|throws
 name|RestApiException
 block|{
+try|try
+block|{
 return|return
 name|getPreferences
 operator|.
@@ -1875,6 +1893,23 @@ argument_list|(
 name|account
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|PermissionBackendException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RestApiException
+argument_list|(
+literal|"Cannot get preferences"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1907,6 +1942,8 @@ parameter_list|(
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -1992,6 +2029,8 @@ parameter_list|(
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2032,6 +2071,8 @@ parameter_list|(
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2077,6 +2118,8 @@ parameter_list|(
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2649,6 +2692,8 @@ decl||
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2713,6 +2758,8 @@ decl||
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2770,6 +2817,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|IOException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2815,6 +2864,8 @@ decl||
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2957,6 +3008,8 @@ decl||
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3229,6 +3282,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{

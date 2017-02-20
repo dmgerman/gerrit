@@ -500,6 +500,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|sshd
 operator|.
 name|CommandMetaData
@@ -1198,6 +1214,8 @@ throws|,
 name|UnloggedFailure
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|user
 operator|=
@@ -1523,6 +1541,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|List
 argument_list|<
@@ -1698,6 +1718,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|EmailInput
 name|in
@@ -1768,6 +1790,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 if|if
 condition|(
@@ -1864,6 +1888,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|PermissionBackendException
 block|{
 for|for
 control|(
