@@ -629,25 +629,6 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
-comment|/** @return true if the user can view the entire queue. */
-DECL|method|canViewQueue ()
-specifier|public
-name|boolean
-name|canViewQueue
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|GlobalCapability
-operator|.
-name|VIEW_QUEUE
-argument_list|)
-operator|||
-name|canMaintainServer
-argument_list|()
-return|;
-block|}
 comment|/** @return true if the user can access the database (with gsql). */
 DECL|method|canAccessDatabase ()
 specifier|public
@@ -1307,13 +1288,6 @@ name|canViewAllAccounts
 argument_list|()
 return|;
 case|case
-name|VIEW_QUEUE
-case|:
-return|return
-name|canViewQueue
-argument_list|()
-return|;
-case|case
 name|FLUSH_CACHES
 case|:
 case|case
@@ -1324,6 +1298,9 @@ name|RUN_GC
 case|:
 case|case
 name|VIEW_CACHES
+case|:
+case|case
+name|VIEW_QUEUE
 case|:
 return|return
 name|canPerform
