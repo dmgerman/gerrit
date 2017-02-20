@@ -405,25 +405,6 @@ return|return
 name|capability
 return|;
 block|}
-DECL|method|has ()
-specifier|public
-name|boolean
-name|has
-parameter_list|()
-block|{
-return|return
-name|user
-operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|canPerform
-argument_list|(
-name|getCapability
-argument_list|()
-argument_list|)
-return|;
-block|}
 block|}
 DECL|class|Email
 specifier|public
