@@ -325,7 +325,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Checks authorization to perform an action on project, ref, or change.  *  *<p>{@code PermissionBackend} should be a singleton for the server, acting as a factory for  * lightweight request instances.  *  *<p>{@code check} methods should be used during action handlers to verify the user is allowed to  * exercise the specified permission. For convenience in implementation {@code check} methods throw  * {@link AuthException} if the permission is denied.  *  *<p>{@code test} methods should be used when constructing replies to the client and the result  * object needs to include a true/false hint indicating the user's ability to exercise the  * permission. This is suitable for configuring UI button state, but should not be relied upon to  * guard handlers before making state changes.  *  *<p>Example use:  *  *<pre>  *   private final PermissionBackend permissions;  *   private final Provider<CurrentUser> user;  *  *   @Inject  *   Foo(PermissionBackend permissions, Provider<CurrentUser> user) {  *     this.permissions = permissions;  *     this.user = user;  *   }  *  *   public void apply(...) {  *     permissions.user(user).change(cd).check(ChangePermission.SUBMIT);  *   }  *  *   public UiAction.Description getDescription(ChangeResource rsrc) {  *     return new UiAction.Description()  *       .setLabel("Submit")  *       .setVisible(rsrc.permissions().testOrFalse(ChangePermission.SUBMIT));  * }  *</pre>  */
+comment|/**  * Checks authorization to perform an action on a project, reference, or change.  *  *<p>{@code check} methods should be used during action handlers to verify the user is allowed to  * exercise the specified permission. For convenience in implementation {@code check} methods throw  * {@link AuthException} if the permission is denied.  *  *<p>{@code test} methods should be used when constructing replies to the client and the result  * object needs to include a true/false hint indicating the user's ability to exercise the  * permission. This is suitable for configuring UI button state, but should not be relied upon to  * guard handlers before making state changes.  *  *<p>{@code PermissionBackend} is a singleton for the server, acting as a factory for lightweight  * request instances. Implementation classes may cache supporting data inside of {@link WithUser},  * {@link ForProject}, {@link ForRef}, and {@link ForChange} instances, in addition to storing  * within {@link CurrentUser} using a {@link com.google.gerrit.server.CurrentUser.PropertyKey}.  * {@link GlobalPermission} caching for {@link WithUser} may best cached inside {@link CurrentUser}  * as {@link WithUser} instances are frequently created.  *  *<p>Example use:  *  *<pre>  *   private final PermissionBackend permissions;  *   private final Provider<CurrentUser> user;  *  *   @Inject  *   Foo(PermissionBackend permissions, Provider<CurrentUser> user) {  *     this.permissions = permissions;  *     this.user = user;  *   }  *  *   public void apply(...) {  *     permissions.user(user).change(cd).check(ChangePermission.SUBMIT);  *   }  *  *   public UiAction.Description getDescription(ChangeResource rsrc) {  *     return new UiAction.Description()  *       .setLabel("Submit")  *       .setVisible(rsrc.permissions().testOrFalse(ChangePermission.SUBMIT));  * }  *</pre>  */
 end_comment
 
 begin_class
@@ -621,6 +621,110 @@ argument_list|(
 name|notes
 argument_list|)
 return|;
+block|}
+comment|/** Verify scoped user can {@code perm}, throwing if denied. */
+DECL|method|check (GlobalPermission perm)
+specifier|public
+specifier|abstract
+name|void
+name|check
+parameter_list|(
+name|GlobalPermission
+name|perm
+parameter_list|)
+throws|throws
+name|AuthException
+throws|,
+name|PermissionBackendException
+function_decl|;
+comment|/** Filter {@code permSet} to permissions scoped user might be able to perform. */
+DECL|method|test (Collection<GlobalPermission> permSet)
+specifier|public
+specifier|abstract
+name|Set
+argument_list|<
+name|GlobalPermission
+argument_list|>
+name|test
+parameter_list|(
+name|Collection
+argument_list|<
+name|GlobalPermission
+argument_list|>
+name|permSet
+parameter_list|)
+throws|throws
+name|PermissionBackendException
+function_decl|;
+DECL|method|test (GlobalPermission perm)
+specifier|public
+name|boolean
+name|test
+parameter_list|(
+name|GlobalPermission
+name|perm
+parameter_list|)
+throws|throws
+name|PermissionBackendException
+block|{
+return|return
+name|test
+argument_list|(
+name|EnumSet
+operator|.
+name|of
+argument_list|(
+name|perm
+argument_list|)
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+name|perm
+argument_list|)
+return|;
+block|}
+DECL|method|testOrFalse (GlobalPermission perm)
+specifier|public
+name|boolean
+name|testOrFalse
+parameter_list|(
+name|GlobalPermission
+name|perm
+parameter_list|)
+block|{
+try|try
+block|{
+return|return
+name|test
+argument_list|(
+name|perm
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|PermissionBackendException
+name|e
+parameter_list|)
+block|{
+name|logger
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot test "
+operator|+
+name|perm
+operator|+
+literal|"; assuming false"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 block|}
 block|}
 comment|/** PermissionBackend scoped to a user and project. */
