@@ -778,9 +778,9 @@ operator|.
 name|INTERACTIVE
 return|;
 block|}
-comment|/** True if the user has this permission. Works only for non labels. */
+comment|/** @return true if the user has this permission. */
 DECL|method|canPerform (String permissionName)
-specifier|public
+specifier|private
 name|boolean
 name|canPerform
 parameter_list|(
@@ -788,23 +788,6 @@ name|String
 name|permissionName
 parameter_list|)
 block|{
-if|if
-condition|(
-name|GlobalCapability
-operator|.
-name|ADMINISTRATE_SERVER
-operator|.
-name|equals
-argument_list|(
-name|permissionName
-argument_list|)
-condition|)
-block|{
-return|return
-name|canAdministrateServer
-argument_list|()
-return|;
-block|}
 return|return
 operator|!
 name|access
@@ -1274,6 +1257,9 @@ operator|.
 name|permissionName
 argument_list|()
 argument_list|)
+operator|||
+name|canAdministrateServer
+argument_list|()
 return|;
 block|}
 throw|throw

@@ -426,6 +426,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|extensions
+operator|.
+name|webui
+operator|.
+name|UiActions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|MetaDataUpdate
@@ -689,6 +707,12 @@ specifier|final
 name|AllProjectsName
 name|allProjects
 decl_stmt|;
+DECL|field|uiActions
+specifier|private
+specifier|final
+name|UiActions
+name|uiActions
+decl_stmt|;
 DECL|field|views
 specifier|private
 specifier|final
@@ -712,7 +736,7 @@ name|user
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutConfig ( @nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> user)
+DECL|method|PutConfig ( @nableSignedPush boolean serverEnableSignedPush, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, UiActions uiActions, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> user)
 name|PutConfig
 parameter_list|(
 annotation|@
@@ -750,6 +774,9 @@ name|cfgFactory
 parameter_list|,
 name|AllProjectsName
 name|allProjects
+parameter_list|,
+name|UiActions
+name|uiActions
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -814,6 +841,12 @@ operator|.
 name|allProjects
 operator|=
 name|allProjects
+expr_stmt|;
+name|this
+operator|.
+name|uiActions
+operator|=
+name|uiActions
 expr_stmt|;
 name|this
 operator|.
@@ -1363,6 +1396,8 @@ argument_list|,
 name|cfgFactory
 argument_list|,
 name|allProjects
+argument_list|,
+name|uiActions
 argument_list|,
 name|views
 argument_list|)
