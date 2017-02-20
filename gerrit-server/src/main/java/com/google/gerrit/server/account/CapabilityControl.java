@@ -655,14 +655,27 @@ name|boolean
 name|canAccessDatabase
 parameter_list|()
 block|{
+try|try
+block|{
 return|return
-name|canPerform
+name|doCanForDefaultPermissionBackend
 argument_list|(
-name|GlobalCapability
+name|GlobalPermission
 operator|.
 name|ACCESS_DATABASE
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|PermissionBackendException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|/** @return which priority queue the user's tasks should be submitted to. */
 DECL|method|getQueueType ()
@@ -1259,13 +1272,6 @@ name|perm
 condition|)
 block|{
 case|case
-name|ACCESS_DATABASE
-case|:
-return|return
-name|canAccessDatabase
-argument_list|()
-return|;
-case|case
 name|ADMINISTRATE_SERVER
 case|:
 return|return
@@ -1361,6 +1367,9 @@ operator|||
 name|canAdministrateServer
 argument_list|()
 return|;
+case|case
+name|ACCESS_DATABASE
+case|:
 case|case
 name|RUN_AS
 case|:
