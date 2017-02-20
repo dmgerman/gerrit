@@ -664,22 +664,6 @@ name|ACCESS_DATABASE
 argument_list|)
 return|;
 block|}
-comment|/** @return true if the user can impersonate another user. */
-DECL|method|canRunAs ()
-specifier|public
-name|boolean
-name|canRunAs
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|GlobalCapability
-operator|.
-name|RUN_AS
-argument_list|)
-return|;
-block|}
 comment|/** @return which priority queue the user's tasks should be submitted to. */
 DECL|method|getQueueType ()
 specifier|public
@@ -1310,13 +1294,6 @@ name|canModifyAccount
 argument_list|()
 return|;
 case|case
-name|RUN_AS
-case|:
-return|return
-name|canRunAs
-argument_list|()
-return|;
-case|case
 name|VIEW_ALL_ACCOUNTS
 case|:
 return|return
@@ -1383,6 +1360,18 @@ argument_list|)
 operator|||
 name|canAdministrateServer
 argument_list|()
+return|;
+case|case
+name|RUN_AS
+case|:
+return|return
+name|canPerform
+argument_list|(
+name|perm
+operator|.
+name|permissionName
+argument_list|()
+argument_list|)
 return|;
 block|}
 throw|throw
