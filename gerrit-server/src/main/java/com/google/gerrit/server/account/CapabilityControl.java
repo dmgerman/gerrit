@@ -610,25 +610,6 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
-comment|/** @return true if the user can perform basic server maintenance. */
-DECL|method|canMaintainServer ()
-specifier|public
-name|boolean
-name|canMaintainServer
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|GlobalCapability
-operator|.
-name|MAINTAIN_SERVER
-argument_list|)
-operator|||
-name|canAdministrateServer
-argument_list|()
-return|;
-block|}
 comment|/** @return true if the user can access the database (with gsql). */
 DECL|method|canAccessDatabase ()
 specifier|public
@@ -1267,13 +1248,6 @@ name|canEmailReviewers
 argument_list|()
 return|;
 case|case
-name|MAINTAIN_SERVER
-case|:
-return|return
-name|canMaintainServer
-argument_list|()
-return|;
-case|case
 name|MODIFY_ACCOUNT
 case|:
 return|return
@@ -1311,7 +1285,14 @@ name|permissionName
 argument_list|()
 argument_list|)
 operator|||
-name|canMaintainServer
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|MAINTAIN_SERVER
+argument_list|)
+operator|||
+name|canAdministrateServer
 argument_list|()
 return|;
 case|case
@@ -1322,6 +1303,9 @@ name|CREATE_GROUP
 case|:
 case|case
 name|CREATE_PROJECT
+case|:
+case|case
+name|MAINTAIN_SERVER
 case|:
 case|case
 name|STREAM_EVENTS
