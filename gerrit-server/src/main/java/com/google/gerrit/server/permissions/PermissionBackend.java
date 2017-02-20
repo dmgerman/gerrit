@@ -623,13 +623,13 @@ argument_list|)
 return|;
 block|}
 comment|/** Verify scoped user can {@code perm}, throwing if denied. */
-DECL|method|check (GlobalPermission perm)
+DECL|method|check (GlobalOrPluginPermission perm)
 specifier|public
 specifier|abstract
 name|void
 name|check
 parameter_list|(
-name|GlobalPermission
+name|GlobalOrPluginPermission
 name|perm
 parameter_list|)
 throws|throws
@@ -638,30 +638,35 @@ throws|,
 name|PermissionBackendException
 function_decl|;
 comment|/** Filter {@code permSet} to permissions scoped user might be able to perform. */
-DECL|method|test (Collection<GlobalPermission> permSet)
+DECL|method|test (Collection<T> permSet)
 specifier|public
 specifier|abstract
+parameter_list|<
+name|T
+extends|extends
+name|GlobalOrPluginPermission
+parameter_list|>
 name|Set
 argument_list|<
-name|GlobalPermission
+name|T
 argument_list|>
 name|test
 parameter_list|(
 name|Collection
 argument_list|<
-name|GlobalPermission
+name|T
 argument_list|>
 name|permSet
 parameter_list|)
 throws|throws
 name|PermissionBackendException
 function_decl|;
-DECL|method|test (GlobalPermission perm)
+DECL|method|test (GlobalOrPluginPermission perm)
 specifier|public
 name|boolean
 name|test
 parameter_list|(
-name|GlobalPermission
+name|GlobalOrPluginPermission
 name|perm
 parameter_list|)
 throws|throws
@@ -670,9 +675,9 @@ block|{
 return|return
 name|test
 argument_list|(
-name|EnumSet
+name|Collections
 operator|.
-name|of
+name|singleton
 argument_list|(
 name|perm
 argument_list|)
@@ -684,12 +689,12 @@ name|perm
 argument_list|)
 return|;
 block|}
-DECL|method|testOrFalse (GlobalPermission perm)
+DECL|method|testOrFalse (GlobalOrPluginPermission perm)
 specifier|public
 name|boolean
 name|testOrFalse
 parameter_list|(
-name|GlobalPermission
+name|GlobalOrPluginPermission
 name|perm
 parameter_list|)
 block|{
