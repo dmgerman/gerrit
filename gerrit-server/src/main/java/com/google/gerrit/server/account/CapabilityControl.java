@@ -610,25 +610,6 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
-comment|/** @return true if the user can view the server caches. */
-DECL|method|canViewCaches ()
-specifier|public
-name|boolean
-name|canViewCaches
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|GlobalCapability
-operator|.
-name|VIEW_CACHES
-argument_list|)
-operator|||
-name|canMaintainServer
-argument_list|()
-return|;
-block|}
 comment|/** @return true if the user can perform basic server maintenance. */
 DECL|method|canMaintainServer ()
 specifier|public
@@ -1343,13 +1324,6 @@ name|canViewAllAccounts
 argument_list|()
 return|;
 case|case
-name|VIEW_CACHES
-case|:
-return|return
-name|canViewCaches
-argument_list|()
-return|;
-case|case
 name|VIEW_QUEUE
 case|:
 return|return
@@ -1364,6 +1338,9 @@ name|KILL_TASK
 case|:
 case|case
 name|RUN_GC
+case|:
+case|case
+name|VIEW_CACHES
 case|:
 return|return
 name|canPerform
