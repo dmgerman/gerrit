@@ -457,6 +457,16 @@ argument_list|)
 throw|;
 block|}
 comment|// Add general headers
+if|if
+condition|(
+name|mimeMessage
+operator|.
+name|getMessageId
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|messageBuilder
 operator|.
 name|id
@@ -467,6 +477,17 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|mimeMessage
+operator|.
+name|getSubject
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|messageBuilder
 operator|.
 name|subject
@@ -477,6 +498,7 @@ name|getSubject
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|messageBuilder
 operator|.
 name|dateReceived
