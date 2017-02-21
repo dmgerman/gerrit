@@ -485,6 +485,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|LFS_REST
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|LFS_REST
+init|=
+literal|"(?:/p/|/)(.+)(?:/info/lfs/objects/batch)$"
+decl_stmt|;
 DECL|field|URL_REGEX
 specifier|public
 specifier|static
@@ -492,7 +501,9 @@ specifier|final
 name|String
 name|URL_REGEX
 init|=
-literal|"^(?:/a)?(?:/p/|/)(.+)(?:/info/lfs/objects/batch)$"
+literal|"^(?:/a)?"
+operator|+
+name|LFS_REST
 decl_stmt|;
 DECL|field|CONTENTTYPE_VND_GIT_LFS_JSON
 specifier|private
