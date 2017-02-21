@@ -342,6 +342,24 @@ name|notedb
 operator|.
 name|ChangeNoteUtil
 operator|.
+name|FOOTER_PRIVATE
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNoteUtil
+operator|.
 name|FOOTER_READ_ONLY_UNTIL
 import|;
 end_import
@@ -1481,6 +1499,11 @@ DECL|field|readOnlyUntil
 specifier|private
 name|Timestamp
 name|readOnlyUntil
+decl_stmt|;
+DECL|field|isPrivate
+specifier|private
+name|Boolean
+name|isPrivate
 decl_stmt|;
 DECL|field|draftUpdate
 specifier|private
@@ -4368,6 +4391,23 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|isPrivate
+operator|!=
+literal|null
+condition|)
+block|{
+name|addFooter
+argument_list|(
+name|msg
+argument_list|,
+name|FOOTER_PRIVATE
+argument_list|,
+name|isPrivate
+argument_list|)
+expr_stmt|;
+block|}
 name|cb
 operator|.
 name|setMessage
@@ -4597,6 +4637,10 @@ operator|&&
 name|readOnlyUntil
 operator|==
 literal|null
+operator|&&
+name|isPrivate
+operator|==
+literal|null
 return|;
 block|}
 DECL|method|getDraftUpdate ()
@@ -4642,6 +4686,22 @@ block|{
 return|return
 name|isAllowWriteToNewtRef
 return|;
+block|}
+DECL|method|setPrivate (boolean isPrivate)
+specifier|public
+name|void
+name|setPrivate
+parameter_list|(
+name|boolean
+name|isPrivate
+parameter_list|)
+block|{
+name|this
+operator|.
+name|isPrivate
+operator|=
+name|isPrivate
+expr_stmt|;
 block|}
 DECL|method|setReadOnlyUntil (Timestamp readOnlyUntil)
 name|void

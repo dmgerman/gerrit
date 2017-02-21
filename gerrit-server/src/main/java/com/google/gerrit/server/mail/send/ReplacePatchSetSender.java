@@ -472,6 +472,9 @@ expr_stmt|;
 name|bccStarredBy
 argument_list|()
 expr_stmt|;
+name|removeUsersThatIgnoredTheChange
+argument_list|()
+expr_stmt|;
 name|includeWatchers
 argument_list|(
 name|NotifyType
@@ -482,6 +485,12 @@ operator|!
 name|patchSet
 operator|.
 name|isDraft
+argument_list|()
+operator|&&
+operator|!
+name|change
+operator|.
+name|isPrivate
 argument_list|()
 argument_list|)
 expr_stmt|;

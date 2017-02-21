@@ -2106,6 +2106,25 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/** Whether the change is private. */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|20
+argument_list|)
+DECL|field|isPrivate
+specifier|protected
+name|boolean
+name|isPrivate
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** @see com.google.gerrit.server.notedb.NoteDbChangeState */
 end_comment
 
@@ -2297,6 +2316,12 @@ operator|=
 name|other
 operator|.
 name|topic
+expr_stmt|;
+name|isPrivate
+operator|=
+name|other
+operator|.
+name|isPrivate
 expr_stmt|;
 name|noteDbState
 operator|=
@@ -2916,6 +2941,38 @@ operator|.
 name|topic
 operator|=
 name|topic
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|isPrivate ()
+specifier|public
+name|boolean
+name|isPrivate
+parameter_list|()
+block|{
+return|return
+name|isPrivate
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setPrivate (boolean isPrivate)
+specifier|public
+name|void
+name|setPrivate
+parameter_list|(
+name|boolean
+name|isPrivate
+parameter_list|)
+block|{
+name|this
+operator|.
+name|isPrivate
+operator|=
+name|isPrivate
 expr_stmt|;
 block|}
 end_function

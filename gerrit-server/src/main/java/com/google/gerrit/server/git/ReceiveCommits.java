@@ -8555,6 +8555,36 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--private"
+argument_list|,
+name|usage
+operator|=
+literal|"mark new/updated change as private"
+argument_list|)
+DECL|field|isPrivate
+name|boolean
+name|isPrivate
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--remove-private"
+argument_list|,
+name|usage
+operator|=
+literal|"remove privacy flag from updated change"
+argument_list|)
+DECL|field|removePrivate
+name|boolean
+name|removePrivate
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
 literal|"--edit"
 argument_list|,
 name|aliases
@@ -9967,6 +9997,26 @@ argument_list|(
 name|cmd
 argument_list|,
 literal|"cannot upload review"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+name|magicBranch
+operator|.
+name|isPrivate
+operator|&&
+name|magicBranch
+operator|.
+name|removePrivate
+condition|)
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"the options 'private' and 'remove-private' are mutually exclusive"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -13367,6 +13417,13 @@ argument_list|(
 name|magicBranch
 operator|.
 name|topic
+argument_list|)
+operator|.
+name|setPrivate
+argument_list|(
+name|magicBranch
+operator|.
+name|isPrivate
 argument_list|)
 comment|// Changes already validated in validateNewCommits.
 operator|.
