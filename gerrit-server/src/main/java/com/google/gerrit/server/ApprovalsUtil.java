@@ -326,6 +326,54 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|AuthException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|BadRequestException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -1831,7 +1879,7 @@ return|return
 name|need
 return|;
 block|}
-comment|/**    * Adds approvals to ChangeUpdate for a new patch set, and writes to ReviewDb.    *    * @param db review database.    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param changeCtl change control for user adding approvals.    * @param approvals approvals to add.    * @throws OrmException    */
+comment|/**    * Adds approvals to ChangeUpdate for a new patch set, and writes to ReviewDb.    *    * @param db review database.    * @param update change update.    * @param labelTypes label types for the containing project.    * @param ps patch set being approved.    * @param changeCtl change control for user adding approvals.    * @param approvals approvals to add.    * @throws RestApiException    * @throws OrmException    */
 DECL|method|addApprovalsForNewPatchSet ( ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, ChangeControl changeCtl, Map<String, Short> approvals)
 specifier|public
 name|Iterable
@@ -1864,6 +1912,8 @@ argument_list|>
 name|approvals
 parameter_list|)
 throws|throws
+name|RestApiException
+throws|,
 name|OrmException
 block|{
 name|Account
@@ -2062,6 +2112,8 @@ parameter_list|,
 name|Short
 name|value
 parameter_list|)
+throws|throws
+name|BadRequestException
 block|{
 name|LabelType
 name|label
@@ -2082,7 +2134,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IllegalArgumentException
+name|BadRequestException
 argument_list|(
 name|String
 operator|.
@@ -2109,7 +2161,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IllegalArgumentException
+name|BadRequestException
 argument_list|(
 name|String
 operator|.
@@ -2142,6 +2194,8 @@ parameter_list|,
 name|ChangeControl
 name|changeCtl
 parameter_list|)
+throws|throws
+name|AuthException
 block|{
 for|for
 control|(
@@ -2209,7 +2263,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IllegalArgumentException
+name|AuthException
 argument_list|(
 name|String
 operator|.
