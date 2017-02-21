@@ -1267,7 +1267,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 operator|)
 condition|)
@@ -1355,7 +1355,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 operator|||
 operator|(
@@ -2020,7 +2020,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 operator|||
 operator|(

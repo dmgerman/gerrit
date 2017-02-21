@@ -1470,6 +1470,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 for|for
 control|(
@@ -1655,6 +1657,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|AccountSshKey
 name|sshKey

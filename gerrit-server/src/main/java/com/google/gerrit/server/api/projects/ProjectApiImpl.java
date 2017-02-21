@@ -1841,6 +1841,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{

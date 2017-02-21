@@ -2198,7 +2198,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 return|;
 block|}
@@ -2260,7 +2260,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 return|;
 block|}

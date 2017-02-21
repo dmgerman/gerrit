@@ -373,14 +373,19 @@ name|user
 parameter_list|)
 function_decl|;
 comment|/** @return lightweight factory scoped to answer for the specified user. */
-DECL|method|user (Provider<CurrentUser> user)
+DECL|method|user (Provider<U> user)
 specifier|public
+parameter_list|<
+name|U
+extends|extends
+name|CurrentUser
+parameter_list|>
 name|WithUser
 name|user
 parameter_list|(
 name|Provider
 argument_list|<
-name|CurrentUser
+name|U
 argument_list|>
 name|user
 parameter_list|)
