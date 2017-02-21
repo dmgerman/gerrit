@@ -2016,6 +2016,22 @@ name|DELETE_DRAFTS
 argument_list|)
 return|;
 block|}
+comment|/** @return true if this user can delete their own changes. */
+DECL|method|canDeleteOwnChanges ()
+specifier|public
+name|boolean
+name|canDeleteOwnChanges
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|DELETE_OWN_CHANGES
+argument_list|)
+return|;
+block|}
 comment|/** @return true if this user can edit topic names. */
 DECL|method|canEditTopicName ()
 specifier|public
