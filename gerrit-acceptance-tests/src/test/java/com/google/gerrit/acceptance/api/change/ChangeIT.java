@@ -5326,19 +5326,6 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|Change
-operator|.
-name|Id
-name|id
-init|=
-name|changeResult
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
 name|setApiUser
 argument_list|(
 name|user
@@ -5357,14 +5344,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Deleting change %s is not permitted"
-argument_list|,
-name|id
-argument_list|)
+literal|"delete not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -5611,19 +5591,6 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|Change
-operator|.
-name|Id
-name|id
-init|=
-name|changeResult
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
 name|setApiUser
 argument_list|(
 name|user
@@ -5642,14 +5609,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Deleting change %s is not permitted"
-argument_list|,
-name|id
-argument_list|)
+literal|"delete not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -5788,19 +5748,6 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|Change
-operator|.
-name|Id
-name|id
-init|=
-name|changeResult
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
 name|setApiUser
 argument_list|(
 name|user
@@ -5832,14 +5779,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Deleting change %s is not permitted"
-argument_list|,
-name|id
-argument_list|)
+literal|"delete not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -5969,19 +5909,6 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|Change
-operator|.
-name|Id
-name|id
-init|=
-name|changeResult
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
 name|merge
 argument_list|(
 name|changeResult
@@ -6000,14 +5927,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Deleting merged change %s is not allowed"
-argument_list|,
-name|id
-argument_list|)
+literal|"delete not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -6086,19 +6006,6 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|Change
-operator|.
-name|Id
-name|id
-init|=
-name|changeResult
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
 name|merge
 argument_list|(
 name|changeResult
@@ -6122,14 +6029,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Deleting merged change %s is not allowed"
-argument_list|,
-name|id
-argument_list|)
+literal|"delete not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi

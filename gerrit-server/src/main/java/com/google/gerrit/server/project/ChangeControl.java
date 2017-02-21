@@ -1740,7 +1740,6 @@ case|case
 name|DRAFT
 case|:
 return|return
-operator|(
 name|isOwner
 argument_list|()
 operator|||
@@ -1749,7 +1748,9 @@ argument_list|()
 operator|.
 name|canDeleteDrafts
 argument_list|()
-operator|)
+operator|||
+name|isAdmin
+argument_list|()
 return|;
 case|case
 name|NEW
