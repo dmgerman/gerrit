@@ -2843,6 +2843,17 @@ operator|.
 name|isAbsent
 argument_list|()
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|query
+argument_list|(
+literal|"has:edit"
+argument_list|)
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
 comment|// specify edit as option
 name|r
 operator|=
@@ -2915,6 +2926,20 @@ operator|.
 name|subject
 operator|+
 literal|" [EDIT]\n"
+argument_list|)
+expr_stmt|;
+comment|// verify that the re-indexing was triggered for the change
+name|assertThat
+argument_list|(
+name|query
+argument_list|(
+literal|"has:edit"
+argument_list|)
+argument_list|)
+operator|.
+name|hasSize
+argument_list|(
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
