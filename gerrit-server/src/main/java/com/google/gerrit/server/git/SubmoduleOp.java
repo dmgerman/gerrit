@@ -1872,7 +1872,7 @@ name|or
 operator|=
 name|orm
 operator|.
-name|openRepo
+name|getRepo
 argument_list|(
 name|s
 operator|.
@@ -2122,7 +2122,7 @@ name|or
 init|=
 name|orm
 operator|.
-name|openRepo
+name|getRepo
 argument_list|(
 name|targetProject
 argument_list|)
@@ -2322,7 +2322,7 @@ name|or
 init|=
 name|orm
 operator|.
-name|openRepo
+name|getRepo
 argument_list|(
 name|project
 argument_list|)
@@ -2428,7 +2428,7 @@ name|or
 operator|=
 name|orm
 operator|.
-name|openRepo
+name|getRepo
 argument_list|(
 name|subscriber
 operator|.
@@ -2795,7 +2795,7 @@ name|or
 operator|=
 name|orm
 operator|.
-name|openRepo
+name|getRepo
 argument_list|(
 name|subscriber
 operator|.
@@ -3069,7 +3069,7 @@ name|subOr
 operator|=
 name|orm
 operator|.
-name|openRepo
+name|getRepo
 argument_list|(
 name|s
 operator|.

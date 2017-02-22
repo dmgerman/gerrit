@@ -1233,6 +1233,18 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// get a preview before submitting:
+name|Map
+argument_list|<
+name|Branch
+operator|.
+name|NameKey
+argument_list|,
+name|RevTree
+argument_list|>
+name|preview
+decl_stmt|;
+try|try
+init|(
 name|BinaryResult
 name|request
 init|=
@@ -1243,22 +1255,16 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|Map
-argument_list|<
-name|Branch
-operator|.
-name|NameKey
-argument_list|,
-name|RevTree
-argument_list|>
+init|)
+block|{
 name|preview
-init|=
+operator|=
 name|fetchFromBundles
 argument_list|(
 name|request
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 name|submit
 argument_list|(
 name|change1b
@@ -1864,10 +1870,10 @@ literal|"and upload the rebased commit for review."
 decl_stmt|;
 comment|// Get a preview before submitting:
 try|try
-block|{
-comment|// We cannot just use the ExpectedException infrastructure as provided
-comment|// by AbstractDaemonTest, as then we'd stop early and not test the
-comment|// actual submit.
+init|(
+name|BinaryResult
+name|r
+init|=
 name|submitPreview
 argument_list|(
 name|change1b
@@ -1875,7 +1881,11 @@ operator|.
 name|getChangeId
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
+comment|// We cannot just use the ExpectedException infrastructure as provided
+comment|// by AbstractDaemonTest, as then we'd stop early and not test the
+comment|// actual submit.
 name|fail
 argument_list|(
 literal|"expected failure"
@@ -3624,6 +3634,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// get a preview before submitting:
+name|File
+name|tempfile
+decl_stmt|;
+try|try
+init|(
 name|BinaryResult
 name|request
 init|=
@@ -3636,7 +3651,8 @@ argument_list|()
 argument_list|,
 literal|"tgz"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|assertThat
 argument_list|(
 name|request
@@ -3650,9 +3666,8 @@ argument_list|(
 literal|"application/x-gzip"
 argument_list|)
 expr_stmt|;
-name|File
 name|tempfile
-init|=
+operator|=
 name|File
 operator|.
 name|createTempFile
@@ -3661,7 +3676,7 @@ literal|"test"
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|request
 operator|.
 name|writeTo
@@ -3673,6 +3688,7 @@ name|tempfile
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|InputStream
 name|is
 init|=

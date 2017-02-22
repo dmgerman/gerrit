@@ -781,18 +781,8 @@ return|return
 name|update
 return|;
 block|}
-comment|/**      * Make sure the update has already executed before reset it. TODO:czhen Have a flag in      * BatchUpdate to mark if it has been executed      */
-DECL|method|resetUpdate ()
-name|void
-name|resetUpdate
-parameter_list|()
-block|{
-name|update
-operator|=
-literal|null
-expr_stmt|;
-block|}
 DECL|method|close ()
+specifier|private
 name|void
 name|close
 parameter_list|()
@@ -1155,42 +1145,6 @@ operator|.
 name|NameKey
 name|project
 parameter_list|)
-block|{
-name|OpenRepo
-name|or
-init|=
-name|openRepos
-operator|.
-name|get
-argument_list|(
-name|project
-argument_list|)
-decl_stmt|;
-name|checkState
-argument_list|(
-name|or
-operator|!=
-literal|null
-argument_list|,
-literal|"repo not yet opened: %s"
-argument_list|,
-name|project
-argument_list|)
-expr_stmt|;
-return|return
-name|or
-return|;
-block|}
-DECL|method|openRepo (Project.NameKey project)
-specifier|public
-name|OpenRepo
-name|openRepo
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|)
 throws|throws
 name|NoSuchProjectException
 throws|,
@@ -1282,6 +1236,8 @@ operator|new
 name|NoSuchProjectException
 argument_list|(
 name|project
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -1302,6 +1258,10 @@ name|NameKey
 argument_list|>
 name|projects
 parameter_list|)
+throws|throws
+name|NoSuchProjectException
+throws|,
+name|IOException
 block|{
 name|List
 argument_list|<
@@ -1372,6 +1332,11 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|openRepos
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
