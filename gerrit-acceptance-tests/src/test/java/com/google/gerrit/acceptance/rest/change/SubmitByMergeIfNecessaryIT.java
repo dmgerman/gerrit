@@ -446,9 +446,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|revwalk
+name|lib
 operator|.
-name|RevCommit
+name|ObjectId
 import|;
 end_import
 
@@ -462,7 +462,7 @@ name|jgit
 operator|.
 name|revwalk
 operator|.
-name|RevTree
+name|RevCommit
 import|;
 end_import
 
@@ -1239,32 +1239,18 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|,
-name|RevTree
+name|ObjectId
 argument_list|>
 name|preview
-decl_stmt|;
-try|try
-init|(
-name|BinaryResult
-name|request
 init|=
-name|submitPreview
+name|fetchFromSubmitPreview
 argument_list|(
 name|change1b
 operator|.
 name|getChangeId
 argument_list|()
 argument_list|)
-init|)
-block|{
-name|preview
-operator|=
-name|fetchFromBundles
-argument_list|(
-name|request
-argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|submit
 argument_list|(
 name|change1b
@@ -1410,7 +1396,7 @@ literal|"refs/heads/master"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertRevTrees
+name|assertTrees
 argument_list|(
 name|p1
 argument_list|,
@@ -1435,7 +1421,7 @@ literal|"refs/heads/master"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertRevTrees
+name|assertTrees
 argument_list|(
 name|p2
 argument_list|,
@@ -1460,7 +1446,7 @@ literal|"refs/heads/master"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertRevTrees
+name|assertTrees
 argument_list|(
 name|p3
 argument_list|,
