@@ -489,6 +489,7 @@ name|Slf4jLogChute
 implements|implements
 name|LogChute
 block|{
+comment|// Logger should be named 'velocity' for consistency with log4j config
 DECL|field|log
 specifier|private
 specifier|static
@@ -500,9 +501,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|Slf4jLogChute
-operator|.
-name|class
+literal|"velocity"
 argument_list|)
 decl_stmt|;
 annotation|@
