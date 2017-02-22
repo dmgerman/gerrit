@@ -1954,7 +1954,6 @@ return|;
 block|}
 comment|/** @return true if this user can remove a reviewer for a change. */
 DECL|method|canRemoveReviewer ()
-specifier|public
 name|boolean
 name|canRemoveReviewer
 parameter_list|()
