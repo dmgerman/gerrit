@@ -788,6 +788,22 @@ name|server
 operator|.
 name|permissions
 operator|.
+name|ProjectPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
 name|RefPermission
 import|;
 end_import
@@ -1299,52 +1315,76 @@ name|isFalse
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertCanRead (ProjectControl u)
+DECL|method|assertCanAccess (ProjectControl u)
 specifier|private
 name|void
-name|assertCanRead
+name|assertCanAccess
 parameter_list|(
 name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
-argument_list|(
+name|boolean
+name|access
+init|=
 name|u
 operator|.
-name|isVisible
+name|asForProject
 argument_list|()
+operator|.
+name|testOrFalse
+argument_list|(
+name|ProjectPermission
+operator|.
+name|ACCESS
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|access
 argument_list|)
 operator|.
 name|named
 argument_list|(
-literal|"can read"
+literal|"can access"
 argument_list|)
 operator|.
 name|isTrue
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertCannotRead (ProjectControl u)
+DECL|method|assertAccessDenied (ProjectControl u)
 specifier|private
 name|void
-name|assertCannotRead
+name|assertAccessDenied
 parameter_list|(
 name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
-argument_list|(
+name|boolean
+name|access
+init|=
 name|u
 operator|.
-name|isVisible
+name|asForProject
 argument_list|()
+operator|.
+name|testOrFalse
+argument_list|(
+name|ProjectPermission
+operator|.
+name|ACCESS
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|access
 argument_list|)
 operator|.
 name|named
 argument_list|(
-literal|"cannot read"
+literal|"cannot access"
 argument_list|)
 operator|.
 name|isFalse
@@ -3337,7 +3377,7 @@ argument_list|,
 literal|"refs/heads/*"
 argument_list|)
 expr_stmt|;
-name|assertCanRead
+name|assertCanAccess
 argument_list|(
 name|user
 argument_list|(
@@ -3388,7 +3428,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|assertCanRead
+name|assertCanAccess
 argument_list|(
 name|user
 argument_list|(
@@ -3431,7 +3471,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|assertCannotRead
+name|assertAccessDenied
 argument_list|(
 name|user
 argument_list|(
@@ -3478,7 +3518,7 @@ argument_list|(
 name|local
 argument_list|)
 decl_stmt|;
-name|assertCanRead
+name|assertCanAccess
 argument_list|(
 name|u
 argument_list|)
@@ -3554,7 +3594,7 @@ argument_list|(
 name|local
 argument_list|)
 decl_stmt|;
-name|assertCanRead
+name|assertCanAccess
 argument_list|(
 name|u
 argument_list|)

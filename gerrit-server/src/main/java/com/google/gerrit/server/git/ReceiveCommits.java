@@ -4147,7 +4147,20 @@ comment|// If the user lacks READ permission, some references may be filtered an
 comment|// Check objects mentioned inside the incoming pack file are reachable from visible refs.
 try|try
 block|{
-name|permissions
+name|permissionBackend
+operator|.
+name|user
+argument_list|(
+name|user
+argument_list|)
+operator|.
+name|project
+argument_list|(
+name|project
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
 operator|.
 name|check
 argument_list|(
