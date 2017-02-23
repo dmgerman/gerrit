@@ -423,7 +423,7 @@ literal|" is not an IdentifiedUser"
 argument_list|)
 throw|;
 block|}
-comment|/** Return account ID if {@link #isIdentifiedUser} is true. */
+comment|/** Return account ID if {@link #isIdentifiedUser} is true.    *    * @throws UnsupportedOperationException if the user is not logged in.    * */
 DECL|method|getAccountId ()
 specifier|public
 name|Account
