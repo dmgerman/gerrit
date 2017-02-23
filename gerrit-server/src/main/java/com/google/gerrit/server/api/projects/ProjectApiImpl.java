@@ -2250,6 +2250,8 @@ argument_list|(
 name|recursive
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 return|return
 name|list
 operator|.
@@ -2259,6 +2261,23 @@ name|checkExists
 argument_list|()
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|PermissionBackendException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RestApiException
+argument_list|(
+literal|"Cannot list children"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
