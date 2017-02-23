@@ -107,7 +107,7 @@ specifier|public
 name|GitPerson
 name|tagger
 decl_stmt|;
-DECL|method|TagInfo (String ref, String revision)
+DECL|method|TagInfo (String ref, String revision, boolean canDelete)
 specifier|public
 name|TagInfo
 parameter_list|(
@@ -116,6 +116,9 @@ name|ref
 parameter_list|,
 name|String
 name|revision
+parameter_list|,
+name|boolean
+name|canDelete
 parameter_list|)
 block|{
 name|this
@@ -130,8 +133,14 @@ name|revision
 operator|=
 name|revision
 expr_stmt|;
+name|this
+operator|.
+name|canDelete
+operator|=
+name|canDelete
+expr_stmt|;
 block|}
-DECL|method|TagInfo (String ref, String revision, String object, String message, GitPerson tagger)
+DECL|method|TagInfo ( String ref, String revision, String object, String message, GitPerson tagger, boolean canDelete)
 specifier|public
 name|TagInfo
 parameter_list|(
@@ -149,6 +158,9 @@ name|message
 parameter_list|,
 name|GitPerson
 name|tagger
+parameter_list|,
+name|boolean
+name|canDelete
 parameter_list|)
 block|{
 name|this
@@ -156,6 +168,8 @@ argument_list|(
 name|ref
 argument_list|,
 name|revision
+argument_list|,
+name|canDelete
 argument_list|)
 expr_stmt|;
 name|this
