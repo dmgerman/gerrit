@@ -650,6 +650,8 @@ throws|,
 name|UnprocessableEntityException
 throws|,
 name|IOException
+throws|,
+name|PermissionBackendException
 block|{
 name|Map
 argument_list|<

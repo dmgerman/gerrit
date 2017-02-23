@@ -196,6 +196,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ListProjects
@@ -410,6 +426,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -418,6 +436,8 @@ operator|new
 name|RestApiException
 argument_list|(
 literal|"Cannot retrieve project"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
