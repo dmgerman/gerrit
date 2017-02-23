@@ -800,8 +800,6 @@ block|{
 try|try
 block|{
 return|return
-name|this
-operator|.
 name|apply
 argument_list|(
 operator|new
@@ -884,7 +882,7 @@ decl_stmt|;
 name|ProjectControl
 name|pc
 init|=
-name|open
+name|createProjectControl
 argument_list|(
 name|projectName
 argument_list|)
@@ -959,7 +957,7 @@ argument_list|)
 expr_stmt|;
 name|pc
 operator|=
-name|open
+name|createProjectControl
 argument_list|(
 name|projectName
 argument_list|)
@@ -1008,7 +1006,7 @@ argument_list|)
 expr_stmt|;
 name|pc
 operator|=
-name|open
+name|createProjectControl
 argument_list|(
 name|projectName
 argument_list|)
@@ -1819,10 +1817,10 @@ return|return
 name|accessSectionInfo
 return|;
 block|}
-DECL|method|open (Project.NameKey projectName)
+DECL|method|createProjectControl (Project.NameKey projectName)
 specifier|private
 name|ProjectControl
-name|open
+name|createProjectControl
 parameter_list|(
 name|Project
 operator|.
@@ -1830,26 +1828,18 @@ name|NameKey
 name|projectName
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
 name|IOException
+throws|,
+name|ResourceNotFoundException
 block|{
 try|try
 block|{
 return|return
 name|projectControlFactory
 operator|.
-name|validateFor
+name|controlFor
 argument_list|(
 name|projectName
-argument_list|,
-name|ProjectControl
-operator|.
-name|OWNER
-operator||
-name|ProjectControl
-operator|.
-name|VISIBLE
 argument_list|,
 name|self
 operator|.

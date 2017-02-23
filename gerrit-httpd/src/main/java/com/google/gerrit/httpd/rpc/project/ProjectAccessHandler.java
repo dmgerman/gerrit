@@ -1304,6 +1304,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionDeniedException
+throws|,
+name|PermissionBackendException
 function_decl|;
 DECL|method|replace (ProjectConfig config, Set<String> toDelete, AccessSection section)
 specifier|private
