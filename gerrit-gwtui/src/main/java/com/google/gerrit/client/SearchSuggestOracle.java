@@ -253,6 +253,8 @@ argument_list|,
 literal|"from:"
 argument_list|,
 literal|"assignee:"
+argument_list|,
+literal|"cc:"
 argument_list|)
 argument_list|,
 operator|new
@@ -892,6 +894,13 @@ name|isNoteDbEnabled
 argument_list|()
 condition|)
 block|{
+name|suggestions
+operator|.
+name|add
+argument_list|(
+literal|"cc:"
+argument_list|)
+expr_stmt|;
 name|suggestions
 operator|.
 name|add
