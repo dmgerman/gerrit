@@ -1080,28 +1080,27 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Mail: Message "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Message %s filtered by plugin %s %s. Will delete message."
+argument_list|,
 name|message
 operator|.
 name|id
 argument_list|()
-operator|+
-literal|" filtered by plugin "
-operator|+
+argument_list|,
 name|filter
 operator|.
 name|getPluginName
 argument_list|()
-operator|+
-literal|" "
-operator|+
+argument_list|,
 name|filter
 operator|.
 name|getExportName
 argument_list|()
-operator|+
-literal|". Will delete message."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1130,18 +1129,19 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Mail: Message "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Message %s is missing required metadata, have %s. Will delete message."
+argument_list|,
 name|message
 operator|.
 name|id
 argument_list|()
-operator|+
-literal|" is missing required metadata, have "
-operator|+
+argument_list|,
 name|metadata
-operator|+
-literal|". Will delete message."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1177,17 +1177,18 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Mail: Address "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Address %s could not be matched to a unique account. It was matched to %s. Will delete message."
+argument_list|,
 name|metadata
 operator|.
 name|author
-operator|+
-literal|" could not be matched to a unique account. It was matched to "
-operator|+
+argument_list|,
 name|accounts
-operator|+
-literal|". Will delete message."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1229,11 +1230,14 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Mail: Account "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Mail: Account %s is inactive. Will delete message."
+argument_list|,
 name|account
-operator|+
-literal|" is inactive. Will delete message."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1251,18 +1255,16 @@ name|account
 argument_list|)
 init|)
 block|{
+name|List
+argument_list|<
 name|ChangeData
-name|cd
+argument_list|>
+name|changeDataList
 init|=
 name|queryProvider
 operator|.
 name|get
 argument_list|()
-operator|.
-name|setLimit
-argument_list|(
-literal|1
-argument_list|)
 operator|.
 name|byKey
 argument_list|(
@@ -1277,6 +1279,49 @@ operator|.
 name|changeId
 argument_list|)
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|changeDataList
+operator|.
+name|size
+argument_list|()
+operator|!=
+literal|1
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Message %s references unique change %s, but there are %d matching changes in the index. Will delete message."
+argument_list|,
+name|message
+operator|.
+name|id
+argument_list|()
+argument_list|,
+name|metadata
+operator|.
+name|changeId
+argument_list|,
+name|changeDataList
+operator|.
+name|size
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|ChangeData
+name|cd
+init|=
+name|changeDataList
 operator|.
 name|get
 argument_list|(
@@ -1303,7 +1348,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Mail: Message "
+literal|"Message "
 operator|+
 name|message
 operator|.
@@ -1458,7 +1503,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Mail: Could not parse any comments from "
+literal|"Could not parse any comments from "
 operator|+
 name|message
 operator|.
