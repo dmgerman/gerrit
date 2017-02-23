@@ -917,7 +917,12 @@ operator|.
 name|getChange
 argument_list|()
 decl_stmt|;
-specifier|final
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
+comment|// Returned BinaryResult takes ownership and handles closing.
 name|MergeOp
 name|op
 init|=
