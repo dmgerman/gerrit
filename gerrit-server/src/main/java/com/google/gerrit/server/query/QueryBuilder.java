@@ -248,6 +248,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|lang
@@ -948,6 +962,24 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 block|{
+if|if
+condition|(
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|query
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|QueryParseException
+argument_list|(
+literal|"query is empty"
+argument_list|)
+throw|;
+block|}
 return|return
 name|toPredicate
 argument_list|(
