@@ -454,6 +454,25 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** Rebase the current revision of a change using default options. */
+DECL|method|rebase ()
+name|void
+name|rebase
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** Rebase the current revision of a change. */
+DECL|method|rebase (RebaseInput in)
+name|void
+name|rebase
+parameter_list|(
+name|RebaseInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/** Deletes a change. */
 DECL|method|delete ()
 name|void
@@ -1008,6 +1027,37 @@ specifier|public
 name|void
 name|publish
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|rebase ()
+specifier|public
+name|void
+name|rebase
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|rebase (RebaseInput in)
+specifier|public
+name|void
+name|rebase
+parameter_list|(
+name|RebaseInput
+name|in
+parameter_list|)
 block|{
 throw|throw
 operator|new
