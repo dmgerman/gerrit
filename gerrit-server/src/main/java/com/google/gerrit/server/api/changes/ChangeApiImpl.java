@@ -3206,9 +3206,6 @@ name|change
 argument_list|,
 name|input
 argument_list|)
-operator|.
-name|value
-argument_list|()
 return|;
 block|}
 catch|catch
