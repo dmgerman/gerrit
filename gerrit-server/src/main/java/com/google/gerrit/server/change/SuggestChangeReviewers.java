@@ -274,6 +274,38 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|PermissionBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|RefPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -386,6 +418,12 @@ DECL|field|excludeGroups
 name|boolean
 name|excludeGroups
 decl_stmt|;
+DECL|field|permissionBackend
+specifier|private
+specifier|final
+name|PermissionBackend
+name|permissionBackend
+decl_stmt|;
 DECL|field|self
 specifier|private
 specifier|final
@@ -397,7 +435,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuggestChangeReviewers ( AccountVisibility av, GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, Provider<CurrentUser> self, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil)
+DECL|method|SuggestChangeReviewers ( AccountVisibility av, GenericFactory identifiedUserFactory, Provider<ReviewDb> dbProvider, PermissionBackend permissionBackend, Provider<CurrentUser> self, @GerritServerConfig Config cfg, ReviewersUtil reviewersUtil)
 name|SuggestChangeReviewers
 parameter_list|(
 name|AccountVisibility
@@ -411,6 +449,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|PermissionBackend
+name|permissionBackend
 parameter_list|,
 name|Provider
 argument_list|<
@@ -439,6 +480,12 @@ name|cfg
 argument_list|,
 name|reviewersUtil
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|permissionBackend
+operator|=
+name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
@@ -518,12 +565,11 @@ name|excludeGroups
 argument_list|)
 return|;
 block|}
-DECL|method|getVisibility (final ChangeResource rsrc)
+DECL|method|getVisibility (ChangeResource rsrc)
 specifier|private
 name|VisibilityControl
 name|getVisibility
 parameter_list|(
-specifier|final
 name|ChangeResource
 name|rsrc
 parameter_list|)
@@ -568,6 +614,31 @@ block|}
 block|}
 return|;
 block|}
+comment|// Use the destination reference, not the change, as drafts may deny
+comment|// anyone who is not already a reviewer.
+name|PermissionBackend
+operator|.
+name|ForRef
+name|perm
+init|=
+name|permissionBackend
+operator|.
+name|user
+argument_list|(
+name|self
+argument_list|)
+operator|.
+name|ref
+argument_list|(
+name|rsrc
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|VisibilityControl
@@ -597,21 +668,20 @@ argument_list|(
 name|account
 argument_list|)
 decl_stmt|;
-comment|// we can't use changeControl directly as it won't suggest reviewers
-comment|// to drafts
 return|return
-name|rsrc
+name|perm
 operator|.
-name|getControl
-argument_list|()
-operator|.
-name|forUser
+name|user
 argument_list|(
 name|who
 argument_list|)
 operator|.
-name|isRefVisible
-argument_list|()
+name|testOrFalse
+argument_list|(
+name|RefPermission
+operator|.
+name|READ
+argument_list|)
 return|;
 block|}
 block|}
