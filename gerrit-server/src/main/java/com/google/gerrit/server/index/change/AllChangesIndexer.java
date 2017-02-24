@@ -1527,7 +1527,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|reindexProject ( final ChangeIndexer indexer, final Project.NameKey project, final Task done, final Task failed, final PrintWriter verboseWriter)
-specifier|private
+specifier|public
 name|Callable
 argument_list|<
 name|Void
