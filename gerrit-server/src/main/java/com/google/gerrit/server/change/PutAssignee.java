@@ -891,6 +891,8 @@ throws|,
 name|RestApiException
 throws|,
 name|IOException
+throws|,
+name|PermissionBackendException
 block|{
 name|AddReviewerInput
 name|reviewerInput

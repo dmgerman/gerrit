@@ -1439,18 +1439,6 @@ literal|false
 return|;
 block|}
 return|return
-name|isRefVisible
-argument_list|()
-return|;
-block|}
-comment|/** Can the user see this change? Does not account for draft status */
-DECL|method|isRefVisible ()
-specifier|public
-name|boolean
-name|isRefVisible
-parameter_list|()
-block|{
-return|return
 name|getRefControl
 argument_list|()
 operator|.
