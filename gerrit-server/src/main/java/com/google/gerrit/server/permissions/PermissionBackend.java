@@ -1180,6 +1180,49 @@ name|perm
 argument_list|)
 return|;
 block|}
+comment|/**      * Test if user may be able to perform the permission.      *      *<p>Similar to {@link #test(RefPermission)} except this method returns {@code false} instead      * of throwing an exception.      *      * @param perm the permission to test.      * @return true if the user might be able to perform the permission; false if the user may be      *     missing the necessary grants or state, or if the backend threw an exception.      */
+DECL|method|testOrFalse (RefPermission perm)
+specifier|public
+name|boolean
+name|testOrFalse
+parameter_list|(
+name|RefPermission
+name|perm
+parameter_list|)
+block|{
+try|try
+block|{
+return|return
+name|test
+argument_list|(
+name|perm
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|PermissionBackendException
+name|e
+parameter_list|)
+block|{
+name|logger
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot test "
+operator|+
+name|perm
+operator|+
+literal|"; assuming false"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+block|}
 block|}
 comment|/** PermissionBackend scoped to a user, project, reference and change. */
 DECL|class|ForChange

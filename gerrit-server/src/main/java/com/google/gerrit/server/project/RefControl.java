@@ -1218,7 +1218,7 @@ return|;
 block|}
 comment|/** @return true if the user can update the reference as a fast-forward. */
 DECL|method|canUpdate ()
-specifier|public
+specifier|private
 name|boolean
 name|canUpdate
 parameter_list|()
@@ -1291,7 +1291,7 @@ return|;
 block|}
 comment|/** @return true if the user can rewind (force push) the reference. */
 DECL|method|canForceUpdate ()
-specifier|public
+specifier|private
 name|boolean
 name|canForceUpdate
 parameter_list|()
