@@ -1197,7 +1197,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"is not visible to"
+literal|"read not permitted"
 argument_list|)
 expr_stmt|;
 name|setAssignee
