@@ -884,6 +884,8 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
+literal|"H2"
+argument_list|,
 literal|"HTTP"
 argument_list|,
 literal|"IntraLineDiff"
@@ -899,6 +901,8 @@ argument_list|,
 literal|"SSH-Stream-Worker"
 argument_list|,
 literal|"SshCommandStart"
+argument_list|,
+literal|"sshd-SshServer"
 argument_list|)
 decl_stmt|;
 name|String
