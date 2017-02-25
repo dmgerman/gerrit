@@ -504,6 +504,24 @@ name|notedb
 operator|.
 name|ChangeNoteUtil
 operator|.
+name|FOOTER_WORK_IN_PROGRESS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNoteUtil
+operator|.
 name|sanitizeFooter
 import|;
 end_import
@@ -1536,6 +1554,11 @@ DECL|field|isPrivate
 specifier|private
 name|Boolean
 name|isPrivate
+decl_stmt|;
+DECL|field|workInProgress
+specifier|private
+name|Boolean
+name|workInProgress
 decl_stmt|;
 DECL|field|draftUpdate
 specifier|private
@@ -4534,6 +4557,23 @@ name|isPrivate
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|workInProgress
+operator|!=
+literal|null
+condition|)
+block|{
+name|addFooter
+argument_list|(
+name|msg
+argument_list|,
+name|FOOTER_WORK_IN_PROGRESS
+argument_list|,
+name|workInProgress
+argument_list|)
+expr_stmt|;
+block|}
 name|cb
 operator|.
 name|setMessage
@@ -4772,6 +4812,10 @@ operator|&&
 name|isPrivate
 operator|==
 literal|null
+operator|&&
+name|workInProgress
+operator|==
+literal|null
 return|;
 block|}
 DECL|method|getDraftUpdate ()
@@ -4832,6 +4876,22 @@ operator|.
 name|isPrivate
 operator|=
 name|isPrivate
+expr_stmt|;
+block|}
+DECL|method|setWorkInProgress (boolean workInProgress)
+specifier|public
+name|void
+name|setWorkInProgress
+parameter_list|(
+name|boolean
+name|workInProgress
+parameter_list|)
+block|{
+name|this
+operator|.
+name|workInProgress
+operator|=
+name|workInProgress
 expr_stmt|;
 block|}
 DECL|method|setReadOnlyUntil (Timestamp readOnlyUntil)

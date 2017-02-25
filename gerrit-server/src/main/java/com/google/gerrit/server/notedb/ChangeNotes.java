@@ -3815,6 +3815,33 @@ name|isPrivate
 argument_list|()
 return|;
 block|}
+DECL|method|isWorkInProgress ()
+specifier|public
+name|boolean
+name|isWorkInProgress
+parameter_list|()
+block|{
+if|if
+condition|(
+name|state
+operator|.
+name|isWorkInProgress
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+name|state
+operator|.
+name|isWorkInProgress
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|onLoad (LoadHandle handle)

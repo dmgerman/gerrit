@@ -1216,6 +1216,11 @@ specifier|private
 name|boolean
 name|isPrivate
 decl_stmt|;
+DECL|field|workInProgress
+specifier|private
+name|boolean
+name|workInProgress
+decl_stmt|;
 DECL|field|groups
 specifier|private
 name|List
@@ -1659,6 +1664,13 @@ argument_list|(
 name|isPrivate
 argument_list|)
 expr_stmt|;
+name|change
+operator|.
+name|setWorkInProgress
+argument_list|(
+name|workInProgress
+argument_list|)
+expr_stmt|;
 return|return
 name|change
 return|;
@@ -2096,6 +2108,25 @@ name|Status
 operator|.
 name|NEW
 argument_list|)
+return|;
+block|}
+DECL|method|setWorkInProgress (boolean workInProgress)
+specifier|public
+name|ChangeInserter
+name|setWorkInProgress
+parameter_list|(
+name|boolean
+name|workInProgress
+parameter_list|)
+block|{
+name|this
+operator|.
+name|workInProgress
+operator|=
+name|workInProgress
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 DECL|method|setStatus (Change.Status status)
@@ -2547,6 +2578,13 @@ operator|.
 name|setPrivate
 argument_list|(
 name|isPrivate
+argument_list|)
+expr_stmt|;
+name|update
+operator|.
+name|setWorkInProgress
+argument_list|(
+name|workInProgress
 argument_list|)
 expr_stmt|;
 name|boolean
