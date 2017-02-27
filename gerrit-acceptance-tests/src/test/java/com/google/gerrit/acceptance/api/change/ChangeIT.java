@@ -20135,6 +20135,7 @@ expr_stmt|;
 block|}
 DECL|class|ChangeStatusUpdateOp
 specifier|private
+specifier|static
 class|class
 name|ChangeStatusUpdateOp
 extends|extends
