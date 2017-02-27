@@ -7171,10 +7171,10 @@ literal|"*"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertMailFrom (Message message, String email)
+DECL|method|assertMailReplyTo (Message message, String email)
 specifier|protected
 name|void
-name|assertMailFrom
+name|assertMailReplyTo
 parameter_list|(
 name|Message
 name|message
@@ -7226,7 +7226,7 @@ name|getString
 argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|contains
 argument_list|(
 name|email
 argument_list|)
