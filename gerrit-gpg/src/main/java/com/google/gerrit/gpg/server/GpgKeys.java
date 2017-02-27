@@ -684,6 +684,7 @@ decl_stmt|;
 DECL|field|MIME_TYPE
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|MIME_TYPE
 init|=

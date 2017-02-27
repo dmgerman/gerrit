@@ -582,6 +582,7 @@ block|{
 DECL|field|MAX_DEFAULT_BUNDLE_SIZE
 specifier|private
 specifier|static
+specifier|final
 name|int
 name|MAX_DEFAULT_BUNDLE_SIZE
 init|=
