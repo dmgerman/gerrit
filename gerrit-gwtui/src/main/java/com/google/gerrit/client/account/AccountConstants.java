@@ -765,6 +765,21 @@ name|String
 name|emailFieldLabel
 parameter_list|()
 function_decl|;
+DECL|method|emailFormatFieldLabel ()
+name|String
+name|emailFormatFieldLabel
+parameter_list|()
+function_decl|;
+DECL|method|messagePlaintextOnly ()
+name|String
+name|messagePlaintextOnly
+parameter_list|()
+function_decl|;
+DECL|method|messageHtmlPlaintext ()
+name|String
+name|messageHtmlPlaintext
+parameter_list|()
+function_decl|;
 DECL|method|defaultBaseForMerges ()
 name|String
 name|defaultBaseForMerges
