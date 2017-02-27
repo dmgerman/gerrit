@@ -343,6 +343,19 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+DECL|method|byEmail (String email)
+name|Set
+argument_list|<
+name|ExternalId
+argument_list|>
+name|byEmail
+parameter_list|(
+name|String
+name|email
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 DECL|method|onCreate (ObjectId newNotesRev, ExternalId extId)
 specifier|default
 name|void

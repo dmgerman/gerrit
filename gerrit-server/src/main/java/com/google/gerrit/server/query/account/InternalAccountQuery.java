@@ -426,32 +426,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byEmailPrefix (String emailPrefix)
-specifier|public
-name|List
-argument_list|<
-name|AccountState
-argument_list|>
-name|byEmailPrefix
-parameter_list|(
-name|String
-name|emailPrefix
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|query
-argument_list|(
-name|AccountPredicates
-operator|.
-name|email
-argument_list|(
-name|emailPrefix
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|byExternalId (String scheme, String id)
 specifier|public
 name|List
