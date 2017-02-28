@@ -2277,7 +2277,7 @@ expr_stmt|;
 block|}
 comment|/**    * Insert or updates an new external ID and sets it in the note map.    *    *<p>If the external ID already exists it is overwritten.    */
 DECL|method|upsert (RevWalk rw, ObjectInserter ins, NoteMap noteMap, ExternalId extId)
-specifier|private
+specifier|public
 specifier|static
 name|void
 name|upsert
