@@ -92,11 +92,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|ExternalId
 import|;
 end_import
 
@@ -120,7 +120,7 @@ comment|/**    * Returns additional external identifiers to assign to a given us
 DECL|method|create (Account.Id id, String username, String email)
 name|List
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|create
 parameter_list|(

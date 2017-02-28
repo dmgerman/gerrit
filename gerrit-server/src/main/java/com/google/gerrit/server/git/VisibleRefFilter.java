@@ -913,6 +913,8 @@ name|showMetadata
 operator|&&
 name|isMetadata
 argument_list|(
+name|projectCtl
+argument_list|,
 name|name
 argument_list|)
 operator|)
@@ -1092,6 +1094,44 @@ argument_list|)
 condition|)
 block|{
 comment|// Sequences are internal database implementation details.
+if|if
+condition|(
+name|viewMetadata
+condition|)
+block|{
+name|result
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+name|ref
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|projectCtl
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|isAllUsers
+argument_list|()
+operator|&&
+name|name
+operator|.
+name|equals
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_EXTERNAL_IDS
+argument_list|)
+condition|)
+block|{
+comment|// The notes branch with the external IDs of all users must not be exposed to normal users.
 if|if
 condition|(
 name|viewMetadata
@@ -1844,12 +1884,15 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|isMetadata (String name)
+DECL|method|isMetadata (ProjectControl projectCtl, String name)
 specifier|private
 specifier|static
 name|boolean
 name|isMetadata
 parameter_list|(
+name|ProjectControl
+name|projectCtl
+parameter_list|,
 name|String
 name|name
 parameter_list|)
@@ -1868,6 +1911,25 @@ name|isRefsEdit
 argument_list|(
 name|name
 argument_list|)
+operator|||
+operator|(
+name|projectCtl
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|isAllUsers
+argument_list|()
+operator|&&
+name|name
+operator|.
+name|equals
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_EXTERNAL_IDS
+argument_list|)
+operator|)
 return|;
 block|}
 DECL|method|isTag (Ref ref)

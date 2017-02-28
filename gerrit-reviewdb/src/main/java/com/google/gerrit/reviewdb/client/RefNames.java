@@ -150,6 +150,16 @@ name|REFS_CONFIG
 init|=
 literal|"refs/meta/config"
 decl_stmt|;
+comment|/** Note tree listing external IDs */
+DECL|field|REFS_EXTERNAL_IDS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_EXTERNAL_IDS
+init|=
+literal|"refs/meta/external-ids"
+decl_stmt|;
 comment|/** Preference settings for a user {@code refs/users} */
 DECL|field|REFS_USERS
 specifier|public

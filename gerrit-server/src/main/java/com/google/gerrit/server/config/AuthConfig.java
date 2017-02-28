@@ -67,6 +67,60 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|ExternalId
+operator|.
+name|SCHEME_MAILTO
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|ExternalId
+operator|.
+name|SCHEME_USERNAME
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|ExternalId
+operator|.
+name|SCHEME_UUID
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -106,11 +160,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|ExternalId
 import|;
 end_import
 
@@ -337,12 +391,6 @@ specifier|private
 specifier|final
 name|boolean
 name|userNameToLowerCase
-decl_stmt|;
-DECL|field|gitBasicAuth
-specifier|private
-specifier|final
-name|boolean
-name|gitBasicAuth
 decl_stmt|;
 DECL|field|useContributorAgreements
 specifier|private
@@ -758,19 +806,6 @@ argument_list|,
 literal|"enableRunAs"
 argument_list|,
 literal|true
-argument_list|)
-expr_stmt|;
-name|gitBasicAuth
-operator|=
-name|cfg
-operator|.
-name|getBoolean
-argument_list|(
-literal|"auth"
-argument_list|,
-literal|"gitBasicAuth"
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|gitBasicAuthPolicy
@@ -1281,17 +1316,6 @@ return|return
 name|userNameToLowerCase
 return|;
 block|}
-comment|/** Whether git-over-http should use Gerrit basic authentication scheme. */
-DECL|method|isGitBasicAuth ()
-specifier|public
-name|boolean
-name|isGitBasicAuth
-parameter_list|()
-block|{
-return|return
-name|gitBasicAuth
-return|;
-block|}
 DECL|method|getGitBasicAuthPolicy ()
 specifier|public
 name|GitBasicAuthPolicy
@@ -1313,15 +1337,14 @@ return|return
 name|useContributorAgreements
 return|;
 block|}
-DECL|method|isIdentityTrustable (final Collection<AccountExternalId> ids)
+DECL|method|isIdentityTrustable (Collection<ExternalId> ids)
 specifier|public
 name|boolean
 name|isIdentityTrustable
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|ids
 parameter_list|)
@@ -1375,8 +1398,7 @@ comment|// All identities must be trusted in order to trust the account.
 comment|//
 for|for
 control|(
-specifier|final
-name|AccountExternalId
+name|ExternalId
 name|e
 range|:
 name|ids
@@ -1407,13 +1429,12 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|isTrusted (final AccountExternalId id)
+DECL|method|isTrusted (ExternalId id)
 specifier|private
 name|boolean
 name|isTrusted
 parameter_list|(
-specifier|final
-name|AccountExternalId
+name|ExternalId
 name|id
 parameter_list|)
 block|{
@@ -1423,8 +1444,6 @@ name|id
 operator|.
 name|isScheme
 argument_list|(
-name|AccountExternalId
-operator|.
 name|SCHEME_MAILTO
 argument_list|)
 condition|)
@@ -1443,8 +1462,6 @@ name|id
 operator|.
 name|isScheme
 argument_list|(
-name|AccountExternalId
-operator|.
 name|SCHEME_UUID
 argument_list|)
 condition|)
@@ -1462,8 +1479,6 @@ name|id
 operator|.
 name|isScheme
 argument_list|(
-name|AccountExternalId
-operator|.
 name|SCHEME_USERNAME
 argument_list|)
 condition|)
@@ -1476,7 +1491,6 @@ return|;
 block|}
 for|for
 control|(
-specifier|final
 name|OpenIdProviderPattern
 name|p
 range|:

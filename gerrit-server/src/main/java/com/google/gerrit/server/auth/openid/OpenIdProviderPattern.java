@@ -76,11 +76,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|ExternalId
 import|;
 end_import
 
@@ -177,21 +177,24 @@ name|pattern
 argument_list|)
 return|;
 block|}
-DECL|method|matches (AccountExternalId id)
+DECL|method|matches (ExternalId extId)
 specifier|public
 name|boolean
 name|matches
 parameter_list|(
-name|AccountExternalId
-name|id
+name|ExternalId
+name|extId
 parameter_list|)
 block|{
 return|return
 name|matches
 argument_list|(
-name|id
+name|extId
 operator|.
-name|getExternalId
+name|key
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 return|;

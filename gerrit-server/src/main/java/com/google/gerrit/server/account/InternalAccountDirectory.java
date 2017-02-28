@@ -166,22 +166,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountExternalId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -515,7 +499,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fill ( AccountInfo info, Account account, @Nullable Collection<AccountExternalId> externalIds, Set<FillOptions> options)
+DECL|method|fill ( AccountInfo info, Account account, @Nullable Collection<ExternalId> externalIds, Set<FillOptions> options)
 specifier|private
 name|void
 name|fill
@@ -530,7 +514,7 @@ annotation|@
 name|Nullable
 name|Collection
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|externalIds
 parameter_list|,
@@ -849,7 +833,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|getSecondaryEmails ( Account account, Collection<AccountExternalId> externalIds)
+DECL|method|getSecondaryEmails (Account account, Collection<ExternalId> externalIds)
 specifier|public
 name|List
 argument_list|<
@@ -862,7 +846,7 @@ name|account
 parameter_list|,
 name|Collection
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|externalIds
 parameter_list|)

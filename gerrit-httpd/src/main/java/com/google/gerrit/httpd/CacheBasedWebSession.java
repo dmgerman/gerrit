@@ -178,22 +178,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountExternalId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|AccessPath
@@ -255,6 +239,22 @@ operator|.
 name|account
 operator|.
 name|AuthResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|ExternalId
 import|;
 end_import
 
@@ -862,7 +862,7 @@ annotation|@
 name|Override
 DECL|method|getLastLoginExternalId ()
 specifier|public
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|getLastLoginExternalId
@@ -932,21 +932,18 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|login (final AuthResult res, final boolean rememberMe)
+DECL|method|login (AuthResult res, boolean rememberMe)
 specifier|public
 name|void
 name|login
 parameter_list|(
-specifier|final
 name|AuthResult
 name|res
 parameter_list|,
-specifier|final
 name|boolean
 name|rememberMe
 parameter_list|)
 block|{
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -957,8 +954,7 @@ operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
-specifier|final
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|identity

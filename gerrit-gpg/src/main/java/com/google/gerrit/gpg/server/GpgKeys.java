@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|SCHEME_GPGKEY
 import|;
@@ -406,22 +406,6 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
-operator|.
-name|AccountExternalId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -455,6 +439,22 @@ operator|.
 name|account
 operator|.
 name|AccountResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|ExternalId
 import|;
 end_import
 
@@ -1007,7 +1007,7 @@ name|id
 argument_list|)
 throw|;
 block|}
-DECL|method|parseFingerprint (String str, Iterable<AccountExternalId> existingExtIds)
+DECL|method|parseFingerprint (String str, Iterable<ExternalId> existingExtIds)
 specifier|static
 name|byte
 index|[]
@@ -1018,7 +1018,7 @@ name|str
 parameter_list|,
 name|Iterable
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|existingExtIds
 parameter_list|)
@@ -1088,7 +1088,7 @@ literal|null
 decl_stmt|;
 for|for
 control|(
-name|AccountExternalId
+name|ExternalId
 name|extId
 range|:
 name|existingExtIds
@@ -1099,7 +1099,10 @@ name|fpStr
 init|=
 name|extId
 operator|.
-name|getSchemeRest
+name|key
+argument_list|()
+operator|.
+name|id
 argument_list|()
 decl_stmt|;
 if|if
@@ -1262,7 +1265,7 @@ init|)
 block|{
 for|for
 control|(
-name|AccountExternalId
+name|ExternalId
 name|extId
 range|:
 name|getGpgExtIds
@@ -1276,7 +1279,10 @@ name|fpStr
 init|=
 name|extId
 operator|.
-name|getSchemeRest
+name|key
+argument_list|()
+operator|.
+name|id
 argument_list|()
 decl_stmt|;
 name|byte
@@ -1530,7 +1536,7 @@ specifier|public
 specifier|static
 name|FluentIterable
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|getGpgExtIds
 parameter_list|(
@@ -1550,6 +1556,10 @@ name|FluentIterable
 operator|.
 name|from
 argument_list|(
+name|ExternalId
+operator|.
+name|from
+argument_list|(
 name|db
 operator|.
 name|accountExternalIds
@@ -1558,6 +1568,10 @@ operator|.
 name|byAccount
 argument_list|(
 name|accountId
+argument_list|)
+operator|.
+name|toList
+argument_list|()
 argument_list|)
 argument_list|)
 operator|.
@@ -1578,7 +1592,7 @@ DECL|method|getGpgExtIds (AccountResource rsrc)
 specifier|private
 name|Iterable
 argument_list|<
-name|AccountExternalId
+name|ExternalId
 argument_list|>
 name|getGpgExtIds
 parameter_list|(

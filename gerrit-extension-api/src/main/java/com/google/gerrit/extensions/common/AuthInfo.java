@@ -191,11 +191,6 @@ specifier|public
 name|String
 name|httpPasswordUrl
 decl_stmt|;
-DECL|field|isGitBasicAuth
-specifier|public
-name|Boolean
-name|isGitBasicAuth
-decl_stmt|;
 DECL|field|gitBasicAuthPolicy
 specifier|public
 name|GitBasicAuthPolicy

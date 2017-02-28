@@ -316,11 +316,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountExternalId
+name|ExternalId
 import|;
 end_import
 
@@ -767,20 +767,17 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|createVal (final Key key, final Val val)
+DECL|method|createVal (Key key, Val val)
 name|Val
 name|createVal
 parameter_list|(
-specifier|final
 name|Key
 name|key
 parameter_list|,
-specifier|final
 name|Val
 name|val
 parameter_list|)
 block|{
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -791,7 +788,6 @@ operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
-specifier|final
 name|boolean
 name|remember
 init|=
@@ -800,8 +796,7 @@ operator|.
 name|isPersistentCookie
 argument_list|()
 decl_stmt|;
-specifier|final
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|lastLogin
@@ -832,26 +827,22 @@ name|auth
 argument_list|)
 return|;
 block|}
-DECL|method|createVal ( final Key key, final Account.Id who, final boolean remember, final AccountExternalId.Key lastLogin, String sid, String auth)
+DECL|method|createVal ( Key key, Account.Id who, boolean remember, ExternalId.Key lastLogin, String sid, String auth)
 name|Val
 name|createVal
 parameter_list|(
-specifier|final
 name|Key
 name|key
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
 name|who
 parameter_list|,
-specifier|final
 name|boolean
 name|remember
 parameter_list|,
-specifier|final
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|lastLogin
@@ -1225,7 +1216,7 @@ decl_stmt|;
 DECL|field|externalId
 specifier|private
 specifier|transient
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|externalId
@@ -1248,38 +1239,31 @@ specifier|transient
 name|String
 name|auth
 decl_stmt|;
-DECL|method|Val ( final Account.Id accountId, final long refreshCookieAt, final boolean persistentCookie, final AccountExternalId.Key externalId, final long expiresAt, final String sessionId, final String auth)
+DECL|method|Val ( Account.Id accountId, long refreshCookieAt, boolean persistentCookie, ExternalId.Key externalId, long expiresAt, String sessionId, String auth)
 name|Val
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|accountId
 parameter_list|,
-specifier|final
 name|long
 name|refreshCookieAt
 parameter_list|,
-specifier|final
 name|boolean
 name|persistentCookie
 parameter_list|,
-specifier|final
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|externalId
 parameter_list|,
-specifier|final
 name|long
 name|expiresAt
 parameter_list|,
-specifier|final
 name|String
 name|sessionId
 parameter_list|,
-specifier|final
 name|String
 name|auth
 parameter_list|)
@@ -1349,7 +1333,7 @@ name|accountId
 return|;
 block|}
 DECL|method|getExternalId ()
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
 name|getExternalId
@@ -1479,7 +1463,7 @@ name|out
 argument_list|,
 name|externalId
 operator|.
-name|get
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1636,10 +1620,11 @@ literal|4
 case|:
 name|externalId
 operator|=
-operator|new
-name|AccountExternalId
+name|ExternalId
 operator|.
 name|Key
+operator|.
+name|parse
 argument_list|(
 name|readString
 argument_list|(
