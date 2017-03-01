@@ -2098,6 +2098,15 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
+DECL|field|metrics
+annotation|@
+name|Inject
+specifier|private
+name|ProjectControl
+operator|.
+name|Metrics
+name|metrics
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -6032,6 +6041,8 @@ name|newProjectState
 argument_list|(
 name|local
 argument_list|)
+argument_list|,
+name|metrics
 argument_list|)
 return|;
 block|}
