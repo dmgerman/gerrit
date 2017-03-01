@@ -5994,10 +5994,6 @@ operator|(
 name|c
 operator|.
 name|unresolved
-operator|==
-name|Boolean
-operator|.
-name|TRUE
 operator|&&
 operator|!
 name|nonLeafSet
