@@ -1034,6 +1034,18 @@ operator|.
 name|getTheme
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|extensionPanelNames
+operator|=
+name|projectState
+operator|.
+name|getConfig
+argument_list|()
+operator|.
+name|getExtensionPanelSections
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|getPluginConfig ( ProjectState project, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects)
 specifier|private

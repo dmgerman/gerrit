@@ -702,6 +702,17 @@ name|theme
 parameter_list|()
 comment|/*-{ return this.theme; }-*/
 function_decl|;
+DECL|method|extensionPanelNames ()
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|JsArrayString
+argument_list|>
+name|extensionPanelNames
+parameter_list|()
+comment|/*-{ return this.extension_panel_names; }-*/
+function_decl|;
 DECL|method|ConfigInfo ()
 specifier|protected
 name|ConfigInfo
