@@ -399,6 +399,27 @@ name|NotifyType
 name|type
 parameter_list|)
 block|{
+name|includeWatchers
+argument_list|(
+name|type
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Include users and groups that want notification of events. */
+DECL|method|includeWatchers (NotifyType type, boolean includeWatchersFromNotifyConfig)
+specifier|protected
+name|void
+name|includeWatchers
+parameter_list|(
+name|NotifyType
+name|type
+parameter_list|,
+name|boolean
+name|includeWatchersFromNotifyConfig
+parameter_list|)
+block|{
 try|try
 block|{
 name|Watchers
@@ -407,6 +428,8 @@ init|=
 name|getWatchers
 argument_list|(
 name|type
+argument_list|,
+name|includeWatchersFromNotifyConfig
 argument_list|)
 decl_stmt|;
 name|add
@@ -466,7 +489,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Returns all watchers that are relevant */
-DECL|method|getWatchers (NotifyType type)
+DECL|method|getWatchers (NotifyType type, boolean includeWatchersFromNotifyConfig)
 specifier|protected
 specifier|abstract
 name|Watchers
@@ -474,6 +497,9 @@ name|getWatchers
 parameter_list|(
 name|NotifyType
 name|type
+parameter_list|,
+name|boolean
+name|includeWatchersFromNotifyConfig
 parameter_list|)
 throws|throws
 name|OrmException
