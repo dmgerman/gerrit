@@ -367,6 +367,20 @@ operator|.
 name|init
 argument_list|()
 expr_stmt|;
+name|boolean
+name|isDraft
+init|=
+name|change
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|DRAFT
+decl_stmt|;
 try|try
 block|{
 comment|// Try to mark interested owners with TO and CC or BCC line.
@@ -378,6 +392,9 @@ argument_list|(
 name|NotifyType
 operator|.
 name|NEW_CHANGES
+argument_list|,
+operator|!
+name|isDraft
 argument_list|)
 decl_stmt|;
 for|for
@@ -489,6 +506,9 @@ argument_list|(
 name|NotifyType
 operator|.
 name|NEW_PATCHSETS
+argument_list|,
+operator|!
+name|isDraft
 argument_list|)
 expr_stmt|;
 block|}

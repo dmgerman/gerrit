@@ -601,7 +601,7 @@ name|changeData
 expr_stmt|;
 block|}
 comment|/** Returns all watchers that are relevant */
-DECL|method|getWatchers (NotifyType type)
+DECL|method|getWatchers (NotifyType type, boolean includeWatchersFromNotifyConfig)
 specifier|public
 specifier|final
 name|Watchers
@@ -609,6 +609,9 @@ name|getWatchers
 parameter_list|(
 name|NotifyType
 name|type
+parameter_list|,
+name|boolean
+name|includeWatchersFromNotifyConfig
 parameter_list|)
 throws|throws
 name|OrmException
@@ -842,6 +845,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+if|if
+condition|(
+operator|!
+name|includeWatchersFromNotifyConfig
+condition|)
+block|{
+return|return
+name|matching
+return|;
 block|}
 for|for
 control|(

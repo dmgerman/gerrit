@@ -2023,7 +2023,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getWatchers (NotifyType type)
+DECL|method|getWatchers (NotifyType type, boolean includeWatchersFromNotifyConfig)
 specifier|protected
 specifier|final
 name|Watchers
@@ -2031,6 +2031,9 @@ name|getWatchers
 parameter_list|(
 name|NotifyType
 name|type
+parameter_list|,
+name|boolean
+name|includeWatchersFromNotifyConfig
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2078,6 +2081,8 @@ operator|.
 name|getWatchers
 argument_list|(
 name|type
+argument_list|,
+name|includeWatchersFromNotifyConfig
 argument_list|)
 return|;
 block|}
