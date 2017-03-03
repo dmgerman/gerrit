@@ -160,7 +160,7 @@ DECL|field|EMPTY
 specifier|private
 specifier|static
 specifier|final
-name|List
+name|ImmutableList
 argument_list|<
 name|String
 argument_list|>
