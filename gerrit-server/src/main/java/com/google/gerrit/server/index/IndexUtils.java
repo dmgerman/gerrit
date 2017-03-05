@@ -236,16 +236,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -275,7 +265,7 @@ DECL|field|CUSTOM_CHAR_MAPPING
 specifier|public
 specifier|static
 specifier|final
-name|Map
+name|ImmutableMap
 argument_list|<
 name|String
 argument_list|,

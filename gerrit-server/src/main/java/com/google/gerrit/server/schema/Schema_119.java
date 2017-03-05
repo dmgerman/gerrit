@@ -712,7 +712,7 @@ DECL|field|LEGACY_DISPLAYNAME_MAP
 specifier|private
 specifier|static
 specifier|final
-name|Map
+name|ImmutableMap
 argument_list|<
 name|String
 argument_list|,
