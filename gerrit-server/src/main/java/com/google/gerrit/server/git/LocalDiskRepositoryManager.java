@@ -2160,6 +2160,36 @@ operator|.
 name|CONTINUE
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|visitFileFailed (Path file, IOException e)
+specifier|public
+name|FileVisitResult
+name|visitFileFailed
+parameter_list|(
+name|Path
+name|file
+parameter_list|,
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|FileVisitResult
+operator|.
+name|CONTINUE
+return|;
+block|}
 DECL|method|isRepo (Path p)
 specifier|private
 name|boolean
