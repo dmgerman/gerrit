@@ -6715,7 +6715,7 @@ operator|+
 literal|"\n"
 argument_list|)
 expr_stmt|;
-name|assertMailFrom
+name|assertMailReplyTo
 argument_list|(
 name|m
 argument_list|,
@@ -7291,7 +7291,7 @@ operator|+
 literal|"\n"
 argument_list|)
 expr_stmt|;
-name|assertMailFrom
+name|assertMailReplyTo
 argument_list|(
 name|m
 argument_list|,
@@ -8078,7 +8078,7 @@ operator|+
 literal|"\n"
 argument_list|)
 expr_stmt|;
-name|assertMailFrom
+name|assertMailReplyTo
 argument_list|(
 name|m
 argument_list|,

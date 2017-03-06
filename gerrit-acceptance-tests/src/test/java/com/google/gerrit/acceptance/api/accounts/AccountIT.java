@@ -3245,7 +3245,7 @@ operator|.
 name|emailAddress
 argument_list|)
 expr_stmt|;
-name|assertMailFrom
+name|assertMailReplyTo
 argument_list|(
 name|message
 argument_list|,
