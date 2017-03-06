@@ -2101,6 +2101,25 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Remove a header from the outgoing message. */
+DECL|method|removeHeader (final String name)
+specifier|protected
+name|void
+name|removeHeader
+parameter_list|(
+specifier|final
+name|String
+name|name
+parameter_list|)
+block|{
+name|headers
+operator|.
+name|remove
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|setHeader (final String name, final Date date)
 specifier|protected
 name|void

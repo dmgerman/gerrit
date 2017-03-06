@@ -118,6 +118,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|TestAccount
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -312,6 +326,24 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+return|return
+name|createChangeWithReview
+argument_list|(
+name|admin
+argument_list|)
+return|;
+block|}
+DECL|method|createChangeWithReview (TestAccount reviewer)
+specifier|protected
+name|String
+name|createChangeWithReview
+parameter_list|(
+name|TestAccount
+name|reviewer
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 comment|// Create change
 name|String
 name|file
@@ -367,6 +399,11 @@ name|getChangeId
 argument_list|()
 decl_stmt|;
 comment|// Review it
+name|setApiUser
+argument_list|(
+name|reviewer
+argument_list|)
+expr_stmt|;
 name|ReviewInput
 name|input
 init|=
