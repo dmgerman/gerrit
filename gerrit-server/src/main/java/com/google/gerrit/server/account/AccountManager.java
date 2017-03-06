@@ -2497,6 +2497,7 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|byIdCache
 operator|.
 name|evict
@@ -2504,7 +2505,6 @@ argument_list|(
 name|to
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 operator|new
