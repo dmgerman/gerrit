@@ -486,25 +486,13 @@ name|boolean
 name|isHttpPasswordSettingsEnabled
 parameter_list|()
 block|{
-if|if
-condition|(
-name|isGitBasicAuth
-argument_list|()
-operator|&&
+return|return
 name|gitBasicAuthPolicy
 argument_list|()
-operator|==
+operator|!=
 name|GitBasicAuthPolicy
 operator|.
 name|LDAP
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-return|return
-literal|true
 return|;
 block|}
 DECL|method|gitBasicAuthPolicy ()
@@ -595,15 +583,6 @@ name|String
 name|httpPasswordUrl
 parameter_list|()
 comment|/*-{ return this.http_password_url; }-*/
-function_decl|;
-DECL|method|isGitBasicAuth ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|isGitBasicAuth
-parameter_list|()
-comment|/*-{ return this.is_git_basic_auth || false; }-*/
 function_decl|;
 DECL|method|gitBasicAuthPolicyRaw ()
 specifier|private

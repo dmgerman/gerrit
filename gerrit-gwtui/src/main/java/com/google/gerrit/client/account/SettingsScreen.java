@@ -394,17 +394,6 @@ argument_list|()
 operator|.
 name|isOAuth
 argument_list|()
-operator|&&
-name|Gerrit
-operator|.
-name|info
-argument_list|()
-operator|.
-name|auth
-argument_list|()
-operator|.
-name|isGitBasicAuth
-argument_list|()
 condition|)
 block|{
 name|linkByGerrit
