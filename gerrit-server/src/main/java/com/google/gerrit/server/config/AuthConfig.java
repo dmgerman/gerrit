@@ -1076,6 +1076,13 @@ name|GitBasicAuthPolicy
 operator|.
 name|LDAP
 else|:
+name|isOAuthType
+argument_list|()
+condition|?
+name|GitBasicAuthPolicy
+operator|.
+name|OAUTH
+else|:
 name|GitBasicAuthPolicy
 operator|.
 name|HTTP
@@ -1564,6 +1571,20 @@ operator|==
 name|AuthType
 operator|.
 name|LDAP_BIND
+return|;
+block|}
+DECL|method|isOAuthType ()
+specifier|public
+name|boolean
+name|isOAuthType
+parameter_list|()
+block|{
+return|return
+name|authType
+operator|==
+name|AuthType
+operator|.
+name|OAUTH
 return|;
 block|}
 DECL|method|isAllowRegisterNewEmail ()

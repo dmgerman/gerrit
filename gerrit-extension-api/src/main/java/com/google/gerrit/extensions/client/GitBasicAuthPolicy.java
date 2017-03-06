@@ -80,6 +80,9 @@ name|LDAP
 block|,
 DECL|enumConstant|HTTP_LDAP
 name|HTTP_LDAP
+block|,
+DECL|enumConstant|OAUTH
+name|OAUTH
 block|}
 end_enum
 
