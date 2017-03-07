@@ -535,7 +535,7 @@ name|preferredEmail
 decl_stmt|;
 comment|// DELETED: id = 5 (contactFiledOn)
 comment|// DELETED: id = 6 (generalPreferences)
-comment|/** Is this user inactive? */
+comment|/** Is this user inactive? This is used to avoid showing some users (eg. former employees)    * in auto-suggest.    */
 annotation|@
 name|Column
 argument_list|(
