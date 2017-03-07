@@ -1468,7 +1468,7 @@ DECL|field|LABEL_FUNCTIONS
 specifier|private
 specifier|static
 specifier|final
-name|Set
+name|ImmutableSet
 argument_list|<
 name|String
 argument_list|>
