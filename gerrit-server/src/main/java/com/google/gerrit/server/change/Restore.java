@@ -820,12 +820,8 @@ block|}
 return|return
 name|json
 operator|.
-name|create
-argument_list|(
-name|ChangeJson
-operator|.
-name|NO_OPTIONS
-argument_list|)
+name|noOptions
+argument_list|()
 operator|.
 name|format
 argument_list|(

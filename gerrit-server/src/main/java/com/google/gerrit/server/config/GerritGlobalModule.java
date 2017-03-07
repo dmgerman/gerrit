@@ -3228,7 +3228,7 @@ name|factory
 argument_list|(
 name|ChangeJson
 operator|.
-name|Factory
+name|AssistedFactory
 operator|.
 name|class
 argument_list|)

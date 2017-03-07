@@ -238,16 +238,6 @@ name|Inject
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|EnumSet
-import|;
-end_import
-
 begin_class
 DECL|class|Check
 specifier|public
@@ -423,14 +413,9 @@ name|jsonFactory
 operator|.
 name|create
 argument_list|(
-name|EnumSet
-operator|.
-name|of
-argument_list|(
 name|ListChangesOption
 operator|.
 name|CHECK
-argument_list|)
 argument_list|)
 return|;
 block|}
