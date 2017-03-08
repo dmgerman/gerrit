@@ -74,6 +74,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|MoreExecutors
+operator|.
+name|directExecutor
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -750,6 +768,9 @@ block|{
 comment|// Logged by {@link GetChanges#call()}.
 block|}
 block|}
+argument_list|,
+name|directExecutor
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
