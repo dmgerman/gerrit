@@ -181,7 +181,7 @@ DECL|field|EMPTY_PARAMS
 specifier|protected
 specifier|static
 specifier|final
-name|ListMultimap
+name|ImmutableListMultimap
 argument_list|<
 name|String
 argument_list|,
