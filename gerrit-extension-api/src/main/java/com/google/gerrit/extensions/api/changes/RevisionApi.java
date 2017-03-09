@@ -144,6 +144,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|EditInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|FileInfo
 import|;
 end_import
@@ -558,6 +574,17 @@ name|RobotCommentInfo
 argument_list|>
 name|robotCommentsAsList
 parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Applies the indicated fix by creating a new change edit or integrating the fix with the    * existing change edit. If no change edit exists before this call, the fix must refer to the    * current patch set. If a change edit exists, the fix must refer to the patch set on which the    * change edit is based.    *    * @param fixId the ID of the fix which should be applied    * @throws RestApiException if the fix couldn't be applied    */
+DECL|method|applyFix (String fixId)
+name|EditInfo
+name|applyFix
+parameter_list|(
+name|String
+name|fixId
+parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
@@ -1142,6 +1169,23 @@ name|RobotCommentInfo
 argument_list|>
 name|robotCommentsAsList
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|applyFix (String fixId)
+specifier|public
+name|EditInfo
+name|applyFix
+parameter_list|(
+name|String
+name|fixId
+parameter_list|)
 block|{
 throw|throw
 operator|new
