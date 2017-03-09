@@ -384,6 +384,54 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|setWorkInProgress (String message)
+name|void
+name|setWorkInProgress
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|setReadyForReview (String message)
+name|void
+name|setReadyForReview
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|setWorkInProgress ()
+specifier|default
+name|void
+name|setWorkInProgress
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+name|setWorkInProgress
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setReadyForReview ()
+specifier|default
+name|void
+name|setReadyForReview
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+name|setReadyForReview
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**    * Ignore or un-ignore this change.    *    * @param ignore ignore the change if true    */
 DECL|method|ignore (boolean ignore)
 name|void
@@ -1030,6 +1078,40 @@ name|setPrivate
 parameter_list|(
 name|boolean
 name|value
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setWorkInProgress (String message)
+specifier|public
+name|void
+name|setWorkInProgress
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setReadyForReview (String message)
+specifier|public
+name|void
+name|setReadyForReview
+parameter_list|(
+name|String
+name|message
 parameter_list|)
 block|{
 throw|throw
