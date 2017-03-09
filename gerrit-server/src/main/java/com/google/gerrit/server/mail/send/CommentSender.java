@@ -1156,6 +1156,9 @@ name|ALL_COMMENTS
 argument_list|)
 expr_stmt|;
 block|}
+name|removeUsersThatIgnoredTheChange
+argument_list|()
+expr_stmt|;
 comment|// Add header that enables identifying comments on parsed email.
 comment|// Grouping is currently done by timestamp.
 name|setHeader

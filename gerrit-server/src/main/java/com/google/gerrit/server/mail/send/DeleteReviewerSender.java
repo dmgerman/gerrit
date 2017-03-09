@@ -421,6 +421,9 @@ argument_list|,
 name|reviewers
 argument_list|)
 expr_stmt|;
+name|removeUsersThatIgnoredTheChange
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
