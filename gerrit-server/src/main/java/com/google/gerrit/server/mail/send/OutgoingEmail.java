@@ -1148,6 +1148,7 @@ name|fromUser
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|// Check the preferences of all recipients. If any user has disabled
 comment|// his email notifications then drop him from recipients' list.
 comment|// In addition, check if users only want to receive plaintext email.
@@ -1259,7 +1260,6 @@ argument_list|()
 condition|)
 block|{
 return|return;
-block|}
 block|}
 block|}
 comment|// Set Reply-To only if it hasn't been set by a child class
