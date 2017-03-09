@@ -118,6 +118,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ReviewerStateInternal
+operator|.
+name|REVIEWER
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -2602,6 +2620,31 @@ argument_list|,
 name|approvals
 argument_list|)
 expr_stmt|;
+comment|// Check if approvals are changing in with this update. If so, add current user to reviewers.
+comment|// Note that this is done separately as addReviewers is filtering out the change owner as
+comment|// reviewer which is needed in several other code paths.
+if|if
+condition|(
+operator|!
+name|approvals
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|update
+operator|.
+name|putReviewer
+argument_list|(
+name|ctx
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|,
+name|REVIEWER
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|message
