@@ -281,6 +281,11 @@ specifier|public
 name|Boolean
 name|isPrivate
 decl_stmt|;
+DECL|field|workInProgress
+specifier|public
+name|Boolean
+name|workInProgress
+decl_stmt|;
 DECL|field|_number
 specifier|public
 name|int
