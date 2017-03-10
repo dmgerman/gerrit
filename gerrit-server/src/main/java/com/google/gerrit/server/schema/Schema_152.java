@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.reviewdb.server
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|server
+operator|.
+name|schema
 package|;
 end_package
 
@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
+name|server
 operator|.
-name|Account
+name|ReviewDb
 import|;
 end_import
 
@@ -90,9 +90,25 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|server
+name|jdbc
 operator|.
-name|Access
+name|JdbcSchema
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|schema
+operator|.
+name|sql
+operator|.
+name|SqlDialect
 import|;
 end_import
 
@@ -120,7 +136,7 @@ name|gwtorm
 operator|.
 name|server
 operator|.
-name|PrimaryKey
+name|StatementExecutor
 import|;
 end_import
 
@@ -130,11 +146,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|server
-operator|.
-name|Query
+name|Inject
 import|;
 end_import
 
@@ -144,88 +158,112 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|server
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|ResultSet
+name|sql
+operator|.
+name|SQLException
 import|;
 end_import
 
 begin_comment
-comment|/** Access interface for {@link Account}. */
+comment|/** Drop unused indexes from accounts table. */
 end_comment
 
-begin_interface
-DECL|interface|AccountAccess
+begin_class
+DECL|class|Schema_152
 specifier|public
-interface|interface
-name|AccountAccess
+class|class
+name|Schema_152
 extends|extends
-name|Access
-argument_list|<
-name|Account
-argument_list|,
-name|Account
-operator|.
-name|Id
-argument_list|>
+name|SchemaVersion
 block|{
-comment|/** Locate an account by our locally generated identity. */
+annotation|@
+name|Inject
+DECL|method|Schema_152 (Provider<Schema_151> prior)
+name|Schema_152
+parameter_list|(
+name|Provider
+argument_list|<
+name|Schema_151
+argument_list|>
+name|prior
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|prior
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
-annotation|@
-name|PrimaryKey
-argument_list|(
-literal|"accountId"
-argument_list|)
-DECL|method|get (Account.Id key)
-name|Account
-name|get
+DECL|method|migrateData (ReviewDb db, UpdateUI ui)
+specifier|protected
+name|void
+name|migrateData
 parameter_list|(
-name|Account
+name|ReviewDb
+name|db
+parameter_list|,
+name|UpdateUI
+name|ui
+parameter_list|)
+throws|throws
+name|OrmException
+throws|,
+name|SQLException
+block|{
+name|JdbcSchema
+name|schema
+init|=
+operator|(
+name|JdbcSchema
+operator|)
+name|db
+decl_stmt|;
+name|SqlDialect
+name|dialect
+init|=
+name|schema
 operator|.
-name|Id
-name|key
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
+name|getDialect
+argument_list|()
+decl_stmt|;
+try|try
+init|(
+name|StatementExecutor
+name|e
+init|=
+name|newExecutor
 argument_list|(
-literal|"WHERE preferredEmail = ? LIMIT 2"
+name|db
 argument_list|)
-DECL|method|byPreferredEmail (String email)
-name|ResultSet
-argument_list|<
-name|Account
-argument_list|>
-name|byPreferredEmail
-parameter_list|(
-name|String
-name|email
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
+init|)
+block|{
+name|dialect
+operator|.
+name|dropIndex
 argument_list|(
-literal|"ORDER BY accountId"
+name|e
+argument_list|,
+literal|"accounts"
+argument_list|,
+literal|"accounts_byFullName"
 argument_list|)
-DECL|method|all ()
-name|ResultSet
-argument_list|<
-name|Account
-argument_list|>
-name|all
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
+expr_stmt|;
 block|}
-end_interface
+block|}
+block|}
+end_class
 
 end_unit
 
