@@ -344,9 +344,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
-operator|.
-name|Listener
+name|BatchUpdateListener
 import|;
 end_import
 
@@ -363,6 +361,22 @@ operator|.
 name|update
 operator|.
 name|RepoContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
+name|RepoOnlyOp
 import|;
 end_import
 
@@ -789,9 +803,7 @@ DECL|class|GitlinkOp
 specifier|public
 class|class
 name|GitlinkOp
-extends|extends
-name|BatchUpdate
-operator|.
+implements|implements
 name|RepoOnlyOp
 block|{
 DECL|field|branch
@@ -2396,7 +2408,7 @@ argument_list|(
 name|superProjects
 argument_list|)
 argument_list|,
-name|Listener
+name|BatchUpdateListener
 operator|.
 name|NONE
 argument_list|,

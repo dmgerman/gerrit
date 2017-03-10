@@ -1765,129 +1765,6 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-DECL|class|RepoOnlyOp
-specifier|public
-specifier|static
-class|class
-name|RepoOnlyOp
-block|{
-comment|/**      * Override this method to update the repo.      *      * @param ctx context      */
-DECL|method|updateRepo (RepoContext ctx)
-specifier|public
-name|void
-name|updateRepo
-parameter_list|(
-name|RepoContext
-name|ctx
-parameter_list|)
-throws|throws
-name|Exception
-block|{}
-comment|/**      * Override this method to do something after the update e.g. send email or run hooks      *      * @param ctx context      */
-comment|//TODO(dborowitz): Support async operations?
-DECL|method|postUpdate (Context ctx)
-specifier|public
-name|void
-name|postUpdate
-parameter_list|(
-name|Context
-name|ctx
-parameter_list|)
-throws|throws
-name|Exception
-block|{}
-block|}
-DECL|class|Op
-specifier|public
-specifier|static
-class|class
-name|Op
-extends|extends
-name|RepoOnlyOp
-block|{
-comment|/**      * Override this method to modify a change.      *      * @param ctx context      * @return whether anything was changed that might require a write to the metadata storage.      */
-DECL|method|updateChange (ChangeContext ctx)
-specifier|public
-name|boolean
-name|updateChange
-parameter_list|(
-name|ChangeContext
-name|ctx
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
-DECL|class|InsertChangeOp
-specifier|public
-specifier|abstract
-specifier|static
-class|class
-name|InsertChangeOp
-extends|extends
-name|Op
-block|{
-DECL|method|createChange (Context ctx)
-specifier|public
-specifier|abstract
-name|Change
-name|createChange
-parameter_list|(
-name|Context
-name|ctx
-parameter_list|)
-function_decl|;
-block|}
-comment|/**    * Interface for listening during batch update execution.    *    *<p>When used during execution of multiple batch updates, the {@code after*} methods are called    * after that phase has been completed for<em>all</em> updates.    */
-DECL|class|Listener
-specifier|public
-specifier|static
-class|class
-name|Listener
-block|{
-DECL|field|NONE
-specifier|public
-specifier|static
-specifier|final
-name|Listener
-name|NONE
-init|=
-operator|new
-name|Listener
-argument_list|()
-decl_stmt|;
-comment|/** Called after updating all repositories and flushing objects but before updating any refs. */
-DECL|method|afterUpdateRepos ()
-specifier|public
-name|void
-name|afterUpdateRepos
-parameter_list|()
-throws|throws
-name|Exception
-block|{}
-comment|/** Called after updating all refs. */
-DECL|method|afterRefUpdates ()
-specifier|public
-name|void
-name|afterRefUpdates
-parameter_list|()
-throws|throws
-name|Exception
-block|{}
-comment|/** Called after updating all changes. */
-DECL|method|afterUpdateChanges ()
-specifier|public
-name|void
-name|afterUpdateChanges
-parameter_list|()
-throws|throws
-name|Exception
-block|{}
-block|}
 annotation|@
 name|Singleton
 DECL|class|Metrics
@@ -2100,7 +1977,7 @@ return|return
 name|p
 return|;
 block|}
-DECL|method|execute ( Collection<BatchUpdate> updates, Listener listener, @Nullable RequestId requestId, boolean dryrun)
+DECL|method|execute ( Collection<BatchUpdate> updates, BatchUpdateListener listener, @Nullable RequestId requestId, boolean dryrun)
 specifier|public
 specifier|static
 name|void
@@ -2112,7 +1989,7 @@ name|BatchUpdate
 argument_list|>
 name|updates
 parameter_list|,
-name|Listener
+name|BatchUpdateListener
 name|listener
 parameter_list|,
 annotation|@
@@ -2699,7 +2576,7 @@ name|Change
 operator|.
 name|Id
 argument_list|,
-name|Op
+name|BatchUpdateOp
 argument_list|>
 name|ops
 init|=
@@ -3184,7 +3061,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** Execute {@link Op#updateChange(ChangeContext)} in parallel for each change. */
+comment|/** Execute {@link BatchUpdateOp#updateChange(ChangeContext)} in parallel for each change. */
 DECL|method|updateChangesInParallel ()
 specifier|public
 name|BatchUpdate
@@ -3314,7 +3191,7 @@ return|return
 name|inserter
 return|;
 block|}
-DECL|method|addOp (Change.Id id, Op op)
+DECL|method|addOp (Change.Id id, BatchUpdateOp op)
 specifier|public
 name|BatchUpdate
 name|addOp
@@ -3324,7 +3201,7 @@ operator|.
 name|Id
 name|id
 parameter_list|,
-name|Op
+name|BatchUpdateOp
 name|op
 parameter_list|)
 block|{
@@ -3373,7 +3250,7 @@ operator|!
 operator|(
 name|op
 operator|instanceof
-name|Op
+name|BatchUpdateOp
 operator|)
 argument_list|,
 literal|"use addOp()"
@@ -3501,18 +3378,18 @@ name|RestApiException
 block|{
 name|execute
 argument_list|(
-name|Listener
+name|BatchUpdateListener
 operator|.
 name|NONE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|execute (Listener listener)
+DECL|method|execute (BatchUpdateListener listener)
 specifier|public
 name|void
 name|execute
 parameter_list|(
-name|Listener
+name|BatchUpdateListener
 name|listener
 parameter_list|)
 throws|throws
@@ -3568,7 +3445,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Op
+name|BatchUpdateOp
 name|op
 range|:
 name|ops
@@ -4018,7 +3895,7 @@ name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|Op
+name|BatchUpdateOp
 argument_list|>
 argument_list|>
 name|e
@@ -4810,7 +4687,7 @@ specifier|private
 specifier|final
 name|Collection
 argument_list|<
-name|Op
+name|BatchUpdateOp
 argument_list|>
 name|changeOps
 decl_stmt|;
@@ -4849,7 +4726,7 @@ specifier|private
 name|String
 name|taskId
 decl_stmt|;
-DECL|method|ChangeTask (Change.Id id, Collection<Op> changeOps, Thread mainThread, boolean dryrun)
+DECL|method|ChangeTask ( Change.Id id, Collection<BatchUpdateOp> changeOps, Thread mainThread, boolean dryrun)
 specifier|private
 name|ChangeTask
 parameter_list|(
@@ -4860,7 +4737,7 @@ name|id
 parameter_list|,
 name|Collection
 argument_list|<
-name|Op
+name|BatchUpdateOp
 argument_list|>
 name|changeOps
 parameter_list|,
@@ -5144,7 +5021,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|Op
+name|BatchUpdateOp
 name|op
 range|:
 name|changeOps
@@ -5996,7 +5873,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Op
+name|BatchUpdateOp
 name|op
 range|:
 name|ops

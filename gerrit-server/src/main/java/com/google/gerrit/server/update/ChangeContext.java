@@ -163,7 +163,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Context for performing the {@link BatchUpdate.Op#updateChange} phase.  *  *<p>A single {@code ChangeContext} corresponds to updating a single change; if a {@link  * BatchUpdate} spans multiple changes, then multiple {@code ChangeContext} instances will be  * created.  */
+comment|/**  * Context for performing the {@link BatchUpdateOp#updateChange} phase.  *  *<p>A single {@code ChangeContext} corresponds to updating a single change; if a {@link  * BatchUpdate} spans multiple changes, then multiple {@code ChangeContext} instances will be  * created.  */
 end_comment
 
 begin_interface

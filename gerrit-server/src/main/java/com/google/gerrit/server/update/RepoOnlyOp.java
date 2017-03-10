@@ -66,75 +66,41 @@ name|update
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectInserter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-import|;
-end_import
-
 begin_comment
-comment|/** Context for performing the {@link BatchUpdateOp#updateRepo} phase. */
+comment|/**  * Base interface for operations performed as part of a {@link BatchUpdate}.  *  *<p>Operations that implement this type only touch the repository; they cannot touch change  * storage, nor are they even associated with a change ID. To modify a change, implement {@link  * BatchUpdateOp} instead.  */
 end_comment
 
 begin_interface
-DECL|interface|RepoContext
+DECL|interface|RepoOnlyOp
 specifier|public
 interface|interface
-name|RepoContext
-extends|extends
-name|Context
+name|RepoOnlyOp
 block|{
-comment|/**    * @return inserter for writing to the repo. Callers should not flush; the walk returned by {@link    *     #getRevWalk()} is able to read back objects inserted by this inserter without flushing    *     first.    * @throws IOException if an error occurred opening the repo.    */
-DECL|method|getInserter ()
-name|ObjectInserter
-name|getInserter
-parameter_list|()
-throws|throws
-name|IOException
-function_decl|;
-comment|/**    * Add a command to the pending list of commands.    *    *<p>Callers should use this method instead of writing directly to the repository returned by    * {@link #getRepository()}.    *    * @param cmd ref update command.    * @throws IOException if an error occurred opening the repo.    */
-DECL|method|addRefUpdate (ReceiveCommand cmd)
+comment|/**    * Override this method to update the repo.    *    * @param ctx context    */
+DECL|method|updateRepo (RepoContext ctx)
+specifier|default
 name|void
-name|addRefUpdate
+name|updateRepo
 parameter_list|(
-name|ReceiveCommand
-name|cmd
+name|RepoContext
+name|ctx
 parameter_list|)
 throws|throws
-name|IOException
-function_decl|;
+name|Exception
+block|{}
+comment|/**    * Override this method to do something after the update e.g. send email or run hooks    *    * @param ctx context    */
+comment|//TODO(dborowitz): Support async operations?
+DECL|method|postUpdate (Context ctx)
+specifier|default
+name|void
+name|postUpdate
+parameter_list|(
+name|Context
+name|ctx
+parameter_list|)
+throws|throws
+name|Exception
+block|{}
 block|}
 end_interface
 

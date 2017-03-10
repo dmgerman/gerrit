@@ -362,7 +362,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
+name|BatchUpdateOp
 import|;
 end_import
 
@@ -517,10 +517,8 @@ DECL|class|SetHashtagsOp
 specifier|public
 class|class
 name|SetHashtagsOp
-extends|extends
-name|BatchUpdate
-operator|.
-name|Op
+implements|implements
+name|BatchUpdateOp
 block|{
 DECL|interface|Factory
 specifier|public

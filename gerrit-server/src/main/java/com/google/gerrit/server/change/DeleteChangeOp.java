@@ -298,7 +298,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
+name|BatchUpdateOp
 import|;
 end_import
 
@@ -524,10 +524,8 @@ begin_class
 DECL|class|DeleteChangeOp
 class|class
 name|DeleteChangeOp
-extends|extends
-name|BatchUpdate
-operator|.
-name|Op
+implements|implements
+name|BatchUpdateOp
 block|{
 DECL|method|allowDrafts (Config cfg)
 specifier|static

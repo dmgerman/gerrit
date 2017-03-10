@@ -570,7 +570,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
+name|BatchUpdateOp
 import|;
 end_import
 
@@ -825,10 +825,8 @@ DECL|class|SubmitStrategyOp
 specifier|abstract
 class|class
 name|SubmitStrategyOp
-extends|extends
-name|BatchUpdate
-operator|.
-name|Op
+implements|implements
+name|BatchUpdateOp
 block|{
 DECL|field|log
 specifier|private

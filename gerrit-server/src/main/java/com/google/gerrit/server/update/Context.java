@@ -234,7 +234,7 @@ name|NameKey
 name|getProject
 parameter_list|()
 function_decl|;
-comment|/**    * Get an open repository instance for this project.    *    *<p>Will be opened lazily if necessary; callers should not close the repo. In some phases of the    * update, the repository might be read-only; see {@link BatchUpdate.Op} for details.    *    * @return repository instance.    * @throws IOException if an error occurred opening the repo.    */
+comment|/**    * Get an open repository instance for this project.    *    *<p>Will be opened lazily if necessary; callers should not close the repo. In some phases of the    * update, the repository might be read-only; see {@link BatchUpdateOp} for details.    *    * @return repository instance.    * @throws IOException if an error occurred opening the repo.    */
 DECL|method|getRepository ()
 name|Repository
 name|getRepository

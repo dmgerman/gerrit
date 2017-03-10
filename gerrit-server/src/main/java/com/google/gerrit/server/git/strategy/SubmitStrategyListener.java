@@ -226,7 +226,7 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
+name|BatchUpdateListener
 import|;
 end_import
 
@@ -289,10 +289,8 @@ DECL|class|SubmitStrategyListener
 specifier|public
 class|class
 name|SubmitStrategyListener
-extends|extends
-name|BatchUpdate
-operator|.
-name|Listener
+implements|implements
+name|BatchUpdateListener
 block|{
 DECL|field|strategies
 specifier|private

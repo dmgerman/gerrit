@@ -66,75 +66,55 @@ name|update
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectInserter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-import|;
-end_import
-
 begin_comment
-comment|/** Context for performing the {@link BatchUpdateOp#updateRepo} phase. */
+comment|/**  * Interface for listening during batch update execution.  *  *<p>When used during execution of multiple batch updates, the {@code after*} methods are called  * after that phase has been completed for<em>all</em> updates.  */
 end_comment
 
 begin_interface
-DECL|interface|RepoContext
+DECL|interface|BatchUpdateListener
 specifier|public
 interface|interface
-name|RepoContext
-extends|extends
-name|Context
+name|BatchUpdateListener
 block|{
-comment|/**    * @return inserter for writing to the repo. Callers should not flush; the walk returned by {@link    *     #getRevWalk()} is able to read back objects inserted by this inserter without flushing    *     first.    * @throws IOException if an error occurred opening the repo.    */
-DECL|method|getInserter ()
-name|ObjectInserter
-name|getInserter
+DECL|field|NONE
+specifier|public
+specifier|static
+specifier|final
+name|BatchUpdateListener
+name|NONE
+init|=
+operator|new
+name|BatchUpdateListener
+argument_list|()
+block|{}
+decl_stmt|;
+comment|/** Called after updating all repositories and flushing objects but before updating any refs. */
+DECL|method|afterUpdateRepos ()
+specifier|default
+name|void
+name|afterUpdateRepos
 parameter_list|()
 throws|throws
-name|IOException
-function_decl|;
-comment|/**    * Add a command to the pending list of commands.    *    *<p>Callers should use this method instead of writing directly to the repository returned by    * {@link #getRepository()}.    *    * @param cmd ref update command.    * @throws IOException if an error occurred opening the repo.    */
-DECL|method|addRefUpdate (ReceiveCommand cmd)
+name|Exception
+block|{}
+comment|/** Called after updating all refs. */
+DECL|method|afterRefUpdates ()
+specifier|default
 name|void
-name|addRefUpdate
-parameter_list|(
-name|ReceiveCommand
-name|cmd
-parameter_list|)
+name|afterRefUpdates
+parameter_list|()
 throws|throws
-name|IOException
-function_decl|;
+name|Exception
+block|{}
+comment|/** Called after updating all changes. */
+DECL|method|afterUpdateChanges ()
+specifier|default
+name|void
+name|afterUpdateChanges
+parameter_list|()
+throws|throws
+name|Exception
+block|{}
 block|}
 end_interface
 

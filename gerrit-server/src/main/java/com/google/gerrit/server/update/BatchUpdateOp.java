@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.update
 package|package
 name|com
 operator|.
@@ -62,117 +62,40 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|update
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|BatchUpdateOp
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|ChangeContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ProgressMonitor
-import|;
-end_import
-
 begin_comment
-comment|/** Trivial op to update a counter during {@code updateChange} */
+comment|/**  * Interface for {@link BatchUpdate} operations that touch a change.  *  *<p>Each operation has {@link #updateChange(ChangeContext)} called once the change is read in a  * transaction. Ops are associated with updates via {@link  * BatchUpdate#addOp(com.google.gerrit.reviewdb.client.Change.Id, BatchUpdateOp)}.  *  *<p>Usually, a single {@code BatchUpdateOp} instance is only associated with a single change, i.e.  * {@code addOp} is only called once with that instance. This allows an instance to communicate  * between phases by storing data in private fields.  */
 end_comment
 
-begin_class
-DECL|class|ChangeProgressOp
-class|class
-name|ChangeProgressOp
-implements|implements
-name|BatchUpdateOp
-block|{
-DECL|field|progress
-specifier|private
-specifier|final
-name|ProgressMonitor
-name|progress
-decl_stmt|;
-DECL|method|ChangeProgressOp (ProgressMonitor progress)
-name|ChangeProgressOp
-parameter_list|(
-name|ProgressMonitor
-name|progress
-parameter_list|)
-block|{
-name|this
-operator|.
-name|progress
-operator|=
-name|progress
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|updateChange (ChangeContext ctx)
+begin_interface
+DECL|interface|BatchUpdateOp
 specifier|public
+interface|interface
+name|BatchUpdateOp
+extends|extends
+name|RepoOnlyOp
+block|{
+comment|/**    * Override this method to modify a change.    *    * @param ctx context    * @return whether anything was changed that might require a write to the metadata storage.    */
+DECL|method|updateChange (ChangeContext ctx)
+specifier|default
 name|boolean
 name|updateChange
 parameter_list|(
 name|ChangeContext
 name|ctx
 parameter_list|)
+throws|throws
+name|Exception
 block|{
-synchronized|synchronized
-init|(
-name|progress
-init|)
-block|{
-name|progress
-operator|.
-name|update
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 literal|false
 return|;
 block|}
 block|}
-end_class
+end_interface
 
 end_unit
 
