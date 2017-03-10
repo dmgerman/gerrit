@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.strategy
+DECL|package|com.google.gerrit.server.update
 package|package
 name|com
 operator|.
@@ -62,114 +62,81 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|strategy
+name|update
 package|;
 end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|io
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|CodeReviewCommit
+name|IOException
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|eclipse
 operator|.
-name|gerrit
+name|jgit
 operator|.
-name|server
+name|lib
 operator|.
-name|git
-operator|.
-name|IntegrationException
+name|ObjectInserter
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|eclipse
 operator|.
-name|gerrit
+name|jgit
 operator|.
-name|server
+name|transport
 operator|.
-name|update
-operator|.
+name|ReceiveCommand
+import|;
+end_import
+
+begin_comment
+comment|/** Context for performing the {@link BatchUpdate.Op#updateRepo} phase. */
+end_comment
+
+begin_interface
+DECL|interface|RepoContext
+specifier|public
+interface|interface
 name|RepoContext
-import|;
-end_import
-
-begin_class
-DECL|class|FastForwardOp
-class|class
-name|FastForwardOp
 extends|extends
-name|SubmitStrategyOp
+name|Context
 block|{
-DECL|method|FastForwardOp (SubmitStrategy.Arguments args, CodeReviewCommit toMerge)
-name|FastForwardOp
-parameter_list|(
-name|SubmitStrategy
-operator|.
-name|Arguments
-name|args
-parameter_list|,
-name|CodeReviewCommit
-name|toMerge
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|args
-argument_list|,
-name|toMerge
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|updateRepoImpl (RepoContext ctx)
-specifier|protected
+comment|/**    * @return inserter for writing to the repo. Callers should not flush; the walk returned by {@link    *     #getRevWalk()} is able to read back objects inserted by this inserter without flushing    *     first.    * @throws IOException if an error occurred opening the repo.    */
+DECL|method|getInserter ()
+name|ObjectInserter
+name|getInserter
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
+comment|/**    * Add a command to the pending list of commands.    *    *<p>Callers should use this method instead of writing directly to the repository returned by    * {@link #getRepository()}.    *    * @param cmd ref update command.    * @throws IOException if an error occurred opening the repo.    */
+DECL|method|addRefUpdate (ReceiveCommand cmd)
 name|void
-name|updateRepoImpl
+name|addRefUpdate
 parameter_list|(
-name|RepoContext
-name|ctx
+name|ReceiveCommand
+name|cmd
 parameter_list|)
 throws|throws
-name|IntegrationException
-block|{
-name|args
-operator|.
-name|mergeTip
-operator|.
-name|moveTipTo
-argument_list|(
-name|toMerge
-argument_list|,
-name|toMerge
-argument_list|)
-expr_stmt|;
+name|IOException
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

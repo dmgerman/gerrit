@@ -362,8 +362,6 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
-operator|.
 name|RepoContext
 import|;
 end_import

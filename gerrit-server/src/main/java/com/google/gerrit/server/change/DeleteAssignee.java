@@ -348,8 +348,6 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
-operator|.
 name|ChangeContext
 import|;
 end_import
@@ -365,8 +363,6 @@ operator|.
 name|server
 operator|.
 name|update
-operator|.
-name|BatchUpdate
 operator|.
 name|Context
 import|;
@@ -854,13 +850,11 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|addMessage ( BatchUpdate.ChangeContext ctx, ChangeUpdate update, IdentifiedUser deletedAssignee)
+DECL|method|addMessage (ChangeContext ctx, ChangeUpdate update, IdentifiedUser deletedAssignee)
 specifier|private
 name|void
 name|addMessage
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|ChangeContext
 name|ctx
 parameter_list|,

@@ -1582,6 +1582,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|server
+operator|.
+name|update
+operator|.
+name|ChangeContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|testutil
 operator|.
 name|FakeEmailSender
@@ -20555,13 +20571,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateChange (BatchUpdate.ChangeContext ctx)
+DECL|method|updateChange (ChangeContext ctx)
 specifier|public
 name|boolean
 name|updateChange
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|ChangeContext
 name|ctx
 parameter_list|)

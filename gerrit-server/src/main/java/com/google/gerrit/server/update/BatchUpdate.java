@@ -436,22 +436,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -545,20 +529,6 @@ operator|.
 name|server
 operator|.
 name|GerritPersonIdent
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|IdentifiedUser
 import|;
 end_import
 
@@ -1295,23 +1265,11 @@ name|when
 parameter_list|)
 function_decl|;
 block|}
-comment|/** Order of execution of the various phases. */
-DECL|enum|Order
-specifier|public
-enum|enum
-name|Order
-block|{
-comment|/**      * Update the repository and execute all ref updates before touching the database.      *      *<p>The default and most common, as Gerrit does not behave well when a patch set has no      * corresponding ref in the repo.      */
-DECL|enumConstant|REPO_BEFORE_DB
-name|REPO_BEFORE_DB
-block|,
-comment|/**      * Update the database before touching the repository.      *      *<p>Generally only used when deleting patch sets, which should be deleted first from the      * database (for the same reason as above.)      */
-DECL|enumConstant|DB_BEFORE_REPO
-name|DB_BEFORE_REPO
-block|;   }
-DECL|class|Context
-specifier|public
+DECL|class|ContextImpl
+specifier|private
 class|class
+name|ContextImpl
+implements|implements
 name|Context
 block|{
 DECL|field|repoWrapper
@@ -1319,6 +1277,8 @@ specifier|private
 name|Repository
 name|repoWrapper
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getRepository ()
 specifier|public
 name|Repository
@@ -1352,6 +1312,8 @@ return|return
 name|repoWrapper
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRevWalk ()
 specifier|public
 name|RevWalk
@@ -1369,6 +1331,8 @@ name|getRevWalk
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getProject ()
 specifier|public
 name|Project
@@ -1381,6 +1345,8 @@ return|return
 name|project
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getWhen ()
 specifier|public
 name|Timestamp
@@ -1391,6 +1357,20 @@ return|return
 name|when
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getTimeZone ()
+specifier|public
+name|TimeZone
+name|getTimeZone
+parameter_list|()
+block|{
+return|return
+name|tz
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getDb ()
 specifier|public
 name|ReviewDb
@@ -1401,6 +1381,8 @@ return|return
 name|db
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUser ()
 specifier|public
 name|CurrentUser
@@ -1411,65 +1393,8 @@ return|return
 name|user
 return|;
 block|}
-DECL|method|getIdentifiedUser ()
-specifier|public
-name|IdentifiedUser
-name|getIdentifiedUser
-parameter_list|()
-block|{
-name|checkNotNull
-argument_list|(
-name|user
-argument_list|)
-expr_stmt|;
-return|return
-name|user
-operator|.
-name|asIdentifiedUser
-argument_list|()
-return|;
-block|}
-DECL|method|getAccount ()
-specifier|public
-name|Account
-name|getAccount
-parameter_list|()
-block|{
-name|checkNotNull
-argument_list|(
-name|user
-argument_list|)
-expr_stmt|;
-return|return
-name|user
-operator|.
-name|asIdentifiedUser
-argument_list|()
-operator|.
-name|getAccount
-argument_list|()
-return|;
-block|}
-DECL|method|getAccountId ()
-specifier|public
-name|Account
-operator|.
-name|Id
-name|getAccountId
-parameter_list|()
-block|{
-name|checkNotNull
-argument_list|(
-name|user
-argument_list|)
-expr_stmt|;
-return|return
-name|user
-operator|.
-name|getAccountId
-argument_list|()
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getOrder ()
 specifier|public
 name|Order
@@ -1481,12 +1406,14 @@ name|order
 return|;
 block|}
 block|}
-DECL|class|RepoContext
-specifier|public
+DECL|class|RepoContextImpl
+specifier|private
 class|class
-name|RepoContext
+name|RepoContextImpl
 extends|extends
-name|Context
+name|ContextImpl
+implements|implements
+name|RepoContext
 block|{
 annotation|@
 name|Override
@@ -1507,6 +1434,8 @@ name|getRepository
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getInserter ()
 specifier|public
 name|ObjectInserter
@@ -1524,6 +1453,8 @@ name|getObjectInserter
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|addRefUpdate (ReceiveCommand cmd)
 specifier|public
 name|void
@@ -1546,23 +1477,15 @@ name|cmd
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getTimeZone ()
-specifier|public
-name|TimeZone
-name|getTimeZone
-parameter_list|()
-block|{
-return|return
-name|tz
-return|;
 block|}
-block|}
-DECL|class|ChangeContext
-specifier|public
+DECL|class|ChangeContextImpl
+specifier|private
 class|class
-name|ChangeContext
+name|ChangeContextImpl
 extends|extends
-name|Context
+name|ContextImpl
+implements|implements
+name|ChangeContext
 block|{
 DECL|field|ctl
 specifier|private
@@ -1613,9 +1536,9 @@ name|bumpLastUpdatedOn
 init|=
 literal|true
 decl_stmt|;
-DECL|method|ChangeContext ( ChangeControl ctl, ReviewDbWrapper dbWrapper, Repository repo, RevWalk rw)
+DECL|method|ChangeContextImpl ( ChangeControl ctl, ReviewDbWrapper dbWrapper, Repository repo, RevWalk rw)
 specifier|protected
-name|ChangeContext
+name|ChangeContextImpl
 parameter_list|(
 name|ChangeControl
 name|ctl
@@ -1712,6 +1635,8 @@ return|return
 name|threadLocalRevWalk
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUpdate (PatchSet.Id psId)
 specifier|public
 name|ChangeUpdate
@@ -1793,29 +1718,8 @@ return|return
 name|u
 return|;
 block|}
-DECL|method|getNotes ()
-specifier|public
-name|ChangeNotes
-name|getNotes
-parameter_list|()
-block|{
-name|ChangeNotes
-name|n
-init|=
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
-decl_stmt|;
-name|checkNotNull
-argument_list|(
-name|n
-argument_list|)
-expr_stmt|;
-return|return
-name|n
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getControl ()
 specifier|public
 name|ChangeControl
@@ -1831,29 +1735,8 @@ return|return
 name|ctl
 return|;
 block|}
-DECL|method|getChange ()
-specifier|public
-name|Change
-name|getChange
-parameter_list|()
-block|{
-name|Change
-name|c
-init|=
-name|ctl
-operator|.
-name|getChange
-argument_list|()
-decl_stmt|;
-name|checkNotNull
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
-return|return
-name|c
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|bumpLastUpdatedOn (boolean bump)
 specifier|public
 name|void
@@ -1868,6 +1751,8 @@ operator|=
 name|bump
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|deleteChange ()
 specifier|public
 name|void
@@ -3514,11 +3399,11 @@ name|InsertChangeOp
 name|op
 parameter_list|)
 block|{
-name|Context
+name|ContextImpl
 name|ctx
 init|=
 operator|new
-name|Context
+name|ContextImpl
 argument_list|()
 decl_stmt|;
 name|Change
@@ -3674,11 +3559,11 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|RepoContext
+name|RepoContextImpl
 name|ctx
 init|=
 operator|new
-name|RepoContext
+name|RepoContextImpl
 argument_list|()
 decl_stmt|;
 for|for
@@ -5176,7 +5061,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|ChangeContext
+name|ChangeContextImpl
 name|ctx
 init|=
 name|newChangeContext
@@ -5576,9 +5461,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|newChangeContext (ReviewDb db, Repository repo, RevWalk rw, Change.Id id)
+DECL|method|newChangeContext ( ReviewDb db, Repository repo, RevWalk rw, Change.Id id)
 specifier|private
-name|ChangeContext
+name|ChangeContextImpl
 name|newChangeContext
 parameter_list|(
 name|ReviewDb
@@ -5745,7 +5630,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|ChangeContext
+name|ChangeContextImpl
 argument_list|(
 name|ctl
 argument_list|,
@@ -5761,12 +5646,12 @@ name|rw
 argument_list|)
 return|;
 block|}
-DECL|method|stageNoteDbUpdate (ChangeContext ctx, boolean deleted)
+DECL|method|stageNoteDbUpdate (ChangeContextImpl ctx, boolean deleted)
 specifier|private
 name|NoteDbUpdateManager
 name|stageNoteDbUpdate
 parameter_list|(
-name|ChangeContext
+name|ChangeContextImpl
 name|ctx
 parameter_list|,
 name|boolean
@@ -6030,7 +5915,7 @@ block|}
 end_class
 
 begin_function
-DECL|method|changesToUpdate (ChangeContext ctx)
+DECL|method|changesToUpdate (ChangeContextImpl ctx)
 specifier|private
 specifier|static
 name|Iterable
@@ -6039,7 +5924,7 @@ name|Change
 argument_list|>
 name|changesToUpdate
 parameter_list|(
-name|ChangeContext
+name|ChangeContextImpl
 name|ctx
 parameter_list|)
 block|{
@@ -6102,11 +5987,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Context
+name|ContextImpl
 name|ctx
 init|=
 operator|new
-name|Context
+name|ContextImpl
 argument_list|()
 decl_stmt|;
 for|for

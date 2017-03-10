@@ -94,8 +94,6 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
-operator|.
 name|ChangeContext
 import|;
 end_import

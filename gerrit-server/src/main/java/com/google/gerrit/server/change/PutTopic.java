@@ -348,8 +348,6 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
-operator|.
 name|ChangeContext
 import|;
 end_import
@@ -365,8 +363,6 @@ operator|.
 name|server
 operator|.
 name|update
-operator|.
-name|BatchUpdate
 operator|.
 name|Context
 import|;

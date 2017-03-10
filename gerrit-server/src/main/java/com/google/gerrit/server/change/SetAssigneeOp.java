@@ -334,7 +334,21 @@ name|server
 operator|.
 name|update
 operator|.
-name|BatchUpdate
+name|ChangeContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
 operator|.
 name|Context
 import|;
@@ -655,13 +669,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateChange (BatchUpdate.ChangeContext ctx)
+DECL|method|updateChange (ChangeContext ctx)
 specifier|public
 name|boolean
 name|updateChange
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|ChangeContext
 name|ctx
 parameter_list|)
@@ -892,13 +904,11 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|addMessage ( BatchUpdate.ChangeContext ctx, ChangeUpdate update, IdentifiedUser previousAssignee, IdentifiedUser newAssignee)
+DECL|method|addMessage ( ChangeContext ctx, ChangeUpdate update, IdentifiedUser previousAssignee, IdentifiedUser newAssignee)
 specifier|private
 name|void
 name|addMessage
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|ChangeContext
 name|ctx
 parameter_list|,
