@@ -485,6 +485,9 @@ name|isDraft
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|removeUsersThatIgnoredTheChange
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override

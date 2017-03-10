@@ -289,6 +289,9 @@ operator|.
 name|ABANDONED_CHANGES
 argument_list|)
 expr_stmt|;
+name|removeUsersThatIgnoredTheChange
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
