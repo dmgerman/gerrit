@@ -9694,7 +9694,10 @@ name|getCause
 argument_list|()
 argument_list|)
 operator|.
-name|hasMessage
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
 argument_list|(
 name|NoteDbUpdateManager
 operator|.

@@ -2487,7 +2487,10 @@ argument_list|(
 literal|"change:foo~bar"
 argument_list|)
 operator|.
-name|hasMessage
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
 argument_list|(
 literal|"Invalid change format"
 argument_list|)
@@ -3204,7 +3207,10 @@ argument_list|(
 literal|"status:nx"
 argument_list|)
 operator|.
-name|hasMessage
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
 argument_list|(
 literal|"invalid change status: nx"
 argument_list|)
@@ -3214,7 +3220,10 @@ argument_list|(
 literal|"status:newx"
 argument_list|)
 operator|.
-name|hasMessage
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
 argument_list|(
 literal|"invalid change status: newx"
 argument_list|)
@@ -6239,7 +6248,10 @@ literal|100
 argument_list|)
 argument_list|)
 operator|.
-name|hasMessage
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
 argument_list|(
 literal|"Cannot go beyond page 10 of results"
 argument_list|)

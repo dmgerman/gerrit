@@ -3576,7 +3576,10 @@ argument_list|(
 name|e
 argument_list|)
 operator|.
-name|hasMessage
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
 argument_list|(
 literal|"invalid email address"
 argument_list|)

@@ -1872,7 +1872,10 @@ argument_list|(
 name|e
 argument_list|)
 operator|.
-name|hasMessage
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
 argument_list|(
 literal|"Failed to submit 2 changes due to the following problems:\n"
 operator|+
