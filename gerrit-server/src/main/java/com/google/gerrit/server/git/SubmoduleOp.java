@@ -957,6 +957,14 @@ operator|.
 name|Factory
 name|projectStateFactory
 decl_stmt|;
+DECL|field|batchUpdateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
+decl_stmt|;
 DECL|field|verboseSuperProject
 specifier|private
 specifier|final
@@ -1070,7 +1078,7 @@ name|branchesByProject
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent PersonIdent myIdent, @GerritServerConfig Config cfg, ProjectCache projectCache, ProjectState.Factory projectStateFactory, @Assisted Set<Branch.NameKey> updatedBranches, @Assisted MergeOpRepoManager orm)
+DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent PersonIdent myIdent, @GerritServerConfig Config cfg, ProjectCache projectCache, ProjectState.Factory projectStateFactory, BatchUpdate.Factory batchUpdateFactory, @Assisted Set<Branch.NameKey> updatedBranches, @Assisted MergeOpRepoManager orm)
 specifier|public
 name|SubmoduleOp
 parameter_list|(
@@ -1096,6 +1104,11 @@ name|ProjectState
 operator|.
 name|Factory
 name|projectStateFactory
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1138,6 +1151,12 @@ operator|.
 name|projectStateFactory
 operator|=
 name|projectStateFactory
+expr_stmt|;
+name|this
+operator|.
+name|batchUpdateFactory
+operator|=
+name|batchUpdateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2397,7 +2416,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|BatchUpdate
+name|batchUpdateFactory
 operator|.
 name|execute
 argument_list|(

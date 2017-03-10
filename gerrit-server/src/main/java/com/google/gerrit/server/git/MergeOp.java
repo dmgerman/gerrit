@@ -3231,7 +3231,7 @@ operator|.
 name|getProjectsInOrder
 argument_list|()
 expr_stmt|;
-name|BatchUpdate
+name|batchUpdateFactory
 operator|.
 name|execute
 argument_list|(
