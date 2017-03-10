@@ -3137,7 +3137,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getUser ()
-specifier|public
+specifier|private
 name|CurrentUser
 name|getUser
 parameter_list|()
@@ -3147,7 +3147,7 @@ name|user
 return|;
 block|}
 DECL|method|getRepository ()
-specifier|public
+specifier|private
 name|Repository
 name|getRepository
 parameter_list|()
@@ -3162,7 +3162,7 @@ name|repo
 return|;
 block|}
 DECL|method|getRevWalk ()
-specifier|public
+specifier|private
 name|RevWalk
 name|getRevWalk
 parameter_list|()
@@ -3177,7 +3177,7 @@ name|revWalk
 return|;
 block|}
 DECL|method|getObjectInserter ()
-specifier|public
+specifier|private
 name|ObjectInserter
 name|getObjectInserter
 parameter_list|()

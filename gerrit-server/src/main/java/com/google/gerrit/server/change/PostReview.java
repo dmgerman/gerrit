@@ -2341,7 +2341,7 @@ operator|.
 name|Id
 name|id
 init|=
-name|bu
+name|revision
 operator|.
 name|getUser
 argument_list|()
@@ -2591,7 +2591,7 @@ name|postReviewers
 operator|.
 name|ccCurrentUser
 argument_list|(
-name|bu
+name|revision
 operator|.
 name|getUser
 argument_list|()
