@@ -228,7 +228,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|update
 operator|.
 name|UpdateException
 import|;

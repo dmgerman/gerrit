@@ -464,9 +464,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|notedb
 operator|.
-name|BatchUpdate
+name|PatchSetState
 import|;
 end_import
 
@@ -480,9 +480,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|update
 operator|.
-name|PatchSetState
+name|BatchUpdate
 import|;
 end_import
 

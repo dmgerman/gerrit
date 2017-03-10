@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.update
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|update
 package|;
 end_package
 
@@ -609,6 +609,38 @@ operator|.
 name|events
 operator|.
 name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|InsertedObject
 import|;
 end_import
 
@@ -2184,6 +2216,7 @@ name|p
 return|;
 block|}
 DECL|method|execute ( Collection<BatchUpdate> updates, Listener listener, @Nullable RequestId requestId, boolean dryrun)
+specifier|public
 specifier|static
 name|void
 name|execute
@@ -3248,6 +3281,7 @@ return|;
 block|}
 comment|/**    * Add a validation step for intended ref operations, which will be performed at the end of {@link    * RepoOnlyOp#updateRepo(RepoContext)} step.    */
 DECL|method|setOnSubmitValidators (OnSubmitValidators onSubmitValidators)
+specifier|public
 name|BatchUpdate
 name|setOnSubmitValidators
 parameter_list|(
