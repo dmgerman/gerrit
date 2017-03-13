@@ -2074,6 +2074,14 @@ operator|==
 name|range
 operator|.
 name|endLine
+operator|&&
+name|range
+operator|.
+name|startChar
+operator|<
+name|range
+operator|.
+name|endChar
 condition|)
 block|{
 name|s
