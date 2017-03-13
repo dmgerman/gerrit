@@ -423,10 +423,10 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|afterRefUpdates ()
+DECL|method|afterUpdateRefs ()
 specifier|public
 name|void
-name|afterRefUpdates
+name|afterUpdateRefs
 parameter_list|()
 throws|throws
 name|ResourceConflictException

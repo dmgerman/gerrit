@@ -98,10 +98,10 @@ throws|throws
 name|Exception
 block|{}
 comment|/** Called after updating all refs. */
-DECL|method|afterRefUpdates ()
+DECL|method|afterUpdateRefs ()
 specifier|default
 name|void
-name|afterRefUpdates
+name|afterUpdateRefs
 parameter_list|()
 throws|throws
 name|Exception

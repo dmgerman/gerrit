@@ -2125,7 +2125,7 @@ expr_stmt|;
 block|}
 name|listener
 operator|.
-name|afterRefUpdates
+name|afterUpdateRefs
 argument_list|()
 expr_stmt|;
 for|for
@@ -2225,7 +2225,7 @@ expr_stmt|;
 block|}
 name|listener
 operator|.
-name|afterRefUpdates
+name|afterUpdateRefs
 argument_list|()
 expr_stmt|;
 break|break;
