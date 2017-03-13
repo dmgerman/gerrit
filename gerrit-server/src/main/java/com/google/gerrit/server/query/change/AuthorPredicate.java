@@ -140,6 +140,16 @@ name|OrmException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 DECL|class|AuthorPredicate
 specifier|public
@@ -181,6 +191,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+try|try
+block|{
 return|return
 name|ChangeField
 operator|.
@@ -198,6 +210,21 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override

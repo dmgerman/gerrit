@@ -1794,7 +1794,10 @@ argument_list|(
 name|e
 argument_list|)
 operator|.
-name|hasMessage
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
 argument_list|(
 literal|"Cannot reduce vote on labels for closed change: Code-Review"
 argument_list|)
@@ -1952,7 +1955,10 @@ argument_list|(
 name|e
 argument_list|)
 operator|.
-name|hasMessage
+name|hasMessageThat
+argument_list|()
+operator|.
+name|isEqualTo
 argument_list|(
 literal|"Cannot reduce vote on labels for closed change: Code-Review"
 argument_list|)
