@@ -464,7 +464,23 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|notedb
+operator|.
+name|PatchSetState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
 operator|.
 name|BatchUpdate
 import|;
@@ -480,9 +496,25 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|update
 operator|.
-name|PatchSetState
+name|BatchUpdateOp
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
+name|ChangeContext
 import|;
 end_import
 
@@ -2212,20 +2244,16 @@ DECL|class|MarkChangeAsDraftUpdateOp
 specifier|private
 class|class
 name|MarkChangeAsDraftUpdateOp
-extends|extends
-name|BatchUpdate
-operator|.
-name|Op
+implements|implements
+name|BatchUpdateOp
 block|{
 annotation|@
 name|Override
-DECL|method|updateChange (BatchUpdate.ChangeContext ctx)
+DECL|method|updateChange (ChangeContext ctx)
 specifier|public
 name|boolean
 name|updateChange
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|ChangeContext
 name|ctx
 parameter_list|)
@@ -2288,10 +2316,8 @@ DECL|class|DraftStatusOfPatchSetsUpdateOp
 specifier|private
 class|class
 name|DraftStatusOfPatchSetsUpdateOp
-extends|extends
-name|BatchUpdate
-operator|.
-name|Op
+implements|implements
+name|BatchUpdateOp
 block|{
 DECL|field|draftStatus
 specifier|private
@@ -2315,13 +2341,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateChange (BatchUpdate.ChangeContext ctx)
+DECL|method|updateChange (ChangeContext ctx)
 specifier|public
 name|boolean
 name|updateChange
 parameter_list|(
-name|BatchUpdate
-operator|.
 name|ChangeContext
 name|ctx
 parameter_list|)

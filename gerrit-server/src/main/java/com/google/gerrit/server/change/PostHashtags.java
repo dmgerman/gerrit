@@ -202,7 +202,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|update
 operator|.
 name|BatchUpdate
 import|;
@@ -218,7 +218,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|update
 operator|.
 name|UpdateException
 import|;

@@ -1040,9 +1040,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|project
 operator|.
-name|UpdateException
+name|InvalidChangeOperationException
 import|;
 end_import
 
@@ -1056,9 +1056,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|update
 operator|.
-name|InvalidChangeOperationException
+name|UpdateException
 import|;
 end_import
 

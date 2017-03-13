@@ -176,22 +176,6 @@ name|server
 operator|.
 name|git
 operator|.
-name|BatchUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|CodeReviewCommit
 import|;
 end_import
@@ -227,6 +211,22 @@ operator|.
 name|MergeOp
 operator|.
 name|CommitStatus
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
+name|BatchUpdateListener
 import|;
 end_import
 
@@ -289,10 +289,8 @@ DECL|class|SubmitStrategyListener
 specifier|public
 class|class
 name|SubmitStrategyListener
-extends|extends
-name|BatchUpdate
-operator|.
-name|Listener
+implements|implements
+name|BatchUpdateListener
 block|{
 DECL|field|strategies
 specifier|private
@@ -425,10 +423,10 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|afterRefUpdates ()
+DECL|method|afterUpdateRefs ()
 specifier|public
 name|void
-name|afterRefUpdates
+name|afterUpdateRefs
 parameter_list|()
 throws|throws
 name|ResourceConflictException

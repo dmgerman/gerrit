@@ -982,9 +982,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|patch
 operator|.
-name|UpdateException
+name|PatchListNotAvailableException
 import|;
 end_import
 
@@ -998,9 +998,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|update
 operator|.
-name|PatchListNotAvailableException
+name|UpdateException
 import|;
 end_import
 

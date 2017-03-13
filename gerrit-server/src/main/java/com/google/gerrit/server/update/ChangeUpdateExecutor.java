@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.strategy
+DECL|package|com.google.gerrit.server.update
 package|package
 name|com
 operator|.
@@ -62,25 +62,37 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|strategy
+name|update
 package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|RetentionPolicy
+operator|.
+name|RUNTIME
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|common
 operator|.
-name|server
+name|util
 operator|.
-name|git
+name|concurrent
 operator|.
-name|CodeReviewCommit
+name|ListeningExecutorService
 import|;
 end_import
 
@@ -96,7 +108,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|IntegrationException
+name|ReceiveCommits
 import|;
 end_import
 
@@ -106,70 +118,42 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|RepoContext
+name|BindingAnnotation
 import|;
 end_import
 
-begin_class
-DECL|class|FastForwardOp
-class|class
-name|FastForwardOp
-extends|extends
-name|SubmitStrategyOp
-block|{
-DECL|method|FastForwardOp (SubmitStrategy.Arguments args, CodeReviewCommit toMerge)
-name|FastForwardOp
-parameter_list|(
-name|SubmitStrategy
+begin_import
+import|import
+name|java
 operator|.
-name|Arguments
-name|args
-parameter_list|,
-name|CodeReviewCommit
-name|toMerge
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|args
-argument_list|,
-name|toMerge
-argument_list|)
-expr_stmt|;
-block|}
+name|lang
+operator|.
+name|annotation
+operator|.
+name|Retention
+import|;
+end_import
+
+begin_comment
+comment|/**  * Marker on the global {@link ListeningExecutorService} used by {@link ReceiveCommits} to create or  * replace changes.  */
+end_comment
+
+begin_annotation_defn
 annotation|@
-name|Override
-DECL|method|updateRepoImpl (RepoContext ctx)
-specifier|protected
-name|void
-name|updateRepoImpl
-parameter_list|(
-name|RepoContext
-name|ctx
-parameter_list|)
-throws|throws
-name|IntegrationException
-block|{
-name|args
-operator|.
-name|mergeTip
-operator|.
-name|moveTipTo
+name|Retention
 argument_list|(
-name|toMerge
-argument_list|,
-name|toMerge
+name|RUNTIME
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
+annotation|@
+name|BindingAnnotation
+DECL|annotation|ChangeUpdateExecutor
+specifier|public
+annotation_defn|@interface
+name|ChangeUpdateExecutor
+block|{}
+end_annotation_defn
 
 end_unit
 

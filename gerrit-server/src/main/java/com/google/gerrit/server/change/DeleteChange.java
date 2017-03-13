@@ -238,7 +238,23 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|project
+operator|.
+name|ChangeControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
 operator|.
 name|BatchUpdate
 import|;
@@ -254,9 +270,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|update
 operator|.
-name|UpdateException
+name|Order
 import|;
 end_import
 
@@ -270,9 +286,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|update
 operator|.
-name|ChangeControl
+name|UpdateException
 import|;
 end_import
 
@@ -526,8 +542,6 @@ name|bu
 operator|.
 name|setOrder
 argument_list|(
-name|BatchUpdate
-operator|.
 name|Order
 operator|.
 name|DB_BEFORE_REPO
