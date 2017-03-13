@@ -95,6 +95,14 @@ name|String
 argument_list|>
 name|jsResourcePaths
 decl_stmt|;
+DECL|field|htmlResourcePaths
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|htmlResourcePaths
+decl_stmt|;
 block|}
 end_class
 
