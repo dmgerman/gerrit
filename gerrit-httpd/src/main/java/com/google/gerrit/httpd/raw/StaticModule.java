@@ -1876,7 +1876,7 @@ decl_stmt|;
 DECL|field|builder
 specifier|private
 specifier|final
-name|BuildSystem
+name|BazelBuild
 name|builder
 decl_stmt|;
 DECL|field|sourceRoot
