@@ -578,6 +578,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ReviewerByEmailSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|ReviewerSet
 import|;
 end_import
@@ -3129,6 +3143,20 @@ return|return
 name|state
 operator|.
 name|reviewers
+argument_list|()
+return|;
+block|}
+comment|/** @return reviewers that do not currently have a Gerrit account and were added by email. */
+DECL|method|getReviewersByEmail ()
+specifier|public
+name|ReviewerByEmailSet
+name|getReviewersByEmail
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|reviewersByEmail
 argument_list|()
 return|;
 block|}

@@ -366,6 +366,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ReviewerByEmailSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|ReviewerSet
 import|;
 end_import
@@ -526,6 +540,11 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
+name|ReviewerByEmailSet
+operator|.
+name|empty
+argument_list|()
+argument_list|,
 name|ImmutableList
 operator|.
 name|of
@@ -562,7 +581,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, @Nullable Boolean isPrivate)
+DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, @Nullable Boolean isPrivate)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -675,6 +694,9 @@ name|approvals
 parameter_list|,
 name|ReviewerSet
 name|reviewers
+parameter_list|,
+name|ReviewerByEmailSet
+name|reviewersByEmail
 parameter_list|,
 name|List
 argument_list|<
@@ -819,6 +841,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|reviewers
+argument_list|,
+name|reviewersByEmail
 argument_list|,
 name|ImmutableList
 operator|.
@@ -1069,6 +1093,12 @@ DECL|method|reviewers ()
 specifier|abstract
 name|ReviewerSet
 name|reviewers
+parameter_list|()
+function_decl|;
+DECL|method|reviewersByEmail ()
+specifier|abstract
+name|ReviewerByEmailSet
+name|reviewersByEmail
 parameter_list|()
 function_decl|;
 DECL|method|allPastReviewers ()

@@ -300,6 +300,24 @@ return|return
 name|footerKey
 return|;
 block|}
+DECL|method|getByEmailFooterKey ()
+name|FooterKey
+name|getByEmailFooterKey
+parameter_list|()
+block|{
+return|return
+operator|new
+name|FooterKey
+argument_list|(
+name|footerKey
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"-email"
+argument_list|)
+return|;
+block|}
 DECL|method|asReviewerState ()
 specifier|public
 name|ReviewerState
