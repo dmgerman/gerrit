@@ -596,6 +596,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|LockFailureException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|index
 operator|.
 name|change
@@ -3356,6 +3372,8 @@ argument_list|>
 name|tasks
 parameter_list|)
 throws|throws
+name|ResourceConflictException
+throws|,
 name|IOException
 block|{
 comment|// Aggregate together all NoteDb ref updates from the ops we executed,
@@ -3705,10 +3723,10 @@ name|REVIEW_DB
 argument_list|)
 condition|)
 block|{
-comment|// Ignore all errors trying to update NoteDb at this point. We've
-comment|// already written the NoteDbChangeStates to ReviewDb, which means
-comment|// if any state is out of date it will be rebuilt the next time it
-comment|// is needed.
+comment|// Ignore all errors trying to update NoteDb at this point. We've already written the
+comment|// NoteDbChangeStates to ReviewDb, which means if any state is out of date it will be
+comment|// rebuilt the next time it is needed.
+comment|//
 comment|// Always log even without RequestId.
 name|log
 operator|.
@@ -3718,16 +3736,33 @@ literal|"Ignoring NoteDb update error after ReviewDb write"
 argument_list|,
 name|e
 argument_list|)
-block|;       }
-else|else
+block|;
+comment|// Otherwise, we can't prove it's safe to ignore the error, either because some change had
+comment|// NOTE_DB primary, or a task failed before determining the primary storage.
+block|}
+elseif|else
+if|if
+condition|(
+name|e
+operator|instanceof
+name|LockFailureException
+condition|)
 block|{
-comment|// We can't prove it's safe to ignore the error, either because some
-comment|// change had NOTE_DB primary, or a task failed before determining the
-comment|// primary storage.
+comment|// LOCK_FAILURE is a special case indicating there was a conflicting write to a meta ref,
+comment|// although it happened too late for us to produce anything but a generic error message.
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"Updating change failed due to conflicting write"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 throw|throw
 name|e
 throw|;
-block|}
 block|}
 block|}
 DECL|method|executeNoteDbUpdate (RevWalk rw, ObjectInserter ins, BatchRefUpdate bru)
