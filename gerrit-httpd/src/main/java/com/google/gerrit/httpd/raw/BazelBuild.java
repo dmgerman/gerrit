@@ -747,25 +747,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** returns the command to build given target */
-DECL|method|buildCommand (Label l)
-specifier|public
-name|String
-name|buildCommand
-parameter_list|(
-name|Label
-name|l
-parameter_list|)
-block|{
-return|return
-literal|"bazel build "
-operator|+
-name|l
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
 comment|/** returns the root relative path to the artifact for the given label */
 DECL|method|targetPath (Label l)
 specifier|public
