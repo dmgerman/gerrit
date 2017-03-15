@@ -2242,6 +2242,7 @@ return|;
 block|}
 DECL|class|MarkChangeAsDraftUpdateOp
 specifier|private
+specifier|static
 class|class
 name|MarkChangeAsDraftUpdateOp
 implements|implements
