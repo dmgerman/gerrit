@@ -332,12 +332,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"building ["
-operator|+
-name|name
-argument_list|()
-operator|+
-literal|"] "
+literal|"building "
 operator|+
 name|label
 operator|.
@@ -860,17 +855,6 @@ literal|"polygerrit-ui"
 argument_list|,
 literal|"fonts.zip"
 argument_list|)
-return|;
-block|}
-comment|/** Build system name. */
-DECL|method|name ()
-specifier|public
-name|String
-name|name
-parameter_list|()
-block|{
-return|return
-literal|"bazel"
 return|;
 block|}
 block|}
