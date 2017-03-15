@@ -152,7 +152,7 @@ specifier|final
 name|Path
 name|fonts
 decl_stmt|;
-DECL|method|FontsDevServlet (Cache<Path, Resource> cache, BuildSystem builder)
+DECL|method|FontsDevServlet (Cache<Path, Resource> cache, BazelBuild builder)
 name|FontsDevServlet
 parameter_list|(
 name|Cache
@@ -163,7 +163,7 @@ name|Resource
 argument_list|>
 name|cache
 parameter_list|,
-name|BuildSystem
+name|BazelBuild
 name|builder
 parameter_list|)
 throws|throws
@@ -183,7 +183,7 @@ argument_list|(
 name|builder
 argument_list|)
 expr_stmt|;
-name|BuildSystem
+name|BazelBuild
 operator|.
 name|Label
 name|zipLabel
@@ -205,7 +205,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|BuildSystem
+name|BazelBuild
 operator|.
 name|BuildFailureException
 name|e

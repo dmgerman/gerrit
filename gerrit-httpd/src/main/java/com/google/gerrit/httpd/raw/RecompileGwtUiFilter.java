@@ -72,24 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|httpd
-operator|.
-name|raw
-operator|.
-name|BuildSystem
-operator|.
-name|Label
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtexpui
 operator|.
 name|linker
@@ -345,7 +327,7 @@ decl_stmt|;
 DECL|field|builder
 specifier|private
 specifier|final
-name|BuildSystem
+name|BazelBuild
 name|builder
 decl_stmt|;
 DECL|field|lastAgent
@@ -358,10 +340,10 @@ specifier|private
 name|long
 name|lastTime
 decl_stmt|;
-DECL|method|RecompileGwtUiFilter (BuildSystem builder, Path unpackedWar)
+DECL|method|RecompileGwtUiFilter (BazelBuild builder, Path unpackedWar)
 name|RecompileGwtUiFilter
 parameter_list|(
-name|BuildSystem
+name|BazelBuild
 name|builder
 parameter_list|,
 name|Path
@@ -434,6 +416,8 @@ argument_list|)
 operator|)
 condition|)
 block|{
+name|BazelBuild
+operator|.
 name|Label
 name|label
 init|=
@@ -474,7 +458,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|BuildSystem
+name|BazelBuild
 operator|.
 name|BuildFailureException
 name|e
