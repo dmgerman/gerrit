@@ -308,17 +308,20 @@ argument_list|()
 argument_list|,
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{
 name|ServletContext
 operator|.
 name|class
-block|,
+operator|,
 name|API
 operator|.
 name|class
 block|}
-argument_list|,
+operator|,
 operator|new
 name|Handler
 argument_list|(
@@ -326,14 +329,20 @@ name|plugin
 argument_list|,
 name|contextPath
 argument_list|)
-argument_list|)
-return|;
+block|)
+function|;
 block|}
+end_class
+
+begin_constructor
 DECL|method|PluginServletContext ()
 specifier|private
 name|PluginServletContext
 parameter_list|()
 block|{}
+end_constructor
+
+begin_class
 DECL|class|Handler
 specifier|private
 specifier|static
@@ -958,6 +967,9 @@ operator|)
 return|;
 block|}
 block|}
+end_class
+
+begin_interface
 DECL|interface|API
 interface|interface
 name|API
@@ -1168,8 +1180,8 @@ name|getServerInfo
 parameter_list|()
 function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
+unit|}
 end_unit
 
