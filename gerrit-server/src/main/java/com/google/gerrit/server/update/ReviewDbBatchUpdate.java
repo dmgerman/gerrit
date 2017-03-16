@@ -1076,20 +1076,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectReader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|PersonIdent
 import|;
 end_import
@@ -3993,15 +3979,15 @@ argument_list|()
 decl_stmt|;
 try|try
 init|(
-name|ObjectReader
-name|reader
+name|RevWalk
+name|rw
 init|=
+operator|new
+name|RevWalk
+argument_list|(
 name|repo
-operator|.
-name|newObjectReader
-argument_list|()
-init|;             RevWalk rw = new RevWalk(repo)
-block|)
+argument_list|)
+init|)
 block|{
 name|call
 argument_list|(
@@ -4035,20 +4021,11 @@ name|schemaFactory
 operator|.
 name|open
 argument_list|()
-init|;
-name|Repository
-name|repo
-operator|=
-name|repoManager
-operator|.
-name|openRepository
-argument_list|(
-name|project
-argument_list|)
-init|;
+init|;             Repository repo = repoManager.openRepository(project)
+empty_stmt|;
 name|RevWalk
 name|rw
-operator|=
+init|=
 operator|new
 name|RevWalk
 argument_list|(
@@ -4964,9 +4941,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_function
 DECL|method|changesToUpdate (ChangeContextImpl ctx)
 specifier|private
 specifier|static
@@ -5028,9 +5002,6 @@ name|c
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|executePostOps ()
 specifier|private
 name|void
@@ -5082,8 +5053,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
