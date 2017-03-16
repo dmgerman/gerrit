@@ -1772,11 +1772,7 @@ name|PatchSet
 name|ps
 parameter_list|)
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|AuthException
-throws|,
-name|NoSuchChangeException
 throws|,
 name|IOException
 throws|,
@@ -1884,8 +1880,6 @@ parameter_list|()
 throws|throws
 name|AuthException
 throws|,
-name|NoSuchChangeException
-throws|,
 name|IOException
 throws|,
 name|OrmException
@@ -1913,10 +1907,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getRef
-argument_list|()
-operator|.
-name|getObjectId
+name|getEditCommit
 argument_list|()
 return|;
 block|}

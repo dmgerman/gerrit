@@ -15384,10 +15384,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getRef
-argument_list|()
-operator|.
-name|getObjectId
+name|getEditCommit
 argument_list|()
 argument_list|,
 name|newCommitId
@@ -15415,10 +15412,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getRef
-argument_list|()
-operator|.
-name|getObjectId
+name|getEditCommit
 argument_list|()
 argument_list|,
 name|ObjectId
