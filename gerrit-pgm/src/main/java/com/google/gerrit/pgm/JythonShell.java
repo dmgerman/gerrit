@@ -472,17 +472,20 @@ literal|"initialize"
 argument_list|,
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{
 name|Properties
 operator|.
 name|class
-block|,
+operator|,
 name|Properties
 operator|.
 name|class
 block|}
-argument_list|,
+operator|,
 operator|new
 name|Object
 index|[]
@@ -491,8 +494,8 @@ literal|null
 block|,
 name|env
 block|}
-argument_list|)
-expr_stmt|;
+block|)
+empty_stmt|;
 try|try
 block|{
 name|shell
@@ -503,9 +506,12 @@ name|getConstructor
 argument_list|(
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{}
-argument_list|)
+block|)
 operator|.
 name|newInstance
 argument_list|()
@@ -518,6 +524,9 @@ literal|"Jython shell instance created."
 argument_list|)
 expr_stmt|;
 block|}
+end_class
+
+begin_catch
 catch|catch
 parameter_list|(
 name|InstantiationException
@@ -541,6 +550,9 @@ name|e
 argument_list|)
 throw|;
 block|}
+end_catch
+
+begin_expr_stmt
 name|injectedVariables
 operator|=
 operator|new
@@ -548,6 +560,9 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|set
 argument_list|(
 literal|"Shell"
@@ -555,9 +570,11 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_function
+unit|}    protected
 DECL|method|runMethod0 ( Class<?> klazz, Object instance, String name, Class<?>[] sig, Object[] args)
-specifier|protected
 name|Object
 name|runMethod0
 parameter_list|(
@@ -634,6 +651,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|runMethod ( Class<?> klazz, Object instance, String name, Class<?>[] sig, Object[] args)
 specifier|protected
 name|Object
@@ -694,6 +714,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|runInterpreter (String name, Class<?>[] sig, Object[] args)
 specifier|protected
 name|Object
@@ -729,6 +752,9 @@ name|args
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getDefaultBanner ()
 specifier|protected
 name|String
@@ -745,18 +771,23 @@ literal|"getDefaultBanner"
 argument_list|,
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{}
-argument_list|,
+operator|,
 operator|new
 name|Object
 index|[]
 block|{}
-argument_list|)
-return|;
-block|}
+block|)
+function|;
+end_function
+
+begin_function
+unit|}    protected
 DECL|method|printInjectedVariable (String id)
-specifier|protected
 name|void
 name|printInjectedVariable
 parameter_list|(
@@ -770,13 +801,16 @@ literal|"exec"
 argument_list|,
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{
 name|String
 operator|.
 name|class
 block|}
-argument_list|,
+operator|,
 operator|new
 name|Object
 index|[]
@@ -791,11 +825,13 @@ name|id
 operator|+
 literal|")"
 block|}
-argument_list|)
-expr_stmt|;
-block|}
+block|)
+function|;
+end_function
+
+begin_function
+unit|}    public
 DECL|method|run ()
-specifier|public
 name|void
 name|run
 parameter_list|()
@@ -823,15 +859,18 @@ literal|"interact"
 argument_list|,
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{
 name|String
 operator|.
 name|class
-block|,
+operator|,
 name|pyObject
 block|}
-argument_list|,
+operator|,
 operator|new
 name|Object
 index|[]
@@ -856,11 +895,13 @@ argument_list|()
 block|,
 literal|null
 block|,         }
-argument_list|)
-expr_stmt|;
-block|}
+block|)
+function|;
+end_function
+
+begin_function
+unit|}    public
 DECL|method|set (String key, Object content)
-specifier|public
 name|void
 name|set
 parameter_list|(
@@ -877,17 +918,20 @@ literal|"set"
 argument_list|,
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{
 name|String
 operator|.
 name|class
-block|,
+operator|,
 name|Object
 operator|.
 name|class
 block|}
-argument_list|,
+operator|,
 operator|new
 name|Object
 index|[]
@@ -896,8 +940,11 @@ name|key
 block|,
 name|content
 block|}
-argument_list|)
-expr_stmt|;
+block|)
+function|;
+end_function
+
+begin_expr_stmt
 name|injectedVariables
 operator|.
 name|add
@@ -905,9 +952,11 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_function
+unit|}    private
 DECL|method|findClass (String klazzname)
-specifier|private
 specifier|static
 name|Class
 argument_list|<
@@ -950,6 +999,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|reload ()
 specifier|public
 name|void
@@ -972,6 +1024,9 @@ name|STARTUP_FILE
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|execResource (final String p)
 specifier|protected
 name|void
@@ -1050,6 +1105,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|execFile (final File parent, final String p)
 specifier|protected
 name|void
@@ -1095,13 +1153,16 @@ literal|"execfile"
 argument_list|,
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{
 name|String
 operator|.
 name|class
 block|}
-argument_list|,
+operator|,
 operator|new
 name|Object
 index|[]
@@ -1111,8 +1172,8 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 block|}
-argument_list|)
-expr_stmt|;
+block|)
+empty_stmt|;
 block|}
 else|else
 block|{
@@ -1132,6 +1193,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_catch
 catch|catch
 parameter_list|(
 name|InvocationTargetException
@@ -1152,6 +1216,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+end_catch
+
+begin_catch
 catch|catch
 parameter_list|(
 name|SecurityException
@@ -1172,9 +1239,11 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-block|}
+end_catch
+
+begin_function
+unit|}    protected
 DECL|method|execStream (final InputStream in, final String p)
-specifier|protected
 name|void
 name|execStream
 parameter_list|(
@@ -1199,17 +1268,20 @@ literal|"execfile"
 argument_list|,
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{
 name|InputStream
 operator|.
 name|class
-block|,
+operator|,
 name|String
 operator|.
 name|class
 block|}
-argument_list|,
+operator|,
 operator|new
 name|Object
 index|[]
@@ -1218,9 +1290,12 @@ name|in
 block|,
 name|p
 block|}
-argument_list|)
-expr_stmt|;
+block|)
+empty_stmt|;
 block|}
+end_function
+
+begin_catch
 catch|catch
 parameter_list|(
 name|InvocationTargetException
@@ -1241,9 +1316,11 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-block|}
+end_catch
+
+begin_function
+unit|}    private
 DECL|method|noShell (final String m, Throwable why)
-specifier|private
 specifier|static
 name|UnsupportedOperationException
 name|noShell
@@ -1282,6 +1359,9 @@ name|why
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|noInterpreter (Throwable why)
 specifier|private
 specifier|static
@@ -1307,6 +1387,9 @@ name|why
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|cannotStart (Throwable why)
 specifier|private
 specifier|static
@@ -1333,8 +1416,8 @@ name|why
 argument_list|)
 return|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
