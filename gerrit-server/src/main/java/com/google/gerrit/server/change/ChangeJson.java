@@ -4584,7 +4584,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO(hiesel) Load from ChangeData instead after the data was added there
 for|for
 control|(
 name|Map
@@ -4604,10 +4603,7 @@ name|e
 range|:
 name|cd
 operator|.
-name|notes
-argument_list|()
-operator|.
-name|getReviewersByEmail
+name|reviewersByEmail
 argument_list|()
 operator|.
 name|asTable

@@ -1308,7 +1308,6 @@ condition|)
 block|{
 try|try
 block|{
-comment|// TODO(hiesel) Load from index instead
 name|addByEmail
 argument_list|(
 name|RecipientType
@@ -1317,10 +1316,7 @@ name|CC
 argument_list|,
 name|changeData
 operator|.
-name|notes
-argument_list|()
-operator|.
-name|getReviewersByEmail
+name|reviewersByEmail
 argument_list|()
 operator|.
 name|byState
@@ -1339,10 +1335,7 @@ name|TO
 argument_list|,
 name|changeData
 operator|.
-name|notes
-argument_list|()
-operator|.
-name|getReviewersByEmail
+name|reviewersByEmail
 argument_list|()
 operator|.
 name|byState
