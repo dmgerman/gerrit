@@ -7067,6 +7067,13 @@ default|default:
 name|reject
 argument_list|(
 name|cmd
+argument_list|,
+literal|"prohibited by Gerrit: unknown command type "
+operator|+
+name|cmd
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -7647,6 +7654,13 @@ default|default:
 name|reject
 argument_list|(
 name|cmd
+argument_list|,
+literal|"prohibited by Gerrit: don't know how to handle config update of type "
+operator|+
+name|cmd
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -7807,6 +7821,13 @@ block|{
 name|reject
 argument_list|(
 name|cmd
+argument_list|,
+literal|"prohibited by Gerrit: create access denied for "
+operator|+
+name|cmd
+operator|.
+name|getRefName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -7941,6 +7962,8 @@ block|}
 name|reject
 argument_list|(
 name|cmd
+argument_list|,
+literal|"prohibited by Gerrit: ref update access denied"
 argument_list|)
 expr_stmt|;
 block|}
@@ -17822,23 +17845,6 @@ block|}
 return|return
 name|r
 return|;
-block|}
-DECL|method|reject (ReceiveCommand cmd)
-specifier|private
-name|void
-name|reject
-parameter_list|(
-name|ReceiveCommand
-name|cmd
-parameter_list|)
-block|{
-name|reject
-argument_list|(
-name|cmd
-argument_list|,
-literal|"prohibited by Gerrit"
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|reject (ReceiveCommand cmd, String why)
 specifier|private
