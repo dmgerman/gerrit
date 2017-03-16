@@ -256,8 +256,6 @@ specifier|final
 name|RevCommit
 name|baseCommit
 decl_stmt|;
-comment|// At the moment, a list wouldn't be necessary as only one modification is
-comment|// applied per created tree. This is going to change in the near future.
 DECL|field|treeModifications
 specifier|private
 specifier|final
@@ -292,28 +290,33 @@ literal|"baseCommit is required"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Apply a modification to the tree which is taken as a basis. If this method is called multiple    * times, the modifications are applied subsequently in exactly the order they were provided.    *    * @param treeModification a modification which should be applied to the base tree    */
-DECL|method|addTreeModification (TreeModification treeModification)
+comment|/**    * Apply modifications to the tree which is taken as a basis. If this method is called multiple    * times, the modifications are applied subsequently in exactly the order they were provided.    *    * @param treeModifications modifications which should be applied to the base tree    */
+DECL|method|addTreeModifications (List<TreeModification> treeModifications)
 specifier|public
 name|void
-name|addTreeModification
+name|addTreeModifications
 parameter_list|(
+name|List
+argument_list|<
 name|TreeModification
-name|treeModification
+argument_list|>
+name|treeModifications
 parameter_list|)
 block|{
 name|checkNotNull
 argument_list|(
-name|treeModification
+name|treeModifications
 argument_list|,
-literal|"treeModification must not be null"
+literal|"treeModifications must not be null"
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|treeModifications
 operator|.
-name|add
+name|addAll
 argument_list|(
-name|treeModification
+name|treeModifications
 argument_list|)
 expr_stmt|;
 block|}

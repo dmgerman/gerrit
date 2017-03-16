@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -503,6 +517,16 @@ operator|.
 name|sql
 operator|.
 name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -1649,7 +1673,12 @@ name|repository
 argument_list|,
 name|baseCommit
 argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
 name|treeModification
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
@@ -1724,8 +1753,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Applies the indicated modification to the specified patch set. If a change edit exists and is    * based on the same patch set, the modified patch set tree is merged with the change edit. If the    * change edit doesn't exist, a new one will be created.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change to which the patch set belongs    * @param patchSet the {@code PatchSet} which should be modified    * @param treeModification the modification which should be applied    * @return the resulting {@code ChangeEdit}    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the existing change edit is based on another patch    *     set or no change edit exists but the specified patch set isn't the current one    * @throws MergeConflictException if the modified patch set tree can't be merged with an existing    *     change edit    */
-DECL|method|combineWithModifiedPatchSetTree ( Repository repository, ChangeControl changeControl, PatchSet patchSet, TreeModification treeModification)
+comment|/**    * Applies the indicated modifications to the specified patch set. If a change edit exists and is    * based on the same patch set, the modified patch set tree is merged with the change edit. If the    * change edit doesn't exist, a new one will be created.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change to which the patch set belongs    * @param patchSet the {@code PatchSet} which should be modified    * @param treeModifications the modifications which should be applied    * @return the resulting {@code ChangeEdit}    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the existing change edit is based on another patch    *     set or no change edit exists but the specified patch set isn't the current one    * @throws MergeConflictException if the modified patch set tree can't be merged with an existing    *     change edit    */
+DECL|method|combineWithModifiedPatchSetTree ( Repository repository, ChangeControl changeControl, PatchSet patchSet, List<TreeModification> treeModifications)
 specifier|public
 name|ChangeEdit
 name|combineWithModifiedPatchSetTree
@@ -1739,8 +1768,11 @@ parameter_list|,
 name|PatchSet
 name|patchSet
 parameter_list|,
+name|List
+argument_list|<
 name|TreeModification
-name|treeModification
+argument_list|>
+name|treeModifications
 parameter_list|)
 throws|throws
 name|AuthException
@@ -1797,7 +1829,7 @@ name|repository
 argument_list|,
 name|patchSetCommit
 argument_list|,
-name|treeModification
+name|treeModifications
 argument_list|)
 decl_stmt|;
 if|if
@@ -1845,7 +1877,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// Modification is already contained in the change edit.
+comment|// Modifications are already contained in the change edit.
 return|return
 name|changeEdit
 return|;
@@ -2407,7 +2439,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|createNewTree ( Repository repository, RevCommit baseCommit, TreeModification treeModification)
+DECL|method|createNewTree ( Repository repository, RevCommit baseCommit, List<TreeModification> treeModifications)
 specifier|private
 specifier|static
 name|ObjectId
@@ -2419,8 +2451,11 @@ parameter_list|,
 name|RevCommit
 name|baseCommit
 parameter_list|,
+name|List
+argument_list|<
 name|TreeModification
-name|treeModification
+argument_list|>
+name|treeModifications
 parameter_list|)
 throws|throws
 name|IOException
@@ -2438,9 +2473,9 @@ argument_list|)
 decl_stmt|;
 name|treeCreator
 operator|.
-name|addTreeModification
+name|addTreeModifications
 argument_list|(
-name|treeModification
+name|treeModifications
 argument_list|)
 expr_stmt|;
 name|ObjectId

@@ -369,6 +369,18 @@ return|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|getFilePath ()
+specifier|public
+name|String
+name|getFilePath
+parameter_list|()
+block|{
+return|return
+name|filePath
+return|;
+block|}
 block|}
 end_class
 

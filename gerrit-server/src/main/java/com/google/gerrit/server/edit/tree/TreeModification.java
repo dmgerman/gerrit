@@ -70,6 +70,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -158,6 +172,14 @@ name|baseCommit
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**    * Indicates a file path which is affected by this {@code TreeModification}. If the modification    * refers to several file paths (e.g. renaming a file), returning either of them is appropriate as    * long as the returned value is deterministic.    *    * @return an affected file path    */
+annotation|@
+name|VisibleForTesting
+DECL|method|getFilePath ()
+name|String
+name|getFilePath
+parameter_list|()
 function_decl|;
 block|}
 end_interface
