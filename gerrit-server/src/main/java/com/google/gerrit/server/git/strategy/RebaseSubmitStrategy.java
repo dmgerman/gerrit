@@ -1837,14 +1837,6 @@ argument_list|,
 name|args
 operator|.
 name|internalChangeQuery
-argument_list|,
-name|args
-operator|.
-name|changeKindCache
-argument_list|,
-name|args
-operator|.
-name|repo
 argument_list|)
 operator|.
 name|sort

@@ -3105,6 +3105,131 @@ name|InheritableBoolean
 operator|.
 name|TRUE
 argument_list|)
+DECL|method|submitChainFailsOnRework ()
+specifier|public
+name|void
+name|submitChainFailsOnRework
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|PushOneCommit
+operator|.
+name|Result
+name|change1
+init|=
+name|createChange
+argument_list|(
+literal|"subject 1"
+argument_list|,
+literal|"fileName 1"
+argument_list|,
+literal|"content 1"
+argument_list|)
+decl_stmt|;
+name|RevCommit
+name|headAfterChange1
+init|=
+name|change1
+operator|.
+name|getCommit
+argument_list|()
+decl_stmt|;
+name|PushOneCommit
+operator|.
+name|Result
+name|change2
+init|=
+name|createChange
+argument_list|(
+literal|"subject 2"
+argument_list|,
+literal|"fileName 2"
+argument_list|,
+literal|"content 2"
+argument_list|)
+decl_stmt|;
+name|testRepo
+operator|.
+name|reset
+argument_list|(
+name|headAfterChange1
+argument_list|)
+expr_stmt|;
+name|change1
+operator|=
+name|amendChange
+argument_list|(
+name|change1
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+literal|"subject 1 amend"
+argument_list|,
+literal|"fileName 2"
+argument_list|,
+literal|"rework content 2"
+argument_list|)
+expr_stmt|;
+name|submit
+argument_list|(
+name|change1
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|headAfterChange1
+operator|=
+name|getRemoteHead
+argument_list|()
+expr_stmt|;
+name|submitWithConflict
+argument_list|(
+name|change2
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+literal|"Cannot rebase "
+operator|+
+name|change2
+operator|.
+name|getCommit
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|": "
+operator|+
+literal|"The change could not be rebased due to a conflict during merge."
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|getRemoteHead
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|headAfterChange1
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|TestProjectInput
+argument_list|(
+name|useContentMerge
+operator|=
+name|InheritableBoolean
+operator|.
+name|TRUE
+argument_list|)
 DECL|method|submitChainOneByOneManualRebase ()
 specifier|public
 name|void
