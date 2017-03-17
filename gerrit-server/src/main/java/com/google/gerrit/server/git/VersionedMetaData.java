@@ -1312,33 +1312,15 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// Reuse tree from parent commit unless there are contents in newTree or
-comment|// there is no tree for a parent commit.
 name|ObjectId
 name|res
 init|=
-name|newTree
-operator|.
-name|getEntryCount
-argument_list|()
-operator|!=
-literal|0
-operator|||
-name|srcTree
-operator|==
-literal|null
-condition|?
 name|newTree
 operator|.
 name|writeTree
 argument_list|(
 name|inserter
 argument_list|)
-else|:
-name|srcTree
-operator|.
-name|copy
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
