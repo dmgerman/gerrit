@@ -204,6 +204,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -341,13 +351,13 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|loadJARs (Iterable<Path> jars)
+DECL|method|loadJARs (Collection<Path> jars)
 specifier|public
 specifier|static
 name|void
 name|loadJARs
 parameter_list|(
-name|Iterable
+name|Collection
 argument_list|<
 name|Path
 argument_list|>
