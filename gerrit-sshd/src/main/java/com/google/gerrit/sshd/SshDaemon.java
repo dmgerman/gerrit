@@ -3080,6 +3080,9 @@ name|toArray
 argument_list|(
 operator|new
 name|NamedFactory
+argument_list|<
+name|?
+argument_list|>
 index|[
 name|a
 operator|.
@@ -3704,6 +3707,9 @@ name|toArray
 argument_list|(
 operator|new
 name|NamedFactory
+argument_list|<
+name|?
+argument_list|>
 index|[
 name|a
 operator|.
@@ -3766,6 +3772,9 @@ name|toArray
 argument_list|(
 operator|new
 name|NamedFactory
+argument_list|<
+name|?
+argument_list|>
 index|[
 name|m
 operator|.
