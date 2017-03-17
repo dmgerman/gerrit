@@ -1483,23 +1483,29 @@ name|getConstructor
 argument_list|(
 operator|new
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 block|{}
-argument_list|)
+block|)
 operator|.
 name|newInstance
 argument_list|()
-argument_list|,
+operator|,
 operator|new
 name|Object
 index|[]
 block|{
 name|argv
 block|}
-argument_list|)
-expr_stmt|;
+block|)
+empty_stmt|;
 block|}
 block|}
+end_class
+
+begin_catch
 catch|catch
 parameter_list|(
 name|InvocationTargetException
@@ -1554,6 +1560,9 @@ name|ite
 throw|;
 block|}
 block|}
+end_catch
+
+begin_if
 if|if
 condition|(
 name|res
@@ -1573,12 +1582,17 @@ name|intValue
 argument_list|()
 return|;
 block|}
+end_if
+
+begin_return
 return|return
 literal|0
 return|;
-block|}
+end_return
+
+begin_function
+unit|}    private
 DECL|method|programClassName (String cn)
-specifier|private
 specifier|static
 name|String
 name|programClassName
@@ -1711,6 +1725,9 @@ return|return
 name|cn
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|libClassLoader (boolean prologCompiler)
 specifier|private
 specifier|static
@@ -2063,6 +2080,9 @@ name|parent
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|extractJar (ZipFile zf, ZipEntry ze, SortedMap<String, URL> jars)
 specifier|private
 specifier|static
@@ -2208,6 +2228,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|move (SortedMap<String, URL> jars, String prefix, List<URL> extapi)
 specifier|private
 specifier|static
@@ -2289,6 +2312,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|safeName (final ZipEntry ze)
 specifier|private
 specifier|static
@@ -2383,6 +2409,9 @@ return|return
 name|name
 return|;
 block|}
+end_function
+
+begin_decl_stmt
 DECL|field|myArchive
 specifier|private
 specifier|static
@@ -2390,6 +2419,9 @@ specifier|volatile
 name|File
 name|myArchive
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|myHome
 specifier|private
 specifier|static
@@ -2397,6 +2429,9 @@ specifier|volatile
 name|File
 name|myHome
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|zipFileSystems
 specifier|private
 specifier|static
@@ -2414,7 +2449,13 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/**    * Locate the JAR/WAR file we were launched from.    *    * @return local path of the Gerrit WAR file.    * @throws FileNotFoundException if the code cannot guess the location.    */
+end_comment
+
+begin_function
 DECL|method|getDistributionArchive ()
 specifier|public
 specifier|static
@@ -2475,6 +2516,9 @@ return|return
 name|result
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getZipFileSystem (Path zip)
 specifier|public
 specifier|static
@@ -2534,6 +2578,9 @@ return|return
 name|zipFs
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|newZipFileSystem (Path zip)
 specifier|public
 specifier|static
@@ -2575,6 +2622,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|locateMyArchive ()
 specifier|private
 specifier|static
@@ -2882,19 +2932,31 @@ literal|"Cannot find local copy of JAR"
 argument_list|)
 throw|;
 block|}
+end_function
+
+begin_decl_stmt
 DECL|field|temporaryDirectoryFound
 specifier|private
 specifier|static
 name|boolean
 name|temporaryDirectoryFound
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|temporaryDirectory
 specifier|private
 specifier|static
 name|File
 name|temporaryDirectory
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/**    * Creates a temporary file within the application's unpack location.    *    *<p>The launcher unpacks the nested JAR files into a temporary directory, allowing the classes    * to be loaded from local disk with standard Java APIs. This method constructs a new temporary    * file in the same directory.    *    *<p>The method first tries to create {@code prefix + suffix} within the directory under the    * assumption that a given {@code prefix + suffix} combination is made at most once per JVM    * execution. If this fails (e.g. the named file already exists) a mangled unique name is used and    * returned instead, with the unique string appearing between the prefix and suffix.    *    *<p>Files created by this method will be automatically deleted by the JVM when it terminates. If    * the returned file is converted into a directory by the caller, the caller must arrange for the    * contents to be deleted before the directory is.    *    *<p>If supported by the underlying operating system, the temporary directory which contains    * these temporary files is accessible only by the user running the JVM.    *    * @param prefix prefix of the file name.    * @param suffix suffix of the file name.    * @return the path of the temporary file. The returned object exists in the filesystem as a file;    *     caller may need to delete and recreate as a directory if a directory was preferred.    * @throws IOException the file could not be created.    */
+end_comment
+
+begin_function
 DECL|method|createTempFile (String prefix, String suffix)
 specifier|public
 specifier|static
@@ -3107,7 +3169,13 @@ return|return
 name|tmp
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Provide path to a working directory    *    * @return local path of the working directory or null if cannot be determined    */
+end_comment
+
+begin_function
 DECL|method|getHomeDirectory ()
 specifier|public
 specifier|static
@@ -3132,6 +3200,9 @@ return|return
 name|myHome
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|tmproot ()
 specifier|private
 specifier|static
@@ -3352,6 +3423,9 @@ name|tmp
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|locateHomeDirectory ()
 specifier|private
 specifier|static
@@ -3585,7 +3659,13 @@ name|gerrithome
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**    * Locate the path of the {@code eclipse-out} directory in a source tree.    *    * @return local path of the {@code eclipse-out} directory in a source tree.    * @throws FileNotFoundException if the directory cannot be found.    */
+end_comment
+
+begin_function
 DECL|method|getDeveloperEclipseOut ()
 specifier|public
 specifier|static
@@ -3602,6 +3682,9 @@ literal|"eclipse-out"
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_decl_stmt
 DECL|field|SOURCE_ROOT_RESOURCE
 specifier|static
 name|String
@@ -3609,7 +3692,13 @@ name|SOURCE_ROOT_RESOURCE
 init|=
 literal|"/gerrit-launcher/workspace-root.txt"
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/**    * Locate a path in the source tree.    *    * @return local path of the {@code name} directory in a source tree.    * @throws FileNotFoundException if the directory cannot be found.    */
+end_comment
+
+begin_function
 DECL|method|resolveInSourceRoot (String name)
 specifier|public
 specifier|static
@@ -3974,6 +4063,9 @@ return|return
 name|ret
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|useDevClasspath ()
 specifier|private
 specifier|static
@@ -4093,6 +4185,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|includeJar (URL u)
 specifier|private
 specifier|static
@@ -4136,13 +4231,16 @@ literal|"/buck-out/gen/lib/gwt/"
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_constructor
 DECL|method|GerritLauncher ()
 specifier|private
 name|GerritLauncher
 parameter_list|()
 block|{}
-block|}
-end_class
+end_constructor
 
+unit|}
 end_unit
 
