@@ -2633,6 +2633,42 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Schedule this message for delivery to the listed address. */
+DECL|method|addByEmail (final RecipientType rt, final Collection<Address> list)
+specifier|protected
+name|void
+name|addByEmail
+parameter_list|(
+specifier|final
+name|RecipientType
+name|rt
+parameter_list|,
+specifier|final
+name|Collection
+argument_list|<
+name|Address
+argument_list|>
+name|list
+parameter_list|)
+block|{
+for|for
+control|(
+specifier|final
+name|Address
+name|id
+range|:
+name|list
+control|)
+block|{
+name|add
+argument_list|(
+name|rt
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|add (final RecipientType rt, final UserIdentity who)
 specifier|protected
 name|void
