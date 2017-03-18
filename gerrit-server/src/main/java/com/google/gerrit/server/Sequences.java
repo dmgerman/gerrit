@@ -301,6 +301,15 @@ specifier|public
 class|class
 name|Sequences
 block|{
+DECL|field|CHANGES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CHANGES
+init|=
+literal|"changes"
+decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
@@ -387,7 +396,7 @@ name|repoManager
 argument_list|,
 name|allProjects
 argument_list|,
-literal|"changes"
+name|CHANGES
 argument_list|,
 operator|new
 name|RepoSequence
