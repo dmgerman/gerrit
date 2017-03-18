@@ -305,6 +305,11 @@ comment|/* final */
 name|LibraryDownloader
 name|hanaDriver
 decl_stmt|;
+DECL|field|mariadbDriver
+comment|/* final */
+name|LibraryDownloader
+name|mariadbDriver
+decl_stmt|;
 DECL|field|mysqlDriver
 comment|/* final */
 name|LibraryDownloader
