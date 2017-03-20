@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -467,7 +483,12 @@ return|return
 operator|new
 name|AutoValue_ExternalId_Key
 argument_list|(
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|scheme
+argument_list|)
 argument_list|,
 name|id
 argument_list|)
@@ -907,9 +928,19 @@ name|key
 argument_list|,
 name|accountId
 argument_list|,
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|email
+argument_list|)
 argument_list|,
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|hashedPassword
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1015,7 +1046,7 @@ name|plainPassword
 argument_list|)
 return|;
 block|}
-DECL|method|createWithEmail ( String scheme, String id, Account.Id accountId, String email)
+DECL|method|createWithEmail ( String scheme, String id, Account.Id accountId, @Nullable String email)
 specifier|public
 specifier|static
 name|ExternalId
@@ -1032,6 +1063,8 @@ operator|.
 name|Id
 name|accountId
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|email
 parameter_list|)
@@ -1054,7 +1087,7 @@ name|email
 argument_list|)
 return|;
 block|}
-DECL|method|createWithEmail (Key key, Account.Id accountId, String email)
+DECL|method|createWithEmail (Key key, Account.Id accountId, @Nullable String email)
 specifier|public
 specifier|static
 name|ExternalId
@@ -1068,6 +1101,8 @@ operator|.
 name|Id
 name|accountId
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|email
 parameter_list|)
@@ -1080,7 +1115,12 @@ name|key
 argument_list|,
 name|accountId
 argument_list|,
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|email
+argument_list|)
 argument_list|,
 literal|null
 argument_list|)
@@ -1110,7 +1150,10 @@ name|email
 argument_list|,
 name|accountId
 argument_list|,
+name|checkNotNull
+argument_list|(
 name|email
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1381,9 +1424,19 @@ argument_list|(
 name|accountId
 argument_list|)
 argument_list|,
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|email
+argument_list|)
 argument_list|,
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|password
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1459,15 +1512,25 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|externalId
 operator|.
 name|getEmailAddress
 argument_list|()
+argument_list|)
 argument_list|,
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|externalId
 operator|.
 name|getPassword
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
