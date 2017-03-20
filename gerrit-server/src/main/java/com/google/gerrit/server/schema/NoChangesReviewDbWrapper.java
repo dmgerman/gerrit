@@ -609,6 +609,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|changesTablesEnabled ()
+specifier|public
+name|boolean
+name|changesTablesEnabled
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|changes ()
 specifier|public
 name|ChangeAccess
