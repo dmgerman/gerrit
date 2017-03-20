@@ -473,12 +473,12 @@ specifier|final
 class|class
 name|GerritLauncher
 block|{
-DECL|field|pkg
+DECL|field|PKG
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|pkg
+name|PKG
 init|=
 literal|"com.google.gerrit.pgm"
 decl_stmt|;
@@ -1289,7 +1289,7 @@ name|Class
 operator|.
 name|forName
 argument_list|(
-name|pkg
+name|PKG
 operator|+
 literal|"."
 operator|+
@@ -1326,7 +1326,7 @@ name|Class
 operator|.
 name|forName
 argument_list|(
-name|pkg
+name|PKG
 operator|+
 literal|"."
 operator|+
@@ -1371,7 +1371,7 @@ name|println
 argument_list|(
 literal|"      (no "
 operator|+
-name|pkg
+name|PKG
 operator|+
 literal|"."
 operator|+
@@ -3687,6 +3687,7 @@ end_function
 begin_decl_stmt
 DECL|field|SOURCE_ROOT_RESOURCE
 specifier|static
+specifier|final
 name|String
 name|SOURCE_ROOT_RESOURCE
 init|=
