@@ -891,7 +891,10 @@ name|refDeletionValidator
 operator|.
 name|validateRefOperation
 argument_list|(
-name|ref
+name|resource
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|identifiedUser
 operator|.
