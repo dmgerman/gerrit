@@ -938,9 +938,6 @@ argument_list|,
 literal|"Full Name 11 With At"
 argument_list|)
 decl_stmt|;
-name|TestAccount
-name|u11
-init|=
 name|accounts
 operator|.
 name|create
@@ -951,7 +948,7 @@ literal|"u11.another@example.com"
 argument_list|,
 literal|"Full Name 11 Without At"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|gApi
 operator|.
 name|groups
