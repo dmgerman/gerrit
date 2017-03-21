@@ -78,6 +78,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkNotNull
 import|;
 end_import
@@ -822,7 +838,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind ( Project.NameKey project, @Nullable Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind ( Project.NameKey project, @Nullable Repository repo, @Nullable RevWalk rw, ObjectId prior, ObjectId next)
 specifier|public
 name|ChangeKind
 name|getChangeKind
@@ -836,6 +852,11 @@ annotation|@
 name|Nullable
 name|Repository
 name|repo
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
 parameter_list|,
 name|ObjectId
 name|prior
@@ -870,6 +891,8 @@ argument_list|,
 name|project
 argument_list|,
 name|repo
+argument_list|,
+name|rw
 argument_list|)
 operator|.
 name|call
@@ -943,7 +966,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (@ullable Repository repo, ChangeData cd, PatchSet patch)
+DECL|method|getChangeKind ( @ullable Repository repo, @Nullable RevWalk rw, ChangeData cd, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
@@ -952,6 +975,11 @@ annotation|@
 name|Nullable
 name|Repository
 name|repo
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
 parameter_list|,
 name|ChangeData
 name|cd
@@ -966,6 +994,8 @@ argument_list|(
 name|this
 argument_list|,
 name|repo
+argument_list|,
+name|rw
 argument_list|,
 name|cd
 argument_list|,
@@ -1320,7 +1350,13 @@ specifier|final
 name|Repository
 name|alreadyOpenRepo
 decl_stmt|;
-DECL|method|Loader ( Key key, GitRepositoryManager repoManager, Project.NameKey projectName, @Nullable Repository alreadyOpenRepo)
+DECL|field|alreadyOpenRw
+specifier|private
+specifier|final
+name|RevWalk
+name|alreadyOpenRw
+decl_stmt|;
+DECL|method|Loader ( Key key, GitRepositoryManager repoManager, Project.NameKey projectName, @Nullable Repository alreadyOpenRepo, @Nullable RevWalk alreadyOpenRw)
 specifier|private
 name|Loader
 parameter_list|(
@@ -1339,8 +1375,42 @@ annotation|@
 name|Nullable
 name|Repository
 name|alreadyOpenRepo
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|alreadyOpenRw
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+operator|(
+name|alreadyOpenRepo
+operator|==
+literal|null
+operator|&&
+name|alreadyOpenRw
+operator|==
+literal|null
+operator|)
+operator|||
+operator|(
+name|alreadyOpenRepo
+operator|!=
+literal|null
+operator|&&
+name|alreadyOpenRw
+operator|!=
+literal|null
+operator|)
+argument_list|,
+literal|"must either provide both repo/revwalk, or neither; got %s/%s"
+argument_list|,
+name|alreadyOpenRepo
+argument_list|,
+name|alreadyOpenRw
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|key
@@ -1364,6 +1434,12 @@ operator|.
 name|alreadyOpenRepo
 operator|=
 name|alreadyOpenRepo
+expr_stmt|;
+name|this
+operator|.
+name|alreadyOpenRw
+operator|=
+name|alreadyOpenRw
 expr_stmt|;
 block|}
 annotation|@
@@ -1398,6 +1474,11 @@ operator|.
 name|NO_CODE_CHANGE
 return|;
 block|}
+name|RevWalk
+name|rw
+init|=
+name|alreadyOpenRw
+decl_stmt|;
 name|Repository
 name|repo
 init|=
@@ -1424,27 +1505,25 @@ argument_list|(
 name|projectName
 argument_list|)
 expr_stmt|;
+name|rw
+operator|=
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
+expr_stmt|;
 name|close
 operator|=
 literal|true
 expr_stmt|;
 block|}
 try|try
-init|(
-name|RevWalk
-name|walk
-init|=
-operator|new
-name|RevWalk
-argument_list|(
-name|repo
-argument_list|)
-init|)
 block|{
 name|RevCommit
 name|prior
 init|=
-name|walk
+name|rw
 operator|.
 name|parseCommit
 argument_list|(
@@ -1453,7 +1532,7 @@ operator|.
 name|prior
 argument_list|)
 decl_stmt|;
-name|walk
+name|rw
 operator|.
 name|parseBody
 argument_list|(
@@ -1463,7 +1542,7 @@ expr_stmt|;
 name|RevCommit
 name|next
 init|=
-name|walk
+name|rw
 operator|.
 name|parseCommit
 argument_list|(
@@ -1472,7 +1551,7 @@ operator|.
 name|next
 argument_list|)
 decl_stmt|;
-name|walk
+name|rw
 operator|.
 name|parseBody
 argument_list|(
@@ -1588,7 +1667,10 @@ init|=
 operator|new
 name|InMemoryInserter
 argument_list|(
-name|repo
+name|rw
+operator|.
+name|getObjectReader
+argument_list|()
 argument_list|)
 init|)
 block|{
@@ -1695,6 +1777,11 @@ condition|(
 name|close
 condition|)
 block|{
+name|rw
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|repo
 operator|.
 name|close
@@ -2137,7 +2224,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind ( Project.NameKey project, @Nullable Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind ( Project.NameKey project, @Nullable Repository repo, @Nullable RevWalk rw, ObjectId prior, ObjectId next)
 specifier|public
 name|ChangeKind
 name|getChangeKind
@@ -2151,6 +2238,11 @@ annotation|@
 name|Nullable
 name|Repository
 name|repo
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
 parameter_list|,
 name|ObjectId
 name|prior
@@ -2191,6 +2283,8 @@ argument_list|,
 name|project
 argument_list|,
 name|repo
+argument_list|,
+name|rw
 argument_list|)
 argument_list|)
 return|;
@@ -2262,7 +2356,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChangeKind (@ullable Repository repo, ChangeData cd, PatchSet patch)
+DECL|method|getChangeKind ( @ullable Repository repo, @Nullable RevWalk rw, ChangeData cd, PatchSet patch)
 specifier|public
 name|ChangeKind
 name|getChangeKind
@@ -2271,6 +2365,11 @@ annotation|@
 name|Nullable
 name|Repository
 name|repo
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
 parameter_list|,
 name|ChangeData
 name|cd
@@ -2286,13 +2385,15 @@ name|this
 argument_list|,
 name|repo
 argument_list|,
+name|rw
+argument_list|,
 name|cd
 argument_list|,
 name|patch
 argument_list|)
 return|;
 block|}
-DECL|method|getChangeKindInternal ( ChangeKindCache cache, @Nullable Repository repo, ChangeData change, PatchSet patch)
+DECL|method|getChangeKindInternal ( ChangeKindCache cache, @Nullable Repository repo, @Nullable RevWalk rw, ChangeData change, PatchSet patch)
 specifier|private
 specifier|static
 name|ChangeKind
@@ -2305,6 +2406,11 @@ annotation|@
 name|Nullable
 name|Repository
 name|repo
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
 parameter_list|,
 name|ChangeData
 name|change
@@ -2433,6 +2539,8 @@ argument_list|()
 argument_list|,
 name|repo
 argument_list|,
+name|rw
+argument_list|,
 name|ObjectId
 operator|.
 name|fromString
@@ -2560,7 +2668,8 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|)
-init|)
+init|;           RevWalk rw = new RevWalk(repo)
+block|)
 block|{
 name|kind
 operator|=
@@ -2569,6 +2678,8 @@ argument_list|(
 name|cache
 argument_list|,
 name|repo
+argument_list|,
+name|rw
 argument_list|,
 name|changeDataFactory
 operator|.
@@ -2617,8 +2728,8 @@ return|return
 name|kind
 return|;
 block|}
-block|}
 end_class
 
+unit|}
 end_unit
 

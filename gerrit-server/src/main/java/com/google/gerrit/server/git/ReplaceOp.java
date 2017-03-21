@@ -1665,6 +1665,11 @@ operator|.
 name|getRepository
 argument_list|()
 argument_list|,
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|,
 name|priorCommitId
 argument_list|,
 name|commitId

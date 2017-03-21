@@ -206,6 +206,20 @@ name|Repository
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevWalk
+import|;
+end_import
+
 begin_comment
 comment|/**  * Cache of {@link ChangeKind} per commit.  *  *<p>This is immutable conditioned on the merge strategy (unless the JGit strategy implementation  * changes, which might invalidate old entries).  */
 end_comment
@@ -216,7 +230,7 @@ specifier|public
 interface|interface
 name|ChangeKindCache
 block|{
-DECL|method|getChangeKind ( Project.NameKey project, @Nullable Repository repo, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind ( Project.NameKey project, @Nullable Repository repo, @Nullable RevWalk rw, ObjectId prior, ObjectId next)
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
@@ -229,6 +243,11 @@ annotation|@
 name|Nullable
 name|Repository
 name|repo
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
 parameter_list|,
 name|ObjectId
 name|prior
@@ -251,7 +270,7 @@ name|PatchSet
 name|patch
 parameter_list|)
 function_decl|;
-DECL|method|getChangeKind (@ullable Repository repo, ChangeData cd, PatchSet patch)
+DECL|method|getChangeKind ( @ullable Repository repo, @Nullable RevWalk rw, ChangeData cd, PatchSet patch)
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
@@ -259,6 +278,11 @@ annotation|@
 name|Nullable
 name|Repository
 name|repo
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
 parameter_list|,
 name|ChangeData
 name|cd

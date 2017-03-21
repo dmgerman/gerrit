@@ -464,6 +464,20 @@ name|Repository
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevWalk
+import|;
+end_import
+
 begin_comment
 comment|/**  * Copies approvals between patch sets.  *  *<p>The result of a copy may either be stored, as when stamping approvals in the database at  * submit time, or refreshed on demand, as when reading approvals from the NoteDb.  */
 end_comment
@@ -1000,6 +1014,15 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
+init|;
+name|RevWalk
+name|rw
+operator|=
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
 init|)
 block|{
 comment|// Walk patch sets strictly less than current in descending order.
@@ -1080,6 +1103,8 @@ name|getNameKey
 argument_list|()
 argument_list|,
 name|repo
+argument_list|,
+name|rw
 argument_list|,
 name|ObjectId
 operator|.

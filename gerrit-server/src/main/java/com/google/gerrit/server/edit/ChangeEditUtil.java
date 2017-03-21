@@ -1397,6 +1397,8 @@ argument_list|()
 argument_list|,
 name|repo
 argument_list|,
+name|rw
+argument_list|,
 name|prior
 argument_list|,
 name|squashed
