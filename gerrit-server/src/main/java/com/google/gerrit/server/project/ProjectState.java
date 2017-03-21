@@ -2289,6 +2289,21 @@ name|getRejectImplicitMerges
 argument_list|)
 return|;
 block|}
+DECL|method|isEnableReviewerByEmail ()
+specifier|public
+name|boolean
+name|isEnableReviewerByEmail
+parameter_list|()
+block|{
+return|return
+name|getInheritableBoolean
+argument_list|(
+name|Project
+operator|::
+name|getEnableReviewerByEmail
+argument_list|)
+return|;
+block|}
 DECL|method|getLabelTypes ()
 specifier|public
 name|LabelTypes

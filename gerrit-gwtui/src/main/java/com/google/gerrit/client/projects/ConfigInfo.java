@@ -365,6 +365,15 @@ name|rejectImplicitMerges
 parameter_list|()
 comment|/*-{ return this.reject_implicit_merges; }-*/
 function_decl|;
+DECL|method|enableReviewerByEmail ()
+specifier|public
+specifier|final
+specifier|native
+name|InheritedBooleanInfo
+name|enableReviewerByEmail
+parameter_list|()
+comment|/*-{ return this.enable_reviewer_by_email; }-*/
+function_decl|;
 DECL|method|submitType ()
 specifier|public
 specifier|final

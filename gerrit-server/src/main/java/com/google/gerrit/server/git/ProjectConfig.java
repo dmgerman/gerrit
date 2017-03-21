@@ -1491,6 +1491,24 @@ argument_list|,
 literal|"PatchSetLock"
 argument_list|)
 decl_stmt|;
+DECL|field|REVIEWER
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|REVIEWER
+init|=
+literal|"reviewer"
+decl_stmt|;
+DECL|field|KEY_ENABLE_REVIEWER_BY_EMAIL
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|KEY_ENABLE_REVIEWER_BY_EMAIL
+init|=
+literal|"enableByEmail"
+decl_stmt|;
 DECL|field|LEGACY_PERMISSION_PUSH_TAG
 specifier|private
 specifier|static
@@ -1677,6 +1695,11 @@ DECL|field|hasLegacyPermissions
 specifier|private
 name|boolean
 name|hasLegacyPermissions
+decl_stmt|;
+DECL|field|enableReviewerByEmail
+specifier|private
+name|boolean
+name|enableReviewerByEmail
 decl_stmt|;
 DECL|method|read (MetaDataUpdate update)
 specifier|public
@@ -2914,6 +2937,32 @@ return|return
 name|checkReceivedObjects
 return|;
 block|}
+comment|/** @return the enableReviewerByEmail for this project, default is false. */
+DECL|method|getEnableReviewerByEmail ()
+specifier|public
+name|boolean
+name|getEnableReviewerByEmail
+parameter_list|()
+block|{
+return|return
+name|enableReviewerByEmail
+return|;
+block|}
+comment|/** Set enableReviewerByEmail for this project, default is false. */
+DECL|method|setEnableReviewerByEmail (boolean val)
+specifier|public
+name|void
+name|setEnableReviewerByEmail
+parameter_list|(
+name|boolean
+name|val
+parameter_list|)
+block|{
+name|enableReviewerByEmail
+operator|=
+name|val
+expr_stmt|;
+block|}
 comment|/**    * Check all GroupReferences use current group name, repairing stale ones.    *    * @param groupBackend cache to use when looking up group information by UUID.    * @return true if one or more group names was stale.    */
 DECL|method|updateGroupNames (GroupBackend groupBackend)
 specifier|public
@@ -3490,6 +3539,11 @@ name|rc
 argument_list|)
 expr_stmt|;
 name|loadReceiveSection
+argument_list|(
+name|rc
+argument_list|)
+expr_stmt|;
+name|loadReviewerSection
 argument_list|(
 name|rc
 argument_list|)
@@ -5843,6 +5897,31 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|loadReviewerSection (Config rc)
+specifier|private
+name|void
+name|loadReviewerSection
+parameter_list|(
+name|Config
+name|rc
+parameter_list|)
+block|{
+name|enableReviewerByEmail
+operator|=
+name|rc
+operator|.
+name|getBoolean
+argument_list|(
+name|REVIEWER
+argument_list|,
+literal|null
+argument_list|,
+name|KEY_ENABLE_REVIEWER_BY_EMAIL
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|loadPluginSections (Config rc)
 specifier|private
 name|void
@@ -6592,6 +6671,11 @@ argument_list|(
 name|rc
 argument_list|,
 name|keepGroups
+argument_list|)
+expr_stmt|;
+name|saveReviewerSection
+argument_list|(
+name|rc
 argument_list|)
 expr_stmt|;
 name|groupList
@@ -8172,6 +8256,8 @@ name|setBooleanConfigKey
 argument_list|(
 name|rc
 argument_list|,
+name|LABEL
+argument_list|,
 name|name
 argument_list|,
 name|KEY_ALLOW_POST_SUBMIT
@@ -8189,6 +8275,8 @@ expr_stmt|;
 name|setBooleanConfigKey
 argument_list|(
 name|rc
+argument_list|,
+name|LABEL
 argument_list|,
 name|name
 argument_list|,
@@ -8208,6 +8296,8 @@ name|setBooleanConfigKey
 argument_list|(
 name|rc
 argument_list|,
+name|LABEL
+argument_list|,
 name|name
 argument_list|,
 name|KEY_COPY_MAX_SCORE
@@ -8225,6 +8315,8 @@ expr_stmt|;
 name|setBooleanConfigKey
 argument_list|(
 name|rc
+argument_list|,
+name|LABEL
 argument_list|,
 name|name
 argument_list|,
@@ -8244,6 +8336,8 @@ name|setBooleanConfigKey
 argument_list|(
 name|rc
 argument_list|,
+name|LABEL
+argument_list|,
 name|name
 argument_list|,
 name|KEY_COPY_ALL_SCORES_IF_NO_CODE_CHANGE
@@ -8261,6 +8355,8 @@ expr_stmt|;
 name|setBooleanConfigKey
 argument_list|(
 name|rc
+argument_list|,
+name|LABEL
 argument_list|,
 name|name
 argument_list|,
@@ -8280,6 +8376,8 @@ name|setBooleanConfigKey
 argument_list|(
 name|rc
 argument_list|,
+name|LABEL
+argument_list|,
 name|name
 argument_list|,
 name|KEY_COPY_ALL_SCORES_ON_MERGE_FIRST_PARENT_UPDATE
@@ -8297,6 +8395,8 @@ expr_stmt|;
 name|setBooleanConfigKey
 argument_list|(
 name|rc
+argument_list|,
+name|LABEL
 argument_list|,
 name|name
 argument_list|,
@@ -8386,7 +8486,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setBooleanConfigKey ( Config rc, String name, String key, boolean value, boolean defaultValue)
+DECL|method|setBooleanConfigKey ( Config rc, String section, String name, String key, boolean value, boolean defaultValue)
 specifier|private
 specifier|static
 name|void
@@ -8394,6 +8494,9 @@ name|setBooleanConfigKey
 parameter_list|(
 name|Config
 name|rc
+parameter_list|,
+name|String
+name|section
 parameter_list|,
 name|String
 name|name
@@ -8419,7 +8522,7 @@ name|rc
 operator|.
 name|unset
 argument_list|(
-name|LABEL
+name|section
 argument_list|,
 name|name
 argument_list|,
@@ -8433,7 +8536,7 @@ name|rc
 operator|.
 name|setBoolean
 argument_list|(
-name|LABEL
+name|section
 argument_list|,
 name|name
 argument_list|,
@@ -8648,6 +8751,31 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+DECL|method|saveReviewerSection (Config rc)
+specifier|private
+name|void
+name|saveReviewerSection
+parameter_list|(
+name|Config
+name|rc
+parameter_list|)
+block|{
+name|setBooleanConfigKey
+argument_list|(
+name|rc
+argument_list|,
+name|REVIEWER
+argument_list|,
+literal|null
+argument_list|,
+name|KEY_ENABLE_REVIEWER_BY_EMAIL
+argument_list|,
+name|enableReviewerByEmail
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|saveGroupList ()
 specifier|private
