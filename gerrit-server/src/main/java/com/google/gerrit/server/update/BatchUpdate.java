@@ -737,7 +737,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getOrder (Collection<? extends BatchUpdate> updates)
-specifier|protected
 specifier|static
 name|Order
 name|getOrder
@@ -802,7 +801,6 @@ name|o
 return|;
 block|}
 DECL|method|getUpdateChangesInParallel (Collection<? extends BatchUpdate> updates)
-specifier|protected
 specifier|static
 name|boolean
 name|getUpdateChangesInParallel
