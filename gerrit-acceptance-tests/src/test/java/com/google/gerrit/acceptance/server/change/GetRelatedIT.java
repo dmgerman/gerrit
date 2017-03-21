@@ -4496,10 +4496,8 @@ argument_list|)
 expr_stmt|;
 name|ctx
 operator|.
-name|bumpLastUpdatedOn
-argument_list|(
-literal|false
-argument_list|)
+name|dontBumpLastUpdatedOn
+argument_list|()
 expr_stmt|;
 return|return
 literal|true

@@ -191,14 +191,11 @@ name|ChangeControl
 name|getControl
 parameter_list|()
 function_decl|;
-comment|/**    * @param bump whether to bump the value of {@link Change#getLastUpdatedOn()} field before storing    *     to ReviewDb. For NoteDb, the value is always incremented (assuming the update is not    *     otherwise a no-op).    */
-DECL|method|bumpLastUpdatedOn (boolean bump)
+comment|/**    * Don't bump the value of {@link Change#getLastUpdatedOn()}.    *    *<p>If called, don't bump the timestamp before storing to ReviewDb. Only has an effect in    * ReviewDb, and the only usage should be to match the behavior of NoteDb. Specifically, in NoteDb    * the timestamp is updated if and only if the change meta graph is updated, and is not updated    * when only drafts are modified.    */
+DECL|method|dontBumpLastUpdatedOn ()
 name|void
-name|bumpLastUpdatedOn
-parameter_list|(
-name|boolean
-name|bump
-parameter_list|)
+name|dontBumpLastUpdatedOn
+parameter_list|()
 function_decl|;
 comment|/**    * Instruct {@link BatchUpdate} to delete this change.    *    *<p>If called, all other updates are ignored.    */
 DECL|method|deleteChange ()

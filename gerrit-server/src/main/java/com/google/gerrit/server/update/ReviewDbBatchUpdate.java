@@ -1666,18 +1666,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|bumpLastUpdatedOn (boolean bump)
+DECL|method|dontBumpLastUpdatedOn ()
 specifier|public
 name|void
-name|bumpLastUpdatedOn
-parameter_list|(
-name|boolean
-name|bump
-parameter_list|)
+name|dontBumpLastUpdatedOn
+parameter_list|()
 block|{
 name|bumpLastUpdatedOn
 operator|=
-name|bump
+literal|false
 expr_stmt|;
 block|}
 annotation|@
