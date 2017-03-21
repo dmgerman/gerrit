@@ -226,7 +226,7 @@ specifier|public
 interface|interface
 name|Context
 block|{
-comment|/** @return the project name this update operates on. */
+comment|/**    * Get the project name this update operates on.    *    * @return project.    */
 DECL|method|getProject ()
 name|Project
 operator|.
@@ -250,37 +250,37 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/** @return the timestamp at which this update takes place. */
+comment|/**    * Get the timestamp at which this update takes place.    *    * @return timestamp.    */
 DECL|method|getWhen ()
 name|Timestamp
 name|getWhen
 parameter_list|()
 function_decl|;
-comment|/**    * @return the time zone in which this update takes place. In the current implementation, this is    *     always the time zone of the server.    */
+comment|/**    * Get the time zone in which this update takes place.    *    *<p>In the current implementation, this is always the time zone of the server.    *    * @return time zone.    */
 DECL|method|getTimeZone ()
 name|TimeZone
 name|getTimeZone
 parameter_list|()
 function_decl|;
-comment|/**    * @return an open ReviewDb database. Callers should not manage transactions or call mutating    *     methods on the Changes table. Mutations on other tables (including other entities in the    *     change entity group) are fine.    */
+comment|/**    * Get the ReviewDb database.    *    *<p>Callers should not manage transactions or call mutating methods on the Changes table.    * Mutations on other tables (including other entities in the change entity group) are fine.    *    * @return open database instance.    */
 DECL|method|getDb ()
 name|ReviewDb
 name|getDb
 parameter_list|()
 function_decl|;
-comment|/**    * @return user performing the update. In the current implementation, this is always an {@link    *     IdentifiedUser} or {@link com.google.gerrit.server.InternalUser}.    */
+comment|/**    * Get the user performing the update.    *    *<p>In the current implementation, this is always an {@link IdentifiedUser} or {@link    * com.google.gerrit.server.InternalUser}.    *    * @return user.    */
 DECL|method|getUser ()
 name|CurrentUser
 name|getUser
 parameter_list|()
 function_decl|;
-comment|/** @return order in which operations are executed in this update. */
+comment|/**    * Get the order in which operations are executed in this update.    *    * @return order of operations.    */
 DECL|method|getOrder ()
 name|Order
 name|getOrder
 parameter_list|()
 function_decl|;
-comment|/**    * @return identified user performing the update; throws an unchecked exception if the user is not    *     an {@link IdentifiedUser}    */
+comment|/**    * Get the identified user performing the update.    *    *<p>Convenience method for {@code getUser().asIdentifiedUser()}.    *    * @see CurrentUser#asIdentifiedUser()    * @return user.    */
 DECL|method|getIdentifiedUser ()
 specifier|default
 name|IdentifiedUser
@@ -298,7 +298,7 @@ name|asIdentifiedUser
 argument_list|()
 return|;
 block|}
-comment|/**    * @return account of the user performing the update; throws if the user is not an {@link    *     IdentifiedUser}    */
+comment|/**    * Get the account of the user performing the update.    *    *<p>Convenience method for {@code getIdentifiedUser().getAccount()}.    *    * @see CurrentUser#asIdentifiedUser()    * @return account.    */
 DECL|method|getAccount ()
 specifier|default
 name|Account
@@ -313,7 +313,7 @@ name|getAccount
 argument_list|()
 return|;
 block|}
-comment|/**    * @return account ID of the user performing the update; throws if the user is not an {@link    *     IdentifiedUser}    */
+comment|/**    * Get the account ID of the user performing the update.    *    *<p>Convenience method for {@code getUser().getAccountId()}    *    * @see CurrentUser#getAccountId()    * @return account ID.    */
 DECL|method|getAccountId ()
 specifier|default
 name|Account
