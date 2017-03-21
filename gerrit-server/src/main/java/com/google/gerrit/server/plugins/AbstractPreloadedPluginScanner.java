@@ -158,6 +158,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|servlet
+operator|.
+name|ServletModule
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -692,12 +706,9 @@ name|?
 argument_list|>
 name|httpModuleBaseClass
 init|=
-name|Class
+name|ServletModule
 operator|.
-name|forName
-argument_list|(
-literal|"com.google.inject.servlet.ServletModule"
-argument_list|)
+name|class
 decl_stmt|;
 name|Class
 argument_list|<
