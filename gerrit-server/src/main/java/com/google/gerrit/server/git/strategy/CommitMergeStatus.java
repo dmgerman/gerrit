@@ -176,6 +176,7 @@ argument_list|)
 block|;
 DECL|field|message
 specifier|private
+specifier|final
 name|String
 name|message
 decl_stmt|;
