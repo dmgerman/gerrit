@@ -124,6 +124,7 @@ specifier|public
 name|Integer
 name|line
 decl_stmt|;
+comment|// value 0 or null indicates a file comment, normal lines start at 1
 DECL|field|range
 specifier|public
 name|Range
@@ -160,21 +161,25 @@ specifier|public
 name|int
 name|startLine
 decl_stmt|;
+comment|// 1-based, inclusive
 DECL|field|startCharacter
 specifier|public
 name|int
 name|startCharacter
 decl_stmt|;
+comment|// 0-based, inclusive
 DECL|field|endLine
 specifier|public
 name|int
 name|endLine
 decl_stmt|;
+comment|// 1-based, exclusive
 DECL|field|endCharacter
 specifier|public
 name|int
 name|endCharacter
 decl_stmt|;
+comment|// 0-based, exclusive
 DECL|method|isValid ()
 specifier|public
 name|boolean
@@ -183,7 +188,7 @@ parameter_list|()
 block|{
 return|return
 name|startLine
-operator|>=
+operator|>
 literal|0
 operator|&&
 name|startCharacter
@@ -191,7 +196,7 @@ operator|>=
 literal|0
 operator|&&
 name|endLine
-operator|>=
+operator|>
 literal|0
 operator|&&
 name|endCharacter

@@ -482,21 +482,25 @@ specifier|public
 name|int
 name|startLine
 decl_stmt|;
+comment|// 1-based, inclusive
 DECL|field|startChar
 specifier|public
 name|int
 name|startChar
 decl_stmt|;
+comment|// 0-based, inclusive
 DECL|field|endLine
 specifier|public
 name|int
 name|endLine
 decl_stmt|;
+comment|// 1-based, exclusive
 DECL|field|endChar
 specifier|public
 name|int
 name|endChar
 decl_stmt|;
+comment|// 0-based, exclusive
 DECL|method|Range (Range r)
 specifier|public
 name|Range
