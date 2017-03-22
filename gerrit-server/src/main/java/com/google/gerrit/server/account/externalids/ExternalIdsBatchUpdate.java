@@ -69,26 +69,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|externalids
-operator|.
-name|ExternalId
-operator|.
-name|toAccountExternalIds
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -99,22 +79,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
 import|;
 end_import
 
@@ -319,7 +283,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class allows to do batch updates to external IDs.  *  *<p>For NoteDb all updates will result in a single commit to the refs/meta/external-ids branch.  * This means callers can prepare many updates by invoking {@link #replace(ExternalId, ExternalId)}  * multiple times and when {@link ExternalIdsBatchUpdate#commit(ReviewDb, String)} is invoked a  * single NoteDb commit is created that contains all the prepared updates.  */
+comment|/**  * This class allows to do batch updates to external IDs.  *  *<p>For NoteDb all updates will result in a single commit to the refs/meta/external-ids branch.  * This means callers can prepare many updates by invoking {@link #replace(ExternalId, ExternalId)}  * multiple times and when {@link ExternalIdsBatchUpdate#commit(String)} is invoked a single NoteDb  * commit is created that contains all the prepared updates.  */
 end_comment
 
 begin_class
@@ -426,7 +390,7 @@ operator|=
 name|externalIdCache
 expr_stmt|;
 block|}
-comment|/**    * Adds an external ID replacement to the batch.    *    *<p>The actual replacement is only done when {@link #commit(ReviewDb, String)} is invoked.    */
+comment|/**    * Adds an external ID replacement to the batch.    *    *<p>The actual replacement is only done when {@link #commit(String)} is invoked.    */
 DECL|method|replace (ExternalId extIdToDelete, ExternalId extIdToAdd)
 specifier|public
 name|void
@@ -469,14 +433,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Commits this batch.    *    *<p>This means external ID replacements which were prepared by invoking {@link    * #replace(ExternalId, ExternalId)} are now executed. Deletion of external IDs is done before    * adding the new external IDs. This means if an external ID is specified for deletion and an    * external ID with the same key is specified to be added, the old external ID with that key is    * deleted first and then the new external ID is added (so the external ID for that key is    * replaced).    *    *<p>For NoteDb a single commit is created that contains all the external ID updates.    */
-DECL|method|commit (ReviewDb db, String commitMessage)
+DECL|method|commit (String commitMessage)
 specifier|public
 name|void
 name|commit
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|String
 name|commitMessage
 parameter_list|)
@@ -502,32 +463,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|delete
-argument_list|(
-name|toAccountExternalIds
-argument_list|(
-name|toDelete
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|insert
-argument_list|(
-name|toAccountExternalIds
-argument_list|(
-name|toAdd
-argument_list|)
-argument_list|)
-expr_stmt|;
 try|try
 init|(
 name|Repository

@@ -1534,8 +1534,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|who
 argument_list|)
 argument_list|,

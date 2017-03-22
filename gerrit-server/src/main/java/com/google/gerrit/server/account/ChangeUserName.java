@@ -140,22 +140,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -404,13 +388,10 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ReviewDb db, IdentifiedUser user, String newUsername)
+DECL|method|create (IdentifiedUser user, String newUsername)
 name|ChangeUserName
 name|create
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|IdentifiedUser
 name|user
 parameter_list|,
@@ -445,12 +426,6 @@ operator|.
 name|Server
 name|externalIdsUpdateFactory
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
@@ -465,7 +440,7 @@ name|newUsername
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeUserName ( AccountCache accountCache, SshKeyCache sshKeyCache, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory, @Assisted ReviewDb db, @Assisted IdentifiedUser user, @Nullable @Assisted String newUsername)
+DECL|method|ChangeUserName ( AccountCache accountCache, SshKeyCache sshKeyCache, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory, @Assisted IdentifiedUser user, @Nullable @Assisted String newUsername)
 name|ChangeUserName
 parameter_list|(
 name|AccountCache
@@ -481,11 +456,6 @@ name|ExternalIdsUpdate
 operator|.
 name|Server
 name|externalIdsUpdateFactory
-parameter_list|,
-annotation|@
-name|Assisted
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -523,12 +493,6 @@ operator|.
 name|externalIdsUpdateFactory
 operator|=
 name|externalIdsUpdateFactory
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -571,8 +535,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|user
 operator|.
 name|getAccountId
@@ -693,8 +655,6 @@ name|externalIdsUpdate
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|create
@@ -728,8 +688,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|key
 argument_list|)
 decl_stmt|;
@@ -776,8 +734,6 @@ name|externalIdsUpdate
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|old
 argument_list|)
 expr_stmt|;

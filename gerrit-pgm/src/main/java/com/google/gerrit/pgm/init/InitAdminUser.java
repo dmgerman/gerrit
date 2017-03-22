@@ -848,8 +848,6 @@ name|externalIds
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 literal|"Add external IDs for initial admin user"
 argument_list|,
 name|extIds

@@ -1757,8 +1757,6 @@ name|externalIdsUpdate
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|getExternalIds
 argument_list|(
 name|admin
@@ -1769,8 +1767,6 @@ name|externalIdsUpdate
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|getExternalIds
 argument_list|(
 name|user
@@ -1781,8 +1777,6 @@ name|externalIdsUpdate
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|savedExternalIds
 argument_list|)
 expr_stmt|;
@@ -4391,8 +4385,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|extIds
 argument_list|)
 expr_stmt|;
@@ -4746,8 +4738,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|createWithEmail
@@ -6393,8 +6383,6 @@ name|externalIdsUpdate
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|create
@@ -7894,8 +7882,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|currAccountId
 argument_list|,
 name|SCHEME_GPGKEY
@@ -8128,8 +8114,6 @@ name|externalIdsUpdate
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|createWithEmail

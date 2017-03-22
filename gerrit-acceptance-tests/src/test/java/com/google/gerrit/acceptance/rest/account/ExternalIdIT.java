@@ -294,20 +294,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GerritConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|PushOneCommit
 import|;
 end_import
@@ -1801,17 +1787,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"user.readExternalIdsFromGit"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|readExternalIdsWhenInvalidExternalIdsExist ()
 specifier|public
 name|void
@@ -1847,9 +1822,7 @@ init|=
 name|externalIds
 operator|.
 name|all
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|insertNonParsableExternalIds
 argument_list|()
@@ -1863,9 +1836,7 @@ init|=
 name|externalIds
 operator|.
 name|all
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|assertThat
 argument_list|(
@@ -1892,8 +1863,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|parseableExtId
 operator|.
 name|key
@@ -2156,8 +2125,6 @@ name|u
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|createWithPassword
@@ -2190,8 +2157,6 @@ name|u
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|createExternalIdWithOtherCaseEmail
 argument_list|(
 name|nextId
@@ -2267,8 +2232,6 @@ name|u
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|extIdForNonExistingAccount
 argument_list|)
 expr_stmt|;
@@ -2317,8 +2280,6 @@ name|u
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|extIdWithInvalidEmail
 argument_list|)
 expr_stmt|;
@@ -2364,8 +2325,6 @@ name|u
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|extIdWithDuplicateEmail
 argument_list|)
 expr_stmt|;
@@ -2415,8 +2374,6 @@ name|u
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|extIdWithBadPassword
 argument_list|)
 expr_stmt|;
@@ -3602,8 +3559,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|create
@@ -3650,8 +3605,6 @@ name|update
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|create
@@ -3681,8 +3634,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|fooId
 argument_list|)
 argument_list|)
@@ -3696,8 +3647,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|barId
 argument_list|)
 argument_list|)
@@ -3807,8 +3756,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|create
@@ -3896,8 +3843,6 @@ name|update
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|create
@@ -3964,8 +3909,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|extIdKey
 argument_list|)
 argument_list|)
@@ -4021,8 +3964,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|create
@@ -4040,8 +3981,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|extIdKey
 argument_list|)
 decl_stmt|;
@@ -4061,17 +4000,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"user.readExternalIdsFromGit"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|checkNoReloadAfterUpdate ()
 specifier|public
 name|void
@@ -4094,8 +4022,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|id
@@ -4133,8 +4059,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|extId
 argument_list|)
 expr_stmt|;
@@ -4151,8 +4075,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|id
@@ -4196,8 +4118,6 @@ argument_list|()
 operator|.
 name|upsert
 argument_list|(
-name|db
-argument_list|,
 name|extId
 argument_list|)
 expr_stmt|;
@@ -4214,8 +4134,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|id
@@ -4235,8 +4153,6 @@ argument_list|()
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|extId
 argument_list|)
 expr_stmt|;
@@ -4253,8 +4169,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|id
@@ -4269,17 +4183,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"user.readExternalIdsFromGit"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|byAccountFailIfReadingExternalIdsFails ()
 specifier|public
 name|void
@@ -4325,8 +4228,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|id
@@ -4335,17 +4236,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"user.readExternalIdsFromGit"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|byEmailFailIfReadingExternalIdsFails ()
 specifier|public
 name|void
@@ -4391,8 +4281,6 @@ name|externalIds
 operator|.
 name|byEmail
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|email
@@ -4401,17 +4289,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"user.readExternalIdsFromGit"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|byAccountUpdateExternalIdsBehindGerritsBack ()
 specifier|public
 name|void
@@ -4434,8 +4311,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|id
@@ -4476,8 +4351,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|id

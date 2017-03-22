@@ -237,18 +237,7 @@ name|AccountAccess
 name|accounts
 parameter_list|()
 function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|7
-argument_list|)
-DECL|method|accountExternalIds ()
-name|AccountExternalIdAccess
-name|accountExternalIds
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 7)
 comment|// Deleted @Relation(id = 8)
 annotation|@
 name|Relation

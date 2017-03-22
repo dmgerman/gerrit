@@ -462,21 +462,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|accountExternalIds ()
-specifier|public
-name|AccountExternalIdAccess
-name|accountExternalIds
-parameter_list|()
-block|{
-return|return
-name|delegate
-operator|.
-name|accountExternalIds
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|accountGroups ()
 specifier|public
 name|AccountGroupAccess

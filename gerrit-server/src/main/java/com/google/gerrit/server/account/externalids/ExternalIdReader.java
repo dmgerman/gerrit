@@ -208,22 +208,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|config
@@ -242,39 +226,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -343,20 +297,6 @@ operator|.
 name|errors
 operator|.
 name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
 import|;
 end_import
 
@@ -465,7 +405,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class to read external IDs from ReviewDb or NoteDb.  *  *<p>In NoteDb external IDs are stored in the All-Users repository in a Git Notes branch called  * refs/meta/external-ids where the sha1 of the external ID is used as note name. Each note content  * is a git config file that contains an external ID. It has exactly one externalId subsection with  * an accountId and optionally email and password:  *  *<pre>  * [externalId "username:jdoe"]  *   accountId = 1003407  *   email = jdoe@example.com  *   password = bcrypt:4:LCbmSBDivK/hhGVQMfkDpA==:XcWn0pKYSVU/UJgOvhidkEtmqCp6oKB7  *</pre>  */
+comment|/**  * Class to read external IDs from NoteDb.  *  *<p>In NoteDb external IDs are stored in the All-Users repository in a Git Notes branch called  * refs/meta/external-ids where the sha1 of the external ID is used as note name. Each note content  * is a git config file that contains an external ID. It has exactly one externalId subsection with  * an accountId and optionally email and password:  *  *<pre>  * [externalId "username:jdoe"]  *   accountId = 1003407  *   email = jdoe@example.com  *   password = bcrypt:4:LCbmSBDivK/hhGVQMfkDpA==:XcWn0pKYSVU/UJgOvhidkEtmqCp6oKB7  *</pre>  */
 end_comment
 
 begin_class
@@ -598,12 +538,6 @@ name|newEmptyMap
 argument_list|()
 return|;
 block|}
-DECL|field|readFromGit
-specifier|private
-specifier|final
-name|boolean
-name|readFromGit
-decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -631,14 +565,9 @@ name|readAllLatency
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExternalIdReader ( @erritServerConfig Config cfg, GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker)
+DECL|method|ExternalIdReader ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker)
 name|ExternalIdReader
 parameter_list|(
-annotation|@
-name|GerritServerConfig
-name|Config
-name|cfg
-parameter_list|,
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
@@ -649,23 +578,6 @@ name|MetricMaker
 name|metricMaker
 parameter_list|)
 block|{
-name|this
-operator|.
-name|readFromGit
-operator|=
-name|cfg
-operator|.
-name|getBoolean
-argument_list|(
-literal|"user"
-argument_list|,
-literal|null
-argument_list|,
-literal|"readExternalIdsFromGit"
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|repoManager
@@ -724,15 +636,6 @@ operator|=
 name|failOnLoad
 expr_stmt|;
 block|}
-DECL|method|readFromGit ()
-name|boolean
-name|readFromGit
-parameter_list|()
-block|{
-return|return
-name|readFromGit
-return|;
-block|}
 DECL|method|readRevision ()
 name|ObjectId
 name|readRevision
@@ -762,29 +665,19 @@ return|;
 block|}
 block|}
 comment|/** Reads and returns all external IDs. */
-DECL|method|all (ReviewDb db)
+DECL|method|all ()
 name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
 name|all
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|checkReadEnabled
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|readFromGit
-condition|)
-block|{
 try|try
 init|(
 name|Repository
@@ -810,24 +703,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-block|}
-return|return
-name|ExternalId
-operator|.
-name|from
-argument_list|(
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|all
-argument_list|()
-operator|.
-name|toList
-argument_list|()
-argument_list|)
-return|;
 block|}
 comment|/**    * Reads and returns all external IDs from the specified revision of the refs/meta/external-ids    * branch.    */
 DECL|method|all (ObjectId rev)
@@ -1037,13 +912,10 @@ block|}
 comment|/** Reads and returns the specified external ID. */
 annotation|@
 name|Nullable
-DECL|method|get (ReviewDb db, ExternalId.Key key)
+DECL|method|get (ExternalId.Key key)
 name|ExternalId
 name|get
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ExternalId
 operator|.
 name|Key
@@ -1053,17 +925,10 @@ throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
-throws|,
-name|OrmException
 block|{
 name|checkReadEnabled
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|readFromGit
-condition|)
-block|{
 try|try
 init|(
 name|Repository
@@ -1075,8 +940,16 @@ name|openRepository
 argument_list|(
 name|allUsersName
 argument_list|)
-init|;           RevWalk rw = new RevWalk(repo)
-block|)
+init|;
+name|RevWalk
+name|rw
+operator|=
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
+init|)
 block|{
 name|ObjectId
 name|rev
@@ -1115,33 +988,7 @@ argument_list|)
 return|;
 block|}
 block|}
-return|return
-name|ExternalId
-operator|.
-name|from
-argument_list|(
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|key
-operator|.
-name|asAccountExternalIdKey
-argument_list|()
-argument_list|)
-argument_list|)
-return|;
-block|}
-end_class
-
-begin_comment
 comment|/** Reads and returns the specified external ID from the given revision. */
-end_comment
-
-begin_function
 annotation|@
 name|Nullable
 DECL|method|get (ExternalId.Key key, ObjectId rev)
@@ -1215,9 +1062,6 @@ argument_list|)
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|parse (ExternalId.Key key, RevWalk rw, ObjectId rev)
 specifier|private
 specifier|static
@@ -1313,9 +1157,6 @@ name|raw
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|checkReadEnabled ()
 specifier|private
 name|void
@@ -1338,8 +1179,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

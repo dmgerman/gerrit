@@ -845,8 +845,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|extIds
 argument_list|)
 expr_stmt|;

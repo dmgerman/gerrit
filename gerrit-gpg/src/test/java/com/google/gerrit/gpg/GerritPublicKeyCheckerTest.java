@@ -1630,8 +1630,6 @@ name|externalIdsUpdate
 operator|.
 name|deleteAll
 argument_list|(
-name|db
-argument_list|,
 name|user
 operator|.
 name|getAccountId
@@ -1719,8 +1717,6 @@ name|externalIdsUpdate
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|create
@@ -2657,8 +2653,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|newExtIds
 argument_list|)
 expr_stmt|;
@@ -2842,8 +2836,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|createWithEmail

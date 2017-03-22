@@ -701,8 +701,6 @@ argument_list|()
 operator|.
 name|byEmail
 argument_list|(
-name|db
-argument_list|,
 name|email
 argument_list|)
 operator|.
