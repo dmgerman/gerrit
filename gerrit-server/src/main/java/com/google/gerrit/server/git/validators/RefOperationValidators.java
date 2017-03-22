@@ -342,7 +342,7 @@ name|ReceiveCommand
 argument_list|(
 name|update
 operator|.
-name|getOldObjectId
+name|getExpectedOldObjectId
 argument_list|()
 argument_list|,
 name|update
