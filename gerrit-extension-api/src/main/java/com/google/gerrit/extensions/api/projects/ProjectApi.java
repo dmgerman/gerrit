@@ -505,6 +505,17 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Lookup a commit by its {@Code ObjectId} string.    *    * @param commit the {@Code ObjectId} string.    * @return API for accessing the commit.    */
+DECL|method|commit (String commit)
+name|CommitApi
+name|commit
+parameter_list|(
+name|String
+name|commit
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -798,6 +809,23 @@ name|deleteTags
 parameter_list|(
 name|DeleteTagsInput
 name|in
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|commit (String commit)
+specifier|public
+name|CommitApi
+name|commit
+parameter_list|(
+name|String
+name|commit
 parameter_list|)
 block|{
 throw|throw
