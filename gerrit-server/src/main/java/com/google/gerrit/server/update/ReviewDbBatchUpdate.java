@@ -1316,7 +1316,10 @@ block|{
 name|initRepository
 argument_list|()
 expr_stmt|;
-name|commands
+name|repoView
+operator|.
+name|getCommands
+argument_list|()
 operator|.
 name|add
 argument_list|(
@@ -2408,12 +2411,9 @@ name|onSubmitValidators
 operator|!=
 literal|null
 operator|&&
-name|commands
-operator|!=
-literal|null
-operator|&&
 operator|!
-name|commands
+name|getRefUpdates
+argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
@@ -2437,13 +2437,16 @@ operator|.
 name|getObjectReader
 argument_list|()
 argument_list|,
-name|commands
+name|repoView
+operator|.
+name|getCommands
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|inserter
+name|repoView
 operator|!=
 literal|null
 condition|)
@@ -2453,7 +2456,10 @@ argument_list|(
 literal|"Flushing inserter"
 argument_list|)
 expr_stmt|;
-name|inserter
+name|repoView
+operator|.
+name|getInserter
+argument_list|()
 operator|.
 name|flush
 argument_list|()
@@ -2509,11 +2515,8 @@ name|RestApiException
 block|{
 if|if
 condition|(
-name|commands
-operator|==
-literal|null
-operator|||
-name|commands
+name|getRefUpdates
+argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
@@ -2527,12 +2530,16 @@ expr_stmt|;
 return|return;
 block|}
 comment|// May not be opened if the caller added ref updates but no new objects.
+comment|// TODO(dborowitz): Really?
 name|initRepository
 argument_list|()
 expr_stmt|;
 name|batchRefUpdate
 operator|=
-name|repo
+name|repoView
+operator|.
+name|getRepository
+argument_list|()
 operator|.
 name|getRefDatabase
 argument_list|()
@@ -2540,7 +2547,10 @@ operator|.
 name|newBatchUpdate
 argument_list|()
 expr_stmt|;
-name|commands
+name|repoView
+operator|.
+name|getCommands
+argument_list|()
 operator|.
 name|addTo
 argument_list|(
@@ -2577,7 +2587,10 @@ init|=
 operator|new
 name|RevWalk
 argument_list|(
-name|repo
+name|repoView
+operator|.
+name|getRepository
+argument_list|()
 argument_list|)
 init|)
 block|{
@@ -2730,7 +2743,7 @@ operator|.
 name|commitChangeWrites
 argument_list|()
 operator|&&
-name|repo
+name|repoView
 operator|!=
 literal|null
 condition|)
@@ -2742,7 +2755,10 @@ argument_list|(
 literal|"Preemptively scanning for repo changes"
 argument_list|)
 expr_stmt|;
-name|repo
+name|repoView
+operator|.
+name|getRepository
+argument_list|()
 operator|.
 name|scanForRepoChanges
 argument_list|()
@@ -4502,7 +4518,10 @@ argument_list|,
 operator|new
 name|ChainedReceiveCommands
 argument_list|(
-name|repo
+name|ctx
+operator|.
+name|getRepository
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
