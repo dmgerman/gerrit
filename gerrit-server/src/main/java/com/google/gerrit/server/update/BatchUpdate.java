@@ -1872,6 +1872,8 @@ parameter_list|(
 name|InsertChangeOp
 name|op
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|Context
 name|ctx

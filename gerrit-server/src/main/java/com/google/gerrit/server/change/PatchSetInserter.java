@@ -704,20 +704,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|revwalk
-operator|.
-name|RevCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|transport
 operator|.
 name|ReceiveCommand
@@ -773,7 +759,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ChangeControl ctl, PatchSet.Id psId, RevCommit commit)
+DECL|method|create (ChangeControl ctl, PatchSet.Id psId, ObjectId commitId)
 name|PatchSetInserter
 name|create
 parameter_list|(
@@ -785,8 +771,8 @@ operator|.
 name|Id
 name|psId
 parameter_list|,
-name|RevCommit
-name|commit
+name|ObjectId
+name|commitId
 parameter_list|)
 function_decl|;
 block|}
@@ -852,11 +838,11 @@ operator|.
 name|Id
 name|psId
 decl_stmt|;
-DECL|field|commit
+DECL|field|commitId
 specifier|private
 specifier|final
-name|RevCommit
-name|commit
+name|ObjectId
+name|commitId
 decl_stmt|;
 comment|// Read prior to running the batch update, so must only be used during
 comment|// updateRepo; updateChange and later must use the control from the
@@ -989,7 +975,7 @@ name|oldReviewers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetInserter ( ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, PatchSetUtil psUtil, RevisionCreated revisionCreated, @Assisted ChangeControl ctl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
+DECL|method|PatchSetInserter ( ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, PatchSetUtil psUtil, RevisionCreated revisionCreated, @Assisted ChangeControl ctl, @Assisted PatchSet.Id psId, @Assisted ObjectId commitId)
 specifier|public
 name|PatchSetInserter
 parameter_list|(
@@ -1035,8 +1021,8 @@ name|psId
 parameter_list|,
 annotation|@
 name|Assisted
-name|RevCommit
-name|commit
+name|ObjectId
+name|commitId
 parameter_list|)
 block|{
 name|this
@@ -1101,9 +1087,12 @@ name|psId
 expr_stmt|;
 name|this
 operator|.
-name|commit
+name|commitId
 operator|=
-name|commit
+name|commitId
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getPatchSetId ()
@@ -1426,7 +1415,7 @@ operator|.
 name|zeroId
 argument_list|()
 argument_list|,
-name|commit
+name|commitId
 argument_list|,
 name|getPatchSetId
 argument_list|()
@@ -1618,7 +1607,7 @@ argument_list|)
 argument_list|,
 name|psId
 argument_list|,
-name|commit
+name|commitId
 argument_list|,
 name|draft
 argument_list|,
@@ -1707,7 +1696,15 @@ operator|.
 name|getRevWalk
 argument_list|()
 argument_list|,
-name|commit
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|parseCommit
+argument_list|(
+name|commitId
+argument_list|)
 argument_list|,
 name|psId
 argument_list|)
@@ -2043,10 +2040,7 @@ operator|.
 name|zeroId
 argument_list|()
 argument_list|,
-name|commit
-operator|.
-name|getId
-argument_list|()
+name|commitId
 argument_list|,
 name|refName
 operator|.
@@ -2091,7 +2085,7 @@ operator|.
 name|getObjectReader
 argument_list|()
 argument_list|,
-name|commit
+name|commitId
 argument_list|,
 name|ctx
 operator|.

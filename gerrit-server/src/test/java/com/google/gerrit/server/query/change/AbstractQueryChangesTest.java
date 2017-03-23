@@ -3543,7 +3543,7 @@ name|sha
 init|=
 name|ins
 operator|.
-name|getCommit
+name|getCommitId
 argument_list|()
 operator|.
 name|name
@@ -13392,7 +13392,7 @@ name|add
 argument_list|(
 name|ins
 operator|.
-name|getCommit
+name|getCommitId
 argument_list|()
 operator|.
 name|name

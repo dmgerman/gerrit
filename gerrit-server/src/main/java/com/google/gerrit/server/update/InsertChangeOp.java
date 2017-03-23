@@ -82,6 +82,16 @@ name|Change
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Specialization of {@link BatchUpdateOp} for creating changes.  *  *<p>A typical {@code BatchUpdateOp} operates on a change that has been read from a transaction;  * this type, by contrast, is responsible for creating the change from scratch.  *  *<p>Ops of this type must be used via {@link BatchUpdate#insertChange(InsertChangeOp)}. They may  * be mixed with other {@link BatchUpdateOp}s for the same change, in which case the insert op runs  * first.  */
 end_comment
@@ -101,6 +111,8 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface

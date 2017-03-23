@@ -971,7 +971,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ProjectControl projectControl, Branch.NameKey dest, boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) RevCommit priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) RevCommit commit, PatchSetInfo info, List<String> groups, @Nullable MagicBranchInput magicBranch, @Nullable PushCertificate pushCertificate)
+DECL|method|create ( ProjectControl projectControl, Branch.NameKey dest, boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, PatchSetInfo info, List<String> groups, @Nullable MagicBranchInput magicBranch, @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 name|create
 parameter_list|(
@@ -999,9 +999,9 @@ parameter_list|,
 annotation|@
 name|Assisted
 argument_list|(
-literal|"priorCommit"
+literal|"priorCommitId"
 argument_list|)
-name|RevCommit
+name|ObjectId
 name|priorCommit
 parameter_list|,
 annotation|@
@@ -1017,10 +1017,10 @@ parameter_list|,
 annotation|@
 name|Assisted
 argument_list|(
-literal|"commit"
+literal|"commitId"
 argument_list|)
-name|RevCommit
-name|commit
+name|ObjectId
+name|commitId
 parameter_list|,
 name|PatchSetInfo
 name|info
@@ -1188,11 +1188,11 @@ operator|.
 name|Id
 name|priorPatchSetId
 decl_stmt|;
-DECL|field|priorCommit
+DECL|field|priorCommitId
 specifier|private
 specifier|final
-name|RevCommit
-name|priorCommit
+name|ObjectId
+name|priorCommitId
 decl_stmt|;
 DECL|field|patchSetId
 specifier|private
@@ -1202,11 +1202,11 @@ operator|.
 name|Id
 name|patchSetId
 decl_stmt|;
-DECL|field|commit
+DECL|field|commitId
 specifier|private
 specifier|final
-name|RevCommit
-name|commit
+name|ObjectId
+name|commitId
 decl_stmt|;
 DECL|field|info
 specifier|private
@@ -1265,6 +1265,11 @@ operator|new
 name|MailRecipients
 argument_list|()
 decl_stmt|;
+DECL|field|commit
+specifier|private
+name|RevCommit
+name|commit
+decl_stmt|;
 DECL|field|change
 specifier|private
 name|Change
@@ -1307,7 +1312,7 @@ name|updateRef
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalCopier approvalCopier, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, GitReferenceUpdated gitRefUpdated, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, @SendEmailExecutor ExecutorService sendEmailExecutor, @Assisted ProjectControl projectControl, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) RevCommit priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) RevCommit commit, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
+DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalCopier approvalCopier, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, GitReferenceUpdated gitRefUpdated, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, @SendEmailExecutor ExecutorService sendEmailExecutor, @Assisted ProjectControl projectControl, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) ObjectId priorCommitId, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) ObjectId commitId, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 parameter_list|(
 name|AccountResolver
@@ -1392,10 +1397,10 @@ parameter_list|,
 annotation|@
 name|Assisted
 argument_list|(
-literal|"priorCommit"
+literal|"priorCommitId"
 argument_list|)
-name|RevCommit
-name|priorCommit
+name|ObjectId
+name|priorCommitId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1410,10 +1415,10 @@ parameter_list|,
 annotation|@
 name|Assisted
 argument_list|(
-literal|"commit"
+literal|"commitId"
 argument_list|)
-name|RevCommit
-name|commit
+name|ObjectId
+name|commitId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1553,9 +1558,12 @@ name|priorPatchSetId
 expr_stmt|;
 name|this
 operator|.
-name|priorCommit
+name|priorCommitId
 operator|=
-name|priorCommit
+name|priorCommitId
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -1565,9 +1573,12 @@ name|patchSetId
 expr_stmt|;
 name|this
 operator|.
-name|commit
+name|commitId
 operator|=
-name|commit
+name|commitId
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -1613,6 +1624,28 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|commit
+operator|=
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|parseCommit
+argument_list|(
+name|commitId
+argument_list|)
+expr_stmt|;
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|parseBody
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
 name|changeKind
 operator|=
 name|changeKindCache
@@ -1632,9 +1665,9 @@ operator|.
 name|getRepository
 argument_list|()
 argument_list|,
-name|priorCommit
+name|priorCommitId
 argument_list|,
-name|commit
+name|commitId
 argument_list|)
 expr_stmt|;
 if|if
@@ -1699,7 +1732,7 @@ operator|.
 name|zeroId
 argument_list|()
 argument_list|,
-name|commit
+name|commitId
 argument_list|,
 name|patchSetId
 operator|.
@@ -2058,7 +2091,7 @@ name|update
 argument_list|,
 name|patchSetId
 argument_list|,
-name|commit
+name|commitId
 argument_list|,
 name|draft
 argument_list|,
@@ -2744,7 +2777,7 @@ name|Key
 argument_list|(
 literal|"I"
 operator|+
-name|commit
+name|commitId
 operator|.
 name|name
 argument_list|()
@@ -2834,7 +2867,7 @@ operator|.
 name|zeroId
 argument_list|()
 argument_list|,
-name|commit
+name|commitId
 argument_list|,
 name|account
 argument_list|)
@@ -3404,6 +3437,7 @@ return|;
 block|}
 DECL|method|findMergedInto (Context ctx, String first, RevCommit commit)
 specifier|private
+specifier|static
 name|Ref
 name|findMergedInto
 parameter_list|(

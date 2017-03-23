@@ -978,6 +978,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|revwalk
+operator|.
+name|RevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|transport
 operator|.
 name|ReceiveCommand
@@ -1031,7 +1045,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Change.Id cid, RevCommit rc, String refName)
+DECL|method|create (Change.Id cid, ObjectId commitId, String refName)
 name|ChangeInserter
 name|create
 parameter_list|(
@@ -1040,8 +1054,8 @@ operator|.
 name|Id
 name|cid
 parameter_list|,
-name|RevCommit
-name|rc
+name|ObjectId
+name|commitId
 parameter_list|,
 name|String
 name|refName
@@ -1162,11 +1176,11 @@ operator|.
 name|Id
 name|psId
 decl_stmt|;
-DECL|field|commit
+DECL|field|commitId
 specifier|private
 specifier|final
-name|RevCommit
-name|commit
+name|ObjectId
+name|commitId
 decl_stmt|;
 DECL|field|refName
 specifier|private
@@ -1337,7 +1351,7 @@ name|pushCert
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeInserter ( ProjectControl.GenericFactory projectControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeControl.GenericFactory changeControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CreateChangeSender.Factory createChangeSenderFactory, @SendEmailExecutor ExecutorService sendEmailExecutor, CommitValidators.Factory commitValidatorsFactory, CommentAdded commentAdded, RevisionCreated revisionCreated, @Assisted Change.Id changeId, @Assisted RevCommit commit, @Assisted String refName)
+DECL|method|ChangeInserter ( ProjectControl.GenericFactory projectControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeControl.GenericFactory changeControlFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CreateChangeSender.Factory createChangeSenderFactory, @SendEmailExecutor ExecutorService sendEmailExecutor, CommitValidators.Factory commitValidatorsFactory, CommentAdded commentAdded, RevisionCreated revisionCreated, @Assisted Change.Id changeId, @Assisted ObjectId commitId, @Assisted String refName)
 name|ChangeInserter
 parameter_list|(
 name|ProjectControl
@@ -1397,8 +1411,8 @@ name|changeId
 parameter_list|,
 annotation|@
 name|Assisted
-name|RevCommit
-name|commit
+name|ObjectId
+name|commitId
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1500,9 +1514,12 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|commit
+name|commitId
 operator|=
-name|commit
+name|commitId
+operator|.
+name|copy
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -1572,6 +1589,8 @@ parameter_list|(
 name|Context
 name|ctx
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|change
 operator|=
@@ -1580,7 +1599,12 @@ name|Change
 argument_list|(
 name|getChangeKey
 argument_list|(
-name|commit
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|,
+name|commitId
 argument_list|)
 argument_list|,
 name|changeId
@@ -1645,7 +1669,7 @@ return|return
 name|change
 return|;
 block|}
-DECL|method|getChangeKey (RevCommit commit)
+DECL|method|getChangeKey (RevWalk rw, ObjectId id)
 specifier|private
 specifier|static
 name|Change
@@ -1653,10 +1677,32 @@ operator|.
 name|Key
 name|getChangeKey
 parameter_list|(
+name|RevWalk
+name|rw
+parameter_list|,
+name|ObjectId
+name|id
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|RevCommit
 name|commit
-parameter_list|)
-block|{
+init|=
+name|rw
+operator|.
+name|parseCommit
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+name|rw
+operator|.
+name|parseBody
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|String
@@ -1705,7 +1751,7 @@ argument_list|)
 return|;
 block|}
 name|ObjectId
-name|id
+name|changeId
 init|=
 name|ChangeIdUtil
 operator|.
@@ -1735,13 +1781,13 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|StringBuilder
-name|changeId
+name|changeIdStr
 init|=
 operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|changeId
+name|changeIdStr
 operator|.
 name|append
 argument_list|(
@@ -1754,7 +1800,7 @@ name|ObjectId
 operator|.
 name|toString
 argument_list|(
-name|id
+name|changeId
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1764,7 +1810,7 @@ name|Change
 operator|.
 name|Key
 argument_list|(
-name|changeId
+name|changeIdStr
 operator|.
 name|toString
 argument_list|()
@@ -1783,14 +1829,14 @@ return|return
 name|psId
 return|;
 block|}
-DECL|method|getCommit ()
+DECL|method|getCommitId ()
 specifier|public
-name|RevCommit
-name|getCommit
+name|ObjectId
+name|getCommitId
 parameter_list|()
 block|{
 return|return
-name|commit
+name|commitId
 return|;
 block|}
 DECL|method|getChange ()
@@ -2355,7 +2401,7 @@ operator|.
 name|zeroId
 argument_list|()
 argument_list|,
-name|commit
+name|commitId
 argument_list|,
 name|psId
 operator|.
@@ -2428,7 +2474,15 @@ operator|.
 name|getRevWalk
 argument_list|()
 argument_list|,
-name|commit
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|parseCommit
+argument_list|(
+name|commitId
+argument_list|)
 argument_list|,
 name|psId
 argument_list|)
@@ -2549,7 +2603,7 @@ name|GroupCollector
 operator|.
 name|getDefaultGroups
 argument_list|(
-name|commit
+name|commitId
 argument_list|)
 expr_stmt|;
 block|}
@@ -2573,7 +2627,7 @@ name|update
 argument_list|,
 name|psId
 argument_list|,
-name|commit
+name|commitId
 argument_list|,
 name|draft
 argument_list|,
@@ -3347,10 +3401,7 @@ operator|.
 name|zeroId
 argument_list|()
 argument_list|,
-name|commit
-operator|.
-name|getId
-argument_list|()
+name|commitId
 argument_list|,
 name|refName
 argument_list|)
@@ -3379,7 +3430,7 @@ operator|.
 name|getObjectReader
 argument_list|()
 argument_list|,
-name|commit
+name|commitId
 argument_list|,
 name|ctx
 operator|.
