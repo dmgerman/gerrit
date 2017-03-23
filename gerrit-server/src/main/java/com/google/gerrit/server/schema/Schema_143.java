@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.query.change
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -62,9 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
-operator|.
-name|change
+name|schema
 package|;
 end_package
 
@@ -74,15 +72,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|FieldDef
-operator|.
-name|FillArgs
+name|Inject
 import|;
 end_import
 
@@ -92,110 +84,41 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|change
-operator|.
-name|ChangeField
+name|Provider
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
+begin_comment
+comment|/** Add isPrivate field to change. */
+end_comment
 
 begin_class
-DECL|class|IsMergeablePredicate
+DECL|class|Schema_143
+specifier|public
 class|class
-name|IsMergeablePredicate
+name|Schema_143
 extends|extends
-name|ChangeIndexPredicate
+name|SchemaVersion
 block|{
-DECL|field|args
-specifier|private
-specifier|final
-name|FillArgs
-name|args
-decl_stmt|;
-DECL|method|IsMergeablePredicate (FillArgs args)
-name|IsMergeablePredicate
+annotation|@
+name|Inject
+DECL|method|Schema_143 (Provider<Schema_142> prior)
+name|Schema_143
 parameter_list|(
-name|FillArgs
-name|args
+name|Provider
+argument_list|<
+name|Schema_142
+argument_list|>
+name|prior
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ChangeField
-operator|.
-name|MERGEABLE
-argument_list|,
-literal|"1"
+name|prior
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|args
-operator|=
-name|args
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|match (ChangeData object)
-specifier|public
-name|boolean
-name|match
-parameter_list|(
-name|ChangeData
-name|object
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|getValue
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|getField
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|object
-argument_list|,
-name|args
-argument_list|)
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getCost ()
-specifier|public
-name|int
-name|getCost
-parameter_list|()
-block|{
-return|return
-literal|1
-return|;
 block|}
 block|}
 end_class

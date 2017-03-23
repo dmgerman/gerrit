@@ -1983,6 +1983,22 @@ name|VIEW_DRAFTS
 argument_list|)
 return|;
 block|}
+comment|/** @return true if this user can view private changes. */
+DECL|method|canViewPrivateChanges ()
+specifier|public
+name|boolean
+name|canViewPrivateChanges
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|VIEW_PRIVATE_CHANGES
+argument_list|)
+return|;
+block|}
 comment|/** @return true if this user can publish draft changes. */
 DECL|method|canPublishDrafts ()
 specifier|public

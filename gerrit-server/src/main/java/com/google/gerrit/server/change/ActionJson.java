@@ -941,6 +941,14 @@ name|deletions
 expr_stmt|;
 name|copy
 operator|.
+name|isPrivate
+operator|=
+name|changeInfo
+operator|.
+name|isPrivate
+expr_stmt|;
+name|copy
+operator|.
 name|subject
 operator|=
 name|changeInfo

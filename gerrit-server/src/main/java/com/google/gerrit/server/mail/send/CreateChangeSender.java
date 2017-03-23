@@ -395,6 +395,12 @@ name|NEW_CHANGES
 argument_list|,
 operator|!
 name|isDraft
+operator|&&
+operator|!
+name|change
+operator|.
+name|isPrivate
+argument_list|()
 argument_list|)
 decl_stmt|;
 for|for
@@ -509,6 +515,12 @@ name|NEW_PATCHSETS
 argument_list|,
 operator|!
 name|isDraft
+operator|&&
+operator|!
+name|change
+operator|.
+name|isPrivate
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

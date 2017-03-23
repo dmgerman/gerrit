@@ -879,6 +879,15 @@ name|reviewed
 parameter_list|()
 comment|/*-{ return this.reviewed ? true : false; }-*/
 function_decl|;
+DECL|method|isPrivate ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isPrivate
+parameter_list|()
+comment|/*-{ return this.is_private ? true : false; }-*/
+function_decl|;
 DECL|method|allLabels ()
 specifier|public
 specifier|final

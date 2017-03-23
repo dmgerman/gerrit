@@ -3745,6 +3745,33 @@ name|readOnlyUntil
 argument_list|()
 return|;
 block|}
+DECL|method|isPrivate ()
+specifier|public
+name|boolean
+name|isPrivate
+parameter_list|()
+block|{
+if|if
+condition|(
+name|state
+operator|.
+name|isPrivate
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+name|state
+operator|.
+name|isPrivate
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|onLoad (LoadHandle handle)

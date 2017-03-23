@@ -374,6 +374,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|setPrivate (boolean value)
+name|void
+name|setPrivate
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Create a new change that reverts this change.    *    * @see Changes#id(int)    */
 DECL|method|revert ()
 name|ChangeApi
@@ -981,6 +991,23 @@ name|move
 parameter_list|(
 name|MoveInput
 name|in
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setPrivate (boolean value)
+specifier|public
+name|void
+name|setPrivate
+parameter_list|(
+name|boolean
+name|value
 parameter_list|)
 block|{
 throw|throw
