@@ -185,20 +185,17 @@ name|Id
 name|psId
 parameter_list|)
 function_decl|;
-comment|/**    * @return control for this change. The user will be the same as {@link #getUser()}, and the    *     change data is read within the same transaction that {@code updateChange} is executing.    */
+comment|/**    * Get the control for this change, encapsulating the user and up-to-date change data.    *    *<p>The user will be the same as {@link #getUser()}, and the change data is read within the same    * transaction that {@link BatchUpdateOp#updateChange(ChangeContext)} is executing.    *    * @return control for this change.    */
 DECL|method|getControl ()
 name|ChangeControl
 name|getControl
 parameter_list|()
 function_decl|;
-comment|/**    * @param bump whether to bump the value of {@link Change#getLastUpdatedOn()} field before storing    *     to ReviewDb. For NoteDb, the value is always incremented (assuming the update is not    *     otherwise a no-op).    */
-DECL|method|bumpLastUpdatedOn (boolean bump)
+comment|/**    * Don't bump the value of {@link Change#getLastUpdatedOn()}.    *    *<p>If called, don't bump the timestamp before storing to ReviewDb. Only has an effect in    * ReviewDb, and the only usage should be to match the behavior of NoteDb. Specifically, in NoteDb    * the timestamp is updated if and only if the change meta graph is updated, and is not updated    * when only drafts are modified.    */
+DECL|method|dontBumpLastUpdatedOn ()
 name|void
-name|bumpLastUpdatedOn
-parameter_list|(
-name|boolean
-name|bump
-parameter_list|)
+name|dontBumpLastUpdatedOn
+parameter_list|()
 function_decl|;
 comment|/**    * Instruct {@link BatchUpdate} to delete this change.    *    *<p>If called, all other updates are ignored.    */
 DECL|method|deleteChange ()
@@ -206,7 +203,7 @@ name|void
 name|deleteChange
 parameter_list|()
 function_decl|;
-comment|/** @return notes corresponding to {@link #getControl()}. */
+comment|/**    * Get notes corresponding to {@link #getControl()}.    *    * @return loaded notes instance.    */
 DECL|method|getNotes ()
 specifier|default
 name|ChangeNotes
