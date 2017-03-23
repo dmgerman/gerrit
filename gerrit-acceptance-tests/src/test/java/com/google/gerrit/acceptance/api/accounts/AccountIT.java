@@ -3545,7 +3545,7 @@ comment|// Missing user part
 literal|"@example.com"
 argument_list|,
 comment|// Non-supported TLD  (see tlds-alpha-by-domain.txt)
-literal|"new.email@example.blog"
+literal|"new.email@example.africa"
 argument_list|)
 decl_stmt|;
 for|for
