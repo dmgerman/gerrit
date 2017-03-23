@@ -97,6 +97,11 @@ specifier|public
 name|AccountInfo
 name|author
 decl_stmt|;
+DECL|field|realAuthor
+specifier|public
+name|AccountInfo
+name|realAuthor
+decl_stmt|;
 DECL|field|date
 specifier|public
 name|Timestamp
