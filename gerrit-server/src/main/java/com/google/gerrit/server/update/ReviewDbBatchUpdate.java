@@ -996,20 +996,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectReader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|PersonIdent
 import|;
 end_import
@@ -2433,46 +2419,27 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-try|try
-init|(
-name|ObjectReader
-name|reader
-init|=
-name|ctx
-operator|.
-name|getInserter
-argument_list|()
-operator|.
-name|newReader
-argument_list|()
-init|)
-block|{
-comment|// Validation of refs has to take place here and not at the beginning
-comment|// executeRefUpdates. Otherwise failing validation in a second BatchUpdate object will
-comment|// happen *after* first object's executeRefUpdates has finished, hence after first repo's
-comment|// refs have been updated, which is too late.
+comment|// Validation of refs has to take place here and not at the beginning of executeRefUpdates.
+comment|// Otherwise, failing validation in a second BatchUpdate object will happen *after* the
+comment|// first update's executeRefUpdates has finished, hence after first repo's refs have been
+comment|// updated, which is too late.
 name|onSubmitValidators
 operator|.
 name|validate
 argument_list|(
 name|project
 argument_list|,
-operator|new
-name|ReadOnlyRepository
-argument_list|(
-name|getRepository
+name|ctx
+operator|.
+name|getRevWalk
 argument_list|()
-argument_list|)
-argument_list|,
-name|reader
+operator|.
+name|getObjectReader
+argument_list|()
 argument_list|,
 name|commands
-operator|.
-name|getCommands
-argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
