@@ -218,9 +218,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -234,7 +232,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -460,7 +458,7 @@ argument_list|>
 name|subscriptions
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|GitModules ( @anonicalWebUrl @ullable String canonicalWebUrl, @Assisted Branch.NameKey branch, @Assisted MergeOpRepoManager orm)
 name|GitModules
 parameter_list|(

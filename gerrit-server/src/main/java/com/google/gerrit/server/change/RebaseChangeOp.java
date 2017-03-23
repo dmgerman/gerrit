@@ -410,9 +410,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -426,7 +424,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -674,7 +672,7 @@ name|PatchSet
 name|rebasedPatchSet
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|RebaseChangeOp ( PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, RebaseUtil rebaseUtil, ChangeResource.Factory changeResourceFactory, @Assisted ChangeControl ctl, @Assisted PatchSet originalPatchSet, @Assisted @Nullable String baseCommitish)
 name|RebaseChangeOp
 parameter_list|(

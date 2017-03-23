@@ -390,6 +390,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -405,20 +417,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|AssistedInject
 import|;
 end_import
 
@@ -717,7 +715,7 @@ argument_list|>
 name|groupCache
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, @Assisted Schema<AccountGroup> schema)
 name|ElasticGroupIndex
 parameter_list|(

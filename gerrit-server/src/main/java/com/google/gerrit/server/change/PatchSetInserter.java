@@ -634,9 +634,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -650,7 +648,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -990,7 +988,7 @@ name|ReviewerSet
 name|oldReviewers
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|PatchSetInserter ( ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, CommitValidators.Factory commitValidatorsFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, PatchSetUtil psUtil, RevisionCreated revisionCreated, @Assisted ChangeControl ctl, @Assisted PatchSet.Id psId, @Assisted RevCommit commit)
 specifier|public
 name|PatchSetInserter

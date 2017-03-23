@@ -408,6 +408,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -423,20 +435,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|AssistedInject
 import|;
 end_import
 
@@ -572,7 +570,7 @@ name|Account
 name|oldAssignee
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|SetAssigneeOp ( AccountsCollection accounts, ChangeMessagesUtil cmUtil, DynamicSet<AssigneeValidationListener> validationListeners, AssigneeChanged assigneeChanged, SetAssigneeSender.Factory setAssigneeSenderFactory, Provider<IdentifiedUser> user, IdentifiedUser.GenericFactory userFactory, @Assisted String assignee)
 name|SetAssigneeOp
 parameter_list|(

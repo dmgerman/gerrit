@@ -228,9 +228,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -244,7 +242,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -383,7 +381,7 @@ name|ObjectId
 name|metaId
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|RobotCommentNotes (Args args, @Assisted Change change)
 name|RobotCommentNotes
 parameter_list|(

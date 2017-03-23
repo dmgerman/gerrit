@@ -524,9 +524,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -540,7 +538,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -709,7 +707,7 @@ name|Index
 name|index
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|GroupApiImpl ( GetGroup getGroup, GetDetail getDetail, GetName getName, PutName putName, GetOwner getOwner, PutOwner putOwner, GetDescription getDescription, PutDescription putDescription, GetOptions getOptions, PutOptions putOptions, ListMembers listMembers, AddMembers addMembers, DeleteMembers deleteMembers, ListIncludedGroups listGroups, AddIncludedGroups addGroups, DeleteIncludedGroups deleteGroups, GetAuditLog getAuditLog, Index index, @Assisted GroupResource rsrc)
 name|GroupApiImpl
 parameter_list|(

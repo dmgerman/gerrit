@@ -186,9 +186,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -202,7 +200,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -285,7 +283,7 @@ name|GpgKey
 name|rsrc
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|GpgKeyApiImpl (GpgKeys.Get get, DeleteGpgKey delete, @Assisted GpgKey rsrc)
 name|GpgKeyApiImpl
 parameter_list|(

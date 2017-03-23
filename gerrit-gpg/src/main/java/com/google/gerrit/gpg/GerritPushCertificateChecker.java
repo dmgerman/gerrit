@@ -118,9 +118,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -134,7 +132,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -197,7 +195,7 @@ name|AllUsersName
 name|allUsers
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|GerritPushCertificateChecker ( GerritPublicKeyChecker.Factory keyCheckerFactory, GitRepositoryManager repoManager, AllUsersName allUsers, @Assisted IdentifiedUser expectedUser)
 name|GerritPushCertificateChecker
 parameter_list|(
