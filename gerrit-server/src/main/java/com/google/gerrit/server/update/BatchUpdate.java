@@ -1792,24 +1792,6 @@ name|empty
 argument_list|()
 return|;
 block|}
-DECL|method|getRepository ()
-specifier|protected
-name|Repository
-name|getRepository
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|initRepository
-argument_list|()
-expr_stmt|;
-return|return
-name|repoView
-operator|.
-name|getRepository
-argument_list|()
-return|;
-block|}
 DECL|method|getRevWalk ()
 specifier|protected
 name|RevWalk

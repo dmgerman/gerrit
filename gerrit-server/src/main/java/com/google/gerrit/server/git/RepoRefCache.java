@@ -82,6 +82,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -298,6 +308,30 @@ argument_list|)
 expr_stmt|;
 return|return
 name|id
+return|;
+block|}
+comment|/** @return an unmodifiable view of the refs that have been cached by this instance. */
+DECL|method|getCachedRefs ()
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Optional
+argument_list|<
+name|ObjectId
+argument_list|>
+argument_list|>
+name|getCachedRefs
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableMap
+argument_list|(
+name|ids
+argument_list|)
 return|;
 block|}
 block|}

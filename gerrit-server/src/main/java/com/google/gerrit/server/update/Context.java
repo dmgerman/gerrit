@@ -196,20 +196,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|revwalk
 operator|.
 name|RevWalk
@@ -234,10 +220,10 @@ name|NameKey
 name|getProject
 parameter_list|()
 function_decl|;
-comment|/**    * Get an open repository instance for this project.    *    *<p>Will be opened lazily if necessary; callers should not close the repo. In some phases of the    * update, the repository might be read-only; see {@link BatchUpdateOp} for details.    *    * @return repository instance.    * @throws IOException if an error occurred opening the repo.    */
-DECL|method|getRepository ()
-name|Repository
-name|getRepository
+comment|/**    * Get a read-only view of the open repository for this project.    *    *<p>Will be opened lazily if necessary.    *    * @return repository instance.    * @throws IOException if an error occurred opening the repo.    */
+DECL|method|getRepoView ()
+name|RepoView
+name|getRepoView
 parameter_list|()
 throws|throws
 name|IOException

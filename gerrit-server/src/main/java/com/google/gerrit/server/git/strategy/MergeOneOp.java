@@ -258,7 +258,7 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getRepository
+name|getRepoView
 argument_list|()
 operator|.
 name|getConfig

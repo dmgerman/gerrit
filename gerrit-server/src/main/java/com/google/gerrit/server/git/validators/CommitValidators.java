@@ -869,7 +869,7 @@ else|:
 literal|null
 expr_stmt|;
 block|}
-DECL|method|forReceiveCommits ( RefControl refControl, SshInfo sshInfo, Repository repo)
+DECL|method|forReceiveCommits ( RefControl refControl, SshInfo sshInfo, Repository repo, RevWalk rw)
 specifier|public
 name|CommitValidators
 name|forReceiveCommits
@@ -882,21 +882,12 @@ name|sshInfo
 parameter_list|,
 name|Repository
 name|repo
+parameter_list|,
+name|RevWalk
+name|rw
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-try|try
-init|(
-name|RevWalk
-name|rw
-init|=
-operator|new
-name|RevWalk
-argument_list|(
-name|repo
-argument_list|)
-init|)
 block|{
 name|NoteMap
 name|rejectCommits
@@ -971,7 +962,7 @@ name|ConfigValidator
 argument_list|(
 name|refControl
 argument_list|,
-name|repo
+name|rw
 argument_list|,
 name|allUsers
 argument_list|)
@@ -997,8 +988,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-block|}
-DECL|method|forGerritCommits ( RefControl refControl, SshInfo sshInfo, Repository repo)
+DECL|method|forGerritCommits (RefControl refControl, SshInfo sshInfo, RevWalk rw)
 specifier|public
 name|CommitValidators
 name|forGerritCommits
@@ -1009,8 +999,8 @@ parameter_list|,
 name|SshInfo
 name|sshInfo
 parameter_list|,
-name|Repository
-name|repo
+name|RevWalk
+name|rw
 parameter_list|)
 block|{
 return|return
@@ -1066,7 +1056,7 @@ name|ConfigValidator
 argument_list|(
 name|refControl
 argument_list|,
-name|repo
+name|rw
 argument_list|,
 name|allUsers
 argument_list|)
@@ -2229,11 +2219,11 @@ specifier|final
 name|RefControl
 name|refControl
 decl_stmt|;
-DECL|field|repo
+DECL|field|rw
 specifier|private
 specifier|final
-name|Repository
-name|repo
+name|RevWalk
+name|rw
 decl_stmt|;
 DECL|field|allUsers
 specifier|private
@@ -2241,15 +2231,15 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
-DECL|method|ConfigValidator (RefControl refControl, Repository repo, AllUsersName allUsers)
+DECL|method|ConfigValidator (RefControl refControl, RevWalk rw, AllUsersName allUsers)
 specifier|public
 name|ConfigValidator
 parameter_list|(
 name|RefControl
 name|refControl
 parameter_list|,
-name|Repository
-name|repo
+name|RevWalk
+name|rw
 parameter_list|,
 name|AllUsersName
 name|allUsers
@@ -2263,9 +2253,9 @@ name|refControl
 expr_stmt|;
 name|this
 operator|.
-name|repo
+name|rw
 operator|=
-name|repo
+name|rw
 expr_stmt|;
 name|this
 operator|.
@@ -2345,7 +2335,7 @@ name|cfg
 operator|.
 name|load
 argument_list|(
-name|repo
+name|rw
 argument_list|,
 name|receiveEvent
 operator|.
@@ -2540,7 +2530,7 @@ name|wc
 operator|.
 name|load
 argument_list|(
-name|repo
+name|rw
 argument_list|,
 name|receiveEvent
 operator|.
