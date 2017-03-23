@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -81,16 +95,6 @@ operator|.
 name|validators
 operator|.
 name|ValidationException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
 import|;
 end_import
 
@@ -124,7 +128,7 @@ decl_stmt|;
 DECL|field|messages
 specifier|private
 specifier|final
-name|List
+name|ImmutableList
 argument_list|<
 name|CommitValidationMessage
 argument_list|>
@@ -153,7 +157,12 @@ name|this
 operator|.
 name|messages
 operator|=
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
 name|messages
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|CommitValidationException (String reason)
@@ -173,9 +182,9 @@ name|this
 operator|.
 name|messages
 operator|=
-name|Collections
+name|ImmutableList
 operator|.
-name|emptyList
+name|of
 argument_list|()
 expr_stmt|;
 block|}
@@ -201,15 +210,15 @@ name|this
 operator|.
 name|messages
 operator|=
-name|Collections
+name|ImmutableList
 operator|.
-name|emptyList
+name|of
 argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getMessages ()
 specifier|public
-name|List
+name|ImmutableList
 argument_list|<
 name|CommitValidationMessage
 argument_list|>
