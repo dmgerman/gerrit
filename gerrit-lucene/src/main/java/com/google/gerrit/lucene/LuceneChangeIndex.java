@@ -826,6 +826,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -841,20 +853,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|AssistedInject
 import|;
 end_import
 
@@ -1640,7 +1638,7 @@ name|ChangeSubIndex
 name|closedIndex
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor(INTERACTIVE) ListeningExecutorService executor, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, @Assisted Schema<ChangeData> schema)
 name|LuceneChangeIndex
 parameter_list|(

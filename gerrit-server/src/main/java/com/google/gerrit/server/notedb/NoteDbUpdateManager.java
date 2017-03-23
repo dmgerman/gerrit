@@ -506,6 +506,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -521,20 +533,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|AssistedInject
 import|;
 end_import
 
@@ -1462,7 +1460,7 @@ name|PersonIdent
 name|refLogIdent
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|NoteDbUpdateManager ( @erritPersonIdent Provider<PersonIdent> serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsersName, NoteDbMetrics metrics, @Assisted Project.NameKey projectName)
 name|NoteDbUpdateManager
 parameter_list|(

@@ -124,9 +124,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -140,7 +138,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -408,7 +406,7 @@ name|IntraLineDiffArgs
 name|args
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|IntraLineLoader ( @iffExecutor ExecutorService diffExecutor, @GerritServerConfig Config cfg, @Assisted IntraLineDiffKey key, @Assisted IntraLineDiffArgs args)
 name|IntraLineLoader
 parameter_list|(

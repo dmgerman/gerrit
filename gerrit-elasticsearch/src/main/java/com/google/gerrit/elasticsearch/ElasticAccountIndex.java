@@ -426,6 +426,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -441,20 +453,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|AssistedInject
 import|;
 end_import
 
@@ -753,7 +751,7 @@ argument_list|>
 name|accountCache
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|ElasticAccountIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<AccountCache> accountCache, @Assisted Schema<AccountState> schema)
 name|ElasticAccountIndex
 parameter_list|(

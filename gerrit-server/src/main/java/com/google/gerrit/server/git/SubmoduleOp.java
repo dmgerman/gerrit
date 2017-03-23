@@ -404,9 +404,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -420,7 +418,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -1077,7 +1075,7 @@ argument_list|>
 name|branchesByProject
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|SubmoduleOp ( GitModules.Factory gitmodulesFactory, @GerritPersonIdent PersonIdent myIdent, @GerritServerConfig Config cfg, ProjectCache projectCache, ProjectState.Factory projectStateFactory, BatchUpdate.Factory batchUpdateFactory, @Assisted Set<Branch.NameKey> updatedBranches, @Assisted MergeOpRepoManager orm)
 specifier|public
 name|SubmoduleOp

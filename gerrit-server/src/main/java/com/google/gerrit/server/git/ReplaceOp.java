@@ -720,9 +720,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -736,7 +734,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -1308,7 +1306,7 @@ name|boolean
 name|updateRef
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|ReplaceOp ( AccountResolver accountResolver, ApprovalCopier approvalCopier, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeKindCache changeKindCache, ChangeMessagesUtil cmUtil, GitReferenceUpdated gitRefUpdated, RevisionCreated revisionCreated, CommentAdded commentAdded, MergedByPushOp.Factory mergedByPushOpFactory, PatchSetUtil psUtil, ReplacePatchSetSender.Factory replacePatchSetFactory, @SendEmailExecutor ExecutorService sendEmailExecutor, @Assisted ProjectControl projectControl, @Assisted Branch.NameKey dest, @Assisted boolean checkMergedInto, @Assisted(R) PatchSet.Id priorPatchSetId, @Assisted(R) RevCommit priorCommit, @Assisted(R) PatchSet.Id patchSetId, @Assisted(R) RevCommit commit, @Assisted PatchSetInfo info, @Assisted List<String> groups, @Assisted @Nullable MagicBranchInput magicBranch, @Assisted @Nullable PushCertificate pushCertificate)
 name|ReplaceOp
 parameter_list|(

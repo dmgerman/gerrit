@@ -900,20 +900,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|AssistedInject
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -2344,7 +2330,7 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|ReviewDbBatchUpdate ( @erritServerConfig Config cfg, AllUsersName allUsers, ChangeControl.GenericFactory changeControlFactory, ChangeIndexer indexer, ChangeNotes.Factory changeNotesFactory, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, ChangeUpdate.Factory changeUpdateFactory, @GerritPersonIdent PersonIdent serverIdent, GitReferenceUpdated gitRefUpdated, GitRepositoryManager repoManager, Metrics metrics, NoteDbUpdateManager.Factory updateManagerFactory, NotesMigration notesMigration, SchemaFactory<ReviewDb> schemaFactory, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
 name|ReviewDbBatchUpdate
 parameter_list|(

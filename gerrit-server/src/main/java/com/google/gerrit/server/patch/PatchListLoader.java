@@ -282,9 +282,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -298,7 +296,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -884,7 +882,7 @@ name|boolean
 name|save
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|PatchListLoader ( GitRepositoryManager mgr, PatchListCache plc, @GerritServerConfig Config cfg, @DiffExecutor ExecutorService de, AutoMerger am, @Assisted PatchListKey k, @Assisted Project.NameKey p)
 name|PatchListLoader
 parameter_list|(

@@ -1764,20 +1764,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|AssistedInject
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -2388,7 +2374,7 @@ name|FixInput
 name|fix
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, GitRepositoryManager repoManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, GpgApiAdapter gpgApi, ChangeNotes.Factory notesFactory, ChangeResource.Factory changeResourceFactory, ChangeKindCache changeKindCache, ChangeIndexCollection indexes, ApprovalsUtil approvalsUtil, @Assisted Iterable<ListChangesOption> options)
 name|ChangeJson
 parameter_list|(

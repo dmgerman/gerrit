@@ -246,6 +246,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -261,20 +273,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|AssistedInject
 import|;
 end_import
 
@@ -581,7 +579,7 @@ parameter_list|)
 function_decl|;
 block|}
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|DeleteRef ( Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, GitReferenceUpdated referenceUpdated, RefValidationHelper.Factory refDeletionValidatorFactory, Provider<InternalChangeQuery> queryProvider, @Assisted ProjectResource resource)
 name|DeleteRef
 parameter_list|(

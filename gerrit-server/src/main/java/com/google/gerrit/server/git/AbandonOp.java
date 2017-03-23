@@ -392,9 +392,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Inject
 import|;
 end_import
 
@@ -408,7 +406,7 @@ name|inject
 operator|.
 name|assistedinject
 operator|.
-name|AssistedInject
+name|Assisted
 import|;
 end_import
 
@@ -571,7 +569,7 @@ parameter_list|)
 function_decl|;
 block|}
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|AbandonOp ( AbandonedSender.Factory abandonedSenderFactory, ChangeMessagesUtil cmUtil, PatchSetUtil psUtil, ChangeAbandoned changeAbandoned, @Assisted @Nullable Account account, @Assisted @Nullable String msgTxt, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|AbandonOp
 parameter_list|(

@@ -182,20 +182,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|AssistedInject
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -834,7 +820,7 @@ name|IdentifiedUser
 name|author
 decl_stmt|;
 annotation|@
-name|AssistedInject
+name|Inject
 DECL|method|MetaDataUpdate ( GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey projectName, @Assisted Repository repository, @Assisted @Nullable BatchRefUpdate batch)
 specifier|public
 name|MetaDataUpdate
