@@ -1960,9 +1960,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|Collections
+name|ImmutableList
 operator|.
-name|emptyList
+name|of
 argument_list|()
 return|;
 block|}
