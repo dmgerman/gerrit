@@ -741,12 +741,13 @@ init|=
 name|getOrder
 argument_list|(
 name|updates
+argument_list|,
+name|listener
 argument_list|)
 decl_stmt|;
 comment|// TODO(dborowitz): Fuse implementations to use a single BatchRefUpdate between phases. Note
-comment|// that we will still need to respect the order, since it also dictates the order in which
-comment|// listener methods are called. We can revisit this later, particularly since the only user of
-comment|// BatchUpdateListener is MergeOp, which only uses one order.
+comment|// that we may still need to respect the order, since op implementations may make assumptions
+comment|// about the order in which their methods are called.
 switch|switch
 condition|(
 name|order
@@ -850,11 +851,6 @@ name|dryrun
 argument_list|)
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|afterUpdateChanges
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|NoteDbBatchUpdate
@@ -869,11 +865,6 @@ name|executeUpdateRepo
 argument_list|()
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|afterUpdateRepos
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|NoteDbBatchUpdate
@@ -890,11 +881,6 @@ name|dryrun
 argument_list|)
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|afterUpdateRefs
-argument_list|()
-expr_stmt|;
 break|break;
 default|default:
 throw|throw

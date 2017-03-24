@@ -1734,6 +1734,8 @@ init|=
 name|getOrder
 argument_list|(
 name|updates
+argument_list|,
+name|listener
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -1847,11 +1849,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|afterUpdateChanges
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|ReviewDbBatchUpdate
@@ -1866,11 +1863,6 @@ name|executeUpdateRepo
 argument_list|()
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|afterUpdateRepos
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|ReviewDbBatchUpdate
@@ -1887,11 +1879,6 @@ name|dryrun
 argument_list|)
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|afterUpdateRefs
-argument_list|()
-expr_stmt|;
 break|break;
 default|default:
 throw|throw
