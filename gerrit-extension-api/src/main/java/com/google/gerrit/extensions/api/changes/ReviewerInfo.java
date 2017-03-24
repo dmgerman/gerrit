@@ -133,6 +133,44 @@ name|String
 argument_list|>
 name|approvals
 decl_stmt|;
+DECL|method|byEmail (@ullable String name, String email)
+specifier|public
+specifier|static
+name|ReviewerInfo
+name|byEmail
+parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|name
+parameter_list|,
+name|String
+name|email
+parameter_list|)
+block|{
+name|ReviewerInfo
+name|info
+init|=
+operator|new
+name|ReviewerInfo
+argument_list|()
+decl_stmt|;
+name|info
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
+name|info
+operator|.
+name|email
+operator|=
+name|email
+expr_stmt|;
+return|return
+name|info
+return|;
+block|}
 DECL|method|ReviewerInfo (Integer id)
 specifier|public
 name|ReviewerInfo
@@ -159,6 +197,11 @@ return|return
 name|username
 return|;
 block|}
+DECL|method|ReviewerInfo ()
+specifier|private
+name|ReviewerInfo
+parameter_list|()
+block|{}
 block|}
 end_class
 

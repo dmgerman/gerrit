@@ -417,6 +417,11 @@ specifier|protected
 name|InheritableBoolean
 name|rejectImplicitMerges
 decl_stmt|;
+DECL|field|enableReviewerByEmail
+specifier|protected
+name|InheritableBoolean
+name|enableReviewerByEmail
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -485,6 +490,12 @@ operator|.
 name|INHERIT
 expr_stmt|;
 name|requireSignedPush
+operator|=
+name|InheritableBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|enableReviewerByEmail
 operator|=
 name|InheritableBoolean
 operator|.
@@ -605,6 +616,16 @@ parameter_list|()
 block|{
 return|return
 name|rejectImplicitMerges
+return|;
+block|}
+DECL|method|getEnableReviewerByEmail ()
+specifier|public
+name|InheritableBoolean
+name|getEnableReviewerByEmail
+parameter_list|()
+block|{
+return|return
+name|enableReviewerByEmail
 return|;
 block|}
 DECL|method|setUseContributorAgreements (final InheritableBoolean u)

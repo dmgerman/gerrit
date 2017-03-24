@@ -203,6 +203,11 @@ specifier|public
 name|InheritedBooleanInfo
 name|rejectImplicitMerges
 decl_stmt|;
+DECL|field|enableReviewerByEmail
+specifier|public
+name|InheritedBooleanInfo
+name|enableReviewerByEmail
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|MaxObjectSizeLimitInfo
