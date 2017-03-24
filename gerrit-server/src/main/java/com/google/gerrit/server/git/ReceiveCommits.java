@@ -11313,6 +11313,16 @@ block|}
 name|total
 operator|++
 expr_stmt|;
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|parseBody
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
 name|String
 name|name
 init|=
