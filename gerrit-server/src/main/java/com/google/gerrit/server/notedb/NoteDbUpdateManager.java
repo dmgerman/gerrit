@@ -1248,6 +1248,27 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|flushToFinalInserter
+argument_list|()
+expr_stmt|;
+name|finalIns
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+name|tempIns
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|flushToFinalInserter ()
+name|void
+name|flushToFinalInserter
+parameter_list|()
+throws|throws
+name|IOException
+block|{
 name|checkState
 argument_list|(
 name|finalIns
@@ -1285,16 +1306,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|finalIns
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
-name|tempIns
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -2010,6 +2021,44 @@ name|toDelete
 operator|.
 name|isEmpty
 argument_list|()
+operator|&&
+operator|!
+name|hasCommands
+argument_list|(
+name|changeRepo
+argument_list|)
+operator|&&
+operator|!
+name|hasCommands
+argument_list|(
+name|allUsersRepo
+argument_list|)
+return|;
+block|}
+DECL|method|hasCommands (@ullable OpenRepo or)
+specifier|private
+specifier|static
+name|boolean
+name|hasCommands
+parameter_list|(
+annotation|@
+name|Nullable
+name|OpenRepo
+name|or
+parameter_list|)
+block|{
+return|return
+name|or
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|or
+operator|.
+name|cmds
+operator|.
+name|isEmpty
+argument_list|()
 return|;
 block|}
 comment|/**    * Add an update to the list of updates to execute.    *    *<p>Updates should only be added to the manager after all mutations have been made, as this    * method may eagerly access the update.    *    * @param update the update to add.    */
@@ -2330,6 +2379,32 @@ name|getRefName
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|changeId
+operator|==
+literal|null
+operator|||
+operator|!
+name|cmd
+operator|.
+name|getRefName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|RefNames
+operator|.
+name|changeMetaRef
+argument_list|(
+name|changeId
+argument_list|)
+argument_list|)
+condition|)
+block|{
+comment|// Not a meta ref update, likely due to a repo update along with the change meta update.
+continue|continue;
+block|}
 name|changeIds
 operator|.
 name|add
@@ -2736,11 +2811,35 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Nullable
 DECL|method|execute ()
 specifier|public
-name|void
+name|BatchRefUpdate
 name|execute
 parameter_list|()
+throws|throws
+name|OrmException
+throws|,
+name|IOException
+block|{
+return|return
+name|execute
+argument_list|(
+literal|false
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Nullable
+DECL|method|execute (boolean dryrun)
+specifier|public
+name|BatchRefUpdate
+name|execute
+parameter_list|(
+name|boolean
+name|dryrun
+parameter_list|)
 throws|throws
 name|OrmException
 throws|,
@@ -2769,7 +2868,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-return|return;
+return|return
+literal|null
+return|;
 block|}
 try|try
 init|(
@@ -2799,16 +2900,26 @@ comment|// Thus if the change meta update succeeds and the All-Users update fail
 comment|// we may have stale draft comments. Doing it in this order allows stale
 comment|// comments to be filtered out by ChangeNotes, reflecting the fact that
 comment|// comments can only go from DRAFT to PUBLISHED, not vice versa.
+name|BatchRefUpdate
+name|result
+init|=
 name|execute
 argument_list|(
 name|changeRepo
+argument_list|,
+name|dryrun
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|execute
 argument_list|(
 name|allUsersRepo
+argument_list|,
+name|dryrun
 argument_list|)
 expr_stmt|;
+return|return
+name|result
+return|;
 block|}
 finally|finally
 block|{
@@ -2817,13 +2928,16 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|execute (OpenRepo or)
+DECL|method|execute (OpenRepo or, boolean dryrun)
 specifier|private
-name|void
+name|BatchRefUpdate
 name|execute
 parameter_list|(
 name|OpenRepo
 name|or
+parameter_list|,
+name|boolean
+name|dryrun
 parameter_list|)
 throws|throws
 name|IOException
@@ -2842,13 +2956,36 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-return|return;
+return|return
+literal|null
+return|;
 block|}
+if|if
+condition|(
+operator|!
+name|dryrun
+condition|)
+block|{
 name|or
 operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// OpenRepo buffers objects separately; caller may assume that objects are available in the
+comment|// inserter it previously passed via setChangeRepo.
+comment|// TODO(dborowitz): This should be flushToFinalInserter to avoid flushing objects to the
+comment|// underlying repo during a dry run. However, the only user of this is PreviewSubmit, which
+comment|// uses BundleWriter, which only takes a Repository so it can't read unflushed objects. Fix
+comment|// BundleWriter, then fix this call.
+name|or
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+block|}
 name|BatchRefUpdate
 name|bru
 init|=
@@ -2908,6 +3045,12 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|dryrun
+condition|)
+block|{
 name|bru
 operator|.
 name|execute
@@ -2997,6 +3140,10 @@ name|bru
 argument_list|)
 throw|;
 block|}
+block|}
+return|return
+name|bru
+return|;
 block|}
 DECL|method|addCommands ()
 specifier|private
