@@ -480,6 +480,8 @@ name|putEntry
 argument_list|(
 name|out
 argument_list|,
+literal|null
+argument_list|,
 name|path
 argument_list|,
 name|FileMode
