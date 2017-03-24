@@ -203,6 +203,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|checkConsistency (ConsistencyCheckInput in)
+name|ConsistencyCheckInfo
+name|checkConsistency
+parameter_list|(
+name|ConsistencyCheckInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -291,6 +301,23 @@ name|DiffPreferencesInfo
 name|setDefaultDiffPreferences
 parameter_list|(
 name|DiffPreferencesInfo
+name|in
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|checkConsistency (ConsistencyCheckInput in)
+specifier|public
+name|ConsistencyCheckInfo
+name|checkConsistency
+parameter_list|(
+name|ConsistencyCheckInput
 name|in
 parameter_list|)
 block|{
