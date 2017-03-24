@@ -3188,6 +3188,8 @@ block|{}
 argument_list|)
 return|;
 block|}
+annotation|@
+name|FunctionalInterface
 DECL|interface|MyConsumer
 specifier|private
 specifier|static
