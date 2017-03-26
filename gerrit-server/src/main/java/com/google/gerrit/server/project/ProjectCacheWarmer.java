@@ -402,16 +402,8 @@ name|scheduler
 operator|.
 name|execute
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 for|for
 control|(
@@ -431,16 +423,8 @@ name|pool
 operator|.
 name|execute
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|cache
 operator|.
@@ -449,7 +433,6 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -495,7 +478,6 @@ argument_list|(
 literal|"Interrupted while waiting for project cache to load"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)

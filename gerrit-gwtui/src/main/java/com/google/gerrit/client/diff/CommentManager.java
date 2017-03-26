@@ -1121,26 +1121,17 @@ name|CodeMirror
 name|cm
 parameter_list|)
 function_decl|;
-DECL|method|signInCallback (final CodeMirror cm)
+DECL|method|signInCallback (CodeMirror cm)
 name|Runnable
 name|signInCallback
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)
 block|{
 return|return
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|String
 name|token
@@ -1179,7 +1170,6 @@ name|token
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 return|;
 block|}
 DECL|method|newDraft (CodeMirror cm)
@@ -1191,11 +1181,10 @@ name|CodeMirror
 name|cm
 parameter_list|)
 function_decl|;
-DECL|method|newDraftCallback (final CodeMirror cm)
+DECL|method|newDraftCallback (CodeMirror cm)
 name|Runnable
 name|newDraftCallback
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)
@@ -1217,16 +1206,8 @@ argument_list|)
 return|;
 block|}
 return|return
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 if|if
 condition|(
@@ -1244,7 +1225,6 @@ argument_list|(
 name|cm
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 return|;
@@ -1475,16 +1455,8 @@ name|dir
 parameter_list|)
 block|{
 return|return
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 comment|// Every comment appears in both side maps as a linked pair.
 comment|// It is only necessary to search one side to find a comment
@@ -1769,7 +1741,6 @@ operator|.
 name|focus
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 return|;
 block|}
@@ -2487,26 +2458,17 @@ name|CodeMirror
 name|cm
 parameter_list|)
 function_decl|;
-DECL|method|toggleOpenBox (final CodeMirror cm)
+DECL|method|toggleOpenBox (CodeMirror cm)
 name|Runnable
 name|toggleOpenBox
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)
 block|{
 return|return
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|CommentGroup
 name|group
@@ -2530,29 +2492,19 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-block|}
 return|;
 block|}
-DECL|method|openCloseAll (final CodeMirror cm)
+DECL|method|openCloseAll (CodeMirror cm)
 name|Runnable
 name|openCloseAll
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)
 block|{
 return|return
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|CommentGroup
 name|group
@@ -2574,7 +2526,6 @@ operator|.
 name|openCloseAll
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 return|;

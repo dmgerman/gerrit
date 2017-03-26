@@ -1292,7 +1292,6 @@ argument_list|,
 literal|"1"
 argument_list|)
 expr_stmt|;
-specifier|final
 name|AtomicBoolean
 name|doneBgUpdate
 init|=
@@ -1305,16 +1304,8 @@ decl_stmt|;
 name|Runnable
 name|bgUpdate
 init|=
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 if|if
 condition|(
@@ -1334,7 +1325,6 @@ argument_list|,
 literal|"1234"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 decl_stmt|;
@@ -1580,7 +1570,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-specifier|final
 name|AtomicInteger
 name|bgCounter
 init|=
@@ -1593,16 +1582,8 @@ decl_stmt|;
 name|Runnable
 name|bgUpdate
 init|=
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|writeBlob
 argument_list|(
@@ -1621,7 +1602,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 decl_stmt|;
 name|RepoSequence

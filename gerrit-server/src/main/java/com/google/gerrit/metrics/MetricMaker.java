@@ -487,7 +487,7 @@ name|field3
 parameter_list|)
 function_decl|;
 comment|/**    * Constant value that does not change.    *    * @param name unique name of the metric.    * @param value only value of the metric.    * @param desc description of the metric.    */
-DECL|method|newConstantMetric (String name, final V value, Description desc)
+DECL|method|newConstantMetric (String name, V value, Description desc)
 specifier|public
 parameter_list|<
 name|V
@@ -498,7 +498,6 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|V
 name|value
 parameter_list|,
@@ -533,7 +532,6 @@ operator|.
 name|getClass
 argument_list|()
 decl_stmt|;
-specifier|final
 name|CallbackMetric0
 argument_list|<
 name|V
@@ -553,16 +551,8 @@ name|newTrigger
 argument_list|(
 name|metric
 argument_list|,
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|metric
 operator|.
@@ -572,12 +562,11 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Instantaneous reading of a value.    *    *<pre>    * metricMaker.newCallbackMetric(&quot;memory&quot;,    *     new Description(&quot;Total bytes of memory used&quot;)    *        .setGauge()    *        .setUnit(Units.BYTES),    *     new Supplier&lt;Long&gt;() {    *       public Long get() {    *         return Runtime.getRuntime().totalMemory();    *       }    *     });    *</pre>    *    * @param name unique name of the metric.    * @param valueClass type of value recorded by the metric.    * @param desc description of the metric.    * @param trigger function to compute the value of the metric.    */
-DECL|method|newCallbackMetric ( String name, Class<V> valueClass, Description desc, final Supplier<V> trigger)
+DECL|method|newCallbackMetric ( String name, Class<V> valueClass, Description desc, Supplier<V> trigger)
 specifier|public
 parameter_list|<
 name|V
@@ -597,7 +586,6 @@ parameter_list|,
 name|Description
 name|desc
 parameter_list|,
-specifier|final
 name|Supplier
 argument_list|<
 name|V
@@ -605,7 +593,6 @@ argument_list|>
 name|trigger
 parameter_list|)
 block|{
-specifier|final
 name|CallbackMetric0
 argument_list|<
 name|V
@@ -625,16 +612,8 @@ name|newTrigger
 argument_list|(
 name|metric
 argument_list|,
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|metric
 operator|.
@@ -646,7 +625,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;

@@ -839,16 +839,8 @@ argument_list|,
 name|objectPendingFinalizationCount
 argument_list|)
 operator|,
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 try|try
 block|{
@@ -928,15 +920,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 block|)
-function|;
-block|}
+class|;
 end_class
 
 begin_function
+unit|}    private
 DECL|method|procJvmGc (MetricMaker metrics)
-specifier|private
 name|void
 name|procJvmGc
 parameter_list|(
@@ -1035,16 +1025,8 @@ name|gcCount
 argument_list|,
 name|gcTime
 argument_list|,
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 for|for
 control|(
@@ -1114,7 +1096,6 @@ argument_list|,
 name|time
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

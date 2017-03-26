@@ -1098,16 +1098,8 @@ name|autoCommitExecutor
 operator|.
 name|scheduleAtFixedRate
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 try|try
 block|{
@@ -1199,7 +1191,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

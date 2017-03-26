@@ -996,16 +996,8 @@ name|newTrigger
 argument_list|(
 name|cntr
 argument_list|,
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|invocations
 operator|.
@@ -1019,7 +1011,6 @@ argument_list|(
 literal|42L
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;

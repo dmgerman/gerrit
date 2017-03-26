@@ -1652,16 +1652,8 @@ name|dir
 parameter_list|)
 block|{
 return|return
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|int
 name|line
@@ -1730,7 +1722,6 @@ argument_list|,
 name|dir
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|;
 block|}

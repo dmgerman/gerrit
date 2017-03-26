@@ -410,16 +410,8 @@ name|toggleA
 parameter_list|()
 block|{
 return|return
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|setVisibleA
 argument_list|(
@@ -428,7 +420,6 @@ name|isVisibleA
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|;
 block|}

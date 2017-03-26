@@ -1041,17 +1041,15 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|exportPoolMetrics (final BasicDataSource pool)
+DECL|method|exportPoolMetrics (BasicDataSource pool)
 specifier|private
 name|void
 name|exportPoolMetrics
 parameter_list|(
-specifier|final
 name|BasicDataSource
 name|pool
 parameter_list|)
 block|{
-specifier|final
 name|CallbackMetric1
 argument_list|<
 name|Boolean
@@ -1098,16 +1096,8 @@ name|newTrigger
 argument_list|(
 name|cnt
 argument_list|,
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 synchronized|synchronized
 init|(
@@ -1138,7 +1128,6 @@ name|getNumIdle
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)
