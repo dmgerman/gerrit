@@ -492,18 +492,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|Callable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|CyclicBarrier
 import|;
 end_import
@@ -1323,21 +1311,8 @@ name|daemonService
 operator|.
 name|submit
 argument_list|(
-operator|new
-name|Callable
-argument_list|<
-name|Void
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Void
-name|call
 parameter_list|()
-throws|throws
-name|Exception
+lambda|->
 block|{
 name|int
 name|rc
@@ -1351,18 +1326,19 @@ name|String
 index|[]
 block|{
 literal|"-d"
-block|,
+operator|,
 name|site
 operator|.
 name|getPath
 argument_list|()
-block|,
+operator|,
 literal|"--headless"
-block|,
+operator|,
 literal|"--console-log"
-block|,
+operator|,
 literal|"--show-stack-trace"
-block|,                           }
+operator|,
+block|}
 argument_list|)
 decl_stmt|;
 if|if
@@ -1391,14 +1367,13 @@ return|return
 literal|null
 return|;
 block|}
-block|}
-argument_list|)
-decl_stmt|;
+block|)
+function|;
 name|serverStarted
 operator|.
 name|await
-argument_list|()
-expr_stmt|;
+parameter_list|()
+constructor_decl|;
 name|System
 operator|.
 name|out
@@ -1409,6 +1384,9 @@ literal|"Gerrit Server Started"
 argument_list|)
 expr_stmt|;
 block|}
+end_class
+
+begin_decl_stmt
 name|Injector
 name|i
 init|=
@@ -1417,6 +1395,9 @@ argument_list|(
 name|daemon
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_return
 return|return
 operator|new
 name|GerritServer
@@ -1430,9 +1411,11 @@ argument_list|,
 name|daemonService
 argument_list|)
 return|;
-block|}
+end_return
+
+begin_function
+unit|}    private
 DECL|method|initSite (Config base)
-specifier|private
 specifier|static
 name|File
 name|initSite
@@ -1550,6 +1533,9 @@ return|return
 name|tmp
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|mergeTestConfig (Config cfg)
 specifier|private
 specifier|static
@@ -1766,6 +1752,9 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|createTestInjector (Daemon daemon)
 specifier|private
 specifier|static
@@ -1854,6 +1843,9 @@ name|module
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1915,6 +1907,9 @@ name|obj
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getLocalHost ()
 specifier|private
 specifier|static
@@ -1929,42 +1924,66 @@ name|getLoopbackAddress
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_decl_stmt
 DECL|field|desc
 specifier|private
 specifier|final
 name|Description
 name|desc
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|daemon
 specifier|private
 name|Daemon
 name|daemon
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|daemonService
 specifier|private
 name|ExecutorService
 name|daemonService
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|testInjector
 specifier|private
 name|Injector
 name|testInjector
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|url
 specifier|private
 name|String
 name|url
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|sshdAddress
 specifier|private
 name|InetSocketAddress
 name|sshdAddress
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|httpAddress
 specifier|private
 name|InetSocketAddress
 name|httpAddress
 decl_stmt|;
+end_decl_stmt
+
+begin_constructor
 DECL|method|GerritServer ( Description desc, Injector testInjector, Daemon daemon, ExecutorService daemonService)
 specifier|private
 name|GerritServer
@@ -2087,6 +2106,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_constructor
+
+begin_function
 DECL|method|getUrl ()
 name|String
 name|getUrl
@@ -2096,6 +2118,9 @@ return|return
 name|url
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getSshdAddress ()
 name|InetSocketAddress
 name|getSshdAddress
@@ -2105,6 +2130,9 @@ return|return
 name|sshdAddress
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getHttpAddress ()
 name|InetSocketAddress
 name|getHttpAddress
@@ -2114,6 +2142,9 @@ return|return
 name|httpAddress
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getTestInjector ()
 name|Injector
 name|getTestInjector
@@ -2123,6 +2154,9 @@ return|return
 name|testInjector
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getDescription ()
 name|Description
 name|getDescription
@@ -2132,6 +2166,9 @@ return|return
 name|desc
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|stop ()
 name|void
 name|stop
@@ -2197,6 +2234,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|checkNoteDbState ()
 specifier|private
 name|void
@@ -2303,6 +2343,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -2328,8 +2371,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

@@ -428,7 +428,6 @@ argument_list|>
 name|callable
 parameter_list|)
 block|{
-specifier|final
 name|Context
 name|ctx
 init|=
@@ -436,7 +435,6 @@ operator|new
 name|Context
 argument_list|()
 decl_stmt|;
-specifier|final
 name|Callable
 argument_list|<
 name|T
@@ -454,21 +452,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
-operator|new
-name|Callable
-argument_list|<
-name|T
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|T
-name|call
 parameter_list|()
-throws|throws
-name|Exception
+lambda|->
 block|{
 name|Context
 name|old
@@ -503,7 +488,6 @@ argument_list|(
 name|old
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 return|;

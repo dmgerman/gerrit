@@ -336,18 +336,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|Callable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|ExecutionException
 import|;
 end_import
@@ -628,14 +616,13 @@ name|progress
 argument_list|)
 return|;
 block|}
-DECL|method|reindexAccounts ( final AccountIndex index, List<Account.Id> ids, ProgressMonitor progress)
+DECL|method|reindexAccounts ( AccountIndex index, List<Account.Id> ids, ProgressMonitor progress)
 specifier|private
 name|SiteIndexer
 operator|.
 name|Result
 name|reindexAccounts
 parameter_list|(
-specifier|final
 name|AccountIndex
 name|index
 parameter_list|,
@@ -691,7 +678,6 @@ argument_list|(
 literal|true
 argument_list|)
 decl_stmt|;
-specifier|final
 name|AtomicInteger
 name|done
 init|=
@@ -699,7 +685,6 @@ operator|new
 name|AtomicInteger
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AtomicInteger
 name|failed
 init|=
@@ -726,7 +711,6 @@ range|:
 name|ids
 control|)
 block|{
-specifier|final
 name|String
 name|desc
 init|=
@@ -744,21 +728,8 @@ name|executor
 operator|.
 name|submit
 argument_list|(
-operator|new
-name|Callable
-argument_list|<
-name|Void
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Void
-name|call
 parameter_list|()
-throws|throws
-name|Exception
+lambda|->
 block|{
 try|try
 block|{
@@ -814,7 +785,6 @@ block|}
 return|return
 literal|null
 return|;
-block|}
 block|}
 argument_list|)
 decl_stmt|;
