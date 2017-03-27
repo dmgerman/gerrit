@@ -76,6 +76,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 operator|.
 name|SCHEME_USERNAME
@@ -154,7 +156,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|ExternalId
+name|VersionedAuthorizedKeys
 import|;
 end_import
 
@@ -170,7 +172,9 @@ name|server
 operator|.
 name|account
 operator|.
-name|VersionedAuthorizedKeys
+name|externalids
+operator|.
+name|ExternalId
 import|;
 end_import
 

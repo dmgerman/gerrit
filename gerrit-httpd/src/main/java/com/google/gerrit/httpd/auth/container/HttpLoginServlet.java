@@ -80,6 +80,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 operator|.
 name|SCHEME_EXTERNAL
@@ -261,6 +263,8 @@ operator|.
 name|server
 operator|.
 name|account
+operator|.
+name|externalids
 operator|.
 name|ExternalId
 import|;

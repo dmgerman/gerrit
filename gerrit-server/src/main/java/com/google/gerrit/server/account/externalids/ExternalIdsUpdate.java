@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.account
+DECL|package|com.google.gerrit.server.account.externalids
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|account
+operator|.
+name|externalids
 package|;
 end_package
 
@@ -110,6 +112,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 operator|.
 name|Key
@@ -130,6 +134,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 operator|.
 name|toAccountExternalIds
@@ -147,6 +153,8 @@ operator|.
 name|server
 operator|.
 name|account
+operator|.
+name|externalids
 operator|.
 name|ExternalIds
 operator|.
@@ -166,6 +174,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalIds
 operator|.
 name|readNoteMap
@@ -183,6 +193,8 @@ operator|.
 name|server
 operator|.
 name|account
+operator|.
+name|externalids
 operator|.
 name|ExternalIds
 operator|.

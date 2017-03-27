@@ -76,6 +76,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 operator|.
 name|SCHEME_GERRIT
@@ -160,6 +162,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 import|;
 end_import
@@ -175,6 +179,8 @@ operator|.
 name|server
 operator|.
 name|account
+operator|.
+name|externalids
 operator|.
 name|ExternalIdsBatchUpdate
 import|;

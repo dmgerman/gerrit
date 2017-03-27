@@ -150,6 +150,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 import|;
 end_import

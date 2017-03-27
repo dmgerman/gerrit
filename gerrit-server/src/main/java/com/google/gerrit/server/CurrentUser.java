@@ -122,7 +122,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|ExternalId
+name|GroupMembership
 import|;
 end_import
 
@@ -138,7 +138,9 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupMembership
+name|externalids
+operator|.
+name|ExternalId
 import|;
 end_import
 

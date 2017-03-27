@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.account
+DECL|package|com.google.gerrit.server.account.externalids
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|account
+operator|.
+name|externalids
 package|;
 end_package
 
@@ -253,6 +255,22 @@ operator|.
 name|client
 operator|.
 name|AccountExternalId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|HashedPassword
 import|;
 end_import
 

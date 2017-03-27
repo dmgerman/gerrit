@@ -78,6 +78,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 operator|.
 name|SCHEME_GPGKEY
@@ -453,6 +455,8 @@ operator|.
 name|server
 operator|.
 name|account
+operator|.
+name|externalids
 operator|.
 name|ExternalId
 import|;

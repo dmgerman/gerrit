@@ -80,6 +80,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 operator|.
 name|SCHEME_USERNAME
@@ -97,6 +99,8 @@ operator|.
 name|server
 operator|.
 name|account
+operator|.
+name|externalids
 operator|.
 name|ExternalId
 operator|.
@@ -315,6 +319,8 @@ operator|.
 name|server
 operator|.
 name|account
+operator|.
+name|externalids
 operator|.
 name|ExternalId
 import|;

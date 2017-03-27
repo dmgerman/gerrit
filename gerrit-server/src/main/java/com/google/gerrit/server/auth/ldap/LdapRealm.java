@@ -80,6 +80,8 @@ name|server
 operator|.
 name|account
 operator|.
+name|externalids
+operator|.
 name|ExternalId
 operator|.
 name|SCHEME_GERRIT
@@ -316,7 +318,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|ExternalId
+name|GroupBackends
 import|;
 end_import
 
@@ -332,7 +334,9 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupBackends
+name|externalids
+operator|.
+name|ExternalId
 import|;
 end_import
 

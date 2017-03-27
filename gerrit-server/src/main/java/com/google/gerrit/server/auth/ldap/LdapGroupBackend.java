@@ -80,9 +80,9 @@ name|server
 operator|.
 name|account
 operator|.
-name|ExternalId
+name|GroupBackends
 operator|.
-name|SCHEME_GERRIT
+name|GROUP_REF_NAME_COMPARATOR
 import|;
 end_import
 
@@ -98,9 +98,11 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupBackends
+name|externalids
 operator|.
-name|GROUP_REF_NAME_COMPARATOR
+name|ExternalId
+operator|.
+name|SCHEME_GERRIT
 import|;
 end_import
 
@@ -310,22 +312,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|ExternalId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|GroupBackend
 import|;
 end_import
@@ -343,6 +329,24 @@ operator|.
 name|account
 operator|.
 name|GroupMembership
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|externalids
+operator|.
+name|ExternalId
 import|;
 end_import
 
