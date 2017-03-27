@@ -1560,7 +1560,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Deletes an external ID.    *    *<p>The deletion fails with {@link IllegalStateException} if there is an existing external ID    * that has the same key, but otherwise doesn't match the specified external ID.    */
+comment|/**    * Deletes an external ID.    *    * @throws IllegalStateException is thrown if there is an existing external ID that has the same    *     key, but otherwise doesn't match the specified external ID.    */
 DECL|method|delete (ReviewDb db, ExternalId extId)
 specifier|public
 name|void
@@ -1592,7 +1592,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Deletes external IDs.    *    *<p>The deletion fails with {@link IllegalStateException} if there is an existing external ID    * that has the same key as any of the external IDs that should be deleted, but otherwise doesn't    * match the that external ID.    */
+comment|/**    * Deletes external IDs.    *    * @throws IllegalStateException is thrown if there is an existing external ID that has the same    *     key as any of the external IDs that should be deleted, but otherwise doesn't match the that    *     external ID.    */
 DECL|method|delete (ReviewDb db, Collection<ExternalId> extIds)
 specifier|public
 name|void
@@ -1660,7 +1660,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Delete an external ID by key.    *    *<p>The external ID is only deleted if it belongs to the specified account. If it belongs to    * another account the deletion fails with {@link IllegalStateException}.    */
+comment|/**    * Delete an external ID by key.    *    * @throws IllegalStateException is thrown if the external ID does not belong to the specified    *     account.    */
 DECL|method|delete (ReviewDb db, Account.Id accountId, ExternalId.Key extIdKey)
 specifier|public
 name|void
@@ -1701,7 +1701,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Delete external IDs by external ID key.    *    *<p>The external IDs are only deleted if they belongs to the specified account. If any of the    * external IDs belongs to another account the deletion fails with {@link IllegalStateException}.    */
+comment|/**    * Delete external IDs by external ID key.    *    * @throws IllegalStateException is thrown if any of the external IDs does not belong to the    *     specified account.    */
 DECL|method|delete (ReviewDb db, Account.Id accountId, Collection<ExternalId.Key> extIdKeys)
 specifier|public
 name|void
@@ -1899,7 +1899,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Replaces external IDs for an account by external ID keys.    *    *<p>Deletion of external IDs is done before adding the new external IDs. This means if an    * external ID key is specified for deletion and an external ID with the same key is specified to    * be added, the old external ID with that key is deleted first and then the new external ID is    * added (so the external ID for that key is replaced).    *    *<p>If any of the specified external IDs belongs to another account the replacement fails with    * {@link IllegalStateException}.    */
+comment|/**    * Replaces external IDs for an account by external ID keys.    *    *<p>Deletion of external IDs is done before adding the new external IDs. This means if an    * external ID key is specified for deletion and an external ID with the same key is specified to    * be added, the old external ID with that key is deleted first and then the new external ID is    * added (so the external ID for that key is replaced).    *    * @throws IllegalStateException is thrown if any of the specified external IDs does not belong to    *     the specified account.    */
 DECL|method|replace ( ReviewDb db, Account.Id accountId, Collection<ExternalId.Key> toDelete, Collection<ExternalId> toAdd)
 specifier|public
 name|void
@@ -2155,7 +2155,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Replaces an external ID.    *    *<p>If the specified external IDs belongs to different accounts the replacement fails with    * {@link IllegalStateException}.    */
+comment|/**    * Replaces an external ID.    *    * @throws IllegalStateException is thrown if the specified external IDs belong to different    *     accounts.    */
 DECL|method|replace (ReviewDb db, ExternalId toDelete, ExternalId toAdd)
 specifier|public
 name|void
@@ -2197,7 +2197,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Replaces external IDs.    *    *<p>Deletion of external IDs is done before adding the new external IDs. This means if an    * external ID is specified for deletion and an external ID with the same key is specified to be    * added, the old external ID with that key is deleted first and then the new external ID is added    * (so the external ID for that key is replaced).    *    *<p>If the specified external IDs belong to different accounts the replacement fails with {@link    * IllegalStateException}.    */
+comment|/**    * Replaces external IDs.    *    *<p>Deletion of external IDs is done before adding the new external IDs. This means if an    * external ID is specified for deletion and an external ID with the same key is specified to be    * added, the old external ID with that key is deleted first and then the new external ID is added    * (so the external ID for that key is replaced).    *    * @throws IllegalStateException is thrown if the specified external IDs belong to different    *     accounts.    */
 DECL|method|replace (ReviewDb db, Collection<ExternalId> toDelete, Collection<ExternalId> toAdd)
 specifier|public
 name|void
@@ -2641,7 +2641,7 @@ name|dataBlob
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Removes an external ID from the note map.    *    *<p>The removal fails with {@link IllegalStateException} if there is an existing external ID    * that has the same key, but otherwise doesn't match the specified external ID.    */
+comment|/**    * Removes an external ID from the note map.    *    * @throws IllegalStateException is thrown if there is an existing external ID that has the same    *     key, but otherwise doesn't match the specified external ID.    */
 DECL|method|remove (RevWalk rw, NoteMap noteMap, ExternalId extId)
 specifier|public
 specifier|static
@@ -2757,7 +2757,7 @@ name|noteId
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Removes an external ID from the note map by external ID key.    *    *<p>If an expected account ID is provided the external ID is only deleted if it belongs to this    * account and the deletion fails with {@link IllegalStateException} if the external IDs belongs    * to another account.    */
+comment|/**    * Removes an external ID from the note map by external ID key.    *    * @throws IllegalStateException is thrown if an expected account ID is provided and an external    *     ID with the specified key exists, but belongs to another account.    */
 DECL|method|remove ( RevWalk rw, NoteMap noteMap, ExternalId.Key extIdKey, Account.Id expectedAccountId)
 specifier|private
 specifier|static
