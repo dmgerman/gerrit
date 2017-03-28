@@ -1989,7 +1989,7 @@ name|AdminConstants
 operator|.
 name|I
 operator|.
-name|rejectImplicitMerges
+name|enableReviewerByEmail
 argument_list|()
 argument_list|,
 name|enableReviewerByEmail
