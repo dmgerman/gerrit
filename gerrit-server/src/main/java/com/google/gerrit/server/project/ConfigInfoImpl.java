@@ -800,6 +800,12 @@ name|createNewChangeForAllNotInTarget
 operator|=
 name|createNewChangeForAllNotInTarget
 expr_stmt|;
+name|this
+operator|.
+name|enableReviewerByEmail
+operator|=
+name|enableReviewerByEmail
+expr_stmt|;
 if|if
 condition|(
 name|serverEnableSignedPush
