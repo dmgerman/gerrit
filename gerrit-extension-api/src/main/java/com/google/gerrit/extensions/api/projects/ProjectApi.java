@@ -505,7 +505,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Lookup a commit by its {@Code ObjectId} string.    *    * @param commit the {@Code ObjectId} string.    * @return API for accessing the commit.    */
+comment|/**    * Lookup a commit by its {@code ObjectId} string.    *    * @param commit the {@code ObjectId} string.    * @return API for accessing the commit.    */
 DECL|method|commit (String commit)
 name|CommitApi
 name|commit
