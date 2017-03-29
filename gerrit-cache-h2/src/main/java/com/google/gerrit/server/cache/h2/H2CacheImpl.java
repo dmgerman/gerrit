@@ -2991,7 +2991,7 @@ name|conn
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"MERGE INTO data VALUES(?,?,?,?)"
+literal|"MERGE INTO data (k, v, created, accessed) VALUES(?,?,?,?)"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3380,7 +3380,7 @@ name|s
 operator|.
 name|executeQuery
 argument_list|(
-literal|"SELECT SUM(OCTET_LENGTH(k) + OCTET_LENGTH(v)) FROM data"
+literal|"SELECT SUM(space) FROM data"
 argument_list|)
 init|)
 block|{
@@ -3423,7 +3423,7 @@ literal|"SELECT"
 operator|+
 literal|" k"
 operator|+
-literal|",OCTET_LENGTH(k) + OCTET_LENGTH(v)"
+literal|",space"
 operator|+
 literal|",created"
 operator|+
@@ -3600,7 +3600,7 @@ literal|"SELECT"
 operator|+
 literal|" COUNT(*)"
 operator|+
-literal|",SUM(OCTET_LENGTH(k) + OCTET_LENGTH(v))"
+literal|",SUM(space)"
 operator|+
 literal|" FROM data"
 argument_list|)
@@ -3902,7 +3902,7 @@ init|)
 block|{
 name|stmt
 operator|.
-name|execute
+name|addBatch
 argument_list|(
 literal|"CREATE TABLE IF NOT EXISTS data"
 operator|+
@@ -3923,6 +3923,20 @@ literal|",accessed TIMESTAMP NOT NULL"
 operator|+
 literal|")"
 argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|addBatch
+argument_list|(
+literal|"ALTER TABLE data ADD COLUMN IF NOT EXISTS "
+operator|+
+literal|"space BIGINT AS OCTET_LENGTH(k) + OCTET_LENGTH(v)"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|executeBatch
+argument_list|()
 expr_stmt|;
 block|}
 block|}
