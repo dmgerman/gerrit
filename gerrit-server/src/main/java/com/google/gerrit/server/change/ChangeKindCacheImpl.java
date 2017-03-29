@@ -1553,6 +1553,13 @@ literal|1
 operator|)
 operator|&&
 operator|(
+name|prior
+operator|.
+name|getParentCount
+argument_list|()
+operator|==
+literal|0
+operator|||
 operator|!
 name|onlyFirstParentChanged
 argument_list|(
@@ -1560,13 +1567,6 @@ name|prior
 argument_list|,
 name|next
 argument_list|)
-operator|||
-name|prior
-operator|.
-name|getParentCount
-argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
