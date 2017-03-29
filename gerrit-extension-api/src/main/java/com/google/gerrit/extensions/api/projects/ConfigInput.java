@@ -177,6 +177,11 @@ specifier|public
 name|InheritableBoolean
 name|rejectImplicitMerges
 decl_stmt|;
+DECL|field|enableReviewerByEmail
+specifier|public
+name|InheritableBoolean
+name|enableReviewerByEmail
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|String

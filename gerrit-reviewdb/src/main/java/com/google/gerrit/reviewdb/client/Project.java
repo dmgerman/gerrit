@@ -628,6 +628,21 @@ return|return
 name|enableReviewerByEmail
 return|;
 block|}
+DECL|method|setEnableReviewerByEmail (final InheritableBoolean enable)
+specifier|public
+name|void
+name|setEnableReviewerByEmail
+parameter_list|(
+specifier|final
+name|InheritableBoolean
+name|enable
+parameter_list|)
+block|{
+name|enableReviewerByEmail
+operator|=
+name|enable
+expr_stmt|;
+block|}
 DECL|method|setUseContributorAgreements (final InheritableBoolean u)
 specifier|public
 name|void

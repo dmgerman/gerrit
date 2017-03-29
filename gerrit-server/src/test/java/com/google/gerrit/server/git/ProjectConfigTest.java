@@ -746,12 +746,6 @@ literal|"  autoVerify = group Developers\n"
 comment|//
 operator|+
 literal|"  agreementUrl = http://www.example.com/agree\n"
-comment|//
-operator|+
-literal|"[reviewer]\n"
-comment|//
-operator|+
-literal|"  enableByEmail = true\n"
 argument_list|)
 argument_list|)
 comment|//
@@ -1026,17 +1020,6 @@ argument_list|()
 argument_list|)
 operator|.
 name|isFalse
-argument_list|()
-expr_stmt|;
-name|assertThat
-argument_list|(
-name|cfg
-operator|.
-name|getEnableReviewerByEmail
-argument_list|()
-argument_list|)
-operator|.
-name|isTrue
 argument_list|()
 expr_stmt|;
 block|}

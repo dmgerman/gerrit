@@ -1035,7 +1035,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setConfig ( Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, InheritableBoolean enableSignedPush, InheritableBoolean requireSignedPush, InheritableBoolean rejectImplicitMerges, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
+DECL|method|setConfig ( Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, InheritableBoolean enableSignedPush, InheritableBoolean requireSignedPush, InheritableBoolean rejectImplicitMerges, InheritableBoolean enableReviewerByEmail, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -1072,6 +1072,9 @@ name|requireSignedPush
 parameter_list|,
 name|InheritableBoolean
 name|rejectImplicitMerges
+parameter_list|,
+name|InheritableBoolean
+name|enableReviewerByEmail
 parameter_list|,
 name|String
 name|maxObjectSizeLimit
@@ -1215,6 +1218,13 @@ operator|.
 name|setPluginConfigValues
 argument_list|(
 name|pluginConfigValues
+argument_list|)
+expr_stmt|;
+name|in
+operator|.
+name|setEnableReviewerByEmail
+argument_list|(
+name|enableReviewerByEmail
 argument_list|)
 expr_stmt|;
 name|project
@@ -1888,6 +1898,35 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setEnableReviewerByEmail (InheritableBoolean v)
+specifier|final
+name|void
+name|setEnableReviewerByEmail
+parameter_list|(
+name|InheritableBoolean
+name|v
+parameter_list|)
+block|{
+name|setEnableReviewerByEmailRaw
+argument_list|(
+name|v
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setEnableReviewerByEmailRaw (String v)
+specifier|private
+specifier|native
+name|void
+name|setEnableReviewerByEmailRaw
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ if(v)this.enable_reviewer_by_email=v; }-*/
+function_decl|;
 DECL|method|setRequireSignedPushRaw (String v)
 specifier|private
 specifier|native

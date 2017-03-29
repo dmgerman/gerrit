@@ -1714,11 +1714,6 @@ specifier|private
 name|boolean
 name|hasLegacyPermissions
 decl_stmt|;
-DECL|field|enableReviewerByEmail
-specifier|private
-name|boolean
-name|enableReviewerByEmail
-decl_stmt|;
 DECL|field|extensionPanelSections
 specifier|private
 name|Map
@@ -2986,32 +2981,6 @@ return|return
 name|checkReceivedObjects
 return|;
 block|}
-comment|/** @return the enableReviewerByEmail for this project, default is false. */
-DECL|method|getEnableReviewerByEmail ()
-specifier|public
-name|boolean
-name|getEnableReviewerByEmail
-parameter_list|()
-block|{
-return|return
-name|enableReviewerByEmail
-return|;
-block|}
-comment|/** Set enableReviewerByEmail for this project, default is false. */
-DECL|method|setEnableReviewerByEmail (boolean val)
-specifier|public
-name|void
-name|setEnableReviewerByEmail
-parameter_list|(
-name|boolean
-name|val
-parameter_list|)
-block|{
-name|enableReviewerByEmail
-operator|=
-name|val
-expr_stmt|;
-block|}
 comment|/**    * Check all GroupReferences use current group name, repairing stale ones.    *    * @param groupBackend cache to use when looking up group information by UUID.    * @return true if one or more group names was stale.    */
 DECL|method|updateGroupNames (GroupBackend groupBackend)
 specifier|public
@@ -3435,6 +3404,26 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|setEnableReviewerByEmail
+argument_list|(
+name|getEnum
+argument_list|(
+name|rc
+argument_list|,
+name|REVIEWER
+argument_list|,
+literal|null
+argument_list|,
+name|KEY_ENABLE_REVIEWER_BY_EMAIL
+argument_list|,
+name|InheritableBoolean
+operator|.
+name|INHERIT
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|setSubmitType
 argument_list|(
 name|getEnum
@@ -3588,11 +3577,6 @@ name|rc
 argument_list|)
 expr_stmt|;
 name|loadReceiveSection
-argument_list|(
-name|rc
-argument_list|)
-expr_stmt|;
-name|loadReviewerSection
 argument_list|(
 name|rc
 argument_list|)
@@ -6078,31 +6062,6 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|loadReviewerSection (Config rc)
-specifier|private
-name|void
-name|loadReviewerSection
-parameter_list|(
-name|Config
-name|rc
-parameter_list|)
-block|{
-name|enableReviewerByEmail
-operator|=
-name|rc
-operator|.
-name|getBoolean
-argument_list|(
-name|REVIEWER
-argument_list|,
-literal|null
-argument_list|,
-name|KEY_ENABLE_REVIEWER_BY_EMAIL
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|loadPluginSections (Config rc)
 specifier|private
 name|void
@@ -6722,6 +6681,26 @@ name|set
 argument_list|(
 name|rc
 argument_list|,
+name|REVIEWER
+argument_list|,
+literal|null
+argument_list|,
+name|KEY_ENABLE_REVIEWER_BY_EMAIL
+argument_list|,
+name|p
+operator|.
+name|getEnableReviewerByEmail
+argument_list|()
+argument_list|,
+name|InheritableBoolean
+operator|.
+name|INHERIT
+argument_list|)
+expr_stmt|;
+name|set
+argument_list|(
+name|rc
+argument_list|,
 name|SUBMIT
 argument_list|,
 literal|null
@@ -6852,11 +6831,6 @@ argument_list|(
 name|rc
 argument_list|,
 name|keepGroups
-argument_list|)
-expr_stmt|;
-name|saveReviewerSection
-argument_list|(
-name|rc
 argument_list|)
 expr_stmt|;
 name|groupList
@@ -8932,31 +8906,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-DECL|method|saveReviewerSection (Config rc)
-specifier|private
-name|void
-name|saveReviewerSection
-parameter_list|(
-name|Config
-name|rc
-parameter_list|)
-block|{
-name|setBooleanConfigKey
-argument_list|(
-name|rc
-argument_list|,
-name|REVIEWER
-argument_list|,
-literal|null
-argument_list|,
-name|KEY_ENABLE_REVIEWER_BY_EMAIL
-argument_list|,
-name|enableReviewerByEmail
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|saveGroupList ()
 specifier|private

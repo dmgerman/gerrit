@@ -4615,6 +4615,11 @@ argument_list|(
 name|rejectImplicitMerges
 argument_list|)
 argument_list|,
+name|getBool
+argument_list|(
+name|enableReviewerByEmail
+argument_list|)
+argument_list|,
 name|maxObjectSizeLimit
 operator|.
 name|getText
