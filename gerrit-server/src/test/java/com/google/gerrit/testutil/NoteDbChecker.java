@@ -718,7 +718,7 @@ name|oldWrite
 init|=
 name|notesMigration
 operator|.
-name|writeChanges
+name|rawWriteChangesSetting
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -1220,7 +1220,7 @@ name|oldWrite
 init|=
 name|notesMigration
 operator|.
-name|writeChanges
+name|rawWriteChangesSetting
 argument_list|()
 decl_stmt|;
 try|try

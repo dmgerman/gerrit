@@ -893,7 +893,7 @@ name|args
 operator|.
 name|migration
 operator|.
-name|writeChanges
+name|rawWriteChangesSetting
 argument_list|()
 decl_stmt|;
 if|if

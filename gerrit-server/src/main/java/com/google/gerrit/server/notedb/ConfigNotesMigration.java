@@ -521,6 +521,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ConfigNotesMigration (@erritServerConfig Config cfg)
+specifier|public
 name|ConfigNotesMigration
 parameter_list|(
 annotation|@
@@ -649,10 +650,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|writeChanges ()
-specifier|protected
+DECL|method|rawWriteChangesSetting ()
+specifier|public
 name|boolean
-name|writeChanges
+name|rawWriteChangesSetting
 parameter_list|()
 block|{
 return|return

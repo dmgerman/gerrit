@@ -824,7 +824,7 @@ if|if
 condition|(
 name|notesMigration
 operator|.
-name|writeChanges
+name|commitChangeWrites
 argument_list|()
 condition|)
 block|{
@@ -982,7 +982,7 @@ if|if
 condition|(
 name|notesMigration
 operator|.
-name|writeChanges
+name|commitChangeWrites
 argument_list|()
 condition|)
 block|{

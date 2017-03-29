@@ -174,6 +174,11 @@ specifier|volatile
 name|boolean
 name|failOnLoad
 decl_stmt|;
+DECL|method|TestNotesMigration ()
+specifier|public
+name|TestNotesMigration
+parameter_list|()
+block|{}
 annotation|@
 name|Override
 DECL|method|readChanges ()
@@ -228,10 +233,10 @@ comment|// Increase visbility from superclass, as tests may want to check whethe
 comment|// NoteDb data is written in specific migration scenarios.
 annotation|@
 name|Override
-DECL|method|writeChanges ()
+DECL|method|rawWriteChangesSetting ()
 specifier|public
 name|boolean
-name|writeChanges
+name|rawWriteChangesSetting
 parameter_list|()
 block|{
 return|return
@@ -518,6 +523,51 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+return|return
+name|this
+return|;
+block|}
+DECL|method|setFrom (NotesMigration other)
+specifier|public
+name|TestNotesMigration
+name|setFrom
+parameter_list|(
+name|NotesMigration
+name|other
+parameter_list|)
+block|{
+name|setWriteChanges
+argument_list|(
+name|other
+operator|.
+name|rawWriteChangesSetting
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|setReadChanges
+argument_list|(
+name|other
+operator|.
+name|readChanges
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|setChangePrimaryStorage
+argument_list|(
+name|other
+operator|.
+name|changePrimaryStorage
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|setDisableChangeReviewDb
+argument_list|(
+name|other
+operator|.
+name|disableChangeReviewDb
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|this
 return|;

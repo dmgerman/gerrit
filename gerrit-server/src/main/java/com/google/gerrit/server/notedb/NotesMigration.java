@@ -103,12 +103,12 @@ name|boolean
 name|readChanges
 parameter_list|()
 function_decl|;
-comment|/**    * Write changes to NoteDb.    *    *<p>Updates to change data are written to NoteDb refs, but ReviewDb is still the source of    * truth. Change data will not be written unless the NoteDb refs are already up to date, and the    * write path will attempt to rebuild the change if not.    *    *<p>If false, the behavior when attempting to write depends on {@code readChanges()}. If {@code    * readChanges() = false}, writes to NoteDb are simply ignored; if {@code true}, any attempts to    * write will generate an error.    */
-DECL|method|writeChanges ()
-specifier|protected
+comment|/**    * Write changes to NoteDb.    *    *<p>This method is awkwardly named because you should be using either {@link    * #commitChangeWrites()} or {@link #failChangeWrites()} instead.    *    *<p>Updates to change data are written to NoteDb refs, but ReviewDb is still the source of    * truth. Change data will not be written unless the NoteDb refs are already up to date, and the    * write path will attempt to rebuild the change if not.    *    *<p>If false, the behavior when attempting to write depends on {@code readChanges()}. If {@code    * readChanges() = false}, writes to NoteDb are simply ignored; if {@code true}, any attempts to    * write will generate an error.    */
+DECL|method|rawWriteChangesSetting ()
+specifier|public
 specifier|abstract
 name|boolean
-name|writeChanges
+name|rawWriteChangesSetting
 parameter_list|()
 function_decl|;
 comment|/**    * Read sequential change ID numbers from NoteDb.    *    *<p>If true, change IDs are read from {@code refs/sequences/changes} in All-Projects. If false,    * change IDs are read from ReviewDb's native sequences.    */
@@ -163,7 +163,7 @@ comment|// same codepath. This specific condition is used by the auto-rebuilding
 comment|// path to rebuild a change and stage the results, but not commit them due
 comment|// to failChangeWrites().
 return|return
-name|writeChanges
+name|rawWriteChangesSetting
 argument_list|()
 operator|||
 name|readChanges
@@ -178,7 +178,7 @@ parameter_list|()
 block|{
 return|return
 operator|!
-name|writeChanges
+name|rawWriteChangesSetting
 argument_list|()
 operator|&&
 name|readChanges
@@ -192,7 +192,7 @@ name|enabled
 parameter_list|()
 block|{
 return|return
-name|writeChanges
+name|rawWriteChangesSetting
 argument_list|()
 operator|||
 name|readChanges
