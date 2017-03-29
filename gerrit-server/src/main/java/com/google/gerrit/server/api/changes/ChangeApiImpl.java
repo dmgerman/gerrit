@@ -3119,8 +3119,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|RestApiException
-decl||
 name|UpdateException
 name|e
 parameter_list|)
@@ -3314,7 +3312,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|OrmException
 name|e
 parameter_list|)
 block|{
