@@ -92,6 +92,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|ImmutableSet
@@ -544,6 +558,13 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|failOnLoad
+specifier|private
+name|boolean
+name|failOnLoad
+init|=
+literal|false
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ExternalIdReader ( @erritServerConfig Config cfg, GitRepositoryManager repoManager, AllUsersName allUsersName)
@@ -589,6 +610,24 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|setFailOnLoad (boolean failOnLoad)
+specifier|public
+name|void
+name|setFailOnLoad
+parameter_list|(
+name|boolean
+name|failOnLoad
+parameter_list|)
+block|{
+name|this
+operator|.
+name|failOnLoad
+operator|=
+name|failOnLoad
 expr_stmt|;
 block|}
 DECL|method|readFromGit ()
@@ -644,6 +683,9 @@ name|IOException
 throws|,
 name|OrmException
 block|{
+name|checkReadEnabled
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|readFromGit
@@ -707,6 +749,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|checkReadEnabled
+argument_list|()
+expr_stmt|;
 try|try
 init|(
 name|Repository
@@ -908,6 +953,9 @@ name|ConfigInvalidException
 throws|,
 name|OrmException
 block|{
+name|checkReadEnabled
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|readFromGit
@@ -1010,6 +1058,9 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+name|checkReadEnabled
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|rev
@@ -1158,6 +1209,31 @@ argument_list|,
 name|raw
 argument_list|)
 return|;
+block|}
+end_function
+
+begin_function
+DECL|method|checkReadEnabled ()
+specifier|private
+name|void
+name|checkReadEnabled
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+if|if
+condition|(
+name|failOnLoad
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Reading from external IDs is disabled"
+argument_list|)
+throw|;
+block|}
 block|}
 end_function
 
