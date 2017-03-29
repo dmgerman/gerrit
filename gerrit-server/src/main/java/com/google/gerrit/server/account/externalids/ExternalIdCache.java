@@ -147,11 +147,14 @@ DECL|interface|ExternalIdCache
 interface|interface
 name|ExternalIdCache
 block|{
-DECL|method|onCreate (ObjectId newNotesRev, Collection<ExternalId> extId)
+DECL|method|onCreate (ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> extId)
 name|void
 name|onCreate
 parameter_list|(
 name|ObjectId
+name|oldNotesRev
+parameter_list|,
+name|ObjectId
 name|newNotesRev
 parameter_list|,
 name|Collection
@@ -163,11 +166,14 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|onUpdate (ObjectId newNotesRev, Collection<ExternalId> extId)
+DECL|method|onUpdate (ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> extId)
 name|void
 name|onUpdate
 parameter_list|(
 name|ObjectId
+name|oldNotesRev
+parameter_list|,
+name|ObjectId
 name|newNotesRev
 parameter_list|,
 name|Collection
@@ -179,10 +185,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|onReplace ( ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
+DECL|method|onReplace ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
 name|void
 name|onReplace
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -206,10 +215,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|onReplaceByKeys ( ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
+DECL|method|onReplaceByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
 name|void
 name|onReplaceByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -235,10 +247,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|onReplaceByKeys ( ObjectId newNotesRev, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
+DECL|method|onReplaceByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
 name|void
 name|onReplaceByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -259,10 +274,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|onReplace ( ObjectId newNotesRev, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
+DECL|method|onReplace ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
 name|void
 name|onReplace
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -281,11 +299,14 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|onRemove (ObjectId newNotesRev, Collection<ExternalId> extId)
+DECL|method|onRemove (ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> extId)
 name|void
 name|onRemove
 parameter_list|(
 name|ObjectId
+name|oldNotesRev
+parameter_list|,
+name|ObjectId
 name|newNotesRev
 parameter_list|,
 name|Collection
@@ -297,10 +318,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|onRemoveByKeys ( ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> extIdKeys)
+DECL|method|onRemoveByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> extIdKeys)
 name|void
 name|onRemoveByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -320,10 +344,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|onRemoveByKeys (ObjectId newNotesRev, Collection<ExternalId.Key> extIdKeys)
+DECL|method|onRemoveByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId.Key> extIdKeys)
 name|void
 name|onRemoveByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -366,11 +393,14 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|onCreate (ObjectId newNotesRev, ExternalId extId)
+DECL|method|onCreate (ObjectId oldNotesRev, ObjectId newNotesRev, ExternalId extId)
 specifier|default
 name|void
 name|onCreate
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -382,6 +412,8 @@ name|IOException
 block|{
 name|onCreate
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|Collections
@@ -393,11 +425,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onRemove (ObjectId newNotesRev, ExternalId extId)
+DECL|method|onRemove (ObjectId oldNotesRev, ObjectId newNotesRev, ExternalId extId)
 specifier|default
 name|void
 name|onRemove
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -409,6 +444,8 @@ name|IOException
 block|{
 name|onRemove
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|Collections
@@ -420,11 +457,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onRemoveByKey (ObjectId newNotesRev, Account.Id accountId, ExternalId.Key extIdKey)
+DECL|method|onRemoveByKey ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, ExternalId.Key extIdKey)
 specifier|default
 name|void
 name|onRemoveByKey
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -443,6 +483,8 @@ name|IOException
 block|{
 name|onRemoveByKeys
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|accountId
@@ -456,11 +498,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onUpdate (ObjectId newNotesRev, ExternalId updatedExtId)
+DECL|method|onUpdate (ObjectId oldNotesRev, ObjectId newNotesRev, ExternalId updatedExtId)
 specifier|default
 name|void
 name|onUpdate
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -472,6 +517,8 @@ name|IOException
 block|{
 name|onUpdate
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|Collections

@@ -487,11 +487,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCreate (ObjectId newNotesRev, Collection<ExternalId> extIds)
+DECL|method|onCreate (ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> extIds)
 specifier|public
 name|void
 name|onCreate
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -506,6 +509,8 @@ name|IOException
 block|{
 name|updateCache
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|m
@@ -538,11 +543,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onRemove (ObjectId newNotesRev, Collection<ExternalId> extIds)
+DECL|method|onRemove (ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> extIds)
 specifier|public
 name|void
 name|onRemove
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -557,6 +565,8 @@ name|IOException
 block|{
 name|updateCache
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|m
@@ -589,11 +599,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onRemoveByKeys ( ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> extIdKeys)
+DECL|method|onRemoveByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> extIdKeys)
 specifier|public
 name|void
 name|onRemoveByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -615,6 +628,8 @@ name|IOException
 block|{
 name|updateCache
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|m
@@ -635,11 +650,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onRemoveByKeys (ObjectId newNotesRev, Collection<ExternalId.Key> extIdKeys)
+DECL|method|onRemoveByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId.Key> extIdKeys)
 specifier|public
 name|void
 name|onRemoveByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -656,6 +674,8 @@ name|IOException
 block|{
 name|updateCache
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|m
@@ -674,11 +694,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onUpdate (ObjectId newNotesRev, Collection<ExternalId> updatedExtIds)
+DECL|method|onUpdate ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> updatedExtIds)
 specifier|public
 name|void
 name|onUpdate
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -693,6 +716,8 @@ name|IOException
 block|{
 name|updateCache
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|m
@@ -754,11 +779,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onReplace ( ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
+DECL|method|onReplace ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|onReplace
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -800,6 +828,8 @@ argument_list|)
 expr_stmt|;
 name|updateCache
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|m
@@ -853,11 +883,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onReplaceByKeys ( ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
+DECL|method|onReplaceByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|onReplaceByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -894,6 +927,8 @@ argument_list|)
 expr_stmt|;
 name|updateCache
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|m
@@ -938,11 +973,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onReplaceByKeys ( ObjectId newNotesRev, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
+DECL|method|onReplaceByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|onReplaceByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -965,6 +1003,8 @@ name|IOException
 block|{
 name|updateCache
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|m
@@ -1007,11 +1047,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onReplace ( ObjectId newNotesRev, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
+DECL|method|onReplace ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|onReplace
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -1032,6 +1075,8 @@ name|IOException
 block|{
 name|updateCache
 argument_list|(
+name|oldNotesRev
+argument_list|,
 name|newNotesRev
 argument_list|,
 name|m
@@ -1211,11 +1256,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|updateCache (ObjectId newNotesRev, Consumer<Multimap<Account.Id, ExternalId>> update)
+DECL|method|updateCache ( ObjectId oldNotesRev, ObjectId newNotesRev, Consumer<Multimap<Account.Id, ExternalId>> update)
 specifier|private
 name|void
 name|updateCache
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -1232,8 +1280,6 @@ argument_list|>
 argument_list|>
 name|update
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|lock
 operator|.
@@ -1251,7 +1297,23 @@ argument_list|,
 name|ExternalId
 argument_list|>
 name|m
-init|=
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|ObjectId
+operator|.
+name|zeroId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|oldNotesRev
+argument_list|)
+condition|)
+block|{
+name|m
+operator|=
 name|MultimapBuilder
 operator|.
 name|hashKeys
@@ -1266,13 +1328,27 @@ name|extIdsByAccount
 operator|.
 name|get
 argument_list|(
-name|externalIdReader
+name|oldNotesRev
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|m
+operator|=
+name|MultimapBuilder
 operator|.
-name|readRevision
+name|hashKeys
 argument_list|()
-argument_list|)
-argument_list|)
-decl_stmt|;
+operator|.
+name|arrayListValues
+argument_list|()
+operator|.
+name|build
+argument_list|()
+expr_stmt|;
+block|}
 name|update
 operator|.
 name|accept

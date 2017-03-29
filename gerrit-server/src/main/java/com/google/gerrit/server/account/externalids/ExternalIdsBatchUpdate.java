@@ -650,6 +650,8 @@ name|externalIdCache
 operator|.
 name|onReplace
 argument_list|(
+name|rev
+argument_list|,
 name|newRev
 argument_list|,
 name|toDelete
