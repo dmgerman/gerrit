@@ -2748,7 +2748,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|isJsPlugin
+name|isUiPlugin
 argument_list|(
 name|fileName
 argument_list|)
@@ -3922,7 +3922,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|isJsPlugin
+name|isUiPlugin
 argument_list|(
 name|pluginName
 argument_list|)
@@ -4695,7 +4695,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|isJsPlugin
+name|isUiPlugin
 argument_list|(
 name|fileName
 argument_list|)
@@ -4710,10 +4710,10 @@ literal|0
 argument_list|,
 name|fileName
 operator|.
-name|length
-argument_list|()
-operator|-
-literal|3
+name|lastIndexOf
+argument_list|(
+literal|'.'
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -4795,11 +4795,11 @@ return|return
 name|map
 return|;
 block|}
-DECL|method|isJsPlugin (String name)
+DECL|method|isUiPlugin (String name)
 specifier|private
 specifier|static
 name|boolean
-name|isJsPlugin
+name|isUiPlugin
 parameter_list|(
 name|String
 name|name
@@ -4811,6 +4811,13 @@ argument_list|(
 name|name
 argument_list|,
 literal|"js"
+argument_list|)
+operator|||
+name|isPlugin
+argument_list|(
+name|name
+argument_list|,
+literal|"html"
 argument_list|)
 return|;
 block|}
