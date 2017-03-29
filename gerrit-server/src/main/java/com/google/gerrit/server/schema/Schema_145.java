@@ -249,6 +249,8 @@ name|db
 argument_list|)
 init|)
 block|{
+try|try
+block|{
 name|dialect
 operator|.
 name|dropIndex
@@ -260,6 +262,15 @@ argument_list|,
 literal|"account_external_ids_byEmail"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|ex
+parameter_list|)
+block|{
+comment|// Ignore.  The index did not exist.
+block|}
 name|e
 operator|.
 name|execute
