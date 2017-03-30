@@ -1158,11 +1158,12 @@ argument_list|(
 operator|new
 name|ChangeEdit
 argument_list|(
-name|u
-argument_list|,
 name|change
 argument_list|,
 name|ref
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|commit
 argument_list|,
@@ -1173,12 +1174,15 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications should be sent after the    *     change edit is published.    * @param accountsToNotify Accounts that should be notified after the change edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
-DECL|method|publish ( final ChangeEdit edit, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param ctl the {@code ChangeControl} of the change to which the change edit belongs    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications should be sent after the    *     change edit is published.    * @param accountsToNotify Accounts that should be notified after the change edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
+DECL|method|publish ( ChangeControl ctl, final ChangeEdit edit, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|publish
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 specifier|final
 name|ChangeEdit
 name|edit
@@ -1294,26 +1298,6 @@ name|getEditCommit
 argument_list|()
 argument_list|,
 name|basePatchSet
-argument_list|)
-decl_stmt|;
-name|ChangeControl
-name|ctl
-init|=
-name|changeControlFactory
-operator|.
-name|controlFor
-argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|change
-argument_list|,
-name|edit
-operator|.
-name|getUser
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|PatchSet
@@ -1970,10 +1954,7 @@ name|setExpectedOldObjectId
 argument_list|(
 name|edit
 operator|.
-name|getRef
-argument_list|()
-operator|.
-name|getObjectId
+name|getEditCommit
 argument_list|()
 argument_list|)
 expr_stmt|;

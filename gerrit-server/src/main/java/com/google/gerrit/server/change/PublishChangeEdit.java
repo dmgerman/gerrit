@@ -678,6 +678,11 @@ name|editUtil
 operator|.
 name|publish
 argument_list|(
+name|rsrc
+operator|.
+name|getControl
+argument_list|()
+argument_list|,
 name|edit
 operator|.
 name|get

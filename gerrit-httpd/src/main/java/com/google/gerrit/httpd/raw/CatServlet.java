@@ -360,6 +360,20 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
 begin_comment
 comment|/**  * Exports a single version of a patch as a normal file download.  *  *<p>This can be relatively unsafe with Microsoft Internet Explorer 6.0 as the browser will (rather  * incorrectly) treat an HTML or JavaScript file its supposed to download as though it was served by  * this site, and will execute it with the site's own protection domain. This opens a massive  * security hole so we package the content into a zip file.  */
 end_comment
@@ -762,16 +776,18 @@ condition|)
 block|{
 name|revision
 operator|=
+name|ObjectId
+operator|.
+name|toString
+argument_list|(
 name|edit
 operator|.
 name|get
 argument_list|()
 operator|.
-name|getRevision
+name|getEditCommit
 argument_list|()
-operator|.
-name|get
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else
