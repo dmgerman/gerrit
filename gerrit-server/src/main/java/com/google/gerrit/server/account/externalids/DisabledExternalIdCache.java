@@ -124,6 +124,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -189,15 +199,18 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCreate (ObjectId newNotesRev, Iterable<ExternalId> extId)
+DECL|method|onCreate (ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> extId)
 specifier|public
 name|void
 name|onCreate
 parameter_list|(
 name|ObjectId
+name|oldNotesRev
+parameter_list|,
+name|ObjectId
 name|newNotesRev
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -206,15 +219,18 @@ parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|onUpdate (ObjectId newNotesRev, Iterable<ExternalId> extId)
+DECL|method|onUpdate (ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> extId)
 specifier|public
 name|void
 name|onUpdate
 parameter_list|(
 name|ObjectId
+name|oldNotesRev
+parameter_list|,
+name|ObjectId
 name|newNotesRev
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -223,11 +239,14 @@ parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|onReplace ( ObjectId newNotesRev, Account.Id accountId, Iterable<ExternalId> toRemove, Iterable<ExternalId> toAdd)
+DECL|method|onReplace ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|onReplace
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -236,13 +255,13 @@ operator|.
 name|Id
 name|accountId
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
 name|toRemove
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -251,11 +270,14 @@ parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|onReplaceByKeys ( ObjectId newNotesRev, Account.Id accountId, Iterable<ExternalId.Key> toRemove, Iterable<ExternalId> toAdd)
+DECL|method|onReplaceByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|onReplaceByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -264,7 +286,7 @@ operator|.
 name|Id
 name|accountId
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 operator|.
@@ -272,7 +294,7 @@ name|Key
 argument_list|>
 name|toRemove
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -281,15 +303,18 @@ parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|onReplaceByKeys ( ObjectId newNotesRev, Iterable<ExternalId.Key> toRemove, Iterable<ExternalId> toAdd)
+DECL|method|onReplaceByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId.Key> toRemove, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|onReplaceByKeys
 parameter_list|(
 name|ObjectId
+name|oldNotesRev
+parameter_list|,
+name|ObjectId
 name|newNotesRev
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 operator|.
@@ -297,7 +322,7 @@ name|Key
 argument_list|>
 name|toRemove
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -306,21 +331,24 @@ parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|onReplace ( ObjectId newNotesRev, Iterable<ExternalId> toRemove, Iterable<ExternalId> toAdd)
+DECL|method|onReplace ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> toRemove, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|onReplace
 parameter_list|(
 name|ObjectId
+name|oldNotesRev
+parameter_list|,
+name|ObjectId
 name|newNotesRev
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
 name|toRemove
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -329,15 +357,18 @@ parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|onRemove (ObjectId newNotesRev, Iterable<ExternalId> extId)
+DECL|method|onRemove (ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId> extId)
 specifier|public
 name|void
 name|onRemove
 parameter_list|(
 name|ObjectId
+name|oldNotesRev
+parameter_list|,
+name|ObjectId
 name|newNotesRev
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -346,11 +377,14 @@ parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|onRemoveByKeys ( ObjectId newNotesRev, Account.Id accountId, Iterable<ExternalId.Key> extIdKeys)
+DECL|method|onRemoveByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Account.Id accountId, Collection<ExternalId.Key> extIdKeys)
 specifier|public
 name|void
 name|onRemoveByKeys
 parameter_list|(
+name|ObjectId
+name|oldNotesRev
+parameter_list|,
 name|ObjectId
 name|newNotesRev
 parameter_list|,
@@ -359,7 +393,7 @@ operator|.
 name|Id
 name|accountId
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 operator|.
@@ -370,15 +404,18 @@ parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|onRemoveByKeys (ObjectId newNotesRev, Iterable<ExternalId.Key> extIdKeys)
+DECL|method|onRemoveByKeys ( ObjectId oldNotesRev, ObjectId newNotesRev, Collection<ExternalId.Key> extIdKeys)
 specifier|public
 name|void
 name|onRemoveByKeys
 parameter_list|(
 name|ObjectId
+name|oldNotesRev
+parameter_list|,
+name|ObjectId
 name|newNotesRev
 parameter_list|,
-name|Iterable
+name|Collection
 argument_list|<
 name|ExternalId
 operator|.

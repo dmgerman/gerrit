@@ -1840,9 +1840,12 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+comment|// Do not use c.setInt(...) to write the account ID because c.setInt(...) persists integers
+comment|// that can be expressed in KiB as a unit strings, e.g. "1024000" is stored as "100k". Using
+comment|// c.setString(...) ensures that account IDs are human readable.
 name|c
 operator|.
-name|setInt
+name|setString
 argument_list|(
 name|EXTERNAL_ID_SECTION
 argument_list|,
@@ -1850,11 +1853,16 @@ name|externalIdKey
 argument_list|,
 name|ACCOUNT_ID_KEY
 argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|accountId
 argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

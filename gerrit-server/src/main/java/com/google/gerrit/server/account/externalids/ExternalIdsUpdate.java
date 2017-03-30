@@ -426,6 +426,48 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|metrics
+operator|.
+name|Counter0
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Description
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|MetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -866,6 +908,12 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|metricMaker
+specifier|private
+specifier|final
+name|MetricMaker
+name|metricMaker
+decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -889,7 +937,7 @@ name|serverIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Server ( GitRepositoryManager repoManager, AllUsersName allUsersName, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent)
+DECL|method|Server ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent)
 specifier|public
 name|Server
 parameter_list|(
@@ -898,6 +946,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -925,6 +976,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|metricMaker
+operator|=
+name|metricMaker
 expr_stmt|;
 name|this
 operator|.
@@ -966,6 +1023,8 @@ argument_list|(
 name|repoManager
 argument_list|,
 name|allUsersName
+argument_list|,
+name|metricMaker
 argument_list|,
 name|externalIds
 argument_list|,
@@ -999,6 +1058,12 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|metricMaker
+specifier|private
+specifier|final
+name|MetricMaker
+name|metricMaker
+decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -1031,7 +1096,7 @@ name|identifiedUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|User ( GitRepositoryManager repoManager, AllUsersName allUsersName, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser)
+DECL|method|User ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser)
 specifier|public
 name|User
 parameter_list|(
@@ -1040,6 +1105,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -1073,6 +1141,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|metricMaker
+operator|=
+name|metricMaker
 expr_stmt|;
 name|this
 operator|.
@@ -1120,6 +1194,8 @@ argument_list|(
 name|repoManager
 argument_list|,
 name|allUsersName
+argument_list|,
+name|metricMaker
 argument_list|,
 name|externalIds
 argument_list|,
@@ -1176,7 +1252,7 @@ specifier|public
 specifier|static
 name|RetryerBuilder
 argument_list|<
-name|ObjectId
+name|RefsMetaExternalIdsUpdate
 argument_list|>
 name|retryerBuilder
 parameter_list|()
@@ -1185,7 +1261,7 @@ return|return
 name|RetryerBuilder
 operator|.
 expr|<
-name|ObjectId
+name|RefsMetaExternalIdsUpdate
 operator|>
 name|newBuilder
 argument_list|()
@@ -1250,7 +1326,7 @@ specifier|static
 specifier|final
 name|Retryer
 argument_list|<
-name|ObjectId
+name|RefsMetaExternalIdsUpdate
 argument_list|>
 name|RETRYER
 init|=
@@ -1307,11 +1383,17 @@ specifier|private
 specifier|final
 name|Retryer
 argument_list|<
-name|ObjectId
+name|RefsMetaExternalIdsUpdate
 argument_list|>
 name|retryer
 decl_stmt|;
-DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent)
+DECL|field|updateCount
+specifier|private
+specifier|final
+name|Counter0
+name|updateCount
+decl_stmt|;
+DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent)
 specifier|private
 name|ExternalIdsUpdate
 parameter_list|(
@@ -1320,6 +1402,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -1340,6 +1425,8 @@ name|repoManager
 argument_list|,
 name|allUsersName
 argument_list|,
+name|metricMaker
+argument_list|,
 name|externalIds
 argument_list|,
 name|externalIdCache
@@ -1359,7 +1446,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision, Retryer<ObjectId> retryer)
+DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision, Retryer<RefsMetaExternalIdsUpdate> retryer)
 specifier|public
 name|ExternalIdsUpdate
 parameter_list|(
@@ -1368,6 +1455,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -1386,7 +1476,7 @@ name|afterReadRevision
 parameter_list|,
 name|Retryer
 argument_list|<
-name|ObjectId
+name|RefsMetaExternalIdsUpdate
 argument_list|>
 name|retryer
 parameter_list|)
@@ -1479,6 +1569,31 @@ argument_list|,
 literal|"retryer"
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|updateCount
+operator|=
+name|metricMaker
+operator|.
+name|newCounter
+argument_list|(
+literal|"notedb/external_id_update_count"
+argument_list|,
+operator|new
+name|Description
+argument_list|(
+literal|"Total number of external ID updates."
+argument_list|)
+operator|.
+name|setRate
+argument_list|()
+operator|.
+name|setUnit
+argument_list|(
+literal|"updates"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * Inserts a new external ID.    *    *<p>If the external ID already exists, the insert fails with {@link OrmDuplicateKeyException}.    */
 DECL|method|insert (ReviewDb db, ExternalId extId)
@@ -1547,8 +1662,8 @@ name|extIds
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ObjectId
-name|newRev
+name|RefsMetaExternalIdsUpdate
+name|u
 init|=
 name|updateNoteMap
 argument_list|(
@@ -1591,7 +1706,15 @@ name|externalIdCache
 operator|.
 name|onCreate
 argument_list|(
+name|u
+operator|.
+name|oldRev
+argument_list|()
+argument_list|,
+name|u
+operator|.
 name|newRev
+argument_list|()
 argument_list|,
 name|extIds
 argument_list|)
@@ -1664,8 +1787,8 @@ name|extIds
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ObjectId
-name|newRev
+name|RefsMetaExternalIdsUpdate
+name|u
 init|=
 name|updateNoteMap
 argument_list|(
@@ -1708,7 +1831,15 @@ name|externalIdCache
 operator|.
 name|onUpdate
 argument_list|(
+name|u
+operator|.
+name|oldRev
+argument_list|()
+argument_list|,
+name|u
+operator|.
 name|newRev
+argument_list|()
 argument_list|,
 name|extIds
 argument_list|)
@@ -1781,8 +1912,8 @@ name|extIds
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ObjectId
-name|newRev
+name|RefsMetaExternalIdsUpdate
+name|u
 init|=
 name|updateNoteMap
 argument_list|(
@@ -1820,7 +1951,15 @@ name|externalIdCache
 operator|.
 name|onRemove
 argument_list|(
+name|u
+operator|.
+name|oldRev
+argument_list|()
+argument_list|,
+name|u
+operator|.
 name|newRev
+argument_list|()
 argument_list|,
 name|extIds
 argument_list|)
@@ -1909,8 +2048,8 @@ name|extIdKeys
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ObjectId
-name|newRev
+name|RefsMetaExternalIdsUpdate
+name|u
 init|=
 name|updateNoteMap
 argument_list|(
@@ -1952,7 +2091,15 @@ name|externalIdCache
 operator|.
 name|onRemoveByKeys
 argument_list|(
+name|u
+operator|.
+name|oldRev
+argument_list|()
+argument_list|,
+name|u
+operator|.
 name|newRev
+argument_list|()
 argument_list|,
 name|accountId
 argument_list|,
@@ -1997,8 +2144,8 @@ name|extIdKeys
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ObjectId
-name|newRev
+name|RefsMetaExternalIdsUpdate
+name|u
 init|=
 name|updateNoteMap
 argument_list|(
@@ -2040,7 +2187,15 @@ name|externalIdCache
 operator|.
 name|onRemoveByKeys
 argument_list|(
+name|u
+operator|.
+name|oldRev
+argument_list|()
+argument_list|,
+name|u
+operator|.
 name|newRev
+argument_list|()
 argument_list|,
 name|extIdKeys
 argument_list|)
@@ -2150,8 +2305,8 @@ name|toAdd
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ObjectId
-name|newRev
+name|RefsMetaExternalIdsUpdate
+name|u
 init|=
 name|updateNoteMap
 argument_list|(
@@ -2222,7 +2377,15 @@ name|externalIdCache
 operator|.
 name|onReplaceByKeys
 argument_list|(
+name|u
+operator|.
+name|oldRev
+argument_list|()
+argument_list|,
+name|u
+operator|.
 name|newRev
+argument_list|()
 argument_list|,
 name|accountId
 argument_list|,
@@ -2288,8 +2451,8 @@ name|toAdd
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ObjectId
-name|newRev
+name|RefsMetaExternalIdsUpdate
+name|u
 init|=
 name|updateNoteMap
 argument_list|(
@@ -2360,7 +2523,15 @@ name|externalIdCache
 operator|.
 name|onReplaceByKeys
 argument_list|(
+name|u
+operator|.
+name|oldRev
+argument_list|()
+argument_list|,
+name|u
+operator|.
 name|newRev
+argument_list|()
 argument_list|,
 name|toDelete
 argument_list|,
@@ -3113,7 +3284,7 @@ expr_stmt|;
 block|}
 DECL|method|updateNoteMap (MyConsumer<OpenRepo> update)
 specifier|private
-name|ObjectId
+name|RefsMetaExternalIdsUpdate
 name|updateNoteMap
 parameter_list|(
 name|MyConsumer
@@ -3250,7 +3421,7 @@ block|}
 block|}
 DECL|method|commit ( Repository repo, RevWalk rw, ObjectInserter ins, ObjectId rev, NoteMap noteMap)
 specifier|private
-name|ObjectId
+name|RefsMetaExternalIdsUpdate
 name|commit
 parameter_list|(
 name|Repository
@@ -3271,7 +3442,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-return|return
+name|ObjectId
+name|newRev
+init|=
 name|commit
 argument_list|(
 name|repo
@@ -3289,6 +3462,21 @@ argument_list|,
 name|committerIdent
 argument_list|,
 name|authorIdent
+argument_list|)
+decl_stmt|;
+name|updateCount
+operator|.
+name|increment
+argument_list|()
+expr_stmt|;
+return|return
+name|RefsMetaExternalIdsUpdate
+operator|.
+name|create
+argument_list|(
+name|rev
+argument_list|,
+name|newRev
 argument_list|)
 return|;
 block|}
@@ -3581,7 +3769,12 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|rw
+operator|.
+name|parseCommit
+argument_list|(
 name|commitId
+argument_list|)
 return|;
 block|}
 DECL|method|emptyTree (ObjectInserter ins)
@@ -3701,6 +3894,52 @@ name|noteMap
 parameter_list|()
 function_decl|;
 block|}
+annotation|@
+name|VisibleForTesting
+annotation|@
+name|AutoValue
+DECL|class|RefsMetaExternalIdsUpdate
+specifier|public
+specifier|abstract
+specifier|static
+class|class
+name|RefsMetaExternalIdsUpdate
+block|{
+DECL|method|create (ObjectId oldRev, ObjectId newRev)
+specifier|static
+name|RefsMetaExternalIdsUpdate
+name|create
+parameter_list|(
+name|ObjectId
+name|oldRev
+parameter_list|,
+name|ObjectId
+name|newRev
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AutoValue_ExternalIdsUpdate_RefsMetaExternalIdsUpdate
+argument_list|(
+name|oldRev
+argument_list|,
+name|newRev
+argument_list|)
+return|;
+block|}
+DECL|method|oldRev ()
+specifier|abstract
+name|ObjectId
+name|oldRev
+parameter_list|()
+function_decl|;
+DECL|method|newRev ()
+specifier|abstract
+name|ObjectId
+name|newRev
+parameter_list|()
+function_decl|;
+block|}
 DECL|class|TryNoteMapUpdate
 specifier|private
 class|class
@@ -3708,7 +3947,7 @@ name|TryNoteMapUpdate
 implements|implements
 name|Callable
 argument_list|<
-name|ObjectId
+name|RefsMetaExternalIdsUpdate
 argument_list|>
 block|{
 DECL|field|repo
@@ -3787,7 +4026,7 @@ annotation|@
 name|Override
 DECL|method|call ()
 specifier|public
-name|ObjectId
+name|RefsMetaExternalIdsUpdate
 name|call
 parameter_list|()
 throws|throws
