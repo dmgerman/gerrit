@@ -2568,8 +2568,6 @@ name|OrmException
 decl||
 name|UpdateException
 decl||
-name|RestApiException
-decl||
 name|IOException
 name|e
 parameter_list|)
