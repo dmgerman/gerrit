@@ -2392,7 +2392,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ChangeControl
+name|CommentLinkProvider
 import|;
 end_import
 
@@ -2408,7 +2408,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|CommentLinkProvider
+name|DefaultPermissionBackendModule
 import|;
 end_import
 
@@ -2441,22 +2441,6 @@ operator|.
 name|project
 operator|.
 name|ProjectCacheImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ProjectControl
 import|;
 end_import
 
@@ -3131,6 +3115,13 @@ expr_stmt|;
 name|install
 argument_list|(
 operator|new
+name|DefaultPermissionBackendModule
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|install
+argument_list|(
+operator|new
 name|EmailModule
 argument_list|()
 argument_list|)
@@ -3625,24 +3616,6 @@ operator|.
 name|in
 argument_list|(
 name|SINGLETON
-argument_list|)
-expr_stmt|;
-name|bind
-argument_list|(
-name|ChangeControl
-operator|.
-name|GenericFactory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|bind
-argument_list|(
-name|ProjectControl
-operator|.
-name|GenericFactory
-operator|.
-name|class
 argument_list|)
 expr_stmt|;
 name|bind

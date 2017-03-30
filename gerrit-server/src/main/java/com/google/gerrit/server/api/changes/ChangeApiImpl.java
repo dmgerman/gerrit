@@ -1072,6 +1072,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|InvalidChangeOperationException
@@ -2001,6 +2017,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|UpdateException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2063,6 +2081,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|UpdateException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2569,6 +2589,8 @@ decl||
 name|UpdateException
 decl||
 name|IOException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2686,6 +2708,8 @@ block|}
 catch|catch
 parameter_list|(
 name|UpdateException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3118,6 +3142,8 @@ block|}
 catch|catch
 parameter_list|(
 name|UpdateException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3211,6 +3237,8 @@ decl||
 name|IOException
 decl||
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3371,6 +3399,8 @@ parameter_list|(
 name|UpdateException
 decl||
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{

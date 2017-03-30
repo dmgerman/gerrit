@@ -3184,7 +3184,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"submit on behalf of not permitted"
+literal|"submit as not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -3312,7 +3312,7 @@ name|user
 operator|.
 name|id
 operator|+
-literal|" cannot see destination ref"
+literal|" cannot see change"
 argument_list|)
 expr_stmt|;
 name|gApi

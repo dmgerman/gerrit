@@ -13817,6 +13817,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// Any change owner is allowed to add hashtags when creating a change.
 name|bu
 operator|.
 name|addOp
