@@ -234,6 +234,17 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|final
+name|StaleLibraryRemover
+name|remover
+init|=
+name|createStrictMock
+argument_list|(
+name|StaleLibraryRemover
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 name|replay
 argument_list|(
 name|ui
@@ -266,6 +277,8 @@ argument_list|(
 name|ui
 argument_list|,
 name|site
+argument_list|,
+name|remover
 argument_list|)
 return|;
 block|}

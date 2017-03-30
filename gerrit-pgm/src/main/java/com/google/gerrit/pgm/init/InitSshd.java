@@ -383,24 +383,30 @@ specifier|final
 name|Section
 name|sshd
 decl_stmt|;
+DECL|field|remover
+specifier|private
+specifier|final
+name|StaleLibraryRemover
+name|remover
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitSshd (final ConsoleUI ui, final SitePaths site, final Section.Factory sections)
+DECL|method|InitSshd (ConsoleUI ui, SitePaths site, Section.Factory sections, StaleLibraryRemover remover)
 name|InitSshd
 parameter_list|(
-specifier|final
 name|ConsoleUI
 name|ui
 parameter_list|,
-specifier|final
 name|SitePaths
 name|site
 parameter_list|,
-specifier|final
 name|Section
 operator|.
 name|Factory
 name|sections
+parameter_list|,
+name|StaleLibraryRemover
+name|remover
 parameter_list|)
 block|{
 name|this
@@ -427,6 +433,12 @@ literal|"sshd"
 argument_list|,
 literal|null
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|remover
+operator|=
+name|remover
 expr_stmt|;
 block|}
 annotation|@
@@ -582,6 +594,13 @@ argument_list|)
 expr_stmt|;
 name|generateSshHostKeys
 argument_list|()
+expr_stmt|;
+name|remover
+operator|.
+name|remove
+argument_list|(
+literal|"bc(pg|pkix|prov)-.*[.]jar"
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|isOff (String listenHostname)
