@@ -108,6 +108,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|io
 operator|.
 name|ByteStreams
@@ -412,6 +426,28 @@ name|singletonList
 argument_list|(
 name|changeContentEdit
 argument_list|)
+return|;
+block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|getFilePath ()
+name|String
+name|getFilePath
+parameter_list|()
+block|{
+return|return
+name|filePath
+return|;
+block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|getNewContent ()
+name|RawInput
+name|getNewContent
+parameter_list|()
+block|{
+return|return
+name|newContent
 return|;
 block|}
 comment|/** A {@code PathEdit} which changes the contents of a file. */
