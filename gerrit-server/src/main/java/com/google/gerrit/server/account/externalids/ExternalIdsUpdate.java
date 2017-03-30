@@ -426,6 +426,48 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|metrics
+operator|.
+name|Counter0
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|Description
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|metrics
+operator|.
+name|MetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -866,6 +908,12 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|metricMaker
+specifier|private
+specifier|final
+name|MetricMaker
+name|metricMaker
+decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -889,7 +937,7 @@ name|serverIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Server ( GitRepositoryManager repoManager, AllUsersName allUsersName, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent)
+DECL|method|Server ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent)
 specifier|public
 name|Server
 parameter_list|(
@@ -898,6 +946,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -925,6 +976,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|metricMaker
+operator|=
+name|metricMaker
 expr_stmt|;
 name|this
 operator|.
@@ -966,6 +1023,8 @@ argument_list|(
 name|repoManager
 argument_list|,
 name|allUsersName
+argument_list|,
+name|metricMaker
 argument_list|,
 name|externalIds
 argument_list|,
@@ -999,6 +1058,12 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
+DECL|field|metricMaker
+specifier|private
+specifier|final
+name|MetricMaker
+name|metricMaker
+decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -1031,7 +1096,7 @@ name|identifiedUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|User ( GitRepositoryManager repoManager, AllUsersName allUsersName, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser)
+DECL|method|User ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser)
 specifier|public
 name|User
 parameter_list|(
@@ -1040,6 +1105,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -1073,6 +1141,12 @@ operator|.
 name|allUsersName
 operator|=
 name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|metricMaker
+operator|=
+name|metricMaker
 expr_stmt|;
 name|this
 operator|.
@@ -1120,6 +1194,8 @@ argument_list|(
 name|repoManager
 argument_list|,
 name|allUsersName
+argument_list|,
+name|metricMaker
 argument_list|,
 name|externalIds
 argument_list|,
@@ -1311,7 +1387,13 @@ name|RefsMetaExternalIdsUpdate
 argument_list|>
 name|retryer
 decl_stmt|;
-DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent)
+DECL|field|updateCount
+specifier|private
+specifier|final
+name|Counter0
+name|updateCount
+decl_stmt|;
+DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent)
 specifier|private
 name|ExternalIdsUpdate
 parameter_list|(
@@ -1320,6 +1402,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -1340,6 +1425,8 @@ name|repoManager
 argument_list|,
 name|allUsersName
 argument_list|,
+name|metricMaker
+argument_list|,
 name|externalIds
 argument_list|,
 name|externalIdCache
@@ -1359,7 +1446,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision, Retryer<RefsMetaExternalIdsUpdate> retryer)
+DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, MetricMaker metricMaker, ExternalIds externalIds, ExternalIdCache externalIdCache, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision, Retryer<RefsMetaExternalIdsUpdate> retryer)
 specifier|public
 name|ExternalIdsUpdate
 parameter_list|(
@@ -1368,6 +1455,9 @@ name|repoManager
 parameter_list|,
 name|AllUsersName
 name|allUsersName
+parameter_list|,
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -1477,6 +1567,31 @@ argument_list|(
 name|retryer
 argument_list|,
 literal|"retryer"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|updateCount
+operator|=
+name|metricMaker
+operator|.
+name|newCounter
+argument_list|(
+literal|"notedb/external_id_update_count"
+argument_list|,
+operator|new
+name|Description
+argument_list|(
+literal|"Total number of external ID updates."
+argument_list|)
+operator|.
+name|setRate
+argument_list|()
+operator|.
+name|setUnit
+argument_list|(
+literal|"updates"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3349,6 +3464,11 @@ argument_list|,
 name|authorIdent
 argument_list|)
 decl_stmt|;
+name|updateCount
+operator|.
+name|increment
+argument_list|()
+expr_stmt|;
 return|return
 name|RefsMetaExternalIdsUpdate
 operator|.
