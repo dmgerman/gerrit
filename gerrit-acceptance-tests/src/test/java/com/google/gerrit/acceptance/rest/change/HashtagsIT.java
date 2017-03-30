@@ -1585,7 +1585,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Editing hashtags not permitted"
+literal|"edit hashtags not permitted"
 argument_list|)
 expr_stmt|;
 name|addHashtags
