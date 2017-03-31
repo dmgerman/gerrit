@@ -722,14 +722,14 @@ name|mirw
 operator|.
 name|parseCommit
 argument_list|(
-name|accepted
+name|commit
 argument_list|)
 argument_list|,
 name|mirw
 operator|.
 name|parseCommit
 argument_list|(
-name|commit
+name|accepted
 argument_list|)
 argument_list|)
 condition|)
