@@ -1984,6 +1984,8 @@ range|:
 name|changeIds
 control|)
 block|{
+try|try
+block|{
 name|ChangeNotes
 name|cn
 init|=
@@ -2020,6 +2022,17 @@ argument_list|(
 name|cn
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchChangeException
+name|e
+parameter_list|)
+block|{
+comment|// Match ReviewDb behavior, returning not found; maybe the caller learned about it from
+comment|// a dangling patch set ref or something.
+continue|continue;
 block|}
 block|}
 return|return
