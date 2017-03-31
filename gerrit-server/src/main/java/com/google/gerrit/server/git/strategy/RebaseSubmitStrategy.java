@@ -1195,9 +1195,6 @@ name|mergeTip
 operator|.
 name|getCurrentTip
 argument_list|()
-operator|.
-name|name
-argument_list|()
 argument_list|)
 operator|.
 name|setFireRevisionCreated
