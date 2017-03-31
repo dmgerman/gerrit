@@ -2027,6 +2027,8 @@ operator|.
 name|toRefName
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|CommitReceivedEvent
 name|event
 init|=
@@ -2081,6 +2083,14 @@ operator|.
 name|getRefName
 argument_list|()
 argument_list|,
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|getObjectReader
+argument_list|()
+argument_list|,
 name|commit
 argument_list|,
 name|ctx
@@ -2088,8 +2098,7 @@ operator|.
 name|getIdentifiedUser
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|commitValidatorsFactory
 operator|.

@@ -3331,6 +3331,8 @@ operator|.
 name|toRefName
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|CommitReceivedEvent
 name|event
 init|=
@@ -3369,6 +3371,14 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|getObjectReader
+argument_list|()
+argument_list|,
 name|commit
 argument_list|,
 name|ctx
@@ -3376,7 +3386,8 @@ operator|.
 name|getIdentifiedUser
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|commitValidatorsFactory
 operator|.
 name|create
@@ -3400,6 +3411,7 @@ argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
