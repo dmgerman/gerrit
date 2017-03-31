@@ -3720,6 +3720,24 @@ literal|"No"
 operator|)
 argument_list|)
 expr_stmt|;
+name|footers
+operator|.
+name|add
+argument_list|(
+literal|"Gerrit-HasLabels: "
+operator|+
+operator|(
+name|labels
+operator|.
+name|isEmpty
+argument_list|()
+condition|?
+literal|"No"
+else|:
+literal|"Yes"
+operator|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getLine (PatchFile fileInfo, short side, int lineNbr)
 specifier|private
