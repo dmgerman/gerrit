@@ -871,9 +871,6 @@ name|IOException
 throws|,
 name|OrmException
 block|{
-comment|// TODO(dborowitz): args.rw is needed because it's a CodeReviewRevWalk.
-comment|// When hoisting BatchUpdate into MergeOp, we will need to teach
-comment|// BatchUpdate how to produce CodeReviewRevWalks.
 if|if
 condition|(
 name|args
