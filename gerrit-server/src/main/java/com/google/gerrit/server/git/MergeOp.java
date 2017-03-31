@@ -3587,10 +3587,6 @@ name|rw
 argument_list|,
 name|or
 operator|.
-name|ins
-argument_list|,
-name|or
-operator|.
 name|canMergeFlag
 argument_list|,
 name|getAlreadyAccepted
