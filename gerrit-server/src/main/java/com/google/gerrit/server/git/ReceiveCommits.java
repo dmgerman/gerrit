@@ -15575,7 +15575,7 @@ name|psId
 operator|=
 name|ChangeUtil
 operator|.
-name|nextPatchSetId
+name|nextPatchSetIdFromAllRefsMap
 argument_list|(
 name|allRefs
 argument_list|,
