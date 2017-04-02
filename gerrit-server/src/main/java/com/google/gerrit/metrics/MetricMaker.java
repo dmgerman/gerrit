@@ -553,15 +553,12 @@ name|metric
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|metric
 operator|.
 name|set
 argument_list|(
 name|value
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -614,7 +611,6 @@ name|metric
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|metric
 operator|.
 name|set
@@ -624,8 +620,6 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}

@@ -2468,7 +2468,6 @@ name|operation
 argument_list|(
 parameter_list|()
 lambda|->
-block|{
 name|view
 operator|.
 name|setLineLength
@@ -2478,8 +2477,6 @@ operator|.
 name|lineLength
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}

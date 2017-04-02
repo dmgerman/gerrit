@@ -2481,7 +2481,6 @@ literal|"Shift-/"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 operator|new
 name|ShowHelpCommand
 argument_list|()
@@ -2490,8 +2489,6 @@ name|onKeyPress
 argument_list|(
 literal|null
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2500,7 +2497,6 @@ literal|"Space"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|cm
 operator|.
 name|vim
@@ -2510,8 +2506,6 @@ name|handleKey
 argument_list|(
 literal|"<C-d>"
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2520,7 +2514,6 @@ literal|"Shift-Space"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|cm
 operator|.
 name|vim
@@ -2530,8 +2523,6 @@ name|handleKey
 argument_list|(
 literal|"<C-u>"
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2540,15 +2531,12 @@ literal|"Ctrl-F"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|cm
 operator|.
 name|execCommand
 argument_list|(
 literal|"find"
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2557,15 +2545,12 @@ literal|"Ctrl-G"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|cm
 operator|.
 name|execCommand
 argument_list|(
 literal|"findNext"
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2584,15 +2569,12 @@ literal|"Shift-Ctrl-G"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|cm
 operator|.
 name|execCommand
 argument_list|(
 literal|"findPrev"
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2601,15 +2583,12 @@ literal|"Shift-Enter"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|cm
 operator|.
 name|execCommand
 argument_list|(
 literal|"findPrev"
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2628,14 +2607,14 @@ operator|.
 name|getCursor
 argument_list|()
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|cm
 operator|.
 name|execCommand
 argument_list|(
 literal|"clearSearch"
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|cm
 operator|.
 name|vim
@@ -2645,9 +2624,9 @@ name|handleEx
 argument_list|(
 literal|"nohlsearch"
 argument_list|)
-expr_stmt|;
+argument_list|;
 block|}
-argument_list|)
+block|)
 operator|.
 name|on
 argument_list|(
@@ -2655,15 +2634,12 @@ literal|"Ctrl-A"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|cm
 operator|.
 name|execCommand
 argument_list|(
 literal|"selectAll"
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2672,7 +2648,6 @@ literal|"G O"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|Gerrit
 operator|.
 name|display
@@ -2684,8 +2659,6 @@ argument_list|(
 literal|"status:open"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2694,7 +2667,6 @@ literal|"G M"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|Gerrit
 operator|.
 name|display
@@ -2706,8 +2678,6 @@ argument_list|(
 literal|"status:merged"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2716,7 +2686,6 @@ literal|"G A"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|Gerrit
 operator|.
 name|display
@@ -2728,10 +2697,11 @@ argument_list|(
 literal|"status:abandoned"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+end_class
+
+begin_if
 if|if
 condition|(
 name|Gerrit
@@ -2748,7 +2718,6 @@ literal|"G I"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|Gerrit
 operator|.
 name|display
@@ -2757,8 +2726,6 @@ name|PageLinks
 operator|.
 name|MINE
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2767,7 +2734,6 @@ literal|"G D"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|Gerrit
 operator|.
 name|display
@@ -2779,8 +2745,6 @@ argument_list|(
 literal|"owner:self is:draft"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2789,7 +2753,6 @@ literal|"G C"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|Gerrit
 operator|.
 name|display
@@ -2801,8 +2764,6 @@ argument_list|(
 literal|"has:draft"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2811,7 +2772,6 @@ literal|"G W"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|Gerrit
 operator|.
 name|display
@@ -2823,8 +2783,6 @@ argument_list|(
 literal|"is:watched status:open"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 operator|.
 name|on
@@ -2833,7 +2791,6 @@ literal|"G S"
 argument_list|,
 parameter_list|()
 lambda|->
-block|{
 name|Gerrit
 operator|.
 name|display
@@ -2845,11 +2802,12 @@ argument_list|(
 literal|"is:starred"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_if
+
+begin_if
 if|if
 condition|(
 name|revision
@@ -2900,6 +2858,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_if
+
+begin_expr_stmt
 name|CodeMirror
 operator|.
 name|normalizeKeyMap
@@ -2907,7 +2868,13 @@ argument_list|(
 name|keyMap
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// Needed to for multi-stroke keymaps
+end_comment
+
+begin_expr_stmt
 name|cm
 operator|.
 name|addKeyMap
@@ -2915,14 +2882,16 @@ argument_list|(
 name|keyMap
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_expr_stmt
+unit|}    void
 DECL|method|maybeRegisterRenderEntireFileKeyMap (CodeMirror cm)
-name|void
 name|maybeRegisterRenderEntireFileKeyMap
-parameter_list|(
+argument_list|(
 name|CodeMirror
 name|cm
-parameter_list|)
+argument_list|)
 block|{
 if|if
 condition|(
@@ -2938,9 +2907,11 @@ name|RENDER_ENTIRE_FILE_KEYMAP
 argument_list|)
 expr_stmt|;
 block|}
-block|}
+end_expr_stmt
+
+begin_function
+unit|}    private
 DECL|method|onSelectionChange (final CodeMirror cm)
-specifier|private
 name|BeforeSelectionChangeHandler
 name|onSelectionChange
 parameter_list|(
@@ -3080,6 +3051,9 @@ block|}
 block|}
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|registerKeys ()
@@ -3666,6 +3640,9 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|registerHandlers ()
 name|void
 name|registerHandlers
@@ -3738,6 +3715,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setupSyntaxHighlighting ()
 name|void
 name|setupSyntaxHighlighting
@@ -3811,6 +3791,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function_decl
 DECL|method|newCm (DiffInfo.FileMeta meta, String contents, Element parent)
 specifier|abstract
 name|CodeMirror
@@ -3828,6 +3811,9 @@ name|Element
 name|parent
 parameter_list|)
 function_decl|;
+end_function_decl
+
+begin_function
 DECL|method|render (DiffInfo diff)
 name|void
 name|render
@@ -3852,6 +3838,9 @@ name|diff
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setShowLineNumbers (boolean b)
 name|void
 name|setShowLineNumbers
@@ -3902,6 +3891,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|setShowIntraline (boolean b)
 name|void
 name|setShowIntraline
@@ -3971,6 +3963,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|toggleShowIntraline ()
 specifier|private
 name|void
@@ -4007,6 +4002,9 @@ name|update
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function_decl
 DECL|method|setSyntaxHighlighting (boolean b)
 specifier|abstract
 name|void
@@ -4016,6 +4014,9 @@ name|boolean
 name|b
 parameter_list|)
 function_decl|;
+end_function_decl
+
+begin_function
 DECL|method|setContext (int context)
 name|void
 name|setContext
@@ -4050,6 +4051,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|adjustCommitMessageLine (int line)
 specifier|private
 name|int
@@ -4107,6 +4111,9 @@ operator|-
 name|offset
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|openEditScreen (CodeMirror cm)
 specifier|private
 name|Runnable
@@ -4207,6 +4214,9 @@ block|}
 block|}
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|updateRenderEntireFile ()
 name|void
 name|updateRenderEntireFile
@@ -4262,6 +4272,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|resizeCodeMirror ()
 name|void
 name|resizeCodeMirror
@@ -4299,18 +4312,27 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function_decl
 DECL|method|getChunkManager ()
 specifier|abstract
 name|ChunkManager
 name|getChunkManager
 parameter_list|()
 function_decl|;
+end_function_decl
+
+begin_function_decl
 DECL|method|getCommentManager ()
 specifier|abstract
 name|CommentManager
 name|getCommentManager
 parameter_list|()
 function_decl|;
+end_function_decl
+
+begin_function
 DECL|method|getChangeStatus ()
 name|Change
 operator|.
@@ -4322,6 +4344,9 @@ return|return
 name|changeStatus
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getStartLine ()
 name|int
 name|getStartLine
@@ -4331,6 +4356,9 @@ return|return
 name|startLine
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setStartLine (int startLine)
 name|void
 name|setStartLine
@@ -4346,6 +4374,9 @@ operator|=
 name|startLine
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|getStartSide ()
 name|DisplaySide
 name|getStartSide
@@ -4355,6 +4386,9 @@ return|return
 name|startSide
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setStartSide (DisplaySide startSide)
 name|void
 name|setStartSide
@@ -4370,6 +4404,9 @@ operator|=
 name|startSide
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|getDiff ()
 name|DiffInfo
 name|getDiff
@@ -4379,6 +4416,9 @@ return|return
 name|diff
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getFileSize ()
 name|FileSize
 name|getFileSize
@@ -4388,6 +4428,9 @@ return|return
 name|fileSize
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getPrefsAction ()
 name|PreferencesAction
 name|getPrefsAction
@@ -4397,6 +4440,9 @@ return|return
 name|prefsAction
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setPrefsAction (PreferencesAction prefsAction)
 name|void
 name|setPrefsAction
@@ -4412,6 +4458,9 @@ operator|=
 name|prefsAction
 expr_stmt|;
 block|}
+end_function
+
+begin_function_decl
 DECL|method|operation (Runnable apply)
 specifier|abstract
 name|void
@@ -4421,6 +4470,9 @@ name|Runnable
 name|apply
 parameter_list|)
 function_decl|;
+end_function_decl
+
+begin_function
 DECL|method|upToChange (boolean openReplyBox)
 specifier|private
 name|Runnable
@@ -4532,6 +4584,9 @@ expr_stmt|;
 block|}
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|maybePrevVimSearch (CodeMirror cm)
 specifier|private
 name|Runnable
@@ -4588,6 +4643,9 @@ block|}
 block|}
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|maybeNextVimSearch (CodeMirror cm)
 specifier|private
 name|Runnable
@@ -4644,6 +4702,9 @@ block|}
 block|}
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|maybeNextCmSearch (CodeMirror cm)
 name|Runnable
 name|maybeNextCmSearch
@@ -4696,6 +4757,9 @@ block|}
 block|}
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|renderEntireFile ()
 name|boolean
 name|renderEntireFile
@@ -4713,6 +4777,9 @@ name|prefs
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|canRenderEntireFile (DiffPreferences prefs)
 name|boolean
 name|canRenderEntireFile
@@ -4751,6 +4818,9 @@ literal|100
 operator|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getIntraLineStatus ()
 name|DiffInfo
 operator|.
@@ -4765,6 +4835,9 @@ name|intralineStatus
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setThemeStyles (boolean d)
 name|void
 name|setThemeStyles
@@ -4815,6 +4888,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|setShowTabs (boolean show)
 name|void
 name|setShowTabs
@@ -4844,6 +4920,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|setLineLength (int columns)
 name|void
 name|setLineLength
@@ -4873,6 +4952,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|getContentType (DiffInfo.FileMeta meta)
 name|String
 name|getContentType
@@ -4934,6 +5016,9 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getContentType ()
 name|String
 name|getContentType
@@ -4949,6 +5034,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|injectMode (DiffInfo diffInfo, AsyncCallback<Void> cb)
 name|void
 name|injectMode
@@ -4995,6 +5083,9 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function_decl
 DECL|method|setAutoHideDiffHeader (boolean hide)
 specifier|abstract
 name|void
@@ -5004,6 +5095,9 @@ name|boolean
 name|hide
 parameter_list|)
 function_decl|;
+end_function_decl
+
+begin_function
 DECL|method|prefetchNextFile ()
 name|void
 name|prefetchNextFile
@@ -5132,6 +5226,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|reloadDiffInfo ()
 name|void
 name|reloadDiffInfo
@@ -5270,6 +5367,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|bucketFileSize (DiffInfo diff)
 specifier|private
 specifier|static
@@ -5376,6 +5476,9 @@ operator|.
 name|SMALL
 return|;
 block|}
+end_function
+
+begin_function_decl
 DECL|method|updateActiveLine (CodeMirror cm)
 specifier|abstract
 name|Runnable
@@ -5385,6 +5488,9 @@ name|CodeMirror
 name|cm
 parameter_list|)
 function_decl|;
+end_function_decl
+
+begin_function
 DECL|method|onGutterClick (final CodeMirror cm)
 specifier|private
 name|GutterClickHandler
@@ -5526,12 +5632,18 @@ block|}
 block|}
 return|;
 block|}
+end_function
+
+begin_function_decl
 DECL|method|getFocusHandler ()
 specifier|abstract
 name|FocusHandler
 name|getFocusHandler
 parameter_list|()
 function_decl|;
+end_function_decl
+
+begin_function_decl
 DECL|method|getCms ()
 specifier|abstract
 name|CodeMirror
@@ -5539,6 +5651,9 @@ index|[]
 name|getCms
 parameter_list|()
 function_decl|;
+end_function_decl
+
+begin_function_decl
 DECL|method|getCmFromSide (DisplaySide side)
 specifier|abstract
 name|CodeMirror
@@ -5548,12 +5663,18 @@ name|DisplaySide
 name|side
 parameter_list|)
 function_decl|;
+end_function_decl
+
+begin_function_decl
 DECL|method|getDiffTable ()
 specifier|abstract
 name|DiffTable
 name|getDiffTable
 parameter_list|()
 function_decl|;
+end_function_decl
+
+begin_function_decl
 DECL|method|getCmLine (int line, DisplaySide side)
 specifier|abstract
 name|int
@@ -5566,12 +5687,18 @@ name|DisplaySide
 name|side
 parameter_list|)
 function_decl|;
+end_function_decl
+
+begin_function_decl
 DECL|method|getLineNumberClassName ()
 specifier|abstract
 name|String
 name|getLineNumberClassName
 parameter_list|()
 function_decl|;
+end_function_decl
+
+begin_function
 DECL|method|lineOnOther (DisplaySide side, int line)
 name|LineOnOtherInfo
 name|lineOnOther
@@ -5597,6 +5724,9 @@ name|line
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function_decl
 DECL|method|getScreenLoadCallback ( CommentsCollections comments)
 specifier|abstract
 name|ScreenLoadCallback
@@ -5611,14 +5741,17 @@ name|CommentsCollections
 name|comments
 parameter_list|)
 function_decl|;
+end_function_decl
+
+begin_function_decl
 DECL|method|isSideBySide ()
 specifier|abstract
 name|boolean
 name|isSideBySide
 parameter_list|()
 function_decl|;
-block|}
-end_class
+end_function_decl
 
+unit|}
 end_unit
 

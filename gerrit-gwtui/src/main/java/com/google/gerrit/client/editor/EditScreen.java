@@ -2232,15 +2232,12 @@ block|{
 return|return
 parameter_list|()
 lambda|->
-block|{
 name|cmEdit
 operator|.
 name|execCommand
 argument_list|(
 literal|"jumpToLine"
 argument_list|)
-expr_stmt|;
-block|}
 return|;
 block|}
 annotation|@
@@ -2995,7 +2992,6 @@ name|operation
 argument_list|(
 parameter_list|()
 lambda|->
-block|{
 name|cmBase
 operator|.
 name|setOption
@@ -3010,8 +3006,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 name|cmEdit
@@ -3020,7 +3014,6 @@ name|operation
 argument_list|(
 parameter_list|()
 lambda|->
-block|{
 name|cmEdit
 operator|.
 name|setOption
@@ -3035,8 +3028,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -3155,7 +3146,6 @@ name|operation
 argument_list|(
 parameter_list|()
 lambda|->
-block|{
 name|cmBase
 operator|.
 name|setOption
@@ -3164,8 +3154,6 @@ literal|"showTrailingSpace"
 argument_list|,
 name|show
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 name|cmEdit
@@ -3174,7 +3162,6 @@ name|operation
 argument_list|(
 parameter_list|()
 lambda|->
-block|{
 name|cmEdit
 operator|.
 name|setOption
@@ -3183,8 +3170,6 @@ literal|"showTrailingSpace"
 argument_list|,
 name|show
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -4019,7 +4004,6 @@ name|scheduleDeferred
 argument_list|(
 parameter_list|()
 lambda|->
-block|{
 name|cmEdit
 operator|.
 name|operation
@@ -4028,8 +4012,6 @@ name|this
 operator|::
 name|updateActiveLine
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}

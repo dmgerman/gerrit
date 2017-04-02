@@ -412,15 +412,12 @@ block|{
 return|return
 parameter_list|()
 lambda|->
-block|{
 name|setVisibleA
 argument_list|(
 operator|!
 name|isVisibleA
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
 return|;
 block|}
 DECL|method|setVisibleB (boolean show)

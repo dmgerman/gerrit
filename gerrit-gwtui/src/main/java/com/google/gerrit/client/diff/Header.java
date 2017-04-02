@@ -2314,7 +2314,6 @@ block|{
 return|return
 parameter_list|()
 lambda|->
-block|{
 name|reviewed
 operator|.
 name|setValue
@@ -2327,8 +2326,6 @@ argument_list|()
 argument_list|,
 literal|true
 argument_list|)
-expr_stmt|;
-block|}
 return|;
 block|}
 DECL|method|navigate (Direction dir)
@@ -2350,7 +2347,6 @@ case|:
 return|return
 parameter_list|()
 lambda|->
-block|{
 operator|(
 name|hasPrev
 condition|?
@@ -2361,8 +2357,6 @@ operator|)
 operator|.
 name|go
 argument_list|()
-expr_stmt|;
-block|}
 return|;
 case|case
 name|NEXT
@@ -2370,7 +2364,6 @@ case|:
 return|return
 parameter_list|()
 lambda|->
-block|{
 operator|(
 name|hasNext
 condition|?
@@ -2381,8 +2374,6 @@ operator|)
 operator|.
 name|go
 argument_list|()
-expr_stmt|;
-block|}
 return|;
 default|default:
 return|return

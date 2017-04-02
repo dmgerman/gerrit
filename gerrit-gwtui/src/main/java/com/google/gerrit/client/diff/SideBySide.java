@@ -2401,7 +2401,6 @@ name|operation
 argument_list|(
 parameter_list|()
 lambda|->
-block|{
 name|cmB
 operator|.
 name|operation
@@ -2410,8 +2409,6 @@ name|apply
 operator|::
 name|run
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 block|}
