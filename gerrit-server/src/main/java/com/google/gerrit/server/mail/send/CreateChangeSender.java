@@ -399,6 +399,12 @@ operator|&&
 operator|!
 name|change
 operator|.
+name|isWorkInProgress
+argument_list|()
+operator|&&
+operator|!
+name|change
+operator|.
 name|isPrivate
 argument_list|()
 argument_list|)
@@ -515,6 +521,12 @@ name|NEW_PATCHSETS
 argument_list|,
 operator|!
 name|isDraft
+operator|&&
+operator|!
+name|change
+operator|.
+name|isWorkInProgress
+argument_list|()
 operator|&&
 operator|!
 name|change
