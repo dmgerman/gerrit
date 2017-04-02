@@ -307,7 +307,7 @@ operator|=
 name|schemaFactory
 expr_stmt|;
 block|}
-DECL|method|rebuildAsync ( final Change.Id id, ListeningExecutorService executor)
+DECL|method|rebuildAsync ( Change.Id id, ListeningExecutorService executor)
 specifier|public
 specifier|final
 name|ListenableFuture
@@ -316,7 +316,6 @@ name|Result
 argument_list|>
 name|rebuildAsync
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id

@@ -1286,17 +1286,15 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|display (final CommentsCollections comments)
+DECL|method|display (CommentsCollections comments)
 specifier|private
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|CommentsCollections
 name|comments
 parameter_list|)
 block|{
-specifier|final
 name|DiffInfo
 name|diff
 init|=
@@ -2119,16 +2117,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateActiveLine (final CodeMirror cm)
+DECL|method|updateActiveLine (CodeMirror cm)
 name|Runnable
 name|updateActiveLine
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)
 block|{
-specifier|final
 name|CodeMirror
 name|other
 init|=
@@ -2269,12 +2265,11 @@ expr_stmt|;
 block|}
 return|;
 block|}
-DECL|method|moveCursorToSide (final CodeMirror cmSrc, DisplaySide sideDst)
+DECL|method|moveCursorToSide (CodeMirror cmSrc, DisplaySide sideDst)
 specifier|private
 name|Runnable
 name|moveCursorToSide
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cmSrc
 parameter_list|,
@@ -2282,7 +2277,6 @@ name|DisplaySide
 name|sideDst
 parameter_list|)
 block|{
-specifier|final
 name|CodeMirror
 name|cmDst
 init|=
@@ -2304,7 +2298,6 @@ lambda|->
 block|{}
 return|;
 block|}
-specifier|final
 name|DisplaySide
 name|sideSrc
 init|=

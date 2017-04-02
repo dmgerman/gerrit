@@ -238,14 +238,13 @@ name|CacheMetrics
 block|{
 annotation|@
 name|Inject
-DECL|method|CacheMetrics (MetricMaker metrics, final DynamicMap<Cache<?, ?>> cacheMap)
+DECL|method|CacheMetrics (MetricMaker metrics, DynamicMap<Cache<?, ?>> cacheMap)
 specifier|public
 name|CacheMetrics
 parameter_list|(
 name|MetricMaker
 name|metrics
 parameter_list|,
-specifier|final
 name|DynamicMap
 argument_list|<
 name|Cache
@@ -271,7 +270,6 @@ argument_list|(
 literal|"cache_name"
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric1
 argument_list|<
 name|String
@@ -307,7 +305,6 @@ argument_list|,
 name|F_NAME
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric1
 argument_list|<
 name|String
@@ -343,7 +340,6 @@ argument_list|,
 name|F_NAME
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric1
 argument_list|<
 name|String
@@ -379,7 +375,6 @@ argument_list|,
 name|F_NAME
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric1
 argument_list|<
 name|String
@@ -415,7 +410,6 @@ argument_list|,
 name|F_NAME
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric1
 argument_list|<
 name|String
@@ -451,7 +445,6 @@ argument_list|,
 name|F_NAME
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Set
 argument_list|<
 name|CallbackMetric
@@ -627,23 +620,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-for|for
-control|(
-name|CallbackMetric
-argument_list|<
-name|?
-argument_list|>
-name|cbm
-range|:
 name|cacheMetrics
-control|)
-block|{
-name|cbm
 operator|.
+name|forEach
+argument_list|(
+name|CallbackMetric
+operator|::
 name|prune
-argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;

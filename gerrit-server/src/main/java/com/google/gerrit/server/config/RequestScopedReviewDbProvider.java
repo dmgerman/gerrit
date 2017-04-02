@@ -268,7 +268,6 @@ operator|==
 literal|null
 condition|)
 block|{
-specifier|final
 name|ReviewDb
 name|c
 decl_stmt|;

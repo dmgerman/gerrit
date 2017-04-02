@@ -941,7 +941,6 @@ name|name
 operator|=
 name|name
 expr_stmt|;
-specifier|final
 name|String
 name|index
 init|=
@@ -1570,14 +1569,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|insert (final Document doc)
+DECL|method|insert (Document doc)
 name|ListenableFuture
 argument_list|<
 name|?
 argument_list|>
 name|insert
 parameter_list|(
-specifier|final
 name|Document
 name|doc
 parameter_list|)
@@ -1596,18 +1594,16 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|replace (final Term term, final Document doc)
+DECL|method|replace (Term term, Document doc)
 name|ListenableFuture
 argument_list|<
 name|?
 argument_list|>
 name|replace
 parameter_list|(
-specifier|final
 name|Term
 name|term
 parameter_list|,
-specifier|final
 name|Document
 name|doc
 parameter_list|)
@@ -1628,14 +1624,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|delete (final Term term)
+DECL|method|delete (Term term)
 name|ListenableFuture
 argument_list|<
 name|?
 argument_list|>
 name|delete
 parameter_list|(
-specifier|final
 name|Term
 name|term
 parameter_list|)

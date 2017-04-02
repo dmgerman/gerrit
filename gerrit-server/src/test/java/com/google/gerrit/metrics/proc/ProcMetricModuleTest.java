@@ -953,7 +953,6 @@ name|void
 name|callbackMetric0
 parameter_list|()
 block|{
-specifier|final
 name|CallbackMetric0
 argument_list|<
 name|Long
@@ -980,7 +979,6 @@ name|setCumulative
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|AtomicInteger
 name|invocations
 init|=

@@ -702,7 +702,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Account
 operator|.
 name|Id

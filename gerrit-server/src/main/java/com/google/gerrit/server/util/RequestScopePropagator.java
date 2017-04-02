@@ -685,7 +685,7 @@ argument_list|>
 name|callable
 parameter_list|)
 function_decl|;
-DECL|method|context (final RequestContext context, final Callable<T> callable)
+DECL|method|context (RequestContext context, Callable<T> callable)
 specifier|protected
 parameter_list|<
 name|T
@@ -696,11 +696,9 @@ name|T
 argument_list|>
 name|context
 parameter_list|(
-specifier|final
 name|RequestContext
 name|context
 parameter_list|,
-specifier|final
 name|Callable
 argument_list|<
 name|T
@@ -779,7 +777,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|cleanup (final Callable<T> callable)
+DECL|method|cleanup (Callable<T> callable)
 specifier|protected
 parameter_list|<
 name|T
@@ -790,7 +788,6 @@ name|T
 argument_list|>
 name|cleanup
 parameter_list|(
-specifier|final
 name|Callable
 argument_list|<
 name|T

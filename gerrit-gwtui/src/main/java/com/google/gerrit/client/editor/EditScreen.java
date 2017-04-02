@@ -2981,11 +2981,10 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setTheme (final Theme newTheme)
+DECL|method|setTheme (Theme newTheme)
 name|void
 name|setTheme
 parameter_list|(
-specifier|final
 name|Theme
 name|newTheme
 parameter_list|)
@@ -3142,11 +3141,10 @@ name|show
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setShowWhitespaceErrors (final boolean show)
+DECL|method|setShowWhitespaceErrors (boolean show)
 name|void
 name|setShowWhitespaceErrors
 parameter_list|(
-specifier|final
 name|boolean
 name|show
 parameter_list|)

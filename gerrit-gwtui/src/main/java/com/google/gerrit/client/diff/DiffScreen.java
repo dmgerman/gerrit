@@ -4016,11 +4016,10 @@ name|boolean
 name|b
 parameter_list|)
 function_decl|;
-DECL|method|setContext (final int context)
+DECL|method|setContext (int context)
 name|void
 name|setContext
 parameter_list|(
-specifier|final
 name|int
 name|context
 parameter_list|)

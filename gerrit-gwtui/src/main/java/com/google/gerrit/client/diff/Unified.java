@@ -1053,11 +1053,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|registerCmEvents (final CodeMirror cm)
+DECL|method|registerCmEvents (CodeMirror cm)
 name|void
 name|registerCmEvents
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)
@@ -1154,17 +1153,15 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|display (final CommentsCollections comments)
+DECL|method|display (CommentsCollections comments)
 specifier|private
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|CommentsCollections
 name|comments
 parameter_list|)
 block|{
-specifier|final
 name|DiffInfo
 name|diff
 init|=
@@ -2064,11 +2061,10 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|updateActiveLine (final CodeMirror cm)
+DECL|method|updateActiveLine (CodeMirror cm)
 name|Runnable
 name|updateActiveLine
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)

@@ -348,7 +348,6 @@ literal|false
 argument_list|)
 condition|)
 block|{
-specifier|final
 name|ThreadPoolExecutor
 name|pool
 init|=

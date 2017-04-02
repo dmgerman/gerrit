@@ -637,7 +637,6 @@ name|MetricMaker
 name|metrics
 parameter_list|)
 block|{
-specifier|final
 name|CallbackMetric0
 argument_list|<
 name|Long
@@ -671,7 +670,6 @@ name|BYTES
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric0
 argument_list|<
 name|Long
@@ -705,7 +703,6 @@ name|BYTES
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric0
 argument_list|<
 name|Long
@@ -739,7 +736,6 @@ name|BYTES
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric0
 argument_list|<
 name|Long
@@ -773,7 +769,6 @@ name|BYTES
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric0
 argument_list|<
 name|Integer
@@ -805,7 +800,6 @@ literal|"objects"
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|final
 name|MemoryMXBean
 name|memory
 init|=
@@ -934,7 +928,6 @@ name|MetricMaker
 name|metrics
 parameter_list|)
 block|{
-specifier|final
 name|CallbackMetric1
 argument_list|<
 name|String
@@ -972,7 +965,6 @@ literal|"The name of the garbage collector"
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CallbackMetric1
 argument_list|<
 name|String
@@ -1114,7 +1106,6 @@ name|MetricMaker
 name|metrics
 parameter_list|)
 block|{
-specifier|final
 name|ThreadMXBean
 name|thread
 init|=
@@ -1147,28 +1138,12 @@ argument_list|(
 literal|"threads"
 argument_list|)
 argument_list|,
-operator|new
-name|Supplier
-argument_list|<
-name|Integer
-argument_list|>
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|Integer
-name|get
 parameter_list|()
-block|{
-return|return
+lambda|->
 name|thread
 operator|.
 name|getThreadCount
 argument_list|()
-return|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}

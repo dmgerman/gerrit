@@ -197,7 +197,7 @@ block|}
 comment|/** @see RequestScopePropagator#wrap(Callable) */
 annotation|@
 name|Override
-DECL|method|wrapImpl (final Callable<T> callable)
+DECL|method|wrapImpl (Callable<T> callable)
 specifier|protected
 specifier|final
 parameter_list|<
@@ -209,7 +209,6 @@ name|T
 argument_list|>
 name|wrapImpl
 parameter_list|(
-specifier|final
 name|Callable
 argument_list|<
 name|T

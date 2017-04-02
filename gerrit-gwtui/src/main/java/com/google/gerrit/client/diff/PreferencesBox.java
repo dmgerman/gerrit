@@ -3095,7 +3095,6 @@ name|ChangeEvent
 name|e
 parameter_list|)
 block|{
-specifier|final
 name|String
 name|mode
 init|=
@@ -3601,7 +3600,6 @@ name|ChangeEvent
 name|e
 parameter_list|)
 block|{
-specifier|final
 name|Theme
 name|newTheme
 init|=

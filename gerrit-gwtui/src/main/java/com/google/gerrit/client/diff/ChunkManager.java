@@ -390,27 +390,22 @@ name|cnt
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|colorLines ( final CodeMirror cm, final LineClassWhere where, final String className, final int start, final int end)
+DECL|method|colorLines (CodeMirror cm, LineClassWhere where, String className, int start, int end)
 name|void
 name|colorLines
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|,
-specifier|final
 name|LineClassWhere
 name|where
 parameter_list|,
-specifier|final
 name|String
 name|className
 parameter_list|,
-specifier|final
 name|int
 name|start
 parameter_list|,
-specifier|final
 name|int
 name|end
 parameter_list|)

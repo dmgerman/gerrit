@@ -1441,15 +1441,13 @@ name|DisplaySide
 name|side
 parameter_list|)
 function_decl|;
-DECL|method|commentNav (final CodeMirror src, final Direction dir)
+DECL|method|commentNav (CodeMirror src, Direction dir)
 name|Runnable
 name|commentNav
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|src
 parameter_list|,
-specifier|final
 name|Direction
 name|dir
 parameter_list|)

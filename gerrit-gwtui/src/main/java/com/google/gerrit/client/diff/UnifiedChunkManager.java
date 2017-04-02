@@ -1638,15 +1638,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|diffChunkNav (final CodeMirror cm, final Direction dir)
+DECL|method|diffChunkNav (CodeMirror cm, Direction dir)
 name|Runnable
 name|diffChunkNav
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|,
-specifier|final
 name|Direction
 name|dir
 parameter_list|)

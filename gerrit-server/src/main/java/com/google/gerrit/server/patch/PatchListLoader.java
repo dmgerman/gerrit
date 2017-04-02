@@ -1937,7 +1937,7 @@ operator|.
 name|TYPE_SYMLINK
 return|;
 block|}
-DECL|method|toFileHeader ( PatchListKey key, final DiffFormatter diffFormatter, final DiffEntry diffEntry)
+DECL|method|toFileHeader ( PatchListKey key, DiffFormatter diffFormatter, DiffEntry diffEntry)
 specifier|private
 name|FileHeader
 name|toFileHeader
@@ -1945,11 +1945,9 @@ parameter_list|(
 name|PatchListKey
 name|key
 parameter_list|,
-specifier|final
 name|DiffFormatter
 name|diffFormatter
 parameter_list|,
-specifier|final
 name|DiffEntry
 name|diffEntry
 parameter_list|)
