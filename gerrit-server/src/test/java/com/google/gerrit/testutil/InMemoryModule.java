@@ -596,24 +596,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|SingleVersionModule
-operator|.
-name|SingleVersionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|account
 operator|.
 name|AllAccountsIndexer
@@ -2165,15 +2147,12 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getInMemoryDatabase ( SchemaCreator schemaCreator, SingleVersionListener singleVersionListener)
+DECL|method|getInMemoryDatabase (SchemaCreator schemaCreator)
 name|InMemoryDatabase
 name|getInMemoryDatabase
 parameter_list|(
 name|SchemaCreator
 name|schemaCreator
-parameter_list|,
-name|SingleVersionListener
-name|singleVersionListener
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2183,8 +2162,6 @@ operator|new
 name|InMemoryDatabase
 argument_list|(
 name|schemaCreator
-argument_list|,
-name|singleVersionListener
 argument_list|)
 return|;
 block|}
