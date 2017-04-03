@@ -156,6 +156,20 @@ name|stream
 operator|.
 name|Collectors
 operator|.
+name|groupingBy
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
 name|joining
 import|;
 end_import
@@ -3618,8 +3632,9 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|cleanUpComments (Map<String, List<T>> commentsPerPath)
+DECL|method|cleanUpComments ( Map<String, List<T>> commentsPerPath)
 specifier|private
+specifier|static
 parameter_list|<
 name|T
 extends|extends
@@ -3713,6 +3728,7 @@ block|}
 block|}
 DECL|method|cleanUpComments (List<T> comments)
 specifier|private
+specifier|static
 parameter_list|<
 name|T
 extends|extends
@@ -3992,6 +4008,7 @@ return|;
 block|}
 DECL|method|ensurePathRefersToAvailableOrMagicFile ( String path, Set<String> availableFilePaths, PatchSet.Id patchSetId)
 specifier|private
+specifier|static
 name|void
 name|ensurePathRefersToAvailableOrMagicFile
 parameter_list|(
@@ -4051,6 +4068,7 @@ block|}
 block|}
 DECL|method|ensureLineIsNonNegative (Integer line, String path)
 specifier|private
+specifier|static
 name|void
 name|ensureLineIsNonNegative
 parameter_list|(
@@ -4094,6 +4112,7 @@ block|}
 block|}
 DECL|method|ensureCommentNotOnMagicFilesOfAutoMerge ( String path, T comment)
 specifier|private
+specifier|static
 parameter_list|<
 name|T
 extends|extends
@@ -4259,6 +4278,7 @@ expr_stmt|;
 block|}
 DECL|method|ensureRobotIdIsSet (String robotId, String commentPath)
 specifier|private
+specifier|static
 name|void
 name|ensureRobotIdIsSet
 parameter_list|(
@@ -4296,6 +4316,7 @@ block|}
 block|}
 DECL|method|ensureRobotRunIdIsSet (String robotRunId, String commentPath)
 specifier|private
+specifier|static
 name|void
 name|ensureRobotRunIdIsSet
 parameter_list|(
@@ -4333,6 +4354,7 @@ block|}
 block|}
 DECL|method|ensureFixSuggestionsAreAddable ( List<FixSuggestionInfo> fixSuggestionInfos, String commentPath)
 specifier|private
+specifier|static
 name|void
 name|ensureFixSuggestionsAreAddable
 parameter_list|(
@@ -4387,6 +4409,7 @@ block|}
 block|}
 DECL|method|ensureDescriptionIsSet (String commentPath, String description)
 specifier|private
+specifier|static
 name|void
 name|ensureDescriptionIsSet
 parameter_list|(
@@ -4424,6 +4447,7 @@ block|}
 block|}
 DECL|method|ensureFixReplacementsAreAddable ( String commentPath, List<FixReplacementInfo> fixReplacementInfos)
 specifier|private
+specifier|static
 name|void
 name|ensureFixReplacementsAreAddable
 parameter_list|(
@@ -4463,15 +4487,6 @@ operator|.
 name|path
 argument_list|)
 expr_stmt|;
-name|ensureReplacementPathRefersToFileOfComment
-argument_list|(
-name|commentPath
-argument_list|,
-name|fixReplacementInfo
-operator|.
-name|path
-argument_list|)
-expr_stmt|;
 name|ensureRangeIsSet
 argument_list|(
 name|commentPath
@@ -4500,16 +4515,60 @@ name|replacement
 argument_list|)
 expr_stmt|;
 block|}
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|FixReplacementInfo
+argument_list|>
+argument_list|>
+name|replacementsPerFilePath
+init|=
+name|fixReplacementInfos
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|collect
+argument_list|(
+name|groupingBy
+argument_list|(
+name|fixReplacement
+lambda|->
+name|fixReplacement
+operator|.
+name|path
+argument_list|)
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|List
+argument_list|<
+name|FixReplacementInfo
+argument_list|>
+name|sameFileReplacements
+range|:
+name|replacementsPerFilePath
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
 name|ensureRangesDoNotOverlap
 argument_list|(
 name|commentPath
 argument_list|,
-name|fixReplacementInfos
+name|sameFileReplacements
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|method|ensureReplacementsArePresent ( String commentPath, List<FixReplacementInfo> fixReplacementInfos)
 specifier|private
+specifier|static
 name|void
 name|ensureReplacementsArePresent
 parameter_list|(
@@ -4557,6 +4616,7 @@ block|}
 block|}
 DECL|method|ensureReplacementPathIsSet (String commentPath, String replacementPath)
 specifier|private
+specifier|static
 name|void
 name|ensureReplacementPathIsSet
 parameter_list|(
@@ -4592,53 +4652,9 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureReplacementPathRefersToFileOfComment ( String commentPath, String replacementPath)
-specifier|private
-name|void
-name|ensureReplacementPathRefersToFileOfComment
-parameter_list|(
-name|String
-name|commentPath
-parameter_list|,
-name|String
-name|replacementPath
-parameter_list|)
-throws|throws
-name|BadRequestException
-block|{
-if|if
-condition|(
-operator|!
-name|Objects
-operator|.
-name|equals
-argument_list|(
-name|commentPath
-argument_list|,
-name|replacementPath
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|BadRequestException
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Replacements may only be "
-operator|+
-literal|"specified for the file %s on which the robot comment was added"
-argument_list|,
-name|commentPath
-argument_list|)
-argument_list|)
-throw|;
-block|}
-block|}
 DECL|method|ensureRangeIsSet (String commentPath, Range range)
 specifier|private
+specifier|static
 name|void
 name|ensureRangeIsSet
 parameter_list|(
@@ -4676,6 +4692,7 @@ block|}
 block|}
 DECL|method|ensureRangeIsValid (String commentPath, Range range)
 specifier|private
+specifier|static
 name|void
 name|ensureRangeIsValid
 parameter_list|(
@@ -4740,6 +4757,7 @@ block|}
 block|}
 DECL|method|ensureReplacementStringIsSet (String commentPath, String replacement)
 specifier|private
+specifier|static
 name|void
 name|ensureReplacementStringIsSet
 parameter_list|(

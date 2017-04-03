@@ -374,6 +374,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -579,12 +589,15 @@ name|project
 argument_list|)
 init|)
 block|{
+name|List
+argument_list|<
 name|TreeModification
-name|treeModification
+argument_list|>
+name|treeModifications
 init|=
 name|fixReplacementInterpreter
 operator|.
-name|toTreeModification
+name|toTreeModifications
 argument_list|(
 name|repository
 argument_list|,
@@ -614,7 +627,7 @@ argument_list|()
 argument_list|,
 name|patchSet
 argument_list|,
-name|treeModification
+name|treeModifications
 argument_list|)
 decl_stmt|;
 name|EditInfo

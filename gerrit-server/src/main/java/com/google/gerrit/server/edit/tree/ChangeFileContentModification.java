@@ -429,8 +429,9 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|VisibleForTesting
+name|Override
 DECL|method|getFilePath ()
+specifier|public
 name|String
 name|getFilePath
 parameter_list|()
