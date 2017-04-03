@@ -1011,6 +1011,31 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|checkState
+argument_list|(
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+operator|==
+name|args
+operator|.
+name|rw
+argument_list|,
+literal|"SubmitStrategyOp requires callers to call BatchUpdate#setRepository with exactly the same"
+operator|+
+literal|" CodeReviewRevWalk instance from the SubmitStrategy.Arguments: %s != %s"
+argument_list|,
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|,
+name|args
+operator|.
+name|rw
+argument_list|)
+expr_stmt|;
 comment|// Run the submit strategy implementation and record the merge tip state so
 comment|// we can create the ref update.
 name|CodeReviewCommit

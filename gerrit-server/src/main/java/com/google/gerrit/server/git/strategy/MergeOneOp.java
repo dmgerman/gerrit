@@ -232,9 +232,6 @@ literal|" this operation"
 argument_list|)
 throw|;
 block|}
-comment|// TODO(dborowitz): args.rw is needed because it's a CodeReviewRevWalk.
-comment|// When hoisting BatchUpdate into MergeOp, we will need to teach
-comment|// BatchUpdate how to produce CodeReviewRevWalks.
 name|CodeReviewCommit
 name|merged
 init|=
