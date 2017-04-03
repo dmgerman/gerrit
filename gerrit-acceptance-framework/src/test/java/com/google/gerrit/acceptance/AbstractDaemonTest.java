@@ -3794,7 +3794,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|afterTest ()
-specifier|private
+specifier|protected
 name|void
 name|afterTest
 parameter_list|()
