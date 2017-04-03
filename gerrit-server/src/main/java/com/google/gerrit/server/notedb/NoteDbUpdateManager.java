@@ -1308,6 +1308,14 @@ parameter_list|()
 block|{
 name|rw
 operator|.
+name|getObjectReader
+argument_list|()
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|rw
+operator|.
 name|close
 argument_list|()
 expr_stmt|;
@@ -1892,6 +1900,7 @@ argument_list|(
 name|p
 argument_list|)
 decl_stmt|;
+comment|// Closed by OpenRepo#close.
 name|ObjectInserter
 name|ins
 init|=
@@ -1900,20 +1909,36 @@ operator|.
 name|newObjectInserter
 argument_list|()
 decl_stmt|;
+comment|// Closed by OpenRepo#close.
+name|ObjectReader
+name|reader
+init|=
+name|ins
+operator|.
+name|newReader
+argument_list|()
+decl_stmt|;
+comment|// Not closed by OpenRepo#close.
+try|try
+init|(
+name|RevWalk
+name|rw
+init|=
+operator|new
+name|RevWalk
+argument_list|(
+name|reader
+argument_list|)
+init|)
+block|{
+comment|// Doesn't escape OpenRepo constructor.
 return|return
 operator|new
 name|OpenRepo
 argument_list|(
 name|repo
 argument_list|,
-operator|new
-name|RevWalk
-argument_list|(
-name|ins
-operator|.
-name|newReader
-argument_list|()
-argument_list|)
+name|rw
 argument_list|,
 name|ins
 argument_list|,
@@ -1925,7 +1950,28 @@ argument_list|)
 argument_list|,
 literal|true
 argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+name|reader
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|super
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 return|;
+block|}
 block|}
 DECL|method|isEmpty ()
 specifier|private

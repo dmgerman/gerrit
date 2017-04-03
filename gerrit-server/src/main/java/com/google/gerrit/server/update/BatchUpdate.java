@@ -1105,6 +1105,14 @@ condition|)
 block|{
 name|revWalk
 operator|.
+name|getObjectReader
+argument_list|()
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|revWalk
+operator|.
 name|close
 argument_list|()
 expr_stmt|;
