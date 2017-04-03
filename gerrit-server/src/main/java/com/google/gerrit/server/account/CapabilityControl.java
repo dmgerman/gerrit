@@ -1002,6 +1002,34 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+comment|/** @return true if the user has a permission rule specifying the range. */
+DECL|method|hasExplicitRange (String permission)
+specifier|public
+name|boolean
+name|hasExplicitRange
+parameter_list|(
+name|String
+name|permission
+parameter_list|)
+block|{
+return|return
+name|GlobalCapability
+operator|.
+name|hasRange
+argument_list|(
+name|permission
+argument_list|)
+operator|&&
+operator|!
+name|access
+argument_list|(
+name|permission
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 comment|/** The range of permitted values associated with a label permission. */
 DECL|method|getRange (String permission)
 specifier|public
