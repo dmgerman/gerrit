@@ -8147,6 +8147,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// check if it's blocked to delete a vote on a non-current patch set.
+name|setApiUser
+argument_list|(
+name|admin
+argument_list|)
+expr_stmt|;
 name|exception
 operator|.
 name|expect
@@ -8161,11 +8166,6 @@ operator|.
 name|expectMessage
 argument_list|(
 literal|"Cannot access on non-current patch set"
-argument_list|)
-expr_stmt|;
-name|setApiUser
-argument_list|(
-name|admin
 argument_list|)
 expr_stmt|;
 name|gApi
