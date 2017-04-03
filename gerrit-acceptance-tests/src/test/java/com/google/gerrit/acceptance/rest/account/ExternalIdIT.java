@@ -841,10 +841,10 @@ name|metricMaker
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|getExternalIDs ()
+DECL|method|getExternalIds ()
 specifier|public
 name|void
-name|getExternalIDs
+name|getExternalIds
 parameter_list|()
 throws|throws
 name|Exception
@@ -1018,10 +1018,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|deleteExternalIDs ()
+DECL|method|deleteExternalIds ()
 specifier|public
 name|void
-name|deleteExternalIDs
+name|deleteExternalIds
 parameter_list|()
 throws|throws
 name|Exception
@@ -1179,10 +1179,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|deleteExternalIDs_Conflict ()
+DECL|method|deleteExternalIds_Conflict ()
 specifier|public
 name|void
-name|deleteExternalIDs_Conflict
+name|deleteExternalIds_Conflict
 parameter_list|()
 throws|throws
 name|Exception
@@ -1254,10 +1254,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|deleteExternalIDs_UnprocessableEntity ()
+DECL|method|deleteExternalIds_UnprocessableEntity ()
 specifier|public
 name|void
-name|deleteExternalIDs_UnprocessableEntity
+name|deleteExternalIds_UnprocessableEntity
 parameter_list|()
 throws|throws
 name|Exception
