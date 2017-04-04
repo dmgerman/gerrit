@@ -3655,8 +3655,6 @@ parameter_list|(
 name|Config
 name|rc
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Map
 argument_list|<
@@ -3754,9 +3752,7 @@ name|name
 argument_list|,
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
