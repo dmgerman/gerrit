@@ -2212,6 +2212,7 @@ argument_list|(
 name|SHA1
 argument_list|)
 expr_stmt|;
+comment|// Change is missing from ReviewDb but present in index.
 name|assertThat
 argument_list|(
 name|StalenessChecker
@@ -2224,9 +2225,10 @@ literal|null
 argument_list|)
 argument_list|)
 operator|.
-name|isFalse
+name|isTrue
 argument_list|()
 expr_stmt|;
+comment|// Change differs only in primary storage.
 name|Change
 name|noteDbPrimary
 init|=
@@ -2256,7 +2258,7 @@ name|noteDbPrimary
 argument_list|)
 argument_list|)
 operator|.
-name|isFalse
+name|isTrue
 argument_list|()
 expr_stmt|;
 name|assertThat
