@@ -232,6 +232,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Future
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -608,6 +620,17 @@ condition|(
 name|async
 condition|)
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|possiblyIgnoredError
+init|=
 name|workQueue
 operator|.
 name|getDefaultQueue
@@ -661,7 +684,7 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 else|else
 block|{
