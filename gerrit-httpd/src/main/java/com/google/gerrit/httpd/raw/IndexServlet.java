@@ -178,9 +178,9 @@ name|template
 operator|.
 name|soy
 operator|.
-name|tofu
+name|data
 operator|.
-name|SoyTofu
+name|UnsafeSanitizedContentOrdainer
 import|;
 end_import
 
@@ -194,9 +194,9 @@ name|template
 operator|.
 name|soy
 operator|.
-name|data
+name|tofu
 operator|.
-name|UnsafeSanitizedContentOrdainer
+name|SoyTofu
 import|;
 end_import
 
@@ -284,6 +284,15 @@ name|IndexServlet
 extends|extends
 name|HttpServlet
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|indexSource
 specifier|private
 specifier|final

@@ -342,18 +342,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Provides
 import|;
 end_import
@@ -1651,7 +1639,7 @@ name|Named
 argument_list|(
 name|POLYGERRIT_INDEX_SERVLET
 argument_list|)
-DECL|method|getPolyGerritUiIndexServlet (@anonicalWebUrl @ullable String canonicalUrl, @GerritServerConfig Config cfg)
+DECL|method|getPolyGerritUiIndexServlet ( @anonicalWebUrl @ullable String canonicalUrl, @GerritServerConfig Config cfg)
 name|HttpServlet
 name|getPolyGerritUiIndexServlet
 parameter_list|(
