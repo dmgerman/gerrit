@@ -479,9 +479,10 @@ name|e
 parameter_list|)
 comment|/*-{ this.settingsScreen(t, m, e) }-*/
 function_decl|;
-comment|/**    * Register a panel for a UI extension point.    *    * @param extensionPoint the UI extension point for which the panel should be registered.    * @param entry callback function invoked to create the panel widgets.    */
-DECL|method|panel (GerritUiExtensionPoint extensionPoint, Panel.EntryPoint entry)
+comment|/**    * Register a panel for a UI extension point.    *    * @param extensionPoint the UI extension point for which the panel should be registered.    * @param entry callback function invoked to create the panel widgets.    * @param name the name of the panel which can be used to specify panel    *        ordering via project config    */
+DECL|method|panel (GerritUiExtensionPoint extensionPoint, Panel.EntryPoint entry, String name)
 specifier|public
+specifier|final
 name|void
 name|panel
 parameter_list|(
@@ -492,6 +493,9 @@ name|Panel
 operator|.
 name|EntryPoint
 name|entry
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 block|{
 name|panel
@@ -505,10 +509,12 @@ name|wrap
 argument_list|(
 name|entry
 argument_list|)
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|panel (String i, JavaScriptObject e)
+DECL|method|panel (String i, JavaScriptObject e, String n)
 specifier|private
 specifier|native
 name|void
@@ -519,8 +525,11 @@ name|i
 parameter_list|,
 name|JavaScriptObject
 name|e
+parameter_list|,
+name|String
+name|n
 parameter_list|)
-comment|/*-{ this.panel(i, e) }-*/
+comment|/*-{ this.panel(i, e, n) }-*/
 function_decl|;
 DECL|method|Plugin ()
 specifier|protected
