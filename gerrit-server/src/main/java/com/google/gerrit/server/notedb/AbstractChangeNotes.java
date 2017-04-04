@@ -808,6 +808,14 @@ name|PrimaryStorage
 operator|.
 name|REVIEW_DB
 operator|&&
+operator|!
+name|args
+operator|.
+name|migration
+operator|.
+name|disableChangeReviewDb
+argument_list|()
+operator|&&
 name|autoRebuild
 expr_stmt|;
 block|}
