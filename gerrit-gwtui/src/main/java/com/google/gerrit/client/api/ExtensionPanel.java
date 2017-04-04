@@ -370,9 +370,7 @@ name|contexts
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Context
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -460,14 +458,7 @@ name|defsOrderedByName
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|Definition
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -530,9 +521,7 @@ name|orderedDefs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Definition
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -605,7 +594,7 @@ literal|".undefined"
 argument_list|)
 condition|)
 block|{
-comment|/* Handle a partially undefined panel name from the            javascript layer by generating a random panel name.            This maintains support for panels that do not provide a name. */
+comment|/* Handle a partially undefined panel name from the       javascript layer by generating a random panel name.       This maintains support for panels that do not provide a name. */
 name|panelName
 operator|=
 name|def
