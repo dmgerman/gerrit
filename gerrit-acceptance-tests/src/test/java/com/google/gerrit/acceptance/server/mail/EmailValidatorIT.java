@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail.send
+DECL|package|com.google.gerrit.acceptance.server.mail
 package|package
 name|com
 operator|.
@@ -60,11 +60,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
 name|server
 operator|.
 name|mail
-operator|.
-name|send
 package|;
 end_package
 
@@ -97,6 +97,38 @@ operator|.
 name|Truth
 operator|.
 name|assert_
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|AbstractDaemonTest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|send
+operator|.
+name|OutgoingEmailValidator
 import|;
 end_import
 
@@ -141,10 +173,12 @@ import|;
 end_import
 
 begin_class
-DECL|class|ValidatorTest
+DECL|class|EmailValidatorIT
 specifier|public
 class|class
-name|ValidatorTest
+name|EmailValidatorIT
+extends|extends
+name|AbstractDaemonTest
 block|{
 DECL|field|UNSUPPORTED_PREFIX
 specifier|private
