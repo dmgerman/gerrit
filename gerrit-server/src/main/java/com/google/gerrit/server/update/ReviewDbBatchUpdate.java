@@ -996,6 +996,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|ObjectReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|PersonIdent
 import|;
 end_import
@@ -2432,11 +2446,24 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+try|try
+init|(
+name|ObjectReader
+name|reader
+init|=
+name|ctx
+operator|.
+name|getInserter
+argument_list|()
+operator|.
+name|newReader
+argument_list|()
+init|)
+block|{
 comment|// Validation of refs has to take place here and not at the beginning
-comment|// executeRefUpdates. Otherwise failing validation in a second
-comment|// BatchUpdate object will happen *after* first object's
-comment|// executeRefUpdates has finished, hence after first repo's refs have
-comment|// been updated, which is too late.
+comment|// executeRefUpdates. Otherwise failing validation in a second BatchUpdate object will
+comment|// happen *after* first object's executeRefUpdates has finished, hence after first repo's
+comment|// refs have been updated, which is too late.
 name|onSubmitValidators
 operator|.
 name|validate
@@ -2450,13 +2477,7 @@ name|getRepository
 argument_list|()
 argument_list|)
 argument_list|,
-name|ctx
-operator|.
-name|getInserter
-argument_list|()
-operator|.
-name|newReader
-argument_list|()
+name|reader
 argument_list|,
 name|commands
 operator|.
@@ -2464,6 +2485,7 @@ name|getCommands
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
