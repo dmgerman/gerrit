@@ -178,9 +178,9 @@ name|template
 operator|.
 name|soy
 operator|.
-name|tofu
+name|data
 operator|.
-name|SoyTofu
+name|UnsafeSanitizedContentOrdainer
 import|;
 end_import
 
@@ -194,9 +194,9 @@ name|template
 operator|.
 name|soy
 operator|.
-name|data
+name|tofu
 operator|.
-name|UnsafeSanitizedContentOrdainer
+name|SoyTofu
 import|;
 end_import
 
