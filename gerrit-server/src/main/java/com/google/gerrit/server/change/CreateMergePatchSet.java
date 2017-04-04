@@ -1676,9 +1676,12 @@ name|MergeUtil
 operator|.
 name|createMergeCommit
 argument_list|(
-name|git
-argument_list|,
 name|oi
+argument_list|,
+name|git
+operator|.
+name|getConfig
+argument_list|()
 argument_list|,
 name|mergeTip
 argument_list|,

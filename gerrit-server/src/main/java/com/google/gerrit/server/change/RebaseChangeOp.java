@@ -1505,12 +1505,15 @@ name|newThreeWayMerger
 argument_list|(
 name|ctx
 operator|.
-name|getRepository
+name|getInserter
 argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getInserter
+name|getRepository
+argument_list|()
+operator|.
+name|getConfig
 argument_list|()
 argument_list|)
 decl_stmt|;

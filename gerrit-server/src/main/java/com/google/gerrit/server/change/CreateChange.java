@@ -2668,9 +2668,12 @@ name|MergeUtil
 operator|.
 name|createMergeCommit
 argument_list|(
-name|repo
-argument_list|,
 name|oi
+argument_list|,
+name|repo
+operator|.
+name|getConfig
+argument_list|()
 argument_list|,
 name|mergeTip
 argument_list|,

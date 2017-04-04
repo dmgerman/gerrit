@@ -1740,16 +1740,16 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|createCherryPickFromCommit ( Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, CodeReviewRevWalk rw, int parentIndex, boolean ignoreIdenticalTree)
+DECL|method|createCherryPickFromCommit ( ObjectInserter inserter, Config repoConfig, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, CodeReviewRevWalk rw, int parentIndex, boolean ignoreIdenticalTree)
 specifier|public
 name|CodeReviewCommit
 name|createCherryPickFromCommit
 parameter_list|(
-name|Repository
-name|repo
-parameter_list|,
 name|ObjectInserter
 name|inserter
+parameter_list|,
+name|Config
+name|repoConfig
 parameter_list|,
 name|RevCommit
 name|mergeTip
@@ -1789,9 +1789,9 @@ name|m
 init|=
 name|newThreeWayMerger
 argument_list|(
-name|repo
-argument_list|,
 name|inserter
+argument_list|,
+name|repoConfig
 argument_list|)
 decl_stmt|;
 name|m
@@ -1917,17 +1917,17 @@ literal|"merge conflict"
 argument_list|)
 throw|;
 block|}
-DECL|method|createMergeCommit ( Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, String mergeStrategy, PersonIdent committerIndent, String commitMsg, RevWalk rw)
+DECL|method|createMergeCommit ( ObjectInserter inserter, Config repoConfig, RevCommit mergeTip, RevCommit originalCommit, String mergeStrategy, PersonIdent committerIndent, String commitMsg, RevWalk rw)
 specifier|public
 specifier|static
 name|RevCommit
 name|createMergeCommit
 parameter_list|(
-name|Repository
-name|repo
-parameter_list|,
 name|ObjectInserter
 name|inserter
+parameter_list|,
+name|Config
+name|repoConfig
 parameter_list|,
 name|RevCommit
 name|mergeTip
@@ -1999,9 +1999,9 @@ name|m
 init|=
 name|newMerger
 argument_list|(
-name|repo
-argument_list|,
 name|inserter
+argument_list|,
+name|repoConfig
 argument_list|,
 name|mergeStrategy
 argument_list|)
@@ -3144,9 +3144,12 @@ block|{
 return|return
 name|newThreeWayMerger
 argument_list|(
-name|repo
-argument_list|,
 name|ins
+argument_list|,
+name|repo
+operator|.
+name|getConfig
+argument_list|()
 argument_list|)
 operator|.
 name|merge
@@ -3377,9 +3380,12 @@ name|m
 init|=
 name|newThreeWayMerger
 argument_list|(
-name|repo
-argument_list|,
 name|ins
+argument_list|,
+name|repo
+operator|.
+name|getConfig
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|m
@@ -3522,7 +3528,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|mergeOneCommit ( PersonIdent author, PersonIdent committer, Repository repo, CodeReviewRevWalk rw, ObjectInserter inserter, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
+DECL|method|mergeOneCommit ( PersonIdent author, PersonIdent committer, CodeReviewRevWalk rw, ObjectInserter inserter, Config repoConfig, Branch.NameKey destBranch, CodeReviewCommit mergeTip, CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
 name|mergeOneCommit
@@ -3533,14 +3539,14 @@ parameter_list|,
 name|PersonIdent
 name|committer
 parameter_list|,
-name|Repository
-name|repo
-parameter_list|,
 name|CodeReviewRevWalk
 name|rw
 parameter_list|,
 name|ObjectInserter
 name|inserter
+parameter_list|,
+name|Config
+name|repoConfig
 parameter_list|,
 name|Branch
 operator|.
@@ -3556,15 +3562,14 @@ parameter_list|)
 throws|throws
 name|IntegrationException
 block|{
-specifier|final
 name|ThreeWayMerger
 name|m
 init|=
 name|newThreeWayMerger
 argument_list|(
-name|repo
-argument_list|,
 name|inserter
+argument_list|,
+name|repoConfig
 argument_list|)
 decl_stmt|;
 try|try
@@ -4352,26 +4357,24 @@ block|}
 end_function
 
 begin_function
-DECL|method|newThreeWayMerger (final Repository repo, final ObjectInserter inserter)
+DECL|method|newThreeWayMerger (ObjectInserter inserter, Config repoConfig)
 specifier|public
 name|ThreeWayMerger
 name|newThreeWayMerger
 parameter_list|(
-specifier|final
-name|Repository
-name|repo
-parameter_list|,
-specifier|final
 name|ObjectInserter
 name|inserter
+parameter_list|,
+name|Config
+name|repoConfig
 parameter_list|)
 block|{
 return|return
 name|newThreeWayMerger
 argument_list|(
-name|repo
-argument_list|,
 name|inserter
+argument_list|,
+name|repoConfig
 argument_list|,
 name|mergeStrategyName
 argument_list|()
@@ -4457,18 +4460,17 @@ block|}
 end_function
 
 begin_function
-DECL|method|newThreeWayMerger ( Repository repo, final ObjectInserter inserter, String strategyName)
+DECL|method|newThreeWayMerger ( ObjectInserter inserter, Config repoConfig, String strategyName)
 specifier|public
 specifier|static
 name|ThreeWayMerger
 name|newThreeWayMerger
 parameter_list|(
-name|Repository
-name|repo
-parameter_list|,
-specifier|final
 name|ObjectInserter
 name|inserter
+parameter_list|,
+name|Config
+name|repoConfig
 parameter_list|,
 name|String
 name|strategyName
@@ -4479,9 +4481,9 @@ name|m
 init|=
 name|newMerger
 argument_list|(
-name|repo
-argument_list|,
 name|inserter
+argument_list|,
+name|repoConfig
 argument_list|,
 name|strategyName
 argument_list|)
@@ -4507,18 +4509,17 @@ block|}
 end_function
 
 begin_function
-DECL|method|newMerger ( Repository repo, final ObjectInserter inserter, String strategyName)
+DECL|method|newMerger (ObjectInserter inserter, Config repoConfig, String strategyName)
 specifier|public
 specifier|static
 name|Merger
 name|newMerger
 parameter_list|(
-name|Repository
-name|repo
-parameter_list|,
-specifier|final
 name|ObjectInserter
 name|inserter
+parameter_list|,
+name|Config
+name|repoConfig
 parameter_list|,
 name|String
 name|strategyName
@@ -4545,21 +4546,10 @@ argument_list|,
 name|strategyName
 argument_list|)
 expr_stmt|;
-name|Merger
-name|m
-init|=
+return|return
 name|strategy
 operator|.
 name|newMerger
-argument_list|(
-name|repo
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|m
-operator|.
-name|setObjectInserter
 argument_list|(
 operator|new
 name|ObjectInserter
@@ -4593,10 +4583,9 @@ name|close
 parameter_list|()
 block|{}
 block|}
+argument_list|,
+name|repoConfig
 argument_list|)
-expr_stmt|;
-return|return
-name|m
 return|;
 block|}
 end_function
