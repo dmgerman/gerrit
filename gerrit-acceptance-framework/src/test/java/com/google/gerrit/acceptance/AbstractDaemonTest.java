@@ -3810,7 +3810,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|afterTest ()
-specifier|private
+specifier|protected
 name|void
 name|afterTest
 parameter_list|()
@@ -3880,6 +3880,10 @@ name|server
 operator|.
 name|stop
 argument_list|()
+expr_stmt|;
+name|server
+operator|=
+literal|null
 expr_stmt|;
 block|}
 block|}

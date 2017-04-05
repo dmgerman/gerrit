@@ -84,7 +84,7 @@ name|change
 operator|.
 name|ChangeField
 operator|.
-name|FUZZY_TOPIC
+name|EXACT_TOPIC
 import|;
 end_import
 
@@ -164,7 +164,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|FUZZY_TOPIC
+name|EXACT_TOPIC
 argument_list|,
 name|re
 argument_list|)
