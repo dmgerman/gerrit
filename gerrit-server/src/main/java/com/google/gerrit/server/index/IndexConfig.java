@@ -162,7 +162,7 @@ block|}
 DECL|method|fromConfig (Config cfg)
 specifier|public
 specifier|static
-name|IndexConfig
+name|Builder
 name|fromConfig
 parameter_list|(
 name|Config
@@ -210,9 +210,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|b
-operator|.
-name|build
-argument_list|()
 return|;
 block|}
 DECL|method|setIfPresent (Config cfg, String name, IntConsumer setter)
@@ -295,6 +292,11 @@ name|maxTerms
 argument_list|(
 name|DEFAULT_MAX_TERMS
 argument_list|)
+operator|.
+name|separateChangeSubIndexes
+argument_list|(
+literal|false
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -355,6 +357,16 @@ specifier|abstract
 name|int
 name|maxTerms
 parameter_list|()
+function_decl|;
+DECL|method|separateChangeSubIndexes (boolean separate)
+specifier|public
+specifier|abstract
+name|Builder
+name|separateChangeSubIndexes
+parameter_list|(
+name|boolean
+name|separate
+parameter_list|)
 function_decl|;
 DECL|method|autoBuild ()
 specifier|abstract
@@ -458,6 +470,14 @@ specifier|public
 specifier|abstract
 name|int
 name|maxTerms
+parameter_list|()
+function_decl|;
+comment|/**    * @return whether different subsets of changes may be stored in different physical sub-indexes.    */
+DECL|method|separateChangeSubIndexes ()
+specifier|public
+specifier|abstract
+name|boolean
+name|separateChangeSubIndexes
 parameter_list|()
 function_decl|;
 block|}

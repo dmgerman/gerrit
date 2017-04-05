@@ -72,6 +72,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|collect
+operator|.
+name|Sets
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|primitives
 operator|.
 name|Ints
@@ -107,6 +121,22 @@ operator|.
 name|change
 operator|.
 name|ChangeTriplet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexConfig
 import|;
 end_import
 
@@ -268,6 +298,16 @@ name|Optional
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -276,6 +316,12 @@ specifier|public
 class|class
 name|ChangeFinder
 block|{
+DECL|field|indexConfig
+specifier|private
+specifier|final
+name|IndexConfig
+name|indexConfig
+decl_stmt|;
 DECL|field|queryProvider
 specifier|private
 specifier|final
@@ -287,9 +333,12 @@ name|queryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeFinder (Provider<InternalChangeQuery> queryProvider)
+DECL|method|ChangeFinder (IndexConfig indexConfig, Provider<InternalChangeQuery> queryProvider)
 name|ChangeFinder
 parameter_list|(
+name|IndexConfig
+name|indexConfig
+parameter_list|,
 name|Provider
 argument_list|<
 name|InternalChangeQuery
@@ -297,6 +346,12 @@ argument_list|>
 name|queryProvider
 parameter_list|)
 block|{
+name|this
+operator|.
+name|indexConfig
+operator|=
+name|indexConfig
+expr_stmt|;
 name|this
 operator|.
 name|queryProvider
@@ -613,6 +668,15 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|indexConfig
+operator|.
+name|separateChangeSubIndexes
+argument_list|()
+condition|)
+block|{
 for|for
 control|(
 name|ChangeData
@@ -633,6 +697,69 @@ name|user
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+return|return
+name|ctls
+return|;
+block|}
+comment|// If an index implementation uses separate non-atomic subindexes, it's possible to temporarily
+comment|// observe a change as present in both subindexes, if this search is concurrent with a write.
+comment|// Dedup to avoid confusing the caller. We can choose an arbitrary ChangeData instance because
+comment|// the index results have no stored fields, so the data is already reloaded. (It's also possible
+comment|// that a change might appear in zero subindexes, but there's nothing we can do here to help
+comment|// this case.)
+name|Set
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|seen
+init|=
+name|Sets
+operator|.
+name|newHashSetWithExpectedSize
+argument_list|(
+name|cds
+operator|.
+name|size
+argument_list|()
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|ChangeData
+name|cd
+range|:
+name|cds
+control|)
+block|{
+if|if
+condition|(
+name|seen
+operator|.
+name|add
+argument_list|(
+name|cd
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|ctls
+operator|.
+name|add
+argument_list|(
+name|cd
+operator|.
+name|changeControl
+argument_list|(
+name|user
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return
 name|ctls
