@@ -702,13 +702,13 @@ name|theme
 parameter_list|()
 comment|/*-{ return this.theme; }-*/
 function_decl|;
-DECL|method|extensionPanelNames ()
 specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
 name|JsArrayString
 argument_list|>
+DECL|method|extensionPanelNames ()
 name|extensionPanelNames
 parameter_list|()
 comment|/*-{ return this.extension_panel_names; }-*/

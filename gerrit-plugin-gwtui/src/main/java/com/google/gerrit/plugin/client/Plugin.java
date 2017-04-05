@@ -479,8 +479,8 @@ name|e
 parameter_list|)
 comment|/*-{ this.settingsScreen(t, m, e) }-*/
 function_decl|;
-comment|/**    * Register a panel for a UI extension point.    *    * @param extensionPoint the UI extension point for which the panel should be registered.    * @param entry callback function invoked to create the panel widgets.    * @param name the name of the panel which can be used to specify panel    *        ordering via project config    */
-DECL|method|panel (GerritUiExtensionPoint extensionPoint, Panel.EntryPoint entry, String name)
+comment|/**    * Register a panel for a UI extension point.    *    * @param extensionPoint the UI extension point for which the panel should be registered.    * @param entry callback function invoked to create the panel widgets.    * @param name the name of the panel which can be used to specify panel ordering via project    *     config    */
+DECL|method|panel ( GerritUiExtensionPoint extensionPoint, Panel.EntryPoint entry, String name)
 specifier|public
 specifier|final
 name|void
