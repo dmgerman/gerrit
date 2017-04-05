@@ -159,10 +159,10 @@ end_import
 begin_class
 annotation|@
 name|Sandboxed
-DECL|class|StartStopDeamonIT
+DECL|class|StartStopDaemonIT
 specifier|public
 class|class
-name|StartStopDeamonIT
+name|StartStopDaemonIT
 extends|extends
 name|AbstractDaemonTest
 block|{
@@ -174,7 +174,7 @@ name|Description
 operator|.
 name|createSuiteDescription
 argument_list|(
-name|StartStopDeamonIT
+name|StartStopDaemonIT
 operator|.
 name|class
 argument_list|)
