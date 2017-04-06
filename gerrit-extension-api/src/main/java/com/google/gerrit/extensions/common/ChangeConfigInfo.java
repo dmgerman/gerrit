@@ -82,6 +82,11 @@ specifier|public
 name|Boolean
 name|showAssignee
 decl_stmt|;
+DECL|field|showAssigneeSuggestOracle
+specifier|public
+name|Boolean
+name|showAssigneeSuggestOracle
+decl_stmt|;
 DECL|field|allowDrafts
 specifier|public
 name|Boolean

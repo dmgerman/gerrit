@@ -8728,6 +8728,17 @@ argument_list|()
 operator|.
 name|showAssignee
 argument_list|()
+operator|||
+name|Gerrit
+operator|.
+name|info
+argument_list|()
+operator|.
+name|change
+argument_list|()
+operator|.
+name|showAssigneeSuggestOracle
+argument_list|()
 condition|)
 block|{
 name|assignee
