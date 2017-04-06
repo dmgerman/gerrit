@@ -1924,6 +1924,8 @@ operator|=
 name|o
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|name ()
 specifier|public
 name|String
@@ -1942,6 +1944,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|aliases ()
 specifier|public
 name|String
@@ -2004,6 +2008,8 @@ return|return
 name|prefixedAliases
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|usage ()
 specifier|public
 name|String
@@ -2017,6 +2023,8 @@ name|usage
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|metaVar ()
 specifier|public
 name|String
@@ -2030,6 +2038,8 @@ name|metaVar
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|required ()
 specifier|public
 name|boolean
@@ -2043,6 +2053,8 @@ name|required
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|hidden ()
 specifier|public
 name|boolean
@@ -2056,6 +2068,13 @@ name|hidden
 argument_list|()
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
+annotation|@
+name|Override
 DECL|method|handler ()
 specifier|public
 name|Class
@@ -2074,6 +2093,8 @@ name|handler
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|depends ()
 specifier|public
 name|String
@@ -2088,6 +2109,8 @@ name|depends
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|annotationType ()
 specifier|public
 name|Class
@@ -2193,6 +2216,9 @@ comment|// recursively process all the methods/fields.
 for|for
 control|(
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|c
 init|=
 name|bean
