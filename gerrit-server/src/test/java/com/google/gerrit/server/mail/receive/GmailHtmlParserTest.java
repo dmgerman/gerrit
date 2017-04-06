@@ -136,7 +136,7 @@ literal|"<p>foobar<strong>posted comments</strong> on this change.</p>"
 operator|+
 literal|"<p><a href=\""
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1\" "
 operator|+
@@ -151,7 +151,7 @@ operator|+
 comment|// File #1: test.txt
 literal|"<a href=\""
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/test.txt\">"
 operator|+
@@ -166,7 +166,7 @@ literal|"<li><p>"
 operator|+
 literal|"<a href=\""
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/test.txt\">"
 operator|+
@@ -187,7 +187,7 @@ literal|"<li><p>"
 operator|+
 literal|"<a href=\""
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/test.txt@2\">"
 operator|+
@@ -211,7 +211,7 @@ literal|"<li><p>"
 operator|+
 literal|"<a href=\""
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/test.txt@3\">"
 operator|+
@@ -232,7 +232,7 @@ literal|"<li><p>"
 operator|+
 literal|"<a href=\""
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/test.txt@115\">"
 operator|+
@@ -247,7 +247,7 @@ operator|+
 comment|// File #2: test.txt
 literal|"<a href=\""
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/readme.txt\">"
 operator|+
@@ -262,7 +262,7 @@ literal|"<li><p>"
 operator|+
 literal|"<a href=\""
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/readme.txt@3\">"
 operator|+
@@ -289,7 +289,7 @@ operator|+
 comment|// Footer
 literal|"<p>To view, visit<a href=\""
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1\">this change</a>. "
 operator|+

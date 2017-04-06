@@ -208,7 +208,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -300,7 +300,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -430,7 +430,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -564,7 +564,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -642,7 +642,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -773,7 +773,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -907,7 +907,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -1002,7 +1002,7 @@ literal|"> Foo Bar has posted comments on this change. (  \n"
 operator|+
 literal|"> "
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1 )\n"
 operator|+
@@ -1026,7 +1026,7 @@ literal|"> \n"
 operator|+
 literal|"> "
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/test.txt\n"
 operator|+
@@ -1052,7 +1052,7 @@ literal|"> Patch Set #4:\n"
 operator|+
 literal|"> "
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/test.txt\n"
 operator|+
@@ -1076,7 +1076,7 @@ operator|)
 operator|+
 literal|"> "
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/test.txt@2\n"
 operator|+
@@ -1108,7 +1108,7 @@ literal|"> \n"
 operator|+
 literal|"> "
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/test.txt@3\n"
 operator|+
@@ -1138,7 +1138,7 @@ literal|"> \n"
 operator|+
 literal|"> "
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/readme.txt\n"
 operator|+
@@ -1162,7 +1162,7 @@ literal|"> \n"
 operator|+
 literal|"> "
 operator|+
-name|changeURL
+name|CHANGE_URL
 operator|+
 literal|"/1/gerrit-server/readme.txt@3\n"
 operator|+
