@@ -3818,6 +3818,13 @@ name|String
 name|token
 parameter_list|)
 block|{
+if|if
+condition|(
+name|uiSwitcherLink
+operator|!=
+literal|null
+condition|)
+block|{
 name|uiSwitcherLink
 operator|.
 name|setHref
@@ -3828,6 +3835,7 @@ name|token
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|onModuleLoad2 (HostPageData hpd)
 specifier|private
