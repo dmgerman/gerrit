@@ -295,7 +295,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -423,7 +423,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -555,7 +555,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat
@@ -631,7 +631,7 @@ argument_list|()
 argument_list|,
 name|comments
 argument_list|,
-name|changeURL
+name|CHANGE_URL
 argument_list|)
 decl_stmt|;
 name|assertThat

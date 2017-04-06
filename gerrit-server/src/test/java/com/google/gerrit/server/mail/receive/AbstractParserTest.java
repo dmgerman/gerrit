@@ -192,12 +192,12 @@ specifier|public
 class|class
 name|AbstractParserTest
 block|{
-DECL|field|changeURL
+DECL|field|CHANGE_URL
 specifier|protected
 specifier|static
 specifier|final
 name|String
-name|changeURL
+name|CHANGE_URL
 init|=
 literal|"https://gerrit-review.googlesource.com/#/changes/123"
 decl_stmt|;
