@@ -757,6 +757,12 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|accountsUpdate
+specifier|private
+specifier|final
+name|AccountsUpdate
+name|accountsUpdate
+decl_stmt|;
 DECL|field|indexer
 specifier|private
 specifier|final
@@ -814,7 +820,7 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountIndexer indexer, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @Assisted String username)
+DECL|method|CreateAccount ( ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate accountsUpdate, AccountIndexer indexer, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -839,6 +845,9 @@ name|sshKeyCache
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|AccountsUpdate
+name|accountsUpdate
 parameter_list|,
 name|AccountIndexer
 name|indexer
@@ -909,6 +918,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|accountsUpdate
+operator|=
+name|accountsUpdate
 expr_stmt|;
 name|this
 operator|.
@@ -1388,19 +1403,13 @@ operator|.
 name|email
 argument_list|)
 expr_stmt|;
-name|db
-operator|.
-name|accounts
-argument_list|()
+name|accountsUpdate
 operator|.
 name|insert
 argument_list|(
-name|Collections
-operator|.
-name|singleton
-argument_list|(
+name|db
+argument_list|,
 name|a
-argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
