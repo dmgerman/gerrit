@@ -302,22 +302,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountsUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|externalids
 operator|.
 name|ExternalId
@@ -508,11 +492,11 @@ specifier|final
 name|InitFlags
 name|flags
 decl_stmt|;
-DECL|field|accountsUpdate
+DECL|field|accounts
 specifier|private
 specifier|final
-name|AccountsUpdate
-name|accountsUpdate
+name|AccountsOnInit
+name|accounts
 decl_stmt|;
 DECL|field|authorizedKeysFactory
 specifier|private
@@ -543,7 +527,7 @@ name|indexCollection
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitAdminUser ( InitFlags flags, ConsoleUI ui, AccountsUpdate accountsUpdate, VersionedAuthorizedKeysOnInit.Factory authorizedKeysFactory, ExternalIdsOnInit externalIds)
+DECL|method|InitAdminUser ( InitFlags flags, ConsoleUI ui, AccountsOnInit accounts, VersionedAuthorizedKeysOnInit.Factory authorizedKeysFactory, ExternalIdsOnInit externalIds)
 name|InitAdminUser
 parameter_list|(
 name|InitFlags
@@ -552,8 +536,8 @@ parameter_list|,
 name|ConsoleUI
 name|ui
 parameter_list|,
-name|AccountsUpdate
-name|accountsUpdate
+name|AccountsOnInit
+name|accounts
 parameter_list|,
 name|VersionedAuthorizedKeysOnInit
 operator|.
@@ -578,9 +562,9 @@ name|ui
 expr_stmt|;
 name|this
 operator|.
-name|accountsUpdate
+name|accounts
 operator|=
-name|accountsUpdate
+name|accounts
 expr_stmt|;
 name|this
 operator|.
@@ -899,7 +883,7 @@ argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
-name|accountsUpdate
+name|accounts
 operator|.
 name|insert
 argument_list|(
