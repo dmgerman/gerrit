@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -65,66 +65,6 @@ operator|.
 name|schema
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|registration
-operator|.
-name|DynamicItem
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|lifecycle
-operator|.
-name|LifecycleModule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|AccountPatchReviewStore
-import|;
-end_import
 
 begin_import
 import|import
@@ -237,69 +177,17 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|H2AccountPatchReviewStore
+DECL|class|MysqlAccountPatchReviewStore
 specifier|public
 class|class
-name|H2AccountPatchReviewStore
+name|MysqlAccountPatchReviewStore
 extends|extends
 name|JdbcAccountPatchReviewStore
 block|{
 annotation|@
-name|VisibleForTesting
-DECL|class|InMemoryModule
-specifier|public
-specifier|static
-class|class
-name|InMemoryModule
-extends|extends
-name|LifecycleModule
-block|{
-annotation|@
-name|Override
-DECL|method|configure ()
-specifier|protected
-name|void
-name|configure
-parameter_list|()
-block|{
-name|H2AccountPatchReviewStore
-name|inMemoryStore
-init|=
-operator|new
-name|H2AccountPatchReviewStore
-argument_list|()
-decl_stmt|;
-name|DynamicItem
-operator|.
-name|bind
-argument_list|(
-name|binder
-argument_list|()
-argument_list|,
-name|AccountPatchReviewStore
-operator|.
-name|class
-argument_list|)
-operator|.
-name|toInstance
-argument_list|(
-name|inMemoryStore
-argument_list|)
-expr_stmt|;
-name|listener
-argument_list|()
-operator|.
-name|toInstance
-argument_list|(
-name|inMemoryStore
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-annotation|@
 name|Inject
-DECL|method|H2AccountPatchReviewStore (@erritServerConfig Config cfg, SitePaths sitePaths)
-name|H2AccountPatchReviewStore
+DECL|method|MysqlAccountPatchReviewStore (@erritServerConfig Config cfg, SitePaths sitePaths)
+name|MysqlAccountPatchReviewStore
 parameter_list|(
 annotation|@
 name|GerritServerConfig
@@ -315,26 +203,6 @@ argument_list|(
 name|cfg
 argument_list|,
 name|sitePaths
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**    * Creates an in-memory H2 database to store the reviewed flags.    * This should be used for tests only.    */
-annotation|@
-name|VisibleForTesting
-DECL|method|H2AccountPatchReviewStore ()
-specifier|private
-name|H2AccountPatchReviewStore
-parameter_list|()
-block|{
-comment|// DB_CLOSE_DELAY=-1: By default the content of an in-memory H2 database is
-comment|// lost at the moment the last connection is closed. This option keeps the
-comment|// content as long as the vm lives.
-name|super
-argument_list|(
-name|createDataSource
-argument_list|(
-literal|"jdbc:h2:mem:account_patch_reviews;DB_CLOSE_DELAY=-1"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -361,18 +229,22 @@ argument_list|)
 condition|)
 block|{
 case|case
-literal|23001
+literal|1022
 case|:
-comment|// UNIQUE CONSTRAINT VIOLATION
+comment|// ER_DUP_KEY
 case|case
-literal|23505
+literal|1062
 case|:
-comment|// DUPLICATE_KEY_1
+comment|// ER_DUP_ENTRY
+case|case
+literal|1169
+case|:
+comment|// ER_DUP_UNIQUE;
 return|return
 operator|new
 name|OrmDuplicateKeyException
 argument_list|(
-literal|"account_patch_reviews"
+literal|"ACCOUNT_PATCH_REVIEWS"
 argument_list|,
 name|err
 argument_list|)
@@ -412,7 +284,7 @@ name|OrmException
 argument_list|(
 name|op
 operator|+
-literal|" failure on account_patch_reviews"
+literal|" failure on ACCOUNT_PATCH_REVIEWS"
 argument_list|,
 name|err
 argument_list|)
