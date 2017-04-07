@@ -97,13 +97,16 @@ argument_list|)
 return|;
 block|}
 comment|/** Create an annotation to export based on a cannonical class name. */
-DECL|method|named (Class clazz)
+DECL|method|named (Class<?> clazz)
 specifier|public
 specifier|static
 name|Export
 name|named
 parameter_list|(
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|clazz
 parameter_list|)
 block|{
