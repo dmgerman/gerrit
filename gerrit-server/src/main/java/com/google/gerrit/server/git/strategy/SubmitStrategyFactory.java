@@ -354,20 +354,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|revwalk
 operator|.
 name|RevCommit
@@ -466,7 +452,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create ( SubmitType submitType, ReviewDb db, Repository repo, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, ReviewDb db, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -476,9 +462,6 @@ name|submitType
 parameter_list|,
 name|ReviewDb
 name|db
-parameter_list|,
-name|Repository
-name|repo
 parameter_list|,
 name|CodeReviewRevWalk
 name|rw
@@ -557,8 +540,6 @@ argument_list|,
 name|caller
 argument_list|,
 name|mergeTip
-argument_list|,
-name|repo
 argument_list|,
 name|canMergeFlag
 argument_list|,

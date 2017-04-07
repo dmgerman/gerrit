@@ -3579,10 +3579,6 @@ name|db
 argument_list|,
 name|or
 operator|.
-name|repo
-argument_list|,
-name|or
-operator|.
 name|rw
 argument_list|,
 name|or
