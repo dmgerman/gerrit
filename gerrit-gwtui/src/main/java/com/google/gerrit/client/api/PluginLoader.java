@@ -386,6 +386,27 @@ name|toList
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|plugins
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|callback
+operator|.
+name|onSuccess
+argument_list|(
+name|VoidResult
+operator|.
+name|create
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|self
 operator|=
 operator|new
@@ -413,6 +434,7 @@ operator|.
 name|center
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|loaded ()
