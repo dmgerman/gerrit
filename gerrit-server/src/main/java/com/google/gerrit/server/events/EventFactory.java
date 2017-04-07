@@ -2277,7 +2277,7 @@ argument_list|()
 argument_list|)
 control|)
 block|{
-name|patchSets
+name|PATCH_SETS
 label|:
 for|for
 control|(
@@ -2359,7 +2359,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue
-name|patchSets
+name|PATCH_SETS
 continue|;
 block|}
 block|}
