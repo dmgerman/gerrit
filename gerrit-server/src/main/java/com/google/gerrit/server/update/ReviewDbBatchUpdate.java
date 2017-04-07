@@ -2613,17 +2613,32 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// Force BatchRefUpdate to read newly referenced objects using a new RevWalk, rather than one
+comment|// that might have access to unflushed objects.
+try|try
+init|(
+name|RevWalk
+name|updateRw
+init|=
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
+init|)
+block|{
 name|batchRefUpdate
 operator|.
 name|execute
 argument_list|(
-name|revWalk
+name|updateRw
 argument_list|,
 name|NullProgressMonitor
 operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
+block|}
 name|boolean
 name|ok
 init|=
