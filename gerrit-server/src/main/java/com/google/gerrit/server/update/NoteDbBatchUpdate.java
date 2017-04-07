@@ -1149,7 +1149,7 @@ return|return
 name|getRepoView
 argument_list|()
 operator|.
-name|getInserter
+name|getInserterWrapper
 argument_list|()
 return|;
 block|}

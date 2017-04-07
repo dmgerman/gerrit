@@ -1825,24 +1825,6 @@ name|getRevWalk
 argument_list|()
 return|;
 block|}
-DECL|method|getObjectInserter ()
-specifier|protected
-name|ObjectInserter
-name|getObjectInserter
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|initRepository
-argument_list|()
-expr_stmt|;
-return|return
-name|repoView
-operator|.
-name|getInserter
-argument_list|()
-return|;
-block|}
 DECL|method|getRefUpdates ()
 specifier|public
 name|Map

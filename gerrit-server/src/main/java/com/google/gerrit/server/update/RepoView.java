@@ -296,6 +296,12 @@ specifier|final
 name|ObjectInserter
 name|inserter
 decl_stmt|;
+DECL|field|inserterWrapper
+specifier|private
+specifier|final
+name|ObjectInserter
+name|inserterWrapper
+decl_stmt|;
 DECL|field|commands
 specifier|private
 specifier|final
@@ -337,6 +343,14 @@ name|repo
 operator|.
 name|newObjectInserter
 argument_list|()
+expr_stmt|;
+name|inserterWrapper
+operator|=
+operator|new
+name|NonFlushingInserter
+argument_list|(
+name|inserter
+argument_list|)
 expr_stmt|;
 name|rw
 operator|=
@@ -417,6 +431,14 @@ operator|.
 name|inserter
 operator|=
 name|checkNotNull
+argument_list|(
+name|inserter
+argument_list|)
+expr_stmt|;
+name|inserterWrapper
+operator|=
+operator|new
+name|NonFlushingInserter
 argument_list|(
 name|inserter
 argument_list|)
@@ -780,6 +802,15 @@ return|return
 name|inserter
 return|;
 block|}
+DECL|method|getInserterWrapper ()
+name|ObjectInserter
+name|getInserterWrapper
+parameter_list|()
+block|{
+return|return
+name|inserterWrapper
+return|;
+block|}
 DECL|method|getCommands ()
 name|ChainedReceiveCommands
 name|getCommands
@@ -788,6 +819,70 @@ block|{
 return|return
 name|commands
 return|;
+block|}
+DECL|class|NonFlushingInserter
+specifier|private
+specifier|static
+class|class
+name|NonFlushingInserter
+extends|extends
+name|ObjectInserter
+operator|.
+name|Filter
+block|{
+DECL|field|delegate
+specifier|private
+specifier|final
+name|ObjectInserter
+name|delegate
+decl_stmt|;
+DECL|method|NonFlushingInserter (ObjectInserter delegate)
+specifier|private
+name|NonFlushingInserter
+parameter_list|(
+name|ObjectInserter
+name|delegate
+parameter_list|)
+block|{
+name|this
+operator|.
+name|delegate
+operator|=
+name|delegate
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|delegate ()
+specifier|protected
+name|ObjectInserter
+name|delegate
+parameter_list|()
+block|{
+return|return
+name|delegate
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|flush ()
+specifier|public
+name|void
+name|flush
+parameter_list|()
+block|{
+comment|// Do nothing.
+block|}
+annotation|@
+name|Override
+DECL|method|close ()
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+comment|// Do nothing; the delegate is closed separately.
+block|}
 block|}
 block|}
 end_class
