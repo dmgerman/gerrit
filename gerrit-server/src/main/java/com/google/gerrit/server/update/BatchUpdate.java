@@ -1748,6 +1748,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|getRepoView ()
+specifier|protected
+name|RepoView
+name|getRepoView
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|initRepository
+argument_list|()
+expr_stmt|;
+return|return
+name|repoView
+return|;
+block|}
 DECL|method|getUser ()
 specifier|protected
 name|CurrentUser

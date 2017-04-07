@@ -1129,15 +1129,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|initRepository
-argument_list|()
-expr_stmt|;
 return|return
 name|ReviewDbBatchUpdate
 operator|.
 name|this
 operator|.
-name|repoView
+name|getRepoView
+argument_list|()
 return|;
 block|}
 annotation|@
