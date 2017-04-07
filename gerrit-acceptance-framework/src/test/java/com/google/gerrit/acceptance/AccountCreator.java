@@ -120,6 +120,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|TimeUtil
 import|;
 end_import
@@ -217,6 +231,22 @@ operator|.
 name|account
 operator|.
 name|AccountCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountsUpdate
 import|;
 end_import
 
@@ -508,6 +538,12 @@ name|ReviewDb
 argument_list|>
 name|reviewDbProvider
 decl_stmt|;
+DECL|field|accountsUpdate
+specifier|private
+specifier|final
+name|AccountsUpdate
+name|accountsUpdate
+decl_stmt|;
 DECL|field|authorizedKeys
 specifier|private
 specifier|final
@@ -556,7 +592,7 @@ name|externalIdsUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountIndexer indexer, ExternalIdsUpdate.Server externalIdsUpdate)
+DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, AccountsUpdate accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountIndexer indexer, ExternalIdsUpdate.Server externalIdsUpdate)
 name|AccountCreator
 parameter_list|(
 name|SchemaFactory
@@ -564,6 +600,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
+parameter_list|,
+name|AccountsUpdate
+name|accountsUpdate
 parameter_list|,
 name|VersionedAuthorizedKeys
 operator|.
@@ -601,6 +640,12 @@ expr_stmt|;
 name|reviewDbProvider
 operator|=
 name|schema
+expr_stmt|;
+name|this
+operator|.
+name|accountsUpdate
+operator|=
+name|accountsUpdate
 expr_stmt|;
 name|this
 operator|.
@@ -645,18 +690,24 @@ operator|=
 name|externalIdsUpdate
 expr_stmt|;
 block|}
-DECL|method|create ( String username, String email, String fullName, String... groups)
+DECL|method|create ( @ullable String username, @Nullable String email, @Nullable String fullName, String... groups)
 specifier|public
 specifier|synchronized
 name|TestAccount
 name|create
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|username
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|email
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|fullName
 parameter_list|,
@@ -731,8 +782,19 @@ decl_stmt|;
 name|String
 name|httpPass
 init|=
-literal|"http-pass"
+literal|null
 decl_stmt|;
+if|if
+condition|(
+name|username
+operator|!=
+literal|null
+condition|)
+block|{
+name|httpPass
+operator|=
+literal|"http-pass"
+expr_stmt|;
 name|extIds
 operator|.
 name|add
@@ -749,6 +811,7 @@ name|httpPass
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|email
@@ -811,19 +874,13 @@ argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
-name|db
-operator|.
-name|accounts
-argument_list|()
+name|accountsUpdate
 operator|.
 name|insert
 argument_list|(
-name|Collections
-operator|.
-name|singleton
-argument_list|(
+name|db
+argument_list|,
 name|a
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -923,6 +980,10 @@ name|SshMode
 operator|.
 name|useSsh
 argument_list|()
+operator|&&
+name|username
+operator|!=
+literal|null
 condition|)
 block|{
 name|sshKey
@@ -952,6 +1013,13 @@ name|username
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|username
+operator|!=
+literal|null
+condition|)
+block|{
 name|accountCache
 operator|.
 name|evictByUsername
@@ -959,6 +1027,7 @@ argument_list|(
 name|username
 argument_list|)
 expr_stmt|;
+block|}
 name|byEmailCache
 operator|.
 name|evict
@@ -991,6 +1060,13 @@ argument_list|,
 name|httpPass
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|username
+operator|!=
+literal|null
+condition|)
+block|{
 name|accounts
 operator|.
 name|put
@@ -1000,16 +1076,19 @@ argument_list|,
 name|account
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|account
 return|;
 block|}
 block|}
-DECL|method|create (String username, String group)
+DECL|method|create (@ullable String username, String group)
 specifier|public
 name|TestAccount
 name|create
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|username
 parameter_list|,
@@ -1032,11 +1111,28 @@ name|group
 argument_list|)
 return|;
 block|}
-DECL|method|create (String username)
+DECL|method|create ()
+specifier|public
+name|TestAccount
+name|create
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|create
+argument_list|(
+literal|null
+argument_list|)
+return|;
+block|}
+DECL|method|create (@ullable String username)
 specifier|public
 name|TestAccount
 name|create
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|username
 parameter_list|)
