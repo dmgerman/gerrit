@@ -74,89 +74,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableSetMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|externalids
-operator|.
-name|ExternalIdCacheImpl
-operator|.
-name|Loader
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|cache
-operator|.
-name|CacheModule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
-name|TypeLiteral
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
+name|AbstractModule
 import|;
 end_import
 
@@ -166,7 +86,7 @@ specifier|public
 class|class
 name|ExternalIdModule
 extends|extends
-name|CacheModule
+name|AbstractModule
 block|{
 annotation|@
 name|Override
@@ -176,59 +96,6 @@ name|void
 name|configure
 parameter_list|()
 block|{
-name|cache
-argument_list|(
-name|ExternalIdCacheImpl
-operator|.
-name|CACHE_NAME
-argument_list|,
-name|ObjectId
-operator|.
-name|class
-argument_list|,
-operator|new
-name|TypeLiteral
-argument_list|<
-name|ImmutableSetMultimap
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|,
-name|ExternalId
-argument_list|>
-argument_list|>
-argument_list|()
-block|{}
-argument_list|)
-comment|// The cached data is potentially pretty large and we are always only interested
-comment|// in the latest value, hence the maximum cache weight is set to 1.
-comment|// This can lead to extra cache loads in case of the following race:
-comment|// 1. thread 1 reads the notes ref at revision A
-comment|// 2. thread 2 updates the notes ref to revision B and stores the derived value
-comment|//    for B in the cache
-comment|// 3. thread 1 attempts to read the data for revision A from the cache, and misses
-comment|// 4. later threads attempt to read at B
-comment|// In this race unneeded reloads are done in step 3 (reload from revision A) and
-comment|// step 4 (reload from revision B, because the value for revision B was lost when the
-comment|// reload from revision A was done, since the cache can hold only one entry).
-comment|// These reloads could be avoided by increasing the cache size to 2. However the race
-comment|// window between reading the ref and looking it up in the cache is small so that
-comment|// it's rare that this race happens. Therefore it's not worth to double the memory
-comment|// usage of this cache, just to avoid this.
-operator|.
-name|maximumWeight
-argument_list|(
-literal|1
-argument_list|)
-operator|.
-name|loader
-argument_list|(
-name|Loader
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|bind
 argument_list|(
 name|ExternalIdCacheImpl
