@@ -415,6 +415,15 @@ name|showAssignee
 parameter_list|()
 comment|/*-{ return this.show_assignee || false; }-*/
 function_decl|;
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+DECL|method|showAssigneeSuggestOracle ()
+name|showAssigneeSuggestOracle
+parameter_list|()
+comment|/*-{ return this.show_assignee_suggest_oracle || false; }-*/
+function_decl|;
 DECL|method|updateDelay ()
 specifier|public
 specifier|final
