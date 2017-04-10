@@ -678,9 +678,12 @@ name|MergeUtil
 operator|.
 name|newMerger
 argument_list|(
-name|git
-argument_list|,
 name|inserter
+argument_list|,
+name|git
+operator|.
+name|getConfig
+argument_list|()
 argument_list|,
 name|strategy
 argument_list|)

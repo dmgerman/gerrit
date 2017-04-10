@@ -247,11 +247,6 @@ name|args
 operator|.
 name|serverIdent
 argument_list|,
-name|ctx
-operator|.
-name|getRepository
-argument_list|()
-argument_list|,
 name|args
 operator|.
 name|rw
@@ -259,6 +254,14 @@ argument_list|,
 name|ctx
 operator|.
 name|getInserter
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getRepository
+argument_list|()
+operator|.
+name|getConfig
 argument_list|()
 argument_list|,
 name|args

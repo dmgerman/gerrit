@@ -188,7 +188,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectId
+name|Config
 import|;
 end_import
 
@@ -202,7 +202,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|Repository
+name|ObjectId
 import|;
 end_import
 
@@ -230,7 +230,7 @@ specifier|public
 interface|interface
 name|ChangeKindCache
 block|{
-DECL|method|getChangeKind ( Project.NameKey project, @Nullable Repository repo, @Nullable RevWalk rw, ObjectId prior, ObjectId next)
+DECL|method|getChangeKind ( Project.NameKey project, @Nullable RevWalk rw, @Nullable Config repoConfig, ObjectId prior, ObjectId next)
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
@@ -241,13 +241,13 @@ name|project
 parameter_list|,
 annotation|@
 name|Nullable
-name|Repository
-name|repo
+name|RevWalk
+name|rw
 parameter_list|,
 annotation|@
 name|Nullable
-name|RevWalk
-name|rw
+name|Config
+name|repoConfig
 parameter_list|,
 name|ObjectId
 name|prior
@@ -270,19 +270,19 @@ name|PatchSet
 name|patch
 parameter_list|)
 function_decl|;
-DECL|method|getChangeKind ( @ullable Repository repo, @Nullable RevWalk rw, ChangeData cd, PatchSet patch)
+DECL|method|getChangeKind ( @ullable RevWalk rw, @Nullable Config repoConfig, ChangeData cd, PatchSet patch)
 name|ChangeKind
 name|getChangeKind
 parameter_list|(
 annotation|@
 name|Nullable
-name|Repository
-name|repo
+name|RevWalk
+name|rw
 parameter_list|,
 annotation|@
 name|Nullable
-name|RevWalk
-name|rw
+name|Config
+name|repoConfig
 parameter_list|,
 name|ChangeData
 name|cd

@@ -594,6 +594,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|ObjectReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|PersonIdent
 import|;
 end_import
@@ -727,12 +741,13 @@ init|=
 name|getOrder
 argument_list|(
 name|updates
+argument_list|,
+name|listener
 argument_list|)
 decl_stmt|;
 comment|// TODO(dborowitz): Fuse implementations to use a single BatchRefUpdate between phases. Note
-comment|// that we will still need to respect the order, since it also dictates the order in which
-comment|// listener methods are called. We can revisit this later, particularly since the only user of
-comment|// BatchUpdateListener is MergeOp, which only uses one order.
+comment|// that we may still need to respect the order, since op implementations may make assumptions
+comment|// about the order in which their methods are called.
 switch|switch
 condition|(
 name|order
@@ -836,11 +851,6 @@ name|dryrun
 argument_list|)
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|afterUpdateChanges
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|NoteDbBatchUpdate
@@ -855,11 +865,6 @@ name|executeUpdateRepo
 argument_list|()
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|afterUpdateRepos
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|NoteDbBatchUpdate
@@ -876,11 +881,6 @@ name|dryrun
 argument_list|)
 expr_stmt|;
 block|}
-name|listener
-operator|.
-name|afterUpdateRefs
-argument_list|()
-expr_stmt|;
 break|break;
 default|default:
 throw|throw
@@ -1923,17 +1923,32 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// Force BatchRefUpdate to read newly referenced objects using a new RevWalk, rather than one
+comment|// that might have access to unflushed objects.
+try|try
+init|(
+name|RevWalk
+name|updateRw
+init|=
+operator|new
+name|RevWalk
+argument_list|(
+name|repo
+argument_list|)
+init|)
+block|{
 name|batchRefUpdate
 operator|.
 name|execute
 argument_list|(
-name|revWalk
+name|updateRw
 argument_list|,
 name|NullProgressMonitor
 operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
+block|}
 name|boolean
 name|ok
 init|=
@@ -2052,16 +2067,21 @@ operator|.
 name|newObjectInserter
 argument_list|()
 init|;
+name|ObjectReader
+name|reader
+operator|=
+name|ins
+operator|.
+name|newReader
+argument_list|()
+init|;
 name|RevWalk
 name|rw
 operator|=
 operator|new
 name|RevWalk
 argument_list|(
-name|ins
-operator|.
-name|newReader
-argument_list|()
+name|reader
 argument_list|)
 init|;
 name|NoteDbUpdateManager

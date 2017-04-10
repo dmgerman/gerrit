@@ -912,6 +912,8 @@ name|dryRun
 argument_list|(
 name|args
 argument_list|,
+name|repo
+argument_list|,
 name|tipCommit
 argument_list|,
 name|toMergeCommit
@@ -926,6 +928,8 @@ operator|.
 name|dryRun
 argument_list|(
 name|args
+argument_list|,
+name|repo
 argument_list|,
 name|tipCommit
 argument_list|,

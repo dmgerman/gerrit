@@ -1662,12 +1662,15 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getRepository
+name|getRevWalk
 argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getRevWalk
+name|getRepository
+argument_list|()
+operator|.
+name|getConfig
 argument_list|()
 argument_list|,
 name|priorCommitId

@@ -918,6 +918,11 @@ name|UpdateException
 throws|,
 name|RestApiException
 block|{
+name|checkNotNull
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
 comment|// It's safe to downcast all members of the input collection in this case, because the only
 comment|// way a caller could have gotten any BatchUpdates in the first place is to call the create
 comment|// method above, which always returns instances of the type we expect. Just to be safe,
@@ -1062,7 +1067,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|getOrder (Collection<? extends BatchUpdate> updates)
+DECL|method|getOrder (Collection<? extends BatchUpdate> updates, BatchUpdateListener listener)
 specifier|static
 name|Order
 name|getOrder
@@ -1074,6 +1079,9 @@ extends|extends
 name|BatchUpdate
 argument_list|>
 name|updates
+parameter_list|,
+name|BatchUpdateListener
+name|listener
 parameter_list|)
 block|{
 name|Order
@@ -1121,6 +1129,29 @@ literal|"cannot mix execution orders"
 argument_list|)
 throw|;
 block|}
+block|}
+if|if
+condition|(
+name|o
+operator|!=
+name|Order
+operator|.
+name|REPO_BEFORE_DB
+condition|)
+block|{
+name|checkArgument
+argument_list|(
+name|listener
+operator|==
+name|BatchUpdateListener
+operator|.
+name|NONE
+argument_list|,
+literal|"BatchUpdateListener not supported for order %s"
+argument_list|,
+name|o
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|o

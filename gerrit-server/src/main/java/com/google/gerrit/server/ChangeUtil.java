@@ -86,6 +86,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|Maps
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Ordering
 import|;
 end_import
@@ -182,7 +196,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|Ref
+name|ObjectId
 import|;
 end_import
 
@@ -196,7 +210,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|RefDatabase
+name|Ref
 import|;
 end_import
 
@@ -348,13 +362,14 @@ literal|4
 argument_list|)
 return|;
 block|}
-DECL|method|nextPatchSetId (Map<String, Ref> allRefs, PatchSet.Id id)
+comment|/**    * Get the next patch set ID from a previously-read map of all refs.    *    * @param allRefs map of full ref name to ref, in the same format returned by {@link    *     org.eclipse.jgit.lib.RefDatabase#getRefs(String)} when passing {@code ""}.    * @param id previous patch set ID.    * @return next unused patch set ID for the same change, skipping any IDs whose corresponding ref    *     names appear in the {@code allRefs} map.    */
+DECL|method|nextPatchSetIdFromAllRefsMap (Map<String, Ref> allRefs, PatchSet.Id id)
 specifier|public
 specifier|static
 name|PatchSet
 operator|.
 name|Id
-name|nextPatchSetId
+name|nextPatchSetIdFromAllRefsMap
 parameter_list|(
 name|Map
 argument_list|<
@@ -405,6 +420,84 @@ return|return
 name|next
 return|;
 block|}
+comment|/**    * Get the next patch set ID from a previously-read map of refs below the change prefix.    *    * @param changeRefs map of ref suffix to SHA-1, where the keys are ref names with the {@code    *     refs/changes/CD/ABCD/} prefix stripped. All refs should be under {@code id}'s change ref    *     prefix. The keys match the format returned by {@link    *     org.eclipse.jgit.lib.RefDatabase#getRefs(String)} when passing the appropriate {@code    *     refs/changes/CD/ABCD}.    * @param id previous patch set ID.    * @return next unused patch set ID for the same change, skipping any IDs whose corresponding ref    *     names appear in the {@code changeRefs} map.    */
+DECL|method|nextPatchSetIdFromChangeRefsMap ( Map<String, ObjectId> changeRefs, PatchSet.Id id)
+specifier|public
+specifier|static
+name|PatchSet
+operator|.
+name|Id
+name|nextPatchSetIdFromChangeRefsMap
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|ObjectId
+argument_list|>
+name|changeRefs
+parameter_list|,
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|int
+name|prefixLen
+init|=
+name|id
+operator|.
+name|getParentKey
+argument_list|()
+operator|.
+name|toRefPrefix
+argument_list|()
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
+name|PatchSet
+operator|.
+name|Id
+name|next
+init|=
+name|nextPatchSetId
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+while|while
+condition|(
+name|changeRefs
+operator|.
+name|containsKey
+argument_list|(
+name|next
+operator|.
+name|toRefName
+argument_list|()
+operator|.
+name|substring
+argument_list|(
+name|prefixLen
+argument_list|)
+argument_list|)
+condition|)
+block|{
+name|next
+operator|=
+name|nextPatchSetId
+argument_list|(
+name|next
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|next
+return|;
+block|}
+comment|/**    * Get the next patch set ID just looking at a single previous patch set ID.    *    *<p>This patch set ID may or may not be available in the database; callers that want a    * previously-unused ID should use {@link #nextPatchSetIdFromAllRefsMap} or {@link    * #nextPatchSetIdFromChangeRefsMap}.    *    * @param id previous patch set ID.    * @return next patch set ID for the same change, incrementing by 1.    */
 DECL|method|nextPatchSetId (PatchSet.Id id)
 specifier|public
 specifier|static
@@ -439,6 +532,7 @@ literal|1
 argument_list|)
 return|;
 block|}
+comment|/**    * Get the next patch set ID from scanning refs in the repo.    *    * @param git repository to scan for patch set refs.    * @param id previous patch set ID.    * @return next unused patch set ID for the same change, skipping any IDs whose corresponding ref    *     names appear in the repository.    */
 DECL|method|nextPatchSetId (Repository git, PatchSet.Id id)
 specifier|public
 specifier|static
@@ -459,7 +553,11 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|nextPatchSetId
+name|nextPatchSetIdFromChangeRefsMap
+argument_list|(
+name|Maps
+operator|.
+name|transformValues
 argument_list|(
 name|git
 operator|.
@@ -468,9 +566,18 @@ argument_list|()
 operator|.
 name|getRefs
 argument_list|(
-name|RefDatabase
+name|id
 operator|.
-name|ALL
+name|getParentKey
+argument_list|()
+operator|.
+name|toRefPrefix
+argument_list|()
+argument_list|)
+argument_list|,
+name|Ref
+operator|::
+name|getObjectId
 argument_list|)
 argument_list|,
 name|id
