@@ -77,15 +77,10 @@ specifier|public
 name|Boolean
 name|allowBlame
 decl_stmt|;
-DECL|field|showAssignee
+DECL|field|showAssigneeInChangesTable
 specifier|public
 name|Boolean
-name|showAssignee
-decl_stmt|;
-DECL|field|showAssigneeSuggestOracle
-specifier|public
-name|Boolean
-name|showAssigneeSuggestOracle
+name|showAssigneeInChangesTable
 decl_stmt|;
 DECL|field|allowDrafts
 specifier|public

@@ -829,7 +829,7 @@ operator|.
 name|change
 argument_list|()
 operator|.
-name|showAssignee
+name|showAssigneeInChangesTable
 argument_list|()
 expr_stmt|;
 name|showLegacyId
