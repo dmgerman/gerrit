@@ -406,14 +406,14 @@ name|replyTooltip
 parameter_list|()
 comment|/*-{ return this.reply_tooltip; }-*/
 function_decl|;
-DECL|method|showAssignee ()
+DECL|method|showAssigneeInChangesTable ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|showAssignee
+name|showAssigneeInChangesTable
 parameter_list|()
-comment|/*-{ return this.show_assignee || false; }-*/
+comment|/*-{ return this.show_assignee_in_changes_table || false; }-*/
 function_decl|;
 DECL|method|updateDelay ()
 specifier|public

@@ -77,10 +77,10 @@ specifier|public
 name|Boolean
 name|allowBlame
 decl_stmt|;
-DECL|field|showAssignee
+DECL|field|showAssigneeInChangesTable
 specifier|public
 name|Boolean
-name|showAssignee
+name|showAssigneeInChangesTable
 decl_stmt|;
 DECL|field|allowDrafts
 specifier|public
