@@ -1090,6 +1090,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|readOneReviewDbChange (ReviewDb db, Change.Id id)
 specifier|public
 specifier|static

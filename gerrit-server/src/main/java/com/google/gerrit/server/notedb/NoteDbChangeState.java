@@ -560,12 +560,14 @@ operator|=
 name|code
 expr_stmt|;
 block|}
-DECL|method|of (Change c)
+DECL|method|of (@ullable Change c)
 specifier|public
 specifier|static
 name|PrimaryStorage
 name|of
 parameter_list|(
+annotation|@
+name|Nullable
 name|Change
 name|c
 parameter_list|)
@@ -582,12 +584,14 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|of (NoteDbChangeState s)
+DECL|method|of (@ullable NoteDbChangeState s)
 specifier|public
 specifier|static
 name|PrimaryStorage
 name|of
 parameter_list|(
+annotation|@
+name|Nullable
 name|NoteDbChangeState
 name|s
 parameter_list|)
@@ -1079,12 +1083,14 @@ name|sb
 return|;
 block|}
 block|}
-DECL|method|parse (Change c)
+DECL|method|parse (@ullable Change c)
 specifier|public
 specifier|static
 name|NoteDbChangeState
 name|parse
 parameter_list|(
+annotation|@
+name|Nullable
 name|Change
 name|c
 parameter_list|)
@@ -1112,7 +1118,7 @@ return|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|parse (Change.Id id, String str)
+DECL|method|parse (Change.Id id, @Nullable String str)
 specifier|public
 specifier|static
 name|NoteDbChangeState
@@ -1123,6 +1129,8 @@ operator|.
 name|Id
 name|id
 parameter_list|,
+annotation|@
+name|Nullable
 name|String
 name|str
 parameter_list|)

@@ -102,6 +102,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -1035,6 +1051,31 @@ name|Change
 name|reviewDbChange
 parameter_list|)
 block|{
+name|checkNotNull
+argument_list|(
+name|indexChange
+argument_list|)
+expr_stmt|;
+name|PrimaryStorage
+name|storageFromIndex
+init|=
+name|PrimaryStorage
+operator|.
+name|of
+argument_list|(
+name|indexChange
+argument_list|)
+decl_stmt|;
+name|PrimaryStorage
+name|storageFromReviewDb
+init|=
+name|PrimaryStorage
+operator|.
+name|of
+argument_list|(
+name|reviewDbChange
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|reviewDbChange
@@ -1042,10 +1083,24 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|storageFromIndex
+operator|==
+name|PrimaryStorage
+operator|.
+name|REVIEW_DB
+condition|)
+block|{
+return|return
+literal|true
+return|;
+comment|// Index says it should have been in ReviewDb, but it wasn't.
+block|}
 return|return
 literal|false
 return|;
-comment|// Nothing the caller can do.
+comment|// Not in ReviewDb, but that's ok.
 block|}
 name|checkArgument
 argument_list|(
@@ -1077,12 +1132,19 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|PrimaryStorage
-operator|.
-name|of
-argument_list|(
-name|reviewDbChange
-argument_list|)
+name|storageFromIndex
+operator|!=
+name|storageFromReviewDb
+condition|)
+block|{
+return|return
+literal|true
+return|;
+comment|// Primary storage differs, definitely stale.
+block|}
+if|if
+condition|(
+name|storageFromReviewDb
 operator|!=
 name|PrimaryStorage
 operator|.
