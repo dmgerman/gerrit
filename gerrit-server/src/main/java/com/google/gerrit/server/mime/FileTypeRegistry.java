@@ -90,6 +90,16 @@ name|MimeUtil2
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
 begin_interface
 DECL|interface|FileTypeRegistry
 specifier|public
@@ -107,6 +117,18 @@ parameter_list|,
 name|byte
 index|[]
 name|content
+parameter_list|)
+function_decl|;
+comment|/**    * Get the most specific MIME type available for a file.    *    * @param path name of the file. The base name (component after the last '/') may be used to help    *     determine the MIME type, such as by examining the extension (portion after the last '.' if    *     present).    * @param is InputStream corresponding to the complete file content. The content may be used to    *     guess the MIME type by examining the beginning for common file headers.    * @return the MIME type for this content. If the MIME type is not recognized or cannot be    *     determined, {@link MimeUtil2#UNKNOWN_MIME_TYPE} which is an alias for {@code    *     application/octet-stream}.    */
+DECL|method|getMimeType (String path, InputStream is)
+name|MimeType
+name|getMimeType
+parameter_list|(
+name|String
+name|path
+parameter_list|,
+name|InputStream
+name|is
 parameter_list|)
 function_decl|;
 comment|/**    * Is this content type safe to transmit to a browser directly?    *    * @param type the MIME type of the file content.    * @return true if the Gerrit administrator wants to permit this content to be served as-is; false    *     if the administrator does not trust this content type and wants it to be protected    *     (typically by wrapping the data in a ZIP archive).    */
