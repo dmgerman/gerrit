@@ -328,7 +328,7 @@ name|ChangeData
 argument_list|>
 block|{
 DECL|field|MAX_LABEL_VALUE
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|int
@@ -337,21 +337,25 @@ init|=
 literal|4
 decl_stmt|;
 DECL|class|Args
+specifier|protected
 specifier|static
 class|class
 name|Args
 block|{
 DECL|field|projectCache
+specifier|protected
 specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
 DECL|field|permissionBackend
+specifier|protected
 specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
 DECL|field|ccFactory
+specifier|protected
 specifier|final
 name|ChangeControl
 operator|.
@@ -359,6 +363,7 @@ name|GenericFactory
 name|ccFactory
 decl_stmt|;
 DECL|field|userFactory
+specifier|protected
 specifier|final
 name|IdentifiedUser
 operator|.
@@ -366,6 +371,7 @@ name|GenericFactory
 name|userFactory
 decl_stmt|;
 DECL|field|dbProvider
+specifier|protected
 specifier|final
 name|Provider
 argument_list|<
@@ -374,11 +380,13 @@ argument_list|>
 name|dbProvider
 decl_stmt|;
 DECL|field|value
+specifier|protected
 specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|field|accounts
+specifier|protected
 specifier|final
 name|Set
 argument_list|<
@@ -389,6 +397,7 @@ argument_list|>
 name|accounts
 decl_stmt|;
 DECL|field|group
+specifier|protected
 specifier|final
 name|AccountGroup
 operator|.
@@ -396,7 +405,7 @@ name|UUID
 name|group
 decl_stmt|;
 DECL|method|Args ( ProjectCache projectCache, PermissionBackend permissionBackend, ChangeControl.GenericFactory ccFactory, IdentifiedUser.GenericFactory userFactory, Provider<ReviewDb> dbProvider, String value, Set<Account.Id> accounts, AccountGroup.UUID group)
-specifier|private
+specifier|protected
 name|Args
 parameter_list|(
 name|ProjectCache
@@ -489,31 +498,31 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|Parsed
-specifier|private
+specifier|protected
 specifier|static
 class|class
 name|Parsed
 block|{
 DECL|field|label
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|label
 decl_stmt|;
 DECL|field|test
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|test
 decl_stmt|;
 DECL|field|expVal
-specifier|private
+specifier|protected
 specifier|final
 name|int
 name|expVal
 decl_stmt|;
 DECL|method|Parsed (String label, String test, int expVal)
-specifier|private
+specifier|protected
 name|Parsed
 parameter_list|(
 name|String
@@ -547,12 +556,13 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|value
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|method|LabelPredicate ( ChangeQueryBuilder.Arguments a, String value, Set<Account.Id> accounts, AccountGroup.UUID group)
+specifier|public
 name|LabelPredicate
 parameter_list|(
 name|ChangeQueryBuilder
@@ -621,7 +631,7 @@ name|value
 expr_stmt|;
 block|}
 DECL|method|predicates (Args args)
-specifier|private
+specifier|protected
 specifier|static
 name|List
 argument_list|<
@@ -874,7 +884,7 @@ name|r
 return|;
 block|}
 DECL|method|onePredicate (Args args, String label, int expVal)
-specifier|private
+specifier|protected
 specifier|static
 name|Predicate
 argument_list|<
@@ -920,7 +930,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|noLabelQuery (Args args, String label)
-specifier|private
+specifier|protected
 specifier|static
 name|Predicate
 argument_list|<
@@ -1009,7 +1019,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|equalsLabelPredicate (Args args, String label, int expVal)
-specifier|private
+specifier|protected
 specifier|static
 name|Predicate
 argument_list|<

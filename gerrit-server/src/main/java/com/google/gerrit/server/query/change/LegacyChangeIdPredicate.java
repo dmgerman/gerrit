@@ -117,7 +117,7 @@ extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|id
-specifier|private
+specifier|protected
 specifier|final
 name|Change
 operator|.

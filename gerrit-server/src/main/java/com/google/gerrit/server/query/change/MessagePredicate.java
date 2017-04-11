@@ -174,18 +174,20 @@ end_comment
 
 begin_class
 DECL|class|MessagePredicate
+specifier|public
 class|class
 name|MessagePredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|index
-specifier|private
+specifier|protected
 specifier|final
 name|ChangeIndex
 name|index
 decl_stmt|;
 DECL|method|MessagePredicate (ChangeIndex index, String value)
+specifier|public
 name|MessagePredicate
 parameter_list|(
 name|ChangeIndex

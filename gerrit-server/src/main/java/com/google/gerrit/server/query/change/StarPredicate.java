@@ -139,7 +139,7 @@ extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|accountId
-specifier|private
+specifier|protected
 specifier|final
 name|Account
 operator|.
@@ -147,12 +147,13 @@ name|Id
 name|accountId
 decl_stmt|;
 DECL|field|label
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|label
 decl_stmt|;
 DECL|method|StarPredicate (Account.Id accountId, String label)
+specifier|public
 name|StarPredicate
 parameter_list|(
 name|Account

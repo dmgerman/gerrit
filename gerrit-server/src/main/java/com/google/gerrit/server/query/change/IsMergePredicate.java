@@ -193,7 +193,7 @@ extends|extends
 name|ChangeOperatorPredicate
 block|{
 DECL|field|args
-specifier|private
+specifier|protected
 specifier|final
 name|Arguments
 name|args

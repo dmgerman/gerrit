@@ -220,6 +220,7 @@ end_import
 
 begin_class
 DECL|class|IsWatchedByPredicate
+specifier|public
 class|class
 name|IsWatchedByPredicate
 extends|extends
@@ -229,7 +230,7 @@ name|ChangeData
 argument_list|>
 block|{
 DECL|method|describe (CurrentUser user)
-specifier|private
+specifier|protected
 specifier|static
 name|String
 name|describe
@@ -264,12 +265,13 @@ argument_list|()
 return|;
 block|}
 DECL|field|user
-specifier|private
+specifier|protected
 specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
 DECL|method|IsWatchedByPredicate (ChangeQueryBuilder.Arguments args, boolean checkIsVisible)
+specifier|public
 name|IsWatchedByPredicate
 parameter_list|(
 name|ChangeQueryBuilder
@@ -304,7 +306,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|filters ( ChangeQueryBuilder.Arguments args, boolean checkIsVisible)
-specifier|private
+specifier|protected
 specifier|static
 name|List
 argument_list|<
@@ -590,7 +592,7 @@ return|;
 block|}
 block|}
 DECL|method|getWatches (ChangeQueryBuilder.Arguments args)
-specifier|private
+specifier|protected
 specifier|static
 name|Collection
 argument_list|<
@@ -656,7 +658,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|none ()
-specifier|private
+specifier|protected
 specifier|static
 name|List
 argument_list|<

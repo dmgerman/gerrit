@@ -118,12 +118,14 @@ end_import
 
 begin_class
 DECL|class|ProjectPrefixPredicate
+specifier|public
 class|class
 name|ProjectPrefixPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|ProjectPrefixPredicate (String prefix)
+specifier|public
 name|ProjectPrefixPredicate
 parameter_list|(
 name|String

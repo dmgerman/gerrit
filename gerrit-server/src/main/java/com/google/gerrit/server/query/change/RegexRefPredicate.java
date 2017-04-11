@@ -142,18 +142,20 @@ end_import
 
 begin_class
 DECL|class|RegexRefPredicate
+specifier|public
 class|class
 name|RegexRefPredicate
 extends|extends
 name|ChangeRegexPredicate
 block|{
 DECL|field|pattern
-specifier|private
+specifier|protected
 specifier|final
 name|RunAutomaton
 name|pattern
 decl_stmt|;
 DECL|method|RegexRefPredicate (String re)
+specifier|public
 name|RegexRefPredicate
 parameter_list|(
 name|String

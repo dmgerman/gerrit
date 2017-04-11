@@ -118,12 +118,14 @@ end_import
 
 begin_class
 DECL|class|SubmissionIdPredicate
+specifier|public
 class|class
 name|SubmissionIdPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|SubmissionIdPredicate (String changeSet)
+specifier|public
 name|SubmissionIdPredicate
 parameter_list|(
 name|String

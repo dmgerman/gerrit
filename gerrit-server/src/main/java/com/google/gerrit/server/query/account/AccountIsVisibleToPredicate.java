@@ -142,12 +142,13 @@ name|AccountState
 argument_list|>
 block|{
 DECL|field|accountControl
-specifier|private
+specifier|protected
 specifier|final
 name|AccountControl
 name|accountControl
 decl_stmt|;
 DECL|method|AccountIsVisibleToPredicate (AccountControl accountControl)
+specifier|public
 name|AccountIsVisibleToPredicate
 parameter_list|(
 name|AccountControl

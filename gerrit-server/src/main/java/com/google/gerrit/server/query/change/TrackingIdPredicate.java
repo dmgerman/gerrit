@@ -188,6 +188,7 @@ end_import
 
 begin_class
 DECL|class|TrackingIdPredicate
+specifier|public
 class|class
 name|TrackingIdPredicate
 extends|extends
@@ -210,12 +211,13 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|trackingFooters
-specifier|private
+specifier|protected
 specifier|final
 name|TrackingFooters
 name|trackingFooters
 decl_stmt|;
 DECL|method|TrackingIdPredicate (TrackingFooters trackingFooters, String trackingId)
+specifier|public
 name|TrackingIdPredicate
 parameter_list|(
 name|TrackingFooters

@@ -120,12 +120,14 @@ end_import
 
 begin_class
 DECL|class|ExactTopicPredicate
+specifier|public
 class|class
 name|ExactTopicPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|ExactTopicPredicate (String topic)
+specifier|public
 name|ExactTopicPredicate
 parameter_list|(
 name|String

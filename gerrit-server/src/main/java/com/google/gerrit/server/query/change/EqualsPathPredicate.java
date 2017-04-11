@@ -122,18 +122,20 @@ end_import
 
 begin_class
 DECL|class|EqualsPathPredicate
+specifier|public
 class|class
 name|EqualsPathPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|value
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|method|EqualsPathPredicate (String fieldName, String value)
+specifier|public
 name|EqualsPathPredicate
 parameter_list|(
 name|String

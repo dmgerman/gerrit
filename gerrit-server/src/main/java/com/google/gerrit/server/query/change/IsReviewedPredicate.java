@@ -194,13 +194,14 @@ end_import
 
 begin_class
 DECL|class|IsReviewedPredicate
+specifier|public
 class|class
 name|IsReviewedPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|NOT_REVIEWED
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|Account
@@ -219,6 +220,7 @@ name|NOT_REVIEWED
 argument_list|)
 decl_stmt|;
 DECL|method|create ()
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -241,6 +243,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|create (Collection<Account.Id> ids)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -308,7 +311,7 @@ argument_list|)
 return|;
 block|}
 DECL|field|id
-specifier|private
+specifier|protected
 specifier|final
 name|Account
 operator|.

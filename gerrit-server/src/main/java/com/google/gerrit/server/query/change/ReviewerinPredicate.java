@@ -130,13 +130,14 @@ end_import
 
 begin_class
 DECL|class|ReviewerinPredicate
+specifier|public
 class|class
 name|ReviewerinPredicate
 extends|extends
 name|ChangeOperatorPredicate
 block|{
 DECL|field|userFactory
-specifier|private
+specifier|protected
 specifier|final
 name|IdentifiedUser
 operator|.
@@ -144,7 +145,7 @@ name|GenericFactory
 name|userFactory
 decl_stmt|;
 DECL|field|uuid
-specifier|private
+specifier|protected
 specifier|final
 name|AccountGroup
 operator|.
@@ -152,6 +153,7 @@ name|UUID
 name|uuid
 decl_stmt|;
 DECL|method|ReviewerinPredicate (IdentifiedUser.GenericFactory userFactory, AccountGroup.UUID uuid)
+specifier|public
 name|ReviewerinPredicate
 parameter_list|(
 name|IdentifiedUser
@@ -191,6 +193,7 @@ name|uuid
 expr_stmt|;
 block|}
 DECL|method|getAccountGroupUUID ()
+specifier|protected
 name|AccountGroup
 operator|.
 name|UUID

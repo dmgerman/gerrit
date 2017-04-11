@@ -190,7 +190,7 @@ name|AccountGroup
 argument_list|>
 block|{
 DECL|field|groupControlFactory
-specifier|private
+specifier|protected
 specifier|final
 name|GroupControl
 operator|.
@@ -198,12 +198,13 @@ name|GenericFactory
 name|groupControlFactory
 decl_stmt|;
 DECL|field|user
-specifier|private
+specifier|protected
 specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|GroupIsVisibleToPredicate (GroupControl.GenericFactory groupControlFactory, CurrentUser user)
+DECL|method|GroupIsVisibleToPredicate ( GroupControl.GenericFactory groupControlFactory, CurrentUser user)
+specifier|public
 name|GroupIsVisibleToPredicate
 parameter_list|(
 name|GroupControl

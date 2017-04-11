@@ -118,18 +118,20 @@ end_import
 
 begin_class
 DECL|class|BooleanPredicate
+specifier|public
 class|class
 name|BooleanPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|args
-specifier|private
+specifier|protected
 specifier|final
 name|FillArgs
 name|args
 decl_stmt|;
 DECL|method|BooleanPredicate (FieldDef<ChangeData, String> field, FillArgs args)
+specifier|public
 name|BooleanPredicate
 parameter_list|(
 name|FieldDef

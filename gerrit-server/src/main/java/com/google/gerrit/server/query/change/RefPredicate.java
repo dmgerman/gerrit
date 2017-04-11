@@ -118,12 +118,14 @@ end_import
 
 begin_class
 DECL|class|RefPredicate
+specifier|public
 class|class
 name|RefPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|RefPredicate (String ref)
+specifier|public
 name|RefPredicate
 parameter_list|(
 name|String

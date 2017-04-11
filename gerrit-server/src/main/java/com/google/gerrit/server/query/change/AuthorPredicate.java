@@ -159,6 +159,7 @@ extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|AuthorPredicate (String value)
+specifier|public
 name|AuthorPredicate
 parameter_list|(
 name|String

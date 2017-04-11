@@ -128,12 +128,14 @@ end_import
 
 begin_class
 DECL|class|GroupPredicate
+specifier|public
 class|class
 name|GroupPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|GroupPredicate (String group)
+specifier|public
 name|GroupPredicate
 parameter_list|(
 name|String

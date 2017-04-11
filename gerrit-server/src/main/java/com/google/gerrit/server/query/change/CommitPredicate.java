@@ -172,6 +172,7 @@ end_import
 
 begin_class
 DECL|class|CommitPredicate
+specifier|public
 class|class
 name|CommitPredicate
 extends|extends
@@ -210,6 +211,7 @@ name|COMMIT
 return|;
 block|}
 DECL|method|CommitPredicate (String id)
+specifier|public
 name|CommitPredicate
 parameter_list|(
 name|String
@@ -281,7 +283,7 @@ literal|false
 return|;
 block|}
 DECL|method|equals (PatchSet p, String id)
-specifier|private
+specifier|protected
 name|boolean
 name|equals
 parameter_list|(

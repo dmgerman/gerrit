@@ -125,6 +125,7 @@ extends|extends
 name|IntegerRangeChangePredicate
 block|{
 DECL|method|AddedPredicate (String value)
+specifier|public
 name|AddedPredicate
 parameter_list|(
 name|String
