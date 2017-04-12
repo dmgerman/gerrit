@@ -384,6 +384,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -810,6 +824,43 @@ operator|=
 name|tagger
 expr_stmt|;
 block|}
+block|}
+DECL|field|CHANGE_ID_COUNTER
+specifier|private
+specifier|static
+name|AtomicInteger
+name|CHANGE_ID_COUNTER
+init|=
+operator|new
+name|AtomicInteger
+argument_list|()
+decl_stmt|;
+DECL|method|nextChangeId ()
+specifier|private
+specifier|static
+name|String
+name|nextChangeId
+parameter_list|()
+block|{
+comment|// Tests use a variety of mechanisms for setting temporary timestamps, so we can't guarantee
+comment|// that the PersonIdent (or any other field used by the Change-Id generator) for any two test
+comment|// methods in the same acceptance test class are going to be different. But tests generally
+comment|// assume that Change-Ids are unique unless otherwise specified. So, don't even bother trying to
+comment|// reuse JGit's Change-Id generator, just do the simplest possible thing and convert a counter
+comment|// to hex.
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%040x"
+argument_list|,
+name|CHANGE_ID_COUNTER
+operator|.
+name|incrementAndGet
+argument_list|()
+argument_list|)
+return|;
 block|}
 DECL|field|notesFactory
 specifier|private
@@ -1438,7 +1489,10 @@ name|commit
 argument_list|()
 operator|.
 name|insertChangeId
+argument_list|(
+name|nextChangeId
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 name|commitBuilder
