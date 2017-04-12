@@ -543,6 +543,12 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+DECL|field|accounts
+specifier|private
+specifier|final
+name|Accounts
+name|accounts
+decl_stmt|;
 DECL|field|accountsUpdateFactory
 specifier|private
 specifier|final
@@ -628,7 +634,7 @@ name|externalIdsUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, AccountsUpdate.Server accountsUpdateFactory, AccountCache byIdCache, AccountByEmailCache byEmailCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, AuditService auditService, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory)
+DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, Accounts accounts, AccountsUpdate.Server accountsUpdateFactory, AccountCache byIdCache, AccountByEmailCache byEmailCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, AuditService auditService, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory)
 name|AccountManager
 parameter_list|(
 name|SchemaFactory
@@ -636,6 +642,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
+parameter_list|,
+name|Accounts
+name|accounts
 parameter_list|,
 name|AccountsUpdate
 operator|.
@@ -687,6 +696,12 @@ operator|.
 name|schema
 operator|=
 name|schema
+expr_stmt|;
+name|this
+operator|.
+name|accounts
+operator|=
+name|accounts
 expr_stmt|;
 name|this
 operator|.
@@ -1597,18 +1612,10 @@ argument_list|(
 literal|false
 argument_list|)
 operator|&&
-name|db
-operator|.
+operator|!
 name|accounts
-argument_list|()
 operator|.
-name|anyAccounts
-argument_list|()
-operator|.
-name|toList
-argument_list|()
-operator|.
-name|isEmpty
+name|hasAnyAccount
 argument_list|()
 decl_stmt|;
 try|try

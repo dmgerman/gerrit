@@ -278,21 +278,6 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"LIMIT 1"
-argument_list|)
-DECL|method|anyAccounts ()
-name|ResultSet
-argument_list|<
-name|Account
-argument_list|>
-name|anyAccounts
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
 literal|"ORDER BY accountId LIMIT ?"
 argument_list|)
 DECL|method|firstNById (int n)
