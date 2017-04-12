@@ -115,6 +115,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableMultiset
+operator|.
+name|toImmutableMultiset
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -181,6 +197,20 @@ operator|.
 name|collect
 operator|.
 name|MultimapBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Multiset
 import|;
 end_import
 
@@ -937,6 +967,11 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+name|checkDifferentProject
+argument_list|(
+name|updates
+argument_list|)
+expr_stmt|;
 comment|// It's safe to downcast all members of the input collection in this case, because the only
 comment|// way a caller could have gotten any BatchUpdates in the first place is to call the create
 comment|// method above, which always returns instances of the type we expect. Just to be safe,
@@ -1012,6 +1047,68 @@ name|dryRun
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|checkDifferentProject (Collection<BatchUpdate> updates)
+specifier|private
+specifier|static
+name|void
+name|checkDifferentProject
+parameter_list|(
+name|Collection
+argument_list|<
+name|BatchUpdate
+argument_list|>
+name|updates
+parameter_list|)
+block|{
+name|Multiset
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|>
+name|projectCounts
+init|=
+name|updates
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|u
+lambda|->
+name|u
+operator|.
+name|project
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toImmutableMultiset
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|checkArgument
+argument_list|(
+name|projectCounts
+operator|.
+name|entrySet
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|==
+name|updates
+operator|.
+name|size
+argument_list|()
+argument_list|,
+literal|"updates must all be for different projects, got: %s"
+argument_list|,
+name|projectCounts
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|setRequestIds ( Collection<? extends BatchUpdate> updates, @Nullable RequestId requestId)
