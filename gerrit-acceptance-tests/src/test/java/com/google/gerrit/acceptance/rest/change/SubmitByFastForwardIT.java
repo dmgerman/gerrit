@@ -90,6 +90,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|TruthJUnit
+operator|.
+name|assume
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|acceptance
@@ -1048,6 +1064,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// In NoteDb-only mode, repo and meta updates are atomic (at least in InMemoryRepository).
+name|assume
+argument_list|()
+operator|.
+name|that
+argument_list|(
+name|notesMigration
+operator|.
+name|disableChangeReviewDb
+argument_list|()
+argument_list|)
+operator|.
+name|isFalse
+argument_list|()
+expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
