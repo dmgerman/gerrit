@@ -5251,7 +5251,10 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|project
+name|args
+operator|.
+name|getProject
+argument_list|()
 argument_list|)
 init|)
 block|{
