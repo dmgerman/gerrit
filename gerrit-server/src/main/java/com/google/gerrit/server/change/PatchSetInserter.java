@@ -1396,9 +1396,6 @@ name|ctx
 operator|.
 name|addRefUpdate
 argument_list|(
-operator|new
-name|ReceiveCommand
-argument_list|(
 name|ObjectId
 operator|.
 name|zeroId
@@ -1411,13 +1408,6 @@ argument_list|()
 operator|.
 name|toRefName
 argument_list|()
-argument_list|,
-name|ReceiveCommand
-operator|.
-name|Type
-operator|.
-name|CREATE
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

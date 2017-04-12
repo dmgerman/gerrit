@@ -68,11 +68,15 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|eclipse
 operator|.
-name|IOException
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -104,6 +108,16 @@ name|ReceiveCommand
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/** Context for performing the {@link BatchUpdateOp#updateRepo} phase. */
 end_comment
@@ -124,7 +138,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Add a command to the pending list of commands.    *    *<p>This method is the only way of updating refs in the repository from a {@link BatchUpdateOp}.    *    * @param cmd ref update command.    * @throws IOException if an error occurred opening the repo.    */
+comment|/**    * Add a command to the pending list of commands.    *    *<p>Adding commands to the {@code RepoContext} is the only way of updating refs in the    * repository from a {@link BatchUpdateOp}.    *    * @param cmd ref update command.    * @throws IOException if an error occurred opening the repo.    */
 DECL|method|addRefUpdate (ReceiveCommand cmd)
 name|void
 name|addRefUpdate
@@ -135,6 +149,38 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**    * Add a command to the pending list of commands.    *    *<p>Adding commands to the {@code RepoContext} is the only way of updating refs in the    * repository from a {@link BatchUpdateOp}.    *    * @param oldId the old object ID; must not be null. Use {@link ObjectId#zeroId()} for ref    *     creation.    * @param newId the new object ID; must not be null. Use {@link ObjectId#zeroId()} for ref    *     deletion.    * @param refName the ref name.    * @throws IOException if an error occurred opening the repo.    */
+DECL|method|addRefUpdate (ObjectId oldId, ObjectId newId, String refName)
+specifier|default
+name|void
+name|addRefUpdate
+parameter_list|(
+name|ObjectId
+name|oldId
+parameter_list|,
+name|ObjectId
+name|newId
+parameter_list|,
+name|String
+name|refName
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|addRefUpdate
+argument_list|(
+operator|new
+name|ReceiveCommand
+argument_list|(
+name|oldId
+argument_list|,
+name|newId
+argument_list|,
+name|refName
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_interface
 

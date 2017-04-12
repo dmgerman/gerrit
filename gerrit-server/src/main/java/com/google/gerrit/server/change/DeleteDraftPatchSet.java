@@ -562,20 +562,6 @@ name|ObjectId
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Singleton
@@ -1075,9 +1061,6 @@ name|ctx
 operator|.
 name|addRefUpdate
 argument_list|(
-operator|new
-name|ReceiveCommand
-argument_list|(
 name|ObjectId
 operator|.
 name|fromString
@@ -1100,7 +1083,6 @@ name|patchSet
 operator|.
 name|getRefName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
