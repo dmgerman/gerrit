@@ -1199,6 +1199,12 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+DECL|field|accounts
+specifier|private
+specifier|final
+name|Accounts
+name|accounts
+decl_stmt|;
 DECL|field|groupCache
 specifier|private
 specifier|final
@@ -1246,7 +1252,7 @@ name|externalIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByIdLoader ( SchemaFactory<ReviewDb> sf, GroupCache groupCache, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig, ExternalIds externalIds)
+DECL|method|ByIdLoader ( SchemaFactory<ReviewDb> sf, Accounts accounts, GroupCache groupCache, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig, ExternalIds externalIds)
 name|ByIdLoader
 parameter_list|(
 name|SchemaFactory
@@ -1254,6 +1260,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|sf
+parameter_list|,
+name|Accounts
+name|accounts
 parameter_list|,
 name|GroupCache
 name|groupCache
@@ -1291,6 +1300,12 @@ name|ExternalIds
 name|externalIds
 parameter_list|)
 block|{
+name|this
+operator|.
+name|accounts
+operator|=
+name|accounts
+expr_stmt|;
 name|this
 operator|.
 name|schema
@@ -1458,13 +1473,12 @@ block|{
 name|Account
 name|account
 init|=
-name|db
-operator|.
 name|accounts
-argument_list|()
 operator|.
 name|get
 argument_list|(
+name|db
+argument_list|,
 name|who
 argument_list|)
 decl_stmt|;

@@ -1655,13 +1655,12 @@ block|{
 return|return
 name|auth
 argument_list|(
-name|db
-operator|.
 name|accounts
-argument_list|()
 operator|.
 name|get
 argument_list|(
+name|db
+argument_list|,
 name|id
 argument_list|)
 argument_list|)
