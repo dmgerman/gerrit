@@ -2612,9 +2612,7 @@ return|;
 block|}
 argument_list|)
 decl_stmt|;
-comment|/** List of labels on the current patch set. */
-annotation|@
-name|Deprecated
+comment|/** List of labels on the current patch set including change owner votes. */
 DECL|field|LABEL
 specifier|public
 specifier|static
@@ -2629,41 +2627,6 @@ name|String
 argument_list|>
 argument_list|>
 name|LABEL
-init|=
-name|exact
-argument_list|(
-name|ChangeQueryBuilder
-operator|.
-name|FIELD_LABEL
-argument_list|)
-operator|.
-name|buildRepeatable
-argument_list|(
-name|cd
-lambda|->
-name|getLabels
-argument_list|(
-name|cd
-argument_list|,
-literal|false
-argument_list|)
-argument_list|)
-decl_stmt|;
-comment|/** List of labels on the current patch set including change owner votes. */
-DECL|field|LABEL2
-specifier|public
-specifier|static
-specifier|final
-name|FieldDef
-argument_list|<
-name|ChangeData
-argument_list|,
-name|Iterable
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
-name|LABEL2
 init|=
 name|exact
 argument_list|(
