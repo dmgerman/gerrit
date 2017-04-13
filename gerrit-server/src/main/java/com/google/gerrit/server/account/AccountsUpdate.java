@@ -846,6 +846,37 @@ name|account
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Updates the account. */
+DECL|method|update (ReviewDb db, Account account)
+specifier|public
+name|void
+name|update
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Account
+name|account
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+name|db
+operator|.
+name|accounts
+argument_list|()
+operator|.
+name|update
+argument_list|(
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|account
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Deletes the account. */
 DECL|method|delete (ReviewDb db, Account account)
 specifier|public
