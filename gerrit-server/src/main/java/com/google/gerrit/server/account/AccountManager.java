@@ -1615,10 +1615,15 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+name|AccountsUpdate
+name|accountsUpdate
+init|=
 name|accountsUpdateFactory
 operator|.
 name|create
 argument_list|()
+decl_stmt|;
+name|accountsUpdate
 operator|.
 name|upsert
 argument_list|(
@@ -1664,19 +1669,13 @@ argument_list|)
 condition|)
 block|{
 comment|// external ID is assigned to another account, do not overwrite
-name|db
-operator|.
-name|accounts
-argument_list|()
+name|accountsUpdate
 operator|.
 name|delete
 argument_list|(
-name|Collections
-operator|.
-name|singleton
-argument_list|(
+name|db
+argument_list|,
 name|account
-argument_list|)
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -2127,19 +2126,16 @@ comment|// account_external_ids table),
 comment|// such an account cannot be used for uploading changes,
 comment|// this is why the best we can do here is to fail early and cleanup
 comment|// the database
-name|db
+name|accountsUpdateFactory
 operator|.
-name|accounts
+name|create
 argument_list|()
 operator|.
 name|delete
 argument_list|(
-name|Collections
-operator|.
-name|singleton
-argument_list|(
+name|db
+argument_list|,
 name|account
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|externalIdsUpdateFactory
