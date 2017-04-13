@@ -3765,6 +3765,39 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+return|return
+name|GitUtil
+operator|.
+name|cloneProject
+argument_list|(
+name|p
+argument_list|,
+name|registerRepoConnection
+argument_list|(
+name|p
+argument_list|,
+name|testAccount
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**    * Register a repository connection over the test protocol.    *    * @return a URI string that can be used to connect to this repository for both fetch and push.    * */
+DECL|method|registerRepoConnection ( Project.NameKey p, TestAccount testAccount)
+specifier|protected
+name|String
+name|registerRepoConnection
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|,
+name|TestAccount
+name|testAccount
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 name|InProcessProtocol
 operator|.
 name|Context
@@ -3805,12 +3838,6 @@ name|repo
 argument_list|)
 expr_stmt|;
 return|return
-name|GitUtil
-operator|.
-name|cloneProject
-argument_list|(
-name|p
-argument_list|,
 name|inProcessProtocol
 operator|.
 name|register
@@ -3822,7 +3849,6 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
-argument_list|)
 return|;
 block|}
 DECL|method|afterTest ()
