@@ -1256,11 +1256,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|tempIns
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|flushToFinalInserter ()
 name|void
@@ -1306,6 +1301,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|tempIns
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
