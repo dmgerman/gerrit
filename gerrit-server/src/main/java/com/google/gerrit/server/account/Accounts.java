@@ -93,6 +93,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toSet
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -216,6 +230,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|Stream
@@ -284,6 +308,31 @@ name|allUsersName
 operator|=
 name|allUsersName
 expr_stmt|;
+block|}
+comment|/**    * Returns all account IDs.    *    * @return all account IDs    */
+DECL|method|allIds ()
+specifier|public
+name|Set
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|allIds
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|readUserRefs
+argument_list|()
+operator|.
+name|collect
+argument_list|(
+name|toSet
+argument_list|()
+argument_list|)
+return|;
 block|}
 comment|/**    * Returns the first n account IDs.    *    * @param n the number of account IDs that should be returned    * @return first n account IDs    */
 DECL|method|firstNIds (int n)
