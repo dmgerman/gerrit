@@ -486,6 +486,20 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|Sandboxed
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
 name|TestAccount
 import|;
 end_import
@@ -4309,6 +4323,8 @@ block|}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Sandboxed
 DECL|method|fetchUserBranch ()
 specifier|public
 name|void
