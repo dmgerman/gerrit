@@ -3781,8 +3781,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Register a repository connection over the test protocol.    *    * @return a URI string that can be used to connect to this repository for both fetch and push.    * */
-DECL|method|registerRepoConnection ( Project.NameKey p, TestAccount testAccount)
+comment|/**    * Register a repository connection over the test protocol.    *    * @return a URI string that can be used to connect to this repository for both fetch and push.    */
+DECL|method|registerRepoConnection (Project.NameKey p, TestAccount testAccount)
 specifier|protected
 name|String
 name|registerRepoConnection
