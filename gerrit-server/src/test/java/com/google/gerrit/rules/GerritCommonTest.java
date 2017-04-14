@@ -416,6 +416,8 @@ parameter_list|(
 name|PrologEnvironment
 name|env
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|LabelTypes
 name|labelTypes
@@ -490,6 +492,8 @@ specifier|public
 name|void
 name|gerritCommon
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|runPrologBasedTests
 argument_list|()
@@ -503,7 +507,7 @@ name|void
 name|reductionLimit
 parameter_list|()
 throws|throws
-name|CompileException
+name|Exception
 block|{
 name|PrologEnvironment
 name|env
