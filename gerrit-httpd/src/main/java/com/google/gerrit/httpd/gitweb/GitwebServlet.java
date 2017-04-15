@@ -2006,7 +2006,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"  add_review_link($cgi->param('hb'));\n"
+literal|"  add_review_link(scalar $cgi->param('hb'));\n"
 argument_list|)
 expr_stmt|;
 name|p
@@ -2020,7 +2020,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"  add_review_link($cgi->param('h'));\n"
+literal|"  add_review_link(scalar $cgi->param('h'));\n"
 argument_list|)
 expr_stmt|;
 name|p
