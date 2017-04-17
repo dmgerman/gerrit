@@ -922,11 +922,11 @@ specifier|final
 name|StalenessChecker
 name|stalenessChecker
 decl_stmt|;
-DECL|field|reindexAfterIndexUpdate
+DECL|field|autoReindexIfStale
 specifier|private
 specifier|final
 name|boolean
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 decl_stmt|;
 annotation|@
 name|AssistedInject
@@ -1044,9 +1044,9 @@ name|batchExecutor
 expr_stmt|;
 name|this
 operator|.
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 operator|=
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 argument_list|(
 name|cfg
 argument_list|)
@@ -1180,9 +1180,9 @@ name|batchExecutor
 expr_stmt|;
 name|this
 operator|.
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 operator|=
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 argument_list|(
 name|cfg
 argument_list|)
@@ -1200,11 +1200,11 @@ operator|=
 name|indexes
 expr_stmt|;
 block|}
-DECL|method|reindexAfterIndexUpdate (Config cfg)
+DECL|method|autoReindexIfStale (Config cfg)
 specifier|private
 specifier|static
 name|boolean
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 parameter_list|(
 name|Config
 name|cfg
@@ -1219,7 +1219,7 @@ literal|"index"
 argument_list|,
 literal|null
 argument_list|,
-literal|"testReindexAfterUpdate"
+literal|"testAutoReindexIfStale"
 argument_list|,
 literal|true
 argument_list|)
@@ -1397,7 +1397,7 @@ comment|// With the extra reindexIfStale step after (3)/(4), we are able to dete
 comment|// and fix the staleness. It doesn't matter which order the two
 comment|// reindexIfStale calls actually execute in; we are guaranteed that at least
 comment|// one of them will execute after the second index write, (4).
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 argument_list|(
 name|cd
 argument_list|)
@@ -1517,7 +1517,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// See comment in #index(ChangeData).
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 argument_list|(
 name|change
 operator|.
@@ -1573,7 +1573,7 @@ name|cd
 argument_list|)
 expr_stmt|;
 comment|// See comment in #index(ChangeData).
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 argument_list|(
 name|cd
 argument_list|)
@@ -1668,10 +1668,10 @@ name|batchExecutor
 argument_list|)
 return|;
 block|}
-DECL|method|reindexAfterIndexUpdate (ChangeData cd)
+DECL|method|autoReindexIfStale (ChangeData cd)
 specifier|private
 name|void
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 parameter_list|(
 name|ChangeData
 name|cd
@@ -1681,7 +1681,7 @@ name|IOException
 block|{
 try|try
 block|{
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 argument_list|(
 name|cd
 operator|.
@@ -1710,10 +1710,10 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|reindexAfterIndexUpdate (Project.NameKey project, Change.Id id)
+DECL|method|autoReindexIfStale (Project.NameKey project, Change.Id id)
 specifier|private
 name|void
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 parameter_list|(
 name|Project
 operator|.
@@ -1728,7 +1728,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|reindexAfterIndexUpdate
+name|autoReindexIfStale
 condition|)
 block|{
 comment|// Don't retry indefinitely; if this fails the change will be stale.
