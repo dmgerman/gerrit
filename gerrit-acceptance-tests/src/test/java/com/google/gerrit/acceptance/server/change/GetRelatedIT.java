@@ -3943,7 +3943,7 @@ name|GerritConfig
 argument_list|(
 name|name
 operator|=
-literal|"index.testReindexAfterUpdate"
+literal|"index.testAutoReindexIfStale"
 argument_list|,
 name|value
 operator|=
