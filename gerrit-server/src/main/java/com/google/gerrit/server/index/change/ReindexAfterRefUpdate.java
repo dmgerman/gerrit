@@ -485,10 +485,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ReindexAfterUpdate
+DECL|class|ReindexAfterRefUpdate
 specifier|public
 class|class
-name|ReindexAfterUpdate
+name|ReindexAfterRefUpdate
 implements|implements
 name|GitReferenceUpdatedListener
 block|{
@@ -503,7 +503,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|ReindexAfterUpdate
+name|ReindexAfterRefUpdate
 operator|.
 name|class
 argument_list|)
@@ -553,8 +553,8 @@ name|executor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReindexAfterUpdate ( OneOffRequestContext requestContext, Provider<InternalChangeQuery> queryProvider, ChangeIndexer.Factory indexerFactory, ChangeIndexCollection indexes, ChangeNotes.Factory notesFactory, @IndexExecutor(QueueType.BATCH) ListeningExecutorService executor)
-name|ReindexAfterUpdate
+DECL|method|ReindexAfterRefUpdate ( OneOffRequestContext requestContext, Provider<InternalChangeQuery> queryProvider, ChangeIndexer.Factory indexerFactory, ChangeIndexCollection indexes, ChangeNotes.Factory notesFactory, @IndexExecutor(QueueType.BATCH) ListeningExecutorService executor)
+name|ReindexAfterRefUpdate
 parameter_list|(
 name|OneOffRequestContext
 name|requestContext

@@ -592,7 +592,7 @@ name|index
 operator|.
 name|change
 operator|.
-name|ReindexAfterUpdate
+name|ReindexAfterRefUpdate
 import|;
 end_import
 
@@ -1844,7 +1844,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|ReindexAfterUpdate
+name|ReindexAfterRefUpdate
 operator|.
 name|class
 argument_list|)
