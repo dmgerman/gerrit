@@ -1751,6 +1751,19 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|cfg
+operator|.
+name|setBoolean
+argument_list|(
+literal|"index"
+argument_list|,
+literal|null
+argument_list|,
+literal|"reindexAfterRefUpdate"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
