@@ -317,7 +317,7 @@ block|{
 name|String
 name|resourcePath
 init|=
-literal|"com/google/gerrit/httpd/raw/index.html.soy"
+literal|"com/google/gerrit/httpd/raw/PolyGerritIndexHtml.soy"
 decl_stmt|;
 name|SoyFileSet
 operator|.
