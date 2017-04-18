@@ -290,6 +290,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Consumer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -876,6 +888,56 @@ name|account
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**    * Gets the account and updates it atomically.    *    * @param db ReviewDb    * @param accountId ID of the account    * @param consumer consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws OrmException if updating the account fails    */
+DECL|method|atomicUpdate (ReviewDb db, Account.Id accountId, Consumer<Account> consumer)
+specifier|public
+name|Account
+name|atomicUpdate
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|Consumer
+argument_list|<
+name|Account
+argument_list|>
+name|consumer
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|db
+operator|.
+name|accounts
+argument_list|()
+operator|.
+name|atomicUpdate
+argument_list|(
+name|accountId
+argument_list|,
+name|a
+lambda|->
+block|{
+name|consumer
+operator|.
+name|accept
+argument_list|(
+name|a
+argument_list|)
+expr_stmt|;
+return|return
+name|a
+return|;
+block|}
+argument_list|)
+return|;
 block|}
 comment|/** Deletes the account. */
 DECL|method|delete (ReviewDb db, Account account)
