@@ -4923,9 +4923,12 @@ specifier|public
 name|LabelTypes
 name|getLabelTypes
 parameter_list|()
+throws|throws
+name|OrmException
 block|{
 return|return
 name|changeControl
+argument_list|()
 operator|.
 name|getLabelTypes
 argument_list|()

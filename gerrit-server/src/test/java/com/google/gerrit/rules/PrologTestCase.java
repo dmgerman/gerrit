@@ -668,6 +668,8 @@ parameter_list|(
 name|PrologEnvironment
 name|env
 parameter_list|)
+throws|throws
+name|Exception
 block|{}
 DECL|method|newMachine ()
 specifier|private
@@ -883,6 +885,8 @@ specifier|public
 name|void
 name|runPrologBasedTests
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|int
 name|errors
