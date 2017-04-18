@@ -191,6 +191,7 @@ operator|=
 literal|"Query the change database"
 argument_list|)
 DECL|class|Query
+specifier|public
 class|class
 name|Query
 extends|extends
