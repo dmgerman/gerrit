@@ -388,20 +388,6 @@ name|RevCommit
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-import|;
-end_import
-
 begin_class
 DECL|class|CherryPick
 specifier|public
@@ -938,9 +924,6 @@ name|ctx
 operator|.
 name|addRefUpdate
 argument_list|(
-operator|new
-name|ReceiveCommand
-argument_list|(
 name|ObjectId
 operator|.
 name|zeroId
@@ -952,7 +935,6 @@ name|psId
 operator|.
 name|toRefName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|patchSetInfo

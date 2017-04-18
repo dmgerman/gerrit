@@ -722,20 +722,6 @@ name|RevWalk
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-import|;
-end_import
-
 begin_comment
 comment|/**  * Utility functions to manipulate change edits.  *  *<p>This class contains methods to retrieve, publish and delete edits. For changing edits see  * {@link ChangeEditModifier}.  */
 end_comment
@@ -1598,9 +1584,6 @@ name|ctx
 operator|.
 name|addRefUpdate
 argument_list|(
-operator|new
-name|ReceiveCommand
-argument_list|(
 name|edit
 operator|.
 name|getEditCommit
@@ -1618,7 +1601,6 @@ name|edit
 operator|.
 name|getRefName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

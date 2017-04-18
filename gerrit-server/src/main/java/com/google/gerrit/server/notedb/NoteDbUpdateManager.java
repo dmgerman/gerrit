@@ -2976,13 +2976,9 @@ else|else
 block|{
 comment|// OpenRepo buffers objects separately; caller may assume that objects are available in the
 comment|// inserter it previously passed via setChangeRepo.
-comment|// TODO(dborowitz): This should be flushToFinalInserter to avoid flushing objects to the
-comment|// underlying repo during a dry run. However, the only user of this is PreviewSubmit, which
-comment|// uses BundleWriter, which only takes a Repository so it can't read unflushed objects. Fix
-comment|// BundleWriter, then fix this call.
 name|or
 operator|.
-name|flush
+name|flushToFinalInserter
 argument_list|()
 expr_stmt|;
 block|}
