@@ -572,25 +572,6 @@ return|return
 name|canEmailReviewers
 return|;
 block|}
-comment|/** @return true if the user can modify an account for another user. */
-DECL|method|canModifyAccount ()
-specifier|public
-name|boolean
-name|canModifyAccount
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|GlobalCapability
-operator|.
-name|MODIFY_ACCOUNT
-argument_list|)
-operator|||
-name|canAdministrateServer
-argument_list|()
-return|;
-block|}
 comment|/** @return true if the user can view all accounts. */
 DECL|method|canViewAllAccounts ()
 specifier|public
@@ -607,44 +588,6 @@ name|VIEW_ALL_ACCOUNTS
 argument_list|)
 operator|||
 name|canAdministrateServer
-argument_list|()
-return|;
-block|}
-comment|/** @return true if the user can perform basic server maintenance. */
-DECL|method|canMaintainServer ()
-specifier|public
-name|boolean
-name|canMaintainServer
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|GlobalCapability
-operator|.
-name|MAINTAIN_SERVER
-argument_list|)
-operator|||
-name|canAdministrateServer
-argument_list|()
-return|;
-block|}
-comment|/** @return true if the user can view the entire queue. */
-DECL|method|canViewQueue ()
-specifier|public
-name|boolean
-name|canViewQueue
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|GlobalCapability
-operator|.
-name|VIEW_QUEUE
-argument_list|)
-operator|||
-name|canMaintainServer
 argument_list|()
 return|;
 block|}
@@ -1286,31 +1229,10 @@ name|canEmailReviewers
 argument_list|()
 return|;
 case|case
-name|MAINTAIN_SERVER
-case|:
-return|return
-name|canMaintainServer
-argument_list|()
-return|;
-case|case
-name|MODIFY_ACCOUNT
-case|:
-return|return
-name|canModifyAccount
-argument_list|()
-return|;
-case|case
 name|VIEW_ALL_ACCOUNTS
 case|:
 return|return
 name|canViewAllAccounts
-argument_list|()
-return|;
-case|case
-name|VIEW_QUEUE
-case|:
-return|return
-name|canViewQueue
 argument_list|()
 return|;
 case|case
@@ -1325,6 +1247,9 @@ case|:
 case|case
 name|VIEW_CACHES
 case|:
+case|case
+name|VIEW_QUEUE
+case|:
 return|return
 name|canPerform
 argument_list|(
@@ -1334,7 +1259,14 @@ name|permissionName
 argument_list|()
 argument_list|)
 operator|||
-name|canMaintainServer
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|MAINTAIN_SERVER
+argument_list|)
+operator|||
+name|canAdministrateServer
 argument_list|()
 return|;
 case|case
@@ -1345,6 +1277,12 @@ name|CREATE_GROUP
 case|:
 case|case
 name|CREATE_PROJECT
+case|:
+case|case
+name|MAINTAIN_SERVER
+case|:
+case|case
+name|MODIFY_ACCOUNT
 case|:
 case|case
 name|STREAM_EVENTS
