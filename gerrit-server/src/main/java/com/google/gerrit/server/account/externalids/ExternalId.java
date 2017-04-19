@@ -1251,7 +1251,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Expected exactly 1 %s section, found %d"
+literal|"Expected exactly 1 '%s' section, found %d"
 argument_list|,
 name|EXTERNAL_ID_SECTION
 argument_list|,
@@ -1299,7 +1299,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Invalid external id: %s"
+literal|"External ID %s is invalid"
 argument_list|,
 name|externalIdKeyStr
 argument_list|)
@@ -1332,7 +1332,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"SHA1 of external ID %s does not match note ID %s"
+literal|"SHA1 of external ID '%s' does not match note ID '%s'"
 argument_list|,
 name|externalIdKeyStr
 argument_list|,
@@ -1459,7 +1459,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Value for %s.%s.%s is missing, expected account ID"
+literal|"Value for '%s.%s.%s' is missing, expected account ID"
 argument_list|,
 name|EXTERNAL_ID_SECTION
 argument_list|,
@@ -1505,7 +1505,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Value %s for %s.%s.%s is invalid, expected account ID"
+literal|"Value %s for '%s.%s.%s' is invalid, expected account ID"
 argument_list|,
 name|accountIdStr
 argument_list|,
@@ -1537,7 +1537,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Value %s for %s.%s.%s is invalid, expected account ID"
+literal|"Value %s for '%s.%s.%s' is invalid, expected account ID"
 argument_list|,
 name|accountIdStr
 argument_list|,
@@ -1572,7 +1572,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Invalid external id config for note %s: %s"
+literal|"Invalid external ID config for note '%s': %s"
 argument_list|,
 name|noteId
 argument_list|,
