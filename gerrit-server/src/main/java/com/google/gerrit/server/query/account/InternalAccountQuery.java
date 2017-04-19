@@ -687,6 +687,32 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|byPreferredEmail (String email)
+specifier|public
+name|List
+argument_list|<
+name|AccountState
+argument_list|>
+name|byPreferredEmail
+parameter_list|(
+name|String
+name|email
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|query
+argument_list|(
+name|AccountPredicates
+operator|.
+name|preferredEmail
+argument_list|(
+name|email
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|byWatchedProject (Project.NameKey project)
 specifier|public
 name|List

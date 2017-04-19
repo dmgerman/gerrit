@@ -337,6 +337,15 @@ name|FIELD_NAME
 init|=
 literal|"name"
 decl_stmt|;
+DECL|field|FIELD_PREFERRED_EMAIL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FIELD_PREFERRED_EMAIL
+init|=
+literal|"preferredemail"
+decl_stmt|;
 DECL|field|FIELD_USERNAME
 specifier|public
 specifier|static
