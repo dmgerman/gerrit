@@ -761,6 +761,8 @@ DECL|field|accountsUpdate
 specifier|private
 specifier|final
 name|AccountsUpdate
+operator|.
+name|User
 name|accountsUpdate
 decl_stmt|;
 DECL|field|indexer
@@ -820,7 +822,7 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate accountsUpdate, AccountIndexer indexer, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @Assisted String username)
+DECL|method|CreateAccount ( ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountIndexer indexer, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -847,6 +849,8 @@ name|AccountCache
 name|accountCache
 parameter_list|,
 name|AccountsUpdate
+operator|.
+name|User
 name|accountsUpdate
 parameter_list|,
 name|AccountIndexer
@@ -1404,6 +1408,9 @@ name|email
 argument_list|)
 expr_stmt|;
 name|accountsUpdate
+operator|.
+name|create
+argument_list|()
 operator|.
 name|insert
 argument_list|(

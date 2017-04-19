@@ -542,6 +542,8 @@ DECL|field|accountsUpdate
 specifier|private
 specifier|final
 name|AccountsUpdate
+operator|.
+name|Server
 name|accountsUpdate
 decl_stmt|;
 DECL|field|authorizedKeys
@@ -592,7 +594,7 @@ name|externalIdsUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, AccountsUpdate accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountIndexer indexer, ExternalIdsUpdate.Server externalIdsUpdate)
+DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountIndexer indexer, ExternalIdsUpdate.Server externalIdsUpdate)
 name|AccountCreator
 parameter_list|(
 name|SchemaFactory
@@ -602,6 +604,8 @@ argument_list|>
 name|schema
 parameter_list|,
 name|AccountsUpdate
+operator|.
+name|Server
 name|accountsUpdate
 parameter_list|,
 name|VersionedAuthorizedKeys
@@ -875,6 +879,9 @@ name|email
 argument_list|)
 expr_stmt|;
 name|accountsUpdate
+operator|.
+name|create
+argument_list|()
 operator|.
 name|insert
 argument_list|(

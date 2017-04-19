@@ -543,6 +543,14 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+DECL|field|accountsUpdateFactory
+specifier|private
+specifier|final
+name|AccountsUpdate
+operator|.
+name|Server
+name|accountsUpdateFactory
+decl_stmt|;
 DECL|field|byIdCache
 specifier|private
 specifier|final
@@ -620,7 +628,7 @@ name|externalIdsUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, AccountCache byIdCache, AccountByEmailCache byEmailCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, AuditService auditService, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory)
+DECL|method|AccountManager ( SchemaFactory<ReviewDb> schema, AccountsUpdate.Server accountsUpdateFactory, AccountCache byIdCache, AccountByEmailCache byEmailCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, AuditService auditService, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory)
 name|AccountManager
 parameter_list|(
 name|SchemaFactory
@@ -628,6 +636,11 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
+parameter_list|,
+name|AccountsUpdate
+operator|.
+name|Server
+name|accountsUpdateFactory
 parameter_list|,
 name|AccountCache
 name|byIdCache
@@ -674,6 +687,12 @@ operator|.
 name|schema
 operator|=
 name|schema
+expr_stmt|;
+name|this
+operator|.
+name|accountsUpdateFactory
+operator|=
+name|accountsUpdateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1596,19 +1615,16 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|db
+name|accountsUpdateFactory
 operator|.
-name|accounts
+name|create
 argument_list|()
 operator|.
 name|upsert
 argument_list|(
-name|Collections
-operator|.
-name|singleton
-argument_list|(
+name|db
+argument_list|,
 name|account
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|ExternalId
