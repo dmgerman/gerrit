@@ -96,11 +96,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|lang
+name|util
 operator|.
-name|reflect
-operator|.
-name|InvocationTargetException
+name|EnumSet
 import|;
 end_import
 
@@ -195,80 +193,6 @@ argument_list|(
 literal|"aborted by user"
 argument_list|)
 return|;
-block|}
-comment|/** Obtain all values from an enumeration. */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-DECL|method|all (final T value)
-specifier|protected
-specifier|static
-parameter_list|<
-name|T
-extends|extends
-name|Enum
-argument_list|<
-name|?
-argument_list|>
-parameter_list|>
-name|T
-index|[]
-name|all
-parameter_list|(
-specifier|final
-name|T
-name|value
-parameter_list|)
-block|{
-try|try
-block|{
-return|return
-operator|(
-name|T
-index|[]
-operator|)
-name|value
-operator|.
-name|getDeclaringClass
-argument_list|()
-operator|.
-name|getMethod
-argument_list|(
-literal|"values"
-argument_list|)
-operator|.
-name|invoke
-argument_list|(
-literal|null
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-decl||
-name|NoSuchMethodException
-decl||
-name|InvocationTargetException
-decl||
-name|IllegalAccessException
-decl||
-name|SecurityException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Cannot obtain enumeration values"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/** @return true if this is a batch UI that has no user interaction. */
 DECL|method|isBatch ()
@@ -509,7 +433,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/** Prompt the user to make a choice from an enumeration's values. */
-DECL|method|readEnum (T def, String fmt, Object... args)
+DECL|method|readEnum ( T def, A options, String fmt, Object... args)
 specifier|public
 specifier|abstract
 parameter_list|<
@@ -519,12 +443,24 @@ name|Enum
 argument_list|<
 name|?
 argument_list|>
+parameter_list|,
+name|A
+extends|extends
+name|EnumSet
+argument_list|<
+name|?
+extends|extends
+name|T
+argument_list|>
 parameter_list|>
 name|T
 name|readEnum
 parameter_list|(
 name|T
 name|def
+parameter_list|,
+name|A
+name|options
 parameter_list|,
 name|String
 name|fmt
@@ -1127,7 +1063,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|readEnum (T def, String fmt, Object... args)
+DECL|method|readEnum ( T def, A options, String fmt, Object... args)
 specifier|public
 parameter_list|<
 name|T
@@ -1136,12 +1072,24 @@ name|Enum
 argument_list|<
 name|?
 argument_list|>
+parameter_list|,
+name|A
+extends|extends
+name|EnumSet
+argument_list|<
+name|?
+extends|extends
+name|T
+argument_list|>
 parameter_list|>
 name|T
 name|readEnum
 parameter_list|(
 name|T
 name|def
+parameter_list|,
+name|A
+name|options
 parameter_list|,
 name|String
 name|fmt
@@ -1162,16 +1110,6 @@ argument_list|(
 name|fmt
 argument_list|,
 name|args
-argument_list|)
-decl_stmt|;
-specifier|final
-name|T
-index|[]
-name|options
-init|=
-name|all
-argument_list|(
-name|def
 argument_list|)
 decl_stmt|;
 for|for
@@ -1503,7 +1441,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|readEnum (T def, String fmt, Object... args)
+DECL|method|readEnum ( T def, A options, String fmt, Object... args)
 specifier|public
 parameter_list|<
 name|T
@@ -1512,12 +1450,24 @@ name|Enum
 argument_list|<
 name|?
 argument_list|>
+parameter_list|,
+name|A
+extends|extends
+name|EnumSet
+argument_list|<
+name|?
+extends|extends
+name|T
+argument_list|>
 parameter_list|>
 name|T
 name|readEnum
 parameter_list|(
 name|T
 name|def
+parameter_list|,
+name|A
+name|options
 parameter_list|,
 name|String
 name|fmt
