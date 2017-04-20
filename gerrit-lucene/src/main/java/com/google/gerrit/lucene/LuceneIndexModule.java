@@ -603,6 +603,14 @@ name|fromConfig
 argument_list|(
 name|cfg
 argument_list|)
+operator|.
+name|separateChangeSubIndexes
+argument_list|(
+literal|true
+argument_list|)
+operator|.
+name|build
+argument_list|()
 return|;
 block|}
 DECL|class|MultiVersionModule
