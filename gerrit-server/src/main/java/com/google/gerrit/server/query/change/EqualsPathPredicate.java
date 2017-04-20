@@ -128,12 +128,6 @@ name|EqualsPathPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
-DECL|field|value
-specifier|protected
-specifier|final
-name|String
-name|value
-decl_stmt|;
 DECL|method|EqualsPathPredicate (String fieldName, String value)
 specifier|public
 name|EqualsPathPredicate
@@ -155,12 +149,6 @@ name|fieldName
 argument_list|,
 name|value
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|value
-operator|=
-name|value
 expr_stmt|;
 block|}
 annotation|@
