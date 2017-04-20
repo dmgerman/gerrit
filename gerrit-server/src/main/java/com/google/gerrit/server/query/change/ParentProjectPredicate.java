@@ -254,6 +254,7 @@ end_import
 
 begin_class
 DECL|class|ParentProjectPredicate
+specifier|public
 class|class
 name|ParentProjectPredicate
 extends|extends
@@ -263,12 +264,13 @@ name|ChangeData
 argument_list|>
 block|{
 DECL|field|value
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|method|ParentProjectPredicate ( ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
+specifier|public
 name|ParentProjectPredicate
 parameter_list|(
 name|ProjectCache
@@ -312,7 +314,7 @@ name|value
 expr_stmt|;
 block|}
 DECL|method|predicates ( ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
-specifier|private
+specifier|protected
 specifier|static
 name|List
 argument_list|<

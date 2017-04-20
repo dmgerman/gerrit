@@ -202,18 +202,20 @@ end_import
 
 begin_class
 DECL|class|FuzzyTopicPredicate
+specifier|public
 class|class
 name|FuzzyTopicPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|index
-specifier|private
+specifier|protected
 specifier|final
 name|ChangeIndex
 name|index
 decl_stmt|;
 DECL|method|FuzzyTopicPredicate (String topic, ChangeIndex index)
+specifier|public
 name|FuzzyTopicPredicate
 parameter_list|(
 name|String

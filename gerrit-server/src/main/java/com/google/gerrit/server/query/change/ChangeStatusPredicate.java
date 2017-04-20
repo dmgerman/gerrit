@@ -230,7 +230,7 @@ extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|PREDICATES
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|TreeMap
@@ -245,7 +245,7 @@ argument_list|>
 name|PREDICATES
 decl_stmt|;
 DECL|field|CLOSED
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|Predicate
@@ -255,7 +255,7 @@ argument_list|>
 name|CLOSED
 decl_stmt|;
 DECL|field|OPEN
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|Predicate
@@ -559,7 +559,7 @@ name|CLOSED
 return|;
 block|}
 DECL|field|status
-specifier|private
+specifier|protected
 specifier|final
 name|Change
 operator|.
@@ -567,6 +567,7 @@ name|Status
 name|status
 decl_stmt|;
 DECL|method|ChangeStatusPredicate (Change.Status status)
+specifier|public
 name|ChangeStatusPredicate
 parameter_list|(
 name|Change

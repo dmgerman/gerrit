@@ -159,6 +159,7 @@ extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|CommitterPredicate (String value)
+specifier|public
 name|CommitterPredicate
 parameter_list|(
 name|String

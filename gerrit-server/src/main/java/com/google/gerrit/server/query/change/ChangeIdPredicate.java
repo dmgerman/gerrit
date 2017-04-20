@@ -122,12 +122,14 @@ end_comment
 
 begin_class
 DECL|class|ChangeIdPredicate
+specifier|public
 class|class
 name|ChangeIdPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|ChangeIdPredicate (String id)
+specifier|public
 name|ChangeIdPredicate
 parameter_list|(
 name|String

@@ -134,12 +134,14 @@ end_import
 
 begin_class
 DECL|class|ProjectPredicate
+specifier|public
 class|class
 name|ProjectPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|ProjectPredicate (String id)
+specifier|public
 name|ProjectPredicate
 parameter_list|(
 name|String
@@ -157,6 +159,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getValueKey ()
+specifier|protected
 name|Project
 operator|.
 name|NameKey

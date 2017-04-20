@@ -508,6 +508,7 @@ end_import
 
 begin_class
 DECL|class|ConflictsPredicate
+specifier|public
 class|class
 name|ConflictsPredicate
 extends|extends
@@ -518,7 +519,7 @@ argument_list|>
 block|{
 comment|// UI code may depend on this string, so use caution when changing.
 DECL|field|TOO_MANY_FILES
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|String
@@ -527,12 +528,13 @@ init|=
 literal|"too many files to find conflicts"
 decl_stmt|;
 DECL|field|value
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|method|ConflictsPredicate (Arguments args, String value, List<Change> changes)
+specifier|public
 name|ConflictsPredicate
 parameter_list|(
 name|Arguments
@@ -572,7 +574,7 @@ name|value
 expr_stmt|;
 block|}
 DECL|method|predicates ( final Arguments args, String value, List<Change> changes)
-specifier|private
+specifier|public
 specifier|static
 name|List
 argument_list|<
@@ -1225,7 +1227,7 @@ name|changePredicates
 return|;
 block|}
 DECL|method|listFiles (Change c, Arguments args, ChangeDataCache changeDataCache)
-specifier|private
+specifier|public
 specifier|static
 name|List
 argument_list|<
@@ -1510,19 +1512,19 @@ name|value
 return|;
 block|}
 DECL|class|ChangeDataCache
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|ChangeDataCache
 block|{
 DECL|field|change
-specifier|private
+specifier|protected
 specifier|final
 name|Change
 name|change
 decl_stmt|;
 DECL|field|db
-specifier|private
+specifier|protected
 specifier|final
 name|Provider
 argument_list|<
@@ -1531,7 +1533,7 @@ argument_list|>
 name|db
 decl_stmt|;
 DECL|field|changeDataFactory
-specifier|private
+specifier|protected
 specifier|final
 name|ChangeData
 operator|.
@@ -1539,23 +1541,23 @@ name|Factory
 name|changeDataFactory
 decl_stmt|;
 DECL|field|projectCache
-specifier|private
+specifier|protected
 specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
 DECL|field|testAgainst
-specifier|private
+specifier|protected
 name|ObjectId
 name|testAgainst
 decl_stmt|;
 DECL|field|projectState
-specifier|private
+specifier|protected
 name|ProjectState
 name|projectState
 decl_stmt|;
 DECL|field|alreadyAccepted
-specifier|private
+specifier|protected
 name|Iterable
 argument_list|<
 name|ObjectId
@@ -1563,6 +1565,7 @@ argument_list|>
 name|alreadyAccepted
 decl_stmt|;
 DECL|method|ChangeDataCache ( Change change, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ProjectCache projectCache)
+specifier|public
 name|ChangeDataCache
 parameter_list|(
 name|Change
@@ -1609,6 +1612,7 @@ name|projectCache
 expr_stmt|;
 block|}
 DECL|method|getTestAgainst ()
+specifier|protected
 name|ObjectId
 name|getTestAgainst
 parameter_list|()
@@ -1656,6 +1660,7 @@ name|testAgainst
 return|;
 block|}
 DECL|method|getProjectState ()
+specifier|protected
 name|ProjectState
 name|getProjectState
 parameter_list|()
@@ -1707,6 +1712,7 @@ name|projectState
 return|;
 block|}
 DECL|method|getAlreadyAccepted (Repository repo)
+specifier|protected
 name|Iterable
 argument_list|<
 name|ObjectId

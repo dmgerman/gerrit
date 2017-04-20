@@ -125,6 +125,7 @@ extends|extends
 name|IntegerRangeChangePredicate
 block|{
 DECL|method|IsUnresolvedPredicate ()
+specifier|public
 name|IsUnresolvedPredicate
 parameter_list|()
 throws|throws
@@ -137,6 +138,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|IsUnresolvedPredicate (String value)
+specifier|public
 name|IsUnresolvedPredicate
 parameter_list|(
 name|String

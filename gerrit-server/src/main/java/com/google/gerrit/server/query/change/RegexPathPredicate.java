@@ -128,12 +128,14 @@ end_import
 
 begin_class
 DECL|class|RegexPathPredicate
+specifier|public
 class|class
 name|RegexPathPredicate
 extends|extends
 name|ChangeRegexPredicate
 block|{
 DECL|method|RegexPathPredicate (String re)
+specifier|public
 name|RegexPathPredicate
 parameter_list|(
 name|String

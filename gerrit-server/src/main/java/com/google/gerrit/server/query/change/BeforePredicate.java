@@ -135,12 +135,13 @@ extends|extends
 name|TimestampRangeChangePredicate
 block|{
 DECL|field|cut
-specifier|private
+specifier|protected
 specifier|final
 name|Date
 name|cut
 decl_stmt|;
 DECL|method|BeforePredicate (String value)
+specifier|public
 name|BeforePredicate
 parameter_list|(
 name|String

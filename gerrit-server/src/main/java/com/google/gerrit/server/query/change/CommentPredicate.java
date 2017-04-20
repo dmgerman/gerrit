@@ -170,18 +170,20 @@ end_import
 
 begin_class
 DECL|class|CommentPredicate
+specifier|public
 class|class
 name|CommentPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|index
-specifier|private
+specifier|protected
 specifier|final
 name|ChangeIndex
 name|index
 decl_stmt|;
 DECL|method|CommentPredicate (ChangeIndex index, String value)
+specifier|public
 name|CommentPredicate
 parameter_list|(
 name|ChangeIndex

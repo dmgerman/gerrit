@@ -118,12 +118,14 @@ end_import
 
 begin_class
 DECL|class|HashtagPredicate
+specifier|public
 class|class
 name|HashtagPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|HashtagPredicate (String hashtag)
+specifier|public
 name|HashtagPredicate
 parameter_list|(
 name|String

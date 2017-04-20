@@ -118,13 +118,14 @@ end_import
 
 begin_class
 DECL|class|EditByPredicate
+specifier|public
 class|class
 name|EditByPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|id
-specifier|private
+specifier|protected
 specifier|final
 name|Account
 operator|.
@@ -132,6 +133,7 @@ name|Id
 name|id
 decl_stmt|;
 DECL|method|EditByPredicate (Account.Id id)
+specifier|public
 name|EditByPredicate
 parameter_list|(
 name|Account

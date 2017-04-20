@@ -174,12 +174,14 @@ end_import
 
 begin_class
 DECL|class|SubmitRecordPredicate
+specifier|public
 class|class
 name|SubmitRecordPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|create ( String label, SubmitRecord.Label.Status status, Set<Account.Id> accounts)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<

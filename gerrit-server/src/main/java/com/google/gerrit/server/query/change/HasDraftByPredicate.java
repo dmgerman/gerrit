@@ -118,13 +118,14 @@ end_import
 
 begin_class
 DECL|class|HasDraftByPredicate
+specifier|public
 class|class
 name|HasDraftByPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|accountId
-specifier|private
+specifier|protected
 specifier|final
 name|Account
 operator|.
@@ -132,6 +133,7 @@ name|Id
 name|accountId
 decl_stmt|;
 DECL|method|HasDraftByPredicate (Account.Id accountId)
+specifier|public
 name|HasDraftByPredicate
 parameter_list|(
 name|Account

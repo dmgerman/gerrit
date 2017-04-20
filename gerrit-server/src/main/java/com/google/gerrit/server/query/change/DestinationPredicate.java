@@ -126,12 +126,14 @@ end_import
 
 begin_class
 DECL|class|DestinationPredicate
+specifier|public
 class|class
 name|DestinationPredicate
 extends|extends
 name|ChangeOperatorPredicate
 block|{
 DECL|field|destinations
+specifier|protected
 name|Set
 argument_list|<
 name|Branch
@@ -141,6 +143,7 @@ argument_list|>
 name|destinations
 decl_stmt|;
 DECL|method|DestinationPredicate (Set<Branch.NameKey> destinations, String value)
+specifier|public
 name|DestinationPredicate
 parameter_list|(
 name|Set

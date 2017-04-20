@@ -212,12 +212,14 @@ end_import
 
 begin_class
 DECL|class|ReviewerPredicate
+specifier|public
 class|class
 name|ReviewerPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|forState ( Arguments args, Account.Id id, ReviewerStateInternal state)
+specifier|protected
 specifier|static
 name|Predicate
 argument_list|<
@@ -264,6 +266,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|reviewer (Arguments args, Account.Id id)
+specifier|protected
 specifier|static
 name|Predicate
 argument_list|<
@@ -332,6 +335,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|cc (Arguments args, Account.Id id)
+specifier|protected
 specifier|static
 name|Predicate
 argument_list|<
@@ -369,7 +373,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|anyReviewerState (Account.Id id)
-specifier|private
+specifier|protected
 specifier|static
 name|Predicate
 argument_list|<
@@ -431,13 +435,13 @@ argument_list|)
 return|;
 block|}
 DECL|field|state
-specifier|private
+specifier|protected
 specifier|final
 name|ReviewerStateInternal
 name|state
 decl_stmt|;
 DECL|field|id
-specifier|private
+specifier|protected
 specifier|final
 name|Account
 operator|.
@@ -487,6 +491,7 @@ name|id
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
+specifier|protected
 name|Account
 operator|.
 name|Id

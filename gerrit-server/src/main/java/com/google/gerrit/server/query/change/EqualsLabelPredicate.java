@@ -320,25 +320,26 @@ end_import
 
 begin_class
 DECL|class|EqualsLabelPredicate
+specifier|public
 class|class
 name|EqualsLabelPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|projectCache
-specifier|private
+specifier|protected
 specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
 DECL|field|permissionBackend
-specifier|private
+specifier|protected
 specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
 DECL|field|userFactory
-specifier|private
+specifier|protected
 specifier|final
 name|IdentifiedUser
 operator|.
@@ -346,7 +347,7 @@ name|GenericFactory
 name|userFactory
 decl_stmt|;
 DECL|field|dbProvider
-specifier|private
+specifier|protected
 specifier|final
 name|Provider
 argument_list|<
@@ -355,19 +356,19 @@ argument_list|>
 name|dbProvider
 decl_stmt|;
 DECL|field|label
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|label
 decl_stmt|;
 DECL|field|expVal
-specifier|private
+specifier|protected
 specifier|final
 name|int
 name|expVal
 decl_stmt|;
 DECL|field|account
-specifier|private
+specifier|protected
 specifier|final
 name|Account
 operator|.
@@ -375,14 +376,15 @@ name|Id
 name|account
 decl_stmt|;
 DECL|field|group
-specifier|private
+specifier|protected
 specifier|final
 name|AccountGroup
 operator|.
 name|UUID
 name|group
 decl_stmt|;
-DECL|method|EqualsLabelPredicate (LabelPredicate.Args args, String label, int expVal, Account.Id account)
+DECL|method|EqualsLabelPredicate ( LabelPredicate.Args args, String label, int expVal, Account.Id account)
+specifier|public
 name|EqualsLabelPredicate
 parameter_list|(
 name|LabelPredicate
@@ -642,7 +644,7 @@ literal|false
 return|;
 block|}
 DECL|method|type (LabelTypes types, String toFind)
-specifier|private
+specifier|protected
 specifier|static
 name|LabelType
 name|type
@@ -709,7 +711,7 @@ literal|null
 return|;
 block|}
 DECL|method|match (ChangeData cd, short value, Account.Id approver, LabelType type)
-specifier|private
+specifier|protected
 name|boolean
 name|match
 parameter_list|(

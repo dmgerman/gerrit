@@ -118,13 +118,14 @@ end_import
 
 begin_class
 DECL|class|SubmittablePredicate
+specifier|public
 class|class
 name|SubmittablePredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|status
-specifier|private
+specifier|protected
 specifier|final
 name|SubmitRecord
 operator|.
@@ -132,6 +133,7 @@ name|Status
 name|status
 decl_stmt|;
 DECL|method|SubmittablePredicate (SubmitRecord.Status status)
+specifier|public
 name|SubmittablePredicate
 parameter_list|(
 name|SubmitRecord

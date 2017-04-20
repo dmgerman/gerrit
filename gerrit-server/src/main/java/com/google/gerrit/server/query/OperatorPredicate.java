@@ -96,19 +96,19 @@ name|T
 argument_list|>
 block|{
 DECL|field|name
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|value
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|method|OperatorPredicate (final String name, final String value)
-specifier|protected
+specifier|public
 name|OperatorPredicate
 parameter_list|(
 specifier|final

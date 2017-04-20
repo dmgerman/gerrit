@@ -206,6 +206,7 @@ end_import
 
 begin_class
 DECL|class|ChangeIsVisibleToPredicate
+specifier|public
 class|class
 name|ChangeIsVisibleToPredicate
 extends|extends
@@ -215,7 +216,7 @@ name|ChangeData
 argument_list|>
 block|{
 DECL|field|db
-specifier|private
+specifier|protected
 specifier|final
 name|Provider
 argument_list|<
@@ -224,7 +225,7 @@ argument_list|>
 name|db
 decl_stmt|;
 DECL|field|notesFactory
-specifier|private
+specifier|protected
 specifier|final
 name|ChangeNotes
 operator|.
@@ -232,7 +233,7 @@ name|Factory
 name|notesFactory
 decl_stmt|;
 DECL|field|changeControl
-specifier|private
+specifier|protected
 specifier|final
 name|ChangeControl
 operator|.
@@ -240,12 +241,13 @@ name|GenericFactory
 name|changeControl
 decl_stmt|;
 DECL|field|user
-specifier|private
+specifier|protected
 specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
 DECL|method|ChangeIsVisibleToPredicate ( Provider<ReviewDb> db, ChangeNotes.Factory notesFactory, ChangeControl.GenericFactory changeControlFactory, CurrentUser user)
+specifier|public
 name|ChangeIsVisibleToPredicate
 parameter_list|(
 name|Provider

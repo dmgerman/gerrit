@@ -193,12 +193,13 @@ extends|extends
 name|TimestampRangeChangePredicate
 block|{
 DECL|field|cut
-specifier|private
+specifier|protected
 specifier|final
 name|long
 name|cut
 decl_stmt|;
 DECL|method|AgePredicate (String value)
+specifier|public
 name|AgePredicate
 parameter_list|(
 name|String

@@ -138,12 +138,14 @@ end_import
 
 begin_class
 DECL|class|EqualsFilePredicate
+specifier|public
 class|class
 name|EqualsFilePredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|method|create (Arguments args, String value)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -210,7 +212,7 @@ argument_list|)
 return|;
 block|}
 DECL|field|value
-specifier|private
+specifier|protected
 specifier|final
 name|String
 name|value

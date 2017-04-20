@@ -160,13 +160,14 @@ end_import
 
 begin_class
 DECL|class|CommentByPredicate
+specifier|public
 class|class
 name|CommentByPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
 DECL|field|id
-specifier|private
+specifier|protected
 specifier|final
 name|Account
 operator|.
@@ -174,6 +175,7 @@ name|Id
 name|id
 decl_stmt|;
 DECL|method|CommentByPredicate (Account.Id id)
+specifier|public
 name|CommentByPredicate
 parameter_list|(
 name|Account
