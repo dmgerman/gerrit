@@ -85,11 +85,11 @@ argument_list|<
 name|T
 argument_list|>
 block|{
-DECL|field|value
+DECL|field|intValue
 specifier|private
 specifier|final
 name|int
-name|value
+name|intValue
 decl_stmt|;
 DECL|method|IntPredicate (final String name, final String value)
 specifier|public
@@ -113,7 +113,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|value
+name|intValue
 operator|=
 name|Integer
 operator|.
@@ -123,7 +123,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|IntPredicate (final String name, final int value)
+DECL|method|IntPredicate (final String name, final int intValue)
 specifier|public
 name|IntPredicate
 parameter_list|(
@@ -133,7 +133,7 @@ name|name
 parameter_list|,
 specifier|final
 name|int
-name|value
+name|intValue
 parameter_list|)
 block|{
 name|super
@@ -144,15 +144,15 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|value
+name|intValue
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|value
+name|intValue
 operator|=
-name|value
+name|intValue
 expr_stmt|;
 block|}
 DECL|method|intValue ()
@@ -162,7 +162,7 @@ name|intValue
 parameter_list|()
 block|{
 return|return
-name|value
+name|intValue
 return|;
 block|}
 annotation|@
@@ -182,7 +182,7 @@ argument_list|()
 operator|*
 literal|31
 operator|+
-name|value
+name|intValue
 return|;
 block|}
 annotation|@

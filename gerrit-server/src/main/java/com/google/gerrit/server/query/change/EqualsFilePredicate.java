@@ -211,12 +211,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|field|value
-specifier|protected
-specifier|final
-name|String
-name|value
-decl_stmt|;
 DECL|method|EqualsFilePredicate (String value)
 specifier|private
 name|EqualsFilePredicate
@@ -237,12 +231,6 @@ name|FIELD_FILE
 argument_list|,
 name|value
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|value
-operator|=
-name|value
 expr_stmt|;
 block|}
 annotation|@
