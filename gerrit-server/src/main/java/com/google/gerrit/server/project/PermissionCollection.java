@@ -560,7 +560,6 @@ operator|.
 name|project
 argument_list|)
 expr_stmt|;
-break|break;
 block|}
 block|}
 elseif|else
