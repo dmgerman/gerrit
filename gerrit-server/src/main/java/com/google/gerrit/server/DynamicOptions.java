@@ -287,11 +287,7 @@ name|beansByPlugin
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|DynamicBean
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for
@@ -356,6 +352,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getDynamicBean (Object bean, DynamicBean dynamicBean)
 specifier|public
 name|DynamicBean
