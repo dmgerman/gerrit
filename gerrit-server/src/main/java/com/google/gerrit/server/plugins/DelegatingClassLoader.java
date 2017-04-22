@@ -86,16 +86,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -166,6 +156,8 @@ operator|=
 name|target
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|findClass (String name)
 specifier|public
 name|Class
@@ -254,6 +246,8 @@ name|name
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 DECL|method|getResource (String name)
 specifier|public
 name|URL
@@ -295,6 +289,8 @@ return|return
 name|rtn
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getResources (String name)
 specifier|public
 name|Enumeration
@@ -344,6 +340,8 @@ return|return
 name|rtn
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getResourceAsStream (String name)
 specifier|public
 name|InputStream
