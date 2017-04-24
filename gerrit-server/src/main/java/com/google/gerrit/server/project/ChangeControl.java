@@ -2804,7 +2804,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|isPrivateVisible (ReviewDb db, ChangeData cd)
-specifier|public
+specifier|private
 name|boolean
 name|isPrivateVisible
 parameter_list|(

@@ -2165,7 +2165,6 @@ return|;
 block|}
 comment|/** @return true if this user can view private changes. */
 DECL|method|canViewPrivateChanges ()
-specifier|public
 name|boolean
 name|canViewPrivateChanges
 parameter_list|()
