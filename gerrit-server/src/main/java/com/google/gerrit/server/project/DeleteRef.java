@@ -1141,6 +1141,13 @@ operator|.
 name|newBatchUpdate
 argument_list|()
 decl_stmt|;
+name|batchUpdate
+operator|.
+name|setAtomic
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|String

@@ -100,6 +100,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -574,6 +590,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|lib
+operator|.
+name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|revwalk
 operator|.
 name|RevWalk
@@ -595,13 +625,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link BatchUpdate} implementation that only supports NoteDb.  *  *<p>Used when {@code noteDb.changes.disableReviewDb=true}, at which point ReviewDb is not  * consulted during updates.  */
+comment|/**  * {@link BatchUpdate} implementation using only NoteDb that updates code refs and meta refs in a  * single {@link org.eclipse.jgit.lib.BatchRefUpdate}.  *  *<p>Used when {@code noteDb.changes.disableReviewDb=true}, at which point ReviewDb is not  * consulted during updates.  */
 end_comment
 
 begin_class
-DECL|class|NoteDbBatchUpdate
+DECL|class|FusedNoteDbBatchUpdate
 class|class
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 extends|extends
 name|BatchUpdate
 block|{
@@ -610,7 +640,7 @@ interface|interface
 name|AssistedFactory
 block|{
 DECL|method|create ( ReviewDb db, Project.NameKey project, CurrentUser user, Timestamp when)
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 name|create
 parameter_list|(
 name|ReviewDb
@@ -629,14 +659,14 @@ name|when
 parameter_list|)
 function_decl|;
 block|}
-DECL|method|execute ( ImmutableList<NoteDbBatchUpdate> updates, BatchUpdateListener listener, @Nullable RequestId requestId, boolean dryrun)
+DECL|method|execute ( ImmutableList<FusedNoteDbBatchUpdate> updates, BatchUpdateListener listener, @Nullable RequestId requestId, boolean dryrun)
 specifier|static
 name|void
 name|execute
 parameter_list|(
 name|ImmutableList
 argument_list|<
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 argument_list|>
 name|updates
 parameter_list|,
@@ -729,7 +759,7 @@ name|REPO_BEFORE_DB
 case|:
 for|for
 control|(
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -748,7 +778,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -816,7 +846,7 @@ comment|// currently not a big deal because multi-change batches generally aren'
 comment|// drafts anyway.
 for|for
 control|(
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -837,7 +867,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -976,7 +1006,7 @@ condition|)
 block|{
 for|for
 control|(
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -1020,7 +1050,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 operator|.
 name|this
 operator|.
@@ -1428,8 +1458,8 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NoteDbBatchUpdate ( GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverIdent, ChangeNotes.Factory changeNotesFactory, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeIndexer indexer, GitReferenceUpdated gitRefUpdated, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
-name|NoteDbBatchUpdate
+DECL|method|FusedNoteDbBatchUpdate ( GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverIdent, ChangeNotes.Factory changeNotesFactory, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeIndexer indexer, GitReferenceUpdated gitRefUpdated, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
+name|FusedNoteDbBatchUpdate
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
@@ -1867,7 +1897,7 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-name|NoteDbBatchUpdate
+name|FusedNoteDbBatchUpdate
 operator|.
 name|this
 operator|.
@@ -2052,6 +2082,31 @@ expr_stmt|;
 name|initRepository
 argument_list|()
 expr_stmt|;
+name|Repository
+name|repo
+init|=
+name|repoView
+operator|.
+name|getRepository
+argument_list|()
+decl_stmt|;
+name|checkState
+argument_list|(
+name|repo
+operator|.
+name|getRefDatabase
+argument_list|()
+operator|.
+name|performsAtomicTransactions
+argument_list|()
+argument_list|,
+literal|"cannot use noteDb.changes.fuseUpdates=true with a repository that does not support atomic"
+operator|+
+literal|" batch ref updates: %s"
+argument_list|,
+name|repo
+argument_list|)
+expr_stmt|;
 name|ChangesHandle
 name|handle
 init|=
@@ -2067,10 +2122,7 @@ argument_list|)
 operator|.
 name|setChangeRepo
 argument_list|(
-name|repoView
-operator|.
-name|getRepository
-argument_list|()
+name|repo
 argument_list|,
 name|repoView
 operator|.
