@@ -549,9 +549,7 @@ argument_list|()
 expr_stmt|;
 name|assertError
 argument_list|(
-literal|"One of the following capabilities is required to access this"
-operator|+
-literal|" resource: [runGC, maintainServer]"
+literal|"maintain server not permitted"
 argument_list|,
 name|error
 argument_list|)

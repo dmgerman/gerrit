@@ -346,20 +346,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|util
-operator|.
-name|Providers
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -406,7 +392,7 @@ name|ConfigInfoImpl
 extends|extends
 name|ConfigInfo
 block|{
-DECL|method|ConfigInfoImpl ( boolean serverEnableSignedPush, ProjectControl control, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|ConfigInfoImpl ( boolean serverEnableSignedPush, ProjectControl control, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsName allProjects, UiActions uiActions, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|ConfigInfoImpl
 parameter_list|(
@@ -430,6 +416,9 @@ name|cfgFactory
 parameter_list|,
 name|AllProjectsName
 name|allProjects
+parameter_list|,
+name|UiActions
+name|uiActions
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -984,7 +973,7 @@ operator|.
 name|Description
 name|d
 range|:
-name|UiActions
+name|uiActions
 operator|.
 name|from
 argument_list|(
@@ -994,16 +983,6 @@ operator|new
 name|ProjectResource
 argument_list|(
 name|control
-argument_list|)
-argument_list|,
-name|Providers
-operator|.
-name|of
-argument_list|(
-name|control
-operator|.
-name|getUser
-argument_list|()
 argument_list|)
 argument_list|)
 control|)

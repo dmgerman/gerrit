@@ -300,6 +300,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -623,13 +633,13 @@ argument_list|)
 return|;
 block|}
 comment|/** Verify scoped user can {@code perm}, throwing if denied. */
-DECL|method|check (GlobalPermission perm)
+DECL|method|check (GlobalOrPluginPermission perm)
 specifier|public
 specifier|abstract
 name|void
 name|check
 parameter_list|(
-name|GlobalPermission
+name|GlobalOrPluginPermission
 name|perm
 parameter_list|)
 throws|throws
@@ -637,31 +647,107 @@ name|AuthException
 throws|,
 name|PermissionBackendException
 function_decl|;
-comment|/** Filter {@code permSet} to permissions scoped user might be able to perform. */
-DECL|method|test (Collection<GlobalPermission> permSet)
+comment|/**      * Verify scoped user can perform at least one listed permission.      *      *<p>If {@code any} is empty, the method completes normally and allows the caller to continue.      * Since no permissions were supplied to check, its assumed no permissions are necessary to      * continue with the caller's operation.      *      *<p>If the user has at least one of the permissions in {@code any}, the method completes      * normally, possibly without checking all listed permissions.      *      *<p>If {@code any} is non-empty and the user has none, {@link AuthException} is thrown for one      * of the failed permissions.      *      * @param any set of permissions to check.      */
+DECL|method|checkAny (Set<GlobalOrPluginPermission> any)
 specifier|public
-specifier|abstract
+name|void
+name|checkAny
+parameter_list|(
 name|Set
 argument_list|<
-name|GlobalPermission
+name|GlobalOrPluginPermission
+argument_list|>
+name|any
+parameter_list|)
+throws|throws
+name|PermissionBackendException
+throws|,
+name|AuthException
+block|{
+for|for
+control|(
+name|Iterator
+argument_list|<
+name|GlobalOrPluginPermission
+argument_list|>
+name|itr
+init|=
+name|any
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|itr
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+try|try
+block|{
+name|check
+argument_list|(
+name|itr
+operator|.
+name|next
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+catch|catch
+parameter_list|(
+name|AuthException
+name|err
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|itr
+operator|.
+name|hasNext
+argument_list|()
+condition|)
+block|{
+throw|throw
+name|err
+throw|;
+block|}
+block|}
+block|}
+block|}
+comment|/** Filter {@code permSet} to permissions scoped user might be able to perform. */
+DECL|method|test (Collection<T> permSet)
+specifier|public
+specifier|abstract
+parameter_list|<
+name|T
+extends|extends
+name|GlobalOrPluginPermission
+parameter_list|>
+name|Set
+argument_list|<
+name|T
 argument_list|>
 name|test
 parameter_list|(
 name|Collection
 argument_list|<
-name|GlobalPermission
+name|T
 argument_list|>
 name|permSet
 parameter_list|)
 throws|throws
 name|PermissionBackendException
 function_decl|;
-DECL|method|test (GlobalPermission perm)
+DECL|method|test (GlobalOrPluginPermission perm)
 specifier|public
 name|boolean
 name|test
 parameter_list|(
-name|GlobalPermission
+name|GlobalOrPluginPermission
 name|perm
 parameter_list|)
 throws|throws
@@ -670,9 +756,9 @@ block|{
 return|return
 name|test
 argument_list|(
-name|EnumSet
+name|Collections
 operator|.
-name|of
+name|singleton
 argument_list|(
 name|perm
 argument_list|)
@@ -684,12 +770,12 @@ name|perm
 argument_list|)
 return|;
 block|}
-DECL|method|testOrFalse (GlobalPermission perm)
+DECL|method|testOrFalse (GlobalOrPluginPermission perm)
 specifier|public
 name|boolean
 name|testOrFalse
 parameter_list|(
-name|GlobalPermission
+name|GlobalOrPluginPermission
 name|perm
 parameter_list|)
 block|{
