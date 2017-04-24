@@ -2542,11 +2542,6 @@ argument_list|(
 name|patchSetDescription
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|isPrivate
-condition|)
-block|{
 name|update
 operator|.
 name|setPrivate
@@ -2554,7 +2549,6 @@ argument_list|(
 name|isPrivate
 argument_list|)
 expr_stmt|;
-block|}
 name|boolean
 name|draft
 init|=
