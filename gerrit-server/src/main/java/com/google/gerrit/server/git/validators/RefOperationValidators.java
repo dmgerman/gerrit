@@ -536,7 +536,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|DisallowDeletionOfUserBranches
+name|DisallowCreationAndDeletionOfUserBranches
 argument_list|(
 name|allUsersName
 argument_list|)
@@ -734,11 +734,11 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|class|DisallowDeletionOfUserBranches
+DECL|class|DisallowCreationAndDeletionOfUserBranches
 specifier|private
 specifier|static
 class|class
-name|DisallowDeletionOfUserBranches
+name|DisallowCreationAndDeletionOfUserBranches
 implements|implements
 name|RefOperationValidationListener
 block|{
@@ -748,8 +748,8 @@ specifier|final
 name|AllUsersName
 name|allUsersName
 decl_stmt|;
-DECL|method|DisallowDeletionOfUserBranches (AllUsersName allUsersName)
-name|DisallowDeletionOfUserBranches
+DECL|method|DisallowCreationAndDeletionOfUserBranches (AllUsersName allUsersName)
+name|DisallowCreationAndDeletionOfUserBranches
 parameter_list|(
 name|AllUsersName
 name|allUsersName
@@ -822,7 +822,53 @@ operator|.
 name|REFS_USERS_DEFAULT
 argument_list|)
 operator|)
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
+name|refEvent
+operator|.
+name|command
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|ReceiveCommand
+operator|.
+name|Type
+operator|.
+name|CREATE
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|refEvent
+operator|.
+name|user
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAccessDatabase
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ValidationException
+argument_list|(
+literal|"Not allowed to create user branch."
+argument_list|)
+throw|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
 name|refEvent
 operator|.
 name|command
@@ -861,6 +907,7 @@ argument_list|(
 literal|"Not allowed to delete user branch."
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 return|return
