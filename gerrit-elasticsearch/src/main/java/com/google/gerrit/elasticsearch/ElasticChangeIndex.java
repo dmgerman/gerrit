@@ -1088,7 +1088,7 @@ name|changeDataFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticChangeIndex ( @erritServerConfig Config cfg, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, SitePaths sitePaths, @Assisted Schema<ChangeData> schema)
+DECL|method|ElasticChangeIndex ( @erritServerConfig Config cfg, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, SitePaths sitePaths, JestClientBuilder clientBuilder, @Assisted Schema<ChangeData> schema)
 name|ElasticChangeIndex
 parameter_list|(
 annotation|@
@@ -1113,6 +1113,9 @@ parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
+name|JestClientBuilder
+name|clientBuilder
+parameter_list|,
 annotation|@
 name|Assisted
 name|Schema
@@ -1131,6 +1134,8 @@ argument_list|,
 name|sitePaths
 argument_list|,
 name|schema
+argument_list|,
+name|clientBuilder
 argument_list|,
 name|CHANGES_PREFIX
 argument_list|)

@@ -752,7 +752,7 @@ name|accountCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticAccountIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<AccountCache> accountCache, @Assisted Schema<AccountState> schema)
+DECL|method|ElasticAccountIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<AccountCache> accountCache, JestClientBuilder clientBuilder, @Assisted Schema<AccountState> schema)
 name|ElasticAccountIndex
 parameter_list|(
 annotation|@
@@ -768,6 +768,9 @@ argument_list|<
 name|AccountCache
 argument_list|>
 name|accountCache
+parameter_list|,
+name|JestClientBuilder
+name|clientBuilder
 parameter_list|,
 annotation|@
 name|Assisted
@@ -788,6 +791,8 @@ argument_list|,
 name|sitePaths
 argument_list|,
 name|schema
+argument_list|,
+name|clientBuilder
 argument_list|,
 name|ACCOUNTS_PREFIX
 argument_list|)
