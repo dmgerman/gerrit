@@ -788,19 +788,6 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|Change
-operator|.
-name|Id
-name|id
-init|=
-name|changeResult
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
 comment|// The user needs to be able to see the draft change (which reviewers can).
 name|gApi
 operator|.
@@ -837,14 +824,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Deleting change %s is not permitted"
-argument_list|,
-name|id
-argument_list|)
+literal|"delete not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi

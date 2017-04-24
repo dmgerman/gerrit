@@ -1486,7 +1486,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"not administrator"
+literal|"administrate server not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi

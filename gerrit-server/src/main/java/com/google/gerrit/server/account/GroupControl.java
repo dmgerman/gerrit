@@ -709,7 +709,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 operator|||
 name|isOwner
@@ -781,7 +781,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 expr_stmt|;
 block|}

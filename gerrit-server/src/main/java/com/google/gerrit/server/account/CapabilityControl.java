@@ -312,7 +312,55 @@ name|server
 operator|.
 name|project
 operator|.
+name|ChangeControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|ProjectCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|RefControl
 import|;
 end_import
 
@@ -509,11 +557,11 @@ return|return
 name|user
 return|;
 block|}
-comment|/** @return true if the user can administer this server. */
-DECL|method|canAdministrateServer ()
+comment|/**    *<b>Do not use.</b> Determine if the user can administer this server.    *    *<p>This method is visible only for the benefit of the following transitional classes:    *    *<ul>    *<li>{@link ProjectControl}    *<li>{@link RefControl}    *<li>{@link ChangeControl}    *<li>{@link GroupControl}    *</ul>    *    * Other callers should not use this method, as it is slated to go away.    *    * @return true if the user can administer this server.    */
+DECL|method|isAdmin_DoNotUse ()
 specifier|public
 name|boolean
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 parameter_list|()
 block|{
 if|if
@@ -619,7 +667,7 @@ operator|.
 name|VIEW_ALL_ACCOUNTS
 argument_list|)
 operator|||
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 return|;
 block|}
@@ -1258,7 +1306,7 @@ name|permissionName
 argument_list|()
 argument_list|)
 operator|||
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 return|;
 block|}
@@ -1292,7 +1340,7 @@ case|case
 name|ADMINISTRATE_SERVER
 case|:
 return|return
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 return|;
 case|case
@@ -1340,7 +1388,7 @@ operator|.
 name|MAINTAIN_SERVER
 argument_list|)
 operator|||
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 return|;
 case|case
@@ -1376,7 +1424,7 @@ name|permissionName
 argument_list|()
 argument_list|)
 operator|||
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 return|;
 case|case

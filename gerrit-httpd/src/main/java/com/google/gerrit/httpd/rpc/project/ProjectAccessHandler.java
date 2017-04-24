@@ -412,6 +412,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|NoSuchProjectException
@@ -809,6 +825,8 @@ throws|,
 name|UpdateParentFailedException
 throws|,
 name|PermissionDeniedException
+throws|,
+name|PermissionBackendException
 block|{
 specifier|final
 name|ProjectControl
@@ -1286,6 +1304,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionDeniedException
+throws|,
+name|PermissionBackendException
 function_decl|;
 DECL|method|replace (ProjectConfig config, Set<String> toDelete, AccessSection section)
 specifier|private

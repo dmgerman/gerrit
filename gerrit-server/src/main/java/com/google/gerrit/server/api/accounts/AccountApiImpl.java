@@ -1984,6 +1984,8 @@ parameter_list|(
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2165,6 +2167,8 @@ decl||
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2218,6 +2222,8 @@ decl||
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2267,6 +2273,8 @@ decl||
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2938,6 +2946,8 @@ decl||
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{

@@ -108,6 +108,11 @@ specifier|public
 enum|enum
 name|ProjectPermission
 block|{
+comment|/**    * Can access at least one reference or change within the repository.    *    *<p>Checking this permission instead of {@link #READ} may require filtering to hide specific    * references or changes, which can be expensive.    */
+DECL|enumConstant|ACCESS
+name|ACCESS
+block|,
+comment|/**    * Can read all references in the repository.    *    *<p>This is a stronger form of {@link #ACCESS} where no filtering is required.    */
 DECL|enumConstant|READ
 name|READ
 parameter_list|(

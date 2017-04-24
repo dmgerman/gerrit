@@ -1618,7 +1618,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 comment|// site administers are god
 operator|||
@@ -1740,7 +1740,6 @@ case|case
 name|DRAFT
 case|:
 return|return
-operator|(
 name|isOwner
 argument_list|()
 operator|||
@@ -1749,7 +1748,15 @@ argument_list|()
 operator|.
 name|canDeleteDrafts
 argument_list|()
-operator|)
+operator|||
+name|getUser
+argument_list|()
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|isAdmin_DoNotUse
+argument_list|()
 return|;
 case|case
 name|NEW
@@ -1758,10 +1765,6 @@ case|case
 name|ABANDONED
 case|:
 return|return
-operator|(
-name|isAdmin
-argument_list|()
-operator|||
 operator|(
 name|isOwner
 argument_list|()
@@ -1772,7 +1775,15 @@ operator|.
 name|canDeleteOwnChanges
 argument_list|()
 operator|)
-operator|)
+operator|||
+name|getUser
+argument_list|()
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|isAdmin_DoNotUse
+argument_list|()
 return|;
 case|case
 name|MERGED
@@ -2377,23 +2388,6 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|isAdmin ()
-specifier|public
-name|boolean
-name|isAdmin
-parameter_list|()
-block|{
-return|return
-name|getUser
-argument_list|()
-operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|canAdministrateServer
-argument_list|()
-return|;
-block|}
 comment|/** @return true if the user is allowed to remove this reviewer. */
 DECL|method|canRemoveReviewer (PatchSetApproval approval)
 specifier|public
@@ -2523,7 +2517,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 condition|)
 block|{
@@ -2580,7 +2574,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 comment|// site administers are god
 operator|||
@@ -2644,7 +2638,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 comment|// site administers are god
 return|;
@@ -2711,7 +2705,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 comment|// site administers are god
 operator|||

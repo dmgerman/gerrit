@@ -1093,7 +1093,6 @@ return|;
 block|}
 comment|/** @return true if this user can add a new patch set to this ref */
 DECL|method|canAddPatchSet ()
-specifier|public
 name|boolean
 name|canAddPatchSet
 parameter_list|()
@@ -1151,7 +1150,6 @@ return|;
 block|}
 comment|/** @return true if this user can rebase changes on this ref */
 DECL|method|canRebase ()
-specifier|public
 name|boolean
 name|canRebase
 parameter_list|()
@@ -1218,7 +1216,7 @@ return|;
 block|}
 comment|/** @return true if the user can update the reference as a fast-forward. */
 DECL|method|canUpdate ()
-specifier|public
+specifier|private
 name|boolean
 name|canUpdate
 parameter_list|()
@@ -1267,7 +1265,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 operator|)
 condition|)
@@ -1291,7 +1289,7 @@ return|;
 block|}
 comment|/** @return true if the user can rewind (force push) the reference. */
 DECL|method|canForceUpdate ()
-specifier|public
+specifier|private
 name|boolean
 name|canForceUpdate
 parameter_list|()
@@ -1355,7 +1353,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 operator|||
 operator|(
@@ -2020,7 +2018,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|isAdmin_DoNotUse
 argument_list|()
 operator|||
 operator|(
@@ -2152,7 +2150,6 @@ return|;
 block|}
 comment|/** @return true if this user can view draft changes. */
 DECL|method|canViewDrafts ()
-specifier|public
 name|boolean
 name|canViewDrafts
 parameter_list|()
@@ -2184,7 +2181,6 @@ return|;
 block|}
 comment|/** @return true if this user can publish draft changes. */
 DECL|method|canPublishDrafts ()
-specifier|public
 name|boolean
 name|canPublishDrafts
 parameter_list|()
@@ -2200,7 +2196,6 @@ return|;
 block|}
 comment|/** @return true if this user can delete draft changes. */
 DECL|method|canDeleteDrafts ()
-specifier|public
 name|boolean
 name|canDeleteDrafts
 parameter_list|()
@@ -2216,7 +2211,6 @@ return|;
 block|}
 comment|/** @return true if this user can delete their own changes. */
 DECL|method|canDeleteOwnChanges ()
-specifier|public
 name|boolean
 name|canDeleteOwnChanges
 parameter_list|()
@@ -2276,7 +2270,6 @@ return|;
 block|}
 comment|/** @return true if this user can force edit topic names. */
 DECL|method|canForceEditTopicName ()
-specifier|public
 name|boolean
 name|canForceEditTopicName
 parameter_list|()
@@ -2292,7 +2285,6 @@ return|;
 block|}
 comment|/** All value ranges of any allowed label permission. */
 DECL|method|getLabelRanges (boolean isChangeOwner)
-specifier|public
 name|List
 argument_list|<
 name|PermissionRange
@@ -2449,7 +2441,6 @@ return|;
 block|}
 comment|/** The range of permitted values associated with a label permission. */
 DECL|method|getRange (String permission)
-specifier|public
 name|PermissionRange
 name|getRange
 parameter_list|(
@@ -2468,7 +2459,6 @@ return|;
 block|}
 comment|/** The range of permitted values associated with a label permission. */
 DECL|method|getRange (String permission, boolean isChangeOwner)
-specifier|public
 name|PermissionRange
 name|getRange
 parameter_list|(
