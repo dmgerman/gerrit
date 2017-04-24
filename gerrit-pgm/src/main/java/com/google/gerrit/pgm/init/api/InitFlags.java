@@ -220,6 +220,12 @@ specifier|public
 name|boolean
 name|deleteOnFailure
 decl_stmt|;
+comment|/** Site is being newly created */
+DECL|field|isNew
+specifier|public
+name|boolean
+name|isNew
+decl_stmt|;
 comment|/** Run the daemon (and open the web UI in a browser) after initialization. */
 DECL|field|autoStart
 specifier|public

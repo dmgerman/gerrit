@@ -68,6 +68,7 @@ end_package
 
 begin_enum
 DECL|enum|NoteDbTable
+specifier|public
 enum|enum
 name|NoteDbTable
 block|{
@@ -78,6 +79,7 @@ DECL|enumConstant|CHANGES
 name|CHANGES
 block|;
 DECL|method|key ()
+specifier|public
 name|String
 name|key
 parameter_list|()

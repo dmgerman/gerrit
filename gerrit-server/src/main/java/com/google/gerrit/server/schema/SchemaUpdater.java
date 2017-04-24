@@ -466,9 +466,11 @@ name|updater
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaUpdater ( SchemaFactory<ReviewDb> schema, SitePaths site, SchemaCreator creator, Injector parent)
+DECL|method|SchemaUpdater ( @eviewDbFactory SchemaFactory<ReviewDb> schema, SitePaths site, SchemaCreator creator, Injector parent)
 name|SchemaUpdater
 parameter_list|(
+annotation|@
+name|ReviewDbFactory
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
