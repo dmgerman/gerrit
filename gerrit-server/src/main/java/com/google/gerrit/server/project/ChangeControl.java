@@ -2189,7 +2189,7 @@ return|;
 block|}
 comment|/** Is this user the owner of the change? */
 DECL|method|isOwner ()
-specifier|public
+specifier|private
 name|boolean
 name|isOwner
 parameter_list|()
