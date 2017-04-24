@@ -3121,7 +3121,7 @@ block|,
 DECL|enumConstant|CODE_REVIEW
 name|CODE_REVIEW
 argument_list|(
-literal|"You need 'Push' rights to upload code review requests.\n"
+literal|"You need 'Create Review' rights to upload code review requests.\n"
 operator|+
 literal|"Verify that you are pushing to the right branch."
 argument_list|)
