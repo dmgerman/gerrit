@@ -2989,11 +2989,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|notesMigration
-operator|.
-name|setFromEnv
-argument_list|()
-expr_stmt|;
 name|Transport
 operator|.
 name|register
@@ -3928,6 +3923,11 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|notesMigration
+operator|.
+name|resetFromEnv
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|commitBuilder ()
 specifier|protected

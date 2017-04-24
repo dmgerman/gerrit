@@ -178,7 +178,11 @@ DECL|method|TestNotesMigration ()
 specifier|public
 name|TestNotesMigration
 parameter_list|()
-block|{}
+block|{
+name|resetFromEnv
+argument_list|()
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|readChanges ()
@@ -374,10 +378,10 @@ name|enabled
 argument_list|)
 return|;
 block|}
-DECL|method|setFromEnv ()
+DECL|method|resetFromEnv ()
 specifier|public
 name|TestNotesMigration
-name|setFromEnv
+name|resetFromEnv
 parameter_list|()
 block|{
 switch|switch
