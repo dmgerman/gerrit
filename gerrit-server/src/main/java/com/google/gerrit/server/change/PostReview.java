@@ -3055,9 +3055,6 @@ argument_list|(
 name|addition
 operator|.
 name|reviewers
-operator|.
-name|keySet
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|toByEmail
@@ -3089,9 +3086,6 @@ argument_list|(
 name|addition
 operator|.
 name|reviewers
-operator|.
-name|keySet
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ccByEmail

@@ -294,24 +294,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -516,22 +498,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|update
 operator|.
 name|BatchUpdateOp
@@ -668,7 +634,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|Set
 import|;
 end_import
 
@@ -721,20 +687,18 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ChangeResource rsrc, Map<Account.Id, ChangeControl> reviewers, Collection<Address> reviewersByEmail, ReviewerState state, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|create ( ChangeResource rsrc, Set<Account.Id> reviewers, Collection<Address> reviewersByEmail, ReviewerState state, @Nullable NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|PostReviewersOp
 name|create
 parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|Map
+name|Set
 argument_list|<
 name|Account
 operator|.
 name|Id
-argument_list|,
-name|ChangeControl
 argument_list|>
 name|reviewers
 parameter_list|,
@@ -918,11 +882,11 @@ decl_stmt|;
 DECL|field|reviewers
 specifier|private
 specifier|final
-name|Map
+name|Set
 argument_list|<
+name|Account
+operator|.
 name|Id
-argument_list|,
-name|ChangeControl
 argument_list|>
 name|reviewers
 decl_stmt|;
@@ -954,6 +918,8 @@ name|ListMultimap
 argument_list|<
 name|RecipientType
 argument_list|,
+name|Account
+operator|.
 name|Id
 argument_list|>
 name|accountsToNotify
@@ -1011,7 +977,7 @@ name|opResult
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, AddReviewerSender.Factory addReviewerSenderFactory, NotesMigration migration, Provider<IdentifiedUser> user, Provider<ReviewDb> dbProvider, @Assisted ChangeResource rsrc, @Assisted Map<Account.Id, ChangeControl> reviewers, @Assisted Collection<Address> reviewersByEmail, @Assisted ReviewerState state, @Assisted @Nullable NotifyHandling notify, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|PostReviewersOp ( ApprovalsUtil approvalsUtil, PatchSetUtil psUtil, ReviewerAdded reviewerAdded, AccountCache accountCache, AddReviewerSender.Factory addReviewerSenderFactory, NotesMigration migration, Provider<IdentifiedUser> user, Provider<ReviewDb> dbProvider, @Assisted ChangeResource rsrc, @Assisted Set<Account.Id> reviewers, @Assisted Collection<Address> reviewersByEmail, @Assisted ReviewerState state, @Assisted @Nullable NotifyHandling notify, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify)
 name|PostReviewersOp
 parameter_list|(
 name|ApprovalsUtil
@@ -1053,13 +1019,11 @@ name|rsrc
 parameter_list|,
 annotation|@
 name|Assisted
-name|Map
+name|Set
 argument_list|<
 name|Account
 operator|.
 name|Id
-argument_list|,
-name|ChangeControl
 argument_list|>
 name|reviewers
 parameter_list|,
@@ -1244,9 +1208,6 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|reviewers
-operator|.
-name|keySet
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -1307,9 +1268,6 @@ name|getChange
 argument_list|()
 argument_list|,
 name|reviewers
-operator|.
-name|keySet
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if

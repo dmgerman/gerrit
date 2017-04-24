@@ -1439,18 +1439,6 @@ literal|false
 return|;
 block|}
 return|return
-name|isRefVisible
-argument_list|()
-return|;
-block|}
-comment|/** Can the user see this change? Does not account for draft status */
-DECL|method|isRefVisible ()
-specifier|public
-name|boolean
-name|isRefVisible
-parameter_list|()
-block|{
-return|return
 name|getRefControl
 argument_list|()
 operator|.
@@ -2201,7 +2189,7 @@ return|;
 block|}
 comment|/** Is this user the owner of the change? */
 DECL|method|isOwner ()
-specifier|public
+specifier|private
 name|boolean
 name|isOwner
 parameter_list|()
@@ -2248,7 +2236,7 @@ return|;
 block|}
 comment|/** Is this user assigned to this change? */
 DECL|method|isAssignee ()
-specifier|public
+specifier|private
 name|boolean
 name|isAssignee
 parameter_list|()
@@ -2304,29 +2292,8 @@ literal|false
 return|;
 block|}
 comment|/** Is this user a reviewer for the change? */
-DECL|method|isReviewer (ReviewDb db)
-specifier|public
-name|boolean
-name|isReviewer
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|isReviewer
-argument_list|(
-name|db
-argument_list|,
-literal|null
-argument_list|)
-return|;
-block|}
-comment|/** Is this user a reviewer for the change? */
 DECL|method|isReviewer (ReviewDb db, @Nullable ChangeData cd)
-specifier|public
+specifier|private
 name|boolean
 name|isReviewer
 parameter_list|(
@@ -2816,7 +2783,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|isPrivateVisible (ReviewDb db, ChangeData cd)
-specifier|public
+specifier|private
 name|boolean
 name|isPrivateVisible
 parameter_list|(
