@@ -275,14 +275,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|suggest (String prefix, int limit, AsyncCallback<ProjectMap> cb)
+DECL|method|suggest (String match, int limit, AsyncCallback<ProjectMap> cb)
 specifier|public
 specifier|static
 name|void
 name|suggest
 parameter_list|(
 name|String
-name|prefix
+name|match
 parameter_list|,
 name|int
 name|limit
@@ -302,9 +302,9 @@ argument_list|)
 operator|.
 name|addParameter
 argument_list|(
-literal|"p"
+literal|"m"
 argument_list|,
-name|prefix
+name|match
 argument_list|)
 operator|.
 name|addParameter
