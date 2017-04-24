@@ -718,7 +718,7 @@ name|groupCache
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, @Assisted Schema<AccountGroup> schema)
+DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, JestClientBuilder clientBuilder, @Assisted Schema<AccountGroup> schema)
 name|ElasticGroupIndex
 parameter_list|(
 annotation|@
@@ -734,6 +734,9 @@ argument_list|<
 name|GroupCache
 argument_list|>
 name|groupCache
+parameter_list|,
+name|JestClientBuilder
+name|clientBuilder
 parameter_list|,
 annotation|@
 name|Assisted
@@ -754,6 +757,8 @@ argument_list|,
 name|sitePaths
 argument_list|,
 name|schema
+argument_list|,
+name|clientBuilder
 argument_list|,
 name|GROUPS_PREFIX
 argument_list|)
