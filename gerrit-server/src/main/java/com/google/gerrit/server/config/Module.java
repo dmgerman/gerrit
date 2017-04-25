@@ -324,7 +324,7 @@ name|post
 argument_list|(
 name|CONFIG_KIND
 argument_list|,
-literal|"check"
+literal|"check.consistency"
 argument_list|)
 operator|.
 name|to
