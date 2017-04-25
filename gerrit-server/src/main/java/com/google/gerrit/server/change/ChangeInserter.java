@@ -1302,11 +1302,6 @@ specifier|private
 name|RequestScopePropagator
 name|requestScopePropagator
 decl_stmt|;
-DECL|field|updateRefCommand
-specifier|private
-name|ReceiveCommand
-name|updateRefCommand
-decl_stmt|;
 DECL|field|fireRevisionCreated
 specifier|private
 name|boolean
@@ -1552,12 +1547,6 @@ name|Collections
 operator|.
 name|emptyMap
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|updateRefCommand
-operator|=
-literal|null
 expr_stmt|;
 name|this
 operator|.
@@ -2254,20 +2243,6 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setUpdateRefCommand (ReceiveCommand cmd)
-specifier|public
-name|void
-name|setUpdateRefCommand
-parameter_list|(
-name|ReceiveCommand
-name|cmd
-parameter_list|)
-block|{
-name|updateRefCommand
-operator|=
-name|cmd
-expr_stmt|;
-block|}
 DECL|method|setPushCertificate (String cert)
 specifier|public
 name|void
@@ -2402,13 +2377,6 @@ condition|)
 block|{
 return|return;
 block|}
-if|if
-condition|(
-name|updateRefCommand
-operator|==
-literal|null
-condition|)
-block|{
 name|ctx
 operator|.
 name|addRefUpdate
@@ -2426,17 +2394,6 @@ name|toRefName
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|ctx
-operator|.
-name|addRefUpdate
-argument_list|(
-name|updateRefCommand
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override
