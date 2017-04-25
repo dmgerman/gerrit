@@ -69,7 +69,7 @@ package|;
 end_package
 
 begin_comment
-comment|/** A {@link GlobalPermission} or a {@link PluginPermission}. */
+comment|/**  * A {@link com.google.gerrit.server.permissions.GlobalPermission} or a {@link PluginPermission}.  */
 end_comment
 
 begin_interface
