@@ -1289,7 +1289,7 @@ name|prepareStatement
 argument_list|(
 literal|"DELETE FROM ACCOUNT_PATCH_REVIEWS "
 operator|+
-literal|"WHERE ACCOUNT_ID = ? AND CHANGE_ID + ? AND "
+literal|"WHERE ACCOUNT_ID = ? AND CHANGE_ID = ? AND "
 operator|+
 literal|"PATCH_SET_ID = ? AND FILE_NAME = ?"
 argument_list|)
@@ -1399,7 +1399,7 @@ name|prepareStatement
 argument_list|(
 literal|"DELETE FROM ACCOUNT_PATCH_REVIEWS "
 operator|+
-literal|"WHERE CHANGE_ID + ? AND PATCH_SET_ID = ?"
+literal|"WHERE CHANGE_ID = ? AND PATCH_SET_ID = ?"
 argument_list|)
 init|)
 block|{
