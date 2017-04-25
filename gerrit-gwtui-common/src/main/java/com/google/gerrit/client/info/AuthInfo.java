@@ -505,10 +505,17 @@ block|{
 return|return
 name|gitBasicAuthPolicy
 argument_list|()
-operator|!=
+operator|==
 name|GitBasicAuthPolicy
 operator|.
-name|LDAP
+name|HTTP
+operator|||
+name|gitBasicAuthPolicy
+argument_list|()
+operator|==
+name|GitBasicAuthPolicy
+operator|.
+name|HTTP_LDAP
 return|;
 block|}
 DECL|method|gitBasicAuthPolicy ()
