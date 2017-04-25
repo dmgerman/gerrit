@@ -880,7 +880,7 @@ literal|"change_id INTEGER DEFAULT 0 NOT NULL, "
 operator|+
 literal|"patch_set_id INTEGER DEFAULT 0 NOT NULL, "
 operator|+
-literal|"file_name VARCHAR(255) DEFAULT '' NOT NULL, "
+literal|"file_name VARCHAR(4096) DEFAULT '' NOT NULL, "
 operator|+
 literal|"CONSTRAINT primary_key_account_patch_reviews "
 operator|+
