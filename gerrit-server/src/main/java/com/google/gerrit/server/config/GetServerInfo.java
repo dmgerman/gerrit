@@ -1712,7 +1712,7 @@ literal|null
 argument_list|,
 literal|"updateDelay"
 argument_list|,
-literal|30
+literal|300
 argument_list|,
 name|TimeUnit
 operator|.
