@@ -134,6 +134,24 @@ name|api
 operator|.
 name|changes
 operator|.
+name|AddReviewerResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
 name|AssigneeInput
 import|;
 end_import
@@ -2770,7 +2788,7 @@ annotation|@
 name|Override
 DECL|method|addReviewer (String reviewer)
 specifier|public
-name|void
+name|AddReviewerResult
 name|addReviewer
 parameter_list|(
 name|String
@@ -2792,17 +2810,18 @@ name|reviewer
 operator|=
 name|reviewer
 expr_stmt|;
+return|return
 name|addReviewer
 argument_list|(
 name|in
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 annotation|@
 name|Override
 DECL|method|addReviewer (AddReviewerInput in)
 specifier|public
-name|void
+name|AddReviewerResult
 name|addReviewer
 parameter_list|(
 name|AddReviewerInput
@@ -2813,6 +2832,7 @@ name|RestApiException
 block|{
 try|try
 block|{
+return|return
 name|postReviewers
 operator|.
 name|apply
@@ -2821,7 +2841,7 @@ name|change
 argument_list|,
 name|in
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(

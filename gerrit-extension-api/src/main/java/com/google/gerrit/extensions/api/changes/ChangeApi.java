@@ -516,7 +516,7 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|addReviewer (AddReviewerInput in)
-name|void
+name|AddReviewerResult
 name|addReviewer
 parameter_list|(
 name|AddReviewerInput
@@ -526,7 +526,7 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|addReviewer (String in)
-name|void
+name|AddReviewerResult
 name|addReviewer
 parameter_list|(
 name|String
@@ -1155,7 +1155,7 @@ annotation|@
 name|Override
 DECL|method|addReviewer (AddReviewerInput in)
 specifier|public
-name|void
+name|AddReviewerResult
 name|addReviewer
 parameter_list|(
 name|AddReviewerInput
@@ -1172,7 +1172,7 @@ annotation|@
 name|Override
 DECL|method|addReviewer (String in)
 specifier|public
-name|void
+name|AddReviewerResult
 name|addReviewer
 parameter_list|(
 name|String
