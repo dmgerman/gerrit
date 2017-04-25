@@ -72,6 +72,34 @@ name|com
 operator|.
 name|google
 operator|.
+name|auto
+operator|.
+name|value
+operator|.
+name|AutoValue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -122,6 +150,16 @@ name|Collection
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * Store for reviewed flags on changes.  *  *<p>A reviewed flag is a tuple of (patch set ID, file, account ID) and records whether the user  * has reviewed a file in a patch set. Each user can easily have thousands of reviewed flags and the  * number of reviewed flags is growing without bound. The store must be able handle this data volume  * efficiently.  *  *<p>For a multi-master setup the store must replicate the data between the masters.  */
 end_comment
@@ -132,6 +170,60 @@ specifier|public
 interface|interface
 name|AccountPatchReviewStore
 block|{
+comment|/** Represents patch set id with reviewed files. */
+annotation|@
+name|AutoValue
+DECL|class|PatchSetWithReviewedFiles
+specifier|abstract
+class|class
+name|PatchSetWithReviewedFiles
+block|{
+DECL|method|patchSetId ()
+specifier|abstract
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|()
+function_decl|;
+DECL|method|files ()
+specifier|abstract
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|files
+parameter_list|()
+function_decl|;
+DECL|method|create (PatchSet.Id id, ImmutableSet<String> files)
+specifier|public
+specifier|static
+name|PatchSetWithReviewedFiles
+name|create
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|files
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AutoValue_AccountPatchReviewStore_PatchSetWithReviewedFiles
+argument_list|(
+name|id
+argument_list|,
+name|files
+argument_list|)
+return|;
+block|}
+block|}
 comment|/**    * Marks the given file in the given patch set as reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @param path file path    * @return {@code true} if the reviewed flag was updated, {@code false} if the reviewed flag was    *     already set    * @throws OrmException thrown if updating the reviewed flag failed    */
 DECL|method|markReviewed (PatchSet.Id psId, Account.Id accountId, String path)
 name|boolean
@@ -211,11 +303,11 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Returns the paths of all files in the given patch set the have been reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @return the paths of all files in the given patch set the have been reviewed by the given user    * @throws OrmException thrown if accessing the reviewed flags failed    */
+comment|/**    * Find the latest patch set, that is smaller or equals to the given patch set, where at least,    * one file has been reviewed by the given user.    *    * @param psId patch set ID    * @param accountId account ID of the user    * @return optionally, all files the have been reviewed by the given user that belong to the patch    *     set that is smaller or equals to the given patch set    * @throws OrmException thrown if accessing the reviewed flags failed    */
 DECL|method|findReviewed (PatchSet.Id psId, Account.Id accountId)
-name|Collection
+name|Optional
 argument_list|<
-name|String
+name|PatchSetWithReviewedFiles
 argument_list|>
 name|findReviewed
 parameter_list|(
