@@ -88,6 +88,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|primitives
 operator|.
 name|Ints
@@ -338,16 +352,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collection
 import|;
 end_import
@@ -358,7 +362,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Optional
 import|;
 end_import
 
@@ -864,19 +868,19 @@ name|stmt
 operator|.
 name|executeUpdate
 argument_list|(
-literal|"CREATE TABLE IF NOT EXISTS ACCOUNT_PATCH_REVIEWS ("
+literal|"CREATE TABLE IF NOT EXISTS account_patch_reviews ("
 operator|+
-literal|"ACCOUNT_ID INTEGER DEFAULT 0 NOT NULL, "
+literal|"account_id INTEGER DEFAULT 0 NOT NULL, "
 operator|+
-literal|"CHANGE_ID INTEGER DEFAULT 0 NOT NULL, "
+literal|"change_id INTEGER DEFAULT 0 NOT NULL, "
 operator|+
-literal|"PATCH_SET_ID INTEGER DEFAULT 0 NOT NULL, "
+literal|"patch_set_id INTEGER DEFAULT 0 NOT NULL, "
 operator|+
-literal|"FILE_NAME VARCHAR(255) DEFAULT '' NOT NULL, "
+literal|"file_name VARCHAR(4096) DEFAULT '' NOT NULL, "
 operator|+
-literal|"CONSTRAINT PRIMARY_KEY_ACCOUNT_PATCH_REVIEWS "
+literal|"CONSTRAINT primary_key_account_patch_reviews "
 operator|+
-literal|"PRIMARY KEY (ACCOUNT_ID, CHANGE_ID, PATCH_SET_ID, FILE_NAME)"
+literal|"PRIMARY KEY (account_id, change_id, patch_set_id, file_name)"
 operator|+
 literal|")"
 argument_list|)
@@ -919,7 +923,7 @@ name|stmt
 operator|.
 name|executeUpdate
 argument_list|(
-literal|"DROP TABLE IF EXISTS ACCOUNT_PATCH_REVIEWS"
+literal|"DROP TABLE IF EXISTS account_patch_reviews"
 argument_list|)
 expr_stmt|;
 block|}
@@ -987,9 +991,9 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"INSERT INTO ACCOUNT_PATCH_REVIEWS "
+literal|"INSERT INTO account_patch_reviews "
 operator|+
-literal|"(ACCOUNT_ID, CHANGE_ID, PATCH_SET_ID, FILE_NAME) VALUES "
+literal|"(account_id, change_id, patch_set_id, file_name) VALUES "
 operator|+
 literal|"(?, ?, ?, ?)"
 argument_list|)
@@ -1141,9 +1145,9 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"INSERT INTO ACCOUNT_PATCH_REVIEWS "
+literal|"INSERT INTO account_patch_reviews "
 operator|+
-literal|"(ACCOUNT_ID, CHANGE_ID, PATCH_SET_ID, FILE_NAME) VALUES "
+literal|"(account_id, change_id, patch_set_id, file_name) VALUES "
 operator|+
 literal|"(?, ?, ?, ?)"
 argument_list|)
@@ -1287,11 +1291,11 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"DELETE FROM ACCOUNT_PATCH_REVIEWS "
+literal|"DELETE FROM account_patch_reviews "
 operator|+
-literal|"WHERE ACCOUNT_ID = ? AND CHANGE_ID + ? AND "
+literal|"WHERE account_id = ? AND change_id = ? AND "
 operator|+
-literal|"PATCH_SET_ID = ? AND FILE_NAME = ?"
+literal|"patch_set_id = ? AND file_name = ?"
 argument_list|)
 init|)
 block|{
@@ -1397,9 +1401,9 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"DELETE FROM ACCOUNT_PATCH_REVIEWS "
+literal|"DELETE FROM account_patch_reviews "
 operator|+
-literal|"WHERE CHANGE_ID + ? AND PATCH_SET_ID = ?"
+literal|"WHERE change_id = ? AND patch_set_id = ?"
 argument_list|)
 init|)
 block|{
@@ -1456,9 +1460,9 @@ annotation|@
 name|Override
 DECL|method|findReviewed (PatchSet.Id psId, Account.Id accountId)
 specifier|public
-name|Collection
+name|Optional
 argument_list|<
-name|String
+name|PatchSetWithReviewedFiles
 argument_list|>
 name|findReviewed
 parameter_list|(
@@ -1492,9 +1496,17 @@ name|con
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"SELECT FILE_NAME FROM ACCOUNT_PATCH_REVIEWS "
+literal|"SELECT patch_set_id, file_name FROM account_patch_reviews APR1 "
 operator|+
-literal|"WHERE ACCOUNT_ID = ? AND CHANGE_ID = ? AND PATCH_SET_ID = ?"
+literal|"WHERE account_id = ? AND change_id = ? AND patch_set_id = "
+operator|+
+literal|"(SELECT MAX(patch_set_id) FROM account_patch_reviews APR2 WHERE "
+operator|+
+literal|"APR1.account_id = APR2.account_id "
+operator|+
+literal|"AND APR1.change_id = APR2.change_id "
+operator|+
+literal|"AND patch_set_id<= ?)"
 argument_list|)
 init|)
 block|{
@@ -1548,18 +1560,7 @@ name|executeQuery
 argument_list|()
 init|)
 block|{
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|files
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-while|while
+if|if
 condition|(
 name|rs
 operator|.
@@ -1567,7 +1568,45 @@ name|next
 argument_list|()
 condition|)
 block|{
-name|files
+name|PatchSet
+operator|.
+name|Id
+name|id
+init|=
+operator|new
+name|PatchSet
+operator|.
+name|Id
+argument_list|(
+name|psId
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|,
+name|rs
+operator|.
+name|getInt
+argument_list|(
+literal|"PATCH_SET_ID"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|ImmutableSet
+operator|.
+name|Builder
+argument_list|<
+name|String
+argument_list|>
+name|builder
+init|=
+name|ImmutableSet
+operator|.
+name|builder
+argument_list|()
+decl_stmt|;
+do|do
+block|{
+name|builder
 operator|.
 name|add
 argument_list|(
@@ -1580,8 +1619,40 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+do|while
+condition|(
+name|rs
+operator|.
+name|next
+argument_list|()
+condition|)
+do|;
 return|return
-name|files
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|AccountPatchReviewStore
+operator|.
+name|PatchSetWithReviewedFiles
+operator|.
+name|create
+argument_list|(
+name|id
+argument_list|,
+name|builder
+operator|.
+name|build
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
@@ -1634,7 +1705,7 @@ return|return
 operator|new
 name|OrmDuplicateKeyException
 argument_list|(
-literal|"ACCOUNT_PATCH_REVIEWS"
+literal|"account_patch_reviews"
 argument_list|,
 name|err
 argument_list|)
@@ -1674,7 +1745,7 @@ name|OrmException
 argument_list|(
 name|op
 operator|+
-literal|" failure on ACCOUNT_PATCH_REVIEWS"
+literal|" failure on account_patch_reviews"
 argument_list|,
 name|err
 argument_list|)
