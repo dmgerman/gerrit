@@ -149,6 +149,13 @@ argument_list|(
 literal|true
 argument_list|)
 block|,
+comment|/** All change tables are entirely disabled, and code/meta ref updates are fused. */
+DECL|enumConstant|FUSED
+name|FUSED
+argument_list|(
+literal|true
+argument_list|)
+block|,
 comment|/**    * Run tests with NoteDb disabled, then convert ReviewDb to NoteDb and check that the results    * match.    */
 DECL|enumConstant|CHECK
 name|CHECK

@@ -252,9 +252,6 @@ operator|=
 operator|new
 name|TestNotesMigration
 argument_list|()
-operator|.
-name|setFromEnv
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|afterTest ()
@@ -262,7 +259,13 @@ specifier|public
 name|void
 name|afterTest
 parameter_list|()
-block|{}
+block|{
+name|notesMigration
+operator|.
+name|resetFromEnv
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

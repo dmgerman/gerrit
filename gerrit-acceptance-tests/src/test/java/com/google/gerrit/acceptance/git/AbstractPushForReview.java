@@ -5791,6 +5791,32 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|notesMigration
+operator|.
+name|fuseUpdates
+argument_list|()
+condition|)
+block|{
+comment|// InMemoryRepository's atomic BatchRefUpdate implementation doesn't update the progress
+comment|// monitor. That's fine, we just care that there was at least one new change and no errors.
+name|assertThat
+argument_list|(
+name|pr
+operator|.
+name|getMessages
+argument_list|()
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"changes: new: 1, done"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|assertThat
 argument_list|(
 name|pr
@@ -5804,6 +5830,7 @@ argument_list|(
 literal|"changes: new: 1, refs: 1, done"
 argument_list|)
 expr_stmt|;
+block|}
 name|assertTwoChangesWithSameRevision
 argument_list|(
 name|r
