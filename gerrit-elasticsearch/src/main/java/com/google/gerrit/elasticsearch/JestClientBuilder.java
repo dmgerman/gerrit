@@ -365,11 +365,12 @@ name|multiThreaded
 argument_list|(
 literal|true
 argument_list|)
+comment|// Temporary disable servers discovery.
+comment|// We can enable it again when we can wait for it to finish
 operator|.
 name|discoveryEnabled
 argument_list|(
-operator|!
-name|refresh
+literal|false
 argument_list|)
 operator|.
 name|discoveryFrequency
