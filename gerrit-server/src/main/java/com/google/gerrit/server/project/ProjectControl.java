@@ -3498,7 +3498,6 @@ case|case
 name|READ
 case|:
 return|return
-operator|(
 operator|!
 name|isHidden
 argument_list|()
@@ -3510,10 +3509,6 @@ operator|.
 name|emptySet
 argument_list|()
 argument_list|)
-operator|)
-operator|||
-name|isOwner
-argument_list|()
 return|;
 block|}
 throw|throw
