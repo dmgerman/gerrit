@@ -1149,9 +1149,15 @@ operator|.
 name|Factory
 name|postReviewersOpFactory
 decl_stmt|;
+DECL|field|validator
+specifier|private
+specifier|final
+name|OutgoingEmailValidator
+name|validator
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewers ( AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, PermissionBackend permissionBackend, GroupsCollection groupsCollection, GroupMembers.Factory groupMembersFactory, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, BatchUpdate.Factory batchUpdateFactory, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, PostReviewersOp.Factory postReviewersOpFactory)
+DECL|method|PostReviewers ( AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, PermissionBackend permissionBackend, GroupsCollection groupsCollection, GroupMembers.Factory groupMembersFactory, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, BatchUpdate.Factory batchUpdateFactory, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ReviewerJson json, NotesMigration migration, NotifyUtil notifyUtil, ProjectCache projectCache, Provider<AnonymousUser> anonymousProvider, PostReviewersOp.Factory postReviewersOpFactory, OutgoingEmailValidator validator)
 name|PostReviewers
 parameter_list|(
 name|AccountsCollection
@@ -1226,6 +1232,9 @@ name|PostReviewersOp
 operator|.
 name|Factory
 name|postReviewersOpFactory
+parameter_list|,
+name|OutgoingEmailValidator
+name|validator
 parameter_list|)
 block|{
 name|this
@@ -1329,6 +1338,12 @@ operator|.
 name|postReviewersOpFactory
 operator|=
 name|postReviewersOpFactory
+expr_stmt|;
+name|this
+operator|.
+name|validator
+operator|=
+name|validator
 expr_stmt|;
 block|}
 annotation|@
@@ -2160,7 +2175,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|OutgoingEmailValidator
+name|validator
 operator|.
 name|isValid
 argument_list|(

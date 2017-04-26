@@ -426,9 +426,15 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|validator
+specifier|private
+specifier|final
+name|OutgoingEmailValidator
+name|validator
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExternalIdsConsistencyChecker ( GitRepositoryManager repoManager, AllUsersName allUsers, AccountCache accountCache)
+DECL|method|ExternalIdsConsistencyChecker ( GitRepositoryManager repoManager, AllUsersName allUsers, AccountCache accountCache, OutgoingEmailValidator validator)
 name|ExternalIdsConsistencyChecker
 parameter_list|(
 name|GitRepositoryManager
@@ -439,6 +445,9 @@ name|allUsers
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|OutgoingEmailValidator
+name|validator
 parameter_list|)
 block|{
 name|this
@@ -458,6 +467,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|validator
+operator|=
+name|validator
 expr_stmt|;
 block|}
 DECL|method|check ()
@@ -883,7 +898,7 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-name|OutgoingEmailValidator
+name|validator
 operator|.
 name|isValid
 argument_list|(

@@ -3702,9 +3702,6 @@ argument_list|(
 literal|"new.email@example.com"
 argument_list|,
 literal|"new.email@example.systems"
-argument_list|,
-comment|// Not in the list of TLDs but added to override in OutgoingEmailValidator
-literal|"new.email@example.local"
 argument_list|)
 decl_stmt|;
 name|Set
