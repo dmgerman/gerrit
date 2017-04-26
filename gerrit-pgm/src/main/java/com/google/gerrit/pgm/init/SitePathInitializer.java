@@ -776,7 +776,7 @@ name|extract
 argument_list|(
 name|site
 operator|.
-name|gerrit_service
+name|gerrit_socket
 argument_list|,
 name|getClass
 argument_list|()
