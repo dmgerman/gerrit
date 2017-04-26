@@ -377,17 +377,6 @@ name|sourceUrl
 argument_list|)
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"source Url (custom): "
-operator|+
-name|sourceUrl
-argument_list|)
-expr_stmt|;
 name|fakeCfg
 operator|.
 name|setString
