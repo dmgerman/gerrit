@@ -986,6 +986,8 @@ name|canSubmit
 argument_list|(
 name|isOwner
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 operator|||
 name|refControl
@@ -2191,6 +2193,8 @@ name|canSubmit
 argument_list|(
 name|isOwner
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 return|;
 case|case

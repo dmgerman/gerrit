@@ -647,12 +647,15 @@ argument_list|)
 return|;
 block|}
 comment|/** @return true if this user can submit patch sets to this ref */
-DECL|method|canSubmit (boolean isChangeOwner)
+DECL|method|canSubmit (boolean isChangeOwner, boolean force)
 name|boolean
 name|canSubmit
 parameter_list|(
 name|boolean
 name|isChangeOwner
+parameter_list|,
+name|boolean
+name|force
 parameter_list|)
 block|{
 if|if
@@ -688,7 +691,7 @@ name|SUBMIT
 argument_list|,
 name|isChangeOwner
 argument_list|,
-literal|false
+name|force
 argument_list|)
 return|;
 block|}
@@ -2385,19 +2388,10 @@ case|case
 name|UPDATE_BY_SUBMIT
 case|:
 return|return
-name|projectControl
-operator|.
-name|controlForRef
-argument_list|(
-name|MagicBranch
-operator|.
-name|NEW_CHANGE
-operator|+
-name|refName
-argument_list|)
-operator|.
 name|canSubmit
 argument_list|(
+literal|true
+argument_list|,
 literal|true
 argument_list|)
 return|;
