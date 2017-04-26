@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.lucene
+DECL|package|com.google.gerrit.server.index
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lucene
+name|server
+operator|.
+name|index
 package|;
 end_package
 

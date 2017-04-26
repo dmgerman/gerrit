@@ -204,6 +204,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|util
+operator|.
+name|Providers
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -340,9 +354,14 @@ name|SINGLE_VERSIONS
 argument_list|)
 argument_list|)
 operator|.
-name|toInstance
+name|toProvider
+argument_list|(
+name|Providers
+operator|.
+name|of
 argument_list|(
 name|singleVersions
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
