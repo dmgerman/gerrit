@@ -891,6 +891,18 @@ return|return
 name|isVisible
 return|;
 block|}
+comment|/** Can this user see other users change edits? */
+DECL|method|isEditVisible ()
+specifier|public
+name|boolean
+name|isEditVisible
+parameter_list|()
+block|{
+return|return
+name|canViewPrivateChanges
+argument_list|()
+return|;
+block|}
 comment|/** True if this reference is visible by all REGISTERED_USERS */
 DECL|method|isVisibleByRegisteredUsers ()
 specifier|public
