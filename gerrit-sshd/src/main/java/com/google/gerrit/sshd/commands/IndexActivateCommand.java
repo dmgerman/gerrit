@@ -120,7 +120,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lucene
+name|server
+operator|.
+name|index
 operator|.
 name|ReindexerAlreadyRunningException
 import|;
