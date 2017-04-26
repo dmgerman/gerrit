@@ -129,7 +129,8 @@ extends|extends
 name|ClassLoader
 block|{
 DECL|field|target
-specifier|public
+specifier|private
+specifier|final
 name|ClassLoader
 name|target
 decl_stmt|;
