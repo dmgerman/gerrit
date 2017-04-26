@@ -1153,6 +1153,12 @@ argument_list|(
 name|NotifyType
 operator|.
 name|ALL_COMMENTS
+argument_list|,
+operator|!
+name|patchSet
+operator|.
+name|isDraft
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
