@@ -882,7 +882,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|H2AccountPatchReviewStore
+name|JdbcAccountPatchReviewStore
 import|;
 end_import
 
@@ -2561,10 +2561,12 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|H2AccountPatchReviewStore
+name|JdbcAccountPatchReviewStore
 operator|.
 name|Module
-argument_list|()
+argument_list|(
+name|config
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|modules
