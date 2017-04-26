@@ -720,7 +720,7 @@ name|cfg
 operator|.
 name|getString
 argument_list|(
-literal|"index"
+literal|"elasticsearch"
 argument_list|,
 literal|null
 argument_list|,
