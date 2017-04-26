@@ -1263,7 +1263,7 @@ argument_list|)
 operator|.
 name|refresh
 argument_list|(
-name|refresh
+literal|true
 argument_list|)
 operator|.
 name|build

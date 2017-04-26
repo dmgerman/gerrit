@@ -609,12 +609,6 @@ specifier|final
 name|SitePaths
 name|sitePaths
 decl_stmt|;
-DECL|field|refresh
-specifier|protected
-specifier|final
-name|boolean
-name|refresh
-decl_stmt|;
 DECL|field|indexName
 specifier|protected
 specifier|final
@@ -744,14 +738,6 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|refresh
-operator|=
-name|clientBuilder
-operator|.
-name|refresh
-expr_stmt|;
-name|this
-operator|.
 name|client
 operator|=
 name|clientBuilder
@@ -848,7 +834,7 @@ argument_list|)
 operator|.
 name|refresh
 argument_list|(
-name|refresh
+literal|true
 argument_list|)
 operator|.
 name|build
