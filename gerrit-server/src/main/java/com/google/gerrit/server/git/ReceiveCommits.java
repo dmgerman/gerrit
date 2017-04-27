@@ -8320,6 +8320,21 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--publish-comments"
+argument_list|,
+name|usage
+operator|=
+literal|"publish all draft comments on updated changes"
+argument_list|)
+DECL|field|publishComments
+name|boolean
+name|publishComments
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
 literal|"--notify"
 argument_list|,
 name|usage
