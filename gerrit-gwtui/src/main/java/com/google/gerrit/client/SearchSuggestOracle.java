@@ -806,6 +806,13 @@ name|suggestions
 operator|.
 name|add
 argument_list|(
+literal|"is:ignored"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
 literal|"status:"
 argument_list|)
 expr_stmt|;
