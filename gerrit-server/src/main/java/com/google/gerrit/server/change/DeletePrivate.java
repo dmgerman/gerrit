@@ -202,6 +202,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ChangeMessagesUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -304,6 +318,12 @@ specifier|static
 class|class
 name|Input
 block|{}
+DECL|field|cmUtil
+specifier|private
+specifier|final
+name|ChangeMessagesUtil
+name|cmUtil
+decl_stmt|;
 DECL|field|dbProvider
 specifier|private
 specifier|final
@@ -323,7 +343,7 @@ name|batchUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeletePrivate (Provider<ReviewDb> dbProvider, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|DeletePrivate ( Provider<ReviewDb> dbProvider, BatchUpdate.Factory batchUpdateFactory, ChangeMessagesUtil cmUtil)
 name|DeletePrivate
 parameter_list|(
 name|Provider
@@ -336,6 +356,9 @@ name|BatchUpdate
 operator|.
 name|Factory
 name|batchUpdateFactory
+parameter_list|,
+name|ChangeMessagesUtil
+name|cmUtil
 parameter_list|)
 block|{
 name|this
@@ -349,6 +372,12 @@ operator|.
 name|batchUpdateFactory
 operator|=
 name|batchUpdateFactory
+expr_stmt|;
+name|this
+operator|.
+name|cmUtil
+operator|=
+name|cmUtil
 expr_stmt|;
 block|}
 annotation|@
@@ -425,6 +454,8 @@ init|=
 operator|new
 name|SetPrivateOp
 argument_list|(
+name|cmUtil
+argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
