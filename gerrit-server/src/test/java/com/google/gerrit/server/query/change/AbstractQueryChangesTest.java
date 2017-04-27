@@ -3487,6 +3487,8 @@ operator|.
 name|setPrivate
 argument_list|(
 literal|true
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 comment|// Change1 is not private, but should be still visible to its owner.

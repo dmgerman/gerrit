@@ -76,6 +76,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -374,12 +388,17 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|setPrivate (boolean value)
+DECL|method|setPrivate (boolean value, @Nullable String message)
 name|void
 name|setPrivate
 parameter_list|(
 name|boolean
 name|value
+parameter_list|,
+annotation|@
+name|Nullable
+name|String
+name|message
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -1071,13 +1090,18 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|setPrivate (boolean value)
+DECL|method|setPrivate (boolean value, @Nullable String message)
 specifier|public
 name|void
 name|setPrivate
 parameter_list|(
 name|boolean
 name|value
+parameter_list|,
+annotation|@
+name|Nullable
+name|String
+name|message
 parameter_list|)
 block|{
 throw|throw

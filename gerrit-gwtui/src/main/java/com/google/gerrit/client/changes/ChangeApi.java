@@ -917,8 +917,13 @@ argument_list|(
 literal|"private"
 argument_list|)
 operator|.
-name|put
+name|post
 argument_list|(
+name|PrivateInput
+operator|.
+name|create
+argument_list|()
+argument_list|,
 name|cb
 argument_list|)
 expr_stmt|;
@@ -946,11 +951,16 @@ argument_list|)
 operator|.
 name|view
 argument_list|(
-literal|"private"
+literal|"private.delete"
 argument_list|)
 operator|.
-name|delete
+name|post
 argument_list|(
+name|PrivateInput
+operator|.
+name|create
+argument_list|()
+argument_list|,
 name|cb
 argument_list|)
 expr_stmt|;
@@ -2164,6 +2174,45 @@ function_decl|;
 DECL|method|CherryPickInput ()
 specifier|protected
 name|CherryPickInput
+parameter_list|()
+block|{}
+block|}
+DECL|class|PrivateInput
+specifier|private
+specifier|static
+class|class
+name|PrivateInput
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|create ()
+specifier|static
+name|PrivateInput
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|PrivateInput
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
+DECL|method|setMessage (String m)
+specifier|final
+specifier|native
+name|void
+name|setMessage
+parameter_list|(
+name|String
+name|m
+parameter_list|)
+comment|/*-{ this.message = m; }-*/
+function_decl|;
+DECL|method|PrivateInput ()
+specifier|protected
+name|PrivateInput
 parameter_list|()
 block|{}
 block|}

@@ -318,7 +318,7 @@ name|RetryingRestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|DeletePrivate
+name|SetPrivateOp
 operator|.
 name|Input
 argument_list|,
@@ -333,12 +333,6 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 block|{
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{}
 DECL|field|cmUtil
 specifier|private
 specifier|final
@@ -392,7 +386,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, DeletePrivate.Input input)
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, SetPrivateOp.Input input)
 specifier|protected
 name|Response
 argument_list|<
@@ -408,7 +402,7 @@ parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|DeletePrivate
+name|SetPrivateOp
 operator|.
 name|Input
 name|input
@@ -472,6 +466,8 @@ argument_list|(
 name|cmUtil
 argument_list|,
 literal|false
+argument_list|,
+name|input
 argument_list|)
 decl_stmt|;
 try|try
