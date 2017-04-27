@@ -2793,7 +2793,10 @@ name|message
 argument_list|,
 name|ChangeMessagesUtil
 operator|.
-name|TAG_UPLOADED_PATCH_SET
+name|uploadedPatchSetTag
+argument_list|(
+name|workInProgress
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|cmUtil
