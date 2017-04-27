@@ -216,6 +216,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|BeforeClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -245,9 +255,38 @@ name|OutgoingEmailValidator
 name|validator
 decl_stmt|;
 annotation|@
-name|After
-DECL|method|resetDomainValidator ()
+name|BeforeClass
+DECL|method|setUpClass ()
 specifier|public
+specifier|static
+name|void
+name|setUpClass
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Reset before first use, in case other tests have already run in this JVM.
+name|resetDomainValidator
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|After
+DECL|method|tearDown ()
+specifier|public
+name|void
+name|tearDown
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|resetDomainValidator
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|resetDomainValidator ()
+specifier|private
+specifier|static
 name|void
 name|resetDomainValidator
 parameter_list|()
