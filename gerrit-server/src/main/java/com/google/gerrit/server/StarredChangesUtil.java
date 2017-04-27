@@ -1213,6 +1213,15 @@ name|IGNORE_LABEL
 init|=
 literal|"ignore"
 decl_stmt|;
+DECL|field|MUTE_LABEL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MUTE_LABEL
+init|=
+literal|"mute"
+decl_stmt|;
 DECL|field|DEFAULT_LABELS
 specifier|public
 specifier|static
