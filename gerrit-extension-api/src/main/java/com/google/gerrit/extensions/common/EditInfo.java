@@ -87,6 +87,11 @@ specifier|public
 name|CommitInfo
 name|commit
 decl_stmt|;
+DECL|field|basePatchSetNumber
+specifier|public
+name|int
+name|basePatchSetNumber
+decl_stmt|;
 DECL|field|baseRevision
 specifier|public
 name|String
