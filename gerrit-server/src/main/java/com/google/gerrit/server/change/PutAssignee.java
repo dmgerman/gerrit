@@ -888,8 +888,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 throws|,
-name|RestApiException
-throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
