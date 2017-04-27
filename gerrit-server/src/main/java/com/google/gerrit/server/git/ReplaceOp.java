@@ -2085,7 +2085,8 @@ if|if
 condition|(
 name|magicBranch
 operator|.
-name|publishComments
+name|shouldPublishComments
+argument_list|()
 condition|)
 block|{
 name|comments

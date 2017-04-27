@@ -969,6 +969,15 @@ name|defaultBaseForMergesRaw
 parameter_list|()
 comment|/*-{ return this.default_base_for_merges }-*/
 function_decl|;
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+DECL|method|publishCommentsOnPush ()
+name|publishCommentsOnPush
+parameter_list|()
+comment|/*-{ return this.publish_comments_on_push || false }-*/
+function_decl|;
 DECL|method|my ()
 specifier|public
 specifier|final
@@ -1389,6 +1398,18 @@ name|String
 name|b
 parameter_list|)
 comment|/*-{ this.default_base_for_merges = b }-*/
+function_decl|;
+DECL|method|publishCommentsOnPush ( boolean p)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|publishCommentsOnPush
+parameter_list|(
+name|boolean
+name|p
+parameter_list|)
+comment|/*-{ this.publish_comments_on_push = p }-*/
 function_decl|;
 DECL|method|setMyMenus (List<TopMenuItem> myMenus)
 specifier|public

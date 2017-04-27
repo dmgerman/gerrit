@@ -215,6 +215,11 @@ name|String
 name|signedOffBy
 parameter_list|()
 function_decl|;
+DECL|method|publishCommentsOnPush ()
+name|String
+name|publishCommentsOnPush
+parameter_list|()
+function_decl|;
 DECL|method|myMenu ()
 name|String
 name|myMenu

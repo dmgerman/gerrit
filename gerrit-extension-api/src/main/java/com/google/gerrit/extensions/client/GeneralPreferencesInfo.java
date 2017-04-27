@@ -551,6 +551,11 @@ specifier|public
 name|DefaultBase
 name|defaultBaseForMerges
 decl_stmt|;
+DECL|field|publishCommentsOnPush
+specifier|public
+name|Boolean
+name|publishCommentsOnPush
+decl_stmt|;
 DECL|method|isShowInfoInReviewCategory ()
 specifier|public
 name|boolean
@@ -847,6 +852,12 @@ operator|=
 name|DefaultBase
 operator|.
 name|FIRST_PARENT
+expr_stmt|;
+name|p
+operator|.
+name|publishCommentsOnPush
+operator|=
+literal|false
 expr_stmt|;
 return|return
 name|p

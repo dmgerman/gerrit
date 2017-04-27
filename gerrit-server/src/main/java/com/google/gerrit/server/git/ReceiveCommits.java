@@ -76,6 +76,22 @@ name|common
 operator|.
 name|base
 operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
@@ -8063,6 +8079,12 @@ specifier|final
 name|NotesMigration
 name|notesMigration
 decl_stmt|;
+DECL|field|defaultPublishComments
+specifier|private
+specifier|final
+name|boolean
+name|defaultPublishComments
+decl_stmt|;
 DECL|field|dest
 name|Branch
 operator|.
@@ -8327,8 +8349,31 @@ operator|=
 literal|"publish all draft comments on updated changes"
 argument_list|)
 DECL|field|publishComments
+specifier|private
 name|boolean
 name|publishComments
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--no-publish-comments"
+argument_list|,
+name|aliases
+operator|=
+block|{
+literal|"--np"
+block|}
+argument_list|,
+name|usage
+operator|=
+literal|"do not publish draft comments"
+argument_list|)
+DECL|field|noPublishComments
+specifier|private
+name|boolean
+name|noPublishComments
 decl_stmt|;
 annotation|@
 name|Option
@@ -8761,9 +8806,12 @@ expr_stmt|;
 block|}
 comment|//TODO(dpursehouse): validate hashtags
 block|}
-DECL|method|MagicBranchInput (ReceiveCommand cmd, LabelTypes labelTypes, NotesMigration notesMigration)
+DECL|method|MagicBranchInput ( IdentifiedUser user, ReceiveCommand cmd, LabelTypes labelTypes, NotesMigration notesMigration)
 name|MagicBranchInput
 parameter_list|(
+name|IdentifiedUser
+name|user
+parameter_list|,
 name|ReceiveCommand
 name|cmd
 parameter_list|,
@@ -8807,6 +8855,25 @@ operator|.
 name|notesMigration
 operator|=
 name|notesMigration
+expr_stmt|;
+name|this
+operator|.
+name|defaultPublishComments
+operator|=
+name|firstNonNull
+argument_list|(
+name|user
+operator|.
+name|getAccount
+argument_list|()
+operator|.
+name|getGeneralPreferencesInfo
+argument_list|()
+operator|.
+name|publishCommentsOnPush
+argument_list|,
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getMailRecipients ()
@@ -8892,6 +8959,34 @@ argument_list|)
 expr_stmt|;
 return|return
 name|accountsToNotify
+return|;
+block|}
+DECL|method|shouldPublishComments ()
+name|boolean
+name|shouldPublishComments
+parameter_list|()
+block|{
+if|if
+condition|(
+name|publishComments
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|noPublishComments
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+name|defaultPublishComments
 return|;
 block|}
 DECL|method|parse ( CmdLineParser clp, Repository repo, Set<String> refs, ListMultimap<String, String> pushOptions)
@@ -9262,6 +9357,8 @@ operator|=
 operator|new
 name|MagicBranchInput
 argument_list|(
+name|user
+argument_list|,
 name|cmd
 argument_list|,
 name|labelTypes
@@ -9750,6 +9847,26 @@ argument_list|(
 name|cmd
 argument_list|,
 literal|"the options 'wip' and 'ready' are mutually exclusive"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+name|magicBranch
+operator|.
+name|publishComments
+operator|&&
+name|magicBranch
+operator|.
+name|noPublishComments
+condition|)
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"the options 'publish-comments' and 'no-publish-comments' are mutually exclusive"
 argument_list|)
 expr_stmt|;
 return|return;
