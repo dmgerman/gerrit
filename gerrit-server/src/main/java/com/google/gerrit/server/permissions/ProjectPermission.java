@@ -120,7 +120,11 @@ name|Permission
 operator|.
 name|READ
 parameter_list|)
-constructor_decl|;
+operator|,
+comment|/**    * Can create at least one reference in the project.    *    *<p>This project level permission only validates the user may create some type of reference    * within the project. The exact reference name must be checked at creation:    *    *<pre>permissionBackend    *    .user(user)    *    .project(proj)    *    .ref(ref)    *    .check(RefPermission.CREATE);    *</pre>    */
+DECL|enumConstant|CREATE_REF
+constructor|CREATE_REF
+empty_stmt|;
 DECL|field|name
 specifier|private
 specifier|final

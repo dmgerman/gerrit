@@ -1809,7 +1809,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|canAddRefs ()
-specifier|public
+specifier|private
 name|boolean
 name|canAddRefs
 parameter_list|()
@@ -3678,6 +3678,13 @@ operator|.
 name|emptySet
 argument_list|()
 argument_list|)
+return|;
+case|case
+name|CREATE_REF
+case|:
+return|return
+name|canAddRefs
+argument_list|()
 return|;
 block|}
 throw|throw
