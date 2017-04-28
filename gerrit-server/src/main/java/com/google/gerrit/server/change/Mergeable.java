@@ -252,6 +252,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ChangeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|BranchOrderSection
@@ -803,7 +817,7 @@ name|ResourceConflictException
 argument_list|(
 literal|"change is "
 operator|+
-name|Submit
+name|ChangeUtil
 operator|.
 name|status
 argument_list|(

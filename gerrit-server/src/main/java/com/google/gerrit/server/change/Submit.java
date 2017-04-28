@@ -460,6 +460,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ChangeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|CurrentUser
 import|;
 end_import
@@ -1693,6 +1707,8 @@ name|ResourceConflictException
 argument_list|(
 literal|"change is "
 operator|+
+name|ChangeUtil
+operator|.
 name|status
 argument_list|(
 name|change
@@ -1921,6 +1937,8 @@ name|ResourceConflictException
 argument_list|(
 literal|"change is "
 operator|+
+name|ChangeUtil
+operator|.
 name|status
 argument_list|(
 name|change
@@ -2884,34 +2902,6 @@ argument_list|()
 operator|.
 name|orNull
 argument_list|()
-return|;
-block|}
-DECL|method|status (Change change)
-specifier|static
-name|String
-name|status
-parameter_list|(
-name|Change
-name|change
-parameter_list|)
-block|{
-return|return
-name|change
-operator|!=
-literal|null
-condition|?
-name|change
-operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|name
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
-else|:
-literal|"deleted"
 return|;
 block|}
 DECL|method|unmergeableChanges (ChangeSet cs)
