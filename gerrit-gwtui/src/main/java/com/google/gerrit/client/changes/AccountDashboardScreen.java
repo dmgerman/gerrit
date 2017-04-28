@@ -716,7 +716,7 @@ literal|" -owner:"
 operator|+
 name|who
 operator|+
-literal|" -star:ignore) OR assignee:"
+literal|" -is:ignored) OR assignee:"
 operator|+
 name|who
 operator|+
