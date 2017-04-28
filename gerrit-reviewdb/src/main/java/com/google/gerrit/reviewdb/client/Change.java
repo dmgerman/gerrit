@@ -2125,6 +2125,25 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/** Whether the change is work in progress. */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|21
+argument_list|)
+DECL|field|workInProgress
+specifier|protected
+name|boolean
+name|workInProgress
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** @see com.google.gerrit.server.notedb.NoteDbChangeState */
 end_comment
 
@@ -2322,6 +2341,12 @@ operator|=
 name|other
 operator|.
 name|isPrivate
+expr_stmt|;
+name|workInProgress
+operator|=
+name|other
+operator|.
+name|workInProgress
 expr_stmt|;
 name|noteDbState
 operator|=
@@ -2973,6 +2998,38 @@ operator|.
 name|isPrivate
 operator|=
 name|isPrivate
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|isWorkInProgress ()
+specifier|public
+name|boolean
+name|isWorkInProgress
+parameter_list|()
+block|{
+return|return
+name|workInProgress
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setWorkInProgress (boolean workInProgress)
+specifier|public
+name|void
+name|setWorkInProgress
+parameter_list|(
+name|boolean
+name|workInProgress
+parameter_list|)
+block|{
+name|this
+operator|.
+name|workInProgress
+operator|=
+name|workInProgress
 expr_stmt|;
 block|}
 end_function

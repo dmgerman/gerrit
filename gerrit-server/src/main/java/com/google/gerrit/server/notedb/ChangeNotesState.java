@@ -578,10 +578,12 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, @Nullable Boolean isPrivate)
+DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, @Nullable Boolean isPrivate, @Nullable Boolean workInProgress)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -751,6 +753,11 @@ annotation|@
 name|Nullable
 name|Boolean
 name|isPrivate
+parameter_list|,
+annotation|@
+name|Nullable
+name|Boolean
+name|workInProgress
 parameter_list|)
 block|{
 if|if
@@ -804,6 +811,8 @@ argument_list|,
 name|status
 argument_list|,
 name|isPrivate
+argument_list|,
+name|workInProgress
 argument_list|)
 argument_list|,
 name|ImmutableSet
@@ -889,6 +898,8 @@ argument_list|,
 name|readOnlyUntil
 argument_list|,
 name|isPrivate
+argument_list|,
+name|workInProgress
 argument_list|)
 return|;
 block|}
@@ -1003,6 +1014,14 @@ DECL|method|isPrivate ()
 specifier|abstract
 name|Boolean
 name|isPrivate
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|isWorkInProgress ()
+specifier|abstract
+name|Boolean
+name|isWorkInProgress
 parameter_list|()
 function_decl|;
 block|}
@@ -1177,6 +1196,14 @@ DECL|method|isPrivate ()
 specifier|abstract
 name|Boolean
 name|isPrivate
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|isWorkInProgress ()
+specifier|abstract
+name|Boolean
+name|isWorkInProgress
 parameter_list|()
 function_decl|;
 DECL|method|newChange (Project.NameKey project)
@@ -1560,6 +1587,25 @@ else|:
 name|c
 operator|.
 name|isPrivate
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|change
+operator|.
+name|setWorkInProgress
+argument_list|(
+name|c
+operator|.
+name|isWorkInProgress
+argument_list|()
+operator|==
+literal|null
+condition|?
+literal|false
+else|:
+name|c
+operator|.
+name|isWorkInProgress
 argument_list|()
 argument_list|)
 expr_stmt|;
