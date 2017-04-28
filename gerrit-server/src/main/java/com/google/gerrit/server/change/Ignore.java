@@ -363,7 +363,10 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|ChangeResource
@@ -444,7 +447,12 @@ argument_list|)
 throw|;
 block|}
 return|return
-literal|null
+name|Response
+operator|.
+name|ok
+argument_list|(
+literal|""
+argument_list|)
 return|;
 block|}
 DECL|method|isIgnored (ChangeResource rsrc)
