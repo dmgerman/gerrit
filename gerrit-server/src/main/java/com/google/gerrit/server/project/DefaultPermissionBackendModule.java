@@ -106,6 +106,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|AbstractModule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Scopes
 import|;
 end_import
@@ -120,7 +132,7 @@ specifier|public
 class|class
 name|DefaultPermissionBackendModule
 extends|extends
-name|FactoryModule
+name|AbstractModule
 block|{
 annotation|@
 name|Override
@@ -151,6 +163,31 @@ operator|.
 name|SINGLETON
 argument_list|)
 expr_stmt|;
+name|install
+argument_list|(
+operator|new
+name|LegacyControlsModule
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Binds legacy ProjectControl, RefControl, ChangeControl. */
+DECL|class|LegacyControlsModule
+specifier|public
+specifier|static
+class|class
+name|LegacyControlsModule
+extends|extends
+name|FactoryModule
+block|{
+annotation|@
+name|Override
+DECL|method|configure ()
+specifier|protected
+name|void
+name|configure
+parameter_list|()
+block|{
 comment|// TODO(sop) Hide ProjectControl, RefControl, ChangeControl related bindings.
 name|bind
 argument_list|(
@@ -188,6 +225,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
