@@ -68,18 +68,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|http
-operator|.
-name|HttpServletResponse
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -257,24 +245,6 @@ operator|.
 name|client
 operator|.
 name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
-operator|.
-name|NameKey
 import|;
 end_import
 
@@ -477,6 +447,18 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
 import|;
 end_import
 
