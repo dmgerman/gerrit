@@ -1999,7 +1999,7 @@ return|;
 block|}
 comment|/** Can this user add a patch set to this change? */
 DECL|method|canAddPatchSet (ReviewDb db)
-specifier|public
+specifier|private
 name|boolean
 name|canAddPatchSet
 parameter_list|(
