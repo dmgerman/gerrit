@@ -163,6 +163,9 @@ operator|.
 name|FORGE_SERVER
 argument_list|)
 operator|,
+DECL|enumConstant|BYPASS_REVIEW
+name|BYPASS_REVIEW
+operator|,
 DECL|enumConstant|CREATE_CHANGE
 name|CREATE_CHANGE
 enum|;
