@@ -897,6 +897,15 @@ name|isPrivate
 parameter_list|()
 comment|/*-{ return this.is_private ? true : false; }-*/
 function_decl|;
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+DECL|method|isWorkInProgress ()
+name|isWorkInProgress
+parameter_list|()
+comment|/*-{ return this.work_in_progress ? true : false; }-*/
+function_decl|;
 DECL|method|allLabels ()
 specifier|public
 specifier|final
