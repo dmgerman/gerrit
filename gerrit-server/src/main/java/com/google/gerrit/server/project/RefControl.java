@@ -899,7 +899,7 @@ name|READ
 argument_list|)
 operator|)
 operator|&&
-name|canRead
+name|isProjectStatePermittingRead
 argument_list|()
 expr_stmt|;
 block|}
@@ -1115,7 +1115,7 @@ operator|.
 name|PUSH
 argument_list|)
 operator|&&
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 return|;
 block|}
@@ -1143,7 +1143,7 @@ operator|.
 name|ADD_PATCH_SET
 argument_list|)
 operator|&&
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 return|;
 block|}
@@ -1172,7 +1172,7 @@ operator|.
 name|PUSH_MERGE
 argument_list|)
 operator|&&
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 return|;
 block|}
@@ -1190,7 +1190,7 @@ operator|.
 name|REBASE
 argument_list|)
 operator|&&
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 return|;
 block|}
@@ -1238,7 +1238,7 @@ argument_list|,
 name|isChangeOwner
 argument_list|)
 operator|&&
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 return|;
 block|}
@@ -1311,7 +1311,7 @@ operator|.
 name|PUSH
 argument_list|)
 operator|&&
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 return|;
 block|}
@@ -1325,7 +1325,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 condition|)
 block|{
@@ -1399,10 +1399,10 @@ operator|)
 return|;
 block|}
 block|}
-DECL|method|canWrite ()
-specifier|public
+DECL|method|isProjectStatePermittingWrite ()
+specifier|private
 name|boolean
-name|canWrite
+name|isProjectStatePermittingWrite
 parameter_list|()
 block|{
 return|return
@@ -1423,10 +1423,10 @@ name|ACTIVE
 argument_list|)
 return|;
 block|}
-DECL|method|canRead ()
-specifier|public
+DECL|method|isProjectStatePermittingRead ()
+specifier|private
 name|boolean
-name|canRead
+name|isProjectStatePermittingRead
 parameter_list|()
 block|{
 return|return
@@ -1446,7 +1446,7 @@ operator|.
 name|READ_ONLY
 argument_list|)
 operator|||
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 return|;
 block|}
@@ -1459,7 +1459,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 operator|||
 operator|(
@@ -1517,7 +1517,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 condition|)
 block|{
@@ -1976,7 +1976,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|canWrite
+name|isProjectStatePermittingWrite
 argument_list|()
 operator|||
 operator|(
