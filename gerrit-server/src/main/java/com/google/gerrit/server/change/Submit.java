@@ -1053,6 +1053,15 @@ name|BLOCKED_HIDDEN_SUBMIT_TOOLTIP
 init|=
 literal|"This change depends on other hidden changes which are not ready"
 decl_stmt|;
+DECL|field|BLOCKED_WORK_IN_PROGRESS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BLOCKED_WORK_IN_PROGRESS
+init|=
+literal|"This change is marked work in progress"
+decl_stmt|;
 DECL|field|CLICK_FAILURE_TOOLTIP
 specifier|private
 specifier|static
@@ -2032,6 +2041,21 @@ condition|)
 block|{
 return|return
 name|BLOCKED_SUBMIT_TOOLTIP
+return|;
+block|}
+if|if
+condition|(
+name|c
+operator|.
+name|change
+argument_list|()
+operator|.
+name|isWorkInProgress
+argument_list|()
+condition|)
+block|{
+return|return
+name|BLOCKED_WORK_IN_PROGRESS
 return|;
 block|}
 name|MergeOp

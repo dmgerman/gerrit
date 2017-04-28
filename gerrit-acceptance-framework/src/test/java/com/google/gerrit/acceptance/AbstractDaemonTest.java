@@ -4351,6 +4351,23 @@ literal|"refs/drafts/master"
 argument_list|)
 return|;
 block|}
+DECL|method|createWorkInProgressChange ()
+specifier|protected
+name|PushOneCommit
+operator|.
+name|Result
+name|createWorkInProgressChange
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|pushTo
+argument_list|(
+literal|"refs/for/master%wip"
+argument_list|)
+return|;
+block|}
 DECL|method|createChange (String subject, String fileName, String content)
 specifier|protected
 name|PushOneCommit
