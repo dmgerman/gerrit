@@ -276,6 +276,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|DefaultPermissionBackend
+specifier|public
 class|class
 name|DefaultPermissionBackend
 extends|extends
