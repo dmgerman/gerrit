@@ -5803,6 +5803,7 @@ name|isNull
 argument_list|()
 expr_stmt|;
 block|}
+comment|// TODO(ekempin): assert that account was deleted from cache and index
 block|}
 annotation|@
 name|Test
