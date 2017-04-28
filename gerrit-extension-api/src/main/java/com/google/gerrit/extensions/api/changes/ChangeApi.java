@@ -384,6 +384,17 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Ignore or un-ignore this change.    *    * @param ignore ignore the change if true    */
+DECL|method|ignore (boolean ignore)
+name|void
+name|ignore
+parameter_list|(
+name|boolean
+name|ignore
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Create a new change that reverts this change.    *    * @see Changes#id(int)    */
 DECL|method|revert ()
 name|ChangeApi
@@ -1571,6 +1582,23 @@ name|createMergePatchSet
 parameter_list|(
 name|MergePatchSetInput
 name|in
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|ignore (boolean ignore)
+specifier|public
+name|void
+name|ignore
+parameter_list|(
+name|boolean
+name|ignore
 parameter_list|)
 block|{
 throw|throw
