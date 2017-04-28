@@ -347,8 +347,6 @@ parameter_list|(
 name|AccessCheckInput
 name|in
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
