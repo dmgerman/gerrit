@@ -1968,7 +1968,7 @@ return|;
 block|}
 comment|/**    * Determines whether the user can delete the Git ref controlled by this object.    *    * @return {@code true} if the user specified can delete a Git ref.    */
 DECL|method|canDelete ()
-specifier|public
+specifier|private
 name|boolean
 name|canDelete
 parameter_list|()
