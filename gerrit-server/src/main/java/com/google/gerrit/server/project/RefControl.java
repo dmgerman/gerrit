@@ -2076,7 +2076,7 @@ block|}
 block|}
 comment|/** @return true if this user can forge the author line in a commit. */
 DECL|method|canForgeAuthor ()
-specifier|public
+specifier|private
 name|boolean
 name|canForgeAuthor
 parameter_list|()
@@ -2104,7 +2104,7 @@ return|;
 block|}
 comment|/** @return true if this user can forge the committer line in a commit. */
 DECL|method|canForgeCommitter ()
-specifier|public
+specifier|private
 name|boolean
 name|canForgeCommitter
 parameter_list|()
@@ -2132,7 +2132,7 @@ return|;
 block|}
 comment|/** @return true if this user can forge the server on the committer line. */
 DECL|method|canForgeGerritServerIdentity ()
-specifier|public
+specifier|private
 name|boolean
 name|canForgeGerritServerIdentity
 parameter_list|()
