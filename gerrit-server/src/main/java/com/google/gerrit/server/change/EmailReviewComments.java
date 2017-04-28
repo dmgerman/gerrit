@@ -531,6 +531,9 @@ specifier|public
 interface|interface
 name|Factory
 block|{
+comment|// TODO(dborowitz/wyatta): Rationalize these arguments so HTML and text templates are operating
+comment|// on the same set of inputs.
+comment|/**      * @param notify setting for handling notification.      * @param accountsToNotify detailed map of accounts to notify.      * @param notes change notes.      * @param patchSet patch set corresponding to the top-level op      * @param user user the email should come from.      * @param message used by text template only: the full ChangeMessage that will go in the      *     database. The contents of this message typically include the "Patch set N" header and "(M      *     comments)".      * @param comments inline comments.      * @param patchSetComment used by HTML template only: some quasi-human-generated text. The      *     contents should *not* include a "Patch set N" header or "(M comments)" footer, as these      *     will be added automatically in soy in a structured way.      * @param labels labels applied as part of this review operation.      * @return handle for sending email.      */
 DECL|method|create ( NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify, ChangeNotes notes, PatchSet patchSet, IdentifiedUser user, ChangeMessage message, List<Comment> comments, String patchSetComment, List<LabelVote> labels)
 name|EmailReviewComments
 name|create
