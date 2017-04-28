@@ -874,8 +874,6 @@ name|want
 operator|!=
 name|info
 operator|.
-name|result
-operator|.
 name|status
 condition|)
 block|{
@@ -890,8 +888,6 @@ argument_list|,
 name|in
 argument_list|,
 name|info
-operator|.
-name|result
 operator|.
 name|status
 argument_list|,
@@ -912,8 +908,6 @@ name|assertThat
 argument_list|(
 name|info
 operator|.
-name|result
-operator|.
 name|message
 argument_list|)
 operator|.
@@ -930,8 +924,6 @@ name|assertThat
 argument_list|(
 name|info
 operator|.
-name|result
-operator|.
 name|message
 argument_list|)
 operator|.
@@ -947,8 +939,6 @@ case|:
 name|assertThat
 argument_list|(
 name|info
-operator|.
-name|result
 operator|.
 name|message
 argument_list|)

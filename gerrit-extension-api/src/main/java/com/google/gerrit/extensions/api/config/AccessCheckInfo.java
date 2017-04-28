@@ -74,28 +74,16 @@ specifier|public
 class|class
 name|AccessCheckInfo
 block|{
-DECL|class|Result
-specifier|public
-specifier|static
-class|class
-name|Result
-block|{
 DECL|field|message
 specifier|public
 name|String
 name|message
 decl_stmt|;
-comment|// HTTP status code.
+comment|// HTTP status code
 DECL|field|status
 specifier|public
 name|int
 name|status
-decl_stmt|;
-block|}
-DECL|field|result
-specifier|public
-name|Result
-name|result
 decl_stmt|;
 comment|// for future extension, we may add inputs / results for bulk checks.
 block|}
