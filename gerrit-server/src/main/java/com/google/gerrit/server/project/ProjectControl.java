@@ -1778,7 +1778,7 @@ return|;
 block|}
 comment|/** Returns whether the project is hidden. */
 DECL|method|isHidden ()
-specifier|public
+specifier|private
 name|boolean
 name|isHidden
 parameter_list|()
