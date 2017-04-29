@@ -166,8 +166,13 @@ operator|,
 DECL|enumConstant|BYPASS_REVIEW
 name|BYPASS_REVIEW
 operator|,
+comment|/** Create a change to code review a commit. */
 DECL|enumConstant|CREATE_CHANGE
 name|CREATE_CHANGE
+operator|,
+comment|/**    * Creates changes, then also immediately submits them during {@code push}.    *    *<p>This is similar to {@link #UPDATE} except it constructs changes first, then submits them    * according to the submit strategy, which may include cherry-pick or rebase. By creating changes    * for each commit, post-submit review is possible.    */
+DECL|enumConstant|UPDATE_BY_SUBMIT
+name|UPDATE_BY_SUBMIT
 enum|;
 end_enum
 
