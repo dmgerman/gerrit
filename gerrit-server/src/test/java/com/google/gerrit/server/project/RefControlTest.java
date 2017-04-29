@@ -1569,10 +1569,10 @@ name|OK
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertCanUpload (String ref, ProjectControl u)
+DECL|method|assertCreateChange (String ref, ProjectControl u)
 specifier|private
 name|void
-name|assertCanUpload
+name|assertCreateChange
 parameter_list|(
 name|String
 name|ref
@@ -1581,22 +1581,34 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
-argument_list|(
+name|boolean
+name|create
+init|=
 name|u
 operator|.
-name|controlForRef
+name|asForProject
+argument_list|()
+operator|.
+name|ref
 argument_list|(
 name|ref
 argument_list|)
 operator|.
-name|canUpload
-argument_list|()
+name|testOrFalse
+argument_list|(
+name|RefPermission
+operator|.
+name|CREATE_CHANGE
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|create
 argument_list|)
 operator|.
 name|named
 argument_list|(
-literal|"can upload "
+literal|"can create change "
 operator|+
 name|ref
 argument_list|)
@@ -1635,10 +1647,10 @@ name|OK
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertCannotUpload (String ref, ProjectControl u)
+DECL|method|assertCannotCreateChange (String ref, ProjectControl u)
 specifier|private
 name|void
-name|assertCannotUpload
+name|assertCannotCreateChange
 parameter_list|(
 name|String
 name|ref
@@ -1647,22 +1659,34 @@ name|ProjectControl
 name|u
 parameter_list|)
 block|{
-name|assertThat
-argument_list|(
+name|boolean
+name|create
+init|=
 name|u
 operator|.
-name|controlForRef
+name|asForProject
+argument_list|()
+operator|.
+name|ref
 argument_list|(
 name|ref
 argument_list|)
 operator|.
-name|canUpload
-argument_list|()
+name|testOrFalse
+argument_list|(
+name|RefPermission
+operator|.
+name|CREATE_CHANGE
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|create
 argument_list|)
 operator|.
 name|named
 argument_list|(
-literal|"cannot upload "
+literal|"cannot create change "
 operator|+
 name|ref
 argument_list|)
@@ -3137,14 +3161,14 @@ argument_list|(
 name|u
 argument_list|)
 expr_stmt|;
-name|assertCanUpload
+name|assertCreateChange
 argument_list|(
 literal|"refs/heads/master"
 argument_list|,
 name|u
 argument_list|)
 expr_stmt|;
-name|assertCannotUpload
+name|assertCannotCreateChange
 argument_list|(
 literal|"refs/heads/foobar"
 argument_list|,
@@ -3190,7 +3214,7 @@ argument_list|(
 name|local
 argument_list|)
 decl_stmt|;
-name|assertCanUpload
+name|assertCreateChange
 argument_list|(
 literal|"refs/heads/master"
 argument_list|,
@@ -3330,14 +3354,14 @@ argument_list|(
 name|u
 argument_list|)
 expr_stmt|;
-name|assertCanUpload
+name|assertCreateChange
 argument_list|(
 literal|"refs/heads/master"
 argument_list|,
 name|u
 argument_list|)
 expr_stmt|;
-name|assertCanUpload
+name|assertCreateChange
 argument_list|(
 literal|"refs/heads/foobar"
 argument_list|,
@@ -3746,7 +3770,7 @@ argument_list|(
 name|u
 argument_list|)
 expr_stmt|;
-name|assertCannotUpload
+name|assertCannotCreateChange
 argument_list|(
 literal|"refs/heads/master"
 argument_list|,

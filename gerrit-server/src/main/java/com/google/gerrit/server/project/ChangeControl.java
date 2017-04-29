@@ -500,6 +500,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|RefPermission
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|change
@@ -1782,11 +1798,17 @@ name|canRebase
 argument_list|()
 operator|)
 operator|&&
-name|getRefControl
+name|refControl
+operator|.
+name|asForRef
 argument_list|()
 operator|.
-name|canUpload
-argument_list|()
+name|testOrFalse
+argument_list|(
+name|RefPermission
+operator|.
+name|CREATE_CHANGE
+argument_list|)
 operator|&&
 operator|!
 name|isPatchSetLocked
@@ -1807,20 +1829,25 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+comment|// Anyone who can abandon the change can restore it, as long as they can create changes.
 return|return
 name|canAbandon
 argument_list|(
 name|db
 argument_list|)
-comment|// Anyone who can abandon the change can restore it back
 operator|&&
-name|getRefControl
+name|refControl
+operator|.
+name|asForRef
 argument_list|()
 operator|.
-name|canUpload
-argument_list|()
+name|testOrFalse
+argument_list|(
+name|RefPermission
+operator|.
+name|CREATE_CHANGE
+argument_list|)
 return|;
-comment|// as long as you can upload too
 block|}
 comment|/** All available label types for this change. */
 DECL|method|getLabelTypes ()
@@ -2012,11 +2039,17 @@ block|{
 if|if
 condition|(
 operator|!
-name|getRefControl
+name|refControl
+operator|.
+name|asForRef
 argument_list|()
 operator|.
-name|canUpload
-argument_list|()
+name|testOrFalse
+argument_list|(
+name|RefPermission
+operator|.
+name|CREATE_CHANGE
+argument_list|)
 operator|||
 name|isPatchSetLocked
 argument_list|(

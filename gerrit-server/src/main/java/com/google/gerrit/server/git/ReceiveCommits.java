@@ -9400,6 +9400,8 @@ parameter_list|(
 name|ReceiveCommand
 name|cmd
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 block|{
 comment|// Permit exactly one new change request per push.
 if|if
@@ -9867,16 +9869,25 @@ expr_stmt|;
 return|return;
 block|}
 block|}
-if|if
-condition|(
-operator|!
+try|try
+block|{
 name|magicBranch
 operator|.
-name|ctl
+name|perm
 operator|.
-name|canUpload
-argument_list|()
-condition|)
+name|check
+argument_list|(
+name|RefPermission
+operator|.
+name|CREATE_CHANGE
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AuthException
+name|denied
+parameter_list|)
 block|{
 name|errors
 operator|.
@@ -9893,7 +9904,10 @@ name|reject
 argument_list|(
 name|cmd
 argument_list|,
-literal|"cannot upload review"
+name|denied
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;

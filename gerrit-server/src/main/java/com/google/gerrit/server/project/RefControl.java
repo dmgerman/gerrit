@@ -1090,9 +1090,8 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**    * Determines whether the user can upload a change to the ref controlled by this object.    *    * @return {@code true} if the user specified can upload a change to the Git ref    */
 DECL|method|canUpload ()
-specifier|public
+specifier|private
 name|boolean
 name|canUpload
 parameter_list|()
