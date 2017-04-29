@@ -714,6 +714,22 @@ name|server
 operator|.
 name|project
 operator|.
+name|CommitsCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|InvalidChangeOperationException
 import|;
 end_import
@@ -747,6 +763,22 @@ operator|.
 name|project
 operator|.
 name|ProjectResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectState
 import|;
 end_import
 
@@ -1202,6 +1234,12 @@ specifier|final
 name|ProjectsCollection
 name|projectsCollection
 decl_stmt|;
+DECL|field|commits
+specifier|private
+specifier|final
+name|CommitsCollection
+name|commits
+decl_stmt|;
 DECL|field|changeInserterFactory
 specifier|private
 specifier|final
@@ -1264,7 +1302,7 @@ name|notifyUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateChange ( @nonymousCowardName String anonymousCowardName, Provider<ReviewDb> db, GitRepositoryManager gitManager, AccountCache accountCache, Sequences seq, @GerritPersonIdent PersonIdent myIdent, PermissionBackend permissionBackend, Provider<CurrentUser> user, ProjectsCollection projectsCollection, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeFinder changeFinder, RetryHelper retryHelper, PatchSetUtil psUtil, @GerritServerConfig Config config, MergeUtil.Factory mergeUtilFactory, NotifyUtil notifyUtil)
+DECL|method|CreateChange ( @nonymousCowardName String anonymousCowardName, Provider<ReviewDb> db, GitRepositoryManager gitManager, AccountCache accountCache, Sequences seq, @GerritPersonIdent PersonIdent myIdent, PermissionBackend permissionBackend, Provider<CurrentUser> user, ProjectsCollection projectsCollection, CommitsCollection commits, ChangeInserter.Factory changeInserterFactory, ChangeJson.Factory json, ChangeFinder changeFinder, RetryHelper retryHelper, PatchSetUtil psUtil, @GerritServerConfig Config config, MergeUtil.Factory mergeUtilFactory, NotifyUtil notifyUtil)
 name|CreateChange
 parameter_list|(
 annotation|@
@@ -1303,6 +1341,9 @@ name|user
 parameter_list|,
 name|ProjectsCollection
 name|projectsCollection
+parameter_list|,
+name|CommitsCollection
+name|commits
 parameter_list|,
 name|ChangeInserter
 operator|.
@@ -1398,6 +1439,12 @@ operator|.
 name|projectsCollection
 operator|=
 name|projectsCollection
+expr_stmt|;
+name|this
+operator|.
+name|commits
+operator|=
+name|commits
 expr_stmt|;
 name|this
 operator|.
@@ -2652,6 +2699,14 @@ literal|"merge.source must be non-empty"
 argument_list|)
 throw|;
 block|}
+name|ProjectState
+name|state
+init|=
+name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
+decl_stmt|;
 name|RevCommit
 name|sourceCommit
 init|=
@@ -2671,14 +2726,11 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|projectControl
+name|commits
 operator|.
-name|canReadCommit
+name|canRead
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
+name|state
 argument_list|,
 name|repo
 argument_list|,
@@ -2705,10 +2757,7 @@ name|mergeUtilFactory
 operator|.
 name|create
 argument_list|(
-name|projectControl
-operator|.
-name|getProjectState
-argument_list|()
+name|state
 argument_list|)
 decl_stmt|;
 comment|// default merge strategy from project settings
