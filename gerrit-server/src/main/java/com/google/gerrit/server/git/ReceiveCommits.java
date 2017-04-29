@@ -3538,7 +3538,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, Accounts accounts, AccountsUpdate.Server accountsUpdate, AccountResolver accountResolver, PermissionBackend permissionBackend, CmdLineParser.Factory optionParserFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ProjectCache projectCache, TagCache tagCache, @Nullable SearchingChangeCacheImpl changeCache, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, RefOperationValidators.Factory refValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, SubmoduleOp.Factory subOpFactory, MergeOp.Factory mergeOpFactory, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, ChangeIndexer indexer, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory, MergedByPushOp.Factory mergedByPushOpFactory)
+DECL|method|ReceiveCommits ( ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, Accounts accounts, AccountsUpdate.Server accountsUpdate, AccountResolver accountResolver, PermissionBackend permissionBackend, CmdLineParser.Factory optionParserFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ProjectCache projectCache, TagCache tagCache, VisibleRefFilter.Factory refFilterFactory, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, RefOperationValidators.Factory refValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, SubmoduleOp.Factory subOpFactory, MergeOp.Factory mergeOpFactory, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, ChangeIndexer indexer, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory, MergedByPushOp.Factory mergedByPushOpFactory)
 name|ReceiveCommits
 parameter_list|(
 name|ReviewDb
@@ -3589,10 +3589,10 @@ parameter_list|,
 name|TagCache
 name|tagCache
 parameter_list|,
-annotation|@
-name|Nullable
-name|SearchingChangeCacheImpl
-name|changeCache
+name|VisibleRefFilter
+operator|.
+name|Factory
+name|refFilterFactory
 parameter_list|,
 name|ChangeInserter
 operator|.
@@ -4259,21 +4259,20 @@ name|rp
 operator|.
 name|setAdvertiseRefsHook
 argument_list|(
-operator|new
-name|VisibleRefFilter
+name|refFilterFactory
+operator|.
+name|create
 argument_list|(
-name|tagCache
-argument_list|,
-name|notesFactory
-argument_list|,
-name|changeCache
+name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
 argument_list|,
 name|repo
-argument_list|,
-name|projectControl
-argument_list|,
-name|db
-argument_list|,
+argument_list|)
+operator|.
+name|setShowMetadata
+argument_list|(
 literal|false
 argument_list|)
 argument_list|)
@@ -7415,8 +7414,6 @@ name|ctl
 operator|.
 name|canCreate
 argument_list|(
-name|db
-argument_list|,
 name|rp
 operator|.
 name|getRepository
