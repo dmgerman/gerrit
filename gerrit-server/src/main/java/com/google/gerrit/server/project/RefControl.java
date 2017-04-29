@@ -1148,7 +1148,7 @@ return|;
 block|}
 comment|/** @return true if this user can submit merge patch sets to this ref */
 DECL|method|canUploadMerges ()
-specifier|public
+specifier|private
 name|boolean
 name|canUploadMerges
 parameter_list|()
@@ -3934,6 +3934,13 @@ name|FORGE_SERVER
 case|:
 return|return
 name|canForgeGerritServerIdentity
+argument_list|()
+return|;
+case|case
+name|MERGE
+case|:
+return|return
+name|canUploadMerges
 argument_list|()
 return|;
 case|case
