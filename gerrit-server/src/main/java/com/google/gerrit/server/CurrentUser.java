@@ -106,22 +106,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|GroupMembership
 import|;
 end_import
@@ -218,14 +202,6 @@ name|PropertyKey
 parameter_list|()
 block|{}
 block|}
-DECL|field|capabilityControlFactory
-specifier|private
-specifier|final
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-decl_stmt|;
 DECL|field|accessPath
 specifier|private
 name|AccessPath
@@ -234,11 +210,6 @@ init|=
 name|AccessPath
 operator|.
 name|UNKNOWN
-decl_stmt|;
-DECL|field|capabilities
-specifier|private
-name|CapabilityControl
-name|capabilities
 decl_stmt|;
 DECL|field|lastLoginExternalIdPropertyKey
 specifier|private
@@ -255,23 +226,6 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-DECL|method|CurrentUser (CapabilityControl.Factory capabilityControlFactory)
-specifier|protected
-name|CurrentUser
-parameter_list|(
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-parameter_list|)
-block|{
-name|this
-operator|.
-name|capabilityControlFactory
-operator|=
-name|capabilityControlFactory
-expr_stmt|;
-block|}
 comment|/** How this user is accessing the Gerrit Code Review application. */
 DECL|method|getAccessPath ()
 specifier|public
@@ -363,34 +317,6 @@ parameter_list|()
 block|{
 return|return
 literal|null
-return|;
-block|}
-comment|/** Capabilities available to this user account. */
-DECL|method|getCapabilities ()
-specifier|public
-name|CapabilityControl
-name|getCapabilities
-parameter_list|()
-block|{
-if|if
-condition|(
-name|capabilities
-operator|==
-literal|null
-condition|)
-block|{
-name|capabilities
-operator|=
-name|capabilityControlFactory
-operator|.
-name|create
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|capabilities
 return|;
 block|}
 comment|/** Check if user is the IdentifiedUser */

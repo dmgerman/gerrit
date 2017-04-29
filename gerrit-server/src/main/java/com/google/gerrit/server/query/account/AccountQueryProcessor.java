@@ -160,6 +160,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|CapabilityControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|index
 operator|.
 name|IndexConfig
@@ -350,7 +366,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AccountQueryProcessor ( Provider<CurrentUser> userProvider, Metrics metrics, IndexConfig indexConfig, AccountIndexCollection indexes, AccountIndexRewriter rewriter, AccountControl.Factory accountControlFactory)
+DECL|method|AccountQueryProcessor ( Provider<CurrentUser> userProvider, CapabilityControl.Factory capabilityFactory, Metrics metrics, IndexConfig indexConfig, AccountIndexCollection indexes, AccountIndexRewriter rewriter, AccountControl.Factory accountControlFactory)
 specifier|protected
 name|AccountQueryProcessor
 parameter_list|(
@@ -359,6 +375,11 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|userProvider
+parameter_list|,
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityFactory
 parameter_list|,
 name|Metrics
 name|metrics
@@ -381,6 +402,8 @@ block|{
 name|super
 argument_list|(
 name|userProvider
+argument_list|,
+name|capabilityFactory
 argument_list|,
 name|metrics
 argument_list|,

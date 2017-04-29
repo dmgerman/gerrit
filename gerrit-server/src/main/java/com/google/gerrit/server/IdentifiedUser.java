@@ -180,22 +180,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|GroupBackend
 import|;
 end_import
@@ -551,14 +535,6 @@ specifier|static
 class|class
 name|GenericFactory
 block|{
-DECL|field|capabilityControlFactory
-specifier|private
-specifier|final
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-decl_stmt|;
 DECL|field|authConfig
 specifier|private
 specifier|final
@@ -606,17 +582,10 @@ name|disableReverseDnsLookup
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory ( @ullable CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, Realm realm, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, @DisableReverseDnsLookup Boolean disableReverseDnsLookup, AccountCache accountCache, GroupBackend groupBackend)
+DECL|method|GenericFactory ( AuthConfig authConfig, Realm realm, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, @DisableReverseDnsLookup Boolean disableReverseDnsLookup, AccountCache accountCache, GroupBackend groupBackend)
 specifier|public
 name|GenericFactory
 parameter_list|(
-annotation|@
-name|Nullable
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-parameter_list|,
 name|AuthConfig
 name|authConfig
 parameter_list|,
@@ -648,12 +617,6 @@ name|GroupBackend
 name|groupBackend
 parameter_list|)
 block|{
-name|this
-operator|.
-name|capabilityControlFactory
-operator|=
-name|capabilityControlFactory
-expr_stmt|;
 name|this
 operator|.
 name|authConfig
@@ -710,8 +673,6 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
-name|capabilityControlFactory
-argument_list|,
 name|authConfig
 argument_list|,
 name|realm
@@ -813,8 +774,6 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
-name|capabilityControlFactory
-argument_list|,
 name|authConfig
 argument_list|,
 name|realm
@@ -852,14 +811,6 @@ specifier|static
 class|class
 name|RequestFactory
 block|{
-DECL|field|capabilityControlFactory
-specifier|private
-specifier|final
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-decl_stmt|;
 DECL|field|authConfig
 specifier|private
 specifier|final
@@ -916,14 +867,9 @@ name|remotePeerProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, Realm realm, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, @DisableReverseDnsLookup Boolean disableReverseDnsLookup, @RemotePeer Provider<SocketAddress> remotePeerProvider)
+DECL|method|RequestFactory ( AuthConfig authConfig, Realm realm, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, @DisableReverseDnsLookup Boolean disableReverseDnsLookup, @RemotePeer Provider<SocketAddress> remotePeerProvider)
 name|RequestFactory
 parameter_list|(
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-parameter_list|,
 name|AuthConfig
 name|authConfig
 parameter_list|,
@@ -963,12 +909,6 @@ argument_list|>
 name|remotePeerProvider
 parameter_list|)
 block|{
-name|this
-operator|.
-name|capabilityControlFactory
-operator|=
-name|capabilityControlFactory
-expr_stmt|;
 name|this
 operator|.
 name|authConfig
@@ -1033,8 +973,6 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
-name|capabilityControlFactory
-argument_list|,
 name|authConfig
 argument_list|,
 name|realm
@@ -1075,8 +1013,6 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
-name|capabilityControlFactory
-argument_list|,
 name|authConfig
 argument_list|,
 name|realm
@@ -1245,15 +1181,10 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, Realm realm, String anonymousCowardName, Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, Boolean disableReverseDnsLookup, @Nullable Provider<SocketAddress> remotePeerProvider, AccountState state, @Nullable CurrentUser realUser)
+DECL|method|IdentifiedUser ( AuthConfig authConfig, Realm realm, String anonymousCowardName, Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, Boolean disableReverseDnsLookup, @Nullable Provider<SocketAddress> remotePeerProvider, AccountState state, @Nullable CurrentUser realUser)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-parameter_list|,
 name|AuthConfig
 name|authConfig
 parameter_list|,
@@ -1297,8 +1228,6 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|capabilityControlFactory
-argument_list|,
 name|authConfig
 argument_list|,
 name|realm
@@ -1333,15 +1262,10 @@ operator|=
 name|state
 expr_stmt|;
 block|}
-DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, Realm realm, String anonymousCowardName, Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, Boolean disableReverseDnsLookup, @Nullable Provider<SocketAddress> remotePeerProvider, Account.Id id, @Nullable CurrentUser realUser)
+DECL|method|IdentifiedUser ( AuthConfig authConfig, Realm realm, String anonymousCowardName, Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend, Boolean disableReverseDnsLookup, @Nullable Provider<SocketAddress> remotePeerProvider, Account.Id id, @Nullable CurrentUser realUser)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-parameter_list|,
 name|AuthConfig
 name|authConfig
 parameter_list|,
@@ -1385,11 +1309,6 @@ name|CurrentUser
 name|realUser
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|capabilityControlFactory
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|canonicalUrl
@@ -2306,12 +2225,6 @@ name|IdentifiedUser
 name|materializedCopy
 parameter_list|()
 block|{
-name|CapabilityControl
-name|capabilities
-init|=
-name|getCapabilities
-argument_list|()
-decl_stmt|;
 name|Provider
 argument_list|<
 name|SocketAddress
@@ -2368,28 +2281,6 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
-operator|new
-name|CapabilityControl
-operator|.
-name|Factory
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|CapabilityControl
-name|create
-parameter_list|(
-name|CurrentUser
-name|user
-parameter_list|)
-block|{
-return|return
-name|capabilities
-return|;
-block|}
-block|}
-argument_list|,
 name|authConfig
 argument_list|,
 name|realm

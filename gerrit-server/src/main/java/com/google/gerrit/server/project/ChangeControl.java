@@ -1615,22 +1615,18 @@ name|isOwner
 argument_list|()
 comment|// project owner can abandon
 operator|||
-name|getUser
-argument_list|()
-operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|isAdmin_DoNotUse
-argument_list|()
-comment|// site administers are god
-operator|||
 name|getRefControl
 argument_list|()
 operator|.
 name|canAbandon
 argument_list|()
 comment|// user can abandon a specific ref
+operator|||
+name|getProjectControl
+argument_list|()
+operator|.
+name|isAdmin
+argument_list|()
 operator|)
 operator|&&
 operator|!
@@ -1718,13 +1714,10 @@ operator|.
 name|canDeleteDrafts
 argument_list|()
 operator|||
-name|getUser
+name|getProjectControl
 argument_list|()
 operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|isAdmin_DoNotUse
+name|isAdmin
 argument_list|()
 return|;
 case|case
@@ -1745,13 +1738,10 @@ name|canDeleteOwnChanges
 argument_list|()
 operator|)
 operator|||
-name|getUser
+name|getProjectControl
 argument_list|()
 operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|isAdmin_DoNotUse
+name|isAdmin
 argument_list|()
 return|;
 case|case
@@ -2482,13 +2472,10 @@ name|isOwner
 argument_list|()
 comment|// project owner
 operator|||
-name|getUser
+name|getProjectControl
 argument_list|()
 operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|isAdmin_DoNotUse
+name|isAdmin
 argument_list|()
 condition|)
 block|{
@@ -2539,22 +2526,18 @@ name|isOwner
 argument_list|()
 comment|// project owner can edit topic
 operator|||
-name|getUser
-argument_list|()
-operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|isAdmin_DoNotUse
-argument_list|()
-comment|// site administers are god
-operator|||
 name|getRefControl
 argument_list|()
 operator|.
 name|canEditTopicName
 argument_list|()
 comment|// user can edit topic on a specific ref
+operator|||
+name|getProjectControl
+argument_list|()
+operator|.
+name|isAdmin
+argument_list|()
 return|;
 block|}
 return|return
@@ -2603,15 +2586,11 @@ name|isOwner
 argument_list|()
 comment|// project owner can edit desc
 operator|||
-name|getUser
+name|getProjectControl
 argument_list|()
 operator|.
-name|getCapabilities
+name|isAdmin
 argument_list|()
-operator|.
-name|isAdmin_DoNotUse
-argument_list|()
-comment|// site administers are god
 return|;
 block|}
 return|return
@@ -2670,23 +2649,19 @@ name|isOwner
 argument_list|()
 comment|// project owner can edit hashtags
 operator|||
-name|getUser
-argument_list|()
-operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|isAdmin_DoNotUse
-argument_list|()
-comment|// site administers are god
-operator|||
 name|getRefControl
 argument_list|()
 operator|.
 name|canEditHashtags
 argument_list|()
-return|;
 comment|// user can edit hashtag on a specific ref
+operator|||
+name|getProjectControl
+argument_list|()
+operator|.
+name|isAdmin
+argument_list|()
+return|;
 block|}
 DECL|method|match (String destBranch, String refPattern)
 specifier|private

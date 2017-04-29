@@ -549,6 +549,14 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
+DECL|field|capabilityFactory
+specifier|private
+specifier|final
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityFactory
+decl_stmt|;
 DECL|field|self
 specifier|private
 specifier|final
@@ -569,11 +577,16 @@ name|pluginCapabilities
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetCapabilities ( PermissionBackend permissionBackend, Provider<CurrentUser> self, DynamicMap<CapabilityDefinition> pluginCapabilities)
+DECL|method|GetCapabilities ( PermissionBackend permissionBackend, CapabilityControl.Factory capabilityFactory, Provider<CurrentUser> self, DynamicMap<CapabilityDefinition> pluginCapabilities)
 name|GetCapabilities
 parameter_list|(
 name|PermissionBackend
 name|permissionBackend
+parameter_list|,
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -593,6 +606,12 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
+expr_stmt|;
+name|this
+operator|.
+name|capabilityFactory
+operator|=
+name|capabilityFactory
 expr_stmt|;
 name|this
 operator|.
@@ -709,18 +728,31 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+name|CapabilityControl
+name|cc
+init|=
+name|capabilityFactory
+operator|.
+name|create
+argument_list|(
+name|rsrc
+operator|.
+name|getUser
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|addRanges
 argument_list|(
 name|have
 argument_list|,
-name|rsrc
+name|cc
 argument_list|)
 expr_stmt|;
 name|addPriority
 argument_list|(
 name|have
 argument_list|,
-name|rsrc
+name|cc
 argument_list|)
 expr_stmt|;
 return|return
@@ -892,7 +924,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|addRanges (Map<String, Object> have, AccountResource rsrc)
+DECL|method|addRanges (Map<String, Object> have, CapabilityControl cc)
 specifier|private
 name|void
 name|addRanges
@@ -905,21 +937,10 @@ name|Object
 argument_list|>
 name|have
 parameter_list|,
-name|AccountResource
-name|rsrc
-parameter_list|)
-block|{
 name|CapabilityControl
 name|cc
-init|=
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|getCapabilities
-argument_list|()
-decl_stmt|;
+parameter_list|)
+block|{
 for|for
 control|(
 name|String
@@ -967,7 +988,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addPriority (Map<String, Object> have, AccountResource rsrc)
+DECL|method|addPriority (Map<String, Object> have, CapabilityControl cc)
 specifier|private
 name|void
 name|addPriority
@@ -980,8 +1001,8 @@ name|Object
 argument_list|>
 name|have
 parameter_list|,
-name|AccountResource
-name|rsrc
+name|CapabilityControl
+name|cc
 parameter_list|)
 block|{
 name|QueueProvider
@@ -989,13 +1010,7 @@ operator|.
 name|QueueType
 name|queue
 init|=
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|getCapabilities
-argument_list|()
+name|cc
 operator|.
 name|getQueueType
 argument_list|()

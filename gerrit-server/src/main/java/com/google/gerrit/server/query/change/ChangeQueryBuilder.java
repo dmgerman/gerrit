@@ -478,22 +478,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|GroupBackend
 import|;
 end_import
@@ -1951,13 +1935,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|capabilityControlFactory
-specifier|final
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-decl_stmt|;
 DECL|field|changeControlGenericFactory
 specifier|final
 name|ChangeControl
@@ -2124,7 +2101,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -2168,11 +2145,6 @@ name|self
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
 parameter_list|,
 name|ChangeControl
 operator|.
@@ -2278,8 +2250,6 @@ name|self
 argument_list|,
 name|permissionBackend
 argument_list|,
-name|capabilityControlFactory
-argument_list|,
 name|changeControlGenericFactory
 argument_list|,
 name|notesFactory
@@ -2352,7 +2322,7 @@ name|notesMigration
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2396,11 +2366,6 @@ name|self
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
 parameter_list|,
 name|ChangeControl
 operator|.
@@ -2527,12 +2492,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|capabilityControlFactory
-operator|=
-name|capabilityControlFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2711,8 +2670,6 @@ name|otherUser
 argument_list|)
 argument_list|,
 name|permissionBackend
-argument_list|,
-name|capabilityControlFactory
 argument_list|,
 name|changeControlGenericFactory
 argument_list|,
@@ -5797,10 +5754,6 @@ argument_list|(
 operator|new
 name|SingleGroupUser
 argument_list|(
-name|args
-operator|.
-name|capabilityControlFactory
-argument_list|,
 name|ids
 argument_list|)
 argument_list|)

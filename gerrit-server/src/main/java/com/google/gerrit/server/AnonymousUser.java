@@ -76,22 +76,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|GroupMembership
 import|;
 end_import
@@ -130,18 +114,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -162,23 +134,6 @@ name|AnonymousUser
 extends|extends
 name|CurrentUser
 block|{
-annotation|@
-name|Inject
-DECL|method|AnonymousUser (CapabilityControl.Factory capabilityControlFactory)
-name|AnonymousUser
-parameter_list|(
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|capabilityControlFactory
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|getEffectiveGroups ()
