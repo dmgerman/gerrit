@@ -110,7 +110,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
+name|AccountLimits
 import|;
 end_import
 
@@ -196,17 +196,17 @@ specifier|final
 name|int
 name|systemMaxBatchChanges
 decl_stmt|;
-DECL|field|capabilityFactory
+DECL|field|limitsFactory
 specifier|private
 specifier|final
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveConfig (@erritServerConfig Config config, CapabilityControl.Factory capabilityFactory)
+DECL|method|ReceiveConfig (@erritServerConfig Config config, AccountLimits.Factory limitsFactory)
 name|ReceiveConfig
 parameter_list|(
 annotation|@
@@ -214,10 +214,10 @@ name|GerritServerConfig
 name|Config
 name|config
 parameter_list|,
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 parameter_list|)
 block|{
 name|checkMagicRefs
@@ -280,9 +280,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|capabilityFactory
+name|limitsFactory
 operator|=
-name|capabilityFactory
+name|limitsFactory
 expr_stmt|;
 block|}
 DECL|method|getEffectiveMaxBatchChangesLimit (CurrentUser user)
@@ -294,10 +294,10 @@ name|CurrentUser
 name|user
 parameter_list|)
 block|{
-name|CapabilityControl
-name|cap
+name|AccountLimits
+name|limits
 init|=
-name|capabilityFactory
+name|limitsFactory
 operator|.
 name|create
 argument_list|(
@@ -306,7 +306,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|cap
+name|limits
 operator|.
 name|hasExplicitRange
 argument_list|(
@@ -315,7 +315,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|cap
+name|limits
 operator|.
 name|getRange
 argument_list|(

@@ -549,13 +549,13 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|capabilityFactory
+DECL|field|limitsFactory
 specifier|private
 specifier|final
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 decl_stmt|;
 DECL|field|self
 specifier|private
@@ -577,16 +577,16 @@ name|pluginCapabilities
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetCapabilities ( PermissionBackend permissionBackend, CapabilityControl.Factory capabilityFactory, Provider<CurrentUser> self, DynamicMap<CapabilityDefinition> pluginCapabilities)
+DECL|method|GetCapabilities ( PermissionBackend permissionBackend, AccountLimits.Factory limitsFactory, Provider<CurrentUser> self, DynamicMap<CapabilityDefinition> pluginCapabilities)
 name|GetCapabilities
 parameter_list|(
 name|PermissionBackend
 name|permissionBackend
 parameter_list|,
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -609,9 +609,9 @@ name|permissionBackend
 expr_stmt|;
 name|this
 operator|.
-name|capabilityFactory
+name|limitsFactory
 operator|=
-name|capabilityFactory
+name|limitsFactory
 expr_stmt|;
 name|this
 operator|.
@@ -728,10 +728,10 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-name|CapabilityControl
-name|cc
+name|AccountLimits
+name|limits
 init|=
-name|capabilityFactory
+name|limitsFactory
 operator|.
 name|create
 argument_list|(
@@ -745,14 +745,14 @@ name|addRanges
 argument_list|(
 name|have
 argument_list|,
-name|cc
+name|limits
 argument_list|)
 expr_stmt|;
 name|addPriority
 argument_list|(
 name|have
 argument_list|,
-name|cc
+name|limits
 argument_list|)
 expr_stmt|;
 return|return
@@ -924,7 +924,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|addRanges (Map<String, Object> have, CapabilityControl cc)
+DECL|method|addRanges (Map<String, Object> have, AccountLimits limits)
 specifier|private
 name|void
 name|addRanges
@@ -937,8 +937,8 @@ name|Object
 argument_list|>
 name|have
 parameter_list|,
-name|CapabilityControl
-name|cc
+name|AccountLimits
+name|limits
 parameter_list|)
 block|{
 for|for
@@ -959,7 +959,7 @@ argument_list|(
 name|name
 argument_list|)
 operator|&&
-name|cc
+name|limits
 operator|.
 name|hasExplicitRange
 argument_list|(
@@ -976,7 +976,7 @@ argument_list|,
 operator|new
 name|Range
 argument_list|(
-name|cc
+name|limits
 operator|.
 name|getRange
 argument_list|(
@@ -988,7 +988,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addPriority (Map<String, Object> have, CapabilityControl cc)
+DECL|method|addPriority (Map<String, Object> have, AccountLimits limits)
 specifier|private
 name|void
 name|addPriority
@@ -1001,8 +1001,8 @@ name|Object
 argument_list|>
 name|have
 parameter_list|,
-name|CapabilityControl
-name|cc
+name|AccountLimits
+name|limits
 parameter_list|)
 block|{
 name|QueueProvider
@@ -1010,7 +1010,7 @@ operator|.
 name|QueueType
 name|queue
 init|=
-name|cc
+name|limits
 operator|.
 name|getQueueType
 argument_list|()

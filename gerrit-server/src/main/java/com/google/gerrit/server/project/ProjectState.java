@@ -1001,7 +1001,7 @@ name|capabilities
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( final SitePaths sitePaths, final ProjectCache projectCache, final AllProjectsName allProjectsName, final AllUsersName allUsersName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, final List<CommentLinkInfo> commentLinks, final CapabilityCollection.Factory capabilityFactory, @Assisted final ProjectConfig config)
+DECL|method|ProjectState ( final SitePaths sitePaths, final ProjectCache projectCache, final AllProjectsName allProjectsName, final AllUsersName allUsersName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, final List<CommentLinkInfo> commentLinks, final CapabilityCollection.Factory limitsFactory, @Assisted final ProjectConfig config)
 specifier|public
 name|ProjectState
 parameter_list|(
@@ -1052,7 +1052,7 @@ specifier|final
 name|CapabilityCollection
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1164,7 +1164,7 @@ name|capabilities
 operator|=
 name|isAllProjects
 condition|?
-name|capabilityFactory
+name|limitsFactory
 operator|.
 name|create
 argument_list|(

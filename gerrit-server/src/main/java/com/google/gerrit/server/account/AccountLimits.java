@@ -221,14 +221,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Access control management for server-wide capabilities. */
+comment|/** Limits which QoS a user runs as, and how many search results it can request. */
 end_comment
 
 begin_class
-DECL|class|CapabilityControl
+DECL|class|AccountLimits
 specifier|public
 class|class
-name|CapabilityControl
+name|AccountLimits
 block|{
 annotation|@
 name|Singleton
@@ -262,7 +262,7 @@ expr_stmt|;
 block|}
 DECL|method|create (CurrentUser user)
 specifier|public
-name|CapabilityControl
+name|AccountLimits
 name|create
 parameter_list|(
 name|CurrentUser
@@ -271,7 +271,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|CapabilityControl
+name|AccountLimits
 argument_list|(
 name|projectCache
 argument_list|,
@@ -292,9 +292,9 @@ specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|CapabilityControl (ProjectCache projectCache, CurrentUser currentUser)
+DECL|method|AccountLimits (ProjectCache projectCache, CurrentUser currentUser)
 specifier|private
-name|CapabilityControl
+name|AccountLimits
 parameter_list|(
 name|ProjectCache
 name|projectCache
