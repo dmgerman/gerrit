@@ -1144,6 +1144,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|SshMode
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -1660,11 +1674,19 @@ name|void
 name|removeAccountIndexEventCounter
 parameter_list|()
 block|{
+if|if
+condition|(
+name|accountIndexEventCounterHandle
+operator|!=
+literal|null
+condition|)
+block|{
 name|accountIndexEventCounterHandle
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Before
@@ -2035,6 +2057,14 @@ argument_list|(
 literal|"foo"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|SshMode
+operator|.
+name|useSsh
+argument_list|()
+condition|)
+block|{
 name|accountIndexedCounter
 operator|.
 name|assertReindexOf
@@ -2045,6 +2075,20 @@ literal|2
 argument_list|)
 expr_stmt|;
 comment|// account creation + adding SSH keys
+block|}
+else|else
+block|{
+name|accountIndexedCounter
+operator|.
+name|assertReindexOf
+argument_list|(
+name|foo
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+comment|// account creation
+block|}
 comment|// check user branch
 try|try
 init|(
