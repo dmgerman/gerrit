@@ -987,6 +987,13 @@ operator|=
 name|updateFactory
 expr_stmt|;
 block|}
+comment|// TODO(dborowitz): Hack MetaDataUpdate so it can be created within a BatchUpdate and we can avoid
+comment|// calling setUpdateRef(false).
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 annotation|@
 name|Override
 DECL|method|updateProjectConfig ( ProjectControl projectControl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)

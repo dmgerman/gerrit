@@ -13895,6 +13895,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+comment|// TODO(dborowitz): Update ref in BatchUpdate.
 DECL|method|addOps (BatchUpdate bu)
 specifier|private
 name|void
