@@ -770,6 +770,20 @@ name|jgit
 operator|.
 name|transport
 operator|.
+name|PushCertificate
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|transport
+operator|.
 name|ReceiveCommand
 import|;
 end_import
@@ -1506,6 +1520,11 @@ specifier|private
 name|PersonIdent
 name|refLogIdent
 decl_stmt|;
+DECL|field|pushCert
+specifier|private
+name|PushCertificate
+name|pushCert
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|NoteDbUpdateManager ( @erritPersonIdent Provider<PersonIdent> serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AllUsersName allUsersName, NoteDbMetrics metrics, @Assisted Project.NameKey projectName)
@@ -1831,6 +1850,26 @@ operator|.
 name|refLogIdent
 operator|=
 name|ident
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**    * Set a push certificate for the push that originally triggered this NoteDb update.    *    *<p>The pusher will not necessarily have specified any of the NoteDb refs explicitly, such as    * when processing a push to {@code refs/for/master}. That's fine; this is just passed to the    * underlying {@link BatchRefUpdate}, and the implementation decides what to do with it.    *    *<p>The cert should be associated with the main repo. There is currently no way of associating a    * push cert with the {@code All-Users} repo, since it is not currently possible to update draft    * changes via push.    *    * @param pushCert push certificate; may be null.    * @return this    */
+DECL|method|setPushCertificate (PushCertificate pushCert)
+specifier|public
+name|NoteDbUpdateManager
+name|setPushCertificate
+parameter_list|(
+name|PushCertificate
+name|pushCert
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pushCert
+operator|=
+name|pushCert
 expr_stmt|;
 return|return
 name|this
@@ -2936,6 +2975,8 @@ argument_list|(
 name|changeRepo
 argument_list|,
 name|dryrun
+argument_list|,
+name|pushCert
 argument_list|)
 decl_stmt|;
 name|execute
@@ -2943,6 +2984,8 @@ argument_list|(
 name|allUsersRepo
 argument_list|,
 name|dryrun
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 return|return
@@ -2956,7 +2999,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|execute (OpenRepo or, boolean dryrun)
+DECL|method|execute (OpenRepo or, boolean dryrun, @Nullable PushCertificate pushCert)
 specifier|private
 name|BatchRefUpdate
 name|execute
@@ -2966,6 +3009,11 @@ name|or
 parameter_list|,
 name|boolean
 name|dryrun
+parameter_list|,
+annotation|@
+name|Nullable
+name|PushCertificate
+name|pushCert
 parameter_list|)
 throws|throws
 name|IOException
@@ -3023,6 +3071,13 @@ operator|.
 name|newBatchUpdate
 argument_list|()
 decl_stmt|;
+name|bru
+operator|.
+name|setPushCertificate
+argument_list|(
+name|pushCert
+argument_list|)
+expr_stmt|;
 name|bru
 operator|.
 name|setRefLogMessage
