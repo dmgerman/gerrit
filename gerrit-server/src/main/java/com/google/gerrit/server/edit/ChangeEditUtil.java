@@ -786,14 +786,6 @@ specifier|final
 name|ChangeKindCache
 name|changeKindCache
 decl_stmt|;
-DECL|field|updateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-decl_stmt|;
 DECL|field|psUtil
 specifier|private
 specifier|final
@@ -802,7 +794,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditUtil ( GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeControl.GenericFactory changeControlFactory, ChangeIndexer indexer, Provider<ReviewDb> db, Provider<CurrentUser> user, ChangeKindCache changeKindCache, BatchUpdate.Factory updateFactory, PatchSetUtil psUtil)
+DECL|method|ChangeEditUtil ( GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeControl.GenericFactory changeControlFactory, ChangeIndexer indexer, Provider<ReviewDb> db, Provider<CurrentUser> user, ChangeKindCache changeKindCache, PatchSetUtil psUtil)
 name|ChangeEditUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -835,11 +827,6 @@ name|user
 parameter_list|,
 name|ChangeKindCache
 name|changeKindCache
-parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
@@ -886,12 +873,6 @@ operator|.
 name|changeKindCache
 operator|=
 name|changeKindCache
-expr_stmt|;
-name|this
-operator|.
-name|updateFactory
-operator|=
-name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1188,12 +1169,17 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param ctl the {@code ChangeControl} of the change to which the change edit belongs    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications should be sent after the    *     change edit is published.    * @param accountsToNotify Accounts that should be notified after the change edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
-DECL|method|publish ( ChangeControl ctl, final ChangeEdit edit, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+comment|/**    * Promote change edit to patch set, by squashing the edit into its parent.    *    * @param updateFactory factory for creating updates.    * @param ctl the {@code ChangeControl} of the change to which the change edit belongs    * @param edit change edit to publish    * @param notify Notify handling that defines to whom email notifications should be sent after the    *     change edit is published.    * @param accountsToNotify Accounts that should be notified after the change edit is published.    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
+DECL|method|publish ( BatchUpdate.Factory updateFactory, ChangeControl ctl, final ChangeEdit edit, NotifyHandling notify, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|publish
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|ChangeControl
 name|ctl
 parameter_list|,
@@ -1612,67 +1598,6 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UpdateException
-name|e
-parameter_list|)
-block|{
-if|if
-condition|(
-name|e
-operator|.
-name|getCause
-argument_list|()
-operator|instanceof
-name|IOException
-operator|&&
-name|e
-operator|.
-name|getMessage
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s: Failed to delete ref %s: %s"
-argument_list|,
-name|IOException
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|edit
-operator|.
-name|getRefName
-argument_list|()
-argument_list|,
-name|RefUpdate
-operator|.
-name|Result
-operator|.
-name|LOCK_FAILURE
-operator|.
-name|name
-argument_list|()
-argument_list|)
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|ResourceConflictException
-argument_list|(
-literal|"edit ref was updated"
-argument_list|)
-throw|;
-block|}
 block|}
 name|indexer
 operator|.
