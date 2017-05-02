@@ -232,6 +232,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
+name|BatchUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -350,6 +366,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|updateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+decl_stmt|;
 DECL|field|cfg
 specifier|private
 specifier|final
@@ -382,9 +406,14 @@ name|internalUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, ChangeQueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder, Abandon abandon)
+DECL|method|AbandonUtil ( BatchUpdate.Factory updateFactory, ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, ChangeQueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder, Abandon abandon)
 name|AbandonUtil
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|ChangeCleanupConfig
 name|cfg
 parameter_list|,
@@ -403,6 +432,12 @@ name|Abandon
 name|abandon
 parameter_list|)
 block|{
+name|this
+operator|.
+name|updateFactory
+operator|=
+name|updateFactory
+expr_stmt|;
 name|this
 operator|.
 name|cfg
@@ -630,6 +665,8 @@ name|abandon
 operator|.
 name|batchAbandon
 argument_list|(
+name|updateFactory
+argument_list|,
 name|project
 argument_list|,
 name|internalUser

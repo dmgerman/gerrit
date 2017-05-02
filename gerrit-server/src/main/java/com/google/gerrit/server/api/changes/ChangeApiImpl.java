@@ -3772,6 +3772,8 @@ name|RestApiException
 block|{
 try|try
 block|{
+comment|// TODO(dborowitz): Convert to RetryingRestModifyView. Needs to plumb BatchUpdate.Factory into
+comment|// ConsistencyChecker.
 return|return
 name|check
 operator|.
@@ -3857,6 +3859,8 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
+comment|// TODO(dborowitz): Convert to RetryingRestModifyView. Needs to plumb BatchUpdate.Factory into
+comment|// StarredChangesUtil.
 if|if
 condition|(
 name|ignore
@@ -3908,6 +3912,8 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
+comment|// TODO(dborowitz): Convert to RetryingRestModifyView. Needs to plumb BatchUpdate.Factory into
+comment|// StarredChangesUtil.
 if|if
 condition|(
 name|mute

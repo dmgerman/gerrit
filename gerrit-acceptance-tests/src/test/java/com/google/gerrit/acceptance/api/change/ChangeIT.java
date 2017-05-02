@@ -3829,6 +3829,8 @@ name|changeAbandoner
 operator|.
 name|batchAbandon
 argument_list|(
+name|batchUpdateFactory
+argument_list|,
 name|controlA
 operator|.
 name|get
@@ -4228,6 +4230,8 @@ name|changeAbandoner
 operator|.
 name|batchAbandon
 argument_list|(
+name|batchUpdateFactory
+argument_list|,
 operator|new
 name|Project
 operator|.
