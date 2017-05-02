@@ -1657,6 +1657,14 @@ name|id
 argument_list|)
 operator|)
 operator|||
+operator|(
+name|visibleChanges
+operator|.
+name|containsKey
+argument_list|(
+name|id
+argument_list|)
+operator|&&
 name|projectCtl
 operator|.
 name|controlForRef
@@ -1671,6 +1679,7 @@ argument_list|)
 operator|.
 name|isEditVisible
 argument_list|()
+operator|)
 return|;
 block|}
 return|return
