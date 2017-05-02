@@ -652,6 +652,22 @@ name|server
 operator|.
 name|update
 operator|.
+name|RetryHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
 name|UpdateException
 import|;
 end_import
@@ -954,14 +970,6 @@ specifier|final
 name|AllUsersName
 name|allUsers
 decl_stmt|;
-DECL|field|batchUpdateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-decl_stmt|;
 DECL|field|changeControlFactory
 specifier|private
 specifier|final
@@ -1016,6 +1024,12 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|retryHelper
+specifier|private
+specifier|final
+name|RetryHelper
+name|retryHelper
+decl_stmt|;
 DECL|field|skewMs
 specifier|private
 specifier|final
@@ -1039,7 +1053,7 @@ name|testEnsureRebuiltRetryer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PrimaryStorageMigrator ( @erritServerConfig Config cfg, Provider<ReviewDb> db, GitRepositoryManager repoManager, AllUsersName allUsers, ChangeRebuilder rebuilder, ChangeControl.GenericFactory changeControlFactory, Provider<InternalChangeQuery> queryProvider, ChangeUpdate.Factory updateFactory, InternalUser.Factory internalUserFactory, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|PrimaryStorageMigrator ( @erritServerConfig Config cfg, Provider<ReviewDb> db, GitRepositoryManager repoManager, AllUsersName allUsers, ChangeRebuilder rebuilder, ChangeControl.GenericFactory changeControlFactory, Provider<InternalChangeQuery> queryProvider, ChangeUpdate.Factory updateFactory, InternalUser.Factory internalUserFactory, RetryHelper retryHelper)
 name|PrimaryStorageMigrator
 parameter_list|(
 annotation|@
@@ -1083,10 +1097,8 @@ operator|.
 name|Factory
 name|internalUserFactory
 parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
+name|RetryHelper
+name|retryHelper
 parameter_list|)
 block|{
 name|this
@@ -1111,13 +1123,13 @@ name|updateFactory
 argument_list|,
 name|internalUserFactory
 argument_list|,
-name|batchUpdateFactory
+name|retryHelper
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|PrimaryStorageMigrator ( Config cfg, Provider<ReviewDb> db, GitRepositoryManager repoManager, AllUsersName allUsers, ChangeRebuilder rebuilder, @Nullable Retryer<NoteDbChangeState> testEnsureRebuiltRetryer, ChangeControl.GenericFactory changeControlFactory, Provider<InternalChangeQuery> queryProvider, ChangeUpdate.Factory updateFactory, InternalUser.Factory internalUserFactory, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|PrimaryStorageMigrator ( Config cfg, Provider<ReviewDb> db, GitRepositoryManager repoManager, AllUsersName allUsers, ChangeRebuilder rebuilder, @Nullable Retryer<NoteDbChangeState> testEnsureRebuiltRetryer, ChangeControl.GenericFactory changeControlFactory, Provider<InternalChangeQuery> queryProvider, ChangeUpdate.Factory updateFactory, InternalUser.Factory internalUserFactory, RetryHelper retryHelper)
 specifier|public
 name|PrimaryStorageMigrator
 parameter_list|(
@@ -1168,10 +1180,8 @@ operator|.
 name|Factory
 name|internalUserFactory
 parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
+name|RetryHelper
+name|retryHelper
 parameter_list|)
 block|{
 name|this
@@ -1230,9 +1240,9 @@ name|internalUserFactory
 expr_stmt|;
 name|this
 operator|.
-name|batchUpdateFactory
+name|retryHelper
 operator|=
-name|batchUpdateFactory
+name|retryHelper
 expr_stmt|;
 name|skewMs
 operator|=
@@ -2499,12 +2509,22 @@ throws|throws
 name|OrmException
 block|{
 comment|// Use a BatchUpdate since ReviewDb is primary at this point, so it needs to reflect the update.
+comment|// (In practice retrying won't happen, since we aren't using fused updates at this point.)
+try|try
+block|{
+name|retryHelper
+operator|.
+name|execute
+argument_list|(
+name|updateFactory
+lambda|->
+block|{
 try|try
 init|(
 name|BatchUpdate
 name|bu
 init|=
-name|batchUpdateFactory
+name|updateFactory
 operator|.
 name|create
 argument_list|(
@@ -2580,6 +2600,13 @@ name|bu
 operator|.
 name|execute
 argument_list|()
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
