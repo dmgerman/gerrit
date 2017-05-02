@@ -3429,11 +3429,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|accountIndexedCounter
-operator|.
-name|assertNoReindex
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -5195,6 +5190,11 @@ name|getObjectId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|accountIndexedCounter
+operator|.
+name|assertNoReindex
+argument_list|()
+expr_stmt|;
 comment|// fetching user branch of another user fails
 name|String
 name|otherUserRefName
@@ -5236,11 +5236,6 @@ name|otherUserRefName
 operator|+
 literal|":otherUserRef"
 argument_list|)
-expr_stmt|;
-name|accountIndexedCounter
-operator|.
-name|assertNoReindex
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
