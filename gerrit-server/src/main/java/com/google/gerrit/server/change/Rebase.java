@@ -711,6 +711,15 @@ DECL|class|Rebase
 specifier|public
 class|class
 name|Rebase
+extends|extends
+name|RetryingRestModifyView
+argument_list|<
+name|RevisionResource
+argument_list|,
+name|RebaseInput
+argument_list|,
+name|ChangeInfo
+argument_list|>
 implements|implements
 name|RestModifyView
 argument_list|<
@@ -763,14 +772,6 @@ operator|.
 name|CURRENT_COMMIT
 argument_list|)
 decl_stmt|;
-DECL|field|updateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -810,14 +811,12 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Rebase ( BatchUpdate.Factory updateFactory, GitRepositoryManager repoManager, RebaseChangeOp.Factory rebaseFactory, RebaseUtil rebaseUtil, ChangeJson.Factory json, Provider<ReviewDb> dbProvider)
+DECL|method|Rebase ( RetryHelper retryHelper, GitRepositoryManager repoManager, RebaseChangeOp.Factory rebaseFactory, RebaseUtil rebaseUtil, ChangeJson.Factory json, Provider<ReviewDb> dbProvider)
 specifier|public
 name|Rebase
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
+name|RetryHelper
+name|retryHelper
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -842,11 +841,10 @@ argument_list|>
 name|dbProvider
 parameter_list|)
 block|{
-name|this
-operator|.
-name|updateFactory
-operator|=
-name|updateFactory
+name|super
+argument_list|(
+name|retryHelper
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -881,11 +879,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (RevisionResource rsrc, RebaseInput input)
-specifier|public
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource rsrc, RebaseInput input)
+specifier|protected
 name|ChangeInfo
-name|apply
+name|applyImpl
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|RevisionResource
 name|rsrc
 parameter_list|,
@@ -1999,8 +2002,10 @@ block|}
 return|return
 name|rebase
 operator|.
-name|apply
+name|applyImpl
 argument_list|(
+name|updateFactory
+argument_list|,
 operator|new
 name|RevisionResource
 argument_list|(

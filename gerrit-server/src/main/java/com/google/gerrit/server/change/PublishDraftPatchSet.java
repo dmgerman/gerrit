@@ -234,22 +234,6 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
-operator|.
-name|RestModifyView
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|webui
 operator|.
 name|UiAction
@@ -807,14 +791,19 @@ DECL|class|PublishDraftPatchSet
 specifier|public
 class|class
 name|PublishDraftPatchSet
-implements|implements
-name|RestModifyView
+extends|extends
+name|RetryingRestModifyView
 argument_list|<
 name|RevisionResource
 argument_list|,
 name|Input
+argument_list|,
+name|Response
+argument_list|<
+name|?
 argument_list|>
-implements|,
+argument_list|>
+implements|implements
 name|UiAction
 argument_list|<
 name|RevisionResource
@@ -853,14 +842,6 @@ specifier|private
 specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
-decl_stmt|;
-DECL|field|updateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
 decl_stmt|;
 DECL|field|createChangeSenderFactory
 specifier|private
@@ -907,7 +888,7 @@ name|draftPublished
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PublishDraftPatchSet ( AccountResolver accountResolver, ApprovalsUtil approvalsUtil, BatchUpdate.Factory updateFactory, CreateChangeSender.Factory createChangeSenderFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, Provider<ReviewDb> dbProvider, ReplacePatchSetSender.Factory replacePatchSetFactory, DraftPublished draftPublished)
+DECL|method|PublishDraftPatchSet ( AccountResolver accountResolver, ApprovalsUtil approvalsUtil, RetryHelper retryHelper, CreateChangeSender.Factory createChangeSenderFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, Provider<ReviewDb> dbProvider, ReplacePatchSetSender.Factory replacePatchSetFactory, DraftPublished draftPublished)
 specifier|public
 name|PublishDraftPatchSet
 parameter_list|(
@@ -917,10 +898,8 @@ parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
+name|RetryHelper
+name|retryHelper
 parameter_list|,
 name|CreateChangeSender
 operator|.
@@ -948,6 +927,11 @@ name|DraftPublished
 name|draftPublished
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|retryHelper
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|accountResolver
@@ -959,12 +943,6 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
-expr_stmt|;
-name|this
-operator|.
-name|updateFactory
-operator|=
-name|updateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1005,14 +983,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (RevisionResource rsrc, Input input)
-specifier|public
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, RevisionResource rsrc, Input input)
+specifier|protected
 name|Response
 argument_list|<
 name|?
 argument_list|>
-name|apply
+name|applyImpl
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|RevisionResource
 name|rsrc
 parameter_list|,
@@ -1027,6 +1010,8 @@ block|{
 return|return
 name|apply
 argument_list|(
+name|updateFactory
+argument_list|,
 name|rsrc
 operator|.
 name|getUser
@@ -1052,7 +1037,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|apply (CurrentUser u, Change c, PatchSet.Id psId, PatchSet ps)
+DECL|method|apply ( BatchUpdate.Factory updateFactory, CurrentUser u, Change c, PatchSet.Id psId, PatchSet ps)
 specifier|private
 name|Response
 argument_list|<
@@ -1060,6 +1045,11 @@ name|?
 argument_list|>
 name|apply
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|CurrentUser
 name|u
 parameter_list|,
@@ -1302,6 +1292,8 @@ name|publish
 operator|.
 name|apply
 argument_list|(
+name|updateFactory
+argument_list|,
 name|rsrc
 operator|.
 name|getControl
