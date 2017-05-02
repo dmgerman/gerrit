@@ -135,6 +135,11 @@ name|String
 name|isPrivate
 parameter_list|()
 function_decl|;
+DECL|method|isWorkInProgress ()
+name|String
+name|isWorkInProgress
+parameter_list|()
+function_decl|;
 DECL|method|changeEdit ()
 name|String
 name|changeEdit
