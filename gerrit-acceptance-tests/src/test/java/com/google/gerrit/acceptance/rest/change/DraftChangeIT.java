@@ -534,18 +534,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -622,15 +610,6 @@ name|allowDraftsDisabledConfig
 argument_list|()
 return|;
 block|}
-DECL|field|updateFactory
-annotation|@
-name|Inject
-specifier|private
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-decl_stmt|;
 annotation|@
 name|Test
 DECL|method|deleteDraftChange ()
@@ -1969,7 +1948,7 @@ init|(
 name|BatchUpdate
 name|batchUpdate
 init|=
-name|updateFactory
+name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(
@@ -2064,7 +2043,7 @@ init|(
 name|BatchUpdate
 name|batchUpdate
 init|=
-name|updateFactory
+name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(

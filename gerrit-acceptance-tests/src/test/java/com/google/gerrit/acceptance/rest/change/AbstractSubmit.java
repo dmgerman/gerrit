@@ -1374,15 +1374,6 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
-DECL|field|updateFactory
-annotation|@
-name|Inject
-specifier|private
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-decl_stmt|;
 DECL|field|onSubmitValidationListeners
 annotation|@
 name|Inject
@@ -5568,7 +5559,7 @@ init|(
 name|BatchUpdate
 name|bu
 init|=
-name|updateFactory
+name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(

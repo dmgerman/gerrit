@@ -609,15 +609,6 @@ name|systemTimeZone
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|updateFactory
-annotation|@
-name|Inject
-specifier|private
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-decl_stmt|;
 DECL|field|changes
 annotation|@
 name|Inject
@@ -4402,7 +4393,7 @@ init|(
 name|BatchUpdate
 name|bu
 init|=
-name|updateFactory
+name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(

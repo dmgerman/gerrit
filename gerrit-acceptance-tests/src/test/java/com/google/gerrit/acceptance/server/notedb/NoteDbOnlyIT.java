@@ -320,18 +320,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -440,15 +428,6 @@ name|NoteDbOnlyIT
 extends|extends
 name|AbstractDaemonTest
 block|{
-DECL|field|batchUpdateFactory
-annotation|@
-name|Inject
-specifier|private
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
