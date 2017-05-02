@@ -1869,10 +1869,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|uploadPackSubsetOfBranchesVisibleWithEditForOtherUser ()
+DECL|method|uploadPackSubsetOfBranchesAndEditsVisibleWithViewPrivateChanges ()
 specifier|public
 name|void
-name|uploadPackSubsetOfBranchesVisibleWithEditForOtherUser
+name|uploadPackSubsetOfBranchesAndEditsVisibleWithViewPrivateChanges
 parameter_list|()
 throws|throws
 name|Exception
@@ -1900,7 +1900,7 @@ literal|"refs/*"
 argument_list|)
 expr_stmt|;
 name|Change
-name|c
+name|change1
 init|=
 name|notesFactory
 operator|.
@@ -1920,9 +1920,9 @@ name|getChange
 argument_list|()
 decl_stmt|;
 name|String
-name|changeId
+name|changeId1
 init|=
-name|c
+name|change1
 operator|.
 name|getKey
 argument_list|()
@@ -1930,7 +1930,38 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-comment|// Admin's edit is visible.
+name|Change
+name|change2
+init|=
+name|notesFactory
+operator|.
+name|createChecked
+argument_list|(
+name|db
+argument_list|,
+name|project
+argument_list|,
+name|c2
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+operator|.
+name|getChange
+argument_list|()
+decl_stmt|;
+name|String
+name|changeId2
+init|=
+name|change2
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+comment|// Admin's edit on change1 is visible.
 name|setApiUser
 argument_list|(
 name|admin
@@ -1943,7 +1974,24 @@ argument_list|()
 operator|.
 name|id
 argument_list|(
-name|changeId
+name|changeId1
+argument_list|)
+operator|.
+name|edit
+argument_list|()
+operator|.
+name|create
+argument_list|()
+expr_stmt|;
+comment|// Admin's edit on change2 is not visible since user cannot see the change.
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|id
+argument_list|(
+name|changeId2
 argument_list|)
 operator|.
 name|edit
@@ -1965,7 +2013,7 @@ argument_list|()
 operator|.
 name|id
 argument_list|(
-name|changeId
+name|changeId1
 argument_list|)
 operator|.
 name|edit
