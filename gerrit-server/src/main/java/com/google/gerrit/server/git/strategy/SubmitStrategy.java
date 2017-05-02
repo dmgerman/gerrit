@@ -936,13 +936,6 @@ specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 decl_stmt|;
-DECL|field|batchUpdateFactory
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-decl_stmt|;
 DECL|field|changeControlFactory
 specifier|final
 name|ChangeControl
@@ -1128,7 +1121,7 @@ name|dryrun
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, BatchUpdate.Factory batchUpdateFactory, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, InternalChangeQuery internalChangeQuery, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, InternalChangeQuery internalChangeQuery, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1136,11 +1129,6 @@ name|accountCache
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
-parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
 parameter_list|,
 name|ChangeControl
 operator|.
@@ -1301,12 +1289,6 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
-expr_stmt|;
-name|this
-operator|.
-name|batchUpdateFactory
-operator|=
-name|batchUpdateFactory
 expr_stmt|;
 name|this
 operator|.
