@@ -1815,6 +1815,12 @@ name|canRebase
 argument_list|()
 operator|)
 operator|&&
+name|getRefControl
+argument_list|()
+operator|.
+name|canUpload
+argument_list|()
+operator|&&
 operator|!
 name|isPatchSetLocked
 argument_list|(
