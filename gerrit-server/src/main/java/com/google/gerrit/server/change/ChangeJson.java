@@ -3884,6 +3884,10 @@ name|c
 operator|.
 name|isPrivate
 argument_list|()
+condition|?
+literal|true
+else|:
+literal|null
 expr_stmt|;
 name|info
 operator|.
@@ -3893,6 +3897,10 @@ name|c
 operator|.
 name|isWorkInProgress
 argument_list|()
+condition|?
+literal|true
+else|:
+literal|null
 expr_stmt|;
 name|finish
 argument_list|(
@@ -4308,6 +4316,10 @@ name|in
 operator|.
 name|isPrivate
 argument_list|()
+condition|?
+literal|true
+else|:
+literal|null
 expr_stmt|;
 name|out
 operator|.
@@ -4317,6 +4329,10 @@ name|in
 operator|.
 name|isWorkInProgress
 argument_list|()
+condition|?
+literal|true
+else|:
+literal|null
 expr_stmt|;
 name|out
 operator|.
