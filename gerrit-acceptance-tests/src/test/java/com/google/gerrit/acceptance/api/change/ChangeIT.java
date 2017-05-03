@@ -2368,7 +2368,7 @@ operator|.
 name|isPrivate
 argument_list|)
 operator|.
-name|isFalse
+name|isNull
 argument_list|()
 expr_stmt|;
 name|gApi
@@ -2489,7 +2489,7 @@ operator|.
 name|isPrivate
 argument_list|)
 operator|.
-name|isFalse
+name|isNull
 argument_list|()
 expr_stmt|;
 name|assertThat
@@ -2601,7 +2601,7 @@ operator|.
 name|isPrivate
 argument_list|)
 operator|.
-name|isFalse
+name|isNull
 argument_list|()
 expr_stmt|;
 name|exception
@@ -3210,7 +3210,7 @@ operator|.
 name|workInProgress
 argument_list|)
 operator|.
-name|isFalse
+name|isNull
 argument_list|()
 expr_stmt|;
 name|assertThat
@@ -3367,7 +3367,7 @@ operator|.
 name|workInProgress
 argument_list|)
 operator|.
-name|isFalse
+name|isNull
 argument_list|()
 expr_stmt|;
 name|assertThat

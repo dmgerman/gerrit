@@ -177,6 +177,16 @@ specifier|public
 name|ChangeStatus
 name|status
 decl_stmt|;
+DECL|field|isPrivate
+specifier|public
+name|Boolean
+name|isPrivate
+decl_stmt|;
+DECL|field|workInProgress
+specifier|public
+name|Boolean
+name|workInProgress
+decl_stmt|;
 DECL|field|baseChange
 specifier|public
 name|String
