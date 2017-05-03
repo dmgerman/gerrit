@@ -1703,11 +1703,6 @@ argument_list|(
 name|revertCommitBuilder
 argument_list|)
 decl_stmt|;
-name|oi
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 name|RevCommit
 name|revertCommit
 init|=
