@@ -2738,16 +2738,17 @@ argument_list|(
 name|contextPath
 argument_list|)
 expr_stmt|;
-comment|// HTTP front-end filter to be used as surrogate of Apache HTTP
+comment|// HTTP front-end filters to be used as surrogate of Apache HTTP
 comment|// reverse-proxy filtering.
 comment|// It is meant to be used as simpler tiny deployment of custom-made
 comment|// security enforcement (Security tokens, IP-based security filtering, others)
 name|String
-name|filterClassName
+index|[]
+name|filterClassNames
 init|=
 name|cfg
 operator|.
-name|getString
+name|getStringList
 argument_list|(
 literal|"httpd"
 argument_list|,
@@ -2756,12 +2757,13 @@ argument_list|,
 literal|"filterClass"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+for|for
+control|(
+name|String
 name|filterClassName
-operator|!=
-literal|null
-condition|)
+range|:
+name|filterClassNames
+control|)
 block|{
 try|try
 block|{
