@@ -2054,6 +2054,13 @@ argument_list|(
 name|ts
 argument_list|)
 expr_stmt|;
+name|c
+operator|.
+name|setReviewStarted
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|PatchSet
 name|ps
 init|=

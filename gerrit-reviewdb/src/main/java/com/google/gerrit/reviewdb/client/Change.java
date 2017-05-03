@@ -2138,6 +2138,25 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/** Whether the change has started review. */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|22
+argument_list|)
+DECL|field|reviewStarted
+specifier|protected
+name|boolean
+name|reviewStarted
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** @see com.google.gerrit.server.notedb.NoteDbChangeState */
 end_comment
 
@@ -2341,6 +2360,12 @@ operator|=
 name|other
 operator|.
 name|workInProgress
+expr_stmt|;
+name|reviewStarted
+operator|=
+name|other
+operator|.
+name|reviewStarted
 expr_stmt|;
 name|noteDbState
 operator|=
@@ -3022,6 +3047,38 @@ operator|.
 name|workInProgress
 operator|=
 name|workInProgress
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|hasReviewStarted ()
+specifier|public
+name|boolean
+name|hasReviewStarted
+parameter_list|()
+block|{
+return|return
+name|reviewStarted
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setReviewStarted (boolean reviewStarted)
+specifier|public
+name|void
+name|setReviewStarted
+parameter_list|(
+name|boolean
+name|reviewStarted
+parameter_list|)
+block|{
+name|this
+operator|.
+name|reviewStarted
+operator|=
+name|reviewStarted
 expr_stmt|;
 block|}
 end_function

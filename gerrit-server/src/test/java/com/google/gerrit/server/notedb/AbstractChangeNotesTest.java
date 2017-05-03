@@ -1774,11 +1774,14 @@ name|systemTimeZone
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|newChange ()
+DECL|method|newChange (boolean workInProgress)
 specifier|protected
 name|Change
 name|newChange
-parameter_list|()
+parameter_list|(
+name|boolean
+name|workInProgress
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -1835,11 +1838,48 @@ argument_list|)
 expr_stmt|;
 name|u
 operator|.
+name|setWorkInProgress
+argument_list|(
+name|workInProgress
+argument_list|)
+expr_stmt|;
+name|u
+operator|.
 name|commit
 argument_list|()
 expr_stmt|;
 return|return
 name|c
+return|;
+block|}
+DECL|method|newWorkInProgressChange ()
+specifier|protected
+name|Change
+name|newWorkInProgressChange
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|newChange
+argument_list|(
+literal|true
+argument_list|)
+return|;
+block|}
+DECL|method|newChange ()
+specifier|protected
+name|Change
+name|newChange
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|newChange
+argument_list|(
+literal|false
+argument_list|)
 return|;
 block|}
 DECL|method|newUpdate (Change c, CurrentUser user)

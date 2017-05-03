@@ -321,7 +321,7 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|review (ReviewInput in)
-name|void
+name|ReviewResult
 name|review
 parameter_list|(
 name|ReviewInput
@@ -809,7 +809,7 @@ annotation|@
 name|Override
 DECL|method|review (ReviewInput in)
 specifier|public
-name|void
+name|ReviewResult
 name|review
 parameter_list|(
 name|ReviewInput

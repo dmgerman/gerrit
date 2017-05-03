@@ -545,6 +545,16 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
+name|ReviewerSet
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|ReviewerByEmailSet
+operator|.
+name|empty
+argument_list|()
+argument_list|,
 name|ImmutableList
 operator|.
 name|of
@@ -580,10 +590,12 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, @Nullable Boolean isPrivate, @Nullable Boolean workInProgress)
+DECL|method|create ( @ullable ObjectId metaId, Change.Id changeId, Change.Key changeKey, Timestamp createdOn, Timestamp lastUpdatedOn, Account.Id owner, String branch, @Nullable PatchSet.Id currentPatchSetId, String subject, @Nullable String topic, @Nullable String originalSubject, @Nullable String submissionId, @Nullable Account.Id assignee, @Nullable Change.Status status, @Nullable Set<Account.Id> pastAssignees, @Nullable Set<String> hashtags, Map<PatchSet.Id, PatchSet> patchSets, ListMultimap<PatchSet.Id, PatchSetApproval> approvals, ReviewerSet reviewers, ReviewerByEmailSet reviewersByEmail, ReviewerSet pendingReviewers, ReviewerByEmailSet pendingReviewersByEmail, List<Account.Id> allPastReviewers, List<ReviewerStatusUpdate> reviewerUpdates, List<SubmitRecord> submitRecords, List<ChangeMessage> allChangeMessages, ListMultimap<PatchSet.Id, ChangeMessage> changeMessagesByPatchSet, ListMultimap<RevId, Comment> publishedComments, @Nullable Timestamp readOnlyUntil, @Nullable Boolean isPrivate, @Nullable Boolean workInProgress, boolean hasReviewStarted)
 specifier|static
 name|ChangeNotesState
 name|create
@@ -700,6 +712,12 @@ parameter_list|,
 name|ReviewerByEmailSet
 name|reviewersByEmail
 parameter_list|,
+name|ReviewerSet
+name|pendingReviewers
+parameter_list|,
+name|ReviewerByEmailSet
+name|pendingReviewersByEmail
+parameter_list|,
 name|List
 argument_list|<
 name|Account
@@ -758,6 +776,9 @@ annotation|@
 name|Nullable
 name|Boolean
 name|workInProgress
+parameter_list|,
+name|boolean
+name|hasReviewStarted
 parameter_list|)
 block|{
 if|if
@@ -813,6 +834,8 @@ argument_list|,
 name|isPrivate
 argument_list|,
 name|workInProgress
+argument_list|,
+name|hasReviewStarted
 argument_list|)
 argument_list|,
 name|ImmutableSet
@@ -852,6 +875,10 @@ argument_list|,
 name|reviewers
 argument_list|,
 name|reviewersByEmail
+argument_list|,
+name|pendingReviewers
+argument_list|,
+name|pendingReviewersByEmail
 argument_list|,
 name|ImmutableList
 operator|.
@@ -900,6 +927,8 @@ argument_list|,
 name|isPrivate
 argument_list|,
 name|workInProgress
+argument_list|,
+name|hasReviewStarted
 argument_list|)
 return|;
 block|}
@@ -1024,6 +1053,14 @@ name|Boolean
 name|isWorkInProgress
 parameter_list|()
 function_decl|;
+annotation|@
+name|Nullable
+DECL|method|hasReviewStarted ()
+specifier|abstract
+name|Boolean
+name|hasReviewStarted
+parameter_list|()
+function_decl|;
 block|}
 comment|// Only null if NoteDb is disabled.
 annotation|@
@@ -1120,6 +1157,18 @@ name|ReviewerByEmailSet
 name|reviewersByEmail
 parameter_list|()
 function_decl|;
+DECL|method|pendingReviewers ()
+specifier|abstract
+name|ReviewerSet
+name|pendingReviewers
+parameter_list|()
+function_decl|;
+DECL|method|pendingReviewersByEmail ()
+specifier|abstract
+name|ReviewerByEmailSet
+name|pendingReviewersByEmail
+parameter_list|()
+function_decl|;
 DECL|method|allPastReviewers ()
 specifier|abstract
 name|ImmutableList
@@ -1204,6 +1253,14 @@ DECL|method|isWorkInProgress ()
 specifier|abstract
 name|Boolean
 name|isWorkInProgress
+parameter_list|()
+function_decl|;
+annotation|@
+name|Nullable
+DECL|method|hasReviewStarted ()
+specifier|abstract
+name|Boolean
+name|hasReviewStarted
 parameter_list|()
 function_decl|;
 DECL|method|newChange (Project.NameKey project)
@@ -1606,6 +1663,25 @@ else|:
 name|c
 operator|.
 name|isWorkInProgress
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|change
+operator|.
+name|setReviewStarted
+argument_list|(
+name|c
+operator|.
+name|hasReviewStarted
+argument_list|()
+operator|==
+literal|null
+condition|?
+literal|false
+else|:
+name|c
+operator|.
+name|hasReviewStarted
 argument_list|()
 argument_list|)
 expr_stmt|;
