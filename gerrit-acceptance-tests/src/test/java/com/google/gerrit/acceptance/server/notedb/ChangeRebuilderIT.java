@@ -1577,15 +1577,6 @@ specifier|private
 name|TestChangeRebuilderWrapper
 name|rebuilderWrapper
 decl_stmt|;
-DECL|field|batchUpdateFactory
-annotation|@
-name|Inject
-specifier|private
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-decl_stmt|;
 DECL|field|seq
 annotation|@
 name|Inject

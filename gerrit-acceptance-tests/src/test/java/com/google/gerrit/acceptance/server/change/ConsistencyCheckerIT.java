@@ -920,15 +920,6 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
-DECL|field|updateFactory
-annotation|@
-name|Inject
-specifier|private
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-decl_stmt|;
 DECL|field|changeInserterFactory
 annotation|@
 name|Inject
@@ -5362,7 +5353,7 @@ name|owner
 parameter_list|)
 block|{
 return|return
-name|updateFactory
+name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(

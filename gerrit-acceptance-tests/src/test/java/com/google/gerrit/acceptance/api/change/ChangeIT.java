@@ -1979,15 +1979,6 @@ specifier|private
 name|String
 name|systemTimeZone
 decl_stmt|;
-DECL|field|updateFactory
-annotation|@
-name|Inject
-specifier|private
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-decl_stmt|;
 DECL|field|changeMessageModifiers
 annotation|@
 name|Inject
@@ -22754,7 +22745,7 @@ init|(
 name|BatchUpdate
 name|batchUpdate
 init|=
-name|updateFactory
+name|batchUpdateFactory
 operator|.
 name|create
 argument_list|(

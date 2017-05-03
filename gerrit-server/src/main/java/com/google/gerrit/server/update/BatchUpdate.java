@@ -847,6 +847,7 @@ operator|.
 name|AssistedFactory
 name|unfusedNoteDbBatchUpdateFactory
 decl_stmt|;
+comment|// TODO(dborowitz): Make this non-injectable to force all callers to use RetryHelper.
 annotation|@
 name|Inject
 DECL|method|Factory ( NotesMigration migration, ReviewDbBatchUpdate.AssistedFactory reviewDbBatchUpdateFactory, FusedNoteDbBatchUpdate.AssistedFactory fusedNoteDbBatchUpdateFactory, UnfusedNoteDbBatchUpdate.AssistedFactory unfusedNoteDbBatchUpdateFactory)
