@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|api
+operator|.
+name|ApiUtil
+operator|.
+name|asRestApiException
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -292,16 +310,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|SortedMap
@@ -425,15 +433,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve project"
 argument_list|,
@@ -557,13 +562,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"project list unavailable"
 argument_list|,
