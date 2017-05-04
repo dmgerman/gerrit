@@ -1314,6 +1314,11 @@ name|dst
 argument_list|,
 name|edits
 argument_list|,
+name|content
+operator|.
+name|getEditsDueToRebase
+argument_list|()
+argument_list|,
 name|a
 operator|.
 name|displayMethod

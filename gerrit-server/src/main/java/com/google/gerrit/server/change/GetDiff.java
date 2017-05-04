@@ -676,6 +676,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|TimeUnit
@@ -1396,6 +1406,17 @@ argument_list|(
 name|ps
 argument_list|)
 decl_stmt|;
+name|Set
+argument_list|<
+name|Edit
+argument_list|>
+name|editsDueToRebase
+init|=
+name|ps
+operator|.
+name|getEditsDueToRebase
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Edit
@@ -1518,6 +1539,16 @@ argument_list|()
 else|:
 literal|null
 decl_stmt|;
+name|boolean
+name|dueToRebase
+init|=
+name|editsDueToRebase
+operator|.
+name|contains
+argument_list|(
+name|edit
+argument_list|)
+decl_stmt|;
 name|content
 operator|.
 name|addDiff
@@ -1533,6 +1564,8 @@ name|getEndB
 argument_list|()
 argument_list|,
 name|internalEdit
+argument_list|,
+name|dueToRebase
 argument_list|)
 expr_stmt|;
 break|break;
@@ -2725,7 +2758,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|addDiff (int endA, int endB, List<Edit> internalEdit)
+DECL|method|addDiff (int endA, int endB, List<Edit> internalEdit, boolean dueToRebase)
 name|void
 name|addDiff
 parameter_list|(
@@ -2740,6 +2773,9 @@ argument_list|<
 name|Edit
 argument_list|>
 name|internalEdit
+parameter_list|,
+name|boolean
+name|dueToRebase
 parameter_list|)
 block|{
 name|int
@@ -3028,6 +3064,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|e
+operator|.
+name|dueToRebase
+operator|=
+name|dueToRebase
+condition|?
+literal|true
+else|:
+literal|null
+expr_stmt|;
 block|}
 DECL|method|entry ()
 specifier|private
