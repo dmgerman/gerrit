@@ -2472,6 +2472,8 @@ name|rsrc
 operator|.
 name|getPath
 argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 return|;
@@ -2479,7 +2481,9 @@ block|}
 catch|catch
 parameter_list|(
 name|ResourceNotFoundException
-name|rnfe
+decl||
+name|BadRequestException
+name|e
 parameter_list|)
 block|{
 return|return
