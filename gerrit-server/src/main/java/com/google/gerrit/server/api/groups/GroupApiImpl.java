@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|api
+operator|.
+name|ApiUtil
+operator|.
+name|asRestApiException
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -508,20 +526,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -539,16 +543,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -909,13 +903,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve group"
 argument_list|,
@@ -947,13 +940,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve group"
 argument_list|,
@@ -1041,15 +1033,12 @@ throw|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot put group name"
 argument_list|,
@@ -1081,13 +1070,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get group owner"
 argument_list|,
@@ -1140,15 +1128,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot put group owner"
 argument_list|,
@@ -1220,15 +1205,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot put group description"
 argument_list|,
@@ -1283,15 +1265,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot put group options"
 argument_list|,
@@ -1356,13 +1335,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot list group members"
 argument_list|,
@@ -1411,15 +1389,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot add group members"
 argument_list|,
@@ -1468,15 +1443,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot remove group members"
 argument_list|,
@@ -1511,13 +1483,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot list included groups"
 argument_list|,
@@ -1566,13 +1537,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot add group members"
 argument_list|,
@@ -1621,13 +1591,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot remove group members"
 argument_list|,
@@ -1664,13 +1633,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get audit log"
 argument_list|,
@@ -1707,13 +1675,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot index group"
 argument_list|,

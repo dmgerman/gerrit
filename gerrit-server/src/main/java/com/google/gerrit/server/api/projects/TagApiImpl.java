@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|api
+operator|.
+name|ApiUtil
+operator|.
+name|asRestApiException
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -247,20 +265,6 @@ operator|.
 name|project
 operator|.
 name|TagsCollection
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -464,13 +468,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot create tag"
 argument_list|,
@@ -509,18 +512,16 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
+literal|"Cannot get tag"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -554,20 +555,16 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
+literal|"Cannot delete tag"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}

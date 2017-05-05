@@ -69,18 +69,20 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|server
 operator|.
-name|errors
+name|api
 operator|.
-name|EmailException
+name|ApiUtil
+operator|.
+name|asRestApiException
 import|;
 end_import
 
@@ -1198,68 +1200,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|permissions
-operator|.
-name|PermissionBackendException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|InvalidChangeOperationException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|UpdateException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1289,16 +1229,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -2119,15 +2049,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot parse revision"
 argument_list|,
@@ -2174,13 +2101,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot parse reviewer"
 argument_list|,
@@ -2234,17 +2160,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|UpdateException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot abandon change"
 argument_list|,
@@ -2298,17 +2219,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|UpdateException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot restore change"
 argument_list|,
@@ -2376,15 +2292,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|UpdateException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot move change"
 argument_list|,
@@ -2438,13 +2351,12 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot change private status"
 argument_list|,
@@ -2486,13 +2398,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set work in progress state"
 argument_list|,
@@ -2534,13 +2445,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set ready for review state"
 argument_list|,
@@ -2603,17 +2513,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|UpdateException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot revert change"
 argument_list|,
@@ -2653,19 +2558,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|UpdateException
-decl||
-name|InvalidChangeOperationException
-decl||
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot update change by merge"
 argument_list|,
@@ -2797,15 +2695,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot query submittedTogether"
 argument_list|,
@@ -2838,13 +2733,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot publish change"
 argument_list|,
@@ -2898,21 +2792,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|EmailException
-decl||
-name|OrmException
-decl||
-name|UpdateException
-decl||
-name|IOException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot rebase change"
 argument_list|,
@@ -2945,15 +2830,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot delete change"
 argument_list|,
@@ -3025,15 +2907,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set topic"
 argument_list|,
@@ -3065,15 +2944,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Could not extract IncludedIn data"
 argument_list|,
@@ -3143,19 +3019,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|UpdateException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot add change reviewer"
 argument_list|,
@@ -3275,15 +3144,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve suggested reviewers"
 argument_list|,
@@ -3326,13 +3192,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve change"
 argument_list|,
@@ -3463,15 +3328,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot post hashtags"
 argument_list|,
@@ -3509,15 +3371,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get hashtags"
 argument_list|,
@@ -3554,19 +3413,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
-name|IOException
-decl||
-name|OrmException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set assignee"
 argument_list|,
@@ -3616,13 +3468,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get assignee"
 argument_list|,
@@ -3660,13 +3511,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get past assignees"
 argument_list|,
@@ -3718,17 +3568,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
-name|OrmException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot delete assignee"
 argument_list|,
@@ -3768,13 +3613,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get comments"
 argument_list|,
@@ -3814,13 +3658,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get robot comments"
 argument_list|,
@@ -3860,13 +3703,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get drafts"
 argument_list|,
@@ -3901,13 +3743,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot check change"
 argument_list|,
@@ -3931,6 +3772,8 @@ name|RestApiException
 block|{
 try|try
 block|{
+comment|// TODO(dborowitz): Convert to RetryingRestModifyView. Needs to plumb BatchUpdate.Factory into
+comment|// ConsistencyChecker.
 return|return
 name|check
 operator|.
@@ -3947,15 +3790,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot check change"
 argument_list|,
@@ -3992,17 +3832,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|OrmException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot index change"
 argument_list|,
@@ -4024,6 +3859,8 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
+comment|// TODO(dborowitz): Convert to RetryingRestModifyView. Needs to plumb BatchUpdate.Factory into
+comment|// StarredChangesUtil.
 if|if
 condition|(
 name|ignore
@@ -4075,6 +3912,8 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
+comment|// TODO(dborowitz): Convert to RetryingRestModifyView. Needs to plumb BatchUpdate.Factory into
+comment|// StarredChangesUtil.
 if|if
 condition|(
 name|mute

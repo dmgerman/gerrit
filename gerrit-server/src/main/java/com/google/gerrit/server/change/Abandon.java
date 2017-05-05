@@ -220,22 +220,6 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
-operator|.
-name|RestModifyView
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|webui
 operator|.
 name|UiAction
@@ -412,6 +396,38 @@ name|server
 operator|.
 name|update
 operator|.
+name|RetryHelper
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
+name|RetryingRestModifyView
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
 name|UpdateException
 import|;
 end_import
@@ -483,14 +499,16 @@ DECL|class|Abandon
 specifier|public
 class|class
 name|Abandon
-implements|implements
-name|RestModifyView
+extends|extends
+name|RetryingRestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
 name|AbandonInput
+argument_list|,
+name|ChangeInfo
 argument_list|>
-implements|,
+implements|implements
 name|UiAction
 argument_list|<
 name|ChangeResource
@@ -513,14 +531,6 @@ operator|.
 name|Factory
 name|json
 decl_stmt|;
-DECL|field|batchUpdateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-decl_stmt|;
 DECL|field|abandonOpFactory
 specifier|private
 specifier|final
@@ -537,7 +547,7 @@ name|notifyUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Abandon ( Provider<ReviewDb> dbProvider, ChangeJson.Factory json, BatchUpdate.Factory batchUpdateFactory, AbandonOp.Factory abandonOpFactory, NotifyUtil notifyUtil)
+DECL|method|Abandon ( Provider<ReviewDb> dbProvider, ChangeJson.Factory json, RetryHelper retryHelper, AbandonOp.Factory abandonOpFactory, NotifyUtil notifyUtil)
 name|Abandon
 parameter_list|(
 name|Provider
@@ -551,10 +561,8 @@ operator|.
 name|Factory
 name|json
 parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
+name|RetryHelper
+name|retryHelper
 parameter_list|,
 name|AbandonOp
 operator|.
@@ -565,6 +573,11 @@ name|NotifyUtil
 name|notifyUtil
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|retryHelper
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|dbProvider
@@ -576,12 +589,6 @@ operator|.
 name|json
 operator|=
 name|json
-expr_stmt|;
-name|this
-operator|.
-name|batchUpdateFactory
-operator|=
-name|batchUpdateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -598,11 +605,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource req, AbandonInput input)
-specifier|public
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource req, AbandonInput input)
+specifier|protected
 name|ChangeInfo
-name|apply
+name|applyImpl
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|ChangeResource
 name|req
 parameter_list|,
@@ -640,6 +652,8 @@ name|change
 init|=
 name|abandon
 argument_list|(
+name|updateFactory
+argument_list|,
 name|req
 operator|.
 name|getControl
@@ -675,11 +689,16 @@ name|change
 argument_list|)
 return|;
 block|}
-DECL|method|abandon (ChangeControl control)
+DECL|method|abandon (BatchUpdate.Factory updateFactory, ChangeControl control)
 specifier|public
 name|Change
 name|abandon
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|ChangeControl
 name|control
 parameter_list|)
@@ -691,6 +710,8 @@ block|{
 return|return
 name|abandon
 argument_list|(
+name|updateFactory
+argument_list|,
 name|control
 argument_list|,
 literal|""
@@ -706,11 +727,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|abandon (ChangeControl control, String msgTxt)
+DECL|method|abandon (BatchUpdate.Factory updateFactory, ChangeControl control, String msgTxt)
 specifier|public
 name|Change
 name|abandon
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|ChangeControl
 name|control
 parameter_list|,
@@ -725,6 +751,8 @@ block|{
 return|return
 name|abandon
 argument_list|(
+name|updateFactory
+argument_list|,
 name|control
 argument_list|,
 name|msgTxt
@@ -740,11 +768,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|abandon ( ChangeControl control, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|abandon ( BatchUpdate.Factory updateFactory, ChangeControl control, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|Change
 name|abandon
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|ChangeControl
 name|control
 parameter_list|,
@@ -816,7 +849,7 @@ init|(
 name|BatchUpdate
 name|u
 init|=
-name|batchUpdateFactory
+name|updateFactory
 operator|.
 name|create
 argument_list|(
@@ -869,11 +902,16 @@ argument_list|()
 return|;
 block|}
 comment|/**    * If an extension has more than one changes to abandon that belong to the same project, they    * should use the batch instead of abandoning one by one.    *    *<p>It's the caller's responsibility to ensure that all jobs inside the same batch have the    * matching project from its ChangeControl. Violations will result in a ResourceConflictException.    */
-DECL|method|batchAbandon ( Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|batchAbandon ( BatchUpdate.Factory updateFactory, Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|void
 name|batchAbandon
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -942,7 +980,7 @@ init|(
 name|BatchUpdate
 name|u
 init|=
-name|batchUpdateFactory
+name|updateFactory
 operator|.
 name|create
 argument_list|(
@@ -1047,11 +1085,16 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|batchAbandon ( Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt)
+DECL|method|batchAbandon ( BatchUpdate.Factory updateFactory, Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls, String msgTxt)
 specifier|public
 name|void
 name|batchAbandon
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -1076,6 +1119,8 @@ name|UpdateException
 block|{
 name|batchAbandon
 argument_list|(
+name|updateFactory
+argument_list|,
 name|project
 argument_list|,
 name|user
@@ -1095,11 +1140,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|batchAbandon ( Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls)
+DECL|method|batchAbandon ( BatchUpdate.Factory updateFactory, Project.NameKey project, CurrentUser user, Collection<ChangeControl> controls)
 specifier|public
 name|void
 name|batchAbandon
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -1121,6 +1171,8 @@ name|UpdateException
 block|{
 name|batchAbandon
 argument_list|(
+name|updateFactory
+argument_list|,
 name|project
 argument_list|,
 name|user

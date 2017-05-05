@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|api
+operator|.
+name|ApiUtil
+operator|.
+name|asRestApiException
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -197,36 +215,6 @@ operator|.
 name|change
 operator|.
 name|PutDraftComment
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|UpdateException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -368,13 +356,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve draft"
 argument_list|,
@@ -414,15 +401,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot update draft"
 argument_list|,
@@ -455,13 +439,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot delete draft"
 argument_list|,

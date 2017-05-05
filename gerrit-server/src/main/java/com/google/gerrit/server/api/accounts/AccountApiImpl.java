@@ -70,6 +70,24 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|api
+operator|.
+name|ApiUtil
+operator|.
+name|asRestApiException
+import|;
+end_import
+
+begin_import
+import|import static
 name|javax
 operator|.
 name|servlet
@@ -93,22 +111,6 @@ operator|.
 name|common
 operator|.
 name|RawInputUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|errors
-operator|.
-name|EmailException
 import|;
 end_import
 
@@ -437,20 +439,6 @@ operator|.
 name|restapi
 operator|.
 name|TopLevelResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|GpgException
 import|;
 end_import
 
@@ -972,36 +960,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|permissions
-operator|.
-name|PermissionBackendException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1019,16 +977,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -1059,20 +1007,6 @@ operator|.
 name|util
 operator|.
 name|SortedSet
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
 import|;
 end_import
 
@@ -1714,13 +1648,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot parse change"
 argument_list|,
@@ -1824,15 +1757,12 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set active"
 argument_list|,
@@ -1896,13 +1826,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get preferences"
 argument_list|,
@@ -1939,17 +1868,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set preferences"
 argument_list|,
@@ -1981,17 +1905,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot query diff preferences"
 argument_list|,
@@ -2028,17 +1947,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set diff preferences"
 argument_list|,
@@ -2070,17 +1984,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot query edit preferences"
 argument_list|,
@@ -2117,17 +2026,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set edit preferences"
 argument_list|,
@@ -2162,19 +2066,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get watched projects"
 argument_list|,
@@ -2217,19 +2114,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot update watched projects"
 argument_list|,
@@ -2268,19 +2158,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot delete watched projects"
 argument_list|,
@@ -2346,15 +2229,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot star change"
 argument_list|,
@@ -2431,15 +2311,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot unstar change"
 argument_list|,
@@ -2497,13 +2374,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot post stars"
 argument_list|,
@@ -2560,13 +2436,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get stars"
 argument_list|,
@@ -2604,13 +2479,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get starred changes"
 argument_list|,
@@ -2693,21 +2567,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|EmailException
-decl||
-name|OrmException
-decl||
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot add email"
 argument_list|,
@@ -2761,19 +2626,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot delete email"
 argument_list|,
@@ -2822,17 +2680,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set status"
 argument_list|,
@@ -2867,19 +2720,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot list SSH keys"
 argument_list|,
@@ -2941,19 +2787,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot add SSH key"
 argument_list|,
@@ -3013,19 +2852,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|ConfigInvalidException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot delete SSH key"
 argument_list|,
@@ -3062,13 +2894,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|GpgException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot list GPG keys"
 argument_list|,
@@ -3121,13 +2952,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|GpgException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot add GPG key"
 argument_list|,
@@ -3169,13 +2999,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|GpgException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get PGP key"
 argument_list|,
@@ -3246,15 +3075,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot sign agreement"
 argument_list|,
@@ -3291,15 +3117,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot index account"
 argument_list|,
@@ -3334,15 +3157,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get external IDs"
 argument_list|,
@@ -3381,17 +3201,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
-name|OrmException
-decl||
-name|ConfigInvalidException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot delete external IDs"
 argument_list|,

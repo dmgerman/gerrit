@@ -5664,6 +5664,8 @@ argument_list|()
 operator|.
 name|apply
 argument_list|(
+name|batchUpdateFactory
+argument_list|,
 name|revRsrc
 argument_list|,
 name|rin
@@ -5783,6 +5785,8 @@ argument_list|()
 operator|.
 name|apply
 argument_list|(
+name|batchUpdateFactory
+argument_list|,
 name|revRsrc
 argument_list|,
 name|rin

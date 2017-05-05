@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|api
+operator|.
+name|ApiUtil
+operator|.
+name|asRestApiException
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -79,22 +97,6 @@ operator|.
 name|collect
 operator|.
 name|ImmutableSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|errors
-operator|.
-name|EmailException
 import|;
 end_import
 
@@ -1026,68 +1028,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|patch
-operator|.
-name|PatchListNotAvailableException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|permissions
-operator|.
-name|PermissionBackendException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|update
-operator|.
-name|UpdateException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1117,16 +1057,6 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -1856,19 +1786,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|UpdateException
-decl||
-name|IOException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot post review"
 argument_list|,
@@ -1915,6 +1838,8 @@ name|RestApiException
 block|{
 try|try
 block|{
+comment|// TODO(dborowitz): Convert to RetryingRestModifyHandler. Requires converting MergeOp to a
+comment|// Factory that takes BatchUpdate.Factory. (Enough Factories yet?)
 name|submit
 operator|.
 name|apply
@@ -1927,17 +1852,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot submit change"
 argument_list|,
@@ -1978,6 +1898,8 @@ name|RestApiException
 block|{
 try|try
 block|{
+comment|// TODO(dborowitz): Convert to RetryingRestModifyHandler. Requires converting MergeOp to a
+comment|// Factory that takes BatchUpdate.Factory.
 name|submitPreview
 operator|.
 name|setFormat
@@ -1996,13 +1918,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get submit preview"
 argument_list|,
@@ -2039,13 +1960,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot publish draft patch set"
 argument_list|,
@@ -2078,17 +1998,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
-name|OrmException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot delete draft ps"
 argument_list|,
@@ -2156,21 +2071,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|EmailException
-decl||
-name|UpdateException
-decl||
-name|IOException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot rebase ps"
 argument_list|,
@@ -2240,13 +2146,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot check if rebase is possible"
 argument_list|,
@@ -2290,17 +2195,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|UpdateException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot cherry pick"
 argument_list|,
@@ -2347,13 +2247,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot parse reviewer"
 argument_list|,
@@ -2440,8 +2339,7 @@ name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot update reviewed flag"
 argument_list|,
@@ -2500,17 +2398,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|PatchListNotAvailableException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot list reviewed files"
 argument_list|,
@@ -2542,15 +2435,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot check mergeability"
 argument_list|,
@@ -2589,15 +2479,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot check mergeability"
 argument_list|,
@@ -2650,17 +2537,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|PatchListNotAvailableException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve files"
 argument_list|,
@@ -2721,17 +2603,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|PatchListNotAvailableException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve files"
 argument_list|,
@@ -2792,17 +2669,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
-decl||
-name|PatchListNotAvailableException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve files"
 argument_list|,
@@ -2874,13 +2746,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve comments"
 argument_list|,
@@ -2920,13 +2791,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve robot comments"
 argument_list|,
@@ -2961,13 +2831,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve comments"
 argument_list|,
@@ -3007,13 +2876,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve drafts"
 argument_list|,
@@ -3048,13 +2916,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve robot comments"
 argument_list|,
@@ -3106,15 +2973,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot apply fix"
 argument_list|,
@@ -3149,13 +3013,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve drafts"
 argument_list|,
@@ -3202,13 +3065,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve draft"
 argument_list|,
@@ -3289,15 +3151,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot create draft"
 argument_list|,
@@ -3344,13 +3203,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve comment"
 argument_list|,
@@ -3397,13 +3255,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot retrieve robot comment"
 argument_list|,
@@ -3435,13 +3292,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get patch"
 argument_list|,
@@ -3481,13 +3337,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get patch"
 argument_list|,
@@ -3527,13 +3382,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get actions"
 argument_list|,
@@ -3565,13 +3419,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get submit type"
 argument_list|,
@@ -3608,13 +3461,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot test submit type"
 argument_list|,
@@ -3690,13 +3542,12 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot get merge list"
 argument_list|,
@@ -3752,15 +3603,12 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UpdateException
-decl||
-name|PermissionBackendException
+name|Exception
 name|e
 parameter_list|)
 block|{
 throw|throw
-operator|new
-name|RestApiException
+name|asRestApiException
 argument_list|(
 literal|"Cannot set description"
 argument_list|,
