@@ -441,11 +441,12 @@ literal|"(INTERNALDATE)"
 argument_list|)
 condition|)
 block|{
+comment|// false indicates that there are no messages to fetch
 name|log
 operator|.
-name|error
+name|info
 argument_list|(
-literal|"IMAP fetch failed. Will retry in next fetch cycle."
+literal|"Fetched 0 messages via IMAP"
 argument_list|)
 expr_stmt|;
 return|return;
