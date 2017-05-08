@@ -266,7 +266,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * @return true if the account is active.    * @throws NamingException    * @throws LoginException    * @throws AccountException    */
+comment|/**    * @return true if the account is active.    * @throws NamingException    * @throws LoginException    * @throws AccountException    * @throws IOException    */
 DECL|method|isActive (@uppressWarningsR) String username)
 specifier|default
 name|boolean
@@ -286,6 +286,8 @@ throws|,
 name|NamingException
 throws|,
 name|AccountException
+throws|,
+name|IOException
 block|{
 return|return
 literal|true
