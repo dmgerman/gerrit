@@ -2955,9 +2955,22 @@ name|sshDaemonLog
 operator|.
 name|warn
 argument_list|(
-literal|"Cannot format SSHD host key"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cannot format SSHD host key [%s]: %s"
+argument_list|,
+name|pub
+operator|.
+name|getAlgorithm
+argument_list|()
 argument_list|,
 name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
