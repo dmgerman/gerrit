@@ -638,7 +638,7 @@ operator|=
 name|ftr
 expr_stmt|;
 block|}
-comment|/**    * Get the content of a file at a specific commit or one of it's parent commits.    *    * @param project A {@code Project} that this request refers to.    * @param revstr An {@code ObjectId} specifying the commit.    * @param path A string specifying the filepath.    * @param parent A 1-based parent index to get the content from instead. Null if the content    *     should be obtained from {@param revstr} instead.    * @return Content of the file as {@code BinaryResult}.    * @throws ResourceNotFoundException    * @throws IOException    */
+comment|/**    * Get the content of a file at a specific commit or one of it's parent commits.    *    * @param project A {@code Project} that this request refers to.    * @param revstr An {@code ObjectId} specifying the commit.    * @param path A string specifying the filepath.    * @param parent A 1-based parent index to get the content from instead. Null if the content    *     should be obtained from {@code revstr} instead.    * @return Content of the file as {@code BinaryResult}.    * @throws ResourceNotFoundException    * @throws IOException    */
 DECL|method|getContent ( ProjectState project, ObjectId revstr, String path, @Nullable Integer parent)
 specifier|public
 name|BinaryResult
