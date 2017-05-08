@@ -562,6 +562,7 @@ operator|.
 name|ssh_key
 argument_list|)
 operator|&&
+operator|(
 operator|!
 name|exists
 argument_list|(
@@ -569,7 +570,7 @@ name|site
 operator|.
 name|ssh_rsa
 argument_list|)
-operator|&&
+operator|||
 operator|!
 name|exists
 argument_list|(
@@ -593,6 +594,7 @@ name|site
 operator|.
 name|ssh_ecdsa
 argument_list|)
+operator|)
 condition|)
 block|{
 name|System
