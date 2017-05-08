@@ -1325,6 +1325,26 @@ name|in
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|in
+operator|instanceof
+name|IndexPredicate
+condition|)
+block|{
+throw|throw
+operator|new
+name|QueryParseException
+argument_list|(
+literal|"Unsupported index predicate: "
+operator|+
+name|in
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+throw|;
+block|}
 return|return
 literal|null
 return|;
