@@ -3751,6 +3751,21 @@ name|value
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|args
+operator|.
+name|getSchema
+argument_list|()
+operator|.
+name|hasField
+argument_list|(
+name|ChangeField
+operator|.
+name|PRIVATE
+argument_list|)
+condition|)
+block|{
 return|return
 operator|new
 name|BooleanPredicate
@@ -3764,6 +3779,14 @@ operator|.
 name|fillArgs
 argument_list|)
 return|;
+block|}
+throw|throw
+operator|new
+name|QueryParseException
+argument_list|(
+literal|"'is:private' operator is not supported by change index version"
+argument_list|)
+throw|;
 block|}
 if|if
 condition|(
