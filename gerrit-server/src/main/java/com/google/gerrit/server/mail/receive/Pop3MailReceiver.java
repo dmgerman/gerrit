@@ -351,6 +351,8 @@ name|encryption
 operator|.
 name|name
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
