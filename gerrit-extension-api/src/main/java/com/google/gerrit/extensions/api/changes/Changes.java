@@ -223,6 +223,20 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Look up a change by project and numeric ID.    *    * @param project project name.    * @param id change number.    * @see #id(int)    */
+DECL|method|id (String project, int id)
+name|ChangeApi
+name|id
+parameter_list|(
+name|String
+name|project
+parameter_list|,
+name|int
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|create (ChangeInput in)
 name|ChangeApi
 name|create
@@ -628,6 +642,26 @@ name|String
 name|branch
 parameter_list|,
 name|String
+name|id
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|id (String project, int id)
+specifier|public
+name|ChangeApi
+name|id
+parameter_list|(
+name|String
+name|project
+parameter_list|,
+name|int
 name|id
 parameter_list|)
 block|{

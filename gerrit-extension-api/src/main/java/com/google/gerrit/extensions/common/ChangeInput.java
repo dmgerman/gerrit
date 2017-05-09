@@ -202,6 +202,45 @@ specifier|public
 name|MergeInput
 name|merge
 decl_stmt|;
+DECL|method|ChangeInput ()
+specifier|public
+name|ChangeInput
+parameter_list|()
+block|{}
+comment|/**    * Creates a new {@code ChangeInput} with the minimal attributes required for a successful    * creation of a new change.    *    * @param project the project name for the new change    * @param branch the branch name for the new change    * @param subject the subject (commit message) for the new change    */
+DECL|method|ChangeInput (String project, String branch, String subject)
+specifier|public
+name|ChangeInput
+parameter_list|(
+name|String
+name|project
+parameter_list|,
+name|String
+name|branch
+parameter_list|,
+name|String
+name|subject
+parameter_list|)
+block|{
+name|this
+operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
+name|this
+operator|.
+name|branch
+operator|=
+name|branch
+expr_stmt|;
+name|this
+operator|.
+name|subject
+operator|=
+name|subject
+expr_stmt|;
+block|}
 comment|/** Who to send email notifications to after change is created. */
 DECL|field|notify
 specifier|public
