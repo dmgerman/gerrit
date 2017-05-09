@@ -1651,7 +1651,7 @@ operator|||
 operator|!
 name|refControl
 operator|.
-name|canRead
+name|isVisible
 argument_list|()
 condition|)
 block|{
@@ -1764,7 +1764,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|InvalidChangeOperationException
+name|UnprocessableEntityException
 argument_list|(
 literal|"Base change not found: "
 operator|+
@@ -1800,7 +1800,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|InvalidChangeOperationException
+name|UnprocessableEntityException
 argument_list|(
 literal|"Base change not found: "
 operator|+
