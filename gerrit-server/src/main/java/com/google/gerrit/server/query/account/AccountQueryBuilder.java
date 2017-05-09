@@ -803,6 +803,13 @@ name|equalsIgnoreCase
 argument_list|(
 name|query
 argument_list|)
+operator|||
+literal|"me"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|query
+argument_list|)
 condition|)
 block|{
 try|try

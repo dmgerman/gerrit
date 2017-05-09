@@ -1731,6 +1731,13 @@ argument_list|)
 expr_stmt|;
 name|assertQuery
 argument_list|(
+literal|"me"
+argument_list|,
+name|currentUserInfo
+argument_list|)
+expr_stmt|;
+name|assertQuery
+argument_list|(
 literal|"name:John"
 argument_list|,
 name|user1

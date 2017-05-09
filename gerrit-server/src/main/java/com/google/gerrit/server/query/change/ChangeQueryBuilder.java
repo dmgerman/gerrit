@@ -5426,6 +5426,31 @@ name|who
 argument_list|)
 return|;
 block|}
+DECL|method|isSelf (String who)
+specifier|private
+name|boolean
+name|isSelf
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+block|{
+return|return
+literal|"self"
+operator|.
+name|equals
+argument_list|(
+name|who
+argument_list|)
+operator|||
+literal|"me"
+operator|.
+name|equals
+argument_list|(
+name|who
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Operator
 DECL|method|visibleto (String who)
@@ -5446,9 +5471,7 @@ name|OrmException
 block|{
 if|if
 condition|(
-literal|"self"
-operator|.
-name|equals
+name|isSelf
 argument_list|(
 name|who
 argument_list|)
@@ -7354,9 +7377,7 @@ name|OrmException
 block|{
 if|if
 condition|(
-literal|"self"
-operator|.
-name|equals
+name|isSelf
 argument_list|(
 name|who
 argument_list|)
