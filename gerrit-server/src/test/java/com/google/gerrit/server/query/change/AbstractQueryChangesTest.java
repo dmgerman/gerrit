@@ -12902,6 +12902,14 @@ argument_list|(
 name|rin
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getSchemaVersion
+argument_list|()
+operator|>=
+literal|41
+condition|)
+block|{
 name|assertQuery
 argument_list|(
 literal|"reviewer:\""
@@ -12947,6 +12955,78 @@ argument_list|,
 name|change2
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|assertMissingField
+argument_list|(
+name|ChangeField
+operator|.
+name|REVIEWER_BY_EMAIL
+argument_list|)
+expr_stmt|;
+name|assertFailingQuery
+argument_list|(
+literal|"reviewer:\""
+operator|+
+name|userByEmailWithName
+operator|+
+literal|"\""
+argument_list|,
+literal|"User "
+operator|+
+name|userByEmailWithName
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
+name|assertFailingQuery
+argument_list|(
+literal|"cc:\""
+operator|+
+name|userByEmailWithName
+operator|+
+literal|"\""
+argument_list|,
+literal|"User "
+operator|+
+name|userByEmailWithName
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
+comment|// Omitting the name:
+name|assertFailingQuery
+argument_list|(
+literal|"reviewer:\""
+operator|+
+name|userByEmail
+operator|+
+literal|"\""
+argument_list|,
+literal|"User "
+operator|+
+name|userByEmail
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
+name|assertFailingQuery
+argument_list|(
+literal|"cc:\""
+operator|+
+name|userByEmail
+operator|+
+literal|"\""
+argument_list|,
+literal|"User "
+operator|+
+name|userByEmail
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
@@ -13156,6 +13236,14 @@ argument_list|(
 name|rin
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getSchemaVersion
+argument_list|()
+operator|>=
+literal|41
+condition|)
+block|{
 name|assertQuery
 argument_list|(
 literal|"reviewer:\"someone@example.com\""
@@ -13166,6 +13254,52 @@ argument_list|(
 literal|"cc:\"someone@example.com\""
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|assertMissingField
+argument_list|(
+name|ChangeField
+operator|.
+name|REVIEWER_BY_EMAIL
+argument_list|)
+expr_stmt|;
+name|String
+name|someoneEmail
+init|=
+literal|"someone@example.com"
+decl_stmt|;
+name|assertFailingQuery
+argument_list|(
+literal|"reviewer:\""
+operator|+
+name|someoneEmail
+operator|+
+literal|"\""
+argument_list|,
+literal|"User "
+operator|+
+name|someoneEmail
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
+name|assertFailingQuery
+argument_list|(
+literal|"cc:\""
+operator|+
+name|someoneEmail
+operator|+
+literal|"\""
+argument_list|,
+literal|"User "
+operator|+
+name|someoneEmail
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
