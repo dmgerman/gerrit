@@ -369,7 +369,16 @@ specifier|final
 name|InternalChangeQuery
 name|internalChangeQuery
 decl_stmt|;
-DECL|method|RebaseSorter ( CodeReviewRevWalk rw, RevCommit initialTip, Set<RevCommit> alreadyAccepted, RevFlag canMergeFlag, InternalChangeQuery internalChangeQuery)
+DECL|field|incoming
+specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|incoming
+decl_stmt|;
+DECL|method|RebaseSorter ( CodeReviewRevWalk rw, RevCommit initialTip, Set<RevCommit> alreadyAccepted, RevFlag canMergeFlag, InternalChangeQuery internalChangeQuery, Set<CodeReviewCommit> incoming)
 specifier|public
 name|RebaseSorter
 parameter_list|(
@@ -390,6 +399,12 @@ name|canMergeFlag
 parameter_list|,
 name|InternalChangeQuery
 name|internalChangeQuery
+parameter_list|,
+name|Set
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|incoming
 parameter_list|)
 block|{
 name|this
@@ -422,8 +437,14 @@ name|internalChangeQuery
 operator|=
 name|internalChangeQuery
 expr_stmt|;
+name|this
+operator|.
+name|incoming
+operator|=
+name|incoming
+expr_stmt|;
 block|}
-DECL|method|sort (Collection<CodeReviewCommit> incoming)
+DECL|method|sort (Collection<CodeReviewCommit> toSort)
 specifier|public
 name|List
 argument_list|<
@@ -435,7 +456,7 @@ name|Collection
 argument_list|<
 name|CodeReviewCommit
 argument_list|>
-name|incoming
+name|toSort
 parameter_list|)
 throws|throws
 name|IOException
@@ -463,7 +484,7 @@ operator|new
 name|HashSet
 argument_list|<>
 argument_list|(
-name|incoming
+name|toSort
 argument_list|)
 decl_stmt|;
 while|while
