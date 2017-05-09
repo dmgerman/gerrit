@@ -342,22 +342,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ApprovalsUtil
@@ -901,15 +885,6 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
-DECL|field|reviewDb
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|reviewDb
-decl_stmt|;
 DECL|field|mailFilters
 specifier|private
 specifier|final
@@ -956,7 +931,7 @@ name|canonicalUrl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MailProcessor ( AccountByEmailCache accountByEmailCache, BatchUpdate.Factory buf, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, Provider<ReviewDb> reviewDb, DynamicMap<MailFilter> mailFilters, EmailReviewComments.Factory outgoingMailFactory, ApprovalsUtil approvalsUtil, CommentAdded commentAdded, AccountCache accountCache, @CanonicalWebUrl Provider<String> canonicalUrl)
+DECL|method|MailProcessor ( AccountByEmailCache accountByEmailCache, BatchUpdate.Factory buf, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, DynamicMap<MailFilter> mailFilters, EmailReviewComments.Factory outgoingMailFactory, ApprovalsUtil approvalsUtil, CommentAdded commentAdded, AccountCache accountCache, @CanonicalWebUrl Provider<String> canonicalUrl)
 specifier|public
 name|MailProcessor
 parameter_list|(
@@ -988,12 +963,6 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|reviewDb
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -1071,12 +1040,6 @@ operator|.
 name|queryProvider
 operator|=
 name|queryProvider
-expr_stmt|;
-name|this
-operator|.
-name|reviewDb
-operator|=
-name|reviewDb
 expr_stmt|;
 name|this
 operator|.
