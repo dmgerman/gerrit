@@ -309,16 +309,16 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|PutPrivate
+DECL|class|PostPrivate
 specifier|public
 class|class
-name|PutPrivate
+name|PostPrivate
 extends|extends
 name|RetryingRestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|PutPrivate
+name|SetPrivateOp
 operator|.
 name|Input
 argument_list|,
@@ -333,12 +333,6 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 block|{
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{}
 DECL|field|cmUtil
 specifier|private
 specifier|final
@@ -356,8 +350,8 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutPrivate (Provider<ReviewDb> dbProvider, RetryHelper retryHelper, ChangeMessagesUtil cmUtil)
-name|PutPrivate
+DECL|method|PostPrivate ( Provider<ReviewDb> dbProvider, RetryHelper retryHelper, ChangeMessagesUtil cmUtil)
+name|PostPrivate
 parameter_list|(
 name|Provider
 argument_list|<
@@ -392,8 +386,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, Input input)
-specifier|protected
+DECL|method|applyImpl (BatchUpdate.Factory updateFactory, ChangeResource rsrc, SetPrivateOp.Input input)
+specifier|public
 name|Response
 argument_list|<
 name|String
@@ -408,6 +402,8 @@ parameter_list|,
 name|ChangeResource
 name|rsrc
 parameter_list|,
+name|SetPrivateOp
+operator|.
 name|Input
 name|input
 parameter_list|)
@@ -470,6 +466,8 @@ argument_list|(
 name|cmUtil
 argument_list|,
 literal|true
+argument_list|,
+name|input
 argument_list|)
 decl_stmt|;
 try|try
