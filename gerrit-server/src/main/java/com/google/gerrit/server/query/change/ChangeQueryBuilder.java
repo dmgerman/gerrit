@@ -7670,7 +7670,7 @@ name|getAccountId
 argument_list|()
 return|;
 block|}
-DECL|method|reviewerByState (String who, ReviewerStateInternal state, boolean forDefaultField)
+DECL|method|reviewerByState ( String who, ReviewerStateInternal state, boolean forDefaultField)
 specifier|public
 name|Predicate
 argument_list|<
