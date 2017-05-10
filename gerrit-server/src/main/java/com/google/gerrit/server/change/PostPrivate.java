@@ -350,7 +350,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostPrivate ( Provider<ReviewDb> dbProvider, RetryHelper retryHelper, ChangeMessagesUtil cmUtil)
+DECL|method|PostPrivate (Provider<ReviewDb> dbProvider, RetryHelper retryHelper, ChangeMessagesUtil cmUtil)
 name|PostPrivate
 parameter_list|(
 name|Provider
@@ -386,7 +386,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyImpl (BatchUpdate.Factory updateFactory, ChangeResource rsrc, SetPrivateOp.Input input)
+DECL|method|applyImpl ( BatchUpdate.Factory updateFactory, ChangeResource rsrc, SetPrivateOp.Input input)
 specifier|public
 name|Response
 argument_list|<
