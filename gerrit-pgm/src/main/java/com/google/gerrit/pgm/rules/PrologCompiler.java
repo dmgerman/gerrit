@@ -212,16 +212,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|FileNotFoundException
 import|;
 end_import
@@ -232,7 +222,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileOutputStream
+name|IOException
 import|;
 end_import
 
@@ -242,7 +232,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|InputStream
 import|;
 end_import
 
@@ -940,13 +930,17 @@ argument_list|)
 decl_stmt|;
 try|try
 init|(
-name|FileOutputStream
+name|OutputStream
 name|out
 init|=
-operator|new
-name|FileOutputStream
+name|Files
+operator|.
+name|newOutputStream
 argument_list|(
 name|tmp
+operator|.
+name|toPath
+argument_list|()
 argument_list|)
 init|)
 block|{
@@ -1656,13 +1650,17 @@ condition|)
 block|{
 try|try
 init|(
-name|FileInputStream
+name|InputStream
 name|in
 init|=
-operator|new
-name|FileInputStream
+name|Files
+operator|.
+name|newInputStream
 argument_list|(
 name|f
+operator|.
+name|toPath
+argument_list|()
 argument_list|)
 init|)
 block|{
