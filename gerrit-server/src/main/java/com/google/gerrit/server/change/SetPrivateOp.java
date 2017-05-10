@@ -427,6 +427,10 @@ decl_stmt|;
 name|String
 name|m
 init|=
+name|input
+operator|!=
+literal|null
+condition|?
 name|Strings
 operator|.
 name|nullToEmpty
@@ -438,6 +442,8 @@ argument_list|)
 operator|.
 name|trim
 argument_list|()
+else|:
+literal|""
 decl_stmt|;
 if|if
 condition|(
