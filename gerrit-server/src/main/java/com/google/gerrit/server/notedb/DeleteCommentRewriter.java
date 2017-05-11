@@ -445,7 +445,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-comment|/**      * Creates a DeleteCommentRewriter instance.      *      * @param id the id of the change which contains the target comment.      * @param uuid the uuid of the target comment.      * @param newMessage the message used to replace the old message of the target comment.      * @return      */
+comment|/**      * Creates a DeleteCommentRewriter instance.      *      * @param id the id of the change which contains the target comment.      * @param uuid the uuid of the target comment.      * @param newMessage the message used to replace the old message of the target comment.      * @return the DeleteCommentRewriter instance      */
 DECL|method|create ( Change.Id id, @Assisted(R) String uuid, @Assisted(R) String newMessage)
 name|DeleteCommentRewriter
 name|create
