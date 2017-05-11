@@ -118,36 +118,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -265,29 +235,22 @@ name|externalIdCache
 expr_stmt|;
 block|}
 comment|/** Returns all external IDs. */
-DECL|method|all (ReviewDb db)
+DECL|method|all ()
 specifier|public
 name|Set
 argument_list|<
 name|ExternalId
 argument_list|>
 name|all
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 return|return
 name|externalIdReader
 operator|.
 name|all
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 return|;
 block|}
 comment|/** Returns all external IDs from the specified revision of the refs/meta/external-ids branch. */
@@ -317,14 +280,11 @@ block|}
 comment|/** Returns the specified external ID. */
 annotation|@
 name|Nullable
-DECL|method|get (ReviewDb db, ExternalId.Key key)
+DECL|method|get (ExternalId.Key key)
 specifier|public
 name|ExternalId
 name|get
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ExternalId
 operator|.
 name|Key
@@ -334,16 +294,12 @@ throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
-throws|,
-name|OrmException
 block|{
 return|return
 name|externalIdReader
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|key
 argument_list|)
 return|;
@@ -381,7 +337,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Returns the external IDs of the specified account. */
-DECL|method|byAccount (ReviewDb db, Account.Id accountId)
+DECL|method|byAccount (Account.Id accountId)
 specifier|public
 name|Set
 argument_list|<
@@ -389,9 +345,6 @@ name|ExternalId
 argument_list|>
 name|byAccount
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -399,16 +352,6 @@ name|accountId
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
-block|{
-if|if
-condition|(
-name|externalIdReader
-operator|.
-name|readFromGit
-argument_list|()
-condition|)
 block|{
 return|return
 name|externalIdCache
@@ -419,28 +362,8 @@ name|accountId
 argument_list|)
 return|;
 block|}
-return|return
-name|ExternalId
-operator|.
-name|from
-argument_list|(
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|byAccount
-argument_list|(
-name|accountId
-argument_list|)
-operator|.
-name|toList
-argument_list|()
-argument_list|)
-return|;
-block|}
 comment|/** Returns the external IDs of the specified account that have the given scheme. */
-DECL|method|byAccount (ReviewDb db, Account.Id accountId, String scheme)
+DECL|method|byAccount (Account.Id accountId, String scheme)
 specifier|public
 name|Set
 argument_list|<
@@ -448,9 +371,6 @@ name|ExternalId
 argument_list|>
 name|byAccount
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -461,14 +381,10 @@ name|scheme
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 return|return
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|accountId
 argument_list|)
 operator|.
@@ -497,7 +413,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|byEmail (ReviewDb db, String email)
+DECL|method|byEmail (String email)
 specifier|public
 name|Set
 argument_list|<
@@ -505,24 +421,11 @@ name|ExternalId
 argument_list|>
 name|byEmail
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|String
 name|email
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
-block|{
-if|if
-condition|(
-name|externalIdReader
-operator|.
-name|readFromGit
-argument_list|()
-condition|)
 block|{
 return|return
 name|externalIdCache
@@ -530,26 +433,6 @@ operator|.
 name|byEmail
 argument_list|(
 name|email
-argument_list|)
-return|;
-block|}
-return|return
-name|ExternalId
-operator|.
-name|from
-argument_list|(
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|byEmailAddress
-argument_list|(
-name|email
-argument_list|)
-operator|.
-name|toList
-argument_list|()
 argument_list|)
 return|;
 block|}

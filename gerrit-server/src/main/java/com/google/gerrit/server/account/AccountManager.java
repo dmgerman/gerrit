@@ -1176,8 +1176,6 @@ argument_list|()
 operator|.
 name|replace
 argument_list|(
-name|db
-argument_list|,
 name|extId
 argument_list|,
 name|ExternalId
@@ -1639,8 +1637,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|extId
 operator|.
 name|key
@@ -1707,8 +1703,6 @@ argument_list|()
 operator|.
 name|upsert
 argument_list|(
-name|db
-argument_list|,
 name|extId
 argument_list|)
 expr_stmt|;
@@ -1885,8 +1879,6 @@ name|changeUserNameFactory
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
 name|user
 argument_list|,
 name|who
@@ -2145,8 +2137,6 @@ argument_list|()
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|extId
 argument_list|)
 expr_stmt|;
@@ -2254,8 +2244,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|createWithEmail
@@ -2402,17 +2390,6 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
 name|Collection
 argument_list|<
 name|ExternalId
@@ -2423,8 +2400,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|to
 argument_list|,
 name|who
@@ -2491,11 +2466,9 @@ argument_list|()
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|filteredExtIdsByScheme
 argument_list|)
-block|;       }
+block|;     }
 name|byIdCache
 operator|.
 name|evict
@@ -2511,7 +2484,6 @@ argument_list|,
 name|who
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**    * Unlink an authentication identity from an existing account.    *    * @param from account to unlink the identity from.    * @param who the identity to delete    * @return the result of unlinking the identity from the user.    * @throws AccountException the identity belongs to a different account, or it cannot be unlinked    *     at this time.    */
 DECL|method|unlink (Account.Id from, AuthRequest who)
@@ -2604,8 +2576,6 @@ argument_list|()
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|extId
 argument_list|)
 expr_stmt|;

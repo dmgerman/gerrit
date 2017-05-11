@@ -67,26 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|externalids
-operator|.
-name|ExternalId
-operator|.
-name|toAccountExternalIds
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -101,22 +81,6 @@ operator|.
 name|api
 operator|.
 name|InitFlags
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
 import|;
 end_import
 
@@ -480,15 +444,12 @@ name|get
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|insert (ReviewDb db, String commitMessage, Collection<ExternalId> extIds)
+DECL|method|insert (String commitMessage, Collection<ExternalId> extIds)
 specifier|public
 specifier|synchronized
 name|void
 name|insert
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|String
 name|commitMessage
 parameter_list|,
@@ -505,19 +466,6 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|insert
-argument_list|(
-name|toAccountExternalIds
-argument_list|(
-name|extIds
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|File
 name|path
 init|=

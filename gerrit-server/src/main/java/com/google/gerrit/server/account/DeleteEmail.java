@@ -200,22 +200,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -466,15 +450,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|accountManager
 specifier|private
 specifier|final
@@ -489,7 +464,7 @@ name|externalIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteEmail ( Provider<CurrentUser> self, Realm realm, PermissionBackend permissionBackend, Provider<ReviewDb> dbProvider, AccountManager accountManager, ExternalIds externalIds)
+DECL|method|DeleteEmail ( Provider<CurrentUser> self, Realm realm, PermissionBackend permissionBackend, AccountManager accountManager, ExternalIds externalIds)
 name|DeleteEmail
 parameter_list|(
 name|Provider
@@ -503,12 +478,6 @@ name|realm
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|AccountManager
 name|accountManager
@@ -534,12 +503,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -690,11 +653,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|user
 operator|.
 name|getAccountId

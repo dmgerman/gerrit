@@ -1141,8 +1141,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|extUser
 operator|.
 name|key
@@ -1179,8 +1177,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|Key
@@ -1293,8 +1289,6 @@ name|externalIdsUpdate
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|extIds
 argument_list|)
 expr_stmt|;
@@ -1332,8 +1326,6 @@ name|externalIdsUpdate
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|createEmail
@@ -1359,8 +1351,6 @@ name|externalIdsUpdate
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|extUser
 argument_list|)
 expr_stmt|;

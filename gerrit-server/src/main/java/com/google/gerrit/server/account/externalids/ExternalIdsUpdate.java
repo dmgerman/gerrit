@@ -114,48 +114,6 @@ name|account
 operator|.
 name|externalids
 operator|.
-name|ExternalId
-operator|.
-name|Key
-operator|.
-name|toAccountExternalIdKeys
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|externalids
-operator|.
-name|ExternalId
-operator|.
-name|toAccountExternalIds
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|externalids
-operator|.
 name|ExternalIdReader
 operator|.
 name|MAX_NOTE_SZ
@@ -489,22 +447,6 @@ operator|.
 name|client
 operator|.
 name|RefNames
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
 import|;
 end_import
 
@@ -1584,14 +1526,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Inserts a new external ID.    *    *<p>If the external ID already exists, the insert fails with {@link OrmDuplicateKeyException}.    */
-DECL|method|insert (ReviewDb db, ExternalId extId)
+DECL|method|insert (ExternalId extId)
 specifier|public
 name|void
 name|insert
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ExternalId
 name|extId
 parameter_list|)
@@ -1604,8 +1543,6 @@ name|OrmException
 block|{
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|Collections
 operator|.
 name|singleton
@@ -1616,14 +1553,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Inserts new external IDs.    *    *<p>If any of the external ID already exists, the insert fails with {@link    * OrmDuplicateKeyException}.    */
-DECL|method|insert (ReviewDb db, Collection<ExternalId> extIds)
+DECL|method|insert (Collection<ExternalId> extIds)
 specifier|public
 name|void
 name|insert
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Collection
 argument_list|<
 name|ExternalId
@@ -1637,19 +1571,6 @@ name|ConfigInvalidException
 throws|,
 name|OrmException
 block|{
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|insert
-argument_list|(
-name|toAccountExternalIds
-argument_list|(
-name|extIds
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|RefsMetaExternalIdsUpdate
 name|u
 init|=
@@ -1709,14 +1630,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Inserts or updates an external ID.    *    *<p>If the external ID already exists, it is overwritten, otherwise it is inserted.    */
-DECL|method|upsert (ReviewDb db, ExternalId extId)
+DECL|method|upsert (ExternalId extId)
 specifier|public
 name|void
 name|upsert
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ExternalId
 name|extId
 parameter_list|)
@@ -1729,8 +1647,6 @@ name|OrmException
 block|{
 name|upsert
 argument_list|(
-name|db
-argument_list|,
 name|Collections
 operator|.
 name|singleton
@@ -1741,14 +1657,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Inserts or updates external IDs.    *    *<p>If any of the external IDs already exists, it is overwritten. New external IDs are inserted.    */
-DECL|method|upsert (ReviewDb db, Collection<ExternalId> extIds)
+DECL|method|upsert (Collection<ExternalId> extIds)
 specifier|public
 name|void
 name|upsert
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Collection
 argument_list|<
 name|ExternalId
@@ -1762,19 +1675,6 @@ name|ConfigInvalidException
 throws|,
 name|OrmException
 block|{
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|upsert
-argument_list|(
-name|toAccountExternalIds
-argument_list|(
-name|extIds
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|RefsMetaExternalIdsUpdate
 name|u
 init|=
@@ -1834,14 +1734,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Deletes an external ID.    *    * @throws IllegalStateException is thrown if there is an existing external ID that has the same    *     key, but otherwise doesn't match the specified external ID.    */
-DECL|method|delete (ReviewDb db, ExternalId extId)
+DECL|method|delete (ExternalId extId)
 specifier|public
 name|void
 name|delete
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ExternalId
 name|extId
 parameter_list|)
@@ -1854,8 +1751,6 @@ name|OrmException
 block|{
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|Collections
 operator|.
 name|singleton
@@ -1866,14 +1761,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Deletes external IDs.    *    * @throws IllegalStateException is thrown if there is an existing external ID that has the same    *     key as any of the external IDs that should be deleted, but otherwise doesn't match the that    *     external ID.    */
-DECL|method|delete (ReviewDb db, Collection<ExternalId> extIds)
+DECL|method|delete (Collection<ExternalId> extIds)
 specifier|public
 name|void
 name|delete
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Collection
 argument_list|<
 name|ExternalId
@@ -1887,19 +1779,6 @@ name|ConfigInvalidException
 throws|,
 name|OrmException
 block|{
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|delete
-argument_list|(
-name|toAccountExternalIds
-argument_list|(
-name|extIds
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|RefsMetaExternalIdsUpdate
 name|u
 init|=
@@ -1954,14 +1833,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Delete an external ID by key.    *    * @throws IllegalStateException is thrown if the external ID does not belong to the specified    *     account.    */
-DECL|method|delete (ReviewDb db, Account.Id accountId, ExternalId.Key extIdKey)
+DECL|method|delete (Account.Id accountId, ExternalId.Key extIdKey)
 specifier|public
 name|void
 name|delete
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -1981,8 +1857,6 @@ name|OrmException
 block|{
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|accountId
 argument_list|,
 name|Collections
@@ -1995,14 +1869,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Delete external IDs by external ID key.    *    * @throws IllegalStateException is thrown if any of the external IDs does not belong to the    *     specified account.    */
-DECL|method|delete (ReviewDb db, Account.Id accountId, Collection<ExternalId.Key> extIdKeys)
+DECL|method|delete (Account.Id accountId, Collection<ExternalId.Key> extIdKeys)
 specifier|public
 name|void
 name|delete
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -2023,19 +1894,6 @@ name|ConfigInvalidException
 throws|,
 name|OrmException
 block|{
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|deleteKeys
-argument_list|(
-name|toAccountExternalIdKeys
-argument_list|(
-name|extIdKeys
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|RefsMetaExternalIdsUpdate
 name|u
 init|=
@@ -2096,14 +1954,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Delete external IDs by external ID key.    *    *<p>The external IDs are deleted regardless of which account they belong to.    */
-DECL|method|deleteByKeys (ReviewDb db, Collection<ExternalId.Key> extIdKeys)
+DECL|method|deleteByKeys (Collection<ExternalId.Key> extIdKeys)
 specifier|public
 name|void
 name|deleteByKeys
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Collection
 argument_list|<
 name|ExternalId
@@ -2119,19 +1974,6 @@ name|ConfigInvalidException
 throws|,
 name|OrmException
 block|{
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|deleteKeys
-argument_list|(
-name|toAccountExternalIdKeys
-argument_list|(
-name|extIdKeys
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|RefsMetaExternalIdsUpdate
 name|u
 init|=
@@ -2190,14 +2032,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Deletes all external IDs of the specified account. */
-DECL|method|deleteAll (ReviewDb db, Account.Id accountId)
+DECL|method|deleteAll (Account.Id accountId)
 specifier|public
 name|void
 name|deleteAll
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -2212,28 +2051,21 @@ name|OrmException
 block|{
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-argument_list|,
 name|accountId
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Replaces external IDs for an account by external ID keys.    *    *<p>Deletion of external IDs is done before adding the new external IDs. This means if an    * external ID key is specified for deletion and an external ID with the same key is specified to    * be added, the old external ID with that key is deleted first and then the new external ID is    * added (so the external ID for that key is replaced).    *    * @throws IllegalStateException is thrown if any of the specified external IDs does not belong to    *     the specified account.    */
-DECL|method|replace ( ReviewDb db, Account.Id accountId, Collection<ExternalId.Key> toDelete, Collection<ExternalId> toAdd)
+DECL|method|replace ( Account.Id accountId, Collection<ExternalId.Key> toDelete, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|replace
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -2265,32 +2097,6 @@ argument_list|(
 name|toAdd
 argument_list|,
 name|accountId
-argument_list|)
-expr_stmt|;
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|deleteKeys
-argument_list|(
-name|toAccountExternalIdKeys
-argument_list|(
-name|toDelete
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|insert
-argument_list|(
-name|toAccountExternalIds
-argument_list|(
-name|toAdd
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|RefsMetaExternalIdsUpdate
@@ -2384,14 +2190,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Replaces external IDs for an account by external ID keys.    *    *<p>Deletion of external IDs is done before adding the new external IDs. This means if an    * external ID key is specified for deletion and an external ID with the same key is specified to    * be added, the old external ID with that key is deleted first and then the new external ID is    * added (so the external ID for that key is replaced).    *    *<p>The external IDs are replaced regardless of which account they belong to.    */
-DECL|method|replaceByKeys ( ReviewDb db, Collection<ExternalId.Key> toDelete, Collection<ExternalId> toAdd)
+DECL|method|replaceByKeys (Collection<ExternalId.Key> toDelete, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|replaceByKeys
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Collection
 argument_list|<
 name|ExternalId
@@ -2413,32 +2216,6 @@ name|ConfigInvalidException
 throws|,
 name|OrmException
 block|{
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|deleteKeys
-argument_list|(
-name|toAccountExternalIdKeys
-argument_list|(
-name|toDelete
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|db
-operator|.
-name|accountExternalIds
-argument_list|()
-operator|.
-name|insert
-argument_list|(
-name|toAccountExternalIds
-argument_list|(
-name|toAdd
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|RefsMetaExternalIdsUpdate
 name|u
 init|=
@@ -2528,14 +2305,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Replaces an external ID.    *    * @throws IllegalStateException is thrown if the specified external IDs belong to different    *     accounts.    */
-DECL|method|replace (ReviewDb db, ExternalId toDelete, ExternalId toAdd)
+DECL|method|replace (ExternalId toDelete, ExternalId toAdd)
 specifier|public
 name|void
 name|replace
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ExternalId
 name|toDelete
 parameter_list|,
@@ -2551,8 +2325,6 @@ name|OrmException
 block|{
 name|replace
 argument_list|(
-name|db
-argument_list|,
 name|Collections
 operator|.
 name|singleton
@@ -2570,14 +2342,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Replaces external IDs.    *    *<p>Deletion of external IDs is done before adding the new external IDs. This means if an    * external ID is specified for deletion and an external ID with the same key is specified to be    * added, the old external ID with that key is deleted first and then the new external ID is added    * (so the external ID for that key is replaced).    *    * @throws IllegalStateException is thrown if the specified external IDs belong to different    *     accounts.    */
-DECL|method|replace (ReviewDb db, Collection<ExternalId> toDelete, Collection<ExternalId> toAdd)
+DECL|method|replace (Collection<ExternalId> toDelete, Collection<ExternalId> toAdd)
 specifier|public
 name|void
 name|replace
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Collection
 argument_list|<
 name|ExternalId
@@ -2626,8 +2395,6 @@ return|return;
 block|}
 name|replace
 argument_list|(
-name|db
-argument_list|,
 name|accountId
 argument_list|,
 name|toDelete

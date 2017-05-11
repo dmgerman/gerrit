@@ -452,22 +452,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -969,15 +953,6 @@ name|PersonIdent
 argument_list|>
 name|serverIdent
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|self
 specifier|private
 specifier|final
@@ -1043,7 +1018,7 @@ name|externalIdsUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostGpgKeys ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<CurrentUser> self, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory, AccountCache accountCache, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory)
+DECL|method|PostGpgKeys ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<CurrentUser> self, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory, AccountCache accountCache, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory)
 name|PostGpgKeys
 parameter_list|(
 annotation|@
@@ -1053,12 +1028,6 @@ argument_list|<
 name|PersonIdent
 argument_list|>
 name|serverIdent
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1105,12 +1074,6 @@ operator|.
 name|serverIdent
 operator|=
 name|serverIdent
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1213,11 +1176,6 @@ name|externalIds
 operator|.
 name|byAccount
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getUser
@@ -1427,11 +1385,6 @@ argument_list|()
 operator|.
 name|replace
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|rsrc
 operator|.
 name|getUser

@@ -136,22 +136,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|account
@@ -241,20 +225,6 @@ operator|.
 name|ssh
 operator|.
 name|SshKeyCreator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|SchemaFactory
 import|;
 end_import
 
@@ -724,15 +694,6 @@ name|SshKeyCacheEntry
 argument_list|>
 argument_list|>
 block|{
-DECL|field|schema
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -749,15 +710,9 @@ name|authorizedKeys
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Loader ( SchemaFactory<ReviewDb> schema, ExternalIds externalIds, VersionedAuthorizedKeys.Accessor authorizedKeys)
+DECL|method|Loader (ExternalIds externalIds, VersionedAuthorizedKeys.Accessor authorizedKeys)
 name|Loader
 parameter_list|(
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-parameter_list|,
 name|ExternalIds
 name|externalIds
 parameter_list|,
@@ -767,12 +722,6 @@ name|Accessor
 name|authorizedKeys
 parameter_list|)
 block|{
-name|this
-operator|.
-name|schema
-operator|=
-name|schema
-expr_stmt|;
 name|this
 operator|.
 name|externalIds
@@ -802,17 +751,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
 name|ExternalId
 name|user
 init|=
@@ -820,8 +758,6 @@ name|externalIds
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|ExternalId
 operator|.
 name|Key
@@ -911,7 +847,6 @@ argument_list|(
 name|kl
 argument_list|)
 return|;
-block|}
 block|}
 DECL|method|add (List<SshKeyCacheEntry> kl, AccountSshKey k)
 specifier|private
