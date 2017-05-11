@@ -1344,6 +1344,14 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|updateManagerFactory
+specifier|private
+specifier|final
+name|NoteDbUpdateManager
+operator|.
+name|Factory
+name|updateManagerFactory
+decl_stmt|;
 DECL|field|draftUpdateFactory
 specifier|private
 specifier|final
@@ -1360,13 +1368,13 @@ operator|.
 name|Factory
 name|robotCommentUpdateFactory
 decl_stmt|;
-DECL|field|updateManagerFactory
+DECL|field|deleteCommentRewriterFactory
 specifier|private
 specifier|final
-name|NoteDbUpdateManager
+name|DeleteCommentRewriter
 operator|.
 name|Factory
-name|updateManagerFactory
+name|deleteCommentRewriterFactory
 decl_stmt|;
 DECL|field|approvals
 specifier|private
@@ -1570,9 +1578,14 @@ specifier|private
 name|RobotCommentUpdate
 name|robotCommentUpdate
 decl_stmt|;
+DECL|field|deleteCommentRewriter
+specifier|private
+name|DeleteCommentRewriter
+name|deleteCommentRewriter
+decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1611,6 +1624,11 @@ name|RobotCommentUpdate
 operator|.
 name|Factory
 name|robotCommentUpdateFactory
+parameter_list|,
+name|DeleteCommentRewriter
+operator|.
+name|Factory
+name|deleteCommentRewriterFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -1642,6 +1660,8 @@ name|draftUpdateFactory
 argument_list|,
 name|robotCommentUpdateFactory
 argument_list|,
+name|deleteCommentRewriterFactory
+argument_list|,
 name|projectCache
 argument_list|,
 name|ctl
@@ -1657,7 +1677,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1696,6 +1716,11 @@ name|RobotCommentUpdate
 operator|.
 name|Factory
 name|robotCommentUpdateFactory
+parameter_list|,
+name|DeleteCommentRewriter
+operator|.
+name|Factory
+name|deleteCommentRewriterFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -1731,6 +1756,8 @@ argument_list|,
 name|draftUpdateFactory
 argument_list|,
 name|robotCommentUpdateFactory
+argument_list|,
+name|deleteCommentRewriterFactory
 argument_list|,
 name|ctl
 argument_list|,
@@ -1821,7 +1848,7 @@ return|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, ChangeNoteUtil noteUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1860,6 +1887,11 @@ name|RobotCommentUpdate
 operator|.
 name|Factory
 name|robotCommentUpdateFactory
+parameter_list|,
+name|DeleteCommentRewriter
+operator|.
+name|Factory
+name|deleteCommentRewriterFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1908,6 +1940,12 @@ name|accountCache
 expr_stmt|;
 name|this
 operator|.
+name|updateManagerFactory
+operator|=
+name|updateManagerFactory
+expr_stmt|;
+name|this
+operator|.
 name|draftUpdateFactory
 operator|=
 name|draftUpdateFactory
@@ -1920,9 +1958,9 @@ name|robotCommentUpdateFactory
 expr_stmt|;
 name|this
 operator|.
-name|updateManagerFactory
+name|deleteCommentRewriterFactory
 operator|=
-name|updateManagerFactory
+name|deleteCommentRewriterFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1936,7 +1974,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) @Nullable Account.Id accountId, @Assisted(R) @Nullable Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
+DECL|method|ChangeUpdate ( @erritServerConfig Config cfg, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, NotesMigration migration, AccountCache accountCache, NoteDbUpdateManager.Factory updateManagerFactory, ChangeDraftUpdate.Factory draftUpdateFactory, RobotCommentUpdate.Factory robotCommentUpdateFactory, DeleteCommentRewriter.Factory deleteCommentRewriterFactory, ChangeNoteUtil noteUtil, @Assisted Change change, @Assisted(R) @Nullable Account.Id accountId, @Assisted(R) @Nullable Account.Id realAccountId, @Assisted PersonIdent authorIdent, @Assisted Date when, @Assisted Comparator<String> labelNameComparator)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1975,6 +2013,11 @@ name|RobotCommentUpdate
 operator|.
 name|Factory
 name|robotCommentUpdateFactory
+parameter_list|,
+name|DeleteCommentRewriter
+operator|.
+name|Factory
+name|deleteCommentRewriterFactory
 parameter_list|,
 name|ChangeNoteUtil
 name|noteUtil
@@ -2075,6 +2118,12 @@ operator|.
 name|updateManagerFactory
 operator|=
 name|updateManagerFactory
+expr_stmt|;
+name|this
+operator|.
+name|deleteCommentRewriterFactory
+operator|=
+name|deleteCommentRewriterFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2631,6 +2680,36 @@ operator|.
 name|deleteComment
 argument_list|(
 name|c
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|deleteCommentByRewritingHistory (String uuid, String newMessage)
+specifier|public
+name|void
+name|deleteCommentByRewritingHistory
+parameter_list|(
+name|String
+name|uuid
+parameter_list|,
+name|String
+name|newMessage
+parameter_list|)
+block|{
+name|deleteCommentRewriter
+operator|=
+name|deleteCommentRewriterFactory
+operator|.
+name|create
+argument_list|(
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|uuid
+argument_list|,
+name|newMessage
 argument_list|)
 expr_stmt|;
 block|}
@@ -3728,6 +3807,15 @@ name|OrmException
 throws|,
 name|IOException
 block|{
+name|checkState
+argument_list|(
+name|deleteCommentRewriter
+operator|==
+literal|null
+argument_list|,
+literal|"cannot update and rewrite ref in one BatchUpdate"
+argument_list|)
+expr_stmt|;
 name|CommitBuilder
 name|cb
 init|=
@@ -4834,6 +4922,16 @@ parameter_list|()
 block|{
 return|return
 name|robotCommentUpdate
+return|;
+block|}
+DECL|method|getDeleteCommentRewriter ()
+specifier|public
+name|DeleteCommentRewriter
+name|getDeleteCommentRewriter
+parameter_list|()
+block|{
+return|return
+name|deleteCommentRewriter
 return|;
 block|}
 DECL|method|setAllowWriteToNewRef (boolean allow)

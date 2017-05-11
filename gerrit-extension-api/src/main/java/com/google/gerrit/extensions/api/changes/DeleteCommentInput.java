@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -74,13 +74,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
 name|common
 operator|.
-name|CommentInfo
+name|base
+operator|.
+name|Strings
 import|;
 end_import
 
@@ -96,91 +94,55 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|NotImplementedException
+name|DefaultInput
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|RestApiException
-import|;
-end_import
-
-begin_interface
-DECL|interface|CommentApi
+begin_class
+DECL|class|DeleteCommentInput
 specifier|public
-interface|interface
-name|CommentApi
-block|{
-DECL|method|get ()
-name|CommentInfo
-name|get
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
-comment|/**    * Deletes a published comment of a revision. For NoteDb, it deletes the comment by rewriting the    * commit history.    *    *<p>Note instead of deleting the whole comment, this endpoint just replaces the comment's    * message.    *    * @return the comment with its message updated.    */
-DECL|method|delete (DeleteCommentInput input)
-name|CommentInfo
-name|delete
-parameter_list|(
-name|DeleteCommentInput
-name|input
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
-DECL|class|NotImplemented
 class|class
-name|NotImplemented
-implements|implements
-name|CommentApi
+name|DeleteCommentInput
 block|{
+DECL|field|reason
 annotation|@
-name|Override
-DECL|method|get ()
+name|DefaultInput
 specifier|public
-name|CommentInfo
-name|get
+name|String
+name|reason
+decl_stmt|;
+DECL|method|DeleteCommentInput ()
+specifier|public
+name|DeleteCommentInput
 parameter_list|()
 block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
+name|reason
+operator|=
+literal|""
+expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|delete (DeleteCommentInput input)
+DECL|method|DeleteCommentInput (String reason)
 specifier|public
-name|CommentInfo
-name|delete
-parameter_list|(
 name|DeleteCommentInput
-name|input
+parameter_list|(
+name|String
+name|reason
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
+name|this
+operator|.
+name|reason
+operator|=
+name|Strings
+operator|.
+name|nullToEmpty
+argument_list|(
+name|reason
+argument_list|)
+expr_stmt|;
 block|}
 block|}
-block|}
-end_interface
+end_class
 
 end_unit
 

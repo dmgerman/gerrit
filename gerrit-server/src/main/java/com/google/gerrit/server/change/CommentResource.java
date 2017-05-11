@@ -277,6 +277,15 @@ name|getId
 argument_list|()
 return|;
 block|}
+DECL|method|getRevisionResource ()
+name|RevisionResource
+name|getRevisionResource
+parameter_list|()
+block|{
+return|return
+name|rev
+return|;
+block|}
 block|}
 end_class
 
