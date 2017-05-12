@@ -366,14 +366,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|updateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-decl_stmt|;
 DECL|field|cfg
 specifier|private
 specifier|final
@@ -406,14 +398,9 @@ name|internalUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonUtil ( BatchUpdate.Factory updateFactory, ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, ChangeQueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder, Abandon abandon)
+DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, ChangeQueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder, Abandon abandon)
 name|AbandonUtil
 parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|,
 name|ChangeCleanupConfig
 name|cfg
 parameter_list|,
@@ -432,12 +419,6 @@ name|Abandon
 name|abandon
 parameter_list|)
 block|{
-name|this
-operator|.
-name|updateFactory
-operator|=
-name|updateFactory
-expr_stmt|;
 name|this
 operator|.
 name|cfg
@@ -470,11 +451,16 @@ name|create
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|abandonInactiveOpenChanges ()
+DECL|method|abandonInactiveOpenChanges (BatchUpdate.Factory updateFactory)
 specifier|public
 name|void
 name|abandonInactiveOpenChanges
-parameter_list|()
+parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|updateFactory
+parameter_list|)
 block|{
 if|if
 condition|(
