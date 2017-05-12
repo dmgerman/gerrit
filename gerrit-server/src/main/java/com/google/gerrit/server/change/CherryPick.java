@@ -783,11 +783,12 @@ operator|.
 name|Id
 name|cherryPickedChangeId
 init|=
-comment|// TODO(dborowitz): Pass updateFactory here.
 name|cherryPickChange
 operator|.
 name|cherryPick
 argument_list|(
+name|updateFactory
+argument_list|,
 name|revision
 operator|.
 name|getChange
