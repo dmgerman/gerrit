@@ -1984,11 +1984,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Cannot create tag \""
-operator|+
-name|R_TAGS
-operator|+
-literal|"test\""
+literal|"create not permitted"
 argument_list|)
 expr_stmt|;
 name|tag

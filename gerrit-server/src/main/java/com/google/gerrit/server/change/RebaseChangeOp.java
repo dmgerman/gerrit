@@ -238,6 +238,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -893,6 +909,8 @@ throws|,
 name|OrmException
 throws|,
 name|NoSuchChangeException
+throws|,
+name|PermissionBackendException
 block|{
 comment|// Ok that originalPatchSet was not read in a transaction, since we just
 comment|// need its revision.

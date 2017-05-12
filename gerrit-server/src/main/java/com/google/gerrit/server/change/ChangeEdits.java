@@ -584,6 +584,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -1215,6 +1231,8 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 name|putEdit
 operator|.
@@ -1339,6 +1357,8 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 return|return
 name|deleteContent
@@ -1741,6 +1761,8 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 name|Project
 operator|.
@@ -2015,6 +2037,8 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 return|return
 name|apply
@@ -2060,6 +2084,8 @@ throws|,
 name|IOException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 if|if
 condition|(
@@ -2242,6 +2268,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|PermissionBackendException
 block|{
 return|return
 name|apply
@@ -2280,6 +2308,8 @@ throws|,
 name|OrmException
 throws|,
 name|ResourceConflictException
+throws|,
+name|PermissionBackendException
 block|{
 name|Project
 operator|.
@@ -2745,6 +2775,8 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 if|if
 condition|(

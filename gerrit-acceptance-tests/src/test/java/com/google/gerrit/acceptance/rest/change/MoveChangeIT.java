@@ -1342,7 +1342,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Move not permitted"
+literal|"move not permitted"
 argument_list|)
 expr_stmt|;
 name|move
@@ -1456,7 +1456,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Move not permitted"
+literal|"move not permitted"
 argument_list|)
 expr_stmt|;
 name|move
@@ -1788,7 +1788,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"Move not permitted"
+literal|"move not permitted"
 argument_list|)
 expr_stmt|;
 name|move
