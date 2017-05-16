@@ -261,6 +261,12 @@ throws|throws
 name|Exception
 function_decl|;
 block|}
+DECL|field|migration
+specifier|private
+specifier|final
+name|NotesMigration
+name|migration
+decl_stmt|;
 DECL|field|updateFactory
 specifier|private
 specifier|final
@@ -293,6 +299,12 @@ name|AssistedFactory
 name|unfusedNoteDbBatchUpdateFactory
 parameter_list|)
 block|{
+name|this
+operator|.
+name|migration
+operator|=
+name|migration
+expr_stmt|;
 name|this
 operator|.
 name|updateFactory
@@ -333,15 +345,32 @@ name|UpdateException
 block|{
 try|try
 block|{
-comment|// TODO(dborowitz): Make configurable.
-return|return
+name|RetryerBuilder
+argument_list|<
+name|T
+argument_list|>
+name|builder
+init|=
 name|RetryerBuilder
 operator|.
-expr|<
-name|T
-operator|>
 name|newBuilder
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|migration
+operator|.
+name|disableChangeReviewDb
+argument_list|()
+operator|&&
+name|migration
+operator|.
+name|fuseUpdates
+argument_list|()
+condition|)
+block|{
+comment|// TODO(dborowitz): Make configurable.
+name|builder
 operator|.
 name|withStopStrategy
 argument_list|(
@@ -393,6 +422,16 @@ name|RetryHelper
 operator|::
 name|isLockFailure
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Either we aren't full-NoteDb, or the underlying ref storage doesn't support atomic
+comment|// transactions. Either way, retrying a partially-failed operation is not idempotent, so
+comment|// don't do it automatically. Let the end user decide whether they want to retry.
+block|}
+return|return
+name|builder
 operator|.
 name|build
 argument_list|()
