@@ -907,17 +907,9 @@ specifier|final
 name|PatchSetUtil
 name|psUtil
 decl_stmt|;
-DECL|field|batchUpdateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickChange ( Provider<ReviewDb> db, Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, PatchSetUtil psUtil, BatchUpdate.Factory batchUpdateFactory)
+DECL|method|CherryPickChange ( Provider<ReviewDb> db, Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeMessagesUtil changeMessagesUtil, PatchSetUtil psUtil)
 name|CherryPickChange
 parameter_list|(
 name|Provider
@@ -969,11 +961,6 @@ name|changeMessagesUtil
 parameter_list|,
 name|PatchSetUtil
 name|psUtil
-parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
 parameter_list|)
 block|{
 name|this
@@ -1045,20 +1032,19 @@ name|psUtil
 operator|=
 name|psUtil
 expr_stmt|;
-name|this
-operator|.
-name|batchUpdateFactory
-operator|=
-name|batchUpdateFactory
-expr_stmt|;
 block|}
-DECL|method|cherryPick ( Change change, PatchSet patch, String message, String ref, RefControl refControl, int parent)
+DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, Change change, PatchSet patch, String message, String ref, RefControl refControl, int parent)
 specifier|public
 name|Change
 operator|.
 name|Id
 name|cherryPick
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
+parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -1093,6 +1079,8 @@ block|{
 return|return
 name|cherryPick
 argument_list|(
+name|batchUpdateFactory
+argument_list|,
 name|change
 operator|.
 name|getId
@@ -1141,13 +1129,18 @@ name|parent
 argument_list|)
 return|;
 block|}
-DECL|method|cherryPick ( @ullable Change.Id sourceChangeId, @Nullable PatchSet.Id sourcePatchId, @Nullable Branch.NameKey sourceBranch, @Nullable String sourceChangeTopic, Project.NameKey project, ObjectId sourceCommit, String message, String targetRef, RefControl targetRefControl, int parent)
+DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, @Nullable Change.Id sourceChangeId, @Nullable PatchSet.Id sourcePatchId, @Nullable Branch.NameKey sourceBranch, @Nullable String sourceChangeTopic, Project.NameKey project, ObjectId sourceCommit, String message, String targetRef, RefControl targetRefControl, int parent)
 specifier|public
 name|Change
 operator|.
 name|Id
 name|cherryPick
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
+parameter_list|,
 annotation|@
 name|Nullable
 name|Change
