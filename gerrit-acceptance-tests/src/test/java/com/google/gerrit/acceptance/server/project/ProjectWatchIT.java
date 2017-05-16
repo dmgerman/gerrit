@@ -3649,10 +3649,6 @@ argument_list|()
 decl_stmt|;
 name|grant
 argument_list|(
-name|Permission
-operator|.
-name|VIEW_DRAFTS
-argument_list|,
 operator|new
 name|Project
 operator|.
@@ -3662,6 +3658,10 @@ name|watchedProject
 argument_list|)
 argument_list|,
 literal|"refs/*"
+argument_list|,
+name|Permission
+operator|.
+name|VIEW_DRAFTS
 argument_list|,
 literal|false
 argument_list|,
@@ -4399,10 +4399,6 @@ argument_list|()
 decl_stmt|;
 name|grant
 argument_list|(
-name|Permission
-operator|.
-name|VIEW_PRIVATE_CHANGES
-argument_list|,
 operator|new
 name|Project
 operator|.
@@ -4412,6 +4408,10 @@ name|watchedProject
 argument_list|)
 argument_list|,
 literal|"refs/*"
+argument_list|,
+name|Permission
+operator|.
+name|VIEW_PRIVATE_CHANGES
 argument_list|,
 literal|false
 argument_list|,

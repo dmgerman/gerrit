@@ -1279,13 +1279,13 @@ argument_list|()
 decl_stmt|;
 name|grant
 argument_list|(
-name|Permission
-operator|.
-name|EDIT_ASSIGNEE
-argument_list|,
 name|project
 argument_list|,
 literal|"refs/heads/master"
+argument_list|,
+name|Permission
+operator|.
+name|EDIT_ASSIGNEE
 argument_list|,
 literal|false
 argument_list|,

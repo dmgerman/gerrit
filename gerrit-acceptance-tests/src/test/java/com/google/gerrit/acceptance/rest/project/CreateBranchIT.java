@@ -496,13 +496,13 @@ name|Exception
 block|{
 name|block
 argument_list|(
+literal|"refs/*"
+argument_list|,
 name|Permission
 operator|.
 name|CREATE
 argument_list|,
 name|ANONYMOUS_USERS
-argument_list|,
-literal|"refs/*"
 argument_list|)
 expr_stmt|;
 block|}

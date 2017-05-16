@@ -1210,11 +1210,11 @@ argument_list|)
 expr_stmt|;
 name|block
 argument_list|(
+literal|"refs/*"
+argument_list|,
 literal|"read"
 argument_list|,
 name|ANONYMOUS_USERS
-argument_list|,
-literal|"refs/*"
 argument_list|)
 expr_stmt|;
 name|allow

@@ -5471,15 +5471,15 @@ decl_stmt|;
 comment|// Block default permission
 name|block
 argument_list|(
+name|p
+argument_list|,
+literal|"refs/for/*"
+argument_list|,
 name|Permission
 operator|.
 name|ADD_PATCH_SET
 argument_list|,
 name|REGISTERED_USERS
-argument_list|,
-literal|"refs/for/*"
-argument_list|,
-name|p
 argument_list|)
 expr_stmt|;
 comment|// Create change as user

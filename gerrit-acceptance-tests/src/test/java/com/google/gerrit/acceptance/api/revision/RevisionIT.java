@@ -6538,13 +6538,13 @@ argument_list|)
 expr_stmt|;
 name|grant
 argument_list|(
-name|Permission
-operator|.
-name|OWNER
-argument_list|,
 name|project
 argument_list|,
 literal|"refs/heads/master"
+argument_list|,
+name|Permission
+operator|.
+name|OWNER
 argument_list|,
 literal|false
 argument_list|,

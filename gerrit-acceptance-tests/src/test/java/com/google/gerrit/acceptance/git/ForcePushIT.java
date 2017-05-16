@@ -370,13 +370,13 @@ argument_list|()
 decl_stmt|;
 name|grant
 argument_list|(
-name|Permission
-operator|.
-name|PUSH
-argument_list|,
 name|project
 argument_list|,
 literal|"refs/*"
+argument_list|,
+name|Permission
+operator|.
+name|PUSH
 argument_list|,
 literal|true
 argument_list|)

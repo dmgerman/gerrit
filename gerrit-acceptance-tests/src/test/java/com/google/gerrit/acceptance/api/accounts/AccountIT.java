@@ -5030,17 +5030,17 @@ name|deny
 argument_list|(
 name|allUsers
 argument_list|,
-name|Permission
-operator|.
-name|READ
-argument_list|,
-name|ANONYMOUS_USERS
-argument_list|,
 name|RefNames
 operator|.
 name|REFS
 operator|+
 literal|"*"
+argument_list|,
+name|Permission
+operator|.
+name|READ
+argument_list|,
+name|ANONYMOUS_USERS
 argument_list|)
 expr_stmt|;
 comment|// fetching user branch without READ permission fails
@@ -5074,10 +5074,6 @@ block|}
 comment|// allow each user to read its own user branch
 name|grant
 argument_list|(
-name|Permission
-operator|.
-name|READ
-argument_list|,
 name|allUsers
 argument_list|,
 name|RefNames
@@ -5091,6 +5087,10 @@ operator|.
 name|USERID_SHARDED
 operator|+
 literal|"}"
+argument_list|,
+name|Permission
+operator|.
+name|READ
 argument_list|,
 literal|false
 argument_list|,
@@ -5883,10 +5883,6 @@ name|Exception
 block|{
 name|grant
 argument_list|(
-name|Permission
-operator|.
-name|DELETE
-argument_list|,
 name|allUsers
 argument_list|,
 name|RefNames
@@ -5900,6 +5896,10 @@ operator|.
 name|USERID_SHARDED
 operator|+
 literal|"}"
+argument_list|,
+name|Permission
+operator|.
+name|DELETE
 argument_list|,
 literal|true
 argument_list|,
@@ -6030,10 +6030,6 @@ argument_list|)
 expr_stmt|;
 name|grant
 argument_list|(
-name|Permission
-operator|.
-name|DELETE
-argument_list|,
 name|allUsers
 argument_list|,
 name|RefNames
@@ -6047,6 +6043,10 @@ operator|.
 name|USERID_SHARDED
 operator|+
 literal|"}"
+argument_list|,
+name|Permission
+operator|.
+name|DELETE
 argument_list|,
 literal|true
 argument_list|,

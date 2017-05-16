@@ -184,13 +184,13 @@ name|Exception
 block|{
 name|block
 argument_list|(
+literal|"refs/drafts/*"
+argument_list|,
 name|Permission
 operator|.
 name|PUSH
 argument_list|,
 name|ANONYMOUS_USERS
-argument_list|,
-literal|"refs/drafts/*"
 argument_list|)
 expr_stmt|;
 block|}
