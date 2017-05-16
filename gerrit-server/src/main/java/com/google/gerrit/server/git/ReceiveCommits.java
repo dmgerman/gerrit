@@ -3406,14 +3406,13 @@ operator|.
 name|Factory
 name|subOpFactory
 decl_stmt|;
-DECL|field|mergeOpProvider
+DECL|field|mergeOpFactory
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|MergeOp
-argument_list|>
-name|mergeOpProvider
+operator|.
+name|Factory
+name|mergeOpFactory
 decl_stmt|;
 DECL|field|ormProvider
 specifier|private
@@ -3522,7 +3521,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, AccountResolver accountResolver, PermissionBackend permissionBackend, CmdLineParser.Factory optionParserFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ProjectCache projectCache, TagCache tagCache, AccountCache accountCache, @Nullable SearchingChangeCacheImpl changeCache, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, RefOperationValidators.Factory refValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, SubmoduleOp.Factory subOpFactory, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, ChangeIndexer indexer, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory, MergedByPushOp.Factory mergedByPushOpFactory)
+DECL|method|ReceiveCommits ( ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, AccountResolver accountResolver, PermissionBackend permissionBackend, CmdLineParser.Factory optionParserFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ProjectCache projectCache, TagCache tagCache, AccountCache accountCache, @Nullable SearchingChangeCacheImpl changeCache, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, RefOperationValidators.Factory refValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, SubmoduleOp.Factory subOpFactory, MergeOp.Factory mergeOpFactory, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, ChangeIndexer indexer, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory, MergedByPushOp.Factory mergedByPushOpFactory)
 name|ReceiveCommits
 parameter_list|(
 name|ReviewDb
@@ -3635,11 +3634,10 @@ operator|.
 name|Factory
 name|subOpFactory
 parameter_list|,
-name|Provider
-argument_list|<
 name|MergeOp
-argument_list|>
-name|mergeOpProvider
+operator|.
+name|Factory
+name|mergeOpFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -3927,9 +3925,9 @@ name|subOpFactory
 expr_stmt|;
 name|this
 operator|.
-name|mergeOpProvider
+name|mergeOpFactory
 operator|=
-name|mergeOpProvider
+name|mergeOpFactory
 expr_stmt|;
 name|this
 operator|.
@@ -5111,7 +5109,9 @@ decl_stmt|;
 name|op
 operator|.
 name|updateSuperProjects
-argument_list|()
+argument_list|(
+name|batchUpdateFactory
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -13954,10 +13954,12 @@ init|(
 name|MergeOp
 name|op
 init|=
-name|mergeOpProvider
+name|mergeOpFactory
 operator|.
-name|get
-argument_list|()
+name|create
+argument_list|(
+name|batchUpdateFactory
+argument_list|)
 init|)
 block|{
 name|op
