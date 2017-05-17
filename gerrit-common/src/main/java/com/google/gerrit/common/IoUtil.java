@@ -364,6 +364,16 @@ argument_list|>
 name|jars
 parameter_list|)
 block|{
+if|if
+condition|(
+name|jars
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 name|ClassLoader
 name|cl
 init|=
