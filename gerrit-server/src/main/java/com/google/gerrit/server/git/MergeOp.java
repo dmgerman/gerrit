@@ -3225,6 +3225,8 @@ operator|.
 name|maybeFailVerbose
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|SubmoduleOp
 name|submoduleOp
 init|=
@@ -3237,8 +3239,6 @@ argument_list|,
 name|orm
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|List
 argument_list|<
 name|SubmitStrategy
