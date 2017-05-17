@@ -665,7 +665,7 @@ name|parameterField
 operator|!=
 literal|null
 argument_list|,
-literal|"No @ConfigSuite.Field found"
+literal|"No @ConfigSuite.Parameter found"
 argument_list|)
 expr_stmt|;
 name|Field
