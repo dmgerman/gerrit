@@ -488,6 +488,16 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
+DECL|method|commit (boolean addLinks)
+name|CommitInfo
+name|commit
+parameter_list|(
+name|boolean
+name|addLinks
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|mergeable ()
 name|MergeableInfo
 name|mergeable
@@ -1073,6 +1083,23 @@ name|file
 parameter_list|(
 name|String
 name|path
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|commit (boolean addLinks)
+specifier|public
+name|CommitInfo
+name|commit
+parameter_list|(
+name|boolean
+name|addLinks
 parameter_list|)
 block|{
 throw|throw

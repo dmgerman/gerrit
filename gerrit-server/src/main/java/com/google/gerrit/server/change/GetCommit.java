@@ -289,17 +289,6 @@ operator|.
 name|Factory
 name|json
 decl_stmt|;
-annotation|@
-name|Option
-argument_list|(
-name|name
-operator|=
-literal|"--links"
-argument_list|,
-name|usage
-operator|=
-literal|"Include weblinks"
-argument_list|)
 DECL|field|addLinks
 specifier|private
 name|boolean
@@ -331,6 +320,36 @@ name|json
 operator|=
 name|json
 expr_stmt|;
+block|}
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--links"
+argument_list|,
+name|usage
+operator|=
+literal|"Include weblinks"
+argument_list|)
+DECL|method|setAddLinks (boolean addLinks)
+specifier|public
+name|GetCommit
+name|setAddLinks
+parameter_list|(
+name|boolean
+name|addLinks
+parameter_list|)
+block|{
+name|this
+operator|.
+name|addLinks
+operator|=
+name|addLinks
+expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Override
