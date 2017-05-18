@@ -180,7 +180,7 @@ specifier|public
 interface|interface
 name|UploadValidationListener
 block|{
-comment|/**    * Validate an upload before it begins.    *    * @param repository The repository    * @param project The project    * @param remoteHost Remote address/hostname of the user    * @param wants The list of wanted objects. These may be RevObject or RevCommit if the processor    *     parsed them. Implementors should not rely on the values being parsed.    * @param haves The list of common objects. Empty on an initial clone request. These may be    *     RevObject or RevCommit if the processor parsed them. Implementors should not rely on the    *     values being parsed.    * @throws ValidationException to block the upload and send a message back to the end-user over    *     the client's protocol connection.    */
+comment|/**    * Validate an upload before it begins.    *    * @param repository The repository    * @param project The project    * @param remoteHost Remote address/hostname of the user    * @param up the UploadPack instance being processed.    * @param wants The list of wanted objects. These may be RevObject or RevCommit if the processor    *     parsed them. Implementors should not rely on the values being parsed.    * @param haves The list of common objects. Empty on an initial clone request. These may be    *     RevObject or RevCommit if the processor parsed them. Implementors should not rely on the    *     values being parsed.    * @throws ValidationException to block the upload and send a message back to the end-user over    *     the client's protocol connection.    */
 DECL|method|onPreUpload ( Repository repository, Project project, String remoteHost, UploadPack up, Collection<? extends ObjectId> wants, Collection<? extends ObjectId> haves)
 name|void
 name|onPreUpload
@@ -212,6 +212,37 @@ extends|extends
 name|ObjectId
 argument_list|>
 name|haves
+parameter_list|)
+throws|throws
+name|ValidationException
+function_decl|;
+comment|/**    * Invoked before negotiation round is started.    *    * @param repository The repository    * @param project The project    * @param remoteHost Remote address/hostname of the user    * @param up the UploadPack instance being processed    * @param wants The list of wanted objects. These may be RevObject or RevCommit if the processor    *     parsed them. Implementors should not rely on the values being parsed.    * @param cntOffered number of objects the client has offered.    * @throws ValidationException to block the upload and send a message back to the end-user over    *     the client's protocol connection.    */
+DECL|method|onBeginNegotiate ( Repository repository, Project project, String remoteHost, UploadPack up, Collection<? extends ObjectId> wants, int cntOffered)
+name|void
+name|onBeginNegotiate
+parameter_list|(
+name|Repository
+name|repository
+parameter_list|,
+name|Project
+name|project
+parameter_list|,
+name|String
+name|remoteHost
+parameter_list|,
+name|UploadPack
+name|up
+parameter_list|,
+name|Collection
+argument_list|<
+name|?
+extends|extends
+name|ObjectId
+argument_list|>
+name|wants
+parameter_list|,
+name|int
+name|cntOffered
 parameter_list|)
 throws|throws
 name|ValidationException
