@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/** Indicates the gitlink's update cannot be processed at this time. */
+comment|/**  * Indicates the gitlink's update cannot be processed at this time.  *  *<p>Message should be considered user-visible.  */
 end_comment
 
 begin_class
@@ -87,10 +87,9 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|SubmoduleException (final String msg)
+DECL|method|SubmoduleException (String msg)
 name|SubmoduleException
 parameter_list|(
-specifier|final
 name|String
 name|msg
 parameter_list|)
@@ -103,14 +102,12 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SubmoduleException (final String msg, final Throwable why)
+DECL|method|SubmoduleException (String msg, Throwable why)
 name|SubmoduleException
 parameter_list|(
-specifier|final
 name|String
 name|msg
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)
