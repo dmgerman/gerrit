@@ -182,6 +182,7 @@ name|UploadValidationListener
 block|{
 comment|/**    * Validate an upload before it begins.    *    * @param repository The repository    * @param project The project    * @param remoteHost Remote address/hostname of the user    * @param up the UploadPack instance being processed.    * @param wants The list of wanted objects. These may be RevObject or RevCommit if the processor    *     parsed them. Implementors should not rely on the values being parsed.    * @param haves The list of common objects. Empty on an initial clone request. These may be    *     RevObject or RevCommit if the processor parsed them. Implementors should not rely on the    *     values being parsed.    * @throws ValidationException to block the upload and send a message back to the end-user over    *     the client's protocol connection.    */
 DECL|method|onPreUpload ( Repository repository, Project project, String remoteHost, UploadPack up, Collection<? extends ObjectId> wants, Collection<? extends ObjectId> haves)
+specifier|default
 name|void
 name|onPreUpload
 parameter_list|(
@@ -215,9 +216,10 @@ name|haves
 parameter_list|)
 throws|throws
 name|ValidationException
-function_decl|;
+block|{}
 comment|/**    * Invoked before negotiation round is started.    *    * @param repository The repository    * @param project The project    * @param remoteHost Remote address/hostname of the user    * @param up the UploadPack instance being processed    * @param wants The list of wanted objects. These may be RevObject or RevCommit if the processor    *     parsed them. Implementors should not rely on the values being parsed.    * @param cntOffered number of objects the client has offered.    * @throws ValidationException to block the upload and send a message back to the end-user over    *     the client's protocol connection.    */
 DECL|method|onBeginNegotiate ( Repository repository, Project project, String remoteHost, UploadPack up, Collection<? extends ObjectId> wants, int cntOffered)
+specifier|default
 name|void
 name|onBeginNegotiate
 parameter_list|(
@@ -246,7 +248,7 @@ name|cntOffered
 parameter_list|)
 throws|throws
 name|ValidationException
-function_decl|;
+block|{}
 block|}
 end_interface
 
