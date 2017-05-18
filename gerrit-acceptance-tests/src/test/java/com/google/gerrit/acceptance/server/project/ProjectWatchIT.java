@@ -2059,8 +2059,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|watchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a change to watched project -> should trigger email notification
@@ -2310,8 +2308,6 @@ comment|// watch other project as user
 name|watch
 argument_list|(
 name|otherWatchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a change to watched file -> should trigger email notification for
@@ -2476,8 +2472,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|watchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a change to non-watched file -> should not trigger email
@@ -2834,8 +2828,6 @@ name|allProjects
 operator|.
 name|get
 argument_list|()
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a change to any project -> should trigger email notification
@@ -3172,8 +3164,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|anyProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a change to non-watched file in any project -> should not trigger
@@ -3532,8 +3522,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|watchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a draft change to watched project -> should not trigger email notification
@@ -3685,8 +3673,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|watchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// watch project as user that can view all drafts
@@ -3716,8 +3702,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|watchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a draft change to watched project -> should trigger email notification for
@@ -3885,8 +3869,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|watchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a change to watched project
@@ -4282,8 +4264,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|watchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a private change to watched project -> should not trigger email notification
@@ -4435,8 +4415,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|watchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// watch project as user that can view all private change
@@ -4466,8 +4444,6 @@ expr_stmt|;
 name|watch
 argument_list|(
 name|watchedProject
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// push a private change to watched project -> should trigger email notification for
