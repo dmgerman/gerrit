@@ -140,7 +140,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|5L
+literal|6L
 decl_stmt|;
 DECL|method|create (ObjectId aId, ObjectId bId, Whitespace whitespace)
 specifier|public
