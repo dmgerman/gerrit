@@ -902,6 +902,35 @@ name|ADMIN_PROJECTS
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|onShowView ()
+specifier|public
+name|void
+name|onShowView
+parameter_list|()
+block|{
+name|super
+operator|.
+name|onShowView
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|project
+operator|!=
+literal|null
+condition|)
+block|{
+name|project
+operator|.
+name|setFocus
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|addCreateProjectPanel ()
 specifier|private
 name|void
