@@ -1615,7 +1615,9 @@ argument_list|(
 name|AccountCacheImpl
 operator|.
 name|module
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 end_expr_stmt

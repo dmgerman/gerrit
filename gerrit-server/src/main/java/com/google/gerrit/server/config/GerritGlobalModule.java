@@ -3029,7 +3029,9 @@ argument_list|(
 name|AccountCacheImpl
 operator|.
 name|module
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|install
