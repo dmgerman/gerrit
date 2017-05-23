@@ -111,10 +111,6 @@ DECL|field|notify
 specifier|public
 name|NotifyHandling
 name|notify
-init|=
-name|NotifyHandling
-operator|.
-name|ALL
 decl_stmt|;
 DECL|field|notifyDetails
 specifier|public
