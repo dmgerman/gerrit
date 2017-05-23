@@ -515,7 +515,7 @@ argument_list|)
 expr_stmt|;
 name|runReindexMsg
 operator|=
-literal|"No index versions ready; run java -jar "
+literal|"No index versions for index '%s' ready; run java -jar "
 operator|+
 name|sitePaths
 operator|.
@@ -868,7 +868,17 @@ throw|throw
 operator|new
 name|ProvisionException
 argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
 name|runReindexMsg
+argument_list|,
+name|def
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
