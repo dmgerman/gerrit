@@ -398,7 +398,10 @@ condition|)
 block|{
 name|comments
 operator|=
-literal|null
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
 expr_stmt|;
 return|return;
 block|}
