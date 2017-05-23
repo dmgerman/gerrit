@@ -592,9 +592,10 @@ operator|.
 name|getControl
 argument_list|()
 decl_stmt|;
-name|int
+name|input
+operator|.
 name|parent
-init|=
+operator|=
 name|input
 operator|.
 name|parent
@@ -606,7 +607,7 @@ else|:
 name|input
 operator|.
 name|parent
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|input
@@ -800,14 +801,10 @@ name|getPatchSet
 argument_list|()
 argument_list|,
 name|input
-operator|.
-name|message
 argument_list|,
 name|refName
 argument_list|,
 name|refControl
-argument_list|,
-name|parent
 argument_list|)
 decl_stmt|;
 return|return
