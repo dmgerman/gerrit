@@ -1645,7 +1645,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"edit ref was updated"
+literal|"edit is already published"
 argument_list|)
 throw|;
 block|}
