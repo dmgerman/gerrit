@@ -645,8 +645,8 @@ operator|.
 name|getObjectReader
 argument_list|()
 decl_stmt|;
-name|ObjectId
-name|newTip
+name|RevCommit
+name|newTipCommit
 init|=
 name|revWalk
 operator|.
@@ -676,12 +676,7 @@ name|read
 argument_list|(
 name|reader
 argument_list|,
-name|revWalk
-operator|.
-name|parseCommit
-argument_list|(
-name|newTip
-argument_list|)
+name|newTipCommit
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -766,7 +761,7 @@ name|parentComments
 operator|=
 name|currComments
 expr_stmt|;
-name|newTip
+name|newTipCommit
 operator|=
 name|originalCommit
 expr_stmt|;
@@ -798,27 +793,17 @@ argument_list|,
 name|currComments
 argument_list|)
 decl_stmt|;
-name|newTip
+name|newTipCommit
 operator|=
-name|rewriteCommit
-argument_list|(
-name|originalCommit
-argument_list|,
-name|NoteMap
-operator|.
-name|read
-argument_list|(
-name|reader
-argument_list|,
 name|revWalk
 operator|.
 name|parseCommit
 argument_list|(
-name|newTip
-argument_list|)
-argument_list|)
+name|rewriteCommit
+argument_list|(
+name|originalCommit
 argument_list|,
-name|newTip
+name|newTipCommit
 argument_list|,
 name|inserter
 argument_list|,
@@ -828,6 +813,7 @@ name|putInComments
 argument_list|,
 name|deletedComments
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|parentComments
 operator|=
@@ -835,7 +821,7 @@ name|currComments
 expr_stmt|;
 block|}
 return|return
-name|newTip
+name|newTipCommit
 return|;
 block|}
 comment|/**    * Gets all the comments which are presented at a commit. Note they include the comments put in by    * the previous commits.    */
@@ -1096,8 +1082,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Rewrites one commit.    *    * @param originalCommit the original commit to be rewritten.    * @param parentNoteMap the {@code NoteMap} of the new commit's parent.    * @param parentId the {@code ObjectId} of the new commit's parent.    * @param inserter the {@code ObjectInserter} for the rewrite process.    * @param reader the {@code ObjectReader} for the rewrite process.    * @param putInComments the comments put in by this commit.    * @param deletedComments the comments deleted by this commit.    * @return the {@code objectId} of the new commit.    * @throws IOException    * @throws ConfigInvalidException    */
-DECL|method|rewriteCommit ( RevCommit originalCommit, NoteMap parentNoteMap, ObjectId parentId, ObjectInserter inserter, ObjectReader reader, List<Comment> putInComments, List<Comment> deletedComments)
+comment|/**    * Rewrites one commit.    *    * @param originalCommit the original commit to be rewritten.    * @param parentCommit the parent of the new commit.    * @param inserter the {@code ObjectInserter} for the rewrite process.    * @param reader the {@code ObjectReader} for the rewrite process.    * @param putInComments the comments put in by this commit.    * @param deletedComments the comments deleted by this commit.    * @return the {@code objectId} of the new commit.    * @throws IOException    * @throws ConfigInvalidException    */
+DECL|method|rewriteCommit ( RevCommit originalCommit, RevCommit parentCommit, ObjectInserter inserter, ObjectReader reader, List<Comment> putInComments, List<Comment> deletedComments)
 specifier|private
 name|ObjectId
 name|rewriteCommit
@@ -1105,11 +1091,8 @@ parameter_list|(
 name|RevCommit
 name|originalCommit
 parameter_list|,
-name|NoteMap
-name|parentNoteMap
-parameter_list|,
-name|ObjectId
-name|parentId
+name|RevCommit
+name|parentCommit
 parameter_list|,
 name|ObjectInserter
 name|inserter
@@ -1150,7 +1133,14 @@ name|changeId
 argument_list|,
 name|reader
 argument_list|,
-name|parentNoteMap
+name|NoteMap
+operator|.
+name|read
+argument_list|(
+name|reader
+argument_list|,
+name|parentCommit
+argument_list|)
 argument_list|,
 name|PUBLISHED
 argument_list|)
@@ -1342,7 +1332,7 @@ name|cb
 operator|.
 name|setParentId
 argument_list|(
-name|parentId
+name|parentCommit
 argument_list|)
 expr_stmt|;
 name|cb
