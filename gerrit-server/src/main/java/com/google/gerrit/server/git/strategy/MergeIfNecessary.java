@@ -189,10 +189,6 @@ operator|.
 name|mergeSorter
 argument_list|,
 name|toMerge
-argument_list|,
-name|args
-operator|.
-name|incoming
 argument_list|)
 decl_stmt|;
 name|List
