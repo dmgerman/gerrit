@@ -2069,6 +2069,7 @@ literal|"@example.com"
 return|;
 block|}
 DECL|method|testAccount (String name)
+specifier|public
 name|TestAccount
 name|testAccount
 parameter_list|(
@@ -2119,6 +2120,7 @@ name|account
 return|;
 block|}
 DECL|method|testAccount (String name, String groupName)
+specifier|public
 name|TestAccount
 name|testAccount
 parameter_list|(
