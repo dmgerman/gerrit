@@ -746,8 +746,6 @@ name|commit
 argument_list|,
 name|input
 argument_list|,
-name|refName
-argument_list|,
 name|refControl
 argument_list|)
 decl_stmt|;
