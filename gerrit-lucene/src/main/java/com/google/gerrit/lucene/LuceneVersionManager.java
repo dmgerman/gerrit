@@ -659,6 +659,8 @@ name|def
 operator|.
 name|getName
 argument_list|()
+operator|+
+literal|"_"
 argument_list|,
 name|schema
 argument_list|)
