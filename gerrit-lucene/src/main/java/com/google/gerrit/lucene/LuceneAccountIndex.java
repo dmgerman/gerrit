@@ -797,8 +797,6 @@ argument_list|(
 name|sitePaths
 argument_list|,
 name|ACCOUNTS
-operator|+
-literal|"_"
 argument_list|,
 name|schema
 argument_list|)

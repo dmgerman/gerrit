@@ -1284,14 +1284,14 @@ operator|.
 name|LEGACY_ID
 argument_list|)
 decl_stmt|;
-DECL|field|CHANGES_PREFIX
+DECL|field|CHANGES
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|CHANGES_PREFIX
+name|CHANGES
 init|=
-literal|"changes_"
+literal|"changes"
 decl_stmt|;
 DECL|field|CHANGES_OPEN
 specifier|private
@@ -1832,7 +1832,7 @@ name|getDir
 argument_list|(
 name|sitePaths
 argument_list|,
-name|CHANGES_PREFIX
+name|CHANGES
 argument_list|,
 name|schema
 argument_list|)

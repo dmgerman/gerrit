@@ -417,7 +417,7 @@ name|exists
 expr_stmt|;
 block|}
 block|}
-DECL|method|getDir (SitePaths sitePaths, String prefix, Schema<?> schema)
+DECL|method|getDir (SitePaths sitePaths, String name, Schema<?> schema)
 specifier|static
 name|Path
 name|getDir
@@ -426,7 +426,7 @@ name|SitePaths
 name|sitePaths
 parameter_list|,
 name|String
-name|prefix
+name|name
 parameter_list|,
 name|Schema
 argument_list|<
@@ -446,9 +446,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s%04d"
+literal|"%s_%04d"
 argument_list|,
-name|prefix
+name|name
 argument_list|,
 name|schema
 operator|.
@@ -659,8 +659,6 @@ name|def
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"_"
 argument_list|,
 name|schema
 argument_list|)
