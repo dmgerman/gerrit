@@ -2646,6 +2646,11 @@ specifier|protected
 name|String
 name|resourcePrefix
 decl_stmt|;
+DECL|field|description
+specifier|protected
+name|Description
+name|description
+decl_stmt|;
 DECL|field|changeIndexes
 annotation|@
 name|Inject
@@ -2954,6 +2959,12 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|this
+operator|.
+name|description
+operator|=
+name|description
+expr_stmt|;
 name|GerritServer
 operator|.
 name|Description

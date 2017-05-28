@@ -249,6 +249,8 @@ name|sc
 operator|.
 name|owner
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -301,6 +303,8 @@ comment|// TODO(logan): This is probably not intended!
 operator|.
 name|to
 argument_list|(
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -329,6 +333,8 @@ name|sc
 operator|.
 name|owner
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|,
 name|CC_ON_OWN_COMMENTS
@@ -386,6 +392,8 @@ comment|// TODO(logan): This is probably not intended!
 operator|.
 name|to
 argument_list|(
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -412,6 +420,8 @@ name|sc
 argument_list|,
 name|admin
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -466,6 +476,8 @@ comment|// TODO(logan): This is probably not intended!
 operator|.
 name|to
 argument_list|(
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -492,6 +504,8 @@ name|sc
 argument_list|,
 name|admin
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|,
 name|CC_ON_OWN_COMMENTS
@@ -551,6 +565,8 @@ comment|// TODO(logan): This is probably not intended!
 operator|.
 name|to
 argument_list|(
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -628,6 +644,8 @@ name|sc
 operator|.
 name|starrer
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|)
 operator|.
@@ -754,6 +772,8 @@ name|sc
 operator|.
 name|owner
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -808,6 +828,8 @@ comment|// TODO(logan): This is probably not intended!
 operator|.
 name|to
 argument_list|(
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -850,6 +872,8 @@ name|sc
 operator|.
 name|owner
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -901,6 +925,8 @@ name|sc
 operator|.
 name|starrer
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|)
 operator|.
@@ -959,6 +985,8 @@ name|sc
 operator|.
 name|owner
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -1013,6 +1041,8 @@ name|sc
 operator|.
 name|owner
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -1065,6 +1095,8 @@ comment|// TODO(logan): This is probably not intended!
 operator|.
 name|to
 argument_list|(
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -1093,6 +1125,8 @@ name|sc
 operator|.
 name|owner
 argument_list|,
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
@@ -1145,6 +1179,8 @@ comment|// TODO(logan): This is probably not intended!
 operator|.
 name|to
 argument_list|(
+name|sc
+operator|.
 name|assignee
 argument_list|)
 expr_stmt|;
