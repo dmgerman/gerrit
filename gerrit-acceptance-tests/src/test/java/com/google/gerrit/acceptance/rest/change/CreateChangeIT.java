@@ -94,6 +94,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|Truth8
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|TruthJUnit
 operator|.
 name|assume
@@ -2924,12 +2940,9 @@ name|testSrcRepo
 argument_list|,
 name|revCommit
 argument_list|)
-operator|.
-name|isPresent
-argument_list|()
 argument_list|)
 operator|.
-name|isFalse
+name|isEmpty
 argument_list|()
 expr_stmt|;
 return|return

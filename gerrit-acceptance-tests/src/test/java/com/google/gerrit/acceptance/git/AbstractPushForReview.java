@@ -6966,12 +6966,9 @@ name|testRepo
 argument_list|,
 name|c
 argument_list|)
-operator|.
-name|isPresent
-argument_list|()
 argument_list|)
 operator|.
-name|isFalse
+name|isEmpty
 argument_list|()
 expr_stmt|;
 name|pushForReviewRejected

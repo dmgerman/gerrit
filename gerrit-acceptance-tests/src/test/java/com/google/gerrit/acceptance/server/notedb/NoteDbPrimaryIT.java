@@ -110,6 +110,22 @@ name|common
 operator|.
 name|truth
 operator|.
+name|Truth8
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
 name|TruthJUnit
 operator|.
 name|assume
@@ -2662,9 +2678,6 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|oe
-operator|.
-name|isPresent
-argument_list|()
 argument_list|)
 operator|.
 name|named
@@ -2674,7 +2687,7 @@ operator|+
 name|e
 argument_list|)
 operator|.
-name|isTrue
+name|isPresent
 argument_list|()
 expr_stmt|;
 name|assertThat
