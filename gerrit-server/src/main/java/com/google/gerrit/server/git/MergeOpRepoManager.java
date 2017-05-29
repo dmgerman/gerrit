@@ -732,11 +732,16 @@ return|return
 name|rw
 return|;
 block|}
-DECL|method|getUpdate ()
+DECL|method|getUpdate (BatchUpdate.Factory batchUpdateFactory)
 specifier|public
 name|BatchUpdate
 name|getUpdate
-parameter_list|()
+parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
+parameter_list|)
 block|{
 name|checkState
 argument_list|(
@@ -997,14 +1002,6 @@ name|OpenRepo
 argument_list|>
 name|openRepos
 decl_stmt|;
-DECL|field|batchUpdateFactory
-specifier|private
-specifier|final
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-decl_stmt|;
 DECL|field|onSubmitValidatorsFactory
 specifier|private
 specifier|final
@@ -1047,7 +1044,7 @@ name|submissionId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOpRepoManager ( GitRepositoryManager repoManager, ProjectCache projectCache, BatchUpdate.Factory batchUpdateFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory)
+DECL|method|MergeOpRepoManager ( GitRepositoryManager repoManager, ProjectCache projectCache, OnSubmitValidators.Factory onSubmitValidatorsFactory)
 name|MergeOpRepoManager
 parameter_list|(
 name|GitRepositoryManager
@@ -1055,11 +1052,6 @@ name|repoManager
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
 parameter_list|,
 name|OnSubmitValidators
 operator|.
@@ -1078,12 +1070,6 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
-expr_stmt|;
-name|this
-operator|.
-name|batchUpdateFactory
-operator|=
-name|batchUpdateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1258,7 +1244,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|batchUpdates (Collection<Project.NameKey> projects)
+DECL|method|batchUpdates ( BatchUpdate.Factory batchUpdateFactory, Collection<Project.NameKey> projects)
 specifier|public
 name|List
 argument_list|<
@@ -1266,6 +1252,11 @@ name|BatchUpdate
 argument_list|>
 name|batchUpdates
 parameter_list|(
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
+parameter_list|,
 name|Collection
 argument_list|<
 name|Project
@@ -1315,7 +1306,9 @@ name|project
 argument_list|)
 operator|.
 name|getUpdate
-argument_list|()
+argument_list|(
+name|batchUpdateFactory
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

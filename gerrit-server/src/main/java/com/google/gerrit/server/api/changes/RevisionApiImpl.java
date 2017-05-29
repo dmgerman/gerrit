@@ -1869,8 +1869,6 @@ name|RestApiException
 block|{
 try|try
 block|{
-comment|// TODO(dborowitz): Convert to RetryingRestModifyHandler. Requires converting MergeOp to a
-comment|// Factory that takes BatchUpdate.Factory. (Enough Factories yet?)
 name|submit
 operator|.
 name|apply
@@ -1929,8 +1927,6 @@ name|RestApiException
 block|{
 try|try
 block|{
-comment|// TODO(dborowitz): Convert to RetryingRestModifyHandler. Requires converting MergeOp to a
-comment|// Factory that takes BatchUpdate.Factory.
 name|submitPreview
 operator|.
 name|setFormat
