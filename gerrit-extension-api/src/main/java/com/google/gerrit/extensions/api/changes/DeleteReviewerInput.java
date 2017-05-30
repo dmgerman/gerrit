@@ -94,9 +94,7 @@ specifier|public
 name|NotifyHandling
 name|notify
 init|=
-name|NotifyHandling
-operator|.
-name|ALL
+literal|null
 decl_stmt|;
 DECL|field|notifyDetails
 specifier|public
