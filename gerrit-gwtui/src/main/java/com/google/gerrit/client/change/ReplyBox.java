@@ -404,6 +404,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -1161,6 +1177,14 @@ specifier|final
 name|CommentLinkProcessor
 name|clp
 decl_stmt|;
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|psId
 specifier|private
 specifier|final
@@ -1243,11 +1267,16 @@ name|UiField
 name|FlowPanel
 name|comments
 decl_stmt|;
-DECL|method|ReplyBox ( CommentLinkProcessor clp, PatchSet.Id psId, String revision, NativeMap<LabelInfo> all, NativeMap<JsArrayString> permitted)
+DECL|method|ReplyBox ( CommentLinkProcessor clp, Project.NameKey project, PatchSet.Id psId, String revision, NativeMap<LabelInfo> all, NativeMap<JsArrayString> permitted)
 name|ReplyBox
 parameter_list|(
 name|CommentLinkProcessor
 name|clp
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|PatchSet
 operator|.
@@ -1278,6 +1307,12 @@ name|clp
 expr_stmt|;
 name|this
 operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
+name|this
+operator|.
 name|psId
 operator|=
 name|psId
@@ -1295,6 +1330,8 @@ operator|=
 operator|new
 name|LocalComments
 argument_list|(
+name|project
+argument_list|,
 name|psId
 operator|.
 name|getParentKey
@@ -1526,6 +1563,11 @@ name|ChangeApi
 operator|.
 name|drafts
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|psId
 operator|.
 name|getParentKey
@@ -1782,6 +1824,11 @@ name|ChangeApi
 operator|.
 name|revision
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|psId
 operator|.
 name|getParentKey
@@ -1827,6 +1874,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|project
+argument_list|,
 name|psId
 argument_list|)
 argument_list|)
@@ -3320,6 +3369,8 @@ name|FileComments
 argument_list|(
 name|clp
 argument_list|,
+name|project
+argument_list|,
 name|psId
 argument_list|,
 name|Util
@@ -3367,6 +3418,8 @@ operator|new
 name|FileComments
 argument_list|(
 name|clp
+argument_list|,
+name|project
 argument_list|,
 name|psId
 argument_list|,
@@ -3439,6 +3492,8 @@ operator|new
 name|FileComments
 argument_list|(
 name|clp
+argument_list|,
+name|project
 argument_list|,
 name|psId
 argument_list|,

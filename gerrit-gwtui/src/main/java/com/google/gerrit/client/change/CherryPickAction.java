@@ -265,7 +265,7 @@ DECL|class|CherryPickAction
 class|class
 name|CherryPickAction
 block|{
-DECL|method|call ( final Button b, final ChangeInfo info, final String revision, String project, final String commitMessage)
+DECL|method|call ( final Button b, final ChangeInfo info, final String revision, final Project.NameKey project, final String commitMessage)
 specifier|static
 name|void
 name|call
@@ -282,7 +282,10 @@ specifier|final
 name|String
 name|revision
 parameter_list|,
-name|String
+specifier|final
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|,
 specifier|final
@@ -301,13 +304,7 @@ expr_stmt|;
 operator|new
 name|CherryPickDialog
 argument_list|(
-operator|new
-name|Project
-operator|.
-name|NameKey
-argument_list|(
 name|project
-argument_list|)
 argument_list|)
 block|{
 block|{
@@ -384,6 +381,11 @@ name|cherrypick
 argument_list|(
 name|info
 operator|.
+name|project
+argument_list|()
+argument_list|,
+name|info
+operator|.
 name|legacyId
 argument_list|()
 operator|.
@@ -430,6 +432,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|project
+argument_list|,
 name|result
 operator|.
 name|legacyId

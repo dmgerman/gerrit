@@ -202,6 +202,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -540,7 +556,9 @@ name|revision
 decl_stmt|;
 DECL|field|project
 specifier|private
-name|String
+name|Project
+operator|.
+name|NameKey
 name|project
 decl_stmt|;
 DECL|field|topic
@@ -652,7 +670,7 @@ name|project
 operator|=
 name|info
 operator|.
-name|project
+name|projectNameKey
 argument_list|()
 expr_stmt|;
 name|topic
@@ -1191,6 +1209,9 @@ argument_list|(
 name|followUp
 argument_list|,
 name|project
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|branch
 argument_list|,
@@ -1237,6 +1258,8 @@ operator|new
 name|AbandonAction
 argument_list|(
 name|abandon
+argument_list|,
+name|project
 argument_list|,
 name|changeId
 argument_list|)
@@ -1285,6 +1308,8 @@ name|ChangeActions
 operator|.
 name|delete
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|deleteChange
@@ -1314,6 +1339,8 @@ name|ChangeActions
 operator|.
 name|markPrivate
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|markPrivate
@@ -1342,6 +1369,8 @@ name|ChangeActions
 operator|.
 name|unmarkPrivate
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|unmarkPrivate
@@ -1379,6 +1408,8 @@ operator|new
 name|RestoreAction
 argument_list|(
 name|restore
+argument_list|,
+name|project
 argument_list|,
 name|changeId
 argument_list|)
@@ -1521,6 +1552,8 @@ argument_list|(
 name|revert
 argument_list|,
 name|changeId
+argument_list|,
+name|project
 argument_list|,
 name|revision
 argument_list|,

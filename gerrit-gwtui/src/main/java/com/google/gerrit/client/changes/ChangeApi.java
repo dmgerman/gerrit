@@ -224,6 +224,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -293,12 +307,17 @@ class|class
 name|ChangeApi
 block|{
 comment|/** Abandon the change, ending its review. */
-DECL|method|abandon (int id, String msg, AsyncCallback<ChangeInfo> cb)
+DECL|method|abandon ( @ullable String project, int id, String msg, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|abandon
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -332,6 +351,8 @@ argument_list|)
 expr_stmt|;
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"abandon"
@@ -476,12 +497,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Restore a previously abandoned change to be open again. */
-DECL|method|restore (int id, String msg, AsyncCallback<ChangeInfo> cb)
+DECL|method|restore ( @ullable String project, int id, String msg, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|restore
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -515,6 +541,8 @@ argument_list|)
 expr_stmt|;
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"restore"
@@ -529,12 +557,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Create a new change that reverts the delta caused by this change. */
-DECL|method|revert (int id, String msg, AsyncCallback<ChangeInfo> cb)
+DECL|method|revert ( @ullable String project, int id, String msg, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|revert
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -568,6 +601,8 @@ argument_list|)
 expr_stmt|;
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"revert"
@@ -582,12 +617,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Update the topic of a change. */
-DECL|method|topic (int id, String topic, AsyncCallback<String> cb)
+DECL|method|topic ( @ullable String project, int id, String topic, AsyncCallback<String> cb)
 specifier|public
 specifier|static
 name|void
 name|topic
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -606,6 +646,8 @@ name|call
 init|=
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"topic"
@@ -671,12 +713,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|detail (int id, AsyncCallback<ChangeInfo> cb)
+DECL|method|detail (@ullable String project, int id, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|detail
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -689,6 +736,8 @@ parameter_list|)
 block|{
 name|detail
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -698,12 +747,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|detail (int id)
+DECL|method|detail (@ullable String project, int id)
 specifier|public
 specifier|static
 name|RestApi
 name|detail
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|)
@@ -711,18 +765,25 @@ block|{
 return|return
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"detail"
 argument_list|)
 return|;
 block|}
-DECL|method|blame (PatchSet.Id id, String path, boolean base)
+DECL|method|blame (@ullable String project, PatchSet.Id id, String path, boolean base)
 specifier|public
 specifier|static
 name|RestApi
 name|blame
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -738,6 +799,8 @@ block|{
 return|return
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -764,12 +827,17 @@ name|base
 argument_list|)
 return|;
 block|}
-DECL|method|actions (int id, String revision)
+DECL|method|actions (@ullable String project, int id, String revision)
 specifier|public
 specifier|static
 name|RestApi
 name|actions
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -799,6 +867,8 @@ block|}
 return|return
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|revision
@@ -807,12 +877,17 @@ literal|"actions"
 argument_list|)
 return|;
 block|}
-DECL|method|deleteAssignee (int id, AsyncCallback<AccountInfo> cb)
+DECL|method|deleteAssignee ( @ullable String project, int id, AsyncCallback<AccountInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|deleteAssignee
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -825,6 +900,8 @@ parameter_list|)
 block|{
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -839,12 +916,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setAssignee (int id, String user, AsyncCallback<AccountInfo> cb)
+DECL|method|setAssignee ( @ullable String project, int id, String user, AsyncCallback<AccountInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|setAssignee
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -875,6 +957,8 @@ argument_list|)
 expr_stmt|;
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -891,12 +975,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|markPrivate (int id, AsyncCallback<JavaScriptObject> cb)
+DECL|method|markPrivate ( @ullable String project, int id, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|markPrivate
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -909,6 +998,8 @@ parameter_list|)
 block|{
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -928,12 +1019,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|unmarkPrivate (int id, AsyncCallback<JavaScriptObject> cb)
+DECL|method|unmarkPrivate ( @ullable String project, int id, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|unmarkPrivate
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -946,6 +1042,8 @@ parameter_list|)
 block|{
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -965,12 +1063,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|comments (int id)
+DECL|method|comments (@ullable String project, int id)
 specifier|public
 specifier|static
 name|RestApi
 name|comments
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|)
@@ -978,18 +1081,25 @@ block|{
 return|return
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"comments"
 argument_list|)
 return|;
 block|}
-DECL|method|drafts (int id)
+DECL|method|drafts (@ullable String project, int id)
 specifier|public
 specifier|static
 name|RestApi
 name|drafts
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|)
@@ -997,18 +1107,25 @@ block|{
 return|return
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"drafts"
 argument_list|)
 return|;
 block|}
-DECL|method|edit (int id, AsyncCallback<EditInfo> cb)
+DECL|method|edit (@ullable String project, int id, AsyncCallback<EditInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|edit
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1021,6 +1138,8 @@ parameter_list|)
 block|{
 name|edit
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1030,12 +1149,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|editWithFiles (int id, AsyncCallback<EditInfo> cb)
+DECL|method|editWithFiles (@ullable String project, int id, AsyncCallback<EditInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|editWithFiles
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1048,6 +1172,8 @@ parameter_list|)
 block|{
 name|edit
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1062,12 +1188,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|edit (int id)
+DECL|method|edit (@ullable String project, int id)
 specifier|public
 specifier|static
 name|RestApi
 name|edit
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|)
@@ -1075,6 +1206,8 @@ block|{
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1084,12 +1217,17 @@ literal|"edit"
 argument_list|)
 return|;
 block|}
-DECL|method|editWithCommands (int id)
+DECL|method|editWithCommands (@ullable String project, int id)
 specifier|public
 specifier|static
 name|RestApi
 name|editWithCommands
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|)
@@ -1097,6 +1235,8 @@ block|{
 return|return
 name|edit
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1106,12 +1246,17 @@ literal|"download-commands"
 argument_list|)
 return|;
 block|}
-DECL|method|includedIn (int id, AsyncCallback<IncludedInInfo> cb)
+DECL|method|includedIn ( @ullable String project, int id, AsyncCallback<IncludedInInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|includedIn
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1124,6 +1269,8 @@ parameter_list|)
 block|{
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"in"
@@ -1135,12 +1282,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|revision (int id, String revision)
+DECL|method|revision (@ullable String project, int id, String revision)
 specifier|public
 specifier|static
 name|RestApi
 name|revision
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1151,6 +1303,8 @@ block|{
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1165,12 +1319,17 @@ name|revision
 argument_list|)
 return|;
 block|}
-DECL|method|revision (PatchSet.Id id)
+DECL|method|revision (@ullable String project, PatchSet.Id id)
 specifier|public
 specifier|static
 name|RestApi
 name|revision
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -1208,6 +1367,8 @@ block|{
 return|return
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|cn
 argument_list|,
 name|revision
@@ -1217,6 +1378,8 @@ block|}
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|cn
 argument_list|)
 operator|.
@@ -1234,12 +1397,17 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|reviewers (int id)
+DECL|method|reviewers (@ullable String project, int id)
 specifier|public
 specifier|static
 name|RestApi
 name|reviewers
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|)
@@ -1247,6 +1415,8 @@ block|{
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1256,12 +1426,17 @@ literal|"reviewers"
 argument_list|)
 return|;
 block|}
-DECL|method|suggestReviewers (int id, String q, int n, boolean e)
+DECL|method|suggestReviewers ( @ullable String project, int id, String q, int n, boolean e)
 specifier|public
 specifier|static
 name|RestApi
 name|suggestReviewers
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1280,6 +1455,8 @@ name|api
 init|=
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1323,12 +1500,17 @@ return|return
 name|api
 return|;
 block|}
-DECL|method|vote (int id, int reviewer, String vote)
+DECL|method|vote (@ullable String project, int id, int reviewer, String vote)
 specifier|public
 specifier|static
 name|RestApi
 name|vote
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1342,6 +1524,8 @@ block|{
 return|return
 name|reviewer
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|reviewer
@@ -1358,12 +1542,17 @@ name|vote
 argument_list|)
 return|;
 block|}
-DECL|method|reviewer (int id, int reviewer)
+DECL|method|reviewer (@ullable String project, int id, int reviewer)
 specifier|public
 specifier|static
 name|RestApi
 name|reviewer
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1374,6 +1563,8 @@ block|{
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1388,12 +1579,17 @@ name|reviewer
 argument_list|)
 return|;
 block|}
-DECL|method|reviewer (int id, String reviewer)
+DECL|method|reviewer (@ullable String project, int id, String reviewer)
 specifier|public
 specifier|static
 name|RestApi
 name|reviewer
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1404,6 +1600,8 @@ block|{
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1418,12 +1616,17 @@ name|reviewer
 argument_list|)
 return|;
 block|}
-DECL|method|hashtags (int changeId)
+DECL|method|hashtags (@ullable String project, int changeId)
 specifier|public
 specifier|static
 name|RestApi
 name|hashtags
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|changeId
 parameter_list|)
@@ -1431,6 +1634,8 @@ block|{
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|)
 operator|.
@@ -1440,12 +1645,17 @@ literal|"hashtags"
 argument_list|)
 return|;
 block|}
-DECL|method|hashtag (int changeId, String hashtag)
+DECL|method|hashtag (@ullable String project, int changeId, String hashtag)
 specifier|public
 specifier|static
 name|RestApi
 name|hashtag
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|changeId
 parameter_list|,
@@ -1456,6 +1666,8 @@ block|{
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|)
 operator|.
@@ -1471,12 +1683,15 @@ argument_list|)
 return|;
 block|}
 comment|/** Submit a specific revision of a change. */
-DECL|method|cherrypick ( int id, String commit, String destination, String message, AsyncCallback<ChangeInfo> cb)
+DECL|method|cherrypick ( String project, int id, String commit, String destination, String message, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|cherrypick
 parameter_list|(
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1520,6 +1735,8 @@ argument_list|)
 expr_stmt|;
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|commit
@@ -1536,12 +1753,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Edit commit message for specific revision of a change. */
-DECL|method|message ( int id, String commit, String message, AsyncCallback<JavaScriptObject> cb)
+DECL|method|message ( @ullable String project, int id, String commit, String message, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|message
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1575,6 +1797,8 @@ argument_list|)
 expr_stmt|;
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|commit
@@ -1591,12 +1815,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Submit a specific revision of a change. */
-DECL|method|submit (int id, String commit, AsyncCallback<SubmitInfo> cb)
+DECL|method|submit ( @ullable String project, int id, String commit, AsyncCallback<SubmitInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|submit
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1620,6 +1849,8 @@ argument_list|()
 decl_stmt|;
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|commit
@@ -1636,12 +1867,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Publish a specific revision of a draft change. */
-DECL|method|publish (int id, String commit, AsyncCallback<JavaScriptObject> cb)
+DECL|method|publish ( @ullable String project, int id, String commit, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|publish
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1665,6 +1901,8 @@ argument_list|()
 decl_stmt|;
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|commit
@@ -1681,12 +1919,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Delete a specific draft change. */
-DECL|method|deleteChange (int id, AsyncCallback<JavaScriptObject> cb)
+DECL|method|deleteChange ( @ullable String project, int id, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|deleteChange
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1699,6 +1942,8 @@ parameter_list|)
 block|{
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1709,12 +1954,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Delete a specific draft patch set. */
-DECL|method|deleteRevision (int id, String commit, AsyncCallback<JavaScriptObject> cb)
+DECL|method|deleteRevision ( @ullable String project, int id, String commit, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|deleteRevision
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1730,6 +1980,8 @@ parameter_list|)
 block|{
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|commit
@@ -1742,12 +1994,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Delete change edit. */
-DECL|method|deleteEdit (int id, AsyncCallback<JavaScriptObject> cb)
+DECL|method|deleteEdit ( @ullable String project, int id, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|deleteEdit
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1760,6 +2017,8 @@ parameter_list|)
 block|{
 name|edit
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1770,12 +2029,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Publish change edit. */
-DECL|method|publishEdit (int id, AsyncCallback<JavaScriptObject> cb)
+DECL|method|publishEdit ( @ullable String project, int id, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|publishEdit
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1796,6 +2060,8 @@ argument_list|()
 decl_stmt|;
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1813,12 +2079,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Rebase change edit on latest patch set. */
-DECL|method|rebaseEdit (int id, AsyncCallback<JavaScriptObject> cb)
+DECL|method|rebaseEdit ( @ullable String project, int id, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|rebaseEdit
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1839,6 +2110,8 @@ argument_list|()
 decl_stmt|;
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -1856,12 +2129,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Rebase a revision onto the branch tip or another change. */
-DECL|method|rebase (int id, String commit, String base, AsyncCallback<ChangeInfo> cb)
+DECL|method|rebase ( @ullable String project, int id, String commit, String base, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|rebase
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -1895,6 +2173,8 @@ argument_list|)
 expr_stmt|;
 name|call
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|commit
@@ -2255,12 +2535,17 @@ name|RebaseInput
 parameter_list|()
 block|{}
 block|}
-DECL|method|call (int id, String action)
+DECL|method|call (@ullable String project, int id, String action)
 specifier|private
 specifier|static
 name|RestApi
 name|call
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -2271,6 +2556,8 @@ block|{
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -2280,12 +2567,17 @@ name|action
 argument_list|)
 return|;
 block|}
-DECL|method|call (int id, String commit, String action)
+DECL|method|call (@ullable String project, int id, String commit, String action)
 specifier|private
 specifier|static
 name|RestApi
 name|call
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -2299,6 +2591,8 @@ block|{
 return|return
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -2318,17 +2612,28 @@ name|action
 argument_list|)
 return|;
 block|}
-DECL|method|change (int id)
+DECL|method|change (@ullable String project, int id)
 specifier|public
 specifier|static
 name|RestApi
 name|change
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|)
 block|{
-comment|// TODO Switch to triplet project~branch~id format in URI.
+if|if
+condition|(
+name|project
+operator|==
+literal|null
+condition|)
+block|{
 return|return
 operator|new
 name|RestApi
@@ -2346,6 +2651,24 @@ name|id
 argument_list|)
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+operator|new
+name|RestApi
+argument_list|(
+literal|"/changes/"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|project
+argument_list|,
+name|id
+argument_list|)
+return|;
+block|}
 block|}
 DECL|method|emptyToNull (String str)
 specifier|public
@@ -2372,12 +2695,17 @@ else|:
 name|str
 return|;
 block|}
-DECL|method|commitWithLinks (int changeId, String revision, Callback<CommitInfo> callback)
+DECL|method|commitWithLinks ( @ullable String project, int changeId, String revision, Callback<CommitInfo> callback)
 specifier|public
 specifier|static
 name|void
 name|commitWithLinks
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|changeId
 parameter_list|,
@@ -2393,6 +2721,8 @@ parameter_list|)
 block|{
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|revision

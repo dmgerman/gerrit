@@ -106,6 +106,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -149,9 +165,14 @@ specifier|final
 name|PatchSetsBox
 name|revisionBox
 decl_stmt|;
-DECL|method|PatchSetsAction ( Change.Id changeId, String revision, EditInfo edit, ChangeScreen.Style style, UIObject relativeTo, Widget downloadButton)
+DECL|method|PatchSetsAction ( Project.NameKey project, Change.Id changeId, String revision, EditInfo edit, ChangeScreen.Style style, UIObject relativeTo, Widget downloadButton)
 name|PatchSetsAction
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -191,6 +212,8 @@ operator|=
 operator|new
 name|PatchSetsBox
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|revision

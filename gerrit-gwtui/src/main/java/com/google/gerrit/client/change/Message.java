@@ -1282,6 +1282,11 @@ name|FileComments
 argument_list|(
 name|clp
 argument_list|,
+name|history
+operator|.
+name|getProject
+argument_list|()
+argument_list|,
 name|ps
 argument_list|,
 name|Util
@@ -1322,6 +1327,11 @@ operator|new
 name|FileComments
 argument_list|(
 name|clp
+argument_list|,
+name|history
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|ps
 argument_list|,
@@ -1366,6 +1376,11 @@ operator|new
 name|FileComments
 argument_list|(
 name|clp
+argument_list|,
+name|history
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|ps
 argument_list|,

@@ -106,6 +106,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|event
@@ -193,6 +209,14 @@ DECL|class|AddFileAction
 class|class
 name|AddFileAction
 block|{
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|changeId
 specifier|private
 specifier|final
@@ -237,9 +261,14 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|AddFileAction ( Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget addButton, FileTable files)
+DECL|method|AddFileAction ( Project.NameKey project, Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget addButton, FileTable files)
 name|AddFileAction
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -260,6 +289,12 @@ name|FileTable
 name|files
 parameter_list|)
 block|{
+name|this
+operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
 name|this
 operator|.
 name|changeId
@@ -328,6 +363,8 @@ operator|=
 operator|new
 name|AddFileBox
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|revision

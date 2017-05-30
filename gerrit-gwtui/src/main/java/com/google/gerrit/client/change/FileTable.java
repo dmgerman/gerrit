@@ -478,6 +478,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -1511,6 +1527,13 @@ operator|.
 name|Id
 name|curr
 decl_stmt|;
+DECL|field|project
+specifier|private
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|table
 specifier|private
 name|MyTable
@@ -1575,7 +1598,7 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|set ( DiffObject base, PatchSet.Id curr, ChangeScreen.Style style, Widget replyButton, Mode mode, boolean editExists)
+DECL|method|set ( DiffObject base, PatchSet.Id curr, Project.NameKey project, ChangeScreen.Style style, Widget replyButton, Mode mode, boolean editExists)
 specifier|public
 name|void
 name|set
@@ -1587,6 +1610,11 @@ name|PatchSet
 operator|.
 name|Id
 name|curr
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|ChangeScreen
 operator|.
@@ -1614,6 +1642,12 @@ operator|.
 name|curr
 operator|=
 name|curr
+expr_stmt|;
+name|this
+operator|.
+name|project
+operator|=
+name|project
 expr_stmt|;
 name|this
 operator|.
@@ -2097,6 +2131,8 @@ name|Dispatcher
 operator|.
 name|toUnified
 argument_list|(
+name|project
+argument_list|,
 name|base
 argument_list|,
 name|curr
@@ -2117,6 +2153,8 @@ name|Dispatcher
 operator|.
 name|toPatch
 argument_list|(
+name|project
+argument_list|,
 name|base
 argument_list|,
 name|curr
@@ -2131,6 +2169,8 @@ name|Dispatcher
 operator|.
 name|toEditScreen
 argument_list|(
+name|project
+argument_list|,
 name|curr
 argument_list|,
 name|info
@@ -2481,6 +2521,11 @@ name|ChangeEditApi
 operator|.
 name|delete
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|curr
 operator|.
 name|getParentKey
@@ -2516,6 +2561,8 @@ name|PageLinks
 operator|.
 name|toChangeInEditMode
 argument_list|(
+name|project
+argument_list|,
 name|curr
 operator|.
 name|getParentKey
@@ -2563,6 +2610,11 @@ name|ChangeEditApi
 operator|.
 name|restore
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|curr
 operator|.
 name|getParentKey
@@ -2598,6 +2650,8 @@ name|PageLinks
 operator|.
 name|toChangeInEditMode
 argument_list|(
+name|project
+argument_list|,
 name|curr
 operator|.
 name|getParentKey
@@ -2666,6 +2720,11 @@ name|ChangeApi
 operator|.
 name|revision
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|curr
 argument_list|)
 operator|.

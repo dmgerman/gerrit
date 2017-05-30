@@ -106,6 +106,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|event
@@ -193,6 +209,14 @@ DECL|class|DeleteFileAction
 class|class
 name|DeleteFileAction
 block|{
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|changeId
 specifier|private
 specifier|final
@@ -231,9 +255,14 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|DeleteFileAction ( Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget deleteButton)
+DECL|method|DeleteFileAction ( Project.NameKey project, Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget deleteButton)
 name|DeleteFileAction
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -251,6 +280,12 @@ name|Widget
 name|deleteButton
 parameter_list|)
 block|{
+name|this
+operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
 name|this
 operator|.
 name|changeId
@@ -307,6 +342,8 @@ operator|=
 operator|new
 name|DeleteFileBox
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|revision

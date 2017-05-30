@@ -148,6 +148,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -182,11 +198,16 @@ specifier|public
 class|class
 name|EditActions
 block|{
-DECL|method|deleteEdit (Change.Id id, Button... editButtons)
+DECL|method|deleteEdit (Project.NameKey project, Change.Id id, Button... editButtons)
 specifier|static
 name|void
 name|deleteEdit
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -201,6 +222,11 @@ name|ChangeApi
 operator|.
 name|deleteEdit
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -208,6 +234,8 @@ argument_list|()
 argument_list|,
 name|cs
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|editButtons
@@ -215,11 +243,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|publishEdit (Change.Id id, Button... editButtons)
+DECL|method|publishEdit (Project.NameKey project, Change.Id id, Button... editButtons)
 specifier|static
 name|void
 name|publishEdit
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -234,6 +267,11 @@ name|ChangeApi
 operator|.
 name|publishEdit
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -241,6 +279,8 @@ argument_list|()
 argument_list|,
 name|cs
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|editButtons
@@ -248,11 +288,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|rebaseEdit (Change.Id id, Button... editButtons)
+DECL|method|rebaseEdit (Project.NameKey project, Change.Id id, Button... editButtons)
 specifier|static
 name|void
 name|rebaseEdit
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -267,6 +312,11 @@ name|ChangeApi
 operator|.
 name|rebaseEdit
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -274,6 +324,8 @@ argument_list|()
 argument_list|,
 name|cs
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|editButtons
@@ -281,7 +333,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cs (final Change.Id id, Button... editButtons)
+DECL|method|cs ( Project.NameKey project, final Change.Id id, Button... editButtons)
 specifier|public
 specifier|static
 name|GerritCallback
@@ -290,6 +342,11 @@ name|JavaScriptObject
 argument_list|>
 name|cs
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 specifier|final
 name|Change
 operator|.
@@ -334,6 +391,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 argument_list|)
@@ -386,6 +445,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 argument_list|)

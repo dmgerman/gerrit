@@ -312,6 +312,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -896,6 +912,14 @@ operator|.
 name|Id
 name|changeId
 decl_stmt|;
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|revision
 specifier|private
 specifier|final
@@ -933,9 +957,14 @@ name|UiField
 name|Style
 name|style
 decl_stmt|;
-DECL|method|PatchSetsBox (Change.Id changeId, String revision, EditInfo edit)
+DECL|method|PatchSetsBox (Project.NameKey project, Change.Id changeId, String revision, EditInfo edit)
 name|PatchSetsBox
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -948,6 +977,12 @@ name|EditInfo
 name|edit
 parameter_list|)
 block|{
+name|this
+operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
 name|this
 operator|.
 name|changeId
@@ -998,6 +1033,11 @@ name|ChangeApi
 operator|.
 name|detail
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|changeId
 operator|.
 name|get
@@ -1651,6 +1691,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|r

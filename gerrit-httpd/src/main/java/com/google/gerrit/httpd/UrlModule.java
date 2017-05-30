@@ -1344,12 +1344,17 @@ argument_list|(
 name|idString
 argument_list|)
 decl_stmt|;
+comment|// User accessed Gerrit with /1234, so we have no project yet.
+comment|// TODO(hiesel) Replace with a preflight request to obtain project before we deprecate
+comment|// the numeric change id.
 name|toGerrit
 argument_list|(
 name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+literal|null
+argument_list|,
 name|id
 argument_list|)
 argument_list|,

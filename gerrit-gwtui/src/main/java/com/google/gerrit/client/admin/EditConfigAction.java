@@ -170,6 +170,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RefNames
 import|;
 end_import
@@ -198,7 +214,7 @@ specifier|public
 class|class
 name|EditConfigAction
 block|{
-DECL|method|call (Button b, String project)
+DECL|method|call (Button b, Project.NameKey project)
 specifier|static
 name|void
 name|call
@@ -206,7 +222,9 @@ parameter_list|(
 name|Button
 name|b
 parameter_list|,
-name|String
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|)
 block|{
@@ -222,6 +240,9 @@ operator|.
 name|createChange
 argument_list|(
 name|project
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|RefNames
 operator|.
@@ -263,6 +284,8 @@ name|Dispatcher
 operator|.
 name|toEditScreen
 argument_list|(
+name|project
+argument_list|,
 operator|new
 name|PatchSet
 operator|.

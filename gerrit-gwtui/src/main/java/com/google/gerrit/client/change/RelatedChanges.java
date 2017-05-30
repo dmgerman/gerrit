@@ -1300,6 +1300,11 @@ name|revision
 argument_list|(
 name|info
 operator|.
+name|project
+argument_list|()
+argument_list|,
+name|info
+operator|.
 name|legacyId
 argument_list|()
 operator|.
@@ -1491,6 +1496,11 @@ name|ChangeApi
 operator|.
 name|change
 argument_list|(
+name|info
+operator|.
+name|project
+argument_list|()
+argument_list|,
 name|info
 operator|.
 name|legacyId

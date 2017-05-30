@@ -750,10 +750,13 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+comment|// TODO(hiesel) Make a preflight request to get project before we deprecate the numeric changeId
 name|ChangeApi
 operator|.
 name|change
 argument_list|(
+literal|null
+argument_list|,
 name|id
 argument_list|)
 operator|.
