@@ -657,6 +657,11 @@ operator|.
 name|scope
 argument_list|()
 argument_list|,
+name|rc
+operator|.
+name|fallBackToAdmin
+argument_list|()
+argument_list|,
 name|clazz
 argument_list|,
 name|RequiresCapability
@@ -709,6 +714,11 @@ argument_list|,
 name|rac
 operator|.
 name|scope
+argument_list|()
+argument_list|,
+name|rac
+operator|.
+name|fallBackToAdmin
 argument_list|()
 argument_list|,
 name|clazz
@@ -840,7 +850,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|resolve ( @ullable String pluginName, String capability, CapabilityScope scope, Class<?> clazz, Class<?> annotationClass)
+DECL|method|resolve ( @ullable String pluginName, String capability, CapabilityScope scope, boolean fallBackToAdmin, Class<?> clazz, Class<?> annotationClass)
 specifier|private
 specifier|static
 name|GlobalOrPluginPermission
@@ -856,6 +866,9 @@ name|capability
 parameter_list|,
 name|CapabilityScope
 name|scope
+parameter_list|,
+name|boolean
+name|fallBackToAdmin
 parameter_list|,
 name|Class
 argument_list|<
@@ -908,6 +921,8 @@ argument_list|(
 name|pluginName
 argument_list|,
 name|capability
+argument_list|,
+name|fallBackToAdmin
 argument_list|)
 return|;
 block|}

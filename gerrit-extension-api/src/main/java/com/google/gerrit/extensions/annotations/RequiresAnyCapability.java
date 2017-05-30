@@ -158,6 +158,15 @@ name|CapabilityScope
 operator|.
 name|CONTEXT
 function_decl|;
+comment|/** Fall back to admin credentials. Only applies to plugin capability check. */
+DECL|method|fallBackToAdmin ()
+DECL|field|true
+name|boolean
+name|fallBackToAdmin
+parameter_list|()
+default|default
+literal|true
+function_decl|;
 block|}
 end_annotation_defn
 
