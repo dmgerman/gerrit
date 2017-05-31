@@ -248,6 +248,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|project
+operator|.
+name|DefaultPermissionBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|change
@@ -267,6 +283,18 @@ operator|.
 name|server
 operator|.
 name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|ImplementedBy
 import|;
 end_import
 
@@ -371,6 +399,13 @@ comment|/**  * Checks authorization to perform an action on a project, reference
 end_comment
 
 begin_class
+annotation|@
+name|ImplementedBy
+argument_list|(
+name|DefaultPermissionBackend
+operator|.
+name|class
+argument_list|)
 DECL|class|PermissionBackend
 specifier|public
 specifier|abstract

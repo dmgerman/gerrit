@@ -110,18 +110,6 @@ name|AbstractModule
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Scopes
-import|;
-end_import
-
 begin_comment
 comment|/** Binds the default {@link PermissionBackend}. */
 end_comment
@@ -142,27 +130,6 @@ name|void
 name|configure
 parameter_list|()
 block|{
-name|bind
-argument_list|(
-name|PermissionBackend
-operator|.
-name|class
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|DefaultPermissionBackend
-operator|.
-name|class
-argument_list|)
-operator|.
-name|in
-argument_list|(
-name|Scopes
-operator|.
-name|SINGLETON
-argument_list|)
-expr_stmt|;
 name|install
 argument_list|(
 operator|new
