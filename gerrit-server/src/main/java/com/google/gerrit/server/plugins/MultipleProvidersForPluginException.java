@@ -82,13 +82,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|nio
+name|google
 operator|.
-name|file
+name|common
 operator|.
-name|Path
+name|collect
+operator|.
+name|Streams
 import|;
 end_import
 
@@ -96,11 +98,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|nio
 operator|.
-name|stream
+name|file
 operator|.
-name|StreamSupport
+name|Path
 import|;
 end_import
 
@@ -163,16 +165,11 @@ name|providersHandlers
 parameter_list|)
 block|{
 return|return
-name|StreamSupport
+name|Streams
 operator|.
 name|stream
 argument_list|(
 name|providersHandlers
-operator|.
-name|spliterator
-argument_list|()
-argument_list|,
-literal|false
 argument_list|)
 operator|.
 name|map
