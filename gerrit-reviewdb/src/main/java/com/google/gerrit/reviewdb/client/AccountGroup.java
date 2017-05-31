@@ -108,6 +108,16 @@ name|StringKey
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_comment
 comment|/** Named group of one or more accounts, typically used for access controls. */
 end_comment
@@ -575,32 +585,44 @@ specifier|protected
 name|UUID
 name|ownerGroupUUID
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|11
+argument_list|)
+DECL|field|createdOn
+specifier|protected
+name|Timestamp
+name|createdOn
+decl_stmt|;
 DECL|method|AccountGroup ()
 specifier|protected
 name|AccountGroup
 parameter_list|()
 block|{}
-DECL|method|AccountGroup ( final AccountGroup.NameKey newName, final AccountGroup.Id newId, final AccountGroup.UUID uuid)
+DECL|method|AccountGroup ( AccountGroup.NameKey newName, AccountGroup.Id newId, AccountGroup.UUID uuid, Timestamp createdOn)
 specifier|public
 name|AccountGroup
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|NameKey
 name|newName
 parameter_list|,
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
 name|newId
 parameter_list|,
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
 name|uuid
+parameter_list|,
+name|Timestamp
+name|createdOn
 parameter_list|)
 block|{
 name|name
@@ -622,6 +644,12 @@ expr_stmt|;
 name|ownerGroupUUID
 operator|=
 name|groupUUID
+expr_stmt|;
+name|this
+operator|.
+name|createdOn
+operator|=
+name|createdOn
 expr_stmt|;
 block|}
 DECL|method|getId ()
@@ -785,6 +813,32 @@ block|{
 name|groupUUID
 operator|=
 name|uuid
+expr_stmt|;
+block|}
+DECL|method|getCreatedOn ()
+specifier|public
+name|Timestamp
+name|getCreatedOn
+parameter_list|()
+block|{
+return|return
+name|createdOn
+return|;
+block|}
+DECL|method|setCreatedOn (Timestamp createdOn)
+specifier|public
+name|void
+name|setCreatedOn
+parameter_list|(
+name|Timestamp
+name|createdOn
+parameter_list|)
+block|{
+name|this
+operator|.
+name|createdOn
+operator|=
+name|createdOn
 expr_stmt|;
 block|}
 block|}
