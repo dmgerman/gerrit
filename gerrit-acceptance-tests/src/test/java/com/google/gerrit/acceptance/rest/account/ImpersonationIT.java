@@ -993,7 +993,7 @@ argument_list|)
 expr_stmt|;
 name|admin2
 operator|=
-name|accounts
+name|accountCreator
 operator|.
 name|admin2
 argument_list|()
@@ -2724,7 +2724,7 @@ argument_list|()
 expr_stmt|;
 name|setApiUser
 argument_list|(
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -3360,7 +3360,7 @@ argument_list|()
 expr_stmt|;
 name|setApiUser
 argument_list|(
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -4071,7 +4071,7 @@ expr_stmt|;
 name|TestAccount
 name|user2
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -4414,7 +4414,7 @@ argument_list|)
 expr_stmt|;
 name|setApiUser
 argument_list|(
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -4522,7 +4522,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()

@@ -398,7 +398,7 @@ argument_list|)
 expr_stmt|;
 name|privilegedUser
 operator|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(

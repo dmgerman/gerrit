@@ -2072,7 +2072,7 @@ comment|// create a user that watches the project
 name|TestAccount
 name|user3
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(
@@ -2150,7 +2150,7 @@ expr_stmt|;
 name|TestAccount
 name|user2
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -2666,7 +2666,7 @@ name|email
 operator|+
 literal|",cc="
 operator|+
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -2703,7 +2703,7 @@ name|of
 argument_list|(
 name|user
 argument_list|,
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -2811,7 +2811,7 @@ comment|// add several reviewers
 name|TestAccount
 name|user2
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(

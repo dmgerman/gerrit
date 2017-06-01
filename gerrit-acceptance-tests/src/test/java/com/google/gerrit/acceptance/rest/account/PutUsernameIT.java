@@ -182,7 +182,7 @@ name|put
 argument_list|(
 literal|"/accounts/"
 operator|+
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|()
@@ -263,7 +263,7 @@ name|put
 argument_list|(
 literal|"/accounts/"
 operator|+
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|()

@@ -3003,7 +3003,7 @@ operator|new
 argument_list|)
 decl_stmt|;
 return|return
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(

@@ -2077,7 +2077,7 @@ block|{
 name|TestAccount
 name|foo
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(
@@ -3503,7 +3503,7 @@ block|{
 name|TestAccount
 name|user2
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -4204,7 +4204,7 @@ block|{
 name|TestAccount
 name|account
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(
@@ -8024,7 +8024,7 @@ decl_stmt|;
 name|TestAccount
 name|account
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(
