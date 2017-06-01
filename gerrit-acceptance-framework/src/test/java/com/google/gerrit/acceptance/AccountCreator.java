@@ -198,22 +198,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountByEmailCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|AccountCache
 import|;
 end_import
@@ -583,12 +567,6 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
-DECL|field|byEmailCache
-specifier|private
-specifier|final
-name|AccountByEmailCache
-name|byEmailCache
-decl_stmt|;
 DECL|field|externalIdsUpdate
 specifier|private
 specifier|final
@@ -605,7 +583,7 @@ name|sshEnabled
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, Sequences sequences, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, Groups groups, @ServerInitiated Provider<GroupsUpdate> groupsUpdateProvider, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, ExternalIdsUpdate.Server externalIdsUpdate, @SshEnabled boolean sshEnabled)
+DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, Sequences sequences, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, Groups groups, @ServerInitiated Provider<GroupsUpdate> groupsUpdateProvider, SshKeyCache sshKeyCache, AccountCache accountCache, ExternalIdsUpdate.Server externalIdsUpdate, @SshEnabled boolean sshEnabled)
 name|AccountCreator
 parameter_list|(
 name|SchemaFactory
@@ -643,9 +621,6 @@ name|sshKeyCache
 parameter_list|,
 name|AccountCache
 name|accountCache
-parameter_list|,
-name|AccountByEmailCache
-name|byEmailCache
 parameter_list|,
 name|ExternalIdsUpdate
 operator|.
@@ -710,12 +685,6 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
-expr_stmt|;
-name|this
-operator|.
-name|byEmailCache
-operator|=
-name|byEmailCache
 expr_stmt|;
 name|this
 operator|.
@@ -1053,13 +1022,6 @@ name|username
 argument_list|)
 expr_stmt|;
 block|}
-name|byEmailCache
-operator|.
-name|evict
-argument_list|(
-name|email
-argument_list|)
-expr_stmt|;
 name|account
 operator|=
 operator|new

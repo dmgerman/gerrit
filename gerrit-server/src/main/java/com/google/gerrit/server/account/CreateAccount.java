@@ -752,12 +752,6 @@ operator|.
 name|User
 name|accountsUpdate
 decl_stmt|;
-DECL|field|byEmailCache
-specifier|private
-specifier|final
-name|AccountByEmailCache
-name|byEmailCache
-decl_stmt|;
 DECL|field|infoLoader
 specifier|private
 specifier|final
@@ -812,7 +806,7 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
+DECL|method|CreateAccount ( ReviewDb db, Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -839,9 +833,6 @@ name|AccountsUpdate
 operator|.
 name|User
 name|accountsUpdate
-parameter_list|,
-name|AccountByEmailCache
-name|byEmailCache
 parameter_list|,
 name|AccountLoader
 operator|.
@@ -920,12 +911,6 @@ operator|.
 name|accountsUpdate
 operator|=
 name|accountsUpdate
-expr_stmt|;
-name|this
-operator|.
-name|byEmailCache
-operator|=
-name|byEmailCache
 expr_stmt|;
 name|this
 operator|.
@@ -1521,15 +1506,6 @@ operator|.
 name|evictByUsername
 argument_list|(
 name|username
-argument_list|)
-expr_stmt|;
-name|byEmailCache
-operator|.
-name|evict
-argument_list|(
-name|input
-operator|.
-name|email
 argument_list|)
 expr_stmt|;
 name|AccountLoader
