@@ -294,7 +294,7 @@ init|=
 literal|1L
 decl_stmt|;
 DECL|field|indexSource
-specifier|private
+specifier|protected
 specifier|final
 name|byte
 index|[]
