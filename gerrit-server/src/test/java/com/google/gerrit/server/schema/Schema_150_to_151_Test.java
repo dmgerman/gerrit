@@ -1012,14 +1012,10 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-name|Timestamp
+name|AccountGroup
 operator|.
-name|from
-argument_list|(
-name|Schema_151
-operator|.
-name|AUDIT_CREATION_INSTANT
-argument_list|)
+name|auditCreationInstantTs
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

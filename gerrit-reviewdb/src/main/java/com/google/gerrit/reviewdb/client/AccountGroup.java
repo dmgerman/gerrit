@@ -129,6 +129,33 @@ specifier|final
 class|class
 name|AccountGroup
 block|{
+comment|/**    * Time when the audit subsystem was implemented, used as the default value for {@link #createdOn}    * when one couldn't be determined from the audit log.    */
+comment|// Can't use Instant here because GWT. This is verified against a readable time in the tests,
+comment|// which don't need to compile under GWT.
+DECL|field|AUDIT_CREATION_INSTANT_MS
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|AUDIT_CREATION_INSTANT_MS
+init|=
+literal|1244489460000L
+decl_stmt|;
+DECL|method|auditCreationInstantTs ()
+specifier|public
+specifier|static
+name|Timestamp
+name|auditCreationInstantTs
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Timestamp
+argument_list|(
+name|AUDIT_CREATION_INSTANT_MS
+argument_list|)
+return|;
+block|}
 comment|/** Group name key */
 DECL|class|NameKey
 specifier|public
@@ -591,6 +618,10 @@ argument_list|(
 name|id
 operator|=
 literal|11
+argument_list|,
+name|notNull
+operator|=
+literal|false
 argument_list|)
 DECL|field|createdOn
 specifier|protected
@@ -823,6 +854,13 @@ parameter_list|()
 block|{
 return|return
 name|createdOn
+operator|!=
+literal|null
+condition|?
+name|createdOn
+else|:
+name|auditCreationInstantTs
+argument_list|()
 return|;
 block|}
 DECL|method|setCreatedOn (Timestamp createdOn)
