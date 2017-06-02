@@ -144,6 +144,7 @@ end_comment
 
 begin_interface
 DECL|interface|ExternalIdCache
+specifier|public
 interface|interface
 name|ExternalIdCache
 block|{
