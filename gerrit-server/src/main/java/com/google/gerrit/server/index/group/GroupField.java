@@ -141,6 +141,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|FieldDef
+operator|.
+name|timestamp
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -185,6 +203,16 @@ operator|.
 name|index
 operator|.
 name|SchemaUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
 import|;
 end_import
 
@@ -292,6 +320,31 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|)
+decl_stmt|;
+comment|/** Timestamp indicating when this group was created. */
+DECL|field|CREATED_ON
+specifier|public
+specifier|static
+specifier|final
+name|FieldDef
+argument_list|<
+name|AccountGroup
+argument_list|,
+name|Timestamp
+argument_list|>
+name|CREATED_ON
+init|=
+name|timestamp
+argument_list|(
+literal|"created_on"
+argument_list|)
+operator|.
+name|build
+argument_list|(
+name|AccountGroup
+operator|::
+name|getCreatedOn
 argument_list|)
 decl_stmt|;
 comment|/** Group name. */
