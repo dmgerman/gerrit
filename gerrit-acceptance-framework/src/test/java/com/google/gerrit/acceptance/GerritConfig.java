@@ -159,6 +159,7 @@ name|String
 name|name
 parameter_list|()
 function_decl|;
+comment|/**    * Single value. Takes precedence over values specified in {@code values}.    */
 DECL|method|value ()
 name|String
 name|value
@@ -166,6 +167,7 @@ parameter_list|()
 default|default
 literal|""
 function_decl|;
+comment|/**    * Multiple values (list). Ignored if {@code value} is specified.    */
 DECL|method|values ()
 name|String
 index|[]
