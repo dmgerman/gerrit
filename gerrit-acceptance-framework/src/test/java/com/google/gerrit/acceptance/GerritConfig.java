@@ -153,6 +153,7 @@ specifier|public
 annotation_defn|@interface
 name|GerritConfig
 block|{
+comment|/**    * Setting name in the form {@code "section.name"} or {@code "section.subsection.name"} where    * {@code section}, {@code subsection} and {@code name} correspond to the parameters of the same    * names in JGit's {@code Config#getString} method.    *    * @see org.eclipse.jgit.lib.Config#getString(String, String, String)    */
 DECL|method|name ()
 name|String
 name|name
