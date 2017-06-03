@@ -954,14 +954,11 @@ name|GerritConfigs
 name|configs
 parameter_list|()
 function_decl|;
-DECL|method|buildConfig (Config baseConfig)
+DECL|method|checkValidAnnotations ()
 specifier|private
-name|Config
-name|buildConfig
-parameter_list|(
-name|Config
-name|baseConfig
-parameter_list|)
+name|void
+name|checkValidAnnotations
+parameter_list|()
 block|{
 if|if
 condition|(
@@ -984,6 +981,16 @@ literal|"Use either @GerritConfigs or @GerritConfig not both"
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|buildConfig (Config baseConfig)
+specifier|private
+name|Config
+name|buildConfig
+parameter_list|(
+name|Config
+name|baseConfig
+parameter_list|)
+block|{
 if|if
 condition|(
 name|configs
@@ -1048,6 +1055,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|desc
+operator|.
+name|checkValidAnnotations
+argument_list|()
+expr_stmt|;
 name|Config
 name|cfg
 init|=
