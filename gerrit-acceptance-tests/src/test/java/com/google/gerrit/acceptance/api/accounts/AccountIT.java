@@ -1781,26 +1781,6 @@ name|savedExternalIds
 argument_list|)
 expr_stmt|;
 block|}
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|admin
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|user
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|After
@@ -2065,10 +2045,10 @@ name|assertReindexOf
 argument_list|(
 name|foo
 argument_list|,
-literal|2
+literal|3
 argument_list|)
 expr_stmt|;
-comment|// account creation + adding SSH keys
+comment|// account creation + external ID creation + adding SSH keys
 block|}
 else|else
 block|{
@@ -2078,10 +2058,10 @@ name|assertReindexOf
 argument_list|(
 name|foo
 argument_list|,
-literal|1
+literal|2
 argument_list|)
 expr_stmt|;
-comment|// account creation
+comment|// account creation + external ID creation
 block|}
 comment|// check user branch
 try|try
@@ -4388,15 +4368,6 @@ argument_list|(
 name|extIds
 argument_list|)
 expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|admin
-operator|.
-name|id
-argument_list|)
-expr_stmt|;
 name|accountIndexedCounter
 operator|.
 name|assertReindexOf
@@ -4757,15 +4728,6 @@ name|id
 argument_list|,
 name|email
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|admin
-operator|.
-name|id
 argument_list|)
 expr_stmt|;
 name|assertEmail
@@ -6944,16 +6906,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|user
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|accountIndexedCounter
 operator|.
 name|assertReindexOf
@@ -8678,17 +8630,6 @@ argument_list|()
 argument_list|,
 name|email
 argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Clear saved AccountState and ExternalIds.
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|account
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|accountIndexedCounter

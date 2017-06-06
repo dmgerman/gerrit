@@ -4648,6 +4648,8 @@ name|ExternalIdsUpdate
 argument_list|(
 name|repoManager
 argument_list|,
+name|accountCache
+argument_list|,
 name|allUsers
 argument_list|,
 name|metricMaker
@@ -4855,6 +4857,8 @@ operator|new
 name|ExternalIdsUpdate
 argument_list|(
 name|repoManager
+argument_list|,
+name|accountCache
 argument_list|,
 name|allUsers
 argument_list|,

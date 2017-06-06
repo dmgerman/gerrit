@@ -2700,16 +2700,6 @@ argument_list|(
 name|newExtIds
 argument_list|)
 expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|user
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|add (TestKey k, IdentifiedUser user)
 specifier|private

@@ -498,22 +498,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|AccountResource
 import|;
 end_import
@@ -987,12 +971,6 @@ operator|.
 name|Factory
 name|addKeyFactory
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|accountQueryProvider
 specifier|private
 specifier|final
@@ -1018,7 +996,7 @@ name|externalIdsUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostGpgKeys ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<CurrentUser> self, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory, AccountCache accountCache, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory)
+DECL|method|PostGpgKeys ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<CurrentUser> self, Provider<PublicKeyStore> storeProvider, GerritPublicKeyChecker.Factory checkerFactory, AddKeySender.Factory addKeyFactory, Provider<InternalAccountQuery> accountQueryProvider, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory)
 name|PostGpgKeys
 parameter_list|(
 annotation|@
@@ -1050,9 +1028,6 @@ name|AddKeySender
 operator|.
 name|Factory
 name|addKeyFactory
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1098,12 +1073,6 @@ operator|.
 name|addKeyFactory
 operator|=
 name|addKeyFactory
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -1396,19 +1365,6 @@ argument_list|,
 name|extIdKeysToRemove
 argument_list|,
 name|newExtIds
-argument_list|)
-expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
