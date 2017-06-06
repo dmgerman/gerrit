@@ -1599,21 +1599,6 @@ name|execute
 argument_list|()
 expr_stmt|;
 block|}
-name|indexer
-operator|.
-name|index
-argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|inserter
-operator|.
-name|getChange
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 comment|/**    * Delete change edit.    *    * @param edit change edit to delete    * @throws IOException    * @throws OrmException    */
