@@ -140,17 +140,6 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
-comment|/**    * Returns an {@code AccountState} instance for the given account ID if it is present in the    * cache.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID if it is present in the cache,    *     otherwise {@code null}    */
-DECL|method|getIfPresent (Account.Id accountId)
-name|AccountState
-name|getIfPresent
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|accountId
-parameter_list|)
-function_decl|;
 DECL|method|getByUsername (String username)
 name|AccountState
 name|getByUsername
