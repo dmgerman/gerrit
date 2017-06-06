@@ -98,6 +98,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toList
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -119,6 +133,20 @@ operator|.
 name|base
 operator|.
 name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
 import|;
 end_import
 
@@ -282,6 +310,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|ReviewerStateInternal
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|change
@@ -305,6 +349,20 @@ operator|.
 name|change
 operator|.
 name|InternalChangeQuery
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|TestNotesMigration
 import|;
 end_import
 
@@ -368,6 +426,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -393,6 +461,18 @@ operator|.
 name|atomic
 operator|.
 name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Stream
 import|;
 end_import
 
@@ -885,6 +965,12 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 decl_stmt|;
+DECL|field|notesMigration
+specifier|private
+specifier|final
+name|TestNotesMigration
+name|notesMigration
+decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
@@ -952,7 +1038,7 @@ name|commitBuilder
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -968,6 +1054,9 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
+parameter_list|,
+name|TestNotesMigration
+name|notesMigration
 parameter_list|,
 annotation|@
 name|Assisted
@@ -998,6 +1087,8 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
+name|notesMigration
+argument_list|,
 name|db
 argument_list|,
 name|i
@@ -1014,7 +1105,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1030,6 +1121,9 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
+parameter_list|,
+name|TestNotesMigration
+name|notesMigration
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1068,6 +1162,8 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
+name|notesMigration
+argument_list|,
 name|db
 argument_list|,
 name|i
@@ -1086,7 +1182,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1102,6 +1198,9 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
+parameter_list|,
+name|TestNotesMigration
+name|notesMigration
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1156,6 +1255,8 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
+name|notesMigration
+argument_list|,
 name|db
 argument_list|,
 name|i
@@ -1174,7 +1275,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1190,6 +1291,9 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
+parameter_list|,
+name|TestNotesMigration
+name|notesMigration
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1235,6 +1339,8 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
+name|notesMigration
+argument_list|,
 name|db
 argument_list|,
 name|i
@@ -1251,7 +1357,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1267,6 +1373,9 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
+parameter_list|,
+name|TestNotesMigration
+name|notesMigration
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1331,6 +1440,8 @@ name|approvalsUtil
 argument_list|,
 name|queryProvider
 argument_list|,
+name|notesMigration
+argument_list|,
 name|db
 argument_list|,
 name|i
@@ -1352,7 +1463,7 @@ name|changeId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, ReviewDb db, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, ReviewDb db, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
 specifier|private
 name|PushOneCommit
 parameter_list|(
@@ -1369,6 +1480,9 @@ argument_list|<
 name|InternalChangeQuery
 argument_list|>
 name|queryProvider
+parameter_list|,
+name|TestNotesMigration
+name|notesMigration
 parameter_list|,
 name|ReviewDb
 name|db
@@ -1428,6 +1542,12 @@ operator|.
 name|queryProvider
 operator|=
 name|queryProvider
+expr_stmt|;
+name|this
+operator|.
+name|notesMigration
+operator|=
+name|notesMigration
 expr_stmt|;
 name|this
 operator|.
@@ -2088,6 +2208,54 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|assertChange
+argument_list|(
+name|expectedStatus
+argument_list|,
+name|expectedTopic
+argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|expectedReviewers
+argument_list|)
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|assertChange ( Change.Status expectedStatus, String expectedTopic, List<TestAccount> expectedReviewers, List<TestAccount> expectedCcs)
+specifier|public
+name|void
+name|assertChange
+parameter_list|(
+name|Change
+operator|.
+name|Status
+name|expectedStatus
+parameter_list|,
+name|String
+name|expectedTopic
+parameter_list|,
+name|List
+argument_list|<
+name|TestAccount
+argument_list|>
+name|expectedReviewers
+parameter_list|,
+name|List
+argument_list|<
+name|TestAccount
+argument_list|>
+name|expectedCcs
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
 name|Change
 name|c
 init|=
@@ -2141,15 +2309,72 @@ argument_list|(
 name|expectedTopic
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|notesMigration
+operator|.
+name|readChanges
+argument_list|()
+condition|)
+block|{
 name|assertReviewers
 argument_list|(
 name|c
 argument_list|,
+name|ReviewerStateInternal
+operator|.
+name|REVIEWER
+argument_list|,
 name|expectedReviewers
 argument_list|)
 expr_stmt|;
+name|assertReviewers
+argument_list|(
+name|c
+argument_list|,
+name|ReviewerStateInternal
+operator|.
+name|CC
+argument_list|,
+name|expectedCcs
+argument_list|)
+expr_stmt|;
 block|}
-DECL|method|assertReviewers (Change c, TestAccount... expectedReviewers)
+else|else
+block|{
+name|assertReviewers
+argument_list|(
+name|c
+argument_list|,
+name|ReviewerStateInternal
+operator|.
+name|REVIEWER
+argument_list|,
+name|Stream
+operator|.
+name|concat
+argument_list|(
+name|expectedReviewers
+operator|.
+name|stream
+argument_list|()
+argument_list|,
+name|expectedCcs
+operator|.
+name|stream
+argument_list|()
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|assertReviewers ( Change c, ReviewerStateInternal state, List<TestAccount> expectedReviewers)
 specifier|private
 name|void
 name|assertReviewers
@@ -2157,8 +2382,13 @@ parameter_list|(
 name|Change
 name|c
 parameter_list|,
+name|ReviewerStateInternal
+name|state
+parameter_list|,
+name|List
+argument_list|<
 name|TestAccount
-modifier|...
+argument_list|>
 name|expectedReviewers
 parameter_list|)
 throws|throws
@@ -2188,8 +2418,10 @@ name|c
 argument_list|)
 argument_list|)
 operator|.
-name|all
-argument_list|()
+name|byState
+argument_list|(
+name|state
+argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
