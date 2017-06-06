@@ -1579,7 +1579,7 @@ block|{
 DECL|field|dbProvider
 specifier|private
 specifier|final
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
@@ -1587,11 +1587,11 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByNameReviewDbLoader (Provider<ReviewDb> dbProvider)
+DECL|method|ByNameReviewDbLoader (SchemaFactory<ReviewDb> dbProvider)
 specifier|public
 name|ByNameReviewDbLoader
 parameter_list|(
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
@@ -1623,14 +1623,17 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
 name|dbProvider
 operator|.
-name|get
+name|open
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 return|return
 name|Optional
 operator|.
@@ -1664,6 +1667,7 @@ operator|::
 name|getAccountId
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 DECL|class|ByNameLoader
