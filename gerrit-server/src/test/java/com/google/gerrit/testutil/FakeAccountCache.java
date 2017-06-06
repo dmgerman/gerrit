@@ -88,6 +88,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|TimeUtil
 import|;
 end_import
@@ -233,7 +247,9 @@ block|{
 name|AccountState
 name|state
 init|=
-name|getIfPresent
+name|byId
+operator|.
+name|get
 argument_list|(
 name|accountId
 argument_list|)
@@ -267,11 +283,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getIfPresent (Account.Id accountId)
+annotation|@
+name|Nullable
+DECL|method|getOrNull (Account.Id accountId)
 specifier|public
 specifier|synchronized
 name|AccountState
-name|getIfPresent
+name|getOrNull
 parameter_list|(
 name|Account
 operator|.
