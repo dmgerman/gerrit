@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -100,18 +100,6 @@ name|lang
 operator|.
 name|annotation
 operator|.
-name|Repeatable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
 name|Retention
 import|;
 end_import
@@ -141,40 +129,16 @@ name|Retention
 argument_list|(
 name|RUNTIME
 argument_list|)
-annotation|@
-name|Repeatable
-argument_list|(
-name|GerritConfigs
-operator|.
-name|class
-argument_list|)
-DECL|annotation|GerritConfig
+DECL|annotation|GlobalPluginConfigs
 specifier|public
 annotation_defn|@interface
-name|GerritConfig
+name|GlobalPluginConfigs
 block|{
-comment|/**    * Setting name in the form {@code "section.name"} or {@code "section.subsection.name"} where    * {@code section}, {@code subsection} and {@code name} correspond to the parameters of the same    * names in JGit's {@code Config#getString} method.    *    * @see org.eclipse.jgit.lib.Config#getString(String, String, String)    */
-DECL|method|name ()
-name|String
-name|name
-parameter_list|()
-function_decl|;
-comment|/**    * Single value. Takes precedence over values specified in {@code values}.    */
 DECL|method|value ()
-name|String
+name|GlobalPluginConfig
+index|[]
 name|value
 parameter_list|()
-default|default
-literal|""
-function_decl|;
-comment|/**    * Multiple values (list). Ignored if {@code value} is specified.    */
-DECL|method|values ()
-name|String
-index|[]
-name|values
-parameter_list|()
-default|default
-literal|""
 function_decl|;
 block|}
 end_annotation_defn
