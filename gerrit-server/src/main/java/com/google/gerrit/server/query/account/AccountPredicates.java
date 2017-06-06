@@ -278,6 +278,7 @@ literal|null
 return|;
 block|}
 DECL|method|defaultPredicate (String query)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -406,6 +407,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|email (String email)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -437,6 +439,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|preferredEmail (String email)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -468,6 +471,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|equalsName (String name)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -499,6 +503,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|externalId (String externalId)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -523,6 +528,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|fullName (String fullName)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -569,6 +575,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isInactive ()
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -590,6 +597,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|username (String username)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -621,6 +629,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|watchedProject (Project.NameKey project)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
