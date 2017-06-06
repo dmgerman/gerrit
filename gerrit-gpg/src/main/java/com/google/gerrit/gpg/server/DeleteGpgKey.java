@@ -236,22 +236,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|ExternalId
 import|;
 end_import
@@ -446,12 +430,6 @@ name|PublicKeyStore
 argument_list|>
 name|storeProvider
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|externalIdsUpdateFactory
 specifier|private
 specifier|final
@@ -462,7 +440,7 @@ name|externalIdsUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteGpgKey ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<PublicKeyStore> storeProvider, AccountCache accountCache, ExternalIdsUpdate.User externalIdsUpdateFactory)
+DECL|method|DeleteGpgKey ( @erritPersonIdent Provider<PersonIdent> serverIdent, Provider<ReviewDb> db, Provider<PublicKeyStore> storeProvider, ExternalIdsUpdate.User externalIdsUpdateFactory)
 name|DeleteGpgKey
 parameter_list|(
 annotation|@
@@ -484,9 +462,6 @@ argument_list|<
 name|PublicKeyStore
 argument_list|>
 name|storeProvider
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|ExternalIdsUpdate
 operator|.
@@ -511,12 +486,6 @@ operator|.
 name|storeProvider
 operator|=
 name|storeProvider
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -604,19 +573,6 @@ name|getFingerprint
 argument_list|()
 argument_list|)
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
 argument_list|)
 expr_stmt|;
 try|try

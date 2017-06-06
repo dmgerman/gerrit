@@ -798,16 +798,6 @@ expr_stmt|;
 block|}
 name|accountCache
 operator|.
-name|evict
-argument_list|(
-name|user
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|accountCache
-operator|.
 name|evictByUsername
 argument_list|(
 name|newUsername

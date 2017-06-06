@@ -433,12 +433,6 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|externalIdsUpdate
 specifier|private
 specifier|final
@@ -449,7 +443,7 @@ name|externalIdsUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutHttpPassword ( Provider<CurrentUser> self, Provider<ReviewDb> dbProvider, AccountCache accountCache, ExternalIdsUpdate.User externalIdsUpdate)
+DECL|method|PutHttpPassword ( Provider<CurrentUser> self, Provider<ReviewDb> dbProvider, ExternalIdsUpdate.User externalIdsUpdate)
 name|PutHttpPassword
 parameter_list|(
 name|Provider
@@ -463,9 +457,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|ExternalIdsUpdate
 operator|.
@@ -484,12 +475,6 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -827,16 +812,6 @@ name|get
 argument_list|()
 argument_list|,
 name|newExtId
-argument_list|)
-expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|user
-operator|.
-name|getAccountId
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

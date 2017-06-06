@@ -815,7 +815,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Updates externalIds in ReviewDb and NoteDb.  *  *<p>In NoteDb external IDs are stored in the All-Users repository in a Git Notes branch called  * refs/meta/external-ids where the sha1 of the external ID is used as note name. Each note content  * is a git config file that contains an external ID. It has exactly one externalId subsection with  * an accountId and optionally email and password:  *  *<pre>  * [externalId "username:jdoe"]  *   accountId = 1003407  *   email = jdoe@example.com  *   password = bcrypt:4:LCbmSBDivK/hhGVQMfkDpA==:XcWn0pKYSVU/UJgOvhidkEtmqCp6oKB7  *</pre>  *  * For NoteDb each method call results in one commit on refs/meta/external-ids branch.  */
+comment|/**  * Updates externalIds in ReviewDb and NoteDb.  *  *<p>In NoteDb external IDs are stored in the All-Users repository in a Git Notes branch called  * refs/meta/external-ids where the sha1 of the external ID is used as note name. Each note content  * is a git config file that contains an external ID. It has exactly one externalId subsection with  * an accountId and optionally email and password:  *  *<pre>  * [externalId "username:jdoe"]  *   accountId = 1003407  *   email = jdoe@example.com  *   password = bcrypt:4:LCbmSBDivK/hhGVQMfkDpA==:XcWn0pKYSVU/UJgOvhidkEtmqCp6oKB7  *</pre>  *  * For NoteDb each method call results in one commit on refs/meta/external-ids branch.  *  *<p>On updating external IDs this class takes care to evict affected accounts from the account  * cache and thus triggers reindex for them.  */
 end_comment
 
 begin_class
@@ -848,6 +848,12 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
+decl_stmt|;
 DECL|field|allUsersName
 specifier|private
 specifier|final
@@ -865,12 +871,15 @@ name|serverIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Server ( GitRepositoryManager repoManager, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdent)
+DECL|method|Server ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdent)
 specifier|public
 name|Server
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -889,6 +898,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -923,6 +938,8 @@ name|ExternalIdsUpdate
 argument_list|(
 name|repoManager
 argument_list|,
+name|accountCache
+argument_list|,
 name|allUsersName
 argument_list|,
 name|i
@@ -946,6 +963,12 @@ specifier|private
 specifier|final
 name|GitRepositoryManager
 name|repoManager
+decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
 decl_stmt|;
 DECL|field|allUsersName
 specifier|private
@@ -973,12 +996,15 @@ name|identifiedUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|User ( GitRepositoryManager repoManager, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser)
+DECL|method|User ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser)
 specifier|public
 name|User
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -1003,6 +1029,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -1042,6 +1074,8 @@ operator|new
 name|ExternalIdsUpdate
 argument_list|(
 name|repoManager
+argument_list|,
+name|accountCache
 argument_list|,
 name|allUsersName
 argument_list|,
@@ -1186,6 +1220,12 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
+decl_stmt|;
 DECL|field|allUsersName
 specifier|private
 specifier|final
@@ -1219,12 +1259,15 @@ name|Void
 argument_list|>
 name|retryer
 decl_stmt|;
-DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, PersonIdent committerIdent, PersonIdent authorIdent)
+DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, PersonIdent committerIdent, PersonIdent authorIdent)
 specifier|private
 name|ExternalIdsUpdate
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -1239,6 +1282,8 @@ block|{
 name|this
 argument_list|(
 name|repoManager
+argument_list|,
+name|accountCache
 argument_list|,
 name|allUsersName
 argument_list|,
@@ -1257,12 +1302,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision, Retryer<Void> retryer)
+DECL|method|ExternalIdsUpdate ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, PersonIdent committerIdent, PersonIdent authorIdent, Runnable afterReadRevision, Retryer<Void> retryer)
 specifier|public
 name|ExternalIdsUpdate
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -1293,6 +1341,12 @@ name|repoManager
 argument_list|,
 literal|"repoManager"
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -1454,6 +1508,11 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|evictAccounts
+argument_list|(
+name|extIds
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * Inserts or updates an external ID.    *    *<p>If the external ID already exists, it is overwritten, otherwise it is inserted.    */
 DECL|method|upsert (ReviewDb db, ExternalId extId)
@@ -1559,6 +1618,11 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|evictAccounts
+argument_list|(
+name|extIds
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * Deletes an external ID.    *    *<p>The deletion fails with {@link IllegalStateException} if there is an existing external ID    * that has the same key, but otherwise doesn't match the specified external ID.    */
 DECL|method|delete (ReviewDb db, ExternalId extId)
@@ -1657,6 +1721,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|evictAccounts
+argument_list|(
+name|extIds
 argument_list|)
 expr_stmt|;
 block|}
@@ -1777,6 +1846,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|accountId
 argument_list|)
 expr_stmt|;
 block|}
@@ -1956,6 +2032,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|accountId
 argument_list|)
 expr_stmt|;
 block|}
@@ -3187,6 +3270,55 @@ index|[]
 block|{}
 argument_list|)
 return|;
+block|}
+DECL|method|evictAccounts (Collection<ExternalId> extIds)
+specifier|private
+name|void
+name|evictAccounts
+parameter_list|(
+name|Collection
+argument_list|<
+name|ExternalId
+argument_list|>
+name|extIds
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+for|for
+control|(
+name|Account
+operator|.
+name|Id
+name|id
+range|:
+name|extIds
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|ExternalId
+operator|::
+name|accountId
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toSet
+argument_list|()
+argument_list|)
+control|)
+block|{
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|interface|MyConsumer
 specifier|private
