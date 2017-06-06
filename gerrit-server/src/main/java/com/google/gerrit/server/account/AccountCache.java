@@ -102,6 +102,7 @@ specifier|public
 interface|interface
 name|AccountCache
 block|{
+comment|/**    * Returns an {@code AccountState} instance for the given account ID. If not cached yet the    * account is loaded. Returns an empty {@code AccountState} instance to represent a missing    * account.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID, if no account with this ID    *     exists an empty {@code AccountState} instance is returned to represent the missing account    */
 DECL|method|get (Account.Id accountId)
 name|AccountState
 name|get
@@ -112,6 +113,7 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
+comment|/**    * Returns an {@code AccountState} instance for the given account ID if it is present in the    * cache.    *    * @param accountId ID of the account that should be retrieved    * @return {@code AccountState} instance for the given account ID if it is present in the cache,    *     otherwise {@code null}    */
 DECL|method|getIfPresent (Account.Id accountId)
 name|AccountState
 name|getIfPresent
