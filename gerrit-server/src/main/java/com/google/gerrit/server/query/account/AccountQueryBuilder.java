@@ -615,7 +615,7 @@ block|{
 return|return
 name|AccountPredicates
 operator|.
-name|isInactive
+name|isNotActive
 argument_list|()
 return|;
 block|}
