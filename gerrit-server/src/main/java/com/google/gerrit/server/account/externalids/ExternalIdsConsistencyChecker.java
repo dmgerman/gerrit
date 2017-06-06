@@ -848,7 +848,7 @@ if|if
 condition|(
 name|accountCache
 operator|.
-name|getIfPresent
+name|getOrNull
 argument_list|(
 name|extId
 operator|.
