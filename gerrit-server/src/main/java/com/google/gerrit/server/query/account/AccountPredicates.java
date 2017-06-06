@@ -574,14 +574,14 @@ literal|"1"
 argument_list|)
 return|;
 block|}
-DECL|method|isInactive ()
+DECL|method|isNotActive ()
 specifier|public
 specifier|static
 name|Predicate
 argument_list|<
 name|AccountState
 argument_list|>
-name|isInactive
+name|isNotActive
 parameter_list|()
 block|{
 return|return
