@@ -17682,13 +17682,6 @@ argument_list|,
 name|a
 argument_list|)
 expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
 return|return
 name|id
 return|;

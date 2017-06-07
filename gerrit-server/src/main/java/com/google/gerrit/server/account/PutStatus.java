@@ -426,15 +426,9 @@ operator|.
 name|Server
 name|accountsUpdate
 decl_stmt|;
-DECL|field|byIdCache
-specifier|private
-specifier|final
-name|AccountCache
-name|byIdCache
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutStatus ( Provider<CurrentUser> self, Provider<ReviewDb> dbProvider, PermissionBackend permissionBackend, AccountsUpdate.Server accountsUpdate, AccountCache byIdCache)
+DECL|method|PutStatus ( Provider<CurrentUser> self, Provider<ReviewDb> dbProvider, PermissionBackend permissionBackend, AccountsUpdate.Server accountsUpdate)
 name|PutStatus
 parameter_list|(
 name|Provider
@@ -456,9 +450,6 @@ name|AccountsUpdate
 operator|.
 name|Server
 name|accountsUpdate
-parameter_list|,
-name|AccountCache
-name|byIdCache
 parameter_list|)
 block|{
 name|this
@@ -484,12 +475,6 @@ operator|.
 name|accountsUpdate
 operator|=
 name|accountsUpdate
-expr_stmt|;
-name|this
-operator|.
-name|byIdCache
-operator|=
-name|byIdCache
 expr_stmt|;
 block|}
 annotation|@
@@ -651,16 +636,6 @@ literal|"account not found"
 argument_list|)
 throw|;
 block|}
-name|byIdCache
-operator|.
-name|evict
-argument_list|(
-name|account
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
 return|return
 name|Strings
 operator|.

@@ -361,12 +361,6 @@ operator|.
 name|Server
 name|accountsUpdate
 decl_stmt|;
-DECL|field|byIdCache
-specifier|private
-specifier|final
-name|AccountCache
-name|byIdCache
-decl_stmt|;
 DECL|field|self
 specifier|private
 specifier|final
@@ -378,7 +372,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteActive ( Provider<ReviewDb> dbProvider, AccountsUpdate.Server accountsUpdate, AccountCache byIdCache, Provider<IdentifiedUser> self)
+DECL|method|DeleteActive ( Provider<ReviewDb> dbProvider, AccountsUpdate.Server accountsUpdate, Provider<IdentifiedUser> self)
 name|DeleteActive
 parameter_list|(
 name|Provider
@@ -391,9 +385,6 @@ name|AccountsUpdate
 operator|.
 name|Server
 name|accountsUpdate
-parameter_list|,
-name|AccountCache
-name|byIdCache
 parameter_list|,
 name|Provider
 argument_list|<
@@ -413,12 +404,6 @@ operator|.
 name|accountsUpdate
 operator|=
 name|accountsUpdate
-expr_stmt|;
-name|this
-operator|.
-name|byIdCache
-operator|=
-name|byIdCache
 expr_stmt|;
 name|this
 operator|.
@@ -567,16 +552,6 @@ literal|"account not active"
 argument_list|)
 throw|;
 block|}
-name|byIdCache
-operator|.
-name|evict
-argument_list|(
-name|account
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
 return|return
 name|Response
 operator|.

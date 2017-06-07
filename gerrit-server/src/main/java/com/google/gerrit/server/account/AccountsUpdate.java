@@ -440,7 +440,7 @@ specifier|public
 class|class
 name|AccountsUpdate
 block|{
-comment|/**    * Factory to create an AccountsUpdate instance for updating accounts by the Gerrit server.    *    *<p>The Gerrit server identity will be used as author and committer for all commits that update    * the accounts.    */
+comment|/**    * Factory to create an AccountsUpdate instance for updating accounts by the Gerrit server.    *    *<p>The Gerrit server identity will be used as author and committer for all commits that update    * the accounts.    *    *<p>On updating accounts this class takes care to evict them from the account cache and thus    * triggers reindex for them.    */
 annotation|@
 name|Singleton
 DECL|class|Server
@@ -454,6 +454,12 @@ specifier|private
 specifier|final
 name|GitRepositoryManager
 name|repoManager
+decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
 decl_stmt|;
 DECL|field|allUsersName
 specifier|private
@@ -472,12 +478,15 @@ name|serverIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Server ( GitRepositoryManager repoManager, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdent)
+DECL|method|Server ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdent)
 specifier|public
 name|Server
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -496,6 +505,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -530,6 +545,8 @@ name|AccountsUpdate
 argument_list|(
 name|repoManager
 argument_list|,
+name|accountCache
+argument_list|,
 name|allUsersName
 argument_list|,
 name|i
@@ -553,6 +570,12 @@ specifier|private
 specifier|final
 name|GitRepositoryManager
 name|repoManager
+decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
 decl_stmt|;
 DECL|field|allUsersName
 specifier|private
@@ -580,12 +603,15 @@ name|identifiedUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|User ( GitRepositoryManager repoManager, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser)
+DECL|method|User ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, @GerritPersonIdent Provider<PersonIdent> serverIdent, Provider<IdentifiedUser> identifiedUser)
 specifier|public
 name|User
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -610,6 +636,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -649,6 +681,8 @@ operator|new
 name|AccountsUpdate
 argument_list|(
 name|repoManager
+argument_list|,
+name|accountCache
 argument_list|,
 name|allUsersName
 argument_list|,
@@ -702,6 +736,12 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
+decl_stmt|;
 DECL|field|allUsersName
 specifier|private
 specifier|final
@@ -720,12 +760,15 @@ specifier|final
 name|PersonIdent
 name|authorIdent
 decl_stmt|;
-DECL|method|AccountsUpdate ( GitRepositoryManager repoManager, AllUsersName allUsersName, PersonIdent committerIdent, PersonIdent authorIdent)
+DECL|method|AccountsUpdate ( GitRepositoryManager repoManager, AccountCache accountCache, AllUsersName allUsersName, PersonIdent committerIdent, PersonIdent authorIdent)
 specifier|private
 name|AccountsUpdate
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|AllUsersName
 name|allUsersName
@@ -746,6 +789,17 @@ argument_list|(
 name|repoManager
 argument_list|,
 literal|"repoManager"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|checkNotNull
+argument_list|(
+name|accountCache
+argument_list|,
+literal|"accountCache"
 argument_list|)
 expr_stmt|;
 name|this
@@ -819,6 +873,16 @@ argument_list|(
 name|account
 argument_list|)
 expr_stmt|;
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|account
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * Inserts or updates an account.    *    *<p>If the account already exists, it is overwritten, otherwise it is inserted.    */
 DECL|method|upsert (ReviewDb db, Account account)
@@ -857,6 +921,16 @@ argument_list|(
 name|account
 argument_list|)
 expr_stmt|;
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|account
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** Updates the account. */
 DECL|method|update (ReviewDb db, Account account)
@@ -872,6 +946,8 @@ name|account
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|db
 operator|.
@@ -886,6 +962,16 @@ name|of
 argument_list|(
 name|account
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|account
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -911,8 +997,12 @@ name|consumer
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
-return|return
+name|Account
+name|account
+init|=
 name|db
 operator|.
 name|accounts
@@ -937,6 +1027,16 @@ name|a
 return|;
 block|}
 argument_list|)
+decl_stmt|;
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|accountId
+argument_list|)
+expr_stmt|;
+return|return
+name|account
 return|;
 block|}
 comment|/** Deletes the account. */
@@ -972,6 +1072,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|deleteUserBranch
+argument_list|(
+name|account
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|accountCache
+operator|.
+name|evict
 argument_list|(
 name|account
 operator|.
@@ -1015,6 +1125,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|deleteUserBranch
+argument_list|(
+name|accountId
+argument_list|)
+expr_stmt|;
+name|accountCache
+operator|.
+name|evict
 argument_list|(
 name|accountId
 argument_list|)
