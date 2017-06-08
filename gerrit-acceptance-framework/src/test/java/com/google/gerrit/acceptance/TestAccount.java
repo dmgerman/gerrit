@@ -252,34 +252,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|ids (TestAccount... accounts)
-specifier|public
-specifier|static
-name|List
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
-name|ids
-parameter_list|(
-name|TestAccount
-modifier|...
-name|accounts
-parameter_list|)
-block|{
-return|return
-name|ids
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|accounts
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|names (List<TestAccount> accounts)
 specifier|public
 specifier|static

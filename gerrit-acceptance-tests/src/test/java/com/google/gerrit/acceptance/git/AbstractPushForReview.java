@@ -2629,23 +2629,21 @@ operator|.
 name|NEW
 argument_list|,
 name|topic
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|user
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// cc several users
-name|TestAccount
-name|user2
-init|=
-name|accounts
-operator|.
-name|create
-argument_list|(
-literal|"another-user"
-argument_list|,
-literal|"another.user@example.com"
-argument_list|,
-literal|"Another User"
-argument_list|)
-decl_stmt|;
 name|r
 operator|=
 name|pushTo
@@ -2668,7 +2666,10 @@ name|email
 operator|+
 literal|",cc="
 operator|+
+name|accounts
+operator|.
 name|user2
+argument_list|()
 operator|.
 name|email
 argument_list|)
@@ -2678,6 +2679,7 @@ operator|.
 name|assertOkStatus
 argument_list|()
 expr_stmt|;
+comment|// Check that admin isn't CC'd as they own the change
 name|r
 operator|.
 name|assertChange
@@ -2689,6 +2691,23 @@ operator|.
 name|NEW
 argument_list|,
 name|topic
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|user
+argument_list|,
+name|accounts
+operator|.
+name|user2
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// cc non-existing user
