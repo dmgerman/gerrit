@@ -732,23 +732,23 @@ operator|+
 literal|"> \n"
 return|;
 block|}
-DECL|method|textFooterForChange (String changeId, String timestamp)
+DECL|method|textFooterForChange (int changeNumber, String timestamp)
 specifier|protected
 specifier|static
 name|String
 name|textFooterForChange
 parameter_list|(
-name|String
-name|changeId
+name|int
+name|changeNumber
 parameter_list|,
 name|String
 name|timestamp
 parameter_list|)
 block|{
 return|return
-literal|"Gerrit-Change-Id: "
+literal|"Gerrit-Change-Number: "
 operator|+
-name|changeId
+name|changeNumber
 operator|+
 literal|"\n"
 operator|+
