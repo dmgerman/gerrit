@@ -102,10 +102,10 @@ specifier|public
 class|class
 name|MailMetadata
 block|{
-DECL|field|changeId
+DECL|field|changeNumber
 specifier|public
-name|String
-name|changeId
+name|Integer
+name|changeNumber
 decl_stmt|;
 DECL|field|patchSet
 specifier|public
@@ -136,7 +136,7 @@ name|hasRequiredFields
 parameter_list|()
 block|{
 return|return
-name|changeId
+name|changeNumber
 operator|!=
 literal|null
 operator|&&
@@ -175,9 +175,9 @@ argument_list|)
 operator|.
 name|add
 argument_list|(
-literal|"Change-Id"
+literal|"Change-Number"
 argument_list|,
-name|changeId
+name|changeNumber
 argument_list|)
 operator|.
 name|add

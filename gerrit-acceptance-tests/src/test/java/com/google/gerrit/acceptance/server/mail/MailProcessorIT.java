@@ -407,7 +407,9 @@ name|txt
 operator|+
 name|textFooterForChange
 argument_list|(
-name|changeId
+name|changeInfo
+operator|.
+name|_number
 argument_list|,
 name|ts
 argument_list|)
@@ -621,7 +623,9 @@ name|txt
 operator|+
 name|textFooterForChange
 argument_list|(
-name|changeId
+name|changeInfo
+operator|.
+name|_number
 argument_list|,
 name|ts
 argument_list|)
@@ -923,7 +927,9 @@ name|txt
 operator|+
 name|textFooterForChange
 argument_list|(
-name|changeId
+name|changeInfo
+operator|.
+name|_number
 argument_list|,
 name|ts
 argument_list|)
@@ -1233,7 +1239,9 @@ name|txt
 operator|+
 name|textFooterForChange
 argument_list|(
-name|changeId
+name|changeInfo
+operator|.
+name|_number
 argument_list|,
 name|ts
 argument_list|)
@@ -1459,7 +1467,9 @@ name|txt
 operator|+
 name|textFooterForChange
 argument_list|(
-name|changeId
+name|changeInfo
+operator|.
+name|_number
 argument_list|,
 name|ts
 argument_list|)
@@ -1684,7 +1694,9 @@ name|txt
 operator|+
 name|textFooterForChange
 argument_list|(
-name|changeId
+name|changeInfo
+operator|.
+name|_number
 argument_list|,
 name|ts
 argument_list|)

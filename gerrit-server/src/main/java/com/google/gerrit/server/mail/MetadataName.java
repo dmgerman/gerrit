@@ -73,14 +73,14 @@ specifier|final
 class|class
 name|MetadataName
 block|{
-DECL|field|CHANGE_ID
+DECL|field|CHANGE_NUMBER
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|CHANGE_ID
+name|CHANGE_NUMBER
 init|=
-literal|"Gerrit-Change-Id"
+literal|"Gerrit-Change-Number"
 decl_stmt|;
 DECL|field|PATCH_SET
 specifier|public
