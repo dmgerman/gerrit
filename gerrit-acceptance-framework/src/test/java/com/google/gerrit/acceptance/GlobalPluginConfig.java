@@ -153,19 +153,19 @@ specifier|public
 annotation_defn|@interface
 name|GlobalPluginConfig
 block|{
-comment|/**    * Name of the plugin, corresponding to {@code $site/etc/@pluginName.comfig}.    */
+comment|/** Name of the plugin, corresponding to {@code $site/etc/@pluginName.comfig}. */
 DECL|method|pluginName ()
 name|String
 name|pluginName
 parameter_list|()
 function_decl|;
-comment|/**    * @see GerritConfig#name()    */
+comment|/** @see GerritConfig#name() */
 DECL|method|name ()
 name|String
 name|name
 parameter_list|()
 function_decl|;
-comment|/**    * @see GerritConfig#value()    */
+comment|/** @see GerritConfig#value() */
 DECL|method|value ()
 name|String
 name|value
@@ -173,7 +173,7 @@ parameter_list|()
 default|default
 literal|""
 function_decl|;
-comment|/**    * @see GerritConfig#values()    */
+comment|/** @see GerritConfig#values() */
 DECL|method|values ()
 name|String
 index|[]
