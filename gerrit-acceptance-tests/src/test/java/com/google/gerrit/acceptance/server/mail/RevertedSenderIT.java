@@ -125,6 +125,46 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|WatchConfig
+operator|.
+name|NotifyType
+operator|.
+name|NEW_CHANGES
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|WatchConfig
+operator|.
+name|NotifyType
+operator|.
+name|NEW_PATCHSETS
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -296,13 +336,6 @@ argument_list|,
 name|sc
 argument_list|)
 operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|owner
-argument_list|)
-operator|.
 name|to
 argument_list|(
 name|sc
@@ -312,34 +345,25 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
 name|sc
 operator|.
-name|ccerByEmail
+name|watchingProjectOwner
+argument_list|,
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
-name|notTo
+name|bcc
 argument_list|(
-name|ALL_COMMENTS
+name|NEW_CHANGES
+argument_list|,
+name|NEW_PATCHSETS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not?
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 name|assertThat
 argument_list|(
 name|sender
@@ -368,33 +392,19 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -447,18 +457,17 @@ argument_list|,
 name|sc
 argument_list|)
 operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|owner
-argument_list|)
-operator|.
 name|to
 argument_list|(
 name|sc
 operator|.
 name|reviewer
+argument_list|,
+name|sc
+operator|.
+name|watchingProjectOwner
+argument_list|,
+name|admin
 argument_list|)
 operator|.
 name|cc
@@ -468,32 +477,17 @@ operator|.
 name|ccer
 argument_list|)
 operator|.
-name|notTo
+name|bcc
 argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
+name|NEW_CHANGES
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|NEW_PATCHSETS
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
-name|notTo
-argument_list|(
-name|ALL_COMMENTS
-argument_list|)
+name|noOneElse
+argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not?
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 name|assertThat
 argument_list|(
 name|sender
@@ -506,13 +500,6 @@ argument_list|,
 name|sc
 argument_list|)
 operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|owner
-argument_list|)
-operator|.
 name|cc
 argument_list|(
 name|sc
@@ -522,33 +509,19 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -612,6 +585,12 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
+argument_list|,
+name|sc
+operator|.
+name|watchingProjectOwner
+argument_list|,
+name|admin
 argument_list|)
 operator|.
 name|cc
@@ -621,32 +600,17 @@ operator|.
 name|owner
 argument_list|)
 operator|.
-name|notTo
+name|bcc
 argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
+name|NEW_CHANGES
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|NEW_PATCHSETS
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
-name|notTo
-argument_list|(
-name|ALL_COMMENTS
-argument_list|)
+name|noOneElse
+argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not?
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 name|assertThat
 argument_list|(
 name|sender
@@ -675,33 +639,19 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -761,6 +711,12 @@ argument_list|(
 name|sc
 operator|.
 name|reviewer
+argument_list|,
+name|sc
+operator|.
+name|watchingProjectOwner
+argument_list|,
+name|admin
 argument_list|)
 operator|.
 name|cc
@@ -774,32 +730,17 @@ operator|.
 name|ccer
 argument_list|)
 operator|.
-name|notTo
+name|bcc
 argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
+name|NEW_CHANGES
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|NEW_PATCHSETS
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
-name|notTo
-argument_list|(
-name|ALL_COMMENTS
-argument_list|)
+name|noOneElse
+argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not?
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 name|assertThat
 argument_list|(
 name|sender
@@ -828,33 +769,19 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -918,39 +845,25 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|other
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
 name|sc
 operator|.
-name|ccerByEmail
+name|watchingProjectOwner
+argument_list|,
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
-name|notTo
+name|bcc
 argument_list|(
-name|ALL_COMMENTS
+name|NEW_CHANGES
+argument_list|,
+name|NEW_PATCHSETS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not?
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 name|assertThat
 argument_list|(
 name|sender
@@ -976,33 +889,19 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -1062,6 +961,12 @@ argument_list|,
 name|sc
 operator|.
 name|reviewer
+argument_list|,
+name|sc
+operator|.
+name|watchingProjectOwner
+argument_list|,
+name|admin
 argument_list|)
 operator|.
 name|cc
@@ -1071,37 +976,17 @@ operator|.
 name|ccer
 argument_list|)
 operator|.
-name|notTo
+name|bcc
 argument_list|(
-name|other
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
+name|NEW_CHANGES
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|NEW_PATCHSETS
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
-name|notTo
-argument_list|(
-name|ALL_COMMENTS
-argument_list|)
+name|noOneElse
+argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not?
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 name|assertThat
 argument_list|(
 name|sender
@@ -1127,33 +1012,19 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -1219,6 +1090,12 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
+argument_list|,
+name|sc
+operator|.
+name|watchingProjectOwner
+argument_list|,
+name|admin
 argument_list|)
 operator|.
 name|cc
@@ -1226,32 +1103,17 @@ argument_list|(
 name|other
 argument_list|)
 operator|.
-name|notTo
+name|bcc
 argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
+name|NEW_CHANGES
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|NEW_PATCHSETS
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
-name|notTo
-argument_list|(
-name|ALL_COMMENTS
-argument_list|)
+name|noOneElse
+argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not?
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 name|assertThat
 argument_list|(
 name|sender
@@ -1282,33 +1144,19 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 annotation|@
 name|Test
@@ -1370,6 +1218,12 @@ argument_list|,
 name|sc
 operator|.
 name|reviewer
+argument_list|,
+name|sc
+operator|.
+name|watchingProjectOwner
+argument_list|,
+name|admin
 argument_list|)
 operator|.
 name|cc
@@ -1381,32 +1235,17 @@ argument_list|,
 name|other
 argument_list|)
 operator|.
-name|notTo
+name|bcc
 argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
+name|NEW_CHANGES
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|NEW_PATCHSETS
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
-name|notTo
-argument_list|(
-name|ALL_COMMENTS
-argument_list|)
+name|noOneElse
+argument_list|()
 expr_stmt|;
-comment|// TODO(logan): Why not?
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 name|assertThat
 argument_list|(
 name|sender
@@ -1437,33 +1276,19 @@ argument_list|,
 name|sc
 operator|.
 name|ccer
-argument_list|)
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|starrer
-argument_list|)
-comment|// TODO(logan): Why not?
-operator|.
-name|notTo
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|,
-name|sc
-operator|.
-name|ccerByEmail
+name|admin
 argument_list|)
-comment|// TODO(logan): Why not?
 operator|.
 name|bcc
 argument_list|(
 name|ALL_COMMENTS
 argument_list|)
+operator|.
+name|noOneElse
+argument_list|()
 expr_stmt|;
+comment|// TODO(logan): Why not starrer/reviewers-by-email?
 block|}
 DECL|method|stageChange ()
 specifier|private
@@ -1477,9 +1302,7 @@ name|StagedChange
 name|sc
 init|=
 name|stageReviewableChange
-argument_list|(
-name|ALL_COMMENTS
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|setApiUser
 argument_list|(
