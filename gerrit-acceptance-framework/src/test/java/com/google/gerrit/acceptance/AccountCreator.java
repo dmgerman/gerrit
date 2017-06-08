@@ -939,6 +939,13 @@ name|m
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|KeyPair
