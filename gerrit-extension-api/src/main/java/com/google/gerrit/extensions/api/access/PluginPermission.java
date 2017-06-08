@@ -118,6 +118,12 @@ specifier|final
 name|String
 name|capability
 decl_stmt|;
+DECL|field|fallBackToAdmin
+specifier|private
+specifier|final
+name|boolean
+name|fallBackToAdmin
+decl_stmt|;
 DECL|method|PluginPermission (String pluginName, String capability)
 specifier|public
 name|PluginPermission
@@ -127,6 +133,30 @@ name|pluginName
 parameter_list|,
 name|String
 name|capability
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|pluginName
+argument_list|,
+name|capability
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|PluginPermission (String pluginName, String capability, boolean fallBackToAdmin)
+specifier|public
+name|PluginPermission
+parameter_list|(
+name|String
+name|pluginName
+parameter_list|,
+name|String
+name|capability
+parameter_list|,
+name|boolean
+name|fallBackToAdmin
 parameter_list|)
 block|{
 name|this
@@ -151,6 +181,12 @@ argument_list|,
 literal|"capability"
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|fallBackToAdmin
+operator|=
+name|fallBackToAdmin
+expr_stmt|;
 block|}
 DECL|method|pluginName ()
 specifier|public
@@ -170,6 +206,16 @@ parameter_list|()
 block|{
 return|return
 name|capability
+return|;
+block|}
+DECL|method|fallBackToAdmin ()
+specifier|public
+name|boolean
+name|fallBackToAdmin
+parameter_list|()
+block|{
+return|return
+name|fallBackToAdmin
 return|;
 block|}
 annotation|@
