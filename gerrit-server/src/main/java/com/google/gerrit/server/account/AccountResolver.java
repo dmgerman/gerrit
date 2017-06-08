@@ -258,6 +258,12 @@ specifier|final
 name|Realm
 name|realm
 decl_stmt|;
+DECL|field|accounts
+specifier|private
+specifier|final
+name|Accounts
+name|accounts
+decl_stmt|;
 DECL|field|byEmail
 specifier|private
 specifier|final
@@ -281,11 +287,14 @@ name|accountQueryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountResolver ( Realm realm, AccountByEmailCache byEmail, AccountCache byId, Provider<InternalAccountQuery> accountQueryProvider)
+DECL|method|AccountResolver ( Realm realm, Accounts accounts, AccountByEmailCache byEmail, AccountCache byId, Provider<InternalAccountQuery> accountQueryProvider)
 name|AccountResolver
 parameter_list|(
 name|Realm
 name|realm
+parameter_list|,
+name|Accounts
+name|accounts
 parameter_list|,
 name|AccountByEmailCache
 name|byEmail
@@ -305,6 +314,12 @@ operator|.
 name|realm
 operator|=
 name|realm
+expr_stmt|;
+name|this
+operator|.
+name|accounts
+operator|=
+name|accounts
 expr_stmt|;
 name|this
 operator|.
@@ -651,13 +666,12 @@ throws|throws
 name|OrmException
 block|{
 return|return
-name|db
-operator|.
 name|accounts
-argument_list|()
 operator|.
 name|get
 argument_list|(
+name|db
+argument_list|,
 name|id
 argument_list|)
 operator|!=

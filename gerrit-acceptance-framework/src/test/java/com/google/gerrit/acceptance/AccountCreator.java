@@ -328,24 +328,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
-operator|.
-name|account
-operator|.
-name|AccountIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|ssh
 operator|.
 name|SshKeyCache
@@ -578,12 +560,6 @@ specifier|final
 name|AccountByEmailCache
 name|byEmailCache
 decl_stmt|;
-DECL|field|indexer
-specifier|private
-specifier|final
-name|AccountIndexer
-name|indexer
-decl_stmt|;
 DECL|field|externalIdsUpdate
 specifier|private
 specifier|final
@@ -594,7 +570,7 @@ name|externalIdsUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountIndexer indexer, ExternalIdsUpdate.Server externalIdsUpdate)
+DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, ExternalIdsUpdate.Server externalIdsUpdate)
 name|AccountCreator
 parameter_list|(
 name|SchemaFactory
@@ -624,9 +600,6 @@ name|accountCache
 parameter_list|,
 name|AccountByEmailCache
 name|byEmailCache
-parameter_list|,
-name|AccountIndexer
-name|indexer
 parameter_list|,
 name|ExternalIdsUpdate
 operator|.
@@ -680,12 +653,6 @@ operator|.
 name|byEmailCache
 operator|=
 name|byEmailCache
-expr_stmt|;
-name|this
-operator|.
-name|indexer
-operator|=
-name|indexer
 expr_stmt|;
 name|this
 operator|.
@@ -1038,13 +1005,6 @@ operator|.
 name|evict
 argument_list|(
 name|email
-argument_list|)
-expr_stmt|;
-name|indexer
-operator|.
-name|index
-argument_list|(
-name|id
 argument_list|)
 expr_stmt|;
 name|account

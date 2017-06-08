@@ -1128,7 +1128,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
+name|AccountResolver
 import|;
 end_import
 
@@ -1144,7 +1144,23 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountResolver
+name|Accounts
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountsUpdate
 import|;
 end_import
 
@@ -3086,6 +3102,20 @@ operator|.
 name|Factory
 name|notesFactory
 decl_stmt|;
+DECL|field|accounts
+specifier|private
+specifier|final
+name|Accounts
+name|accounts
+decl_stmt|;
+DECL|field|accountsUpdate
+specifier|private
+specifier|final
+name|AccountsUpdate
+operator|.
+name|Server
+name|accountsUpdate
+decl_stmt|;
 DECL|field|accountResolver
 specifier|private
 specifier|final
@@ -3159,12 +3189,6 @@ specifier|private
 specifier|final
 name|TagCache
 name|tagCache
-decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
 decl_stmt|;
 DECL|field|changeInserterFactory
 specifier|private
@@ -3521,7 +3545,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, AccountResolver accountResolver, PermissionBackend permissionBackend, CmdLineParser.Factory optionParserFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ProjectCache projectCache, TagCache tagCache, AccountCache accountCache, @Nullable SearchingChangeCacheImpl changeCache, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, RefOperationValidators.Factory refValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, SubmoduleOp.Factory subOpFactory, MergeOp.Factory mergeOpFactory, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, ChangeIndexer indexer, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory, MergedByPushOp.Factory mergedByPushOpFactory)
+DECL|method|ReceiveCommits ( ReviewDb db, Sequences seq, Provider<InternalChangeQuery> queryProvider, ChangeNotes.Factory notesFactory, Accounts accounts, AccountsUpdate.Server accountsUpdate, AccountResolver accountResolver, PermissionBackend permissionBackend, CmdLineParser.Factory optionParserFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, ProjectCache projectCache, TagCache tagCache, @Nullable SearchingChangeCacheImpl changeCache, ChangeInserter.Factory changeInserterFactory, CommitValidators.Factory commitValidatorsFactory, RefOperationValidators.Factory refValidatorsFactory, @CanonicalWebUrl String canonicalWebUrl, RequestScopePropagator requestScopePropagator, SshInfo sshInfo, AllProjectsName allProjectsName, ReceiveConfig receiveConfig, TransferConfig transferConfig, DynamicSet<ReceivePackInitializer> initializers, Provider<LazyPostReceiveHookChain> lazyPostReceive, @Assisted ProjectControl projectControl, @Assisted Repository repo, SubmoduleOp.Factory subOpFactory, MergeOp.Factory mergeOpFactory, Provider<MergeOpRepoManager> ormProvider, DynamicMap<ProjectConfigEntry> pluginConfigEntries, NotesMigration notesMigration, ChangeEditUtil editUtil, ChangeIndexer indexer, BatchUpdate.Factory batchUpdateFactory, SetHashtagsOp.Factory hashtagsFactory, ReplaceOp.Factory replaceOpFactory, MergedByPushOp.Factory mergedByPushOpFactory)
 name|ReceiveCommits
 parameter_list|(
 name|ReviewDb
@@ -3540,6 +3564,14 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|notesFactory
+parameter_list|,
+name|Accounts
+name|accounts
+parameter_list|,
+name|AccountsUpdate
+operator|.
+name|Server
+name|accountsUpdate
 parameter_list|,
 name|AccountResolver
 name|accountResolver
@@ -3563,9 +3595,6 @@ name|projectCache
 parameter_list|,
 name|TagCache
 name|tagCache
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 annotation|@
 name|Nullable
@@ -3723,6 +3752,18 @@ name|notesFactory
 expr_stmt|;
 name|this
 operator|.
+name|accounts
+operator|=
+name|accounts
+expr_stmt|;
+name|this
+operator|.
+name|accountsUpdate
+operator|=
+name|accountsUpdate
+expr_stmt|;
+name|this
+operator|.
 name|accountResolver
 operator|=
 name|accountResolver
@@ -3768,12 +3809,6 @@ operator|.
 name|tagCache
 operator|=
 name|tagCache
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -8804,7 +8839,7 @@ name|hashtag
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO(dpursehouse): validate hashtags
+comment|// TODO(dpursehouse): validate hashtags
 block|}
 DECL|method|MagicBranchInput ( IdentifiedUser user, ReceiveCommand cmd, LabelTypes labelTypes, NotesMigration notesMigration)
 name|MagicBranchInput
@@ -16863,13 +16898,12 @@ block|{
 name|Account
 name|a
 init|=
-name|db
-operator|.
 name|accounts
-argument_list|()
 operator|.
 name|get
 argument_list|(
+name|db
+argument_list|,
 name|user
 operator|.
 name|getAccountId
@@ -16906,19 +16940,16 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|db
+name|accountsUpdate
 operator|.
-name|accounts
+name|create
 argument_list|()
 operator|.
 name|update
 argument_list|(
-name|Collections
-operator|.
-name|singleton
-argument_list|(
+name|db
+argument_list|,
 name|a
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|user
@@ -16931,16 +16962,6 @@ argument_list|(
 name|a
 operator|.
 name|getFullName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|a
-operator|.
-name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;

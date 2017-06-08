@@ -518,12 +518,6 @@ specifier|final
 name|PermissionBackend
 name|permissionBackend
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -540,7 +534,7 @@ name|externalIdsUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutHttpPassword ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AccountCache accountCache, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdate)
+DECL|method|PutHttpPassword ( Provider<CurrentUser> self, PermissionBackend permissionBackend, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdate)
 name|PutHttpPassword
 parameter_list|(
 name|Provider
@@ -551,9 +545,6 @@ name|self
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -575,12 +566,6 @@ operator|.
 name|permissionBackend
 operator|=
 name|permissionBackend
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -859,16 +844,6 @@ operator|.
 name|upsert
 argument_list|(
 name|newExtId
-argument_list|)
-expr_stmt|;
-name|accountCache
-operator|.
-name|evict
-argument_list|(
-name|user
-operator|.
-name|getAccountId
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
