@@ -443,7 +443,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Updates accounts. */
+comment|/**  * Updates accounts.  *  *<p>On updating accounts this class takes care to evict them from the account cache and thus  * triggers reindex for them.  */
 end_comment
 
 begin_class
@@ -454,7 +454,7 @@ specifier|public
 class|class
 name|AccountsUpdate
 block|{
-comment|/**    * Factory to create an AccountsUpdate instance for updating accounts by the Gerrit server.    *    *<p>The Gerrit server identity will be used as author and committer for all commits that update    * the accounts.    *    *<p>On updating accounts this class takes care to evict them from the account cache and thus    * triggers reindex for them.    */
+comment|/**    * Factory to create an AccountsUpdate instance for updating accounts by the Gerrit server.    *    *<p>The Gerrit server identity will be used as author and committer for all commits that update    * the accounts.    */
 annotation|@
 name|Singleton
 DECL|class|Server
