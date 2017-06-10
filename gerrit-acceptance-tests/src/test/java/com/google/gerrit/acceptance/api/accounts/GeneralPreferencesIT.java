@@ -498,7 +498,7 @@ argument_list|)
 decl_stmt|;
 name|user42
 operator|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(

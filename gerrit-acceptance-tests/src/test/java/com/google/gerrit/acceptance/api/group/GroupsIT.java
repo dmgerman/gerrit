@@ -836,7 +836,7 @@ decl_stmt|;
 name|TestAccount
 name|u1
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(
@@ -850,7 +850,7 @@ decl_stmt|;
 name|TestAccount
 name|u2
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(
@@ -913,7 +913,7 @@ decl_stmt|;
 name|TestAccount
 name|u10
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(
@@ -927,7 +927,7 @@ decl_stmt|;
 name|TestAccount
 name|u11_at
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(
@@ -938,7 +938,7 @@ argument_list|,
 literal|"Full Name 11 With At"
 argument_list|)
 decl_stmt|;
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(
@@ -4103,7 +4103,7 @@ block|{
 name|TestAccount
 name|groupOwner
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -4734,7 +4734,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-name|accounts
+name|accountCreator
 operator|.
 name|create
 argument_list|(

@@ -5529,7 +5529,7 @@ comment|// Disable the notification. The user provided in the 'notifyDetails' sh
 name|TestAccount
 name|userToNotify
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()

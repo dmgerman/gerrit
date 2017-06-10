@@ -4571,7 +4571,7 @@ name|in
 operator|.
 name|reviewer
 argument_list|(
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -4590,7 +4590,7 @@ name|in
 operator|.
 name|reviewer
 argument_list|(
-name|accounts
+name|accountCreator
 operator|.
 name|admin2
 argument_list|()
@@ -4658,7 +4658,7 @@ comment|// expect both the original reviewers and CCs to be preserved
 comment|// original owner should be added as reviewer, user requesting the revert (new owner) removed
 name|setApiUser
 argument_list|(
-name|accounts
+name|accountCreator
 operator|.
 name|admin2
 argument_list|()
@@ -4801,7 +4801,7 @@ argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -4858,7 +4858,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
@@ -13560,7 +13560,7 @@ comment|// notify unrelated account as TO
 name|TestAccount
 name|user2
 init|=
-name|accounts
+name|accountCreator
 operator|.
 name|user2
 argument_list|()
