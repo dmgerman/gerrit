@@ -301,16 +301,12 @@ operator|.
 name|ccer
 argument_list|)
 operator|.
-name|to
+name|cc
 argument_list|(
 name|sc
 operator|.
 name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This is unintentionally TO, should be CC.
-operator|.
-name|cc
-argument_list|(
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -388,16 +384,12 @@ operator|.
 name|ccer
 argument_list|)
 operator|.
-name|to
+name|cc
 argument_list|(
 name|sc
 operator|.
 name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This is unintentionally TO, should be CC.
-operator|.
-name|cc
-argument_list|(
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -475,16 +467,12 @@ operator|.
 name|ccer
 argument_list|)
 operator|.
-name|to
+name|cc
 argument_list|(
 name|sc
 operator|.
 name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This is unintentionally TO, should be CC.
-operator|.
-name|cc
-argument_list|(
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -565,16 +553,12 @@ operator|.
 name|ccer
 argument_list|)
 operator|.
-name|to
+name|cc
 argument_list|(
 name|sc
 operator|.
 name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This is unintentionally TO, should be CC.
-operator|.
-name|cc
-argument_list|(
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -654,16 +638,12 @@ operator|.
 name|ccer
 argument_list|)
 operator|.
-name|to
+name|cc
 argument_list|(
 name|sc
 operator|.
 name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This is unintentionally TO, should be CC.
-operator|.
-name|cc
-argument_list|(
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -743,16 +723,12 @@ argument_list|,
 name|admin
 argument_list|)
 operator|.
-name|to
+name|cc
 argument_list|(
 name|sc
 operator|.
 name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This is unintentionally TO, should be CC.
-operator|.
-name|cc
-argument_list|(
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail

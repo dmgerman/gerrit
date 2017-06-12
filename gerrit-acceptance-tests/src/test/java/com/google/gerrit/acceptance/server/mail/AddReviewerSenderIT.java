@@ -712,7 +712,6 @@ operator|.
 name|email
 argument_list|)
 expr_stmt|;
-comment|// TODO(logan): Existing reviewers by email should be CC.
 comment|// TODO(logan): Should CCs be included?
 name|assertThat
 argument_list|(
@@ -731,13 +730,6 @@ argument_list|(
 name|reviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-operator|.
 name|cc
 argument_list|(
 name|sc
@@ -747,6 +739,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -837,7 +833,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// TODO(logan): Existing reviewers by email should be CC.
 comment|// TODO(logan): Should CCs be included?
 name|assertThat
 argument_list|(
@@ -856,13 +851,6 @@ argument_list|(
 name|reviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-operator|.
 name|cc
 argument_list|(
 name|sc
@@ -876,6 +864,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -970,7 +962,6 @@ operator|.
 name|email
 argument_list|)
 expr_stmt|;
-comment|// TODO(logan): Existing reviewers by email should be CC.
 comment|// TODO(logan): Should CCs be included?
 name|assertThat
 argument_list|(
@@ -989,13 +980,6 @@ argument_list|(
 name|reviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-operator|.
 name|cc
 argument_list|(
 name|sc
@@ -1009,6 +993,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -1109,7 +1097,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// TODO(logan): Existing reviewers by email should be CC.
 comment|// TODO(logan): Should CCs be included?
 name|assertThat
 argument_list|(
@@ -1128,13 +1115,6 @@ argument_list|(
 name|reviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-operator|.
 name|cc
 argument_list|(
 name|sc
@@ -1150,6 +1130,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -1288,7 +1272,6 @@ argument_list|,
 name|email
 argument_list|)
 expr_stmt|;
-comment|// TODO(logan): Existing reviewers by email should be CC.
 comment|// TODO(logan): Should CCs be included?
 name|assertThat
 argument_list|(
@@ -1305,10 +1288,6 @@ operator|.
 name|to
 argument_list|(
 name|email
-argument_list|,
-name|sc
-operator|.
-name|reviewerByEmail
 argument_list|)
 operator|.
 name|cc
@@ -1320,6 +1299,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -1538,7 +1521,6 @@ operator|.
 name|ALL
 argument_list|)
 expr_stmt|;
-comment|// TODO(logan): Existing reviewers by email should be CC.
 comment|// TODO(logan): Should CCs be included?
 name|assertThat
 argument_list|(
@@ -1557,13 +1539,6 @@ argument_list|(
 name|reviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-operator|.
 name|cc
 argument_list|(
 name|sc
@@ -1573,6 +1548,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -1785,7 +1764,6 @@ argument_list|,
 name|OWNER_REVIEWERS
 argument_list|)
 expr_stmt|;
-comment|// TODO(logan): Existing reviewers by email should be CC.
 comment|// TODO(logan): Should CCs be included?
 name|assertThat
 argument_list|(
@@ -1804,13 +1782,6 @@ argument_list|(
 name|reviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-operator|.
 name|cc
 argument_list|(
 name|sc
@@ -1820,6 +1791,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail

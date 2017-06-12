@@ -474,6 +474,8 @@ operator|.
 name|TO
 argument_list|,
 name|reviewers
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|addByEmail
@@ -483,6 +485,8 @@ operator|.
 name|TO
 argument_list|,
 name|reviewersByEmail
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 break|break;

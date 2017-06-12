@@ -360,14 +360,6 @@ argument_list|(
 name|extraReviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This should probably be CC.
-operator|.
 name|cc
 argument_list|(
 name|extraCcer
@@ -383,6 +375,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -456,14 +452,6 @@ argument_list|,
 name|extraReviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This should probably be CC.
-operator|.
 name|cc
 argument_list|(
 name|extraCcer
@@ -479,6 +467,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -546,14 +538,6 @@ argument_list|,
 name|extraReviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This should probably be CC.
-operator|.
 name|cc
 argument_list|(
 name|extraCcer
@@ -569,6 +553,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -645,14 +633,6 @@ argument_list|,
 name|extraReviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This should probably be CC.
-operator|.
 name|cc
 argument_list|(
 name|admin
@@ -670,6 +650,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -735,14 +719,6 @@ argument_list|(
 name|extraCcer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This should probably be CC.
-operator|.
 name|cc
 argument_list|(
 name|extraReviewer
@@ -758,6 +734,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -827,14 +807,6 @@ argument_list|(
 name|extraReviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This should probably be CC.
-operator|.
 name|cc
 argument_list|(
 name|extraCcer
@@ -850,6 +822,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
@@ -1247,14 +1223,6 @@ argument_list|(
 name|extraReviewer
 argument_list|)
 operator|.
-name|to
-argument_list|(
-name|sc
-operator|.
-name|reviewerByEmail
-argument_list|)
-comment|// TODO(logan): This should probably be CC.
-operator|.
 name|cc
 argument_list|(
 name|extraCcer
@@ -1270,6 +1238,10 @@ argument_list|)
 operator|.
 name|cc
 argument_list|(
+name|sc
+operator|.
+name|reviewerByEmail
+argument_list|,
 name|sc
 operator|.
 name|ccerByEmail
