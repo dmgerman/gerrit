@@ -204,7 +204,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountByEmailCache
+name|Emails
 import|;
 end_import
 
@@ -436,15 +436,15 @@ specifier|final
 name|PatchSetUtil
 name|psUtil
 decl_stmt|;
-DECL|field|byEmailCache
+DECL|field|emails
 specifier|private
 specifier|final
-name|AccountByEmailCache
-name|byEmailCache
+name|Emails
+name|emails
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetInfoFactory ( GitRepositoryManager repoManager, PatchSetUtil psUtil, AccountByEmailCache byEmailCache)
+DECL|method|PatchSetInfoFactory (GitRepositoryManager repoManager, PatchSetUtil psUtil, Emails emails)
 specifier|public
 name|PatchSetInfoFactory
 parameter_list|(
@@ -454,8 +454,8 @@ parameter_list|,
 name|PatchSetUtil
 name|psUtil
 parameter_list|,
-name|AccountByEmailCache
-name|byEmailCache
+name|Emails
+name|emails
 parameter_list|)
 block|{
 name|this
@@ -472,9 +472,9 @@ name|psUtil
 expr_stmt|;
 name|this
 operator|.
-name|byEmailCache
+name|emails
 operator|=
-name|byEmailCache
+name|emails
 expr_stmt|;
 block|}
 DECL|method|get (RevWalk rw, RevCommit src, PatchSet.Id psi)
@@ -495,6 +495,8 @@ name|psi
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|OrmException
 block|{
 name|rw
 operator|.
@@ -731,6 +733,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|OrmException
 name|e
 parameter_list|)
 block|{
@@ -752,6 +756,10 @@ parameter_list|(
 name|PersonIdent
 name|who
 parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|OrmException
 block|{
 specifier|final
 name|UserIdentity
@@ -811,7 +819,6 @@ expr_stmt|;
 comment|// If only one account has access to this email address, select it
 comment|// as the identity of the user.
 comment|//
-specifier|final
 name|Set
 argument_list|<
 name|Account
@@ -820,9 +827,9 @@ name|Id
 argument_list|>
 name|a
 init|=
-name|byEmailCache
+name|emails
 operator|.
-name|get
+name|getAccountFor
 argument_list|(
 name|u
 operator|.

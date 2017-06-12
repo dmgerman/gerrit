@@ -288,12 +288,6 @@ specifier|final
 name|Accounts
 name|accounts
 decl_stmt|;
-DECL|field|byEmail
-specifier|private
-specifier|final
-name|AccountByEmailCache
-name|byEmail
-decl_stmt|;
 DECL|field|byId
 specifier|private
 specifier|final
@@ -309,9 +303,15 @@ name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
 decl_stmt|;
+DECL|field|emails
+specifier|private
+specifier|final
+name|Emails
+name|emails
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountResolver ( Realm realm, Accounts accounts, AccountByEmailCache byEmail, AccountCache byId, Provider<InternalAccountQuery> accountQueryProvider)
+DECL|method|AccountResolver ( Realm realm, Accounts accounts, AccountCache byId, Provider<InternalAccountQuery> accountQueryProvider, Emails emails)
 name|AccountResolver
 parameter_list|(
 name|Realm
@@ -319,9 +319,6 @@ name|realm
 parameter_list|,
 name|Accounts
 name|accounts
-parameter_list|,
-name|AccountByEmailCache
-name|byEmail
 parameter_list|,
 name|AccountCache
 name|byId
@@ -331,6 +328,9 @@ argument_list|<
 name|InternalAccountQuery
 argument_list|>
 name|accountQueryProvider
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|)
 block|{
 name|this
@@ -347,12 +347,6 @@ name|accounts
 expr_stmt|;
 name|this
 operator|.
-name|byEmail
-operator|=
-name|byEmail
-expr_stmt|;
-name|this
-operator|.
 name|byId
 operator|=
 name|byId
@@ -362,6 +356,12 @@ operator|.
 name|accountQueryProvider
 operator|=
 name|accountQueryProvider
+expr_stmt|;
+name|this
+operator|.
+name|emails
+operator|=
+name|emails
 expr_stmt|;
 block|}
 comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format "Full Name&lt;email@example&gt;", just the email    *     address ("email@example"), a full name ("Full Name"), an account id ("18419") or an user    *     name ("username").    * @return the single account that matches; null if no account matches or there are multiple    *     candidates.    */
@@ -728,6 +728,8 @@ name|nameOrEmail
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|Set
 argument_list|<
@@ -790,6 +792,8 @@ name|nameOrEmail
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|int
 name|lt
@@ -837,9 +841,9 @@ name|Id
 argument_list|>
 name|ids
 init|=
-name|byEmail
+name|emails
 operator|.
-name|get
+name|getAccountFor
 argument_list|(
 name|nameOrEmail
 operator|.
@@ -967,9 +971,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|byEmail
+name|emails
 operator|.
-name|get
+name|getAccountFor
 argument_list|(
 name|nameOrEmail
 argument_list|)

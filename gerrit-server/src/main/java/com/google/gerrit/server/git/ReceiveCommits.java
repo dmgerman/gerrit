@@ -15648,6 +15648,8 @@ name|newPatchSet
 parameter_list|()
 throws|throws
 name|IOException
+throws|,
+name|OrmException
 block|{
 name|RevCommit
 name|newCommit

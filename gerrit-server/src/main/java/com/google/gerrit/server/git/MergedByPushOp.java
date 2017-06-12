@@ -1350,6 +1350,8 @@ name|ctx
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|OrmException
 block|{
 name|RevWalk
 name|rw

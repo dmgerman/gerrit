@@ -212,6 +212,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|time
 operator|.
 name|format
@@ -342,6 +352,8 @@ name|footerLines
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|MailRecipients
 name|recipients
@@ -518,6 +530,8 @@ throws|throws
 name|OrmException
 throws|,
 name|NoSuchAccountException
+throws|,
+name|IOException
 block|{
 name|Account
 name|a

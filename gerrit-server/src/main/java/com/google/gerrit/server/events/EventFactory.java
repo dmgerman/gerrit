@@ -384,7 +384,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountByEmailCache
+name|AccountCache
 import|;
 end_import
 
@@ -400,7 +400,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
+name|Emails
 import|;
 end_import
 
@@ -994,6 +994,12 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|emails
+specifier|private
+specifier|final
+name|Emails
+name|emails
+decl_stmt|;
 DECL|field|urlProvider
 specifier|private
 specifier|final
@@ -1008,12 +1014,6 @@ specifier|private
 specifier|final
 name|PatchListCache
 name|patchListCache
-decl_stmt|;
-DECL|field|byEmailCache
-specifier|private
-specifier|final
-name|AccountByEmailCache
-name|byEmailCache
 decl_stmt|;
 DECL|field|myIdent
 specifier|private
@@ -1061,11 +1061,14 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory ( AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AccountByEmailCache byEmailCache, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema)
+DECL|method|EventFactory ( AccountCache accountCache, Emails emails, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchListCache patchListCache, @GerritPersonIdent PersonIdent myIdent, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schema)
 name|EventFactory
 parameter_list|(
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
@@ -1076,9 +1079,6 @@ argument_list|<
 name|String
 argument_list|>
 name|urlProvider
-parameter_list|,
-name|AccountByEmailCache
-name|byEmailCache
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -1120,6 +1120,12 @@ name|accountCache
 expr_stmt|;
 name|this
 operator|.
+name|emails
+operator|=
+name|emails
+expr_stmt|;
+name|this
+operator|.
 name|urlProvider
 operator|=
 name|urlProvider
@@ -1129,12 +1135,6 @@ operator|.
 name|patchListCache
 operator|=
 name|patchListCache
-expr_stmt|;
-name|this
-operator|.
-name|byEmailCache
-operator|=
-name|byEmailCache
 expr_stmt|;
 name|this
 operator|.
@@ -3456,6 +3456,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|OrmException
 name|e
 parameter_list|)
 block|{
@@ -3511,6 +3513,10 @@ parameter_list|(
 name|PersonIdent
 name|who
 parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|OrmException
 block|{
 name|UserIdentity
 name|u
@@ -3577,9 +3583,9 @@ name|Id
 argument_list|>
 name|a
 init|=
-name|byEmailCache
+name|emails
 operator|.
-name|get
+name|getAccountFor
 argument_list|(
 name|u
 operator|.

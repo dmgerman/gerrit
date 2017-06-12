@@ -402,7 +402,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountByEmailCache
+name|AccountCache
 import|;
 end_import
 
@@ -418,7 +418,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
+name|Emails
 import|;
 end_import
 
@@ -738,6 +738,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -852,11 +862,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|accountByEmailCache
+DECL|field|emails
 specifier|private
 specifier|final
-name|AccountByEmailCache
-name|accountByEmailCache
+name|Emails
+name|emails
 decl_stmt|;
 DECL|field|retryHelper
 specifier|private
@@ -949,12 +959,12 @@ name|canonicalUrl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MailProcessor ( AccountByEmailCache accountByEmailCache, RetryHelper retryHelper, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, DynamicMap<MailFilter> mailFilters, EmailReviewComments.Factory outgoingMailFactory, ApprovalsUtil approvalsUtil, CommentAdded commentAdded, AccountCache accountCache, @CanonicalWebUrl Provider<String> canonicalUrl)
+DECL|method|MailProcessor ( Emails emails, RetryHelper retryHelper, ChangeMessagesUtil changeMessagesUtil, CommentsUtil commentsUtil, OneOffRequestContext oneOffRequestContext, PatchListCache patchListCache, PatchSetUtil psUtil, Provider<InternalChangeQuery> queryProvider, DynamicMap<MailFilter> mailFilters, EmailReviewComments.Factory outgoingMailFactory, ApprovalsUtil approvalsUtil, CommentAdded commentAdded, AccountCache accountCache, @CanonicalWebUrl Provider<String> canonicalUrl)
 specifier|public
 name|MailProcessor
 parameter_list|(
-name|AccountByEmailCache
-name|accountByEmailCache
+name|Emails
+name|emails
 parameter_list|,
 name|RetryHelper
 name|retryHelper
@@ -1011,9 +1021,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|accountByEmailCache
+name|emails
 operator|=
-name|accountByEmailCache
+name|emails
 expr_stmt|;
 name|this
 operator|.
@@ -1148,6 +1158,8 @@ throws|,
 name|UpdateException
 throws|,
 name|RestApiException
+throws|,
+name|IOException
 block|{
 for|for
 control|(
@@ -1255,11 +1267,11 @@ name|Account
 operator|.
 name|Id
 argument_list|>
-name|accounts
+name|accountIds
 init|=
-name|accountByEmailCache
+name|emails
 operator|.
-name|get
+name|getAccountFor
 argument_list|(
 name|metadata
 operator|.
@@ -1268,7 +1280,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|accounts
+name|accountIds
 operator|.
 name|size
 argument_list|()
@@ -1290,7 +1302,7 @@ name|metadata
 operator|.
 name|author
 argument_list|,
-name|accounts
+name|accountIds
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1301,7 +1313,7 @@ operator|.
 name|Id
 name|account
 init|=
-name|accounts
+name|accountIds
 operator|.
 name|iterator
 argument_list|()

@@ -691,6 +691,8 @@ throws|throws
 name|IntegrationException
 throws|,
 name|IOException
+throws|,
+name|OrmException
 block|{
 comment|// If there is only one parent, a cherry-pick can be done by taking the
 comment|// delta relative to that one parent and redoing that on the current merge
