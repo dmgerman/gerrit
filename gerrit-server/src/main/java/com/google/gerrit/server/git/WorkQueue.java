@@ -1206,12 +1206,19 @@ operator|=
 name|prefix
 expr_stmt|;
 block|}
-DECL|method|unregisterWorkQueue ()
-specifier|public
+annotation|@
+name|Override
+DECL|method|terminated ()
+specifier|protected
 name|void
-name|unregisterWorkQueue
+name|terminated
 parameter_list|()
 block|{
+name|super
+operator|.
+name|terminated
+argument_list|()
+expr_stmt|;
 name|queues
 operator|.
 name|remove
