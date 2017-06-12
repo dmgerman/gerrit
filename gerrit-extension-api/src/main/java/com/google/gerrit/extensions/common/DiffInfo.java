@@ -258,6 +258,13 @@ argument_list|>
 argument_list|>
 name|editB
 decl_stmt|;
+comment|// Indicates that this entry only exists because of a rebase (and not because of a real change
+comment|// between 'a' and 'b').
+DECL|field|dueToRebase
+specifier|public
+name|Boolean
+name|dueToRebase
+decl_stmt|;
 comment|// a and b are actually common with this whitespace ignore setting.
 DECL|field|common
 specifier|public
