@@ -66,6 +66,18 @@ name|git
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledThreadPoolExecutor
+import|;
+end_import
+
 begin_interface
 DECL|interface|QueueProvider
 specifier|public
@@ -83,9 +95,7 @@ DECL|enumConstant|BATCH
 name|BATCH
 block|}
 DECL|method|getQueue (QueueType type)
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|getQueue
 parameter_list|(
 name|QueueType

@@ -398,6 +398,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledThreadPoolExecutor
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -773,9 +785,7 @@ name|keySet
 argument_list|()
 control|)
 block|{
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|e
 init|=
 name|workQueue

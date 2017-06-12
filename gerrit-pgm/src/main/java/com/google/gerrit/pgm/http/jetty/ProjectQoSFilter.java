@@ -187,22 +187,6 @@ operator|.
 name|git
 operator|.
 name|WorkQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|WorkQueue
 operator|.
 name|CancelableRunnable
 import|;
@@ -279,6 +263,18 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledThreadPoolExecutor
 import|;
 end_import
 
@@ -721,9 +717,7 @@ argument_list|(
 name|req
 argument_list|)
 decl_stmt|;
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|executor
 init|=
 name|getExecutor
@@ -919,9 +913,7 @@ block|}
 block|}
 DECL|method|getExecutor ()
 specifier|private
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|getExecutor
 parameter_list|()
 block|{
@@ -975,9 +967,7 @@ block|{
 DECL|field|executor
 specifier|private
 specifier|final
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|executor
 decl_stmt|;
 DECL|field|cont
@@ -1012,12 +1002,10 @@ specifier|private
 name|Thread
 name|worker
 decl_stmt|;
-DECL|method|TaskThunk (WorkQueue.Executor executor, Continuation cont, HttpServletRequest req)
+DECL|method|TaskThunk ( ScheduledThreadPoolExecutor executor, Continuation cont, HttpServletRequest req)
 name|TaskThunk
 parameter_list|(
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|executor
 parameter_list|,
 name|Continuation

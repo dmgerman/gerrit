@@ -100,22 +100,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|WorkQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -134,6 +118,18 @@ name|Provider
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledThreadPoolExecutor
+import|;
+end_import
+
 begin_class
 DECL|class|CommandExecutorProvider
 class|class
@@ -141,9 +137,7 @@ name|CommandExecutorProvider
 implements|implements
 name|Provider
 argument_list|<
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 argument_list|>
 block|{
 DECL|field|queues
@@ -187,9 +181,7 @@ annotation|@
 name|Override
 DECL|method|get ()
 specifier|public
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|get
 parameter_list|()
 block|{

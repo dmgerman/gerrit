@@ -293,22 +293,6 @@ operator|.
 name|git
 operator|.
 name|WorkQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|WorkQueue
 operator|.
 name|CancelableRunnable
 import|;
@@ -453,6 +437,18 @@ operator|.
 name|concurrent
 operator|.
 name|LinkedBlockingQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledThreadPoolExecutor
 import|;
 end_import
 
@@ -621,9 +617,7 @@ name|Inject
 annotation|@
 name|StreamCommandExecutor
 specifier|private
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|pool
 decl_stmt|;
 comment|/** Queue of events to stream to the connected user. */

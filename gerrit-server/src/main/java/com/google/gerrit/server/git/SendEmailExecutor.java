@@ -104,8 +104,20 @@ name|Retention
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledThreadPoolExecutor
+import|;
+end_import
+
 begin_comment
-comment|/** Marker on the global {@link WorkQueue.Executor} used to send email. */
+comment|/** Marker on the global {@link ScheduledThreadPoolExecutor} used to send email. */
 end_comment
 
 begin_annotation_defn

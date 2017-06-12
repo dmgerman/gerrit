@@ -148,6 +148,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ScheduledThreadPoolExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ThreadFactory
 import|;
 end_import
@@ -188,17 +200,13 @@ decl_stmt|;
 DECL|field|interactiveExecutor
 specifier|private
 specifier|final
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|interactiveExecutor
 decl_stmt|;
 DECL|field|batchExecutor
 specifier|private
 specifier|final
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|batchExecutor
 decl_stmt|;
 annotation|@
@@ -316,14 +324,12 @@ name|interactiveExecutor
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setThreadFactory (WorkQueue.Executor executor)
+DECL|method|setThreadFactory (ScheduledThreadPoolExecutor executor)
 specifier|private
 name|void
 name|setThreadFactory
 parameter_list|(
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|executor
 parameter_list|)
 block|{
@@ -386,9 +392,7 @@ annotation|@
 name|Override
 DECL|method|getQueue (QueueType type)
 specifier|public
-name|WorkQueue
-operator|.
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|getQueue
 parameter_list|(
 name|QueueType

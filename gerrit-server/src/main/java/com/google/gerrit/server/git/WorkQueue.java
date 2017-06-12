@@ -599,7 +599,7 @@ block|}
 decl_stmt|;
 DECL|field|defaultQueue
 specifier|private
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|defaultQueue
 decl_stmt|;
 DECL|field|defaultQueueSize
@@ -690,7 +690,7 @@ comment|/** Get the default work queue, for miscellaneous tasks. */
 DECL|method|getDefaultQueue ()
 specifier|public
 specifier|synchronized
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|getDefaultQueue
 parameter_list|()
 block|{
@@ -718,7 +718,7 @@ block|}
 comment|/** Create a new executor queue. */
 DECL|method|createQueue (int poolsize, String prefix)
 specifier|public
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|createQueue
 parameter_list|(
 name|int
@@ -956,7 +956,7 @@ return|;
 block|}
 DECL|method|getExecutor (String queueName)
 specifier|public
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|getExecutor
 parameter_list|(
 name|String
@@ -1059,7 +1059,7 @@ expr_stmt|;
 block|}
 comment|/** An isolated queue. */
 DECL|class|Executor
-specifier|public
+specifier|private
 class|class
 name|Executor
 extends|extends
@@ -2077,8 +2077,8 @@ name|String
 name|toString
 parameter_list|()
 block|{
-comment|//This is a workaround to be able to print a proper name when the task
-comment|//is wrapped into a TrustedListenableFutureTask.
+comment|// This is a workaround to be able to print a proper name when the task
+comment|// is wrapped into a TrustedListenableFutureTask.
 try|try
 block|{
 if|if

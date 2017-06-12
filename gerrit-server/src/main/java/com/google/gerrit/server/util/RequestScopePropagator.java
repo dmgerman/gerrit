@@ -262,6 +262,18 @@ name|Executors
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledThreadPoolExecutor
+import|;
+end_import
+
 begin_comment
 comment|/**  * Base class for propagating request-scoped data between threads.  *  *<p>Request scopes are typically linked to a {@link ThreadLocal}, which is only available to the  * current thread. In order to allow background work involving RequestScoped data, the ThreadLocal  * data must be copied from the request thread to the new background thread.  *  *<p>Every type of RequestScope must provide an implementation of RequestScopePropagator. See  * {@link #wrap(Callable)} for details on the implementation, usage, and restrictions.  *  * @see ThreadLocalRequestScopePropagator  */
 end_comment
@@ -330,7 +342,7 @@ operator|=
 name|dbProviderProvider
 expr_stmt|;
 block|}
-comment|/**    * Ensures that the current request state is available when the passed in Callable is invoked.    *    *<p>If needed wraps the passed in Callable in a new {@link Callable} that propagates the current    * request state when the returned Callable is invoked. The method must be called in a request    * scope and the returned Callable may only be invoked in a thread that is not already in a    * request scope or is in the same request scope. The returned Callable will inherit toString()    * from the passed in Callable. A {@link com.google.gerrit.server.git.WorkQueue.Executor} does not    * accept a Callable, so there is no ProjectCallable implementation. Implementations of this    * method must be consistent with Guice's {@link ServletScopes#continueRequest(Callable,    * java.util.Map)}.    *    *<p>There are some limitations:    *    *<ul>    *<li>Derived objects (i.e. anything marked created in a request scope) will not be    *       transported.    *<li>State changes to the request scoped context after this method is called will not be seen    *       in the continued thread.    *</ul>    *    * @param callable the Callable to wrap.    * @return a new Callable which will execute in the current request scope.    */
+comment|/**    * Ensures that the current request state is available when the passed in Callable is invoked.    *    *<p>If needed wraps the passed in Callable in a new {@link Callable} that propagates the current    * request state when the returned Callable is invoked. The method must be called in a request    * scope and the returned Callable may only be invoked in a thread that is not already in a    * request scope or is in the same request scope. The returned Callable will inherit toString()    * from the passed in Callable. A {@link ScheduledThreadPoolExecutor} does not accept a Callable,    * so there is no ProjectCallable implementation. Implementations of this method must be    * consistent with Guice's {@link ServletScopes#continueRequest(Callable, java.util.Map)}.    *    *<p>There are some limitations:    *    *<ul>    *<li>Derived objects (i.e. anything marked created in a request scope) will not be    *       transported.    *<li>State changes to the request scoped context after this method is called will not be seen    *       in the continued thread.    *</ul>    *    * @param callable the Callable to wrap.    * @return a new Callable which will execute in the current request scope.    */
 annotation|@
 name|SuppressWarnings
 argument_list|(

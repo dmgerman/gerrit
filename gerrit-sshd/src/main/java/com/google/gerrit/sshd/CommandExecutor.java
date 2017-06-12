@@ -84,24 +84,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|WorkQueue
-operator|.
-name|Executor
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|BindingAnnotation
@@ -120,8 +102,20 @@ name|Retention
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledThreadPoolExecutor
+import|;
+end_import
+
 begin_comment
-comment|/** Marker on {@link Executor} used by SSH threads. */
+comment|/** Marker on {@link ScheduledThreadPoolExecutor} used by SSH threads. */
 end_comment
 
 begin_annotation_defn

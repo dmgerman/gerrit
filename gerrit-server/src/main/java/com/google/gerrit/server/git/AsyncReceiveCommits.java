@@ -124,24 +124,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|WorkQueue
-operator|.
-name|Executor
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ProjectControl
@@ -283,6 +265,18 @@ operator|.
 name|concurrent
 operator|.
 name|ExecutionException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ScheduledThreadPoolExecutor
 import|;
 end_import
 
@@ -795,7 +789,7 @@ decl_stmt|;
 DECL|field|executor
 specifier|private
 specifier|final
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|executor
 decl_stmt|;
 DECL|field|scopePropagator
@@ -818,7 +812,7 @@ name|timeoutMillis
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AsyncReceiveCommits ( ReceiveCommits.Factory factory, @ReceiveCommitsExecutor Executor executor, RequestScopePropagator scopePropagator, @Named(TIMEOUT_NAME) long timeoutMillis, @Assisted ProjectControl projectControl, @Assisted Repository repo)
+DECL|method|AsyncReceiveCommits ( ReceiveCommits.Factory factory, @ReceiveCommitsExecutor ScheduledThreadPoolExecutor executor, RequestScopePropagator scopePropagator, @Named(TIMEOUT_NAME) long timeoutMillis, @Assisted ProjectControl projectControl, @Assisted Repository repo)
 name|AsyncReceiveCommits
 parameter_list|(
 name|ReceiveCommits
@@ -828,7 +822,7 @@ name|factory
 parameter_list|,
 annotation|@
 name|ReceiveCommitsExecutor
-name|Executor
+name|ScheduledThreadPoolExecutor
 name|executor
 parameter_list|,
 name|RequestScopePropagator
