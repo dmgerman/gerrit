@@ -590,6 +590,35 @@ name|addCreateGroupPanel
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|onShowView ()
+specifier|public
+name|void
+name|onShowView
+parameter_list|()
+block|{
+name|super
+operator|.
+name|onShowView
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|addTxt
+operator|!=
+literal|null
+condition|)
+block|{
+name|addTxt
+operator|.
+name|setFocus
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|addCreateGroupPanel ()
 specifier|private
 name|void
