@@ -1423,6 +1423,13 @@ name|ProjectInfo
 name|k
 parameter_list|)
 block|{
+name|populateState
+argument_list|(
+name|row
+argument_list|,
+name|k
+argument_list|)
+expr_stmt|;
 specifier|final
 name|Anchor
 name|projectLink
@@ -1477,7 +1484,9 @@ name|setWidget
 argument_list|(
 name|row
 argument_list|,
-literal|2
+name|ProjectsTable
+operator|.
+name|C_NAME
 argument_list|,
 name|projectLink
 argument_list|)
@@ -1488,7 +1497,9 @@ name|setText
 argument_list|(
 name|row
 argument_list|,
-literal|3
+name|ProjectsTable
+operator|.
+name|C_DESCRIPTION
 argument_list|,
 name|k
 operator|.
