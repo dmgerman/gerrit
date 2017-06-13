@@ -266,6 +266,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|BranchOrderSection
@@ -619,6 +635,12 @@ specifier|final
 name|GitRepositoryManager
 name|gitManager
 decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
+decl_stmt|;
 DECL|field|projectCache
 specifier|private
 specifier|final
@@ -664,11 +686,14 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Mergeable ( GitRepositoryManager gitManager, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db, ChangeIndexer indexer, MergeabilityCache cache)
+DECL|method|Mergeable ( GitRepositoryManager gitManager, AccountCache accountCache, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db, ChangeIndexer indexer, MergeabilityCache cache)
 name|Mergeable
 parameter_list|(
 name|GitRepositoryManager
 name|gitManager
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -701,6 +726,12 @@ operator|.
 name|gitManager
 operator|=
 name|gitManager
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -1143,6 +1174,8 @@ init|=
 operator|new
 name|SubmitRuleEvaluator
 argument_list|(
+name|accountCache
+argument_list|,
 name|cd
 argument_list|)
 operator|.

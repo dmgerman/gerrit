@@ -200,6 +200,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|TrackingFooters
@@ -659,6 +675,12 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -765,11 +787,14 @@ name|out
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OutputStreamQuery ( ReviewDb db, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, ChangeQueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
+DECL|method|OutputStreamQuery ( ReviewDb db, AccountCache accountCache, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, ChangeQueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
 name|OutputStreamQuery
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -795,6 +820,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -1494,6 +1525,8 @@ argument_list|,
 operator|new
 name|SubmitRuleEvaluator
 argument_list|(
+name|accountCache
+argument_list|,
 name|d
 argument_list|)
 operator|.
