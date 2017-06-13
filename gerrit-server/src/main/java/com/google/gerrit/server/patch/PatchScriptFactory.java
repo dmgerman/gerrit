@@ -908,7 +908,7 @@ name|comments
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, @Assisted ChangeControl control, @Assisted final String fileName, @Assisted(R) @Nullable final PatchSet.Id patchSetA, @Assisted(R) final PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
+DECL|method|PatchScriptFactory ( GitRepositoryManager grm, PatchSetUtil psUtil, Provider<PatchScriptBuilder> builderFactory, PatchListCache patchListCache, ReviewDb db, CommentsUtil commentsUtil, ChangeEditUtil editReader, @Assisted ChangeControl control, @Assisted String fileName, @Assisted(R) @Nullable PatchSet.Id patchSetA, @Assisted(R) PatchSet.Id patchSetB, @Assisted DiffPreferencesInfo diffPrefs)
 name|PatchScriptFactory
 parameter_list|(
 name|GitRepositoryManager
@@ -942,7 +942,6 @@ name|control
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|String
 name|fileName
 parameter_list|,
@@ -953,7 +952,6 @@ literal|"patchSetA"
 argument_list|)
 annotation|@
 name|Nullable
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -964,7 +962,6 @@ name|Assisted
 argument_list|(
 literal|"patchSetB"
 argument_list|)
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -1627,12 +1624,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|keyFor (final Whitespace whitespace)
+DECL|method|keyFor (Whitespace whitespace)
 specifier|private
 name|PatchListKey
 name|keyFor
 parameter_list|(
-specifier|final
 name|Whitespace
 name|whitespace
 parameter_list|)
@@ -1671,12 +1667,11 @@ name|whitespace
 argument_list|)
 return|;
 block|}
-DECL|method|listFor (final PatchListKey key)
+DECL|method|listFor (PatchListKey key)
 specifier|private
 name|PatchList
 name|listFor
 parameter_list|(
-specifier|final
 name|PatchListKey
 name|key
 parameter_list|)
@@ -1694,12 +1689,11 @@ name|project
 argument_list|)
 return|;
 block|}
-DECL|method|newBuilder (final PatchList list, Repository git)
+DECL|method|newBuilder (PatchList list, Repository git)
 specifier|private
 name|PatchScriptBuilder
 name|newBuilder
 parameter_list|(
-specifier|final
 name|PatchList
 name|list
 parameter_list|,
@@ -1922,12 +1916,11 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-DECL|method|validatePatchSetId (final PatchSet.Id psId)
+DECL|method|validatePatchSetId (PatchSet.Id psId)
 specifier|private
 name|void
 name|validatePatchSetId
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id

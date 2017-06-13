@@ -1330,11 +1330,10 @@ return|return
 name|headerLines
 return|;
 block|}
-DECL|method|toPatch (final PatchSet.Id setId)
+DECL|method|toPatch (PatchSet.Id setId)
 name|Patch
 name|toPatch
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -1818,14 +1817,13 @@ return|return
 name|edits
 return|;
 block|}
-DECL|method|compact (final FileHeader h)
+DECL|method|compact (FileHeader h)
 specifier|private
 specifier|static
 name|byte
 index|[]
 name|compact
 parameter_list|(
-specifier|final
 name|FileHeader
 name|h
 parameter_list|)
@@ -1908,13 +1906,12 @@ return|return
 name|buf
 return|;
 block|}
-DECL|method|end (final FileHeader h)
+DECL|method|end (FileHeader h)
 specifier|private
 specifier|static
 name|int
 name|end
 parameter_list|(
-specifier|final
 name|FileHeader
 name|h
 parameter_list|)
@@ -1967,13 +1964,12 @@ name|getEndOffset
 argument_list|()
 return|;
 block|}
-DECL|method|toChangeType (final FileHeader hdr)
+DECL|method|toChangeType (FileHeader hdr)
 specifier|private
 specifier|static
 name|ChangeType
 name|toChangeType
 parameter_list|(
-specifier|final
 name|FileHeader
 name|hdr
 parameter_list|)
@@ -2051,13 +2047,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|toPatchType (final FileHeader hdr)
+DECL|method|toPatchType (FileHeader hdr)
 specifier|private
 specifier|static
 name|PatchType
 name|toPatchType
 parameter_list|(
-specifier|final
 name|FileHeader
 name|hdr
 parameter_list|)

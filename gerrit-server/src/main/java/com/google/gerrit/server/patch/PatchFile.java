@@ -631,16 +631,14 @@ block|}
 block|}
 block|}
 comment|/**    * Extract a line from the file, as a string.    *    * @param file the file index to extract.    * @param line the line number to extract (1 based; 1 is the first line).    * @return the string version of the file line.    * @throws IOException the patch or complete file content cannot be read.    * @throws NoSuchEntityException    */
-DECL|method|getLine (final int file, final int line)
+DECL|method|getLine (int file, int line)
 specifier|public
 name|String
 name|getLine
 parameter_list|(
-specifier|final
 name|int
 name|file
 parameter_list|,
-specifier|final
 name|int
 name|line
 parameter_list|)
@@ -729,12 +727,11 @@ throw|;
 block|}
 block|}
 comment|/**    * Return number of lines in file.    *    * @param file the file index to extract.    * @return number of lines in file.    * @throws IOException the patch or complete file content cannot be read.    * @throws NoSuchEntityException the file is not exist.    */
-DECL|method|getLineCount (final int file)
+DECL|method|getLineCount (int file)
 specifier|public
 name|int
 name|getLineCount
 parameter_list|(
-specifier|final
 name|int
 name|file
 parameter_list|)
@@ -814,16 +811,14 @@ argument_list|()
 throw|;
 block|}
 block|}
-DECL|method|load (final ObjectId tree, final String path)
+DECL|method|load (ObjectId tree, String path)
 specifier|private
 name|Text
 name|load
 parameter_list|(
-specifier|final
 name|ObjectId
 name|tree
 parameter_list|,
-specifier|final
 name|String
 name|path
 parameter_list|)

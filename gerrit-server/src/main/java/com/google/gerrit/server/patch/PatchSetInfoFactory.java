@@ -744,12 +744,11 @@ throw|;
 block|}
 block|}
 comment|// TODO: The same method exists in EventFactory, find a common place for it
-DECL|method|toUserIdentity (final PersonIdent who)
+DECL|method|toUserIdentity (PersonIdent who)
 specifier|private
 name|UserIdentity
 name|toUserIdentity
 parameter_list|(
-specifier|final
 name|PersonIdent
 name|who
 parameter_list|)
@@ -859,7 +858,7 @@ return|return
 name|u
 return|;
 block|}
-DECL|method|toParentInfos (final RevCommit[] parents, final RevWalk walk)
+DECL|method|toParentInfos (RevCommit[] parents, RevWalk walk)
 specifier|private
 name|List
 argument_list|<
@@ -869,12 +868,10 @@ name|ParentInfo
 argument_list|>
 name|toParentInfos
 parameter_list|(
-specifier|final
 name|RevCommit
 index|[]
 name|parents
 parameter_list|,
-specifier|final
 name|RevWalk
 name|walk
 parameter_list|)

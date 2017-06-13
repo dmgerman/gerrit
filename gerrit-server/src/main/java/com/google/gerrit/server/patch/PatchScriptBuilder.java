@@ -574,11 +574,9 @@ specifier|public
 name|int
 name|compare
 parameter_list|(
-specifier|final
 name|Edit
 name|o1
 parameter_list|,
-specifier|final
 name|Edit
 name|o2
 parameter_list|)
@@ -735,11 +733,10 @@ operator|=
 name|projectKey
 expr_stmt|;
 block|}
-DECL|method|setChange (final Change c)
+DECL|method|setChange (Change c)
 name|void
 name|setChange
 parameter_list|(
-specifier|final
 name|Change
 name|c
 parameter_list|)
@@ -751,11 +748,10 @@ operator|=
 name|c
 expr_stmt|;
 block|}
-DECL|method|setDiffPrefs (final DiffPreferencesInfo dp)
+DECL|method|setDiffPrefs (DiffPreferencesInfo dp)
 name|void
 name|setDiffPrefs
 parameter_list|(
-specifier|final
 name|DiffPreferencesInfo
 name|dp
 parameter_list|)
@@ -798,19 +794,16 @@ name|MAX_CONTEXT
 expr_stmt|;
 block|}
 block|}
-DECL|method|setTrees (final ComparisonType ct, final ObjectId a, final ObjectId b)
+DECL|method|setTrees (ComparisonType ct, ObjectId a, ObjectId b)
 name|void
 name|setTrees
 parameter_list|(
-specifier|final
 name|ComparisonType
 name|ct
 parameter_list|,
-specifier|final
 name|ObjectId
 name|a
 parameter_list|,
-specifier|final
 name|ObjectId
 name|b
 parameter_list|)
@@ -828,19 +821,16 @@ operator|=
 name|b
 expr_stmt|;
 block|}
-DECL|method|toPatchScript ( final PatchListEntry content, final CommentDetail comments, final List<Patch> history)
+DECL|method|toPatchScript ( PatchListEntry content, CommentDetail comments, List<Patch> history)
 name|PatchScript
 name|toPatchScript
 parameter_list|(
-specifier|final
 name|PatchListEntry
 name|content
 parameter_list|,
-specifier|final
 name|CommentDetail
 name|comments
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|Patch
@@ -879,20 +869,17 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|build ( final PatchListEntry content, final CommentDetail comments, final List<Patch> history)
+DECL|method|build ( PatchListEntry content, CommentDetail comments, List<Patch> history)
 specifier|private
 name|PatchScript
 name|build
 parameter_list|(
-specifier|final
 name|PatchListEntry
 name|content
 parameter_list|,
-specifier|final
 name|CommentDetail
 name|comments
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|Patch
@@ -1433,13 +1420,12 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|oldName (final PatchListEntry entry)
+DECL|method|oldName (PatchListEntry entry)
 specifier|private
 specifier|static
 name|String
 name|oldName
 parameter_list|(
-specifier|final
 name|PatchListEntry
 name|entry
 parameter_list|)
@@ -1488,13 +1474,12 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|newName (final PatchListEntry entry)
+DECL|method|newName (PatchListEntry entry)
 specifier|private
 specifier|static
 name|String
 name|newName
 parameter_list|(
-specifier|final
 name|PatchListEntry
 name|entry
 parameter_list|)
@@ -1537,12 +1522,11 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|ensureCommentsVisible (final CommentDetail comments)
+DECL|method|ensureCommentsVisible (CommentDetail comments)
 specifier|private
 name|void
 name|ensureCommentsVisible
 parameter_list|(
-specifier|final
 name|CommentDetail
 name|comments
 parameter_list|)
@@ -1753,19 +1737,17 @@ name|EDIT_SORT
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|safeAdd (final List<Edit> empty, final Edit toAdd)
+DECL|method|safeAdd (List<Edit> empty, Edit toAdd)
 specifier|private
 name|void
 name|safeAdd
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|Edit
 argument_list|>
 name|empty
 parameter_list|,
-specifier|final
 name|Edit
 name|toAdd
 parameter_list|)
@@ -1844,12 +1826,11 @@ name|toAdd
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|mapA2B (final int a)
+DECL|method|mapA2B (int a)
 specifier|private
 name|int
 name|mapA2B
 parameter_list|(
-specifier|final
 name|int
 name|a
 parameter_list|)
@@ -1991,12 +1972,11 @@ argument_list|()
 operator|)
 return|;
 block|}
-DECL|method|mapB2A (final int b)
+DECL|method|mapB2A (int b)
 specifier|private
 name|int
 name|mapB2A
 parameter_list|(
-specifier|final
 name|int
 name|b
 parameter_list|)
@@ -2441,15 +2421,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|resolve (final Side other, final ObjectId within)
+DECL|method|resolve (Side other, ObjectId within)
 name|void
 name|resolve
 parameter_list|(
-specifier|final
 name|Side
 name|other
 parameter_list|,
-specifier|final
 name|ObjectId
 name|within
 parameter_list|)
@@ -3085,12 +3063,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|find (final ObjectId within)
+DECL|method|find (ObjectId within)
 specifier|private
 name|TreeWalk
 name|find
 parameter_list|(
-specifier|final
 name|ObjectId
 name|within
 parameter_list|)

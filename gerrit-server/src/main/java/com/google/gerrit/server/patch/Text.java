@@ -1181,11 +1181,10 @@ specifier|private
 name|Charset
 name|charset
 decl_stmt|;
-DECL|method|Text (final byte[] r)
+DECL|method|Text (byte[] r)
 specifier|public
 name|Text
 parameter_list|(
-specifier|final
 name|byte
 index|[]
 name|r
@@ -1233,12 +1232,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|decode (final int s, int e)
+DECL|method|decode (int s, int e)
 specifier|protected
 name|String
 name|decode
 parameter_list|(
-specifier|final
 name|int
 name|s
 parameter_list|,
