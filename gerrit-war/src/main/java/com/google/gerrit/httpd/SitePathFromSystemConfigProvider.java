@@ -118,6 +118,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|schema
+operator|.
+name|ReviewDbFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -220,9 +236,11 @@ name|path
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SitePathFromSystemConfigProvider (SchemaFactory<ReviewDb> schemaFactory)
+DECL|method|SitePathFromSystemConfigProvider (@eviewDbFactory SchemaFactory<ReviewDb> schemaFactory)
 name|SitePathFromSystemConfigProvider
 parameter_list|(
+annotation|@
+name|ReviewDbFactory
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
