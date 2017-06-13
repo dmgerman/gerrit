@@ -367,6 +367,34 @@ name|accountId
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns all accounts.    *    * @return all accounts    */
+DECL|method|all (ReviewDb db)
+specifier|public
+name|List
+argument_list|<
+name|Account
+argument_list|>
+name|all
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|db
+operator|.
+name|accounts
+argument_list|()
+operator|.
+name|all
+argument_list|()
+operator|.
+name|toList
+argument_list|()
+return|;
+block|}
 comment|/**    * Returns all account IDs.    *    * @return all account IDs    */
 DECL|method|allIds ()
 specifier|public
