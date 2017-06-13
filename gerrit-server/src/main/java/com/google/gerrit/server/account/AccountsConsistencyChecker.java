@@ -233,6 +233,12 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
+DECL|field|accounts
+specifier|private
+specifier|final
+name|Accounts
+name|accounts
+decl_stmt|;
 DECL|field|externalIds
 specifier|private
 specifier|final
@@ -241,7 +247,7 @@ name|externalIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountsConsistencyChecker (Provider<ReviewDb> dbProvider, ExternalIds externalIds)
+DECL|method|AccountsConsistencyChecker ( Provider<ReviewDb> dbProvider, Accounts accounts, ExternalIds externalIds)
 name|AccountsConsistencyChecker
 parameter_list|(
 name|Provider
@@ -249,6 +255,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|Accounts
+name|accounts
 parameter_list|,
 name|ExternalIds
 name|externalIds
@@ -259,6 +268,12 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
+expr_stmt|;
+name|this
+operator|.
+name|accounts
+operator|=
+name|accounts
 expr_stmt|;
 name|this
 operator|.
@@ -296,16 +311,15 @@ control|(
 name|Account
 name|account
 range|:
+name|accounts
+operator|.
+name|all
+argument_list|(
 name|dbProvider
 operator|.
 name|get
 argument_list|()
-operator|.
-name|accounts
-argument_list|()
-operator|.
-name|all
-argument_list|()
+argument_list|)
 control|)
 block|{
 if|if
