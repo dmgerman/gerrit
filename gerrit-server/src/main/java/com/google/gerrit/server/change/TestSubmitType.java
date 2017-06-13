@@ -250,6 +250,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|SubmitRuleEvaluator
@@ -346,6 +362,12 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
+decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -382,7 +404,7 @@ name|RUN
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TestSubmitType (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RulesCache rules)
+DECL|method|TestSubmitType ( Provider<ReviewDb> db, AccountCache accountCache, ChangeData.Factory changeDataFactory, RulesCache rules)
 name|TestSubmitType
 parameter_list|(
 name|Provider
@@ -390,6 +412,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|ChangeData
 operator|.
@@ -405,6 +430,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -497,6 +528,8 @@ init|=
 operator|new
 name|SubmitRuleEvaluator
 argument_list|(
+name|accountCache
+argument_list|,
 name|changeDataFactory
 operator|.
 name|create

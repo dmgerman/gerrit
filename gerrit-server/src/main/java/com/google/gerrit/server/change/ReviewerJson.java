@@ -284,6 +284,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|AccountCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|AccountLoader
 import|;
 end_import
@@ -497,6 +513,12 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache
+name|accountCache
+decl_stmt|;
 DECL|field|approvalsUtil
 specifier|private
 specifier|final
@@ -513,7 +535,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerJson ( Provider<ReviewDb> db, PermissionBackend permissionBackend, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, AccountLoader.Factory accountLoaderFactory)
+DECL|method|ReviewerJson ( Provider<ReviewDb> db, PermissionBackend permissionBackend, ChangeData.Factory changeDataFactory, AccountCache accountCache, ApprovalsUtil approvalsUtil, AccountLoader.Factory accountLoaderFactory)
 name|ReviewerJson
 parameter_list|(
 name|Provider
@@ -529,6 +551,9 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
+parameter_list|,
+name|AccountCache
+name|accountCache
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
@@ -556,6 +581,12 @@ operator|.
 name|changeDataFactory
 operator|=
 name|changeDataFactory
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -1003,6 +1034,8 @@ range|:
 operator|new
 name|SubmitRuleEvaluator
 argument_list|(
+name|accountCache
+argument_list|,
 name|cd
 argument_list|)
 operator|.
