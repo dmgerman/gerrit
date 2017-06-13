@@ -96,7 +96,7 @@ name|api
 operator|.
 name|changes
 operator|.
-name|NotifyHandling
+name|RecipientType
 import|;
 end_import
 
@@ -114,7 +114,7 @@ name|api
 operator|.
 name|changes
 operator|.
-name|RecipientType
+name|SubmitInput
 import|;
 end_import
 
@@ -452,7 +452,7 @@ operator|=
 name|argsFactory
 expr_stmt|;
 block|}
-DECL|method|create ( SubmitType submitType, ReviewDb db, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, ReviewDb db, CodeReviewRevWalk rw, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, Branch.NameKey destBranch, IdentifiedUser caller, MergeTip mergeTip, CommitStatus commitStatus, RequestId submissionId, SubmitInput submitInput, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -498,8 +498,8 @@ parameter_list|,
 name|RequestId
 name|submissionId
 parameter_list|,
-name|NotifyHandling
-name|notifyHandling
+name|SubmitInput
+name|submitInput
 parameter_list|,
 name|ListMultimap
 argument_list|<
@@ -551,7 +551,7 @@ name|incoming
 argument_list|,
 name|submissionId
 argument_list|,
-name|notifyHandling
+name|submitInput
 argument_list|,
 name|accountsToNotify
 argument_list|,

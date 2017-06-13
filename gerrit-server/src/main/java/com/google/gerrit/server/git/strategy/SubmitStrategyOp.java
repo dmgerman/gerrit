@@ -3434,7 +3434,9 @@ argument_list|()
 argument_list|,
 name|args
 operator|.
-name|notifyHandling
+name|submitInput
+operator|.
+name|notify
 argument_list|,
 name|args
 operator|.

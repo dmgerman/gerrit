@@ -3876,8 +3876,6 @@ argument_list|,
 name|submissionId
 argument_list|,
 name|submitInput
-operator|.
-name|notify
 argument_list|,
 name|accountsToNotify
 argument_list|,
