@@ -2020,6 +2020,57 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|reflog ()
+specifier|public
+name|void
+name|reflog
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Tests are using DfsRepository which does not implement getReflogReader,
+comment|// so this will always fail.
+comment|// TODO: change this if/when DfsRepository#getReflogReader is implemented.
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|MethodNotAllowedException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"reflog not supported"
+argument_list|)
+expr_stmt|;
+name|gApi
+operator|.
+name|projects
+argument_list|()
+operator|.
+name|name
+argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|)
+operator|.
+name|branch
+argument_list|(
+literal|"master"
+argument_list|)
+operator|.
+name|reflog
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|get ()
 specifier|public
 name|void

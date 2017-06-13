@@ -116,6 +116,16 @@ name|RestApiException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_interface
 DECL|interface|BranchApi
 specifier|public
@@ -154,6 +164,16 @@ parameter_list|(
 name|String
 name|path
 parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|reflog ()
+name|List
+argument_list|<
+name|ReflogEntryInfo
+argument_list|>
+name|reflog
+parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
@@ -219,6 +239,23 @@ parameter_list|(
 name|String
 name|path
 parameter_list|)
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|reflog ()
+specifier|public
+name|List
+argument_list|<
+name|ReflogEntryInfo
+argument_list|>
+name|reflog
+parameter_list|()
 block|{
 throw|throw
 operator|new
