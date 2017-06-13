@@ -334,14 +334,13 @@ name|urlProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequireSslFilter (@anonicalWebUrl @ullable final Provider<String> urlProvider)
+DECL|method|RequireSslFilter (@anonicalWebUrl @ullable Provider<String> urlProvider)
 name|RequireSslFilter
 parameter_list|(
 annotation|@
 name|CanonicalWebUrl
 annotation|@
 name|Nullable
-specifier|final
 name|Provider
 argument_list|<
 name|String
@@ -377,20 +376,17 @@ parameter_list|()
 block|{}
 annotation|@
 name|Override
-DECL|method|doFilter ( final ServletRequest request, final ServletResponse response, final FilterChain chain)
+DECL|method|doFilter ( ServletRequest request, ServletResponse response, FilterChain chain)
 specifier|public
 name|void
 name|doFilter
 parameter_list|(
-specifier|final
 name|ServletRequest
 name|request
 parameter_list|,
-specifier|final
 name|ServletResponse
 name|response
 parameter_list|,
-specifier|final
 name|FilterChain
 name|chain
 parameter_list|)
@@ -521,13 +517,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isSecure (final HttpServletRequest req)
+DECL|method|isSecure (HttpServletRequest req)
 specifier|private
 specifier|static
 name|boolean
 name|isSecure
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)
@@ -549,13 +544,12 @@ name|isSecure
 argument_list|()
 return|;
 block|}
-DECL|method|isLocalHost (final HttpServletRequest req)
+DECL|method|isLocalHost (HttpServletRequest req)
 specifier|private
 specifier|static
 name|boolean
 name|isLocalHost
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)

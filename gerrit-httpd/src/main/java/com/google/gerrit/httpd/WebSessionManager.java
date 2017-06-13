@@ -546,7 +546,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WebSessionManager (@erritServerConfig Config cfg, @Assisted final Cache<String, Val> cache)
+DECL|method|WebSessionManager (@erritServerConfig Config cfg, @Assisted Cache<String, Val> cache)
 name|WebSessionManager
 parameter_list|(
 annotation|@
@@ -556,7 +556,6 @@ name|cfg
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|Cache
 argument_list|<
 name|String
@@ -637,11 +636,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|createKey (final Account.Id who)
+DECL|method|createKey (Account.Id who)
 name|Key
 name|createKey
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -659,12 +657,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|newUniqueToken (final Account.Id who)
+DECL|method|newUniqueToken (Account.Id who)
 specifier|private
 name|String
 name|newUniqueToken
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -984,11 +981,10 @@ return|return
 name|val
 return|;
 block|}
-DECL|method|getCookieAge (final Val val)
+DECL|method|getCookieAge (Val val)
 name|int
 name|getCookieAge
 parameter_list|(
-specifier|final
 name|Val
 name|val
 parameter_list|)
@@ -1026,11 +1022,10 @@ operator|-
 literal|1
 return|;
 block|}
-DECL|method|get (final Key key)
+DECL|method|get (Key key)
 name|Val
 name|get
 parameter_list|(
-specifier|final
 name|Key
 name|key
 parameter_list|)
@@ -1078,11 +1073,10 @@ return|return
 name|val
 return|;
 block|}
-DECL|method|destroy (final Key key)
+DECL|method|destroy (Key key)
 name|void
 name|destroy
 parameter_list|(
-specifier|final
 name|Key
 name|key
 parameter_list|)
@@ -1109,10 +1103,9 @@ specifier|transient
 name|String
 name|token
 decl_stmt|;
-DECL|method|Key (final String t)
+DECL|method|Key (String t)
 name|Key
 parameter_list|(
-specifier|final
 name|String
 name|t
 parameter_list|)
@@ -1384,12 +1377,11 @@ return|return
 name|persistentCookie
 return|;
 block|}
-DECL|method|writeObject (final ObjectOutputStream out)
+DECL|method|writeObject (ObjectOutputStream out)
 specifier|private
 name|void
 name|writeObject
 parameter_list|(
-specifier|final
 name|ObjectOutputStream
 name|out
 parameter_list|)
@@ -1536,12 +1528,11 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|readObject (final ObjectInputStream in)
+DECL|method|readObject (ObjectInputStream in)
 specifier|private
 name|void
 name|readObject
 parameter_list|(
-specifier|final
 name|ObjectInputStream
 name|in
 parameter_list|)

@@ -477,34 +477,28 @@ specifier|private
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|CacheBasedWebSession ( final HttpServletRequest request, final HttpServletResponse response, final WebSessionManager manager, final AuthConfig authConfig, final Provider<AnonymousUser> anonymousProvider, final IdentifiedUser.RequestFactory identified)
+DECL|method|CacheBasedWebSession ( HttpServletRequest request, HttpServletResponse response, WebSessionManager manager, AuthConfig authConfig, Provider<AnonymousUser> anonymousProvider, IdentifiedUser.RequestFactory identified)
 specifier|protected
 name|CacheBasedWebSession
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|request
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|response
 parameter_list|,
-specifier|final
 name|WebSessionManager
 name|manager
 parameter_list|,
-specifier|final
 name|AuthConfig
 name|authConfig
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|AnonymousUser
 argument_list|>
 name|anonymousProvider
 parameter_list|,
-specifier|final
 name|IdentifiedUser
 operator|.
 name|RequestFactory
@@ -692,7 +686,6 @@ condition|)
 block|{
 for|for
 control|(
-specifier|final
 name|Cookie
 name|c
 range|:
@@ -1342,13 +1335,12 @@ name|outCookie
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|isSecure (final HttpServletRequest req)
+DECL|method|isSecure (HttpServletRequest req)
 specifier|private
 specifier|static
 name|boolean
 name|isSecure
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)

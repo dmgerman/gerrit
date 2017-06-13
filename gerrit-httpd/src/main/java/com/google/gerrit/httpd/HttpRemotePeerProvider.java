@@ -186,10 +186,9 @@ name|req
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpRemotePeerProvider (final HttpServletRequest r)
+DECL|method|HttpRemotePeerProvider (HttpServletRequest r)
 name|HttpRemotePeerProvider
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|r
 parameter_list|)

@@ -281,12 +281,11 @@ name|enabled
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Module (@erritServerConfig final Config cfg)
+DECL|method|Module (@erritServerConfig Config cfg)
 name|Module
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
@@ -344,10 +343,9 @@ name|userProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetUserFilter (final Provider<CurrentUser> userProvider)
+DECL|method|GetUserFilter (Provider<CurrentUser> userProvider)
 name|GetUserFilter
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|CurrentUser

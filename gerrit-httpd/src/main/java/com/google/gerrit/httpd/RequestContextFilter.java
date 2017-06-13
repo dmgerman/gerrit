@@ -317,24 +317,21 @@ name|local
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestContextFilter ( final Provider<RequestCleanup> r, final Provider<HttpRequestContext> c, final ThreadLocalRequestContext l)
+DECL|method|RequestContextFilter ( Provider<RequestCleanup> r, Provider<HttpRequestContext> c, ThreadLocalRequestContext l)
 name|RequestContextFilter
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|RequestCleanup
 argument_list|>
 name|r
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|HttpRequestContext
 argument_list|>
 name|c
 parameter_list|,
-specifier|final
 name|ThreadLocalRequestContext
 name|l
 parameter_list|)
@@ -373,20 +370,17 @@ parameter_list|()
 block|{}
 annotation|@
 name|Override
-DECL|method|doFilter ( final ServletRequest request, final ServletResponse response, final FilterChain chain)
+DECL|method|doFilter ( ServletRequest request, ServletResponse response, FilterChain chain)
 specifier|public
 name|void
 name|doFilter
 parameter_list|(
-specifier|final
 name|ServletRequest
 name|request
 parameter_list|,
-specifier|final
 name|ServletResponse
 name|response
 parameter_list|,
-specifier|final
 name|FilterChain
 name|chain
 parameter_list|)

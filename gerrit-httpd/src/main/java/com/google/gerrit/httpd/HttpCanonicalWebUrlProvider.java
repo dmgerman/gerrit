@@ -192,12 +192,11 @@ name|requestProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpCanonicalWebUrlProvider (@erritServerConfig final Config config)
+DECL|method|HttpCanonicalWebUrlProvider (@erritServerConfig Config config)
 name|HttpCanonicalWebUrlProvider
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|config
 parameter_list|)
@@ -215,12 +214,11 @@ name|optional
 operator|=
 literal|true
 argument_list|)
-DECL|method|setHttpServletRequest (final Provider<HttpServletRequest> hsr)
+DECL|method|setHttpServletRequest (Provider<HttpServletRequest> hsr)
 specifier|public
 name|void
 name|setHttpServletRequest
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|HttpServletRequest

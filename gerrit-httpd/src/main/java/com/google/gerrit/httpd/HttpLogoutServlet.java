@@ -329,15 +329,13 @@ name|audit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpLogoutServlet ( final AuthConfig authConfig, final DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AuditService audit)
+DECL|method|HttpLogoutServlet ( AuthConfig authConfig, DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AuditService audit)
 specifier|protected
 name|HttpLogoutServlet
 parameter_list|(
-specifier|final
 name|AuthConfig
 name|authConfig
 parameter_list|,
-specifier|final
 name|DynamicItem
 argument_list|<
 name|WebSession
@@ -348,14 +346,12 @@ annotation|@
 name|CanonicalWebUrl
 annotation|@
 name|Nullable
-specifier|final
 name|Provider
 argument_list|<
 name|String
 argument_list|>
 name|urlProvider
 parameter_list|,
-specifier|final
 name|AuditService
 name|audit
 parameter_list|)
@@ -388,16 +384,14 @@ operator|=
 name|audit
 expr_stmt|;
 block|}
-DECL|method|doLogout (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doLogout (HttpServletRequest req, HttpServletResponse rsp)
 specifier|protected
 name|void
 name|doLogout
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -497,16 +491,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|doGet (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doGet (HttpServletRequest req, HttpServletResponse rsp)
 specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
