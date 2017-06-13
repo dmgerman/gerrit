@@ -154,12 +154,11 @@ argument_list|(
 literal|4
 argument_list|)
 decl_stmt|;
-DECL|method|commitBanned (final ObjectId commitId)
+DECL|method|commitBanned (ObjectId commitId)
 specifier|public
 name|void
 name|commitBanned
 parameter_list|(
-specifier|final
 name|ObjectId
 name|commitId
 parameter_list|)
@@ -172,12 +171,11 @@ name|commitId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|commitAlreadyBanned (final ObjectId commitId)
+DECL|method|commitAlreadyBanned (ObjectId commitId)
 specifier|public
 name|void
 name|commitAlreadyBanned
 parameter_list|(
-specifier|final
 name|ObjectId
 name|commitId
 parameter_list|)
@@ -190,12 +188,11 @@ name|commitId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|notACommit (final ObjectId id)
+DECL|method|notACommit (ObjectId id)
 specifier|public
 name|void
 name|notACommit
 parameter_list|(
-specifier|final
 name|ObjectId
 name|id
 parameter_list|)

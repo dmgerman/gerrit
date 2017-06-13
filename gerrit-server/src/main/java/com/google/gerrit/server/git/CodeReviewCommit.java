@@ -494,12 +494,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|markUninteresting (final RevCommit c)
+DECL|method|markUninteresting (RevCommit c)
 specifier|public
 name|void
 name|markUninteresting
 parameter_list|(
-specifier|final
 name|RevCommit
 name|c
 parameter_list|)
@@ -598,11 +597,10 @@ specifier|private
 name|CommitMergeStatus
 name|statusCode
 decl_stmt|;
-DECL|method|CodeReviewCommit (final AnyObjectId id)
+DECL|method|CodeReviewCommit (AnyObjectId id)
 specifier|public
 name|CodeReviewCommit
 parameter_list|(
-specifier|final
 name|AnyObjectId
 name|id
 parameter_list|)
@@ -683,12 +681,11 @@ operator|=
 name|patchsetId
 expr_stmt|;
 block|}
-DECL|method|copyFrom (final CodeReviewCommit src)
+DECL|method|copyFrom (CodeReviewCommit src)
 specifier|public
 name|void
 name|copyFrom
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|src
 parameter_list|)

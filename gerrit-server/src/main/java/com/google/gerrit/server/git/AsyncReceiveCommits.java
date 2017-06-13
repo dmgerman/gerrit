@@ -527,13 +527,12 @@ name|Named
 argument_list|(
 name|TIMEOUT_NAME
 argument_list|)
-DECL|method|getTimeoutMillis (@erritServerConfig final Config cfg)
+DECL|method|getTimeoutMillis (@erritServerConfig Config cfg)
 name|long
 name|getTimeoutMillis
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
@@ -583,11 +582,10 @@ name|ReceiveCommand
 argument_list|>
 name|commands
 decl_stmt|;
-DECL|method|Worker (final Collection<ReceiveCommand> commands)
+DECL|method|Worker (Collection<ReceiveCommand> commands)
 specifier|private
 name|Worker
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|ReceiveCommand
@@ -820,10 +818,9 @@ name|timeoutMillis
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AsyncReceiveCommits ( final ReceiveCommits.Factory factory, @ReceiveCommitsExecutor final Executor executor, final RequestScopePropagator scopePropagator, @Named(TIMEOUT_NAME) final long timeoutMillis, @Assisted final ProjectControl projectControl, @Assisted final Repository repo)
+DECL|method|AsyncReceiveCommits ( ReceiveCommits.Factory factory, @ReceiveCommitsExecutor Executor executor, RequestScopePropagator scopePropagator, @Named(TIMEOUT_NAME) long timeoutMillis, @Assisted ProjectControl projectControl, @Assisted Repository repo)
 name|AsyncReceiveCommits
 parameter_list|(
-specifier|final
 name|ReceiveCommits
 operator|.
 name|Factory
@@ -831,11 +828,9 @@ name|factory
 parameter_list|,
 annotation|@
 name|ReceiveCommitsExecutor
-specifier|final
 name|Executor
 name|executor
 parameter_list|,
-specifier|final
 name|RequestScopePropagator
 name|scopePropagator
 parameter_list|,
@@ -844,19 +839,16 @@ name|Named
 argument_list|(
 name|TIMEOUT_NAME
 argument_list|)
-specifier|final
 name|long
 name|timeoutMillis
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|ProjectControl
 name|projectControl
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|Repository
 name|repo
 parameter_list|)
@@ -915,16 +907,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPreReceive (final ReceivePack rp, final Collection<ReceiveCommand> commands)
+DECL|method|onPreReceive (ReceivePack rp, Collection<ReceiveCommand> commands)
 specifier|public
 name|void
 name|onPreReceive
 parameter_list|(
-specifier|final
 name|ReceivePack
 name|rp
 parameter_list|,
-specifier|final
 name|Collection
 argument_list|<
 name|ReceiveCommand
@@ -1001,7 +991,6 @@ comment|// ReceiveCommits has tried its best to catch errors, so anything at thi
 comment|// point is very bad.
 for|for
 control|(
-specifier|final
 name|ReceiveCommand
 name|c
 range|:

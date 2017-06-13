@@ -1185,12 +1185,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|postUpdate (final Context ctx)
+DECL|method|postUpdate (Context ctx)
 specifier|public
 name|void
 name|postUpdate
 parameter_list|(
-specifier|final
 name|Context
 name|ctx
 parameter_list|)

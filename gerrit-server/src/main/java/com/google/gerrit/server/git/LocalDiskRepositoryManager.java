@@ -600,12 +600,11 @@ name|serverConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Lifecycle (@erritServerConfig final Config cfg)
+DECL|method|Lifecycle (@erritServerConfig Config cfg)
 name|Lifecycle
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
@@ -1579,12 +1578,11 @@ name|e2
 throw|;
 block|}
 block|}
-DECL|method|onCreateProject (final Project.NameKey newProjectName)
+DECL|method|onCreateProject (Project.NameKey newProjectName)
 specifier|private
 name|void
 name|onCreateProject
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -1639,12 +1637,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|isUnreasonableName (final Project.NameKey nameKey)
+DECL|method|isUnreasonableName (Project.NameKey nameKey)
 specifier|private
 name|boolean
 name|isUnreasonableName
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey

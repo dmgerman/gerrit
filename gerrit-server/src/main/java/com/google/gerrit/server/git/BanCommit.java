@@ -583,27 +583,23 @@ name|notesBranchUtilFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BanCommit ( final Provider<IdentifiedUser> currentUser, final GitRepositoryManager repoManager, @GerritPersonIdent final PersonIdent gerritIdent, final NotesBranchUtil.Factory notesBranchUtilFactory)
+DECL|method|BanCommit ( Provider<IdentifiedUser> currentUser, GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent gerritIdent, NotesBranchUtil.Factory notesBranchUtilFactory)
 name|BanCommit
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|IdentifiedUser
 argument_list|>
 name|currentUser
 parameter_list|,
-specifier|final
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
-specifier|final
 name|PersonIdent
 name|gerritIdent
 parameter_list|,
-specifier|final
 name|NotesBranchUtil
 operator|.
 name|Factory
@@ -638,23 +634,20 @@ name|getTimeZone
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|ban ( final ProjectControl projectControl, final List<ObjectId> commitsToBan, final String reason)
+DECL|method|ban ( ProjectControl projectControl, List<ObjectId> commitsToBan, String reason)
 specifier|public
 name|BanCommitResult
 name|ban
 parameter_list|(
-specifier|final
 name|ProjectControl
 name|projectControl
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|ObjectId
 argument_list|>
 name|commitsToBan
 parameter_list|,
-specifier|final
 name|String
 name|reason
 parameter_list|)
@@ -750,7 +743,6 @@ literal|null
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|ObjectId
 name|commitToBan
 range|:
@@ -990,20 +982,18 @@ name|tz
 argument_list|)
 return|;
 block|}
-DECL|method|buildCommitMessage ( final List<ObjectId> bannedCommits, final String reason)
+DECL|method|buildCommitMessage ( List<ObjectId> bannedCommits, String reason)
 specifier|private
 specifier|static
 name|String
 name|buildCommitMessage
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|ObjectId
 argument_list|>
 name|bannedCommits
 parameter_list|,
-specifier|final
 name|String
 name|reason
 parameter_list|)
@@ -1109,7 +1099,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|ObjectId
 name|c
 range|:

@@ -8743,11 +8743,10 @@ name|usage
 operator|=
 literal|"Comment message to apply to the review"
 argument_list|)
-DECL|method|addMessage (final String token)
+DECL|method|addMessage (String token)
 name|void
 name|addMessage
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -17217,12 +17216,11 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|autoCloseChanges (final ReceiveCommand cmd)
+DECL|method|autoCloseChanges (ReceiveCommand cmd)
 specifier|private
 name|void
 name|autoCloseChanges
 parameter_list|(
-specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
@@ -17638,7 +17636,6 @@ block|}
 block|}
 for|for
 control|(
-specifier|final
 name|ReplaceRequest
 name|req
 range|:

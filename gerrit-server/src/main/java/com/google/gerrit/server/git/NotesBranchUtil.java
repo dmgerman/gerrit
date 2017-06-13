@@ -558,17 +558,15 @@ name|noteMerger
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NotesBranchUtil ( @erritPersonIdent final PersonIdent gerritIdent, final GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey project, @Assisted Repository db, @Assisted ObjectInserter inserter)
+DECL|method|NotesBranchUtil ( @erritPersonIdent PersonIdent gerritIdent, GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey project, @Assisted Repository db, @Assisted ObjectInserter inserter)
 specifier|public
 name|NotesBranchUtil
 parameter_list|(
 annotation|@
 name|GerritPersonIdent
-specifier|final
 name|PersonIdent
 name|gerritIdent
 parameter_list|,
-specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 parameter_list|,

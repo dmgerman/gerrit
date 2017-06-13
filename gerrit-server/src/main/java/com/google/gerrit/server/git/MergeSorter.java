@@ -482,7 +482,7 @@ return|return
 name|heads
 return|;
 block|}
-DECL|method|removeOne (final Collection<T> c)
+DECL|method|removeOne (Collection<T> c)
 specifier|private
 specifier|static
 parameter_list|<
@@ -491,7 +491,6 @@ parameter_list|>
 name|T
 name|removeOne
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|T
