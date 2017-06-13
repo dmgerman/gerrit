@@ -112,11 +112,10 @@ name|MESSAGE
 init|=
 literal|"Group Not Found: "
 decl_stmt|;
-DECL|method|NoSuchGroupException (final AccountGroup.Id key)
+DECL|method|NoSuchGroupException (AccountGroup.Id key)
 specifier|public
 name|NoSuchGroupException
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -131,11 +130,10 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchGroupException (final AccountGroup.UUID key)
+DECL|method|NoSuchGroupException (AccountGroup.UUID key)
 specifier|public
 name|NoSuchGroupException
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -150,17 +148,15 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchGroupException (final AccountGroup.Id key, final Throwable why)
+DECL|method|NoSuchGroupException (AccountGroup.Id key, Throwable why)
 specifier|public
 name|NoSuchGroupException
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
 name|key
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)
@@ -178,17 +174,15 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchGroupException (final AccountGroup.UUID key, final Throwable why)
+DECL|method|NoSuchGroupException (AccountGroup.UUID key, Throwable why)
 specifier|public
 name|NoSuchGroupException
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
 name|key
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)
@@ -206,17 +200,15 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchGroupException (final AccountGroup.NameKey k, final Throwable why)
+DECL|method|NoSuchGroupException (AccountGroup.NameKey k, Throwable why)
 specifier|public
 name|NoSuchGroupException
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|NameKey
 name|k
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)
@@ -250,14 +242,13 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchGroupException (String who, final Throwable why)
+DECL|method|NoSuchGroupException (String who, Throwable why)
 specifier|public
 name|NoSuchGroupException
 parameter_list|(
 name|String
 name|who
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

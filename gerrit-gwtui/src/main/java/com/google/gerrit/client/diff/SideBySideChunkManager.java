@@ -1558,7 +1558,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Insert a new padding div below the given line.    *    * @param cm parent CodeMirror to add extra space into.    * @param line line to put the padding below.    * @param len number of lines to pad. Padding is inserted only if {@code len>= 1}.    */
-DECL|method|addPadding (CodeMirror cm, int line, final int len)
+DECL|method|addPadding (CodeMirror cm, int line, int len)
 specifier|private
 name|void
 name|addPadding
@@ -1569,7 +1569,6 @@ parameter_list|,
 name|int
 name|line
 parameter_list|,
-specifier|final
 name|int
 name|len
 parameter_list|)

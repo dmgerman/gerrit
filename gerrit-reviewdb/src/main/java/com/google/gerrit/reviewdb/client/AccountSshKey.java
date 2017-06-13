@@ -149,17 +149,15 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Id (final Account.Id a, final int s)
+DECL|method|Id (Account.Id a, int s)
 specifier|public
 name|Id
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|a
 parameter_list|,
-specifier|final
 name|int
 name|s
 parameter_list|)
@@ -250,17 +248,15 @@ specifier|protected
 name|AccountSshKey
 parameter_list|()
 block|{}
-DECL|method|AccountSshKey (final AccountSshKey.Id i, final String pub)
+DECL|method|AccountSshKey (AccountSshKey.Id i, String pub)
 specifier|public
 name|AccountSshKey
 parameter_list|(
-specifier|final
 name|AccountSshKey
 operator|.
 name|Id
 name|i
 parameter_list|,
-specifier|final
 name|String
 name|pub
 parameter_list|)

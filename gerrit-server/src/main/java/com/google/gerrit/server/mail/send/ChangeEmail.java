@@ -900,12 +900,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setFrom (final Account.Id id)
+DECL|method|setFrom (Account.Id id)
 specifier|public
 name|void
 name|setFrom
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -945,12 +944,11 @@ name|canEmailReviewers
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setPatchSet (final PatchSet ps)
+DECL|method|setPatchSet (PatchSet ps)
 specifier|public
 name|void
 name|setPatchSet
 parameter_list|(
-specifier|final
 name|PatchSet
 name|ps
 parameter_list|)
@@ -960,16 +958,14 @@ operator|=
 name|ps
 expr_stmt|;
 block|}
-DECL|method|setPatchSet (final PatchSet ps, final PatchSetInfo psi)
+DECL|method|setPatchSet (PatchSet ps, PatchSetInfo psi)
 specifier|public
 name|void
 name|setPatchSet
 parameter_list|(
-specifier|final
 name|PatchSet
 name|ps
 parameter_list|,
-specifier|final
 name|PatchSetInfo
 name|psi
 parameter_list|)
@@ -985,12 +981,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Deprecated
-DECL|method|setChangeMessage (final ChangeMessage cm)
+DECL|method|setChangeMessage (ChangeMessage cm)
 specifier|public
 name|void
 name|setChangeMessage
 parameter_list|(
-specifier|final
 name|ChangeMessage
 name|cm
 parameter_list|)
@@ -1991,19 +1986,17 @@ argument_list|()
 return|;
 block|}
 comment|/** TO or CC all vested parties (change owner, patch set uploader, author). */
-DECL|method|rcptToAuthors (final RecipientType rt)
+DECL|method|rcptToAuthors (RecipientType rt)
 specifier|protected
 name|void
 name|rcptToAuthors
 parameter_list|(
-specifier|final
 name|RecipientType
 name|rt
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -2409,16 +2402,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|add (final RecipientType rt, final Account.Id to)
+DECL|method|add (RecipientType rt, Account.Id to)
 specifier|protected
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|RecipientType
 name|rt
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -2451,12 +2442,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|isVisibleTo (final Account.Id to)
+DECL|method|isVisibleTo (Account.Id to)
 specifier|protected
 name|boolean
 name|isVisibleTo
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -2625,7 +2615,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//$FALL-THROUGH$
+comment|// $FALL-THROUGH$
 case|case
 name|OWNER_REVIEWERS
 case|:

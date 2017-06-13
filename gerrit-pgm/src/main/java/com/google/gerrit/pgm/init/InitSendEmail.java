@@ -261,18 +261,15 @@ name|site
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitSendEmail (final ConsoleUI ui, final SitePaths site, final Section.Factory sections)
+DECL|method|InitSendEmail (ConsoleUI ui, SitePaths site, Section.Factory sections)
 name|InitSendEmail
 parameter_list|(
-specifier|final
 name|ConsoleUI
 name|ui
 parameter_list|,
-specifier|final
 name|SitePaths
 name|site
 parameter_list|,
-specifier|final
 name|Section
 operator|.
 name|Factory

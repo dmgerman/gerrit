@@ -400,12 +400,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|beginLoading (final String addon)
+DECL|method|beginLoading (String addon)
 specifier|private
 name|void
 name|beginLoading
 parameter_list|(
-specifier|final
 name|String
 name|addon
 parameter_list|)

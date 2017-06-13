@@ -202,11 +202,10 @@ specifier|protected
 name|NameKey
 parameter_list|()
 block|{}
-DECL|method|NameKey (final String n)
+DECL|method|NameKey (String n)
 specifier|public
 name|NameKey
 parameter_list|(
-specifier|final
 name|String
 name|n
 parameter_list|)
@@ -301,13 +300,12 @@ literal|false
 return|;
 block|}
 comment|/** Parse a Project.NameKey out of a string representation. */
-DECL|method|parse (final String str)
+DECL|method|parse (String str)
 specifier|public
 specifier|static
 name|NameKey
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)
@@ -543,12 +541,11 @@ return|return
 name|description
 return|;
 block|}
-DECL|method|setDescription (final String d)
+DECL|method|setDescription (String d)
 specifier|public
 name|void
 name|setDescription
 parameter_list|(
-specifier|final
 name|String
 name|d
 parameter_list|)
@@ -628,12 +625,11 @@ return|return
 name|enableReviewerByEmail
 return|;
 block|}
-DECL|method|setEnableReviewerByEmail (final InheritableBoolean enable)
+DECL|method|setEnableReviewerByEmail (InheritableBoolean enable)
 specifier|public
 name|void
 name|setEnableReviewerByEmail
 parameter_list|(
-specifier|final
 name|InheritableBoolean
 name|enable
 parameter_list|)
@@ -643,12 +639,11 @@ operator|=
 name|enable
 expr_stmt|;
 block|}
-DECL|method|setUseContributorAgreements (final InheritableBoolean u)
+DECL|method|setUseContributorAgreements (InheritableBoolean u)
 specifier|public
 name|void
 name|setUseContributorAgreements
 parameter_list|(
-specifier|final
 name|InheritableBoolean
 name|u
 parameter_list|)
@@ -658,12 +653,11 @@ operator|=
 name|u
 expr_stmt|;
 block|}
-DECL|method|setUseSignedOffBy (final InheritableBoolean sbo)
+DECL|method|setUseSignedOffBy (InheritableBoolean sbo)
 specifier|public
 name|void
 name|setUseSignedOffBy
 parameter_list|(
-specifier|final
 name|InheritableBoolean
 name|sbo
 parameter_list|)
@@ -673,12 +667,11 @@ operator|=
 name|sbo
 expr_stmt|;
 block|}
-DECL|method|setUseContentMerge (final InheritableBoolean cm)
+DECL|method|setUseContentMerge (InheritableBoolean cm)
 specifier|public
 name|void
 name|setUseContentMerge
 parameter_list|(
-specifier|final
 name|InheritableBoolean
 name|cm
 parameter_list|)
@@ -688,12 +681,11 @@ operator|=
 name|cm
 expr_stmt|;
 block|}
-DECL|method|setRequireChangeID (final InheritableBoolean cid)
+DECL|method|setRequireChangeID (InheritableBoolean cid)
 specifier|public
 name|void
 name|setRequireChangeID
 parameter_list|(
-specifier|final
 name|InheritableBoolean
 name|cid
 parameter_list|)
@@ -777,12 +769,11 @@ operator|=
 name|require
 expr_stmt|;
 block|}
-DECL|method|setMaxObjectSizeLimit (final String limit)
+DECL|method|setMaxObjectSizeLimit (String limit)
 specifier|public
 name|void
 name|setMaxObjectSizeLimit
 parameter_list|(
-specifier|final
 name|String
 name|limit
 parameter_list|)
@@ -816,12 +807,11 @@ return|return
 name|submitType
 return|;
 block|}
-DECL|method|setSubmitType (final SubmitType type)
+DECL|method|setSubmitType (SubmitType type)
 specifier|public
 name|void
 name|setSubmitType
 parameter_list|(
-specifier|final
 name|SubmitType
 name|type
 parameter_list|)
@@ -841,12 +831,11 @@ return|return
 name|state
 return|;
 block|}
-DECL|method|setState (final ProjectState newState)
+DECL|method|setState (ProjectState newState)
 specifier|public
 name|void
 name|setState
 parameter_list|(
-specifier|final
 name|ProjectState
 name|newState
 parameter_list|)
@@ -866,12 +855,11 @@ return|return
 name|defaultDashboardId
 return|;
 block|}
-DECL|method|setDefaultDashboard (final String defaultDashboardId)
+DECL|method|setDefaultDashboard (String defaultDashboardId)
 specifier|public
 name|void
 name|setDefaultDashboard
 parameter_list|(
-specifier|final
 name|String
 name|defaultDashboardId
 parameter_list|)
@@ -893,12 +881,11 @@ return|return
 name|localDefaultDashboardId
 return|;
 block|}
-DECL|method|setLocalDefaultDashboard (final String localDefaultDashboardId)
+DECL|method|setLocalDefaultDashboard (String localDefaultDashboardId)
 specifier|public
 name|void
 name|setLocalDefaultDashboard
 parameter_list|(
-specifier|final
 name|String
 name|localDefaultDashboardId
 parameter_list|)
@@ -920,12 +907,11 @@ return|return
 name|themeName
 return|;
 block|}
-DECL|method|setThemeName (final String themeName)
+DECL|method|setThemeName (String themeName)
 specifier|public
 name|void
 name|setThemeName
 parameter_list|(
-specifier|final
 name|String
 name|themeName
 parameter_list|)
@@ -937,12 +923,11 @@ operator|=
 name|themeName
 expr_stmt|;
 block|}
-DECL|method|copySettingsFrom (final Project update)
+DECL|method|copySettingsFrom (Project update)
 specifier|public
 name|void
 name|copySettingsFrom
 parameter_list|(
-specifier|final
 name|Project
 name|update
 parameter_list|)
@@ -1016,14 +1001,13 @@ name|parent
 return|;
 block|}
 comment|/**    * Returns the name key of the parent project.    *    * @param allProjectsName name key of the wild project    * @return name key of the parent project, {@code null} if this project is the wild project    */
-DECL|method|getParent (final Project.NameKey allProjectsName)
+DECL|method|getParent (Project.NameKey allProjectsName)
 specifier|public
 name|Project
 operator|.
 name|NameKey
 name|getParent
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey

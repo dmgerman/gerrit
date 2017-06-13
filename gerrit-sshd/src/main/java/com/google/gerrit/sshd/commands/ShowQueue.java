@@ -1181,13 +1181,12 @@ name|delay
 argument_list|)
 return|;
 block|}
-DECL|method|startTime (final Date when)
+DECL|method|startTime (Date when)
 specifier|private
 specifier|static
 name|String
 name|startTime
 parameter_list|(
-specifier|final
 name|Date
 name|when
 parameter_list|)

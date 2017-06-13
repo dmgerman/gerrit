@@ -306,15 +306,13 @@ specifier|final
 name|Panel
 name|header
 decl_stmt|;
-DECL|method|ComplexDisclosurePanel (final String text, final boolean isOpen)
+DECL|method|ComplexDisclosurePanel (String text, boolean isOpen)
 specifier|public
 name|ComplexDisclosurePanel
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|boolean
 name|isOpen
 parameter_list|)
@@ -548,12 +546,11 @@ return|return
 name|header
 return|;
 block|}
-DECL|method|setContent (final Widget w)
+DECL|method|setContent (Widget w)
 specifier|public
 name|void
 name|setContent
 parameter_list|(
-specifier|final
 name|Widget
 name|w
 parameter_list|)
@@ -581,12 +578,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addOpenHandler (final OpenHandler<DisclosurePanel> h)
+DECL|method|addOpenHandler (OpenHandler<DisclosurePanel> h)
 specifier|public
 name|HandlerRegistration
 name|addOpenHandler
 parameter_list|(
-specifier|final
 name|OpenHandler
 argument_list|<
 name|DisclosurePanel
@@ -605,12 +601,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addCloseHandler (final CloseHandler<DisclosurePanel> h)
+DECL|method|addCloseHandler (CloseHandler<DisclosurePanel> h)
 specifier|public
 name|HandlerRegistration
 name|addCloseHandler
 parameter_list|(
-specifier|final
 name|CloseHandler
 argument_list|<
 name|DisclosurePanel
@@ -642,12 +637,11 @@ argument_list|()
 return|;
 block|}
 comment|/**    * Changes the visible state of this panel's content.    *    * @param isOpen {@code true} to open, {@code false} to close    */
-DECL|method|setOpen (final boolean isOpen)
+DECL|method|setOpen (boolean isOpen)
 specifier|public
 name|void
 name|setOpen
 parameter_list|(
-specifier|final
 name|boolean
 name|isOpen
 parameter_list|)

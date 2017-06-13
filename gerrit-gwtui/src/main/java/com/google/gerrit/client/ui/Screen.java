@@ -530,12 +530,11 @@ literal|"100%"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setWindowTitle (final String text)
+DECL|method|setWindowTitle (String text)
 specifier|protected
 name|void
 name|setWindowTitle
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|)
@@ -554,12 +553,11 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setPageTitle (final String text)
+DECL|method|setPageTitle (String text)
 specifier|protected
 name|void
 name|setPageTitle
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|)
@@ -644,12 +642,11 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setTitle (final Widget w)
+DECL|method|setTitle (Widget w)
 specifier|public
 name|void
 name|setTitle
 parameter_list|(
-specifier|final
 name|Widget
 name|w
 parameter_list|)
@@ -659,12 +656,11 @@ operator|=
 name|w
 expr_stmt|;
 block|}
-DECL|method|setTitleEast (final Widget w)
+DECL|method|setTitleEast (Widget w)
 specifier|protected
 name|void
 name|setTitleEast
 parameter_list|(
-specifier|final
 name|Widget
 name|w
 parameter_list|)
@@ -686,12 +682,11 @@ name|w
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setTitleFarEast (final Widget w)
+DECL|method|setTitleFarEast (Widget w)
 specifier|protected
 name|void
 name|setTitleFarEast
 parameter_list|(
-specifier|final
 name|Widget
 name|w
 parameter_list|)
@@ -713,12 +708,11 @@ name|w
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setTitleWest (final Widget w)
+DECL|method|setTitleWest (Widget w)
 specifier|protected
 name|void
 name|setTitleWest
 parameter_list|(
-specifier|final
 name|Widget
 name|w
 parameter_list|)
@@ -740,12 +734,11 @@ name|w
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|add (final Widget w)
+DECL|method|add (Widget w)
 specifier|protected
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|Widget
 name|w
 parameter_list|)
@@ -768,12 +761,11 @@ return|return
 name|body
 return|;
 block|}
-DECL|method|setTheme (final ThemeInfo t)
+DECL|method|setTheme (ThemeInfo t)
 specifier|protected
 name|void
 name|setTheme
 parameter_list|(
-specifier|final
 name|ThemeInfo
 name|t
 parameter_list|)
@@ -795,12 +787,11 @@ name|token
 return|;
 block|}
 comment|/** Set the history token for this screen. */
-DECL|method|setToken (final String t)
+DECL|method|setToken (String t)
 specifier|public
 name|void
 name|setToken
 parameter_list|(
-specifier|final
 name|String
 name|t
 parameter_list|)
@@ -850,13 +841,12 @@ literal|false
 return|;
 block|}
 comment|/** Set whether or not {@link Gerrit#isSignedIn()} must be true. */
-DECL|method|setRequiresSignIn (final boolean b)
+DECL|method|setRequiresSignIn (boolean b)
 specifier|public
 specifier|final
 name|void
 name|setRequiresSignIn
 parameter_list|(
-specifier|final
 name|boolean
 name|b
 parameter_list|)

@@ -203,7 +203,7 @@ argument_list|<
 name|T
 argument_list|>
 block|{
-DECL|method|wrap (final Callable<T> r)
+DECL|method|wrap (Callable<T> r)
 specifier|public
 specifier|static
 parameter_list|<
@@ -215,7 +215,6 @@ name|T
 argument_list|>
 name|wrap
 parameter_list|(
-specifier|final
 name|Callable
 argument_list|<
 name|T
@@ -251,13 +250,12 @@ block|}
 return|;
 block|}
 comment|/**    * Run the operation and pass the result to the callback.    *    * @param callback callback to receive the result of {@link #call()}.    */
-DECL|method|to (final AsyncCallback<T> callback)
+DECL|method|to (AsyncCallback<T> callback)
 specifier|public
 specifier|final
 name|void
 name|to
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|T

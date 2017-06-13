@@ -233,16 +233,14 @@ DECL|class|CreateChangeAction
 class|class
 name|CreateChangeAction
 block|{
-DECL|method|call (final Button b, final String project)
+DECL|method|call (Button b, String project)
 specifier|static
 name|void
 name|call
 parameter_list|(
-specifier|final
 name|Button
 name|b
 parameter_list|,
-specifier|final
 name|String
 name|project
 parameter_list|)

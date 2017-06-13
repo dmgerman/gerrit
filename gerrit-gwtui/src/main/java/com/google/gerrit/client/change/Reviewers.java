@@ -1244,12 +1244,11 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addReviewer (final String reviewer, boolean confirmed)
+DECL|method|addReviewer (String reviewer, boolean confirmed)
 specifier|private
 name|void
 name|addReviewer
 parameter_list|(
-specifier|final
 name|String
 name|reviewer
 parameter_list|,

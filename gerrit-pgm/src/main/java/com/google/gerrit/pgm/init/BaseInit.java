@@ -2784,12 +2784,11 @@ block|}
 end_class
 
 begin_function
-DECL|method|createSiteRun (final SiteInit init)
+DECL|method|createSiteRun (SiteInit init)
 specifier|private
 name|SiteRun
 name|createSiteRun
 parameter_list|(
-specifier|final
 name|SiteInit
 name|init
 parameter_list|)
@@ -2811,12 +2810,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|createSysInjector (final SiteInit init)
+DECL|method|createSysInjector (SiteInit init)
 specifier|private
 name|Injector
 name|createSysInjector
 parameter_list|(
-specifier|final
 name|SiteInit
 name|init
 parameter_list|)

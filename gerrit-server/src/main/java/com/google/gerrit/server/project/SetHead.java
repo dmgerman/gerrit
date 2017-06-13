@@ -563,12 +563,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (final ProjectResource rsrc, Input input)
+DECL|method|apply (ProjectResource rsrc, Input input)
 specifier|public
 name|String
 name|apply
 parameter_list|(
-specifier|final
 name|ProjectResource
 name|rsrc
 parameter_list|,

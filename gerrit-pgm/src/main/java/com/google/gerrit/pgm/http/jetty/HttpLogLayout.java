@@ -583,16 +583,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|formatDate (final long now, final StringBuilder sbuf)
+DECL|method|formatDate (long now, StringBuilder sbuf)
 specifier|private
 name|void
 name|formatDate
 parameter_list|(
-specifier|final
 name|long
 name|now
 parameter_list|,
-specifier|final
 name|StringBuilder
 name|sbuf
 parameter_list|)

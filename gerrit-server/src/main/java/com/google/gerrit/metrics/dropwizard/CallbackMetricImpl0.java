@@ -396,12 +396,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|register (final Runnable trigger)
+DECL|method|register (Runnable trigger)
 specifier|public
 name|void
 name|register
 parameter_list|(
-specifier|final
 name|Runnable
 name|trigger
 parameter_list|)

@@ -1509,12 +1509,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addHashtag (final String hashtags)
+DECL|method|addHashtag (String hashtags)
 specifier|private
 name|void
 name|addHashtag
 parameter_list|(
-specifier|final
 name|String
 name|hashtags
 parameter_list|)

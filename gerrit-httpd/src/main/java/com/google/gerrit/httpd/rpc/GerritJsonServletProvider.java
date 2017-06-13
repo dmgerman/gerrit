@@ -162,10 +162,9 @@ name|serviceClass
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritJsonServletProvider (final Class<? extends RemoteJsonService> c)
+DECL|method|GerritJsonServletProvider (Class<? extends RemoteJsonService> c)
 name|GerritJsonServletProvider
 parameter_list|(
-specifier|final
 name|Class
 argument_list|<
 name|?

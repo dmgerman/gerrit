@@ -1148,12 +1148,11 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|succeedAuthentication (final AccountState who)
+DECL|method|succeedAuthentication (AccountState who)
 specifier|private
 name|boolean
 name|succeedAuthentication
 parameter_list|(
-specifier|final
 name|AccountState
 name|who
 parameter_list|)

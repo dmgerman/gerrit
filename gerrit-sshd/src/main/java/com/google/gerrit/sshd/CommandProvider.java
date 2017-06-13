@@ -111,17 +111,15 @@ specifier|final
 name|String
 name|description
 decl_stmt|;
-DECL|method|CommandProvider (final Provider<Command> p, final String d)
+DECL|method|CommandProvider (Provider<Command> p, String d)
 name|CommandProvider
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|Command
 argument_list|>
 name|p
 parameter_list|,
-specifier|final
 name|String
 name|d
 parameter_list|)

@@ -246,12 +246,11 @@ name|error
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|setArguments (final String[] args)
+DECL|method|setArguments (String[] args)
 specifier|public
 name|void
 name|setArguments
 parameter_list|(
-specifier|final
 name|String
 index|[]
 name|args
@@ -408,12 +407,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|start (final Environment env)
+DECL|method|start (Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
-specifier|final
 name|Environment
 name|env
 parameter_list|)
@@ -786,12 +784,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|readFile (final Entry ent)
+DECL|method|readFile (Entry ent)
 specifier|private
 name|void
 name|readFile
 parameter_list|(
-specifier|final
 name|Entry
 name|ent
 parameter_list|)
@@ -851,12 +848,11 @@ name|readAck
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|readDir (final Entry dir)
+DECL|method|readDir (Entry dir)
 specifier|private
 name|void
 name|readDir
 parameter_list|(
-specifier|final
 name|Entry
 name|dir
 parameter_list|)
@@ -934,16 +930,14 @@ name|readAck
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|header (final Entry dir, final int len)
+DECL|method|header (Entry dir, int len)
 specifier|private
 name|void
 name|header
 parameter_list|(
-specifier|final
 name|Entry
 name|dir
 parameter_list|,
-specifier|final
 name|int
 name|len
 parameter_list|)

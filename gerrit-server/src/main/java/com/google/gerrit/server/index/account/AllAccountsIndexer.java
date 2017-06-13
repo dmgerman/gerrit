@@ -492,14 +492,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|indexAll (final AccountIndex index)
+DECL|method|indexAll (AccountIndex index)
 specifier|public
 name|SiteIndexer
 operator|.
 name|Result
 name|indexAll
 parameter_list|(
-specifier|final
 name|AccountIndex
 name|index
 parameter_list|)

@@ -394,12 +394,11 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|setFrom (final String newFrom)
+DECL|method|setFrom (String newFrom)
 specifier|private
 name|void
 name|setFrom
 parameter_list|(
-specifier|final
 name|String
 name|newFrom
 parameter_list|)
@@ -2384,18 +2383,16 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|user (final String name, final String email)
+DECL|method|user (String name, String email)
 specifier|private
 name|Account
 operator|.
 name|Id
 name|user
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|email
 parameter_list|)
@@ -2445,18 +2442,16 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|userNoLookup (final String name, final String email)
+DECL|method|userNoLookup (String name, String email)
 specifier|private
 name|Account
 operator|.
 name|Id
 name|userNoLookup
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|email
 parameter_list|)
@@ -2482,16 +2477,14 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|makeUser (final String name, final String email)
+DECL|method|makeUser (String name, String email)
 specifier|private
 name|AccountState
 name|makeUser
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|email
 parameter_list|)

@@ -137,13 +137,12 @@ name|PageLinks
 operator|.
 name|MINE
 decl_stmt|;
-DECL|method|getToken (final HttpServletRequest req)
+DECL|method|getToken (HttpServletRequest req)
 specifier|public
 specifier|static
 name|String
 name|getToken
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)

@@ -134,10 +134,9 @@ name|session
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshRemotePeerProvider (final Provider<SshSession> s)
+DECL|method|SshRemotePeerProvider (Provider<SshSession> s)
 name|SshRemotePeerProvider
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|SshSession

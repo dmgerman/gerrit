@@ -155,15 +155,13 @@ operator|.
 name|InlineHyperlink
 block|{
 comment|/**    * Creates a link with its text and target history token specified.    *    * @param text the hyperlink's text    * @param token the history token to which it will link    */
-DECL|method|InlineHyperlink (final String text, final String token)
+DECL|method|InlineHyperlink (String text, String token)
 specifier|public
 name|InlineHyperlink
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -184,12 +182,11 @@ parameter_list|()
 block|{}
 annotation|@
 name|Override
-DECL|method|onBrowserEvent (final Event event)
+DECL|method|onBrowserEvent (Event event)
 specifier|public
 name|void
 name|onBrowserEvent
 parameter_list|(
-specifier|final
 name|Event
 name|event
 parameter_list|)

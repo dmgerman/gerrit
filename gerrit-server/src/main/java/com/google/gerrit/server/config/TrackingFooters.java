@@ -144,11 +144,10 @@ name|TrackingFooter
 argument_list|>
 name|trackingFooters
 decl_stmt|;
-DECL|method|TrackingFooters (final List<TrackingFooter> trFooters)
+DECL|method|TrackingFooters (List<TrackingFooter> trFooters)
 specifier|public
 name|TrackingFooters
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|TrackingFooter

@@ -235,11 +235,10 @@ specifier|protected
 name|Id
 parameter_list|()
 block|{}
-DECL|method|Id (final int id)
+DECL|method|Id (int id)
 specifier|public
 name|Id
 parameter_list|(
-specifier|final
 name|int
 name|id
 parameter_list|)
@@ -359,13 +358,12 @@ argument_list|)
 return|;
 block|}
 comment|/** Parse a Change.Id out of a string representation. */
-DECL|method|parse (final String str)
+DECL|method|parse (String str)
 specifier|public
 specifier|static
 name|Id
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)
@@ -1225,11 +1223,10 @@ specifier|protected
 name|Key
 parameter_list|()
 block|{}
-DECL|method|Key (final String id)
+DECL|method|Key (String id)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
 name|String
 name|id
 parameter_list|)
@@ -1354,13 +1351,12 @@ argument_list|)
 return|;
 block|}
 comment|/** Parse a Change.Key out of a string representation. */
-DECL|method|parse (final String str)
+DECL|method|parse (String str)
 specifier|public
 specifier|static
 name|Key
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)
@@ -1709,20 +1705,18 @@ block|}
 end_function
 
 begin_function
-DECL|method|forCode (final char c)
+DECL|method|forCode (char c)
 specifier|public
 specifier|static
 name|Status
 name|forCode
 parameter_list|(
-specifier|final
 name|char
 name|c
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|Status
 name|s
 range|:
@@ -2416,12 +2410,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|setKey (final Change.Key k)
+DECL|method|setKey (Change.Key k)
 specifier|public
 name|void
 name|setKey
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Key
@@ -2716,12 +2709,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|setCurrentPatchSet (final PatchSetInfo ps)
+DECL|method|setCurrentPatchSet (PatchSetInfo ps)
 specifier|public
 name|void
 name|setCurrentPatchSet
 parameter_list|(
-specifier|final
 name|PatchSetInfo
 name|ps
 parameter_list|)

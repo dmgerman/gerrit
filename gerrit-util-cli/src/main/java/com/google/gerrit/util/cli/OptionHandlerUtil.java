@@ -160,7 +160,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|keyFor (final Class<T> valueType)
+DECL|method|keyFor (Class<T> valueType)
 specifier|public
 specifier|static
 parameter_list|<
@@ -175,7 +175,6 @@ argument_list|>
 argument_list|>
 name|keyFor
 parameter_list|(
-specifier|final
 name|Class
 argument_list|<
 name|T
@@ -278,7 +277,7 @@ name|handlerType
 argument_list|)
 return|;
 block|}
-DECL|method|moduleFor (final Class<T> type, Class<? extends OptionHandler<T>> impl)
+DECL|method|moduleFor (Class<T> type, Class<? extends OptionHandler<T>> impl)
 specifier|public
 specifier|static
 parameter_list|<
@@ -287,7 +286,6 @@ parameter_list|>
 name|Module
 name|moduleFor
 parameter_list|(
-specifier|final
 name|Class
 argument_list|<
 name|T

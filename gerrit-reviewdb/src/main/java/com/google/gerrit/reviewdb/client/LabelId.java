@@ -165,11 +165,10 @@ specifier|public
 name|LabelId
 parameter_list|()
 block|{}
-DECL|method|LabelId (final String n)
+DECL|method|LabelId (String n)
 specifier|public
 name|LabelId
 parameter_list|(
-specifier|final
 name|String
 name|n
 parameter_list|)

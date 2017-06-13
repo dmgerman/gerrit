@@ -296,11 +296,10 @@ specifier|final
 name|String
 name|nextToken
 decl_stmt|;
-DECL|method|RegisterScreen (final String next)
+DECL|method|RegisterScreen (String next)
 specifier|public
 name|RegisterScreen
 parameter_list|(
-specifier|final
 name|String
 name|next
 parameter_list|)

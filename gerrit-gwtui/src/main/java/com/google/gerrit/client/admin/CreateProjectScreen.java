@@ -1248,7 +1248,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1287,7 +1286,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1414,11 +1412,9 @@ specifier|protected
 name|void
 name|populate
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|ProjectInfo
 name|k
 parameter_list|)
@@ -1579,12 +1575,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addGrid (final VerticalPanel fp)
+DECL|method|addGrid (VerticalPanel fp)
 specifier|private
 name|void
 name|addGrid
 parameter_list|(
-specifier|final
 name|VerticalPanel
 name|fp
 parameter_list|)
@@ -1845,12 +1840,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|enableForm (final boolean enabled)
+DECL|method|enableForm (boolean enabled)
 specifier|private
 name|void
 name|enableForm
 parameter_list|(
-specifier|final
 name|boolean
 name|enabled
 parameter_list|)

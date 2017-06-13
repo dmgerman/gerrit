@@ -895,12 +895,11 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setFrom (final Account.Id id)
+DECL|method|setFrom (Account.Id id)
 specifier|public
 name|void
 name|setFrom
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -2043,16 +2042,14 @@ argument_list|()
 return|;
 block|}
 comment|/** Set a header in the outgoing message using a template. */
-DECL|method|setVHeader (final String name, final String value)
+DECL|method|setVHeader (String name, String value)
 specifier|protected
 name|void
 name|setVHeader
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -2071,16 +2068,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Set a header in the outgoing message. */
-DECL|method|setHeader (final String name, final String value)
+DECL|method|setHeader (String name, String value)
 specifier|protected
 name|void
 name|setHeader
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -2102,12 +2097,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Remove a header from the outgoing message. */
-DECL|method|removeHeader (final String name)
+DECL|method|removeHeader (String name)
 specifier|protected
 name|void
 name|removeHeader
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -2120,16 +2114,14 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setHeader (final String name, final Date date)
+DECL|method|setHeader (String name, Date date)
 specifier|protected
 name|void
 name|setHeader
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|Date
 name|date
 parameter_list|)
@@ -2151,12 +2143,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Append text to the outgoing email body. */
-DECL|method|appendText (final String text)
+DECL|method|appendText (String text)
 specifier|protected
 name|void
 name|appendText
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|)
@@ -2204,12 +2195,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Lookup a human readable name for an account, usually the "full name". */
-DECL|method|getNameFor (final Account.Id accountId)
+DECL|method|getNameFor (Account.Id accountId)
 specifier|protected
 name|String
 name|getNameFor
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -2594,16 +2584,14 @@ literal|true
 return|;
 block|}
 comment|/** Schedule this message for delivery to the listed accounts. */
-DECL|method|add (final RecipientType rt, final Collection<Account.Id> list)
+DECL|method|add (RecipientType rt, Collection<Account.Id> list)
 specifier|protected
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|RecipientType
 name|rt
 parameter_list|,
-specifier|final
 name|Collection
 argument_list|<
 name|Account
@@ -2615,7 +2603,6 @@ parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -2634,16 +2621,14 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Schedule this message for delivery to the listed address. */
-DECL|method|addByEmail (final RecipientType rt, final Collection<Address> list)
+DECL|method|addByEmail (RecipientType rt, Collection<Address> list)
 specifier|protected
 name|void
 name|addByEmail
 parameter_list|(
-specifier|final
 name|RecipientType
 name|rt
 parameter_list|,
-specifier|final
 name|Collection
 argument_list|<
 name|Address
@@ -2653,7 +2638,6 @@ parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|Address
 name|id
 range|:
@@ -2669,16 +2653,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|add (final RecipientType rt, final UserIdentity who)
+DECL|method|add (RecipientType rt, UserIdentity who)
 specifier|protected
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|RecipientType
 name|rt
 parameter_list|,
-specifier|final
 name|UserIdentity
 name|who
 parameter_list|)
@@ -2710,16 +2692,14 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Schedule delivery of this message to the given account. */
-DECL|method|add (final RecipientType rt, final Account.Id to)
+DECL|method|add (RecipientType rt, Account.Id to)
 specifier|protected
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|RecipientType
 name|rt
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -2783,12 +2763,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * @param to account.    * @throws OrmException    * @return whether this email is visible to the given account.    */
-DECL|method|isVisibleTo (final Account.Id to)
+DECL|method|isVisibleTo (Account.Id to)
 specifier|protected
 name|boolean
 name|isVisibleTo
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -2802,16 +2781,14 @@ literal|true
 return|;
 block|}
 comment|/** Schedule delivery of this message to the given account. */
-DECL|method|add (final RecipientType rt, final Address addr)
+DECL|method|add (RecipientType rt, Address addr)
 specifier|protected
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|RecipientType
 name|rt
 parameter_list|,
-specifier|final
 name|Address
 name|addr
 parameter_list|)
@@ -2973,12 +2950,11 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|toAddress (final Account.Id id)
+DECL|method|toAddress (Account.Id id)
 specifier|private
 name|Address
 name|toAddress
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id

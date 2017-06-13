@@ -1006,11 +1006,10 @@ specifier|private
 name|Query
 name|query
 decl_stmt|;
-DECL|method|ProjectBranchesScreen (final Project.NameKey toShow)
+DECL|method|ProjectBranchesScreen (Project.NameKey toShow)
 specifier|public
 name|ProjectBranchesScreen
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -1453,7 +1452,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1527,7 +1525,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -2073,7 +2070,7 @@ name|void
 name|onOk
 parameter_list|()
 block|{
-comment|//do nothing
+comment|// do nothing
 block|}
 block|}
 argument_list|)
@@ -2659,12 +2656,11 @@ name|center
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|deleteBranches (final Set<String> branches)
+DECL|method|deleteBranches (Set<String> branches)
 specifier|private
 name|void
 name|deleteBranches
 parameter_list|(
-specifier|final
 name|Set
 argument_list|<
 name|String
@@ -3281,20 +3277,17 @@ name|k
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setHeadRevision (final int row, final int column, final String rev)
+DECL|method|setHeadRevision (int row, int column, String rev)
 specifier|private
 name|void
 name|setHeadRevision
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|int
 name|column
 parameter_list|,
-specifier|final
 name|String
 name|rev
 parameter_list|)
@@ -3365,12 +3358,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getHeadRevisionWidget (final String headRevision)
+DECL|method|getHeadRevisionWidget (String headRevision)
 specifier|private
 name|Widget
 name|getHeadRevisionWidget
 parameter_list|(
-specifier|final
 name|String
 name|headRevision
 parameter_list|)

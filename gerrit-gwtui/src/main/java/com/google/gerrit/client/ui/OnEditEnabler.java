@@ -493,15 +493,13 @@ name|originalValue
 decl_stmt|;
 comment|// The first parameter to the contructors must be the FocusWidget to enable,
 comment|// subsequent parameters are widgets to listenTo.
-DECL|method|OnEditEnabler (final FocusWidget w, final TextBoxBase tb)
+DECL|method|OnEditEnabler (FocusWidget w, TextBoxBase tb)
 specifier|public
 name|OnEditEnabler
 parameter_list|(
-specifier|final
 name|FocusWidget
 name|w
 parameter_list|,
-specifier|final
 name|TextBoxBase
 name|tb
 parameter_list|)
@@ -527,15 +525,13 @@ name|tb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OnEditEnabler (final FocusWidget w, final ListBox lb)
+DECL|method|OnEditEnabler (FocusWidget w, ListBox lb)
 specifier|public
 name|OnEditEnabler
 parameter_list|(
-specifier|final
 name|FocusWidget
 name|w
 parameter_list|,
-specifier|final
 name|ListBox
 name|lb
 parameter_list|)
@@ -551,15 +547,13 @@ name|lb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OnEditEnabler (final FocusWidget w, final CheckBox cb)
+DECL|method|OnEditEnabler (FocusWidget w, CheckBox cb)
 specifier|public
 name|OnEditEnabler
 parameter_list|(
-specifier|final
 name|FocusWidget
 name|w
 parameter_list|,
-specifier|final
 name|CheckBox
 name|cb
 parameter_list|)
@@ -575,11 +569,10 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OnEditEnabler (final FocusWidget w)
+DECL|method|OnEditEnabler (FocusWidget w)
 specifier|public
 name|OnEditEnabler
 parameter_list|(
-specifier|final
 name|FocusWidget
 name|w
 parameter_list|)
@@ -589,12 +582,11 @@ operator|=
 name|w
 expr_stmt|;
 block|}
-DECL|method|updateOriginalValue (final TextBoxBase tb)
+DECL|method|updateOriginalValue (TextBoxBase tb)
 specifier|public
 name|void
 name|updateOriginalValue
 parameter_list|(
-specifier|final
 name|TextBoxBase
 name|tb
 parameter_list|)
@@ -611,12 +603,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// Register input widgets to be listened to
-DECL|method|listenTo (final TextBoxBase tb)
+DECL|method|listenTo (TextBoxBase tb)
 specifier|public
 name|void
 name|listenTo
 parameter_list|(
-specifier|final
 name|TextBoxBase
 name|tb
 parameter_list|)
@@ -703,12 +694,11 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|listenTo (final ListBox lb)
+DECL|method|listenTo (ListBox lb)
 specifier|public
 name|void
 name|listenTo
 parameter_list|(
-specifier|final
 name|ListBox
 name|lb
 parameter_list|)
@@ -730,12 +720,11 @@ block|,
 literal|"rawtypes"
 block|}
 argument_list|)
-DECL|method|listenTo (final CheckBox cb)
+DECL|method|listenTo (CheckBox cb)
 specifier|public
 name|void
 name|listenTo
 parameter_list|(
-specifier|final
 name|CheckBox
 name|cb
 parameter_list|)
@@ -754,12 +743,11 @@ block|}
 comment|// Handlers
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent e)
+DECL|method|onKeyPress (KeyPressEvent e)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|e
 parameter_list|)
@@ -772,12 +760,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyDown (final KeyDownEvent e)
+DECL|method|onKeyDown (KeyDownEvent e)
 specifier|public
 name|void
 name|onKeyDown
 parameter_list|(
-specifier|final
 name|KeyDownEvent
 name|e
 parameter_list|)
@@ -790,12 +777,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onMouseUp (final MouseUpEvent e)
+DECL|method|onMouseUp (MouseUpEvent e)
 specifier|public
 name|void
 name|onMouseUp
 parameter_list|(
-specifier|final
 name|MouseUpEvent
 name|e
 parameter_list|)
@@ -808,12 +794,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onChange (final ChangeEvent e)
+DECL|method|onChange (ChangeEvent e)
 specifier|public
 name|void
 name|onChange
 parameter_list|(
-specifier|final
 name|ChangeEvent
 name|e
 parameter_list|)
@@ -831,12 +816,11 @@ literal|"rawtypes"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|onValueChange (final ValueChangeEvent e)
+DECL|method|onValueChange (ValueChangeEvent e)
 specifier|public
 name|void
 name|onValueChange
 parameter_list|(
-specifier|final
 name|ValueChangeEvent
 name|e
 parameter_list|)
@@ -847,12 +831,11 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|on (final GwtEvent<?> e)
+DECL|method|on (GwtEvent<?> e)
 specifier|private
 name|void
 name|on
 parameter_list|(
-specifier|final
 name|GwtEvent
 argument_list|<
 name|?
@@ -1001,12 +984,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|onTextBoxBase (final TextBoxBase tb)
+DECL|method|onTextBoxBase (TextBoxBase tb)
 specifier|private
 name|void
 name|onTextBoxBase
 parameter_list|(
-specifier|final
 name|TextBoxBase
 name|tb
 parameter_list|)

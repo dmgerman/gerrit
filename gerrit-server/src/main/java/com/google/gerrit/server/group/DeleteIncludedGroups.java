@@ -614,7 +614,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|includedGroup
 range|:
@@ -720,7 +719,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|AccountGroupById
 name|g
 range|:
@@ -756,7 +754,7 @@ name|none
 argument_list|()
 return|;
 block|}
-DECL|method|getIncludedGroups (final AccountGroup.Id groupId)
+DECL|method|getIncludedGroups (AccountGroup.Id groupId)
 specifier|private
 name|Map
 argument_list|<
@@ -768,7 +766,6 @@ name|AccountGroupById
 argument_list|>
 name|getIncludedGroups
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -829,12 +826,11 @@ return|return
 name|groups
 return|;
 block|}
-DECL|method|writeAudits (final List<AccountGroupById> toRemoved)
+DECL|method|writeAudits (List<AccountGroupById> toRemoved)
 specifier|private
 name|void
 name|writeAudits
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|AccountGroupById
@@ -898,10 +894,9 @@ name|delete
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteIncludedGroup (final Provider<DeleteIncludedGroups> delete)
+DECL|method|DeleteIncludedGroup (Provider<DeleteIncludedGroups> delete)
 name|DeleteIncludedGroup
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|DeleteIncludedGroups

@@ -444,17 +444,15 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Id (final Change.Id change, final int id)
+DECL|method|Id (Change.Id change, int id)
 specifier|public
 name|Id
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
 name|change
 parameter_list|,
-specifier|final
 name|int
 name|id
 parameter_list|)
@@ -536,13 +534,12 @@ argument_list|()
 return|;
 block|}
 comment|/** Parse a PatchSet.Id out of a string representation. */
-DECL|method|parse (final String str)
+DECL|method|parse (String str)
 specifier|public
 specifier|static
 name|Id
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)
@@ -912,7 +909,7 @@ specifier|protected
 name|String
 name|groups
 decl_stmt|;
-comment|//DELETED id = 7 (pushCertficate)
+comment|// DELETED id = 7 (pushCertficate)
 comment|/** Certificate sent with a push that created this patch set. */
 annotation|@
 name|Column
@@ -964,11 +961,10 @@ specifier|protected
 name|PatchSet
 parameter_list|()
 block|{}
-DECL|method|PatchSet (final PatchSet.Id k)
+DECL|method|PatchSet (PatchSet.Id k)
 specifier|public
 name|PatchSet
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -1088,12 +1084,11 @@ return|return
 name|revision
 return|;
 block|}
-DECL|method|setRevision (final RevId i)
+DECL|method|setRevision (RevId i)
 specifier|public
 name|void
 name|setRevision
 parameter_list|(
-specifier|final
 name|RevId
 name|i
 parameter_list|)
@@ -1115,12 +1110,11 @@ return|return
 name|uploader
 return|;
 block|}
-DECL|method|setUploader (final Account.Id who)
+DECL|method|setUploader (Account.Id who)
 specifier|public
 name|void
 name|setUploader
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -1142,12 +1136,11 @@ return|return
 name|createdOn
 return|;
 block|}
-DECL|method|setCreatedOn (final Timestamp ts)
+DECL|method|setCreatedOn (Timestamp ts)
 specifier|public
 name|void
 name|setCreatedOn
 parameter_list|(
-specifier|final
 name|Timestamp
 name|ts
 parameter_list|)

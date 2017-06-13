@@ -369,16 +369,14 @@ name|name
 argument_list|)
 return|;
 block|}
-DECL|method|set (final String name, final String value)
+DECL|method|set (String name, String value)
 specifier|public
 name|void
 name|set
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -546,7 +544,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|set (final String name, final T value)
+DECL|method|set (String name, T value)
 specifier|public
 parameter_list|<
 name|T
@@ -559,11 +557,9 @@ parameter_list|>
 name|void
 name|set
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|T
 name|value
 parameter_list|)
@@ -615,20 +611,17 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|string (final String title, final String name, final String dv)
+DECL|method|string (String title, String name, String dv)
 specifier|public
 name|String
 name|string
 parameter_list|(
-specifier|final
 name|String
 name|title
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|dv
 parameter_list|)
@@ -646,7 +639,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|string ( final String title, final String name, final String dv, final boolean nullIfDefault)
+DECL|method|string (final String title, String name, String dv, boolean nullIfDefault)
 specifier|public
 name|String
 name|string
@@ -655,15 +648,12 @@ specifier|final
 name|String
 name|title
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|dv
 parameter_list|,
-specifier|final
 name|boolean
 name|nullIfDefault
 parameter_list|)
@@ -737,20 +727,17 @@ return|return
 name|nv
 return|;
 block|}
-DECL|method|path (final String title, final String name, final String defValue)
+DECL|method|path (String title, String name, String defValue)
 specifier|public
 name|Path
 name|path
 parameter_list|(
-specifier|final
 name|String
 name|title
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|defValue
 parameter_list|)
@@ -937,7 +924,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|select ( String title, String name, T defValue, A allowedValues, final boolean nullIfDefault)
+DECL|method|select ( String title, String name, T defValue, A allowedValues, boolean nullIfDefault)
 specifier|public
 parameter_list|<
 name|T
@@ -971,7 +958,6 @@ parameter_list|,
 name|A
 name|allowedValues
 parameter_list|,
-specifier|final
 name|boolean
 name|nullIfDefault
 parameter_list|)
@@ -1073,7 +1059,7 @@ return|return
 name|newValue
 return|;
 block|}
-DECL|method|select ( final String title, final String name, final String dv, Set<String> allowedValues)
+DECL|method|select (final String title, String name, String dv, Set<String> allowedValues)
 specifier|public
 name|String
 name|select
@@ -1082,11 +1068,9 @@ specifier|final
 name|String
 name|title
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|dv
 parameter_list|,
@@ -1151,16 +1135,14 @@ return|return
 name|nv
 return|;
 block|}
-DECL|method|password (final String username, final String password)
+DECL|method|password (String username, String password)
 specifier|public
 name|String
 name|password
 parameter_list|(
-specifier|final
 name|String
 name|username
 parameter_list|,
-specifier|final
 name|String
 name|password
 parameter_list|)
@@ -1472,17 +1454,15 @@ return|return
 name|section
 return|;
 block|}
-DECL|method|eq (final String a, final String b)
+DECL|method|eq (String a, String b)
 specifier|private
 specifier|static
 name|boolean
 name|eq
 parameter_list|(
-specifier|final
 name|String
 name|a
 parameter_list|,
-specifier|final
 name|String
 name|b
 parameter_list|)

@@ -366,10 +366,9 @@ name|byte
 index|[]
 name|gz_css
 decl_stmt|;
-DECL|method|GitwebCssServlet (final Path src)
+DECL|method|GitwebCssServlet (Path src)
 name|GitwebCssServlet
 parameter_list|(
-specifier|final
 name|Path
 name|src
 parameter_list|)
@@ -486,12 +485,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getLastModified (final HttpServletRequest req)
+DECL|method|getLastModified (HttpServletRequest req)
 specifier|protected
 name|long
 name|getLastModified
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)
@@ -502,16 +500,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|doGet (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doGet (HttpServletRequest req, HttpServletResponse rsp)
 specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)

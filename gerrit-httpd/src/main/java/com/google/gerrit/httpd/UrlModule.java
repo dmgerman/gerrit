@@ -1052,11 +1052,9 @@ specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -1107,11 +1105,9 @@ specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -1135,7 +1131,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|screen (final String target)
+DECL|method|screen (String target)
 specifier|private
 name|Key
 argument_list|<
@@ -1143,7 +1139,6 @@ name|HttpServlet
 argument_list|>
 name|screen
 parameter_list|(
-specifier|final
 name|String
 name|target
 parameter_list|)
@@ -1169,11 +1164,9 @@ specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -1224,11 +1217,9 @@ specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -1293,11 +1284,9 @@ specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -1593,7 +1582,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|query (final String query)
+DECL|method|query (String query)
 specifier|private
 name|Key
 argument_list|<
@@ -1601,7 +1590,6 @@ name|HttpServlet
 argument_list|>
 name|query
 parameter_list|(
-specifier|final
 name|String
 name|query
 parameter_list|)
@@ -1627,11 +1615,9 @@ specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -1657,7 +1643,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|key (final HttpServlet servlet)
+DECL|method|key (HttpServlet servlet)
 specifier|private
 name|Key
 argument_list|<
@@ -1665,7 +1651,6 @@ name|HttpServlet
 argument_list|>
 name|key
 parameter_list|(
-specifier|final
 name|HttpServlet
 name|servlet
 parameter_list|)
@@ -1758,11 +1743,9 @@ specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -1788,7 +1771,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|toGerrit ( String target, HttpServletRequest req, HttpServletResponse rsp)
+DECL|method|toGerrit (String target, HttpServletRequest req, HttpServletResponse rsp)
 specifier|static
 name|void
 name|toGerrit

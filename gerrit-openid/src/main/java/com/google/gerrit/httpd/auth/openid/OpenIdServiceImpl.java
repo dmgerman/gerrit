@@ -1452,12 +1452,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|requestRegistration (final AuthRequest aReq)
+DECL|method|requestRegistration (AuthRequest aReq)
 specifier|private
 name|boolean
 name|requestRegistration
 parameter_list|(
-specifier|final
 name|AuthRequest
 name|aReq
 parameter_list|)
@@ -1525,15 +1524,13 @@ return|;
 block|}
 block|}
 comment|/** Called by {@link OpenIdLoginServlet} doGet, doPost */
-DECL|method|doAuth (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doAuth (HttpServletRequest req, HttpServletResponse rsp)
 name|void
 name|doAuth
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -2960,12 +2957,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isSignIn (final SignInMode mode)
+DECL|method|isSignIn (SignInMode mode)
 specifier|private
 name|boolean
 name|isSignIn
 parameter_list|(
-specifier|final
 name|SignInMode
 name|mode
 parameter_list|)
@@ -2993,13 +2989,12 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|signInMode (final HttpServletRequest req)
+DECL|method|signInMode (HttpServletRequest req)
 specifier|private
 specifier|static
 name|SignInMode
 name|signInMode
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)
@@ -3033,7 +3028,7 @@ name|SIGN_IN
 return|;
 block|}
 block|}
-DECL|method|callback ( final boolean isNew, final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|callback (final boolean isNew, HttpServletRequest req, HttpServletResponse rsp)
 specifier|private
 name|void
 name|callback
@@ -3042,11 +3037,9 @@ specifier|final
 name|boolean
 name|isNew
 parameter_list|,
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -3161,16 +3154,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cancel (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|cancel (HttpServletRequest req, HttpServletResponse rsp)
 specifier|private
 name|void
 name|cancel
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -3207,7 +3198,7 @@ name|rsp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cancelWithError ( final HttpServletRequest req, final HttpServletResponse rsp, final String errorDetail)
+DECL|method|cancelWithError ( final HttpServletRequest req, HttpServletResponse rsp, String errorDetail)
 specifier|private
 name|void
 name|cancelWithError
@@ -3216,11 +3207,9 @@ specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|,
-specifier|final
 name|String
 name|errorDetail
 parameter_list|)
@@ -3542,18 +3531,16 @@ name|contextUrl
 argument_list|)
 return|;
 block|}
-DECL|method|isAllowedOpenID (final String id)
+DECL|method|isAllowedOpenID (String id)
 name|boolean
 name|isAllowedOpenID
 parameter_list|(
-specifier|final
 name|String
 name|id
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|OpenIdProviderPattern
 name|pattern
 range|:
@@ -3600,18 +3587,15 @@ specifier|final
 name|String
 name|contextUrl
 decl_stmt|;
-DECL|method|State (final DiscoveryInformation d, final UrlEncoded r, final String c)
+DECL|method|State (DiscoveryInformation d, UrlEncoded r, String c)
 name|State
 parameter_list|(
-specifier|final
 name|DiscoveryInformation
 name|d
 parameter_list|,
-specifier|final
 name|UrlEncoded
 name|r
 parameter_list|,
-specifier|final
 name|String
 name|c
 parameter_list|)

@@ -161,7 +161,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|forAccountGroup (final AccountGroup group)
+DECL|method|forAccountGroup (AccountGroup group)
 specifier|public
 specifier|static
 name|GroupDescription
@@ -169,7 +169,6 @@ operator|.
 name|Internal
 name|forAccountGroup
 parameter_list|(
-specifier|final
 name|AccountGroup
 name|group
 parameter_list|)

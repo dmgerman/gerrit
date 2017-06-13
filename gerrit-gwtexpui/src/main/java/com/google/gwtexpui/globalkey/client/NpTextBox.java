@@ -121,11 +121,10 @@ name|STOP_PROPAGATION
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NpTextBox (final Element element)
+DECL|method|NpTextBox (Element element)
 specifier|public
 name|NpTextBox
 parameter_list|(
-specifier|final
 name|Element
 name|element
 parameter_list|)

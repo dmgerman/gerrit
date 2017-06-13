@@ -351,7 +351,6 @@ specifier|protected
 name|void
 name|preDisplay
 parameter_list|(
-specifier|final
 name|PluginMap
 name|result
 parameter_list|)
@@ -586,11 +585,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final PluginMap plugins)
+DECL|method|display (PluginMap plugins)
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|PluginMap
 name|plugins
 parameter_list|)
@@ -620,7 +618,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|PluginInfo
 name|p
 range|:
@@ -665,15 +662,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populate (final int row, final PluginInfo plugin)
+DECL|method|populate (int row, PluginInfo plugin)
 name|void
 name|populate
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|PluginInfo
 name|plugin
 parameter_list|)

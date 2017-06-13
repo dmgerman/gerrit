@@ -231,23 +231,20 @@ name|LabelId
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final PatchSet.Id ps, final Account.Id a, final LabelId c)
+DECL|method|Key (PatchSet.Id ps, Account.Id a, LabelId c)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|ps
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
 name|a
 parameter_list|,
-specifier|final
 name|LabelId
 name|c
 parameter_list|)
@@ -478,17 +475,15 @@ name|ts
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|PatchSetApproval (final PatchSet.Id psId, final PatchSetApproval src)
+DECL|method|PatchSetApproval (PatchSet.Id psId, PatchSetApproval src)
 specifier|public
 name|PatchSetApproval
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|psId
 parameter_list|,
-specifier|final
 name|PatchSetApproval
 name|src
 parameter_list|)
@@ -674,12 +669,11 @@ return|return
 name|value
 return|;
 block|}
-DECL|method|setValue (final short v)
+DECL|method|setValue (short v)
 specifier|public
 name|void
 name|setValue
 parameter_list|(
-specifier|final
 name|short
 name|v
 parameter_list|)

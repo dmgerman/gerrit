@@ -518,13 +518,12 @@ argument_list|)
 return|;
 block|}
 comment|/** Drop the database from memory; does nothing if the instance was null. */
-DECL|method|drop (final InMemoryDatabase db)
+DECL|method|drop (InMemoryDatabase db)
 specifier|public
 specifier|static
 name|void
 name|drop
 parameter_list|(
-specifier|final
 name|InMemoryDatabase
 name|db
 parameter_list|)

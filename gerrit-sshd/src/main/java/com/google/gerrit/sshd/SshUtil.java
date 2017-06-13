@@ -373,13 +373,12 @@ class|class
 name|SshUtil
 block|{
 comment|/**    * Parse a public key into its Java type.    *    * @param key the account key to parse.    * @return the valid public key object.    * @throws InvalidKeySpecException the key supplied is not a valid SSH key.    * @throws NoSuchAlgorithmException the JVM is missing the key algorithm.    * @throws NoSuchProviderException the JVM is missing the provider.    */
-DECL|method|parse (final AccountSshKey key)
+DECL|method|parse (AccountSshKey key)
 specifier|public
 specifier|static
 name|PublicKey
 name|parse
 parameter_list|(
-specifier|final
 name|AccountSshKey
 name|key
 parameter_list|)
@@ -464,13 +463,12 @@ throw|;
 block|}
 block|}
 comment|/**    * Convert an RFC 4716 style key to an OpenSSH style key.    *    * @param keyStr the key string to convert.    * @return {@code keyStr} if conversion failed; otherwise the converted key, in OpenSSH key    *     format.    */
-DECL|method|toOpenSshPublicKey (final String keyStr)
+DECL|method|toOpenSshPublicKey (String keyStr)
 specifier|public
 specifier|static
 name|String
 name|toOpenSshPublicKey
 parameter_list|(
-specifier|final
 name|String
 name|keyStr
 parameter_list|)

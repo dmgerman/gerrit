@@ -1575,7 +1575,6 @@ name|IntegrationException
 block|{
 for|for
 control|(
-specifier|final
 name|Iterator
 argument_list|<
 name|CodeReviewCommit
@@ -2432,7 +2431,6 @@ literal|null
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|PatchSetApproval
 name|a
 range|:
@@ -3456,7 +3454,7 @@ name|toMerge
 argument_list|)
 return|;
 block|}
-DECL|method|hasMissingDependencies ( MergeSorter mergeSorter, CodeReviewCommit toMerge)
+DECL|method|hasMissingDependencies (MergeSorter mergeSorter, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|hasMissingDependencies

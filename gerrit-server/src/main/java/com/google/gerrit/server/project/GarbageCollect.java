@@ -587,20 +587,18 @@ name|input
 argument_list|)
 return|;
 block|}
-DECL|method|applyAsync (final Project.NameKey project, final Input input)
+DECL|method|applyAsync (Project.NameKey project, Input input)
 specifier|private
 name|Response
 operator|.
 name|Accepted
 name|applyAsync
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|project
 parameter_list|,
-specifier|final
 name|Input
 name|input
 parameter_list|)
@@ -724,18 +722,16 @@ name|SuppressWarnings
 argument_list|(
 literal|"resource"
 argument_list|)
-DECL|method|applySync (final Project.NameKey project, final Input input)
+DECL|method|applySync (Project.NameKey project, Input input)
 specifier|private
 name|BinaryResult
 name|applySync
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|project
 parameter_list|,
-specifier|final
 name|Input
 name|input
 parameter_list|)

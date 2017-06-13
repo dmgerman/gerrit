@@ -286,7 +286,7 @@ name|CurrentUser
 argument_list|>
 name|currentUser
 decl_stmt|;
-DECL|method|BaseServiceImplementation ( final Provider<ReviewDb> schema, final Provider<? extends CurrentUser> currentUser)
+DECL|method|BaseServiceImplementation ( final Provider<ReviewDb> schema, Provider<? extends CurrentUser> currentUser)
 specifier|protected
 name|BaseServiceImplementation
 parameter_list|(
@@ -297,7 +297,6 @@ name|ReviewDb
 argument_list|>
 name|schema
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|?
@@ -377,7 +376,7 @@ argument_list|()
 return|;
 block|}
 comment|/**    * Executes {@code action.run} with an active ReviewDb connection.    *    *<p>A database handle is automatically opened and closed around the action's {@link    * Action#run(ReviewDb)} method. OrmExceptions are caught and passed into the onFailure method of    * the callback.    *    * @param<T> type of result the callback expects.    * @param callback the callback that will receive the result.    * @param action the action logic to perform.    */
-DECL|method|run (final AsyncCallback<T> callback, final Action<T> action)
+DECL|method|run (AsyncCallback<T> callback, Action<T> action)
 specifier|protected
 parameter_list|<
 name|T
@@ -385,14 +384,12 @@ parameter_list|>
 name|void
 name|run
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|T
 argument_list|>
 name|callback
 parameter_list|,
-specifier|final
 name|Action
 argument_list|<
 name|T
@@ -622,7 +619,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|handleOrmException (final AsyncCallback<T> callback, Exception e)
+DECL|method|handleOrmException (AsyncCallback<T> callback, Exception e)
 specifier|private
 specifier|static
 parameter_list|<
@@ -631,7 +628,6 @@ parameter_list|>
 name|void
 name|handleOrmException
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|T
@@ -717,11 +713,10 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|Failure (final Throwable why)
+DECL|method|Failure (Throwable why)
 specifier|public
 name|Failure
 parameter_list|(
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

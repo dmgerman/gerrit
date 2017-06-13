@@ -686,7 +686,6 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|int
 name|v
 range|:
@@ -1904,7 +1903,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -2148,12 +2146,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|enable (final boolean on)
+DECL|method|enable (boolean on)
 specifier|private
 name|void
 name|enable
 parameter_list|(
-specifier|final
 name|boolean
 name|on
 parameter_list|)
@@ -2580,20 +2577,17 @@ name|values
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setListBox (final ListBox f, final int defaultValue, final int currentValue)
+DECL|method|setListBox (ListBox f, int defaultValue, int currentValue)
 specifier|private
 name|void
 name|setListBox
 parameter_list|(
-specifier|final
 name|ListBox
 name|f
 parameter_list|,
-specifier|final
 name|int
 name|defaultValue
 parameter_list|,
-specifier|final
 name|int
 name|currentValue
 parameter_list|)
@@ -2618,7 +2612,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setListBox ( final ListBox f, final T defaultValue, final T currentValue)
+DECL|method|setListBox (final ListBox f, T defaultValue, T currentValue)
 specifier|private
 parameter_list|<
 name|T
@@ -2635,11 +2629,9 @@ specifier|final
 name|ListBox
 name|f
 parameter_list|,
-specifier|final
 name|T
 name|defaultValue
 parameter_list|,
-specifier|final
 name|T
 name|currentValue
 parameter_list|)
@@ -2672,20 +2664,17 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setListBox (final ListBox f, final String defaultValue, final String currentValue)
+DECL|method|setListBox (ListBox f, String defaultValue, String currentValue)
 specifier|private
 name|void
 name|setListBox
 parameter_list|(
-specifier|final
 name|ListBox
 name|f
 parameter_list|,
-specifier|final
 name|String
 name|defaultValue
 parameter_list|,
-specifier|final
 name|String
 name|currentValue
 parameter_list|)
@@ -2761,16 +2750,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getListBox (final ListBox f, final int defaultValue)
+DECL|method|getListBox (ListBox f, int defaultValue)
 specifier|private
 name|int
 name|getListBox
 parameter_list|(
-specifier|final
 name|ListBox
 name|f
 parameter_list|,
-specifier|final
 name|int
 name|defaultValue
 parameter_list|)
@@ -2809,7 +2796,7 @@ return|return
 name|defaultValue
 return|;
 block|}
-DECL|method|getListBox (final ListBox f, final T defaultValue, T[] all)
+DECL|method|getListBox (ListBox f, T defaultValue, T[] all)
 specifier|private
 parameter_list|<
 name|T
@@ -2822,11 +2809,9 @@ parameter_list|>
 name|T
 name|getListBox
 parameter_list|(
-specifier|final
 name|ListBox
 name|f
 parameter_list|,
-specifier|final
 name|T
 name|defaultValue
 parameter_list|,

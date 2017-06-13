@@ -543,12 +543,11 @@ operator|=
 name|ic
 expr_stmt|;
 block|}
-DECL|method|create (final ReviewDb db)
+DECL|method|create (ReviewDb db)
 specifier|public
 name|void
 name|create
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)

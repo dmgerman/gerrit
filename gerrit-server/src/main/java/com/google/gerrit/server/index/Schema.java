@@ -1036,7 +1036,7 @@ literal|true
 return|;
 block|}
 comment|/**    * Build all fields in the schema from an input object.    *    *<p>Null values are omitted, as are fields which cause errors, which are logged.    *    * @param obj input object.    * @param fillArgs arguments for filling fields.    * @return all non-null field values from the object.    */
-DECL|method|buildFields (final T obj, final FillArgs fillArgs)
+DECL|method|buildFields (T obj, FillArgs fillArgs)
 specifier|public
 specifier|final
 name|Iterable
@@ -1048,11 +1048,9 @@ argument_list|>
 argument_list|>
 name|buildFields
 parameter_list|(
-specifier|final
 name|T
 name|obj
 parameter_list|,
-specifier|final
 name|FillArgs
 name|fillArgs
 parameter_list|)

@@ -167,11 +167,10 @@ name|currentTabSeparator
 init|=
 literal|" "
 decl_stmt|;
-DECL|method|TreeFormatter (final PrintWriter stdout)
+DECL|method|TreeFormatter (PrintWriter stdout)
 specifier|public
 name|TreeFormatter
 parameter_list|(
-specifier|final
 name|PrintWriter
 name|stdout
 parameter_list|)
@@ -183,12 +182,11 @@ operator|=
 name|stdout
 expr_stmt|;
 block|}
-DECL|method|printTree (final SortedSet<? extends TreeNode> rootNodes)
+DECL|method|printTree (SortedSet<? extends TreeNode> rootNodes)
 specifier|public
 name|void
 name|printTree
 parameter_list|(
-specifier|final
 name|SortedSet
 argument_list|<
 name|?
@@ -249,7 +247,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|TreeNode
 name|rootNode
 range|:
@@ -283,12 +280,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|printTree (final TreeNode rootNode)
+DECL|method|printTree (TreeNode rootNode)
 specifier|public
 name|void
 name|printTree
 parameter_list|(
-specifier|final
 name|TreeNode
 name|rootNode
 parameter_list|)
@@ -303,20 +299,17 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|printTree (final TreeNode node, final int level, final boolean isLast)
+DECL|method|printTree (TreeNode node, int level, boolean isLast)
 specifier|private
 name|void
 name|printTree
 parameter_list|(
-specifier|final
 name|TreeNode
 name|node
 parameter_list|,
-specifier|final
 name|int
 name|level
 parameter_list|,
-specifier|final
 name|boolean
 name|isLast
 parameter_list|)
@@ -360,7 +353,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|TreeNode
 name|childNode
 range|:
@@ -389,12 +381,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|printIndention (final int level)
+DECL|method|printIndention (int level)
 specifier|private
 name|void
 name|printIndention
 parameter_list|(
-specifier|final
 name|int
 name|level
 parameter_list|)
@@ -428,20 +419,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|printNode (final TreeNode node, final int level, final boolean isLast)
+DECL|method|printNode (TreeNode node, int level, boolean isLast)
 specifier|private
 name|void
 name|printNode
 parameter_list|(
-specifier|final
 name|TreeNode
 name|node
 parameter_list|,
-specifier|final
 name|int
 name|level
 parameter_list|,
-specifier|final
 name|boolean
 name|isLast
 parameter_list|)

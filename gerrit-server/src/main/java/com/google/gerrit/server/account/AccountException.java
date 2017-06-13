@@ -87,11 +87,10 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|AccountException (final String message)
+DECL|method|AccountException (String message)
 specifier|public
 name|AccountException
 parameter_list|(
-specifier|final
 name|String
 name|message
 parameter_list|)
@@ -102,15 +101,13 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AccountException (final String message, final Throwable why)
+DECL|method|AccountException (String message, Throwable why)
 specifier|public
 name|AccountException
 parameter_list|(
-specifier|final
 name|String
 name|message
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

@@ -796,12 +796,11 @@ name|stdout
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start (final Environment env)
+DECL|method|start (Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
-specifier|final
 name|Environment
 name|env
 parameter_list|)
@@ -891,7 +890,6 @@ specifier|public
 name|void
 name|onEvent
 parameter_list|(
-specifier|final
 name|Event
 name|event
 parameter_list|)
@@ -971,12 +969,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onExit (final int rc)
+DECL|method|onExit (int rc)
 specifier|protected
 name|void
 name|onExit
 parameter_list|(
-specifier|final
 name|int
 name|rc
 parameter_list|)
@@ -1071,12 +1068,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|offer (final Event event)
+DECL|method|offer (Event event)
 specifier|private
 name|void
 name|offer
 parameter_list|(
-specifier|final
 name|Event
 name|event
 parameter_list|)
@@ -1283,12 +1279,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|write (final Object message)
+DECL|method|write (Object message)
 specifier|private
 name|void
 name|write
 parameter_list|(
-specifier|final
 name|Object
 name|message
 parameter_list|)

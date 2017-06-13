@@ -264,13 +264,12 @@ name|newVers
 argument_list|)
 return|;
 block|}
-DECL|method|mkdir (final File path)
+DECL|method|mkdir (File path)
 specifier|public
 specifier|static
 name|void
 name|mkdir
 parameter_list|(
-specifier|final
 name|File
 name|path
 parameter_list|)
@@ -301,17 +300,15 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|chmod (final int mode, final Path path)
+DECL|method|chmod (int mode, Path path)
 specifier|public
 specifier|static
 name|void
 name|chmod
 parameter_list|(
-specifier|final
 name|int
 name|mode
 parameter_list|,
-specifier|final
 name|Path
 name|path
 parameter_list|)
@@ -328,17 +325,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|chmod (final int mode, final File path)
+DECL|method|chmod (int mode, File path)
 specifier|public
 specifier|static
 name|void
 name|chmod
 parameter_list|(
-specifier|final
 name|int
 name|mode
 parameter_list|,
-specifier|final
 name|File
 name|path
 parameter_list|)

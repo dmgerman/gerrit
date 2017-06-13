@@ -360,21 +360,18 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|resolve (final Repository repo, final RevWalk rw, final RevCommit commit)
+DECL|method|resolve (Repository repo, RevWalk rw, RevCommit commit)
 specifier|public
 specifier|static
 name|Result
 name|resolve
 parameter_list|(
-specifier|final
 name|Repository
 name|repo
 parameter_list|,
-specifier|final
 name|RevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|RevCommit
 name|commit
 parameter_list|)
@@ -419,7 +416,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|includedInOne ( final Repository repo, final RevWalk rw, final RevCommit commit, final Collection<Ref> refs)
+DECL|method|includedInOne ( final Repository repo, RevWalk rw, RevCommit commit, Collection<Ref> refs)
 specifier|public
 specifier|static
 name|boolean
@@ -429,15 +426,12 @@ specifier|final
 name|Repository
 name|repo
 parameter_list|,
-specifier|final
 name|RevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|RevCommit
 name|commit
 parameter_list|,
-specifier|final
 name|Collection
 argument_list|<
 name|Ref
@@ -730,12 +724,11 @@ return|return
 name|detail
 return|;
 block|}
-DECL|method|includedInOne (final Collection<Ref> refs)
+DECL|method|includedInOne (Collection<Ref> refs)
 specifier|private
 name|boolean
 name|includedInOne
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|Ref
@@ -811,7 +804,7 @@ argument_list|()
 return|;
 block|}
 comment|/** Resolves which tip refs include the target commit. */
-DECL|method|includedIn (final Collection<RevCommit> tips, int limit)
+DECL|method|includedIn (Collection<RevCommit> tips, int limit)
 specifier|private
 name|Set
 argument_list|<
@@ -819,7 +812,6 @@ name|String
 argument_list|>
 name|includedIn
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|RevCommit
@@ -966,19 +958,17 @@ name|result
 return|;
 block|}
 comment|/**    * Partition the reference tips into two sets:    *    *<ul>    *<li>before = commits with time< target.getCommitTime()    *<li>after = commits with time>= target.getCommitTime()    *</ul>    *    * Each of the before/after lists is sorted by the the commit time.    *    * @param before    * @param after    */
-DECL|method|partition (final List<RevCommit> before, final List<RevCommit> after)
+DECL|method|partition (List<RevCommit> before, List<RevCommit> after)
 specifier|private
 name|void
 name|partition
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|RevCommit
 argument_list|>
 name|before
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|RevCommit
@@ -1182,12 +1172,11 @@ name|refNames
 return|;
 block|}
 comment|/** Parse commit of ref and store the relation between ref and commit. */
-DECL|method|parseCommits (final Collection<Ref> refs)
+DECL|method|parseCommits (Collection<Ref> refs)
 specifier|private
 name|void
 name|parseCommits
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|Ref
@@ -1318,12 +1307,11 @@ name|tipsByCommitTime
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sortOlderFirst (final List<RevCommit> tips)
+DECL|method|sortOlderFirst (List<RevCommit> tips)
 specifier|private
 name|void
 name|sortOlderFirst
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|RevCommit
@@ -1400,12 +1388,11 @@ specifier|public
 name|Result
 parameter_list|()
 block|{}
-DECL|method|setBranches (final List<String> b)
+DECL|method|setBranches (List<String> b)
 specifier|public
 name|void
 name|setBranches
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -1438,12 +1425,11 @@ return|return
 name|branches
 return|;
 block|}
-DECL|method|setTags (final List<String> t)
+DECL|method|setTags (List<String> t)
 specifier|public
 name|void
 name|setTags
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|String

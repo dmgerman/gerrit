@@ -199,23 +199,20 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Account.Id a, final AccountGroup.Id g, final Timestamp t)
+DECL|method|Key (Account.Id a, AccountGroup.Id g, Timestamp t)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|a
 parameter_list|,
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
 name|g
 parameter_list|,
-specifier|final
 name|Timestamp
 name|t
 parameter_list|)
@@ -381,7 +378,7 @@ specifier|protected
 name|AccountGroupMemberAudit
 parameter_list|()
 block|{}
-DECL|method|AccountGroupMemberAudit ( final AccountGroupMember m, final Account.Id adder, Timestamp addedOn)
+DECL|method|AccountGroupMemberAudit (final AccountGroupMember m, Account.Id adder, Timestamp addedOn)
 specifier|public
 name|AccountGroupMemberAudit
 parameter_list|(
@@ -389,7 +386,6 @@ specifier|final
 name|AccountGroupMember
 name|m
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -464,18 +460,16 @@ operator|==
 literal|null
 return|;
 block|}
-DECL|method|removed (final Account.Id deleter, final Timestamp when)
+DECL|method|removed (Account.Id deleter, Timestamp when)
 specifier|public
 name|void
 name|removed
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|deleter
 parameter_list|,
-specifier|final
 name|Timestamp
 name|when
 parameter_list|)

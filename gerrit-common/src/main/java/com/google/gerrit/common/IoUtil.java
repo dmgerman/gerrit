@@ -240,17 +240,15 @@ specifier|final
 class|class
 name|IoUtil
 block|{
-DECL|method|copyWithThread (final InputStream src, final OutputStream dst)
+DECL|method|copyWithThread (InputStream src, OutputStream dst)
 specifier|public
 specifier|static
 name|void
 name|copyWithThread
 parameter_list|(
-specifier|final
 name|InputStream
 name|src
 parameter_list|,
-specifier|final
 name|OutputStream
 name|dst
 parameter_list|)

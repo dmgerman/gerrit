@@ -408,11 +408,10 @@ operator|.
 name|Section
 name|closed
 decl_stmt|;
-DECL|method|AccountDashboardScreen (final Account.Id id)
+DECL|method|AccountDashboardScreen (Account.Id id)
 specifier|public
 name|AccountDashboardScreen
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -489,7 +488,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)

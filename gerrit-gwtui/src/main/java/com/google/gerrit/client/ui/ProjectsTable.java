@@ -407,12 +407,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getRowItemKey (final ProjectInfo item)
+DECL|method|getRowItemKey (ProjectInfo item)
 specifier|protected
 name|Object
 name|getRowItemKey
 parameter_list|(
-specifier|final
 name|ProjectInfo
 name|item
 parameter_list|)
@@ -426,12 +425,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onOpenRow (final int row)
+DECL|method|onOpenRow (int row)
 specifier|protected
 name|void
 name|onOpenRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
@@ -600,16 +598,14 @@ name|finishDisplay
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|insert (final int row, final ProjectInfo k)
+DECL|method|insert (int row, ProjectInfo k)
 specifier|protected
 name|void
 name|insert
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|ProjectInfo
 name|k
 parameter_list|)
@@ -719,16 +715,14 @@ name|k
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|populate (final int row, final ProjectInfo k)
+DECL|method|populate (int row, ProjectInfo k)
 specifier|protected
 name|void
 name|populate
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|ProjectInfo
 name|k
 parameter_list|)

@@ -195,12 +195,11 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-DECL|method|append (final boolean in)
+DECL|method|append (boolean in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|boolean
 name|in
 parameter_list|)
@@ -216,12 +215,11 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|append (final char in)
+DECL|method|append (char in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|char
 name|in
 parameter_list|)
@@ -300,12 +298,11 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|append (final int in)
+DECL|method|append (int in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|int
 name|in
 parameter_list|)
@@ -321,12 +318,11 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|append (final long in)
+DECL|method|append (long in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|long
 name|in
 parameter_list|)
@@ -342,12 +338,11 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|append (final float in)
+DECL|method|append (float in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|float
 name|in
 parameter_list|)
@@ -363,12 +358,11 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|append (final double in)
+DECL|method|append (double in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|double
 name|in
 parameter_list|)
@@ -427,12 +421,11 @@ name|this
 return|;
 block|}
 comment|/** Append already safe HTML as-is, avoiding double escaping. */
-DECL|method|append (final SafeHtml in)
+DECL|method|append (SafeHtml in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|SafeHtml
 name|in
 parameter_list|)
@@ -460,12 +453,11 @@ name|this
 return|;
 block|}
 comment|/** Append the string, escaping unsafe characters. */
-DECL|method|append (final String in)
+DECL|method|append (String in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|String
 name|in
 parameter_list|)
@@ -492,12 +484,11 @@ name|this
 return|;
 block|}
 comment|/** Append the string, escaping unsafe characters. */
-DECL|method|append (final StringBuilder in)
+DECL|method|append (StringBuilder in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|StringBuilder
 name|in
 parameter_list|)
@@ -523,12 +514,11 @@ name|this
 return|;
 block|}
 comment|/** Append the string, escaping unsafe characters. */
-DECL|method|append (final StringBuffer in)
+DECL|method|append (StringBuffer in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|StringBuffer
 name|in
 parameter_list|)
@@ -554,12 +544,11 @@ name|this
 return|;
 block|}
 comment|/** Append the result of toString(), escaping unsafe characters. */
-DECL|method|append (final Object in)
+DECL|method|append (Object in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|Object
 name|in
 parameter_list|)
@@ -585,12 +574,11 @@ name|this
 return|;
 block|}
 comment|/** Append the string, escaping unsafe characters. */
-DECL|method|append (final CharSequence in)
+DECL|method|append (CharSequence in)
 specifier|public
 name|SafeHtmlBuilder
 name|append
 parameter_list|(
-specifier|final
 name|CharSequence
 name|in
 parameter_list|)
@@ -615,12 +603,11 @@ name|this
 return|;
 block|}
 comment|/**    * Open an element, appending "{@code<tagName>}" to the buffer.    *    *<p>After the element is open the attributes may be manipulated until the next {@code append},    * {@code openElement}, {@code closeSelf} or {@code closeElement} call.    *    * @param tagName name of the HTML element to open.    */
-DECL|method|openElement (final String tagName)
+DECL|method|openElement (String tagName)
 specifier|public
 name|SafeHtmlBuilder
 name|openElement
 parameter_list|(
-specifier|final
 name|String
 name|tagName
 parameter_list|)
@@ -683,12 +670,11 @@ name|this
 return|;
 block|}
 comment|/**    * Get an attribute of the last opened element.    *    * @param name name of the attribute to read.    * @return the attribute value, as a string. The empty string if the attribute has not been    *     assigned a value. The returned string is the raw (unescaped) value.    */
-DECL|method|getAttribute (final String name)
+DECL|method|getAttribute (String name)
 specifier|public
 name|String
 name|getAttribute
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -714,16 +700,14 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Set an attribute of the last opened element.    *    * @param name name of the attribute to set.    * @param value value to assign; any existing value is replaced. The value is escaped (if    *     necessary) during the assignment.    */
-DECL|method|setAttribute (final String name, final String value)
+DECL|method|setAttribute (String name, String value)
 specifier|public
 name|SafeHtmlBuilder
 name|setAttribute
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -759,16 +743,14 @@ name|this
 return|;
 block|}
 comment|/**    * Set an attribute of the last opened element.    *    * @param name name of the attribute to set.    * @param value value to assign, any existing value is replaced.    */
-DECL|method|setAttribute (final String name, final int value)
+DECL|method|setAttribute (String name, int value)
 specifier|public
 name|SafeHtmlBuilder
 name|setAttribute
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|int
 name|value
 parameter_list|)
@@ -788,12 +770,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Append a new value into a whitespace delimited attribute.    *    *<p>If the attribute is not yet assigned, this method sets the attribute. If the attribute is    * already assigned, the new value is appended onto the end, after appending a single space to    * delimit the values.    *    * @param name name of the attribute to append onto.    * @param value additional value to append.    */
-DECL|method|appendAttribute (final String name, String value)
+DECL|method|appendAttribute (String name, String value)
 specifier|public
 name|SafeHtmlBuilder
 name|appendAttribute
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
@@ -851,12 +832,11 @@ name|this
 return|;
 block|}
 comment|/** Set the height attribute of the current element. */
-DECL|method|setHeight (final int height)
+DECL|method|setHeight (int height)
 specifier|public
 name|SafeHtmlBuilder
 name|setHeight
 parameter_list|(
-specifier|final
 name|int
 name|height
 parameter_list|)
@@ -871,12 +851,11 @@ argument_list|)
 return|;
 block|}
 comment|/** Set the width attribute of the current element. */
-DECL|method|setWidth (final int width)
+DECL|method|setWidth (int width)
 specifier|public
 name|SafeHtmlBuilder
 name|setWidth
 parameter_list|(
-specifier|final
 name|int
 name|width
 parameter_list|)
@@ -891,12 +870,11 @@ argument_list|)
 return|;
 block|}
 comment|/** Set the CSS class name for this element. */
-DECL|method|setStyleName (final String style)
+DECL|method|setStyleName (String style)
 specifier|public
 name|SafeHtmlBuilder
 name|setStyleName
 parameter_list|(
-specifier|final
 name|String
 name|style
 parameter_list|)
@@ -917,12 +895,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Add an additional CSS class name to this element.    *    *<p>If no CSS class name has been specified yet, this method initializes it to the single name.    */
-DECL|method|addStyleName (final String style)
+DECL|method|addStyleName (String style)
 specifier|public
 name|SafeHtmlBuilder
 name|addStyleName
 parameter_list|(
-specifier|final
 name|String
 name|style
 parameter_list|)
@@ -1008,12 +985,11 @@ name|this
 return|;
 block|}
 comment|/** Append a closing tag for the named element. */
-DECL|method|closeElement (final String name)
+DECL|method|closeElement (String name)
 specifier|public
 name|SafeHtmlBuilder
 name|closeElement
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1254,16 +1230,14 @@ argument_list|)
 return|;
 block|}
 comment|/** Append "&lt;param name=... value=... /&gt;". */
-DECL|method|paramElement (final String name, final String value)
+DECL|method|paramElement (String name, String value)
 specifier|public
 name|SafeHtmlBuilder
 name|paramElement
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -1323,17 +1297,15 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|escapeCS (final SafeHtmlBuilder b, final CharSequence in)
+DECL|method|escapeCS (SafeHtmlBuilder b, CharSequence in)
 specifier|private
 specifier|static
 name|void
 name|escapeCS
 parameter_list|(
-specifier|final
 name|SafeHtmlBuilder
 name|b
 parameter_list|,
-specifier|final
 name|CharSequence
 name|in
 parameter_list|)
@@ -1370,13 +1342,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isElementName (final String name)
+DECL|method|isElementName (String name)
 specifier|private
 specifier|static
 name|boolean
 name|isElementName
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1390,13 +1361,12 @@ literal|"^[a-zA-Z][a-zA-Z0-9_-]*$"
 argument_list|)
 return|;
 block|}
-DECL|method|isAttributeName (final String name)
+DECL|method|isAttributeName (String name)
 specifier|private
 specifier|static
 name|boolean
 name|isAttributeName
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1408,13 +1378,12 @@ name|name
 argument_list|)
 return|;
 block|}
-DECL|method|isCssName (final String name)
+DECL|method|isCssName (String name)
 specifier|private
 specifier|static
 name|boolean
 name|isCssName
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1456,15 +1425,13 @@ name|Impl
 block|{
 annotation|@
 name|Override
-DECL|method|escapeStr (final SafeHtmlBuilder b, final String in)
+DECL|method|escapeStr (SafeHtmlBuilder b, String in)
 name|void
 name|escapeStr
 parameter_list|(
-specifier|final
 name|SafeHtmlBuilder
 name|b
 parameter_list|,
-specifier|final
 name|String
 name|in
 parameter_list|)
@@ -1490,15 +1457,13 @@ name|Impl
 block|{
 annotation|@
 name|Override
-DECL|method|escapeStr (final SafeHtmlBuilder b, final String in)
+DECL|method|escapeStr (SafeHtmlBuilder b, String in)
 name|void
 name|escapeStr
 parameter_list|(
-specifier|final
 name|SafeHtmlBuilder
 name|b
 parameter_list|,
-specifier|final
 name|String
 name|in
 parameter_list|)

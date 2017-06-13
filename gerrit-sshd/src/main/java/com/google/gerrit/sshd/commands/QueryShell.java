@@ -1499,7 +1499,6 @@ name|Override
 name|String
 name|apply
 parameter_list|(
-specifier|final
 name|ResultSet
 name|rs
 parameter_list|)
@@ -1906,12 +1905,11 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|executeStatement (final String sql)
+DECL|method|executeStatement (String sql)
 specifier|private
 name|void
 name|executeStatement
 parameter_list|(
-specifier|final
 name|String
 name|sql
 parameter_list|)
@@ -2097,12 +2095,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Outputs a result set to stdout.    *    * @param rs ResultSet to show.    * @param alreadyOnRow true if rs is already on the first row. false otherwise.    * @param start Timestamp in milliseconds when executing the statement started. This timestamp is    *     used to compute statistics about the statement. If no statistics should be shown, set it to    *     0.    * @param show Functions to map columns    * @throws SQLException    */
-DECL|method|showResultSet (final ResultSet rs, boolean alreadyOnRow, long start, Function... show)
+DECL|method|showResultSet (ResultSet rs, boolean alreadyOnRow, long start, Function... show)
 specifier|private
 name|void
 name|showResultSet
 parameter_list|(
-specifier|final
 name|ResultSet
 name|rs
 parameter_list|,
@@ -3327,12 +3324,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|warning (final String msg)
+DECL|method|warning (String msg)
 specifier|private
 name|void
 name|warning
 parameter_list|(
-specifier|final
 name|String
 name|msg
 parameter_list|)
@@ -3399,12 +3395,11 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-DECL|method|error (final SQLException err)
+DECL|method|error (SQLException err)
 specifier|private
 name|void
 name|error
 parameter_list|(
-specifier|final
 name|SQLException
 name|err
 parameter_list|)
@@ -3767,10 +3762,9 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
-DECL|method|Function (final String name)
+DECL|method|Function (String name)
 name|Function
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -3802,16 +3796,14 @@ name|Identity
 extends|extends
 name|Function
 block|{
-DECL|method|create (final ResultSet rs, final String name)
+DECL|method|create (ResultSet rs, String name)
 specifier|static
 name|Identity
 name|create
 parameter_list|(
-specifier|final
 name|ResultSet
 name|rs
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -3838,14 +3830,12 @@ specifier|final
 name|int
 name|colId
 decl_stmt|;
-DECL|method|Identity (final int colId, final String name)
+DECL|method|Identity (int colId, String name)
 name|Identity
 parameter_list|(
-specifier|final
 name|int
 name|colId
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -3864,11 +3854,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (final ResultSet rs)
+DECL|method|apply (ResultSet rs)
 name|String
 name|apply
 parameter_list|(
-specifier|final
 name|ResultSet
 name|rs
 parameter_list|)

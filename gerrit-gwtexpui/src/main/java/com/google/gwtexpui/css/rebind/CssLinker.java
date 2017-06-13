@@ -331,7 +331,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|link ( final TreeLogger logger, final LinkerContext context, final ArtifactSet artifacts)
+DECL|method|link (final TreeLogger logger, LinkerContext context, ArtifactSet artifacts)
 specifier|public
 name|ArtifactSet
 name|link
@@ -340,11 +340,9 @@ specifier|final
 name|TreeLogger
 name|logger
 parameter_list|,
-specifier|final
 name|LinkerContext
 name|context
 parameter_list|,
-specifier|final
 name|ArtifactSet
 name|artifacts
 parameter_list|)
@@ -380,7 +378,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|StandardStylesheetReference
 name|ssr
 range|:
@@ -412,7 +409,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|PublicResource
 name|pr
 range|:
@@ -581,16 +577,14 @@ return|return
 name|returnTo
 return|;
 block|}
-DECL|method|name (final TreeLogger logger, final PublicResource r)
+DECL|method|name (TreeLogger logger, PublicResource r)
 specifier|private
 name|String
 name|name
 parameter_list|(
-specifier|final
 name|TreeLogger
 name|logger
 parameter_list|,
-specifier|final
 name|PublicResource
 name|r
 parameter_list|)
@@ -779,14 +773,12 @@ specifier|final
 name|PublicResource
 name|src
 decl_stmt|;
-DECL|method|CssPubRsrc (final String partialPath, final PublicResource r)
+DECL|method|CssPubRsrc (String partialPath, PublicResource r)
 name|CssPubRsrc
 parameter_list|(
-specifier|final
 name|String
 name|partialPath
 parameter_list|,
-specifier|final
 name|PublicResource
 name|r
 parameter_list|)
@@ -807,12 +799,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getContents (final TreeLogger logger)
+DECL|method|getContents (TreeLogger logger)
 specifier|public
 name|InputStream
 name|getContents
 parameter_list|(
-specifier|final
 name|TreeLogger
 name|logger
 parameter_list|)

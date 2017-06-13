@@ -357,13 +357,12 @@ name|cause
 argument_list|)
 return|;
 block|}
-DECL|method|savePublic (final FileBasedConfig sec)
+DECL|method|savePublic (FileBasedConfig sec)
 specifier|public
 specifier|static
 name|void
 name|savePublic
 parameter_list|(
-specifier|final
 name|FileBasedConfig
 name|sec
 parameter_list|)
@@ -509,13 +508,12 @@ name|getHostname
 argument_list|()
 return|;
 block|}
-DECL|method|isLocal (final String hostname)
+DECL|method|isLocal (String hostname)
 specifier|public
 specifier|static
 name|boolean
 name|isLocal
 parameter_list|(
-specifier|final
 name|String
 name|hostname
 parameter_list|)
@@ -779,20 +777,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|open (final Class<?> sibling, final String name)
+DECL|method|open (Class<?> sibling, String name)
 specifier|private
 specifier|static
 name|InputStream
 name|open
 parameter_list|(
-specifier|final
 name|Class
 argument_list|<
 name|?
 argument_list|>
 name|sibling
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1133,13 +1129,12 @@ name|url
 argument_list|)
 return|;
 block|}
-DECL|method|isAnyAddress (final URI u)
+DECL|method|isAnyAddress (URI u)
 specifier|public
 specifier|static
 name|boolean
 name|isAnyAddress
 parameter_list|(
-specifier|final
 name|URI
 name|u
 parameter_list|)
@@ -1175,13 +1170,12 @@ argument_list|)
 operator|)
 return|;
 block|}
-DECL|method|portOf (final URI uri)
+DECL|method|portOf (URI uri)
 specifier|public
 specifier|static
 name|int
 name|portOf
 parameter_list|(
-specifier|final
 name|URI
 name|uri
 parameter_list|)

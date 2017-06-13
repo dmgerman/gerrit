@@ -416,12 +416,11 @@ return|return
 name|password
 return|;
 block|}
-DECL|method|setPassword (final String pass)
+DECL|method|setPassword (String pass)
 specifier|public
 name|void
 name|setPassword
 parameter_list|(
-specifier|final
 name|String
 name|pass
 parameter_list|)
@@ -441,12 +440,11 @@ return|return
 name|displayName
 return|;
 block|}
-DECL|method|setDisplayName (final String name)
+DECL|method|setDisplayName (String name)
 specifier|public
 name|void
 name|setDisplayName
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -479,12 +477,11 @@ return|return
 name|emailAddress
 return|;
 block|}
-DECL|method|setEmailAddress (final String email)
+DECL|method|setEmailAddress (String email)
 specifier|public
 name|void
 name|setEmailAddress
 parameter_list|(
-specifier|final
 name|String
 name|email
 parameter_list|)
@@ -517,12 +514,11 @@ return|return
 name|userName
 return|;
 block|}
-DECL|method|setUserName (final String user)
+DECL|method|setUserName (String user)
 specifier|public
 name|void
 name|setUserName
 parameter_list|(
-specifier|final
 name|String
 name|user
 parameter_list|)

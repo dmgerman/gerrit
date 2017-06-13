@@ -1475,7 +1475,6 @@ name|PermissionBackendException
 block|{
 for|for
 control|(
-specifier|final
 name|String
 name|sshKey
 range|:
@@ -1950,7 +1949,7 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|readSshKey (final List<String> sshKeys)
+DECL|method|readSshKey (List<String> sshKeys)
 specifier|private
 name|List
 argument_list|<
@@ -1958,7 +1957,6 @@ name|String
 argument_list|>
 name|readSshKey
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|String

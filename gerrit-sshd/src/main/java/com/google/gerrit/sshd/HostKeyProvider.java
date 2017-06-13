@@ -236,10 +236,9 @@ name|site
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostKeyProvider (final SitePaths site)
+DECL|method|HostKeyProvider (SitePaths site)
 name|HostKeyProvider
 parameter_list|(
-specifier|final
 name|SitePaths
 name|site
 parameter_list|)

@@ -816,7 +816,7 @@ name|query
 argument_list|)
 return|;
 block|}
-DECL|method|get (final QueryRequest q)
+DECL|method|get (QueryRequest q)
 specifier|private
 name|List
 argument_list|<
@@ -824,7 +824,6 @@ name|ChangeInfo
 argument_list|>
 name|get
 parameter_list|(
-specifier|final
 name|QueryRequest
 name|q
 parameter_list|)

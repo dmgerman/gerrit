@@ -255,12 +255,11 @@ name|isLibLoaded
 parameter_list|()
 comment|/*-{ return $wnd.hasOwnProperty('CodeMirror'); }-*/
 function_decl|;
-DECL|method|initLibrary (final AsyncCallback<Void> cb)
+DECL|method|initLibrary (AsyncCallback<Void> cb)
 specifier|static
 name|void
 name|initLibrary
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|Void
@@ -374,7 +373,7 @@ name|done
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|injectCss (ExternalTextResource css, final AsyncCallback<Void> cb)
+DECL|method|injectCss (ExternalTextResource css, AsyncCallback<Void> cb)
 specifier|private
 specifier|static
 name|void
@@ -383,7 +382,6 @@ parameter_list|(
 name|ExternalTextResource
 name|css
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|Void
@@ -479,7 +477,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|injectScript (SafeUri js, final AsyncCallback<Void> callback)
+DECL|method|injectScript (SafeUri js, AsyncCallback<Void> callback)
 specifier|public
 specifier|static
 name|void
@@ -488,7 +486,6 @@ parameter_list|(
 name|SafeUri
 name|js
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|Void

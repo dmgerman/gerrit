@@ -129,16 +129,14 @@ specifier|private
 name|String
 name|toHighlight
 decl_stmt|;
-DECL|method|display (final ProjectMap projects, final String toHighlight)
+DECL|method|display (ProjectMap projects, String toHighlight)
 specifier|public
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|ProjectMap
 name|projects
 parameter_list|,
-specifier|final
 name|String
 name|toHighlight
 parameter_list|)
@@ -159,16 +157,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|populate (final int row, final ProjectInfo k)
+DECL|method|populate (int row, ProjectInfo k)
 specifier|protected
 name|void
 name|populate
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|ProjectInfo
 name|k
 parameter_list|)

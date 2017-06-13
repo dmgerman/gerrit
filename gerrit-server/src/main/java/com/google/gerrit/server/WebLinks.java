@@ -1025,7 +1025,7 @@ argument_list|()
 return|;
 block|}
 comment|/**    * @param project Project name.    * @return Links for projects.    */
-DECL|method|getProjectLinks (final String project)
+DECL|method|getProjectLinks (String project)
 specifier|public
 name|List
 argument_list|<
@@ -1033,7 +1033,6 @@ name|WebLinkInfo
 argument_list|>
 name|getProjectLinks
 parameter_list|(
-specifier|final
 name|String
 name|project
 parameter_list|)
@@ -1055,7 +1054,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * @param project Project name    * @param branch Branch name    * @return Links for branches.    */
-DECL|method|getBranchLinks (final String project, final String branch)
+DECL|method|getBranchLinks (String project, String branch)
 specifier|public
 name|List
 argument_list|<
@@ -1063,11 +1062,9 @@ name|WebLinkInfo
 argument_list|>
 name|getBranchLinks
 parameter_list|(
-specifier|final
 name|String
 name|project
 parameter_list|,
-specifier|final
 name|String
 name|branch
 parameter_list|)

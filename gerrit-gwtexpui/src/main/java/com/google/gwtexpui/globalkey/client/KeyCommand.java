@@ -187,17 +187,15 @@ literal|8
 operator|<<
 literal|16
 decl_stmt|;
-DECL|method|same (final KeyCommand a, final KeyCommand b)
+DECL|method|same (KeyCommand a, KeyCommand b)
 specifier|public
 specifier|static
 name|boolean
 name|same
 parameter_list|(
-specifier|final
 name|KeyCommand
 name|a
 parameter_list|,
-specifier|final
 name|KeyCommand
 name|b
 parameter_list|)
@@ -248,19 +246,16 @@ DECL|field|sibling
 name|KeyCommand
 name|sibling
 decl_stmt|;
-DECL|method|KeyCommand (final int mask, final int key, final String help)
+DECL|method|KeyCommand (int mask, int key, String help)
 specifier|public
 name|KeyCommand
 parameter_list|(
-specifier|final
 name|int
 name|mask
 parameter_list|,
-specifier|final
 name|int
 name|key
 parameter_list|,
-specifier|final
 name|String
 name|help
 parameter_list|)
@@ -278,19 +273,16 @@ name|help
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|KeyCommand (final int mask, final char key, final String help)
+DECL|method|KeyCommand (int mask, char key, String help)
 specifier|public
 name|KeyCommand
 parameter_list|(
-specifier|final
 name|int
 name|mask
 parameter_list|,
-specifier|final
 name|char
 name|key
 parameter_list|,
-specifier|final
 name|String
 name|help
 parameter_list|)
@@ -564,16 +556,14 @@ return|return
 name|b
 return|;
 block|}
-DECL|method|modifier (final SafeHtmlBuilder b, final String name)
+DECL|method|modifier (SafeHtmlBuilder b, String name)
 specifier|private
 name|void
 name|modifier
 parameter_list|(
-specifier|final
 name|SafeHtmlBuilder
 name|b
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -593,16 +583,14 @@ literal|" + "
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|namedKey (final SafeHtmlBuilder b, final String name)
+DECL|method|namedKey (SafeHtmlBuilder b, String name)
 specifier|private
 name|void
 name|namedKey
 parameter_list|(
-specifier|final
 name|SafeHtmlBuilder
 name|b
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)

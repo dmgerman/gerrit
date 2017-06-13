@@ -233,19 +233,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|get (final Project.NameKey project, final AsyncCallback<ProjectAccessInfo> cb)
+DECL|method|get (Project.NameKey project, AsyncCallback<ProjectAccessInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|get
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|project
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|ProjectAccessInfo

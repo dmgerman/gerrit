@@ -646,11 +646,10 @@ literal|"LOGIN"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onAuthFail (final SshSession sd)
+DECL|method|onAuthFail (SshSession sd)
 name|void
 name|onAuthFail
 parameter_list|(
-specifier|final
 name|SshSession
 name|sd
 parameter_list|)
@@ -1316,12 +1315,11 @@ literal|"LOGOUT"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|log (final String msg)
+DECL|method|log (String msg)
 specifier|private
 name|LoggingEvent
 name|log
 parameter_list|(
-specifier|final
 name|String
 name|msg
 parameter_list|)
@@ -1498,13 +1496,12 @@ return|return
 name|event
 return|;
 block|}
-DECL|method|id (final int id)
+DECL|method|id (int id)
 specifier|private
 specifier|static
 name|String
 name|id
 parameter_list|(
-specifier|final
 name|int
 name|id
 parameter_list|)

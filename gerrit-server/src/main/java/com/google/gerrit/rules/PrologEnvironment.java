@@ -718,7 +718,6 @@ parameter_list|()
 block|{
 for|for
 control|(
-specifier|final
 name|Iterator
 argument_list|<
 name|Runnable

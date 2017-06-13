@@ -640,7 +640,6 @@ name|db
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Change
 name|c
 range|:

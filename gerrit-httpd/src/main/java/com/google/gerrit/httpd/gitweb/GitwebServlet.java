@@ -2366,16 +2366,14 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|service (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|service (HttpServletRequest req, HttpServletResponse rsp)
 specifier|protected
 name|void
 name|service
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -2908,7 +2906,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|pair
 range|:
@@ -3958,16 +3955,14 @@ name|getEnvArray
 argument_list|()
 return|;
 block|}
-DECL|method|copyContentToCGI (final HttpServletRequest req, final OutputStream dst)
+DECL|method|copyContentToCGI (HttpServletRequest req, OutputStream dst)
 specifier|private
 name|void
 name|copyContentToCGI
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|OutputStream
 name|dst
 parameter_list|)
@@ -4125,12 +4120,11 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|copyStderrToLog (final InputStream in)
+DECL|method|copyStderrToLog (InputStream in)
 specifier|private
 name|void
 name|copyStderrToLog
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|)
@@ -4235,7 +4229,7 @@ name|getHeaderNames
 argument_list|()
 return|;
 block|}
-DECL|method|readCgiHeaders (HttpServletResponse res, final InputStream in)
+DECL|method|readCgiHeaders (HttpServletResponse res, InputStream in)
 specifier|private
 name|void
 name|readCgiHeaders
@@ -4243,7 +4237,6 @@ parameter_list|(
 name|HttpServletResponse
 name|res
 parameter_list|,
-specifier|final
 name|InputStream
 name|in
 parameter_list|)
@@ -4429,12 +4422,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|readLine (final InputStream in)
+DECL|method|readLine (InputStream in)
 specifier|private
 name|String
 name|readLine
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|)
@@ -4521,10 +4513,9 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|EnvList (final EnvList l)
+DECL|method|EnvList (EnvList l)
 name|EnvList
 parameter_list|(
-specifier|final
 name|EnvList
 name|l
 parameter_list|)
@@ -4542,12 +4533,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Set a name/value pair, null values will be treated as an empty String */
-DECL|method|set (final String name, String value)
+DECL|method|set (String name, String value)
 specifier|public
 name|void
 name|set
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,

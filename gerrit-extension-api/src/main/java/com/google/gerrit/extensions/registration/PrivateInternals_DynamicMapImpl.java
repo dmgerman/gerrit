@@ -129,7 +129,7 @@ name|PrivateInternals_DynamicMapImpl
 parameter_list|()
 block|{}
 comment|/**    * Store one new element into the map.    *    * @param pluginName unique name of the plugin providing the export.    * @param exportName name the plugin has exported the item as.    * @param item the item to add to the collection. Must not be null.    * @return handle to remove the item at a later point in time.    */
-DECL|method|put (String pluginName, String exportName, final Provider<T> item)
+DECL|method|put (String pluginName, String exportName, Provider<T> item)
 specifier|public
 name|RegistrationHandle
 name|put
@@ -140,7 +140,6 @@ parameter_list|,
 name|String
 name|exportName
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|T

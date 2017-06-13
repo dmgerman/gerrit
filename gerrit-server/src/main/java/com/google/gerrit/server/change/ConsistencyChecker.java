@@ -3200,7 +3200,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|insertMergedPatchSet ( final RevCommit commit, final @Nullable PatchSet.Id psIdToDelete, boolean reuseOldPsId)
+DECL|method|insertMergedPatchSet ( final RevCommit commit, @Nullable PatchSet.Id psIdToDelete, boolean reuseOldPsId)
 specifier|private
 name|void
 name|insertMergedPatchSet
@@ -3209,7 +3209,6 @@ specifier|final
 name|RevCommit
 name|commit
 parameter_list|,
-specifier|final
 annotation|@
 name|Nullable
 name|PatchSet

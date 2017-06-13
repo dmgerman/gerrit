@@ -222,7 +222,7 @@ argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|deserialize ( final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+DECL|method|deserialize (final JsonElement json, Type typeOfT, JsonDeserializationContext context)
 specifier|public
 name|Edit
 name|deserialize
@@ -231,11 +231,9 @@ specifier|final
 name|JsonElement
 name|json
 parameter_list|,
-specifier|final
 name|Type
 name|typeOfT
 parameter_list|,
-specifier|final
 name|JsonDeserializationContext
 name|context
 parameter_list|)
@@ -481,17 +479,15 @@ name|l
 argument_list|)
 return|;
 block|}
-DECL|method|get (final JsonArray a, final int idx)
+DECL|method|get (JsonArray a, int idx)
 specifier|private
 specifier|static
 name|int
 name|get
 parameter_list|(
-specifier|final
 name|JsonArray
 name|a
 parameter_list|,
-specifier|final
 name|int
 name|idx
 parameter_list|)
@@ -561,7 +557,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|serialize ( final Edit src, final Type typeOfSrc, final JsonSerializationContext context)
+DECL|method|serialize (final Edit src, Type typeOfSrc, JsonSerializationContext context)
 specifier|public
 name|JsonElement
 name|serialize
@@ -570,11 +566,9 @@ specifier|final
 name|Edit
 name|src
 parameter_list|,
-specifier|final
 name|Type
 name|typeOfSrc
 parameter_list|,
-specifier|final
 name|JsonSerializationContext
 name|context
 parameter_list|)
@@ -643,16 +637,14 @@ return|return
 name|a
 return|;
 block|}
-DECL|method|add (final JsonArray a, final Edit src)
+DECL|method|add (JsonArray a, Edit src)
 specifier|private
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|JsonArray
 name|a
 parameter_list|,
-specifier|final
 name|Edit
 name|src
 parameter_list|)

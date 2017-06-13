@@ -247,13 +247,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|parseArguments (final Parameters params)
+DECL|method|parseArguments (Parameters params)
 specifier|public
 specifier|final
 name|int
 name|parseArguments
 parameter_list|(
-specifier|final
 name|Parameters
 name|params
 parameter_list|)

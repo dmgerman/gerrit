@@ -271,12 +271,11 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-DECL|method|register (final Widget body)
+DECL|method|register (Widget body)
 specifier|static
 name|void
 name|register
 parameter_list|(
-specifier|final
 name|Widget
 name|body
 parameter_list|)
@@ -314,7 +313,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -360,7 +358,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -406,7 +403,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -460,7 +456,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -503,7 +498,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -549,7 +543,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -595,7 +588,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -641,7 +633,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)

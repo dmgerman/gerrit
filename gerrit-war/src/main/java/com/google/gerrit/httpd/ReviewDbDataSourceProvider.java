@@ -274,12 +274,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|closeDataSource (final DataSource ds)
+DECL|method|closeDataSource (DataSource ds)
 specifier|private
 name|void
 name|closeDataSource
 parameter_list|(
-specifier|final
 name|DataSource
 name|ds
 parameter_list|)

@@ -886,12 +886,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|get (final Project.NameKey projectName)
+DECL|method|get (Project.NameKey projectName)
 specifier|public
 name|ProjectState
 name|get
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -1070,12 +1069,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|evict (final Project p)
+DECL|method|evict (Project p)
 specifier|public
 name|void
 name|evict
 parameter_list|(
-specifier|final
 name|Project
 name|p
 parameter_list|)
@@ -1105,12 +1103,11 @@ block|}
 comment|/** Invalidate the cached information about the given project. */
 annotation|@
 name|Override
-DECL|method|evict (final Project.NameKey p)
+DECL|method|evict (Project.NameKey p)
 specifier|public
 name|void
 name|evict
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -1138,12 +1135,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|remove (final Project p)
+DECL|method|remove (Project p)
 specifier|public
 name|void
 name|remove
 parameter_list|(
-specifier|final
 name|Project
 name|p
 parameter_list|)
@@ -1459,7 +1455,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|byName (final String pfx)
+DECL|method|byName (String pfx)
 specifier|public
 name|Iterable
 argument_list|<
@@ -1469,7 +1465,6 @@ name|NameKey
 argument_list|>
 name|byName
 parameter_list|(
-specifier|final
 name|String
 name|pfx
 parameter_list|)

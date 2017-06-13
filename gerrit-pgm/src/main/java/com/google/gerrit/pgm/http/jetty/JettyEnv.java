@@ -91,11 +91,10 @@ specifier|final
 name|Injector
 name|webInjector
 decl_stmt|;
-DECL|method|JettyEnv (final Injector webInjector)
+DECL|method|JettyEnv (Injector webInjector)
 specifier|public
 name|JettyEnv
 parameter_list|(
-specifier|final
 name|Injector
 name|webInjector
 parameter_list|)

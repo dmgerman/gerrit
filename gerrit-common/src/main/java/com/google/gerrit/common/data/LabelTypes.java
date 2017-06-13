@@ -185,11 +185,10 @@ specifier|protected
 name|LabelTypes
 parameter_list|()
 block|{}
-DECL|method|LabelTypes (final List<? extends LabelType> approvals)
+DECL|method|LabelTypes (List<? extends LabelType> approvals)
 specifier|public
 name|LabelTypes
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|?

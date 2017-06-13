@@ -2057,7 +2057,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|byChange (final Change.Id changeId, final String label)
+DECL|method|byChange (Change.Id changeId, String label)
 specifier|public
 name|Set
 argument_list|<
@@ -2067,13 +2067,11 @@ name|Id
 argument_list|>
 name|byChange
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
 name|changeId
 parameter_list|,
-specifier|final
 name|String
 name|label
 parameter_list|)
@@ -2171,7 +2169,7 @@ block|}
 annotation|@
 name|Deprecated
 comment|// To be used only for IsStarredByLegacyPredicate.
-DECL|method|byAccount (final Account.Id accountId, final String label)
+DECL|method|byAccount (Account.Id accountId, String label)
 specifier|public
 name|Set
 argument_list|<
@@ -2181,13 +2179,11 @@ name|Id
 argument_list|>
 name|byAccount
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|accountId
 parameter_list|,
-specifier|final
 name|String
 name|label
 parameter_list|)

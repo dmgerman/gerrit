@@ -146,18 +146,16 @@ specifier|final
 name|String
 name|system
 decl_stmt|;
-DECL|method|TrackingFooter (String f, final String m, final String s)
+DECL|method|TrackingFooter (String f, String m, String s)
 specifier|public
 name|TrackingFooter
 parameter_list|(
 name|String
 name|f
 parameter_list|,
-specifier|final
 name|String
 name|m
 parameter_list|,
-specifier|final
 name|String
 name|s
 parameter_list|)

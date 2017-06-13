@@ -139,13 +139,12 @@ argument_list|)
 return|;
 block|}
 comment|/** Get a UI instance, possibly forcing batch mode. */
-DECL|method|getInstance (final boolean batchMode)
+DECL|method|getInstance (boolean batchMode)
 specifier|public
 specifier|static
 name|ConsoleUI
 name|getInstance
 parameter_list|(
-specifier|final
 name|boolean
 name|batchMode
 parameter_list|)
@@ -484,10 +483,9 @@ specifier|final
 name|Console
 name|console
 decl_stmt|;
-DECL|method|Interactive (final Console console)
+DECL|method|Interactive (Console console)
 name|Interactive
 parameter_list|(
-specifier|final
 name|Console
 name|console
 parameter_list|)
@@ -900,7 +898,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|v
 range|:
@@ -1168,7 +1165,6 @@ return|;
 block|}
 for|for
 control|(
-specifier|final
 name|T
 name|e
 range|:
@@ -1223,7 +1219,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|T
 name|e
 range|:

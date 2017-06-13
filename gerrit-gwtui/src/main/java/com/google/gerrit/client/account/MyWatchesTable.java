@@ -889,12 +889,11 @@ return|return
 name|infos
 return|;
 block|}
-DECL|method|insertWatch (final ProjectWatchInfo k)
+DECL|method|insertWatch (ProjectWatchInfo k)
 specifier|public
 name|void
 name|insertWatch
 parameter_list|(
-specifier|final
 name|ProjectWatchInfo
 name|k
 parameter_list|)
@@ -978,12 +977,11 @@ name|k
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final JsArray<ProjectWatchInfo> result)
+DECL|method|display (JsArray<ProjectWatchInfo> result)
 specifier|public
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|JsArray
 argument_list|<
 name|ProjectWatchInfo
@@ -1057,16 +1055,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populate (final int row, final ProjectWatchInfo info)
+DECL|method|populate (int row, ProjectWatchInfo info)
 specifier|protected
 name|void
 name|populate
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|ProjectWatchInfo
 name|info
 parameter_list|)
@@ -1398,7 +1394,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addNotifyButton ( final ProjectWatchInfo.Type type, final ProjectWatchInfo info, final int row, final int col)
+DECL|method|addNotifyButton ( final ProjectWatchInfo.Type type, ProjectWatchInfo info, int row, int col)
 specifier|protected
 name|void
 name|addNotifyButton
@@ -1409,15 +1405,12 @@ operator|.
 name|Type
 name|type
 parameter_list|,
-specifier|final
 name|ProjectWatchInfo
 name|info
 parameter_list|,
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|int
 name|col
 parameter_list|)
@@ -1444,7 +1437,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)

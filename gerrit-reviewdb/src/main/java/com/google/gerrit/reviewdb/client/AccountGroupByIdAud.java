@@ -199,23 +199,20 @@ name|UUID
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final AccountGroup.Id g, final AccountGroup.UUID u, final Timestamp t)
+DECL|method|Key (AccountGroup.Id g, AccountGroup.UUID u, Timestamp t)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
 name|g
 parameter_list|,
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
 name|u
 parameter_list|,
-specifier|final
 name|Timestamp
 name|t
 parameter_list|)
@@ -381,7 +378,7 @@ specifier|protected
 name|AccountGroupByIdAud
 parameter_list|()
 block|{}
-DECL|method|AccountGroupByIdAud ( final AccountGroupById m, final Account.Id adder, final Timestamp when)
+DECL|method|AccountGroupByIdAud (final AccountGroupById m, Account.Id adder, Timestamp when)
 specifier|public
 name|AccountGroupByIdAud
 parameter_list|(
@@ -389,13 +386,11 @@ specifier|final
 name|AccountGroupById
 name|m
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
 name|adder
 parameter_list|,
-specifier|final
 name|Timestamp
 name|when
 parameter_list|)
@@ -465,18 +460,16 @@ operator|==
 literal|null
 return|;
 block|}
-DECL|method|removed (final Account.Id deleter, final Timestamp when)
+DECL|method|removed (Account.Id deleter, Timestamp when)
 specifier|public
 name|void
 name|removed
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|deleter
 parameter_list|,
-specifier|final
 name|Timestamp
 name|when
 parameter_list|)

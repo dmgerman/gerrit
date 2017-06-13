@@ -1037,13 +1037,12 @@ name|r
 argument_list|)
 return|;
 block|}
-DECL|method|toType (final Config cfg)
+DECL|method|toType (Config cfg)
 specifier|private
 specifier|static
 name|AuthType
 name|toType
 parameter_list|(
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

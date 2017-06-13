@@ -557,13 +557,12 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|isReviewer (final FooterLine candidateFooterLine)
+DECL|method|isReviewer (FooterLine candidateFooterLine)
 specifier|private
 specifier|static
 name|boolean
 name|isReviewer
 parameter_list|(
-specifier|final
 name|FooterLine
 name|candidateFooterLine
 parameter_list|)
@@ -658,11 +657,10 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MailRecipients (final Set<Account.Id> reviewers, final Set<Account.Id> cc)
+DECL|method|MailRecipients (Set<Account.Id> reviewers, Set<Account.Id> cc)
 specifier|public
 name|MailRecipients
 parameter_list|(
-specifier|final
 name|Set
 argument_list|<
 name|Account
@@ -671,7 +669,6 @@ name|Id
 argument_list|>
 name|reviewers
 parameter_list|,
-specifier|final
 name|Set
 argument_list|<
 name|Account
@@ -704,12 +701,11 @@ name|cc
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|add (final MailRecipients recipients)
+DECL|method|add (MailRecipients recipients)
 specifier|public
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|MailRecipients
 name|recipients
 parameter_list|)
@@ -733,12 +729,11 @@ name|cc
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|remove (final Account.Id toRemove)
+DECL|method|remove (Account.Id toRemove)
 specifier|public
 name|void
 name|remove
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id

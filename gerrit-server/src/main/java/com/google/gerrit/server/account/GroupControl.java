@@ -222,10 +222,9 @@ name|groupBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory (final GroupBackend gb)
+DECL|method|GenericFactory (GroupBackend gb)
 name|GenericFactory
 parameter_list|(
-specifier|final
 name|GroupBackend
 name|gb
 parameter_list|)
@@ -235,16 +234,14 @@ operator|=
 name|gb
 expr_stmt|;
 block|}
-DECL|method|controlFor (final CurrentUser who, final AccountGroup.UUID groupId)
+DECL|method|controlFor (CurrentUser who, AccountGroup.UUID groupId)
 specifier|public
 name|GroupControl
 name|controlFor
 parameter_list|(
-specifier|final
 name|CurrentUser
 name|who
 parameter_list|,
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -323,21 +320,18 @@ name|groupBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Factory (final GroupCache gc, final Provider<CurrentUser> cu, final GroupBackend gb)
+DECL|method|Factory (GroupCache gc, Provider<CurrentUser> cu, GroupBackend gb)
 name|Factory
 parameter_list|(
-specifier|final
 name|GroupCache
 name|gc
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
 name|cu
 parameter_list|,
-specifier|final
 name|GroupBackend
 name|gb
 parameter_list|)
@@ -355,12 +349,11 @@ operator|=
 name|gb
 expr_stmt|;
 block|}
-DECL|method|controlFor (final AccountGroup.Id groupId)
+DECL|method|controlFor (AccountGroup.Id groupId)
 specifier|public
 name|GroupControl
 name|controlFor
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -407,12 +400,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|controlFor (final AccountGroup.UUID groupId)
+DECL|method|controlFor (AccountGroup.UUID groupId)
 specifier|public
 name|GroupControl
 name|controlFor
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -503,12 +495,11 @@ name|groupBackend
 argument_list|)
 return|;
 block|}
-DECL|method|validateFor (final AccountGroup.Id groupId)
+DECL|method|validateFor (AccountGroup.Id groupId)
 specifier|public
 name|GroupControl
 name|validateFor
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -547,12 +538,11 @@ return|return
 name|c
 return|;
 block|}
-DECL|method|validateFor (final AccountGroup.UUID groupUUID)
+DECL|method|validateFor (AccountGroup.UUID groupUUID)
 specifier|public
 name|GroupControl
 name|validateFor
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID

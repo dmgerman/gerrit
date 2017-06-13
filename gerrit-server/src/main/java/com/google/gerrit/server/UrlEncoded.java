@@ -132,11 +132,10 @@ specifier|public
 name|UrlEncoded
 parameter_list|()
 block|{}
-DECL|method|UrlEncoded (final String url)
+DECL|method|UrlEncoded (String url)
 specifier|public
 name|UrlEncoded
 parameter_list|(
-specifier|final
 name|String
 name|url
 parameter_list|)
@@ -190,7 +189,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|Map
 operator|.
 name|Entry

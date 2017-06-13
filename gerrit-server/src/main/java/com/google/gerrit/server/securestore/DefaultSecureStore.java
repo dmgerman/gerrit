@@ -836,13 +836,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|saveSecure (final FileBasedConfig sec)
+DECL|method|saveSecure (FileBasedConfig sec)
 specifier|private
 specifier|static
 name|void
 name|saveSecure
 parameter_list|(
-specifier|final
 name|FileBasedConfig
 name|sec
 parameter_list|)

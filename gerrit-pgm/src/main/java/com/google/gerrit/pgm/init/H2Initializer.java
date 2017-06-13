@@ -173,10 +173,9 @@ name|site
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|H2Initializer (final SitePaths site)
+DECL|method|H2Initializer (SitePaths site)
 name|H2Initializer
 parameter_list|(
-specifier|final
 name|SitePaths
 name|site
 parameter_list|)

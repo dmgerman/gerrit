@@ -205,13 +205,12 @@ name|int
 name|hideDepth
 decl_stmt|;
 comment|/** Execute code, hiding the RPCs they execute from being shown visually. */
-DECL|method|hide (final Runnable run)
+DECL|method|hide (Runnable run)
 specifier|public
 specifier|static
 name|void
 name|hide
 parameter_list|(
-specifier|final
 name|Runnable
 name|run
 parameter_list|)
@@ -302,12 +301,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onRpcStart (final RpcStartEvent event)
+DECL|method|onRpcStart (RpcStartEvent event)
 specifier|public
 name|void
 name|onRpcStart
 parameter_list|(
-specifier|final
 name|RpcStartEvent
 name|event
 parameter_list|)
@@ -349,12 +347,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onRpcComplete (final RpcCompleteEvent event)
+DECL|method|onRpcComplete (RpcCompleteEvent event)
 specifier|public
 name|void
 name|onRpcComplete
 parameter_list|(
-specifier|final
 name|RpcCompleteEvent
 name|event
 parameter_list|)

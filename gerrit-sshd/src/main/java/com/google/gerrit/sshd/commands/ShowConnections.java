@@ -587,12 +587,11 @@ literal|80
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start (final Environment env)
+DECL|method|start (Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
-specifier|final
 name|Environment
 name|env
 parameter_list|)
@@ -901,7 +900,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|IoSession
 name|io
 range|:
@@ -1052,7 +1050,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|IoSession
 name|io
 range|:
@@ -1197,13 +1194,12 @@ literal|"unknown"
 return|;
 block|}
 block|}
-DECL|method|id (final SshSession sd)
+DECL|method|id (SshSession sd)
 specifier|private
 specifier|static
 name|String
 name|id
 parameter_list|(
-specifier|final
 name|SshSession
 name|sd
 parameter_list|)
@@ -1226,17 +1222,15 @@ else|:
 literal|""
 return|;
 block|}
-DECL|method|time (final long now, final long time)
+DECL|method|time (long now, long time)
 specifier|private
 specifier|static
 name|String
 name|time
 parameter_list|(
-specifier|final
 name|long
 name|now
 parameter_list|,
-specifier|final
 name|long
 name|time
 parameter_list|)
@@ -1366,12 +1360,11 @@ name|sec
 argument_list|)
 return|;
 block|}
-DECL|method|username (final SshSession sd)
+DECL|method|username (SshSession sd)
 specifier|private
 name|String
 name|username
 parameter_list|(
-specifier|final
 name|SshSession
 name|sd
 parameter_list|)
@@ -1467,12 +1460,11 @@ return|return
 literal|""
 return|;
 block|}
-DECL|method|hostname (final SocketAddress remoteAddress)
+DECL|method|hostname (SocketAddress remoteAddress)
 specifier|private
 name|String
 name|hostname
 parameter_list|(
-specifier|final
 name|SocketAddress
 name|remoteAddress
 parameter_list|)

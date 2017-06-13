@@ -269,7 +269,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|id
 range|:
@@ -310,12 +309,11 @@ return|return
 name|parsedSubscriptions
 return|;
 block|}
-DECL|method|parse (final String id)
+DECL|method|parse (String id)
 specifier|private
 name|SubmoduleSubscription
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|id
 parameter_list|)

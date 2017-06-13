@@ -191,17 +191,15 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Change.Id change, final String uuid)
+DECL|method|Key (Change.Id change, String uuid)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
 name|change
 parameter_list|,
-specifier|final
 name|String
 name|uuid
 parameter_list|)
@@ -399,7 +397,7 @@ specifier|protected
 name|ChangeMessage
 parameter_list|()
 block|{}
-DECL|method|ChangeMessage ( final ChangeMessage.Key k, final Account.Id a, final Timestamp wo, final PatchSet.Id psid)
+DECL|method|ChangeMessage (final ChangeMessage.Key k, Account.Id a, Timestamp wo, PatchSet.Id psid)
 specifier|public
 name|ChangeMessage
 parameter_list|(
@@ -409,17 +407,14 @@ operator|.
 name|Key
 name|k
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
 name|a
 parameter_list|,
-specifier|final
 name|Timestamp
 name|wo
 parameter_list|,
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -468,12 +463,11 @@ return|return
 name|author
 return|;
 block|}
-DECL|method|setAuthor (final Account.Id accountId)
+DECL|method|setAuthor (Account.Id accountId)
 specifier|public
 name|void
 name|setAuthor
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -582,12 +576,11 @@ return|return
 name|message
 return|;
 block|}
-DECL|method|setMessage (final String s)
+DECL|method|setMessage (String s)
 specifier|public
 name|void
 name|setMessage
 parameter_list|(
-specifier|final
 name|String
 name|s
 parameter_list|)

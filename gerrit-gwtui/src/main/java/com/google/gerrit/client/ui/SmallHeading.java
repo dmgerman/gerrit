@@ -125,11 +125,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SmallHeading (final String text)
+DECL|method|SmallHeading (String text)
 specifier|public
 name|SmallHeading
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|)

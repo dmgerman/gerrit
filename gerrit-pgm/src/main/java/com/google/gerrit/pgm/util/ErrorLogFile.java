@@ -343,17 +343,15 @@ name|dst
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|start (final Path sitePath, final Config config)
+DECL|method|start (Path sitePath, Config config)
 specifier|public
 specifier|static
 name|LifecycleListener
 name|start
 parameter_list|(
-specifier|final
 name|Path
 name|sitePath
 parameter_list|,
-specifier|final
 name|Config
 name|config
 parameter_list|)

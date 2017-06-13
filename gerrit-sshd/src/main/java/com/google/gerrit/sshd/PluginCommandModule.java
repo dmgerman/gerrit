@@ -272,12 +272,11 @@ name|clazz
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|alias (final String name, Class<? extends BaseCommand> clazz)
+DECL|method|alias (String name, Class<? extends BaseCommand> clazz)
 specifier|protected
 name|void
 name|alias
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,

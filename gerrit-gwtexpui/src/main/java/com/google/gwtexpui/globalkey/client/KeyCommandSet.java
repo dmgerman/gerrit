@@ -215,11 +215,10 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|KeyCommandSet (final String setName)
+DECL|method|KeyCommandSet (String setName)
 specifier|public
 name|KeyCommandSet
 parameter_list|(
-specifier|final
 name|String
 name|setName
 parameter_list|)
@@ -246,12 +245,11 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|setName (final String setName)
+DECL|method|setName (String setName)
 specifier|public
 name|void
 name|setName
 parameter_list|(
-specifier|final
 name|String
 name|setName
 parameter_list|)
@@ -334,12 +332,11 @@ operator|=
 name|a
 expr_stmt|;
 block|}
-DECL|method|add (final KeyCommand k)
+DECL|method|add (KeyCommand k)
 specifier|public
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|KeyCommand
 name|k
 parameter_list|)
@@ -393,12 +390,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|remove (final KeyCommand k)
+DECL|method|remove (KeyCommand k)
 specifier|public
 name|void
 name|remove
 parameter_list|(
-specifier|final
 name|KeyCommand
 name|k
 parameter_list|)
@@ -425,12 +421,11 @@ name|keyMask
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|add (final KeyCommandSet set)
+DECL|method|add (KeyCommandSet set)
 specifier|public
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|KeyCommandSet
 name|set
 parameter_list|)
@@ -468,7 +463,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|KeyCommand
 name|k
 range|:
@@ -487,12 +481,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|remove (final KeyCommandSet set)
+DECL|method|remove (KeyCommandSet set)
 specifier|public
 name|void
 name|remove
 parameter_list|(
-specifier|final
 name|KeyCommandSet
 name|set
 parameter_list|)
@@ -519,7 +512,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|KeyCommand
 name|k
 range|:
@@ -538,12 +530,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|filter (final KeyCommandFilter filter)
+DECL|method|filter (KeyCommandFilter filter)
 specifier|public
 name|void
 name|filter
 parameter_list|(
-specifier|final
 name|KeyCommandFilter
 name|filter
 parameter_list|)
@@ -557,7 +548,6 @@ condition|)
 block|{
 for|for
 control|(
-specifier|final
 name|KeyCommandSet
 name|s
 range|:
@@ -575,7 +565,6 @@ block|}
 block|}
 for|for
 control|(
-specifier|final
 name|Iterator
 argument_list|<
 name|KeyCommand
@@ -691,12 +680,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent event)
+DECL|method|onKeyPress (KeyPressEvent event)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -741,12 +729,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|toMask (final KeyPressEvent event)
+DECL|method|toMask (KeyPressEvent event)
 specifier|static
 name|int
 name|toMask
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)

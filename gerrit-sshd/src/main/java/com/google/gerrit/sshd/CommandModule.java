@@ -125,7 +125,7 @@ name|boolean
 name|slaveMode
 decl_stmt|;
 comment|/**    * Configure a command to be invoked by name.    *    * @param name the name of the command the client will provide in order to call the command.    * @return a binding that must be bound to a non-singleton provider for a {@link Command} object.    */
-DECL|method|command (final String name)
+DECL|method|command (String name)
 specifier|protected
 name|LinkedBindingBuilder
 argument_list|<
@@ -133,7 +133,6 @@ name|Command
 argument_list|>
 name|command
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -151,7 +150,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Configure a command to be invoked by name.    *    * @param name the name of the command the client will provide in order to call the command.    * @return a binding that must be bound to a non-singleton provider for a {@link Command} object.    */
-DECL|method|command (final CommandName name)
+DECL|method|command (CommandName name)
 specifier|protected
 name|LinkedBindingBuilder
 argument_list|<
@@ -159,7 +158,6 @@ name|Command
 argument_list|>
 name|command
 parameter_list|(
-specifier|final
 name|CommandName
 name|name
 parameter_list|)
@@ -177,7 +175,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Configure a command to be invoked by name.    *    * @param parent context of the parent command, that this command is a subcommand of.    * @param name the name of the command the client will provide in order to call the command.    * @return a binding that must be bound to a non-singleton provider for a {@link Command} object.    */
-DECL|method|command (final CommandName parent, final String name)
+DECL|method|command (CommandName parent, String name)
 specifier|protected
 name|LinkedBindingBuilder
 argument_list|<
@@ -185,11 +183,9 @@ name|Command
 argument_list|>
 name|command
 parameter_list|(
-specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -209,16 +205,14 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Configure a command to be invoked by name. The command is bound to the passed class.    *    * @param parent context of the parent command, that this command is a subcommand of.    * @param clazz class of the command with {@link CommandMetaData} annotation to retrieve the name    *     and the description from    */
-DECL|method|command (final CommandName parent, final Class<? extends BaseCommand> clazz)
+DECL|method|command (CommandName parent, Class<? extends BaseCommand> clazz)
 specifier|protected
 name|void
 name|command
 parameter_list|(
-specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|Class
 argument_list|<
 name|?
@@ -296,7 +290,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Alias one command to another. The alias is bound to the passed class.    *    * @param parent context of the parent command, that this command is a subcommand of.    * @param name the name of the command the client will provide in order to call the command.    * @param clazz class of the command with {@link CommandMetaData} annotation to retrieve the    *     description from    */
-DECL|method|alias ( final CommandName parent, final String name, final Class<? extends BaseCommand> clazz)
+DECL|method|alias (final CommandName parent, String name, Class<? extends BaseCommand> clazz)
 specifier|protected
 name|void
 name|alias
@@ -305,11 +299,9 @@ specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|Class
 argument_list|<
 name|?
@@ -370,16 +362,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Alias one command to another.    *    * @param from the new command name that when called will actually delegate to {@code to}'s    *     implementation.    * @param to name of an already registered command that will perform the action when {@code from}    *     is invoked by a client.    */
-DECL|method|alias (final String from, final String to)
+DECL|method|alias (String from, String to)
 specifier|protected
 name|void
 name|alias
 parameter_list|(
-specifier|final
 name|String
 name|from
 parameter_list|,
-specifier|final
 name|String
 name|to
 parameter_list|)

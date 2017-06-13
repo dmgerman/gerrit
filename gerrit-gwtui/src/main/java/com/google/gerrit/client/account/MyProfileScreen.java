@@ -728,16 +728,14 @@ name|display
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|infoRow (final int row, final String name)
+DECL|method|infoRow (int row, String name)
 specifier|private
 name|void
 name|infoRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)

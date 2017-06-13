@@ -426,7 +426,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -498,7 +497,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1112,11 +1110,10 @@ name|on
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final JsArray<ExternalIdInfo> results)
+DECL|method|display (JsArray<ExternalIdInfo> results)
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|JsArray
 argument_list|<
 name|ExternalIdInfo
@@ -1169,7 +1166,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|ExternalIdInfo
 name|k
 range|:
@@ -1186,11 +1182,10 @@ name|updateDeleteButton
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|addOneId (final ExternalIdInfo k)
+DECL|method|addOneId (ExternalIdInfo k)
 name|void
 name|addOneId
 parameter_list|(
-specifier|final
 name|ExternalIdInfo
 name|k
 parameter_list|)

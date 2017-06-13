@@ -90,13 +90,12 @@ specifier|public
 class|class
 name|Address
 block|{
-DECL|method|parse (final String in)
+DECL|method|parse (String in)
 specifier|public
 specifier|static
 name|Address
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|in
 parameter_list|)
@@ -596,13 +595,12 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|quotedPhrase (final String name)
+DECL|method|quotedPhrase (String name)
 specifier|private
 specifier|static
 name|String
 name|quotedPhrase
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -680,13 +678,12 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|wrapInQuotes (final String name)
+DECL|method|wrapInQuotes (String name)
 specifier|private
 specifier|static
 name|String
 name|wrapInQuotes
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)

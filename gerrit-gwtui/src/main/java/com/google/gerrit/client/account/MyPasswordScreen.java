@@ -768,7 +768,6 @@ specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -849,24 +848,20 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|row (final Grid info, final int row, final String name, final Widget field)
+DECL|method|row (Grid info, int row, String name, Widget field)
 specifier|private
 name|void
 name|row
 parameter_list|(
-specifier|final
 name|Grid
 name|info
 parameter_list|,
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|Widget
 name|field
 parameter_list|)
@@ -1040,7 +1035,6 @@ specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)

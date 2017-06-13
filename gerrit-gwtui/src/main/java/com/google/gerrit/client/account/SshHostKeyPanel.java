@@ -207,10 +207,9 @@ name|SshHostKeyPanel
 extends|extends
 name|Composite
 block|{
-DECL|method|SshHostKeyPanel (final SshHostKey info)
+DECL|method|SshHostKeyPanel (SshHostKey info)
 name|SshHostKeyPanel
 parameter_list|(
-specifier|final
 name|SshHostKey
 name|info
 parameter_list|)

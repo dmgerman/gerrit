@@ -413,15 +413,13 @@ specifier|private
 name|Button
 name|saveGroupOptions
 decl_stmt|;
-DECL|method|AccountGroupInfoScreen (final GroupInfo toShow, final String token)
+DECL|method|AccountGroupInfoScreen (GroupInfo toShow, String token)
 specifier|public
 name|AccountGroupInfoScreen
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|toShow
 parameter_list|,
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -463,12 +461,11 @@ name|initGroupOptions
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|enableForm (final boolean canModify)
+DECL|method|enableForm (boolean canModify)
 specifier|private
 name|void
 name|enableForm
 parameter_list|(
-specifier|final
 name|boolean
 name|canModify
 parameter_list|)
@@ -666,7 +663,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -713,7 +709,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|com
 operator|.
 name|google
@@ -917,7 +912,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -992,7 +986,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|result
 parameter_list|)
@@ -1137,7 +1130,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1176,7 +1168,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|VoidResult
 name|result
 parameter_list|)
@@ -1323,7 +1314,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1353,7 +1343,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|VoidResult
 name|result
 parameter_list|)
@@ -1405,16 +1394,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|display (final GroupInfo group, final boolean canModify)
+DECL|method|display (GroupInfo group, boolean canModify)
 specifier|protected
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|group
 parameter_list|,
-specifier|final
 name|boolean
 name|canModify
 parameter_list|)

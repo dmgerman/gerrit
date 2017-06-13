@@ -361,7 +361,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Check if the current user is owner of a group */
-DECL|method|isGroupOwner (String groupName, final AsyncCallback<Boolean> cb)
+DECL|method|isGroupOwner (String groupName, AsyncCallback<Boolean> cb)
 specifier|public
 specifier|static
 name|void
@@ -370,7 +370,6 @@ parameter_list|(
 name|String
 name|groupName
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|Boolean
@@ -723,7 +722,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Add members to a group. */
-DECL|method|addMembers ( AccountGroup.UUID group, Set<String> members, final AsyncCallback<JsArray<AccountInfo>> cb)
+DECL|method|addMembers ( AccountGroup.UUID group, Set<String> members, AsyncCallback<JsArray<AccountInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -740,7 +739,6 @@ name|String
 argument_list|>
 name|members
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|JsArray
@@ -866,7 +864,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Remove members from a group. */
-DECL|method|removeMembers ( AccountGroup.UUID group, Set<Integer> ids, final AsyncCallback<VoidResult> cb)
+DECL|method|removeMembers ( AccountGroup.UUID group, Set<Integer> ids, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -883,7 +881,6 @@ name|Integer
 argument_list|>
 name|ids
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|VoidResult
@@ -1156,7 +1153,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Remove included groups from a group. */
-DECL|method|removeIncludedGroups ( AccountGroup.UUID group, Set<AccountGroup.UUID> ids, final AsyncCallback<VoidResult> cb)
+DECL|method|removeIncludedGroups ( AccountGroup.UUID group, Set<AccountGroup.UUID> ids, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -1175,7 +1172,6 @@ name|UUID
 argument_list|>
 name|ids
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|VoidResult

@@ -602,11 +602,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Create a dialog box to show a single message string. */
-DECL|method|ErrorDialog (final String message)
+DECL|method|ErrorDialog (String message)
 specifier|public
 name|ErrorDialog
 parameter_list|(
-specifier|final
 name|String
 name|message
 parameter_list|)
@@ -627,11 +626,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Create a dialog box to show a single message string. */
-DECL|method|ErrorDialog (final SafeHtml message)
+DECL|method|ErrorDialog (SafeHtml message)
 specifier|public
 name|ErrorDialog
 parameter_list|(
-specifier|final
 name|SafeHtml
 name|message
 parameter_list|)
@@ -651,11 +649,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Create a dialog box to nicely format an exception. */
-DECL|method|ErrorDialog (final Throwable what)
+DECL|method|ErrorDialog (Throwable what)
 specifier|public
 name|ErrorDialog
 parameter_list|(
-specifier|final
 name|Throwable
 name|what
 parameter_list|)
@@ -994,12 +991,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setText (final String t)
+DECL|method|setText (String t)
 specifier|public
 name|ErrorDialog
 name|setText
 parameter_list|(
-specifier|final
 name|String
 name|t
 parameter_list|)

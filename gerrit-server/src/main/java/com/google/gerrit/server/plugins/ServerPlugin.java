@@ -1441,12 +1441,11 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|newRootInjector (final PluginGuiceEnvironment env)
+DECL|method|newRootInjector (PluginGuiceEnvironment env)
 specifier|private
 name|Injector
 name|newRootInjector
 parameter_list|(
-specifier|final
 name|PluginGuiceEnvironment
 name|env
 parameter_list|)

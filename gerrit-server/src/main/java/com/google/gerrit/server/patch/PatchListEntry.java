@@ -512,12 +512,11 @@ name|EMPTY_HEADER
 init|=
 block|{}
 decl_stmt|;
-DECL|method|empty (final String fileName)
+DECL|method|empty (String fileName)
 specifier|static
 name|PatchListEntry
 name|empty
 parameter_list|(
-specifier|final
 name|String
 name|fileName
 parameter_list|)

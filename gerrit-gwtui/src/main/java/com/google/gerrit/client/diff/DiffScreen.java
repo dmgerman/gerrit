@@ -2911,11 +2911,10 @@ end_expr_stmt
 
 begin_function
 unit|}    private
-DECL|method|onSelectionChange (final CodeMirror cm)
+DECL|method|onSelectionChange (CodeMirror cm)
 name|BeforeSelectionChangeHandler
 name|onSelectionChange
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)
@@ -5491,12 +5490,11 @@ function_decl|;
 end_function_decl
 
 begin_function
-DECL|method|onGutterClick (final CodeMirror cm)
+DECL|method|onGutterClick (CodeMirror cm)
 specifier|private
 name|GutterClickHandler
 name|onGutterClick
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)
@@ -5515,11 +5513,9 @@ parameter_list|(
 name|CodeMirror
 name|instance
 parameter_list|,
-specifier|final
 name|int
 name|line
 parameter_list|,
-specifier|final
 name|String
 name|gutterClass
 parameter_list|,

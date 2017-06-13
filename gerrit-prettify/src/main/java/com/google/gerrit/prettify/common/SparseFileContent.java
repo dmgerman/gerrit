@@ -134,12 +134,11 @@ return|return
 name|size
 return|;
 block|}
-DECL|method|setSize (final int s)
+DECL|method|setSize (int s)
 specifier|public
 name|void
 name|setSize
 parameter_list|(
-specifier|final
 name|int
 name|s
 parameter_list|)
@@ -149,12 +148,11 @@ operator|=
 name|s
 expr_stmt|;
 block|}
-DECL|method|get (final int idx)
+DECL|method|get (int idx)
 specifier|public
 name|String
 name|get
 parameter_list|(
-specifier|final
 name|int
 name|idx
 parameter_list|)
@@ -187,12 +185,11 @@ return|return
 name|line
 return|;
 block|}
-DECL|method|contains (final int idx)
+DECL|method|contains (int idx)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-specifier|final
 name|int
 name|idx
 parameter_list|)
@@ -231,12 +228,11 @@ operator|.
 name|base
 return|;
 block|}
-DECL|method|next (final int idx)
+DECL|method|next (int idx)
 specifier|public
 name|int
 name|next
 parameter_list|(
-specifier|final
 name|int
 name|idx
 parameter_list|)
@@ -449,12 +445,11 @@ name|size
 argument_list|()
 return|;
 block|}
-DECL|method|getLine (final int idx)
+DECL|method|getLine (int idx)
 specifier|private
 name|String
 name|getLine
 parameter_list|(
-specifier|final
 name|int
 name|idx
 parameter_list|)
@@ -648,16 +643,14 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|addLine (final int i, final String content)
+DECL|method|addLine (int i, String content)
 specifier|public
 name|void
 name|addLine
 parameter_list|(
-specifier|final
 name|int
 name|i
 parameter_list|,
-specifier|final
 name|String
 name|content
 parameter_list|)
@@ -825,11 +818,10 @@ name|String
 argument_list|>
 name|lines
 decl_stmt|;
-DECL|method|Range (final int b)
+DECL|method|Range (int b)
 specifier|private
 name|Range
 parameter_list|(
-specifier|final
 name|int
 name|b
 parameter_list|)
@@ -851,12 +843,11 @@ specifier|protected
 name|Range
 parameter_list|()
 block|{}
-DECL|method|get (final int i)
+DECL|method|get (int i)
 specifier|private
 name|String
 name|get
 parameter_list|(
-specifier|final
 name|int
 name|i
 parameter_list|)
@@ -887,12 +878,11 @@ name|size
 argument_list|()
 return|;
 block|}
-DECL|method|contains (final int i)
+DECL|method|contains (int i)
 specifier|private
 name|boolean
 name|contains
 parameter_list|(
-specifier|final
 name|int
 name|i
 parameter_list|)

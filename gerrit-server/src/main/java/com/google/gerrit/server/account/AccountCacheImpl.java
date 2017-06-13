@@ -1445,7 +1445,7 @@ name|state
 return|;
 block|}
 block|}
-DECL|method|load (final ReviewDb db, final Account.Id who)
+DECL|method|load (ReviewDb db, Account.Id who)
 specifier|private
 name|Optional
 argument_list|<
@@ -1453,11 +1453,9 @@ name|AccountState
 argument_list|>
 name|load
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id

@@ -1069,18 +1069,16 @@ name|out
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertOutput (final byte[] expect, final ByteArrayOutputStream out)
+DECL|method|assertOutput (byte[] expect, ByteArrayOutputStream out)
 specifier|private
 specifier|static
 name|void
 name|assertOutput
 parameter_list|(
-specifier|final
 name|byte
 index|[]
 name|expect
 parameter_list|,
-specifier|final
 name|ByteArrayOutputStream
 name|out
 parameter_list|)
@@ -1127,13 +1125,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|r (final byte[] buf)
+DECL|method|r (byte[] buf)
 specifier|private
 specifier|static
 name|InputStream
 name|r
 parameter_list|(
-specifier|final
 name|byte
 index|[]
 name|buf

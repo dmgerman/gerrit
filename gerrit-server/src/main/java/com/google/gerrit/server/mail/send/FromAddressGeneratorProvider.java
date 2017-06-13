@@ -603,13 +603,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|toAddress (final PersonIdent myIdent)
+DECL|method|toAddress (PersonIdent myIdent)
 specifier|private
 specifier|static
 name|Address
 name|toAddress
 parameter_list|(
-specifier|final
 name|PersonIdent
 name|myIdent
 parameter_list|)
@@ -750,12 +749,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|from (final Account.Id fromId)
+DECL|method|from (Account.Id fromId)
 specifier|public
 name|Address
 name|from
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -1045,12 +1043,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|from (final Account.Id fromId)
+DECL|method|from (Account.Id fromId)
 specifier|public
 name|Address
 name|from
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -1178,12 +1175,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|from (final Account.Id fromId)
+DECL|method|from (Account.Id fromId)
 specifier|public
 name|Address
 name|from
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id

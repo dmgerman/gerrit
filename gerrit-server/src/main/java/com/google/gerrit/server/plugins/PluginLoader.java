@@ -1141,7 +1141,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-DECL|method|listPlugins (Path pluginsDir, final String suffix)
+DECL|method|listPlugins (Path pluginsDir, String suffix)
 specifier|public
 specifier|static
 name|List
@@ -1153,7 +1153,6 @@ parameter_list|(
 name|Path
 name|pluginsDir
 parameter_list|,
-specifier|final
 name|String
 name|suffix
 parameter_list|)

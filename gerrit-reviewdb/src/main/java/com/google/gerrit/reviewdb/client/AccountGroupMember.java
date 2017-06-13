@@ -177,17 +177,15 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Account.Id a, final AccountGroup.Id g)
+DECL|method|Key (Account.Id a, AccountGroup.Id g)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|a
 parameter_list|,
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -293,11 +291,10 @@ specifier|protected
 name|AccountGroupMember
 parameter_list|()
 block|{}
-DECL|method|AccountGroupMember (final AccountGroupMember.Key k)
+DECL|method|AccountGroupMember (AccountGroupMember.Key k)
 specifier|public
 name|AccountGroupMember
 parameter_list|(
-specifier|final
 name|AccountGroupMember
 operator|.
 name|Key

@@ -124,13 +124,12 @@ class|class
 name|SocketUtil
 block|{
 comment|/** True if this InetAddress is a raw IPv6 in dotted quad notation. */
-DECL|method|isIPv6 (final InetAddress ip)
+DECL|method|isIPv6 (InetAddress ip)
 specifier|public
 specifier|static
 name|boolean
 name|isIPv6
 parameter_list|(
-specifier|final
 name|InetAddress
 name|ip
 parameter_list|)
@@ -155,13 +154,12 @@ argument_list|)
 return|;
 block|}
 comment|/** Get the name or IP address, or {@code *} if this address is a wildcard IP. */
-DECL|method|hostname (final InetSocketAddress addr)
+DECL|method|hostname (InetSocketAddress addr)
 specifier|public
 specifier|static
 name|String
 name|hostname
 parameter_list|(
-specifier|final
 name|InetSocketAddress
 name|addr
 parameter_list|)
@@ -209,17 +207,15 @@ argument_list|()
 return|;
 block|}
 comment|/** Format an address string into {@code host:port} or {@code *:port} syntax. */
-DECL|method|format (final SocketAddress s, final int defaultPort)
+DECL|method|format (SocketAddress s, int defaultPort)
 specifier|public
 specifier|static
 name|String
 name|format
 parameter_list|(
-specifier|final
 name|SocketAddress
 name|s
 parameter_list|,
-specifier|final
 name|int
 name|defaultPort
 parameter_list|)
@@ -343,17 +339,15 @@ name|hostname
 return|;
 block|}
 comment|/** Parse an address string such as {@code host:port} or {@code *:port}. */
-DECL|method|parse (final String desc, final int defaultPort)
+DECL|method|parse (String desc, int defaultPort)
 specifier|public
 specifier|static
 name|InetSocketAddress
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|desc
 parameter_list|,
-specifier|final
 name|int
 name|defaultPort
 parameter_list|)
@@ -590,17 +584,15 @@ argument_list|)
 return|;
 block|}
 comment|/** Parse and resolve an address string, looking up the IP address. */
-DECL|method|resolve (final String desc, final int defaultPort)
+DECL|method|resolve (String desc, int defaultPort)
 specifier|public
 specifier|static
 name|InetSocketAddress
 name|resolve
 parameter_list|(
-specifier|final
 name|String
 name|desc
 parameter_list|,
-specifier|final
 name|int
 name|defaultPort
 parameter_list|)

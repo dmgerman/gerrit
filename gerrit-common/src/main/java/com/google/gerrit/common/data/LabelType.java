@@ -1417,12 +1417,11 @@ name|value
 argument_list|)
 return|;
 block|}
-DECL|method|getValue (final PatchSetApproval ca)
+DECL|method|getValue (PatchSetApproval ca)
 specifier|public
 name|LabelValue
 name|getValue
 parameter_list|(
-specifier|final
 name|PatchSetApproval
 name|ca
 parameter_list|)
@@ -1464,7 +1463,6 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|LabelValue
 name|v
 range|:

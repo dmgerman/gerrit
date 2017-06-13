@@ -96,19 +96,16 @@ specifier|protected
 name|SshHostKey
 parameter_list|()
 block|{}
-DECL|method|SshHostKey (final String hi, final String hk, final String fp)
+DECL|method|SshHostKey (String hi, String hk, String fp)
 specifier|public
 name|SshHostKey
 parameter_list|(
-specifier|final
 name|String
 name|hi
 parameter_list|,
-specifier|final
 name|String
 name|hk
 parameter_list|,
-specifier|final
 name|String
 name|fp
 parameter_list|)

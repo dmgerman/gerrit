@@ -2026,16 +2026,14 @@ name|matches
 argument_list|()
 return|;
 block|}
-DECL|method|getMissingChangeIdErrorMsg ( final String errMsg, final RevCommit c)
+DECL|method|getMissingChangeIdErrorMsg (String errMsg, RevCommit c)
 specifier|private
 name|CommitValidationMessage
 name|getMissingChangeIdErrorMsg
 parameter_list|(
-specifier|final
 name|String
 name|errMsg
 parameter_list|,
-specifier|final
 name|RevCommit
 name|c
 parameter_list|)

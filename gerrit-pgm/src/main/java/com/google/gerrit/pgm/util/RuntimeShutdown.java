@@ -124,13 +124,12 @@ name|ShutdownCallback
 argument_list|()
 decl_stmt|;
 comment|/** Add a task to be performed when graceful shutdown is requested. */
-DECL|method|add (final Runnable task)
+DECL|method|add (Runnable task)
 specifier|public
 specifier|static
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|Runnable
 name|task
 parameter_list|)
@@ -247,11 +246,10 @@ literal|"ShutdownCallback"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|add (final Runnable newTask)
+DECL|method|add (Runnable newTask)
 name|boolean
 name|add
 parameter_list|(
-specifier|final
 name|Runnable
 name|newTask
 parameter_list|)

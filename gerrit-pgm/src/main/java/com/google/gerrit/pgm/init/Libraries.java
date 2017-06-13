@@ -848,13 +848,12 @@ return|return
 name|val
 return|;
 block|}
-DECL|method|read (final String p)
+DECL|method|read (String p)
 specifier|private
 specifier|static
 name|String
 name|read
 parameter_list|(
-specifier|final
 name|String
 name|p
 parameter_list|)

@@ -497,13 +497,12 @@ specifier|static
 name|ClassLoader
 name|daemonClassLoader
 decl_stmt|;
-DECL|method|main (final String[] argv)
+DECL|method|main (String[] argv)
 specifier|public
 specifier|static
 name|void
 name|main
 parameter_list|(
-specifier|final
 name|String
 index|[]
 name|argv
@@ -522,13 +521,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|mainImpl (final String[] argv)
+DECL|method|mainImpl (String[] argv)
 specifier|public
 specifier|static
 name|int
 name|mainImpl
 parameter_list|(
-specifier|final
 name|String
 index|[]
 name|argv
@@ -850,13 +848,12 @@ name|argv
 argument_list|)
 return|;
 block|}
-DECL|method|daemonStart (final String[] argv)
+DECL|method|daemonStart (String[] argv)
 specifier|public
 specifier|static
 name|void
 name|daemonStart
 parameter_list|(
-specifier|final
 name|String
 index|[]
 name|argv
@@ -981,13 +978,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|daemonStop (final String[] argv)
+DECL|method|daemonStop (String[] argv)
 specifier|public
 specifier|static
 name|void
 name|daemonStop
 parameter_list|(
-specifier|final
 name|String
 index|[]
 name|argv
@@ -1122,13 +1118,12 @@ name|cn
 argument_list|)
 return|;
 block|}
-DECL|method|getVersion (final File me)
+DECL|method|getVersion (File me)
 specifier|private
 specifier|static
 name|String
 name|getVersion
 parameter_list|(
-specifier|final
 name|File
 name|me
 parameter_list|)
@@ -1207,17 +1202,15 @@ literal|""
 return|;
 block|}
 block|}
-DECL|method|invokeProgram (final ClassLoader loader, final String[] origArgv)
+DECL|method|invokeProgram (ClassLoader loader, String[] origArgv)
 specifier|private
 specifier|static
 name|int
 name|invokeProgram
 parameter_list|(
-specifier|final
 name|ClassLoader
 name|loader
 parameter_list|,
-specifier|final
 name|String
 index|[]
 name|origArgv
@@ -2319,13 +2312,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|safeName (final ZipEntry ze)
+DECL|method|safeName (ZipEntry ze)
 specifier|private
 specifier|static
 name|String
 name|safeName
 parameter_list|(
-specifier|final
 name|ZipEntry
 name|ze
 parameter_list|)
@@ -3357,7 +3349,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|File
 name|tmpEntry
 range|:

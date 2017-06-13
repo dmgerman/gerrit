@@ -121,11 +121,10 @@ specifier|protected
 name|RevId
 parameter_list|()
 block|{}
-DECL|method|RevId (final String str)
+DECL|method|RevId (String str)
 specifier|public
 name|RevId
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)

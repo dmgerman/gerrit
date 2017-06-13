@@ -517,12 +517,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setInputStream (final InputStream in)
+DECL|method|setInputStream (InputStream in)
 specifier|public
 name|void
 name|setInputStream
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|)
@@ -536,12 +535,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setOutputStream (final OutputStream out)
+DECL|method|setOutputStream (OutputStream out)
 specifier|public
 name|void
 name|setOutputStream
 parameter_list|(
-specifier|final
 name|OutputStream
 name|out
 parameter_list|)
@@ -555,12 +553,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setErrorStream (final OutputStream err)
+DECL|method|setErrorStream (OutputStream err)
 specifier|public
 name|void
 name|setErrorStream
 parameter_list|(
-specifier|final
 name|OutputStream
 name|err
 parameter_list|)
@@ -574,12 +571,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setExitCallback (final ExitCallback callback)
+DECL|method|setExitCallback (ExitCallback callback)
 specifier|public
 name|void
 name|setExitCallback
 parameter_list|(
-specifier|final
 name|ExitCallback
 name|callback
 parameter_list|)
@@ -593,12 +589,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setSession (final ServerSession session)
+DECL|method|setSession (ServerSession session)
 specifier|public
 name|void
 name|setSession
 parameter_list|(
-specifier|final
 name|ServerSession
 name|session
 parameter_list|)
@@ -633,12 +628,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|start (final Environment env)
+DECL|method|start (Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
-specifier|final
 name|Environment
 name|env
 parameter_list|)

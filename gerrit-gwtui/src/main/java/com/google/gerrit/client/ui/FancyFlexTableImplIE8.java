@@ -176,16 +176,14 @@ name|FancyFlexTableImpl
 block|{
 annotation|@
 name|Override
-DECL|method|resetHtml (final FlexTable myTable, final SafeHtml bodyHtml)
+DECL|method|resetHtml (FlexTable myTable, SafeHtml bodyHtml)
 specifier|public
 name|void
 name|resetHtml
 parameter_list|(
-specifier|final
 name|FlexTable
 name|myTable
 parameter_list|,
-specifier|final
 name|SafeHtml
 name|bodyHtml
 parameter_list|)
@@ -248,13 +246,12 @@ name|newBody
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseBody (final SafeHtml body)
+DECL|method|parseBody (SafeHtml body)
 specifier|private
 specifier|static
 name|Element
 name|parseBody
 parameter_list|(
-specifier|final
 name|SafeHtml
 name|body
 parameter_list|)

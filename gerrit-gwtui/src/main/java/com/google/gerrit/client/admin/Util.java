@@ -190,13 +190,12 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|toLongString (final SubmitType type)
+DECL|method|toLongString (SubmitType type)
 specifier|public
 specifier|static
 name|String
 name|toLongString
 parameter_list|(
-specifier|final
 name|SubmitType
 name|type
 parameter_list|)
@@ -292,13 +291,12 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|toLongString (final ProjectState type)
+DECL|method|toLongString (ProjectState type)
 specifier|public
 specifier|static
 name|String
 name|toLongString
 parameter_list|(
-specifier|final
 name|ProjectState
 name|type
 parameter_list|)

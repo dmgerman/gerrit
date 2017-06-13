@@ -865,7 +865,7 @@ return|return
 name|psa
 return|;
 block|}
-DECL|method|filterApprovals ( Iterable<PatchSetApproval> psas, final Account.Id accountId)
+DECL|method|filterApprovals ( Iterable<PatchSetApproval> psas, Account.Id accountId)
 specifier|private
 specifier|static
 name|Iterable
@@ -880,7 +880,6 @@ name|PatchSetApproval
 argument_list|>
 name|psas
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id

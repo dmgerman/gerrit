@@ -492,16 +492,14 @@ name|firstPopupLoad
 init|=
 literal|true
 decl_stmt|;
-DECL|method|initPopup (final String popupText, final String currentPageLink)
+DECL|method|initPopup (String popupText, String currentPageLink)
 specifier|public
 name|void
 name|initPopup
 parameter_list|(
-specifier|final
 name|String
 name|popupText
 parameter_list|,
-specifier|final
 name|String
 name|currentPageLink
 parameter_list|)
@@ -757,16 +755,14 @@ return|return
 name|poppingUp
 return|;
 block|}
-DECL|method|createWidgets (final String popupText, final String currentPageLink)
+DECL|method|createWidgets (String popupText, String currentPageLink)
 specifier|private
 name|void
 name|createWidgets
 parameter_list|(
-specifier|final
 name|String
 name|popupText
 parameter_list|,
-specifier|final
 name|String
 name|currentPageLink
 parameter_list|)
@@ -929,11 +925,9 @@ specifier|protected
 name|void
 name|movePointerTo
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|boolean
 name|scroll
 parameter_list|)
@@ -965,7 +959,6 @@ specifier|protected
 name|void
 name|onOpenRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
@@ -1063,7 +1056,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1183,16 +1175,14 @@ name|hide
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setPreferredCoordinates (final int top, final int left)
+DECL|method|setPreferredCoordinates (int top, int left)
 specifier|public
 name|void
 name|setPreferredCoordinates
 parameter_list|(
-specifier|final
 name|int
 name|top
 parameter_list|,
-specifier|final
 name|int
 name|left
 parameter_list|)

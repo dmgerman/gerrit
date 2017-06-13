@@ -160,11 +160,10 @@ specifier|final
 name|String
 name|prefix
 decl_stmt|;
-DECL|method|RpcServletModule (final String pathPrefix)
+DECL|method|RpcServletModule (String pathPrefix)
 specifier|protected
 name|RpcServletModule
 parameter_list|(
-specifier|final
 name|String
 name|pathPrefix
 parameter_list|)
@@ -231,12 +230,11 @@ name|clazz
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|rpc (final String name, Class<? extends RemoteJsonService> clazz)
+DECL|method|rpc (String name, Class<? extends RemoteJsonService> clazz)
 specifier|protected
 name|void
 name|rpc
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,

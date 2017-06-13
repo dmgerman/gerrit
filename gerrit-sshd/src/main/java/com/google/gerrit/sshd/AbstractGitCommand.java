@@ -339,12 +339,11 @@ name|project
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start (final Environment env)
+DECL|method|start (Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
-specifier|final
 name|Environment
 name|env
 parameter_list|)

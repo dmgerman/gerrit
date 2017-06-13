@@ -489,11 +489,10 @@ literal|2
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setName (final String name)
+DECL|method|setName (String name)
 name|void
 name|setName
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -505,11 +504,10 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-DECL|method|setJarUrl (final String url)
+DECL|method|setJarUrl (String url)
 name|void
 name|setJarUrl
 parameter_list|(
-specifier|final
 name|String
 name|url
 parameter_list|)
@@ -530,11 +528,10 @@ literal|"http"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setSHA1 (final String sha1)
+DECL|method|setSHA1 (String sha1)
 name|void
 name|setSHA1
 parameter_list|(
-specifier|final
 name|String
 name|sha1
 parameter_list|)
@@ -1319,13 +1316,12 @@ name|dst
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|url2file (final String urlString)
+DECL|method|url2file (String urlString)
 specifier|private
 specifier|static
 name|Path
 name|url2file
 parameter_list|(
-specifier|final
 name|String
 name|urlString
 parameter_list|)

@@ -729,12 +729,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|get (final AccountGroup.Id groupId)
+DECL|method|get (AccountGroup.Id groupId)
 specifier|public
 name|AccountGroup
 name|get
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -800,12 +799,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|evict (final AccountGroup group)
+DECL|method|evict (AccountGroup group)
 specifier|public
 name|void
 name|evict
 parameter_list|(
-specifier|final
 name|AccountGroup
 name|group
 parameter_list|)
@@ -897,7 +895,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|evictAfterRename ( final AccountGroup.NameKey oldName, final AccountGroup.NameKey newName)
+DECL|method|evictAfterRename (final AccountGroup.NameKey oldName, AccountGroup.NameKey newName)
 specifier|public
 name|void
 name|evictAfterRename
@@ -908,7 +906,6 @@ operator|.
 name|NameKey
 name|oldName
 parameter_list|,
-specifier|final
 name|AccountGroup
 operator|.
 name|NameKey
@@ -1290,10 +1287,9 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByIdLoader (final SchemaFactory<ReviewDb> sf)
+DECL|method|ByIdLoader (SchemaFactory<ReviewDb> sf)
 name|ByIdLoader
 parameter_list|(
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -1308,7 +1304,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|load (final AccountGroup.Id key)
+DECL|method|load (AccountGroup.Id key)
 specifier|public
 name|Optional
 argument_list|<
@@ -1316,7 +1312,6 @@ name|AccountGroup
 argument_list|>
 name|load
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -1381,10 +1376,9 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByNameLoader (final SchemaFactory<ReviewDb> sf)
+DECL|method|ByNameLoader (SchemaFactory<ReviewDb> sf)
 name|ByNameLoader
 parameter_list|(
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -1512,10 +1506,9 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByUUIDLoader (final SchemaFactory<ReviewDb> sf)
+DECL|method|ByUUIDLoader (SchemaFactory<ReviewDb> sf)
 name|ByUUIDLoader
 parameter_list|(
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb

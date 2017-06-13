@@ -157,10 +157,9 @@ name|site
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|H2 (final SitePaths site, @GerritServerConfig final Config cfg)
+DECL|method|H2 (SitePaths site, @GerritServerConfig final Config cfg)
 name|H2
 parameter_list|(
-specifier|final
 name|SitePaths
 name|site
 parameter_list|,

@@ -659,7 +659,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -953,12 +952,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|enableUI (final boolean on)
+DECL|method|enableUI (boolean on)
 specifier|private
 name|void
 name|enableUI
 parameter_list|(
-specifier|final
 name|boolean
 name|on
 parameter_list|)
@@ -989,12 +987,11 @@ name|KeyPressHandler
 block|{
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent event)
+DECL|method|onKeyPress (KeyPressEvent event)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)

@@ -2188,7 +2188,6 @@ specifier|protected
 name|ServerSessionImpl
 name|createSession
 parameter_list|(
-specifier|final
 name|IoSession
 name|io
 parameter_list|)
@@ -2877,7 +2876,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|PublicKey
 name|pub
 range|:
@@ -2911,7 +2909,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|addr
 range|:
@@ -3074,7 +3071,7 @@ return|return
 name|keys
 return|;
 block|}
-DECL|method|addPublicKey ( final Collection<PublicKey> out, final KeyPairProvider p, final String type)
+DECL|method|addPublicKey ( final Collection<PublicKey> out, KeyPairProvider p, String type)
 specifier|private
 specifier|static
 name|void
@@ -3087,11 +3084,9 @@ name|PublicKey
 argument_list|>
 name|out
 parameter_list|,
-specifier|final
 name|KeyPairProvider
 name|p
 parameter_list|,
-specifier|final
 name|String
 name|type
 parameter_list|)
@@ -3658,12 +3653,11 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|initCiphers (final Config cfg)
+DECL|method|initCiphers (Config cfg)
 specifier|private
 name|void
 name|initCiphers
 parameter_list|(
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
@@ -3949,7 +3943,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|SafeVarargs
-DECL|method|filter ( final Config cfg, final String key, final NamedFactory<T>... avail)
+DECL|method|filter ( final Config cfg, String key, NamedFactory<T>... avail)
 specifier|private
 specifier|static
 parameter_list|<
@@ -3968,11 +3962,9 @@ specifier|final
 name|Config
 name|cfg
 parameter_list|,
-specifier|final
 name|String
 name|key
 parameter_list|,
-specifier|final
 name|NamedFactory
 argument_list|<
 name|T
@@ -3998,7 +3990,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|NamedFactory
 argument_list|<
 name|T
@@ -4065,7 +4056,6 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|setting
 range|:
@@ -4328,7 +4318,7 @@ return|;
 block|}
 annotation|@
 name|SafeVarargs
-DECL|method|find (final String name, final NamedFactory<T>... avail)
+DECL|method|find (String name, NamedFactory<T>... avail)
 specifier|private
 specifier|static
 parameter_list|<
@@ -4340,11 +4330,9 @@ name|T
 argument_list|>
 name|find
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|NamedFactory
 argument_list|<
 name|T
@@ -4355,7 +4343,6 @@ parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|NamedFactory
 argument_list|<
 name|T

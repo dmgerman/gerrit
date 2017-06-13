@@ -505,11 +505,10 @@ name|usage
 operator|=
 literal|"request reviewer for change(s)"
 argument_list|)
-DECL|method|addReviewer (final Account.Id id)
+DECL|method|addReviewer (Account.Id id)
 name|void
 name|addReviewer
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -543,11 +542,10 @@ name|usage
 operator|=
 literal|"CC user on change(s)"
 argument_list|)
-DECL|method|addCC (final Account.Id id)
+DECL|method|addCC (Account.Id id)
 name|void
 name|addCC
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id

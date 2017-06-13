@@ -291,11 +291,10 @@ name|String
 argument_list|>
 name|queries
 decl_stmt|;
-DECL|method|DashboardTable (final Screen screen, String params)
+DECL|method|DashboardTable (Screen screen, String params)
 specifier|public
 name|DashboardTable
 parameter_list|(
-specifier|final
 name|Screen
 name|screen
 parameter_list|,

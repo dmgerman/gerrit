@@ -972,12 +972,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|put (final K key, V val)
+DECL|method|put (K key, V val)
 specifier|public
 name|void
 name|put
 parameter_list|(
-specifier|final
 name|K
 name|key
 parameter_list|,
@@ -1041,12 +1040,11 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|invalidate (final Object key)
+DECL|method|invalidate (Object key)
 specifier|public
 name|void
 name|invalidate
 parameter_list|(
-specifier|final
 name|Object
 name|key
 parameter_list|)
@@ -1243,11 +1241,10 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|prune (final ScheduledExecutorService service)
+DECL|method|prune (ScheduledExecutorService service)
 name|void
 name|prune
 parameter_list|(
-specifier|final
 name|ScheduledExecutorService
 name|service
 parameter_list|)
@@ -1494,7 +1491,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|load (final K key)
+DECL|method|load (K key)
 specifier|public
 name|ValueHolder
 argument_list|<
@@ -1502,7 +1499,6 @@ name|V
 argument_list|>
 name|load
 parameter_list|(
-specifier|final
 name|K
 name|key
 parameter_list|)

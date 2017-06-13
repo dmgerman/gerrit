@@ -197,18 +197,16 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|create (final byte[] bytes, final String contentType)
+DECL|method|create (byte[] bytes, String contentType)
 specifier|public
 specifier|static
 name|RawInput
 name|create
 parameter_list|(
-specifier|final
 name|byte
 index|[]
 name|bytes
 parameter_list|,
-specifier|final
 name|String
 name|contentType
 parameter_list|)
@@ -280,13 +278,12 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|create (final byte[] bytes)
+DECL|method|create (byte[] bytes)
 specifier|public
 specifier|static
 name|RawInput
 name|create
 parameter_list|(
-specifier|final
 name|byte
 index|[]
 name|bytes
@@ -301,13 +298,12 @@ literal|"application/octet-stream"
 argument_list|)
 return|;
 block|}
-DECL|method|create (final HttpServletRequest req)
+DECL|method|create (HttpServletRequest req)
 specifier|public
 specifier|static
 name|RawInput
 name|create
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)

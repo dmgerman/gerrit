@@ -561,11 +561,10 @@ name|usage
 operator|=
 literal|"initial set of users to become members of the group"
 argument_list|)
-DECL|method|addMember (final Account.Id id)
+DECL|method|addMember (Account.Id id)
 name|void
 name|addMember
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -631,11 +630,10 @@ name|usage
 operator|=
 literal|"initial set of groups to be included in the group"
 argument_list|)
-DECL|method|addGroup (final AccountGroup.UUID id)
+DECL|method|addGroup (AccountGroup.UUID id)
 name|void
 name|addGroup
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID

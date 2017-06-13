@@ -1046,12 +1046,11 @@ name|cfg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|convertUrl (final Section database, String url)
+DECL|method|convertUrl (Section database, String url)
 specifier|private
 name|boolean
 name|convertUrl
 parameter_list|(
-specifier|final
 name|Section
 name|database
 parameter_list|,
@@ -1566,16 +1565,14 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|sethost (final Section database, final InetSocketAddress addr)
+DECL|method|sethost (Section database, InetSocketAddress addr)
 specifier|private
 name|void
 name|sethost
 parameter_list|(
-specifier|final
 name|Section
 name|database
 parameter_list|,
-specifier|final
 name|InetSocketAddress
 name|addr
 parameter_list|)
@@ -1623,12 +1620,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setuser (final Section database, String username, String password)
+DECL|method|setuser (Section database, String username, String password)
 specifier|private
 name|void
 name|setuser
 parameter_list|(
-specifier|final
 name|Section
 name|database
 parameter_list|,
@@ -1829,7 +1825,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Map
 operator|.
 name|Entry

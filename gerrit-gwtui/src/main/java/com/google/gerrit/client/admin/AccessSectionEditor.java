@@ -1473,11 +1473,10 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|setEditing (final boolean editing)
+DECL|method|setEditing (boolean editing)
 name|void
 name|setEditing
 parameter_list|(
-specifier|final
 name|boolean
 name|editing
 parameter_list|)
@@ -1713,16 +1712,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addPermission (final String permissionName, final List<String> permissionList)
+DECL|method|addPermission (String permissionName, List<String> permissionList)
 specifier|private
 name|void
 name|addPermission
 parameter_list|(
-specifier|final
 name|String
 name|permissionName
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|String

@@ -564,15 +564,13 @@ specifier|private
 name|AccountGroupSuggestOracle
 name|accountGroupSuggestOracle
 decl_stmt|;
-DECL|method|AccountGroupMembersScreen (final GroupInfo toShow, final String token)
+DECL|method|AccountGroupMembersScreen (GroupInfo toShow, String token)
 specifier|public
 name|AccountGroupMembersScreen
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|toShow
 parameter_list|,
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -608,12 +606,11 @@ name|initNoMembersInfo
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|enableForm (final boolean canModify)
+DECL|method|enableForm (boolean canModify)
 specifier|private
 name|void
 name|enableForm
 parameter_list|(
-specifier|final
 name|boolean
 name|canModify
 parameter_list|)
@@ -691,7 +688,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -751,7 +747,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -862,7 +857,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -922,7 +916,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1028,16 +1021,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|display (final GroupInfo group, final boolean canModify)
+DECL|method|display (GroupInfo group, boolean canModify)
 specifier|protected
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|group
 parameter_list|,
-specifier|final
 name|boolean
 name|canModify
 parameter_list|)
@@ -1185,7 +1176,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|AccountInfo
 name|memberInfo
 parameter_list|)
@@ -1218,7 +1208,6 @@ specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -1320,7 +1309,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|result
 parameter_list|)
@@ -1353,7 +1341,6 @@ specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -1497,11 +1484,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setEnabled (final boolean enabled)
+DECL|method|setEnabled (boolean enabled)
 name|void
 name|setEnabled
 parameter_list|(
-specifier|final
 name|boolean
 name|enabled
 parameter_list|)
@@ -1679,7 +1665,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|VoidResult
 name|result
 parameter_list|)
@@ -1747,11 +1732,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|display (final List<AccountInfo> result)
+DECL|method|display (List<AccountInfo> result)
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|AccountInfo
@@ -1784,7 +1768,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|AccountInfo
 name|i
 range|:
@@ -1990,15 +1973,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populate (final int row, final AccountInfo i)
+DECL|method|populate (int row, AccountInfo i)
 name|void
 name|populate
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|AccountInfo
 name|i
 parameter_list|)
@@ -2253,11 +2234,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setEnabled (final boolean enabled)
+DECL|method|setEnabled (boolean enabled)
 name|void
 name|setEnabled
 parameter_list|(
-specifier|final
 name|boolean
 name|enabled
 parameter_list|)
@@ -2437,7 +2417,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|VoidResult
 name|result
 parameter_list|)
@@ -2541,7 +2520,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|GroupInfo
 name|i
 range|:
@@ -2722,15 +2700,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populate (final int row, final GroupInfo i)
+DECL|method|populate (int row, GroupInfo i)
 name|void
 name|populate
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|GroupInfo
 name|i
 parameter_list|)

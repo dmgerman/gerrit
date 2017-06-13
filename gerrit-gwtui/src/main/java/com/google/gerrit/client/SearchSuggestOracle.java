@@ -267,11 +267,9 @@ specifier|public
 name|void
 name|onRequestSuggestions
 parameter_list|(
-specifier|final
 name|Request
 name|request
 parameter_list|,
-specifier|final
 name|Callback
 name|done
 parameter_list|)
@@ -296,7 +294,6 @@ specifier|final
 name|Request
 name|request
 parameter_list|,
-specifier|final
 name|Response
 name|response
 parameter_list|)
@@ -1115,7 +1112,6 @@ return|return;
 block|}
 for|for
 control|(
-specifier|final
 name|ParamSuggester
 name|ps
 range|:
@@ -1250,12 +1246,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getLastWord (final String query)
+DECL|method|getLastWord (String query)
 specifier|private
 name|String
 name|getLastWord
 parameter_list|(
-specifier|final
 name|String
 name|query
 parameter_list|)
@@ -1312,12 +1307,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getQueryPattern (final String query)
+DECL|method|getQueryPattern (String query)
 specifier|protected
 name|String
 name|getQueryPattern
 parameter_list|(
-specifier|final
 name|String
 name|query
 parameter_list|)
@@ -1450,17 +1444,15 @@ specifier|final
 name|SuggestOracle
 name|parameterSuggestionOracle
 decl_stmt|;
-DECL|method|ParamSuggester (final List<String> operators, final SuggestOracle parameterSuggestionOracle)
+DECL|method|ParamSuggester (List<String> operators, SuggestOracle parameterSuggestionOracle)
 name|ParamSuggester
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|String
 argument_list|>
 name|operators
 parameter_list|,
-specifier|final
 name|SuggestOracle
 name|parameterSuggestionOracle
 parameter_list|)
@@ -1478,11 +1470,10 @@ operator|=
 name|parameterSuggestionOracle
 expr_stmt|;
 block|}
-DECL|method|applicable (final String query)
+DECL|method|applicable (String query)
 name|boolean
 name|applicable
 parameter_list|(
-specifier|final
 name|String
 name|query
 parameter_list|)
@@ -1514,16 +1505,14 @@ name|length
 argument_list|()
 return|;
 block|}
-DECL|method|getApplicableOperator (final String lastWord, final List<String> operators)
+DECL|method|getApplicableOperator (String lastWord, List<String> operators)
 specifier|private
 name|String
 name|getApplicableOperator
 parameter_list|(
-specifier|final
 name|String
 name|lastWord
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -1533,7 +1522,6 @@ parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|String
 name|operator
 range|:
@@ -1559,19 +1547,16 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|suggest (final String lastWord, final Request request, final Callback done)
+DECL|method|suggest (String lastWord, Request request, Callback done)
 name|void
 name|suggest
 parameter_list|(
-specifier|final
 name|String
 name|lastWord
 parameter_list|,
-specifier|final
 name|Request
 name|request
 parameter_list|,
-specifier|final
 name|Callback
 name|done
 parameter_list|)
@@ -1620,11 +1605,9 @@ specifier|public
 name|void
 name|onSuggestionsReady
 parameter_list|(
-specifier|final
 name|Request
 name|req
 parameter_list|,
-specifier|final
 name|Response
 name|response
 parameter_list|)
@@ -1662,7 +1645,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|SearchSuggestOracle
 operator|.
 name|Suggestion
@@ -1734,7 +1716,6 @@ specifier|private
 name|String
 name|quoteIfNeeded
 parameter_list|(
-specifier|final
 name|String
 name|s
 parameter_list|)

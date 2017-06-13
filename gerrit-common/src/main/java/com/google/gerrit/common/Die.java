@@ -81,11 +81,10 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|Die (final String why)
+DECL|method|Die (String why)
 specifier|public
 name|Die
 parameter_list|(
-specifier|final
 name|String
 name|why
 parameter_list|)
@@ -96,15 +95,13 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Die (final String why, final Throwable cause)
+DECL|method|Die (String why, Throwable cause)
 specifier|public
 name|Die
 parameter_list|(
-specifier|final
 name|String
 name|why
 parameter_list|,
-specifier|final
 name|Throwable
 name|cause
 parameter_list|)

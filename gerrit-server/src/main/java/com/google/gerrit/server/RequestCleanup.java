@@ -178,12 +178,11 @@ name|boolean
 name|ran
 decl_stmt|;
 comment|/** Register a task to be completed after the request ends. */
-DECL|method|add (final Runnable task)
+DECL|method|add (Runnable task)
 specifier|public
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|Runnable
 name|task
 parameter_list|)
@@ -234,7 +233,6 @@ literal|true
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|Iterator
 argument_list|<
 name|Runnable

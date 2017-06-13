@@ -140,16 +140,14 @@ specifier|public
 class|class
 name|FancyFlexTableImpl
 block|{
-DECL|method|resetHtml (final FlexTable myTable, final SafeHtml body)
+DECL|method|resetHtml (FlexTable myTable, SafeHtml body)
 specifier|public
 name|void
 name|resetHtml
 parameter_list|(
-specifier|final
 name|FlexTable
 name|myTable
 parameter_list|,
-specifier|final
 name|SafeHtml
 name|body
 parameter_list|)

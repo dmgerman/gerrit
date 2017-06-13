@@ -84,10 +84,9 @@ specifier|final
 name|String
 name|html
 decl_stmt|;
-DECL|method|SafeHtmlString (final String h)
+DECL|method|SafeHtmlString (String h)
 name|SafeHtmlString
 parameter_list|(
-specifier|final
 name|String
 name|h
 parameter_list|)

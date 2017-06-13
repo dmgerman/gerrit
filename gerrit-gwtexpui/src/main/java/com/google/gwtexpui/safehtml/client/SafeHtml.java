@@ -415,13 +415,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/** @return the existing HTML property of a widget. */
-DECL|method|get (final HasHTML t)
+DECL|method|get (HasHTML t)
 specifier|public
 specifier|static
 name|SafeHtml
 name|get
 parameter_list|(
-specifier|final
 name|HasHTML
 name|t
 parameter_list|)
@@ -438,13 +437,12 @@ argument_list|)
 return|;
 block|}
 comment|/** @return the existing HTML text, wrapped in a safe buffer. */
-DECL|method|asis (final String htmlText)
+DECL|method|asis (String htmlText)
 specifier|public
 specifier|static
 name|SafeHtml
 name|asis
 parameter_list|(
-specifier|final
 name|String
 name|htmlText
 parameter_list|)
@@ -458,7 +456,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Set the HTML property of a widget. */
-DECL|method|set (final T e, final SafeHtml str)
+DECL|method|set (T e, SafeHtml str)
 specifier|public
 specifier|static
 parameter_list|<
@@ -469,11 +467,9 @@ parameter_list|>
 name|T
 name|set
 parameter_list|(
-specifier|final
 name|T
 name|e
 parameter_list|,
-specifier|final
 name|SafeHtml
 name|str
 parameter_list|)
@@ -543,21 +539,18 @@ name|e
 return|;
 block|}
 comment|/** @return the existing inner HTML of a table cell. */
-DECL|method|get (final HTMLTable t, final int row, final int col)
+DECL|method|get (HTMLTable t, int row, int col)
 specifier|public
 specifier|static
 name|SafeHtml
 name|get
 parameter_list|(
-specifier|final
 name|HTMLTable
 name|t
 parameter_list|,
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|int
 name|col
 parameter_list|)
@@ -578,7 +571,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Set the inner HTML of a table cell. */
-DECL|method|set ( final T t, final int row, final int col, final SafeHtml str)
+DECL|method|set (final T t, int row, int col, SafeHtml str)
 specifier|public
 specifier|static
 parameter_list|<
@@ -593,15 +586,12 @@ specifier|final
 name|T
 name|t
 parameter_list|,
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|int
 name|col
 parameter_list|,
-specifier|final
 name|SafeHtml
 name|str
 parameter_list|)
@@ -710,7 +700,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|p
 range|:
@@ -760,7 +749,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|line
 range|:
@@ -871,16 +859,14 @@ name|toSafeHtml
 argument_list|()
 return|;
 block|}
-DECL|method|wikifyList (final SafeHtmlBuilder r, final String p)
+DECL|method|wikifyList (SafeHtmlBuilder r, String p)
 specifier|private
 name|void
 name|wikifyList
 parameter_list|(
-specifier|final
 name|SafeHtmlBuilder
 name|r
 parameter_list|,
-specifier|final
 name|String
 name|p
 parameter_list|)
@@ -1261,13 +1247,12 @@ literal|"&gt; "
 argument_list|)
 return|;
 block|}
-DECL|method|isPreFormat (final String p)
+DECL|method|isPreFormat (String p)
 specifier|private
 specifier|static
 name|boolean
 name|isPreFormat
 parameter_list|(
-specifier|final
 name|String
 name|p
 parameter_list|)
@@ -1302,13 +1287,12 @@ literal|"\t"
 argument_list|)
 return|;
 block|}
-DECL|method|isList (final String p)
+DECL|method|isList (String p)
 specifier|private
 specifier|static
 name|boolean
 name|isList
 parameter_list|(
-specifier|final
 name|String
 name|p
 parameter_list|)
@@ -1344,16 +1328,14 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Replace first occurrence of {@code regex} with {@code repl} .    *    *<p><b>WARNING:</b> This replacement is being performed against an otherwise safe HTML string.    * The caller must ensure that the replacement does not introduce cross-site scripting attack    * entry points.    *    * @param regex regular expression pattern to match the substring with.    * @param repl replacement expression. Capture groups within {@code regex} can be referenced with    *     {@code $<i>n</i>}.    * @return a new string, after the replacement has been made.    */
-DECL|method|replaceFirst (final String regex, final String repl)
+DECL|method|replaceFirst (String regex, String repl)
 specifier|public
 name|SafeHtml
 name|replaceFirst
 parameter_list|(
-specifier|final
 name|String
 name|regex
 parameter_list|,
-specifier|final
 name|String
 name|repl
 parameter_list|)
@@ -1375,16 +1357,14 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Replace each occurrence of {@code regex} with {@code repl} .    *    *<p><b>WARNING:</b> This replacement is being performed against an otherwise safe HTML string.    * The caller must ensure that the replacement does not introduce cross-site scripting attack    * entry points.    *    * @param regex regular expression pattern to match substrings with.    * @param repl replacement expression. Capture groups within {@code regex} can be referenced with    *     {@code $<i>n</i>}.    * @return a new string, after the replacements have been made.    */
-DECL|method|replaceAll (final String regex, final String repl)
+DECL|method|replaceAll (String regex, String repl)
 specifier|public
 name|SafeHtml
 name|replaceAll
 parameter_list|(
-specifier|final
 name|String
 name|regex
 parameter_list|,
-specifier|final
 name|String
 name|repl
 parameter_list|)

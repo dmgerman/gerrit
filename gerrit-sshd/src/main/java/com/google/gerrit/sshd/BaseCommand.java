@@ -928,12 +928,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setInputStream (final InputStream in)
+DECL|method|setInputStream (InputStream in)
 specifier|public
 name|void
 name|setInputStream
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|)
@@ -947,12 +946,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setOutputStream (final OutputStream out)
+DECL|method|setOutputStream (OutputStream out)
 specifier|public
 name|void
 name|setOutputStream
 parameter_list|(
-specifier|final
 name|OutputStream
 name|out
 parameter_list|)
@@ -966,12 +964,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setErrorStream (final OutputStream err)
+DECL|method|setErrorStream (OutputStream err)
 specifier|public
 name|void
 name|setErrorStream
 parameter_list|(
-specifier|final
 name|OutputStream
 name|err
 parameter_list|)
@@ -985,12 +982,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setExitCallback (final ExitCallback callback)
+DECL|method|setExitCallback (ExitCallback callback)
 specifier|public
 name|void
 name|setExitCallback
 parameter_list|(
-specifier|final
 name|ExitCallback
 name|callback
 parameter_list|)
@@ -1024,11 +1020,10 @@ return|return
 name|commandName
 return|;
 block|}
-DECL|method|setName (final String prefix)
+DECL|method|setName (String prefix)
 name|void
 name|setName
 parameter_list|(
-specifier|final
 name|String
 name|prefix
 parameter_list|)
@@ -1051,12 +1046,11 @@ return|return
 name|argv
 return|;
 block|}
-DECL|method|setArguments (final String[] argv)
+DECL|method|setArguments (String[] argv)
 specifier|public
 name|void
 name|setArguments
 parameter_list|(
-specifier|final
 name|String
 index|[]
 name|argv
@@ -1113,12 +1107,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Pass all state into the command, then run its start method.    *    *<p>This method copies all critical state, like the input and output streams, into the supplied    * command. The caller must still invoke {@code cmd.start()} if wants to pass control to the    * command.    *    * @param cmd the command that will receive the current state.    */
-DECL|method|provideStateTo (final Command cmd)
+DECL|method|provideStateTo (Command cmd)
 specifier|protected
 name|void
 name|provideStateTo
 parameter_list|(
-specifier|final
 name|Command
 name|cmd
 parameter_list|)
@@ -1342,12 +1335,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Spawn a function into its own thread.    *    *<p>Typically this should be invoked within {@link Command#start(Environment)}, such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *    *<p>If the function throws an exception, it is translated to a simple message for the client, a    * non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the command's logic.    */
-DECL|method|startThread (final CommandRunnable thunk)
+DECL|method|startThread (CommandRunnable thunk)
 specifier|protected
 name|void
 name|startThread
 parameter_list|(
-specifier|final
 name|CommandRunnable
 name|thunk
 parameter_list|)
@@ -1462,12 +1454,11 @@ literal|false
 return|;
 block|}
 comment|/**    * Terminate this command and return a result code to the remote client.    *    *<p>Commands should invoke this at most once. Once invoked, the command may lose access to    * request based resources as any callbacks previously registered with {@link RequestCleanup} will    * fire.    *    * @param rc exit code for the remote client.    */
-DECL|method|onExit (final int rc)
+DECL|method|onExit (int rc)
 specifier|protected
 name|void
 name|onExit
 parameter_list|(
-specifier|final
 name|int
 name|rc
 parameter_list|)
@@ -1494,13 +1485,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Wrap the supplied output stream in a UTF-8 encoded PrintWriter. */
-DECL|method|toPrintWriter (final OutputStream o)
+DECL|method|toPrintWriter (OutputStream o)
 specifier|protected
 specifier|static
 name|PrintWriter
 name|toPrintWriter
 parameter_list|(
-specifier|final
 name|OutputStream
 name|o
 parameter_list|)
@@ -1523,12 +1513,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|handleError (final Throwable e)
+DECL|method|handleError (Throwable e)
 specifier|private
 name|int
 name|handleError
 parameter_list|(
-specifier|final
 name|Throwable
 name|e
 parameter_list|)
@@ -1955,11 +1944,10 @@ operator|.
 name|NameKey
 name|projectName
 decl_stmt|;
-DECL|method|TaskThunk (final CommandRunnable thunk)
+DECL|method|TaskThunk (CommandRunnable thunk)
 specifier|private
 name|TaskThunk
 parameter_list|(
-specifier|final
 name|CommandRunnable
 name|thunk
 parameter_list|)
@@ -2429,15 +2417,13 @@ name|int
 name|exitCode
 decl_stmt|;
 comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the failure status of this      *     command. Should be between 1 and 255, inclusive.      * @param msg message to also send to the client's stderr.      */
-DECL|method|Failure (final int exitCode, final String msg)
+DECL|method|Failure (int exitCode, String msg)
 specifier|public
 name|Failure
 parameter_list|(
-specifier|final
 name|int
 name|exitCode
 parameter_list|,
-specifier|final
 name|String
 name|msg
 parameter_list|)
@@ -2453,19 +2439,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the failure status of this      *     command. Should be between 1 and 255, inclusive.      * @param msg message to also send to the client's stderr.      * @param why stack trace to include in the server's log, but is not sent to the client's      *     stderr.      */
-DECL|method|Failure (final int exitCode, final String msg, final Throwable why)
+DECL|method|Failure (int exitCode, String msg, Throwable why)
 specifier|public
 name|Failure
 parameter_list|(
-specifier|final
 name|int
 name|exitCode
 parameter_list|,
-specifier|final
 name|String
 name|msg
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)
@@ -2504,11 +2487,10 @@ init|=
 literal|1L
 decl_stmt|;
 comment|/**      * Create a new failure.      *      * @param msg message to also send to the client's stderr.      */
-DECL|method|UnloggedFailure (final String msg)
+DECL|method|UnloggedFailure (String msg)
 specifier|public
 name|UnloggedFailure
 parameter_list|(
-specifier|final
 name|String
 name|msg
 parameter_list|)
@@ -2522,15 +2504,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the failure status of this      *     command. Should be between 1 and 255, inclusive.      * @param msg message to also send to the client's stderr.      */
-DECL|method|UnloggedFailure (final int exitCode, final String msg)
+DECL|method|UnloggedFailure (int exitCode, String msg)
 specifier|public
 name|UnloggedFailure
 parameter_list|(
-specifier|final
 name|int
 name|exitCode
 parameter_list|,
-specifier|final
 name|String
 name|msg
 parameter_list|)
@@ -2546,19 +2526,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the failure status of this      *     command. Should be between 1 and 255, inclusive.      * @param msg message to also send to the client's stderr.      * @param why stack trace to include in the server's log, but is not sent to the client's      *     stderr.      */
-DECL|method|UnloggedFailure (final int exitCode, final String msg, final Throwable why)
+DECL|method|UnloggedFailure (int exitCode, String msg, Throwable why)
 specifier|public
 name|UnloggedFailure
 parameter_list|(
-specifier|final
 name|int
 name|exitCode
 parameter_list|,
-specifier|final
 name|String
 name|msg
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

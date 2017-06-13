@@ -351,16 +351,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|printJson (final StringBuilder sb, final Edit o)
+DECL|method|printJson (StringBuilder sb, Edit o)
 specifier|public
 name|void
 name|printJson
 parameter_list|(
-specifier|final
 name|StringBuilder
 name|sb
 parameter_list|,
-specifier|final
 name|Edit
 name|o
 parameter_list|)
@@ -426,16 +424,14 @@ literal|']'
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|append (final StringBuilder sb, final Edit o)
+DECL|method|append (StringBuilder sb, Edit o)
 specifier|private
 name|void
 name|append
 parameter_list|(
-specifier|final
 name|StringBuilder
 name|sb
 parameter_list|,
-specifier|final
 name|Edit
 name|o
 parameter_list|)

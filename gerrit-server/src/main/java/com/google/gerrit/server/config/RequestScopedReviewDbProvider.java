@@ -216,7 +216,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestScopedReviewDbProvider ( final SchemaFactory<ReviewDb> schema, final Provider<RequestCleanup> cleanup)
+DECL|method|RequestScopedReviewDbProvider ( final SchemaFactory<ReviewDb> schema, Provider<RequestCleanup> cleanup)
 specifier|public
 name|RequestScopedReviewDbProvider
 parameter_list|(
@@ -227,7 +227,6 @@ name|ReviewDb
 argument_list|>
 name|schema
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|RequestCleanup

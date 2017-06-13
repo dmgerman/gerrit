@@ -230,12 +230,11 @@ comment|/* root page */
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|open (final String link)
+DECL|method|open (String link)
 specifier|public
 name|void
 name|open
 parameter_list|(
-specifier|final
 name|String
 name|link
 parameter_list|)

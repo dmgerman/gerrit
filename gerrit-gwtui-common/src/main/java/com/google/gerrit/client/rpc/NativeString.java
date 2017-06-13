@@ -174,7 +174,7 @@ name|asString
 parameter_list|()
 comment|/*-{ return this.s; }-*/
 function_decl|;
-DECL|method|unwrap (final AsyncCallback<String> cb)
+DECL|method|unwrap (AsyncCallback<String> cb)
 specifier|public
 specifier|static
 name|AsyncCallback
@@ -183,7 +183,6 @@ name|NativeString
 argument_list|>
 name|unwrap
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|String

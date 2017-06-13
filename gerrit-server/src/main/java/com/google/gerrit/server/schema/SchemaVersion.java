@@ -337,11 +337,10 @@ specifier|final
 name|int
 name|versionNbr
 decl_stmt|;
-DECL|method|SchemaVersion (final Provider<? extends SchemaVersion> prior)
+DECL|method|SchemaVersion (Provider<? extends SchemaVersion> prior)
 specifier|protected
 name|SchemaVersion
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|?

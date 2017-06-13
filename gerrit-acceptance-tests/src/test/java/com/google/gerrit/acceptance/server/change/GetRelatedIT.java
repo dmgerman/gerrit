@@ -4374,12 +4374,11 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|clearGroups (final PatchSet.Id psId)
+DECL|method|clearGroups (PatchSet.Id psId)
 specifier|private
 name|void
 name|clearGroups
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id

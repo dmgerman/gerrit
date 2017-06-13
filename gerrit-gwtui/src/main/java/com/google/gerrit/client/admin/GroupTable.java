@@ -425,11 +425,10 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GroupTable (final String pointerId)
+DECL|method|GroupTable (String pointerId)
 specifier|public
 name|GroupTable
 parameter_list|(
-specifier|final
 name|String
 name|pointerId
 parameter_list|)
@@ -610,12 +609,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getRowItemKey (final GroupInfo item)
+DECL|method|getRowItemKey (GroupInfo item)
 specifier|protected
 name|Object
 name|getRowItemKey
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|item
 parameter_list|)
@@ -629,12 +627,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onOpenRow (final int row)
+DECL|method|onOpenRow (int row)
 specifier|protected
 name|void
 name|onOpenRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
@@ -951,19 +948,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populate (final int row, final GroupInfo k, final String toHighlight)
+DECL|method|populate (int row, GroupInfo k, String toHighlight)
 name|void
 name|populate
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|GroupInfo
 name|k
 parameter_list|,
-specifier|final
 name|String
 name|toHighlight
 parameter_list|)
@@ -1207,12 +1201,11 @@ name|k
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|isInteralGroup (final GroupInfo groupInfo)
+DECL|method|isInteralGroup (GroupInfo groupInfo)
 specifier|private
 name|boolean
 name|isInteralGroup
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|groupInfo
 parameter_list|)

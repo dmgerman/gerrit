@@ -268,13 +268,12 @@ name|GerritServerConfigModule
 extends|extends
 name|AbstractModule
 block|{
-DECL|method|getSecureStoreClassName (final Path sitePath)
+DECL|method|getSecureStoreClassName (Path sitePath)
 specifier|public
 specifier|static
 name|String
 name|getSecureStoreClassName
 parameter_list|(
-specifier|final
 name|Path
 name|sitePath
 parameter_list|)
@@ -310,13 +309,12 @@ name|secureStoreProperty
 argument_list|)
 return|;
 block|}
-DECL|method|getSecureStoreFromGerritConfig (final Path sitePath)
+DECL|method|getSecureStoreFromGerritConfig (Path sitePath)
 specifier|private
 specifier|static
 name|String
 name|getSecureStoreFromGerritConfig
 parameter_list|(
-specifier|final
 name|Path
 name|sitePath
 parameter_list|)

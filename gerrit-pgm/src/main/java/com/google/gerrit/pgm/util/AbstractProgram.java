@@ -241,13 +241,12 @@ name|toLowerCase
 argument_list|()
 return|;
 block|}
-DECL|method|main (final String[] argv)
+DECL|method|main (String[] argv)
 specifier|public
 specifier|final
 name|int
 name|main
 parameter_list|(
-specifier|final
 name|String
 index|[]
 name|argv

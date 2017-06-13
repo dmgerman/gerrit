@@ -120,11 +120,10 @@ operator|.
 name|NameKey
 name|project
 decl_stmt|;
-DECL|method|NoSuchProjectException (final Project.NameKey key)
+DECL|method|NoSuchProjectException (Project.NameKey key)
 specifier|public
 name|NoSuchProjectException
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -139,17 +138,15 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchProjectException (final Project.NameKey key, final Throwable why)
+DECL|method|NoSuchProjectException (Project.NameKey key, Throwable why)
 specifier|public
 name|NoSuchProjectException
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|key
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

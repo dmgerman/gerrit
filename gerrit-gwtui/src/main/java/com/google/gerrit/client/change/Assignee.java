@@ -1063,12 +1063,11 @@ name|onCloseForm
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|editAssignee (final String assignee)
+DECL|method|editAssignee (String assignee)
 specifier|private
 name|void
 name|editAssignee
 parameter_list|(
-specifier|final
 name|String
 name|assignee
 parameter_list|)

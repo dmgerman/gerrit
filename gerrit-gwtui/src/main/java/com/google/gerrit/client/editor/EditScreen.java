@@ -4273,7 +4273,6 @@ specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)

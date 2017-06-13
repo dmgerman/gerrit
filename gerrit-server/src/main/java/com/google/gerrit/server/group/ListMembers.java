@@ -490,7 +490,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (final GroupResource resource)
+DECL|method|apply (GroupResource resource)
 specifier|public
 name|List
 argument_list|<
@@ -498,7 +498,6 @@ name|AccountInfo
 argument_list|>
 name|apply
 parameter_list|(
-specifier|final
 name|GroupResource
 name|resource
 parameter_list|)
@@ -630,7 +629,7 @@ return|return
 name|memberInfos
 return|;
 block|}
-DECL|method|getMembers ( final AccountGroup.UUID groupUUID, final HashSet<AccountGroup.UUID> seenGroups)
+DECL|method|getMembers ( final AccountGroup.UUID groupUUID, HashSet<AccountGroup.UUID> seenGroups)
 specifier|private
 name|Map
 argument_list|<
@@ -648,7 +647,6 @@ operator|.
 name|UUID
 name|groupUUID
 parameter_list|,
-specifier|final
 name|HashSet
 argument_list|<
 name|AccountGroup
@@ -756,7 +754,6 @@ condition|)
 block|{
 for|for
 control|(
-specifier|final
 name|AccountGroupMember
 name|m
 range|:
@@ -818,7 +815,6 @@ condition|)
 block|{
 for|for
 control|(
-specifier|final
 name|AccountGroupById
 name|includedGroup
 range|:

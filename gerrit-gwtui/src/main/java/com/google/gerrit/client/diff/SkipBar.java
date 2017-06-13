@@ -474,13 +474,12 @@ specifier|private
 name|SkipBar
 name|otherBar
 decl_stmt|;
-DECL|method|SkipBar (SkipManager manager, final CodeMirror cm)
+DECL|method|SkipBar (SkipManager manager, CodeMirror cm)
 name|SkipBar
 parameter_list|(
 name|SkipManager
 name|manager
 parameter_list|,
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)

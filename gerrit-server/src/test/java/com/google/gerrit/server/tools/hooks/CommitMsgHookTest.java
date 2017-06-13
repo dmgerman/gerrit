@@ -1632,12 +1632,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|hookDoesNotModify (final String in)
+DECL|method|hookDoesNotModify (String in)
 specifier|private
 name|void
 name|hookDoesNotModify
 parameter_list|(
-specifier|final
 name|String
 name|in
 parameter_list|)
@@ -1655,12 +1654,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|call (final String body)
+DECL|method|call (String body)
 specifier|private
 name|String
 name|call
 parameter_list|(
-specifier|final
 name|String
 name|body
 parameter_list|)
@@ -1720,12 +1718,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|file (final String name)
+DECL|method|file (String name)
 specifier|private
 name|DirCacheEntry
 name|file
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)

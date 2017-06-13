@@ -731,7 +731,7 @@ return|return
 name|keys
 return|;
 block|}
-DECL|method|addPublicKey ( final Collection<PublicKey> out, final KeyPairProvider p, final String type)
+DECL|method|addPublicKey ( final Collection<PublicKey> out, KeyPairProvider p, String type)
 specifier|private
 specifier|static
 name|void
@@ -744,11 +744,9 @@ name|PublicKey
 argument_list|>
 name|out
 parameter_list|,
-specifier|final
 name|KeyPairProvider
 name|p
 parameter_list|,
-specifier|final
 name|String
 name|type
 parameter_list|)
@@ -1161,7 +1159,7 @@ operator|.
 name|keys
 return|;
 block|}
-DECL|method|find ( final Iterable<SshKeyCacheEntry> keyList, final PublicKey suppliedKey)
+DECL|method|find (final Iterable<SshKeyCacheEntry> keyList, PublicKey suppliedKey)
 specifier|private
 name|SshKeyCacheEntry
 name|find
@@ -1173,14 +1171,12 @@ name|SshKeyCacheEntry
 argument_list|>
 name|keyList
 parameter_list|,
-specifier|final
 name|PublicKey
 name|suppliedKey
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|SshKeyCacheEntry
 name|k
 range|:

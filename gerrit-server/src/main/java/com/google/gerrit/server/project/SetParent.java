@@ -826,12 +826,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|validateParentUpdate (final ProjectControl ctl, String newParent, boolean checkIfAdmin)
+DECL|method|validateParentUpdate (ProjectControl ctl, String newParent, boolean checkIfAdmin)
 specifier|public
 name|void
 name|validateParentUpdate
 parameter_list|(
-specifier|final
 name|ProjectControl
 name|ctl
 parameter_list|,

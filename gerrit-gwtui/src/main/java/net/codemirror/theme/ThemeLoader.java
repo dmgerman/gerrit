@@ -533,18 +533,16 @@ operator|.
 name|DEFAULT
 argument_list|)
 decl_stmt|;
-DECL|method|loadTheme (final Theme theme, final AsyncCallback<Void> cb)
+DECL|method|loadTheme (Theme theme, AsyncCallback<Void> cb)
 specifier|public
 specifier|static
 specifier|final
 name|void
 name|loadTheme
 parameter_list|(
-specifier|final
 name|Theme
 name|theme
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|Void

@@ -178,10 +178,9 @@ name|impl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OpenIdLoginServlet (final OpenIdServiceImpl i)
+DECL|method|OpenIdLoginServlet (OpenIdServiceImpl i)
 name|OpenIdLoginServlet
 parameter_list|(
-specifier|final
 name|OpenIdServiceImpl
 name|i
 parameter_list|)
@@ -193,16 +192,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doGet (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doGet (HttpServletRequest req, HttpServletResponse rsp)
 specifier|public
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -219,16 +216,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doPost (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doPost (HttpServletRequest req, HttpServletResponse rsp)
 specifier|public
 name|void
 name|doPost
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)

@@ -577,7 +577,6 @@ specifier|public
 name|void
 name|onKeyDown
 parameter_list|(
-specifier|final
 name|KeyDownEvent
 name|event
 parameter_list|)

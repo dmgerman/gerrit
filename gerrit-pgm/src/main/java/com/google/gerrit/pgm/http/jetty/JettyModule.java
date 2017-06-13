@@ -130,11 +130,10 @@ specifier|final
 name|JettyEnv
 name|env
 decl_stmt|;
-DECL|method|JettyModule (final JettyEnv env)
+DECL|method|JettyModule (JettyEnv env)
 specifier|public
 name|JettyModule
 parameter_list|(
-specifier|final
 name|JettyEnv
 name|env
 parameter_list|)

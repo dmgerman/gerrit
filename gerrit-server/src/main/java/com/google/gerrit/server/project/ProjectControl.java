@@ -998,10 +998,9 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory (final ProjectCache pc)
+DECL|method|GenericFactory (ProjectCache pc)
 name|GenericFactory
 parameter_list|(
-specifier|final
 name|ProjectCache
 name|pc
 parameter_list|)
@@ -1097,12 +1096,11 @@ operator|=
 name|uc
 expr_stmt|;
 block|}
-DECL|method|controlFor (final Project.NameKey nameKey)
+DECL|method|controlFor (Project.NameKey nameKey)
 specifier|public
 name|ProjectControl
 name|controlFor
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -2134,7 +2132,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getGroups (final List<SectionMatcher> sectionMatcherList)
+DECL|method|getGroups (List<SectionMatcher> sectionMatcherList)
 specifier|private
 specifier|static
 name|Set
@@ -2143,7 +2141,6 @@ name|GroupReference
 argument_list|>
 name|getGroups
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|SectionMatcher
@@ -2165,7 +2162,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|SectionMatcher
 name|matcher
 range|:
@@ -2182,7 +2178,6 @@ name|section
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Permission
 name|permission
 range|:
@@ -2194,7 +2189,6 @@ control|)
 block|{
 for|for
 control|(
-specifier|final
 name|PermissionRule
 name|rule
 range|:
@@ -2629,7 +2623,6 @@ comment|// patterns also have the permission.
 comment|//
 for|for
 control|(
-specifier|final
 name|String
 name|pattern
 range|:

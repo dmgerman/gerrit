@@ -382,12 +382,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getLastModified (final HttpServletRequest req)
+DECL|method|getLastModified (HttpServletRequest req)
 specifier|protected
 name|long
 name|getLastModified
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)
@@ -398,16 +397,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|doGet (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doGet (HttpServletRequest req, HttpServletResponse rsp)
 specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)

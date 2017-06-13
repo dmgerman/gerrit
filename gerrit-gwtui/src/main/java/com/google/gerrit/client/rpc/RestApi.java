@@ -787,7 +787,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onResponseReceived (Request req, final Response res)
+DECL|method|onResponseReceived (Request req, Response res)
 specifier|public
 name|void
 name|onResponseReceived
@@ -795,7 +795,6 @@ parameter_list|(
 name|Request
 name|req
 parameter_list|,
-specifier|final
 name|Response
 name|res
 parameter_list|)
@@ -2976,7 +2975,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|wrap (final AsyncCallback<T> cb)
+DECL|method|wrap (AsyncCallback<T> cb)
 specifier|private
 specifier|static
 parameter_list|<
@@ -2990,7 +2989,6 @@ name|T
 argument_list|>
 name|wrap
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|T

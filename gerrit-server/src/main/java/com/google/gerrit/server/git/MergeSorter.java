@@ -278,14 +278,13 @@ operator|=
 name|incoming
 expr_stmt|;
 block|}
-DECL|method|sort (final Collection<CodeReviewCommit> toMerge)
+DECL|method|sort (Collection<CodeReviewCommit> toMerge)
 name|Collection
 argument_list|<
 name|CodeReviewCommit
 argument_list|>
 name|sort
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|CodeReviewCommit

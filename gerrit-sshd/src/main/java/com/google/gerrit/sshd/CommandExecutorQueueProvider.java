@@ -350,7 +350,6 @@ specifier|public
 name|Thread
 name|newThread
 parameter_list|(
-specifier|final
 name|Runnable
 name|task
 parameter_list|)

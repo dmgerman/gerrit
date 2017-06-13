@@ -552,13 +552,12 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|buildInjector (final Injector parent)
+DECL|method|buildInjector (Injector parent)
 specifier|private
 specifier|static
 name|Injector
 name|buildInjector
 parameter_list|(
-specifier|final
 name|Injector
 name|parent
 parameter_list|)
@@ -758,12 +757,11 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|update (final UpdateUI ui)
+DECL|method|update (UpdateUI ui)
 specifier|public
 name|void
 name|update
 parameter_list|(
-specifier|final
 name|UpdateUI
 name|ui
 parameter_list|)
@@ -895,12 +893,11 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|getSchemaVersion (final ReviewDb db)
+DECL|method|getSchemaVersion (ReviewDb db)
 specifier|private
 name|CurrentSchemaVersion
 name|getSchemaVersion
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
@@ -934,12 +931,11 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|updateSystemConfig (final ReviewDb db)
+DECL|method|updateSystemConfig (ReviewDb db)
 specifier|private
 name|void
 name|updateSystemConfig
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)

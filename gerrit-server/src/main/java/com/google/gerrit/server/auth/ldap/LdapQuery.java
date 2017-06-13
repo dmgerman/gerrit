@@ -375,18 +375,16 @@ name|getParameterNames
 argument_list|()
 return|;
 block|}
-DECL|method|query (final DirContext ctx, final Map<String, String> params)
+DECL|method|query (DirContext ctx, Map<String, String> params)
 name|List
 argument_list|<
 name|Result
 argument_list|>
 name|query
 parameter_list|(
-specifier|final
 name|DirContext
 name|ctx
 parameter_list|,
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -534,10 +532,9 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|Result (final SearchResult sr)
+DECL|method|Result (SearchResult sr)
 name|Result
 parameter_list|(
-specifier|final
 name|SearchResult
 name|sr
 parameter_list|)
@@ -551,7 +548,6 @@ condition|)
 block|{
 for|for
 control|(
-specifier|final
 name|String
 name|attName
 range|:
@@ -680,11 +676,10 @@ literal|"dn"
 argument_list|)
 return|;
 block|}
-DECL|method|get (final String attName)
+DECL|method|get (String attName)
 name|String
 name|get
 parameter_list|(
-specifier|final
 name|String
 name|attName
 parameter_list|)
@@ -727,11 +722,10 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|getAll (final String attName)
+DECL|method|getAll (String attName)
 name|Attribute
 name|getAll
 parameter_list|(
-specifier|final
 name|String
 name|attName
 parameter_list|)

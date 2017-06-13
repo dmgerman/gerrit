@@ -598,13 +598,12 @@ return|return
 name|flashEnabled
 return|;
 block|}
-DECL|method|setFlashEnabled (final boolean on)
+DECL|method|setFlashEnabled (boolean on)
 specifier|public
 specifier|static
 name|void
 name|setFlashEnabled
 parameter_list|(
-specifier|final
 name|boolean
 name|on
 parameter_list|)
@@ -684,11 +683,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Create a new label    *    * @param str initial content    */
-DECL|method|CopyableLabel (final String str)
+DECL|method|CopyableLabel (String str)
 specifier|public
 name|CopyableLabel
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)
@@ -702,15 +700,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Create a new label    *    * @param str initial content    * @param showLabel if true, the content is shown, if false it is hidden from view and only the    *     copy icon is displayed.    */
-DECL|method|CopyableLabel (final String str, final boolean showLabel)
+DECL|method|CopyableLabel (String str, boolean showLabel)
 specifier|public
 name|CopyableLabel
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|,
-specifier|final
 name|boolean
 name|showLabel
 parameter_list|)
@@ -780,7 +776,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -996,12 +991,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Change the text which is displayed in the clickable label.    *    * @param text the new preview text, should be shorter than the original text which would be    *     copied to the clipboard.    */
-DECL|method|setPreviewText (final String text)
+DECL|method|setPreviewText (String text)
 specifier|public
 name|void
 name|setPreviewText
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|)
@@ -1269,12 +1263,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|setText (final String newText)
+DECL|method|setText (String newText)
 specifier|public
 name|void
 name|setText
 parameter_list|(
-specifier|final
 name|String
 name|newText
 parameter_list|)
@@ -1386,7 +1379,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -1432,7 +1424,6 @@ specifier|public
 name|void
 name|onKeyUp
 parameter_list|(
-specifier|final
 name|KeyUpEvent
 name|event
 parameter_list|)
@@ -1487,7 +1478,6 @@ specifier|public
 name|void
 name|onBlur
 parameter_list|(
-specifier|final
 name|BlurEvent
 name|event
 parameter_list|)

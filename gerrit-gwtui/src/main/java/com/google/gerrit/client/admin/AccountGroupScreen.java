@@ -222,15 +222,13 @@ specifier|final
 name|String
 name|auditLogTabToken
 decl_stmt|;
-DECL|method|AccountGroupScreen (final GroupInfo toShow, final String token)
+DECL|method|AccountGroupScreen (GroupInfo toShow, String token)
 specifier|public
 name|AccountGroupScreen
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|toShow
 parameter_list|,
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -314,16 +312,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getTabToken (final String token, final String tab)
+DECL|method|getTabToken (String token, String tab)
 specifier|private
 name|String
 name|getTabToken
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|,
-specifier|final
 name|String
 name|tab
 parameter_list|)
@@ -537,12 +533,11 @@ name|getOwnerUUID
 argument_list|()
 return|;
 block|}
-DECL|method|setMembersTabVisible (final boolean visible)
+DECL|method|setMembersTabVisible (boolean visible)
 specifier|protected
 name|void
 name|setMembersTabVisible
 parameter_list|(
-specifier|final
 name|boolean
 name|visible
 parameter_list|)

@@ -87,11 +87,10 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|QueryParseException (final String message)
+DECL|method|QueryParseException (String message)
 specifier|public
 name|QueryParseException
 parameter_list|(
-specifier|final
 name|String
 name|message
 parameter_list|)
@@ -102,15 +101,13 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|QueryParseException (final String msg, final Throwable why)
+DECL|method|QueryParseException (String msg, Throwable why)
 specifier|public
 name|QueryParseException
 parameter_list|(
-specifier|final
 name|String
 name|msg
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

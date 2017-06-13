@@ -2023,12 +2023,11 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|controlFor (final CurrentUser user)
+DECL|method|controlFor (CurrentUser user)
 specifier|public
 name|ProjectControl
 name|controlFor
 parameter_list|(
-specifier|final
 name|CurrentUser
 name|user
 parameter_list|)

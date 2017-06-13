@@ -591,16 +591,14 @@ block|}
 block|}
 expr_stmt|;
 block|}
-DECL|method|getImpl (final String name, final AsyncCallback<Entry> cb)
+DECL|method|getImpl (String name, AsyncCallback<Entry> cb)
 specifier|private
 name|void
 name|getImpl
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|Entry
@@ -711,16 +709,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getImpl (final Integer id, final AsyncCallback<Entry> cb)
+DECL|method|getImpl (Integer id, AsyncCallback<Entry> cb)
 specifier|private
 name|void
 name|getImpl
 parameter_list|(
-specifier|final
 name|Integer
 name|id
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|Entry

@@ -485,12 +485,11 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|needsQuotedPrintableWithinPhrase (final int cp)
+DECL|method|needsQuotedPrintableWithinPhrase (int cp)
 specifier|static
 name|boolean
 name|needsQuotedPrintableWithinPhrase
 parameter_list|(
-specifier|final
 name|int
 name|cp
 parameter_list|)
@@ -1127,7 +1126,6 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Address
 name|addr
 range|:

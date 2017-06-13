@@ -286,17 +286,15 @@ argument_list|)
 return|;
 block|}
 comment|/** A very simple bit permutation to mask a simple incrementer. */
-DECL|method|mix (final int salt, final int in)
+DECL|method|mix (int salt, int in)
 specifier|public
 specifier|static
 name|int
 name|mix
 parameter_list|(
-specifier|final
 name|int
 name|salt
 parameter_list|,
-specifier|final
 name|int
 name|in
 parameter_list|)
@@ -379,12 +377,11 @@ argument_list|)
 return|;
 block|}
 comment|/* For testing only. */
-DECL|method|unmix (final int in)
+DECL|method|unmix (int in)
 specifier|static
 name|int
 name|unmix
 parameter_list|(
-specifier|final
 name|int
 name|in
 parameter_list|)
@@ -466,13 +463,12 @@ name|v1
 argument_list|)
 return|;
 block|}
-DECL|method|hi16 (final int in)
+DECL|method|hi16 (int in)
 specifier|private
 specifier|static
 name|short
 name|hi16
 parameter_list|(
-specifier|final
 name|int
 name|in
 parameter_list|)
@@ -509,13 +505,12 @@ comment|//
 argument_list|)
 return|;
 block|}
-DECL|method|lo16 (final int in)
+DECL|method|lo16 (int in)
 specifier|private
 specifier|static
 name|short
 name|lo16
 parameter_list|(
-specifier|final
 name|int
 name|in
 parameter_list|)
@@ -550,17 +545,15 @@ comment|//
 argument_list|)
 return|;
 block|}
-DECL|method|result (final short v0, final short v1)
+DECL|method|result (short v0, short v1)
 specifier|private
 specifier|static
 name|int
 name|result
 parameter_list|(
-specifier|final
 name|short
 name|v0
 parameter_list|,
-specifier|final
 name|short
 name|v1
 parameter_list|)

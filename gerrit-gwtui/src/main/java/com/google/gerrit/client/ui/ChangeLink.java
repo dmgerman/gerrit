@@ -134,13 +134,12 @@ name|ChangeLink
 extends|extends
 name|InlineHyperlink
 block|{
-DECL|method|permalink (final Change.Id c)
+DECL|method|permalink (Change.Id c)
 specifier|public
 specifier|static
 name|String
 name|permalink
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
@@ -166,15 +165,13 @@ operator|.
 name|Id
 name|cid
 decl_stmt|;
-DECL|method|ChangeLink (final String text, final Change.Id c)
+DECL|method|ChangeLink (String text, Change.Id c)
 specifier|public
 name|ChangeLink
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|Change
 operator|.
 name|Id

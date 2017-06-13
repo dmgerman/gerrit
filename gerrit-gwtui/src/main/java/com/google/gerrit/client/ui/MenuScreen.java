@@ -296,12 +296,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (final Widget w)
+DECL|method|add (Widget w)
 specifier|protected
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|Widget
 name|w
 parameter_list|)
@@ -314,16 +313,14 @@ name|w
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|link (final String text, final String target)
+DECL|method|link (String text, String target)
 specifier|protected
 name|void
 name|link
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|target
 parameter_list|)
@@ -338,20 +335,17 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|link (final String text, final String target, final boolean visible)
+DECL|method|link (String text, String target, boolean visible)
 specifier|protected
 name|void
 name|link
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|target
 parameter_list|,
-specifier|final
 name|boolean
 name|visible
 parameter_list|)
@@ -398,16 +392,14 @@ name|item
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setLinkVisible (final String token, final boolean visible)
+DECL|method|setLinkVisible (String token, boolean visible)
 specifier|protected
 name|void
 name|setLinkVisible
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|,
-specifier|final
 name|boolean
 name|visible
 parameter_list|)

@@ -1245,7 +1245,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getParent (Project.NameKey name, final AsyncCallback<Project.NameKey> cb)
+DECL|method|getParent (Project.NameKey name, AsyncCallback<Project.NameKey> cb)
 specifier|public
 specifier|static
 name|void
@@ -1256,7 +1256,6 @@ operator|.
 name|NameKey
 name|name
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|Project

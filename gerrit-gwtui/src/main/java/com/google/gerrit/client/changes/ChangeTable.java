@@ -1162,7 +1162,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1255,12 +1254,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getRowItemKey (final ChangeInfo item)
+DECL|method|getRowItemKey (ChangeInfo item)
 specifier|protected
 name|Object
 name|getRowItemKey
 parameter_list|(
-specifier|final
 name|ChangeInfo
 name|item
 parameter_list|)
@@ -1274,12 +1272,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onOpenRow (final int row)
+DECL|method|onOpenRow (int row)
 specifier|protected
 name|void
 name|onOpenRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
@@ -1317,12 +1314,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insertNoneRow (final int row)
+DECL|method|insertNoneRow (int row)
 specifier|private
 name|void
 name|insertNoneRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
@@ -1388,12 +1384,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insertChangeRow (final int row)
+DECL|method|insertChangeRow (int row)
 specifier|private
 name|void
 name|insertChangeRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
@@ -1411,12 +1406,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyDataRowStyle (final int row)
+DECL|method|applyDataRowStyle (int row)
 specifier|protected
 name|void
 name|applyDataRowStyle
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
@@ -1974,16 +1968,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|populateChangeRow (final int row, final ChangeInfo c, boolean highlightUnreviewed)
+DECL|method|populateChangeRow (int row, ChangeInfo c, boolean highlightUnreviewed)
 specifier|private
 name|void
 name|populateChangeRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|ChangeInfo
 name|c
 parameter_list|,
@@ -3550,12 +3542,11 @@ else|:
 name|hex
 return|;
 block|}
-DECL|method|addSection (final Section s)
+DECL|method|addSection (Section s)
 specifier|public
 name|void
 name|addSection
 parameter_list|(
-specifier|final
 name|Section
 name|s
 parameter_list|)
@@ -3668,19 +3659,17 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insertRow (final int beforeRow)
+DECL|method|insertRow (int beforeRow)
 specifier|private
 name|int
 name|insertRow
 parameter_list|(
-specifier|final
 name|int
 name|beforeRow
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|Section
 name|s
 range|:
@@ -3727,19 +3716,17 @@ name|beforeRow
 argument_list|)
 return|;
 block|}
-DECL|method|removeRow (final int row)
+DECL|method|removeRow (int row)
 specifier|private
 name|void
 name|removeRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|Section
 name|s
 range|:
@@ -3818,12 +3805,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent event)
+DECL|method|onKeyPress (KeyPressEvent event)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -3884,15 +3870,13 @@ name|TableChangeLink
 extends|extends
 name|ChangeLink
 block|{
-DECL|method|TableChangeLink (final String text, final ChangeInfo c)
+DECL|method|TableChangeLink (String text, ChangeInfo c)
 specifier|private
 name|TableChangeLink
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|ChangeInfo
 name|c
 parameter_list|)
@@ -3982,12 +3966,11 @@ operator|=
 name|value
 expr_stmt|;
 block|}
-DECL|method|setTitleText (final String text)
+DECL|method|setTitleText (String text)
 specifier|public
 name|void
 name|setTitleText
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|)
@@ -4022,12 +4005,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setTitleWidget (final Widget title)
+DECL|method|setTitleWidget (Widget title)
 specifier|public
 name|void
 name|setTitleWidget
 parameter_list|(
-specifier|final
 name|Widget
 name|title
 parameter_list|)

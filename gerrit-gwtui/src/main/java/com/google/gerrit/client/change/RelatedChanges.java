@@ -1264,15 +1264,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|set (final ChangeInfo info, final String revision)
+DECL|method|set (ChangeInfo info, String revision)
 name|void
 name|set
 parameter_list|(
-specifier|final
 name|ChangeInfo
 name|info
 parameter_list|,
-specifier|final
 name|String
 name|revision
 parameter_list|)
@@ -1641,16 +1639,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setForOpenChange (final ChangeInfo info, final String revision)
+DECL|method|setForOpenChange (ChangeInfo info, String revision)
 specifier|private
 name|void
 name|setForOpenChange
 parameter_list|(
-specifier|final
 name|ChangeInfo
 name|info
 parameter_list|,
-specifier|final
 name|String
 name|revision
 parameter_list|)

@@ -103,15 +103,13 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|AuthenticationUnavailableException (final String message, final Throwable why)
+DECL|method|AuthenticationUnavailableException (String message, Throwable why)
 specifier|public
 name|AuthenticationUnavailableException
 parameter_list|(
-specifier|final
 name|String
 name|message
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

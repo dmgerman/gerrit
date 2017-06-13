@@ -796,7 +796,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1221,7 +1220,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1247,7 +1245,6 @@ specifier|public
 name|void
 name|onChange
 parameter_list|(
-specifier|final
 name|ChangeEvent
 name|event
 parameter_list|)
@@ -1678,24 +1675,20 @@ name|void
 name|display
 parameter_list|()
 block|{}
-DECL|method|row (final Grid info, final int row, final String name, final Widget field)
+DECL|method|row (Grid info, int row, String name, Widget field)
 specifier|protected
 name|void
 name|row
 parameter_list|(
-specifier|final
 name|Grid
 name|info
 parameter_list|,
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|Widget
 name|field
 parameter_list|)
@@ -1890,7 +1883,6 @@ specifier|public
 name|void
 name|onSubmit
 parameter_list|(
-specifier|final
 name|SubmitEvent
 name|event
 parameter_list|)
@@ -2053,7 +2045,6 @@ specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -2167,7 +2158,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)

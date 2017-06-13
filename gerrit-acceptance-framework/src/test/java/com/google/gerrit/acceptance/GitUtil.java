@@ -586,13 +586,12 @@ name|TEST_REPO_WINDOW_DAYS
 init|=
 literal|2
 decl_stmt|;
-DECL|method|initSsh (final TestAccount a)
+DECL|method|initSsh (TestAccount a)
 specifier|public
 specifier|static
 name|void
 name|initSsh
 parameter_list|(
-specifier|final
 name|TestAccount
 name|a
 parameter_list|)

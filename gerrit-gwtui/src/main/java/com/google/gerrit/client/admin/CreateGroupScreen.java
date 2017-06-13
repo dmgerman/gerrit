@@ -846,7 +846,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -936,7 +935,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|GroupInfo
 name|result
 parameter_list|)

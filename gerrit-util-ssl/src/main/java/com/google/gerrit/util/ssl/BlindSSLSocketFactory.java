@@ -354,11 +354,10 @@ specifier|final
 name|SSLSocketFactory
 name|sslFactory
 decl_stmt|;
-DECL|method|BlindSSLSocketFactory (final SSLSocketFactory sslFactory)
+DECL|method|BlindSSLSocketFactory (SSLSocketFactory sslFactory)
 specifier|private
 name|BlindSSLSocketFactory
 parameter_list|(
-specifier|final
 name|SSLSocketFactory
 name|sslFactory
 parameter_list|)

@@ -205,11 +205,10 @@ specifier|protected
 name|NameKey
 parameter_list|()
 block|{}
-DECL|method|NameKey (final String n)
+DECL|method|NameKey (String n)
 specifier|public
 name|NameKey
 parameter_list|(
-specifier|final
 name|String
 name|n
 parameter_list|)
@@ -297,11 +296,10 @@ specifier|protected
 name|UUID
 parameter_list|()
 block|{}
-DECL|method|UUID (final String n)
+DECL|method|UUID (String n)
 specifier|public
 name|UUID
 parameter_list|(
-specifier|final
 name|String
 name|n
 parameter_list|)
@@ -340,13 +338,12 @@ name|newValue
 expr_stmt|;
 block|}
 comment|/** Parse an AccountGroup.UUID out of a string representation. */
-DECL|method|parse (final String str)
+DECL|method|parse (String str)
 specifier|public
 specifier|static
 name|UUID
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)
@@ -445,11 +442,10 @@ specifier|protected
 name|Id
 parameter_list|()
 block|{}
-DECL|method|Id (final int id)
+DECL|method|Id (int id)
 specifier|public
 name|Id
 parameter_list|(
-specifier|final
 name|int
 name|id
 parameter_list|)
@@ -490,13 +486,12 @@ name|newValue
 expr_stmt|;
 block|}
 comment|/** Parse an AccountGroup.Id out of a string representation. */
-DECL|method|parse (final String str)
+DECL|method|parse (String str)
 specifier|public
 specifier|static
 name|Id
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)
@@ -720,12 +715,11 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|setNameKey (final AccountGroup.NameKey nameKey)
+DECL|method|setNameKey (AccountGroup.NameKey nameKey)
 specifier|public
 name|void
 name|setNameKey
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|NameKey
@@ -747,12 +741,11 @@ return|return
 name|description
 return|;
 block|}
-DECL|method|setDescription (final String d)
+DECL|method|setDescription (String d)
 specifier|public
 name|void
 name|setDescription
 parameter_list|(
-specifier|final
 name|String
 name|d
 parameter_list|)
@@ -774,12 +767,11 @@ return|return
 name|ownerGroupUUID
 return|;
 block|}
-DECL|method|setOwnerGroupUUID (final AccountGroup.UUID uuid)
+DECL|method|setOwnerGroupUUID (AccountGroup.UUID uuid)
 specifier|public
 name|void
 name|setOwnerGroupUUID
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -791,12 +783,11 @@ operator|=
 name|uuid
 expr_stmt|;
 block|}
-DECL|method|setVisibleToAll (final boolean visibleToAll)
+DECL|method|setVisibleToAll (boolean visibleToAll)
 specifier|public
 name|void
 name|setVisibleToAll
 parameter_list|(
-specifier|final
 name|boolean
 name|visibleToAll
 parameter_list|)

@@ -789,14 +789,13 @@ operator|=
 name|sitePath
 expr_stmt|;
 block|}
-DECL|method|SiteProgram (Path sitePath, final Provider<DataSource> dsProvider)
+DECL|method|SiteProgram (Path sitePath, Provider<DataSource> dsProvider)
 specifier|protected
 name|SiteProgram
 parameter_list|(
 name|Path
 name|sitePath
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|DataSource
@@ -893,7 +892,7 @@ argument_list|)
 return|;
 block|}
 comment|/** @return provides database connectivity and site path. */
-DECL|method|createDbInjector ( final boolean enableMetrics, final DataSourceProvider.Context context)
+DECL|method|createDbInjector ( final boolean enableMetrics, DataSourceProvider.Context context)
 specifier|protected
 name|Injector
 name|createDbInjector
@@ -902,7 +901,6 @@ specifier|final
 name|boolean
 name|enableMetrics
 parameter_list|,
-specifier|final
 name|DataSourceProvider
 operator|.
 name|Context

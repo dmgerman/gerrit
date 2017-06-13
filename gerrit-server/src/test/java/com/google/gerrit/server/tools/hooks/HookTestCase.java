@@ -518,12 +518,11 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getHook (final String name)
+DECL|method|getHook (String name)
 specifier|protected
 name|File
 name|getHook
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)

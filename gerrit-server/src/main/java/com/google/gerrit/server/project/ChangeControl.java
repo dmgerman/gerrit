@@ -1231,12 +1231,11 @@ operator|=
 name|patchSetUtil
 expr_stmt|;
 block|}
-DECL|method|forUser (final CurrentUser who)
+DECL|method|forUser (CurrentUser who)
 specifier|public
 name|ChangeControl
 name|forUser
 parameter_list|(
-specifier|final
 name|CurrentUser
 name|who
 parameter_list|)
@@ -1642,12 +1641,11 @@ argument_list|)
 return|;
 block|}
 comment|/** Can this user publish this draft change or any draft patch set of this change? */
-DECL|method|canPublish (final ReviewDb db)
+DECL|method|canPublish (ReviewDb db)
 specifier|public
 name|boolean
 name|canPublish
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)

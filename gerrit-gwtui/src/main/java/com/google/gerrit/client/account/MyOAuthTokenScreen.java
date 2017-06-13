@@ -901,12 +901,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final GeneralPreferences prefs)
+DECL|method|display (GeneralPreferences prefs)
 specifier|private
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|GeneralPreferences
 name|prefs
 parameter_list|)

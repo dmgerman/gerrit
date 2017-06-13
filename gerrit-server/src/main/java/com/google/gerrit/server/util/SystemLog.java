@@ -375,11 +375,10 @@ name|config
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SystemLog (final SitePaths site, @GerritServerConfig Config config)
+DECL|method|SystemLog (SitePaths site, @GerritServerConfig Config config)
 specifier|public
 name|SystemLog
 parameter_list|(
-specifier|final
 name|SitePaths
 name|site
 parameter_list|,

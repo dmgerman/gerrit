@@ -96,15 +96,13 @@ name|MESSAGE
 init|=
 literal|"Update Parent Project Failed: "
 decl_stmt|;
-DECL|method|UpdateParentFailedException (final String message, final Throwable why)
+DECL|method|UpdateParentFailedException (String message, Throwable why)
 specifier|public
 name|UpdateParentFailedException
 parameter_list|(
-specifier|final
 name|String
 name|message
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

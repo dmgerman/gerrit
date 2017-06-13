@@ -154,21 +154,18 @@ name|r
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertSingleWord (final String name, final String value, final Tree r)
+DECL|method|assertSingleWord (String name, String value, Tree r)
 specifier|private
 specifier|static
 name|void
 name|assertSingleWord
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|,
-specifier|final
 name|Tree
 name|r
 parameter_list|)
@@ -249,13 +246,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parse (final String str)
+DECL|method|parse (String str)
 specifier|private
 specifier|static
 name|Tree
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)

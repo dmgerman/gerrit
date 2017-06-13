@@ -341,16 +341,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|validateIdentity (final ServerSession session, final String identity)
+DECL|method|validateIdentity (ServerSession session, String identity)
 specifier|public
 name|boolean
 name|validateIdentity
 parameter_list|(
-specifier|final
 name|ServerSession
 name|session
 parameter_list|,
-specifier|final
 name|String
 name|identity
 parameter_list|)

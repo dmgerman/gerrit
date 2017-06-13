@@ -487,13 +487,12 @@ literal|null
 return|;
 block|}
 comment|/** Make a key command that toggles the star for a change. */
-DECL|method|newKeyCommand (final Icon icon)
+DECL|method|newKeyCommand (Icon icon)
 specifier|public
 specifier|static
 name|KeyCommand
 name|newKeyCommand
 parameter_list|(
-specifier|final
 name|Icon
 name|icon
 parameter_list|)
@@ -599,19 +598,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Set the starred status of a change. This method broadcasts to all interested UI widgets and    * sends an RPC to the server to record the updated status.    */
-DECL|method|toggleStar (final Change.Id changeId, final boolean newValue)
+DECL|method|toggleStar (Change.Id changeId, boolean newValue)
 specifier|public
 specifier|static
 name|void
 name|toggleStar
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
 name|changeId
 parameter_list|,
-specifier|final
 name|boolean
 name|newValue
 parameter_list|)

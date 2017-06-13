@@ -103,15 +103,13 @@ specifier|public
 name|String
 name|shortMessage
 decl_stmt|;
-DECL|method|ParentInfo (final RevId id, final String shortMessage)
+DECL|method|ParentInfo (RevId id, String shortMessage)
 specifier|public
 name|ParentInfo
 parameter_list|(
-specifier|final
 name|RevId
 name|id
 parameter_list|,
-specifier|final
 name|String
 name|shortMessage
 parameter_list|)
@@ -192,11 +190,10 @@ specifier|protected
 name|PatchSetInfo
 parameter_list|()
 block|{}
-DECL|method|PatchSetInfo (final PatchSet.Id k)
+DECL|method|PatchSetInfo (PatchSet.Id k)
 specifier|public
 name|PatchSetInfo
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -230,12 +227,11 @@ return|return
 name|subject
 return|;
 block|}
-DECL|method|setSubject (final String s)
+DECL|method|setSubject (String s)
 specifier|public
 name|void
 name|setSubject
 parameter_list|(
-specifier|final
 name|String
 name|s
 parameter_list|)
@@ -284,12 +280,11 @@ return|return
 name|message
 return|;
 block|}
-DECL|method|setMessage (final String m)
+DECL|method|setMessage (String m)
 specifier|public
 name|void
 name|setMessage
 parameter_list|(
-specifier|final
 name|String
 name|m
 parameter_list|)
@@ -309,12 +304,11 @@ return|return
 name|author
 return|;
 block|}
-DECL|method|setAuthor (final UserIdentity u)
+DECL|method|setAuthor (UserIdentity u)
 specifier|public
 name|void
 name|setAuthor
 parameter_list|(
-specifier|final
 name|UserIdentity
 name|u
 parameter_list|)
@@ -334,12 +328,11 @@ return|return
 name|committer
 return|;
 block|}
-DECL|method|setCommitter (final UserIdentity u)
+DECL|method|setCommitter (UserIdentity u)
 specifier|public
 name|void
 name|setCommitter
 parameter_list|(
-specifier|final
 name|UserIdentity
 name|u
 parameter_list|)
@@ -349,12 +342,11 @@ operator|=
 name|u
 expr_stmt|;
 block|}
-DECL|method|setParents (final List<ParentInfo> p)
+DECL|method|setParents (List<ParentInfo> p)
 specifier|public
 name|void
 name|setParents
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|ParentInfo
@@ -380,12 +372,11 @@ return|return
 name|parents
 return|;
 block|}
-DECL|method|setRevId (final String s)
+DECL|method|setRevId (String s)
 specifier|public
 name|void
 name|setRevId
 parameter_list|(
-specifier|final
 name|String
 name|s
 parameter_list|)

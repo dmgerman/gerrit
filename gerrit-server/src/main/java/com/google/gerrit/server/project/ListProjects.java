@@ -2052,7 +2052,6 @@ try|try
 block|{
 for|for
 control|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -3439,7 +3438,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|printProjectTree ( final PrintWriter stdout, final TreeMap<Project.NameKey, ProjectNode> treeMap)
+DECL|method|printProjectTree ( final PrintWriter stdout, TreeMap<Project.NameKey, ProjectNode> treeMap)
 specifier|private
 name|void
 name|printProjectTree
@@ -3448,7 +3447,6 @@ specifier|final
 name|PrintWriter
 name|stdout
 parameter_list|,
-specifier|final
 name|TreeMap
 argument_list|<
 name|Project
@@ -3476,7 +3474,6 @@ comment|// Builds the inheritance tree using a list.
 comment|//
 for|for
 control|(
-specifier|final
 name|ProjectNode
 name|key
 range|:

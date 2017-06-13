@@ -906,7 +906,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|PatchListEntry
 name|e
 range|:

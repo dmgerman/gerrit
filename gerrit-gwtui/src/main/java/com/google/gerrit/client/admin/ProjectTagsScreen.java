@@ -1930,7 +1930,7 @@ name|void
 name|onOk
 parameter_list|()
 block|{
-comment|//do nothing
+comment|// do nothing
 block|}
 block|}
 argument_list|)
@@ -2494,12 +2494,11 @@ name|center
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|deleteTags (final Set<String> tags)
+DECL|method|deleteTags (Set<String> tags)
 specifier|private
 name|void
 name|deleteTags
 parameter_list|(
-specifier|final
 name|Set
 argument_list|<
 name|String

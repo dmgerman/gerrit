@@ -360,12 +360,11 @@ return|return
 name|children
 return|;
 block|}
-DECL|method|addChild (final ProjectNode child)
+DECL|method|addChild (ProjectNode child)
 specifier|public
 name|void
 name|addChild
 parameter_list|(
-specifier|final
 name|ProjectNode
 name|child
 parameter_list|)
@@ -380,12 +379,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|compareTo (final ProjectNode o)
+DECL|method|compareTo (ProjectNode o)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-specifier|final
 name|ProjectNode
 name|o
 parameter_list|)

@@ -522,7 +522,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -777,12 +776,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setVisible (final boolean show)
+DECL|method|setVisible (boolean show)
 specifier|public
 name|void
 name|setVisible
 parameter_list|(
-specifier|final
 name|boolean
 name|show
 parameter_list|)
@@ -810,12 +808,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent event)
+DECL|method|onKeyPress (KeyPressEvent event)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -856,12 +853,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyDown (final KeyDownEvent event)
+DECL|method|onKeyDown (KeyDownEvent event)
 specifier|public
 name|void
 name|onKeyDown
 parameter_list|(
-specifier|final
 name|KeyDownEvent
 name|event
 parameter_list|)
@@ -883,12 +879,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|populate (final Grid lists)
+DECL|method|populate (Grid lists)
 specifier|private
 name|void
 name|populate
 parameter_list|(
-specifier|final
 name|Grid
 name|lists
 parameter_list|)
@@ -910,7 +905,6 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|KeyCommandSet
 name|set
 range|:
@@ -993,7 +987,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|KeyCommandSet
 name|set
 range|:
@@ -1066,23 +1059,20 @@ name|values
 argument_list|()
 return|;
 block|}
-DECL|method|formatGroup (final Grid lists, int row, final int col, final KeyCommandSet set)
+DECL|method|formatGroup (Grid lists, int row, int col, KeyCommandSet set)
 specifier|private
 name|int
 name|formatGroup
 parameter_list|(
-specifier|final
 name|Grid
 name|lists
 parameter_list|,
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|int
 name|col
 parameter_list|,
-specifier|final
 name|KeyCommandSet
 name|set
 parameter_list|)
@@ -1179,7 +1169,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|formatKeys ( final Grid lists, int row, final int col, final KeyCommandSet set, final SafeHtml prefix)
+DECL|method|formatKeys (final Grid lists, int row, int col, KeyCommandSet set, SafeHtml prefix)
 specifier|private
 name|int
 name|formatKeys
@@ -1191,15 +1181,12 @@ parameter_list|,
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|int
 name|col
 parameter_list|,
-specifier|final
 name|KeyCommandSet
 name|set
 parameter_list|,
-specifier|final
 name|SafeHtml
 name|prefix
 parameter_list|)
@@ -1754,7 +1741,7 @@ return|return
 name|row
 return|;
 block|}
-DECL|method|sort (final KeyCommandSet set)
+DECL|method|sort (KeyCommandSet set)
 specifier|private
 name|List
 argument_list|<
@@ -1762,7 +1749,6 @@ name|KeyCommand
 argument_list|>
 name|sort
 parameter_list|(
-specifier|final
 name|KeyCommandSet
 name|set
 parameter_list|)

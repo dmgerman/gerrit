@@ -87,11 +87,10 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|NoSuchRefException (final String ref)
+DECL|method|NoSuchRefException (String ref)
 specifier|public
 name|NoSuchRefException
 parameter_list|(
-specifier|final
 name|String
 name|ref
 parameter_list|)
@@ -104,15 +103,13 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NoSuchRefException (final String ref, final Throwable why)
+DECL|method|NoSuchRefException (String ref, Throwable why)
 specifier|public
 name|NoSuchRefException
 parameter_list|(
-specifier|final
 name|String
 name|ref
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)

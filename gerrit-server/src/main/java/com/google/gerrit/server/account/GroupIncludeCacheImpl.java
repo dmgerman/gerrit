@@ -929,10 +929,9 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubgroupsLoader (final SchemaFactory<ReviewDb> sf)
+DECL|method|SubgroupsLoader (SchemaFactory<ReviewDb> sf)
 name|SubgroupsLoader
 parameter_list|(
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -1101,10 +1100,9 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ParentGroupsLoader (final SchemaFactory<ReviewDb> sf)
+DECL|method|ParentGroupsLoader (SchemaFactory<ReviewDb> sf)
 name|ParentGroupsLoader
 parameter_list|(
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -1267,10 +1265,9 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AllExternalLoader (final SchemaFactory<ReviewDb> sf)
+DECL|method|AllExternalLoader (SchemaFactory<ReviewDb> sf)
 name|AllExternalLoader
 parameter_list|(
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb

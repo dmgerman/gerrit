@@ -283,7 +283,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -366,7 +365,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -480,7 +478,6 @@ specifier|public
 name|void
 name|onClose
 parameter_list|(
-specifier|final
 name|CloseEvent
 argument_list|<
 name|PopupPanel
@@ -497,12 +494,11 @@ block|}
 expr_stmt|;
 block|}
 block|}
-DECL|method|temporaryWithTimeout (final KeyCommandSet s)
+DECL|method|temporaryWithTimeout (KeyCommandSet s)
 specifier|static
 name|void
 name|temporaryWithTimeout
 parameter_list|(
-specifier|final
 name|KeyCommandSet
 name|s
 parameter_list|)
@@ -521,13 +517,12 @@ literal|250
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|dialog (final PopupPanel panel)
+DECL|method|dialog (PopupPanel panel)
 specifier|public
 specifier|static
 name|void
 name|dialog
 parameter_list|(
-specifier|final
 name|PopupPanel
 name|panel
 parameter_list|)
@@ -627,17 +622,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addApplication (final Widget widget, final KeyCommand appKey)
+DECL|method|addApplication (Widget widget, KeyCommand appKey)
 specifier|public
 specifier|static
 name|HandlerRegistration
 name|addApplication
 parameter_list|(
-specifier|final
 name|Widget
 name|widget
 parameter_list|,
-specifier|final
 name|KeyCommand
 name|appKey
 parameter_list|)
@@ -684,17 +677,15 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|add (final Widget widget, final KeyCommandSet cmdSet)
+DECL|method|add (Widget widget, KeyCommandSet cmdSet)
 specifier|public
 specifier|static
 name|HandlerRegistration
 name|add
 parameter_list|(
-specifier|final
 name|Widget
 name|widget
 parameter_list|,
-specifier|final
 name|KeyCommandSet
 name|cmdSet
 parameter_list|)
@@ -783,13 +774,12 @@ return|return
 name|global
 return|;
 block|}
-DECL|method|filter (final KeyCommandFilter filter)
+DECL|method|filter (KeyCommandFilter filter)
 specifier|public
 specifier|static
 name|void
 name|filter
 parameter_list|(
-specifier|final
 name|KeyCommandFilter
 name|filter
 parameter_list|)
@@ -846,10 +836,9 @@ DECL|field|live
 name|KeyCommandSet
 name|live
 decl_stmt|;
-DECL|method|State (final Widget r)
+DECL|method|State (Widget r)
 name|State
 parameter_list|(
-specifier|final
 name|Widget
 name|r
 parameter_list|)
@@ -898,11 +887,10 @@ operator|=
 name|all
 expr_stmt|;
 block|}
-DECL|method|add (final KeyCommand k)
+DECL|method|add (KeyCommand k)
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|KeyCommand
 name|k
 parameter_list|)
@@ -922,11 +910,10 @@ name|k
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|remove (final KeyCommand k)
+DECL|method|remove (KeyCommand k)
 name|void
 name|remove
 parameter_list|(
-specifier|final
 name|KeyCommand
 name|k
 parameter_list|)
@@ -946,11 +933,10 @@ name|k
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|add (final KeyCommandSet s)
+DECL|method|add (KeyCommandSet s)
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|KeyCommandSet
 name|s
 parameter_list|)
@@ -963,11 +949,10 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|remove (final KeyCommandSet s)
+DECL|method|remove (KeyCommandSet s)
 name|void
 name|remove
 parameter_list|(
-specifier|final
 name|KeyCommandSet
 name|s
 parameter_list|)
@@ -980,11 +965,10 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|filter (final KeyCommandFilter f)
+DECL|method|filter (KeyCommandFilter f)
 name|void
 name|filter
 parameter_list|(
-specifier|final
 name|KeyCommandFilter
 name|f
 parameter_list|)

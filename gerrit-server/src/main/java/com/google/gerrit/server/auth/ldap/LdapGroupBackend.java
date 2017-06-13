@@ -956,14 +956,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|get (final AccountGroup.UUID uuid)
+DECL|method|get (AccountGroup.UUID uuid)
 specifier|public
 name|GroupDescription
 operator|.
 name|Basic
 name|get
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID

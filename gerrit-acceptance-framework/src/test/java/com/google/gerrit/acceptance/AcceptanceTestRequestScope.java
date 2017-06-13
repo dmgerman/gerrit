@@ -1121,14 +1121,12 @@ name|T
 argument_list|>
 name|scope
 parameter_list|(
-specifier|final
 name|Key
 argument_list|<
 name|T
 argument_list|>
 name|key
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|T

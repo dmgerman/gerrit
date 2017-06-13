@@ -373,7 +373,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cs ( final Change.Id id, final Button... draftButtons)
+DECL|method|cs (final Change.Id id, Button... draftButtons)
 specifier|public
 specifier|static
 name|GerritCallback
@@ -388,7 +388,6 @@ operator|.
 name|Id
 name|id
 parameter_list|,
-specifier|final
 name|Button
 modifier|...
 name|draftButtons
@@ -498,7 +497,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|mine (final Button... draftButtons)
+DECL|method|mine (Button... draftButtons)
 specifier|private
 specifier|static
 name|AsyncCallback
@@ -507,7 +506,6 @@ name|JavaScriptObject
 argument_list|>
 name|mine
 parameter_list|(
-specifier|final
 name|Button
 modifier|...
 name|draftButtons

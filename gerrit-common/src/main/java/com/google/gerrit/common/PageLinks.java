@@ -429,13 +429,12 @@ operator|+
 literal|",edit/"
 return|;
 block|}
-DECL|method|toChange (final Change.Id c)
+DECL|method|toChange (Change.Id c)
 specifier|public
 specifier|static
 name|String
 name|toChange
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
@@ -524,13 +523,12 @@ return|return
 name|u
 return|;
 block|}
-DECL|method|toChange (final PatchSet.Id ps)
+DECL|method|toChange (PatchSet.Id ps)
 specifier|public
 specifier|static
 name|String
 name|toChange
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -553,13 +551,12 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|toProject (final Project.NameKey p)
+DECL|method|toProject (Project.NameKey p)
 specifier|public
 specifier|static
 name|String
 name|toProject
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -575,13 +572,12 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|toProjectAcceess (final Project.NameKey p)
+DECL|method|toProjectAcceess (Project.NameKey p)
 specifier|public
 specifier|static
 name|String
 name|toProjectAcceess
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -699,13 +695,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|toCustomDashboard (final String params)
+DECL|method|toCustomDashboard (String params)
 specifier|public
 specifier|static
 name|String
 name|toCustomDashboard
 parameter_list|(
-specifier|final
 name|String
 name|params
 parameter_list|)

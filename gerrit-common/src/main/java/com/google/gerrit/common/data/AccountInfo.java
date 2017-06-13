@@ -120,11 +120,10 @@ name|AccountInfo
 parameter_list|()
 block|{}
 comment|/**    * Create an 'Anonymous Coward' account info, when only the id is known.    *    *<p>This constructor should only be a last-ditch effort, when the usual account lookup has    * failed and a stale account id has been discovered in the data store.    */
-DECL|method|AccountInfo (final Account.Id id)
+DECL|method|AccountInfo (Account.Id id)
 specifier|public
 name|AccountInfo
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -139,11 +138,10 @@ name|id
 expr_stmt|;
 block|}
 comment|/**    * Create an account description from a real data store record.    *    * @param a the data store record holding the specific account details.    */
-DECL|method|AccountInfo (final Account a)
+DECL|method|AccountInfo (Account a)
 specifier|public
 name|AccountInfo
 parameter_list|(
-specifier|final
 name|Account
 name|a
 parameter_list|)
@@ -226,12 +224,11 @@ return|return
 name|preferredEmail
 return|;
 block|}
-DECL|method|setPreferredEmail (final String email)
+DECL|method|setPreferredEmail (String email)
 specifier|public
 name|void
 name|setPreferredEmail
 parameter_list|(
-specifier|final
 name|String
 name|email
 parameter_list|)

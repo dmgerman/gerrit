@@ -612,7 +612,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|nameOrEmail
 range|:
@@ -706,7 +705,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|AccountGroupMember
 name|m
 range|:
@@ -731,12 +729,11 @@ name|none
 argument_list|()
 return|;
 block|}
-DECL|method|writeAudits (final List<AccountGroupMember> toRemove)
+DECL|method|writeAudits (List<AccountGroupMember> toRemove)
 specifier|private
 name|void
 name|writeAudits
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|AccountGroupMember
@@ -768,7 +765,7 @@ name|toRemove
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getMembers (final AccountGroup.Id groupId)
+DECL|method|getMembers (AccountGroup.Id groupId)
 specifier|private
 name|Map
 argument_list|<
@@ -780,7 +777,6 @@ name|AccountGroupMember
 argument_list|>
 name|getMembers
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -807,7 +803,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|AccountGroupMember
 name|m
 range|:
@@ -874,10 +869,9 @@ name|delete
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteMember (final Provider<DeleteMembers> delete)
+DECL|method|DeleteMember (Provider<DeleteMembers> delete)
 name|DeleteMember
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|DeleteMembers

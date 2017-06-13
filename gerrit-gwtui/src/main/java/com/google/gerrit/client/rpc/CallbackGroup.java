@@ -259,7 +259,7 @@ name|cb
 argument_list|)
 return|;
 block|}
-DECL|method|add (final AsyncCallback<T> cb)
+DECL|method|add (AsyncCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
@@ -270,7 +270,6 @@ name|T
 argument_list|>
 name|add
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|T
@@ -316,7 +315,7 @@ name|cb
 argument_list|)
 return|;
 block|}
-DECL|method|addFinal (final AsyncCallback<T> cb)
+DECL|method|addFinal (AsyncCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
@@ -327,7 +326,6 @@ name|T
 argument_list|>
 name|addFinal
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|T
@@ -349,7 +347,7 @@ name|cb
 argument_list|)
 return|;
 block|}
-DECL|method|addFinal (final HttpCallback<T> cb)
+DECL|method|addFinal (HttpCallback<T> cb)
 specifier|public
 parameter_list|<
 name|T
@@ -360,7 +358,6 @@ name|T
 argument_list|>
 name|addFinal
 parameter_list|(
-specifier|final
 name|HttpCallback
 argument_list|<
 name|T

@@ -231,7 +231,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|allValuesOf (final T defaultValue)
+DECL|method|allValuesOf (T defaultValue)
 specifier|private
 specifier|static
 parameter_list|<
@@ -241,7 +241,6 @@ name|T
 index|[]
 name|allValuesOf
 parameter_list|(
-specifier|final
 name|T
 name|defaultValue
 parameter_list|)
@@ -351,7 +350,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|T
 name|e
 range|:
@@ -457,7 +455,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|T
 name|e
 range|:
@@ -831,13 +828,12 @@ throw|;
 block|}
 block|}
 comment|/**    * Parse a numerical time unit, such as "1 minute", from a string.    *    * @param valueString the string to parse.    * @param defaultValue default value to return if no value was set in the configuration file.    * @param wantUnit the units of {@code defaultValue} and the return value, as well as the units to    *     assume if the value does not contain an indication of the units.    * @return the setting, or {@code defaultValue} if not set, expressed in {@code units}.    */
-DECL|method|getTimeUnit (final String valueString, long defaultValue, TimeUnit wantUnit)
+DECL|method|getTimeUnit (String valueString, long defaultValue, TimeUnit wantUnit)
 specifier|public
 specifier|static
 name|long
 name|getTimeUnit
 parameter_list|(
-specifier|final
 name|String
 name|valueString
 parameter_list|,
@@ -2156,17 +2152,15 @@ operator|==
 name|t
 return|;
 block|}
-DECL|method|match (final String a, final String... cases)
+DECL|method|match (String a, String... cases)
 specifier|private
 specifier|static
 name|boolean
 name|match
 parameter_list|(
-specifier|final
 name|String
 name|a
 parameter_list|,
-specifier|final
 name|String
 modifier|...
 name|cases
@@ -2174,7 +2168,6 @@ parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|String
 name|b
 range|:
@@ -2257,13 +2250,12 @@ name|valueString
 argument_list|)
 return|;
 block|}
-DECL|method|notTimeUnit (final String val)
+DECL|method|notTimeUnit (String val)
 specifier|private
 specifier|static
 name|IllegalArgumentException
 name|notTimeUnit
 parameter_list|(
-specifier|final
 name|String
 name|val
 parameter_list|)

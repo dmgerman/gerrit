@@ -1075,11 +1075,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|registerCmEvents (final CodeMirror cm)
+DECL|method|registerCmEvents (CodeMirror cm)
 name|void
 name|registerCmEvents
 parameter_list|(
-specifier|final
 name|CodeMirror
 name|cm
 parameter_list|)

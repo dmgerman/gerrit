@@ -410,7 +410,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * The same as {@link #get(RestApi, JavaScriptObject)} but without converting a {@link    * NativeString} result to String.    */
-DECL|method|getRaw (RestApi api, final JavaScriptObject cb)
+DECL|method|getRaw (RestApi api, JavaScriptObject cb)
 specifier|static
 specifier|final
 name|void
@@ -419,7 +419,6 @@ parameter_list|(
 name|RestApi
 name|api
 parameter_list|,
-specifier|final
 name|JavaScriptObject
 name|cb
 parameter_list|)
@@ -893,7 +892,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|wrap (final JavaScriptObject cb)
+DECL|method|wrap (JavaScriptObject cb)
 specifier|private
 specifier|static
 name|GerritCallback
@@ -902,7 +901,6 @@ name|JavaScriptObject
 argument_list|>
 name|wrap
 parameter_list|(
-specifier|final
 name|JavaScriptObject
 name|cb
 parameter_list|)
@@ -972,7 +970,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|wrapRaw (final JavaScriptObject cb)
+DECL|method|wrapRaw (JavaScriptObject cb)
 specifier|private
 specifier|static
 name|GerritCallback
@@ -981,7 +979,6 @@ name|JavaScriptObject
 argument_list|>
 name|wrapRaw
 parameter_list|(
-specifier|final
 name|JavaScriptObject
 name|cb
 parameter_list|)

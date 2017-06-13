@@ -433,12 +433,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onBrowserEvent (final Event event)
+DECL|method|onBrowserEvent (Event event)
 specifier|public
 name|void
 name|onBrowserEvent
 parameter_list|(
-specifier|final
 name|Event
 name|event
 parameter_list|)
@@ -1195,12 +1194,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|movePointerTo (final int newRow)
+DECL|method|movePointerTo (int newRow)
 specifier|protected
 name|void
 name|movePointerTo
 parameter_list|(
-specifier|final
 name|int
 name|newRow
 parameter_list|)
@@ -1213,16 +1211,14 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|movePointerTo (final int newRow, final boolean scroll)
+DECL|method|movePointerTo (int newRow, boolean scroll)
 specifier|protected
 name|void
 name|movePointerTo
 parameter_list|(
-specifier|final
 name|int
 name|newRow
 parameter_list|,
-specifier|final
 name|boolean
 name|scroll
 parameter_list|)
@@ -1402,12 +1398,11 @@ operator|=
 name|newRow
 expr_stmt|;
 block|}
-DECL|method|scrollIntoView (final Element tr)
+DECL|method|scrollIntoView (Element tr)
 specifier|protected
 name|void
 name|scrollIntoView
 parameter_list|(
-specifier|final
 name|Element
 name|tr
 parameter_list|)
@@ -1661,12 +1656,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|movePointerTo (final Object oldId)
+DECL|method|movePointerTo (Object oldId)
 specifier|protected
 name|void
 name|movePointerTo
 parameter_list|(
-specifier|final
 name|Object
 name|oldId
 parameter_list|)
@@ -1694,12 +1688,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|findRow (final Object oldId)
+DECL|method|findRow (Object oldId)
 specifier|protected
 name|int
 name|findRow
 parameter_list|(
-specifier|final
 name|Object
 name|oldId
 parameter_list|)
@@ -1848,12 +1841,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|setSavePointerId (final String id)
+DECL|method|setSavePointerId (String id)
 specifier|public
 name|void
 name|setSavePointerId
 parameter_list|(
-specifier|final
 name|String
 name|id
 parameter_list|)
@@ -1863,12 +1855,11 @@ operator|=
 name|id
 expr_stmt|;
 block|}
-DECL|method|setRegisterKeys (final boolean on)
+DECL|method|setRegisterKeys (boolean on)
 specifier|public
 name|void
 name|setRegisterKeys
 parameter_list|(
-specifier|final
 name|boolean
 name|on
 parameter_list|)
@@ -2090,12 +2081,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent event)
+DECL|method|onKeyPress (KeyPressEvent event)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -2141,12 +2131,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent event)
+DECL|method|onKeyPress (KeyPressEvent event)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -2192,12 +2181,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent event)
+DECL|method|onKeyPress (KeyPressEvent event)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)

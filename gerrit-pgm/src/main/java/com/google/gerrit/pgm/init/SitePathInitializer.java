@@ -1128,7 +1128,7 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|stepsOf (final Injector injector)
+DECL|method|stepsOf (Injector injector)
 specifier|private
 specifier|static
 name|List
@@ -1137,7 +1137,6 @@ name|InitStep
 argument_list|>
 name|stepsOf
 parameter_list|(
-specifier|final
 name|Injector
 name|injector
 parameter_list|)
@@ -1186,7 +1185,7 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|all (final Injector injector)
+DECL|method|all (Injector injector)
 specifier|private
 specifier|static
 name|List
@@ -1198,7 +1197,6 @@ argument_list|>
 argument_list|>
 name|all
 parameter_list|(
-specifier|final
 name|Injector
 name|injector
 parameter_list|)

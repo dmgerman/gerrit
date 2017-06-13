@@ -220,17 +220,15 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final PatchSet.Id ps, final String name)
+DECL|method|Key (PatchSet.Id ps, String name)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|ps
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -291,13 +289,12 @@ name|newValue
 expr_stmt|;
 block|}
 comment|/** Parse a Patch.Id out of a string representation. */
-DECL|method|parse (final String str)
+DECL|method|parse (String str)
 specifier|public
 specifier|static
 name|Key
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|str
 parameter_list|)
@@ -389,10 +386,9 @@ specifier|final
 name|char
 name|code
 decl_stmt|;
-DECL|method|ChangeType (final char c)
+DECL|method|ChangeType (char c)
 name|ChangeType
 parameter_list|(
-specifier|final
 name|char
 name|c
 parameter_list|)
@@ -445,20 +441,18 @@ operator|==
 name|code
 return|;
 block|}
-DECL|method|forCode (final char c)
+DECL|method|forCode (char c)
 specifier|public
 specifier|static
 name|ChangeType
 name|forCode
 parameter_list|(
-specifier|final
 name|char
 name|c
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|ChangeType
 name|s
 range|:
@@ -515,10 +509,9 @@ specifier|final
 name|char
 name|code
 decl_stmt|;
-DECL|method|PatchType (final char c)
+DECL|method|PatchType (char c)
 name|PatchType
 parameter_list|(
-specifier|final
 name|char
 name|c
 parameter_list|)
@@ -540,20 +533,18 @@ return|return
 name|code
 return|;
 block|}
-DECL|method|forCode (final char c)
+DECL|method|forCode (char c)
 specifier|public
 specifier|static
 name|PatchType
 name|forCode
 parameter_list|(
-specifier|final
 name|char
 name|c
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|PatchType
 name|s
 range|:
@@ -640,11 +631,10 @@ specifier|protected
 name|Patch
 parameter_list|()
 block|{}
-DECL|method|Patch (final Patch.Key newId)
+DECL|method|Patch (Patch.Key newId)
 specifier|public
 name|Patch
 parameter_list|(
-specifier|final
 name|Patch
 operator|.
 name|Key
@@ -692,12 +682,11 @@ return|return
 name|nbrComments
 return|;
 block|}
-DECL|method|setCommentCount (final int n)
+DECL|method|setCommentCount (int n)
 specifier|public
 name|void
 name|setCommentCount
 parameter_list|(
-specifier|final
 name|int
 name|n
 parameter_list|)
@@ -717,12 +706,11 @@ return|return
 name|nbrDrafts
 return|;
 block|}
-DECL|method|setDraftCount (final int n)
+DECL|method|setDraftCount (int n)
 specifier|public
 name|void
 name|setDraftCount
 parameter_list|(
-specifier|final
 name|int
 name|n
 parameter_list|)
@@ -795,12 +783,11 @@ name|changeType
 argument_list|)
 return|;
 block|}
-DECL|method|setChangeType (final ChangeType type)
+DECL|method|setChangeType (ChangeType type)
 specifier|public
 name|void
 name|setChangeType
 parameter_list|(
-specifier|final
 name|ChangeType
 name|type
 parameter_list|)
@@ -828,12 +815,11 @@ name|patchType
 argument_list|)
 return|;
 block|}
-DECL|method|setPatchType (final PatchType type)
+DECL|method|setPatchType (PatchType type)
 specifier|public
 name|void
 name|setPatchType
 parameter_list|(
-specifier|final
 name|PatchType
 name|type
 parameter_list|)
@@ -868,12 +854,11 @@ return|return
 name|sourceFileName
 return|;
 block|}
-DECL|method|setSourceFileName (final String n)
+DECL|method|setSourceFileName (String n)
 specifier|public
 name|void
 name|setSourceFileName
 parameter_list|(
-specifier|final
 name|String
 name|n
 parameter_list|)

@@ -236,16 +236,14 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addItem (final String text, final Command imp)
+DECL|method|addItem (String text, Command imp)
 specifier|public
 name|void
 name|addItem
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|Command
 name|imp
 parameter_list|)
@@ -262,12 +260,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addItem (final CommandMenuItem i)
+DECL|method|addItem (CommandMenuItem i)
 specifier|public
 name|void
 name|addItem
 parameter_list|(
-specifier|final
 name|CommandMenuItem
 name|i
 parameter_list|)
@@ -278,12 +275,11 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addItem (final LinkMenuItem i)
+DECL|method|addItem (LinkMenuItem i)
 specifier|public
 name|void
 name|addItem
 parameter_list|(
-specifier|final
 name|LinkMenuItem
 name|i
 parameter_list|)
@@ -301,12 +297,11 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insertItem (final LinkMenuItem i, int beforeIndex)
+DECL|method|insertItem (LinkMenuItem i, int beforeIndex)
 specifier|public
 name|void
 name|insertItem
 parameter_list|(
-specifier|final
 name|LinkMenuItem
 name|i
 parameter_list|,
@@ -396,12 +391,11 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|add (final Widget i)
+DECL|method|add (Widget i)
 specifier|public
 name|void
 name|add
 parameter_list|(
-specifier|final
 name|Widget
 name|i
 parameter_list|)
@@ -456,12 +450,11 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insert (final Widget i, int beforeIndex)
+DECL|method|insert (Widget i, int beforeIndex)
 specifier|public
 name|void
 name|insert
 parameter_list|(
-specifier|final
 name|Widget
 name|i
 parameter_list|,

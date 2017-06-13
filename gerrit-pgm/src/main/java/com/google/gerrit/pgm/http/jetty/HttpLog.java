@@ -369,10 +369,9 @@ name|async
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpLog (final SystemLog systemLog)
+DECL|method|HttpLog (SystemLog systemLog)
 name|HttpLog
 parameter_list|(
-specifier|final
 name|SystemLog
 name|systemLog
 parameter_list|)
@@ -419,16 +418,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|log (final Request req, final Response rsp)
+DECL|method|log (Request req, Response rsp)
 specifier|public
 name|void
 name|log
 parameter_list|(
-specifier|final
 name|Request
 name|req
 parameter_list|,
-specifier|final
 name|Response
 name|rsp
 parameter_list|)

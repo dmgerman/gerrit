@@ -420,16 +420,14 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|formatDate (final long now, final StringBuffer sbuf)
+DECL|method|formatDate (long now, StringBuffer sbuf)
 specifier|private
 name|void
 name|formatDate
 parameter_list|(
-specifier|final
 name|long
 name|now
 parameter_list|,
-specifier|final
 name|StringBuffer
 name|sbuf
 parameter_list|)

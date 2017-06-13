@@ -177,16 +177,14 @@ parameter_list|()
 block|{}
 annotation|@
 name|Override
-DECL|method|compare (final String path1, final String path2)
+DECL|method|compare (String path1, String path2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-specifier|final
 name|String
 name|path1
 parameter_list|,
-specifier|final
 name|String
 name|path2
 parameter_list|)

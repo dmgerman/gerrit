@@ -652,11 +652,10 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NewAgreementScreen (final String token)
+DECL|method|NewAgreementScreen (String token)
 specifier|public
 name|NewAgreementScreen
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -1011,7 +1010,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1173,7 +1171,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|AgreementInfo
 name|cla
 range|:
@@ -1291,7 +1288,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)

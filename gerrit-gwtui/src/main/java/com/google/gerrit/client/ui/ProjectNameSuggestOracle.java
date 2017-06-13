@@ -128,16 +128,14 @@ name|SuggestAfterTypingNCharsOracle
 block|{
 annotation|@
 name|Override
-DECL|method|_onRequestSuggestions (final Request req, final Callback callback)
+DECL|method|_onRequestSuggestions (Request req, Callback callback)
 specifier|public
 name|void
 name|_onRequestSuggestions
 parameter_list|(
-specifier|final
 name|Request
 name|req
 parameter_list|,
-specifier|final
 name|Callback
 name|callback
 parameter_list|)

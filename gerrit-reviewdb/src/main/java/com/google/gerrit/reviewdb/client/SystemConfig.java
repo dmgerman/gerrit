@@ -183,12 +183,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|set (final String newValue)
+DECL|method|set (String newValue)
 specifier|protected
 name|void
 name|set
 parameter_list|(
-specifier|final
 name|String
 name|newValue
 parameter_list|)

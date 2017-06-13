@@ -149,7 +149,7 @@ argument_list|(
 name|ROOT
 argument_list|)
 decl_stmt|;
-DECL|method|key (final String name)
+DECL|method|key (String name)
 specifier|public
 specifier|static
 name|Key
@@ -158,7 +158,6 @@ name|Command
 argument_list|>
 name|key
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -173,7 +172,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|key (final CommandName name)
+DECL|method|key (CommandName name)
 specifier|public
 specifier|static
 name|Key
@@ -182,7 +181,6 @@ name|Command
 argument_list|>
 name|key
 parameter_list|(
-specifier|final
 name|CommandName
 name|name
 parameter_list|)
@@ -200,7 +198,7 @@ name|name
 argument_list|)
 return|;
 block|}
-DECL|method|key (final CommandName parent, final String name)
+DECL|method|key (CommandName parent, String name)
 specifier|public
 specifier|static
 name|Key
@@ -209,11 +207,9 @@ name|Command
 argument_list|>
 name|key
 parameter_list|(
-specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -236,7 +232,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|key (final CommandName parent, final String name, final String descr)
+DECL|method|key (CommandName parent, String name, String descr)
 specifier|public
 specifier|static
 name|Key
@@ -245,15 +241,12 @@ name|Command
 argument_list|>
 name|key
 parameter_list|(
-specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|descr
 parameter_list|)
@@ -281,13 +274,12 @@ block|}
 comment|/** Create a CommandName annotation for the supplied name. */
 annotation|@
 name|AutoAnnotation
-DECL|method|named (final String value)
+DECL|method|named (String value)
 specifier|public
 specifier|static
 name|CommandName
 name|named
 parameter_list|(
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -301,17 +293,15 @@ argument_list|)
 return|;
 block|}
 comment|/** Create a CommandName annotation for the supplied name. */
-DECL|method|named (final CommandName parent, final String name)
+DECL|method|named (CommandName parent, String name)
 specifier|public
 specifier|static
 name|CommandName
 name|named
 parameter_list|(
-specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -327,21 +317,18 @@ argument_list|)
 return|;
 block|}
 comment|/** Create a CommandName annotation for the supplied name and description. */
-DECL|method|named (final CommandName parent, final String name, final String descr)
+DECL|method|named (CommandName parent, String name, String descr)
 specifier|public
 specifier|static
 name|CommandName
 name|named
 parameter_list|(
-specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|descr
 parameter_list|)
@@ -359,13 +346,12 @@ argument_list|)
 return|;
 block|}
 comment|/** Return the name of this command, possibly including any parents. */
-DECL|method|nameOf (final CommandName name)
+DECL|method|nameOf (CommandName name)
 specifier|public
 specifier|static
 name|String
 name|nameOf
 parameter_list|(
-specifier|final
 name|CommandName
 name|name
 parameter_list|)
@@ -406,17 +392,15 @@ argument_list|()
 return|;
 block|}
 comment|/** Is the second command a direct child of the first command? */
-DECL|method|isChild (final CommandName parent, final CommandName name)
+DECL|method|isChild (CommandName parent, CommandName name)
 specifier|public
 specifier|static
 name|boolean
 name|isChild
 parameter_list|(
-specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|CommandName
 name|name
 parameter_list|)
@@ -516,14 +500,12 @@ specifier|final
 name|String
 name|descr
 decl_stmt|;
-DECL|method|NestedCommandNameImpl (final CommandName parent, final String name)
+DECL|method|NestedCommandNameImpl (CommandName parent, String name)
 name|NestedCommandNameImpl
 parameter_list|(
-specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -547,18 +529,15 @@ operator|=
 literal|""
 expr_stmt|;
 block|}
-DECL|method|NestedCommandNameImpl (final CommandName parent, final String name, final String descr)
+DECL|method|NestedCommandNameImpl (CommandName parent, String name, String descr)
 name|NestedCommandNameImpl
 parameter_list|(
-specifier|final
 name|CommandName
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|descr
 parameter_list|)
@@ -648,12 +627,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (final Object obj)
+DECL|method|equals (Object obj)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
-specifier|final
 name|Object
 name|obj
 parameter_list|)

@@ -293,16 +293,14 @@ name|changeId
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|onRequestSuggestions (final Request req, final Callback cb)
+DECL|method|onRequestSuggestions (Request req, Callback cb)
 specifier|protected
 name|void
 name|onRequestSuggestions
 parameter_list|(
-specifier|final
 name|Request
 name|req
 parameter_list|,
-specifier|final
 name|Callback
 name|cb
 parameter_list|)
@@ -455,16 +453,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|requestDefaultSuggestions (final Request req, final Callback cb)
+DECL|method|requestDefaultSuggestions (Request req, Callback cb)
 specifier|public
 name|void
 name|requestDefaultSuggestions
 parameter_list|(
-specifier|final
 name|Request
 name|req
 parameter_list|,
-specifier|final
 name|Callback
 name|cb
 parameter_list|)

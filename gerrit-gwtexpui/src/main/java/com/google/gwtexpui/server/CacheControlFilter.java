@@ -184,12 +184,11 @@ name|Filter
 block|{
 annotation|@
 name|Override
-DECL|method|init (final FilterConfig config)
+DECL|method|init (FilterConfig config)
 specifier|public
 name|void
 name|init
 parameter_list|(
-specifier|final
 name|FilterConfig
 name|config
 parameter_list|)
@@ -204,7 +203,7 @@ parameter_list|()
 block|{}
 annotation|@
 name|Override
-DECL|method|doFilter ( final ServletRequest sreq, final ServletResponse srsp, final FilterChain chain)
+DECL|method|doFilter (final ServletRequest sreq, ServletResponse srsp, FilterChain chain)
 specifier|public
 name|void
 name|doFilter
@@ -213,11 +212,9 @@ specifier|final
 name|ServletRequest
 name|sreq
 parameter_list|,
-specifier|final
 name|ServletResponse
 name|srsp
 parameter_list|,
-specifier|final
 name|FilterChain
 name|chain
 parameter_list|)
@@ -306,17 +303,15 @@ name|rsp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cacheForever (final String pathInfo, final HttpServletRequest req)
+DECL|method|cacheForever (String pathInfo, HttpServletRequest req)
 specifier|private
 specifier|static
 name|boolean
 name|cacheForever
 parameter_list|(
-specifier|final
 name|String
 name|pathInfo
 parameter_list|,
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)
@@ -423,13 +418,12 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|nocache (final String pathInfo)
+DECL|method|nocache (String pathInfo)
 specifier|private
 specifier|static
 name|boolean
 name|nocache
 parameter_list|(
-specifier|final
 name|String
 name|pathInfo
 parameter_list|)
@@ -452,13 +446,12 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|pathInfo (final HttpServletRequest req)
+DECL|method|pathInfo (HttpServletRequest req)
 specifier|private
 specifier|static
 name|String
 name|pathInfo
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)

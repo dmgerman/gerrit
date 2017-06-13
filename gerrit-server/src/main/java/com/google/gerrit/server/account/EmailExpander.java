@@ -109,13 +109,12 @@ operator|new
 name|None
 argument_list|()
 decl_stmt|;
-DECL|method|canHandle (final String fmt)
+DECL|method|canHandle (String fmt)
 specifier|public
 specifier|static
 name|boolean
 name|canHandle
 parameter_list|(
-specifier|final
 name|String
 name|fmt
 parameter_list|)
@@ -182,13 +181,12 @@ name|PLACEHOLDER
 init|=
 literal|"{0}"
 decl_stmt|;
-DECL|method|canHandle (final String fmt)
+DECL|method|canHandle (String fmt)
 specifier|public
 specifier|static
 name|boolean
 name|canHandle
 parameter_list|(
-specifier|final
 name|String
 name|fmt
 parameter_list|)
@@ -218,11 +216,10 @@ specifier|final
 name|String
 name|rhs
 decl_stmt|;
-DECL|method|Simple (final String fmt)
+DECL|method|Simple (String fmt)
 specifier|public
 name|Simple
 parameter_list|(
-specifier|final
 name|String
 name|fmt
 parameter_list|)
@@ -266,12 +263,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|canExpand (final String user)
+DECL|method|canExpand (String user)
 specifier|public
 name|boolean
 name|canExpand
 parameter_list|(
-specifier|final
 name|String
 name|user
 parameter_list|)
@@ -288,12 +284,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|expand (final String user)
+DECL|method|expand (String user)
 specifier|public
 name|String
 name|expand
 parameter_list|(
-specifier|final
 name|String
 name|user
 parameter_list|)

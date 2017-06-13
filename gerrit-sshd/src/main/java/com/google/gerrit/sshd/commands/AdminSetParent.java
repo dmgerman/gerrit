@@ -813,7 +813,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|ProjectControl
 name|pc
 range|:
@@ -875,7 +874,6 @@ block|}
 block|}
 for|for
 control|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -1177,7 +1175,7 @@ throw|;
 block|}
 block|}
 comment|/**    * Returns the children of the specified parent project that should be reparented. The returned    * list of child projects does not contain projects that were specified to be excluded from    * reparenting.    */
-DECL|method|getChildrenForReparenting (final ProjectControl parent)
+DECL|method|getChildrenForReparenting (ProjectControl parent)
 specifier|private
 name|List
 argument_list|<
@@ -1187,7 +1185,6 @@ name|NameKey
 argument_list|>
 name|getChildrenForReparenting
 parameter_list|(
-specifier|final
 name|ProjectControl
 name|parent
 parameter_list|)
@@ -1229,7 +1226,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|ProjectControl
 name|excludedChild
 range|:
@@ -1289,7 +1285,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|ProjectInfo
 name|child
 range|:

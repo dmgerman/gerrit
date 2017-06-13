@@ -182,15 +182,13 @@ specifier|final
 name|Command
 name|command
 decl_stmt|;
-DECL|method|CommandMenuItem (final String text, final Command cmd)
+DECL|method|CommandMenuItem (String text, Command cmd)
 specifier|public
 name|CommandMenuItem
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|Command
 name|cmd
 parameter_list|)
@@ -236,12 +234,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onClick (final ClickEvent event)
+DECL|method|onClick (ClickEvent event)
 specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)

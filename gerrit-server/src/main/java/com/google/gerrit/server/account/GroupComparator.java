@@ -105,16 +105,14 @@ argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|compare (final AccountGroup group1, final AccountGroup group2)
+DECL|method|compare (AccountGroup group1, AccountGroup group2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-specifier|final
 name|AccountGroup
 name|group1
 parameter_list|,
-specifier|final
 name|AccountGroup
 name|group2
 parameter_list|)

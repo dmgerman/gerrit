@@ -1869,7 +1869,7 @@ argument_list|)
 return|;
 comment|// windows UNC path can be "//..."
 block|}
-DECL|method|newLoader (final Path p)
+DECL|method|newLoader (Path p)
 specifier|private
 name|Callable
 argument_list|<
@@ -1877,7 +1877,6 @@ name|Resource
 argument_list|>
 name|newLoader
 parameter_list|(
-specifier|final
 name|Path
 name|p
 parameter_list|)

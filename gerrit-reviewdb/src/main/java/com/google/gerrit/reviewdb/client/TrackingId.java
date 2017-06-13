@@ -192,11 +192,10 @@ specifier|protected
 name|Id
 parameter_list|()
 block|{}
-DECL|method|Id (final String id)
+DECL|method|Id (String id)
 specifier|public
 name|Id
 parameter_list|(
-specifier|final
 name|String
 name|id
 parameter_list|)
@@ -292,11 +291,10 @@ specifier|protected
 name|System
 parameter_list|()
 block|{}
-DECL|method|System (final String s)
+DECL|method|System (String s)
 specifier|public
 name|System
 parameter_list|(
-specifier|final
 name|String
 name|s
 parameter_list|)
@@ -423,21 +421,18 @@ name|System
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Change.Id ch, final Id id, final System s)
+DECL|method|Key (Change.Id ch, Id id, System s)
 specifier|protected
 name|Key
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
 name|ch
 parameter_list|,
-specifier|final
 name|Id
 name|id
 parameter_list|,
-specifier|final
 name|System
 name|s
 parameter_list|)
@@ -559,23 +554,20 @@ specifier|protected
 name|TrackingId
 parameter_list|()
 block|{}
-DECL|method|TrackingId (final Change.Id ch, final TrackingId.Id id, final TrackingId.System s)
+DECL|method|TrackingId (Change.Id ch, TrackingId.Id id, TrackingId.System s)
 specifier|public
 name|TrackingId
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
 name|ch
 parameter_list|,
-specifier|final
 name|TrackingId
 operator|.
 name|Id
 name|id
 parameter_list|,
-specifier|final
 name|TrackingId
 operator|.
 name|System
@@ -595,21 +587,18 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|TrackingId (final Change.Id ch, final String id, final String s)
+DECL|method|TrackingId (Change.Id ch, String id, String s)
 specifier|public
 name|TrackingId
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
 name|ch
 parameter_list|,
-specifier|final
 name|String
 name|id
 parameter_list|,
-specifier|final
 name|String
 name|s
 parameter_list|)
@@ -712,12 +701,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (final Object obj)
+DECL|method|equals (Object obj)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
-specifier|final
 name|Object
 name|obj
 parameter_list|)

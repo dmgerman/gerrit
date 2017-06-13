@@ -487,12 +487,11 @@ return|;
 block|}
 block|}
 comment|/** Format a date using the locale's medium length format. */
-DECL|method|mediumFormat (final Date dt)
+DECL|method|mediumFormat (Date dt)
 specifier|public
 name|String
 name|mediumFormat
 parameter_list|(
-specifier|final
 name|Date
 name|dt
 parameter_list|)

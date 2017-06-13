@@ -383,7 +383,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|suggest (final String name, final ProjectControl project)
+DECL|method|suggest (String name, ProjectControl project)
 specifier|public
 name|Collection
 argument_list|<
@@ -391,11 +391,9 @@ name|GroupReference
 argument_list|>
 name|suggest
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|ProjectControl
 name|project
 parameter_list|)

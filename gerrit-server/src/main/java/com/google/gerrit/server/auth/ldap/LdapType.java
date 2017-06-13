@@ -130,12 +130,11 @@ operator|new
 name|Rfc2307
 argument_list|()
 decl_stmt|;
-DECL|method|guessType (final DirContext ctx)
+DECL|method|guessType (DirContext ctx)
 specifier|static
 name|LdapType
 name|guessType
 parameter_list|(
-specifier|final
 name|DirContext
 name|ctx
 parameter_list|)

@@ -312,12 +312,11 @@ name|cd
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addReviewers (final Collection<Account.Id> cc)
+DECL|method|addReviewers (Collection<Account.Id> cc)
 specifier|public
 name|void
 name|addReviewers
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|Account
@@ -335,12 +334,11 @@ name|cc
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addReviewersByEmail (final Collection<Address> cc)
+DECL|method|addReviewersByEmail (Collection<Address> cc)
 specifier|public
 name|void
 name|addReviewersByEmail
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|Address
@@ -356,12 +354,11 @@ name|cc
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addExtraCC (final Collection<Account.Id> cc)
+DECL|method|addExtraCC (Collection<Account.Id> cc)
 specifier|public
 name|void
 name|addExtraCC
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|Account
@@ -379,12 +376,11 @@ name|cc
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addExtraCCByEmail (final Collection<Address> cc)
+DECL|method|addExtraCCByEmail (Collection<Address> cc)
 specifier|public
 name|void
 name|addExtraCCByEmail
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|Address
@@ -467,7 +463,7 @@ name|cc
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//$FALL-THROUGH$
+comment|// $FALL-THROUGH$
 case|case
 name|OWNER_REVIEWERS
 case|:

@@ -145,10 +145,9 @@ decl_stmt|;
 end_decl_stmt
 
 begin_expr_stmt
-DECL|method|SearchScope (final int scope)
+DECL|method|SearchScope (int scope)
 name|SearchScope
 argument_list|(
-name|final
 name|int
 name|scope
 argument_list|)

@@ -294,12 +294,11 @@ argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|onFailure (final Throwable caught)
+DECL|method|onFailure (Throwable caught)
 specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -629,13 +628,12 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|isInvalidXSRF (final Throwable caught)
+DECL|method|isInvalidXSRF (Throwable caught)
 specifier|protected
 specifier|static
 name|boolean
 name|isInvalidXSRF
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -732,13 +730,12 @@ argument_list|)
 operator|)
 return|;
 block|}
-DECL|method|isNoSuchAccount (final Throwable caught)
+DECL|method|isNoSuchAccount (Throwable caught)
 specifier|protected
 specifier|static
 name|boolean
 name|isNoSuchAccount
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -761,13 +758,12 @@ name|MESSAGE
 argument_list|)
 return|;
 block|}
-DECL|method|isNameAlreadyUsed (final Throwable caught)
+DECL|method|isNameAlreadyUsed (Throwable caught)
 specifier|protected
 specifier|static
 name|boolean
 name|isNameAlreadyUsed
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -790,13 +786,12 @@ name|MESSAGE
 argument_list|)
 return|;
 block|}
-DECL|method|isNoSuchGroup (final Throwable caught)
+DECL|method|isNoSuchGroup (Throwable caught)
 specifier|protected
 specifier|static
 name|boolean
 name|isNoSuchGroup
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)

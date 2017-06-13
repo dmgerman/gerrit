@@ -136,17 +136,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|highlight (final String text, final String toHighlight)
+DECL|method|highlight (String text, String toHighlight)
 specifier|public
 specifier|static
 name|String
 name|highlight
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|toHighlight
 parameter_list|)

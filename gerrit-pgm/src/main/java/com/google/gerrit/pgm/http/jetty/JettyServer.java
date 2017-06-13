@@ -845,10 +845,9 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Lifecycle (final JettyServer server, @GerritServerConfig final Config cfg)
+DECL|method|Lifecycle (JettyServer server, @GerritServerConfig final Config cfg)
 name|Lifecycle
 parameter_list|(
-specifier|final
 name|JettyServer
 name|server
 parameter_list|,
@@ -2153,12 +2152,11 @@ return|return
 name|config
 return|;
 block|}
-DECL|method|isReverseProxied (final URI[] listenUrls)
+DECL|method|isReverseProxied (URI[] listenUrls)
 specifier|static
 name|boolean
 name|isReverseProxied
 parameter_list|(
-specifier|final
 name|URI
 index|[]
 name|listenUrls
@@ -2204,13 +2202,12 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|listenURLs (final Config cfg)
+DECL|method|listenURLs (Config cfg)
 specifier|static
 name|URI
 index|[]
 name|listenURLs
 parameter_list|(
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
@@ -2509,16 +2506,14 @@ return|return
 name|pool
 return|;
 block|}
-DECL|method|makeContext (final JettyEnv env, final Config cfg)
+DECL|method|makeContext (JettyEnv env, Config cfg)
 specifier|private
 name|Handler
 name|makeContext
 parameter_list|(
-specifier|final
 name|JettyEnv
 name|env
 parameter_list|,
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
@@ -2702,7 +2697,7 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|makeContext ( final String contextPath, final JettyEnv env, final Config cfg)
+DECL|method|makeContext (final String contextPath, JettyEnv env, Config cfg)
 specifier|private
 name|ContextHandler
 name|makeContext
@@ -2711,11 +2706,9 @@ specifier|final
 name|String
 name|contextPath
 parameter_list|,
-specifier|final
 name|JettyEnv
 name|env
 parameter_list|,
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

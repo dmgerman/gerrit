@@ -1015,7 +1015,7 @@ specifier|private
 name|Thread
 name|worker
 decl_stmt|;
-DECL|method|TaskThunk ( final WorkQueue.Executor executor, final Continuation cont, final HttpServletRequest req)
+DECL|method|TaskThunk (final WorkQueue.Executor executor, Continuation cont, HttpServletRequest req)
 name|TaskThunk
 parameter_list|(
 specifier|final
@@ -1024,11 +1024,9 @@ operator|.
 name|Executor
 name|executor
 parameter_list|,
-specifier|final
 name|Continuation
 name|cont
 parameter_list|,
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|)

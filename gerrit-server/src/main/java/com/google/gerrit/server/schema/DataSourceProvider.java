@@ -603,20 +603,17 @@ block|,
 DECL|enumConstant|MULTI_USER
 name|MULTI_USER
 block|}
-DECL|method|open (final Config cfg, final Context context, final DataSourceType dst)
+DECL|method|open (Config cfg, Context context, DataSourceType dst)
 specifier|private
 name|DataSource
 name|open
 parameter_list|(
-specifier|final
 name|Config
 name|cfg
 parameter_list|,
-specifier|final
 name|Context
 name|context
 parameter_list|,
-specifier|final
 name|DataSourceType
 name|dst
 parameter_list|)

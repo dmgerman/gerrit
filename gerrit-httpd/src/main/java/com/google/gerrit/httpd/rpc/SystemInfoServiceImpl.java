@@ -323,12 +323,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|daemonHostKeys (final AsyncCallback<List<SshHostKey>> callback)
+DECL|method|daemonHostKeys (AsyncCallback<List<SshHostKey>> callback)
 specifier|public
 name|void
 name|daemonHostKeys
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|List
@@ -358,7 +357,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|HostKey
 name|hk
 range|:

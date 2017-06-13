@@ -180,11 +180,10 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AutoCenterDialogBox (final boolean autoHide)
+DECL|method|AutoCenterDialogBox (boolean autoHide)
 specifier|public
 name|AutoCenterDialogBox
 parameter_list|(
-specifier|final
 name|boolean
 name|autoHide
 parameter_list|)
@@ -197,15 +196,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AutoCenterDialogBox (final boolean autoHide, final boolean modal)
+DECL|method|AutoCenterDialogBox (boolean autoHide, boolean modal)
 specifier|public
 name|AutoCenterDialogBox
 parameter_list|(
-specifier|final
 name|boolean
 name|autoHide
 parameter_list|,
-specifier|final
 name|boolean
 name|modal
 parameter_list|)
@@ -249,7 +246,6 @@ specifier|public
 name|void
 name|onResize
 parameter_list|(
-specifier|final
 name|ResizeEvent
 name|event
 parameter_list|)
@@ -326,16 +322,14 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**    * Invoked when the outer browser window resizes.    *    *<p>Subclasses may override (but should ensure they still call super.onResize) to implement    * custom logic when a window resize occurs.    *    * @param width new browser window width    * @param height new browser window height    */
-DECL|method|onResize (final int width, final int height)
+DECL|method|onResize (int width, int height)
 specifier|protected
 name|void
 name|onResize
 parameter_list|(
-specifier|final
 name|int
 name|width
 parameter_list|,
-specifier|final
 name|int
 name|height
 parameter_list|)

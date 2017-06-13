@@ -114,17 +114,15 @@ specifier|public
 class|class
 name|ObjectIdSerialization
 block|{
-DECL|method|writeCanBeNull (final OutputStream out, final AnyObjectId id)
+DECL|method|writeCanBeNull (OutputStream out, AnyObjectId id)
 specifier|public
 specifier|static
 name|void
 name|writeCanBeNull
 parameter_list|(
-specifier|final
 name|OutputStream
 name|out
 parameter_list|,
-specifier|final
 name|AnyObjectId
 name|id
 parameter_list|)
@@ -170,17 +168,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|writeNotNull (final OutputStream out, final AnyObjectId id)
+DECL|method|writeNotNull (OutputStream out, AnyObjectId id)
 specifier|public
 specifier|static
 name|void
 name|writeNotNull
 parameter_list|(
-specifier|final
 name|OutputStream
 name|out
 parameter_list|,
-specifier|final
 name|AnyObjectId
 name|id
 parameter_list|)
@@ -195,13 +191,12 @@ name|out
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|readCanBeNull (final InputStream in)
+DECL|method|readCanBeNull (InputStream in)
 specifier|public
 specifier|static
 name|ObjectId
 name|readCanBeNull
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|)
@@ -241,13 +236,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|readNotNull (final InputStream in)
+DECL|method|readNotNull (InputStream in)
 specifier|public
 specifier|static
 name|ObjectId
 name|readNotNull
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|)

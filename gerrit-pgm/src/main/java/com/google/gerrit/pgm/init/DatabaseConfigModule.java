@@ -122,11 +122,10 @@ specifier|final
 name|SitePaths
 name|site
 decl_stmt|;
-DECL|method|DatabaseConfigModule (final SitePaths site)
+DECL|method|DatabaseConfigModule (SitePaths site)
 specifier|public
 name|DatabaseConfigModule
 parameter_list|(
-specifier|final
 name|SitePaths
 name|site
 parameter_list|)

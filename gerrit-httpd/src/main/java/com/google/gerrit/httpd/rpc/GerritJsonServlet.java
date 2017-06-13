@@ -505,7 +505,7 @@ name|audit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritJsonServlet ( final DynamicItem<WebSession> w, final RemoteJsonService s, final AuditService a)
+DECL|method|GerritJsonServlet (final DynamicItem<WebSession> w, RemoteJsonService s, AuditService a)
 name|GerritJsonServlet
 parameter_list|(
 specifier|final
@@ -515,11 +515,9 @@ name|WebSession
 argument_list|>
 name|w
 parameter_list|,
-specifier|final
 name|RemoteJsonService
 name|s
 parameter_list|,
-specifier|final
 name|AuditService
 name|a
 parameter_list|)
@@ -539,7 +537,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|createActiveCall ( final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|createActiveCall (final HttpServletRequest req, HttpServletResponse rsp)
 specifier|protected
 name|GerritCall
 name|createActiveCall
@@ -548,7 +546,6 @@ specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -647,12 +644,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|preInvoke (final GerritCall call)
+DECL|method|preInvoke (GerritCall call)
 specifier|protected
 name|void
 name|preInvoke
 parameter_list|(
-specifier|final
 name|GerritCall
 name|call
 parameter_list|)
@@ -739,16 +735,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|service (final HttpServletRequest req, final HttpServletResponse resp)
+DECL|method|service (HttpServletRequest req, HttpServletResponse resp)
 specifier|protected
 name|void
 name|service
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|resp
 parameter_list|)
@@ -1075,16 +1069,14 @@ return|return
 name|args
 return|;
 block|}
-DECL|method|extractWhat (final Audit note, final GerritCall call)
+DECL|method|extractWhat (Audit note, GerritCall call)
 specifier|private
 name|String
 name|extractWhat
 parameter_list|(
-specifier|final
 name|Audit
 name|note
 parameter_list|,
-specifier|final
 name|GerritCall
 name|call
 parameter_list|)
@@ -1423,18 +1415,15 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|GerritCall (final WebSession session, final HttpServletRequest i, final HttpServletResponse o)
+DECL|method|GerritCall (WebSession session, HttpServletRequest i, HttpServletResponse o)
 name|GerritCall
 parameter_list|(
-specifier|final
 name|WebSession
 name|session
 parameter_list|,
-specifier|final
 name|HttpServletRequest
 name|i
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|o
 parameter_list|)
@@ -1496,12 +1485,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onFailure (final Throwable error)
+DECL|method|onFailure (Throwable error)
 specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|error
 parameter_list|)

@@ -368,7 +368,7 @@ name|accountManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpsClientSslCertAuthFilter ( final DynamicItem<WebSession> webSession, final AccountManager accountManager)
+DECL|method|HttpsClientSslCertAuthFilter ( final DynamicItem<WebSession> webSession, AccountManager accountManager)
 name|HttpsClientSslCertAuthFilter
 parameter_list|(
 specifier|final
@@ -378,7 +378,6 @@ name|WebSession
 argument_list|>
 name|webSession
 parameter_list|,
-specifier|final
 name|AccountManager
 name|accountManager
 parameter_list|)

@@ -1064,11 +1064,10 @@ specifier|private
 name|OnEditEnabler
 name|saveEnabler
 decl_stmt|;
-DECL|method|ProjectInfoScreen (final Project.NameKey toShow)
+DECL|method|ProjectInfoScreen (Project.NameKey toShow)
 specifier|public
 name|ProjectInfoScreen
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -1724,7 +1723,6 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|SubmitType
 name|type
 range|:
@@ -2278,12 +2276,11 @@ name|signedOffBy
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setSubmitType (final SubmitType newSubmitType)
+DECL|method|setSubmitType (SubmitType newSubmitType)
 specifier|private
 name|void
 name|setSubmitType
 parameter_list|(
-specifier|final
 name|SubmitType
 name|newSubmitType
 parameter_list|)
@@ -2356,12 +2353,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|setState (final ProjectState newState)
+DECL|method|setState (ProjectState newState)
 specifier|private
 name|void
 name|setState
 parameter_list|(
-specifier|final
 name|ProjectState
 name|newState
 parameter_list|)

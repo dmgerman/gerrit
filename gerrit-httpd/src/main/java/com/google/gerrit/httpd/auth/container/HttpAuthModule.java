@@ -116,11 +116,10 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
-DECL|method|HttpAuthModule (final AuthConfig authConfig)
+DECL|method|HttpAuthModule (AuthConfig authConfig)
 specifier|public
 name|HttpAuthModule
 parameter_list|(
-specifier|final
 name|AuthConfig
 name|authConfig
 parameter_list|)

@@ -293,11 +293,10 @@ specifier|private
 name|String
 name|authTypes
 decl_stmt|;
-DECL|method|AuthSMTPClient (final String charset)
+DECL|method|AuthSMTPClient (String charset)
 specifier|public
 name|AuthSMTPClient
 parameter_list|(
-specifier|final
 name|String
 name|charset
 parameter_list|)
@@ -308,12 +307,11 @@ name|charset
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|enableSSL (final boolean verify)
+DECL|method|enableSSL (boolean verify)
 specifier|public
 name|void
 name|enableSSL
 parameter_list|(
-specifier|final
 name|boolean
 name|verify
 parameter_list|)
@@ -326,20 +324,17 @@ name|verify
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|startTLS (final String hostname, final int port, final boolean verify)
+DECL|method|startTLS (String hostname, int port, boolean verify)
 specifier|public
 name|boolean
 name|startTLS
 parameter_list|(
-specifier|final
 name|String
 name|hostname
 parameter_list|,
-specifier|final
 name|int
 name|port
 parameter_list|,
-specifier|final
 name|boolean
 name|verify
 parameter_list|)
@@ -471,13 +466,12 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|sslFactory (final boolean verify)
+DECL|method|sslFactory (boolean verify)
 specifier|private
 specifier|static
 name|SSLSocketFactory
 name|sslFactory
 parameter_list|(
-specifier|final
 name|boolean
 name|verify
 parameter_list|)
@@ -1058,12 +1052,11 @@ block|,
 literal|'f'
 block|}
 decl_stmt|;
-DECL|method|toHex (final byte[] b)
+DECL|method|toHex (byte[] b)
 specifier|private
 name|String
 name|toHex
 parameter_list|(
-specifier|final
 name|byte
 index|[]
 name|b
@@ -1189,13 +1182,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|encodeBase64 (final byte[] data)
+DECL|method|encodeBase64 (byte[] data)
 specifier|private
 specifier|static
 name|String
 name|encodeBase64
 parameter_list|(
-specifier|final
 name|byte
 index|[]
 name|data

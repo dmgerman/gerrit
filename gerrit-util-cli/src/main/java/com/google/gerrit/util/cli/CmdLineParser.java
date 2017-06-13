@@ -1081,12 +1081,11 @@ operator|.
 name|value
 return|;
 block|}
-DECL|method|parseArgument (final String... args)
+DECL|method|parseArgument (String... args)
 specifier|public
 name|void
 name|parseArgument
 parameter_list|(
-specifier|final
 name|String
 modifier|...
 name|args
@@ -1377,7 +1376,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|key
 range|:
@@ -2182,10 +2180,9 @@ specifier|private
 name|HelpOption
 name|help
 decl_stmt|;
-DECL|method|MyParser (final Object bean)
+DECL|method|MyParser (Object bean)
 name|MyParser
 parameter_list|(
-specifier|final
 name|Object
 name|bean
 parameter_list|)
@@ -2356,16 +2353,14 @@ block|}
 argument_list|)
 annotation|@
 name|Override
-DECL|method|createOptionHandler (final OptionDef option, final Setter setter)
+DECL|method|createOptionHandler (OptionDef option, Setter setter)
 specifier|protected
 name|OptionHandler
 name|createOptionHandler
 parameter_list|(
-specifier|final
 name|OptionDef
 name|option
 parameter_list|,
-specifier|final
 name|Setter
 name|setter
 parameter_list|)
@@ -2515,12 +2510,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isHandlerSpecified (final OptionDef option)
+DECL|method|isHandlerSpecified (OptionDef option)
 specifier|private
 name|boolean
 name|isHandlerSpecified
 parameter_list|(
-specifier|final
 name|OptionDef
 name|option
 parameter_list|)

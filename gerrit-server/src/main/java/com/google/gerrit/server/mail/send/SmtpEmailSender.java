@@ -1715,7 +1715,7 @@ operator|+
 literal|"--\r\n"
 return|;
 block|}
-DECL|method|setMissingHeader ( final Map<String, EmailHeader> hdrs, final String name, final String value)
+DECL|method|setMissingHeader (final Map<String, EmailHeader> hdrs, String name, String value)
 specifier|private
 name|void
 name|setMissingHeader
@@ -1729,11 +1729,9 @@ name|EmailHeader
 argument_list|>
 name|hdrs
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -2008,7 +2006,7 @@ name|IOException
 name|e2
 parameter_list|)
 block|{
-comment|//Ignored
+comment|// Ignored
 block|}
 block|}
 if|if

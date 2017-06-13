@@ -1116,12 +1116,11 @@ name|env
 argument_list|)
 return|;
 block|}
-DECL|method|kerberosOpen (final Properties env)
+DECL|method|kerberosOpen (Properties env)
 specifier|private
 name|DirContext
 name|kerberosOpen
 parameter_list|(
-specifier|final
 name|Properties
 name|env
 parameter_list|)
@@ -1543,7 +1542,7 @@ name|username
 argument_list|)
 throw|;
 block|}
-DECL|method|queryForGroups ( final DirContext ctx, final String username, LdapQuery.Result account)
+DECL|method|queryForGroups ( final DirContext ctx, String username, LdapQuery.Result account)
 name|Set
 argument_list|<
 name|AccountGroup
@@ -1556,7 +1555,6 @@ specifier|final
 name|DirContext
 name|ctx
 parameter_list|,
-specifier|final
 name|String
 name|username
 parameter_list|,
@@ -2263,10 +2261,9 @@ name|LdapQuery
 argument_list|>
 name|groupMemberQueryList
 decl_stmt|;
-DECL|method|LdapSchema (final DirContext ctx)
+DECL|method|LdapSchema (DirContext ctx)
 name|LdapSchema
 parameter_list|(
-specifier|final
 name|DirContext
 name|ctx
 parameter_list|)
@@ -2447,7 +2444,6 @@ throw|;
 block|}
 for|for
 control|(
-specifier|final
 name|String
 name|name
 range|:

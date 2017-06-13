@@ -1037,7 +1037,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|asBinaryResult (byte[] raw, final ObjectLoader obj)
+DECL|method|asBinaryResult (byte[] raw, ObjectLoader obj)
 specifier|private
 specifier|static
 name|BinaryResult
@@ -1047,7 +1047,6 @@ name|byte
 index|[]
 name|raw
 parameter_list|,
-specifier|final
 name|ObjectLoader
 name|obj
 parameter_list|)
@@ -1440,7 +1439,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"resource"
 argument_list|)
-DECL|method|zipBlob ( final String path, final ObjectLoader obj, RevCommit commit, @Nullable final String suffix)
+DECL|method|zipBlob ( final String path, ObjectLoader obj, RevCommit commit, @Nullable final String suffix)
 specifier|private
 name|BinaryResult
 name|zipBlob
@@ -1449,7 +1448,6 @@ specifier|final
 name|String
 name|path
 parameter_list|,
-specifier|final
 name|ObjectLoader
 name|obj
 parameter_list|,

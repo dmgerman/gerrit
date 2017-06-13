@@ -841,12 +841,11 @@ block|}
 return|;
 block|}
 comment|/**    * Returns {@code true} if this set contains the given item.    *    * @param item item to check whether or not it is contained.    * @return {@code true} if this set contains the given item.    */
-DECL|method|contains (final T item)
+DECL|method|contains (T item)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-specifier|final
 name|T
 name|item
 parameter_list|)
@@ -893,12 +892,11 @@ literal|false
 return|;
 block|}
 comment|/**    * Add one new element to the set.    *    * @param item the item to add to the collection. Must not be null.    * @return handle to remove the item at a later point in time.    */
-DECL|method|add (final T item)
+DECL|method|add (T item)
 specifier|public
 name|RegistrationHandle
 name|add
 parameter_list|(
-specifier|final
 name|T
 name|item
 parameter_list|)
@@ -916,12 +914,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Add one new element to the set.    *    * @param item the item to add to the collection. Must not be null.    * @return handle to remove the item at a later point in time.    */
-DECL|method|add (final Provider<T> item)
+DECL|method|add (Provider<T> item)
 specifier|public
 name|RegistrationHandle
 name|add
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|T

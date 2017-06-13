@@ -343,18 +343,15 @@ name|container
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitContainer (final ConsoleUI ui, final SitePaths site, final Section.Factory sections)
+DECL|method|InitContainer (ConsoleUI ui, SitePaths site, Section.Factory sections)
 name|InitContainer
 parameter_list|(
-specifier|final
 name|ConsoleUI
 name|ui
 parameter_list|,
-specifier|final
 name|SitePaths
 name|site
 parameter_list|,
-specifier|final
 name|Section
 operator|.
 name|Factory

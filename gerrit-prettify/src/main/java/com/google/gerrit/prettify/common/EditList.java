@@ -133,7 +133,7 @@ specifier|final
 name|int
 name|bSize
 decl_stmt|;
-DECL|method|EditList ( final List<Edit> edits, final int contextLines, final int aSize, final int bSize)
+DECL|method|EditList (final List<Edit> edits, int contextLines, int aSize, int bSize)
 specifier|public
 name|EditList
 parameter_list|(
@@ -144,15 +144,12 @@ name|Edit
 argument_list|>
 name|edits
 parameter_list|,
-specifier|final
 name|int
 name|contextLines
 parameter_list|,
-specifier|final
 name|int
 name|aSize
 parameter_list|,
-specifier|final
 name|int
 name|bSize
 parameter_list|)
@@ -307,12 +304,11 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|findCombinedEnd (final int i)
+DECL|method|findCombinedEnd (int i)
 specifier|private
 name|int
 name|findCombinedEnd
 parameter_list|(
-specifier|final
 name|int
 name|i
 parameter_list|)
@@ -356,12 +352,11 @@ operator|-
 literal|1
 return|;
 block|}
-DECL|method|combineA (final int i)
+DECL|method|combineA (int i)
 specifier|private
 name|boolean
 name|combineA
 parameter_list|(
-specifier|final
 name|int
 name|i
 parameter_list|)
@@ -409,12 +404,11 @@ operator|+
 literal|1
 return|;
 block|}
-DECL|method|combineB (final int i)
+DECL|method|combineB (int i)
 specifier|private
 name|boolean
 name|combineB
 parameter_list|(
-specifier|final
 name|int
 name|i
 parameter_list|)
@@ -511,15 +505,13 @@ specifier|final
 name|int
 name|bEnd
 decl_stmt|;
-DECL|method|Hunk (final int ci, final int ei)
+DECL|method|Hunk (int ci, int ei)
 specifier|private
 name|Hunk
 parameter_list|(
-specifier|final
 name|int
 name|ci
 parameter_list|,
-specifier|final
 name|int
 name|ei
 parameter_list|)
@@ -828,12 +820,11 @@ operator|<
 name|bEnd
 return|;
 block|}
-DECL|method|in (final Edit edit)
+DECL|method|in (Edit edit)
 specifier|private
 name|boolean
 name|in
 parameter_list|(
-specifier|final
 name|Edit
 name|edit
 parameter_list|)

@@ -1226,7 +1226,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setUpBlame ( final CodeMirror cm, final boolean isBase, final PatchSet.Id rev, final String path)
+DECL|method|setUpBlame (final CodeMirror cm, boolean isBase, PatchSet.Id rev, String path)
 name|void
 name|setUpBlame
 parameter_list|(
@@ -1234,17 +1234,14 @@ specifier|final
 name|CodeMirror
 name|cm
 parameter_list|,
-specifier|final
 name|boolean
 name|isBase
 parameter_list|,
-specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|rev
 parameter_list|,
-specifier|final
 name|String
 name|path
 parameter_list|)

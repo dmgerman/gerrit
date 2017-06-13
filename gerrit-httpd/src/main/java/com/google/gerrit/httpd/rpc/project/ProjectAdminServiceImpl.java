@@ -274,7 +274,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|projectAccess ( final Project.NameKey projectName, final AsyncCallback<ProjectAccess> callback)
+DECL|method|projectAccess ( final Project.NameKey projectName, AsyncCallback<ProjectAccess> callback)
 specifier|public
 name|void
 name|projectAccess
@@ -285,7 +285,6 @@ operator|.
 name|NameKey
 name|projectName
 parameter_list|,
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|ProjectAccess
@@ -306,13 +305,12 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getBase (final String baseRevision)
+DECL|method|getBase (String baseRevision)
 specifier|private
 specifier|static
 name|ObjectId
 name|getBase
 parameter_list|(
-specifier|final
 name|String
 name|baseRevision
 parameter_list|)

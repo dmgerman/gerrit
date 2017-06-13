@@ -249,14 +249,13 @@ argument_list|<
 name|T
 argument_list|>
 parameter_list|>
-DECL|method|copyKeysIntoChildren (final String asProperty, AsyncCallback<M> callback)
+DECL|method|copyKeysIntoChildren (String asProperty, AsyncCallback<M> callback)
 name|AsyncCallback
 argument_list|<
 name|M
 argument_list|>
 name|copyKeysIntoChildren
 parameter_list|(
-specifier|final
 name|String
 name|asProperty
 parameter_list|,

@@ -2036,13 +2036,12 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|toGroup (final AccountGroup.Id id)
+DECL|method|toGroup (AccountGroup.Id id)
 specifier|public
 specifier|static
 name|String
 name|toGroup
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -2764,13 +2763,12 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|dashboard (final String token)
+DECL|method|dashboard (String token)
 specifier|private
 specifier|static
 name|void
 name|dashboard
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -2925,13 +2923,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|projects (final String token)
+DECL|method|projects (String token)
 specifier|private
 specifier|static
 name|void
 name|projects
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -3265,13 +3262,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|change (final String token)
+DECL|method|change (String token)
 specifier|private
 specifier|static
 name|void
 name|change
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -3902,13 +3898,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|extension (final String token)
+DECL|method|extension (String token)
 specifier|private
 specifier|static
 name|void
 name|extension
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -4409,23 +4404,20 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|codemirrorForEdit (final String token, final Patch.Key id, final int line)
+DECL|method|codemirrorForEdit (String token, Patch.Key id, int line)
 specifier|private
 specifier|static
 name|void
 name|codemirrorForEdit
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|,
-specifier|final
 name|Patch
 operator|.
 name|Key
 name|id
 parameter_list|,
-specifier|final
 name|int
 name|line
 parameter_list|)
@@ -6190,13 +6182,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|docSearch (final String token)
+DECL|method|docSearch (String token)
 specifier|private
 specifier|static
 name|void
 name|docSearch
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)

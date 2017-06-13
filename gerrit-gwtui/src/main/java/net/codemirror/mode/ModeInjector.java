@@ -391,12 +391,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|beginLoading (final String mode)
+DECL|method|beginLoading (String mode)
 specifier|private
 name|void
 name|beginLoading
 parameter_list|(
-specifier|final
 name|String
 name|mode
 parameter_list|)

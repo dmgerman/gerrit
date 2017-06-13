@@ -985,14 +985,12 @@ name|T
 argument_list|>
 name|scope
 parameter_list|(
-specifier|final
 name|Key
 argument_list|<
 name|T
 argument_list|>
 name|key
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|T
@@ -1726,7 +1724,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|create (Context req, final Repository repo)
+DECL|method|create (Context req, Repository repo)
 specifier|public
 name|UploadPack
 name|create
@@ -1734,7 +1732,6 @@ parameter_list|(
 name|Context
 name|req
 parameter_list|,
-specifier|final
 name|Repository
 name|repo
 parameter_list|)
@@ -2065,12 +2062,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|create (final Context req, Repository db)
+DECL|method|create (Context req, Repository db)
 specifier|public
 name|ReceivePack
 name|create
 parameter_list|(
-specifier|final
 name|Context
 name|req
 parameter_list|,

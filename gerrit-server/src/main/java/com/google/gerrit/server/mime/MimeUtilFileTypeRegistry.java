@@ -407,16 +407,14 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|getMimeType (final String path, final byte[] content)
+DECL|method|getMimeType (String path, byte[] content)
 specifier|public
 name|MimeType
 name|getMimeType
 parameter_list|(
-specifier|final
 name|String
 name|path
 parameter_list|,
-specifier|final
 name|byte
 index|[]
 name|content
@@ -494,16 +492,14 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|getMimeType (final String path, final InputStream is)
+DECL|method|getMimeType (String path, InputStream is)
 specifier|public
 name|MimeType
 name|getMimeType
 parameter_list|(
-specifier|final
 name|String
 name|path
 parameter_list|,
-specifier|final
 name|InputStream
 name|is
 parameter_list|)
@@ -564,7 +560,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|getMimeType (Set<MimeType> mimeTypes, final String path)
+DECL|method|getMimeType (Set<MimeType> mimeTypes, String path)
 specifier|private
 name|MimeType
 name|getMimeType
@@ -575,7 +571,6 @@ name|MimeType
 argument_list|>
 name|mimeTypes
 parameter_list|,
-specifier|final
 name|String
 name|path
 parameter_list|)
@@ -691,12 +686,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|isSafeInline (final MimeType type)
+DECL|method|isSafeInline (MimeType type)
 specifier|public
 name|boolean
 name|isSafeInline
 parameter_list|(
-specifier|final
 name|MimeType
 name|type
 parameter_list|)

@@ -173,10 +173,9 @@ name|site
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DerbyInitializer (final SitePaths site)
+DECL|method|DerbyInitializer (SitePaths site)
 name|DerbyInitializer
 parameter_list|(
-specifier|final
 name|SitePaths
 name|site
 parameter_list|)

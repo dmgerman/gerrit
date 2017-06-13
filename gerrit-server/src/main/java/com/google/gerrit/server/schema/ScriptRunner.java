@@ -287,21 +287,18 @@ name|Override
 name|void
 name|run
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
 block|{}
 block|}
 decl_stmt|;
-DECL|method|ScriptRunner (final String scriptName, final InputStream script)
+DECL|method|ScriptRunner (String scriptName, InputStream script)
 name|ScriptRunner
 parameter_list|(
-specifier|final
 name|String
 name|scriptName
 parameter_list|,
-specifier|final
 name|InputStream
 name|script
 parameter_list|)
@@ -349,11 +346,10 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|run (final ReviewDb db)
+DECL|method|run (ReviewDb db)
 name|void
 name|run
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
@@ -486,7 +482,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|parse (final InputStream in)
+DECL|method|parse (InputStream in)
 specifier|private
 name|List
 argument_list|<
@@ -494,7 +490,6 @@ name|String
 argument_list|>
 name|parse
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|)

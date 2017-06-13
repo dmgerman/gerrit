@@ -163,13 +163,12 @@ name|SUBJECT_CROP_RANGE
 init|=
 literal|10
 decl_stmt|;
-DECL|method|toLongString (final Change.Status status)
+DECL|method|toLongString (Change.Status status)
 specifier|public
 specifier|static
 name|String
 name|toLongString
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Status
@@ -243,13 +242,12 @@ name|SuppressWarnings
 argument_list|(
 literal|"deprecation"
 argument_list|)
-DECL|method|cropSubject (final String subject)
+DECL|method|cropSubject (String subject)
 specifier|public
 specifier|static
 name|String
 name|cropSubject
 parameter_list|(
-specifier|final
 name|String
 name|subject
 parameter_list|)

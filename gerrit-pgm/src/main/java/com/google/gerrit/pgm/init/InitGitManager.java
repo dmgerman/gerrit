@@ -217,14 +217,12 @@ name|gerrit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitGitManager (final ConsoleUI ui, final Section.Factory sections)
+DECL|method|InitGitManager (ConsoleUI ui, Section.Factory sections)
 name|InitGitManager
 parameter_list|(
-specifier|final
 name|ConsoleUI
 name|ui
 parameter_list|,
-specifier|final
 name|Section
 operator|.
 name|Factory

@@ -137,13 +137,12 @@ class|class
 name|ParameterizedString
 block|{
 comment|/** Obtain a string which has no parameters and always produces the value. */
-DECL|method|asis (final String constant)
+DECL|method|asis (String constant)
 specifier|public
 specifier|static
 name|ParameterizedString
 name|asis
 parameter_list|(
-specifier|final
 name|String
 name|constant
 parameter_list|)
@@ -205,11 +204,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParameterizedString (final Constant c)
+DECL|method|ParameterizedString (Constant c)
 specifier|private
 name|ParameterizedString
 parameter_list|(
-specifier|final
 name|Constant
 name|c
 parameter_list|)
@@ -246,11 +244,10 @@ name|emptyList
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|ParameterizedString (final String pattern)
+DECL|method|ParameterizedString (String pattern)
 specifier|public
 name|ParameterizedString
 parameter_list|(
-specifier|final
 name|String
 name|pattern
 parameter_list|)
@@ -599,13 +596,12 @@ argument_list|)
 return|;
 block|}
 comment|/** Convert a map of parameters into a value array for binding. */
-DECL|method|bind (final Map<String, String> params)
+DECL|method|bind (Map<String, String> params)
 specifier|public
 name|String
 index|[]
 name|bind
 parameter_list|(
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -684,12 +680,11 @@ name|r
 return|;
 block|}
 comment|/** Format this string by performing the variable replacements. */
-DECL|method|replace (final Map<String, String> params)
+DECL|method|replace (Map<String, String> params)
 specifier|public
 name|String
 name|replace
 parameter_list|(
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -709,7 +704,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Format
 name|f
 range|:
@@ -733,16 +727,14 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|replace (final String name, final String value)
+DECL|method|replace (String name, String value)
 specifier|public
 name|Builder
 name|replace
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -795,16 +787,14 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|replace (final String name, final String value)
+DECL|method|replace (String name, String value)
 specifier|public
 name|Builder
 name|replace
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -881,10 +871,9 @@ specifier|final
 name|String
 name|text
 decl_stmt|;
-DECL|method|Constant (final String text)
+DECL|method|Constant (String text)
 name|Constant
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|)
@@ -946,10 +935,9 @@ name|Function
 argument_list|>
 name|functions
 decl_stmt|;
-DECL|method|Parameter (final String parameter)
+DECL|method|Parameter (String parameter)
 name|Parameter
 parameter_list|(
-specifier|final
 name|String
 name|parameter
 parameter_list|)

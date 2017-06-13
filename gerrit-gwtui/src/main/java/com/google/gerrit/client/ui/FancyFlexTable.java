@@ -380,12 +380,11 @@ name|MyFlexTable
 argument_list|()
 return|;
 block|}
-DECL|method|getRowItem (final int row)
+DECL|method|getRowItem (int row)
 specifier|protected
 name|RowItem
 name|getRowItem
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
@@ -412,16 +411,14 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|setRowItem (final int row, final RowItem item)
+DECL|method|setRowItem (int row, RowItem item)
 specifier|protected
 name|void
 name|setRowItem
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|RowItem
 name|item
 parameter_list|)
@@ -673,19 +670,17 @@ return|return
 name|left
 return|;
 block|}
-DECL|method|resetHtml (final SafeHtml body)
+DECL|method|resetHtml (SafeHtml body)
 specifier|protected
 name|void
 name|resetHtml
 parameter_list|(
-specifier|final
 name|SafeHtml
 name|body
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|Iterator
 argument_list|<
 name|Widget
@@ -725,16 +720,14 @@ name|body
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|scrollIntoView (final int topRow, final int endRow)
+DECL|method|scrollIntoView (int topRow, int endRow)
 specifier|protected
 name|void
 name|scrollIntoView
 parameter_list|(
-specifier|final
 name|int
 name|topRow
 parameter_list|,
-specifier|final
 name|int
 name|endRow
 parameter_list|)
@@ -924,12 +917,11 @@ name|nTop
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|applyDataRowStyle (final int newRow)
+DECL|method|applyDataRowStyle (int newRow)
 specifier|protected
 name|void
 name|applyDataRowStyle
 parameter_list|(
-specifier|final
 name|int
 name|newRow
 parameter_list|)
@@ -980,12 +972,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Get the td element that contains another element.    *    * @param target the child element whose parent td is required.    * @return the td containing element {@code target}; null if {@code target} is not a member of    *     this table.    */
-DECL|method|getParentCell (final Element target)
+DECL|method|getParentCell (Element target)
 specifier|protected
 name|Element
 name|getParentCell
 parameter_list|(
-specifier|final
 name|Element
 name|target
 parameter_list|)
@@ -1074,12 +1065,11 @@ literal|null
 return|;
 block|}
 comment|/** @return the row of the child element; -1 if the child is not in the table. */
-DECL|method|rowOf (final Element target)
+DECL|method|rowOf (Element target)
 specifier|protected
 name|int
 name|rowOf
 parameter_list|(
-specifier|final
 name|Element
 name|target
 parameter_list|)
@@ -1139,12 +1129,11 @@ argument_list|)
 return|;
 block|}
 comment|/** @return the cell of the child element; -1 if the child is not in the table. */
-DECL|method|columnOf (final Element target)
+DECL|method|columnOf (Element target)
 specifier|protected
 name|int
 name|columnOf
 parameter_list|(
-specifier|final
 name|Element
 name|target
 parameter_list|)

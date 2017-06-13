@@ -213,11 +213,9 @@ specifier|public
 name|void
 name|onSuggestionsReady
 parameter_list|(
-specifier|final
 name|Request
 name|request
 parameter_list|,
-specifier|final
 name|Response
 name|response
 parameter_list|)
@@ -255,7 +253,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Suggestion
 name|s
 range|:
@@ -299,12 +296,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getQueryPattern (final String query)
+DECL|method|getQueryPattern (String query)
 specifier|protected
 name|String
 name|getQueryPattern
 parameter_list|(
-specifier|final
 name|String
 name|query
 parameter_list|)
@@ -358,18 +354,15 @@ specifier|final
 name|String
 name|displayString
 decl_stmt|;
-DECL|method|BoldSuggestion (final String qstr, final Suggestion s, final boolean html)
+DECL|method|BoldSuggestion (String qstr, Suggestion s, boolean html)
 name|BoldSuggestion
 parameter_list|(
-specifier|final
 name|String
 name|qstr
 parameter_list|,
-specifier|final
 name|Suggestion
 name|s
 parameter_list|,
-specifier|final
 name|boolean
 name|html
 parameter_list|)

@@ -419,7 +419,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|providersForHandlingPlugin (final Path srcPath)
+DECL|method|providersForHandlingPlugin (Path srcPath)
 specifier|private
 name|List
 argument_list|<
@@ -427,7 +427,6 @@ name|ServerPluginProvider
 argument_list|>
 name|providersForHandlingPlugin
 parameter_list|(
-specifier|final
 name|Path
 name|srcPath
 parameter_list|)

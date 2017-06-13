@@ -187,12 +187,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|authenticate (final AuthRequest request)
+DECL|method|authenticate (AuthRequest request)
 specifier|public
 name|AuthUser
 name|authenticate
 parameter_list|(
-specifier|final
 name|AuthRequest
 name|request
 parameter_list|)

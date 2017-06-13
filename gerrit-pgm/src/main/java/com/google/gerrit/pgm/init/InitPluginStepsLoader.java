@@ -365,7 +365,7 @@ name|ui
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitPluginStepsLoader ( final ConsoleUI ui, final SitePaths sitePaths, final Injector initInjector)
+DECL|method|InitPluginStepsLoader (final ConsoleUI ui, SitePaths sitePaths, Injector initInjector)
 specifier|public
 name|InitPluginStepsLoader
 parameter_list|(
@@ -373,11 +373,9 @@ specifier|final
 name|ConsoleUI
 name|ui
 parameter_list|,
-specifier|final
 name|SitePaths
 name|sitePaths
 parameter_list|,
-specifier|final
 name|Injector
 name|initInjector
 parameter_list|)

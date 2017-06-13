@@ -182,12 +182,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (final Object obj)
+DECL|method|equals (Object obj)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
-specifier|final
 name|Object
 name|obj
 parameter_list|)

@@ -117,15 +117,13 @@ name|PrintWriter
 name|out
 decl_stmt|;
 comment|/**    * @param out The writer to which output should be sent.    * @param columnSeparator A character that should serve as the separator token between columns of    *     output. As only non-printable characters in the column text are ever escaped, the column    *     separator must be a non-printable character if the output needs to be unambiguously parsed.    */
-DECL|method|ColumnFormatter (final PrintWriter out, final char columnSeparator)
+DECL|method|ColumnFormatter (PrintWriter out, char columnSeparator)
 specifier|public
 name|ColumnFormatter
 parameter_list|(
-specifier|final
 name|PrintWriter
 name|out
 parameter_list|,
-specifier|final
 name|char
 name|columnSeparator
 parameter_list|)
@@ -150,12 +148,11 @@ literal|true
 expr_stmt|;
 block|}
 comment|/**    * Adds a text string as a new column in the current line of output, taking care of escaping as    * necessary.    *    * @param content the string to add.    */
-DECL|method|addColumn (final String content)
+DECL|method|addColumn (String content)
 specifier|public
 name|void
 name|addColumn
 parameter_list|(
-specifier|final
 name|String
 name|content
 parameter_list|)

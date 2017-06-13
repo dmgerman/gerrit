@@ -5914,12 +5914,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|parseRawInput (final HttpServletRequest req, Type type)
+DECL|method|parseRawInput (HttpServletRequest req, Type type)
 specifier|private
 name|Object
 name|parseRawInput
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
@@ -7028,7 +7027,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|stackJsonString (HttpServletResponse res, final BinaryResult src)
+DECL|method|stackJsonString (HttpServletResponse res, BinaryResult src)
 specifier|private
 specifier|static
 name|BinaryResult
@@ -7037,7 +7036,6 @@ parameter_list|(
 name|HttpServletResponse
 name|res
 parameter_list|,
-specifier|final
 name|BinaryResult
 name|src
 parameter_list|)
@@ -7165,7 +7163,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|stackBase64 (HttpServletResponse res, final BinaryResult src)
+DECL|method|stackBase64 (HttpServletResponse res, BinaryResult src)
 specifier|private
 specifier|static
 name|BinaryResult
@@ -7174,7 +7172,6 @@ parameter_list|(
 name|HttpServletResponse
 name|res
 parameter_list|,
-specifier|final
 name|BinaryResult
 name|src
 parameter_list|)
@@ -7329,7 +7326,7 @@ end_return
 
 begin_function
 unit|}    private
-DECL|method|stackGzip (HttpServletResponse res, final BinaryResult src)
+DECL|method|stackGzip (HttpServletResponse res, BinaryResult src)
 specifier|static
 name|BinaryResult
 name|stackGzip
@@ -7337,7 +7334,6 @@ parameter_list|(
 name|HttpServletResponse
 name|res
 parameter_list|,
-specifier|final
 name|BinaryResult
 name|src
 parameter_list|)
@@ -9139,13 +9135,12 @@ name|SuppressWarnings
 argument_list|(
 literal|"resource"
 argument_list|)
-DECL|method|asBinaryResult (final TemporaryBuffer.Heap buf)
+DECL|method|asBinaryResult (TemporaryBuffer.Heap buf)
 specifier|private
 specifier|static
 name|BinaryResult
 name|asBinaryResult
 parameter_list|(
-specifier|final
 name|TemporaryBuffer
 operator|.
 name|Heap

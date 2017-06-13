@@ -1040,11 +1040,10 @@ argument_list|>
 name|delegate
 parameter_list|)
 block|{}
-DECL|method|setEditing (final boolean editing)
+DECL|method|setEditing (boolean editing)
 name|void
 name|setEditing
 parameter_list|(
-specifier|final
 name|boolean
 name|editing
 parameter_list|)

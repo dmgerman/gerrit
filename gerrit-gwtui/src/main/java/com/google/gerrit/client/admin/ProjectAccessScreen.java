@@ -786,11 +786,10 @@ name|CapabilityInfo
 argument_list|>
 name|capabilityMap
 decl_stmt|;
-DECL|method|ProjectAccessScreen (final Project.NameKey toShow)
+DECL|method|ProjectAccessScreen (Project.NameKey toShow)
 specifier|public
 name|ProjectAccessScreen
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -1496,7 +1495,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|diff
 range|:

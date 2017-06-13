@@ -741,11 +741,10 @@ name|usage
 operator|=
 literal|"list of commits or patch sets to review"
 argument_list|)
-DECL|method|addPatchSetId (final String token)
+DECL|method|addPatchSetId (String token)
 name|void
 name|addPatchSetId
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -1097,11 +1096,10 @@ name|metaVar
 operator|=
 literal|"LABEL=VALUE"
 argument_list|)
-DECL|method|addLabel (final String token)
+DECL|method|addLabel (String token)
 name|void
 name|addLabel
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -1510,7 +1508,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|PatchSet
 name|patchSet
 range|:
@@ -1651,7 +1648,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|applyReview (PatchSet patchSet, final ReviewInput review)
+DECL|method|applyReview (PatchSet patchSet, ReviewInput review)
 specifier|private
 name|void
 name|applyReview
@@ -1659,7 +1656,6 @@ parameter_list|(
 name|PatchSet
 name|patchSet
 parameter_list|,
-specifier|final
 name|ReviewInput
 name|review
 parameter_list|)
@@ -1775,12 +1771,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|reviewPatchSet (final PatchSet patchSet)
+DECL|method|reviewPatchSet (PatchSet patchSet)
 specifier|private
 name|void
 name|reviewPatchSet
 parameter_list|(
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|)

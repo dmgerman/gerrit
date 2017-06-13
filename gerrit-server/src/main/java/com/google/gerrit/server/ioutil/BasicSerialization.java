@@ -226,13 +226,12 @@ name|NO_BYTES
 init|=
 block|{}
 decl_stmt|;
-DECL|method|safeRead (final InputStream input)
+DECL|method|safeRead (InputStream input)
 specifier|private
 specifier|static
 name|int
 name|safeRead
 parameter_list|(
-specifier|final
 name|InputStream
 name|input
 parameter_list|)
@@ -267,13 +266,12 @@ name|b
 return|;
 block|}
 comment|/** Read a fixed-width 64 bit integer in network byte order (big-endian). */
-DECL|method|readFixInt64 (final InputStream input)
+DECL|method|readFixInt64 (InputStream input)
 specifier|public
 specifier|static
 name|long
 name|readFixInt64
 parameter_list|(
-specifier|final
 name|InputStream
 name|input
 parameter_list|)
@@ -311,17 +309,15 @@ name|l
 return|;
 block|}
 comment|/** Write a fixed-width 64 bit integer in network byte order (big-endian). */
-DECL|method|writeFixInt64 (final OutputStream output, final long val)
+DECL|method|writeFixInt64 (OutputStream output, long val)
 specifier|public
 specifier|static
 name|void
 name|writeFixInt64
 parameter_list|(
-specifier|final
 name|OutputStream
 name|output
 parameter_list|,
-specifier|final
 name|long
 name|val
 parameter_list|)
@@ -358,13 +354,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Read a fixed-width 32 bit integer in network byte order (big-endian). */
-DECL|method|readFixInt32 (final InputStream input)
+DECL|method|readFixInt32 (InputStream input)
 specifier|public
 specifier|static
 name|int
 name|readFixInt32
 parameter_list|(
-specifier|final
 name|InputStream
 name|input
 parameter_list|)
@@ -430,17 +425,15 @@ name|b4
 return|;
 block|}
 comment|/** Write a fixed-width 32 bit integer in network byte order (big-endian). */
-DECL|method|writeFixInt32 (final OutputStream output, final int val)
+DECL|method|writeFixInt32 (OutputStream output, int val)
 specifier|public
 specifier|static
 name|void
 name|writeFixInt32
 parameter_list|(
-specifier|final
 name|OutputStream
 name|output
 parameter_list|,
-specifier|final
 name|int
 name|val
 parameter_list|)
@@ -497,13 +490,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Read a varint from the input, one byte at a time. */
-DECL|method|readVarInt32 (final InputStream input)
+DECL|method|readVarInt32 (InputStream input)
 specifier|public
 specifier|static
 name|int
 name|readVarInt32
 parameter_list|(
-specifier|final
 name|InputStream
 name|input
 parameter_list|)
@@ -574,13 +566,12 @@ argument_list|()
 throw|;
 block|}
 comment|/** Write a varint; value is treated as an unsigned value. */
-DECL|method|writeVarInt32 (final OutputStream output, int value)
+DECL|method|writeVarInt32 (OutputStream output, int value)
 specifier|public
 specifier|static
 name|void
 name|writeVarInt32
 parameter_list|(
-specifier|final
 name|OutputStream
 name|output
 parameter_list|,
@@ -636,14 +627,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Read a fixed length byte array whose length is specified as a varint. */
-DECL|method|readBytes (final InputStream input)
+DECL|method|readBytes (InputStream input)
 specifier|public
 specifier|static
 name|byte
 index|[]
 name|readBytes
 parameter_list|(
-specifier|final
 name|InputStream
 name|input
 parameter_list|)
@@ -699,17 +689,15 @@ name|buf
 return|;
 block|}
 comment|/** Write a byte array prefixed by its length in a varint. */
-DECL|method|writeBytes (final OutputStream output, final byte[] data)
+DECL|method|writeBytes (OutputStream output, byte[] data)
 specifier|public
 specifier|static
 name|void
 name|writeBytes
 parameter_list|(
-specifier|final
 name|OutputStream
 name|output
 parameter_list|,
-specifier|final
 name|byte
 index|[]
 name|data
@@ -732,7 +720,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Write a byte array prefixed by its length in a varint. */
-DECL|method|writeBytes ( final OutputStream output, final byte[] data, final int offset, final int len)
+DECL|method|writeBytes (final OutputStream output, byte[] data, int offset, int len)
 specifier|public
 specifier|static
 name|void
@@ -742,16 +730,13 @@ specifier|final
 name|OutputStream
 name|output
 parameter_list|,
-specifier|final
 name|byte
 index|[]
 name|data
 parameter_list|,
-specifier|final
 name|int
 name|offset
 parameter_list|,
-specifier|final
 name|int
 name|len
 parameter_list|)
@@ -778,13 +763,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Read a UTF-8 string, prefixed by its byte length in a varint. */
-DECL|method|readString (final InputStream input)
+DECL|method|readString (InputStream input)
 specifier|public
 specifier|static
 name|String
 name|readString
 parameter_list|(
-specifier|final
 name|InputStream
 name|input
 parameter_list|)
@@ -831,17 +815,15 @@ argument_list|)
 return|;
 block|}
 comment|/** Write a UTF-8 string, prefixed by its byte length in a varint. */
-DECL|method|writeString (final OutputStream output, final String s)
+DECL|method|writeString (OutputStream output, String s)
 specifier|public
 specifier|static
 name|void
 name|writeString
 parameter_list|(
-specifier|final
 name|OutputStream
 name|output
 parameter_list|,
-specifier|final
 name|String
 name|s
 parameter_list|)
@@ -880,7 +862,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Read an enum whose code is stored as a varint. */
-DECL|method|readEnum (final InputStream input, final T[] all)
+DECL|method|readEnum (InputStream input, T[] all)
 specifier|public
 specifier|static
 parameter_list|<
@@ -891,11 +873,9 @@ parameter_list|>
 name|T
 name|readEnum
 parameter_list|(
-specifier|final
 name|InputStream
 name|input
 parameter_list|,
-specifier|final
 name|T
 index|[]
 name|all
@@ -956,7 +936,7 @@ argument_list|)
 throw|;
 block|}
 comment|/** Write an enum whose code is stored as a varint. */
-DECL|method|writeEnum (final OutputStream output, final T e)
+DECL|method|writeEnum (OutputStream output, T e)
 specifier|public
 specifier|static
 parameter_list|<
@@ -967,11 +947,9 @@ parameter_list|>
 name|void
 name|writeEnum
 parameter_list|(
-specifier|final
 name|OutputStream
 name|output
 parameter_list|,
-specifier|final
 name|T
 name|e
 parameter_list|)

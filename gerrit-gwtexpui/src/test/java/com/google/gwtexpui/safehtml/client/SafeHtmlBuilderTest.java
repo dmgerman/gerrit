@@ -2176,13 +2176,12 @@ name|href
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|escape (final char c)
+DECL|method|escape (char c)
 specifier|private
 specifier|static
 name|String
 name|escape
 parameter_list|(
-specifier|final
 name|char
 name|c
 parameter_list|)
@@ -2201,13 +2200,12 @@ name|asString
 argument_list|()
 return|;
 block|}
-DECL|method|escape (final String c)
+DECL|method|escape (String c)
 specifier|private
 specifier|static
 name|String
 name|escape
 parameter_list|(
-specifier|final
 name|String
 name|c
 parameter_list|)

@@ -170,11 +170,10 @@ specifier|final
 name|String
 name|magicToken
 decl_stmt|;
-DECL|method|ValidateEmailScreen (final String magicToken)
+DECL|method|ValidateEmailScreen (String magicToken)
 specifier|public
 name|ValidateEmailScreen
 parameter_list|(
-specifier|final
 name|String
 name|magicToken
 parameter_list|)
@@ -244,7 +243,6 @@ specifier|protected
 name|void
 name|preDisplay
 parameter_list|(
-specifier|final
 name|VoidResult
 name|result
 parameter_list|)

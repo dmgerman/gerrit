@@ -146,7 +146,7 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-DECL|method|PredicateClassLoader ( final DynamicSet<PredicateProvider> predicateProviders, final ClassLoader parent)
+DECL|method|PredicateClassLoader ( final DynamicSet<PredicateProvider> predicateProviders, ClassLoader parent)
 specifier|public
 name|PredicateClassLoader
 parameter_list|(
@@ -157,7 +157,6 @@ name|PredicateProvider
 argument_list|>
 name|predicateProviders
 parameter_list|,
-specifier|final
 name|ClassLoader
 name|parent
 parameter_list|)
@@ -206,7 +205,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|findClass (final String className)
+DECL|method|findClass (String className)
 specifier|protected
 name|Class
 argument_list|<
@@ -214,7 +213,6 @@ name|?
 argument_list|>
 name|findClass
 parameter_list|(
-specifier|final
 name|String
 name|className
 parameter_list|)
@@ -240,7 +238,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|ClassLoader
 name|cl
 range|:

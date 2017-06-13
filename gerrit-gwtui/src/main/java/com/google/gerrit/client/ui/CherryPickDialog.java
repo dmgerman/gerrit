@@ -426,7 +426,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|BranchInfo
 name|b
 range|:

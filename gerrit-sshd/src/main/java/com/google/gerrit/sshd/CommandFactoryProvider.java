@@ -693,7 +693,6 @@ specifier|public
 name|Command
 name|createCommand
 parameter_list|(
-specifier|final
 name|String
 name|requestCommand
 parameter_list|)
@@ -784,10 +783,9 @@ argument_list|>
 argument_list|>
 name|task
 decl_stmt|;
-DECL|method|Trampoline (final String cmdLine)
+DECL|method|Trampoline (String cmdLine)
 name|Trampoline
 parameter_list|(
-specifier|final
 name|String
 name|cmdLine
 parameter_list|)
@@ -819,12 +817,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setInputStream (final InputStream in)
+DECL|method|setInputStream (InputStream in)
 specifier|public
 name|void
 name|setInputStream
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|)
@@ -838,12 +835,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setOutputStream (final OutputStream out)
+DECL|method|setOutputStream (OutputStream out)
 specifier|public
 name|void
 name|setOutputStream
 parameter_list|(
-specifier|final
 name|OutputStream
 name|out
 parameter_list|)
@@ -857,12 +853,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setErrorStream (final OutputStream err)
+DECL|method|setErrorStream (OutputStream err)
 specifier|public
 name|void
 name|setErrorStream
 parameter_list|(
-specifier|final
 name|OutputStream
 name|err
 parameter_list|)
@@ -876,12 +871,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setExitCallback (final ExitCallback callback)
+DECL|method|setExitCallback (ExitCallback callback)
 specifier|public
 name|void
 name|setExitCallback
 parameter_list|(
-specifier|final
 name|ExitCallback
 name|callback
 parameter_list|)
@@ -895,12 +889,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|setSession (final ServerSession session)
+DECL|method|setSession (ServerSession session)
 specifier|public
 name|void
 name|setSession
 parameter_list|(
-specifier|final
 name|ServerSession
 name|session
 parameter_list|)
@@ -936,12 +929,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|start (final Environment env)
+DECL|method|start (Environment env)
 specifier|public
 name|void
 name|start
 parameter_list|(
-specifier|final
 name|Environment
 name|env
 parameter_list|)
@@ -1194,12 +1186,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|translateExit (final int rc)
+DECL|method|translateExit (int rc)
 specifier|private
 name|int
 name|translateExit
 parameter_list|(
-specifier|final
 name|int
 name|rc
 parameter_list|)
@@ -1241,12 +1232,11 @@ name|rc
 return|;
 block|}
 block|}
-DECL|method|log (final int rc)
+DECL|method|log (int rc)
 specifier|private
 name|void
 name|log
 parameter_list|(
-specifier|final
 name|int
 name|rc
 parameter_list|)

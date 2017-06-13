@@ -215,7 +215,7 @@ name|emptySet
 argument_list|()
 return|;
 block|}
-DECL|method|asList (final JsArrayString arr)
+DECL|method|asList (JsArrayString arr)
 specifier|public
 specifier|static
 name|List
@@ -224,7 +224,6 @@ name|String
 argument_list|>
 name|asList
 parameter_list|(
-specifier|final
 name|JsArrayString
 name|arr
 parameter_list|)
@@ -320,7 +319,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|asList (final JsArray<T> arr)
+DECL|method|asList (JsArray<T> arr)
 specifier|public
 specifier|static
 parameter_list|<
@@ -334,7 +333,6 @@ name|T
 argument_list|>
 name|asList
 parameter_list|(
-specifier|final
 name|JsArray
 argument_list|<
 name|T

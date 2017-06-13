@@ -463,7 +463,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|EventRecorder ( DynamicSet<UserScopedEventListener> eventListeners, final IdentifiedUser user)
+DECL|method|EventRecorder (DynamicSet<UserScopedEventListener> eventListeners, IdentifiedUser user)
 specifier|public
 name|EventRecorder
 parameter_list|(
@@ -473,7 +473,6 @@ name|UserScopedEventListener
 argument_list|>
 name|eventListeners
 parameter_list|,
-specifier|final
 name|IdentifiedUser
 name|user
 parameter_list|)

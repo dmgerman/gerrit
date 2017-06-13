@@ -310,15 +310,13 @@ specifier|protected
 name|boolean
 name|sent
 decl_stmt|;
-DECL|method|CommentedActionDialog (final String title, final String heading)
+DECL|method|CommentedActionDialog (String title, String heading)
 specifier|public
 name|CommentedActionDialog
 parameter_list|(
-specifier|final
 name|String
 name|title
 parameter_list|,
-specifier|final
 name|String
 name|heading
 parameter_list|)
@@ -382,7 +380,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -441,7 +438,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)

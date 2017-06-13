@@ -100,12 +100,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|append (final boolean v)
+DECL|method|append (boolean v)
 specifier|public
 name|void
 name|append
 parameter_list|(
-specifier|final
 name|boolean
 name|v
 parameter_list|)
@@ -120,12 +119,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|append (final char v)
+DECL|method|append (char v)
 specifier|public
 name|void
 name|append
 parameter_list|(
-specifier|final
 name|char
 name|v
 parameter_list|)
@@ -140,12 +138,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|append (final int v)
+DECL|method|append (int v)
 specifier|public
 name|void
 name|append
 parameter_list|(
-specifier|final
 name|int
 name|v
 parameter_list|)
@@ -160,12 +157,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|append (final long v)
+DECL|method|append (long v)
 specifier|public
 name|void
 name|append
 parameter_list|(
-specifier|final
 name|long
 name|v
 parameter_list|)
@@ -180,12 +176,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|append (final float v)
+DECL|method|append (float v)
 specifier|public
 name|void
 name|append
 parameter_list|(
-specifier|final
 name|float
 name|v
 parameter_list|)
@@ -200,12 +195,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|append (final double v)
+DECL|method|append (double v)
 specifier|public
 name|void
 name|append
 parameter_list|(
-specifier|final
 name|double
 name|v
 parameter_list|)
@@ -220,12 +214,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|append (final String v)
+DECL|method|append (String v)
 specifier|public
 name|void
 name|append
 parameter_list|(
-specifier|final
 name|String
 name|v
 parameter_list|)

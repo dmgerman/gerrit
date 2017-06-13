@@ -193,11 +193,9 @@ specifier|public
 name|Statement
 name|apply
 parameter_list|(
-specifier|final
 name|Statement
 name|base
 parameter_list|,
-specifier|final
 name|Description
 name|description
 parameter_list|)

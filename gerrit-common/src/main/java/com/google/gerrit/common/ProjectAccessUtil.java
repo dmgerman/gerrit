@@ -193,7 +193,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|AccessSection
 name|section
 range|:
@@ -301,7 +300,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|AccessSection
 name|section
 range|:
@@ -322,7 +320,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Permission
 name|permission
 range|:
@@ -354,7 +351,6 @@ block|}
 block|}
 for|for
 control|(
-specifier|final
 name|Permission
 name|permissionToRemove
 range|:
@@ -391,7 +387,6 @@ block|}
 block|}
 for|for
 control|(
-specifier|final
 name|AccessSection
 name|sectionToRemove
 range|:

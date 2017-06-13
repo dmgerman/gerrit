@@ -334,7 +334,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|callback (final String target)
+DECL|method|callback (String target)
 specifier|private
 specifier|static
 name|AsyncCallback
@@ -343,7 +343,6 @@ name|JavaScriptObject
 argument_list|>
 name|callback
 parameter_list|(
-specifier|final
 name|String
 name|target
 parameter_list|)

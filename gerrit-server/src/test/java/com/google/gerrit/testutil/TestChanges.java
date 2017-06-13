@@ -713,7 +713,7 @@ return|return
 name|ps
 return|;
 block|}
-DECL|method|newUpdate (Injector injector, Change c, final CurrentUser user)
+DECL|method|newUpdate (Injector injector, Change c, CurrentUser user)
 specifier|public
 specifier|static
 name|ChangeUpdate
@@ -725,7 +725,6 @@ parameter_list|,
 name|Change
 name|c
 parameter_list|,
-specifier|final
 name|CurrentUser
 name|user
 parameter_list|)

@@ -365,7 +365,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Add a filter to created FilterProxy instances    *    *<p>This method adds the given filter to all {@link AllRequestFilter.FilterProxy} instances    * created by {@link #getFilterProxy()}.    */
-DECL|method|addFilter (final AllRequestFilter filter)
+DECL|method|addFilter (AllRequestFilter filter)
 specifier|private
 name|ReloadableRegistrationHandle
 argument_list|<
@@ -373,7 +373,6 @@ name|AllRequestFilter
 argument_list|>
 name|addFilter
 parameter_list|(
-specifier|final
 name|AllRequestFilter
 name|filter
 parameter_list|)

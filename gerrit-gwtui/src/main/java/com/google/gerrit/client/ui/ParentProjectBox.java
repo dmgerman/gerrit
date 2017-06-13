@@ -264,12 +264,11 @@ name|len
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setProject (final Project.NameKey project)
+DECL|method|setProject (Project.NameKey project)
 specifier|public
 name|void
 name|setProject
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -284,12 +283,11 @@ name|project
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setParentProject (final Project.NameKey parent)
+DECL|method|setParentProject (Project.NameKey parent)
 specifier|public
 name|void
 name|setParentProject
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -474,7 +472,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_onRequestSuggestions (Request req, final Callback callback)
+DECL|method|_onRequestSuggestions (Request req, Callback callback)
 specifier|public
 name|void
 name|_onRequestSuggestions
@@ -482,7 +480,6 @@ parameter_list|(
 name|Request
 name|req
 parameter_list|,
-specifier|final
 name|Callback
 name|callback
 parameter_list|)

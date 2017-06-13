@@ -131,12 +131,11 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|setName (final String n)
+DECL|method|setName (String n)
 specifier|public
 name|void
 name|setName
 parameter_list|(
-specifier|final
 name|String
 name|n
 parameter_list|)
@@ -156,12 +155,11 @@ return|return
 name|email
 return|;
 block|}
-DECL|method|setEmail (final String e)
+DECL|method|setEmail (String e)
 specifier|public
 name|void
 name|setEmail
 parameter_list|(
-specifier|final
 name|String
 name|e
 parameter_list|)
@@ -191,12 +189,11 @@ return|return
 name|when
 return|;
 block|}
-DECL|method|setDate (final Timestamp d)
+DECL|method|setDate (Timestamp d)
 specifier|public
 name|void
 name|setDate
 parameter_list|(
-specifier|final
 name|Timestamp
 name|d
 parameter_list|)
@@ -216,12 +213,11 @@ return|return
 name|tz
 return|;
 block|}
-DECL|method|setTimeZone (final int offset)
+DECL|method|setTimeZone (int offset)
 specifier|public
 name|void
 name|setTimeZone
 parameter_list|(
-specifier|final
 name|int
 name|offset
 parameter_list|)
@@ -243,12 +239,11 @@ return|return
 name|accountId
 return|;
 block|}
-DECL|method|setAccount (final Account.Id id)
+DECL|method|setAccount (Account.Id id)
 specifier|public
 name|void
 name|setAccount
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id

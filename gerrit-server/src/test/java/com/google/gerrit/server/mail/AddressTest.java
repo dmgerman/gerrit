@@ -550,12 +550,11 @@ literal|"a<@a>"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertInvalid (final String in)
+DECL|method|assertInvalid (String in)
 specifier|private
 name|void
 name|assertInvalid
 parameter_list|(
-specifier|final
 name|String
 name|in
 parameter_list|)
@@ -816,17 +815,15 @@ literal|"<a,b@a>"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|format (final String name, final String email)
+DECL|method|format (String name, String email)
 specifier|private
 specifier|static
 name|String
 name|format
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|email
 parameter_list|)

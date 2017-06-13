@@ -516,17 +516,15 @@ name|userNameToLowerCase
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpAuthFilter (final DynamicItem<WebSession> webSession, final AuthConfig authConfig)
+DECL|method|HttpAuthFilter (DynamicItem<WebSession> webSession, AuthConfig authConfig)
 name|HttpAuthFilter
 parameter_list|(
-specifier|final
 name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
 name|webSession
 parameter_list|,
-specifier|final
 name|AuthConfig
 name|authConfig
 parameter_list|)
@@ -653,7 +651,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doFilter ( final ServletRequest request, final ServletResponse response, final FilterChain chain)
+DECL|method|doFilter (final ServletRequest request, ServletResponse response, FilterChain chain)
 specifier|public
 name|void
 name|doFilter
@@ -662,11 +660,9 @@ specifier|final
 name|ServletRequest
 name|request
 parameter_list|,
-specifier|final
 name|ServletResponse
 name|response
 parameter_list|,
-specifier|final
 name|FilterChain
 name|chain
 parameter_list|)
@@ -1069,12 +1065,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|init (final FilterConfig filterConfig)
+DECL|method|init (FilterConfig filterConfig)
 specifier|public
 name|void
 name|init
 parameter_list|(
-specifier|final
 name|FilterConfig
 name|filterConfig
 parameter_list|)

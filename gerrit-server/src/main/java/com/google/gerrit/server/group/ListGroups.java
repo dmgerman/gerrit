@@ -1526,7 +1526,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|ProjectControl
 name|projectControl
 range|:
@@ -1547,7 +1546,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|GroupReference
 name|groupRef
 range|:
@@ -1787,7 +1785,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|GroupReference
 name|ref
 range|:

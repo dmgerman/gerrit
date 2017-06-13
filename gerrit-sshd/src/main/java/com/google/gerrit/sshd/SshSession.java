@@ -206,10 +206,9 @@ specifier|volatile
 name|String
 name|peerAgent
 decl_stmt|;
-DECL|method|SshSession (final int sessionId, SocketAddress peer)
+DECL|method|SshSession (int sessionId, SocketAddress peer)
 name|SshSession
 parameter_list|(
-specifier|final
 name|int
 name|sessionId
 parameter_list|,
@@ -487,13 +486,12 @@ operator|!=
 literal|null
 return|;
 block|}
-DECL|method|format (final SocketAddress remote)
+DECL|method|format (SocketAddress remote)
 specifier|private
 specifier|static
 name|String
 name|format
 parameter_list|(
-specifier|final
 name|SocketAddress
 name|remote
 parameter_list|)

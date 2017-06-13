@@ -662,7 +662,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -732,7 +731,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -928,7 +926,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -985,7 +982,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1031,7 +1027,6 @@ specifier|public
 name|void
 name|onClick
 parameter_list|(
-specifier|final
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1098,11 +1093,10 @@ name|body
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setKeyTableVisible (final boolean on)
+DECL|method|setKeyTableVisible (boolean on)
 name|void
 name|setKeyTableVisible
 parameter_list|(
-specifier|final
 name|boolean
 name|on
 parameter_list|)
@@ -1185,7 +1179,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|SshKeyInfo
 name|k
 parameter_list|)
@@ -1243,7 +1236,6 @@ specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -1293,7 +1285,6 @@ specifier|private
 name|boolean
 name|isInvalidSshKey
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)
@@ -1370,7 +1361,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|SshHostKey
@@ -1385,7 +1375,6 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|SshHostKey
 name|keyInfo
 range|:
@@ -1511,12 +1500,11 @@ name|void
 name|display
 parameter_list|()
 block|{}
-DECL|method|showAddKeyBlock (final boolean show)
+DECL|method|showAddKeyBlock (boolean show)
 specifier|private
 name|void
 name|showAddKeyBlock
 parameter_list|(
-specifier|final
 name|boolean
 name|show
 parameter_list|)
@@ -2004,11 +1992,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|display (final List<SshKeyInfo> result)
+DECL|method|display (List<SshKeyInfo> result)
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|SshKeyInfo
@@ -2062,7 +2049,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|SshKeyInfo
 name|k
 range|:
@@ -2089,11 +2075,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addOneKey (final SshKeyInfo k)
+DECL|method|addOneKey (SshKeyInfo k)
 name|void
 name|addOneKey
 parameter_list|(
-specifier|final
 name|SshKeyInfo
 name|k
 parameter_list|)
@@ -2446,16 +2431,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|elide (final String s, final int len)
+DECL|method|elide (String s, int len)
 specifier|static
 name|String
 name|elide
 parameter_list|(
-specifier|final
 name|String
 name|s
 parameter_list|,
-specifier|final
 name|int
 name|len
 parameter_list|)

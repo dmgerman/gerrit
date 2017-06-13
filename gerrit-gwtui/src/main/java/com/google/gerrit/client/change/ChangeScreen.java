@@ -2560,7 +2560,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|ChangeInfo
 name|info
 parameter_list|)
@@ -4208,12 +4207,11 @@ name|download
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initProjectLinks (final ChangeInfo info)
+DECL|method|initProjectLinks (ChangeInfo info)
 specifier|private
 name|void
 name|initProjectLinks
 parameter_list|(
-specifier|final
 name|ChangeInfo
 name|info
 parameter_list|)
@@ -6617,12 +6615,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|loadConfigInfo (final ChangeInfo info, DiffObject base)
+DECL|method|loadConfigInfo (ChangeInfo info, DiffObject base)
 specifier|private
 name|void
 name|loadConfigInfo
 parameter_list|(
-specifier|final
 name|ChangeInfo
 name|info
 parameter_list|,
@@ -6861,12 +6858,11 @@ name|done
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|loadConfigInfo (final ChangeInfo info, RevisionInfo rev)
+DECL|method|loadConfigInfo (ChangeInfo info, RevisionInfo rev)
 specifier|private
 name|void
 name|loadConfigInfo
 parameter_list|(
-specifier|final
 name|ChangeInfo
 name|info
 parameter_list|,
@@ -7977,12 +7973,11 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|loadCommit (final RevisionInfo rev, CallbackGroup group)
+DECL|method|loadCommit (RevisionInfo rev, CallbackGroup group)
 specifier|private
 name|void
 name|loadCommit
 parameter_list|(
-specifier|final
 name|RevisionInfo
 name|rev
 parameter_list|,

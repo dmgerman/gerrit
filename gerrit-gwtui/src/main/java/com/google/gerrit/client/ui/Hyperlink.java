@@ -213,15 +213,13 @@ name|Hyperlink
 parameter_list|()
 block|{}
 comment|/**    * Creates a hyperlink with its text and target history token specified.    *    * @param text the hyperlink's text    * @param token the history token to which it will link, which may not be null (use {@link Anchor}    *     instead if you don't need history processing)    */
-DECL|method|Hyperlink (final String text, final String token)
+DECL|method|Hyperlink (String text, String token)
 specifier|public
 name|Hyperlink
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -261,12 +259,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onBrowserEvent (final Event event)
+DECL|method|onBrowserEvent (Event event)
 specifier|public
 name|void
 name|onBrowserEvent
 parameter_list|(
-specifier|final
 name|Event
 name|event
 parameter_list|)

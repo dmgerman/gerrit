@@ -225,11 +225,10 @@ specifier|private
 name|int
 name|live
 decl_stmt|;
-DECL|method|reset (final String tagName)
+DECL|method|reset (String tagName)
 name|void
 name|reset
 parameter_list|(
-specifier|final
 name|String
 name|tagName
 parameter_list|)
@@ -263,15 +262,13 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-DECL|method|onto (final Buffer raw, final SafeHtmlBuilder esc)
+DECL|method|onto (Buffer raw, SafeHtmlBuilder esc)
 name|void
 name|onto
 parameter_list|(
-specifier|final
 name|Buffer
 name|raw
 parameter_list|,
-specifier|final
 name|SafeHtmlBuilder
 name|esc
 parameter_list|)
@@ -414,14 +411,13 @@ return|return
 literal|""
 return|;
 block|}
-DECL|method|set (String name, final String value)
+DECL|method|set (String name, String value)
 name|void
 name|set
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -538,13 +534,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|assertNotJavascriptUrl (final String value)
+DECL|method|assertNotJavascriptUrl (String value)
 specifier|private
 specifier|static
 name|void
 name|assertNotJavascriptUrl
 parameter_list|(
-specifier|final
 name|String
 name|value
 parameter_list|)

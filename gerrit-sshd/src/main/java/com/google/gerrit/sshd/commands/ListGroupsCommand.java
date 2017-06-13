@@ -580,11 +580,10 @@ name|groupBackend
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final PrintWriter out)
+DECL|method|display (PrintWriter out)
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|PrintWriter
 name|out
 parameter_list|)
@@ -607,7 +606,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|GroupInfo
 name|info
 range|:

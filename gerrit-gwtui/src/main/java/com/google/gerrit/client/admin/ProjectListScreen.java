@@ -658,7 +658,6 @@ specifier|protected
 name|void
 name|onOpenRow
 parameter_list|(
-specifier|final
 name|int
 name|row
 parameter_list|)
@@ -681,7 +680,6 @@ specifier|private
 name|String
 name|link
 parameter_list|(
-specifier|final
 name|ProjectInfo
 name|item
 parameter_list|)

@@ -125,16 +125,14 @@ specifier|final
 name|PublicKey
 name|publicKey
 decl_stmt|;
-DECL|method|SshKeyCacheEntry (final AccountSshKey.Id i, final PublicKey k)
+DECL|method|SshKeyCacheEntry (AccountSshKey.Id i, PublicKey k)
 name|SshKeyCacheEntry
 parameter_list|(
-specifier|final
 name|AccountSshKey
 operator|.
 name|Id
 name|i
 parameter_list|,
-specifier|final
 name|PublicKey
 name|k
 parameter_list|)
@@ -162,11 +160,10 @@ name|getParentKey
 argument_list|()
 return|;
 block|}
-DECL|method|match (final PublicKey inkey)
+DECL|method|match (PublicKey inkey)
 name|boolean
 name|match
 parameter_list|(
-specifier|final
 name|PublicKey
 name|inkey
 parameter_list|)

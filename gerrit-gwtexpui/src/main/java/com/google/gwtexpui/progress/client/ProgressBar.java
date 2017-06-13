@@ -181,11 +181,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Create a bar displaying the specified message. */
-DECL|method|ProgressBar (final String text)
+DECL|method|ProgressBar (String text)
 specifier|public
 name|ProgressBar
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|)
@@ -319,12 +318,11 @@ name|value
 return|;
 block|}
 comment|/** Update the bar's percent completion. */
-DECL|method|setValue (final int pComplete)
+DECL|method|setValue (int pComplete)
 specifier|public
 name|void
 name|setValue
 parameter_list|(
-specifier|final
 name|int
 name|pComplete
 parameter_list|)

@@ -2040,7 +2040,7 @@ name|comments
 argument_list|)
 return|;
 block|}
-DECL|method|byCommentStatus ( ResultSet<PatchLineComment> comments, final PatchLineComment.Status status)
+DECL|method|byCommentStatus ( ResultSet<PatchLineComment> comments, PatchLineComment.Status status)
 specifier|private
 name|List
 argument_list|<
@@ -2054,7 +2054,6 @@ name|PatchLineComment
 argument_list|>
 name|comments
 parameter_list|,
-specifier|final
 name|PatchLineComment
 operator|.
 name|Status

@@ -172,7 +172,7 @@ name|queues
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StreamCommandExecutorProvider (@erritServerConfig final Config config, final WorkQueue wq)
+DECL|method|StreamCommandExecutorProvider (@erritServerConfig final Config config, WorkQueue wq)
 name|StreamCommandExecutorProvider
 parameter_list|(
 annotation|@
@@ -181,7 +181,6 @@ specifier|final
 name|Config
 name|config
 parameter_list|,
-specifier|final
 name|WorkQueue
 name|wq
 parameter_list|)
@@ -268,7 +267,6 @@ specifier|public
 name|Thread
 name|newThread
 parameter_list|(
-specifier|final
 name|Runnable
 name|task
 parameter_list|)

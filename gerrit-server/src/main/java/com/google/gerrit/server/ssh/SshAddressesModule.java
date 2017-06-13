@@ -381,7 +381,6 @@ return|;
 block|}
 for|for
 control|(
-specifier|final
 name|String
 name|desc
 range|:

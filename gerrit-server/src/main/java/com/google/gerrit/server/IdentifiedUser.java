@@ -1790,16 +1790,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|newRefLogIdent (final Date when, final TimeZone tz)
+DECL|method|newRefLogIdent (Date when, TimeZone tz)
 specifier|public
 name|PersonIdent
 name|newRefLogIdent
 parameter_list|(
-specifier|final
 name|Date
 name|when
 parameter_list|,
-specifier|final
 name|TimeZone
 name|tz
 parameter_list|)
@@ -1907,16 +1905,14 @@ name|tz
 argument_list|)
 return|;
 block|}
-DECL|method|newCommitterIdent (final Date when, final TimeZone tz)
+DECL|method|newCommitterIdent (Date when, TimeZone tz)
 specifier|public
 name|PersonIdent
 name|newCommitterIdent
 parameter_list|(
-specifier|final
 name|Date
 name|when
 parameter_list|,
-specifier|final
 name|TimeZone
 name|tz
 parameter_list|)
@@ -2518,12 +2514,11 @@ return|return
 name|host
 return|;
 block|}
-DECL|method|getHost (final InetAddress in)
+DECL|method|getHost (InetAddress in)
 specifier|private
 name|String
 name|getHost
 parameter_list|(
-specifier|final
 name|InetAddress
 name|in
 parameter_list|)

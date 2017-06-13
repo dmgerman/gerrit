@@ -262,18 +262,15 @@ specifier|private
 name|Short
 name|value
 decl_stmt|;
-DECL|method|ApproveOption (final String name, final String usage, final LabelType type)
+DECL|method|ApproveOption (String name, String usage, LabelType type)
 name|ApproveOption
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|usage
 parameter_list|,
-specifier|final
 name|LabelType
 name|type
 parameter_list|)
@@ -469,12 +466,11 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|addValue (final Short val)
+DECL|method|addValue (Short val)
 specifier|public
 name|void
 name|addValue
 parameter_list|(
-specifier|final
 name|Short
 name|val
 parameter_list|)
@@ -545,19 +541,16 @@ name|ApproveOption
 name|cmdOption
 decl_stmt|;
 comment|// CS IGNORE RedundantModifier FOR NEXT 1 LINES. REASON: needed by org.kohsuke.args4j.Option
-DECL|method|Handler (final CmdLineParser parser, final OptionDef option, final Setter<Short> setter)
+DECL|method|Handler (CmdLineParser parser, OptionDef option, Setter<Short> setter)
 specifier|public
 name|Handler
 parameter_list|(
-specifier|final
 name|CmdLineParser
 name|parser
 parameter_list|,
-specifier|final
 name|OptionDef
 name|option
 parameter_list|,
-specifier|final
 name|Setter
 argument_list|<
 name|Short
@@ -586,12 +579,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (final String token)
+DECL|method|parse (String token)
 specifier|protected
 name|Short
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)

@@ -761,7 +761,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|ref
 range|:

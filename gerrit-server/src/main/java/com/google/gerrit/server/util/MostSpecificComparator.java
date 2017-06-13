@@ -188,16 +188,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|compare (final String pattern1, final String pattern2)
+DECL|method|compare (String pattern1, String pattern2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-specifier|final
 name|String
 name|pattern1
 parameter_list|,
-specifier|final
 name|String
 name|pattern2
 parameter_list|)

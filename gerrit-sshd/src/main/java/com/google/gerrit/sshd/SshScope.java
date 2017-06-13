@@ -427,7 +427,7 @@ specifier|volatile
 name|long
 name|finished
 decl_stmt|;
-DECL|method|Context (SchemaFactory<ReviewDb> sf, final SshSession s, final String c, final long at)
+DECL|method|Context (SchemaFactory<ReviewDb> sf, SshSession s, String c, long at)
 specifier|private
 name|Context
 parameter_list|(
@@ -437,15 +437,12 @@ name|ReviewDb
 argument_list|>
 name|sf
 parameter_list|,
-specifier|final
 name|SshSession
 name|s
 parameter_list|,
-specifier|final
 name|String
 name|c
 parameter_list|,
-specifier|final
 name|long
 name|at
 parameter_list|)
@@ -1085,14 +1082,12 @@ name|T
 argument_list|>
 name|scope
 parameter_list|(
-specifier|final
 name|Key
 argument_list|<
 name|T
 argument_list|>
 name|key
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|T

@@ -1420,7 +1420,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|changeAttributeSupplier (final Change change)
+DECL|method|changeAttributeSupplier (Change change)
 specifier|private
 name|Supplier
 argument_list|<
@@ -1428,7 +1428,6 @@ name|ChangeAttribute
 argument_list|>
 name|changeAttributeSupplier
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|)
@@ -1465,7 +1464,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|accountAttributeSupplier (final AccountInfo account)
+DECL|method|accountAttributeSupplier (AccountInfo account)
 specifier|private
 name|Supplier
 argument_list|<
@@ -1473,7 +1472,6 @@ name|AccountAttribute
 argument_list|>
 name|accountAttributeSupplier
 parameter_list|(
-specifier|final
 name|AccountInfo
 name|account
 parameter_list|)
@@ -1524,7 +1522,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|patchSetAttributeSupplier ( final Change change, final PatchSet patchSet)
+DECL|method|patchSetAttributeSupplier ( final Change change, PatchSet patchSet)
 specifier|private
 name|Supplier
 argument_list|<
@@ -1536,7 +1534,6 @@ specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|)
@@ -2379,12 +2376,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onReviewerDeleted (final ReviewerDeletedListener.Event ev)
+DECL|method|onReviewerDeleted (ReviewerDeletedListener.Event ev)
 specifier|public
 name|void
 name|onReviewerDeleted
 parameter_list|(
-specifier|final
 name|ReviewerDeletedListener
 operator|.
 name|Event
@@ -2823,12 +2819,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onGitReferenceUpdated (final GitReferenceUpdatedListener.Event ev)
+DECL|method|onGitReferenceUpdated (GitReferenceUpdatedListener.Event ev)
 specifier|public
 name|void
 name|onGitReferenceUpdated
 parameter_list|(
-specifier|final
 name|GitReferenceUpdatedListener
 operator|.
 name|Event

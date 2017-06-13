@@ -165,11 +165,10 @@ specifier|final
 name|Screen
 name|screen
 decl_stmt|;
-DECL|method|ScreenLoadCallback (final Screen s)
+DECL|method|ScreenLoadCallback (Screen s)
 specifier|public
 name|ScreenLoadCallback
 parameter_list|(
-specifier|final
 name|Screen
 name|s
 parameter_list|)
@@ -181,13 +180,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onSuccess (final T result)
+DECL|method|onSuccess (T result)
 specifier|public
 specifier|final
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|T
 name|result
 parameter_list|)
@@ -233,12 +231,11 @@ parameter_list|()
 block|{}
 annotation|@
 name|Override
-DECL|method|onFailure (final Throwable caught)
+DECL|method|onFailure (Throwable caught)
 specifier|public
 name|void
 name|onFailure
 parameter_list|(
-specifier|final
 name|Throwable
 name|caught
 parameter_list|)

@@ -992,20 +992,17 @@ name|MULTILINE
 argument_list|)
 return|;
 block|}
-DECL|method|load (final ObjectId tree, final String path, final ObjectReader reader)
+DECL|method|load (ObjectId tree, String path, ObjectReader reader)
 specifier|private
 name|Text
 name|load
 parameter_list|(
-specifier|final
 name|ObjectId
 name|tree
 parameter_list|,
-specifier|final
 name|String
 name|path
 parameter_list|,
-specifier|final
 name|ObjectReader
 name|reader
 parameter_list|)

@@ -1794,13 +1794,12 @@ name|lastViewToken
 return|;
 block|}
 comment|/**    * Load the screen at the given location, displaying when ready.    *    *<p>If the URL is not already pointing at this location, a new item will be added to the    * browser's history when the screen is fully loaded and displayed on the UI.    *    * @param token location to parse, load, and render.    */
-DECL|method|display (final String token)
+DECL|method|display (String token)
 specifier|public
 specifier|static
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -1841,17 +1840,15 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Load the screen passed, assuming token can be used to locate it.    *    *<p>The screen is loaded in the background. When it is ready to be visible a new item will be    * added to the browser's history, the screen will be made visible, and the window title may be    * updated.    *    *<p>If {@link Screen#isRequiresSignIn()} is true and the user is not signed in yet the screen    * instance will be discarded, sign-in will take place, and will redirect to this location upon    * success.    *    * @param token location that refers to {@code view}.    * @param view the view to load.    */
-DECL|method|display (final String token, final Screen view)
+DECL|method|display (String token, Screen view)
 specifier|public
 specifier|static
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|,
-specifier|final
 name|Screen
 name|view
 parameter_list|)
@@ -1933,13 +1930,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Update the current history token after a screen change.    *    *<p>The caller has already updated the UI, but wants to publish a different history token for    * the current browser state. This really only makes sense if the caller is a {@code TabPanel} and    * is firing an event when the tab changed to a different part.    *    * @param token new location that is already visible.    */
-DECL|method|updateImpl (final String token)
+DECL|method|updateImpl (String token)
 specifier|public
 specifier|static
 name|void
 name|updateImpl
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -1977,17 +1973,15 @@ name|query
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setWindowTitle (final Screen screen, final String text)
+DECL|method|setWindowTitle (Screen screen, String text)
 specifier|public
 specifier|static
 name|void
 name|setWindowTitle
 parameter_list|(
-specifier|final
 name|Screen
 name|screen
 parameter_list|,
-specifier|final
 name|String
 name|text
 parameter_list|)
@@ -2828,7 +2822,6 @@ specifier|public
 name|String
 name|decode
 parameter_list|(
-specifier|final
 name|String
 name|e
 parameter_list|)
@@ -3067,7 +3060,6 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-specifier|final
 name|HostPageData
 name|result
 parameter_list|)
@@ -5907,13 +5899,12 @@ return|return
 name|docSearch
 return|;
 block|}
-DECL|method|getDocIndex (final AsyncCallback<DocInfo> cb)
+DECL|method|getDocIndex (AsyncCallback<DocInfo> cb)
 specifier|private
 specifier|static
 name|void
 name|getDocIndex
 parameter_list|(
-specifier|final
 name|AsyncCallback
 argument_list|<
 name|DocInfo
@@ -6335,17 +6326,15 @@ name|fp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|anchor (final String text, final String to)
+DECL|method|anchor (String text, String to)
 specifier|private
 specifier|static
 name|Anchor
 name|anchor
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|to
 parameter_list|)
@@ -6392,7 +6381,7 @@ return|return
 name|a
 return|;
 block|}
-DECL|method|addLink ( final LinkMenuBar m, final String text, final String historyToken)
+DECL|method|addLink (final LinkMenuBar m, String text, String historyToken)
 specifier|private
 specifier|static
 name|LinkMenuItem
@@ -6402,11 +6391,9 @@ specifier|final
 name|LinkMenuBar
 name|m
 parameter_list|,
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|historyToken
 parameter_list|)
@@ -6433,7 +6420,7 @@ return|return
 name|i
 return|;
 block|}
-DECL|method|insertLink ( final LinkMenuBar m, final String text, final String historyToken, final int beforeIndex)
+DECL|method|insertLink ( final LinkMenuBar m, String text, String historyToken, int beforeIndex)
 specifier|private
 specifier|static
 name|void
@@ -6443,15 +6430,12 @@ specifier|final
 name|LinkMenuBar
 name|m
 parameter_list|,
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|historyToken
 parameter_list|,
-specifier|final
 name|int
 name|beforeIndex
 parameter_list|)
@@ -6772,21 +6756,18 @@ return|return
 name|i
 return|;
 block|}
-DECL|method|addDocLink (final LinkMenuBar m, final String text, final String href)
+DECL|method|addDocLink (LinkMenuBar m, String text, String href)
 specifier|private
 specifier|static
 name|void
 name|addDocLink
 parameter_list|(
-specifier|final
 name|LinkMenuBar
 name|m
 parameter_list|,
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|href
 parameter_list|)

@@ -459,12 +459,11 @@ name|void
 name|stop
 parameter_list|()
 block|{}
-DECL|method|getSchemaVersion (final ReviewDb db)
+DECL|method|getSchemaVersion (ReviewDb db)
 specifier|private
 name|CurrentSchemaVersion
 name|getSchemaVersion
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)

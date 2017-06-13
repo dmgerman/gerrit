@@ -177,17 +177,15 @@ name|UUID
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final AccountGroup.Id g, final AccountGroup.UUID u)
+DECL|method|Key (AccountGroup.Id g, AccountGroup.UUID u)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
 name|g
 parameter_list|,
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -305,11 +303,10 @@ specifier|protected
 name|AccountGroupById
 parameter_list|()
 block|{}
-DECL|method|AccountGroupById (final AccountGroupById.Key k)
+DECL|method|AccountGroupById (AccountGroupById.Key k)
 specifier|public
 name|AccountGroupById
 parameter_list|(
-specifier|final
 name|AccountGroupById
 operator|.
 name|Key

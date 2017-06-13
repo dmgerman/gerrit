@@ -437,7 +437,7 @@ operator|=
 name|currentUser
 expr_stmt|;
 block|}
-DECL|method|listAccounts (final AccountGroup.UUID groupUUID, final Project.NameKey project)
+DECL|method|listAccounts (AccountGroup.UUID groupUUID, Project.NameKey project)
 specifier|public
 name|Set
 argument_list|<
@@ -445,13 +445,11 @@ name|Account
 argument_list|>
 name|listAccounts
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
 name|groupUUID
 parameter_list|,
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -578,7 +576,7 @@ name|emptySet
 argument_list|()
 return|;
 block|}
-DECL|method|getProjectOwners ( final Project.NameKey project, final Set<AccountGroup.UUID> seen)
+DECL|method|getProjectOwners (final Project.NameKey project, Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -592,7 +590,6 @@ operator|.
 name|NameKey
 name|project
 parameter_list|,
-specifier|final
 name|Set
 argument_list|<
 name|AccountGroup
@@ -671,7 +668,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -711,7 +707,7 @@ return|return
 name|projectOwners
 return|;
 block|}
-DECL|method|getGroupMembers ( final AccountGroup group, final Project.NameKey project, final Set<AccountGroup.UUID> seen)
+DECL|method|getGroupMembers ( final AccountGroup group, Project.NameKey project, Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -723,13 +719,11 @@ specifier|final
 name|AccountGroup
 name|group
 parameter_list|,
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|project
 parameter_list|,
-specifier|final
 name|Set
 argument_list|<
 name|AccountGroup
@@ -797,7 +791,6 @@ condition|)
 block|{
 for|for
 control|(
-specifier|final
 name|AccountGroupMember
 name|member
 range|:
@@ -837,7 +830,6 @@ condition|)
 block|{
 for|for
 control|(
-specifier|final
 name|AccountGroupById
 name|groupInclude
 range|:

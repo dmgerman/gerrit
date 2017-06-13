@@ -1937,12 +1937,11 @@ name|subject
 argument_list|)
 return|;
 block|}
-DECL|method|setTag (final Tag tag)
+DECL|method|setTag (Tag tag)
 specifier|public
 name|void
 name|setTag
 parameter_list|(
-specifier|final
 name|Tag
 name|tag
 parameter_list|)

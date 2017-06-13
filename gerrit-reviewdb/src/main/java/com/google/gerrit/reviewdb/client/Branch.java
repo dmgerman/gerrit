@@ -168,17 +168,15 @@ name|NameKey
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|NameKey (final Project.NameKey proj, final String branchName)
+DECL|method|NameKey (Project.NameKey proj, String branchName)
 specifier|public
 name|NameKey
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|proj
 parameter_list|,
-specifier|final
 name|String
 name|branchName
 parameter_list|)
@@ -193,14 +191,13 @@ name|branchName
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NameKey (String proj, final String branchName)
+DECL|method|NameKey (String proj, String branchName)
 specifier|public
 name|NameKey
 parameter_list|(
 name|String
 name|proj
 parameter_list|,
-specifier|final
 name|String
 name|branchName
 parameter_list|)
@@ -303,11 +300,10 @@ specifier|protected
 name|Branch
 parameter_list|()
 block|{}
-DECL|method|Branch (final Branch.NameKey newName)
+DECL|method|Branch (Branch.NameKey newName)
 specifier|public
 name|Branch
 parameter_list|(
-specifier|final
 name|Branch
 operator|.
 name|NameKey
@@ -367,12 +363,11 @@ return|return
 name|revision
 return|;
 block|}
-DECL|method|setRevision (final RevId id)
+DECL|method|setRevision (RevId id)
 specifier|public
 name|void
 name|setRevision
 parameter_list|(
-specifier|final
 name|RevId
 name|id
 parameter_list|)

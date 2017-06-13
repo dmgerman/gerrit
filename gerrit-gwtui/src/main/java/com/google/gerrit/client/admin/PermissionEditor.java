@@ -1578,12 +1578,11 @@ name|NONE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addGroup (final GroupReference ref)
+DECL|method|addGroup (GroupReference ref)
 specifier|private
 name|void
 name|addGroup
 parameter_list|(
-specifier|final
 name|GroupReference
 name|ref
 parameter_list|)

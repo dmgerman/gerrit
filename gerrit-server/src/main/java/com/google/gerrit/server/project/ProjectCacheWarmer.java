@@ -406,7 +406,6 @@ lambda|->
 block|{
 for|for
 control|(
-specifier|final
 name|Project
 operator|.
 name|NameKey

@@ -337,7 +337,7 @@ argument_list|(
 literal|"javadoc"
 argument_list|)
 comment|// See GuiceRequestScopePropagator#wrapImpl
-DECL|method|wrap (final Callable<T> callable)
+DECL|method|wrap (Callable<T> callable)
 specifier|public
 specifier|final
 parameter_list|<
@@ -349,7 +349,6 @@ name|T
 argument_list|>
 name|wrap
 parameter_list|(
-specifier|final
 name|Callable
 argument_list|<
 name|T
@@ -448,13 +447,12 @@ block|}
 return|;
 block|}
 comment|/**    * Wraps runnable in a new {@link Runnable} that propagates the current request state when the    * runnable is invoked. The method must be called in a request scope and the returned Runnable may    * only be invoked in a thread that is not already in a request scope. The returned Runnable will    * inherit toString() from the passed in Runnable. Furthermore, if the passed runnable is of type    * {@link ProjectRunnable}, the returned runnable will be of the same type with the methods    * delegated.    *    *<p>See {@link #wrap(Callable)} for details on implementation and usage.    *    * @param runnable the Runnable to wrap.    * @return a new Runnable which will execute in the current request scope.    */
-DECL|method|wrap (final Runnable runnable)
+DECL|method|wrap (Runnable runnable)
 specifier|public
 specifier|final
 name|Runnable
 name|wrap
 parameter_list|(
-specifier|final
 name|Runnable
 name|runnable
 parameter_list|)

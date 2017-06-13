@@ -2928,7 +2928,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|filterOnChangeVisibility ( final ReviewDb db, final ChangeNotes notes, Set<Account.Id> accounts)
+DECL|method|filterOnChangeVisibility ( final ReviewDb db, ChangeNotes notes, Set<Account.Id> accounts)
 specifier|private
 name|Set
 argument_list|<
@@ -2942,7 +2942,6 @@ specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|ChangeNotes
 name|notes
 parameter_list|,

@@ -264,17 +264,15 @@ name|Key
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Patch.Key p, final String uuid)
+DECL|method|Key (Patch.Key p, String uuid)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
 name|Patch
 operator|.
 name|Key
 name|p
 parameter_list|,
-specifier|final
 name|String
 name|uuid
 parameter_list|)
@@ -408,10 +406,9 @@ specifier|final
 name|char
 name|code
 decl_stmt|;
-DECL|method|Status (final char c)
+DECL|method|Status (char c)
 name|Status
 parameter_list|(
-specifier|final
 name|char
 name|c
 parameter_list|)
@@ -431,20 +428,18 @@ return|return
 name|code
 return|;
 block|}
-DECL|method|forCode (final char c)
+DECL|method|forCode (char c)
 specifier|public
 specifier|static
 name|Status
 name|forCode
 parameter_list|(
-specifier|final
 name|char
 name|c
 parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|Status
 name|s
 range|:
@@ -1306,12 +1301,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|setStatus (final Status s)
+DECL|method|setStatus (Status s)
 specifier|public
 name|void
 name|setStatus
 parameter_list|(
-specifier|final
 name|Status
 name|s
 parameter_list|)
@@ -1340,12 +1334,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|setSide (final short s)
+DECL|method|setSide (short s)
 specifier|public
 name|void
 name|setSide
 parameter_list|(
-specifier|final
 name|short
 name|s
 parameter_list|)
@@ -1371,12 +1364,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|setMessage (final String s)
+DECL|method|setMessage (String s)
 specifier|public
 name|void
 name|setMessage
 parameter_list|(
-specifier|final
 name|String
 name|s
 parameter_list|)

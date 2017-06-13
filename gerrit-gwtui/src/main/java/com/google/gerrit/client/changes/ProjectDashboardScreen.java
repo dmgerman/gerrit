@@ -180,11 +180,10 @@ specifier|private
 name|String
 name|params
 decl_stmt|;
-DECL|method|ProjectDashboardScreen (final Project.NameKey toShow, String params)
+DECL|method|ProjectDashboardScreen (Project.NameKey toShow, String params)
 specifier|public
 name|ProjectDashboardScreen
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey

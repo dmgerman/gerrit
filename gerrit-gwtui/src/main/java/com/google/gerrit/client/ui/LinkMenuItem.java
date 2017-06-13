@@ -127,15 +127,13 @@ specifier|private
 name|LinkMenuBar
 name|bar
 decl_stmt|;
-DECL|method|LinkMenuItem (final String text, final String targetHistoryToken)
+DECL|method|LinkMenuItem (String text, String targetHistoryToken)
 specifier|public
 name|LinkMenuItem
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|String
 name|targetHistoryToken
 parameter_list|)

@@ -198,11 +198,10 @@ operator|.
 name|NameKey
 name|name
 decl_stmt|;
-DECL|method|ProjectScreen (final Project.NameKey toShow)
+DECL|method|ProjectScreen (Project.NameKey toShow)
 specifier|public
 name|ProjectScreen
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey

@@ -456,7 +456,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -680,11 +679,10 @@ name|searchButton
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setText (final String query)
+DECL|method|setText (String query)
 name|void
 name|setText
 parameter_list|(
-specifier|final
 name|String
 name|query
 parameter_list|)
@@ -746,7 +744,6 @@ specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)

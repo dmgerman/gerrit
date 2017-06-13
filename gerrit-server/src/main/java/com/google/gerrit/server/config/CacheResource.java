@@ -212,7 +212,7 @@ operator|=
 name|cacheProvider
 expr_stmt|;
 block|}
-DECL|method|CacheResource (String pluginName, String cacheName, final Cache<?, ?> cache)
+DECL|method|CacheResource (String pluginName, String cacheName, Cache<?, ?> cache)
 specifier|public
 name|CacheResource
 parameter_list|(
@@ -222,7 +222,6 @@ parameter_list|,
 name|String
 name|cacheName
 parameter_list|,
-specifier|final
 name|Cache
 argument_list|<
 name|?

@@ -340,12 +340,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent event)
+DECL|method|onKeyPress (KeyPressEvent event)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)
@@ -391,7 +390,6 @@ specifier|public
 name|void
 name|onClose
 parameter_list|(
-specifier|final
 name|CloseEvent
 argument_list|<
 name|PopupPanel
@@ -435,11 +433,9 @@ specifier|public
 name|void
 name|setPosition
 parameter_list|(
-specifier|final
 name|int
 name|pWidth
 parameter_list|,
-specifier|final
 name|int
 name|pHeight
 parameter_list|)

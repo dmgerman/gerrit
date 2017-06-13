@@ -938,16 +938,14 @@ literal|"mandatoryGroup"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|scope (final Config c, final String setting)
+DECL|method|scope (Config c, String setting)
 specifier|static
 name|SearchScope
 name|scope
 parameter_list|(
-specifier|final
 name|Config
 name|c
 parameter_list|,
-specifier|final
 name|String
 name|setting
 parameter_list|)
@@ -969,16 +967,14 @@ name|SUBTREE
 argument_list|)
 return|;
 block|}
-DECL|method|optional (final Config config, final String name)
+DECL|method|optional (Config config, String name)
 specifier|static
 name|String
 name|optional
 parameter_list|(
-specifier|final
 name|Config
 name|config
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1096,16 +1092,14 @@ name|defaultValue
 argument_list|)
 return|;
 block|}
-DECL|method|required (final Config config, final String name)
+DECL|method|required (Config config, String name)
 specifier|static
 name|String
 name|required
 parameter_list|(
-specifier|final
 name|Config
 name|config
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1151,7 +1145,7 @@ return|return
 name|v
 return|;
 block|}
-DECL|method|optionalList (final Config config, final String name)
+DECL|method|optionalList (Config config, String name)
 specifier|static
 name|List
 argument_list|<
@@ -1159,11 +1153,9 @@ name|String
 argument_list|>
 name|optionalList
 parameter_list|(
-specifier|final
 name|Config
 name|config
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1192,7 +1184,7 @@ name|s
 argument_list|)
 return|;
 block|}
-DECL|method|requiredList (final Config config, final String name)
+DECL|method|requiredList (Config config, String name)
 specifier|static
 name|List
 argument_list|<
@@ -1200,11 +1192,9 @@ name|String
 argument_list|>
 name|requiredList
 parameter_list|(
-specifier|final
 name|Config
 name|config
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1246,20 +1236,17 @@ return|return
 name|vlist
 return|;
 block|}
-DECL|method|optdef (final Config c, final String n, final String d)
+DECL|method|optdef (Config c, String n, String d)
 specifier|static
 name|String
 name|optdef
 parameter_list|(
-specifier|final
 name|Config
 name|c
 parameter_list|,
-specifier|final
 name|String
 name|n
 parameter_list|,
-specifier|final
 name|String
 name|d
 parameter_list|)
@@ -1349,20 +1336,17 @@ index|]
 return|;
 block|}
 block|}
-DECL|method|reqdef (final Config c, final String n, final String d)
+DECL|method|reqdef (Config c, String n, String d)
 specifier|static
 name|String
 name|reqdef
 parameter_list|(
-specifier|final
 name|Config
 name|c
 parameter_list|,
-specifier|final
 name|String
 name|n
 parameter_list|,
-specifier|final
 name|String
 name|d
 parameter_list|)
@@ -1534,12 +1518,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|allowsEdit (final AccountFieldName field)
+DECL|method|allowsEdit (AccountFieldName field)
 specifier|public
 name|boolean
 name|allowsEdit
 parameter_list|(
-specifier|final
 name|AccountFieldName
 name|field
 parameter_list|)
@@ -1597,7 +1580,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|String
 name|name
 range|:
@@ -1645,12 +1627,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|authenticate (final AuthRequest who)
+DECL|method|authenticate (AuthRequest who)
 specifier|public
 name|AuthRequest
 name|authenticate
 parameter_list|(
-specifier|final
 name|AuthRequest
 name|who
 parameter_list|)
@@ -2090,16 +2071,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onCreateAccount (final AuthRequest who, final Account account)
+DECL|method|onCreateAccount (AuthRequest who, Account account)
 specifier|public
 name|void
 name|onCreateAccount
 parameter_list|(
-specifier|final
 name|AuthRequest
 name|who
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|)
@@ -2324,10 +2303,9 @@ name|helper
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MemberLoader (final Helper helper)
+DECL|method|MemberLoader (Helper helper)
 name|MemberLoader
 parameter_list|(
-specifier|final
 name|Helper
 name|helper
 parameter_list|)
@@ -2430,10 +2408,9 @@ name|helper
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExistenceLoader (final Helper helper)
+DECL|method|ExistenceLoader (Helper helper)
 name|ExistenceLoader
 parameter_list|(
-specifier|final
 name|Helper
 name|helper
 parameter_list|)
@@ -2447,12 +2424,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|load (final String groupDn)
+DECL|method|load (String groupDn)
 specifier|public
 name|Boolean
 name|load
 parameter_list|(
-specifier|final
 name|String
 name|groupDn
 parameter_list|)

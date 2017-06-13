@@ -242,12 +242,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|allowsEdit (final AccountFieldName field)
+DECL|method|allowsEdit (AccountFieldName field)
 specifier|public
 name|boolean
 name|allowsEdit
 parameter_list|(
-specifier|final
 name|AccountFieldName
 name|field
 parameter_list|)
@@ -346,12 +345,11 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|authenticate (final AuthRequest who)
+DECL|method|authenticate (AuthRequest who)
 specifier|public
 name|AuthRequest
 name|authenticate
 parameter_list|(
-specifier|final
 name|AuthRequest
 name|who
 parameter_list|)
@@ -405,30 +403,27 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCreateAccount (final AuthRequest who, final Account account)
+DECL|method|onCreateAccount (AuthRequest who, Account account)
 specifier|public
 name|void
 name|onCreateAccount
 parameter_list|(
-specifier|final
 name|AuthRequest
 name|who
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|lookup (final String accountName)
+DECL|method|lookup (String accountName)
 specifier|public
 name|Account
 operator|.
 name|Id
 name|lookup
 parameter_list|(
-specifier|final
 name|String
 name|accountName
 parameter_list|)

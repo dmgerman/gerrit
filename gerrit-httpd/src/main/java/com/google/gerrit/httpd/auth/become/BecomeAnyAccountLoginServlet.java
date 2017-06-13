@@ -698,16 +698,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doGet (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doGet (HttpServletRequest req, HttpServletResponse rsp)
 specifier|protected
 name|void
 name|doGet
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -726,16 +724,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doPost (final HttpServletRequest req, final HttpServletResponse rsp)
+DECL|method|doPost (HttpServletRequest req, HttpServletResponse rsp)
 specifier|protected
 name|void
 name|doPost
 parameter_list|(
-specifier|final
 name|HttpServletRequest
 name|req
 parameter_list|,
-specifier|final
 name|HttpServletResponse
 name|rsp
 parameter_list|)
@@ -1333,12 +1329,11 @@ name|doc
 argument_list|)
 return|;
 block|}
-DECL|method|auth (final Account account)
+DECL|method|auth (Account account)
 specifier|private
 name|AuthResult
 name|auth
 parameter_list|(
-specifier|final
 name|Account
 name|account
 parameter_list|)
@@ -1403,12 +1398,11 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|byUserName (final String userName)
+DECL|method|byUserName (String userName)
 specifier|private
 name|AuthResult
 name|byUserName
 parameter_list|(
-specifier|final
 name|String
 name|userName
 parameter_list|)
@@ -1519,12 +1513,11 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|byPreferredEmail (final String email)
+DECL|method|byPreferredEmail (String email)
 specifier|private
 name|AuthResult
 name|byPreferredEmail
 parameter_list|(
-specifier|final
 name|String
 name|email
 parameter_list|)
@@ -1601,12 +1594,11 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|byAccountId (final String idStr)
+DECL|method|byAccountId (String idStr)
 specifier|private
 name|AuthResult
 name|byAccountId
 parameter_list|(
-specifier|final
 name|String
 name|idStr
 parameter_list|)

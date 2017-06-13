@@ -248,16 +248,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|requestSuggestions (final Request req, final Callback done)
+DECL|method|requestSuggestions (Request req, Callback done)
 specifier|public
 name|void
 name|requestSuggestions
 parameter_list|(
-specifier|final
 name|Request
 name|req
 parameter_list|,
-specifier|final
 name|Callback
 name|done
 parameter_list|)

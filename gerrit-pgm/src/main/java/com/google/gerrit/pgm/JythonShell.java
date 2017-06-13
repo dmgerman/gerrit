@@ -1027,12 +1027,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|execResource (final String p)
+DECL|method|execResource (String p)
 specifier|protected
 name|void
 name|execResource
 parameter_list|(
-specifier|final
 name|String
 name|p
 parameter_list|)
@@ -1108,16 +1107,14 @@ block|}
 end_function
 
 begin_function
-DECL|method|execFile (final File parent, final String p)
+DECL|method|execFile (File parent, String p)
 specifier|protected
 name|void
 name|execFile
 parameter_list|(
-specifier|final
 name|File
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|p
 parameter_list|)
@@ -1243,15 +1240,13 @@ end_catch
 
 begin_function
 unit|}    protected
-DECL|method|execStream (final InputStream in, final String p)
+DECL|method|execStream (InputStream in, String p)
 name|void
 name|execStream
 parameter_list|(
-specifier|final
 name|InputStream
 name|in
 parameter_list|,
-specifier|final
 name|String
 name|p
 parameter_list|)
@@ -1320,12 +1315,11 @@ end_catch
 
 begin_function
 unit|}    private
-DECL|method|noShell (final String m, Throwable why)
+DECL|method|noShell (String m, Throwable why)
 specifier|static
 name|UnsupportedOperationException
 name|noShell
 parameter_list|(
-specifier|final
 name|String
 name|m
 parameter_list|,

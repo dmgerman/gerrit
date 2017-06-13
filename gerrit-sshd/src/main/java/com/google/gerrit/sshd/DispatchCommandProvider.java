@@ -250,11 +250,10 @@ name|CommandProvider
 argument_list|>
 name|map
 decl_stmt|;
-DECL|method|DispatchCommandProvider (final CommandName cn)
+DECL|method|DispatchCommandProvider (CommandName cn)
 specifier|public
 name|DispatchCommandProvider
 parameter_list|(
-specifier|final
 name|CommandName
 name|cn
 parameter_list|)
@@ -284,16 +283,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|register (final CommandName name, final Provider<Command> cmd)
+DECL|method|register (CommandName name, Provider<Command> cmd)
 specifier|public
 name|RegistrationHandle
 name|register
 parameter_list|(
-specifier|final
 name|CommandName
 name|name
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|Command
@@ -383,16 +380,14 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|replace (final CommandName name, final Provider<Command> cmd)
+DECL|method|replace (CommandName name, Provider<Command> cmd)
 specifier|public
 name|RegistrationHandle
 name|replace
 parameter_list|(
-specifier|final
 name|CommandName
 name|name
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|Command
@@ -536,7 +531,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Binding
 argument_list|<
 name|?

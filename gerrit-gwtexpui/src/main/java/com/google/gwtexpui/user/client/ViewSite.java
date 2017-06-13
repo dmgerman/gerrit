@@ -199,12 +199,11 @@ literal|null
 return|;
 block|}
 comment|/**    * Set the next view to display.    *    *<p>The view will be attached to the DOM tree within a hidden container, permitting its {@code    * onLoad()} method to execute and update the DOM without the user seeing the result.    *    * @param view the next view to display.    */
-DECL|method|setView (final V view)
+DECL|method|setView (V view)
 specifier|public
 name|void
 name|setView
 parameter_list|(
-specifier|final
 name|V
 name|view
 parameter_list|)
@@ -259,12 +258,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Invoked after the view becomes the current view and has been made visible.    *    * @param view the view being displayed.    */
-DECL|method|onShowView (final V view)
+DECL|method|onShowView (V view)
 specifier|protected
 name|void
 name|onShowView
 parameter_list|(
-specifier|final
 name|V
 name|view
 parameter_list|)
@@ -274,12 +272,11 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|swap (final View v)
+DECL|method|swap (View v)
 specifier|final
 name|void
 name|swap
 parameter_list|(
-specifier|final
 name|View
 name|v
 parameter_list|)

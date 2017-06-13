@@ -396,7 +396,7 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createSupplier (final T value)
+DECL|method|createSupplier (T value)
 specifier|private
 parameter_list|<
 name|T
@@ -407,7 +407,6 @@ name|T
 argument_list|>
 name|createSupplier
 parameter_list|(
-specifier|final
 name|T
 name|value
 parameter_list|)
