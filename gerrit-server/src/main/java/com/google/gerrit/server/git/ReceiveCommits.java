@@ -6067,6 +6067,8 @@ parameter_list|(
 name|RestApiException
 decl||
 name|OrmException
+decl||
+name|UpdateException
 name|e
 parameter_list|)
 block|{
@@ -14050,6 +14052,8 @@ throws|throws
 name|OrmException
 throws|,
 name|RestApiException
+throws|,
+name|UpdateException
 block|{
 name|Map
 argument_list|<

@@ -738,6 +738,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|update
+operator|.
+name|UpdateException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -863,6 +879,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Queue
 import|;
 end_import
 
@@ -1143,6 +1169,15 @@ DECL|field|failAfterRefUpdates
 specifier|public
 name|boolean
 name|failAfterRefUpdates
+decl_stmt|;
+comment|/**      * For each change being submitted, an element is removed from this queue and, if the value is      * true, a bogus ref update is added to the batch, in order to generate a lock failure during      * execution.      */
+DECL|field|generateLockFailures
+specifier|public
+name|Queue
+argument_list|<
+name|Boolean
+argument_list|>
+name|generateLockFailures
 decl_stmt|;
 block|}
 DECL|field|dbProvider
@@ -1585,6 +1620,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|UpdateException
 block|{
 name|input
 operator|.
@@ -1681,6 +1718,8 @@ throws|,
 name|RestApiException
 throws|,
 name|IOException
+throws|,
+name|UpdateException
 block|{
 name|Change
 name|change
@@ -2078,6 +2117,8 @@ operator|.
 name|checkSubmitRule
 argument_list|(
 name|c
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -2320,6 +2361,8 @@ operator|.
 name|checkSubmitRule
 argument_list|(
 name|cd
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -3604,6 +3647,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|UpdateException
 block|{
 name|PatchSet
 name|ps
