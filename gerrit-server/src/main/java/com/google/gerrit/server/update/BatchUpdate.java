@@ -1020,6 +1020,11 @@ specifier|protected
 name|RequestId
 name|requestId
 decl_stmt|;
+DECL|field|refLogMessage
+specifier|protected
+name|String
+name|refLogMessage
+decl_stmt|;
 DECL|field|updateChangesInParallel
 specifier|private
 name|boolean
@@ -1249,6 +1254,25 @@ name|ChainedReceiveCommands
 argument_list|(
 name|repo
 argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setRefLogMessage (String refLogMessage)
+specifier|public
+name|BatchUpdate
+name|setRefLogMessage
+parameter_list|(
+name|String
+name|refLogMessage
+parameter_list|)
+block|{
+name|this
+operator|.
+name|refLogMessage
+operator|=
+name|refLogMessage
 expr_stmt|;
 return|return
 name|this
