@@ -91,15 +91,13 @@ specifier|final
 name|int
 name|intValue
 decl_stmt|;
-DECL|method|IntPredicate (final String name, final String value)
+DECL|method|IntPredicate (String name, String value)
 specifier|public
 name|IntPredicate
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -123,15 +121,13 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|IntPredicate (final String name, final int intValue)
+DECL|method|IntPredicate (String name, int intValue)
 specifier|public
 name|IntPredicate
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|int
 name|intValue
 parameter_list|)
@@ -187,12 +183,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (final Object other)
+DECL|method|equals (Object other)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
-specifier|final
 name|Object
 name|other
 parameter_list|)

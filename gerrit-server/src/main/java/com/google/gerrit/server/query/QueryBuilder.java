@@ -399,7 +399,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class to support writing parsers for query languages.  *  *<p>Subclasses may document their supported query operators by declaring public methods that  * perform the query conversion into a {@link Predicate}. For example, to support "is:starred",  * "is:unread", and nothing else, a subclass may write:  *  *<pre>  *&#064;Operator  * public Predicate is(final String value) {  *   if (&quot;starred&quot;.equals(value)) {  *     return new StarredPredicate();  *   }  *   if (&quot;unread&quot;.equals(value)) {  *     return new UnreadPredicate();  *   }  *   throw new IllegalArgumentException();  * }  *</pre>  *  *<p>The available operator methods are discovered at runtime via reflection. Method names (after  * being converted to lowercase), correspond to operators in the query language, method string  * values correspond to the operator argument. Methods must be declared {@code public}, returning  * {@link Predicate}, accepting one {@link String}, and annotated with the {@link Operator}  * annotation.  *  *<p>Subclasses may also declare a handler for values which appear without operator by overriding  * {@link #defaultField(String)}.  *  * @param<T> type of object the predicates can evaluate in memory.  */
+comment|/**  * Base class to support writing parsers for query languages.  *  *<p>Subclasses may document their supported query operators by declaring public methods that  * perform the query conversion into a {@link Predicate}. For example, to support "is:starred",  * "is:unread", and nothing else, a subclass may write:  *  *<pre>  *&#064;Operator  * public Predicate is(String value) {  *   if (&quot;starred&quot;.equals(value)) {  *     return new StarredPredicate();  *   }  *   if (&quot;unread&quot;.equals(value)) {  *     return new UnreadPredicate();  *   }  *   throw new IllegalArgumentException();  * }  *</pre>  *  *<p>The available operator methods are discovered at runtime via reflection. Method names (after  * being converted to lowercase), correspond to operators in the query language, method string  * values correspond to the operator argument. Methods must be declared {@code public}, returning  * {@link Predicate}, accepting one {@link String}, and annotated with the {@link Operator}  * annotation.  *  *<p>Subclasses may also declare a handler for values which appear without operator by overriding  * {@link #defaultField(String)}.  *  * @param<T> type of object the predicates can evaluate in memory.  */
 end_comment
 
 begin_class
@@ -947,7 +947,7 @@ name|opFactories
 expr_stmt|;
 block|}
 comment|/**    * Parse a user-supplied query string into a predicate.    *    * @param query the query string.    * @return predicate representing the user query.    * @throws QueryParseException the query string is invalid and cannot be parsed by this parser.    *     This may be due to a syntax error, may be due to an operator not being supported, or due to    *     an invalid value being passed to a recognized operator.    */
-DECL|method|parse (final String query)
+DECL|method|parse (String query)
 specifier|public
 name|Predicate
 argument_list|<
@@ -955,7 +955,6 @@ name|T
 argument_list|>
 name|parse
 parameter_list|(
-specifier|final
 name|String
 name|query
 parameter_list|)
@@ -993,7 +992,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Parse multiple user-supplied query strings into a list of predicates.    *    * @param queries the query strings.    * @return predicates representing the user query, in the same order as the input.    * @throws QueryParseException one of the query strings is invalid and cannot be parsed by this    *     parser. This may be due to a syntax error, may be due to an operator not being supported,    *     or due to an invalid value being passed to a recognized operator.    */
-DECL|method|parse (final List<String> queries)
+DECL|method|parse (List<String> queries)
 specifier|public
 name|List
 argument_list|<
@@ -1004,7 +1003,6 @@ argument_list|>
 argument_list|>
 name|parse
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -1056,7 +1054,7 @@ return|return
 name|predicates
 return|;
 block|}
-DECL|method|toPredicate (final Tree r)
+DECL|method|toPredicate (Tree r)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1064,7 +1062,6 @@ name|T
 argument_list|>
 name|toPredicate
 parameter_list|(
-specifier|final
 name|Tree
 name|r
 parameter_list|)
@@ -1160,7 +1157,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|operator (final String name, final Tree val)
+DECL|method|operator (String name, Tree val)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1168,11 +1165,9 @@ name|T
 argument_list|>
 name|operator
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|Tree
 name|val
 parameter_list|)
@@ -1355,7 +1350,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|operator (final String name, final String value)
+DECL|method|operator (String name, String value)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1363,11 +1358,9 @@ name|T
 argument_list|>
 name|operator
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -1420,7 +1413,7 @@ name|value
 argument_list|)
 return|;
 block|}
-DECL|method|defaultField (final Tree r)
+DECL|method|defaultField (Tree r)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1428,7 +1421,6 @@ name|T
 argument_list|>
 name|defaultField
 parameter_list|(
-specifier|final
 name|Tree
 name|r
 parameter_list|)
@@ -1489,7 +1481,7 @@ throw|;
 block|}
 block|}
 comment|/**    * Handle a value present outside of an operator.    *    *<p>This default implementation always throws an "Unsupported query: " message containing the    * input text. Subclasses may override this method to perform do-what-i-mean guesses based on the    * input string.    *    * @param value the value supplied by itself in the query.    * @return predicate representing this value.    * @throws QueryParseException the parser does not recognize this value.    */
-DECL|method|defaultField (final String value)
+DECL|method|defaultField (String value)
 specifier|protected
 name|Predicate
 argument_list|<
@@ -1497,7 +1489,6 @@ name|T
 argument_list|>
 name|defaultField
 parameter_list|(
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -1513,7 +1504,7 @@ name|value
 argument_list|)
 throw|;
 block|}
-DECL|method|children (final Tree r)
+DECL|method|children (Tree r)
 specifier|private
 name|List
 argument_list|<
@@ -1524,7 +1515,6 @@ argument_list|>
 argument_list|>
 name|children
 parameter_list|(
-specifier|final
 name|Tree
 name|r
 parameter_list|)
@@ -1590,12 +1580,11 @@ return|return
 name|p
 return|;
 block|}
-DECL|method|onlyChildOf (final Tree r)
+DECL|method|onlyChildOf (Tree r)
 specifier|private
 name|Tree
 name|onlyChildOf
 parameter_list|(
-specifier|final
 name|Tree
 name|r
 parameter_list|)
@@ -1726,14 +1715,12 @@ specifier|final
 name|Method
 name|method
 decl_stmt|;
-DECL|method|ReflectionFactory (final String name, final Method method)
+DECL|method|ReflectionFactory (String name, Method method)
 name|ReflectionFactory
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|Method
 name|method
 parameter_list|)

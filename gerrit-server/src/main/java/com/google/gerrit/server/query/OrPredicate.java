@@ -189,11 +189,10 @@ name|cost
 decl_stmt|;
 annotation|@
 name|SafeVarargs
-DECL|method|OrPredicate (final Predicate<T>... that)
+DECL|method|OrPredicate (Predicate<T>.... that)
 specifier|protected
 name|OrPredicate
 parameter_list|(
-specifier|final
 name|Predicate
 argument_list|<
 name|T
@@ -213,11 +212,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OrPredicate (final Collection<? extends Predicate<T>> that)
+DECL|method|OrPredicate (Collection<? extends Predicate<T>> that)
 specifier|protected
 name|OrPredicate
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|?
@@ -375,7 +373,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getChild (final int i)
+DECL|method|getChild (int i)
 specifier|public
 specifier|final
 name|Predicate
@@ -384,7 +382,6 @@ name|T
 argument_list|>
 name|getChild
 parameter_list|(
-specifier|final
 name|int
 name|i
 parameter_list|)
@@ -400,7 +397,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|copy (final Collection<? extends Predicate<T>> children)
+DECL|method|copy (Collection<? extends Predicate<T>> children)
 specifier|public
 name|Predicate
 argument_list|<
@@ -408,7 +405,6 @@ name|T
 argument_list|>
 name|copy
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|?
@@ -469,12 +465,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|match (final T object)
+DECL|method|match (T object)
 specifier|public
 name|boolean
 name|match
 parameter_list|(
-specifier|final
 name|T
 name|object
 parameter_list|)
@@ -483,7 +478,6 @@ name|OrmException
 block|{
 for|for
 control|(
-specifier|final
 name|Predicate
 argument_list|<
 name|T
@@ -576,12 +570,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (final Object other)
+DECL|method|equals (Object other)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
-specifier|final
 name|Object
 name|other
 parameter_list|)

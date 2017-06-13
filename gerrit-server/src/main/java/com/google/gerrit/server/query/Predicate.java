@@ -174,7 +174,7 @@ block|}
 comment|/** Combine the passed predicates into a single AND node. */
 annotation|@
 name|SafeVarargs
-DECL|method|and (final Predicate<T>... that)
+DECL|method|and (Predicate<T>.... that)
 specifier|public
 specifier|static
 parameter_list|<
@@ -186,7 +186,6 @@ name|T
 argument_list|>
 name|and
 parameter_list|(
-specifier|final
 name|Predicate
 argument_list|<
 name|T
@@ -221,7 +220,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Combine the passed predicates into a single AND node. */
-DECL|method|and (final Collection<? extends Predicate<T>> that)
+DECL|method|and (Collection<? extends Predicate<T>> that)
 specifier|public
 specifier|static
 parameter_list|<
@@ -233,7 +232,6 @@ name|T
 argument_list|>
 name|and
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|?
@@ -277,7 +275,7 @@ block|}
 comment|/** Combine the passed predicates into a single OR node. */
 annotation|@
 name|SafeVarargs
-DECL|method|or (final Predicate<T>... that)
+DECL|method|or (Predicate<T>.... that)
 specifier|public
 specifier|static
 parameter_list|<
@@ -289,7 +287,6 @@ name|T
 argument_list|>
 name|or
 parameter_list|(
-specifier|final
 name|Predicate
 argument_list|<
 name|T
@@ -324,7 +321,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Combine the passed predicates into a single OR node. */
-DECL|method|or (final Collection<? extends Predicate<T>> that)
+DECL|method|or (Collection<? extends Predicate<T>> that)
 specifier|public
 specifier|static
 parameter_list|<
@@ -336,7 +333,6 @@ name|T
 argument_list|>
 name|or
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|?
@@ -378,7 +374,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Invert the passed node. */
-DECL|method|not (final Predicate<T> that)
+DECL|method|not (Predicate<T> that)
 specifier|public
 specifier|static
 parameter_list|<
@@ -390,7 +386,6 @@ name|T
 argument_list|>
 name|not
 parameter_list|(
-specifier|final
 name|Predicate
 argument_list|<
 name|T
@@ -461,7 +456,7 @@ argument_list|()
 return|;
 block|}
 comment|/** Same as {@code getChildren().get(i)} */
-DECL|method|getChild (final int i)
+DECL|method|getChild (int i)
 specifier|public
 name|Predicate
 argument_list|<
@@ -469,7 +464,6 @@ name|T
 argument_list|>
 name|getChild
 parameter_list|(
-specifier|final
 name|int
 name|i
 parameter_list|)
