@@ -191,12 +191,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|match (final ChangeData object)
+DECL|method|match (ChangeData object)
 specifier|public
 name|boolean
 name|match
 parameter_list|(
-specifier|final
 name|ChangeData
 name|object
 parameter_list|)

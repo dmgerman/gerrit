@@ -241,12 +241,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|match (final ChangeData cd)
+DECL|method|match (ChangeData cd)
 specifier|public
 name|boolean
 name|match
 parameter_list|(
-specifier|final
 name|ChangeData
 name|cd
 parameter_list|)
