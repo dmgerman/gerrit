@@ -6145,15 +6145,12 @@ name|projectCache
 argument_list|,
 name|sectionSorter
 argument_list|,
-literal|null
-argument_list|,
 name|changeControlFactory
 argument_list|,
 literal|null
 argument_list|,
+comment|// refFilter
 name|queryProvider
-argument_list|,
-literal|null
 argument_list|,
 name|canonicalWebUrl
 argument_list|,

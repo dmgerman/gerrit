@@ -218,22 +218,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -1496,15 +1480,12 @@ name|PUSH
 argument_list|)
 return|;
 block|}
-comment|/**    * Determines whether the user can create a new Git ref.    *    * @param db db for checking change visibility.    * @param repo repository on which user want to create    * @param object the object the user will start the reference with.    * @return {@code true} if the user specified can create a new Git ref    */
-DECL|method|canCreate (ReviewDb db, Repository repo, RevObject object)
+comment|/**    * Determines whether the user can create a new Git ref.    *    * @param repo repository on which user want to create    * @param object the object the user will start the reference with.    * @return {@code true} if the user specified can create a new Git ref    */
+DECL|method|canCreate (Repository repo, RevObject object)
 specifier|public
 name|boolean
 name|canCreate
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
@@ -1549,8 +1530,6 @@ block|}
 return|return
 name|canCreateCommit
 argument_list|(
-name|db
-argument_list|,
 name|repo
 argument_list|,
 operator|(
@@ -1702,8 +1681,6 @@ condition|(
 operator|!
 name|canCreateCommit
 argument_list|(
-name|db
-argument_list|,
 name|repo
 argument_list|,
 operator|(
@@ -1725,8 +1702,6 @@ condition|(
 operator|!
 name|canCreate
 argument_list|(
-name|db
-argument_list|,
 name|repo
 argument_list|,
 name|tagObject
@@ -1779,14 +1754,11 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|canCreateCommit (ReviewDb db, Repository repo, RevCommit commit)
+DECL|method|canCreateCommit (Repository repo, RevCommit commit)
 specifier|private
 name|boolean
 name|canCreateCommit
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
@@ -1811,8 +1783,6 @@ if|if
 condition|(
 name|isMergedIntoBranchOrTag
 argument_list|(
-name|db
-argument_list|,
 name|repo
 argument_list|,
 name|commit
@@ -1831,14 +1801,11 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|isMergedIntoBranchOrTag (ReviewDb db, Repository repo, RevCommit commit)
+DECL|method|isMergedIntoBranchOrTag (Repository repo, RevCommit commit)
 specifier|private
 name|boolean
 name|isMergedIntoBranchOrTag
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
@@ -1910,8 +1877,6 @@ operator|.
 name|isMergedIntoVisibleRef
 argument_list|(
 name|repo
-argument_list|,
-name|db
 argument_list|,
 name|rw
 argument_list|,

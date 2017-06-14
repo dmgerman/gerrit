@@ -206,22 +206,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -554,15 +538,6 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|referenceUpdated
 specifier|private
 specifier|final
@@ -582,7 +557,7 @@ name|ref
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateBranch ( Provider<IdentifiedUser> identifiedUser, PermissionBackend permissionBackend, GitRepositoryManager repoManager, Provider<ReviewDb> db, GitReferenceUpdated referenceUpdated, RefValidationHelper.Factory refHelperFactory, @Assisted String ref)
+DECL|method|CreateBranch ( Provider<IdentifiedUser> identifiedUser, PermissionBackend permissionBackend, GitRepositoryManager repoManager, GitReferenceUpdated referenceUpdated, RefValidationHelper.Factory refHelperFactory, @Assisted String ref)
 name|CreateBranch
 parameter_list|(
 name|Provider
@@ -596,12 +571,6 @@ name|permissionBackend
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
 parameter_list|,
 name|GitReferenceUpdated
 name|referenceUpdated
@@ -634,12 +603,6 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 name|this
 operator|.
@@ -974,11 +937,6 @@ name|refControl
 operator|.
 name|canCreate
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|repo
 argument_list|,
 name|object
