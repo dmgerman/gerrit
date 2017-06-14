@@ -502,6 +502,14 @@ argument_list|,
 name|serverIdent
 argument_list|,
 name|account
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|account
+operator|.
+name|getRegisteredOn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
