@@ -3456,7 +3456,7 @@ name|toMerge
 argument_list|)
 return|;
 block|}
-DECL|method|hasMissingDependencies ( MergeSorter mergeSorter, CodeReviewCommit toMerge)
+DECL|method|hasMissingDependencies (MergeSorter mergeSorter, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|hasMissingDependencies

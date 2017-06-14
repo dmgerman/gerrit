@@ -312,7 +312,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|encode3to4 ( StringBuilder out, byte[] in, int inOffset, int numSigBytes)
+DECL|method|encode3to4 (StringBuilder out, byte[] in, int inOffset, int numSigBytes)
 specifier|private
 specifier|static
 name|void

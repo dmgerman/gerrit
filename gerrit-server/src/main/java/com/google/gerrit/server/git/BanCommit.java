@@ -982,7 +982,7 @@ name|tz
 argument_list|)
 return|;
 block|}
-DECL|method|buildCommitMessage ( List<ObjectId> bannedCommits, String reason)
+DECL|method|buildCommitMessage (List<ObjectId> bannedCommits, String reason)
 specifier|private
 specifier|static
 name|String

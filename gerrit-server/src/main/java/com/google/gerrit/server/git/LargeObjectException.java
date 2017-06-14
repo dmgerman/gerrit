@@ -87,7 +87,7 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|LargeObjectException ( String message, org.eclipse.jgit.errors.LargeObjectException cause)
+DECL|method|LargeObjectException (String message, org.eclipse.jgit.errors.LargeObjectException cause)
 specifier|public
 name|LargeObjectException
 parameter_list|(

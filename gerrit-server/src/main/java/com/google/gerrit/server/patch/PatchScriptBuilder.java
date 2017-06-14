@@ -821,7 +821,7 @@ operator|=
 name|b
 expr_stmt|;
 block|}
-DECL|method|toPatchScript ( PatchListEntry content, CommentDetail comments, List<Patch> history)
+DECL|method|toPatchScript (PatchListEntry content, CommentDetail comments, List<Patch> history)
 name|PatchScript
 name|toPatchScript
 parameter_list|(
@@ -869,7 +869,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|build ( PatchListEntry content, CommentDetail comments, List<Patch> history)
+DECL|method|build (PatchListEntry content, CommentDetail comments, List<Patch> history)
 specifier|private
 name|PatchScript
 name|build

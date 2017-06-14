@@ -370,7 +370,7 @@ parameter_list|()
 block|{}
 annotation|@
 name|Override
-DECL|method|doFilter ( ServletRequest request, ServletResponse response, FilterChain chain)
+DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
 specifier|public
 name|void
 name|doFilter

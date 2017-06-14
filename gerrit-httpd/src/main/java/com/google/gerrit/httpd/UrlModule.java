@@ -1788,7 +1788,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|toGerrit ( String target, HttpServletRequest req, HttpServletResponse rsp)
+DECL|method|toGerrit (String target, HttpServletRequest req, HttpServletResponse rsp)
 specifier|static
 name|void
 name|toGerrit
