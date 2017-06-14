@@ -1090,9 +1090,8 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**    * Determines whether the user can upload a change to the ref controlled by this object.    *    * @return {@code true} if the user specified can upload a change to the Git ref    */
 DECL|method|canUpload ()
-specifier|public
+specifier|private
 name|boolean
 name|canUpload
 parameter_list|()
@@ -2076,7 +2075,7 @@ block|}
 block|}
 comment|/** @return true if this user can forge the author line in a commit. */
 DECL|method|canForgeAuthor ()
-specifier|public
+specifier|private
 name|boolean
 name|canForgeAuthor
 parameter_list|()
@@ -2104,7 +2103,7 @@ return|;
 block|}
 comment|/** @return true if this user can forge the committer line in a commit. */
 DECL|method|canForgeCommitter ()
-specifier|public
+specifier|private
 name|boolean
 name|canForgeCommitter
 parameter_list|()
@@ -2132,7 +2131,7 @@ return|;
 block|}
 comment|/** @return true if this user can forge the server on the committer line. */
 DECL|method|canForgeGerritServerIdentity ()
-specifier|public
+specifier|private
 name|boolean
 name|canForgeGerritServerIdentity
 parameter_list|()
@@ -3943,6 +3942,31 @@ name|CREATE_CHANGE
 case|:
 return|return
 name|canUpload
+argument_list|()
+return|;
+case|case
+name|BYPASS_REVIEW
+case|:
+return|return
+name|canForgeAuthor
+argument_list|()
+operator|&&
+name|canForgeCommitter
+argument_list|()
+operator|&&
+name|canForgeGerritServerIdentity
+argument_list|()
+operator|&&
+name|canUploadMerges
+argument_list|()
+operator|&&
+operator|!
+name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|isUseSignedOffBy
 argument_list|()
 return|;
 block|}

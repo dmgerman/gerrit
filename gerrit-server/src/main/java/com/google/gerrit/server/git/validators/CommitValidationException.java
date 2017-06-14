@@ -134,6 +134,34 @@ name|CommitValidationMessage
 argument_list|>
 name|messages
 decl_stmt|;
+DECL|method|CommitValidationException (String reason, CommitValidationMessage message)
+specifier|public
+name|CommitValidationException
+parameter_list|(
+name|String
+name|reason
+parameter_list|,
+name|CommitValidationMessage
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|reason
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|messages
+operator|=
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|CommitValidationException (String reason, List<CommitValidationMessage> messages)
 specifier|public
 name|CommitValidationException
