@@ -529,6 +529,11 @@ name|String
 name|initialRevision
 parameter_list|()
 function_decl|;
+DECL|method|revision ()
+name|String
+name|revision
+parameter_list|()
+function_decl|;
 DECL|method|buttonAddBranch ()
 name|String
 name|buttonAddBranch

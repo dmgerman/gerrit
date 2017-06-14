@@ -1274,7 +1274,7 @@ name|AdminConstants
 operator|.
 name|I
 operator|.
-name|initialRevision
+name|revision
 argument_list|()
 operator|+
 literal|":"
