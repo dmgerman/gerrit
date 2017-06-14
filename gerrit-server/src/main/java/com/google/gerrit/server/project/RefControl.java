@@ -1148,7 +1148,7 @@ return|;
 block|}
 comment|/** @return true if this user can submit merge patch sets to this ref */
 DECL|method|canUploadMerges ()
-specifier|public
+specifier|private
 name|boolean
 name|canUploadMerges
 parameter_list|()
@@ -1195,7 +1195,6 @@ return|;
 block|}
 comment|/** @return true if this user can submit patch sets to this ref */
 DECL|method|canSubmit (boolean isChangeOwner)
-specifier|public
 name|boolean
 name|canSubmit
 parameter_list|(
@@ -3938,11 +3937,37 @@ name|canForgeGerritServerIdentity
 argument_list|()
 return|;
 case|case
+name|MERGE
+case|:
+return|return
+name|canUploadMerges
+argument_list|()
+return|;
+case|case
 name|CREATE_CHANGE
 case|:
 return|return
 name|canUpload
 argument_list|()
+return|;
+case|case
+name|UPDATE_BY_SUBMIT
+case|:
+return|return
+name|projectControl
+operator|.
+name|controlForRef
+argument_list|(
+literal|"refs/for/"
+operator|+
+name|getRefName
+argument_list|()
+argument_list|)
+operator|.
+name|canSubmit
+argument_list|(
+literal|true
+argument_list|)
 return|;
 case|case
 name|BYPASS_REVIEW

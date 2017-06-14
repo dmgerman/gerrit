@@ -1776,7 +1776,7 @@ return|;
 block|}
 comment|/** Returns whether the project is hidden. */
 DECL|method|isHidden ()
-specifier|public
+specifier|private
 name|boolean
 name|isHidden
 parameter_list|()
@@ -1826,10 +1826,10 @@ argument_list|()
 operator|)
 return|;
 block|}
-DECL|method|canUpload ()
-specifier|public
+DECL|method|canCreateChanges ()
+specifier|private
 name|boolean
-name|canUpload
+name|canCreateChanges
 parameter_list|()
 block|{
 for|for
@@ -3677,6 +3677,13 @@ name|CREATE_REF
 case|:
 return|return
 name|canAddRefs
+argument_list|()
+return|;
+case|case
+name|CREATE_CHANGE
+case|:
+return|return
+name|canCreateChanges
 argument_list|()
 return|;
 block|}
