@@ -547,7 +547,7 @@ name|schemaFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommandFactoryProvider ( @ommandNameCommands.ROOT) final DispatchCommandProvider d, @GerritServerConfig final Config cfg, final WorkQueue workQueue, final SshLog l, final SshScope s, SchemaFactory<ReviewDb> sf)
+DECL|method|CommandFactoryProvider ( @ommandNameCommands.ROOT) DispatchCommandProvider d, @GerritServerConfig Config cfg, WorkQueue workQueue, SshLog l, SshScope s, SchemaFactory<ReviewDb> sf)
 name|CommandFactoryProvider
 parameter_list|(
 annotation|@
@@ -557,25 +557,20 @@ name|Commands
 operator|.
 name|ROOT
 argument_list|)
-specifier|final
 name|DispatchCommandProvider
 name|d
 parameter_list|,
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|,
-specifier|final
 name|WorkQueue
 name|workQueue
 parameter_list|,
-specifier|final
 name|SshLog
 name|l
 parameter_list|,
-specifier|final
 name|SshScope
 name|s
 parameter_list|,

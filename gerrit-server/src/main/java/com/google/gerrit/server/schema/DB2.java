@@ -175,13 +175,12 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DB2 (@erritServerConfig final Config cfg)
+DECL|method|DB2 (@erritServerConfig Config cfg)
 specifier|public
 name|DB2
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

@@ -138,12 +138,11 @@ name|expander
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailExpanderProvider (@erritServerConfig final Config cfg)
+DECL|method|EmailExpanderProvider (@erritServerConfig Config cfg)
 name|EmailExpanderProvider
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

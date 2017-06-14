@@ -735,7 +735,7 @@ name|membershipCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LdapRealm ( Helper helper, AuthConfig authConfig, EmailExpander emailExpander, LdapGroupBackend groupBackend, @Named(LdapModule.GROUP_CACHE) final LoadingCache<String, Set<AccountGroup.UUID>> membershipCache, @Named(LdapModule.USERNAME_CACHE) final LoadingCache<String, Optional<Account.Id>> usernameCache, @GerritServerConfig final Config config)
+DECL|method|LdapRealm ( Helper helper, AuthConfig authConfig, EmailExpander emailExpander, LdapGroupBackend groupBackend, @Named(LdapModule.GROUP_CACHE) LoadingCache<String, Set<AccountGroup.UUID>> membershipCache, @Named(LdapModule.USERNAME_CACHE) LoadingCache<String, Optional<Account.Id>> usernameCache, @GerritServerConfig Config config)
 name|LdapRealm
 parameter_list|(
 name|Helper
@@ -757,7 +757,6 @@ name|LdapModule
 operator|.
 name|GROUP_CACHE
 argument_list|)
-specifier|final
 name|LoadingCache
 argument_list|<
 name|String
@@ -778,7 +777,6 @@ name|LdapModule
 operator|.
 name|USERNAME_CACHE
 argument_list|)
-specifier|final
 name|LoadingCache
 argument_list|<
 name|String
@@ -794,7 +792,6 @@ name|usernameCache
 parameter_list|,
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|config
 parameter_list|)

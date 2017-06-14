@@ -175,13 +175,12 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Oracle (@erritServerConfig final Config cfg)
+DECL|method|Oracle (@erritServerConfig Config cfg)
 specifier|public
 name|Oracle
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

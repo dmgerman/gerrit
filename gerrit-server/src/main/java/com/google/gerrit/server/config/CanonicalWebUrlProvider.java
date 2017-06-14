@@ -127,13 +127,12 @@ name|canonicalUrl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CanonicalWebUrlProvider (@erritServerConfig final Config config)
+DECL|method|CanonicalWebUrlProvider (@erritServerConfig Config config)
 specifier|public
 name|CanonicalWebUrlProvider
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|config
 parameter_list|)

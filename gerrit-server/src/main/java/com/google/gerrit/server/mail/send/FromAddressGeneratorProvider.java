@@ -345,28 +345,24 @@ name|generator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FromAddressGeneratorProvider ( @erritServerConfig final Config cfg, @AnonymousCowardName final String anonymousCowardName, @GerritPersonIdent final PersonIdent myIdent, final AccountCache accountCache)
+DECL|method|FromAddressGeneratorProvider ( @erritServerConfig Config cfg, @AnonymousCowardName String anonymousCowardName, @GerritPersonIdent PersonIdent myIdent, AccountCache accountCache)
 name|FromAddressGeneratorProvider
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|,
 annotation|@
 name|AnonymousCowardName
-specifier|final
 name|String
 name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
-specifier|final
 name|PersonIdent
 name|myIdent
 parameter_list|,
-specifier|final
 name|AccountCache
 name|accountCache
 parameter_list|)

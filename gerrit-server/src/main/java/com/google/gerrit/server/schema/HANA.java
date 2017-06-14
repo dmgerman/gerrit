@@ -184,12 +184,11 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HANA (@erritServerConfig final Config cfg)
+DECL|method|HANA (@erritServerConfig Config cfg)
 name|HANA
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

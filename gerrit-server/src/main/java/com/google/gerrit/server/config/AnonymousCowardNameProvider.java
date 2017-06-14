@@ -132,13 +132,12 @@ name|anonymousCoward
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AnonymousCowardNameProvider (@erritServerConfig final Config cfg)
+DECL|method|AnonymousCowardNameProvider (@erritServerConfig Config cfg)
 specifier|public
 name|AnonymousCowardNameProvider
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

@@ -174,12 +174,11 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MySql (@erritServerConfig final Config cfg)
+DECL|method|MySql (@erritServerConfig Config cfg)
 name|MySql
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

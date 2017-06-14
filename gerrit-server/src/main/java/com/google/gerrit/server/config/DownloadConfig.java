@@ -263,12 +263,11 @@ name|archiveFormats
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DownloadConfig (@erritServerConfig final Config cfg)
+DECL|method|DownloadConfig (@erritServerConfig Config cfg)
 name|DownloadConfig
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
