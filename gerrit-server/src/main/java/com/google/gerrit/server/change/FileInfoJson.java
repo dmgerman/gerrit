@@ -477,8 +477,9 @@ name|toFileInfoMap
 argument_list|(
 name|change
 argument_list|,
-operator|new
 name|PatchListKey
+operator|.
+name|againstCommit
 argument_list|(
 name|a
 argument_list|,
