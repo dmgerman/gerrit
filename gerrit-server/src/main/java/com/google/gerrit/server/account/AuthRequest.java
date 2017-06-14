@@ -316,6 +316,16 @@ specifier|private
 name|String
 name|authProvider
 decl_stmt|;
+DECL|field|authProvidesAccountActiveStatus
+specifier|private
+name|boolean
+name|authProvidesAccountActiveStatus
+decl_stmt|;
+DECL|field|active
+specifier|private
+name|boolean
+name|active
+decl_stmt|;
 DECL|method|AuthRequest (ExternalId.Key externalId)
 specifier|public
 name|AuthRequest
@@ -602,6 +612,58 @@ operator|.
 name|authProvider
 operator|=
 name|authProvider
+expr_stmt|;
+block|}
+DECL|method|authProvidesAccountActiveStatus ()
+specifier|public
+name|boolean
+name|authProvidesAccountActiveStatus
+parameter_list|()
+block|{
+return|return
+name|authProvidesAccountActiveStatus
+return|;
+block|}
+DECL|method|setAuthProvidesAccountActiveStatus (boolean authProvidesAccountActiveStatus)
+specifier|public
+name|void
+name|setAuthProvidesAccountActiveStatus
+parameter_list|(
+name|boolean
+name|authProvidesAccountActiveStatus
+parameter_list|)
+block|{
+name|this
+operator|.
+name|authProvidesAccountActiveStatus
+operator|=
+name|authProvidesAccountActiveStatus
+expr_stmt|;
+block|}
+DECL|method|isActive ()
+specifier|public
+name|boolean
+name|isActive
+parameter_list|()
+block|{
+return|return
+name|active
+return|;
+block|}
+DECL|method|setActive (Boolean isActive)
+specifier|public
+name|void
+name|setActive
+parameter_list|(
+name|Boolean
+name|isActive
+parameter_list|)
+block|{
+name|this
+operator|.
+name|active
+operator|=
+name|isActive
 expr_stmt|;
 block|}
 block|}
