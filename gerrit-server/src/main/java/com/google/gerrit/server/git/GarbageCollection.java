@@ -862,18 +862,16 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|fire (final Project.NameKey p, final Properties statistics)
+DECL|method|fire (Project.NameKey p, Properties statistics)
 specifier|private
 name|void
 name|fire
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|p
 parameter_list|,
-specifier|final
 name|Properties
 name|statistics
 parameter_list|)

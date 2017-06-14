@@ -167,13 +167,12 @@ operator|=
 literal|'.'
 expr_stmt|;
 block|}
-DECL|method|fill (final char[] out, int o, final char f, final int l)
+DECL|method|fill (char[] out, int o, char f, int l)
 specifier|private
 specifier|static
 name|int
 name|fill
 parameter_list|(
-specifier|final
 name|char
 index|[]
 name|out
@@ -181,11 +180,9 @@ parameter_list|,
 name|int
 name|o
 parameter_list|,
-specifier|final
 name|char
 name|f
 parameter_list|,
-specifier|final
 name|int
 name|l
 parameter_list|)
@@ -218,12 +215,11 @@ return|return
 name|o
 return|;
 block|}
-DECL|method|encode (final byte[] in)
+DECL|method|encode (byte[] in)
 specifier|static
 name|String
 name|encode
 parameter_list|(
-specifier|final
 name|byte
 index|[]
 name|in
@@ -316,26 +312,22 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|encode3to4 ( final StringBuilder out, final byte[] in, final int inOffset, final int numSigBytes)
+DECL|method|encode3to4 ( StringBuilder out, byte[] in, int inOffset, int numSigBytes)
 specifier|private
 specifier|static
 name|void
 name|encode3to4
 parameter_list|(
-specifier|final
 name|StringBuilder
 name|out
 parameter_list|,
-specifier|final
 name|byte
 index|[]
 name|in
 parameter_list|,
-specifier|final
 name|int
 name|inOffset
 parameter_list|,
-specifier|final
 name|int
 name|numSigBytes
 parameter_list|)

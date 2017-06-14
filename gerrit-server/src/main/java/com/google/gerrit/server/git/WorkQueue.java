@@ -466,10 +466,9 @@ name|workQueue
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Lifecycle (final WorkQueue workQeueue)
+DECL|method|Lifecycle (WorkQueue workQeueue)
 name|Lifecycle
 parameter_list|(
-specifier|final
 name|WorkQueue
 name|workQeueue
 parameter_list|)
@@ -796,7 +795,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Executor
 name|e
 range|:
@@ -885,7 +883,7 @@ name|taskInfos
 return|;
 block|}
 comment|/** Locate a task by its unique id, null if no task matches. */
-DECL|method|getTask (final int id)
+DECL|method|getTask (int id)
 specifier|public
 name|Task
 argument_list|<
@@ -893,7 +891,6 @@ name|?
 argument_list|>
 name|getTask
 parameter_list|(
-specifier|final
 name|int
 name|id
 parameter_list|)
@@ -908,7 +905,6 @@ literal|null
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Executor
 name|e
 range|:
@@ -1004,7 +1000,6 @@ parameter_list|()
 block|{
 for|for
 control|(
-specifier|final
 name|Executor
 name|p
 range|:
@@ -1090,13 +1085,12 @@ specifier|final
 name|String
 name|queueName
 decl_stmt|;
-DECL|method|Executor (int corePoolSize, final String prefix)
+DECL|method|Executor (int corePoolSize, String prefix)
 name|Executor
 parameter_list|(
 name|int
 name|corePoolSize
 parameter_list|,
-specifier|final
 name|String
 name|prefix
 parameter_list|)
@@ -1136,7 +1130,6 @@ specifier|public
 name|Thread
 name|newThread
 parameter_list|(
-specifier|final
 name|Runnable
 name|task
 parameter_list|)
@@ -1229,7 +1222,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|decorateTask ( final Runnable runnable, RunnableScheduledFuture<V> r)
+DECL|method|decorateTask ( Runnable runnable, RunnableScheduledFuture<V> r)
 specifier|protected
 parameter_list|<
 name|V
@@ -1240,7 +1233,6 @@ name|V
 argument_list|>
 name|decorateTask
 parameter_list|(
-specifier|final
 name|Runnable
 name|runnable
 parameter_list|,
@@ -1352,7 +1344,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|decorateTask ( final Callable<V> callable, final RunnableScheduledFuture<V> task)
+DECL|method|decorateTask ( Callable<V> callable, RunnableScheduledFuture<V> task)
 specifier|protected
 parameter_list|<
 name|V
@@ -1363,14 +1355,12 @@ name|V
 argument_list|>
 name|decorateTask
 parameter_list|(
-specifier|final
 name|Callable
 argument_list|<
 name|V
 argument_list|>
 name|callable
 parameter_list|,
-specifier|final
 name|RunnableScheduledFuture
 argument_list|<
 name|V
@@ -1386,11 +1376,10 @@ literal|"Callable not implemented"
 argument_list|)
 throw|;
 block|}
-DECL|method|remove (final Task<?> task)
+DECL|method|remove (Task<?> task)
 name|void
 name|remove
 parameter_list|(
-specifier|final
 name|Task
 argument_list|<
 name|?
@@ -1411,14 +1400,13 @@ name|task
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getTask (final int id)
+DECL|method|getTask (int id)
 name|Task
 argument_list|<
 name|?
 argument_list|>
 name|getTask
 parameter_list|(
-specifier|final
 name|int
 name|id
 parameter_list|)
@@ -1432,11 +1420,10 @@ name|id
 argument_list|)
 return|;
 block|}
-DECL|method|addAllTo (final List<Task<?>> list)
+DECL|method|addAllTo (List<Task<?>> list)
 name|void
 name|addAllTo
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|Task

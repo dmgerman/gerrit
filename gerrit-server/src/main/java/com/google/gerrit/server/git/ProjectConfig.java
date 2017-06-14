@@ -6867,7 +6867,6 @@ block|}
 DECL|method|validMaxObjectSizeLimit (String value)
 specifier|public
 specifier|static
-specifier|final
 name|String
 name|validMaxObjectSizeLimit
 parameter_list|(

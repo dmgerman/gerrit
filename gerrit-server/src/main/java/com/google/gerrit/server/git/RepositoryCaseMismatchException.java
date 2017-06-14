@@ -118,11 +118,10 @@ init|=
 literal|1L
 decl_stmt|;
 comment|/** @param projectName name of the project that cannot be created */
-DECL|method|RepositoryCaseMismatchException (final Project.NameKey projectName)
+DECL|method|RepositoryCaseMismatchException (Project.NameKey projectName)
 specifier|public
 name|RepositoryCaseMismatchException
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey

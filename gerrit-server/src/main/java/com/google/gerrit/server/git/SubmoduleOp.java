@@ -2582,12 +2582,11 @@ throw|;
 block|}
 block|}
 comment|/** Create a separate gitlink commit */
-DECL|method|composeGitlinksCommit (final Branch.NameKey subscriber)
+DECL|method|composeGitlinksCommit (Branch.NameKey subscriber)
 specifier|public
 name|CodeReviewCommit
 name|composeGitlinksCommit
 parameter_list|(
-specifier|final
 name|Branch
 operator|.
 name|NameKey
@@ -2946,12 +2945,11 @@ argument_list|)
 return|;
 block|}
 comment|/** Amend an existing commit with gitlink updates */
-DECL|method|composeGitlinksCommit ( final Branch.NameKey subscriber, CodeReviewCommit currentCommit)
+DECL|method|composeGitlinksCommit ( Branch.NameKey subscriber, CodeReviewCommit currentCommit)
 specifier|public
 name|CodeReviewCommit
 name|composeGitlinksCommit
 parameter_list|(
-specifier|final
 name|Branch
 operator|.
 name|NameKey
@@ -3216,7 +3214,7 @@ return|return
 name|newCommit
 return|;
 block|}
-DECL|method|updateSubmodule ( DirCache dc, DirCacheEditor ed, StringBuilder msgbuf, final SubmoduleSubscription s)
+DECL|method|updateSubmodule ( DirCache dc, DirCacheEditor ed, StringBuilder msgbuf, SubmoduleSubscription s)
 specifier|private
 name|RevCommit
 name|updateSubmodule
@@ -3230,7 +3228,6 @@ parameter_list|,
 name|StringBuilder
 name|msgbuf
 parameter_list|,
-specifier|final
 name|SubmoduleSubscription
 name|s
 parameter_list|)

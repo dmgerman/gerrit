@@ -476,12 +476,11 @@ name|edits
 argument_list|)
 return|;
 block|}
-DECL|method|writeObject (final ObjectOutputStream out)
+DECL|method|writeObject (ObjectOutputStream out)
 specifier|private
 name|void
 name|writeObject
 parameter_list|(
-specifier|final
 name|ObjectOutputStream
 name|out
 parameter_list|)
@@ -580,12 +579,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|readObject (final ObjectInputStream in)
+DECL|method|readObject (ObjectInputStream in)
 specifier|private
 name|void
 name|readObject
 parameter_list|(
-specifier|final
 name|ObjectInputStream
 name|in
 parameter_list|)

@@ -642,7 +642,7 @@ name|gerritIdent
 expr_stmt|;
 block|}
 comment|/**    * Perform an auto-merge of the parents of the given merge commit.    *    * @return auto-merge commit or {@code null} if an auto-merge commit couldn't be created. Headers    *     of the returned RevCommit are parsed.    */
-DECL|method|merge ( Repository repo, RevWalk rw, final ObjectInserter ins, RevCommit merge, ThreeWayMergeStrategy mergeStrategy)
+DECL|method|merge ( Repository repo, RevWalk rw, ObjectInserter ins, RevCommit merge, ThreeWayMergeStrategy mergeStrategy)
 specifier|public
 name|RevCommit
 name|merge
@@ -653,7 +653,6 @@ parameter_list|,
 name|RevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|ObjectInserter
 name|ins
 parameter_list|,

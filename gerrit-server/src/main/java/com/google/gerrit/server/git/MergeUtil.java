@@ -1553,20 +1553,17 @@ operator|=
 name|commitMessageGenerator
 expr_stmt|;
 block|}
-DECL|method|getFirstFastForward ( final CodeReviewCommit mergeTip, final RevWalk rw, final List<CodeReviewCommit> toMerge)
+DECL|method|getFirstFastForward ( CodeReviewCommit mergeTip, RevWalk rw, List<CodeReviewCommit> toMerge)
 specifier|public
 name|CodeReviewCommit
 name|getFirstFastForward
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|RevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -2991,7 +2988,6 @@ parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|FooterLine
 name|line
 range|:
@@ -3045,7 +3041,6 @@ parameter_list|)
 block|{
 for|for
 control|(
-specifier|final
 name|FooterLine
 name|line
 range|:
@@ -3083,24 +3078,20 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|canMerge ( final MergeSorter mergeSorter, final Repository repo, final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
+DECL|method|canMerge ( MergeSorter mergeSorter, Repository repo, CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|canMerge
 parameter_list|(
-specifier|final
 name|MergeSorter
 name|mergeSorter
 parameter_list|,
-specifier|final
 name|Repository
 name|repo
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|toMerge
 parameter_list|)
@@ -3465,16 +3456,14 @@ name|toMerge
 argument_list|)
 return|;
 block|}
-DECL|method|hasMissingDependencies ( final MergeSorter mergeSorter, final CodeReviewCommit toMerge)
+DECL|method|hasMissingDependencies ( MergeSorter mergeSorter, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|hasMissingDependencies
 parameter_list|(
-specifier|final
 name|MergeSorter
 name|mergeSorter
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|toMerge
 parameter_list|)
@@ -3994,7 +3983,6 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|CodeReviewCommit
 name|c
 range|:
@@ -4583,24 +4571,20 @@ block|}
 end_function
 
 begin_function
-DECL|method|markCleanMerges ( final RevWalk rw, final RevFlag canMergeFlag, final CodeReviewCommit mergeTip, final Set<RevCommit> alreadyAccepted)
+DECL|method|markCleanMerges ( RevWalk rw, RevFlag canMergeFlag, CodeReviewCommit mergeTip, Set<RevCommit> alreadyAccepted)
 specifier|public
 name|void
 name|markCleanMerges
 parameter_list|(
-specifier|final
 name|RevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|RevFlag
 name|canMergeFlag
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|Set
 argument_list|<
 name|RevCommit

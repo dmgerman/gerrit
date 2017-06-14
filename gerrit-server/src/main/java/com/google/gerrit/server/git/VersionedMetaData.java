@@ -1060,12 +1060,11 @@ parameter_list|()
 function_decl|;
 block|}
 comment|/**    * Open a batch of updates to the same metadata ref.    *    *<p>This allows making multiple commits to a single metadata ref, at the end of which is a    * single ref update. For batching together updates to multiple refs (each consisting of one or    * more commits against their respective refs), create the {@link MetaDataUpdate} with a {@link    * BatchRefUpdate}.    *    *<p>A ref update produced by this {@link BatchMetaDataUpdate} is only committed if there is no    * associated {@link BatchRefUpdate}. As a result, the configured ref updated event is not fired    * if there is an associated batch.    *    * @param update helper info about the update.    * @throws IOException if the update failed.    */
-DECL|method|openUpdate (final MetaDataUpdate update)
+DECL|method|openUpdate (MetaDataUpdate update)
 specifier|public
 name|BatchMetaDataUpdate
 name|openUpdate
 parameter_list|(
-specifier|final
 name|MetaDataUpdate
 name|update
 parameter_list|)

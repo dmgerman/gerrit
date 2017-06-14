@@ -522,7 +522,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|doFilter (ServletRequest req, ServletResponse res, final FilterChain last)
+DECL|method|doFilter (ServletRequest req, ServletResponse res, FilterChain last)
 specifier|public
 name|void
 name|doFilter
@@ -533,7 +533,6 @@ parameter_list|,
 name|ServletResponse
 name|res
 parameter_list|,
-specifier|final
 name|FilterChain
 name|last
 parameter_list|)

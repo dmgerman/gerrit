@@ -196,17 +196,15 @@ name|error
 parameter_list|)
 function_decl|;
 block|}
-DECL|method|createLoggerSink (final String message, final Logger log)
+DECL|method|createLoggerSink (String message, Logger log)
 specifier|public
 specifier|static
 name|Sink
 name|createLoggerSink
 parameter_list|(
-specifier|final
 name|String
 name|message
 parameter_list|,
-specifier|final
 name|Logger
 name|log
 parameter_list|)

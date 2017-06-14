@@ -107,15 +107,13 @@ specifier|final
 name|String
 name|value
 decl_stmt|;
-DECL|method|OperatorPredicate (final String name, final String value)
+DECL|method|OperatorPredicate (String name, String value)
 specifier|public
 name|OperatorPredicate
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
@@ -155,7 +153,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|copy (final Collection<? extends Predicate<T>> children)
+DECL|method|copy (Collection<? extends Predicate<T>> children)
 specifier|public
 name|Predicate
 argument_list|<
@@ -163,7 +161,6 @@ name|T
 argument_list|>
 name|copy
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|?
@@ -223,12 +220,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (final Object other)
+DECL|method|equals (Object other)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
-specifier|final
 name|Object
 name|other
 parameter_list|)

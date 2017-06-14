@@ -466,11 +466,9 @@ specifier|public
 name|int
 name|compare
 parameter_list|(
-specifier|final
 name|PatchListEntry
 name|a
 parameter_list|,
-specifier|final
 name|PatchListEntry
 name|b
 parameter_list|)
@@ -876,7 +874,7 @@ name|deletions
 return|;
 block|}
 comment|/**    * Get a sorted, modifiable list of all files in this list.    *    *<p>The returned list items do not populate:    *    *<ul>    *<li>{@link Patch#getCommentCount()}    *<li>{@link Patch#getDraftCount()}    *<li>{@link Patch#isReviewedByCurrentUser()}    *</ul>    *    * @param setId the patch set identity these patches belong to. This really should not need to be    *     specified, but is a current legacy artifact of how the cache is keyed versus how the    *     database is keyed.    */
-DECL|method|toPatchList (final PatchSet.Id setId)
+DECL|method|toPatchList (PatchSet.Id setId)
 specifier|public
 name|List
 argument_list|<
@@ -884,7 +882,6 @@ name|Patch
 argument_list|>
 name|toPatchList
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -934,12 +931,11 @@ name|r
 return|;
 block|}
 comment|/** Find an entry by name, returning an empty entry if not present. */
-DECL|method|get (final String fileName)
+DECL|method|get (String fileName)
 specifier|public
 name|PatchListEntry
 name|get
 parameter_list|(
-specifier|final
 name|String
 name|fileName
 parameter_list|)
@@ -971,12 +967,11 @@ name|fileName
 argument_list|)
 return|;
 block|}
-DECL|method|search (final String fileName)
+DECL|method|search (String fileName)
 specifier|private
 name|int
 name|search
 parameter_list|(
-specifier|final
 name|String
 name|fileName
 parameter_list|)
@@ -1010,12 +1005,11 @@ name|PATCH_CMP
 argument_list|)
 return|;
 block|}
-DECL|method|writeObject (final ObjectOutputStream output)
+DECL|method|writeObject (ObjectOutputStream output)
 specifier|private
 name|void
 name|writeObject
 parameter_list|(
-specifier|final
 name|ObjectOutputStream
 name|output
 parameter_list|)
@@ -1125,12 +1119,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|readObject (final ObjectInputStream input)
+DECL|method|readObject (ObjectInputStream input)
 specifier|private
 name|void
 name|readObject
 parameter_list|(
-specifier|final
 name|ObjectInputStream
 name|input
 parameter_list|)

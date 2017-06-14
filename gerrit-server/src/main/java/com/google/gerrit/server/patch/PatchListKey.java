@@ -615,12 +615,11 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|equals (final Object o)
+DECL|method|equals (Object o)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
-specifier|final
 name|Object
 name|o
 parameter_list|)
@@ -793,12 +792,11 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|writeObject (final ObjectOutputStream out)
+DECL|method|writeObject (ObjectOutputStream out)
 specifier|private
 name|void
 name|writeObject
 parameter_list|(
-specifier|final
 name|ObjectOutputStream
 name|out
 parameter_list|)
@@ -867,12 +865,11 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|readObject (final ObjectInputStream in)
+DECL|method|readObject (ObjectInputStream in)
 specifier|private
 name|void
 name|readObject
 parameter_list|(
-specifier|final
 name|ObjectInputStream
 name|in
 parameter_list|)

@@ -1210,7 +1210,7 @@ name|hashes
 argument_list|)
 return|;
 block|}
-DECL|method|byCommitsOnBranchNotMergedFromDatabase ( Repository repo, final ReviewDb db, final Branch.NameKey branch, Collection<String> hashes)
+DECL|method|byCommitsOnBranchNotMergedFromDatabase ( Repository repo, ReviewDb db, Branch.NameKey branch, Collection<String> hashes)
 specifier|private
 name|Iterable
 argument_list|<
@@ -1221,11 +1221,9 @@ parameter_list|(
 name|Repository
 name|repo
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|Branch
 operator|.
 name|NameKey

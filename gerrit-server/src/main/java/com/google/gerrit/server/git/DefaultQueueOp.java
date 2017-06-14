@@ -105,11 +105,10 @@ specifier|final
 name|WorkQueue
 name|workQueue
 decl_stmt|;
-DECL|method|DefaultQueueOp (final WorkQueue wq)
+DECL|method|DefaultQueueOp (WorkQueue wq)
 specifier|protected
 name|DefaultQueueOp
 parameter_list|(
-specifier|final
 name|WorkQueue
 name|wq
 parameter_list|)

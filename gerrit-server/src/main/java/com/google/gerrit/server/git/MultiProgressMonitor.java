@@ -340,14 +340,12 @@ specifier|private
 name|int
 name|lastPercent
 decl_stmt|;
-DECL|method|Task (final String subTaskName, final int totalWork)
+DECL|method|Task (String subTaskName, int totalWork)
 name|Task
 parameter_list|(
-specifier|final
 name|String
 name|subTaskName
 parameter_list|,
-specifier|final
 name|int
 name|totalWork
 parameter_list|)
@@ -368,12 +366,11 @@ block|}
 comment|/**      * Indicate that work has been completed on this sub-task.      *      *<p>Must be called from a worker thread.      *      * @param completed number of work units completed.      */
 annotation|@
 name|Override
-DECL|method|update (final int completed)
+DECL|method|update (int completed)
 specifier|public
 name|void
 name|update
 parameter_list|(
-specifier|final
 name|int
 name|completed
 parameter_list|)
@@ -583,15 +580,13 @@ name|long
 name|maxIntervalNanos
 decl_stmt|;
 comment|/**    * Create a new progress monitor for multiple sub-tasks.    *    * @param out stream for writing progress messages.    * @param taskName name of the overall task.    */
-DECL|method|MultiProgressMonitor (final OutputStream out, final String taskName)
+DECL|method|MultiProgressMonitor (OutputStream out, String taskName)
 specifier|public
 name|MultiProgressMonitor
 parameter_list|(
-specifier|final
 name|OutputStream
 name|out
 parameter_list|,
-specifier|final
 name|String
 name|taskName
 parameter_list|)
@@ -611,15 +606,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Create a new progress monitor for multiple sub-tasks.    *    * @param out stream for writing progress messages.    * @param taskName name of the overall task.    * @param maxIntervalTime maximum interval between progress messages.    * @param maxIntervalUnit time unit for progress interval.    */
-DECL|method|MultiProgressMonitor ( final OutputStream out, final String taskName, long maxIntervalTime, TimeUnit maxIntervalUnit)
+DECL|method|MultiProgressMonitor ( OutputStream out, String taskName, long maxIntervalTime, TimeUnit maxIntervalUnit)
 specifier|public
 name|MultiProgressMonitor
 parameter_list|(
-specifier|final
 name|OutputStream
 name|out
 parameter_list|,
-specifier|final
 name|String
 name|taskName
 parameter_list|,
@@ -655,12 +648,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Wait for a task managed by a {@link Future}, with no timeout.    *    * @see #waitFor(Future, long, TimeUnit)    */
-DECL|method|waitFor (final Future<?> workerFuture)
+DECL|method|waitFor (Future<?> workerFuture)
 specifier|public
 name|void
 name|waitFor
 parameter_list|(
-specifier|final
 name|Future
 argument_list|<
 name|?
@@ -681,23 +673,20 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Wait for a task managed by a {@link Future}.    *    *<p>Must be called from the main thread,<em>not</em> a worker thread. Once a worker thread    * calls {@link #end()}, the future has an additional {@code maxInterval} to finish before it is    * forcefully cancelled and {@link ExecutionException} is thrown.    *    * @param workerFuture a future that returns when worker threads are finished.    * @param timeoutTime overall timeout for the task; the future is forcefully cancelled if the task    *     exceeds the timeout. Non-positive values indicate no timeout.    * @param timeoutUnit unit for overall task timeout.    * @throws ExecutionException if this thread or a worker thread was interrupted, the worker was    *     cancelled, or timed out waiting for a worker to call {@link #end()}.    */
-DECL|method|waitFor ( final Future<?> workerFuture, final long timeoutTime, final TimeUnit timeoutUnit)
+DECL|method|waitFor ( Future<?> workerFuture, long timeoutTime, TimeUnit timeoutUnit)
 specifier|public
 name|void
 name|waitFor
 parameter_list|(
-specifier|final
 name|Future
 argument_list|<
 name|?
 argument_list|>
 name|workerFuture
 parameter_list|,
-specifier|final
 name|long
 name|timeoutTime
 parameter_list|,
-specifier|final
 name|TimeUnit
 name|timeoutUnit
 parameter_list|)
@@ -1018,16 +1007,14 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**    * Begin a sub-task.    *    * @param subTask sub-task name.    * @param subTaskWork total work units in sub-task, or {@link #UNKNOWN}.    * @return sub-task handle.    */
-DECL|method|beginSubTask (final String subTask, final int subTaskWork)
+DECL|method|beginSubTask (String subTask, int subTaskWork)
 specifier|public
 name|Task
 name|beginSubTask
 parameter_list|(
-specifier|final
 name|String
 name|subTask
 parameter_list|,
-specifier|final
 name|int
 name|subTaskWork
 parameter_list|)
