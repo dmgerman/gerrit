@@ -67,36 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkState
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Strings
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -137,6 +107,22 @@ operator|.
 name|restapi
 operator|.
 name|AuthException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|BadRequestException
 import|;
 end_import
 
@@ -495,6 +481,22 @@ operator|.
 name|project
 operator|.
 name|InvalidChangeOperationException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|CommitMessageUtil
 import|;
 end_import
 
@@ -1313,7 +1315,7 @@ name|change
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Modifies the commit message of a change edit. If the change edit doesn't exist, a new one will    * be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit's message should    *     be modified    * @param newCommitMessage the new commit message    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws UnchangedCommitMessageException if the commit message is the same as before    * @throws PermissionBackendException    */
+comment|/**    * Modifies the commit message of a change edit. If the change edit doesn't exist, a new one will    * be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit's message should    *     be modified    * @param newCommitMessage the new commit message    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws UnchangedCommitMessageException if the commit message is the same as before    * @throws PermissionBackendException    * @throws BadRequestException if the commit message is malformed    */
 DECL|method|modifyMessage ( Repository repository, ChangeControl changeControl, String newCommitMessage)
 specifier|public
 name|void
@@ -1338,6 +1340,8 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|BadRequestException
 block|{
 name|assertCanEdit
 argument_list|(
@@ -1346,7 +1350,9 @@ argument_list|)
 expr_stmt|;
 name|newCommitMessage
 operator|=
-name|getWellFormedCommitMessage
+name|CommitMessageUtil
+operator|.
+name|checkAndSanitizeCommitMessage
 argument_list|(
 name|newCommitMessage
 argument_list|)
@@ -2258,50 +2264,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
-DECL|method|getWellFormedCommitMessage (String commitMessage)
-specifier|private
-specifier|static
-name|String
-name|getWellFormedCommitMessage
-parameter_list|(
-name|String
-name|commitMessage
-parameter_list|)
-block|{
-name|String
-name|wellFormedMessage
-init|=
-name|Strings
-operator|.
-name|nullToEmpty
-argument_list|(
-name|commitMessage
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-decl_stmt|;
-name|checkState
-argument_list|(
-operator|!
-name|wellFormedMessage
-operator|.
-name|isEmpty
-argument_list|()
-argument_list|,
-literal|"Commit message cannot be null or empty"
-argument_list|)
-expr_stmt|;
-name|wellFormedMessage
-operator|=
-name|wellFormedMessage
-operator|+
-literal|"\n"
-expr_stmt|;
-return|return
-name|wellFormedMessage
-return|;
 block|}
 DECL|method|lookupChangeEdit (ChangeControl changeControl)
 specifier|private

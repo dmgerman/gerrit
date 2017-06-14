@@ -688,6 +688,17 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** Create a new patch set with a new commit message. */
+DECL|method|setMessage (String message)
+name|void
+name|setMessage
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/** Set hashtags on a change */
 DECL|method|setHashtags (HashtagsInput input)
 name|void
@@ -1385,6 +1396,23 @@ specifier|public
 name|ChangeInfo
 name|info
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setMessage (String message)
+specifier|public
+name|void
+name|setMessage
+parameter_list|(
+name|String
+name|message
+parameter_list|)
 block|{
 throw|throw
 operator|new
