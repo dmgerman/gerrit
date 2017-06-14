@@ -1641,8 +1641,9 @@ literal|0
 condition|)
 block|{
 return|return
-operator|new
 name|PatchListKey
+operator|.
+name|againstCommit
 argument_list|(
 name|aId
 argument_list|,

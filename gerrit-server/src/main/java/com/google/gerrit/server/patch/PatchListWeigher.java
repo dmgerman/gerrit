@@ -123,6 +123,8 @@ operator|+
 literal|2
 operator|*
 literal|36
+operator|+
+literal|8
 comment|// Size of PatchListKey, 64 bit JVM
 operator|+
 literal|16

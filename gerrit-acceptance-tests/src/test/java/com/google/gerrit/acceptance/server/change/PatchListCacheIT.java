@@ -1937,8 +1937,9 @@ name|revisionIdB
 parameter_list|)
 block|{
 return|return
-operator|new
 name|PatchListKey
+operator|.
+name|againstCommit
 argument_list|(
 name|revisionIdA
 argument_list|,
