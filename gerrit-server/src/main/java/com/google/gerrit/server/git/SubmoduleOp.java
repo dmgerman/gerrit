@@ -2415,16 +2415,11 @@ return|return
 name|ret
 return|;
 block|}
-DECL|method|updateSuperProjects (BatchUpdate.Factory updateFactory)
+DECL|method|updateSuperProjects ()
 specifier|public
 name|void
 name|updateSuperProjects
-parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|updateFactory
-parameter_list|)
+parameter_list|()
 throws|throws
 name|SubmoduleException
 block|{
@@ -2522,9 +2517,7 @@ argument_list|(
 name|or
 operator|.
 name|getUpdate
-argument_list|(
-name|updateFactory
-argument_list|)
+argument_list|()
 argument_list|,
 name|branch
 argument_list|)
@@ -2540,8 +2533,6 @@ name|orm
 operator|.
 name|batchUpdates
 argument_list|(
-name|updateFactory
-argument_list|,
 name|superProjects
 argument_list|)
 argument_list|,

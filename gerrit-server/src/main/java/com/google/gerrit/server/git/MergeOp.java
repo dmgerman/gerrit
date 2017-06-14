@@ -984,20 +984,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -1229,22 +1215,6 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create (BatchUpdate.Factory batchUpdateFactory)
-name|MergeOp
-name|create
-parameter_list|(
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
-parameter_list|)
-function_decl|;
-block|}
 DECL|class|CommitStatus
 specifier|public
 specifier|static
@@ -2066,11 +2036,16 @@ name|topicMetrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, MergeOpRepoManager orm, NotifyUtil notifyUtil, TopicMetrics topicMetrics, @Assisted BatchUpdate.Factory batchUpdateFactory)
+DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, MergeOpRepoManager orm, NotifyUtil notifyUtil, TopicMetrics topicMetrics)
 name|MergeOp
 parameter_list|(
 name|ChangeMessagesUtil
 name|cmUtil
+parameter_list|,
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
 parameter_list|,
 name|InternalUser
 operator|.
@@ -2104,13 +2079,6 @@ name|notifyUtil
 parameter_list|,
 name|TopicMetrics
 name|topicMetrics
-parameter_list|,
-annotation|@
-name|Assisted
-name|BatchUpdate
-operator|.
-name|Factory
-name|batchUpdateFactory
 parameter_list|)
 block|{
 name|this
@@ -2121,6 +2089,12 @@ name|cmUtil
 expr_stmt|;
 name|this
 operator|.
+name|batchUpdateFactory
+operator|=
+name|batchUpdateFactory
+expr_stmt|;
+name|this
+operator|.
 name|internalUserFactory
 operator|=
 name|internalUserFactory
@@ -2166,12 +2140,6 @@ operator|.
 name|notifyUtil
 operator|=
 name|notifyUtil
-expr_stmt|;
-name|this
-operator|.
-name|batchUpdateFactory
-operator|=
-name|batchUpdateFactory
 expr_stmt|;
 name|this
 operator|.
@@ -3477,8 +3445,6 @@ name|orm
 operator|.
 name|batchUpdates
 argument_list|(
-name|batchUpdateFactory
-argument_list|,
 name|allProjects
 argument_list|)
 argument_list|,
@@ -3637,18 +3603,6 @@ parameter_list|()
 block|{
 return|return
 name|orm
-return|;
-block|}
-DECL|method|getBatchUpdateFactory ()
-specifier|public
-name|BatchUpdate
-operator|.
-name|Factory
-name|getBatchUpdateFactory
-parameter_list|()
-block|{
-return|return
-name|batchUpdateFactory
 return|;
 block|}
 DECL|method|getSubmitStrategies ( Map<Branch.NameKey, BranchBatch> toSubmit, SubmoduleOp submoduleOp, boolean dryrun)
@@ -3898,9 +3852,7 @@ argument_list|(
 name|or
 operator|.
 name|getUpdate
-argument_list|(
-name|batchUpdateFactory
-argument_list|)
+argument_list|()
 argument_list|,
 name|commitsToSubmit
 argument_list|)
@@ -3934,9 +3886,7 @@ argument_list|(
 name|or
 operator|.
 name|getUpdate
-argument_list|(
-name|batchUpdateFactory
-argument_list|)
+argument_list|()
 argument_list|,
 name|branch
 argument_list|)
@@ -3954,9 +3904,7 @@ argument_list|(
 name|or
 operator|.
 name|getUpdate
-argument_list|(
-name|batchUpdateFactory
-argument_list|)
+argument_list|()
 argument_list|,
 name|branch
 argument_list|)
