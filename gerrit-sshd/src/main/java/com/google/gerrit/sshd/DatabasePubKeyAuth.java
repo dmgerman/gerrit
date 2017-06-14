@@ -550,44 +550,36 @@ name|peerKeyCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DatabasePubKeyAuth ( final SshKeyCacheImpl skc, final SshLog l, final IdentifiedUser.GenericFactory uf, final PeerDaemonUser.Factory pf, final SitePaths site, final KeyPairProvider hostKeyProvider, @GerritServerConfig final Config cfg, final SshScope s)
+DECL|method|DatabasePubKeyAuth ( SshKeyCacheImpl skc, SshLog l, IdentifiedUser.GenericFactory uf, PeerDaemonUser.Factory pf, SitePaths site, KeyPairProvider hostKeyProvider, @GerritServerConfig Config cfg, SshScope s)
 name|DatabasePubKeyAuth
 parameter_list|(
-specifier|final
 name|SshKeyCacheImpl
 name|skc
 parameter_list|,
-specifier|final
 name|SshLog
 name|l
 parameter_list|,
-specifier|final
 name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|uf
 parameter_list|,
-specifier|final
 name|PeerDaemonUser
 operator|.
 name|Factory
 name|pf
 parameter_list|,
-specifier|final
 name|SitePaths
 name|site
 parameter_list|,
-specifier|final
 name|KeyPairProvider
 name|hostKeyProvider
 parameter_list|,
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|,
-specifier|final
 name|SshScope
 name|s
 parameter_list|)
@@ -1159,12 +1151,11 @@ operator|.
 name|keys
 return|;
 block|}
-DECL|method|find (final Iterable<SshKeyCacheEntry> keyList, PublicKey suppliedKey)
+DECL|method|find (Iterable<SshKeyCacheEntry> keyList, PublicKey suppliedKey)
 specifier|private
 name|SshKeyCacheEntry
 name|find
 parameter_list|(
-specifier|final
 name|Iterable
 argument_list|<
 name|SshKeyCacheEntry

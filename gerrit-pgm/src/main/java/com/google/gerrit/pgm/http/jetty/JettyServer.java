@@ -845,7 +845,7 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Lifecycle (JettyServer server, @GerritServerConfig final Config cfg)
+DECL|method|Lifecycle (JettyServer server, @GerritServerConfig Config cfg)
 name|Lifecycle
 parameter_list|(
 name|JettyServer
@@ -853,7 +853,6 @@ name|server
 parameter_list|,
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

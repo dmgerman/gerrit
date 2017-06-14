@@ -582,12 +582,11 @@ name|expiryDays
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SmtpEmailSender (@erritServerConfig final Config cfg)
+DECL|method|SmtpEmailSender (@erritServerConfig Config cfg)
 name|SmtpEmailSender
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

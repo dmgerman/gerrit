@@ -305,12 +305,11 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TrackingFootersProvider (@erritServerConfig final Config cfg)
+DECL|method|TrackingFootersProvider (@erritServerConfig Config cfg)
 name|TrackingFootersProvider
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

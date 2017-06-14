@@ -643,12 +643,11 @@ name|groupsVisibleToAll
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Helper ( @erritServerConfig final Config config, @Named(LdapModule.PARENT_GROUPS_CACHE) Cache<String, ImmutableSet<String>> parentGroups)
+DECL|method|Helper ( @erritServerConfig Config config, @Named(LdapModule.PARENT_GROUPS_CACHE) Cache<String, ImmutableSet<String>> parentGroups)
 name|Helper
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|config
 parameter_list|,

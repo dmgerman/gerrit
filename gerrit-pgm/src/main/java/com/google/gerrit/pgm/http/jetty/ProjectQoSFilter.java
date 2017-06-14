@@ -607,10 +607,9 @@ name|maxWait
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectQoSFilter ( final Provider<CurrentUser> user, QueueProvider queue, final ServletContext context, @GerritServerConfig final Config cfg)
+DECL|method|ProjectQoSFilter ( Provider<CurrentUser> user, QueueProvider queue, ServletContext context, @GerritServerConfig Config cfg)
 name|ProjectQoSFilter
 parameter_list|(
-specifier|final
 name|Provider
 argument_list|<
 name|CurrentUser
@@ -620,13 +619,11 @@ parameter_list|,
 name|QueueProvider
 name|queue
 parameter_list|,
-specifier|final
 name|ServletContext
 name|context
 parameter_list|,
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
@@ -1015,10 +1012,9 @@ specifier|private
 name|Thread
 name|worker
 decl_stmt|;
-DECL|method|TaskThunk (final WorkQueue.Executor executor, Continuation cont, HttpServletRequest req)
+DECL|method|TaskThunk (WorkQueue.Executor executor, Continuation cont, HttpServletRequest req)
 name|TaskThunk
 parameter_list|(
-specifier|final
 name|WorkQueue
 operator|.
 name|Executor

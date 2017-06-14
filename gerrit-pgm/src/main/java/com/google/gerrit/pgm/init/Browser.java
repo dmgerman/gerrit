@@ -198,12 +198,11 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Browser (@erritServerConfig final Config cfg)
+DECL|method|Browser (@erritServerConfig Config cfg)
 name|Browser
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

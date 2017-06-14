@@ -166,12 +166,11 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MaxDb (@erritServerConfig final Config cfg)
+DECL|method|MaxDb (@erritServerConfig Config cfg)
 name|MaxDb
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

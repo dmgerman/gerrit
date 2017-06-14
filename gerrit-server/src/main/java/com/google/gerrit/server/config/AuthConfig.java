@@ -512,12 +512,11 @@ name|gitBasicAuthPolicy
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AuthConfig (@erritServerConfig final Config cfg)
+DECL|method|AuthConfig (@erritServerConfig Config cfg)
 name|AuthConfig
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)

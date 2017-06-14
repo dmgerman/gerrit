@@ -955,17 +955,15 @@ name|papeMaxAuthAge
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OpenIdServiceImpl ( final DynamicItem<WebSession> cf, final Provider<IdentifiedUser> iu, CanonicalWebUrl up, @GerritServerConfig final Config config, final AuthConfig ac, final AccountManager am, ProxyProperties proxyProperties)
+DECL|method|OpenIdServiceImpl ( DynamicItem<WebSession> cf, Provider<IdentifiedUser> iu, CanonicalWebUrl up, @GerritServerConfig Config config, AuthConfig ac, AccountManager am, ProxyProperties proxyProperties)
 name|OpenIdServiceImpl
 parameter_list|(
-specifier|final
 name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
 name|cf
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|IdentifiedUser
@@ -977,15 +975,12 @@ name|up
 parameter_list|,
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|config
 parameter_list|,
-specifier|final
 name|AuthConfig
 name|ac
 parameter_list|,
-specifier|final
 name|AccountManager
 name|am
 parameter_list|,
@@ -1147,7 +1142,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|discover ( HttpServletRequest req, String openidIdentifier, final SignInMode mode, final boolean remember, final String returnToken)
+DECL|method|discover ( HttpServletRequest req, String openidIdentifier, SignInMode mode, boolean remember, String returnToken)
 name|DiscoveryResult
 name|discover
 parameter_list|(
@@ -1157,15 +1152,12 @@ parameter_list|,
 name|String
 name|openidIdentifier
 parameter_list|,
-specifier|final
 name|SignInMode
 name|mode
 parameter_list|,
-specifier|final
 name|boolean
 name|remember
 parameter_list|,
-specifier|final
 name|String
 name|returnToken
 parameter_list|)

@@ -172,12 +172,11 @@ name|queues
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StreamCommandExecutorProvider (@erritServerConfig final Config config, WorkQueue wq)
+DECL|method|StreamCommandExecutorProvider (@erritServerConfig Config config, WorkQueue wq)
 name|StreamCommandExecutorProvider
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|config
 parameter_list|,

@@ -189,13 +189,12 @@ name|email
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritPersonIdentProvider (@erritServerConfig final Config cfg)
+DECL|method|GerritPersonIdentProvider (@erritServerConfig Config cfg)
 specifier|public
 name|GerritPersonIdentProvider
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|cfg
 parameter_list|)
