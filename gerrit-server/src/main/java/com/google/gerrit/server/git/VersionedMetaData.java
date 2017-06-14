@@ -813,11 +813,7 @@ name|id
 operator|!=
 literal|null
 condition|?
-operator|new
-name|RevWalk
-argument_list|(
-name|reader
-argument_list|)
+name|walk
 operator|.
 name|parseCommit
 argument_list|(
