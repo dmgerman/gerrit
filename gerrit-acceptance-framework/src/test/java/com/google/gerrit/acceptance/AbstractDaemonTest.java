@@ -9199,8 +9199,6 @@ name|ProjectWatchInfoConfiguration
 name|config
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 block|{
 name|ProjectWatchInfo
@@ -9289,8 +9287,6 @@ name|String
 name|filter
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 block|{
 name|watch
@@ -9337,8 +9333,6 @@ name|String
 name|project
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|RestApiException
 block|{
 name|watch
