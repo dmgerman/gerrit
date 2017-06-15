@@ -276,6 +276,24 @@ name|api
 operator|.
 name|changes
 operator|.
+name|ReviewResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
 name|RevisionApi
 import|;
 end_import
@@ -1794,7 +1812,7 @@ annotation|@
 name|Override
 DECL|method|review (ReviewInput in)
 specifier|public
-name|void
+name|ReviewResult
 name|review
 parameter_list|(
 name|ReviewInput
@@ -1805,6 +1823,7 @@ name|RestApiException
 block|{
 try|try
 block|{
+return|return
 name|review
 operator|.
 name|apply
@@ -1813,7 +1832,10 @@ name|revision
 argument_list|,
 name|in
 argument_list|)
-expr_stmt|;
+operator|.
+name|value
+argument_list|()
+return|;
 block|}
 catch|catch
 parameter_list|(

@@ -1737,6 +1737,14 @@ argument_list|(
 name|workInProgress
 argument_list|)
 expr_stmt|;
+name|change
+operator|.
+name|setReviewStarted
+argument_list|(
+operator|!
+name|workInProgress
+argument_list|)
+expr_stmt|;
 return|return
 name|change
 return|;

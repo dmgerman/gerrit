@@ -1725,6 +1725,23 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// Default to silent operation on WIP changes.
+name|NotifyHandling
+name|defaultNotifyHandling
+init|=
+name|change
+operator|.
+name|isWorkInProgress
+argument_list|()
+condition|?
+name|NotifyHandling
+operator|.
+name|NONE
+else|:
+name|NotifyHandling
+operator|.
+name|ALL
+decl_stmt|;
 name|cm
 operator|.
 name|setNotify
@@ -1735,9 +1752,7 @@ name|firstNonNull
 argument_list|(
 name|notify
 argument_list|,
-name|NotifyHandling
-operator|.
-name|ALL
+name|defaultNotifyHandling
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -3177,6 +3177,34 @@ name|reviewersByEmail
 argument_list|()
 return|;
 block|}
+comment|/** @return reviewers that were modified during this change's current WIP phase. */
+DECL|method|getPendingReviewers ()
+specifier|public
+name|ReviewerSet
+name|getPendingReviewers
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|pendingReviewers
+argument_list|()
+return|;
+block|}
+comment|/** @return reviewers by email that were modified during this change's current WIP phase. */
+DECL|method|getPendingReviewersByEmail ()
+specifier|public
+name|ReviewerByEmailSet
+name|getPendingReviewersByEmail
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|pendingReviewersByEmail
+argument_list|()
+return|;
+block|}
 DECL|method|getReviewerUpdates ()
 specifier|public
 name|ImmutableList
@@ -3841,6 +3869,19 @@ return|return
 name|state
 operator|.
 name|isWorkInProgress
+argument_list|()
+return|;
+block|}
+DECL|method|hasReviewStarted ()
+specifier|public
+name|boolean
+name|hasReviewStarted
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|hasReviewStarted
 argument_list|()
 return|;
 block|}

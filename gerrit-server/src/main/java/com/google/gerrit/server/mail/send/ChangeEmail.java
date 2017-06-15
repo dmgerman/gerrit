@@ -1372,7 +1372,7 @@ name|addByEmail
 argument_list|(
 name|RecipientType
 operator|.
-name|TO
+name|CC
 argument_list|,
 name|changeData
 operator|.
