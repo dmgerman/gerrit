@@ -1002,7 +1002,7 @@ specifier|private
 name|Thread
 name|worker
 decl_stmt|;
-DECL|method|TaskThunk ( ScheduledThreadPoolExecutor executor, Continuation cont, HttpServletRequest req)
+DECL|method|TaskThunk (ScheduledThreadPoolExecutor executor, Continuation cont, HttpServletRequest req)
 name|TaskThunk
 parameter_list|(
 name|ScheduledThreadPoolExecutor

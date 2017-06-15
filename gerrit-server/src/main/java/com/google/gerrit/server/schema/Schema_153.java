@@ -134,16 +134,6 @@ name|Provider
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|SQLException
-import|;
-end_import
-
 begin_comment
 comment|/** Add reviewStarted field to change. */
 end_comment
