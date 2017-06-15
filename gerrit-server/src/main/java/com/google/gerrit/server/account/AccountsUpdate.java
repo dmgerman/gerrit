@@ -1330,6 +1330,14 @@ argument_list|,
 name|authorIdent
 argument_list|,
 name|account
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|account
+operator|.
+name|getRegisteredOn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1397,12 +1405,20 @@ argument_list|,
 name|authorIdent
 argument_list|,
 name|account
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|account
+operator|.
+name|getRegisteredOn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|createUserBranch ( Repository repo, ObjectInserter oi, PersonIdent committerIdent, PersonIdent authorIdent, Account account)
+DECL|method|createUserBranch ( Repository repo, ObjectInserter oi, PersonIdent committerIdent, PersonIdent authorIdent, Account.Id accountId, Timestamp registeredOn)
 specifier|public
 specifier|static
 name|void
@@ -1421,7 +1437,12 @@ name|PersonIdent
 name|authorIdent
 parameter_list|,
 name|Account
-name|account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|Timestamp
+name|registeredOn
 parameter_list|)
 throws|throws
 name|IOException
@@ -1437,10 +1458,7 @@ name|committerIdent
 argument_list|,
 name|authorIdent
 argument_list|,
-name|account
-operator|.
-name|getRegisteredOn
-argument_list|()
+name|registeredOn
 argument_list|)
 decl_stmt|;
 name|String
@@ -1450,10 +1468,7 @@ name|RefNames
 operator|.
 name|refsUsers
 argument_list|(
-name|account
-operator|.
-name|getId
-argument_list|()
+name|accountId
 argument_list|)
 decl_stmt|;
 name|RefUpdate
