@@ -550,17 +550,6 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** Identity of the user the control will compute for. */
-DECL|method|getUser ()
-specifier|public
-name|CurrentUser
-name|getUser
-parameter_list|()
-block|{
-return|return
-name|user
-return|;
-block|}
 comment|/**    *<b>Do not use.</b> Determine if the user can administer this server.    *    *<p>This method is visible only for the benefit of the following transitional classes:    *    *<ul>    *<li>{@link ProjectControl}    *<li>{@link RefControl}    *<li>{@link ChangeControl}    *<li>{@link GroupControl}    *</ul>    *    * Other callers should not use this method, as it is slated to go away.    *    * @return true if the user can administer this server.    */
 DECL|method|isAdmin_DoNotUse ()
 specifier|public
@@ -674,35 +663,6 @@ operator|||
 name|isAdmin_DoNotUse
 argument_list|()
 return|;
-block|}
-comment|/** @return true if the user can access the database (with gsql). */
-DECL|method|canAccessDatabase ()
-specifier|public
-name|boolean
-name|canAccessDatabase
-parameter_list|()
-block|{
-try|try
-block|{
-return|return
-name|doCanForDefaultPermissionBackend
-argument_list|(
-name|GlobalPermission
-operator|.
-name|ACCESS_DATABASE
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|PermissionBackendException
-name|e
-parameter_list|)
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 comment|/** @return which priority queue the user's tasks should be submitted to. */
 DECL|method|getQueueType ()

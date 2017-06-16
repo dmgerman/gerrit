@@ -1280,7 +1280,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"not allowed to get external IDs"
+literal|"access database not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -1634,7 +1634,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"not allowed to delete external IDs"
+literal|"access database not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -3178,7 +3178,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"not allowed to run consistency checks"
+literal|"access database not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
