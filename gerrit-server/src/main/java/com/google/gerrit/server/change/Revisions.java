@@ -561,6 +561,9 @@ if|if
 condition|(
 name|id
 operator|.
+name|get
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 literal|"current"
