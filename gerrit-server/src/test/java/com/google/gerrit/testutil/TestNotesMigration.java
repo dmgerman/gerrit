@@ -433,6 +433,8 @@ name|migration
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setFrom (NotesMigration other)
 specifier|public
 name|TestNotesMigration

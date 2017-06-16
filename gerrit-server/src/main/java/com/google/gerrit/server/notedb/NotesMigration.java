@@ -153,6 +153,30 @@ name|boolean
 name|fuseUpdates
 parameter_list|()
 function_decl|;
+comment|/**    * Set the values returned by this instance to match another instance.    *    *<p>Optional operation: not all implementations support setting values after initialization.    *    * @param other other instance to copy values from.    * @return this.    */
+DECL|method|setFrom (NotesMigration other)
+specifier|public
+name|NotesMigration
+name|setFrom
+parameter_list|(
+name|NotesMigration
+name|other
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|" is read-only"
+argument_list|)
+throw|;
+block|}
 comment|/**    * Whether to fail when reading any data from NoteDb.    *    *<p>Used in conjunction with {@link #readChanges()} for tests.    */
 DECL|method|failOnLoad ()
 specifier|public

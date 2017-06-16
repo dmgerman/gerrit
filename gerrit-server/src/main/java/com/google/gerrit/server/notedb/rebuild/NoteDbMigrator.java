@@ -590,6 +590,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|NotesMigrationState
 import|;
 end_import
@@ -963,6 +979,12 @@ specifier|final
 name|WorkQueue
 name|workQueue
 decl_stmt|;
+DECL|field|globalNotesMigration
+specifier|private
+specifier|final
+name|NotesMigration
+name|globalNotesMigration
+decl_stmt|;
 DECL|field|threads
 specifier|private
 name|int
@@ -1019,7 +1041,7 @@ name|forceRebuild
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Builder ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeRebuilder rebuilder, ChangeBundleReader bundleReader, WorkQueue workQueue)
+DECL|method|Builder ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeRebuilder rebuilder, ChangeBundleReader bundleReader, WorkQueue workQueue, NotesMigration globalNotesMigration)
 name|Builder
 parameter_list|(
 name|SitePaths
@@ -1044,6 +1066,9 @@ name|bundleReader
 parameter_list|,
 name|WorkQueue
 name|workQueue
+parameter_list|,
+name|NotesMigration
+name|globalNotesMigration
 parameter_list|)
 block|{
 name|this
@@ -1081,6 +1106,12 @@ operator|.
 name|workQueue
 operator|=
 name|workQueue
+expr_stmt|;
+name|this
+operator|.
+name|globalNotesMigration
+operator|=
+name|globalNotesMigration
 expr_stmt|;
 block|}
 comment|/**      * Set the number of threads used by parallelizable phases of the migration, such as rebuilding      * all changes.      *      *<p>Not all phases are parallelizable, and calling {@link #rebuild()} directly will do      * substantial work in the calling thread regardless of the number of threads configured.      *      *<p>By default, all work is done in the calling thread.      *      * @param threads thread count; if less than 2, all work happens in the calling thread.      * @return this.      */
@@ -1268,6 +1299,8 @@ name|rebuilder
 argument_list|,
 name|bundleReader
 argument_list|,
+name|globalNotesMigration
+argument_list|,
 name|threads
 operator|>
 literal|1
@@ -1339,6 +1372,12 @@ specifier|final
 name|ChangeBundleReader
 name|bundleReader
 decl_stmt|;
+DECL|field|globalNotesMigration
+specifier|private
+specifier|final
+name|NotesMigration
+name|globalNotesMigration
+decl_stmt|;
 DECL|field|executor
 specifier|private
 specifier|final
@@ -1385,7 +1424,7 @@ specifier|final
 name|boolean
 name|forceRebuild
 decl_stmt|;
-DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeRebuilder rebuilder, ChangeBundleReader bundleReader, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, boolean trial, boolean forceRebuild)
+DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeRebuilder rebuilder, ChangeBundleReader bundleReader, NotesMigration globalNotesMigration, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, boolean trial, boolean forceRebuild)
 specifier|private
 name|NoteDbMigrator
 parameter_list|(
@@ -1408,6 +1447,9 @@ name|rebuilder
 parameter_list|,
 name|ChangeBundleReader
 name|bundleReader
+parameter_list|,
+name|NotesMigration
+name|globalNotesMigration
 parameter_list|,
 name|ListeningExecutorService
 name|executor
@@ -1461,6 +1503,12 @@ operator|.
 name|bundleReader
 operator|=
 name|bundleReader
+expr_stmt|;
+name|this
+operator|.
+name|globalNotesMigration
+operator|=
+name|globalNotesMigration
 expr_stmt|;
 name|boolean
 name|hasChanges
@@ -1987,6 +2035,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+synchronized|synchronized
+init|(
+name|globalNotesMigration
+init|)
+block|{
 comment|// This read-modify-write is racy. We're counting on the fact that no other Gerrit operation
 comment|// modifies gerrit.config, and hoping that admins don't either.
 name|Optional
@@ -2074,9 +2127,21 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+comment|// Only set in-memory state once it's been persisted to storage.
+name|globalNotesMigration
+operator|.
+name|setFrom
+argument_list|(
+name|newState
+operator|.
+name|migration
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|newState
 return|;
+block|}
 block|}
 DECL|method|rebuild ()
 specifier|public
