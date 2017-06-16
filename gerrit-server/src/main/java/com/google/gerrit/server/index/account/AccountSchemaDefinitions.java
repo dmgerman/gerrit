@@ -145,9 +145,9 @@ argument_list|<
 name|AccountState
 argument_list|>
 block|{
-DECL|field|V4
 annotation|@
 name|Deprecated
+DECL|field|V4
 specifier|static
 specifier|final
 name|Schema
