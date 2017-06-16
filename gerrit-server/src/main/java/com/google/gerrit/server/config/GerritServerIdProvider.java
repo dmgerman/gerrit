@@ -309,11 +309,11 @@ name|origId
 expr_stmt|;
 return|return;
 block|}
-comment|// We're not generally supposed to do work in provider constructors, but
-comment|// this is a bit of a special case because we really need to have the ID
-comment|// available by the time the dbInjector is created. This even applies during
-comment|// RebuildNoteDb, which otherwise would have been a reasonable place to do
-comment|// the ID generation. Fortunately, it's not much work, and it happens once.
+comment|// We're not generally supposed to do work in provider constructors, but this is a bit of a
+comment|// special case because we really need to have the ID available by the time the dbInjector
+comment|// is created. This even applies during MigrateToNoteDb, which otherwise would have been a
+comment|// reasonable place to do the ID generation. Fortunately, it's not much work, and it happens
+comment|// once.
 name|id
 operator|=
 name|generate

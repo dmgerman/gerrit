@@ -249,10 +249,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|RebuildNoteDbIT
+DECL|class|MigrateToNoteDbIT
 specifier|public
 class|class
-name|RebuildNoteDbIT
+name|MigrateToNoteDbIT
 block|{
 DECL|field|sitePath
 specifier|private
@@ -355,7 +355,7 @@ argument_list|)
 expr_stmt|;
 name|runGerrit
 argument_list|(
-literal|"RebuildNoteDb"
+literal|"MigrateToNoteDb"
 argument_list|,
 literal|"-d"
 argument_list|,
@@ -391,7 +391,7 @@ argument_list|)
 expr_stmt|;
 name|runGerrit
 argument_list|(
-literal|"RebuildNoteDb"
+literal|"MigrateToNoteDb"
 argument_list|,
 literal|"-d"
 argument_list|,

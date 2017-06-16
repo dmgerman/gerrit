@@ -185,7 +185,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implement NoteDb migration stages using {@code gerrit.config}.  *  *<p>This class controls the state of the migration according to options in {@code gerrit.config}.  * In general, any changes to these options should only be made by adventurous administrators, who  * know what they're doing, on non-production data, for the purposes of testing the NoteDb  * implementation. Changing options quite likely requires re-running {@code RebuildNoteDb}. For  * these reasons, the options remain undocumented.  */
+comment|/**  * Implement NoteDb migration stages using {@code gerrit.config}.  *  *<p>This class controls the state of the migration according to options in {@code gerrit.config}.  * In general, any changes to these options should only be made by adventurous administrators, who  * know what they're doing, on non-production data, for the purposes of testing the NoteDb  * implementation. Changing options quite likely requires re-running {@code MigrateToNoteDb}. For  * these reasons, the options remain undocumented.  */
 end_comment
 
 begin_class

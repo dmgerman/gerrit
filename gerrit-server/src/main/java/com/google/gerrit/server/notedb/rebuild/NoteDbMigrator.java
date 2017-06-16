@@ -817,14 +817,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Rebuilder for all changes in a site. */
+comment|/** One stop shop for migrating a site's change storage from ReviewDb to NoteDb. */
 end_comment
 
 begin_class
-DECL|class|SiteRebuilder
+DECL|class|NoteDbMigrator
 specifier|public
 class|class
-name|SiteRebuilder
+name|NoteDbMigrator
 implements|implements
 name|AutoCloseable
 block|{
@@ -839,7 +839,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|SiteRebuilder
+name|NoteDbMigrator
 operator|.
 name|class
 argument_list|)
@@ -1178,13 +1178,13 @@ return|;
 block|}
 DECL|method|build ()
 specifier|public
-name|SiteRebuilder
+name|NoteDbMigrator
 name|build
 parameter_list|()
 block|{
 return|return
 operator|new
-name|SiteRebuilder
+name|NoteDbMigrator
 argument_list|(
 name|sitePaths
 argument_list|,
@@ -1313,9 +1313,9 @@ specifier|final
 name|boolean
 name|forceRebuild
 decl_stmt|;
-DECL|method|SiteRebuilder ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeRebuilder rebuilder, ChangeBundleReader bundleReader, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, boolean trial, boolean forceRebuild)
+DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeRebuilder rebuilder, ChangeBundleReader bundleReader, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, boolean trial, boolean forceRebuild)
 specifier|private
-name|SiteRebuilder
+name|NoteDbMigrator
 parameter_list|(
 name|SitePaths
 name|sitePaths
@@ -1491,10 +1491,10 @@ name|shutdownNow
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|autoRebuild ()
+DECL|method|migrate ()
 specifier|public
 name|void
-name|autoRebuild
+name|migrate
 parameter_list|()
 throws|throws
 name|OrmException

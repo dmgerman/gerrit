@@ -304,7 +304,7 @@ name|notedb
 operator|.
 name|rebuild
 operator|.
-name|SiteRebuilder
+name|NoteDbMigrator
 import|;
 end_import
 
@@ -377,10 +377,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|RebuildNoteDb
+DECL|class|MigrateToNoteDb
 specifier|public
 class|class
-name|RebuildNoteDb
+name|MigrateToNoteDb
 extends|extends
 name|SiteProgram
 block|{
@@ -417,7 +417,9 @@ literal|"--project"
 argument_list|,
 name|usage
 operator|=
-literal|"Projects to rebuild; recommended for debugging only"
+literal|"Only rebuild these projects, do no other migration; incompatible with --change;"
+operator|+
+literal|" recommended for debugging only"
 argument_list|)
 DECL|field|projects
 specifier|private
@@ -441,7 +443,9 @@ literal|"--change"
 argument_list|,
 name|usage
 operator|=
-literal|"Individual change numbers to rebuild; recommended for debugging only"
+literal|"Only rebuild these changes, do no other migration; incompatible with --project;"
+operator|+
+literal|" recommended for debugging only"
 argument_list|)
 DECL|field|changes
 specifier|private
@@ -456,6 +460,45 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--force"
+argument_list|,
+name|usage
+operator|=
+literal|"Force rebuilding changes where ReviewDb is still the source of truth, even if they"
+operator|+
+literal|" were previously migrated"
+argument_list|)
+DECL|field|force
+specifier|private
+name|boolean
+name|force
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--trial"
+argument_list|,
+name|usage
+operator|=
+literal|"trial mode: migrate changes and turn on reading from NoteDb, but leave ReviewDb as"
+operator|+
+literal|" the source of truth"
+argument_list|)
+DECL|field|trial
+specifier|private
+name|boolean
+name|trial
+init|=
+literal|true
+decl_stmt|;
+comment|// TODO(dborowitz): Default to false in 3.0.
 DECL|field|dbInjector
 specifier|private
 name|Injector
@@ -466,17 +509,17 @@ specifier|private
 name|Injector
 name|sysInjector
 decl_stmt|;
-DECL|field|rebuilderBuilderProvider
+DECL|field|migratorBuilderProvider
 annotation|@
 name|Inject
 specifier|private
 name|Provider
 argument_list|<
-name|SiteRebuilder
+name|NoteDbMigrator
 operator|.
 name|Builder
 argument_list|>
-name|rebuilderBuilderProvider
+name|migratorBuilderProvider
 decl_stmt|;
 annotation|@
 name|Override
@@ -561,10 +604,10 @@ argument_list|()
 expr_stmt|;
 try|try
 init|(
-name|SiteRebuilder
-name|rebuilder
+name|NoteDbMigrator
+name|migrator
 init|=
-name|rebuilderBuilderProvider
+name|migratorBuilderProvider
 operator|.
 name|get
 argument_list|()
@@ -579,16 +622,6 @@ argument_list|(
 name|System
 operator|.
 name|err
-argument_list|)
-operator|.
-name|setTrialMode
-argument_list|(
-literal|true
-argument_list|)
-operator|.
-name|setForceRebuild
-argument_list|(
-literal|true
 argument_list|)
 operator|.
 name|setProjects
@@ -637,6 +670,16 @@ argument_list|()
 argument_list|)
 argument_list|)
 operator|.
+name|setTrialMode
+argument_list|(
+name|trial
+argument_list|)
+operator|.
+name|setForceRebuild
+argument_list|(
+name|force
+argument_list|)
+operator|.
 name|build
 argument_list|()
 init|)
@@ -656,7 +699,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|rebuilder
+name|migrator
 operator|.
 name|rebuild
 argument_list|()
@@ -664,9 +707,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|rebuilder
+name|migrator
 operator|.
-name|autoRebuild
+name|migrate
 argument_list|()
 expr_stmt|;
 block|}

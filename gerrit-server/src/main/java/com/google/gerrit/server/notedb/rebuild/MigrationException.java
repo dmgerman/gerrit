@@ -79,7 +79,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Exception thrown by {@link SiteRebuilder} when migration fails. */
+comment|/** Exception thrown by {@link NoteDbMigrator} when migration fails. */
 end_comment
 
 begin_class
