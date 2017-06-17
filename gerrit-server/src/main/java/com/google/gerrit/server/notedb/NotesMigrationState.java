@@ -141,7 +141,7 @@ literal|false
 argument_list|,
 name|PrimaryStorage
 operator|.
-name|NOTE_DB
+name|REVIEW_DB
 argument_list|,
 literal|false
 argument_list|,
