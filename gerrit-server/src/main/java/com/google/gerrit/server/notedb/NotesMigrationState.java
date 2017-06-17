@@ -184,6 +184,9 @@ argument_list|,
 literal|false
 argument_list|)
 block|,
+comment|// TODO(dborowitz): This only exists as a separate state to support testing in different
+comment|// NoteDbModes. Once FileRepository fuses BatchRefUpdates, we won't have separate fused/unfused
+comment|// states.
 DECL|enumConstant|NOTE_DB_UNFUSED
 name|NOTE_DB_UNFUSED
 argument_list|(
