@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2017 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -74,25 +74,36 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
 operator|.
-name|OrmException
+name|OrmRuntimeException
 import|;
 end_import
 
-begin_comment
-comment|/**  * {@link com.google.gwtorm.server.OrmException} thrown by {@link ChangeRebuilder} when rebuilding a  * change failed because another operation modified its {@link  * com.google.gerrit.server.notedb.NoteDbChangeState}.  */
-end_comment
-
 begin_class
-DECL|class|ConflictingUpdateException
-specifier|public
+DECL|class|ConflictingUpdateRuntimeException
 class|class
-name|ConflictingUpdateException
+name|ConflictingUpdateRuntimeException
 extends|extends
-name|OrmException
+name|OrmRuntimeException
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -103,23 +114,36 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-comment|// Always created from a ConflictingUpdateRuntimeException because it originates from an
-comment|// AtomicUpdate, which cannot throw checked exceptions.
-DECL|method|ConflictingUpdateException (ConflictingUpdateRuntimeException cause)
-name|ConflictingUpdateException
-parameter_list|(
+DECL|method|ConflictingUpdateRuntimeException (Change change, String expectedNoteDbState)
 name|ConflictingUpdateRuntimeException
-name|cause
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|String
+name|expectedNoteDbState
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|cause
+name|String
 operator|.
-name|getMessage
+name|format
+argument_list|(
+literal|"Expected change %s to have noteDbState %s but was %s"
+argument_list|,
+name|change
+operator|.
+name|getId
 argument_list|()
 argument_list|,
-name|cause
+name|expectedNoteDbState
+argument_list|,
+name|change
+operator|.
+name|getNoteDbState
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

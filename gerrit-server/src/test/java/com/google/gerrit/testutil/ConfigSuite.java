@@ -397,7 +397,7 @@ extends|extends
 name|Suite
 block|{
 DECL|field|DEFAULT
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
