@@ -721,7 +721,7 @@ argument_list|)
 expr_stmt|;
 name|accountCache
 operator|.
-name|evictAll
+name|evictAllNoReindex
 argument_list|()
 expr_stmt|;
 name|GeneralPreferencesInfo
