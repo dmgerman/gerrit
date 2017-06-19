@@ -148,6 +148,7 @@ name|String
 name|username
 parameter_list|)
 function_decl|;
+comment|/**    * Evicts the account from the cache and triggers a reindex for it.    *    * @param accountId account ID of the account that should be evicted    * @throws IOException thrown if reindexing fails    */
 DECL|method|evict (Account.Id accountId)
 name|void
 name|evict
@@ -168,12 +169,11 @@ name|String
 name|username
 parameter_list|)
 function_decl|;
-DECL|method|evictAll ()
+comment|/** Evict all accounts from the cache, but doesn't trigger reindex of all accounts. */
+DECL|method|evictAllNoReindex ()
 name|void
-name|evictAll
+name|evictAllNoReindex
 parameter_list|()
-throws|throws
-name|IOException
 function_decl|;
 block|}
 end_interface

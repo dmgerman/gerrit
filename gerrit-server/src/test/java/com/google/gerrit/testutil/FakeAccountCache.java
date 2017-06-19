@@ -371,11 +371,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|evictAll ()
+DECL|method|evictAllNoReindex ()
 specifier|public
 specifier|synchronized
 name|void
-name|evictAll
+name|evictAllNoReindex
 parameter_list|()
 block|{
 name|byId
