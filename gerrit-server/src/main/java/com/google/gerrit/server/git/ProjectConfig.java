@@ -4144,13 +4144,11 @@ control|)
 block|{
 if|if
 condition|(
-name|dst
-operator|.
-name|startsWith
-argument_list|(
 name|GroupReference
 operator|.
-name|PREFIX
+name|isGroupReference
+argument_list|(
+name|dst
 argument_list|)
 condition|)
 block|{
