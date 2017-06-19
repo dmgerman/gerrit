@@ -912,7 +912,9 @@ name|r
 operator|.
 name|append
 argument_list|(
-literal|"group "
+name|GroupReference
+operator|.
+name|PREFIX
 argument_list|)
 expr_stmt|;
 name|r
@@ -1152,7 +1154,9 @@ name|src
 operator|.
 name|startsWith
 argument_list|(
-literal|"group "
+name|GroupReference
+operator|.
+name|PREFIX
 argument_list|)
 condition|)
 block|{
@@ -1271,7 +1275,9 @@ name|src
 operator|.
 name|startsWith
 argument_list|(
-literal|"group "
+name|GroupReference
+operator|.
+name|PREFIX
 argument_list|)
 condition|)
 block|{

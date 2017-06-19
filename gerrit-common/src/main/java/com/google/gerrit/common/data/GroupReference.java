@@ -97,6 +97,15 @@ argument_list|<
 name|GroupReference
 argument_list|>
 block|{
+DECL|field|PREFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PREFIX
+init|=
+literal|"group "
+decl_stmt|;
 comment|/** @return a new reference to the given group description. */
 DECL|method|forGroup (AccountGroup group)
 specifier|public
