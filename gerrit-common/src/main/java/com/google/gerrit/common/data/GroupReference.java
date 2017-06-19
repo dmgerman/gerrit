@@ -112,7 +112,7 @@ name|GroupReference
 argument_list|>
 block|{
 DECL|field|PREFIX
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -530,6 +530,18 @@ name|o
 argument_list|)
 operator|==
 literal|0
+return|;
+block|}
+DECL|method|toConfigValue ()
+specifier|public
+name|String
+name|toConfigValue
+parameter_list|()
+block|{
+return|return
+name|PREFIX
+operator|+
+name|name
 return|;
 block|}
 annotation|@
