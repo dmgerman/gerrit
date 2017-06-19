@@ -161,6 +161,29 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|isGroupReference (String configValue)
+specifier|public
+specifier|static
+name|boolean
+name|isGroupReference
+parameter_list|(
+name|String
+name|configValue
+parameter_list|)
+block|{
+return|return
+name|configValue
+operator|!=
+literal|null
+operator|&&
+name|configValue
+operator|.
+name|startsWith
+argument_list|(
+name|PREFIX
+argument_list|)
+return|;
+block|}
 DECL|method|fromString (String ref)
 specifier|public
 specifier|static
