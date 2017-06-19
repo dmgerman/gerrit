@@ -86,6 +86,20 @@ name|lang
 operator|.
 name|annotation
 operator|.
+name|ElementType
+operator|.
+name|TYPE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
 name|RetentionPolicy
 operator|.
 name|RUNTIME
@@ -121,6 +135,8 @@ annotation|@
 name|Target
 argument_list|(
 block|{
+name|TYPE
+block|,
 name|METHOD
 block|}
 argument_list|)
