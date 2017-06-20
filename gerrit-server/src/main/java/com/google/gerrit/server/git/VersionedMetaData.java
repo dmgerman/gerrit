@@ -626,6 +626,11 @@ specifier|protected
 name|RevCommit
 name|revision
 decl_stmt|;
+DECL|field|rw
+specifier|protected
+name|RevWalk
+name|rw
+decl_stmt|;
 DECL|field|reader
 specifier|protected
 name|ObjectReader
@@ -798,6 +803,12 @@ name|ConfigInvalidException
 block|{
 name|this
 operator|.
+name|rw
+operator|=
+name|walk
+expr_stmt|;
+name|this
+operator|.
 name|reader
 operator|=
 name|walk
@@ -828,6 +839,10 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+name|walk
+operator|=
+literal|null
+expr_stmt|;
 name|reader
 operator|=
 literal|null
