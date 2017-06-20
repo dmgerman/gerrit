@@ -136,6 +136,60 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigrationState
+operator|.
+name|NOTE_DB_UNFUSED
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigrationState
+operator|.
+name|READ_WRITE_NO_SEQUENCE
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigrationState
+operator|.
+name|WRITE
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -1558,8 +1612,6 @@ name|state
 operator|.
 name|compareTo
 argument_list|(
-name|NotesMigrationState
-operator|.
 name|READ_WRITE_NO_SEQUENCE
 argument_list|)
 operator|>
@@ -1587,8 +1639,6 @@ name|state
 operator|.
 name|compareTo
 argument_list|(
-name|NotesMigrationState
-operator|.
 name|NOTE_DB_UNFUSED
 argument_list|)
 operator|<
@@ -1603,8 +1653,6 @@ name|state
 operator|.
 name|compareTo
 argument_list|(
-name|NotesMigrationState
-operator|.
 name|READ_WRITE_NO_SEQUENCE
 argument_list|)
 operator|>=
@@ -1753,8 +1801,6 @@ name|saveState
 argument_list|(
 name|prev
 argument_list|,
-name|NotesMigrationState
-operator|.
 name|WRITE
 argument_list|)
 return|;
@@ -1780,8 +1826,6 @@ name|saveState
 argument_list|(
 name|prev
 argument_list|,
-name|NotesMigrationState
-operator|.
 name|READ_WRITE_NO_SEQUENCE
 argument_list|)
 return|;
