@@ -185,7 +185,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implement NoteDb migration stages using {@code gerrit.config}.  *  *<p>This class controls the state of the migration according to options in {@code gerrit.config}.  * In general, any changes to these options should only be made by adventurous administrators, who  * know what they're doing, on non-production data, for the purposes of testing the NoteDb  * implementation. Changing options quite likely requires re-running {@code RebuildNoteDb}. For  * these reasons, the options remain undocumented.  */
+comment|/**  * Implement NoteDb migration stages using {@code gerrit.config}.  *  *<p>This class controls the state of the migration according to options in {@code gerrit.config}.  * In general, any changes to these options should only be made by adventurous administrators, who  * know what they're doing, on non-production data, for the purposes of testing the NoteDb  * implementation. Changing options quite likely requires re-running {@code MigrateToNoteDb}. For  * these reasons, the options remain undocumented.  */
 end_comment
 
 begin_class
@@ -540,6 +540,37 @@ name|fuseUpdates
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|toText (NotesMigration migration)
+specifier|public
+specifier|static
+name|String
+name|toText
+parameter_list|(
+name|NotesMigration
+name|migration
+parameter_list|)
+block|{
+name|Config
+name|cfg
+init|=
+operator|new
+name|Config
+argument_list|()
+decl_stmt|;
+name|setConfigValues
+argument_list|(
+name|cfg
+argument_list|,
+name|migration
+argument_list|)
+expr_stmt|;
+return|return
+name|cfg
+operator|.
+name|toText
+argument_list|()
+return|;
 block|}
 DECL|field|writeChanges
 specifier|private
