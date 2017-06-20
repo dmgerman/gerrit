@@ -1893,6 +1893,18 @@ operator|=
 name|enable
 expr_stmt|;
 block|}
+annotation|@
+name|VisibleForTesting
+DECL|method|getEnableSshd ()
+specifier|public
+name|boolean
+name|getEnableSshd
+parameter_list|()
+block|{
+return|return
+name|sshd
+return|;
+block|}
 DECL|method|setEnableHttpd (boolean enable)
 specifier|public
 name|void

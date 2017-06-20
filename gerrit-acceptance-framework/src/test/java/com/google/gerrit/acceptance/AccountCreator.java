@@ -340,20 +340,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|testutil
-operator|.
-name|SshMode
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -568,9 +554,15 @@ operator|.
 name|Server
 name|externalIdsUpdate
 decl_stmt|;
+DECL|field|sshEnabled
+specifier|private
+specifier|final
+name|boolean
+name|sshEnabled
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, ExternalIdsUpdate.Server externalIdsUpdate)
+DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, GroupCache groupCache, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, ExternalIdsUpdate.Server externalIdsUpdate, @SshEnabled boolean sshEnabled)
 name|AccountCreator
 parameter_list|(
 name|SchemaFactory
@@ -605,6 +597,11 @@ name|ExternalIdsUpdate
 operator|.
 name|Server
 name|externalIdsUpdate
+parameter_list|,
+annotation|@
+name|SshEnabled
+name|boolean
+name|sshEnabled
 parameter_list|)
 block|{
 name|accounts
@@ -659,6 +656,12 @@ operator|.
 name|externalIdsUpdate
 operator|=
 name|externalIdsUpdate
+expr_stmt|;
+name|this
+operator|.
+name|sshEnabled
+operator|=
+name|sshEnabled
 expr_stmt|;
 block|}
 DECL|method|create ( @ullable String username, @Nullable String email, @Nullable String fullName, String... groups)
@@ -955,10 +958,7 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
-name|SshMode
-operator|.
-name|useSsh
-argument_list|()
+name|sshEnabled
 operator|&&
 name|username
 operator|!=

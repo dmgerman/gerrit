@@ -1012,12 +1012,27 @@ name|boolean
 name|sandboxed
 parameter_list|()
 function_decl|;
-DECL|method|useSsh ()
+DECL|method|useSshAnnotation ()
 specifier|abstract
+name|boolean
+name|useSshAnnotation
+parameter_list|()
+function_decl|;
+DECL|method|useSsh ()
 name|boolean
 name|useSsh
 parameter_list|()
-function_decl|;
+block|{
+return|return
+name|useSshAnnotation
+argument_list|()
+operator|&&
+name|SshMode
+operator|.
+name|useSsh
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Nullable
 DECL|method|config ()
@@ -1626,7 +1641,7 @@ name|daemon
 operator|.
 name|setEnableSshd
 argument_list|(
-name|SshMode
+name|desc
 operator|.
 name|useSsh
 argument_list|()
@@ -2242,6 +2257,24 @@ name|void
 name|configure
 parameter_list|()
 block|{
+name|bindConstant
+argument_list|()
+operator|.
+name|annotatedWith
+argument_list|(
+name|SshEnabled
+operator|.
+name|class
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|daemon
+operator|.
+name|getEnableSshd
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|bind
 argument_list|(
 name|AccountCreator

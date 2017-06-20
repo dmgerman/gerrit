@@ -108,6 +108,10 @@ name|Strings
 import|;
 end_import
 
+begin_comment
+comment|/**  * Whether to enable/disable tests using SSH by inspecting the global environment.  *  *<p>Acceptance tests should generally not inspect this directly, since SSH may also be disabled on  * a per-class or per-method basis. Inject {@code @SshEnabled boolean} instead.  */
+end_comment
+
 begin_enum
 DECL|enum|SshMode
 specifier|public
