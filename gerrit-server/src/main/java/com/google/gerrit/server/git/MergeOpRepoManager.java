@@ -1309,6 +1309,11 @@ name|getUpdate
 argument_list|(
 name|batchUpdateFactory
 argument_list|)
+operator|.
+name|setRefLogMessage
+argument_list|(
+literal|"merged"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
