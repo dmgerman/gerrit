@@ -700,15 +700,19 @@ name|Description
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests for offline {@code migrate-to-note-db} program.  *  *<p><strong>Note:</strong> These tests are very slow due to the repeated daemon startup. Prefer  * adding tests to {@link com.google.gerrit.acceptance.server.notedb.OnlineNoteDbMigrationIT} if  * possible.  */
+end_comment
+
 begin_class
 annotation|@
 name|UseLocalDisk
 annotation|@
 name|NoHttpd
-DECL|class|MigrateToNoteDbIT
+DECL|class|OfflineNoteDbMigrationIT
 specifier|public
 class|class
-name|MigrateToNoteDbIT
+name|OfflineNoteDbMigrationIT
 block|{
 annotation|@
 name|Rule
