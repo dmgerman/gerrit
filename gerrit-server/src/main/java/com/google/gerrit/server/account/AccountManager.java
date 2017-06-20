@@ -1587,7 +1587,7 @@ argument_list|()
 decl_stmt|;
 name|accountsUpdate
 operator|.
-name|upsert
+name|insert
 argument_list|(
 name|db
 argument_list|,
