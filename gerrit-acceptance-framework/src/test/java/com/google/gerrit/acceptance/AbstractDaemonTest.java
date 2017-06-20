@@ -2807,7 +2807,7 @@ try|try
 block|{
 name|commonServer
 operator|.
-name|stop
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -3062,7 +3062,7 @@ name|commonServer
 operator|=
 name|GerritServer
 operator|.
-name|start
+name|initAndStart
 argument_list|(
 name|classDesc
 argument_list|,
@@ -3081,7 +3081,7 @@ name|server
 operator|=
 name|GerritServer
 operator|.
-name|start
+name|initAndStart
 argument_list|(
 name|methodDesc
 argument_list|,
@@ -4025,7 +4025,7 @@ condition|)
 block|{
 name|server
 operator|.
-name|stop
+name|close
 argument_list|()
 expr_stmt|;
 name|server
