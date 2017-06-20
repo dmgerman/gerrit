@@ -1374,6 +1374,10 @@ name|db
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 if|if
 condition|(

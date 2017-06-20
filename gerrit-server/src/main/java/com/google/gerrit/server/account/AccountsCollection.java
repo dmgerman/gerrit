@@ -348,6 +348,30 @@ name|Singleton
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -556,6 +580,10 @@ throws|,
 name|AuthException
 throws|,
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|IdentifiedUser
 name|user
@@ -632,6 +660,10 @@ throws|,
 name|UnprocessableEntityException
 throws|,
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 return|return
 name|parseOnBehalfOf
@@ -642,7 +674,7 @@ name|id
 argument_list|)
 return|;
 block|}
-comment|/**    * Parses an account ID and returns the user without making any permission check whether the    * current user can see the account.    *    * @param id ID of the account, can be a string of the format "{@code Full Name    *<email@example.com>}", just the email address, a full name if it is unique, an account ID,    *     a user name or "{@code self}" for the calling user    * @return the user, null if no user is found for the given account ID    * @throws AuthException thrown if 'self' is used as account ID and the current user is not    *     authenticated    * @throws OrmException    */
+comment|/**    * Parses an account ID and returns the user without making any permission check whether the    * current user can see the account.    *    * @param id ID of the account, can be a string of the format "{@code Full Name    *<email@example.com>}", just the email address, a full name if it is unique, an account ID,    *     a user name or "{@code self}" for the calling user    * @return the user, null if no user is found for the given account ID    * @throws AuthException thrown if 'self' is used as account ID and the current user is not    *     authenticated    * @throws OrmException    * @throws ConfigInvalidException    * @throws IOException    */
 DECL|method|parseId (String id)
 specifier|public
 name|IdentifiedUser
@@ -655,6 +687,10 @@ throws|throws
 name|AuthException
 throws|,
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 return|return
 name|parseIdOnBehalfOf
@@ -685,6 +721,10 @@ throws|,
 name|UnprocessableEntityException
 throws|,
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|IdentifiedUser
 name|user
@@ -772,6 +812,10 @@ throws|throws
 name|AuthException
 throws|,
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 if|if
 condition|(

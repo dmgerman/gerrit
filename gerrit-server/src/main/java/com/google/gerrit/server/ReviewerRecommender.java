@@ -524,6 +524,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -706,6 +716,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|lib
 operator|.
 name|Config
@@ -809,7 +833,7 @@ name|PLUGIN_QUERY_TIMEOUT
 init|=
 literal|500
 decl_stmt|;
-comment|//ms
+comment|// ms
 DECL|field|changeQueryBuilder
 specifier|private
 specifier|final
@@ -989,6 +1013,10 @@ name|candidateList
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|String
 name|query
@@ -1527,6 +1555,10 @@ name|baseWeight
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 comment|// Get the user's last 25 changes, check approvals
 try|try
@@ -1710,6 +1742,10 @@ name|baseWeight
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 comment|// Get each reviewer's activity based on number of applied labels
 comment|// (weighted 10d), number of comments (weighted 0.5d) and number of owned

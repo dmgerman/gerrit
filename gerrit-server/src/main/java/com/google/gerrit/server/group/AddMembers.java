@@ -606,6 +606,20 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -931,6 +945,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|AccountGroup
 name|internalGroup
@@ -1090,6 +1106,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 try|try
 block|{
@@ -1612,6 +1630,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|AddMembers
 operator|.

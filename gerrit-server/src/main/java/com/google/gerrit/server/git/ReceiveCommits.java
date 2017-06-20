@@ -6083,6 +6083,10 @@ decl||
 name|OrmException
 decl||
 name|UpdateException
+decl||
+name|IOException
+decl||
+name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
@@ -14031,6 +14035,10 @@ throws|,
 name|RestApiException
 throws|,
 name|UpdateException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|Map
 argument_list|<
