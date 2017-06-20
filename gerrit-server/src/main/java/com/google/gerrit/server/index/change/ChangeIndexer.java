@@ -150,22 +150,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|CheckedFuture
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|Futures
 import|;
 end_import
@@ -720,9 +704,24 @@ name|indexes
 parameter_list|)
 function_decl|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|allAsList ( List<? extends ListenableFuture<?>> futures)
 specifier|public
 specifier|static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|?
@@ -1226,8 +1225,23 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Start indexing a change.    *    * @param id change to index.    * @return future for the indexing task.    */
-DECL|method|indexAsync (Project.NameKey project, Change.Id id)
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+DECL|method|indexAsync ( Project.NameKey project, Change.Id id)
 specifier|public
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|?
@@ -1261,8 +1275,23 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Start indexing multiple changes in parallel.    *    * @param ids changes to index.    * @return future for completing indexing of all changes.    */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|indexAsync ( Project.NameKey project, Collection<Change.Id> ids)
 specifier|public
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|?
@@ -1580,8 +1609,23 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Start deleting a change.    *    * @param id change to delete.    * @return future for the deleting task.    */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|deleteAsync (Change.Id id)
 specifier|public
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|?
@@ -1632,8 +1676,23 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**    * Asynchronously check if a change is stale, and reindex if it is.    *    *<p>Always run on the batch executor, even if this indexer instance is configured to use a    * different executor.    *    * @param project the project to which the change belongs.    * @param id ID of the change to index.    * @return future for reindexing the change; returns true if the change was stale.    */
-DECL|method|reindexIfStale (Project.NameKey project, Change.Id id)
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+DECL|method|reindexIfStale ( Project.NameKey project, Change.Id id)
 specifier|public
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|Boolean
@@ -1779,11 +1838,26 @@ name|index
 argument_list|)
 return|;
 block|}
-DECL|method|submit (Callable<T> task)
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+DECL|method|submit ( Callable<T> task)
 specifier|private
 parameter_list|<
 name|T
 parameter_list|>
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|T
@@ -1808,12 +1882,27 @@ name|executor
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|submit ( Callable<T> task, ListeningExecutorService executor)
 specifier|private
 specifier|static
 parameter_list|<
 name|T
 parameter_list|>
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|T
