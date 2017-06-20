@@ -152,6 +152,12 @@ specifier|volatile
 name|boolean
 name|writeChanges
 decl_stmt|;
+DECL|field|readChangeSequence
+specifier|private
+specifier|volatile
+name|boolean
+name|readChangeSequence
+decl_stmt|;
 DECL|field|changePrimaryStorage
 specifier|private
 specifier|volatile
@@ -209,10 +215,8 @@ name|boolean
 name|readChangeSequence
 parameter_list|()
 block|{
-comment|// Unlike ConfigNotesMigration, read change numbers from NoteDb by default
-comment|// when reads are enabled, to improve test coverage.
 return|return
-name|readChanges
+name|readChangeSequence
 return|;
 block|}
 annotation|@
@@ -310,6 +314,25 @@ operator|.
 name|writeChanges
 operator|=
 name|writeChanges
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setReadChangeSequence (boolean readChangeSequence)
+specifier|public
+name|TestNotesMigration
+name|setReadChangeSequence
+parameter_list|(
+name|boolean
+name|readChangeSequence
+parameter_list|)
+block|{
+name|this
+operator|.
+name|readChangeSequence
+operator|=
+name|readChangeSequence
 expr_stmt|;
 return|return
 name|this
@@ -457,6 +480,14 @@ argument_list|(
 name|other
 operator|.
 name|readChanges
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|setReadChangeSequence
+argument_list|(
+name|other
+operator|.
+name|readChangeSequence
 argument_list|()
 argument_list|)
 expr_stmt|;
