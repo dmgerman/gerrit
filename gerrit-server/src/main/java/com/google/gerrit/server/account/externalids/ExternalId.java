@@ -578,7 +578,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Exports this external ID key as string with the format "scheme:id", or "id" id scheme is      * null.      *      *<p>This string representation is used as subsection name in the Git config file that stores      * the external ID.      */
+comment|/**      * Exports this external ID key as string with the format "scheme:id", or "id" if scheme is      * null.      *      *<p>This string representation is used as subsection name in the Git config file that stores      * the external ID.      */
 DECL|method|get ()
 specifier|public
 name|String
