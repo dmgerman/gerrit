@@ -72,22 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|CheckedFuture
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -434,9 +418,24 @@ argument_list|)
 throw|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Override
-DECL|method|getAsync (Change.Id key)
+DECL|method|getAsync ( Change.Id key)
 specifier|public
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|Change
@@ -572,9 +571,24 @@ argument_list|)
 throw|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Override
-DECL|method|getAsync (PatchSetApproval.Key key)
+DECL|method|getAsync ( PatchSetApproval.Key key)
 specifier|public
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|PatchSetApproval
@@ -735,9 +749,24 @@ argument_list|)
 throw|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Override
-DECL|method|getAsync (ChangeMessage.Key key)
+DECL|method|getAsync ( ChangeMessage.Key key)
 specifier|public
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|ChangeMessage
@@ -917,9 +946,24 @@ argument_list|)
 throw|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Override
-DECL|method|getAsync (PatchSet.Id key)
+DECL|method|getAsync ( PatchSet.Id key)
 specifier|public
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|PatchSet
@@ -1056,9 +1100,24 @@ argument_list|)
 throw|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+annotation|@
 name|Override
-DECL|method|getAsync (PatchLineComment.Key key)
+DECL|method|getAsync ( PatchLineComment.Key key)
 specifier|public
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CheckedFuture
 argument_list|<
 name|PatchLineComment
