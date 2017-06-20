@@ -1631,8 +1631,8 @@ argument_list|(
 name|db
 argument_list|)
 expr_stmt|;
-comment|// Read change just to get project; this instance is then discarded so we
-comment|// can read a consistent ChangeBundle inside a transaction.
+comment|// Read change just to get project; this instance is then discarded so we can read a consistent
+comment|// ChangeBundle inside a transaction.
 name|Change
 name|change
 init|=
@@ -2091,10 +2091,9 @@ name|ConflictingUpdateException
 name|e
 parameter_list|)
 block|{
-comment|// Rethrow as an OrmException so the caller knows to use staged results.
-comment|// Strictly speaking they are not completely up to date, but result we
-comment|// send to the caller is the same as if this rebuild had executed before
-comment|// the other thread.
+comment|// Rethrow as an OrmException so the caller knows to use staged results. Strictly speaking
+comment|// they are not completely up to date, but result we send to the caller is the same as if this
+comment|// rebuild had executed before the other thread.
 throw|throw
 operator|new
 name|OrmException
@@ -2147,16 +2146,16 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// If the state in ReviewDb matches NoteDb at this point, it means
-comment|// another thread successfully completed this rebuild. It's ok to not
-comment|// execute the update in this case, since the object referenced in the
-comment|// Result was flushed to the repo by whatever thread won the race.
+comment|// If the state in ReviewDb matches NoteDb at this point, it means another thread
+comment|// successfully completed this rebuild. It's ok to not execute the update in this case,
+comment|// since the object referenced in the Result was flushed to the repo by whatever thread won
+comment|// the race.
 return|return
 name|r
 return|;
 block|}
-comment|// If the state doesn't match, that means another thread attempted this
-comment|// rebuild, but failed. Fall through and try to update the ref again.
+comment|// If the state doesn't match, that means another thread attempted this rebuild, but
+comment|// failed. Fall through and try to update the ref again.
 block|}
 if|if
 condition|(
@@ -2166,9 +2165,8 @@ name|failChangeWrites
 argument_list|()
 condition|)
 block|{
-comment|// Don't even attempt to execute if read-only, it would fail anyway. But
-comment|// do throw an exception to the caller so they know to use the staged
-comment|// results instead of reading from the repo.
+comment|// Don't even attempt to execute if read-only, it would fail anyway. But do throw an exception
+comment|// to the caller so they know to use the staged results instead of reading from the repo.
 throw|throw
 operator|new
 name|OrmException
@@ -2317,8 +2315,8 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-comment|// We will rebuild all events, except for draft comments, in buckets based
-comment|// on author and timestamp.
+comment|// We will rebuild all events, except for draft comments, in buckets based on author and
+comment|// timestamp.
 name|List
 argument_list|<
 name|Event
@@ -2363,7 +2361,7 @@ name|manager
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Delete ref only after hashtags have been read
+comment|// Delete ref only after hashtags have been read.
 name|deleteChangeMetaRef
 argument_list|(
 name|change
@@ -3217,8 +3215,8 @@ operator|.
 name|sort
 argument_list|()
 expr_stmt|;
-comment|// Ensure the first event in the list creates the change, setting the author
-comment|// and any required footers.
+comment|// Ensure the first event in the list creates the change, setting the author and any required
+comment|// footers.
 name|Event
 name|first
 init|=
@@ -3280,22 +3278,19 @@ expr_stmt|;
 block|}
 comment|// Final pass to correct some inconsistencies.
 comment|//
-comment|// First, fill in any missing patch set IDs using the latest patch set of
-comment|// the change at the time of the event, because NoteDb can't represent
-comment|// actions with no associated patch set ID. This workaround is as if a user
-comment|// added a ChangeMessage on the change by replying from the latest patch
-comment|// set.
+comment|// First, fill in any missing patch set IDs using the latest patch set of the change at the time
+comment|// of the event, because NoteDb can't represent actions with no associated patch set ID. This
+comment|// workaround is as if a user added a ChangeMessage on the change by replying from the latest
+comment|// patch set.
 comment|//
-comment|// Start with the first patch set that actually exists. If there are no
-comment|// patch sets at all, minPsNum will be null, so just bail and use 1 as the
-comment|// patch set ID. The corresponding patch set won't exist, but this change is
-comment|// probably corrupt anyway, as deleting the last draft patch set should have
-comment|// deleted the whole change.
+comment|// Start with the first patch set that actually exists. If there are no patch sets at all,
+comment|// minPsNum will be null, so just bail and use 1 as the patch set ID. The corresponding patch
+comment|// set won't exist, but this change is probably corrupt anyway, as deleting the last draft patch
+comment|// set should have deleted the whole change.
 comment|//
-comment|// Second, ensure timestamps are nondecreasing, by copying the previous
-comment|// timestamp if this happens. This assumes that the only way this can happen
-comment|// is due to dependency constraints, and it is ok to give an event the same
-comment|// timestamp as one of its dependencies.
+comment|// Second, ensure timestamps are nondecreasing, by copying the previous timestamp if this
+comment|// happens. This assumes that the only way this can happen is due to dependency constraints, and
+comment|// it is ok to give an event the same timestamp as one of its dependencies.
 name|int
 name|ps
 init|=
@@ -3566,8 +3561,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// No project cache available, bail and use natural ordering; there's no
-comment|// semantic difference anyway difference.
+comment|// No project cache available, bail and use natural ordering; there's no semantic difference
+comment|// anyway difference.
 name|labelNameComparator
 operator|=
 name|Ordering
