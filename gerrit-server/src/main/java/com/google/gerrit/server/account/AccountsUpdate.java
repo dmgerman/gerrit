@@ -118,6 +118,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|TimeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -950,23 +964,52 @@ literal|"authorIdent"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Inserts a new account.    *    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if updating the user branch fails    */
-DECL|method|insert (ReviewDb db, Account account)
+comment|/**    * Inserts a new account.    *    * @param db ReviewDb    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if updating the user branch fails    */
+DECL|method|insert (ReviewDb db, Account.Id accountId, Consumer<Account> init)
 specifier|public
-name|void
+name|Account
 name|insert
 parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
 name|Account
-name|account
+operator|.
+name|Id
+name|accountId
+parameter_list|,
+name|Consumer
+argument_list|<
+name|Account
+argument_list|>
+name|init
 parameter_list|)
 throws|throws
 name|OrmException
 throws|,
 name|IOException
 block|{
+name|Account
+name|account
+init|=
+operator|new
+name|Account
+argument_list|(
+name|accountId
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|init
+operator|.
+name|accept
+argument_list|(
+name|account
+argument_list|)
+expr_stmt|;
 name|db
 operator|.
 name|accounts
@@ -989,12 +1032,12 @@ argument_list|)
 expr_stmt|;
 name|evictAccount
 argument_list|(
-name|account
-operator|.
-name|getId
-argument_list|()
+name|accountId
 argument_list|)
 expr_stmt|;
+return|return
+name|account
+return|;
 block|}
 comment|/** Updates the account. */
 DECL|method|update (ReviewDb db, Account account)
