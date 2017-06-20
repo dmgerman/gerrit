@@ -277,7 +277,7 @@ name|h
 init|=
 name|Hashing
 operator|.
-name|sha1
+name|murmur3_128
 argument_list|()
 operator|.
 name|newHasher

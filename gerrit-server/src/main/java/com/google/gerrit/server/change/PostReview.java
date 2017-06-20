@@ -5360,7 +5360,7 @@ argument_list|)
 argument_list|,
 name|Hashing
 operator|.
-name|sha1
+name|murmur3_128
 argument_list|()
 operator|.
 name|hashString

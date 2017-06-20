@@ -884,7 +884,7 @@ name|h
 init|=
 name|Hashing
 operator|.
-name|md5
+name|murmur3_128
 argument_list|()
 operator|.
 name|newHasher
