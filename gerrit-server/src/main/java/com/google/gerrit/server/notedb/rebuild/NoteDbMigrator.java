@@ -2065,6 +2065,16 @@ name|MigrationException
 throws|,
 name|OrmException
 block|{
+name|checkState
+argument_list|(
+name|globalNotesMigration
+operator|.
+name|commitChangeWrites
+argument_list|()
+argument_list|,
+literal|"cannot rebuild without noteDb.changes.write=true"
+argument_list|)
+expr_stmt|;
 name|boolean
 name|ok
 decl_stmt|;
