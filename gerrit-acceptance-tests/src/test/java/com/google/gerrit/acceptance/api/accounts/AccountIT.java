@@ -4859,11 +4859,8 @@ operator|.
 name|assertReindexOf
 argument_list|(
 name|admin
-argument_list|,
-literal|2
 argument_list|)
 expr_stmt|;
-comment|// for each deleted external ID once
 name|resetCurrentApiUser
 argument_list|()
 expr_stmt|;
