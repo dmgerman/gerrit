@@ -184,6 +184,24 @@ name|notedb
 operator|.
 name|NotesMigrationState
 operator|.
+name|READ_WRITE_WITH_SEQUENCE_REVIEW_DB_PRIMARY
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigrationState
+operator|.
 name|WRITE
 import|;
 end_import
@@ -1625,6 +1643,28 @@ argument_list|(
 literal|"Migration has already progressed past the endpoint of the \"trial mode\" state;"
 operator|+
 literal|" NoteDb is already the primary storage for some changes"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|forceRebuild
+operator|&&
+name|state
+operator|.
+name|compareTo
+argument_list|(
+name|READ_WRITE_WITH_SEQUENCE_REVIEW_DB_PRIMARY
+argument_list|)
+operator|>
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|MigrationException
+argument_list|(
+literal|"Cannot force rebuild changes; NoteDb is already the primary storage for some changes"
 argument_list|)
 throw|;
 block|}
