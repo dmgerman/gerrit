@@ -126,7 +126,7 @@ name|api
 operator|.
 name|changes
 operator|.
-name|NotifyHandling
+name|RecipientType
 import|;
 end_import
 
@@ -144,7 +144,7 @@ name|api
 operator|.
 name|changes
 operator|.
-name|RecipientType
+name|SubmitInput
 import|;
 end_import
 
@@ -209,6 +209,22 @@ operator|.
 name|client
 operator|.
 name|Branch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
 import|;
 end_import
 
@@ -327,6 +343,24 @@ operator|.
 name|change
 operator|.
 name|RebaseChangeOp
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|Submit
+operator|.
+name|TestSubmitInput
 import|;
 end_import
 
@@ -876,7 +910,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( SubmitType submitType, Branch.NameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, RevFlag canMergeFlag, ReviewDb db, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, RequestId submissionId, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
+DECL|method|create ( SubmitType submitType, Branch.NameKey destBranch, CommitStatus commitStatus, CodeReviewRevWalk rw, IdentifiedUser caller, MergeTip mergeTip, RevFlag canMergeFlag, ReviewDb db, Set<RevCommit> alreadyAccepted, Set<CodeReviewCommit> incoming, RequestId submissionId, SubmitInput submitInput, ListMultimap<RecipientType, Account.Id> accountsToNotify, SubmoduleOp submoduleOp, boolean dryrun)
 name|Arguments
 name|create
 parameter_list|(
@@ -921,8 +955,8 @@ parameter_list|,
 name|RequestId
 name|submissionId
 parameter_list|,
-name|NotifyHandling
-name|notifyHandling
+name|SubmitInput
+name|submitInput
 parameter_list|,
 name|ListMultimap
 argument_list|<
@@ -1085,10 +1119,10 @@ specifier|final
 name|SubmitType
 name|submitType
 decl_stmt|;
-DECL|field|notifyHandling
+DECL|field|submitInput
 specifier|final
-name|NotifyHandling
-name|notifyHandling
+name|SubmitInput
+name|submitInput
 decl_stmt|;
 DECL|field|accountsToNotify
 specifier|final
@@ -1134,7 +1168,7 @@ name|dryrun
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, InternalChangeQuery internalChangeQuery, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted NotifyHandling notifyHandling, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, InternalChangeQuery internalChangeQuery, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted SubmitInput submitInput, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1265,8 +1299,8 @@ name|submitType
 parameter_list|,
 annotation|@
 name|Assisted
-name|NotifyHandling
-name|notifyHandling
+name|SubmitInput
+name|submitInput
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1443,9 +1477,9 @@ name|submitType
 expr_stmt|;
 name|this
 operator|.
-name|notifyHandling
+name|submitInput
 operator|=
-name|notifyHandling
+name|submitInput
 expr_stmt|;
 name|this
 operator|.
@@ -1670,10 +1704,11 @@ range|:
 name|difference
 control|)
 block|{
-name|bu
+name|Change
 operator|.
-name|addOp
-argument_list|(
+name|Id
+name|id
+init|=
 name|c
 operator|.
 name|change
@@ -1681,6 +1716,12 @@ argument_list|()
 operator|.
 name|getId
 argument_list|()
+decl_stmt|;
+name|bu
+operator|.
+name|addOp
+argument_list|(
+name|id
 argument_list|,
 operator|new
 name|ImplicitIntegrateOp
@@ -1689,6 +1730,13 @@ name|args
 argument_list|,
 name|c
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|maybeAddTestHelperOp
+argument_list|(
+name|bu
+argument_list|,
+name|id
 argument_list|)
 expr_stmt|;
 block|}
@@ -1711,6 +1759,56 @@ name|getId
 argument_list|()
 argument_list|,
 name|op
+argument_list|)
+expr_stmt|;
+name|maybeAddTestHelperOp
+argument_list|(
+name|bu
+argument_list|,
+name|op
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|maybeAddTestHelperOp (BatchUpdate bu, Change.Id changeId)
+specifier|private
+name|void
+name|maybeAddTestHelperOp
+parameter_list|(
+name|BatchUpdate
+name|bu
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|changeId
+parameter_list|)
+block|{
+if|if
+condition|(
+name|args
+operator|.
+name|submitInput
+operator|instanceof
+name|TestSubmitInput
+condition|)
+block|{
+name|bu
+operator|.
+name|addOp
+argument_list|(
+name|changeId
+argument_list|,
+operator|new
+name|TestHelperOp
+argument_list|(
+name|changeId
+argument_list|,
+name|args
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

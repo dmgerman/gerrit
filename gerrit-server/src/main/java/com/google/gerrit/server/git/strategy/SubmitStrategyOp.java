@@ -859,10 +859,15 @@ specifier|private
 name|Change
 name|updatedChange
 decl_stmt|;
-DECL|field|alreadyMerged
+DECL|field|alreadyMergedCommit
 specifier|private
 name|CodeReviewCommit
-name|alreadyMerged
+name|alreadyMergedCommit
+decl_stmt|;
+DECL|field|changeAlreadyMerged
+specifier|private
+name|boolean
+name|changeAlreadyMerged
 decl_stmt|;
 DECL|method|SubmitStrategyOp (SubmitStrategy.Arguments args, CodeReviewCommit toMerge)
 specifier|protected
@@ -1024,7 +1029,7 @@ operator|.
 name|getCurrentTip
 argument_list|()
 decl_stmt|;
-name|alreadyMerged
+name|alreadyMergedCommit
 operator|=
 name|getAlreadyMergedCommit
 argument_list|(
@@ -1033,7 +1038,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|alreadyMerged
+name|alreadyMergedCommit
 operator|==
 literal|null
 condition|)
@@ -1050,7 +1055,7 @@ name|logDebug
 argument_list|(
 literal|"Already merged as {}"
 argument_list|,
-name|alreadyMerged
+name|alreadyMergedCommit
 operator|.
 name|name
 argument_list|()
@@ -1638,12 +1643,72 @@ name|newPsId
 decl_stmt|;
 if|if
 condition|(
-name|alreadyMerged
+name|ctx
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|MERGED
+condition|)
+block|{
+comment|// Either another thread won a race, or we are retrying a whole topic submission after one
+comment|// repo failed with lock failure.
+if|if
+condition|(
+name|alreadyMergedCommit
+operator|==
+literal|null
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"Change is already merged according to its status, but we were unable to find it"
+operator|+
+literal|" merged into the current tip ({})"
+argument_list|,
+name|args
+operator|.
+name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"Change is already merged"
+argument_list|)
+expr_stmt|;
+block|}
+name|changeAlreadyMerged
+operator|=
+literal|true
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
+name|alreadyMergedCommit
 operator|!=
 literal|null
 condition|)
 block|{
-name|alreadyMerged
+name|alreadyMergedCommit
 operator|.
 name|setControl
 argument_list|(
@@ -1881,7 +1946,7 @@ argument_list|)
 expr_stmt|;
 name|mergeResultRev
 operator|=
-name|alreadyMerged
+name|alreadyMergedCommit
 operator|==
 literal|null
 condition|?
@@ -1900,7 +1965,7 @@ comment|// Our fixup code is not smart enough to find a merge commit
 comment|// corresponding to the merge result. This results in a different
 comment|// ChangeMergedEvent in the fixup case, but we'll just live with that.
 else|:
-name|alreadyMerged
+name|alreadyMergedCommit
 expr_stmt|;
 try|try
 block|{
@@ -1981,7 +2046,7 @@ operator|.
 name|Id
 name|psId
 init|=
-name|alreadyMerged
+name|alreadyMergedCommit
 operator|.
 name|getPatchsetId
 argument_list|()
@@ -2020,7 +2085,7 @@ argument_list|()
 operator|.
 name|parseBody
 argument_list|(
-name|alreadyMerged
+name|alreadyMergedCommit
 argument_list|)
 expr_stmt|;
 name|ctx
@@ -2032,7 +2097,7 @@ name|setCurrentPatchSet
 argument_list|(
 name|psId
 argument_list|,
-name|alreadyMerged
+name|alreadyMergedCommit
 operator|.
 name|getShortMessage
 argument_list|()
@@ -2106,7 +2171,7 @@ name|GroupCollector
 operator|.
 name|getDefaultGroups
 argument_list|(
-name|alreadyMerged
+name|alreadyMergedCommit
 argument_list|)
 decl_stmt|;
 return|return
@@ -2135,7 +2200,7 @@ argument_list|)
 argument_list|,
 name|psId
 argument_list|,
-name|alreadyMerged
+name|alreadyMergedCommit
 argument_list|,
 literal|false
 argument_list|,
@@ -3275,6 +3340,29 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|changeAlreadyMerged
+condition|)
+block|{
+comment|// TODO(dborowitz): This is suboptimal behavior in the presence of retries: postUpdate steps
+comment|// will never get run for changes that submitted successfully on any but the final attempt.
+comment|// This is primarily a temporary workaround for the fact that the submitter field is not
+comment|// populated in the changeAlreadyMerged case.
+comment|//
+comment|// If we naively execute postUpdate even if the change is already merged when updateChange
+comment|// being, then we are subject to a race where postUpdate steps are run twice if two submit
+comment|// processes run at the same time.
+name|logDebug
+argument_list|(
+literal|"Skipping post-update steps for change {}"
+argument_list|,
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|postUpdateImpl
 argument_list|(
 name|ctx
@@ -3434,7 +3522,9 @@ argument_list|()
 argument_list|,
 name|args
 operator|.
-name|notifyHandling
+name|submitInput
+operator|.
+name|notify
 argument_list|,
 name|args
 operator|.
