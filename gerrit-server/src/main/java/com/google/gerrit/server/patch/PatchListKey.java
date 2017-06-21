@@ -285,7 +285,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|26L
+literal|27L
 decl_stmt|;
 DECL|enum|Algorithm
 specifier|public
