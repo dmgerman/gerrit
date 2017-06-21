@@ -815,18 +815,6 @@ condition|)
 block|{
 try|try
 block|{
-if|if
-condition|(
-name|event
-operator|.
-name|isDelete
-argument_list|()
-condition|)
-block|{
-comment|// TODO(ekempin): Delete account from cache and index.
-block|}
-else|else
-block|{
 name|accountCache
 operator|.
 name|evict
@@ -834,7 +822,6 @@ argument_list|(
 name|accountId
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
