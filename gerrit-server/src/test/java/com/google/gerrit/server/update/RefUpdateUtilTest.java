@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.notedb
+DECL|package|com.google.gerrit.server.update
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|update
 package|;
 end_package
 
@@ -292,10 +292,6 @@ name|JUnit4
 import|;
 end_import
 
-begin_comment
-comment|/** Unit tests for {@link NoteDbUpdateManager}. */
-end_comment
-
 begin_class
 annotation|@
 name|RunWith
@@ -304,10 +300,10 @@ name|JUnit4
 operator|.
 name|class
 argument_list|)
-DECL|class|NoteDbUpdateManagerTest
+DECL|class|RefUpdateUtilTest
 specifier|public
 class|class
-name|NoteDbUpdateManagerTest
+name|RefUpdateUtilTest
 block|{
 DECL|field|OK
 specifier|private
@@ -603,7 +599,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|NoteDbUpdateManager
+name|RefUpdateUtil
 operator|.
 name|checkResults
 argument_list|(
@@ -632,7 +628,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|NoteDbUpdateManager
+name|RefUpdateUtil
 operator|.
 name|checkResults
 argument_list|(
@@ -691,7 +687,7 @@ name|Exception
 block|{
 try|try
 block|{
-name|NoteDbUpdateManager
+name|RefUpdateUtil
 operator|.
 name|checkResults
 argument_list|(
