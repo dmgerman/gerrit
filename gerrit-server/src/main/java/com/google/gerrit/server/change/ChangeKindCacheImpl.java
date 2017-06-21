@@ -1536,23 +1536,48 @@ return|;
 block|}
 if|if
 condition|(
+name|prior
+operator|.
+name|getParentCount
+argument_list|()
+operator|==
+literal|0
+operator|||
+name|next
+operator|.
+name|getParentCount
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+comment|// At this point we have considered all the kinds that could be applicable to root
+comment|// commits; the remainder of the checks in this method all assume that both commits have
+comment|// at least one parent.
+return|return
+name|ChangeKind
+operator|.
+name|REWORK
+return|;
+block|}
+if|if
+condition|(
 operator|(
 name|prior
 operator|.
 name|getParentCount
 argument_list|()
-operator|!=
+operator|>
 literal|1
 operator|||
 name|next
 operator|.
 name|getParentCount
 argument_list|()
-operator|!=
+operator|>
 literal|1
 operator|)
 operator|&&
-operator|(
 operator|!
 name|onlyFirstParentChanged
 argument_list|(
@@ -1560,14 +1585,6 @@ name|prior
 argument_list|,
 name|next
 argument_list|)
-operator|||
-name|prior
-operator|.
-name|getParentCount
-argument_list|()
-operator|==
-literal|0
-operator|)
 condition|)
 block|{
 comment|// Trivial rebases done by machine only work well on 1 parent.
