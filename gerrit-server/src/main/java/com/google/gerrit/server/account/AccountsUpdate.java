@@ -1202,66 +1202,6 @@ return|return
 name|account
 return|;
 block|}
-comment|/**    * Updates the account.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param account the account    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-DECL|method|update (ReviewDb db, Account account)
-specifier|public
-name|void
-name|update
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
-name|Account
-name|account
-parameter_list|)
-throws|throws
-name|OrmException
-throws|,
-name|IOException
-throws|,
-name|ConfigInvalidException
-block|{
-comment|// Update in ReviewDb
-name|db
-operator|.
-name|accounts
-argument_list|()
-operator|.
-name|update
-argument_list|(
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|account
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Update in NoteDb
-name|AccountConfig
-name|accountConfig
-init|=
-name|read
-argument_list|(
-name|account
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|accountConfig
-operator|.
-name|setAccount
-argument_list|(
-name|account
-argument_list|)
-expr_stmt|;
-name|commit
-argument_list|(
-name|accountConfig
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param accountId ID of the account    * @param consumer consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
 DECL|method|atomicUpdate (ReviewDb db, Account.Id accountId, Consumer<Account> consumer)
 specifier|public
@@ -1425,6 +1365,66 @@ expr_stmt|;
 return|return
 name|account
 return|;
+block|}
+comment|/**    * Replaces the account.    *    *<p>The existing account with the same account ID is overwritten by the given account. Choosing    * to overwrite an account means that any updates that were done to the account by a racing    * request after the account was read are lost. Updates are also lost if the account was read from    * a stale account index. This is why using {@link #atomicUpdate(ReviewDb,    * com.google.gerrit.reviewdb.client.Account.Id, Consumer)} to do an atomic update is always    * preferred.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param account the new account    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    * @see #atomicUpdate(ReviewDb, com.google.gerrit.reviewdb.client.Account.Id, Consumer)    */
+DECL|method|replace (ReviewDb db, Account account)
+specifier|public
+name|void
+name|replace
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Account
+name|account
+parameter_list|)
+throws|throws
+name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
+block|{
+comment|// Update in ReviewDb
+name|db
+operator|.
+name|accounts
+argument_list|()
+operator|.
+name|update
+argument_list|(
+name|ImmutableSet
+operator|.
+name|of
+argument_list|(
+name|account
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Update in NoteDb
+name|AccountConfig
+name|accountConfig
+init|=
+name|read
+argument_list|(
+name|account
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|accountConfig
+operator|.
+name|setAccount
+argument_list|(
+name|account
+argument_list|)
+expr_stmt|;
+name|commit
+argument_list|(
+name|accountConfig
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * Deletes the account.    *    * @param db ReviewDb    * @param account the account that should be deleted    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    */
 DECL|method|delete (ReviewDb db, Account account)
