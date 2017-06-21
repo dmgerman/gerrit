@@ -2803,6 +2803,42 @@ operator|+
 literal|"\n"
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|text
+argument_list|(
+name|rev
+argument_list|,
+literal|"groups"
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"# UUID\tGroup Name\n"
+comment|//
+operator|+
+literal|"#\n"
+comment|//
+operator|+
+name|staff
+operator|.
+name|getUUID
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"     \t"
+operator|+
+name|staff
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|read (RevCommit rev)
 specifier|private
