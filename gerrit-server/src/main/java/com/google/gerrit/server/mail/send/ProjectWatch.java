@@ -1087,10 +1087,6 @@ init|=
 operator|new
 name|SingleGroupUser
 argument_list|(
-name|args
-operator|.
-name|capabilityControlFactory
-argument_list|,
 name|ref
 operator|.
 name|getUUID

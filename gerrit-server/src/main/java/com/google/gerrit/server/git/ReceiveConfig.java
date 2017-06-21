@@ -196,15 +196,28 @@ specifier|final
 name|int
 name|systemMaxBatchChanges
 decl_stmt|;
+DECL|field|capabilityFactory
+specifier|private
+specifier|final
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveConfig (@erritServerConfig Config config)
+DECL|method|ReceiveConfig (@erritServerConfig Config config, CapabilityControl.Factory capabilityFactory)
 name|ReceiveConfig
 parameter_list|(
 annotation|@
 name|GerritServerConfig
 name|Config
 name|config
+parameter_list|,
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityFactory
 parameter_list|)
 block|{
 name|checkMagicRefs
@@ -265,6 +278,12 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|capabilityFactory
+operator|=
+name|capabilityFactory
+expr_stmt|;
 block|}
 DECL|method|getEffectiveMaxBatchChangesLimit (CurrentUser user)
 specifier|public
@@ -278,10 +297,12 @@ block|{
 name|CapabilityControl
 name|cap
 init|=
-name|user
+name|capabilityFactory
 operator|.
-name|getCapabilities
-argument_list|()
+name|create
+argument_list|(
+name|user
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
