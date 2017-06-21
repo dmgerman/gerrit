@@ -2343,7 +2343,7 @@ operator|.
 name|create
 argument_list|()
 operator|.
-name|atomicUpdate
+name|update
 argument_list|(
 name|db
 argument_list|,
@@ -17845,7 +17845,7 @@ operator|.
 name|create
 argument_list|()
 operator|.
-name|atomicUpdate
+name|update
 argument_list|(
 name|db
 argument_list|,

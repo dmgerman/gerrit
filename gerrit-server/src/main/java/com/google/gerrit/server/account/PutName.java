@@ -665,7 +665,7 @@ operator|.
 name|create
 argument_list|()
 operator|.
-name|atomicUpdate
+name|update
 argument_list|(
 name|dbProvider
 operator|.

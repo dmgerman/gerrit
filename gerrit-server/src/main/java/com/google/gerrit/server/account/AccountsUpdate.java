@@ -1203,10 +1203,10 @@ name|account
 return|;
 block|}
 comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param accountId ID of the account    * @param consumer consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-DECL|method|atomicUpdate (ReviewDb db, Account.Id accountId, Consumer<Account> consumer)
+DECL|method|update (ReviewDb db, Account.Id accountId, Consumer<Account> consumer)
 specifier|public
 name|Account
-name|atomicUpdate
+name|update
 parameter_list|(
 name|ReviewDb
 name|db
@@ -1230,7 +1230,7 @@ throws|,
 name|ConfigInvalidException
 block|{
 return|return
-name|atomicUpdate
+name|update
 argument_list|(
 name|db
 argument_list|,
@@ -1245,11 +1245,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param accountId ID of the account    * @param consumers consumers to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws OrmException if updating the account fails    */
-DECL|method|atomicUpdate (ReviewDb db, Account.Id accountId, List<Consumer<Account>> consumers)
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param accountId ID of the account    * @param consumers consumers to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+DECL|method|update (ReviewDb db, Account.Id accountId, List<Consumer<Account>> consumers)
 specifier|public
 name|Account
-name|atomicUpdate
+name|update
 parameter_list|(
 name|ReviewDb
 name|db
@@ -1366,7 +1366,7 @@ return|return
 name|account
 return|;
 block|}
-comment|/**    * Replaces the account.    *    *<p>The existing account with the same account ID is overwritten by the given account. Choosing    * to overwrite an account means that any updates that were done to the account by a racing    * request after the account was read are lost. Updates are also lost if the account was read from    * a stale account index. This is why using {@link #atomicUpdate(ReviewDb,    * com.google.gerrit.reviewdb.client.Account.Id, Consumer)} to do an atomic update is always    * preferred.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param account the new account    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    * @see #atomicUpdate(ReviewDb, com.google.gerrit.reviewdb.client.Account.Id, Consumer)    */
+comment|/**    * Replaces the account.    *    *<p>The existing account with the same account ID is overwritten by the given account. Choosing    * to overwrite an account means that any updates that were done to the account by a racing    * request after the account was read are lost. Updates are also lost if the account was read from    * a stale account index. This is why using {@link #update(ReviewDb,    * com.google.gerrit.reviewdb.client.Account.Id, Consumer)} to do an atomic update is always    * preferred.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param account the new account    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    * @see #update(ReviewDb, com.google.gerrit.reviewdb.client.Account.Id, Consumer)    */
 DECL|method|replace (ReviewDb db, Account account)
 specifier|public
 name|void
