@@ -134,20 +134,6 @@ name|rholder
 operator|.
 name|retry
 operator|.
-name|BlockStrategy
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|github
-operator|.
-name|rholder
-operator|.
-name|retry
-operator|.
 name|Retryer
 import|;
 end_import
@@ -452,6 +438,7 @@ specifier|public
 class|class
 name|RepoSequenceTest
 block|{
+comment|// Don't sleep in tests.
 DECL|field|RETRYER
 specifier|private
 specifier|static
@@ -471,23 +458,9 @@ argument_list|()
 operator|.
 name|withBlockStrategy
 argument_list|(
-operator|new
-name|BlockStrategy
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|block
-parameter_list|(
-name|long
-name|sleepTime
-parameter_list|)
-block|{
-comment|// Don't sleep in tests.
-block|}
-block|}
+name|t
+lambda|->
+block|{}
 argument_list|)
 operator|.
 name|build
