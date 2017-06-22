@@ -1154,6 +1154,8 @@ if|if
 condition|(
 name|input
 operator|.
+name|message
+operator|.
 name|equals
 argument_list|(
 name|currentCommitMessage
