@@ -84,6 +84,7 @@ end_comment
 
 begin_class
 DECL|class|MigrationException
+specifier|public
 class|class
 name|MigrationException
 extends|extends
