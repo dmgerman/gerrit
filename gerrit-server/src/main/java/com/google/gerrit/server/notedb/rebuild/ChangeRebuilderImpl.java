@@ -2062,7 +2062,7 @@ block|{
 comment|// Another thread updated the state to something else.
 throw|throw
 operator|new
-name|ConflictingUpdateException
+name|ConflictingUpdateRuntimeException
 argument_list|(
 name|change
 argument_list|,
@@ -2087,7 +2087,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|ConflictingUpdateException
+name|ConflictingUpdateRuntimeException
 name|e
 parameter_list|)
 block|{
@@ -2096,12 +2096,9 @@ comment|// they are not completely up to date, but result we send to the caller 
 comment|// rebuild had executed before the other thread.
 throw|throw
 operator|new
-name|OrmException
+name|ConflictingUpdateException
 argument_list|(
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
