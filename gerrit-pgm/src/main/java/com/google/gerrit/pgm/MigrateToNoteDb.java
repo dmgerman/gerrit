@@ -515,6 +515,26 @@ init|=
 literal|true
 decl_stmt|;
 comment|// TODO(dborowitz): Default to false in 3.0.
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--sequence-gap"
+argument_list|,
+name|usage
+operator|=
+literal|"gap in change sequence numbers between last ReviewDb number and first NoteDb number;"
+operator|+
+literal|" negative indicates using the value of noteDb.changes.initialSequenceGap (default"
+operator|+
+literal|" 1000)"
+argument_list|)
+DECL|field|sequenceGap
+specifier|private
+name|int
+name|sequenceGap
+decl_stmt|;
 DECL|field|dbInjector
 specifier|private
 name|Injector
@@ -713,6 +733,11 @@ operator|.
 name|setForceRebuild
 argument_list|(
 name|force
+argument_list|)
+operator|.
+name|setSequenceGap
+argument_list|(
+name|sequenceGap
 argument_list|)
 operator|.
 name|build
