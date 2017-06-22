@@ -78,22 +78,6 @@ name|base
 operator|.
 name|Preconditions
 operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
 name|checkNotNull
 import|;
 end_import
@@ -1516,19 +1500,6 @@ argument_list|,
 name|user
 argument_list|,
 name|when
-argument_list|)
-expr_stmt|;
-name|checkArgument
-argument_list|(
-operator|!
-name|db
-operator|.
-name|changesTablesEnabled
-argument_list|()
-argument_list|,
-literal|"expected Change tables to be disabled on %s"
-argument_list|,
-name|db
 argument_list|)
 expr_stmt|;
 name|this

@@ -1530,19 +1530,6 @@ argument_list|,
 name|when
 argument_list|)
 expr_stmt|;
-name|checkArgument
-argument_list|(
-operator|!
-name|db
-operator|.
-name|changesTablesEnabled
-argument_list|()
-argument_list|,
-literal|"expected Change tables to be disabled on %s"
-argument_list|,
-name|db
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|changeNotesFactory
