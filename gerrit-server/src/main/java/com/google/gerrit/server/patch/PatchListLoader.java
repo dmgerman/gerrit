@@ -102,6 +102,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toSet
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -313,6 +327,24 @@ operator|.
 name|git
 operator|.
 name|MergeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|patch
+operator|.
+name|EditTransformer
+operator|.
+name|ContextAwareEdit
 import|;
 end_import
 
@@ -1513,7 +1545,7 @@ name|Multimap
 argument_list|<
 name|String
 argument_list|,
-name|Edit
+name|ContextAwareEdit
 argument_list|>
 name|editsDueToRebasePerFilePath
 init|=
@@ -1550,7 +1582,7 @@ control|)
 block|{
 name|Set
 argument_list|<
-name|Edit
+name|ContextAwareEdit
 argument_list|>
 name|editsDueToRebase
 init|=
@@ -1621,14 +1653,14 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**    * Identifies the {@code Edit}s which are present between {@code commitA} and {@code commitB} due    * to other commits in between those two. {@code Edit}s which cannot be clearly attributed to    * those other commits (because they overlap with modifications introduced by {@code commitA} or    * {@code commitB}) are omitted from the result. The {@code Edit}s are expressed as differences    * between {@code treeA} of {@code commitA} and {@code treeB} of {@code commitB}.    *    *<p><b>Note:</b> If one of the commits is a merge commit, an empty {@code Multimap} will be    * returned.    *    *<p><b>Warning:</b> This method assumes that commitA and commitB are either a parent and child    * commit or represent two patch sets which belong to the same change. No checks are made to    * confirm this assumption! Passing arbitrary commits to this method may lead to strange results    * or take very long.    *    *<p>This logic could be expanded to arbitrary commits if the following adjustments were applied:    *    *<ul>    *<li>If {@code commitA} is an ancestor of {@code commitB} (or the other way around), {@code    *       commitA} (or {@code commitB}) is used instead of its parent in this method.    *<li>Special handling for merge commits is added. If only one of them is a merge commit, the    *       whole computation has to be done between the single parent and all parents of the merge    *       commit. If both of them are merge commits, all combinations of parents have to be    *       considered. Alternatively, we could decide to not support this feature for merge commits    *       (or just for specific types of merge commits).    *</ul>    *    * @param commitA the commit defining {@code treeA}    * @param commitB the commit defining {@code treeB}    * @return the {@code Edit}s per file path they modify in {@code treeB}    * @throws PatchListNotAvailableException if the {@code Edit}s can't be identified    */
+comment|/**    * Identifies the edits which are present between {@code commitA} and {@code commitB} due to other    * commits in between those two. Edits which cannot be clearly attributed to those other commits    * (because they overlap with modifications introduced by {@code commitA} or {@code commitB}) are    * omitted from the result. The edits are expressed as differences between {@code treeA} of {@code    * commitA} and {@code treeB} of {@code commitB}.    *    *<p><b>Note:</b> If one of the commits is a merge commit, an empty {@code Multimap} will be    * returned.    *    *<p><b>Warning:</b> This method assumes that commitA and commitB are either a parent and child    * commit or represent two patch sets which belong to the same change. No checks are made to    * confirm this assumption! Passing arbitrary commits to this method may lead to strange results    * or take very long.    *    *<p>This logic could be expanded to arbitrary commits if the following adjustments were applied:    *    *<ul>    *<li>If {@code commitA} is an ancestor of {@code commitB} (or the other way around), {@code    *       commitA} (or {@code commitB}) is used instead of its parent in this method.    *<li>Special handling for merge commits is added. If only one of them is a merge commit, the    *       whole computation has to be done between the single parent and all parents of the merge    *       commit. If both of them are merge commits, all combinations of parents have to be    *       considered. Alternatively, we could decide to not support this feature for merge commits    *       (or just for specific types of merge commits).    *</ul>    *    * @param commitA the commit defining {@code treeA}    * @param commitB the commit defining {@code treeB}    * @return the edits per file path they modify in {@code treeB}    * @throws PatchListNotAvailableException if the edits can't be identified    */
 DECL|method|getEditsDueToRebasePerFilePath ( RevCommit commitA, RevCommit commitB)
 specifier|private
 name|Multimap
 argument_list|<
 name|String
 argument_list|,
-name|Edit
+name|ContextAwareEdit
 argument_list|>
 name|getEditsDueToRebasePerFilePath
 parameter_list|(
@@ -1913,12 +1945,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getEditsDueToRebase ( Multimap<String, Edit> editsDueToRebasePerFilePath, DiffEntry diffEntry)
+DECL|method|getEditsDueToRebase ( Multimap<String, ContextAwareEdit> editsDueToRebasePerFilePath, DiffEntry diffEntry)
 specifier|private
 specifier|static
 name|Set
 argument_list|<
-name|Edit
+name|ContextAwareEdit
 argument_list|>
 name|getEditsDueToRebase
 parameter_list|(
@@ -1926,7 +1958,7 @@ name|Multimap
 argument_list|<
 name|String
 argument_list|,
-name|Edit
+name|ContextAwareEdit
 argument_list|>
 name|editsDueToRebasePerFilePath
 parameter_list|,
@@ -1991,7 +2023,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getPatchListEntry ( ObjectReader objectReader, DiffFormatter diffFormatter, DiffEntry diffEntry, RevTree treeA, RevTree treeB, Set<Edit> editsDueToRebase)
+DECL|method|getPatchListEntry ( ObjectReader objectReader, DiffFormatter diffFormatter, DiffEntry diffEntry, RevTree treeA, RevTree treeB, Set<ContextAwareEdit> editsDueToRebase)
 specifier|private
 name|Optional
 argument_list|<
@@ -2016,7 +2048,7 @@ name|treeB
 parameter_list|,
 name|Set
 argument_list|<
-name|Edit
+name|ContextAwareEdit
 argument_list|>
 name|editsDueToRebase
 parameter_list|)
@@ -2075,6 +2107,17 @@ argument_list|,
 name|treeB
 argument_list|)
 decl_stmt|;
+name|Set
+argument_list|<
+name|Edit
+argument_list|>
+name|contentEditsDueToRebase
+init|=
+name|getContentEdits
+argument_list|(
+name|editsDueToRebase
+argument_list|)
+decl_stmt|;
 name|PatchListEntry
 name|patchListEntry
 init|=
@@ -2084,7 +2127,7 @@ name|treeA
 argument_list|,
 name|fileHeader
 argument_list|,
-name|editsDueToRebase
+name|contentEditsDueToRebase
 argument_list|,
 name|newSize
 argument_list|,
@@ -2096,17 +2139,18 @@ decl_stmt|;
 comment|// All edits in a file are due to rebase -> exclude the file from the diff.
 if|if
 condition|(
-name|patchListEntry
+name|EditTransformer
 operator|.
-name|getEditsDueToRebase
-argument_list|()
-operator|.
-name|containsAll
+name|toEdits
 argument_list|(
 name|patchListEntry
+argument_list|)
 operator|.
-name|getEdits
-argument_list|()
+name|allMatch
+argument_list|(
+name|editsDueToRebase
+operator|::
+name|contains
 argument_list|)
 condition|)
 block|{
@@ -2123,6 +2167,56 @@ operator|.
 name|of
 argument_list|(
 name|patchListEntry
+argument_list|)
+return|;
+block|}
+DECL|method|getContentEdits (Set<ContextAwareEdit> editsDueToRebase)
+specifier|private
+specifier|static
+name|Set
+argument_list|<
+name|Edit
+argument_list|>
+name|getContentEdits
+parameter_list|(
+name|Set
+argument_list|<
+name|ContextAwareEdit
+argument_list|>
+name|editsDueToRebase
+parameter_list|)
+block|{
+return|return
+name|editsDueToRebase
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|ContextAwareEdit
+operator|::
+name|toEdit
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|Optional
+operator|::
+name|isPresent
+argument_list|)
+operator|.
+name|map
+argument_list|(
+name|Optional
+operator|::
+name|get
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toSet
+argument_list|()
 argument_list|)
 return|;
 block|}
