@@ -374,6 +374,15 @@ name|enableReviewerByEmail
 parameter_list|()
 comment|/*-{ return this.enable_reviewer_by_email; }-*/
 function_decl|;
+DECL|method|matchAuthorToCommitterDate ()
+specifier|public
+specifier|final
+specifier|native
+name|InheritedBooleanInfo
+name|matchAuthorToCommitterDate
+parameter_list|()
+comment|/*-{ return this.match_author_to_committer_date; }-*/
+function_decl|;
 DECL|method|submitType ()
 specifier|public
 specifier|final

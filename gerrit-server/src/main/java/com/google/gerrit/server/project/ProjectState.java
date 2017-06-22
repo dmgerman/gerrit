@@ -2303,6 +2303,21 @@ name|getEnableReviewerByEmail
 argument_list|)
 return|;
 block|}
+DECL|method|isMatchAuthorToCommitterDate ()
+specifier|public
+name|boolean
+name|isMatchAuthorToCommitterDate
+parameter_list|()
+block|{
+return|return
+name|getInheritableBoolean
+argument_list|(
+name|Project
+operator|::
+name|getMatchAuthorToCommitterDate
+argument_list|)
+return|;
+block|}
 DECL|method|getLabelTypes ()
 specifier|public
 name|LabelTypes

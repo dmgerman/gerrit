@@ -269,6 +269,11 @@ name|String
 name|enableReviewerByEmail
 parameter_list|()
 function_decl|;
+DECL|method|matchAuthorToCommitterDate ()
+name|String
+name|matchAuthorToCommitterDate
+parameter_list|()
+function_decl|;
 DECL|method|headingMaxObjectSizeLimit ()
 name|String
 name|headingMaxObjectSizeLimit
