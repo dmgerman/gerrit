@@ -333,7 +333,7 @@ name|changeSeq
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Sequences ( @erritServerConfig Config cfg, final Provider<ReviewDb> db, NotesMigration migration, GitRepositoryManager repoManager, AllProjectsName allProjects)
+DECL|method|Sequences ( @erritServerConfig Config cfg, Provider<ReviewDb> db, NotesMigration migration, GitRepositoryManager repoManager, AllProjectsName allProjects)
 name|Sequences
 parameter_list|(
 annotation|@
@@ -341,7 +341,6 @@ name|GerritServerConfig
 name|Config
 name|cfg
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|ReviewDb
@@ -370,7 +369,6 @@ name|migration
 operator|=
 name|migration
 expr_stmt|;
-specifier|final
 name|int
 name|gap
 init|=
@@ -398,22 +396,8 @@ name|allProjects
 argument_list|,
 name|CHANGES
 argument_list|,
-operator|new
-name|RepoSequence
-operator|.
-name|Seed
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|int
-name|get
 parameter_list|()
-throws|throws
-name|OrmException
-block|{
-return|return
+lambda|->
 name|db
 operator|.
 name|get
@@ -423,9 +407,6 @@ name|nextChangeId
 argument_list|()
 operator|+
 name|gap
-return|;
-block|}
-block|}
 argument_list|,
 name|cfg
 operator|.
