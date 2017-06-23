@@ -420,6 +420,11 @@ specifier|protected
 name|InheritableBoolean
 name|enableReviewerByEmail
 decl_stmt|;
+DECL|field|matchAuthorToCommitterDate
+specifier|protected
+name|InheritableBoolean
+name|matchAuthorToCommitterDate
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -494,6 +499,12 @@ operator|.
 name|INHERIT
 expr_stmt|;
 name|enableReviewerByEmail
+operator|=
+name|InheritableBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|matchAuthorToCommitterDate
 operator|=
 name|InheritableBoolean
 operator|.
@@ -637,6 +648,30 @@ block|{
 name|enableReviewerByEmail
 operator|=
 name|enable
+expr_stmt|;
+block|}
+DECL|method|getMatchAuthorToCommitterDate ()
+specifier|public
+name|InheritableBoolean
+name|getMatchAuthorToCommitterDate
+parameter_list|()
+block|{
+return|return
+name|matchAuthorToCommitterDate
+return|;
+block|}
+DECL|method|setMatchAuthorToCommitterDate (InheritableBoolean match)
+specifier|public
+name|void
+name|setMatchAuthorToCommitterDate
+parameter_list|(
+name|InheritableBoolean
+name|match
+parameter_list|)
+block|{
+name|matchAuthorToCommitterDate
+operator|=
+name|match
 expr_stmt|;
 block|}
 DECL|method|setUseContributorAgreements (InheritableBoolean u)

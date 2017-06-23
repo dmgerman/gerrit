@@ -182,6 +182,11 @@ specifier|public
 name|InheritableBoolean
 name|enableReviewerByEmail
 decl_stmt|;
+DECL|field|matchAuthorToCommitterDate
+specifier|public
+name|InheritableBoolean
+name|matchAuthorToCommitterDate
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|String

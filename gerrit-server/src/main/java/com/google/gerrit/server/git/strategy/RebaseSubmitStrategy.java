@@ -1228,6 +1228,16 @@ name|setPostMessage
 argument_list|(
 literal|false
 argument_list|)
+operator|.
+name|setMatchAuthorToCommitterDate
+argument_list|(
+name|args
+operator|.
+name|project
+operator|.
+name|isMatchAuthorToCommitterDate
+argument_list|()
+argument_list|)
 expr_stmt|;
 try|try
 block|{

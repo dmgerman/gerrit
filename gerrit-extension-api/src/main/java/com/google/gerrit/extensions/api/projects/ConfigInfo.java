@@ -208,6 +208,11 @@ specifier|public
 name|InheritedBooleanInfo
 name|enableReviewerByEmail
 decl_stmt|;
+DECL|field|matchAuthorToCommitterDate
+specifier|public
+name|InheritedBooleanInfo
+name|matchAuthorToCommitterDate
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|MaxObjectSizeLimitInfo
