@@ -640,6 +640,8 @@ specifier|public
 class|class
 name|RepoSequence
 block|{
+annotation|@
+name|FunctionalInterface
 DECL|interface|Seed
 specifier|public
 interface|interface
