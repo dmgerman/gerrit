@@ -402,6 +402,21 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|info
+operator|.
+name|createdOn
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|group
+operator|.
+name|getCreatedOn
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|toBoolean (Boolean b)
 specifier|public
