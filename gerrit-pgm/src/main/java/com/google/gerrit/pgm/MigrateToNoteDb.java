@@ -392,6 +392,20 @@ name|Option
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|spi
+operator|.
+name|ExplicitBooleanOptionHandler
+import|;
+end_import
+
 begin_class
 DECL|class|MigrateToNoteDb
 specifier|public
@@ -506,6 +520,12 @@ operator|=
 literal|"trial mode: migrate changes and turn on reading from NoteDb, but leave ReviewDb as"
 operator|+
 literal|" the source of truth"
+argument_list|,
+name|handler
+operator|=
+name|ExplicitBooleanOptionHandler
+operator|.
+name|class
 argument_list|)
 DECL|field|trial
 specifier|private
