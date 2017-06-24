@@ -1048,10 +1048,10 @@ block|}
 block|}
 annotation|@
 name|Test
-DECL|method|migrationDoesNotRequireIndex ()
+DECL|method|migrationWithReindex ()
 specifier|public
 name|void
-name|migrationDoesNotRequireIndex
+name|migrationWithReindex
 parameter_list|()
 throws|throws
 name|Exception
@@ -1123,6 +1123,9 @@ operator|.
 name|save
 argument_list|()
 expr_stmt|;
+name|assertServerStartupFails
+argument_list|()
+expr_stmt|;
 name|migrate
 argument_list|(
 literal|"--trial"
@@ -1159,11 +1162,7 @@ name|version
 argument_list|)
 argument_list|)
 operator|.
-name|isFalse
-argument_list|()
-expr_stmt|;
-comment|// TODO(dborowitz): Remove when offline migration includes reindex.
-name|assertServerStartupFails
+name|isTrue
 argument_list|()
 expr_stmt|;
 block|}
