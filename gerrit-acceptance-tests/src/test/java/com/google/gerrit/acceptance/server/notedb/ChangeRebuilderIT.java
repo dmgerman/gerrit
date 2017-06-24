@@ -1518,6 +1518,21 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// setNotesMigration tries to keep IDs in sync between ReviewDb and NoteDb, which is behavior
+comment|// unique to this test. This gets prohibitively slow if we use the default sequence gap.
+name|cfg
+operator|.
+name|setInt
+argument_list|(
+literal|"noteDb"
+argument_list|,
+literal|"changes"
+argument_list|,
+literal|"initialSequenceGap"
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 return|return
 name|cfg
 return|;
