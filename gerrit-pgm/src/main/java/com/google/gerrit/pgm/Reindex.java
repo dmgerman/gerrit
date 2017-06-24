@@ -752,10 +752,7 @@ expr_stmt|;
 name|checkNotSlaveMode
 argument_list|()
 expr_stmt|;
-name|disableLuceneAutomaticCommit
-argument_list|()
-expr_stmt|;
-name|disableChangeCache
+name|overrideConfig
 argument_list|()
 expr_stmt|;
 name|LifecycleManager
@@ -1255,12 +1252,13 @@ name|modules
 argument_list|)
 return|;
 block|}
-DECL|method|disableLuceneAutomaticCommit ()
+DECL|method|overrideConfig ()
 specifier|private
 name|void
-name|disableLuceneAutomaticCommit
+name|overrideConfig
 parameter_list|()
 block|{
+comment|// Disable auto-commit for speed; committing will happen at the end of the process.
 if|if
 condition|(
 name|IndexModule
@@ -1304,13 +1302,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|method|disableChangeCache ()
-specifier|private
-name|void
-name|disableChangeCache
-parameter_list|()
-block|{
+comment|// Disable change cache.
 name|globalConfig
 operator|.
 name|setLong
@@ -1322,6 +1314,20 @@ argument_list|,
 literal|"maximumWeight"
 argument_list|,
 literal|0
+argument_list|)
+expr_stmt|;
+comment|// Disable auto-reindexing if stale, since there are no concurrent writes to race with.
+name|globalConfig
+operator|.
+name|setBoolean
+argument_list|(
+literal|"index"
+argument_list|,
+literal|null
+argument_list|,
+literal|"autoReindexIfStale"
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
