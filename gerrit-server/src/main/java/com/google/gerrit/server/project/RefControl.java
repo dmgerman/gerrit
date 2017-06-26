@@ -92,6 +92,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|Permission
@@ -1472,10 +1486,12 @@ name|PUSH
 argument_list|)
 return|;
 block|}
-comment|/**    * Determines whether the user can create a new Git ref.    *    * @param repo repository on which user want to create    * @param object the object the user will start the reference with.    * @return {@code true} if the user specified can create a new Git ref    */
+comment|/**    * Determines whether the user can create a new Git ref.    *    * @param repo repository on which user want to create    * @param object the object the user will start the reference with.    * @return {@code null} if the user specified can create a new Git ref, or a String describing why    *     the creation is not allowed.    */
+annotation|@
+name|Nullable
 DECL|method|canCreate (Repository repo, RevObject object)
 specifier|public
-name|boolean
+name|String
 name|canCreate
 parameter_list|(
 name|Repository
@@ -1493,7 +1509,7 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|false
+literal|"project state does not permit write"
 return|;
 block|}
 if|if
@@ -1514,9 +1530,12 @@ name|CREATE
 argument_list|)
 condition|)
 block|{
-comment|// No create permissions.
 return|return
-literal|false
+literal|"lacks permission: "
+operator|+
+name|Permission
+operator|.
+name|CREATE
 return|;
 block|}
 return|return
@@ -1574,8 +1593,40 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"RevWalk(%s) for pushing tag %s:"
+argument_list|,
+name|projectControl
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
+name|tag
+operator|.
+name|name
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|log
+operator|.
+name|error
+argument_list|(
+name|msg
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
-literal|false
+literal|"I/O exception for revwalk"
 return|;
 block|}
 comment|// If tagger is present, require it matches the user's email.
@@ -1649,7 +1700,11 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|false
+literal|"lacks permission: "
+operator|+
+name|Permission
+operator|.
+name|FORGE_COMMITTER
 return|;
 block|}
 block|}
@@ -1668,9 +1723,9 @@ operator|instanceof
 name|RevCommit
 condition|)
 block|{
-if|if
-condition|(
-operator|!
+name|String
+name|rejectReason
+init|=
 name|canCreateCommit
 argument_list|(
 name|repo
@@ -1680,28 +1735,40 @@ name|RevCommit
 operator|)
 name|tagObject
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|rejectReason
+operator|!=
+literal|null
 condition|)
 block|{
 return|return
-literal|false
+name|rejectReason
 return|;
 block|}
 block|}
 else|else
 block|{
-if|if
-condition|(
-operator|!
+name|String
+name|rejectReason
+init|=
 name|canCreate
 argument_list|(
 name|repo
 argument_list|,
 name|tagObject
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|rejectReason
+operator|!=
+literal|null
 condition|)
 block|{
 return|return
-literal|false
+name|rejectReason
 return|;
 block|}
 block|}
@@ -1728,6 +1795,14 @@ name|Permission
 operator|.
 name|CREATE_SIGNED_TAG
 argument_list|)
+condition|?
+literal|null
+else|:
+literal|"lacks permission: "
+operator|+
+name|Permission
+operator|.
+name|CREATE_SIGNED_TAG
 return|;
 block|}
 return|return
@@ -1737,18 +1812,26 @@ name|Permission
 operator|.
 name|CREATE_TAG
 argument_list|)
+condition|?
+literal|null
+else|:
+literal|"lacks permission "
+operator|+
+name|Permission
+operator|.
+name|CREATE_TAG
 return|;
 block|}
-else|else
-block|{
 return|return
-literal|false
+literal|null
 return|;
 block|}
-block|}
+comment|/**    * Check if the user is allowed to create a new commit object if this introduces a new commit    * to the project. If not allowed, returns a string describing why it's not allowed.    */
+annotation|@
+name|Nullable
 DECL|method|canCreateCommit (Repository repo, RevCommit commit)
 specifier|private
-name|boolean
+name|String
 name|canCreateCommit
 parameter_list|(
 name|Repository
@@ -1767,7 +1850,7 @@ block|{
 comment|// If the user has push permissions, they can create the ref regardless
 comment|// of whether they are pushing any new objects along with the create.
 return|return
-literal|true
+literal|null
 return|;
 block|}
 elseif|else
@@ -1786,11 +1869,17 @@ comment|// merged into a branch or tag readable by this user. If so, they are
 comment|// not effectively "pushing" more objects, so they can create the ref
 comment|// even if they don't have push permission.
 return|return
-literal|true
+literal|null
 return|;
 block|}
 return|return
-literal|false
+literal|"lacks permission "
+operator|+
+name|Permission
+operator|.
+name|PUSH
+operator|+
+literal|" for creating new commit object"
 return|;
 block|}
 DECL|method|isMergedIntoBranchOrTag (Repository repo, RevCommit commit)

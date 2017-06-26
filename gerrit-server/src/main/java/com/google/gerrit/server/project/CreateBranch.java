@@ -930,9 +930,9 @@ argument_list|)
 throw|;
 block|}
 block|}
-if|if
-condition|(
-operator|!
+name|String
+name|rejectReason
+init|=
 name|refControl
 operator|.
 name|canCreate
@@ -941,6 +941,12 @@ name|repo
 argument_list|,
 name|object
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|rejectReason
+operator|!=
+literal|null
 condition|)
 block|{
 throw|throw
@@ -951,7 +957,9 @@ literal|"Cannot create \""
 operator|+
 name|ref
 operator|+
-literal|"\""
+literal|"\": "
+operator|+
+name|rejectReason
 argument_list|)
 throw|;
 block|}
@@ -1179,7 +1187,7 @@ name|refPrefix
 argument_list|)
 expr_stmt|;
 block|}
-comment|//$FALL-THROUGH$
+comment|// $FALL-THROUGH$
 case|case
 name|FORCED
 case|:

@@ -7386,8 +7386,9 @@ name|getRefName
 argument_list|()
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+name|String
+name|rejectReason
+init|=
 name|ctl
 operator|.
 name|canCreate
@@ -7399,8 +7400,25 @@ argument_list|()
 argument_list|,
 name|obj
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|rejectReason
+operator|!=
+literal|null
 condition|)
 block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"prohibited by Gerrit: "
+operator|+
+name|rejectReason
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 if|if
 condition|(
 operator|!
@@ -7410,6 +7428,7 @@ name|cmd
 argument_list|)
 condition|)
 block|{
+comment|// validRefOperation sets messages, so no need to provide more feedback.
 return|return;
 block|}
 name|validateNewCommits
@@ -7426,22 +7445,6 @@ argument_list|(
 name|cmd
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|reject
-argument_list|(
-name|cmd
-argument_list|,
-literal|"prohibited by Gerrit: create access denied for "
-operator|+
-name|cmd
-operator|.
-name|getRefName
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|parseUpdate (ReceiveCommand cmd)
 specifier|private
