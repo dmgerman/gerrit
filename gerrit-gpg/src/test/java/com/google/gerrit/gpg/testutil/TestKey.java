@@ -452,6 +452,9 @@ name|getFirstUserId
 parameter_list|()
 block|{
 return|return
+operator|(
+name|String
+operator|)
 name|getPublicKey
 argument_list|()
 operator|.

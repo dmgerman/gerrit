@@ -8795,6 +8795,11 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|List
 argument_list|<
 name|String

@@ -2027,6 +2027,11 @@ name|PGPPublicKey
 name|key
 parameter_list|)
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|Iterator
 argument_list|<
 name|String

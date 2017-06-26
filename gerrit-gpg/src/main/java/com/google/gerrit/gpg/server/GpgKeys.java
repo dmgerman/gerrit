@@ -1653,6 +1653,11 @@ name|getFingerprint
 argument_list|()
 argument_list|)
 expr_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|Iterator
 argument_list|<
 name|String
