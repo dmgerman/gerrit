@@ -1295,6 +1295,13 @@ argument_list|)
 expr_stmt|;
 name|inserter
 operator|.
+name|setDescription
+argument_list|(
+literal|"Edit commit message"
+argument_list|)
+expr_stmt|;
+name|inserter
+operator|.
 name|setNotify
 argument_list|(
 name|input

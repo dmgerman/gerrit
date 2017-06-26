@@ -23945,6 +23945,19 @@ argument_list|(
 name|newMessage
 argument_list|)
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|rApi
+operator|.
+name|description
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"Edit commit message"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 annotation|@
