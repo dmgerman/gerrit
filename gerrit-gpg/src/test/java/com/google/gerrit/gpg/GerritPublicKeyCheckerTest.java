@@ -2386,9 +2386,6 @@ name|removeCertification
 argument_list|(
 name|keyB
 argument_list|,
-operator|(
-name|String
-operator|)
 name|keyB
 operator|.
 name|getUserIDs
@@ -2519,17 +2516,9 @@ name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 name|String
 name|userId
 init|=
-operator|(
-name|String
-operator|)
 name|Iterators
 operator|.
 name|getOnlyElement

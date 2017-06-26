@@ -288,16 +288,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|concurrent
 operator|.
 name|Future
@@ -825,6 +815,9 @@ name|task
 argument_list|)
 expr_stmt|;
 name|Future
+argument_list|<
+name|?
+argument_list|>
 name|f
 init|=
 name|getExecutor
@@ -1031,12 +1024,18 @@ block|{
 DECL|field|future
 specifier|final
 name|Future
+argument_list|<
+name|?
+argument_list|>
 name|future
 decl_stmt|;
-DECL|method|Listener (Future future)
+DECL|method|Listener (Future<?> future)
 name|Listener
 parameter_list|(
 name|Future
+argument_list|<
+name|?
+argument_list|>
 name|future
 parameter_list|)
 block|{
