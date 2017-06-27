@@ -1826,7 +1826,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Check if the user is allowed to create a new commit object if this introduces a new commit    * to the project. If not allowed, returns a string describing why it's not allowed.    */
+comment|/**    * Check if the user is allowed to create a new commit object if this introduces a new commit to    * the project. If not allowed, returns a string describing why it's not allowed.    */
 annotation|@
 name|Nullable
 DECL|method|canCreateCommit (Repository repo, RevCommit commit)
