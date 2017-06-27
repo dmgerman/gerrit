@@ -80,24 +80,8 @@ name|Nullable
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|GroupBackend
-import|;
-end_import
-
 begin_comment
-comment|/**  * Thrown when {@link PermissionBackend} cannot compute the result.  *  *<p>This is typically a transient failure, such as a required {@link GroupBackend} not responding  * to membership requests.  */
+comment|/**  * Thrown when {@link PermissionBackend} cannot compute the result.  *  *<p>This is typically a transient failure, such as a required group backend not responding to  * membership requests.  */
 end_comment
 
 begin_class
