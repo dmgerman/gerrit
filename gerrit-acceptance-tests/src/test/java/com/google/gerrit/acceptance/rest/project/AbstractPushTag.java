@@ -162,7 +162,7 @@ name|rest
 operator|.
 name|project
 operator|.
-name|PushTagIT
+name|AbstractPushTag
 operator|.
 name|TagType
 operator|.
@@ -184,7 +184,7 @@ name|rest
 operator|.
 name|project
 operator|.
-name|PushTagIT
+name|AbstractPushTag
 operator|.
 name|TagType
 operator|.
@@ -393,10 +393,11 @@ end_import
 begin_class
 annotation|@
 name|NoHttpd
-DECL|class|PushTagIT
+DECL|class|AbstractPushTag
 specifier|public
+specifier|abstract
 class|class
-name|PushTagIT
+name|AbstractPushTag
 extends|extends
 name|AbstractDaemonTest
 block|{
@@ -446,6 +447,14 @@ name|initialHead
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|field|tagType
+specifier|private
+name|TagType
+name|tagType
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 annotation|@
 name|Before
@@ -472,8 +481,23 @@ operator|=
 name|getRemoteHead
 argument_list|()
 expr_stmt|;
+name|tagType
+operator|=
+name|getTagType
+argument_list|()
+expr_stmt|;
 block|}
 end_function
+
+begin_function_decl
+DECL|method|getTagType ()
+specifier|protected
+specifier|abstract
+name|TagType
+name|getTagType
+parameter_list|()
+function_decl|;
+end_function_decl
 
 begin_function
 annotation|@
@@ -486,35 +510,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-for|for
-control|(
-name|TagType
-name|tagType
-range|:
-name|TagType
-operator|.
-name|values
-argument_list|()
-control|)
-block|{
 name|pushTagForExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|REJECTED_OTHER_REASON
 argument_list|)
 expr_stmt|;
 name|allowTagCreation
-argument_list|(
-name|tagType
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|pushTagForExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|OK
@@ -525,8 +532,6 @@ argument_list|()
 expr_stmt|;
 name|pushTagForExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|OK
@@ -535,7 +540,6 @@ expr_stmt|;
 name|removePushFromRefsTags
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 end_function
 
@@ -550,35 +554,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-for|for
-control|(
-name|TagType
-name|tagType
-range|:
-name|TagType
-operator|.
-name|values
-argument_list|()
-control|)
-block|{
 name|pushTagForNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|REJECTED_OTHER_REASON
 argument_list|)
 expr_stmt|;
 name|allowTagCreation
-argument_list|(
-name|tagType
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|pushTagForNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|REJECTED_OTHER_REASON
@@ -589,8 +576,6 @@ argument_list|()
 expr_stmt|;
 name|pushTagForNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|OK
@@ -599,7 +584,6 @@ expr_stmt|;
 name|removePushFromRefsTags
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 end_function
 
@@ -614,29 +598,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-for|for
-control|(
-name|TagType
-name|tagType
-range|:
-name|TagType
-operator|.
-name|values
-argument_list|()
-control|)
-block|{
 name|allowTagCreation
-argument_list|(
-name|tagType
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|String
 name|tagName
 init|=
 name|pushTagForExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|OK
@@ -644,8 +613,6 @@ argument_list|)
 decl_stmt|;
 name|fastForwardTagToExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -655,8 +622,6 @@ argument_list|)
 expr_stmt|;
 name|fastForwardTagToNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -669,8 +634,6 @@ argument_list|()
 expr_stmt|;
 name|fastForwardTagToExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -680,8 +643,6 @@ argument_list|)
 expr_stmt|;
 name|fastForwardTagToNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -709,8 +670,6 @@ name|OK
 decl_stmt|;
 name|fastForwardTagToExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|expectedStatus
@@ -718,8 +677,6 @@ argument_list|)
 expr_stmt|;
 name|fastForwardTagToNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|expectedStatus
@@ -730,8 +687,6 @@ argument_list|()
 expr_stmt|;
 name|fastForwardTagToExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -741,8 +696,6 @@ argument_list|)
 expr_stmt|;
 name|fastForwardTagToNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -753,7 +706,6 @@ expr_stmt|;
 name|removePushFromRefsTags
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 end_function
 
@@ -768,29 +720,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-for|for
-control|(
-name|TagType
-name|tagType
-range|:
-name|TagType
-operator|.
-name|values
-argument_list|()
-control|)
-block|{
 name|allowTagCreation
-argument_list|(
-name|tagType
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|String
 name|tagName
 init|=
 name|pushTagForExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|OK
@@ -798,8 +735,6 @@ argument_list|)
 decl_stmt|;
 name|forceUpdateTagToExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -809,8 +744,6 @@ argument_list|)
 expr_stmt|;
 name|forceUpdateTagToNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -823,8 +756,6 @@ argument_list|()
 expr_stmt|;
 name|forceUpdateTagToExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -834,8 +765,6 @@ argument_list|)
 expr_stmt|;
 name|forceUpdateTagToNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -848,8 +777,6 @@ argument_list|()
 expr_stmt|;
 name|forceUpdateTagToExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -859,8 +786,6 @@ argument_list|)
 expr_stmt|;
 name|forceUpdateTagToNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -873,8 +798,6 @@ argument_list|()
 expr_stmt|;
 name|forceUpdateTagToExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -884,8 +807,6 @@ argument_list|)
 expr_stmt|;
 name|forceUpdateTagToNewCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -896,7 +817,6 @@ expr_stmt|;
 name|removePushFromRefsTags
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 end_function
 
@@ -911,29 +831,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-for|for
-control|(
-name|TagType
-name|tagType
-range|:
-name|TagType
-operator|.
-name|values
-argument_list|()
-control|)
-block|{
 name|allowTagCreation
-argument_list|(
-name|tagType
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|String
 name|tagName
 init|=
 name|pushTagForExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|OK
@@ -941,8 +846,6 @@ argument_list|)
 decl_stmt|;
 name|pushTagDeletion
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -955,8 +858,6 @@ argument_list|()
 expr_stmt|;
 name|pushTagDeletion
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -964,37 +865,20 @@ operator|.
 name|REJECTED_OTHER_REASON
 argument_list|)
 expr_stmt|;
-block|}
 name|allowForcePushOnRefsTags
 argument_list|()
 expr_stmt|;
-for|for
-control|(
-name|TagType
-name|tagType
-range|:
-name|TagType
-operator|.
-name|values
-argument_list|()
-control|)
-block|{
-name|String
 name|tagName
-init|=
+operator|=
 name|pushTagForExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|OK
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|pushTagDeletion
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -1002,40 +886,23 @@ operator|.
 name|OK
 argument_list|)
 expr_stmt|;
-block|}
 name|removePushFromRefsTags
 argument_list|()
 expr_stmt|;
 name|allowTagDeletion
 argument_list|()
 expr_stmt|;
-for|for
-control|(
-name|TagType
-name|tagType
-range|:
-name|TagType
-operator|.
-name|values
-argument_list|()
-control|)
-block|{
-name|String
 name|tagName
-init|=
+operator|=
 name|pushTagForExistingCommit
 argument_list|(
-name|tagType
-argument_list|,
 name|Status
 operator|.
 name|OK
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|pushTagDeletion
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 name|Status
@@ -1044,18 +911,14 @@ name|OK
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 end_function
 
 begin_function
-DECL|method|pushTagForExistingCommit (TagType tagType, Status expectedStatus)
+DECL|method|pushTagForExistingCommit (Status expectedStatus)
 specifier|private
 name|String
 name|pushTagForExistingCommit
 parameter_list|(
-name|TagType
-name|tagType
-parameter_list|,
 name|Status
 name|expectedStatus
 parameter_list|)
@@ -1065,8 +928,6 @@ block|{
 return|return
 name|pushTag
 argument_list|(
-name|tagType
-argument_list|,
 literal|null
 argument_list|,
 literal|false
@@ -1080,14 +941,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|pushTagForNewCommit (TagType tagType, Status expectedStatus)
+DECL|method|pushTagForNewCommit (Status expectedStatus)
 specifier|private
 name|String
 name|pushTagForNewCommit
 parameter_list|(
-name|TagType
-name|tagType
-parameter_list|,
 name|Status
 name|expectedStatus
 parameter_list|)
@@ -1097,8 +955,6 @@ block|{
 return|return
 name|pushTag
 argument_list|(
-name|tagType
-argument_list|,
 literal|null
 argument_list|,
 literal|true
@@ -1112,14 +968,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|fastForwardTagToExistingCommit ( TagType tagType, String tagName, Status expectedStatus)
+DECL|method|fastForwardTagToExistingCommit (String tagName, Status expectedStatus)
 specifier|private
 name|void
 name|fastForwardTagToExistingCommit
 parameter_list|(
-name|TagType
-name|tagType
-parameter_list|,
 name|String
 name|tagName
 parameter_list|,
@@ -1131,8 +984,6 @@ name|Exception
 block|{
 name|pushTag
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 literal|false
@@ -1146,14 +997,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|fastForwardTagToNewCommit (TagType tagType, String tagName, Status expectedStatus)
+DECL|method|fastForwardTagToNewCommit (String tagName, Status expectedStatus)
 specifier|private
 name|void
 name|fastForwardTagToNewCommit
 parameter_list|(
-name|TagType
-name|tagType
-parameter_list|,
 name|String
 name|tagName
 parameter_list|,
@@ -1165,8 +1013,6 @@ name|Exception
 block|{
 name|pushTag
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 literal|true
@@ -1180,14 +1026,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|forceUpdateTagToExistingCommit ( TagType tagType, String tagName, Status expectedStatus)
+DECL|method|forceUpdateTagToExistingCommit (String tagName, Status expectedStatus)
 specifier|private
 name|void
 name|forceUpdateTagToExistingCommit
 parameter_list|(
-name|TagType
-name|tagType
-parameter_list|,
 name|String
 name|tagName
 parameter_list|,
@@ -1199,8 +1042,6 @@ name|Exception
 block|{
 name|pushTag
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 literal|false
@@ -1214,14 +1055,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|forceUpdateTagToNewCommit (TagType tagType, String tagName, Status expectedStatus)
+DECL|method|forceUpdateTagToNewCommit (String tagName, Status expectedStatus)
 specifier|private
 name|void
 name|forceUpdateTagToNewCommit
 parameter_list|(
-name|TagType
-name|tagType
-parameter_list|,
 name|String
 name|tagName
 parameter_list|,
@@ -1233,8 +1071,6 @@ name|Exception
 block|{
 name|pushTag
 argument_list|(
-name|tagType
-argument_list|,
 name|tagName
 argument_list|,
 literal|true
@@ -1248,14 +1084,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|pushTag ( TagType tagType, String tagName, boolean newCommit, boolean force, Status expectedStatus)
+DECL|method|pushTag (String tagName, boolean newCommit, boolean force, Status expectedStatus)
 specifier|private
 name|String
 name|pushTag
 parameter_list|(
-name|TagType
-name|tagType
-parameter_list|,
 name|String
 name|tagName
 parameter_list|,
@@ -1479,14 +1312,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|pushTagDeletion (TagType tagType, String tagName, Status expectedStatus)
+DECL|method|pushTagDeletion (String tagName, Status expectedStatus)
 specifier|private
 name|void
 name|pushTagDeletion
 parameter_list|(
-name|TagType
-name|tagType
-parameter_list|,
 name|String
 name|tagName
 parameter_list|,
@@ -1549,14 +1379,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|allowTagCreation (TagType tagType)
+DECL|method|allowTagCreation ()
 specifier|private
 name|void
 name|allowTagCreation
-parameter_list|(
-name|TagType
-name|tagType
-parameter_list|)
+parameter_list|()
 throws|throws
 name|Exception
 block|{
