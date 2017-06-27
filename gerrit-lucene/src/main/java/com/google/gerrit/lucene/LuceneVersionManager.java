@@ -88,9 +88,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|events
+name|registration
 operator|.
-name|LifecycleListener
+name|DynamicSet
 import|;
 end_import
 
@@ -123,22 +123,6 @@ operator|.
 name|config
 operator|.
 name|SitePaths
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|AbstractVersionManager
 import|;
 end_import
 
@@ -202,7 +186,39 @@ name|server
 operator|.
 name|index
 operator|.
+name|OnlineUpgradeListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|Schema
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|VersionManager
 import|;
 end_import
 
@@ -338,9 +354,7 @@ specifier|public
 class|class
 name|LuceneVersionManager
 extends|extends
-name|AbstractVersionManager
-implements|implements
-name|LifecycleListener
+name|VersionManager
 block|{
 DECL|field|log
 specifier|private
@@ -367,7 +381,7 @@ parameter_list|<
 name|V
 parameter_list|>
 extends|extends
-name|AbstractVersionManager
+name|VersionManager
 operator|.
 name|Version
 argument_list|<
@@ -460,7 +474,7 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, Collection<IndexDefinition<?, ?, ?>> defs)
+DECL|method|LuceneVersionManager ( @erritServerConfig Config cfg, SitePaths sitePaths, DynamicSet<OnlineUpgradeListener> listeners, Collection<IndexDefinition<?, ?, ?>> defs)
 name|LuceneVersionManager
 parameter_list|(
 annotation|@
@@ -470,6 +484,12 @@ name|cfg
 parameter_list|,
 name|SitePaths
 name|sitePaths
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|OnlineUpgradeListener
+argument_list|>
+name|listeners
 parameter_list|,
 name|Collection
 argument_list|<
@@ -487,17 +507,24 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|cfg
-argument_list|,
 name|sitePaths
 argument_list|,
+name|listeners
+argument_list|,
 name|defs
+argument_list|,
+name|VersionManager
+operator|.
+name|getOnlineUpgrade
+argument_list|(
+name|cfg
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|isDirty ( Collection<com.google.gerrit.server.index.AbstractVersionManager.Version<V>> inUse, com.google.gerrit.server.index.AbstractVersionManager.Version<V> v)
+DECL|method|isDirty ( Collection<com.google.gerrit.server.index.VersionManager.Version<V>> inUse, com.google.gerrit.server.index.VersionManager.Version<V> v)
 specifier|protected
 parameter_list|<
 name|V
@@ -517,7 +544,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|AbstractVersionManager
+name|VersionManager
 operator|.
 name|Version
 argument_list|<
@@ -536,7 +563,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|AbstractVersionManager
+name|VersionManager
 operator|.
 name|Version
 argument_list|<
@@ -569,6 +596,7 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|scanVersions ( IndexDefinition<K, V, I> def, GerritIndexStatus cfg)
 specifier|protected
 parameter_list|<
 name|K
@@ -584,12 +612,11 @@ argument_list|,
 name|V
 argument_list|>
 parameter_list|>
-DECL|method|scanVersions ( IndexDefinition<K, V, I> def, GerritIndexStatus cfg)
 name|TreeMap
 argument_list|<
 name|Integer
 argument_list|,
-name|AbstractVersionManager
+name|VersionManager
 operator|.
 name|Version
 argument_list|<
@@ -616,7 +643,7 @@ name|TreeMap
 argument_list|<
 name|Integer
 argument_list|,
-name|AbstractVersionManager
+name|VersionManager
 operator|.
 name|Version
 argument_list|<

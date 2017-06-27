@@ -1565,11 +1565,13 @@ argument_list|,
 name|baseConfig
 argument_list|,
 name|site
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Starts Gerrit server from existing on-disk site.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @param site existing temporary directory for site. Required, but may be empty, for in-memory    *     servers. For on-disk servers, assumes that {@link #init} was previously called to    *     initialize this directory.    * @return started server.    * @throws Exception    */
-DECL|method|start (Description desc, Config baseConfig, Path site)
+comment|/**    * Starts Gerrit server from existing on-disk site.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @param site existing temporary directory for site. Required, but may be empty, for in-memory    *     servers. For on-disk servers, assumes that {@link #init} was previously called to    *     initialize this directory.    * @param testSysModule optional additional module to add to the system injector.    * @return started server.    * @throws Exception    */
+DECL|method|start ( Description desc, Config baseConfig, Path site, @Nullable Module testSysModule)
 specifier|public
 specifier|static
 name|GerritServer
@@ -1583,6 +1585,11 @@ name|baseConfig
 parameter_list|,
 name|Path
 name|site
+parameter_list|,
+annotation|@
+name|Nullable
+name|Module
+name|testSysModule
 parameter_list|)
 throws|throws
 name|Exception
@@ -1671,6 +1678,13 @@ name|FakeEmailSender
 operator|.
 name|Module
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|daemon
+operator|.
+name|setAdditionalSysModuleForTesting
+argument_list|(
+name|testSysModule
 argument_list|)
 expr_stmt|;
 name|daemon

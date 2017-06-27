@@ -128,6 +128,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|launcher
 operator|.
 name|GerritLauncher
@@ -267,6 +281,18 @@ operator|.
 name|inject
 operator|.
 name|Injector
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Module
 import|;
 end_import
 
@@ -747,11 +773,33 @@ throws|throws
 name|Exception
 block|{
 return|return
+name|startServer
+argument_list|(
+literal|null
+argument_list|)
+return|;
+block|}
+DECL|method|startServer (@ullable Module testSysModule)
+specifier|protected
+name|ServerContext
+name|startServer
+parameter_list|(
+annotation|@
+name|Nullable
+name|Module
+name|testSysModule
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
 operator|new
 name|ServerContext
 argument_list|(
 name|startImpl
-argument_list|()
+argument_list|(
+name|testSysModule
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -769,7 +817,9 @@ name|GerritServer
 name|server
 init|=
 name|startImpl
-argument_list|()
+argument_list|(
+literal|null
+argument_list|)
 init|)
 block|{
 name|fail
@@ -789,11 +839,16 @@ block|{
 comment|// Expected.
 block|}
 block|}
-DECL|method|startImpl ()
+DECL|method|startImpl (@ullable Module testSysModule)
 specifier|private
 name|GerritServer
 name|startImpl
-parameter_list|()
+parameter_list|(
+annotation|@
+name|Nullable
+name|Module
+name|testSysModule
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -809,6 +864,8 @@ argument_list|,
 name|sitePaths
 operator|.
 name|site_path
+argument_list|,
+name|testSysModule
 argument_list|)
 return|;
 block|}
