@@ -2194,6 +2194,10 @@ name|Permission
 operator|.
 name|CREATE_TAG
 argument_list|)
+operator|&&
+operator|!
+name|isOwner
+argument_list|()
 condition|)
 block|{
 name|String
