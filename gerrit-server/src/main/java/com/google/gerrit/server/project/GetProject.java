@@ -173,6 +173,9 @@ operator|.
 name|format
 argument_list|(
 name|rsrc
+operator|.
+name|getControl
+argument_list|()
 argument_list|)
 return|;
 block|}

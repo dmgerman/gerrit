@@ -1708,6 +1708,9 @@ operator|.
 name|format
 argument_list|(
 name|project
+operator|.
+name|getControl
+argument_list|()
 argument_list|)
 return|;
 block|}
