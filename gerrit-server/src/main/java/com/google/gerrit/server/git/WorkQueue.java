@@ -336,6 +336,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ScheduledExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ScheduledThreadPoolExecutor
 import|;
 end_import
@@ -599,7 +611,7 @@ block|}
 decl_stmt|;
 DECL|field|defaultQueue
 specifier|private
-name|ScheduledThreadPoolExecutor
+name|ScheduledExecutorService
 name|defaultQueue
 decl_stmt|;
 DECL|field|defaultQueueSize
@@ -690,7 +702,7 @@ comment|/** Get the default work queue, for miscellaneous tasks. */
 DECL|method|getDefaultQueue ()
 specifier|public
 specifier|synchronized
-name|ScheduledThreadPoolExecutor
+name|ScheduledExecutorService
 name|getDefaultQueue
 parameter_list|()
 block|{
@@ -718,7 +730,7 @@ block|}
 comment|/** Create a new executor queue. */
 DECL|method|createQueue (int poolsize, String prefix)
 specifier|public
-name|ScheduledThreadPoolExecutor
+name|ScheduledExecutorService
 name|createQueue
 parameter_list|(
 name|int
