@@ -106,6 +106,36 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+operator|.
+name|toList
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+operator|.
+name|R_HEADS
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -356,7 +386,7 @@ literal|"refs/heads/test-1"
 argument_list|,
 literal|"refs/heads/test-2"
 argument_list|,
-literal|"refs/heads/test-3"
+literal|"test-3"
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -883,7 +913,10 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
+name|prefixRef
+argument_list|(
 name|branch
+argument_list|)
 argument_list|)
 operator|.
 name|append
@@ -1009,7 +1042,10 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
+name|prefixRef
+argument_list|(
 name|branch
+argument_list|)
 argument_list|,
 literal|null
 argument_list|,
@@ -1021,6 +1057,30 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|prefixRef (String ref)
+specifier|private
+name|String
+name|prefixRef
+parameter_list|(
+name|String
+name|ref
+parameter_list|)
+block|{
+return|return
+name|ref
+operator|.
+name|startsWith
+argument_list|(
+name|R_HEADS
+argument_list|)
+condition|?
+name|ref
+else|:
+name|R_HEADS
+operator|+
+name|ref
+return|;
 block|}
 DECL|method|project ()
 specifier|private
@@ -1083,6 +1143,25 @@ operator|.
 name|addAll
 argument_list|(
 name|branches
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|b
+lambda|->
+name|prefixRef
+argument_list|(
+name|b
+argument_list|)
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toList
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertRefNames
