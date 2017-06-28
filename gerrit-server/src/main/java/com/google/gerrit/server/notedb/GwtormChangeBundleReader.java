@@ -228,18 +228,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|db
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|beginTransaction
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
-try|try
-block|{
+comment|// TODO(dborowitz): Figure out how to do this more consistently, e.g. hand-written inner joins.
 name|List
 argument_list|<
 name|PatchSetApproval
@@ -317,15 +306,6 @@ operator|.
 name|REVIEW_DB
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|rollback
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 end_class
