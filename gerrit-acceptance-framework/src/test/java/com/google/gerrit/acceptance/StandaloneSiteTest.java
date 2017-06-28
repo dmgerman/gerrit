@@ -779,7 +779,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|startServer (@ullable Module testSysModule)
+DECL|method|startServer (@ullable Module testSysModule, String... additionalArgs)
 specifier|protected
 name|ServerContext
 name|startServer
@@ -788,6 +788,10 @@ annotation|@
 name|Nullable
 name|Module
 name|testSysModule
+parameter_list|,
+name|String
+modifier|...
+name|additionalArgs
 parameter_list|)
 throws|throws
 name|Exception
@@ -799,6 +803,8 @@ argument_list|(
 name|startImpl
 argument_list|(
 name|testSysModule
+argument_list|,
+name|additionalArgs
 argument_list|)
 argument_list|)
 return|;
@@ -839,7 +845,7 @@ block|{
 comment|// Expected.
 block|}
 block|}
-DECL|method|startImpl (@ullable Module testSysModule)
+DECL|method|startImpl (@ullable Module testSysModule, String... additionalArgs)
 specifier|private
 name|GerritServer
 name|startImpl
@@ -848,6 +854,10 @@ annotation|@
 name|Nullable
 name|Module
 name|testSysModule
+parameter_list|,
+name|String
+modifier|...
+name|additionalArgs
 parameter_list|)
 throws|throws
 name|Exception
@@ -866,6 +876,8 @@ operator|.
 name|site_path
 argument_list|,
 name|testSysModule
+argument_list|,
+name|additionalArgs
 argument_list|)
 return|;
 block|}

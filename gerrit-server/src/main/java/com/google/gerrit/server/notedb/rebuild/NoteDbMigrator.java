@@ -732,6 +732,38 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|ManualRequestContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|OneOffRequestContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -1081,6 +1113,12 @@ specifier|final
 name|AllProjectsName
 name|allProjects
 decl_stmt|;
+DECL|field|requestContext
+specifier|private
+specifier|final
+name|OneOffRequestContext
+name|requestContext
+decl_stmt|;
 DECL|field|rebuilder
 specifier|private
 specifier|final
@@ -1174,7 +1212,7 @@ literal|1
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Builder ( @erritServerConfig Config cfg, SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ChangeRebuilder rebuilder, WorkQueue workQueue, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator)
+DECL|method|Builder ( @erritServerConfig Config cfg, SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, OneOffRequestContext requestContext, ChangeRebuilder rebuilder, WorkQueue workQueue, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator)
 name|Builder
 parameter_list|(
 annotation|@
@@ -1196,6 +1234,9 @@ name|repoManager
 parameter_list|,
 name|AllProjectsName
 name|allProjects
+parameter_list|,
+name|OneOffRequestContext
+name|requestContext
 parameter_list|,
 name|ChangeRebuilder
 name|rebuilder
@@ -1239,6 +1280,12 @@ operator|.
 name|allProjects
 operator|=
 name|allProjects
+expr_stmt|;
+name|this
+operator|.
+name|requestContext
+operator|=
+name|requestContext
 expr_stmt|;
 name|this
 operator|.
@@ -1492,6 +1539,8 @@ name|repoManager
 argument_list|,
 name|allProjects
 argument_list|,
+name|requestContext
+argument_list|,
 name|rebuilder
 argument_list|,
 name|globalNotesMigration
@@ -1576,6 +1625,12 @@ specifier|final
 name|AllProjectsName
 name|allProjects
 decl_stmt|;
+DECL|field|requestContext
+specifier|private
+specifier|final
+name|OneOffRequestContext
+name|requestContext
+decl_stmt|;
 DECL|field|rebuilder
 specifier|private
 specifier|final
@@ -1652,7 +1707,7 @@ specifier|final
 name|int
 name|sequenceGap
 decl_stmt|;
-DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ChangeRebuilder rebuilder, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, NotesMigrationState stopAtState, boolean trial, boolean forceRebuild, int sequenceGap)
+DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, OneOffRequestContext requestContext, ChangeRebuilder rebuilder, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, NotesMigrationState stopAtState, boolean trial, boolean forceRebuild, int sequenceGap)
 specifier|private
 name|NoteDbMigrator
 parameter_list|(
@@ -1670,6 +1725,9 @@ name|repoManager
 parameter_list|,
 name|AllProjectsName
 name|allProjects
+parameter_list|,
+name|OneOffRequestContext
+name|requestContext
 parameter_list|,
 name|ChangeRebuilder
 name|rebuilder
@@ -1780,6 +1838,12 @@ operator|.
 name|allProjects
 operator|=
 name|allProjects
+expr_stmt|;
+name|this
+operator|.
+name|requestContext
+operator|=
+name|requestContext
 expr_stmt|;
 name|this
 operator|.
@@ -2460,15 +2524,12 @@ parameter_list|()
 lambda|->
 block|{
 comment|// TODO(dborowitz): Avoid reopening db if using a single thread.
-block|try (ReviewDb db
+block|try (ManualRequestContext ctx
 init|=
-name|unwrapDb
-argument_list|(
-name|schemaFactory
+name|requestContext
 operator|.
 name|open
 argument_list|()
-argument_list|)
 argument_list|)
 block|{
 name|primaryStorageMigrator

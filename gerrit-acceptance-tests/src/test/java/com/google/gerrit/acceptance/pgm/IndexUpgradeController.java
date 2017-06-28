@@ -83,22 +83,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|Truth
-operator|.
-name|assert_
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -211,18 +195,6 @@ operator|.
 name|concurrent
 operator|.
 name|CountDownLatch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
 import|;
 end_import
 
@@ -663,52 +635,11 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
-comment|// Wait with a timeout. Startup should happen quickly, but bugs preventing upgrading from
-comment|// starting might not be that uncommon, so we don't want to have to wait forever to discover
-comment|// them.
-name|int
-name|timeoutSec
-init|=
-literal|60
-decl_stmt|;
-if|if
-condition|(
-operator|!
 name|started
 operator|.
 name|await
-argument_list|(
-name|timeoutSec
-argument_list|,
-name|TimeUnit
-operator|.
-name|SECONDS
-argument_list|)
-condition|)
-block|{
-name|assert_
 argument_list|()
-operator|.
-name|fail
-argument_list|(
-literal|"%s/%s online upgrades started after %ss"
-argument_list|,
-name|numExpected
-operator|-
-name|started
-operator|.
-name|getCount
-argument_list|()
-argument_list|,
-name|numExpected
-argument_list|,
-name|timeoutSec
-argument_list|)
 expr_stmt|;
-block|}
-comment|// Wait with no timeout. Reindexing might be slow, and given that upgrading started
-comment|// successfully, it's unlikely there is a bug preventing it from tripping the finished latch
-comment|// eventually, even if it takes longer than we might guess.
 name|finished
 operator|.
 name|await
