@@ -2278,7 +2278,7 @@ name|allProjects
 argument_list|,
 name|Sequences
 operator|.
-name|CHANGES
+name|NAME_CHANGES
 argument_list|,
 comment|// If sequenceGap is 0, this writes into the sequence ref the same ID that is returned
 comment|// by the call to seq.next() below. If we actually used this as a change ID, that

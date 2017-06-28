@@ -1954,7 +1954,7 @@ name|REFS_SEQUENCES
 operator|+
 name|Sequences
 operator|.
-name|CHANGES
+name|NAME_CHANGES
 argument_list|)
 operator|==
 literal|null
@@ -1985,7 +1985,7 @@ name|ins
 argument_list|,
 name|Sequences
 operator|.
-name|CHANGES
+name|NAME_CHANGES
 argument_list|,
 name|firstChangeId
 argument_list|)
