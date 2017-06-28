@@ -3657,6 +3657,16 @@ argument_list|)
 operator|.
 name|set
 argument_list|(
+literal|"indentWithTabs"
+argument_list|,
+name|prefs
+operator|.
+name|indentWithTabs
+argument_list|()
+argument_list|)
+operator|.
+name|set
+argument_list|(
 literal|"matchBrackets"
 argument_list|,
 name|prefs
