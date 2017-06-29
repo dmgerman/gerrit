@@ -498,6 +498,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -581,6 +591,18 @@ operator|.
 name|concurrent
 operator|.
 name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Stream
 import|;
 end_import
 
@@ -1570,8 +1592,8 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Starts Gerrit server from existing on-disk site.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @param site existing temporary directory for site. Required, but may be empty, for in-memory    *     servers. For on-disk servers, assumes that {@link #init} was previously called to    *     initialize this directory.    * @param testSysModule optional additional module to add to the system injector.    * @return started server.    * @throws Exception    */
-DECL|method|start ( Description desc, Config baseConfig, Path site, @Nullable Module testSysModule)
+comment|/**    * Starts Gerrit server from existing on-disk site.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @param site existing temporary directory for site. Required, but may be empty, for in-memory    *     servers. For on-disk servers, assumes that {@link #init} was previously called to    *     initialize this directory.    * @param testSysModule optional additional module to add to the system injector.    * @param additionalArgs additional command-line arguments for the daemon program; only allowed if    *     the test is not in-memory.    * @return started server.    * @throws Exception    */
+DECL|method|start ( Description desc, Config baseConfig, Path site, @Nullable Module testSysModule, String... additionalArgs)
 specifier|public
 specifier|static
 name|GerritServer
@@ -1590,6 +1612,10 @@ annotation|@
 name|Nullable
 name|Module
 name|testSysModule
+parameter_list|,
+name|String
+modifier|...
+name|additionalArgs
 parameter_list|)
 throws|throws
 name|Exception
@@ -1705,6 +1731,17 @@ name|memory
 argument_list|()
 condition|)
 block|{
+name|checkArgument
+argument_list|(
+name|additionalArgs
+operator|.
+name|length
+operator|==
+literal|0
+argument_list|,
+literal|"cannot pass args to in-memory server"
+argument_list|)
+expr_stmt|;
 return|return
 name|startInMemory
 argument_list|(
@@ -1726,6 +1763,8 @@ argument_list|,
 name|daemon
 argument_list|,
 name|serverStarted
+argument_list|,
+name|additionalArgs
 argument_list|)
 return|;
 block|}
@@ -1890,7 +1929,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|startOnDisk ( Description desc, Path site, Daemon daemon, CyclicBarrier serverStarted)
+DECL|method|startOnDisk ( Description desc, Path site, Daemon daemon, CyclicBarrier serverStarted, String[] additionalArgs)
 specifier|private
 specifier|static
 name|GerritServer
@@ -1907,6 +1946,10 @@ name|daemon
 parameter_list|,
 name|CyclicBarrier
 name|serverStarted
+parameter_list|,
+name|String
+index|[]
+name|additionalArgs
 parameter_list|)
 throws|throws
 name|Exception
@@ -1923,6 +1966,48 @@ name|Executors
 operator|.
 name|newSingleThreadExecutor
 argument_list|()
+decl_stmt|;
+name|String
+index|[]
+name|args
+init|=
+name|Stream
+operator|.
+name|concat
+argument_list|(
+name|Stream
+operator|.
+name|of
+argument_list|(
+literal|"-d"
+argument_list|,
+name|site
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+literal|"--headless"
+argument_list|,
+literal|"--console-log"
+argument_list|,
+literal|"--show-stack-trace"
+argument_list|)
+argument_list|,
+name|Arrays
+operator|.
+name|stream
+argument_list|(
+name|additionalArgs
+argument_list|)
+argument_list|)
+operator|.
+name|toArray
+argument_list|(
+name|String
+index|[]
+operator|::
+operator|new
+argument_list|)
 decl_stmt|;
 annotation|@
 name|SuppressWarnings
@@ -1949,24 +2034,7 @@ name|daemon
 operator|.
 name|main
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
-literal|"-d"
-operator|,
-name|site
-operator|.
-name|toString
-argument_list|()
-operator|,
-literal|"--headless"
-operator|,
-literal|"--console-log"
-operator|,
-literal|"--show-stack-trace"
-operator|,
-block|}
+name|args
 argument_list|)
 decl_stmt|;
 if|if
@@ -1995,11 +2063,8 @@ return|return
 literal|null
 return|;
 block|}
-block|)
-class|;
-end_class
-
-begin_try
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 name|serverStarted
@@ -2029,9 +2094,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-end_try
-
-begin_expr_stmt
 name|System
 operator|.
 name|out
@@ -2041,9 +2103,6 @@ argument_list|(
 literal|"Gerrit Server Started"
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_return
 return|return
 operator|new
 name|GerritServer
@@ -2060,11 +2119,9 @@ argument_list|,
 name|daemonService
 argument_list|)
 return|;
-end_return
-
-begin_function
-unit|}    private
+block|}
 DECL|method|mergeTestConfig (Config cfg)
+specifier|private
 specifier|static
 name|void
 name|mergeTestConfig
@@ -2292,9 +2349,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|createTestInjector (Daemon daemon)
 specifier|private
 specifier|static
@@ -2401,9 +2455,6 @@ name|module
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2465,9 +2516,6 @@ name|obj
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getLocalHost ()
 specifier|private
 specifier|static
@@ -2482,66 +2530,42 @@ name|getLoopbackAddress
 argument_list|()
 return|;
 block|}
-end_function
-
-begin_decl_stmt
 DECL|field|desc
 specifier|private
 specifier|final
 name|Description
 name|desc
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|field|daemon
 specifier|private
 name|Daemon
 name|daemon
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|field|daemonService
 specifier|private
 name|ExecutorService
 name|daemonService
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|field|testInjector
 specifier|private
 name|Injector
 name|testInjector
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|field|url
 specifier|private
 name|String
 name|url
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|field|sshdAddress
 specifier|private
 name|InetSocketAddress
 name|sshdAddress
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|field|httpAddress
 specifier|private
 name|InetSocketAddress
 name|httpAddress
 decl_stmt|;
-end_decl_stmt
-
-begin_constructor
 DECL|method|GerritServer ( Description desc, Injector testInjector, Daemon daemon, ExecutorService daemonService)
 specifier|private
 name|GerritServer
@@ -2664,9 +2688,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-end_constructor
-
-begin_function
 DECL|method|getUrl ()
 name|String
 name|getUrl
@@ -2676,9 +2697,6 @@ return|return
 name|url
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getSshdAddress ()
 name|InetSocketAddress
 name|getSshdAddress
@@ -2688,9 +2706,6 @@ return|return
 name|sshdAddress
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getHttpAddress ()
 name|InetSocketAddress
 name|getHttpAddress
@@ -2700,9 +2715,6 @@ return|return
 name|httpAddress
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getTestInjector ()
 specifier|public
 name|Injector
@@ -2713,9 +2725,6 @@ return|return
 name|testInjector
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|getDescription ()
 name|Description
 name|getDescription
@@ -2725,9 +2734,6 @@ return|return
 name|desc
 return|;
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|close ()
@@ -2796,9 +2802,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|checkNoteDbState ()
 specifier|private
 name|void
@@ -2905,9 +2908,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_function
-
-begin_function
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -2933,8 +2933,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
