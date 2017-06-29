@@ -185,11 +185,6 @@ operator|*
 name|DAY_IN_MILLIS
 decl_stmt|;
 comment|/**    * @param when {@link Date} to format    * @return age of given {@link Date} compared to now formatted in the same relative format as    *     returned by {@code git log --relative-date}    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"boxing"
-argument_list|)
 DECL|method|format (Date when)
 specifier|public
 specifier|static
