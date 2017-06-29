@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+operator|.
+name|R_HEADS
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -492,6 +508,11 @@ name|rsrc
 operator|.
 name|getRef
 argument_list|()
+argument_list|)
+operator|.
+name|prefix
+argument_list|(
+name|R_HEADS
 argument_list|)
 operator|.
 name|delete
