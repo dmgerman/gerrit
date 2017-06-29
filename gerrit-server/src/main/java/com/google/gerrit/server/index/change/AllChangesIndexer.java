@@ -940,7 +940,7 @@ name|ProjectHolder
 argument_list|>
 block|{
 DECL|field|name
-specifier|private
+specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -948,6 +948,7 @@ name|name
 decl_stmt|;
 DECL|field|size
 specifier|private
+specifier|final
 name|int
 name|size
 decl_stmt|;
