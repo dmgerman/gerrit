@@ -168,6 +168,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|RejectedExecutionException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|TimeUnit
 import|;
 end_import
@@ -640,6 +652,17 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|RejectedExecutionException
+name|e
+parameter_list|)
+block|{
+comment|// Server shutdown, don't spam the logs.
+name|failSilently
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|ExecutionException
 decl||
 name|InterruptedException
@@ -694,6 +717,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+DECL|method|failSilently ()
+specifier|private
+name|void
+name|failSilently
+parameter_list|()
+block|{
+name|ok
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|fail (Throwable t)
 specifier|private
