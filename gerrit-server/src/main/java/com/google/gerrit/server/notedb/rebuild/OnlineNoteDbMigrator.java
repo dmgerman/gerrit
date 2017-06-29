@@ -452,6 +452,11 @@ operator|.
 name|get
 argument_list|()
 operator|.
+name|setAutoMigrate
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|build
 argument_list|()
 init|)

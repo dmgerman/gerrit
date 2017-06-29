@@ -112,6 +112,24 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|MigrationException (String message, Throwable why)
+name|MigrationException
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Throwable
+name|why
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|,
+name|why
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
