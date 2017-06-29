@@ -1209,7 +1209,6 @@ operator|.
 name|createStarted
 argument_list|()
 decl_stmt|;
-specifier|final
 name|MultiProgressMonitor
 name|mpm
 init|=
@@ -1221,7 +1220,6 @@ argument_list|,
 literal|"Reindexing changes"
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Task
 name|projTask
 init|=
@@ -1255,7 +1253,6 @@ operator|.
 name|UNKNOWN
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Task
 name|doneTask
 init|=
@@ -1276,7 +1273,6 @@ operator|.
 name|UNKNOWN
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Task
 name|failedTask
 init|=
@@ -1291,7 +1287,6 @@ operator|.
 name|UNKNOWN
 argument_list|)
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|ListenableFuture
@@ -1306,7 +1301,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AtomicBoolean
 name|ok
 init|=
@@ -1525,7 +1519,7 @@ name|nFailed
 argument_list|)
 return|;
 block|}
-DECL|method|reindexProject ( final ChangeIndexer indexer, final Project.NameKey project, final Task done, final Task failed, final PrintWriter verboseWriter)
+DECL|method|reindexProject ( ChangeIndexer indexer, Project.NameKey project, Task done, Task failed, PrintWriter verboseWriter)
 specifier|public
 name|Callable
 argument_list|<
@@ -1533,25 +1527,20 @@ name|Void
 argument_list|>
 name|reindexProject
 parameter_list|(
-specifier|final
 name|ChangeIndexer
 name|indexer
 parameter_list|,
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|project
 parameter_list|,
-specifier|final
 name|Task
 name|done
 parameter_list|,
-specifier|final
 name|Task
 name|failed
 parameter_list|,
-specifier|final
 name|PrintWriter
 name|verboseWriter
 parameter_list|)
