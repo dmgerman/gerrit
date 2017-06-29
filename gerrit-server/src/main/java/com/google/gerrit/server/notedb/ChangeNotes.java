@@ -2662,7 +2662,7 @@ name|changeNotes
 return|;
 block|}
 DECL|method|scan (Repository repo)
-specifier|public
+specifier|private
 specifier|static
 name|Set
 argument_list|<

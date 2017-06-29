@@ -318,6 +318,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|RefNames
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -539,6 +555,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -949,10 +975,10 @@ decl_stmt|;
 DECL|field|size
 specifier|private
 specifier|final
-name|int
+name|long
 name|size
 decl_stmt|;
-DECL|method|ProjectHolder (Project.NameKey name, int size)
+DECL|method|ProjectHolder (Project.NameKey name, long size)
 name|ProjectHolder
 parameter_list|(
 name|Project
@@ -960,7 +986,7 @@ operator|.
 name|NameKey
 name|name
 parameter_list|,
-name|int
+name|long
 name|size
 parameter_list|)
 block|{
@@ -988,6 +1014,7 @@ name|ProjectHolder
 name|other
 parameter_list|)
 block|{
+comment|// Sort projects based on size first to maximize utilization of threads early on.
 return|return
 name|ComparisonChain
 operator|.
@@ -1102,20 +1129,13 @@ name|name
 argument_list|)
 init|)
 block|{
-name|int
+name|long
 name|size
 init|=
-name|ChangeNotes
-operator|.
-name|Factory
-operator|.
-name|scan
+name|estimateSize
 argument_list|(
 name|repo
 argument_list|)
-operator|.
-name|size
-argument_list|()
 decl_stmt|;
 name|changeCount
 operator|+=
@@ -1189,6 +1209,70 @@ name|index
 argument_list|,
 name|projects
 argument_list|)
+return|;
+block|}
+DECL|method|estimateSize (Repository repo)
+specifier|private
+name|long
+name|estimateSize
+parameter_list|(
+name|Repository
+name|repo
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// Estimate size based on IDs that show up in ref names. This is not perfect, since patch set
+comment|// refs may exist for changes whose metadata was never successfully stored. But that's ok, as
+comment|// the estimate is just used as a heuristic for sorting projects.
+return|return
+name|repo
+operator|.
+name|getRefDatabase
+argument_list|()
+operator|.
+name|getRefs
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_CHANGES
+argument_list|)
+operator|.
+name|values
+argument_list|()
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|r
+lambda|->
+name|Change
+operator|.
+name|Id
+operator|.
+name|fromRef
+argument_list|(
+name|r
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
+name|filter
+argument_list|(
+name|Objects
+operator|::
+name|nonNull
+argument_list|)
+operator|.
+name|distinct
+argument_list|()
+operator|.
+name|count
+argument_list|()
 return|;
 block|}
 DECL|method|indexAll (ChangeIndex index, SortedSet<ProjectHolder> projects)
