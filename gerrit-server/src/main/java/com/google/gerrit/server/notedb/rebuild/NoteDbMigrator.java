@@ -542,6 +542,36 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDbWrapper
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|InternalUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|Sequences
@@ -788,7 +818,7 @@ name|server
 operator|.
 name|util
 operator|.
-name|OneOffRequestContext
+name|ThreadLocalRequestContext
 import|;
 end_import
 
@@ -1230,10 +1260,18 @@ specifier|final
 name|AllProjectsName
 name|allProjects
 decl_stmt|;
+DECL|field|userFactory
+specifier|private
+specifier|final
+name|InternalUser
+operator|.
+name|Factory
+name|userFactory
+decl_stmt|;
 DECL|field|requestContext
 specifier|private
 specifier|final
-name|OneOffRequestContext
+name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
 DECL|field|rebuilder
@@ -1334,7 +1372,7 @@ name|autoMigrate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Builder ( @erritServerConfig Config cfg, SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, OneOffRequestContext requestContext, ChangeRebuilder rebuilder, WorkQueue workQueue, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator)
+DECL|method|Builder ( @erritServerConfig Config cfg, SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilder rebuilder, WorkQueue workQueue, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator)
 name|Builder
 parameter_list|(
 annotation|@
@@ -1357,8 +1395,13 @@ parameter_list|,
 name|AllProjectsName
 name|allProjects
 parameter_list|,
-name|OneOffRequestContext
+name|ThreadLocalRequestContext
 name|requestContext
+parameter_list|,
+name|InternalUser
+operator|.
+name|Factory
+name|userFactory
 parameter_list|,
 name|ChangeRebuilder
 name|rebuilder
@@ -1408,6 +1451,12 @@ operator|.
 name|requestContext
 operator|=
 name|requestContext
+expr_stmt|;
+name|this
+operator|.
+name|userFactory
+operator|=
+name|userFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1683,6 +1732,8 @@ name|allProjects
 argument_list|,
 name|requestContext
 argument_list|,
+name|userFactory
+argument_list|,
 name|rebuilder
 argument_list|,
 name|globalNotesMigration
@@ -1772,8 +1823,16 @@ decl_stmt|;
 DECL|field|requestContext
 specifier|private
 specifier|final
-name|OneOffRequestContext
+name|ThreadLocalRequestContext
 name|requestContext
+decl_stmt|;
+DECL|field|userFactory
+specifier|private
+specifier|final
+name|InternalUser
+operator|.
+name|Factory
+name|userFactory
 decl_stmt|;
 DECL|field|rebuilder
 specifier|private
@@ -1857,7 +1916,7 @@ specifier|final
 name|boolean
 name|autoMigrate
 decl_stmt|;
-DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, OneOffRequestContext requestContext, ChangeRebuilder rebuilder, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, NotesMigrationState stopAtState, boolean trial, boolean forceRebuild, int sequenceGap, boolean autoMigrate)
+DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilder rebuilder, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, NotesMigrationState stopAtState, boolean trial, boolean forceRebuild, int sequenceGap, boolean autoMigrate)
 specifier|private
 name|NoteDbMigrator
 parameter_list|(
@@ -1876,8 +1935,13 @@ parameter_list|,
 name|AllProjectsName
 name|allProjects
 parameter_list|,
-name|OneOffRequestContext
+name|ThreadLocalRequestContext
 name|requestContext
+parameter_list|,
+name|InternalUser
+operator|.
+name|Factory
+name|userFactory
 parameter_list|,
 name|ChangeRebuilder
 name|rebuilder
@@ -1997,6 +2061,12 @@ operator|.
 name|requestContext
 operator|=
 name|requestContext
+expr_stmt|;
+name|this
+operator|.
+name|userFactory
+operator|=
+name|userFactory
 expr_stmt|;
 name|this
 operator|.
@@ -2679,6 +2749,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+init|(
+name|ContextHelper
+name|contextHelper
+init|=
+operator|new
+name|ContextHelper
+argument_list|()
+init|)
+block|{
 name|List
 argument_list|<
 name|ListenableFuture
@@ -2704,10 +2784,9 @@ argument_list|(
 parameter_list|()
 lambda|->
 block|{
-comment|// TODO(dborowitz): Avoid reopening db if using a single thread.
 block|try (ManualRequestContext ctx
 init|=
-name|requestContext
+name|contextHelper
 operator|.
 name|open
 argument_list|()
@@ -2747,10 +2826,7 @@ return|;
 block|}
 block|}
 block|)
-end_class
-
-begin_expr_stmt
-unit|)
+block|)
 operator|.
 name|collect
 argument_list|(
@@ -2758,7 +2834,7 @@ name|toList
 argument_list|()
 argument_list|)
 expr_stmt|;
-end_expr_stmt
+end_class
 
 begin_decl_stmt
 name|boolean
@@ -2836,14 +2912,14 @@ throw|;
 block|}
 end_if
 
-begin_return
-return|return
+begin_expr_stmt
+unit|}      return
 name|disableReviewDb
 argument_list|(
 name|prev
 argument_list|)
-return|;
-end_return
+expr_stmt|;
+end_expr_stmt
 
 begin_function
 unit|}    private
@@ -3216,6 +3292,16 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+init|(
+name|ContextHelper
+name|contextHelper
+init|=
+operator|new
+name|ContextHelper
+argument_list|()
+init|)
+block|{
 name|ImmutableListMultimap
 argument_list|<
 name|Project
@@ -3229,7 +3315,12 @@ argument_list|>
 name|changesByProject
 init|=
 name|getChangesByProject
+argument_list|(
+name|contextHelper
+operator|.
+name|getReviewDb
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
@@ -3276,23 +3367,14 @@ parameter_list|()
 lambda|->
 block|{
 try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|unwrapDb
-argument_list|(
-name|schemaFactory
-operator|.
-name|open
-argument_list|()
-argument_list|)
-init|)
 block|{
 return|return
 name|rebuildProject
 argument_list|(
-name|db
+name|contextHelper
+operator|.
+name|getReviewDb
+argument_list|()
 argument_list|,
 name|changesByProject
 argument_list|,
@@ -3397,10 +3479,11 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
 end_function
 
 begin_function
-DECL|method|getChangesByProject ()
+DECL|method|getChangesByProject (ReviewDb db)
 specifier|private
 name|ImmutableListMultimap
 argument_list|<
@@ -3413,26 +3496,15 @@ operator|.
 name|Id
 argument_list|>
 name|getChangesByProject
-parameter_list|()
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|)
 throws|throws
 name|OrmException
 block|{
 comment|// Memoize all changes so we can close the db connection and allow other threads to use the full
 comment|// connection pool.
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|unwrapDb
-argument_list|(
-name|schemaFactory
-operator|.
-name|open
-argument_list|()
-argument_list|)
-init|)
-block|{
 name|SetMultimap
 argument_list|<
 name|Project
@@ -3558,7 +3630,6 @@ argument_list|,
 name|out
 argument_list|)
 return|;
-block|}
 block|}
 end_function
 
@@ -3937,6 +4008,146 @@ return|;
 block|}
 block|}
 end_function
+
+begin_class
+DECL|class|ContextHelper
+specifier|private
+class|class
+name|ContextHelper
+implements|implements
+name|AutoCloseable
+block|{
+DECL|field|callingThread
+specifier|private
+specifier|final
+name|Thread
+name|callingThread
+decl_stmt|;
+DECL|field|db
+specifier|private
+name|ReviewDb
+name|db
+decl_stmt|;
+DECL|method|ContextHelper ()
+name|ContextHelper
+parameter_list|()
+block|{
+name|callingThread
+operator|=
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|open ()
+name|ManualRequestContext
+name|open
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+return|return
+operator|new
+name|ManualRequestContext
+argument_list|(
+name|userFactory
+operator|.
+name|create
+argument_list|()
+argument_list|,
+comment|// Reuse the same lazily-opened ReviewDb on the original calling thread, otherwise open
+comment|// SchemaFactory in the normal way.
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|callingThread
+argument_list|)
+condition|?
+name|this
+operator|::
+name|getReviewDb
+else|:
+name|schemaFactory
+argument_list|,
+name|requestContext
+argument_list|)
+return|;
+block|}
+DECL|method|getReviewDb ()
+specifier|synchronized
+name|ReviewDb
+name|getReviewDb
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+if|if
+condition|(
+name|db
+operator|==
+literal|null
+condition|)
+block|{
+name|db
+operator|=
+operator|new
+name|ReviewDbWrapper
+argument_list|(
+name|unwrapDb
+argument_list|(
+name|schemaFactory
+operator|.
+name|open
+argument_list|()
+argument_list|)
+argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+comment|// Closed by ContextHelper#close.
+block|}
+block|}
+expr_stmt|;
+block|}
+return|return
+name|db
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|close ()
+specifier|public
+specifier|synchronized
+name|void
+name|close
+parameter_list|()
+block|{
+if|if
+condition|(
+name|db
+operator|!=
+literal|null
+condition|)
+block|{
+name|db
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
+end_class
 
 unit|}
 end_unit
