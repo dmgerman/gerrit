@@ -148,6 +148,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|LabelType
@@ -262,7 +276,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|GitRepositoryManager
+name|LabelNormalizer
 import|;
 end_import
 
@@ -276,9 +290,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|notedb
 operator|.
-name|LabelNormalizer
+name|NoteDbChangeState
+operator|.
+name|PrimaryStorage
 import|;
 end_import
 
@@ -446,7 +462,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|ObjectId
+name|Config
 import|;
 end_import
 
@@ -460,7 +476,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|Repository
+name|ObjectId
 import|;
 end_import
 
@@ -490,12 +506,6 @@ specifier|public
 class|class
 name|ApprovalCopier
 block|{
-DECL|field|repoManager
-specifier|private
-specifier|final
-name|GitRepositoryManager
-name|repoManager
-decl_stmt|;
 DECL|field|projectCache
 specifier|private
 specifier|final
@@ -530,12 +540,9 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ApprovalCopier ( GitRepositoryManager repoManager, ProjectCache projectCache, ChangeKindCache changeKindCache, LabelNormalizer labelNormalizer, ChangeData.Factory changeDataFactory, PatchSetUtil psUtil)
+DECL|method|ApprovalCopier ( ProjectCache projectCache, ChangeKindCache changeKindCache, LabelNormalizer labelNormalizer, ChangeData.Factory changeDataFactory, PatchSetUtil psUtil)
 name|ApprovalCopier
 parameter_list|(
-name|GitRepositoryManager
-name|repoManager
-parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
@@ -556,12 +563,6 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|repoManager
-operator|=
-name|repoManager
-expr_stmt|;
-name|this
-operator|.
 name|projectCache
 operator|=
 name|projectCache
@@ -591,11 +592,11 @@ operator|=
 name|psUtil
 expr_stmt|;
 block|}
-comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param ctl change control for user uploading PatchSet    * @param ps new PatchSet    * @throws OrmException    */
-DECL|method|copy (ReviewDb db, ChangeControl ctl, PatchSet ps)
+comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param ctl change control for user uploading PatchSet    * @param ps new PatchSet    * @param rw open walk that can read the patch set commit; null to open the repo on demand.    * @param repoConfig repo config used for change kind detection; null to read from repo on demand.    * @throws OrmException    */
+DECL|method|copyInReviewDb ( ReviewDb db, ChangeControl ctl, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|void
-name|copy
+name|copyInReviewDb
 parameter_list|(
 name|ReviewDb
 name|db
@@ -605,11 +606,21 @@ name|ctl
 parameter_list|,
 name|PatchSet
 name|ps
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
+parameter_list|,
+annotation|@
+name|Nullable
+name|Config
+name|repoConfig
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|copy
+name|copyInReviewDb
 argument_list|(
 name|db
 argument_list|,
@@ -617,21 +628,22 @@ name|ctl
 argument_list|,
 name|ps
 argument_list|,
+name|rw
+argument_list|,
+name|repoConfig
+argument_list|,
 name|Collections
 operator|.
-expr|<
-name|PatchSetApproval
-operator|>
 name|emptyList
 argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param ctl change control for user uploading PatchSet    * @param ps new PatchSet    * @param dontCopy PatchSetApprovals indicating which (account, label) pairs should not be copied    * @throws OrmException    */
-DECL|method|copy (ReviewDb db, ChangeControl ctl, PatchSet ps, Iterable<PatchSetApproval> dontCopy)
+comment|/**    * Apply approval copy settings from prior PatchSets to a new PatchSet.    *    * @param db review database.    * @param ctl change control for user uploading PatchSet    * @param ps new PatchSet    * @param rw open walk that can read the patch set commit; null to open the repo on demand.    * @param repoConfig repo config used for change kind detection; null to read from repo on demand.    * @param dontCopy PatchSetApprovals indicating which (account, label) pairs should not be copied    * @throws OrmException    */
+DECL|method|copyInReviewDb ( ReviewDb db, ChangeControl ctl, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
 specifier|public
 name|void
-name|copy
+name|copyInReviewDb
 parameter_list|(
 name|ReviewDb
 name|db
@@ -641,6 +653,16 @@ name|ctl
 parameter_list|,
 name|PatchSet
 name|ps
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
+parameter_list|,
+annotation|@
+name|Nullable
+name|Config
+name|repoConfig
 parameter_list|,
 name|Iterable
 argument_list|<
@@ -650,6 +672,23 @@ name|dontCopy
 parameter_list|)
 throws|throws
 name|OrmException
+block|{
+if|if
+condition|(
+name|PrimaryStorage
+operator|.
+name|of
+argument_list|(
+name|ctl
+operator|.
+name|getChange
+argument_list|()
+argument_list|)
+operator|==
+name|PrimaryStorage
+operator|.
+name|REVIEW_DB
+condition|)
 block|{
 name|db
 operator|.
@@ -666,12 +705,17 @@ name|ctl
 argument_list|,
 name|ps
 argument_list|,
+name|rw
+argument_list|,
+name|repoConfig
+argument_list|,
 name|dontCopy
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getForPatchSet (ReviewDb db, ChangeControl ctl, PatchSet.Id psId)
+block|}
+DECL|method|getForPatchSet ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 name|Iterable
 argument_list|<
 name|PatchSetApproval
@@ -688,6 +732,16 @@ name|PatchSet
 operator|.
 name|Id
 name|psId
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
+parameter_list|,
+annotation|@
+name|Nullable
+name|Config
+name|repoConfig
 parameter_list|)
 throws|throws
 name|OrmException
@@ -701,6 +755,10 @@ name|ctl
 argument_list|,
 name|psId
 argument_list|,
+name|rw
+argument_list|,
+name|repoConfig
+argument_list|,
 name|Collections
 operator|.
 expr|<
@@ -711,7 +769,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getForPatchSet ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, Iterable<PatchSetApproval> dontCopy)
+DECL|method|getForPatchSet ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
 name|Iterable
 argument_list|<
 name|PatchSetApproval
@@ -728,6 +786,16 @@ name|PatchSet
 operator|.
 name|Id
 name|psId
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
+parameter_list|,
+annotation|@
+name|Nullable
+name|Config
+name|repoConfig
 parameter_list|,
 name|Iterable
 argument_list|<
@@ -778,11 +846,15 @@ name|ctl
 argument_list|,
 name|ps
 argument_list|,
+name|rw
+argument_list|,
+name|repoConfig
+argument_list|,
 name|dontCopy
 argument_list|)
 return|;
 block|}
-DECL|method|getForPatchSet ( ReviewDb db, ChangeControl ctl, PatchSet ps, Iterable<PatchSetApproval> dontCopy)
+DECL|method|getForPatchSet ( ReviewDb db, ChangeControl ctl, PatchSet ps, @Nullable RevWalk rw, @Nullable Config repoConfig, Iterable<PatchSetApproval> dontCopy)
 specifier|private
 name|Iterable
 argument_list|<
@@ -798,6 +870,16 @@ name|ctl
 parameter_list|,
 name|PatchSet
 name|ps
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
+parameter_list|,
+annotation|@
+name|Nullable
+name|Config
+name|repoConfig
 parameter_list|,
 name|Iterable
 argument_list|<
@@ -997,34 +1079,6 @@ argument_list|(
 name|cd
 argument_list|)
 decl_stmt|;
-try|try
-init|(
-name|Repository
-name|repo
-init|=
-name|repoManager
-operator|.
-name|openRepository
-argument_list|(
-name|project
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
-argument_list|()
-argument_list|)
-init|;
-name|RevWalk
-name|rw
-operator|=
-operator|new
-name|RevWalk
-argument_list|(
-name|repo
-argument_list|)
-init|)
-block|{
 comment|// Walk patch sets strictly less than current in descending order.
 name|Collection
 argument_list|<
@@ -1104,10 +1158,7 @@ argument_list|()
 argument_list|,
 name|rw
 argument_list|,
-name|repo
-operator|.
-name|getConfig
-argument_list|()
+name|repoConfig
 argument_list|,
 name|ObjectId
 operator|.
@@ -1264,7 +1315,6 @@ operator|.
 name|getNormalized
 argument_list|()
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
