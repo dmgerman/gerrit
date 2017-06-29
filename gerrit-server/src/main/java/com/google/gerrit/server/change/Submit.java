@@ -912,6 +912,20 @@ name|jgit
 operator|.
 name|errors
 operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
 name|RepositoryNotFoundException
 import|;
 end_import
@@ -1622,6 +1636,8 @@ throws|,
 name|PermissionBackendException
 throws|,
 name|UpdateException
+throws|,
+name|ConfigInvalidException
 block|{
 name|input
 operator|.
@@ -1720,6 +1736,8 @@ throws|,
 name|IOException
 throws|,
 name|UpdateException
+throws|,
+name|ConfigInvalidException
 block|{
 name|Change
 name|change
@@ -1959,7 +1977,7 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-comment|//$FALL-THROUGH$
+comment|// $FALL-THROUGH$
 case|case
 name|ABANDONED
 case|:
@@ -3367,6 +3385,10 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|PermissionBackend
 operator|.
@@ -3649,6 +3671,8 @@ throws|,
 name|PermissionBackendException
 throws|,
 name|UpdateException
+throws|,
+name|ConfigInvalidException
 block|{
 name|PatchSet
 name|ps

@@ -1893,6 +1893,8 @@ throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ConfigInvalidException
 block|{
 for|for
 control|(

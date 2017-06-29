@@ -654,6 +654,20 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
 begin_class
 DECL|class|ReviewersUtil
 specifier|public
@@ -1053,6 +1067,8 @@ throws|throws
 name|IOException
 throws|,
 name|OrmException
+throws|,
+name|ConfigInvalidException
 block|{
 name|String
 name|query
@@ -1426,6 +1442,10 @@ name|candidateList
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 try|try
 init|(

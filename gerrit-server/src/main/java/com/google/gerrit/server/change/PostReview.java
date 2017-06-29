@@ -1738,6 +1738,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|lib
 operator|.
 name|Config
@@ -2076,6 +2090,8 @@ throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ConfigInvalidException
 block|{
 return|return
 name|apply
@@ -2125,6 +2141,8 @@ throws|,
 name|IOException
 throws|,
 name|PermissionBackendException
+throws|,
+name|ConfigInvalidException
 block|{
 comment|// Respect timestamp, but truncate at change created-on time.
 name|ts
@@ -3186,6 +3204,10 @@ throws|,
 name|OrmException
 throws|,
 name|PermissionBackendException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 if|if
 condition|(

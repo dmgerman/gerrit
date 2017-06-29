@@ -394,6 +394,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|kohsuke
 operator|.
 name|args4j
@@ -691,6 +705,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 try|try
 block|{
@@ -756,6 +772,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|GroupInput
 name|input
@@ -851,6 +869,8 @@ throws|,
 name|OrmException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|AddMembers
 operator|.

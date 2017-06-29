@@ -796,6 +796,20 @@ name|jgit
 operator|.
 name|errors
 operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
 name|InvalidObjectIdException
 import|;
 end_import
@@ -1192,6 +1206,8 @@ throws|,
 name|UpdateException
 throws|,
 name|RestApiException
+throws|,
+name|ConfigInvalidException
 block|{
 return|return
 name|cherryPick
@@ -1306,6 +1322,8 @@ throws|,
 name|UpdateException
 throws|,
 name|RestApiException
+throws|,
+name|ConfigInvalidException
 block|{
 name|IdentifiedUser
 name|identifiedUser
@@ -2239,6 +2257,8 @@ throws|,
 name|OrmException
 throws|,
 name|BadRequestException
+throws|,
+name|ConfigInvalidException
 block|{
 name|Change
 name|destChange
@@ -2396,6 +2416,8 @@ throws|,
 name|IOException
 throws|,
 name|BadRequestException
+throws|,
+name|ConfigInvalidException
 block|{
 name|Change
 operator|.

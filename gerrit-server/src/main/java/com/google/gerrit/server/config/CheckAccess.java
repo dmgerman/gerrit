@@ -442,6 +442,20 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -591,6 +605,8 @@ throws|,
 name|RestApiException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 name|permissionBackend
 operator|.
