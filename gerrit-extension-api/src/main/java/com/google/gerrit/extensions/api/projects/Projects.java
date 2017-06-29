@@ -687,6 +687,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -704,6 +706,8 @@ parameter_list|(
 name|ProjectInput
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -721,6 +725,8 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new

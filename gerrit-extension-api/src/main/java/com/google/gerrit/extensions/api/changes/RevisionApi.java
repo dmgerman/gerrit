@@ -761,6 +761,8 @@ specifier|public
 name|void
 name|delete
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -778,6 +780,8 @@ parameter_list|(
 name|ReviewInput
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -792,6 +796,8 @@ specifier|public
 name|void
 name|submit
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -809,6 +815,8 @@ parameter_list|(
 name|SubmitInput
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -823,6 +831,8 @@ specifier|public
 name|void
 name|publish
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -840,6 +850,8 @@ parameter_list|(
 name|CherryPickInput
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -854,6 +866,8 @@ specifier|public
 name|ChangeApi
 name|rebase
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -871,6 +885,8 @@ parameter_list|(
 name|RebaseInput
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -885,6 +901,8 @@ specifier|public
 name|boolean
 name|canRebase
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -902,6 +920,8 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -922,6 +942,8 @@ parameter_list|,
 name|boolean
 name|reviewed
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -939,6 +961,8 @@ name|String
 argument_list|>
 name|reviewed
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -953,6 +977,8 @@ specifier|public
 name|MergeableInfo
 name|mergeable
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -967,6 +993,8 @@ specifier|public
 name|MergeableInfo
 name|mergeableOtherBranches
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -989,6 +1017,8 @@ parameter_list|(
 name|String
 name|base
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1011,6 +1041,8 @@ parameter_list|(
 name|int
 name|parentNum
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1030,6 +1062,8 @@ name|FileInfo
 argument_list|>
 name|files
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1069,6 +1103,8 @@ argument_list|>
 argument_list|>
 name|comments
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1091,6 +1127,8 @@ argument_list|>
 argument_list|>
 name|robotComments
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1108,6 +1146,8 @@ name|CommentInfo
 argument_list|>
 name|commentsAsList
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1125,6 +1165,8 @@ name|CommentInfo
 argument_list|>
 name|draftsAsList
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1142,6 +1184,8 @@ name|RobotCommentInfo
 argument_list|>
 name|robotCommentsAsList
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1164,6 +1208,8 @@ argument_list|>
 argument_list|>
 name|drafts
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1181,6 +1227,8 @@ parameter_list|(
 name|DraftInput
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1198,6 +1246,8 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1215,6 +1265,8 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1232,6 +1284,8 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1246,6 +1300,8 @@ specifier|public
 name|BinaryResult
 name|patch
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1263,6 +1319,8 @@ parameter_list|(
 name|String
 name|path
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1282,6 +1340,8 @@ name|ActionInfo
 argument_list|>
 name|actions
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1296,6 +1356,8 @@ specifier|public
 name|SubmitType
 name|submitType
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1310,6 +1372,8 @@ specifier|public
 name|BinaryResult
 name|submitPreview
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1327,6 +1391,8 @@ parameter_list|(
 name|String
 name|format
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1344,6 +1410,8 @@ parameter_list|(
 name|TestSubmitRuleInput
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1358,6 +1426,8 @@ specifier|public
 name|MergeListRequest
 name|getMergeList
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1375,6 +1445,8 @@ parameter_list|(
 name|String
 name|description
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1389,6 +1461,8 @@ specifier|public
 name|String
 name|description
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -1403,6 +1477,8 @@ specifier|public
 name|String
 name|etag
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new

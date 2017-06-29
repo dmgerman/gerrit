@@ -217,6 +217,8 @@ specifier|public
 name|String
 name|getVersion
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -231,6 +233,8 @@ specifier|public
 name|ServerInfo
 name|getInfo
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -245,6 +249,8 @@ specifier|public
 name|GeneralPreferencesInfo
 name|getDefaultPreferences
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -262,6 +268,8 @@ parameter_list|(
 name|GeneralPreferencesInfo
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -276,6 +284,8 @@ specifier|public
 name|DiffPreferencesInfo
 name|getDefaultDiffPreferences
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -293,6 +303,8 @@ parameter_list|(
 name|DiffPreferencesInfo
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new

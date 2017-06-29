@@ -162,6 +162,8 @@ parameter_list|(
 name|DraftInput
 name|in
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -176,6 +178,8 @@ specifier|public
 name|void
 name|delete
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
