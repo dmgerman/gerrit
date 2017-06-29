@@ -316,6 +316,20 @@ operator|.
 name|getRegisteredOn
 argument_list|()
 expr_stmt|;
+name|info
+operator|.
+name|inactive
+operator|=
+operator|!
+name|a
+operator|.
+name|isActive
+argument_list|()
+condition|?
+literal|true
+else|:
+literal|null
+expr_stmt|;
 try|try
 block|{
 name|directory
@@ -384,6 +398,11 @@ DECL|field|registeredOn
 specifier|public
 name|Timestamp
 name|registeredOn
+decl_stmt|;
+DECL|field|inactive
+specifier|public
+name|Boolean
+name|inactive
 decl_stmt|;
 DECL|method|AccountDetailInfo (Integer id)
 specifier|public
