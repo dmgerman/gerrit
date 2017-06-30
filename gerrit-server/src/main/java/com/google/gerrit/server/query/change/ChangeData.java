@@ -5207,6 +5207,10 @@ name|c
 operator|.
 name|currentPatchSetId
 argument_list|()
+argument_list|,
+literal|null
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;

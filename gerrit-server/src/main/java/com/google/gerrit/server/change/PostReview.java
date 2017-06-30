@@ -5616,6 +5616,8 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|UnprocessableEntityException
+throws|,
+name|IOException
 block|{
 name|user
 operator|=
@@ -7397,6 +7399,8 @@ throws|throws
 name|OrmException
 throws|,
 name|ResourceConflictException
+throws|,
+name|IOException
 block|{
 name|Map
 argument_list|<
@@ -8731,6 +8735,8 @@ name|del
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|LabelTypes
 name|labelTypes
@@ -8780,6 +8786,19 @@ argument_list|,
 name|user
 operator|.
 name|getAccountId
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getRepoView
+argument_list|()
+operator|.
+name|getConfig
 argument_list|()
 argument_list|)
 control|)

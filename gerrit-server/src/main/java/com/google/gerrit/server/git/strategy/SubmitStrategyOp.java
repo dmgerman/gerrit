@@ -2225,6 +2225,8 @@ name|user
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|Change
 operator|.
@@ -2392,6 +2394,8 @@ name|update
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|PatchSet
 operator|.
@@ -2440,6 +2444,19 @@ name|getControl
 argument_list|()
 argument_list|,
 name|psId
+argument_list|,
+name|ctx
+operator|.
+name|getRevWalk
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getRepoView
+argument_list|()
+operator|.
+name|getConfig
+argument_list|()
 argument_list|)
 control|)
 block|{

@@ -264,6 +264,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|LabelType
@@ -699,6 +713,34 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevWalk
 import|;
 end_import
 
@@ -2375,7 +2417,7 @@ name|getApprovals
 argument_list|()
 return|;
 block|}
-DECL|method|byPatchSet (ReviewDb db, ChangeControl ctl, PatchSet.Id psId)
+DECL|method|byPatchSet ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2393,6 +2435,16 @@ name|PatchSet
 operator|.
 name|Id
 name|psId
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
+parameter_list|,
+annotation|@
+name|Nullable
+name|Config
+name|repoConfig
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2431,10 +2483,14 @@ argument_list|,
 name|ctl
 argument_list|,
 name|psId
+argument_list|,
+name|rw
+argument_list|,
+name|repoConfig
 argument_list|)
 return|;
 block|}
-DECL|method|byPatchSetUser ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, Account.Id accountId)
+DECL|method|byPatchSetUser ( ReviewDb db, ChangeControl ctl, PatchSet.Id psId, Account.Id accountId, @Nullable RevWalk rw, @Nullable Config repoConfig)
 specifier|public
 name|Iterable
 argument_list|<
@@ -2457,6 +2513,16 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+annotation|@
+name|Nullable
+name|RevWalk
+name|rw
+parameter_list|,
+annotation|@
+name|Nullable
+name|Config
+name|repoConfig
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2497,6 +2563,10 @@ argument_list|,
 name|ctl
 argument_list|,
 name|psId
+argument_list|,
+name|rw
+argument_list|,
+name|repoConfig
 argument_list|)
 argument_list|,
 name|accountId
