@@ -154,6 +154,8 @@ specifier|public
 name|CommentInfo
 name|get
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -171,6 +173,8 @@ parameter_list|(
 name|DeleteCommentInput
 name|input
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new

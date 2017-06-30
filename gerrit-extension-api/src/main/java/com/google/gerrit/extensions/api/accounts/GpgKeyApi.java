@@ -150,6 +150,8 @@ specifier|public
 name|GpgKeyInfo
 name|get
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -164,6 +166,8 @@ specifier|public
 name|void
 name|delete
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new

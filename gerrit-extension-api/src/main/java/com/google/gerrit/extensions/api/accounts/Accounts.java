@@ -592,6 +592,8 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -609,6 +611,8 @@ parameter_list|(
 name|int
 name|id
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -623,6 +627,8 @@ specifier|public
 name|AccountApi
 name|self
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -640,6 +646,8 @@ parameter_list|(
 name|String
 name|username
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -657,6 +665,8 @@ parameter_list|(
 name|AccountInput
 name|input
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -671,6 +681,8 @@ specifier|public
 name|SuggestAccountsRequest
 name|suggestAccounts
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -688,6 +700,8 @@ parameter_list|(
 name|String
 name|query
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -702,6 +716,8 @@ specifier|public
 name|QueryRequest
 name|query
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -719,6 +735,8 @@ parameter_list|(
 name|String
 name|query
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new

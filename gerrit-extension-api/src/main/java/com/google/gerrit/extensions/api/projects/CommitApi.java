@@ -169,6 +169,8 @@ parameter_list|(
 name|CherryPickInput
 name|input
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
