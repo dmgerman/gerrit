@@ -282,6 +282,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|WebLinks
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|extensions
 operator|.
 name|events
@@ -670,6 +684,12 @@ specifier|final
 name|GitReferenceUpdated
 name|referenceUpdated
 decl_stmt|;
+DECL|field|links
+specifier|private
+specifier|final
+name|WebLinks
+name|links
+decl_stmt|;
 DECL|field|ref
 specifier|private
 name|String
@@ -677,7 +697,7 @@ name|ref
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateTag ( PermissionBackend permissionBackend, Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, TagCache tagCache, GitReferenceUpdated referenceUpdated, @Assisted String ref)
+DECL|method|CreateTag ( PermissionBackend permissionBackend, Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, TagCache tagCache, GitReferenceUpdated referenceUpdated, WebLinks webLinks, @Assisted String ref)
 name|CreateTag
 parameter_list|(
 name|PermissionBackend
@@ -697,6 +717,9 @@ name|tagCache
 parameter_list|,
 name|GitReferenceUpdated
 name|referenceUpdated
+parameter_list|,
+name|WebLinks
+name|webLinks
 parameter_list|,
 annotation|@
 name|Assisted
@@ -733,6 +756,12 @@ operator|.
 name|referenceUpdated
 operator|=
 name|referenceUpdated
+expr_stmt|;
+name|this
+operator|.
+name|links
+operator|=
+name|webLinks
 expr_stmt|;
 name|this
 operator|.
@@ -1207,6 +1236,13 @@ argument_list|,
 name|result
 argument_list|,
 name|w
+argument_list|,
+name|resource
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
+name|links
 argument_list|)
 return|;
 block|}

@@ -111,6 +111,11 @@ specifier|private
 name|String
 name|rootTree
 decl_stmt|;
+DECL|field|tag
+specifier|private
+name|String
+name|tag
+decl_stmt|;
 DECL|field|pathSeparator
 specifier|private
 name|char
@@ -175,6 +180,32 @@ name|str
 parameter_list|)
 block|{
 name|branch
+operator|=
+name|str
+expr_stmt|;
+block|}
+comment|/** @return parameterized string for the tag URL. */
+DECL|method|getTag ()
+specifier|public
+name|String
+name|getTag
+parameter_list|()
+block|{
+return|return
+name|tag
+return|;
+block|}
+comment|/**    * Set the parameterized string for the tag URL.    *    * @param str new string.    */
+DECL|method|setTag (String str)
+specifier|public
+name|void
+name|setTag
+parameter_list|(
+name|String
+name|str
+parameter_list|)
+block|{
+name|tag
 operator|=
 name|str
 expr_stmt|;
