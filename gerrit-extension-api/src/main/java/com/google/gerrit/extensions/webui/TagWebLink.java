@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2015 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.projects
+DECL|package|com.google.gerrit.extensions.webui
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|extensions
 operator|.
-name|projects
+name|webui
 package|;
 end_package
 
@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|extensions
 operator|.
-name|info
+name|annotations
 operator|.
-name|WebLinkInfo
+name|ExtensionPoint
 import|;
 end_import
 
@@ -88,53 +88,40 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gerrit
 operator|.
-name|core
+name|extensions
 operator|.
-name|client
+name|common
 operator|.
-name|JsArray
+name|WebLinkInfo
 import|;
 end_import
 
-begin_class
-DECL|class|TagInfo
+begin_interface
+annotation|@
+name|ExtensionPoint
+DECL|interface|TagWebLink
 specifier|public
-class|class
-name|TagInfo
+interface|interface
+name|TagWebLink
 extends|extends
-name|RefInfo
+name|WebLink
 block|{
-DECL|method|canDelete ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|canDelete
-parameter_list|()
-comment|/*-{ return this['can_delete'] ? true : false; }-*/
-function_decl|;
-DECL|method|webLinks ()
-specifier|public
-specifier|final
-specifier|native
-name|JsArray
-argument_list|<
+comment|/**    * {@link com.google.gerrit.extensions.common.WebLinkInfo} describing a link from a tag to an    * external service.    *    *<p>In order for the web link to be visible {@link    * com.google.gerrit.extensions.common.WebLinkInfo#url} and {@link    * com.google.gerrit.extensions.common.WebLinkInfo#name} must be set.    *    *<p>    *    * @param projectName Name of the project    * @param tagName Name of the tag    * @return WebLinkInfo that links to tag in external service, null if there should be no link.    */
+DECL|method|getTagWebLink (String projectName, String tagName)
 name|WebLinkInfo
-argument_list|>
-name|webLinks
-parameter_list|()
-comment|/*-{ return this.web_links; }-*/
+name|getTagWebLink
+parameter_list|(
+name|String
+name|projectName
+parameter_list|,
+name|String
+name|tagName
+parameter_list|)
 function_decl|;
-comment|// TODO(dpursehouse) add extra tag-related fields (message, tagger, etc)
-DECL|method|TagInfo ()
-specifier|protected
-name|TagInfo
-parameter_list|()
-block|{}
 block|}
-end_class
+end_interface
 
 end_unit
 

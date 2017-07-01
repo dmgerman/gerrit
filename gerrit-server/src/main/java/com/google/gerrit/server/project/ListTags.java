@@ -122,6 +122,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|BadRequestException
@@ -219,6 +235,20 @@ operator|.
 name|server
 operator|.
 name|CommonConverters
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|WebLinks
 import|;
 end_import
 
@@ -572,6 +602,12 @@ specifier|final
 name|SearchingChangeCacheImpl
 name|changeCache
 decl_stmt|;
+DECL|field|links
+specifier|private
+specifier|final
+name|WebLinks
+name|links
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -742,7 +778,7 @@ name|matchRegex
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListTags ( GitRepositoryManager repoManager, Provider<ReviewDb> dbProvider, TagCache tagCache, ChangeNotes.Factory changeNotesFactory, @Nullable SearchingChangeCacheImpl changeCache)
+DECL|method|ListTags ( GitRepositoryManager repoManager, Provider<ReviewDb> dbProvider, TagCache tagCache, ChangeNotes.Factory changeNotesFactory, @Nullable SearchingChangeCacheImpl changeCache, WebLinks webLinks)
 specifier|public
 name|ListTags
 parameter_list|(
@@ -767,6 +803,9 @@ annotation|@
 name|Nullable
 name|SearchingChangeCacheImpl
 name|changeCache
+parameter_list|,
+name|WebLinks
+name|webLinks
 parameter_list|)
 block|{
 name|this
@@ -798,6 +837,12 @@ operator|.
 name|changeCache
 operator|=
 name|changeCache
+expr_stmt|;
+name|this
+operator|.
+name|links
+operator|=
+name|webLinks
 expr_stmt|;
 block|}
 annotation|@
@@ -855,7 +900,7 @@ argument_list|)
 init|)
 block|{
 name|ProjectControl
-name|control
+name|pctl
 init|=
 name|resource
 operator|.
@@ -872,7 +917,7 @@ name|all
 init|=
 name|visibleTags
 argument_list|(
-name|control
+name|pctl
 argument_list|,
 name|repo
 argument_list|,
@@ -910,7 +955,7 @@ name|ref
 argument_list|,
 name|rw
 argument_list|,
-name|control
+name|pctl
 operator|.
 name|controlForRef
 argument_list|(
@@ -919,6 +964,10 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+argument_list|,
+name|pctl
+argument_list|,
+name|links
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1087,7 +1136,7 @@ name|tagName
 argument_list|)
 decl_stmt|;
 name|ProjectControl
-name|control
+name|pctl
 init|=
 name|resource
 operator|.
@@ -1103,7 +1152,7 @@ operator|&&
 operator|!
 name|visibleTags
 argument_list|(
-name|control
+name|pctl
 argument_list|,
 name|repo
 argument_list|,
@@ -1131,7 +1180,7 @@ name|ref
 argument_list|,
 name|rw
 argument_list|,
-name|control
+name|pctl
 operator|.
 name|controlForRef
 argument_list|(
@@ -1140,6 +1189,10 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+argument_list|,
+name|pctl
+argument_list|,
+name|links
 argument_list|)
 return|;
 block|}
@@ -1152,7 +1205,7 @@ name|id
 argument_list|)
 throw|;
 block|}
-DECL|method|createTagInfo (Ref ref, RevWalk rw, RefControl control)
+DECL|method|createTagInfo ( Ref ref, RevWalk rw, RefControl control, ProjectControl pctl, WebLinks links)
 specifier|public
 specifier|static
 name|TagInfo
@@ -1166,6 +1219,12 @@ name|rw
 parameter_list|,
 name|RefControl
 name|control
+parameter_list|,
+name|ProjectControl
+name|pctl
+parameter_list|,
+name|WebLinks
+name|links
 parameter_list|)
 throws|throws
 name|MissingObjectException
@@ -1182,6 +1241,30 @@ argument_list|(
 name|ref
 operator|.
 name|getObjectId
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|List
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|webLinks
+init|=
+name|links
+operator|.
+name|getTagLinks
+argument_list|(
+name|pctl
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|ref
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1259,6 +1342,15 @@ name|control
 operator|.
 name|canDelete
 argument_list|()
+argument_list|,
+name|webLinks
+operator|.
+name|isEmpty
+argument_list|()
+condition|?
+literal|null
+else|:
+name|webLinks
 argument_list|)
 return|;
 block|}
@@ -1284,6 +1376,15 @@ name|control
 operator|.
 name|canDelete
 argument_list|()
+argument_list|,
+name|webLinks
+operator|.
+name|isEmpty
+argument_list|()
+condition|?
+literal|null
+else|:
+name|webLinks
 argument_list|)
 return|;
 block|}
@@ -1326,7 +1427,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-DECL|method|visibleTags ( ProjectControl control, Repository repo, Map<String, Ref> tags)
+DECL|method|visibleTags ( ProjectControl pctl, Repository repo, Map<String, Ref> tags)
 specifier|private
 name|Map
 argument_list|<
@@ -1337,7 +1438,7 @@ argument_list|>
 name|visibleTags
 parameter_list|(
 name|ProjectControl
-name|control
+name|pctl
 parameter_list|,
 name|Repository
 name|repo
@@ -1363,7 +1464,7 @@ name|changeCache
 argument_list|,
 name|repo
 argument_list|,
-name|control
+name|pctl
 argument_list|,
 name|dbProvider
 operator|.

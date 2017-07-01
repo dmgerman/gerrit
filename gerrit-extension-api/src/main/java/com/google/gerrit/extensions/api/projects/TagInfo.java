@@ -84,6 +84,32 @@ name|GitPerson
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|TagInfo
 specifier|public
@@ -107,7 +133,15 @@ specifier|public
 name|GitPerson
 name|tagger
 decl_stmt|;
-DECL|method|TagInfo (String ref, String revision, boolean canDelete)
+DECL|field|webLinks
+specifier|public
+name|List
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|webLinks
+decl_stmt|;
+DECL|method|TagInfo (String ref, String revision, boolean canDelete, List<WebLinkInfo> webLinks)
 specifier|public
 name|TagInfo
 parameter_list|(
@@ -119,6 +153,12 @@ name|revision
 parameter_list|,
 name|boolean
 name|canDelete
+parameter_list|,
+name|List
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|webLinks
 parameter_list|)
 block|{
 name|this
@@ -139,8 +179,14 @@ name|canDelete
 operator|=
 name|canDelete
 expr_stmt|;
+name|this
+operator|.
+name|webLinks
+operator|=
+name|webLinks
+expr_stmt|;
 block|}
-DECL|method|TagInfo ( String ref, String revision, String object, String message, GitPerson tagger, boolean canDelete)
+DECL|method|TagInfo ( String ref, String revision, String object, String message, GitPerson tagger, boolean canDelete, List<WebLinkInfo> webLinks)
 specifier|public
 name|TagInfo
 parameter_list|(
@@ -161,6 +207,12 @@ name|tagger
 parameter_list|,
 name|boolean
 name|canDelete
+parameter_list|,
+name|List
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|webLinks
 parameter_list|)
 block|{
 name|this
@@ -170,6 +222,8 @@ argument_list|,
 name|revision
 argument_list|,
 name|canDelete
+argument_list|,
+name|webLinks
 argument_list|)
 expr_stmt|;
 name|this
@@ -189,6 +243,12 @@ operator|.
 name|tagger
 operator|=
 name|tagger
+expr_stmt|;
+name|this
+operator|.
+name|webLinks
+operator|=
+name|webLinks
 expr_stmt|;
 block|}
 block|}
