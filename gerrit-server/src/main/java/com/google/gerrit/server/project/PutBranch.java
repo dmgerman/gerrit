@@ -185,10 +185,8 @@ literal|"Branch \""
 operator|+
 name|rsrc
 operator|.
-name|getBranchInfo
+name|getRef
 argument_list|()
-operator|.
-name|ref
 operator|+
 literal|"\" already exists"
 argument_list|)

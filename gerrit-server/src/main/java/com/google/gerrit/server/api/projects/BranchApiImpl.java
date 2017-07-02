@@ -216,6 +216,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|BranchResource
@@ -299,6 +315,22 @@ operator|.
 name|project
 operator|.
 name|FilesCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|GetBranch
 import|;
 end_import
 
@@ -446,6 +478,12 @@ specifier|final
 name|FilesCollection
 name|filesCollection
 decl_stmt|;
+DECL|field|getBranch
+specifier|private
+specifier|final
+name|GetBranch
+name|getBranch
+decl_stmt|;
 DECL|field|getContent
 specifier|private
 specifier|final
@@ -472,7 +510,7 @@ name|project
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BranchApiImpl ( BranchesCollection branches, CreateBranch.Factory createBranchFactory, DeleteBranch deleteBranch, FilesCollection filesCollection, GetContent getContent, GetReflog getReflog, @Assisted ProjectResource project, @Assisted String ref)
+DECL|method|BranchApiImpl ( BranchesCollection branches, CreateBranch.Factory createBranchFactory, DeleteBranch deleteBranch, FilesCollection filesCollection, GetBranch getBranch, GetContent getContent, GetReflog getReflog, @Assisted ProjectResource project, @Assisted String ref)
 name|BranchApiImpl
 parameter_list|(
 name|BranchesCollection
@@ -488,6 +526,9 @@ name|deleteBranch
 parameter_list|,
 name|FilesCollection
 name|filesCollection
+parameter_list|,
+name|GetBranch
+name|getBranch
 parameter_list|,
 name|GetContent
 name|getContent
@@ -529,6 +570,12 @@ operator|.
 name|filesCollection
 operator|=
 name|filesCollection
+expr_stmt|;
+name|this
+operator|.
+name|getBranch
+operator|=
+name|getBranch
 expr_stmt|;
 name|this
 operator|.
@@ -617,11 +664,13 @@ block|{
 try|try
 block|{
 return|return
+name|getBranch
+operator|.
+name|apply
+argument_list|(
 name|resource
 argument_list|()
-operator|.
-name|getBranchInfo
-argument_list|()
+argument_list|)
 return|;
 block|}
 catch|catch
@@ -769,6 +818,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -792,6 +843,8 @@ throws|throws
 name|RestApiException
 throws|,
 name|IOException
+throws|,
+name|PermissionBackendException
 block|{
 return|return
 name|branches
