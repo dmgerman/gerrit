@@ -258,6 +258,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|indentWithTabs
+argument_list|(
+name|in
+operator|.
+name|indentWithTabs
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|autoCloseBrackets
 argument_list|(
 name|in
@@ -381,6 +390,13 @@ operator|.
 name|lineWrapping
 operator|=
 name|lineWrapping
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|indentWithTabs
+operator|=
+name|indentWithTabs
 argument_list|()
 expr_stmt|;
 name|p
@@ -629,6 +645,18 @@ name|w
 parameter_list|)
 comment|/*-{ this.line_wrapping = w }-*/
 function_decl|;
+DECL|method|indentWithTabs (boolean w)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|indentWithTabs
+parameter_list|(
+name|boolean
+name|w
+parameter_list|)
+comment|/*-{ this.indent_with_tabs = w }-*/
+function_decl|;
 DECL|method|autoCloseBrackets (boolean c)
 specifier|public
 specifier|final
@@ -855,6 +883,15 @@ name|boolean
 name|lineWrapping
 parameter_list|()
 comment|/*-{ return this.line_wrapping || false }-*/
+function_decl|;
+DECL|method|indentWithTabs ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|indentWithTabs
+parameter_list|()
+comment|/*-{ return this.indent_with_tabs || false }-*/
 function_decl|;
 specifier|public
 specifier|final

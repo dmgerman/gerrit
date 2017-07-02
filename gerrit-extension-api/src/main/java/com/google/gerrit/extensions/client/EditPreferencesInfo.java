@@ -131,6 +131,11 @@ specifier|public
 name|Boolean
 name|lineWrapping
 decl_stmt|;
+DECL|field|indentWithTabs
+specifier|public
+name|Boolean
+name|indentWithTabs
+decl_stmt|;
 DECL|field|autoCloseBrackets
 specifier|public
 name|Boolean
@@ -228,6 +233,12 @@ expr_stmt|;
 name|i
 operator|.
 name|lineWrapping
+operator|=
+literal|false
+expr_stmt|;
+name|i
+operator|.
+name|indentWithTabs
 operator|=
 literal|false
 expr_stmt|;
