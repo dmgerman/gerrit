@@ -90,7 +90,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
+name|AccountLimits
 import|;
 end_import
 
@@ -156,13 +156,13 @@ argument_list|<
 name|ScheduledThreadPoolExecutor
 argument_list|>
 block|{
-DECL|field|capabilityFactory
+DECL|field|limitsFactory
 specifier|private
 specifier|final
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 decl_stmt|;
 DECL|field|queues
 specifier|private
@@ -178,13 +178,13 @@ name|user
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommandExecutorProvider ( CapabilityControl.Factory capabilityFactory, QueueProvider queues, CurrentUser user)
+DECL|method|CommandExecutorProvider ( AccountLimits.Factory limitsFactory, QueueProvider queues, CurrentUser user)
 name|CommandExecutorProvider
 parameter_list|(
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 parameter_list|,
 name|QueueProvider
 name|queues
@@ -195,9 +195,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|capabilityFactory
+name|limitsFactory
 operator|=
-name|capabilityFactory
+name|limitsFactory
 expr_stmt|;
 name|this
 operator|.
@@ -225,7 +225,7 @@ name|queues
 operator|.
 name|getQueue
 argument_list|(
-name|capabilityFactory
+name|limitsFactory
 operator|.
 name|create
 argument_list|(

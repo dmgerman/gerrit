@@ -146,7 +146,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountState
+name|AccountLimits
 import|;
 end_import
 
@@ -162,7 +162,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
+name|AccountState
 import|;
 end_import
 
@@ -366,7 +366,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AccountQueryProcessor ( Provider<CurrentUser> userProvider, CapabilityControl.Factory capabilityFactory, Metrics metrics, IndexConfig indexConfig, AccountIndexCollection indexes, AccountIndexRewriter rewriter, AccountControl.Factory accountControlFactory)
+DECL|method|AccountQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, Metrics metrics, IndexConfig indexConfig, AccountIndexCollection indexes, AccountIndexRewriter rewriter, AccountControl.Factory accountControlFactory)
 specifier|protected
 name|AccountQueryProcessor
 parameter_list|(
@@ -376,10 +376,10 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 parameter_list|,
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 parameter_list|,
 name|Metrics
 name|metrics
@@ -403,7 +403,7 @@ name|super
 argument_list|(
 name|userProvider
 argument_list|,
-name|capabilityFactory
+name|limitsFactory
 argument_list|,
 name|metrics
 argument_list|,

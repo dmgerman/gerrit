@@ -154,7 +154,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
+name|AccountLimits
 import|;
 end_import
 
@@ -602,13 +602,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|field|capabilityFactory
+DECL|field|limitsFactory
 specifier|private
 specifier|final
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 decl_stmt|;
 DECL|field|user
 specifier|private
@@ -639,13 +639,13 @@ name|maxWait
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectQoSFilter ( CapabilityControl.Factory capabilityFactory, Provider<CurrentUser> user, QueueProvider queue, ServletContext context, @GerritServerConfig Config cfg)
+DECL|method|ProjectQoSFilter ( AccountLimits.Factory limitsFactory, Provider<CurrentUser> user, QueueProvider queue, ServletContext context, @GerritServerConfig Config cfg)
 name|ProjectQoSFilter
 parameter_list|(
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 parameter_list|,
 name|Provider
 argument_list|<
@@ -667,9 +667,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|capabilityFactory
+name|limitsFactory
 operator|=
-name|capabilityFactory
+name|limitsFactory
 expr_stmt|;
 name|this
 operator|.
@@ -972,7 +972,7 @@ operator|.
 name|QueueType
 name|qt
 init|=
-name|capabilityFactory
+name|limitsFactory
 operator|.
 name|create
 argument_list|(

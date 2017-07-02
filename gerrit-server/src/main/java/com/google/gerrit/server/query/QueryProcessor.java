@@ -220,7 +220,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
+name|AccountLimits
 import|;
 end_import
 
@@ -530,13 +530,13 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 decl_stmt|;
-DECL|field|capabilityFactory
+DECL|field|limitsFactory
 specifier|private
 specifier|final
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 decl_stmt|;
 DECL|field|metrics
 specifier|private
@@ -619,7 +619,7 @@ name|String
 argument_list|>
 name|requestedFields
 decl_stmt|;
-DECL|method|QueryProcessor ( Provider<CurrentUser> userProvider, CapabilityControl.Factory capabilityFactory, Metrics metrics, SchemaDefinitions<T> schemaDef, IndexConfig indexConfig, IndexCollection<?, T, ? extends Index<?, T>> indexes, IndexRewriter<T> rewriter, String limitField)
+DECL|method|QueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, Metrics metrics, SchemaDefinitions<T> schemaDef, IndexConfig indexConfig, IndexCollection<?, T, ? extends Index<?, T>> indexes, IndexRewriter<T> rewriter, String limitField)
 specifier|protected
 name|QueryProcessor
 parameter_list|(
@@ -629,10 +629,10 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 parameter_list|,
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 parameter_list|,
 name|Metrics
 name|metrics
@@ -681,9 +681,9 @@ name|userProvider
 expr_stmt|;
 name|this
 operator|.
-name|capabilityFactory
+name|limitsFactory
 operator|=
-name|capabilityFactory
+name|limitsFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1465,7 +1465,7 @@ name|enforceVisibility
 condition|)
 block|{
 return|return
-name|capabilityFactory
+name|limitsFactory
 operator|.
 name|create
 argument_list|(

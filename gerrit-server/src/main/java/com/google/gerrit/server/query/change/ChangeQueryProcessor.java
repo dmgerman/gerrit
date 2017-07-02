@@ -178,7 +178,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|CapabilityControl
+name|AccountLimits
 import|;
 end_import
 
@@ -511,7 +511,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, CapabilityControl.Factory capabilityFactory, Metrics metrics, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories)
+DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, Metrics metrics, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories)
 name|ChangeQueryProcessor
 parameter_list|(
 name|Provider
@@ -520,10 +520,10 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 parameter_list|,
-name|CapabilityControl
+name|AccountLimits
 operator|.
 name|Factory
-name|capabilityFactory
+name|limitsFactory
 parameter_list|,
 name|Metrics
 name|metrics
@@ -564,7 +564,7 @@ name|super
 argument_list|(
 name|userProvider
 argument_list|,
-name|capabilityFactory
+name|limitsFactory
 argument_list|,
 name|metrics
 argument_list|,
