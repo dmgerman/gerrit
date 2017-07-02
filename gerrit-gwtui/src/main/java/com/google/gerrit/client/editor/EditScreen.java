@@ -3649,7 +3649,10 @@ name|set
 argument_list|(
 literal|"lineWrapping"
 argument_list|,
-literal|false
+name|prefs
+operator|.
+name|lineWrapping
+argument_list|()
 argument_list|)
 operator|.
 name|set
