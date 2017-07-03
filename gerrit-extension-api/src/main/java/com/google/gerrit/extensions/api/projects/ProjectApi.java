@@ -723,6 +723,8 @@ name|ProjectInfo
 argument_list|>
 name|children
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
