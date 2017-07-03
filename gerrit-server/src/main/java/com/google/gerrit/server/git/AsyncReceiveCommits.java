@@ -276,7 +276,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ScheduledExecutorService
+name|ExecutorService
 import|;
 end_import
 
@@ -789,7 +789,7 @@ decl_stmt|;
 DECL|field|executor
 specifier|private
 specifier|final
-name|ScheduledExecutorService
+name|ExecutorService
 name|executor
 decl_stmt|;
 DECL|field|scopePropagator
@@ -812,7 +812,7 @@ name|timeoutMillis
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AsyncReceiveCommits ( ReceiveCommits.Factory factory, @ReceiveCommitsExecutor ScheduledExecutorService executor, RequestScopePropagator scopePropagator, @Named(TIMEOUT_NAME) long timeoutMillis, @Assisted ProjectControl projectControl, @Assisted Repository repo)
+DECL|method|AsyncReceiveCommits ( ReceiveCommits.Factory factory, @ReceiveCommitsExecutor ExecutorService executor, RequestScopePropagator scopePropagator, @Named(TIMEOUT_NAME) long timeoutMillis, @Assisted ProjectControl projectControl, @Assisted Repository repo)
 name|AsyncReceiveCommits
 parameter_list|(
 name|ReceiveCommits
@@ -822,7 +822,7 @@ name|factory
 parameter_list|,
 annotation|@
 name|ReceiveCommitsExecutor
-name|ScheduledExecutorService
+name|ExecutorService
 name|executor
 parameter_list|,
 name|RequestScopePropagator

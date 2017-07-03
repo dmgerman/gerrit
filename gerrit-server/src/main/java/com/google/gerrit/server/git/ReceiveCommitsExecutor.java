@@ -112,12 +112,12 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ScheduledThreadPoolExecutor
+name|ExecutorService
 import|;
 end_import
 
 begin_comment
-comment|/** Marker on the global {@link ScheduledThreadPoolExecutor} used by {@link ReceiveCommits}. */
+comment|/** Marker on the global {@link ExecutorService} used by {@link ReceiveCommits}. */
 end_comment
 
 begin_annotation_defn

@@ -214,18 +214,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ScheduledExecutorService
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|ThreadPoolExecutor
 import|;
 end_import
@@ -284,7 +272,7 @@ annotation|@
 name|ReceiveCommitsExecutor
 DECL|method|createReceiveCommitsExecutor ( @erritServerConfig Config config, WorkQueue queues)
 specifier|public
-name|ScheduledExecutorService
+name|ExecutorService
 name|createReceiveCommitsExecutor
 parameter_list|(
 annotation|@
