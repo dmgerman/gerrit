@@ -2621,7 +2621,7 @@ block|{
 return|return
 name|commentsUtil
 operator|.
-name|get
+name|getPublished
 argument_list|(
 name|args
 operator|.

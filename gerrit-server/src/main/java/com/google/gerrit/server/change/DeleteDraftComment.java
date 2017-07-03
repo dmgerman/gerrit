@@ -702,7 +702,7 @@ name|maybeComment
 init|=
 name|commentsUtil
 operator|.
-name|get
+name|getDraft
 argument_list|(
 name|ctx
 operator|.
@@ -712,6 +712,11 @@ argument_list|,
 name|ctx
 operator|.
 name|getNotes
+argument_list|()
+argument_list|,
+name|ctx
+operator|.
+name|getIdentifiedUser
 argument_list|()
 argument_list|,
 name|key
