@@ -322,6 +322,8 @@ name|EditInfo
 argument_list|>
 name|get
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -336,6 +338,8 @@ specifier|public
 name|void
 name|create
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -350,6 +354,8 @@ specifier|public
 name|void
 name|delete
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -364,6 +370,8 @@ specifier|public
 name|void
 name|rebase
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -378,6 +386,8 @@ specifier|public
 name|void
 name|publish
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -395,6 +405,8 @@ parameter_list|(
 name|PublishChangeEditInput
 name|publishChangeEditInput
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -415,6 +427,8 @@ parameter_list|(
 name|String
 name|filePath
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -435,6 +449,8 @@ parameter_list|,
 name|String
 name|newFilePath
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -452,6 +468,8 @@ parameter_list|(
 name|String
 name|filePath
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -472,6 +490,8 @@ parameter_list|,
 name|RawInput
 name|newContent
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -489,6 +509,8 @@ parameter_list|(
 name|String
 name|filePath
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -503,6 +525,8 @@ specifier|public
 name|String
 name|getCommitMessage
 parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -520,6 +544,8 @@ parameter_list|(
 name|String
 name|newCommitMessage
 parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
