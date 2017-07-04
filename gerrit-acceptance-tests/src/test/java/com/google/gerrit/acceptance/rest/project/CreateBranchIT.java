@@ -516,13 +516,13 @@ name|Exception
 block|{
 name|allow
 argument_list|(
+literal|"refs/*"
+argument_list|,
 name|Permission
 operator|.
 name|OWNER
 argument_list|,
 name|REGISTERED_USERS
-argument_list|,
-literal|"refs/*"
 argument_list|)
 expr_stmt|;
 block|}
