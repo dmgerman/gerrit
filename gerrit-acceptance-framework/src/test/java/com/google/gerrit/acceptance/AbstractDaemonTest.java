@@ -5517,11 +5517,14 @@ name|current
 argument_list|()
 return|;
 block|}
-DECL|method|allow (String permission, AccountGroup.UUID id, String ref)
+DECL|method|allow (String ref, String permission, AccountGroup.UUID id)
 specifier|protected
 name|void
 name|allow
 parameter_list|(
+name|String
+name|ref
+parameter_list|,
 name|String
 name|permission
 parameter_list|,
@@ -5529,9 +5532,6 @@ name|AccountGroup
 operator|.
 name|UUID
 name|id
-parameter_list|,
-name|String
-name|ref
 parameter_list|)
 throws|throws
 name|Exception

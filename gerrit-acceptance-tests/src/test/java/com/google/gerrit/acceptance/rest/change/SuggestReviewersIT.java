@@ -1219,14 +1219,14 @@ argument_list|)
 expr_stmt|;
 name|allow
 argument_list|(
+literal|"refs/*"
+argument_list|,
 literal|"read"
 argument_list|,
 name|group1
 operator|.
 name|getGroupUUID
 argument_list|()
-argument_list|,
-literal|"refs/*"
 argument_list|)
 expr_stmt|;
 name|reviewers
