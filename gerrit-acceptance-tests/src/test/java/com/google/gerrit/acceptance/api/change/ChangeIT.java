@@ -320,24 +320,6 @@ name|project
 operator|.
 name|Util
 operator|.
-name|blockLabel
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|Util
-operator|.
 name|category
 import|;
 end_import
@@ -18941,6 +18923,8 @@ operator|.
 name|getConfig
 argument_list|()
 decl_stmt|;
+name|Util
+operator|.
 name|blockLabel
 argument_list|(
 name|cfg
@@ -23575,6 +23559,8 @@ operator|.
 name|getConfig
 argument_list|()
 decl_stmt|;
+name|Util
+operator|.
 name|blockLabel
 argument_list|(
 name|cfg

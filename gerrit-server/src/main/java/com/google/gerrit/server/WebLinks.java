@@ -1124,7 +1124,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * @param project Project name    * @param branch Tag name    * @return Links for tags.    */
+comment|/**    * @param project Project name    * @param tag Tag name    * @return Links for tags.    */
 DECL|method|getTagLinks (String project, String tag)
 specifier|public
 name|List
