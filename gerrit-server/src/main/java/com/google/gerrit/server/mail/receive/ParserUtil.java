@@ -128,6 +128,11 @@ operator|+
 literal|"(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})"
 argument_list|)
 decl_stmt|;
+DECL|method|ParserUtil ()
+specifier|private
+name|ParserUtil
+parameter_list|()
+block|{}
 comment|/**    * Trims the quotation that email clients add Example: On Sun, Nov 20, 2016 at 10:33 PM,    *<gerrit@gerritcodereview.com> wrote:    *    * @param comment Comment parsed from an email.    * @return Trimmed comment.    */
 DECL|method|trimQuotation (String comment)
 specifier|public

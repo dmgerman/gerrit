@@ -377,6 +377,11 @@ argument_list|,
 literal|"content-type"
 argument_list|)
 decl_stmt|;
+DECL|method|RawMailParser ()
+specifier|private
+name|RawMailParser
+parameter_list|()
+block|{}
 comment|/**    * Parses a MailMessage from a string.    *    * @param raw String as received over the wire    * @return Parsed MailMessage    * @throws MailParsingException    */
 DECL|method|parse (String raw)
 specifier|public
