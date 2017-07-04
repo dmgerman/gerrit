@@ -88,20 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|api
@@ -263,22 +249,6 @@ operator|.
 name|git
 operator|.
 name|GitRepositoryManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|SearchingChangeCacheImpl
 import|;
 end_import
 
@@ -592,14 +562,6 @@ operator|.
 name|Factory
 name|refFilterFactory
 decl_stmt|;
-DECL|field|changeCache
-annotation|@
-name|Nullable
-specifier|private
-specifier|final
-name|SearchingChangeCacheImpl
-name|changeCache
-decl_stmt|;
 DECL|field|links
 specifier|private
 specifier|final
@@ -776,7 +738,7 @@ name|matchRegex
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListTags ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, Provider<CurrentUser> user, VisibleRefFilter.Factory refFilterFactory, @Nullable SearchingChangeCacheImpl changeCache, WebLinks webLinks)
+DECL|method|ListTags ( GitRepositoryManager repoManager, PermissionBackend permissionBackend, Provider<CurrentUser> user, VisibleRefFilter.Factory refFilterFactory, WebLinks webLinks)
 specifier|public
 name|ListTags
 parameter_list|(
@@ -796,11 +758,6 @@ name|VisibleRefFilter
 operator|.
 name|Factory
 name|refFilterFactory
-parameter_list|,
-annotation|@
-name|Nullable
-name|SearchingChangeCacheImpl
-name|changeCache
 parameter_list|,
 name|WebLinks
 name|webLinks
@@ -829,12 +786,6 @@ operator|.
 name|refFilterFactory
 operator|=
 name|refFilterFactory
-expr_stmt|;
-name|this
-operator|.
-name|changeCache
-operator|=
-name|changeCache
 expr_stmt|;
 name|this
 operator|.
