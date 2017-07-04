@@ -157,7 +157,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** TextParser provides parsing functionality for plaintext email. */
+comment|/** Provides parsing functionality for plaintext email. */
 end_comment
 
 begin_class
@@ -166,7 +166,7 @@ specifier|public
 class|class
 name|TextParser
 block|{
-comment|/**    * Parses comments from plaintext email.    *    * @param email MailMessage as received from the email service.    * @param comments Comments previously persisted on the change that caused the original    *     notification email to be sent out. Ordering must be the same as in the outbound email    * @param changeUrl Canonical change url that points to the change on this Gerrit instance.    *     Example: https://go-review.googlesource.com/#/c/91570    * @return List of MailComments parsed from the plaintext part of the email.    */
+comment|/**    * Parses comments from plaintext email.    *    * @param email @param email the message as received from the email service    * @param comments list of {@link Comment}s previously persisted on the change that caused the    *     original notification email to be sent out. Ordering must be the same as in the outbound    *     email    * @param changeUrl canonical change url that points to the change on this Gerrit instance.    *     Example: https://go-review.googlesource.com/#/c/91570    * @return list of MailComments parsed from the plaintext part of the email    */
 DECL|method|parse ( MailMessage email, Collection<Comment> comments, String changeUrl)
 specifier|public
 specifier|static

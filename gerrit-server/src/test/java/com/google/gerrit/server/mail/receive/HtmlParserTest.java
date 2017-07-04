@@ -130,6 +130,10 @@ name|Test
 import|;
 end_import
 
+begin_comment
+comment|/**  * Abstract parser test for HTML messages. Payload will be added through concrete implementations.  */
+end_comment
+
 begin_class
 annotation|@
 name|Ignore

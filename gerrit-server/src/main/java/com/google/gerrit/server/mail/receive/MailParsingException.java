@@ -69,7 +69,7 @@ package|;
 end_package
 
 begin_comment
-comment|/** MailParsingException indicates that an email could not be parsed. */
+comment|/** An {@link Exception} indicating that an email could not be parsed. */
 end_comment
 
 begin_class

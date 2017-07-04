@@ -205,7 +205,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** HTMLParser provides parsing functionality for html email. */
+comment|/** Provides functionality for parsing the HTML part of a {@link MailMessage}. */
 end_comment
 
 begin_class
@@ -214,7 +214,7 @@ specifier|public
 class|class
 name|HtmlParser
 block|{
-comment|/**    * Parses comments from html email.    *    * @param email MailMessage as received from the email service.    * @param comments A specific set of comments as sent out in the original notification email.    *     Comments are expected to be in the same order as they were sent out to in the email    * @param changeUrl Canonical change URL that points to the change on this Gerrit instance.    *     Example: https://go-review.googlesource.com/#/c/91570    * @return List of MailComments parsed from the html part of the email.    */
+comment|/**    * Parses comments from html email.    *    *<p>This parser goes though all html elements in the email and checks for matching patterns. It    * keeps track of the last file and comments it encountered to know in which context a parsed    * comment belongs. It uses the href attributes of<a> tags to identify comments sent out by    * Gerrit as these are generally more reliable then the text captions.    *    * @param email the message as received from the email service    * @param comments a specific set of comments as sent out in the original notification email.    *     Comments are expected to be in the same order as they were sent out to in the email.    * @param changeUrl canonical change URL that points to the change on this Gerrit instance.    *     Example: https://go-review.googlesource.com/#/c/91570    * @return list of MailComments parsed from the html part of the email    */
 DECL|method|parse ( MailMessage email, Collection<Comment> comments, String changeUrl)
 specifier|public
 specifier|static

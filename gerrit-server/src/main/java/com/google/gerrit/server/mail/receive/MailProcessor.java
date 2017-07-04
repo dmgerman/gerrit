@@ -824,6 +824,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/** A service that can attach the comments from a {@link MailMessage} to a change. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -1090,7 +1094,7 @@ operator|=
 name|canonicalUrl
 expr_stmt|;
 block|}
-comment|/**    * Parse comments from MailMessage and persist them on the change.    *    * @param message MailMessage to process.    */
+comment|/**    * Parses comments from a {@link MailMessage} and persists them on the change.    *    * @param message {@link MailMessage} to process    */
 DECL|method|process (MailMessage message)
 specifier|public
 name|void

@@ -139,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Tests that all mime parts that are neither text/plain, nor text/html are dropped. */
+comment|/**  * Provides a raw message payload and a parsed {@code MailMessage} to check that mime parts that are  * neither text/plain, nor * text/html are dropped.  */
 end_comment
 
 begin_class
