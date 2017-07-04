@@ -583,10 +583,10 @@ return|;
 block|}
 annotation|@
 name|Test
-DECL|method|delete ()
+DECL|method|doesNotDeleteMessageNotMarkedForDeletion ()
 specifier|public
 name|void
-name|delete
+name|doesNotDeleteMessageNotMarkedForDeletion
 parameter_list|()
 throws|throws
 name|Exception
@@ -637,6 +637,54 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// Check that the message is still present
+name|assertThat
+argument_list|(
+name|mockPop3Server
+operator|.
+name|getReceivedMessages
+argument_list|()
+operator|.
+name|length
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|deletesMessageMarkedForDeletion ()
+specifier|public
+name|void
+name|deletesMessageMarkedForDeletion
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|GreenMailUser
+name|user
+init|=
+name|mockPop3Server
+operator|.
+name|setUser
+argument_list|(
+name|USERNAME
+argument_list|,
+name|USERNAME
+argument_list|,
+name|PASSWORD
+argument_list|)
+decl_stmt|;
+name|user
+operator|.
+name|deliver
+argument_list|(
+name|createSimpleMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|mockPop3Server
