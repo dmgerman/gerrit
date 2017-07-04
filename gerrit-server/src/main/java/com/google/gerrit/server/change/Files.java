@@ -2296,6 +2296,25 @@ name|pathList
 return|;
 block|}
 block|}
+DECL|method|setQuery (String query)
+specifier|public
+name|ListFiles
+name|setQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+name|this
+operator|.
+name|query
+operator|=
+name|query
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|setBase (String base)
 specifier|public
 name|ListFiles
