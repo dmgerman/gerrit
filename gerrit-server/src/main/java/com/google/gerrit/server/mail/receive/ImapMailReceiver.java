@@ -282,7 +282,7 @@ name|workQueue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Opens a connection to the mail server, removes emails where deletion is pending, reads new    * email and closes the connection.    *    * @param async determines if processing messages should happen asynchronously    */
+comment|/**    * Opens a connection to the mail server, removes emails where deletion is pending, reads new    * email and closes the connection.    *    * @param async determines if processing messages should happen asynchronously    * @throws MailTransferException in case of a known transport failure    * @throws IOException in case of a low-level transport failure    */
 annotation|@
 name|Override
 DECL|method|handleEmails (boolean async)
@@ -294,6 +294,10 @@ parameter_list|(
 name|boolean
 name|async
 parameter_list|)
+throws|throws
+name|MailTransferException
+throws|,
+name|IOException
 block|{
 name|IMAPClient
 name|imap
@@ -363,8 +367,6 @@ operator|*
 literal|1000
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|imap
 operator|.
 name|connect
@@ -393,14 +395,13 @@ name|password
 argument_list|)
 condition|)
 block|{
-name|log
-operator|.
-name|error
+throw|throw
+operator|new
+name|MailTransferException
 argument_list|(
 literal|"Could not login to IMAP server"
 argument_list|)
-expr_stmt|;
-return|return;
+throw|;
 block|}
 try|try
 block|{
@@ -415,16 +416,15 @@ name|INBOX_FOLDER
 argument_list|)
 condition|)
 block|{
-name|log
-operator|.
-name|error
+throw|throw
+operator|new
+name|MailTransferException
 argument_list|(
 literal|"Could not select IMAP folder "
 operator|+
 name|INBOX_FOLDER
 argument_list|)
-expr_stmt|;
-return|return;
+throw|;
 block|}
 comment|// Fetch just the internal dates first to know how many messages we
 comment|// should fetch.
@@ -480,15 +480,6 @@ operator|+
 literal|" messages via IMAP"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|numMessages
-operator|==
-literal|0
-condition|)
-block|{
-return|return;
-block|}
 comment|// Fetch the full version of all emails
 name|List
 argument_list|<
@@ -775,24 +766,6 @@ operator|.
 name|disconnect
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Error while talking to IMAP server"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-return|return;
 block|}
 block|}
 block|}

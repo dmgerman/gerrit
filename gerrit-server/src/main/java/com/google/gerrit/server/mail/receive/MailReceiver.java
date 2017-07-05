@@ -192,6 +192,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -537,6 +547,8 @@ name|void
 name|run
 parameter_list|()
 block|{
+try|try
+block|{
 name|MailReceiver
 operator|.
 name|this
@@ -546,6 +558,25 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|MailTransferException
+decl||
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error while fetching emails"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|,
@@ -597,7 +628,7 @@ name|messageId
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * handleEmails will open a connection to the mail server, remove emails where deletion is    * pending, read new email and close the connection.    *    * @param async Determines if processing messages should happen asynchronous.    */
+comment|/**    * handleEmails will open a connection to the mail server, remove emails where deletion is    * pending, read new email and close the connection.    *    * @param async determines if processing messages should happen asynchronously    * @throws MailTransferException in case of a known transport failure    * @throws IOException in case of a low-level transport failure    */
 annotation|@
 name|VisibleForTesting
 DECL|method|handleEmails (boolean async)
@@ -609,6 +640,10 @@ parameter_list|(
 name|boolean
 name|async
 parameter_list|)
+throws|throws
+name|MailTransferException
+throws|,
+name|IOException
 function_decl|;
 DECL|method|dispatchMailProcessor (List<MailMessage> messages, boolean async)
 specifier|protected

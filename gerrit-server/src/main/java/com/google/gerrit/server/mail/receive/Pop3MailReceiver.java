@@ -317,7 +317,7 @@ name|workQueue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Opens a connection to the mail server, removes emails where deletion is pending, reads new    * email and closes the connection.    *    * @param async determines if processing messages should happen asynchronously    * @throws IOException in case of a low-level transport failure    * @throws MailParsingException in case of a message that could not be parsed    */
+comment|/**    * Opens a connection to the mail server, removes emails where deletion is pending, reads new    * email and closes the connection.    *    * @param async determines if processing messages should happen asynchronously    * @throws MailTransferException in case of a known transport failure    * @throws IOException in case of a low-level transport failure    */
 annotation|@
 name|Override
 DECL|method|handleEmails (boolean async)
@@ -329,6 +329,10 @@ parameter_list|(
 name|boolean
 name|async
 parameter_list|)
+throws|throws
+name|MailTransferException
+throws|,
+name|IOException
 block|{
 name|POP3Client
 name|pop3
@@ -388,8 +392,6 @@ name|port
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-block|{
 name|pop3
 operator|.
 name|connect
@@ -399,26 +401,6 @@ operator|.
 name|host
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Could not connect to POP3 email server"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-try|try
-block|{
 try|try
 block|{
 if|if
@@ -438,14 +420,13 @@ name|password
 argument_list|)
 condition|)
 block|{
-name|log
-operator|.
-name|error
+throw|throw
+operator|new
+name|MailTransferException
 argument_list|(
 literal|"Could not login to POP3 email server. Check username and password"
 argument_list|)
-expr_stmt|;
-return|return;
+throw|;
 block|}
 try|try
 block|{
@@ -465,14 +446,13 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
-operator|.
-name|error
+throw|throw
+operator|new
+name|MailTransferException
 argument_list|(
 literal|"Could not retrieve message list via POP3"
 argument_list|)
-expr_stmt|;
-return|return;
+throw|;
 block|}
 name|log
 operator|.
@@ -542,18 +522,17 @@ operator|==
 literal|null
 condition|)
 block|{
-name|log
-operator|.
-name|error
+throw|throw
+operator|new
+name|MailTransferException
 argument_list|(
-literal|"Could not retrieve POP3 message header for message {}"
-argument_list|,
+literal|"Could not retrieve POP3 message header for message "
+operator|+
 name|msginfo
 operator|.
 name|identifier
 argument_list|)
-expr_stmt|;
-return|return;
+throw|;
 block|}
 name|int
 index|[]
@@ -683,23 +662,6 @@ name|pop3
 operator|.
 name|disconnect
 argument_list|()
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Error while issuing POP3 command"
-argument_list|,
-name|e
-argument_list|)
 expr_stmt|;
 block|}
 block|}
