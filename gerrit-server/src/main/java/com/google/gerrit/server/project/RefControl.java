@@ -1512,6 +1512,25 @@ return|return
 literal|"project state does not permit write"
 return|;
 block|}
+name|String
+name|userId
+init|=
+name|getUser
+argument_list|()
+operator|.
+name|isIdentifiedUser
+argument_list|()
+condition|?
+literal|"account "
+operator|+
+name|getUser
+argument_list|()
+operator|.
+name|getAccountId
+argument_list|()
+else|:
+literal|"anonymous user"
+decl_stmt|;
 if|if
 condition|(
 name|object
@@ -1531,7 +1550,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|"lacks permission: "
+name|userId
+operator|+
+literal|" lacks permission: "
 operator|+
 name|Permission
 operator|.
@@ -1547,6 +1568,8 @@ operator|(
 name|RevCommit
 operator|)
 name|object
+argument_list|,
+name|userId
 argument_list|)
 return|;
 block|}
@@ -1700,7 +1723,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|"lacks permission: "
+name|userId
+operator|+
+literal|" lacks permission: "
 operator|+
 name|Permission
 operator|.
@@ -1734,6 +1759,8 @@ operator|(
 name|RevCommit
 operator|)
 name|tagObject
+argument_list|,
+name|userId
 argument_list|)
 decl_stmt|;
 if|if
@@ -1798,7 +1825,9 @@ argument_list|)
 condition|?
 literal|null
 else|:
-literal|"lacks permission: "
+name|userId
+operator|+
+literal|" lacks permission: "
 operator|+
 name|Permission
 operator|.
@@ -1815,7 +1844,9 @@ argument_list|)
 condition|?
 literal|null
 else|:
-literal|"lacks permission "
+name|userId
+operator|+
+literal|" lacks permission "
 operator|+
 name|Permission
 operator|.
@@ -1826,10 +1857,10 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Check if the user is allowed to create a new commit object if this introduces a new commit to    * the project. If not allowed, returns a string describing why it's not allowed.    */
+comment|/**    * Check if the user is allowed to create a new commit object if this introduces a new commit to    * the project. If not allowed, returns a string describing why it's not allowed. The userId    * argument is only used for the error message.    */
 annotation|@
 name|Nullable
-DECL|method|canCreateCommit (Repository repo, RevCommit commit)
+DECL|method|canCreateCommit (Repository repo, RevCommit commit, String userId)
 specifier|private
 name|String
 name|canCreateCommit
@@ -1839,6 +1870,9 @@ name|repo
 parameter_list|,
 name|RevCommit
 name|commit
+parameter_list|,
+name|String
+name|userId
 parameter_list|)
 block|{
 if|if
@@ -1873,7 +1907,9 @@ literal|null
 return|;
 block|}
 return|return
-literal|"lacks permission "
+name|userId
+operator|+
+literal|" lacks permission "
 operator|+
 name|Permission
 operator|.
