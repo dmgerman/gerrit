@@ -213,6 +213,15 @@ operator|.
 name|PREFERRED_EMAIL
 argument_list|)
 decl_stmt|;
+DECL|field|NAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NAME
+init|=
+literal|"accounts"
+decl_stmt|;
 DECL|field|INSTANCE
 specifier|public
 specifier|static
@@ -231,7 +240,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"accounts"
+name|NAME
 argument_list|,
 name|AccountState
 operator|.
