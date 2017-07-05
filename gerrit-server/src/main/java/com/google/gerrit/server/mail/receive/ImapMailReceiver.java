@@ -282,7 +282,7 @@ name|workQueue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * handleEmails will open a connection to the mail server, remove emails where deletion is    * pending, read new email and close the connection.    *    * @param async Determines if processing messages should happen asynchronous.    */
+comment|/**    * Opens a connection to the mail server, removes emails where deletion is pending, reads new    * email and closes the connection.    *    * @param async determines if processing messages should happen asynchronously    */
 annotation|@
 name|Override
 DECL|method|handleEmails (boolean async)

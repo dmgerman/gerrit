@@ -139,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * MailMessage is a simplified representation of an RFC 2045-2047 mime email message used for  * representing received emails inside Gerrit. It is populated by the MailParser after MailReceiver  * has received a message. Transformations done by the parser include stitching mime parts together,  * transforming all content to UTF-16 and removing attachments.  *  *<p>A valid MailMessage contains at least the following fields: id, from, to, subject and  * dateReceived.  */
+comment|/**  * A simplified representation of an RFC 2045-2047 mime email message used for representing received  * emails inside Gerrit. It is populated by the MailParser after MailReceiver has received a  * message. Transformations done by the parser include stitching mime parts together, transforming  * all content to UTF-16 and removing attachments.  *  *<p>A valid {@link MailMessage} contains at least the following fields: id, from, to, subject and  * dateReceived.  */
 end_comment
 
 begin_class

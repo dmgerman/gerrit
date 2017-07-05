@@ -262,6 +262,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/** An implementation of {@link MailReceiver} for POP3. */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -313,7 +317,7 @@ name|workQueue
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * handleEmails will open a connection to the mail server, remove emails where deletion is    * pending, read new email and close the connection.    *    * @param async Determines if processing messages should happen asynchronous.    */
+comment|/**    * Opens a connection to the mail server, removes emails where deletion is pending, reads new    * email and closes the connection.    *    * @param async determines if processing messages should happen asynchronously    * @throws IOException in case of a low-level transport failure    * @throws MailParsingException in case of a message that could not be parsed    */
 annotation|@
 name|Override
 DECL|method|handleEmails (boolean async)
