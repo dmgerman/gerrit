@@ -284,6 +284,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|ByteArrayOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -447,6 +457,22 @@ operator|.
 name|smtp
 operator|.
 name|SMTPReply
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|james
+operator|.
+name|mime4j
+operator|.
+name|codec
+operator|.
+name|QuotedPrintableOutputStream
 import|;
 end_import
 
@@ -1711,7 +1737,54 @@ parameter_list|,
 name|String
 name|htmlPart
 parameter_list|)
+throws|throws
+name|IOException
 block|{
+name|String
+name|encodedTextPart
+init|=
+name|quotedPrintableEncode
+argument_list|(
+name|textPart
+argument_list|)
+decl_stmt|;
+name|String
+name|encodedHtmlPart
+init|=
+name|quotedPrintableEncode
+argument_list|(
+name|htmlPart
+argument_list|)
+decl_stmt|;
+comment|// Only declare quoted-printable encoding if there are characters that need to be encoded.
+name|String
+name|textTransferEncoding
+init|=
+name|textPart
+operator|.
+name|equals
+argument_list|(
+name|encodedTextPart
+argument_list|)
+condition|?
+literal|"7bit"
+else|:
+literal|"quoted-printable"
+decl_stmt|;
+name|String
+name|htmlTransferEncoding
+init|=
+name|htmlPart
+operator|.
+name|equals
+argument_list|(
+name|encodedHtmlPart
+argument_list|)
+condition|?
+literal|"7bit"
+else|:
+literal|"quoted-printable"
+decl_stmt|;
 return|return
 comment|// Output the text part:
 literal|"--"
@@ -1722,11 +1795,15 @@ literal|"\r\n"
 operator|+
 literal|"Content-Type: text/plain; charset=UTF-8\r\n"
 operator|+
-literal|"Content-Transfer-Encoding: 8bit\r\n"
+literal|"Content-Transfer-Encoding: "
+operator|+
+name|textTransferEncoding
 operator|+
 literal|"\r\n"
 operator|+
-name|textPart
+literal|"\r\n"
+operator|+
+name|encodedTextPart
 operator|+
 literal|"\r\n"
 comment|// Output the HTML part:
@@ -1739,11 +1816,15 @@ literal|"\r\n"
 operator|+
 literal|"Content-Type: text/html; charset=UTF-8\r\n"
 operator|+
-literal|"Content-Transfer-Encoding: 8bit\r\n"
+literal|"Content-Transfer-Encoding: "
+operator|+
+name|htmlTransferEncoding
 operator|+
 literal|"\r\n"
 operator|+
-name|htmlPart
+literal|"\r\n"
+operator|+
+name|encodedHtmlPart
 operator|+
 literal|"\r\n"
 comment|// Output the closing boundary.
@@ -1753,6 +1834,58 @@ operator|+
 name|boundary
 operator|+
 literal|"--\r\n"
+return|;
+block|}
+DECL|method|quotedPrintableEncode (String input)
+specifier|protected
+name|String
+name|quotedPrintableEncode
+parameter_list|(
+name|String
+name|input
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|ByteArrayOutputStream
+name|s
+init|=
+operator|new
+name|ByteArrayOutputStream
+argument_list|()
+decl_stmt|;
+try|try
+init|(
+name|QuotedPrintableOutputStream
+name|qp
+init|=
+operator|new
+name|QuotedPrintableOutputStream
+argument_list|(
+name|s
+argument_list|,
+literal|false
+argument_list|)
+init|)
+block|{
+name|qp
+operator|.
+name|write
+argument_list|(
+name|input
+operator|.
+name|getBytes
+argument_list|(
+name|UTF_8
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|s
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 DECL|method|setMissingHeader (Map<String, EmailHeader> hdrs, String name, String value)
