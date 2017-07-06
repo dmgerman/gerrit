@@ -125,6 +125,11 @@ name|NotifyInfo
 argument_list|>
 name|notifyDetails
 decl_stmt|;
+DECL|field|keepReviewers
+specifier|public
+name|boolean
+name|keepReviewers
+decl_stmt|;
 block|}
 end_class
 
