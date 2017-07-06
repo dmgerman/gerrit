@@ -839,10 +839,14 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|walk
+name|this
+operator|.
+name|rw
 operator|=
 literal|null
 expr_stmt|;
+name|this
+operator|.
 name|reader
 operator|=
 literal|null
