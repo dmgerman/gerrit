@@ -397,7 +397,7 @@ decl_stmt|;
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 name|adminSshSession
 operator|.
@@ -465,7 +465,7 @@ decl_stmt|;
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 name|adminSshSession
 operator|.

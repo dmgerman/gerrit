@@ -587,7 +587,7 @@ decl_stmt|;
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 name|errorMessage
 argument_list|)
@@ -611,7 +611,7 @@ decl_stmt|;
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 literal|"Cannot invoke "
 operator|+
@@ -654,7 +654,7 @@ expr_stmt|;
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 name|errorMessage
 argument_list|)

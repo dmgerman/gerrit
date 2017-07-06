@@ -577,7 +577,7 @@ decl_stmt|;
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 literal|"expected invalid TLD \""
 operator|+
@@ -615,7 +615,7 @@ decl_stmt|;
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 literal|"failed to validate TLD \""
 operator|+
