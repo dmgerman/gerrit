@@ -890,6 +890,37 @@ argument_list|(
 name|ACCOUNT_CONFIG
 argument_list|)
 decl_stmt|;
+name|writeToConfig
+argument_list|(
+name|account
+argument_list|,
+name|cfg
+argument_list|)
+expr_stmt|;
+name|saveConfig
+argument_list|(
+name|ACCOUNT_CONFIG
+argument_list|,
+name|cfg
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+DECL|method|writeToConfig (Account account, Config cfg)
+specifier|public
+specifier|static
+name|void
+name|writeToConfig
+parameter_list|(
+name|Account
+name|account
+parameter_list|,
+name|Config
+name|cfg
+parameter_list|)
+block|{
 name|setActive
 argument_list|(
 name|cfg
@@ -936,16 +967,6 @@ name|getStatus
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|saveConfig
-argument_list|(
-name|ACCOUNT_CONFIG
-argument_list|,
-name|cfg
-argument_list|)
-expr_stmt|;
-return|return
-literal|true
-return|;
 block|}
 comment|/**    * Sets/Unsets {@code account.active} in the given config.    *    *<p>{@code account.active} is set to {@code false} if the account is inactive.    *    *<p>If the account is active {@code account.active} is unset since {@code true} is the default    * if this field is missing.    *    * @param cfg the config    * @param value whether the account is active    */
 DECL|method|setActive (Config cfg, boolean value)
