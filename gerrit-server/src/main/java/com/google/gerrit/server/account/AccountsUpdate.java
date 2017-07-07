@@ -1606,13 +1606,6 @@ argument_list|)
 expr_stmt|;
 name|ru
 operator|.
-name|setForceUpdate
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|ru
-operator|.
 name|setRefLogIdent
 argument_list|(
 name|committerIdent
@@ -1624,7 +1617,7 @@ name|setRefLogMessage
 argument_list|(
 literal|"Create Account"
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 name|Result
