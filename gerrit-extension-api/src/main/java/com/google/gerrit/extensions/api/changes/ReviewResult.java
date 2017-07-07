@@ -128,6 +128,14 @@ name|AddReviewerResult
 argument_list|>
 name|reviewers
 decl_stmt|;
+comment|/** Error message for non-200 responses. */
+DECL|field|error
+annotation|@
+name|Nullable
+specifier|public
+name|String
+name|error
+decl_stmt|;
 block|}
 end_class
 
