@@ -158,6 +158,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|CommitMessageInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|EditInfo
 import|;
 end_import
@@ -695,6 +711,17 @@ name|setMessage
 parameter_list|(
 name|String
 name|message
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** Create a new patch set with a new commit message. */
+DECL|method|setMessage (CommitMessageInput in)
+name|void
+name|setMessage
+parameter_list|(
+name|CommitMessageInput
+name|in
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -1470,6 +1497,25 @@ name|setMessage
 parameter_list|(
 name|String
 name|message
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setMessage (CommitMessageInput in)
+specifier|public
+name|void
+name|setMessage
+parameter_list|(
+name|CommitMessageInput
+name|in
 parameter_list|)
 throws|throws
 name|RestApiException
