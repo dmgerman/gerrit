@@ -377,14 +377,22 @@ name|AccountGroupByIdAudAccess
 name|accountGroupByIdAud
 parameter_list|()
 function_decl|;
-comment|/** Create the next unique id for an {@link Account}. */
+DECL|field|FIRST_ACCOUNT_ID
+name|int
+name|FIRST_ACCOUNT_ID
+init|=
+literal|1000000
+decl_stmt|;
+comment|/**    * Next unique id for a {@link Account}.    *    * @deprecated use {@link com.google.gerrit.server.Sequences#nextAccountId()}.    */
 annotation|@
 name|Sequence
 argument_list|(
 name|startWith
 operator|=
-literal|1000000
+name|FIRST_ACCOUNT_ID
 argument_list|)
+annotation|@
+name|Deprecated
 DECL|method|nextAccountId ()
 name|int
 name|nextAccountId

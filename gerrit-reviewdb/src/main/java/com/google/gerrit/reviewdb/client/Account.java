@@ -706,7 +706,7 @@ specifier|protected
 name|Account
 parameter_list|()
 block|{}
-comment|/**    * Create a new account.    *    * @param newId unique id, see {@link com.google.gerrit.reviewdb.server.ReviewDb#nextAccountId()}.    * @param registeredOn when the account was registered.    */
+comment|/**    * Create a new account.    *    * @param newId unique id, see {@link com.google.gerrit.server.Sequences#nextAccountId()}.    * @param registeredOn when the account was registered.    */
 DECL|method|Account (Account.Id newId, Timestamp registeredOn)
 specifier|public
 name|Account

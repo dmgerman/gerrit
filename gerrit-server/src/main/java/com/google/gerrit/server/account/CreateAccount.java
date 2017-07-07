@@ -412,6 +412,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|Sequences
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|externalids
@@ -704,6 +718,12 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|seq
+specifier|private
+specifier|final
+name|Sequences
+name|seq
+decl_stmt|;
 DECL|field|currentUser
 specifier|private
 specifier|final
@@ -804,11 +824,14 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, OutgoingEmailValidator validator, @Assisted String username)
+DECL|method|CreateAccount ( ReviewDb db, Sequences seq, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, AuditService auditService, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, OutgoingEmailValidator validator, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|Sequences
+name|seq
 parameter_list|,
 name|Provider
 argument_list|<
@@ -874,6 +897,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|seq
+operator|=
+name|seq
 expr_stmt|;
 name|this
 operator|.
@@ -1107,7 +1136,7 @@ name|Account
 operator|.
 name|Id
 argument_list|(
-name|db
+name|seq
 operator|.
 name|nextAccountId
 argument_list|()

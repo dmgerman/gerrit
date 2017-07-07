@@ -186,6 +186,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|pgm
+operator|.
+name|init
+operator|.
+name|api
+operator|.
+name|SequencesOnInit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -512,6 +530,12 @@ specifier|final
 name|ExternalIdsOnInit
 name|externalIds
 decl_stmt|;
+DECL|field|sequencesOnInit
+specifier|private
+specifier|final
+name|SequencesOnInit
+name|sequencesOnInit
+decl_stmt|;
 DECL|field|dbFactory
 specifier|private
 name|SchemaFactory
@@ -527,7 +551,7 @@ name|indexCollection
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitAdminUser ( InitFlags flags, ConsoleUI ui, AccountsOnInit accounts, VersionedAuthorizedKeysOnInit.Factory authorizedKeysFactory, ExternalIdsOnInit externalIds)
+DECL|method|InitAdminUser ( InitFlags flags, ConsoleUI ui, AccountsOnInit accounts, VersionedAuthorizedKeysOnInit.Factory authorizedKeysFactory, ExternalIdsOnInit externalIds, SequencesOnInit sequencesOnInit)
 name|InitAdminUser
 parameter_list|(
 name|InitFlags
@@ -546,6 +570,9 @@ name|authorizedKeysFactory
 parameter_list|,
 name|ExternalIdsOnInit
 name|externalIds
+parameter_list|,
+name|SequencesOnInit
+name|sequencesOnInit
 parameter_list|)
 block|{
 name|this
@@ -577,6 +604,12 @@ operator|.
 name|externalIds
 operator|=
 name|externalIds
+expr_stmt|;
+name|this
+operator|.
+name|sequencesOnInit
+operator|=
+name|sequencesOnInit
 expr_stmt|;
 block|}
 annotation|@
@@ -727,10 +760,12 @@ name|Account
 operator|.
 name|Id
 argument_list|(
-name|db
+name|sequencesOnInit
 operator|.
 name|nextAccountId
-argument_list|()
+argument_list|(
+name|db
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
