@@ -611,7 +611,7 @@ block|{
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 name|String
 operator|.
@@ -783,7 +783,7 @@ block|{
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 literal|"missing queryLimit"
 argument_list|)
@@ -882,7 +882,7 @@ block|{
 name|assert_
 argument_list|()
 operator|.
-name|withFailureMessage
+name|withMessage
 argument_list|(
 name|String
 operator|.
