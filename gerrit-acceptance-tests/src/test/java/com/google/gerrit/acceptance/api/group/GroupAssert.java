@@ -96,7 +96,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -191,10 +191,7 @@ range|:
 name|expected
 control|)
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 literal|"missing group "
 operator|+
@@ -215,10 +212,7 @@ name|isTrue
 argument_list|()
 expr_stmt|;
 block|}
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 literal|"unexpected groups: "
 operator|+

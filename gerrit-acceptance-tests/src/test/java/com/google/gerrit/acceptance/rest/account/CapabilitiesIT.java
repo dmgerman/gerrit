@@ -96,7 +96,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -608,10 +608,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 name|String
 operator|.
@@ -780,10 +777,7 @@ name|c
 argument_list|)
 condition|)
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 literal|"missing queryLimit"
 argument_list|)
@@ -879,10 +873,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 name|String
 operator|.

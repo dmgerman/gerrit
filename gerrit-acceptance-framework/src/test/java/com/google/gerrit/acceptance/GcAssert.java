@@ -76,7 +76,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -237,10 +237,7 @@ range|:
 name|projects
 control|)
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 literal|"Project "
 operator|+
@@ -291,10 +288,7 @@ range|:
 name|projects
 control|)
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 literal|"Project "
 operator|+
