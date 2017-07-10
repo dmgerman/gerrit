@@ -76,7 +76,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -248,10 +248,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 name|String
 operator|.

@@ -224,7 +224,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -584,10 +584,7 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 name|errorMessage
 argument_list|)
@@ -608,10 +605,7 @@ operator|.
 name|getProtocol
 argument_list|()
 decl_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 literal|"Cannot invoke "
 operator|+
@@ -651,10 +645,7 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 name|errorMessage
 argument_list|)

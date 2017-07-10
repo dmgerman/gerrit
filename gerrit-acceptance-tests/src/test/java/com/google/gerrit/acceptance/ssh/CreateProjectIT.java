@@ -94,7 +94,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -220,10 +220,7 @@ operator|+
 name|newProjectName
 argument_list|)
 expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 name|adminSshSession
 operator|.
@@ -314,10 +311,7 @@ operator|+
 name|newProjectName
 argument_list|)
 expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 name|adminSshSession
 operator|.

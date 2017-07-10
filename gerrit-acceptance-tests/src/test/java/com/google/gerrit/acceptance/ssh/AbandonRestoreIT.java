@@ -94,7 +94,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -458,10 +458,7 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 name|adminSshSession
 operator|.

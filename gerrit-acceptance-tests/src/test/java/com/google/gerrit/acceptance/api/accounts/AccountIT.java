@@ -112,7 +112,7 @@ name|truth
 operator|.
 name|Truth
 operator|.
-name|assert_
+name|assertWithMessage
 import|;
 end_import
 
@@ -2057,10 +2057,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|assert_
-argument_list|()
-operator|.
-name|withMessage
+name|assertWithMessage
 argument_list|(
 literal|"Failed to delete "
 operator|+
