@@ -818,6 +818,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -2089,6 +2105,12 @@ specifier|final
 name|RetryHelper
 name|retryHelper
 decl_stmt|;
+DECL|field|notesMigration
+specifier|private
+specifier|final
+name|NotesMigration
+name|notesMigration
+decl_stmt|;
 DECL|field|ts
 specifier|private
 name|Timestamp
@@ -2158,7 +2180,7 @@ name|topicMetrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, Provider<MergeOpRepoManager> ormProvider, NotifyUtil notifyUtil, TopicMetrics topicMetrics, RetryHelper retryHelper)
+DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, Provider<MergeOpRepoManager> ormProvider, NotifyUtil notifyUtil, TopicMetrics topicMetrics, RetryHelper retryHelper, NotesMigration notesMigration)
 name|MergeOp
 parameter_list|(
 name|ChangeMessagesUtil
@@ -2207,6 +2229,9 @@ name|topicMetrics
 parameter_list|,
 name|RetryHelper
 name|retryHelper
+parameter_list|,
+name|NotesMigration
+name|notesMigration
 parameter_list|)
 block|{
 name|this
@@ -2280,6 +2305,12 @@ operator|.
 name|topicMetrics
 operator|=
 name|topicMetrics
+expr_stmt|;
+name|this
+operator|.
+name|notesMigration
+operator|=
+name|notesMigration
 expr_stmt|;
 block|}
 annotation|@
@@ -3912,20 +3943,10 @@ else|else
 block|{
 name|msg
 operator|=
-literal|"Error submitting change"
-operator|+
-operator|(
+name|genericMergeError
+argument_list|(
 name|cs
-operator|.
-name|size
-argument_list|()
-operator|!=
-literal|1
-condition|?
-literal|"s"
-else|:
-literal|""
-operator|)
+argument_list|)
 expr_stmt|;
 block|}
 throw|throw
@@ -5545,6 +5566,119 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|genericMergeError (ChangeSet cs)
+specifier|private
+name|String
+name|genericMergeError
+parameter_list|(
+name|ChangeSet
+name|cs
+parameter_list|)
+block|{
+name|int
+name|c
+init|=
+name|cs
+operator|.
+name|size
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|c
+operator|==
+literal|1
+condition|)
+block|{
+return|return
+literal|"Error submitting change"
+return|;
+block|}
+name|int
+name|p
+decl_stmt|;
+try|try
+block|{
+name|p
+operator|=
+name|cs
+operator|.
+name|projects
+argument_list|()
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Error looking up projects for "
+operator|+
+name|cs
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+return|return
+literal|"Error submitting changes"
+return|;
+block|}
+if|if
+condition|(
+name|p
+operator|==
+literal|1
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|notesMigration
+operator|.
+name|fuseUpdates
+argument_list|()
+condition|)
+block|{
+comment|// No fused updates: any subset of changes might or might not have been submitted, so don't
+comment|// make any strong claims.
+return|return
+literal|"Error submitting changes"
+return|;
+block|}
+comment|// Fused updates: it's correct to say that none of the n changes were submitted.
+return|return
+literal|"Error submitting "
+operator|+
+name|c
+operator|+
+literal|" changes"
+return|;
+block|}
+comment|// Multiple projects involved, but we don't know at this point what failed. At least give the
+comment|// user a heads up that some changes may be unsubmitted, even if the change screen they land on
+comment|// after the error message says that this particular change was submitted.
+return|return
+literal|"Error submitting some of the "
+operator|+
+name|c
+operator|+
+literal|" changes to one or more of the "
+operator|+
+name|p
+operator|+
+literal|" projects involved; some projects may have submitted successfully, but others may have"
+operator|+
+literal|" failed"
+return|;
 block|}
 DECL|method|logDebug (String msg, Object... args)
 specifier|private
