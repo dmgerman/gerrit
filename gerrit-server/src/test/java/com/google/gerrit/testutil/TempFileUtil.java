@@ -219,7 +219,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|recursivelyDelete (File dir)
-specifier|private
+specifier|public
 specifier|static
 name|void
 name|recursivelyDelete

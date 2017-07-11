@@ -384,6 +384,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|TempFileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Injector
@@ -477,18 +491,6 @@ operator|.
 name|file
 operator|.
 name|Path
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
 import|;
 end_import
 
@@ -1488,7 +1490,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Initializes new Gerrit site and returns started server.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}. Must contain a    *     value for {@code gerrit.tempSiteDir} pointing to a temporary directory. This directory is    *     only actually used for on-disk sites ({@link Description#memory()} returns false), but it    *     must nonetheless exist for in-memory sites.    * @return started server.    * @throws Exception    */
+comment|/**    * Initializes new Gerrit site and returns started server.    *    *<p>A new temporary directory for the site will be created with {@link TempFileUtil}, even in    * the server is otherwise configured in-memory. Closing the server stops the daemon but does not    * delete the temporary directory. Callers may either get the directory with {@link    * #getSitePath()} and delete it manually, or call {@link TempFileUtil#cleanup()}.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @return started server.    * @throws Exception    */
 DECL|method|initAndStart (Description desc, Config baseConfig)
 specifier|public
 specifier|static
@@ -1507,22 +1509,40 @@ block|{
 name|Path
 name|site
 init|=
-name|Paths
+name|TempFileUtil
 operator|.
-name|get
+name|createTempDirectory
+argument_list|()
+operator|.
+name|toPath
+argument_list|()
+decl_stmt|;
+name|baseConfig
+operator|=
+operator|new
+name|Config
 argument_list|(
 name|baseConfig
+argument_list|)
+expr_stmt|;
+name|baseConfig
 operator|.
-name|getString
+name|setString
 argument_list|(
 literal|"gerrit"
 argument_list|,
 literal|null
 argument_list|,
 literal|"tempSiteDir"
+argument_list|,
+name|site
+operator|.
+name|toString
+argument_list|()
 argument_list|)
-argument_list|)
-decl_stmt|;
+expr_stmt|;
+try|try
+block|{
 if|if
 condition|(
 operator|!
@@ -1552,6 +1572,27 @@ argument_list|,
 name|site
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|TempFileUtil
+operator|.
+name|recursivelyDelete
+argument_list|(
+name|site
+operator|.
+name|toFile
+argument_list|()
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 comment|/**    * Starts Gerrit server from existing on-disk site.    *    * @param desc server description.    * @param baseConfig default config values; merged with config from {@code desc}.    * @param site existing temporary directory for site. Required, but may be empty, for in-memory    *     servers. For on-disk servers, assumes that {@link #init} was previously called to    *     initialize this directory.    * @return started server.    * @throws Exception    */
 DECL|method|start (Description desc, Config baseConfig, Path site)
@@ -1692,6 +1733,8 @@ name|startInMemory
 argument_list|(
 name|desc
 argument_list|,
+name|site
+argument_list|,
 name|baseConfig
 argument_list|,
 name|daemon
@@ -1711,7 +1754,7 @@ name|serverStarted
 argument_list|)
 return|;
 block|}
-DECL|method|startInMemory (Description desc, Config baseConfig, Daemon daemon)
+DECL|method|startInMemory ( Description desc, Path site, Config baseConfig, Daemon daemon)
 specifier|private
 specifier|static
 name|GerritServer
@@ -1719,6 +1762,9 @@ name|startInMemory
 parameter_list|(
 name|Description
 name|desc
+parameter_list|,
+name|Path
+name|site
 parameter_list|,
 name|Config
 name|baseConfig
@@ -1846,6 +1892,8 @@ operator|new
 name|InMemoryTestingDatabaseModule
 argument_list|(
 name|cfg
+argument_list|,
+name|site
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1860,6 +1908,8 @@ operator|new
 name|GerritServer
 argument_list|(
 name|desc
+argument_list|,
+literal|null
 argument_list|,
 name|createTestInjector
 argument_list|(
@@ -2031,6 +2081,8 @@ operator|new
 name|GerritServer
 argument_list|(
 name|desc
+argument_list|,
+name|site
 argument_list|,
 name|createTestInjector
 argument_list|(
@@ -2445,6 +2497,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|field|sitePath
+specifier|private
+specifier|final
+name|Path
+name|sitePath
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|field|daemon
 specifier|private
 name|Daemon
@@ -2493,12 +2554,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_constructor
-DECL|method|GerritServer ( Description desc, Injector testInjector, Daemon daemon, ExecutorService daemonService)
+DECL|method|GerritServer ( Description desc, @Nullable Path sitePath, Injector testInjector, Daemon daemon, @Nullable ExecutorService daemonService)
 specifier|private
 name|GerritServer
 parameter_list|(
 name|Description
 name|desc
+parameter_list|,
+annotation|@
+name|Nullable
+name|Path
+name|sitePath
 parameter_list|,
 name|Injector
 name|testInjector
@@ -2506,6 +2572,8 @@ parameter_list|,
 name|Daemon
 name|daemon
 parameter_list|,
+annotation|@
+name|Nullable
 name|ExecutorService
 name|daemonService
 parameter_list|)
@@ -2514,19 +2582,34 @@ name|this
 operator|.
 name|desc
 operator|=
+name|checkNotNull
+argument_list|(
 name|desc
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|sitePath
+operator|=
+name|sitePath
 expr_stmt|;
 name|this
 operator|.
 name|testInjector
 operator|=
+name|checkNotNull
+argument_list|(
 name|testInjector
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|daemon
 operator|=
+name|checkNotNull
+argument_list|(
 name|daemon
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -2746,6 +2829,19 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|method|getSitePath ()
+specifier|public
+name|Path
+name|getSitePath
+parameter_list|()
+block|{
+return|return
+name|sitePath
+return|;
 block|}
 end_function
 
