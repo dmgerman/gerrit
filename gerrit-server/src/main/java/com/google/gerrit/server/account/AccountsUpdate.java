@@ -1236,6 +1236,9 @@ literal|null
 return|;
 block|}
 comment|// Update in ReviewDb
+name|Account
+name|reviewDbAccount
+init|=
 name|db
 operator|.
 name|accounts
@@ -1270,7 +1273,7 @@ name|a
 return|;
 block|}
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Update in NoteDb
 name|AccountConfig
 name|accountConfig
@@ -1288,6 +1291,13 @@ operator|.
 name|getAccount
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|account
+operator|!=
+literal|null
+condition|)
+block|{
 name|consumers
 operator|.
 name|stream
@@ -1310,8 +1320,31 @@ argument_list|(
 name|accountConfig
 argument_list|)
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|reviewDbAccount
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// user branch doesn't exist yet
+name|accountConfig
+operator|.
+name|setAccount
+argument_list|(
+name|reviewDbAccount
+argument_list|)
+expr_stmt|;
+name|commitNew
+argument_list|(
+name|accountConfig
+argument_list|)
+expr_stmt|;
+block|}
 return|return
-name|account
+name|reviewDbAccount
 return|;
 block|}
 comment|/**    * Replaces the account.    *    *<p>The existing account with the same account ID is overwritten by the given account. Choosing    * to overwrite an account means that any updates that were done to the account by a racing    * request after the account was read are lost. Updates are also lost if the account was read from    * a stale account index. This is why using {@link #update(ReviewDb,    * com.google.gerrit.reviewdb.client.Account.Id, Consumer)} to do an atomic update is always    * preferred.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param account the new account    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    * @see #update(ReviewDb, com.google.gerrit.reviewdb.client.Account.Id, Consumer)    */
