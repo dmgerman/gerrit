@@ -637,6 +637,20 @@ argument_list|(
 name|newProjectName
 argument_list|)
 expr_stmt|;
+comment|// Check that we populate the label data in the HTTP path. See GetProjectIT#getProject
+comment|// for more extensive coverage of the LabelTypeInfo.
+name|assertThat
+argument_list|(
+name|p
+operator|.
+name|labels
+argument_list|)
+operator|.
+name|hasSize
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|ProjectState
 name|projectState
 init|=
