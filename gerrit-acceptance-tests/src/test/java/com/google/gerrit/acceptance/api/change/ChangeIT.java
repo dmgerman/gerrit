@@ -260,6 +260,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDbUtil
+operator|.
+name|unwrapDb
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|group
@@ -7041,7 +7059,10 @@ name|PatchSetApproval
 argument_list|>
 name|psas
 init|=
+name|unwrapDb
+argument_list|(
 name|db
+argument_list|)
 operator|.
 name|patchSetApprovals
 argument_list|()
