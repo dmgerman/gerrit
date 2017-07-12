@@ -78,9 +78,9 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ConfigNotesMigration
+name|NoteDbTable
 operator|.
-name|SECTION_NOTE_DB
+name|CHANGES
 import|;
 end_import
 
@@ -96,9 +96,9 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|NoteDbTable
+name|NotesMigration
 operator|.
-name|CHANGES
+name|SECTION_NOTE_DB
 import|;
 end_import
 
@@ -202,7 +202,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ConfigNotesMigration
+name|NotesMigrationState
 import|;
 end_import
 
@@ -427,11 +427,19 @@ block|}
 name|Config
 name|defaultConfig
 init|=
-name|ConfigNotesMigration
-operator|.
-name|allEnabledConfig
+operator|new
+name|Config
 argument_list|()
 decl_stmt|;
+name|NotesMigrationState
+operator|.
+name|FINAL
+operator|.
+name|setConfigValues
+argument_list|(
+name|defaultConfig
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|String

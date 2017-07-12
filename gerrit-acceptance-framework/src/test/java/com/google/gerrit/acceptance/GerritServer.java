@@ -2439,6 +2439,16 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+name|NoteDbMode
+operator|.
+name|newNotesMigrationFromEnv
+argument_list|()
+operator|.
+name|setConfigValues
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|createTestInjector (Daemon daemon)
 specifier|private

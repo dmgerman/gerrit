@@ -312,6 +312,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|ReviewerStateInternal
 import|;
 end_import
@@ -349,20 +365,6 @@ operator|.
 name|change
 operator|.
 name|InternalChangeQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|testutil
-operator|.
-name|TestNotesMigration
 import|;
 end_import
 
@@ -968,7 +970,7 @@ decl_stmt|;
 DECL|field|notesMigration
 specifier|private
 specifier|final
-name|TestNotesMigration
+name|NotesMigration
 name|notesMigration
 decl_stmt|;
 DECL|field|db
@@ -1038,7 +1040,7 @@ name|commitBuilder
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1055,7 +1057,7 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|TestNotesMigration
+name|NotesMigration
 name|notesMigration
 parameter_list|,
 annotation|@
@@ -1105,7 +1107,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1122,7 +1124,7 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|TestNotesMigration
+name|NotesMigration
 name|notesMigration
 parameter_list|,
 annotation|@
@@ -1182,7 +1184,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1199,7 +1201,7 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|TestNotesMigration
+name|NotesMigration
 name|notesMigration
 parameter_list|,
 annotation|@
@@ -1275,7 +1277,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted String subject, @Assisted Map<String, String> files)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1292,7 +1294,7 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|TestNotesMigration
+name|NotesMigration
 name|notesMigration
 parameter_list|,
 annotation|@
@@ -1357,7 +1359,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted TestRepository<?> testRepo, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1374,7 +1376,7 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|TestNotesMigration
+name|NotesMigration
 name|notesMigration
 parameter_list|,
 annotation|@
@@ -1463,7 +1465,7 @@ name|changeId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, TestNotesMigration notesMigration, ReviewDb db, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
+DECL|method|PushOneCommit ( ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, NotesMigration notesMigration, ReviewDb db, PersonIdent i, TestRepository<?> testRepo, String subject, Map<String, String> files, String changeId)
 specifier|private
 name|PushOneCommit
 parameter_list|(
@@ -1481,7 +1483,7 @@ name|InternalChangeQuery
 argument_list|>
 name|queryProvider
 parameter_list|,
-name|TestNotesMigration
+name|NotesMigration
 name|notesMigration
 parameter_list|,
 name|ReviewDb

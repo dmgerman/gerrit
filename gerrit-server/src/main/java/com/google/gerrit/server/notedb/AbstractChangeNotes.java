@@ -927,7 +927,7 @@ name|args
 operator|.
 name|migration
 operator|.
-name|failOnLoad
+name|failOnLoadForTest
 argument_list|()
 condition|)
 block|{

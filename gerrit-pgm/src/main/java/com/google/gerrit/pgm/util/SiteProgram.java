@@ -276,7 +276,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ConfigNotesMigration
+name|NotesMigration
 import|;
 end_import
 
@@ -1373,7 +1373,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ConfigNotesMigration
+name|NotesMigration
 operator|.
 name|Module
 argument_list|()
