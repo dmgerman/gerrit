@@ -1071,6 +1071,16 @@ argument_list|)
 expr_stmt|;
 name|list
 operator|.
+name|setMatchRegex
+argument_list|(
+name|req
+operator|.
+name|getRegex
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|list
+operator|.
 name|setSuggest
 argument_list|(
 name|req
