@@ -376,36 +376,6 @@ return|;
 block|}
 end_function
 
-begin_function
-DECL|method|readWrite ()
-specifier|public
-specifier|static
-name|boolean
-name|readWrite
-parameter_list|()
-block|{
-name|NotesMigration
-name|migration
-init|=
-name|get
-argument_list|()
-operator|.
-name|migration
-decl_stmt|;
-return|return
-name|migration
-operator|.
-name|rawWriteChangesSetting
-argument_list|()
-operator|&&
-name|migration
-operator|.
-name|readChanges
-argument_list|()
-return|;
-block|}
-end_function
-
 begin_decl_stmt
 DECL|field|migration
 specifier|final
