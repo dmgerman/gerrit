@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.index.project
+DECL|package|com.google.gerrit.server.query.project
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
+name|query
 operator|.
 name|project
 package|;
@@ -78,7 +78,7 @@ name|gerrit
 operator|.
 name|index
 operator|.
-name|Index
+name|FieldDef
 import|;
 end_import
 
@@ -92,7 +92,9 @@ name|gerrit
 operator|.
 name|index
 operator|.
-name|IndexDefinition
+name|query
+operator|.
+name|IndexPredicate
 import|;
 end_import
 
@@ -138,9 +140,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectField
 import|;
 end_import
 
@@ -154,56 +158,26 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
-operator|.
 name|project
 operator|.
-name|ProjectPredicates
+name|ProjectState
 import|;
 end_import
 
-begin_interface
-DECL|interface|ProjectIndex
+begin_class
+DECL|class|ProjectPredicates
 specifier|public
-interface|interface
-name|ProjectIndex
-extends|extends
-name|Index
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|,
-name|ProjectState
-argument_list|>
+class|class
+name|ProjectPredicates
 block|{
-DECL|interface|Factory
+DECL|method|name (Project.NameKey nameKey)
 specifier|public
-interface|interface
-name|Factory
-extends|extends
-name|IndexDefinition
-operator|.
-name|IndexFactory
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|,
-name|ProjectState
-argument_list|,
-name|ProjectIndex
-argument_list|>
-block|{}
-annotation|@
-name|Override
-DECL|method|keyPredicate (Project.NameKey nameKey)
-specifier|default
+specifier|static
 name|Predicate
 argument_list|<
 name|ProjectState
 argument_list|>
-name|keyPredicate
+name|name
 parameter_list|(
 name|Project
 operator|.
@@ -212,16 +186,61 @@ name|nameKey
 parameter_list|)
 block|{
 return|return
-name|ProjectPredicates
-operator|.
-name|name
+operator|new
+name|ProjectPredicate
 argument_list|(
+name|ProjectField
+operator|.
+name|NAME
+argument_list|,
 name|nameKey
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|class|ProjectPredicate
+specifier|static
+class|class
+name|ProjectPredicate
+extends|extends
+name|IndexPredicate
+argument_list|<
+name|ProjectState
+argument_list|>
+block|{
+DECL|method|ProjectPredicate (FieldDef<ProjectState, ?> def, String value)
+name|ProjectPredicate
+parameter_list|(
+name|FieldDef
+argument_list|<
+name|ProjectState
+argument_list|,
+name|?
+argument_list|>
+name|def
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|def
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+DECL|method|ProjectPredicates ()
+specifier|private
+name|ProjectPredicates
+parameter_list|()
+block|{}
+block|}
+end_class
 
 end_unit
 
