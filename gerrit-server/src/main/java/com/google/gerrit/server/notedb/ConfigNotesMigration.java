@@ -641,10 +641,6 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-comment|// Reading change sequence numbers from NoteDb is not the default even if
-comment|// reading changes themselves is. Once this is enabled, it's not easy to
-comment|// undo: ReviewDb might hand out numbers that have already been assigned by
-comment|// NoteDb. This decision for the default may be reevaluated later.
 name|boolean
 name|readChangeSequence
 init|=
