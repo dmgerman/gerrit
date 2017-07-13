@@ -1882,7 +1882,7 @@ name|args
 operator|.
 name|migration
 operator|.
-name|enabled
+name|readChanges
 argument_list|()
 condition|)
 block|{
@@ -2008,7 +2008,7 @@ name|args
 operator|.
 name|migration
 operator|.
-name|enabled
+name|readChanges
 argument_list|()
 condition|)
 block|{

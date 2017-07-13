@@ -906,21 +906,6 @@ name|readChanges
 argument_list|()
 return|;
 block|}
-DECL|method|enabled ()
-specifier|public
-specifier|final
-name|boolean
-name|enabled
-parameter_list|()
-block|{
-return|return
-name|rawWriteChangesSetting
-argument_list|()
-operator|||
-name|readChanges
-argument_list|()
-return|;
-block|}
 DECL|method|setConfigValues (Config cfg)
 specifier|public
 specifier|final
