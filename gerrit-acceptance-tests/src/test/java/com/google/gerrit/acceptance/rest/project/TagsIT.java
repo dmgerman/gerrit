@@ -119,6 +119,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -894,6 +906,23 @@ argument_list|)
 argument_list|)
 argument_list|,
 name|result
+argument_list|)
+expr_stmt|;
+comment|// With conflicting options
+name|assertBadRequest
+argument_list|(
+name|getTags
+argument_list|()
+operator|.
+name|withSubstring
+argument_list|(
+literal|"ag-B"
+argument_list|)
+operator|.
+name|withRegex
+argument_list|(
+literal|"^tag-[c|d]$"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2624,6 +2653,42 @@ argument_list|(
 name|tagname
 argument_list|)
 return|;
+block|}
+DECL|method|assertBadRequest (ListRefsRequest<TagInfo> req)
+specifier|private
+name|void
+name|assertBadRequest
+parameter_list|(
+name|ListRefsRequest
+argument_list|<
+name|TagInfo
+argument_list|>
+name|req
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+try|try
+block|{
+name|req
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected BadRequestException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|BadRequestException
+name|e
+parameter_list|)
+block|{
+comment|// Expected
+block|}
 block|}
 block|}
 end_class

@@ -109,6 +109,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -199,6 +211,22 @@ operator|.
 name|ProjectApi
 operator|.
 name|ListRefsRequest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|BadRequestException
 import|;
 end_import
 
@@ -941,6 +969,23 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Conflicting options
+name|assertBadRequest
+argument_list|(
+name|list
+argument_list|()
+operator|.
+name|withSubstring
+argument_list|(
+literal|"somebranch"
+argument_list|)
+operator|.
+name|withRegex
+argument_list|(
+literal|".*ast.*r"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|list ()
 specifier|private
@@ -1019,6 +1064,42 @@ expr_stmt|;
 return|return
 name|info
 return|;
+block|}
+DECL|method|assertBadRequest (ListRefsRequest<BranchInfo> req)
+specifier|private
+name|void
+name|assertBadRequest
+parameter_list|(
+name|ListRefsRequest
+argument_list|<
+name|BranchInfo
+argument_list|>
+name|req
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+try|try
+block|{
+name|req
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected BadRequestException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|BadRequestException
+name|e
+parameter_list|)
+block|{
+comment|// Expected
+block|}
 block|}
 block|}
 end_class
