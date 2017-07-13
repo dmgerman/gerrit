@@ -739,6 +739,7 @@ return|;
 block|}
 block|}
 DECL|interface|InternalFactory
+specifier|public
 interface|interface
 name|InternalFactory
 block|{
