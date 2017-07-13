@@ -922,6 +922,25 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertRefNames
+argument_list|(
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+argument_list|,
+name|list
+argument_list|()
+operator|.
+name|withRegex
+argument_list|(
+literal|".*AST.*R"
+argument_list|)
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|list ()
 specifier|private
