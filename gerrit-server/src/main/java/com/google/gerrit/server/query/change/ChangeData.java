@@ -3011,6 +3011,13 @@ specifier|private
 name|Integer
 name|unresolvedCommentCount
 decl_stmt|;
+DECL|field|revertOf
+specifier|private
+name|Change
+operator|.
+name|Id
+name|revertOf
+decl_stmt|;
 DECL|field|refStates
 specifier|private
 name|ImmutableList
