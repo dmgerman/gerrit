@@ -291,6 +291,11 @@ specifier|public
 name|Boolean
 name|hasReviewStarted
 decl_stmt|;
+DECL|field|revertOf
+specifier|public
+name|Integer
+name|revertOf
+decl_stmt|;
 DECL|field|_number
 specifier|public
 name|int

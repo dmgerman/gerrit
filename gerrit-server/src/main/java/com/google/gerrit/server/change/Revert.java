@@ -1884,6 +1884,13 @@ argument_list|(
 name|ccs
 argument_list|)
 expr_stmt|;
+name|ins
+operator|.
+name|setRevertOf
+argument_list|(
+name|changeIdToRevert
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|BatchUpdate
