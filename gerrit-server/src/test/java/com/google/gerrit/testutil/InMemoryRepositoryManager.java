@@ -294,8 +294,9 @@ return|return
 operator|new
 name|Repo
 argument_list|(
-operator|new
-name|TestNotesMigration
+name|NoteDbMode
+operator|.
+name|newNotesMigrationFromEnv
 argument_list|()
 argument_list|,
 name|name
@@ -477,8 +478,9 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-operator|new
-name|TestNotesMigration
+name|NoteDbMode
+operator|.
+name|newNotesMigrationFromEnv
 argument_list|()
 argument_list|)
 expr_stmt|;

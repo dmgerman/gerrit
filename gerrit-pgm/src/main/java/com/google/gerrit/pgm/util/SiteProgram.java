@@ -276,7 +276,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ConfigNotesMigration
+name|NotesMigration
 import|;
 end_import
 
@@ -878,12 +878,11 @@ argument_list|)
 return|;
 block|}
 comment|/** @return provides database connectivity and site path. */
-DECL|method|createDbInjector ( final boolean enableMetrics, DataSourceProvider.Context context)
+DECL|method|createDbInjector (boolean enableMetrics, DataSourceProvider.Context context)
 specifier|protected
 name|Injector
 name|createDbInjector
 parameter_list|(
-specifier|final
 name|boolean
 name|enableMetrics
 parameter_list|,
@@ -893,14 +892,12 @@ name|Context
 name|context
 parameter_list|)
 block|{
-specifier|final
 name|Path
 name|sitePath
 init|=
 name|getSitePath
 argument_list|()
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|Module
@@ -1270,7 +1267,6 @@ literal|"database.type must be defined"
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|DataSourceType
 name|dst
 init|=
@@ -1377,7 +1373,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ConfigNotesMigration
+name|NotesMigration
 operator|.
 name|Module
 argument_list|()
@@ -1402,7 +1398,6 @@ name|CreationException
 name|ce
 parameter_list|)
 block|{
-specifier|final
 name|Message
 name|first
 init|=
@@ -1501,7 +1496,6 @@ name|why
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|StringBuilder
 name|buf
 init|=

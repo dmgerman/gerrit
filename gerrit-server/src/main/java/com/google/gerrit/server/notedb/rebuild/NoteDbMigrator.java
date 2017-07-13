@@ -146,7 +146,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ConfigNotesMigration
+name|NotesMigration
 operator|.
 name|SECTION_NOTE_DB
 import|;
@@ -686,7 +686,7 @@ name|server
 operator|.
 name|notedb
 operator|.
-name|ConfigNotesMigration
+name|MutableNotesMigration
 import|;
 end_import
 
@@ -703,22 +703,6 @@ operator|.
 name|notedb
 operator|.
 name|NoteDbTable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
 import|;
 end_import
 
@@ -1303,7 +1287,7 @@ decl_stmt|;
 DECL|field|globalNotesMigration
 specifier|private
 specifier|final
-name|NotesMigration
+name|MutableNotesMigration
 name|globalNotesMigration
 decl_stmt|;
 DECL|field|primaryStorageMigrator
@@ -1386,7 +1370,7 @@ name|autoMigrate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Builder ( @erritServerConfig Config cfg, SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilder rebuilder, WorkQueue workQueue, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator)
+DECL|method|Builder ( @erritServerConfig Config cfg, SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilder rebuilder, WorkQueue workQueue, MutableNotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator)
 name|Builder
 parameter_list|(
 annotation|@
@@ -1423,7 +1407,7 @@ parameter_list|,
 name|WorkQueue
 name|workQueue
 parameter_list|,
-name|NotesMigration
+name|MutableNotesMigration
 name|globalNotesMigration
 parameter_list|,
 name|PrimaryStorageMigrator
@@ -1857,7 +1841,7 @@ decl_stmt|;
 DECL|field|globalNotesMigration
 specifier|private
 specifier|final
-name|NotesMigration
+name|MutableNotesMigration
 name|globalNotesMigration
 decl_stmt|;
 DECL|field|primaryStorageMigrator
@@ -1930,7 +1914,7 @@ specifier|final
 name|boolean
 name|autoMigrate
 decl_stmt|;
-DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilder rebuilder, NotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, NotesMigrationState stopAtState, boolean trial, boolean forceRebuild, int sequenceGap, boolean autoMigrate)
+DECL|method|NoteDbMigrator ( SitePaths sitePaths, SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, AllProjectsName allProjects, ThreadLocalRequestContext requestContext, InternalUser.Factory userFactory, ChangeRebuilder rebuilder, MutableNotesMigration globalNotesMigration, PrimaryStorageMigrator primaryStorageMigrator, ListeningExecutorService executor, ImmutableList<Project.NameKey> projects, ImmutableList<Change.Id> changes, OutputStream progressOut, NotesMigrationState stopAtState, boolean trial, boolean forceRebuild, int sequenceGap, boolean autoMigrate)
 specifier|private
 name|NoteDbMigrator
 parameter_list|(
@@ -1960,7 +1944,7 @@ parameter_list|,
 name|ChangeRebuilder
 name|rebuilder
 parameter_list|,
-name|NotesMigration
+name|MutableNotesMigration
 name|globalNotesMigration
 parameter_list|,
 name|PrimaryStorageMigrator
@@ -2989,13 +2973,9 @@ expr_stmt|;
 return|return
 name|NotesMigrationState
 operator|.
-name|forNotesMigration
-argument_list|(
-operator|new
-name|ConfigNotesMigration
+name|forConfig
 argument_list|(
 name|gerritConfig
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -3157,16 +3137,11 @@ operator|)
 argument_list|)
 throw|;
 block|}
-name|ConfigNotesMigration
+name|newState
 operator|.
 name|setConfigValues
 argument_list|(
 name|gerritConfig
-argument_list|,
-name|newState
-operator|.
-name|migration
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|additionalUpdates
@@ -3187,9 +3162,6 @@ operator|.
 name|setFrom
 argument_list|(
 name|newState
-operator|.
-name|migration
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -4070,6 +4042,11 @@ specifier|private
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|closeDb
+specifier|private
+name|Runnable
+name|closeDb
+decl_stmt|;
 DECL|method|ContextHelper ()
 name|ContextHelper
 parameter_list|()
@@ -4135,6 +4112,20 @@ operator|==
 literal|null
 condition|)
 block|{
+name|ReviewDb
+name|actual
+init|=
+name|schemaFactory
+operator|.
+name|open
+argument_list|()
+decl_stmt|;
+name|closeDb
+operator|=
+name|actual
+operator|::
+name|close
+expr_stmt|;
 name|db
 operator|=
 operator|new
@@ -4142,10 +4133,7 @@ name|ReviewDbWrapper
 argument_list|(
 name|unwrapDb
 argument_list|(
-name|schemaFactory
-operator|.
-name|open
-argument_list|()
+name|actual
 argument_list|)
 argument_list|)
 block|{
@@ -4181,10 +4169,18 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|db
+name|closeDb
 operator|.
-name|close
+name|run
 argument_list|()
+expr_stmt|;
+name|db
+operator|=
+literal|null
+expr_stmt|;
+name|closeDb
+operator|=
+literal|null
 expr_stmt|;
 block|}
 block|}

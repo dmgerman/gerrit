@@ -580,7 +580,7 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
-name|TestNotesMigration
+name|NoteDbMode
 import|;
 end_import
 
@@ -1029,8 +1029,9 @@ name|InMemoryModule
 argument_list|(
 name|cfg
 argument_list|,
-operator|new
-name|TestNotesMigration
+name|NoteDbMode
+operator|.
+name|newNotesMigrationFromEnv
 argument_list|()
 argument_list|)
 argument_list|)

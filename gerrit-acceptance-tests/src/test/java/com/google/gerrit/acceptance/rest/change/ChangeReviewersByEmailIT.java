@@ -2547,7 +2547,7 @@ argument_list|)
 expr_stmt|;
 name|notesMigration
 operator|.
-name|setFailOnLoad
+name|setFailOnLoadForTest
 argument_list|(
 literal|true
 argument_list|)
@@ -2614,7 +2614,7 @@ finally|finally
 block|{
 name|notesMigration
 operator|.
-name|setFailOnLoad
+name|setFailOnLoadForTest
 argument_list|(
 literal|false
 argument_list|)

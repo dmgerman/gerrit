@@ -1954,10 +1954,10 @@ specifier|private
 name|Path
 name|runFile
 decl_stmt|;
-DECL|field|test
+DECL|field|inMemoryTest
 specifier|private
 name|boolean
-name|test
+name|inMemoryTest
 decl_stmt|;
 DECL|field|luceneModule
 specifier|private
@@ -2458,7 +2458,7 @@ argument_list|,
 name|modules
 argument_list|)
 expr_stmt|;
-name|test
+name|inMemoryTest
 operator|=
 literal|true
 expr_stmt|;
@@ -2498,7 +2498,7 @@ name|luceneModule
 operator|=
 name|m
 expr_stmt|;
-name|test
+name|inMemoryTest
 operator|=
 literal|true
 expr_stmt|;
@@ -2919,7 +2919,7 @@ name|modules
 operator|.
 name|add
 argument_list|(
-name|test
+name|inMemoryTest
 condition|?
 operator|new
 name|H2AccountPatchReviewStore
@@ -3265,7 +3265,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|test
+name|inMemoryTest
 condition|)
 block|{
 name|bind
@@ -3611,7 +3611,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|test
+name|inMemoryTest
 condition|)
 block|{
 name|modules

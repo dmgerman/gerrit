@@ -784,6 +784,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|MutableNotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|NotesMigration
 import|;
 end_import
@@ -1455,7 +1471,7 @@ decl_stmt|;
 DECL|field|notesMigration
 specifier|private
 specifier|final
-name|TestNotesMigration
+name|MutableNotesMigration
 name|notesMigration
 decl_stmt|;
 DECL|method|InMemoryModule ()
@@ -1468,20 +1484,21 @@ argument_list|(
 name|newDefaultConfig
 argument_list|()
 argument_list|,
-operator|new
-name|TestNotesMigration
+name|NoteDbMode
+operator|.
+name|newNotesMigrationFromEnv
 argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|InMemoryModule (Config cfg, TestNotesMigration notesMigration)
+DECL|method|InMemoryModule (Config cfg, MutableNotesMigration notesMigration)
 specifier|public
 name|InMemoryModule
 parameter_list|(
 name|Config
 name|cfg
 parameter_list|,
-name|TestNotesMigration
+name|MutableNotesMigration
 name|notesMigration
 parameter_list|)
 block|{
@@ -1841,7 +1858,7 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
-name|NotesMigration
+name|MutableNotesMigration
 operator|.
 name|class
 argument_list|)
@@ -1849,6 +1866,20 @@ operator|.
 name|toInstance
 argument_list|(
 name|notesMigration
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|NotesMigration
+operator|.
+name|class
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|MutableNotesMigration
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|bind

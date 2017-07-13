@@ -290,6 +290,22 @@ name|server
 operator|.
 name|notedb
 operator|.
+name|MutableNotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
 name|rebuild
 operator|.
 name|ChangeRebuilder
@@ -517,7 +533,7 @@ decl_stmt|;
 DECL|field|notesMigration
 specifier|private
 specifier|final
-name|TestNotesMigration
+name|MutableNotesMigration
 name|notesMigration
 decl_stmt|;
 DECL|field|bundleReader
@@ -548,7 +564,7 @@ name|commentsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NoteDbChecker ( Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, TestNotesMigration notesMigration, ChangeBundleReader bundleReader, ChangeNotes.Factory notesFactory, ChangeRebuilder changeRebuilder, CommentsUtil commentsUtil)
+DECL|method|NoteDbChecker ( Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, MutableNotesMigration notesMigration, ChangeBundleReader bundleReader, ChangeNotes.Factory notesFactory, ChangeRebuilder changeRebuilder, CommentsUtil commentsUtil)
 name|NoteDbChecker
 parameter_list|(
 name|Provider
@@ -560,7 +576,7 @@ parameter_list|,
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-name|TestNotesMigration
+name|MutableNotesMigration
 name|notesMigration
 parameter_list|,
 name|ChangeBundleReader
