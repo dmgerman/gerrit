@@ -258,6 +258,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -1034,6 +1044,8 @@ name|edit
 operator|.
 name|getEndB
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -1070,10 +1082,12 @@ literal|1
 argument_list|,
 operator|-
 literal|1
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|create ( String oldFilePath, String newFilePath, int beginA, int endA, int beginB, int endB)
+DECL|method|create ( String oldFilePath, String newFilePath, int beginA, int endA, int beginB, int endB, boolean filePathAdjusted)
 specifier|static
 name|ContextAwareEdit
 name|create
@@ -1095,6 +1109,9 @@ name|beginB
 parameter_list|,
 name|int
 name|endB
+parameter_list|,
+name|boolean
+name|filePathAdjusted
 parameter_list|)
 block|{
 name|String
@@ -1108,6 +1125,21 @@ name|oldFilePath
 argument_list|,
 name|newFilePath
 argument_list|)
+decl_stmt|;
+name|boolean
+name|implicitRename
+init|=
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|oldFilePath
+argument_list|,
+name|newFilePath
+argument_list|)
+operator|&&
+name|filePathAdjusted
 decl_stmt|;
 return|return
 operator|new
@@ -1124,6 +1156,8 @@ argument_list|,
 name|beginB
 argument_list|,
 name|endB
+argument_list|,
+name|implicitRename
 argument_list|)
 return|;
 block|}
@@ -1167,6 +1201,14 @@ specifier|public
 specifier|abstract
 name|int
 name|getEndB
+parameter_list|()
+function_decl|;
+comment|// Used for equals(), for which this value is important.
+DECL|method|isImplicitRename ()
+specifier|public
+specifier|abstract
+name|boolean
+name|isImplicitRename
 parameter_list|()
 function_decl|;
 DECL|method|toEdit ()
@@ -1377,6 +1419,19 @@ name|edit
 operator|.
 name|getEndB
 argument_list|()
+argument_list|,
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|edit
+operator|.
+name|getOldFilePath
+argument_list|()
+argument_list|,
+name|adjustedFilePath
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1497,6 +1552,19 @@ name|getEndB
 argument_list|()
 operator|+
 name|shiftedAmount
+argument_list|,
+operator|!
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|edit
+operator|.
+name|getNewFilePath
+argument_list|()
+argument_list|,
+name|adjustedFilePath
+argument_list|)
 argument_list|)
 return|;
 block|}
