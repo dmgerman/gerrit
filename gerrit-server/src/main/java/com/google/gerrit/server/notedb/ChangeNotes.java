@@ -4009,6 +4009,21 @@ name|isWorkInProgress
 argument_list|()
 return|;
 block|}
+DECL|method|getRevertOf ()
+specifier|public
+name|Change
+operator|.
+name|Id
+name|getRevertOf
+parameter_list|()
+block|{
+return|return
+name|state
+operator|.
+name|revertOf
+argument_list|()
+return|;
+block|}
 DECL|method|hasReviewStarted ()
 specifier|public
 name|boolean

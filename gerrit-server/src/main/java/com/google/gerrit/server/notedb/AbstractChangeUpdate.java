@@ -501,6 +501,11 @@ specifier|private
 name|ObjectId
 name|result
 decl_stmt|;
+DECL|field|rootOnly
+specifier|protected
+name|boolean
+name|rootOnly
+decl_stmt|;
 DECL|method|AbstractChangeUpdate ( Config cfg, NotesMigration migration, ChangeControl ctl, PersonIdent serverIdent, String anonymousCowardName, ChangeNoteUtil noteUtil, Date when)
 specifier|protected
 name|AbstractChangeUpdate
@@ -1121,6 +1126,17 @@ name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
+comment|/** Wether this update can only be a root commit. */
+DECL|method|isRootOnly ()
+specifier|public
+name|boolean
+name|isRootOnly
+parameter_list|()
+block|{
+return|return
+name|rootOnly
+return|;
+block|}
 comment|/**    * @return the NameKey for the project where the update will be stored, which is not necessarily    *     the same as the change's project.    */
 DECL|method|getProjectName ()
 specifier|protected
