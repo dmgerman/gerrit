@@ -164,7 +164,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/** Invalidate the cached information about the given project. */
+comment|/**    * Invalidate the cached information about the given project, and triggers reindexing for it    *    * @param p project that is being evicted    * @throws IOException thrown if the reindexing fails    */
 DECL|method|evict (Project p)
 name|void
 name|evict
@@ -172,8 +172,10 @@ parameter_list|(
 name|Project
 name|p
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
-comment|/** Invalidate the cached information about the given project. */
+comment|/**    * Invalidate the cached information about the given project, and triggers reindexing for it    *    * @param p the NameKey of the project that is being evicted    * @throws IOException thrown if the reindexing fails    */
 DECL|method|evict (Project.NameKey p)
 name|void
 name|evict
@@ -183,6 +185,8 @@ operator|.
 name|NameKey
 name|p
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 comment|/**    * Remove information about the given project from the cache. It will no longer be returned from    * {@link #all()}.    */
 DECL|method|remove (Project p)
@@ -192,6 +196,8 @@ parameter_list|(
 name|Project
 name|p
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 comment|/** @return sorted iteration of projects. */
 DECL|method|all ()
@@ -239,6 +245,8 @@ operator|.
 name|NameKey
 name|newProjectName
 parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 block|}
 end_interface
