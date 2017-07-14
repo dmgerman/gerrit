@@ -102,6 +102,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|io
 operator|.
 name|Resources
@@ -462,6 +476,20 @@ parameter_list|)
 throws|throws
 name|URISyntaxException
 block|{
+if|if
+condition|(
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|canonicalURL
+argument_list|)
+condition|)
+block|{
+return|return
+literal|""
+return|;
+block|}
 comment|// If we serving from a sub-directory rather than root, determine the path
 comment|// from the cannonical web URL.
 name|URI
