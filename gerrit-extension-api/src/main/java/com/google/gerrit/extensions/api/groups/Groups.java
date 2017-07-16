@@ -338,6 +338,11 @@ specifier|private
 name|String
 name|suggest
 decl_stmt|;
+DECL|field|regex
+specifier|private
+name|String
+name|regex
+decl_stmt|;
 DECL|method|get ()
 specifier|public
 name|List
@@ -669,6 +674,25 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|withRegex (String regex)
+specifier|public
+name|ListRequest
+name|withRegex
+parameter_list|(
+name|String
+name|regex
+parameter_list|)
+block|{
+name|this
+operator|.
+name|regex
+operator|=
+name|regex
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|withSuggest (String suggest)
 specifier|public
 name|ListRequest
@@ -795,6 +819,16 @@ parameter_list|()
 block|{
 return|return
 name|substring
+return|;
+block|}
+DECL|method|getRegex ()
+specifier|public
+name|String
+name|getRegex
+parameter_list|()
+block|{
+return|return
+name|regex
 return|;
 block|}
 DECL|method|getSuggest ()
