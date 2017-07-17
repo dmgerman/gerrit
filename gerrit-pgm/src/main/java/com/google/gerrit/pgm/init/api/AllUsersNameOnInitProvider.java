@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm.init
+DECL|package|com.google.gerrit.pgm.init.api
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|pgm
 operator|.
 name|init
+operator|.
+name|api
 package|;
 end_package
 
@@ -91,24 +93,6 @@ operator|.
 name|base
 operator|.
 name|Strings
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|pgm
-operator|.
-name|init
-operator|.
-name|api
-operator|.
-name|Section
 import|;
 end_import
 
