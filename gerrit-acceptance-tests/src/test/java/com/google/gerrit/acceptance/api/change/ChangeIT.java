@@ -11600,7 +11600,7 @@ name|that
 argument_list|(
 name|notesMigration
 operator|.
-name|enabled
+name|readChanges
 argument_list|()
 argument_list|)
 operator|.
@@ -12302,7 +12302,7 @@ name|that
 argument_list|(
 name|notesMigration
 operator|.
-name|enabled
+name|readChanges
 argument_list|()
 argument_list|)
 operator|.
@@ -18348,21 +18348,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TODO(dborowitz): Re-enable when ConsistencyChecker supports NoteDb.
-name|assume
-argument_list|()
-operator|.
-name|that
-argument_list|(
-name|notesMigration
-operator|.
-name|enabled
-argument_list|()
-argument_list|)
-operator|.
-name|isFalse
-argument_list|()
-expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
