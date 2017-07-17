@@ -277,6 +277,34 @@ operator|!=
 literal|null
 return|;
 block|}
+DECL|method|andActive (Predicate<AccountState> p)
+specifier|public
+specifier|static
+name|Predicate
+argument_list|<
+name|AccountState
+argument_list|>
+name|andActive
+parameter_list|(
+name|Predicate
+argument_list|<
+name|AccountState
+argument_list|>
+name|p
+parameter_list|)
+block|{
+return|return
+name|Predicate
+operator|.
+name|and
+argument_list|(
+name|p
+argument_list|,
+name|isActive
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|defaultPredicate (String query)
 specifier|public
 specifier|static
