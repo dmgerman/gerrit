@@ -13036,12 +13036,6 @@ argument_list|)
 expr_stmt|;
 name|in
 operator|.
-name|strictLabels
-operator|=
-literal|true
-expr_stmt|;
-name|in
-operator|.
 name|drafts
 operator|=
 name|DraftHandling
