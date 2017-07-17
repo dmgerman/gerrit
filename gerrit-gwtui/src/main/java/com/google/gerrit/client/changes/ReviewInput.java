@@ -301,7 +301,7 @@ specifier|native
 name|void
 name|init
 parameter_list|()
-comment|/*-{     this.labels = {};     this.strict_labels = true;   }-*/
+comment|/*-{     this.labels = {};   }-*/
 function_decl|;
 DECL|method|prePost ()
 specifier|public

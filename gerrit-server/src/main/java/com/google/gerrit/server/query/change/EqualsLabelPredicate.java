@@ -614,8 +614,6 @@ name|p
 operator|.
 name|getAccountId
 argument_list|()
-argument_list|,
-name|labelType
 argument_list|)
 condition|)
 block|{
@@ -710,7 +708,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|match (ChangeData cd, short value, Account.Id approver, LabelType type)
+DECL|method|match (ChangeData cd, short value, Account.Id approver)
 specifier|protected
 name|boolean
 name|match
@@ -725,9 +723,6 @@ name|Account
 operator|.
 name|Id
 name|approver
-parameter_list|,
-name|LabelType
-name|type
 parameter_list|)
 block|{
 if|if
@@ -792,7 +787,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|// Double check the value is still permitted for the user.
+comment|// Check the user has 'READ' permission.
 try|try
 block|{
 name|PermissionBackend
@@ -825,17 +820,6 @@ argument_list|(
 name|ChangePermission
 operator|.
 name|READ
-argument_list|)
-operator|&&
-name|expVal
-operator|==
-name|perm
-operator|.
-name|squashByTest
-argument_list|(
-name|type
-argument_list|,
-name|value
 argument_list|)
 return|;
 block|}
