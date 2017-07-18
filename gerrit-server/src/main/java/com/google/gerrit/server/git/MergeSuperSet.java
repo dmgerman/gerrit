@@ -334,6 +334,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|Accounts
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|Submit
@@ -840,6 +856,12 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|accounts
+specifier|private
+specifier|final
+name|Accounts
+name|accounts
+decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -914,7 +936,7 @@ name|closeOrm
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeSuperSet ( @erritServerConfig Config cfg, AccountCache accountCache, ChangeData.Factory changeDataFactory, Provider<InternalChangeQuery> queryProvider, Provider<MergeOpRepoManager> repoManagerProvider)
+DECL|method|MergeSuperSet ( @erritServerConfig Config cfg, AccountCache accountCache, Accounts accounts, ChangeData.Factory changeDataFactory, Provider<InternalChangeQuery> queryProvider, Provider<MergeOpRepoManager> repoManagerProvider)
 name|MergeSuperSet
 parameter_list|(
 annotation|@
@@ -924,6 +946,9 @@ name|cfg
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|Accounts
+name|accounts
 parameter_list|,
 name|ChangeData
 operator|.
@@ -954,6 +979,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|accounts
+operator|=
+name|accounts
 expr_stmt|;
 name|this
 operator|.
@@ -1212,6 +1243,8 @@ operator|new
 name|SubmitRuleEvaluator
 argument_list|(
 name|accountCache
+argument_list|,
+name|accounts
 argument_list|,
 name|cd
 argument_list|)
