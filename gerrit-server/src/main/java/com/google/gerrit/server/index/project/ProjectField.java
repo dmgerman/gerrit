@@ -201,6 +201,9 @@ argument_list|(
 literal|"name"
 argument_list|)
 operator|.
+name|stored
+argument_list|()
+operator|.
 name|build
 argument_list|(
 name|p
