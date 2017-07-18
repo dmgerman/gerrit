@@ -792,6 +792,11 @@ operator|=
 name|patches
 expr_stmt|;
 block|}
+DECL|method|PatchList ()
+specifier|protected
+name|PatchList
+parameter_list|()
+block|{}
 comment|/** Old side tree or commit; null only if this is a combined diff. */
 annotation|@
 name|Nullable

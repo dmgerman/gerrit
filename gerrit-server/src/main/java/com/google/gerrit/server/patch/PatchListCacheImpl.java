@@ -751,6 +751,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|pl
+operator|instanceof
+name|LargeObjectTombstone
+condition|)
+block|{
+throw|throw
+operator|new
+name|PatchListNotAvailableException
+argument_list|(
+literal|"Error computing "
+operator|+
+name|key
+operator|+
+literal|". Previous attempt failed with LargeObjectException"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|key
 operator|.
 name|getAlgorithm
@@ -828,6 +847,19 @@ operator|instanceof
 name|LargeObjectException
 condition|)
 block|{
+comment|// Cache negative result so we don't need to redo expensive computations that would yield
+comment|// the same result.
+name|fileCache
+operator|.
+name|put
+argument_list|(
+name|key
+argument_list|,
+operator|new
+name|LargeObjectTombstone
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|PatchListLoader
 operator|.
 name|log
@@ -1289,6 +1321,29 @@ throw|throw
 name|e
 throw|;
 block|}
+block|}
+comment|/** Used to cache negative results in {@code fileCache}. */
+DECL|class|LargeObjectTombstone
+specifier|private
+class|class
+name|LargeObjectTombstone
+extends|extends
+name|PatchList
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|method|LargeObjectTombstone ()
+specifier|private
+name|LargeObjectTombstone
+parameter_list|()
+block|{}
 block|}
 block|}
 end_class
