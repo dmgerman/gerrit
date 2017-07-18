@@ -2983,6 +2983,20 @@ name|output
 argument_list|)
 return|;
 block|}
+if|if
+condition|(
+name|input
+operator|.
+name|ready
+condition|)
+block|{
+name|output
+operator|.
+name|ready
+operator|=
+literal|true
+expr_stmt|;
+block|}
 comment|// Suppress notifications in WorkInProgressOp, we'll take care of
 comment|// them in this endpoint.
 name|WorkInProgressOp
