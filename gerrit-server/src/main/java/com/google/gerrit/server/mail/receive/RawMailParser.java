@@ -1015,7 +1015,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|isMixedOrAlternative
+name|isMultipart
 argument_list|(
 name|part
 operator|.
@@ -1086,11 +1086,11 @@ argument_list|)
 operator|)
 return|;
 block|}
-DECL|method|isMixedOrAlternative (String mimeType)
+DECL|method|isMultipart (String mimeType)
 specifier|private
 specifier|static
 name|boolean
-name|isMixedOrAlternative
+name|isMultipart
 parameter_list|(
 name|String
 name|mimeType
@@ -1099,16 +1099,9 @@ block|{
 return|return
 name|mimeType
 operator|.
-name|equals
+name|startsWith
 argument_list|(
-literal|"multipart/alternative"
-argument_list|)
-operator|||
-name|mimeType
-operator|.
-name|equals
-argument_list|(
-literal|"multipart/mixed"
+literal|"multipart/"
 argument_list|)
 return|;
 block|}
