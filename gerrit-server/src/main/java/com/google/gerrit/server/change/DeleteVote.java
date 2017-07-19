@@ -1062,7 +1062,7 @@ operator|.
 name|getReviewerUser
 argument_list|()
 operator|.
-name|getAccountId
+name|getAccount
 argument_list|()
 argument_list|,
 name|rsrc
@@ -1094,13 +1094,11 @@ name|Op
 implements|implements
 name|BatchUpdateOp
 block|{
-DECL|field|accountId
+DECL|field|account
 specifier|private
 specifier|final
 name|Account
-operator|.
-name|Id
-name|accountId
+name|account
 decl_stmt|;
 DECL|field|label
 specifier|private
@@ -1159,14 +1157,12 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|Op (Account.Id accountId, String label, DeleteVoteInput input)
+DECL|method|Op (Account account, String label, DeleteVoteInput input)
 specifier|private
 name|Op
 parameter_list|(
 name|Account
-operator|.
-name|Id
-name|accountId
+name|account
 parameter_list|,
 name|String
 name|label
@@ -1177,9 +1173,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|accountId
+name|account
 operator|=
-name|accountId
+name|account
 expr_stmt|;
 name|this
 operator|.
@@ -1287,7 +1283,10 @@ name|ctl
 argument_list|,
 name|psId
 argument_list|,
-name|accountId
+name|account
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 control|)
 block|{
@@ -1421,7 +1420,10 @@ argument_list|)
 operator|.
 name|removeApprovalFor
 argument_list|(
-name|accountId
+name|account
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|label
 argument_list|)
@@ -1493,7 +1495,10 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|accountId
+name|account
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 operator|.
 name|getNameEmail
@@ -1572,7 +1577,10 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|accountId
+name|account
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 operator|new
 name|LabelId
@@ -1740,6 +1748,8 @@ argument_list|(
 name|change
 argument_list|,
 name|ps
+argument_list|,
+name|account
 argument_list|,
 name|newApprovals
 argument_list|,

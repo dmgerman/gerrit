@@ -401,7 +401,7 @@ operator|=
 name|util
 expr_stmt|;
 block|}
-DECL|method|fire ( Change change, PatchSet ps, Map<String, Short> approvals, Map<String, Short> oldApprovals, NotifyHandling notify, String message, Account remover, Timestamp when)
+DECL|method|fire ( Change change, PatchSet ps, Account reviewer, Map<String, Short> approvals, Map<String, Short> oldApprovals, NotifyHandling notify, String message, Account remover, Timestamp when)
 specifier|public
 name|void
 name|fire
@@ -411,6 +411,9 @@ name|change
 parameter_list|,
 name|PatchSet
 name|ps
+parameter_list|,
+name|Account
+name|reviewer
 parameter_list|,
 name|Map
 argument_list|<
@@ -480,6 +483,13 @@ name|getProject
 argument_list|()
 argument_list|,
 name|ps
+argument_list|)
+argument_list|,
+name|util
+operator|.
+name|accountInfo
+argument_list|(
+name|reviewer
 argument_list|)
 argument_list|,
 name|util
@@ -591,6 +601,12 @@ name|VoteDeletedListener
 operator|.
 name|Event
 block|{
+DECL|field|reviewer
+specifier|private
+specifier|final
+name|AccountInfo
+name|reviewer
+decl_stmt|;
 DECL|field|approvals
 specifier|private
 specifier|final
@@ -619,7 +635,7 @@ specifier|final
 name|String
 name|message
 decl_stmt|;
-DECL|method|Event ( ChangeInfo change, RevisionInfo revision, Map<String, ApprovalInfo> approvals, Map<String, ApprovalInfo> oldApprovals, NotifyHandling notify, String message, AccountInfo remover, Timestamp when)
+DECL|method|Event ( ChangeInfo change, RevisionInfo revision, AccountInfo reviewer, Map<String, ApprovalInfo> approvals, Map<String, ApprovalInfo> oldApprovals, NotifyHandling notify, String message, AccountInfo remover, Timestamp when)
 name|Event
 parameter_list|(
 name|ChangeInfo
@@ -627,6 +643,9 @@ name|change
 parameter_list|,
 name|RevisionInfo
 name|revision
+parameter_list|,
+name|AccountInfo
+name|reviewer
 parameter_list|,
 name|Map
 argument_list|<
@@ -669,6 +688,12 @@ name|when
 argument_list|,
 name|notify
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|reviewer
+operator|=
+name|reviewer
 expr_stmt|;
 name|this
 operator|.
@@ -733,6 +758,18 @@ parameter_list|()
 block|{
 return|return
 name|message
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getReviewer ()
+specifier|public
+name|AccountInfo
+name|getReviewer
+parameter_list|()
+block|{
+return|return
+name|reviewer
 return|;
 block|}
 block|}
