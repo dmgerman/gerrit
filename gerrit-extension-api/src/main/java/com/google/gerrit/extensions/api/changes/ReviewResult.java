@@ -128,6 +128,14 @@ name|AddReviewerResult
 argument_list|>
 name|reviewers
 decl_stmt|;
+comment|/**    * Boolean indicating whether the change was moved out of WIP by this review. Either true or null.    */
+DECL|field|ready
+annotation|@
+name|Nullable
+specifier|public
+name|Boolean
+name|ready
+decl_stmt|;
 comment|/** Error message for non-200 responses. */
 DECL|field|error
 annotation|@
