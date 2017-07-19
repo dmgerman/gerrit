@@ -88,6 +88,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSetMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -413,6 +427,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns the external ID with the given email.    *    *<p>Each email should belong to a single external ID only. This means if more than one external    * ID is returned there is an inconsistency in the external IDs.    *    *<p>The external IDs are retrieved from the external ID cache. Each access to the external ID    * cache requires reading the SHA1 of the refs/meta/external-ids branch. If external IDs for    * multiple emails are needed it is more efficient to use {@link #byEmails(String...)} as this    * method reads the SHA1 of the refs/meta/external-ids branch only once (and not once per email).    *    * @see #byEmails(String...)    */
 DECL|method|byEmail (String email)
 specifier|public
 name|Set
@@ -433,6 +448,33 @@ operator|.
 name|byEmail
 argument_list|(
 name|email
+argument_list|)
+return|;
+block|}
+comment|/**    * Returns the external IDs for the given emails.    *    *<p>Each email should belong to a single external ID only. This means if more than one external    * ID for an email is returned there is an inconsistency in the external IDs.    *    *<p>The external IDs are retrieved from the external ID cache. Each access to the external ID    * cache requires reading the SHA1 of the refs/meta/external-ids branch. If external IDs for    * multiple emails are needed it is more efficient to use this method instead of {@link    * #byEmail(String)} as this method reads the SHA1 of the refs/meta/external-ids branch only once    * (and not once per email).    *    * @see #byEmail(String)    */
+DECL|method|byEmails (String... emails)
+specifier|public
+name|ImmutableSetMultimap
+argument_list|<
+name|String
+argument_list|,
+name|ExternalId
+argument_list|>
+name|byEmails
+parameter_list|(
+name|String
+modifier|...
+name|emails
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|externalIdCache
+operator|.
+name|byEmails
+argument_list|(
+name|emails
 argument_list|)
 return|;
 block|}

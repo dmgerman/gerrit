@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSetMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -448,16 +462,19 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|byEmail (String email)
+DECL|method|byEmails (String... emails)
 specifier|public
-name|Set
+name|ImmutableSetMultimap
 argument_list|<
+name|String
+argument_list|,
 name|ExternalId
 argument_list|>
-name|byEmail
+name|byEmails
 parameter_list|(
 name|String
-name|email
+modifier|...
+name|emails
 parameter_list|)
 throws|throws
 name|IOException
