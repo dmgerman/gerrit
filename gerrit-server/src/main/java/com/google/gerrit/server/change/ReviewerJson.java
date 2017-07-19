@@ -314,6 +314,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|Accounts
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|permissions
 operator|.
 name|LabelPermission
@@ -519,6 +535,12 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|accounts
+specifier|private
+specifier|final
+name|Accounts
+name|accounts
+decl_stmt|;
 DECL|field|approvalsUtil
 specifier|private
 specifier|final
@@ -535,7 +557,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerJson ( Provider<ReviewDb> db, PermissionBackend permissionBackend, ChangeData.Factory changeDataFactory, AccountCache accountCache, ApprovalsUtil approvalsUtil, AccountLoader.Factory accountLoaderFactory)
+DECL|method|ReviewerJson ( Provider<ReviewDb> db, PermissionBackend permissionBackend, ChangeData.Factory changeDataFactory, AccountCache accountCache, Accounts accounts, ApprovalsUtil approvalsUtil, AccountLoader.Factory accountLoaderFactory)
 name|ReviewerJson
 parameter_list|(
 name|Provider
@@ -554,6 +576,9 @@ name|changeDataFactory
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|Accounts
+name|accounts
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
@@ -587,6 +612,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|accounts
+operator|=
+name|accounts
 expr_stmt|;
 name|this
 operator|.
@@ -1039,6 +1070,8 @@ operator|new
 name|SubmitRuleEvaluator
 argument_list|(
 name|accountCache
+argument_list|,
+name|accounts
 argument_list|,
 name|cd
 argument_list|)
