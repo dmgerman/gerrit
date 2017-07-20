@@ -142,6 +142,11 @@ specifier|public
 name|ReceiveInfo
 name|receive
 decl_stmt|;
+DECL|field|defaultTheme
+specifier|public
+name|String
+name|defaultTheme
+decl_stmt|;
 block|}
 end_class
 
