@@ -146,16 +146,6 @@ argument_list|>
 name|getApprovals
 parameter_list|()
 function_decl|;
-DECL|method|getRemoved ()
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|ApprovalInfo
-argument_list|>
-name|getRemoved
-parameter_list|()
-function_decl|;
 DECL|method|getMessage ()
 name|String
 name|getMessage
