@@ -210,6 +210,21 @@ name|ListRequest
 name|list
 parameter_list|()
 function_decl|;
+comment|/**    * Query projects.    *    *<p>Example code: {@code query().withQuery("name:project").get()}    *    * @return API for setting parameters and getting result.    */
+DECL|method|query ()
+name|QueryRequest
+name|query
+parameter_list|()
+function_decl|;
+comment|/**    * Query projects.    *    *<p>Shortcut API for {@code query().withQuery(String)}.    *    * @see #query()    */
+DECL|method|query (String query)
+name|QueryRequest
+name|query
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+function_decl|;
 DECL|class|ListRequest
 specifier|abstract
 class|class
@@ -670,6 +685,131 @@ name|type
 return|;
 block|}
 block|}
+comment|/**    * API for setting parameters and getting result. Used for {@code query()}.    *    * @see #query()    */
+DECL|class|QueryRequest
+specifier|abstract
+class|class
+name|QueryRequest
+block|{
+DECL|field|query
+specifier|private
+name|String
+name|query
+decl_stmt|;
+DECL|field|limit
+specifier|private
+name|int
+name|limit
+decl_stmt|;
+DECL|field|start
+specifier|private
+name|int
+name|start
+decl_stmt|;
+comment|/** Execute query and returns the matched projects as list. */
+DECL|method|get ()
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|ProjectInfo
+argument_list|>
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**      * Set query.      *      * @param query needs to be in human-readable form.      */
+DECL|method|withQuery (String query)
+specifier|public
+name|QueryRequest
+name|withQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+name|this
+operator|.
+name|query
+operator|=
+name|query
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Set limit for returned list of projects. Optional; server-default is used when not provided.      */
+DECL|method|withLimit (int limit)
+specifier|public
+name|QueryRequest
+name|withLimit
+parameter_list|(
+name|int
+name|limit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|limit
+operator|=
+name|limit
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/** Set number of projects to skip. Optional; no projects are skipped when not provided. */
+DECL|method|withStart (int start)
+specifier|public
+name|QueryRequest
+name|withStart
+parameter_list|(
+name|int
+name|start
+parameter_list|)
+block|{
+name|this
+operator|.
+name|start
+operator|=
+name|start
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|getQuery ()
+specifier|public
+name|String
+name|getQuery
+parameter_list|()
+block|{
+return|return
+name|query
+return|;
+block|}
+DECL|method|getLimit ()
+specifier|public
+name|int
+name|getLimit
+parameter_list|()
+block|{
+return|return
+name|limit
+return|;
+block|}
+DECL|method|getStart ()
+specifier|public
+name|int
+name|getStart
+parameter_list|()
+block|{
+return|return
+name|start
+return|;
+block|}
+block|}
 comment|/**    * A default implementation which allows source compatibility when adding new methods to the    * interface.    */
 DECL|class|NotImplemented
 class|class
@@ -741,6 +881,37 @@ specifier|public
 name|ListRequest
 name|list
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|query ()
+specifier|public
+name|QueryRequest
+name|query
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|query (String query)
+specifier|public
+name|QueryRequest
+name|query
+parameter_list|(
+name|String
+name|query
+parameter_list|)
 block|{
 throw|throw
 operator|new
