@@ -411,11 +411,13 @@ name|message
 argument_list|)
 condition|)
 block|{
-name|parsedComments
+name|ParserUtil
 operator|.
-name|add
+name|appendOrAddNewComment
 argument_list|(
 name|currentComment
+argument_list|,
+name|parsedComments
 argument_list|)
 expr_stmt|;
 block|}
