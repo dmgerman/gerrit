@@ -150,6 +150,16 @@ name|RestApiException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|OptionalInt
+import|;
+end_import
+
 begin_interface
 DECL|interface|FileApi
 specifier|public
@@ -225,6 +235,16 @@ DECL|field|whitespace
 specifier|private
 name|Whitespace
 name|whitespace
+decl_stmt|;
+DECL|field|parent
+specifier|private
+name|OptionalInt
+name|parent
+init|=
+name|OptionalInt
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
 DECL|method|get ()
 specifier|public
@@ -311,6 +331,30 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|withParent (int parent)
+specifier|public
+name|DiffRequest
+name|withParent
+parameter_list|(
+name|int
+name|parent
+parameter_list|)
+block|{
+name|this
+operator|.
+name|parent
+operator|=
+name|OptionalInt
+operator|.
+name|of
+argument_list|(
+name|parent
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|getBase ()
 specifier|public
 name|String
@@ -349,6 +393,16 @@ parameter_list|()
 block|{
 return|return
 name|whitespace
+return|;
+block|}
+DECL|method|getParent ()
+specifier|public
+name|OptionalInt
+name|getParent
+parameter_list|()
+block|{
+return|return
+name|parent
 return|;
 block|}
 block|}
