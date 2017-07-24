@@ -1874,7 +1874,7 @@ name|validators
 operator|.
 name|MergeValidators
 operator|.
-name|AccountValidator
+name|AccountMergeValidator
 import|;
 end_import
 
@@ -4843,7 +4843,7 @@ parameter_list|)
 constructor_decl|;
 name|factory
 parameter_list|(
-name|AccountValidator
+name|AccountMergeValidator
 operator|.
 name|Factory
 operator|.
