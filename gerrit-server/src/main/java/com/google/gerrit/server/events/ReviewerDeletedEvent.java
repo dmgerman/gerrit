@@ -153,6 +153,14 @@ name|AccountAttribute
 argument_list|>
 name|reviewer
 decl_stmt|;
+DECL|field|remover
+specifier|public
+name|Supplier
+argument_list|<
+name|AccountAttribute
+argument_list|>
+name|remover
+decl_stmt|;
 DECL|field|approvals
 specifier|public
 name|Supplier

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2016 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.events
+DECL|package|com.google.gerrit.server.events
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
 name|events
 package|;
@@ -72,13 +72,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|common
 operator|.
-name|extensions
+name|base
 operator|.
-name|annotations
-operator|.
-name|ExtensionPoint
+name|Supplier
 import|;
 end_import
 
@@ -90,11 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|reviewdb
 operator|.
-name|common
+name|client
 operator|.
-name|AccountInfo
+name|Change
 import|;
 end_import
 
@@ -106,83 +104,94 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|common
+name|data
 operator|.
-name|ApprovalInfo
+name|AccountAttribute
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|Map
+name|gerrit
+operator|.
+name|server
+operator|.
+name|data
+operator|.
+name|ApprovalAttribute
 import|;
 end_import
 
-begin_comment
-comment|/** Notified whenever a vote is removed from a change. */
-end_comment
-
-begin_interface
-annotation|@
-name|ExtensionPoint
-DECL|interface|VoteDeletedListener
+begin_class
+DECL|class|VoteDeletedEvent
 specifier|public
-interface|interface
-name|VoteDeletedListener
-block|{
-DECL|interface|Event
-interface|interface
-name|Event
+class|class
+name|VoteDeletedEvent
 extends|extends
-name|RevisionEvent
+name|PatchSetEvent
 block|{
-DECL|method|getOldApprovals ()
-name|Map
+DECL|field|TYPE
+specifier|static
+specifier|final
+name|String
+name|TYPE
+init|=
+literal|"vote-deleted"
+decl_stmt|;
+DECL|field|reviewer
+specifier|public
+name|Supplier
 argument_list|<
-name|String
-argument_list|,
-name|ApprovalInfo
+name|AccountAttribute
 argument_list|>
-name|getOldApprovals
-parameter_list|()
-function_decl|;
-DECL|method|getApprovals ()
-name|Map
+name|reviewer
+decl_stmt|;
+DECL|field|remover
+specifier|public
+name|Supplier
 argument_list|<
-name|String
-argument_list|,
-name|ApprovalInfo
+name|AccountAttribute
 argument_list|>
-name|getApprovals
-parameter_list|()
-function_decl|;
-DECL|method|getMessage ()
+name|remover
+decl_stmt|;
+DECL|field|approvals
+specifier|public
+name|Supplier
+argument_list|<
+name|ApprovalAttribute
+index|[]
+argument_list|>
+name|approvals
+decl_stmt|;
+DECL|field|comment
+specifier|public
 name|String
-name|getMessage
-parameter_list|()
-function_decl|;
-DECL|method|getReviewer ()
-name|AccountInfo
-name|getReviewer
-parameter_list|()
-function_decl|;
-block|}
-DECL|method|onVoteDeleted (Event event)
-name|void
-name|onVoteDeleted
+name|comment
+decl_stmt|;
+DECL|method|VoteDeletedEvent (Change change)
+specifier|public
+name|VoteDeletedEvent
 parameter_list|(
-name|Event
-name|event
+name|Change
+name|change
 parameter_list|)
-function_decl|;
+block|{
+name|super
+argument_list|(
+name|TYPE
+argument_list|,
+name|change
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 
