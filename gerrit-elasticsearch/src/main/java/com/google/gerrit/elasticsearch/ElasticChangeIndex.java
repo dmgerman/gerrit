@@ -2749,7 +2749,7 @@ name|get
 argument_list|(
 name|ChangeField
 operator|.
-name|REVIEWER
+name|PENDING_REVIEWER
 operator|.
 name|getName
 argument_list|()
