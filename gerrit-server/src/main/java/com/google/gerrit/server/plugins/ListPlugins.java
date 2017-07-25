@@ -342,6 +342,11 @@ specifier|final
 name|PluginLoader
 name|pluginLoader
 decl_stmt|;
+DECL|field|all
+specifier|private
+name|boolean
+name|all
+decl_stmt|;
 annotation|@
 name|Deprecated
 annotation|@
@@ -381,11 +386,22 @@ name|usage
 operator|=
 literal|"List all plugins, including disabled plugins"
 argument_list|)
-DECL|field|all
-specifier|private
+DECL|method|setAll (boolean all)
+specifier|public
+name|void
+name|setAll
+parameter_list|(
 name|boolean
 name|all
-decl_stmt|;
+parameter_list|)
+block|{
+name|this
+operator|.
+name|all
+operator|=
+name|all
+expr_stmt|;
+block|}
 annotation|@
 name|Inject
 DECL|method|ListPlugins (PluginLoader pluginLoader)
