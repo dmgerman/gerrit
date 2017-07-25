@@ -484,6 +484,30 @@ literal|null
 argument_list|)
 return|;
 block|}
+DECL|method|apply ()
+specifier|public
+name|SortedMap
+argument_list|<
+name|String
+argument_list|,
+name|PluginInfo
+argument_list|>
+name|apply
+parameter_list|()
+block|{
+name|format
+operator|=
+name|OutputFormat
+operator|.
+name|JSON
+expr_stmt|;
+return|return
+name|display
+argument_list|(
+literal|null
+argument_list|)
+return|;
+block|}
 DECL|method|display (@ullable PrintWriter stdout)
 specifier|public
 name|SortedMap

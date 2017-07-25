@@ -166,6 +166,24 @@ name|extensions
 operator|.
 name|api
 operator|.
+name|plugins
+operator|.
+name|Plugins
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
 name|projects
 operator|.
 name|Projects
@@ -235,9 +253,15 @@ specifier|final
 name|Projects
 name|projects
 decl_stmt|;
+DECL|field|plugins
+specifier|private
+specifier|final
+name|Plugins
+name|plugins
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritApiImpl ( Accounts accounts, Changes changes, Config config, Groups groups, Projects projects)
+DECL|method|GerritApiImpl ( Accounts accounts, Changes changes, Config config, Groups groups, Projects projects, Plugins plugins)
 name|GerritApiImpl
 parameter_list|(
 name|Accounts
@@ -254,6 +278,9 @@ name|groups
 parameter_list|,
 name|Projects
 name|projects
+parameter_list|,
+name|Plugins
+name|plugins
 parameter_list|)
 block|{
 name|this
@@ -285,6 +312,12 @@ operator|.
 name|projects
 operator|=
 name|projects
+expr_stmt|;
+name|this
+operator|.
+name|plugins
+operator|=
+name|plugins
 expr_stmt|;
 block|}
 annotation|@
@@ -345,6 +378,18 @@ parameter_list|()
 block|{
 return|return
 name|projects
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|plugins ()
+specifier|public
+name|Plugins
+name|plugins
+parameter_list|()
+block|{
+return|return
+name|plugins
 return|;
 block|}
 block|}

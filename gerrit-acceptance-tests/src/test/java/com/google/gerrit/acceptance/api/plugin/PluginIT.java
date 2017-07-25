@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2017 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.plugins
+DECL|package|com.google.gerrit.acceptance.api.plugin
 package|package
 name|com
 operator|.
@@ -60,11 +60,29 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|acceptance
 operator|.
-name|plugins
+name|api
+operator|.
+name|plugin
 package|;
 end_package
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
+import|;
+end_import
 
 begin_import
 import|import
@@ -74,11 +92,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|acceptance
 operator|.
-name|systemstatus
-operator|.
-name|ServerInformation
+name|AbstractDaemonTest
 import|;
 end_import
 
@@ -88,42 +104,61 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|Singleton
+name|acceptance
+operator|.
+name|NoHttpd
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
 begin_class
 annotation|@
-name|Singleton
-DECL|class|ServerInformationImpl
+name|NoHttpd
+DECL|class|PluginIT
 specifier|public
 class|class
-name|ServerInformationImpl
-implements|implements
-name|ServerInformation
+name|PluginIT
+extends|extends
+name|AbstractDaemonTest
 block|{
-DECL|field|state
-specifier|volatile
-name|State
-name|state
-init|=
-name|State
-operator|.
-name|STARTUP
-decl_stmt|;
 annotation|@
-name|Override
-DECL|method|getState ()
+name|Test
+DECL|method|noPlugins ()
 specifier|public
-name|State
-name|getState
+name|void
+name|noPlugins
 parameter_list|()
+throws|throws
+name|Exception
 block|{
-return|return
-name|state
-return|;
+name|assertThat
+argument_list|(
+name|gApi
+operator|.
+name|plugins
+argument_list|()
+operator|.
+name|list
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
