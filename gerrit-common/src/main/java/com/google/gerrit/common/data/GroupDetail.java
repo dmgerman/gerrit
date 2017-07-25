@@ -78,7 +78,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupById
+name|Account
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupMember
+name|AccountGroup
 import|;
 end_import
 
@@ -104,7 +104,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Set
 import|;
 end_import
 
@@ -116,33 +116,41 @@ name|GroupDetail
 block|{
 DECL|field|members
 specifier|private
-name|List
+name|Set
 argument_list|<
-name|AccountGroupMember
+name|Account
+operator|.
+name|Id
 argument_list|>
 name|members
 decl_stmt|;
 DECL|field|includes
 specifier|private
-name|List
+name|Set
 argument_list|<
-name|AccountGroupById
+name|AccountGroup
+operator|.
+name|UUID
 argument_list|>
 name|includes
 decl_stmt|;
-DECL|method|GroupDetail (List<AccountGroupMember> members, List<AccountGroupById> includes)
+DECL|method|GroupDetail (Set<Account.Id> members, Set<AccountGroup.UUID> includes)
 specifier|public
 name|GroupDetail
 parameter_list|(
-name|List
+name|Set
 argument_list|<
-name|AccountGroupMember
+name|Account
+operator|.
+name|Id
 argument_list|>
 name|members
 parameter_list|,
-name|List
+name|Set
 argument_list|<
-name|AccountGroupById
+name|AccountGroup
+operator|.
+name|UUID
 argument_list|>
 name|includes
 parameter_list|)
@@ -162,9 +170,11 @@ expr_stmt|;
 block|}
 DECL|method|getMembers ()
 specifier|public
-name|List
+name|Set
 argument_list|<
-name|AccountGroupMember
+name|Account
+operator|.
+name|Id
 argument_list|>
 name|getMembers
 parameter_list|()
@@ -175,9 +185,11 @@ return|;
 block|}
 DECL|method|getIncludes ()
 specifier|public
-name|List
+name|Set
 argument_list|<
-name|AccountGroupById
+name|AccountGroup
+operator|.
+name|UUID
 argument_list|>
 name|getIncludes
 parameter_list|()
