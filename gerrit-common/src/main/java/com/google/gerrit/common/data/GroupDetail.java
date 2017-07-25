@@ -78,22 +78,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|AccountGroupById
 import|;
 end_import
@@ -130,11 +114,6 @@ specifier|public
 class|class
 name|GroupDetail
 block|{
-DECL|field|group
-specifier|public
-name|AccountGroup
-name|group
-decl_stmt|;
 DECL|field|members
 specifier|public
 name|List
@@ -156,20 +135,6 @@ specifier|public
 name|GroupDetail
 parameter_list|()
 block|{}
-DECL|method|setGroup (AccountGroup g)
-specifier|public
-name|void
-name|setGroup
-parameter_list|(
-name|AccountGroup
-name|g
-parameter_list|)
-block|{
-name|group
-operator|=
-name|g
-expr_stmt|;
-block|}
 DECL|method|setMembers (List<AccountGroupMember> m)
 specifier|public
 name|void

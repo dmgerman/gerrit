@@ -275,12 +275,6 @@ operator|.
 name|Factory
 name|groupControl
 decl_stmt|;
-DECL|field|groupCache
-specifier|private
-specifier|final
-name|GroupCache
-name|groupCache
-decl_stmt|;
 DECL|field|groupId
 specifier|private
 specifier|final
@@ -296,7 +290,7 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupDetailFactory ( ReviewDb db, GroupControl.Factory groupControl, GroupCache groupCache, @Assisted AccountGroup.Id groupId)
+DECL|method|GroupDetailFactory ( ReviewDb db, GroupControl.Factory groupControl, @Assisted AccountGroup.Id groupId)
 name|GroupDetailFactory
 parameter_list|(
 name|ReviewDb
@@ -306,9 +300,6 @@ name|GroupControl
 operator|.
 name|Factory
 name|groupControl
-parameter_list|,
-name|GroupCache
-name|groupCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -329,12 +320,6 @@ operator|.
 name|groupControl
 operator|=
 name|groupControl
-expr_stmt|;
-name|this
-operator|.
-name|groupCache
-operator|=
-name|groupCache
 expr_stmt|;
 name|this
 operator|.
@@ -364,16 +349,6 @@ argument_list|(
 name|groupId
 argument_list|)
 expr_stmt|;
-name|AccountGroup
-name|group
-init|=
-name|groupCache
-operator|.
-name|get
-argument_list|(
-name|groupId
-argument_list|)
-decl_stmt|;
 name|GroupDetail
 name|detail
 init|=
@@ -381,13 +356,6 @@ operator|new
 name|GroupDetail
 argument_list|()
 decl_stmt|;
-name|detail
-operator|.
-name|setGroup
-argument_list|(
-name|group
-argument_list|)
-expr_stmt|;
 name|detail
 operator|.
 name|setMembers
