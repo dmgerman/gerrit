@@ -202,6 +202,15 @@ name|FOOTER_FILENAME
 init|=
 literal|"GerritSiteFooter.html"
 decl_stmt|;
+DECL|field|THEME_FILENAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|THEME_FILENAME
+init|=
+literal|"gerrit-theme.html"
+decl_stmt|;
 DECL|field|site_path
 specifier|public
 specifier|final
@@ -399,6 +408,13 @@ specifier|public
 specifier|final
 name|Path
 name|site_footer
+decl_stmt|;
+comment|// For PolyGerrit UI only.
+DECL|field|site_theme
+specifier|public
+specifier|final
+name|Path
+name|site_theme
 decl_stmt|;
 DECL|field|site_gitweb
 specifier|public
@@ -731,6 +747,16 @@ operator|.
 name|resolve
 argument_list|(
 literal|"gitweb_config.perl"
+argument_list|)
+expr_stmt|;
+comment|// For PolyGerrit UI.
+name|site_theme
+operator|=
+name|static_dir
+operator|.
+name|resolve
+argument_list|(
+name|THEME_FILENAME
 argument_list|)
 expr_stmt|;
 name|boolean
