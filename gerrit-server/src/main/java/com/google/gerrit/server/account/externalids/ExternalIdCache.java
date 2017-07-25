@@ -74,6 +74,34 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableSetMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -139,7 +167,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Caches external IDs of all accounts */
+comment|/**  * Caches external IDs of all accounts.  *  *<p>On each cache access the SHA1 of the refs/meta/external-ids branch is read to verify that the  * cache is up to date.  */
 end_comment
 
 begin_interface
@@ -380,8 +408,25 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+DECL|method|byEmails (String... emails)
+name|ImmutableSetMultimap
+argument_list|<
+name|String
+argument_list|,
+name|ExternalId
+argument_list|>
+name|byEmails
+parameter_list|(
+name|String
+modifier|...
+name|emails
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 DECL|method|byEmail (String email)
-name|Set
+specifier|default
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>
@@ -392,7 +437,19 @@ name|email
 parameter_list|)
 throws|throws
 name|IOException
-function_decl|;
+block|{
+return|return
+name|byEmails
+argument_list|(
+name|email
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|email
+argument_list|)
+return|;
+block|}
 DECL|method|onCreate (ObjectId oldNotesRev, ObjectId newNotesRev, ExternalId extId)
 specifier|default
 name|void
