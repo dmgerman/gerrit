@@ -206,10 +206,10 @@ name|allUsersName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SequencesOnInit (GitRepositoryManager repoManager, AllUsersNameOnInitProvider allUsersName)
+DECL|method|SequencesOnInit (GitRepositoryManagerOnInit repoManager, AllUsersNameOnInitProvider allUsersName)
 name|SequencesOnInit
 parameter_list|(
-name|GitRepositoryManager
+name|GitRepositoryManagerOnInit
 name|repoManager
 parameter_list|,
 name|AllUsersNameOnInitProvider
