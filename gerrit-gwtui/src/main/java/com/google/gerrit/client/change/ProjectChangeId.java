@@ -412,7 +412,7 @@ return|return
 name|changeId
 return|;
 block|}
-comment|/**    * Calculate the length of the string representation of the change ID that was parsed from the    * token.    *    * @return the length of the {@link Change.Id} if no project was parsed from the token. The length    *     of {@link Project.NameKey} + the delimiter + the length of {@link Change.Id} otherwise.    */
+comment|/**    * Calculate the length of the string representation of the change ID that was parsed from the    * token.    *    * @return the length of the {@link com.google.gerrit.reviewdb.client.Change.Id} if no project was    *     parsed from the token. The length of {@link    *     com.google.gerrit.reviewdb.client.Project.NameKey} + the delimiter + the length of {@link    *     com.google.gerrit.reviewdb.client.Change.Id} otherwise.    */
 DECL|method|identifierLength ()
 specifier|public
 name|int
