@@ -2796,6 +2796,17 @@ name|options
 operator|.
 name|enableGwtUi
 argument_list|()
+operator|||
+operator|!
+literal|"GET"
+operator|.
+name|equals
+argument_list|(
+name|req
+operator|.
+name|getMethod
+argument_list|()
+argument_list|)
 condition|)
 block|{
 return|return
