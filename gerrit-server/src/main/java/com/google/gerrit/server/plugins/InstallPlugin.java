@@ -110,6 +110,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|InstallPluginInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|PluginInfo
 import|;
 end_import
@@ -142,39 +158,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|DefaultInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|MethodNotAllowedException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|RawInput
 import|;
 end_import
 
@@ -223,24 +207,6 @@ operator|.
 name|restapi
 operator|.
 name|TopLevelResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|plugins
-operator|.
-name|InstallPlugin
-operator|.
-name|Input
 import|;
 end_import
 
@@ -334,25 +300,9 @@ name|RestModifyView
 argument_list|<
 name|TopLevelResource
 argument_list|,
-name|Input
+name|InstallPluginInfo
 argument_list|>
 block|{
-DECL|class|Input
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|url
-annotation|@
-name|DefaultInput
-name|String
-name|url
-decl_stmt|;
-DECL|field|raw
-name|RawInput
-name|raw
-decl_stmt|;
-block|}
 DECL|field|loader
 specifier|private
 specifier|final
@@ -405,7 +355,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (TopLevelResource resource, Input input)
+DECL|method|apply (TopLevelResource resource, InstallPluginInfo input)
 specifier|public
 name|Response
 argument_list|<
@@ -416,7 +366,7 @@ parameter_list|(
 name|TopLevelResource
 name|resource
 parameter_list|,
-name|Input
+name|InstallPluginInfo
 name|input
 parameter_list|)
 throws|throws
@@ -603,12 +553,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|openStream (Input input)
+DECL|method|openStream (InstallPluginInfo input)
 specifier|private
 name|InputStream
 name|openStream
 parameter_list|(
-name|Input
+name|InstallPluginInfo
 name|input
 parameter_list|)
 throws|throws
@@ -683,7 +633,7 @@ name|RestModifyView
 argument_list|<
 name|PluginResource
 argument_list|,
-name|Input
+name|InstallPluginInfo
 argument_list|>
 block|{
 DECL|field|loader
@@ -710,7 +660,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (PluginResource resource, Input input)
+DECL|method|apply (PluginResource resource, InstallPluginInfo input)
 specifier|public
 name|Response
 argument_list|<
@@ -721,7 +671,7 @@ parameter_list|(
 name|PluginResource
 name|resource
 parameter_list|,
-name|Input
+name|InstallPluginInfo
 name|input
 parameter_list|)
 throws|throws
