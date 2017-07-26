@@ -184,15 +184,6 @@ name|NameKey
 name|p
 parameter_list|)
 function_decl|;
-comment|/**    * Remove information about the given project from the cache. It will no longer be returned from    * {@link #all()}.    */
-DECL|method|remove (Project p)
-name|void
-name|remove
-parameter_list|(
-name|Project
-name|p
-parameter_list|)
-function_decl|;
 comment|/** @return sorted iteration of projects. */
 DECL|method|all ()
 name|Iterable
