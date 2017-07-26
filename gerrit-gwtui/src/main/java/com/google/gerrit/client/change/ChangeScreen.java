@@ -2416,11 +2416,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"null"
-argument_list|)
 DECL|method|getProject ()
 specifier|public
 name|Project
