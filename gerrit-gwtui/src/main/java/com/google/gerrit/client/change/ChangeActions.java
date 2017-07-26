@@ -148,6 +148,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -200,11 +216,16 @@ specifier|public
 class|class
 name|ChangeActions
 block|{
-DECL|method|publish (Change.Id id, String revision, Button... draftButtons)
+DECL|method|publish ( Project.NameKey project, Change.Id id, String revision, Button... draftButtons)
 specifier|static
 name|void
 name|publish
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -222,6 +243,11 @@ name|ChangeApi
 operator|.
 name|publish
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -231,6 +257,8 @@ name|revision
 argument_list|,
 name|cs
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|draftButtons
@@ -238,11 +266,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|delete (Change.Id id, String revision, Button... draftButtons)
+DECL|method|delete ( Project.NameKey project, Change.Id id, String revision, Button... draftButtons)
 specifier|static
 name|void
 name|delete
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -260,6 +293,11 @@ name|ChangeApi
 operator|.
 name|deleteRevision
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -269,6 +307,8 @@ name|revision
 argument_list|,
 name|cs
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|draftButtons
@@ -276,11 +316,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|delete (Change.Id id, Button... draftButtons)
+DECL|method|delete (Project.NameKey project, Change.Id id, Button... draftButtons)
 specifier|static
 name|void
 name|delete
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -295,6 +340,11 @@ name|ChangeApi
 operator|.
 name|deleteChange
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -307,11 +357,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|markPrivate (Change.Id id, Button... draftButtons)
+DECL|method|markPrivate (Project.NameKey project, Change.Id id, Button... draftButtons)
 specifier|static
 name|void
 name|markPrivate
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -326,6 +381,11 @@ name|ChangeApi
 operator|.
 name|markPrivate
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -333,6 +393,8 @@ argument_list|()
 argument_list|,
 name|cs
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|draftButtons
@@ -340,11 +402,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|unmarkPrivate (Change.Id id, Button... draftButtons)
+DECL|method|unmarkPrivate (Project.NameKey project, Change.Id id, Button... draftButtons)
 specifier|static
 name|void
 name|unmarkPrivate
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -359,6 +426,11 @@ name|ChangeApi
 operator|.
 name|unmarkPrivate
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -366,6 +438,8 @@ argument_list|()
 argument_list|,
 name|cs
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|draftButtons
@@ -373,7 +447,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cs (final Change.Id id, Button... draftButtons)
+DECL|method|cs ( Project.NameKey project, final Change.Id id, Button... draftButtons)
 specifier|public
 specifier|static
 name|GerritCallback
@@ -382,6 +456,11 @@ name|JavaScriptObject
 argument_list|>
 name|cs
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 specifier|final
 name|Change
 operator|.
@@ -426,6 +505,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 argument_list|)
@@ -478,6 +559,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 argument_list|)

@@ -168,6 +168,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -189,6 +203,22 @@ operator|.
 name|client
 operator|.
 name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
 import|;
 end_import
 
@@ -237,12 +267,19 @@ class|class
 name|ChangeEditApi
 block|{
 comment|/** Get file (or commit message) contents. */
-DECL|method|get (PatchSet.Id id, String path, boolean base, HttpCallback<NativeString> cb)
+DECL|method|get ( @ullable Project.NameKey project, PatchSet.Id id, String path, boolean base, HttpCallback<NativeString> cb)
 specifier|public
 specifier|static
 name|void
 name|get
 parameter_list|(
+annotation|@
+name|Nullable
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -282,6 +319,15 @@ name|ChangeApi
 operator|.
 name|revision
 argument_list|(
+name|Project
+operator|.
+name|NameKey
+operator|.
+name|asStringOrNull
+argument_list|(
+name|project
+argument_list|)
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -318,6 +364,15 @@ name|api
 operator|=
 name|editMessage
 argument_list|(
+name|Project
+operator|.
+name|NameKey
+operator|.
+name|asStringOrNull
+argument_list|(
+name|project
+argument_list|)
+argument_list|,
 name|id
 operator|.
 name|getParentKey
@@ -341,6 +396,15 @@ name|api
 operator|=
 name|editFile
 argument_list|(
+name|Project
+operator|.
+name|NameKey
+operator|.
+name|asStringOrNull
+argument_list|(
+name|project
+argument_list|)
+argument_list|,
 name|id
 operator|.
 name|getParentKey
@@ -369,12 +433,19 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Get file (or commit message) contents of the edit. */
-DECL|method|get (PatchSet.Id id, String path, HttpCallback<NativeString> cb)
+DECL|method|get ( @ullable Project.NameKey project, PatchSet.Id id, String path, HttpCallback<NativeString> cb)
 specifier|public
 specifier|static
 name|void
 name|get
 parameter_list|(
+annotation|@
+name|Nullable
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -392,6 +463,8 @@ parameter_list|)
 block|{
 name|get
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|path
@@ -403,12 +476,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Get meta info for change edit. */
-DECL|method|getMeta (PatchSet.Id id, String path, AsyncCallback<EditFileInfo> cb)
+DECL|method|getMeta ( @ullable String project, PatchSet.Id id, String path, AsyncCallback<EditFileInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|getMeta
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -444,6 +522,8 @@ throw|;
 block|}
 name|editFile
 argument_list|(
+name|project
+argument_list|,
 name|id
 operator|.
 name|getParentKey
@@ -467,12 +547,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Put message into a change edit. */
-DECL|method|putMessage (int id, String m, GerritCallback<VoidResult> cb)
+DECL|method|putMessage ( @ullable String project, int id, String m, GerritCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
 name|putMessage
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -488,6 +573,8 @@ parameter_list|)
 block|{
 name|editMessage
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -500,12 +587,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Put contents into a file or commit message in a change edit. */
-DECL|method|put (int id, String path, String content, GerritCallback<VoidResult> cb)
+DECL|method|put ( @ullable String project, int id, String path, String content, GerritCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
 name|put
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -536,6 +628,8 @@ condition|)
 block|{
 name|putMessage
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|content
@@ -548,6 +642,8 @@ else|else
 block|{
 name|editFile
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|path
@@ -563,12 +659,17 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Delete a file in the pending edit. */
-DECL|method|delete (int id, String path, AsyncCallback<VoidResult> cb)
+DECL|method|delete ( @ullable String project, int id, String path, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
 name|delete
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -584,6 +685,8 @@ parameter_list|)
 block|{
 name|editFile
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|path
@@ -596,12 +699,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Rename a file in the pending edit. */
-DECL|method|rename (int id, String path, String newPath, AsyncCallback<VoidResult> cb)
+DECL|method|rename ( @ullable String project, int id, String path, String newPath, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
 name|rename
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -644,6 +752,8 @@ name|ChangeApi
 operator|.
 name|edit
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -656,12 +766,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Restore (undo delete/modify) a file in the pending edit. */
-DECL|method|restore (int id, String path, AsyncCallback<VoidResult> cb)
+DECL|method|restore ( @ullable String project, int id, String path, AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
 name|restore
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -694,6 +809,8 @@ name|ChangeApi
 operator|.
 name|edit
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -705,12 +822,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|editMessage (int id)
+DECL|method|editMessage (@ullable String project, int id)
 specifier|private
 specifier|static
 name|RestApi
 name|editMessage
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|)
@@ -720,6 +842,8 @@ name|ChangeApi
 operator|.
 name|change
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -729,12 +853,17 @@ literal|"edit:message"
 argument_list|)
 return|;
 block|}
-DECL|method|editFile (int id, String path)
+DECL|method|editFile (@ullable String project, int id, String path)
 specifier|private
 specifier|static
 name|RestApi
 name|editFile
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -747,6 +876,8 @@ name|ChangeApi
 operator|.
 name|edit
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.

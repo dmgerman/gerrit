@@ -252,6 +252,11 @@ name|ChangeApi
 operator|.
 name|submit
 argument_list|(
+name|changeInfo
+operator|.
+name|project
+argument_list|()
+argument_list|,
 name|changeId
 operator|.
 name|get
@@ -343,6 +348,11 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|changeInfo
+operator|.
+name|projectNameKey
+argument_list|()
+argument_list|,
 name|changeId
 argument_list|)
 argument_list|)

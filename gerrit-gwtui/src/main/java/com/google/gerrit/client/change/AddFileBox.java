@@ -166,6 +166,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -438,6 +454,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|changeId
 specifier|private
 specifier|final
@@ -481,9 +505,14 @@ DECL|field|path
 name|RemoteSuggestBox
 name|path
 decl_stmt|;
-DECL|method|AddFileBox (Change.Id changeId, RevisionInfo revision, FileTable files)
+DECL|method|AddFileBox (Project.NameKey project, Change.Id changeId, RevisionInfo revision, FileTable files)
 name|AddFileBox
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -496,6 +525,12 @@ name|FileTable
 name|files
 parameter_list|)
 block|{
+name|this
+operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
 name|this
 operator|.
 name|changeId
@@ -522,6 +557,8 @@ argument_list|(
 operator|new
 name|PathSuggestOracle
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|revision
@@ -687,6 +724,8 @@ name|Dispatcher
 operator|.
 name|toEditScreen
 argument_list|(
+name|project
+argument_list|,
 operator|new
 name|PatchSet
 operator|.

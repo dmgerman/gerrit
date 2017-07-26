@@ -411,12 +411,14 @@ specifier|final
 name|boolean
 name|sendEnabled
 decl_stmt|;
-DECL|method|RebaseDialog ( final String project, final String branch, final Change.Id changeId, final boolean sendEnabled)
+DECL|method|RebaseDialog ( final Project.NameKey project, final String branch, final Change.Id changeId, final boolean sendEnabled)
 specifier|public
 name|RebaseDialog
 parameter_list|(
 specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|,
 specifier|final
@@ -699,13 +701,7 @@ name|PageLinks
 operator|.
 name|projectQuery
 argument_list|(
-operator|new
-name|Project
-operator|.
-name|NameKey
-argument_list|(
 name|project
-argument_list|)
 argument_list|)
 operator|+
 literal|" "

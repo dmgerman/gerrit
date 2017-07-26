@@ -196,6 +196,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|event
@@ -249,7 +265,7 @@ DECL|class|RevertAction
 class|class
 name|RevertAction
 block|{
-DECL|method|call (final Button b, Change.Id id, String revision, String commitSubject)
+DECL|method|call ( final Button b, Change.Id id, Project.NameKey project, String revision, String commitSubject)
 specifier|static
 name|void
 name|call
@@ -262,6 +278,11 @@ name|Change
 operator|.
 name|Id
 name|id
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|String
 name|revision
@@ -337,6 +358,11 @@ name|ChangeApi
 operator|.
 name|revert
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -377,6 +403,11 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|result
+operator|.
+name|projectNameKey
+argument_list|()
+argument_list|,
 name|result
 operator|.
 name|legacyId

@@ -496,6 +496,11 @@ name|DisplaySide
 operator|.
 name|A
 argument_list|,
+name|parent
+operator|.
+name|getProject
+argument_list|()
+argument_list|,
 name|revision
 operator|.
 name|asPatchSetId
@@ -519,6 +524,11 @@ argument_list|,
 name|DisplaySide
 operator|.
 name|B
+argument_list|,
+name|parent
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|revision
 operator|.

@@ -883,6 +883,7 @@ literal|"^[1-9][0-9]*$"
 argument_list|)
 condition|)
 block|{
+comment|// Query is a change number. Project can't be supplied.
 name|Gerrit
 operator|.
 name|display
@@ -891,6 +892,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+literal|null
+argument_list|,
 name|Change
 operator|.
 name|Id

@@ -116,6 +116,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -165,17 +181,22 @@ operator|.
 name|Id
 name|cid
 decl_stmt|;
-DECL|method|ChangeLink (String text, Change.Id c)
+DECL|method|ChangeLink (Project.NameKey project, Change.Id c, String text)
 specifier|public
 name|ChangeLink
 parameter_list|(
-name|String
-name|text
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|Change
 operator|.
 name|Id
 name|c
+parameter_list|,
+name|String
+name|text
 parameter_list|)
 block|{
 name|super
@@ -186,6 +207,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|project
+argument_list|,
 name|c
 argument_list|)
 argument_list|)

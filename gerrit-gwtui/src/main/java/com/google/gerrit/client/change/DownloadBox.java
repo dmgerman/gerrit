@@ -727,6 +727,11 @@ name|editWithCommands
 argument_list|(
 name|change
 operator|.
+name|project
+argument_list|()
+argument_list|,
+name|change
+operator|.
 name|legacyId
 argument_list|()
 operator|.
@@ -787,6 +792,11 @@ name|ChangeApi
 operator|.
 name|detail
 argument_list|(
+name|change
+operator|.
+name|project
+argument_list|()
+argument_list|,
 name|change
 operator|.
 name|legacyId

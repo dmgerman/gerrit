@@ -180,6 +180,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|event
@@ -233,7 +249,7 @@ DECL|class|RebaseAction
 class|class
 name|RebaseAction
 block|{
-DECL|method|call ( final Button b, final String project, final String branch, final Change.Id id, final String revision, final boolean enabled)
+DECL|method|call ( final Button b, final Project.NameKey project, final String branch, final Change.Id id, final String revision, final boolean enabled)
 specifier|static
 name|void
 name|call
@@ -243,7 +259,9 @@ name|Button
 name|b
 parameter_list|,
 specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|,
 specifier|final
@@ -295,6 +313,11 @@ name|ChangeApi
 operator|.
 name|rebase
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 operator|.
 name|get
@@ -337,6 +360,8 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 argument_list|)

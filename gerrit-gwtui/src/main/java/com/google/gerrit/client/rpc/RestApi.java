@@ -1134,7 +1134,7 @@ block|}
 block|}
 block|}
 decl_stmt|;
-comment|// Defer handling the response if the parse took a while.
+comment|// Defer handling the response if the create took a while.
 if|if
 condition|(
 operator|(
@@ -1495,6 +1495,34 @@ name|encodePathSegment
 argument_list|(
 name|id
 argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|id (String project, int id)
+specifier|public
+name|RestApi
+name|id
+parameter_list|(
+name|String
+name|project
+parameter_list|,
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+name|idRaw
+argument_list|(
+name|URL
+operator|.
+name|encodePathSegment
+argument_list|(
+name|project
+argument_list|)
+operator|+
+literal|"~"
+operator|+
+name|id
 argument_list|)
 return|;
 block|}

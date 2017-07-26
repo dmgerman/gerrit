@@ -210,6 +210,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -233,6 +247,22 @@ operator|.
 name|client
 operator|.
 name|Patch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
 import|;
 end_import
 
@@ -670,10 +700,17 @@ specifier|private
 name|SideBySideCommentManager
 name|commentManager
 decl_stmt|;
-DECL|method|SideBySide ( DiffObject base, DiffObject revision, String path, DisplaySide startSide, int startLine)
+DECL|method|SideBySide ( @ullable Project.NameKey project, DiffObject base, DiffObject revision, String path, DisplaySide startSide, int startLine)
 specifier|public
 name|SideBySide
 parameter_list|(
+annotation|@
+name|Nullable
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|DiffObject
 name|base
 parameter_list|,
@@ -692,6 +729,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|project
+argument_list|,
 name|base
 argument_list|,
 name|revision
@@ -794,6 +833,9 @@ argument_list|(
 name|SideBySide
 operator|.
 name|this
+argument_list|,
+name|getProject
+argument_list|()
 argument_list|,
 name|base
 argument_list|,
@@ -1647,6 +1689,9 @@ name|Dispatcher
 operator|.
 name|toUnified
 argument_list|(
+name|getProject
+argument_list|()
+argument_list|,
 name|base
 argument_list|,
 name|revision

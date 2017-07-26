@@ -150,6 +150,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -302,11 +318,16 @@ name|UiField
 name|FlowPanel
 name|comments
 decl_stmt|;
-DECL|method|FileComments ( CommentLinkProcessor clp, PatchSet.Id defaultPs, String title, List<CommentInfo> list)
+DECL|method|FileComments ( CommentLinkProcessor clp, Project.NameKey project, PatchSet.Id defaultPs, String title, List<CommentInfo> list)
 name|FileComments
 parameter_list|(
 name|CommentLinkProcessor
 name|clp
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|PatchSet
 operator|.
@@ -339,6 +360,8 @@ name|setTargetHistoryToken
 argument_list|(
 name|url
 argument_list|(
+name|project
+argument_list|,
 name|defaultPs
 argument_list|,
 name|list
@@ -374,6 +397,8 @@ name|LineComment
 argument_list|(
 name|clp
 argument_list|,
+name|project
+argument_list|,
 name|defaultPs
 argument_list|,
 name|c
@@ -382,12 +407,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|url (PatchSet.Id ps, CommentInfo info)
+DECL|method|url (Project.NameKey project, PatchSet.Id ps, CommentInfo info)
 specifier|private
 specifier|static
 name|String
 name|url
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -402,6 +432,8 @@ name|Dispatcher
 operator|.
 name|toPatch
 argument_list|(
+name|project
+argument_list|,
 literal|null
 argument_list|,
 name|ps

@@ -106,6 +106,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -170,12 +184,17 @@ specifier|public
 class|class
 name|CommentApi
 block|{
-DECL|method|comments (PatchSet.Id id, AsyncCallback<NativeMap<JsArray<CommentInfo>>> cb)
+DECL|method|comments ( @ullable String project, PatchSet.Id id, AsyncCallback<NativeMap<JsArray<CommentInfo>>> cb)
 specifier|public
 specifier|static
 name|void
 name|comments
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -196,6 +215,8 @@ parameter_list|)
 block|{
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"comments"
@@ -207,12 +228,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|comment (PatchSet.Id id, String commentId, AsyncCallback<CommentInfo> cb)
+DECL|method|comment ( @ullable String project, PatchSet.Id id, String commentId, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|comment
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -230,6 +256,8 @@ parameter_list|)
 block|{
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"comments"
@@ -246,12 +274,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|drafts (PatchSet.Id id, AsyncCallback<NativeMap<JsArray<CommentInfo>>> cb)
+DECL|method|drafts ( @ullable String project, PatchSet.Id id, AsyncCallback<NativeMap<JsArray<CommentInfo>>> cb)
 specifier|public
 specifier|static
 name|void
 name|drafts
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -272,6 +305,8 @@ parameter_list|)
 block|{
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"drafts"
@@ -283,12 +318,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|draft (PatchSet.Id id, String draftId, AsyncCallback<CommentInfo> cb)
+DECL|method|draft ( @ullable String project, PatchSet.Id id, String draftId, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|draft
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -306,6 +346,8 @@ parameter_list|)
 block|{
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"drafts"
@@ -322,12 +364,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createDraft ( PatchSet.Id id, CommentInfo content, AsyncCallback<CommentInfo> cb)
+DECL|method|createDraft ( @ullable String project, PatchSet.Id id, CommentInfo content, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|createDraft
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -345,6 +392,8 @@ parameter_list|)
 block|{
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"drafts"
@@ -358,12 +407,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateDraft ( PatchSet.Id id, String draftId, CommentInfo content, AsyncCallback<CommentInfo> cb)
+DECL|method|updateDraft ( @ullable String project, PatchSet.Id id, String draftId, CommentInfo content, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|updateDraft
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -384,6 +438,8 @@ parameter_list|)
 block|{
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"drafts"
@@ -402,12 +458,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteDraft ( PatchSet.Id id, String draftId, AsyncCallback<JavaScriptObject> cb)
+DECL|method|deleteDraft ( @ullable String project, PatchSet.Id id, String draftId, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
 name|deleteDraft
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -425,6 +486,8 @@ parameter_list|)
 block|{
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 literal|"drafts"
@@ -441,12 +504,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|revision (PatchSet.Id id, String type)
+DECL|method|revision (@ullable String project, PatchSet.Id id, String type)
 specifier|private
 specifier|static
 name|RestApi
 name|revision
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -461,6 +529,8 @@ name|ChangeApi
 operator|.
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.

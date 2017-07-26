@@ -180,6 +180,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -470,6 +486,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|changeId
 specifier|private
 specifier|final
@@ -501,9 +525,14 @@ DECL|field|path
 name|RemoteSuggestBox
 name|path
 decl_stmt|;
-DECL|method|DeleteFileBox (Change.Id changeId, RevisionInfo revision)
+DECL|method|DeleteFileBox (Project.NameKey project, Change.Id changeId, RevisionInfo revision)
 name|DeleteFileBox
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|Change
 operator|.
 name|Id
@@ -513,6 +542,12 @@ name|RevisionInfo
 name|revision
 parameter_list|)
 block|{
+name|this
+operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
 name|this
 operator|.
 name|changeId
@@ -527,6 +562,8 @@ argument_list|(
 operator|new
 name|PathSuggestOracle
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|,
 name|revision
@@ -683,6 +720,11 @@ name|ChangeEditApi
 operator|.
 name|delete
 argument_list|(
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|changeId
 operator|.
 name|get
@@ -715,6 +757,8 @@ name|PageLinks
 operator|.
 name|toChangeInEditMode
 argument_list|(
+name|project
+argument_list|,
 name|changeId
 argument_list|)
 argument_list|)

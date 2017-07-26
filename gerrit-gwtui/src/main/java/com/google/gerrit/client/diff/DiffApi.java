@@ -176,6 +176,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -224,12 +238,17 @@ specifier|public
 class|class
 name|DiffApi
 block|{
-DECL|method|list ( int id, String revision, RevisionInfo base, AsyncCallback<NativeMap<FileInfo>> cb)
+DECL|method|list ( @ullable String project, int id, String revision, RevisionInfo base, AsyncCallback<NativeMap<FileInfo>> cb)
 specifier|public
 specifier|static
 name|void
 name|list
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|int
 name|id
 parameter_list|,
@@ -256,6 +275,8 @@ name|ChangeApi
 operator|.
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|,
 name|revision
@@ -328,12 +349,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|list (PatchSet.Id id, PatchSet.Id base, AsyncCallback<NativeMap<FileInfo>> cb)
+DECL|method|list ( @ullable String project, PatchSet.Id id, PatchSet.Id base, AsyncCallback<NativeMap<FileInfo>> cb)
 specifier|public
 specifier|static
 name|void
 name|list
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -361,6 +387,8 @@ name|ChangeApi
 operator|.
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
@@ -431,12 +459,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|diff (PatchSet.Id id, String path)
+DECL|method|diff (@ullable String project, PatchSet.Id id, String path)
 specifier|public
 specifier|static
 name|DiffApi
 name|diff
 parameter_list|(
+annotation|@
+name|Nullable
+name|String
+name|project
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -454,6 +487,8 @@ name|ChangeApi
 operator|.
 name|revision
 argument_list|(
+name|project
+argument_list|,
 name|id
 argument_list|)
 operator|.
