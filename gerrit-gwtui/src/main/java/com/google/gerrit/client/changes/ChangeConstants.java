@@ -410,6 +410,26 @@ name|String
 name|cherryPickTitle
 parameter_list|()
 function_decl|;
+DECL|method|moveChangeSend ()
+name|String
+name|moveChangeSend
+parameter_list|()
+function_decl|;
+DECL|method|headingMoveBranch ()
+name|String
+name|headingMoveBranch
+parameter_list|()
+function_decl|;
+DECL|method|moveChangeMessage ()
+name|String
+name|moveChangeMessage
+parameter_list|()
+function_decl|;
+DECL|method|moveTitle ()
+name|String
+name|moveTitle
+parameter_list|()
+function_decl|;
 DECL|method|buttonRebaseChangeSend ()
 name|String
 name|buttonRebaseChangeSend

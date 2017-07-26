@@ -1752,6 +1752,74 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Move change to another branch. */
+DECL|method|move ( String project, int id, String destination, String message, AsyncCallback<ChangeInfo> cb)
+specifier|public
+specifier|static
+name|void
+name|move
+parameter_list|(
+name|String
+name|project
+parameter_list|,
+name|int
+name|id
+parameter_list|,
+name|String
+name|destination
+parameter_list|,
+name|String
+name|message
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|MoveInput
+name|moveInput
+init|=
+name|MoveInput
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|moveInput
+operator|.
+name|setMessage
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|moveInput
+operator|.
+name|setDestinationBranch
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
+name|change
+argument_list|(
+name|project
+argument_list|,
+name|id
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"move"
+argument_list|)
+operator|.
+name|post
+argument_list|(
+name|moveInput
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Edit commit message for specific revision of a change. */
 DECL|method|message ( @ullable String project, int id, String commit, String message, AsyncCallback<JavaScriptObject> cb)
 specifier|public
@@ -2454,6 +2522,56 @@ function_decl|;
 DECL|method|CherryPickInput ()
 specifier|protected
 name|CherryPickInput
+parameter_list|()
+block|{}
+block|}
+DECL|class|MoveInput
+specifier|private
+specifier|static
+class|class
+name|MoveInput
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|create ()
+specifier|static
+name|MoveInput
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|MoveInput
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
+DECL|method|setDestinationBranch (String d)
+specifier|final
+specifier|native
+name|void
+name|setDestinationBranch
+parameter_list|(
+name|String
+name|d
+parameter_list|)
+comment|/*-{ this.destination_branch = d; }-*/
+function_decl|;
+DECL|method|setMessage (String m)
+specifier|final
+specifier|native
+name|void
+name|setMessage
+parameter_list|(
+name|String
+name|m
+parameter_list|)
+comment|/*-{ this.message = m; }-*/
+function_decl|;
+DECL|method|MoveInput ()
+specifier|protected
+name|MoveInput
 parameter_list|()
 block|{}
 block|}
