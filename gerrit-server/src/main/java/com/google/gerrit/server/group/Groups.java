@@ -76,20 +76,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Iterables
 import|;
 end_import
@@ -500,7 +486,7 @@ return|;
 block|}
 DECL|method|getAll (ReviewDb db)
 specifier|public
-name|ImmutableList
+name|Stream
 argument_list|<
 name|AccountGroup
 argument_list|>
@@ -513,9 +499,9 @@ throws|throws
 name|OrmException
 block|{
 return|return
-name|ImmutableList
+name|Streams
 operator|.
-name|copyOf
+name|stream
 argument_list|(
 name|db
 operator|.
