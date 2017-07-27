@@ -3005,6 +3005,7 @@ case|:
 case|case
 name|RENAMED
 case|:
+default|default:
 throw|throw
 operator|new
 name|OrmException
@@ -3132,6 +3133,7 @@ case|:
 case|case
 name|RENAMED
 case|:
+default|default:
 throw|throw
 operator|new
 name|OrmException
