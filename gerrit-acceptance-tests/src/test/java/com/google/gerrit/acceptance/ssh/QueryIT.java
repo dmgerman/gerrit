@@ -2887,7 +2887,7 @@ operator|.
 name|getChangeId
 argument_list|()
 decl_stmt|;
-name|amendChangeAsDraft
+name|amendChangeAndMarkPatchSetAsDraft
 argument_list|(
 name|changeId
 argument_list|)

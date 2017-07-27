@@ -4983,9 +4983,15 @@ name|magicBranch
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|magicBranch
 operator|.
 name|edit
+operator|||
+name|magicBranch
+operator|.
+name|draft
+operator|)
 decl_stmt|;
 name|Boolean
 name|isPrivate
@@ -7970,7 +7976,9 @@ literal|"--draft"
 argument_list|,
 name|usage
 operator|=
-literal|"mark new/updated changes as draft"
+literal|"Will be removed. Before that, this option will be mapped to '--private'"
+operator|+
+literal|"for new changes and '--edit' for existing changes"
 argument_list|)
 DECL|field|draft
 name|boolean
@@ -9575,6 +9583,7 @@ operator|.
 name|draft
 condition|)
 block|{
+comment|// TODO(xchangcheng): reject all after repo-tool supports private and wip changes.
 if|if
 condition|(
 operator|!
@@ -13195,6 +13204,10 @@ name|setPrivate
 argument_list|(
 name|magicBranch
 operator|.
+name|draft
+operator|||
+name|magicBranch
+operator|.
 name|isPrivate
 operator|||
 operator|(
@@ -13220,24 +13233,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|magicBranch
-operator|.
-name|draft
-condition|)
-block|{
-name|ins
-operator|.
-name|setDraft
-argument_list|(
-name|magicBranch
-operator|.
-name|draft
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
 if|if
 condition|(
 name|magicBranch
@@ -13428,9 +13423,7 @@ name|db
 argument_list|,
 name|accountResolver
 argument_list|,
-name|magicBranch
-operator|.
-name|draft
+literal|false
 argument_list|,
 name|footerLines
 argument_list|)
@@ -15124,9 +15117,15 @@ name|magicBranch
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|magicBranch
 operator|.
 name|edit
+operator|||
+name|magicBranch
+operator|.
+name|draft
+operator|)
 condition|)
 block|{
 return|return
@@ -15431,9 +15430,15 @@ name|magicBranch
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|magicBranch
 operator|.
 name|edit
+operator|||
+name|magicBranch
+operator|.
+name|draft
+operator|)
 condition|)
 block|{
 name|bu

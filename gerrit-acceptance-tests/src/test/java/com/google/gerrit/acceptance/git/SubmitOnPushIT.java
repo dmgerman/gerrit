@@ -1355,9 +1355,7 @@ decl_stmt|;
 name|r
 operator|.
 name|assertErrorStatus
-argument_list|(
-literal|"cannot submit draft"
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
