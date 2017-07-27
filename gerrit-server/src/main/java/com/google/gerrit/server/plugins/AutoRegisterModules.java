@@ -1075,8 +1075,6 @@ operator|==
 literal|null
 condition|)
 block|{
-name|PluginLoader
-operator|.
 name|log
 operator|.
 name|warn
@@ -1292,8 +1290,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|PluginLoader
-operator|.
 name|log
 operator|.
 name|warn
