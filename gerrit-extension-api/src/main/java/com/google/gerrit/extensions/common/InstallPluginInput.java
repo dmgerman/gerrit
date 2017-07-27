@@ -99,10 +99,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|InstallPluginInfo
+DECL|class|InstallPluginInput
 specifier|public
 class|class
-name|InstallPluginInfo
+name|InstallPluginInput
 block|{
 DECL|field|url
 specifier|public

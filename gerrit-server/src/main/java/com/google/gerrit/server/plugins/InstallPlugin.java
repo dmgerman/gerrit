@@ -110,7 +110,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|InstallPluginInfo
+name|InstallPluginInput
 import|;
 end_import
 
@@ -300,7 +300,7 @@ name|RestModifyView
 argument_list|<
 name|TopLevelResource
 argument_list|,
-name|InstallPluginInfo
+name|InstallPluginInput
 argument_list|>
 block|{
 DECL|field|loader
@@ -355,7 +355,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (TopLevelResource resource, InstallPluginInfo input)
+DECL|method|apply (TopLevelResource resource, InstallPluginInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -366,7 +366,7 @@ parameter_list|(
 name|TopLevelResource
 name|resource
 parameter_list|,
-name|InstallPluginInfo
+name|InstallPluginInput
 name|input
 parameter_list|)
 throws|throws
@@ -553,12 +553,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|openStream (InstallPluginInfo input)
+DECL|method|openStream (InstallPluginInput input)
 specifier|private
 name|InputStream
 name|openStream
 parameter_list|(
-name|InstallPluginInfo
+name|InstallPluginInput
 name|input
 parameter_list|)
 throws|throws
@@ -633,7 +633,7 @@ name|RestModifyView
 argument_list|<
 name|PluginResource
 argument_list|,
-name|InstallPluginInfo
+name|InstallPluginInput
 argument_list|>
 block|{
 DECL|field|loader
@@ -660,7 +660,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (PluginResource resource, InstallPluginInfo input)
+DECL|method|apply (PluginResource resource, InstallPluginInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -671,7 +671,7 @@ parameter_list|(
 name|PluginResource
 name|resource
 parameter_list|,
-name|InstallPluginInfo
+name|InstallPluginInput
 name|input
 parameter_list|)
 throws|throws
