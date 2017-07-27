@@ -262,20 +262,17 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-DECL|method|all (boolean all)
+DECL|method|all ()
 specifier|public
 name|ListRequest
 name|all
-parameter_list|(
-name|boolean
-name|all
-parameter_list|)
+parameter_list|()
 block|{
 name|this
 operator|.
 name|all
 operator|=
-name|all
+literal|true
 expr_stmt|;
 return|return
 name|this

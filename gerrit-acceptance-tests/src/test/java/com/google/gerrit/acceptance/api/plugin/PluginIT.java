@@ -134,10 +134,10 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Test
-DECL|method|noPlugins ()
+DECL|method|list ()
 specifier|public
 name|void
-name|noPlugins
+name|list
 parameter_list|()
 throws|throws
 name|Exception
@@ -150,6 +150,26 @@ name|plugins
 argument_list|()
 operator|.
 name|list
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|gApi
+operator|.
+name|plugins
+argument_list|()
+operator|.
+name|list
+argument_list|()
+operator|.
+name|all
 argument_list|()
 operator|.
 name|get
