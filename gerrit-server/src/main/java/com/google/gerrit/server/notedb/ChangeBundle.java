@@ -1911,6 +1911,8 @@ literal|21
 argument_list|,
 literal|22
 argument_list|,
+literal|23
+argument_list|,
 literal|101
 argument_list|)
 expr_stmt|;

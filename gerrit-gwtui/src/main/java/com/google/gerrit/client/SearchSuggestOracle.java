@@ -904,6 +904,13 @@ argument_list|(
 literal|"unresolved:"
 argument_list|)
 expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
+literal|"revertof:"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|Gerrit

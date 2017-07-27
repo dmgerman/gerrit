@@ -2157,6 +2157,29 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/** References a change that this change reverts. */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|23
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|revertOf
+specifier|protected
+name|Id
+name|revertOf
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** @see com.google.gerrit.server.notedb.NoteDbChangeState */
 end_comment
 
@@ -2372,6 +2395,12 @@ operator|=
 name|other
 operator|.
 name|noteDbState
+expr_stmt|;
+name|revertOf
+operator|=
+name|other
+operator|.
+name|revertOf
 expr_stmt|;
 block|}
 end_constructor
@@ -3080,6 +3109,40 @@ name|reviewStarted
 operator|=
 name|reviewStarted
 expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|setRevertOf (Id revertOf)
+specifier|public
+name|void
+name|setRevertOf
+parameter_list|(
+name|Id
+name|revertOf
+parameter_list|)
+block|{
+name|this
+operator|.
+name|revertOf
+operator|=
+name|revertOf
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|getRevertOf ()
+specifier|public
+name|Id
+name|getRevertOf
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|revertOf
+return|;
 block|}
 end_function
 
