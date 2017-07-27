@@ -249,6 +249,7 @@ argument_list|)
 annotation|@
 name|Singleton
 DECL|class|EnablePlugin
+specifier|public
 class|class
 name|EnablePlugin
 implements|implements
@@ -260,6 +261,7 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input

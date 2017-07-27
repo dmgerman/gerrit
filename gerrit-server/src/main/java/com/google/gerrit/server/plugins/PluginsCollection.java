@@ -377,6 +377,27 @@ parameter_list|)
 throws|throws
 name|ResourceNotFoundException
 block|{
+return|return
+name|parse
+argument_list|(
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|parse (String id)
+specifier|public
+name|PluginResource
+name|parse
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|ResourceNotFoundException
+block|{
 name|Plugin
 name|p
 init|=
@@ -385,9 +406,6 @@ operator|.
 name|get
 argument_list|(
 name|id
-operator|.
-name|get
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

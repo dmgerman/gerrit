@@ -305,6 +305,7 @@ operator|.
 name|ADMINISTRATE_SERVER
 argument_list|)
 DECL|class|InstallPlugin
+specifier|public
 class|class
 name|InstallPlugin
 implements|implements
