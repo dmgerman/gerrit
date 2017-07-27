@@ -277,9 +277,18 @@ name|ListPlugins
 argument_list|>
 name|list
 decl_stmt|;
+DECL|field|install
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|InstallPlugin
+argument_list|>
+name|install
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginsCollection ( DynamicMap<RestView<PluginResource>> views, PluginLoader loader, Provider<ListPlugins> list)
+DECL|method|PluginsCollection ( DynamicMap<RestView<PluginResource>> views, PluginLoader loader, Provider<ListPlugins> list, Provider<InstallPlugin> install)
 name|PluginsCollection
 parameter_list|(
 name|DynamicMap
@@ -299,6 +308,12 @@ argument_list|<
 name|ListPlugins
 argument_list|>
 name|list
+parameter_list|,
+name|Provider
+argument_list|<
+name|InstallPlugin
+argument_list|>
+name|install
 parameter_list|)
 block|{
 name|this
@@ -318,6 +333,12 @@ operator|.
 name|list
 operator|=
 name|list
+expr_stmt|;
+name|this
+operator|.
+name|install
+operator|=
+name|install
 expr_stmt|;
 block|}
 annotation|@
@@ -433,18 +454,22 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|new
-name|InstallPlugin
+name|install
+operator|.
+name|get
+argument_list|()
+operator|.
+name|setName
 argument_list|(
-name|loader
-argument_list|,
 name|id
 operator|.
 name|get
 argument_list|()
-argument_list|,
+argument_list|)
+operator|.
+name|setCreated
+argument_list|(
 literal|true
-comment|/* created */
 argument_list|)
 return|;
 block|}
