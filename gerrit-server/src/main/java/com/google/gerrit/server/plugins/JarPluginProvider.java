@@ -67,24 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|plugins
-operator|.
-name|PluginLoader
-operator|.
-name|asTemp
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -487,7 +469,7 @@ argument_list|(
 name|srcPath
 argument_list|)
 argument_list|,
-name|PluginLoader
+name|PluginUtil
 operator|.
 name|nameOf
 argument_list|(
@@ -613,6 +595,8 @@ block|{
 name|Path
 name|tmp
 init|=
+name|PluginUtil
+operator|.
 name|asTemp
 argument_list|(
 name|in
@@ -812,6 +796,8 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|PluginUtil
+operator|.
 name|asTemp
 argument_list|(
 name|in
@@ -1019,7 +1005,7 @@ argument_list|()
 index|]
 argument_list|)
 argument_list|,
-name|PluginLoader
+name|PluginUtil
 operator|.
 name|parentFor
 argument_list|(

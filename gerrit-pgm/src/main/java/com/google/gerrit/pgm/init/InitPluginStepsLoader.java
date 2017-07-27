@@ -190,7 +190,7 @@ name|server
 operator|.
 name|plugins
 operator|.
-name|PluginLoader
+name|PluginUtil
 import|;
 end_import
 
@@ -709,7 +709,7 @@ argument_list|(
 name|jarPath
 argument_list|)
 argument_list|,
-name|PluginLoader
+name|PluginUtil
 operator|.
 name|nameOf
 argument_list|(
@@ -769,7 +769,7 @@ block|{
 try|try
 block|{
 return|return
-name|PluginLoader
+name|PluginUtil
 operator|.
 name|listPlugins
 argument_list|(
