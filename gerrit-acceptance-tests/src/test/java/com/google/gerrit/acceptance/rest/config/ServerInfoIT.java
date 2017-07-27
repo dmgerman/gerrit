@@ -1059,13 +1059,6 @@ name|sitePaths
 operator|.
 name|plugins_dir
 decl_stmt|;
-name|Files
-operator|.
-name|createDirectory
-argument_list|(
-name|plugins
-argument_list|)
-expr_stmt|;
 name|Path
 name|jsplugin
 init|=
