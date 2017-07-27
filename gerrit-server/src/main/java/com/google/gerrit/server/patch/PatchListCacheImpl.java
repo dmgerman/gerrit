@@ -96,9 +96,37 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|cache
 operator|.
 name|Cache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
 import|;
 end_import
 
@@ -263,6 +291,16 @@ operator|.
 name|name
 operator|.
 name|Named
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -1323,8 +1361,11 @@ throw|;
 block|}
 block|}
 comment|/** Used to cache negative results in {@code fileCache}. */
+annotation|@
+name|VisibleForTesting
 DECL|class|LargeObjectTombstone
-specifier|private
+specifier|public
+specifier|static
 class|class
 name|LargeObjectTombstone
 extends|extends
@@ -1339,11 +1380,32 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+annotation|@
+name|VisibleForTesting
 DECL|method|LargeObjectTombstone ()
-specifier|private
+specifier|public
 name|LargeObjectTombstone
 parameter_list|()
 block|{}
+comment|/**      * Return an empty list to prevent {@link NullPointerException}s inside of {@link      * PatchListWeigher}.      */
+annotation|@
+name|Override
+DECL|method|getPatches ()
+specifier|public
+name|List
+argument_list|<
+name|PatchListEntry
+argument_list|>
+name|getPatches
+parameter_list|()
+block|{
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+return|;
+block|}
 block|}
 block|}
 end_class
