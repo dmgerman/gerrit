@@ -655,7 +655,7 @@ argument_list|,
 name|aliases
 operator|=
 block|{
-literal|"-s"
+literal|"-S"
 block|}
 argument_list|,
 name|metaVar
