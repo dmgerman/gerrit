@@ -233,6 +233,7 @@ argument_list|)
 annotation|@
 name|Singleton
 DECL|class|ReloadPlugin
+specifier|public
 class|class
 name|ReloadPlugin
 implements|implements
@@ -244,6 +245,7 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input

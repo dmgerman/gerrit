@@ -114,6 +114,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|GetStatus
+specifier|public
 class|class
 name|GetStatus
 implements|implements
