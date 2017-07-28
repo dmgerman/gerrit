@@ -1652,7 +1652,7 @@ name|addMembers
 operator|.
 name|addMembers
 argument_list|(
-name|groupId
+name|uuid
 argument_list|,
 name|createGroupArgs
 operator|.

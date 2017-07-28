@@ -116,6 +116,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|errors
+operator|.
+name|NoSuchGroupException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -267,6 +283,22 @@ operator|.
 name|externalids
 operator|.
 name|ExternalIdsUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|Groups
 import|;
 end_import
 
@@ -464,6 +496,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -514,6 +556,12 @@ operator|.
 name|Accessor
 name|authorizedKeys
 decl_stmt|;
+DECL|field|groups
+specifier|private
+specifier|final
+name|Groups
+name|groups
+decl_stmt|;
 DECL|field|groupsUpdateProvider
 specifier|private
 specifier|final
@@ -557,7 +605,7 @@ name|sshEnabled
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, Sequences sequences, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, @ServerInitiated Provider<GroupsUpdate> groupsUpdateProvider, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, ExternalIdsUpdate.Server externalIdsUpdate, @SshEnabled boolean sshEnabled)
+DECL|method|AccountCreator ( SchemaFactory<ReviewDb> schema, Sequences sequences, AccountsUpdate.Server accountsUpdate, VersionedAuthorizedKeys.Accessor authorizedKeys, Groups groups, @ServerInitiated Provider<GroupsUpdate> groupsUpdateProvider, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, ExternalIdsUpdate.Server externalIdsUpdate, @SshEnabled boolean sshEnabled)
 name|AccountCreator
 parameter_list|(
 name|SchemaFactory
@@ -578,6 +626,9 @@ name|VersionedAuthorizedKeys
 operator|.
 name|Accessor
 name|authorizedKeys
+parameter_list|,
+name|Groups
+name|groups
 parameter_list|,
 annotation|@
 name|ServerInitiated
@@ -638,6 +689,12 @@ name|authorizedKeys
 expr_stmt|;
 name|this
 operator|.
+name|groups
+operator|=
+name|groups
+expr_stmt|;
+name|this
+operator|.
 name|groupsUpdateProvider
 operator|=
 name|groupsUpdateProvider
@@ -673,7 +730,7 @@ operator|=
 name|sshEnabled
 expr_stmt|;
 block|}
-DECL|method|create ( @ullable String username, @Nullable String email, @Nullable String fullName, String... groups)
+DECL|method|create ( @ullable String username, @Nullable String email, @Nullable String fullName, String... groupNames)
 specifier|public
 specifier|synchronized
 name|TestAccount
@@ -696,7 +753,7 @@ name|fullName
 parameter_list|,
 name|String
 modifier|...
-name|groups
+name|groupNames
 parameter_list|)
 throws|throws
 name|Exception
@@ -860,7 +917,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|groups
+name|groupNames
 operator|!=
 literal|null
 condition|)
@@ -870,7 +927,7 @@ control|(
 name|String
 name|n
 range|:
-name|groups
+name|groupNames
 control|)
 block|{
 name|AccountGroup
@@ -886,6 +943,38 @@ argument_list|(
 name|n
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
+name|AccountGroup
+argument_list|>
+name|group
+init|=
+name|groups
+operator|.
+name|get
+argument_list|(
+name|db
+argument_list|,
+name|k
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|group
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|NoSuchGroupException
+argument_list|(
+name|n
+argument_list|)
+throw|;
+block|}
 name|groupsUpdateProvider
 operator|.
 name|get
@@ -895,7 +984,13 @@ name|addGroupMember
 argument_list|(
 name|db
 argument_list|,
-name|k
+name|group
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getGroupUUID
+argument_list|()
 argument_list|,
 name|id
 argument_list|)

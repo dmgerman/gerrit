@@ -1015,7 +1015,7 @@ name|addMembers
 argument_list|(
 name|internalGroup
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|,
 name|newMemberIds
@@ -1149,15 +1149,15 @@ name|e
 throw|;
 block|}
 block|}
-DECL|method|addMembers (AccountGroup.Id groupId, Collection<? extends Account.Id> newMemberIds)
+DECL|method|addMembers (AccountGroup.UUID groupUuid, Collection<? extends Account.Id> newMemberIds)
 specifier|public
 name|void
 name|addMembers
 parameter_list|(
 name|AccountGroup
 operator|.
-name|Id
-name|groupId
+name|UUID
+name|groupUuid
 parameter_list|,
 name|Collection
 argument_list|<
@@ -1186,7 +1186,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|groupId
+name|groupUuid
 argument_list|,
 name|ImmutableSet
 operator|.
