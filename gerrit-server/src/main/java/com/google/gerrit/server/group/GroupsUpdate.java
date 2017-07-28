@@ -1385,7 +1385,7 @@ name|isMember
 argument_list|(
 name|db
 argument_list|,
-name|group
+name|groupUuid
 argument_list|,
 name|accountId
 argument_list|)
@@ -1585,7 +1585,7 @@ name|isMember
 argument_list|(
 name|db
 argument_list|,
-name|group
+name|groupUuid
 argument_list|,
 name|accountId
 argument_list|)
@@ -1782,7 +1782,7 @@ name|isIncluded
 argument_list|(
 name|db
 argument_list|,
-name|parentGroupId
+name|parentGroupUuid
 argument_list|,
 name|includedGroupUuid
 argument_list|)
@@ -1987,7 +1987,7 @@ name|isIncluded
 argument_list|(
 name|db
 argument_list|,
-name|parentGroupId
+name|parentGroupUuid
 argument_list|,
 name|includedGroupUuid
 argument_list|)

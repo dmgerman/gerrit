@@ -729,7 +729,7 @@ name|create
 argument_list|(
 name|group
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|)
 operator|.

@@ -1329,7 +1329,7 @@ name|db
 argument_list|,
 name|ig
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|)
 operator|.

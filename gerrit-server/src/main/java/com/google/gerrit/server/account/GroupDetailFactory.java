@@ -260,14 +260,14 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (AccountGroup.Id groupId)
+DECL|method|create (AccountGroup.UUID groupUuid)
 name|GroupDetailFactory
 name|create
 parameter_list|(
 name|AccountGroup
 operator|.
-name|Id
-name|groupId
+name|UUID
+name|groupUuid
 parameter_list|)
 function_decl|;
 block|}
@@ -291,13 +291,13 @@ specifier|final
 name|Groups
 name|groups
 decl_stmt|;
-DECL|field|groupId
+DECL|field|groupUuid
 specifier|private
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
-name|groupId
+name|UUID
+name|groupUuid
 decl_stmt|;
 DECL|field|control
 specifier|private
@@ -306,7 +306,7 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupDetailFactory ( ReviewDb db, GroupControl.Factory groupControl, Groups groups, @Assisted AccountGroup.Id groupId)
+DECL|method|GroupDetailFactory ( ReviewDb db, GroupControl.Factory groupControl, Groups groups, @Assisted AccountGroup.UUID groupUuid)
 name|GroupDetailFactory
 parameter_list|(
 name|ReviewDb
@@ -324,8 +324,8 @@ annotation|@
 name|Assisted
 name|AccountGroup
 operator|.
-name|Id
-name|groupId
+name|UUID
+name|groupUuid
 parameter_list|)
 block|{
 name|this
@@ -348,9 +348,9 @@ name|groups
 expr_stmt|;
 name|this
 operator|.
-name|groupId
+name|groupUuid
 operator|=
-name|groupId
+name|groupUuid
 expr_stmt|;
 block|}
 annotation|@
@@ -371,7 +371,7 @@ name|groupControl
 operator|.
 name|validateFor
 argument_list|(
-name|groupId
+name|groupUuid
 argument_list|)
 expr_stmt|;
 name|ImmutableSet
@@ -426,7 +426,7 @@ name|getMembers
 argument_list|(
 name|db
 argument_list|,
-name|groupId
+name|groupUuid
 argument_list|)
 operator|.
 name|filter
@@ -479,7 +479,7 @@ name|getIncludes
 argument_list|(
 name|db
 argument_list|,
-name|groupId
+name|groupUuid
 argument_list|)
 operator|.
 name|collect

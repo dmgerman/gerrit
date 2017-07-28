@@ -603,6 +603,9 @@ name|get
 argument_list|()
 argument_list|,
 name|group
+operator|.
+name|getGroupUUID
+argument_list|()
 argument_list|,
 name|user
 operator|.

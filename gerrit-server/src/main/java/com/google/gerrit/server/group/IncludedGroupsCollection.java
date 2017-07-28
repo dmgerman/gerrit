@@ -602,7 +602,7 @@ argument_list|()
 argument_list|,
 name|parent
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|,
 name|member

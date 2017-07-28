@@ -512,7 +512,7 @@ operator|.
 name|toAccountGroup
 argument_list|()
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|)
 operator|.
