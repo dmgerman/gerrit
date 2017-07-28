@@ -291,6 +291,12 @@ specifier|final
 name|Groups
 name|groups
 decl_stmt|;
+DECL|field|groupIncludeCache
+specifier|private
+specifier|final
+name|GroupIncludeCache
+name|groupIncludeCache
+decl_stmt|;
 DECL|field|groupUuid
 specifier|private
 specifier|final
@@ -306,7 +312,7 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupDetailFactory ( ReviewDb db, GroupControl.Factory groupControl, Groups groups, @Assisted AccountGroup.UUID groupUuid)
+DECL|method|GroupDetailFactory ( ReviewDb db, GroupControl.Factory groupControl, Groups groups, GroupIncludeCache groupIncludeCache, @Assisted AccountGroup.UUID groupUuid)
 name|GroupDetailFactory
 parameter_list|(
 name|ReviewDb
@@ -319,6 +325,9 @@ name|groupControl
 parameter_list|,
 name|Groups
 name|groups
+parameter_list|,
+name|GroupIncludeCache
+name|groupIncludeCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -345,6 +354,12 @@ operator|.
 name|groups
 operator|=
 name|groups
+expr_stmt|;
+name|this
+operator|.
+name|groupIncludeCache
+operator|=
+name|groupIncludeCache
 expr_stmt|;
 name|this
 operator|.
@@ -453,8 +468,6 @@ name|UUID
 argument_list|>
 name|loadIncludes
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -473,19 +486,16 @@ argument_list|()
 return|;
 block|}
 return|return
-name|groups
+name|ImmutableSet
 operator|.
-name|getIncludes
+name|copyOf
 argument_list|(
-name|db
-argument_list|,
+name|groupIncludeCache
+operator|.
+name|subgroupsOf
+argument_list|(
 name|groupUuid
 argument_list|)
-operator|.
-name|collect
-argument_list|(
-name|toImmutableSet
-argument_list|()
 argument_list|)
 return|;
 block|}
