@@ -4295,7 +4295,6 @@ return|;
 block|}
 DECL|method|changeAndCommit ( PatchSet.Id psId, ObjectId commitId, int currentRevisionNum)
 specifier|private
-specifier|static
 name|ChangeAndCommit
 name|changeAndCommit
 parameter_list|(
@@ -4318,6 +4317,15 @@ operator|new
 name|ChangeAndCommit
 argument_list|()
 decl_stmt|;
+name|result
+operator|.
+name|project
+operator|=
+name|project
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
 name|result
 operator|.
 name|_changeNumber
@@ -4597,6 +4605,27 @@ index|[
 name|i
 index|]
 decl_stmt|;
+name|assertThat
+argument_list|(
+name|a
+operator|.
+name|project
+argument_list|)
+operator|.
+name|named
+argument_list|(
+literal|"project of "
+operator|+
+name|name
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|e
+operator|.
+name|project
+argument_list|)
+expr_stmt|;
 name|assertThat
 argument_list|(
 name|a
