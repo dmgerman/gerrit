@@ -1356,7 +1356,7 @@ block|{
 return|return
 name|groups
 operator|.
-name|get
+name|getGroup
 argument_list|(
 name|db
 argument_list|,
@@ -1452,7 +1452,7 @@ block|{
 return|return
 name|groups
 operator|.
-name|get
+name|getGroup
 argument_list|(
 name|db
 argument_list|,
@@ -1554,7 +1554,7 @@ block|{
 return|return
 name|groups
 operator|.
-name|get
+name|getGroup
 argument_list|(
 name|db
 argument_list|,

@@ -433,6 +433,8 @@ name|loadMembers
 parameter_list|()
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchGroupException
 block|{
 return|return
 name|groups

@@ -166,6 +166,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|errors
+operator|.
+name|NoSuchGroupException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|client
@@ -960,7 +976,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Authenticate the user, potentially creating a new account if they are new.    *    * @param who identity of the user, with any details we received about them.    * @return the result of authenticating the user.    * @throws AccountException the account does not exist, and cannot be created, or exists, but    *     cannot be located, or is inactive.    */
+comment|/**    * Authenticate the user, potentially creating a new account if they are new.    *    * @param who identity of the user, with any details we received about them.    * @return the result of authenticating the user.    * @throws AccountException the account does not exist, and cannot be created, or exists, but    *     cannot be located, or is inactive, or cannot be added to the admin group (only for the    *     first account).    */
 DECL|method|authenticate (AuthRequest who)
 specifier|public
 name|AuthResult
@@ -1788,6 +1804,8 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|groupsUpdate
 operator|.
 name|addGroupMember
@@ -1799,6 +1817,28 @@ argument_list|,
 name|newId
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchGroupException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AccountException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Group %s not found"
+argument_list|,
+name|uuid
+argument_list|)
+argument_list|)
+throw|;
+block|}
 block|}
 if|if
 condition|(

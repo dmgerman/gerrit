@@ -951,7 +951,7 @@ name|group
 init|=
 name|groups
 operator|.
-name|get
+name|getGroup
 argument_list|(
 name|db
 argument_list|,
