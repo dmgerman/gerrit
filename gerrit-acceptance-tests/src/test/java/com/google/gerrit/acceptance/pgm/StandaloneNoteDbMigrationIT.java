@@ -879,7 +879,7 @@ name|assertNotesMigrationState
 argument_list|(
 name|NotesMigrationState
 operator|.
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 argument_list|)
 expr_stmt|;
 try|try
@@ -1187,7 +1187,7 @@ name|assertNotesMigrationState
 argument_list|(
 name|NotesMigrationState
 operator|.
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 argument_list|)
 expr_stmt|;
 name|status
@@ -1404,7 +1404,7 @@ name|assertNotesMigrationState
 argument_list|(
 name|NotesMigrationState
 operator|.
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 argument_list|)
 expr_stmt|;
 block|}

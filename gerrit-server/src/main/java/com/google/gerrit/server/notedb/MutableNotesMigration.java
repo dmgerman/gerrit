@@ -336,29 +336,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|setFuseUpdates (boolean fuseUpdates)
-specifier|public
-name|MutableNotesMigration
-name|setFuseUpdates
-parameter_list|(
-name|boolean
-name|fuseUpdates
-parameter_list|)
-block|{
-return|return
-name|set
-argument_list|(
-name|b
-lambda|->
-name|b
-operator|.
-name|setFuseUpdates
-argument_list|(
-name|fuseUpdates
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|setFailOnLoadForTest (boolean failOnLoadForTest)
 specifier|public
 name|MutableNotesMigration

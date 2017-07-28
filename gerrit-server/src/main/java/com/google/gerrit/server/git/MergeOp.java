@@ -818,22 +818,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -2105,12 +2089,6 @@ specifier|final
 name|RetryHelper
 name|retryHelper
 decl_stmt|;
-DECL|field|notesMigration
-specifier|private
-specifier|final
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 DECL|field|ts
 specifier|private
 name|Timestamp
@@ -2180,7 +2158,7 @@ name|topicMetrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, Provider<MergeOpRepoManager> ormProvider, NotifyUtil notifyUtil, TopicMetrics topicMetrics, RetryHelper retryHelper, NotesMigration notesMigration)
+DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, Provider<MergeOpRepoManager> ormProvider, NotifyUtil notifyUtil, TopicMetrics topicMetrics, RetryHelper retryHelper)
 name|MergeOp
 parameter_list|(
 name|ChangeMessagesUtil
@@ -2229,9 +2207,6 @@ name|topicMetrics
 parameter_list|,
 name|RetryHelper
 name|retryHelper
-parameter_list|,
-name|NotesMigration
-name|notesMigration
 parameter_list|)
 block|{
 name|this
@@ -2305,12 +2280,6 @@ operator|.
 name|topicMetrics
 operator|=
 name|topicMetrics
-expr_stmt|;
-name|this
-operator|.
-name|notesMigration
-operator|=
-name|notesMigration
 expr_stmt|;
 block|}
 annotation|@
@@ -5639,21 +5608,6 @@ operator|==
 literal|1
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|notesMigration
-operator|.
-name|fuseUpdates
-argument_list|()
-condition|)
-block|{
-comment|// No fused updates: any subset of changes might or might not have been submitted, so don't
-comment|// make any strong claims.
-return|return
-literal|"Error submitting changes"
-return|;
-block|}
 comment|// Fused updates: it's correct to say that none of the n changes were submitted.
 return|return
 literal|"Error submitting "

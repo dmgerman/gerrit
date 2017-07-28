@@ -391,7 +391,7 @@ name|waitStrategy
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RetryHelper ( @erritServerConfig Config cfg, NotesMigration migration, ReviewDbBatchUpdate.AssistedFactory reviewDbBatchUpdateFactory, FusedNoteDbBatchUpdate.AssistedFactory fusedNoteDbBatchUpdateFactory, UnfusedNoteDbBatchUpdate.AssistedFactory unfusedNoteDbBatchUpdateFactory)
+DECL|method|RetryHelper ( @erritServerConfig Config cfg, NotesMigration migration, ReviewDbBatchUpdate.AssistedFactory reviewDbBatchUpdateFactory, NoteDbBatchUpdate.AssistedFactory noteDbBatchUpdateFactory)
 name|RetryHelper
 parameter_list|(
 annotation|@
@@ -407,15 +407,10 @@ operator|.
 name|AssistedFactory
 name|reviewDbBatchUpdateFactory
 parameter_list|,
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 operator|.
 name|AssistedFactory
-name|fusedNoteDbBatchUpdateFactory
-parameter_list|,
-name|UnfusedNoteDbBatchUpdate
-operator|.
-name|AssistedFactory
-name|unfusedNoteDbBatchUpdateFactory
+name|noteDbBatchUpdateFactory
 parameter_list|)
 block|{
 name|this
@@ -437,9 +432,7 @@ name|migration
 argument_list|,
 name|reviewDbBatchUpdateFactory
 argument_list|,
-name|fusedNoteDbBatchUpdateFactory
-argument_list|,
-name|unfusedNoteDbBatchUpdateFactory
+name|noteDbBatchUpdateFactory
 argument_list|)
 expr_stmt|;
 name|this
@@ -589,11 +582,6 @@ condition|(
 name|migration
 operator|.
 name|disableChangeReviewDb
-argument_list|()
-operator|&&
-name|migration
-operator|.
-name|fuseUpdates
 argument_list|()
 condition|)
 block|{

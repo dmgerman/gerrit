@@ -97,22 +97,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|truth
-operator|.
-name|TruthJUnit
-operator|.
-name|assume
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -1471,29 +1455,6 @@ argument_list|,
 literal|"can't initialize site path for in-memory test: %s"
 argument_list|,
 name|desc
-argument_list|)
-expr_stmt|;
-name|assume
-argument_list|()
-operator|.
-name|withMessage
-argument_list|(
-literal|"FUSED mode not yet supported for on-disk sites"
-argument_list|)
-operator|.
-name|that
-argument_list|(
-name|NoteDbMode
-operator|.
-name|get
-argument_list|()
-argument_list|)
-operator|.
-name|isNotEqualTo
-argument_list|(
-name|NoteDbMode
-operator|.
-name|FUSED
 argument_list|)
 expr_stmt|;
 name|Config

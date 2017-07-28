@@ -166,7 +166,7 @@ name|notedb
 operator|.
 name|NotesMigrationState
 operator|.
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 import|;
 end_import
 
@@ -2313,7 +2313,7 @@ name|state
 operator|.
 name|compareTo
 argument_list|(
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 argument_list|)
 operator|<
 literal|0
@@ -2467,7 +2467,7 @@ case|case
 name|READ_WRITE_WITH_SEQUENCE_NOTE_DB_PRIMARY
 case|:
 comment|// The only way we can get here is if there was a failure on a previous run of
-comment|// setNoteDbPrimary, since that method moves to NOTE_DB_UNFUSED if it completes
+comment|// setNoteDbPrimary, since that method moves to NOTE_DB if it completes
 comment|// successfully. Assume that not all changes were converted and re-run the step.
 comment|// migrateToNoteDbPrimary is a relatively fast no-op for already-migrated changes, so this
 comment|// isn't actually repeating work.
@@ -2480,15 +2480,10 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 case|:
 comment|// Done!
 break|break;
-case|case
-name|NOTE_DB
-case|:
-comment|// TODO(dborowitz): Allow this state once FileRepository supports fused updates.
-comment|// Until then, fallthrough and throw.
 default|default:
 throw|throw
 operator|new
@@ -2936,7 +2931,7 @@ name|saveState
 argument_list|(
 name|prev
 argument_list|,
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 argument_list|,
 name|c
 lambda|->

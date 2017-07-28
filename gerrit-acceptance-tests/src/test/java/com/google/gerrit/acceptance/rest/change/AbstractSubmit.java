@@ -6365,7 +6365,7 @@ name|that
 argument_list|(
 name|notesMigration
 operator|.
-name|fuseUpdates
+name|disableChangeReviewDb
 argument_list|()
 argument_list|)
 operator|.
@@ -6524,7 +6524,7 @@ name|that
 argument_list|(
 name|notesMigration
 operator|.
-name|fuseUpdates
+name|disableChangeReviewDb
 argument_list|()
 argument_list|)
 operator|.
