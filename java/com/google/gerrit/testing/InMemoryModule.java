@@ -2039,8 +2039,6 @@ argument_list|(
 operator|new
 name|GerritOptions
 argument_list|(
-name|cfg
-argument_list|,
 literal|false
 argument_list|,
 literal|false

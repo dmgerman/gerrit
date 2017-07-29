@@ -554,17 +554,6 @@ name|GerritConfig
 argument_list|(
 name|name
 operator|=
-literal|"gerrit.enableGwtUi"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
 literal|"gerrit.reportBugText"
 argument_list|,
 name|value

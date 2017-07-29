@@ -992,30 +992,6 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/** Label for the agent specific GWT zip. */
-DECL|method|gwtZipLabel (String agent)
-specifier|public
-name|Label
-name|gwtZipLabel
-parameter_list|(
-name|String
-name|agent
-parameter_list|)
-block|{
-return|return
-operator|new
-name|Label
-argument_list|(
-literal|"gerrit-gwtui"
-argument_list|,
-literal|"ui_"
-operator|+
-name|agent
-operator|+
-literal|".zip"
-argument_list|)
-return|;
-block|}
 comment|/** Label for the polygerrit component zip. */
 DECL|method|polygerritComponents ()
 specifier|public
