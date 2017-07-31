@@ -2111,9 +2111,7 @@ operator|.
 name|performsAtomicTransactions
 argument_list|()
 argument_list|,
-literal|"cannot use noteDb.changes.fuseUpdates=true with a repository that does not support atomic"
-operator|+
-literal|" batch ref updates: %s"
+literal|"cannot use NoteDb with a repository that does not support atomic batch ref updates: %s"
 argument_list|,
 name|repo
 argument_list|)
