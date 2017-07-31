@@ -184,12 +184,22 @@ name|DISABLE_CHANGE_REVIEW_DB
 argument_list|(
 name|NotesMigrationState
 operator|.
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 argument_list|)
 operator|,
 comment|/** All change tables are entirely disabled, and code/meta ref updates are fused. */
 DECL|enumConstant|FUSED
 name|FUSED
+argument_list|(
+name|NotesMigrationState
+operator|.
+name|NOTE_DB
+argument_list|)
+operator|,
+comment|// TODO(dborowitz): Change CI to use this, then remove FUSED and DISABLE_CHANGE_REVIEW_DB.
+comment|/** All change tables are entirely disabled, and code/meta ref updates are fused. */
+DECL|enumConstant|ON
+name|ON
 argument_list|(
 name|NotesMigrationState
 operator|.

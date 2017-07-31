@@ -613,9 +613,9 @@ comment|/**  * {@link BatchUpdate} implementation using only NoteDb that updates
 end_comment
 
 begin_class
-DECL|class|FusedNoteDbBatchUpdate
+DECL|class|NoteDbBatchUpdate
 class|class
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 extends|extends
 name|BatchUpdate
 block|{
@@ -624,7 +624,7 @@ interface|interface
 name|AssistedFactory
 block|{
 DECL|method|create ( ReviewDb db, Project.NameKey project, CurrentUser user, Timestamp when)
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 name|create
 parameter_list|(
 name|ReviewDb
@@ -643,14 +643,14 @@ name|when
 parameter_list|)
 function_decl|;
 block|}
-DECL|method|execute ( ImmutableList<FusedNoteDbBatchUpdate> updates, BatchUpdateListener listener, @Nullable RequestId requestId, boolean dryrun)
+DECL|method|execute ( ImmutableList<NoteDbBatchUpdate> updates, BatchUpdateListener listener, @Nullable RequestId requestId, boolean dryrun)
 specifier|static
 name|void
 name|execute
 parameter_list|(
 name|ImmutableList
 argument_list|<
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 argument_list|>
 name|updates
 parameter_list|,
@@ -758,7 +758,7 @@ name|REPO_BEFORE_DB
 case|:
 for|for
 control|(
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -777,7 +777,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -845,7 +845,7 @@ comment|// currently not a big deal because multi-change batches generally aren'
 comment|// drafts anyway.
 for|for
 control|(
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -866,7 +866,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -1005,7 +1005,7 @@ condition|)
 block|{
 for|for
 control|(
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 name|u
 range|:
 name|updates
@@ -1049,7 +1049,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 operator|.
 name|this
 operator|.
@@ -1457,8 +1457,8 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FusedNoteDbBatchUpdate ( GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverIdent, ChangeNotes.Factory changeNotesFactory, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeIndexer indexer, GitReferenceUpdated gitRefUpdated, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
-name|FusedNoteDbBatchUpdate
+DECL|method|NoteDbBatchUpdate ( GitRepositoryManager repoManager, @GerritPersonIdent PersonIdent serverIdent, ChangeNotes.Factory changeNotesFactory, ChangeControl.GenericFactory changeControlFactory, ChangeUpdate.Factory changeUpdateFactory, NoteDbUpdateManager.Factory updateManagerFactory, ChangeIndexer indexer, GitReferenceUpdated gitRefUpdated, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted CurrentUser user, @Assisted Timestamp when)
+name|NoteDbBatchUpdate
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
@@ -1883,7 +1883,7 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-name|FusedNoteDbBatchUpdate
+name|NoteDbBatchUpdate
 operator|.
 name|this
 operator|.

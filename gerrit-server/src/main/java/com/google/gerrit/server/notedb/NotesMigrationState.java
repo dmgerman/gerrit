@@ -162,8 +162,6 @@ operator|.
 name|REVIEW_DB
 argument_list|,
 literal|false
-argument_list|,
-literal|false
 argument_list|)
 block|,
 DECL|enumConstant|WRITE
@@ -178,8 +176,6 @@ argument_list|,
 name|PrimaryStorage
 operator|.
 name|REVIEW_DB
-argument_list|,
-literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -198,8 +194,6 @@ operator|.
 name|REVIEW_DB
 argument_list|,
 literal|false
-argument_list|,
-literal|false
 argument_list|)
 block|,
 DECL|enumConstant|READ_WRITE_WITH_SEQUENCE_REVIEW_DB_PRIMARY
@@ -214,8 +208,6 @@ argument_list|,
 name|PrimaryStorage
 operator|.
 name|REVIEW_DB
-argument_list|,
-literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -234,29 +226,6 @@ operator|.
 name|NOTE_DB
 argument_list|,
 literal|false
-argument_list|,
-literal|false
-argument_list|)
-block|,
-comment|// TODO(dborowitz): This only exists as a separate state to support testing in different
-comment|// NoteDbModes. Once FileRepository fuses BatchRefUpdates, we won't have separate fused/unfused
-comment|// states.
-DECL|enumConstant|NOTE_DB_UNFUSED
-name|NOTE_DB_UNFUSED
-argument_list|(
-literal|true
-argument_list|,
-literal|true
-argument_list|,
-literal|true
-argument_list|,
-name|PrimaryStorage
-operator|.
-name|NOTE_DB
-argument_list|,
-literal|true
-argument_list|,
-literal|false
 argument_list|)
 block|,
 DECL|enumConstant|NOTE_DB
@@ -273,11 +242,8 @@ operator|.
 name|NOTE_DB
 argument_list|,
 literal|true
-argument_list|,
-literal|true
 argument_list|)
 block|;
-comment|// TODO(dborowitz): Replace with NOTE_DB when FileRepository fuses BatchRefUpdates.
 DECL|field|FINAL
 specifier|public
 specifier|static
@@ -285,7 +251,7 @@ specifier|final
 name|NotesMigrationState
 name|FINAL
 init|=
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 decl_stmt|;
 DECL|method|forConfig (Config cfg)
 specifier|public
@@ -381,7 +347,7 @@ specifier|final
 name|Snapshot
 name|snapshot
 decl_stmt|;
-DECL|method|NotesMigrationState ( boolean readChanges, boolean rawWriteChangesSetting, boolean readChangeSequence, PrimaryStorage changePrimaryStorage, boolean disableChangeReviewDb, boolean fuseUpdates)
+DECL|method|NotesMigrationState ( boolean readChanges, boolean rawWriteChangesSetting, boolean readChangeSequence, PrimaryStorage changePrimaryStorage, boolean disableChangeReviewDb)
 name|NotesMigrationState
 parameter_list|(
 comment|// Arguments match abstract methods in NotesMigration.
@@ -399,9 +365,6 @@ name|changePrimaryStorage
 parameter_list|,
 name|boolean
 name|disableChangeReviewDb
-parameter_list|,
-name|boolean
-name|fuseUpdates
 parameter_list|)
 block|{
 name|this
@@ -436,11 +399,6 @@ operator|.
 name|setDisableChangeReviewDb
 argument_list|(
 name|disableChangeReviewDb
-argument_list|)
-operator|.
-name|setFuseUpdates
-argument_list|(
-name|fuseUpdates
 argument_list|)
 operator|.
 name|build

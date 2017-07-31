@@ -130,7 +130,7 @@ name|notedb
 operator|.
 name|NotesMigrationState
 operator|.
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 import|;
 end_import
 
@@ -2515,7 +2515,7 @@ argument_list|)
 expr_stmt|;
 name|assertNotesMigrationState
 argument_list|(
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 argument_list|)
 expr_stmt|;
 name|assertThat
@@ -2936,7 +2936,7 @@ argument_list|)
 expr_stmt|;
 name|assertNotesMigrationState
 argument_list|(
-name|NOTE_DB_UNFUSED
+name|NOTE_DB
 argument_list|)
 expr_stmt|;
 name|assertThat

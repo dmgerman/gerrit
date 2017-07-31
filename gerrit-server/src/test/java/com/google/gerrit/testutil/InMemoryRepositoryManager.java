@@ -146,22 +146,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|NotesMigration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -294,11 +278,6 @@ return|return
 operator|new
 name|Repo
 argument_list|(
-name|NoteDbMode
-operator|.
-name|newNotesMigrationFromEnv
-argument_list|()
-argument_list|,
 name|name
 argument_list|)
 return|;
@@ -370,13 +349,10 @@ specifier|private
 name|String
 name|description
 decl_stmt|;
-DECL|method|Repo (NotesMigration notesMigration, Project.NameKey name)
+DECL|method|Repo (Project.NameKey name)
 specifier|private
 name|Repo
 parameter_list|(
-name|NotesMigration
-name|notesMigration
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -392,18 +368,9 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Normally, mimic the behavior of JGit FileRepository, the standard Gerrit repository
-comment|// backend, and don't support atomic ref updates. The exception is when we're testing with
-comment|// fused ref updates, which requires atomic ref updates to function.
-comment|//
-comment|// TODO(dborowitz): Change to match the behavior of JGit FileRepository after fixing
-comment|// https://bugs.eclipse.org/bugs/show_bug.cgi?id=515678
 name|setPerformsAtomicTransactions
 argument_list|(
-name|notesMigration
-operator|.
-name|fuseUpdates
-argument_list|()
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -454,12 +421,6 @@ name|d
 expr_stmt|;
 block|}
 block|}
-DECL|field|notesMigration
-specifier|private
-specifier|final
-name|NotesMigration
-name|notesMigration
-decl_stmt|;
 DECL|field|repos
 specifier|private
 specifier|final
@@ -471,35 +432,13 @@ name|Repo
 argument_list|>
 name|repos
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|method|InMemoryRepositoryManager ()
 specifier|public
 name|InMemoryRepositoryManager
 parameter_list|()
 block|{
-name|this
-argument_list|(
-name|NoteDbMode
-operator|.
-name|newNotesMigrationFromEnv
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Inject
-DECL|method|InMemoryRepositoryManager (NotesMigration notesMigration)
-name|InMemoryRepositoryManager
-parameter_list|(
-name|NotesMigration
-name|notesMigration
-parameter_list|)
-block|{
-name|this
-operator|.
-name|notesMigration
-operator|=
-name|notesMigration
-expr_stmt|;
 name|this
 operator|.
 name|repos
@@ -603,8 +542,6 @@ operator|=
 operator|new
 name|Repo
 argument_list|(
-name|notesMigration
-argument_list|,
 name|name
 argument_list|)
 expr_stmt|;

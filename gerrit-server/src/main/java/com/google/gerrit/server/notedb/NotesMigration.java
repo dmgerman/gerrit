@@ -201,15 +201,6 @@ name|DISABLE_REVIEW_DB
 init|=
 literal|"disableReviewDb"
 decl_stmt|;
-DECL|field|FUSE_UPDATES
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|FUSE_UPDATES
-init|=
-literal|"fuseUpdates"
-decl_stmt|;
 DECL|field|PRIMARY_STORAGE
 specifier|private
 specifier|static
@@ -425,25 +416,6 @@ literal|false
 argument_list|)
 argument_list|)
 operator|.
-name|setFuseUpdates
-argument_list|(
-name|cfg
-operator|.
-name|getBoolean
-argument_list|(
-name|SECTION_NOTE_DB
-argument_list|,
-name|CHANGES
-operator|.
-name|key
-argument_list|()
-argument_list|,
-name|FUSE_UPDATES
-argument_list|,
-literal|false
-argument_list|)
-argument_list|)
-operator|.
 name|setFailOnLoadForTest
 argument_list|(
 literal|false
@@ -482,12 +454,6 @@ DECL|method|disableChangeReviewDb ()
 specifier|abstract
 name|boolean
 name|disableChangeReviewDb
-parameter_list|()
-function_decl|;
-DECL|method|fuseUpdates ()
-specifier|abstract
-name|boolean
-name|fuseUpdates
 parameter_list|()
 function_decl|;
 DECL|method|failOnLoadForTest ()
@@ -595,23 +561,6 @@ name|disableChangeReviewDb
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|cfg
-operator|.
-name|setBoolean
-argument_list|(
-name|SECTION_NOTE_DB
-argument_list|,
-name|CHANGES
-operator|.
-name|key
-argument_list|()
-argument_list|,
-name|FUSE_UPDATES
-argument_list|,
-name|fuseUpdates
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|AutoValue
@@ -666,15 +615,6 @@ name|setDisableChangeReviewDb
 parameter_list|(
 name|boolean
 name|disableChangeReviewDb
-parameter_list|)
-function_decl|;
-DECL|method|setFuseUpdates (boolean fuseUpdates)
-specifier|abstract
-name|Builder
-name|setFuseUpdates
-parameter_list|(
-name|boolean
-name|fuseUpdates
 parameter_list|)
 function_decl|;
 DECL|method|setFailOnLoadForTest (boolean failOnLoadForTest)
@@ -827,24 +767,6 @@ name|get
 argument_list|()
 operator|.
 name|disableChangeReviewDb
-argument_list|()
-return|;
-block|}
-comment|/**    * Fuse meta ref updates in the same batch as code updates.    *    *<p>When set, each {@link com.google.gerrit.server.update.BatchUpdate} results in a single    * {@link org.eclipse.jgit.lib.BatchRefUpdate} to update both code and meta refs atomically.    * Setting this option with a repository backend that does not support atomic multi-ref    * transactions ({@link org.eclipse.jgit.lib.RefDatabase#performsAtomicTransactions()}) is a    * configuration error, and all updates will fail at runtime.    *    *<p>Has no effect if {@link #disableChangeReviewDb()} is false.    */
-DECL|method|fuseUpdates ()
-specifier|public
-specifier|final
-name|boolean
-name|fuseUpdates
-parameter_list|()
-block|{
-return|return
-name|snapshot
-operator|.
-name|get
-argument_list|()
-operator|.
-name|fuseUpdates
 argument_list|()
 return|;
 block|}
