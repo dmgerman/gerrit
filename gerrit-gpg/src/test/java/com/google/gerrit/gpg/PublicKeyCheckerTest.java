@@ -1974,6 +1974,12 @@ case|:
 case|case
 name|RENAMED
 case|:
+case|case
+name|REJECTED_MISSING_OBJECT
+case|:
+case|case
+name|REJECTED_OTHER_REASON
+case|:
 default|default:
 throw|throw
 operator|new

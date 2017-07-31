@@ -2011,6 +2011,12 @@ case|:
 case|case
 name|RENAMED
 case|:
+case|case
+name|REJECTED_MISSING_OBJECT
+case|:
+case|case
+name|REJECTED_OTHER_REASON
+case|:
 default|default:
 comment|// TODO(dborowitz): Backoff and retry on LOCK_FAILURE.
 throw|throw
