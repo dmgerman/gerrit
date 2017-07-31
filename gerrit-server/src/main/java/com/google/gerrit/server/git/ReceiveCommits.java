@@ -13461,6 +13461,17 @@ argument_list|(
 name|magicBranch
 operator|.
 name|isPrivate
+operator|||
+operator|(
+name|receiveConfig
+operator|.
+name|privateByDefault
+operator|&&
+operator|!
+name|magicBranch
+operator|.
+name|removePrivate
+operator|)
 argument_list|)
 operator|.
 name|setWorkInProgress
