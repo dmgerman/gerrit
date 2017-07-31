@@ -292,6 +292,10 @@ name|Stream
 import|;
 end_import
 
+begin_comment
+comment|/**  * A database accessor for read calls related to groups.  *  *<p>All calls which read group related details from the database (either ReviewDb or NoteDb) are  * gathered here. Other classes should always use this class instead of accessing the database  * directly. There are a few exceptions though: schema classes, wrapper classes, and classes  * executed during init. The latter ones should use {@code GroupsOnInit} instead.  *  *<p>If not explicitly stated, all methods of this class refer to<em>internal</em> groups.  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -300,6 +304,7 @@ specifier|public
 class|class
 name|Groups
 block|{
+comment|/**    * Returns the {@code AccountGroup} for the specified UUID.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return the {@code AccountGroup} which has the specified UUID    * @throws OrmDuplicateKeyException if multiple groups are found for the specified UUID    * @throws OrmException if the group couldn't be retrieved from ReviewDb    * @throws NoSuchGroupException if a group with such a UUID doesn't exist    */
 DECL|method|getExistingGroup (ReviewDb db, AccountGroup.UUID groupUuid)
 specifier|public
 name|AccountGroup
@@ -346,6 +351,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns the {@code AccountGroup} for the specified ID if it exists.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupId the ID of the group    * @return the found {@code AccountGroup} if it exists, or else an empty {@code Optional}    * @throws OrmException if the group couldn't be retrieved from ReviewDb    */
 DECL|method|getGroup (ReviewDb db, AccountGroup.Id groupId)
 specifier|public
 name|Optional
@@ -382,6 +388,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns the {@code AccountGroup} for the specified UUID if it exists.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return the found {@code AccountGroup} if it exists, or else an empty {@code Optional}    * @throws OrmDuplicateKeyException if multiple groups are found for the specified UUID    * @throws OrmException if the group couldn't be retrieved from ReviewDb    */
 DECL|method|getGroup (ReviewDb db, AccountGroup.UUID groupUuid)
 specifier|public
 name|Optional
@@ -473,6 +480,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**    * Returns the {@code AccountGroup} for the specified name if it exists.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupName the name of the group    * @return the found {@code AccountGroup} if it exists, or else an empty {@code Optional}    * @throws OrmException if the group couldn't be retrieved from ReviewDb    */
 DECL|method|getGroup (ReviewDb db, AccountGroup.NameKey groupName)
 specifier|public
 name|Optional
@@ -575,6 +583,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**    * Indicates whether the specified account is a member of the specified group.    *    *<p><strong>Note</strong>: This method doesn't check whether the account exists!    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @param accountId the ID of the account    * @return {@code true} if the account is a member of the group, or else {@code false}    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|isMember (ReviewDb db, AccountGroup.UUID groupUuid, Account.Id accountId)
 specifier|public
 name|boolean
@@ -640,6 +649,7 @@ operator|!=
 literal|null
 return|;
 block|}
+comment|/**    * Indicates whether the specified group is a subgroup of the specified parent group.    *    *<p>The parent group must be an internal group whereas the subgroup may either be an internal or    * an external group.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroup exists!    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param parentGroupUuid the UUID of the parent group    * @param includedGroupUuid the UUID of the subgroup    * @return {@code true} if the group is a subgroup of the other group, or else {@code false}    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
 DECL|method|isIncluded ( ReviewDb db, AccountGroup.UUID parentGroupUuid, AccountGroup.UUID includedGroupUuid)
 specifier|public
 name|boolean
@@ -705,6 +715,7 @@ operator|!=
 literal|null
 return|;
 block|}
+comment|/**    * Returns the members (accounts) of a group.    *    *<p><strong>Note</strong>: This method doesn't check whether the accounts exist!    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return a stream of the IDs of the members    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|getMembers (ReviewDb db, AccountGroup.UUID groupUuid)
 specifier|public
 name|Stream
@@ -773,6 +784,7 @@ name|getAccountId
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns the subgroups of a group.    *    *<p>This parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroups exist!    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the parent group    * @return a stream of the UUIDs of the subgroups    * @throws OrmException if an error occurs while reading from ReviewDb    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
 DECL|method|getIncludes (ReviewDb db, AccountGroup.UUID groupUuid)
 specifier|public
 name|Stream
@@ -844,6 +856,7 @@ name|distinct
 argument_list|()
 return|;
 block|}
+comment|/**    * Returns the groups of which the specified account is a member.    *    *<p><strong>Note</strong>: This method returns an empty stream if the account doesn't exist.    * This method doesn't check whether the groups exist.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param accountId the ID of the account    * @return a stream of the IDs of the groups of which the account is a member    * @throws OrmException if an error occurs while reading from ReviewDb    */
 DECL|method|getGroupsWithMember (ReviewDb db, Account.Id accountId)
 specifier|public
 name|Stream
@@ -897,6 +910,7 @@ name|getAccountGroupId
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns the parent groups of the specified (sub)group.    *    *<p>The subgroup may either be an internal or an external group whereas the returned parent    * groups represent only internal groups.    *    *<p><strong>Note</strong>: This method returns an empty stream if the specified group doesn't    * exist. This method doesn't check whether the parent groups exist.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param includedGroupUuid the UUID of the subgroup    * @return a stream of the IDs of the parent groups    * @throws OrmException if an error occurs while reading from ReviewDb    */
 DECL|method|getParentGroups (ReviewDb db, AccountGroup.UUID includedGroupUuid)
 specifier|public
 name|Stream
@@ -950,6 +964,7 @@ name|getGroupId
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns all known external groups. External groups are 'known' when they are specified as a    * subgroup of an internal group.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @return a stream of the UUIDs of the known external groups    * @throws OrmException if an error occurs while reading from ReviewDb    */
 DECL|method|getExternalGroups (ReviewDb db)
 specifier|public
 name|Stream

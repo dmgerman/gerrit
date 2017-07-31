@@ -476,6 +476,10 @@ name|PersonIdent
 import|;
 end_import
 
+begin_comment
+comment|/**  * A database accessor for write calls related to groups.  *  *<p>All calls which write group related details to the database (either ReviewDb or NoteDb) are  * gathered here. Other classes should always use this class instead of accessing the database  * directly. There are a few exceptions though: schema classes, wrapper classes, and classes  * executed during init. The latter ones should use {@code GroupsOnInit} instead.  *  *<p>If not explicitly stated, all methods of this class refer to<em>internal</em> groups.  */
+end_comment
+
 begin_class
 DECL|class|GroupsUpdate
 specifier|public
@@ -730,6 +734,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**    * Adds/Creates the specified group.    *    * @param db the {@code ReviewDb} instance to update    * @param group the group to add    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    */
 DECL|method|addGroup (ReviewDb db, AccountGroup group)
 specifier|public
 name|void
@@ -752,6 +757,7 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Adds the specified group.    *    * @param db the {@code ReviewDb} instance to update    * @param group the group to add    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    */
 DECL|method|addNewGroup (ReviewDb db, AccountGroup group)
 specifier|public
 specifier|static
@@ -809,6 +815,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Updates the specified group.    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group to update    * @param groupConsumer a {@code Consumer} which performs the desired updates on the group    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the cache entry for the group couldn't be invalidated    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|updateGroup ( ReviewDb db, AccountGroup.UUID groupUuid, Consumer<AccountGroup> groupConsumer)
 specifier|public
 name|void
@@ -879,8 +886,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 throws|,
-name|IOException
-throws|,
 name|NoSuchGroupException
 block|{
 name|AccountGroup
@@ -921,6 +926,7 @@ return|return
 name|group
 return|;
 block|}
+comment|/**    * Renames the specified group.    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group to rename    * @param newName the new name of the group    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the cache entry for the group couldn't be invalidated    * @throws NoSuchGroupException if the specified group doesn't exist    * @throws NameAlreadyUsedException if another group has the name {@code newName}    */
 DECL|method|renameGroup (ReviewDb db, AccountGroup.UUID groupUuid, AccountGroup.NameKey newName)
 specifier|public
 name|void
@@ -1157,6 +1163,7 @@ name|MILLISECONDS
 argument_list|)
 decl_stmt|;
 block|}
+comment|/**    * Adds an account as member to a group. The account is only added as a new member if it isn't    * already a member of the group.    *    *<p><strong>Note</strong>: This method doesn't check whether the account exists!    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param accountId the ID of the account to add    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the cache entry of the new member couldn't be invalidated    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|addGroupMember (ReviewDb db, AccountGroup.UUID groupUuid, Account.Id accountId)
 specifier|public
 name|void
@@ -1197,6 +1204,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Adds several accounts as members to a group. Only accounts which currently aren't members of    * the group are added.    *    *<p><strong>Note</strong>: This method doesn't check whether the accounts exist!    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param accountIds a set of IDs of accounts to add    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the cache entry of one of the new members couldn't be invalidated    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|addGroupMembers (ReviewDb db, AccountGroup.UUID groupUuid, Set<Account.Id> accountIds)
 specifier|public
 name|void
@@ -1376,6 +1384,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**    * Removes several members (accounts) from a group. Only accounts which currently are members of    * the group are removed.    *    * @param db the {@code ReviewDb} instance to update    * @param groupUuid the UUID of the group    * @param accountIds a set of IDs of accounts to remove    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws IOException if the cache entry of one of the removed members couldn't be invalidated    * @throws NoSuchGroupException if the specified group doesn't exist    */
 DECL|method|removeGroupMembers ( ReviewDb db, AccountGroup.UUID groupUuid, Set<Account.Id> accountIds)
 specifier|public
 name|void
@@ -1554,6 +1563,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**    * Adds several groups as subgroups to a group. Only groups which currently aren't subgroups of    * the group are added.    *    *<p>The parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    *<p><strong>Note</strong>: This method doesn't check whether the subgroups exist!    *    * @param db the {@code ReviewDb} instance to update    * @param parentGroupUuid the UUID of the parent group    * @param includedGroupUuids a set of IDs of the groups to add as subgroups    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
 DECL|method|addIncludedGroups ( ReviewDb db, AccountGroup.UUID parentGroupUuid, Set<AccountGroup.UUID> includedGroupUuids)
 specifier|public
 name|void
@@ -1738,6 +1748,7 @@ name|parentGroupUuid
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Removes several subgroups from a parent group. Only groups which currently are subgroups of the    * group are removed.    *    *<p>The parent group must be an internal group whereas the subgroups can either be internal or    * external groups.    *    * @param db the {@code ReviewDb} instance to update    * @param parentGroupUuid the UUID of the parent group    * @param includedGroupUuids a set of IDs of the subgroups to remove from the parent group    * @throws OrmException if an error occurs while reading/writing from/to ReviewDb    * @throws NoSuchGroupException if the specified parent group doesn't exist    */
 DECL|method|deleteIncludedGroups ( ReviewDb db, AccountGroup.UUID parentGroupUuid, Set<AccountGroup.UUID> includedGroupUuids)
 specifier|public
 name|void
