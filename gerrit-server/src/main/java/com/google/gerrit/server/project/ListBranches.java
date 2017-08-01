@@ -640,6 +640,8 @@ name|aliases
 operator|=
 block|{
 literal|"-S"
+block|,
+literal|"-s"
 block|}
 argument_list|,
 name|metaVar
