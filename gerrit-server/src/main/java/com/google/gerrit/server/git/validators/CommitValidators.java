@@ -4735,7 +4735,17 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:  does not match your user account.\n"
+literal|"ERROR:  does not match your user account and you have no 'forge "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|type
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"' permission.\n"
 argument_list|)
 expr_stmt|;
 name|sb
