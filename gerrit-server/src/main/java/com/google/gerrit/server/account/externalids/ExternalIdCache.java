@@ -408,6 +408,20 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+DECL|method|allByAccount ()
+name|ImmutableSetMultimap
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|,
+name|ExternalId
+argument_list|>
+name|allByAccount
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
 DECL|method|byEmails (String... emails)
 name|ImmutableSetMultimap
 argument_list|<
@@ -421,6 +435,18 @@ name|String
 modifier|...
 name|emails
 parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+DECL|method|allByEmail ()
+name|ImmutableSetMultimap
+argument_list|<
+name|String
+argument_list|,
+name|ExternalId
+argument_list|>
+name|allByEmail
+parameter_list|()
 throws|throws
 name|IOException
 function_decl|;

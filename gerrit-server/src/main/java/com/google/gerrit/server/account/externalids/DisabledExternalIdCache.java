@@ -462,6 +462,29 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|allByAccount ()
+specifier|public
+name|ImmutableSetMultimap
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|,
+name|ExternalId
+argument_list|>
+name|allByAccount
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|byEmails (String... emails)
 specifier|public
 name|ImmutableSetMultimap
@@ -476,6 +499,27 @@ name|String
 modifier|...
 name|emails
 parameter_list|)
+throws|throws
+name|IOException
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|allByEmail ()
+specifier|public
+name|ImmutableSetMultimap
+argument_list|<
+name|String
+argument_list|,
+name|ExternalId
+argument_list|>
+name|allByEmail
+parameter_list|()
 throws|throws
 name|IOException
 block|{
