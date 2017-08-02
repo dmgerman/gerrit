@@ -1336,7 +1336,7 @@ decl_stmt|;
 if|if
 condition|(
 name|accountId
-operator|<=
+operator|<
 literal|0
 condition|)
 block|{
