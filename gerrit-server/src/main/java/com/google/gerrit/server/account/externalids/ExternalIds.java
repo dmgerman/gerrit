@@ -427,6 +427,29 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/** Returns all external IDs by account. */
+DECL|method|allByAccount ()
+specifier|public
+name|ImmutableSetMultimap
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|,
+name|ExternalId
+argument_list|>
+name|allByAccount
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|externalIdCache
+operator|.
+name|allByAccount
+argument_list|()
+return|;
+block|}
 comment|/**    * Returns the external ID with the given email.    *    *<p>Each email should belong to a single external ID only. This means if more than one external    * ID is returned there is an inconsistency in the external IDs.    *    *<p>The external IDs are retrieved from the external ID cache. Each access to the external ID    * cache requires reading the SHA1 of the refs/meta/external-ids branch. If external IDs for    * multiple emails are needed it is more efficient to use {@link #byEmails(String...)} as this    * method reads the SHA1 of the refs/meta/external-ids branch only once (and not once per email).    *    * @see #byEmails(String...)    */
 DECL|method|byEmail (String email)
 specifier|public
@@ -476,6 +499,27 @@ name|byEmails
 argument_list|(
 name|emails
 argument_list|)
+return|;
+block|}
+comment|/** Returns all external IDs by email. */
+DECL|method|allByEmail ()
+specifier|public
+name|ImmutableSetMultimap
+argument_list|<
+name|String
+argument_list|,
+name|ExternalId
+argument_list|>
+name|allByEmail
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|externalIdCache
+operator|.
+name|allByEmail
+argument_list|()
 return|;
 block|}
 block|}
