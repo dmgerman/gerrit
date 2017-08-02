@@ -1805,6 +1805,15 @@ name|ERROR_WIP_READY_MUTUALLY_EXCLUSIVE
 init|=
 literal|"work_in_progress and ready are mutually exclusive"
 decl_stmt|;
+DECL|field|START_REVIEW_MESSAGE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|START_REVIEW_MESSAGE
+init|=
+literal|"This change is ready for review."
+decl_stmt|;
 DECL|field|GSON
 specifier|private
 specifier|static
@@ -9203,6 +9212,24 @@ operator|.
 name|append
 argument_list|(
 name|msg
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|in
+operator|.
+name|ready
+condition|)
+block|{
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|"\n\n"
+operator|+
+name|START_REVIEW_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
