@@ -3860,7 +3860,7 @@ block|}
 block|}
 block|}
 DECL|method|toPsId (Change.Id id, String psIdStr)
-specifier|private
+specifier|public
 specifier|static
 name|PatchSet
 operator|.
