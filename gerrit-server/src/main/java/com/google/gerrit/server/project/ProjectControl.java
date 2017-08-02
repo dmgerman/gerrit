@@ -3296,15 +3296,9 @@ literal|true
 argument_list|)
 decl_stmt|;
 return|return
-operator|!
-name|refs
-operator|.
-name|isEmpty
-argument_list|()
-operator|&&
 name|IncludedInResolver
 operator|.
-name|includedInOne
+name|includedInAny
 argument_list|(
 name|repo
 argument_list|,
