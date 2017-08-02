@@ -193,19 +193,6 @@ name|IntraLineDiffArgs
 name|args
 parameter_list|)
 function_decl|;
-DECL|method|getDiffSummary (Change change, PatchSet patchSet)
-name|DiffSummary
-name|getDiffSummary
-parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|PatchSet
-name|patchSet
-parameter_list|)
-throws|throws
-name|PatchListNotAvailableException
-function_decl|;
 DECL|method|getDiffSummary (DiffSummaryKey key, Project.NameKey project)
 name|DiffSummary
 name|getDiffSummary
