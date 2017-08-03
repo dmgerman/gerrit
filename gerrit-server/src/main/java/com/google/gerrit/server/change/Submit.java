@@ -1738,6 +1738,8 @@ throws|,
 name|UpdateException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|Change
 name|change
@@ -2510,6 +2512,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|IOException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{

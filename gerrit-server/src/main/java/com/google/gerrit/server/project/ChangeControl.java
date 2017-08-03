@@ -1093,32 +1093,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Create a change control for a change that was loaded from index. This method should only be      * used when database access is harmful and potentially stale data from the index is acceptable.      *      * @param refControl ref control      * @param change change loaded from secondary index      * @return change control      */
-DECL|method|createForIndexedChange (RefControl refControl, Change change)
-name|ChangeControl
-name|createForIndexedChange
-parameter_list|(
-name|RefControl
-name|refControl
-parameter_list|,
-name|Change
-name|change
-parameter_list|)
-block|{
-return|return
-name|create
-argument_list|(
-name|refControl
-argument_list|,
-name|notesFactory
-operator|.
-name|createFromIndexedChange
-argument_list|(
-name|change
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|create (RefControl refControl, ChangeNotes notes)
 name|ChangeControl
 name|create
@@ -1369,7 +1343,6 @@ return|;
 block|}
 comment|/** Can this user see this change? */
 DECL|method|isVisible (ReviewDb db)
-specifier|public
 name|boolean
 name|isVisible
 parameter_list|(
@@ -1390,7 +1363,7 @@ return|;
 block|}
 comment|/** Can this user see this change? */
 DECL|method|isVisible (ReviewDb db, @Nullable ChangeData cd)
-specifier|public
+specifier|private
 name|boolean
 name|isVisible
 parameter_list|(
@@ -1476,6 +1449,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+comment|// TODO(hiesel) These don't need to be migrated, just remove after support for drafts is removed
 if|if
 condition|(
 name|ps
@@ -1522,6 +1496,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+comment|// TODO(hiesel) These don't need to be migrated, just remove after support for drafts is removed
 name|checkArgument
 argument_list|(
 name|cd

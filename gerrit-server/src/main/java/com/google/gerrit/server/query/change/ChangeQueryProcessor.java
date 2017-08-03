@@ -328,6 +328,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -488,6 +504,12 @@ name|ChangeAttributeFactory
 argument_list|>
 name|attributeFactories
 decl_stmt|;
+DECL|field|permissionBackend
+specifier|private
+specifier|final
+name|PermissionBackend
+name|permissionBackend
+decl_stmt|;
 static|static
 block|{
 comment|// It is assumed that basic rewrites do not touch visibleto predicates.
@@ -511,7 +533,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, Metrics metrics, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories)
+DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, Metrics metrics, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend)
 name|ChangeQueryProcessor
 parameter_list|(
 name|Provider
@@ -558,6 +580,9 @@ argument_list|<
 name|ChangeAttributeFactory
 argument_list|>
 name|attributeFactories
+parameter_list|,
+name|PermissionBackend
+name|permissionBackend
 parameter_list|)
 block|{
 name|super
@@ -604,6 +629,12 @@ operator|.
 name|attributeFactories
 operator|=
 name|attributeFactories
+expr_stmt|;
+name|this
+operator|.
+name|permissionBackend
+operator|=
+name|permissionBackend
 expr_stmt|;
 block|}
 annotation|@
@@ -837,6 +868,8 @@ name|userProvider
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|permissionBackend
 argument_list|)
 argument_list|,
 name|start

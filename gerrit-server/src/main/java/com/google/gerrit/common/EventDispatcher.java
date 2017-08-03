@@ -182,6 +182,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -200,7 +216,7 @@ specifier|public
 interface|interface
 name|EventDispatcher
 block|{
-comment|/**    * Post a stream event that is related to a change    *    * @param change The change that the event is related to    * @param event The event to post    * @throws OrmException on failure to post the event due to DB error    */
+comment|/**    * Post a stream event that is related to a change    *    * @param change The change that the event is related to    * @param event The event to post    * @throws OrmException on failure to post the event due to DB error    * @throws PermissionBackendException on failure of permission checks    */
 DECL|method|postEvent (Change change, ChangeEvent event)
 name|void
 name|postEvent
@@ -213,6 +229,8 @@ name|event
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|PermissionBackendException
 function_decl|;
 comment|/**    * Post a stream event that is related to a branch    *    * @param branchName The branch that the event is related to    * @param event The event to post    */
 DECL|method|postEvent (Branch.NameKey branchName, RefEvent event)
@@ -242,7 +260,7 @@ name|ProjectEvent
 name|event
 parameter_list|)
 function_decl|;
-comment|/**    * Post a stream event generically.    *    *<p>If you are creating a RefEvent or ChangeEvent from scratch, it is more efficient to use the    * specific postEvent methods for those use cases.    *    * @param event The event to post.    * @throws OrmException on failure to post the event due to DB error    */
+comment|/**    * Post a stream event generically.    *    *<p>If you are creating a RefEvent or ChangeEvent from scratch, it is more efficient to use the    * specific postEvent methods for those use cases.    *    * @param event The event to post.    * @throws OrmException on failure to post the event due to DB error    * @throws PermissionBackendException on failure of permission checks    */
 DECL|method|postEvent (Event event)
 name|void
 name|postEvent
@@ -252,6 +270,8 @@ name|event
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|PermissionBackendException
 function_decl|;
 block|}
 end_interface

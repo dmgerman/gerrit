@@ -346,6 +346,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|validators
 operator|.
 name|OutgoingEmailValidationListener
@@ -2868,6 +2884,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2884,7 +2902,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * @param to account.    * @throws OrmException    * @return whether this email is visible to the given account.    */
+comment|/**    * @param to account.    * @throws OrmException    * @throws PermissionBackendException    * @return whether this email is visible to the given account.    */
 DECL|method|isVisibleTo (Account.Id to)
 specifier|protected
 name|boolean
@@ -2897,6 +2915,8 @@ name|to
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|PermissionBackendException
 block|{
 return|return
 literal|true

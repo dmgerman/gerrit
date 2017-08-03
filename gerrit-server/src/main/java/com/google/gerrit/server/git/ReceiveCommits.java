@@ -6065,6 +6065,8 @@ decl||
 name|IOException
 decl||
 name|ConfigInvalidException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -14028,6 +14030,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|Map
 argument_list|<
