@@ -198,6 +198,66 @@ name|server
 operator|.
 name|git
 operator|.
+name|receive
+operator|.
+name|ReceiveConstants
+operator|.
+name|COMMAND_REJECTION_MESSAGE_FOOTER
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|receive
+operator|.
+name|ReceiveConstants
+operator|.
+name|ONLY_OWNER_CAN_MODIFY_WIP
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|receive
+operator|.
+name|ReceiveConstants
+operator|.
+name|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|validators
 operator|.
 name|CommitValidators
@@ -2830,7 +2890,6 @@ end_comment
 
 begin_class
 DECL|class|ReceiveCommits
-specifier|public
 class|class
 name|ReceiveCommits
 block|{
@@ -2858,39 +2917,6 @@ name|String
 name|BYPASS_REVIEW
 init|=
 literal|"bypass-review"
-decl_stmt|;
-DECL|field|COMMAND_REJECTION_MESSAGE_FOOTER
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|COMMAND_REJECTION_MESSAGE_FOOTER
-init|=
-literal|"Please read the documentation and contact an administrator\n"
-operator|+
-literal|"if you feel the configuration is incorrect"
-decl_stmt|;
-DECL|field|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|SAME_CHANGE_ID_IN_MULTIPLE_CHANGES
-init|=
-literal|"same Change-Id in multiple changes.\n"
-operator|+
-literal|"Squash the commits with the same Change-Id or "
-operator|+
-literal|"ensure Change-Ids are unique for each commit"
-decl_stmt|;
-DECL|field|ONLY_OWNER_CAN_MODIFY_WIP
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ONLY_OWNER_CAN_MODIFY_WIP
-init|=
-literal|"only change owner can modify Work-in-Progress"
 decl_stmt|;
 DECL|enum|Error
 specifier|private
@@ -2964,7 +2990,6 @@ name|value
 expr_stmt|;
 block|}
 DECL|method|get ()
-specifier|public
 name|String
 name|get
 parameter_list|()
@@ -2991,7 +3016,6 @@ parameter_list|)
 function_decl|;
 block|}
 DECL|interface|MessageSender
-specifier|public
 interface|interface
 name|MessageSender
 block|{
@@ -4698,7 +4722,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|init ()
-specifier|public
 name|void
 name|init
 parameter_list|()
@@ -4730,7 +4753,6 @@ block|}
 block|}
 comment|/** Add reviewers for new (or updated) changes. */
 DECL|method|addReviewers (Collection<Account.Id> who)
-specifier|public
 name|void
 name|addReviewers
 parameter_list|(
@@ -4753,7 +4775,6 @@ expr_stmt|;
 block|}
 comment|/** Add reviewers for new (or updated) changes. */
 DECL|method|addExtraCC (Collection<Account.Id> who)
-specifier|public
 name|void
 name|addExtraCC
 parameter_list|(
@@ -4776,7 +4797,6 @@ expr_stmt|;
 block|}
 comment|/** Set a message sender for this operation. */
 DECL|method|setMessageSender (MessageSender ms)
-specifier|public
 name|void
 name|setMessageSender
 parameter_list|(
@@ -4828,9 +4848,7 @@ return|return
 name|project
 return|;
 block|}
-comment|/** @return the ReceivePack instance to speak the native Git protocol. */
 DECL|method|getReceivePack ()
-specifier|public
 name|ReceivePack
 name|getReceivePack
 parameter_list|()
@@ -9523,7 +9541,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|getNotify ()
-specifier|public
 name|NotifyHandling
 name|getNotify
 parameter_list|()
@@ -9557,7 +9574,6 @@ name|ALL
 return|;
 block|}
 DECL|method|getNotify (ChangeNotes notes)
-specifier|public
 name|NotifyHandling
 name|getNotify
 parameter_list|(
@@ -9611,7 +9627,6 @@ comment|/**    * Gets an unmodifiable view of the pushOptions.    *    *<p>The c
 annotation|@
 name|Nullable
 DECL|method|getPushOptions ()
-specifier|public
 name|ListMultimap
 argument_list|<
 name|String

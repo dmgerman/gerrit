@@ -2005,9 +2005,6 @@ name|rp
 init|=
 name|arc
 operator|.
-name|getReceiveCommits
-argument_list|()
-operator|.
 name|getReceivePack
 argument_list|()
 decl_stmt|;

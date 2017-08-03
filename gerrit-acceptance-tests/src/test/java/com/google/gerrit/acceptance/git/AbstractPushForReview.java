@@ -854,7 +854,7 @@ name|git
 operator|.
 name|receive
 operator|.
-name|ReceiveCommits
+name|ReceiveConstants
 import|;
 end_import
 
@@ -3604,7 +3604,7 @@ name|r
 operator|.
 name|assertErrorStatus
 argument_list|(
-name|ReceiveCommits
+name|ReceiveConstants
 operator|.
 name|ONLY_OWNER_CAN_MODIFY_WIP
 argument_list|)
@@ -3737,7 +3737,7 @@ name|r
 operator|.
 name|assertErrorStatus
 argument_list|(
-name|ReceiveCommits
+name|ReceiveConstants
 operator|.
 name|ONLY_OWNER_CAN_MODIFY_WIP
 argument_list|)

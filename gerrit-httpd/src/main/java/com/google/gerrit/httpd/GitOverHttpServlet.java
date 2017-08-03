@@ -2035,9 +2035,6 @@ argument_list|)
 decl_stmt|;
 name|arc
 operator|.
-name|getReceiveCommits
-argument_list|()
-operator|.
 name|init
 argument_list|()
 expr_stmt|;
@@ -2045,9 +2042,6 @@ name|ReceivePack
 name|rp
 init|=
 name|arc
-operator|.
-name|getReceiveCommits
-argument_list|()
 operator|.
 name|getReceivePack
 argument_list|()
@@ -2205,9 +2199,6 @@ name|ReceivePack
 name|rp
 init|=
 name|arc
-operator|.
-name|getReceiveCommits
-argument_list|()
 operator|.
 name|getReceivePack
 argument_list|()
