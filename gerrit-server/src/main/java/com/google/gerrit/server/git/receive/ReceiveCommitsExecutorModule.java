@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.git.receive
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|git
+operator|.
+name|receive
 package|;
 end_package
 
@@ -127,6 +129,38 @@ operator|.
 name|config
 operator|.
 name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|SendEmailExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|WorkQueue
 import|;
 end_import
 
@@ -245,7 +279,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Module providing the {@link ReceiveCommitsExecutor}. */
+comment|/**  * Module providing the {@link ReceiveCommitsExecutor}.  *  *<p>Unlike {@link ReceiveCommitsModule}, this module is intended to be installed only in top-level  * injectors like in {@code Daemon}, not in the {@code sysInjector}.  */
 end_comment
 
 begin_class

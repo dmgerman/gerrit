@@ -212,7 +212,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|AsyncReceiveCommits
+name|QueueProvider
 import|;
 end_import
 
@@ -228,7 +228,9 @@ name|server
 operator|.
 name|git
 operator|.
-name|QueueProvider
+name|receive
+operator|.
+name|AsyncReceiveCommits
 import|;
 end_import
 

@@ -102,22 +102,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|ReceiveCommits
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|BindingAnnotation
@@ -137,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on the global {@link ListeningExecutorService} used by {@link ReceiveCommits} to create or  * replace changes.  */
+comment|/**  * Marker on the global {@link ListeningExecutorService} used by asynchronous {@link BatchUpdate}s.  */
 end_comment
 
 begin_annotation_defn

@@ -456,7 +456,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|ReceiveCommitsAdvertiseRefsHook
+name|VisibleRefFilter
 import|;
 end_import
 
@@ -472,7 +472,9 @@ name|server
 operator|.
 name|git
 operator|.
-name|VisibleRefFilter
+name|receive
+operator|.
+name|ReceiveCommitsAdvertiseRefsHook
 import|;
 end_import
 

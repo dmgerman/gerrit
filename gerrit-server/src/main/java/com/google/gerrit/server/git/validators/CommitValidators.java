@@ -100,7 +100,7 @@ name|client
 operator|.
 name|RefNames
 operator|.
-name|REFS_CONFIG
+name|REFS_CHANGES
 import|;
 end_import
 
@@ -112,13 +112,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|git
+name|client
 operator|.
-name|ReceiveCommits
+name|RefNames
 operator|.
-name|NEW_PATCHSET
+name|REFS_CONFIG
 import|;
 end_import
 
@@ -934,6 +934,24 @@ argument_list|(
 name|CommitValidators
 operator|.
 name|class
+argument_list|)
+decl_stmt|;
+DECL|field|NEW_PATCHSET_PATTERN
+specifier|public
+specifier|static
+specifier|final
+name|Pattern
+name|NEW_PATCHSET_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"^"
+operator|+
+name|REFS_CHANGES
+operator|+
+literal|"(?:[0-9][0-9]/)?([1-9][0-9]*)(?:/new)?$"
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -2076,7 +2094,7 @@ name|getRefName
 argument_list|()
 argument_list|)
 operator|||
-name|NEW_PATCHSET
+name|NEW_PATCHSET_PATTERN
 operator|.
 name|matcher
 argument_list|(

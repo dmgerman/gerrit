@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2015 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.git.receive
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|git
+operator|.
+name|receive
 package|;
 end_package
 
@@ -74,11 +76,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|registration
+name|update
 operator|.
-name|DynamicSet
+name|BatchUpdateOp
 import|;
 end_import
 
@@ -88,19 +90,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|server
 operator|.
-name|util
+name|update
 operator|.
-name|Collection
+name|ChangeContext
 import|;
 end_import
 
@@ -112,110 +108,70 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|transport
+name|lib
 operator|.
-name|PostReceiveHook
+name|ProgressMonitor
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceivePack
-import|;
-end_import
+begin_comment
+comment|/** Trivial op to update a counter during {@code updateChange} */
+end_comment
 
 begin_class
-DECL|class|LazyPostReceiveHookChain
+DECL|class|ChangeProgressOp
 class|class
-name|LazyPostReceiveHookChain
+name|ChangeProgressOp
 implements|implements
-name|PostReceiveHook
+name|BatchUpdateOp
 block|{
-DECL|field|hooks
+DECL|field|progress
 specifier|private
 specifier|final
-name|DynamicSet
-argument_list|<
-name|PostReceiveHook
-argument_list|>
-name|hooks
+name|ProgressMonitor
+name|progress
 decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|LazyPostReceiveHookChain (DynamicSet<PostReceiveHook> hooks)
-name|LazyPostReceiveHookChain
+DECL|method|ChangeProgressOp (ProgressMonitor progress)
+name|ChangeProgressOp
 parameter_list|(
-name|DynamicSet
-argument_list|<
-name|PostReceiveHook
-argument_list|>
-name|hooks
+name|ProgressMonitor
+name|progress
 parameter_list|)
 block|{
 name|this
 operator|.
-name|hooks
+name|progress
 operator|=
-name|hooks
+name|progress
 expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onPostReceive (ReceivePack rp, Collection<ReceiveCommand> commands)
+DECL|method|updateChange (ChangeContext ctx)
 specifier|public
-name|void
-name|onPostReceive
+name|boolean
+name|updateChange
 parameter_list|(
-name|ReceivePack
-name|rp
-parameter_list|,
-name|Collection
-argument_list|<
-name|ReceiveCommand
-argument_list|>
-name|commands
+name|ChangeContext
+name|ctx
 parameter_list|)
 block|{
-for|for
-control|(
-name|PostReceiveHook
-name|h
-range|:
-name|hooks
-control|)
+synchronized|synchronized
+init|(
+name|progress
+init|)
 block|{
-name|h
+name|progress
 operator|.
-name|onPostReceive
+name|update
 argument_list|(
-name|rp
-argument_list|,
-name|commands
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 block|}
 end_class

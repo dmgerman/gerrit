@@ -290,6 +290,8 @@ name|server
 operator|.
 name|git
 operator|.
+name|receive
+operator|.
 name|AsyncReceiveCommits
 import|;
 end_import

@@ -852,6 +852,8 @@ name|server
 operator|.
 name|git
 operator|.
+name|receive
+operator|.
 name|ReceiveCommits
 import|;
 end_import

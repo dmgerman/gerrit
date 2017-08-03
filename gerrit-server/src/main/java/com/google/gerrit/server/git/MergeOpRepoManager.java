@@ -1100,6 +1100,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setContext (ReviewDb db, Timestamp ts, IdentifiedUser caller, RequestId submissionId)
+specifier|public
 name|void
 name|setContext
 parameter_list|(
