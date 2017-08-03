@@ -904,30 +904,6 @@ name|SuppressWarnings
 argument_list|(
 literal|"deprecation"
 argument_list|)
-DECL|method|nextAccountId (ReviewDb db)
-specifier|private
-specifier|static
-name|int
-name|nextAccountId
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|db
-operator|.
-name|nextAccountId
-argument_list|()
-return|;
-block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|nextChangeId (ReviewDb db)
 specifier|private
 specifier|static
