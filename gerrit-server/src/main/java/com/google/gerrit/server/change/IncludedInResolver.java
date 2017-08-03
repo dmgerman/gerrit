@@ -416,11 +416,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|includedInOne ( final Repository repo, RevWalk rw, RevCommit commit, Collection<Ref> refs)
+DECL|method|includedInAny ( final Repository repo, RevWalk rw, RevCommit commit, Collection<Ref> refs)
 specifier|public
 specifier|static
 name|boolean
-name|includedInOne
+name|includedInAny
 parameter_list|(
 specifier|final
 name|Repository
@@ -441,6 +441,18 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|refs
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|RevFlag
 name|flag
 init|=
