@@ -384,20 +384,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|Sequences
 import|;
 end_import
@@ -826,7 +812,7 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Sequences seq, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
+DECL|method|CreateAccount ( ReviewDb db, Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -834,12 +820,6 @@ name|db
 parameter_list|,
 name|Sequences
 name|seq
-parameter_list|,
-name|Provider
-argument_list|<
-name|IdentifiedUser
-argument_list|>
-name|currentUser
 parameter_list|,
 name|GroupsCollection
 name|groupsCollection
