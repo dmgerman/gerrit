@@ -90,13 +90,19 @@ specifier|final
 name|String
 name|indexUrl
 decl_stmt|;
+DECL|field|filename
+specifier|public
+specifier|final
+name|String
+name|filename
+decl_stmt|;
 DECL|field|disabled
 specifier|public
 specifier|final
 name|Boolean
 name|disabled
 decl_stmt|;
-DECL|method|PluginInfo (String id, String version, String indexUrl, Boolean disabled)
+DECL|method|PluginInfo (String id, String version, String indexUrl, String filename, Boolean disabled)
 specifier|public
 name|PluginInfo
 parameter_list|(
@@ -108,6 +114,9 @@ name|version
 parameter_list|,
 name|String
 name|indexUrl
+parameter_list|,
+name|String
+name|filename
 parameter_list|,
 name|Boolean
 name|disabled
@@ -130,6 +139,12 @@ operator|.
 name|indexUrl
 operator|=
 name|indexUrl
+expr_stmt|;
+name|this
+operator|.
+name|filename
+operator|=
+name|filename
 expr_stmt|;
 name|this
 operator|.

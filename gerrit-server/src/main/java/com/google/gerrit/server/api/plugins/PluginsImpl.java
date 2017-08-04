@@ -507,7 +507,11 @@ return|return
 name|list
 operator|.
 name|apply
-argument_list|()
+argument_list|(
+name|TopLevelResource
+operator|.
+name|INSTANCE
+argument_list|)
 return|;
 block|}
 block|}
