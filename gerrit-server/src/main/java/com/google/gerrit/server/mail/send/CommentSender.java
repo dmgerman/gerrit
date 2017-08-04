@@ -2759,25 +2759,34 @@ return|return
 name|lines
 return|;
 block|}
-comment|/**    * @return a shortened version of the given comment's message. Will be shortened to 75 characters    *     or the first line, whichever is shorter.    */
-DECL|method|getShortenedCommentMessage (Comment comment)
-specifier|private
+comment|/**    * @return a shortened version of the given comment's message. Will be shortened to 100 characters    *     or the first line, or following the last period within the first 100 characters, whichever    *     is shorter. If the message is shortened, an ellipsis is appended.    */
+DECL|method|getShortenedCommentMessage (String message)
+specifier|protected
+specifier|static
 name|String
 name|getShortenedCommentMessage
 parameter_list|(
-name|Comment
-name|comment
+name|String
+name|message
 parameter_list|)
 block|{
-name|String
-name|msg
+name|int
+name|threshold
 init|=
-name|comment
-operator|.
+literal|100
+decl_stmt|;
+name|String
+name|fullMessage
+init|=
 name|message
 operator|.
 name|trim
 argument_list|()
+decl_stmt|;
+name|String
+name|msg
+init|=
+name|fullMessage
 decl_stmt|;
 if|if
 condition|(
@@ -2786,7 +2795,7 @@ operator|.
 name|length
 argument_list|()
 operator|>
-literal|75
+name|threshold
 condition|)
 block|{
 name|msg
@@ -2797,7 +2806,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-literal|75
+name|threshold
 argument_list|)
 expr_stmt|;
 block|}
@@ -2811,6 +2820,16 @@ argument_list|(
 literal|'\n'
 argument_list|)
 decl_stmt|;
+name|int
+name|period
+init|=
+name|msg
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|'.'
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|lf
@@ -2818,6 +2837,7 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|// Truncate if a line feed appears within the threshold.
 name|msg
 operator|=
 name|msg
@@ -2830,8 +2850,67 @@ name|lf
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|period
+operator|>
+literal|0
+condition|)
+block|{
+comment|// Otherwise truncate if there is a period within the threshold.
+name|msg
+operator|=
+name|msg
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|period
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Append an ellipsis if the message has been truncated.
+if|if
+condition|(
+operator|!
+name|msg
+operator|.
+name|equals
+argument_list|(
+name|fullMessage
+argument_list|)
+condition|)
+block|{
+name|msg
+operator|+=
+literal|" [â¦]"
+expr_stmt|;
+block|}
 return|return
 name|msg
+return|;
+block|}
+DECL|method|getShortenedCommentMessage (Comment comment)
+specifier|protected
+specifier|static
+name|String
+name|getShortenedCommentMessage
+parameter_list|(
+name|Comment
+name|comment
+parameter_list|)
+block|{
+return|return
+name|getShortenedCommentMessage
+argument_list|(
+name|comment
+operator|.
+name|message
+argument_list|)
 return|;
 block|}
 comment|/**    * @return grouped inline comment data mapped to data structures that are suitable for passing    *     into Soy.    */
