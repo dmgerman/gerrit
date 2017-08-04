@@ -1402,8 +1402,6 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|IOException
-throws|,
-name|ResourceNotFoundException
 block|{
 comment|// Do not allow creating groups with the same name as system groups
 for|for
