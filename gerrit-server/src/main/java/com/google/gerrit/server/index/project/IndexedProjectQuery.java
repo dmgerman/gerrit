@@ -186,7 +186,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -202,15 +202,15 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|ProjectState
+name|ProjectData
 argument_list|>
 implements|implements
 name|DataSource
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 block|{
-DECL|method|IndexedProjectQuery ( Index<Project.NameKey, ProjectState> index, Predicate<ProjectState> pred, QueryOptions opts)
+DECL|method|IndexedProjectQuery ( Index<Project.NameKey, ProjectData> index, Predicate<ProjectData> pred, QueryOptions opts)
 specifier|public
 name|IndexedProjectQuery
 parameter_list|(
@@ -220,13 +220,13 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|index
 parameter_list|,
 name|Predicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|pred
 parameter_list|,

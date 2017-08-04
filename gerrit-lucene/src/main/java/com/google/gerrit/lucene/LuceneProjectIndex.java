@@ -270,7 +270,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -628,7 +628,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|ProjectState
+name|ProjectData
 argument_list|>
 implements|implements
 name|ProjectIndex
@@ -670,13 +670,13 @@ argument_list|(
 name|NAME
 argument_list|)
 decl_stmt|;
-DECL|method|idTerm (ProjectState projectState)
+DECL|method|idTerm (ProjectData projectState)
 specifier|private
 specifier|static
 name|Term
 name|idTerm
 parameter_list|(
-name|ProjectState
+name|ProjectData
 name|projectState
 parameter_list|)
 block|{
@@ -733,7 +733,7 @@ specifier|private
 specifier|final
 name|QueryBuilder
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|queryBuilder
 decl_stmt|;
@@ -746,7 +746,7 @@ name|ProjectCache
 argument_list|>
 name|projectCache
 decl_stmt|;
-DECL|method|dir (Schema<ProjectState> schema, Config cfg, SitePaths sitePaths)
+DECL|method|dir (Schema<ProjectData> schema, Config cfg, SitePaths sitePaths)
 specifier|private
 specifier|static
 name|Directory
@@ -754,7 +754,7 @@ name|dir
 parameter_list|(
 name|Schema
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|schema
 parameter_list|,
@@ -808,7 +808,7 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|LuceneProjectIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<ProjectCache> projectCache, @Assisted Schema<ProjectState> schema)
+DECL|method|LuceneProjectIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<ProjectCache> projectCache, @Assisted Schema<ProjectData> schema)
 name|LuceneProjectIndex
 parameter_list|(
 annotation|@
@@ -829,7 +829,7 @@ annotation|@
 name|Assisted
 name|Schema
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|schema
 parameter_list|)
@@ -901,12 +901,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|replace (ProjectState projectState)
+DECL|method|replace (ProjectData projectState)
 specifier|public
 name|void
 name|replace
 parameter_list|(
-name|ProjectState
+name|ProjectData
 name|projectState
 parameter_list|)
 throws|throws
@@ -996,17 +996,17 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getSource (Predicate<ProjectState> p, QueryOptions opts)
+DECL|method|getSource (Predicate<ProjectData> p, QueryOptions opts)
 specifier|public
 name|DataSource
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|getSource
 parameter_list|(
 name|Predicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|p
 parameter_list|,
@@ -1056,7 +1056,7 @@ name|QuerySource
 implements|implements
 name|DataSource
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 block|{
 DECL|field|opts
@@ -1128,7 +1128,7 @@ DECL|method|read ()
 specifier|public
 name|ResultSet
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|read
 parameter_list|()
@@ -1176,7 +1176,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|result
 init|=
@@ -1246,7 +1246,7 @@ name|result
 operator|.
 name|add
 argument_list|(
-name|toProjectState
+name|toProjectData
 argument_list|(
 name|doc
 argument_list|)
@@ -1256,7 +1256,7 @@ block|}
 specifier|final
 name|List
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|r
 init|=
@@ -1271,7 +1271,7 @@ return|return
 operator|new
 name|ResultSet
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 argument_list|()
 block|{
@@ -1280,7 +1280,7 @@ name|Override
 specifier|public
 name|Iterator
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|iterator
 parameter_list|()
@@ -1297,7 +1297,7 @@ name|Override
 specifier|public
 name|List
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|toList
 parameter_list|()
@@ -1369,10 +1369,10 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|toProjectState (Document doc)
+DECL|method|toProjectData (Document doc)
 specifier|private
-name|ProjectState
-name|toProjectState
+name|ProjectData
+name|toProjectData
 parameter_list|(
 name|Document
 name|doc
@@ -1412,6 +1412,9 @@ name|get
 argument_list|(
 name|nameKey
 argument_list|)
+operator|.
+name|toProjectData
+argument_list|()
 return|;
 block|}
 block|}

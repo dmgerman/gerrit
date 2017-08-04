@@ -158,7 +158,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -202,7 +202,7 @@ name|ProjectIsVisibleToPredicate
 extends|extends
 name|IsVisibleToPredicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 block|{
 DECL|field|permissionBackend
@@ -257,13 +257,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|match (ProjectState projectState)
+DECL|method|match (ProjectData pd)
 specifier|public
 name|boolean
 name|match
 parameter_list|(
-name|ProjectState
-name|projectState
+name|ProjectData
+name|pd
 parameter_list|)
 throws|throws
 name|OrmException
@@ -278,7 +278,7 @@ argument_list|)
 operator|.
 name|project
 argument_list|(
-name|projectState
+name|pd
 operator|.
 name|getProject
 argument_list|()

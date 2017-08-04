@@ -632,7 +632,7 @@ try|try
 block|{
 name|QueryResult
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|result
 init|=
@@ -650,9 +650,9 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
-name|projects
+name|pds
 init|=
 name|result
 operator|.
@@ -669,7 +669,7 @@ name|Lists
 operator|.
 name|newArrayListWithCapacity
 argument_list|(
-name|projects
+name|pds
 operator|.
 name|size
 argument_list|()
@@ -677,10 +677,10 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|ProjectState
-name|projectState
+name|ProjectData
+name|pd
 range|:
-name|projects
+name|pds
 control|)
 block|{
 name|projectInfos
@@ -691,7 +691,7 @@ name|json
 operator|.
 name|format
 argument_list|(
-name|projectState
+name|pd
 operator|.
 name|getProject
 argument_list|()

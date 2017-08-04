@@ -156,7 +156,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -194,7 +194,7 @@ name|ProjectIndexRewriter
 implements|implements
 name|IndexRewriter
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 block|{
 DECL|field|indexes
@@ -221,17 +221,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|rewrite (Predicate<ProjectState> in, QueryOptions opts)
+DECL|method|rewrite (Predicate<ProjectData> in, QueryOptions opts)
 specifier|public
 name|Predicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|rewrite
 parameter_list|(
 name|Predicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|in
 parameter_list|,

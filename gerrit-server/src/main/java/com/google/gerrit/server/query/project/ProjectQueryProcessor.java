@@ -308,7 +308,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -348,7 +348,7 @@ name|ProjectQueryProcessor
 extends|extends
 name|QueryProcessor
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 block|{
 DECL|field|permissionBackend
@@ -467,17 +467,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|enforceVisibility (Predicate<ProjectState> pred)
+DECL|method|enforceVisibility (Predicate<ProjectData> pred)
 specifier|protected
 name|Predicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|enforceVisibility
 parameter_list|(
 name|Predicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|pred
 parameter_list|)

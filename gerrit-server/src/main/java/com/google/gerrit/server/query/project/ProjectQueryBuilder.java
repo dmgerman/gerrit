@@ -174,7 +174,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -202,7 +202,7 @@ name|ProjectQueryBuilder
 extends|extends
 name|QueryBuilder
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 block|{
 DECL|field|FIELD_LIMIT
@@ -222,7 +222,7 @@ name|QueryBuilder
 operator|.
 name|Definition
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|,
 name|ProjectQueryBuilder
 argument_list|>
@@ -257,7 +257,7 @@ DECL|method|name (String name)
 specifier|public
 name|Predicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|name
 parameter_list|(
@@ -286,7 +286,7 @@ DECL|method|limit (String query)
 specifier|public
 name|Predicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|limit
 parameter_list|(

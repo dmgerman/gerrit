@@ -242,7 +242,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -389,14 +389,14 @@ name|Factory
 block|{
 annotation|@
 name|Override
-DECL|method|create (Schema<ProjectState> schema)
+DECL|method|create (Schema<ProjectData> schema)
 specifier|public
 name|ProjectIndex
 name|create
 parameter_list|(
 name|Schema
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|schema
 parameter_list|)

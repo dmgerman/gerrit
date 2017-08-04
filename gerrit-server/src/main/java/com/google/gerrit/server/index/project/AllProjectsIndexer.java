@@ -224,7 +224,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -398,7 +398,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|ProjectState
+name|ProjectData
 argument_list|,
 name|ProjectIndex
 argument_list|>
@@ -696,6 +696,9 @@ name|get
 argument_list|(
 name|name
 argument_list|)
+operator|.
+name|toProjectData
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|verboseWriter

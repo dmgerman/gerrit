@@ -416,7 +416,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -1299,7 +1299,7 @@ argument_list|()
 expr_stmt|;
 name|Schema
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|projectSchema
 init|=

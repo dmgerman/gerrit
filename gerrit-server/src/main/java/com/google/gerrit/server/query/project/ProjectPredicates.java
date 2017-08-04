@@ -160,7 +160,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -175,7 +175,7 @@ specifier|public
 specifier|static
 name|Predicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|name
 parameter_list|(
@@ -207,15 +207,15 @@ name|ProjectPredicate
 extends|extends
 name|IndexPredicate
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 block|{
-DECL|method|ProjectPredicate (FieldDef<ProjectState, ?> def, String value)
+DECL|method|ProjectPredicate (FieldDef<ProjectData, ?> def, String value)
 name|ProjectPredicate
 parameter_list|(
 name|FieldDef
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|,
 name|?
 argument_list|>

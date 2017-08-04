@@ -124,7 +124,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -166,7 +166,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|,
-name|ProjectState
+name|ProjectData
 argument_list|,
 name|ProjectIndex
 argument_list|>

@@ -124,7 +124,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -136,7 +136,7 @@ name|ProjectSchemaDefinitions
 extends|extends
 name|SchemaDefinitions
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 block|{
 DECL|field|V1
@@ -144,7 +144,7 @@ specifier|static
 specifier|final
 name|Schema
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|>
 name|V1
 init|=
@@ -191,7 +191,7 @@ name|super
 argument_list|(
 literal|"projects"
 argument_list|,
-name|ProjectState
+name|ProjectData
 operator|.
 name|class
 argument_list|)

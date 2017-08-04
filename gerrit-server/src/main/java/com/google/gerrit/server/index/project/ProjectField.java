@@ -170,7 +170,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|ProjectData
 import|;
 end_import
 
@@ -190,7 +190,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|,
 name|String
 argument_list|>
@@ -223,7 +223,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|,
 name|String
 argument_list|>
@@ -253,7 +253,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|,
 name|String
 argument_list|>
@@ -283,7 +283,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|,
 name|Iterable
 argument_list|<
@@ -321,7 +321,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|ProjectState
+name|ProjectData
 argument_list|,
 name|Iterable
 argument_list|<
@@ -345,17 +345,14 @@ name|transform
 argument_list|(
 name|p
 operator|.
-name|parents
+name|getAncestors
 argument_list|()
 argument_list|,
-name|parent
+name|n
 lambda|->
-name|parent
+name|n
 operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getName
+name|get
 argument_list|()
 argument_list|)
 argument_list|)
