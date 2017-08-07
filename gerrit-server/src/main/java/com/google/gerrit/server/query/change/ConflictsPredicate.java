@@ -1465,7 +1465,7 @@ name|projectState
 decl_stmt|;
 DECL|field|alreadyAccepted
 specifier|protected
-name|Iterable
+name|Set
 argument_list|<
 name|ObjectId
 argument_list|>
@@ -1619,8 +1619,7 @@ name|projectState
 return|;
 block|}
 DECL|method|getAlreadyAccepted (Repository repo)
-specifier|protected
-name|Iterable
+name|Set
 argument_list|<
 name|ObjectId
 argument_list|>
