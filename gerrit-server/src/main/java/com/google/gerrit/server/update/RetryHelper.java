@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -147,20 +163,6 @@ operator|.
 name|retry
 operator|.
 name|StopStrategies
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|github
-operator|.
-name|rholder
-operator|.
-name|retry
-operator|.
-name|StopStrategy
 import|;
 end_import
 
@@ -326,6 +328,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|time
+operator|.
+name|Duration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -396,6 +408,14 @@ name|listener
 parameter_list|()
 function_decl|;
 annotation|@
+name|Nullable
+DECL|method|timeout ()
+specifier|abstract
+name|Duration
+name|timeout
+parameter_list|()
+function_decl|;
+annotation|@
 name|AutoValue
 operator|.
 name|Builder
@@ -414,6 +434,16 @@ name|listener
 parameter_list|(
 name|RetryListener
 name|listener
+parameter_list|)
+function_decl|;
+DECL|method|timeout (Duration timeout)
+specifier|public
+specifier|abstract
+name|Builder
+name|timeout
+parameter_list|(
+name|Duration
+name|timeout
 parameter_list|)
 function_decl|;
 DECL|method|build ()
@@ -471,11 +501,11 @@ operator|.
 name|Factory
 name|updateFactory
 decl_stmt|;
-DECL|field|stopStrategy
+DECL|field|defaultTimeout
 specifier|private
 specifier|final
-name|StopStrategy
-name|stopStrategy
+name|Duration
+name|defaultTimeout
 decl_stmt|;
 DECL|field|waitStrategy
 specifier|private
@@ -531,11 +561,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|stopStrategy
+name|defaultTimeout
 operator|=
-name|StopStrategies
+name|Duration
 operator|.
-name|stopAfterDelay
+name|ofMillis
 argument_list|(
 name|cfg
 operator|.
@@ -556,8 +586,6 @@ argument_list|)
 argument_list|,
 name|MILLISECONDS
 argument_list|)
-argument_list|,
-name|MILLISECONDS
 argument_list|)
 expr_stmt|;
 name|this
@@ -682,7 +710,25 @@ name|builder
 operator|.
 name|withStopStrategy
 argument_list|(
-name|stopStrategy
+name|StopStrategies
+operator|.
+name|stopAfterDelay
+argument_list|(
+name|firstNonNull
+argument_list|(
+name|opts
+operator|.
+name|timeout
+argument_list|()
+argument_list|,
+name|defaultTimeout
+argument_list|)
+operator|.
+name|toMillis
+argument_list|()
+argument_list|,
+name|MILLISECONDS
+argument_list|)
 argument_list|)
 operator|.
 name|withWaitStrategy
