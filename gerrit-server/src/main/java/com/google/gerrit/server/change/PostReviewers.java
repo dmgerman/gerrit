@@ -2509,8 +2509,6 @@ argument_list|>
 name|accountsToNotify
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|PermissionBackendException
 block|{
 if|if
