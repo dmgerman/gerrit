@@ -2908,56 +2908,6 @@ name|extraReviewers
 parameter_list|)
 function_decl|;
 block|}
-DECL|interface|MessageSender
-interface|interface
-name|MessageSender
-block|{
-DECL|method|sendMessage (String what)
-name|void
-name|sendMessage
-parameter_list|(
-name|String
-name|what
-parameter_list|)
-function_decl|;
-DECL|method|sendError (String what)
-name|void
-name|sendError
-parameter_list|(
-name|String
-name|what
-parameter_list|)
-function_decl|;
-DECL|method|sendBytes (byte[] what)
-name|void
-name|sendBytes
-parameter_list|(
-name|byte
-index|[]
-name|what
-parameter_list|)
-function_decl|;
-DECL|method|sendBytes (byte[] what, int off, int len)
-name|void
-name|sendBytes
-parameter_list|(
-name|byte
-index|[]
-name|what
-parameter_list|,
-name|int
-name|off
-parameter_list|,
-name|int
-name|len
-parameter_list|)
-function_decl|;
-DECL|method|flush ()
-name|void
-name|flush
-parameter_list|()
-function_decl|;
-block|}
 DECL|class|ReceivePackMessageSender
 specifier|private
 class|class
