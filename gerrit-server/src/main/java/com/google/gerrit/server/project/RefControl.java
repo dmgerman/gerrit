@@ -3680,6 +3680,37 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|indexedChange (ChangeData cd, ChangeNotes notes)
+specifier|public
+name|ForChange
+name|indexedChange
+parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|,
+name|ChangeNotes
+name|notes
+parameter_list|)
+block|{
+return|return
+name|getProjectControl
+argument_list|()
+operator|.
+name|controlFor
+argument_list|(
+name|notes
+argument_list|)
+operator|.
+name|asForChange
+argument_list|(
+name|cd
+argument_list|,
+name|db
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|check (RefPermission perm)
 specifier|public
 name|void

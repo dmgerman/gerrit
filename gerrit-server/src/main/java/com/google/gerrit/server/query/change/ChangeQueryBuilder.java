@@ -5887,6 +5887,10 @@ operator|.
 name|changeControlGenericFactory
 argument_list|,
 name|user
+argument_list|,
+name|args
+operator|.
+name|permissionBackend
 argument_list|)
 return|;
 block|}

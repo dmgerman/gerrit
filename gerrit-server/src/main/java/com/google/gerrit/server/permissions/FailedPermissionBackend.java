@@ -606,13 +606,37 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|change (ChangeNotes cd)
+DECL|method|change (ChangeNotes notes)
 specifier|public
 name|ForChange
 name|change
 parameter_list|(
 name|ChangeNotes
+name|notes
+parameter_list|)
+block|{
+return|return
+operator|new
+name|FailedChange
+argument_list|(
+name|message
+argument_list|,
+name|cause
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|indexedChange (ChangeData cd, ChangeNotes notes)
+specifier|public
+name|ForChange
+name|indexedChange
+parameter_list|(
+name|ChangeData
 name|cd
+parameter_list|,
+name|ChangeNotes
+name|notes
 parameter_list|)
 block|{
 return|return

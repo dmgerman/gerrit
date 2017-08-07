@@ -690,6 +690,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|NoSuchChangeException
@@ -2184,6 +2200,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2279,6 +2297,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2397,6 +2417,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2552,6 +2574,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2676,6 +2700,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -2852,6 +2878,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3102,6 +3130,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3248,6 +3278,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3372,6 +3404,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3496,6 +3530,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3620,6 +3656,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{
@@ -3775,6 +3813,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|PermissionBackendException
 name|e
 parameter_list|)
 block|{

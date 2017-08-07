@@ -818,6 +818,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|permissions
+operator|.
+name|PermissionBackendException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -3074,7 +3090,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param db the review database.    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws OrmException an error occurred reading or writing the database.    * @throws RestApiException if an error occurred.    */
+comment|/**    * Merges the given change.    *    *<p>Depending on the server configuration, more changes may be affected, e.g. by submission of a    * topic or via superproject subscriptions. All affected changes are integrated using the projects    * integration strategy.    *    * @param db the review database.    * @param change the change to be merged.    * @param caller the identity of the caller    * @param checkSubmitRules whether the prolog submit rules should be evaluated    * @param submitInput parameters regarding the merge    * @throws OrmException an error occurred reading or writing the database.    * @throws RestApiException if an error occurred.    * @throws PermissionBackendException if permissions can't be checked    */
 DECL|method|merge ( ReviewDb db, Change change, IdentifiedUser caller, boolean checkSubmitRules, SubmitInput submitInput, boolean dryrun)
 specifier|public
 name|void
@@ -3108,6 +3124,8 @@ throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|PermissionBackendException
 block|{
 name|this
 operator|.

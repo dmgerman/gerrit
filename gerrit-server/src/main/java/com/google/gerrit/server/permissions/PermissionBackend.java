@@ -704,6 +704,39 @@ name|notes
 argument_list|)
 return|;
 block|}
+comment|/**      * @return instance scoped for the change loaded from index, and its destination ref and      *     project. This method should only be used when database access is harmful and potentially      *     stale data from the index is acceptable.      */
+DECL|method|indexedChange (ChangeData cd, ChangeNotes notes)
+specifier|public
+name|ForChange
+name|indexedChange
+parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|,
+name|ChangeNotes
+name|notes
+parameter_list|)
+block|{
+return|return
+name|ref
+argument_list|(
+name|notes
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
+argument_list|)
+operator|.
+name|indexedChange
+argument_list|(
+name|cd
+argument_list|,
+name|notes
+argument_list|)
+return|;
+block|}
 comment|/** Verify scoped user can {@code perm}, throwing if denied. */
 DECL|method|check (GlobalOrPluginPermission perm)
 specifier|public
@@ -1249,6 +1282,20 @@ specifier|abstract
 name|ForChange
 name|change
 parameter_list|(
+name|ChangeNotes
+name|notes
+parameter_list|)
+function_decl|;
+comment|/**      * @return instance scoped to change loaded from index. This method should only be used when      *     database access is harmful and potentially stale data from the index is acceptable.      */
+DECL|method|indexedChange (ChangeData cd, ChangeNotes notes)
+specifier|public
+specifier|abstract
+name|ForChange
+name|indexedChange
+parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|,
 name|ChangeNotes
 name|notes
 parameter_list|)

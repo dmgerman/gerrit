@@ -1498,33 +1498,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Create a change control for a change that was loaded from index. This method should only be    * used when database access is harmful and potentially stale data from the index is acceptable.    *    * @param change change loaded from secondary index    * @return change control    */
-DECL|method|controlForIndexedChange (Change change)
-specifier|public
-name|ChangeControl
-name|controlForIndexedChange
-parameter_list|(
-name|Change
-name|change
-parameter_list|)
-block|{
-return|return
-name|changeControlFactory
-operator|.
-name|createForIndexedChange
-argument_list|(
-name|controlForRef
-argument_list|(
-name|change
-operator|.
-name|getDest
-argument_list|()
-argument_list|)
-argument_list|,
-name|change
-argument_list|)
-return|;
-block|}
 DECL|method|controlFor (ChangeNotes notes)
 specifier|public
 name|ChangeControl
