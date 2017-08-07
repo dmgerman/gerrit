@@ -3452,6 +3452,27 @@ name|listener
 argument_list|(
 name|retryTracker
 argument_list|)
+comment|// Up to the entire submit operation is retried, including possibly many projects.
+comment|// Multiply the timeout by the number of projects we're actually attempting to submit.
+operator|.
+name|timeout
+argument_list|(
+name|retryHelper
+operator|.
+name|getDefaultTimeout
+argument_list|()
+operator|.
+name|multipliedBy
+argument_list|(
+name|cs
+operator|.
+name|projects
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+argument_list|)
 operator|.
 name|build
 argument_list|()

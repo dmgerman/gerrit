@@ -634,6 +634,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getDefaultTimeout ()
+specifier|public
+name|Duration
+name|getDefaultTimeout
+parameter_list|()
+block|{
+return|return
+name|defaultTimeout
+return|;
+block|}
 DECL|method|execute (Action<T> action)
 specifier|public
 parameter_list|<
