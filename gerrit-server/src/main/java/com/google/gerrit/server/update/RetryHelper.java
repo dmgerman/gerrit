@@ -457,7 +457,7 @@ name|SECONDS
 operator|.
 name|toMillis
 argument_list|(
-literal|5
+literal|20
 argument_list|)
 argument_list|,
 name|MILLISECONDS
@@ -492,7 +492,7 @@ name|SECONDS
 operator|.
 name|toMillis
 argument_list|(
-literal|20
+literal|5
 argument_list|)
 argument_list|,
 name|MILLISECONDS
