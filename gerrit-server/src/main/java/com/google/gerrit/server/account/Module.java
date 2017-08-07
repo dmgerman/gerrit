@@ -499,7 +499,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|Emails
+name|EmailsCollection
 operator|.
 name|class
 argument_list|)
