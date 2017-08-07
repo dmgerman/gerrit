@@ -818,24 +818,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
-operator|.
-name|change
-operator|.
-name|InternalChangeQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|schema
 operator|.
 name|SchemaCreator
@@ -2213,16 +2195,6 @@ name|Inject
 specifier|private
 name|ThreadLocalRequestContext
 name|requestContext
-decl_stmt|;
-DECL|field|queryProvider
-annotation|@
-name|Inject
-specifier|private
-name|Provider
-argument_list|<
-name|InternalChangeQuery
-argument_list|>
-name|queryProvider
 decl_stmt|;
 DECL|field|metrics
 annotation|@
@@ -6110,11 +6082,6 @@ modifier|...
 name|memberOf
 parameter_list|)
 block|{
-name|String
-name|canonicalWebUrl
-init|=
-literal|"http://localhost"
-decl_stmt|;
 return|return
 operator|new
 name|ProjectControl
@@ -6143,15 +6110,14 @@ name|projectCache
 argument_list|,
 name|sectionSorter
 argument_list|,
-name|changeControlFactory
-argument_list|,
 literal|null
 argument_list|,
-comment|// refFilter
-name|queryProvider
+comment|// commitsCollection
+name|changeControlFactory
 argument_list|,
-name|canonicalWebUrl
+literal|"http://localhost"
 argument_list|,
+comment|// canonicalWebUrl
 name|permissionBackend
 argument_list|,
 operator|new
