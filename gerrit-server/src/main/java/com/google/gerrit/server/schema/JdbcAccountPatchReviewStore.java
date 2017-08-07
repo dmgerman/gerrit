@@ -746,7 +746,6 @@ name|sitePaths
 argument_list|)
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|url
@@ -767,7 +766,6 @@ name|sitePaths
 argument_list|)
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|url
@@ -788,7 +786,6 @@ name|sitePaths
 argument_list|)
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|url
@@ -809,8 +806,6 @@ name|sitePaths
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -820,7 +815,6 @@ operator|+
 name|url
 argument_list|)
 throw|;
-block|}
 block|}
 DECL|method|JdbcAccountPatchReviewStore (Config cfg, SitePaths sitePaths)
 specifier|protected
