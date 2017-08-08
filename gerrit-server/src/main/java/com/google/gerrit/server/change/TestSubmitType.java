@@ -282,6 +282,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|Emails
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|SubmitRuleEvaluator
@@ -390,6 +406,12 @@ specifier|final
 name|Accounts
 name|accounts
 decl_stmt|;
+DECL|field|emails
+specifier|private
+specifier|final
+name|Emails
+name|emails
+decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -426,7 +448,7 @@ name|RUN
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TestSubmitType ( Provider<ReviewDb> db, AccountCache accountCache, Accounts accounts, ChangeData.Factory changeDataFactory, RulesCache rules)
+DECL|method|TestSubmitType ( Provider<ReviewDb> db, AccountCache accountCache, Accounts accounts, Emails emails, ChangeData.Factory changeDataFactory, RulesCache rules)
 name|TestSubmitType
 parameter_list|(
 name|Provider
@@ -440,6 +462,9 @@ name|accountCache
 parameter_list|,
 name|Accounts
 name|accounts
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 name|ChangeData
 operator|.
@@ -467,6 +492,12 @@ operator|.
 name|accounts
 operator|=
 name|accounts
+expr_stmt|;
+name|this
+operator|.
+name|emails
+operator|=
+name|emails
 expr_stmt|;
 name|this
 operator|.
@@ -562,6 +593,8 @@ argument_list|(
 name|accountCache
 argument_list|,
 name|accounts
+argument_list|,
+name|emails
 argument_list|,
 name|changeDataFactory
 operator|.

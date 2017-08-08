@@ -298,6 +298,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|Emails
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|BranchOrderSection
@@ -663,6 +679,12 @@ specifier|final
 name|Accounts
 name|accounts
 decl_stmt|;
+DECL|field|emails
+specifier|private
+specifier|final
+name|Emails
+name|emails
+decl_stmt|;
 DECL|field|projectCache
 specifier|private
 specifier|final
@@ -708,7 +730,7 @@ name|cache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Mergeable ( GitRepositoryManager gitManager, AccountCache accountCache, Accounts accounts, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db, ChangeIndexer indexer, MergeabilityCache cache)
+DECL|method|Mergeable ( GitRepositoryManager gitManager, AccountCache accountCache, Accounts accounts, Emails emails, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeData.Factory changeDataFactory, Provider<ReviewDb> db, ChangeIndexer indexer, MergeabilityCache cache)
 name|Mergeable
 parameter_list|(
 name|GitRepositoryManager
@@ -719,6 +741,9 @@ name|accountCache
 parameter_list|,
 name|Accounts
 name|accounts
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -763,6 +788,12 @@ operator|.
 name|accounts
 operator|=
 name|accounts
+expr_stmt|;
+name|this
+operator|.
+name|emails
+operator|=
+name|emails
 expr_stmt|;
 name|this
 operator|.
@@ -1208,6 +1239,8 @@ argument_list|(
 name|accountCache
 argument_list|,
 name|accounts
+argument_list|,
+name|emails
 argument_list|,
 name|cd
 argument_list|)

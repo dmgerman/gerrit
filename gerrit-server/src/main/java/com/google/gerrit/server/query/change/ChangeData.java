@@ -746,6 +746,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|Emails
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|change
 operator|.
 name|MergeabilityCache
@@ -2583,6 +2599,8 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|project
 argument_list|,
 name|id
@@ -2656,6 +2674,12 @@ specifier|private
 specifier|final
 name|Accounts
 name|accounts
+decl_stmt|;
+DECL|field|emails
+specifier|private
+specifier|final
+name|Emails
+name|emails
 decl_stmt|;
 DECL|field|projectCache
 specifier|private
@@ -3031,7 +3055,7 @@ name|refStatePatterns
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, Emails emails, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3053,6 +3077,9 @@ name|accountCache
 parameter_list|,
 name|Accounts
 name|accounts
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -3151,6 +3178,12 @@ name|accounts
 expr_stmt|;
 name|this
 operator|.
+name|emails
+operator|=
+name|emails
+expr_stmt|;
+name|this
+operator|.
 name|projectCache
 operator|=
 name|projectCache
@@ -3230,7 +3263,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Change c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, Emails emails, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Change c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3252,6 +3285,9 @@ name|accountCache
 parameter_list|,
 name|Accounts
 name|accounts
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -3341,6 +3377,12 @@ name|accounts
 expr_stmt|;
 name|this
 operator|.
+name|emails
+operator|=
+name|emails
+expr_stmt|;
+name|this
+operator|.
 name|projectCache
 operator|=
 name|projectCache
@@ -3426,7 +3468,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted ChangeNotes cn)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, Emails emails, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted ChangeNotes cn)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3448,6 +3490,9 @@ name|accountCache
 parameter_list|,
 name|Accounts
 name|accounts
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -3534,6 +3579,12 @@ operator|.
 name|accounts
 operator|=
 name|accounts
+expr_stmt|;
+name|this
+operator|.
+name|emails
+operator|=
+name|emails
 expr_stmt|;
 name|this
 operator|.
@@ -3629,7 +3680,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted ChangeControl c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, Emails emails, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted ChangeControl c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3651,6 +3702,9 @@ name|accountCache
 parameter_list|,
 name|Accounts
 name|accounts
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -3737,6 +3791,12 @@ operator|.
 name|accounts
 operator|=
 name|accounts
+expr_stmt|;
+name|this
+operator|.
+name|emails
+operator|=
+name|emails
 expr_stmt|;
 name|this
 operator|.
@@ -3839,7 +3899,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Change.Id id)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, AccountCache accountCache, Accounts accounts, Emails emails, ProjectCache projectCache, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, CommentsUtil commentsUtil, PatchSetUtil psUtil, PatchListCache patchListCache, NotesMigration notesMigration, MergeabilityCache mergeabilityCache, @Nullable StarredChangesUtil starredChangesUtil, @Assisted ReviewDb db, @Assisted Change.Id id)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3861,6 +3921,9 @@ name|accountCache
 parameter_list|,
 name|Accounts
 name|accounts
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 name|ProjectCache
 name|projectCache
@@ -3960,6 +4023,12 @@ operator|.
 name|accounts
 operator|=
 name|accounts
+expr_stmt|;
+name|this
+operator|.
+name|emails
+operator|=
+name|emails
 expr_stmt|;
 name|this
 operator|.
@@ -6562,6 +6631,8 @@ name|accountCache
 argument_list|,
 name|accounts
 argument_list|,
+name|emails
+argument_list|,
 name|this
 argument_list|)
 operator|.
@@ -6658,6 +6729,8 @@ argument_list|(
 name|accountCache
 argument_list|,
 name|accounts
+argument_list|,
+name|emails
 argument_list|,
 name|this
 argument_list|)

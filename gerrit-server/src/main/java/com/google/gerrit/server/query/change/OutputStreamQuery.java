@@ -232,6 +232,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|Emails
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|TrackingFooters
@@ -703,6 +719,12 @@ specifier|final
 name|Accounts
 name|accounts
 decl_stmt|;
+DECL|field|emails
+specifier|private
+specifier|final
+name|Emails
+name|emails
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -809,7 +831,7 @@ name|out
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OutputStreamQuery ( ReviewDb db, AccountCache accountCache, Accounts accounts, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, ChangeQueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
+DECL|method|OutputStreamQuery ( ReviewDb db, AccountCache accountCache, Accounts accounts, Emails emails, GitRepositoryManager repoManager, ChangeQueryBuilder queryBuilder, ChangeQueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
 name|OutputStreamQuery
 parameter_list|(
 name|ReviewDb
@@ -820,6 +842,9 @@ name|accountCache
 parameter_list|,
 name|Accounts
 name|accounts
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -857,6 +882,12 @@ operator|.
 name|accounts
 operator|=
 name|accounts
+expr_stmt|;
+name|this
+operator|.
+name|emails
+operator|=
+name|emails
 expr_stmt|;
 name|this
 operator|.
@@ -1559,6 +1590,8 @@ argument_list|(
 name|accountCache
 argument_list|,
 name|accounts
+argument_list|,
+name|emails
 argument_list|,
 name|d
 argument_list|)

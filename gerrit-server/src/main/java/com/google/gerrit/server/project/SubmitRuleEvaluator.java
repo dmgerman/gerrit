@@ -292,6 +292,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|Emails
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|change
@@ -669,6 +685,12 @@ specifier|final
 name|Accounts
 name|accounts
 decl_stmt|;
+DECL|field|emails
+specifier|private
+specifier|final
+name|Emails
+name|emails
+decl_stmt|;
 DECL|field|cd
 specifier|private
 specifier|final
@@ -720,7 +742,7 @@ specifier|private
 name|Term
 name|submitRule
 decl_stmt|;
-DECL|method|SubmitRuleEvaluator (AccountCache accountCache, Accounts accounts, ChangeData cd)
+DECL|method|SubmitRuleEvaluator ( AccountCache accountCache, Accounts accounts, Emails emails, ChangeData cd)
 specifier|public
 name|SubmitRuleEvaluator
 parameter_list|(
@@ -729,6 +751,9 @@ name|accountCache
 parameter_list|,
 name|Accounts
 name|accounts
+parameter_list|,
+name|Emails
+name|emails
 parameter_list|,
 name|ChangeData
 name|cd
@@ -747,6 +772,12 @@ operator|.
 name|accounts
 operator|=
 name|accounts
+expr_stmt|;
+name|this
+operator|.
+name|emails
+operator|=
+name|emails
 expr_stmt|;
 name|this
 operator|.
@@ -2957,6 +2988,17 @@ operator|.
 name|ACCOUNT_CACHE
 argument_list|,
 name|accountCache
+argument_list|)
+expr_stmt|;
+name|env
+operator|.
+name|set
+argument_list|(
+name|StoredValues
+operator|.
+name|EMAILS
+argument_list|,
+name|emails
 argument_list|)
 expr_stmt|;
 name|env
