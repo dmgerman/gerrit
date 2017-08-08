@@ -15089,7 +15089,7 @@ name|exception
 operator|.
 name|expectMessage
 argument_list|(
-literal|"delete reviewer not permitted"
+literal|"remove reviewer not permitted"
 argument_list|)
 expr_stmt|;
 name|gApi
