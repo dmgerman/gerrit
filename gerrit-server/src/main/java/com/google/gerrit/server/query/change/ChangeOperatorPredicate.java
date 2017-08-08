@@ -76,7 +76,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|index
 operator|.
 name|query
 operator|.
@@ -92,7 +92,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|index
 operator|.
 name|query
 operator|.

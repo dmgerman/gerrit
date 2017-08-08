@@ -86,8 +86,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|FieldDef
@@ -102,8 +100,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|FieldType
@@ -117,8 +113,6 @@ operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
 operator|.
 name|index
 operator|.
