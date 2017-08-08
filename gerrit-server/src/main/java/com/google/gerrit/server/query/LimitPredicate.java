@@ -66,6 +66,22 @@ name|query
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|QueryParseException
+import|;
+end_import
+
 begin_class
 DECL|class|LimitPredicate
 specifier|public

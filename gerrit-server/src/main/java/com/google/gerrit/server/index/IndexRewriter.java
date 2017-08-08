@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|index
 operator|.
 name|query
 operator|.
-name|Predicate
+name|QueryParseException
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|server
 operator|.
 name|query
 operator|.
-name|QueryParseException
+name|Predicate
 import|;
 end_import
 

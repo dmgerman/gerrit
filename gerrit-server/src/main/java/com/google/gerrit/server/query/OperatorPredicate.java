@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|QueryParser
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util

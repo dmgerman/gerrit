@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.query
+DECL|package|com.google.gerrit.index.query
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|index
 operator|.
 name|query
 package|;
