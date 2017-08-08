@@ -1013,14 +1013,6 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
-DECL|field|changeControlFactory
-specifier|private
-specifier|final
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
-decl_stmt|;
 DECL|field|copier
 specifier|private
 specifier|final
@@ -1037,7 +1029,7 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|ApprovalsUtil ( NotesMigration migration, IdentifiedUser.GenericFactory userFactory, ChangeControl.GenericFactory changeControlFactory, ApprovalCopier copier, PermissionBackend permissionBackend)
+DECL|method|ApprovalsUtil ( NotesMigration migration, IdentifiedUser.GenericFactory userFactory, ApprovalCopier copier, PermissionBackend permissionBackend)
 specifier|public
 name|ApprovalsUtil
 parameter_list|(
@@ -1048,11 +1040,6 @@ name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|userFactory
-parameter_list|,
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
 parameter_list|,
 name|ApprovalCopier
 name|copier
@@ -1072,12 +1059,6 @@ operator|.
 name|userFactory
 operator|=
 name|userFactory
-expr_stmt|;
-name|this
-operator|.
-name|changeControlFactory
-operator|=
-name|changeControlFactory
 expr_stmt|;
 name|this
 operator|.
