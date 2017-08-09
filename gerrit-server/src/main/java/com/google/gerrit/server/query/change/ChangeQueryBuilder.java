@@ -604,22 +604,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|TrackingFooters
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -2097,11 +2081,6 @@ specifier|final
 name|SubmitDryRun
 name|submitDryRun
 decl_stmt|;
-DECL|field|trackingFooters
-specifier|final
-name|TrackingFooters
-name|trackingFooters
-decl_stmt|;
 DECL|field|allowsDrafts
 specifier|final
 name|boolean
@@ -2120,7 +2099,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -2224,9 +2203,6 @@ parameter_list|,
 name|ConflictsCache
 name|conflictsCache
 parameter_list|,
-name|TrackingFooters
-name|trackingFooters
-parameter_list|,
 name|IndexConfig
 name|indexConfig
 parameter_list|,
@@ -2299,8 +2275,6 @@ name|submitDryRun
 argument_list|,
 name|conflictsCache
 argument_list|,
-name|trackingFooters
-argument_list|,
 name|indexes
 operator|!=
 literal|null
@@ -2341,7 +2315,7 @@ name|notesMigration
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, TrackingFooters trackingFooters, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2441,9 +2415,6 @@ name|submitDryRun
 parameter_list|,
 name|ConflictsCache
 name|conflictsCache
-parameter_list|,
-name|TrackingFooters
-name|trackingFooters
 parameter_list|,
 name|ChangeIndex
 name|index
@@ -2604,12 +2575,6 @@ name|conflictsCache
 expr_stmt|;
 name|this
 operator|.
-name|trackingFooters
-operator|=
-name|trackingFooters
-expr_stmt|;
-name|this
-operator|.
 name|index
 operator|=
 name|index
@@ -2719,8 +2684,6 @@ argument_list|,
 name|submitDryRun
 argument_list|,
 name|conflictsCache
-argument_list|,
-name|trackingFooters
 argument_list|,
 name|index
 argument_list|,
@@ -6571,10 +6534,6 @@ return|return
 operator|new
 name|TrackingIdPredicate
 argument_list|(
-name|args
-operator|.
-name|trackingFooters
-argument_list|,
 name|trackingId
 argument_list|)
 return|;

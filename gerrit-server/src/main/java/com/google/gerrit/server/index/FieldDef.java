@@ -150,22 +150,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|TrackingFooters
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -513,12 +497,6 @@ specifier|static
 class|class
 name|FillArgs
 block|{
-DECL|field|trackingFooters
-specifier|public
-specifier|final
-name|TrackingFooters
-name|trackingFooters
-decl_stmt|;
 DECL|field|allowsDrafts
 specifier|public
 specifier|final
@@ -533,12 +511,9 @@ name|allUsers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FillArgs ( TrackingFooters trackingFooters, @GerritServerConfig Config cfg, AllUsersName allUsers)
+DECL|method|FillArgs (@erritServerConfig Config cfg, AllUsersName allUsers)
 name|FillArgs
 parameter_list|(
-name|TrackingFooters
-name|trackingFooters
-parameter_list|,
 annotation|@
 name|GerritServerConfig
 name|Config
@@ -548,12 +523,6 @@ name|AllUsersName
 name|allUsers
 parameter_list|)
 block|{
-name|this
-operator|.
-name|trackingFooters
-operator|=
-name|trackingFooters
-expr_stmt|;
 name|this
 operator|.
 name|allowsDrafts

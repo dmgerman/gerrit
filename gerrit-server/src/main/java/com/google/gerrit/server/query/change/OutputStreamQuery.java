@@ -1541,15 +1541,10 @@ name|addTrackingIds
 argument_list|(
 name|c
 argument_list|,
-name|trackingFooters
-operator|.
-name|extract
-argument_list|(
 name|d
 operator|.
-name|commitFooters
+name|trackingFooters
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

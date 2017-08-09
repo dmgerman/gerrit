@@ -762,6 +762,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|TrackingFooters
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -2744,6 +2760,8 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|project
 argument_list|,
 name|id
@@ -2889,6 +2907,12 @@ specifier|private
 specifier|final
 name|ProjectCache
 name|projectCache
+decl_stmt|;
+DECL|field|trackingFooters
+specifier|private
+specifier|final
+name|TrackingFooters
+name|trackingFooters
 decl_stmt|;
 comment|// Required assisted injected fields.
 DECL|field|db
@@ -3210,7 +3234,7 @@ name|refStatePatterns
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, AccountCache accountCache, Accounts accounts, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, Emails emails, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory userFactory, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, NotesMigration notesMigration, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes, @Assisted @Nullable ChangeControl control)
+DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, AccountCache accountCache, Accounts accounts, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, Emails emails, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory userFactory, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, NotesMigration notesMigration, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, TrackingFooters trackingFooters, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes, @Assisted @Nullable ChangeControl control)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3274,6 +3298,9 @@ name|psUtil
 parameter_list|,
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|TrackingFooters
+name|trackingFooters
 parameter_list|,
 annotation|@
 name|Assisted
@@ -3417,6 +3444,12 @@ operator|.
 name|starredChangesUtil
 operator|=
 name|starredChangesUtil
+expr_stmt|;
+name|this
+operator|.
+name|trackingFooters
+operator|=
+name|trackingFooters
 expr_stmt|;
 comment|// May be null in tests when created via createForTest above, in which case lazy-loading will
 comment|// intentionally fail with NPE. Still not marked @Nullable in the constructor, to force callers
@@ -4794,6 +4827,31 @@ block|}
 block|}
 return|return
 name|commitFooters
+return|;
+block|}
+DECL|method|trackingFooters ()
+specifier|public
+name|ListMultimap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|trackingFooters
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|OrmException
+block|{
+return|return
+name|trackingFooters
+operator|.
+name|extract
+argument_list|(
+name|commitFooters
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|getAuthor ()
