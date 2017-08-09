@@ -3772,11 +3772,11 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-literal|"Merge changes from topic '"
+literal|"Merge changes from topic \""
 operator|+
 name|expectedTopic
 operator|+
-literal|"'"
+literal|"\""
 argument_list|)
 expr_stmt|;
 block|}
