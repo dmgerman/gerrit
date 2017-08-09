@@ -4643,6 +4643,15 @@ argument_list|,
 name|origin
 argument_list|)
 expr_stmt|;
+name|res
+operator|.
+name|setHeader
+argument_list|(
+name|ACCESS_CONTROL_ALLOW_CREDENTIALS
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
