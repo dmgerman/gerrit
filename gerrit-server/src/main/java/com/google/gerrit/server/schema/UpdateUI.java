@@ -104,29 +104,64 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_interface
 DECL|interface|UpdateUI
 specifier|public
 interface|interface
 name|UpdateUI
 block|{
-DECL|method|message (String msg)
+DECL|method|message (String message)
 name|void
 name|message
 parameter_list|(
 name|String
-name|msg
+name|message
 parameter_list|)
 function_decl|;
-DECL|method|yesno (boolean def, String msg)
+comment|/** Requests the user to answer a yes/no question. */
+DECL|method|yesno (boolean defaultValue, String message)
 name|boolean
 name|yesno
 parameter_list|(
 name|boolean
-name|def
+name|defaultValue
 parameter_list|,
 name|String
-name|msg
+name|message
+parameter_list|)
+function_decl|;
+comment|/** Prints a message asking the user to let us know when it's safe to continue. */
+DECL|method|waitForUser ()
+name|void
+name|waitForUser
+parameter_list|()
+function_decl|;
+comment|/**    * Prompts the user for a string, suggesting a default.    *    * @return the chosen string from the list of allowed values.    */
+DECL|method|readString (String defaultValue, Set<String> allowedValues, String message)
+name|String
+name|readString
+parameter_list|(
+name|String
+name|defaultValue
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|allowedValues
+parameter_list|,
+name|String
+name|message
 parameter_list|)
 function_decl|;
 DECL|method|isBatch ()
