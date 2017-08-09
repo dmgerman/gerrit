@@ -764,6 +764,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|TrackingFooters
 import|;
 end_import
@@ -2762,6 +2778,8 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|project
 argument_list|,
 name|id
@@ -2815,6 +2833,12 @@ specifier|private
 specifier|final
 name|Accounts
 name|accounts
+decl_stmt|;
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
 decl_stmt|;
 DECL|field|approvalsUtil
 specifier|private
@@ -3234,7 +3258,7 @@ name|refStatePatterns
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, AccountCache accountCache, Accounts accounts, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, Emails emails, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory userFactory, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, NotesMigration notesMigration, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, TrackingFooters trackingFooters, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes, @Assisted @Nullable ChangeControl control)
+DECL|method|ChangeData ( @ullable StarredChangesUtil starredChangesUtil, AccountCache accountCache, Accounts accounts, ApprovalsUtil approvalsUtil, AllUsersName allUsersName, ChangeControl.GenericFactory changeControlFactory, ChangeMessagesUtil cmUtil, ChangeNotes.Factory notesFactory, CommentsUtil commentsUtil, Emails emails, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory userFactory, MergeUtil.Factory mergeUtilFactory, MergeabilityCache mergeabilityCache, NotesMigration notesMigration, PatchListCache patchListCache, PatchSetUtil psUtil, ProjectCache projectCache, TrackingFooters trackingFooters, @Assisted ReviewDb db, @Assisted Project.NameKey project, @Assisted Change.Id id, @Assisted @Nullable Change change, @Assisted @Nullable ChangeNotes notes, @Assisted @Nullable ChangeControl control)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -3251,6 +3275,9 @@ name|accounts
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+name|AllUsersName
+name|allUsersName
 parameter_list|,
 name|ChangeControl
 operator|.
@@ -3360,6 +3387,12 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
+expr_stmt|;
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|allUsersName
 expr_stmt|;
 name|this
 operator|.
@@ -3516,6 +3549,16 @@ parameter_list|()
 block|{
 return|return
 name|db
+return|;
+block|}
+DECL|method|getAllUsersNameForIndexing ()
+specifier|public
+name|AllUsersName
+name|getAllUsersNameForIndexing
+parameter_list|()
+block|{
+return|return
+name|allUsersName
 return|;
 block|}
 DECL|method|initFiles ()
