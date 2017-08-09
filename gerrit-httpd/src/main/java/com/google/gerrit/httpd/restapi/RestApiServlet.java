@@ -4869,15 +4869,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|res
-operator|.
-name|addHeader
-argument_list|(
-name|VARY
-argument_list|,
-name|ACCESS_CONTROL_REQUEST_HEADERS
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|String
