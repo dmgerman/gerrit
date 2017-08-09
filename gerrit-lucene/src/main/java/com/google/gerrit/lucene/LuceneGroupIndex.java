@@ -899,7 +899,6 @@ name|IOException
 block|{
 try|try
 block|{
-comment|// No parts of FillArgs are currently required, just use null.
 name|replace
 argument_list|(
 name|idTerm
@@ -910,8 +909,6 @@ argument_list|,
 name|toDocument
 argument_list|(
 name|group
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 operator|.

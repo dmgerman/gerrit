@@ -554,24 +554,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|FieldDef
-operator|.
-name|FillArgs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|IndexExecutor
 import|;
 end_import
@@ -1620,12 +1602,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|field|fillArgs
-specifier|private
-specifier|final
-name|FillArgs
-name|fillArgs
-decl_stmt|;
 DECL|field|executor
 specifier|private
 specifier|final
@@ -1681,7 +1657,7 @@ name|closedIndex
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor(INTERACTIVE) ListeningExecutorService executor, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, @Assisted Schema<ChangeData> schema)
+DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor(INTERACTIVE) ListeningExecutorService executor, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, @Assisted Schema<ChangeData> schema)
 name|LuceneChangeIndex
 parameter_list|(
 annotation|@
@@ -1711,9 +1687,6 @@ operator|.
 name|Factory
 name|changeDataFactory
 parameter_list|,
-name|FillArgs
-name|fillArgs
-parameter_list|,
 annotation|@
 name|Assisted
 name|Schema
@@ -1725,12 +1698,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|this
-operator|.
-name|fillArgs
-operator|=
-name|fillArgs
-expr_stmt|;
 name|this
 operator|.
 name|executor
@@ -2006,8 +1973,6 @@ operator|.
 name|toDocument
 argument_list|(
 name|cd
-argument_list|,
-name|fillArgs
 argument_list|)
 decl_stmt|;
 try|try

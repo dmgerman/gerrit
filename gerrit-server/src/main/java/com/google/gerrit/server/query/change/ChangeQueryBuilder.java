@@ -656,22 +656,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|FieldDef
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|IndexConfig
 import|;
 end_import
@@ -1995,13 +1979,6 @@ name|ChangeOperatorFactory
 argument_list|>
 name|opFactories
 decl_stmt|;
-DECL|field|fillArgs
-specifier|final
-name|FieldDef
-operator|.
-name|FillArgs
-name|fillArgs
-decl_stmt|;
 DECL|field|repoManager
 specifier|final
 name|GitRepositoryManager
@@ -2099,7 +2076,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, ChangeIndexCollection indexes, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, @GerritServerConfig Config cfg, NotesMigration notesMigration)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -2158,11 +2135,6 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
-parameter_list|,
-name|FieldDef
-operator|.
-name|FillArgs
-name|fillArgs
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
@@ -2251,8 +2223,6 @@ name|notesFactory
 argument_list|,
 name|changeDataFactory
 argument_list|,
-name|fillArgs
-argument_list|,
 name|commentsUtil
 argument_list|,
 name|accountResolver
@@ -2315,7 +2285,7 @@ name|notesMigration
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, FieldDef.FillArgs fillArgs, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
+DECL|method|Arguments ( Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, ChangeIndexRewriter rewriter, DynamicMap<ChangeOperatorFactory> opFactories, DynamicMap<ChangeHasOperandFactory> hasOperands, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, PermissionBackend permissionBackend, ChangeControl.GenericFactory changeControlGenericFactory, ChangeNotes.Factory notesFactory, ChangeData.Factory changeDataFactory, CommentsUtil commentsUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, AllUsersName allUsersName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, SubmitDryRun submitDryRun, ConflictsCache conflictsCache, ChangeIndex index, IndexConfig indexConfig, Provider<ListMembers> listMembers, StarredChangesUtil starredChangesUtil, AccountCache accountCache, boolean allowsDrafts, NotesMigration notesMigration)
 specifier|private
 name|Arguments
 parameter_list|(
@@ -2374,11 +2344,6 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
-parameter_list|,
-name|FieldDef
-operator|.
-name|FillArgs
-name|fillArgs
 parameter_list|,
 name|CommentsUtil
 name|commentsUtil
@@ -2500,12 +2465,6 @@ operator|.
 name|changeDataFactory
 operator|=
 name|changeDataFactory
-expr_stmt|;
-name|this
-operator|.
-name|fillArgs
-operator|=
-name|fillArgs
 expr_stmt|;
 name|this
 operator|.
@@ -2660,8 +2619,6 @@ argument_list|,
 name|notesFactory
 argument_list|,
 name|changeDataFactory
-argument_list|,
-name|fillArgs
 argument_list|,
 name|commentsUtil
 argument_list|,
@@ -3698,10 +3655,6 @@ argument_list|(
 name|ChangeField
 operator|.
 name|WIP
-argument_list|,
-name|args
-operator|.
-name|fillArgs
 argument_list|)
 argument_list|)
 argument_list|,
@@ -3768,10 +3721,6 @@ argument_list|(
 name|ChangeField
 operator|.
 name|MERGEABLE
-argument_list|,
-name|args
-operator|.
-name|fillArgs
 argument_list|)
 return|;
 block|}
@@ -3807,10 +3756,6 @@ argument_list|(
 name|ChangeField
 operator|.
 name|PRIVATE
-argument_list|,
-name|args
-operator|.
-name|fillArgs
 argument_list|)
 return|;
 block|}
@@ -3950,10 +3895,6 @@ argument_list|(
 name|ChangeField
 operator|.
 name|STARTED
-argument_list|,
-name|args
-operator|.
-name|fillArgs
 argument_list|)
 return|;
 block|}
@@ -3997,10 +3938,6 @@ argument_list|(
 name|ChangeField
 operator|.
 name|WIP
-argument_list|,
-name|args
-operator|.
-name|fillArgs
 argument_list|)
 return|;
 block|}
@@ -6403,10 +6340,6 @@ argument_list|(
 name|ChangeField
 operator|.
 name|WIP
-argument_list|,
-name|args
-operator|.
-name|fillArgs
 argument_list|)
 argument_list|)
 argument_list|,

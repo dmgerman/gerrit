@@ -165,8 +165,6 @@ operator|.
 name|get
 argument_list|(
 name|changeData
-argument_list|,
-literal|null
 argument_list|)
 return|;
 block|}

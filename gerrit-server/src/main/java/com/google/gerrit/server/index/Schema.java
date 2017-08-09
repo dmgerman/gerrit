@@ -172,24 +172,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|FieldDef
-operator|.
-name|FillArgs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -1035,8 +1017,8 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * Build all fields in the schema from an input object.    *    *<p>Null values are omitted, as are fields which cause errors, which are logged.    *    * @param obj input object.    * @param fillArgs arguments for filling fields.    * @return all non-null field values from the object.    */
-DECL|method|buildFields (T obj, FillArgs fillArgs)
+comment|/**    * Build all fields in the schema from an input object.    *    *<p>Null values are omitted, as are fields which cause errors, which are logged.    *    * @param obj input object.    * @return all non-null field values from the object.    */
+DECL|method|buildFields (T obj)
 specifier|public
 specifier|final
 name|Iterable
@@ -1050,9 +1032,6 @@ name|buildFields
 parameter_list|(
 name|T
 name|obj
-parameter_list|,
-name|FillArgs
-name|fillArgs
 parameter_list|)
 block|{
 return|return
@@ -1115,8 +1094,6 @@ operator|.
 name|get
 argument_list|(
 name|obj
-argument_list|,
-name|fillArgs
 argument_list|)
 expr_stmt|;
 block|}

@@ -781,12 +781,9 @@ argument_list|>
 name|schema
 parameter_list|)
 block|{
-comment|// No parts of FillArgs are currently required, just use null.
 name|super
 argument_list|(
 name|cfg
-argument_list|,
-literal|null
 argument_list|,
 name|sitePaths
 argument_list|,

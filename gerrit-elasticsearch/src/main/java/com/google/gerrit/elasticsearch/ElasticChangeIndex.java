@@ -466,24 +466,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|FieldDef
-operator|.
-name|FillArgs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|IndexUtils
 import|;
 end_import
@@ -1104,7 +1086,7 @@ name|changeDataFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticChangeIndex ( @erritServerConfig Config cfg, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, SitePaths sitePaths, JestClientBuilder clientBuilder, @Assisted Schema<ChangeData> schema)
+DECL|method|ElasticChangeIndex ( @erritServerConfig Config cfg, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, SitePaths sitePaths, JestClientBuilder clientBuilder, @Assisted Schema<ChangeData> schema)
 name|ElasticChangeIndex
 parameter_list|(
 annotation|@
@@ -1122,9 +1104,6 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
-parameter_list|,
-name|FillArgs
-name|fillArgs
 parameter_list|,
 name|SitePaths
 name|sitePaths
@@ -1144,8 +1123,6 @@ block|{
 name|super
 argument_list|(
 name|cfg
-argument_list|,
-name|fillArgs
 argument_list|,
 name|sitePaths
 argument_list|,

@@ -90,24 +90,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|FieldDef
-operator|.
-name|FillArgs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -124,13 +106,7 @@ name|BooleanPredicate
 extends|extends
 name|ChangeIndexPredicate
 block|{
-DECL|field|args
-specifier|protected
-specifier|final
-name|FillArgs
-name|args
-decl_stmt|;
-DECL|method|BooleanPredicate (FieldDef<ChangeData, String> field, FillArgs args)
+DECL|method|BooleanPredicate (FieldDef<ChangeData, String> field)
 specifier|public
 name|BooleanPredicate
 parameter_list|(
@@ -141,9 +117,6 @@ argument_list|,
 name|String
 argument_list|>
 name|field
-parameter_list|,
-name|FillArgs
-name|args
 parameter_list|)
 block|{
 name|super
@@ -152,12 +125,6 @@ name|field
 argument_list|,
 literal|"1"
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|args
-operator|=
-name|args
 expr_stmt|;
 block|}
 annotation|@
@@ -185,8 +152,6 @@ operator|.
 name|get
 argument_list|(
 name|object
-argument_list|,
-name|args
 argument_list|)
 argument_list|)
 return|;

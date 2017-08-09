@@ -226,24 +226,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|FieldDef
-operator|.
-name|FillArgs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|Index
 import|;
 end_import
@@ -597,12 +579,6 @@ name|V
 argument_list|>
 name|schema
 decl_stmt|;
-DECL|field|fillArgs
-specifier|private
-specifier|final
-name|FillArgs
-name|fillArgs
-decl_stmt|;
 DECL|field|sitePaths
 specifier|private
 specifier|final
@@ -633,16 +609,13 @@ specifier|final
 name|ElasticQueryBuilder
 name|queryBuilder
 decl_stmt|;
-DECL|method|AbstractElasticIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Schema<V> schema, JestClientBuilder clientBuilder, String indexName)
+DECL|method|AbstractElasticIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Schema<V> schema, JestClientBuilder clientBuilder, String indexName)
 name|AbstractElasticIndex
 parameter_list|(
 annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
-parameter_list|,
-name|FillArgs
-name|fillArgs
 parameter_list|,
 name|SitePaths
 name|sitePaths
@@ -660,12 +633,6 @@ name|String
 name|indexName
 parameter_list|)
 block|{
-name|this
-operator|.
-name|fillArgs
-operator|=
-name|fillArgs
-expr_stmt|;
 name|this
 operator|.
 name|sitePaths
@@ -1238,8 +1205,6 @@ operator|.
 name|buildFields
 argument_list|(
 name|v
-argument_list|,
-name|fillArgs
 argument_list|)
 control|)
 block|{

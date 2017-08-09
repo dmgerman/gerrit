@@ -264,24 +264,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|FieldDef
-operator|.
-name|FillArgs
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|FieldType
 import|;
 end_import
@@ -1775,15 +1757,12 @@ name|searcher
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|toDocument (V obj, FillArgs fillArgs)
+DECL|method|toDocument (V obj)
 name|Document
 name|toDocument
 parameter_list|(
 name|V
 name|obj
-parameter_list|,
-name|FillArgs
-name|fillArgs
 parameter_list|)
 block|{
 name|Document
@@ -1806,8 +1785,6 @@ operator|.
 name|buildFields
 argument_list|(
 name|obj
-argument_list|,
-name|fillArgs
 argument_list|)
 control|)
 block|{
