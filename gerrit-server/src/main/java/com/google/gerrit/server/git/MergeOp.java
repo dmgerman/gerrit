@@ -5616,11 +5616,7 @@ return|;
 block|}
 name|int
 name|p
-decl_stmt|;
-try|try
-block|{
-name|p
-operator|=
+init|=
 name|cs
 operator|.
 name|projects
@@ -5628,29 +5624,7 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"Error looking up projects for "
-operator|+
-name|cs
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-return|return
-literal|"Error submitting changes"
-return|;
-block|}
+decl_stmt|;
 if|if
 condition|(
 name|p

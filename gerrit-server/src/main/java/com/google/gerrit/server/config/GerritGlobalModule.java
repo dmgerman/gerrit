@@ -3297,7 +3297,7 @@ name|factory
 argument_list|(
 name|ChangeData
 operator|.
-name|Factory
+name|AssistedFactory
 operator|.
 name|class
 argument_list|)

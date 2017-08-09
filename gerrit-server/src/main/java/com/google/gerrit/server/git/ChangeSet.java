@@ -611,8 +611,6 @@ name|NameKey
 argument_list|>
 name|projects
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|ImmutableSet
 operator|.

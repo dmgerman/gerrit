@@ -1735,10 +1735,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|IOException
-block|{
-try|try
 block|{
 name|autoReindexIfStale
 argument_list|(
@@ -1753,21 +1749,6 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|autoReindexIfStale (Project.NameKey project, Change.Id id)
 specifier|private
