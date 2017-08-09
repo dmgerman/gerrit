@@ -884,11 +884,14 @@ specifier|final
 name|AccountQueryBuilder
 name|accountQueryBuilder
 decl_stmt|;
-DECL|field|accountQueryProcessor
+DECL|field|queryProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|AccountQueryProcessor
-name|accountQueryProcessor
+argument_list|>
+name|queryProvider
 decl_stmt|;
 DECL|field|groupBackend
 specifier|private
@@ -927,7 +930,7 @@ name|metrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewersUtil ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, AccountQueryProcessor accountQueryProcessor, GroupBackend groupBackend, GroupMembers.Factory groupMembersFactory, Provider<CurrentUser> currentUser, ReviewerRecommender reviewerRecommender, Metrics metrics)
+DECL|method|ReviewersUtil ( AccountLoader.Factory accountLoaderFactory, AccountQueryBuilder accountQueryBuilder, Provider<AccountQueryProcessor> queryProvider, GroupBackend groupBackend, GroupMembers.Factory groupMembersFactory, Provider<CurrentUser> currentUser, ReviewerRecommender reviewerRecommender, Metrics metrics)
 name|ReviewersUtil
 parameter_list|(
 name|AccountLoader
@@ -938,8 +941,11 @@ parameter_list|,
 name|AccountQueryBuilder
 name|accountQueryBuilder
 parameter_list|,
+name|Provider
+argument_list|<
 name|AccountQueryProcessor
-name|accountQueryProcessor
+argument_list|>
+name|queryProvider
 parameter_list|,
 name|GroupBackend
 name|groupBackend
@@ -1005,9 +1011,9 @@ name|accountQueryBuilder
 expr_stmt|;
 name|this
 operator|.
-name|accountQueryProcessor
+name|queryProvider
 operator|=
-name|accountQueryProcessor
+name|queryProvider
 expr_stmt|;
 name|this
 operator|.
@@ -1362,7 +1368,10 @@ name|AccountState
 argument_list|>
 name|result
 init|=
-name|accountQueryProcessor
+name|queryProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|setLimit
 argument_list|(

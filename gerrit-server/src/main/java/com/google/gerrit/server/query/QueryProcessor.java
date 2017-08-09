@@ -576,11 +576,29 @@ name|java
 operator|.
 name|util
 operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|stream
 operator|.
 name|IntStream
 import|;
 end_import
+
+begin_comment
+comment|/**  * Lower-level implementation for executing a single query over a secondary index.  *  *<p>Instances are one-time-use. Other singleton classes should inject a Provider rather than  * holding on to a single instance.  */
+end_comment
 
 begin_class
 DECL|class|QueryProcessor
@@ -736,6 +754,14 @@ specifier|final
 name|String
 name|limitField
 decl_stmt|;
+comment|// This class is not generally thread-safe, but programmer error may result in it being shared
+comment|// across threads. At least ensure the bit for checking if it's been used is threadsafe.
+DECL|field|used
+specifier|private
+specifier|final
+name|AtomicBoolean
+name|used
+decl_stmt|;
 DECL|field|start
 specifier|protected
 name|int
@@ -862,6 +888,16 @@ operator|.
 name|limitField
 operator|=
 name|limitField
+expr_stmt|;
+name|this
+operator|.
+name|used
+operator|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setStart (int n)
@@ -1118,6 +1154,25 @@ operator|.
 name|nanoTime
 argument_list|()
 decl_stmt|;
+name|checkState
+argument_list|(
+operator|!
+name|used
+operator|.
+name|getAndSet
+argument_list|(
+literal|true
+argument_list|)
+argument_list|,
+literal|"%s has already been used"
+argument_list|,
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|int
 name|cnt
 init|=

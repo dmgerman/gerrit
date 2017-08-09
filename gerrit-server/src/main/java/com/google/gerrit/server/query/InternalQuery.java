@@ -233,7 +233,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Execute a single query over a secondary index, for use by Gerrit internals.  *  *<p>By default, visibility of returned entities is not enforced (unlike in {@link  * QueryProcessor}). The methods in this class are not typically used by user-facing paths, but  * rather by internal callers that need to process all matching results.  */
+comment|/**  * Execute a single query over a secondary index, for use by Gerrit internals.  *  *<p>By default, visibility of returned entities is not enforced (unlike in {@link  * QueryProcessor}). The methods in this class are not typically used by user-facing paths, but  * rather by internal callers that need to process all matching results.  *  *<p>Instances are one-time-use. Other singleton classes should inject a Provider rather than  * holding on to a single instance.  */
 end_comment
 
 begin_class

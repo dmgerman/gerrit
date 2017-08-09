@@ -651,7 +651,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Change query implementation that outputs to a stream in the style of an SSH command. */
+comment|/**  * Change query implementation that outputs to a stream in the style of an SSH command.  *  *<p>Instances are one-time-use. Other singleton classes should inject a Provider rather than  * holding on to a single instance.  */
 end_comment
 
 begin_class

@@ -432,6 +432,10 @@ name|Set
 import|;
 end_import
 
+begin_comment
+comment|/**  * Query processor for the change index.  *  *<p>Instances are one-time-use. Other singleton classes should inject a Provider rather than  * holding on to a single instance.  */
+end_comment
+
 begin_class
 DECL|class|ChangeQueryProcessor
 specifier|public

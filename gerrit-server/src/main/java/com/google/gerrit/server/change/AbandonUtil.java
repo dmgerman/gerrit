@@ -276,6 +276,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -372,11 +384,14 @@ specifier|final
 name|ChangeCleanupConfig
 name|cfg
 decl_stmt|;
-DECL|field|queryProcessor
+DECL|field|queryProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ChangeQueryProcessor
-name|queryProcessor
+argument_list|>
+name|queryProvider
 decl_stmt|;
 DECL|field|queryBuilder
 specifier|private
@@ -398,7 +413,7 @@ name|internalUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, ChangeQueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder, Abandon abandon)
+DECL|method|AbandonUtil ( ChangeCleanupConfig cfg, InternalUser.Factory internalUserFactory, Provider<ChangeQueryProcessor> queryProvider, ChangeQueryBuilder queryBuilder, Abandon abandon)
 name|AbandonUtil
 parameter_list|(
 name|ChangeCleanupConfig
@@ -409,8 +424,11 @@ operator|.
 name|Factory
 name|internalUserFactory
 parameter_list|,
+name|Provider
+argument_list|<
 name|ChangeQueryProcessor
-name|queryProcessor
+argument_list|>
+name|queryProvider
 parameter_list|,
 name|ChangeQueryBuilder
 name|queryBuilder
@@ -427,9 +445,9 @@ name|cfg
 expr_stmt|;
 name|this
 operator|.
-name|queryProcessor
+name|queryProvider
 operator|=
-name|queryProcessor
+name|queryProvider
 expr_stmt|;
 name|this
 operator|.
@@ -515,7 +533,10 @@ name|ChangeData
 argument_list|>
 name|changesToAbandon
 init|=
-name|queryProcessor
+name|queryProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|enforceVisibility
 argument_list|(
@@ -831,7 +852,10 @@ name|ChangeData
 argument_list|>
 name|changesToAbandon
 init|=
-name|queryProcessor
+name|queryProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|enforceVisibility
 argument_list|(

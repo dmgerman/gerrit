@@ -855,11 +855,14 @@ name|ReviewerSuggestion
 argument_list|>
 name|reviewerSuggestionPluginMap
 decl_stmt|;
-DECL|field|internalChangeQuery
+DECL|field|queryProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|InternalChangeQuery
-name|internalChangeQuery
+argument_list|>
+name|queryProvider
 decl_stmt|;
 DECL|field|workQueue
 specifier|private
@@ -884,7 +887,7 @@ name|approvalsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerRecommender ( ChangeQueryBuilder changeQueryBuilder, DynamicMap<ReviewerSuggestion> reviewerSuggestionPluginMap, InternalChangeQuery internalChangeQuery, WorkQueue workQueue, Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, @GerritServerConfig Config config)
+DECL|method|ReviewerRecommender ( ChangeQueryBuilder changeQueryBuilder, DynamicMap<ReviewerSuggestion> reviewerSuggestionPluginMap, Provider<InternalChangeQuery> queryProvider, WorkQueue workQueue, Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, @GerritServerConfig Config config)
 name|ReviewerRecommender
 parameter_list|(
 name|ChangeQueryBuilder
@@ -896,8 +899,11 @@ name|ReviewerSuggestion
 argument_list|>
 name|reviewerSuggestionPluginMap
 parameter_list|,
+name|Provider
+argument_list|<
 name|InternalChangeQuery
-name|internalChangeQuery
+argument_list|>
+name|queryProvider
 parameter_list|,
 name|WorkQueue
 name|workQueue
@@ -955,9 +961,9 @@ name|config
 expr_stmt|;
 name|this
 operator|.
-name|internalChangeQuery
+name|queryProvider
 operator|=
-name|internalChangeQuery
+name|queryProvider
 expr_stmt|;
 name|this
 operator|.
@@ -1569,7 +1575,10 @@ name|ChangeData
 argument_list|>
 name|result
 init|=
-name|internalChangeQuery
+name|queryProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|setLimit
 argument_list|(
@@ -2014,7 +2023,10 @@ argument_list|>
 argument_list|>
 name|result
 init|=
-name|internalChangeQuery
+name|queryProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|setLimit
 argument_list|(
