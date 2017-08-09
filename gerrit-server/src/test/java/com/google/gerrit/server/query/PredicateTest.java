@@ -68,15 +68,11 @@ end_package
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|junit
 operator|.
-name|gerrit
-operator|.
-name|testutil
-operator|.
-name|GerritBaseTests
+name|Ignore
 import|;
 end_import
 
@@ -86,7 +82,19 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|ExpectedException
 import|;
 end_import
 
@@ -98,9 +106,19 @@ specifier|public
 specifier|abstract
 class|class
 name|PredicateTest
-extends|extends
-name|GerritBaseTests
 block|{
+DECL|field|exception
+annotation|@
+name|Rule
+specifier|public
+name|ExpectedException
+name|exception
+init|=
+name|ExpectedException
+operator|.
+name|none
+argument_list|()
+decl_stmt|;
 DECL|class|TestPredicate
 specifier|protected
 specifier|static
