@@ -142,20 +142,6 @@ name|Inject
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|util
-operator|.
-name|Providers
-import|;
-end_import
-
 begin_class
 DECL|class|AccountIndexDefinition
 specifier|public
@@ -202,12 +188,7 @@ name|indexCollection
 argument_list|,
 name|indexFactory
 argument_list|,
-name|Providers
-operator|.
-name|of
-argument_list|(
 name|allAccountsIndexer
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

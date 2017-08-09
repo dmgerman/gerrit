@@ -86,9 +86,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|Provider
+name|common
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -186,8 +188,6 @@ decl_stmt|;
 DECL|field|siteIndexer
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|SiteIndexer
 argument_list|<
 name|K
@@ -196,10 +196,9 @@ name|V
 argument_list|,
 name|I
 argument_list|>
-argument_list|>
 name|siteIndexer
 decl_stmt|;
-DECL|method|IndexDefinition ( SchemaDefinitions<V> schemaDefs, IndexCollection<K, V, I> indexCollection, IndexFactory<K, V, I> indexFactory, Provider<SiteIndexer<K, V, I>> siteIndexer)
+DECL|method|IndexDefinition ( SchemaDefinitions<V> schemaDefs, IndexCollection<K, V, I> indexCollection, IndexFactory<K, V, I> indexFactory, @Nullable SiteIndexer<K, V, I> siteIndexer)
 specifier|protected
 name|IndexDefinition
 parameter_list|(
@@ -229,8 +228,8 @@ name|I
 argument_list|>
 name|indexFactory
 parameter_list|,
-name|Provider
-argument_list|<
+annotation|@
+name|Nullable
 name|SiteIndexer
 argument_list|<
 name|K
@@ -238,7 +237,6 @@ argument_list|,
 name|V
 argument_list|,
 name|I
-argument_list|>
 argument_list|>
 name|siteIndexer
 parameter_list|)
@@ -357,6 +355,8 @@ return|return
 name|indexFactory
 return|;
 block|}
+annotation|@
+name|Nullable
 DECL|method|getSiteIndexer ()
 specifier|public
 specifier|final
@@ -373,9 +373,6 @@ parameter_list|()
 block|{
 return|return
 name|siteIndexer
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 block|}
