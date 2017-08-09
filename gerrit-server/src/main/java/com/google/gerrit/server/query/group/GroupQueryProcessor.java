@@ -174,6 +174,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|metrics
+operator|.
+name|MetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -377,7 +391,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|GroupQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, Metrics metrics, IndexConfig indexConfig, GroupIndexCollection indexes, GroupIndexRewriter rewriter, GroupControl.GenericFactory groupControlFactory)
+DECL|method|GroupQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, GroupIndexCollection indexes, GroupIndexRewriter rewriter, GroupControl.GenericFactory groupControlFactory)
 specifier|protected
 name|GroupQueryProcessor
 parameter_list|(
@@ -392,8 +406,8 @@ operator|.
 name|Factory
 name|limitsFactory
 parameter_list|,
-name|Metrics
-name|metrics
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|IndexConfig
 name|indexConfig
@@ -412,7 +426,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|metrics
+name|metricMaker
 argument_list|,
 name|GroupSchemaDefinitions
 operator|.

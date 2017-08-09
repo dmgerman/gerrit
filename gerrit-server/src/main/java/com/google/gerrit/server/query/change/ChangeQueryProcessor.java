@@ -204,6 +204,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|metrics
+operator|.
+name|MetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|server
@@ -542,7 +556,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, Metrics metrics, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend)
+DECL|method|ChangeQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, ChangeIndexCollection indexes, ChangeIndexRewriter rewriter, Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, ChangeNotes.Factory notesFactory, DynamicMap<ChangeAttributeFactory> attributeFactories, PermissionBackend permissionBackend)
 name|ChangeQueryProcessor
 parameter_list|(
 name|Provider
@@ -556,8 +570,8 @@ operator|.
 name|Factory
 name|limitsFactory
 parameter_list|,
-name|Metrics
-name|metrics
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|IndexConfig
 name|indexConfig
@@ -596,7 +610,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|metrics
+name|metricMaker
 argument_list|,
 name|ChangeSchemaDefinitions
 operator|.

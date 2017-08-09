@@ -448,30 +448,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -564,8 +540,6 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-annotation|@
-name|Singleton
 DECL|class|Metrics
 specifier|protected
 specifier|static
@@ -580,8 +554,6 @@ name|String
 argument_list|>
 name|executionTime
 decl_stmt|;
-annotation|@
-name|Inject
 DECL|method|Metrics (MetricMaker metricMaker)
 name|Metrics
 parameter_list|(
@@ -730,12 +702,12 @@ name|String
 argument_list|>
 name|requestedFields
 decl_stmt|;
-DECL|method|QueryProcessor ( Metrics metrics, SchemaDefinitions<T> schemaDef, IndexConfig indexConfig, IndexCollection<?, T, ? extends Index<?, T>> indexes, IndexRewriter<T> rewriter, String limitField, IntSupplier permittedLimit)
+DECL|method|QueryProcessor ( MetricMaker metricMaker, SchemaDefinitions<T> schemaDef, IndexConfig indexConfig, IndexCollection<?, T, ? extends Index<?, T>> indexes, IndexRewriter<T> rewriter, String limitField, IntSupplier permittedLimit)
 specifier|protected
 name|QueryProcessor
 parameter_list|(
-name|Metrics
-name|metrics
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|SchemaDefinitions
 argument_list|<
@@ -780,7 +752,11 @@ name|this
 operator|.
 name|metrics
 operator|=
-name|metrics
+operator|new
+name|Metrics
+argument_list|(
+name|metricMaker
+argument_list|)
 expr_stmt|;
 name|this
 operator|.

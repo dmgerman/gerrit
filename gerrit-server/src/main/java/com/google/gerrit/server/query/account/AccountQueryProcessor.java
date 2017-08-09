@@ -174,6 +174,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|metrics
+operator|.
+name|MetricMaker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -368,7 +382,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AccountQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, Metrics metrics, IndexConfig indexConfig, AccountIndexCollection indexes, AccountIndexRewriter rewriter, AccountControl.Factory accountControlFactory)
+DECL|method|AccountQueryProcessor ( Provider<CurrentUser> userProvider, AccountLimits.Factory limitsFactory, MetricMaker metricMaker, IndexConfig indexConfig, AccountIndexCollection indexes, AccountIndexRewriter rewriter, AccountControl.Factory accountControlFactory)
 specifier|protected
 name|AccountQueryProcessor
 parameter_list|(
@@ -383,8 +397,8 @@ operator|.
 name|Factory
 name|limitsFactory
 parameter_list|,
-name|Metrics
-name|metrics
+name|MetricMaker
+name|metricMaker
 parameter_list|,
 name|IndexConfig
 name|indexConfig
@@ -403,7 +417,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|metrics
+name|metricMaker
 argument_list|,
 name|AccountSchemaDefinitions
 operator|.
