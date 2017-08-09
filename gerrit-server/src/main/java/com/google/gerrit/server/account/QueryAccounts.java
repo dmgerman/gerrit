@@ -622,7 +622,7 @@ parameter_list|)
 block|{
 name|queryProcessor
 operator|.
-name|setLimit
+name|setUserProvidedLimit
 argument_list|(
 name|n
 argument_list|)
@@ -1210,7 +1210,7 @@ argument_list|)
 expr_stmt|;
 name|queryProcessor
 operator|.
-name|setLimit
+name|setUserProvidedLimit
 argument_list|(
 name|suggestLimit
 argument_list|)

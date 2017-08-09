@@ -1373,7 +1373,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|setLimit
+name|setUserProvidedLimit
 argument_list|(
 name|suggestReviewers
 operator|.

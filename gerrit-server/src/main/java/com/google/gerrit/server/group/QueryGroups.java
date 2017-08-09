@@ -768,7 +768,7 @@ condition|)
 block|{
 name|queryProcessor
 operator|.
-name|setLimit
+name|setUserProvidedLimit
 argument_list|(
 name|limit
 argument_list|)
