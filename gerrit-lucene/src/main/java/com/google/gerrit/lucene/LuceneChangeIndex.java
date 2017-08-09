@@ -3361,13 +3361,10 @@ name|intValue
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// IndexUtils#changeFields ensures either CHANGE or PROJECT is always present.
 name|IndexableField
 name|project
 init|=
-name|Iterables
-operator|.
-name|getFirst
-argument_list|(
 name|doc
 operator|.
 name|get
@@ -3377,36 +3374,13 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
-argument_list|,
-literal|null
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|project
-operator|==
-literal|null
-condition|)
-block|{
-comment|// Old schema without project field: we can safely assume NoteDb is
-comment|// disabled.
-name|cd
-operator|=
-name|changeDataFactory
 operator|.
-name|createOnlyWhenNoteDbDisabled
-argument_list|(
-name|db
-operator|.
-name|get
+name|iterator
 argument_list|()
-argument_list|,
-name|id
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
 name|cd
 operator|=
 name|changeDataFactory
@@ -3432,7 +3406,6 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
