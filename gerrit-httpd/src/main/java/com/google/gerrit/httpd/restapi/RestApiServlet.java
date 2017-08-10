@@ -51,6 +51,10 @@ begin_comment
 comment|// limitations under the License.
 end_comment
 
+begin_comment
+comment|// WARNING: NoteDbUpdateManager cares about the package name RestApiServlet lives in.
+end_comment
+
 begin_package
 DECL|package|com.google.gerrit.httpd.restapi
 package|package
