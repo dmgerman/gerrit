@@ -242,6 +242,12 @@ name|user
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|groupCache
+specifier|private
+specifier|final
+name|GroupCache
+name|groupCache
+decl_stmt|;
 DECL|field|includeCache
 specifier|private
 specifier|final
@@ -279,9 +285,12 @@ name|knownGroups
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IncludingGroupMembership (GroupIncludeCache includeCache, @Assisted IdentifiedUser user)
+DECL|method|IncludingGroupMembership ( GroupCache groupCache, GroupIncludeCache includeCache, @Assisted IdentifiedUser user)
 name|IncludingGroupMembership
 parameter_list|(
+name|GroupCache
+name|groupCache
+parameter_list|,
 name|GroupIncludeCache
 name|includeCache
 parameter_list|,
@@ -291,6 +300,12 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 block|{
+name|this
+operator|.
+name|groupCache
+operator|=
+name|groupCache
+expr_stmt|;
 name|this
 operator|.
 name|includeCache
@@ -506,6 +521,25 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+name|AccountGroup
+name|group
+init|=
+name|groupCache
+operator|.
+name|get
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|group
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
 if|if
 condition|(
 name|search
