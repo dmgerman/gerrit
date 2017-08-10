@@ -1896,7 +1896,39 @@ name|server
 operator|.
 name|project
 operator|.
+name|CreateRefControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|NoSuchChangeException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|NoSuchProjectException
 import|;
 end_import
 
@@ -3375,6 +3407,12 @@ specifier|final
 name|TagCache
 name|tagCache
 decl_stmt|;
+DECL|field|createRefControl
+specifier|private
+specifier|final
+name|CreateRefControl
+name|createRefControl
+decl_stmt|;
 comment|// Assisted injected fields.
 DECL|field|allRefsWatcher
 specifier|private
@@ -3589,7 +3627,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits ( @anonicalWebUrl String canonicalWebUrl, AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, @Assisted ProjectControl projectControl, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
+DECL|method|ReceiveCommits ( @anonicalWebUrl String canonicalWebUrl, AccountResolver accountResolver, AccountsUpdate.Server accountsUpdate, AllProjectsName allProjectsName, BatchUpdate.Factory batchUpdateFactory, ChangeEditUtil editUtil, ChangeIndexer indexer, ChangeInserter.Factory changeInserterFactory, ChangeNotes.Factory notesFactory, CmdLineParser.Factory optionParserFactory, CommitValidators.Factory commitValidatorsFactory, DynamicMap<ProjectConfigEntry> pluginConfigEntries, DynamicSet<ReceivePackInitializer> initializers, MergedByPushOp.Factory mergedByPushOpFactory, NotesMigration notesMigration, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, PermissionBackend permissionBackend, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, Provider<MergeOp> mergeOpProvider, Provider<MergeOpRepoManager> ormProvider, ReceiveConfig receiveConfig, RefOperationValidators.Factory refValidatorsFactory, ReplaceOp.Factory replaceOpFactory, RequestScopePropagator requestScopePropagator, ReviewDb db, Sequences seq, SetHashtagsOp.Factory hashtagsFactory, SshInfo sshInfo, SubmoduleOp.Factory subOpFactory, TagCache tagCache, CreateRefControl createRefControl, @Assisted ProjectControl projectControl, @Assisted ReceivePack rp, @Assisted AllRefsWatcher allRefsWatcher, @Assisted SetMultimap<ReviewerStateInternal, Account.Id> extraReviewers)
 name|ReceiveCommits
 parameter_list|(
 annotation|@
@@ -3726,6 +3764,9 @@ name|subOpFactory
 parameter_list|,
 name|TagCache
 name|tagCache
+parameter_list|,
+name|CreateRefControl
+name|createRefControl
 parameter_list|,
 annotation|@
 name|Assisted
@@ -3949,6 +3990,12 @@ operator|.
 name|tagCache
 operator|=
 name|tagCache
+expr_stmt|;
+name|this
+operator|.
+name|createRefControl
+operator|=
+name|createRefControl
 expr_stmt|;
 comment|// Assisted injected fields.
 name|this
@@ -4379,6 +4426,10 @@ block|}
 catch|catch
 parameter_list|(
 name|PermissionBackendException
+decl||
+name|NoSuchProjectException
+decl||
+name|IOException
 name|err
 parameter_list|)
 block|{
@@ -5817,6 +5868,10 @@ name|commands
 parameter_list|)
 throws|throws
 name|PermissionBackendException
+throws|,
+name|NoSuchProjectException
+throws|,
+name|IOException
 block|{
 name|List
 argument_list|<
@@ -6831,6 +6886,10 @@ name|cmd
 parameter_list|)
 throws|throws
 name|PermissionBackendException
+throws|,
+name|NoSuchProjectException
+throws|,
+name|IOException
 block|{
 name|RevObject
 name|obj
@@ -6915,13 +6974,21 @@ condition|)
 block|{
 return|return;
 block|}
-name|RefControl
-name|ctl
-init|=
-name|projectControl
+name|Branch
 operator|.
-name|controlForRef
+name|NameKey
+name|branch
+init|=
+operator|new
+name|Branch
+operator|.
+name|NameKey
 argument_list|(
+name|project
+operator|.
+name|getName
+argument_list|()
+argument_list|,
 name|cmd
 operator|.
 name|getRefName
@@ -6931,9 +6998,9 @@ decl_stmt|;
 name|String
 name|rejectReason
 init|=
-name|ctl
+name|createRefControl
 operator|.
-name|canCreate
+name|canCreateRef
 argument_list|(
 name|rp
 operator|.
@@ -6941,6 +7008,10 @@ name|getRepository
 argument_list|()
 argument_list|,
 name|obj
+argument_list|,
+name|user
+argument_list|,
+name|branch
 argument_list|)
 decl_stmt|;
 if|if
@@ -6973,6 +7044,19 @@ block|{
 comment|// validRefOperation sets messages, so no need to provide more feedback.
 return|return;
 block|}
+name|RefControl
+name|ctl
+init|=
+name|projectControl
+operator|.
+name|controlForRef
+argument_list|(
+name|cmd
+operator|.
+name|getRefName
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|validateNewCommits
 argument_list|(
 name|ctl
