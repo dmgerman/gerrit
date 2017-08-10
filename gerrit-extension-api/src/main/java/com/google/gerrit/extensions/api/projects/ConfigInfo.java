@@ -203,6 +203,11 @@ specifier|public
 name|InheritedBooleanInfo
 name|rejectImplicitMerges
 decl_stmt|;
+DECL|field|privateByDefault
+specifier|public
+name|InheritedBooleanInfo
+name|privateByDefault
+decl_stmt|;
 DECL|field|enableReviewerByEmail
 specifier|public
 name|InheritedBooleanInfo

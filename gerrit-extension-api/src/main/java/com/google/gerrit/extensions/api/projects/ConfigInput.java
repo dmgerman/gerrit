@@ -177,6 +177,11 @@ specifier|public
 name|InheritableBoolean
 name|rejectImplicitMerges
 decl_stmt|;
+DECL|field|privateByDefault
+specifier|public
+name|InheritableBoolean
+name|privateByDefault
+decl_stmt|;
 DECL|field|enableReviewerByEmail
 specifier|public
 name|InheritableBoolean

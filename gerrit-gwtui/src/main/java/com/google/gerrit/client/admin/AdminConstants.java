@@ -264,6 +264,11 @@ name|String
 name|rejectImplicitMerges
 parameter_list|()
 function_decl|;
+DECL|method|privateByDefault ()
+name|String
+name|privateByDefault
+parameter_list|()
+function_decl|;
 DECL|method|enableReviewerByEmail ()
 name|String
 name|enableReviewerByEmail

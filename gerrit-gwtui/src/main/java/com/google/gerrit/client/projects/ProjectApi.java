@@ -1035,7 +1035,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setConfig ( Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, InheritableBoolean enableSignedPush, InheritableBoolean requireSignedPush, InheritableBoolean rejectImplicitMerges, InheritableBoolean enableReviewerByEmail, InheritableBoolean matchAuthorToCommitterDate, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
+DECL|method|setConfig ( Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, InheritableBoolean enableSignedPush, InheritableBoolean requireSignedPush, InheritableBoolean rejectImplicitMerges, InheritableBoolean privateByDefault, InheritableBoolean enableReviewerByEmail, InheritableBoolean matchAuthorToCommitterDate, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -1072,6 +1072,9 @@ name|requireSignedPush
 parameter_list|,
 name|InheritableBoolean
 name|rejectImplicitMerges
+parameter_list|,
+name|InheritableBoolean
+name|privateByDefault
 parameter_list|,
 name|InheritableBoolean
 name|enableReviewerByEmail
@@ -1193,6 +1196,13 @@ operator|.
 name|setRejectImplicitMerges
 argument_list|(
 name|rejectImplicitMerges
+argument_list|)
+expr_stmt|;
+name|in
+operator|.
+name|setPrivateByDefault
+argument_list|(
+name|privateByDefault
 argument_list|)
 expr_stmt|;
 name|in
@@ -1907,6 +1917,35 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setPrivateByDefault (InheritableBoolean v)
+specifier|final
+name|void
+name|setPrivateByDefault
+parameter_list|(
+name|InheritableBoolean
+name|v
+parameter_list|)
+block|{
+name|setPrivateByDefault
+argument_list|(
+name|v
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setPrivateByDefault (String v)
+specifier|private
+specifier|native
+name|void
+name|setPrivateByDefault
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ if(v)this.private_by_default=v; }-*/
+function_decl|;
 DECL|method|setEnableReviewerByEmail (InheritableBoolean v)
 specifier|final
 name|void

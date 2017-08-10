@@ -2288,6 +2288,21 @@ name|getRejectImplicitMerges
 argument_list|)
 return|;
 block|}
+DECL|method|isPrivateByDefault ()
+specifier|public
+name|boolean
+name|isPrivateByDefault
+parameter_list|()
+block|{
+return|return
+name|getInheritableBoolean
+argument_list|(
+name|Project
+operator|::
+name|getPrivateByDefault
+argument_list|)
+return|;
+block|}
 DECL|method|isEnableReviewerByEmail ()
 specifier|public
 name|boolean

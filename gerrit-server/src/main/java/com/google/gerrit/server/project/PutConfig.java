@@ -1165,6 +1165,25 @@ if|if
 condition|(
 name|input
 operator|.
+name|privateByDefault
+operator|!=
+literal|null
+condition|)
+block|{
+name|p
+operator|.
+name|setPrivateByDefault
+argument_list|(
+name|input
+operator|.
+name|privateByDefault
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|input
+operator|.
 name|maxObjectSizeLimit
 operator|!=
 literal|null
@@ -1894,7 +1913,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-comment|//$FALL-THROUGH$
+comment|// $FALL-THROUGH$
 case|case
 name|STRING
 case|:
