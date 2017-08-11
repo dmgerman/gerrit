@@ -118,6 +118,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_class
 DECL|class|TestUpdateUI
 specifier|public
@@ -128,31 +138,63 @@ name|UpdateUI
 block|{
 annotation|@
 name|Override
-DECL|method|message (String msg)
+DECL|method|message (String message)
 specifier|public
 name|void
 name|message
 parameter_list|(
 name|String
-name|msg
+name|message
 parameter_list|)
 block|{}
 annotation|@
 name|Override
-DECL|method|yesno (boolean def, String msg)
+DECL|method|yesno (boolean defaultValue, String message)
 specifier|public
 name|boolean
 name|yesno
 parameter_list|(
 name|boolean
-name|def
+name|defaultValue
 parameter_list|,
 name|String
-name|msg
+name|message
 parameter_list|)
 block|{
 return|return
-literal|false
+name|defaultValue
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|waitForUser ()
+specifier|public
+name|void
+name|waitForUser
+parameter_list|()
+block|{}
+annotation|@
+name|Override
+DECL|method|readString (String defaultValue, Set<String> allowedValues, String message)
+specifier|public
+name|String
+name|readString
+parameter_list|(
+name|String
+name|defaultValue
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|allowedValues
+parameter_list|,
+name|String
+name|message
+parameter_list|)
+block|{
+return|return
+name|defaultValue
 return|;
 block|}
 annotation|@
@@ -164,7 +206,7 @@ name|isBatch
 parameter_list|()
 block|{
 return|return
-literal|false
+literal|true
 return|;
 block|}
 annotation|@
@@ -185,7 +227,24 @@ name|pruneList
 parameter_list|)
 throws|throws
 name|OrmException
-block|{}
+block|{
+for|for
+control|(
+name|String
+name|sql
+range|:
+name|pruneList
+control|)
+block|{
+name|e
+operator|.
+name|execute
+argument_list|(
+name|sql
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 
