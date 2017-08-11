@@ -154,6 +154,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|conditions
+operator|.
+name|BooleanCondition
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -395,7 +411,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Checks authorization to perform an action on a project, reference, or change.  *  *<p>{@code check} methods should be used during action handlers to verify the user is allowed to  * exercise the specified permission. For convenience in implementation {@code check} methods throw  * {@link AuthException} if the permission is denied.  *  *<p>{@code test} methods should be used when constructing replies to the client and the result  * object needs to include a true/false hint indicating the user's ability to exercise the  * permission. This is suitable for configuring UI button state, but should not be relied upon to  * guard handlers before making state changes.  *  *<p>{@code PermissionBackend} is a singleton for the server, acting as a factory for lightweight  * request instances. Implementation classes may cache supporting data inside of {@link WithUser},  * {@link ForProject}, {@link ForRef}, and {@link ForChange} instances, in addition to storing  * within {@link CurrentUser} using a {@link com.google.gerrit.server.CurrentUser.PropertyKey}.  * {@link GlobalPermission} caching for {@link WithUser} may best cached inside {@link CurrentUser}  * as {@link WithUser} instances are frequently created.  *  *<p>Example use:  *  *<pre>  *   private final PermissionBackend permissions;  *   private final Provider<CurrentUser> user;  *  *   @Inject  *   Foo(PermissionBackend permissions, Provider<CurrentUser> user) {  *     this.permissions = permissions;  *     this.user = user;  *   }  *  *   public void apply(...) {  *     permissions.user(user).change(cd).check(ChangePermission.SUBMIT);  *   }  *  *   public UiAction.Description getDescription(ChangeResource rsrc) {  *     return new UiAction.Description()  *       .setLabel("Submit")  *       .setVisible(rsrc.permissions().testOrFalse(ChangePermission.SUBMIT));  * }  *</pre>  */
+comment|/**  * Checks authorization to perform an action on a project, reference, or change.  *  *<p>{@code check} methods should be used during action handlers to verify the user is allowed to  * exercise the specified permission. For convenience in implementation {@code check} methods throw  * {@link AuthException} if the permission is denied.  *  *<p>{@code test} methods should be used when constructing replies to the client and the result  * object needs to include a true/false hint indicating the user's ability to exercise the  * permission. This is suitable for configuring UI button state, but should not be relied upon to  * guard handlers before making state changes.  *  *<p>{@code PermissionBackend} is a singleton for the server, acting as a factory for lightweight  * request instances. Implementation classes may cache supporting data inside of {@link WithUser},  * {@link ForProject}, {@link ForRef}, and {@link ForChange} instances, in addition to storing  * within {@link CurrentUser} using a {@link com.google.gerrit.server.CurrentUser.PropertyKey}.  * {@link GlobalPermission} caching for {@link WithUser} may best cached inside {@link CurrentUser}  * as {@link WithUser} instances are frequently created.  *  *<p>Example use:  *  *<pre>  *   private final PermissionBackend permissions;  *   private final Provider<CurrentUser> user;  *  *   @Inject  *   Foo(PermissionBackend permissions, Provider<CurrentUser> user) {  *     this.permissions = permissions;  *     this.user = user;  *   }  *  *   public void apply(...) {  *     permissions.user(user).change(cd).check(ChangePermission.SUBMIT);  *   }  *  *   public UiAction.Description getDescription(ChangeResource rsrc) {  *     return new UiAction.Description()  *       .setLabel("Submit")  *       .setVisible(rsrc.permissions().testCond(ChangePermission.SUBMIT));  * }  *</pre>  */
 end_comment
 
 begin_class
@@ -917,6 +933,27 @@ literal|false
 return|;
 block|}
 block|}
+DECL|method|testCond (GlobalOrPluginPermission perm)
+specifier|public
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|GlobalOrPluginPermission
+name|perm
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PermissionBackendCondition
+operator|.
+name|WithUser
+argument_list|(
+name|this
+argument_list|,
+name|perm
+argument_list|)
+return|;
+block|}
 comment|/**      * Filter a set of projects using {@code check(perm)}.      *      * @param perm required permission in a project to be included in result.      * @param projects candidate set of projects; may be empty.      * @return filtered set of {@code projects} where {@code check(perm)} was successful.      * @throws PermissionBackendException backend cannot access its internal state.      */
 DECL|method|filter (ProjectPermission perm, Collection<Project.NameKey> projects)
 specifier|public
@@ -1239,6 +1276,27 @@ literal|false
 return|;
 block|}
 block|}
+DECL|method|testCond (ProjectPermission perm)
+specifier|public
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|ProjectPermission
+name|perm
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PermissionBackendCondition
+operator|.
+name|ForProject
+argument_list|(
+name|this
+argument_list|,
+name|perm
+argument_list|)
+return|;
+block|}
 block|}
 comment|/** PermissionBackend scoped to a user, project and reference. */
 DECL|class|ForRef
@@ -1405,6 +1463,27 @@ literal|false
 return|;
 block|}
 block|}
+DECL|method|testCond (RefPermission perm)
+specifier|public
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|RefPermission
+name|perm
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PermissionBackendCondition
+operator|.
+name|ForRef
+argument_list|(
+name|this
+argument_list|,
+name|perm
+argument_list|)
+return|;
+block|}
 block|}
 comment|/** PermissionBackend scoped to a user, project, reference and change. */
 DECL|class|ForChange
@@ -1547,6 +1626,27 @@ return|return
 literal|false
 return|;
 block|}
+block|}
+DECL|method|testCond (ChangePermissionOrLabel perm)
+specifier|public
+name|BooleanCondition
+name|testCond
+parameter_list|(
+name|ChangePermissionOrLabel
+name|perm
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PermissionBackendCondition
+operator|.
+name|ForChange
+argument_list|(
+name|this
+argument_list|,
+name|perm
+argument_list|)
+return|;
 block|}
 comment|/**      * Test which values of a label the user may be able to set.      *      * @param label definition of the label to test values of.      * @return set containing values the user may be able to use; may be empty if none.      * @throws PermissionBackendException if failure consulting backend configuration.      */
 DECL|method|test (LabelType label)
