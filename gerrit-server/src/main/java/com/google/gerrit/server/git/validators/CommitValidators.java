@@ -3968,6 +3968,7 @@ condition|)
 block|{
 try|try
 block|{
+comment|// Stop authors from amending the merge commits that Gerrit itself creates.
 name|perm
 operator|.
 name|check
@@ -3988,7 +3989,31 @@ throw|throw
 operator|new
 name|CommitValidationException
 argument_list|(
-literal|"do not amend merges not made by you"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"pushing merge commit %s by %s requires '%s' permission"
+argument_list|,
+name|receiveEvent
+operator|.
+name|commit
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|gerritIdent
+operator|.
+name|getEmailAddress
+argument_list|()
+argument_list|,
+name|RefPermission
+operator|.
+name|FORGE_SERVER
+operator|.
+name|name
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
