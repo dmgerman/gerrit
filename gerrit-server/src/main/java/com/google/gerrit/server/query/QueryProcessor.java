@@ -67,6 +67,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
+operator|.
+name|toImmutableList
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -119,6 +167,20 @@ operator|.
 name|collect
 operator|.
 name|Ordering
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -508,6 +570,18 @@ name|TimeUnit
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|IntStream
+import|;
+end_import
+
 begin_class
 DECL|class|QueryProcessor
 specifier|public
@@ -810,6 +884,7 @@ return|return
 name|this
 return|;
 block|}
+comment|/**    * Specify whether to enforce visibility by filtering out results that are not visible to the    * user.    *    *<p>Enforcing visibility may have performance consequences, as the index system may need to    * post-filter a large number of results to fill even a modest limit.    *    *<p>If visibility is enforced, the user's {@code queryLimit} global capability is also used to    * bound the total number of results. If this capability is non-positive, this results in the    * entire query processor being {@link #isDisabled() disabled}.    *    * @param enforce whether to enforce visibility.    * @return this.    */
 DECL|method|enforceVisibility (boolean enforce)
 specifier|public
 name|QueryProcessor
@@ -910,7 +985,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**    * Perform multiple queries in parallel.    *    * @param queries list of queries.    * @return results of the queries, one QueryResult per input query, in the same order as the    *     input.    */
+comment|/**    * Perform multiple queries in parallel.    *    *<p>If querying is disabled, short-circuits the index and returns empty results. Callers that    * wish to distinguish this case from a query returning no results from the index may call {@link    * #isDisabled()} themselves.    *    * @param queries list of queries.    * @return results of the queries, one QueryResult per input query, in the same order as the    *     input.    */
 DECL|method|query (List<Predicate<T>> queries)
 specifier|public
 name|List
@@ -1002,7 +1077,7 @@ name|e
 throw|;
 block|}
 block|}
-DECL|method|query (List<String> queryStrings, List<Predicate<T>> queries)
+DECL|method|query ( @ullable List<String> queryStrings, List<Predicate<T>> queries)
 specifier|private
 name|List
 argument_list|<
@@ -1013,6 +1088,8 @@ argument_list|>
 argument_list|>
 name|query
 parameter_list|(
+annotation|@
+name|Nullable
 name|List
 argument_list|<
 name|String
@@ -1049,6 +1126,64 @@ operator|.
 name|size
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|queryStrings
+operator|!=
+literal|null
+condition|)
+block|{
+name|int
+name|qs
+init|=
+name|queryStrings
+operator|.
+name|size
+argument_list|()
+decl_stmt|;
+name|checkArgument
+argument_list|(
+name|qs
+operator|==
+name|cnt
+argument_list|,
+literal|"got %s query strings but %s predicates"
+argument_list|,
+name|qs
+argument_list|,
+name|cnt
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|cnt
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+return|;
+block|}
+if|if
+condition|(
+name|isDisabled
+argument_list|()
+condition|)
+block|{
+return|return
+name|disabledResults
+argument_list|(
+name|queryStrings
+argument_list|,
+name|queries
+argument_list|)
+return|;
+block|}
 comment|// Parse and rewrite all queries.
 name|List
 argument_list|<
@@ -1369,7 +1504,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// only measure successful queries
+comment|// Only measure successful queries that actually touched the index.
 name|metrics
 operator|.
 name|executionTime
@@ -1395,6 +1530,94 @@ argument_list|)
 expr_stmt|;
 return|return
 name|out
+return|;
+block|}
+DECL|method|disabledResults ( List<String> queryStrings, List<Predicate<T>> queries)
+specifier|private
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|ImmutableList
+argument_list|<
+name|QueryResult
+argument_list|<
+name|T
+argument_list|>
+argument_list|>
+name|disabledResults
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|queryStrings
+parameter_list|,
+name|List
+argument_list|<
+name|Predicate
+argument_list|<
+name|T
+argument_list|>
+argument_list|>
+name|queries
+parameter_list|)
+block|{
+return|return
+name|IntStream
+operator|.
+name|range
+argument_list|(
+literal|0
+argument_list|,
+name|queries
+operator|.
+name|size
+argument_list|()
+argument_list|)
+operator|.
+name|mapToObj
+argument_list|(
+name|i
+lambda|->
+name|QueryResult
+operator|.
+name|create
+argument_list|(
+name|queryStrings
+operator|!=
+literal|null
+condition|?
+name|queryStrings
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+else|:
+literal|null
+argument_list|,
+name|queries
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+argument_list|,
+literal|0
+argument_list|,
+name|ImmutableList
+operator|.
+name|of
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|toImmutableList
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|createOptions ( IndexConfig indexConfig, int start, int limit, Set<String> requestedFields)
@@ -1508,6 +1731,7 @@ name|of
 argument_list|()
 return|;
 block|}
+comment|/**    * Check whether querying should be disabled.    *    *<p>Currently, the only condition that can disable the whole query processor is if both {@link    * #enforceVisibility(boolean) visibility is enforced} and the user has a non-positive maximum    * value for the {@code queryLimit} capability.    *    *<p>If querying is disabled, all calls to {@link #query(Predicate)} and {@link #query(List)}    * will return empty results. This method can be used if callers wish to distinguish this case    * from a query returning no results from the index.    *    * @return true if querying should be disabled.    */
 DECL|method|isDisabled ()
 specifier|public
 name|boolean
@@ -1664,7 +1888,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-return|return
+name|int
+name|result
+init|=
 name|Ordering
 operator|.
 name|natural
@@ -1674,6 +1900,19 @@ name|min
 argument_list|(
 name|possibleLimits
 argument_list|)
+decl_stmt|;
+comment|// Should have short-circuited from #query or thrown some other exception before getting here.
+name|checkState
+argument_list|(
+name|result
+operator|>
+literal|0
+argument_list|,
+literal|"effective limit should be positive"
+argument_list|)
+expr_stmt|;
+return|return
+name|result
 return|;
 block|}
 block|}
