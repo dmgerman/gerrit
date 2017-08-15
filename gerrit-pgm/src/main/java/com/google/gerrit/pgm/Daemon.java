@@ -1893,7 +1893,7 @@ literal|"--migrate-to-note-db"
 argument_list|,
 name|usage
 operator|=
-literal|"(EXPERIMENTAL) Automatically migrate changes to NoteDb"
+literal|"Automatically migrate changes to NoteDb"
 argument_list|,
 name|handler
 operator|=
