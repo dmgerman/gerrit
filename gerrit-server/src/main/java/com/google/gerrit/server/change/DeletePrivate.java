@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|conditions
+operator|.
+name|BooleanCondition
+operator|.
+name|or
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -77,6 +95,22 @@ operator|.
 name|common
 operator|.
 name|TimeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|conditions
+operator|.
+name|BooleanCondition
 import|;
 end_import
 
@@ -461,6 +495,9 @@ name|canDeletePrivate
 argument_list|(
 name|rsrc
 argument_list|)
+operator|.
+name|value
+argument_list|()
 condition|)
 block|{
 throw|throw
@@ -571,7 +608,7 @@ return|;
 block|}
 DECL|method|canDeletePrivate (ChangeResource rsrc)
 specifier|protected
-name|boolean
+name|BooleanCondition
 name|canDeletePrivate
 parameter_list|(
 name|ChangeResource
@@ -594,16 +631,8 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
-name|user
-operator|.
-name|testOrFalse
+name|or
 argument_list|(
-name|GlobalPermission
-operator|.
-name|ADMINISTRATE_SERVER
-argument_list|)
-operator|||
-operator|(
 name|rsrc
 operator|.
 name|isUserOwner
@@ -622,7 +651,16 @@ operator|.
 name|Status
 operator|.
 name|MERGED
-operator|)
+argument_list|,
+name|user
+operator|.
+name|testCond
+argument_list|(
+name|GlobalPermission
+operator|.
+name|ADMINISTRATE_SERVER
+argument_list|)
+argument_list|)
 return|;
 block|}
 block|}

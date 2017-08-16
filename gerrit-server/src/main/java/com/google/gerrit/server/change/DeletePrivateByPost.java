@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|conditions
+operator|.
+name|BooleanCondition
+operator|.
+name|and
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -258,6 +276,8 @@ argument_list|)
 operator|.
 name|setVisible
 argument_list|(
+name|and
+argument_list|(
 name|rsrc
 operator|.
 name|getChange
@@ -265,10 +285,11 @@ argument_list|()
 operator|.
 name|isPrivate
 argument_list|()
-operator|&&
+argument_list|,
 name|canDeletePrivate
 argument_list|(
 name|rsrc
+argument_list|)
 argument_list|)
 argument_list|)
 return|;
