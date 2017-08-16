@@ -549,7 +549,7 @@ operator|.
 name|permissions
 argument_list|()
 operator|.
-name|testOrFalse
+name|testCond
 argument_list|(
 name|ChangePermission
 operator|.
