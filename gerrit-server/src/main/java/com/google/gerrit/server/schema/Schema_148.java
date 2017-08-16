@@ -602,6 +602,11 @@ name|getName
 argument_list|()
 argument_list|,
 name|raw
+argument_list|,
+name|note
+operator|.
+name|getData
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
