@@ -178,9 +178,8 @@ operator|.
 name|Internal
 condition|)
 block|{
-name|AccountGroup
-name|group
-init|=
+name|description
+operator|=
 operator|(
 operator|(
 name|GroupDescription
@@ -189,13 +188,6 @@ name|Internal
 operator|)
 name|a
 operator|)
-operator|.
-name|getAccountGroup
-argument_list|()
-decl_stmt|;
-name|description
-operator|=
-name|group
 operator|.
 name|getDescription
 argument_list|()

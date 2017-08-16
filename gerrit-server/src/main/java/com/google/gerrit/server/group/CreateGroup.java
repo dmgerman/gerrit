@@ -1355,7 +1355,7 @@ condition|)
 block|{
 name|GroupDescription
 operator|.
-name|Basic
+name|Internal
 name|d
 init|=
 name|groups
@@ -1373,12 +1373,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
-name|GroupDescriptions
-operator|.
-name|toAccountGroup
-argument_list|(
 name|d
-argument_list|)
 operator|.
 name|getId
 argument_list|()

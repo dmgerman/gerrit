@@ -508,9 +508,6 @@ literal|null
 operator|&&
 name|g
 operator|.
-name|getAccountGroup
-argument_list|()
-operator|.
 name|isVisibleToAll
 argument_list|()
 return|;
