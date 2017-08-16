@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|conditions
+operator|.
+name|BooleanCondition
+operator|.
+name|and
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1298,6 +1316,8 @@ argument_list|)
 operator|.
 name|setVisible
 argument_list|(
+name|and
+argument_list|(
 name|rsrc
 operator|.
 name|getChange
@@ -1309,7 +1329,7 @@ operator|==
 name|Status
 operator|.
 name|ABANDONED
-operator|&&
+argument_list|,
 name|rsrc
 operator|.
 name|permissions
@@ -1320,11 +1340,12 @@ argument_list|(
 name|dbProvider
 argument_list|)
 operator|.
-name|testOrFalse
+name|testCond
 argument_list|(
 name|ChangePermission
 operator|.
 name|RESTORE
+argument_list|)
 argument_list|)
 argument_list|)
 return|;
