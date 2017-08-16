@@ -677,7 +677,9 @@ name|setUpOneChange
 argument_list|()
 expr_stmt|;
 name|migrate
-argument_list|()
+argument_list|(
+literal|"--trial"
+argument_list|)
 expr_stmt|;
 name|assertNotesMigrationState
 argument_list|(
@@ -869,11 +871,7 @@ name|setUpOneChange
 argument_list|()
 expr_stmt|;
 name|migrate
-argument_list|(
-literal|"--trial"
-argument_list|,
-literal|"false"
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|assertNotesMigrationState
 argument_list|(
@@ -1177,11 +1175,7 @@ name|assertServerStartupFails
 argument_list|()
 expr_stmt|;
 name|migrate
-argument_list|(
-literal|"--trial"
-argument_list|,
-literal|"false"
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|assertNotesMigrationState
 argument_list|(

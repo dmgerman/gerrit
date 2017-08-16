@@ -400,13 +400,11 @@ name|ui
 operator|.
 name|message
 argument_list|(
-literal|"Use experimental NoteDb for change metadata?\n"
+literal|"Use NoteDb for change metadata?\n"
 operator|+
-literal|"  NoteDb is not recommended for production servers."
+literal|"  See documentation:\n"
 operator|+
-literal|"  Please familiarize yourself with the documentation:\n"
-operator|+
-literal|"  https://gerrit-review.googlesource.com/Documentation/dev-note-db.html\n"
+literal|"  https://gerrit-review.googlesource.com/Documentation/note-db.html\n"
 argument_list|)
 expr_stmt|;
 if|if

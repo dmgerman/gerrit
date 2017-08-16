@@ -564,21 +564,12 @@ operator|=
 literal|"trial mode: migrate changes and turn on reading from NoteDb, but leave ReviewDb as"
 operator|+
 literal|" the source of truth"
-argument_list|,
-name|handler
-operator|=
-name|ExplicitBooleanOptionHandler
-operator|.
-name|class
 argument_list|)
 DECL|field|trial
 specifier|private
 name|boolean
 name|trial
-init|=
-literal|true
 decl_stmt|;
-comment|// TODO(dborowitz): Default to false in 3.0.
 annotation|@
 name|Option
 argument_list|(
