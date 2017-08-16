@@ -76,8 +76,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|FieldDef
@@ -92,11 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
 operator|.
-name|RegexPredicate
+name|query
+operator|.
+name|Matchable
 import|;
 end_import
 
@@ -108,11 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|index
 operator|.
 name|query
 operator|.
-name|Matchable
+name|RegexPredicate
 import|;
 end_import
 

@@ -132,11 +132,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|index
 operator|.
-name|client
-operator|.
-name|PatchSet
+name|FieldDef
 import|;
 end_import
 
@@ -148,11 +146,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|index
+name|client
 operator|.
-name|FieldDef
+name|PatchSet
 import|;
 end_import
 

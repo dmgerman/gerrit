@@ -76,13 +76,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
 operator|.
-name|change
+name|query
 operator|.
-name|ChangeField
+name|Predicate
 import|;
 end_import
 
@@ -96,9 +94,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
+name|index
 operator|.
-name|Predicate
+name|change
+operator|.
+name|ChangeField
 import|;
 end_import
 

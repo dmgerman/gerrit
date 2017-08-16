@@ -90,11 +90,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|index
 operator|.
-name|client
-operator|.
-name|AccountGroup
+name|IndexDefinition
 import|;
 end_import
 
@@ -106,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|index
+name|client
 operator|.
-name|IndexDefinition
+name|AccountGroup
 import|;
 end_import
 

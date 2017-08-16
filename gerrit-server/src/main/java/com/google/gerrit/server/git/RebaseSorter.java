@@ -188,6 +188,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -363,11 +375,14 @@ name|RevCommit
 argument_list|>
 name|alreadyAccepted
 decl_stmt|;
-DECL|field|internalChangeQuery
+DECL|field|queryProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|InternalChangeQuery
-name|internalChangeQuery
+argument_list|>
+name|queryProvider
 decl_stmt|;
 DECL|field|incoming
 specifier|private
@@ -378,7 +393,7 @@ name|CodeReviewCommit
 argument_list|>
 name|incoming
 decl_stmt|;
-DECL|method|RebaseSorter ( CodeReviewRevWalk rw, RevCommit initialTip, Set<RevCommit> alreadyAccepted, RevFlag canMergeFlag, InternalChangeQuery internalChangeQuery, Set<CodeReviewCommit> incoming)
+DECL|method|RebaseSorter ( CodeReviewRevWalk rw, RevCommit initialTip, Set<RevCommit> alreadyAccepted, RevFlag canMergeFlag, Provider<InternalChangeQuery> queryProvider, Set<CodeReviewCommit> incoming)
 specifier|public
 name|RebaseSorter
 parameter_list|(
@@ -397,8 +412,11 @@ parameter_list|,
 name|RevFlag
 name|canMergeFlag
 parameter_list|,
+name|Provider
+argument_list|<
 name|InternalChangeQuery
-name|internalChangeQuery
+argument_list|>
+name|queryProvider
 parameter_list|,
 name|Set
 argument_list|<
@@ -433,9 +451,9 @@ name|alreadyAccepted
 expr_stmt|;
 name|this
 operator|.
-name|internalChangeQuery
+name|queryProvider
 operator|=
-name|internalChangeQuery
+name|queryProvider
 expr_stmt|;
 name|this
 operator|.
@@ -784,7 +802,10 @@ name|ChangeData
 argument_list|>
 name|changes
 init|=
-name|internalChangeQuery
+name|queryProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|byCommit
 argument_list|(

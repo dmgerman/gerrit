@@ -76,6 +76,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|IsVisibleToPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|account
@@ -110,9 +126,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
+name|index
 operator|.
-name|IsVisibleToPredicate
+name|IndexUtils
 import|;
 end_import
 
@@ -161,6 +177,8 @@ name|AccountQueryBuilder
 operator|.
 name|FIELD_VISIBLETO
 argument_list|,
+name|IndexUtils
+operator|.
 name|describe
 argument_list|(
 name|accountControl

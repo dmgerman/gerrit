@@ -76,8 +76,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|FieldDef
@@ -92,9 +90,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
+operator|.
+name|query
 operator|.
 name|IntegerRangePredicate
 import|;
@@ -108,7 +106,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|index
 operator|.
 name|query
 operator|.
@@ -124,7 +122,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|index
 operator|.
 name|query
 operator|.

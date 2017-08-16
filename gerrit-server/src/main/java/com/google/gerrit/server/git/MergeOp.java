@@ -2064,11 +2064,14 @@ operator|.
 name|Factory
 name|mergeValidatorsFactory
 decl_stmt|;
-DECL|field|internalChangeQuery
+DECL|field|queryProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|InternalChangeQuery
-name|internalChangeQuery
+argument_list|>
+name|queryProvider
 decl_stmt|;
 DECL|field|submitStrategyFactory
 specifier|private
@@ -2174,7 +2177,7 @@ name|topicMetrics
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, InternalChangeQuery internalChangeQuery, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, Provider<MergeOpRepoManager> ormProvider, NotifyUtil notifyUtil, TopicMetrics topicMetrics, RetryHelper retryHelper)
+DECL|method|MergeOp ( ChangeMessagesUtil cmUtil, BatchUpdate.Factory batchUpdateFactory, InternalUser.Factory internalUserFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, Provider<InternalChangeQuery> queryProvider, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, Provider<MergeOpRepoManager> ormProvider, NotifyUtil notifyUtil, TopicMetrics topicMetrics, RetryHelper retryHelper)
 name|MergeOp
 parameter_list|(
 name|ChangeMessagesUtil
@@ -2198,8 +2201,11 @@ operator|.
 name|Factory
 name|mergeValidatorsFactory
 parameter_list|,
+name|Provider
+argument_list|<
 name|InternalChangeQuery
-name|internalChangeQuery
+argument_list|>
+name|queryProvider
 parameter_list|,
 name|SubmitStrategyFactory
 name|submitStrategyFactory
@@ -2257,9 +2263,9 @@ name|mergeValidatorsFactory
 expr_stmt|;
 name|this
 operator|.
-name|internalChangeQuery
+name|queryProvider
 operator|=
-name|internalChangeQuery
+name|queryProvider
 expr_stmt|;
 name|this
 operator|.
@@ -5385,7 +5391,10 @@ control|(
 name|ChangeData
 name|cd
 range|:
-name|internalChangeQuery
+name|queryProvider
+operator|.
+name|get
+argument_list|()
 operator|.
 name|byProjectOpen
 argument_list|(

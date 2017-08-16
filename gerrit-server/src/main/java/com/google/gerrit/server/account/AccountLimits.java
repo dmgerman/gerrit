@@ -122,6 +122,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|QueryProcessor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -442,6 +458,25 @@ operator|.
 name|QueueType
 operator|.
 name|INTERACTIVE
+return|;
+block|}
+comment|/**    * Get the limit on a {@link QueryProcessor} for a given user.    *    * @return limit according to {@link GlobalCapability#QUERY_LIMIT}.    */
+DECL|method|getQueryLimit ()
+specifier|public
+name|int
+name|getQueryLimit
+parameter_list|()
+block|{
+return|return
+name|getRange
+argument_list|(
+name|GlobalCapability
+operator|.
+name|QUERY_LIMIT
+argument_list|)
+operator|.
+name|getMax
+argument_list|()
 return|;
 block|}
 comment|/** @return true if the user has a permission rule specifying the range. */

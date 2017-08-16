@@ -172,8 +172,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|Schema
@@ -187,8 +185,6 @@ operator|.
 name|google
 operator|.
 name|gerrit
-operator|.
-name|server
 operator|.
 name|index
 operator|.

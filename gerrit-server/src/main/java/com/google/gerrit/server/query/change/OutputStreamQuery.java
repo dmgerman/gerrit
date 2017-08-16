@@ -136,6 +136,38 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|QueryParseException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|index
+operator|.
+name|query
+operator|.
+name|QueryResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -363,38 +395,6 @@ operator|.
 name|project
 operator|.
 name|SubmitRuleEvaluator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|QueryParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|QueryResult
 import|;
 end_import
 
@@ -651,7 +651,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Change query implementation that outputs to a stream in the style of an SSH command. */
+comment|/**  * Change query implementation that outputs to a stream in the style of an SSH command.  *  *<p>Instances are one-time-use. Other singleton classes should inject a Provider rather than  * holding on to a single instance.  */
 end_comment
 
 begin_class
@@ -936,7 +936,7 @@ parameter_list|)
 block|{
 name|queryProcessor
 operator|.
-name|setLimit
+name|setUserProvidedLimit
 argument_list|(
 name|n
 argument_list|)

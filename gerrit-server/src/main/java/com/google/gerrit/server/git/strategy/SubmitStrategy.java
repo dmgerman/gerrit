@@ -758,6 +758,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -1059,10 +1071,13 @@ specifier|final
 name|TagCache
 name|tagCache
 decl_stmt|;
-DECL|field|internalChangeQuery
+DECL|field|queryProvider
 specifier|final
+name|Provider
+argument_list|<
 name|InternalChangeQuery
-name|internalChangeQuery
+argument_list|>
+name|queryProvider
 decl_stmt|;
 DECL|field|destBranch
 specifier|final
@@ -1168,7 +1183,7 @@ name|dryrun
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, InternalChangeQuery internalChangeQuery, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted SubmitInput submitInput, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
+DECL|method|Arguments ( AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeMerged changeMerged, ChangeMessagesUtil cmUtil, EmailMerge.Factory mergedSenderFactory, GitRepositoryManager repoManager, LabelNormalizer labelNormalizer, MergeUtil.Factory mergeUtilFactory, PatchSetInfoFactory patchSetInfoFactory, PatchSetUtil psUtil, @GerritPersonIdent PersonIdent serverIdent, ProjectCache projectCache, RebaseChangeOp.Factory rebaseFactory, OnSubmitValidators.Factory onSubmitValidatorsFactory, TagCache tagCache, Provider<InternalChangeQuery> queryProvider, @Assisted Branch.NameKey destBranch, @Assisted CommitStatus commitStatus, @Assisted CodeReviewRevWalk rw, @Assisted IdentifiedUser caller, @Assisted MergeTip mergeTip, @Assisted RevFlag canMergeFlag, @Assisted ReviewDb db, @Assisted Set<RevCommit> alreadyAccepted, @Assisted Set<CodeReviewCommit> incoming, @Assisted RequestId submissionId, @Assisted SubmitType submitType, @Assisted SubmitInput submitInput, @Assisted ListMultimap<RecipientType, Account.Id> accountsToNotify, @Assisted SubmoduleOp submoduleOp, @Assisted boolean dryrun)
 name|Arguments
 parameter_list|(
 name|AccountCache
@@ -1231,8 +1246,11 @@ parameter_list|,
 name|TagCache
 name|tagCache
 parameter_list|,
+name|Provider
+argument_list|<
 name|InternalChangeQuery
-name|internalChangeQuery
+argument_list|>
+name|queryProvider
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1405,9 +1423,9 @@ name|tagCache
 expr_stmt|;
 name|this
 operator|.
-name|internalChangeQuery
+name|queryProvider
 operator|=
-name|internalChangeQuery
+name|queryProvider
 expr_stmt|;
 name|this
 operator|.
@@ -1557,7 +1575,7 @@ name|alreadyAccepted
 argument_list|,
 name|canMergeFlag
 argument_list|,
-name|internalChangeQuery
+name|queryProvider
 argument_list|,
 name|incoming
 argument_list|)
