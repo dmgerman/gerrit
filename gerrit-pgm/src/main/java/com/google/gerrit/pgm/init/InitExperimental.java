@@ -404,7 +404,7 @@ literal|"Use NoteDb for change metadata?\n"
 operator|+
 literal|"  See documentation:\n"
 operator|+
-literal|"  https://gerrit-review.googlesource.com/Documentation/dev-note-db.html\n"
+literal|"  https://gerrit-review.googlesource.com/Documentation/note-db.html\n"
 argument_list|)
 expr_stmt|;
 if|if
