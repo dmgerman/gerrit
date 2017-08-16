@@ -74,6 +74,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|conditions
+operator|.
+name|BooleanCondition
+operator|.
+name|and
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|permissions
@@ -2035,6 +2053,8 @@ argument_list|)
 operator|.
 name|setVisible
 argument_list|(
+name|and
+argument_list|(
 name|change
 operator|.
 name|getStatus
@@ -2045,7 +2065,7 @@ operator|.
 name|Status
 operator|.
 name|MERGED
-operator|&&
+argument_list|,
 name|permissionBackend
 operator|.
 name|user
@@ -2061,9 +2081,10 @@ name|getDest
 argument_list|()
 argument_list|)
 operator|.
-name|testOrFalse
+name|testCond
 argument_list|(
 name|CREATE_CHANGE
+argument_list|)
 argument_list|)
 argument_list|)
 return|;
