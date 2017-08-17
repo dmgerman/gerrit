@@ -287,6 +287,8 @@ name|serialVersionUID
 init|=
 literal|28L
 decl_stmt|;
+comment|// TODO(aliceks): Get rid of this enum and the parameter in the PatchListKey as we only use one of
+comment|// its values.
 DECL|enum|Algorithm
 specifier|public
 enum|enum
@@ -491,38 +493,6 @@ argument_list|,
 name|Algorithm
 operator|.
 name|OPTIMIZED_DIFF
-argument_list|)
-return|;
-block|}
-DECL|method|againstCommitWithPureTreeDiff ( AnyObjectId otherCommitId, AnyObjectId newId, Whitespace whitespace)
-specifier|public
-specifier|static
-name|PatchListKey
-name|againstCommitWithPureTreeDiff
-parameter_list|(
-name|AnyObjectId
-name|otherCommitId
-parameter_list|,
-name|AnyObjectId
-name|newId
-parameter_list|,
-name|Whitespace
-name|whitespace
-parameter_list|)
-block|{
-return|return
-operator|new
-name|PatchListKey
-argument_list|(
-name|otherCommitId
-argument_list|,
-name|newId
-argument_list|,
-name|whitespace
-argument_list|,
-name|Algorithm
-operator|.
-name|PURE_TREE_DIFF
 argument_list|)
 return|;
 block|}
