@@ -282,10 +282,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|change
-operator|.
-name|StalenessChecker
-operator|.
 name|RefState
 import|;
 end_import

@@ -316,6 +316,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|group
 operator|.
 name|Groups
@@ -716,6 +732,12 @@ block|}
 block|}
 return|;
 block|}
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
 DECL|field|byId
 specifier|private
 specifier|final
@@ -759,9 +781,12 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCacheImpl ( @amedBYID_NAME) LoadingCache<Account.Id, Optional<AccountState>> byId, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<AccountIndexer> indexer)
+DECL|method|AccountCacheImpl ( AllUsersName allUsersName, @Named(BYID_NAME) LoadingCache<Account.Id, Optional<AccountState>> byId, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<AccountIndexer> indexer)
 name|AccountCacheImpl
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
 annotation|@
 name|Named
 argument_list|(
@@ -805,6 +830,12 @@ argument_list|>
 name|indexer
 parameter_list|)
 block|{
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|allUsersName
+expr_stmt|;
 name|this
 operator|.
 name|byId
@@ -1089,7 +1120,6 @@ block|}
 block|}
 DECL|method|missing (Account.Id accountId)
 specifier|private
-specifier|static
 name|AccountState
 name|missing
 parameter_list|(
@@ -1137,6 +1167,8 @@ return|return
 operator|new
 name|AccountState
 argument_list|(
+name|allUsersName
+argument_list|,
 name|account
 argument_list|,
 name|anon
@@ -1185,6 +1217,12 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
+decl_stmt|;
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
 decl_stmt|;
 DECL|field|accounts
 specifier|private
@@ -1245,7 +1283,7 @@ name|externalIds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ByIdLoader ( SchemaFactory<ReviewDb> sf, Accounts accounts, GroupCache groupCache, Groups groups, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig, ExternalIds externalIds)
+DECL|method|ByIdLoader ( SchemaFactory<ReviewDb> sf, AllUsersName allUsersName, Accounts accounts, GroupCache groupCache, Groups groups, GeneralPreferencesLoader loader, @Named(BYUSER_NAME) LoadingCache<String, Optional<Account.Id>> byUsername, Provider<WatchConfig.Accessor> watchConfig, ExternalIds externalIds)
 name|ByIdLoader
 parameter_list|(
 name|SchemaFactory
@@ -1253,6 +1291,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|sf
+parameter_list|,
+name|AllUsersName
+name|allUsersName
 parameter_list|,
 name|Accounts
 name|accounts
@@ -1298,15 +1339,21 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|accounts
-operator|=
-name|accounts
-expr_stmt|;
-name|this
-operator|.
 name|schema
 operator|=
 name|sf
+expr_stmt|;
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|allUsersName
+expr_stmt|;
+name|this
+operator|.
+name|accounts
+operator|=
+name|accounts
 expr_stmt|;
 name|this
 operator|.
@@ -1595,6 +1642,8 @@ argument_list|(
 operator|new
 name|AccountState
 argument_list|(
+name|allUsersName
+argument_list|,
 name|account
 argument_list|,
 name|internalGroups
