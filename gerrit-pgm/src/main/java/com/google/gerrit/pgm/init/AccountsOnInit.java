@@ -959,6 +959,16 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+name|account
+operator|.
+name|setMetaId
+argument_list|(
+name|id
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
