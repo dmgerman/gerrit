@@ -496,6 +496,39 @@ name|OPTIMIZED_DIFF
 argument_list|)
 return|;
 block|}
+comment|// Please keep this method for the moment even though it is unused.
+DECL|method|againstCommitWithPureTreeDiff ( AnyObjectId otherCommitId, AnyObjectId newId, Whitespace whitespace)
+specifier|public
+specifier|static
+name|PatchListKey
+name|againstCommitWithPureTreeDiff
+parameter_list|(
+name|AnyObjectId
+name|otherCommitId
+parameter_list|,
+name|AnyObjectId
+name|newId
+parameter_list|,
+name|Whitespace
+name|whitespace
+parameter_list|)
+block|{
+return|return
+operator|new
+name|PatchListKey
+argument_list|(
+name|otherCommitId
+argument_list|,
+name|newId
+argument_list|,
+name|whitespace
+argument_list|,
+name|Algorithm
+operator|.
+name|PURE_TREE_DIFF
+argument_list|)
+return|;
+block|}
 comment|/**    * Old patch-set ID    *    *<p>When null, it represents the Base of the newId for a non-merge commit.    *    *<p>When newId is a merge commit, null value of the oldId represents either the auto-merge    * commit of the newId or a parent commit of the newId. These two cases are distinguished by the    * parentNum.    */
 DECL|field|oldId
 specifier|private
