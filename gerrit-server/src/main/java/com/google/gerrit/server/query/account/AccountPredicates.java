@@ -496,6 +496,35 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|preferredEmailExact (String email)
+specifier|public
+specifier|static
+name|Predicate
+argument_list|<
+name|AccountState
+argument_list|>
+name|preferredEmailExact
+parameter_list|(
+name|String
+name|email
+parameter_list|)
+block|{
+return|return
+operator|new
+name|AccountPredicate
+argument_list|(
+name|AccountField
+operator|.
+name|PREFERRED_EMAIL_EXACT
+argument_list|,
+name|AccountQueryBuilder
+operator|.
+name|FIELD_PREFERRED_EMAIL_EXACT
+argument_list|,
+name|email
+argument_list|)
+return|;
+block|}
 DECL|method|equalsName (String name)
 specifier|public
 specifier|static
