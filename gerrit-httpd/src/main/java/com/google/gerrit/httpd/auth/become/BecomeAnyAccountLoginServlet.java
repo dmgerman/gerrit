@@ -1596,25 +1596,6 @@ argument_list|)
 operator|.
 name|stream
 argument_list|()
-comment|// the index query also matches prefixes, filter those out
-operator|.
-name|filter
-argument_list|(
-name|a
-lambda|->
-name|email
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-name|a
-operator|.
-name|getAccount
-argument_list|()
-operator|.
-name|getPreferredEmail
-argument_list|()
-argument_list|)
-argument_list|)
 operator|.
 name|map
 argument_list|(
