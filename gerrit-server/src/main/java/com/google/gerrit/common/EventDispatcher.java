@@ -232,7 +232,7 @@ name|OrmException
 throws|,
 name|PermissionBackendException
 function_decl|;
-comment|/**    * Post a stream event that is related to a branch    *    * @param branchName The branch that the event is related to    * @param event The event to post    */
+comment|/**    * Post a stream event that is related to a branch    *    * @param branchName The branch that the event is related to    * @param event The event to post    * @throws PermissionBackendException on failure of permission checks    */
 DECL|method|postEvent (Branch.NameKey branchName, RefEvent event)
 name|void
 name|postEvent
@@ -245,6 +245,8 @@ parameter_list|,
 name|RefEvent
 name|event
 parameter_list|)
+throws|throws
+name|PermissionBackendException
 function_decl|;
 comment|/**    * Post a stream event that is related to a project.    *    * @param projectName The project that the event is related to.    * @param event The event to post.    */
 DECL|method|postEvent (Project.NameKey projectName, ProjectEvent event)

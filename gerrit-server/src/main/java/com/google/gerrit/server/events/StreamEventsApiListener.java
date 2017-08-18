@@ -3013,6 +3013,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|dispatcher
 operator|.
 name|get
@@ -3025,6 +3027,23 @@ argument_list|,
 name|event
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|PermissionBackendException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"error while posting event"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

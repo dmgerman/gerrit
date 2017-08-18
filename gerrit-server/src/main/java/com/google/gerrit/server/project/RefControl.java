@@ -840,7 +840,6 @@ return|;
 block|}
 comment|/** Can this user see this reference exists? */
 DECL|method|isVisible ()
-specifier|public
 name|boolean
 name|isVisible
 parameter_list|()
