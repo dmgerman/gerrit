@@ -2606,18 +2606,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|defaultStorage
-operator|==
-name|PrimaryStorage
-operator|.
-name|REVIEW_DB
-condition|)
-block|{
-comment|// If changes should exist in ReviewDb, it's worth warning about a meta ref with no
-comment|// corresponding ReviewDb data. But stray patch set refs can happen due to normal error
-comment|// conditions, e.g. failed push processing, so aren't worth even a warning.
-if|if
-condition|(
+operator|!
 name|sr
 operator|.
 name|fromMetaRefs
@@ -2629,6 +2618,21 @@ name|id
 argument_list|)
 condition|)
 block|{
+comment|// Stray patch set refs can happen due to normal error conditions, e.g. failed push
+comment|// processing, so aren't worth even a warning.
+continue|continue;
+block|}
+if|if
+condition|(
+name|defaultStorage
+operator|==
+name|PrimaryStorage
+operator|.
+name|REVIEW_DB
+condition|)
+block|{
+comment|// If changes should exist in ReviewDb, it's worth warning about a meta ref with no
+comment|// corresponding ReviewDb data.
 name|log
 operator|.
 name|warn
@@ -2640,7 +2644,6 @@ argument_list|,
 name|project
 argument_list|)
 expr_stmt|;
-block|}
 continue|continue;
 block|}
 comment|// TODO(dborowitz): See discussion in BatchUpdate#newChangeContext.
