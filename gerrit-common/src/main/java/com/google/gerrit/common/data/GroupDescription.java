@@ -168,6 +168,8 @@ name|Id
 name|getId
 parameter_list|()
 function_decl|;
+annotation|@
+name|Nullable
 DECL|method|getDescription ()
 name|String
 name|getDescription

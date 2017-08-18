@@ -140,6 +140,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|index
 operator|.
 name|group
@@ -169,7 +185,7 @@ specifier|public
 specifier|static
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|uuid
 parameter_list|(
@@ -203,7 +219,7 @@ specifier|public
 specifier|static
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|description
 parameter_list|(
@@ -232,7 +248,7 @@ specifier|public
 specifier|static
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|inname
 parameter_list|(
@@ -268,7 +284,7 @@ specifier|public
 specifier|static
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|name
 parameter_list|(
@@ -297,7 +313,7 @@ specifier|public
 specifier|static
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|owner
 parameter_list|(
@@ -331,7 +347,7 @@ specifier|public
 specifier|static
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|isVisibleToAll
 parameter_list|()
@@ -355,15 +371,15 @@ name|GroupPredicate
 extends|extends
 name|IndexPredicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 block|{
-DECL|method|GroupPredicate (FieldDef<AccountGroup, ?> def, String value)
+DECL|method|GroupPredicate (FieldDef<InternalGroup, ?> def, String value)
 name|GroupPredicate
 parameter_list|(
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|?
 argument_list|>
@@ -381,12 +397,12 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GroupPredicate (FieldDef<AccountGroup, ?> def, String name, String value)
+DECL|method|GroupPredicate (FieldDef<InternalGroup, ?> def, String name, String value)
 name|GroupPredicate
 parameter_list|(
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|?
 argument_list|>

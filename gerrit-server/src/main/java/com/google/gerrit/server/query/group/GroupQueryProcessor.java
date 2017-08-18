@@ -204,22 +204,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -255,6 +239,22 @@ operator|.
 name|account
 operator|.
 name|GroupControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|InternalGroup
 import|;
 end_import
 
@@ -348,7 +348,7 @@ name|GroupQueryProcessor
 extends|extends
 name|QueryProcessor
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 block|{
 DECL|field|userProvider
@@ -471,17 +471,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|enforceVisibility (Predicate<AccountGroup> pred)
+DECL|method|enforceVisibility (Predicate<InternalGroup> pred)
 specifier|protected
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|enforceVisibility
 parameter_list|(
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|pred
 parameter_list|)

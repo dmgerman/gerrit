@@ -184,11 +184,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|group
 operator|.
-name|AccountGroup
+name|InternalGroup
 import|;
 end_import
 
@@ -219,7 +219,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|Integer
 argument_list|>
@@ -250,7 +250,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|String
 argument_list|>
@@ -284,7 +284,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|String
 argument_list|>
@@ -315,7 +315,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|Timestamp
 argument_list|>
@@ -328,7 +328,7 @@ argument_list|)
 operator|.
 name|build
 argument_list|(
-name|AccountGroup
+name|InternalGroup
 operator|::
 name|getCreatedOn
 argument_list|)
@@ -340,7 +340,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|String
 argument_list|>
@@ -353,7 +353,7 @@ argument_list|)
 operator|.
 name|build
 argument_list|(
-name|AccountGroup
+name|InternalGroup
 operator|::
 name|getName
 argument_list|)
@@ -365,7 +365,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|Iterable
 argument_list|<
@@ -401,7 +401,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|String
 argument_list|>
@@ -414,7 +414,7 @@ argument_list|)
 operator|.
 name|build
 argument_list|(
-name|AccountGroup
+name|InternalGroup
 operator|::
 name|getDescription
 argument_list|)
@@ -426,7 +426,7 @@ specifier|static
 specifier|final
 name|FieldDef
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|String
 argument_list|>

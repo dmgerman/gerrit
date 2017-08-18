@@ -272,6 +272,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|index
 operator|.
 name|IndexUtils
@@ -546,6 +562,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -624,7 +650,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 implements|implements
 name|GroupIndex
@@ -638,12 +664,12 @@ DECL|field|groups
 name|MappingProperties
 name|groups
 decl_stmt|;
-DECL|method|GroupMapping (Schema<AccountGroup> schema)
+DECL|method|GroupMapping (Schema<InternalGroup> schema)
 name|GroupMapping
 parameter_list|(
 name|Schema
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|schema
 parameter_list|)
@@ -712,7 +738,7 @@ name|groupCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, JestClientBuilder clientBuilder, @Assisted Schema<AccountGroup> schema)
+DECL|method|ElasticGroupIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, JestClientBuilder clientBuilder, @Assisted Schema<InternalGroup> schema)
 name|ElasticGroupIndex
 parameter_list|(
 annotation|@
@@ -736,7 +762,7 @@ annotation|@
 name|Assisted
 name|Schema
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|schema
 parameter_list|)
@@ -773,12 +799,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|replace (AccountGroup group)
+DECL|method|replace (InternalGroup group)
 specifier|public
 name|void
 name|replace
 parameter_list|(
-name|AccountGroup
+name|InternalGroup
 name|group
 parameter_list|)
 throws|throws
@@ -871,17 +897,17 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getSource (Predicate<AccountGroup> p, QueryOptions opts)
+DECL|method|getSource (Predicate<InternalGroup> p, QueryOptions opts)
 specifier|public
 name|DataSource
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|getSource
 parameter_list|(
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|p
 parameter_list|,
@@ -967,12 +993,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getId (AccountGroup group)
+DECL|method|getId (InternalGroup group)
 specifier|protected
 name|String
 name|getId
 parameter_list|(
-name|AccountGroup
+name|InternalGroup
 name|group
 parameter_list|)
 block|{
@@ -993,7 +1019,7 @@ name|QuerySource
 implements|implements
 name|DataSource
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 block|{
 DECL|field|search
@@ -1011,12 +1037,12 @@ name|String
 argument_list|>
 name|fields
 decl_stmt|;
-DECL|method|QuerySource (Predicate<AccountGroup> p, QueryOptions opts)
+DECL|method|QuerySource (Predicate<InternalGroup> p, QueryOptions opts)
 name|QuerySource
 parameter_list|(
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|p
 parameter_list|,
@@ -1161,7 +1187,7 @@ DECL|method|read ()
 specifier|public
 name|ResultSet
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|read
 parameter_list|()
@@ -1172,7 +1198,7 @@ try|try
 block|{
 name|List
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|results
 init|=
@@ -1264,11 +1290,13 @@ name|i
 operator|++
 control|)
 block|{
-name|results
-operator|.
-name|add
-argument_list|(
-name|toAccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
+name|internalGroup
+init|=
+name|toInternalGroup
 argument_list|(
 name|json
 operator|.
@@ -1277,6 +1305,14 @@ argument_list|(
 name|i
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|internalGroup
+operator|.
+name|ifPresent
+argument_list|(
+name|results
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
 block|}
@@ -1298,7 +1334,7 @@ block|}
 specifier|final
 name|List
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|r
 init|=
@@ -1313,7 +1349,7 @@ return|return
 operator|new
 name|ResultSet
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 argument_list|()
 block|{
@@ -1322,7 +1358,7 @@ name|Override
 specifier|public
 name|Iterator
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|iterator
 parameter_list|()
@@ -1339,7 +1375,7 @@ name|Override
 specifier|public
 name|List
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|toList
 parameter_list|()
@@ -1390,10 +1426,13 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|toAccountGroup (JsonElement json)
+DECL|method|toInternalGroup (JsonElement json)
 specifier|private
-name|AccountGroup
-name|toAccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
+name|toInternalGroup
 parameter_list|(
 name|JsonElement
 name|json
@@ -1469,7 +1508,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|get
+name|getInternalGroup
 argument_list|(
 name|uuid
 argument_list|)

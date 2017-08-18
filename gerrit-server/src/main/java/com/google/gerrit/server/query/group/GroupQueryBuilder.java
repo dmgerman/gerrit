@@ -260,6 +260,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -288,7 +304,7 @@ name|GroupQueryBuilder
 extends|extends
 name|QueryBuilder
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 block|{
 DECL|field|FIELD_UUID
@@ -353,7 +369,7 @@ name|QueryBuilder
 operator|.
 name|Definition
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|,
 name|GroupQueryBuilder
 argument_list|>
@@ -445,7 +461,7 @@ DECL|method|uuid (String uuid)
 specifier|public
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|uuid
 parameter_list|(
@@ -474,7 +490,7 @@ DECL|method|description (String description)
 specifier|public
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|description
 parameter_list|(
@@ -516,7 +532,7 @@ DECL|method|inname (String namePart)
 specifier|public
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|inname
 parameter_list|(
@@ -554,7 +570,7 @@ DECL|method|name (String name)
 specifier|public
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|name
 parameter_list|(
@@ -577,7 +593,7 @@ DECL|method|owner (String owner)
 specifier|public
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|owner
 parameter_list|(
@@ -674,7 +690,7 @@ DECL|method|is (String value)
 specifier|public
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|is
 parameter_list|(
@@ -714,7 +730,7 @@ DECL|method|defaultField (String query)
 specifier|protected
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|defaultField
 parameter_list|(
@@ -729,7 +745,7 @@ name|List
 argument_list|<
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 argument_list|>
 name|preds
@@ -829,7 +845,7 @@ DECL|method|limit (String query)
 specifier|public
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|limit
 parameter_list|(

@@ -112,11 +112,37 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -161,6 +187,20 @@ name|AccountGroup
 operator|.
 name|UUID
 name|uuid
+parameter_list|)
+function_decl|;
+comment|/**    * Looks up an internal group by its UUID.    *    * @param groupUuid the UUID of the internal group    * @return an {@code Optional} of the internal group, or an empty {@code Optional} if no internal    *     group with this UUID exists on this server or an error occurred during lookup    */
+DECL|method|getInternalGroup (AccountGroup.UUID groupUuid)
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
+name|getInternalGroup
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|groupUuid
 parameter_list|)
 function_decl|;
 comment|/** @return sorted list of groups. */

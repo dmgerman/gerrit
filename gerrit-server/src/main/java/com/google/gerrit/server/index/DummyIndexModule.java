@@ -116,11 +116,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountGroup
+name|AccountState
 import|;
 end_import
 
@@ -134,9 +134,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
+name|group
 operator|.
-name|AccountState
+name|InternalGroup
 import|;
 end_import
 
@@ -324,14 +324,14 @@ name|Factory
 block|{
 annotation|@
 name|Override
-DECL|method|create (Schema<AccountGroup> schema)
+DECL|method|create (Schema<InternalGroup> schema)
 specifier|public
 name|GroupIndex
 name|create
 parameter_list|(
 name|Schema
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|schema
 parameter_list|)

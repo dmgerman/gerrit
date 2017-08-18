@@ -120,11 +120,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|group
 operator|.
-name|AccountGroup
+name|InternalGroup
 import|;
 end_import
 
@@ -136,7 +136,7 @@ name|GroupSchemaDefinitions
 extends|extends
 name|SchemaDefinitions
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 block|{
 annotation|@
@@ -146,7 +146,7 @@ specifier|static
 specifier|final
 name|Schema
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|V2
 init|=
@@ -186,7 +186,7 @@ specifier|static
 specifier|final
 name|Schema
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|V3
 init|=
@@ -219,7 +219,7 @@ name|super
 argument_list|(
 literal|"groups"
 argument_list|,
-name|AccountGroup
+name|InternalGroup
 operator|.
 name|class
 argument_list|)

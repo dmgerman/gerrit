@@ -234,6 +234,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|index
 operator|.
 name|IndexUtils
@@ -383,6 +399,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -612,7 +638,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 implements|implements
 name|GroupIndex
@@ -654,13 +680,13 @@ argument_list|(
 name|UUID
 argument_list|)
 decl_stmt|;
-DECL|method|idTerm (AccountGroup group)
+DECL|method|idTerm (InternalGroup group)
 specifier|private
 specifier|static
 name|Term
 name|idTerm
 parameter_list|(
-name|AccountGroup
+name|InternalGroup
 name|group
 parameter_list|)
 block|{
@@ -714,7 +740,7 @@ specifier|private
 specifier|final
 name|QueryBuilder
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|queryBuilder
 decl_stmt|;
@@ -727,7 +753,7 @@ name|GroupCache
 argument_list|>
 name|groupCache
 decl_stmt|;
-DECL|method|dir (Schema<AccountGroup> schema, Config cfg, SitePaths sitePaths)
+DECL|method|dir (Schema<?> schema, Config cfg, SitePaths sitePaths)
 specifier|private
 specifier|static
 name|Directory
@@ -735,7 +761,7 @@ name|dir
 parameter_list|(
 name|Schema
 argument_list|<
-name|AccountGroup
+name|?
 argument_list|>
 name|schema
 parameter_list|,
@@ -789,7 +815,7 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|LuceneGroupIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, @Assisted Schema<AccountGroup> schema)
+DECL|method|LuceneGroupIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, Provider<GroupCache> groupCache, @Assisted Schema<InternalGroup> schema)
 name|LuceneGroupIndex
 parameter_list|(
 annotation|@
@@ -810,7 +836,7 @@ annotation|@
 name|Assisted
 name|Schema
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|schema
 parameter_list|)
@@ -882,12 +908,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|replace (AccountGroup group)
+DECL|method|replace (InternalGroup group)
 specifier|public
 name|void
 name|replace
 parameter_list|(
-name|AccountGroup
+name|InternalGroup
 name|group
 parameter_list|)
 throws|throws
@@ -977,17 +1003,17 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getSource (Predicate<AccountGroup> p, QueryOptions opts)
+DECL|method|getSource (Predicate<InternalGroup> p, QueryOptions opts)
 specifier|public
 name|DataSource
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|getSource
 parameter_list|(
 name|Predicate
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|p
 parameter_list|,
@@ -1037,7 +1063,7 @@ name|QuerySource
 implements|implements
 name|DataSource
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 block|{
 DECL|field|opts
@@ -1109,7 +1135,7 @@ DECL|method|read ()
 specifier|public
 name|ResultSet
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|read
 parameter_list|()
@@ -1157,7 +1183,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|result
 init|=
@@ -1223,21 +1249,31 @@ name|opts
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|result
-operator|.
-name|add
-argument_list|(
-name|toAccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
+name|internalGroup
+init|=
+name|toInternalGroup
 argument_list|(
 name|doc
 argument_list|)
+decl_stmt|;
+name|internalGroup
+operator|.
+name|ifPresent
+argument_list|(
+name|result
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
 block|}
 specifier|final
 name|List
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|r
 init|=
@@ -1252,7 +1288,7 @@ return|return
 operator|new
 name|ResultSet
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 argument_list|()
 block|{
@@ -1261,7 +1297,7 @@ name|Override
 specifier|public
 name|Iterator
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|iterator
 parameter_list|()
@@ -1278,7 +1314,7 @@ name|Override
 specifier|public
 name|List
 argument_list|<
-name|AccountGroup
+name|InternalGroup
 argument_list|>
 name|toList
 parameter_list|()
@@ -1350,10 +1386,13 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|toAccountGroup (Document doc)
+DECL|method|toInternalGroup (Document doc)
 specifier|private
-name|AccountGroup
-name|toAccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
+name|toInternalGroup
 parameter_list|(
 name|Document
 name|doc
@@ -1391,7 +1430,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|get
+name|getInternalGroup
 argument_list|(
 name|uuid
 argument_list|)
