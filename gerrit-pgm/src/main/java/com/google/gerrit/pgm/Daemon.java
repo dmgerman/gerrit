@@ -1166,7 +1166,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|H2AccountPatchReviewStore
+name|InMemoryAccountPatchReviewStore
 import|;
 end_import
 
@@ -2924,9 +2924,9 @@ argument_list|(
 name|inMemoryTest
 condition|?
 operator|new
-name|H2AccountPatchReviewStore
+name|InMemoryAccountPatchReviewStore
 operator|.
-name|InMemoryModule
+name|Module
 argument_list|()
 else|:
 operator|new
