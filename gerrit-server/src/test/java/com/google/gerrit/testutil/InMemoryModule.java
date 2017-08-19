@@ -910,7 +910,7 @@ name|server
 operator|.
 name|schema
 operator|.
-name|H2AccountPatchReviewStore
+name|InMemoryAccountPatchReviewStore
 import|;
 end_import
 
@@ -2157,9 +2157,9 @@ expr_stmt|;
 name|install
 argument_list|(
 operator|new
-name|H2AccountPatchReviewStore
+name|InMemoryAccountPatchReviewStore
 operator|.
-name|InMemoryModule
+name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
