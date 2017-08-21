@@ -1641,9 +1641,35 @@ name|db
 argument_list|)
 return|;
 block|}
+comment|/** Can this user delete this draft change or any patch set of this change? */
+DECL|method|canDeleteDraft (ReviewDb db)
+specifier|public
+name|boolean
+name|canDeleteDraft
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+comment|// TODO(hiesel) These don't need to be migrated, just remove after support for drafts is removed
+return|return
+name|canDelete
+argument_list|(
+name|db
+argument_list|,
+name|Change
+operator|.
+name|Status
+operator|.
+name|DRAFT
+argument_list|)
+return|;
+block|}
 comment|/** Can this user delete this change or any patch set of this change? */
 DECL|method|canDelete (ReviewDb db, Change.Status status)
-specifier|public
+specifier|private
 name|boolean
 name|canDelete
 parameter_list|(
