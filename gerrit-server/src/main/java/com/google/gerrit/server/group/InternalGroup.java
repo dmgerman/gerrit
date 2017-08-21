@@ -144,6 +144,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|sql
 operator|.
 name|Timestamp
@@ -158,7 +168,18 @@ specifier|public
 specifier|abstract
 class|class
 name|InternalGroup
+implements|implements
+name|Serializable
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|create ( AccountGroup accountGroup, ImmutableSet<Account.Id> members, ImmutableSet<AccountGroup.UUID> subgroups)
 specifier|public
 specifier|static

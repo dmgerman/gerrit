@@ -596,6 +596,22 @@ name|server
 operator|.
 name|group
 operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|ServerInitiated
 import|;
 end_import
@@ -2048,20 +2064,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AccountGroup
+name|InternalGroup
 name|adminGroup
 init|=
-name|groupCache
-operator|.
-name|get
-argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|NameKey
+name|getFromCache
 argument_list|(
 literal|"Administrators"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|testGetGroup
@@ -2101,7 +2109,7 @@ name|adminGroup
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|testGetGroup (Object id, AccountGroup expectedGroup)
+DECL|method|testGetGroup (Object id, InternalGroup expectedGroup)
 specifier|private
 name|void
 name|testGetGroup
@@ -2109,7 +2117,7 @@ parameter_list|(
 name|Object
 name|id
 parameter_list|,
-name|AccountGroup
+name|InternalGroup
 name|expectedGroup
 parameter_list|)
 throws|throws
@@ -4457,7 +4465,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|AccountGroup
+name|InternalGroup
 name|adminGroup
 init|=
 name|getFromCache
@@ -5442,7 +5450,7 @@ expr_stmt|;
 block|}
 DECL|method|getFromCache (String name)
 specifier|private
-name|AccountGroup
+name|InternalGroup
 name|getFromCache
 parameter_list|(
 name|String
@@ -5463,6 +5471,11 @@ name|NameKey
 argument_list|(
 name|name
 argument_list|)
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|null
 argument_list|)
 return|;
 block|}
