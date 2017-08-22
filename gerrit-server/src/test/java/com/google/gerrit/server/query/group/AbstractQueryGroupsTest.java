@@ -1288,7 +1288,7 @@ name|createGroup
 argument_list|(
 name|name
 argument_list|(
-literal|"group"
+literal|"Group"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1311,14 +1311,12 @@ name|group
 operator|.
 name|name
 operator|.
-name|toUpperCase
+name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
 name|US
 argument_list|)
-argument_list|,
-name|group
 argument_list|)
 expr_stmt|;
 comment|// only exact match

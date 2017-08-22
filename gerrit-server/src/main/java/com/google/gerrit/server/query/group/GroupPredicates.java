@@ -289,13 +289,6 @@ operator|.
 name|FIELD_NAME
 argument_list|,
 name|name
-operator|.
-name|toLowerCase
-argument_list|(
-name|Locale
-operator|.
-name|US
-argument_list|)
 argument_list|)
 return|;
 block|}
