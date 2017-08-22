@@ -9284,6 +9284,16 @@ argument_list|(
 name|repo
 argument_list|)
 argument_list|)
+operator|&&
+operator|!
+name|ref
+operator|.
+name|equals
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
 condition|)
 block|{
 name|logDebug
