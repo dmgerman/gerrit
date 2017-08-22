@@ -104,6 +104,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|ThreadSettingsConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -186,7 +202,7 @@ name|JdbcAccountPatchReviewStore
 block|{
 annotation|@
 name|Inject
-DECL|method|MysqlAccountPatchReviewStore (@erritServerConfig Config cfg, SitePaths sitePaths)
+DECL|method|MysqlAccountPatchReviewStore ( @erritServerConfig Config cfg, SitePaths sitePaths, ThreadSettingsConfig threadSettingsConfig)
 name|MysqlAccountPatchReviewStore
 parameter_list|(
 annotation|@
@@ -196,6 +212,9 @@ name|cfg
 parameter_list|,
 name|SitePaths
 name|sitePaths
+parameter_list|,
+name|ThreadSettingsConfig
+name|threadSettingsConfig
 parameter_list|)
 block|{
 name|super
@@ -203,6 +222,8 @@ argument_list|(
 name|cfg
 argument_list|,
 name|sitePaths
+argument_list|,
+name|threadSettingsConfig
 argument_list|)
 expr_stmt|;
 block|}

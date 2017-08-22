@@ -120,6 +120,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|ThreadSettingsConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -245,9 +261,15 @@ specifier|final
 name|Config
 name|cfg
 decl_stmt|;
+DECL|field|threadSettingsConfig
+specifier|private
+specifier|final
+name|ThreadSettingsConfig
+name|threadSettingsConfig
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_127 (Provider<Schema_126> prior, SitePaths sitePaths, @GerritServerConfig Config cfg)
+DECL|method|Schema_127 ( Provider<Schema_126> prior, SitePaths sitePaths, @GerritServerConfig Config cfg, ThreadSettingsConfig threadSettingsConfig)
 name|Schema_127
 parameter_list|(
 name|Provider
@@ -263,6 +285,9 @@ annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
+parameter_list|,
+name|ThreadSettingsConfig
+name|threadSettingsConfig
 parameter_list|)
 block|{
 name|super
@@ -281,6 +306,12 @@ operator|.
 name|cfg
 operator|=
 name|cfg
+expr_stmt|;
+name|this
+operator|.
+name|threadSettingsConfig
+operator|=
+name|threadSettingsConfig
 expr_stmt|;
 block|}
 annotation|@
@@ -309,6 +340,8 @@ argument_list|(
 name|cfg
 argument_list|,
 name|sitePaths
+argument_list|,
+name|threadSettingsConfig
 argument_list|)
 decl_stmt|;
 name|jdbcAccountPatchReviewStore
