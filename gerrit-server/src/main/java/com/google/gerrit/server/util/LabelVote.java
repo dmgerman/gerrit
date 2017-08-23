@@ -402,11 +402,6 @@ name|e
 operator|+
 literal|1
 argument_list|)
-argument_list|,
-name|text
-operator|.
-name|length
-argument_list|()
 argument_list|)
 argument_list|)
 return|;
