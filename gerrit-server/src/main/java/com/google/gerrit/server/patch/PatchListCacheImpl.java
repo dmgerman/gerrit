@@ -124,20 +124,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|collect
-operator|.
-name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|util
 operator|.
 name|concurrent
@@ -291,16 +277,6 @@ operator|.
 name|name
 operator|.
 name|Named
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -1386,25 +1362,32 @@ DECL|method|LargeObjectTombstone ()
 specifier|public
 name|LargeObjectTombstone
 parameter_list|()
-block|{}
-comment|/**      * Return an empty list to prevent {@link NullPointerException}s inside of {@link      * PatchListWeigher}.      */
-annotation|@
-name|Override
-DECL|method|getPatches ()
-specifier|public
-name|List
-argument_list|<
-name|PatchListEntry
-argument_list|>
-name|getPatches
-parameter_list|()
 block|{
-return|return
-name|ImmutableList
+comment|// Initialize super class with valid values. We don't care about the inner state, but need to
+comment|// pass valid values that don't break (de)serialization.
+name|super
+argument_list|(
+literal|null
+argument_list|,
+name|ObjectId
 operator|.
-name|of
+name|zeroId
 argument_list|()
-return|;
+argument_list|,
+literal|false
+argument_list|,
+name|ComparisonType
+operator|.
+name|againstAutoMerge
+argument_list|()
+argument_list|,
+operator|new
+name|PatchListEntry
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
