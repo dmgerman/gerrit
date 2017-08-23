@@ -78,6 +78,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|ImmutableSetMultimap
 import|;
 end_import
@@ -139,16 +153,6 @@ operator|.
 name|util
 operator|.
 name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -332,7 +336,7 @@ annotation|@
 name|Override
 DECL|method|byAccount (Account.Id accountId)
 specifier|public
-name|Set
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>

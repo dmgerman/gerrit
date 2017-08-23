@@ -144,16 +144,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -288,7 +278,7 @@ throws|throws
 name|IOException
 function_decl|;
 DECL|method|byAccount (Account.Id accountId)
-name|Set
+name|ImmutableSet
 argument_list|<
 name|ExternalId
 argument_list|>
