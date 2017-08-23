@@ -1685,15 +1685,6 @@ literal|null
 return|;
 block|}
 try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
 block|{
 return|return
 name|auth
@@ -1702,8 +1693,6 @@ name|accounts
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|id
 argument_list|)
 argument_list|)
@@ -1711,8 +1700,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
 name|IOException
 decl||
 name|ConfigInvalidException

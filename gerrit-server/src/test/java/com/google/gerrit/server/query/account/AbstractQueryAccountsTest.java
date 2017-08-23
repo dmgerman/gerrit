@@ -2894,8 +2894,6 @@ name|accounts
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|accountId
 argument_list|)
 decl_stmt|;

@@ -548,20 +548,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GerritConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|PushOneCommit
 import|;
 end_import
@@ -7950,17 +7936,6 @@ annotation|@
 name|Test
 annotation|@
 name|Sandboxed
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"user.readAccountsFromGit"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|deleteUserBranchWithAccessDatabaseCapability ()
 specifier|public
 name|void
@@ -9715,17 +9690,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|GerritConfig
-argument_list|(
-name|name
-operator|=
-literal|"user.readAccountsFromGit"
-argument_list|,
-name|value
-operator|=
-literal|"true"
-argument_list|)
 DECL|method|checkMetaId ()
 specifier|public
 name|void
@@ -9741,8 +9705,6 @@ name|accounts
 operator|.
 name|get
 argument_list|(
-name|db
-argument_list|,
 name|admin
 operator|.
 name|getId
