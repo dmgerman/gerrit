@@ -139,14 +139,14 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|GetIncludedGroup
+DECL|class|GetSubgroup
 specifier|public
 class|class
-name|GetIncludedGroup
+name|GetSubgroup
 implements|implements
 name|RestReadView
 argument_list|<
-name|IncludedGroupResource
+name|SubgroupResource
 argument_list|>
 block|{
 DECL|field|json
@@ -157,8 +157,8 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetIncludedGroup (GroupJson json)
-name|GetIncludedGroup
+DECL|method|GetSubgroup (GroupJson json)
+name|GetSubgroup
 parameter_list|(
 name|GroupJson
 name|json
@@ -173,12 +173,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (IncludedGroupResource rsrc)
+DECL|method|apply (SubgroupResource rsrc)
 specifier|public
 name|GroupInfo
 name|apply
 parameter_list|(
-name|IncludedGroupResource
+name|SubgroupResource
 name|rsrc
 parameter_list|)
 throws|throws

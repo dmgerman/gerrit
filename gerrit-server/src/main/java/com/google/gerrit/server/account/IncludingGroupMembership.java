@@ -580,7 +580,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getIncludes
+name|getSubgroups
 argument_list|()
 argument_list|)
 condition|)

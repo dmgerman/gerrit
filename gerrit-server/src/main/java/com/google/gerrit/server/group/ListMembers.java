@@ -749,7 +749,7 @@ name|subgroupUuid
 range|:
 name|group
 operator|.
-name|getIncludes
+name|getSubgroups
 argument_list|()
 control|)
 block|{

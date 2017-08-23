@@ -321,7 +321,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * List included groups.    *    * @return included groups.    * @throws RestApiException    */
+comment|/**    * Lists the subgroups of this group.    *    * @return the found subgroups    * @throws RestApiException    */
 DECL|method|includedGroups ()
 name|List
 argument_list|<
@@ -332,7 +332,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Add groups to be included in this one.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
+comment|/**    * Adds subgroups to this group.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
 DECL|method|addGroups (String... groups)
 name|void
 name|addGroups
@@ -344,7 +344,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Remove included groups from this one.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
+comment|/**    * Removes subgroups from this group.    *    * @param groups list of group identifiers, in any format accepted by {@link Groups#id(String)}    * @throws RestApiException    */
 DECL|method|removeGroups (String... groups)
 name|void
 name|removeGroups

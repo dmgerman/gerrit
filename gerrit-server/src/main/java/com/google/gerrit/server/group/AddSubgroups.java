@@ -312,7 +312,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|AddIncludedGroups
+name|AddSubgroups
 operator|.
 name|Input
 import|;
@@ -421,10 +421,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|AddIncludedGroups
+DECL|class|AddSubgroups
 specifier|public
 class|class
-name|AddIncludedGroups
+name|AddSubgroups
 implements|implements
 name|RestModifyView
 argument_list|<
@@ -589,9 +589,9 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddIncludedGroups ( GroupsCollection groupsCollection, Provider<ReviewDb> db, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupJson json)
+DECL|method|AddSubgroups ( GroupsCollection groupsCollection, Provider<ReviewDb> db, @UserInitiated Provider<GroupsUpdate> groupsUpdateProvider, GroupJson json)
 specifier|public
-name|AddIncludedGroups
+name|AddSubgroups
 parameter_list|(
 name|GroupsCollection
 name|groupsCollection
@@ -746,7 +746,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|includedGroupUuids
+name|subgroupUuids
 init|=
 operator|new
 name|HashSet
@@ -756,7 +756,7 @@ decl_stmt|;
 for|for
 control|(
 name|String
-name|includedGroup
+name|subgroupIdentifier
 range|:
 name|input
 operator|.
@@ -766,20 +766,20 @@ block|{
 name|GroupDescription
 operator|.
 name|Basic
-name|d
+name|subgroup
 init|=
 name|groupsCollection
 operator|.
 name|parse
 argument_list|(
-name|includedGroup
+name|subgroupIdentifier
 argument_list|)
 decl_stmt|;
-name|includedGroupUuids
+name|subgroupUuids
 operator|.
 name|add
 argument_list|(
-name|d
+name|subgroup
 operator|.
 name|getGroupUUID
 argument_list|()
@@ -793,7 +793,7 @@ name|json
 operator|.
 name|format
 argument_list|(
-name|d
+name|subgroup
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -815,7 +815,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|addIncludedGroups
+name|addSubgroups
 argument_list|(
 name|db
 operator|.
@@ -824,7 +824,7 @@ argument_list|()
 argument_list|,
 name|groupUuid
 argument_list|,
-name|includedGroupUuids
+name|subgroupUuids
 argument_list|)
 expr_stmt|;
 block|}
@@ -853,16 +853,16 @@ return|return
 name|result
 return|;
 block|}
-DECL|class|PutIncludedGroup
+DECL|class|PutSubgroup
 specifier|static
 class|class
-name|PutIncludedGroup
+name|PutSubgroup
 implements|implements
 name|RestModifyView
 argument_list|<
 name|GroupResource
 argument_list|,
-name|PutIncludedGroup
+name|PutSubgroup
 operator|.
 name|Input
 argument_list|>
@@ -872,11 +872,11 @@ specifier|static
 class|class
 name|Input
 block|{}
-DECL|field|put
+DECL|field|addSubgroups
 specifier|private
 specifier|final
-name|AddIncludedGroups
-name|put
+name|AddSubgroups
+name|addSubgroups
 decl_stmt|;
 DECL|field|id
 specifier|private
@@ -884,11 +884,11 @@ specifier|final
 name|String
 name|id
 decl_stmt|;
-DECL|method|PutIncludedGroup (AddIncludedGroups put, String id)
-name|PutIncludedGroup
+DECL|method|PutSubgroup (AddSubgroups addSubgroups, String id)
+name|PutSubgroup
 parameter_list|(
-name|AddIncludedGroups
-name|put
+name|AddSubgroups
+name|addSubgroups
 parameter_list|,
 name|String
 name|id
@@ -896,9 +896,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|put
+name|addSubgroups
 operator|=
-name|put
+name|addSubgroups
 expr_stmt|;
 name|this
 operator|.
@@ -931,13 +931,13 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-name|AddIncludedGroups
+name|AddSubgroups
 operator|.
 name|Input
 name|in
 init|=
 operator|new
-name|AddIncludedGroups
+name|AddSubgroups
 operator|.
 name|Input
 argument_list|()
@@ -961,7 +961,7 @@ name|GroupInfo
 argument_list|>
 name|list
 init|=
-name|put
+name|addSubgroups
 operator|.
 name|apply
 argument_list|(
@@ -1013,16 +1013,16 @@ block|}
 block|}
 annotation|@
 name|Singleton
-DECL|class|UpdateIncludedGroup
+DECL|class|UpdateSubgroup
 specifier|static
 class|class
-name|UpdateIncludedGroup
+name|UpdateSubgroup
 implements|implements
 name|RestModifyView
 argument_list|<
-name|IncludedGroupResource
+name|SubgroupResource
 argument_list|,
-name|PutIncludedGroup
+name|PutSubgroup
 operator|.
 name|Input
 argument_list|>
@@ -1032,18 +1032,18 @@ specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|GetIncludedGroup
+name|GetSubgroup
 argument_list|>
 name|get
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UpdateIncludedGroup (Provider<GetIncludedGroup> get)
-name|UpdateIncludedGroup
+DECL|method|UpdateSubgroup (Provider<GetSubgroup> get)
+name|UpdateSubgroup
 parameter_list|(
 name|Provider
 argument_list|<
-name|GetIncludedGroup
+name|GetSubgroup
 argument_list|>
 name|get
 parameter_list|)
@@ -1057,15 +1057,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (IncludedGroupResource resource, PutIncludedGroup.Input input)
+DECL|method|apply (SubgroupResource resource, PutSubgroup.Input input)
 specifier|public
 name|GroupInfo
 name|apply
 parameter_list|(
-name|IncludedGroupResource
+name|SubgroupResource
 name|resource
 parameter_list|,
-name|PutIncludedGroup
+name|PutSubgroup
 operator|.
 name|Input
 name|input

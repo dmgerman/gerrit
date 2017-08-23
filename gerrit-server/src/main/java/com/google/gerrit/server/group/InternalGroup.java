@@ -159,7 +159,7 @@ specifier|abstract
 class|class
 name|InternalGroup
 block|{
-DECL|method|create ( AccountGroup accountGroup, ImmutableSet<Account.Id> members, ImmutableSet<AccountGroup.UUID> includes)
+DECL|method|create ( AccountGroup accountGroup, ImmutableSet<Account.Id> members, ImmutableSet<AccountGroup.UUID> subgroups)
 specifier|public
 specifier|static
 name|InternalGroup
@@ -182,7 +182,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|includes
+name|subgroups
 parameter_list|)
 block|{
 return|return
@@ -226,7 +226,7 @@ argument_list|()
 argument_list|,
 name|members
 argument_list|,
-name|includes
+name|subgroups
 argument_list|)
 return|;
 block|}
@@ -315,7 +315,7 @@ argument_list|>
 name|getMembers
 parameter_list|()
 function_decl|;
-DECL|method|getIncludes ()
+DECL|method|getSubgroups ()
 specifier|public
 specifier|abstract
 name|ImmutableSet
@@ -324,7 +324,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|getIncludes
+name|getSubgroups
 parameter_list|()
 function_decl|;
 block|}

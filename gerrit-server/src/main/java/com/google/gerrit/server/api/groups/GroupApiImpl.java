@@ -196,22 +196,6 @@ name|server
 operator|.
 name|group
 operator|.
-name|AddIncludedGroups
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|group
-operator|.
 name|AddMembers
 import|;
 end_import
@@ -228,7 +212,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|DeleteIncludedGroups
+name|AddSubgroups
 import|;
 end_import
 
@@ -245,6 +229,22 @@ operator|.
 name|group
 operator|.
 name|DeleteMembers
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|DeleteSubgroups
 import|;
 end_import
 
@@ -404,7 +404,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|ListIncludedGroups
+name|ListMembers
 import|;
 end_import
 
@@ -420,7 +420,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|ListMembers
+name|ListSubgroups
 import|;
 end_import
 
@@ -632,23 +632,23 @@ specifier|final
 name|DeleteMembers
 name|deleteMembers
 decl_stmt|;
-DECL|field|listGroups
+DECL|field|listSubgroups
 specifier|private
 specifier|final
-name|ListIncludedGroups
-name|listGroups
+name|ListSubgroups
+name|listSubgroups
 decl_stmt|;
-DECL|field|addGroups
+DECL|field|addSubgroups
 specifier|private
 specifier|final
-name|AddIncludedGroups
-name|addGroups
+name|AddSubgroups
+name|addSubgroups
 decl_stmt|;
-DECL|field|deleteGroups
+DECL|field|deleteSubgroups
 specifier|private
 specifier|final
-name|DeleteIncludedGroups
-name|deleteGroups
+name|DeleteSubgroups
+name|deleteSubgroups
 decl_stmt|;
 DECL|field|getAuditLog
 specifier|private
@@ -670,7 +670,7 @@ name|index
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupApiImpl ( GetGroup getGroup, GetDetail getDetail, GetName getName, PutName putName, GetOwner getOwner, PutOwner putOwner, GetDescription getDescription, PutDescription putDescription, GetOptions getOptions, PutOptions putOptions, ListMembers listMembers, AddMembers addMembers, DeleteMembers deleteMembers, ListIncludedGroups listGroups, AddIncludedGroups addGroups, DeleteIncludedGroups deleteGroups, GetAuditLog getAuditLog, Index index, @Assisted GroupResource rsrc)
+DECL|method|GroupApiImpl ( GetGroup getGroup, GetDetail getDetail, GetName getName, PutName putName, GetOwner getOwner, PutOwner putOwner, GetDescription getDescription, PutDescription putDescription, GetOptions getOptions, PutOptions putOptions, ListMembers listMembers, AddMembers addMembers, DeleteMembers deleteMembers, ListSubgroups listSubgroups, AddSubgroups addSubgroups, DeleteSubgroups deleteSubgroups, GetAuditLog getAuditLog, Index index, @Assisted GroupResource rsrc)
 name|GroupApiImpl
 parameter_list|(
 name|GetGroup
@@ -712,14 +712,14 @@ parameter_list|,
 name|DeleteMembers
 name|deleteMembers
 parameter_list|,
-name|ListIncludedGroups
-name|listGroups
+name|ListSubgroups
+name|listSubgroups
 parameter_list|,
-name|AddIncludedGroups
-name|addGroups
+name|AddSubgroups
+name|addSubgroups
 parameter_list|,
-name|DeleteIncludedGroups
-name|deleteGroups
+name|DeleteSubgroups
+name|deleteSubgroups
 parameter_list|,
 name|GetAuditLog
 name|getAuditLog
@@ -813,21 +813,21 @@ name|deleteMembers
 expr_stmt|;
 name|this
 operator|.
-name|listGroups
+name|listSubgroups
 operator|=
-name|listGroups
+name|listSubgroups
 expr_stmt|;
 name|this
 operator|.
-name|addGroups
+name|addSubgroups
 operator|=
-name|addGroups
+name|addSubgroups
 expr_stmt|;
 name|this
 operator|.
-name|deleteGroups
+name|deleteSubgroups
 operator|=
-name|deleteGroups
+name|deleteSubgroups
 expr_stmt|;
 name|this
 operator|.
@@ -1425,7 +1425,7 @@ block|{
 try|try
 block|{
 return|return
-name|listGroups
+name|listSubgroups
 operator|.
 name|apply
 argument_list|(
@@ -1442,7 +1442,7 @@ block|{
 throw|throw
 name|asRestApiException
 argument_list|(
-literal|"Cannot list included groups"
+literal|"Cannot list subgroups"
 argument_list|,
 name|e
 argument_list|)
@@ -1465,13 +1465,13 @@ name|RestApiException
 block|{
 try|try
 block|{
-name|addGroups
+name|addSubgroups
 operator|.
 name|apply
 argument_list|(
 name|rsrc
 argument_list|,
-name|AddIncludedGroups
+name|AddSubgroups
 operator|.
 name|Input
 operator|.
@@ -1496,7 +1496,7 @@ block|{
 throw|throw
 name|asRestApiException
 argument_list|(
-literal|"Cannot add group members"
+literal|"Cannot add subgroups"
 argument_list|,
 name|e
 argument_list|)
@@ -1519,13 +1519,13 @@ name|RestApiException
 block|{
 try|try
 block|{
-name|deleteGroups
+name|deleteSubgroups
 operator|.
 name|apply
 argument_list|(
 name|rsrc
 argument_list|,
-name|AddIncludedGroups
+name|AddSubgroups
 operator|.
 name|Input
 operator|.
@@ -1550,7 +1550,7 @@ block|{
 throw|throw
 name|asRestApiException
 argument_list|(
-literal|"Cannot remove group members"
+literal|"Cannot remove subgroups"
 argument_list|,
 name|e
 argument_list|)

@@ -1007,7 +1007,7 @@ block|{
 return|return
 name|groups
 operator|.
-name|getIncludes
+name|getSubgroups
 argument_list|(
 name|db
 argument_list|,

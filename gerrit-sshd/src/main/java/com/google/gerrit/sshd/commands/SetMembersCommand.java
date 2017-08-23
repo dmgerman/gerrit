@@ -246,22 +246,6 @@ name|server
 operator|.
 name|group
 operator|.
-name|AddIncludedGroups
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|group
-operator|.
 name|AddMembers
 import|;
 end_import
@@ -278,7 +262,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|DeleteIncludedGroups
+name|AddSubgroups
 import|;
 end_import
 
@@ -295,6 +279,22 @@ operator|.
 name|group
 operator|.
 name|DeleteMembers
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|DeleteSubgroups
 import|;
 end_import
 
@@ -665,19 +665,19 @@ specifier|private
 name|DeleteMembers
 name|deleteMembers
 decl_stmt|;
-DECL|field|addIncludedGroups
+DECL|field|addSubgroups
 annotation|@
 name|Inject
 specifier|private
-name|AddIncludedGroups
-name|addIncludedGroups
+name|AddSubgroups
+name|addSubgroups
 decl_stmt|;
-DECL|field|deleteIncludedGroups
+DECL|field|deleteSubgroups
 annotation|@
 name|Inject
 specifier|private
-name|DeleteIncludedGroups
-name|deleteIncludedGroups
+name|DeleteSubgroups
+name|deleteSubgroups
 decl_stmt|;
 DECL|field|groupsCollection
 annotation|@
@@ -788,7 +788,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|deleteIncludedGroups
+name|deleteSubgroups
 operator|.
 name|apply
 argument_list|(
@@ -850,7 +850,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|addIncludedGroups
+name|addSubgroups
 operator|.
 name|apply
 argument_list|(
@@ -1078,7 +1078,7 @@ expr_stmt|;
 block|}
 DECL|method|fromGroups (List<AccountGroup.UUID> accounts)
 specifier|private
-name|AddIncludedGroups
+name|AddSubgroups
 operator|.
 name|Input
 name|fromGroups
@@ -1093,7 +1093,7 @@ name|accounts
 parameter_list|)
 block|{
 return|return
-name|AddIncludedGroups
+name|AddSubgroups
 operator|.
 name|Input
 operator|.

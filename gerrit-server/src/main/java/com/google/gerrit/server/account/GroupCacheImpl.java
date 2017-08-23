@@ -1681,11 +1681,11 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|includes
+name|subgroups
 init|=
 name|groups
 operator|.
-name|getIncludes
+name|getSubgroups
 argument_list|(
 name|db
 argument_list|,
@@ -1713,7 +1713,7 @@ name|group
 argument_list|,
 name|members
 argument_list|,
-name|includes
+name|subgroups
 argument_list|)
 argument_list|)
 return|;
