@@ -1320,6 +1320,9 @@ argument_list|(
 name|accountConfig
 argument_list|)
 expr_stmt|;
+return|return
+name|account
+return|;
 block|}
 elseif|else
 if|if

@@ -701,6 +701,12 @@ specifier|private
 name|GeneralPreferencesInfo
 name|generalPreferences
 decl_stmt|;
+comment|/**    * ID of the user branch from which the account was read, {@code null} if the account was read    * from ReviewDb.    */
+DECL|field|metaId
+specifier|private
+name|String
+name|metaId
+decl_stmt|;
 DECL|method|Account ()
 specifier|protected
 name|Account
@@ -1001,6 +1007,32 @@ block|{
 name|generalPreferences
 operator|=
 name|p
+expr_stmt|;
+block|}
+DECL|method|getMetaId ()
+specifier|public
+name|String
+name|getMetaId
+parameter_list|()
+block|{
+return|return
+name|metaId
+return|;
+block|}
+DECL|method|setMetaId (String metaId)
+specifier|public
+name|void
+name|setMetaId
+parameter_list|(
+name|String
+name|metaId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|metaId
+operator|=
+name|metaId
 expr_stmt|;
 block|}
 DECL|method|isActive ()
