@@ -223,6 +223,11 @@ specifier|public
 name|Timestamp
 name|submitted
 decl_stmt|;
+DECL|field|submitter
+specifier|public
+name|AccountInfo
+name|submitter
+decl_stmt|;
 DECL|field|starred
 specifier|public
 name|Boolean

@@ -1010,6 +1010,14 @@ name|submitted
 expr_stmt|;
 name|copy
 operator|.
+name|submitter
+operator|=
+name|changeInfo
+operator|.
+name|submitter
+expr_stmt|;
+name|copy
+operator|.
 name|id
 operator|=
 name|changeInfo

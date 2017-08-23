@@ -2931,6 +2931,16 @@ operator|.
 name|isNull
 argument_list|()
 expr_stmt|;
+name|assertThat
+argument_list|(
+name|out
+operator|.
+name|submitter
+argument_list|)
+operator|.
+name|isNull
+argument_list|()
+expr_stmt|;
 name|Boolean
 name|draft
 init|=

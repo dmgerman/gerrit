@@ -861,6 +861,15 @@ name|submittedRaw
 parameter_list|()
 comment|/*-{ return this.submitted; }-*/
 function_decl|;
+DECL|method|submitter ()
+specifier|public
+specifier|final
+specifier|native
+name|AccountInfo
+name|submitter
+parameter_list|()
+comment|/*-{ return this.submitter; }-*/
+function_decl|;
 DECL|method|starred ()
 specifier|public
 specifier|final
