@@ -292,6 +292,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+operator|.
+name|Status
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|extensions
@@ -1191,8 +1209,9 @@ decl_stmt|;
 comment|// The followup action is a client-side only operation that does not
 comment|// have a server side handler. It must be manually registered into the
 comment|// resulting action map.
-if|if
-condition|(
+name|Status
+name|status
+init|=
 name|ctl
 operator|.
 name|getChange
@@ -1200,9 +1219,22 @@ argument_list|()
 operator|.
 name|getStatus
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|status
 operator|.
 name|isOpen
 argument_list|()
+operator|||
+name|status
+operator|.
+name|equals
+argument_list|(
+name|Status
+operator|.
+name|MERGED
+argument_list|)
 condition|)
 block|{
 name|UiAction
