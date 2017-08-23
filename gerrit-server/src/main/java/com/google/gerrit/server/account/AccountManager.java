@@ -2027,8 +2027,7 @@ block|{
 comment|// setting the given user name has failed, but the realm does not
 comment|// allow the user to manually set a user name,
 comment|// this means we would end with an account without user name
-comment|// (without 'username:<USERNAME>' entry in
-comment|// account_external_ids table),
+comment|// (without 'username:<USERNAME>' external ID),
 comment|// such an account cannot be used for uploading changes,
 comment|// this is why the best we can do here is to fail early and cleanup
 comment|// the database
