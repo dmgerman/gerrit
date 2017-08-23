@@ -438,6 +438,11 @@ specifier|protected
 name|InheritableBoolean
 name|rejectImplicitMerges
 decl_stmt|;
+DECL|field|privateByDefault
+specifier|protected
+name|InheritableBoolean
+name|privateByDefault
+decl_stmt|;
 DECL|field|enableReviewerByEmail
 specifier|protected
 name|InheritableBoolean
@@ -516,6 +521,12 @@ operator|.
 name|INHERIT
 expr_stmt|;
 name|requireSignedPush
+operator|=
+name|InheritableBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|privateByDefault
 operator|=
 name|InheritableBoolean
 operator|.
@@ -648,6 +659,32 @@ block|{
 return|return
 name|rejectImplicitMerges
 return|;
+block|}
+DECL|method|getPrivateByDefault ()
+specifier|public
+name|InheritableBoolean
+name|getPrivateByDefault
+parameter_list|()
+block|{
+return|return
+name|privateByDefault
+return|;
+block|}
+DECL|method|setPrivateByDefault (InheritableBoolean privateByDefault)
+specifier|public
+name|void
+name|setPrivateByDefault
+parameter_list|(
+name|InheritableBoolean
+name|privateByDefault
+parameter_list|)
+block|{
+name|this
+operator|.
+name|privateByDefault
+operator|=
+name|privateByDefault
+expr_stmt|;
 block|}
 DECL|method|getEnableReviewerByEmail ()
 specifier|public
