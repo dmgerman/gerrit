@@ -206,6 +206,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|PureRevertInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|RobotCommentInfo
 import|;
 end_import
@@ -855,6 +871,25 @@ DECL|method|index ()
 name|void
 name|index
 parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** Check if this change is a pure revert of the change stored in revertOf. */
+DECL|method|pureRevert ()
+name|PureRevertInfo
+name|pureRevert
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** Check if this change is a pure revert of claimedOriginal (SHA1 in 40 digit hex). */
+DECL|method|pureRevert (String claimedOriginal)
+name|PureRevertInfo
+name|pureRevert
+parameter_list|(
+name|String
+name|claimedOriginal
+parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
@@ -1905,6 +1940,41 @@ name|mute
 parameter_list|(
 name|boolean
 name|mute
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|pureRevert ()
+specifier|public
+name|PureRevertInfo
+name|pureRevert
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|pureRevert (String claimedOriginal)
+specifier|public
+name|PureRevertInfo
+name|pureRevert
+parameter_list|(
+name|String
+name|claimedOriginal
 parameter_list|)
 throws|throws
 name|RestApiException
