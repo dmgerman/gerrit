@@ -294,6 +294,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -412,6 +428,12 @@ operator|.
 name|getId
 argument_list|()
 decl_stmt|;
+DECL|field|allUsersName
+specifier|private
+specifier|final
+name|AllUsersName
+name|allUsersName
+decl_stmt|;
 DECL|field|account
 specifier|private
 specifier|final
@@ -467,10 +489,13 @@ name|Object
 argument_list|>
 name|properties
 decl_stmt|;
-DECL|method|AccountState ( Account account, Set<AccountGroup.UUID> actualGroups, Collection<ExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
+DECL|method|AccountState ( AllUsersName allUsersName, Account account, Set<AccountGroup.UUID> actualGroups, Collection<ExternalId> externalIds, Map<ProjectWatchKey, Set<NotifyType>> projectWatches)
 specifier|public
 name|AccountState
 parameter_list|(
+name|AllUsersName
+name|allUsersName
+parameter_list|,
 name|Account
 name|account
 parameter_list|,
@@ -500,6 +525,12 @@ argument_list|>
 name|projectWatches
 parameter_list|)
 block|{
+name|this
+operator|.
+name|allUsersName
+operator|=
+name|allUsersName
+expr_stmt|;
 name|this
 operator|.
 name|account
@@ -536,6 +567,16 @@ name|externalIds
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getAllUsersNameForIndexing ()
+specifier|public
+name|AllUsersName
+name|getAllUsersNameForIndexing
+parameter_list|()
+block|{
+return|return
+name|allUsersName
+return|;
 block|}
 comment|/** Get the cached account metadata. */
 DECL|method|getAccount ()
