@@ -142,8 +142,12 @@ specifier|public
 interface|interface
 name|GroupCache
 block|{
+comment|/**    * Looks up an internal group by its ID.    *    * @param groupId the ID of the internal group    * @return an {@code Optional} of the internal group, or an empty {@code Optional} if no internal    *     group with this ID exists on this server or an error occurred during lookup    */
 DECL|method|get (AccountGroup.Id groupId)
-name|AccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
 name|get
 parameter_list|(
 name|AccountGroup

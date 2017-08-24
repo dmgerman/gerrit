@@ -335,43 +335,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the {@code AccountGroup} for the specified ID if it exists.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupId the ID of the group    * @return the found {@code AccountGroup} if it exists, or else an empty {@code Optional}    * @throws OrmException if the group couldn't be retrieved from ReviewDb    */
-DECL|method|getGroup (ReviewDb db, AccountGroup.Id groupId)
-specifier|public
-name|Optional
-argument_list|<
-name|AccountGroup
-argument_list|>
-name|getGroup
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
-name|db
-operator|.
-name|accountGroups
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|groupId
-argument_list|)
-argument_list|)
-return|;
-block|}
 comment|/**    * Returns the {@code AccountGroup} for the specified UUID if it exists.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param groupUuid the UUID of the group    * @return the found {@code AccountGroup} if it exists, or else an empty {@code Optional}    * @throws OrmDuplicateKeyException if multiple groups are found for the specified UUID    * @throws OrmException if the group couldn't be retrieved from ReviewDb    */
 DECL|method|getGroup (ReviewDb db, AccountGroup.UUID groupUuid)
 specifier|public
