@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2016 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common
+DECL|package|com.google.gerrit.server.events
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|server
+operator|.
+name|events
 package|;
 end_package
 
@@ -90,31 +92,28 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|events
-operator|.
-name|Event
+name|CurrentUser
 import|;
 end_import
 
 begin_comment
-comment|/**  * Allows to listen to events without user visibility restrictions. To listen to events visible to a  * specific user, use {@link UserScopedEventListener}.  */
+comment|/**  * Allows to listen to events visible to the specified user. To listen to events without user  * visibility restrictions, use {@link EventListener}.  */
 end_comment
 
 begin_interface
 annotation|@
 name|ExtensionPoint
-DECL|interface|EventListener
+DECL|interface|UserScopedEventListener
 specifier|public
 interface|interface
+name|UserScopedEventListener
+extends|extends
 name|EventListener
 block|{
-DECL|method|onEvent (Event event)
-name|void
-name|onEvent
-parameter_list|(
-name|Event
-name|event
-parameter_list|)
+DECL|method|getUser ()
+name|CurrentUser
+name|getUser
+parameter_list|()
 function_decl|;
 block|}
 end_interface
