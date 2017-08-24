@@ -3248,6 +3248,34 @@ argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// All groups which were added during the server start (e.g. in SchemaCreator) aren't contained
+comment|// in the instance of the group index which is available here and in tests. There are two
+comment|// reasons:
+comment|// 1) No group index is available in SchemaCreator when using an in-memory database. (This could
+comment|// be fixed by using the IndexManagerOnInit in InMemoryDatabase similar as BaseInit uses it.)
+comment|// 2) During the on-init part of the server start, we use another instance of the index than
+comment|// later on. As test indexes are non-permanent, closing an instance and opening another one
+comment|// removes all indexed data.
+comment|// As a workaround, we simply reindex all available groups here.
+for|for
+control|(
+name|AccountGroup
+name|group
+range|:
+name|groupCache
+operator|.
+name|all
+argument_list|()
+control|)
+block|{
+name|groupCache
+operator|.
+name|evict
+argument_list|(
+name|group
+argument_list|)
+expr_stmt|;
+block|}
 name|admin
 operator|=
 name|accountCreator
