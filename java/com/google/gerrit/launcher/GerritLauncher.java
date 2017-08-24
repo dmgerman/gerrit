@@ -3690,7 +3690,7 @@ specifier|final
 name|String
 name|SOURCE_ROOT_RESOURCE
 init|=
-literal|"/gerrit-launcher/workspace-root.txt"
+literal|"/com/google/gerrit/launcher/workspace-root.txt"
 decl_stmt|;
 end_decl_stmt
 
