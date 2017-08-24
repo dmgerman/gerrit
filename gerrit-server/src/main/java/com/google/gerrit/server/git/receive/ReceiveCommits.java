@@ -9481,6 +9481,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|projectControl
 operator|.
 name|getProject
@@ -9488,27 +9489,16 @@ argument_list|()
 operator|.
 name|getState
 argument_list|()
-operator|!=
-name|com
 operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|client
-operator|.
-name|ProjectState
-operator|.
-name|ACTIVE
+name|permitsWrite
+argument_list|()
 condition|)
 block|{
 name|reject
 argument_list|(
 name|cmd
 argument_list|,
-literal|"project is read only"
+literal|"project state does not permit write"
 argument_list|)
 expr_stmt|;
 return|return;
