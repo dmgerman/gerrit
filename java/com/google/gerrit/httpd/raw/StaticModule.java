@@ -1411,7 +1411,7 @@ name|sourceRoot
 operator|.
 name|resolve
 argument_list|(
-literal|"gerrit-war/src/main/webapp/"
+literal|"webapp/"
 operator|+
 name|name
 argument_list|)
