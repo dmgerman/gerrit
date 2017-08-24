@@ -1535,6 +1535,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+comment|// TODO(hiesel) These don't need to be migrated, just remove after support for drafts is removed
 return|return
 operator|(
 name|isOwner
@@ -2628,6 +2629,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+comment|// TODO(hiesel) These don't need to be migrated, just remove after support for drafts is removed
 return|return
 name|isOwner
 argument_list|()
