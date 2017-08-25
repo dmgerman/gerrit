@@ -260,20 +260,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|StarredChangesUtil
 import|;
 end_import
@@ -559,7 +545,7 @@ return|;
 block|}
 DECL|method|getUser ()
 specifier|public
-name|IdentifiedUser
+name|CurrentUser
 name|getUser
 parameter_list|()
 block|{
@@ -568,9 +554,6 @@ name|getControl
 argument_list|()
 operator|.
 name|getUser
-argument_list|()
-operator|.
-name|asIdentifiedUser
 argument_list|()
 return|;
 block|}

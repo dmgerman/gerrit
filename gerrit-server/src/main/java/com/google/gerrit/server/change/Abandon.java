@@ -348,6 +348,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|permissions
 operator|.
 name|ChangePermission
@@ -706,7 +722,7 @@ name|defaultNotify
 argument_list|(
 name|req
 operator|.
-name|getControl
+name|getChange
 argument_list|()
 argument_list|)
 else|:
@@ -723,7 +739,12 @@ name|updateFactory
 argument_list|,
 name|req
 operator|.
-name|getControl
+name|getNotes
+argument_list|()
+argument_list|,
+name|req
+operator|.
+name|getUser
 argument_list|()
 argument_list|,
 name|input
@@ -754,20 +775,17 @@ name|change
 argument_list|)
 return|;
 block|}
-DECL|method|defaultNotify (ChangeControl control)
+DECL|method|defaultNotify (Change change)
 specifier|private
 name|NotifyHandling
 name|defaultNotify
 parameter_list|(
-name|ChangeControl
-name|control
+name|Change
+name|change
 parameter_list|)
 block|{
 return|return
-name|control
-operator|.
-name|getChange
-argument_list|()
+name|change
 operator|.
 name|hasReviewStarted
 argument_list|()
@@ -781,7 +799,7 @@ operator|.
 name|OWNER
 return|;
 block|}
-DECL|method|abandon (BatchUpdate.Factory updateFactory, ChangeControl control)
+DECL|method|abandon (BatchUpdate.Factory updateFactory, ChangeNotes notes, CurrentUser user)
 specifier|public
 name|Change
 name|abandon
@@ -791,8 +809,11 @@ operator|.
 name|Factory
 name|updateFactory
 parameter_list|,
-name|ChangeControl
-name|control
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 throws|throws
 name|RestApiException
@@ -804,13 +825,18 @@ name|abandon
 argument_list|(
 name|updateFactory
 argument_list|,
-name|control
+name|notes
+argument_list|,
+name|user
 argument_list|,
 literal|""
 argument_list|,
 name|defaultNotify
 argument_list|(
-name|control
+name|notes
+operator|.
+name|getChange
+argument_list|()
 argument_list|)
 argument_list|,
 name|ImmutableListMultimap
@@ -820,7 +846,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|abandon (BatchUpdate.Factory updateFactory, ChangeControl control, String msgTxt)
+DECL|method|abandon ( BatchUpdate.Factory updateFactory, ChangeNotes notes, CurrentUser user, String msgTxt)
 specifier|public
 name|Change
 name|abandon
@@ -830,8 +856,11 @@ operator|.
 name|Factory
 name|updateFactory
 parameter_list|,
-name|ChangeControl
-name|control
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|String
 name|msgTxt
@@ -846,13 +875,18 @@ name|abandon
 argument_list|(
 name|updateFactory
 argument_list|,
-name|control
+name|notes
+argument_list|,
+name|user
 argument_list|,
 name|msgTxt
 argument_list|,
 name|defaultNotify
 argument_list|(
-name|control
+name|notes
+operator|.
+name|getChange
+argument_list|()
 argument_list|)
 argument_list|,
 name|ImmutableListMultimap
@@ -862,7 +896,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|abandon ( BatchUpdate.Factory updateFactory, ChangeControl control, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
+DECL|method|abandon ( BatchUpdate.Factory updateFactory, ChangeNotes notes, CurrentUser user, String msgTxt, NotifyHandling notifyHandling, ListMultimap<RecipientType, Account.Id> accountsToNotify)
 specifier|public
 name|Change
 name|abandon
@@ -872,8 +906,11 @@ operator|.
 name|Factory
 name|updateFactory
 parameter_list|,
-name|ChangeControl
-name|control
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|,
 name|String
 name|msgTxt
@@ -896,14 +933,6 @@ name|RestApiException
 throws|,
 name|UpdateException
 block|{
-name|CurrentUser
-name|user
-init|=
-name|control
-operator|.
-name|getUser
-argument_list|()
-decl_stmt|;
 name|Account
 name|account
 init|=
@@ -952,18 +981,12 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|control
+name|notes
 operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
+name|getProjectName
 argument_list|()
 argument_list|,
-name|control
-operator|.
-name|getUser
-argument_list|()
+name|user
 argument_list|,
 name|TimeUtil
 operator|.
@@ -976,9 +999,9 @@ name|u
 operator|.
 name|addOp
 argument_list|(
-name|control
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|op

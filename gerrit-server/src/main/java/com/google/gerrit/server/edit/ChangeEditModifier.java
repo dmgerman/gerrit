@@ -414,6 +414,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|permissions
 operator|.
 name|ChangePermission
@@ -449,22 +465,6 @@ operator|.
 name|permissions
 operator|.
 name|PermissionBackendException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
 import|;
 end_import
 
@@ -937,8 +937,8 @@ operator|=
 name|patchSetUtil
 expr_stmt|;
 block|}
-comment|/**    * Creates a new change edit.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change for which the change edit should    *     be created    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if a change edit already existed for the change    * @throws PermissionBackendException    */
-DECL|method|createEdit (Repository repository, ChangeControl changeControl)
+comment|/**    * Creates a new change edit.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change for which the change edit should be created    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if a change edit already existed for the change    * @throws PermissionBackendException    */
+DECL|method|createEdit (Repository repository, ChangeNotes notes)
 specifier|public
 name|void
 name|createEdit
@@ -946,8 +946,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|)
 throws|throws
 name|AuthException
@@ -962,7 +962,7 @@ name|PermissionBackendException
 block|{
 name|assertCanEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 expr_stmt|;
 name|Optional
@@ -973,7 +973,7 @@ name|changeEdit
 init|=
 name|lookupChangeEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 decl_stmt|;
 if|if
@@ -994,9 +994,9 @@ name|format
 argument_list|(
 literal|"A change edit already exists for change %s"
 argument_list|,
-name|changeControl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1007,7 +1007,7 @@ name|currentPatchSet
 init|=
 name|lookupCurrentPatchSet
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 decl_stmt|;
 name|ObjectId
@@ -1022,7 +1022,7 @@ name|createEdit
 argument_list|(
 name|repository
 argument_list|,
-name|changeControl
+name|notes
 argument_list|,
 name|currentPatchSet
 argument_list|,
@@ -1035,8 +1035,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Rebase change edit on latest patch set    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     rebased    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if a change edit doesn't exist for the specified    *     change, the change edit is already based on the latest patch set, or the change represents    *     the root commit    * @throws MergeConflictException if rebase fails due to merge conflicts    * @throws PermissionBackendException    */
-DECL|method|rebaseEdit (Repository repository, ChangeControl changeControl)
+comment|/**    * Rebase change edit on latest patch set    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be rebased    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if a change edit doesn't exist for the specified    *     change, the change edit is already based on the latest patch set, or the change represents    *     the root commit    * @throws MergeConflictException if rebase fails due to merge conflicts    * @throws PermissionBackendException    */
+DECL|method|rebaseEdit (Repository repository, ChangeNotes notes)
 specifier|public
 name|void
 name|rebaseEdit
@@ -1044,8 +1044,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|)
 throws|throws
 name|AuthException
@@ -1062,7 +1062,7 @@ name|PermissionBackendException
 block|{
 name|assertCanEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 expr_stmt|;
 name|Optional
@@ -1073,7 +1073,7 @@ name|optionalChangeEdit
 init|=
 name|lookupChangeEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 decl_stmt|;
 if|if
@@ -1095,9 +1095,9 @@ name|format
 argument_list|(
 literal|"No change edit exists for change %s"
 argument_list|,
-name|changeControl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1116,7 +1116,7 @@ name|currentPatchSet
 init|=
 name|lookupCurrentPatchSet
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 decl_stmt|;
 if|if
@@ -1139,9 +1139,9 @@ name|format
 argument_list|(
 literal|"Change edit for change %s is already based on latest patch set %s"
 argument_list|,
-name|changeControl
+name|notes
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|currentPatchSet
@@ -1315,8 +1315,8 @@ name|change
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Modifies the commit message of a change edit. If the change edit doesn't exist, a new one will    * be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit's message should    *     be modified    * @param newCommitMessage the new commit message    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws UnchangedCommitMessageException if the commit message is the same as before    * @throws PermissionBackendException    * @throws BadRequestException if the commit message is malformed    */
-DECL|method|modifyMessage ( Repository repository, ChangeControl changeControl, String newCommitMessage)
+comment|/**    * Modifies the commit message of a change edit. If the change edit doesn't exist, a new one will    * be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit's message should be    *     modified    * @param newCommitMessage the new commit message    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws UnchangedCommitMessageException if the commit message is the same as before    * @throws PermissionBackendException    * @throws BadRequestException if the commit message is malformed    */
+DECL|method|modifyMessage (Repository repository, ChangeNotes notes, String newCommitMessage)
 specifier|public
 name|void
 name|modifyMessage
@@ -1324,8 +1324,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|String
 name|newCommitMessage
@@ -1345,7 +1345,7 @@ name|BadRequestException
 block|{
 name|assertCanEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 expr_stmt|;
 name|newCommitMessage
@@ -1365,7 +1365,7 @@ name|optionalChangeEdit
 init|=
 name|lookupChangeEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 decl_stmt|;
 name|PatchSet
@@ -1375,7 +1375,7 @@ name|getBasePatchSet
 argument_list|(
 name|optionalChangeEdit
 argument_list|,
-name|changeControl
+name|notes
 argument_list|)
 decl_stmt|;
 name|RevCommit
@@ -1490,7 +1490,7 @@ name|createEdit
 argument_list|(
 name|repository
 argument_list|,
-name|changeControl
+name|notes
 argument_list|,
 name|basePatchSet
 argument_list|,
@@ -1501,8 +1501,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Modifies the contents of a file of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     modified    * @param filePath the path of the file whose contents should be modified    * @param newContent the new file content    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file already had the specified content    * @throws PermissionBackendException    */
-DECL|method|modifyFile ( Repository repository, ChangeControl changeControl, String filePath, RawInput newContent)
+comment|/**    * Modifies the contents of a file of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param filePath the path of the file whose contents should be modified    * @param newContent the new file content    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file already had the specified content    * @throws PermissionBackendException    */
+DECL|method|modifyFile ( Repository repository, ChangeNotes notes, String filePath, RawInput newContent)
 specifier|public
 name|void
 name|modifyFile
@@ -1510,8 +1510,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|String
 name|filePath
@@ -1534,7 +1534,7 @@ name|modifyTree
 argument_list|(
 name|repository
 argument_list|,
-name|changeControl
+name|notes
 argument_list|,
 operator|new
 name|ChangeFileContentModification
@@ -1546,8 +1546,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Deletes a file from the Git tree of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     modified    * @param file path of the file which should be deleted    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file does not exist    * @throws PermissionBackendException    */
-DECL|method|deleteFile (Repository repository, ChangeControl changeControl, String file)
+comment|/**    * Deletes a file from the Git tree of a change edit. If the change edit doesn't exist, a new one    * will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param file path of the file which should be deleted    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file does not exist    * @throws PermissionBackendException    */
+DECL|method|deleteFile (Repository repository, ChangeNotes notes, String file)
 specifier|public
 name|void
 name|deleteFile
@@ -1555,8 +1555,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|String
 name|file
@@ -1576,7 +1576,7 @@ name|modifyTree
 argument_list|(
 name|repository
 argument_list|,
-name|changeControl
+name|notes
 argument_list|,
 operator|new
 name|DeleteFileModification
@@ -1586,8 +1586,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Renames a file of a change edit or moves it to another directory. If the change edit doesn't    * exist, a new one will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     modified    * @param currentFilePath the current path/name of the file    * @param newFilePath the desired path/name of the file    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file was already renamed to the specified new    *     name    * @throws PermissionBackendException    */
-DECL|method|renameFile ( Repository repository, ChangeControl changeControl, String currentFilePath, String newFilePath)
+comment|/**    * Renames a file of a change edit or moves it to another directory. If the change edit doesn't    * exist, a new one will be created based on the current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param currentFilePath the current path/name of the file    * @param newFilePath the desired path/name of the file    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file was already renamed to the specified new    *     name    * @throws PermissionBackendException    */
+DECL|method|renameFile ( Repository repository, ChangeNotes notes, String currentFilePath, String newFilePath)
 specifier|public
 name|void
 name|renameFile
@@ -1595,8 +1595,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|String
 name|currentFilePath
@@ -1619,7 +1619,7 @@ name|modifyTree
 argument_list|(
 name|repository
 argument_list|,
-name|changeControl
+name|notes
 argument_list|,
 operator|new
 name|RenameFileModification
@@ -1631,8 +1631,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Restores a file of a change edit to the state it was in before the patch set on which the    * change edit is based. If the change edit doesn't exist, a new one will be created based on the    * current patch set.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change whose change edit should be    *     modified    * @param file the path of the file which should be restored    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file was already restored    * @throws PermissionBackendException    */
-DECL|method|restoreFile (Repository repository, ChangeControl changeControl, String file)
+comment|/**    * Restores a file of a change edit to the state it was in before the patch set on which the    * change edit is based. If the change edit doesn't exist, a new one will be created based on the    * current patch set.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change whose change edit should be modified    * @param file the path of the file which should be restored    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the file was already restored    * @throws PermissionBackendException    */
+DECL|method|restoreFile (Repository repository, ChangeNotes notes, String file)
 specifier|public
 name|void
 name|restoreFile
@@ -1640,8 +1640,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|String
 name|file
@@ -1661,7 +1661,7 @@ name|modifyTree
 argument_list|(
 name|repository
 argument_list|,
-name|changeControl
+name|notes
 argument_list|,
 operator|new
 name|RestoreFileModification
@@ -1671,7 +1671,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|modifyTree ( Repository repository, ChangeControl changeControl, TreeModification treeModification)
+DECL|method|modifyTree ( Repository repository, ChangeNotes notes, TreeModification treeModification)
 specifier|private
 name|void
 name|modifyTree
@@ -1679,8 +1679,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|TreeModification
 name|treeModification
@@ -1698,7 +1698,7 @@ name|PermissionBackendException
 block|{
 name|assertCanEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 expr_stmt|;
 name|Optional
@@ -1709,7 +1709,7 @@ name|optionalChangeEdit
 init|=
 name|lookupChangeEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 decl_stmt|;
 name|PatchSet
@@ -1719,7 +1719,7 @@ name|getBasePatchSet
 argument_list|(
 name|optionalChangeEdit
 argument_list|,
-name|changeControl
+name|notes
 argument_list|)
 decl_stmt|;
 name|RevCommit
@@ -1827,7 +1827,7 @@ name|createEdit
 argument_list|(
 name|repository
 argument_list|,
-name|changeControl
+name|notes
 argument_list|,
 name|basePatchSet
 argument_list|,
@@ -1838,8 +1838,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Applies the indicated modifications to the specified patch set. If a change edit exists and is    * based on the same patch set, the modified patch set tree is merged with the change edit. If the    * change edit doesn't exist, a new one will be created.    *    * @param repository the affected Git repository    * @param changeControl the {@code ChangeControl} of the change to which the patch set belongs    * @param patchSet the {@code PatchSet} which should be modified    * @param treeModifications the modifications which should be applied    * @return the resulting {@code ChangeEdit}    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the existing change edit is based on another patch    *     set or no change edit exists but the specified patch set isn't the current one    * @throws MergeConflictException if the modified patch set tree can't be merged with an existing    *     change edit    */
-DECL|method|combineWithModifiedPatchSetTree ( Repository repository, ChangeControl changeControl, PatchSet patchSet, List<TreeModification> treeModifications)
+comment|/**    * Applies the indicated modifications to the specified patch set. If a change edit exists and is    * based on the same patch set, the modified patch set tree is merged with the change edit. If the    * change edit doesn't exist, a new one will be created.    *    * @param repository the affected Git repository    * @param notes the {@link ChangeNotes} of the change to which the patch set belongs    * @param patchSet the {@code PatchSet} which should be modified    * @param treeModifications the modifications which should be applied    * @return the resulting {@code ChangeEdit}    * @throws AuthException if the user isn't authenticated or not allowed to use change edits    * @throws InvalidChangeOperationException if the existing change edit is based on another patch    *     set or no change edit exists but the specified patch set isn't the current one    * @throws MergeConflictException if the modified patch set tree can't be merged with an existing    *     change edit    */
+DECL|method|combineWithModifiedPatchSetTree ( Repository repository, ChangeNotes notes, PatchSet patchSet, List<TreeModification> treeModifications)
 specifier|public
 name|ChangeEdit
 name|combineWithModifiedPatchSetTree
@@ -1847,8 +1847,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|PatchSet
 name|patchSet
@@ -1874,7 +1874,7 @@ name|PermissionBackendException
 block|{
 name|assertCanEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 expr_stmt|;
 name|Optional
@@ -1885,12 +1885,12 @@ name|optionalChangeEdit
 init|=
 name|lookupChangeEdit
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 decl_stmt|;
 name|ensureAllowedPatchSet
 argument_list|(
-name|changeControl
+name|notes
 argument_list|,
 name|optionalChangeEdit
 argument_list|,
@@ -2043,7 +2043,7 @@ name|createEdit
 argument_list|(
 name|repository
 argument_list|,
-name|changeControl
+name|notes
 argument_list|,
 name|patchSet
 argument_list|,
@@ -2053,13 +2053,13 @@ name|nowTimestamp
 argument_list|)
 return|;
 block|}
-DECL|method|assertCanEdit (ChangeControl changeControl)
+DECL|method|assertCanEdit (ChangeNotes notes)
 specifier|private
 name|void
 name|assertCanEdit
 parameter_list|(
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|)
 throws|throws
 name|AuthException
@@ -2102,10 +2102,7 @@ argument_list|)
 operator|.
 name|change
 argument_list|(
-name|changeControl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|)
 operator|.
 name|check
@@ -2133,14 +2130,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|ensureAllowedPatchSet ( ChangeControl changeControl, Optional<ChangeEdit> optionalChangeEdit, PatchSet patchSet)
+DECL|method|ensureAllowedPatchSet ( ChangeNotes notes, Optional<ChangeEdit> optionalChangeEdit, PatchSet patchSet)
 specifier|private
 specifier|static
 name|void
 name|ensureAllowedPatchSet
 parameter_list|(
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|Optional
 argument_list|<
@@ -2227,7 +2224,7 @@ operator|.
 name|Id
 name|currentPatchSetId
 init|=
-name|changeControl
+name|notes
 operator|.
 name|getChange
 argument_list|()
@@ -2265,7 +2262,7 @@ throw|;
 block|}
 block|}
 block|}
-DECL|method|lookupChangeEdit (ChangeControl changeControl)
+DECL|method|lookupChangeEdit (ChangeNotes notes)
 specifier|private
 name|Optional
 argument_list|<
@@ -2273,8 +2270,8 @@ name|ChangeEdit
 argument_list|>
 name|lookupChangeEdit
 parameter_list|(
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|)
 throws|throws
 name|AuthException
@@ -2286,11 +2283,11 @@ name|changeEditUtil
 operator|.
 name|byChange
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 return|;
 block|}
-DECL|method|getBasePatchSet ( Optional<ChangeEdit> optionalChangeEdit, ChangeControl changeControl)
+DECL|method|getBasePatchSet (Optional<ChangeEdit> optionalChangeEdit, ChangeNotes notes)
 specifier|private
 name|PatchSet
 name|getBasePatchSet
@@ -2301,8 +2298,8 @@ name|ChangeEdit
 argument_list|>
 name|optionalChangeEdit
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2335,17 +2332,17 @@ argument_list|()
 else|:
 name|lookupCurrentPatchSet
 argument_list|(
-name|changeControl
+name|notes
 argument_list|)
 return|;
 block|}
-DECL|method|lookupCurrentPatchSet (ChangeControl changeControl)
+DECL|method|lookupCurrentPatchSet (ChangeNotes notes)
 specifier|private
 name|PatchSet
 name|lookupCurrentPatchSet
 parameter_list|(
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2360,10 +2357,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|changeControl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|)
 return|;
 block|}
@@ -2807,7 +2801,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|createEdit ( Repository repository, ChangeControl changeControl, PatchSet basePatchSet, ObjectId newEditCommitId, Timestamp timestamp)
+DECL|method|createEdit ( Repository repository, ChangeNotes notes, PatchSet basePatchSet, ObjectId newEditCommitId, Timestamp timestamp)
 specifier|private
 name|ChangeEdit
 name|createEdit
@@ -2815,8 +2809,8 @@ parameter_list|(
 name|Repository
 name|repository
 parameter_list|,
-name|ChangeControl
-name|changeControl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|PatchSet
 name|basePatchSet
@@ -2835,7 +2829,7 @@ block|{
 name|Change
 name|change
 init|=
-name|changeControl
+name|notes
 operator|.
 name|getChange
 argument_list|()

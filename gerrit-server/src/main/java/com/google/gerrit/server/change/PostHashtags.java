@@ -458,9 +458,6 @@ argument_list|()
 argument_list|,
 name|req
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getUser
 argument_list|()
 argument_list|,

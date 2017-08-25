@@ -372,9 +372,6 @@ condition|(
 operator|!
 name|rsrc
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getUser
 argument_list|()
 operator|.
@@ -404,7 +401,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -429,9 +426,6 @@ name|notes
 argument_list|()
 argument_list|,
 name|rsrc
-operator|.
-name|getControl
-argument_list|()
 operator|.
 name|getUser
 argument_list|()

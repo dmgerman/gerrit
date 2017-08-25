@@ -1075,8 +1075,6 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|OrmException
 block|{
 name|Optional
 argument_list|<
@@ -1090,7 +1088,12 @@ name|byChange
 argument_list|(
 name|change
 operator|.
-name|getChange
+name|getNotes
+argument_list|()
+argument_list|,
+name|change
+operator|.
+name|getUser
 argument_list|()
 argument_list|)
 decl_stmt|;

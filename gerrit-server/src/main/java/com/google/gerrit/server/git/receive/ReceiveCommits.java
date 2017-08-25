@@ -15134,12 +15134,9 @@ name|editUtil
 operator|.
 name|byChange
 argument_list|(
-name|projectControl
-operator|.
-name|controlFor
-argument_list|(
 name|notes
-argument_list|)
+argument_list|,
+name|user
 argument_list|)
 expr_stmt|;
 block|}

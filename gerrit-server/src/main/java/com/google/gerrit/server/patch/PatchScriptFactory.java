@@ -1885,7 +1885,10 @@ name|editReader
 operator|.
 name|byChange
 argument_list|(
-name|change
+name|control
+operator|.
+name|getNotes
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if

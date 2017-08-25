@@ -625,7 +625,7 @@ name|repository
 argument_list|,
 name|rsrc
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 argument_list|)
 expr_stmt|;

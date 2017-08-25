@@ -970,6 +970,9 @@ name|rsrc
 operator|.
 name|getUser
 argument_list|()
+operator|.
+name|asIdentifiedUser
+argument_list|()
 decl_stmt|;
 name|input
 operator|.

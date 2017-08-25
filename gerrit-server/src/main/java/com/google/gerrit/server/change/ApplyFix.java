@@ -640,7 +640,7 @@ name|repository
 argument_list|,
 name|revisionResource
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 argument_list|,
 name|patchSet

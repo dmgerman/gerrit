@@ -1127,9 +1127,6 @@ operator|.
 name|apply
 argument_list|(
 name|changeResource
-operator|.
-name|getControl
-argument_list|()
 argument_list|,
 name|filePath
 argument_list|,
@@ -1173,9 +1170,6 @@ operator|.
 name|apply
 argument_list|(
 name|changeResource
-operator|.
-name|getControl
-argument_list|()
 argument_list|,
 name|filePath
 argument_list|)
