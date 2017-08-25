@@ -372,6 +372,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -655,6 +665,8 @@ throws|,
 name|OrmException
 throws|,
 name|ResourceNotFoundException
+throws|,
+name|IOException
 block|{
 name|GroupDescription
 operator|.
@@ -916,6 +928,8 @@ throws|,
 name|ResourceNotFoundException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|AddIncludedGroups
 operator|.

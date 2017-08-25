@@ -924,6 +924,8 @@ throws|throws
 name|RestApiException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|AddIncludedGroups
 operator|.
