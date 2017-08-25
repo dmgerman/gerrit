@@ -785,15 +785,16 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Returns the parent groups of the specified (sub)group.    *    *<p>The subgroup may either be an internal or an external group whereas the returned parent    * groups represent only internal groups.    *    *<p><strong>Note</strong>: This method returns an empty stream if the specified group doesn't    * exist. This method doesn't check whether the parent groups exist.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param subgroupUuid the UUID of the subgroup    * @return a stream of the IDs of the parent groups    * @throws OrmException if an error occurs while reading from ReviewDb    */
-DECL|method|getParentGroups (ReviewDb db, AccountGroup.UUID subgroupUuid)
+DECL|method|getParentGroupsFromReviewDb ( ReviewDb db, AccountGroup.UUID subgroupUuid)
 specifier|public
+specifier|static
 name|Stream
 argument_list|<
 name|AccountGroup
 operator|.
 name|Id
 argument_list|>
-name|getParentGroups
+name|getParentGroupsFromReviewDb
 parameter_list|(
 name|ReviewDb
 name|db

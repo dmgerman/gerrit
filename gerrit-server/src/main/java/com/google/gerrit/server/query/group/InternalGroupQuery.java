@@ -445,6 +445,34 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|bySubgroup (AccountGroup.UUID subgroupId)
+specifier|public
+name|List
+argument_list|<
+name|InternalGroup
+argument_list|>
+name|bySubgroup
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|subgroupId
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|query
+argument_list|(
+name|GroupPredicates
+operator|.
+name|subgroup
+argument_list|(
+name|subgroupId
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|getOnlyGroup ( Predicate<InternalGroup> predicate, String groupDescription)
 specifier|private
 name|Optional
