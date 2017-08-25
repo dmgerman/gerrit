@@ -72,15 +72,19 @@ specifier|public
 enum|enum
 name|GitBasicAuthPolicy
 block|{
+comment|/** Only the HTTP password is accepted when doing Git over HTTP and REST API requests. */
 DECL|enumConstant|HTTP
 name|HTTP
 block|,
+comment|/** Only the LDAP password is allowed when doing Git over HTTP and REST API requests. */
 DECL|enumConstant|LDAP
 name|LDAP
 block|,
+comment|/**    * The password in the request is first checked against the HTTP password and, if it does not    * match, it is then validated against the LDAP password.    */
 DECL|enumConstant|HTTP_LDAP
 name|HTTP_LDAP
 block|,
+comment|/** Only the `OAUTH` authentication is allowed when doing Git over HTTP and REST API requests. */
 DECL|enumConstant|OAUTH
 name|OAUTH
 block|}
