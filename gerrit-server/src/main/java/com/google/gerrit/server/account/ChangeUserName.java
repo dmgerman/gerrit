@@ -400,12 +400,6 @@ name|newUsername
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|sshKeyCache
 specifier|private
 specifier|final
@@ -440,12 +434,9 @@ name|newUsername
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeUserName ( AccountCache accountCache, SshKeyCache sshKeyCache, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory, @Assisted IdentifiedUser user, @Nullable @Assisted String newUsername)
+DECL|method|ChangeUserName ( SshKeyCache sshKeyCache, ExternalIds externalIds, ExternalIdsUpdate.Server externalIdsUpdateFactory, @Assisted IdentifiedUser user, @Nullable @Assisted String newUsername)
 name|ChangeUserName
 parameter_list|(
-name|AccountCache
-name|accountCache
-parameter_list|,
 name|SshKeyCache
 name|sshKeyCache
 parameter_list|,
@@ -470,12 +461,6 @@ name|String
 name|newUsername
 parameter_list|)
 block|{
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
-expr_stmt|;
 name|this
 operator|.
 name|sshKeyCache
@@ -758,27 +743,7 @@ name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|accountCache
-operator|.
-name|evictByUsername
-argument_list|(
-name|extId
-operator|.
-name|key
-argument_list|()
-operator|.
-name|id
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
-name|accountCache
-operator|.
-name|evictByUsername
-argument_list|(
-name|newUsername
-argument_list|)
-expr_stmt|;
 name|sshKeyCache
 operator|.
 name|evict

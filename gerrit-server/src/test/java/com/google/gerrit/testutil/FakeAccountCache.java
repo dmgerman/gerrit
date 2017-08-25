@@ -383,26 +383,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|evictByUsername (String username)
-specifier|public
-specifier|synchronized
-name|void
-name|evictByUsername
-parameter_list|(
-name|String
-name|username
-parameter_list|)
-block|{
-name|byUsername
-operator|.
-name|remove
-argument_list|(
-name|username
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
 DECL|method|evictAllNoReindex ()
 specifier|public
 specifier|synchronized

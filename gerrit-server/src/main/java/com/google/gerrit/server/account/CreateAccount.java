@@ -738,12 +738,6 @@ specifier|final
 name|SshKeyCache
 name|sshKeyCache
 decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|final
-name|AccountCache
-name|accountCache
-decl_stmt|;
 DECL|field|accountsUpdate
 specifier|private
 specifier|final
@@ -806,7 +800,7 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount ( ReviewDb db, Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountCache accountCache, AccountsUpdate.User accountsUpdate, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
+DECL|method|CreateAccount ( ReviewDb db, Sequences seq, GroupsCollection groupsCollection, VersionedAuthorizedKeys.Accessor authorizedKeys, SshKeyCache sshKeyCache, AccountsUpdate.User accountsUpdate, AccountLoader.Factory infoLoader, DynamicSet<AccountExternalIdCreator> externalIdCreators, ExternalIds externalIds, ExternalIdsUpdate.User externalIdsUpdateFactory, @UserInitiated Provider<GroupsUpdate> groupsUpdate, OutgoingEmailValidator validator, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -825,9 +819,6 @@ name|authorizedKeys
 parameter_list|,
 name|SshKeyCache
 name|sshKeyCache
-parameter_list|,
-name|AccountCache
-name|accountCache
 parameter_list|,
 name|AccountsUpdate
 operator|.
@@ -899,12 +890,6 @@ operator|.
 name|sshKeyCache
 operator|=
 name|sshKeyCache
-expr_stmt|;
-name|this
-operator|.
-name|accountCache
-operator|=
-name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -1501,13 +1486,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-name|accountCache
-operator|.
-name|evictByUsername
-argument_list|(
-name|username
-argument_list|)
-expr_stmt|;
 name|AccountLoader
 name|loader
 init|=
