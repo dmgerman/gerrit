@@ -344,22 +344,6 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
-operator|.
-name|RefNames
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -652,7 +636,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectState
+name|NoSuchProjectException
 import|;
 end_import
 
@@ -668,7 +652,23 @@ name|server
 operator|.
 name|project
 operator|.
-name|RefControl
+name|ProjectControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectState
 import|;
 end_import
 
@@ -1121,6 +1121,14 @@ operator|.
 name|Factory
 name|changeNotesFactory
 decl_stmt|;
+DECL|field|projectControlFactory
+specifier|private
+specifier|final
+name|ProjectControl
+operator|.
+name|GenericFactory
+name|projectControlFactory
+decl_stmt|;
 DECL|field|approvalsUtil
 specifier|private
 specifier|final
@@ -1147,7 +1155,7 @@ name|notifyUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickChange ( Provider<ReviewDb> dbProvider, Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory changeNotesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil changeMessagesUtil, PatchSetUtil psUtil, NotifyUtil notifyUtil)
+DECL|method|CherryPickChange ( Provider<ReviewDb> dbProvider, Sequences seq, Provider<InternalChangeQuery> queryProvider, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager gitManager, Provider<IdentifiedUser> user, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, MergeUtil.Factory mergeUtilFactory, ChangeNotes.Factory changeNotesFactory, ProjectControl.GenericFactory projectControlFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil changeMessagesUtil, PatchSetUtil psUtil, NotifyUtil notifyUtil)
 name|CherryPickChange
 parameter_list|(
 name|Provider
@@ -1198,6 +1206,11 @@ name|ChangeNotes
 operator|.
 name|Factory
 name|changeNotesFactory
+parameter_list|,
+name|ProjectControl
+operator|.
+name|GenericFactory
+name|projectControlFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
@@ -1277,6 +1290,12 @@ name|changeNotesFactory
 expr_stmt|;
 name|this
 operator|.
+name|projectControlFactory
+operator|=
+name|projectControlFactory
+expr_stmt|;
+name|this
+operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
@@ -1300,7 +1319,7 @@ operator|=
 name|notifyUtil
 expr_stmt|;
 block|}
-DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, Change change, PatchSet patch, CherryPickInput input, RefControl refControl)
+DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, Change change, PatchSet patch, CherryPickInput input, Branch.NameKey dest)
 specifier|public
 name|Change
 operator|.
@@ -1321,8 +1340,10 @@ parameter_list|,
 name|CherryPickInput
 name|input
 parameter_list|,
-name|RefControl
-name|refControl
+name|Branch
+operator|.
+name|NameKey
+name|dest
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1338,6 +1359,8 @@ throws|,
 name|RestApiException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|NoSuchProjectException
 block|{
 return|return
 name|cherryPick
@@ -1371,11 +1394,11 @@ argument_list|)
 argument_list|,
 name|input
 argument_list|,
-name|refControl
+name|dest
 argument_list|)
 return|;
 block|}
-DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, @Nullable Change sourceChange, @Nullable PatchSet.Id sourcePatchId, Project.NameKey project, ObjectId sourceCommit, CherryPickInput input, RefControl destRefControl)
+DECL|method|cherryPick ( BatchUpdate.Factory batchUpdateFactory, @Nullable Change sourceChange, @Nullable PatchSet.Id sourcePatchId, Project.NameKey project, ObjectId sourceCommit, CherryPickInput input, Branch.NameKey dest)
 specifier|public
 name|Change
 operator|.
@@ -1410,8 +1433,10 @@ parameter_list|,
 name|CherryPickInput
 name|input
 parameter_list|,
-name|RefControl
-name|destRefControl
+name|Branch
+operator|.
+name|NameKey
+name|dest
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1427,6 +1452,8 @@ throws|,
 name|RestApiException
 throws|,
 name|ConfigInvalidException
+throws|,
+name|NoSuchProjectException
 block|{
 name|IdentifiedUser
 name|identifiedUser
@@ -1478,14 +1505,6 @@ name|reader
 argument_list|)
 init|)
 block|{
-name|String
-name|destRefName
-init|=
-name|destRefControl
-operator|.
-name|getRefName
-argument_list|()
-decl_stmt|;
 name|Ref
 name|destRef
 init|=
@@ -1496,7 +1515,10 @@ argument_list|()
 operator|.
 name|exactRef
 argument_list|(
-name|destRefName
+name|dest
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1516,7 +1538,10 @@ name|format
 argument_list|(
 literal|"Branch %s does not exist."
 argument_list|,
-name|destRefName
+name|dest
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 throw|;
@@ -1661,15 +1686,27 @@ decl_stmt|;
 name|CodeReviewCommit
 name|cherryPickCommit
 decl_stmt|;
+name|ProjectControl
+name|projectControl
+init|=
+name|projectControlFactory
+operator|.
+name|controlFor
+argument_list|(
+name|dest
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|,
+name|identifiedUser
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 name|ProjectState
 name|projectState
 init|=
-name|destRefControl
-operator|.
-name|getProjectControl
-argument_list|()
+name|projectControl
 operator|.
 name|getProjectState
 argument_list|()
@@ -1907,10 +1944,7 @@ comment|// will be added as a new patch set.
 name|ChangeControl
 name|destCtl
 init|=
-name|destRefControl
-operator|.
-name|getProjectControl
-argument_list|()
+name|projectControl
 operator|.
 name|controlFor
 argument_list|(
@@ -1991,7 +2025,10 @@ name|bu
 argument_list|,
 name|cherryPickCommit
 argument_list|,
-name|destRefName
+name|dest
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|newTopic
 argument_list|,
@@ -2029,12 +2066,10 @@ name|changeMessagesUtil
 argument_list|,
 name|sourcePatchId
 argument_list|,
-name|RefNames
+name|dest
 operator|.
-name|shortName
-argument_list|(
-name|destRefName
-argument_list|)
+name|getShortName
+argument_list|()
 argument_list|,
 name|cherryPickCommit
 argument_list|)
