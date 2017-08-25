@@ -730,15 +730,16 @@ argument_list|()
 return|;
 block|}
 comment|/**    * Returns the groups of which the specified account is a member.    *    *<p><strong>Note</strong>: This method returns an empty stream if the account doesn't exist.    * This method doesn't check whether the groups exist.    *    * @param db the {@code ReviewDb} instance to use for lookups    * @param accountId the ID of the account    * @return a stream of the IDs of the groups of which the account is a member    * @throws OrmException if an error occurs while reading from ReviewDb    */
-DECL|method|getGroupsWithMember (ReviewDb db, Account.Id accountId)
+DECL|method|getGroupsWithMemberFromReviewDb ( ReviewDb db, Account.Id accountId)
 specifier|public
+specifier|static
 name|Stream
 argument_list|<
 name|AccountGroup
 operator|.
 name|Id
 argument_list|>
-name|getGroupsWithMember
+name|getGroupsWithMemberFromReviewDb
 parameter_list|(
 name|ReviewDb
 name|db
