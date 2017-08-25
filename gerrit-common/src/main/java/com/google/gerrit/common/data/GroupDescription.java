@@ -96,6 +96,16 @@ name|AccountGroup
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_comment
 comment|/** Group methods exposed by the GroupBackend. */
 end_comment
@@ -143,7 +153,7 @@ name|getUrl
 parameter_list|()
 function_decl|;
 block|}
-comment|/** The extended information exposed by internal groups backed by an AccountGroup. */
+comment|/** The extended information exposed by internal groups. */
 DECL|interface|Internal
 specifier|public
 interface|interface
@@ -151,10 +161,33 @@ name|Internal
 extends|extends
 name|Basic
 block|{
-comment|/** @return the backing AccountGroup. */
-DECL|method|getAccountGroup ()
+DECL|method|getId ()
 name|AccountGroup
-name|getAccountGroup
+operator|.
+name|Id
+name|getId
+parameter_list|()
+function_decl|;
+DECL|method|getDescription ()
+name|String
+name|getDescription
+parameter_list|()
+function_decl|;
+DECL|method|getOwnerGroupUUID ()
+name|AccountGroup
+operator|.
+name|UUID
+name|getOwnerGroupUUID
+parameter_list|()
+function_decl|;
+DECL|method|isVisibleToAll ()
+name|boolean
+name|isVisibleToAll
+parameter_list|()
+function_decl|;
+DECL|method|getCreatedOn ()
+name|Timestamp
+name|getCreatedOn
 parameter_list|()
 function_decl|;
 block|}
