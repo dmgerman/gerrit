@@ -352,6 +352,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -666,8 +676,10 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-specifier|final
-name|AccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
 name|group
 init|=
 name|groupCache
@@ -679,9 +691,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|group
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// the included group is an external group and can't be resolved
@@ -705,6 +719,9 @@ operator|.
 name|create
 argument_list|(
 name|group
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getGroupUUID
 argument_list|()

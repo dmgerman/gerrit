@@ -292,6 +292,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/** Parses a query string meant to be applied to group objects. */
 end_comment
@@ -603,7 +613,10 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 block|{
-name|AccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
 name|group
 init|=
 name|args
@@ -624,8 +637,9 @@ decl_stmt|;
 if|if
 condition|(
 name|group
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
@@ -634,6 +648,9 @@ operator|.
 name|owner
 argument_list|(
 name|group
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getGroupUUID
 argument_list|()

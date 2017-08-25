@@ -446,7 +446,7 @@ name|internalGroup
 init|=
 name|groupCache
 operator|.
-name|getInternalGroup
+name|get
 argument_list|(
 name|uuid
 argument_list|)

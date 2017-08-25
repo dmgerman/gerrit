@@ -88,20 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -176,26 +162,13 @@ name|NameKey
 name|name
 parameter_list|)
 function_decl|;
-comment|/**    * Lookup a group definition by its UUID. The returned definition may be null if the group has    * been deleted and the UUID reference is stale, or was copied from another server.    */
-annotation|@
-name|Nullable
-DECL|method|get (AccountGroup.UUID uuid)
-name|AccountGroup
-name|get
-parameter_list|(
-name|AccountGroup
-operator|.
-name|UUID
-name|uuid
-parameter_list|)
-function_decl|;
 comment|/**    * Looks up an internal group by its UUID.    *    * @param groupUuid the UUID of the internal group    * @return an {@code Optional} of the internal group, or an empty {@code Optional} if no internal    *     group with this UUID exists on this server or an error occurred during lookup    */
-DECL|method|getInternalGroup (AccountGroup.UUID groupUuid)
+DECL|method|get (AccountGroup.UUID groupUuid)
 name|Optional
 argument_list|<
 name|InternalGroup
 argument_list|>
-name|getInternalGroup
+name|get
 parameter_list|(
 name|AccountGroup
 operator|.
@@ -225,12 +198,24 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-DECL|method|evict (AccountGroup group)
+DECL|method|evict (AccountGroup.UUID groupUuid, AccountGroup.Id groupId, AccountGroup.NameKey groupName)
 name|void
 name|evict
 parameter_list|(
 name|AccountGroup
-name|group
+operator|.
+name|UUID
+name|groupUuid
+parameter_list|,
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|,
+name|AccountGroup
+operator|.
+name|NameKey
+name|groupName
 parameter_list|)
 throws|throws
 name|IOException

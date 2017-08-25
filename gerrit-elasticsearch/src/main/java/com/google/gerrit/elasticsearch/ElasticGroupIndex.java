@@ -1508,7 +1508,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getInternalGroup
+name|get
 argument_list|(
 name|uuid
 argument_list|)

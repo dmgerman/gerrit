@@ -172,6 +172,22 @@ name|server
 operator|.
 name|group
 operator|.
+name|InternalGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|SystemGroupBackend
 import|;
 end_import
@@ -275,6 +291,16 @@ operator|.
 name|util
 operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -509,7 +535,10 @@ name|seen
 argument_list|)
 return|;
 block|}
-name|AccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
 name|group
 init|=
 name|groupCache
@@ -522,14 +551,18 @@ decl_stmt|;
 if|if
 condition|(
 name|group
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
 name|getGroupMembers
 argument_list|(
 name|group
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|project
 argument_list|,
@@ -675,7 +708,7 @@ return|return
 name|projectOwners
 return|;
 block|}
-DECL|method|getGroupMembers ( final AccountGroup group, Project.NameKey project, Set<AccountGroup.UUID> seen)
+DECL|method|getGroupMembers ( InternalGroup group, Project.NameKey project, Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -683,8 +716,7 @@ name|Account
 argument_list|>
 name|getGroupMembers
 parameter_list|(
-specifier|final
-name|AccountGroup
+name|InternalGroup
 name|group
 parameter_list|,
 name|Project
@@ -790,7 +822,10 @@ name|getIncludes
 argument_list|()
 control|)
 block|{
-name|AccountGroup
+name|Optional
+argument_list|<
+name|InternalGroup
+argument_list|>
 name|includedGroup
 init|=
 name|groupCache
@@ -803,8 +838,9 @@ decl_stmt|;
 if|if
 condition|(
 name|includedGroup
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
 operator|!
 name|seen
@@ -812,6 +848,9 @@ operator|.
 name|contains
 argument_list|(
 name|includedGroup
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getGroupUUID
 argument_list|()
@@ -825,6 +864,9 @@ argument_list|(
 name|listAccounts
 argument_list|(
 name|includedGroup
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getGroupUUID
 argument_list|()
