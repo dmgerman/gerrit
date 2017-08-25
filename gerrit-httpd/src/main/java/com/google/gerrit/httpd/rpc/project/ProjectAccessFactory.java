@@ -123,6 +123,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|RefPermission
+operator|.
+name|WRITE_CONFIG
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1215,15 +1233,14 @@ condition|)
 block|{
 if|if
 condition|(
-name|pc
-operator|.
-name|controlForRef
+name|check
 argument_list|(
+name|perm
+argument_list|,
 name|name
+argument_list|,
+name|WRITE_CONFIG
 argument_list|)
-operator|.
-name|isOwner
-argument_list|()
 condition|)
 block|{
 name|local

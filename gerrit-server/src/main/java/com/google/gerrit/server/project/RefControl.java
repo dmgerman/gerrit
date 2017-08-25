@@ -450,7 +450,6 @@ end_comment
 
 begin_class
 DECL|class|RefControl
-specifier|public
 class|class
 name|RefControl
 block|{
@@ -550,7 +549,6 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getRefName ()
-specifier|public
 name|String
 name|getRefName
 parameter_list|()
@@ -560,7 +558,6 @@ name|refName
 return|;
 block|}
 DECL|method|getProjectControl ()
-specifier|public
 name|ProjectControl
 name|getProjectControl
 parameter_list|()
@@ -570,7 +567,6 @@ name|projectControl
 return|;
 block|}
 DECL|method|getUser ()
-specifier|public
 name|CurrentUser
 name|getUser
 parameter_list|()
@@ -583,7 +579,6 @@ argument_list|()
 return|;
 block|}
 DECL|method|forUser (CurrentUser who)
-specifier|public
 name|RefControl
 name|forUser
 parameter_list|(
@@ -634,7 +629,6 @@ return|;
 block|}
 comment|/** Is this user a ref owner? */
 DECL|method|isOwner ()
-specifier|public
 name|boolean
 name|isOwner
 parameter_list|()
@@ -712,18 +706,6 @@ expr_stmt|;
 block|}
 return|return
 name|isVisible
-return|;
-block|}
-comment|/** Can this user see other users change edits? */
-DECL|method|isEditVisible ()
-specifier|public
-name|boolean
-name|isEditVisible
-parameter_list|()
-block|{
-return|return
-name|canViewPrivateChanges
-argument_list|()
 return|;
 block|}
 DECL|method|canUpload ()
@@ -1304,21 +1286,6 @@ name|ABANDON
 argument_list|)
 return|;
 block|}
-comment|/** @return true if this user can remove a reviewer for a change. */
-DECL|method|canRemoveReviewer ()
-name|boolean
-name|canRemoveReviewer
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|Permission
-operator|.
-name|REMOVE_REVIEWER
-argument_list|)
-return|;
-block|}
 comment|/** @return true if this user can view private changes. */
 DECL|method|canViewPrivateChanges ()
 name|boolean
@@ -1896,7 +1863,6 @@ return|;
 block|}
 comment|/** True if the user is blocked from using this permission. */
 DECL|method|isBlocked (String permissionName)
-specifier|public
 name|boolean
 name|isBlocked
 parameter_list|(
@@ -2957,6 +2923,43 @@ name|canSubmit
 argument_list|(
 literal|true
 argument_list|)
+return|;
+case|case
+name|READ_PRIVATE_CHANGES
+case|:
+return|return
+name|canViewPrivateChanges
+argument_list|()
+return|;
+case|case
+name|READ_CONFIG
+case|:
+return|return
+name|projectControl
+operator|.
+name|controlForRef
+argument_list|(
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
+operator|.
+name|canPerform
+argument_list|(
+name|RefPermission
+operator|.
+name|READ
+operator|.
+name|name
+argument_list|()
+argument_list|)
+return|;
+case|case
+name|WRITE_CONFIG
+case|:
+return|return
+name|isOwner
+argument_list|()
 return|;
 case|case
 name|SKIP_VALIDATION

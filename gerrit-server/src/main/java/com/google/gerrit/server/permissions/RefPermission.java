@@ -176,6 +176,23 @@ operator|,
 comment|/**    * Creates changes, then also immediately submits them during {@code push}.    *    *<p>This is similar to {@link #UPDATE} except it constructs changes first, then submits them    * according to the submit strategy, which may include cherry-pick or rebase. By creating changes    * for each commit, automatic server side rebase, and post-update review are enabled.    */
 DECL|enumConstant|UPDATE_BY_SUBMIT
 name|UPDATE_BY_SUBMIT
+operator|,
+comment|/**    * Can read all private changes on the ref. Typically granted to CI systems if they should run on    * private changes.    */
+DECL|enumConstant|READ_PRIVATE_CHANGES
+name|READ_PRIVATE_CHANGES
+argument_list|(
+name|Permission
+operator|.
+name|VIEW_PRIVATE_CHANGES
+argument_list|)
+operator|,
+comment|/** Read access to ref's config section in {@code project.config}. */
+DECL|enumConstant|READ_CONFIG
+name|READ_CONFIG
+operator|,
+comment|/** Write access to ref's config section in {@code project.config}. */
+DECL|enumConstant|WRITE_CONFIG
+name|WRITE_CONFIG
 enum|;
 end_enum
 

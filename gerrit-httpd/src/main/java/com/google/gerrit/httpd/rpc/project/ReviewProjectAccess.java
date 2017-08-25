@@ -330,6 +330,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|Sequences
 import|;
 end_import
@@ -888,7 +902,7 @@ name|updateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewProjectAccess ( final ProjectControl.Factory projectControlFactory, PermissionBackend permissionBackend, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsName allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, Sequences seq, ContributorAgreementsChecker contributorAgreements, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ReviewProjectAccess ( final ProjectControl.Factory projectControlFactory, PermissionBackend permissionBackend, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, ReviewDb db, Provider<PostReviewers> reviewersProvider, ProjectCache projectCache, AllProjectsName allProjects, ChangesCollection changes, ChangeInserter.Factory changeInserterFactory, BatchUpdate.Factory updateFactory, Provider<SetParent> setParent, Sequences seq, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ReviewProjectAccess
 parameter_list|(
 specifier|final
@@ -948,6 +962,12 @@ parameter_list|,
 name|ContributorAgreementsChecker
 name|contributorAgreements
 parameter_list|,
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|user
+parameter_list|,
 annotation|@
 name|Assisted
 argument_list|(
@@ -1004,6 +1024,13 @@ argument_list|,
 name|allProjects
 argument_list|,
 name|setParent
+argument_list|,
+name|user
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|permissionBackend
 argument_list|,
 name|projectName
 argument_list|,

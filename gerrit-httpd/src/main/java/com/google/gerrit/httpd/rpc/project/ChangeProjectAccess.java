@@ -156,6 +156,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|GroupBackend
@@ -225,6 +239,22 @@ operator|.
 name|git
 operator|.
 name|ProjectConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|permissions
+operator|.
+name|PermissionBackend
 import|;
 end_import
 
@@ -510,7 +540,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, ContributorAgreementsChecker contributorAgreements, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
+DECL|method|ChangeProjectAccess ( ProjectAccessFactory.Factory projectAccessFactory, ProjectControl.Factory projectControlFactory, ProjectCache projectCache, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, AllProjectsName allProjects, Provider<SetParent> setParent, GitReferenceUpdated gitRefUpdated, ContributorAgreementsChecker contributorAgreements, Provider<CurrentUser> user, PermissionBackend permissionBackend, @Assisted(R) Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted(R) Project.NameKey parentProjectName, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 parameter_list|(
 name|ProjectAccessFactory
@@ -548,6 +578,15 @@ name|gitRefUpdated
 parameter_list|,
 name|ContributorAgreementsChecker
 name|contributorAgreements
+parameter_list|,
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|user
+parameter_list|,
+name|PermissionBackend
+name|permissionBackend
 parameter_list|,
 annotation|@
 name|Assisted
@@ -605,6 +644,13 @@ argument_list|,
 name|allProjects
 argument_list|,
 name|setParent
+argument_list|,
+name|user
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|permissionBackend
 argument_list|,
 name|projectName
 argument_list|,
