@@ -278,6 +278,13 @@ literal|"database"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|b
+operator|.
+name|append
+argument_list|(
+literal|"?useBulkStmts=false"
+argument_list|)
+expr_stmt|;
 return|return
 name|b
 operator|.
