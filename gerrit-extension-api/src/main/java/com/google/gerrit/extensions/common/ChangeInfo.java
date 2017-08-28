@@ -430,6 +430,14 @@ name|PluginDefinedInfo
 argument_list|>
 name|plugins
 decl_stmt|;
+DECL|field|trackingIds
+specifier|public
+name|Collection
+argument_list|<
+name|TrackingIdInfo
+argument_list|>
+name|trackingIds
+decl_stmt|;
 block|}
 end_class
 
