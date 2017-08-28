@@ -2075,7 +2075,6 @@ return|;
 block|}
 comment|/** Is this user the owner of the change? */
 DECL|method|isOwner ()
-specifier|private
 name|boolean
 name|isOwner
 parameter_list|()
@@ -2236,145 +2235,6 @@ name|getAccountId
 argument_list|()
 argument_list|)
 return|;
-block|}
-return|return
-literal|false
-return|;
-block|}
-comment|/** @return true if the user is allowed to remove this reviewer. */
-DECL|method|canRemoveReviewer (PatchSetApproval approval)
-specifier|public
-name|boolean
-name|canRemoveReviewer
-parameter_list|(
-name|PatchSetApproval
-name|approval
-parameter_list|)
-block|{
-return|return
-name|canRemoveReviewer
-argument_list|(
-name|approval
-operator|.
-name|getAccountId
-argument_list|()
-argument_list|,
-name|approval
-operator|.
-name|getValue
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|canRemoveReviewer (Account.Id reviewer, int value)
-specifier|public
-name|boolean
-name|canRemoveReviewer
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|reviewer
-parameter_list|,
-name|int
-name|value
-parameter_list|)
-block|{
-if|if
-condition|(
-name|getChange
-argument_list|()
-operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|isOpen
-argument_list|()
-condition|)
-block|{
-comment|// A user can always remove themselves.
-comment|//
-if|if
-condition|(
-name|getUser
-argument_list|()
-operator|.
-name|isIdentifiedUser
-argument_list|()
-condition|)
-block|{
-if|if
-condition|(
-name|getUser
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|reviewer
-argument_list|)
-condition|)
-block|{
-return|return
-literal|true
-return|;
-comment|// can remove self
-block|}
-block|}
-comment|// The change owner may remove any zero or positive score.
-comment|//
-if|if
-condition|(
-name|isOwner
-argument_list|()
-operator|&&
-literal|0
-operator|<=
-name|value
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-comment|// Users with the remove reviewer permission, the branch owner, project
-comment|// owner and site admin can remove anyone
-if|if
-condition|(
-name|getRefControl
-argument_list|()
-operator|.
-name|canRemoveReviewer
-argument_list|()
-comment|// has removal permissions
-operator|||
-name|getRefControl
-argument_list|()
-operator|.
-name|isOwner
-argument_list|()
-comment|// branch owner
-operator|||
-name|getProjectControl
-argument_list|()
-operator|.
-name|isOwner
-argument_list|()
-comment|// project owner
-operator|||
-name|getProjectControl
-argument_list|()
-operator|.
-name|isAdmin
-argument_list|()
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
 block|}
 return|return
 literal|false
@@ -3219,7 +3079,6 @@ return|;
 case|case
 name|REMOVE_REVIEWER
 case|:
-comment|// TODO Honor specific removal filters?
 case|case
 name|SUBMIT_AS
 case|:
