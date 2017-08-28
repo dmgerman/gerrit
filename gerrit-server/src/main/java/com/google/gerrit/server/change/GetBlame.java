@@ -328,6 +328,8 @@ name|gitiles
 operator|.
 name|blame
 operator|.
+name|cache
+operator|.
 name|BlameCache
 import|;
 end_import
@@ -341,6 +343,8 @@ operator|.
 name|gitiles
 operator|.
 name|blame
+operator|.
+name|cache
 operator|.
 name|Region
 import|;
