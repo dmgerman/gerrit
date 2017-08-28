@@ -1551,7 +1551,7 @@ name|startsWith
 argument_list|(
 literal|"http:"
 argument_list|)
-operator|||
+operator|&&
 operator|!
 name|url
 operator|.
