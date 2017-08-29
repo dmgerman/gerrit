@@ -494,7 +494,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Reindex v%d-v%d"
+literal|"Reindex %s v%d-v%d"
+argument_list|,
+name|name
 argument_list|,
 name|version
 argument_list|(
@@ -600,7 +602,9 @@ argument_list|(
 name|newVersion
 argument_list|)
 argument_list|,
-literal|"not an active write schema version: %s"
+literal|"not an active write schema version: %s %s"
+argument_list|,
+name|name
 argument_list|,
 name|newVersion
 argument_list|)
@@ -609,7 +613,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Starting online reindex from schema version {} to {}"
+literal|"Starting online reindex of {} from schema version {} to {}"
+argument_list|,
+name|name
 argument_list|,
 name|version
 argument_list|(
@@ -650,9 +656,11 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Online reindex of schema version {} failed. Successfully"
+literal|"Online reindex of {} schema version {} failed. Successfully"
 operator|+
-literal|" indexed {} changes, failed to index {} changes"
+literal|" indexed {}, failed to index {}"
+argument_list|,
+name|name
 argument_list|,
 name|version
 argument_list|(
@@ -676,7 +684,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Reindex to version {} complete"
+literal|"Reindex {} to version {} complete"
+argument_list|,
+name|name
 argument_list|,
 name|version
 argument_list|(
@@ -725,7 +735,9 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Using schema version {}"
+literal|"Using {} schema version {}"
+argument_list|,
+name|name
 argument_list|,
 name|version
 argument_list|(
@@ -753,7 +765,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Error activating new schema version {}"
+literal|"Error activating new {} schema version {}"
+argument_list|,
+name|name
 argument_list|,
 name|version
 argument_list|(
@@ -846,7 +860,9 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Error deactivating old schema version {}"
+literal|"Error deactivating old {} schema version {}"
+argument_list|,
+name|name
 argument_list|,
 name|version
 argument_list|(
