@@ -225,18 +225,7 @@ parameter_list|()
 function_decl|;
 comment|// Deleted @Relation(id = 3)
 comment|// Deleted @Relation(id = 4)
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|6
-argument_list|)
-DECL|method|accounts ()
-name|AccountAccess
-name|accounts
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 6)
 comment|// Deleted @Relation(id = 7)
 comment|// Deleted @Relation(id = 8)
 annotation|@
