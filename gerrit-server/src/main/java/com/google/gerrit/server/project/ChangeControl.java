@@ -1998,7 +1998,6 @@ return|;
 block|}
 comment|/** Is the current patch set locked against state changes? */
 DECL|method|isPatchSetLocked (ReviewDb db)
-specifier|public
 name|boolean
 name|isPatchSetLocked
 parameter_list|(
