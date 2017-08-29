@@ -860,8 +860,6 @@ argument_list|()
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|id
 argument_list|,
 name|a

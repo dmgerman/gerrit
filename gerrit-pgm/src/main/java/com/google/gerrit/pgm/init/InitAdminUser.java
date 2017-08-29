@@ -944,8 +944,6 @@ name|accounts
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|a
 argument_list|)
 expr_stmt|;

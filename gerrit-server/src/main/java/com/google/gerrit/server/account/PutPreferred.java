@@ -154,22 +154,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -375,15 +359,6 @@ name|CurrentUser
 argument_list|>
 name|self
 decl_stmt|;
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|permissionBackend
 specifier|private
 specifier|final
@@ -400,7 +375,7 @@ name|accountsUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutPreferred ( Provider<CurrentUser> self, Provider<ReviewDb> dbProvider, PermissionBackend permissionBackend, AccountsUpdate.Server accountsUpdate)
+DECL|method|PutPreferred ( Provider<CurrentUser> self, PermissionBackend permissionBackend, AccountsUpdate.Server accountsUpdate)
 name|PutPreferred
 parameter_list|(
 name|Provider
@@ -408,12 +383,6 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|self
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|PermissionBackend
 name|permissionBackend
@@ -429,12 +398,6 @@ operator|.
 name|self
 operator|=
 name|self
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -540,8 +503,6 @@ parameter_list|)
 throws|throws
 name|ResourceNotFoundException
 throws|,
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -565,11 +526,6 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|dbProvider
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|user
 operator|.
 name|getAccountId

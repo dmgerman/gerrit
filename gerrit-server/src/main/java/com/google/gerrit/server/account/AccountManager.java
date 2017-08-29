@@ -1065,8 +1065,6 @@ block|}
 comment|// return the identity to the caller.
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|who
 argument_list|,
 name|id
@@ -1110,14 +1108,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|update (ReviewDb db, AuthRequest who, ExternalId extId)
+DECL|method|update (AuthRequest who, ExternalId extId)
 specifier|private
 name|void
 name|update
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|AuthRequest
 name|who
 parameter_list|,
@@ -1395,8 +1390,6 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|user
 operator|.
 name|getAccountId
@@ -1558,8 +1551,6 @@ name|accountsUpdate
 operator|.
 name|insert
 argument_list|(
-name|db
-argument_list|,
 name|newId
 argument_list|,
 name|a
@@ -1627,8 +1618,6 @@ name|accountsUpdate
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|account
 argument_list|)
 expr_stmt|;
@@ -1849,8 +1838,6 @@ literal|"; name already in use."
 decl_stmt|;
 name|handleSettingUserNameFailure
 argument_list|(
-name|db
-argument_list|,
 name|account
 argument_list|,
 name|extId
@@ -1887,8 +1874,6 @@ literal|"; name does not conform."
 decl_stmt|;
 name|handleSettingUserNameFailure
 argument_list|(
-name|db
-argument_list|,
 name|account
 argument_list|,
 name|extId
@@ -1914,8 +1899,6 @@ literal|"Cannot assign user name"
 decl_stmt|;
 name|handleSettingUserNameFailure
 argument_list|(
-name|db
-argument_list|,
 name|account
 argument_list|,
 name|extId
@@ -1953,15 +1936,12 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**    * This method handles an exception that occurred during the setting of the user name for a newly    * created account. If the realm does not allow the user to set a user name manually this method    * deletes the newly created account and throws an {@link AccountUserNameException}. In any case    * the error message is logged.    *    * @param db the database    * @param account the newly created account    * @param extId the newly created external id    * @param errorMessage the error message    * @param e the exception that occurred during the setting of the user name for the new account    * @param logException flag that decides whether the exception should be included into the log    * @throws AccountUserNameException thrown if the realm does not allow the user to manually set    *     the user name    * @throws OrmException thrown if cleaning the database failed    */
-DECL|method|handleSettingUserNameFailure ( ReviewDb db, Account account, ExternalId extId, String errorMessage, Exception e, boolean logException)
+comment|/**    * This method handles an exception that occurred during the setting of the user name for a newly    * created account. If the realm does not allow the user to set a user name manually this method    * deletes the newly created account and throws an {@link AccountUserNameException}. In any case    * the error message is logged.    *    * @param account the newly created account    * @param extId the newly created external id    * @param errorMessage the error message    * @param e the exception that occurred during the setting of the user name for the new account    * @param logException flag that decides whether the exception should be included into the log    * @throws AccountUserNameException thrown if the realm does not allow the user to manually set    *     the user name    * @throws OrmException thrown if cleaning the database failed    */
+DECL|method|handleSettingUserNameFailure ( Account account, ExternalId extId, String errorMessage, Exception e, boolean logException)
 specifier|private
 name|void
 name|handleSettingUserNameFailure
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 name|account
 parameter_list|,
@@ -2038,8 +2018,6 @@ argument_list|()
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|account
 argument_list|)
 expr_stmt|;
@@ -2087,17 +2065,6 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
 name|ExternalId
 name|extId
 init|=
@@ -2142,8 +2109,6 @@ throw|;
 block|}
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|who
 argument_list|,
 name|extId
@@ -2194,8 +2159,6 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|to
 argument_list|,
 name|a
@@ -2241,7 +2204,6 @@ argument_list|,
 literal|false
 argument_list|)
 return|;
-block|}
 block|}
 comment|/**    * Update the link to another unique authentication identity to an existing account.    *    *<p>Existing external identities with the same scheme will be removed and replaced with the new    * one.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws OrmException    * @throws AccountException the identity belongs to a different account, or it cannot be linked at    *     this time.    */
 DECL|method|updateLink (Account.Id to, AuthRequest who)
@@ -2430,17 +2392,6 @@ condition|)
 block|{
 return|return;
 block|}
-try|try
-init|(
-name|ReviewDb
-name|db
-init|=
-name|schema
-operator|.
-name|open
-argument_list|()
-init|)
-block|{
 name|List
 argument_list|<
 name|ExternalId
@@ -2576,8 +2527,6 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|from
 argument_list|,
 name|a
@@ -2630,8 +2579,7 @@ block|}
 block|}
 block|}
 block|)
-empty_stmt|;
-block|}
+function|;
 block|}
 end_class
 

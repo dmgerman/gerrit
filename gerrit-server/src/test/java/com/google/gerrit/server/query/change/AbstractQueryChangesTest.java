@@ -2407,8 +2407,6 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|userId
 argument_list|,
 name|a
@@ -18904,8 +18902,6 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|id
 argument_list|,
 name|a

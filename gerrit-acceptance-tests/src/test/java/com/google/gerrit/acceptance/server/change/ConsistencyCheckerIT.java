@@ -1190,8 +1190,6 @@ argument_list|()
 operator|.
 name|deleteByKey
 argument_list|(
-name|db
-argument_list|,
 name|owner
 operator|.
 name|getId
