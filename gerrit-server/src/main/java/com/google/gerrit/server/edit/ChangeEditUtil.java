@@ -440,9 +440,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|notedb
 operator|.
-name|ChangeControl
+name|ChangeNotes
 import|;
 end_import
 
@@ -458,7 +458,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|NoSuchChangeException
+name|ChangeControl
 import|;
 end_import
 
@@ -748,14 +748,6 @@ operator|.
 name|Factory
 name|patchSetInserterFactory
 decl_stmt|;
-DECL|field|changeControlFactory
-specifier|private
-specifier|final
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
-decl_stmt|;
 DECL|field|indexer
 specifier|private
 specifier|final
@@ -771,14 +763,14 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|user
+DECL|field|userProvider
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
-name|user
+name|userProvider
 decl_stmt|;
 DECL|field|changeKindCache
 specifier|private
@@ -794,7 +786,7 @@ name|psUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditUtil ( GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeControl.GenericFactory changeControlFactory, ChangeIndexer indexer, Provider<ReviewDb> db, Provider<CurrentUser> user, ChangeKindCache changeKindCache, PatchSetUtil psUtil)
+DECL|method|ChangeEditUtil ( GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeIndexer indexer, Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeKindCache changeKindCache, PatchSetUtil psUtil)
 name|ChangeEditUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -804,11 +796,6 @@ name|PatchSetInserter
 operator|.
 name|Factory
 name|patchSetInserterFactory
-parameter_list|,
-name|ChangeControl
-operator|.
-name|GenericFactory
-name|changeControlFactory
 parameter_list|,
 name|ChangeIndexer
 name|indexer
@@ -823,7 +810,7 @@ name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
-name|user
+name|userProvider
 parameter_list|,
 name|ChangeKindCache
 name|changeKindCache
@@ -846,12 +833,6 @@ name|patchSetInserterFactory
 expr_stmt|;
 name|this
 operator|.
-name|changeControlFactory
-operator|=
-name|changeControlFactory
-expr_stmt|;
-name|this
-operator|.
 name|indexer
 operator|=
 name|indexer
@@ -864,9 +845,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|user
+name|userProvider
 operator|=
-name|user
+name|userProvider
 expr_stmt|;
 name|this
 operator|.
@@ -881,8 +862,8 @@ operator|=
 name|psUtil
 expr_stmt|;
 block|}
-comment|/**    * Retrieve edit for a change and the user from the request scope.    *    *<p>At most one change edit can exist per user and change.    *    * @param change    * @return edit for this change for this user, if present.    * @throws AuthException    * @throws IOException    * @throws OrmException    */
-DECL|method|byChange (Change change)
+comment|/**    * Retrieve edit for a given change.    *    *<p>At most one change edit can exist per user and change.    *    * @param notes change notes of change to retrieve change edits for.    * @return edit for this change for this user, if present.    * @throws AuthException if this is not a logged-in user.    * @throws IOException if an error occurs.    */
+DECL|method|byChange (ChangeNotes notes)
 specifier|public
 name|Optional
 argument_list|<
@@ -890,57 +871,28 @@ name|ChangeEdit
 argument_list|>
 name|byChange
 parameter_list|(
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|)
 throws|throws
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|OrmException
-block|{
-try|try
 block|{
 return|return
 name|byChange
 argument_list|(
-name|changeControlFactory
-operator|.
-name|controlFor
-argument_list|(
-name|db
+name|notes
+argument_list|,
+name|userProvider
 operator|.
 name|get
 argument_list|()
-argument_list|,
-name|change
-argument_list|,
-name|user
-operator|.
-name|get
-argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}
-catch|catch
-parameter_list|(
-name|NoSuchChangeException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
-comment|/**    * Retrieve edit for a change and the given user.    *    *<p>At most one change edit can exist per user and change.    *    * @param ctl control with user to retrieve change edits for.    * @return edit for this change for this user, if present.    * @throws AuthException if this is not a logged-in user.    * @throws IOException if an error occurs.    */
-DECL|method|byChange (ChangeControl ctl)
+comment|/**    * Retrieve edit for a change and the given user.    *    *<p>At most one change edit can exist per user and change.    *    * @param notes change notes of change to retrieve change edits for.    * @param user user to retrieve edits as.    * @return edit for this change for this user, if present.    * @throws AuthException if this is not a logged-in user.    * @throws IOException if an error occurs.    */
+DECL|method|byChange (ChangeNotes notes, CurrentUser user)
 specifier|public
 name|Optional
 argument_list|<
@@ -948,8 +900,11 @@ name|ChangeEdit
 argument_list|>
 name|byChange
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
+parameter_list|,
+name|CurrentUser
+name|user
 parameter_list|)
 throws|throws
 name|AuthException
@@ -959,10 +914,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 operator|.
 name|isIdentifiedUser
 argument_list|()
@@ -979,10 +931,7 @@ block|}
 name|IdentifiedUser
 name|u
 init|=
-name|ctl
-operator|.
-name|getUser
-argument_list|()
+name|user
 operator|.
 name|asIdentifiedUser
 argument_list|()
@@ -990,7 +939,7 @@ decl_stmt|;
 name|Change
 name|change
 init|=
-name|ctl
+name|notes
 operator|.
 name|getChange
 argument_list|()
@@ -1140,7 +1089,7 @@ name|basePs
 init|=
 name|getBasePatchSet
 argument_list|(
-name|ctl
+name|notes
 argument_list|,
 name|ref
 argument_list|)
@@ -1660,13 +1609,13 @@ name|change
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getBasePatchSet (ChangeControl ctl, Ref ref)
+DECL|method|getBasePatchSet (ChangeNotes notes, Ref ref)
 specifier|private
 name|PatchSet
 name|getBasePatchSet
 parameter_list|(
-name|ChangeControl
-name|ctl
+name|ChangeNotes
+name|notes
 parameter_list|,
 name|Ref
 name|ref
@@ -1728,17 +1677,17 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|ctl
-operator|.
-name|getNotes
-argument_list|()
+name|notes
 argument_list|,
 operator|new
 name|PatchSet
 operator|.
 name|Id
 argument_list|(
-name|ctl
+name|notes
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|getId
 argument_list|()

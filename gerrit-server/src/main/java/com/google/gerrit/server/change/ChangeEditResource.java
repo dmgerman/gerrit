@@ -120,22 +120,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|TypeLiteral
@@ -249,20 +233,6 @@ parameter_list|()
 block|{
 return|return
 name|change
-return|;
-block|}
-DECL|method|getControl ()
-specifier|public
-name|ChangeControl
-name|getControl
-parameter_list|()
-block|{
-return|return
-name|getChangeResource
-argument_list|()
-operator|.
-name|getControl
-argument_list|()
 return|;
 block|}
 DECL|method|getChangeEdit ()

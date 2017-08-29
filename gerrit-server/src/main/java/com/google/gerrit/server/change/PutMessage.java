@@ -986,9 +986,6 @@ name|ensureCanEditCommitMessage
 argument_list|(
 name|resource
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getNotes
 argument_list|()
 argument_list|)

@@ -911,9 +911,6 @@ name|c
 argument_list|,
 name|resource
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getUser
 argument_list|()
 argument_list|)

@@ -825,9 +825,6 @@ operator|.
 name|byChange
 argument_list|(
 name|notes
-operator|.
-name|getChange
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

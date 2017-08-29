@@ -2824,7 +2824,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getControl
+name|getNotes
 argument_list|()
 argument_list|)
 argument_list|)

@@ -296,9 +296,6 @@ name|pastAssignees
 init|=
 name|rsrc
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getNotes
 argument_list|()
 operator|.
