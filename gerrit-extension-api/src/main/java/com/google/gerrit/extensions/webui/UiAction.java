@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|conditions
@@ -131,6 +145,8 @@ name|R
 argument_list|>
 block|{
 comment|/**    * Get the description of the action customized for the resource.    *    * @param resource the resource the view would act upon if the action is invoked by the client.    *     Information from the resource can be used to customize the description.    * @return a description of the action. The server will populate the {@code id} and {@code method}    *     properties. If null the action will assumed unavailable and not presented. This is usually    *     the same as {@code setVisible(false)}.    */
+annotation|@
+name|Nullable
 DECL|method|getDescription (R resource)
 name|Description
 name|getDescription
