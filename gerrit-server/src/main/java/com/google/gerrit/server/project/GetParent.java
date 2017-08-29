@@ -188,7 +188,7 @@ name|project
 init|=
 name|resource
 operator|.
-name|getControl
+name|getProjectState
 argument_list|()
 operator|.
 name|getProject

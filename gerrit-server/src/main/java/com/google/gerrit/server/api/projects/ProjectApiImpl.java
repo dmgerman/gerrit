@@ -1709,7 +1709,7 @@ name|format
 argument_list|(
 name|project
 operator|.
-name|getControl
+name|getProjectState
 argument_list|()
 argument_list|)
 return|;

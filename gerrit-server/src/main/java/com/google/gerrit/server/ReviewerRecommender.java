@@ -424,7 +424,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
+name|ProjectState
 import|;
 end_import
 
@@ -990,7 +990,7 @@ operator|=
 name|approvalsUtil
 expr_stmt|;
 block|}
-DECL|method|suggestReviewers ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectControl projectControl, List<Account.Id> candidateList)
+DECL|method|suggestReviewers ( ChangeNotes changeNotes, SuggestReviewers suggestReviewers, ProjectState projectState, List<Account.Id> candidateList)
 specifier|public
 name|List
 argument_list|<
@@ -1006,8 +1006,8 @@ parameter_list|,
 name|SuggestReviewers
 name|suggestReviewers
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|List
 argument_list|<
@@ -1082,7 +1082,7 @@ name|baseRankingForCandidateList
 argument_list|(
 name|candidateList
 argument_list|,
-name|projectControl
+name|projectState
 argument_list|,
 name|baseWeight
 argument_list|)
@@ -1164,7 +1164,7 @@ argument_list|()
 operator|.
 name|suggestReviewers
 argument_list|(
-name|projectControl
+name|projectState
 operator|.
 name|getProject
 argument_list|()
@@ -1723,7 +1723,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|baseRankingForCandidateList ( List<Account.Id> candidates, ProjectControl projectControl, double baseWeight)
+DECL|method|baseRankingForCandidateList ( List<Account.Id> candidates, ProjectState projectState, double baseWeight)
 specifier|private
 name|Map
 argument_list|<
@@ -1743,8 +1743,8 @@ name|Id
 argument_list|>
 name|candidates
 parameter_list|,
-name|ProjectControl
-name|projectControl
+name|ProjectState
+name|projectState
 parameter_list|,
 name|double
 name|baseWeight
@@ -1824,7 +1824,7 @@ name|changeQueryBuilder
 operator|.
 name|project
 argument_list|(
-name|projectControl
+name|projectState
 operator|.
 name|getProject
 argument_list|()
@@ -1841,7 +1841,7 @@ name|LabelType
 argument_list|>
 name|labelTypes
 init|=
-name|projectControl
+name|projectState
 operator|.
 name|getLabelTypes
 argument_list|()

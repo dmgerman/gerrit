@@ -165,17 +165,17 @@ decl_stmt|;
 DECL|field|child
 specifier|private
 specifier|final
-name|ProjectControl
+name|ProjectState
 name|child
 decl_stmt|;
-DECL|method|ChildProjectResource (ProjectResource parent, ProjectControl child)
+DECL|method|ChildProjectResource (ProjectResource parent, ProjectState child)
 specifier|public
 name|ChildProjectResource
 parameter_list|(
 name|ProjectResource
 name|parent
 parameter_list|,
-name|ProjectControl
+name|ProjectState
 name|child
 parameter_list|)
 block|{
@@ -204,7 +204,7 @@ return|;
 block|}
 DECL|method|getChild ()
 specifier|public
-name|ProjectControl
+name|ProjectState
 name|getChild
 parameter_list|()
 block|{
@@ -226,9 +226,6 @@ operator|.
 name|getFirst
 argument_list|(
 name|child
-operator|.
-name|getProjectState
-argument_list|()
 operator|.
 name|parents
 argument_list|()

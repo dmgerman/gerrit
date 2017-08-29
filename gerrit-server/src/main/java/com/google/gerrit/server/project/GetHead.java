@@ -482,9 +482,6 @@ name|user
 argument_list|(
 name|rsrc
 operator|.
-name|getControl
-argument_list|()
-operator|.
 name|getUser
 argument_list|()
 argument_list|)

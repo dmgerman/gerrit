@@ -332,7 +332,7 @@ name|FileResource
 argument_list|(
 name|parent
 operator|.
-name|getProject
+name|getProjectState
 argument_list|()
 argument_list|,
 name|parent
@@ -356,7 +356,7 @@ name|repoManager
 argument_list|,
 name|parent
 operator|.
-name|getProject
+name|getProjectState
 argument_list|()
 argument_list|,
 name|parent

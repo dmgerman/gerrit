@@ -239,9 +239,6 @@ name|getContent
 argument_list|(
 name|rsrc
 operator|.
-name|getProject
-argument_list|()
-operator|.
 name|getProjectState
 argument_list|()
 argument_list|,

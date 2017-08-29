@@ -422,7 +422,7 @@ name|parent
 argument_list|,
 name|p
 operator|.
-name|getControl
+name|getProjectState
 argument_list|()
 argument_list|)
 return|;
