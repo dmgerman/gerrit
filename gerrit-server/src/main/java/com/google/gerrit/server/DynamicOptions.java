@@ -509,6 +509,8 @@ name|clp
 operator|.
 name|parseWithPrefix
 argument_list|(
+literal|"--"
+operator|+
 name|e
 operator|.
 name|getKey
