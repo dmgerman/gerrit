@@ -120,20 +120,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Iterables
 import|;
 end_import
@@ -2866,12 +2852,7 @@ argument_list|,
 literal|"Test Usre"
 argument_list|)
 decl_stmt|;
-comment|// update account in ReviewDb without reindex so that account index is stale
-name|String
-name|newName
-init|=
-literal|"Test User"
-decl_stmt|;
+comment|// update account without reindex so that account index is stale
 name|Account
 operator|.
 name|Id
@@ -2887,41 +2868,11 @@ operator|.
 name|_accountId
 argument_list|)
 decl_stmt|;
-name|Account
-name|account
-init|=
-name|accounts
-operator|.
-name|get
-argument_list|(
-name|db
-argument_list|,
-name|accountId
-argument_list|)
-decl_stmt|;
-name|account
-operator|.
-name|setFullName
-argument_list|(
+name|String
 name|newName
-argument_list|)
-expr_stmt|;
-name|db
-operator|.
-name|accounts
-argument_list|()
-operator|.
-name|update
-argument_list|(
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|account
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// update account in NoteDb without reindex so that account index is stale
+init|=
+literal|"Test User"
+decl_stmt|;
 try|try
 init|(
 name|Repository
@@ -3554,8 +3505,6 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|id
 argument_list|,
 name|a

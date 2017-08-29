@@ -16826,8 +16826,6 @@ argument_list|()
 operator|.
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|user
 operator|.
 name|getAccountId
@@ -16894,8 +16892,6 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
 name|IOException
 decl||
 name|ConfigInvalidException

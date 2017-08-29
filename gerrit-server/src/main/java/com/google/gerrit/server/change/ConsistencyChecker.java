@@ -1701,11 +1701,6 @@ name|accounts
 operator|.
 name|get
 argument_list|(
-name|db
-operator|.
-name|get
-argument_list|()
-argument_list|,
 name|change
 argument_list|()
 operator|.
@@ -1731,8 +1726,6 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
-decl||
 name|IOException
 decl||
 name|ConfigInvalidException

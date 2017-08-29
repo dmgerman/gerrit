@@ -102,20 +102,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|common
@@ -169,22 +155,6 @@ operator|.
 name|client
 operator|.
 name|RefNames
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
 import|;
 end_import
 
@@ -329,20 +299,6 @@ operator|.
 name|server
 operator|.
 name|OrmDuplicateKeyException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -515,7 +471,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Updates accounts.  *  *<p>The account updates are written to both ReviewDb and NoteDb.  *  *<p>In NoteDb accounts are represented as user branches in the All-Users repository. Optionally a  * user branch can contain a 'account.config' file that stores account properties, such as full  * name, preferred email, status and the active flag. The timestamp of the first commit on a user  * branch denotes the registration date. The initial commit on the user branch may be empty (since  * having an 'account.config' is optional). See {@link AccountConfig} for details of the  * 'account.config' file format.  *  *<p>On updating accounts the accounts are evicted from the account cache and thus reindexed. The  * eviction from the account cache is done by the {@link ReindexAfterRefUpdate} class which receives  * the event about updating the user branch that is triggered by this class.  */
+comment|/**  * Updates accounts.  *  *<p>The account updates are written to NoteDb.  *  *<p>In NoteDb accounts are represented as user branches in the All-Users repository. Optionally a  * user branch can contain a 'account.config' file that stores account properties, such as full  * name, preferred email, status and the active flag. The timestamp of the first commit on a user  * branch denotes the registration date. The initial commit on the user branch may be empty (since  * having an 'account.config' is optional). See {@link AccountConfig} for details of the  * 'account.config' file format.  *  *<p>On updating accounts the accounts are evicted from the account cache and thus reindexed. The  * eviction from the account cache is done by the {@link ReindexAfterRefUpdate} class which receives  * the event about updating the user branch that is triggered by this class.  */
 end_comment
 
 begin_class
@@ -1074,15 +1030,12 @@ literal|"metaDataUpdateFactory"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Inserts a new account.    *    * @param db ReviewDb    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws OrmException if updating the database fails    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-DECL|method|insert (ReviewDb db, Account.Id accountId, Consumer<Account> init)
+comment|/**    * Inserts a new account.    *    * @param accountId ID of the new account    * @param init consumer to populate the new account    * @return the newly created account    * @throws OrmDuplicateKeyException if the account already exists    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+DECL|method|insert (Account.Id accountId, Consumer<Account> init)
 specifier|public
 name|Account
 name|insert
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -1095,7 +1048,7 @@ argument_list|>
 name|init
 parameter_list|)
 throws|throws
-name|OrmException
+name|OrmDuplicateKeyException
 throws|,
 name|IOException
 throws|,
@@ -1124,22 +1077,6 @@ argument_list|(
 name|account
 argument_list|)
 expr_stmt|;
-comment|// Create in ReviewDb
-name|db
-operator|.
-name|accounts
-argument_list|()
-operator|.
-name|insert
-argument_list|(
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|account
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// Create in NoteDb
 name|commitNew
 argument_list|(
@@ -1150,15 +1087,12 @@ return|return
 name|account
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param accountId ID of the account    * @param consumer consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-DECL|method|update (ReviewDb db, Account.Id accountId, Consumer<Account> consumer)
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param accountId ID of the account    * @param consumer consumer to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+DECL|method|update (Account.Id accountId, Consumer<Account> consumer)
 specifier|public
 name|Account
 name|update
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -1171,8 +1105,6 @@ argument_list|>
 name|consumer
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1180,8 +1112,6 @@ block|{
 return|return
 name|update
 argument_list|(
-name|db
-argument_list|,
 name|accountId
 argument_list|,
 name|ImmutableList
@@ -1193,15 +1123,12 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param accountId ID of the account    * @param consumers consumers to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
-DECL|method|update (ReviewDb db, Account.Id accountId, List<Consumer<Account>> consumers)
+comment|/**    * Gets the account and updates it atomically.    *    *<p>Changing the registration date of an account is not supported.    *    * @param accountId ID of the account    * @param consumers consumers to update the account, only invoked if the account exists    * @return the updated account, {@code null} if the account doesn't exist    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    */
+DECL|method|update (Account.Id accountId, List<Consumer<Account>> consumers)
 specifier|public
 name|Account
 name|update
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
@@ -1217,8 +1144,6 @@ argument_list|>
 name|consumers
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
@@ -1235,46 +1160,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|// Update in ReviewDb
-name|Account
-name|reviewDbAccount
-init|=
-name|db
-operator|.
-name|accounts
-argument_list|()
-operator|.
-name|atomicUpdate
-argument_list|(
-name|accountId
-argument_list|,
-name|a
-lambda|->
-block|{
-name|consumers
-operator|.
-name|stream
-argument_list|()
-operator|.
-name|forEach
-argument_list|(
-name|c
-lambda|->
-name|c
-operator|.
-name|accept
-argument_list|(
-name|a
-argument_list|)
-argument_list|)
-expr_stmt|;
-return|return
-name|a
-return|;
-block|}
-argument_list|)
-decl_stmt|;
-comment|// Update in NoteDb
 name|AccountConfig
 name|accountConfig
 init|=
@@ -1320,72 +1205,25 @@ argument_list|(
 name|accountConfig
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|account
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-name|reviewDbAccount
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// user branch doesn't exist yet
-name|accountConfig
-operator|.
-name|setAccount
-argument_list|(
-name|reviewDbAccount
-argument_list|)
-expr_stmt|;
-name|commitNew
-argument_list|(
-name|accountConfig
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|reviewDbAccount
-return|;
-block|}
-comment|/**    * Replaces the account.    *    *<p>The existing account with the same account ID is overwritten by the given account. Choosing    * to overwrite an account means that any updates that were done to the account by a racing    * request after the account was read are lost. Updates are also lost if the account was read from    * a stale account index. This is why using {@link #update(ReviewDb,    * com.google.gerrit.reviewdb.client.Account.Id, Consumer)} to do an atomic update is always    * preferred.    *    *<p>Changing the registration date of an account is not supported.    *    * @param db ReviewDb    * @param account the new account    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    * @see #update(ReviewDb, com.google.gerrit.reviewdb.client.Account.Id, Consumer)    */
-DECL|method|replace (ReviewDb db, Account account)
+comment|/**    * Replaces the account.    *    *<p>The existing account with the same account ID is overwritten by the given account. Choosing    * to overwrite an account means that any updates that were done to the account by a racing    * request after the account was read are lost. Updates are also lost if the account was read from    * a stale account index. This is why using {@link    * #update(com.google.gerrit.reviewdb.client.Account.Id, Consumer)} to do an atomic update is    * always preferred.    *    *<p>Changing the registration date of an account is not supported.    *    * @param account the new account    * @throws IOException if updating the user branch fails    * @throws ConfigInvalidException if any of the account fields has an invalid value    * @see #update(com.google.gerrit.reviewdb.client.Account.Id, Consumer)    */
+DECL|method|replace (Account account)
 specifier|public
 name|void
 name|replace
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 name|account
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-comment|// Update in ReviewDb
-name|db
-operator|.
-name|accounts
-argument_list|()
-operator|.
-name|update
-argument_list|(
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|account
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Update in NoteDb
 name|AccountConfig
 name|accountConfig
 init|=
@@ -1410,41 +1248,19 @@ name|accountConfig
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Deletes the account.    *    * @param db ReviewDb    * @param account the account that should be deleted    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    */
-DECL|method|delete (ReviewDb db, Account account)
+comment|/**    * Deletes the account.    *    * @param account the account that should be deleted    * @throws IOException if updating the user branch fails    */
+DECL|method|delete (Account account)
 specifier|public
 name|void
 name|delete
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 name|account
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
-comment|// Delete in ReviewDb
-name|db
-operator|.
-name|accounts
-argument_list|()
-operator|.
-name|delete
-argument_list|(
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|account
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Delete in NoteDb
-name|deleteUserBranch
+name|deleteByKey
 argument_list|(
 name|account
 operator|.
@@ -1453,42 +1269,20 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Deletes the account.    *    * @param db ReviewDb    * @param accountId the ID of the account that should be deleted    * @throws OrmException if updating the database fails    * @throws IOException if updating the user branch fails    */
-DECL|method|deleteByKey (ReviewDb db, Account.Id accountId)
+comment|/**    * Deletes the account.    *    * @param accountId the ID of the account that should be deleted    * @throws IOException if updating the user branch fails    */
+DECL|method|deleteByKey (Account.Id accountId)
 specifier|public
 name|void
 name|deleteByKey
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Account
 operator|.
 name|Id
 name|accountId
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
-comment|// Delete in ReviewDb
-name|db
-operator|.
-name|accounts
-argument_list|()
-operator|.
-name|deleteKeys
-argument_list|(
-name|ImmutableSet
-operator|.
-name|of
-argument_list|(
-name|accountId
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Delete in NoteDb
 name|deleteUserBranch
 argument_list|(
 name|accountId
