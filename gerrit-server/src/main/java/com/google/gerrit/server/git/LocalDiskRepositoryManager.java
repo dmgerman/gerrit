@@ -1821,8 +1821,24 @@ name|contains
 argument_list|(
 literal|"\r"
 argument_list|)
-return|;
 comment|// carriage return
+operator|||
+name|name
+operator|.
+name|contains
+argument_list|(
+literal|"/+"
+argument_list|)
+comment|// delimiter in /changes/
+operator|||
+name|name
+operator|.
+name|contains
+argument_list|(
+literal|"~"
+argument_list|)
+return|;
+comment|// delimiter in /changes/
 block|}
 annotation|@
 name|Override
