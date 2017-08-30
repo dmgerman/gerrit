@@ -6092,7 +6092,7 @@ operator|.
 name|getChangeId
 argument_list|()
 operator|+
-literal|". Change is patch set locked."
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}
